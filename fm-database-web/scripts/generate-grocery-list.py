@@ -158,62 +158,78 @@ def main() -> None:
     from anthropic_client import build_client  # noqa: E402
 
     client = build_client()
-    try:
-        resp = client.messages.create(
-            model=MODEL,
-            max_tokens=8192,
-            system=SYSTEM,
-            tools=[_TOOL],
-            tool_choice={"type": "tool", "name": "record_grocery_list"},
-            messages=[{"role": "user", "content": _build_user(payload)}],
-        )
-    except Exception as e:  # noqa: BLE001
-        print(json.dumps({"ok": False, "error": f"API call failed: {e}", "path": None, "weeks": [], "usage": None}))
-        return
 
-    # Truncation guard (audit rule 2026-06-05): never persist clipped output.
-    if resp.stop_reason == "max_tokens":
-        print(json.dumps({"ok": False, "error": "output truncated (max_tokens) — not saved", "path": None, "weeks": [], "usage": None}))
-        return
+    # ONE Haiku call PER WEEK. A 2-week detailed menu (5 slots × 7 days × 2)
+    # overflows the 8192 max_tokens in a single call → truncation → nothing
+    # saved. Per-week keeps each request comfortably in budget; we stitch the
+    # weeks back together so the app still gets one grocery doc with a tab per
+    # rotation week (the app shows the current week, with a toggle to the other).
+    pref = payload.get("dietary_preference") or ""
+    recipes_text = payload.get("recipes_text") or ""
+    all_weeks: list[dict[str, Any]] = []
+    usage_entry = None
+    for wk in weeks:
+        wk_no = wk.get("week")
+        sub = {"dietary_preference": pref, "weeks": [wk], "recipes_text": recipes_text}
+        try:
+            resp = client.messages.create(
+                model=MODEL,
+                max_tokens=8192,
+                system=SYSTEM,
+                tools=[_TOOL],
+                tool_choice={"type": "tool", "name": "record_grocery_list"},
+                messages=[{"role": "user", "content": _build_user(sub)}],
+            )
+        except Exception as e:  # noqa: BLE001
+            print(json.dumps({"ok": False, "error": f"API call failed (week {wk_no}): {e}", "path": None, "weeks": [], "usage": None}))
+            return
 
-    tool_input: dict[str, Any] | None = None
-    for block in resp.content:
-        if getattr(block, "type", "") == "tool_use" and getattr(block, "name", "") == "record_grocery_list":
-            tool_input = block.input  # type: ignore[assignment]
-            break
-    if not tool_input or not tool_input.get("weeks"):
-        print(json.dumps({"ok": False, "error": "model returned no grocery data", "path": None, "weeks": [], "usage": None}))
-        return
+        # Truncation guard (audit rule 2026-06-05): never persist clipped output.
+        if resp.stop_reason == "max_tokens":
+            print(json.dumps({"ok": False, "error": f"output truncated on week {wk_no} (max_tokens) — not saved", "path": None, "weeks": [], "usage": None}))
+            return
+
+        tool_input: dict[str, Any] | None = None
+        for block in resp.content:
+            if getattr(block, "type", "") == "tool_use" and getattr(block, "name", "") == "record_grocery_list":
+                tool_input = block.input  # type: ignore[assignment]
+                break
+        if not tool_input or not tool_input.get("weeks"):
+            print(json.dumps({"ok": False, "error": f"model returned no grocery data (week {wk_no})", "path": None, "weeks": [], "usage": None}))
+            return
+
+        for gw in tool_input["weeks"]:
+            gw["week"] = wk_no  # force the source week number (model may echo 1)
+            all_weeks.append(gw)
+
+        try:
+            from fmdb.usage import log_usage  # noqa: E402
+
+            usage_entry = log_usage(
+                client_id=client_id,
+                script="generate-grocery-list.py",
+                model=MODEL,
+                usage=resp.usage,
+                notes=f"grocery week {wk_no} for {plan_slug}",
+            )
+        except Exception:
+            pass
 
     doc = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "plan_slug": plan_slug,
         "model": MODEL,
-        "weeks": tool_input["weeks"],
+        "weeks": all_weeks,
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     write_text_atomic(out_path, yaml.safe_dump(doc, sort_keys=False, allow_unicode=True))
-
-    usage_entry = None
-    try:
-        from fmdb.usage import log_usage  # noqa: E402
-
-        usage_entry = log_usage(
-            client_id=client_id,
-            script="generate-grocery-list.py",
-            model=MODEL,
-            usage=resp.usage,
-            notes=f"grocery list for {plan_slug}",
-        )
-    except Exception:
-        pass
 
     print(
         json.dumps(
             {
                 "ok": True,
                 "path": str(out_path),
-                "weeks": [{"week": w.get("week"), "items": len(w.get("items") or [])} for w in tool_input["weeks"]],
+                "weeks": [{"week": w.get("week"), "items": len(w.get("items") or [])} for w in all_weeks],
                 "usage": usage_entry,
                 "error": None,
             }
