@@ -1665,7 +1665,8 @@ export async function reRenderClientLetter(
 // isolation rules in scripts/brand_html.py.
 //
 // Returns the full HTML untouched. The client component injects the body
-// attribute per iframe at render time — see plan/letter-inline-viewer.tsx.
+// attribute per iframe at render time — see
+// app/letter/[token]/auto-sized-letter-iframe.tsx.
 // ---------------------------------------------------------------------------
 
 /**
