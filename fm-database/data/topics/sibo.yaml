@@ -70,6 +70,8 @@ related_topics:
 - gut-microbiome
 - endotoxemia
 key_mechanisms:
+- hypochlorhydria-from-ppi
+- methane-dominant-imo
 - bacterial-fermentation-carbs
 - altered-gi-motility
 - leaky-gut
@@ -118,7 +120,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 6
+version: 7
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani

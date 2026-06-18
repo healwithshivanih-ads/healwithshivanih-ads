@@ -16,6 +16,8 @@ related_topics:
 - low-carb-diet
 - metabolic-syndrome
 key_mechanisms:
+- amyloid-as-innate-immune-response
+- microglial-activation
 - mitochondrial-efficiency
 - neuroinflammation
 - ketone-metabolism
@@ -27,7 +29,7 @@ sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
   quote: Enhances ketone supply to brain
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-18'
 updated_by: shivani

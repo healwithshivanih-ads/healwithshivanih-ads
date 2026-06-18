@@ -29,6 +29,9 @@ related_topics:
 - diabetic-retinopathy
 - diabetic-nephropathy
 key_mechanisms:
+- persistent-organic-pollutant-toxicity
+- pops-block-insulin-receptors
+- postprandial-glucose-spike
 - insulin-resistance
 - beta-cell-exhaustion
 - lipotoxicity
@@ -47,7 +50,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani

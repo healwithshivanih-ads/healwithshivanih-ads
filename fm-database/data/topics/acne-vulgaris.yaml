@@ -30,6 +30,8 @@ related_topics:
 - premenstrual-syndrome
 - gut-brain-axis-dysfunction
 key_mechanisms:
+- igf-1-dairy-driven-androgen-amplification
+- sebum-lipid-peroxidation
 - 5-alpha-reductase-dht-conversion
 - chronic-inflammation
 - gut-brain-skin-axis
@@ -54,7 +56,7 @@ sources:
     of hormones, keratinization, sebum, and bacteria. Acne may be called "skin diabetes"
     — impaired cutaneous glucose tolerance.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

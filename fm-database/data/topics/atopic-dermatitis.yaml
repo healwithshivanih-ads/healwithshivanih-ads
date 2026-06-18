@@ -26,6 +26,7 @@ related_topics:
 - chronic-candidiasis
 - asthma
 key_mechanisms:
+- filaggrin-skin-barrier-dysfunction
 - filaggrin-epidermal-barrier-dysfunction
 - tslp-driven-th2-polarization
 - leaky-gut
@@ -50,7 +51,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani

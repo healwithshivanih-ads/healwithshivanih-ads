@@ -32,6 +32,8 @@ related_topics:
 - food-sensitivities
 - hpa-axis-dysregulation
 key_mechanisms:
+- cortical-spreading-depression
+- trigeminovascular-activation
 - serotonin-melatonin-sleep-axis
 - chronic-inflammation
 - mitochondrial-dysfunction
@@ -54,7 +56,7 @@ sources:
     a primary vascular event; vasomotor changes are considered epiphenomena. Migraineurs
     experience heightened CNS activity, mediated by the trigeminovascular system.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

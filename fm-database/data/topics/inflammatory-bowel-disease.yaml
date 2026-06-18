@@ -33,6 +33,7 @@ related_topics:
 - gut-dysbiosis
 - maldigestion
 key_mechanisms:
+- mucin-defect-uc
 - mucosal-inflammation
 - dysbiosis
 - leaky-gut
@@ -46,7 +47,7 @@ sources:
   location: General Considerations — Definition
   quote: Inflammatory bowel disease (IBD) is a general term for a group of chronic inflammatory disorders of the bowel. The
     two major categories are CD and ulcerative colitis (UC).
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

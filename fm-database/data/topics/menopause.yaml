@@ -34,6 +34,8 @@ related_topics:
 - osteoporosis-menopause
 - gut-estrogen-axis
 key_mechanisms:
+- cortisol-bone-suppression
+- thyroid-ovarian-axis
 - ovarian-follicle-depletion
 - estrogen-decline
 - hpa-axis-dysregulation
@@ -50,7 +52,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause
   quote: Comprehensive natural treatment summary for menopausal symptoms.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani

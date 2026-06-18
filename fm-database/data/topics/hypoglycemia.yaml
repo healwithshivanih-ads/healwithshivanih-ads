@@ -37,6 +37,7 @@ related_topics:
 - premenstrual-syndrome
 - chronic-fatigue-syndrome
 key_mechanisms:
+- glycemic-volatility-cgm
 - nocturnal-glycemic-variability
 - insulin-resistance
 - pancreatic-beta-cell-dysfunction
@@ -60,7 +61,7 @@ sources:
     symptoms, feelings of hypoglycemia occur when glucose drops rapidly, even when
     it was above normal.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

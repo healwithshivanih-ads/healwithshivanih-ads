@@ -46,6 +46,8 @@ related_topics:
 - leaky-gut
 - mitochondrial-dysfunction
 key_mechanisms:
+- nk-cell-dysfunction-cfs
+- viral-persistence
 - mitochondrial-dysfunction
 - hpa-axis-dysregulation
 - dysbiosis
@@ -69,7 +71,7 @@ sources:
     (CFS). The strong correlation between CFS, FM, and MCS suggests that all three
     conditions may respond to liver detoxification, food allergy control, and a gut-restoration
     diet.
-version: 2
+version: 3
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

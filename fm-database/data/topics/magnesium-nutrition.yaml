@@ -21,6 +21,7 @@ related_topics:
 - mitochondrial-health-nutrients
 - iron-nutrition
 key_mechanisms:
+- insulin-resistance-magnesium
 - mitochondrial-energy-production
 - blood-pressure-regulation
 coaching_scope_notes: Coach can educate on magnesium-rich foods (nuts, seeds, legumes, whole grains, leafy greens) and encourage
@@ -40,7 +41,7 @@ sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Magnesium'
   quote: Magnesium inadequacy is very common, with almost half of adults in the US getting less than the RDA.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-06-18'
 updated_by: shivani

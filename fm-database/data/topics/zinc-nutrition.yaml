@@ -21,6 +21,7 @@ related_topics:
 - iron-nutrition
 - mitochondrial-health-nutrients
 key_mechanisms:
+- estrogen-zinc-antagonism
 - phytate-zinc-binding
 - immune-function-support
 coaching_scope_notes: Coach can educate on zinc-rich food sources and the impact of phytates on absorption. Soaking/sprouting
@@ -41,7 +42,7 @@ sources:
   location: 'Food Sources: Zinc'
   quote: Over 100 enzymes in the body require zinc to function. Zinc is necessary for normal growth and development, immune
     and neurological function, proper sense of taste and smell.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-06-18'
 updated_by: shivani

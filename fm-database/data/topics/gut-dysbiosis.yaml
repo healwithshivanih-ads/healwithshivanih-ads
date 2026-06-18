@@ -85,6 +85,8 @@ related_topics:
 - hair-loss
 - joint-pain
 key_mechanisms:
+- antimicrobial-resistance
+- spore-based-gut-flora-recolonization
 - microbial-diversity-decline
 - dysbiosis-gut-microbiome-imbalance
 - colonic-fermentation
@@ -145,7 +147,7 @@ sources:
   location: Topics Covered
   quote: Stress, loneliness, digital overstimulation, gut-brain disruption, altered microbiome, IBS/IBD, and probiotic or
     prebiotic support are discussed.
-version: 9
+version: 10
 status: active
 updated_at: '2026-06-18'
 updated_by: shivani

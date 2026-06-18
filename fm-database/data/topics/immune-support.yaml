@@ -17,6 +17,7 @@ related_topics:
 - anti-inflammatory-diet
 - gastrointestinal-tract-overview
 key_mechanisms:
+- cordycepin-adenosine-modulation
 - cytokine-dysregulation
 - nlrp3-inflammasome-activation
 - oxidative-stress
@@ -30,7 +31,7 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Research on specific botanical and nutraceutical agents indicates they may have a role in the pre-exposure & early
     phase of COVID-19 based on their ability to improve the immune response to, and recovery from viral illnesses.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-18'
 updated_by: shivani

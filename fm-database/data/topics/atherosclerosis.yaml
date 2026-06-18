@@ -39,6 +39,7 @@ related_topics:
 - metabolic-syndrome
 - hypothyroidism
 key_mechanisms:
+- gag-layer-arterial-endothelium-damage
 - endothelial-dysfunction
 - ldl-oxidation-and-glycation
 - macrophage-foam-cell-formation
@@ -65,7 +66,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani

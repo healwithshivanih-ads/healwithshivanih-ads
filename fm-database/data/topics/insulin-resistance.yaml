@@ -98,6 +98,7 @@ related_topics:
 - adrenal-fatigue
 - chronic-stress
 key_mechanisms:
+- statin-induced-insulin-resistance
 - microbial-diversity-decline
 - estrogen-decline
 - cortisol-elevation
@@ -156,7 +157,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 10
+version: 11
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani

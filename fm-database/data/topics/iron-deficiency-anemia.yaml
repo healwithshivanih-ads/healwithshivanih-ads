@@ -33,6 +33,7 @@ related_topics:
 - autoimmune
 - malabsorption-syndrome
 key_mechanisms:
+- transferrin-tibc-compensatory-increase
 - heme-vs-nonheme-iron-absorption
 - ferritin-storage-depletion
 coaching_scope_notes: Coaches can support dietary iron optimisation, discuss heme vs. non-heme iron sources, and support supplement
@@ -45,7 +46,7 @@ sources:
   location: Iron Panel Biomarkers section
   quote: Ferritin is what we call as the storage protein for iron. So whenever we want, it's basically whenever the body is
     going in reserve. The reserve is the ferritin inside your body.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

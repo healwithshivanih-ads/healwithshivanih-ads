@@ -35,6 +35,7 @@ related_topics:
 - cardiometabolic-diet
 - insulin-resistance
 key_mechanisms:
+- peripheral-clock-feeding-window-coupling
 - insulin-resistance
 - systemic-inflammation
 - oxidative-stress
@@ -55,7 +56,7 @@ sources:
   location: Intermittent Fasting — Who Benefits from Fasting?
   quote: Shorter-duration human & animal studies show that fasting may be beneficial for insulin resistance, blood sugar,
     blood pressure, inflammation, short-term weight loss, and brain health.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-06-18'
 updated_by: shivani

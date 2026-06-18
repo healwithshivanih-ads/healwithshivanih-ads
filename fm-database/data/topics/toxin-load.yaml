@@ -33,6 +33,8 @@ related_topics:
 - exposome
 - endocrine-disruption
 key_mechanisms:
+- lipid-soluble-toxin-adipose-storage
+- pesticide-exposure
 - chemical-cocktail-synergy
 - mitochondrial-toxin-disruption
 - oxidative-stress-from-toxicants
@@ -57,7 +59,7 @@ sources:
   location: Calculating Toxic Load section
   quote: total toxin load results from our exposures minus what we can actually get
     rid of
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-06-18'
 updated_by: shivani

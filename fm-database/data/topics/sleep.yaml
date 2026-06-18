@@ -23,6 +23,7 @@ related_topics:
 - chronic-stress
 - depression-like-symptoms
 key_mechanisms:
+- melatonin-age-related-pineal-decline
 - digital-overstimulation
 - anti-stress-hormone-restoration
 coaching_scope_notes: Morning sunlight, no blue light after sunset, no-screen routine, glycine-rich foods, magnesium, and
@@ -38,7 +39,7 @@ sources:
   location: Sleep Section
   quote: Dr. Matthew Walker, in his book, Why We Sleep, he shows that 10 nights of six-hour sleep a night, 50% greater risk
     of developing depression.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-06-18'
 updated_by: shivani

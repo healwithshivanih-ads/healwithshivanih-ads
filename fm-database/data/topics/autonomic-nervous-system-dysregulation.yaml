@@ -20,6 +20,8 @@ related_topics:
 - cardiometabolic-disease
 - insulin-resistance
 key_mechanisms:
+- circadian-autonomic-rhythm
+- pots
 - hpa-axis-dysregulation
 - sympathetic-dominance
 coaching_scope_notes: Coaches can address stress resilience, sleep hygiene, HRV monitoring, and nervous system regulation
@@ -30,7 +32,7 @@ sources:
 - id: coconote-fm-biomarkers-cvs
   location: Autonomic Nervous System
   quote: So if your patient is stuck in a sympathetic mode, that constantly creating a problem in your heart and this thing.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

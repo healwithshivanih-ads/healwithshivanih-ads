@@ -33,6 +33,7 @@ related_topics:
 - hypothyroidism
 - nutrient-deficiency-depression
 key_mechanisms:
+- postpartum-estrogen-withdrawal
 - hpa-axis-dysregulation
 - serotonin-melatonin-sleep-axis
 - learned-helplessness
@@ -58,7 +59,7 @@ sources:
     better than placebo in cases of mild to moderate depression... 25% of patients
     taking antidepressants do not even have a diagnosable psychiatric problem.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

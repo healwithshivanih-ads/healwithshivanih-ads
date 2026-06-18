@@ -25,6 +25,7 @@ related_topics:
 - omega-3-fatty-acids
 - vitamin-d-and-vaginal-health
 key_mechanisms:
+- vitamin-d-vaginal-microbiome-modulation
 - lactobacillus-crispatus-dominance
 - gut-vaginal-microbiome-axis
 - lps-endotoxemia
@@ -38,7 +39,7 @@ sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Vaginal microbiome and Lactobacillus crispatus discussion
   quote: Lactobacillus crispatus is the defining microbe in a woman's vaginal microbiome, and many ladies have lost it.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

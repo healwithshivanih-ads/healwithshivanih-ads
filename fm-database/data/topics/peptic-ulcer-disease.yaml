@@ -24,6 +24,7 @@ red_flags:
 related_topics:
 - helicobacter-pylori-infection
 key_mechanisms:
+- smoking-induced-bile-salt-reflux
 - gastric-mucosal-barrier-disruption
 - gastric-mucin-degradation
 - h-pylori-urease-ammonia-production
@@ -39,7 +40,7 @@ sources:
   quote: Peptic ulcers (PUs) occur in the stomach (gastric) and first portion of the
     small intestine (duodenal). DUs are more common; the prevalence is 6% to 12% in
     the United States.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

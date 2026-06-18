@@ -50,6 +50,7 @@ related_topics:
 - familial-hypercholesterolemia
 - atherosclerosis
 key_mechanisms:
+- cholesterol-absorption-blockade
 - insulin-resistance
 - chronic-inflammation
 - oxidative-stress
@@ -95,7 +96,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani

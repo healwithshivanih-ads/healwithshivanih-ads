@@ -63,6 +63,9 @@ related_topics:
 - chronic-stress
 - insulin-resistance
 key_mechanisms:
+- halogen-iodine-competition
+- selenium-thyroid-conversion
+- thyroid-receptor-resistance
 - impaired-t4-to-t3-conversion
 - hpa-axis-dysregulation
 - autoimmune-molecular-mimicry
@@ -98,7 +101,7 @@ sources:
   quote: T4, T3, TSH, thyroid-binding globulin, autoimmune thyroiditis, stress-related
     thyroid dysfunction, iodine, selenium, zinc, and thyroid medication cautions are
     discussed.
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-06-18'
 updated_by: shivani

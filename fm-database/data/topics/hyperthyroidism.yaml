@@ -25,6 +25,7 @@ related_topics:
 - autoimmune-thyroiditis
 - hypothyroidism
 key_mechanisms:
+- tsh-receptor-stimulating-antibodies
 - thyroid-autoimmunity
 - hpt-axis-dysregulation
 coaching_scope_notes: Hyperthyroidism requires acute medical management and cannot
@@ -38,7 +39,7 @@ sources:
   location: 'Chapter 9: Functional Medicine Interventions'
   quote: Hyperthyroidism requires acute medical management and cannot be effectively
     treated through functional medicine approaches alone.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-18'
 updated_by: shivani

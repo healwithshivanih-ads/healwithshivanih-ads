@@ -25,6 +25,7 @@ related_topics:
 - coagulation-imbalance
 - endothelial-dysfunction
 key_mechanisms:
+- transsulfuration-pathway
 - methylation-cycle
 - ldl-oxidation-and-glycation
 - endothelial-dysfunction
@@ -48,7 +49,7 @@ sources:
 - id: vitaone-cvs-risk-assessment
   location: Functional Medicine Matrix (Slide 5)
   quote: Methylation defect (elevated homocysteine)
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

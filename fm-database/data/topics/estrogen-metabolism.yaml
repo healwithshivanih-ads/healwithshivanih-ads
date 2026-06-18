@@ -35,6 +35,7 @@ related_topics:
 - estrogen-dominance
 - gut-dysbiosis-estrogen
 key_mechanisms:
+- insulin-resistance-sex-hormone
 - hepatic-estrogen-metabolism
 - comt-methylation
 - cyp1a1-cyp1b1-hydroxylation
@@ -63,7 +64,7 @@ sources:
   quote: If the estrone is converting into 2-Hydroxy-Estrone, I don't need to be worried
     about it because it blocks stronger E2 that promotes cell proliferation and cancer
     growth. The 16-Alpha and the 4-Hydroxy-Estrone are the bad ones.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

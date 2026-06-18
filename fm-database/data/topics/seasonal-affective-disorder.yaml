@@ -22,6 +22,7 @@ related_topics:
 - bipolar-disorder
 - vitamin-d-deficiency
 key_mechanisms:
+- melanopsin-mood-light-axis
 - serotonin-melatonin-sleep-axis
 - circadian-rhythm-disruption
 - vitamin-d-deficiency
@@ -37,7 +38,7 @@ sources:
   quote: Seasonal affective disorder (SAD) — regularly occurring winter depression
     frequently associated with summer hypomania.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

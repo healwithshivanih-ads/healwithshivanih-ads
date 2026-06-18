@@ -15,6 +15,7 @@ summary: A neurophysiological model developed by Stephen Porges that frames the 
   HRV preceded bradycardic crashes. Useful for interpreting trauma responses, dysautonomia,
   POTS, and the apparent HRV-context mismatches seen in overtraining and burnout.
 key_mechanisms:
+- cholinergic-anti-inflammatory-vagal-reflex
 - vagal-tone-dysregulation
 - vagal-nerve-dysregulation
 common_symptoms:
@@ -31,7 +32,7 @@ sources:
     drop but their heart rate variability would go up. He said — you just rediscovered
     the vagal paradox that led me to develop polyvagal theory.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

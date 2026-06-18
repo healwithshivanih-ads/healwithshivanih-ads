@@ -16,6 +16,7 @@ summary: The HURT (Healing Unresolved Trauma) model frames adult chronic disease
   that autoimmunity is "undigested anger" — emotions, like food, must be digested
   or they accumulate as physiological residue.
 key_mechanisms:
+- perceptions-activate-cell-danger-response
 - hpa-axis-dysregulation
 - chronic-inflammation
 common_symptoms: []
@@ -33,7 +34,7 @@ sources:
     leads to post-traumatic growth; unwillingness keeps looping maladaptive memory
     processing.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

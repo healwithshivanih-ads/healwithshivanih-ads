@@ -17,7 +17,8 @@ summary: A clinical model developed by Dr Robert Melillo in which adult chronic 
   and lingering viral states. Recovery uses targeted unilateral sensory and motor
   stimulation to develop the under-active side while sometimes inhibiting the over-active
   side.
-key_mechanisms: []
+key_mechanisms:
+- right-insula-interoception
 common_symptoms: []
 related_topics:
 - retained-primitive-reflexes
@@ -32,7 +33,7 @@ sources:
     dominance — you get chronic infections, the kind of super-duper sensitive when
     they're sick.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

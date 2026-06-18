@@ -16,6 +16,7 @@ summary: 'Sperm quality encompasses traditional semen parameters (count, motilit
   tobacco, excessive alcohol, BPA, and phthalates; Mediterranean-pattern diet with
   omega-3 emphasis.'
 key_mechanisms:
+- testicular-thermoregulation-disruption
 - mitochondrial-dysfunction
 - chronic-oxidative-stress
 common_symptoms:
@@ -33,7 +34,7 @@ sources:
     a 4 times higher chance of conceiving and nearly a 5 times higher chance of a
     live birth.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-31
+updated_at: '2026-06-18'
 updated_by: Shivani

@@ -37,6 +37,9 @@ related_topics:
 - autoimmunity-leaky-gut-triad
 - peptic-ulcer-disease
 key_mechanisms:
+- h-pylori-b12-iron-malabsorption
+- h-pylori-biofilm-coccoid-treatment-resistance
+- histamine-mediated-gastric-acid-hypersecretion
 - mucosal-barrier-disruption
 - impaired-gastric-acid-production
 - h-pylori-urease-ammonia-production
@@ -60,7 +63,7 @@ sources:
   quote: 'H. pylori: 90% to 100% of patients with DUs, 70% with GUs, and 50% of people
     older than 50 years test positive for H. pylori. However, 80% of H. pylori–infected
     people never develop ulcers.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-21'
+updated_at: '2026-06-18'
 updated_by: shivani

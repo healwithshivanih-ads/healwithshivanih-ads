@@ -23,6 +23,8 @@ related_topics:
 - metabolic-syndrome
 - atherosclerosis
 key_mechanisms:
+- arterial-stiffness
+- heavy-metal-hypertensive-mechanism
 - raas-activation
 - endothelial-no-insufficiency
 - sodium-volume-retention
@@ -37,7 +39,7 @@ sources:
   location: General Considerations
   quote: More than 90% of cases are classified as essential hypertension—no discernible
     cause. Essential hypertension groups are based on level of renin.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani

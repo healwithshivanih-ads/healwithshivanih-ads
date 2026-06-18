@@ -21,6 +21,7 @@ related_topics:
 - cholesterol-and-hormone-synthesis
 - lifestyle-medicine-for-hyperlipidemia
 key_mechanisms:
+- relative-risk-inflation
 - mevalonate-pathway-inhibition
 - cholesterol-precursor-depletion
 - coq10-depletion
@@ -36,7 +37,7 @@ sources:
   location: Primary Prevention Meta-Analysis Section
   quote: They looked at 19 randomized control trials that were past 2005. So between 2005 and 2016. And what they found, they
     had a sample size of over 71,000 people. Adults greater than 40, no prior history of cardiovascular events.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

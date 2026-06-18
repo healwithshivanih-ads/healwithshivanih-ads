@@ -25,6 +25,7 @@ related_topics:
 - cardiometabolic-disease
 - insulin-resistance
 key_mechanisms:
+- epa-dha-cell-membrane-incorporation
 - omega-3-omega-6-imbalance
 - arachidonic-acid-cascade
 - resolvin-spm-production
@@ -43,7 +44,7 @@ sources:
   quote: EPA and DHA, are also abundantly found in cold water fish and algae, and
     are well known for their anti-inflammatory properties and roles in supporting
     brain, heart, and immune health.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

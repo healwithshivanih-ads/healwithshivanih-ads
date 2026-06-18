@@ -28,6 +28,8 @@ related_topics:
 - hypothyroidism
 - thyroid
 key_mechanisms:
+- myo-inositol-tsh-signaling
+- thyroid-conversion-impairment
 - impaired-t4-to-t3-conversion
 - reverse-t3-dominance
 - thyroid-autoimmunity
@@ -48,7 +50,7 @@ sources:
   quote: Natural treatment strategies for normalizing thyroid function vary depending
     on whether there is an autoimmune hypothyroid condition, clinical hypothyroidism,
     subclinical hypothyroidism, or hypothyroid syndrome.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani

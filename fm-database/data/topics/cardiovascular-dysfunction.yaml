@@ -34,6 +34,7 @@ related_topics:
 - atherosclerosis
 - beta-blocker-deprescribing
 key_mechanisms:
+- elevated-fibrinogen
 - atherosclerosis
 - systemic-inflammation
 - insulin-resistance
@@ -55,7 +56,7 @@ sources:
     several decades, and are rapidly catching up with this epidemic. The underlying pathology is atheromatous vascular disease,
     resulting in coronary artery disease (CAD), cerebrovascular disease, and peripheral vascular disease, and the subsequent
     development of heart failure and cardiac arrhythmias.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-06-18'
 updated_by: shivani

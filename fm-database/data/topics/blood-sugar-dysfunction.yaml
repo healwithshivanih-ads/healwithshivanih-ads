@@ -43,6 +43,9 @@ related_topics:
 - type-2-diabetes
 - prediabetes
 key_mechanisms:
+- gut-microbiome-glucose-regulation
+- resistant-starch-fermentation
+- vitamin-d-beta-cell-signaling
 - insulin-resistance
 - pancreatic-beta-cell-dysfunction
 - advanced-glycation-end-products
@@ -73,7 +76,7 @@ sources:
   location: POST https://www.instagram.com/p/DX1jE67jI4m/ and POST https://www.instagram.com/p/DX6sbxqDFJ5/
   quote: Insulin resistance is the primary driver in most metabolic diseases → TG:HDL
     ratio is an early marker of insulin resistance
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-06-18'
 updated_by: shivani

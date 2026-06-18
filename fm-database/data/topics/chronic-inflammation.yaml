@@ -69,6 +69,7 @@ related_topics:
 - nutrition-deficiency
 - chronic-stress
 key_mechanisms:
+- glycation-protein-modification
 - nf-kb-activation
 - leaky-gut
 - insulin-resistance
@@ -114,7 +115,7 @@ sources:
   location: Topics Covered
   quote: Emotional stress, loneliness, digital overstimulation, cytokines, neuroinflammation, and oxidative stress are described
     as inflammation drivers.
-version: 7
+version: 8
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-06-18'
 updated_by: shivani

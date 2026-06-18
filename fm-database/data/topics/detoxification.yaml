@@ -35,6 +35,8 @@ related_topics:
 - endocrine-disruption
 - estrobolome
 key_mechanisms:
+- antioxidant-buffering-of-phase-1-intermediates
+- slow-phase-1-cyp-activity
 - phase-1-biotransformation
 - phase-2-conjugation
 - phase-3-elimination
@@ -65,7 +67,7 @@ sources:
 - id: minich-detox-basics-fmca-transcript
   location: Introduction and Learning Objectives
   quote: detoxification basics for health coaches… toxin load and how to reduce it
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-06-18'
 updated_by: shivani

@@ -65,6 +65,7 @@ related_topics:
 - gut-microbiome-personalized-nutrition
 - elimination-diet
 key_mechanisms:
+- nitric-oxide-cranial-circulation
 - vagal-nerve-signaling
 - gut-derived-neurotransmitter-production
 - chronic-inflammation
@@ -108,7 +109,7 @@ sources:
   location: Why Emotional Healing Is Important in Chronic Diseases
   quote: Stress hormones alter microbiome diversity, ↑ intestinal permeability ('leaky
     gut').
-version: 7
+version: 8
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-06-18'
 updated_by: shivani

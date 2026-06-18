@@ -25,6 +25,8 @@ related_topics:
 - hpa-axis-dysregulation
 - gut-brain-axis
 key_mechanisms:
+- epigenetic-stress-response
+- oxytocin-deficiency
 - hpa-axis-dysregulation
 - limbic-system-overactivation
 - vagal-tone-reduction
@@ -37,7 +39,7 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients & Botanicals for Emotional Healing Support / Functional Wisdom
   quote: Every unprocessed emotion has a hormonal, inflammatory, and mitochondrial signature.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-06-18'
 updated_by: shivani

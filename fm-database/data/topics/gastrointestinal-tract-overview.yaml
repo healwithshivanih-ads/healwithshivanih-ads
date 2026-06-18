@@ -27,6 +27,7 @@ related_topics:
 - digestive-enzyme-function
 - liver-and-bile-digestion
 key_mechanisms:
+- liver-bile-emulsification
 - mechanical-mastication-and-enzyme-mixing
 - hcl-and-pepsin-protein-digestion
 - gut-microbiome-modulation
@@ -40,7 +41,7 @@ sources:
   location: Introduction
   quote: It's a hollow tube and anything that goes into our hollow tube is not part of you or me until it gets broken down
     to tiny substances, absorbed out of the gut and into the blood, then it becomes part of you and me.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

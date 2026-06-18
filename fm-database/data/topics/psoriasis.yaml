@@ -21,6 +21,7 @@ related_topics:
 - chronic-inflammation
 - autoimmunity-leaky-gut-triad
 key_mechanisms:
+- bowel-toxemia-skin-axis
 - th17-dominance
 - leaky-gut
 - hpa-axis-dysregulation
@@ -39,7 +40,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani
