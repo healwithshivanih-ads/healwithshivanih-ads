@@ -5,19 +5,16 @@
  * Server-rendered data flows in via props; client interactions live here.
  */
 import Link from "next/link";
-import { useState } from "react";
-import { SendPackageButton } from "@/components/client-widgets/send-package-button";
-import { LetterTypesToggle } from "@/components/client-widgets/letter-types-toggle";
 import { MessageTemplatesPanel } from "@/components/client-widgets/message-templates-panel";
 import { SendBookingLinkPanel } from "@/components/client-widgets/send-booking-link-panel";
 import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread-panel";
 import { FmPanel } from "@/components/fm";
 import { SendAppLinkButton } from "../send-app-link-button";
 import { VoiceNoteSender } from "../voice-note-sender";
-// GeneratedLettersPanel was mounted here briefly to surface the meal plan
-// inline with a chat. Removed 2026-05-15 — SendPackageButton already
-// renders a preview + the same discuss→finalise refinement chat per
-// letter type. Single edit surface, no duplication.
+// Letter generation lives in the welcome-letter hero panel above
+// (NewCommunicatePanel → LetterGenerateTrigger, consolidated only).
+// This panel is now purely the comms surfaces: app link, voice note,
+// booking link, message templates, email, contact, WhatsApp thread.
 
 export interface CommunicateClientProps {
   clientId: string;
@@ -26,12 +23,6 @@ export interface CommunicateClientProps {
   clientPhone?: string;
   activePlan: { slug: string; status: string } | null;
   whatsappConfigured: boolean;
-  activeLetterTypes?: string[];
-  /** When true, suppresses the "📤 Client letters" panel + LetterTypesToggle
-   *  + SendPackageButton. Used when the parent renders the new layout
-   *  above for letter generation/sending and only wants the booking,
-   *  message-templates, email, contact, and WhatsApp thread panels. */
-  hideLetters?: boolean;
   /** stable client app token — renders the 📲 share-the-app panel here
    *  (moved from the Plan tab 2026-06-12: sharing is communication) */
   appToken?: string | null;
@@ -44,102 +35,15 @@ export function CommunicateClient({
   clientPhone,
   activePlan,
   whatsappConfigured,
-  activeLetterTypes,
-  hideLetters = false,
   appToken = null,
 }: CommunicateClientProps) {
   const firstName = displayName.split(" ")[0];
   const isPublished = activePlan?.status === "published";
-  // Live letter-types list — seeded from server prop, mutated by the
-  // inline LetterTypesToggle. Lifting the state here means SendPackageButton
-  // re-filters its checkbox grid the moment the coach toggles a chip;
-  // no page refresh required.
-  const seedLetterTypes =
-    activeLetterTypes && activeLetterTypes.length > 0
-      ? activeLetterTypes
-      : ["consolidated"];
-  const [liveLetterTypes, setLiveLetterTypes] = useState<string[]>(seedLetterTypes);
 
   return (
     <div className="fm-v2-2col tight">
       {/* LEFT — main comms surfaces */}
       <div style={{ minWidth: 0, display: "grid", gap: 16 }}>
-        {/* Letters package — suppressed when the new Communicate
-            layout above is handling letter generation/sending. */}
-        {!hideLetters && (
-        <FmPanel
-          title="📤 Client letters"
-          subtitle={
-            isPublished
-              ? "Generate, edit and download / email. Brand-templated."
-              : activePlan
-                ? `Plan is ${activePlan.status.replace(/_/g, " ")} — activate to unlock letters.`
-                : "No active plan yet."
-          }
-          rightSlot={
-            activePlan && (
-              <Link
-                href={`/clients-v2/${clientId}/plan`}
-                style={{
-                  fontSize: 11,
-                  color: "var(--fm-text-secondary)",
-                  textDecoration: "underline",
-                }}
-              >
-                ↗ Plan tab
-              </Link>
-            )
-          }
-        >
-          {isPublished && activePlan ? (
-            <>
-              <LetterTypesToggle
-                clientId={clientId}
-                initial={liveLetterTypes}
-                onChange={setLiveLetterTypes}
-              />
-              <SendPackageButton
-                key={liveLetterTypes.join(",")}
-                planSlug={activePlan.slug}
-                clientId={clientId}
-                clientEmail={clientEmail}
-                clientName={displayName}
-                activeLetterTypes={liveLetterTypes}
-              />
-            </>
-          ) : (
-            <div
-              style={{
-                fontSize: 12,
-                color: "var(--fm-text-tertiary)",
-                padding: "10px 14px",
-                background: "var(--fm-bg-warm)",
-                border: "1px dashed rgba(255, 107, 53, 0.4)",
-                borderRadius: "var(--fm-radius-sm)",
-              }}
-            >
-              {activePlan ? (
-                <>
-                  Plan <strong>{activePlan.slug}</strong> is{" "}
-                  <strong>{activePlan.status.replace(/_/g, " ")}</strong>. Activate
-                  on the Plan tab to lock the version + catalogue snapshot, then
-                  letters become available here.
-                </>
-              ) : (
-                <>
-                  No plan to send. Start a Full Assessment to draft one.
-                </>
-              )}
-            </div>
-          )}
-        </FmPanel>
-        )}
-
-        {/* Inline meal-plan viewer + chat USED to live here. Removed —
-            SendPackageButton above already shows each saved letter with
-            👁 Preview + the discuss→finalise chat inside the preview pane.
-            One edit surface, one source of truth. */}
-
         {/* 📲 Share the client app — moved here from the Plan tab
             (2026-06-12): sharing is communication; Plan edits content. */}
         {isPublished && (

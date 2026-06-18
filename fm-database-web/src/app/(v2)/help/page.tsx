@@ -32,8 +32,8 @@ const WORKFLOW = [
     body: "Plan tab → Edit → Activate. Plan-check runs deterministic + AI sanity checks first.",
   },
   {
-    title: "5 · Send client letters",
-    body: "Plan tab → Send package. Pick which letters (meal plan / supplement guide / lifestyle / consolidated). Edit before sending.",
+    title: "5 · Send the welcome letter",
+    body: "Communicate tab → generate + send the welcome letter (the one worded letter). Everything else — menus, supplement schedule, lifestyle, recipes — lives in the client's app, driven by the published plan.",
   },
   {
     title: "6 · Check in weekly",

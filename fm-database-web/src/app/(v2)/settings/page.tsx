@@ -170,7 +170,7 @@ export default async function SettingsPage() {
               }
             />
             <FmInfoRow
-              label="Gmail SMTP (client letters)"
+              label="Gmail SMTP (welcome letter email)"
               value={
                 <span>
                   

@@ -212,7 +212,7 @@ function deriveStage(
       stage: "draft",
       title: `Plan in ${status.replace(/_/g, " ")}`,
       detail:
-        "Activate below to publish + send letters. Open the editor first if you want to tweak any sections.",
+        "Activate below to publish the plan + send the welcome letter. Open the editor first if you want to tweak any sections.",
       cta: "Open editor",
       ctaHref: `/clients-v2/${clientId}/plan/edit/${activePlan.slug}`,
     };
@@ -245,8 +245,8 @@ function deriveStage(
       title: `Plan active — ${activePlan.slug}`,
       detail: recheckDate
         ? `Next follow-up ${recheckDate}.`
-        : "Letters can go out now.",
-      cta: "Generate letters",
+        : "Welcome letter can go out now.",
+      cta: "Send welcome letter",
       ctaHref: `/clients-v2/${clientId}/communicate`,
     };
   }
@@ -1012,7 +1012,7 @@ export default async function PlanTabPage({
               <ActionLink
                 href={`/clients-v2/${id}/communicate`}
                 icon="📤"
-                label="Send letter / message"
+                label="Welcome letter / message"
               />
               <ActionLink
                 href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
@@ -1564,7 +1564,7 @@ export default async function PlanTabPage({
                   icon="📤"
                   label={
                     isPublished
-                      ? "Send letter / message"
+                      ? "Welcome letter / message"
                       : "Communicate (locks at publish)"
                   }
                 />

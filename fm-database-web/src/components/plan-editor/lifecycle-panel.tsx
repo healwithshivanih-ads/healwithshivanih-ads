@@ -30,7 +30,6 @@ import {
 } from "@/lib/server-actions/plan-lifecycle";
 import type { SectionDiff } from "@/lib/fmdb/plan-version-compare";
 import { PlanVersionDiffView } from "@/components/plan-editor/plan-version-diff-view";
-import { ClientLetterButton } from "@/components/client-widgets/client-letter-button";
 import { saveAsTemplateAction } from "@/lib/server-actions/plans";
 import type { PlanStatus } from "@/lib/fmdb/types";
 
@@ -691,15 +690,6 @@ export function LifecyclePanel({
               )}
             </div>
 
-            {/* AI meal plan — full 4-type selector */}
-            <div className="space-y-2 rounded-md border border-emerald-200 bg-emerald-50/40 p-3">
-              <div className="text-xs font-medium text-emerald-800">❤️ Generate client documents</div>
-              <p className="text-[11px] text-muted-foreground">
-                Meal plan, supplement guide, coaching plan, or all-in-one. Uses the client&apos;s
-                dietary preferences and plan data. Saves to disk — revisit any time.
-              </p>
-              <ClientLetterButton planSlug={slug} clientId={clientId ?? ""} />
-            </div>
           </>
         )}
 

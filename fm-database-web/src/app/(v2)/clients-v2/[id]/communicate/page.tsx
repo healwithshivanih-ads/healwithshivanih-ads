@@ -177,9 +177,6 @@ export default async function CommunicateTabPage({
       : typeof c.mobile === "string" && c.mobile
         ? (c.mobile as string)
         : undefined;
-  const activeLetterTypes = Array.isArray(c.letter_types_active)
-    ? (c.letter_types_active as string[]).filter((x) => typeof x === "string")
-    : undefined;
 
   // ── Vacation-letter intent ────────────────────────────────────────
   // Coach saved a travel override AND letters already exist, so the
@@ -375,8 +372,6 @@ export default async function CommunicateTabPage({
           clientPhone={clientPhone}
           activePlan={activePlanInfo}
           whatsappConfigured={whatsappConfig.configured}
-          activeLetterTypes={activeLetterTypes}
-          hideLetters
           appToken={
             ((client as unknown as { app_token?: string }).app_token as string | undefined) ?? null
           }

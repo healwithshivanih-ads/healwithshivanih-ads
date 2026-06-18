@@ -172,7 +172,7 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     accent: "rgba(26, 127, 187, 0.10)",
     border: "rgba(26, 127, 187, 0.38)",
     badgeColor: "#1a7fbb",
-    cta: "✉️ Generate letter",
+    cta: "✉️ Send welcome letter",
     ctaHref: (r) => `/clients-v2/${r.client_id}/communicate`,
   },
   plan_review_due: {
