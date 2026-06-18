@@ -50,6 +50,7 @@ import {
   FmChip,
   FmCatalogueCommitBanner,
   FmCatalogueOrphanChip,
+  FmRecipeImageChip,
   FmInboundMessagesBanner,
   FmIntakeActivityBanner,
   FmStrandedIntakeBanner,
@@ -1427,6 +1428,11 @@ export default async function DashboardV2() {
               when every entity is reachable. Surfaces orphans like the
               beta-glucuronidase gap before they strand silently. */}
           <FmCatalogueOrphanChip />
+
+          {/* Recipe-image coverage guardrail — self-loading, hides when every
+              recipe has a photo. Flags recipes that would show a plain tile in
+              the client app so new images get sourced periodically. */}
+          <FmRecipeImageChip />
         </FmAlertGroup>
       </div>
 
