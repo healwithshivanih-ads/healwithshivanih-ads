@@ -8,7 +8,10 @@ coaching_translation: Even if a food label says 0g trans fat, it may still conta
   small amounts. Check the ingredient list for 'partially hydrogenated' oils to be
   sure.
 caveats: []
-linked_to_topics: []
+linked_to_topics:
+- cardiovascular-health
+- dyslipidemia
+
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
@@ -18,7 +21,7 @@ sources:
   quote: Because of their negative effect on heart health, avoid trans fats. A food
     label can list the trans fat content as zero if amount contained in one serving
     is less than 0.5 grams.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-18'
 updated_by: shivani

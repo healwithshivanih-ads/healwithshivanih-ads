@@ -22,7 +22,7 @@ caveats:
 - White-coat hypertension may not need any intervention
 - Sodium reduction less effective in non-salt-sensitive patients (~50% of population)
 linked_to_topics:
-- high-blood-pressure
+- essential-hypertension
 linked_to_supplements: []
 sources:
 - id: murray-pizzorno-2012-encyclopedia
@@ -30,7 +30,7 @@ sources:
   quote: Borderline to mild hypertension can be treated with nondrug therapies. Achieve
     and maintain ideal body weight. Substantially decrease salt intake. Follow a high-potassium
     diet rich in fiber and consistent with either the Mediterranean or the DASH Diet.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani

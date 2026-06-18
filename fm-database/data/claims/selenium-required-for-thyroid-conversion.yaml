@@ -18,7 +18,9 @@ caveats:
   thyroid function is mechanistically plausible but not firmly established in clinical
   trials.
 - Source is a lecture transcript.
-linked_to_topics: []
+linked_to_topics:
+- thyroid
+
 linked_to_supplements:
 - brazil-nuts-selenium
 linked_to_mechanisms: []
@@ -28,7 +30,7 @@ sources:
   quote: The thyroid uses selenium to convert iodine into thyroxine. So if selenium
     levels are low, you're not going to be able to convert your iodine into thyroxine.
     And mercury fillings have an affinity for selenium.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani

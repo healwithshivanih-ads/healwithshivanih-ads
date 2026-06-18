@@ -17,7 +17,9 @@ description: Cluster of urinary symptoms common with prostate enlargement (BPH) 
   incomplete emptying. Typically begins in 40s–50s, accelerates with age. Worth
   ruling out prostatitis and screening for prostate cancer in the appropriate
   context.
+linked_to_topics:
+- benign-prostatic-hyperplasia
 status: active
-version: 1
-updated_at: '2026-05-09'
+version: 2
+updated_at: '2026-06-18'
 updated_by: shivani

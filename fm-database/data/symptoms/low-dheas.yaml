@@ -5,7 +5,9 @@ category: other
 severity: common
 description: Surfaced from MindMap 'adrenal-fatigue' under branch 'Blood Biomarkers
   High Cortisol' (depth 2).
+linked_to_topics:
+- adrenal-fatigue
 status: active
-version: 1
-updated_at: '2026-05-18'
+version: 2
+updated_at: '2026-06-18'
 updated_by: Shivani

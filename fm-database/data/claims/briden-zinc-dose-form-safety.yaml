@@ -13,7 +13,9 @@ out_of_scope_notes: ''
 caveats:
 - Take with food to avoid nausea.
 - Doses >80 mg/day for >3 months can cause copper deficiency anaemia.
-linked_to_topics: []
+linked_to_topics:
+- zinc-nutrition
+
 linked_to_mechanisms: []
 linked_to_supplements:
 - zinc
@@ -24,7 +26,7 @@ sources:
   quote: A safe and effective dose is 30 mg per day, and the best types are zinc citrate,
     zinc picolinate, or zinc bisgylcinate. Ongoing doses of greater than 80 mg can
     deplete copper.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-31'
+updated_at: '2026-06-18'
 updated_by: Shivani

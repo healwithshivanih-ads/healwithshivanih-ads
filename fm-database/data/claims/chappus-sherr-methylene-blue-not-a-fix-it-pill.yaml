@@ -9,15 +9,15 @@ statement: Methylene blue is mitochondrial SUPPORT, not a permanent fix. If clie
   dependence.
 evidence_tier: plausible_emerging
 linked_to_topics:
-- mitochondrial-dysfunction
+- mitochondrial-health-nutrients
 sources:
 - id: sherr-chappus-94pct-mitochondrial-2026
   location: Podcast — dependence + framework segment
   quote: You can only become dependent on methylene blue if you're not doing anything
     else to optimize your health.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Use to manage client expectations — methylene blue is a bridge, not the
   destination. Frame it as helping right now while we do the harder upstream work.

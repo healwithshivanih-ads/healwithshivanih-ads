@@ -17,7 +17,9 @@ severity: concerning
 description: Disproportionate worsening of fatigue and symptoms 12–72 hours after
   minimal physical or cognitive exertion. Hallmark of ME/CFS and long-COVID.
 when_to_refer: ''
-linked_to_topics: []
+linked_to_topics:
+- chronic-fatigue-syndrome
+
 linked_to_mechanisms: []
 notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out
   before clinical use.
@@ -32,7 +34,7 @@ sources:
 - id: espeland-2022-cold-water-immersion
   location: Pain and Inflammation
   quote: CWI is used as a recovery tool in sports medicine.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-06-18'
 updated_by: shivani

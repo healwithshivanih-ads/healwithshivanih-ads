@@ -25,7 +25,7 @@ caveats:
 - Hawthorn potentiates digoxin (cardiac glycosides) — clinician supervision
 - 6-12 weeks for full effect
 linked_to_topics:
-- high-blood-pressure
+- essential-hypertension
 linked_to_supplements:
 - olive-leaf-extract
 - hibiscus
@@ -39,7 +39,7 @@ sources:
     extract (500 mg twice per day) or the conventional antihypertensive drug captopril
     (12.5 mg twice per day). Hibiscus extract decreased systolic blood pressure by
     17.14 mm Hg and diastolic by 11.97 mm Hg.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani

@@ -8,7 +8,7 @@ statement: Methylene blue is a redox cycler — its oxidised form (blue) accepts
   stain-remover for methylene blue spills on surfaces and fabrics.
 evidence_tier: plausible_emerging
 linked_to_topics:
-- mitochondrial-dysfunction
+- mitochondrial-health-nutrients
 linked_to_supplements:
 - vitamin-c
 sources:
@@ -16,9 +16,9 @@ sources:
   location: Podcast — vitamin C interaction + blue bottle experiment segment
   quote: Vitamin C donates electrons to methylene blue, changing it from blue to colourless.
     Don't take antioxidants at the same time as methylene blue.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Critical timing rule for any client on methylene blue stack — separate
   from vitamin C, glutathione, NAC, and most antioxidants by at least 2 hours.

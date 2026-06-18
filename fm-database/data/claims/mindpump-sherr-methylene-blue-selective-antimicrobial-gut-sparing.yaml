@@ -13,7 +13,9 @@ rationale: Gut-sparing antimicrobial framing is a distinct angle from EB-Sherr c
   relevant for India context (heavy antibiotic prescribing) and for FM coaches managing
   SIBO/dysbiosis clients.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- mitochondrial-health-nutrients
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -22,7 +24,7 @@ sources:
   quote: Methylene blue is more selective than that. If you take amoxicillin or augmentin,
     these are nuclear bombs to your gut. What methylene blue does, it really does
     have a more selective capacity.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

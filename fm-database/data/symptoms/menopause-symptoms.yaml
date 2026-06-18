@@ -10,7 +10,9 @@ severity: common
 description: Symptoms after 12+ months without menstruation — vasomotor symptoms,
   vaginal/urogenital changes, sleep disruption, mood and cognitive changes, weight
   gain around middle, hair thinning, joint stiffness.
+linked_to_topics:
+- menopause
 status: active
-version: 1
-updated_at: '2026-05-09'
+version: 2
+updated_at: '2026-06-18'
 updated_by: shivani

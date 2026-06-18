@@ -6,13 +6,15 @@ category: mood
 severity: common
 description: Deliberate avoidance of triggers, places, or activities — common in anxiety, panic, PTSD.
 when_to_refer: ''
-linked_to_topics: []
+linked_to_topics:
+- anxiety
+
 linked_to_mechanisms: []
 notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-06-18'
 updated_by: shivani

@@ -9,15 +9,15 @@ statement: Methylene blue oral bioavailability is unusually close to IV. Subling
   risk from accumulation.
 evidence_tier: plausible_emerging
 linked_to_topics:
-- mitochondrial-dysfunction
+- mitochondrial-health-nutrients
 sources:
 - id: sherr-chappus-94pct-mitochondrial-2026
   location: Podcast — bioavailability + dosing schedule + cycling segments
   quote: Half-life is 4-6 hours. Above 50-70 mg I make sure they take at least one
     day off per week; above 70 mg, two days off.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Use this as the schedule template for any client starting methylene blue
   — morning + early afternoon, plus weekly cycling above 30 mg/day.

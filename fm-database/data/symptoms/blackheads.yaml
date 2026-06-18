@@ -5,13 +5,15 @@ category: skin
 severity: common
 description: Open comedones — small darkened plugs in pore openings, where trapped sebum oxidizes on contact with air.
 when_to_refer: ''
-linked_to_topics: []
+linked_to_topics:
+- acne-vulgaris
+
 linked_to_mechanisms: []
 notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-06-18'
 updated_by: shivani

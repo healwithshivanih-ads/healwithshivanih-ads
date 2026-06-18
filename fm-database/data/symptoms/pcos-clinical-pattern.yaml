@@ -5,7 +5,9 @@ category: other
 severity: common
 description: Surfaced from MindMap 'blood-sugar-insulin-resistance' under branch 'Metabolic
   Symptoms' (depth 2).
+linked_to_topics:
+- pcos
 status: active
-version: 1
-updated_at: '2026-05-18'
+version: 2
+updated_at: '2026-06-18'
 updated_by: Shivani

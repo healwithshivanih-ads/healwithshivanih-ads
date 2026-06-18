@@ -15,7 +15,10 @@ out_of_scope_notes: ''
 caveats:
 - Separate from levothyroxine by 4 hours.
 - Reduce or avoid with stage 4-5 kidney disease, sarcoidosis, or hyperparathyroidism.
-linked_to_topics: []
+linked_to_topics:
+- magnesium-nutrition
+- perimenopause
+
 linked_to_mechanisms: []
 linked_to_supplements:
 - magnesium-glycinate
@@ -25,7 +28,7 @@ sources:
   location: Blog post — Best type and dose section
   quote: Opt for magnesium glycinate, bisglycinate, or threonate. The recommended
     dose is 300–400 mg of elemental magnesium daily.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-31'
+updated_at: '2026-06-18'
 updated_by: Shivani

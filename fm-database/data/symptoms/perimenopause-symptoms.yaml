@@ -12,7 +12,9 @@ severity: common
 description: Cluster of symptoms in the years before menopause — irregular cycles,
   hot flashes, sleep disruption, mood changes, weight redistribution, anxiety, brain
   fog. Often the most symptomatic phase of the female hormonal life cycle.
+linked_to_topics:
+- perimenopause
 status: active
-version: 1
-updated_at: '2026-05-09'
+version: 2
+updated_at: '2026-06-18'
 updated_by: shivani

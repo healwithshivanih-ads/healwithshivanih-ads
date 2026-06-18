@@ -12,7 +12,9 @@ rationale: Specific clinical UTI/biofilm use case from this episode; not in the 
   4 EB-Sherr claims. Flagged confirm_with_clinician because antimicrobial dosing is
   well outside coaching scope.
 evidence_tier: confirm_with_clinician
-linked_to_topics: []
+linked_to_topics:
+- mitochondrial-health-nutrients
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -20,7 +22,7 @@ sources:
   location: Podcast — UTI and bladder concentration segment
   quote: Methylene blue makes your urine blue, concentrates in the bladder. It breaks
     up biofilms. It's an antimicrobial at high doses.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

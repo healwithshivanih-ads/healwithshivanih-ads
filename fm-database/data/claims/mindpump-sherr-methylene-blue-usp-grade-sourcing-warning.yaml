@@ -13,7 +13,9 @@ rationale: Sourcing/quality-control angle is critical for India context where Am
   is the default supplement channel; specific failure modes (label USP without real
   USP, liquid drop potency drift, aquarium-grade contamination) are actionable.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- mitochondrial-health-nutrients
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -23,7 +25,7 @@ sources:
     in a lab and it could be contaminated with heavy metals like lead, mercury, cadmium,
     and arsenic. The liquids out there are probably the worst offenders because their
     potency is nowhere near what it says on the label.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani
