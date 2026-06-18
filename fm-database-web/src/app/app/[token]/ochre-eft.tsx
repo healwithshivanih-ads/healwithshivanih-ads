@@ -11,7 +11,7 @@
    ====================================================================== */
 
 import { useEffect, useRef, useState } from "react";
-import type { AppEft } from "@/lib/fmdb/client-app";
+import type { AppEft, AppEftTheme } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
 
 // Per-step dwell time. The karate-chop setup needs longer (say the full setup
@@ -169,19 +169,40 @@ function Suds({ value, onPick }: { value: number | null; onPick: (n: number) => 
   );
 }
 
-type Status = "intro" | "running" | "paused" | "done";
+type Status = "pick" | "intro" | "running" | "paused" | "done";
 
 export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose: () => void; onComplete?: () => void }) {
+  // A client can have several issues to tap on (cravings + sleep + anxiety…).
+  // `active` is the one being tapped right now; the whole session reads its
+  // script. Fall back to the flat primary fields for any older data that
+  // predates the themes[] array.
+  const themes: AppEftTheme[] =
+    eft.themes && eft.themes.length
+      ? eft.themes
+      : [
+          {
+            theme: eft.theme,
+            themeLabel: eft.themeLabel,
+            setup: eft.setup,
+            points: eft.points,
+            sudsBeforeQ: eft.sudsBeforeQ,
+            sudsAfterQ: eft.sudsAfterQ,
+            why: eft.why,
+          },
+        ];
+  const multi = themes.length > 1;
+  const [active, setActive] = useState<AppEftTheme>(themes[0]);
+
   const steps: Array<{ kind: "setup" } | { kind: "point"; idx: number } | { kind: "breath" }> = [
     { kind: "setup" },
-    ...eft.points.map((_, i) => ({ kind: "point" as const, idx: i })),
+    ...active.points.map((_, i) => ({ kind: "point" as const, idx: i })),
     { kind: "breath" },
   ];
   const secsForStep = (s: (typeof steps)[number]) =>
     s.kind === "setup" ? SETUP_SECS : s.kind === "breath" ? BREATH_SECS : POINT_SECS;
 
   const token = useOchre().token;
-  const [status, setStatus] = useState<Status>("intro");
+  const [status, setStatus] = useState<Status>(multi ? "pick" : "intro");
   const [sudsBefore, setSudsBefore] = useState<number | null>(null);
   const [sudsAfter, setSudsAfter] = useState<number | null>(null);
   const idxRef = useRef(0);
@@ -197,8 +218,10 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
   const doneRef = useRef(false);
   const sudsBeforeRef = useRef<number | null>(null);
   const sudsAfterRef = useRef<number | null>(null);
+  const activeRef = useRef<AppEftTheme>(active);
   sudsBeforeRef.current = sudsBefore;
   sudsAfterRef.current = sudsAfter;
+  activeRef.current = active;
   doneRef.current = status === "done";
   const logRound = () => {
     if (loggedRef.current || !token) return;
@@ -212,8 +235,8 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
           token,
           kind: "eft",
           practice_id: eft.practiceId,
-          name: eft.themeLabel,
-          theme: eft.theme,
+          name: activeRef.current.themeLabel,
+          theme: activeRef.current.theme,
           suds_before: sudsBeforeRef.current,
           suds_after: sudsAfterRef.current,
         }),
@@ -277,18 +300,34 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
     setStatus("running");
   };
 
+  // Re-open the issue picker (multi-issue clients) — fresh round, fresh ratings.
+  const goPick = () => {
+    idxRef.current = 0;
+    setSudsBefore(null);
+    setSudsAfter(null);
+    setStatus("pick");
+  };
+
+  const pickTheme = (t: AppEftTheme) => {
+    setActive(t);
+    idxRef.current = 0;
+    setSudsBefore(null);
+    setSudsAfter(null);
+    setStatus("intro");
+  };
+
   const step = steps[idxRef.current];
   const isSetup = step.kind === "setup";
   const isBreath = step.kind === "breath";
-  const pointKey = step.kind === "point" ? eft.points[step.idx]?.key : "";
-  const active = (status === "running" || status === "paused") && step.kind === "point" ? step.idx : -1;
-  const label = isSetup ? "Setup · tap the side of your hand" : isBreath ? "Take a slow breath" : eft.points[step.idx].label;
+  const pointKey = step.kind === "point" ? active.points[step.idx]?.key : "";
+  const activePt = (status === "running" || status === "paused") && step.kind === "point" ? step.idx : -1;
+  const label = isSetup ? "Setup · tap the side of your hand" : isBreath ? "Take a slow breath" : active.points[step.idx].label;
   const phrase = isSetup
-    ? eft.setup
+    ? active.setup
     : isBreath
       ? "Breathe in slowly… and let it all the way out. Let your shoulders drop."
-      : eft.points[step.idx].phrase;
-  const prog = isSetup ? "Setup" : isBreath ? "Closing breath" : `Point ${step.idx + 1} of ${eft.points.length}`;
+      : active.points[step.idx].phrase;
+  const prog = isSetup ? "Setup" : isBreath ? "Closing breath" : `Point ${step.idx + 1} of ${active.points.length}`;
   const curSecs = secsForStep(step);
   const barPct = Math.round(((curSecs - countRef.current) / curSecs) * 100);
   const drop = sudsBefore != null && sudsAfter != null ? sudsBefore - sudsAfter : null;
@@ -302,8 +341,41 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
       </button>
 
       <div style={{ textAlign: "center", padding: "4px 18px 0" }}>
-        <div style={{ fontSize: 12, letterSpacing: ".5px", textTransform: "uppercase", color: "#9a8c79" }}>Tapping · {eft.themeLabel}</div>
+        <div style={{ fontSize: 12, letterSpacing: ".5px", textTransform: "uppercase", color: "#9a8c79" }}>
+          {status === "pick" ? "Tapping" : `Tapping · ${active.themeLabel}`}
+        </div>
       </div>
+
+      {status === "pick" && (
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "0 22px 30px", textAlign: "center" }}>
+          <Figure active={-1} />
+          <p style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.5, color: INK, margin: "14px auto 0", maxWidth: 300 }}>
+            What would help most right now?
+          </p>
+          <p style={{ fontSize: 13, color: MUTED, margin: "6px auto 0", maxWidth: 300 }}>
+            Pick one to tap on — you can come back for another anytime.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", maxWidth: 320, marginTop: 20 }}>
+            {themes.map((t) => (
+              <button
+                key={t.theme}
+                onClick={() => pickTheme(t)}
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10,
+                  padding: "14px 18px", borderRadius: 16, background: "#fff", border: "1px solid #e3d4cf",
+                  cursor: "pointer", textAlign: "left",
+                }}
+              >
+                <span style={{ minWidth: 0 }}>
+                  <span style={{ display: "block", fontSize: 15, fontWeight: 600, color: INK }}>{t.themeLabel}</span>
+                  <span style={{ display: "block", fontSize: 12, color: MUTED, marginTop: 2, lineHeight: 1.4 }}>{t.why}</span>
+                </span>
+                <Icon name="heart" size={16} style={{ color: "#b06b6b", flexShrink: 0 }} />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {status === "intro" && (
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "0 22px 30px", textAlign: "center" }}>
@@ -313,13 +385,18 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
           </p>
           {eft.suds && (
             <>
-              <p style={{ fontSize: 13.5, color: MUTED, margin: "16px 0 0" }}>{eft.sudsBeforeQ}</p>
+              <p style={{ fontSize: 13.5, color: MUTED, margin: "16px 0 0" }}>{active.sudsBeforeQ}</p>
               <Suds value={sudsBefore} onPick={setSudsBefore} />
             </>
           )}
           <button onClick={begin} style={{ marginTop: 22, padding: "13px 30px", borderRadius: 999, background: OCHRE, color: "#fff", border: "none", fontSize: 15, fontWeight: 500, cursor: "pointer" }}>
             Begin
           </button>
+          {multi && (
+            <button onClick={goPick} style={{ marginTop: 12, background: "none", border: "none", color: MUTED, fontSize: 13, cursor: "pointer" }}>
+              ‹ Tap on something else
+            </button>
+          )}
         </div>
       )}
 
@@ -331,7 +408,7 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
               ? <BreathOrb />
               : pointKey === "under_arm"
                 ? <UnderArmFigure />
-                : <Figure active={active} />}
+                : <Figure active={activePt} />}
           <div style={{ fontSize: 12.5, color: "#a99b87", marginTop: 8 }}>{prog}</div>
           <div style={{ fontSize: 16, fontWeight: 500, color: INK, marginTop: 2 }}>{label}</div>
           <p style={{ fontSize: 18, lineHeight: 1.5, color: "#52463a", margin: "10px auto 0", maxWidth: 300, textAlign: "center", fontStyle: "italic", minHeight: 56 }}>
@@ -369,7 +446,7 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
           </p>
           {eft.suds && (
             <>
-              <p style={{ fontSize: 13.5, color: MUTED, margin: "18px 0 0" }}>{eft.sudsAfterQ}</p>
+              <p style={{ fontSize: 13.5, color: MUTED, margin: "18px 0 0" }}>{active.sudsAfterQ}</p>
               <Suds value={sudsAfter} onPick={setSudsAfter} />
               {drop != null && drop > 0 && (
                 <div style={{ marginTop: 14, fontSize: 14, color: "var(--forest-deep, #3a4d41)", background: "rgba(174,192,166,0.3)", borderRadius: 12, padding: "8px 14px" }}>
@@ -378,10 +455,15 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
               )}
             </>
           )}
-          <div style={{ display: "flex", gap: 10, marginTop: 22 }}>
+          <div style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap", justifyContent: "center" }}>
             <button onClick={() => { logRound(); begin(); }} style={{ padding: "12px 22px", borderRadius: 999, background: OCHRE, color: "#fff", border: "none", fontSize: 14, fontWeight: 500, cursor: "pointer" }}>
               Again
             </button>
+            {multi && (
+              <button onClick={() => { logRound(); goPick(); }} style={{ padding: "12px 22px", borderRadius: 999, background: "transparent", color: "#8a4f50", border: "1px solid #e3c8c5", fontSize: 14, cursor: "pointer" }}>
+                Tap on something else
+              </button>
+            )}
             <button onClick={() => { logRound(); onClose(); }} style={{ padding: "12px 22px", borderRadius: 999, background: "transparent", color: "#52463a", border: "1px solid #d7cdba", fontSize: 14, cursor: "pointer" }}>
               Done
             </button>
@@ -397,9 +479,18 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
    present consistently — but in the brand's rose, with a softly throbbing
    "tapping" dot instead of the breathing orb. */
 export function EftLaunchCard({ eft, onStart }: { eft: AppEft; onStart: () => void }) {
-  // "EFT Tapping for Sleep / Stress / Anxiety / Cravings" — the theme is derived
-  // from the client's own conditions, so the title reads as customised to them.
-  const forX = eft.theme ? eft.theme.charAt(0).toUpperCase() + eft.theme.slice(1) : "Calm";
+  // Single issue → "EFT Tapping for Cravings" (reads as customised to them).
+  // Multiple issues → "EFT Tapping" + the list of what they can tap on, so the
+  // client knows the practice covers more than one thing.
+  const keys = eft.themes && eft.themes.length ? eft.themes.map((t) => t.theme) : [eft.theme];
+  const multi = keys.length > 1;
+  const cap = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : "Calm");
+  const list =
+    keys.length <= 1
+      ? ""
+      : keys.length === 2
+        ? `${keys[0]} & ${keys[1]}`
+        : `${keys.slice(0, -1).join(", ")} & ${keys[keys.length - 1]}`;
   return (
     <button className="eft-launch" onClick={onStart}>
       <span className="eftl-orb" aria-hidden="true">
@@ -407,8 +498,8 @@ export function EftLaunchCard({ eft, onStart }: { eft: AppEft; onStart: () => vo
       </span>
       <span className="eftl-body">
         <span className="eftl-kicker">Guided · paced for you</span>
-        <span className="eftl-title">EFT Tapping for {forX}</span>
-        <span className="eftl-meta">{eft.when} · about 2 minutes</span>
+        <span className="eftl-title">{multi ? "EFT Tapping" : `EFT Tapping for ${cap(eft.theme)}`}</span>
+        <span className="eftl-meta">{multi ? `For ${list} · about 2 minutes` : `${eft.when} · about 2 minutes`}</span>
       </span>
       <span className="eftl-go">
         <Icon name="heart" size={15} /> Start

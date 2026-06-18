@@ -48,6 +48,7 @@ import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
 import { MindbodyDripPanel } from "./mindbody-drip-panel";
+import { loadMindbodyDrip } from "@/lib/fmdb/mindbody-status";
 import { SupplementCheckWidget } from "@/components/client-widgets/supplement-check-widget";
 import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
 import { WeightProgressPanel } from "@/components/client-widgets/weight-progress-panel";
@@ -632,6 +633,25 @@ export default async function ClientV2Page({
   );
   const mindbodySleep =
     (((client as unknown as { mindbody_sleep?: string }).mindbody_sleep as "auto" | "unlocked" | "locked") || "auto");
+  // Breathing anchors the journey (always available) and is the gate the first
+  // graduated technique waits on — show it so the coach sees the whole sequence.
+  const breathPrescribed = !!(
+    publishedPlan as unknown as
+      | { lifestyle_practices?: Array<{ name?: string; details?: string }> }
+      | undefined
+  )?.lifestyle_practices?.some((p) =>
+    /\bbreath|pranayam|breathing/i.test(`${p?.name ?? ""} ${p?.details ?? ""}`),
+  );
+  const mindbodySteps =
+    eftPrescribed || sleepPrescribed
+      ? await loadMindbodyDrip(id, {
+          breathPrescribed,
+          eftPrescribed,
+          sleepPrescribed,
+          eftOverride: mindbodyEft,
+          sleepOverride: mindbodySleep,
+        })
+      : [];
 
   // Has the client done a discovery / intake session yet? Used by
   // deriveStage to give a more accurate "next step" banner than the
@@ -1424,26 +1444,9 @@ export default async function ClientV2Page({
             />
           </FmGroupedPanel>
 
-          {(eftPrescribed || sleepPrescribed) && (
-            <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — drip unlock">
-              {eftPrescribed && (
-                <MindbodyDripPanel
-                  clientId={client.client_id}
-                  technique="eft"
-                  blurb="EFT tapping unlocks once breathing is a habit. Override the pace for this client."
-                  initial={mindbodyEft}
-                />
-              )}
-              {sleepPrescribed && (
-                <div style={{ marginTop: eftPrescribed ? 14 : 0 }}>
-                  <MindbodyDripPanel
-                    clientId={client.client_id}
-                    technique="sleep"
-                    blurb="Sleep wind-down unlocks once the prior technique is a habit. Override the pace for this client."
-                    initial={mindbodySleep}
-                  />
-                </div>
-              )}
+          {mindbodySteps.length > 0 && (
+            <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — practice journey">
+              <MindbodyDripPanel clientId={client.client_id} steps={mindbodySteps} />
             </FmGroupedPanel>
           )}
 
