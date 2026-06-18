@@ -1336,25 +1336,49 @@ export function buildLibraryRecipeResolver(
     // (U+21D2) is what the multi-component dinner menus actually use ("Green
     // moong sabzi ⇒ masoor dal ⇒ sama millet") — omitting it meant those whole
     // dishes never split, so the first component's recipe (and photo) was lost.
-    for (const pill of dish.split(/\s\+\s|→|⇒|:/).map((s) => s.trim()).filter(Boolean)) {
+    const pills = dish.split(/\s\+\s|→|⇒|:/).map((s) => s.trim()).filter(Boolean);
+    for (let pi = 0; pi < pills.length; pi++) {
+      const pill = pills[pi];
       const exact = byExactKey.get(recipeLibKey(pill));
       if (exact) return exact;
       const pt = recipeLibToks(pill);
       if (!pt.length) continue;
       const pk = recipeLibKey(pill);
-      let best: { r: LetterRecipe; hit: number; slack: number } | undefined;
+      let best: { r: LetterRecipe; hit: number; slack: number; pos: number } | undefined;
       for (const l of libraryRecipes) {
         const rt = recipeLibToks(l.recipe.title);
         if (!rt.length) continue;
         const hit = rt.filter((t) => pk.includes(t)).length;
         const rk = recipeLibKey(l.recipe.title);
         const extra = pt.filter((t) => !rk.includes(t)).length;
-        const ok = (hit >= 2 && rt.length - hit <= 1 && extra <= 1) || (rt.length === 1 && hit === 1 && pt.length === 1);
+        // (a) near-equality (≥2 title tokens hit, ≤1 missed, ≤1 extra), or
+        // (b) the ENTIRE multi-token recipe title appears in the FIRST pill —
+        //     a dish that is "<recipe> with <sides>" (e.g. "Besan chilla with
+        //     onion + capsicum") IS that recipe plus additions. Restricted to
+        //     pill 0 (the main dish) so a trailing SIDE can't hijack the photo:
+        //     "Masala egg scramble … + jowar roti" must not resolve to the
+        //     jowar-roti recipe just because that side's title is fully present.
+        // (c) single-token title matched by a single-token dish.
+        const ok =
+          (hit >= 2 && rt.length - hit <= 1 && extra <= 1) ||
+          (pi === 0 && hit === rt.length && rt.length >= 2) ||
+          (rt.length === 1 && hit === 1 && pt.length === 1);
         // slack = how far from an exact match (unmatched recipe tokens + extra
         // dish tokens). Prefer more hits, then the CLOSEST title — so
         // "Vegetable poha" wins over "Chicken and vegetable poha".
         const slack = rt.length - hit + extra;
-        if (ok && (!best || hit > best.hit || (hit === best.hit && slack < best.slack))) best = { r: l.recipe, hit, slack };
+        // pos = where the title first appears among the dish's tokens. On an
+        // otherwise-tied match, the title that starts EARLIEST wins — the head
+        // dish, not a trailing medium: "Ragi-oats porridge in almond milk" →
+        // Ragi porridge, not Almond Milk.
+        const pos = Math.min(...rt.map((t) => { const i = pt.indexOf(t); return i < 0 ? 1e9 : i; }));
+        if (
+          ok &&
+          (!best ||
+            hit > best.hit ||
+            (hit === best.hit && (slack < best.slack || (slack === best.slack && pos < best.pos))))
+        )
+          best = { r: l.recipe, hit, slack, pos };
       }
       if (best) return best.r;
     }
