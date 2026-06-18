@@ -469,6 +469,38 @@ const EFT_LIBRARY: Record<string, EftScript> = {
   ),
 };
 
+/** Every issue we have an authored tapping script for, in priority order
+ *  (the first present one becomes the client's primary issue, which drives the
+ *  mind-body drip ordering). Exported so the coach UI can offer the full set. */
+export const EFT_THEME_KEYS = ["cravings", "sleep", "anxiety", "stress"] as const;
+export const EFT_THEME_LABELS: Record<string, string> = {
+  cravings: "Cravings",
+  sleep: "Winding down for sleep",
+  anxiety: "Anxiety & overwhelm",
+  stress: "Stress reset",
+};
+
+/** Auto-detect which issues a case touches from its signals (goals +
+ *  conditions + reported triggers). Returns the matched theme keys, or
+ *  ["stress"] as the general fallback when nothing specific appears. Shared by
+ *  deriveEft and the coach's EFT-issues control so both read the same default.
+ *
+ *  Sleep = explicit sleep words OR genuinely nocturnal waking. Bare "wake" is
+ *  deliberately NOT a sleep signal — "wake up tired in the morning" is a
+ *  fatigue/energy complaint (thyroid, low iron), not insomnia. Only count a
+ *  "wake" token when it sits next to a nocturnal cue. */
+export function autoDetectEftThemes(signals: string): string[] {
+  const blob = (signals || "").toLowerCase();
+  const isSleep =
+    /\b(sleep|insomnia|sleepless)\b/.test(blob) ||
+    (/\bwak\w*/.test(blob) && /\bnight\b|\b[1-4]\s?am\b|middle of the night|back to sleep/.test(blob));
+  const matched: string[] = [];
+  if (/sugar|craving|weight|snack|binge|sweet/.test(blob)) matched.push("cravings");
+  if (isSleep) matched.push("sleep");
+  if (/anx|panic|overwhelm|stress|worry/.test(blob)) matched.push("anxiety");
+  return matched.length ? matched : ["stress"];
+}
+
 /**
  * Derive a guided EFT session from the plan's lifestyle practices — surfaces
  * only when the coach has prescribed a tapping / EFT practice. Theme is inferred
@@ -483,6 +515,7 @@ export function deriveEft(
   practices: { id: string; name: string; when: string }[],
   practiceRaw: Dict[],
   clientSignals: string,
+  themesOverride?: string[],
 ): AppEft | null {
   let pid = "";
   let when = "";
@@ -499,25 +532,13 @@ export function deriveEft(
   }
   if (!pid) return null;
   const blob = `${practiceText} ${clientSignals}`.toLowerCase();
-  // Sleep = explicit sleep words OR genuinely nocturnal waking. Bare "wake" is
-  // deliberately NOT a sleep signal — "wake up tired in the morning" is a
-  // fatigue/energy complaint (thyroid, low iron), not insomnia. Only count a
-  // "wake" token when it sits next to a nocturnal cue (night / an early-AM hour
-  // / can't get back to sleep).
-  const isSleep =
-    /\b(sleep|insomnia|sleepless)\b/.test(blob) ||
-    (/\bwak\w*/.test(blob) && /\bnight\b|\b[1-4]\s?am\b|middle of the night|back to sleep/.test(blob));
-  // Detect EVERY issue the case touches that we have an authored script for —
-  // a cravings client who also reports poor sleep + anxiety gets all three to
-  // tap on. Priority order (cravings → sleep → anxiety) sets which is primary;
-  // the primary still drives the mind-body drip ordering downstream. Only
-  // surface a theme when its keywords actually appear (no invented issues);
-  // fall back to the general stress reset when nothing specific matches.
-  const matched: string[] = [];
-  if (/sugar|craving|weight|snack|binge|sweet/.test(blob)) matched.push("cravings");
-  if (isSleep) matched.push("sleep");
-  if (/anx|panic|overwhelm|stress|worry/.test(blob)) matched.push("anxiety");
-  const keys = matched.length ? matched : ["stress"];
+  // Which issues to surface: a coach override (client.eft_themes) wins outright;
+  // otherwise auto-detect from the case. Either way, normalise to known scripts
+  // in priority order so the primary (themes[0], which drives the drip) is
+  // deterministic. An override of only-invalid keys falls back to auto-detect.
+  const override = (themesOverride || []).filter((t) => !!EFT_LIBRARY[t]);
+  const chosen = override.length ? override : autoDetectEftThemes(blob);
+  const keys = EFT_THEME_KEYS.filter((k) => chosen.includes(k));
   const themes: AppEftTheme[] = keys.map((key) => {
     const s = EFT_LIBRARY[key] || EFT_LIBRARY.stress;
     return {
@@ -2208,12 +2229,30 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // dishes carried explicit portions (2026-06-15). suppKey already does this.
   const libKey = (s: string) => s.toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
   const libToks = (s: string) => libKey(s).split(" ").filter((t) => t.length > 3 && !LIB_STOP.has(t));
-  /** Strict library lookup: every recipe-name token must appear in the dish
-   *  (one miss allowed), and the dish must add at most one extra token —
-   *  near-equality, so "mint chutney" → Cilantro Mint Chutney but a
-   *  "raita-free bowl" never gets the Cucumber Mint Raita method. */
+  // Exact-identity index. The Plan-tab DishPicker composes every dish from
+  // EXACT library recipe titles (+ an optional "(portion)" suffix that libKey
+  // strips), so a normalized-title lookup resolves a picked dish to its exact
+  // recipe — and therefore its photo — deterministically. This is the durable
+  // fix for "the food pictures disappeared": the fuzzy token scan below kept
+  // missing once portions/qualifiers pushed dishes past its extra-token
+  // cut-off. Exact-first means a picked dish NEVER loses its image to name
+  // drift; the fuzzy scan stays only as the fallback for legacy letter-parsed
+  // menus whose dish text isn't an exact recipe title. (Index is already
+  // diet-filtered — it's built from libraryRecipes, not …All.)
+  const libByExactKey = new Map<string, LetterRecipe>();
+  for (const l of libraryRecipes) {
+    const k = libKey(l.recipe.title);
+    if (k && !libByExactKey.has(k)) libByExactKey.set(k, l.recipe);
+  }
+  /** Strict library lookup: an exact normalized-title match wins outright;
+   *  otherwise every recipe-name token must appear in the dish (one miss
+   *  allowed) and the dish must add at most one extra token — near-equality,
+   *  so "mint chutney" → Cilantro Mint Chutney but a "raita-free bowl" never
+   *  gets the Cucumber Mint Raita method. */
   const libraryRecipeFor = (dish: string): LetterRecipe | undefined => {
     for (const pill of dish.split(/\s\+\s|→|:/).map((s) => s.trim()).filter(Boolean)) {
+      const exact = libByExactKey.get(libKey(pill));
+      if (exact) return exact;
       const pt = libToks(pill);
       if (!pt.length) continue;
       const pk = libKey(pill);
@@ -3092,6 +3131,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     practices,
     practiceRaw,
     `${asStrArr(client.goals).join(" ")} ${asStrArr(client.active_conditions).join(" ")} ${asStr(client.reported_triggers)}`,
+    Array.isArray((client as Record<string, unknown>).eft_themes)
+      ? ((client as Record<string, unknown>).eft_themes as string[])
+      : undefined,
   );
   const sleep = deriveSleep(practices, practiceRaw);
 

@@ -1005,6 +1005,33 @@ export async function setMindbodyOverride(
   }
 }
 
+/**
+ * Coach override of which EFT tapping issues a client gets in the app. By
+ * default the issues are auto-detected from the case (deriveEft); this lets the
+ * coach curate the set explicitly — force-add "sleep" even if the keywords
+ * didn't fire, or drop one. Written to client.yaml#eft_themes (a list of theme
+ * keys); passing null/empty deletes it and returns to auto-detection. Client is
+ * extra=ignore, so no model change; the per-minute reconcile projects it to Fly.
+ */
+export async function setEftThemes(
+  clientId: string,
+  themes: string[] | null,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  try {
+    const yaml = await import("js-yaml");
+    const data = yaml.load(await fs.readFile(clientYaml, "utf8")) as Record<string, unknown>;
+    if (!themes || themes.length === 0) delete data.eft_themes;
+    else data.eft_themes = themes;
+    data.updated_at = new Date().toISOString();
+    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as { message?: string }).message ?? "Failed to set EFT issues" };
+  }
+}
+
 // ---------------------------------------------------------------------------
 
 export interface ClientTimelineEvent {

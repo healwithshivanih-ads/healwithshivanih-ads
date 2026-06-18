@@ -49,6 +49,8 @@ import { ClientMemoryPanel } from "./client-memory-panel";
 import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
 import { MindbodyDripPanel } from "./mindbody-drip-panel";
 import { loadMindbodyDrip } from "@/lib/fmdb/mindbody-status";
+import { EftThemesPanel } from "./eft-themes-panel";
+import { EFT_THEME_KEYS, EFT_THEME_LABELS, autoDetectEftThemes } from "@/lib/fmdb/client-app";
 import { SupplementCheckWidget } from "@/components/client-widgets/supplement-check-widget";
 import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
 import { WeightProgressPanel } from "@/components/client-widgets/weight-progress-panel";
@@ -652,6 +654,32 @@ export default async function ClientV2Page({
           sleepOverride: mindbodySleep,
         })
       : [];
+  // EFT issues control — feed autoDetectEftThemes the SAME blob deriveEft uses
+  // (case signals + the EFT practice text), so the coach's "auto" set matches
+  // exactly what the app would pick.
+  const eftClient = client as unknown as {
+    goals?: unknown;
+    active_conditions?: unknown;
+    reported_triggers?: unknown;
+    eft_themes?: string[];
+  };
+  const asList = (v: unknown) => (Array.isArray(v) ? v.map(String) : []);
+  const eftPracticeText = (
+    publishedPlan as unknown as { lifestyle_practices?: Array<{ name?: string; details?: string }> } | undefined
+  )?.lifestyle_practices
+    ?.filter((p) => /\beft\b|tapping|emotional freedom/i.test(`${p?.name ?? ""} ${p?.details ?? ""}`))
+    .map((p) => `${p?.name ?? ""} ${p?.details ?? ""}`)
+    .join(" ") ?? "";
+  const eftAutoThemes = autoDetectEftThemes(
+    [
+      eftPracticeText,
+      ...asList(eftClient.goals),
+      ...asList(eftClient.active_conditions),
+      typeof eftClient.reported_triggers === "string" ? eftClient.reported_triggers : "",
+    ].join(" "),
+  );
+  const eftThemeOptions = EFT_THEME_KEYS.map((k) => ({ key: k, label: EFT_THEME_LABELS[k], auto: eftAutoThemes.includes(k) }));
+  const eftThemeOverride = Array.isArray(eftClient.eft_themes) ? eftClient.eft_themes : null;
 
   // Has the client done a discovery / intake session yet? Used by
   // deriveStage to give a more accurate "next step" banner than the
@@ -1447,6 +1475,12 @@ export default async function ClientV2Page({
           {mindbodySteps.length > 0 && (
             <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — practice journey">
               <MindbodyDripPanel clientId={client.client_id} steps={mindbodySteps} />
+            </FmGroupedPanel>
+          )}
+
+          {eftPrescribed && (
+            <FmGroupedPanel id="overview.eft-themes" icon="👐" title="EFT tapping — issues to cover">
+              <EftThemesPanel clientId={client.client_id} options={eftThemeOptions} override={eftThemeOverride} />
             </FmGroupedPanel>
           )}
 
