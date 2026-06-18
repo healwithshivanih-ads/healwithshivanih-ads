@@ -3,7 +3,9 @@ statement: Short courses of OTC NSAIDs (ibuprofen, naproxen) reduce pain and inf
   over-the-counter or custom orthotics distribute pressure more evenly across the
   foot; night splints hold the foot in dorsiflexion to stretch the fascia during sleep.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- plantar-fasciitis
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   quote: Pain relievers such as ibuprofen and naproxen sodium may ease the pain and
     inflammation of plantar fasciitis.
 rationale: Standard conservative ladder — coach educates on each option.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

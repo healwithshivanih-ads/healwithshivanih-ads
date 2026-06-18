@@ -2,14 +2,16 @@ slug: nhs-ingrown-toenail-dont-cut-the-corner
 statement: Do not cut the ingrown nail back or pick at the toe — leave the nail to
   grow out and cut subsequent nails straight across, not down the edges.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- ingrown-toenail
+
 sources:
 - id: nhs-ingrown-toenail-2026
   location: NHS page — Don't list + Prevention
   quote: do not cut your toenail – leave it to grow out ... cut straight across the
     nail, not the edges
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Nail-care evidence-based rule.

@@ -4,7 +4,9 @@ statement: Tinnitus that is pulsatile (heartbeat-rhythmic), unilateral, accompan
   to rule out vascular tumour, acoustic neuroma, otosclerosis, or sudden sensorineural
   hearing loss (a 72-hour treatment window).
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- tinnitus
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -14,7 +16,7 @@ sources:
     by hearing loss or dizziness.
 rationale: Sudden sensorineural hearing loss is an ENT emergency — steroid treatment
   must start within 72 hours.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

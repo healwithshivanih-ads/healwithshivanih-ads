@@ -2,14 +2,16 @@ slug: nhs-sunburn-donts-petroleum-ice-blisters
 statement: Do not use petroleum jelly, put ice or ice packs directly on sunburnt skin,
   pop blisters, scratch peeling skin or wear tight clothes over the area.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- sunburn
+
 sources:
 - id: nhs-sunburn-2026
   location: NHS page — Don't list
   quote: do not use petroleum jelly on sunburnt skin ... do not put ice or ice packs
     on sunburnt skin ... do not pop any blisters
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Counter to common folk remedies that worsen burns.

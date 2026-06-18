@@ -2,14 +2,16 @@ slug: nhs-otitis-externa-ear-infection-dont-stick-anything-in-ear
 statement: Do not put cotton buds, fingers or anything else into the ear canal to
   remove wax or discharge — this damages the canal and pushes wax deeper.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- otitis-externa
+
 sources:
 - id: nhs-otitis-externa-ear-infection-2026
   location: NHS page — Don't list
   quote: do not put anything inside your ear to remove earwax, such as cotton buds
     or your finger
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Critical safety rule.

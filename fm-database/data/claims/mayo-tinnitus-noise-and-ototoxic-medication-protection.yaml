@@ -3,7 +3,9 @@ statement: The most preventable contributors are loud-noise exposure (without ea
   protection) and ototoxic medications — high-dose aspirin, certain antibiotics (aminoglycosides),
   loop diuretics, chemotherapy agents, and quinine — which can worsen or unmask tinnitus.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- tinnitus
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -13,7 +15,7 @@ sources:
     or worsen tinnitus.
 rationale: Coach screens for noise-exposure history and reviews med list for ototoxic
   agents.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

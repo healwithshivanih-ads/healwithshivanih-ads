@@ -3,14 +3,16 @@ statement: Soaking the foot in warm salty water, keeping it dry afterwards, wear
   wide comfortable shoes and using paracetamol or ibuprofen for pain are first-line
   steps before any procedure.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- ingrown-toenail
+
 sources:
 - id: nhs-ingrown-toenail-2026
   location: NHS page — Do list
   quote: soak your foot in warm, salty water to help soften the skin around your toe
     ... wear wide, comfortable shoes or sandals
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Practical conservative care.

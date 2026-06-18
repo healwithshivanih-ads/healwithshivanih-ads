@@ -2,13 +2,15 @@ slug: nhs-sunburn-skin-cancer-link
 statement: Every episode of sunburn increases lifetime skin-cancer risk — prevention
   with shade, clothing and broad-spectrum SPF matters as much as managing acute burns.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- sunburn
+
 sources:
 - id: nhs-sunburn-2026
   location: NHS page — Skin cancer risk
   quote: Getting sunburnt can increase your risk of skin cancer
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Long-term prevention anchor.

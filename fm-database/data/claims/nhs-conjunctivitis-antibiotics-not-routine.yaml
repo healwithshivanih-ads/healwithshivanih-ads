@@ -2,14 +2,16 @@ slug: nhs-conjunctivitis-antibiotics-not-routine
 statement: Antibiotic eye drops only help bacterial conjunctivitis; they are ineffective
   for viral or allergic forms, so routine antibiotic prescribing is not warranted.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- conjunctivitis
+
 sources:
 - id: nhs-conjunctivitis-2026
   location: NHS page — Treatment for conjunctivitis
   quote: If it's a bacterial infection, you might be prescribed antibiotics. But these
     will not work if it's caused by a virus (viral conjunctivitis)
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: NHS conventional medicine reference for FM catalogue.

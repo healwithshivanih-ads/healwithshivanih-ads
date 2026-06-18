@@ -3,14 +3,16 @@ statement: For 24 hours after a nosebleed, avoid nose-blowing, picking, hot drin
   alcohol, heavy lifting, strenuous exercise, picking scabs or lying flat to reduce
   rebleed risk.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- nosebleed
+
 sources:
 - id: nhs-nosebleed-2026
   location: NHS page — When a nosebleed stops
   quote: 'After a nosebleed, to reduce the chance of another nosebleed, try not to
     do the following for 24 hours: blow your nose ... drink hot drinks '
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Recurrence prevention.

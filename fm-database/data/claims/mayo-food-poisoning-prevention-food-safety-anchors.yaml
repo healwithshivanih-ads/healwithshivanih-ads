@@ -4,7 +4,9 @@ statement: 'Mayo''''''''s prevention pillars are: wash hands and surfaces often;
   (poultry 74 C/165 F, ground beef 71 C/160 F, whole cuts 63 C/145 F); chill perishables
   within two hours of preparation (one hour if room above 32 C/90 F).'
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- food-poisoning
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -13,7 +15,7 @@ sources:
   quote: Wash your hands, utensils and food surfaces often. Keep raw foods separate
     from ready-to-eat foods.
 rationale: Four-pillar food-safety framing is easy client teaching.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

@@ -3,14 +3,16 @@ statement: Get urgent GP or NHS 111 help if sunburn causes blistering or swellin
   fever, dizziness, headache, nausea, muscle cramps, or affects a baby or young child
   — these can flag heat exhaustion or heatstroke.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- sunburn
+
 sources:
 - id: nhs-sunburn-2026
   location: NHS page — Urgent advice section
   quote: your skin is blistered or swollen ... your temperature is very high ... you
     feel very tired, dizzy or sick ... Severe sunburn can lead to he
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Heat illness escalation.

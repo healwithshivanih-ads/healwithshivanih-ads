@@ -8,7 +8,9 @@ coaching_translation: Boiling vegetables can cause you to pour most of their vit
   down the drain. Opt for steaming or blanching when possible, or use the cooking
   water in soups.
 caveats: []
-linked_to_topics: []
+linked_to_topics:
+- nutrient-preserving-cooking
+
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
@@ -18,7 +20,7 @@ sources:
   quote: Because boiling is an intense process, most of the nutrients leech out of
     the food and into the cooking liquid. If the food is drained before eating, many
     of the vitamins & minerals will be lost.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-18'
 updated_by: shivani

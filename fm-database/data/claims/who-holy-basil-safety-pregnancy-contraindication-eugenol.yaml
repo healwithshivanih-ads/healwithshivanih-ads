@@ -18,14 +18,16 @@ caveats:
   doses (2.5–12 g/day of dried herb).
 - The anti-implantation data are from animal studies; the clinical relevance in humans at therapeutic
   doses is uncertain but sufficient for pharmacopoeial contraindication.
-linked_to_topics: []
+linked_to_topics:
+- herbal-medicine-evidence
+
 linked_to_mechanisms: []
 linked_to_supplements:
 - holy-basil
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Folium Ocimi Sancti, WHO Monographs Vol 2, Contraindications and Precautions sections (https://apps.who.int/iris/handle/10665/42052)
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-06-18'
 updated_by: Shivani

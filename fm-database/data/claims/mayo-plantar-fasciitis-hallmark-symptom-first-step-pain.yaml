@@ -4,7 +4,9 @@ statement: The defining symptom of plantar fasciitis is sharp stabbing heel pain
   and returns with prolonged standing — distinguishing it from heel-fat-pad atrophy
   and tarsal-tunnel syndrome.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- plantar-fasciitis
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -13,7 +15,7 @@ sources:
   quote: The pain is usually the worst with the first few steps after awakening.
 rationale: First-step pain pattern is so specific it''''s near-diagnostic — coach
   can recognise it on intake.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

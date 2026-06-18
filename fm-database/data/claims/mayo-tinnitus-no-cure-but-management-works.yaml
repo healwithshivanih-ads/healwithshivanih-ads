@@ -4,7 +4,9 @@ statement: Mayo acknowledges no conventional medication cures subjective tinnitu
   therapy, and tinnitus retraining therapy meaningfully reduce distress and perceived
   loudness.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- tinnitus
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -13,7 +15,7 @@ sources:
   quote: Treatment depends on whether your tinnitus is caused by an underlying health
     condition. If so, treating that condition may reduce your tinnitus.
 rationale: Realistic framing for clients — managing the response, not chasing a cure.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

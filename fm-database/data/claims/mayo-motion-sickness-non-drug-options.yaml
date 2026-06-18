@@ -3,7 +3,9 @@ statement: Mayo notes ginger (capsules or tea, 1 to 2 g taken before travel) and
   wrist bands have modest evidence for nausea reduction; deep slow breathing and chewing
   gum or ice chips may also help with mild symptoms.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- motion-sickness
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   quote: Try ginger. Studies suggest that ginger might reduce nausea associated with
     motion sickness.
 rationale: Ginger is a coach-friendly first try before drug therapy.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

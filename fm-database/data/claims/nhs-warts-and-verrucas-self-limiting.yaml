@@ -3,13 +3,15 @@ statement: Most warts and verrucas clear on their own without treatment — but 
   take months or years, so people only need to treat when lesions are painful, spreading
   or distressing.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- warts-and-verrucas
+
 sources:
 - id: nhs-warts-and-verrucas-2026
   location: NHS page — Overview
   quote: They usually go away on their own but may take months or even years
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Expectations management — most lesions resolve.

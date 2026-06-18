@@ -20,7 +20,9 @@ caveats:
 - Fenugreek is traditionally contraindicated in early pregnancy; lactating mothers should confirm safety
   with their provider
 - Fenugreek-only RCT data is sparse; most studies used multi-herb formulations
-linked_to_topics: []
+linked_to_topics:
+- herbal-medicine-evidence
+
 linked_to_mechanisms: []
 linked_to_supplements:
 - fenugreek
@@ -28,7 +30,7 @@ sources:
 - id: pubmed-32421208
   location: Oral galactagogues (natural therapies or drugs) for increasing breast milk production in mothers
     of non-hospitalised ter
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-06-18'
 updated_by: Shivani

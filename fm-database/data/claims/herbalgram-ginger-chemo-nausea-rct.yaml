@@ -24,8 +24,7 @@ caveats:
   - "Does not eliminate nausea — reduces it. Best combined with standard antiemetics."
   - "Dose precision matters: 500–1000mg effective; 1500mg no more effective"
 linked_to_topics:
-  - cancer-adjunctive-support
-  - nausea-and-vomiting
+  - herbal-medicine-evidence
 linked_to_mechanisms: []
 linked_to_supplements:
   - ginger
@@ -35,7 +34,7 @@ sources:
     quote: "RCT of 744 patients, 74% breast cancer: all ginger doses reduced nausea
       vs placebo on day 1 (P=0.003 overall); 0.5g and 1g most effective (P=0.017
       and P=0.036). Caution antiplatelet and CYP2C9/3A4 inhibition in vitro."
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-07'
+updated_at: '2026-06-18'
 updated_by: shivani

@@ -32,8 +32,7 @@ caveats:
     hops (in therapeutic doses), shatavari (high-dose supplementation) — when in doubt,
     consult integrative oncologist"
 linked_to_topics:
-  - breast-cancer-risk-reduction
-  - safety-and-contraindications
+  - herbal-medicine-evidence
 linked_to_mechanisms: []
 linked_to_supplements:
   - fenugreek
@@ -45,7 +44,7 @@ sources:
       receptor-mediated cell growth — contraindicated with aromatase inhibitors. Dan
       shen (Salvia miltiorrhiza): antiplatelet effect — caution with low platelet counts
       (<25,000), common in advanced chemo."
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-07'
+updated_at: '2026-06-18'
 updated_by: shivani

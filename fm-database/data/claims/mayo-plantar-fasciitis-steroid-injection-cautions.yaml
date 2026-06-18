@@ -3,7 +3,9 @@ statement: Steroid injections give short-term relief but repeated injections wea
   the plantar fascia and can cause rupture or fat-pad atrophy; clients should know
   the trade-off before consenting.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- plantar-fasciitis
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   quote: Multiple shots aren''''t recommended because they can weaken the plantar
     fascia and possibly cause it to rupture.
 rationale: Important client-education point — steroid is symptomatic, not curative.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

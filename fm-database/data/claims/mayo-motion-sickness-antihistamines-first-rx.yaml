@@ -3,7 +3,9 @@ statement: Conventional first-line drug is a first-generation antihistamine — 
   (Dramamine), meclizine (Bonine), cyclizine — taken 30 to 60 minutes before travel;
   sedation is the main side effect.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- motion-sickness
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   quote: Antihistamines such as dimenhydrinate are commonly used to prevent and treat
     motion sickness.
 rationale: Coach educates on timing — taking after onset is much less effective.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

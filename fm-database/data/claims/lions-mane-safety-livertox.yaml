@@ -14,7 +14,9 @@ caveats:
 - Long-term human safety > 1 year not well studied
 - Drug interaction data is sparse
 - Mushroom allergy is a clear contraindication
-linked_to_topics: []
+linked_to_topics:
+- herbal-medicine-evidence
+
 linked_to_mechanisms: []
 linked_to_supplements:
 - lions-mane
@@ -23,7 +25,7 @@ sources:
 - id: livertox-lions-mane
   location: hepatotoxicity profile
   quote: Likelihood Score E (unlikely cause of clinically apparent liver injury).
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-29'
+updated_at: '2026-06-18'
 updated_by: shivani

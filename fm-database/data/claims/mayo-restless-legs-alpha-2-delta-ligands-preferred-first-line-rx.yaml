@@ -4,7 +4,9 @@ statement: Conventional guidelines now favour alpha-2-delta ligands (gabapentin 
   prescription therapy because dopamine agonists carry a high risk of augmentation
   (worsening of symptoms over time) and impulse-control disorders.
 evidence_tier: confirm_with_clinician
-linked_to_topics: []
+linked_to_topics:
+- restless-legs-syndrome
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -14,7 +16,7 @@ sources:
     some people with restless legs syndrome.
 rationale: Augmentation is the major reason for the shift away from dopamine agonists
   — important client-education point.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

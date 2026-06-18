@@ -9,7 +9,9 @@ coaching_translation: How you cook matters as much as what you eat. Steam or lig
   sauté vegetables, and save the cooking liquid in soups/stews to preserve the nutrients
   that leach out.
 caveats: []
-linked_to_topics: []
+linked_to_topics:
+- nutrient-preserving-cooking
+
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
@@ -19,7 +21,7 @@ sources:
   quote: When it comes to maximizing nutrient content, gentle cooking methods are
     generally better. So, use as little heat, liquid, and time as possible to cook
     your food.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-18'
 updated_by: shivani

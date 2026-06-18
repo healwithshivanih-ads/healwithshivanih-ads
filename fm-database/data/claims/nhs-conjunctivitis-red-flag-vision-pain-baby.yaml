@@ -3,14 +3,16 @@ statement: Get urgent GP or NHS 111 help for eye pain, light sensitivity, vision
   such as wavy lines or flashing, very red eye(s), or any red sticky eye in a baby
   under 30 days old — these can signal serious eye disease.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- conjunctivitis
+
 sources:
 - id: nhs-conjunctivitis-2026
   location: 'NHS page — Urgent advice: Ask for an urgent GP appointment'
   quote: pain in your eyes ... sensitivity to light ... changes in your vision, like
     wavy lines or flashing ... a baby less than 30 days old with red
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: NHS conventional medicine reference for FM catalogue.

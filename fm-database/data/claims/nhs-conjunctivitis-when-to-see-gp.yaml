@@ -2,13 +2,15 @@ slug: nhs-conjunctivitis-when-to-see-gp
 statement: See a GP if conjunctivitis has not cleared within 7 days, or if a contact-lens
   wearer has eyelid spots (possible lens allergy).
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- conjunctivitis
+
 sources:
 - id: nhs-conjunctivitis-2026
   location: 'NHS page — Non-urgent advice: See a GP if'
   quote: you have conjunctivitis and your symptoms have not cleared up within 7 days
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Escalation thresholds.

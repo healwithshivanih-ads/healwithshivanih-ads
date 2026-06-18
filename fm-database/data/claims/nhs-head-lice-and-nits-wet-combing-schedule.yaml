@@ -3,14 +3,16 @@ statement: Wet combing with conditioner and a fine-toothed detection comb on day
   1, 5, 9 and 13, with a check on day 17, catches each newly hatched generation and
   clears infestation without chemicals.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- head-lice
+
 sources:
 - id: nhs-head-lice-and-nits-2026
   location: NHS page — Wet combing section
   quote: Do wet combing on days 1, 5, 9 and 13 to catch any newly hatched head lice.
     Check again that everyone's hair is free of lice on day 17
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Mechanical removal protocol with timing schedule.

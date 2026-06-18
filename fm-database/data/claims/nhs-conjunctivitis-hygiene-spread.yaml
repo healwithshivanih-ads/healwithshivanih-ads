@@ -2,14 +2,16 @@ slug: nhs-conjunctivitis-hygiene-spread
 statement: Sticky-pus and gritty types are contagious — handwashing, hot-washing pillowcases
   and not sharing towels limits household spread.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- conjunctivitis
+
 sources:
 - id: nhs-conjunctivitis-2026
   location: NHS page — Stop infectious conjunctivitis from spreading
   quote: wash your hands regularly with warm soapy water ... wash your pillow cases
     and face cloths in hot water
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: NHS conventional medicine reference for FM catalogue.

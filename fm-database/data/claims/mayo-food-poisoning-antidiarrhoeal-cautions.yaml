@@ -3,7 +3,9 @@ statement: OTC loperamide and bismuth subsalicylate are not recommended in clien
   with bloody diarrhoea or high fever because slowing transit traps pathogen and toxin
   and can worsen invasive infections; use only after these red flags are excluded.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- food-poisoning
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   quote: Adults with diarrhea that isn''''t bloody and who have no fever may get relief
     from taking loperamide.
 rationale: Common self-treatment mistake — coach can flag the exclusion criteria.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

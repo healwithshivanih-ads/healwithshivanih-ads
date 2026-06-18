@@ -4,7 +4,9 @@ statement: Common medications that trigger or worsen RLS include sedating antihi
   (SSRIs, SNRIs, tricyclics — except bupropion), and antipsychotics; coach should
   flag these for prescriber review before drug therapy is started.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- restless-legs-syndrome
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -14,7 +16,7 @@ sources:
     antipsychotic drugs, and some antidepressants.
 rationale: Med-review is often the single most useful coaching intervention before
   any drug for RLS.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

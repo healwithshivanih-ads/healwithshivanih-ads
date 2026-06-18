@@ -4,7 +4,9 @@ statement: Conservative measures with the strongest evidence are facing forward 
   in a car, over the wing in a plane, mid-deck on a ship), looking at the horizon,
   and avoiding reading or screens during motion.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- motion-sickness
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -13,7 +15,7 @@ sources:
   quote: Sit in the front seat of a car. Choose a window seat on flights and trains.
     Lie down or face forward.
 rationale: Coaching wins — daily simple-positioning rules.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

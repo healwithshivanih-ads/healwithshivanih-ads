@@ -3,14 +3,16 @@ statement: Get out of the sun, cool the skin with a cool shower or damp towel, a
   aftersun or unperfumed moisturiser, hydrate with water (not alcohol), take paracetamol
   or ibuprofen for pain and keep sunburnt skin covered until it heals.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- sunburn
+
 sources:
 - id: nhs-sunburn-2026
   location: NHS page — How to ease sunburn yourself
   quote: get out of the sun as soon as possible ... cool your skin with a cool shower,
     bath or damp towel ... avoid alcohol and drink plenty of water
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: First-line sunburn care.

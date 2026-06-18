@@ -5,7 +5,9 @@ statement: Emergency evaluation is warranted for inability to keep fluids down f
   symptoms (blurred vision, muscle weakness, tingling), or symptoms in pregnant clients,
   infants, elderly, or immunocompromised.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- food-poisoning
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -14,7 +16,7 @@ sources:
   quote: Contact a healthcare professional if you have severe symptoms, including
     blood in your vomit or stools, severe dehydration.
 rationale: Mayo''''s red-flag list is the safety floor — coach escalates immediately.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

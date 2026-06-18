@@ -4,7 +4,9 @@ statement: Conservative measures with evidence are warm or cool leg baths, leg m
   and nicotine especially in the evening, and a pneumatic compression device in moderate
   cases.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- restless-legs-syndrome
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   location: Mayo Clinic page — Lifestyle and home remedies
   quote: Take baths and massages. Apply warm or cool packs. Establish good sleep hygiene.
 rationale: First-line for mild RLS is non-pharmacologic — coach is the right scope.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

@@ -4,7 +4,9 @@ statement: If first-step heel pain persists beyond several months of dedicated c
   shock-wave therapy, ultrasound-guided needle tenotomy, platelet-rich plasma injection,
   and (rarely) plantar-fascia release surgery.
 evidence_tier: confirm_with_clinician
-linked_to_topics: []
+linked_to_topics:
+- plantar-fasciitis
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -14,7 +16,7 @@ sources:
     healthcare professional might recommend a steroid medication injection.
 rationale: Escalation pathway sits with podiatry/ortho — coach surfaces the menu and
   the timing.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

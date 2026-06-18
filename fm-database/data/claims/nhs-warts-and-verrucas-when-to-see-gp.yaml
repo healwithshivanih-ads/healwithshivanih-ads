@@ -3,14 +3,16 @@ statement: See a GP for warts that bleed, change appearance, recur, are very pai
   or sit on the face or genitals — genital warts go to a sexual health clinic, not
   a GP.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- warts-and-verrucas
+
 sources:
 - id: nhs-warts-and-verrucas-2026
   location: NHS page — Non-urgent advice + Genital warts
   quote: you have a wart that bleeds or changes in how it looks ... you have a wart
     on your face or genitals ... Genital warts can be treated at a se
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Escalation thresholds.

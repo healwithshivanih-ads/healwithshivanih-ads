@@ -4,7 +4,9 @@ statement: Wearing ear protection in environments above 85 dB (power tools, conc
   device volume below 60 percent are the strongest preventive measures for tinnitus
   and noise-induced hearing loss.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- tinnitus
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -13,7 +15,7 @@ sources:
   quote: Use hearing protection. Over time, exposure to loud sounds can damage the
     nerves in the ears.
 rationale: Prevention is the cleanest coaching message — protect what you have.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

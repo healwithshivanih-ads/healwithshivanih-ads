@@ -19,14 +19,16 @@ caveats:
 - The genotoxicity was observed in animal bone marrow cells; human clinical significance is unclear but
   sufficient for pharmacopoeial contraindication.
 - Contact dermatitis has also been reported with topical neem.
-linked_to_topics: []
+linked_to_topics:
+- herbal-medicine-evidence
+
 linked_to_mechanisms: []
 linked_to_supplements:
 - neem
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Folium Azadirachti, WHO Monographs Vol 3, Contraindications and Posology sections (https://apps.who.int/iris/handle/10665/43689)
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-06-18'
 updated_by: Shivani

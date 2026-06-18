@@ -3,7 +3,9 @@ statement: Motion sickness presents with progressive cold sweats, increased sali
   pallor, nausea, dizziness, headache, and vomiting triggered by the brain''''s perception
   of conflicting movement signals from the eyes, inner ears, and proprioception.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- motion-sickness
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   quote: Motion sickness is a common problem in people traveling by car, train, airplanes
     and especially boats.
 rationale: Mechanism-framing helps clients understand why positioning matters.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

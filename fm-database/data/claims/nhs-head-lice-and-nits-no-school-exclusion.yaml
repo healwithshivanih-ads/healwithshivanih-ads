@@ -3,14 +3,16 @@ statement: Children with head lice do not need to be kept off school and househo
   laundry does not need a hot wash — close head-to-head contact is the only realistic
   transmission route.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- head-lice
+
 sources:
 - id: nhs-head-lice-and-nits-2026
   location: NHS page — How to get rid of head lice
   quote: There's no need to keep your child off school if they have head lice. You
     do not need to wash your laundry on a hot wash
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Reduces unnecessary stigma and missed school.

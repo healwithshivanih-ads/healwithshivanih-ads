@@ -3,7 +3,9 @@ statement: Mainstay home care is small frequent sips of clear fluids — oral re
   solution preferred, then diluted juice, broth, or ice chips — and gradual reintroduction
   of bland low-fat low-fibre foods (the BRAT framing) once vomiting stops.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- food-poisoning
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -12,7 +14,7 @@ sources:
   quote: Replace lost fluids and electrolytes. Drink clear fluids in small, frequent
     sips.
 rationale: ORS over plain water — clients often miss the electrolyte point.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

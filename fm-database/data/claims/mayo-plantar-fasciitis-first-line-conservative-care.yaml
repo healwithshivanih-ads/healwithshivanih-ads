@@ -4,7 +4,9 @@ statement: First-line care is calf and plantar fascia stretching twice daily, ic
   if BMI elevated, and modifying or reducing the aggravating activity (running, prolonged
   standing).
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- plantar-fasciitis
+
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -14,7 +16,7 @@ sources:
     your arches.
 rationale: Conservative measures resolve most cases within 6 to 12 months — coaching
   is the right scope.
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: '2026-06-18'
 updated_by: Shivani

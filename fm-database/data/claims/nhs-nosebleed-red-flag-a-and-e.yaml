@@ -3,14 +3,16 @@ statement: Go to A&E if a nosebleed lasts longer than 10–15 minutes, bleeding 
   large amounts of blood are being swallowed causing vomiting, the bleed followed
   a head blow, or there is weakness, dizziness or breathing difficulty.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- nosebleed
+
 sources:
 - id: nhs-nosebleed-2026
   location: 'NHS page — Immediate action required: Go to A&E'
   quote: your nosebleed lasts longer than 10 to 15 minutes ... the bleeding started
     after a blow to your head ... you're feeling weak or dizzy
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Major bleed thresholds.

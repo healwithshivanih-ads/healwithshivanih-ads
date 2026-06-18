@@ -3,14 +3,16 @@ statement: See a GP for recurrent nosebleeds, nosebleeds in a child under 2, nos
   while on warfarin or other anticoagulants, or nosebleeds with anaemia symptoms such
   as palpitations, breathlessness or unusual pallor.
 evidence_tier: strong
-linked_to_topics: []
+linked_to_topics:
+- nosebleed
+
 sources:
 - id: nhs-nosebleed-2026
   location: 'NHS page — Non-urgent advice: See a GP if'
   quote: you have regular nosebleeds ... you have a nosebleed and you're taking a
     medicine that helps prevent blood clots, such as warfarin
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 rationale: Anticoagulant + anaemia red flags.
