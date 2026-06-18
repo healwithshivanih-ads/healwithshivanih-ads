@@ -314,19 +314,39 @@ export interface AppBreathwork {
  *  phrases. Phase 1 uses a coach-authored library script chosen by theme; the
  *  plan can later carry an approved, per-client (Haiku-filled) script. The 7
  *  point coordinates live in the overlay; this config carries only the words. */
-export interface AppEft {
+/** One tapping script for a single issue (cravings / sleep / anxiety / stress).
+ *  A client can have several — the app lets them pick which to tap on. */
+export interface AppEftTheme {
   theme: string;
   themeLabel: string;
-  practiceId: string;
-  when: string;
   /** setup statement, tapped on the side of the hand ×3 */
   setup: string;
   /** 8 points in order: crown, eyebrow, side of eye, under eye, under nose, chin, collarbone, under arm */
   points: { key: string; label: string; phrase: string }[];
+  /** the rating question, worded for this issue (e.g. sleep → "How wound-up
+   *  does your mind feel?") — clearer than a generic "how strong". */
+  sudsBeforeQ: string;
+  sudsAfterQ: string;
+  why: string;
+}
+
+export interface AppEft {
+  /** Primary issue — drives the mind-body drip ordering + the card title.
+   *  Always equals themes[0].theme. */
+  theme: string;
+  themeLabel: string;
+  practiceId: string;
+  when: string;
   /** ask for a 0–10 distress rating before + after */
   suds: boolean;
-  /** the rating question, worded for this client's issue (e.g. sleep → "How
-   *  wound-up does your mind feel?") — clearer than a generic "how strong". */
+  /** Every issue this client can tap on, primary first. Derived from the case
+   *  (goals + conditions + reported triggers) — a cravings client who also
+   *  reports poor sleep gets both scripts. Single-element for most clients.
+   *  The primary's script also lives on the flat fields below for back-compat. */
+  themes: AppEftTheme[];
+  /** setup statement, tapped on the side of the hand ×3 (primary issue) */
+  setup: string;
+  points: { key: string; label: string; phrase: string }[];
   sudsBeforeQ: string;
   sudsAfterQ: string;
   why: string;
@@ -487,25 +507,42 @@ export function deriveEft(
   const isSleep =
     /\b(sleep|insomnia|sleepless)\b/.test(blob) ||
     (/\bwak\w*/.test(blob) && /\bnight\b|\b[1-4]\s?am\b|middle of the night|back to sleep/.test(blob));
-  const theme = /sugar|craving|weight|snack|binge|sweet/.test(blob)
-    ? "cravings"
-    : isSleep
-      ? "sleep"
-      : /anx|panic|overwhelm|stress|worry/.test(blob)
-        ? "anxiety"
-        : "stress";
-  const s = EFT_LIBRARY[theme] || EFT_LIBRARY.stress;
+  // Detect EVERY issue the case touches that we have an authored script for —
+  // a cravings client who also reports poor sleep + anxiety gets all three to
+  // tap on. Priority order (cravings → sleep → anxiety) sets which is primary;
+  // the primary still drives the mind-body drip ordering downstream. Only
+  // surface a theme when its keywords actually appear (no invented issues);
+  // fall back to the general stress reset when nothing specific matches.
+  const matched: string[] = [];
+  if (/sugar|craving|weight|snack|binge|sweet/.test(blob)) matched.push("cravings");
+  if (isSleep) matched.push("sleep");
+  if (/anx|panic|overwhelm|stress|worry/.test(blob)) matched.push("anxiety");
+  const keys = matched.length ? matched : ["stress"];
+  const themes: AppEftTheme[] = keys.map((key) => {
+    const s = EFT_LIBRARY[key] || EFT_LIBRARY.stress;
+    return {
+      theme: EFT_LIBRARY[key] ? key : "stress",
+      themeLabel: s.themeLabel,
+      setup: s.setup,
+      points: s.points,
+      sudsBeforeQ: s.sudsBeforeQ,
+      sudsAfterQ: s.sudsAfterQ,
+      why: s.why,
+    };
+  });
+  const primary = themes[0];
   return {
-    theme,
-    themeLabel: s.themeLabel,
+    theme: primary.theme,
+    themeLabel: primary.themeLabel,
     practiceId: pid,
     when: when || "Anytime you feel the pull",
-    setup: s.setup,
-    points: s.points,
     suds: true,
-    sudsBeforeQ: s.sudsBeforeQ,
-    sudsAfterQ: s.sudsAfterQ,
-    why: s.why,
+    themes,
+    setup: primary.setup,
+    points: primary.points,
+    sudsBeforeQ: primary.sudsBeforeQ,
+    sudsAfterQ: primary.sudsAfterQ,
+    why: primary.why,
   };
 }
 
@@ -3946,6 +3983,33 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     }
   }
 
+  // ── plan "on hold" state ───────────────────────────────────────────────
+  // A plan is ON HOLD until the coach-confirmed meal-plan start arrives.
+  // Freshly generated plans have meal_plan_started_on = null → on hold BY
+  // DEFAULT (they don't show active content until the coach sets a start
+  // date or makes the first menu live). plan_period_start is the authoring
+  // anchor, NOT a "started" signal — so it is deliberately not a fallback here.
+  const _mealStart = asStr(plan.meal_plan_started_on)
+    ? new Date(`${asStr(plan.meal_plan_started_on)}T00:00:00Z`)
+    : null;
+  const _ppsDate = asStr(plan.plan_period_start)
+    ? new Date(`${asStr(plan.plan_period_start)}T00:00:00Z`)
+    : null;
+  const notStarted = !_mealStart || todayUTC.getTime() < _mealStart.getTime();
+  // The future date to count down to on the hold screen: the confirmed meal
+  // start if it's still ahead, else a future plan_period_start (a coach who
+  // set the authoring date forward but hasn't confirmed the meal start).
+  // Null → no committed date yet → the hold screen shows "coach will confirm".
+  const _holdDate =
+    _mealStart && _mealStart.getTime() > todayUTC.getTime()
+      ? _mealStart
+      : !_mealStart && _ppsDate && _ppsDate.getTime() > todayUTC.getTime()
+        ? _ppsDate
+        : null;
+  const startsInDays = _holdDate
+    ? Math.max(0, Math.ceil((_holdDate.getTime() - todayUTC.getTime()) / 86_400_000))
+    : 0;
+
   return {
     clientId,
     planSlug,
@@ -3960,10 +4024,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       week,
       totalWeeks,
       startDateLabel: startLabel,
-      notStarted: !!startDate && todayUTC.getTime() < startDate.getTime(),
-      startsInDays: startDate
-        ? Math.max(0, Math.ceil((startDate.getTime() - todayUTC.getTime()) / 86_400_000))
-        : 0,
+      notStarted,
+      startsInDays,
       dosha,
       doshaLabel,
       coachLine,

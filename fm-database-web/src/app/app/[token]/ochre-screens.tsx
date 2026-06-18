@@ -90,15 +90,20 @@ function greetWord(hour: number): string {
 
 // ── TODAY ────────────────────────────────────────────────────────────────────
 
-/** Pre-start "on hold" screen — shown when the coach has set the meal-plan
- *  start date in the future. The plan unlocks itself on that date; nothing
- *  for the client to do until then. */
+/** Pre-start "on hold" screen. Shown whenever the plan hasn't started yet —
+ *  either the coach set a future start date (countdown), or the plan was just
+ *  generated and no start date is confirmed yet ("coach will confirm"). The
+ *  app unlocks itself the moment the start date arrives. */
 export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
   const data = useOchre();
   const days = data.client.startsInDays;
-  const countdown =
-    days <= 0 ? "Starting today" : days === 1 ? "Starts tomorrow" : `Starts in ${days} days`;
+  const hasDate = days > 0; // a committed future start date to count down to
   const coachFirst = data.coach.name.split(" ")[0];
+  const eyebrow = !hasDate
+    ? "Starting soon"
+    : days === 1
+      ? "Starts tomorrow"
+      : `Starts in ${days} days`;
   return (
     <div className="screen-pad screen-anim">
       <div className="greeting">
@@ -109,14 +114,27 @@ export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
       <div className="rightnow">
         <div className="rn-body">
           <div className="rn-eyebrow">
-            <Icon name="sparkle" size={14} /> {countdown}
+            <Icon name="sparkle" size={14} /> {eyebrow}
           </div>
           <div className="rn-title">
-            Your {data.client.totalWeeks}-week plan begins {data.client.startDateLabel}
+            {hasDate ? (
+              <>Your {data.client.totalWeeks}-week plan begins {data.client.startDateLabel}</>
+            ) : (
+              <>Your {data.client.totalWeeks}-week plan is being set up</>
+            )}
           </div>
           <div className="rn-sub">
-            Your meals, supplements and daily routine all unlock then — there&apos;s nothing
-            you need to do until {data.client.startDateLabel}. The app opens up on its own that day.
+            {hasDate ? (
+              <>
+                Your meals, supplements and daily routine all unlock then — there&apos;s nothing
+                you need to do until {data.client.startDateLabel}. The app opens up on its own that day.
+              </>
+            ) : (
+              <>
+                {coachFirst} is finalising your start date. The moment it&apos;s set, your meals,
+                supplements and daily routine all unlock right here — nothing for you to do yet.
+              </>
+            )}
           </div>
           <button className="rn-cta" onClick={goCoach}>
             Message {coachFirst} <Icon name="arrowRight" size={16} />
@@ -136,14 +154,14 @@ export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
               color: "var(--forest)",
             }}
           >
-            <span style={{ fontSize: 22, fontWeight: 700, lineHeight: 1 }}>
-              {days > 0 ? days : "✓"}
+            <span style={{ fontSize: hasDate ? 22 : 26, fontWeight: 700, lineHeight: 1 }}>
+              {hasDate ? days : "✦"}
             </span>
             <span style={{ fontSize: 10, opacity: 0.7 }}>
-              {days === 1 ? "day" : days > 0 ? "days" : "ready"}
+              {hasDate ? (days === 1 ? "day" : "days") : "soon"}
             </span>
           </div>
-          <div className="rn-ring-cap">to go</div>
+          {hasDate && <div className="rn-ring-cap">to go</div>}
         </div>
       </div>
 
@@ -151,8 +169,17 @@ export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
         <Icon name="sparkle" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
         <div>
           <div className="q">
-            I&apos;ve set everything up for you, {data.client.firstName}. We&apos;ll begin
-            together on {data.client.startDateLabel} — message me anytime before then.
+            {hasDate ? (
+              <>
+                I&apos;ve set everything up for you, {data.client.firstName}. We&apos;ll begin
+                together on {data.client.startDateLabel} — message me anytime before then.
+              </>
+            ) : (
+              <>
+                Everything&apos;s ready, {data.client.firstName}. I&apos;ll confirm your start date
+                shortly and you&apos;ll see it right here — message me anytime.
+              </>
+            )}
           </div>
           <div className="who">— {data.coach.name}</div>
         </div>
