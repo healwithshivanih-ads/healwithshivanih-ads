@@ -67,7 +67,12 @@ export async function sendAppInviteLinkAction(
   }[];
   const client = clients.find((c) => c.client_id === clientId);
   if (!client) return { ok: false, error: `client not found: ${clientId}` };
-  const phone = (client.mobile_number || "").replace(/\D+/g, "");
+  // Pass the number with its "+"/country code intact — the WA server
+  // normalises it (libphonenumber). Stripping non-digits here removes the
+  // leading "+", which for an international number (e.g. a US "+1 …") loses
+  // the country-code signal and the server then mis-parses it as Indian.
+  // See the normalizePhone hardening in whatsapp-server/src/util/phone.js.
+  const phone = (client.mobile_number || "").trim();
   if (!phone) return { ok: false, error: "no mobile number on file" };
   const firstName = (client.display_name || clientId).split(" ")[0];
 

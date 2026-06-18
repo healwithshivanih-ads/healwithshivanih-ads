@@ -34,7 +34,10 @@ const PLANS_ROOT =
   process.env.FMDB_PLANS_DIR ??
   path.join(process.env.HOME ?? "", "fm-plans");
 
-const START_REMINDER_TEMPLATE = "fm_start_date_check_v1";
+// v2 is the UTILITY-categorised version (Meta APPROVED 2026-06-18). v1 was
+// re-classified MARKETING ("just checking in" = engagement) → throttled to
+// clients who hadn't messaged (err 131049). v2 delivers regardless.
+const START_REMINDER_TEMPLATE = "fm_start_date_check_v2";
 
 /**
  * Scan a client's sessions for the most recent outbound segment tagged
@@ -214,7 +217,7 @@ export async function listUnconfirmedStartDatesAction(
  */
 export async function sendStartDateReminderAction(
   clientId: string,
-  campaignName: string = "fm_start_date_check_v1",
+  campaignName: string = "fm_start_date_check_v2",
 ): Promise<{ ok: boolean; error?: string }> {
   try {
     const clients = (await loadAllClients()) as Array<Record<string, unknown>>;
@@ -223,12 +226,13 @@ export async function sendStartDateReminderAction(
     const phone = (c.mobile_number as string | undefined) ?? "";
     if (!phone.trim()) return { ok: false, error: "No mobile number on file" };
     const name = (c.display_name as string | undefined) ?? "there";
-    // fm_start_date_check_v1 body: "Hi {{1}} 👋 Just checking in — have you started your plan? …"
-    // Mirror the template-approved body for the chat-thread record.
+    // Mirror the Meta-approved fm_start_date_check_v2 body (UTILITY) for the
+    // chat-thread record.
     const renderedBody =
-      `Hi ${name} 👋 Just checking in — have you started your plan? ` +
-      `If yes, reply with the date you began (e.g. 17 May). ` +
-      `If not yet, no worries — just let me know what's getting in the way.`;
+      `Hi ${name}, a quick note about your plan. Have you started it yet? ` +
+      `If yes, please reply with the date you began (for example: 19 May) ` +
+      `so I can set your plan timeline and recheck dates correctly. ` +
+      `If you need more time, just let me know.`;
     return await sendAndRecordOutboundAction({
       phone,
       clientId,

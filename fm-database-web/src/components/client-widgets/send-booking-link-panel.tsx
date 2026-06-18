@@ -79,17 +79,24 @@ export function SendBookingLinkPanel({
   }, []);
 
   // Once links are loaded, fetch persisted sent_at per slug from session files.
-  // Template name recorded by sendCalcomLinkTemplateAction is `fm_book_session_v1:${slug}`.
+  // The send now records `fm_book_session_v2:${slug}` (UTILITY template that
+  // delivers to cold contacts); historical sends recorded the v1 name. Check
+  // BOTH so old "✓ sent" badges keep showing and new sends register too.
   useEffect(() => {
     if (!links || links.length === 0) return;
-    const templateNames = links.map((l) => `fm_book_session_v1:${l.slug}`);
+    const templateNames = links.flatMap((l) => [
+      `fm_book_session_v2:${l.slug}`,
+      `fm_book_session_v1:${l.slug}`,
+    ]);
     void (async () => {
       const raw = await getLastSentAtBatchAction(clientId, templateNames);
-      // Re-key from "fm_book_session_v1:slug" → "slug"
+      // Re-key from "fm_book_session_v{1,2}:slug" → "slug", keeping the most
+      // recent timestamp across both template versions.
       const bySlug: Record<string, string | null> = {};
       for (const [tpl, at] of Object.entries(raw)) {
-        const slug = tpl.replace(/^fm_book_session_v1:/, "");
-        bySlug[slug] = at;
+        const slug = tpl.replace(/^fm_book_session_v[12]:/, "");
+        const prev = bySlug[slug];
+        if (!prev || (at && at > prev)) bySlug[slug] = at;
       }
       setPersistedSentAt(bySlug);
     })();
@@ -226,7 +233,7 @@ export function SendBookingLinkPanel({
   return (
     <FmPanel
       title="📅 Send booking link"
-      subtitle={`Sends via approved template fm_book_session_v1 — works any time, no 24h window needed.`}
+      subtitle={`Sends via approved UTILITY template fm_book_session_v2 — delivers any time, including to clients who haven't messaged recently.`}
     >
       <div style={{ display: "grid", gap: 12 }}>
         {!links && (

@@ -22,6 +22,37 @@ function isWhatsappConfigured(): boolean {
   return !!(WA_SERVER_URL && WA_SERVER_API_KEY);
 }
 
+/**
+ * Clean a phone number for the WhatsApp server WITHOUT corrupting its country
+ * code. The WA server does the authoritative E.164 normalisation
+ * (libphonenumber); our only job at this boundary is to never drop the leading
+ * "+", which is the single signal that tells e.g. a Singapore "+65 8523 6397"
+ * (cl-018) or a US "+1 (704) 387-1997" (cl-019) apart from an Indian mobile
+ * once spaces and punctuation are gone. Without the "+", the server falls back
+ * to its India default and corrupts the number (e.g. +65… → 916585236397, a
+ * non-existent number Meta rejects with 131026).
+ *
+ * Rules:
+ *   • Has "+"        → keep it (country code is explicit).
+ *   • No "+", >10 d  → already carries a country code (e.g. a "+" that was
+ *                      stripped upstream) → restore the "+".
+ *   • No "+", ≤10 d  → a local number → leave as-is so the server applies its
+ *                      default country (the common Indian 10-digit case).
+ *
+ * THE guard for "fix the process": every WA send funnels through here, so a
+ * caller that forgets and strips the "+" can no longer silently mangle an
+ * international client's number.
+ */
+function cleanWaPhone(raw: string): string {
+  const trimmed = (raw ?? "").trim();
+  if (!trimmed) return "";
+  const hasPlus = trimmed.startsWith("+");
+  const digits = trimmed.replace(/\D/g, "");
+  if (!digits) return "";
+  if (hasPlus) return `+${digits}`;
+  return digits.length > 10 ? `+${digits}` : digits;
+}
+
 // normaliseToE164 removed 2026-05-15 — only used by the removed AiSensy
 // backend. The WA server accepts the phone string as-is and handles
 // normalisation server-side.
@@ -59,7 +90,7 @@ async function sendViaWaServer(
   opts?: { name?: string; templateLanguage?: string; buttonUrlParam?: string }
 ): Promise<{ ok: boolean; error?: string; backend: "wa_server" }> {
   const body: Record<string, unknown> = {
-    phone,
+    phone: cleanWaPhone(phone),
     name: opts?.name,
     type: "template",
     templateName,
@@ -126,7 +157,7 @@ export async function sendWhatsAppTextAction(
     };
   }
   const body = {
-    phone,
+    phone: cleanWaPhone(phone),
     name: opts?.name,
     type: "text",
     text: text.trim(),
@@ -348,7 +379,7 @@ export async function sendVoiceNoteAction(input: {
   if (!phone) return { ok: false, error: "No mobile number on file for this client" };
 
   const body = {
-    phone,
+    phone: cleanWaPhone(phone),
     name: client.display_name,
     type: "audio",
     audioBase64: input.audioBase64,

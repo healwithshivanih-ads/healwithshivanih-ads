@@ -222,7 +222,10 @@ export async function firePlanPublishFollowups(input: {
       plan_slug: input.planSlug,
       phone: input.phone,
       name: input.displayName,
-      template_name: "fm_supplement_order_v1",
+      // v2 is the UTILITY-categorised version (neutral service-notification
+      // wording). v1 was re-categorised MARKETING by Meta and silently
+      // throttled to cold contacts (err 131049). Same params [name, url].
+      template_name: "fm_supplement_order_v2",
       template_params: [fname, suppUrl],
     });
   } catch (e) {
