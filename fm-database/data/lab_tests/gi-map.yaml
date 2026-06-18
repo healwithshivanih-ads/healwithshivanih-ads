@@ -7,6 +7,7 @@ aliases:
 - diagnostic solutions gi-map
 - stool pcr panel
 - comprehensive stool analysis
+- comprehensive-stool-analysis
 - gi-map dna stool
 units: PCR copies / qualitative
 sample_type: stool
@@ -48,7 +49,7 @@ notes_for_coach: Most useful single FM lab for clients with persistent gut / aut
   secretory IgA), beta-glucuronidase (oestrogen recirculation). Available in India
   via Diagnostic Solutions partnership channels. Pricey — reserve for clients where
   symptomatic guidance + diet trial hasn't moved the needle.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-10'
+updated_at: '2026-06-18'
 updated_by: shivani

@@ -99,6 +99,7 @@ key_mechanisms:
 - gut-brain-axis-disruption
 - neuroimmune-inflammation-loop
 - low-stomach-acid
+- beta-glucuronidase-deconjugation
 - estrogen-enterohepatic-recirculation
 coaching_scope_notes: Coaches can guide elimination diets, low-FODMAP approaches, 5R protocol sequencing, prebiotic/probiotic
   introduction timing, probiotic-rich and fermented foods, prebiotic fibre, stress reduction, and circadian-aligned eating.
@@ -144,7 +145,7 @@ sources:
   location: Topics Covered
   quote: Stress, loneliness, digital overstimulation, gut-brain disruption, altered microbiome, IBS/IBD, and probiotic or
     prebiotic support are discussed.
-version: 8
+version: 9
 status: active
-updated_at: '2026-05-15'
+updated_at: '2026-06-18'
 updated_by: shivani

@@ -52,6 +52,7 @@ downstream_effects:
 - fibrocystic-breasts
 - increased-breast-cancer-risk
 related_mechanisms:
+- beta-glucuronidase-deconjugation
 - microbial-diversity-decline
 - leaky-gut
 - estrogen-decline
@@ -93,7 +94,7 @@ sources:
   quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot of estrogen circulation in the blood,
     it basically stops its excretion from the body.
 evidence_tier: plausible_emerging
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani
