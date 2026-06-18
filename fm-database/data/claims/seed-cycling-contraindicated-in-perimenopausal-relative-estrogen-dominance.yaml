@@ -1,7 +1,8 @@
 slug: seed-cycling-contraindicated-in-perimenopausal-relative-estrogen-dominance
 statement: Seed cycling using flax and pumpkin seeds (to boost estrogen) is contraindicated
-  in perimenopausal women with relative estrogen dominance secondary to low progesterone,
-  as it may worsen symptoms like hot flashes.
+  in any woman with relative estrogen dominance (estrogen already normal-to-high with low
+  progesterone) — at any reproductive stage, not only perimenopause — as boosting estrogen
+  may worsen estrogen-related symptoms. Assess the hormonal picture first.
 evidence_tier: fm_specific_thin
 rationale: 'This is an important clinical caution from FM practice: phytoestrogens
   in flax and pumpkin seeds could worsen symptoms in patients with already-normal
@@ -28,7 +29,7 @@ sources:
   location: Luteal Phase Defect
   quote: Never give seed cycling at that period of time. Because already the estrogen
     is on the higher side, the patient might have worsening of symptoms.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-18'
 updated_by: shivani
