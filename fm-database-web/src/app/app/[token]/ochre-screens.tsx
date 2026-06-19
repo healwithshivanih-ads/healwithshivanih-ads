@@ -758,6 +758,43 @@ export function PlanScreen({
         </div>
       </Section>
 
+      {data.coachPicks.length > 0 && (
+        <Section title="Shivani's picks for you">
+          <div className="card" style={{ overflow: "hidden" }}>
+            {data.coachPicks.map((p, i) => (
+              <div
+                key={`${p.title}-${i}`}
+                style={{
+                  padding: "11px 14px",
+                  borderBottom: i < data.coachPicks.length - 1 ? "1px solid var(--line, #ece7df)" : "none",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: 14 }}>
+                  {p.title}
+                  {p.forWhat && (
+                    <span style={{ fontWeight: 500, opacity: 0.7 }}> · for {p.forWhat}</span>
+                  )}
+                </div>
+                {p.note && <div style={{ fontSize: 12.5, opacity: 0.8, marginTop: 3 }}>{p.note}</div>}
+                {p.buyUrl && (
+                  <a
+                    href={p.buyUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 5, color: "var(--accent, #b8722c)", fontWeight: 600 }}
+                  >
+                    <Icon name="bag" size={13} /> Where to get it
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
+            A few extras Shivani picked for you — optional, not part of your daily routine.
+          </div>
+        </Section>
+      )}
+
       {/* Daily practices + guided breathing now live on the Today tab only
           (2026-06-13) — they're a daily do, not plan reference, so showing
           them in both places was duplication. */}

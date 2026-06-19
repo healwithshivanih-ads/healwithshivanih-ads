@@ -421,6 +421,92 @@ export async function applyChatPatchToPublishedPlan(
   }
 }
 
+export interface CoachRecommendationInput {
+  title: string;
+  forWhat?: string;
+  note?: string;
+  buyUrl?: string;
+}
+
+/** Add or remove a free-form coach pick (off-catalogue product/remedy tip) on
+ *  the active plan, in place. Same direct-write + audit pattern as the
+ *  supplement quick-edit; the per-minute reconciler re-stages it to the app. */
+export async function editCoachRecommendation(
+  planSlug: string,
+  op: { add?: CoachRecommendationInput; removeIndex?: number },
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!planSlug) return { ok: false, error: "planSlug required" };
+  try {
+    const root = getPlansRoot();
+    // Active plan can be in any non-archived bucket; published is the common case.
+    let planPath = "";
+    for (const bucket of ["published", "ready", "drafts"]) {
+      const dir = path.join(root, bucket);
+      const names = await fs.readdir(dir).catch(() => [] as string[]);
+      const match = names.find(
+        (n) =>
+          (n.startsWith(`${planSlug}-v`) || n === `${planSlug}.yaml`) &&
+          n.endsWith(".yaml"),
+      );
+      if (match) {
+        planPath = path.join(dir, match);
+        break;
+      }
+    }
+    if (!planPath) return { ok: false, error: `No active plan found for ${planSlug}.` };
+
+    const raw = await fs.readFile(planPath, "utf-8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const recs = Array.isArray(data.coach_recommendations)
+      ? (data.coach_recommendations as Array<Record<string, unknown>>)
+      : [];
+
+    let summary: string;
+    if (op.add) {
+      const title = op.add.title?.trim();
+      if (!title) return { ok: false, error: "A title is required." };
+      recs.push({
+        title,
+        for_what: op.add.forWhat?.trim() ?? "",
+        note: op.add.note?.trim() ?? "",
+        buy_url: op.add.buyUrl?.trim() ?? "",
+      });
+      summary = `Added recommendation: ${title}`;
+    } else if (typeof op.removeIndex === "number") {
+      if (op.removeIndex < 0 || op.removeIndex >= recs.length) {
+        return { ok: false, error: "Recommendation not found." };
+      }
+      const [removed] = recs.splice(op.removeIndex, 1);
+      summary = `Removed recommendation: ${(removed?.title as string) ?? ""}`;
+    } else {
+      return { ok: false, error: "Nothing to do." };
+    }
+
+    data.coach_recommendations = recs;
+    data.updated_at = new Date().toISOString();
+    const history = (data.status_history as Array<Record<string, unknown>>) ?? [];
+    history.push({
+      state: (data.status as string) ?? "published",
+      by: process.env.FMDB_USER || "shivani",
+      at: new Date().toISOString(),
+      reason: `Coach pick — ${summary}`,
+    });
+    data.status_history = history;
+
+    await fs.writeFile(planPath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf-8");
+
+    const clientId = (data.client_id as string | undefined) ?? "";
+    if (clientId) {
+      revalidatePath(`/clients-v2/${clientId}`);
+      revalidatePath(`/clients-v2/${clientId}/plan`);
+    }
+    revalidatePath(`/plans/${planSlug}`);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
 export interface QuickPracticeEdit {
   /** add a brand-new practice */
   add?: boolean;

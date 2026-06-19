@@ -994,6 +994,18 @@ class TissueSaltsSection(BaseModel):
     coach_notes: str = ""             # private working notes — NOT client-facing
 
 
+class CoachRecommendation(BaseModel):
+    """A free-form, off-catalogue product / remedy tip the coach wants the
+    client to see in the app — e.g. 'Aquaphor for dry lips'. NOT a supplement
+    (no dosing schedule) and NOT catalogue-bound; just a quick personal pick
+    with an optional buy link. Surfaced in the client app's tips section."""
+    model_config = ConfigDict(extra="forbid")
+    title: str                        # the product / remedy ("Aquaphor")
+    for_what: str = ""                # what it's for ("dry, cracked lips")
+    note: str = ""                    # how to use / why ("dab on at bedtime")
+    buy_url: str = ""                 # optional purchase link
+
+
 class EducationModule(BaseModel):
     """A topic / mechanism / claim the coach plans to teach this client."""
     model_config = ConfigDict(extra="forbid")
@@ -1304,6 +1316,11 @@ class Plan(BaseModel):
     # letters + the client app when present AND the client has 'schussler_salts'
     # in plan_modules. Salts reference the tissue_salt catalogue (subgraph-bound).
     tissue_salts: Optional[TissueSaltsSection] = None
+
+    # ---- Coach's quick picks — free-form off-catalogue product/remedy tips
+    # ("Aquaphor for dry lips"). Surfaced in the client app's tips section.
+    # Default-empty so existing plans load unchanged. ----
+    coach_recommendations: list[CoachRecommendation] = Field(default_factory=list)
 
     # ---- prescriptive (coach for now; AI sanity-check warns on confirm_with_clinician) ----
     supplement_protocol: list[SupplementItem] = Field(default_factory=list)

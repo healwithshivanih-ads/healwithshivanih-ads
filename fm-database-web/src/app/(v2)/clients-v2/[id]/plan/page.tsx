@@ -55,6 +55,7 @@ import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { SupplementsProtocolPanel } from "./supplements-protocol-panel";
 import { PlanChatPanel } from "@/components/plan-editor/plan-chat-panel";
+import { CoachRecommendationsPanel } from "./coach-recommendations-panel";
 import { QuickEditPracticesPanel } from "./quick-edit-practices-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
@@ -461,6 +462,19 @@ export default async function PlanTabPage({
       durationWeeks: typeof it.duration_weeks === "number" ? it.duration_weeks : null,
     }))
     .filter((it) => it.name);
+
+  // Coach's quick picks (free-form product/remedy tips) for the panel.
+  const coachRecRows = ((activePlan?.coach_recommendations as
+    | Array<Record<string, unknown>>
+    | undefined) ?? [])
+    .filter((it): it is Record<string, unknown> => !!it && typeof it === "object")
+    .map((it) => ({
+      title: (it.title as string | undefined) ?? "",
+      forWhat: (it.for_what as string | undefined) ?? "",
+      note: (it.note as string | undefined) ?? "",
+      buyUrl: (it.buy_url as string | undefined) ?? "",
+    }))
+    .filter((it) => it.title);
 
   // Rows for the in-place QuickEditSupplementsPanel (published plans only).
   // Carries display_name so the panel can show a clean name; the slug is
@@ -1030,6 +1044,14 @@ export default async function PlanTabPage({
           >
             <PlanChatPanel slug={activePlan.slug as string} clientId={id} isLocked={false} />
           </Collapsible>
+        </div>
+
+        {/* Coach's quick picks — free-form product/remedy tips shown in the app. */}
+        <div style={{ marginTop: 14 }}>
+          <CoachRecommendationsPanel
+            planSlug={activePlan.slug as string}
+            recommendations={coachRecRows}
+          />
         </div>
 
         {/* Footer meta — evergreen verbs + audit trails, below the studio. */}

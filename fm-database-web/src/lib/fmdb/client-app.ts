@@ -819,6 +819,9 @@ export interface ClientAppData {
    *  schussler_salts module AND the plan carries an authored tissue_salts
    *  section. null otherwise. A gentle optional adjunct. */
   tissueSalts: { overview: string; list: { name: string; reason: string; how: string }[] } | null;
+  /** Free-form coach picks (off-catalogue product/remedy tips) — "Aquaphor for
+   *  dry lips". Shown in the app's "Shivani's picks" section. */
+  coachPicks: { title: string; forWhat: string; note: string; buyUrl: string }[];
   planRef: {
     pattern: string;
     authoredBy: string;
@@ -4105,6 +4108,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     history: bodyHistory.map(({ date, weightKg, waistCm, hipCm }) => ({ date, weightKg, waistCm, hipCm })),
   };
 
+  // ---- coach's quick picks (off-catalogue product / remedy tips) ------------
+  const coachPicks = (Array.isArray(plan.coach_recommendations) ? (plan.coach_recommendations as Dict[]) : [])
+    .map((r) => ({
+      title: asStr(r.title).trim(),
+      forWhat: asStr(r.for_what).trim(),
+      note: asStr(r.note).trim(),
+      buyUrl: asStr(r.buy_url).trim(),
+    }))
+    .filter((r) => r.title);
+
   // ---- weight-loss daily calorie guide --------------------------------------
   // Only for clients whose goals mention weight loss. Same maths as the letter
   // generator's _calc_calorie_targets: Mifflin-St Jeor BMR → TDEE → a deficit
@@ -4305,6 +4318,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     remedyLib: visibleLib,
     remedyShelf: visibleShelf,
     tissueSalts,
+    coachPicks,
     planRef: {
       pattern: asStr(nutrition.pattern) || "your plan",
       authoredBy: coachName,
