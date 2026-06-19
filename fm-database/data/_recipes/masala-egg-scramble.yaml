@@ -1,0 +1,98 @@
+slug: masala-egg-scramble
+name: Masala egg scramble
+meal_type:
+- breakfast
+diet:
+- eggetarian
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- salty
+main_ingredients:
+- eggs
+- onion
+- tomato
+- spinach
+- oil
+- spices
+contains_allergens:
+- egg
+ingredients:
+- item: eggs
+  qty: '3'
+  unit: ''
+- item: onion, finely chopped
+  qty: '0.5'
+  unit: medium
+- item: tomato, chopped
+  qty: '1'
+  unit: small
+- item: spinach, chopped
+  qty: '1'
+  unit: cup
+- item: oil
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: green chilli
+  qty: '1'
+  unit: ''
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat oil; splutter cumin, then saute the onion and green chilli until soft.
+- Add the tomato and turmeric and cook until pulpy.
+- Stir in the spinach and let it wilt for a minute.
+- Beat the eggs with salt and pepper, pour in, and stir gently over medium heat until just set and creamy.
+- Finish with coriander and serve with a small millet or jowar roti.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 8
+approx_kcal_per_serving: 290
+protein_g: 20
+good_for:
+- digestion-and-nutrient-absorption
+one_line: A protein-packed Indian-style spiced egg scramble with greens.
+headnote: Eggs scrambled soft with onion, tomato and spinach — a fast, high-protein breakfast (akin to
+  bhurji, kept creamy not dry).
+kcal_is_estimate: true
+kcal_per_serving: 290
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Masala egg scramble
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/masala-egg-scramble.jpg
+  credit: Spicy egg bhurji @ the eggfactory.jpg by Praveen from Bangalore, India — Wikimedia Commons (CC
+    BY 2.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Spicy_egg_bhurji_@_the_eggfactory.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

@@ -1,0 +1,101 @@
+slug: rajma
+name: Rajma
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- kidney beans
+- onion
+- tomato
+- ginger-garlic
+- oil
+- spices
+contains_allergens: []
+ingredients:
+- item: kidney beans (rajma), soaked overnight
+  qty: '0.75'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: medium
+- item: tomato, pureed
+  qty: '2'
+  unit: medium
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: oil
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Pressure-cook the soaked rajma with salt and 2.5 cups water for 5-6 whistles until very soft.
+- Heat oil; splutter cumin, then saute onion until golden. Add ginger-garlic paste and cook 1 minute.
+- Add the tomato puree and dry spices; cook down until the oil separates.
+- Add the cooked rajma with its liquid; simmer 12-15 minutes, mashing a few beans to thicken the gravy.
+- Finish with garam masala and coriander; serve with brown rice or roti.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 30
+approx_kcal_per_serving: 260
+protein_g: 13
+good_for:
+- digestion-and-nutrient-absorption
+one_line: A comforting home-style kidney-bean curry, lightly spiced.
+headnote: Soaked-and-soft rajma in a simple onion-tomato base. High in plant protein and fibre; pairs
+  with a small portion of rice.
+kcal_is_estimate: true
+kcal_per_serving: 260
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Rajma
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/rajma.jpg
+  credit: Chitra Rajma by Sanjay Acharya — Wikimedia Commons (CC BY-SA 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Chitra_Rajma.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

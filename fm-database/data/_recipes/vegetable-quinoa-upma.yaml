@@ -1,0 +1,101 @@
+slug: vegetable-quinoa-upma
+name: Vegetable quinoa upma
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- quinoa
+- mixed vegetables
+- mustard seeds
+- curry leaves
+- oil
+- ginger
+contains_allergens: []
+ingredients:
+- item: quinoa, rinsed
+  qty: '0.75'
+  unit: cup
+- item: mixed vegetables (carrot, peas, capsicum)
+  qty: '1'
+  unit: cup
+- item: oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: chana dal
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: green chilli
+  qty: '1'
+  unit: ''
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '1.5'
+  unit: cups
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Dry-roast the rinsed quinoa for 2 minutes until the grains separate.
+- Heat oil; splutter mustard seeds and chana dal, then add curry leaves, ginger and green chilli.
+- Add the vegetables with a little salt and saute 3-4 minutes.
+- Add the quinoa and water, bring to a boil, then cover and simmer 12-14 minutes until the water is absorbed
+  and the grains are fluffy.
+- Rest 5 minutes off heat, then fluff and fold in lemon juice and coriander.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 18
+approx_kcal_per_serving: 300
+protein_g: 10
+good_for:
+- blood-sugar-balance
+- digestion-and-nutrient-absorption
+one_line: A protein-rich quinoa upma with a South-Indian tempering.
+headnote: Quinoa stands in for rava here — more protein and a gentler glycaemic load, with the familiar
+  mustard-curry-leaf tempering.
+kcal_is_estimate: true
+kcal_per_serving: 300
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Vegetable quinoa upma
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/vegetable-quinoa-upma.jpg
+  credit: Palak quinoa adai.JPG by Kalaiselvi Murugesan — Wikimedia Commons (CC BY-SA 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Palak_quinoa_adai.JPG
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

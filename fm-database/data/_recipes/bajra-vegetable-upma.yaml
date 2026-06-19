@@ -1,0 +1,103 @@
+slug: bajra-vegetable-upma
+name: Bajra vegetable upma
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- winter
+- monsoon
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- bajra (pearl millet) rava
+- mixed vegetables
+- mustard seeds
+- curry leaves
+- oil
+- ginger
+contains_allergens: []
+ingredients:
+- item: bajra (pearl millet) rava / coarse flour
+  qty: '0.75'
+  unit: cup
+- item: mixed vegetables (carrot, peas, beans)
+  qty: '1'
+  unit: cup
+- item: oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: urad dal
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: green chilli
+  qty: '1'
+  unit: ''
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '2'
+  unit: cups
+- item: til (sesame seeds), roasted
+  qty: '1'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Dry-roast the bajra rava on low until it smells nutty; set aside.
+- Heat oil; splutter mustard seeds and urad dal, then add curry leaves, ginger and green chilli.
+- Add the chopped vegetables and a little salt; saute 3-4 minutes until just tender.
+- Pour in hot water, bring to a boil, then lower the heat and stream in the roasted bajra rava, stirring
+  to avoid lumps.
+- Cover and steam 5-6 minutes until fluffy. Fold in roasted til and lemon juice before serving.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 290
+protein_g: 8
+good_for:
+- blood-sugar-balance
+- digestion-and-nutrient-absorption
+one_line: A warming pearl-millet upma loaded with vegetables.
+headnote: Bajra rava gives this upma a nutty depth and a low-glycaemic, mineral-rich base. A hearty gluten-free
+  breakfast.
+kcal_is_estimate: true
+kcal_per_serving: 290
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Bajra vegetable upma
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/bajra-vegetable-upma.jpg
+  credit: Rava Upma (Suji or Semolina Upma).JPG by Mdsmds0 — Wikimedia Commons (CC BY-SA 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Rava_Upma_(Suji_or_Semolina_Upma).JPG
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

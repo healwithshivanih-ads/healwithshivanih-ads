@@ -1,0 +1,101 @@
+slug: vegetable-kitchari
+name: Vegetable kitchari
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- split yellow moong dal
+- white rice or millet
+- mixed vegetables
+- ghee or oil
+- cumin seeds
+- ginger
+- turmeric
+contains_allergens: []
+ingredients:
+- item: split yellow moong dal
+  qty: '0.5'
+  unit: cup
+- item: white rice or foxtail millet
+  qty: '0.5'
+  unit: cup
+- item: mixed vegetables (dudhi, carrot, peas, beans)
+  qty: '1.5'
+  unit: cups
+- item: ghee or coconut oil
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '4.5'
+  unit: cups
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Rinse the moong dal and rice together and drain.
+- Heat ghee in a pressure cooker; splutter the cumin, then add curry leaves, ginger and turmeric.
+- Add all the chopped vegetables and saute 2 minutes.
+- Add the dal-rice, salt and water; pressure-cook 3-4 whistles until everything is soft.
+- Mash lightly to a soft khichdi, loosen with hot water if needed, and finish with coriander.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 25
+approx_kcal_per_serving: 300
+protein_g: 11
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A vegetable-loaded moong kitchari — soft, soupy and gut-friendly.
+headnote: 'The everyday vegetable khichdi: moong dal, a small grain and whatever seasonal veg is on hand,
+  cooked soft with a light tempering.'
+kcal_is_estimate: true
+kcal_per_serving: 300
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Vegetable kitchari
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/vegetable-kitchari.jpg
+  credit: Vegetable Khichdi 1.jpg by Dolon Prova — Wikimedia Commons (CC BY-SA 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Vegetable_Khichdi_1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

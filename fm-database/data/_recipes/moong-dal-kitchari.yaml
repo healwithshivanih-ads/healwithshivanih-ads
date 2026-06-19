@@ -1,0 +1,98 @@
+slug: moong-dal-kitchari
+name: Moong dal kitchari
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- split yellow moong dal
+- white rice or millet
+- ghee or coconut oil
+- cumin seeds
+- ginger
+- turmeric
+- mixed vegetables
+contains_allergens: []
+ingredients:
+- item: split yellow moong dal
+  qty: '0.5'
+  unit: cup
+- item: white rice or sama millet
+  qty: '0.5'
+  unit: cup
+- item: ghee or coconut oil
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: diced seasonal vegetables (carrot, bottle gourd, beans)
+  qty: '1'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '4'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Dry-roast the moong dal in a pan for 2 minutes until fragrant, then rinse the dal and rice together.
+- Heat ghee in a pressure cooker; add cumin seeds and let them splutter, then add ginger and turmeric.
+- Add the diced vegetables and saute for a minute.
+- Add the drained dal-rice, salt and water. Pressure-cook 3-4 whistles (or simmer covered 25-30 min) until
+  soft and porridge-like.
+- Stir to a soft, soupy consistency, adding hot water if needed. Garnish with coriander and serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 25
+approx_kcal_per_serving: 320
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: The classic one-pot moong dal and rice kitchari — light, soupy and easy to digest.
+headnote: 'A gentle ''agni-reset'' meal: moong dal and a small grain cooked soft with a simple tempering.
+  Easy on digestion, naturally tridoshic.'
+kcal_is_estimate: true
+kcal_per_serving: 320
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Moong dal kitchari
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/moong-dal-kitchari.jpg
+  credit: MoongDal Khichdi.jpg by Mrudit161187 — Wikimedia Commons (CC BY-SA 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:MoongDal_Khichdi.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

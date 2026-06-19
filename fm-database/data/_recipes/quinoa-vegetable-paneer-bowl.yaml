@@ -1,0 +1,92 @@
+slug: quinoa-vegetable-paneer-bowl
+name: Quinoa vegetable paneer bowl
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Fusion
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+- salty
+main_ingredients:
+- quinoa
+- paneer
+- mixed vegetables
+- olive oil
+- lemon
+- herbs
+contains_allergens:
+- dairy
+ingredients:
+- item: cooked quinoa
+  qty: '1'
+  unit: cup
+- item: paneer, cubed
+  qty: '100'
+  unit: g
+- item: mixed vegetables (broccoli, peppers, zucchini)
+  qty: '1.5'
+  unit: cups
+- item: olive oil
+  qty: '1'
+  unit: tbsp
+- item: garlic, minced
+  qty: '1'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: black pepper
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh herbs or coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Pan-sear the paneer cubes in a little oil until golden on the edges; set aside.
+- In the same pan, saute the garlic and vegetables on high heat 3-4 minutes so they stay crisp.
+- Add the cooked quinoa, salt and pepper, and toss through to warm.
+- Return the paneer, add lemon juice and herbs, and toss gently.
+- Serve warm as a balanced bowl with a side salad.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 12
+approx_kcal_per_serving: 360
+protein_g: 18
+good_for:
+- digestion-and-nutrient-absorption
+one_line: A balanced bowl of quinoa, crisp vegetables and pan-seared paneer.
+headnote: 'A protein-forward bowl: quinoa for complex carbs, paneer for protein and crisp-tender vegetables,
+  finished bright with lemon.'
+kcal_is_estimate: true
+kcal_per_serving: 360
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Quinoa vegetable paneer bowl
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/quinoa-vegetable-paneer-bowl.jpg
+  credit: Healthy quinoa salad with dried fruit.jpg by TorbeyCharbel — Wikimedia Commons (CC BY 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Healthy_quinoa_salad_with_dried_fruit.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

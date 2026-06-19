@@ -1,0 +1,95 @@
+slug: paneer-vegetable-stir-fry
+name: Paneer vegetable stir-fry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian-Fusion
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- pungent
+- salty
+main_ingredients:
+- paneer
+- broccoli
+- bell peppers
+- green beans
+- oil
+- garlic
+contains_allergens:
+- dairy
+ingredients:
+- item: paneer, cubed
+  qty: '100'
+  unit: g
+- item: broccoli florets
+  qty: '1'
+  unit: cup
+- item: bell peppers, sliced
+  qty: '1'
+  unit: cup
+- item: green beans, cut
+  qty: '0.5'
+  unit: cup
+- item: oil
+  qty: '1'
+  unit: tbsp
+- item: garlic, minced
+  qty: '1'
+  unit: tsp
+- item: ginger, julienned
+  qty: '1'
+  unit: tsp
+- item: black pepper
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Heat oil in a wok or kadai until hot; add garlic and ginger and stir for 20 seconds.
+- Add the firmest vegetables first (beans, broccoli), then peppers, stir-frying on high so they stay crisp.
+- Push the vegetables aside, add the paneer cubes and sear 1-2 minutes.
+- Season with salt and pepper, toss everything together for a minute.
+- Finish with a squeeze of lemon and serve hot with a small salad or roti.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 10
+approx_kcal_per_serving: 300
+protein_g: 16
+good_for:
+- digestion-and-nutrient-absorption
+one_line: A quick, crisp paneer and vegetable stir-fry.
+headnote: 'High-protein and low-effort: paneer seared with crisp-tender vegetables and a bright lemon
+  finish. Keep the heat high and the cooking short.'
+kcal_is_estimate: true
+kcal_per_serving: 300
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Paneer vegetable stir-fry
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/paneer-vegetable-stir-fry.jpg
+  credit: Homemade Paneer Bhurji cooked in pan India.jpg by Status 401 — Wikimedia Commons (CC BY-SA 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

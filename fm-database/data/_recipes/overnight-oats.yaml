@@ -1,0 +1,87 @@
+slug: overnight-oats
+name: Overnight oats
+meal_type:
+- breakfast
+diet:
+- vegetarian
+region: Continental
+seasons:
+- summer
+- spring
+- all
+balances_dosha:
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+main_ingredients:
+- rolled oats
+- milk or yogurt
+- chia seeds
+- berries
+- walnuts
+contains_allergens:
+- dairy
+- gluten
+- nuts
+ingredients:
+- item: rolled oats
+  qty: '0.5'
+  unit: cup
+- item: milk or Greek yogurt
+  qty: '0.75'
+  unit: cup
+- item: chia seeds
+  qty: '1'
+  unit: tbsp
+- item: mixed berries
+  qty: '0.5'
+  unit: cup
+- item: walnuts, chopped
+  qty: '5'
+  unit: halves
+- item: cinnamon
+  qty: '1'
+  unit: pinch
+- item: honey or soaked dates (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- In a jar, combine the oats, milk or yogurt, chia seeds and cinnamon and stir well.
+- Cover and refrigerate overnight (at least 6 hours) so the oats and chia soften and swell.
+- In the morning, stir, loosen with a splash of milk if thick.
+- Top with the berries and walnuts, and a touch of honey or chopped soaked dates if needed.
+- Eat cold — no cooking required.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 340
+protein_g: 14
+good_for:
+- blood-sugar-balance
+- digestion-and-nutrient-absorption
+one_line: No-cook oats soaked overnight with chia, berries and walnuts.
+headnote: Soak it the night before and breakfast is ready. The chia and oats give steady, fibre-rich energy;
+  berries and walnuts add antioxidants and good fats.
+kcal_is_estimate: true
+kcal_per_serving: 340
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Overnight oats
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/overnight-oats.jpg
+  credit: 'Muesli.jpg by Original description was: I, VirtualSteve took this photograph on February 19,
+    2 — Wikimedia Commons (CC BY-SA 2.5)'
+  source_url: https://commons.wikimedia.org/wiki/File:Muesli.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use

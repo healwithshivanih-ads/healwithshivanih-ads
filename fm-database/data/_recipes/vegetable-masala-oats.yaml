@@ -1,0 +1,100 @@
+slug: vegetable-masala-oats
+name: Vegetable masala oats
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- monsoon
+- winter
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- rolled oats
+- mixed vegetables
+- mustard seeds
+- curry leaves
+- oil
+contains_allergens:
+- gluten
+ingredients:
+- item: rolled oats
+  qty: '0.5'
+  unit: cup
+- item: mixed vegetables (carrot, peas, beans)
+  qty: '1'
+  unit: cup
+- item: oil
+  qty: '1'
+  unit: tsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: onion, chopped
+  qty: '0.5'
+  unit: small
+- item: ginger, grated
+  qty: '0.5'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '1.25'
+  unit: cups
+- item: fresh coriander
+  qty: '1'
+  unit: tbsp
+steps:
+- Dry-roast the oats for 2 minutes until lightly fragrant; set aside.
+- Heat oil; splutter mustard seeds, then add curry leaves, onion, ginger and turmeric and saute until
+  soft.
+- Add the vegetables and a little salt; cook 3-4 minutes until just tender.
+- Add water and bring to a boil, then stir in the roasted oats.
+- Simmer 3-4 minutes to a soft, savoury porridge; finish with coriander and serve hot.
+servings: '1'
+prep_time_min: 8
+cook_time_min: 10
+approx_kcal_per_serving: 270
+protein_g: 9
+good_for:
+- blood-sugar-balance
+- digestion-and-nutrient-absorption
+one_line: A savoury, vegetable-rich masala oats — upma-style.
+headnote: 'Oats cooked like upma: a quick savoury bowl with vegetables and a South-Indian tempering. A
+  warm alternative to sweet oats.'
+kcal_is_estimate: true
+kcal_per_serving: 270
+kcal_basis: estimate
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Vegetable masala oats
+version: 1
+status: active
+updated_at: '2026-06-19'
+updated_by: Shivani
+image:
+  file: images/web/vegetable-masala-oats.jpg
+  credit: Cooked oatmeal in bowl 3.jpg by Bodhi Peace — Wikimedia Commons (CC BY-SA 4.0)
+  source_url: https://commons.wikimedia.org/wiki/File:Cooked_oatmeal_in_bowl_3.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
+    or commercial use
