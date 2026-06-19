@@ -5,7 +5,7 @@ import fs from "node:fs/promises";
 import yaml from "js-yaml";
 import { getCataloguePath } from "@/lib/fmdb/paths";
 import { loadAllPlans, loadAllClients } from "@/lib/fmdb/loader";
-import { loadLibraryRecipes, buildLibraryRecipeResolver } from "@/lib/fmdb/client-app";
+import { loadLibraryRecipes, buildLibraryRecipeResolver, snackCategoryImage } from "@/lib/fmdb/client-app";
 
 /** One catalogue recipe that would show in the client app without a real
  *  photo — so the coach can source/generate one before any client sees it. */
@@ -167,8 +167,10 @@ export async function getMenuImageCoverage(): Promise<MenuImageCoverage> {
             const dish = (s.dish ?? "").trim();
             if (!dish || seen.has(dish)) continue;
             seen.add(dish);
+            // Covered when it resolves to a recipe photo OR maps to a snack/
+            // drink category photo; only truly-uncategorised dishes are flagged.
             const rec = resolver(dish);
-            if (!rec || !rec.imageUrl) missing.push(dish);
+            if ((!rec || !rec.imageUrl) && !snackCategoryImage(dish)) missing.push(dish);
           }
 
       if (missing.length) {

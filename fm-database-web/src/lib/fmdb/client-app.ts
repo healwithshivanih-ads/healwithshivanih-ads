@@ -1386,6 +1386,48 @@ export function buildLibraryRecipeResolver(
   };
 }
 
+// Snack/drink category fallback. Most no-recipe menu slots are simple assemblies
+// (nuts + fruit, buttermilk, herbal tea, curd) that don't warrant a unique
+// recipe — but should still show a suitable real photo rather than a bare tile.
+// Each maps to a representative image in public/recipe-images/categories/. Order
+// is priority: the defining item (a drink, makhana, sprouts, curd) wins over a
+// trailing garnish. Classified on the FIRST component first, then the whole
+// dish, so "apple + almonds" reads as fruit (the lead), "almonds + apple" as
+// nuts. Keep in sync with the categories/ image set + the dashboard scan.
+const SNACK_CATEGORIES: [string, RegExp][] = [
+  ["buttermilk", /\b(buttermilk|chaas|chhaas|lassi)\b/i],
+  ["herbal-tea", /\b(ccf|tea|kadha|kashayam|infusion|tisane)\b/i],
+  ["infused-water", /\b((jeera|methi|ajwain|cumin|lemon|warm|saunf|fennel|coriander)\s+water)\b/i],
+  ["coconut-water", /\b(coconut water|tender coconut|nariyal pani)\b/i],
+  ["sherbet", /\b(kokum|aam panna|sherbet|sharbat|panna)\b/i],
+  ["protein-shake", /\b(protein|collagen|whey|smoothie|milkshake|shake)\b/i],
+  ["makhana", /\b(makhana|makhane|fox.?nut|phool makhana)\b/i],
+  ["sprouts", /\bsprout/i],
+  ["curd-yogurt", /\b(curd|yogurt|yoghurt|dahi|raita|hung.?curd)\b/i],
+  ["hummus", /\bhummus\b/i],
+  ["chivda", /\b(chivda|chiwda|chidwa|namkeen|puffs?)\b/i],
+  ["nuts", /\b(almonds?|walnuts?|cashews?|pistachios?|brazil|peanuts?|nuts?)\b/i],
+  ["seeds", /\b((pumpkin|sunflower|water.?melon)\s+seeds?|flax|chia|sesame|\btil\b|seeds?)\b/i],
+  ["dry-fruit", /\b(dates?|raisins?|anjeer|figs?|dry fruit|dried fruit|prunes?|apricots?)\b/i],
+  ["fruit", /\b(apple|banana|pear|guava|papaya|orange|kiwi|berr|melon|pomegranate|amla|grapes?|chikoo|sapota|mosambi|fruit)\b/i],
+  ["veg-sticks", /\b(cucumber|carrot|radish|veggie stick|crudit|salad|chaat)\b/i],
+];
+
+function categoryFor(text: string): string | null {
+  for (const [cat, re] of SNACK_CATEGORIES) if (re.test(text)) return cat;
+  return null;
+}
+
+/** A representative category photo for a snack/drink dish that doesn't resolve
+ *  to a recipe — first component first, then the whole dish. Returns null when
+ *  nothing matches (the caller then falls back to the labelled tile). Exported
+ *  so the dashboard coverage scan counts category-covered dishes as covered. */
+export function snackCategoryImage(dish: string): string | undefined {
+  const firstPill = dish.split(/\s\+\s|→|⇒|:/)[0] ?? dish;
+  const cat = categoryFor(firstPill) ?? categoryFor(dish);
+  return cat ? `/recipe-images/categories/${cat}.jpg` : undefined;
+}
+
 function parseRecipes(md: string): LetterRecipe[] {
   const out: LetterRecipe[] = [];
   // Letter generations drifted on the recipe marker (✦ / ✨ / ⭐) — accept
@@ -2562,7 +2604,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         // photo — fall back to the library recipe's image so the thumbnail
         // shows a picture instead of the gradient (mirrors the recipe-card
         // fix below; fixes "all the food pictures disappeared" 2026-06-15).
-        imageUrl: rec?.imageUrl ?? libraryRecipeFor(pills[0] ?? cell)?.imageUrl,
+        imageUrl: rec?.imageUrl ?? libraryRecipeFor(pills[0] ?? cell)?.imageUrl ?? snackCategoryImage(cell),
         mins: rec?.time,
         serves: rec?.serves,
         ingredients: rec?.ingredients ?? [],
