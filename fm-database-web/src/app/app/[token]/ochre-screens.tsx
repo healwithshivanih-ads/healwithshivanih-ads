@@ -708,6 +708,16 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
               {s.how ? (
                 <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 2 }}>{s.how}</div>
               ) : null}
+              {s.buyUrl ? (
+                <a
+                  href={s.buyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 4, color: "var(--accent, #b8722c)", fontWeight: 600 }}
+                >
+                  <Icon name="bag" size={13} /> Find it on Amazon
+                </a>
+              ) : null}
             </div>
           ))}
           <div style={{ fontSize: 11.5, color: "var(--muted)", lineHeight: 1.5, marginTop: 8, opacity: 0.85 }}>

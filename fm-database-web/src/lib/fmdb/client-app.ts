@@ -818,7 +818,7 @@ export interface ClientAppData {
   /** Schüssler tissue-salt suggestions — present only when the client is on the
    *  schussler_salts module AND the plan carries an authored tissue_salts
    *  section. null otherwise. A gentle optional adjunct. */
-  tissueSalts: { overview: string; list: { name: string; reason: string; how: string }[] } | null;
+  tissueSalts: { overview: string; list: { name: string; reason: string; how: string; buyUrl: string }[] } | null;
   /** Free-form coach picks (off-catalogue product/remedy tips) — "Aquaphor for
    *  dry lips". Shown in the app's "Shivani's picks" section. */
   coachPicks: { title: string; forWhat: string; note: string; buyUrl: string }[];
@@ -1706,14 +1706,17 @@ function remedyIcon(category: string, route: string, slug: string): string {
 let remedyCache: AppRemedy[] | null = null;
 let remedyCacheAt = 0;
 
-let tsSaltCache: Map<string, { name: string; how: string }> | null = null;
+let tsSaltCache: Map<string, { name: string; how: string; buyUrl: string }> | null = null;
 let tsSaltCacheAt = 0;
-/** slug → {display name, typical-use} for the tissue_salt catalogue. Used to
- *  resolve plan.tissue_salts slugs for the app's gentle-adjunct section. */
-async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: string }>> {
+/** slug → {client-friendly name, typical-use, buy link} for the tissue_salt
+ *  catalogue. Clients order cell salts by the SHORT biochemic name (Nat Mur,
+ *  Kali Mur) + number, so we surface that — "Nat Mur (No. 8)" — not the chemical
+ *  name. Buy link is an Amazon India search for the SBL 6X product (specific
+ *  ASINs go out of stock; a search always resolves and lets them pick a brand). */
+async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: string; buyUrl: string }>> {
   if (tsSaltCache && Date.now() - tsSaltCacheAt < 60_000) return tsSaltCache;
   const dir = path.join(getCataloguePath(), "tissue_salts");
-  const map = new Map<string, { name: string; how: string }>();
+  const map = new Map<string, { name: string; how: string; buyUrl: string }>();
   let entries: string[] = [];
   try {
     entries = await fs.readdir(dir);
@@ -1725,9 +1728,16 @@ async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: str
     const d = await readYamlIfExists(path.join(dir, name));
     if (!d) continue;
     const slug = asStr(d.slug) || name.replace(/\.ya?ml$/, "");
+    // aliases[0] is the short biochemic order-name ("Nat Mur", "Kali Mur").
+    const aliases = Array.isArray(d.aliases) ? (d.aliases as unknown[]).map(asStr) : [];
+    const abbrev = aliases[0] || asStr(d.display_name) || humanize(slug);
+    const num = d.salt_number;
+    const displayName = num != null && `${num}`.trim() ? `${abbrev} (No. ${num})` : abbrev;
+    const buyUrl = `https://www.amazon.in/s?k=${encodeURIComponent(`SBL ${abbrev} 6X tablets`)}`;
     map.set(slug, {
-      name: asStr(d.display_name) || humanize(slug),
+      name: displayName,
       how: asStr(d.typical_use).replace(/\s+/g, " ").trim(),
+      buyUrl,
     });
   }
   tsSaltCache = map;
@@ -4217,9 +4227,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
             name: cat?.name ?? humanize(slug),
             reason: asStr(it.reason).trim(),
             how: asStr(it.typical_use).trim() || (cat?.how ?? ""),
+            buyUrl: cat?.buyUrl ?? "",
           };
         })
-        .filter((x): x is { name: string; reason: string; how: string } => x !== null)
+        .filter((x): x is { name: string; reason: string; how: string; buyUrl: string } => x !== null)
         .slice(0, MAX_TISSUE_SALTS);
       if (tsList.length) {
         tissueSalts = { overview: asStr(tsBlock.overview).trim(), list: tsList };
