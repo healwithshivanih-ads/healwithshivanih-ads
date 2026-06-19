@@ -506,68 +506,75 @@ function MealList({
 /** Plan-tab supplement list, tiered: ⭐ Core (driver-targeting) first, then
  *  the rest of the daily protocol, then a clearly-separated "As needed"
  *  group at the bottom so situational items never pollute the daily list. */
+// The whole plan, grouped by the week each supplement starts. Each week is a
+// collapsible section: the current week (and anything starting next week) is
+// open by default; future and completed phases stay collapsed so the list
+// reads as the full arc without overwhelming. Today's routine lives on the
+// Today tab — this is the reference for the entire protocol.
 function PlanSupplements() {
-  const { supplements, upcomingSupplements } = useOchre();
-  const byDay = (a: AppSupplementT, b: AppSupplementT) => a.chronoRank - b.chronoRank;
-  const core = supplements.filter((s) => s.core && !s.asNeeded).sort(byDay);
-  const daily = supplements.filter((s) => !s.core && !s.asNeeded).sort(byDay);
-  const asNeeded = supplements.filter((s) => s.asNeeded);
-  const upcoming = (upcomingSupplements ?? []).slice().sort(byDay);
+  const { allSupplements, supplements } = useOchre();
+  // Fall back to the current-week list if an older payload has no allSupplements.
+  const items = ((allSupplements && allSupplements.length ? allSupplements : supplements) ?? []).slice();
+  if (items.length === 0) return null;
+
+  const byWeek = new Map<number, AppSupplementT[]>();
+  for (const s of items) {
+    const wk = s.startWeek ?? 1;
+    const arr = byWeek.get(wk);
+    if (arr) arr.push(s);
+    else byWeek.set(wk, [s]);
+  }
+  const weeks = [...byWeek.keys()].sort((a, b) => a - b);
+
+  const meta = (st?: string) =>
+    st === "current"
+      ? { tag: "On it now", color: "#2f7d4f", bg: "#eef6ef", border: "#cfe6d4", open: true, dim: false }
+      : st === "upcoming"
+        ? { tag: "Starts next week", color: "#b8722c", bg: "#fbf4e9", border: "#e7c79b", open: true, dim: false }
+        : st === "past"
+          ? { tag: "Completed", color: "#8a8a8a", bg: "#f4f4f2", border: "#e4e4df", open: false, dim: true }
+          : { tag: "Coming up", color: "#5b6b7a", bg: "#f1f4f7", border: "#d8e0e8", open: false, dim: false };
+
   return (
     <>
-      {core.length > 0 && (
-        <>
-          <div className="supp-group-label">
-            <Icon name="sparkle" size={13} /> Core — the ones doing the heavy lifting
-          </div>
-          <div className="card" style={{ overflow: "hidden" }}>
-            {core.map((s) => (
-              <SuppPlanCard key={s.id} supp={s} />
-            ))}
-          </div>
-        </>
-      )}
-      {daily.length > 0 && (
-        <>
-          {core.length > 0 && <div className="supp-group-label plain">Supporting your protocol</div>}
-          <div className="card" style={{ overflow: "hidden", marginTop: core.length > 0 ? 0 : undefined }}>
-            {daily.map((s) => (
-              <SuppPlanCard key={s.id} supp={s} />
-            ))}
-          </div>
-        </>
-      )}
-      {asNeeded.length > 0 && (
-        <>
-          <div className="supp-group-label muted-label">As needed — not every day</div>
-          <div className="card card-asneeded" style={{ overflow: "hidden" }}>
-            {asNeeded.map((s) => (
-              <SuppPlanCard key={s.id} supp={s} />
-            ))}
-          </div>
-          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
-            Keep these on hand — use only when the moment calls for it (eating out, travel, a reaction). Not part of your daily rhythm.
-          </div>
-        </>
-      )}
-      {upcoming.length > 0 && (
-        <>
-          <div className="supp-group-label" style={{ color: "#b8722c" }}>
-            <Icon name="bag" size={13} /> Starting next week — order now so it arrives in time
-          </div>
-          <div
-            className="card"
-            style={{ overflow: "hidden", border: "1px solid #e7c79b", background: "#fbf4e9" }}
-          >
-            {upcoming.map((s) => (
-              <SuppPlanCard key={s.id} supp={s} />
-            ))}
-          </div>
-          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
-            You&apos;ll begin these next week — they&apos;re not part of today&apos;s routine yet. Ordering now means they&apos;ll be ready when you start.
-          </div>
-        </>
-      )}
+      {weeks.map((wk) => {
+        const group = byWeek.get(wk)!;
+        const m = meta(group[0]?.status);
+        return (
+          <details key={wk} open={m.open} style={{ marginBottom: 10 }}>
+            <summary
+              style={{
+                listStyle: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 8,
+                padding: "9px 12px",
+                borderRadius: 10,
+                background: m.bg,
+                border: `1px solid ${m.border}`,
+                fontWeight: 700,
+                fontSize: 13,
+              }}
+            >
+              <span>
+                {wk <= 1 ? "Week 1 · from Day 1" : `Week ${wk}`}{" "}
+                <span style={{ fontWeight: 600, color: "#9a9a93" }}>· {group.length}</span>
+              </span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: m.color }}>{m.tag}</span>
+            </summary>
+            <div className="card" style={{ overflow: "hidden", marginTop: 6, opacity: m.dim ? 0.72 : 1 }}>
+              {group.map((s) => (
+                <SuppPlanCard key={s.id} supp={s} />
+              ))}
+            </div>
+          </details>
+        );
+      })}
+      <div className="muted" style={{ fontSize: 11.5, marginTop: 4, paddingLeft: 2 }}>
+        Your full protocol, in the order it unfolds. Today&apos;s doses are on the Today tab — order anything marked &ldquo;starts next week&rdquo; ahead of time so it arrives before you begin.
+      </div>
     </>
   );
 }
@@ -713,14 +720,12 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
 }
 
 export function PlanScreen({
-  onLogAll,
   openDoc,
   openRemedy,
   openGrocery,
   openOrder,
   openPortions,
 }: {
-  onLogAll: () => void;
   openDoc: (doc: { kind: string; id: string }) => void;
   openRemedy: (r: AppRemedy) => void;
   openGrocery: () => void;
@@ -749,12 +754,8 @@ export function PlanScreen({
       <Section title="Your supplements">
         <PlanSupplements />
         <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-          Reorder links go to recommended brands. Tap any supplement for the why.
+          Reorder links go to recommended brands. Tap any supplement for the why. Logging your daily doses lives on the Today tab.
         </div>
-
-        <button className="log-all" style={{ marginTop: 12 }} onClick={onLogAll}>
-          <Icon name="check" size={17} /> Log everything for today
-        </button>
       </Section>
 
       {/* Daily practices + guided breathing now live on the Today tab only

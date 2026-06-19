@@ -330,7 +330,6 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   } else if (tab === "plan") {
     screen = (
       <PlanScreen
-        onLogAll={logAll}
         openDoc={openDoc}
         openRemedy={openRemedy}
         openGrocery={openGrocery}

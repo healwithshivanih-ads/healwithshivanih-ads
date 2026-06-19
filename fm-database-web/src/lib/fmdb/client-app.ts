@@ -210,6 +210,10 @@ export interface AppSupplement {
    *  week" heads-up so the client can order it in time. Not part of today's
    *  routine until it actually starts. */
   startsNextWeek?: boolean;
+  /** Phase metadata — drives the Plan tab's "whole plan, by week" grouping. */
+  startWeek?: number;
+  durationWeeks?: number | null;
+  status?: "current" | "upcoming" | "later" | "past";
 }
 
 export interface AppRemedy {
@@ -770,6 +774,9 @@ export interface ClientAppData {
   /** Supplements that begin NEXT week — a heads-up so the client can order
    *  ahead. NOT part of today's routine / counts / check-in. */
   upcomingSupplements: AppSupplement[];
+  /** EVERY supplement in the plan, tagged with start week + status — the Plan
+   *  tab's "whole plan, by week" view. Today's surfaces use `supplements`. */
+  allSupplements: AppSupplement[];
   slotOrder: string[];
   practices: { id: string; name: string; when: string }[];
   /** Guided breathing config when the plan prescribes a breathing practice. */
@@ -919,6 +926,17 @@ function istNow(): Date {
   // Render dates in the client's timezone (India-based practice).
   const s = new Date().toLocaleString("en-US", { timeZone: IST });
   return new Date(s);
+}
+
+// Diet classification — the ONE place that decides veg vs non-veg. Critical:
+// a bare /vegetarian/ test matches inside "non-vegetarian", so non-veg clients
+// were being misclassified as vegetarian (wrong protein list, wrong chip).
+// Always check non-veg FIRST and gate the veg test on it.
+function isNonVegPref(pref: string): boolean {
+  return /non.?veg|pescatar|\bfish\b|chicken|mutton|prawn|seafood|\bmeat\b|omnivore/i.test(pref);
+}
+function isVegetarianPref(pref: string): boolean {
+  return !isNonVegPref(pref) && /vegetarian|vegan|jain|eggetarian|\bveg\b/i.test(pref);
 }
 
 function fmtDay(d: Date): string {
@@ -2089,6 +2107,26 @@ function shortTiming(timing: string): string {
   return s.length > 30 ? `${s.slice(0, 28).trim()}…` : s;
 }
 
+// Twice-daily clarity: shortTiming() collapses "morning and evening" → "Morning",
+// hiding the second dose. When the timing explicitly names two times (joined by
+// "and" / "&" / "+"), show BOTH — "Morning & evening", "With lunch & dinner" — so
+// a twice-a-day capsule reads clearly on the daily tab. Single-phrase ranges
+// ("between breakfast and lunch") are left to shortTiming.
+function displayTiming(timing: string): string {
+  const base = shortTiming(timing);
+  const lc = timing.toLowerCase();
+  if (!/\b(and|&|\+)\b/.test(lc) || /between/.test(lc)) return base;
+  const halves = timing.split(/\s*(?:&|\+|\band\b)\s*/i).map((h) => h.trim()).filter(Boolean);
+  if (halves.length < 2) return base;
+  const labels: string[] = [];
+  for (const h of halves) {
+    const lab = shortTiming(h);
+    if (lab && !labels.includes(lab)) labels.push(lab);
+  }
+  if (labels.length < 2) return base;
+  return labels.map((l, i) => (i === 0 ? l : l.toLowerCase())).join(" & ");
+}
+
 // ── main loader ──────────────────────────────────────────────────────────────
 
 /** Find the highest-versioned published plan for a given client. */
@@ -2762,19 +2800,28 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   };
   const supplements: AppSupplement[] = [];
   const upcomingSupplements: AppSupplement[] = [];
+  // Every supplement in the protocol, tagged with its phase + status — drives
+  // the Plan tab's "whole plan, by week" view. Today's routine reads the gated
+  // `supplements` (status === 'current') only.
+  const allSupplements: AppSupplement[] = [];
   const protocol = asArr(plan.supplement_protocol) as Dict[];
   for (let i = 0; i < protocol.length; i++) {
     const p = protocol[i];
-    // Phase-gate: surface what the client is on THIS week, plus a heads-up for
-    // anything starting NEXT week (so they can order it in time — supplements
-    // take ~a week to arrive). A phased protocol introduces items at start_week
-    // and retires them after duration_weeks; finished items and anything more
-    // than a week out stay hidden so the app isn't the whole 16-week arc.
+    // Phase status against the client's current week. 'current' = on it now;
+    // 'upcoming' = starts next week (heads-up to order ahead); 'later' = a
+    // future phase; 'past' = course finished. Today's surfaces use 'current'
+    // only; the Plan tab shows the whole arc grouped by start week.
     const startWeek = Number(p.start_week) || 1;
     const durWeeks = Number(p.duration_weeks) || 0;
-    const startsNextWeek = startWeek === week + 1;
-    if (week < startWeek && !startsNextWeek) continue;
-    if (durWeeks > 0 && week >= startWeek + durWeeks) continue;
+    const status: "current" | "upcoming" | "later" | "past" =
+      durWeeks > 0 && week >= startWeek + durWeeks
+        ? "past"
+        : week >= startWeek
+          ? "current"
+          : startWeek === week + 1
+            ? "upcoming"
+            : "later";
+    const startsNextWeek = status === "upcoming";
     const slug = asStr(p.supplement_slug);
     // Prefer the coach-set display_name (e.g. "Vegetarian Omega-3"), then a
     // known override, then the humanised slug. Strip the brand prefix either
@@ -2815,7 +2862,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       dose: shortDose(dose || row?.dose || ""),
       slot: slotFromRank(chronoRank),
       chronoRank,
-      timing: shortTiming(timing),
+      timing: displayTiming(timing),
       why:
         row?.why ||
         clientifyWhy(
@@ -2829,19 +2876,25 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       ...(emptyStomach ? { emptyStomach: true } : {}),
       ...(core ? { core: true } : {}),
       ...(startsNextWeek ? { startsNextWeek: true } : {}),
+      startWeek,
+      durationWeeks: durWeeks || null,
+      status,
     };
-    // Next-week items go in a SEPARATE list so today's routine / check-in /
-    // counts / slots all auto-exclude them — they're a heads-up, not a "take
-    // today". The Plan screen shows them under "Starting next week" and the
-    // Order screen lets the client buy ahead.
-    if (startsNextWeek) upcomingSupplements.push(suppItem);
-    else supplements.push(suppItem);
+    // Full arc → allSupplements (Plan tab, by week). Today's routine reads only
+    // 'current'; the next-week heads-up reads 'upcoming'. 'later'/'past' live in
+    // allSupplements so the Plan tab can show the whole plan but they never leak
+    // into today's slots / check-in / counts.
+    allSupplements.push(suppItem);
+    if (status === "current") supplements.push(suppItem);
+    else if (status === "upcoming") upcomingSupplements.push(suppItem);
   }
   // Order each list by when it's taken (stable: authored order is kept within
   // the same time). Every downstream surface — Today's slots, the Plan tabs,
   // the order page, counts — reads this single chronological order.
   supplements.sort((a, b) => a.chronoRank - b.chronoRank);
   upcomingSupplements.sort((a, b) => a.chronoRank - b.chronoRank);
+  // Plan-tab order: by start week, then by daily timing within a week.
+  allSupplements.sort((a, b) => (a.startWeek ?? 1) - (b.startWeek ?? 1) || a.chronoRank - b.chronoRank);
 
   // ---- demographic + dosha context (drives the remedy gates) ---------------
   const sexRaw = asStr(client.sex).trim().toUpperCase().slice(0, 1); // 'M' | 'F' | ''
@@ -3026,10 +3079,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // vegan additionally no dairy/honey.
   const diet = asStr(client.dietary_preference).toLowerCase();
   const dietExcludes: RegExp[] = [];
-  if (/vegetarian|vegan|jain|eggetarian/.test(diet)) {
+  if (isVegetarianPref(diet)) {
     dietExcludes.push(/\bbone broth|\bchicken|\bmutton|\bfish\b|\bmeat\b|\bprawn|\bliver\b/i);
   }
-  if (/vegetarian|vegan|jain/.test(diet) && !/eggetarian/.test(diet)) {
+  if (isVegetarianPref(diet) && !/eggetarian/.test(diet)) {
     dietExcludes.push(/\begg\b|\beggs\b/i);
   }
   if (/vegan/.test(diet)) {
@@ -3968,8 +4021,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const isVegan = /vegan/.test(dietPrefLc);
   if (isVegan) {
     flags.push({ label: "Vegan", detail: "Fully plant-based — your plan keeps B12, iron and omega-3 covered so nothing slips.", resourceId: findRes("vegan", "b12", "iron") });
-  } else if (/vegetarian|veg\b/.test(dietPrefLc)) {
+  } else if (isVegetarianPref(dietPrefLc)) {
     flags.push({ label: "Vegetarian", detail: "Plant protein at every meal — dals, paneer, curd and seeds keep it complete." });
+  } else if (isNonVegPref(dietPrefLc)) {
+    flags.push({ label: "Non-vegetarian", detail: "Lean fish, eggs and poultry are in — paired with plenty of plants and fibre." });
   }
   if (/jain/.test(dietPrefLc)) {
     flags.push({ label: "Jain — no root vegetables", detail: "No onion, garlic, potato or other underground vegetables. Every recipe in your plan already respects this." });
@@ -4231,6 +4286,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     travel,
     supplements,
     upcomingSupplements,
+    allSupplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: practicesVisible,
     breathwork,
