@@ -38,9 +38,11 @@ const RETAILER_ORDER = ["VitaOne", "FM Nutrition", "Amazon", "iHerb", "Other"];
 function useOrderItems(): OrderItem[] {
   const data = useOchre();
   return useMemo(() => {
-    const items: OrderItem[] = data.supplements.map((s) => ({
+    // Current routine + next-week items together — the client can stock up on
+    // what's coming so it arrives before they need it.
+    const items: OrderItem[] = [...data.supplements, ...(data.upcomingSupplements ?? [])].map((s) => ({
       id: s.id,
-      name: s.name,
+      name: s.startsNextWeek ? `${s.name} (starts next week)` : s.name,
       dose: s.dose,
       buyUrl: s.buyUrl,
       retailer: retailerOf(s.buyUrl),
@@ -50,7 +52,7 @@ function useOrderItems(): OrderItem[] {
         items.push({ id: "rx-" + r.slug, name: r.name, buyUrl: r.buyUrl, retailer: retailerOf(r.buyUrl) });
     }
     return items;
-  }, [data.supplements, data.remedies]);
+  }, [data.supplements, data.upcomingSupplements, data.remedies]);
 }
 
 /* ---- launch card (Plan tab, under the supplements list) -------------- */

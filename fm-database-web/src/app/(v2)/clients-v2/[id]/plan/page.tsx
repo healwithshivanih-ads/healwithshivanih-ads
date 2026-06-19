@@ -438,6 +438,23 @@ export default async function PlanTabPage({
     }))
     .filter((it) => it.supplement_slug);
 
+  // Rows for the "by start week" schedule list on the Plan tab — every
+  // supplement in the protocol, carrying its phase (start_week) so the panel
+  // can group the full arc chronologically.
+  const supplementScheduleRows = supplementItems
+    .filter((it): it is Record<string, unknown> => !!it && typeof it === "object")
+    .map((it) => ({
+      name:
+        (it.display_name as string | undefined) ||
+        (it.supplement_slug as string | undefined) ||
+        "",
+      dose: (it.dose as string | undefined) ?? "",
+      timing: (it.timing as string | undefined) ?? "",
+      startWeek: typeof it.start_week === "number" ? it.start_week : 1,
+      durationWeeks: typeof it.duration_weeks === "number" ? it.duration_weeks : null,
+    }))
+    .filter((it) => it.name);
+
   // Rows for the in-place QuickEditSupplementsPanel (published plans only).
   // Carries display_name so the panel can show a clean name; the slug is
   // the edit key passed to quickEditActivePlanSupplement.
@@ -733,6 +750,7 @@ export default async function PlanTabPage({
           <SupplementsProtocolPanel
             planSlug={activePlan.slug as string}
             gridItems={supplementGridItems}
+            scheduleRows={supplementScheduleRows}
             editRows={quickEditSupplementRows}
             editable={isPublished}
             embedded
@@ -1421,6 +1439,7 @@ export default async function PlanTabPage({
             <SupplementsProtocolPanel
               planSlug={activePlan.slug as string}
               gridItems={supplementGridItems}
+              scheduleRows={supplementScheduleRows}
               editRows={quickEditSupplementRows}
               editable={isPublished}
             />

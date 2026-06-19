@@ -507,11 +507,12 @@ function MealList({
  *  the rest of the daily protocol, then a clearly-separated "As needed"
  *  group at the bottom so situational items never pollute the daily list. */
 function PlanSupplements() {
-  const { supplements } = useOchre();
+  const { supplements, upcomingSupplements } = useOchre();
   const byDay = (a: AppSupplementT, b: AppSupplementT) => a.chronoRank - b.chronoRank;
   const core = supplements.filter((s) => s.core && !s.asNeeded).sort(byDay);
   const daily = supplements.filter((s) => !s.core && !s.asNeeded).sort(byDay);
   const asNeeded = supplements.filter((s) => s.asNeeded);
+  const upcoming = (upcomingSupplements ?? []).slice().sort(byDay);
   return (
     <>
       {core.length > 0 && (
@@ -549,6 +550,24 @@ function PlanSupplements() {
           </div>
         </>
       )}
+      {upcoming.length > 0 && (
+        <>
+          <div className="supp-group-label" style={{ color: "#b8722c" }}>
+            <Icon name="bag" size={13} /> Starting next week — order now so it arrives in time
+          </div>
+          <div
+            className="card"
+            style={{ overflow: "hidden", border: "1px solid #e7c79b", background: "#fbf4e9" }}
+          >
+            {upcoming.map((s) => (
+              <SuppPlanCard key={s.id} supp={s} />
+            ))}
+          </div>
+          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
+            You&apos;ll begin these next week — they&apos;re not part of today&apos;s routine yet. Ordering now means they&apos;ll be ready when you start.
+          </div>
+        </>
+      )}
     </>
   );
 }
@@ -560,9 +579,17 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
         <div style={{ flex: 1 }}>
           <div className="name">
             {supp.name}
-            {supp.core && (
+            {supp.core && !supp.startsNextWeek && (
               <span className="supp-core">
                 <Icon name="sparkle" size={10} /> Core
+              </span>
+            )}
+            {supp.startsNextWeek && (
+              <span
+                className="supp-core"
+                style={{ background: "#f3e0c2", color: "#b8722c" }}
+              >
+                Starts next week
               </span>
             )}
           </div>

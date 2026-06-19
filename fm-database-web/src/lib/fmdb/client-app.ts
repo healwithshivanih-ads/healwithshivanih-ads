@@ -206,6 +206,10 @@ export interface AppSupplement {
   /** True when the coach's rationale marks this as a primary/driver-targeting
    *  supplement (auto-detected). Surfaced as a "Core" tier on the Plan tab. */
   core?: boolean;
+  /** True when this supplement begins NEXT week — shown with a "Starts next
+   *  week" heads-up so the client can order it in time. Not part of today's
+   *  routine until it actually starts. */
+  startsNextWeek?: boolean;
 }
 
 export interface AppRemedy {
@@ -763,6 +767,9 @@ export interface ClientAppData {
   } | null;
   mealExtra: Record<string, AppMealExtra>;
   supplements: AppSupplement[];
+  /** Supplements that begin NEXT week — a heads-up so the client can order
+   *  ahead. NOT part of today's routine / counts / check-in. */
+  upcomingSupplements: AppSupplement[];
   slotOrder: string[];
   practices: { id: string; name: string; when: string }[];
   /** Guided breathing config when the plan prescribes a breathing practice. */
@@ -2754,9 +2761,20 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     return best?.url;
   };
   const supplements: AppSupplement[] = [];
+  const upcomingSupplements: AppSupplement[] = [];
   const protocol = asArr(plan.supplement_protocol) as Dict[];
   for (let i = 0; i < protocol.length; i++) {
     const p = protocol[i];
+    // Phase-gate: surface what the client is on THIS week, plus a heads-up for
+    // anything starting NEXT week (so they can order it in time — supplements
+    // take ~a week to arrive). A phased protocol introduces items at start_week
+    // and retires them after duration_weeks; finished items and anything more
+    // than a week out stay hidden so the app isn't the whole 16-week arc.
+    const startWeek = Number(p.start_week) || 1;
+    const durWeeks = Number(p.duration_weeks) || 0;
+    const startsNextWeek = startWeek === week + 1;
+    if (week < startWeek && !startsNextWeek) continue;
+    if (durWeeks > 0 && week >= startWeek + durWeeks) continue;
     const slug = asStr(p.supplement_slug);
     // Prefer the coach-set display_name (e.g. "Vegetarian Omega-3"), then a
     // known override, then the humanised slug. Strip the brand prefix either
@@ -2791,7 +2809,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       /\b(critical gap|critical|central driver|main driver|key driver|primary (driver|fuel|target)|directly targets?|single biggest|biggest (gap|driver)|foundational|cornerstone|first.?line|non.?negotiable|essential|most important|the priority|highest priority)\b/i.test(
         rawRationale,
       );
-    supplements.push({
+    const suppItem = {
       id: `s-${slug || i}`,
       name,
       dose: shortDose(dose || row?.dose || ""),
@@ -2810,12 +2828,20 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       ...(asNeeded ? { asNeeded: true } : {}),
       ...(emptyStomach ? { emptyStomach: true } : {}),
       ...(core ? { core: true } : {}),
-    });
+      ...(startsNextWeek ? { startsNextWeek: true } : {}),
+    };
+    // Next-week items go in a SEPARATE list so today's routine / check-in /
+    // counts / slots all auto-exclude them — they're a heads-up, not a "take
+    // today". The Plan screen shows them under "Starting next week" and the
+    // Order screen lets the client buy ahead.
+    if (startsNextWeek) upcomingSupplements.push(suppItem);
+    else supplements.push(suppItem);
   }
-  // Order the whole list by when it's taken (stable: authored order is kept
-  // within the same time). Every downstream surface — Today's slots, the Plan
-  // tabs, the order page, counts — reads this single chronological order.
+  // Order each list by when it's taken (stable: authored order is kept within
+  // the same time). Every downstream surface — Today's slots, the Plan tabs,
+  // the order page, counts — reads this single chronological order.
   supplements.sort((a, b) => a.chronoRank - b.chronoRank);
+  upcomingSupplements.sort((a, b) => a.chronoRank - b.chronoRank);
 
   // ---- demographic + dosha context (drives the remedy gates) ---------------
   const sexRaw = asStr(client.sex).trim().toUpperCase().slice(0, 1); // 'M' | 'F' | ''
@@ -3856,12 +3882,30 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // ---- plan focus + dietary flags (Plan-tab header) --------------------------
   // Plain-language "what this plan is, and why you're on it". Built only from
   // on-file conditions + the eating pattern — never invented.
+  // Condition label → clean client-facing name. Drop the "(confirmed: …)"
+  // parentheticals AND the lab-value / detail clause after a dash
+  // ("Type 2 diabetes — HbA1c 6.6%" → "Type 2 diabetes") so the why-line reads
+  // as a plain list of conditions, not a wall of numbers.
   const cleanCondition = (c: string): string =>
     c
-      .replace(/\([^)]*\)/g, "") // drop the "(confirmed: …)" clinical parentheticals
+      .replace(/\([^)]*\)/g, "")
+      .split(/\s+[—–]\s+|\s+-\s+/)[0] // strip the lab/detail tail after a dash
       .replace(/\s*\/\s*/g, " / ")
       .replace(/\s{2,}/g, " ")
       .trim();
+  // Lowercase for mid-sentence flow but keep acronyms intact (NAFLD, GERD, PCOS)
+  // — never "nafld" / "gerd".
+  const softLower = (s: string): string =>
+    s
+      .split(/\s+/)
+      .map((w) => (/^[A-Z0-9/&-]{2,}$/.test(w) || /[a-z][A-Z]/.test(w) ? w : w.toLowerCase()))
+      .join(" ");
+  const joinAnd = (a: string[]): string =>
+    a.length <= 1
+      ? a[0] ?? ""
+      : a.length === 2
+        ? `${a[0]} and ${a[1]}`
+        : `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}`;
   const focusConditions = asStrArr(client.active_conditions)
     .map(cleanCondition)
     .filter(Boolean)
@@ -3870,12 +3914,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     .slice(0, 4);
   // pattern label: take the clause before the em/en-dash AND before the
   // first comma (NOT before a hyphen — that breaks "Anti-inflammatory").
-  const patternShort = (asStr(nutrition.pattern).split(/[—–]/)[0].split(",")[0] || "whole-food").trim().toLowerCase();
+  const patternShort = (asStr(nutrition.pattern).split(/[—–]/)[0].split(",")[0] || "whole-food")
+    .trim()
+    .toLowerCase()
+    .replace(/\s*\+\s*/g, " and ");
   const patternArticle = /^[aeiou]/.test(patternShort) ? "an" : "a";
   const coachFirst = coachName.split(" ")[0];
+  const focusList = focusConditions.slice(0, 3).map(softLower);
   const focusWhy =
-    (focusConditions.length
-      ? `This plan focuses on what's on your file — ${focusConditions.slice(0, 3).join(", ").toLowerCase()}. `
+    (focusList.length
+      ? `This plan focuses on what's on your file — ${joinAnd(focusList)}. `
       : "") +
     `You'll work through ${patternArticle} ${patternShort} way of eating, the supplements ${coachFirst} chose for you, and a few daily practices — each piece picked for your body, not a generic template.`;
 
@@ -4088,6 +4136,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     const tsItems = Array.isArray(tsBlock.salts) ? (tsBlock.salts as Dict[]) : [];
     if (tsItems.length) {
       const tsMap = await loadTissueSaltMap();
+      // Coach policy: cell salts are a gentle adjunct — keep it to 1–2 per
+      // client so the section never overwhelms. Even if more are authored (or
+      // the AI suggests a long list), only the first MAX_TISSUE_SALTS show.
+      const MAX_TISSUE_SALTS = 2;
       const tsList = tsItems
         .map((it) => {
           const slug = asStr(it.salt_slug).trim();
@@ -4099,7 +4151,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
             how: asStr(it.typical_use).trim() || (cat?.how ?? ""),
           };
         })
-        .filter((x): x is { name: string; reason: string; how: string } => x !== null);
+        .filter((x): x is { name: string; reason: string; how: string } => x !== null)
+        .slice(0, MAX_TISSUE_SALTS);
       if (tsList.length) {
         tissueSalts = { overview: asStr(tsBlock.overview).trim(), list: tsList };
       }
@@ -4177,6 +4230,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     msqEntries,
     travel,
     supplements,
+    upcomingSupplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: practicesVisible,
     breathwork,
