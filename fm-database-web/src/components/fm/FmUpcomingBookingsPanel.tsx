@@ -16,7 +16,8 @@ import { FmPanel } from "./FmPanel";
 import type { UpcomingBooking } from "@/lib/fmdb/loader-extras";
 
 const EVENT_EMOJI: Record<string, string> = {
-  "discovery-consultation": "🔍",
+  // "Discovery Consultation" event type — its Cal.com slug is "30min".
+  "30min": "🔍",
   "programme-intake-session": "🌿",
   "coaching-session": "💬",
   "facilitation-session": "🤝",

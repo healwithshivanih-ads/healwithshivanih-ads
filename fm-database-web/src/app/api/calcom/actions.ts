@@ -129,8 +129,8 @@ async function getCalcomUsername(): Promise<string> {
 
 /**
  * Extract the Cal.com slug (last URL segment) from a YAML entry's URL.
- * `https://cal.com/shivani-hariharan-0xyy3l/discovery-consultation`
- *   → `discovery-consultation`
+ * `https://cal.com/shivani-hariharan-0xyy3l/programme-intake-session`
+ *   → `programme-intake-session`
  */
 function calcomSlugFromUrl(url: string): string {
   try {
