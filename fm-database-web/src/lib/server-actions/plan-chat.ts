@@ -3,6 +3,7 @@
 import { runShim } from "@/lib/fmdb/shim";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { updatePlanForChat } from "@/lib/server-actions/plans";
+import { applyChatPatchToPublishedPlan } from "@/lib/server-actions/plan-lifecycle";
 import { computePlanChanges, type PlanChange } from "@/lib/fmdb/plan-diff";
 import type { Plan } from "@/lib/fmdb/types";
 import { revalidatePath } from "next/cache";
@@ -118,11 +119,15 @@ export async function planChatAction(
   const plan = await loadPlanBySlug(slug);
   if (!plan) return { ok: false, error: `Plan ${slug} not found` };
 
-  // Allow chat on draft + ready_to_publish (ready plans revert to draft on edit)
+  // Editable surfaces: draft + ready_to_publish go through the draft writer
+  // (ready reverts to draft). PUBLISHED plans are edited IN PLACE — same
+  // direct-mutation bypass as the quick-edit panels (coach-driven mid-plan
+  // tweaks). superseded / revoked stay frozen.
   const status = (plan.status ?? plan._bucket) as string;
-  const editableStatuses = ["draft", "ready_to_publish", "ready"];
-  if (!editableStatuses.includes(status)) {
-    return { ok: false, error: `Plan is ${status} — only draft and ready-to-publish plans can be edited via chat.` };
+  const draftStatuses = ["draft", "ready_to_publish", "ready"];
+  const isPublished = status === "published";
+  if (!draftStatuses.includes(status) && !isPublished) {
+    return { ok: false, error: `Plan is ${status} — only draft and published plans can be edited via chat.` };
   }
 
   // Load client data
@@ -165,12 +170,20 @@ export async function planChatAction(
   let changes: PlanChange[] = [];
   if (Object.keys(patch).length > 0) {
     changes = computePlanChanges(plan as Plan, patch);
-    const applyResult = await updatePlanForChat(slug, patch as Partial<Plan>);
-    if (!applyResult.ok) {
-      return { ok: false, error: (applyResult as { ok: false; error: string }).error };
+    if (isPublished) {
+      // Apply IN PLACE to the published plan (keeps status published + audits).
+      const applyResult = await applyChatPatchToPublishedPlan(slug, patch);
+      if (!applyResult.ok) {
+        return { ok: false, error: (applyResult as { ok: false; error: string }).error };
+      }
+    } else {
+      const applyResult = await updatePlanForChat(slug, patch as Partial<Plan>);
+      if (!applyResult.ok) {
+        return { ok: false, error: (applyResult as { ok: false; error: string }).error };
+      }
+      revertedToDraft = (applyResult as { ok: true; revertedToDraft?: boolean }).revertedToDraft ?? false;
     }
     updated = true;
-    revertedToDraft = (applyResult as { ok: true; revertedToDraft?: boolean }).revertedToDraft ?? false;
   }
 
   // Apply client_patch (writes to client.yaml). Independent of plan patch —

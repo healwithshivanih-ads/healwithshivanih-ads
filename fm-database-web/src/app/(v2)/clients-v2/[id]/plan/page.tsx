@@ -54,6 +54,7 @@ import { PlanDiffAlert } from "@/components/client-widgets/plan-diff-alert";
 import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-diff";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { SupplementsProtocolPanel } from "./supplements-protocol-panel";
+import { PlanChatPanel } from "@/components/plan-editor/plan-chat-panel";
 import { QuickEditPracticesPanel } from "./quick-edit-practices-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
@@ -1011,6 +1012,17 @@ export default async function PlanTabPage({
           }}
         >
           <PlanStudio clientId={id} sections={studioSections} />
+        </div>
+
+        {/* AI plan assistant — in-place edits to the live plan (published plans
+            edit in place + audit; drafts revert to draft as before). */}
+        <div style={{ marginTop: 14 }}>
+          <Collapsible
+            title="💬 AI plan assistant"
+            subtitle="Tell me what to change in plain English — e.g. “add magnesium glycinate 400mg at bedtime” or “drop omega-3 to 1g”. Edits apply to this live plan and are audited."
+          >
+            <PlanChatPanel slug={activePlan.slug as string} clientId={id} isLocked={false} />
+          </Collapsible>
         </div>
 
         {/* Footer meta — evergreen verbs + audit trails, below the studio. */}
