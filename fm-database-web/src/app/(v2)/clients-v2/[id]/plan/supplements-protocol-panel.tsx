@@ -32,6 +32,8 @@ interface Props {
   editRows: QuickEditSupplementRow[];
   /** Every supplement in the protocol, for the "by start week" schedule list. */
   scheduleRows?: SupplementScheduleRow[];
+  /** Catalogue supplements for the add-supplement typeahead. */
+  catalogueOptions?: { value: string; label: string }[];
   /** false on draft/ready plans (drafts edit in the full plan editor). */
   editable?: boolean;
   /** Chromeless mode for the Plan studio accordion — drop the outer FmPanel
@@ -115,6 +117,7 @@ export function SupplementsProtocolPanel({
   gridItems,
   editRows,
   scheduleRows,
+  catalogueOptions,
   editable = true,
   embedded,
 }: Props) {
@@ -173,7 +176,12 @@ export function SupplementsProtocolPanel({
 
   const body =
     editing && editable ? (
-      <QuickEditSupplementsPanel planSlug={planSlug} supplements={editRows} embedded />
+      <QuickEditSupplementsPanel
+        planSlug={planSlug}
+        supplements={editRows}
+        catalogueOptions={catalogueOptions}
+        embedded
+      />
     ) : hasSchedule && view === "week" ? (
       <ScheduleByWeek rows={scheduleRows!} />
     ) : (

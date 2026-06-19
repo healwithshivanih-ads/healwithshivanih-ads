@@ -41,12 +41,14 @@ export type QuickEditSupplementRow = SupplementRow;
 interface Props {
   planSlug: string;
   supplements: SupplementRow[];
+  /** catalogue supplements for the add-supplement typeahead */
+  catalogueOptions?: { value: string; label: string }[];
   /** bare rows, no FmPanel chrome, always open — used inside the Plan
    *  tab's "What the client sees" studio (surfaces merged 2026-06-12) */
   embedded?: boolean;
 }
 
-export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: Props) {
+export function QuickEditSupplementsPanel({ planSlug, supplements, catalogueOptions, embedded }: Props) {
   const [open, setOpen] = useState(false);
 
   if (embedded) {
@@ -55,7 +57,7 @@ export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: P
         {supplements.map((s) => (
           <QuickEditRow key={s.slug} planSlug={planSlug} row={s} />
         ))}
-        <QuickAddRow planSlug={planSlug} existingSlugs={supplements.map((s) => s.slug)} />
+        <QuickAddRow planSlug={planSlug} existingSlugs={supplements.map((s) => s.slug)} catalogueOptions={catalogueOptions} />
       </div>
     );
   }
@@ -103,7 +105,7 @@ export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: P
           {supplements.map((s) => (
             <QuickEditRow key={s.slug} planSlug={planSlug} row={s} />
           ))}
-          <QuickAddRow planSlug={planSlug} existingSlugs={supplements.map((s) => s.slug)} />
+          <QuickAddRow planSlug={planSlug} existingSlugs={supplements.map((s) => s.slug)} catalogueOptions={catalogueOptions} />
         </div>
       )}
     </FmPanel>
@@ -352,24 +354,46 @@ function QuickEditRow({
 function QuickAddRow({
   planSlug,
   existingSlugs,
+  catalogueOptions = [],
 }: {
   planSlug: string;
   existingSlugs: string[];
+  catalogueOptions?: { value: string; label: string }[];
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
+  // When the coach picks a catalogue entry we keep its slug; freeform names
+  // fall back to a slugified name. Editing the name clears the catalogue pick.
+  const [chosenSlug, setChosenSlug] = useState("");
+  const [showOpts, setShowOpts] = useState(false);
   const [dose, setDose] = useState("");
   const [timing, setTiming] = useState("");
   const [startWeek, setStartWeek] = useState("1");
   const [why, setWhy] = useState("");
 
-  const slug = name
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  const slug =
+    chosenSlug ||
+    name
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const q = name.trim().toLowerCase();
+  const matches =
+    q.length === 0
+      ? catalogueOptions.slice(0, 8)
+      : catalogueOptions
+          .filter(
+            (o) =>
+              o.label.toLowerCase().includes(q) || o.value.toLowerCase().includes(q),
+          )
+          .slice(0, 8);
+  const exactCatalogueMatch = catalogueOptions.some(
+    (o) => o.label.toLowerCase() === q || o.value === slug,
+  );
 
   const inputStyle: React.CSSProperties = {
     fontSize: 11.5,
@@ -414,6 +438,7 @@ function QuickAddRow({
       }
       toast.success(`➕ ${name.trim()} added to plan`);
       setName("");
+      setChosenSlug("");
       setDose("");
       setTiming("");
       setStartWeek("1");
@@ -458,17 +483,78 @@ function QuickAddRow({
       <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
         ➕ New supplement
       </div>
-      <div>
-        <label style={labelStyle}>Name (client-facing — also matches the buy link)</label>
+      <div style={{ position: "relative" }}>
+        <label style={labelStyle}>Name — search the catalogue or type a custom one</label>
         <input
           style={inputStyle}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            setChosenSlug(""); // typing means it's no longer a picked catalogue entry
+            setShowOpts(true);
+          }}
+          onFocus={() => setShowOpts(true)}
+          onBlur={() => setTimeout(() => setShowOpts(false), 150)}
           placeholder="e.g. Magnesium Glycinate"
+          autoComplete="off"
         />
+        {showOpts && matches.length > 0 && (
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 20,
+              top: "100%",
+              left: 0,
+              right: 0,
+              marginTop: 2,
+              maxHeight: 200,
+              overflowY: "auto",
+              background: "var(--fm-surface)",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
+            }}
+          >
+            {matches.map((o) => (
+              <button
+                key={o.value}
+                // onMouseDown (not onClick) so it fires before the input's blur
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  setName(o.label);
+                  setChosenSlug(o.value);
+                  setShowOpts(false);
+                }}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
+                  padding: "6px 10px",
+                  fontSize: 12,
+                  background: "transparent",
+                  border: 0,
+                  borderBottom: "1px solid var(--fm-border)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  color: "var(--fm-text-primary)",
+                }}
+              >
+                {o.label}
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 9.5, color: "var(--fm-text-tertiary)", marginLeft: 6 }}>
+                  {o.value}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
         {slug && (
           <div style={{ fontSize: 10, color: "var(--fm-text-tertiary)", marginTop: 2, fontFamily: "var(--fm-font-mono)" }}>
             slug: {slug}
+            {exactCatalogueMatch ? (
+              <span style={{ color: "#2f7d4f", fontFamily: "inherit", fontWeight: 600 }}> · ✓ in catalogue</span>
+            ) : (
+              <span style={{ color: "var(--fm-text-tertiary)", fontFamily: "inherit" }}> · custom</span>
+            )}
           </div>
         )}
       </div>

@@ -270,11 +270,17 @@ export default async function PlanTabPage({
   // Clears plan/system-alerts chip on the unread badge for this client.
   void markCoachTabViewed(id, "plan");
 
-  const [client, allPlans, allTopicsList] = await Promise.all([
+  const [client, allPlans, allTopicsList, allSupplementsList] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     loadAllOfKind<{ slug?: string; display_name?: string }>("topics"),
+    loadAllOfKind<{ slug?: string; display_name?: string }>("supplements"),
   ]);
+  // Catalogue supplement options for the "add supplement" typeahead.
+  const supplementCatalogueOptions = allSupplementsList
+    .filter((s) => s.slug)
+    .map((s) => ({ value: s.slug as string, label: s.display_name ?? (s.slug as string) }))
+    .sort((a, b) => a.label.localeCompare(b.label));
   if (!client) {
     return (
       <PlanPageShell clientId={id}>
@@ -752,6 +758,7 @@ export default async function PlanTabPage({
             planSlug={activePlan.slug as string}
             gridItems={supplementGridItems}
             scheduleRows={supplementScheduleRows}
+            catalogueOptions={supplementCatalogueOptions}
             editRows={quickEditSupplementRows}
             editable={isPublished}
             embedded
@@ -1452,6 +1459,7 @@ export default async function PlanTabPage({
               planSlug={activePlan.slug as string}
               gridItems={supplementGridItems}
               scheduleRows={supplementScheduleRows}
+            catalogueOptions={supplementCatalogueOptions}
               editRows={quickEditSupplementRows}
               editable={isPublished}
             />
