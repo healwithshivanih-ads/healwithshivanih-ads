@@ -26,9 +26,13 @@ export interface CoachRecommendationRow {
 export function CoachRecommendationsPanel({
   planSlug,
   recommendations,
+  embedded,
 }: {
   planSlug: string;
   recommendations: CoachRecommendationRow[];
+  /** drop the FmPanel chrome — used inside a PlanStudio section (its own
+   *  header is the heading), matching the other studio panels. */
+  embedded?: boolean;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -92,12 +96,8 @@ export function CoachRecommendationsPanel({
     });
   };
 
-  return (
-    <FmPanel
-      title="💡 Quick recommendations"
-      subtitle="Personal product / remedy tips for this client — shown in their app under “Shivani's picks”. Not supplements, not on a schedule."
-    >
-      <div style={{ display: "grid", gap: 8 }}>
+  const body = (
+    <div style={{ display: "grid", gap: 8 }}>
         {recommendations.length === 0 && !adding && (
           <p style={{ fontSize: 12, color: "var(--fm-text-tertiary)", margin: 0 }}>
             No picks yet — e.g. “Aquaphor for dry lips”.
@@ -242,6 +242,15 @@ export function CoachRecommendationsPanel({
           </button>
         )}
       </div>
+  );
+
+  if (embedded) return body;
+  return (
+    <FmPanel
+      title="💡 Quick recommendations"
+      subtitle="Personal product / remedy tips for this client — shown in their app under “Shivani's picks”. Not supplements, not on a schedule."
+    >
+      {body}
     </FmPanel>
   );
 }

@@ -795,6 +795,18 @@ export default async function PlanTabPage({
         ),
       },
       {
+        id: "recommendations",
+        label: "💡 Recommendations",
+        badge: coachRecRows.length ? countChip(`${coachRecRows.length}`) : undefined,
+        node: (
+          <CoachRecommendationsPanel
+            planSlug={activePlan.slug as string}
+            recommendations={coachRecRows}
+            embedded
+          />
+        ),
+      },
+      {
         id: "labs",
         label: "🧪 Labs",
         badge:
@@ -1044,14 +1056,6 @@ export default async function PlanTabPage({
           >
             <PlanChatPanel slug={activePlan.slug as string} clientId={id} isLocked={false} />
           </Collapsible>
-        </div>
-
-        {/* Coach's quick picks — free-form product/remedy tips shown in the app. */}
-        <div style={{ marginTop: 14 }}>
-          <CoachRecommendationsPanel
-            planSlug={activePlan.slug as string}
-            recommendations={coachRecRows}
-          />
         </div>
 
         {/* Footer meta — evergreen verbs + audit trails, below the studio. */}
