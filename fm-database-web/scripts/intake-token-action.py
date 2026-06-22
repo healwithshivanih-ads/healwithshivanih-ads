@@ -1824,11 +1824,23 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
     # per coach decision intake_insights regeneration is MANUAL (the 🔄 Refresh
     # button on IntakeInsightsCard). Intakes autosave + the token allows re-edits,
     # so firing on every submit paid for a Haiku call per re-submit that the coach
-    # never asked for. Best-effort: failures logged on stderr; submit still ok. ──
+    # never asked for.
+    #
+    # ALSO skip on the Fly intake deployment (FLY_INTAKE_ONLY=1 in fly.toml): the
+    # public form runs on Fly, but the coach UI is Mac-only (Fly 404s every coach
+    # route), so insights generated here are never displayed. The Mac cron
+    # reconcile (_reconcile_one → _apply_submit, with FLY_INTAKE_ONLY unset)
+    # re-runs this same merge against the authoritative store the coach actually
+    # reads and owns first-generation there. Firing on Fly too would just
+    # double-bill one Haiku call for a result nobody sees.
+    # Best-effort: failures logged on stderr; submit still ok. ──
     insights_status = "skipped (no api key)"
     should_fire_insights = is_first_submit or not data.get("intake_insights")
+    on_fly_intake = bool(os.environ.get("FLY_INTAKE_ONLY"))
     if not should_fire_insights:
         insights_status = "skipped (re-submit; insights are manual after the first)"
+    elif on_fly_intake:
+        insights_status = "skipped (fly intake deploy; Mac reconcile owns insights)"
     elif os.environ.get("ANTHROPIC_API_KEY"):
         try:
             result = subprocess.run(
