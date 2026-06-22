@@ -16,7 +16,7 @@
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { updateClientPreferences } from "@/lib/server-actions/clients";
-import { reissueDoshaQuizAction } from "@/lib/server-actions/intake";
+import { reissueDoshaQuizAction, getDoshaQuizLinkAction } from "@/lib/server-actions/intake";
 
 interface Props {
   clientId: string;
@@ -43,6 +43,10 @@ export function AyurvedaToggle({
   const [pending, start] = useTransition();
 
   const [quizSending, startQuiz] = useTransition();
+  const [linkLoading, startLink] = useTransition();
+  // Copyable dosha-quiz link for manual delivery — surfaced when WhatsApp
+  // delivery is flaky (Meghana 2026-06-22: quiz "sent" but never arrived).
+  const [manualLink, setManualLink] = useState<string>("");
   const a = assessment ?? {};
   const suggestedPrakruti = typeof a.prakruti_label === "string" ? a.prakruti_label : "";
   const prakrutiConf = typeof a.prakruti_confidence === "string" ? a.prakruti_confidence : "";
@@ -60,8 +64,35 @@ export function AyurvedaToggle({
     startQuiz(async () => {
       const r = await reissueDoshaQuizAction(clientId);
       if (!r.ok) toast.error(r.error ?? "Failed to send");
-      else toast.success(r.via === "template" ? "Dosha quiz sent on WhatsApp" : "Dosha quiz sent (free-text)");
+      else {
+        // Also surface the link so the coach can re-send manually if the
+        // WhatsApp message doesn't land (Meta accepts the send but delivery
+        // can still fail silently — see _whatsapp_delivery_failures.yaml).
+        setManualLink(r.url);
+        toast.success(r.via === "template" ? "Dosha quiz sent on WhatsApp" : "Dosha quiz sent (free-text)");
+      }
     });
+  };
+
+  const getLink = () => {
+    startLink(async () => {
+      const r = await getDoshaQuizLinkAction(clientId);
+      if (!r.ok) toast.error(r.error ?? "Failed to get link");
+      else {
+        setManualLink(r.url);
+        toast.success("Link ready — copy it below");
+      }
+    });
+  };
+
+  const copyLink = async () => {
+    if (!manualLink) return;
+    try {
+      await navigator.clipboard.writeText(manualLink);
+      toast.success("Link copied");
+    } catch {
+      toast.error("Couldn't copy — select and copy the link manually");
+    }
   };
 
   const saveEnabled = (next: boolean) => {
@@ -226,6 +257,48 @@ export function AyurvedaToggle({
           >
             {quizSending ? "Sending…" : "📨 Send dosha quiz (establishes prakruti)"}
           </button>
+
+          {/* Manual-delivery fallback — copy the link and send it yourself on
+              any channel when WhatsApp delivery is unreliable. */}
+          <button
+            onClick={getLink}
+            disabled={linkLoading}
+            style={{
+              marginTop: 8, marginLeft: 8, fontSize: 12, fontWeight: 600, padding: "5px 12px",
+              borderRadius: "var(--fm-radius-sm)", border: "1px solid var(--fm-border)",
+              background: "var(--fm-surface)", color: "var(--fm-text-secondary)",
+              cursor: linkLoading ? "wait" : "pointer",
+            }}
+            title="Mint the dosha-quiz link without sending — copy it and deliver it manually (WhatsApp, email, SMS…)."
+          >
+            {linkLoading ? "Getting link…" : "🔗 Get link to send manually"}
+          </button>
+
+          {manualLink && (
+            <div style={{ marginTop: 10, display: "flex", gap: 6, alignItems: "center" }}>
+              <input
+                type="text"
+                readOnly
+                value={manualLink}
+                onFocus={(e) => e.currentTarget.select()}
+                style={{
+                  flex: 1, fontSize: 11.5, padding: "6px 8px",
+                  border: "1px solid var(--fm-border)", borderRadius: "var(--fm-radius-sm)",
+                  background: "var(--fm-surface)", fontFamily: "monospace",
+                }}
+              />
+              <button
+                onClick={copyLink}
+                style={{
+                  fontSize: 12, fontWeight: 600, padding: "6px 10px", whiteSpace: "nowrap",
+                  borderRadius: "var(--fm-radius-sm)", border: "1px solid rgba(217,162,80,0.5)",
+                  background: "rgba(217,162,80,0.12)", color: "#9a6b1f", cursor: "pointer",
+                }}
+              >
+                📋 Copy
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
