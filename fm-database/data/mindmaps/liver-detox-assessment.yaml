@@ -1,0 +1,162 @@
+slug: liver-detox-assessment
+display_name: Liver Detox — Reading the Intake (Phase I / II / III)
+description: 'How to read a client''s intake questionnaire for biotransformation
+  (liver detox) burden and judge which route looks most affected — Phase I
+  (bioactivation), Phase II (conjugation), or Phase III (elimination). A
+  coach-facing ASSESSMENT companion to the liver-detoxification map: it surfaces
+  patterns to explore, never a diagnosis or a confirmed stage. Confirming a phase
+  needs functional labs (clinician). Honours VitaOne''s rule: no aggressive
+  detoxes — support the basics.
+
+  '
+aliases:
+- biotransformation-assessment
+- detox-phase-assessment
+- reading-the-intake-for-detox
+related_topics:
+- liver-detoxification
+- metabolic-detoxification
+- estrogen-metabolism
+- environmental-toxin-exposure
+related_mechanisms:
+- cyp450-phase-i-activation
+- hepatic-estrogen-metabolism
+- bile-flow-regulation
+- gut-liver-axis
+tree:
+- label: 🧭 The Three-Phase Model
+  children:
+  - label: 'Phase I — Functionalisation (CYP450)'
+    children:
+    - label: Activates toxins → reactive intermediates
+    - label: 'Needs: B2/B3/B6/B12, folate, antioxidants'
+    - label: 'Induced by: caffeine, alcohol, smoking, meds'
+    linked_kind: mechanism
+    linked_slug: cyp450-phase-i-activation
+  - label: 'Phase II — Conjugation'
+    children:
+    - label: Glucuronidation
+    - label: Sulphation
+    - label: Glutathione conjugation
+    - label: Methylation
+    - label: 'Needs: protein/amino acids, sulfur foods, glycine, Mg'
+    - label: Makes intermediates water-soluble for exit
+  - label: 'Phase III — Elimination / Transport'
+    children:
+    - label: Bile → stool
+      linked_kind: mechanism
+      linked_slug: bile-flow-regulation
+    - label: Kidney → urine
+    - label: Gut transit + microbiome (estrobolome / β-glucuronidase)
+      linked_kind: mechanism
+      linked_slug: gut-liver-axis
+  - label: "Classic pattern: Phase I faster than Phase II + sluggish Phase III"
+    notes: Reactive intermediates build up and can't exit — the "feeling toxic /
+      sensitive to everything / backed up" picture.
+- label: 🔎 Reading the Intake — Phase Clues
+  children:
+  - label: 'Phase I / load — how hard the liver is worked'
+    children:
+    - label: Caffeine dependence — caffeine_dependency ("need it" / "headaches without")
+    - label: Chemical / fragrance sensitivity, strong hangovers — chemical_sensitivity
+      linked_kind: symptom
+      linked_slug: chemical-sensitivities
+    - label: Regular alcohol — alcohol_intake (weekly / most days)
+    - label: Tobacco / smoking — smoking_status
+    - label: Liver-metabolised meds — Section 7 (OCP/HRT, NSAIDs, PPI, statins, psych, biologics)
+    - label: Mould / solvent / mercury — mould_exposure, large_fish_frequency, toxic_exposures
+  - label: 'Phase II / conjugation — intermediates not cleared'
+    children:
+    - label: Histamine + multi-med/supplement reactivity — histamine_signals
+    - label: Personal intolerance triggers — reported_triggers
+    - label: 'Oestrogen-clearance cluster (women):'
+      children:
+      - label: Cyclical / cystic acne — acne_pattern
+        linked_kind: symptom
+        linked_slug: acne
+      - label: Period-linked / migraine headaches — headache_type
+        linked_kind: symptom
+        linked_slug: headache
+      - label: Severe period pain — period_pain_severity (≥7/10)
+      - label: Perimenopause inventory — perimenopause_inventory
+      linked_kind: mechanism
+      linked_slug: hepatic-estrogen-metabolism
+  - label: 'Phase III / elimination — the exit route (most actionable)'
+    children:
+    - label: "Infrequent bowels (<1/day) — bowel_frequency_per_day"
+      linked_kind: symptom
+      linked_slug: constipation
+    - label: Hard / lumpy stool (Bristol 1–2) — bristol_stool_typical
+    - label: Straining / incomplete evacuation — bowel_pattern
+    - label: White tongue coating (dysbiosis) — oral_signs
+  - label: 'Antecedents / exposure burden'
+    children:
+    - label: Toxic exposures, mould, occupational solvents — toxic_exposures, mould_exposure
+    - label: Antibiotics last 12 mo (gut / β-glucuronidase) — antibiotics_last_12mo
+    - label: Long-COVID symptom load — covid_long_symptoms
+    - label: Sharp weight change — weight_trend_current
+- label: 🩺 Assessment Pattern — three questions
+  children:
+  - label: "1. Burden present? (chemical sensitivity + caffeine + liver meds + exposures)"
+    notes: Multiple ticks → the liver's load is high.
+  - label: "2. Clearance struggling? (histamine + triggers + oestrogen-excess cluster)"
+    notes: Conjugation (Phase II) is the likely choke point.
+  - label: "3. Exit blocked? (<1 bowel/day + hard Bristol + straining)"
+    notes: Phase III is backed up — and recirculation makes I/II look worse than they are.
+  - label: "Most common real pattern: sensitive AND constipated → start at Phase III"
+- label: 🟢 Coaching Actions (in-scope)
+  children:
+  - label: Fix Phase III first — daily formed stool
+    children:
+    - label: Fibre, hydration, movement, magnesium-rich foods
+    - label: Bowel regularity before any upstream detox support
+      linked_kind: symptom
+      linked_slug: constipation
+  - label: Feed Phase II with food (not pills)
+    children:
+    - label: Adequate protein (amino acids for conjugation)
+    - label: Sulfur / cruciferous — broccoli, cabbage, mustard greens, methi, mooli, garlic, onion, eggs
+    - label: Colour / antioxidants — amla, turmeric in cooking, berries
+    - label: Liver-supportive food plan
+      linked_kind: topic
+      linked_slug: liver-detoxification
+  - label: Reduce inbound load — alcohol, smoking, chemical exposures, large fish
+  - label: Basics that ARE the evidence-based detox support — sleep, hydration, movement
+- label: 🔵 Confirm & Refer
+  children:
+  - label: 🟡 Functional labs (clinician orders / interprets)
+    children:
+    - label: DUTCH — oestrogen Phase I vs II metabolites (2-OH / 4-OH / 16-OH, methylation)
+    - label: Organic acids test
+    - label: Liver enzymes — ALT, AST, GGT, bilirubin
+    - label: Glutathione / oxidative-stress markers
+      linked_kind: mechanism
+      linked_slug: oxidative-stress
+    - label: GI-MAP — β-glucuronidase / dysbiosis
+  - label: 🟡 Supplements — discuss with clinician, never coach-prescribed
+    children:
+    - label: Milk thistle / silymarin
+      linked_kind: supplement
+      linked_slug: milk-thistle
+    - label: N-acetyl cysteine (NAC)
+      linked_kind: supplement
+      linked_slug: nac
+    - label: Calcium-D-glucarate
+      linked_kind: supplement
+      linked_slug: calcium-d-glucarate
+    - label: Methylated B-complex
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+  - label: 🔴 Refer now — jaundice, dark urine + pale stool, RUQ pain, unexplained itching,
+      ascites/swelling, known hepatitis or heavy-alcohol history
+  - label: 🔴 No aggressive detoxes / cleanses (VitaOne rule) — they can harm
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: 'Toolkit for Health Coaching PDF — Detox section; VitaOne posts 12, 31,
+    59 (detoxification basics), 65 (estrobolome), 66 (caffeine metabolism)'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-22'
+updated_by: shivani

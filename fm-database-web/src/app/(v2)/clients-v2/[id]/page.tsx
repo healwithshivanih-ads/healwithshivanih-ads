@@ -37,6 +37,8 @@ import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
 import { Tier1AdvisoryCard } from "./tier1-advisory-card";
 import { detectTier1Advisory } from "@/lib/fmdb/tier1-advisory";
+import { LiverDetoxAdvisoryCard } from "./liver-detox-advisory-card";
+import { detectLiverDetoxAdvisory } from "@/lib/fmdb/liver-detox-advisory";
 import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
@@ -1568,6 +1570,13 @@ export default async function ClientV2Page({
                     <Tier1AdvisoryCard
                       clientId={client.client_id}
                       advisory={detectTier1Advisory(client as unknown as Record<string, unknown>)}
+                    />
+                    {/* Liver / biotransformation burden — deterministic read of
+                        the structured intake (caffeine/chemical sensitivity,
+                        liver-metabolised meds, oestrogen-clearance cluster,
+                        bowel/Phase-III signals). Self-hides when < 2 signals. */}
+                    <LiverDetoxAdvisoryCard
+                      advisory={detectLiverDetoxAdvisory(client as unknown as Record<string, unknown>)}
                     />
                             <IntakeInsightsCard
                               clientId={client.client_id}

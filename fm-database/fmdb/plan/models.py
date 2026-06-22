@@ -511,6 +511,10 @@ class Client(BaseModel):
     belly_fat_pattern: str = ""
     histamine_signals: list[str] = Field(default_factory=list)
     chemical_sensitivity: list[str] = Field(default_factory=list)
+    # Tolerance-decline signal — things the client used to handle that now
+    # bother them (coffee/alcohol/fatty food/scents/meds). A Phase I/II
+    # biotransformation capacity-decline clue; feeds detectLiverDetoxAdvisory.
+    tolerance_changes: list[str] = Field(default_factory=list)
     oral_signs: list[str] = Field(default_factory=list)
     eye_signs: list[str] = Field(default_factory=list)
 

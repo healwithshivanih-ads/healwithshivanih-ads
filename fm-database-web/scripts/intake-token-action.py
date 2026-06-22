@@ -802,7 +802,7 @@ _INTAKE_LIST_FIELDS = [
     "bowel_pattern", "hair_other", "nail_signs",
     "acne_pattern", "skin_signs",
     "pain_locations", "headache_type", "pain_pattern", "pain_quality",
-    "histamine_signals", "chemical_sensitivity", "oral_signs",
+    "histamine_signals", "chemical_sensitivity", "tolerance_changes", "oral_signs",
     "eye_signs",
     "repro_diagnoses", "perimenopause_inventory",
     "vaginal_signs",

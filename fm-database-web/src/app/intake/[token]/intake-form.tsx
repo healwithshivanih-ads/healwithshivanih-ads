@@ -216,6 +216,7 @@ interface FormState {
   belly_fat_pattern: string;
   histamine_signals: string[];
   chemical_sensitivity: string[];
+  tolerance_changes: string[];
   oral_signs: string[];
   eye_signs: string[];
 
@@ -655,6 +656,17 @@ const CHEMICAL_SENSITIVITY = [
   "sensitive to alcohol",
   "sensitive to medication side effects more than others",
   "metal allergies",
+];
+// Tolerance-decline signal — things the client used to handle that now bother
+// them. A Phase I/II biotransformation capacity-decline clue that the rest of
+// the form only captures in the present tense. Feeds detectLiverDetoxAdvisory.
+const TOLERANCE_CHANGES = [
+  "coffee / caffeine",
+  "alcohol",
+  "fatty or fried food",
+  "perfumes / strong smells",
+  "certain medications or supplements",
+  "none — no real change",
 ];
 // v0.75.2 — Tier 1 screening chip option constants ─────────────────────────
 const BEIGHTON_SELF = [
@@ -1213,6 +1225,7 @@ function mergeInitial(
     belly_fat_pattern: asString(get("belly_fat_pattern")),
     histamine_signals: asStringArray(get("histamine_signals")),
     chemical_sensitivity: asStringArray(get("chemical_sensitivity")),
+    tolerance_changes: asStringArray(get("tolerance_changes")),
     oral_signs: asStringArray(get("oral_signs")),
     eye_signs: asStringArray(get("eye_signs")),
     // v0.75.2 — Tier 1 screening fields
@@ -1474,6 +1487,7 @@ function buildPayload(s: FormState): Record<string, unknown> {
     belly_fat_pattern: s.belly_fat_pattern,
     histamine_signals: s.histamine_signals,
     chemical_sensitivity: s.chemical_sensitivity,
+    tolerance_changes: s.tolerance_changes,
     oral_signs: s.oral_signs,
     eye_signs: s.eye_signs,
     // v0.75.2 — Tier 1 screening fields
@@ -2379,6 +2393,7 @@ export function IntakeForm({
       state.pain_quality.length ||
       state.histamine_signals.length ||
       state.chemical_sensitivity.length ||
+      state.tolerance_changes.length ||
       state.oral_signs.length ||
       state.hair_loss_pattern ||
       state.belly_fat_pattern
@@ -4205,6 +4220,16 @@ export function IntakeForm({
             value={state.chemical_sensitivity}
             options={CHEMICAL_SENSITIVITY}
             onChange={(v) => set("chemical_sensitivity", v)}
+          />
+        </FG>
+        <FG
+          label="Things you used to tolerate that now bother you"
+          optional="tick all that apply"
+        >
+          <ChipMulti
+            value={state.tolerance_changes}
+            options={TOLERANCE_CHANGES}
+            onChange={(v) => set("tolerance_changes", v)}
           />
         </FG>
 
