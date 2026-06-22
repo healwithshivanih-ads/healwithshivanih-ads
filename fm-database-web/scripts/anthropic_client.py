@@ -19,7 +19,16 @@ import os
 
 def build_client(api_key=None):
     """Return an Anthropic client configured with a fail-fast read timeout +
-    retries. `api_key` falls back to ANTHROPIC_API_KEY in the environment."""
+    retries. `api_key` falls back to ANTHROPIC_API_KEY in the environment.
+
+    Cost guard (C): building a client means a real spend is imminent, so we
+    refuse here unless the invocation is authorized (FM_API_OK=1 — set by the
+    app, absent in ad-hoc/chat shells). This single chokepoint gates every
+    shim that builds its client through build_client(). See _api_guard.py."""
+    import sys
+    from _api_guard import require_api_authorized
+    require_api_authorized(sys.argv[0].rsplit("/", 1)[-1] or "shim")
+
     from anthropic import Anthropic
     import httpx
 

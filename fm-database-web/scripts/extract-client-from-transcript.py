@@ -548,6 +548,8 @@ def main() -> int:
         },
     }
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("extract-client-from-transcript.py")
     client_ai = Anthropic(api_key=api_key)
     try:
         resp = client_ai.messages.create(

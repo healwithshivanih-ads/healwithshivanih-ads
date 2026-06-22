@@ -267,6 +267,8 @@ def main() -> int:
         json.dump({"ok": False, "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("extract-symptoms.py")
     client = Anthropic(api_key=api_key)
 
     # Streaming required for max_tokens > 8192 and for long-running calls

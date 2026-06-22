@@ -303,6 +303,8 @@ def main():
         return
 
     # 3. Synthesise
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("generate-info-pack.py")
     client = Anthropic(api_key=api_key)
     try:
         content = synthesise(topic, papers, audience, client)

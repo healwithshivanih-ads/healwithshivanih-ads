@@ -230,6 +230,8 @@ def main() -> int:
     catalogue = _slim_catalogue()
     catalogue_block = json.dumps(catalogue, indent=0, separators=(",", ":"))
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("catalogue-chat.py")
     client = Anthropic()
     try:
         message = client.messages.create(

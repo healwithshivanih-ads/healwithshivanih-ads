@@ -481,6 +481,8 @@ def main() -> int:
         "supplement": _TOOL_SCHEMA_SUPPLEMENT,
     }[kind]
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("analyze-catalogue-duplicates.py")
     aclient = Anthropic(api_key=api_key)
     try:
         with aclient.messages.stream(

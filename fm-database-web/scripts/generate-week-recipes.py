@@ -54,6 +54,12 @@ def _load_dotenv() -> None:
 
 MODEL = "claude-haiku-4-5"
 
+# Recipes are generated in batches of this many distinct dishes so the output
+# can never overflow the 8192-token cap (a whole multi-week menu in one call
+# truncated and saved nothing — the bug this fixes). Mirrors the per-week
+# batching in the grocery sibling, with a recursive retry-smaller on top.
+DISHES_PER_CALL = 12
+
 _TOOL = {
     "name": "record_recipes",
     "description": "Record the home recipes for the menu's cookable dishes.",
@@ -102,7 +108,7 @@ def _collect_dishes(payload: dict[str, Any]) -> list[str]:
     return seen
 
 
-def _build_user(payload: dict[str, Any]) -> str:
+def _build_user(payload: dict[str, Any], dishes: list[str]) -> str:
     lines: list[str] = []
     pref = payload.get("dietary_preference") or ""
     avoid = payload.get("foods_to_avoid") or ""
@@ -111,7 +117,7 @@ def _build_user(payload: dict[str, Any]) -> str:
     if avoid:
         lines.append(f"FOODS TO AVOID (never use): {avoid}")
     lines.append("\nMENU DISHES (write recipes for the cookable ones):")
-    for d in _collect_dishes(payload):
+    for d in dishes:
         lines.append(f"- {d}")
     return "\n".join(lines)
 
@@ -143,6 +149,37 @@ def _render_md(plan_slug: str, recipes: list[dict[str, Any]]) -> str:
     return "\n".join(out) + "\n"
 
 
+def _recipes_for(client, payload, dishes):
+    """Return (recipes, last_usage, truncated) for one batch of dishes.
+
+    On a max_tokens stop with >1 dish, split the batch in half and recurse so a
+    big batch can never lose output. A single dish that still truncates returns
+    truncated=True (the caller fails loudly — we never save clipped work)."""
+    resp = client.messages.create(
+        model=MODEL,
+        max_tokens=8192,
+        system=SYSTEM,
+        tools=[_TOOL],
+        tool_choice={"type": "tool", "name": "record_recipes"},
+        messages=[{"role": "user", "content": _build_user(payload, dishes)}],
+    )
+    if resp.stop_reason == "max_tokens":
+        if len(dishes) <= 1:
+            return [], resp.usage, True
+        mid = len(dishes) // 2
+        a_rec, a_use, a_tr = _recipes_for(client, payload, dishes[:mid])
+        if a_tr:
+            return a_rec, a_use, True
+        b_rec, b_use, b_tr = _recipes_for(client, payload, dishes[mid:])
+        return a_rec + b_rec, (b_use or a_use), b_tr
+    tool_input = None
+    for block in resp.content:
+        if getattr(block, "type", "") == "tool_use" and getattr(block, "name", "") == "record_recipes":
+            tool_input = block.input  # type: ignore[assignment]
+            break
+    return ((tool_input or {}).get("recipes") or []), resp.usage, False
+
+
 def main() -> None:
     _load_dotenv()
     payload = json.loads(sys.stdin.read() or "{}")
@@ -167,51 +204,48 @@ def main() -> None:
     from anthropic_client import build_client  # noqa: E402
 
     client = build_client()
-    try:
-        resp = client.messages.create(
-            model=MODEL,
-            max_tokens=8192,
-            system=SYSTEM,
-            tools=[_TOOL],
-            tool_choice={"type": "tool", "name": "record_recipes"},
-            messages=[{"role": "user", "content": _build_user(payload)}],
-        )
-    except Exception as e:  # noqa: BLE001
-        print(json.dumps({"ok": False, "error": f"API call failed: {e}", "path": None, "count": 0, "usage": None}))
-        return
+    # Generate in batches of DISHES_PER_CALL distinct dishes so output can never
+    # overflow the token cap. Accumulate + dedupe across batches, then ONE atomic
+    # write at the end (the Fly-synced .md is never seen half-written).
+    dishes = _collect_dishes(payload)
+    all_recipes: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    usage_entry = None
+    for i in range(0, len(dishes), DISHES_PER_CALL):
+        batch = dishes[i : i + DISHES_PER_CALL]
+        try:
+            recipes, usage, truncated = _recipes_for(client, payload, batch)
+        except Exception as e:  # noqa: BLE001
+            print(json.dumps({"ok": False, "error": f"API call failed: {e}", "path": None, "count": 0, "usage": None}))
+            return
+        if truncated:
+            print(json.dumps({"ok": False, "error": "output truncated (max_tokens) on a single dish — not saved", "path": None, "count": 0, "usage": None}))
+            return
+        for r in recipes:
+            key = (r.get("title") or "").strip().lower()
+            if key and key not in seen:
+                seen.add(key)
+                all_recipes.append(r)
+        try:
+            from fmdb.usage import log_usage  # noqa: E402
 
-    if resp.stop_reason == "max_tokens":
-        print(json.dumps({"ok": False, "error": "output truncated (max_tokens) — not saved", "path": None, "count": 0, "usage": None}))
-        return
+            usage_entry = log_usage(
+                client_id=client_id,
+                script="generate-week-recipes.py",
+                model=MODEL,
+                usage=usage,
+                notes=f"recipe pack batch for {plan_slug}",
+            )
+        except Exception:
+            pass
 
-    tool_input: dict[str, Any] | None = None
-    for block in resp.content:
-        if getattr(block, "type", "") == "tool_use" and getattr(block, "name", "") == "record_recipes":
-            tool_input = block.input  # type: ignore[assignment]
-            break
-    recipes = (tool_input or {}).get("recipes") or []
-    if not recipes:
+    if not all_recipes:
         print(json.dumps({"ok": False, "error": "model returned no recipes", "path": None, "count": 0, "usage": None}))
         return
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    write_text_atomic(out_path, _render_md(plan_slug, recipes))
-
-    usage_entry = None
-    try:
-        from fmdb.usage import log_usage  # noqa: E402
-
-        usage_entry = log_usage(
-            client_id=client_id,
-            script="generate-week-recipes.py",
-            model=MODEL,
-            usage=resp.usage,
-            notes=f"recipe pack for {plan_slug}",
-        )
-    except Exception:
-        pass
-
-    print(json.dumps({"ok": True, "path": str(out_path), "count": len(recipes), "usage": usage_entry, "error": None}))
+    write_text_atomic(out_path, _render_md(plan_slug, all_recipes))
+    print(json.dumps({"ok": True, "path": str(out_path), "count": len(all_recipes), "usage": usage_entry, "error": None}))
 
 
 if __name__ == "__main__":

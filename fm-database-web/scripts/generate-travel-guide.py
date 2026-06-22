@@ -177,6 +177,8 @@ def main() -> int:
     )
 
     try:
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("generate-travel-guide.py")
         ac = anthropic.Anthropic()
         resp = ac.messages.create(
             model="claude-sonnet-4-6",

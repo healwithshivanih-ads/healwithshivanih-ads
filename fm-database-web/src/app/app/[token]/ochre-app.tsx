@@ -287,10 +287,17 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // pre-start "on hold" screen for every plan-content tab. Coach + Labs
   // stay reachable so the client can still message / view past results.
   const onHold = data.client.notStarted;
+  // With a committed future Day-1, show the plan FROZEN at its Day-1 state (a
+  // live preview) instead of a countdown — client-app clamps the effective
+  // date to the start date so every screen renders exactly as it will on the
+  // start morning, then advances daily once the plan begins. With NO date set
+  // yet, keep the "being set up" hold screen (nothing to preview).
+  const previewing = onHold && data.client.startsInDays > 0;
+  const setupHold = onHold && !previewing;
 
   let screen: React.ReactNode = null;
-  if (onHold && tab !== "coach" && tab !== "labs") {
-    screen = <PlanHoldScreen goCoach={() => go("coach")} />;
+  if (setupHold && tab !== "coach" && tab !== "labs") {
+    screen = <PlanHoldScreen goCoach={() => go("coach")} openOrder={openOrder} />;
   } else if (inCheckin) {
     screen = (
       <CheckinScreen
@@ -389,6 +396,24 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               >
                 ×
               </button>
+            </div>
+          )}
+          {previewing && (
+            <div
+              style={{
+                margin: "8px 12px 0",
+                padding: "9px 13px",
+                borderRadius: 12,
+                background: "rgba(45,90,61,0.10)",
+                border: "1px solid rgba(45,90,61,0.22)",
+                color: "var(--forest, #2d5a3d)",
+                fontSize: 12.5,
+                lineHeight: 1.4,
+                textAlign: "center",
+              }}
+            >
+              ✦ Preview — this is your plan, ready for <strong>{data.client.startDateLabel}</strong>. It goes
+              live and starts moving on its own that day.
             </div>
           )}
           <main className="screen-scroll" key={inCheckin ? "checkin" : tab}>

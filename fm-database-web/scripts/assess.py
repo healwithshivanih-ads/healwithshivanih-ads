@@ -7,9 +7,12 @@ Reads JSON from stdin:
   "symptoms": [str],          # symptom slugs
   "topics": [str],            # topic slugs
   "complaints": str,          # free-text presenting complaints
-  "attachments": [             # optional
+  "attachments": [             # optional — recorded as UploadedFileRefs always
     {"path": str, "mime_type": str, "kind": "lab_report"|"food_journal"}
   ],
+  "attach_documents": bool,   # default False — only ship raw PDFs/images to the
+                              #   model when true. Otherwise labs are read from the
+                              #   client's parsed health_snapshots (cost guard A).
   "dry_run": bool             # if true, return a synthetic suggestion (skip Anthropic)
 }
 
@@ -21,6 +24,10 @@ Writes JSON to stdout:
   "computed_ratios": [...],   # derived FM markers from extracted_labs
   "usage": {...},
   "subgraph_size": int,       # bytes
+  "preflight_blocked": bool,  # true when refused BEFORE any API spend (cost guard B):
+                              #   oversized attachments or too-broad a selection.
+                              #   Env overrides: FM_ASSESS_FORCE=1 (bypass),
+                              #   FM_ASSESS_MAX_ATTACH_B64, FM_ASSESS_MAX_SELECTION.
   "error": str | null
 }
 
@@ -625,6 +632,15 @@ def main() -> int:
     topics = payload.get("topics") or []
     complaints = payload.get("complaints") or ""
     attachments = payload.get("attachments") or []
+    # Cost guard (A): by default we do NOT ship raw PDFs/images to the
+    # synthesiser. Lab values should already be parsed into the client's
+    # health_snapshots (which the model reads as compact text); re-sending the
+    # original multi-page report doubles input cost AND makes the model restate
+    # every value, blowing the output-token budget and TRUNCATING the call —
+    # the most expensive possible failure (full input + max output billed,
+    # nothing returned). Set attach_documents=true only when the model
+    # genuinely needs to read an un-parsed document.
+    attach_documents = bool(payload.get("attach_documents"))
     dry_run = bool(payload.get("dry_run"))
     session_date_str = payload.get("session_date") or None  # ISO YYYY-MM-DD or None (defaults to today)
     five_pillars_raw: dict | None = payload.get("five_pillars") or None
@@ -722,9 +738,14 @@ def main() -> int:
             pass
     subgraph_bytes = len(json.dumps(subgraph))
 
-    # ----- attachments (already saved by the TS layer; we re-read them as base64) -----
+    # ----- attachments -----
+    # We always RECORD each upload as an UploadedFileRef (so the session shows
+    # which reports informed it), but we only re-read + base64 the bytes into
+    # `lab_files` (the document blocks the model actually sees) when the caller
+    # opts in via attach_documents=true. See cost guard (A) above.
     lab_files: list[dict] = []
     file_refs: list[UploadedFileRef] = []
+    lab_files_b64_bytes = 0
     now = datetime.now(timezone.utc)
     today = date.fromisoformat(session_date_str) if session_date_str else date.today()
     for att in attachments:
@@ -733,19 +754,22 @@ def main() -> int:
             continue
         mime = att.get("mime_type") or "application/octet-stream"
         kind = att.get("kind") or "lab_report"
+        file_refs.append(UploadedFileRef(
+            filename=os.path.basename(path),
+            kind=kind,
+            uploaded_at=now,
+        ))
+        if not attach_documents:
+            continue
         with open(path, "rb") as fh:
             data_b64 = base64.b64encode(fh.read()).decode("ascii")
+        lab_files_b64_bytes += len(data_b64)
         lab_files.append({
             "filename": os.path.basename(path),
             "mime_type": mime,
             "data_b64": data_b64,
             "kind": kind,
         })
-        file_refs.append(UploadedFileRef(
-            filename=os.path.basename(path),
-            kind=kind,
-            uploaded_at=now,
-        ))
 
     # ----- client context (mirrors the Streamlit version) -----
     m = client.measurements
@@ -1069,6 +1093,41 @@ def main() -> int:
             # Use the most recent one from today
     existing_sid: str | None = existing_today_session.session_id if existing_today_session else None
 
+    # ── Pre-flight cost gate (B) ─────────────────────────────────────────
+    # A synthesize() call that hits the output-token cap bills FULL input +
+    # max output and returns nothing — the worst possible spend. We refuse
+    # before paying when the request is shaped like the ones that truncate:
+    # oversized attachments, or an over-broad selection that bloats the
+    # subgraph. Override a deliberate large run with FM_ASSESS_FORCE=1.
+    if not dry_run and os.environ.get("FM_ASSESS_FORCE") != "1":
+        _MAX_ATTACH_B64 = int(os.environ.get("FM_ASSESS_MAX_ATTACH_B64") or 500_000)
+        _MAX_SELECTION = int(os.environ.get("FM_ASSESS_MAX_SELECTION") or 10)
+        _reasons: list[str] = []
+        if lab_files_b64_bytes > _MAX_ATTACH_B64:
+            _reasons.append(
+                f"attached documents are {lab_files_b64_bytes // 1024} KB "
+                f"(cap {_MAX_ATTACH_B64 // 1024} KB) — these labs should already be parsed "
+                "into the client record; re-run without attachments (drop attach_documents) "
+                "so the model reads the structured values instead of restating a multi-page PDF"
+            )
+        if len(symptoms) + len(topics) > _MAX_SELECTION:
+            _reasons.append(
+                f"{len(symptoms)} symptoms + {len(topics)} topics selected "
+                f"(cap {_MAX_SELECTION} combined) — trim to the ~3-4 highest-yield of each; "
+                "a broad selection bloats the subgraph and truncates the output"
+            )
+        if _reasons:
+            json.dump({
+                "ok": False,
+                "preflight_blocked": True,
+                "error": "Assessment blocked before spending API credits — "
+                         + "; ".join(_reasons)
+                         + ". (Set FM_ASSESS_FORCE=1 to override.)",
+                "subgraph_size": subgraph_bytes,
+                "attachment_b64_bytes": lab_files_b64_bytes,
+            }, sys.stdout)
+            return 2
+
     if dry_run:
         # Synthetic result parsed into typed model so both branches share
         # the same attribute-access interface below.
@@ -1106,6 +1165,12 @@ def main() -> int:
                 # Cache corrupted — fall through to live call.
                 cached = None
         if cached is None:
+            # Cost guard (C): a live Sonnet call is about to happen. Refuse
+            # unless this invocation is authorized (FM_API_OK=1 — set by the
+            # app, absent in ad-hoc/chat shells). Cache hits above are $0 and
+            # pass through; only a real spend is gated.
+            from _api_guard import require_api_authorized
+            require_api_authorized("assess.py")
             from fmdb.assess.suggester import synthesize
             try:
                 result = synthesize(

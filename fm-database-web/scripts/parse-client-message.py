@@ -119,6 +119,8 @@ def main() -> int:
 
     try:
         import anthropic
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("parse-client-message.py")
         client = anthropic.Anthropic()
 
         response = client.messages.create(

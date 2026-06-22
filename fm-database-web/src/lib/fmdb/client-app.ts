@@ -2426,6 +2426,14 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const startDate = startStr ? new Date(`${startStr}T00:00:00Z`) : null;
   const now = istNow();
   const todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  // "Effective today" for plan CONTENT (which day's menu, week number, the
+  // header date + week strip). Before the start date we clamp FORWARD to the
+  // start date, so the app renders the Day-1 view frozen — exactly as it will
+  // look on the start morning — and then advances with the real date once the
+  // plan begins. The notStarted / startsInDays flags further below still use
+  // the REAL todayUTC so the "starts on" banner is accurate.
+  const refUTC =
+    startDate && todayUTC.getTime() < startDate.getTime() ? startDate : todayUTC;
   // Journey length — read from the plan (12-week default, but some plans run
   // 16). Drives the week counter, progress arc, lab checkpoints, the coach
   // line, and the "X-week reset" labels. Day 1 is immutable once set.
@@ -2433,15 +2441,15 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const totalWeeks = Number.isFinite(pw) && pw >= 1 && pw <= 52 ? Math.round(pw) : 12;
   let week = 1;
   if (startDate) {
-    const days = Math.floor((todayUTC.getTime() - startDate.getTime()) / 86_400_000);
+    const days = Math.floor((refUTC.getTime() - startDate.getTime()) / 86_400_000);
     week = Math.min(Math.max(Math.floor(days / 7) + 1, 1), totalWeeks);
   }
 
   // week strip: Sunday-start calendar week around today
   const dows = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const todayDow = todayUTC.getUTCDay();
+  const todayDow = refUTC.getUTCDay();
   const weekStrip = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(todayUTC.getTime() + (i - todayDow) * 86_400_000);
+    const d = new Date(refUTC.getTime() + (i - todayDow) * 86_400_000);
     return { dow: dows[d.getUTCDay()], num: d.getUTCDate(), today: i === todayDow };
   });
 
@@ -2546,7 +2554,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
 
   // Pick today's column: REAL DATE match first (format-B tables carry dates
   // per day, e.g. "Mon 8 Jun"); otherwise weekday within the rotation week.
-  const todayLabel = `${todayUTC.getUTCDate()} ${todayUTC.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })}`;
+  const todayLabel = `${refUTC.getUTCDate()} ${refUTC.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })}`;
   let table = undefined as WeekTable | undefined;
   let colIdx = (todayDow + 6) % 7; // table columns are Mon..Sun
   for (const t of weekTables) {
@@ -4294,8 +4302,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       nextSession,
     },
     today: {
-      dow: todayUTC.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" }),
-      dateLabel: todayUTC.toLocaleDateString("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }),
+      dow: refUTC.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" }),
+      dateLabel: refUTC.toLocaleDateString("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }),
       idx: todayDow,
     },
     weekStrip,

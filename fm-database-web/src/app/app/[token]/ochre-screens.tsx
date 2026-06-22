@@ -94,7 +94,7 @@ function greetWord(hour: number): string {
  *  either the coach set a future start date (countdown), or the plan was just
  *  generated and no start date is confirmed yet ("coach will confirm"). The
  *  app unlocks itself the moment the start date arrives. */
-export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
+export function PlanHoldScreen({ goCoach, openOrder }: { goCoach: () => void; openOrder: () => void }) {
   const data = useOchre();
   const days = data.client.startsInDays;
   const hasDate = days > 0; // a committed future start date to count down to
@@ -184,6 +184,52 @@ export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
           <div className="who">— {data.coach.name}</div>
         </div>
       </div>
+
+      {(() => {
+        // Pre-Day-1 head start: let the client see + order their supplements
+        // now so they arrive in time for day one. The full OrderOverlay
+        // (buy links, retailer grouping, mark-as-ordered) is reachable during
+        // hold — it renders independently of the held plan-content tabs.
+        const order = [...data.supplements, ...(data.upcomingSupplements ?? [])];
+        if (order.length === 0) return null;
+        return (
+          <div className="rightnow" style={{ marginTop: 14 }}>
+            <div className="rn-body">
+              <div className="rn-eyebrow">
+                <Icon name="sparkle" size={14} /> Get a head start
+              </div>
+              <div className="rn-title" style={{ fontSize: 17 }}>
+                {hasDate ? <>Order these before {data.client.startDateLabel}</> : <>What to have ready</>}
+              </div>
+              <div className="rn-sub" style={{ marginBottom: 10 }}>
+                So your supplements are in hand for day one — there&apos;s nothing else to prep yet.
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 12px" }}>
+                {order.map((s, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: 10,
+                      padding: "7px 0",
+                      borderBottom: "1px solid rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    <span style={{ fontWeight: 600 }}>{s.name}</span>
+                    {s.dose && (
+                      <span style={{ opacity: 0.6, fontSize: 13, textAlign: "right" }}>{s.dose}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <button className="rn-cta" onClick={openOrder}>
+                See full order list <Icon name="arrowRight" size={16} />
+              </button>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

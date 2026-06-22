@@ -297,6 +297,8 @@ def main() -> int:
 
     try:
         from anthropic import Anthropic
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("client-quick-chat.py")
         client_api = Anthropic()
         resp = client_api.messages.create(
             model="claude-sonnet-4-6",

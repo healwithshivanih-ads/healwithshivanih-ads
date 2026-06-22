@@ -1,0 +1,150 @@
+# Acumen Diagnostics — lab provider config (pathology integration)
+# Scaffold. list_inr = confirmed Acumen DOS list price; target_inr = proposed client price
+# (pending Acumen rate negotiation). negotiated_inr = null until rates lock.
+# Component test slugs map to fm-database/data/lab_tests/<slug>.yaml (FM-optimal ranges live there).
+# See docs/ACUMEN_PATHOLOGY_INTEGRATION.md.
+
+provider:
+  slug: acumen-diagnostics
+  display_name: Acumen Diagnostics
+  phone_e164: "+919808050050"
+  website: https://www.acumendiagnostics.in
+  home_collection: true
+  notes_for_coach: >-
+    B2B reference lab. Covers all blood/serum work + esoteric send-outs (LC-MS/MS hormones,
+    salivary cortisol, fatty-acid profile, HLA, cytogenetics). Does NOT offer DUTCH, GI-MAP /
+    stool, or Organic Acids — keep those with the existing specialty lab.
+  updated_at: '2026-06-16'
+  updated_by: shivani
+
+# ---------------------------------------------------------------------------
+# TIERED PACKAGES (pre-fixed with Acumen, broad lifestyle + disease spanning)
+# ---------------------------------------------------------------------------
+packages:
+  - slug: fm-essential-basic
+    tier: basic
+    display_name: FM Essential
+    summary: Entry FM screen — metabolic, thyroid, lipids, inflammation, key nutrients.
+    list_inr: 9070          # sum of confirmed component list prices
+    target_inr: 3999        # proposed client price (pre-negotiation)
+    negotiated_inr: null
+    fasting_required: true
+    tests:
+      - hemoglobin            # ~300  (CBC) — not separately priced in DOS
+      - tsh                   # 400
+      - free-t3               # } Thyroid Profile-Free 900 (fT3 + fT4)
+      - free-t4               # }
+      - fasting-glucose       # ~100 — not separately priced in DOS
+      - fasting-insulin       # 1080
+      - hba1c                 # 640
+      - homa-ir               # calculated from insulin + glucose
+      - hdl-cholesterol       # } Lipid Profile (Fasting) 1000
+      - triglycerides         # }
+      - hscrp                 # 850
+      - ferritin              # 1000
+      - vitamin-d-25-oh       # 1650
+      - vitamin-b12           # 1150
+
+  - slug: fm-comprehensive-advanced
+    tier: advanced
+    display_name: FM Comprehensive
+    summary: Standard FM workup — Basic plus thyroid antibodies, ApoB, methylation, deeper nutrients.
+    list_inr: 16985
+    target_inr: 5999
+    negotiated_inr: null
+    fasting_required: true
+    includes_package: fm-essential-basic   # superset of Basic
+    additional_tests:
+      - tpo-antibodies        # } Thyroid Antibodies (TPO + Tg) 2400
+      - tg-antibodies         # }
+      - apob                  # 685
+      - homocysteine          # 1450
+      - folate-rbc            # 2300
+      - magnesium-rbc         # 610 (serum at this tier)
+      - uric-acid             # 270
+      - esr                   # 200
+
+  - slug: fm-total-platinum
+    tier: platinum
+    display_name: FM Total Deep-Dive
+    summary: Advanced plus full hormones, advanced CV risk, gold-standard nutrients. Sex-specific variant.
+    list_inr: 29200           # female variant; male ~27500 (reverse T3 excluded — not at Acumen)
+    target_inr: 8999
+    negotiated_inr: null
+    fasting_required: true
+    includes_package: fm-comprehensive-advanced
+    has_sex_variant: true
+    additional_tests_common:
+      # NOTE: Reverse T3 is NOT offered by Acumen (absent from DOS) — order elsewhere if needed.
+      - am-cortisol           # 850
+      - dhea-s                # ~900 (confirm with Acumen)
+      - lp-a                  # 1320
+      - holotranscobalamin-active-b12   # 1550 — upgrades vitamin-b12
+      # + Apolipoprotein Profile 1870 (no catalogue slug yet; order as add-on)
+    additional_tests_female:
+      - estradiol-e2          # 700
+      - progesterone          # 740
+      - amh                   # 2400
+      - shbg                  # 2800
+    additional_tests_male:
+      - total-testosterone    # } Testosterone Profile 3640
+      - free-testosterone     # }
+      - shbg                  # 2800
+
+# ---------------------------------------------------------------------------
+# A-LA-CARTE ADD-ONS (per-test, ordered ad-hoc).
+# quoted_inr = Acumen's quoted add-on price (2026-06-19). NOTE: these are at/above
+# Acumen's own DOS list — i.e. NO partner discount on add-ons (unlike the base panel).
+# Confirm whether the 25% rev-share applies to add-ons too.
+# ---------------------------------------------------------------------------
+addon_tests:
+  # Hormones & adrenal
+  - { slug: dhea-s,            name: DHEA-S,                 quoted_inr: 1400, dos_list_inr: null }
+  - { slug: am-cortisol,       name: Cortisol,               quoted_inr: 850,  dos_list_inr: 850 }
+  - { slug: estradiol-e2,      name: Estradiol (E2),         quoted_inr: 850,  dos_list_inr: 700 }   # above list
+  - { slug: progesterone,      name: Progesterone,           quoted_inr: 850,  dos_list_inr: 740 }   # above list
+  - { slug: lh,                name: LH,                     quoted_inr: 700,  dos_list_inr: 580 }   # above list
+  - { slug: fsh,               name: FSH,                    quoted_inr: 700,  dos_list_inr: 580 }   # above list
+  - { slug: prolactin,         name: Prolactin,              quoted_inr: 700,  dos_list_inr: 650 }
+  - { slug: amh,               name: AMH,                    quoted_inr: 2350, dos_list_inr: 2400 }
+  - { slug: total-testosterone, name: Testosterone Total,    quoted_inr: 850,  dos_list_inr: null }
+  - { slug: free-testosterone, name: Testosterone Free,      quoted_inr: 2200, dos_list_inr: 2150 }
+  - { slug: shbg,              name: SHBG,                   quoted_inr: 2800, dos_list_inr: 2800 }
+  # Metabolic & cardiac
+  - { slug: c-peptide,         name: C-Peptide,              quoted_inr: 1400, dos_list_inr: 1400 }
+  - { slug: apoa1,             name: Apolipoprotein A1,      quoted_inr: 650,  dos_list_inr: 685 }
+  - { slug: apob,              name: Apolipoprotein B,       quoted_inr: 650,  dos_list_inr: 685 }
+  - { slug: lp-a,              name: Lipoprotein(a),         quoted_inr: 1300, dos_list_inr: 1320 }
+  - { slug: fibrinogen,        name: Fibrinogen,             quoted_inr: 1100, dos_list_inr: 1090 }
+  - { slug: bnp,               name: BNP,                    quoted_inr: 2200, dos_list_inr: 2205 }
+  - { slug: cystatin-c,        name: Cystatin C,             quoted_inr: 1600, dos_list_inr: 1600 }
+  # Cancer screening
+  - { slug: ca-125,            name: CA 125,                 quoted_inr: 1500, dos_list_inr: 1550 }
+  - { slug: cea,               name: CEA,                    quoted_inr: 1000, dos_list_inr: null }
+  - { slug: ca-15-3,           name: CA 15.3,                quoted_inr: 1550, dos_list_inr: 1575 }
+  - { slug: psa-total,         name: PSA Total,              quoted_inr: 1000, dos_list_inr: 1000 }
+  - { slug: psa-free,          name: PSA Free,               quoted_inr: 1100, dos_list_inr: 1090 }
+  # Autoimmune
+  - { slug: ana,               name: ANA,                    quoted_inr: 1000, dos_list_inr: 1050 }
+  - { slug: ana-profile,       name: ANA Profile,            quoted_inr: 5500, dos_list_inr: 5500 }
+  - { slug: anti-ccp,          name: Anti-CCP,               quoted_inr: 1650, dos_list_inr: 1750 }
+  - { slug: ttg-iga,           name: tTG IgA,                quoted_inr: 1600, dos_list_inr: 1650 }
+  - { slug: gliadin-iga,       name: Gliadin IgA,            quoted_inr: 2000, dos_list_inr: 2140 }
+  - { slug: gliadin-igg,       name: Gliadin IgG,            quoted_inr: 2000, dos_list_inr: 1975 }
+  # Gut
+  - { slug: calprotectin,      name: Calprotectin (stool),   quoted_inr: 3000, dos_list_inr: 3200 }
+  - { slug: h-pylori-stool,    name: H. pylori antigen (stool), quoted_inr: 1800, dos_list_inr: 1580 } # above list
+  - { slug: h-pylori-iga,      name: H. pylori IgA (blood),  quoted_inr: 2400, dos_list_inr: null }
+  - { slug: stool-occult,      name: Stool occult blood,     quoted_inr: 200,  dos_list_inr: 200 }
+  - { slug: stool-routine,     name: Stool routine,          quoted_inr: 250,  dos_list_inr: null }
+  - { slug: urine-routine,     name: Urine routine,          quoted_inr: 200,  dos_list_inr: 200 }
+  # Minerals & nutrients
+  - { slug: zinc-rbc,          name: Zinc,                   quoted_inr: 2200, dos_list_inr: 2400 }
+  - { slug: copper,            name: Copper,                 quoted_inr: 2400, dos_list_inr: 2500 }
+  - { slug: selenium,          name: Selenium,               quoted_inr: 2900, dos_list_inr: 2915 }
+  - { slug: reticulocyte,      name: Reticulocyte count,     quoted_inr: 450,  dos_list_inr: 480 }
+  # Functional B12 (from earlier — confirm Acumen add-on price)
+  - { slug: methylmalonic-acid, name: "MMA Serum (LC-MS/MS) — functional B12", quoted_inr: null, dos_list_inr: 3430 }
+
+# Esoteric extras present in DOS but not yet quoted as add-ons:
+#   Apolipoprotein Profile 1870 · DHT 2750 · HLA-B27 3800 · Full Fatty Acid Profile 4000 · Salivary cortisol 2940

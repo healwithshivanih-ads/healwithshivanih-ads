@@ -133,7 +133,7 @@ export async function generateWeekMenuAction(
 /** Coach approval: the pending week goes LIVE on the client's app. */
 export async function approveWeekMenuAction(
   clientId: string,
-): Promise<{ ok: boolean; error?: string; groceryWarning?: string }> {
+): Promise<{ ok: boolean; error?: string }> {
   try {
     const hit = await publishedFileForClient(clientId);
     if (!hit) return { ok: false, error: "No published plan." };
@@ -168,36 +168,23 @@ export async function approveWeekMenuAction(
     await fs.rename(tmp, hit.file);
     revalidatePath(`/clients-v2/${clientId}`);
 
-    // Auto-refresh the 🛒 grocery list from the now-live menu (coach rule
-    // 2026-06-13: grocery must track the menu automatically — no manual
-    // regenerate step). Best-effort: the menu is already live, so a grocery
-    // failure must NOT fail the approval; it's surfaced as a warning + logged
-    // (and the dashboard 🛒 chip would still flag a genuinely missing list).
+    // The menu is now durably live (written + revalidated above). Push a gentle
+    // "new menu" nudge synchronously (quick + best-effort), then refresh the 🛒
+    // grocery list and recipe pack in the BACKGROUND. Those are heavy shims
+    // (tens of seconds each) and must NEVER block the coach's approval — an
+    // inline await here is exactly what hung the UI when the recipe pack
+    // truncated. This fire-and-forget is safe ONLY because the coach UI runs as
+    // a long-lived PM2 process on the Mac (never serverless, never on Fly), so
+    // the detached promise runs to completion. Each shim re-reads the plan by
+    // slug, is best-effort, and revalidates /clients-v2/<id> itself, so the
+    // panel picks up the fresh grocery + recipes on a later load(). Failures go
+    // to the server log, not the UI (the dashboard 🛒 chip still flags a
+    // genuinely missing list). If this ever moved to a serverless runtime, use
+    // after()/a cron-drain queue instead of a bare detached promise.
     const slug = String(doc.slug ?? hit.plan?.slug ?? "");
-    const warnings: string[] = [];
-    try {
-      const g = await generateGroceryListAction(clientId, slug);
-      if (!g.ok) warnings.push(`grocery refresh failed: ${g.error}`);
-    } catch (e) {
-      warnings.push(`grocery refresh threw: ${e instanceof Error ? e.message : "unknown"}`);
-    }
 
-    // Auto-generate the recipe pack from the now-live menu (coach rule
-    // 2026-06-13: weekly menus → recipes auto-generate per week, no manual
-    // step). Best-effort, same as grocery — the menu is already live.
-    try {
-      const { generateWeekRecipesAction } = await import("./recipes");
-      const r = await generateWeekRecipesAction(clientId, slug);
-      if (!r.ok) warnings.push(`recipe pack failed: ${r.error}`);
-    } catch (e) {
-      warnings.push(`recipe pack threw: ${e instanceof Error ? e.message : "unknown"}`);
-    }
-
-    const groceryWarning = warnings.length ? `menu live, but ${warnings.join("; ")}` : undefined;
-    if (groceryWarning) console.error(`[weekly-menu] ${clientId}: ${groceryWarning}`);
-
-    // Push the client a gentle "new menu" nudge (best-effort; only fires if
-    // they've turned notifications on in the app's settings).
+    // Push the client a gentle "new menu" nudge (only fires if they've enabled
+    // notifications in the app's settings).
     try {
       const { sendPushToClient } = await import("@/lib/fmdb/push-server");
       const tok = (doc as { letter_token?: string }).letter_token ?? "";
@@ -212,7 +199,25 @@ export async function approveWeekMenuAction(
     } catch {
       /* push is optional — never affects approval */
     }
-    return { ok: true, groceryWarning };
+
+    // Background grocery + recipe refresh — never awaited, never blocks approval.
+    void (async () => {
+      try {
+        const g = await generateGroceryListAction(clientId, slug);
+        if (!g.ok) console.error(`[weekly-menu] ${clientId}: grocery refresh failed: ${g.error}`);
+      } catch (e) {
+        console.error(`[weekly-menu] ${clientId}: grocery refresh threw: ${e instanceof Error ? e.message : "unknown"}`);
+      }
+      try {
+        const { generateWeekRecipesAction } = await import("./recipes");
+        const r = await generateWeekRecipesAction(clientId, slug);
+        if (!r.ok) console.error(`[weekly-menu] ${clientId}: recipe pack failed: ${r.error}`);
+      } catch (e) {
+        console.error(`[weekly-menu] ${clientId}: recipe pack threw: ${e instanceof Error ? e.message : "unknown"}`);
+      }
+    })().catch(() => {});
+
+    return { ok: true };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : "approve failed" };
   }

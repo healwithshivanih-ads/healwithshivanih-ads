@@ -314,6 +314,8 @@ Generate the plan_patch with adjustments appropriate for {phase_label}. Keep wha
         print(json.dumps({"ok": False, "error": "ANTHROPIC_API_KEY not set"}))
         sys.exit(0)
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("generate-follow-up.py")
     client = anthropic.Anthropic(api_key=api_key)
 
     try:

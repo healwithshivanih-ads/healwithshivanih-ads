@@ -169,6 +169,8 @@ def _haiku_assess(observation: str, candidates: list[dict]) -> dict:
     """Call Claude Haiku to assess how each candidate relates to the observation."""
     import anthropic
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("coach-knowledge-check.py")
     client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
     # Build a compact catalogue excerpt for Haiku

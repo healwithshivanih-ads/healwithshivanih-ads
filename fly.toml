@@ -35,6 +35,10 @@ primary_region = "bom"
   # CRITICAL: marks this machine as intake-only. The middleware reads
   # this to return 404 for any non-public route. Don't unset on Fly.
   FLY_INTAKE_ONLY = "1"
+  # Authorizes Anthropic-spending shims (cost guard C). Fly's app-copilot
+  # route invokes a gated shim; without this it would refuse. Coach-side
+  # ad-hoc/chat shells lack this and stay refused. See scripts/_api_guard.py.
+  FM_API_OK = "1"
   # Phase 2 (2026-06-02): Fly serves the public intake form from a STAGING tree
   # that holds only active intakes. The Mac mirrors per-client stubs in and
   # reconciles drafts/submissions back into the authoritative ~/fm-plans, then

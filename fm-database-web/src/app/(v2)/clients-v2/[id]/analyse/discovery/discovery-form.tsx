@@ -41,6 +41,16 @@ import { FmFormDraftClear } from "@/components/fm";
 
 const PRIMARY = "#B8770A";
 
+/** Stable short hash of a saved-labs list (order-independent), used to key
+ *  the localStorage draft so a fresh saved list invalidates a stale draft.
+ *  djb2 over the sorted, joined names. */
+function labsSignature(labs: string[]): string {
+  const s = [...labs].sort().join("|");
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+}
+
 const FOOD_JOURNAL: FmPillOption[] = [
   { value: "3", label: "3 days" },
   { value: "5", label: "5 days" },
@@ -61,6 +71,7 @@ export function DiscoveryForm({
   prefillChiefConcern = "",
   prefillExtraPanels = [],
   prefillDetectionLabel = "",
+  savedLabs = [],
 }: {
   clientId: string;
   displayName: string;
@@ -77,6 +88,13 @@ export function DiscoveryForm({
   /** Plain-English summary of what was pre-filled, surfaced in a banner
    *  above the form. */
   prefillDetectionLabel?: string;
+  /** requested_labs from the most-recent saved discovery session, if any.
+   *  When non-empty this is the SINGLE SOURCE OF TRUTH for the initial
+   *  selection — the form hydrates from it instead of the condition→panel
+   *  prefill, so the checkboxes here, the saved session, and the Overview
+   *  "send labs" card never diverge. The prefill only seeds a brand-new
+   *  discovery that has never been saved. */
+  savedLabs?: string[];
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -122,6 +140,12 @@ export function DiscoveryForm({
   // who already has active_conditions on file gets the right panel set
   // pre-ticked instead of the generic default.
   const initialLabs = useMemo(() => {
+    // Single source of truth: a saved discovery session's requested_labs
+    // wins over the condition→panel prefill. Hydrate verbatim so the
+    // checkboxes mirror exactly what's on the saved session (and what the
+    // Overview "send labs" card will send). The prefill below only seeds a
+    // discovery that has never been saved.
+    if (savedLabs.length > 0) return new Set(savedLabs);
     const includeGroups = new Set<string>([
       ...DEFAULT_DISCOVERY_PANELS,
       ...prefillExtraPanels,
@@ -140,7 +164,7 @@ export function DiscoveryForm({
       }
     }
     return out;
-  }, [visiblePanels, clientSex, prefillExtraPanels]);
+  }, [visiblePanels, clientSex, prefillExtraPanels, savedLabs]);
   const [selectedLabs, setSelectedLabs] = useState<Set<string>>(initialLabs);
 
   // Persist a serialisable mirror of selectedLabs so the draft survives reloads.
@@ -152,8 +176,17 @@ export function DiscoveryForm({
   // intake. Old `fm-discovery-draft-<id>` localStorage entries held an
   // empty chiefConcern that was clobbering the new intake-derived prefill
   // on every page load. v2 key bypasses those stale drafts cleanly.
+  //
+  // v3 (2026-06-19): the draft key now embeds a signature of the SAVED
+  // discovery labs. When a saved session's requested_labs change (or one
+  // first appears), the key rotates — so a stale localStorage draft can
+  // never override the saved list as the source of truth. In-progress edits
+  // still persist (the signature only changes on save, not while editing).
+  const draftKey = savedLabs.length
+    ? `fm-discovery-draft-v3-${clientId}-${labsSignature(savedLabs)}`
+    : `fm-discovery-draft-v3-${clientId}`;
   const { clearDraft, hasSavedDraft } = useFormDraft(
-    `fm-discovery-draft-v2-${clientId}`,
+    draftKey,
     { sessionDate, chiefConcern, clientWords, foodDays, outcome, selectedLabsArr },
     {
       sessionDate: setSessionDate,

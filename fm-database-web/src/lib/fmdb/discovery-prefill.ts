@@ -20,6 +20,14 @@ export interface ClientPrefillInput {
   notes?: string;
   goals?: string[];
   family_history?: string | null;
+  /** Client age in years (from date_of_birth, else age_band midpoint).
+   *  Used to gate the female sex-hormone panel — see the menopause block
+   *  below. Null when unknown (we then DON'T suppress). */
+  age?: number | null;
+  /** Age at which menopause started, if known (parsed from
+   *  menopause_started). Lets a recently-menopausal woman over 58 still
+   *  get the hormone panel. Null when unknown. */
+  menopauseAge?: number | null;
 }
 
 export interface DiscoveryPrefill {
@@ -45,7 +53,9 @@ const CONDITION_PANEL_MAP: Array<[RegExp, string[]]> = [
   [/hyperten|high blood pressure|\bbp\b/i, ["Cardiovascular Risk", "Metabolic Panel"]],
   [/osteopor|bone density|osteopenia/i, ["Nutrients"]],
   [/pcos|polycystic|androgen/i, ["Sex Hormones — Female", "Sex Hormones — Common", "Blood Sugar & Insulin"]],
-  [/perimenopaus|menopaus|hot flush|hot flash/i, ["Sex Hormones — Female", "Sex Hormones — Common", "Adrenal & Stress"]],
+  // NOTE: menopause is handled separately (see the age-gated block in
+  // buildDiscoveryPrefill) — NOT in this generic map — so the sex-hormone
+  // panel can be suppressed for women decades past menopause.
   [/depress|anxiety|mood|low mood|brain fog|cognitive|memory/i, ["Methylation & Genetics", "Adrenal & Stress", "Nutrients"]],
   [/fatigue|chronic fatigue|me\/cfs|exhaust|burnout/i, ["Adrenal & Stress", "Thyroid Function", "Nutrients"]],
   [/autoimmun|rheumat|lupus|sjogren|celiac|hashimoto/i, ["Autoimmune Screening", "Inflammation"]],
@@ -97,6 +107,36 @@ export function buildDiscoveryPrefill(input: ClientPrefillInput): DiscoveryPrefi
       }
     }
   }
+
+  // ── Menopause: age-gated sex-hormone panel ─────────────────────────
+  // Auto-ticking estradiol / progesterone / FSH / LH for a woman decades
+  // past menopause is low-yield: the result is predictable (E2 low,
+  // FSH/LH high) and non-actionable (de-novo HRT isn't started that far
+  // out). So we only pre-select the sex-hormone panels when she's
+  // plausibly peri/recently-menopausal: age ≤ 58, OR menopause within the
+  // last ~5 years, OR age unknown (don't suppress on missing data).
+  // Adrenal & Stress stays regardless — sleep/HPA is relevant at any age.
+  const MENO_RE = /perimenopaus|menopaus|hot flush|hot flash/i;
+  const PERI_AGE_MAX = 58;
+  const RECENT_MENO_YEARS = 5;
+  const age = input.age ?? null;
+  const menopauseAge = input.menopauseAge ?? null;
+  const menoMatched =
+    conditions.some((c) => MENO_RE.test(c)) || (!!notes && MENO_RE.test(notes));
+  let sexHormonesSkipped = false;
+  if (menoMatched) {
+    extraSet.add("Adrenal & Stress");
+    const hormonesPlausible =
+      age == null ||
+      age <= PERI_AGE_MAX ||
+      (menopauseAge != null && age - menopauseAge <= RECENT_MENO_YEARS);
+    if (hormonesPlausible) {
+      extraSet.add("Sex Hormones — Female");
+      extraSet.add("Sex Hormones — Common");
+    } else {
+      sexHormonesSkipped = true;
+    }
+  }
   const extraPanels = [...extraSet];
 
   // ── Detection label for the banner ─────────────────────────────────
@@ -110,6 +150,9 @@ export function buildDiscoveryPrefill(input: ClientPrefillInput): DiscoveryPrefi
     detectionParts.push(
       `${extraPanels.length} extra panel${extraPanels.length === 1 ? "" : "s"} suggested`,
     );
+  }
+  if (sexHormonesSkipped) {
+    detectionParts.push("sex-hormone panel auto-skipped (well past menopause)");
   }
   const detectionLabel = detectionParts.join(" · ");
 
