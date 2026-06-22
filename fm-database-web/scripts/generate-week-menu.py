@@ -52,7 +52,12 @@ def _load_dotenv() -> None:
                     os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
-MODEL = "claude-sonnet-4-6"
+# Weekly auto-draft menus run on Haiku — the coach approves every draft in the
+# studio before any client sees it, and the harder downstream siblings (grocery,
+# week-recipes) already run on Haiku over these same dishes. Sonnet was ~4x the
+# cost on the only recurring per-client-per-week AI cron. Override per-run with
+# FMDB_WEEK_MENU_MODEL=claude-sonnet-4-6 if a richer draft is ever wanted.
+MODEL = os.environ.get("FMDB_WEEK_MENU_MODEL", "claude-haiku-4-5")
 
 _TOOL = {
     "name": "record_week_menu",

@@ -225,7 +225,19 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
           sessionTriggers.trim() ? `Reported triggers: ${sessionTriggers.trim()}` : null,
           clientFeedback.trim() ? `Feedback: ${clientFeedback.trim().slice(0, 240)}` : null,
         ].filter(Boolean).join(" | ");
-        if (eventSummary) {
+        // Only run the (paid) AI rework when the check-in carries a REAL signal:
+        // a negative progress rating, a new/changed symptom, a reported trigger,
+        // or substantive feedback. A clean "all good, no changes" ping carries no
+        // new driver, so the model would just be paid to conclude "no rework
+        // needed" — skip it (the coach can still run rework manually). This is the
+        // highest-frequency AI spend in the app and it scales with every client.
+        const NEGATIVE_PROGRESS = new Set(["struggling", "worsening"]);
+        const worthRework =
+          NEGATIVE_PROGRESS.has(progress) ||
+          newSymptoms.length > 0 ||
+          sessionTriggers.trim().length > 0 ||
+          clientFeedback.trim().length > 0;
+        if (eventSummary && worthRework) {
           void assessReworkBenefitAction({
             clientId,
             triggeredBy: "check_in",

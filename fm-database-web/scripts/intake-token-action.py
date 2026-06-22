@@ -1819,12 +1819,17 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
     except Exception as e:  # non-fatal: client.yaml is the source of truth
         session_id = f"(failed to write session: {e})"
 
-    # ── auto-fire AI insights generation (Haiku, ~$0.005/run) ──
-    # Refreshes intake_insights on every submit so the coach's view stays
-    # current with the client's latest edits. Best-effort: failures are
-    # logged on stderr; the submit itself still succeeds.
+    # ── auto-fire AI insights generation (Haiku) — ONLY on the FIRST submit, or
+    # if insights don't exist yet (recovery). Re-submits do NOT auto-regenerate:
+    # per coach decision intake_insights regeneration is MANUAL (the 🔄 Refresh
+    # button on IntakeInsightsCard). Intakes autosave + the token allows re-edits,
+    # so firing on every submit paid for a Haiku call per re-submit that the coach
+    # never asked for. Best-effort: failures logged on stderr; submit still ok. ──
     insights_status = "skipped (no api key)"
-    if os.environ.get("ANTHROPIC_API_KEY"):
+    should_fire_insights = is_first_submit or not data.get("intake_insights")
+    if not should_fire_insights:
+        insights_status = "skipped (re-submit; insights are manual after the first)"
+    elif os.environ.get("ANTHROPIC_API_KEY"):
         try:
             result = subprocess.run(
                 [sys.executable, str(SCRIPT_DIR / "generate-intake-insights.py")],

@@ -145,15 +145,16 @@ export function LetterEditor({
   // swap some for jowar / bajra") and the AI rewrites the relevant
   // sections in place. Uses the existing refineLetter() server action
   // (Sonnet refine prompt with full markdown context). Two modes:
-  //   - discuss: AI explains what it WOULD change, no rewrite yet
-  //   - finalise: AI rewrites + saves to disk
-  // We default to finalise mode for inline editing — coach can hit the
-  // "Discuss first" toggle if she wants to see proposed changes before
-  // they land. History is per-letter, lost on page refresh (acceptable
-  // — the markdown changes ARE persisted on disk).
+  //   - discuss: AI explains what it WOULD change, no rewrite yet (Haiku)
+  //   - finalise: AI rewrites the WHOLE document + saves to disk (Sonnet, ~$0.15+)
+  // We default to DISCUSS — it's the cheap path and never touches disk, so an
+  // exploratory edit doesn't pay for a full Sonnet rewrite. The coach flips to
+  // Finalise (and clicks Apply) only when she actually wants the rewrite to
+  // land. History is per-letter, lost on page refresh (acceptable — the
+  // markdown changes ARE persisted on disk).
   const [refineHistory, setRefineHistory] = useState<ChatTurn[]>([]);
   const [refineDraft, setRefineDraft] = useState("");
-  const [refineMode, setRefineMode] = useState<"discuss" | "finalise">("finalise");
+  const [refineMode, setRefineMode] = useState<"discuss" | "finalise">("discuss");
   const [refining, startRefine] = useTransition();
   const [lastRefineReply, setLastRefineReply] = useState<string | null>(null);
 
@@ -941,9 +942,9 @@ export function LetterEditor({
             {/* 💬 AI Refine — freeform feedback chat.  Coach types things
                 like "too much ragi, swap some for jowar / bajra" or
                 "tone it down on the supplement section, she's already
-                tired of taking pills" → Sonnet rewrites in place.
-                Default = finalise (save to disk); flip to Discuss to
-                see proposed changes first without writing. */}
+                tired of taking pills".
+                Default = Discuss (cheap Haiku, no write); flip to Finalise
+                for the full Sonnet rewrite-to-disk when ready. */}
             <div
               style={{
                 marginTop: 22,

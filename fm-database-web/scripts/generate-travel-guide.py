@@ -83,6 +83,11 @@ _TOOL = {
 }
 
 
+# Haiku is plenty for a tiny structured tool-call (5-7 food items) and this fires
+# from the client app on demand. Override with FMDB_TRAVEL_GUIDE_MODEL if needed.
+_TRAVEL_GUIDE_MODEL = os.environ.get("FMDB_TRAVEL_GUIDE_MODEL", "claude-haiku-4-5")
+
+
 def main() -> int:
     _load_env()
     raw = sys.stdin.read()
@@ -181,7 +186,7 @@ def main() -> int:
         require_api_authorized("generate-travel-guide.py")
         ac = anthropic.Anthropic()
         resp = ac.messages.create(
-            model="claude-sonnet-4-6",
+            model=_TRAVEL_GUIDE_MODEL,
             max_tokens=1500,
             system=system,
             tools=[_TOOL],
@@ -214,7 +219,7 @@ def main() -> int:
         log_usage(
             client_id=client_id,
             script="generate-travel-guide.py",
-            model="claude-sonnet-4-6",
+            model=_TRAVEL_GUIDE_MODEL,
             usage=resp.usage,
             notes=f"travel guide · {kind} · {location}",
         )

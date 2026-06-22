@@ -168,6 +168,12 @@ Be honest. If the report is unclear or genotypes aren't disclosed, mark zygosity
 as 'unknown' and write that you couldn't determine."""
 
 
+# Haiku is adequate for the rigid forced-tool-use SNP extraction (the sibling
+# parse-functional-test already runs on Haiku); the truncation guard fails safe
+# before persist. Override with FMDB_GENETIC_MODEL=claude-sonnet-4-6 if needed.
+_GENETIC_MODEL = os.environ.get("FMDB_GENETIC_MODEL", "claude-haiku-4-5")
+
+
 def main() -> int:
     _load_env()
 
@@ -244,7 +250,7 @@ def main() -> int:
     aclient = build_client(api_key)
     try:
         with aclient.messages.stream(
-            model="claude-sonnet-4-6",
+            model=_GENETIC_MODEL,
             max_tokens=8192,
             system=_SYSTEM,
             tools=[_TOOL_SCHEMA],
@@ -257,7 +263,7 @@ def main() -> int:
             _log_usage(
                 client_id=client_id,
                 script="parse-genetic-report.py",
-                model="claude-sonnet-4-6",
+                model=_GENETIC_MODEL,
                 usage=resp.usage,
                 notes=f"file={pdf_path.name}",
             )
