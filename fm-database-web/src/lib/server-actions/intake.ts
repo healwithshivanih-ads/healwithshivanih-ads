@@ -645,6 +645,33 @@ export async function reissueDoshaQuizAction(
 }
 
 /**
+ * Mint the DOSHA self-assessment link WITHOUT sending it on WhatsApp, so the
+ * coach can copy it and deliver it manually (any channel). Added 2026-06-22
+ * after Meghana's quiz "sent" via WhatsApp but never arrived (Meta accepted
+ * the send, delivery failed) — when WhatsApp delivery is flaky the coach still
+ * needs a reliable way to get the link out. Mirrors reissueDoshaQuizAction's
+ * token + URL construction exactly (full-stage token, `?focus=dosha`), minus
+ * the WhatsApp send.
+ */
+export async function getDoshaQuizLinkAction(
+  clientId: string,
+): Promise<{ ok: true; url: string } | { ok: false; error: string }> {
+  const tok = await generateIntakeToken(clientId, 14, true);
+  if (!tok.ok) return { ok: false, error: tok.error };
+
+  const rawOrigin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+  if (!rawOrigin || /localhost|127\.0\.0\.1/.test(rawOrigin)) {
+    return {
+      ok: false,
+      error:
+        "NEXT_PUBLIC_APP_URL is unset or points to localhost — set it to the public origin in .env.local and restart pm2 so the link is reachable.",
+    };
+  }
+
+  return { ok: true, url: `${rawOrigin}/intake/${tok.token}?focus=dosha` };
+}
+
+/**
  * v0.75.9 — "your full intake is now open" notification, sent after the
  * coach clicks 🔓 Unlock full intake on the client Overview. Uses the
  * approved Meta template `fm_intake_unlocked_v1` (UTILITY, 2 params:
