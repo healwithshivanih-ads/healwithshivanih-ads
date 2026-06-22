@@ -802,7 +802,7 @@ _INTAKE_LIST_FIELDS = [
     "bowel_pattern", "hair_other", "nail_signs",
     "acne_pattern", "skin_signs",
     "pain_locations", "headache_type", "pain_pattern", "pain_quality",
-    "histamine_signals", "chemical_sensitivity", "oral_signs",
+    "histamine_signals", "chemical_sensitivity", "tolerance_changes", "oral_signs",
     "eye_signs",
     "repro_diagnoses", "perimenopause_inventory",
     "vaginal_signs",
@@ -1819,12 +1819,29 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
     except Exception as e:  # non-fatal: client.yaml is the source of truth
         session_id = f"(failed to write session: {e})"
 
-    # ── auto-fire AI insights generation (Haiku, ~$0.005/run) ──
-    # Refreshes intake_insights on every submit so the coach's view stays
-    # current with the client's latest edits. Best-effort: failures are
-    # logged on stderr; the submit itself still succeeds.
+    # ── auto-fire AI insights generation (Haiku) — ONLY on the FIRST submit, or
+    # if insights don't exist yet (recovery). Re-submits do NOT auto-regenerate:
+    # per coach decision intake_insights regeneration is MANUAL (the 🔄 Refresh
+    # button on IntakeInsightsCard). Intakes autosave + the token allows re-edits,
+    # so firing on every submit paid for a Haiku call per re-submit that the coach
+    # never asked for.
+    #
+    # ALSO skip on the Fly intake deployment (FLY_INTAKE_ONLY=1 in fly.toml): the
+    # public form runs on Fly, but the coach UI is Mac-only (Fly 404s every coach
+    # route), so insights generated here are never displayed. The Mac cron
+    # reconcile (_reconcile_one → _apply_submit, with FLY_INTAKE_ONLY unset)
+    # re-runs this same merge against the authoritative store the coach actually
+    # reads and owns first-generation there. Firing on Fly too would just
+    # double-bill one Haiku call for a result nobody sees.
+    # Best-effort: failures logged on stderr; submit still ok. ──
     insights_status = "skipped (no api key)"
-    if os.environ.get("ANTHROPIC_API_KEY"):
+    should_fire_insights = is_first_submit or not data.get("intake_insights")
+    on_fly_intake = bool(os.environ.get("FLY_INTAKE_ONLY"))
+    if not should_fire_insights:
+        insights_status = "skipped (re-submit; insights are manual after the first)"
+    elif on_fly_intake:
+        insights_status = "skipped (fly intake deploy; Mac reconcile owns insights)"
+    elif os.environ.get("ANTHROPIC_API_KEY"):
         try:
             result = subprocess.run(
                 [sys.executable, str(SCRIPT_DIR / "generate-intake-insights.py")],

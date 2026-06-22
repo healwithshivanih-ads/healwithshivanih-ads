@@ -132,6 +132,8 @@ def _call_haiku(active_notes: str, draft_notes: str) -> dict:
     if not os.environ.get("ANTHROPIC_API_KEY"):
         return {"ok": False, "error": "ANTHROPIC_API_KEY not set"}
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("plan-notes-semantic-diff.py")
     client = Anthropic()
 
     tool = {

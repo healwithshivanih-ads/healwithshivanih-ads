@@ -202,6 +202,8 @@ def main() -> int:
         _step("calling Sonnet (menu composition, ~1-2 min)")
         import anthropic
 
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("generate-app-menu.py")
         api_client = anthropic.Anthropic()
         model = os.environ.get("FMDB_LETTER_MODEL", "claude-sonnet-4-6")
         with api_client.messages.stream(

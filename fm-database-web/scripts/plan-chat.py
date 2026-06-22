@@ -379,6 +379,8 @@ CLIENT PROFILE:
         print(json.dumps({"ok": False, "error": "ANTHROPIC_API_KEY not set"}))
         sys.exit(0)
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("plan-chat.py")
     client = anthropic.Anthropic(api_key=api_key)
 
     # Build messages: context as first user turn, then history, then current message

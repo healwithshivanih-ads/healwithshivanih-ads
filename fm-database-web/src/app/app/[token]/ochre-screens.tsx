@@ -94,7 +94,7 @@ function greetWord(hour: number): string {
  *  either the coach set a future start date (countdown), or the plan was just
  *  generated and no start date is confirmed yet ("coach will confirm"). The
  *  app unlocks itself the moment the start date arrives. */
-export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
+export function PlanHoldScreen({ goCoach, openOrder }: { goCoach: () => void; openOrder: () => void }) {
   const data = useOchre();
   const days = data.client.startsInDays;
   const hasDate = days > 0; // a committed future start date to count down to
@@ -184,6 +184,52 @@ export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
           <div className="who">— {data.coach.name}</div>
         </div>
       </div>
+
+      {(() => {
+        // Pre-Day-1 head start: let the client see + order their supplements
+        // now so they arrive in time for day one. The full OrderOverlay
+        // (buy links, retailer grouping, mark-as-ordered) is reachable during
+        // hold — it renders independently of the held plan-content tabs.
+        const order = [...data.supplements, ...(data.upcomingSupplements ?? [])];
+        if (order.length === 0) return null;
+        return (
+          <div className="rightnow" style={{ marginTop: 14 }}>
+            <div className="rn-body">
+              <div className="rn-eyebrow">
+                <Icon name="sparkle" size={14} /> Get a head start
+              </div>
+              <div className="rn-title" style={{ fontSize: 17 }}>
+                {hasDate ? <>Order these before {data.client.startDateLabel}</> : <>What to have ready</>}
+              </div>
+              <div className="rn-sub" style={{ marginBottom: 10 }}>
+                So your supplements are in hand for day one — there&apos;s nothing else to prep yet.
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 12px" }}>
+                {order.map((s, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: 10,
+                      padding: "7px 0",
+                      borderBottom: "1px solid rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    <span style={{ fontWeight: 600 }}>{s.name}</span>
+                    {s.dose && (
+                      <span style={{ opacity: 0.6, fontSize: 13, textAlign: "right" }}>{s.dose}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <button className="rn-cta" onClick={openOrder}>
+                See full order list <Icon name="arrowRight" size={16} />
+              </button>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }
@@ -506,49 +552,75 @@ function MealList({
 /** Plan-tab supplement list, tiered: ⭐ Core (driver-targeting) first, then
  *  the rest of the daily protocol, then a clearly-separated "As needed"
  *  group at the bottom so situational items never pollute the daily list. */
+// The whole plan, grouped by the week each supplement starts. Each week is a
+// collapsible section: the current week (and anything starting next week) is
+// open by default; future and completed phases stay collapsed so the list
+// reads as the full arc without overwhelming. Today's routine lives on the
+// Today tab — this is the reference for the entire protocol.
 function PlanSupplements() {
-  const { supplements } = useOchre();
-  const byDay = (a: AppSupplementT, b: AppSupplementT) => a.chronoRank - b.chronoRank;
-  const core = supplements.filter((s) => s.core && !s.asNeeded).sort(byDay);
-  const daily = supplements.filter((s) => !s.core && !s.asNeeded).sort(byDay);
-  const asNeeded = supplements.filter((s) => s.asNeeded);
+  const { allSupplements, supplements } = useOchre();
+  // Fall back to the current-week list if an older payload has no allSupplements.
+  const items = ((allSupplements && allSupplements.length ? allSupplements : supplements) ?? []).slice();
+  if (items.length === 0) return null;
+
+  const byWeek = new Map<number, AppSupplementT[]>();
+  for (const s of items) {
+    const wk = s.startWeek ?? 1;
+    const arr = byWeek.get(wk);
+    if (arr) arr.push(s);
+    else byWeek.set(wk, [s]);
+  }
+  const weeks = [...byWeek.keys()].sort((a, b) => a - b);
+
+  const meta = (st?: string) =>
+    st === "current"
+      ? { tag: "On it now", color: "#2f7d4f", bg: "#eef6ef", border: "#cfe6d4", open: true, dim: false }
+      : st === "upcoming"
+        ? { tag: "Starts next week", color: "#b8722c", bg: "#fbf4e9", border: "#e7c79b", open: true, dim: false }
+        : st === "past"
+          ? { tag: "Completed", color: "#8a8a8a", bg: "#f4f4f2", border: "#e4e4df", open: false, dim: true }
+          : { tag: "Coming up", color: "#5b6b7a", bg: "#f1f4f7", border: "#d8e0e8", open: false, dim: false };
+
   return (
     <>
-      {core.length > 0 && (
-        <>
-          <div className="supp-group-label">
-            <Icon name="sparkle" size={13} /> Core — the ones doing the heavy lifting
-          </div>
-          <div className="card" style={{ overflow: "hidden" }}>
-            {core.map((s) => (
-              <SuppPlanCard key={s.id} supp={s} />
-            ))}
-          </div>
-        </>
-      )}
-      {daily.length > 0 && (
-        <>
-          {core.length > 0 && <div className="supp-group-label plain">Supporting your protocol</div>}
-          <div className="card" style={{ overflow: "hidden", marginTop: core.length > 0 ? 0 : undefined }}>
-            {daily.map((s) => (
-              <SuppPlanCard key={s.id} supp={s} />
-            ))}
-          </div>
-        </>
-      )}
-      {asNeeded.length > 0 && (
-        <>
-          <div className="supp-group-label muted-label">As needed — not every day</div>
-          <div className="card card-asneeded" style={{ overflow: "hidden" }}>
-            {asNeeded.map((s) => (
-              <SuppPlanCard key={s.id} supp={s} />
-            ))}
-          </div>
-          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
-            Keep these on hand — use only when the moment calls for it (eating out, travel, a reaction). Not part of your daily rhythm.
-          </div>
-        </>
-      )}
+      {weeks.map((wk) => {
+        const group = byWeek.get(wk)!;
+        const m = meta(group[0]?.status);
+        return (
+          <details key={wk} open={m.open} style={{ marginBottom: 10 }}>
+            <summary
+              style={{
+                listStyle: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 8,
+                padding: "9px 12px",
+                borderRadius: 10,
+                background: m.bg,
+                border: `1px solid ${m.border}`,
+                fontWeight: 700,
+                fontSize: 13,
+              }}
+            >
+              <span>
+                {wk <= 1 ? "Week 1 · from Day 1" : `Week ${wk}`}{" "}
+                <span style={{ fontWeight: 600, color: "#9a9a93" }}>· {group.length}</span>
+              </span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: m.color }}>{m.tag}</span>
+            </summary>
+            <div className="card" style={{ overflow: "hidden", marginTop: 6, opacity: m.dim ? 0.72 : 1 }}>
+              {group.map((s) => (
+                <SuppPlanCard key={s.id} supp={s} />
+              ))}
+            </div>
+          </details>
+        );
+      })}
+      <div className="muted" style={{ fontSize: 11.5, marginTop: 4, paddingLeft: 2 }}>
+        Your full protocol, in the order it unfolds. Today&apos;s doses are on the Today tab — order anything marked &ldquo;starts next week&rdquo; ahead of time so it arrives before you begin.
+      </div>
     </>
   );
 }
@@ -560,9 +632,17 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
         <div style={{ flex: 1 }}>
           <div className="name">
             {supp.name}
-            {supp.core && (
+            {supp.core && !supp.startsNextWeek && (
               <span className="supp-core">
                 <Icon name="sparkle" size={10} /> Core
+              </span>
+            )}
+            {supp.startsNextWeek && (
+              <span
+                className="supp-core"
+                style={{ background: "#f3e0c2", color: "#b8722c" }}
+              >
+                Starts next week
               </span>
             )}
           </div>
@@ -674,6 +754,16 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
               {s.how ? (
                 <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 2 }}>{s.how}</div>
               ) : null}
+              {s.buyUrl ? (
+                <a
+                  href={s.buyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 4, color: "var(--accent, #b8722c)", fontWeight: 600 }}
+                >
+                  <Icon name="bag" size={13} /> Find it on Amazon
+                </a>
+              ) : null}
             </div>
           ))}
           <div style={{ fontSize: 11.5, color: "var(--muted)", lineHeight: 1.5, marginTop: 8, opacity: 0.85 }}>
@@ -686,14 +776,12 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
 }
 
 export function PlanScreen({
-  onLogAll,
   openDoc,
   openRemedy,
   openGrocery,
   openOrder,
   openPortions,
 }: {
-  onLogAll: () => void;
   openDoc: (doc: { kind: string; id: string }) => void;
   openRemedy: (r: AppRemedy) => void;
   openGrocery: () => void;
@@ -722,13 +810,46 @@ export function PlanScreen({
       <Section title="Your supplements">
         <PlanSupplements />
         <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-          Reorder links go to recommended brands. Tap any supplement for the why.
+          Reorder links go to recommended brands. Tap any supplement for the why. Logging your daily doses lives on the Today tab.
         </div>
-
-        <button className="log-all" style={{ marginTop: 12 }} onClick={onLogAll}>
-          <Icon name="check" size={17} /> Log everything for today
-        </button>
       </Section>
+
+      {data.coachPicks.length > 0 && (
+        <Section title="Shivani's picks for you">
+          <div className="card" style={{ overflow: "hidden" }}>
+            {data.coachPicks.map((p, i) => (
+              <div
+                key={`${p.title}-${i}`}
+                style={{
+                  padding: "11px 14px",
+                  borderBottom: i < data.coachPicks.length - 1 ? "1px solid var(--line, #ece7df)" : "none",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: 14 }}>
+                  {p.title}
+                  {p.forWhat && (
+                    <span style={{ fontWeight: 500, opacity: 0.7 }}> · for {p.forWhat}</span>
+                  )}
+                </div>
+                {p.note && <div style={{ fontSize: 12.5, opacity: 0.8, marginTop: 3 }}>{p.note}</div>}
+                {p.buyUrl && (
+                  <a
+                    href={p.buyUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 5, color: "var(--accent, #b8722c)", fontWeight: 600 }}
+                  >
+                    <Icon name="bag" size={13} /> Where to get it
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
+            A few extras Shivani picked for you — optional, not part of your daily routine.
+          </div>
+        </Section>
+      )}
 
       {/* Daily practices + guided breathing now live on the Today tab only
           (2026-06-13) — they're a daily do, not plan reference, so showing

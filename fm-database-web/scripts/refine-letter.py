@@ -254,6 +254,8 @@ def main():
         active_max_tokens = 2000
 
     try:
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("refine-letter.py")
         api = anthropic.Anthropic()
         full_text = ""
         with api.messages.stream(

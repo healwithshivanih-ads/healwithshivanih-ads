@@ -32,6 +32,39 @@ import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { ensureLetterToken } from "./letter-token";
 import { sendWhatsAppAction } from "@/app/api/whatsapp/actions";
+import { cleanSessionLabel } from "@/lib/fmdb/appointment-utils";
+
+/**
+ * Human-readable body for a queued send, so the coach's WhatsApp thread shows
+ * the real message instead of a debug placeholder like
+ * "[no_join_check] params=[Sudarshan | Coaching Session]".
+ */
+function renderPendingBody(r: PendingSend): string {
+  const coach = process.env.COACH_NAME || "Shivani";
+  const [p1 = "", p2 = "", p3 = "", p4 = ""] = r.template_params;
+  switch (r.template_name) {
+    case "appt_noshow_probe_client":
+      return (
+        `Hi ${p1}, just checking in — I haven't seen you on Zoom yet for our ${p2} ` +
+        `session. Running late, or need to move it?`
+      );
+    case "appt_reminder_1h_zoom_client":
+      return (
+        `Hi ${p1}, your ${p3} session is in about an hour — at ${p2} today. ` +
+        `Tap "Join Zoom" below when it's time. See you soon!\n\n— ${coach}`
+      );
+    case "appt_reminder_2h":
+      return (
+        `Hi ${p1}, your ${p4} session is at ${p3} today (${p2}). See you soon!\n\n— ${coach}`
+      );
+    case "fm_supplement_order_v2":
+      return `Hi ${p1}, here's the link to order your supplements:\n\n${p2}\n\n— ${coach}`;
+    case "fm_plan_letter_link_v1":
+      return `Hi ${p1}, your plan is ready:\n\n${p2}\n\n— ${coach}`;
+    default:
+      return `[${r.kind}] ${r.template_params.join(" · ")}`;
+  }
+}
 
 const PENDING_FILE = "_pending_sends.yaml";
 
@@ -297,7 +330,7 @@ export async function tickPendingSends(): Promise<{
           await recordOutboundMessageAction({
             clientId: r.client_id,
             templateName: r.template_name,
-            renderedBody: `[${r.kind}] params=[${r.template_params.join(" | ")}]`,
+            renderedBody: renderPendingBody(r),
           });
         } catch { /* best-effort */ }
       } else {
@@ -367,7 +400,7 @@ export async function queueNoJoinNudge(opts: {
   if (existing.some((r) => r.kind === "no_join_check" && r.plan_slug === opts.bookingUid)) return;
 
   const firstName = opts.name.split(/\s+/)[0] || "there";
-  const sessionType = opts.sessionType || "Coaching Session";
+  const sessionType = cleanSessionLabel(opts.sessionType);
 
   await queuePending({
     send_at: sendAt.toISOString(),
@@ -414,7 +447,7 @@ export async function queueOneHourReminder(opts: {
   if (existing.some((r) => r.kind === "appt_reminder_1h" && r.plan_slug === opts.bookingUid)) return;
 
   const firstName = opts.name.split(/\s+/)[0] || "there";
-  const sessionType = opts.sessionType || "Coaching Session";
+  const sessionType = cleanSessionLabel(opts.sessionType);
   const startDate = new Date(opts.startTimeIso);
   const timeStr =
     startDate.toLocaleTimeString("en-IN", {

@@ -198,8 +198,12 @@ def main() -> int:
         return 2
 
     # ── Build compact catalogue reference (slug: label + top aliases) ────────
+    # Send the WHOLE symptom catalogue — a prior [:300] cap silently dropped the
+    # ~33 symptoms beyond #300 (catalogue is 333+), so the matcher could never
+    # detect them in a transcript. The extra ~33 one-line entries are a few
+    # hundred Haiku tokens — negligible vs. the correctness gain.
     catalogue_lines = []
-    for s in symptom_catalogue[:300]:
+    for s in symptom_catalogue:
         slug = s.get("slug", "")
         label = s.get("label", slug)
         aliases = s.get("aliases") or []
@@ -267,6 +271,8 @@ def main() -> int:
         json.dump({"ok": False, "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("extract-symptoms.py")
     client = Anthropic(api_key=api_key)
 
     # Streaming required for max_tokens > 8192 and for long-running calls

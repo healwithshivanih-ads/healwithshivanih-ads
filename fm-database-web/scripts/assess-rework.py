@@ -619,6 +619,8 @@ def main() -> int:
 
     context = _build_context(client, plan, sessions, event_summary, triggered_by)
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("assess-rework.py")
     aclient = Anthropic(api_key=api_key)
     try:
         resp = aclient.messages.create(

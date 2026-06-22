@@ -158,6 +158,8 @@ def main() -> int:
         json.dump({"ok": False, "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("parse-health-text.py")
     client = Anthropic(api_key=api_key)
     try:
         resp = client.messages.create(

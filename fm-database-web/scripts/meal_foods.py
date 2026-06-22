@@ -72,12 +72,28 @@ def _doshas_from_plan(plan: dict) -> set[str]:
     return {d for d in ("vata", "pitta", "kapha") if d in text}
 
 
+def _is_nonveg(diet: str) -> bool:
+    # Check non-veg FIRST — "vegetarian" is a substring of "non-vegetarian", so a
+    # bare membership test misclassifies non-veg clients as vegetarian.
+    return any(
+        x in diet
+        for x in ("non-veg", "nonveg", "non veg", "pescatar", "fish", "chicken",
+                  "mutton", "prawn", "seafood", "meat", "omnivore")
+    )
+
+
+def _is_veg(diet: str) -> bool:
+    return not _is_nonveg(diet) and any(
+        x in diet for x in ("vegetarian", "vegan", "jain", "eggetarian")
+    )
+
+
 def _diet_excludes(client: dict) -> list[str]:
     diet = str(client.get("dietary_preference") or "").lower()
     pats: list[str] = []
-    if any(x in diet for x in ("vegetarian", "vegan", "jain", "eggetarian")):
+    if _is_veg(diet):
         pats += ["bone broth", "chicken", "mutton", "fish", "meat", "prawn", "liver"]
-    if ("vegetarian" in diet or "vegan" in diet or "jain" in diet) and "eggetarian" not in diet:
+    if _is_veg(diet) and "eggetarian" not in diet:
         pats += ["egg"]
     if "vegan" in diet:
         pats += ["milk", "ghee", "curd", "yoghurt", "yogurt", "buttermilk", "paneer", "honey", "lassi"]

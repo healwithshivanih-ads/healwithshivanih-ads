@@ -50,6 +50,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { queueNoJoinNudge, queueOneHourReminder } from "@/lib/server-actions/plan-publish-followups";
+import { cleanSessionLabel } from "@/lib/fmdb/appointment-utils";
 
 // ── Coach notification ──────────────────────────────────────────────────────
 const IST_TZ = "Asia/Kolkata";
@@ -84,7 +85,7 @@ async function notifyCoachOfBooking(opts: {
     opts.eventType === "booking_rescheduled" ? "rescheduled booking" :
     opts.eventType === "booking_cancelled" ? "cancellation" : "new booking";
   const clientName = opts.attendeeName || opts.clientId;
-  const sessionType = opts.eventTitle?.replace(/between.*/i, "").trim() || "Coaching Session";
+  const sessionType = cleanSessionLabel(opts.eventTitle);
 
   // ── Primary: WhatsApp coach alert ──────────────────────────────────────
   const coachPhone = process.env.COACH_NOTIFY_PHONE;
@@ -320,7 +321,7 @@ async function sendNoShowNudge(opts: {
   const joinLine = opts.joinUrl
     ? `Here's the link to join now: ${opts.joinUrl}`
     : "Check your email for the Zoom link.";
-  const sessionType = opts.eventTitle?.replace(/between.*/i, "").trim() || "Coaching Session";
+  const sessionType = cleanSessionLabel(opts.eventTitle);
   const renderedBody =
     `Hi ${firstName}, just checking in — I haven't seen you on Zoom yet for our ` +
     `${sessionType} session. Running late, or need to move it? ` +
@@ -524,7 +525,7 @@ export async function POST(req: Request) {
       // Queue 1h-before reminder + 5-min no-join nudge
       const clientPhone = evt.attendee_phone || body.attendee?.phone;
       const clientName = evt.attendee_name || body.attendee?.name || match.clientId;
-      const sessionType = evt.event_title?.replace(/between.*/i, "").trim() || "Coaching Session";
+      const sessionType = cleanSessionLabel(evt.event_slug || evt.event_title);
       if (clientPhone && evt.start_time) {
         queueOneHourReminder({
           clientId: match.clientId,
@@ -616,7 +617,7 @@ export async function POST(req: Request) {
       // Queue 1h-before reminder + 5-min no-join nudge
       const clientPhone = evt.attendee_phone || converted.attendee.phone;
       const clientName = evt.attendee_name || converted.attendee.name || match.clientId;
-      const sessionType = evt.event_title?.replace(/between.*/i, "").trim() || "Coaching Session";
+      const sessionType = cleanSessionLabel(evt.event_slug || evt.event_title);
       if (clientPhone && evt.start_time) {
         queueOneHourReminder({
           clientId: match.clientId,

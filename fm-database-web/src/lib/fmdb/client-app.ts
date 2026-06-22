@@ -206,6 +206,14 @@ export interface AppSupplement {
   /** True when the coach's rationale marks this as a primary/driver-targeting
    *  supplement (auto-detected). Surfaced as a "Core" tier on the Plan tab. */
   core?: boolean;
+  /** True when this supplement begins NEXT week — shown with a "Starts next
+   *  week" heads-up so the client can order it in time. Not part of today's
+   *  routine until it actually starts. */
+  startsNextWeek?: boolean;
+  /** Phase metadata — drives the Plan tab's "whole plan, by week" grouping. */
+  startWeek?: number;
+  durationWeeks?: number | null;
+  status?: "current" | "upcoming" | "later" | "past";
 }
 
 export interface AppRemedy {
@@ -763,6 +771,12 @@ export interface ClientAppData {
   } | null;
   mealExtra: Record<string, AppMealExtra>;
   supplements: AppSupplement[];
+  /** Supplements that begin NEXT week — a heads-up so the client can order
+   *  ahead. NOT part of today's routine / counts / check-in. */
+  upcomingSupplements: AppSupplement[];
+  /** EVERY supplement in the plan, tagged with start week + status — the Plan
+   *  tab's "whole plan, by week" view. Today's surfaces use `supplements`. */
+  allSupplements: AppSupplement[];
   slotOrder: string[];
   practices: { id: string; name: string; when: string }[];
   /** Guided breathing config when the plan prescribes a breathing practice. */
@@ -804,7 +818,10 @@ export interface ClientAppData {
   /** Schüssler tissue-salt suggestions — present only when the client is on the
    *  schussler_salts module AND the plan carries an authored tissue_salts
    *  section. null otherwise. A gentle optional adjunct. */
-  tissueSalts: { overview: string; list: { name: string; reason: string; how: string }[] } | null;
+  tissueSalts: { overview: string; list: { name: string; reason: string; how: string; buyUrl: string }[] } | null;
+  /** Free-form coach picks (off-catalogue product/remedy tips) — "Aquaphor for
+   *  dry lips". Shown in the app's "Shivani's picks" section. */
+  coachPicks: { title: string; forWhat: string; note: string; buyUrl: string }[];
   planRef: {
     pattern: string;
     authoredBy: string;
@@ -912,6 +929,17 @@ function istNow(): Date {
   // Render dates in the client's timezone (India-based practice).
   const s = new Date().toLocaleString("en-US", { timeZone: IST });
   return new Date(s);
+}
+
+// Diet classification — the ONE place that decides veg vs non-veg. Critical:
+// a bare /vegetarian/ test matches inside "non-vegetarian", so non-veg clients
+// were being misclassified as vegetarian (wrong protein list, wrong chip).
+// Always check non-veg FIRST and gate the veg test on it.
+function isNonVegPref(pref: string): boolean {
+  return /non.?veg|pescatar|\bfish\b|chicken|mutton|prawn|seafood|\bmeat\b|omnivore/i.test(pref);
+}
+function isVegetarianPref(pref: string): boolean {
+  return !isNonVegPref(pref) && /vegetarian|vegan|jain|eggetarian|\bveg\b/i.test(pref);
 }
 
 function fmtDay(d: Date): string {
@@ -1678,14 +1706,17 @@ function remedyIcon(category: string, route: string, slug: string): string {
 let remedyCache: AppRemedy[] | null = null;
 let remedyCacheAt = 0;
 
-let tsSaltCache: Map<string, { name: string; how: string }> | null = null;
+let tsSaltCache: Map<string, { name: string; how: string; buyUrl: string }> | null = null;
 let tsSaltCacheAt = 0;
-/** slug → {display name, typical-use} for the tissue_salt catalogue. Used to
- *  resolve plan.tissue_salts slugs for the app's gentle-adjunct section. */
-async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: string }>> {
+/** slug → {client-friendly name, typical-use, buy link} for the tissue_salt
+ *  catalogue. Clients order cell salts by the SHORT biochemic name (Nat Mur,
+ *  Kali Mur) + number, so we surface that — "Nat Mur (No. 8)" — not the chemical
+ *  name. Buy link is an Amazon India search for the SBL 6X product (specific
+ *  ASINs go out of stock; a search always resolves and lets them pick a brand). */
+async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: string; buyUrl: string }>> {
   if (tsSaltCache && Date.now() - tsSaltCacheAt < 60_000) return tsSaltCache;
   const dir = path.join(getCataloguePath(), "tissue_salts");
-  const map = new Map<string, { name: string; how: string }>();
+  const map = new Map<string, { name: string; how: string; buyUrl: string }>();
   let entries: string[] = [];
   try {
     entries = await fs.readdir(dir);
@@ -1697,9 +1728,16 @@ async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: str
     const d = await readYamlIfExists(path.join(dir, name));
     if (!d) continue;
     const slug = asStr(d.slug) || name.replace(/\.ya?ml$/, "");
+    // aliases[0] is the short biochemic order-name ("Nat Mur", "Kali Mur").
+    const aliases = Array.isArray(d.aliases) ? (d.aliases as unknown[]).map(asStr) : [];
+    const abbrev = aliases[0] || asStr(d.display_name) || humanize(slug);
+    const num = d.salt_number;
+    const displayName = num != null && `${num}`.trim() ? `${abbrev} (No. ${num})` : abbrev;
+    const buyUrl = `https://www.amazon.in/s?k=${encodeURIComponent(`SBL ${abbrev} 6X tablets`)}`;
     map.set(slug, {
-      name: asStr(d.display_name) || humanize(slug),
+      name: displayName,
       how: asStr(d.typical_use).replace(/\s+/g, " ").trim(),
+      buyUrl,
     });
   }
   tsSaltCache = map;
@@ -2082,6 +2120,26 @@ function shortTiming(timing: string): string {
   return s.length > 30 ? `${s.slice(0, 28).trim()}…` : s;
 }
 
+// Twice-daily clarity: shortTiming() collapses "morning and evening" → "Morning",
+// hiding the second dose. When the timing explicitly names two times (joined by
+// "and" / "&" / "+"), show BOTH — "Morning & evening", "With lunch & dinner" — so
+// a twice-a-day capsule reads clearly on the daily tab. Single-phrase ranges
+// ("between breakfast and lunch") are left to shortTiming.
+function displayTiming(timing: string): string {
+  const base = shortTiming(timing);
+  const lc = timing.toLowerCase();
+  if (!/\b(and|&|\+)\b/.test(lc) || /between/.test(lc)) return base;
+  const halves = timing.split(/\s*(?:&|\+|\band\b)\s*/i).map((h) => h.trim()).filter(Boolean);
+  if (halves.length < 2) return base;
+  const labels: string[] = [];
+  for (const h of halves) {
+    const lab = shortTiming(h);
+    if (lab && !labels.includes(lab)) labels.push(lab);
+  }
+  if (labels.length < 2) return base;
+  return labels.map((l, i) => (i === 0 ? l : l.toLowerCase())).join(" & ");
+}
+
 // ── main loader ──────────────────────────────────────────────────────────────
 
 /** Find the highest-versioned published plan for a given client. */
@@ -2368,6 +2426,14 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const startDate = startStr ? new Date(`${startStr}T00:00:00Z`) : null;
   const now = istNow();
   const todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  // "Effective today" for plan CONTENT (which day's menu, week number, the
+  // header date + week strip). Before the start date we clamp FORWARD to the
+  // start date, so the app renders the Day-1 view frozen — exactly as it will
+  // look on the start morning — and then advances with the real date once the
+  // plan begins. The notStarted / startsInDays flags further below still use
+  // the REAL todayUTC so the "starts on" banner is accurate.
+  const refUTC =
+    startDate && todayUTC.getTime() < startDate.getTime() ? startDate : todayUTC;
   // Journey length — read from the plan (12-week default, but some plans run
   // 16). Drives the week counter, progress arc, lab checkpoints, the coach
   // line, and the "X-week reset" labels. Day 1 is immutable once set.
@@ -2375,15 +2441,15 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const totalWeeks = Number.isFinite(pw) && pw >= 1 && pw <= 52 ? Math.round(pw) : 12;
   let week = 1;
   if (startDate) {
-    const days = Math.floor((todayUTC.getTime() - startDate.getTime()) / 86_400_000);
+    const days = Math.floor((refUTC.getTime() - startDate.getTime()) / 86_400_000);
     week = Math.min(Math.max(Math.floor(days / 7) + 1, 1), totalWeeks);
   }
 
   // week strip: Sunday-start calendar week around today
   const dows = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const todayDow = todayUTC.getUTCDay();
+  const todayDow = refUTC.getUTCDay();
   const weekStrip = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(todayUTC.getTime() + (i - todayDow) * 86_400_000);
+    const d = new Date(refUTC.getTime() + (i - todayDow) * 86_400_000);
     return { dow: dows[d.getUTCDay()], num: d.getUTCDate(), today: i === todayDow };
   });
 
@@ -2488,7 +2554,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
 
   // Pick today's column: REAL DATE match first (format-B tables carry dates
   // per day, e.g. "Mon 8 Jun"); otherwise weekday within the rotation week.
-  const todayLabel = `${todayUTC.getUTCDate()} ${todayUTC.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })}`;
+  const todayLabel = `${refUTC.getUTCDate()} ${refUTC.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })}`;
   let table = undefined as WeekTable | undefined;
   let colIdx = (todayDow + 6) % 7; // table columns are Mon..Sun
   for (const t of weekTables) {
@@ -2754,9 +2820,29 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     return best?.url;
   };
   const supplements: AppSupplement[] = [];
+  const upcomingSupplements: AppSupplement[] = [];
+  // Every supplement in the protocol, tagged with its phase + status — drives
+  // the Plan tab's "whole plan, by week" view. Today's routine reads the gated
+  // `supplements` (status === 'current') only.
+  const allSupplements: AppSupplement[] = [];
   const protocol = asArr(plan.supplement_protocol) as Dict[];
   for (let i = 0; i < protocol.length; i++) {
     const p = protocol[i];
+    // Phase status against the client's current week. 'current' = on it now;
+    // 'upcoming' = starts next week (heads-up to order ahead); 'later' = a
+    // future phase; 'past' = course finished. Today's surfaces use 'current'
+    // only; the Plan tab shows the whole arc grouped by start week.
+    const startWeek = Number(p.start_week) || 1;
+    const durWeeks = Number(p.duration_weeks) || 0;
+    const status: "current" | "upcoming" | "later" | "past" =
+      durWeeks > 0 && week >= startWeek + durWeeks
+        ? "past"
+        : week >= startWeek
+          ? "current"
+          : startWeek === week + 1
+            ? "upcoming"
+            : "later";
+    const startsNextWeek = status === "upcoming";
     const slug = asStr(p.supplement_slug);
     // Prefer the coach-set display_name (e.g. "Vegetarian Omega-3"), then a
     // known override, then the humanised slug. Strip the brand prefix either
@@ -2791,13 +2877,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       /\b(critical gap|critical|central driver|main driver|key driver|primary (driver|fuel|target)|directly targets?|single biggest|biggest (gap|driver)|foundational|cornerstone|first.?line|non.?negotiable|essential|most important|the priority|highest priority)\b/i.test(
         rawRationale,
       );
-    supplements.push({
+    const suppItem = {
       id: `s-${slug || i}`,
       name,
       dose: shortDose(dose || row?.dose || ""),
       slot: slotFromRank(chronoRank),
       chronoRank,
-      timing: shortTiming(timing),
+      timing: displayTiming(timing),
       why:
         row?.why ||
         clientifyWhy(
@@ -2810,12 +2896,26 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       ...(asNeeded ? { asNeeded: true } : {}),
       ...(emptyStomach ? { emptyStomach: true } : {}),
       ...(core ? { core: true } : {}),
-    });
+      ...(startsNextWeek ? { startsNextWeek: true } : {}),
+      startWeek,
+      durationWeeks: durWeeks || null,
+      status,
+    };
+    // Full arc → allSupplements (Plan tab, by week). Today's routine reads only
+    // 'current'; the next-week heads-up reads 'upcoming'. 'later'/'past' live in
+    // allSupplements so the Plan tab can show the whole plan but they never leak
+    // into today's slots / check-in / counts.
+    allSupplements.push(suppItem);
+    if (status === "current") supplements.push(suppItem);
+    else if (status === "upcoming") upcomingSupplements.push(suppItem);
   }
-  // Order the whole list by when it's taken (stable: authored order is kept
-  // within the same time). Every downstream surface — Today's slots, the Plan
-  // tabs, the order page, counts — reads this single chronological order.
+  // Order each list by when it's taken (stable: authored order is kept within
+  // the same time). Every downstream surface — Today's slots, the Plan tabs,
+  // the order page, counts — reads this single chronological order.
   supplements.sort((a, b) => a.chronoRank - b.chronoRank);
+  upcomingSupplements.sort((a, b) => a.chronoRank - b.chronoRank);
+  // Plan-tab order: by start week, then by daily timing within a week.
+  allSupplements.sort((a, b) => (a.startWeek ?? 1) - (b.startWeek ?? 1) || a.chronoRank - b.chronoRank);
 
   // ---- demographic + dosha context (drives the remedy gates) ---------------
   const sexRaw = asStr(client.sex).trim().toUpperCase().slice(0, 1); // 'M' | 'F' | ''
@@ -3000,10 +3100,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // vegan additionally no dairy/honey.
   const diet = asStr(client.dietary_preference).toLowerCase();
   const dietExcludes: RegExp[] = [];
-  if (/vegetarian|vegan|jain|eggetarian/.test(diet)) {
+  if (isVegetarianPref(diet)) {
     dietExcludes.push(/\bbone broth|\bchicken|\bmutton|\bfish\b|\bmeat\b|\bprawn|\bliver\b/i);
   }
-  if (/vegetarian|vegan|jain/.test(diet) && !/eggetarian/.test(diet)) {
+  if (isVegetarianPref(diet) && !/eggetarian/.test(diet)) {
     dietExcludes.push(/\begg\b|\beggs\b/i);
   }
   if (/vegan/.test(diet)) {
@@ -3856,12 +3956,30 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // ---- plan focus + dietary flags (Plan-tab header) --------------------------
   // Plain-language "what this plan is, and why you're on it". Built only from
   // on-file conditions + the eating pattern — never invented.
+  // Condition label → clean client-facing name. Drop the "(confirmed: …)"
+  // parentheticals AND the lab-value / detail clause after a dash
+  // ("Type 2 diabetes — HbA1c 6.6%" → "Type 2 diabetes") so the why-line reads
+  // as a plain list of conditions, not a wall of numbers.
   const cleanCondition = (c: string): string =>
     c
-      .replace(/\([^)]*\)/g, "") // drop the "(confirmed: …)" clinical parentheticals
+      .replace(/\([^)]*\)/g, "")
+      .split(/\s+[—–]\s+|\s+-\s+/)[0] // strip the lab/detail tail after a dash
       .replace(/\s*\/\s*/g, " / ")
       .replace(/\s{2,}/g, " ")
       .trim();
+  // Lowercase for mid-sentence flow but keep acronyms intact (NAFLD, GERD, PCOS)
+  // — never "nafld" / "gerd".
+  const softLower = (s: string): string =>
+    s
+      .split(/\s+/)
+      .map((w) => (/^[A-Z0-9/&-]{2,}$/.test(w) || /[a-z][A-Z]/.test(w) ? w : w.toLowerCase()))
+      .join(" ");
+  const joinAnd = (a: string[]): string =>
+    a.length <= 1
+      ? a[0] ?? ""
+      : a.length === 2
+        ? `${a[0]} and ${a[1]}`
+        : `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}`;
   const focusConditions = asStrArr(client.active_conditions)
     .map(cleanCondition)
     .filter(Boolean)
@@ -3870,12 +3988,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     .slice(0, 4);
   // pattern label: take the clause before the em/en-dash AND before the
   // first comma (NOT before a hyphen — that breaks "Anti-inflammatory").
-  const patternShort = (asStr(nutrition.pattern).split(/[—–]/)[0].split(",")[0] || "whole-food").trim().toLowerCase();
+  const patternShort = (asStr(nutrition.pattern).split(/[—–]/)[0].split(",")[0] || "whole-food")
+    .trim()
+    .toLowerCase()
+    .replace(/\s*\+\s*/g, " and ");
   const patternArticle = /^[aeiou]/.test(patternShort) ? "an" : "a";
   const coachFirst = coachName.split(" ")[0];
+  const focusList = focusConditions.slice(0, 3).map(softLower);
   const focusWhy =
-    (focusConditions.length
-      ? `This plan focuses on what's on your file — ${focusConditions.slice(0, 3).join(", ").toLowerCase()}. `
+    (focusList.length
+      ? `This plan focuses on what's on your file — ${joinAnd(focusList)}. `
       : "") +
     `You'll work through ${patternArticle} ${patternShort} way of eating, the supplements ${coachFirst} chose for you, and a few daily practices — each piece picked for your body, not a generic template.`;
 
@@ -3920,8 +4042,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const isVegan = /vegan/.test(dietPrefLc);
   if (isVegan) {
     flags.push({ label: "Vegan", detail: "Fully plant-based — your plan keeps B12, iron and omega-3 covered so nothing slips.", resourceId: findRes("vegan", "b12", "iron") });
-  } else if (/vegetarian|veg\b/.test(dietPrefLc)) {
+  } else if (isVegetarianPref(dietPrefLc)) {
     flags.push({ label: "Vegetarian", detail: "Plant protein at every meal — dals, paneer, curd and seeds keep it complete." });
+  } else if (isNonVegPref(dietPrefLc)) {
+    flags.push({ label: "Non-vegetarian", detail: "Lean fish, eggs and poultry are in — paired with plenty of plants and fibre." });
   }
   if (/jain/.test(dietPrefLc)) {
     flags.push({ label: "Jain — no root vegetables", detail: "No onion, garlic, potato or other underground vegetables. Every recipe in your plan already respects this." });
@@ -4001,6 +4125,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     },
     history: bodyHistory.map(({ date, weightKg, waistCm, hipCm }) => ({ date, weightKg, waistCm, hipCm })),
   };
+
+  // ---- coach's quick picks (off-catalogue product / remedy tips) ------------
+  const coachPicks = (Array.isArray(plan.coach_recommendations) ? (plan.coach_recommendations as Dict[]) : [])
+    .map((r) => ({
+      title: asStr(r.title).trim(),
+      forWhat: asStr(r.for_what).trim(),
+      note: asStr(r.note).trim(),
+      buyUrl: asStr(r.buy_url).trim(),
+    }))
+    .filter((r) => r.title);
 
   // ---- weight-loss daily calorie guide --------------------------------------
   // Only for clients whose goals mention weight loss. Same maths as the letter
@@ -4088,6 +4222,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     const tsItems = Array.isArray(tsBlock.salts) ? (tsBlock.salts as Dict[]) : [];
     if (tsItems.length) {
       const tsMap = await loadTissueSaltMap();
+      // Coach policy: cell salts are a gentle adjunct — keep it to 1–2 per
+      // client so the section never overwhelms. Even if more are authored (or
+      // the AI suggests a long list), only the first MAX_TISSUE_SALTS show.
+      const MAX_TISSUE_SALTS = 2;
       const tsList = tsItems
         .map((it) => {
           const slug = asStr(it.salt_slug).trim();
@@ -4097,9 +4235,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
             name: cat?.name ?? humanize(slug),
             reason: asStr(it.reason).trim(),
             how: asStr(it.typical_use).trim() || (cat?.how ?? ""),
+            buyUrl: cat?.buyUrl ?? "",
           };
         })
-        .filter((x): x is { name: string; reason: string; how: string } => x !== null);
+        .filter((x): x is { name: string; reason: string; how: string; buyUrl: string } => x !== null)
+        .slice(0, MAX_TISSUE_SALTS);
       if (tsList.length) {
         tissueSalts = { overview: asStr(tsBlock.overview).trim(), list: tsList };
       }
@@ -4162,8 +4302,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       nextSession,
     },
     today: {
-      dow: todayUTC.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" }),
-      dateLabel: todayUTC.toLocaleDateString("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }),
+      dow: refUTC.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" }),
+      dateLabel: refUTC.toLocaleDateString("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }),
       idx: todayDow,
     },
     weekStrip,
@@ -4177,6 +4317,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     msqEntries,
     travel,
     supplements,
+    upcomingSupplements,
+    allSupplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: practicesVisible,
     breathwork,
@@ -4195,6 +4337,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     remedyLib: visibleLib,
     remedyShelf: visibleShelf,
     tissueSalts,
+    coachPicks,
     planRef: {
       pattern: asStr(nutrition.pattern) || "your plan",
       authoredBy: coachName,

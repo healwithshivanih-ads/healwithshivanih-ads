@@ -54,6 +54,8 @@ import { PlanDiffAlert } from "@/components/client-widgets/plan-diff-alert";
 import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-diff";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { SupplementsProtocolPanel } from "./supplements-protocol-panel";
+import { PlanChatPanel } from "@/components/plan-editor/plan-chat-panel";
+import { CoachRecommendationsPanel } from "./coach-recommendations-panel";
 import { QuickEditPracticesPanel } from "./quick-edit-practices-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
@@ -269,11 +271,17 @@ export default async function PlanTabPage({
   // Clears plan/system-alerts chip on the unread badge for this client.
   void markCoachTabViewed(id, "plan");
 
-  const [client, allPlans, allTopicsList] = await Promise.all([
+  const [client, allPlans, allTopicsList, allSupplementsList] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     loadAllOfKind<{ slug?: string; display_name?: string }>("topics"),
+    loadAllOfKind<{ slug?: string; display_name?: string }>("supplements"),
   ]);
+  // Catalogue supplement options for the "add supplement" typeahead.
+  const supplementCatalogueOptions = allSupplementsList
+    .filter((s) => s.slug)
+    .map((s) => ({ value: s.slug as string, label: s.display_name ?? (s.slug as string) }))
+    .sort((a, b) => a.label.localeCompare(b.label));
   if (!client) {
     return (
       <PlanPageShell clientId={id}>
@@ -437,6 +445,36 @@ export default async function PlanTabPage({
         typeof it.duration_weeks === "number" ? it.duration_weeks : null,
     }))
     .filter((it) => it.supplement_slug);
+
+  // Rows for the "by start week" schedule list on the Plan tab — every
+  // supplement in the protocol, carrying its phase (start_week) so the panel
+  // can group the full arc chronologically.
+  const supplementScheduleRows = supplementItems
+    .filter((it): it is Record<string, unknown> => !!it && typeof it === "object")
+    .map((it) => ({
+      name:
+        (it.display_name as string | undefined) ||
+        (it.supplement_slug as string | undefined) ||
+        "",
+      dose: (it.dose as string | undefined) ?? "",
+      timing: (it.timing as string | undefined) ?? "",
+      startWeek: typeof it.start_week === "number" ? it.start_week : 1,
+      durationWeeks: typeof it.duration_weeks === "number" ? it.duration_weeks : null,
+    }))
+    .filter((it) => it.name);
+
+  // Coach's quick picks (free-form product/remedy tips) for the panel.
+  const coachRecRows = ((activePlan?.coach_recommendations as
+    | Array<Record<string, unknown>>
+    | undefined) ?? [])
+    .filter((it): it is Record<string, unknown> => !!it && typeof it === "object")
+    .map((it) => ({
+      title: (it.title as string | undefined) ?? "",
+      forWhat: (it.for_what as string | undefined) ?? "",
+      note: (it.note as string | undefined) ?? "",
+      buyUrl: (it.buy_url as string | undefined) ?? "",
+    }))
+    .filter((it) => it.title);
 
   // Rows for the in-place QuickEditSupplementsPanel (published plans only).
   // Carries display_name so the panel can show a clean name; the slug is
@@ -733,6 +771,8 @@ export default async function PlanTabPage({
           <SupplementsProtocolPanel
             planSlug={activePlan.slug as string}
             gridItems={supplementGridItems}
+            scheduleRows={supplementScheduleRows}
+            catalogueOptions={supplementCatalogueOptions}
             editRows={quickEditSupplementRows}
             editable={isPublished}
             embedded
@@ -750,6 +790,18 @@ export default async function PlanTabPage({
             planSlug={activePlan.slug as string}
             practices={quickEditPracticeRows}
             editable={isPublished}
+            embedded
+          />
+        ),
+      },
+      {
+        id: "recommendations",
+        label: "💡 Recommendations",
+        badge: coachRecRows.length ? countChip(`${coachRecRows.length}`) : undefined,
+        node: (
+          <CoachRecommendationsPanel
+            planSlug={activePlan.slug as string}
+            recommendations={coachRecRows}
             embedded
           />
         ),
@@ -993,6 +1045,17 @@ export default async function PlanTabPage({
           }}
         >
           <PlanStudio clientId={id} sections={studioSections} />
+        </div>
+
+        {/* AI plan assistant — in-place edits to the live plan (published plans
+            edit in place + audit; drafts revert to draft as before). */}
+        <div style={{ marginTop: 14 }}>
+          <Collapsible
+            title="💬 AI plan assistant"
+            subtitle="Tell me what to change in plain English — e.g. “add magnesium glycinate 400mg at bedtime” or “drop omega-3 to 1g”. Edits apply to this live plan and are audited."
+          >
+            <PlanChatPanel slug={activePlan.slug as string} clientId={id} isLocked={false} />
+          </Collapsible>
         </div>
 
         {/* Footer meta — evergreen verbs + audit trails, below the studio. */}
@@ -1421,6 +1484,8 @@ export default async function PlanTabPage({
             <SupplementsProtocolPanel
               planSlug={activePlan.slug as string}
               gridItems={supplementGridItems}
+              scheduleRows={supplementScheduleRows}
+            catalogueOptions={supplementCatalogueOptions}
               editRows={quickEditSupplementRows}
               editable={isPublished}
             />

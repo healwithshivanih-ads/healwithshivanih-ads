@@ -35,6 +35,8 @@ def qc_score(dish, jpg_path):
     global _CLIENT
     if _CLIENT is None:
         import anthropic
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("source-recipe-images.py")
         _CLIENT = anthropic.Anthropic(api_key=_load_key())
     data = open(jpg_path, "rb").read()
     mt = ("image/png" if data[:8] == b"\x89PNG\r\n\x1a\n"

@@ -115,6 +115,8 @@ def main() -> int:
     _load_env()
     import anthropic  # type: ignore
 
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("backfill-menu-portions.py")
     client = anthropic.Anthropic()
     summary = []
     for f in files:

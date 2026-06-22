@@ -92,6 +92,7 @@ _APP_CLIENT_KEYS = (
     "ayurveda_enabled",
     "mindbody_eft",  # mind-body drip coach override: auto | unlocked | locked
     "mindbody_sleep",
+    "plan_modules",  # gates app layers (e.g. schussler_salts tissue-salt section)
 )
 
 # Coach-only fields stripped from the plan before it reaches the public Fly box —

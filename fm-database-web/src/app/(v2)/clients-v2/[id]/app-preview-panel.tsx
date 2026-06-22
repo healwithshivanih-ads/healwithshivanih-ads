@@ -233,8 +233,9 @@ export function AppPreviewPanel({
     const fn = kind === "approve" ? approveWeekMenuAction : dismissPendingMenuAction;
     const out = await fn(clientId).catch((e) => ({ ok: false as const, error: String(e) }));
     if (!out.ok) setError(out.error ?? `${kind} failed`);
-    else if (kind === "approve" && "groceryWarning" in out && out.groceryWarning)
-      setError(String(out.groceryWarning));
+    // approve now returns the instant the menu is live; grocery + recipes
+    // regenerate in the background (see approveWeekMenuAction), so there's no
+    // longer a warning to surface here and the spinner clears sub-second.
     setWeeklyBusy(null);
     void load();
   };

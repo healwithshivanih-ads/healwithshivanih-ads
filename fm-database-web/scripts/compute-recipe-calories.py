@@ -134,6 +134,8 @@ def main() -> int:
     except ImportError as e:
         print(f"anthropic sdk: {e}", file=sys.stderr)
         return 1
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("compute-recipe-calories.py")
     client = anthropic.Anthropic()
 
     priced = 0

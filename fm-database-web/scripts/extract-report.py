@@ -404,6 +404,8 @@ def _build_content_block(file_path: Path) -> dict:
 def _extract(file_path: Path, report_type: str) -> dict:
     """Call Haiku with the appropriate prompt and return parsed JSON."""
     import anthropic
+    from _api_guard import require_api_authorized  # cost guard C
+    require_api_authorized("extract-report.py")
     client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
     prompt = PROMPTS.get(report_type, PROMPTS["other"])

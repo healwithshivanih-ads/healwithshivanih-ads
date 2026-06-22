@@ -190,6 +190,9 @@ def main() -> int:
         if not os.environ.get("ANTHROPIC_API_KEY"):
             json.dump({"ok": False, "error": "ANTHROPIC_API_KEY not set"}, sys.stdout)
             return 2
+        # Cost guard (C): engine chat() builds its own client; gate at the shim.
+        from _api_guard import require_api_authorized
+        require_api_authorized("chat.py")
         from fmdb.assess.suggester import chat as suggester_chat
         try:
             result = suggester_chat(chat_context=chat_context, messages=messages)

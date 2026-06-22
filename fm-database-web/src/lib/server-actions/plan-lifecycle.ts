@@ -228,10 +228,20 @@ export async function removeSupplementFromActivePlan(
  *  Future phase letters / meal plans regenerate from the live plan, so
  *  the change flows into every further letter automatically. */
 export interface QuickSupplementEdit {
+  /** add a brand-new supplement to the active plan */
+  add?: boolean;
   dose?: string;
   timing?: string;
   remove?: boolean;
   reason?: string;
+  /** add-only: client-facing name (drives display + buy-link name-match) */
+  displayName?: string;
+  /** add-only: phase the supplement starts in (default 1) */
+  startWeek?: number;
+  /** add-only: how many weeks it runs (null = ongoing) */
+  durationWeeks?: number | null;
+  /** add-only: coach rationale ("why") */
+  coachRationale?: string;
 }
 
 export async function quickEditActivePlanSupplement(
@@ -265,15 +275,39 @@ export async function quickEditActivePlanSupplement(
     const idx = supplements.findIndex(
       (s) => (s.supplement_slug as string | undefined) === supplementSlug,
     );
-    if (idx === -1) {
+
+    let summary: string;
+    if (edit.add) {
+      if (idx !== -1) {
+        return {
+          ok: false,
+          error: `Supplement ${supplementSlug} is already in plan ${planSlug}.`,
+        };
+      }
+      const label = edit.displayName?.trim();
+      supplements.push({
+        supplement_slug: supplementSlug,
+        form: "capsule",
+        dose: edit.dose?.trim() ?? "",
+        timing: edit.timing?.trim() ?? "",
+        take_with_food: "",
+        duration_weeks:
+          typeof edit.durationWeeks === "number" ? edit.durationWeeks : null,
+        start_week: edit.startWeek && edit.startWeek > 0 ? edit.startWeek : 1,
+        titration: "",
+        coach_rationale: edit.coachRationale?.trim() ?? "",
+        intake_evidence: [],
+        display_name: label || null,
+        buy_link: null,
+      });
+      data.supplement_protocol = supplements;
+      summary = `Added supplement: ${label || supplementSlug}`;
+    } else if (idx === -1) {
       return {
         ok: false,
         error: `Supplement ${supplementSlug} is not in plan ${planSlug}.`,
       };
-    }
-
-    let summary: string;
-    if (edit.remove) {
+    } else if (edit.remove) {
       supplements.splice(idx, 1);
       data.supplement_protocol = supplements;
       summary = `Removed supplement: ${supplementSlug}`;
@@ -319,6 +353,155 @@ export async function quickEditActivePlanSupplement(
     }
     revalidatePath(`/plans/${planSlug}`);
     return { ok: true, changed: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
+/** Apply an AI-chat patch to a PUBLISHED plan IN PLACE — same bypass philosophy
+ *  as the quick-edit panels (published is normally frozen, but the coach drives
+ *  these mid-plan tweaks directly). Shallow-merges the patch over the published
+ *  YAML (the AI returns whole arrays for list fields, so replace is correct),
+ *  keeps status `published`, appends a status_history audit line, bumps
+ *  updated_at, and re-stages flow through the per-minute reconciler. Used only
+ *  for published plans; drafts still go through updatePlanForChat. */
+export async function applyChatPatchToPublishedPlan(
+  planSlug: string,
+  patch: Record<string, unknown>,
+): Promise<{ ok: true; changedKeys: string[] } | { ok: false; error: string }> {
+  if (!planSlug) return { ok: false, error: "planSlug required" };
+  const keys = Object.keys(patch ?? {}).filter(
+    // never let an AI patch flip lifecycle / identity / audit fields
+    (k) =>
+      ![
+        "status",
+        "status_history",
+        "slug",
+        "client_id",
+        "version",
+        "catalogue_snapshot",
+        "_bucket",
+        "_file",
+      ].includes(k),
+  );
+  if (keys.length === 0) return { ok: true, changedKeys: [] };
+  try {
+    const root = getPlansRoot();
+    const dir = path.join(root, "published");
+    const names = await fs.readdir(dir).catch(() => [] as string[]);
+    const match = names.find((n) => n.startsWith(`${planSlug}-v`) && n.endsWith(".yaml"));
+    if (!match) return { ok: false, error: `No published plan found matching slug ${planSlug}.` };
+    const planPath = path.join(dir, match);
+    const raw = await fs.readFile(planPath, "utf-8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+
+    for (const k of keys) data[k] = patch[k];
+    data.updated_at = new Date().toISOString();
+    const history = (data.status_history as Array<Record<string, unknown>>) ?? [];
+    history.push({
+      state: "published",
+      by: process.env.FMDB_USER || "shivani",
+      at: new Date().toISOString(),
+      reason: `AI plan-chat edit — updated ${keys.join(", ")}`,
+    });
+    data.status_history = history;
+
+    await fs.writeFile(planPath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf-8");
+
+    const clientId = (data.client_id as string | undefined) ?? "";
+    if (clientId) {
+      revalidatePath(`/clients-v2/${clientId}`);
+      revalidatePath(`/clients-v2/${clientId}/plan`);
+      revalidatePath(`/clients-v2/${clientId}/communicate`);
+    }
+    revalidatePath(`/plans/${planSlug}`);
+    return { ok: true, changedKeys: keys };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
+export interface CoachRecommendationInput {
+  title: string;
+  forWhat?: string;
+  note?: string;
+  buyUrl?: string;
+}
+
+/** Add or remove a free-form coach pick (off-catalogue product/remedy tip) on
+ *  the active plan, in place. Same direct-write + audit pattern as the
+ *  supplement quick-edit; the per-minute reconciler re-stages it to the app. */
+export async function editCoachRecommendation(
+  planSlug: string,
+  op: { add?: CoachRecommendationInput; removeIndex?: number },
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!planSlug) return { ok: false, error: "planSlug required" };
+  try {
+    const root = getPlansRoot();
+    // Active plan can be in any non-archived bucket; published is the common case.
+    let planPath = "";
+    for (const bucket of ["published", "ready", "drafts"]) {
+      const dir = path.join(root, bucket);
+      const names = await fs.readdir(dir).catch(() => [] as string[]);
+      const match = names.find(
+        (n) =>
+          (n.startsWith(`${planSlug}-v`) || n === `${planSlug}.yaml`) &&
+          n.endsWith(".yaml"),
+      );
+      if (match) {
+        planPath = path.join(dir, match);
+        break;
+      }
+    }
+    if (!planPath) return { ok: false, error: `No active plan found for ${planSlug}.` };
+
+    const raw = await fs.readFile(planPath, "utf-8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const recs = Array.isArray(data.coach_recommendations)
+      ? (data.coach_recommendations as Array<Record<string, unknown>>)
+      : [];
+
+    let summary: string;
+    if (op.add) {
+      const title = op.add.title?.trim();
+      if (!title) return { ok: false, error: "A title is required." };
+      recs.push({
+        title,
+        for_what: op.add.forWhat?.trim() ?? "",
+        note: op.add.note?.trim() ?? "",
+        buy_url: op.add.buyUrl?.trim() ?? "",
+      });
+      summary = `Added recommendation: ${title}`;
+    } else if (typeof op.removeIndex === "number") {
+      if (op.removeIndex < 0 || op.removeIndex >= recs.length) {
+        return { ok: false, error: "Recommendation not found." };
+      }
+      const [removed] = recs.splice(op.removeIndex, 1);
+      summary = `Removed recommendation: ${(removed?.title as string) ?? ""}`;
+    } else {
+      return { ok: false, error: "Nothing to do." };
+    }
+
+    data.coach_recommendations = recs;
+    data.updated_at = new Date().toISOString();
+    const history = (data.status_history as Array<Record<string, unknown>>) ?? [];
+    history.push({
+      state: (data.status as string) ?? "published",
+      by: process.env.FMDB_USER || "shivani",
+      at: new Date().toISOString(),
+      reason: `Coach pick — ${summary}`,
+    });
+    data.status_history = history;
+
+    await fs.writeFile(planPath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf-8");
+
+    const clientId = (data.client_id as string | undefined) ?? "";
+    if (clientId) {
+      revalidatePath(`/clients-v2/${clientId}`);
+      revalidatePath(`/clients-v2/${clientId}/plan`);
+    }
+    revalidatePath(`/plans/${planSlug}`);
+    return { ok: true };
   } catch (err) {
     return { ok: false, error: (err as Error).message };
   }

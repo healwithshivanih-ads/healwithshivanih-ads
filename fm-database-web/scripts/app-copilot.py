@@ -90,6 +90,8 @@ def main() -> int:
         return 1
 
     try:
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("app-copilot.py")
         client = anthropic.Anthropic()
         msg = client.messages.create(
             model="claude-haiku-4-5",

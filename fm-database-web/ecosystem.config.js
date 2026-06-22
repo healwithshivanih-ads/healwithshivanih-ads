@@ -13,6 +13,11 @@ module.exports = {
         ...process.env,
         NODE_ENV: "production",
         PORT: 3002,
+        // Cost guard C: authorizes Anthropic-spending Python shims. Committed
+        // here (not just .env.local) so ANY machine running the app via PM2 is
+        // authorized without a per-machine env edit. Ad-hoc/chat shells lack
+        // this and are refused. See scripts/_api_guard.py.
+        FM_API_OK: "1",
       },
       max_restarts: 10,
       restart_delay: 3000,

@@ -200,6 +200,8 @@ def main():
 
     try:
         prompt = build_prompt(topic, client)
+        from _api_guard import require_api_authorized  # cost guard C
+        require_api_authorized("render-topic-brief.py")
         api = anthropic.Anthropic()
         full_text = ""
         with api.messages.stream(

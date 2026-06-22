@@ -23,11 +23,15 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
+import { cleanSessionLabel, extractZoomSuffix } from "@/lib/fmdb/appointment-utils";
 
 export const dynamic = "force-dynamic";
 
 const IST_TZ = "Asia/Kolkata";
+/** No Zoom link → plain text template. Zoom link → button template (below). */
 const TEMPLATE_NAME = "appt_confirmation";
+/** Day-of confirmation WITH a tappable "Join Zoom" button. */
+const TEMPLATE_NAME_ZOOM = "appt_confirm_zoom_client";
 /** Don't send reminders for sessions starting within this many minutes. */
 const MIN_MINUTES_BEFORE = 30;
 
@@ -194,28 +198,47 @@ export async function POST(req: NextRequest) {
         hour12: true,
         timeZone: IST_TZ,
       }) + " IST";
-      const sessionType = booking.event_slug?.replace(/-/g, " ") ||
-        booking.event_title?.replace(/between.*/i, "").trim() ||
-        "coaching";
+      const sessionType = cleanSessionLabel(booking.event_slug || booking.event_title);
 
-      // Rendered body mirrors the appt_confirmation approved template body.
-      // If we have a join URL, append it so the client can tap it directly.
-      const joinLine = booking.join_url
-        ? `\n\nJoin: ${booking.join_url}`
-        : "\n\nCal.com will have sent you the calendar invite with the join link.";
-      const renderedBody =
-        `Hi ${firstName} ✅ Just a reminder — your ${sessionType} session ` +
-        `is today at ${timeStr}. Looking forward to it!` +
-        joinLine +
-        `\n\n— ${process.env.COACH_NAME || "Shivani"}`;
+      // When the booking carries a Zoom link, send the button template so the
+      // client can tap "Join Zoom" right from the message. Otherwise fall back
+      // to the plain confirmation. (The Zoom URL only reaches us once the WA
+      // server forwards booking.join_url — see cal-com-forwarder.js.)
+      const zoomSuffix = extractZoomSuffix(booking.join_url);
+      const coach = process.env.COACH_NAME || "Shivani";
+
+      let templateName: string;
+      let templateParams: string[];
+      let renderedBody: string;
+      const sendOpts: { name?: string; buttonUrlParam?: string } = {
+        name: displayName || firstName,
+      };
+
+      if (zoomSuffix) {
+        // appt_confirm_zoom_client: {{1}} name {{2}} date {{3}} time {{4}} service
+        // + "Join Zoom" URL button whose suffix is the Zoom meeting id+pwd.
+        templateName = TEMPLATE_NAME_ZOOM;
+        templateParams = [firstName, dateStr, timeStr, sessionType];
+        sendOpts.buttonUrlParam = zoomSuffix;
+        renderedBody =
+          `Hi ${firstName}! Your ${sessionType} session is confirmed for today at ${timeStr}. ` +
+          `We'll meet on Zoom — tap the button to join when it's time.\n\nJoin: ${booking.join_url}\n\n— ${coach}`;
+      } else {
+        templateName = TEMPLATE_NAME;
+        templateParams = [firstName, dateStr, timeStr, sessionType];
+        renderedBody =
+          `Hi ${firstName} ✅ Just a reminder — your ${sessionType} session ` +
+          `is today at ${timeStr}. Looking forward to it!` +
+          `\n\nThe calendar invite has the join link.\n\n— ${coach}`;
+      }
 
       const r = await sendAndRecordOutboundAction({
         phone: mobile,
         clientId,
-        templateName: TEMPLATE_NAME,
-        templateParams: [firstName, dateStr, timeStr, sessionType],
+        templateName,
+        templateParams,
         renderedBody,
-        opts: { name: displayName || firstName },
+        opts: sendOpts,
       });
 
       const sentAt = new Date().toISOString();

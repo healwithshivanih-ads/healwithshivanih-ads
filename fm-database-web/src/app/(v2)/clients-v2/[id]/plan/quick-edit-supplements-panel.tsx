@@ -41,12 +41,14 @@ export type QuickEditSupplementRow = SupplementRow;
 interface Props {
   planSlug: string;
   supplements: SupplementRow[];
+  /** catalogue supplements for the add-supplement typeahead */
+  catalogueOptions?: { value: string; label: string }[];
   /** bare rows, no FmPanel chrome, always open — used inside the Plan
    *  tab's "What the client sees" studio (surfaces merged 2026-06-12) */
   embedded?: boolean;
 }
 
-export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: Props) {
+export function QuickEditSupplementsPanel({ planSlug, supplements, catalogueOptions, embedded }: Props) {
   const [open, setOpen] = useState(false);
 
   if (embedded) {
@@ -55,6 +57,7 @@ export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: P
         {supplements.map((s) => (
           <QuickEditRow key={s.slug} planSlug={planSlug} row={s} />
         ))}
+        <QuickAddRow planSlug={planSlug} existingSlugs={supplements.map((s) => s.slug)} catalogueOptions={catalogueOptions} />
       </div>
     );
   }
@@ -62,7 +65,7 @@ export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: P
   return (
     <FmPanel
       title="✏️ Quick edit supplements"
-      subtitle="Adjust a dose or timing — or remove a supplement — without rebuilding the plan. Changes flow into all future letters; already-sent letters get a regenerate prompt."
+      subtitle="Add a supplement, adjust a dose or timing, or remove one — without rebuilding the plan. Changes flow into all future letters; already-sent letters get a regenerate prompt."
       rightSlot={
         <button
           onClick={() => setOpen((v) => !v)}
@@ -102,6 +105,7 @@ export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: P
           {supplements.map((s) => (
             <QuickEditRow key={s.slug} planSlug={planSlug} row={s} />
           ))}
+          <QuickAddRow planSlug={planSlug} existingSlugs={supplements.map((s) => s.slug)} catalogueOptions={catalogueOptions} />
         </div>
       )}
     </FmPanel>
@@ -339,6 +343,273 @@ function QuickEditRow({
             </span>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/** Add a brand-new supplement to the published plan in place. The display name
+ *  drives both the client-facing label and the buy-link name-match against
+ *  supplement_links.yaml; the slug is derived from it. */
+function QuickAddRow({
+  planSlug,
+  existingSlugs,
+  catalogueOptions = [],
+}: {
+  planSlug: string;
+  existingSlugs: string[];
+  catalogueOptions?: { value: string; label: string }[];
+}) {
+  const router = useRouter();
+  const [pending, start] = useTransition();
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  // When the coach picks a catalogue entry we keep its slug; freeform names
+  // fall back to a slugified name. Editing the name clears the catalogue pick.
+  const [chosenSlug, setChosenSlug] = useState("");
+  const [showOpts, setShowOpts] = useState(false);
+  const [dose, setDose] = useState("");
+  const [timing, setTiming] = useState("");
+  const [startWeek, setStartWeek] = useState("1");
+  const [why, setWhy] = useState("");
+
+  const slug =
+    chosenSlug ||
+    name
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const q = name.trim().toLowerCase();
+  const matches =
+    q.length === 0
+      ? catalogueOptions.slice(0, 8)
+      : catalogueOptions
+          .filter(
+            (o) =>
+              o.label.toLowerCase().includes(q) || o.value.toLowerCase().includes(q),
+          )
+          .slice(0, 8);
+  const exactCatalogueMatch = catalogueOptions.some(
+    (o) => o.label.toLowerCase() === q || o.value === slug,
+  );
+
+  const inputStyle: React.CSSProperties = {
+    fontSize: 11.5,
+    padding: "4px 8px",
+    border: "1px solid var(--fm-border)",
+    borderRadius: "var(--fm-radius-sm)",
+    fontFamily: "inherit",
+    width: "100%",
+    boxSizing: "border-box",
+  };
+  const labelStyle: React.CSSProperties = {
+    fontSize: 9.5,
+    fontWeight: 700,
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
+    color: "var(--fm-text-tertiary)",
+    marginBottom: 2,
+    display: "block",
+  };
+
+  const onAdd = () => {
+    if (!slug) {
+      toast.error("Enter a supplement name");
+      return;
+    }
+    if (existingSlugs.includes(slug)) {
+      toast.error("That supplement is already on the plan");
+      return;
+    }
+    start(async () => {
+      const r = await quickEditActivePlanSupplement(planSlug, slug, {
+        add: true,
+        displayName: name.trim(),
+        dose: dose.trim(),
+        timing: timing.trim(),
+        startWeek: Math.max(1, parseInt(startWeek, 10) || 1),
+        coachRationale: why.trim(),
+      });
+      if (!r.ok) {
+        toast.error(r.error);
+        return;
+      }
+      toast.success(`➕ ${name.trim()} added to plan`);
+      setName("");
+      setChosenSlug("");
+      setDose("");
+      setTiming("");
+      setStartWeek("1");
+      setWhy("");
+      setOpen(false);
+      router.refresh();
+    });
+  };
+
+  if (!open) {
+    return (
+      <button
+        onClick={() => setOpen(true)}
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          padding: "8px 12px",
+          borderRadius: "var(--fm-radius-sm)",
+          border: "1px dashed var(--fm-primary)",
+          background: "transparent",
+          color: "var(--fm-primary)",
+          cursor: "pointer",
+          fontFamily: "inherit",
+        }}
+      >
+        ➕ Add a supplement
+      </button>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        padding: "10px 12px",
+        background: "rgba(47, 125, 79, 0.06)",
+        border: "1px solid rgba(47, 125, 79, 0.40)",
+        borderRadius: "var(--fm-radius-sm)",
+        display: "grid",
+        gap: 8,
+      }}
+    >
+      <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
+        ➕ New supplement
+      </div>
+      <div style={{ position: "relative" }}>
+        <label style={labelStyle}>Name — search the catalogue or type a custom one</label>
+        <input
+          style={inputStyle}
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setChosenSlug(""); // typing means it's no longer a picked catalogue entry
+            setShowOpts(true);
+          }}
+          onFocus={() => setShowOpts(true)}
+          onBlur={() => setTimeout(() => setShowOpts(false), 150)}
+          placeholder="e.g. Magnesium Glycinate"
+          autoComplete="off"
+        />
+        {showOpts && matches.length > 0 && (
+          <div
+            style={{
+              position: "absolute",
+              zIndex: 20,
+              top: "100%",
+              left: 0,
+              right: 0,
+              marginTop: 2,
+              maxHeight: 200,
+              overflowY: "auto",
+              background: "var(--fm-surface)",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
+            }}
+          >
+            {matches.map((o) => (
+              <button
+                key={o.value}
+                // onMouseDown (not onClick) so it fires before the input's blur
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  setName(o.label);
+                  setChosenSlug(o.value);
+                  setShowOpts(false);
+                }}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
+                  padding: "6px 10px",
+                  fontSize: 12,
+                  background: "transparent",
+                  border: 0,
+                  borderBottom: "1px solid var(--fm-border)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  color: "var(--fm-text-primary)",
+                }}
+              >
+                {o.label}
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 9.5, color: "var(--fm-text-tertiary)", marginLeft: 6 }}>
+                  {o.value}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
+        {slug && (
+          <div style={{ fontSize: 10, color: "var(--fm-text-tertiary)", marginTop: 2, fontFamily: "var(--fm-font-mono)" }}>
+            slug: {slug}
+            {exactCatalogueMatch ? (
+              <span style={{ color: "#2f7d4f", fontFamily: "inherit", fontWeight: 600 }}> · ✓ in catalogue</span>
+            ) : (
+              <span style={{ color: "var(--fm-text-tertiary)", fontFamily: "inherit" }}> · custom</span>
+            )}
+          </div>
+        )}
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 70px", gap: 8 }}>
+        <div>
+          <label style={labelStyle}>Dose</label>
+          <input style={inputStyle} value={dose} onChange={(e) => setDose(e.target.value)} placeholder="200–400 mg" />
+        </div>
+        <div>
+          <label style={labelStyle}>Timing</label>
+          <input style={inputStyle} value={timing} onChange={(e) => setTiming(e.target.value)} placeholder="evening" />
+        </div>
+        <div>
+          <label style={labelStyle}>Start wk</label>
+          <input style={inputStyle} value={startWeek} onChange={(e) => setStartWeek(e.target.value)} inputMode="numeric" />
+        </div>
+      </div>
+      <div>
+        <label style={labelStyle}>Why (coach rationale — optional)</label>
+        <input style={inputStyle} value={why} onChange={(e) => setWhy(e.target.value)} placeholder="Sleep + stress support" />
+      </div>
+      <div style={{ display: "flex", gap: 8 }}>
+        <button
+          onClick={onAdd}
+          disabled={pending}
+          style={{
+            fontSize: 11,
+            fontWeight: 700,
+            padding: "5px 14px",
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: pending ? "wait" : "pointer",
+            fontFamily: "inherit",
+            border: "1px solid var(--fm-primary)",
+            background: "var(--fm-primary)",
+            color: "#fff",
+          }}
+        >
+          {pending ? "Adding…" : "Add to plan"}
+        </button>
+        <button
+          onClick={() => setOpen(false)}
+          style={{
+            fontSize: 11,
+            fontWeight: 700,
+            padding: "5px 12px",
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: "pointer",
+            fontFamily: "inherit",
+            border: "1px solid var(--fm-border)",
+            background: "var(--fm-surface)",
+            color: "var(--fm-text-secondary)",
+          }}
+        >
+          Cancel
+        </button>
       </div>
     </div>
   );
