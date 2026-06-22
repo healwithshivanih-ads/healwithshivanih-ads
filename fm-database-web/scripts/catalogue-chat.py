@@ -68,23 +68,34 @@ KINDS = [
     "cooking_adjustments", "home_remedies", "mindmaps", "drug_depletions",
 ]
 KINDS_WITH_ALIASES = {"topics", "mechanisms", "symptoms", "supplements", "protocols"}
+# High-cardinality kinds whose display_name is a long sentence (claims ~3300,
+# each a full statement; sources ~330). Sending those sentences was ~40-68% of
+# the per-message snapshot (~58K+ tokens), and the chat only needs the SLUG to
+# validate/route a command (delete claims/X, move claims->topics). So emit
+# slug-only for these — they stay reachable, the bloat is gone.
+SLUG_ONLY_KINDS = {"claims", "sources"}
 
 
 def _slim_catalogue() -> dict[str, list[dict]]:
-    """Return {kind: [{slug, display_name}, ...]} for every catalogue kind.
-    Display name is included so Haiku can disambiguate from natural language."""
+    """Return {kind: [{slug, display_name}, ...]} per catalogue kind — except the
+    high-cardinality SLUG_ONLY_KINDS (claims, sources), which emit {slug} only to
+    keep the snapshot small. Display name elsewhere lets Haiku disambiguate."""
     root = Path(os.environ.get("FMDB_CATALOGUE_DIR") or (FMDB_ROOT / "data"))
     out: dict[str, list[dict]] = {}
     for k in KINDS:
         d = root / k
         rows: list[dict] = []
+        slug_only = k in SLUG_ONLY_KINDS
         if d.exists():
             for f in sorted(d.glob("*.yaml")):
                 try:
                     data = yaml.safe_load(f.read_text()) or {}
                     slug = data.get("slug") or data.get("id") or f.stem
-                    name = data.get("display_name") or data.get("title") or slug
-                    rows.append({"slug": str(slug), "display_name": str(name)})
+                    if slug_only:
+                        rows.append({"slug": str(slug)})
+                    else:
+                        name = data.get("display_name") or data.get("title") or slug
+                        rows.append({"slug": str(slug), "display_name": str(name)})
                 except Exception:
                     pass
         out[k] = rows
@@ -241,7 +252,7 @@ def main() -> int:
                 {"type": "text", "text": SYSTEM_PROMPT},
                 {
                     "type": "text",
-                    "text": "Catalogue snapshot (slug + display name per kind):\n" + catalogue_block,
+                    "text": "Catalogue snapshot (slug + display name per kind; claims & sources are slug-only):\n" + catalogue_block,
                     "cache_control": {"type": "ephemeral"},
                 },
             ],
