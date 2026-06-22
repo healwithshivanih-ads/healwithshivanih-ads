@@ -5,6 +5,11 @@
  * server (Fly app: whatsapp-server-shivani). Matches sender phone to a client,
  * saves as a quick_note session.
  *
+ * Also receives forwarded DELIVERY-STATUS events (sent/delivered/read/failed)
+ * — see handleDeliveryStatus. A "failed"/"undelivered" status is surfaced into
+ * the client's chat thread + _whatsapp_delivery_failures.yaml so a bounced
+ * message (e.g. a number stored without its country code) stops looking sent.
+ *
  * Expected payload (sent by services/forwarder on the WA server):
  * {
  *   type: 'inbound_message',
@@ -80,6 +85,7 @@ import {
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
 const UNMATCHED_FILE = path.join(PLANS_ROOT, "_whatsapp_unmatched.yaml");
+const DELIVERY_FAILURES_FILE = path.join(PLANS_ROOT, "_whatsapp_delivery_failures.yaml");
 const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
@@ -504,6 +510,216 @@ async function saveUnmatchedMessage(
   }
 }
 
+// ── Delivery-status events (Meta sent/delivered/read/failed callbacks) ───────
+//
+// THE gap Meghana's dosha quiz exposed (2026-06-22): fm-coach's send path
+// returns ok the moment the WA server hands a message to Meta and gets a
+// message-id back — that's "accepted", NOT "delivered". A wrong / mis-stored
+// number (her +65 Singapore mobile got the +91 India default → Meta 131026
+// "undeliverable") looks "Sent ✓" in the app but never reaches the handset.
+// Meta DOES tell us via a `statuses[]` delivery callback (sent → delivered →
+// read, or failed/undelivered with an error code). Those land on the WA
+// server; this handler ingests the WA server's forwarded copy and SURFACES
+// failures so a bounced message stops looking sent.
+//
+// DEPENDENCY: the WA server (Fly app whatsapp-server-shivani) must forward
+// status webhooks to this endpoint, HMAC-signed with the same shared secret,
+// as either:
+//   { type: "message_status", status, recipient_id, error_code, error_title,
+//     template_name, external_message_id, timestamp }
+// or the raw Meta shape { statuses: [{ id, status, recipient_id, timestamp,
+//     errors: [{ code, title, message }] }] } — both are handled below.
+// Until that forward exists, this branch is dormant (no harm). Inbound-message
+// handling is untouched.
+
+const KNOWN_STATUSES = new Set([
+  "sent",
+  "delivered",
+  "read",
+  "failed",
+  "undelivered",
+  "deleted",
+  "warning",
+]);
+// Only these get surfaced to the coach — sent/delivered/read are healthy and
+// would just be thread noise.
+const TERMINAL_FAIL_STATUSES = new Set(["failed", "undelivered"]);
+
+interface NormalizedStatus {
+  recipient: string;
+  status: string;
+  msgId: string | null;
+  templateName: string | null;
+  errorCode: string | null;
+  errorTitle: string | null;
+  ts: string;
+}
+
+/** True when the forwarded payload is a delivery-status event, not a message.
+ *  Conservative: requires an explicit status marker so we never swallow a real
+ *  inbound message (which has its own empty-body skip downstream). */
+function isDeliveryStatusEvent(body: Record<string, unknown>): boolean {
+  if (body.type === "message_status" || body.type === "status") return true;
+  if (body.event_type === "status") return true;
+  if (Array.isArray(body.statuses) && body.statuses.length > 0) return true;
+  // A flat `status` field carrying a known WhatsApp status AND no message body
+  // (so we don't mis-read a future message field literally called "status").
+  if (
+    !body.body &&
+    typeof body.status === "string" &&
+    KNOWN_STATUSES.has(body.status.toLowerCase().trim())
+  ) {
+    return true;
+  }
+  return false;
+}
+
+/** Normalise both the WA-server flat shape and the raw Meta statuses[] shape. */
+function normalizeStatusEvent(body: Record<string, unknown>): NormalizedStatus | null {
+  let s: Record<string, unknown> = body;
+  if (Array.isArray(body.statuses) && body.statuses.length > 0) {
+    s = body.statuses[0] as Record<string, unknown>;
+  }
+  const status = String(s.status ?? body.status ?? "").toLowerCase().trim();
+  if (!status || !KNOWN_STATUSES.has(status)) return null;
+
+  const recipient = String(
+    s.recipient_id ?? body.recipient_id ?? body.wa_id ?? s.wa_id ?? "",
+  ).trim();
+
+  // Error detail can be in errors[0] (Meta) or flat fields (forwarder).
+  let errorCode: string | null = null;
+  let errorTitle: string | null = null;
+  const errs = (s.errors ?? body.errors) as Array<Record<string, unknown>> | undefined;
+  if (Array.isArray(errs) && errs.length > 0) {
+    const e0 = errs[0];
+    errorCode = e0.code != null ? String(e0.code) : null;
+    errorTitle = (e0.title ?? e0.message ?? null) as string | null;
+  } else {
+    errorCode = body.error_code != null ? String(body.error_code) : null;
+    errorTitle = (body.error_title ?? body.error_message ?? null) as string | null;
+  }
+
+  // Timestamp: Meta sends epoch seconds (string or number); the forwarder may
+  // send an ISO string.
+  const tsRaw = (s.timestamp ?? body.timestamp) as string | number | undefined;
+  let ts: string;
+  if (typeof tsRaw === "number" || (typeof tsRaw === "string" && /^\d+$/.test(tsRaw))) {
+    ts = new Date(Number(tsRaw) * 1000).toISOString();
+  } else if (typeof tsRaw === "string" && !Number.isNaN(Date.parse(tsRaw))) {
+    ts = new Date(tsRaw).toISOString();
+  } else {
+    ts = new Date().toISOString();
+  }
+
+  return {
+    recipient,
+    status,
+    msgId: (s.id ?? body.external_message_id ?? body.message_id ?? null) as string | null,
+    templateName: (body.template_name ?? s.template_name ?? null) as string | null,
+    errorCode,
+    errorTitle,
+    ts,
+  };
+}
+
+/** Human-readable cause for the common Meta error codes, so the coach gets a
+ *  next step instead of a bare number. */
+function describeFailure(n: NormalizedStatus): string {
+  const code = n.errorCode ?? "";
+  const KNOWN: Record<string, string> = {
+    "131026":
+      "Message undeliverable — the number is likely wrong, not on WhatsApp, or was saved without its country code (e.g. a +65 Singapore mobile stored as a bare 10-digit gets the +91 India default → a non-existent number). Check the client's mobile_number has the leading +<country code>.",
+    "131049":
+      "Meta throttled delivery to maintain a healthy ecosystem (per-user marketing pacing). Retry later or use a utility template.",
+    "130472":
+      "Meta dropped the message (user in an experiment / marketing pacing group).",
+    "131047":
+      "Re-engagement required — outside the 24-hour window with no valid template.",
+    "131000": "Generic Meta delivery failure — retry; if it persists, verify the number.",
+    "470": "Template paused / re-engagement required.",
+  };
+  const base = KNOWN[code];
+  if (base) return base;
+  return `${n.errorTitle ?? "Delivery failed"}${
+    code ? ` (error ${code})` : ""
+  }. Meta accepted the send but it never reached the handset — check the number and that it's on WhatsApp.`;
+}
+
+/** Append a structured row to _whatsapp_delivery_failures.yaml so the coach has
+ *  an at-a-glance audit (incl. the recipient number — surfaces country-code
+ *  corruption like +91 vs +65). Capped to the last 500 rows. */
+async function appendDeliveryFailure(n: NormalizedStatus): Promise<void> {
+  try {
+    let existing: unknown[] = [];
+    try {
+      const raw = await fs.readFile(DELIVERY_FAILURES_FILE, "utf-8");
+      const parsed = yaml.load(raw);
+      if (Array.isArray(parsed)) existing = parsed;
+    } catch { /* file doesn't exist yet */ }
+
+    existing.push({
+      recipient: n.recipient,
+      status: n.status,
+      template: n.templateName,
+      error_code: n.errorCode,
+      error_title: n.errorTitle,
+      message_id: n.msgId,
+      failed_at: n.ts,
+      logged_at: new Date().toISOString(),
+    });
+    if (existing.length > 500) existing = existing.slice(-500);
+
+    await fs.writeFile(DELIVERY_FAILURES_FILE, yaml.dump(existing, { lineWidth: 120 }), "utf-8");
+  } catch (err) {
+    console.error("[whatsapp-webhook] Failed to write delivery failure log:", err);
+  }
+}
+
+/** Handle a forwarded delivery-status event. Surfaces only terminal failures —
+ *  into the failures log (always) and the client's chat thread (when matched).
+ *  Always returns 2xx so the WA server doesn't retry. */
+async function handleDeliveryStatus(
+  body: Record<string, unknown>,
+): Promise<NextResponse> {
+  const norm = normalizeStatusEvent(body);
+  if (!norm) {
+    return NextResponse.json({ ok: true, status_event: "unrecognized" });
+  }
+  // Healthy progress (sent/delivered/read) — ack without thread noise.
+  if (!TERMINAL_FAIL_STATUSES.has(norm.status)) {
+    return NextResponse.json({ ok: true, status: norm.status, surfaced: false });
+  }
+
+  console.error(
+    `[whatsapp-webhook] DELIVERY ${norm.status.toUpperCase()} to ${norm.recipient} ` +
+      `template=${norm.templateName ?? "?"} error=${norm.errorCode ?? "?"} ` +
+      `"${norm.errorTitle ?? ""}" msg=${norm.msgId ?? "?"}`,
+  );
+  await appendDeliveryFailure(norm);
+
+  const match = await findClientByPhoneAction(norm.recipient);
+  if (!match.ok || !match.client_id) {
+    return NextResponse.json({ ok: true, status: norm.status, matched: false });
+  }
+
+  const noteText =
+    `⚠️ WhatsApp delivery FAILED${norm.templateName ? ` — ${norm.templateName}` : ""}\n` +
+    describeFailure(norm);
+  try {
+    // Record as an outbound system note (it's about a message we sent that
+    // bounced) so it shows right where the coach is already looking — the
+    // client's WhatsApp thread.
+    await saveOutboundNote(match.client_id, noteText, norm.ts, null);
+  } catch (err) {
+    console.error(
+      `[whatsapp-webhook] failed to record delivery failure for ${match.client_id}:`,
+      err,
+    );
+  }
+  return NextResponse.json({ ok: true, status: norm.status, matched: true, surfaced: true });
+}
+
 // ── Webhook handler ───────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
@@ -530,6 +746,14 @@ export async function POST(req: NextRequest) {
     body = JSON.parse(rawBody) as Record<string, unknown>;
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid JSON body" }, { status: 400 });
+  }
+
+  // Delivery-status events (sent/delivered/read/failed) are handled BEFORE the
+  // message path — a status carries `recipient_id`/`status` (no message body),
+  // so it would otherwise be skipped as an "empty message" and a bounced send
+  // would stay invisible. See handleDeliveryStatus above.
+  if (isDeliveryStatusEvent(body)) {
+    return handleDeliveryStatus(body);
   }
 
   const rawPhone = (body.wa_id ?? "") as string;
