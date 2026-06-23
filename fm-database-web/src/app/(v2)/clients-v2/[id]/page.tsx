@@ -60,7 +60,11 @@ import { WeightLossReadinessPanel } from "@/components/client-widgets/weight-los
 import { assessWeightProgress, estimateObservedTdee } from "@/lib/fmdb/weight-progress";
 import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
-import { parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
+import {
+  parseSessionType,
+  lastTemplateSentAt,
+  pickLatestDiscoveryWithLabs,
+} from "@/lib/fmdb/session-utils";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 import {
   FmAppShell,
@@ -725,34 +729,9 @@ export default async function ClientV2Page({
     sessionId: string;
     labs: string[];
     date: string | null;
-  } | null = (() => {
-    const sorted = [...sessions].sort((a, b) =>
-      String(b.date ?? "").localeCompare(String(a.date ?? "")),
-    );
-    for (const s of sorted) {
-      const sr = s as Record<string, unknown>;
-      const t = parseSessionType(sr.presenting_complaints as string | undefined);
-      if (t !== "discovery") continue;
-      const top = (sr as { requested_labs?: unknown }).requested_labs;
-      let labs: string[] = [];
-      if (Array.isArray(top) && top.length > 0) {
-        labs = top.map((x) => String(x)).filter(Boolean);
-      } else {
-        const notes = String((sr as { coach_notes?: string }).coach_notes ?? "");
-        const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
-        // Split on the commas BETWEEN markers, not commas inside a marker's
-        // own parentheses (e.g. "Morning Cortisol (8am, fasting)").
-        if (m) labs = m[1].split(/,\s*(?![^()]*\))/).map((x) => x.trim()).filter(Boolean);
-      }
-      if (labs.length === 0) continue;
-      return {
-        sessionId: String(sr.session_id ?? ""),
-        labs,
-        date: (sr.date as string | undefined) ?? null,
-      };
-    }
-    return null;
-  })();
+  } | null = pickLatestDiscoveryWithLabs(
+    sessions as ReadonlyArray<Record<string, unknown>>,
+  );
   const engagementRaw = (client as unknown as { engagement_status?: string }).engagement_status;
   const engagement =
     engagementRaw === "signed_up" || engagementRaw === "declined" || engagementRaw === "pending"

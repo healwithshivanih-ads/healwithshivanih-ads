@@ -135,8 +135,16 @@ export function useFormDraft<F extends Record<string, unknown>>(
   }, []);
 
   // ── Persist ────────────────────────────────────────────────────────
-  // Re-runs on every render after hydration so any field change writes
-  // through. Cheap — one stringify + setItem.
+  // Fires ONLY when the key or the serialised fields actually change — NOT
+  // on every render. The dependency array is load-bearing: without it the
+  // effect re-ran after every render, so a clearDraft() immediately followed
+  // by an unrelated setState (e.g. a post-save success-screen toggle) would
+  // re-write the just-removed draft with a fresh __savedAt — silently
+  // resurrecting it and defeating both clearDraft AND the 24h staleness gate.
+  // That resurrection is what made cleared in-progress edits "come back" and
+  // re-hydrate over freshly-saved server data. Keying on JSON.stringify(fields)
+  // means only a genuine field edit refreshes the draft (and its timestamp).
+  const fieldsKey = JSON.stringify(fields);
   useEffect(() => {
     if (!hydratedRef.current) return;
     try {
@@ -153,7 +161,8 @@ export function useFormDraft<F extends Record<string, unknown>>(
     } catch {
       /* quota / privacy mode — silent */
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, fieldsKey]);
 
   // ── Clear ──────────────────────────────────────────────────────────
   const clearDraft = () => {

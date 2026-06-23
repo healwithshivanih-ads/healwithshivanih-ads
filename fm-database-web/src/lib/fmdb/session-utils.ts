@@ -47,6 +47,75 @@ export function parseRequestedLabs(coach_notes?: string): string[] {
 }
 
 /**
+ * Extract the requested-lab marker list from a session record, preferring
+ * the structured top-level `requested_labs` field and falling back to the
+ * legacy "[Requested labs: A, B (note), C]" block embedded in coach_notes.
+ * The fallback splits on commas BETWEEN markers only — never on a comma
+ * inside a marker's own parentheses (e.g. "Morning Cortisol (8am, fasting)").
+ *
+ * This is the single shared reader for discovery lab lists; the discovery
+ * read-back page, the Analyse-tab strip, and the Overview "send labs" card
+ * all go through it so they can never diverge.
+ */
+export function extractRequestedLabs(session: {
+  requested_labs?: unknown;
+  coach_notes?: unknown;
+}): string[] {
+  const top = session.requested_labs;
+  if (Array.isArray(top) && top.length > 0) {
+    return top.map((x) => String(x)).filter(Boolean);
+  }
+  const notes = typeof session.coach_notes === "string" ? session.coach_notes : "";
+  const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
+  if (m) {
+    return m[1]
+      .split(/,\s*(?![^()]*\))/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+  return [];
+}
+
+/**
+ * Pick the most-recently-SAVED discovery session that carries a non-empty
+ * requested-lab list.
+ *
+ * Ordering is by `created_at` (the true save time) DESC, falling back to the
+ * coach-entered `date` then `session_id`. This is deliberately NOT a sort by
+ * the coach-entered call `date` alone: a coach can save a lab edit today but
+ * label the call with an earlier date, and several discovery sessions can
+ * share one calendar day. Ordering by save time means the latest edit always
+ * wins, so the checkboxes on the discovery panel, the saved session, and every
+ * "send labs" surface stay in lock-step. Returns null when no discovery
+ * session has labs.
+ */
+export function pickLatestDiscoveryWithLabs(
+  sessions: ReadonlyArray<Record<string, unknown>>,
+): { sessionId: string; labs: string[]; date: string | null } | null {
+  const recencyKey = (s: Record<string, unknown>) =>
+    String(s.created_at ?? "") ||
+    String(s.date ?? "") ||
+    String(s.session_id ?? "");
+  const sorted = [...sessions].sort((a, b) =>
+    recencyKey(b).localeCompare(recencyKey(a)),
+  );
+  for (const s of sorted) {
+    if (parseSessionType(s.presenting_complaints as string | undefined) !== "discovery")
+      continue;
+    const labs = extractRequestedLabs(
+      s as { requested_labs?: unknown; coach_notes?: unknown },
+    );
+    if (labs.length === 0) continue;
+    return {
+      sessionId: String(s.session_id ?? ""),
+      labs,
+      date: (s.date as string | undefined) ?? null,
+    };
+  }
+  return null;
+}
+
+/**
  * Scan an array of session records for the most-recent send of a given
  * WhatsApp/email template, returning the ISO timestamp or null.
  *

@@ -25,6 +25,7 @@ import {
 import {
   parseSessionType,
   lastTemplateSentAt,
+  pickLatestDiscoveryWithLabs,
   type SessionType,
 } from "@/lib/fmdb/session-utils";
 import { loadClientJourney } from "@/lib/fmdb/client-journey";
@@ -275,30 +276,17 @@ export default async function AnalysePage({
       )
     : null;
 
-  // Discovery-session lab list — extracted from the session so we can
-  // surface a "📤 Send labs to client" panel right next to the discovery
-  // strip. Older sessions (saved before requested_labs became a top-level
-  // field) embed the list inside coach_notes as "[Requested labs: X, Y]";
-  // we parse both shapes here so the button works for ALL discovery
-  // sessions on disk.
-  const discoveryRequestedLabs: string[] = (() => {
-    if (!lastAssessment || lastAssessmentType !== "discovery") return [];
-    const top = (lastAssessment as { requested_labs?: unknown }).requested_labs;
-    if (Array.isArray(top) && top.length > 0) {
-      return top.map((s) => String(s)).filter(Boolean);
-    }
-    const notes = (lastAssessment as { coach_notes?: string }).coach_notes ?? "";
-    const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
-    if (m) {
-      // Split between markers, not on commas inside a marker's own
-      // parentheses (e.g. "Morning Cortisol (8am, fasting)").
-      return m[1]
-        .split(/,\s*(?![^()]*\))/)
-        .map((s) => s.trim())
-        .filter(Boolean);
-    }
-    return [];
-  })();
+  // Discovery lab list to send — driven by the most-recently-SAVED discovery
+  // session that has labs, INDEPENDENT of `lastAssessment`. Previously this
+  // was gated on the newest assessment-or-discovery being a discovery, so a
+  // newer intake-form / chat-ingest session (which parses to "intake") made
+  // the whole "send labs" strip vanish — the coach read the disappeared
+  // panel as "the labs didn't save / reset". The labs are still on the
+  // discovery session; we surface the strip whenever such a session exists,
+  // regardless of what the newest session type is.
+  const latestDiscoveryWithLabs = pickLatestDiscoveryWithLabs(
+    sessions as ReadonlyArray<Record<string, unknown>>,
+  );
 
   return (
     <FmAppShell
@@ -424,33 +412,48 @@ export default async function AnalysePage({
               ? "Open discovery →"
               : "Open intake →"}
           </Link>
-          {/* Discovery lab list — appears when the most-recent assessment
-              is a discovery call AND requested_labs are on the session.
-              Coach can preview / email / WhatsApp the list to the client
-              without leaving this tab. */}
-          {lastAssessmentType === "discovery" &&
-            discoveryRequestedLabs.length > 0 &&
-            lastAssessmentSid && (
-              <div
-                style={{
-                  flex: "1 1 100%",
-                  paddingTop: 8,
-                  marginTop: 4,
-                  borderTop: "1px dashed rgba(46, 110, 213, 0.30)",
-                }}
-              >
-                <SendDiscoveryLabsButton
-                  sessionId={lastAssessmentSid}
-                  clientId={id}
-                  clientEmail={client.email ?? null}
-                  labCount={discoveryRequestedLabs.length}
-                  lastSentAt={lastTemplateSentAt(
-                    sessions as ReadonlyArray<{ presenting_complaints?: string }>,
-                    "fm_lab_reminder",
-                  )}
-                />
-              </div>
+        </div>
+      )}
+
+      {/* Discovery lab list to send — appears whenever a discovery session
+          with labs exists, regardless of whether a newer intake / check-in
+          session has since been logged. Driven by created_at recency so it
+          tracks the latest saved lab edit. Coach can preview / email /
+          WhatsApp the list to the client without leaving this tab. */}
+      {latestDiscoveryWithLabs && (
+        <div
+          style={{
+            padding: "10px 14px",
+            background: "rgba(46, 110, 213, 0.06)",
+            border: "1px solid rgba(46, 110, 213, 0.30)",
+            borderRadius: "var(--fm-radius-md)",
+            marginBottom: 16,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 700,
+              color: "var(--fm-text-primary)",
+              marginBottom: 8,
+            }}
+          >
+            🔬 Discovery labs ·{" "}
+            <span style={{ fontWeight: 600, color: "var(--fm-text-secondary)" }}>
+              {latestDiscoveryWithLabs.labs.length} marker
+              {latestDiscoveryWithLabs.labs.length === 1 ? "" : "s"} ready to send
+            </span>
+          </div>
+          <SendDiscoveryLabsButton
+            sessionId={latestDiscoveryWithLabs.sessionId}
+            clientId={id}
+            clientEmail={client.email ?? null}
+            labCount={latestDiscoveryWithLabs.labs.length}
+            lastSentAt={lastTemplateSentAt(
+              sessions as ReadonlyArray<{ presenting_complaints?: string }>,
+              "fm_lab_reminder",
             )}
+          />
         </div>
       )}
 

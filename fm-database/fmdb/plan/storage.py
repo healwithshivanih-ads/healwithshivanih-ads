@@ -20,6 +20,7 @@ between buckets happens at lifecycle transitions (transition() helper).
 from __future__ import annotations
 
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -300,11 +301,32 @@ def list_sessions(root: Path, client_id: str) -> list[Session]:
 
 
 def next_session_id(root: Path, client_id: str, when: date) -> str:
-    """Compute the next monotonic session id for a client on a given date.
-    Format: <client_id>-YYYY-MM-DD-NNN."""
-    existing = list_sessions(root, client_id)
-    same_day = [s for s in existing if s.date == when]
-    next_num = len(same_day) + 1
+    """Compute the next monotonic, collision-free session id for a client on a
+    given date. Format: <client_id>-YYYY-MM-DD-NNN.
+
+    Derived from the actual files on disk (max existing NNN + 1), NOT from a
+    count of parseable sessions. The old count-based approach (len(same_day)+1)
+    regressed whenever a same-day session was deleted OR failed to parse —
+    list_sessions silently skips unparseable files — because the resulting
+    count could hand back an NNN that already existed on disk. write_session
+    refuses to overwrite (raises FileExistsError), so the save was lost and the
+    coach's edit silently never persisted. Globbing the real filenames for the
+    max numeric suffix and bumping past any existing path is collision-proof.
+    """
+    sdir = client_sessions_dir(root, client_id)
+    prefix = f"{client_id}-{when.isoformat()}-"
+    max_num = 0
+    if sdir.exists():
+        for p in sdir.glob(f"{prefix}*.yaml"):
+            tail = p.name[len(prefix):-len(".yaml")]
+            m = re.match(r"^(\d+)", tail)
+            if m:
+                max_num = max(max_num, int(m.group(1)))
+    next_num = max_num + 1
+    # Defensive: never hand back a path that already exists, even if the
+    # naming ever drifts (e.g. a non-numeric suffix sharing the NNN).
+    while (sdir / f"{prefix}{next_num:03d}.yaml").exists():
+        next_num += 1
     return f"{client_id}-{when.isoformat()}-{next_num:03d}"
 
 

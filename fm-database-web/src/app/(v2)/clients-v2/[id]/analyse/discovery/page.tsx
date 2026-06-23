@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
-import { parseSessionType } from "@/lib/fmdb/session-utils";
+import { pickLatestDiscoveryWithLabs } from "@/lib/fmdb/session-utils";
 import { FmPageHeader } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
 import { DiscoveryForm } from "./discovery-form";
@@ -21,37 +21,16 @@ export default async function DiscoveryPage({
   if (!client) notFound();
   const displayName = client.display_name ?? client.client_id;
 
-  // Single source of truth for the lab selection: the most-recent saved
-  // discovery session's requested_labs. When present, the form hydrates
-  // from this instead of the condition→panel prefill — so the checkboxes
-  // here always match what's stored and what the Overview "send labs" card
-  // will send. Parses both the top-level requested_labs field and the
-  // legacy "[Requested labs: …]" coach_notes shape.
-  const savedLabs: string[] = (() => {
-    const sorted = [...sessions].sort((a, b) =>
-      String((b as { date?: string }).date ?? "").localeCompare(
-        String((a as { date?: string }).date ?? ""),
-      ),
-    );
-    for (const s of sorted) {
-      const sr = s as Record<string, unknown>;
-      if (parseSessionType(sr.presenting_complaints as string | undefined) !== "discovery")
-        continue;
-      const top = sr.requested_labs;
-      if (Array.isArray(top) && top.length > 0)
-        return top.map((x) => String(x)).filter(Boolean);
-      const notes = String((sr.coach_notes as string | undefined) ?? "");
-      const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
-      if (m) {
-        const labs = m[1]
-          .split(/,\s*(?![^()]*\))/)
-          .map((x) => x.trim())
-          .filter(Boolean);
-        if (labs.length > 0) return labs;
-      }
-    }
-    return [];
-  })();
+  // Single source of truth for the lab selection: the most-recently-SAVED
+  // discovery session's requested_labs (ordered by created_at, not the
+  // coach-entered call date — see pickLatestDiscoveryWithLabs). When present,
+  // the form hydrates from this instead of the condition→panel prefill — so
+  // the checkboxes here always match what's stored and what the Overview
+  // "send labs" card will send. Handles both the top-level requested_labs
+  // field and the legacy "[Requested labs: …]" coach_notes shape.
+  const savedLabs: string[] =
+    pickLatestDiscoveryWithLabs(sessions as ReadonlyArray<Record<string, unknown>>)
+      ?.labs ?? [];
 
   // Pre-fill the discovery form from data the coach already entered when
   // creating the client. Maps active_conditions + notes → chief concern

@@ -41,16 +41,6 @@ import { FmFormDraftClear } from "@/components/fm";
 
 const PRIMARY = "#B8770A";
 
-/** Stable short hash of a saved-labs list (order-independent), used to key
- *  the localStorage draft so a fresh saved list invalidates a stale draft.
- *  djb2 over the sorted, joined names. */
-function labsSignature(labs: string[]): string {
-  const s = [...labs].sort().join("|");
-  let h = 5381;
-  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0;
-  return h.toString(36);
-}
-
 const FOOD_JOURNAL: FmPillOption[] = [
   { value: "3", label: "3 days" },
   { value: "5", label: "5 days" },
@@ -167,34 +157,30 @@ export function DiscoveryForm({
   }, [visiblePanels, clientSex, prefillExtraPanels, savedLabs]);
   const [selectedLabs, setSelectedLabs] = useState<Set<string>>(initialLabs);
 
-  // Persist a serialisable mirror of selectedLabs so the draft survives reloads.
-  // Set<string> doesn't roundtrip through JSON, so we use a derived array.
-  const selectedLabsArr = useMemo(() => [...selectedLabs], [selectedLabs]);
-  const setSelectedLabsArr = (arr: string[]) => setSelectedLabs(new Set(arr));
-
-  // Note: bumped to v2 (2026-05-19) when chief concern got pre-filled from
-  // intake. Old `fm-discovery-draft-<id>` localStorage entries held an
-  // empty chiefConcern that was clobbering the new intake-derived prefill
-  // on every page load. v2 key bypasses those stale drafts cleanly.
+  // The lab selection and the call date are deliberately NOT persisted in the
+  // localStorage draft.
   //
-  // v3 (2026-06-19): the draft key now embeds a signature of the SAVED
-  // discovery labs. When a saved session's requested_labs change (or one
-  // first appears), the key rotates — so a stale localStorage draft can
-  // never override the saved list as the source of truth. In-progress edits
-  // still persist (the signature only changes on save, not while editing).
-  const draftKey = savedLabs.length
-    ? `fm-discovery-draft-v3-${clientId}-${labsSignature(savedLabs)}`
-    : `fm-discovery-draft-v3-${clientId}`;
+  // - Labs: their single source of truth is the saved discovery session
+  //   (the `savedLabs` prop, read back by created_at recency). Routing the
+  //   selection through the draft is what re-introduced the "my marker edits
+  //   reset on reopen" bug — a stale draft re-hydrated OVER the freshly-saved
+  //   server list. With labs out of the draft, savedLabs always wins.
+  // - Date: always defaults to today on a fresh open. A stale restored date
+  //   was landing saves on the wrong calendar day (e.g. yesterday), which the
+  //   recency read-back then masked.
+  //
+  // The draft now only protects the genuinely re-typed free-text fields.
+  // Key bumped v3 → v4 so any lingering v3 draft (which still carries stale
+  // labs/date under a signature-based key) is discarded on first load.
+  const draftKey = `fm-discovery-draft-v4-${clientId}`;
   const { clearDraft, hasSavedDraft } = useFormDraft(
     draftKey,
-    { sessionDate, chiefConcern, clientWords, foodDays, outcome, selectedLabsArr },
+    { chiefConcern, clientWords, foodDays, outcome },
     {
-      sessionDate: setSessionDate,
       chiefConcern: setChiefConcern,
       clientWords: setClientWords,
       foodDays: setFoodDays,
       outcome: setOutcome,
-      selectedLabsArr: setSelectedLabsArr,
     },
   );
 
@@ -391,6 +377,10 @@ export function DiscoveryForm({
             onClick={() => {
               setSavedSessionId(null);
               setSavedLabCount(0);
+              // Re-fetch server data so the savedLabs prop (and therefore the
+              // checkboxes) reflect the session we just saved, not the value
+              // captured at the original page load.
+              router.refresh();
             }}
             style={{
               padding: "8px 14px",
