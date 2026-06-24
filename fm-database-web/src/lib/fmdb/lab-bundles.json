@@ -1,0 +1,184 @@
+[
+  {
+    "name": "KFT (Kidney Function Test)",
+    "short": "KFT",
+    "system": "Kidney",
+    "icon": "🫘",
+    "sample": "blood",
+    "cost": "₹",
+    "default": true,
+    "components": [
+      "Blood Urea",
+      "Blood Urea Nitrogen (BUN)",
+      "Serum Creatinine",
+      "Uric Acid",
+      "BUN/Creatinine Ratio",
+      "Sodium",
+      "Potassium",
+      "Chloride",
+      "Calcium",
+      "eGFR (calculated)"
+    ]
+  },
+  {
+    "name": "LFT (Liver Function Test)",
+    "short": "LFT",
+    "system": "Liver",
+    "icon": "🫀",
+    "sample": "blood",
+    "cost": "₹",
+    "default": true,
+    "components": [
+      "Total Bilirubin",
+      "Direct Bilirubin",
+      "Indirect Bilirubin",
+      "SGOT (AST)",
+      "SGPT (ALT)",
+      "Alkaline Phosphatase (ALP)",
+      "GGT",
+      "Total Protein",
+      "Albumin",
+      "Globulin",
+      "A/G Ratio"
+    ]
+  },
+  {
+    "name": "Lipid Profile",
+    "short": "Lipid",
+    "system": "Lipids",
+    "icon": "💧",
+    "sample": "blood",
+    "cost": "₹",
+    "default": true,
+    "components": [
+      "Total Cholesterol",
+      "LDL Cholesterol",
+      "HDL Cholesterol",
+      "Triglycerides",
+      "VLDL Cholesterol",
+      "Total Cholesterol / HDL Ratio"
+    ]
+  },
+  {
+    "name": "Complete Blood Count (CBC)",
+    "short": "CBC",
+    "system": "Blood Count",
+    "icon": "🩸",
+    "sample": "blood",
+    "cost": "₹",
+    "default": true,
+    "components": [
+      "Hemoglobin",
+      "Total RBC Count",
+      "Total WBC Count",
+      "Differential Leukocyte Count",
+      "Platelet Count",
+      "PCV (Hematocrit)",
+      "MCV",
+      "MCH",
+      "MCHC",
+      "RDW"
+    ]
+  },
+  {
+    "name": "Thyroid Profile (T3, T4, TSH)",
+    "short": "Thyroid Profile",
+    "system": "Thyroid Function",
+    "icon": "🦋",
+    "sample": "blood",
+    "cost": "₹",
+    "default": true,
+    "components": [
+      "Total T3",
+      "Total T4",
+      "TSH"
+    ]
+  },
+  {
+    "name": "HbA1c (Glycated Hemoglobin)",
+    "short": "HbA1c",
+    "system": "Blood Sugar & Insulin",
+    "icon": "🍬",
+    "sample": "blood",
+    "cost": "₹",
+    "default": true,
+    "components": [
+      "HbA1c",
+      "Estimated Average Glucose (eAG)"
+    ]
+  },
+  {
+    "name": "Vitamin D + B12",
+    "short": "Vit D + B12",
+    "system": "Nutrients",
+    "icon": "🌱",
+    "sample": "blood",
+    "cost": "₹₹",
+    "default": true,
+    "components": [
+      "Vitamin D (25-OH)",
+      "Vitamin B12"
+    ]
+  },
+  {
+    "name": "Blood Sugar — Fasting & PP",
+    "short": "FBS + PPBS",
+    "system": "Blood Sugar & Insulin",
+    "icon": "🍬",
+    "sample": "blood",
+    "cost": "₹",
+    "default": true,
+    "components": [
+      "Fasting Blood Sugar (FBS)",
+      "Post-Prandial Blood Sugar (PPBS, 2-hr)"
+    ]
+  },
+  {
+    "name": "Iron Studies",
+    "short": "Iron Studies",
+    "system": "Nutrients",
+    "icon": "🩸",
+    "sample": "blood",
+    "cost": "₹₹",
+    "default": true,
+    "components": [
+      "Serum Iron",
+      "TIBC",
+      "UIBC",
+      "Transferrin Saturation %",
+      "Ferritin"
+    ]
+  },
+  {
+    "name": "Urine Routine & Microscopy",
+    "short": "Urine R/M",
+    "system": "Urine",
+    "icon": "🧪",
+    "sample": "urine",
+    "cost": "₹",
+    "default": false,
+    "components": [
+      "Colour / Appearance",
+      "pH / Specific Gravity",
+      "Protein",
+      "Glucose",
+      "Ketones",
+      "Bilirubin",
+      "Microscopy (RBC, WBC, casts, crystals, epithelial cells)"
+    ]
+  },
+  {
+    "name": "Stool Routine & Microscopy",
+    "short": "Stool R/M",
+    "system": "Stool",
+    "icon": "💩",
+    "sample": "stool",
+    "cost": "₹",
+    "default": false,
+    "components": [
+      "Colour / Consistency",
+      "Occult Blood",
+      "Microscopy (ova, cysts, parasites, RBC, WBC, mucus)"
+    ]
+  }
+]

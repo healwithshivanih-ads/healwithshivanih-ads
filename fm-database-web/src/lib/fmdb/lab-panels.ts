@@ -1,13 +1,22 @@
 /**
  * Shared FM lab panel catalog.
  *
- * Sourced from the legacy clients/[id]/discovery-form.tsx — extracted
- * here so both the legacy form and the new v2 forms can import the
- * same list. Don't duplicate.
+ * Reorganised around the NAMED BUNDLES Indian labs actually quote and run
+ * (KFT, LFT, Lipid Profile, CBC, Thyroid Profile, HbA1c …) — because labs
+ * order by bundle, not by individual marker. The standard bundles live in
+ * `lab-bundles.json` (a single source of truth shared with the Python
+ * requisition renderer `scripts/render-lab-requisition.py`, which expands a
+ * selected bundle into its component tests on the slip). The remaining FM
+ * functional groups below are à-la-carte ADD-ONS — anything already covered
+ * by a bundle (individual lipids, CBC, base TSH/T3/T4, urea, creatinine,
+ * GGT, uric acid, ferritin, iron, vit D/B12 …) has been removed from them so
+ * nothing is duplicated.
  *
- * Costs are bucketed ₹ (~₹500), ₹₹ (~₹1500), ₹₹₹ (~₹3000+) — actual
- * Thyrocare/lab prices vary; this is for UX prioritisation.
+ * Costs are bucketed ₹ (~₹500), ₹₹ (~₹1500), ₹₹₹ (~₹3000+) — actual lab
+ * prices vary; this is for UX prioritisation only.
  */
+
+import LAB_BUNDLES_JSON from "./lab-bundles.json";
 
 export type LabCost = "₹" | "₹₹" | "₹₹₹";
 export type LabSex = "M" | "F";
@@ -19,6 +28,20 @@ export interface Lab {
   specialty?: boolean;
   /** Sex-specific labs hidden when client's sex doesn't match. */
   sex?: LabSex;
+  /** When present, this item is a NAMED BUNDLE (KFT, LFT …) and `components`
+   *  are the individual tests it contains. The bundle's `name` is what the
+   *  lab recognises + what's stored in the session's requested_labs; the
+   *  requisition renderer expands it to the components. */
+  components?: string[];
+  /** Pre-ticked on a fresh discovery (per-item default, used for bundles). */
+  default?: boolean;
+  /** Lab-Vault system label (e.g. "Kidney") for classifying result markers —
+   *  see lab-vault.ts. Falls back to the group name when absent. */
+  system?: string;
+  /** Per-item icon (bundles carry their own). */
+  icon?: string;
+  /** Short lab-slip name (e.g. "KFT"). */
+  short?: string;
 }
 
 export interface LabPanel {
@@ -29,12 +52,47 @@ export interface LabPanel {
   labs: Lab[];
 }
 
+interface LabBundleDef {
+  name: string;
+  short: string;
+  system: string;
+  icon: string;
+  sample: string;
+  cost: string;
+  default: boolean;
+  components: string[];
+}
+
+const LAB_BUNDLES = LAB_BUNDLES_JSON as LabBundleDef[];
+
+/** Section 1 — the named profiles labs run as a unit. Built from the shared
+ *  bundle definitions so the form, the Lab Vault, and the Python requisition
+ *  renderer all agree on contents. */
+const STANDARD_PANELS_GROUP: LabPanel = {
+  group: "Standard Lab Panels",
+  icon: "🧫",
+  labs: LAB_BUNDLES.map((b) => ({
+    name: b.name,
+    cost: b.cost as LabCost,
+    components: b.components,
+    default: b.default,
+    system: b.system,
+    icon: b.icon,
+    short: b.short,
+  })),
+};
+
 export const LAB_PANELS: LabPanel[] = [
+  // ── Section 1: standard named bundles (what the lab quotes & runs) ──────
+  STANDARD_PANELS_GROUP,
+
+  // ── Section 2+: FM-specific add-on markers (à la carte) ─────────────────
+  // Base TSH/T3/T4 live in the Thyroid Profile bundle; these are the deeper
+  // thyroid markers.
   {
     group: "Thyroid Function",
     icon: "🦋",
     labs: [
-      { name: "TSH", cost: "₹" },
       { name: "Free T3", cost: "₹" },
       { name: "Free T4", cost: "₹" },
       { name: "Reverse T3", cost: "₹₹", specialty: true },
@@ -43,24 +101,22 @@ export const LAB_PANELS: LabPanel[] = [
       { name: "TSI (Thyroid Stimulating Immunoglobulin)", cost: "₹₹₹", specialty: true },
     ],
   },
+  // Fasting glucose + HbA1c live in the bundles; these are the insulin /
+  // insulin-resistance markers.
   {
     group: "Blood Sugar & Insulin",
     icon: "🍬",
     labs: [
-      { name: "Fasting Glucose", cost: "₹" },
       { name: "Fasting Insulin", cost: "₹₹" },
-      { name: "HbA1c", cost: "₹" },
       { name: "C-Peptide", cost: "₹₹" },
       { name: "Post-prandial Glucose + Insulin (2-hr)", cost: "₹₹" },
       { name: "Glucose Tolerance Test with Insulin Response (GTT-IR)", cost: "₹₹₹", specialty: true },
-      // Computed insulin-resistance markers — lab can derive these or
-      // coach can compute from fasting glucose + insulin. Listed
-      // separately because they show up named on many panels.
       { name: "HOMA-IR (Insulin Resistance Index)", cost: "₹" },
       { name: "QUICKI (Quantitative Insulin Sensitivity Check Index)", cost: "₹" },
       { name: "Adiponectin", cost: "₹₹₹", specialty: true },
     ],
   },
+  // GGT is in the LFT bundle, Uric Acid in the KFT bundle.
   {
     group: "Inflammation",
     icon: "🔥",
@@ -69,56 +125,40 @@ export const LAB_PANELS: LabPanel[] = [
       { name: "Homocysteine", cost: "₹₹" },
       { name: "ESR", cost: "₹" },
       { name: "Fibrinogen", cost: "₹₹" },
-      { name: "GGT", cost: "₹" },
-      { name: "Uric Acid", cost: "₹" },
       { name: "Mycotoxin Panel", cost: "₹₹₹", specialty: true },
     ],
   },
+  // Base lipids live in the Lipid Profile bundle; these are advanced
+  // particle / risk markers.
   {
-    group: "Lipid Panel",
-    icon: "💧",
+    group: "Cardiovascular Risk",
+    icon: "❤️",
     labs: [
-      { name: "Total Cholesterol", cost: "₹" },
-      { name: "LDL Cholesterol", cost: "₹" },
-      { name: "HDL Cholesterol", cost: "₹" },
-      { name: "Triglycerides", cost: "₹" },
-      { name: "VLDL", cost: "₹" },
+      { name: "ApoB", cost: "₹₹" },
+      { name: "ApoA1", cost: "₹₹" },
+      { name: "Lp(a) — Lipoprotein(a)", cost: "₹₹" },
+      { name: "NMR LipoProfile", cost: "₹₹₹", specialty: true },
     ],
   },
+  // Urea / creatinine / electrolytes / eGFR live in the KFT bundle; these are
+  // the FM-deeper kidney markers.
   {
-    group: "Complete Blood Count",
-    icon: "🩸",
+    group: "Advanced Kidney & Metabolic",
+    icon: "🫘",
     labs: [
-      { name: "CBC with Differential", cost: "₹" },
-      { name: "Reticulocyte Count", cost: "₹" },
-    ],
-  },
-  {
-    group: "Metabolic Panel",
-    icon: "⚗️",
-    labs: [
-      { name: "Comprehensive Metabolic Panel (CMP)", cost: "₹" },
-      { name: "Liver Function Tests (LFT)", cost: "₹" },
       { name: "Cystatin C", cost: "₹₹" },
-      // Kidney clearance ratios — useful for early kidney function
-      // assessment. UCAR = Urea-to-Creatinine Ratio.
-      { name: "BUN / Creatinine Ratio (UCAR)", cost: "₹" },
       { name: "Urinary Albumin / Creatinine Ratio (UACR)", cost: "₹" },
-      { name: "eGFR (CKD-EPI)", cost: "₹" },
     ],
   },
+  // Vit D / B12 / iron / ferritin live in bundles; these are the deeper
+  // micronutrient markers.
   {
     group: "Nutrients",
     icon: "🌱",
     labs: [
-      { name: "Vitamin D (25-OH)", cost: "₹₹" },
-      { name: "Vitamin B12", cost: "₹" },
       { name: "MMA (Methylmalonic Acid)", cost: "₹₹₹", specialty: true },
       { name: "Active B12 (Holotranscobalamin)", cost: "₹₹₹", specialty: true },
       { name: "RBC Folate", cost: "₹₹" },
-      { name: "Ferritin", cost: "₹" },
-      { name: "Serum Iron", cost: "₹" },
-      { name: "TIBC / Transferrin Saturation", cost: "₹" },
       { name: "RBC Magnesium", cost: "₹₹", specialty: true },
       { name: "Zinc (Plasma)", cost: "₹₹" },
       { name: "Copper / Cu:Zn Ratio", cost: "₹₹", specialty: true },
@@ -163,16 +203,6 @@ export const LAB_PANELS: LabPanel[] = [
       { name: "Salivary Cortisol 4-point", cost: "₹₹₹", specialty: true },
       { name: "Aldosterone + Renin", cost: "₹₹₹", specialty: true },
       { name: "Pregnenolone", cost: "₹₹₹", specialty: true },
-    ],
-  },
-  {
-    group: "Cardiovascular Risk",
-    icon: "❤️",
-    labs: [
-      { name: "ApoB", cost: "₹₹" },
-      { name: "ApoA1", cost: "₹₹" },
-      { name: "Lp(a) — Lipoprotein(a)", cost: "₹₹" },
-      { name: "NMR LipoProfile", cost: "₹₹₹", specialty: true },
     ],
   },
   {
@@ -230,24 +260,13 @@ export const LAB_PANELS: LabPanel[] = [
       { name: "Food Sensitivity IgG Panel", cost: "₹₹₹", specialty: true },
     ],
   },
-  {
-    group: "Routine",
-    icon: "🧪",
-    labs: [
-      { name: "Stool Routine & Culture", cost: "₹" },
-      { name: "Urine Routine", cost: "₹" },
-    ],
-  },
 ];
 
-/** Suggested defaults for a first-touch Discovery — covers the 80% case
- *  for adult female clients presenting with fatigue/weight/hormonal issues.
- *  Coach can override on the form. */
+/** FM functional groups whose non-specialty markers are also pre-ticked on a
+ *  fresh Discovery (on top of the bundle-level `default: true` flags). Gives
+ *  the FM core — insulin/HOMA-IR + hsCRP/homocysteine — alongside the standard
+ *  bundles. Coach can untick on the form. */
 export const DEFAULT_DISCOVERY_PANELS = new Set<string>([
-  "Thyroid Function",
   "Blood Sugar & Insulin",
   "Inflammation",
-  "Nutrients",
-  "Lipid Panel",
-  "Complete Blood Count",
 ]);

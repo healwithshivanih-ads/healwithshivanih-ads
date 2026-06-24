@@ -114,7 +114,9 @@ export function DiscoveryForm({
   // coach can see what was added at a glance (rather than having to spot
   // a count-badge change on a collapsed card).
   const [expandedPanels, setExpandedPanels] = useState<Set<string>>(
-    () => new Set(prefillExtraPanels),
+    // Standard Lab Panels (the bundles) open by default — it's the primary
+    // section; plus any panels the condition→panel mapper added.
+    () => new Set(["Standard Lab Panels", ...prefillExtraPanels]),
   );
 
   // Filter to panels relevant for this client's sex (if known).
@@ -142,15 +144,18 @@ export function DiscoveryForm({
     ]);
     const out = new Set<string>();
     for (const p of visiblePanels) {
-      if (includeGroups.has(p.group)) {
-        for (const l of p.labs) {
-          // Default: pick everything in the panel EXCEPT specialty +
-          // sex-mismatch labs. Coach can toggle on individual specialty
-          // labs from the expanded view.
-          if (l.specialty) continue;
-          if (l.sex && clientSex && l.sex !== clientSex) continue;
+      const groupDefault = includeGroups.has(p.group);
+      for (const l of p.labs) {
+        if (l.sex && clientSex && l.sex !== clientSex) continue;
+        // Per-item default (the standard bundles — KFT, LFT, …) is pre-ticked
+        // on every fresh discovery regardless of group.
+        if (l.default) {
           out.add(l.name);
+          continue;
         }
+        // Group-level default: pick the group's non-specialty markers (the FM
+        // core — insulin/HOMA-IR, hsCRP — plus any condition-matched panels).
+        if (groupDefault && !l.specialty) out.add(l.name);
       }
     }
     return out;
@@ -520,8 +525,8 @@ export function DiscoveryForm({
       </FmFormSection>
 
       <FmFormSection
-        title={`Recommended lab panel · ${totalLabs} of all selected`}
-        description="Click any panel to expand. Header chip toggles the whole panel; checkbox toggles per lab. ₹ / ₹₹ / ₹₹₹ indicates cost band. ★ specialty labs need a third-party FM provider."
+        title={`Lab order · ${totalLabs} selected`}
+        description="Standard bundles (KFT, LFT, Lipid Profile, CBC…) come first — each shows the tests it includes. FM-specific add-on markers follow. Header chip toggles a whole group; checkbox toggles per item. ₹ / ₹₹ / ₹₹₹ = cost band. ★ = specialty (third-party FM lab)."
       >
         <div style={{ display: "grid", gap: 8 }}>
           {visiblePanels.map((p) => {
@@ -618,7 +623,11 @@ export function DiscoveryForm({
                     style={{
                       padding: "0 12px 12px",
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
+                      // Bundle items carry a component sub-line, so give them a
+                      // single full-width column; plain markers stay 2-up.
+                      gridTemplateColumns: p.labs.some((l) => l.components)
+                        ? "1fr"
+                        : "1fr 1fr",
                       gap: 4,
                     }}
                   >
@@ -633,7 +642,7 @@ export function DiscoveryForm({
                             onClick={() => toggleLab(l.name)}
                             style={{
                               display: "flex",
-                              alignItems: "center",
+                              alignItems: "flex-start",
                               gap: 8,
                               padding: "6px 10px",
                               background: on
@@ -661,6 +670,7 @@ export function DiscoveryForm({
                                 fontSize: 9,
                                 fontWeight: 700,
                                 flexShrink: 0,
+                                marginTop: 1,
                               }}
                             >
                               {on && "✓"}
@@ -668,13 +678,38 @@ export function DiscoveryForm({
                             <span
                               style={{
                                 flex: 1,
-                                color: on
-                                  ? "var(--fm-text-primary)"
-                                  : "var(--fm-text-secondary)",
-                                fontWeight: on ? 600 : 500,
+                                minWidth: 0,
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 2,
                               }}
                             >
-                              {l.name}
+                              <span
+                                style={{
+                                  color: on
+                                    ? "var(--fm-text-primary)"
+                                    : "var(--fm-text-secondary)",
+                                  fontWeight: on ? 600 : 500,
+                                }}
+                              >
+                                {l.icon ? `${l.icon} ` : ""}
+                                {l.name}
+                              </span>
+                              {l.components && l.components.length > 0 && (
+                                <span
+                                  title={l.components.join(", ")}
+                                  style={{
+                                    fontSize: 10,
+                                    color: "var(--fm-text-tertiary)",
+                                    lineHeight: 1.3,
+                                  }}
+                                >
+                                  incl. {l.components.slice(0, 3).join(" · ")}
+                                  {l.components.length > 3
+                                    ? ` +${l.components.length - 3} more`
+                                    : ""}
+                                </span>
+                              )}
                             </span>
                             {l.specialty && (
                               <span
@@ -733,8 +768,8 @@ export function DiscoveryForm({
           }}
         >
           <span>
-            {panelsTouched} panel{panelsTouched === 1 ? "" : "s"} touched ·{" "}
-            {totalLabs} marker{totalLabs === 1 ? "" : "s"} total
+            {panelsTouched} group{panelsTouched === 1 ? "" : "s"} touched ·{" "}
+            {totalLabs} test{totalLabs === 1 ? "" : "s"} selected
           </span>
           <span style={{ fontWeight: 700, color: "var(--fm-text-secondary)" }}>
             Home draw available · client books direct with Thyrocare

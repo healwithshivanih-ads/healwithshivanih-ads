@@ -49,8 +49,8 @@ export interface DiscoveryPrefill {
 const CONDITION_PANEL_MAP: Array<[RegExp, string[]]> = [
   [/thyroid|hashimoto|hypothyroid|hyperthyroid|graves/i, ["Thyroid Function", "Autoimmune Screening"]],
   [/insulin|diabet|pre-?diabet|glucose|metabolic syndrome/i, ["Blood Sugar & Insulin", "Cardiovascular Risk"]],
-  [/cholesterol|lipid|dyslipid|triglycer/i, ["Lipid Panel", "Cardiovascular Risk"]],
-  [/hyperten|high blood pressure|\bbp\b/i, ["Cardiovascular Risk", "Metabolic Panel"]],
+  [/cholesterol|lipid|dyslipid|triglycer/i, ["Cardiovascular Risk"]],
+  [/hyperten|high blood pressure|\bbp\b/i, ["Cardiovascular Risk", "Advanced Kidney & Metabolic"]],
   [/osteopor|bone density|osteopenia/i, ["Nutrients"]],
   [/pcos|polycystic|androgen/i, ["Sex Hormones — Female", "Sex Hormones — Common", "Blood Sugar & Insulin"]],
   // NOTE: menopause is handled separately (see the age-gated block in
@@ -61,7 +61,7 @@ const CONDITION_PANEL_MAP: Array<[RegExp, string[]]> = [
   [/autoimmun|rheumat|lupus|sjogren|celiac|hashimoto/i, ["Autoimmune Screening", "Inflammation"]],
   [/inflammat|chronic pain|arthrit|fibromyalg/i, ["Inflammation", "Methylation & Genetics"]],
   [/gut|ibs|sibo|bloating|reflux|leaky/i, ["Gut Health", "Inflammation"]],
-  [/cardio|heart|atrial|coronary/i, ["Cardiovascular Risk", "Lipid Panel"]],
+  [/cardio|heart|atrial|coronary/i, ["Cardiovascular Risk"]],
   [/cancer|tumor|tumour|oncolog/i, ["Cancer Screening", "Inflammation"]],
 ];
 
