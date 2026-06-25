@@ -28,6 +28,10 @@ import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/
 import { readAppOpens } from "@/lib/fmdb/app-opens";
 import { readAppInstalled } from "@/lib/fmdb/app-installed";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
+import { getCohortMsqOutcomes } from "@/lib/fmdb/msq-cohort";
+import { MsqCohortPanel } from "@/components/msq-cohort-panel";
+import { computePracticeOverview } from "@/lib/fmdb/practice-overview";
+import { PracticeOverviewPanel } from "@/components/practice-overview-panel";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
 import { BookSessionButton } from "@/components/client-widgets/book-session-modal";
@@ -598,6 +602,12 @@ export default async function DashboardV2() {
     regressedThresholdKg: 1.0,
   });
 
+  // 📊 Cohort MSQ outcomes (Phase 1 MIS) — practice-level symptom rollup
+  // from the Progress-tab Medical Symptom Questionnaire. Pure read of
+  // msq_response across clients; baseline-only until the first 21-day
+  // retakes land, then flips to per-system trajectory automatically.
+  const msqOutcomes = await getCohortMsqOutcomes(allClientIds);
+
   // "Time to schedule next session" rows — clients ≥12d since last
   // session OR with plan_period_recheck_date overdue. Each row carries
   // its own auto-picked event type so the bulk-send button respects
@@ -825,6 +835,27 @@ export default async function DashboardV2() {
     grouped.plan_to_build.length +
     grouped.labs_pending.length +
     grouped.booking_link_pending.length;
+
+  // 📊 Practice overview model (MIS Phase 3) — composes the client-status
+  // band, pipeline and composition from signals already computed above
+  // (lifecycle buckets + dormant/plateau/regression sets + published plans).
+  // Pure re-shape; no extra I/O.
+  const bucketOf = new Map<string, string>();
+  for (const [kind, arr] of Object.entries(grouped)) {
+    for (const r of arr) bucketOf.set(r.client_id, kind);
+  }
+  const publishedPlanIds = new Set<string>();
+  for (const [cid, pl] of plansByClient) {
+    if (pl.some((p) => p.status === "published" || p._bucket === "published")) publishedPlanIds.add(cid);
+  }
+  const overview = computePracticeOverview({
+    clients: clients as ClientRow[],
+    bucketOf,
+    publishedPlanIds,
+    dormantIds: new Set(dormantClients.map((d) => d.client_id)),
+    plateauedIds: new Set(plateauedClients.map((d) => d.client_id)),
+    regressedIds: new Set(regressedClients.map((d) => d.client_id)),
+  });
 
   // When there's exactly ONE attention item, the dashboard tile should
   // link DIRECTLY to the relevant tab on that client (not scroll to the
@@ -1123,6 +1154,34 @@ export default async function DashboardV2() {
           </div>
         }
       />
+
+      {/* 📊 Practice overview (MIS) — the headline management layer: vitals,
+          who's on track, what the practice is made of, pipeline, and the MSQ
+          outcome rollup. Operational triage stays below in the alert groups. */}
+      <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
+        <FmStatGrid cols={5}>
+          <FmStatTile label="Active care" value={overview.activeCare} href="/clients-v2" />
+          <FmStatTile label="On track" value={overview.onTrackPct !== null ? `${overview.onTrackPct}%` : "—"} />
+          <FmStatTile
+            label="Avg MSQ"
+            value={msqOutcomes.avgLatestTotal ?? msqOutcomes.avgBaselineTotal ?? "—"}
+            title="Cohort Medical Symptom Questionnaire · lower is better"
+          />
+          <FmStatTile
+            label="Rechecks due"
+            value={grouped.protocol_complete.length}
+            highlight={grouped.protocol_complete.length > 0}
+            href={grouped.protocol_complete.length > 0 ? "#needs-attention" : undefined}
+          />
+          <FmStatTile
+            label="Watch + stalled"
+            value={overview.watch + overview.stalled}
+            highlight={overview.stalled > 0}
+          />
+        </FmStatGrid>
+        <PracticeOverviewPanel data={overview} />
+        <MsqCohortPanel data={msqOutcomes} />
+      </div>
 
       {/* Banners + strips above the triage sections.
           The standalone amber "Schedule a session" strip was dropped
