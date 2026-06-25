@@ -13,9 +13,9 @@ const RAW = {
   // superseded — the parser must NOT read these:
   packages: [{ slug: "fm-essential-basic", target_inr: 3999 }],
   profiles_final: [
-    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000, includes: ["Full thyroid", "Iron studies"] },
+    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000, includes: ["Full thyroid", "Iron studies"], covered_addon_slugs: ["apob", "am-cortisol"] },
     { id: 2, name: "Women's Reproductive", audience: "women <45", our_cost_inr: 16500, mrp_inr: 23500, margin_inr: 7000, includes_extra: ["Reproductive hormones"] },
-    { id: 3, name: "Perimenopause", audience: "women 40+", our_cost_inr: 13000, mrp_inr: 20000, margin_inr: 7000, includes_extra: ["Perimenopause hormones"] },
+    { id: 3, name: "Perimenopause", audience: "women 40+", our_cost_inr: 13000, mrp_inr: 20000, margin_inr: 7000, includes_extra: ["Perimenopause hormones"], covered_addon_slugs: ["fsh", "estradiol-e2"] },
     { id: 4, name: "Male", audience: "men", our_cost_inr: 14000, mrp_inr: 21000, margin_inr: 7000 },
   ],
   addon_tests: [
@@ -32,6 +32,15 @@ describe("parseAcumen", () => {
     expect(acumen.profiles.find((p) => p.id === 1)?.mrpInr).toBe(12500);
     // a target_inr of 3999 from `packages` must never appear
     expect(acumen.profiles.some((p) => p.mrpInr === 3999)).toBe(false);
+  });
+
+  it("composes coveredAddonSlugs as Base ∪ the profile's own", () => {
+    const peri = acumen.profiles.find((p) => p.id === 3)!;
+    // peri's own (fsh, estradiol-e2) + Base's (apob, am-cortisol), de-duped
+    expect([...peri.coveredAddonSlugs].sort()).toEqual(["am-cortisol", "apob", "estradiol-e2", "fsh"]);
+    // a profile with no own coverage still inherits Base's
+    const women = acumen.profiles.find((p) => p.id === 2)!;
+    expect([...women.coveredAddonSlugs].sort()).toEqual(["am-cortisol", "apob"]);
   });
 
   it("derives add-on our-cost = 50% of catalogue; client price stays null (margin pending)", () => {

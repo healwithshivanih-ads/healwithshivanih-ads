@@ -75,11 +75,35 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
 
   const priceOk = (v: string | undefined) =>
     typeof v === "string" && v.trim() !== "" && Number.isFinite(Number(v)) && Number(v) > 0;
-  const selectedAddons = Object.entries(addonPrices)
-    .filter(([, v]) => priceOk(v))
-    .map(([slug, v]) => ({ slug, inr: Number(v) }));
 
   const profile = menu?.profiles.find((p) => p.id === profileId) ?? null;
+  // Tests already inside the chosen panel — hidden from the picker (and never
+  // charged) so a marker isn't recommended twice.
+  const coveredSlugs = new Set(profile?.coveredAddonSlugs ?? []);
+  // The add-ons the coach can actually pick for this profile.
+  const visibleAddons = (menu?.addons ?? []).filter((a) => !coveredSlugs.has(a.slug));
+  const hiddenCount = (menu?.addons.length ?? 0) - visibleAddons.length;
+
+  // Prune any ticked add-on that the newly-selected profile now covers, so it
+  // can't linger checked (or be charged). Runs whenever the profile changes.
+  useEffect(() => {
+    if (coveredSlugs.size === 0) return;
+    setAddonPrices((prev) => {
+      const next: Record<string, string> = {};
+      let changed = false;
+      for (const [slug, v] of Object.entries(prev)) {
+        if (coveredSlugs.has(slug)) changed = true;
+        else next[slug] = v;
+      }
+      return changed ? next : prev;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profileId]);
+
+  const selectedAddons = Object.entries(addonPrices)
+    .filter(([slug, v]) => priceOk(v) && !coveredSlugs.has(slug))
+    .map(([slug, v]) => ({ slug, inr: Number(v) }));
+
   const addonTotal = selectedAddons.reduce((s, a) => s + a.inr, 0);
   const total = (profile?.mrpInr ?? 0) + addonTotal;
   const ourCost =
@@ -87,9 +111,9 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
     selectedAddons.reduce((s, a) => s + (menu?.addons.find((x) => x.slug === a.slug)?.ourCostInr ?? 0), 0);
   const margin = total - ourCost;
   // ticked add-ons missing a valid price — must be resolved before recommending
-  // (otherwise they'd be silently dropped from the order).
+  // (otherwise they'd be silently dropped from the order). Covered ones excluded.
   const incompleteAddons = Object.entries(addonPrices)
-    .filter(([, v]) => v !== undefined && !priceOk(v))
+    .filter(([slug, v]) => v !== undefined && !priceOk(v) && !coveredSlugs.has(slug))
     .map(([slug]) => menu?.addons.find((a) => a.slug === slug)?.name ?? slug);
   const canRecommend =
     !busy && total > 0 && (profileId != null || selectedAddons.length > 0) && incompleteAddons.length === 0;
@@ -190,8 +214,13 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
           {/* add-ons — coach sets each price */}
           <div style={{ display: "grid", gap: 6 }}>
             <Label>Additional tests (you set the price)</Label>
+            {hiddenCount > 0 && (
+              <div style={{ fontSize: 11, color: "var(--fm-muted, #6f6a5d)" }}>
+                {hiddenCount} test{hiddenCount === 1 ? "" : "s"} already in {profile?.name} — hidden so you don&apos;t book them twice.
+              </div>
+            )}
             <div style={{ maxHeight: 180, overflowY: "auto", display: "grid", gap: 4 }}>
-              {menu.addons.map((a) => {
+              {visibleAddons.map((a) => {
                 const on = a.slug in addonPrices;
                 return (
                   <div key={a.slug} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5 }}>
