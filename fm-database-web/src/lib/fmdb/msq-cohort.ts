@@ -37,6 +37,8 @@ interface MsqEntry {
   date: string;
   total: number;
   categoryTotals: Record<string, number>;
+  /** Raw 72-item answers ("<categoryId>.<itemIndex>" → 0..4). For item-level drill-down. */
+  answers: Record<string, number>;
 }
 
 export interface CohortMsqSystem {
@@ -99,9 +101,10 @@ async function readClientMsqEntries(root: string, clientId: string): Promise<Msq
     const total = Number(msq.total);
     if (!Number.isFinite(total)) continue;
     const categoryTotals = (msq.category_totals as Record<string, number>) ?? {};
+    const answers = (msq.answers as Record<string, number>) ?? {};
     const recv = typeof msq.received_at === "string" ? msq.received_at : "";
     const prev = byDate.get(date);
-    if (!prev || recv > prev.recv) byDate.set(date, { entry: { date, total, categoryTotals }, recv });
+    if (!prev || recv > prev.recv) byDate.set(date, { entry: { date, total, categoryTotals, answers }, recv });
   }
   return [...byDate.values()].map((v) => v.entry).sort((a, b) => a.date.localeCompare(b.date));
 }
@@ -202,5 +205,149 @@ export async function getCohortMsqOutcomes(clientIds: string[]): Promise<CohortM
     deltaPct,
     cohortPoints,
     systems,
+  };
+}
+
+// ── Per-system drill-down (Phase 2) ──────────────────────────────────────────
+
+export interface SystemMsqItem {
+  index: number;
+  label: string;
+  /** Mean baseline score (0–4) for this item across clients with ≥1 MSQ. */
+  avgBaseline: number;
+  avgLatest: number | null;
+  improving: number;
+  holding: number;
+  worse: number;
+}
+
+export interface SystemMsqClient {
+  clientId: string;
+  displayName: string;
+  /** This client's baseline total for the system (0 … items×4). */
+  baseline: number;
+  latest: number | null;
+  deltaPct: number | null;
+}
+
+export interface SystemMsqDetail {
+  mode: "trend" | "baseline" | "empty";
+  systemId: string;
+  label: string;
+  clientsWithMsq: number;
+  clientsWithTrend: number;
+  avgBaseline: number | null;
+  avgLatest: number | null;
+  deltaPct: number | null;
+  /** Worst score the system can reach (item count × 4) — for bar scaling. */
+  maxScore: number;
+  items: SystemMsqItem[];
+  clients: SystemMsqClient[];
+}
+
+/** Drill-down for one MSQ system: the items inside it + the clients carrying
+ *  the most burden. Returns null for an unknown systemId (→ 404 at the page). */
+export async function getSystemMsqDetail(
+  clients: { client_id: string; display_name?: string }[],
+  systemId: string,
+): Promise<SystemMsqDetail | null> {
+  const cat = MSQ_CATEGORIES.find((c) => c.id === systemId);
+  if (!cat) return null;
+  const root = getPlansRoot();
+  const perClient = await Promise.all(
+    clients.map(async (c) => ({
+      id: c.client_id,
+      name: c.display_name || c.client_id,
+      entries: await readClientMsqEntries(root, c.client_id),
+    })),
+  );
+  const withMsq = perClient.filter((c) => c.entries.length >= 1);
+  const withTrend = perClient.filter((c) => c.entries.length >= 2);
+  const maxScore = cat.items.length * 4;
+  const lastOf = (es: MsqEntry[]) => es[es.length - 1];
+
+  if (withMsq.length === 0) {
+    return {
+      mode: "empty",
+      systemId,
+      label: cat.label,
+      clientsWithMsq: 0,
+      clientsWithTrend: 0,
+      avgBaseline: null,
+      avgLatest: null,
+      deltaPct: null,
+      maxScore,
+      items: [],
+      clients: [],
+    };
+  }
+
+  const mode: SystemMsqDetail["mode"] = withTrend.length > 0 ? "trend" : "baseline";
+
+  const avgBaseline = round1(mean(withMsq.map((c) => c.entries[0].categoryTotals[systemId] ?? 0)));
+  let avgLatest: number | null = null;
+  let deltaPct: number | null = null;
+  if (withTrend.length > 0) {
+    avgLatest = round1(mean(withTrend.map((c) => lastOf(c.entries).categoryTotals[systemId] ?? 0)));
+    deltaPct = Math.round(
+      mean(
+        withTrend.map((c) => {
+          const b = c.entries[0].categoryTotals[systemId] ?? 0;
+          const l = lastOf(c.entries).categoryTotals[systemId] ?? 0;
+          return b > 0 ? ((l - b) / b) * 100 : 0;
+        }),
+      ),
+    );
+  }
+
+  const items: SystemMsqItem[] = cat.items.map((label, index) => {
+    const key = `${systemId}.${index}`;
+    const avgB = round1(mean(withMsq.map((c) => c.entries[0].answers[key] ?? 0)));
+    let avgL: number | null = null;
+    let improving = 0;
+    let holding = 0;
+    let worse = 0;
+    if (withTrend.length > 0) {
+      avgL = round1(mean(withTrend.map((c) => lastOf(c.entries).answers[key] ?? 0)));
+      for (const c of withTrend) {
+        const d = (lastOf(c.entries).answers[key] ?? 0) - (c.entries[0].answers[key] ?? 0);
+        if (d <= -1) improving++;
+        else if (d >= 1) worse++;
+        else holding++;
+      }
+    }
+    return { index, label, avgBaseline: avgB, avgLatest: avgL, improving, holding, worse };
+  });
+  if (mode === "trend") {
+    items.sort((a, b) => b.improving - b.worse - (a.improving - a.worse) || b.avgBaseline - a.avgBaseline);
+  } else {
+    items.sort((a, b) => b.avgBaseline - a.avgBaseline);
+  }
+
+  const clientsOut: SystemMsqClient[] = withMsq
+    .map((c) => {
+      const baseline = c.entries[0].categoryTotals[systemId] ?? 0;
+      let latest: number | null = null;
+      let dPct: number | null = null;
+      if (c.entries.length >= 2) {
+        latest = lastOf(c.entries).categoryTotals[systemId] ?? 0;
+        dPct = baseline > 0 ? Math.round(((latest - baseline) / baseline) * 100) : 0;
+      }
+      return { clientId: c.id, displayName: c.name, baseline, latest, deltaPct: dPct };
+    })
+    .sort((a, b) => b.baseline - a.baseline);
+
+  return {
+    mode,
+    systemId,
+    label: cat.label,
+    clientsWithMsq: withMsq.length,
+    clientsWithTrend: withTrend.length,
+    avgBaseline,
+    avgLatest,
+    deltaPct,
+    maxScore,
+    items,
+    clients: clientsOut,
   };
 }

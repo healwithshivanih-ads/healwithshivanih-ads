@@ -10,6 +10,7 @@
  * Reads nothing new — it's a pure rollup of data the app already collects.
  * Source: getCohortMsqOutcomes (lib/fmdb/msq-cohort.ts).
  */
+import Link from "next/link";
 import { FmPanel } from "@/components/fm";
 import type { CohortMsqOutcomes, CohortMsqSystem } from "@/lib/fmdb/msq-cohort";
 
@@ -56,7 +57,10 @@ function TrendRow({ s }: { s: CohortMsqSystem }) {
   const tagColor = pct <= -1 ? C_IMPROVE : pct >= 1 ? C_WORSE : "var(--fm-text-tertiary)";
   const tag = pct === 0 ? "—" : `${pct < 0 ? "↓" : "↑"} ${Math.abs(pct)}%`;
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "7px 0" }}>
+    <Link
+      href={`/dashboard-v2/outcomes/${s.id}`}
+      style={{ display: "flex", alignItems: "center", gap: 10, margin: "7px 0", textDecoration: "none", color: "inherit" }}
+    >
       <div style={{ width: 104, fontSize: 12.5, color: "var(--fm-text-primary)" }}>{s.label}</div>
       <div style={{ flex: 1, height: 13, display: "flex", borderRadius: 999, overflow: "hidden", background: "var(--fm-bg-warm)" }}>
         {s.improving > 0 && <div style={{ flex: s.improving, background: C_IMPROVE }} />}
@@ -65,14 +69,18 @@ function TrendRow({ s }: { s: CohortMsqSystem }) {
         {total === 1 && s.improving + s.holding + s.worse === 0 && <div style={{ flex: 1, background: "var(--fm-bg-warm)" }} />}
       </div>
       <div style={{ width: 52, textAlign: "right", fontSize: 12, fontWeight: 700, color: tagColor }}>{tag}</div>
-    </div>
+      <span style={{ width: 10, textAlign: "right", color: "var(--fm-text-tertiary)", fontSize: 14 }}>›</span>
+    </Link>
   );
 }
 
 function BaselineRow({ s, maxBaseline }: { s: CohortMsqSystem; maxBaseline: number }) {
   const w = Math.round((s.avgBaseline / (maxBaseline || 1)) * 100);
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "7px 0" }}>
+    <Link
+      href={`/dashboard-v2/outcomes/${s.id}`}
+      style={{ display: "flex", alignItems: "center", gap: 10, margin: "7px 0", textDecoration: "none", color: "inherit" }}
+    >
       <div style={{ width: 104, fontSize: 12.5, color: "var(--fm-text-primary)" }}>{s.label}</div>
       <div style={{ flex: 1, height: 13, borderRadius: 999, overflow: "hidden", background: "var(--fm-bg-warm)" }}>
         <div style={{ width: `${w}%`, height: "100%", background: C_SEV }} />
@@ -80,7 +88,8 @@ function BaselineRow({ s, maxBaseline }: { s: CohortMsqSystem; maxBaseline: numb
       <div style={{ width: 52, textAlign: "right", fontSize: 12, fontWeight: 700, color: "var(--fm-text-secondary)" }}>
         {s.avgBaseline}
       </div>
-    </div>
+      <span style={{ width: 10, textAlign: "right", color: "var(--fm-text-tertiary)", fontSize: 14 }}>›</span>
+    </Link>
   );
 }
 
