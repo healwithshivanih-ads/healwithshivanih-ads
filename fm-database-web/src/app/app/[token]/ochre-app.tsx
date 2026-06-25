@@ -496,14 +496,14 @@ export function OchreAppError() {
           </span>
           <div className="t">The Ochre Tree</div>
           <div className="s" style={{ maxWidth: 260, textAlign: "center", lineHeight: 1.6 }}>
-            This link isn’t active any more. Message Shivani on WhatsApp and she’ll send you a fresh one.
+            This link isn’t active any more. Message us on WhatsApp and we’ll send you a fresh one.
           </div>
           <a
             className="wa-btn"
             style={{ width: "auto", padding: "13px 22px", marginTop: 8 }}
-            href="https://wa.me/918976563971?text=Hi%20Shivani%2C%20my%20plan%20app%20link%20isn%27t%20working%20%E2%80%94%20could%20you%20send%20me%20a%20fresh%20one%3F"
+            href="https://wa.me/918976563971?text=Hi%2C%20my%20app%20link%20isn%27t%20working%20%E2%80%94%20could%20you%20send%20me%20a%20fresh%20one%3F"
           >
-            <Icon name="whatsapp" size={18} /> Message Shivani
+            <Icon name="whatsapp" size={18} /> Message us
           </a>
         </div>
       </div>
