@@ -36,7 +36,7 @@ export function MsqCard({ openMsq }: { openMsq: () => void }) {
         <span className="msq-cta-body">
           <span className="msq-cta-title">Your symptom baseline</span>
           <span className="msq-cta-meta">
-            5 minutes, once — so every week of progress shows up as a falling number.
+            5 minutes, once — then a quick retake every few weeks, so your progress shows up as a falling number.
           </span>
         </span>
         <span className="chev">

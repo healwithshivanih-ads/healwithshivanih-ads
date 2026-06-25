@@ -28,6 +28,8 @@ import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/
 import { readAppOpens } from "@/lib/fmdb/app-opens";
 import { readAppInstalled } from "@/lib/fmdb/app-installed";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
+import { getCohortMsqOutcomes } from "@/lib/fmdb/msq-cohort";
+import { MsqCohortPanel } from "@/components/msq-cohort-panel";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
 import { BookSessionButton } from "@/components/client-widgets/book-session-modal";
@@ -598,6 +600,12 @@ export default async function DashboardV2() {
     regressedThresholdKg: 1.0,
   });
 
+  // 📊 Cohort MSQ outcomes (Phase 1 MIS) — practice-level symptom rollup
+  // from the Progress-tab Medical Symptom Questionnaire. Pure read of
+  // msq_response across clients; baseline-only until the first 21-day
+  // retakes land, then flips to per-system trajectory automatically.
+  const msqOutcomes = await getCohortMsqOutcomes(allClientIds);
+
   // "Time to schedule next session" rows — clients ≥12d since last
   // session OR with plan_period_recheck_date overdue. Each row carries
   // its own auto-picked event type so the bulk-send button respects
@@ -1123,6 +1131,13 @@ export default async function DashboardV2() {
           </div>
         }
       />
+
+      {/* 📊 Practice MIS — cohort symptom outcomes (Phase 1). Sits directly
+          under the header as the headline management insight: the standard
+          FM outcome number (MSQ) rolled up across all clients. */}
+      <div style={{ marginBottom: 24 }}>
+        <MsqCohortPanel data={msqOutcomes} />
+      </div>
 
       {/* Banners + strips above the triage sections.
           The standalone amber "Schedule a session" strip was dropped
