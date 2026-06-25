@@ -16,8 +16,27 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
 import yaml from "js-yaml";
+import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { stageClientAppArtifacts } from "./letter-token";
+import { stageClientAppArtifacts, stageDiscoveryClientArtifacts } from "./letter-token";
+import { resolveDiscoveryCredit, type DiscoveryCredit } from "@/lib/fmdb/discovery-tier";
+
+const IST = "Asia/Kolkata";
+
+/** Today in IST as YYYY-MM-DD (en-CA formats that way). */
+function istTodayYmd(): string {
+  return new Date().toLocaleDateString("en-CA", { timeZone: IST });
+}
+
+/** Coerce a YAML date field to YYYY-MM-DD (js-yaml may parse it into a Date). */
+function asYmd(v: unknown): string {
+  if (v instanceof Date) return Number.isNaN(v.getTime()) ? "" : v.toISOString().slice(0, 10);
+  if (typeof v === "string") {
+    const m = v.match(/^\d{4}-\d{2}-\d{2}/);
+    return m ? m[0] : "";
+  }
+  return "";
+}
 
 function newAppToken(): string {
   // 32 URL-safe chars — same entropy as letter_token
@@ -56,6 +75,52 @@ export async function ensureClientAppToken(
   }
 
   return { ok: true, token };
+}
+
+/**
+ * Share the app at the DISCOVERY stage — a consult-tier client with no plan yet.
+ * Idempotently ensures the stable `app_token`, starts the 15-day upgrade-credit
+ * window (sets `discovery_call_date` to today IST if not already set — never
+ * silently resets an existing window), and projects the client to Fly so the
+ * read-only discovery app resolves there. ONE token for life: the same
+ * /app/<token> link flips to the full app in place once a plan is published.
+ */
+export async function shareDiscoveryApp(clientId: string): Promise<
+  | { ok: true; token: string; callDate: string; credit: DiscoveryCredit }
+  | { ok: false; error: string }
+> {
+  const tok = await ensureClientAppToken(clientId);
+  if (!tok.ok) return tok;
+
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  let data: Record<string, unknown>;
+  try {
+    data = yaml.load(await fs.readFile(clientYaml, "utf-8")) as Record<string, unknown>;
+  } catch {
+    return { ok: false, error: "client_not_found" };
+  }
+
+  // Start the credit window only if it isn't already running (re-share must not
+  // reset the clock — a deliberate reset is a separate action).
+  let callDate = asYmd(data.discovery_call_date);
+  if (!callDate) {
+    callDate = istTodayYmd();
+    data.discovery_call_date = callDate;
+    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");
+  }
+
+  // Project to Fly. If a plan already exists (shouldn't at discovery stage, but
+  // be safe), stage as the full package client instead.
+  const planSlug = await _latestPublishedPlanSlug(clientId);
+  if (planSlug) {
+    await stageClientAppArtifacts(clientId, planSlug).catch(() => {/* best-effort */});
+  } else {
+    await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
+  }
+
+  const credit = resolveDiscoveryCredit(callDate, istTodayYmd());
+  revalidatePath(`/clients-v2/${clientId}`);
+  return { ok: true, token: tok.token, callDate, credit };
 }
 
 async function _latestPublishedPlanSlug(clientId: string): Promise<string | null> {

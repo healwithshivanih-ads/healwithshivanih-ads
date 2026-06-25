@@ -84,6 +84,13 @@ _APP_CLIENT_KEYS = (
     "app_token",
     "app_token_created_at",
     "lab_reference_ranges",
+    # consult-tier ("discovery") app: tier + credit window + the Starting Map.
+    # engagement_status drives the Fly tier resolver (signed_up → package);
+    # discovery_call_date drives the 15-day upgrade-credit countdown;
+    # discovery_summary is the client-facing orientation artifact (no protocol).
+    "engagement_status",
+    "discovery_call_date",
+    "discovery_summary",
     # app-read fields beyond the original intake-stub set (audited across
     # client-app.ts + recipes.ts on 2026-06-15 — these ARE consumed by the app)
     "known_allergies",
@@ -105,6 +112,29 @@ def _published_files(root: Path, plan_slug: str) -> list[Path]:
     if not d.exists():
         return []
     return sorted(d.glob(f"{plan_slug}-v*.yaml"))
+
+
+def _latest_published_slug_for(yaml, root: Path, client_id: str) -> str:
+    """Highest-version published plan slug for a client, or "" if none. Lets a
+    staged discovery client auto-upgrade to package staging the moment a plan
+    ships, even if the publish path didn't explicitly re-stage them."""
+    d = root / "published"
+    if not d.exists():
+        return ""
+    best_slug, best_v = "", -1
+    for p in sorted(d.glob("*-v*.yaml")):
+        try:
+            data = yaml.safe_load(p.read_text()) or {}
+        except Exception:
+            continue
+        if data.get("client_id") != client_id:
+            continue
+        v = data.get("version")
+        v = v if isinstance(v, int) else 0
+        if v > best_v:
+            best_v = v
+            best_slug = str(data.get("slug") or p.stem.rsplit("-v", 1)[0])
+    return best_slug
 
 
 def _intake_active(d: dict) -> bool:
@@ -131,20 +161,27 @@ def _intake_active(d: dict) -> bool:
 def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> dict:
     counts = {"plan_files": 0, "letters": 0, "sessions_staged": 0}
 
-    # 1. sanitized published plan(s)
-    plan_published = False
-    (stag / "published").mkdir(parents=True, exist_ok=True)
-    for p in _published_files(auth, plan_slug):
-        d = yaml.safe_load(p.read_text()) or {}
-        for k in _PLAN_PRIVATE_KEYS:
-            d.pop(k, None)
-        (stag / "published" / p.name).write_text(
-            yaml.safe_dump(d, sort_keys=False, allow_unicode=True)
-        )
-        counts["plan_files"] += 1
-        plan_published = True
-    if not plan_published:
-        return {"ok": False, "error": f"plan not published: {plan_slug}", **counts}
+    # plan-less "discovery" (consult-tier) client: an app_token but no published
+    # plan. Stage ONLY the trimmed client.yaml (app_token + discovery fields +
+    # lab vault) — no published plan, no letters. plan_slug == "" signals this;
+    # the app's loader resolves tier from engagement_status + plan presence.
+    discovery = not plan_slug
+
+    # 1. sanitized published plan(s) — package clients only
+    if not discovery:
+        plan_published = False
+        (stag / "published").mkdir(parents=True, exist_ok=True)
+        for p in _published_files(auth, plan_slug):
+            d = yaml.safe_load(p.read_text()) or {}
+            for k in _PLAN_PRIVATE_KEYS:
+                d.pop(k, None)
+            (stag / "published" / p.name).write_text(
+                yaml.safe_dump(d, sort_keys=False, allow_unicode=True)
+            )
+            counts["plan_files"] += 1
+            plan_published = True
+        if not plan_published:
+            return {"ok": False, "error": f"plan not published: {plan_slug}", **counts}
 
     # 2. client.yaml — app keys merged over any existing staging stub
     auth_client = auth / "clients" / client_id / "client.yaml"
@@ -210,7 +247,9 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     # successor plan slug — so stage the log plus every file matching the
     # published slug OR any slug that appears in the log.
     auth_mp = auth / "clients" / client_id / "meal-plans"
-    if auth_mp.exists():
+    # discovery clients have no plan_slug → an empty prefix would match EVERY
+    # file; skip letters entirely for them (they have no plan/letters anyway).
+    if not discovery and auth_mp.exists():
         smp = sdir / "meal-plans"
         smp.mkdir(parents=True, exist_ok=True)
         prefixes = {plan_slug}
@@ -257,6 +296,23 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     if ov.exists():
         shutil.copy2(ov, sdir / "app-overrides.yaml")
 
+    # 5c. lab orders — the coach creates `recommended` orders on the Mac; the
+    # client pays on Fly (the webhook flips them to `paid`, reverse-mirrored back
+    # in _refresh). Forward-stage newest-wins: a coach edit propagates, but a Fly
+    # `paid` status (already mirrored to auth before this runs in _refresh) is
+    # preserved rather than clobbered back to `recommended`.
+    auth_orders = auth / "clients" / client_id / "orders"
+    if auth_orders.exists():
+        sord = sdir / "orders"
+        sord.mkdir(parents=True, exist_ok=True)
+        for f in auth_orders.glob("*.yaml"):
+            dest = sord / f.name
+            try:
+                if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
+                    shutil.copy2(f, dest)
+            except Exception:
+                pass
+
     # 6. marker
     (sdir / "_app_staged.yaml").write_text(
         yaml.safe_dump(
@@ -295,6 +351,23 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                     if not dest.exists():
                         shutil.copy2(f, dest)
                         out["checkins_mirrored"] += 1
+
+        # reverse-mirror: lab orders updated on Fly (client paid → the webhook
+        # flipped the order to `paid`) → authoritative store. Newest-wins by mtime
+        # so a Fly status advance comes back. Runs BEFORE _stage_one re-stages, so
+        # the Mac is current before it gets forward-staged again.
+        sord = sdir / "orders"
+        auth_ord = auth / "clients" / client_id / "orders"
+        if sord.exists() and (auth / "clients" / client_id).exists():
+            auth_ord.mkdir(parents=True, exist_ok=True)
+            for f in sorted(sord.glob("*.yaml")):
+                dest = auth_ord / f.name
+                try:
+                    if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
+                        shutil.copy2(f, dest)
+                        out["checkins_mirrored"] += 1
+                except Exception as e:
+                    out["errors"].append(f"{client_id} order-mirror: {e}")
 
         # reverse-mirror: app open timestamps (adoption tracking) — UNION
         # merge, never overwrite: Fly appends new opens between cron runs
@@ -365,22 +438,31 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
             out["purged"] += 1
             continue
 
-        # otherwise re-stage so coach edits (doses, new letters) stay fresh.
-        # Wrapped so a single client's malformed / half-written YAML (this
-        # cron runs every minute and can catch a plan or client.yaml mid-save)
-        # can't raise out of _stage_one and abort the WHOLE refresh — that
-        # silently freezes EVERY other client's app data on Fly until the next
-        # clean run. Isolate per-client; surface the failure loudly in errors.
-        if plan_slug:
-            try:
-                res = _stage_one(yaml, auth, stag, client_id, plan_slug)
-            except Exception as e:
-                out["errors"].append(f"{client_id}: stage failed (retry next run): {e}")
-                continue
-            if res.get("ok"):
-                out["refreshed"] += 1
-            else:
-                out["errors"].append(f"{client_id}: {res.get('error')}")
+        # discovery client (marker carries no plan) who now HAS a published plan
+        # → upgrade the marker's plan so they re-stage as a full package client.
+        # Their bookmarked /app link then flips from the discovery surface to the
+        # full app in place. Belt-and-braces if the publish path didn't re-stage.
+        if not plan_slug:
+            upgraded = _latest_published_slug_for(yaml, auth, client_id)
+            if upgraded:
+                plan_slug = upgraded
+
+        # otherwise re-stage so coach edits (doses, new letters, lab results, the
+        # discovery summary) stay fresh — package (plan_slug set) OR discovery
+        # (plan_slug ""). Wrapped so a single client's malformed / half-written
+        # YAML (this cron runs every minute and can catch a plan or client.yaml
+        # mid-save) can't raise out of _stage_one and abort the WHOLE refresh —
+        # that silently freezes EVERY other client's app data on Fly until the
+        # next clean run. Isolate per-client; surface the failure loudly.
+        try:
+            res = _stage_one(yaml, auth, stag, client_id, plan_slug)
+        except Exception as e:
+            out["errors"].append(f"{client_id}: stage failed (retry next run): {e}")
+            continue
+        if res.get("ok"):
+            out["refreshed"] += 1
+        else:
+            out["errors"].append(f"{client_id}: {res.get('error')}")
     return {"ok": True, **out}
 
 
@@ -406,9 +488,11 @@ def main() -> int:
     action = payload.get("action") or ""
     if action == "stage":
         client_id = (payload.get("client_id") or "").strip()
+        # plan_slug optional: "" stages a plan-less consult-tier ("discovery")
+        # client (client.yaml + lab vault only).
         plan_slug = (payload.get("plan_slug") or "").strip()
-        if not client_id or not plan_slug:
-            json.dump({"ok": False, "error": "client_id and plan_slug required"}, sys.stdout)
+        if not client_id:
+            json.dump({"ok": False, "error": "client_id required"}, sys.stdout)
             return 2
         json.dump(_stage_one(yaml, auth, stag, client_id, plan_slug), sys.stdout)
         return 0

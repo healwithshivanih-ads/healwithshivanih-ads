@@ -80,6 +80,14 @@ const PUBLIC_PATH_PREFIXES = [
   // re-verified server-side. Prefix matches both /api/app-photo and
   // /api/app-photo/<token>.
   "/api/app-photo",
+  // Lab-order payment: the client pays a coach-recommended Acumen order in-app.
+  //   /api/lab-order/<id>/pay   — creates a Razorpay order (validates the order +
+  //                               BOUND-CHECKS the amount server-side first)
+  //   /api/lab-order/webhook    — Razorpay payment webhook (HMAC-verified; the
+  //                               only path that marks an order paid)
+  // The COACH actions (recommend/cancel/etc.) are NOT here — they're server
+  // actions on the coach page (private) and also hard-refuse when FLY_INTAKE_ONLY.
+  "/api/lab-order/",
   // Static PWA assets for the client app (manifest + home-screen icons,
   // served from public/ochre-app/). No data, safe to serve publicly.
   "/ochre-app/",

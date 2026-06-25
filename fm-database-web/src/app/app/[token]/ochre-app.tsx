@@ -13,6 +13,7 @@ import type { AppRemedy, ClientAppData } from "@/lib/fmdb/client-app";
 import { Icon, Mark, OchreContext } from "./ochre-context";
 import { BottomNav, Header } from "./ochre-ui";
 import { PlanScreen, TodayScreen, PlanHoldScreen } from "./ochre-screens";
+import { DiscoverySummaryScreen, DiscoveryLockedScreen, DiscoveryCoachScreen } from "./ochre-discovery";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { LabsScreen } from "./ochre-labs";
@@ -295,8 +296,19 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const previewing = onHold && data.client.startsInDays > 0;
   const setupHold = onHold && !previewing;
 
+  // Consult-tier (no published plan): a read-only Summary + Lab Vault, with
+  // Plan/Progress locked and the Coach tab as an upgrade CTA. Resolved upstream
+  // in client-app.ts; package clients are never "discovery".
+  const discovery = data.tier === "discovery";
+
   let screen: React.ReactNode = null;
-  if (setupHold && tab !== "coach" && tab !== "labs") {
+  if (discovery) {
+    if (tab === "plan") screen = <DiscoveryLockedScreen feature="plan" />;
+    else if (tab === "progress") screen = <DiscoveryLockedScreen feature="progress" />;
+    else if (tab === "labs") screen = <LabsScreen />;
+    else if (tab === "coach") screen = <DiscoveryCoachScreen />;
+    else screen = <DiscoverySummaryScreen />; // the "today" slot → Starting Map
+  } else if (setupHold && tab !== "coach" && tab !== "labs") {
     screen = <PlanHoldScreen goCoach={() => go("coach")} openOrder={openOrder} />;
   } else if (inCheckin) {
     screen = (
@@ -419,7 +431,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
           <main className="screen-scroll" key={inCheckin ? "checkin" : tab}>
             {screen}
           </main>
-          <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} />
+          <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} discovery={discovery} />
 
           {!booting && <InstallPrompt />}
 

@@ -69,10 +69,13 @@ export function BottomNav({
   active,
   onChange,
   coachAlert,
+  discovery,
 }: {
   active: string;
   onChange: (tab: string) => void;
   coachAlert: boolean;
+  /** Consult tier — relabels the "today" slot as "Summary" (the Starting Map). */
+  discovery?: boolean;
 }) {
   return (
     <nav className="bottomnav">
@@ -81,7 +84,7 @@ export function BottomNav({
           <span className="ic">
             <Icon name={t.icon} size={23} />
           </span>
-          <span className="tl-label">{t.label}</span>
+          <span className="tl-label">{discovery && t.id === "today" ? "Summary" : t.label}</span>
           {t.id === "coach" && coachAlert && <span className="dot-badge" />}
         </button>
       ))}
