@@ -31,6 +31,13 @@ import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/tr
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
+import {
+  resolveAppTier,
+  type AppTier,
+  type DiscoveryCredit,
+  type DiscoverySummary,
+} from "@/lib/fmdb/discovery-tier";
+import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
 import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions/clients";
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
@@ -712,6 +719,18 @@ export interface ClientAppData {
   clientId: string;
   planSlug: string;
   token: string;
+  /** Commercial tier. "package" is the full app (every existing client). A
+   *  consult-only client with no published plan resolves to "discovery" — a
+   *  read-only Lab Vault + Summary, Plan/Progress locked. See discovery-tier.ts
+   *  + docs/DISCOVERY_TIER_SPEC.md. */
+  tier: AppTier;
+  /** Upgrade-credit-window state — non-null only for tier === "discovery". */
+  discoveryCredit: DiscoveryCredit | null;
+  /** The "Your Starting Map" artifact — non-null only for tier === "discovery". */
+  discoverySummary: DiscoverySummary | null;
+  /** Coach-recommended lab orders (Acumen). `recommended` ones are payable in
+   *  app; others show status. Universal across tiers (booking works in any mode). */
+  labOrders: LabOrder[];
   client: {
     firstName: string;
     program: string;
@@ -2277,6 +2296,243 @@ async function loadLabCatalogue(): Promise<CatalogueLabRange[]> {
   return out;
 }
 
+/** Scan clients/<id>/client.yaml for app_token === token, returning the client
+ *  dict REGARDLESS of whether a plan exists. resolveClientAppToken() returns
+ *  null for a plan-less client; this is the consult-tier (discovery) path's
+ *  resolver. Mirrors resolveClientAppToken's scan exactly. */
+async function resolveDiscoveryClientByToken(
+  token: string,
+): Promise<{ client: Dict; clientId: string } | null> {
+  const clientsDir = path.join(getPlansRoot(), "clients");
+  let subdirs: string[];
+  try {
+    subdirs = await fs.readdir(clientsDir);
+  } catch {
+    return null;
+  }
+  for (const id of subdirs) {
+    const d = await readYamlIfExists(path.join(clientsDir, id, "client.yaml"));
+    if (!d || d.app_token !== token) continue;
+    return { client: d, clientId: id };
+  }
+  return null;
+}
+
+/** Today in IST as YYYY-MM-DD (en-CA formats that way) — for the credit-window
+ *  resolver, which compares day strings. */
+function istTodayYmd(): string {
+  return new Date().toLocaleDateString("en-CA", { timeZone: IST });
+}
+
+/** Coerce a YAML date field to YYYY-MM-DD. js-yaml auto-parses an unquoted
+ *  `2026-06-25` into a JS Date (YAML 1.1 timestamp), so asStr() would drop it —
+ *  handle both the Date and string forms. Returns "" when unusable. */
+function asYmd(v: unknown): string {
+  if (v instanceof Date) return Number.isNaN(v.getTime()) ? "" : v.toISOString().slice(0, 10);
+  if (typeof v === "string") {
+    const m = v.match(/^\d{4}-\d{2}-\d{2}/);
+    return m ? m[0] : "";
+  }
+  return "";
+}
+
+/** Parse the coach-authored `discovery_summary` block off client.yaml into the
+ *  Starting Map view-model. Every section is optional; empties render as
+ *  graceful placeholders in the Summary screen. */
+function parseDiscoverySummary(client: Dict, firstName: string): DiscoverySummary {
+  const raw = (client.discovery_summary as Dict) ?? {};
+  const points = (v: unknown): { title: string; note: string }[] =>
+    asArr(v)
+      .map((it) => {
+        const o = (it ?? {}) as Dict;
+        return { title: asStr(o.title).trim(), note: asStr(o.note).trim() };
+      })
+      .filter((p) => p.title || p.note);
+  return {
+    headline: asStr(raw.headline).trim() || `Here's your starting map, ${firstName}`,
+    hypotheses: points(raw.hypotheses),
+    foundationalChanges: points(raw.foundational_changes),
+    journeyPreview: asStrArr(raw.journey_preview),
+  };
+}
+
+/**
+ * Build the consult-tier ("discovery") app payload — a client with an app_token
+ * but NO published plan. Read-only: Lab Vault (discovery mode) + the Starting Map
+ * summary; every plan-derived field is empty, and the app shell locks
+ * Plan/Progress. Returns null when the client is actually package-tier (signed
+ * up) so the caller falls through to the same null it would have returned.
+ */
+async function buildDiscoveryAppData(
+  client: Dict,
+  clientId: string,
+  token: string,
+): Promise<ClientAppData | null> {
+  // A signed_up client (enrol→build gap) is NOT discovery even with no plan yet
+  // — leave them on the existing null path (status quo: OchreAppError).
+  const tierRes = resolveAppTier(
+    {
+      engagementStatus: asStr(client.engagement_status) || null,
+      hasPublishedPlan: false,
+      discoveryCallDate: asYmd(client.discovery_call_date) || null,
+    },
+    istTodayYmd(),
+  );
+  if (tierRes.tier !== "discovery") return null;
+
+  const displayName = asStr(client.display_name) || clientId;
+  const firstName = displayName.split(/\s+/)[0] || displayName;
+  const initials =
+    displayName
+      .split(/\s+/)
+      .map((w) => w[0]?.toUpperCase() ?? "")
+      .join("")
+      .slice(0, 2) || "·";
+  const sex: "M" | "F" | "" = asStr(client.sex).toUpperCase().startsWith("M")
+    ? "M"
+    : asStr(client.sex).toUpperCase().startsWith("F")
+      ? "F"
+      : "";
+
+  // Lab Vault in DISCOVERY mode — pins out-of-optimal markers ("worth exploring
+  // together"). No plan, so no plan-targeted markers.
+  const labCatalogue = await loadLabCatalogue();
+  const concernTerms = [
+    ...asStrArr(client.active_conditions),
+    ...asStrArr(client.goals),
+    ...asStrArr(client.medical_history),
+  ];
+  // Normalise hand-authored snapshots: js-yaml turns an unquoted `date:
+  // 2026-06-20` into a Date and `value: 34` into a number — coerce both to
+  // strings so the Lab Vault (and its renderer) never sees a non-string.
+  const snaps: LabSnapshot[] = (asArr(client.health_snapshots) as Dict[]).map((s) => ({
+    date: asYmd(s.date) || asStr(s.date),
+    source: asStr(s.source) || undefined,
+    lab_values: (asArr(s.lab_values) as Dict[]).map((lv) => ({
+      test_name: asStr(lv.test_name),
+      value: typeof lv.value === "string" ? lv.value : String(lv.value ?? ""),
+      unit: asStr(lv.unit) || undefined,
+    })),
+  })) as unknown as LabSnapshot[];
+  const labVault = buildLabVault(
+    snaps,
+    labCatalogue,
+    (client.lab_reference_ranges as LabReferenceRanges | undefined) ?? {},
+    { mode: "discovery", targetedMarkers: [], concernTerms },
+  );
+  // Redact our_cost_inr — never expose the coach's wholesale cost to the client.
+  const discoveryLabOrders = (await loadClientOrders(clientId)).map((o) => ({ ...o, our_cost_inr: 0 }));
+
+  // today (IST) — only the chrome reads this; weekStrip is empty in discovery.
+  const now = new Date();
+  const fmt = (o: Intl.DateTimeFormatOptions) =>
+    now.toLocaleDateString("en-GB", { ...o, timeZone: IST });
+  const DOW = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const dowName = fmt({ weekday: "long" });
+
+  return {
+    clientId,
+    planSlug: "",
+    token,
+    tier: "discovery",
+    discoveryCredit: tierRes.credit,
+    discoverySummary: parseDiscoverySummary(client, firstName),
+    labOrders: discoveryLabOrders,
+    client: {
+      firstName,
+      program: "Discovery consult",
+      week: 0,
+      totalWeeks: 0,
+      startDateLabel: "",
+      notStarted: false,
+      startsInDays: 0,
+      dosha: [],
+      doshaLabel: "",
+      coachLine: "",
+    },
+    coach: {
+      name: "Shivani",
+      role: "Functional medicine coach",
+      initials: "SH",
+      whatsappNumber: "918976563971",
+      whatsappPrefill: `Hi Shivani, a question after my discovery call —`,
+      nextSession: null,
+    },
+    today: { dow: dowName, dateLabel: fmt({ day: "numeric", month: "long" }), idx: Math.max(0, DOW.indexOf(dowName)) },
+    weekStrip: [],
+    meals: [],
+    weekMenus: [],
+    menuIsSample: false,
+    recipePack: [],
+    grocery: null,
+    swapGroups: [],
+    msqEntries: [],
+    travel: null,
+    mealExtra: {},
+    supplements: [],
+    upcomingSupplements: [],
+    allSupplements: [],
+    slotOrder: ["Morning", "With meals", "Bedtime"],
+    practices: [],
+    breathwork: null,
+    eft: null,
+    sleep: null,
+    mindBody: null,
+    principles: [],
+    labs: [],
+    labVault,
+    journey: [],
+    faq: [],
+    symptomScore: null,
+    watchList: [],
+    labCheckpoints: { note: "", list: [] },
+    movementGoalMins: 180,
+    remedies: [],
+    remedyLib: [],
+    remedyShelf: [],
+    tissueSalts: null,
+    coachPicks: [],
+    planRef: {
+      pattern: "",
+      authoredBy: "Shivani",
+      forNote: "",
+      phase: { currentIdx: 0, list: [] },
+      plate: [],
+      accents: [],
+      oils: { use: [], avoid: [], note: "" },
+      foods: { eat: [], sometimes: [], avoid: [] },
+      avoidWhy: "",
+      cooking: [],
+      focus: { why: "", conditions: [] },
+      ayurveda: null,
+      flags: [],
+    },
+    mealsNote: "",
+    lessons: [],
+    resources: [],
+    aiSuggested: [],
+    account: {
+      name: displayName,
+      contact: asStr(client.mobile_number) || asStr(client.email),
+      plan: "Discovery consult",
+      member: "",
+      avatar: initials,
+      photoUrl: null,
+    },
+    body: {
+      heightCm: null,
+      ageYears: null,
+      sex,
+      latest: { weightKg: null, waistCm: null, hipCm: null, measuredOn: null },
+      history: [],
+    },
+    reminders: [],
+    weightLoss: null,
+    planUpdatedAt: null,
+    clientUpdateNote: null,
+  };
+}
+
 export async function loadClientAppData(token: string): Promise<ClientAppData | null> {
   if (!token || token.length < 16) return null;
 
@@ -2290,7 +2546,17 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   } else {
     // 2. Fall back to per-plan letter_token (backward compat for old shared links)
     const found = await loadPublishedPlan({ token });
-    if (!found) return null;
+    if (!found) {
+      // 3. Consult tier: an app_token with NO published plan → the read-only
+      //    "discovery" app. Additive — only reached where we'd have returned
+      //    null, so every package client is byte-for-byte unaffected.
+      const disc = await resolveDiscoveryClientByToken(token);
+      if (disc) {
+        const discoveryData = await buildDiscoveryAppData(disc.client, disc.clientId, token);
+        if (discoveryData) return discoveryData;
+      }
+      return null;
+    }
     plan = found.plan;
     clientId = asStr(plan.client_id);
   }
@@ -4213,6 +4479,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     { mode: "plan", targetedMarkers, concernTerms },
   );
 
+  // Coach-recommended lab orders (Acumen) — payable in app. Redact our_cost_inr:
+  // it's the coach's wholesale cost / margin and must never reach the client's
+  // page payload. The coach dashboard reads the un-redacted order separately.
+  const labOrders = (await loadClientOrders(clientId)).map((o) => ({ ...o, our_cost_inr: 0 }));
+
   // ── Tissue salts (Schüssler) — gentle optional adjunct ─────────────────
   // Only when the client is on the schussler_salts module AND the plan carries
   // an authored tissue_salts section. Resolve slug → catalogue name + dose.
@@ -4281,6 +4552,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     planUpdatedAt,
     clientUpdateNote,
     token,
+    tier: "package",
+    discoveryCredit: null,
+    discoverySummary: null,
+    labOrders,
     client: {
       firstName,
       program,

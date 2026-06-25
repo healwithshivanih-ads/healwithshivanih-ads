@@ -422,6 +422,13 @@ class Client(BaseModel):
     # form gate above. Set manually via buttons on the client Overview.
     discovery_session_completed_at: Optional[datetime] = None
     discovery_lab_pack_sent_at: Optional[datetime] = None
+    # Anchor for the consult-tier upgrade-credit window. Set when the coach
+    # issues the read-only "discovery" app link; re-booking a fresh discovery
+    # call overwrites it (resets the clock). Day-granular on purpose — it
+    # serialises to YYYY-MM-DD, which the TS resolver (discovery-tier.ts) reads
+    # to compute credit_live vs credit_expired off a 15-day window. See
+    # docs/DISCOVERY_TIER_SPEC.md.
+    discovery_call_date: Optional[date] = None
 
     # ── v0.72 structured intake form fields ───────────────────────────────────
     # ~60 new fields captured by the v2 intake form, organised by section

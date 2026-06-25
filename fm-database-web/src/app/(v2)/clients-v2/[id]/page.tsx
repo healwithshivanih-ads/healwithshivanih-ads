@@ -42,6 +42,8 @@ import { detectLiverDetoxAdvisory } from "@/lib/fmdb/liver-detox-advisory";
 import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
+import { DiscoveryAppCard } from "./discovery-app-card";
+import { LabRecommendCard } from "./lab-recommend-card";
 import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
 import { NasaLeanTestPanel } from "./nasa-lean-test-panel";
 import { BeightonVerifyPanel } from "./beighton-verify-panel";
@@ -1929,7 +1931,30 @@ export default async function ClientV2Page({
                           />
                         </div>
                       )}
+                      {/* Discovery (consult-tier) app share — only before the
+                          client has a published plan or has signed up. Once
+                          either is true they're a package client and the full
+                          "📲 Client app" share (Plan tab) applies instead. */}
+                      {!publishedPlan && engagement !== "signed_up" && (
+                        <DiscoveryAppCard
+                          clientId={client.client_id}
+                          mobileNumber={(client as unknown as { mobile_number?: string | null }).mobile_number}
+                          displayName={(client as unknown as { display_name?: string | null }).display_name}
+                          existingToken={(client as unknown as { app_token?: string | null }).app_token}
+                          existingCallDate={(() => {
+                            const v = (client as unknown as { discovery_call_date?: unknown }).discovery_call_date;
+                            if (v instanceof Date) return v.toISOString().slice(0, 10);
+                            if (typeof v === "string") return v.slice(0, 10);
+                            return null;
+                          })()}
+                        />
+                      )}
           </FmGroupedPanel>
+
+          {/* 🔬 Recommend labs (Acumen) — coach approves the panel + tests for a
+              client without an active plan (discovery / lapsed); the client then
+              pays in-app. Active clients' labs ride their plan (P2). */}
+          {!publishedPlan && <LabRecommendCard clientId={client.client_id} />}
 
           {/* ⚠ Clinical flags — meds + allergies. Each already hides
               itself when empty (Wave F.8); kept as standalone

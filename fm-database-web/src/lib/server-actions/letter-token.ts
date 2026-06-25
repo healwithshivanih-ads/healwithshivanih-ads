@@ -246,6 +246,27 @@ export async function stageClientAppArtifacts(clientId: string, planSlug: string
   }
 }
 
+/**
+ * Stage a CONSULT-TIER ("discovery") client to Fly — one with an app_token but
+ * NO published plan. Projects only the trimmed client.yaml (app_token + the
+ * discovery fields + the lab vault), no plan/letters. Same shim, omitting
+ * plan_slug. Best-effort; no-op when FMDB_STAGING_DIR is unset.
+ */
+export async function stageDiscoveryClientArtifacts(clientId: string): Promise<void> {
+  if (!process.env.FMDB_STAGING_DIR || !clientId) return;
+  try {
+    const { runShim } = await import("@/lib/fmdb/shim");
+    const out = (await runShim("app-staging-action.py", {
+      action: "stage",
+      client_id: clientId,
+      // no plan_slug → discovery staging
+    })) as { ok?: boolean; error?: string };
+    if (!out.ok) console.error("[app-staging] discovery stage failed:", out.error);
+  } catch (err) {
+    console.error("[app-staging] discovery stage failed:", err);
+  }
+}
+
 // ── Short-code redirect lookups ───────────────────────────────────────────────
 
 /**

@@ -17,8 +17,23 @@ provider:
   updated_at: '2026-06-16'
   updated_by: shivani
 
+# ===========================================================================
+# FINAL DEAL — Acumen (Abhinav Walia, 2026-06-25). Base for everyone + 3 gender/age
+# add-ons. our_cost = what Acumen bills us; mrp = client-facing price; margin = mrp - cost.
+# Add-on individual tests at 50% of Acumen catalogue (see addon_tests).
+# ===========================================================================
+profiles_final:
+  - { id: 1, name: "Base Panel",            audience: everyone,            our_cost_inr: 8500,  mrp_inr: 12500, margin_inr: 4000 }
+  - { id: 2, name: "Women's Reproductive",  audience: "women <45",         our_cost_inr: 16500, mrp_inr: 23500, margin_inr: 7000 }  # base + repro hormones + CA-125 + CA 15.3
+  - { id: 3, name: "Perimenopause",         audience: "women 40+",         our_cost_inr: 13000, mrp_inr: 20000, margin_inr: 7000 }  # base + peri hormones + CA-125 + CA 15.3
+  - { id: 4, name: "Male",                  audience: men,                 our_cost_inr: 14000, mrp_inr: 21000, margin_inr: 7000 }  # base + male hormones + PSA total/free + CEA
+# Base (Profile 1) contents: CBC, ESR, LFT, KFT, fasting glucose, fasting insulin, PP glucose,
+#   PP insulin, HbA1c, HOMA-IR, TSH, free T3, free T4, anti-TPO, anti-Tg, lipid, ApoB, ApoA1,
+#   Lp(a), hs-CRP, homocysteine, iron studies, vitamin D, active B12 (HoloTC), morning cortisol.
+# NOT at Acumen (iThrive/specialty): zonulin, 4-point salivary cortisol curve, DUTCH, GI-MAP, OAT.
+
 # ---------------------------------------------------------------------------
-# TIERED PACKAGES (pre-fixed with Acumen, broad lifestyle + disease spanning)
+# (superseded) earlier tiered design — kept for reference
 # ---------------------------------------------------------------------------
 packages:
   - slug: fm-essential-basic

@@ -15,6 +15,7 @@
 
 import { useState, type ReactNode } from "react";
 import { useOchre, Icon } from "./ochre-context";
+import { LabOrdersCard } from "./ochre-lab-pay";
 import { clientStatusLabel, vaultSummaryLine, exploreNoun, type LabMarker, type LabVaultMode } from "@/lib/fmdb/lab-vault";
 
 const SAGE = "var(--forest, #4a6152)";
@@ -215,6 +216,7 @@ export function LabsScreen() {
     return (
       <div className="screen-anim" style={{ padding: "18px 16px 90px" }}>
         <ScreenHead />
+        <LabOrdersCard />
         <div className="card" style={{ padding: 20, textAlign: "center", marginTop: 14 }}>
           <Icon name="droplet" size={22} style={{ color: SAGE }} />
           <h3 style={{ margin: "8px 0 4px", fontSize: 16, color: INK }}>No labs on file yet</h3>
@@ -237,6 +239,7 @@ export function LabsScreen() {
   return (
     <div className="screen-anim" style={{ padding: "18px 16px 90px" }}>
       <ScreenHead sub={vaultSummaryLine(summary, mode)} />
+      <LabOrdersCard />
 
       <div style={{ background: SAND, borderRadius: 14, padding: "12px 14px", marginTop: 12 }}>
         <p style={{ margin: 0, fontSize: 12.5, lineHeight: 1.55, color: INK }}>
