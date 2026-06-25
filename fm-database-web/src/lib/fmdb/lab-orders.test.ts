@@ -1,11 +1,18 @@
 import { describe, it, expect } from "vitest";
 import { parseAcumen } from "./lab-providers";
-import { buildOrder, canTransition, applyTransition, validateOrderAmount, type LabOrder } from "./lab-orders";
+import {
+  buildOrder,
+  canTransition,
+  applyTransition,
+  validateOrderAmount,
+  sanitizeLogistics,
+  type LabOrder,
+} from "./lab-orders";
 
 const provider = parseAcumen({
   provider: { slug: "acumen-diagnostics", display_name: "Acumen", phone_e164: "+91", home_collection: true },
   profiles_final: [
-    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000 },
+    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000, includes: ["Full thyroid", "Iron studies"] },
     { id: 4, name: "Male", audience: "men", our_cost_inr: 14000, mrp_inr: 21000, margin_inr: 7000 },
   ],
   addon_tests: [{ slug: "c-peptide", name: "C-Peptide", quoted_inr: 1400, dos_list_inr: 1400 }],
@@ -41,6 +48,11 @@ describe("buildOrder — coach-approved, server-derived amount", () => {
       { label: "Base Panel", inr: 12500 },
       { label: "C-Peptide", inr: 900, slug: "c-peptide" },
     ]);
+  });
+
+  it("populates `includes` from the profile + add-on names (drives the personalised view)", () => {
+    const r = buildOrder(provider, { ...REC, profileId: 1, addons: [{ slug: "c-peptide", inr: 900 }] });
+    expect(r.ok && r.order.includes).toEqual(["Full thyroid", "Iron studies", "C-Peptide"]);
   });
 
   it("pure add-on order (no profile) → non-fasting, amount = add-on price", () => {
@@ -143,5 +155,68 @@ describe("status machine", () => {
     expect(ok).toMatchObject({ ok: true });
     if (ok.ok) expect(ok.order).toMatchObject({ status: "paid", razorpay_payment_id: "pay_123" });
     expect(applyTransition(order, "booked")).toEqual({ ok: false, error: expect.stringContaining("illegal transition") });
+  });
+});
+
+describe("sanitizeLogistics — client-submitted collection details", () => {
+  const good = {
+    full_name: "  Asha Rao ",
+    phone: "+91 98765 43210",
+    address: "12B, Lotus Apartments, Indiranagar, Bengaluru",
+    pincode: "560038",
+    preferred_date: "2026-07-02",
+    preferred_slot: "morning",
+    notes: "  call before arriving ",
+  };
+
+  it("accepts a valid form, trims + normalises the phone", () => {
+    const r = sanitizeLogistics(good);
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.logistics.full_name).toBe("Asha Rao");
+    expect(r.logistics.phone).toBe("+919876543210"); // spaces stripped, + kept
+    expect(r.logistics.pincode).toBe("560038");
+    expect(r.logistics.preferred_slot).toBe("morning");
+    expect(r.logistics.notes).toBe("call before arriving");
+  });
+
+  it("rejects a non-object body", () => {
+    expect(sanitizeLogistics(null)).toMatchObject({ ok: false });
+    expect(sanitizeLogistics("nope")).toMatchObject({ ok: false });
+  });
+
+  it("rejects a missing/short name", () => {
+    expect(sanitizeLogistics({ ...good, full_name: "" })).toMatchObject({ ok: false });
+    expect(sanitizeLogistics({ ...good, full_name: "A" })).toMatchObject({ ok: false });
+  });
+
+  it("rejects a too-short phone (after stripping non-digits)", () => {
+    expect(sanitizeLogistics({ ...good, phone: "12345" })).toMatchObject({ ok: false });
+  });
+
+  it("rejects a non-6-digit pincode", () => {
+    expect(sanitizeLogistics({ ...good, pincode: "5600" })).toMatchObject({ ok: false });
+    expect(sanitizeLogistics({ ...good, pincode: "56003a" })).toMatchObject({ ok: false });
+  });
+
+  it("rejects a malformed or impossible date", () => {
+    expect(sanitizeLogistics({ ...good, preferred_date: "02-07-2026" })).toMatchObject({ ok: false });
+    expect(sanitizeLogistics({ ...good, preferred_date: "2026-02-31" })).toMatchObject({ ok: false });
+  });
+
+  it("rejects a slot outside the allowlist", () => {
+    expect(sanitizeLogistics({ ...good, preferred_slot: "midnight" })).toMatchObject({ ok: false });
+    expect(sanitizeLogistics({ ...good, preferred_slot: "" })).toMatchObject({ ok: false });
+  });
+
+  it("rejects an over-long address / notes", () => {
+    expect(sanitizeLogistics({ ...good, address: "x".repeat(401) })).toMatchObject({ ok: false });
+    expect(sanitizeLogistics({ ...good, notes: "x".repeat(601) })).toMatchObject({ ok: false });
+  });
+
+  it("accepts an empty notes field", () => {
+    const r = sanitizeLogistics({ ...good, notes: "" });
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.logistics.notes).toBe("");
   });
 });

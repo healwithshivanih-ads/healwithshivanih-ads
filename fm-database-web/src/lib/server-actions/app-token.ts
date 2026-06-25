@@ -19,6 +19,7 @@ import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { stageClientAppArtifacts, stageDiscoveryClientArtifacts } from "./letter-token";
+import { generateIntakeToken } from "./intake";
 import { resolveDiscoveryCredit, type DiscoveryCredit } from "@/lib/fmdb/discovery-tier";
 
 const IST = "Asia/Kolkata";
@@ -85,13 +86,42 @@ export async function ensureClientAppToken(
  * read-only discovery app resolves there. ONE token for life: the same
  * /app/<token> link flips to the full app in place once a plan is published.
  */
-export async function shareDiscoveryApp(clientId: string): Promise<
-  | { ok: true; token: string; callDate: string; credit: DiscoveryCredit }
-  | { ok: false; error: string }
-> {
+export async function shareDiscoveryApp(
+  clientId: string,
+): Promise<{ ok: true; token: string } | { ok: false; error: string }> {
   const tok = await ensureClientAppToken(clientId);
   if (!tok.ok) return tok;
 
+  // One app link, intake inside: ensure the client has an intake token so the
+  // app's first onboarding step can launch the form. Only mint one if absent —
+  // action_generate always rotates the token, so re-sharing must NOT invalidate
+  // an intake link already sent. unlock_full: discovery clients do the full intake.
+  await _ensureIntakeToken(clientId);
+
+  // NOTE: sharing the app does NOT start the credit clock and does NOT reveal
+  // recommendations — those wait for the discovery call (markDiscoveryCallDone),
+  // which only happens after the client's labs are in. Sharing just opens the
+  // app so the client can do their intake + book labs.
+  const planSlug = await _latestPublishedPlanSlug(clientId);
+  if (planSlug) {
+    await stageClientAppArtifacts(clientId, planSlug).catch(() => {/* best-effort */});
+  } else {
+    await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
+  }
+  revalidatePath(`/clients-v2/${clientId}`);
+  return { ok: true, token: tok.token };
+}
+
+/**
+ * Mark the discovery call done (the coach taps this after the client's labs are
+ * in and the call has happened). Sets `discovery_call_date` — which REVEALS the
+ * Starting Map recommendations in the app AND starts the 15-day upgrade-credit
+ * countdown. Idempotent: re-tapping doesn't reset an existing window.
+ */
+export async function markDiscoveryCallDoneAction(
+  clientId: string,
+): Promise<{ ok: true; callDate: string; credit: DiscoveryCredit } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "missing_client_id" };
   const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
   let data: Record<string, unknown>;
   try {
@@ -99,28 +129,35 @@ export async function shareDiscoveryApp(clientId: string): Promise<
   } catch {
     return { ok: false, error: "client_not_found" };
   }
-
-  // Start the credit window only if it isn't already running (re-share must not
-  // reset the clock — a deliberate reset is a separate action).
   let callDate = asYmd(data.discovery_call_date);
   if (!callDate) {
     callDate = istTodayYmd();
     data.discovery_call_date = callDate;
     await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");
   }
-
-  // Project to Fly. If a plan already exists (shouldn't at discovery stage, but
-  // be safe), stage as the full package client instead.
-  const planSlug = await _latestPublishedPlanSlug(clientId);
-  if (planSlug) {
-    await stageClientAppArtifacts(clientId, planSlug).catch(() => {/* best-effort */});
-  } else {
-    await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
-  }
-
+  await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
   const credit = resolveDiscoveryCredit(callDate, istTodayYmd());
   revalidatePath(`/clients-v2/${clientId}`);
-  return { ok: true, token: tok.token, callDate, credit };
+  return { ok: true, callDate, credit };
+}
+
+/**
+ * Ensure the client has a (non-expired) intake_token, minting one only if
+ * absent. Best-effort — never blocks the share if it fails (the app falls back
+ * to "your intake link is on its way"). Idempotent across re-shares.
+ */
+async function _ensureIntakeToken(clientId: string): Promise<void> {
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  try {
+    const data = yaml.load(await fs.readFile(clientYaml, "utf-8")) as Record<string, unknown>;
+    const tok = typeof data.intake_token === "string" ? data.intake_token.trim() : "";
+    const exp = asYmd(data.intake_token_expires_at);
+    const stillValid = tok.length >= 16 && (!exp || exp >= istTodayYmd());
+    if (stillValid) return; // keep the existing link
+    await generateIntakeToken(clientId, 14, true); // unlock_full for discovery
+  } catch {
+    /* best-effort — share still proceeds */
+  }
 }
 
 async function _latestPublishedPlanSlug(clientId: string): Promise<string | null> {

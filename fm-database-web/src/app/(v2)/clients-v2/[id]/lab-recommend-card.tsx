@@ -12,7 +12,14 @@
 import { useEffect, useState } from "react";
 import { FmPanel } from "@/components/fm";
 import type { LabMenu } from "@/lib/server-actions/lab-orders";
-import type { LabOrder, LabOrderStatus } from "@/lib/fmdb/lab-orders";
+import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
+
+const SLOT_LABEL: Record<LogisticsSlot, string> = {
+  morning: "Morning (7–10 am)",
+  late_morning: "Late morning (10 am–1 pm)",
+  afternoon: "Afternoon (1–4 pm)",
+  evening: "Evening (4–7 pm)",
+};
 
 const STATUS_META: Record<LabOrderStatus, { label: string; color: string }> = {
   recommended: { label: "Recommended · awaiting payment", color: "#b07b1e" },
@@ -261,31 +268,59 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
                 const profileName = o.lines[0]?.label ?? "Add-ons";
                 const cancellable = o.status === "recommended"; // paid orders need a refund flow, not a silent void
                 return (
-                  <div key={o.order_id} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5 }}>
-                    <span style={{ flex: 1 }}>
-                      {profileName}
-                      {o.addon_slugs.length > 0 ? ` +${o.addon_slugs.length}` : ""} · {inr(o.amount_inr)}
-                      <span style={{ display: "block", fontSize: 11, color: meta.color }}>{meta.label}</span>
-                    </span>
-                    {ADVANCE[o.status] && (
-                      <button
-                        type="button"
-                        className="fm-btn"
-                        style={{ fontSize: 11, padding: "2px 7px" }}
-                        onClick={() => advance(o.order_id, ADVANCE[o.status]!.to)}
+                  <div key={o.order_id} style={{ display: "grid", gap: 5 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5 }}>
+                      <span style={{ flex: 1 }}>
+                        {profileName}
+                        {o.addon_slugs.length > 0 ? ` +${o.addon_slugs.length}` : ""} · {inr(o.amount_inr)}
+                        <span style={{ display: "block", fontSize: 11, color: meta.color }}>{meta.label}</span>
+                      </span>
+                      {ADVANCE[o.status] && (
+                        <button
+                          type="button"
+                          className="fm-btn"
+                          style={{ fontSize: 11, padding: "2px 7px" }}
+                          onClick={() => advance(o.order_id, ADVANCE[o.status]!.to)}
+                        >
+                          {ADVANCE[o.status]!.label}
+                        </button>
+                      )}
+                      {cancellable && (
+                        <button
+                          type="button"
+                          className="fm-btn"
+                          style={{ fontSize: 11, padding: "2px 7px" }}
+                          onClick={() => cancel(o.order_id)}
+                        >
+                          Cancel
+                        </button>
+                      )}
+                    </div>
+                    {o.logistics && (
+                      <div
+                        style={{
+                          fontSize: 11,
+                          lineHeight: 1.5,
+                          color: "var(--fm-text-secondary, #6f6a5d)",
+                          background: "var(--fm-surface, #faf8f3)",
+                          border: "1px solid var(--fm-border-light, #e6e1d6)",
+                          borderRadius: 7,
+                          padding: "6px 9px",
+                        }}
                       >
-                        {ADVANCE[o.status]!.label}
-                      </button>
-                    )}
-                    {cancellable && (
-                      <button
-                        type="button"
-                        className="fm-btn"
-                        style={{ fontSize: 11, padding: "2px 7px" }}
-                        onClick={() => cancel(o.order_id)}
-                      >
-                        Cancel
-                      </button>
+                        <strong style={{ color: "var(--fm-text, #2c2a24)" }}>🏠 Home collection</strong> ·{" "}
+                        {o.logistics.full_name} · {o.logistics.phone}
+                        <br />
+                        {o.logistics.address}, {o.logistics.pincode}
+                        <br />
+                        Preferred: {o.logistics.preferred_date} · {SLOT_LABEL[o.logistics.preferred_slot] ?? o.logistics.preferred_slot}
+                        {o.logistics.notes ? (
+                          <>
+                            <br />
+                            Note: {o.logistics.notes}
+                          </>
+                        ) : null}
+                      </div>
                     )}
                   </div>
                 );

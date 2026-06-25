@@ -2,7 +2,9 @@ import { describe, it, expect } from "vitest";
 import {
   resolveAppTier,
   resolveDiscoveryCredit,
+  resolveDiscoveryStage,
   DISCOVERY_CREDIT_WINDOW_DAYS,
+  type DiscoveryStageInput,
 } from "./discovery-tier";
 
 const CALL = "2026-06-25"; // discovery call date used across the credit tests
@@ -41,6 +43,39 @@ describe("resolveAppTier — tier split", () => {
       addDays(CALL, 30),
     );
     expect(r.tier).toBe("package");
+  });
+});
+
+describe("resolveDiscoveryStage — recommendations gate on the call (after labs)", () => {
+  const base: DiscoveryStageInput = {
+    intakeSubmitted: false,
+    hasRecommendedOrder: false,
+    hasActiveOrder: false,
+    hasResults: false,
+    callDone: false,
+  };
+  const stage = (over: Partial<DiscoveryStageInput>) => resolveDiscoveryStage({ ...base, ...over });
+
+  it("nothing yet → onboard_intake", () => {
+    expect(stage({})).toBe("onboard_intake");
+  });
+  it("intake done, no labs recommended → awaiting_recommendation", () => {
+    expect(stage({ intakeSubmitted: true })).toBe("awaiting_recommendation");
+  });
+  it("labs recommended (unpaid) → book_labs", () => {
+    expect(stage({ intakeSubmitted: true, hasRecommendedOrder: true })).toBe("book_labs");
+  });
+  it("sample booked/paid, no results → awaiting_results", () => {
+    expect(stage({ intakeSubmitted: true, hasActiveOrder: true })).toBe("awaiting_results");
+  });
+  it("results in, call not marked → awaiting_call (still NO recommendations)", () => {
+    expect(stage({ intakeSubmitted: true, hasResults: true })).toBe("awaiting_call");
+  });
+  it("call done → post_call (recommendations + countdown)", () => {
+    expect(stage({ intakeSubmitted: true, hasResults: true, callDone: true })).toBe("post_call");
+  });
+  it("callDone always wins, even if other signals are mid-flight", () => {
+    expect(stage({ callDone: true, hasRecommendedOrder: true })).toBe("post_call");
   });
 });
 

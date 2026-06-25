@@ -91,6 +91,15 @@ _APP_CLIENT_KEYS = (
     "engagement_status",
     "discovery_call_date",
     "discovery_summary",
+    # "one app link, intake inside": the discovery onboarding stage resolver reads
+    # these. intake_token → the in-app "Start my intake" link (already a public Fly
+    # credential — the intake form is a public Fly route); intake_submitted_at →
+    # advances the stage past onboarding. Both non-PHI; the raw intake_form_draft is
+    # still NOT projected. expires_at/short_code keep the staged intake link valid.
+    "intake_token",
+    "intake_token_expires_at",
+    "intake_short_code",
+    "intake_submitted_at",
     # app-read fields beyond the original intake-stub set (audited across
     # client-app.ts + recipes.ts on 2026-06-15 — these ARE consumed by the app)
     "known_allergies",

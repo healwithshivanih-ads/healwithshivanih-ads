@@ -38,6 +38,77 @@ export interface LabOrderLine {
   slug?: string;
 }
 
+/** Home-collection time windows the client picks. The list is the validation
+ *  allowlist — the client form options MUST stay in sync with these values. */
+export const LOGISTICS_SLOTS = ["morning", "late_morning", "afternoon", "evening"] as const;
+export type LogisticsSlot = (typeof LOGISTICS_SLOTS)[number];
+
+/** Where + when to collect the sample, and who to reach — captured from the
+ *  client at pay time, stored on the order, surfaced to the coach for booking
+ *  the home collection with Acumen. This is the client's OWN data (their address
+ *  / phone), so it is safe to round-trip back to their app. */
+export interface LabOrderLogistics {
+  full_name: string;
+  phone: string;
+  address: string;
+  pincode: string;
+  preferred_date: string; // YYYY-MM-DD
+  preferred_slot: LogisticsSlot;
+  notes: string;
+}
+
+const LOGISTICS_MAX = { name: 120, phone: 20, address: 400, notes: 600 } as const;
+
+/**
+ * Sanitize + validate client-submitted collection logistics (pure — no I/O).
+ * Trims, normalises the phone to digits/+, and bound-checks every field so a
+ * malformed / hostile body can't be stored. Returns a clean object or an error
+ * message safe to show the client.
+ */
+export function sanitizeLogistics(
+  raw: unknown,
+): { ok: true; logistics: LabOrderLogistics } | { ok: false; error: string } {
+  if (!raw || typeof raw !== "object") return { ok: false, error: "collection details required" };
+  const r = raw as Record<string, unknown>;
+  const s = (v: unknown) => (typeof v === "string" ? v.trim() : "");
+
+  const full_name = s(r.full_name);
+  const phone = s(r.phone).replace(/[^\d+]/g, "");
+  const address = s(r.address);
+  const pincode = s(r.pincode);
+  const preferred_date = s(r.preferred_date);
+  const preferred_slot = s(r.preferred_slot);
+  const notes = s(r.notes);
+
+  if (full_name.length < 2 || full_name.length > LOGISTICS_MAX.name) {
+    return { ok: false, error: "enter a valid name" };
+  }
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length < 7 || digits.length > 15 || phone.length > LOGISTICS_MAX.phone) {
+    return { ok: false, error: "enter a valid phone number" };
+  }
+  if (address.length < 8 || address.length > LOGISTICS_MAX.address) {
+    return { ok: false, error: "enter your full collection address" };
+  }
+  if (!/^\d{6}$/.test(pincode)) return { ok: false, error: "enter a valid 6-digit pincode" };
+  // Format + real-calendar check (rejects 2026-02-31). Window is not enforced
+  // here — the client form constrains it; the coach sees the requested date.
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(preferred_date)) return { ok: false, error: "pick a preferred date" };
+  const d = new Date(preferred_date + "T00:00:00Z");
+  if (Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== preferred_date) {
+    return { ok: false, error: "pick a valid date" };
+  }
+  if (!(LOGISTICS_SLOTS as readonly string[]).includes(preferred_slot)) {
+    return { ok: false, error: "pick a time slot" };
+  }
+  if (notes.length > LOGISTICS_MAX.notes) return { ok: false, error: "notes are too long" };
+
+  return {
+    ok: true,
+    logistics: { full_name, phone, address, pincode, preferred_date, preferred_slot: preferred_slot as LogisticsSlot, notes },
+  };
+}
+
 export interface LabOrder {
   order_id: string;
   client_id: string;
@@ -46,12 +117,17 @@ export interface LabOrder {
   profile_id: number | null;
   addon_slugs: string[];
   lines: LabOrderLine[];
+  /** Client-friendly "what we'll check" groups (profile includes + add-on names)
+   *  — drives the personalised pay screen. */
+  includes: string[];
   amount_inr: number;
   our_cost_inr: number;
   status: LabOrderStatus;
   recommended_by: string;
   recommended_at: string;
   coach_note: string | null;
+  /** Home-collection details, captured from the client at pay time. */
+  logistics: LabOrderLogistics | null;
   razorpay_order_id: string | null;
   razorpay_payment_id: string | null;
   paid_at: string | null;
@@ -130,6 +206,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
   }
 
   const lines: LabOrderLine[] = [];
+  const includes: string[] = [];
   let amountInr = 0;
   let ourCostInr = 0;
 
@@ -141,6 +218,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
     const p = provider.profiles.find((x) => x.id === input.profileId);
     if (!p) return { ok: false, error: `unknown profile id ${input.profileId}` };
     lines.push({ label: p.name, inr: p.mrpInr });
+    includes.push(...p.includes);
     amountInr += p.mrpInr;
     ourCostInr += p.ourCostInr;
   }
@@ -153,6 +231,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       return { ok: false, error: `add-on "${a.slug}" needs a sane coach price (₹1–₹${MAX_ADDON_INR})` };
     }
     lines.push({ label: cat.name, inr: a.inr, slug: a.slug });
+    includes.push(cat.name);
     amountInr += a.inr;
     ourCostInr += cat.ourCostInr ?? 0;
   }
@@ -167,12 +246,14 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       profile_id: input.profileId,
       addon_slugs: addons.map((a) => a.slug),
       lines,
+      includes,
       amount_inr: amountInr,
       our_cost_inr: ourCostInr,
       status: "recommended",
       recommended_by: input.recommendedBy,
       recommended_at: input.now,
       coach_note: input.coachNote?.trim() || null,
+      logistics: null,
       razorpay_order_id: null,
       razorpay_payment_id: null,
       paid_at: null,

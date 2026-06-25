@@ -11,7 +11,7 @@
 import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
-import { loadOrder, validateOrderAmount, patchOrder } from "@/lib/fmdb/lab-orders";
+import { loadOrder, validateOrderAmount, patchOrder, sanitizeLogistics } from "@/lib/fmdb/lab-orders";
 
 export const dynamic = "force-dynamic";
 
@@ -19,11 +19,15 @@ const SAFE_ID = /^[A-Za-z0-9_-]+$/;
 
 export async function POST(req: Request, ctx: { params: Promise<{ orderId: string }> }) {
   const { orderId } = await ctx.params;
-  const body = (await req.json().catch(() => null)) as { clientId?: string } | null;
+  const body = (await req.json().catch(() => null)) as { clientId?: string; logistics?: unknown } | null;
   const clientId = String(body?.clientId ?? "");
   if (!SAFE_ID.test(clientId) || !SAFE_ID.test(orderId)) {
     return NextResponse.json({ ok: false, error: "bad id" }, { status: 400 });
   }
+
+  // Home-collection details are mandatory to book — validate before charging.
+  const logi = sanitizeLogistics(body?.logistics);
+  if (!logi.ok) return NextResponse.json({ ok: false, error: logi.error }, { status: 400 });
 
   const keyId = process.env.RAZORPAY_KEY_ID;
   const keySecret = process.env.RAZORPAY_KEY_SECRET;
@@ -57,7 +61,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ orderId: strin
     return NextResponse.json({ ok: false, error: "could not start payment" }, { status: 502 });
   }
 
-  await patchOrder(clientId, orderId, { razorpay_order_id: rzpOrderId });
+  await patchOrder(clientId, orderId, { razorpay_order_id: rzpOrderId, logistics: logi.logistics });
 
   return NextResponse.json({
     ok: true,

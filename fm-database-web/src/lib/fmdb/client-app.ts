@@ -33,9 +33,11 @@ import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLoo
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
 import {
   resolveAppTier,
+  resolveDiscoveryStage,
   type AppTier,
   type DiscoveryCredit,
   type DiscoverySummary,
+  type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
 import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions/clients";
@@ -728,6 +730,12 @@ export interface ClientAppData {
   discoveryCredit: DiscoveryCredit | null;
   /** The "Your Starting Map" artifact — non-null only for tier === "discovery". */
   discoverySummary: DiscoverySummary | null;
+  /** Discovery onboarding stage — non-null only for tier === "discovery". Gates
+   *  the app: recommendations + countdown show only at `post_call`. */
+  discoveryStage: DiscoveryStage | null;
+  /** The client's intake form URL (so the app can launch intake) — discovery
+   *  onboarding only; null once submitted / not applicable. */
+  intakeUrl: string | null;
   /** Coach-recommended lab orders (Acumen). `recommended` ones are payable in
    *  app; others show status. Universal across tiers (booking works in any mode). */
   labOrders: LabOrder[];
@@ -2430,6 +2438,29 @@ async function buildDiscoveryAppData(
   const DOW = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const dowName = fmt({ weekday: "long" });
 
+  // Onboarding stage — recommendations + countdown gate on `post_call` (coach
+  // rule 2026-06-25: no recommendations until the labs are in and the discovery
+  // call is done). The app renders an onboarding flow for every pre-call stage.
+  const intakeSubmitted = !!asStr(client.intake_submitted_at).trim();
+  const hasRecommendedOrder = discoveryLabOrders.some((o) => o.status === "recommended");
+  const hasActiveOrder = discoveryLabOrders.some(
+    (o) => o.status === "paid" || o.status === "booked" || o.status === "sample_collected",
+  );
+  const hasResults =
+    snaps.length > 0 || discoveryLabOrders.some((o) => o.status === "results_in");
+  const callDone = !!asYmd(client.discovery_call_date);
+  const discoveryStage = resolveDiscoveryStage({
+    intakeSubmitted,
+    hasRecommendedOrder,
+    hasActiveOrder,
+    hasResults,
+    callDone,
+  });
+  // One app link, intake inside: surface the intake form URL until it's
+  // submitted. Token lives on client.yaml#intake_token (issued at share time).
+  const intakeTok = asStr(client.intake_token).trim();
+  const intakeUrl = !intakeSubmitted && intakeTok ? `/intake/${intakeTok}` : null;
+
   return {
     clientId,
     planSlug: "",
@@ -2437,6 +2468,8 @@ async function buildDiscoveryAppData(
     tier: "discovery",
     discoveryCredit: tierRes.credit,
     discoverySummary: parseDiscoverySummary(client, firstName),
+    discoveryStage,
+    intakeUrl,
     labOrders: discoveryLabOrders,
     client: {
       firstName,
@@ -4555,6 +4588,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     tier: "package",
     discoveryCredit: null,
     discoverySummary: null,
+    discoveryStage: null,
+    intakeUrl: null,
     labOrders,
     client: {
       firstName,

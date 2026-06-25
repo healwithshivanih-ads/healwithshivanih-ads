@@ -57,6 +57,51 @@ export interface AppTierResult {
   credit: DiscoveryCredit | null;
 }
 
+/**
+ * Where a discovery client is in the onboarding journey. RECOMMENDATIONS (the
+ * Starting Map) + the 15-day credit COUNTDOWN are gated on `post_call` — they
+ * never show until the client's labs are in AND the coach has marked the
+ * discovery call done. Coach rule 2026-06-25: no recommendations until labs.
+ *
+ *   onboard_intake         — app shared, intake not submitted → prompt intake
+ *   awaiting_recommendation — intake done, coach hasn't recommended labs yet
+ *   book_labs              — labs recommended → book (address/time/contact) + pay
+ *   awaiting_results       — sample booked/paid, results not in
+ *   awaiting_call          — results in, coach hasn't marked the call done
+ *   post_call              — call done → Starting Map + Lab Vault + countdown
+ */
+export type DiscoveryStage =
+  | "onboard_intake"
+  | "awaiting_recommendation"
+  | "book_labs"
+  | "awaiting_results"
+  | "awaiting_call"
+  | "post_call";
+
+export interface DiscoveryStageInput {
+  /** intake_submitted_at present. */
+  intakeSubmitted: boolean;
+  /** a lab order in `recommended` status (payable). */
+  hasRecommendedOrder: boolean;
+  /** a lab order paid/booked/sample_collected (in flight, results not in). */
+  hasActiveOrder: boolean;
+  /** labs uploaded for the client (health_snapshots / an order at results_in). */
+  hasResults: boolean;
+  /** discovery_call_date set — the coach has marked the discovery call done. */
+  callDone: boolean;
+}
+
+/** Resolve the onboarding stage. `callDone` wins (post_call); otherwise progress
+ *  from results → active order → recommended → intake → nothing. */
+export function resolveDiscoveryStage(i: DiscoveryStageInput): DiscoveryStage {
+  if (i.callDone) return "post_call";
+  if (i.hasResults) return "awaiting_call";
+  if (i.hasActiveOrder) return "awaiting_results";
+  if (i.hasRecommendedOrder) return "book_labs";
+  if (i.intakeSubmitted) return "awaiting_recommendation";
+  return "onboard_intake";
+}
+
 /** The consult-tier "Your Starting Map" artifact, authored by the coach into a
  *  `discovery_summary` block on client.yaml. Deliberately orientation-only — it
  *  carries NO protocol (doses, meal plans). All four sections are optional; the
