@@ -23,10 +23,52 @@ provider:
 # Add-on individual tests at 50% of Acumen catalogue (see addon_tests).
 # ===========================================================================
 profiles_final:
-  - { id: 1, name: "Base Panel",            audience: everyone,            our_cost_inr: 8500,  mrp_inr: 12500, margin_inr: 4000 }
-  - { id: 2, name: "Women's Reproductive",  audience: "women <45",         our_cost_inr: 16500, mrp_inr: 23500, margin_inr: 7000 }  # base + repro hormones + CA-125 + CA 15.3
-  - { id: 3, name: "Perimenopause",         audience: "women 40+",         our_cost_inr: 13000, mrp_inr: 20000, margin_inr: 7000 }  # base + peri hormones + CA-125 + CA 15.3
-  - { id: 4, name: "Male",                  audience: men,                 our_cost_inr: 14000, mrp_inr: 21000, margin_inr: 7000 }  # base + male hormones + PSA total/free + CEA
+  # `includes` = client-friendly "what we'll check" groups (drives the in-app
+  # personalised view so a recommendation reads as a tailored check, not a SKU).
+  # Base carries the full list; the gender/age profiles add `includes_extra` on top.
+  - id: 1
+    name: "Base Panel"
+    audience: everyone
+    our_cost_inr: 8500
+    mrp_inr: 12500
+    margin_inr: 4000
+    includes:
+      - "Full thyroid — TSH, free T3 & T4, anti-TPO & anti-Tg antibodies"
+      - "Iron studies + ferritin"
+      - "Vitamin D + active B12"
+      - "Blood sugar — fasting & post-meal glucose and insulin, HbA1c, HOMA-IR"
+      - "Heart — full lipids, ApoB, ApoA1, Lp(a)"
+      - "Inflammation — hs-CRP, ESR"
+      - "Homocysteine & methylation"
+      - "Liver & kidney function, full blood count"
+      - "Morning cortisol"
+  - id: 2
+    name: "Women's Reproductive"
+    audience: "women <45"
+    our_cost_inr: 16500
+    mrp_inr: 23500
+    margin_inr: 7000
+    includes_extra:
+      - "Reproductive hormones — estradiol, progesterone, LH, FSH, AMH"
+      - "Women's screening — CA-125, CA 15.3"
+  - id: 3
+    name: "Perimenopause"
+    audience: "women 40+"
+    our_cost_inr: 13000
+    mrp_inr: 20000
+    margin_inr: 7000
+    includes_extra:
+      - "Perimenopause hormones — FSH, LH, estradiol, progesterone"
+      - "Women's screening — CA-125, CA 15.3"
+  - id: 4
+    name: "Male"
+    audience: men
+    our_cost_inr: 14000
+    mrp_inr: 21000
+    margin_inr: 7000
+    includes_extra:
+      - "Male hormones — total & free testosterone, SHBG"
+      - "Men's screening — PSA (total & free), CEA"
 # Base (Profile 1) contents: CBC, ESR, LFT, KFT, fasting glucose, fasting insulin, PP glucose,
 #   PP insulin, HbA1c, HOMA-IR, TSH, free T3, free T4, anti-TPO, anti-Tg, lipid, ApoB, ApoA1,
 #   Lp(a), hs-CRP, homocysteine, iron studies, vitamin D, active B12 (HoloTC), morning cortisol.

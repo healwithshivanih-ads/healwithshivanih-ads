@@ -35,9 +35,9 @@ export function UpgradeCta() {
     ? "Your ₹12,000 consult adjusts in full against the programme — so upgrading costs only the difference."
     : "Your consult-credit window has closed. You can begin the full programme, or book a fresh discovery call — its fee then credits toward your package.";
   const waText = live
-    ? "Hi Shivani, I'd like to upgrade to the full programme after my discovery call."
-    : "Hi Shivani, I'd like to continue — could you tell me about starting the full programme or booking another discovery call?";
-  const btnLabel = live ? "Upgrade my plan" : "Talk to Shivani";
+    ? "Hi,I'd like to upgrade to the full programme after my discovery call."
+    : "Hi,I'd like to continue — could you tell me about starting the full programme or booking another discovery call?";
+  const btnLabel = live ? "Upgrade my plan" : "Talk to us";
 
   return (
     <div
@@ -88,7 +88,7 @@ export function UpgradeCta() {
   );
 }
 
-/** A small "Questions? WhatsApp Shivani" link — logistical only, not coaching. */
+/** A small "Questions? WhatsApp us" link — logistical only, not coaching. */
 function PlainContactLine() {
   const { coach } = useOchre();
   return (
@@ -96,16 +96,16 @@ function PlainContactLine() {
       <Icon name="whatsapp" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
       <div>
         <div className="q">
-          Any questions about your report or the programme? Message {coach.name.split(" ")[0]} anytime.
+          Any questions about your report or the programme? Message your coach anytime.
         </div>
         <a
           className="who"
           style={{ color: "var(--forest)", textDecoration: "none" }}
-          href={waHref(coach.whatsappNumber, "Hi Shivani, a quick question about my discovery summary —")}
+          href={waHref(coach.whatsappNumber, "Hi,a quick question about my discovery summary —")}
           target="_blank"
           rel="noopener noreferrer"
         >
-          WhatsApp {coach.name.split(" ")[0]} →
+          WhatsApp us →
         </a>
       </div>
     </div>
@@ -150,7 +150,7 @@ export function DiscoverySummaryScreen() {
           sum.hypotheses.map((h, i) => <PointCard key={i} title={h.title} note={h.note} />)
         ) : (
           <div className="card" style={{ padding: "14px", fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5 }}>
-            Shivani is putting your starting map together. It&apos;ll appear here right after your call.
+            Your starting map is being put together. It&apos;ll appear here right after your call.
           </div>
         )}
       </section>

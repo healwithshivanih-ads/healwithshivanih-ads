@@ -46,6 +46,9 @@ export interface LabOrder {
   profile_id: number | null;
   addon_slugs: string[];
   lines: LabOrderLine[];
+  /** Client-friendly "what we'll check" groups (profile includes + add-on names)
+   *  — drives the personalised pay screen. */
+  includes: string[];
   amount_inr: number;
   our_cost_inr: number;
   status: LabOrderStatus;
@@ -130,6 +133,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
   }
 
   const lines: LabOrderLine[] = [];
+  const includes: string[] = [];
   let amountInr = 0;
   let ourCostInr = 0;
 
@@ -141,6 +145,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
     const p = provider.profiles.find((x) => x.id === input.profileId);
     if (!p) return { ok: false, error: `unknown profile id ${input.profileId}` };
     lines.push({ label: p.name, inr: p.mrpInr });
+    includes.push(...p.includes);
     amountInr += p.mrpInr;
     ourCostInr += p.ourCostInr;
   }
@@ -153,6 +158,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       return { ok: false, error: `add-on "${a.slug}" needs a sane coach price (₹1–₹${MAX_ADDON_INR})` };
     }
     lines.push({ label: cat.name, inr: a.inr, slug: a.slug });
+    includes.push(cat.name);
     amountInr += a.inr;
     ourCostInr += cat.ourCostInr ?? 0;
   }
@@ -167,6 +173,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       profile_id: input.profileId,
       addon_slugs: addons.map((a) => a.slug),
       lines,
+      includes,
       amount_inr: amountInr,
       our_cost_inr: ourCostInr,
       status: "recommended",

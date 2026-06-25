@@ -5,7 +5,7 @@ import { buildOrder, canTransition, applyTransition, validateOrderAmount, type L
 const provider = parseAcumen({
   provider: { slug: "acumen-diagnostics", display_name: "Acumen", phone_e164: "+91", home_collection: true },
   profiles_final: [
-    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000 },
+    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000, includes: ["Full thyroid", "Iron studies"] },
     { id: 4, name: "Male", audience: "men", our_cost_inr: 14000, mrp_inr: 21000, margin_inr: 7000 },
   ],
   addon_tests: [{ slug: "c-peptide", name: "C-Peptide", quoted_inr: 1400, dos_list_inr: 1400 }],
@@ -41,6 +41,11 @@ describe("buildOrder — coach-approved, server-derived amount", () => {
       { label: "Base Panel", inr: 12500 },
       { label: "C-Peptide", inr: 900, slug: "c-peptide" },
     ]);
+  });
+
+  it("populates `includes` from the profile + add-on names (drives the personalised view)", () => {
+    const r = buildOrder(provider, { ...REC, profileId: 1, addons: [{ slug: "c-peptide", inr: 900 }] });
+    expect(r.ok && r.order.includes).toEqual(["Full thyroid", "Iron studies", "C-Peptide"]);
   });
 
   it("pure add-on order (no profile) → non-fasting, amount = add-on price", () => {

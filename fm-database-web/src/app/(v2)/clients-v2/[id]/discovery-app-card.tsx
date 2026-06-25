@@ -57,7 +57,7 @@ function buildWhatsappLink(phone: string, name: string, url: string): string {
     "",
     "Open it on your phone and tap 'Add to Home Screen'. Have a look whenever — and when you're ready for the full programme, the upgrade button is right inside.",
     "",
-    "Shivani",
+    "— The Ochre Tree",
   ].join("\n");
   return `https://wa.me/${e164}?text=${encodeURIComponent(msg)}`;
 }

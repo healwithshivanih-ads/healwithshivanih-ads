@@ -13,9 +13,9 @@ const RAW = {
   // superseded — the parser must NOT read these:
   packages: [{ slug: "fm-essential-basic", target_inr: 3999 }],
   profiles_final: [
-    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000 },
-    { id: 2, name: "Women's Reproductive", audience: "women <45", our_cost_inr: 16500, mrp_inr: 23500, margin_inr: 7000 },
-    { id: 3, name: "Perimenopause", audience: "women 40+", our_cost_inr: 13000, mrp_inr: 20000, margin_inr: 7000 },
+    { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000, includes: ["Full thyroid", "Iron studies"] },
+    { id: 2, name: "Women's Reproductive", audience: "women <45", our_cost_inr: 16500, mrp_inr: 23500, margin_inr: 7000, includes_extra: ["Reproductive hormones"] },
+    { id: 3, name: "Perimenopause", audience: "women 40+", our_cost_inr: 13000, mrp_inr: 20000, margin_inr: 7000, includes_extra: ["Perimenopause hormones"] },
     { id: 4, name: "Male", audience: "men", our_cost_inr: 14000, mrp_inr: 21000, margin_inr: 7000 },
   ],
   addon_tests: [
@@ -44,6 +44,12 @@ describe("parseAcumen", () => {
   it("carries provider metadata", () => {
     expect(acumen.homeCollection).toBe(true);
     expect(acumen.phoneE164).toBe("+919808050050");
+  });
+
+  it("composes `includes`: Base = its own list; others = Base + their extras", () => {
+    expect(acumen.profiles.find((p) => p.id === 1)?.includes).toEqual(["Full thyroid", "Iron studies"]);
+    expect(acumen.profiles.find((p) => p.id === 2)?.includes).toEqual(["Full thyroid", "Iron studies", "Reproductive hormones"]);
+    expect(acumen.profiles.find((p) => p.id === 4)?.includes).toEqual(["Full thyroid", "Iron studies"]); // no extras
   });
 
   // ── fail-closed guards (adversarial review 2026-06-25) ──

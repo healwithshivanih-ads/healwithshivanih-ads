@@ -31,6 +31,9 @@ export interface LabProfile {
   ourCostInr: number;
   mrpInr: number;
   marginInr: number;
+  /** Client-friendly "what we'll check" groups — the Base list plus this
+   *  profile's extras. Drives the personalised in-app view. */
+  includes: string[];
 }
 
 export interface LabAddon {
@@ -87,13 +90,23 @@ function asNum(v: unknown): number | null {
   return typeof v === "number" && Number.isFinite(v) ? v : null;
 }
 
+function strArr(v: unknown): string[] {
+  return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
+}
+
 /** Parse the raw acumen.yaml object into the typed provider. Reads ONLY
  *  `profiles_final` (ignores the superseded `packages:`). */
 export function parseAcumen(raw: Record<string, unknown>): LabProvider {
   const prov = (raw.provider as Record<string, unknown>) ?? {};
-  const rawProfiles: LabProfile[] = (Array.isArray(raw.profiles_final) ? raw.profiles_final : [])
+  const rawList = (Array.isArray(raw.profiles_final) ? raw.profiles_final : []) as Record<string, unknown>[];
+  // The Base profile (id 1) carries the full `includes`; other profiles add
+  // `includes_extra` on top of it (the deal is "base + X").
+  const baseIncludes = strArr((rawList.find((p) => asNum((p ?? {}).id) === 1) ?? {}).includes);
+  const rawProfiles: LabProfile[] = rawList
     .map((p) => {
       const o = (p ?? {}) as Record<string, unknown>;
+      const own = strArr(o.includes);
+      const includes = own.length > 0 ? own : baseIncludes.concat(strArr(o.includes_extra));
       return {
         id: asNum(o.id) ?? -1,
         name: String(o.name ?? ""),
@@ -101,6 +114,7 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
         ourCostInr: asNum(o.our_cost_inr) ?? 0,
         mrpInr: asNum(o.mrp_inr) ?? 0,
         marginInr: asNum(o.margin_inr) ?? 0,
+        includes,
       };
     })
     // Both the client price (mrp) AND our cost are REQUIRED — a profile missing

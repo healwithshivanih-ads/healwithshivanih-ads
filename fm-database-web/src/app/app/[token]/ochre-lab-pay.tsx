@@ -98,24 +98,33 @@ export function LabOrdersCard() {
 
       {recommended.map((o) => (
         <div className="card" key={o.order_id} style={{ padding: "14px 15px", marginBottom: 10 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "var(--forest, #2d5a3d)" }}>
-            Shivani recommends
+          <div style={{ fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.6, color: "var(--forest, #2d5a3d)" }}>
+            Recommended for you
           </div>
-          <div style={{ marginTop: 6, display: "grid", gap: 3 }}>
-            {o.lines.map((l, i) => (
-              <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 13.5 }}>
-                <span>{l.label}</span>
-                <span style={{ color: "var(--muted, #6f6a5d)" }}>{inr(l.inr)}</span>
-              </div>
-            ))}
-          </div>
+          {/* lead with the personalised reason — why these tests, for this client */}
           {o.coach_note && (
-            <div style={{ fontSize: 12.5, color: "var(--muted, #6f6a5d)", marginTop: 8, lineHeight: 1.5 }}>{o.coach_note}</div>
+            <div className="h-serif" style={{ fontSize: 15.5, color: "var(--ink, #2c2a24)", marginTop: 7, lineHeight: 1.45 }}>{o.coach_note}</div>
+          )}
+          {/* the actual markers — so it reads as a tailored check, not a package */}
+          {o.includes && o.includes.length > 0 && (
+            <div style={{ marginTop: 12 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "var(--muted, #6f6a5d)" }}>
+                What we&apos;ll check
+              </div>
+              <ul style={{ margin: "7px 0 0", padding: 0, listStyle: "none", display: "grid", gap: 5 }}>
+                {o.includes.map((it, i) => (
+                  <li key={i} style={{ fontSize: 12.8, color: "var(--ink, #2c2a24)", display: "flex", gap: 7, lineHeight: 1.4 }}>
+                    <span style={{ color: "var(--forest, #2d5a3d)", flexShrink: 0 }}>✓</span>
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
           {o.fasting_required && (
-            <div style={{ fontSize: 11.5, color: "var(--ochre, #b07b1e)", marginTop: 6 }}>Fasting sample · home collection</div>
+            <div style={{ fontSize: 11.5, color: "var(--ochre, #b07b1e)", marginTop: 10 }}>Fasting sample · we&apos;ll arrange home collection</div>
           )}
-          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 12 }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--line, #e6e1d6)" }}>
             <strong style={{ fontSize: 17 }}>{inr(o.amount_inr)}</strong>
             {confirming[o.order_id] ? (
               <span style={{ fontSize: 13, color: "var(--forest, #2d5a3d)" }}>Confirming your payment…</span>
