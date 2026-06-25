@@ -251,7 +251,7 @@ const TIERS: Tier[] = [
     label: "In progress",
     hint: "On a live protocol — review every 3 weeks so it doesn't stall",
     color: "#1a7fbb",
-    kinds: ["phase_letter_due", "plan_review_due", "active"],
+    kinds: ["plan_review_due", "active"],
   },
   {
     label: "Leads & cold",
@@ -281,7 +281,7 @@ const VIEW_TIERS: Record<DashboardView, Tier[]> = {
       // awaiting_signup removed — prospects live in the Pipeline tab, not here.
       // Mixing warm leads with urgent action items made the dashboard feel like
       // "still deciding = a problem to fix". It's not — they're in the funnel.
-      kinds: ["labs_pending", "booking_link_pending", "phase_letter_due", "plan_review_due"],
+      kinds: ["labs_pending", "booking_link_pending", "plan_review_due"],
     },
   ],
   active: [
@@ -289,7 +289,7 @@ const VIEW_TIERS: Record<DashboardView, Tier[]> = {
       label: "Needs attention",
       hint: "On a live protocol — action needed",
       color: "#c0392b",
-      kinds: ["phase_letter_due", "plan_review_due", "protocol_complete"],
+      kinds: ["plan_review_due", "protocol_complete"],
     },
     {
       label: "On protocol",
