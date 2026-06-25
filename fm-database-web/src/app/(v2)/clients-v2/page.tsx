@@ -73,6 +73,8 @@ export interface ClientRow {
    *  active / recheck. `alumni` = client has a graduated plan + no
    *  active plan. */
   stage: "no_plan" | "draft" | "active" | "recheck" | "alumni";
+  /** Sign-up state from client.yaml: "signed_up" | "declined" | "pending". */
+  engagement_status?: string;
   next_contact_date?: string;
 }
 
@@ -272,6 +274,7 @@ export default async function ClientsListV2Page({
         last_session: lastSession,
         has_photo: hasPhoto,
         stage: isAlumni ? "alumni" : deriveStage(activePlan, todayStr),
+        engagement_status: (c.engagement_status as string | undefined) ?? undefined,
         next_contact_date:
           (c.next_contact_date as string | undefined) ?? undefined,
       };
@@ -316,6 +319,18 @@ export default async function ClientsListV2Page({
     recheck: rows.filter((r) => r.stage === "recheck").length,
     alumni: rows.filter((r) => r.stage === "alumni").length,
   };
+
+  // Tuck not-yet-signed-up prospects (no plan + engagement not "signed_up"
+  // and not declined) into a collapsed box, so the default roster leads with
+  // committed clients. Only split the unfiltered "all" view — a specific
+  // stage chip or a search shows the flat list.
+  const splitProspects = filterId === "all" && !qNorm;
+  const isProspect = (r: ClientRow) =>
+    r.stage === "no_plan" &&
+    r.engagement_status !== "signed_up" &&
+    r.engagement_status !== "declined";
+  const mainRows = splitProspects ? filtered.filter((r) => !isProspect(r)) : filtered;
+  const prospectRows = splitProspects ? filtered.filter(isProspect) : [];
 
   return (
     <FmAppShell
@@ -418,23 +433,71 @@ export default async function ClientsListV2Page({
           )}
         </FmPanel>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: 14,
-            marginTop: 16,
-          }}
-        >
-          {filtered.map((r) => (
-            <ClientCard
-              key={r.client_id}
-              row={r}
-              todayStr={todayStr}
-              unread={unreadMap.get(r.client_id)}
-            />
-          ))}
-        </div>
+        <>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: 14,
+              marginTop: 16,
+            }}
+          >
+            {mainRows.map((r) => (
+              <ClientCard
+                key={r.client_id}
+                row={r}
+                todayStr={todayStr}
+                unread={unreadMap.get(r.client_id)}
+              />
+            ))}
+          </div>
+
+          {prospectRows.length > 0 && (
+            <details style={{ marginTop: 22 }}>
+              <summary
+                style={{
+                  cursor: "pointer",
+                  listStyle: "revert",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: "var(--fm-text-secondary)",
+                  padding: "11px 14px",
+                  background: "var(--fm-bg-warm)",
+                  border: "1px solid var(--fm-border)",
+                  borderRadius: "var(--fm-radius-md)",
+                }}
+              >
+                🌱 Not signed up yet · {prospectRows.length}
+                <span
+                  style={{
+                    fontWeight: 400,
+                    color: "var(--fm-text-tertiary)",
+                    marginLeft: 8,
+                  }}
+                >
+                  prospects &amp; leads — click to expand
+                </span>
+              </summary>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                  gap: 14,
+                  marginTop: 14,
+                }}
+              >
+                {prospectRows.map((r) => (
+                  <ClientCard
+                    key={r.client_id}
+                    row={r}
+                    todayStr={todayStr}
+                    unread={unreadMap.get(r.client_id)}
+                  />
+                ))}
+              </div>
+            </details>
+          )}
+        </>
       )}
     </FmAppShell>
   );

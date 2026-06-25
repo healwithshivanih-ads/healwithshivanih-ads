@@ -40,7 +40,6 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // belongs next to the file-upload flow, not on the dashboard.
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
 import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
-import { MealPlanDripPanel } from "@/components/meal-plan-drip-panel";
 import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
@@ -169,71 +168,8 @@ async function computeSignal(
     const recheckDate =
       effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date;
 
-    // Phase letter overdue signal. Phases are 2 weeks long ([1-2], [3-4],
-    // [5-6]…). Coach rule 2026-06-04: each fortnight letter is sent 3 days
-    // BEFORE the current fortnight expires, and the whole clock is anchored
-    // to Day 1 = meal_plan_started_on (first meal-plan send), falling back
-    // to plan_period_start + 3d. This matches MealPlanDripPanel exactly so
-    // the dashboard card and the drip panel show the same dates.
-    const planStart = publishedPlan.plan_period_start;
-    const planWeeks = publishedPlan.plan_period_weeks;
-    const day1Str =
-      publishedPlan.meal_plan_started_on ??
-      (planStart
-        ? new Date(new Date(planStart + "T00:00:00Z").getTime() + 3 * 86_400_000)
-            .toISOString()
-            .slice(0, 10)
-        : null);
-    if (day1Str && planWeeks) {
-      const startMs = new Date(day1Str + "T00:00:00").getTime();
-      const todayMs = new Date(todayStr).getTime();
-      const daysSinceStart = Math.floor((todayMs - startMs) / 86_400_000);
-      const currentWeek = Math.max(1, Math.floor(daysSinceStart / 7) + 1);
-      const currentPhase = Math.ceil(currentWeek / 2);
-      const nextPhaseStartWeek = currentPhase * 2 + 1;
-      if (nextPhaseStartWeek <= planWeeks) {
-        // Send 3 days before the CURRENT fortnight expires. Current
-        // fortnight (currentPhase) covers days [(cp-1)*14+1 .. cp*14];
-        // expiry offset from Day 1 = cp*14 - 1, minus the 3-day lead.
-        const dueMs = startMs + (currentPhase * 14 - 1 - 3) * 86_400_000;
-        if (dueMs < todayMs) {
-          // Check whether a saved phase letter already exists for this
-          // range. The communicate path saves them as files named
-          // {planSlug}-meal_plan-wkN-M[-recipes].html in the plan's
-          // letter dir. If a file exists for this range, the coach has
-          // already sent it — skip the nudge.
-          const range = {
-            start: nextPhaseStartWeek,
-            end: Math.min(nextPhaseStartWeek + 1, planWeeks),
-          };
-          const stem = `${publishedPlan.slug}-meal_plan-wk${range.start}-${range.end}`;
-          let alreadySent = false;
-          try {
-            const letterDir = path.join(
-              getPlansRoot(),
-              "clients",
-              client.client_id,
-              "meal-plans",
-            );
-            const entries = await fs.readdir(letterDir).catch(() => [] as string[]);
-            alreadySent = entries.some((n) => n.startsWith(stem));
-          } catch {
-            // Best-effort — if we can't read the dir, fall through to
-            // surfacing the signal (false negatives > false positives
-            // for a nudge).
-          }
-          if (!alreadySent) {
-            return {
-              kind: "phase_letter_due",
-              planSlug: publishedPlan.slug,
-              recheckDate,
-              phaseLetterRange: range,
-              phaseLetterDueDate: new Date(dueMs).toISOString().slice(0, 10),
-            };
-          }
-        }
-      }
-    }
+    // Phase-letter drip retired 2026-06-25 — client letters are no longer
+    // sent; a published plan flows straight to the review-cadence check below.
 
     // "Last review" = most recent of: plan updated_at (edits + quick-edits
     // bump it), the latest check-in session, an applied rework — else the
@@ -1467,10 +1403,7 @@ export default async function DashboardV2() {
           <ClientAppLinksPanel rows={appLinkRows} whatsappConfigured={whatsappConfigured} />
 
 
-          {/* 🍽 Fortnight meal-plan drip — next 2-week letter due per active
-              client, anchored to first meal-plan send (coach rule 2026-06-04).
-              Remind-and-approve only; no auto-send. */}
-          <MealPlanDripPanel />
+          {/* Meal-plan drip retired 2026-06-25 — client letters no longer sent. */}
 
           {/* 🗓 Weekly app menus — review queue for the weekly cadence
               (2026-06-12). Cron drafts at 07:00 IST; coach approves in the
