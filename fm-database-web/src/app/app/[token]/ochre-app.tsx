@@ -13,7 +13,12 @@ import type { AppRemedy, ClientAppData } from "@/lib/fmdb/client-app";
 import { Icon, Mark, OchreContext } from "./ochre-context";
 import { BottomNav, Header } from "./ochre-ui";
 import { PlanScreen, TodayScreen, PlanHoldScreen } from "./ochre-screens";
-import { DiscoverySummaryScreen, DiscoveryLockedScreen, DiscoveryCoachScreen } from "./ochre-discovery";
+import {
+  DiscoverySummaryScreen,
+  DiscoveryLockedScreen,
+  DiscoveryCoachScreen,
+  DiscoveryOnboardingScreen,
+} from "./ochre-discovery";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { LabsScreen } from "./ochre-labs";
@@ -300,9 +305,15 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // Plan/Progress locked and the Coach tab as an upgrade CTA. Resolved upstream
   // in client-app.ts; package clients are never "discovery".
   const discovery = data.tier === "discovery";
+  // Pre-call onboarding: a discovery client whose labs aren't in / call isn't
+  // done yet. The whole app is the guided onboarding flow (no tabs) — the
+  // Starting Map + upgrade countdown stay hidden until post_call.
+  const onboarding = discovery && data.discoveryStage != null && data.discoveryStage !== "post_call";
 
   let screen: React.ReactNode = null;
-  if (discovery) {
+  if (onboarding) {
+    screen = <DiscoveryOnboardingScreen />;
+  } else if (discovery) {
     if (tab === "plan") screen = <DiscoveryLockedScreen feature="plan" />;
     else if (tab === "progress") screen = <DiscoveryLockedScreen feature="progress" />;
     else if (tab === "labs") screen = <LabsScreen />;
@@ -428,10 +439,12 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               live and starts moving on its own that day.
             </div>
           )}
-          <main className="screen-scroll" key={inCheckin ? "checkin" : tab}>
+          <main className="screen-scroll" key={onboarding ? "onboarding" : inCheckin ? "checkin" : tab}>
             {screen}
           </main>
-          <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} discovery={discovery} />
+          {!onboarding && (
+            <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} discovery={discovery} />
+          )}
 
           {!booting && <InstallPrompt />}
 
