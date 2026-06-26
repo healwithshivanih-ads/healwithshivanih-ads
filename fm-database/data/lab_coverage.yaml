@@ -1,0 +1,111 @@
+# FM marker -> Acumen coverage. Keys = EXACT LAB_PANELS marker names (what lands in requested_labs).
+# coverage: in_base | addon:<slug> | profile_only | not_at_acumen   (a missing key => unknown => routed to requisition)
+# addon: covered iff the chosen package carries that slug (covered_addon_slugs); otherwise offered as a one-click add-on.
+# Hand-reviewed seed 2026-06-26. REVIEW the ones left as comments below.
+markers:
+  "TSH": { coverage: in_base }
+  "Free T3": { coverage: in_base }
+  "Free T4": { coverage: in_base }
+  "Reverse T3": { coverage: not_at_acumen }
+  "TPO Antibodies": { coverage: in_base }
+  "Thyroglobulin Antibodies": { coverage: in_base }
+  "TSI (Thyroid Stimulating Immunoglobulin)": { coverage: not_at_acumen }
+  "Fasting Glucose": { coverage: in_base }
+  "Fasting Insulin": { coverage: in_base }
+  "HbA1c": { coverage: in_base }
+  "C-Peptide": { coverage: addon:c-peptide }
+  "Post-prandial Glucose + Insulin (2-hr)": { coverage: in_base }
+  "Glucose Tolerance Test with Insulin Response (GTT-IR)": { coverage: not_at_acumen }
+  "HOMA-IR (Insulin Resistance Index)": { coverage: in_base }
+  "QUICKI (Quantitative Insulin Sensitivity Check Index)": { coverage: in_base }
+  "Adiponectin": { coverage: not_at_acumen }
+  "hsCRP (high-sensitivity CRP)": { coverage: in_base }
+  "Homocysteine": { coverage: in_base }
+  "ESR": { coverage: in_base }
+  "Fibrinogen": { coverage: addon:fibrinogen }
+  "GGT": { coverage: in_base }
+  "Uric Acid": { coverage: in_base }
+  "Mycotoxin Panel": { coverage: not_at_acumen }
+  "Total Cholesterol": { coverage: in_base }
+  "LDL Cholesterol": { coverage: in_base }
+  "HDL Cholesterol": { coverage: in_base }
+  "Triglycerides": { coverage: in_base }
+  "VLDL": { coverage: in_base }
+  "CBC with Differential": { coverage: in_base }
+  "Reticulocyte Count": { coverage: addon:reticulocyte }
+  "Comprehensive Metabolic Panel (CMP)": { coverage: in_base }
+  "Liver Function Tests (LFT)": { coverage: in_base }
+  "Cystatin C": { coverage: addon:cystatin-c }
+  "BUN / Creatinine Ratio (UCAR)": { coverage: in_base }
+  # REVIEW (routed to requisition): "Urinary Albumin / Creatinine Ratio (UACR)"  (Metabolic Panel)
+  "eGFR (CKD-EPI)": { coverage: in_base }
+  "Vitamin D (25-OH)": { coverage: in_base }
+  "Vitamin B12": { coverage: in_base }
+  "MMA (Methylmalonic Acid)": { coverage: not_at_acumen }
+  "Active B12 (Holotranscobalamin)": { coverage: in_base }
+  # REVIEW (routed to requisition): "RBC Folate"  (Nutrients)
+  "Ferritin": { coverage: in_base }
+  "Serum Iron": { coverage: in_base }
+  "TIBC / Transferrin Saturation": { coverage: in_base }
+  "RBC Magnesium": { coverage: not_at_acumen }
+  "Zinc (Plasma)": { coverage: addon:zinc-rbc }
+  "Copper / Cu:Zn Ratio": { coverage: not_at_acumen }
+  "Selenium": { coverage: not_at_acumen }
+  "Iodine (Urinary)": { coverage: not_at_acumen }
+  "Omega-3 Index": { coverage: not_at_acumen }
+  "Heavy Metals Panel": { coverage: not_at_acumen }
+  "Estradiol (E2)": { coverage: addon:estradiol-e2 }
+  "Progesterone": { coverage: addon:progesterone }
+  "FSH": { coverage: addon:fsh }
+  "LH": { coverage: addon:lh }
+  "AMH (Anti-Müllerian Hormone)": { coverage: addon:amh }
+  "17-OH Progesterone": { coverage: profile_only, in_profiles: [2, 3] }
+  "Total Testosterone": { coverage: addon:total-testosterone }
+  "Free Testosterone": { coverage: addon:free-testosterone }
+  "SHBG": { coverage: addon:shbg }
+  "DHEA-S": { coverage: addon:dhea-s }
+  "Prolactin": { coverage: addon:prolactin }
+  "Estradiol (E2) — for men": { coverage: addon:estradiol-e2 }
+  "Morning Cortisol (8am, fasting)": { coverage: in_base, slug: am-cortisol }
+  # REVIEW (routed to requisition): "PM Cortisol (4–6pm)"  (Adrenal & Stress)
+  "DUTCH Test (Dried Urine)": { coverage: not_at_acumen }
+  "Salivary Cortisol 4-point": { coverage: not_at_acumen }
+  "Aldosterone + Renin": { coverage: not_at_acumen }
+  "Pregnenolone": { coverage: not_at_acumen }
+  "ApoB": { coverage: in_base, slug: apob }
+  "ApoA1": { coverage: in_base, slug: apoa1 }
+  "Lp(a) — Lipoprotein(a)": { coverage: in_base, slug: lp-a }
+  "NMR LipoProfile": { coverage: not_at_acumen }
+  "MTHFR Gene Variants": { coverage: not_at_acumen }
+  "COMT Gene Variants": { coverage: not_at_acumen }
+  "MTR / MTRR Gene Variants": { coverage: not_at_acumen }
+  "Organic Acid Test (OAT)": { coverage: not_at_acumen }
+  "ANA (Anti-Nuclear Antibodies)": { coverage: addon:ana }
+  "ENA Panel": { coverage: addon:ana-profile }
+  "Anti-CCP": { coverage: addon:anti-ccp }
+  "tTG-IgA (Tissue Transglutaminase)": { coverage: addon:ttg-iga }
+  # REVIEW (routed to requisition): "Total IgA"  (Autoimmune Screening)
+  "Anti-Gliadin Antibodies": { coverage: addon:gliadin-iga }
+  "CEA": { coverage: addon:cea }
+  # REVIEW (routed to requisition): "AFP"  (Cancer Screening)
+  # REVIEW (routed to requisition): "CA 19-9"  (Cancer Screening)
+  # REVIEW (routed to requisition): "LDH"  (Cancer Screening)
+  # REVIEW (routed to requisition): "β2-Microglobulin"  (Cancer Screening)
+  "CA-125": { coverage: addon:ca-125 }
+  "CA 15-3": { coverage: addon:ca-15-3 }
+  "HE4": { coverage: not_at_acumen }
+  "PSA — Total": { coverage: addon:psa-total }
+  "PSA — Free": { coverage: addon:psa-free }
+  # REVIEW (routed to requisition): "β-hCG"  (Cancer Screening)
+  "H. pylori (Stool Antigen)": { coverage: addon:h-pylori-stool }
+  # REVIEW (routed to requisition): "H. pylori Urea Breath Test (UBT)"  (Gut Health)
+  # REVIEW (routed to requisition): "H. pylori IgG Antibodies"  (Gut Health)
+  "Calprotectin (Stool)": { coverage: addon:calprotectin }
+  "Zonulin": { coverage: not_at_acumen }
+  "Pancreatic Elastase": { coverage: not_at_acumen }
+  "Secretory IgA (sIgA)": { coverage: not_at_acumen }
+  "SIBO Breath Test": { coverage: not_at_acumen }
+  "GI-MAP / GI-Effects": { coverage: not_at_acumen }
+  "Food Sensitivity IgG Panel": { coverage: not_at_acumen }
+  "Stool Routine & Culture": { coverage: addon:stool-routine }
+  "Urine Routine": { coverage: addon:urine-routine }
