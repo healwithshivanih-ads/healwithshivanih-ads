@@ -1,10 +1,13 @@
 /**
  * Coach-UI auth gate (Fly.io deploy, intake-only mode).
  *
+ * Next 16 renamed the `middleware` file convention to `proxy` (same job,
+ * clearer name; runs on the Node.js runtime — the Edge runtime is not
+ * supported in `proxy`).
+ *
  * This file is a THIN ADAPTER. The actual public/coach boundary lives in
  * a pure, Next-free module — src/lib/fmdb/middleware-policy.ts — so it can
- * be unit-tested without the Edge runtime and survives a future
- * middleware→proxy migration unchanged. See that file for the full
+ * be unit-tested without a Next runtime. See that file for the full
  * mode/allowlist documentation and the boundary tests
  * (middleware-policy.test.ts) that guard it.
  *
@@ -13,7 +16,8 @@
  *   2. COACH AUTH:        COACH_AUTH_PASSWORD set → HTTP Basic Auth wall.
  *   3. LOCAL DEV:         neither set → no-op.
  *
- * Edge runtime: no Buffer / Node APIs. The policy uses Web-standard atob().
+ * The policy decodes Basic-auth via Web-standard atob() (a Node.js global
+ * since 16) — no Buffer needed, so the policy module stays runtime-agnostic.
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -32,7 +36,7 @@ function notFound(): NextResponse {
   return new NextResponse("Not Found", { status: 404 });
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const decision = decideGate(
     req.nextUrl.pathname,
     {
@@ -55,7 +59,7 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   // Match everything EXCEPT static asset prefixes that Next.js serves
-  // directly. Avoids running middleware on every image / font request.
+  // directly. Avoids running the proxy on every image / font request.
   matcher: [
     "/((?!_next/static|_next/image|favicon.ico|robots.txt).*)",
   ],

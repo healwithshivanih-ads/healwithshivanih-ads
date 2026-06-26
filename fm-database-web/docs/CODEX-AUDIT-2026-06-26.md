@@ -21,9 +21,9 @@ Visual UI inspection was blocked twice (local Basic Auth, then the watcher/file-
 | — | PHI backup/DR for `~/fm-plans` | ✅ done — commit `8425a9a9` |
 | 3 | Replace in-memory `Map` rate limits with a persisted store | ✅ done — see below |
 | 4 | Token-admin UI (issued / last-opened / expiry / revoke) | ✅ done — see below |
-| 1 | EMFILE / build reliability | ⬜ open |
-| 2b | The actual `middleware.ts` → Next 16 `proxy` migration | ⬜ open |
-| 6 | Split the 4 giant files (intake-form, assess-client, client-app, plan-editor) | ⬜ open |
+| 1 | EMFILE / build reliability | ✅ done — `npm run doctor` + runbook |
+| 2b | The actual `middleware.ts` → Next 16 `proxy` migration | ✅ done |
+| 6 | Split the 4 giant files | ◐ started — first extraction landed; plan below |
 
 ### #3 Persistent rate limits — done 2026-06-26
 
@@ -69,6 +69,48 @@ path the issue flow uses; **its propagation to the Fly public host should be smo
 on the next deploy** (the worktree can't reach Fly). Verified here via type-check +
 unit tests (201 green); visual pass deferred — the dev server is EMFILE-flaky on this
 machine (finding #1).
+
+### #1 Build reliability — done 2026-06-26
+
+`npm run doctor` (`scripts/doctor.mjs`, zero deps) checks the EMFILE root cause
+(`ulimit -n`), whether the `limit.maxfiles` LaunchDaemon is installed, Node version,
+`node_modules`, and `.env.local` — printing the exact fix for each. Runbook:
+`docs/DEV_RELIABILITY.md`. The permanent fd-cap fix (`scripts/limit.maxfiles.plist`)
+already existed; this makes it discoverable + checkable before a build hangs.
+
+### #2b middleware → proxy — done 2026-06-26
+
+Per the Next 16 upgrade guide: `middleware.ts` → `proxy.ts`, export renamed
+`middleware` → `proxy` (runs on the Node.js runtime; Edge isn't supported in `proxy`).
+The gate logic was already extracted into the pure `decideGate()` in `8425a9a9`, so the
+migration was a thin-adapter rename — the 53 boundary tests are unchanged and still green.
+`next.config.ts` already used the renamed `proxyClientMaxBodySize`.
+
+### #6 Split the giant files — started 2026-06-26
+
+`client-app.ts` is the right first target (a pure lib, no `"use client"`; the audit's
+"extract pure data transforms" advice). First extraction: 11 pure diet/text/dose/timing
+helpers → `client-app-format.ts` + `client-app-format.test.ts` (12 tests). `client-app.ts`
+4,682 → 4,563 lines; behaviour identical (moved verbatim). The extraction surfaced a real
+latent quirk in `displayTiming` — the `&`/`+` separators in its guard regex never fire (no
+word boundary around punctuation), so only the word "and" triggers the twice-daily label.
+Left verbatim here; flagged as a separate fix.
+
+**Plan for the rest (each step is independently type-check + test verifiable):**
+1. `client-app.ts` cont'd — extract the markdown-letter parsers (`parseWeekTables`,
+   `parseRecipes`, `parseSupplementRows`, `parsePhases`, …) into `client-app-letter-parse.ts`;
+   then the supplement-row matching (`suppKey`, `matchSupplementRow`, `SUPP_NAME_OVERRIDES`)
+   into `client-app-supplements.ts`. Target: < 3,000 lines.
+2. `intake-form.tsx` (5,069) — the highest-value React split. Extract each numbered
+   section into its own component file under `intake/[token]/sections/`; lift the pure
+   field-allowlist / draft-merge logic into a tested `intake-form-state.ts`.
+3. `assess-client.tsx` (4,771) — extract the sub-views (SuggestionsView, ChatPanel,
+   the picker components) into sibling files; move pure transforms to `assess-client-derive.ts`.
+4. `plan-editor.tsx` (2,888) — extract the per-section editors (already logically separate)
+   into `plan-editor/sections/`.
+   These 3 are React-component splits with no runtime verification available here (dev
+   server is EMFILE-flaky), so they should each be done in a small PR and visually smoke-
+   tested, not batched.
 
 ## Coach/user side (Codex, not yet actioned)
 - Make the dashboard ONE "what needs my attention now" queue, not many equal-weight panels.
