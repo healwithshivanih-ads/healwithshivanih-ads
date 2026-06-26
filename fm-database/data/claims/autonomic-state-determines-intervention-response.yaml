@@ -1,0 +1,34 @@
+slug: autonomic-state-determines-intervention-response
+statement: 'A client''s autonomic nervous-system state determines whether a given intervention
+  helps or harms: a shut-down (dorsal-vagal) client often needs gentle activation, while a sympathetically
+  activated client needs calming — so the same protocol can work for one person and fail another.'
+evidence_tier: plausible_emerging
+rationale: Polyvagal-informed practice recognises distinct autonomic states (sympathetic activation
+  vs dorsal-vagal shutdown). Calming techniques applied to a shut-down, low-energy client can
+  deepen the freeze response, whereas activating techniques can overwhelm an already hyper-aroused
+  client. Matching the intervention to the current state is more effective than applying one
+  stress-reduction approach to everyone.
+coaching_translation: There's no one-size-fits-all for stress. If someone is wired and anxious,
+  calming helps; if they're flat, numb and exhausted, gentle activation (light movement, sunlight,
+  connection) helps more than 'just relax.' Meet the nervous system where it is.
+caveats:
+- Source is Instagram educational content.
+- Polyvagal framing is a clinical model; apply within scope and refer dysregulation/trauma to
+  trained professionals.
+linked_to_topics:
+- nervous-system-regulation
+- polyvagal-theory
+linked_to_mechanisms:
+- vagal-tone-dysregulation
+- hpa-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DZZ9dAZjNVU/
+  quote: A shutdown patient often needs activation, not more calming. Nervous system state determines
+    what interventions help or harm.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: vegetarians-and-women-have-lower-baseline-creatine-stores
+statement: Vegetarians, women and chronically stressed individuals frequently show lower
+  baseline creatine stores and may therefore derive greater benefit from supplementation.
+evidence_tier: plausible_emerging
+rationale: Dietary creatine comes almost entirely from meat and fish, so vegetarians and
+  vegans have measurably lower muscle and brain creatine stores; women have lower endogenous
+  stores than men, and chronic stress increases ATP turnover. These groups consistently
+  show larger responses to creatine supplementation in cognitive and metabolic outcomes.
+coaching_translation: If you eat little or no meat, are a woman, or are under a lot of
+  stress, your natural creatine levels are likely lower — so a daily creatine supplement
+  may help you more than most.
+caveats:
+- Source is Instagram educational content.
+- Magnitude of benefit is individual; baseline stores are not routinely tested.
+linked_to_topics: []
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- creatine-monohydrate
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DaDQ2r0DJqH/
+  quote: Women, vegetarians, and chronically stressed patients frequently show lower baseline
+    creatine stores.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

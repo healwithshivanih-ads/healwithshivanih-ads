@@ -1,0 +1,34 @@
+slug: creatine-enhances-glut4-and-glucose-regulation
+statement: Creatine supplementation can enhance GLUT4 activity and muscle glucose uptake,
+  supporting glucose regulation in insulin resistance and metabolic syndrome when paired
+  with resistance training.
+evidence_tier: plausible_emerging
+rationale: Creatine increases intramuscular phosphocreatine and supports GLUT4 transporter
+  translocation to the muscle membrane, improving insulin-stimulated glucose disposal.
+  The effect is most consistent when combined with resistance training, which independently
+  upregulates GLUT4 expression — making creatine a useful adjunct in metabolic cases rather
+  than a standalone glucose-lowering agent.
+coaching_translation: Creatine, especially alongside strength training, helps your muscles
+  pull sugar out of the blood more effectively — useful when blood sugar or insulin is
+  running high.
+caveats:
+- Source is Instagram educational content; effect is adjunctive and strongest combined
+  with resistance training.
+- Not a replacement for diet, movement and foundational insulin-resistance management.
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- creatine-monohydrate
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DaDQ2r0DJqH/
+  quote: Creatine enhances GLUT4 activity and supports glucose regulation in metabolic
+    syndrome. Insulin resistance cases respond better when muscle energy metabolism is
+    addressed alongside diet.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani
