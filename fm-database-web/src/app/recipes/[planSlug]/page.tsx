@@ -14,8 +14,10 @@
  *      the consolidated letter (for letters generated before the split).
  *   4. Empty state.
  *
- * Auth: none — the plan slug is non-guessable in practice. Same posture
- * as /supplements/<planSlug>.
+ * Auth: TOKEN-ONLY (PHI gate closed 2026-06-11). The route param must be
+ * a valid letter_token, resolved via lookupLetterToken() before any plan
+ * file is read. Plan slugs ARE guessable (name-plan-N-date-clientid), so
+ * the old slug fallback was removed — same posture as /supplements/<token>.
  */
 import fs from "node:fs/promises";
 import path from "node:path";
