@@ -138,7 +138,73 @@ export async function markDiscoveryCallDoneAction(
   await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
   const credit = resolveDiscoveryCredit(callDate, istTodayYmd());
   revalidatePath(`/clients-v2/${clientId}`);
+  revalidatePath(`/clients-v2/${clientId}/analyse/discovery`);
   return { ok: true, callDate, credit };
+}
+
+/** One titled point in the Starting Map (a hypothesis or a foundational change). */
+export interface DiscoverySummaryPointInput {
+  title: string;
+  note: string;
+}
+export interface DiscoverySummaryInput {
+  headline: string;
+  hypotheses: DiscoverySummaryPointInput[];
+  foundationalChanges: DiscoverySummaryPointInput[];
+  journeyPreview: string[];
+}
+
+const _trim = (v: unknown, max: number): string =>
+  typeof v === "string" ? v.trim().slice(0, max) : "";
+
+function _points(v: unknown, maxItems: number): DiscoverySummaryPointInput[] {
+  if (!Array.isArray(v)) return [];
+  return v
+    .slice(0, maxItems)
+    .map((it) => {
+      const o = (it ?? {}) as Record<string, unknown>;
+      return { title: _trim(o.title, 160), note: _trim(o.note, 400) };
+    })
+    .filter((p) => p.title || p.note);
+}
+
+/**
+ * Author the consult-tier "Starting Map" (client.yaml#discovery_summary). Coach
+ * input — bounded + trimmed, then written in the snake_case shape the client app
+ * reads (parseDiscoverySummary). An entirely-empty save clears the block. Re-stages
+ * to Fly so the discovery app picks it up. Does NOT touch discovery_call_date —
+ * revealing the map (marking the call done) is a separate action.
+ */
+export async function saveDiscoverySummaryAction(
+  clientId: string,
+  input: DiscoverySummaryInput,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "missing_client_id" };
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  let data: Record<string, unknown>;
+  try {
+    data = yaml.load(await fs.readFile(clientYaml, "utf-8")) as Record<string, unknown>;
+  } catch {
+    return { ok: false, error: "client_not_found" };
+  }
+  const headline = _trim(input?.headline, 200);
+  const hypotheses = _points(input?.hypotheses, 8);
+  const foundational_changes = _points(input?.foundationalChanges, 8);
+  const journey_preview = Array.isArray(input?.journeyPreview)
+    ? input.journeyPreview.map((x) => _trim(x, 200)).filter(Boolean).slice(0, 12)
+    : [];
+
+  if (!headline && !hypotheses.length && !foundational_changes.length && !journey_preview.length) {
+    delete data.discovery_summary; // empty → clear the map
+  } else {
+    data.discovery_summary = { headline, hypotheses, foundational_changes, journey_preview };
+  }
+  data.updated_at = new Date().toISOString();
+  await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");
+  await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
+  revalidatePath(`/clients-v2/${clientId}`);
+  revalidatePath(`/clients-v2/${clientId}/analyse/discovery`);
+  return { ok: true };
 }
 
 /**

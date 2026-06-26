@@ -39,7 +39,20 @@ const ADVANCE: Partial<Record<LabOrderStatus, { to: "booked" | "sample_collected
   sample_collected: { to: "results_in", label: "Mark results in" },
 };
 
-export function LabRecommendCard({ clientId }: { clientId: string }) {
+export function LabRecommendCard({
+  clientId,
+  seedMarkers,
+  intakeSubmitted = true,
+}: {
+  clientId: string;
+  /** Markers the coach picked on the discovery panel — shown as a reference so
+   *  she maps them onto an Acumen panel (NOT auto-ticked: a fuzzy name→add-on
+   *  match could mis-charge). */
+  seedMarkers?: string[];
+  /** When false, recommending now would show the client a pay screen before
+   *  they've done intake — surface a soft warning (don't hard-block). */
+  intakeSubmitted?: boolean;
+}) {
   const [menu, setMenu] = useState<LabMenu | null>(null);
   const [orders, setOrders] = useState<LabOrder[]>([]);
   const [profileId, setProfileId] = useState<number | null>(null);
@@ -75,11 +88,35 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
 
   const priceOk = (v: string | undefined) =>
     typeof v === "string" && v.trim() !== "" && Number.isFinite(Number(v)) && Number(v) > 0;
-  const selectedAddons = Object.entries(addonPrices)
-    .filter(([, v]) => priceOk(v))
-    .map(([slug, v]) => ({ slug, inr: Number(v) }));
 
   const profile = menu?.profiles.find((p) => p.id === profileId) ?? null;
+  // Tests already inside the chosen panel — hidden from the picker (and never
+  // charged) so a marker isn't recommended twice.
+  const coveredSlugs = new Set(profile?.coveredAddonSlugs ?? []);
+  // The add-ons the coach can actually pick for this profile.
+  const visibleAddons = (menu?.addons ?? []).filter((a) => !coveredSlugs.has(a.slug));
+  const hiddenCount = (menu?.addons.length ?? 0) - visibleAddons.length;
+
+  // Prune any ticked add-on that the newly-selected profile now covers, so it
+  // can't linger checked (or be charged). Runs whenever the profile changes.
+  useEffect(() => {
+    if (coveredSlugs.size === 0) return;
+    setAddonPrices((prev) => {
+      const next: Record<string, string> = {};
+      let changed = false;
+      for (const [slug, v] of Object.entries(prev)) {
+        if (coveredSlugs.has(slug)) changed = true;
+        else next[slug] = v;
+      }
+      return changed ? next : prev;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profileId]);
+
+  const selectedAddons = Object.entries(addonPrices)
+    .filter(([slug, v]) => priceOk(v) && !coveredSlugs.has(slug))
+    .map(([slug, v]) => ({ slug, inr: Number(v) }));
+
   const addonTotal = selectedAddons.reduce((s, a) => s + a.inr, 0);
   const total = (profile?.mrpInr ?? 0) + addonTotal;
   const ourCost =
@@ -87,9 +124,9 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
     selectedAddons.reduce((s, a) => s + (menu?.addons.find((x) => x.slug === a.slug)?.ourCostInr ?? 0), 0);
   const margin = total - ourCost;
   // ticked add-ons missing a valid price — must be resolved before recommending
-  // (otherwise they'd be silently dropped from the order).
+  // (otherwise they'd be silently dropped from the order). Covered ones excluded.
   const incompleteAddons = Object.entries(addonPrices)
-    .filter(([, v]) => v !== undefined && !priceOk(v))
+    .filter(([slug, v]) => v !== undefined && !priceOk(v) && !coveredSlugs.has(slug))
     .map(([slug]) => menu?.addons.find((a) => a.slug === slug)?.name ?? slug);
   const canRecommend =
     !busy && total > 0 && (profileId != null || selectedAddons.length > 0) && incompleteAddons.length === 0;
@@ -147,6 +184,18 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
         <div style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)" }}>Loading catalogue…</div>
       ) : (
         <div style={{ display: "grid", gap: 12 }}>
+          {!intakeSubmitted && (
+            <div style={{ fontSize: 12, color: "#b07b1e", background: "rgba(176,123,30,0.08)", border: "1px solid rgba(176,123,30,0.3)", borderRadius: 8, padding: "7px 9px", lineHeight: 1.45 }}>
+              ⚠ Intake not submitted yet — recommending now shows the client a pay screen before they&apos;ve completed it.
+            </div>
+          )}
+          {seedMarkers && seedMarkers.length > 0 && (
+            <div style={{ fontSize: 12, color: "var(--fm-text-secondary, #6f6a5d)", background: "var(--fm-surface, #faf8f3)", border: "1px solid var(--fm-border-light, #e6e1d6)", borderRadius: 8, padding: "7px 9px", lineHeight: 1.5 }}>
+              <strong style={{ color: "var(--fm-text, #2c2a24)" }}>From your discovery panel:</strong>{" "}
+              {seedMarkers.join(", ")}
+              <div style={{ marginTop: 3, fontSize: 11 }}>Pick the Acumen panel + add-ons that cover these. Anything Acumen can&apos;t run, send as a text requisition.</div>
+            </div>
+          )}
           {/* profile picker */}
           <div style={{ display: "grid", gap: 6 }}>
             <Label>Profile</Label>
@@ -190,8 +239,13 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
           {/* add-ons — coach sets each price */}
           <div style={{ display: "grid", gap: 6 }}>
             <Label>Additional tests (you set the price)</Label>
+            {hiddenCount > 0 && (
+              <div style={{ fontSize: 11, color: "var(--fm-muted, #6f6a5d)" }}>
+                {hiddenCount} test{hiddenCount === 1 ? "" : "s"} already in {profile?.name} — hidden so you don&apos;t book them twice.
+              </div>
+            )}
             <div style={{ maxHeight: 180, overflowY: "auto", display: "grid", gap: 4 }}>
-              {menu.addons.map((a) => {
+              {visibleAddons.map((a) => {
                 const on = a.slug in addonPrices;
                 return (
                   <div key={a.slug} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5 }}>

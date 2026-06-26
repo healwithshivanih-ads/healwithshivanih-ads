@@ -207,6 +207,8 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
 
   const lines: LabOrderLine[] = [];
   const includes: string[] = [];
+  const chargedAddonSlugs: string[] = [];
+  const coveredByProfile = new Set<string>();
   let amountInr = 0;
   let ourCostInr = 0;
 
@@ -221,9 +223,13 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
     includes.push(...p.includes);
     amountInr += p.mrpInr;
     ourCostInr += p.ourCostInr;
+    for (const s of p.coveredAddonSlugs) coveredByProfile.add(s);
   }
 
   for (const a of addons) {
+    // Already inside the chosen panel → drop it (defence-in-depth; the coach UI
+    // also hides these). Never charge a test that's part of the profile.
+    if (coveredByProfile.has(a.slug)) continue;
     const cat = provider.addons.find((x) => x.slug === a.slug);
     if (!cat) return { ok: false, error: `unknown add-on "${a.slug}"` };
     // finite + positive + capped — rejects NaN/Infinity/1e309 and absurd typos.
@@ -232,8 +238,14 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
     }
     lines.push({ label: cat.name, inr: a.inr, slug: a.slug });
     includes.push(cat.name);
+    chargedAddonSlugs.push(a.slug);
     amountInr += a.inr;
     ourCostInr += cat.ourCostInr ?? 0;
+  }
+
+  // A recommendation that was ONLY redundant add-ons (all dropped, no profile) is empty.
+  if (input.profileId == null && chargedAddonSlugs.length === 0) {
+    return { ok: false, error: "empty recommendation — pick a profile or at least one add-on" };
   }
 
   return {
@@ -244,7 +256,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       created_at: input.now,
       provider: provider.slug,
       profile_id: input.profileId,
-      addon_slugs: addons.map((a) => a.slug),
+      addon_slugs: chargedAddonSlugs,
       lines,
       includes,
       amount_inr: amountInr,

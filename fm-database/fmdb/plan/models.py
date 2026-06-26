@@ -265,6 +265,29 @@ class FivePillarsAssessment(BaseModel):
     notes: Optional[str] = ""
 
 
+class DiscoverySummaryPoint(BaseModel):
+    """One titled point in the discovery Starting Map — a root-cause hypothesis
+    or a foundational change. Orientation only (no doses, no protocol)."""
+    model_config = ConfigDict(extra="ignore")  # tolerant: read by Python AND js-yaml
+
+    title: str = ""
+    note: str = ""
+
+
+class DiscoverySummary(BaseModel):
+    """The consult-tier "Your Starting Map" artifact, authored by the coach after
+    the discovery call and shown read-only in the discovery app. Deliberately
+    orientation-only — carries NO protocol. The client app renders it via
+    parseDiscoverySummary (client-app.ts); the snake_case keys here are its
+    contract. See docs/DISCOVERY_TIER_SPEC.md."""
+    model_config = ConfigDict(extra="ignore")
+
+    headline: str = ""
+    hypotheses: list[DiscoverySummaryPoint] = Field(default_factory=list)
+    foundational_changes: list[DiscoverySummaryPoint] = Field(default_factory=list)
+    journey_preview: list[str] = Field(default_factory=list)
+
+
 class Client(BaseModel):
     """Minimal client record. Lives at ~/fm-plans/clients/<client_id>.yaml.
 
@@ -429,6 +452,11 @@ class Client(BaseModel):
     # to compute credit_live vs credit_expired off a 15-day window. See
     # docs/DISCOVERY_TIER_SPEC.md.
     discovery_call_date: Optional[date] = None
+    # The coach-authored Starting Map shown in the consult-tier app after the
+    # discovery call. Authored on /analyse/discovery (post-results stage). The
+    # client app reads it via parseDiscoverySummary. Optional — pre-call clients
+    # have none and the app renders graceful placeholders.
+    discovery_summary: Optional[DiscoverySummary] = None
 
     # ── v0.72 structured intake form fields ───────────────────────────────────
     # ~60 new fields captured by the v2 intake form, organised by section

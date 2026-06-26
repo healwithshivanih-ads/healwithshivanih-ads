@@ -34,6 +34,10 @@ export interface LabProfile {
   /** Client-friendly "what we'll check" groups — the Base list plus this
    *  profile's extras. Drives the personalised in-app view. */
   includes: string[];
+  /** Add-on slugs already inside this panel (Base coverage ∪ this profile's own)
+   *  — the coach add-on picker hides these when this profile is selected, and
+   *  buildOrder drops them, so a test is never recommended + charged twice. */
+  coveredAddonSlugs: string[];
 }
 
 export interface LabAddon {
@@ -101,12 +105,17 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
   const rawList = (Array.isArray(raw.profiles_final) ? raw.profiles_final : []) as Record<string, unknown>[];
   // The Base profile (id 1) carries the full `includes`; other profiles add
   // `includes_extra` on top of it (the deal is "base + X").
-  const baseIncludes = strArr((rawList.find((p) => asNum((p ?? {}).id) === 1) ?? {}).includes);
+  const base = (rawList.find((p) => asNum((p ?? {}).id) === 1) ?? {}) as Record<string, unknown>;
+  const baseIncludes = strArr(base.includes);
+  // Every gender/age profile is "Base + extras", so it inherits Base's covered
+  // add-ons too (e.g. ApoB/Lp(a)/cortisol are in every panel).
+  const baseCovered = strArr(base.covered_addon_slugs);
   const rawProfiles: LabProfile[] = rawList
     .map((p) => {
       const o = (p ?? {}) as Record<string, unknown>;
       const own = strArr(o.includes);
       const includes = own.length > 0 ? own : baseIncludes.concat(strArr(o.includes_extra));
+      const coveredAddonSlugs = Array.from(new Set([...baseCovered, ...strArr(o.covered_addon_slugs)]));
       return {
         id: asNum(o.id) ?? -1,
         name: String(o.name ?? ""),
@@ -115,6 +124,7 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
         mrpInr: asNum(o.mrp_inr) ?? 0,
         marginInr: asNum(o.margin_inr) ?? 0,
         includes,
+        coveredAddonSlugs,
       };
     })
     // Both the client price (mrp) AND our cost are REQUIRED — a profile missing

@@ -1,10 +1,24 @@
 import { notFound } from "next/navigation";
 import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
+import { loadAllPlans } from "@/lib/fmdb/loader";
+import { loadClientOrders } from "@/lib/fmdb/lab-orders";
+import { resolveAppTier, resolveDiscoveryStage } from "@/lib/fmdb/discovery-tier";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import { FmPageHeader } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
 import { DiscoveryForm } from "./discovery-form";
+import { DiscoveryWorkspace } from "./discovery-workspace";
 import { buildDiscoveryPrefill } from "@/lib/fmdb/discovery-prefill";
+
+/** Coerce a YAML date field (js-yaml may give a Date) to YYYY-MM-DD or null. */
+function asYmd(v: unknown): string | null {
+  if (v instanceof Date) return Number.isNaN(v.getTime()) ? null : v.toISOString().slice(0, 10);
+  if (typeof v === "string") {
+    const m = v.match(/^\d{4}-\d{2}-\d{2}/);
+    return m ? m[0] : null;
+  }
+  return null;
+}
 
 export const dynamic = "force-dynamic";
 
@@ -103,6 +117,57 @@ export default async function DiscoveryPage({
     menopauseAge,
   });
 
+  // ── Discovery workspace: tier + onboarding stage ──────────────────────────
+  // The Acumen recommend + Starting-Map authoring only make sense for a
+  // consult-tier ("discovery") client (no published plan, not signed up). Resolve
+  // the same stage the client app uses so this page mirrors what the client sees.
+  const [allPlans, orders] = await Promise.all([loadAllPlans(), loadClientOrders(id)]);
+  const hasPublishedPlan = (allPlans as Array<{ client_id?: string; status?: string; _bucket?: string }>).some(
+    (p) => p.client_id === id && ((p._bucket ?? p.status) === "published"),
+  );
+  const istToday = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  const discoveryCallDate = asYmd(cAny.discovery_call_date);
+  const tier = resolveAppTier(
+    {
+      engagementStatus: typeof cAny.engagement_status === "string" ? cAny.engagement_status : null,
+      hasPublishedPlan,
+      discoveryCallDate,
+    },
+    istToday,
+  ).tier;
+
+  const intakeSubmitted = !!String((cAny.intake_submitted_at as string | undefined) ?? "").trim();
+  const hasRecommendedOrder = orders.some((o) => o.status === "recommended");
+  const hasActiveOrder = orders.some(
+    (o) => o.status === "paid" || o.status === "booked" || o.status === "sample_collected",
+  );
+  const hasResults =
+    (Array.isArray(cAny.health_snapshots) && cAny.health_snapshots.length > 0) ||
+    orders.some((o) => o.status === "results_in");
+  const discoveryStage = resolveDiscoveryStage({
+    intakeSubmitted,
+    hasRecommendedOrder,
+    hasActiveOrder,
+    hasResults,
+    callDone: !!discoveryCallDate,
+  });
+
+  // Existing Starting Map → editor prefill (snake_case on disk → camelCase props).
+  const rawSummary = (cAny.discovery_summary ?? {}) as Record<string, unknown>;
+  const points = (v: unknown): { title: string; note: string }[] =>
+    Array.isArray(v)
+      ? v.map((it) => {
+          const o = (it ?? {}) as Record<string, unknown>;
+          return { title: typeof o.title === "string" ? o.title : "", note: typeof o.note === "string" ? o.note : "" };
+        })
+      : [];
+  const existingSummary = {
+    headline: typeof rawSummary.headline === "string" ? rawSummary.headline : "",
+    hypotheses: points(rawSummary.hypotheses),
+    foundationalChanges: points(rawSummary.foundational_changes),
+    journeyPreview: Array.isArray(rawSummary.journey_preview) ? rawSummary.journey_preview.map(String) : [],
+  };
+
   return (
     <AnalysePageShell
       clientId={id}
@@ -127,6 +192,17 @@ export default async function DiscoveryPage({
         prefillDetectionLabel={prefill.detectionLabel}
         savedLabs={savedLabs}
       />
+      {!hasPublishedPlan && (
+        <DiscoveryWorkspace
+          clientId={id}
+          tier={tier}
+          stage={discoveryStage}
+          intakeSubmitted={intakeSubmitted}
+          callDate={discoveryCallDate}
+          savedLabs={savedLabs}
+          existingSummary={existingSummary}
+        />
+      )}
     </AnalysePageShell>
   );
 }

@@ -43,7 +43,6 @@ import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
 import { DiscoveryAppCard } from "./discovery-app-card";
-import { LabRecommendCard } from "./lab-recommend-card";
 import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
 import { NasaLeanTestPanel } from "./nasa-lean-test-panel";
 import { BeightonVerifyPanel } from "./beighton-verify-panel";
@@ -1951,10 +1950,35 @@ export default async function ClientV2Page({
                       )}
           </FmGroupedPanel>
 
-          {/* 🔬 Recommend labs (Acumen) — coach approves the panel + tests for a
-              client without an active plan (discovery / lapsed); the client then
-              pays in-app. Active clients' labs ride their plan (P2). */}
-          {!publishedPlan && <LabRecommendCard clientId={client.client_id} />}
+          {/* 🔬 Recommend labs (Acumen) lives on the Discovery page now (one home
+              for the whole lab arc: recommend → client pays in-app → results →
+              Starting Map). Overview just links there. Active clients' labs ride
+              their plan (P2). */}
+          {!publishedPlan && (
+            <Link
+              href={`/clients-v2/${client.client_id}/analyse/discovery`}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 10,
+                textDecoration: "none",
+                padding: "12px 14px",
+                border: "1px solid var(--fm-border, #e6e1d6)",
+                borderRadius: "var(--fm-radius, 12px)",
+                background: "var(--fm-panel-bg, #fff)",
+                color: "var(--fm-text, #2c2a24)",
+              }}
+            >
+              <span style={{ fontSize: 13.5 }}>
+                🔬 <strong>Recommend &amp; track labs</strong>
+                <span style={{ display: "block", fontSize: 11.5, color: "var(--fm-muted, #6f6a5d)", marginTop: 2 }}>
+                  Approve the Acumen panel + tests on the Discovery page — the client books &amp; pays in-app.
+                </span>
+              </span>
+              <span style={{ color: "var(--fm-accent, #2d5a3d)", fontSize: 13, whiteSpace: "nowrap" }}>Open →</span>
+            </Link>
+          )}
 
           {/* ⚠ Clinical flags — meds + allergies. Each already hides
               itself when empty (Wave F.8); kept as standalone

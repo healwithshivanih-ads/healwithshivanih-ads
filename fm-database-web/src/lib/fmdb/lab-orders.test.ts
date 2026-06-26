@@ -158,6 +158,48 @@ describe("status machine", () => {
   });
 });
 
+describe("buildOrder — drops add-ons already inside the chosen panel", () => {
+  const prov = parseAcumen({
+    provider: { slug: "acumen-diagnostics", display_name: "Acumen", phone_e164: "+91", home_collection: true },
+    profiles_final: [
+      { id: 1, name: "Base", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000, includes: ["x"], covered_addon_slugs: ["apob"] },
+      { id: 3, name: "Perimenopause", audience: "women 40+", our_cost_inr: 13000, mrp_inr: 20000, margin_inr: 7000, includes_extra: ["y"], covered_addon_slugs: ["estradiol-e2", "fsh"] },
+    ],
+    addon_tests: [
+      { slug: "apob", name: "ApoB", quoted_inr: 650, dos_list_inr: 685 },
+      { slug: "estradiol-e2", name: "Estradiol", quoted_inr: 850, dos_list_inr: 700 },
+      { slug: "dhea-s", name: "DHEA-S", quoted_inr: 1400, dos_list_inr: 1400 },
+    ],
+  });
+
+  it("drops a profile-covered add-on, keeps an uncovered one", () => {
+    const r = buildOrder(prov, {
+      ...REC,
+      profileId: 3,
+      addons: [{ slug: "estradiol-e2", inr: 850 }, { slug: "dhea-s", inr: 1400 }],
+    });
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.order.addon_slugs).toEqual(["dhea-s"]); // estradiol dropped
+    expect(r.order.amount_inr).toBe(20000 + 1400); // profile + dhea only
+    expect(r.order.lines.some((l) => l.slug === "estradiol-e2")).toBe(false);
+  });
+
+  it("drops a Base-covered add-on (apob) even on the peri profile", () => {
+    const r = buildOrder(prov, { ...REC, profileId: 3, addons: [{ slug: "apob", inr: 650 }] });
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.order.addon_slugs).toEqual([]); // apob is Base-covered
+    expect(r.order.amount_inr).toBe(20000);
+  });
+
+  it("an all-covered, profile-less recommendation still charges (nothing covered without a panel)", () => {
+    const r = buildOrder(prov, { ...REC, profileId: null, addons: [{ slug: "apob", inr: 650 }] });
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.order.addon_slugs).toEqual(["apob"]);
+  });
+});
+
 describe("sanitizeLogistics — client-submitted collection details", () => {
   const good = {
     full_name: "  Asha Rao ",

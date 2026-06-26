@@ -42,6 +42,10 @@ profiles_final:
       - "Homocysteine & methylation"
       - "Liver & kidney function, full blood count"
       - "Morning cortisol"
+    # add-on slugs already inside this panel — hidden from the add-on picker (and
+    # dropped server-side) when this profile is chosen, so a test is never
+    # recommended + charged twice. Gender/age profiles inherit this Base set.
+    covered_addon_slugs: [apob, apoa1, lp-a, am-cortisol]
   - id: 2
     name: "Women's Reproductive"
     audience: "women <45"
@@ -51,6 +55,7 @@ profiles_final:
     includes_extra:
       - "Reproductive hormones — estradiol, progesterone, LH, FSH, AMH"
       - "Women's screening — CA-125, CA 15.3"
+    covered_addon_slugs: [estradiol-e2, progesterone, lh, fsh, amh, ca-125, ca-15-3]
   - id: 3
     name: "Perimenopause"
     audience: "women 40+"
@@ -60,6 +65,7 @@ profiles_final:
     includes_extra:
       - "Perimenopause hormones — FSH, LH, estradiol, progesterone"
       - "Women's screening — CA-125, CA 15.3"
+    covered_addon_slugs: [fsh, lh, estradiol-e2, progesterone, ca-125, ca-15-3]
   - id: 4
     name: "Male"
     audience: men
@@ -69,6 +75,7 @@ profiles_final:
     includes_extra:
       - "Male hormones — total & free testosterone, SHBG"
       - "Men's screening — PSA (total & free), CEA"
+    covered_addon_slugs: [total-testosterone, free-testosterone, shbg, psa-total, psa-free, cea]
 # Base (Profile 1) contents: CBC, ESR, LFT, KFT, fasting glucose, fasting insulin, PP glucose,
 #   PP insulin, HbA1c, HOMA-IR, TSH, free T3, free T4, anti-TPO, anti-Tg, lipid, ApoB, ApoA1,
 #   Lp(a), hs-CRP, homocysteine, iron studies, vitamin D, active B12 (HoloTC), morning cortisol.
