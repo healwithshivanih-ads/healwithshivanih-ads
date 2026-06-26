@@ -1,0 +1,34 @@
+slug: oat-is-an-integrated-metabolic-map-not-isolated-markers
+statement: The Organic Acids Test (OAT) is best read as an integrated metabolic map — connecting
+  mitochondrial function, neurotransmitter metabolism, detoxification and microbial (yeast/bacterial)
+  activity — rather than as a list of isolated markers, and requires clinical correlation to
+  interpret.
+evidence_tier: plausible_emerging
+rationale: OAT markers reflect interlinked pathways, so patterns across markers carry more meaning
+  than any single value; yeast and bacterial metabolites can correlate with mood and cognition,
+  and detox markers can reflect mitochondrial stress. Interpretation depends on correlating
+  findings with symptoms and timeline, which is a trained-practitioner task.
+coaching_translation: The OAT isn't a checklist of separate results — it's a map showing how
+  energy, brain chemistry, detox and gut microbes interact. It needs a trained practitioner
+  to interpret alongside the person's symptoms; a coach can understand the categories but shouldn't
+  interpret the report.
+caveats:
+- Source is Instagram educational content.
+- OAT interpretation belongs to a trained practitioner; the coach supports lifestyle change,
+  not lab interpretation.
+linked_to_topics: []
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- gut-brain-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: Functional-test interpretation is outside coaching scope; understand the
+  framework, refer interpretation to a clinician.
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DY4e-xDjOGt/
+  quote: The OAT is not just a lab. It is a metabolic map of mitochondria, neurotransmitters,
+    detox pathways and the microbiome. Single markers should never be interpreted in isolation.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

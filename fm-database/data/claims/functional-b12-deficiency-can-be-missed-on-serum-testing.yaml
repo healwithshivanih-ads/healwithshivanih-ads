@@ -1,0 +1,30 @@
+slug: functional-b12-deficiency-can-be-missed-on-serum-testing
+statement: A functional B12 deficiency can exist despite a 'normal' serum B12, because serum
+  level does not reflect cellular utilisation — functional markers such as methylmalonic acid
+  (e.g. on an OAT or standalone test) reveal it.
+evidence_tier: plausible_emerging
+rationale: Serum B12 measures circulating, not intracellularly used, vitamin, so it can read
+  normal while tissue function is impaired. Elevated methylmalonic acid is a more sensitive
+  functional marker of B12 insufficiency, which is why some deficiencies are only caught on
+  organic-acid or MMA testing rather than serum panels.
+coaching_translation: A 'normal' B12 blood test doesn't always mean B12 is doing its job inside
+  the cells. A functional marker (methylmalonic acid) can reveal a hidden shortfall — worth
+  discussing with the client's doctor if symptoms persist despite normal serum B12.
+caveats:
+- Source is Instagram educational content.
+- Testing choice and interpretation are clinician decisions; the coach flags the possibility
+  and refers.
+linked_to_topics: []
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements: []
+out_of_scope_notes: Ordering and interpreting functional B12 testing is a clinician task.
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DY4e-xDjOGt/
+  quote: Functional B12 deficiency missed on standard serum testing. The OAT reveals functional
+    B12 deficiency.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

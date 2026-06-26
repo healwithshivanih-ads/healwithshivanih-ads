@@ -1,0 +1,29 @@
+slug: patient-language-patterns-are-clinical-clues
+statement: The exact phrases clients repeat ('I'm tired but I can't sleep', 'I crash every afternoon',
+  'I look six months pregnant by evening') are clinical clues pointing toward underlying physiology,
+  and are worth documenting verbatim.
+evidence_tier: fm_specific_thin
+rationale: Clients describe their physiology in everyday language; recurring phrases and metaphors
+  often map onto patterns (tired-but-wired to cortisol rhythm, afternoon crash to blood-sugar
+  dysregulation, evening distension to fermentation/bloating) that structured questionnaires
+  can flatten. Capturing exact wording preserves diagnostic signal.
+coaching_translation: Listen for the phrases people repeat — 'tired but wired,' 'afternoon crash,'
+  'bloated by evening.' Write them down word-for-word; they often hint at what's going on under
+  the surface better than a tidy symptom list.
+caveats:
+- Source is Instagram educational content; practitioner heuristic.
+- Clues guide questions, not diagnoses; stay within scope.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DZH8SH0jD0v/
+  quote: Patients often tell you the diagnosis before they tell you the symptom. Document the
+    patient's exact words.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

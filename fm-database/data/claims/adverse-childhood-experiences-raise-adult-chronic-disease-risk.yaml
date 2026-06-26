@@ -1,0 +1,35 @@
+slug: adverse-childhood-experiences-raise-adult-chronic-disease-risk
+statement: Higher adverse childhood experience (ACE) scores are associated with increased
+  adult risk of cardiovascular disease, obesity, type 2 diabetes, autoimmune conditions,
+  mood disorders and chronic pain, mediated through toxic-stress physiology.
+evidence_tier: plausible_emerging
+rationale: Early-life adversity can durably shape HPA-axis set-point, immune regulation
+  and metabolic programming, so its health effects persist for decades rather than staying
+  "in childhood." Large epidemiological cohorts link higher ACE scores to graded increases
+  in cardiometabolic, autoimmune and mental-health outcomes — making life history a relevant
+  part of understanding why chronic symptoms persist across systems.
+coaching_translation: Difficult experiences in childhood can leave a lasting imprint on
+  the body's stress and immune systems, raising the risk of conditions like heart disease,
+  diabetes and anxiety later in life — which is why your history matters, not just your
+  current symptoms.
+caveats:
+- Source is Instagram educational content.
+- ACEs are a risk pattern, not a diagnosis; screen gently and within scope, and refer
+  trauma work to appropriately trained professionals.
+linked_to_topics:
+- adverse-childhood-experiences-aces
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: Trauma assessment and treatment belong to appropriately trained mental-health
+  professionals; the coach educates and refers.
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DZhqvq7DPdo/
+  quote: ACEs influence health through toxic stress physiology. Higher ACE scores are
+    linked to greater health risk — cardiovascular disease, insulin resistance, autoimmune
+    conditions, anxiety and depression.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

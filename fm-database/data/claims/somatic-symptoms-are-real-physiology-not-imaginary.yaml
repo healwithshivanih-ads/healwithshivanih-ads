@@ -1,0 +1,33 @@
+slug: somatic-symptoms-are-real-physiology-not-imaginary
+statement: Somatic symptoms (chronic pain, fatigue, palpitations, digestive upset without clear
+  structural findings) are biologically real expressions of nervous-system physiology, not imagined
+  — though medical causes must be ruled out first.
+evidence_tier: plausible_emerging
+rationale: The nervous system influences every organ system through measurable autonomic, endocrine
+  and immune pathways. Symptoms that persist after structural and medical causes are excluded
+  often reflect nervous-system dysregulation rather than imagination. Validating them as real
+  physiology improves engagement and outcomes, but ruling out medical causes remains the first
+  step.
+coaching_translation: When tests come back clear but symptoms are real, it doesn't mean 'it's
+  all in your head.' The nervous system can genuinely produce pain, fatigue and gut symptoms
+  — and that's a real, workable pattern, once a doctor has ruled out other causes.
+caveats:
+- Source is Instagram educational content.
+- Rule out medical causes first; refer when mental-health support is indicated.
+linked_to_topics:
+- somatic-body-memory
+- nervous-system-regulation
+linked_to_mechanisms:
+- gut-brain-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: Medical evaluation to exclude organic causes is a clinician responsibility,
+  not a coaching task.
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DZfHt3ejOq2/
+  quote: Somatic symptoms are biologically real. This is not 'all in the head.' Rule out medical
+    causes before considering somatic drivers.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

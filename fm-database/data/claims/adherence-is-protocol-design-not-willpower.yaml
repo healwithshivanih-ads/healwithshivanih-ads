@@ -1,0 +1,29 @@
+slug: adherence-is-protocol-design-not-willpower
+statement: 'Poor adherence is usually a design problem, not a motivation problem: overly complex
+  protocols create decision fatigue, and a simpler plan a client can actually follow outperforms
+  an ideal plan they cannot.'
+evidence_tier: plausible_emerging
+rationale: Behavior-change research consistently shows that simplicity, one high-impact change
+  at a time, connection to the client's personal 'why,' accountability and small wins drive
+  follow-through far more than willpower. Complexity and shame after setbacks are the main drivers
+  of drop-off.
+coaching_translation: If a plan isn't being followed, the plan is usually too much — not the
+  person too weak. Start with one change that matters, tie it to what they care about, and build
+  from small wins. The plan that gets done beats the perfect plan that doesn't.
+caveats:
+- Source is Instagram educational content.
+- Individualise to the client's life, time and resources.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DZCxdnnDIVh/
+  quote: Compliance is rarely about willpower. It's about design, support, simplicity and meaning.
+    Start with one high-impact change, not ten.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani
