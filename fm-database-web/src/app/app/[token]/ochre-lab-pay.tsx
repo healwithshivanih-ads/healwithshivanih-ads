@@ -46,9 +46,12 @@ const EMPTY_FORM: LogisticsForm = {
   notes: "",
 };
 
-/** Today (local device day) as YYYY-MM-DD — the date-picker floor. */
-function todayLocalYmd(): string {
-  return new Date().toLocaleDateString("en-CA");
+/** Earliest bookable collection day = local today + 2 (48-hour lead time so the
+ *  lab can arrange home collection). The server re-checks this against IST. */
+function minCollectionYmd(): string {
+  const d = new Date();
+  d.setDate(d.getDate() + 2);
+  return d.toLocaleDateString("en-CA");
 }
 
 const FIELD: CSSProperties = {
@@ -243,7 +246,10 @@ export function LabOrdersCard() {
               <textarea style={{ ...FIELD, minHeight: 56, resize: "vertical" }} placeholder="Collection address (flat, building, area, landmark)" value={form.address} onChange={(e) => setField("address", e.target.value)} />
               <div style={{ display: "flex", gap: 9 }}>
                 <input style={{ ...FIELD, flex: 1 }} placeholder="Pincode" inputMode="numeric" maxLength={6} value={form.pincode} onChange={(e) => setField("pincode", e.target.value.replace(/\D/g, ""))} />
-                <input style={{ ...FIELD, flex: 1 }} type="date" min={todayLocalYmd()} value={form.preferred_date} onChange={(e) => setField("preferred_date", e.target.value)} />
+                <input style={{ ...FIELD, flex: 1 }} type="date" min={minCollectionYmd()} value={form.preferred_date} onChange={(e) => setField("preferred_date", e.target.value)} />
+              </div>
+              <div style={{ fontSize: 11, color: "var(--muted, #6f6a5d)", marginTop: -3 }}>
+                Earliest collection is 2 days away — we need ~48 hours to arrange your home visit.
               </div>
               <select style={FIELD} value={form.preferred_slot} onChange={(e) => setField("preferred_slot", e.target.value)}>
                 <option value="">Preferred time slot…</option>
