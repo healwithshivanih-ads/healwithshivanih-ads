@@ -19,8 +19,7 @@ import { useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import { FmPanel } from "@/components/fm";
 import { LabRecommendCard } from "../../lab-recommend-card";
-import { SendDiscoveryLabsButton } from "../send-discovery-labs-button";
-import { groupsForMarkers } from "@/lib/fmdb/lab-panels";
+import { DiscoveryBookingSend } from "./discovery-booking-send";
 import type { DiscoveryStage } from "@/lib/fmdb/discovery-tier";
 
 interface LabSend {
@@ -382,23 +381,30 @@ function StartingMapEditor({
 }
 
 export function DiscoveryWorkspace({ clientId, tier, stage, intakeSubmitted, callDate, savedLabs, labSend, existingSummary }: Props) {
-  // Bump the live phone preview after a recommend so the client's new pay screen shows.
+  const router = useRouter();
+  // Bump the live phone preview after a recommend; also refresh the page so the
+  // server-computed stage (= "a package is recommended") updates and the email
+  // button enables.
   const [previewKey, setPreviewKey] = useState(0);
-  const bumpPreview = () => setPreviewKey((k) => k + 1);
+  const onRecommended = () => {
+    setPreviewKey((k) => k + 1);
+    router.refresh();
+  };
 
-  // The ONE send surface — email the requisition (with the in-app booking path +
-  // a plain "why" from the panels picked). Shown wherever the call's lab list exists.
+  // A package has been recommended once the stage is past the pre-order stages.
+  const hasOrder = stage !== "onboard_intake" && stage !== "awaiting_recommendation";
+
+  // The ONE send surface — emails the client a single booking email built from the
+  // recommended package (matches the app booking) + any own-lab extras.
   const sendBlock =
     labSend.sessionId && savedLabs.length > 0 ? (
-      <FmPanel title="📧 Send the lab list" subtitle="Email it with the in-app booking option, or for their own lab">
-        <SendDiscoveryLabsButton
-          sessionId={labSend.sessionId}
+      <FmPanel title="📧 Email the client" subtitle="One email: the package they book + pay for in-app, plus any own-lab tests">
+        <DiscoveryBookingSend
           clientId={clientId}
           clientEmail={labSend.clientEmail}
-          labCount={savedLabs.length}
+          requestedLabs={savedLabs}
+          hasOrder={hasOrder}
           lastSentAt={labSend.lastSentAt}
-          appToken={labSend.appToken}
-          whyGroups={groupsForMarkers(savedLabs)}
         />
       </FmPanel>
     ) : null;
@@ -410,7 +416,7 @@ export function DiscoveryWorkspace({ clientId, tier, stage, intakeSubmitted, cal
   if (tier !== "discovery") {
     return (
       <div style={{ marginTop: 22, display: "grid", gap: 16 }}>
-        <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} onRecommended={bumpPreview} />
+        <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} onRecommended={onRecommended} />
         {sendBlock}
         {phone}
       </div>
@@ -425,7 +431,7 @@ export function DiscoveryWorkspace({ clientId, tier, stage, intakeSubmitted, cal
 
       {RECOMMEND_STAGES.includes(stage) && (
         <>
-          <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} onRecommended={bumpPreview} />
+          <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} onRecommended={onRecommended} />
           {sendBlock}
         </>
       )}

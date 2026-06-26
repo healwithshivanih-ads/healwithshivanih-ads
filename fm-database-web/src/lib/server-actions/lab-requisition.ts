@@ -19,6 +19,10 @@
 import { runShim } from "@/lib/fmdb/shim";
 import { sendClientEmailAction } from "@/app/api/email/actions";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { loadClientOrders } from "@/lib/fmdb/lab-orders";
+import { loadLabProvider } from "@/lib/fmdb/lab-providers";
+import { loadLabCoverage, checkCoverage } from "@/lib/fmdb/lab-coverage";
+import { groupsForMarkers } from "@/lib/fmdb/lab-panels";
 
 export interface LabRequisition {
   ok: true;
@@ -191,6 +195,124 @@ export async function emailLabRequisitionAction(input: {
         clientId: input.clientId,
         templateName: "fm_lab_reminder",
         renderedBody: `📧 Emailed lab requisition to ${input.to}\nSubject: ${subject}`,
+      });
+    } catch { /* never block on audit */ }
+  }
+  return sent;
+}
+
+/**
+ * The discovery BOOKING email — matches the app booking exactly. Built from the
+ * client's latest recommended Acumen order: it leads with "book + pay in your
+ * app" (the package the order covers) and lists ONLY the markers our partner
+ * can't run ("for your own lab"). No giant requisition sheet, no second lab
+ * list that diverges from what the app books. NEVER names the partner.
+ * Two-step flow: the coach recommends a package first, then sends this.
+ */
+export async function emailLabBookingAction(input: {
+  clientId: string;
+  to: string;
+  /** the discovery call's marker list (requested_labs) — to compute own-lab extras. */
+  requestedLabs: string[];
+}): Promise<{ ok: true } | { ok: false; error: string; needsRecommend?: boolean }> {
+  const orders = await loadClientOrders(input.clientId);
+  const order = orders.find((o) => o.status !== "cancelled"); // newest-first; the live one
+  if (!order) {
+    return { ok: false, error: "Recommend a package first — the email is built from it.", needsRecommend: true };
+  }
+
+  const client = await loadClientById(input.clientId);
+  const first = typeof client?.display_name === "string" ? client.display_name.split(" ")[0] : "there";
+  const coachName = (client?.assigned_coach as string | undefined) || process.env.COACH_NAME || "Shivani";
+  const appToken = (client as { app_token?: string } | null)?.app_token;
+  const appUrl = appToken
+    ? `${(process.env.NEXT_PUBLIC_APP_URL || "https://intake.theochretree.com").replace(/\/+$/, "")}/app/${appToken}`
+    : null;
+
+  // Own-lab extras = requested markers the chosen package can't cover and the
+  // coach didn't add as an add-on (specialty / unmapped / un-added add-ons).
+  let ownLab: string[] = [];
+  const provider = await loadLabProvider();
+  if (provider && Array.isArray(input.requestedLabs) && input.requestedLabs.length) {
+    const profile = order.profile_id != null ? provider.profiles.find((p) => p.id === order.profile_id) ?? null : null;
+    const cov = checkCoverage(input.requestedLabs, profile, await loadLabCoverage(), provider.addons);
+    ownLab = [
+      ...cov.notAtAcumen,
+      ...cov.unknown,
+      ...cov.availableAsAddon.filter((a) => !order.addon_slugs.includes(a.slug)).map((a) => a.marker),
+    ];
+  }
+
+  const groups = groupsForMarkers(input.requestedLabs ?? []);
+  const why = groups.length
+    ? `These check the systems we talked through — ${groups.slice(0, -1).join(", ")}${groups.length > 1 ? ` and ${groups[groups.length - 1]}` : groups[0]} — so when we meet we're working from real numbers, not guesses.`
+    : `These give us the real numbers behind what we talked through, so when we meet we're not guessing.`;
+  const packageName = order.lines[0]?.label ?? "your lab panel";
+  const includesLis = (order.includes ?? []).map((i) => `<li>${escapeHtml(i)}</li>`).join("");
+  const ownLabLis = ownLab.map((m) => `<li>${escapeHtml(m)}</li>`).join("");
+
+  const bookBlock = appUrl
+    ? `<div style="background:#e9efe9;border-radius:10px;padding:14px 16px;margin:16px 0;">
+         <div style="font-weight:700;color:#4a6152;">✅ Book + pay in your app</div>
+         <div style="font-size:13.5px;margin:4px 0 10px;">Home sample collection — and your results come straight back to me.</div>
+         <a href="${appUrl}" style="display:inline-block;background:#4a6152;color:#fff;text-decoration:none;padding:9px 18px;border-radius:8px;font-weight:700;">Open your app →</a>
+         <div style="font-size:13px;margin-top:12px;">This runs your <strong>${escapeHtml(packageName)}</strong>${order.addon_slugs.length ? ` (plus ${order.addon_slugs.length} add-on test${order.addon_slugs.length === 1 ? "" : "s"})` : ""}, covering:</div>
+         <ul style="margin:6px 0 0;font-size:13px;">${includesLis}</ul>
+       </div>`
+    : `<div style="background:#f3e7d3;border-radius:10px;padding:14px 16px;margin:16px 0;font-size:13.5px;">
+         I'll send your booking link in a moment so you can book these at home through our trusted labs partner.
+       </div>`;
+
+  const ownLabBlock = ownLab.length
+    ? `<div style="border:1px solid #e6dfd1;border-radius:10px;padding:14px 16px;">
+         <div style="font-weight:700;">📋 A few to do at your own lab</div>
+         <div style="font-size:13px;margin:4px 0 8px;color:#6f6a5d;">We don't run these through our partner — take this short note to any diagnostic lab you like and ask them to share the results with you.</div>
+         <ul style="margin:0;font-size:13px;">${ownLabLis}</ul>
+       </div>`
+    : "";
+
+  const htmlBody = `
+    <div style="font-family:Inter,system-ui,sans-serif;line-height:1.6;color:#262219;max-width:560px;">
+      <p>Hi ${escapeHtml(first)},</p>
+      <p>Here are your labs from our call.</p>
+      <p style="color:#6f6a5d;">${escapeHtml(why)}</p>
+      ${bookBlock}
+      ${ownLabBlock}
+      <p style="margin-top:16px;">Once everything's in, send the reports over and we'll go through them together.</p>
+      <p>Warmly,<br/>${escapeHtml(coachName)}</p>
+    </div>`.trim();
+
+  const textLines = [
+    `Hi ${first},`,
+    "",
+    "Here are your labs from our call.",
+    "",
+    why,
+    "",
+    appUrl ? `Book + pay in your app (home collection, results to me): ${appUrl}` : "I'll send your booking link in a moment.",
+    appUrl ? `This runs your ${packageName}, covering: ${(order.includes ?? []).join("; ")}` : "",
+    ownLab.length ? `\nTo do at your own lab (we don't run these): ${ownLab.join(", ")}` : "",
+    "",
+    "Once everything's in, send the reports over and we'll go through them together.",
+    "",
+    "Warmly,",
+    coachName,
+  ].filter((l) => l !== "");
+
+  const date = new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+  const sent = await sendClientEmailAction({
+    to: input.to,
+    subject: `🔬 Your labs — ${date}`,
+    htmlBody,
+    textBody: textLines.join("\n"),
+  });
+  if (sent.ok) {
+    try {
+      const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+      await recordOutboundMessageAction({
+        clientId: input.clientId,
+        templateName: "fm_lab_reminder",
+        renderedBody: `📧 Emailed lab booking to ${input.to} (${packageName}${ownLab.length ? ` + ${ownLab.length} own-lab` : ""})`,
       });
     } catch { /* never block on audit */ }
   }

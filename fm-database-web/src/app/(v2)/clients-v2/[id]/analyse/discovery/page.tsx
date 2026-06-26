@@ -186,13 +186,13 @@ export default async function DiscoveryPage({
     <AnalysePageShell
       clientId={id}
       formLabel="Discovery"
-      formHint="🔍 Discovery · 15-min fit conversation · sets the lab order in motion"
+      formHint="🔍 Discovery · 15-min fit call · capture the picture, then recommend labs below"
     >
       <FmPageHeader
         as="h2"
         size="md"
         title={<span style={{ color: "#B8770A" }}>🔍 Discovery</span>}
-        subtitle="Free 15-minute fit call. Capture the presenting concern, pick the FM lab panel, and decide on a food journal."
+        subtitle="Free 15-minute fit call. Capture the presenting concern and tick the labs to run — you'll recommend the package + email the client in the workspace below."
       />
       <DiscoveryForm
         clientId={id}
