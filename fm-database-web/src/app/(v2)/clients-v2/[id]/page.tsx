@@ -61,7 +61,6 @@ import { assessWeightProgress, estimateObservedTdee } from "@/lib/fmdb/weight-pr
 import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
 import { parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
-import { formatLongDate } from "@/lib/fmdb/format-date";
 import {
   FmAppShell,
   FmClientHeader,

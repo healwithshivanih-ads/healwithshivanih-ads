@@ -252,7 +252,9 @@ export function LabRecommendCard({
           {/* coverage of the discovery call's lab list against the chosen package */}
           {coverage && profile && (() => {
             const need = coverage.covered.length + coverage.availableAsAddon.length + coverage.notAtAcumen.length + coverage.unknown.length;
-            const allIn = coverage.availableAsAddon.length === 0 && coverage.notAtAcumen.length === 0 && coverage.unknown.length === 0;
+            if (need === 0) return null; // nothing real to assess (e.g. empty / custom-only seed)
+            // "all in" requires something actually covered — never a "✓ All 0 covered".
+            const allIn = coverage.covered.length > 0 && coverage.availableAsAddon.length === 0 && coverage.notAtAcumen.length === 0 && coverage.unknown.length === 0;
             const reqList = [...coverage.notAtAcumen, ...coverage.unknown];
             return (
               <div
