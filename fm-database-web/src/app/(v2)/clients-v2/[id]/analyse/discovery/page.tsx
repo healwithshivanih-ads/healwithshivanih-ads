@@ -3,7 +3,7 @@ import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientOrders } from "@/lib/fmdb/lab-orders";
 import { resolveAppTier, resolveDiscoveryStage } from "@/lib/fmdb/discovery-tier";
-import { parseSessionType } from "@/lib/fmdb/session-utils";
+import { parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
 import { FmPageHeader } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
 import { DiscoveryForm } from "./discovery-form";
@@ -41,7 +41,7 @@ export default async function DiscoveryPage({
   // here always match what's stored and what the Overview "send labs" card
   // will send. Parses both the top-level requested_labs field and the
   // legacy "[Requested labs: …]" coach_notes shape.
-  const savedLabs: string[] = (() => {
+  const latestDiscovery: { sid: string; labs: string[] } = (() => {
     const sorted = [...sessions].sort((a, b) =>
       String((b as { date?: string }).date ?? "").localeCompare(
         String((a as { date?: string }).date ?? ""),
@@ -51,9 +51,10 @@ export default async function DiscoveryPage({
       const sr = s as Record<string, unknown>;
       if (parseSessionType(sr.presenting_complaints as string | undefined) !== "discovery")
         continue;
+      const sid = String(sr.session_id ?? "");
       const top = sr.requested_labs;
       if (Array.isArray(top) && top.length > 0)
-        return top.map((x) => String(x)).filter(Boolean);
+        return { sid, labs: top.map((x) => String(x)).filter(Boolean) };
       const notes = String((sr.coach_notes as string | undefined) ?? "");
       const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
       if (m) {
@@ -61,11 +62,24 @@ export default async function DiscoveryPage({
           .split(/,\s*(?![^()]*\))/)
           .map((x) => x.trim())
           .filter(Boolean);
-        if (labs.length > 0) return labs;
+        if (labs.length > 0) return { sid, labs };
       }
     }
-    return [];
+    return { sid: "", labs: [] };
   })();
+  const savedLabs: string[] = latestDiscovery.labs;
+  // Single send surface: the bundle the workspace's Labs block needs to email
+  // the requisition (with the in-app booking path + a "why" from the panels).
+  const _c = client as unknown as { app_token?: string; email?: string };
+  const labSend = {
+    sessionId: latestDiscovery.sid,
+    appToken: typeof _c.app_token === "string" ? _c.app_token : null,
+    clientEmail: typeof _c.email === "string" ? _c.email : null,
+    lastSentAt: lastTemplateSentAt(
+      sessions as ReadonlyArray<{ presenting_complaints?: string | null }>,
+      "fm_lab_reminder",
+    ),
+  };
 
   // Pre-fill the discovery form from data the coach already entered when
   // creating the client. Maps active_conditions + notes → chief concern
@@ -200,6 +214,7 @@ export default async function DiscoveryPage({
           intakeSubmitted={intakeSubmitted}
           callDate={discoveryCallDate}
           savedLabs={savedLabs}
+          labSend={labSend}
           existingSummary={existingSummary}
         />
       )}

@@ -24,7 +24,6 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import {
   parseSessionType,
-  lastTemplateSentAt,
   type SessionType,
 } from "@/lib/fmdb/session-utils";
 import { loadClientJourney } from "@/lib/fmdb/client-journey";
@@ -41,7 +40,6 @@ import {
 import { HeaderAvatar } from "./header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
 import { BookSessionButton } from "@/components/client-widgets/book-session-modal";
-import { SendDiscoveryLabsButton } from "./send-discovery-labs-button";
 import { clientSubnavTabs } from "../client-subnav";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 
@@ -275,31 +273,6 @@ export default async function AnalysePage({
       )
     : null;
 
-  // Discovery-session lab list — extracted from the session so we can
-  // surface a "📤 Send labs to client" panel right next to the discovery
-  // strip. Older sessions (saved before requested_labs became a top-level
-  // field) embed the list inside coach_notes as "[Requested labs: X, Y]";
-  // we parse both shapes here so the button works for ALL discovery
-  // sessions on disk.
-  const discoveryRequestedLabs: string[] = (() => {
-    if (!lastAssessment || lastAssessmentType !== "discovery") return [];
-    const top = (lastAssessment as { requested_labs?: unknown }).requested_labs;
-    if (Array.isArray(top) && top.length > 0) {
-      return top.map((s) => String(s)).filter(Boolean);
-    }
-    const notes = (lastAssessment as { coach_notes?: string }).coach_notes ?? "";
-    const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
-    if (m) {
-      // Split between markers, not on commas inside a marker's own
-      // parentheses (e.g. "Morning Cortisol (8am, fasting)").
-      return m[1]
-        .split(/,\s*(?![^()]*\))/)
-        .map((s) => s.trim())
-        .filter(Boolean);
-    }
-    return [];
-  })();
-
   return (
     <FmAppShell
       activeNavId="clients"
@@ -424,33 +397,8 @@ export default async function AnalysePage({
               ? "Open discovery →"
               : "Open intake →"}
           </Link>
-          {/* Discovery lab list — appears when the most-recent assessment
-              is a discovery call AND requested_labs are on the session.
-              Coach can preview / email / WhatsApp the list to the client
-              without leaving this tab. */}
-          {lastAssessmentType === "discovery" &&
-            discoveryRequestedLabs.length > 0 &&
-            lastAssessmentSid && (
-              <div
-                style={{
-                  flex: "1 1 100%",
-                  paddingTop: 8,
-                  marginTop: 4,
-                  borderTop: "1px dashed rgba(46, 110, 213, 0.30)",
-                }}
-              >
-                <SendDiscoveryLabsButton
-                  sessionId={lastAssessmentSid}
-                  clientId={id}
-                  clientEmail={client.email ?? null}
-                  labCount={discoveryRequestedLabs.length}
-                  lastSentAt={lastTemplateSentAt(
-                    sessions as ReadonlyArray<{ presenting_complaints?: string }>,
-                    "fm_lab_reminder",
-                  )}
-                />
-              </div>
-            )}
+          {/* Sending the discovery lab list now lives in ONE place — the
+              Labs block on the discovery page (open it via the link above). */}
         </div>
       )}
 

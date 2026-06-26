@@ -35,6 +35,10 @@ interface Props {
    *  button renders persisted "✓ Sent X ago · Resend" state across reloads
    *  — see feedback-send-buttons-persist-state memory. */
   lastSentAt?: string | null;
+  /** Discovery app token — when set, the email offers the in-app booking path. */
+  appToken?: string | null;
+  /** Friendly system groups for the email's "why" line (from the panel pick). */
+  whyGroups?: string[];
 }
 
 export function SendDiscoveryLabsButton({
@@ -43,6 +47,8 @@ export function SendDiscoveryLabsButton({
   clientEmail,
   labCount,
   lastSentAt,
+  appToken,
+  whyGroups,
 }: Props) {
   const [pending, start] = useTransition();
   const [previewHtml, setPreviewHtml] = useState<string | null>(null);
@@ -95,7 +101,7 @@ export function SendDiscoveryLabsButton({
       if (!ok) return;
     }
     start(async () => {
-      const e = await emailLabRequisitionAction({ sessionId, clientId, to });
+      const e = await emailLabRequisitionAction({ sessionId, clientId, to, appToken, whyGroups });
       if (!e.ok) {
         toast.error(`Email failed — ${e.error}. WhatsApp NOT sent.`);
         return;

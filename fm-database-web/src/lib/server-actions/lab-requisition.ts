@@ -78,6 +78,42 @@ async function _generateLabRequisitionInternal(
  * to "Your lab requisition — <date>". The plain-text body is the
  * markdown for clients on text-only mail clients.
  */
+/** Join ["thyroid","blood sugar","iron"] → "thyroid, blood sugar and iron". */
+function _joinAnd(xs: string[]): string {
+  if (xs.length <= 1) return xs[0] ?? "";
+  return `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`;
+}
+
+/** The two-path discovery email intro: a plain "why", then BOTH ways to get the
+ *  labs done — book in-app via "our trusted labs partner" (never named), or use
+ *  any lab they like. Path 1 only appears when an app link (token) exists. */
+function _discoveryIntro(opts: { first: string; coachName: string; groups: string[]; appUrl: string | null }): string {
+  const { first, coachName, groups, appUrl } = opts;
+  const why = groups.length
+    ? `A quick word on why: these check the systems we talked through — ${_joinAnd(groups)} — so when we meet we're working from real numbers, not guesses.`
+    : `A quick word on why: these give us the real numbers behind what we talked through, so when we meet we're not guessing.`;
+  const path1 = appUrl
+    ? `1. Book through our trusted labs partner right inside your app — they collect the sample from home and the results come straight back to me:\n   ${appUrl}\n\n`
+    : "";
+  const otherNum = appUrl ? "2" : "1";
+  return [
+    `Hi ${first},`,
+    "",
+    "Here's the lab list from our call — grouped by sample type so the bloods can be done in one sitting.",
+    "",
+    why,
+    "",
+    appUrl ? "You've got two easy ways to get them done:" : "To get them done:",
+    "",
+    `${path1}${otherNum}. Or use any diagnostic lab you prefer — just hand them this sheet and ask them to share the results with you (PDF).`,
+    "",
+    "Once the reports are in, send them over and we'll go through them together.",
+    "",
+    "Warmly,",
+    coachName,
+  ].join("\n");
+}
+
 export async function emailLabRequisitionAction(input: {
   planSlug?: string;
   sessionId?: string;
@@ -85,6 +121,11 @@ export async function emailLabRequisitionAction(input: {
   to: string;
   subject?: string;
   intro?: string;
+  /** Discovery app token — when present, the email offers an in-app booking
+   *  path (link to /app/<token>) alongside the DIY path. */
+  appToken?: string | null;
+  /** Friendly system groups for the "why" line (from the FM panels picked). */
+  whyGroups?: string[];
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   const req = input.sessionId
     ? await generateDiscoveryLabRequisitionAction(input.sessionId, input.clientId)
@@ -106,9 +147,17 @@ export async function emailLabRequisitionAction(input: {
     year: "numeric",
   });
   const subject = input.subject ?? `🔬 Your lab requisition — ${date}`;
+  // Discovery sends (sessionId) get the two-path intro (book in-app OR own lab) +
+  // a plain "why"; plan sends keep the simple own-lab intro. An explicit
+  // input.intro always wins.
+  const appUrl = input.appToken
+    ? `${(process.env.NEXT_PUBLIC_APP_URL || "https://intake.theochretree.com").replace(/\/+$/, "")}/app/${input.appToken}`
+    : null;
   const intro =
     input.intro ??
-    `Hi ${first},\n\nHere's the list of labs we discussed. They're grouped by sample type so the bloods can be done in one visit, with stool / urine / breath kits collected separately at home or at the lab.\n\nYou can use whichever diagnostic lab you prefer — just hand them this sheet and ask them to share the results directly with you (PDF). Once the reports are in, send them over and we'll go through them together.\n\nWarmly,\n${coachName}`;
+    (input.sessionId
+      ? _discoveryIntro({ first, coachName, groups: input.whyGroups ?? [], appUrl })
+      : `Hi ${first},\n\nHere's the list of labs we discussed. They're grouped by sample type so the bloods can be done in one visit, with stool / urine / breath kits collected separately at home or at the lab.\n\nYou can use whichever diagnostic lab you prefer — just hand them this sheet and ask them to share the results directly with you (PDF). Once the reports are in, send them over and we'll go through them together.\n\nWarmly,\n${coachName}`);
 
   // Compose HTML: intro paragraph above the requisition body. The body
   // is already standalone HTML — we strip its <html><body> wrappers and

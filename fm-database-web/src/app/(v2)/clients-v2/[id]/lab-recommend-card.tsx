@@ -44,15 +44,18 @@ export function LabRecommendCard({
   clientId,
   seedMarkers,
   intakeSubmitted = true,
+  onRecommended,
 }: {
   clientId: string;
-  /** Markers the coach picked on the discovery panel — shown as a reference so
-   *  she maps them onto an Acumen panel (NOT auto-ticked: a fuzzy name→add-on
-   *  match could mis-charge). */
+  /** Markers the coach picked on the discovery panel — drive the coverage check
+   *  (which package covers them) and the email "why". */
   seedMarkers?: string[];
-  /** When false, recommending now would show the client a pay screen before
-   *  they've done intake — surface a soft warning (don't hard-block). */
+  /** When false, recommending is blocked (the in-app pay screen needs intake
+   *  submitted first); the requisition email is the path before then. */
   intakeSubmitted?: boolean;
+  /** Fired after a successful recommend — lets a parent refresh the live app
+   *  preview so the client's new pay screen shows. */
+  onRecommended?: () => void;
 }) {
   const [menu, setMenu] = useState<LabMenu | null>(null);
   const [orders, setOrders] = useState<LabOrder[]>([]);
@@ -165,6 +168,7 @@ export function LabRecommendCard({
       setAddonPrices({});
       setOkFlash(true);
       setTimeout(() => setOkFlash(false), 2200);
+      onRecommended?.();
     } catch (e) {
       setError(e instanceof Error ? e.message : "could not recommend");
     } finally {

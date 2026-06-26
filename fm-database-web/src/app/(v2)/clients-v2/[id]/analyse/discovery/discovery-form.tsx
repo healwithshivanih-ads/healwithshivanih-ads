@@ -21,7 +21,6 @@ import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { saveSessionAction } from "@/lib/server-actions/assess";
-import { SendDiscoveryLabsButton } from "../send-discovery-labs-button";
 import {
   FmField,
   FmInput,
@@ -350,38 +349,18 @@ export function DiscoveryForm({
         {savedLabCount > 0 && (
           <div
             style={{
-              padding: "16px 18px",
+              padding: "12px 16px",
               background: "var(--fm-surface)",
-              border: "2px solid var(--fm-primary)",
+              border: "1px solid var(--fm-border)",
               borderRadius: "var(--fm-radius-md)",
+              fontSize: 13,
+              color: "var(--fm-text-secondary)",
+              lineHeight: 1.55,
             }}
           >
-            <div
-              style={{
-                fontSize: 15,
-                fontWeight: 700,
-                marginBottom: 6,
-              }}
-            >
-              🔬 Send the lab list to {displayName.split(" ")[0]}
-            </div>
-            <p
-              style={{
-                fontSize: 13,
-                color: "var(--fm-text-secondary)",
-                margin: "0 0 12px",
-                lineHeight: 1.55,
-              }}
-            >
-              Labs are <strong>saved but not yet sent</strong>. Pick a channel
-              below — preview first if you want to review before it goes out.
-            </p>
-            <SendDiscoveryLabsButton
-              sessionId={savedSessionId}
-              clientId={clientId}
-              clientEmail={clientEmail}
-              labCount={savedLabCount}
-            />
+            ✓ <strong>{savedLabCount} lab marker{savedLabCount === 1 ? "" : "s"} saved.</strong> Pick the
+            package and send the list in the <strong>🌱 Discovery workspace just below</strong> — it shows
+            which package covers these labs and sends one email with the in-app booking link.
           </div>
         )}
 
