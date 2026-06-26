@@ -32,6 +32,10 @@ profiles_final:
     our_cost_inr: 8500
     mrp_inr: 12500
     margin_inr: 4000
+    # à-la-carte total if each test were booked individually at Acumen's catalogue
+    # (DOS list) price. Drives the strike-through "regular price" on the client app.
+    # Base = ₹18,400 per Acumen's own catalogue (negotiation doc, Tier-2 reference).
+    catalogue_inr: 18400
     includes:
       - "Full thyroid — TSH, free T3 & T4, anti-TPO & anti-Tg antibodies"
       - "Iron studies + ferritin"
@@ -52,6 +56,10 @@ profiles_final:
     our_cost_inr: 16500
     mrp_inr: 23500
     margin_inr: 7000
+    # à-la-carte = Base 18,400 + hormone block at catalogue (AMH 2400, free testo 2150,
+    # SHBG 2800, FSH 580, LH 580, E2 700, progesterone 740, prolactin 650, 17-OHP 1800,
+    # CA-125 1550, CA 15.3 1575) + total-testo & DHEA-S @ ₹500 each (no catalogue price).
+    catalogue_inr: 34925
     # Final Acumen deal: hormone block costs us ₹8,000 on top of Base (8500) = 16500.
     includes_extra:
       - "Reproductive hormones — FSH, LH, AMH, estradiol, progesterone, prolactin"
@@ -64,6 +72,9 @@ profiles_final:
     our_cost_inr: 13000
     mrp_inr: 20000
     margin_inr: 7000
+    # à-la-carte = Base 18,400 + FSH 580, LH 580, E2 700, progesterone 740, SHBG 2800,
+    # 17-OHP 1800, CA-125 1550, CA 15.3 1575 + total-testo & DHEA-S @ ₹500 each.
+    catalogue_inr: 29725
     # Final Acumen deal: hormone block costs us ₹4,500 on top of Base (8500) = 13000.
     includes_extra:
       - "Perimenopause hormones — FSH, LH, estradiol, progesterone"
@@ -76,6 +87,9 @@ profiles_final:
     our_cost_inr: 14000
     mrp_inr: 21000
     margin_inr: 7000
+    # à-la-carte = Base 18,400 + free testo 2150, SHBG 2800, E2 700, prolactin 650,
+    # LH 580, FSH 580, PSA total 1000, PSA free 1090 + total-testo, DHEA-S & CEA @ ₹500.
+    catalogue_inr: 29450
     # Final Acumen deal: hormone block costs us ₹5,500 on top of Base (8500) = 14000.
     includes_extra:
       - "Male hormones — total & free testosterone, SHBG, DHEA-S"

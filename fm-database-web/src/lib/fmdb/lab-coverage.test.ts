@@ -4,11 +4,11 @@ import type { LabProfile, LabAddon } from "./lab-providers";
 
 // Minimal profiles mirroring acumen.yaml after the hormone expansion.
 const base: LabProfile = {
-  id: 1, name: "Base Panel", audience: "everyone", ourCostInr: 8500, mrpInr: 12500, marginInr: 4000,
+  id: 1, name: "Base Panel", audience: "everyone", ourCostInr: 8500, mrpInr: 12500, marginInr: 4000, catalogueInr: 18400,
   includes: [], coveredAddonSlugs: ["apob", "apoa1", "lp-a", "am-cortisol"],
 };
 const peri: LabProfile = {
-  id: 3, name: "Perimenopause", audience: "women 40+", ourCostInr: 13000, mrpInr: 20000, marginInr: 7000,
+  id: 3, name: "Perimenopause", audience: "women 40+", ourCostInr: 13000, mrpInr: 20000, marginInr: 7000, catalogueInr: 29725,
   includes: [], coveredAddonSlugs: ["apob", "apoa1", "lp-a", "am-cortisol", "fsh", "lh", "estradiol-e2", "progesterone", "dhea-s", "total-testosterone", "shbg", "ca-125", "ca-15-3"],
 };
 

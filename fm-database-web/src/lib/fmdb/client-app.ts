@@ -40,7 +40,28 @@ import {
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
+import { loadLabProvider } from "@/lib/fmdb/lab-providers";
 import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions/clients";
+
+/** Project stored lab orders for the client app: (1) redact `our_cost_inr` (the
+ *  coach's wholesale cost must never reach the client payload), (2) attach
+ *  `list_inr` — the à-la-carte catalogue total — so the app can show the deal
+ *  (strike-through "regular price" + savings). `list_inr` is display-only and
+ *  never written to disk. One provider load per call; fails soft to no-deal. */
+async function projectClientLabOrders(clientId: string): Promise<LabOrder[]> {
+  const orders = (await loadClientOrders(clientId)).map((o) => ({ ...o, our_cost_inr: 0 }));
+  if (orders.length === 0) return orders;
+  const provider = await loadLabProvider().catch(() => null);
+  if (!provider) return orders;
+  const profileCat = new Map(provider.profiles.map((p) => [p.id, p.catalogueInr] as const));
+  const addonCat = new Map(provider.addons.map((a) => [a.slug, a.catalogueInr] as const));
+  return orders.map((o) => {
+    const base = o.profile_id != null ? profileCat.get(o.profile_id) ?? null : null;
+    if (base == null) return { ...o, list_inr: null };
+    const addons = o.addon_slugs.reduce((sum, s) => sum + (addonCat.get(s) ?? 0), 0);
+    return { ...o, list_inr: base + addons };
+  });
+}
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
 
@@ -2429,7 +2450,7 @@ async function buildDiscoveryAppData(
     { mode: "discovery", targetedMarkers: [], concernTerms },
   );
   // Redact our_cost_inr — never expose the coach's wholesale cost to the client.
-  const discoveryLabOrders = (await loadClientOrders(clientId)).map((o) => ({ ...o, our_cost_inr: 0 }));
+  const discoveryLabOrders = await projectClientLabOrders(clientId);
 
   // today (IST) — only the chrome reads this; weekStrip is empty in discovery.
   const now = new Date();
@@ -4512,10 +4533,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     { mode: "plan", targetedMarkers, concernTerms },
   );
 
-  // Coach-recommended lab orders (Acumen) — payable in app. Redact our_cost_inr:
-  // it's the coach's wholesale cost / margin and must never reach the client's
-  // page payload. The coach dashboard reads the un-redacted order separately.
-  const labOrders = (await loadClientOrders(clientId)).map((o) => ({ ...o, our_cost_inr: 0 }));
+  // Coach-recommended lab orders (Acumen) — payable in app. Redacts our_cost_inr
+  // and attaches list_inr (à-la-carte deal anchor); the coach dashboard reads the
+  // un-redacted order separately.
+  const labOrders = await projectClientLabOrders(clientId);
 
   // ── Tissue salts (Schüssler) — gentle optional adjunct ─────────────────
   // Only when the client is on the schussler_salts module AND the plan carries
