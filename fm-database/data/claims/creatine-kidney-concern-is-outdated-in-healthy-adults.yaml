@@ -1,0 +1,31 @@
+slug: creatine-kidney-concern-is-outdated-in-healthy-adults
+statement: The belief that creatine monohydrate damages the kidneys in healthy adults
+  is an outdated myth; the small rise in serum creatinine it causes reflects creatine
+  metabolism, not kidney injury.
+evidence_tier: plausible_emerging
+rationale: Creatine is metabolised to creatinine, so supplementation modestly raises serum
+  creatinine and can superficially mimic reduced kidney function on a lab report — but
+  long-term studies in healthy adults at standard doses show no harm to kidney function.
+  Caution still applies in pre-existing kidney disease, where supplementation should be
+  clinician-supervised.
+coaching_translation: Creatine has a reputation for harming the kidneys, but for healthy
+  people at normal doses that's a myth — it can nudge one kidney lab number up without
+  any actual kidney damage. Anyone with existing kidney problems should check with their
+  doctor first.
+caveats:
+- Source is Instagram educational content.
+- Does not apply to people with existing kidney disease — those cases need medical supervision.
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- creatine-monohydrate
+out_of_scope_notes: Creatine use in chronic kidney disease is a clinical decision and outside
+  coaching scope.
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DaDQ2r0DJqH/
+  quote: Common mistakes we see — avoiding supplementation due to outdated kidney myths.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

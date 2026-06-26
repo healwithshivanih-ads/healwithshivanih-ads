@@ -1,0 +1,33 @@
+slug: creatine-3-to-5g-daily-supports-brain-and-metabolic-resilience
+statement: Creatine monohydrate at 3-5 g per day supports more than muscle — it replenishes
+  phosphocreatine and cellular ATP across brain, metabolic and recovery pathways, with
+  benefits for cognitive resilience under stress and sleep deprivation.
+evidence_tier: plausible_emerging
+rationale: Creatine functions as a cellular energy buffer through the phosphocreatine-ATP
+  system in all high-energy tissues, not only skeletal muscle. A daily maintenance dose
+  of 3-5 g of creatine monohydrate is the most studied protocol and has growing evidence
+  for cognitive and mood support, particularly when ATP demand is high (stress, poor sleep,
+  post-viral fatigue), alongside its established role in muscle and recovery.
+coaching_translation: Creatine isn't just for the gym — a small daily amount (about a
+  teaspoon, 3-5 g) helps your brain and body make energy, and can help with focus and
+  recovery when you're stressed or sleeping poorly.
+caveats:
+- Source is Instagram educational content; cognitive/metabolic benefits are emerging, strongest
+  evidence remains in muscle and exercise performance.
+- Higher therapeutic doses for specific neurological indications should be clinician-supervised.
+linked_to_topics: []
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- creatine-monohydrate
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DaDQ2r0DJqH/
+  quote: Creatine supports mitochondrial efficiency, improves phosphocreatine reserves,
+    and enhances cognitive resilience under stress and sleep deprivation. 3-5 g/day supports
+    metabolic, cognitive, and muscle resilience in most adults.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani
