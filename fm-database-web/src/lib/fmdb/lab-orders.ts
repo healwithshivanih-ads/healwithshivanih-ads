@@ -67,6 +67,7 @@ const LOGISTICS_MAX = { name: 120, phone: 20, address: 400, notes: 600 } as cons
  */
 export function sanitizeLogistics(
   raw: unknown,
+  opts?: { minDateYmd?: string },
 ): { ok: true; logistics: LabOrderLogistics } | { ok: false; error: string } {
   if (!raw || typeof raw !== "object") return { ok: false, error: "collection details required" };
   const r = raw as Record<string, unknown>;
@@ -91,12 +92,18 @@ export function sanitizeLogistics(
     return { ok: false, error: "enter your full collection address" };
   }
   if (!/^\d{6}$/.test(pincode)) return { ok: false, error: "enter a valid 6-digit pincode" };
-  // Format + real-calendar check (rejects 2026-02-31). Window is not enforced
-  // here — the client form constrains it; the coach sees the requested date.
+  // Format + real-calendar check (rejects 2026-02-31).
   if (!/^\d{4}-\d{2}-\d{2}$/.test(preferred_date)) return { ok: false, error: "pick a preferred date" };
   const d = new Date(preferred_date + "T00:00:00Z");
   if (Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== preferred_date) {
     return { ok: false, error: "pick a valid date" };
+  }
+  // 48-hour lead time: the lab needs ~2 days to arrange a home collection, so the
+  // earliest bookable date is enforced here (caller passes the floor as an IST
+  // YMD). String compare is chronological for YYYY-MM-DD. The client form also
+  // sets the picker min, but this is the authoritative gate.
+  if (opts?.minDateYmd && preferred_date < opts.minDateYmd) {
+    return { ok: false, error: `the earliest home collection we can arrange is ${opts.minDateYmd} — we need about 48 hours' notice` };
   }
   if (!(LOGISTICS_SLOTS as readonly string[]).includes(preferred_slot)) {
     return { ok: false, error: "pick a time slot" };
