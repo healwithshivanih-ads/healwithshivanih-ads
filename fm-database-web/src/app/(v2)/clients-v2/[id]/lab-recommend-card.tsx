@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { FmPanel } from "@/components/fm";
 import type { LabMenu } from "@/lib/server-actions/lab-orders";
 import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
+import { checkCoverage } from "@/lib/fmdb/lab-coverage";
 
 const SLOT_LABEL: Record<LogisticsSlot, string> = {
   morning: "Morning (7–10 am)",
@@ -43,15 +44,18 @@ export function LabRecommendCard({
   clientId,
   seedMarkers,
   intakeSubmitted = true,
+  onRecommended,
 }: {
   clientId: string;
-  /** Markers the coach picked on the discovery panel — shown as a reference so
-   *  she maps them onto an Acumen panel (NOT auto-ticked: a fuzzy name→add-on
-   *  match could mis-charge). */
+  /** Markers the coach picked on the discovery panel — drive the coverage check
+   *  (which package covers them) and the email "why". */
   seedMarkers?: string[];
-  /** When false, recommending now would show the client a pay screen before
-   *  they've done intake — surface a soft warning (don't hard-block). */
+  /** When false, recommending is blocked (the in-app pay screen needs intake
+   *  submitted first); the requisition email is the path before then. */
   intakeSubmitted?: boolean;
+  /** Fired after a successful recommend — lets a parent refresh the live app
+   *  preview so the client's new pay screen shows. */
+  onRecommended?: () => void;
 }) {
   const [menu, setMenu] = useState<LabMenu | null>(null);
   const [orders, setOrders] = useState<LabOrder[]>([]);
@@ -113,6 +117,15 @@ export function LabRecommendCard({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileId]);
 
+  // Coverage of the discovery call's lab list against the chosen package.
+  const coverage =
+    menu && seedMarkers && seedMarkers.length > 0
+      ? checkCoverage(seedMarkers, profile, menu.coverage, menu.addons)
+      : null;
+  // One-click "add this marker as an add-on" — ticks it for the coach to price.
+  const addAddon = (slug: string) =>
+    setAddonPrices((prev) => (slug in prev ? prev : { ...prev, [slug]: "" }));
+
   const selectedAddons = Object.entries(addonPrices)
     .filter(([slug, v]) => priceOk(v) && !coveredSlugs.has(slug))
     .map(([slug, v]) => ({ slug, inr: Number(v) }));
@@ -128,8 +141,14 @@ export function LabRecommendCard({
   const incompleteAddons = Object.entries(addonPrices)
     .filter(([slug, v]) => v !== undefined && !priceOk(v) && !coveredSlugs.has(slug))
     .map(([slug]) => menu?.addons.find((a) => a.slug === slug)?.name ?? slug);
+  // Intake gate: recommending creates the client's in-app pay screen, so block
+  // it until intake is submitted (before then, the requisition email is the path).
   const canRecommend =
-    !busy && total > 0 && (profileId != null || selectedAddons.length > 0) && incompleteAddons.length === 0;
+    !busy &&
+    intakeSubmitted &&
+    total > 0 &&
+    (profileId != null || selectedAddons.length > 0) &&
+    incompleteAddons.length === 0;
 
   const recommend = async () => {
     setBusy(true);
@@ -149,6 +168,7 @@ export function LabRecommendCard({
       setAddonPrices({});
       setOkFlash(true);
       setTimeout(() => setOkFlash(false), 2200);
+      onRecommended?.();
     } catch (e) {
       setError(e instanceof Error ? e.message : "could not recommend");
     } finally {
@@ -186,14 +206,7 @@ export function LabRecommendCard({
         <div style={{ display: "grid", gap: 12 }}>
           {!intakeSubmitted && (
             <div style={{ fontSize: 12, color: "#b07b1e", background: "rgba(176,123,30,0.08)", border: "1px solid rgba(176,123,30,0.3)", borderRadius: 8, padding: "7px 9px", lineHeight: 1.45 }}>
-              ⚠ Intake not submitted yet — recommending now shows the client a pay screen before they&apos;ve completed it.
-            </div>
-          )}
-          {seedMarkers && seedMarkers.length > 0 && (
-            <div style={{ fontSize: 12, color: "var(--fm-text-secondary, #6f6a5d)", background: "var(--fm-surface, #faf8f3)", border: "1px solid var(--fm-border-light, #e6e1d6)", borderRadius: 8, padding: "7px 9px", lineHeight: 1.5 }}>
-              <strong style={{ color: "var(--fm-text, #2c2a24)" }}>From your discovery panel:</strong>{" "}
-              {seedMarkers.join(", ")}
-              <div style={{ marginTop: 3, fontSize: 11 }}>Pick the Acumen panel + add-ons that cover these. Anything Acumen can&apos;t run, send as a text requisition.</div>
+              ⚠ Intake not submitted yet — recommending is disabled until it is. You can still send the lab list by email below.
             </div>
           )}
           {/* profile picker */}
@@ -235,6 +248,70 @@ export function LabRecommendCard({
               No profile (add-ons only)
             </button>
           </div>
+
+          {/* coverage of the discovery call's lab list against the chosen package */}
+          {coverage && profile && (() => {
+            const need = coverage.covered.length + coverage.availableAsAddon.length + coverage.notAtAcumen.length + coverage.unknown.length;
+            if (need === 0) return null; // nothing real to assess (e.g. empty / custom-only seed)
+            // "all in" requires something actually covered — never a "✓ All 0 covered".
+            const allIn = coverage.covered.length > 0 && coverage.availableAsAddon.length === 0 && coverage.notAtAcumen.length === 0 && coverage.unknown.length === 0;
+            const reqList = [...coverage.notAtAcumen, ...coverage.unknown];
+            return (
+              <div
+                style={{
+                  border: `1px solid ${allIn ? "rgba(47,122,63,0.35)" : "rgba(176,123,30,0.4)"}`,
+                  background: allIn ? "rgba(47,122,63,0.06)" : "rgba(176,123,30,0.07)",
+                  borderRadius: 8,
+                  padding: "9px 11px",
+                  display: "grid",
+                  gap: 7,
+                  fontSize: 12.5,
+                }}
+              >
+                {allIn ? (
+                  <div style={{ color: "#2f7a3f", fontWeight: 600 }}>
+                    ✓ All {need} marker{need === 1 ? "" : "s"} from your call are in {profile.name}.
+                  </div>
+                ) : (
+                  <div style={{ color: "#92600a", fontWeight: 600 }}>
+                    {coverage.covered.length} of {need} markers are in {profile.name} — {need - coverage.covered.length} {need - coverage.covered.length === 1 ? "isn't" : "aren't"}:
+                  </div>
+                )}
+
+                {coverage.availableAsAddon.length > 0 && (
+                  <div style={{ display: "grid", gap: 4 }}>
+                    <div style={{ fontSize: 11, color: "var(--fm-text-tertiary, #8a8378)" }}>Add to this booking (our partner can run these):</div>
+                    {coverage.availableAsAddon.map((a) => {
+                      const added = a.slug in addonPrices;
+                      const cost = menu?.addons.find((x) => x.slug === a.slug)?.ourCostInr;
+                      return (
+                        <div key={a.slug} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <span style={{ flex: 1 }}>
+                            {a.marker}
+                            {cost != null && <span style={{ color: "var(--fm-text-tertiary, #8a8378)", fontSize: 11 }}> · our cost {inr(cost)}</span>}
+                          </span>
+                          {added ? (
+                            <span style={{ fontSize: 11.5, color: "#2f7a3f" }}>✓ added — set price below</span>
+                          ) : (
+                            <button type="button" className="fm-btn" style={{ fontSize: 11, padding: "2px 8px" }} onClick={() => addAddon(a.slug)}>
+                              + Add
+                            </button>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {reqList.length > 0 && (
+                  <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary, #6f6a5d)", lineHeight: 1.5 }}>
+                    <strong>Send as a requisition</strong> (their own lab — not run by our partner): {reqList.join(", ")}.
+                    <span style={{ display: "block", fontSize: 11, marginTop: 2 }}>Use the &quot;Email the lab list&quot; option below for these.</span>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
 
           {/* add-ons — coach sets each price */}
           <div style={{ display: "grid", gap: 6 }}>

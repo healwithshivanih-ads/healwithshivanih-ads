@@ -81,6 +81,9 @@ export interface LabMenu {
   /** add-on catalogue (clientInr is null — coach sets the price per recommendation). */
   addons: { slug: string; name: string; ourCostInr: number | null }[];
   homeCollection: boolean;
+  /** FM-marker → Acumen coverage map, for the "is the call's lab list covered by
+   *  this package?" check (lab-coverage.ts). */
+  coverage: import("@/lib/fmdb/lab-coverage").LabCoverageRegistry;
 }
 
 /** Load the menu the coach builder renders: all profiles + which are suggested
@@ -92,12 +95,14 @@ export async function loadLabMenuAction(clientId: string): Promise<LabMenu | { o
   const client = await readClient(clientId);
   if (!client) return { ok: false, error: "client not found" };
   const { sex, age } = clientSexAge(client);
+  const { loadLabCoverage } = await import("@/lib/fmdb/lab-coverage");
   return {
     ok: true,
     profiles: provider.profiles,
     suggestedIds: profilesForClient(provider, { sex, age }).map((p) => p.id),
     addons: provider.addons.map((a: LabAddon) => ({ slug: a.slug, name: a.name, ourCostInr: a.ourCostInr })),
     homeCollection: provider.homeCollection,
+    coverage: await loadLabCoverage(),
   };
 }
 

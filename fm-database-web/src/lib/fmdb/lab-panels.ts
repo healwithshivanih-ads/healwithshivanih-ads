@@ -251,3 +251,42 @@ export const DEFAULT_DISCOVERY_PANELS = new Set<string>([
   "Lipid Panel",
   "Complete Blood Count",
 ]);
+
+/** Friendly, client-readable label per panel group — for the lab email's
+ *  plain "why these labs" line. Falls back to the lowercased group name. */
+const FRIENDLY_GROUP: Record<string, string> = {
+  "Thyroid Function": "thyroid",
+  "Blood Sugar & Insulin": "blood sugar",
+  "Inflammation": "inflammation",
+  "Lipid Panel": "cholesterol",
+  "Complete Blood Count": "blood count",
+  "Metabolic Panel": "liver & kidney",
+  "Nutrients": "key nutrients",
+  "Sex Hormones — Female": "hormones",
+  "Sex Hormones — Common": "hormones",
+  "Adrenal & Stress": "stress hormones",
+  "Cardiovascular Risk": "heart risk",
+  "Methylation & Genetics": "methylation",
+  "Autoimmune Screening": "autoimmune markers",
+  "Cancer Screening": "screening markers",
+  "Gut Health": "gut",
+  "Routine": "routine bloods",
+};
+
+/** The unique friendly system groups the given markers belong to — drives the
+ *  email's "why" line (e.g. ["thyroid","blood sugar","hormones"]). */
+export function groupsForMarkers(markers: string[]): string[] {
+  const want = new Set(markers.map((m) => m.replace(/\s*\(custom\)\s*$/i, "").trim()));
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const panel of LAB_PANELS) {
+    if (panel.labs.some((l) => want.has(l.name))) {
+      const friendly = FRIENDLY_GROUP[panel.group] ?? panel.group.toLowerCase();
+      if (!seen.has(friendly)) {
+        seen.add(friendly);
+        out.push(friendly);
+      }
+    }
+  }
+  return out;
+}

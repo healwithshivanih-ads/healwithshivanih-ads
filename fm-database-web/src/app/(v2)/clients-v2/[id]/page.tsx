@@ -32,7 +32,6 @@ import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { CoachNotesButton } from "@/components/client-widgets/coach-notes-launcher";
 import { SendIntakeFormButton } from "./send-intake-form-button";
-import { OverviewSendLabsCard } from "./overview-send-labs-card";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
 import { Tier1AdvisoryCard } from "./tier1-advisory-card";
@@ -62,7 +61,6 @@ import { assessWeightProgress, estimateObservedTdee } from "@/lib/fmdb/weight-pr
 import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
 import { parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
-import { formatLongDate } from "@/lib/fmdb/format-date";
 import {
   FmAppShell,
   FmClientHeader,
@@ -1435,18 +1433,17 @@ export default async function ClientV2Page({
                 <OverviewPlanLabsCard plan={publishedPlan} today={todayStr} />
               ) : (
                 latestDiscoveryWithLabs && (
-                  <OverviewSendLabsCard
-                    clientId={client.client_id}
-                    sessionId={latestDiscoveryWithLabs.sessionId}
-                    labCount={latestDiscoveryWithLabs.labs.length}
-                    clientEmail={(client as unknown as { email?: string | null }).email ?? null}
-                    discoveryDateLabel={
-                      latestDiscoveryWithLabs.date
-                        ? formatLongDate(latestDiscoveryWithLabs.date)
-                        : null
-                    }
-                    lastSentAt={lastLabsSentAt}
-                  />
+                  <div style={{ fontSize: 12.5, color: "var(--fm-text-secondary, #6f6a5d)", lineHeight: 1.6 }}>
+                    {latestDiscoveryWithLabs.labs.length} lab{latestDiscoveryWithLabs.labs.length === 1 ? "" : "s"} from the discovery call.
+                    {lastLabsSentAt ? <span style={{ color: "#2f7a3f", fontWeight: 600 }}> ✓ Sent.</span> : null}
+                    <br />
+                    <Link
+                      href={`/clients-v2/${client.client_id}/analyse/discovery`}
+                      style={{ color: "var(--fm-accent, #2d5a3d)", textDecoration: "none" }}
+                    >
+                      Recommend a package + send the list on the Discovery page →
+                    </Link>
+                  </div>
                 )
               )}
             </StageGate>

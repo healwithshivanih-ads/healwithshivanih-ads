@@ -19,7 +19,54 @@ import { useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import { FmPanel } from "@/components/fm";
 import { LabRecommendCard } from "../../lab-recommend-card";
+import { SendDiscoveryLabsButton } from "../send-discovery-labs-button";
+import { groupsForMarkers } from "@/lib/fmdb/lab-panels";
 import type { DiscoveryStage } from "@/lib/fmdb/discovery-tier";
+
+interface LabSend {
+  sessionId: string;
+  appToken: string | null;
+  clientEmail: string | null;
+  lastSentAt: string | null;
+}
+
+/** Collapsible phone-frame preview of the REAL client app (an iframe of
+ *  /app/<token>) — shows the exact discovery/labs screen the client sees. */
+function ClientAppPhone({ token, reloadKey }: { token: string; reloadKey: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <FmPanel title="👁 What the client sees" subtitle="The live app — updates as you recommend">
+      {!open ? (
+        <button type="button" className="fm-btn" onClick={() => setOpen(true)}>
+          📲 Show the client&apos;s app
+        </button>
+      ) : (
+        <div style={{ display: "grid", gap: 8, justifyItems: "center" }}>
+          <div
+            style={{
+              borderRadius: 36,
+              border: "10px solid #2c2a26",
+              boxShadow: "0 12px 40px rgba(38,34,25,0.25)",
+              overflow: "hidden",
+              width: 375,
+              background: "#faf9f7",
+            }}
+          >
+            <iframe
+              key={reloadKey}
+              src={`/app/${token}`}
+              title="Live client app preview"
+              style={{ width: 375, height: 680, border: 0, display: "block" }}
+            />
+          </div>
+          <div style={{ fontSize: 11, color: "var(--fm-text-tertiary, #8a8378)" }}>
+            Live — exactly what the client sees. Recommend a package and it updates here.
+          </div>
+        </div>
+      )}
+    </FmPanel>
+  );
+}
 
 interface Point {
   title: string;
@@ -56,6 +103,8 @@ interface Props {
   intakeSubmitted: boolean;
   callDate: string | null;
   savedLabs: string[];
+  /** What the single send surface needs (one requisition send, in the Labs block). */
+  labSend: LabSend;
   existingSummary: SummaryDraft;
 }
 
@@ -332,13 +381,38 @@ function StartingMapEditor({
   );
 }
 
-export function DiscoveryWorkspace({ clientId, tier, stage, intakeSubmitted, callDate, savedLabs, existingSummary }: Props) {
-  // Package client with no plan yet — just the lab-recommend tool, no discovery
-  // stage framing or Starting Map (their app shows the plan, not a Starting Map).
+export function DiscoveryWorkspace({ clientId, tier, stage, intakeSubmitted, callDate, savedLabs, labSend, existingSummary }: Props) {
+  // Bump the live phone preview after a recommend so the client's new pay screen shows.
+  const [previewKey, setPreviewKey] = useState(0);
+  const bumpPreview = () => setPreviewKey((k) => k + 1);
+
+  // The ONE send surface — email the requisition (with the in-app booking path +
+  // a plain "why" from the panels picked). Shown wherever the call's lab list exists.
+  const sendBlock =
+    labSend.sessionId && savedLabs.length > 0 ? (
+      <FmPanel title="📧 Send the lab list" subtitle="Email it with the in-app booking option, or for their own lab">
+        <SendDiscoveryLabsButton
+          sessionId={labSend.sessionId}
+          clientId={clientId}
+          clientEmail={labSend.clientEmail}
+          labCount={savedLabs.length}
+          lastSentAt={labSend.lastSentAt}
+          appToken={labSend.appToken}
+          whyGroups={groupsForMarkers(savedLabs)}
+        />
+      </FmPanel>
+    ) : null;
+
+  const phone = labSend.appToken ? <ClientAppPhone token={labSend.appToken} reloadKey={previewKey} /> : null;
+
+  // Package client with no plan yet — just the lab-recommend tool + send, no
+  // discovery stage framing or Starting Map (their app shows the plan).
   if (tier !== "discovery") {
     return (
-      <div style={{ marginTop: 22 }}>
-        <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} />
+      <div style={{ marginTop: 22, display: "grid", gap: 16 }}>
+        <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} onRecommended={bumpPreview} />
+        {sendBlock}
+        {phone}
       </div>
     );
   }
@@ -350,12 +424,17 @@ export function DiscoveryWorkspace({ clientId, tier, stage, intakeSubmitted, cal
       </FmPanel>
 
       {RECOMMEND_STAGES.includes(stage) && (
-        <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} />
+        <>
+          <LabRecommendCard clientId={clientId} seedMarkers={savedLabs} intakeSubmitted={intakeSubmitted} onRecommended={bumpPreview} />
+          {sendBlock}
+        </>
       )}
 
       {MAP_STAGES.includes(stage) && (
         <StartingMapEditor clientId={clientId} stage={stage} callDate={callDate} initial={existingSummary} />
       )}
+
+      {phone}
     </div>
   );
 }
