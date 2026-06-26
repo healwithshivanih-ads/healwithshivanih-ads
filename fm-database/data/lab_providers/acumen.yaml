@@ -52,30 +52,36 @@ profiles_final:
     our_cost_inr: 16500
     mrp_inr: 23500
     margin_inr: 7000
+    # Final Acumen deal: hormone block costs us ₹8,000 on top of Base (8500) = 16500.
     includes_extra:
-      - "Reproductive hormones — estradiol, progesterone, LH, FSH, AMH"
+      - "Reproductive hormones — FSH, LH, AMH, estradiol, progesterone, prolactin"
+      - "Androgens — total & free testosterone, SHBG, DHEA-S, 17-OHP"
       - "Women's screening — CA-125, CA 15.3"
-    covered_addon_slugs: [estradiol-e2, progesterone, lh, fsh, amh, ca-125, ca-15-3]
+    covered_addon_slugs: [fsh, lh, amh, estradiol-e2, progesterone, prolactin, total-testosterone, free-testosterone, shbg, dhea-s, ca-125, ca-15-3]
   - id: 3
     name: "Perimenopause"
     audience: "women 40+"
     our_cost_inr: 13000
     mrp_inr: 20000
     margin_inr: 7000
+    # Final Acumen deal: hormone block costs us ₹4,500 on top of Base (8500) = 13000.
     includes_extra:
       - "Perimenopause hormones — FSH, LH, estradiol, progesterone"
+      - "Androgens — total testosterone, SHBG, DHEA-S, 17-OHP"
       - "Women's screening — CA-125, CA 15.3"
-    covered_addon_slugs: [fsh, lh, estradiol-e2, progesterone, ca-125, ca-15-3]
+    covered_addon_slugs: [fsh, lh, estradiol-e2, progesterone, dhea-s, total-testosterone, shbg, ca-125, ca-15-3]
   - id: 4
     name: "Male"
     audience: men
     our_cost_inr: 14000
     mrp_inr: 21000
     margin_inr: 7000
+    # Final Acumen deal: hormone block costs us ₹5,500 on top of Base (8500) = 14000.
     includes_extra:
-      - "Male hormones — total & free testosterone, SHBG"
+      - "Male hormones — total & free testosterone, SHBG, DHEA-S"
+      - "Pituitary + estrogen — LH, FSH, prolactin, estradiol"
       - "Men's screening — PSA (total & free), CEA"
-    covered_addon_slugs: [total-testosterone, free-testosterone, shbg, psa-total, psa-free, cea]
+    covered_addon_slugs: [total-testosterone, free-testosterone, shbg, dhea-s, lh, fsh, prolactin, estradiol-e2, psa-total, psa-free, cea]
 # Base (Profile 1) contents: CBC, ESR, LFT, KFT, fasting glucose, fasting insulin, PP glucose,
 #   PP insulin, HbA1c, HOMA-IR, TSH, free T3, free T4, anti-TPO, anti-Tg, lipid, ApoB, ApoA1,
 #   Lp(a), hs-CRP, homocysteine, iron studies, vitamin D, active B12 (HoloTC), morning cortisol.
