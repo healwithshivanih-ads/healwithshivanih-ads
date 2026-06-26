@@ -39,7 +39,20 @@ const ADVANCE: Partial<Record<LabOrderStatus, { to: "booked" | "sample_collected
   sample_collected: { to: "results_in", label: "Mark results in" },
 };
 
-export function LabRecommendCard({ clientId }: { clientId: string }) {
+export function LabRecommendCard({
+  clientId,
+  seedMarkers,
+  intakeSubmitted = true,
+}: {
+  clientId: string;
+  /** Markers the coach picked on the discovery panel — shown as a reference so
+   *  she maps them onto an Acumen panel (NOT auto-ticked: a fuzzy name→add-on
+   *  match could mis-charge). */
+  seedMarkers?: string[];
+  /** When false, recommending now would show the client a pay screen before
+   *  they've done intake — surface a soft warning (don't hard-block). */
+  intakeSubmitted?: boolean;
+}) {
   const [menu, setMenu] = useState<LabMenu | null>(null);
   const [orders, setOrders] = useState<LabOrder[]>([]);
   const [profileId, setProfileId] = useState<number | null>(null);
@@ -171,6 +184,18 @@ export function LabRecommendCard({ clientId }: { clientId: string }) {
         <div style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)" }}>Loading catalogue…</div>
       ) : (
         <div style={{ display: "grid", gap: 12 }}>
+          {!intakeSubmitted && (
+            <div style={{ fontSize: 12, color: "#b07b1e", background: "rgba(176,123,30,0.08)", border: "1px solid rgba(176,123,30,0.3)", borderRadius: 8, padding: "7px 9px", lineHeight: 1.45 }}>
+              ⚠ Intake not submitted yet — recommending now shows the client a pay screen before they&apos;ve completed it.
+            </div>
+          )}
+          {seedMarkers && seedMarkers.length > 0 && (
+            <div style={{ fontSize: 12, color: "var(--fm-text-secondary, #6f6a5d)", background: "var(--fm-surface, #faf8f3)", border: "1px solid var(--fm-border-light, #e6e1d6)", borderRadius: 8, padding: "7px 9px", lineHeight: 1.5 }}>
+              <strong style={{ color: "var(--fm-text, #2c2a24)" }}>From your discovery panel:</strong>{" "}
+              {seedMarkers.join(", ")}
+              <div style={{ marginTop: 3, fontSize: 11 }}>Pick the Acumen panel + add-ons that cover these. Anything Acumen can&apos;t run, send as a text requisition.</div>
+            </div>
+          )}
           {/* profile picker */}
           <div style={{ display: "grid", gap: 6 }}>
             <Label>Profile</Label>
