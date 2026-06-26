@@ -33,8 +33,8 @@ export interface PracticeOverview {
   watchList: StatusEntry[];
   stalledList: StatusEntry[];
   /** Lifecycle funnel — every non-declined client lands in exactly one stage. */
-  pipeline: { prospect: number; onboarding: number; active: number };
-  /** Most common active conditions across the whole roster. */
+  pipeline: { prospect: number; onboarding: number; active: number; maintenance: number };
+  /** Most common active conditions across the whole roster (leading concept, grouped). */
   composition: { label: string; count: number }[];
 }
 
@@ -44,11 +44,14 @@ interface OverviewInput {
     display_name?: string;
     active_conditions?: string[];
     engagement_status?: string;
+    maintenance_status?: string | null;
   }[];
   /** client_id → its single triage bucket kind (from `grouped`). */
   bucketOf: Map<string, string>;
   /** client_ids that have at least one published plan. */
   publishedPlanIds: Set<string>;
+  /** client_ids with a graduated / maintenance plan. */
+  graduatedIds: Set<string>;
   dormantIds: Set<string>;
   plateauedIds: Set<string>;
   regressedIds: Set<string>;
@@ -75,8 +78,19 @@ const ACTIVE_BUCKETS = new Set([
   "labs_pending",
 ]);
 
+/** active_conditions are verbose free-text ("Type 2 diabetes — HbA1c 6.6% …").
+ *  Reduce to the leading concept so they group across clients. */
+function normalizeCondition(raw: string): { key: string; label: string } | null {
+  const head = raw
+    .split(/\s[—–-]\s|\s*\(/)[0]
+    .trim()
+    .replace(/[:;,.]+$/, "")
+    .trim();
+  return head.length >= 2 ? { key: head.toLowerCase(), label: head } : null;
+}
+
 export function computePracticeOverview(input: OverviewInput): PracticeOverview {
-  const { clients, bucketOf, publishedPlanIds, dormantIds, plateauedIds, regressedIds } = input;
+  const { clients, bucketOf, publishedPlanIds, graduatedIds, dormantIds, plateauedIds, regressedIds } = input;
   const nameOf = (id: string) => clients.find((c) => c.client_id === id)?.display_name || id;
 
   // ── Client status (active-care clients only) ──────────────────────────────
@@ -116,8 +130,13 @@ export function computePracticeOverview(input: OverviewInput): PracticeOverview 
   let prospect = 0;
   let onboarding = 0;
   let active = 0;
+  let maintenance = 0;
   for (const c of clients) {
     if (c.engagement_status === "declined") continue;
+    if (graduatedIds.has(c.client_id) || c.maintenance_status === "active") {
+      maintenance += 1;
+      continue;
+    }
     const bucket = bucketOf.get(c.client_id) ?? "";
     if (ACTIVE_BUCKETS.has(bucket)) active += 1;
     else if (ONBOARDING_BUCKETS.has(bucket)) onboarding += 1;
@@ -127,13 +146,14 @@ export function computePracticeOverview(input: OverviewInput): PracticeOverview 
   // ── Composition (top active conditions across roster) ─────────────────────
   const counts = new Map<string, { label: string; count: number }>();
   for (const c of clients) {
+    const seen = new Set<string>();
     for (const raw of c.active_conditions ?? []) {
-      const label = String(raw).trim();
-      if (!label) continue;
-      const key = label.toLowerCase();
-      const ex = counts.get(key);
+      const norm = normalizeCondition(String(raw));
+      if (!norm || seen.has(norm.key)) continue;
+      seen.add(norm.key);
+      const ex = counts.get(norm.key);
       if (ex) ex.count += 1;
-      else counts.set(key, { label, count: 1 });
+      else counts.set(norm.key, { label: norm.label, count: 1 });
     }
   }
   const composition = [...counts.values()].sort((a, b) => b.count - a.count).slice(0, COMPOSITION_CAP);
@@ -146,7 +166,7 @@ export function computePracticeOverview(input: OverviewInput): PracticeOverview 
     onTrackPct,
     watchList: watchList.slice(0, EXCEPTION_CAP),
     stalledList: stalledList.slice(0, EXCEPTION_CAP),
-    pipeline: { prospect, onboarding, active },
+    pipeline: { prospect, onboarding, active, maintenance },
     composition,
   };
 }
