@@ -11,21 +11,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { runShim } from "@/lib/fmdb/shim";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
-
-const seen = new Map<string, { day: string; count: number }>();
-
-function throttled(token: string): boolean {
-  const day = new Date().toISOString().slice(0, 10);
-  const cur = seen.get(token);
-  if (!cur || cur.day !== day) {
-    seen.set(token, { day, count: 1 });
-    return false;
-  }
-  cur.count += 1;
-  return cur.count > 40; // generous — clients may swap several meals a day
-}
 
 function intOrNull(v: unknown): number | null {
   const n = typeof v === "number" ? v : typeof v === "string" ? parseInt(v, 10) : NaN;
@@ -43,7 +31,7 @@ export async function POST(req: NextRequest) {
   if (!token || token.length < 16) {
     return NextResponse.json({ ok: false, error: "invalid token" }, { status: 401 });
   }
-  if (throttled(token)) {
+  if (!(await allowDaily("app-swap", token, 40)).ok) {
     return NextResponse.json({ ok: false, error: "too many swaps today" }, { status: 429 });
   }
   const lookup = await resolveAppToken(token);
