@@ -20,9 +20,9 @@ Visual UI inspection was blocked twice (local Basic Auth, then the watcher/file-
 | 2a | Middleware logic made testable (`decideGate()` + 53 boundary tests) — survives a future proxy migration | ✅ done — commit `8425a9a9` |
 | — | PHI backup/DR for `~/fm-plans` | ✅ done — commit `8425a9a9` |
 | 3 | Replace in-memory `Map` rate limits with a persisted store | ✅ done — see below |
+| 4 | Token-admin UI (issued / last-opened / expiry / revoke) | ✅ done — see below |
 | 1 | EMFILE / build reliability | ⬜ open |
 | 2b | The actual `middleware.ts` → Next 16 `proxy` migration | ⬜ open |
-| 4 | Token-admin UI (issued / last-opened / expiry / revoke) | ⬜ open |
 | 6 | Split the 4 giant files (intake-form, assess-client, client-app, plan-editor) | ⬜ open |
 
 ### #3 Persistent rate limits — done 2026-06-26
@@ -45,6 +45,30 @@ full suite 194 tests green.
 
 Note: counts are per-instance (one PM2 on the Mac, one Fly machine) — a file sidecar is
 sufficient; no cross-instance store (Redis/Upstash) is warranted at this scale.
+
+### #4 Token-admin UI — done 2026-06-26
+
+New coach route **`/token-admin`** (Settings → "🔑 Token links") enumerating every
+public bearer URL across all clients + plans: the 4 token kinds (`app`, `letter`,
+`intake`, `start_confirmation`) with derived status (active / expired / finalised /
+submitted / used), expiry, first-opened (intake), what each unlocks, a masked token,
+copy-link / open, and a **revoke** button.
+
+- `src/lib/fmdb/token-admin-types.ts` — pure `buildIssuedTokens()` flattener (no fs, no
+  "use server"), unit-tested in `token-admin-types.test.ts`.
+- `src/lib/server-actions/token-admin.ts` — `listIssuedTokens()` (reads via
+  `loadAllClients`/`loadAllPlans`) + `revokeToken({kind, clientId?, planSlug?})`
+  dispatcher. intake + start_confirmation reuse the existing revoke actions; app +
+  letter are new: clear the field on disk + re-stage so the public Fly host drops it.
+- `src/app/(v2)/token-admin/{page,token-admin-client}.tsx` — server page + table.
+
+Caveats: "last opened" only exists for intake (`intake_first_opened_at`, first open
+only) — no rolling last-access is tracked for any token; the table shows what exists.
+The app/letter revoke writes locally and re-stages via the same `app-staging-action.py`
+path the issue flow uses; **its propagation to the Fly public host should be smoke-tested
+on the next deploy** (the worktree can't reach Fly). Verified here via type-check +
+unit tests (201 green); visual pass deferred — the dev server is EMFILE-flaky on this
+machine (finding #1).
 
 ## Coach/user side (Codex, not yet actioned)
 - Make the dashboard ONE "what needs my attention now" queue, not many equal-weight panels.
