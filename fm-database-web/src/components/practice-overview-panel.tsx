@@ -46,10 +46,43 @@ function ExceptionChips({ entries, color }: { entries: StatusEntry[]; color: str
   );
 }
 
-export function PracticeOverviewPanel({ data }: { data: PracticeOverview }) {
+function CompList({ title, items }: { title: string; items: { label: string; count: number }[] }) {
+  const max = Math.max(...items.map((i) => i.count), 1);
+  return (
+    <div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: "var(--fm-text-secondary)", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 6 }}>
+        {title}
+      </div>
+      {items.length === 0 ? (
+        <p style={{ fontSize: 12, color: "var(--fm-text-tertiary)", margin: 0 }}>No data yet</p>
+      ) : (
+        items.map((c) => (
+          <div key={c.label} style={{ display: "flex", alignItems: "center", gap: 10, margin: "6px 0" }}>
+            <div style={{ flex: "0 0 130px", fontSize: 12.5, color: "var(--fm-text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={c.label}>
+              {c.label}
+            </div>
+            <div style={{ flex: 1, height: 10, borderRadius: 999, overflow: "hidden", background: "var(--fm-bg-warm)" }}>
+              <div style={{ width: `${Math.round((c.count / max) * 100)}%`, height: "100%", background: C_SEV }} />
+            </div>
+            <div style={{ width: 22, textAlign: "right", fontSize: 12, fontWeight: 700, color: "var(--fm-text-secondary)" }}>{c.count}</div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+export function PracticeOverviewPanel({
+  data,
+  symptoms = [],
+  drivers = [],
+}: {
+  data: PracticeOverview;
+  symptoms?: { label: string; count: number }[];
+  drivers?: { label: string; count: number }[];
+}) {
   const { activeCare, onTrack, watch, stalled, onTrackPct } = data;
-  const maxComp = Math.max(...data.composition.map((c) => c.count), 1);
-  const pipeMax = Math.max(data.pipeline.prospect, data.pipeline.onboarding, data.pipeline.active, 1);
+  const pipeMax = Math.max(data.pipeline.prospect, data.pipeline.onboarding, data.pipeline.active, data.pipeline.maintenance, 1);
 
   return (
     <div style={{ display: "grid", gap: 14 }}>
@@ -102,25 +135,13 @@ export function PracticeOverviewPanel({ data }: { data: PracticeOverview }) {
       </FmPanel>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(0, 1fr))", gap: 14 }}>
-        {/* Composition */}
-        <FmPanel title="Top conditions across clients" subtitle="What your practice is made of">
-          {data.composition.length === 0 ? (
-            <p style={{ fontSize: 12.5, color: "var(--fm-text-secondary)", margin: 0 }}>No conditions recorded yet.</p>
-          ) : (
-            data.composition.map((c) => (
-              <div key={c.label} style={{ display: "flex", alignItems: "center", gap: 10, margin: "7px 0" }}>
-                <div style={{ flex: "0 0 130px", fontSize: 12.5, color: "var(--fm-text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {c.label}
-                </div>
-                <div style={{ flex: 1, height: 10, borderRadius: 999, overflow: "hidden", background: "var(--fm-bg-warm)" }}>
-                  <div style={{ width: `${Math.round((c.count / maxComp) * 100)}%`, height: "100%", background: C_SEV }} />
-                </div>
-                <div style={{ width: 22, textAlign: "right", fontSize: 12, fontWeight: 700, color: "var(--fm-text-secondary)" }}>
-                  {c.count}
-                </div>
-              </div>
-            ))
-          )}
+        {/* Composition — conditions + symptoms + root causes */}
+        <FmPanel title="Practice composition" subtitle="What recurs across your clients">
+          <div style={{ display: "grid", gap: 16 }}>
+            <CompList title="Top conditions" items={data.composition} />
+            <CompList title="Top symptoms" items={symptoms} />
+            <CompList title="Top root causes" items={drivers} />
+          </div>
         </FmPanel>
 
         {/* Pipeline */}
@@ -130,6 +151,7 @@ export function PracticeOverviewPanel({ data }: { data: PracticeOverview }) {
               { label: "Prospect", n: data.pipeline.prospect },
               { label: "Onboarding", n: data.pipeline.onboarding },
               { label: "Active", n: data.pipeline.active },
+              { label: "Maintenance", n: data.pipeline.maintenance },
             ] as const).map((stage, i, arr) => (
               <div key={stage.label} style={{ display: "contents" }}>
                 <div

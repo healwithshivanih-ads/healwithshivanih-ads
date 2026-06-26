@@ -31,6 +31,7 @@ import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
 import { getCohortMsqOutcomes } from "@/lib/fmdb/msq-cohort";
 import { MsqCohortPanel } from "@/components/msq-cohort-panel";
 import { computePracticeOverview } from "@/lib/fmdb/practice-overview";
+import { getRosterComposition } from "@/lib/fmdb/roster-composition";
 import { PracticeOverviewPanel } from "@/components/practice-overview-panel";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
@@ -781,17 +782,23 @@ export default async function DashboardV2() {
     for (const r of arr) bucketOf.set(r.client_id, kind);
   }
   const publishedPlanIds = new Set<string>();
+  const graduatedPlanIds = new Set<string>();
   for (const [cid, pl] of plansByClient) {
     if (pl.some((p) => p.status === "published" || p._bucket === "published")) publishedPlanIds.add(cid);
+    if (pl.some((p) => p.status === "graduated" || p._bucket === "graduated")) graduatedPlanIds.add(cid);
   }
   const overview = computePracticeOverview({
     clients: clients as ClientRow[],
     bucketOf,
     publishedPlanIds,
+    graduatedIds: graduatedPlanIds,
     dormantIds: new Set(dormantClients.map((d) => d.client_id)),
     plateauedIds: new Set(plateauedClients.map((d) => d.client_id)),
     regressedIds: new Set(regressedClients.map((d) => d.client_id)),
   });
+  // Composition extras (symptoms + root causes) — a roster-wide session scan,
+  // ported from the Phase 3 work onto the merged Practice overview.
+  const rosterComposition = await getRosterComposition(clients as Array<{ client_id: string }>);
 
   // When there's exactly ONE attention item, the dashboard tile should
   // link DIRECTLY to the relevant tab on that client (not scroll to the
@@ -1115,7 +1122,7 @@ export default async function DashboardV2() {
             highlight={overview.stalled > 0}
           />
         </FmStatGrid>
-        <PracticeOverviewPanel data={overview} />
+        <PracticeOverviewPanel data={overview} symptoms={rosterComposition.symptoms} drivers={rosterComposition.drivers} />
         <MsqCohortPanel data={msqOutcomes} />
       </div>
 
