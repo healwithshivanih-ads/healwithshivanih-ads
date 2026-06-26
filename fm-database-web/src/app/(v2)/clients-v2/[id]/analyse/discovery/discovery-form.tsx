@@ -726,7 +726,7 @@ export function DiscoveryForm({
             {totalLabs} marker{totalLabs === 1 ? "" : "s"} total
           </span>
           <span style={{ fontWeight: 700, color: "var(--fm-text-secondary)" }}>
-            Home draw available · client books direct with Thyrocare
+            These feed the package + coverage check below
           </span>
         </div>
       </FmFormSection>
@@ -809,7 +809,7 @@ export function DiscoveryForm({
           }}
           title="Save the discovery session and lab list"
         >
-          {pending ? "Saving…" : "💾 Save discovery & order labs →"}
+          {pending ? "Saving…" : "💾 Save discovery →"}
         </button>
       </div>
     </div>
