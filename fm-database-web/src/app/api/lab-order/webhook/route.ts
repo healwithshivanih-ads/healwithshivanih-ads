@@ -17,13 +17,14 @@ import { findOrderByRazorpayOrderId, loadOrder, transitionOrder, type LabOrder }
 export const dynamic = "force-dynamic";
 
 /**
- * Best-effort: ping the lab partner (Abhinav) on WhatsApp the moment a booking
- * is paid, so they can arrange the home collection. Self-contained (no "use
- * server" import) so it runs from this route; sends the Meta-approved template
- * `fm_lab_booking_v1` via the self-hosted WhatsApp server. Stays INERT until all
- * three env vars are set on Fly: WHATSAPP_SERVER_URL, WHATSAPP_SERVER_API_KEY,
- * LAB_PARTNER_WHATSAPP. Never throws into the webhook — the payment is already
- * recorded; a notify failure is logged, not surfaced.
+ * Best-effort: ping the lab partner (Abhinav) + the coach's own + admin numbers
+ * on WhatsApp the moment a booking is paid, so they can arrange the home
+ * collection. Self-contained (no "use server" import) so it runs from this route;
+ * sends the Meta-approved template `fm_lab_booking_v1` via the self-hosted
+ * WhatsApp server. Stays INERT until these env vars are set on Fly:
+ * WHATSAPP_SERVER_URL, WHATSAPP_SERVER_API_KEY, and LAB_PARTNER_WHATSAPP (a
+ * comma-separated list of recipients). Never throws into the webhook — the
+ * payment is already recorded; a notify failure is logged, not surfaced.
  *
  * Meta rejects template params containing newlines / tabs / 4+ spaces, so every
  * param is flattened to single-spaced text.
@@ -31,8 +32,17 @@ export const dynamic = "force-dynamic";
 async function notifyLabPartner(order: LabOrder): Promise<void> {
   const url = (process.env.WHATSAPP_SERVER_URL ?? "").replace(/\/$/, "");
   const apiKey = process.env.WHATSAPP_SERVER_API_KEY ?? "";
-  const to = (process.env.LAB_PARTNER_WHATSAPP ?? "").trim();
-  if (!url || !apiKey || !to) return; // not configured → no-op
+  // Comma-separated list → clean each to "+digits", drop junk, de-dup. The alert
+  // fans out to every number (lab partner + the coach's own + admin).
+  const recipients = [
+    ...new Set(
+      (process.env.LAB_PARTNER_WHATSAPP ?? "")
+        .split(",")
+        .map((s) => s.replace(/[^\d+]/g, ""))
+        .filter((s) => s.replace(/\D/g, "").length >= 8),
+    ),
+  ];
+  if (!url || !apiKey || recipients.length === 0) return; // not configured → no-op
 
   const l = order.logistics;
   if (!l) return; // no collection details → nothing actionable to send
@@ -48,32 +58,37 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
     flat(`${l.preferred_date}, ${slot}`),
   ];
 
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 6000);
-  try {
-    const res = await fetch(`${url}/api/send`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": apiKey },
-      body: JSON.stringify({
-        phone: to,
-        type: "template",
-        templateName: "fm_lab_booking_v1",
-        templateLanguage: "en",
-        templateParams: params,
-        origin: "api",
-        originRef: "lab-booking",
-      }),
-      signal: ctrl.signal,
-    });
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      console.error(`[lab-notify] WA send failed HTTP ${res.status}: ${detail.slice(0, 200)}`);
+  const sendTo = async (to: string): Promise<void> => {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 6000);
+    try {
+      const res = await fetch(`${url}/api/send`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-api-key": apiKey },
+        body: JSON.stringify({
+          phone: to,
+          type: "template",
+          templateName: "fm_lab_booking_v1",
+          templateLanguage: "en",
+          templateParams: params,
+          origin: "api",
+          originRef: "lab-booking",
+        }),
+        signal: ctrl.signal,
+      });
+      if (!res.ok) {
+        const detail = await res.text().catch(() => "");
+        console.error(`[lab-notify] WA send to ${to} failed HTTP ${res.status}: ${detail.slice(0, 200)}`);
+      }
+    } catch (e) {
+      console.error(`[lab-notify] WA send to ${to} threw:`, (e as Error).message);
+    } finally {
+      clearTimeout(timer);
     }
-  } catch (e) {
-    console.error("[lab-notify] WA send threw:", (e as Error).message);
-  } finally {
-    clearTimeout(timer);
-  }
+  };
+
+  // Independent sends — one bad number never blocks the others (or the webhook).
+  await Promise.all(recipients.map(sendTo));
 }
 
 interface RzpEntity {
