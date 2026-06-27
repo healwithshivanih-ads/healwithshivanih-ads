@@ -23,7 +23,7 @@ Visual UI inspection was blocked twice (local Basic Auth, then the watcher/file-
 | 4 | Token-admin UI (issued / last-opened / expiry / revoke) | ✅ done — see below |
 | 1 | EMFILE / build reliability | ✅ done — `npm run doctor` + runbook |
 | 2b | The actual `middleware.ts` → Next 16 `proxy` migration | ✅ done |
-| 6 | Split the 4 giant files | ◐ started — first extraction landed; plan below |
+| 6 | Split the 4 giant files | ◐ in progress — 5 extractions landed across all 4; see below |
 
 ### #3 Persistent rate limits — done 2026-06-26
 
@@ -96,21 +96,26 @@ latent quirk in `displayTiming` — the `&`/`+` separators in its guard regex ne
 word boundary around punctuation), so only the word "and" triggers the twice-daily label.
 Left verbatim here; flagged as a separate fix.
 
-**Plan for the rest (each step is independently type-check + test verifiable):**
-1. `client-app.ts` cont'd — extract the markdown-letter parsers (`parseWeekTables`,
-   `parseRecipes`, `parseSupplementRows`, `parsePhases`, …) into `client-app-letter-parse.ts`;
-   then the supplement-row matching (`suppKey`, `matchSupplementRow`, `SUPP_NAME_OVERRIDES`)
-   into `client-app-supplements.ts`. Target: < 3,000 lines.
-2. `intake-form.tsx` (5,069) — the highest-value React split. Extract each numbered
-   section into its own component file under `intake/[token]/sections/`; lift the pure
-   field-allowlist / draft-merge logic into a tested `intake-form-state.ts`.
-3. `assess-client.tsx` (4,771) — extract the sub-views (SuggestionsView, ChatPanel,
-   the picker components) into sibling files; move pure transforms to `assess-client-derive.ts`.
-4. `plan-editor.tsx` (2,888) — extract the per-section editors (already logically separate)
-   into `plan-editor/sections/`.
-   These 3 are React-component splits with no runtime verification available here (dev
-   server is EMFILE-flaky), so they should each be done in a small PR and visually smoke-
-   tested, not batched.
+**Landed so far (all pure, verbatim moves; each type-check + test verified):**
+- `client-app.ts` 4,682 → 4,521 — `client-app-format.ts` (diet/text/dose/timing, 12 tests)
+  + `client-app-supplements.ts` (row model + matcher, 4 tests).
+- `intake-form.tsx` 5,069 → 4,499 — `intake-form-options.ts` (71 option-list constants).
+- `plan-editor.tsx` 2,888 → 2,813 — `plan-editor-phases.ts` (duration/phase date math, 6 tests).
+- `assess-client.tsx` 4,771 → 4,620 — `assess-symptom-taxonomy.ts` (categories + concept
+  clusters + gender gate, 6 tests).
+
+Two latent bugs surfaced by the new tests, both preserved verbatim (refactor discipline)
+and flagged separately: `displayTiming` `&`/`+` separators never fire; `addWeeks` shifts a
+day in +offset timezones (IST).
+
+**Remaining (deeper, each its own small PR):**
+- `client-app.ts` — the markdown-letter parsers (`parseWeekTables`, `parseRecipes`,
+  `parsePhases`, …) are the entangled core (shared `WeekTable`/`LetterRecipe` types woven
+  through the loader + recipe resolver). Do incrementally, not as one big-bang.
+- The 3 React files — extract LOGIC next (intake `mergeInitial`/`buildPayload` →
+  `intake-form-state.ts`), then leaf section components into sibling files. These need a
+  working dev server to visually smoke-test (see finding #1), so each should be its own PR
+  with a visual check — not batched under type-check alone.
 
 ## Coach/user side (Codex, not yet actioned)
 - Make the dashboard ONE "what needs my attention now" queue, not many equal-weight panels.
