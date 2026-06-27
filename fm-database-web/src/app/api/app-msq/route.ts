@@ -9,22 +9,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { runShim } from "@/lib/fmdb/shim";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
-
-// an MSQ is a deliberate 5-minute exercise — nobody legitimately does 4/day
-const seen = new Map<string, { day: string; count: number }>();
-
-function throttled(token: string): boolean {
-  const day = new Date().toISOString().slice(0, 10);
-  const cur = seen.get(token);
-  if (!cur || cur.day !== day) {
-    seen.set(token, { day, count: 1 });
-    return false;
-  }
-  cur.count += 1;
-  return cur.count > 4;
-}
 
 export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
@@ -37,7 +24,7 @@ export async function POST(req: NextRequest) {
   if (!token || token.length < 16) {
     return NextResponse.json({ ok: false, error: "invalid token" }, { status: 401 });
   }
-  if (throttled(token)) {
+  if (!(await allowDaily("app-msq", token, 4)).ok) {
     return NextResponse.json({ ok: false, error: "too many submissions today" }, { status: 429 });
   }
   const lookup = await resolveAppToken(token);

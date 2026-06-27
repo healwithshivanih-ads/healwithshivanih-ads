@@ -10,22 +10,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { runShim } from "@/lib/fmdb/shim";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
 
 const DAILY_LIMIT = 15;
-const usage = new Map<string, { day: string; count: number }>();
-
-function overBudget(token: string): boolean {
-  const day = new Date().toISOString().slice(0, 10);
-  const cur = usage.get(token);
-  if (!cur || cur.day !== day) {
-    usage.set(token, { day, count: 1 });
-    return false;
-  }
-  cur.count += 1;
-  return cur.count > DAILY_LIMIT;
-}
 
 // Authoritative gates (the client-side copies in ochre-coach.tsx are a UX
 // optimization only — a direct POST skips them, so these must stand alone).
@@ -68,7 +57,7 @@ export async function POST(req: NextRequest) {
   if (DEFER_HINTS.some((h) => q.includes(h))) {
     return NextResponse.json({ ok: true, answer: "DEFER" });
   }
-  if (overBudget(token)) {
+  if (!(await allowDaily("app-copilot", token, DAILY_LIMIT)).ok) {
     return NextResponse.json({ ok: true, answer: "DEFER" });
   }
   const lookup = await resolveAppToken(token);

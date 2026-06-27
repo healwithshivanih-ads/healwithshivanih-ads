@@ -15,23 +15,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import os from "node:os";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
 
 const MAX_BYTES = 8 * 1024 * 1024; // 8 MB decoded — the app downscales to ~480px
-
-// Modest in-memory throttle — no reason to change an avatar >20×/day.
-const seen = new Map<string, { day: string; count: number }>();
-function throttled(token: string): boolean {
-  const day = new Date().toISOString().slice(0, 10);
-  const cur = seen.get(token);
-  if (!cur || cur.day !== day) {
-    seen.set(token, { day, count: 1 });
-    return false;
-  }
-  cur.count += 1;
-  return cur.count > 20;
-}
 
 function clientDir(clientId: string): string {
   const root = process.env.FMDB_PLANS_DIR
@@ -68,7 +56,7 @@ export async function POST(req: NextRequest) {
   if (!token || token.length < 16) {
     return NextResponse.json({ ok: false, error: "invalid token" }, { status: 401 });
   }
-  if (throttled(token)) {
+  if (!(await allowDaily("app-photo", token, 20)).ok) {
     return NextResponse.json({ ok: false, error: "too many updates today" }, { status: 429 });
   }
   const lookup = await resolveAppToken(token);

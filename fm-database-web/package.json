@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "doctor": "node scripts/doctor.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

@@ -13,22 +13,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { runShim } from "@/lib/fmdb/shim";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
-
-// modest in-memory throttle: no reason to log body comp >12/day
-const seen = new Map<string, { day: string; count: number }>();
-
-function throttled(token: string): boolean {
-  const day = new Date().toISOString().slice(0, 10);
-  const cur = seen.get(token);
-  if (!cur || cur.day !== day) {
-    seen.set(token, { day, count: 1 });
-    return false;
-  }
-  cur.count += 1;
-  return cur.count > 12;
-}
 
 /** Accept a finite positive number, else null (the shim re-checks bounds). */
 function num(v: unknown): number | null {
@@ -47,7 +34,7 @@ export async function POST(req: NextRequest) {
   if (!token || token.length < 16) {
     return NextResponse.json({ ok: false, error: "invalid token" }, { status: 401 });
   }
-  if (throttled(token)) {
+  if (!(await allowDaily("app-body", token, 12)).ok) {
     return NextResponse.json({ ok: false, error: "too many updates today" }, { status: 429 });
   }
   const lookup = await resolveAppToken(token);
