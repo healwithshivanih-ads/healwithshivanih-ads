@@ -1,0 +1,28 @@
+slug: symptom-timing-and-triggers-reveal-root-cause
+statement: When symptoms started, and what preceded them (a stressor, illness, medication, or
+  life event), often reveals the root cause more reliably than the list of symptoms itself.
+evidence_tier: fm_specific_thin
+rationale: A functional-medicine timeline links symptom onset to antecedents and triggers, surfacing
+  causal patterns that a cross-sectional symptom list misses. Asking 'when did this start and
+  what was happening then?' frequently uncovers the precipitating event behind a chronic presentation.
+coaching_translation: Ask when things began and what was going on at the time — a stressful
+  period, an infection, a new medication. The timeline of a story often points to the cause
+  better than the symptoms do.
+caveats:
+- Source is Instagram educational content; this is practitioner heuristic rather than trial
+  evidence.
+- Use within coaching scope; do not diagnose.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DY9oXWlDIOH/
+  quote: Timing, triggers and progression reveal root causes. Ask when symptoms started, not
+    just what symptoms exist.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

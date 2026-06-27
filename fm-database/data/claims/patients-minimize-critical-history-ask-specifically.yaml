@@ -1,0 +1,30 @@
+slug: patients-minimize-critical-history-ask-specifically
+statement: Clients rarely withhold important health history deliberately — they more often fail
+  to mention it because they don't realise it matters (years of PPI use, childhood antibiotics,
+  mold exposure, chronic bloating 'that's normal for me'), so specific questioning surfaces
+  more than open ones.
+evidence_tier: fm_specific_thin
+rationale: High-value clues are frequently dismissed by clients as irrelevant or normalised
+  over time. Targeted, normalising questions about medication history, environmental exposures,
+  sleep and digestion recover information that broad prompts and lab panels miss.
+coaching_translation: People don't hide their history — they just don't think it's relevant.
+  Ask specifically about things like long-term antacids, past antibiotics, damp homes, or bloating
+  they've come to see as normal. Closing with 'is there anything I haven't asked about?' often
+  surfaces the key detail.
+caveats:
+- Source is Instagram educational content; practitioner heuristic.
+- Stay within scope; normalise sensitive topics rather than interrogate.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DZFW7esjD2H/
+  quote: Patients rarely hide critical information. More often, they simply don't realize it
+    matters. Ask specifically instead of relying on broad questions.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

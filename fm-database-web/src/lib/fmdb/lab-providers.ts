@@ -31,6 +31,10 @@ export interface LabProfile {
   ourCostInr: number;
   mrpInr: number;
   marginInr: number;
+  /** À-la-carte total if every test were booked individually at Acumen's
+   *  catalogue (DOS list) price — the strike-through "regular price" anchor on
+   *  the client app. null when not set in the yaml (no deal shown). */
+  catalogueInr: number | null;
   /** Client-friendly "what we'll check" groups — the Base list plus this
    *  profile's extras. Drives the personalised in-app view. */
   includes: string[];
@@ -123,6 +127,7 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
         ourCostInr: asNum(o.our_cost_inr) ?? 0,
         mrpInr: asNum(o.mrp_inr) ?? 0,
         marginInr: asNum(o.margin_inr) ?? 0,
+        catalogueInr: asNum(o.catalogue_inr),
         includes,
         coveredAddonSlugs,
       };

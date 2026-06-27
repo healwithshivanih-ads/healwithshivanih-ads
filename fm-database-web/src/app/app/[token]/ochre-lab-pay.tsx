@@ -85,6 +85,40 @@ const STATUS_LABEL: Record<LabOrderStatus, string> = {
   cancelled: "Cancelled",
 };
 
+/** Price + deal. When the à-la-carte catalogue total (`listInr`) is higher than
+ *  what we charge, show it struck through with a "Save ₹X · N% off" badge so the
+ *  package reads as the deal it is. Falls back to a plain price with no anchor. */
+function PriceBlock({ listInr, amountInr }: { listInr?: number | null; amountInr: number }) {
+  const hasDeal = typeof listInr === "number" && listInr > amountInr;
+  if (!hasDeal) return <strong style={{ fontSize: 17 }}>{inr(amountInr)}</strong>;
+  const saved = listInr - amountInr;
+  const pct = Math.round((saved / listInr) * 100);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+      <span style={{ fontSize: 12, color: "var(--muted, #6f6a5d)", textDecoration: "line-through" }}>
+        {inr(listInr)} if booked individually
+      </span>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 9, flexWrap: "wrap" }}>
+        <strong style={{ fontSize: 21 }}>{inr(amountInr)}</strong>
+        <span
+          style={{
+            fontSize: 11,
+            fontWeight: 800,
+            letterSpacing: 0.3,
+            color: "var(--forest, #2d5a3d)",
+            background: "rgba(45,90,61,0.1)",
+            padding: "3px 8px",
+            borderRadius: 999,
+            whiteSpace: "nowrap",
+          }}
+        >
+          Save {inr(saved)} · {pct}% off
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function LabOrdersCard() {
   const data = useOchre();
   const orders: LabOrder[] = data.labOrders ?? [];
@@ -187,8 +221,8 @@ export function LabOrdersCard() {
           {o.fasting_required && (
             <div style={{ fontSize: 11.5, color: "var(--ochre, #b07b1e)", marginTop: 10 }}>Fasting sample · we&apos;ll arrange home collection</div>
           )}
-          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--line, #e6e1d6)" }}>
-            <strong style={{ fontSize: 17 }}>{inr(o.amount_inr)}</strong>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--line, #e6e1d6)" }}>
+            <PriceBlock listInr={o.list_inr} amountInr={o.amount_inr} />
             {confirming[o.order_id] ? (
               <span style={{ fontSize: 13, color: "var(--forest, #2d5a3d)" }}>Confirming your payment…</span>
             ) : bookingId !== o.order_id ? (

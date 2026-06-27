@@ -1,0 +1,29 @@
+slug: pattern-recognition-beats-protocol-memorization
+statement: Clinical skill in functional medicine comes more from recognising cross-system patterns
+  (gut dysfunction showing up as anxiety, acne or fatigue; insulin resistance appearing years
+  before diabetes) than from memorising more protocols.
+evidence_tier: fm_specific_thin
+rationale: Because chronic conditions overlap through shared gut, metabolic and nervous-system
+  pathways, framework and systems thinking generalise across cases where memorised protocols
+  do not. Using labs to confirm patterns rather than replace reasoning, and revisiting old cases,
+  builds the pattern recognition that drives better decisions.
+coaching_translation: Collecting more protocols doesn't make a better practitioner — seeing
+  how things connect does. Gut trouble can show up as anxiety or skin issues; insulin problems
+  show up years before diabetes. Learn the patterns, not just the recipes.
+caveats:
+- Source is Instagram educational content; practitioner heuristic.
+- Apply within scope; confirm patterns with appropriate testing and referral.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DYUcS5ijCrS/
+  quote: Clinical mastery is not information overload. It is pattern recognition. Build systems
+    thinking before supplement stacks.
+version: 1
+status: active
+updated_at: '2026-06-26'
+updated_by: shivani

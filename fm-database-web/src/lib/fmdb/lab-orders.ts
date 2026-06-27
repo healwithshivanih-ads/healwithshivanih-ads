@@ -122,6 +122,11 @@ export interface LabOrder {
   includes: string[];
   amount_inr: number;
   our_cost_inr: number;
+  /** À-la-carte total (what these tests cost booked individually at the lab's
+   *  catalogue price) — the strike-through "regular price" on the client app.
+   *  Display-only: computed in the client-app projection from the provider
+   *  catalogue, NOT stored on disk. Absent/null on un-projected orders. */
+  list_inr?: number | null;
   status: LabOrderStatus;
   recommended_by: string;
   recommended_at: string;
