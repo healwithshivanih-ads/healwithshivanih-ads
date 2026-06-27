@@ -57,7 +57,13 @@ export async function POST(req: Request, ctx: { params: Promise<{ orderId: strin
       notes: { client_id: clientId, order_id: orderId },
     });
     rzpOrderId = String(rzpOrder.id);
-  } catch {
+  } catch (e) {
+    // Razorpay SDK errors carry { statusCode, error: { code, description } }.
+    const rzp = (e as { statusCode?: number; error?: { code?: string; description?: string } });
+    const detail = rzp?.error?.description ?? (e instanceof Error ? e.message : String(e));
+    console.error(
+      `[lab-pay] razorpay order create failed (status ${rzp?.statusCode ?? "?"}, code ${rzp?.error?.code ?? "?"}): ${detail}`,
+    );
     return NextResponse.json({ ok: false, error: "could not start payment" }, { status: 502 });
   }
 
