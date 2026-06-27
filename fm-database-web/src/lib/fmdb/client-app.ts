@@ -195,6 +195,12 @@ import {
   shortTiming,
   displayTiming,
 } from "./client-app-format";
+import {
+  type LetterSupplementRow,
+  SUPP_NAME_OVERRIDES,
+  suppKey,
+  matchSupplementRow,
+} from "./client-app-supplements";
 
 export interface AppMealExtra {
   grad: string;
@@ -1544,15 +1550,6 @@ function parseRecipes(md: string): LetterRecipe[] {
   return out;
 }
 
-interface LetterSupplementRow {
-  name: string;
-  dose: string;
-  when: string;
-  why: string;
-  buyLabel?: string;
-  buyUrl?: string;
-}
-
 /** Parse supplement tables in either letter format:
  *  (a) single `| Supplement | Dose | When | Why | Buy |` table, or
  *  (b) split Morning / Evening tables with a `Where to Get It` column. */
@@ -1826,45 +1823,6 @@ function shortFoodName(item: string): string {
   let s = item.split(":")[0].trim();
   s = s.replace(/\s*[—–-]\s*\d.*$/, "").trim();
   return s;
-}
-
-// ── supplement helpers ───────────────────────────────────────────────────────
-
-const SUPP_NAME_OVERRIDES: Record<string, string> = {
-  "vitamin-b6-p5p": "Vitamin B6 (P5P)",
-  "ashwagandha-ksm66": "Ashwagandha (KSM-66)",
-  "magnesium-glycinate": "Magnesium glycinate",
-  "l-theanine": "L-Theanine",
-  "coenzyme-q10": "Coenzyme Q10",
-  "omega-3-fatty-acids": "Omega-3 (EPA + DHA)",
-  selenium: "Selenium",
-  methylfolate: "Methylfolate (5-MTHF)",
-  "dpp-iv-enzyme": "DPP-IV Enzyme",
-  "l-glutamine": "L-Glutamine",
-  "algae-oil-dha-epa": "Omega-3 (algae, vegetarian)",
-  "fish-oil-epa-dha": "Omega-3 (fish oil, EPA+DHA)",
-};
-
-function suppKey(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/\([^)]*\)/g, " ")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
-function matchSupplementRow(name: string, rows: LetterSupplementRow[]): LetterSupplementRow | undefined {
-  const key = suppKey(name);
-  const tokens = key.split(" ").filter((t) => t.length > 2);
-  let best: { row: LetterSupplementRow; score: number } | undefined;
-  for (const row of rows) {
-    const rk = suppKey(row.name);
-    let score = 0;
-    for (const t of tokens) if (rk.includes(t)) score++;
-    if (rk === key) score += 10;
-    if (score > 0 && (!best || score > best.score)) best = { row, score };
-  }
-  return best && best.score >= 1 ? best.row : undefined;
 }
 
 // ════ Option A: structured app_menu ⇆ WeekTable conversion ════════════════
