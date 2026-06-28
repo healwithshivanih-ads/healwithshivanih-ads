@@ -1722,15 +1722,35 @@ export function IntakeForm({
     ? (isFemale ? 15 : 14)
     : (isFemale ? 14 : 13) + (doshaInline ? 1 : 0);
 
+  // One-section-per-screen wizard for the full intake — clients reported the
+  // 13–14 section single scroll felt overwhelming. Every section stays
+  // mounted (autosave + conditional logic intact); CSS hides all but the
+  // active step. Focus modes (?focus=tier1 / ?focus=dosha) already render a
+  // single section, so they keep their own layout and skip the wizard.
+  const wizardActive = !inFocusMode;
+
   const sectionRefs = useRef<Record<number, HTMLElement | null>>({});
   const setSectionRef = (n: number) => (el: HTMLElement | null) => {
     sectionRefs.current[n] = el;
   };
 
+  // Ref on the <form> so step changes can reset the scroll position. The form
+  // lives inside the layout's `fixed inset-0 overflow-auto` wrapper, so we
+  // scroll THAT container (not window) back to the top on each step.
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const scrollToFormTop = useCallback(() => {
+    const scroller = formRef.current?.closest(".overflow-auto") as HTMLElement | null;
+    if (scroller) scroller.scrollTo({ top: 0, behavior: "auto" });
+    else window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   const [currentSection, setCurrentSection] = useState(1);
 
+  // Scroll-spy only makes sense in the old long-scroll layout. In wizard mode
+  // every non-active section is display:none, so the observer is skipped —
+  // Back / Next drive currentSection explicitly instead.
   useEffect(() => {
-    if (!hasBegun || submitted) return;
+    if (!hasBegun || submitted || wizardActive) return;
     const obs = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((e) => e.isIntersecting);
@@ -1744,7 +1764,18 @@ export function IntakeForm({
     );
     Object.values(sectionRefs.current).forEach((el) => el && obs.observe(el));
     return () => obs.disconnect();
-  }, [hasBegun, submitted, totalSections, isFemale]);
+  }, [hasBegun, submitted, wizardActive, totalSections, isFemale]);
+
+  // Keep the step in range if the section count shrinks mid-form (e.g. the
+  // client picks "male" in Section 1, removing the women's cycle section).
+  useEffect(() => {
+    setCurrentSection((s) => Math.min(Math.max(s, 1), totalSections));
+  }, [totalSections]);
+
+  // Land each wizard step at the top of the form.
+  useEffect(() => {
+    if (wizardActive && hasBegun) scrollToFormTop();
+  }, [currentSection, wizardActive, hasBegun, scrollToFormTop]);
 
   // Saved-sections heuristic — flexible: any "primary" field filled marks the section saved
   const savedSections = useMemo<number[]>(() => {
@@ -2008,6 +2039,11 @@ export function IntakeForm({
     }));
 
   const handleSectionClick = (n: number) => {
+    if (wizardActive) {
+      // Tapping a progress dot jumps straight to that step.
+      setCurrentSection(Math.min(Math.max(n, 1), totalSections));
+      return;
+    }
     const el = sectionRefs.current[n];
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -2248,7 +2284,7 @@ export function IntakeForm({
           <div className="fm-welcome__meta">
             <div className="fm-welcome__meta-row">
               <span className="fm-pulse" aria-hidden="true" />
-              <span>About 20–25 more minutes · pauses any time</span>
+              <span>One short section at a time · pause any time</span>
             </div>
             <div className="fm-welcome__meta-row">
               <span className="fm-pulse" aria-hidden="true" />
@@ -2300,7 +2336,7 @@ export function IntakeForm({
         <div className="fm-welcome__meta">
           <div className="fm-welcome__meta-row">
             <span className="fm-pulse" aria-hidden="true" />
-            <span>About 25 minutes · {totalSections} short sections</span>
+            <span>One short section at a time · about 25 minutes total</span>
           </div>
           <div className="fm-welcome__meta-row">
             <span className="fm-pulse" aria-hidden="true" />
@@ -2366,6 +2402,7 @@ export function IntakeForm({
   // ── Main form ────────────────────────────────────────────────────────
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       onBlur={handleBlur}
       // noValidate is deliberate. The form does ALL validation in JS
@@ -2378,8 +2415,14 @@ export function IntakeForm({
       // draft. noValidate makes that failure mode structurally impossible
       // even if a `required` attribute is added to a field later.
       noValidate
-      className={inFocusMode ? "fm-intake--focus-tier1" : undefined}
+      className={inFocusMode ? "fm-intake--focus-tier1" : "fm-wz"}
     >
+      {/* Wizard reveal: every .fm-section is hidden by `.fm-wz .fm-section`
+          (form.css); this one-line rule shows only the active step. */}
+      {wizardActive && (
+        <style>{`.fm-wz .fm-section[data-section="${currentSection}"]{display:block;}`}</style>
+      )}
+
       {/* Shared typeahead suggestions for the medication name inputs. */}
       <datalist id="fm-common-med-brands">
         {COMMON_MED_BRANDS.map((b) => (
@@ -4431,13 +4474,16 @@ export function IntakeForm({
                 type="button"
                 onClick={() => {
                   setSparseWarning(null);
-                  // Scroll to the first incomplete section so they can keep going.
-                  const firstEmpty = sectionFillSignals.findIndex((s) => !s.filled);
-                  if (firstEmpty >= 0) {
-                    // The clinical sections live below the demographics block —
-                    // scroll to roughly the timeline (section 5) as a safe anchor.
-                    const el = sectionRefs.current[SEC_TIMELINE];
-                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  // Send them back to the clinical sections to keep going. The
+                  // timeline (section 5) is a safe anchor below the demographics.
+                  if (wizardActive) {
+                    setCurrentSection(SEC_TIMELINE);
+                  } else {
+                    const firstEmpty = sectionFillSignals.findIndex((s) => !s.filled);
+                    if (firstEmpty >= 0) {
+                      const el = sectionRefs.current[SEC_TIMELINE];
+                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
                   }
                 }}
                 style={{
@@ -4494,6 +4540,36 @@ export function IntakeForm({
           You can keep editing until our session begins.
         </span>
       </FormSection>
+
+      {/* Wizard navigation — sticky Back / Next bar. On the final (consent)
+          step, Next is replaced by a spacer so the in-section Submit button is
+          the only forward action. */}
+      {wizardActive && (
+        <nav className="fm-wznav" aria-label="Form navigation">
+          <span className="fm-wznav__count">
+            {currentSection} of {totalSections}
+          </span>
+          <div className="fm-wznav__row">
+            <button
+              type="button"
+              className="fm-wznav__btn fm-wznav__btn--back"
+              onClick={() => setCurrentSection((s) => Math.max(s - 1, 1))}
+              disabled={currentSection <= 1}
+            >
+              ← Back
+            </button>
+            {currentSection < totalSections && (
+              <button
+                type="button"
+                className="fm-wznav__btn fm-wznav__btn--next"
+                onClick={() => setCurrentSection((s) => Math.min(s + 1, totalSections))}
+              >
+                Next →
+              </button>
+            )}
+          </div>
+        </nav>
+      )}
     </form>
   );
 }

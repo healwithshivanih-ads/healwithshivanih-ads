@@ -12,6 +12,14 @@
   line-height: 1.6;
   width: 375px;
   position: relative;
+
+  /* Readability: darken the secondary/tertiary TEXT tokens for the intake
+     form only. The brand --lavender (#8D99AE) stays as-is for borders, dots
+     and dividers — we only remap the text-color tokens that descendants use.
+     Clients reported the original lavender body/helper text was too faint
+     (it sat at ~2.6:1 contrast on bone, below the WCAG AA minimum). */
+  --fg-2: #34374F;   /* labels, microcopy, hints — was indigo-soft #4A4D6B */
+  --fg-3: #5A6075;   /* eyebrows, "optional" tags, metadata — was lavender #8D99AE */
 }
 
 /* ── Chrome ───────────────────────────────────────────────── */
@@ -257,7 +265,7 @@
 }
 .fm-input::placeholder,
 .fm-textarea::placeholder {
-  color: var(--lavender);
+  color: var(--fg-3);
   font-style: italic;
 }
 .fm-input:focus,
@@ -1255,4 +1263,79 @@
   font-size: 14px;
   line-height: 1.5;
   color: #334155;
+}
+
+/* ── Wizard mode (one section per screen) ───────────────────────────────
+   The full intake is presented one section at a time to stop clients being
+   overwhelmed by a 13–14 section wall of fields. Every .fm-section stays
+   mounted (so autosave + conditional logic keep working) but is hidden;
+   an injected per-step rule reveals only the active section. A sticky
+   Back / Next bar at the bottom drives navigation. Focus modes
+   (?focus=tier1 / ?focus=dosha) are single-section and never use the
+   wizard, so the two systems never collide. */
+.fm-wz .fm-section {
+  display: none;
+}
+/* The active section is shown by a one-line <style> injected from the
+   component: .fm-wz .fm-section[data-section="<currentSection>"]{display:block} */
+
+.fm-wznav {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 20px calc(14px + env(safe-area-inset-bottom, 0px));
+  background: rgba(247, 244, 243, 0.94);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-top: 1px solid var(--lavender-15);
+}
+.fm-wznav__count {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--fg-3);
+  font-family: var(--font-display);
+}
+/* Two large, full-width thumb targets side by side. On the final step Next
+   is gone, so Back (flex:1) fills the whole width on its own. */
+.fm-wznav__row {
+  display: flex;
+  gap: 12px;
+}
+.fm-wznav__btn {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: 1.5px solid var(--lavender);
+  background: transparent;
+  color: var(--indigo);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 20px;
+  min-height: 54px;
+  border-radius: var(--radius-1);
+  cursor: pointer;
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-wznav__btn--next {
+  background: var(--indigo);
+  color: var(--bone);
+  border-color: var(--indigo);
+}
+.fm-wznav__btn--next:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.fm-wznav__btn--back:hover {
+  border-color: var(--indigo);
+}
+.fm-wznav__btn[disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
