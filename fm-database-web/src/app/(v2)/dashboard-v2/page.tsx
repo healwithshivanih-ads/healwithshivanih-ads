@@ -40,6 +40,7 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // CatalogueIngestPanel moved to /ingest page 2026-05-15 — coach feedback:
 // belongs next to the file-upload flow, not on the dashboard.
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
+import { ReviewNudgePanel } from "@/components/review-nudge-panel";
 import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
 import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
@@ -1403,6 +1404,10 @@ export default async function DashboardV2() {
           {whatsappConfigured && (
             <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
           )}
+
+          {/* 🌿 Plan end-game — clients at their recheck / maintenance renewal,
+              with a one-tap nudge to review + decide what's next. Self-hides. */}
+          <ReviewNudgePanel whatsappConfigured={whatsappConfigured} />
 
           {/* 📲 Client-app links — share the Ochre Tree companion app
               (/app/<letter_token>) per published plan. Copy works even
