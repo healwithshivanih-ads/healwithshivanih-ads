@@ -767,6 +767,15 @@ export interface BackOnTrack {
   steps: string[];
 }
 
+/** The month's do's & don'ts — the one living thing in maintenance. Cached per
+ *  YYYY-MM on the plan (plan.monthly_cards), regenerated monthly. */
+export interface MonthlyCard {
+  month: string; // YYYY-MM
+  title: string;
+  dos: string[];
+  donts: string[];
+}
+
 /** Data the end-game screens (REVIEW / MAINTENANCE / GRACE / LIBRARY) render.
  *  Non-null only when `mode !== "ACTIVE"`. */
 export interface EndgameInfo {
@@ -783,6 +792,8 @@ export interface EndgameInfo {
   graceUntilLabel: string | null;
   /** The flare-reset card (from client.back_on_track_plan), if authored. */
   backOnTrack: BackOnTrack | null;
+  /** This month's do's & don'ts (from plan.monthly_cards[YYYY-MM]), if generated. */
+  monthlyCard: MonthlyCard | null;
 }
 
 /** Add n days to a YYYY-MM-DD in UTC (mirrors app-mode.ts' UTC discipline). */
@@ -803,12 +814,25 @@ function parseBackOnTrack(raw: unknown): BackOnTrack | null {
   return { title: title || "Back on track", intro, steps };
 }
 
+/** Pick this month's do's/don'ts from plan.monthly_cards (keyed YYYY-MM). */
+function parseMonthlyCard(raw: unknown, ym: string): MonthlyCard | null {
+  if (!raw || typeof raw !== "object") return null;
+  const c = (raw as Record<string, unknown>)[ym];
+  if (!c || typeof c !== "object") return null;
+  const o = c as Record<string, unknown>;
+  const dos = asStrArr(o.dos).map((s) => s.trim()).filter(Boolean);
+  const donts = asStrArr(o.donts).map((s) => s.trim()).filter(Boolean);
+  if (dos.length === 0 && donts.length === 0) return null;
+  return { month: ym, title: asStr(o.title).trim() || "This month", dos, donts };
+}
+
 /** Resolve the end-game app mode + the data its screens read. "ACTIVE" → no
  *  endgame block (the app renders the normal in-protocol experience). */
 function buildEndgame(
   client: Record<string, unknown>,
   plan: AppModePlan | null,
   todayYmd: string,
+  monthlyCards: unknown = null,
 ): { mode: AppMode; endgame: EndgameInfo | null } {
   const res = resolveAppMode(
     {
@@ -836,6 +860,7 @@ function buildEndgame(
       paidThroughLabel: paidThrough ? formatLongDate(paidThrough) : null,
       graceUntilLabel: graceUntil ? formatLongDate(graceUntil) : null,
       backOnTrack: parseBackOnTrack(client.back_on_track_plan),
+      monthlyCard: parseMonthlyCard(monthlyCards, todayYmd.slice(0, 7)),
     },
   };
 }
@@ -4541,7 +4566,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     supersedes: asStr(plan.supersedes) || null,
     status: asStr(plan.status) || null,
   };
-  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd());
+  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd(), plan.monthly_cards);
 
   return {
     clientId,

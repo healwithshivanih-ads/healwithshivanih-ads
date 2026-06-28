@@ -19,7 +19,7 @@ import {
   DiscoveryCoachScreen,
   DiscoveryOnboardingScreen,
 } from "./ochre-discovery";
-import { EndgameBanner, LibraryFloorScreen, GraduationReport } from "./ochre-endgame";
+import { EndgameBanner, LibraryFloorScreen, GraduationReport, MaintenanceHome } from "./ochre-endgame";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { LabsScreen } from "./ochre-labs";
@@ -341,6 +341,10 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     // Wrapping up the 12 weeks — the home becomes the graduation report (real
     // progress deltas + the Continue/Maintain decision). Other tabs stay normal.
     screen = <GraduationReport onContinue={() => go("coach")} onMaintain={() => go("coach")} />;
+  } else if (data.mode === "MAINTENANCE" && tab === "today") {
+    // Hands-free maintenance — the home surfaces the month's card + back-on-track;
+    // menus / recipes / tracking stay open via the other tabs.
+    screen = <MaintenanceHome goTab={go} />;
   } else if (data.mode === "LIBRARY" && tab === "today") {
     // Programme complete with no continuation — the home becomes the frozen
     // library floor. Plan / Progress / Labs / Coach stay reachable as-is.
@@ -448,7 +452,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               live and starts moving on its own that day.
             </div>
           )}
-          {!inCheckin && !(data.mode === "REVIEW" && tab === "today") && <EndgameBanner goCoach={() => go("coach")} />}
+          {!inCheckin && !((data.mode === "REVIEW" || data.mode === "MAINTENANCE") && tab === "today") && <EndgameBanner goCoach={() => go("coach")} />}
           <main className="screen-scroll" key={onboarding ? "onboarding" : inCheckin ? "checkin" : tab}>
             {screen}
           </main>

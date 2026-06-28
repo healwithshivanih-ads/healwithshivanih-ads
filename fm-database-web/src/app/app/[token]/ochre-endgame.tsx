@@ -222,9 +222,93 @@ export function GraduationReport({ onContinue, onMaintain }: { onContinue: () =>
   );
 }
 
-export function LibraryFloorScreen({ goCoach, goTab }: { goCoach: () => void; goTab: (t: string) => void }) {
-  const { endgame, client, coach } = useOchre();
+/** This month's do's & don'ts — the living thing in maintenance. */
+function MonthlyCardView({ card }: { card: { title: string; dos: string[]; donts: string[] } }) {
+  return (
+    <div style={cardStyle}>
+      <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>{card.title}</div>
+      {card.dos.length > 0 && (
+        <div style={{ marginTop: 9 }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: FOREST, textTransform: "uppercase", letterSpacing: 0.5 }}>Lean into</div>
+          <ul style={{ margin: "4px 0 0", paddingLeft: 18, fontSize: 13, color: INK, lineHeight: 1.55 }}>
+            {card.dos.map((d, i) => (
+              <li key={i}>{d}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {card.donts.length > 0 && (
+        <div style={{ marginTop: 9 }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: OCHRE, textTransform: "uppercase", letterSpacing: 0.5 }}>Ease off</div>
+          <ul style={{ margin: "4px 0 0", paddingLeft: 18, fontSize: 13, color: INK, lineHeight: 1.55 }}>
+            {card.donts.map((d, i) => (
+              <li key={i}>{d}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** The back-on-track (flare-reset) card — shared by maintenance + library. */
+function BackOnTrackCard({ bot }: { bot: { title: string; intro: string; steps: string[] } }) {
+  return (
+    <div style={cardStyle}>
+      <div style={{ fontSize: 14.5, fontWeight: 500, color: FOREST }}>{bot.title}</div>
+      {bot.intro && <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 8px" }}>{bot.intro}</p>}
+      {bot.steps.length > 0 && (
+        <ol style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: INK, lineHeight: 1.6 }}>
+          {bot.steps.map((s, i) => (
+            <li key={i}>{s}</li>
+          ))}
+        </ol>
+      )}
+    </div>
+  );
+}
+
+/** MAINTENANCE — the hands-free lighter home. The full app (menus, recipes,
+ *  tracking) stays open via the tabs; this home surfaces the month's card, the
+ *  back-on-track reset, and a calm "everything's here" framing. */
+export function MaintenanceHome({ goTab }: { goTab: (t: string) => void }) {
+  const { endgame, client } = useOchre();
+  const monthly = endgame?.monthlyCard ?? null;
   const bot = endgame?.backOnTrack ?? null;
+  return (
+    <div style={{ padding: "8px 14px 24px" }}>
+      <div style={{ textAlign: "center", padding: "18px 8px 10px" }}>
+        <div aria-hidden="true" style={{ fontSize: 26, color: FOREST }}>✦</div>
+        <h2 style={{ fontSize: 19, color: INK, margin: "10px 0 6px", fontWeight: 500 }}>
+          You&apos;re holding your gains, {client.firstName}
+        </h2>
+        <p style={{ fontSize: 14, color: MUTED, lineHeight: 1.55, margin: 0 }}>
+          {endgame?.paidThroughLabel
+            ? `Lighter touch, same support — your maintenance runs through ${endgame.paidThroughLabel}.`
+            : "Lighter touch, same support."}
+        </p>
+      </div>
+
+      {monthly && <MonthlyCardView card={monthly} />}
+      {bot && <BackOnTrackCard bot={bot} />}
+
+      <div style={cardStyle}>
+        <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Everything stays open</div>
+        <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 0" }}>
+          Your menus, recipes and tracking are all here whenever you want them.
+        </p>
+        <CtaButton label="Open my plan + recipes" onClick={() => goTab("plan")} />
+      </div>
+    </div>
+  );
+}
+
+export function LibraryFloorScreen({ goCoach, goTab }: { goCoach: () => void; goTab: (t: string) => void }) {
+  const data = useOchre();
+  const { endgame, client, coach } = data;
+  const bot = endgame?.backOnTrack ?? null;
+  const sampleRecipes = (data.recipePack ?? []).slice(0, 4);
+  const buyableSupps = (data.allSupplements ?? []).filter((s) => s.buyUrl).slice(0, 6);
 
   return (
     <div style={{ padding: "8px 14px 24px" }}>
@@ -238,29 +322,44 @@ export function LibraryFloorScreen({ goCoach, goTab }: { goCoach: () => void; go
         </p>
       </div>
 
-      <div style={cardStyle}>
-        <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Your library stays open</div>
-        <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 0" }}>
-          Your recipes, meal guides and remedies don&apos;t expire — revisit them whenever you like.
-        </p>
-        <CtaButton label="Browse my plan + recipes" onClick={() => goTab("plan")} />
-      </div>
-
-      {bot && (
+      {sampleRecipes.length > 0 && (
         <div style={cardStyle}>
-          <div style={{ fontSize: 14.5, fontWeight: 500, color: FOREST }}>{bot.title}</div>
-          {bot.intro && (
-            <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 8px" }}>{bot.intro}</p>
-          )}
-          {bot.steps.length > 0 && (
-            <ol style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: INK, lineHeight: 1.6 }}>
-              {bot.steps.map((s, i) => (
-                <li key={i}>{s}</li>
-              ))}
-            </ol>
-          )}
+          <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>A taste of your recipes</div>
+          <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.5, margin: "4px 0 8px" }}>
+            A few of your favourites stay open. The full collection comes home in your graduation keepsake.
+          </p>
+          <ul style={{ margin: 0, paddingLeft: 0, listStyle: "none", display: "grid", gap: 6 }}>
+            {sampleRecipes.map((r, i) => (
+              <li key={i} style={{ fontSize: 13, color: INK, display: "flex", gap: 8, alignItems: "baseline" }}>
+                <span aria-hidden="true" style={{ color: FOREST }}>·</span>
+                <span>{r.title}{r.time ? <span style={{ color: MUTED }}> · {r.time}</span> : null}</span>
+              </li>
+            ))}
+          </ul>
+          <CtaButton label="Browse the recipe library" onClick={() => goTab("plan")} />
         </div>
       )}
+
+      {buyableSupps.length > 0 && (
+        <div style={cardStyle}>
+          <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Your supplements stay live</div>
+          <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.5, margin: "4px 0 8px" }}>
+            Re-order anytime — your links don&apos;t expire.
+          </p>
+          <div style={{ display: "grid", gap: 6 }}>
+            {buyableSupps.map((s, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, fontSize: 13, color: INK }}>
+                <span>{s.name}</span>
+                <a href={s.buyUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12.5, color: FOREST, fontWeight: 500, whiteSpace: "nowrap" }}>
+                  Re-order →
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {bot && <BackOnTrackCard bot={bot} />}
 
       <div style={cardStyle}>
         <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Ready for the next chapter?</div>
