@@ -39,6 +39,9 @@ import {
   type DiscoverySummary,
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
+import { resolveAppMode, GRACE_DAYS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
+import { formatLongDate } from "@/lib/fmdb/format-date";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
 import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions/clients";
@@ -756,6 +759,87 @@ function deriveBreathwork(
   return null;
 }
 
+/** A self-serve "flare reset" card — coach-authored at graduation, shown in the
+ *  maintenance + library floors so a graduate can steady a wobble themselves. */
+export interface BackOnTrack {
+  title: string;
+  intro: string;
+  steps: string[];
+}
+
+/** Data the end-game screens (REVIEW / MAINTENANCE / GRACE / LIBRARY) render.
+ *  Non-null only when `mode !== "ACTIVE"`. */
+export interface EndgameInfo {
+  mode: Exclude<AppMode, "ACTIVE">;
+  /** Telemetry / coach-chip "why". */
+  reason: string;
+  /** The 12-week effective recheck (graduation) date + a human label. */
+  recheckDate: string | null;
+  recheckLabel: string | null;
+  /** MAINTENANCE / GRACE: paid-through date + human label. */
+  paidThrough: string | null;
+  paidThroughLabel: string | null;
+  /** GRACE: last day of full access before dropping to the library floor. */
+  graceUntilLabel: string | null;
+  /** The flare-reset card (from client.back_on_track_plan), if authored. */
+  backOnTrack: BackOnTrack | null;
+}
+
+/** Add n days to a YYYY-MM-DD in UTC (mirrors app-mode.ts' UTC discipline). */
+function addDaysUtcYmd(ymd: string, n: number): string {
+  const d = new Date(ymd + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+/** Parse client.back_on_track_plan (coach-authored dict) into the flare card. */
+function parseBackOnTrack(raw: unknown): BackOnTrack | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const title = asStr(r.title).trim();
+  const intro = asStr(r.intro).trim();
+  const steps = asStrArr(r.steps).map((s) => s.trim()).filter(Boolean);
+  if (!title && !intro && steps.length === 0) return null;
+  return { title: title || "Back on track", intro, steps };
+}
+
+/** Resolve the end-game app mode + the data its screens read. "ACTIVE" → no
+ *  endgame block (the app renders the normal in-protocol experience). */
+function buildEndgame(
+  client: Record<string, unknown>,
+  plan: AppModePlan | null,
+  todayYmd: string,
+): { mode: AppMode; endgame: EndgameInfo | null } {
+  const res = resolveAppMode(
+    {
+      maintenance_status: asStr(client.maintenance_status) || null,
+      maintenance_paid_through: asYmd(client.maintenance_paid_through) || null,
+      plan,
+    },
+    todayYmd,
+  );
+  if (res.mode === "ACTIVE") return { mode: "ACTIVE", endgame: null };
+
+  const recheck = plan ? effectiveRecheckDate(plan) : null;
+  const paidThrough = asYmd(client.maintenance_paid_through) || null;
+  const graceUntil =
+    res.mode === "GRACE" && paidThrough ? addDaysUtcYmd(paidThrough, GRACE_DAYS) : null;
+
+  return {
+    mode: res.mode,
+    endgame: {
+      mode: res.mode,
+      reason: res.reason,
+      recheckDate: recheck,
+      recheckLabel: recheck ? formatLongDate(recheck) : null,
+      paidThrough,
+      paidThroughLabel: paidThrough ? formatLongDate(paidThrough) : null,
+      graceUntilLabel: graceUntil ? formatLongDate(graceUntil) : null,
+      backOnTrack: parseBackOnTrack(client.back_on_track_plan),
+    },
+  };
+}
+
 export interface ClientAppData {
   clientId: string;
   planSlug: string;
@@ -775,6 +859,13 @@ export interface ClientAppData {
   /** The client's intake form URL (so the app can launch intake) — discovery
    *  onboarding only; null once submitted / not applicable. */
   intakeUrl: string | null;
+  /** End-game app mode (package tier). "ACTIVE" = in-protocol (current app, no
+   *  change). REVIEW/MAINTENANCE/GRACE/LIBRARY drive the graduation → maintenance
+   *  → frozen-floor screens. Discovery tier is always "ACTIVE" here (the `tier`
+   *  field gates it first). See app-mode.ts. */
+  mode: AppMode;
+  /** Non-null only when mode !== "ACTIVE" — the data the end-game screens read. */
+  endgame: EndgameInfo | null;
   /** Coach-recommended lab orders (Acumen). `recommended` ones are payable in
    *  app; others show status. Universal across tiers (booking works in any mode). */
   labOrders: LabOrder[];
@@ -2330,6 +2421,8 @@ async function buildDiscoveryAppData(
     discoverySummary: parseDiscoverySummary(client, firstName),
     discoveryStage,
     intakeUrl,
+    mode: "ACTIVE",
+    endgame: null,
     labOrders: discoveryLabOrders,
     client: {
       firstName,
@@ -4437,6 +4530,19 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     ? Math.max(0, Math.ceil((_holdDate.getTime() - todayUTC.getTime()) / 86_400_000))
     : 0;
 
+  // End-game app mode (graduation → maintenance/grace/library). Built from a
+  // clean AppModePlan (dates coerced) + the client's maintenance fields. ACTIVE
+  // for an in-protocol client → endgame is null and the app renders normally.
+  const modePlan: AppModePlan = {
+    plan_period_start: asYmd(plan.plan_period_start) || undefined,
+    plan_period_weeks: typeof plan.plan_period_weeks === "number" ? plan.plan_period_weeks : undefined,
+    meal_plan_started_on: asYmd(plan.meal_plan_started_on) || null,
+    supplements_started_on: asYmd(plan.supplements_started_on) || null,
+    supersedes: asStr(plan.supersedes) || null,
+    status: asStr(plan.status) || null,
+  };
+  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd());
+
   return {
     clientId,
     planSlug,
@@ -4450,6 +4556,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     discoverySummary: null,
     discoveryStage: null,
     intakeUrl: null,
+    mode: appMode,
+    endgame,
     labOrders,
     client: {
       firstName,

@@ -109,6 +109,15 @@ _APP_CLIENT_KEYS = (
     "mindbody_eft",  # mind-body drip coach override: auto | unlocked | locked
     "mindbody_sleep",
     "plan_modules",  # gates app layers (e.g. schussler_salts tissue-salt section)
+    # plan end-game (graduation → maintenance/grace/library). The app-mode
+    # resolver (app-mode.ts) reads maintenance_status + maintenance_paid_through
+    # to drive MAINTENANCE/GRACE/LIBRARY; back_on_track_plan is the self-serve
+    # flare-reset card shown in the maintenance + library floors. Non-PHI.
+    "maintenance_status",
+    "maintenance_started_on",
+    "maintenance_paid_through",
+    "maintenance_term_months",
+    "back_on_track_plan",
 )
 
 # Coach-only fields stripped from the plan before it reaches the public Fly box —

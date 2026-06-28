@@ -19,6 +19,7 @@ import {
   DiscoveryCoachScreen,
   DiscoveryOnboardingScreen,
 } from "./ochre-discovery";
+import { EndgameBanner, LibraryFloorScreen } from "./ochre-endgame";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { LabsScreen } from "./ochre-labs";
@@ -336,6 +337,10 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         }}
       />
     );
+  } else if (data.mode === "LIBRARY" && tab === "today") {
+    // Programme complete with no continuation — the home becomes the frozen
+    // library floor. Plan / Progress / Labs / Coach stay reachable as-is.
+    screen = <LibraryFloorScreen goCoach={() => go("coach")} goTab={go} />;
   } else if (tab === "today") {
     screen = (
       <TodayScreen
@@ -439,6 +444,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               live and starts moving on its own that day.
             </div>
           )}
+          {!inCheckin && <EndgameBanner goCoach={() => go("coach")} />}
           <main className="screen-scroll" key={onboarding ? "onboarding" : inCheckin ? "checkin" : tab}>
             {screen}
           </main>
