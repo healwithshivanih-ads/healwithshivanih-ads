@@ -387,6 +387,48 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                 except Exception as e:
                     out["errors"].append(f"{client_id} order-mirror: {e}")
 
+        # reverse-mirror: maintenance renewal payments written on Fly (client paid
+        # → the webhook flipped the order to `paid`) → authoritative store, then
+        # RECONCILE the latest paid window into client.yaml (the authoritative home
+        # of maintenance_paid_through, which is one-way Mac→Fly). Newest-wins by
+        # mtime; the reconcile is idempotent (only advances the date forward).
+        smaint = sdir / "maintenance"
+        auth_maint = auth / "clients" / client_id / "maintenance"
+        auth_cdir = auth / "clients" / client_id
+        if smaint.exists() and auth_cdir.exists():
+            auth_maint.mkdir(parents=True, exist_ok=True)
+            best_paid_through = None
+            for f in sorted(smaint.glob("*.yaml")):
+                dest = auth_maint / f.name
+                try:
+                    if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
+                        shutil.copy2(f, dest)
+                        out["checkins_mirrored"] += 1
+                    rec = yaml.safe_load(dest.read_text()) or {}
+                    if rec.get("status") == "paid" and isinstance(rec.get("paid_through"), str):
+                        if best_paid_through is None or rec["paid_through"] > best_paid_through:
+                            best_paid_through = rec["paid_through"]
+                except Exception as e:
+                    out["errors"].append(f"{client_id} maint-mirror: {e}")
+            # fold the latest paid window into client.yaml (authoritative)
+            cpath = auth_cdir / "client.yaml"
+            if best_paid_through and cpath.exists():
+                try:
+                    cdoc = yaml.safe_load(cpath.read_text()) or {}
+                    cur = cdoc.get("maintenance_paid_through")
+                    if not isinstance(cur, str) or best_paid_through > cur:
+                        cdoc["maintenance_paid_through"] = best_paid_through
+                        cdoc["maintenance_status"] = "active"
+                        if not cdoc.get("maintenance_started_on"):
+                            from datetime import timedelta
+                            cdoc["maintenance_started_on"] = (
+                                datetime.now(timezone.utc) + timedelta(hours=5, minutes=30)
+                            ).strftime("%Y-%m-%d")
+                        cpath.write_text(yaml.safe_dump(cdoc, sort_keys=False, allow_unicode=True))
+                        out["checkins_mirrored"] += 1
+                except Exception as e:
+                    out["errors"].append(f"{client_id} maint-reconcile: {e}")
+
         # reverse-mirror: app open timestamps (adoption tracking) — UNION
         # merge, never overwrite: Fly appends new opens between cron runs
         # while the authoritative copy holds the full history.

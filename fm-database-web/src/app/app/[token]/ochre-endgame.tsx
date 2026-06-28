@@ -12,6 +12,7 @@
  *                    guides stay open, with a gentle re-engage path.
  */
 
+import { useState } from "react";
 import { useOchre } from "./ochre-context";
 
 const FOREST = "var(--forest, #2d5a3d)";
@@ -27,6 +28,172 @@ const cardStyle: React.CSSProperties = {
   padding: "13px 15px",
   marginBottom: 12,
 };
+
+const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+
+function loadRazorpay(): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (window.Razorpay) return resolve(true);
+    const s = document.createElement("script");
+    s.src = "https://checkout.razorpay.com/v1/checkout.js";
+    s.onload = () => resolve(true);
+    s.onerror = () => resolve(false);
+    document.body.appendChild(s);
+  });
+}
+
+/**
+ * Maintenance / renewal checkout overlay. One-time Razorpay payment (NOT
+ * auto-debit) for a fixed-price block of months; the verified webhook flips the
+ * order to paid + extends the client's coverage. Amount is server-fixed — this UI
+ * only picks the term. On a successful Checkout handler it shows a "processing"
+ * state (the webhook is the source of truth; coverage extends on next app load).
+ */
+export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
+  const data = useOchre();
+  const pricing = data.endgame?.pricing ?? [];
+  const [term, setTerm] = useState<number>(pricing[0]?.termMonths ?? 6);
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
+
+  const selected = pricing.find((p) => p.termMonths === term) ?? pricing[0] ?? null;
+
+  const pay = async () => {
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch(`/api/maintenance/${data.clientId}/pay`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ termMonths: term }),
+      });
+      const j = (await res.json()) as {
+        ok: boolean;
+        error?: string;
+        razorpay_order_id?: string;
+        amount_inr?: number;
+        currency?: string;
+        keyId?: string;
+      };
+      if (!j.ok) throw new Error(j.error || "could not start payment");
+      const loaded = await loadRazorpay();
+      if (!loaded || !window.Razorpay) throw new Error("payment is unavailable right now");
+      const rzp = new window.Razorpay({
+        key: j.keyId,
+        order_id: j.razorpay_order_id,
+        amount: (j.amount_inr ?? selected?.inr ?? 0) * 100,
+        currency: j.currency ?? "INR",
+        name: "The Ochre Tree",
+        description: `Maintenance — ${term} month${term === 1 ? "" : "s"}`,
+        theme: { color: "#2d5a3d" },
+        handler: () => setDone(true), // webhook is the source of truth
+      });
+      rzp.open();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "payment failed");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: 40,
+        background: "rgba(20,18,14,0.42)",
+        display: "flex",
+        alignItems: "flex-end",
+        justifyContent: "center",
+      }}
+      onClick={onClose}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          width: "100%",
+          maxWidth: 460,
+          background: "var(--bg, #fff)",
+          borderRadius: "18px 18px 0 0",
+          padding: "18px 18px 26px",
+          maxHeight: "88%",
+          overflowY: "auto",
+        }}
+      >
+        {done ? (
+          <div style={{ textAlign: "center", padding: "14px 4px" }}>
+            <div aria-hidden="true" style={{ fontSize: 30, color: FOREST }}>✓</div>
+            <h3 style={{ fontSize: 17, color: INK, margin: "10px 0 6px", fontWeight: 600 }}>Payment received</h3>
+            <p style={{ fontSize: 13.5, color: MUTED, lineHeight: 1.55, margin: "0 0 16px" }}>
+              Thank you — your maintenance is being confirmed. Your coverage updates here shortly.
+            </p>
+            <button onClick={onClose} style={{ fontSize: 14, fontWeight: 600, padding: "11px 22px", borderRadius: 999, border: "none", background: FOREST, color: "#fff", cursor: "pointer" }}>
+              Done
+            </button>
+          </div>
+        ) : (
+          <>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+              <h3 style={{ fontSize: 17, color: INK, margin: 0, fontWeight: 600 }}>Maintain your gains</h3>
+              <button onClick={onClose} aria-label="Close" style={{ border: "none", background: "transparent", fontSize: 20, color: MUTED, cursor: "pointer", lineHeight: 1 }}>×</button>
+            </div>
+            <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.5, margin: "0 0 14px" }}>
+              A lighter plan to hold your progress — monthly do&apos;s &amp; don&apos;ts, your menus &amp; recipes, and regular check-ins. One-time payment, no auto-renewal.
+            </p>
+
+            <div style={{ display: "grid", gap: 9, marginBottom: 14 }}>
+              {pricing.map((p) => {
+                const on = p.termMonths === term;
+                const perMonth = Math.round(p.inr / p.termMonths);
+                return (
+                  <button
+                    key={p.termMonths}
+                    onClick={() => setTerm(p.termMonths)}
+                    style={{
+                      textAlign: "left",
+                      border: `1.5px solid ${on ? FOREST : LINE}`,
+                      background: on ? "rgba(45,90,61,0.06)" : "transparent",
+                      borderRadius: 12,
+                      padding: "12px 14px",
+                      cursor: "pointer",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div>
+                      <div style={{ fontSize: 14.5, fontWeight: 600, color: INK }}>
+                        {p.termMonths} month{p.termMonths === 1 ? "" : "s"}
+                      </div>
+                      <div style={{ fontSize: 12, color: MUTED }}>{inr(perMonth)}/month</div>
+                    </div>
+                    <div style={{ fontSize: 17, fontWeight: 700, color: FOREST }}>{inr(p.inr)}</div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={pay}
+              disabled={busy || !selected}
+              style={{ width: "100%", fontSize: 15, fontWeight: 600, padding: "13px", borderRadius: 12, border: "none", background: FOREST, color: "#fff", cursor: busy ? "default" : "pointer", opacity: busy ? 0.7 : 1 }}
+            >
+              {busy ? "Starting payment…" : selected ? `Pay ${inr(selected.inr)}` : "Unavailable"}
+            </button>
+            {error && <div style={{ fontSize: 12.5, color: "#b3402a", marginTop: 9, textAlign: "center" }}>{error}</div>}
+            <p style={{ fontSize: 11, color: MUTED, textAlign: "center", margin: "10px 0 0" }}>
+              Secure payment via Razorpay · UPI, cards &amp; netbanking
+            </p>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function CtaButton({ label, onClick, tone = FOREST }: { label: string; onClick: () => void; tone?: string }) {
   return (
@@ -51,7 +218,7 @@ function CtaButton({ label, onClick, tone = FOREST }: { label: string; onClick: 
   );
 }
 
-export function EndgameBanner({ goCoach }: { goCoach: () => void }) {
+export function EndgameBanner({ goCoach, onRenew }: { goCoach: () => void; onRenew: () => void }) {
   const { endgame } = useOchre();
   // LIBRARY has its own full screen; ACTIVE has no banner.
   if (!endgame || endgame.mode === "LIBRARY") return null;
@@ -102,7 +269,7 @@ export function EndgameBanner({ goCoach }: { goCoach: () => void }) {
         {title}
       </div>
       <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.5, marginTop: 4 }}>{body}</div>
-      {cta && <CtaButton label={cta} onClick={goCoach} tone={fg} />}
+      {cta && <CtaButton label={cta} onClick={endgame.mode === "GRACE" ? onRenew : goCoach} tone={fg} />}
     </div>
   );
 }
@@ -218,6 +385,8 @@ export function GraduationReport({ onContinue, onMaintain }: { onContinue: () =>
         <ChoiceCard title="Continue" sub="A fresh phase — keep building on what's working." onClick={onContinue} />
         <ChoiceCard title="Maintain" sub="A lighter plan to hold your gains, with regular check-ins." onClick={onMaintain} />
       </div>
+
+      <KeepsakeLink recipeCount={(data.recipePack ?? []).length} />
     </div>
   );
 }
@@ -268,13 +437,35 @@ function BackOnTrackCard({ bot }: { bot: { title: string; intro: string; steps: 
   );
 }
 
+/** The recipe keepsake — a print-ready PDF of every recipe, opened in a new tab
+ *  (/app/<token>/keepsake). A parting gift at graduation + the library floor. */
+function KeepsakeLink({ recipeCount }: { recipeCount: number }) {
+  const { token } = useOchre();
+  if (!recipeCount) return null;
+  return (
+    <a
+      href={`/app/${token}/keepsake`}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ ...cardStyle, display: "block", textDecoration: "none", marginTop: 14 }}
+    >
+      <div style={{ fontSize: 14.5, fontWeight: 500, color: FOREST }}>📖 Your recipe keepsake</div>
+      <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 0" }}>
+        All {recipeCount} of your recipes in one place — open and save as a PDF to keep forever.
+      </p>
+      <div style={{ marginTop: 9, fontSize: 13, color: FOREST, fontWeight: 600 }}>Open keepsake →</div>
+    </a>
+  );
+}
+
 /** MAINTENANCE — the hands-free lighter home. The full app (menus, recipes,
  *  tracking) stays open via the tabs; this home surfaces the month's card, the
  *  back-on-track reset, and a calm "everything's here" framing. */
-export function MaintenanceHome({ goTab }: { goTab: (t: string) => void }) {
+export function MaintenanceHome({ goTab, onRenew }: { goTab: (t: string) => void; onRenew: () => void }) {
   const { endgame, client } = useOchre();
   const monthly = endgame?.monthlyCard ?? null;
   const bot = endgame?.backOnTrack ?? null;
+  const renewalDue = endgame?.renewalDueLabel ?? null;
   return (
     <div style={{ padding: "8px 14px 24px" }}>
       <div style={{ textAlign: "center", padding: "18px 8px 10px" }}>
@@ -288,6 +479,16 @@ export function MaintenanceHome({ goTab }: { goTab: (t: string) => void }) {
             : "Lighter touch, same support."}
         </p>
       </div>
+
+      {renewalDue && (
+        <div style={{ ...cardStyle, borderColor: OCHRE, background: "rgba(176,123,30,0.06)" }}>
+          <div style={{ fontSize: 14.5, fontWeight: 600, color: INK }}>Time to renew</div>
+          <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.5, margin: "5px 0 0" }}>
+            Your maintenance runs out on {renewalDue}. Renew to keep your menus, monthly guidance and check-ins going.
+          </p>
+          <CtaButton label="Renew my maintenance" onClick={onRenew} />
+        </div>
+      )}
 
       {monthly && <MonthlyCardView card={monthly} />}
       {bot && <BackOnTrackCard bot={bot} />}
@@ -360,6 +561,8 @@ export function LibraryFloorScreen({ goCoach, goTab }: { goCoach: () => void; go
       )}
 
       {bot && <BackOnTrackCard bot={bot} />}
+
+      <KeepsakeLink recipeCount={(data.recipePack ?? []).length} />
 
       <div style={cardStyle}>
         <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Ready for the next chapter?</div>

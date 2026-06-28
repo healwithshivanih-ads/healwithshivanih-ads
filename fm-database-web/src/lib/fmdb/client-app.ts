@@ -39,7 +39,8 @@ import {
   type DiscoverySummary,
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
-import { resolveAppMode, GRACE_DAYS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
 import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
@@ -794,6 +795,12 @@ export interface EndgameInfo {
   backOnTrack: BackOnTrack | null;
   /** This month's do's & don'ts (from plan.monthly_cards[YYYY-MM]), if generated. */
   monthlyCard: MonthlyCard | null;
+  /** Offered maintenance terms (for the in-app "Maintain" / renew checkout).
+   *  Server-fixed prices — the pay route re-derives, never trusts the client. */
+  pricing: { termMonths: number; inr: number }[];
+  /** Non-null in MAINTENANCE when coverage runs out within the renewal window —
+   *  a human label for the "renew soon" nudge. */
+  renewalDueLabel: string | null;
 }
 
 /** Add n days to a YYYY-MM-DD in UTC (mirrors app-mode.ts' UTC discipline). */
@@ -828,16 +835,28 @@ function parseMonthlyCard(raw: unknown, ym: string): MonthlyCard | null {
 
 /** Resolve the end-game app mode + the data its screens read. "ACTIVE" → no
  *  endgame block (the app renders the normal in-protocol experience). */
+const MAINTENANCE_PRICING_LIST = Object.entries(MAINTENANCE_PRICING)
+  .map(([term, inr]) => ({ termMonths: Number(term), inr }))
+  .sort((a, b) => b.termMonths - a.termMonths);
+
 function buildEndgame(
   client: Record<string, unknown>,
   plan: AppModePlan | null,
   todayYmd: string,
   monthlyCards: unknown = null,
+  /** record-derived paid-through (from PAID maintenance orders) — folded in so
+   *  the app reflects a fresh payment before the Mac reconcile updates client.yaml */
+  recordThrough: string | null = null,
 ): { mode: AppMode; endgame: EndgameInfo | null } {
+  // Effective window = the later of client.yaml + the latest PAID record.
+  const fromClient = asYmd(client.maintenance_paid_through) || null;
+  const paidThrough =
+    fromClient && recordThrough ? (recordThrough > fromClient ? recordThrough : fromClient) : recordThrough || fromClient;
+
   const res = resolveAppMode(
     {
       maintenance_status: asStr(client.maintenance_status) || null,
-      maintenance_paid_through: asYmd(client.maintenance_paid_through) || null,
+      maintenance_paid_through: paidThrough,
       plan,
     },
     todayYmd,
@@ -845,9 +864,15 @@ function buildEndgame(
   if (res.mode === "ACTIVE") return { mode: "ACTIVE", endgame: null };
 
   const recheck = plan ? effectiveRecheckDate(plan) : null;
-  const paidThrough = asYmd(client.maintenance_paid_through) || null;
   const graceUntil =
     res.mode === "GRACE" && paidThrough ? addDaysUtcYmd(paidThrough, GRACE_DAYS) : null;
+
+  // Renewal nudge: in MAINTENANCE, flag when coverage runs out within the window.
+  const renewalThreshold = addDaysUtcYmd(todayYmd, REVIEW_LEAD_DAYS);
+  const renewalDueLabel =
+    res.mode === "MAINTENANCE" && paidThrough && paidThrough <= renewalThreshold
+      ? formatLongDate(paidThrough)
+      : null;
 
   return {
     mode: res.mode,
@@ -861,6 +886,8 @@ function buildEndgame(
       graceUntilLabel: graceUntil ? formatLongDate(graceUntil) : null,
       backOnTrack: parseBackOnTrack(client.back_on_track_plan),
       monthlyCard: parseMonthlyCard(monthlyCards, todayYmd.slice(0, 7)),
+      pricing: MAINTENANCE_PRICING_LIST,
+      renewalDueLabel,
     },
   };
 }
@@ -4566,7 +4593,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     supersedes: asStr(plan.supersedes) || null,
     status: asStr(plan.status) || null,
   };
-  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd(), plan.monthly_cards);
+  // Record-derived maintenance window — a fresh Razorpay payment lands as a PAID
+  // record on Fly before the Mac reconcile folds it into client.yaml; fold it in
+  // here so the app reflects the renewal immediately.
+  const recordThrough = await latestPaidMaintenanceThrough(clientId).catch(() => null);
+  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd(), plan.monthly_cards, recordThrough);
 
   return {
     clientId,

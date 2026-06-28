@@ -35,6 +35,7 @@ import { SendIntakeFormButton } from "./send-intake-form-button";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
 import { BackOnTrackButton } from "./back-on-track-button";
+import { MonthlyCardButton } from "./monthly-card-button";
 import type { BackOnTrackCard } from "@/lib/server-actions/clients";
 import { Tier1AdvisoryCard } from "./tier1-advisory-card";
 import { detectTier1Advisory } from "@/lib/fmdb/tier1-advisory";
@@ -1597,6 +1598,9 @@ export default async function ClientV2Page({
                                 }
                               />
                             )}
+                            {/* End-game: the monthly do's/don'ts card for the
+                                maintenance tier (seasonal + condition-aware). */}
+                            {publishedPlan && <MonthlyCardButton clientId={client.client_id} />}
                   </div>
                 ),
               },

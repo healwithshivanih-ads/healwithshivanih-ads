@@ -82,8 +82,12 @@ export function ReviewNudgePanel({ whatsappConfigured }: { whatsappConfigured: b
             <div key={f.clientId} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "8px 0", borderTop: `1px solid ${LINE}` }}>
               <div style={{ minWidth: 0 }}>
                 <a href={`/clients-v2/${f.clientId}`} style={{ fontSize: 13.5, fontWeight: 600, color: INK, textDecoration: "none" }}>{f.name}</a>
-                <div style={{ fontSize: 11.5, color: SEC }}>
-                  {f.kind === "renewal" ? `Maintenance renews ${human(f.date)}` : `Recheck ${human(f.date)}`}
+                <div style={{ fontSize: 11.5, color: f.kind === "lapse" ? "#b3402a" : SEC, fontWeight: f.kind === "lapse" ? 600 : 400 }}>
+                  {f.kind === "renewal"
+                    ? `Maintenance renews ${human(f.date)}`
+                    : f.kind === "lapse"
+                      ? `⚠ Lapsed ${human(f.date)} — in grace`
+                      : `Recheck ${human(f.date)}`}
                 </div>
               </div>
               {done ? (

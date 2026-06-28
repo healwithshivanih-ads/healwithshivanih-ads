@@ -9,6 +9,9 @@
  *                 Continue / Maintain before the app drops to the library floor.
  *   - "renewal" : a client on the maintenance tier whose `maintenance_paid_through`
  *                 is within the next 14 days — time to renew.
+ *   - "lapse"   : a maintenance client whose coverage has JUST lapsed but who is
+ *                 still inside the 15-day grace window — last call before the app
+ *                 drops to the library floor.
  *
  * Coach pulls the list from the dashboard panel; a per-client "Send nudge" button
  * fires the Meta-approved `fm_review_checkin_v1` template via the WA server.
@@ -25,6 +28,7 @@ import { getLastSentAtAction } from "@/app/api/whatsapp/actions";
 const REVIEW_LEAD_DAYS = 14;
 const REVIEW_GRACE_DAYS = 15;
 const RENEWAL_LEAD_DAYS = 14;
+const GRACE_DAYS = 15; // mirrors app-mode.ts GRACE_DAYS
 const TEMPLATE = "fm_review_checkin_v1";
 
 function istTodayYmd(): string {
@@ -48,8 +52,8 @@ export interface ReviewNudgeFlag {
   clientId: string;
   name: string;
   phone: string;
-  kind: "review" | "renewal";
-  /** YYYY-MM-DD — the recheck (review) or paid-through (renewal) date. */
+  kind: "review" | "renewal" | "lapse";
+  /** YYYY-MM-DD — the recheck (review) or paid-through (renewal/lapse) date. */
   date: string;
   /** Most recent time this nudge template went out, if ever. */
   lastSentAt: string | null;
@@ -93,7 +97,12 @@ export async function listReviewNudgesAction(): Promise<ReviewNudgeFlag[]> {
       flags.push({ clientId, name, phone, kind: "renewal", date: paidThrough, lastSentAt: null });
       continue; // maintenance takes precedence over the plan window
     }
-    if (onMaintenance) continue; // active maintenance but not near renewal → no nudge
+    // lapse: coverage expired but still inside the grace window → last call.
+    if (onMaintenance && paidThrough && today > paidThrough && today <= addDaysYmd(paidThrough, GRACE_DAYS)) {
+      flags.push({ clientId, name, phone, kind: "lapse", date: paidThrough, lastSentAt: null });
+      continue;
+    }
+    if (onMaintenance) continue; // active maintenance, not near renewal / past grace → no nudge
 
     // ── review: effective recheck inside the REVIEW window ────────────────────
     const plan = planByClient.get(clientId);

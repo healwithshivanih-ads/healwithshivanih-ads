@@ -79,6 +79,39 @@ export async function generateBackOnTrackAction(
   }
 }
 
+export interface MonthlyCard {
+  month: string; // YYYY-MM
+  title: string;
+  dos: string[];
+  donts: string[];
+}
+
+/**
+ * Generate (or preview) the maintenance tier's monthly do's & don'ts card for a
+ * client — the one living thing in maintenance. Deterministic seasonal +
+ * condition template (no API). dryRun=true previews; otherwise it writes the
+ * card onto the client's latest published plan at monthly_cards[month], which the
+ * app's maintenance home reads. Idempotent per month — regenerating overwrites.
+ */
+export async function generateMonthlyCardAction(
+  clientId: string,
+  month?: string,
+  dryRun = false,
+): Promise<{ ok: boolean; card: MonthlyCard | null; error?: string }> {
+  if (!clientId) return { ok: false, card: null, error: "clientId required" };
+  try {
+    const res = (await runScript("generate-monthly-card.py", {
+      client_id: clientId,
+      ...(month ? { month } : {}),
+      dry_run: dryRun,
+    })) as { ok: boolean; card: MonthlyCard | null; error?: string | null };
+    if (res.ok && !dryRun) revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: res.ok, card: res.card, error: res.error ?? undefined };
+  } catch (e) {
+    return { ok: false, card: null, error: e instanceof Error ? e.message : "generation failed" };
+  }
+}
+
 export type CreateClientInput = {
   // client_id is auto-generated; not collected from the form
   display_name?: string;

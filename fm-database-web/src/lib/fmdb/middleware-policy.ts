@@ -66,6 +66,10 @@ export const PUBLIC_PATH_PREFIXES = [
   // The COACH actions are server actions on the private page (and hard-refuse
   // under FLY_INTAKE_ONLY), so they are deliberately NOT here.
   "/api/lab-order/",
+  // Maintenance renewal payment (Razorpay) — same posture as /api/lab-order/.
+  // /[clientId]/pay charges a SERVER-FIXED amount; /webhook is HMAC-verified and
+  // is the only path that marks a maintenance order paid.
+  "/api/maintenance/",
   // Static PWA assets (manifest + home-screen icons). No data.
   "/ochre-app/",
   // Recipe photos for the client app's recipe cards. Generic food images.
