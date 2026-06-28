@@ -251,6 +251,14 @@ describe("sanitizeLogistics — client-submitted collection details", () => {
     expect(sanitizeLogistics({ ...good, preferred_slot: "" })).toMatchObject({ ok: false });
   });
 
+  it("enforces the 48-hour collection floor when minDateYmd is passed", () => {
+    // good.preferred_date is 2026-07-02
+    expect(sanitizeLogistics(good, { minDateYmd: "2026-07-04" })).toMatchObject({ ok: false }); // too soon
+    expect(sanitizeLogistics(good, { minDateYmd: "2026-07-02" }).ok).toBe(true); // exactly the floor is ok
+    expect(sanitizeLogistics(good, { minDateYmd: "2026-07-01" }).ok).toBe(true); // comfortably ahead
+    expect(sanitizeLogistics(good).ok).toBe(true); // no floor passed → window not enforced
+  });
+
   it("rejects an over-long address / notes", () => {
     expect(sanitizeLogistics({ ...good, address: "x".repeat(401) })).toMatchObject({ ok: false });
     expect(sanitizeLogistics({ ...good, notes: "x".repeat(601) })).toMatchObject({ ok: false });
