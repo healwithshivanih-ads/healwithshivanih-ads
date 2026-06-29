@@ -4,29 +4,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getCataloguePath, getPlansRoot } from "./paths";
 import type { CatalogueKind, Plan, Client, PlanStatus } from "./types";
-
-// Plans live under ~/fm-plans, which on the coaching Macs resolves through iCloud
-// Drive's FileProvider. Under sync contention that layer intermittently returns
-// EAGAIN (errno -11) — or EBUSY/EMFILE — on an otherwise-valid read, which would
-// otherwise throw straight out of a dashboard RSC and 500 the whole page. Retry
-// these transient errors a few times with a short backoff so one flaky read never
-// takes the app down; genuine errors (ENOENT etc.) still surface immediately.
-const _TRANSIENT_FS = new Set(["EAGAIN", "EBUSY", "EMFILE", "ENFILE", "EWOULDBLOCK", "ETIMEDOUT"]);
-
-async function withFsRetry<T>(op: () => Promise<T>, attempts = 5): Promise<T> {
-  let lastErr: unknown;
-  for (let i = 0; i < attempts; i++) {
-    try {
-      return await op();
-    } catch (err) {
-      const code = (err as NodeJS.ErrnoException).code ?? "";
-      if (!_TRANSIENT_FS.has(code) || i === attempts - 1) throw err;
-      lastErr = err;
-      await new Promise((r) => setTimeout(r, 60 * (i + 1) + Math.floor(Math.random() * 40)));
-    }
-  }
-  throw lastErr;
-}
+import { withFsRetry } from "./fs-retry";
 
 async function readYaml<T>(absPath: string): Promise<T | null> {
   try {

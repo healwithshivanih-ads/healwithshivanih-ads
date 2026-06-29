@@ -4,10 +4,11 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getCataloguePath, getPlansRoot, getResourcesRoot } from "./paths";
 import type { Client, MindMap } from "./types";
+import { withFsRetry } from "./fs-retry";
 
 async function readYaml<T>(absPath: string): Promise<T | null> {
   try {
-    const raw = await fs.readFile(absPath, "utf-8");
+    const raw = await withFsRetry(() => fs.readFile(absPath, "utf-8"));
     return yaml.load(raw) as T;
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
@@ -17,7 +18,7 @@ async function readYaml<T>(absPath: string): Promise<T | null> {
 
 async function listYamlFiles(dir: string): Promise<string[]> {
   try {
-    const names = await fs.readdir(dir);
+    const names = await withFsRetry(() => fs.readdir(dir));
     return names
       .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
       .map((n) => path.join(dir, n));
@@ -134,7 +135,7 @@ const INBOX_STATE_FILE_NAME = "_whatsapp_inbox_state.yaml";
 async function readInboxState(): Promise<Record<string, string>> {
   const root = getPlansRoot();
   try {
-    const raw = await fs.readFile(path.join(root, INBOX_STATE_FILE_NAME), "utf-8");
+    const raw = await withFsRetry(() => fs.readFile(path.join(root, INBOX_STATE_FILE_NAME), "utf-8"));
     const parsed = yaml.load(raw);
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
       const out: Record<string, string> = {};
@@ -182,7 +183,7 @@ interface CoachInboxClientState {
 async function readCoachInboxState(): Promise<Record<string, CoachInboxClientState>> {
   const root = getPlansRoot();
   try {
-    const raw = await fs.readFile(path.join(root, COACH_INBOX_STATE_FILE_NAME), "utf-8");
+    const raw = await withFsRetry(() => fs.readFile(path.join(root, COACH_INBOX_STATE_FILE_NAME), "utf-8"));
     const parsed = yaml.load(raw);
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
       const out: Record<string, CoachInboxClientState> = {};
@@ -490,7 +491,7 @@ export async function getRecentInboundMessages(
       const dir = path.join(root, "clients", id, "sessions");
       let names: string[];
       try {
-        names = await fs.readdir(dir);
+        names = await withFsRetry(() => fs.readdir(dir));
       } catch {
         return;
       }
@@ -584,7 +585,7 @@ export async function getInboxMessages(
       const dir = path.join(root, "clients", id, "sessions");
       let names: string[];
       try {
-        names = await fs.readdir(dir);
+        names = await withFsRetry(() => fs.readdir(dir));
       } catch {
         return;
       }
@@ -752,7 +753,7 @@ export async function loadUpcomingBookings(
   const root = getPlansRoot();
   let raw: Record<string, RawBookingEvent[]> = {};
   try {
-    const text = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const text = await withFsRetry(() => fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8"));
     const parsed = yaml.load(text);
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
       raw = parsed as Record<string, RawBookingEvent[]>;
@@ -860,7 +861,7 @@ export async function loadRecentCancellations(
   const root = getPlansRoot();
   let raw: Record<string, RawBookingEvent[]> = {};
   try {
-    const text = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const text = await withFsRetry(() => fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8"));
     const parsed = yaml.load(text);
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
       raw = parsed as Record<string, RawBookingEvent[]>;
@@ -916,7 +917,7 @@ export async function loadClientBookings(clientId: string): Promise<UpcomingBook
   const root = getPlansRoot();
   let raw: Record<string, RawBookingEvent[]> = {};
   try {
-    const text = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const text = await withFsRetry(() => fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8"));
     const parsed = yaml.load(text);
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
       raw = parsed as Record<string, RawBookingEvent[]>;
@@ -1030,7 +1031,7 @@ export async function getClientUnreadCounts(
   // doesn't exist — bookings bucket simply stays 0 in that case.
   let calBookings: Record<string, Array<{ received_at?: string }>> = {};
   try {
-    const raw = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const raw = await withFsRetry(() => fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8"));
     const parsed = yaml.load(raw);
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
       calBookings = parsed as Record<string, Array<{ received_at?: string }>>;
@@ -1065,7 +1066,7 @@ export async function getClientUnreadCounts(
       // ── WhatsApp inbound (session YAMLs tagged [source: whatsapp_webhook]) ──
       const sessDir = path.join(root, "clients", clientId, "sessions");
       try {
-        const names = await fs.readdir(sessDir);
+        const names = await withFsRetry(() => fs.readdir(sessDir));
         const recent = names.filter((n) => {
           const m = n.match(/(\d{4}-\d{2}-\d{2})/);
           return m && m[1] >= cutoffStr && (n.endsWith(".yaml") || n.endsWith(".yml"));
@@ -1324,7 +1325,7 @@ export interface BacklogItem {
 export async function loadBacklog(): Promise<BacklogItem[]> {
   const file = path.join(getCataloguePath(), "_backlog.yaml");
   try {
-    const raw = await fs.readFile(file, "utf-8");
+    const raw = await withFsRetry(() => fs.readFile(file, "utf-8"));
     const data = yaml.load(raw);
     if (Array.isArray(data)) return data as BacklogItem[];
     return [];
@@ -1375,7 +1376,7 @@ export async function getDormantClients(
       const sessionsDir = path.join(root, "clients", id, "sessions");
       let lastDate: string | undefined;
       try {
-        const names = await fs.readdir(sessionsDir);
+        const names = await withFsRetry(() => fs.readdir(sessionsDir));
         // Session filenames start with a YYYY-MM-DD date prefix —
         // whichever sorts last is the most recent. Cheap path.
         const dated = names
@@ -1398,7 +1399,7 @@ export async function getDormantClients(
       let intakeDate: string | undefined;
       let displayName = id;
       try {
-        const raw = await fs.readFile(clientYamlPath, "utf-8");
+        const raw = await withFsRetry(() => fs.readFile(clientYamlPath, "utf-8"));
         const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
         intakeDate = data.intake_date as string | undefined;
         displayName = (data.display_name as string | undefined) ?? id;
@@ -1462,10 +1463,10 @@ export async function getPlateauedClients(
   await Promise.all(
     clientIds.map(async (id) => {
       try {
-        const raw = await fs.readFile(
+        const raw = await withFsRetry(() => fs.readFile(
           path.join(root, "clients", id, "client.yaml"),
           "utf-8",
-        );
+        ));
         const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
         const wl = data.weight_loss as Record<string, unknown> | undefined;
         if (!wl || wl.enabled !== true) return;
@@ -1528,10 +1529,10 @@ export async function getRegressedClients(
   await Promise.all(
     clientIds.map(async (id) => {
       try {
-        const raw = await fs.readFile(
+        const raw = await withFsRetry(() => fs.readFile(
           path.join(root, "clients", id, "client.yaml"),
           "utf-8",
-        );
+        ));
         const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
         const wl = data.weight_loss as Record<string, unknown> | undefined;
         if (!wl || wl.enabled !== true) return;
@@ -1613,10 +1614,10 @@ export async function getClientHealthSignals(
       // ─── Single read of client.yaml ────────────────────────────────
       let data: Record<string, unknown> = {};
       try {
-        const raw = await fs.readFile(
+        const raw = await withFsRetry(() => fs.readFile(
           path.join(root, "clients", id, "client.yaml"),
           "utf-8",
-        );
+        ));
         data = (yaml.load(raw) as Record<string, unknown>) ?? {};
       } catch {
         return; // unreadable client.yaml → skip all three checks
@@ -1630,9 +1631,9 @@ export async function getClientHealthSignals(
       // ─── Dormant check (needs sessions/ readdir) ───────────────────
       let lastSessionDate: string | undefined;
       try {
-        const names = await fs.readdir(
+        const names = await withFsRetry(() => fs.readdir(
           path.join(root, "clients", id, "sessions"),
-        );
+        ));
         const dated = names
           .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
           .map((n) => {
