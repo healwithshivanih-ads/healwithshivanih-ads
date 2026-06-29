@@ -5,9 +5,32 @@ import yaml from "js-yaml";
 import { getCataloguePath, getPlansRoot } from "./paths";
 import type { CatalogueKind, Plan, Client, PlanStatus } from "./types";
 
+// Plans live under ~/fm-plans, which on the coaching Macs resolves through iCloud
+// Drive's FileProvider. Under sync contention that layer intermittently returns
+// EAGAIN (errno -11) — or EBUSY/EMFILE — on an otherwise-valid read, which would
+// otherwise throw straight out of a dashboard RSC and 500 the whole page. Retry
+// these transient errors a few times with a short backoff so one flaky read never
+// takes the app down; genuine errors (ENOENT etc.) still surface immediately.
+const _TRANSIENT_FS = new Set(["EAGAIN", "EBUSY", "EMFILE", "ENFILE", "EWOULDBLOCK", "ETIMEDOUT"]);
+
+async function withFsRetry<T>(op: () => Promise<T>, attempts = 5): Promise<T> {
+  let lastErr: unknown;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await op();
+    } catch (err) {
+      const code = (err as NodeJS.ErrnoException).code ?? "";
+      if (!_TRANSIENT_FS.has(code) || i === attempts - 1) throw err;
+      lastErr = err;
+      await new Promise((r) => setTimeout(r, 60 * (i + 1) + Math.floor(Math.random() * 40)));
+    }
+  }
+  throw lastErr;
+}
+
 async function readYaml<T>(absPath: string): Promise<T | null> {
   try {
-    const raw = await fs.readFile(absPath, "utf-8");
+    const raw = await withFsRetry(() => fs.readFile(absPath, "utf-8"));
     return yaml.load(raw) as T;
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
@@ -17,7 +40,7 @@ async function readYaml<T>(absPath: string): Promise<T | null> {
 
 async function listYamlFiles(dir: string): Promise<string[]> {
   try {
-    const names = await fs.readdir(dir);
+    const names = await withFsRetry(() => fs.readdir(dir));
     return names
       .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
       .map((n) => path.join(dir, n));
@@ -109,7 +132,7 @@ export async function loadAllClients(): Promise<Client[]> {
   const clientsDir = path.join(root, "clients");
   let entries: string[] = [];
   try {
-    entries = await fs.readdir(clientsDir);
+    entries = await withFsRetry(() => fs.readdir(clientsDir));
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
     throw err;
@@ -117,7 +140,7 @@ export async function loadAllClients(): Promise<Client[]> {
   const out: Client[] = [];
   for (const entry of entries) {
     const entryPath = path.join(clientsDir, entry);
-    const stat = await fs.stat(entryPath);
+    const stat = await withFsRetry(() => fs.stat(entryPath));
     if (stat.isDirectory()) {
       const data = await readYaml<Client>(path.join(entryPath, "client.yaml"));
       if (data) out.push(data);
