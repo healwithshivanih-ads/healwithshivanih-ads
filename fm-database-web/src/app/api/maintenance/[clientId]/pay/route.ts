@@ -17,6 +17,7 @@ import {
   patchMaintenanceOrder,
   nextMaintenanceOrderId,
   effectiveExistingThrough,
+  extendPaidThrough,
   DEFAULT_MAINTENANCE_TERM_MONTHS,
 } from "@/lib/fmdb/maintenance-orders";
 
@@ -52,12 +53,12 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
     await nextMaintenanceOrderId(clientId, today),
     clientId,
     termMonths,
-    existing,
-    today,
     new Date().toISOString(),
   );
   if (!built.ok) return NextResponse.json({ ok: false, error: built.error }, { status: 400 });
   await createMaintenanceOrder(built.order);
+  // Preview only (the webhook recomputes the authoritative paid-through at capture).
+  const previewThrough = extendPaidThrough(existing, today, termMonths);
 
   let rzpOrderId: string;
   try {
@@ -85,7 +86,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
     razorpay_order_id: rzpOrderId,
     amount_inr: built.order.amount_inr,
     term_months: termMonths,
-    paid_through: built.order.paid_through,
+    paid_through: previewThrough,
     currency: "INR",
     keyId: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ?? keyId, // public key only
     order_id: built.order.order_id,

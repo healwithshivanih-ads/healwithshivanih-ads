@@ -27,12 +27,13 @@ import yaml from "js-yaml";
 
 export type MaintenanceOrderStatus = "pending" | "paid" | "cancelled";
 
-/** Allowed terms → fixed INR price. The 6-month prepaid block is the headline
- *  offer (₹12,000 = ₹2,000/mo); 1-month exists as a lighter top-up. Changing a
- *  price here is the ONLY way to change what a client is charged. */
+/** Allowed terms → fixed INR price for the ONE-TIME (manual) maintenance block.
+ *  The 6-month prepaid block is ₹10,000 (the manual option). Quarterly auto-renewal
+ *  is a separate Razorpay SUBSCRIPTION (see maintenance-subscription.ts), NOT a
+ *  one-time term. Changing a price here is the ONLY way to change what a client is
+ *  charged for the one-time block. */
 export const MAINTENANCE_PRICING: Record<number, number> = {
-  6: 12000,
-  1: 2000,
+  6: 10000,
 };
 
 export const DEFAULT_MAINTENANCE_TERM_MONTHS = 6;
@@ -77,16 +78,16 @@ export type BuildMaintenanceResult =
   | { ok: false; error: string };
 
 /**
- * Build a `pending` maintenance order with the server-fixed price for the term
- * and the computed paid-through. Pure — caller persists. `existingThrough` is the
- * client's current maintenance_paid_through (null if none); `today` is IST YMD.
+ * Build a `pending` maintenance order with the server-fixed price for the term.
+ * Pure — caller persists. `paid_through` is deliberately null here: it is set
+ * AUTHORITATIVELY by the webhook on capture (so a pending/unpaid order never
+ * counts toward coverage — the single invariant the projection + reconcile rely
+ * on: paid_through != null ⟺ a real payment landed).
  */
 export function buildMaintenanceOrder(
   orderId: string,
   clientId: string,
   termMonths: number,
-  existingThrough: string | null,
-  today: string,
   createdAtIso: string,
 ): BuildMaintenanceResult {
   const price = maintenancePrice(termMonths);
@@ -100,7 +101,7 @@ export function buildMaintenanceOrder(
       term_months: termMonths,
       amount_inr: price,
       status: "pending",
-      paid_through: extendPaidThrough(existingThrough, today, termMonths),
+      paid_through: null,
       created_at: createdAtIso,
     },
   };
@@ -195,15 +196,28 @@ export async function findMaintenanceOrderByRazorpayOrderId(
 }
 
 /**
- * The latest paid-through across this client's PAID maintenance records (the
- * record-derived maintenance window). null if no paid record. Used by the app
- * projection to reflect payment immediately, before the Mac reconcile catches up.
+ * The latest paid-through across ALL of this client's maintenance records — both
+ * one-time orders AND subscription records (same dir, both carry `paid_through`,
+ * set only when a real payment landed). Generic dir scan so it is agnostic to
+ * record shape. null if nothing paid. Used by the app projection to reflect a
+ * payment immediately, before the Mac reconcile folds it into client.yaml.
  */
 export async function latestPaidMaintenanceThrough(clientId: string): Promise<string | null> {
-  const orders = await loadClientMaintenanceOrders(clientId);
+  const dir = await maintenanceDir(clientId);
   let best: string | null = null;
-  for (const o of orders) {
-    if (o.status === "paid" && o.paid_through && (!best || o.paid_through > best)) best = o.paid_through;
+  try {
+    const files = await fs.readdir(dir);
+    for (const f of files.filter((x) => x.endsWith(".yaml"))) {
+      try {
+        const rec = yaml.load(await fs.readFile(path.join(dir, f), "utf8")) as { paid_through?: unknown } | null;
+        const pt = rec?.paid_through;
+        if (typeof pt === "string" && /^\d{4}-\d{2}-\d{2}$/.test(pt) && (!best || pt > best)) best = pt;
+      } catch {
+        /* skip unreadable */
+      }
+    }
+  } catch {
+    /* no maintenance dir → nothing paid */
   }
   return best;
 }

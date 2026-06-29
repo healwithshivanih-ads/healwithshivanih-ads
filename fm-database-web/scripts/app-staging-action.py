@@ -331,6 +331,22 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
             except Exception:
                 pass
 
+    # 5d. maintenance payments (one-time orders + quarterly subscription records).
+    # Created on Fly at pay/charge time; _refresh reverse-mirrors them to auth
+    # before this runs. Forward-stage newest-wins keeps the staging copy consistent
+    # (and propagates a coach-side comp) without clobbering a fresher Fly status.
+    auth_maint = auth / "clients" / client_id / "maintenance"
+    if auth_maint.exists():
+        smnt = sdir / "maintenance"
+        smnt.mkdir(parents=True, exist_ok=True)
+        for f in auth_maint.glob("*.yaml"):
+            dest = smnt / f.name
+            try:
+                if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
+                    shutil.copy2(f, dest)
+            except Exception:
+                pass
+
     # 6. marker
     (sdir / "_app_staged.yaml").write_text(
         yaml.safe_dump(
@@ -387,11 +403,14 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                 except Exception as e:
                     out["errors"].append(f"{client_id} order-mirror: {e}")
 
-        # reverse-mirror: maintenance renewal payments written on Fly (client paid
-        # → the webhook flipped the order to `paid`) → authoritative store, then
-        # RECONCILE the latest paid window into client.yaml (the authoritative home
-        # of maintenance_paid_through, which is one-way Mac→Fly). Newest-wins by
-        # mtime; the reconcile is idempotent (only advances the date forward).
+        # reverse-mirror: maintenance payments written on Fly — both one-time
+        # ORDERS (webhook flipped to paid) and quarterly SUBSCRIPTION charges
+        # (subscription.charged set paid_through) → authoritative store, then
+        # RECONCILE the latest window into client.yaml (the authoritative home of
+        # maintenance_paid_through, which is one-way Mac→Fly). Newest-wins by mtime;
+        # reconcile is idempotent (only advances the date forward). Unified rule:
+        # a record's paid_through is non-null ⟺ a real payment landed, so we fold
+        # in any record carrying a paid_through (pending/created records have null).
         smaint = sdir / "maintenance"
         auth_maint = auth / "clients" / client_id / "maintenance"
         auth_cdir = auth / "clients" / client_id
@@ -404,10 +423,15 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                     if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
                         shutil.copy2(f, dest)
                         out["checkins_mirrored"] += 1
-                    rec = yaml.safe_load(dest.read_text()) or {}
-                    if rec.get("status") == "paid" and isinstance(rec.get("paid_through"), str):
-                        if best_paid_through is None or rec["paid_through"] > best_paid_through:
-                            best_paid_through = rec["paid_through"]
+                    # Fold paid_through from the STAGING source `f` (kept current with
+                    # Fly = the payment write-origin), NOT the mtime-gated `dest` copy:
+                    # if the copy was skipped (Mac mtime >= Fly mtime), reading dest
+                    # would miss a fresh renewal and let coverage silently drift. Value
+                    # is max-wins, so reading the freshest source is always correct.
+                    rec = yaml.safe_load(f.read_text()) or {}
+                    pt = rec.get("paid_through")
+                    if isinstance(pt, str) and (best_paid_through is None or pt > best_paid_through):
+                        best_paid_through = pt
                 except Exception as e:
                     out["errors"].append(f"{client_id} maint-mirror: {e}")
             # fold the latest paid window into client.yaml (authoritative)

@@ -43,59 +43,101 @@ function loadRazorpay(): Promise<boolean> {
 }
 
 /**
- * Maintenance / renewal checkout overlay. One-time Razorpay payment (NOT
- * auto-debit) for a fixed-price block of months; the verified webhook flips the
- * order to paid + extends the client's coverage. Amount is server-fixed — this UI
- * only picks the term. On a successful Checkout handler it shows a "processing"
- * state (the webhook is the source of truth; coverage extends on next app load).
+ * Maintenance / renewal checkout overlay. Two ways to maintain:
+ *   - One-time block (e.g. 6 months ₹10,000) — manual; the webhook flips the order
+ *     to paid + extends coverage. No auto-renew.
+ *   - Quarterly subscription (₹6,000) — a Razorpay auto-debit mandate (when the
+ *     plan is configured); Razorpay charges every 3 months, the subscription.charged
+ *     webhook extends coverage. Authorize once.
+ * The Checkout success handler only shows a "processing" state — the verified
+ * webhook is the source of truth; coverage updates on next app load.
  */
 export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
   const data = useOchre();
   const pricing = data.endgame?.pricing ?? [];
-  const [term, setTerm] = useState<number>(pricing[0]?.termMonths ?? 6);
+  const subOffer = data.endgame?.subscriptionOffer ?? null;
+  const subActive = data.endgame?.subscriptionActive ?? false;
+  const subShown = !!subOffer && !subActive;
+
+  // Selection: "sub" or a one-time term as a string. Default to the subscription
+  // (best value) when offered, else the first one-time block.
+  const [sel, setSel] = useState<string>(subShown ? "sub" : String(pricing[0]?.termMonths ?? 6));
   const [busy, setBusy] = useState(false);
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState<null | "onetime" | "sub">(null);
   const [error, setError] = useState("");
 
-  const selected = pricing.find((p) => p.termMonths === term) ?? pricing[0] ?? null;
+  const oneTime = pricing.find((p) => String(p.termMonths) === sel) ?? null;
+  const isSub = sel === "sub";
 
-  const pay = async () => {
+  const launch = (opts: Record<string, unknown>, onOk: () => void) => {
+    const Ctor = window.Razorpay;
+    if (!Ctor) throw new Error("payment is unavailable right now");
+    const rzp = new Ctor({
+      name: "The Ochre Tree",
+      theme: { color: "#2d5a3d" },
+      handler: onOk, // webhook is the source of truth
+      ...opts,
+    });
+    rzp.open();
+  };
+
+  const start = async () => {
     setBusy(true);
     setError("");
     try {
-      const res = await fetch(`/api/maintenance/${data.clientId}/pay`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ termMonths: term }),
-      });
-      const j = (await res.json()) as {
-        ok: boolean;
-        error?: string;
-        razorpay_order_id?: string;
-        amount_inr?: number;
-        currency?: string;
-        keyId?: string;
-      };
-      if (!j.ok) throw new Error(j.error || "could not start payment");
       const loaded = await loadRazorpay();
       if (!loaded || !window.Razorpay) throw new Error("payment is unavailable right now");
-      const rzp = new window.Razorpay({
-        key: j.keyId,
-        order_id: j.razorpay_order_id,
-        amount: (j.amount_inr ?? selected?.inr ?? 0) * 100,
-        currency: j.currency ?? "INR",
-        name: "The Ochre Tree",
-        description: `Maintenance — ${term} month${term === 1 ? "" : "s"}`,
-        theme: { color: "#2d5a3d" },
-        handler: () => setDone(true), // webhook is the source of truth
-      });
-      rzp.open();
+      if (isSub) {
+        const res = await fetch(`/api/maintenance/${data.clientId}/subscribe`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: "{}",
+        });
+        const j = (await res.json()) as { ok: boolean; error?: string; subscription_id?: string; keyId?: string };
+        if (!j.ok) throw new Error(j.error || "could not start subscription");
+        launch(
+          { key: j.keyId, subscription_id: j.subscription_id, description: "Quarterly maintenance (auto-renews)" },
+          () => setDone("sub"),
+        );
+      } else {
+        const termMonths = oneTime?.termMonths ?? 6;
+        const res = await fetch(`/api/maintenance/${data.clientId}/pay`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ termMonths }),
+        });
+        const j = (await res.json()) as {
+          ok: boolean;
+          error?: string;
+          razorpay_order_id?: string;
+          amount_inr?: number;
+          currency?: string;
+          keyId?: string;
+        };
+        if (!j.ok) throw new Error(j.error || "could not start payment");
+        launch(
+          {
+            key: j.keyId,
+            order_id: j.razorpay_order_id,
+            amount: (j.amount_inr ?? oneTime?.inr ?? 0) * 100,
+            currency: j.currency ?? "INR",
+            description: `Maintenance — ${termMonths} months`,
+          },
+          () => setDone("onetime"),
+        );
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "payment failed");
     } finally {
       setBusy(false);
     }
   };
+
+  const cta = busy
+    ? isSub ? "Starting…" : "Starting payment…"
+    : isSub
+      ? `Set up auto-renew · ${subOffer ? inr(subOffer.inr) : ""}/quarter`
+      : oneTime ? `Pay ${inr(oneTime.inr)}` : "Unavailable";
 
   return (
     <div
@@ -127,9 +169,13 @@ export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
         {done ? (
           <div style={{ textAlign: "center", padding: "14px 4px" }}>
             <div aria-hidden="true" style={{ fontSize: 30, color: FOREST }}>✓</div>
-            <h3 style={{ fontSize: 17, color: INK, margin: "10px 0 6px", fontWeight: 600 }}>Payment received</h3>
+            <h3 style={{ fontSize: 17, color: INK, margin: "10px 0 6px", fontWeight: 600 }}>
+              {done === "sub" ? "Auto-renew set up" : "Payment received"}
+            </h3>
             <p style={{ fontSize: 13.5, color: MUTED, lineHeight: 1.55, margin: "0 0 16px" }}>
-              Thank you — your maintenance is being confirmed. Your coverage updates here shortly.
+              {done === "sub"
+                ? "Thank you — your quarterly plan is being confirmed. You'll be charged automatically each quarter; we'll always remind you first."
+                : "Thank you — your maintenance is being confirmed. Your coverage updates here shortly."}
             </p>
             <button onClick={onClose} style={{ fontSize: 14, fontWeight: 600, padding: "11px 22px", borderRadius: 999, border: "none", background: FOREST, color: "#fff", cursor: "pointer" }}>
               Done
@@ -142,17 +188,53 @@ export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
               <button onClick={onClose} aria-label="Close" style={{ border: "none", background: "transparent", fontSize: 20, color: MUTED, cursor: "pointer", lineHeight: 1 }}>×</button>
             </div>
             <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.5, margin: "0 0 14px" }}>
-              A lighter plan to hold your progress — monthly do&apos;s &amp; don&apos;ts, your menus &amp; recipes, and regular check-ins. One-time payment, no auto-renewal.
+              A lighter plan to hold your progress — monthly do&apos;s &amp; don&apos;ts, your menus &amp; recipes, and regular check-ins.
             </p>
 
+            {subActive && (
+              <div style={{ ...cardStyle, borderColor: FOREST, background: "rgba(45,90,61,0.06)" }}>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: FOREST }}>✓ Auto-renew is on</div>
+                <div style={{ fontSize: 12.5, color: MUTED, marginTop: 3 }}>
+                  Your quarterly plan renews automatically — nothing to do.
+                </div>
+              </div>
+            )}
+
             <div style={{ display: "grid", gap: 9, marginBottom: 14 }}>
+              {subShown && subOffer && (
+                <button
+                  onClick={() => setSel("sub")}
+                  style={{
+                    textAlign: "left",
+                    border: `1.5px solid ${isSub ? FOREST : LINE}`,
+                    background: isSub ? "rgba(45,90,61,0.06)" : "transparent",
+                    borderRadius: 12,
+                    padding: "12px 14px",
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <div>
+                    <div style={{ fontSize: 14.5, fontWeight: 600, color: INK }}>
+                      Quarterly{" "}
+                      <span style={{ fontSize: 10.5, fontWeight: 800, color: FOREST, background: "rgba(45,90,61,0.12)", padding: "2px 7px", borderRadius: 999, marginLeft: 4 }}>
+                        AUTO-RENEW
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 12, color: MUTED }}>Charged every 3 months · cancel anytime</div>
+                  </div>
+                  <div style={{ fontSize: 17, fontWeight: 700, color: FOREST }}>{inr(subOffer.inr)}</div>
+                </button>
+              )}
+
               {pricing.map((p) => {
-                const on = p.termMonths === term;
-                const perMonth = Math.round(p.inr / p.termMonths);
+                const on = !isSub && String(p.termMonths) === sel;
                 return (
                   <button
                     key={p.termMonths}
-                    onClick={() => setTerm(p.termMonths)}
+                    onClick={() => setSel(String(p.termMonths))}
                     style={{
                       textAlign: "left",
                       border: `1.5px solid ${on ? FOREST : LINE}`,
@@ -167,9 +249,9 @@ export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
                   >
                     <div>
                       <div style={{ fontSize: 14.5, fontWeight: 600, color: INK }}>
-                        {p.termMonths} month{p.termMonths === 1 ? "" : "s"}
+                        {p.termMonths} months
                       </div>
-                      <div style={{ fontSize: 12, color: MUTED }}>{inr(perMonth)}/month</div>
+                      <div style={{ fontSize: 12, color: MUTED }}>One-time · no auto-renew</div>
                     </div>
                     <div style={{ fontSize: 17, fontWeight: 700, color: FOREST }}>{inr(p.inr)}</div>
                   </button>
@@ -178,15 +260,17 @@ export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
             </div>
 
             <button
-              onClick={pay}
-              disabled={busy || !selected}
+              onClick={start}
+              disabled={busy || (isSub ? !subOffer : !oneTime)}
               style={{ width: "100%", fontSize: 15, fontWeight: 600, padding: "13px", borderRadius: 12, border: "none", background: FOREST, color: "#fff", cursor: busy ? "default" : "pointer", opacity: busy ? 0.7 : 1 }}
             >
-              {busy ? "Starting payment…" : selected ? `Pay ${inr(selected.inr)}` : "Unavailable"}
+              {cta}
             </button>
             {error && <div style={{ fontSize: 12.5, color: "#b3402a", marginTop: 9, textAlign: "center" }}>{error}</div>}
             <p style={{ fontSize: 11, color: MUTED, textAlign: "center", margin: "10px 0 0" }}>
-              Secure payment via Razorpay · UPI, cards &amp; netbanking
+              {isSub
+                ? "Secure auto-debit via Razorpay · you're notified before every charge"
+                : "Secure payment via Razorpay · UPI, cards & netbanking"}
             </p>
           </>
         )}

@@ -41,6 +41,7 @@ import {
 } from "@/lib/fmdb/discovery-tier";
 import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
+import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
 import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
@@ -795,9 +796,15 @@ export interface EndgameInfo {
   backOnTrack: BackOnTrack | null;
   /** This month's do's & don'ts (from plan.monthly_cards[YYYY-MM]), if generated. */
   monthlyCard: MonthlyCard | null;
-  /** Offered maintenance terms (for the in-app "Maintain" / renew checkout).
+  /** Offered ONE-TIME maintenance blocks (manual, e.g. 6 months ₹10,000).
    *  Server-fixed prices — the pay route re-derives, never trusts the client. */
   pricing: { termMonths: number; inr: number }[];
+  /** The quarterly AUTO-DEBIT subscription offer, when the Razorpay plan is
+   *  configured (RAZORPAY_QUARTERLY_PLAN_ID set); null otherwise (UI hides it). */
+  subscriptionOffer: { intervalMonths: number; inr: number } | null;
+  /** True when the client already has a live (active/authenticated) subscription —
+   *  the UI shows "auto-renew on" instead of re-offering it. */
+  subscriptionActive: boolean;
   /** Non-null in MAINTENANCE when coverage runs out within the renewal window —
    *  a human label for the "renew soon" nudge. */
   renewalDueLabel: string | null;
@@ -847,6 +854,8 @@ function buildEndgame(
   /** record-derived paid-through (from PAID maintenance orders) — folded in so
    *  the app reflects a fresh payment before the Mac reconcile updates client.yaml */
   recordThrough: string | null = null,
+  /** quarterly auto-debit subscription wiring (env-gated) + whether one is live */
+  sub: { available: boolean; inr: number; active: boolean } = { available: false, inr: 6000, active: false },
 ): { mode: AppMode; endgame: EndgameInfo | null } {
   // Effective window = the later of client.yaml + the latest PAID record.
   const fromClient = asYmd(client.maintenance_paid_through) || null;
@@ -887,6 +896,8 @@ function buildEndgame(
       backOnTrack: parseBackOnTrack(client.back_on_track_plan),
       monthlyCard: parseMonthlyCard(monthlyCards, todayYmd.slice(0, 7)),
       pricing: MAINTENANCE_PRICING_LIST,
+      subscriptionOffer: sub.available ? { intervalMonths: 3, inr: sub.inr } : null,
+      subscriptionActive: sub.active,
       renewalDueLabel,
     },
   };
@@ -4597,7 +4608,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // record on Fly before the Mac reconcile folds it into client.yaml; fold it in
   // here so the app reflects the renewal immediately.
   const recordThrough = await latestPaidMaintenanceThrough(clientId).catch(() => null);
-  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd(), plan.monthly_cards, recordThrough);
+  // Quarterly auto-debit subscription offer: available when the Razorpay plan is
+  // configured; "active" hides the offer once the client has a live mandate.
+  const subAvailable = !!process.env.RAZORPAY_QUARTERLY_PLAN_ID;
+  const subInr = Number(process.env.RAZORPAY_QUARTERLY_PLAN_AMOUNT_INR || 6000);
+  const subActive = subAvailable ? await hasLiveSubscription(clientId).catch(() => false) : false;
+  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd(), plan.monthly_cards, recordThrough, {
+    available: subAvailable,
+    inr: subInr,
+    active: subActive,
+  });
 
   return {
     clientId,
