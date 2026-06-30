@@ -134,7 +134,9 @@ export function PracticeOverviewPanel({
         )}
       </FmPanel>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(0, 1fr))", gap: 14 }}>
+      {/* minmax(280px, …) so auto-fit actually drops Pipeline below Composition
+          on phones/split-screen instead of forcing two ~169px columns. */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
         {/* Composition — conditions + symptoms + root causes */}
         <FmPanel title="Practice composition" subtitle="What recurs across your clients">
           <div style={{ display: "grid", gap: 16 }}>

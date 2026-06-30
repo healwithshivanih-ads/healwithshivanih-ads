@@ -46,11 +46,10 @@ const EMPTY_FORM: LogisticsForm = {
   notes: "",
 };
 
-/** Earliest bookable collection day = local today + 2 (48-hour lead time so the
+/** Earliest bookable collection day = the date ~36 hours out (lead time so the
  *  lab can arrange home collection). The server re-checks this against IST. */
 function minCollectionYmd(): string {
-  const d = new Date();
-  d.setDate(d.getDate() + 2);
+  const d = new Date(Date.now() + 36 * 3600 * 1000);
   return d.toLocaleDateString("en-CA");
 }
 
@@ -158,7 +157,7 @@ export function LabOrdersCard() {
       const res = await fetch(`/api/lab-order/${order.order_id}/pay`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ clientId: data.clientId, logistics: form }),
+        body: JSON.stringify({ token: data.token, clientId: data.clientId, logistics: form }),
       });
       const j = (await res.json()) as {
         ok: boolean;
@@ -249,7 +248,7 @@ export function LabOrdersCard() {
                 <input style={{ ...FIELD, flex: 1 }} type="date" min={minCollectionYmd()} value={form.preferred_date} onChange={(e) => setField("preferred_date", e.target.value)} />
               </div>
               <div style={{ fontSize: 11, color: "var(--muted, #6f6a5d)", marginTop: -3 }}>
-                Earliest collection is 2 days away — we need ~48 hours to arrange your home visit.
+                We need about 36 hours&apos; notice to arrange your home visit.
               </div>
               <select style={FIELD} value={form.preferred_slot} onChange={(e) => setField("preferred_slot", e.target.value)}>
                 <option value="">Preferred time slot…</option>

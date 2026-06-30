@@ -149,9 +149,10 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
     return (
       <div
         key={r.client_id}
+        className="fm-sched-row"
         style={{
-          display: "grid",
-          gridTemplateColumns: "auto 1fr auto auto",
+          // grid-template-columns lives in the .fm-sched-row class so the
+          // ≤560px media rule can stack the controls without !important.
           gap: 10,
           alignItems: "center",
           padding: "6px 10px",
@@ -205,13 +206,14 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
             {r.reason}
           </div>
         </div>
+        <div className="fm-sched-controls">
         <select
           value={type}
           disabled={isDone || isSending}
           onChange={(e) => setOverrideType(r.client_id, e.target.value as BookingType)}
           style={{
             fontSize: 12,
-            padding: "3px 8px",
+            padding: "5px 8px",
             border: "1px solid var(--fm-border)",
             borderRadius: 4,
             background: "var(--fm-surface)",
@@ -228,7 +230,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
           onClick={() => onSendOne(r.client_id)}
           disabled={isDone || isSending || sendingAll}
           style={{
-            padding: "4px 10px",
+            padding: "7px 10px",
             borderRadius: 4,
             border: 0,
             background: isDone
@@ -252,6 +254,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
         >
           {isDone ? "✓ Sent" : isSending ? "…" : `📤 ${meta.emoji}`}
         </button>
+        </div>
       </div>
     );
   };
@@ -266,6 +269,29 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
         borderColor: "rgba(99, 102, 241, 0.28)",
       }}
     >
+      <style>{`
+        .fm-sched-row {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr) auto;
+        }
+        .fm-sched-controls {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        /* Phone / split-screen: drop the controls onto a second full-width
+           row so the client name/reason column keeps real width. */
+        @media (max-width: 560px) {
+          .fm-sched-row {
+            grid-template-columns: auto minmax(0, 1fr);
+            row-gap: 8px;
+          }
+          .fm-sched-controls {
+            grid-column: 1 / -1;
+            justify-content: flex-end;
+          }
+        }
+      `}</style>
       {/* ── Panel header ── */}
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
         <span style={{ fontSize: 22 }}>📅</span>

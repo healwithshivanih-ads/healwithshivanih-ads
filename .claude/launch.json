@@ -18,6 +18,12 @@
       "runtimeExecutable": "sh",
       "runtimeArgs": ["-c", "cd fm-database-web && exec npm run dev -- -p 3014"],
       "port": 3014
+    },
+    {
+      "name": "hypno-dev",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd /Users/shivani/code/hypno-scripts && exec npm run dev -- --port 5191 --strictPort"],
+      "port": 5191
     }
   ]
 }

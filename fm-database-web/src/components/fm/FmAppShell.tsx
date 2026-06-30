@@ -15,7 +15,6 @@
  */
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import Link from "next/link";
 import { FmSidebarNav, type FmNavSection } from "./FmSidebarNav";
 import { FmTopBar, type FmBreadcrumb } from "./FmTopBar";
 import {
@@ -156,17 +155,6 @@ export function FmAppShell({
           eyebrow: "functional medicine",
           href: "/dashboard-v2",
         }}
-        footer={
-          <>
-            <Link
-              href="/"
-              style={{ color: "rgba(255,255,255,0.7)", textDecoration: "underline" }}
-            >
-              ← Legacy UI
-            </Link>
-            <div style={{ marginTop: 6, fontSize: 11 }}>v2 preview · phase 1</div>
-          </>
-        }
       />
       <div
         style={{

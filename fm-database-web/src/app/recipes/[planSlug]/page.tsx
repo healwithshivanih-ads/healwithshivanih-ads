@@ -242,6 +242,9 @@ export default async function RecipesPage({
       <iframe
         title="Recipe pack"
         srcDoc={injectAyurvedaBadges(recipesHtml)}
+        // Sandbox the first-party recipe HTML: scripts/modals/popups for any
+        // print button + buy links, but no top-navigation or form submission.
+        sandbox="allow-same-origin allow-scripts allow-modals allow-popups allow-popups-to-escape-sandbox"
         style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", border: 0 }}
       />
     );
@@ -287,6 +290,8 @@ export default async function RecipesPage({
     <iframe
       title="Recipe pack"
       srcDoc={injectAyurvedaBadges(fullHtml)}
+      // Sandbox the first-party recipe HTML (see note above).
+      sandbox="allow-same-origin allow-scripts allow-modals allow-popups allow-popups-to-escape-sandbox"
       style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", border: 0 }}
     />
   );

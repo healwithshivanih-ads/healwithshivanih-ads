@@ -98,12 +98,12 @@ export function sanitizeLogistics(
   if (Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== preferred_date) {
     return { ok: false, error: "pick a valid date" };
   }
-  // 48-hour lead time: the lab needs ~2 days to arrange a home collection, so the
+  // Lead time: the lab needs ~36 hours to arrange a home collection, so the
   // earliest bookable date is enforced here (caller passes the floor as an IST
   // YMD). String compare is chronological for YYYY-MM-DD. The client form also
   // sets the picker min, but this is the authoritative gate.
   if (opts?.minDateYmd && preferred_date < opts.minDateYmd) {
-    return { ok: false, error: `the earliest home collection we can arrange is ${opts.minDateYmd} — we need about 48 hours' notice` };
+    return { ok: false, error: `the earliest home collection we can arrange is ${opts.minDateYmd} — we need about 36 hours' notice` };
   }
   if (!(LOGISTICS_SLOTS as readonly string[]).includes(preferred_slot)) {
     return { ok: false, error: "pick a time slot" };

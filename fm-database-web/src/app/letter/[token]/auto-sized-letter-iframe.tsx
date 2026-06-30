@@ -68,6 +68,13 @@ export function AutoSizedLetterIframe({ srcDoc }: { srcDoc: string }) {
       ref={ref}
       title="Your healing plan"
       srcDoc={srcDoc}
+      // Hardening: the letter HTML is first-party (brand_html.py), but sandbox
+      // the frame anyway. allow-same-origin → the ResizeObserver can read the
+      // inner doc to size it; allow-scripts → the per-week / supplement print
+      // buttons run; allow-modals → window.print(); allow-popups(+escape) → buy
+      // links open as normal tabs. Deliberately NOT granted: top-navigation and
+      // forms — so a letter can never redirect the parent page or submit anywhere.
+      sandbox="allow-same-origin allow-scripts allow-modals allow-popups allow-popups-to-escape-sandbox"
       style={{
         display: "block",
         width: "100%",

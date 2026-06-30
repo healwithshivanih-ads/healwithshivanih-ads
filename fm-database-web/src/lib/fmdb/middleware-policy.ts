@@ -54,6 +54,14 @@ export const PUBLIC_PATH_PREFIXES = [
   "/api/app-travel",
   "/api/app-body",
   "/api/app-swap",
+  // Mind-body practice log write-back (breathing / EFT / sleep wind-down).
+  // Token-scoped, re-verified server-side. Feeds the adherence scanner + the
+  // progressive-unlock drip engine. (Was missing → 404'd on Fly under
+  // FLY_INTAKE_ONLY, silently breaking practice logging for every client.)
+  "/api/app-practice",
+  // Client reminder preferences (AM/PM supplements, weekly check-in). Token-
+  // scoped. (Same missing-from-allowlist bug as app-practice.)
+  "/api/app-reminders",
   "/api/app-push",
   // App reports it's running installed (adoption signal). Token-scoped.
   "/api/app-installed",
@@ -66,6 +74,10 @@ export const PUBLIC_PATH_PREFIXES = [
   // The COACH actions are server actions on the private page (and hard-refuse
   // under FLY_INTAKE_ONLY), so they are deliberately NOT here.
   "/api/lab-order/",
+  // Maintenance renewal payment (Razorpay) — same posture as /api/lab-order/.
+  // /[clientId]/pay charges a SERVER-FIXED amount; /webhook is HMAC-verified and
+  // is the only path that marks a maintenance order paid.
+  "/api/maintenance/",
   // Static PWA assets (manifest + home-screen icons). No data.
   "/ochre-app/",
   // Recipe photos for the client app's recipe cards. Generic food images.

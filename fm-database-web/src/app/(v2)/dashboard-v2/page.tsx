@@ -40,6 +40,7 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // CatalogueIngestPanel moved to /ingest page 2026-05-15 — coach feedback:
 // belongs next to the file-upload flow, not on the dashboard.
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
+import { ReviewNudgePanel } from "@/components/review-nudge-panel";
 import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
 import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
@@ -1108,7 +1109,9 @@ export default async function DashboardV2() {
           who's on track, what the practice is made of, pipeline, and the MSQ
           outcome rollup. Operational triage stays below in the alert groups. */}
       <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
-        <FmStatGrid cols={5}>
+        {/* auto-fit (not a hard 5 cols) so the strip wraps to 4/3/2 on
+            narrower laptop widths instead of clipping the last tile. */}
+        <FmStatGrid>
           <FmStatTile label="Active care" value={overview.activeCare} href="/clients-v2" />
           <FmStatTile label="On track" value={overview.onTrackPct !== null ? `${overview.onTrackPct}%` : "—"} />
           <FmStatTile
@@ -1409,6 +1412,10 @@ export default async function DashboardV2() {
           {whatsappConfigured && (
             <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
           )}
+
+          {/* 🌿 Plan end-game — clients at their recheck / maintenance renewal,
+              with a one-tap nudge to review + decide what's next. Self-hides. */}
+          <ReviewNudgePanel whatsappConfigured={whatsappConfigured} />
 
           {/* 📲 Client-app links — share the Ochre Tree companion app
               (/app/<letter_token>) per published plan. Copy works even

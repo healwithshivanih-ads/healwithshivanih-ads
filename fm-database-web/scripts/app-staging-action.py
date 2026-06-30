@@ -109,6 +109,15 @@ _APP_CLIENT_KEYS = (
     "mindbody_eft",  # mind-body drip coach override: auto | unlocked | locked
     "mindbody_sleep",
     "plan_modules",  # gates app layers (e.g. schussler_salts tissue-salt section)
+    # plan end-game (graduation → maintenance/grace/library). The app-mode
+    # resolver (app-mode.ts) reads maintenance_status + maintenance_paid_through
+    # to drive MAINTENANCE/GRACE/LIBRARY; back_on_track_plan is the self-serve
+    # flare-reset card shown in the maintenance + library floors. Non-PHI.
+    "maintenance_status",
+    "maintenance_started_on",
+    "maintenance_paid_through",
+    "maintenance_term_months",
+    "back_on_track_plan",
 )
 
 # Coach-only fields stripped from the plan before it reaches the public Fly box —
@@ -322,6 +331,22 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
             except Exception:
                 pass
 
+    # 5d. maintenance payments (one-time orders + quarterly subscription records).
+    # Created on Fly at pay/charge time; _refresh reverse-mirrors them to auth
+    # before this runs. Forward-stage newest-wins keeps the staging copy consistent
+    # (and propagates a coach-side comp) without clobbering a fresher Fly status.
+    auth_maint = auth / "clients" / client_id / "maintenance"
+    if auth_maint.exists():
+        smnt = sdir / "maintenance"
+        smnt.mkdir(parents=True, exist_ok=True)
+        for f in auth_maint.glob("*.yaml"):
+            dest = smnt / f.name
+            try:
+                if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
+                    shutil.copy2(f, dest)
+            except Exception:
+                pass
+
     # 6. marker
     (sdir / "_app_staged.yaml").write_text(
         yaml.safe_dump(
@@ -377,6 +402,56 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                         out["checkins_mirrored"] += 1
                 except Exception as e:
                     out["errors"].append(f"{client_id} order-mirror: {e}")
+
+        # reverse-mirror: maintenance payments written on Fly — both one-time
+        # ORDERS (webhook flipped to paid) and quarterly SUBSCRIPTION charges
+        # (subscription.charged set paid_through) → authoritative store, then
+        # RECONCILE the latest window into client.yaml (the authoritative home of
+        # maintenance_paid_through, which is one-way Mac→Fly). Newest-wins by mtime;
+        # reconcile is idempotent (only advances the date forward). Unified rule:
+        # a record's paid_through is non-null ⟺ a real payment landed, so we fold
+        # in any record carrying a paid_through (pending/created records have null).
+        smaint = sdir / "maintenance"
+        auth_maint = auth / "clients" / client_id / "maintenance"
+        auth_cdir = auth / "clients" / client_id
+        if smaint.exists() and auth_cdir.exists():
+            auth_maint.mkdir(parents=True, exist_ok=True)
+            best_paid_through = None
+            for f in sorted(smaint.glob("*.yaml")):
+                dest = auth_maint / f.name
+                try:
+                    if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
+                        shutil.copy2(f, dest)
+                        out["checkins_mirrored"] += 1
+                    # Fold paid_through from the STAGING source `f` (kept current with
+                    # Fly = the payment write-origin), NOT the mtime-gated `dest` copy:
+                    # if the copy was skipped (Mac mtime >= Fly mtime), reading dest
+                    # would miss a fresh renewal and let coverage silently drift. Value
+                    # is max-wins, so reading the freshest source is always correct.
+                    rec = yaml.safe_load(f.read_text()) or {}
+                    pt = rec.get("paid_through")
+                    if isinstance(pt, str) and (best_paid_through is None or pt > best_paid_through):
+                        best_paid_through = pt
+                except Exception as e:
+                    out["errors"].append(f"{client_id} maint-mirror: {e}")
+            # fold the latest paid window into client.yaml (authoritative)
+            cpath = auth_cdir / "client.yaml"
+            if best_paid_through and cpath.exists():
+                try:
+                    cdoc = yaml.safe_load(cpath.read_text()) or {}
+                    cur = cdoc.get("maintenance_paid_through")
+                    if not isinstance(cur, str) or best_paid_through > cur:
+                        cdoc["maintenance_paid_through"] = best_paid_through
+                        cdoc["maintenance_status"] = "active"
+                        if not cdoc.get("maintenance_started_on"):
+                            from datetime import timedelta
+                            cdoc["maintenance_started_on"] = (
+                                datetime.now(timezone.utc) + timedelta(hours=5, minutes=30)
+                            ).strftime("%Y-%m-%d")
+                        cpath.write_text(yaml.safe_dump(cdoc, sort_keys=False, allow_unicode=True))
+                        out["checkins_mirrored"] += 1
+                except Exception as e:
+                    out["errors"].append(f"{client_id} maint-reconcile: {e}")
 
         # reverse-mirror: app open timestamps (adoption tracking) — UNION
         # merge, never overwrite: Fly appends new opens between cron runs
