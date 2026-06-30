@@ -27,7 +27,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
   }
 
-  const due = (await weeklyMenuQueueAction(3)).filter((r) => !r.pending);
+  // Skip clients with a pending draft (idempotent) AND clients whose target
+  // week falls in a travel / maintenance window — don't draft a menu the
+  // client can't use on holiday.
+  const due = (await weeklyMenuQueueAction(3)).filter((r) => !r.pending && !r.onTravel);
   const results: { clientId: string; ok: boolean; error?: string }[] = [];
   for (const row of due) {
     try {

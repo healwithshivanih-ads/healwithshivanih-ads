@@ -249,6 +249,44 @@ export async function dismissPendingMenuAction(
  *  `withinDays` and isn't loaded yet (pre-load). `targetWeek` is the week to
  *  generate: the current week when it's missing (never skip it), else next.
  *  The cron auto-drafts these; the dashboard panel lists them. */
+interface WeekOverride {
+  date_from?: string;
+  date_to?: string;
+  mode?: string;
+  context?: string;
+  reason?: string;
+  location?: string;
+}
+
+/** Does the client have a travel / maintenance window (weight_loss.week_overrides)
+ *  overlapping the given week? If so we DON'T auto-draft a menu for that week —
+ *  the coach set the window precisely so the client isn't on the normal plan. */
+async function travelOverrideForWeek(
+  clientId: string,
+  weekStartMs: number,
+  weekEndMs: number,
+): Promise<string | null> {
+  try {
+    const f = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+    const doc =
+      (yaml.load(await fs.readFile(f, "utf-8")) as {
+        weight_loss?: { week_overrides?: WeekOverride[] };
+      }) ?? {};
+    for (const o of doc.weight_loss?.week_overrides ?? []) {
+      if (!o?.date_from || !o?.date_to) continue;
+      const from = new Date(`${o.date_from}T00:00:00Z`).getTime();
+      const to = new Date(`${o.date_to}T23:59:59Z`).getTime();
+      if (from <= weekEndMs && to >= weekStartMs) {
+        const label = o.reason || o.context || o.mode || "travel";
+        return o.location ? `${label} (${o.location})` : String(label);
+      }
+    }
+  } catch {
+    /* no client file / parse error → treat as no override */
+  }
+  return null;
+}
+
 export async function weeklyMenuQueueAction(withinDays = 3): Promise<
   {
     clientId: string;
@@ -258,6 +296,8 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
     daysToNextWeek: number;
     behind: boolean; // current week's menu is missing (urgent catch-up)
     pending: boolean;
+    onTravel: boolean; // target week overlaps a travel/maintenance override
+    travelNote?: string;
     changeNote?: string;
   }[]
 > {
@@ -308,6 +348,11 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       // cron filters it out so we never double-draft.
       const due = !currentReady || (!nextReady && daysTo <= withinDays);
       if (!due && !pending) continue;
+      // Skip clients whose target week falls in a travel/maintenance window —
+      // the coach set that window on purpose. A row already pending during
+      // travel still lists (so the coach can dismiss it) but flagged onTravel.
+      const targetStartMs = new Date(`${start}T00:00:00Z`).getTime() + (targetWeek - 1) * 7 * 86_400_000;
+      const travelNote = await travelOverrideForWeek(cid, targetStartMs, targetStartMs + 6 * 86_400_000);
       rows.push({
         clientId: cid,
         planSlug: String(p.slug ?? ""),
@@ -316,6 +361,8 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
         daysToNextWeek: daysTo,
         behind: !currentReady,
         pending: !!pending,
+        onTravel: !!travelNote,
+        travelNote: travelNote ?? undefined,
         changeNote: pending?.change_note,
       });
     } catch {
@@ -325,4 +372,25 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
   // Most-behind first, then soonest next-week.
   rows.sort((a, b) => Number(b.behind) - Number(a.behind) || a.daysToNextWeek - b.daysToNextWeek);
   return rows;
+}
+
+/** Approve EVERY pending menu in one go (skips travel-paused clients — those
+ *  shouldn't go live during a holiday). Each approval pushes that client, so
+ *  this is a deliberate coach action. Runs sequentially; one failure doesn't
+ *  stop the rest. */
+export async function approveAllPendingMenusAction(): Promise<{
+  ok: boolean;
+  approved: number;
+  failed: { clientId: string; error?: string }[];
+}> {
+  const targets = (await weeklyMenuQueueAction(7)).filter((r) => r.pending && !r.onTravel);
+  let approved = 0;
+  const failed: { clientId: string; error?: string }[] = [];
+  for (const r of targets) {
+    const res = await approveWeekMenuAction(r.clientId);
+    if (res.ok) approved += 1;
+    else failed.push({ clientId: r.clientId, error: res.error });
+  }
+  revalidatePath("/dashboard-v2");
+  return { ok: true, approved, failed };
 }

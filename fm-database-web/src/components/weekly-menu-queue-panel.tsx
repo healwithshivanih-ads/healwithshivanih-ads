@@ -3,24 +3,35 @@
 /**
  * WeeklyMenuQueuePanel — the weekly-cadence review queue (2026-06-12).
  *
- * Two parts:
- *   · PENDING (a draft is waiting) → loud amber banner at the TOP of the
- *     dashboard. Clients stay frozen on their last week until the coach
- *     approves, so this must be impossible to miss (2026-06-30 — coach asked
- *     for it to "stop being hidden and be very visible").
+ * Three buckets:
+ *   · PENDING & not on travel → loud amber banner at the TOP of the dashboard,
+ *     with per-client "Review & approve" + a one-click "Approve all" (clients
+ *     stay frozen on their last week until approved — must be impossible to
+ *     miss; coach asked for this 2026-06-30).
+ *   · PENDING but on travel → a draft was generated before a travel/maintenance
+ *     window was set (or overlaps one). Shown muted with "Dismiss" — we don't
+ *     push a holiday-week menu.
  *   · UPCOMING (no draft yet, auto-drafts at 07:00) → quiet sub-list.
- * Self-hides only when there is genuinely nothing in either bucket.
- * Approval happens in the Plan-tab studio (live phone preview).
+ * Self-hides only when there is genuinely nothing in any bucket.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { FmPanel } from "@/components/fm";
-import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
+import {
+  weeklyMenuQueueAction,
+  approveAllPendingMenusAction,
+  dismissPendingMenuAction,
+} from "@/lib/server-actions/weekly-menu";
 
 type Row = Awaited<ReturnType<typeof weeklyMenuQueueAction>>[number];
 
 export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> }) {
   const [rows, setRows] = useState<Row[] | null>(null);
+  const [armed, setArmed] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+  const [pending, startTransition] = useTransition();
+  const router = useRouter();
 
   const refresh = () =>
     weeklyMenuQueueAction(7)
@@ -33,12 +44,35 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
 
   if (!rows || rows.length === 0) return null;
 
-  const pending = rows.filter((r) => r.pending);
-  const upcoming = rows.filter((r) => !r.pending);
+  const approveRows = rows.filter((r) => r.pending && !r.onTravel);
+  const travelRows = rows.filter((r) => r.pending && r.onTravel);
+  const upcoming = rows.filter((r) => !r.pending && !r.onTravel);
+  if (approveRows.length === 0 && travelRows.length === 0 && upcoming.length === 0) return null;
+
+  const approveAll = () => {
+    setArmed(false);
+    startTransition(async () => {
+      const res = await approveAllPendingMenusAction();
+      setMsg(
+        res.ok
+          ? `Approved ${res.approved}${res.failed.length ? ` · ${res.failed.length} failed` : ""}.`
+          : "Approve-all failed.",
+      );
+      await refresh();
+      router.refresh();
+    });
+  };
+
+  const dismiss = (clientId: string) =>
+    startTransition(async () => {
+      await dismissPendingMenuAction(clientId);
+      await refresh();
+      router.refresh();
+    });
 
   return (
     <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
-      {pending.length > 0 && (
+      {approveRows.length > 0 && (
         <div
           style={{
             border: "2px solid #d98324",
@@ -53,6 +87,7 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
               display: "flex",
               alignItems: "center",
               gap: 12,
+              flexWrap: "wrap",
               padding: "14px 18px",
               background: "#d98324",
               color: "#fff",
@@ -72,20 +107,77 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
                 fontSize: 16,
               }}
             >
-              {pending.length}
+              {approveRows.length}
             </span>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 200 }}>
               <div style={{ fontWeight: 800, fontSize: 16, lineHeight: 1.2 }}>
-                Weekly {pending.length === 1 ? "menu" : "menus"} waiting for your approval
+                Weekly {approveRows.length === 1 ? "menu" : "menus"} waiting for your approval
               </div>
               <div style={{ fontSize: 12.5, opacity: 0.92 }}>
                 These clients stay on their current week until you approve. Review on the live phone, then Approve.
               </div>
             </div>
+            {armed ? (
+              <span style={{ display: "inline-flex", gap: 8, alignItems: "center" }}>
+                <button
+                  onClick={approveAll}
+                  disabled={pending}
+                  style={{
+                    padding: "8px 14px",
+                    borderRadius: 999,
+                    border: "none",
+                    background: "#fff",
+                    color: "#9a4f10",
+                    fontSize: 12.5,
+                    fontWeight: 800,
+                    cursor: "pointer",
+                  }}
+                >
+                  {pending ? "Approving…" : `Yes, approve ${approveRows.length} & push`}
+                </button>
+                <button
+                  onClick={() => setArmed(false)}
+                  disabled={pending}
+                  style={{
+                    padding: "8px 12px",
+                    borderRadius: 999,
+                    border: "1px solid rgba(255,255,255,0.6)",
+                    background: "transparent",
+                    color: "#fff",
+                    fontSize: 12.5,
+                    cursor: "pointer",
+                  }}
+                >
+                  Cancel
+                </button>
+              </span>
+            ) : (
+              <button
+                onClick={() => setArmed(true)}
+                disabled={pending}
+                style={{
+                  padding: "9px 16px",
+                  borderRadius: 999,
+                  border: "1px solid rgba(255,255,255,0.7)",
+                  background: "rgba(255,255,255,0.16)",
+                  color: "#fff",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Approve all →
+              </button>
+            )}
           </div>
 
+          {msg && (
+            <div style={{ padding: "8px 18px", fontSize: 12.5, color: "#9a4f10", background: "#fdeed6" }}>{msg}</div>
+          )}
+
           <div style={{ display: "grid", gap: 8, padding: 14 }}>
-            {pending.map((r) => (
+            {approveRows.map((r) => (
               <div
                 key={r.clientId}
                 style={{
@@ -138,6 +230,54 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
             ))}
           </div>
         </div>
+      )}
+
+      {travelRows.length > 0 && (
+        <FmPanel
+          title="🏖 On travel — menu paused"
+          subtitle="A draft overlaps a travel/maintenance window. Dismiss it — the client isn't on the normal plan this week."
+        >
+          <div style={{ display: "grid", gap: 6 }}>
+            {travelRows.map((r) => (
+              <div
+                key={r.clientId}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  flexWrap: "wrap",
+                  padding: "8px 10px",
+                  border: "1px solid rgba(120,113,108,0.18)",
+                  borderRadius: "var(--fm-radius-md, 10px)",
+                  fontSize: 12.5,
+                }}
+              >
+                <span style={{ flex: 1, minWidth: 160 }}>
+                  <strong>{names[r.clientId] ?? r.clientId}</strong>
+                  <span style={{ color: "var(--fm-text-tertiary)" }}>
+                    {" "}
+                    · week {r.targetWeek} · {r.travelNote ?? "travel"}
+                  </span>
+                </span>
+                <button
+                  onClick={() => dismiss(r.clientId)}
+                  disabled={pending}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: 999,
+                    border: "1px solid rgba(120,113,108,0.3)",
+                    background: "transparent",
+                    color: "var(--fm-text-secondary)",
+                    fontSize: 11.5,
+                    cursor: "pointer",
+                  }}
+                >
+                  Dismiss draft
+                </button>
+              </div>
+            ))}
+          </div>
+        </FmPanel>
       )}
 
       {upcoming.length > 0 && (

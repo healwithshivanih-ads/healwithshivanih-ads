@@ -48,16 +48,20 @@ export async function POST(req: NextRequest) {
   // Wider than the cron's 3-day draft window: surface everything actionable,
   // including catch-up rows whose draft hasn't generated yet.
   const queue = await weeklyMenuQueueAction(7);
-  if (queue.length === 0) {
-    return NextResponse.json({ ok: true, sent: 0, reason: "queue empty" });
+  // Travel/maintenance-window clients are paused — never ask the coach to
+  // approve a menu for a holiday week.
+  const actionable = queue.filter((r) => !r.onTravel);
+  if (actionable.length === 0) {
+    return NextResponse.json({ ok: true, sent: 0, reason: "nothing actionable (queue empty or all on travel)" });
   }
 
-  const ready = queue.filter((r) => r.pending);
-  const attention = queue.filter((r) => !r.pending); // behind / due but not drafted
+  const ready = actionable.filter((r) => r.pending);
+  const attention = actionable.filter((r) => !r.pending); // behind / due but not drafted
+  const count = actionable.length;
 
   const appUrl = (process.env.APP_URL || "http://localhost:3002").replace(/\/$/, "");
   const named = await Promise.all(
-    queue.map(async (r) => [r.clientId, await displayName(r.clientId)] as const),
+    actionable.map(async (r) => [r.clientId, await displayName(r.clientId)] as const),
   );
   const nameOf = new Map(named);
 
@@ -89,7 +93,7 @@ export async function POST(req: NextRequest) {
   const htmlBody = `
     <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.55;color:#2b2d42;">
       <p>Good morning 🌿</p>
-      <p>${queue.length} client menu${queue.length === 1 ? "" : "s"} need your attention today.</p>
+      <p>${count} client menu${count === 1 ? "" : "s"} need your attention today.</p>
       ${sections.join("")}
       <p style="margin-top:18px;"><a href="${appUrl}/dashboard-v2"
         style="background:#6b8e6b;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;">Open the dashboard →</a></p>
@@ -97,7 +101,7 @@ export async function POST(req: NextRequest) {
     </div>`;
 
   const textBody =
-    `${queue.length} client menu(s) need attention.\n\n` +
+    `${count} client menu(s) need attention.\n\n` +
     (ready.length
       ? `READY TO APPROVE:\n${ready
           .map((r) => `  - ${nameOf.get(r.clientId) || r.clientId} (wk ${r.targetWeek})`)
@@ -114,7 +118,7 @@ export async function POST(req: NextRequest) {
   const pass = process.env.GMAIL_APP_PASSWORD;
   if (!user || !pass) {
     return NextResponse.json(
-      { ok: false, error: "Email not configured (GMAIL_USER / GMAIL_APP_PASSWORD)", queued: queue.length },
+      { ok: false, error: "Email not configured (GMAIL_USER / GMAIL_APP_PASSWORD)", queued: count },
       { status: 200 },
     );
   }
@@ -125,19 +129,19 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
       to,
-      subject: `🗓 ${queue.length} weekly menu${queue.length === 1 ? "" : "s"} awaiting your approval`,
+      subject: `🗓 ${count} weekly menu${count === 1 ? "" : "s"} awaiting your approval`,
       html: htmlBody,
       text: textBody,
     });
   } catch (err) {
-    return NextResponse.json({ ok: false, error: String(err), queued: queue.length }, { status: 200 });
+    return NextResponse.json({ ok: false, error: String(err), queued: count }, { status: 200 });
   }
 
   return NextResponse.json({
     ok: true,
     sent: 1,
     to,
-    queued: queue.length,
+    queued: count,
     ready: ready.length,
     attention: attention.length,
   });
