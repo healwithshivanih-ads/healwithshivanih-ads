@@ -11,6 +11,9 @@
  * src/middleware.ts is a thin adapter: notfound→404, unauthorised→401,
  * next→NextResponse.next().
  */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, it, expect } from "vitest";
 import {
   decideGate,
@@ -18,6 +21,8 @@ import {
   PUBLIC_PATH_PREFIXES,
   type GateEnv,
 } from "./middleware-policy";
+
+const HERE = path.dirname(fileURLToPath(import.meta.url));
 
 // Representative coach-UI routes that must NEVER be publicly reachable.
 // PHI lives behind these; a leak here is the worst-case data exposure.
@@ -60,8 +65,19 @@ const PUBLIC_ROUTES = [
   "/api/app-checkin",
   "/api/app-copilot",
   "/api/app-msq",
+  "/api/app-practice",
+  "/api/app-reminders",
+  "/api/app-body",
+  "/api/app-swap",
+  "/api/app-push",
+  "/api/app-installed",
+  "/api/app-photo",
+  "/api/app-travel",
+  "/api/app-travel-guide",
   "/api/lab-order/123/pay",
   "/api/lab-order/webhook",
+  "/api/maintenance/cl-005/pay",
+  "/api/maintenance/webhook",
   "/api/cron/run",
   "/api/handover/test",
   "/api/cal-com-webhook",
@@ -142,6 +158,24 @@ describe("allowlist hygiene", () => {
   it("isPublicPath agrees with the FLY-mode decision for every sample route", () => {
     for (const p of PUBLIC_ROUTES) expect(isPublicPath(p)).toBe(true);
     for (const p of COACH_ROUTES) expect(isPublicPath(p)).toBe(false);
+  });
+
+  it("every /api/app-* route dir is in the public allowlist", () => {
+    // The client app (PWA, served from the Fly host) POSTs to these. If a
+    // route dir exists on disk but isn't allowlisted, it 404s under
+    // FLY_INTAKE_ONLY=1 and the feature silently dies (the app UI swallows
+    // the error). This is exactly how app-practice + app-reminders shipped
+    // broken. Enumerate the real route dirs so a newly-added app-* route
+    // CANNOT ship un-allowlisted — this test goes red until it's added.
+    const apiDir = path.join(HERE, "..", "..", "app", "api");
+    const appRoutes = fs
+      .readdirSync(apiDir, { withFileTypes: true })
+      .filter((e) => e.isDirectory() && e.name.startsWith("app-"))
+      .map((e) => `/api/${e.name}`);
+    expect(appRoutes.length).toBeGreaterThan(5); // sanity: dirs were found
+    for (const route of appRoutes) {
+      expect(isPublicPath(route), `${route} must be in PUBLIC_PATH_PREFIXES`).toBe(true);
+    }
   });
 
   it("no coach-UI prefix has leaked into the public allowlist", () => {

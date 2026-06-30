@@ -12,6 +12,8 @@ import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
 import { loadOrder, validateOrderAmount, patchOrder, sanitizeLogistics } from "@/lib/fmdb/lab-orders";
+import { verifyAppClient } from "@/lib/fmdb/app-auth";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -27,10 +29,22 @@ function ymdInIstPlusDays(n: number): string {
 
 export async function POST(req: Request, ctx: { params: Promise<{ orderId: string }> }) {
   const { orderId } = await ctx.params;
-  const body = (await req.json().catch(() => null)) as { clientId?: string; logistics?: unknown } | null;
-  const clientId = String(body?.clientId ?? "");
-  if (!SAFE_ID.test(clientId) || !SAFE_ID.test(orderId)) {
+  const body = (await req.json().catch(() => null)) as {
+    clientId?: string;
+    logistics?: unknown;
+    token?: string;
+  } | null;
+  if (!SAFE_ID.test(orderId)) {
     return NextResponse.json({ ok: false, error: "bad id" }, { status: 400 });
+  }
+  // AUTHORIZE: derive the client from the app token — never trust body.clientId.
+  // Without this, anyone who guesses clientId+orderId could overwrite a client's
+  // lab home-collection logistics (address/date) and spin up Razorpay orders.
+  const auth = await verifyAppClient(body?.token);
+  if (!auth.ok) return NextResponse.json({ ok: false, error: auth.error }, { status: auth.status });
+  const clientId = auth.clientId;
+  if (!(await allowDaily("lab-pay", clientId, 20)).ok) {
+    return NextResponse.json({ ok: false, error: "too many attempts today" }, { status: 429 });
   }
 
   // Home-collection details are mandatory to book — validate before charging.

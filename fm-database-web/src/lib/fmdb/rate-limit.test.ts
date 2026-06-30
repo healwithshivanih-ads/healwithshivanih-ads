@@ -56,9 +56,14 @@ describe("allowDaily", () => {
     const r = await allowDaily("b", "tok", 5);
     expect(r.count).toBe(3); // resumed from the persisted 2, not reset to 1
 
-    // The sidecar file actually exists.
+    // The sidecar file actually exists. Keys are hashed now, so assert by
+    // value rather than by the raw token name.
     const raw = await fs.readFile(path.join(dir, "_rate_limits.json"), "utf-8");
-    expect(JSON.parse(raw).b.tok.count).toBe(3);
+    const entries = Object.values(
+      (JSON.parse(raw) as Record<string, Record<string, { count: number }>>).b,
+    );
+    expect(entries).toHaveLength(1);
+    expect(entries[0].count).toBe(3);
   });
 
   it("fails open when the sidecar is missing/corrupt", async () => {
@@ -67,5 +72,31 @@ describe("allowDaily", () => {
     const r = await allowDaily("b", "tok", 2);
     expect(r.ok).toBe(true); // corrupt file → start fresh, don't lock out
     expect(r.count).toBe(1);
+  });
+
+  it("never writes the raw token into the sidecar (keys are hashed)", async () => {
+    // A dumped/leaked sidecar must not expose bearer tokens.
+    await allowDaily("b", "super-secret-bearer-token", 5);
+    const raw = await fs.readFile(path.join(dir, "_rate_limits.json"), "utf-8");
+    expect(raw).not.toContain("super-secret-bearer-token");
+  });
+
+  it("bounds distinct keys per bucket and fails open past the cap", async () => {
+    // A flood of distinct (attacker-supplied) tokens must not grow the file
+    // without limit, nor lock out real clients.
+    process.env.FMDB_RATE_LIMIT_MAX_KEYS = "50";
+    try {
+      let failedOpen = 0;
+      for (let i = 0; i < 60; i++) {
+        const r = await allowDaily("flood", `tok-${i}`, 1);
+        if (r.ok && r.count === 0) failedOpen++; // cap sentinel: allowed, not stored
+      }
+      const raw = await fs.readFile(path.join(dir, "_rate_limits.json"), "utf-8");
+      const parsed = JSON.parse(raw) as Record<string, Record<string, unknown>>;
+      expect(Object.keys(parsed.flood).length).toBeLessThanOrEqual(50);
+      expect(failedOpen).toBeGreaterThan(0); // some requests hit the cap
+    } finally {
+      delete process.env.FMDB_RATE_LIMIT_MAX_KEYS;
+    }
   });
 });

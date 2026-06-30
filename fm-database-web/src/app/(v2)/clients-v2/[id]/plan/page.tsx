@@ -20,6 +20,7 @@
 import Link from "next/link";
 import { loadClientById, markCoachTabViewed } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
+import { effectivePlanStart, type PlanLike } from "@/lib/fmdb/plan-timing";
 // Letter send history moved to Communicate tab — single source of truth
 // for all client comms. Plan tab no longer reads the send log.
 import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
@@ -528,31 +529,33 @@ export default async function PlanTabPage({
   //      confirm with the client to lock it in.
   //   4. plan_period_start — last resort if no letters exist.
   const planAny = activePlan as Record<string, unknown> | undefined;
-  let derivedFromLetter: string | null = null;
+  // Raw earliest meal_plan/consolidated letter savedAt (YYYY-MM-DD) — the
+  // "a letter went out" signal for the shared resolver, which adds the ~3-day
+  // adoption lag itself. Only consulted when the meal start isn't confirmed.
+  let letterSentYmd: string | null = null;
   if (!planAny?.meal_plan_started_on && !planAny?.supplements_started_on && staleness?.entries) {
     const candidates = staleness.entries
       .filter((e) => e.type === "meal_plan" || e.type === "consolidated")
       .map((e) => new Date(e.savedAt).getTime())
       .filter((t) => !Number.isNaN(t));
     if (candidates.length > 0) {
-      const earliest = Math.min(...candidates);
-      const plus3 = new Date(earliest + 3 * 24 * 60 * 60 * 1000);
-      derivedFromLetter = plus3.toISOString().slice(0, 10);
+      letterSentYmd = new Date(Math.min(...candidates)).toISOString().slice(0, 10);
     }
   }
-  const planStartAnchor =
-    (planAny?.meal_plan_started_on as string | undefined) ||
-    (planAny?.supplements_started_on as string | undefined) ||
-    derivedFromLetter ||
-    (planAny?.plan_period_start as string | undefined) ||
-    null;
+  // Single source of truth (plan-timing.ts) — the SAME resolver the client app
+  // and dashboard use, so the coach's retest dates can't drift from what the
+  // client sees. The coach surface adds the letter-sent refinement (a signal
+  // the client app has no access to).
+  const planStartAnchor = planAny
+    ? effectivePlanStart(planAny as unknown as PlanLike, { letterSentYmd })
+    : null;
   const planStartConfirmed = Boolean(planAny?.meal_plan_started_on);
   const planStartSource: "confirmed" | "supplements" | "letter+3d" | "plan_period" | "none" =
     planAny?.meal_plan_started_on
       ? "confirmed"
       : planAny?.supplements_started_on
         ? "supplements"
-        : derivedFromLetter
+        : letterSentYmd
           ? "letter+3d"
           : planAny?.plan_period_start
             ? "plan_period"

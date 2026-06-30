@@ -10,9 +10,22 @@
  * Fly machine), so a file sidecar is sufficient — no cross-instance store is
  * needed. The in-memory map is authoritative during a process's lifetime; the
  * file is the durability backup, loaded once on cold start.
+ *
+ * Abuse hardening (2026): the public app routes call this with their bearer
+ * token, sometimes BEFORE the token is validated. Two safeguards keep that
+ * from being a lever:
+ *   1. Keys are HASHED (sha256) before storing — the raw bearer token never
+ *      lands in the sidecar, so a leaked/dumped file exposes no secrets and an
+ *      attacker can't seed recognisable keys.
+ *   2. Each bucket is capped at FMDB_RATE_LIMIT_MAX_KEYS distinct keys/day
+ *      (default 2000). Past the cap we fail OPEN — a flood of distinct
+ *      attacker-supplied tokens can't grow the file without bound, and can't
+ *      lock real clients out either. snapshot() also prunes to the current day
+ *      so the persisted file is bounded by (#buckets × cap).
  */
 import path from "node:path";
 import fs from "node:fs/promises";
+import crypto from "node:crypto";
 import { getPlansRoot } from "./paths";
 
 type Entry = { day: string; count: number };
@@ -29,6 +42,20 @@ function sidecarPath(): string {
 
 function today(): string {
   return new Date().toISOString().slice(0, 10);
+}
+
+/** Distinct-keys-per-bucket-per-day cap. Read lazily so it stays tunable
+ *  (and testable) via env without a code change. */
+function maxKeysPerBucket(): number {
+  const n = Number(process.env.FMDB_RATE_LIMIT_MAX_KEYS);
+  return Number.isFinite(n) && n > 0 ? n : 2000;
+}
+
+/** Hash the caller-supplied key (token or client id) before it touches memory
+ *  or disk. The raw bearer token must never be persisted. 22 base64url chars
+ *  of sha256 ≈ 128 bits — ample to distinguish callers without collisions. */
+function hashKey(key: string): string {
+  return crypto.createHash("sha256").update(key).digest("base64url").slice(0, 22);
 }
 
 async function ensureLoaded(): Promise<void> {
@@ -59,11 +86,16 @@ async function ensureLoaded(): Promise<void> {
 }
 
 function snapshot(): Record<string, Record<string, Entry>> {
+  // Persist ONLY the current day's entries. Previous-day counts are irrelevant
+  // (dropped on load too) — pruning here keeps the on-disk file bounded by
+  // (#buckets × cap) instead of growing across day boundaries in a long-lived
+  // process.
+  const day = today();
   const out: Record<string, Record<string, Entry>> = {};
   for (const [bucket, m] of mem) {
     const tokens: Record<string, Entry> = {};
-    for (const [tok, e] of m) tokens[tok] = e;
-    out[bucket] = tokens;
+    for (const [tok, e] of m) if (e.day === day) tokens[tok] = e;
+    if (Object.keys(tokens).length) out[bucket] = tokens;
   }
   return out;
 }
@@ -110,16 +142,25 @@ export async function allowDaily(
 ): Promise<{ ok: boolean; count: number }> {
   await ensureLoaded();
   const day = today();
+  const key = hashKey(token);
   let m = mem.get(bucket);
   if (!m) {
     m = new Map<string, Entry>();
     mem.set(bucket, m);
   }
-  const cur = m.get(token);
+  const cur = m.get(key);
   let count: number;
   if (!cur || cur.day !== day) {
+    // Brand-new key for today. Bound the bucket so a flood of distinct
+    // (e.g. attacker-supplied) tokens can't grow the sidecar without limit.
+    // Past the cap, fail OPEN (allow, count 0) without storing the key —
+    // denying would let an attacker lock real clients out, and these routes
+    // are token-gated regardless.
+    if (!cur && m.size >= maxKeysPerBucket()) {
+      return { ok: true, count: 0 };
+    }
     count = 1;
-    m.set(token, { day, count });
+    m.set(key, { day, count });
   } else {
     count = cur.count + 1;
     cur.count = count;

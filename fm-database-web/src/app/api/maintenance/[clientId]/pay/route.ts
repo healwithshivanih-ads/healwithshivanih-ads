@@ -20,6 +20,8 @@ import {
   extendPaidThrough,
   DEFAULT_MAINTENANCE_TERM_MONTHS,
 } from "@/lib/fmdb/maintenance-orders";
+import { verifyAppClient } from "@/lib/fmdb/app-auth";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -32,9 +34,16 @@ function istToday(): string {
 
 export async function POST(req: Request, ctx: { params: Promise<{ clientId: string }> }) {
   const { clientId } = await ctx.params;
-  const body = (await req.json().catch(() => null)) as { termMonths?: number } | null;
+  const body = (await req.json().catch(() => null)) as { termMonths?: number; token?: string } | null;
   if (!SAFE_ID.test(clientId)) {
     return NextResponse.json({ ok: false, error: "bad id" }, { status: 400 });
+  }
+  // AUTHORIZE: the app token must resolve to THIS client. Without this, anyone
+  // who guesses a clientId could spin up maintenance orders + Razorpay orders.
+  const auth = await verifyAppClient(body?.token, clientId);
+  if (!auth.ok) return NextResponse.json({ ok: false, error: auth.error }, { status: auth.status });
+  if (!(await allowDaily("maintenance-pay", auth.clientId, 12)).ok) {
+    return NextResponse.json({ ok: false, error: "too many attempts today" }, { status: 429 });
   }
   const termMonths = Number(body?.termMonths ?? DEFAULT_MAINTENANCE_TERM_MONTHS);
   if (maintenancePrice(termMonths) == null) {

@@ -158,7 +158,7 @@ export function LabOrdersCard() {
       const res = await fetch(`/api/lab-order/${order.order_id}/pay`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ clientId: data.clientId, logistics: form }),
+        body: JSON.stringify({ token: data.token, clientId: data.clientId, logistics: form }),
       });
       const j = (await res.json()) as {
         ok: boolean;

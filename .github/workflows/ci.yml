@@ -1,0 +1,52 @@
+name: web-ci
+
+# Gate for the coach/client web app (fm-database-web). Runs the checks that
+# were previously only run by hand — and that the build used to skip
+# (typescript.ignoreBuildErrors was `true`). type-check + tests + build are
+# BLOCKING; lint is advisory for now (no ESLint baseline existed historically,
+# so it reports without failing the gate until the backlog is burned down).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "fm-database-web/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    paths:
+      - "fm-database-web/**"
+      - ".github/workflows/ci.yml"
+
+defaults:
+  run:
+    working-directory: fm-database-web
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: fm-database-web/package-lock.json
+
+      # --include=dev is required: Tailwind v4's postcss plugin lives in
+      # devDependencies and is needed even for a production build.
+      - name: Install
+        run: npm ci --include=dev
+
+      - name: Type-check (blocking)
+        run: npm run type-check
+
+      - name: Tests (blocking)
+        run: npm test
+
+      - name: Build (blocking — type errors now fail here too)
+        run: npm run build
+
+      - name: Lint (advisory)
+        run: npm run lint
+        continue-on-error: true

@@ -60,6 +60,21 @@ def _short(s: str) -> str:
     return s.split(" — ")[0].split(" - ")[0].split(" (")[0].split(":")[0].strip()
 
 
+# Generic, lifestyle-scope safety triggers — NOT diagnostic and NOT
+# client-specific (we never fabricate condition-specific red flags). These are
+# the "this is beyond a reset" lines PLAN_END_GAME_SPEC.md makes NON-OPTIONAL,
+# so a hands-free / self-serve tier stays responsible and inside coaching scope.
+_RED_FLAGS = [
+    "Chest pain, trouble breathing, fainting, or sudden one-sided weakness — "
+    "call your local emergency number now. This is not a reset situation.",
+    "A high fever that won't settle, severe or fast-worsening pain, persistent "
+    "vomiting, or blood where there shouldn't be — please see a doctor.",
+    "If things are getting sharply worse instead of easing, you're frightened, "
+    "or you're pregnant and unsure — reach out to Shivani or a doctor rather "
+    "than finishing the reset on your own.",
+]
+
+
 def _build_card(client: dict, plan: dict) -> dict:
     first = (str(client.get("display_name") or "").split(" ") or ["you"])[0] or "you"
     nut = plan.get("nutrition") or {}
@@ -72,28 +87,42 @@ def _build_card(client: dict, plan: dict) -> dict:
         else "Back to your plate — protein and veg first, home-cooked and simple."
     )
 
+    steps.append(
+        "Put sleep and water first for a few days — they settle a flare more than anything else on this list."
+    )
+
     names = [_humanize(s.get("supplement_slug", "")) for s in (plan.get("supplement_protocol") or []) if isinstance(s, dict) and s.get("supplement_slug")][:2]
     if names:
-        steps.append(f"Don't skip your anchors — {', '.join(names)}.")
+        # As-needed, NOTHING NEW, only doses already established as safe over the
+        # 12 weeks — keeps this a lifestyle reset, never new prescribing (spec).
+        steps.append(
+            f"If they helped you before, you can lean on the basics you already know — {', '.join(names)}. "
+            "Nothing new, and only at the amount you've already been taking."
+        )
 
     pnames = [str(p.get("name") or "").strip() for p in (plan.get("lifestyle_practices") or []) if isinstance(p, dict) and str(p.get("name") or "").strip()][:2]
     if pnames:
-        steps.append(f"Hold your daily basics — {', '.join(pnames)}.")
+        steps.append(f"Come back to your daily basics — {', '.join(pnames)}.")
 
     eases = [_short(x) for x in (_strs(nut.get("reduce")) + _strs(client.get("foods_to_avoid")))]
     eases = [e for e in eases if e][:2]
     if eases:
         steps.append(f"Ease back off {', '.join(eases)} for a few days.")
 
-    steps.append("Give it a week. If it's not settling, message Shivani — that's what I'm here for.")
+    steps.append(
+        "Give it 5–7 days. If it isn't settling, book a re-check with Shivani rather than pushing on — "
+        "that's what the reset is for, not a substitute for being seen."
+    )
 
     return {
         "title": "Your reset",
         "intro": (
             f"An off-week or a flare happens to everyone, {first}. When it does, you don't need "
-            "the whole plan — just come back to the few things that move the needle fastest for you."
+            "the whole plan — just come back to the few things that move the needle fastest for you. "
+            "This is a gentle reset, not a new prescription."
         ),
         "steps": steps,
+        "red_flags": list(_RED_FLAGS),
     }
 
 

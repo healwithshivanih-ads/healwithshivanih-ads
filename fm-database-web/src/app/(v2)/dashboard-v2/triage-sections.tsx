@@ -661,20 +661,26 @@ export function TriageSections({ grouped }: TriageSectionsProps) {
 
 function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
   return (
-    <Link
-      href={`/clients-v2/${row.client_id}`}
-      style={{ textDecoration: "none", color: "inherit" }}
+    // The card is NOT an anchor: it contains its own CTA link + buttons, and an
+    // <a> wrapping another <a> is invalid HTML — it caused a real hydration
+    // failure. Pattern: a transparent stretched overlay link is the default
+    // click target (whole card → client page); the interactive CTA row sits
+    // ABOVE it via z-index as a sibling, never nested.
+    <FmPanel
+      style={{
+        background: meta.accent,
+        borderColor: meta.border,
+        padding: "14px 16px",
+        transition: "all 200ms var(--fm-ease-out)",
+        height: "100%",
+        position: "relative",
+      }}
     >
-      <FmPanel
-        style={{
-          background: meta.accent,
-          borderColor: meta.border,
-          padding: "14px 16px",
-          cursor: "pointer",
-          transition: "all 200ms var(--fm-ease-out)",
-          height: "100%",
-        }}
-      >
+      <Link
+        href={`/clients-v2/${row.client_id}`}
+        aria-label={`Open ${row.display_name ?? row.client_id}`}
+        style={{ position: "absolute", inset: 0, zIndex: 0, textDecoration: "none" }}
+      />
         <div
           style={{
             display: "flex",
@@ -740,6 +746,9 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             marginTop: 6,
             paddingTop: 6,
             flexWrap: "wrap",
+            // Sit above the stretched overlay link so these CTAs stay clickable.
+            position: "relative",
+            zIndex: 1,
           }}
         >
           <div
@@ -788,7 +797,6 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
           </span>
         </div>
       </FmPanel>
-    </Link>
   );
 }
 

@@ -17,6 +17,8 @@ import {
   createMaintenanceSubscription,
   type MaintenanceSubscription,
 } from "@/lib/fmdb/maintenance-subscription";
+import { verifyAppClient } from "@/lib/fmdb/app-auth";
+import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +34,14 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
   const { clientId } = await ctx.params;
   if (!SAFE_ID.test(clientId)) {
     return NextResponse.json({ ok: false, error: "bad id" }, { status: 400 });
+  }
+  // AUTHORIZE: the app token must resolve to THIS client (see app-auth.ts) —
+  // a subscription is a recurring debit; never start one on a guessed clientId.
+  const body = (await req.json().catch(() => null)) as { token?: string } | null;
+  const auth = await verifyAppClient(body?.token, clientId);
+  if (!auth.ok) return NextResponse.json({ ok: false, error: auth.error }, { status: auth.status });
+  if (!(await allowDaily("maintenance-subscribe", auth.clientId, 8)).ok) {
+    return NextResponse.json({ ok: false, error: "too many attempts today" }, { status: 429 });
   }
 
   const keyId = process.env.RAZORPAY_KEY_ID;

@@ -94,7 +94,11 @@ export function MindMapMermaid({ slug, mermaidSource, renderError, fallbackTree 
         const mermaid = (await import("mermaid")).default;
         mermaid.initialize({
           startOnLoad: false,
-          securityLevel: "loose",
+          // "strict" encodes HTML in node labels and disables click handlers.
+          // Our curated mindmaps are plain-text labels with no interactivity, so
+          // strict costs nothing and removes the loose-mode injection surface.
+          // On any render hiccup the component already degrades to the outline.
+          securityLevel: "strict",
           theme: "base",
           themeVariables: {
             primaryColor: "#14532d",

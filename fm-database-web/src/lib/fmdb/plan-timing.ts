@@ -23,7 +23,7 @@
 export const MEAL_PLAN_DEFAULT_DELAY_DAYS = 3;
 export const SUPPLEMENTS_DEFAULT_DELAY_DAYS = 7;
 
-interface PlanLike {
+export interface PlanLike {
   // js-yaml will parse unquoted YYYY-MM-DD as a Date object; quoted will be
   // a string. Real production plans quote everything, but a single rogue YAML
   // (manual edit, dummy data, broken writer) used to crash every surface
@@ -121,6 +121,50 @@ export function effectiveSupplementsStart(plan: PlanLike): string | null {
   const start = parseYmd(plan.plan_period_start);
   if (!start) return null;
   return toYmd(addDays(start, SUPPLEMENTS_DEFAULT_DELAY_DAYS));
+}
+
+export interface EffectiveStartOpts {
+  /**
+   * Raw date the meal-plan / consolidated letter was sent (YYYY-MM-DD), when
+   * the caller knows it (the coach plan page derives this from the letter
+   * staleness scan; the client app can't, and passes nothing). The resolver
+   * adds the ~3-day adoption lag itself — pass the RAW send date, not +3.
+   */
+  letterSentYmd?: string | null;
+}
+
+/**
+ * THE canonical "when did/does this plan start" anchor — the single source of
+ * truth so the client app's Day-1/week counter and the coach's retest dates
+ * cannot drift apart. Priority (first hit wins):
+ *
+ *   1. meal_plan_started_on    — coach/client-confirmed meal start (locks it)
+ *   2. supplements_started_on  — coach-confirmed; a real "they engaged" signal
+ *   3. letterSentYmd + 3d      — a letter went out → ~3-day adoption lag
+ *   4. plan_period_start + 3d  — authoring anchor + default adoption lag
+ *   → null when none are known.
+ *
+ * The +3 adoption lag lives HERE in the estimate, so effectiveRecheckDate is
+ * simply start + weeks×7 — there is exactly ONE lag in the chain, not two.
+ *
+ * Surfaces that can't supply `letterSentYmd` (the client app) use the narrower
+ * effectiveMealPlanStart() instead, which collapses to step 1 → step 4 — i.e.
+ * they AGREE with this resolver on every confirmed plan and on the plan_period
+ * floor; they only forgo the letter-sent refinement they have no access to.
+ */
+export function effectivePlanStart(
+  plan: PlanLike,
+  opts: EffectiveStartOpts = {},
+): string | null {
+  const meal = parseYmd(plan.meal_plan_started_on);
+  if (meal) return toYmd(meal);
+  const supp = parseYmd(plan.supplements_started_on);
+  if (supp) return toYmd(supp);
+  const letter = parseYmd(opts.letterSentYmd ?? null);
+  if (letter) return toYmd(addDays(letter, MEAL_PLAN_DEFAULT_DELAY_DAYS));
+  const start = parseYmd(plan.plan_period_start);
+  if (start) return toYmd(addDays(start, MEAL_PLAN_DEFAULT_DELAY_DAYS));
+  return null;
 }
 
 /**

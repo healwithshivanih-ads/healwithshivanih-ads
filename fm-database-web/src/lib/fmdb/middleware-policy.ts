@@ -54,6 +54,14 @@ export const PUBLIC_PATH_PREFIXES = [
   "/api/app-travel",
   "/api/app-body",
   "/api/app-swap",
+  // Mind-body practice log write-back (breathing / EFT / sleep wind-down).
+  // Token-scoped, re-verified server-side. Feeds the adherence scanner + the
+  // progressive-unlock drip engine. (Was missing → 404'd on Fly under
+  // FLY_INTAKE_ONLY, silently breaking practice logging for every client.)
+  "/api/app-practice",
+  // Client reminder preferences (AM/PM supplements, weekly check-in). Token-
+  // scoped. (Same missing-from-allowlist bug as app-practice.)
+  "/api/app-reminders",
   "/api/app-push",
   // App reports it's running installed (adoption signal). Token-scoped.
   "/api/app-installed",

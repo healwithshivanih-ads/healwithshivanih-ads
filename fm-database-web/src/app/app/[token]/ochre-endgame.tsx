@@ -91,7 +91,7 @@ export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
         const res = await fetch(`/api/maintenance/${data.clientId}/subscribe`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: "{}",
+          body: JSON.stringify({ token: data.token }),
         });
         const j = (await res.json()) as { ok: boolean; error?: string; subscription_id?: string; keyId?: string };
         if (!j.ok) throw new Error(j.error || "could not start subscription");
@@ -104,7 +104,7 @@ export function MaintenanceCheckout({ onClose }: { onClose: () => void }) {
         const res = await fetch(`/api/maintenance/${data.clientId}/pay`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ termMonths }),
+          body: JSON.stringify({ termMonths, token: data.token }),
         });
         const j = (await res.json()) as {
           ok: boolean;
@@ -505,7 +505,11 @@ function MonthlyCardView({ card }: { card: { title: string; dos: string[]; donts
 }
 
 /** The back-on-track (flare-reset) card — shared by maintenance + library. */
-function BackOnTrackCard({ bot }: { bot: { title: string; intro: string; steps: string[] } }) {
+function BackOnTrackCard({
+  bot,
+}: {
+  bot: { title: string; intro: string; steps: string[]; redFlags: string[] };
+}) {
   return (
     <div style={cardStyle}>
       <div style={{ fontSize: 14.5, fontWeight: 500, color: FOREST }}>{bot.title}</div>
@@ -516,6 +520,26 @@ function BackOnTrackCard({ bot }: { bot: { title: string; intro: string; steps: 
             <li key={i}>{s}</li>
           ))}
         </ol>
+      )}
+      {bot.redFlags.length > 0 && (
+        <div
+          style={{
+            marginTop: 11,
+            padding: "9px 11px",
+            borderRadius: 9,
+            background: "rgba(155, 59, 48, 0.07)",
+            border: "1px solid rgba(155, 59, 48, 0.22)",
+          }}
+        >
+          <div style={{ fontSize: 12, fontWeight: 600, color: "#9b3b30", marginBottom: 4 }}>
+            When a reset isn&apos;t enough
+          </div>
+          <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12.5, color: INK, lineHeight: 1.55 }}>
+            {bot.redFlags.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );
