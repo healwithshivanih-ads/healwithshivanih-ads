@@ -19,11 +19,12 @@ export const dynamic = "force-dynamic";
 
 const SAFE_ID = /^[A-Za-z0-9_-]+$/;
 
-/** Today (Asia/Kolkata) + n days as YYYY-MM-DD. Clients are in India, so the
- *  48-hour collection floor is computed against the IST calendar day. */
-function ymdInIstPlusDays(n: number): string {
-  const ist = new Date(Date.now() + 5.5 * 3600 * 1000);
-  ist.setUTCDate(ist.getUTCDate() + n);
+/** The IST calendar date n hours from now, as YYYY-MM-DD. Clients are in India,
+ *  so the collection lead-time floor is computed against the IST wall clock. A
+ *  36-hour floor lands on tomorrow for a morning booking, the day after for an
+ *  evening one — day-granular, so this is the earliest date the picker offers. */
+function ymdInIstPlusHours(h: number): string {
+  const ist = new Date(Date.now() + (5.5 + h) * 3600 * 1000);
   return ist.toISOString().slice(0, 10);
 }
 
@@ -48,8 +49,8 @@ export async function POST(req: Request, ctx: { params: Promise<{ orderId: strin
   }
 
   // Home-collection details are mandatory to book — validate before charging.
-  // Enforce a 48-hour lead time on the collection date (lab needs to arrange it).
-  const logi = sanitizeLogistics(body?.logistics, { minDateYmd: ymdInIstPlusDays(2) });
+  // Enforce a 36-hour lead time on the collection date (lab needs to arrange it).
+  const logi = sanitizeLogistics(body?.logistics, { minDateYmd: ymdInIstPlusHours(36) });
   if (!logi.ok) return NextResponse.json({ ok: false, error: logi.error }, { status: 400 });
 
   const keyId = process.env.RAZORPAY_KEY_ID;
