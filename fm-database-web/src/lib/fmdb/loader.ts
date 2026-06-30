@@ -4,10 +4,11 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getCataloguePath, getPlansRoot } from "./paths";
 import type { CatalogueKind, Plan, Client, PlanStatus } from "./types";
+import { withFsRetry } from "./fs-retry";
 
 async function readYaml<T>(absPath: string): Promise<T | null> {
   try {
-    const raw = await fs.readFile(absPath, "utf-8");
+    const raw = await withFsRetry(() => fs.readFile(absPath, "utf-8"));
     return yaml.load(raw) as T;
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
@@ -17,7 +18,7 @@ async function readYaml<T>(absPath: string): Promise<T | null> {
 
 async function listYamlFiles(dir: string): Promise<string[]> {
   try {
-    const names = await fs.readdir(dir);
+    const names = await withFsRetry(() => fs.readdir(dir));
     return names
       .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
       .map((n) => path.join(dir, n));
@@ -109,7 +110,7 @@ export async function loadAllClients(): Promise<Client[]> {
   const clientsDir = path.join(root, "clients");
   let entries: string[] = [];
   try {
-    entries = await fs.readdir(clientsDir);
+    entries = await withFsRetry(() => fs.readdir(clientsDir));
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
     throw err;
@@ -117,7 +118,7 @@ export async function loadAllClients(): Promise<Client[]> {
   const out: Client[] = [];
   for (const entry of entries) {
     const entryPath = path.join(clientsDir, entry);
-    const stat = await fs.stat(entryPath);
+    const stat = await withFsRetry(() => fs.stat(entryPath));
     if (stat.isDirectory()) {
       const data = await readYaml<Client>(path.join(entryPath, "client.yaml"));
       if (data) out.push(data);

@@ -703,13 +703,6 @@ function Toggle({ on, onClick }: { on: boolean; onClick: () => void }) {
   );
 }
 
-const INTEGRATIONS = [
-  { id: "watch", name: "Apple Watch", meta: "Steps, walks, heart rate", icon: "walk" },
-  { id: "ring", name: "Smart ring", meta: "Sleep & recovery", icon: "moon" },
-  { id: "bp", name: "BP monitor", meta: "Home blood-pressure readings", icon: "heart" },
-  { id: "cgm", name: "Glucose monitor (CGM)", meta: "Blood sugar patterns", icon: "sparkle" },
-];
-
 const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
@@ -1061,31 +1054,6 @@ export function AccountOverlay({
         </div>
 
         <PushToggleSection />
-
-        <div className="set-group">
-          <div className="set-h">
-            <Icon name="link" size={15} /> Connected apps
-          </div>
-          <div className="card" style={{ overflow: "hidden" }}>
-            {INTEGRATIONS.map((x) => (
-              <div className="set-row" key={x.id}>
-                <span className="conn-ico">
-                  <Icon name={x.icon} size={17} />
-                </span>
-                <span className="sr-name" style={{ flex: 1 }}>
-                  {x.name}
-                  <span className="sr-meta">{x.meta}</span>
-                </span>
-                <button className="conn-btn" disabled style={{ opacity: 0.55 }}>
-                  Coming soon
-                </button>
-              </div>
-            ))}
-          </div>
-          <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-            Device sync is coming with our iOS app — for now, the manual logs keep everything you need.
-          </div>
-        </div>
 
         <div className="card-quiet" style={{ padding: "13px 15px", display: "flex", gap: 10, alignItems: "center", marginTop: 22 }}>
           <Icon name="water" size={16} style={{ color: "var(--forest)" }} />

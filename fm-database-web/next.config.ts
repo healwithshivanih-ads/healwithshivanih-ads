@@ -3,9 +3,11 @@ import path from "node:path";
 
 const nextConfig: NextConfig = {
   typescript: {
-    // WIP files have in-progress type errors; skip type-check at build time.
-    // Run `npm run type-check` separately when those features are complete.
-    ignoreBuildErrors: true,
+    // Type errors now FAIL the build. The codebase type-checks clean
+    // (`npm run type-check` == 0 errors, enforced in CI), so there's no reason
+    // to ship past a regression silently — which is exactly what the old
+    // `ignoreBuildErrors: true` allowed.
+    ignoreBuildErrors: false,
   },
   turbopack: {
     root: path.resolve(__dirname),

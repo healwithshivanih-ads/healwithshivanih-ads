@@ -251,7 +251,7 @@ describe("sanitizeLogistics — client-submitted collection details", () => {
     expect(sanitizeLogistics({ ...good, preferred_slot: "" })).toMatchObject({ ok: false });
   });
 
-  it("enforces the 48-hour collection floor when minDateYmd is passed", () => {
+  it("enforces the collection lead-time floor when minDateYmd is passed", () => {
     // good.preferred_date is 2026-07-02
     expect(sanitizeLogistics(good, { minDateYmd: "2026-07-04" })).toMatchObject({ ok: false }); // too soon
     expect(sanitizeLogistics(good, { minDateYmd: "2026-07-02" }).ok).toBe(true); // exactly the floor is ok

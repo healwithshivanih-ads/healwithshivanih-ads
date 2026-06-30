@@ -39,6 +39,11 @@ import {
   type DiscoverySummary,
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
+import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
+import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
+import { effectiveRecheckDate, effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
+import { formatLongDate } from "@/lib/fmdb/format-date";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
 import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions/clients";
@@ -756,6 +761,170 @@ function deriveBreathwork(
   return null;
 }
 
+/** A self-serve "flare reset" card — coach-authored at graduation, shown in the
+ *  maintenance + library floors so a graduate can steady a wobble themselves. */
+export interface BackOnTrack {
+  title: string;
+  intro: string;
+  steps: string[];
+  /** Non-optional "this is beyond a reset — seek care" triggers. The spec
+   *  (PLAN_END_GAME_SPEC.md) makes these mandatory; parseBackOnTrack injects a
+   *  default set when a stored card predates the field, so every rendered reset
+   *  carries them. */
+  redFlags: string[];
+}
+
+/** The month's do's & don'ts — the one living thing in maintenance. Cached per
+ *  YYYY-MM on the plan (plan.monthly_cards), regenerated monthly. */
+export interface MonthlyCard {
+  month: string; // YYYY-MM
+  title: string;
+  dos: string[];
+  donts: string[];
+}
+
+/** Data the end-game screens (REVIEW / MAINTENANCE / GRACE / LIBRARY) render.
+ *  Non-null only when `mode !== "ACTIVE"`. */
+export interface EndgameInfo {
+  mode: Exclude<AppMode, "ACTIVE">;
+  /** Telemetry / coach-chip "why". */
+  reason: string;
+  /** The 12-week effective recheck (graduation) date + a human label. */
+  recheckDate: string | null;
+  recheckLabel: string | null;
+  /** MAINTENANCE / GRACE: paid-through date + human label. */
+  paidThrough: string | null;
+  paidThroughLabel: string | null;
+  /** GRACE: last day of full access before dropping to the library floor. */
+  graceUntilLabel: string | null;
+  /** The flare-reset card (from client.back_on_track_plan), if authored. */
+  backOnTrack: BackOnTrack | null;
+  /** This month's do's & don'ts (from plan.monthly_cards[YYYY-MM]), if generated. */
+  monthlyCard: MonthlyCard | null;
+  /** Offered ONE-TIME maintenance blocks (manual, e.g. 6 months ₹10,000).
+   *  Server-fixed prices — the pay route re-derives, never trusts the client. */
+  pricing: { termMonths: number; inr: number }[];
+  /** The quarterly AUTO-DEBIT subscription offer, when the Razorpay plan is
+   *  configured (RAZORPAY_QUARTERLY_PLAN_ID set); null otherwise (UI hides it). */
+  subscriptionOffer: { intervalMonths: number; inr: number } | null;
+  /** True when the client already has a live (active/authenticated) subscription —
+   *  the UI shows "auto-renew on" instead of re-offering it. */
+  subscriptionActive: boolean;
+  /** Non-null in MAINTENANCE when coverage runs out within the renewal window —
+   *  a human label for the "renew soon" nudge. */
+  renewalDueLabel: string | null;
+}
+
+/** Add n days to a YYYY-MM-DD in UTC (mirrors app-mode.ts' UTC discipline). */
+function addDaysUtcYmd(ymd: string, n: number): string {
+  const d = new Date(ymd + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+/** Non-optional flare-reset safety triggers (mirrors generate-back-on-track.py
+ *  _RED_FLAGS). Injected when a stored card predates the red_flags field so
+ *  every rendered reset still carries them — the spec makes them mandatory. */
+const DEFAULT_FLARE_RED_FLAGS = [
+  "Chest pain, trouble breathing, fainting, or sudden one-sided weakness — call your local emergency number now. This is not a reset situation.",
+  "A high fever that won't settle, severe or fast-worsening pain, persistent vomiting, or blood where there shouldn't be — please see a doctor.",
+  "If things are getting sharply worse instead of easing, you're frightened, or you're pregnant and unsure — reach out to Shivani or a doctor rather than finishing the reset on your own.",
+];
+
+/** Parse client.back_on_track_plan (coach-authored dict) into the flare card. */
+function parseBackOnTrack(raw: unknown): BackOnTrack | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const title = asStr(r.title).trim();
+  const intro = asStr(r.intro).trim();
+  const steps = asStrArr(r.steps).map((s) => s.trim()).filter(Boolean);
+  const redFlags = asStrArr(r.red_flags).map((s) => s.trim()).filter(Boolean);
+  if (!title && !intro && steps.length === 0) return null;
+  return {
+    title: title || "Back on track",
+    intro,
+    steps,
+    // Mandatory: a stored card with no red_flags (authored before this field)
+    // still renders the default safety triggers rather than nothing.
+    redFlags: redFlags.length ? redFlags : DEFAULT_FLARE_RED_FLAGS,
+  };
+}
+
+/** Pick this month's do's/don'ts from plan.monthly_cards (keyed YYYY-MM). */
+function parseMonthlyCard(raw: unknown, ym: string): MonthlyCard | null {
+  if (!raw || typeof raw !== "object") return null;
+  const c = (raw as Record<string, unknown>)[ym];
+  if (!c || typeof c !== "object") return null;
+  const o = c as Record<string, unknown>;
+  const dos = asStrArr(o.dos).map((s) => s.trim()).filter(Boolean);
+  const donts = asStrArr(o.donts).map((s) => s.trim()).filter(Boolean);
+  if (dos.length === 0 && donts.length === 0) return null;
+  return { month: ym, title: asStr(o.title).trim() || "This month", dos, donts };
+}
+
+/** Resolve the end-game app mode + the data its screens read. "ACTIVE" → no
+ *  endgame block (the app renders the normal in-protocol experience). */
+const MAINTENANCE_PRICING_LIST = Object.entries(MAINTENANCE_PRICING)
+  .map(([term, inr]) => ({ termMonths: Number(term), inr }))
+  .sort((a, b) => b.termMonths - a.termMonths);
+
+function buildEndgame(
+  client: Record<string, unknown>,
+  plan: AppModePlan | null,
+  todayYmd: string,
+  monthlyCards: unknown = null,
+  /** record-derived paid-through (from PAID maintenance orders) — folded in so
+   *  the app reflects a fresh payment before the Mac reconcile updates client.yaml */
+  recordThrough: string | null = null,
+  /** quarterly auto-debit subscription wiring (env-gated) + whether one is live */
+  sub: { available: boolean; inr: number; active: boolean } = { available: false, inr: 6000, active: false },
+): { mode: AppMode; endgame: EndgameInfo | null } {
+  // Effective window = the later of client.yaml + the latest PAID record.
+  const fromClient = asYmd(client.maintenance_paid_through) || null;
+  const paidThrough =
+    fromClient && recordThrough ? (recordThrough > fromClient ? recordThrough : fromClient) : recordThrough || fromClient;
+
+  const res = resolveAppMode(
+    {
+      maintenance_status: asStr(client.maintenance_status) || null,
+      maintenance_paid_through: paidThrough,
+      plan,
+    },
+    todayYmd,
+  );
+  if (res.mode === "ACTIVE") return { mode: "ACTIVE", endgame: null };
+
+  const recheck = plan ? effectiveRecheckDate(plan) : null;
+  const graceUntil =
+    res.mode === "GRACE" && paidThrough ? addDaysUtcYmd(paidThrough, GRACE_DAYS) : null;
+
+  // Renewal nudge: in MAINTENANCE, flag when coverage runs out within the window.
+  const renewalThreshold = addDaysUtcYmd(todayYmd, REVIEW_LEAD_DAYS);
+  const renewalDueLabel =
+    res.mode === "MAINTENANCE" && paidThrough && paidThrough <= renewalThreshold
+      ? formatLongDate(paidThrough)
+      : null;
+
+  return {
+    mode: res.mode,
+    endgame: {
+      mode: res.mode,
+      reason: res.reason,
+      recheckDate: recheck,
+      recheckLabel: recheck ? formatLongDate(recheck) : null,
+      paidThrough,
+      paidThroughLabel: paidThrough ? formatLongDate(paidThrough) : null,
+      graceUntilLabel: graceUntil ? formatLongDate(graceUntil) : null,
+      backOnTrack: parseBackOnTrack(client.back_on_track_plan),
+      monthlyCard: parseMonthlyCard(monthlyCards, todayYmd.slice(0, 7)),
+      pricing: MAINTENANCE_PRICING_LIST,
+      subscriptionOffer: sub.available ? { intervalMonths: 3, inr: sub.inr } : null,
+      subscriptionActive: sub.active,
+      renewalDueLabel,
+    },
+  };
+}
+
 export interface ClientAppData {
   clientId: string;
   planSlug: string;
@@ -775,6 +944,13 @@ export interface ClientAppData {
   /** The client's intake form URL (so the app can launch intake) — discovery
    *  onboarding only; null once submitted / not applicable. */
   intakeUrl: string | null;
+  /** End-game app mode (package tier). "ACTIVE" = in-protocol (current app, no
+   *  change). REVIEW/MAINTENANCE/GRACE/LIBRARY drive the graduation → maintenance
+   *  → frozen-floor screens. Discovery tier is always "ACTIVE" here (the `tier`
+   *  field gates it first). See app-mode.ts. */
+  mode: AppMode;
+  /** Non-null only when mode !== "ACTIVE" — the data the end-game screens read. */
+  endgame: EndgameInfo | null;
   /** Coach-recommended lab orders (Acumen). `recommended` ones are payable in
    *  app; others show status. Universal across tiers (booking works in any mode). */
   labOrders: LabOrder[];
@@ -2330,6 +2506,8 @@ async function buildDiscoveryAppData(
     discoverySummary: parseDiscoverySummary(client, firstName),
     discoveryStage,
     intakeUrl,
+    mode: "ACTIVE",
+    endgame: null,
     labOrders: discoveryLabOrders,
     client: {
       firstName,
@@ -2581,7 +2759,15 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const letterFoods = parseLetterFoods(letterMd);
 
   // ---- dates / week math (12-week clock anchored on meal_plan_started_on) --
-  const startStr = asStr(plan.meal_plan_started_on) || asStr(plan.plan_period_start);
+  // Single source of truth (plan-timing.ts) so the client's week counter and
+  // the coach's retest dates can't drift: meal_plan_started_on when confirmed,
+  // else plan_period_start + the 3-day adoption lag (same floor the dashboard
+  // recheck uses). The notStarted/hold gate below is independent and still
+  // keys on meal_plan_started_on directly.
+  const startStr = effectiveMealPlanStart({
+    meal_plan_started_on: plan.meal_plan_started_on as string | Date | null | undefined,
+    plan_period_start: plan.plan_period_start as string | Date | undefined,
+  });
   const startDate = startStr ? new Date(`${startStr}T00:00:00Z`) : null;
   const now = istNow();
   const todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
@@ -4437,6 +4623,32 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     ? Math.max(0, Math.ceil((_holdDate.getTime() - todayUTC.getTime()) / 86_400_000))
     : 0;
 
+  // End-game app mode (graduation → maintenance/grace/library). Built from a
+  // clean AppModePlan (dates coerced) + the client's maintenance fields. ACTIVE
+  // for an in-protocol client → endgame is null and the app renders normally.
+  const modePlan: AppModePlan = {
+    plan_period_start: asYmd(plan.plan_period_start) || undefined,
+    plan_period_weeks: typeof plan.plan_period_weeks === "number" ? plan.plan_period_weeks : undefined,
+    meal_plan_started_on: asYmd(plan.meal_plan_started_on) || null,
+    supplements_started_on: asYmd(plan.supplements_started_on) || null,
+    supersedes: asStr(plan.supersedes) || null,
+    status: asStr(plan.status) || null,
+  };
+  // Record-derived maintenance window — a fresh Razorpay payment lands as a PAID
+  // record on Fly before the Mac reconcile folds it into client.yaml; fold it in
+  // here so the app reflects the renewal immediately.
+  const recordThrough = await latestPaidMaintenanceThrough(clientId).catch(() => null);
+  // Quarterly auto-debit subscription offer: available when the Razorpay plan is
+  // configured; "active" hides the offer once the client has a live mandate.
+  const subAvailable = !!process.env.RAZORPAY_QUARTERLY_PLAN_ID;
+  const subInr = Number(process.env.RAZORPAY_QUARTERLY_PLAN_AMOUNT_INR || 6000);
+  const subActive = subAvailable ? await hasLiveSubscription(clientId).catch(() => false) : false;
+  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd(), plan.monthly_cards, recordThrough, {
+    available: subAvailable,
+    inr: subInr,
+    active: subActive,
+  });
+
   return {
     clientId,
     planSlug,
@@ -4450,6 +4662,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     discoverySummary: null,
     discoveryStage: null,
     intakeUrl: null,
+    mode: appMode,
+    endgame,
     labOrders,
     client: {
       firstName,

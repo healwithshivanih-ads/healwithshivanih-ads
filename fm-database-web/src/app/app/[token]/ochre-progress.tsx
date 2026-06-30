@@ -37,6 +37,10 @@ function SymptomHero() {
   const area = `${line} L ${xs[xs.length - 1].toFixed(1)} ${H - padB} L ${xs[0].toFixed(1)} ${H - padB} Z`;
   const yGood = y(good);
   const last = S.points[S.points.length - 1];
+  const first = S.points[0];
+  // Direction reflects the ACTUAL trend (higher wellbeing = better) — never a
+  // hardcoded ↑, which showed "improving" even when the score fell.
+  const trend = S.points.length < 2 ? 0 : Math.sign(last.v - first.v);
   return (
     <div className="lab-hero">
       <div className="lh-top">
@@ -46,7 +50,11 @@ function SymptomHero() {
           </div>
           <div className="lh-val">
             {last.v}
-            <span className="lh-arrow">↑</span>
+            {S.points.length >= 2 && (
+              <span className="lh-arrow" aria-hidden>
+                {trend > 0 ? "↑" : trend < 0 ? "↓" : "→"}
+              </span>
+            )}
           </div>
         </div>
         <span className="lh-trend">{S.deltaLabel}</span>
@@ -334,13 +342,21 @@ export function ProgressScreen({
           Your progress
         </div>
         <div className="muted" style={{ fontSize: 13.5, marginTop: 2 }}>
-          Week {data.client.week} of {data.client.totalWeeks} — here’s how it’s going.
+          {data.client.notStarted
+            ? data.client.startsInDays > 0
+              ? `Your journey begins in ${data.client.startsInDays} day${data.client.startsInDays === 1 ? "" : "s"} — this is a preview.`
+              : "Your journey is being set up — progress starts tracking once week 1 begins."
+            : `Week ${data.client.week} of ${data.client.totalWeeks} — here’s how it’s going.`}
         </div>
       </div>
 
-      <div className="card" style={{ padding: "14px 0 6px", marginTop: 12 }}>
-        <ProgressArc week={data.client.week} total={data.client.totalWeeks} />
-      </div>
+      {/* No fabricated progress before the plan starts: the arc claimed "Week 1
+          / ~8%" on a preview. Show it only once the journey is actually under way. */}
+      {!data.client.notStarted && (
+        <div className="card" style={{ padding: "14px 0 6px", marginTop: 12 }}>
+          <ProgressArc week={data.client.week} total={data.client.totalWeeks} />
+        </div>
+      )}
 
       <Section title="Is it working?">
         {/* MSQ — the FM-standard symptom score; baseline → falling trend */}

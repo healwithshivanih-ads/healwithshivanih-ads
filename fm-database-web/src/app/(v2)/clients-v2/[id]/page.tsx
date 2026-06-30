@@ -34,6 +34,9 @@ import { CoachNotesButton } from "@/components/client-widgets/coach-notes-launch
 import { SendIntakeFormButton } from "./send-intake-form-button";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
+import { BackOnTrackButton } from "./back-on-track-button";
+import { MonthlyCardButton } from "./monthly-card-button";
+import type { BackOnTrackCard } from "@/lib/server-actions/clients";
 import { Tier1AdvisoryCard } from "./tier1-advisory-card";
 import { detectTier1Advisory } from "@/lib/fmdb/tier1-advisory";
 import { LiverDetoxAdvisoryCard } from "./liver-detox-advisory-card";
@@ -1584,6 +1587,20 @@ export default async function ClientV2Page({
                                   .intake_submitted_at ?? null
                               }
                             />
+                            {/* End-game: draft the self-serve flare-reset card from the
+                                plan. Only meaningful once a programme is running. */}
+                            {publishedPlan && (
+                              <BackOnTrackButton
+                                clientId={client.client_id}
+                                existing={
+                                  (client as unknown as { back_on_track_plan?: BackOnTrackCard })
+                                    .back_on_track_plan ?? null
+                                }
+                              />
+                            )}
+                            {/* End-game: the monthly do's/don'ts card for the
+                                maintenance tier (seasonal + condition-aware). */}
+                            {publishedPlan && <MonthlyCardButton clientId={client.client_id} />}
                   </div>
                 ),
               },
