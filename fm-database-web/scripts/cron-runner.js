@@ -91,6 +91,15 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 07:30 IST daily — email the coach a digest of weekly menus awaiting approval
+// (runs after the 07:00 drafts so fresh drafts are included). Only emails when
+// the queue is non-empty. Closes the "drafts pile up silently" gap.
+cron.schedule(
+  "30 7 * * *",
+  () => fire("menu-approval-digest"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // Every minute — fire time-of-day app reminders (client sets these in the app's
 // Account screen; delivered via web push). Cheap: skips any reminder not due
 // this minute, idempotent per (client, reminder, day). A reminder only lands if
@@ -104,6 +113,7 @@ cron.schedule(
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
     + "\n  · 07:00 IST  weekly-menu-drafts"
+    + "\n  · 07:30 IST  menu-approval-digest"
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
     + "\n  · * * * * *  pending-sends"
