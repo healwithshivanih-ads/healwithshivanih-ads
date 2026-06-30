@@ -100,6 +100,24 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 07:45 IST daily — backfill grocery lists for any client with a live menu but
+// no grocery file (migrated menus / failed background jobs). Idempotent.
+cron.schedule(
+  "45 7 * * *",
+  () => fire("grocery-backfill"),
+  { timezone: "Asia/Kolkata" },
+);
+
+// 08:00 IST daily — auto-approve fallback (fixed-day + fallback model). Only
+// approves pending, non-travel drafts for clients ALREADY in a week with no
+// live menu (would otherwise be frozen). Pre-loaded next-week drafts wait for
+// the coach's approval day.
+cron.schedule(
+  "0 8 * * *",
+  () => fire("menu-auto-approve"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // Every minute — fire time-of-day app reminders (client sets these in the app's
 // Account screen; delivered via web push). Cheap: skips any reminder not due
 // this minute, idempotent per (client, reminder, day). A reminder only lands if
@@ -114,6 +132,8 @@ console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
     + "\n  · 07:00 IST  weekly-menu-drafts"
     + "\n  · 07:30 IST  menu-approval-digest"
+    + "\n  · 07:45 IST  grocery-backfill"
+    + "\n  · 08:00 IST  menu-auto-approve"
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
     + "\n  · * * * * *  pending-sends"

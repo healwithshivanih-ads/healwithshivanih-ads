@@ -1627,24 +1627,59 @@ export async function getClientHealthSignals(
       const wl = data.weight_loss as Record<string, unknown> | undefined;
       const log = (data.measurements_log as Array<Record<string, unknown>>) ?? [];
 
-      // ─── Dormant check (needs sessions/ readdir) ───────────────────
-      let lastSessionDate: string | undefined;
+      // ─── Dormant check ─────────────────────────────────────────────
+      // "Contact" = coach engaging with the client or the client's real data:
+      //   · a real session (discovery / intake / check-in / quick note / an
+      //     inbound client message) — but NOT auto-generated OUTBOUND logs
+      //     (handout/template sends tagged [source: whatsapp_outbound]), which
+      //     are things we generate, not contact.
+      //   · a coach edit to the client's facts — captured as a dated
+      //     health_snapshot (weight, labs) or measurements.measured_on.
+      // Approving/editing AI-generated artifacts (menus, letters) is NOT here
+      // by design — it never touches sessions/ or health_snapshots.
+      // Coach rule, 2026-06-30.
+      let lastRealSession: string | undefined;
       try {
-        const names = await fs.readdir(
-          path.join(root, "clients", id, "sessions"),
-        );
-        const dated = names
+        const names = (await fs.readdir(path.join(root, "clients", id, "sessions")))
           .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
-          .map((n) => {
-            const m = n.match(/(\d{4}-\d{2}-\d{2})/);
-            return m ? m[1] : null;
-          })
-          .filter((d): d is string => !!d)
-          .sort();
-        lastSessionDate = dated[dated.length - 1];
+          .sort()
+          .reverse(); // newest filename first
+        for (const n of names) {
+          const m = n.match(/(\d{4}-\d{2}-\d{2})/);
+          if (!m) continue;
+          let content = "";
+          try {
+            content = await fs.readFile(path.join(root, "clients", id, "sessions", n), "utf-8");
+          } catch {
+            continue;
+          }
+          if (content.includes("[source: whatsapp_outbound]")) continue; // outbound auto-log ≠ contact
+          lastRealSession = m[1];
+          break;
+        }
       } catch {
         /* no sessions dir — newer client */
       }
+
+      // Coach edits to client facts → contact (newest dated health_snapshot or
+      // measurements.measured_on).
+      const dataDates: string[] = [];
+      const hs = data.health_snapshots as Array<Record<string, unknown>> | undefined;
+      if (Array.isArray(hs)) {
+        for (const s of hs) {
+          const d = (s as { date?: unknown })?.date;
+          if (typeof d === "string") dataDates.push(d);
+        }
+      }
+      const meas = data.measurements as { measured_on?: unknown } | undefined;
+      if (meas && typeof meas.measured_on === "string") dataDates.push(meas.measured_on);
+      const newestDataDate = dataDates.sort().pop();
+
+      const lastContact = [lastRealSession, newestDataDate]
+        .filter((d): d is string => !!d)
+        .sort()
+        .pop();
+
       const intakeRecent = (() => {
         if (!intakeDate) return false;
         try {
@@ -1653,16 +1688,14 @@ export async function getClientHealthSignals(
           return false;
         }
       })();
-      const hasRecentSession = !!(
-        lastSessionDate && new Date(lastSessionDate) > dormantCutoff
-      );
-      if (!intakeRecent && !hasRecentSession) {
+      const hasRecentContact = !!(lastContact && new Date(lastContact) > dormantCutoff);
+      if (!intakeRecent && !hasRecentContact) {
         const daysSilent = Math.max(
           0,
           Math.round(
             (today.getTime() -
-              (lastSessionDate
-                ? new Date(lastSessionDate).getTime()
+              (lastContact
+                ? new Date(lastContact).getTime()
                 : new Date(intakeDate ?? today).getTime())) /
               86_400_000,
           ),
@@ -1671,7 +1704,7 @@ export async function getClientHealthSignals(
           client_id: id,
           display_name: displayName,
           daysSilent,
-          lastSignalAt: lastSessionDate,
+          lastSignalAt: lastContact,
         });
       }
 
