@@ -1098,6 +1098,12 @@ export default async function DashboardV2() {
         }
       />
 
+      {/* 🗓 Weekly menu approvals — pinned to the TOP so the coach can never
+          miss a menu waiting for approval (clients stay frozen until she
+          approves). Loud amber banner; self-hides when nothing is pending.
+          Hoisted here 2026-06-30 from the bottom of the page. */}
+      <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
+
       {/* 📊 Practice overview (MIS) — the headline management layer: vitals,
           who's on track, what the practice is made of, pipeline, and the MSQ
           outcome rollup. Operational triage stays below in the alert groups. */}
@@ -1412,10 +1418,8 @@ export default async function DashboardV2() {
 
           {/* Meal-plan drip retired 2026-06-25 — client letters no longer sent. */}
 
-          {/* 🗓 Weekly app menus — review queue for the weekly cadence
-              (2026-06-12). Cron drafts at 07:00 IST; coach approves in the
-              Plan-tab studio. Self-hides when nothing is due. */}
-          <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
+          {/* WeeklyMenuQueuePanel moved to the TOP of the page 2026-06-30
+              (was here, easy to miss). See the mount under FmPageHeader. */}
 
           <CycleDateReminderPanel whatsappConfigured={whatsappConfigured} />
 
