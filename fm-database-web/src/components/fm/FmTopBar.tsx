@@ -55,6 +55,14 @@ const STYLES = `
   text-decoration: none;
   white-space: nowrap;
 }
+/* Give linked crumbs a real hit area (≥24px AA min) without changing
+   the visual baseline. */
+a.fm-topbar-crumb {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 2px;
+}
 .fm-topbar-crumb:hover { color: var(--fm-text-primary); }
 .fm-topbar-crumb.current {
   color: var(--fm-text-primary);
@@ -75,7 +83,7 @@ const STYLES = `
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 34px;
+  height: 40px;
   padding: 0 12px;
   font-size: 12.5px;
   color: var(--fm-text-secondary);
@@ -114,12 +122,13 @@ const STYLES = `
   font-weight: 700;
   font-size: 12px;
   flex-shrink: 0;
-  cursor: pointer;
+  /* Presentational badge — no action wired, so no pointer affordance.
+     If an account menu is added later, make this a <button>. */
 }
 .fm-topbar-menu {
   display: none;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid var(--fm-border);
   background: var(--fm-surface-2);

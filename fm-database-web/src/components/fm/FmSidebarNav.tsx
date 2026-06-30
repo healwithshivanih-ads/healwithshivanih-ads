@@ -10,6 +10,7 @@
  * know about the app's routes. Phase 1 will wire the real route list.
  */
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export interface FmNavItem {
   /** Stable key, also used to determine active. */
@@ -115,6 +116,8 @@ const STYLES = `
   align-items: center;
   gap: 11px;
   padding: 10px 12px;
+  min-height: 44px;
+  box-sizing: border-box;
   margin: 0 0 3px;
   border-radius: var(--fm-radius-md);
   background: transparent;
@@ -169,8 +172,8 @@ const STYLES = `
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   border: none;
   background: rgba(255,255,255,0.14);
@@ -217,6 +220,19 @@ export function FmSidebarNav({
   open,
   onClose,
 }: FmSidebarNavProps) {
+  // The sidebar is a static rail on desktop and an off-canvas drawer at
+  // ≤820px. When it's a *closed* drawer it's only translated offscreen, so
+  // without this its links stay in the focus order + a11y tree. Gate inert on
+  // mobile-closed only — never on desktop, where open is false but visible.
+  const [isDrawer, setIsDrawer] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 820px)");
+    const update = () => setIsDrawer(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  const drawerClosed = isDrawer && !open;
   return (
     <>
       <div
@@ -224,7 +240,11 @@ export function FmSidebarNav({
         onClick={onClose}
         aria-hidden="true"
       />
-      <aside className={`fm-sidebar${open ? " fm-sidebar--open" : ""}`}>
+      <aside
+        className={`fm-sidebar${open ? " fm-sidebar--open" : ""}`}
+        inert={drawerClosed || undefined}
+        aria-hidden={drawerClosed || undefined}
+      >
       <style>{STYLES}</style>
       <button
         type="button"

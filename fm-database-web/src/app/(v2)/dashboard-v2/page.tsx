@@ -1103,7 +1103,9 @@ export default async function DashboardV2() {
           who's on track, what the practice is made of, pipeline, and the MSQ
           outcome rollup. Operational triage stays below in the alert groups. */}
       <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
-        <FmStatGrid cols={5}>
+        {/* auto-fit (not a hard 5 cols) so the strip wraps to 4/3/2 on
+            narrower laptop widths instead of clipping the last tile. */}
+        <FmStatGrid>
           <FmStatTile label="Active care" value={overview.activeCare} href="/clients-v2" />
           <FmStatTile label="On track" value={overview.onTrackPct !== null ? `${overview.onTrackPct}%` : "—"} />
           <FmStatTile
