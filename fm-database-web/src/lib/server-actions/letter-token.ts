@@ -83,10 +83,15 @@ export async function resolveAppToken(token: string): Promise<LetterTokenResult>
         | null;
       if (!d || d.app_token !== token) continue;
       const slug = await latestPublishedSlugForClient(id);
-      if (slug) return { ok: true, client_id: id, plan_slug: slug };
-      // app_token matched but no published plan — surface as not_found so the
-      // client sees a clean error rather than a silent fall-through.
-      return { ok: false, error: "not_found" };
+      // The app_token matched a real client — authorize them. A plan-less match
+      // is a consult-tier (discovery) client who hasn't been given a plan yet;
+      // they still legitimately install the app and book/pay for labs, so return
+      // ok with an empty plan_slug (the page loader's discovery path resolves the
+      // same way — see resolveDiscoveryClientByToken). Returning not_found here
+      // broke every discovery client's lab-pay: verifyAppClient → resolveAppToken
+      // → not_found → "invalid or expired link" at the Pay button, even though the
+      // app itself loaded fine. No write route reads plan_slug, so "" is safe.
+      return { ok: true, client_id: id, plan_slug: slug ?? "" };
     }
   } catch {
     /* no clients dir — fall through to letter_token scan */
