@@ -59,6 +59,10 @@ export async function POST(req: NextRequest) {
   const attention = actionable.filter((r) => !r.pending); // behind / due but not drafted
   const count = actionable.length;
 
+  // Monday (IST) is the coach's fixed approval day (2026-07-01) — emphasise it.
+  const nowIst = new Date(Date.now() + 5.5 * 60 * 60 * 1000);
+  const isApprovalDay = nowIst.getUTCDay() === 1;
+
   const appUrl = (process.env.APP_URL || "http://localhost:3002").replace(/\/$/, "");
   const named = await Promise.all(
     actionable.map(async (r) => [r.clientId, await displayName(r.clientId)] as const),
@@ -93,6 +97,11 @@ export async function POST(req: NextRequest) {
   const htmlBody = `
     <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.55;color:#2b2d42;">
       <p>Good morning 🌿</p>
+      ${
+        isApprovalDay
+          ? `<p style="background:#d98324;color:#fff;padding:10px 14px;border-radius:8px;font-weight:600;">🗓 It's your weekly approval day — set aside 5 minutes to review and Approve all.</p>`
+          : ""
+      }
       <p>${count} client menu${count === 1 ? "" : "s"} need your attention today.</p>
       ${sections.join("")}
       <p style="margin-top:18px;"><a href="${appUrl}/dashboard-v2"
@@ -101,6 +110,7 @@ export async function POST(req: NextRequest) {
     </div>`;
 
   const textBody =
+    (isApprovalDay ? `🗓 MONDAY APPROVAL DAY — review and Approve all.\n\n` : "") +
     `${count} client menu(s) need attention.\n\n` +
     (ready.length
       ? `READY TO APPROVE:\n${ready
@@ -129,7 +139,9 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
       to,
-      subject: `🗓 ${count} weekly menu${count === 1 ? "" : "s"} awaiting your approval`,
+      subject: isApprovalDay
+        ? `🗓 Monday approval day — ${count} menu${count === 1 ? "" : "s"} to approve`
+        : `🗓 ${count} weekly menu${count === 1 ? "" : "s"} awaiting your approval`,
       html: htmlBody,
       text: textBody,
     });

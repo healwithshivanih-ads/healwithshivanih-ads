@@ -320,4 +320,14 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    # Top-level guard: any unhandled exception (build_client auth, a bad plan
+    # write, etc.) must surface as clean JSON on stdout — never a bare traceback
+    # that the caller sees only as "produced no output" (the silent cl-009
+    # failure, 2026-06-29). Full traceback still goes to stderr for the log.
+    try:
+        main()
+    except Exception as e:  # noqa: BLE001
+        import traceback
+
+        traceback.print_exc(file=sys.stderr)
+        print(json.dumps({"ok": False, "error": f"generate-week-menu crashed: {type(e).__name__}: {e}"}))
