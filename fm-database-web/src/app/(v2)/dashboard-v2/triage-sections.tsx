@@ -40,6 +40,7 @@ export type SignalKind =
   | "phase_letter_due"
   | "plan_review_due"
   | "active"
+  | "awaiting_start"
   | "returning"
   | "new_lead"
   | "declined";
@@ -80,6 +81,8 @@ export interface TriageRow {
      *  Surfaced in the card so coach knows which fortnight she owes. */
     phaseLetterRange?: { start: number; end: number };
     phaseLetterDueDate?: string;
+    /** For awaiting_start — the effective meal-plan start date (future). */
+    startDate?: string;
   };
 }
 
@@ -194,6 +197,16 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) =>
       r.signal.planSlug ? `/clients-v2/${r.client_id}/plan` : `/clients-v2/${r.client_id}`,
   },
+  awaiting_start: {
+    title: "Starting soon — plan not begun yet",
+    icon: "⏳",
+    accent: "rgba(120, 120, 120, 0.06)",
+    border: "rgba(120, 120, 120, 0.24)",
+    badgeColor: "#8a8f98",
+    cta: "View plan",
+    ctaHref: (r) =>
+      r.signal.planSlug ? `/clients-v2/${r.client_id}/plan` : `/clients-v2/${r.client_id}`,
+  },
   // ── ⚪ Leads & cold ──────────────────────────────────────────────
   returning: {
     title: "Returning — re-engage",
@@ -251,7 +264,7 @@ const TIERS: Tier[] = [
     label: "In progress",
     hint: "On a live protocol — review every 3 weeks so it doesn't stall",
     color: "#1a7fbb",
-    kinds: ["plan_review_due", "active"],
+    kinds: ["plan_review_due", "active", "awaiting_start"],
   },
   {
     label: "Leads & cold",
@@ -296,6 +309,12 @@ const VIEW_TIERS: Record<DashboardView, Tier[]> = {
       hint: "Steady — check in every 3 weeks",
       color: "#1a7fbb",
       kinds: ["active"],
+    },
+    {
+      label: "Starting soon",
+      hint: "Plan published but not begun yet — nothing to do until it starts",
+      color: "#8a8f98",
+      kinds: ["awaiting_start"],
     },
   ],
   discovery: [

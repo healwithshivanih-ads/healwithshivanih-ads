@@ -71,6 +71,7 @@ const PROSPECT_BUCKETS = new Set(["new_lead", "returning", "awaiting_signup", "b
 const ONBOARDING_BUCKETS = new Set(["intake_to_do", "plan_to_build"]);
 const ACTIVE_BUCKETS = new Set([
   "active",
+  "awaiting_start", // published, not begun yet — still an active-funnel client
   "protocol_complete",
   "phase_letter_due",
   "plan_review_due",
@@ -97,7 +98,12 @@ export function computePracticeOverview(input: OverviewInput): PracticeOverview 
   let onTrack = 0;
   const watchList: StatusEntry[] = [];
   const stalledList: StatusEntry[] = [];
-  const activeCareClients = clients.filter((c) => publishedPlanIds.has(c.client_id));
+  // "Active care" = published plan AND actually started. A published-but-not-
+  // yet-started plan sits in the awaiting_start bucket and is excluded here so
+  // it doesn't inflate on-track / watch / stalled (coach ask 2026-07-01).
+  const activeCareClients = clients.filter(
+    (c) => publishedPlanIds.has(c.client_id) && bucketOf.get(c.client_id) !== "awaiting_start",
+  );
 
   for (const c of activeCareClients) {
     const id = c.client_id;

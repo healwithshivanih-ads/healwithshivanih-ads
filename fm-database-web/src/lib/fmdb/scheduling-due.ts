@@ -2,6 +2,7 @@ import "server-only";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { getPlansRoot } from "./paths";
+import { hasPlanStarted } from "./plan-timing";
 import yaml from "js-yaml";
 
 /**
@@ -74,6 +75,8 @@ interface PlanLite {
   status?: string;
   _bucket?: string;
   plan_period_recheck_date?: string;
+  meal_plan_started_on?: string;
+  plan_period_start?: string;
 }
 
 /** Days since last session before we consider a client overdue. */
@@ -218,6 +221,8 @@ export async function getSchedulingDueRows(
     const daysSince = lastDateStr ? daysBetween(today, new Date(`${lastDateStr}T00:00:00`)) : undefined;
 
     const plan = publishedByClient.get(c.client_id);
+    // Plan published but not begun yet → nothing to book until it starts.
+    if (plan && !hasPlanStarted(plan, todayStr)) continue;
     const hasPlan = !!plan;
     let recheckOverdue: number | undefined;
     if (plan?.plan_period_recheck_date) {

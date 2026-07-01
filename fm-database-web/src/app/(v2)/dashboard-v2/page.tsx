@@ -27,7 +27,7 @@ import {
 import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
 import { readAppOpens } from "@/lib/fmdb/app-opens";
 import { readAppInstalled } from "@/lib/fmdb/app-installed";
-import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
+import { effectiveRecheckDate, isRecheckOverdue, hasPlanStarted, effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
 import { getCohortMsqOutcomes } from "@/lib/fmdb/msq-cohort";
 import { MsqCohortPanel } from "@/components/msq-cohort-panel";
 import { computePracticeOverview } from "@/lib/fmdb/practice-overview";
@@ -167,6 +167,17 @@ async function computeSignal(
     PUBLISHED_BUCKET.has(p._bucket ?? p.status ?? ""),
   );
   if (publishedPlan) {
+    // Plan published but not begun yet (effective meal-plan start is in the
+    // future) → its own calm "Starting soon" bucket, NOT active/needs-attention.
+    // Coach ask 2026-07-01: not-started clients (e.g. Krittika) were cluttering
+    // client status.
+    if (!hasPlanStarted(publishedPlan, todayStr)) {
+      return {
+        kind: "awaiting_start",
+        planSlug: publishedPlan.slug,
+        startDate: effectiveMealPlanStart(publishedPlan) ?? undefined,
+      };
+    }
     const recheckDate =
       effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date;
 
@@ -642,6 +653,7 @@ export default async function DashboardV2() {
     phase_letter_due: [],
     plan_review_due: [],
     active: [],
+    awaiting_start: [],
     returning: [],
     new_lead: [],
     declined: [],

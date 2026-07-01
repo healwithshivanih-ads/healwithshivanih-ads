@@ -111,6 +111,19 @@ export function effectiveMealPlanStart(plan: PlanLike): string | null {
 }
 
 /**
+ * Has the client's meal plan actually begun as of `todayYmd`?
+ * A published plan whose effective start is in the FUTURE hasn't started —
+ * used to keep not-yet-started clients out of "active care" / needs-attention.
+ * Conservative: when no start date is known, returns true (don't hide a plan
+ * we can't date).
+ */
+export function hasPlanStarted(plan: PlanLike, todayYmd: string): boolean {
+  const start = effectiveMealPlanStart(plan);
+  if (!start) return true;
+  return start <= todayYmd;
+}
+
+/**
  * Date the client actually started supplements. Coach-asserted
  * `supplements_started_on` wins; otherwise `plan_period_start +
  * SUPPLEMENTS_DEFAULT_DELAY_DAYS`. Returns YYYY-MM-DD or null.
