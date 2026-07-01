@@ -163,9 +163,12 @@ export function collectWeightSeries(client: ClientLike): Reading[] {
   for (const e of client.measurements_log ?? []) {
     put(e?.date, (e as { weight_kg?: unknown })?.weight_kg, 2);
   }
+  // Flat bio measurement — only usable if it carries a date. Inventing
+  // "today" for an undated weight is wrong (non-deterministic, and it masks a
+  // stale weigh-in by faking a fresh one) — skip it instead.
   const flat = client.measurements;
-  if (flat) {
-    put(flat.measured_on ?? new Date().toISOString().slice(0, 10), flat.weight_kg, 0);
+  if (flat && typeof flat.measured_on === "string" && flat.measured_on.trim()) {
+    put(flat.measured_on, flat.weight_kg, 0);
   }
 
   return [...byDate.entries()]

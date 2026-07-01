@@ -165,10 +165,12 @@ export function collectMeasurementSnapshots(client: ClientLike): UnifiedSnapshot
     mergeMeas(acc(date, "coach_log", 2), extract(e), 2);
   }
 
-  // flat bio measurements (rank 0)
+  // flat bio measurements (rank 0) — only usable if dated. Inventing "today"
+  // for an undated bio block is non-deterministic and fakes a fresh reading;
+  // skip it instead.
   const flat = client.measurements as Record<string, unknown> | null | undefined;
   if (flat) {
-    const date = ymd(flat.measured_on) ?? ymd(new Date().toISOString());
+    const date = ymd(flat.measured_on);
     if (date) mergeMeas(acc(date, "intake", 0), extract(flat), 0);
   }
 
