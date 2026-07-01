@@ -86,11 +86,15 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   // template placeholder (which would need Meta re-approval).
   const ageSex = await clientAgeSexLabel(order.client_id);
   const nameField = ageSex ? `${flat(l.full_name)} · ${ageSex}` : flat(l.full_name);
+  // {{4}} = the full itemised test list, not just the panel name — Acumen needs
+  // every marker to run. WhatsApp template params can't contain newlines, so the
+  // groups are joined with "; " on one line (panel name kept as a prefix).
+  const tests = order.includes?.length ? `${panel}: ${order.includes.join("; ")}` : panel;
   const params = [
     flat(nameField),
     flat(l.phone),
     flat(`${l.address}, ${l.pincode}`),
-    flat(`${panel}${fasting}`),
+    flat(`${tests}${fasting}`),
     flat(`${l.preferred_date}, ${slot}`),
   ];
 
