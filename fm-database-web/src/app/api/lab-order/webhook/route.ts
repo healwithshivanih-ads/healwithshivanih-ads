@@ -12,9 +12,40 @@
  */
 import { NextResponse } from "next/server";
 import crypto from "node:crypto";
+import fs from "node:fs/promises";
+import path from "node:path";
+import yaml from "js-yaml";
+import { getPlansRoot } from "@/lib/fmdb/paths";
 import { findOrderByRazorpayOrderId, loadOrder, transitionOrder, type LabOrder } from "@/lib/fmdb/lab-orders";
 
 export const dynamic = "force-dynamic";
+
+/**
+ * Age + sex label for the lab-partner alert (e.g. "42F"), read from
+ * clients/<id>/client.yaml. Age from date_of_birth, else the age_band
+ * midpoint. Best-effort: returns "" on any miss so a booking still notifies
+ * without it. Acumen wants age for reference ranges / tube selection.
+ */
+async function clientAgeSexLabel(clientId: string): Promise<string> {
+  try {
+    const raw = await fs.readFile(path.join(getPlansRoot(), "clients", clientId, "client.yaml"), "utf8");
+    const c = (yaml.load(raw) ?? {}) as Record<string, unknown>;
+    const sex = typeof c.sex === "string" ? c.sex.trim().toUpperCase().slice(0, 1) : "";
+    let age = "";
+    const dob = typeof c.date_of_birth === "string" ? c.date_of_birth.trim() : "";
+    if (dob) {
+      const y = Math.floor((Date.now() - new Date(`${dob}T00:00:00Z`).getTime()) / (365.25 * 86_400_000));
+      if (y > 0 && y < 130) age = String(y);
+    }
+    if (!age && typeof c.age_band === "string" && c.age_band.trim()) {
+      const m = c.age_band.match(/(\d+)\s*-\s*(\d+)/);
+      age = m ? String(Math.round((Number(m[1]) + Number(m[2])) / 2)) : c.age_band.trim();
+    }
+    return [age, sex].filter(Boolean).join(""); // "42F" | "42" | "F" | ""
+  } catch {
+    return "";
+  }
+}
 
 /**
  * Best-effort: ping the lab partner (Abhinav) + the coach's own + admin numbers
@@ -50,11 +81,20 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   const panel = order.lines[0]?.label ?? "Lab panel";
   const fasting = order.fasting_required ? " · fasting sample" : "";
   const slot = l.preferred_slot.replace(/_/g, " ");
+  // Include the client's age/sex on the "Client:" line (e.g. "Meghana Dighe · 42F")
+  // so Acumen has it for reference ranges. Folded into {{1}} to avoid a new
+  // template placeholder (which would need Meta re-approval).
+  const ageSex = await clientAgeSexLabel(order.client_id);
+  const nameField = ageSex ? `${flat(l.full_name)} · ${ageSex}` : flat(l.full_name);
+  // {{4}} = the full itemised test list, not just the panel name — Acumen needs
+  // every marker to run. WhatsApp template params can't contain newlines, so the
+  // groups are joined with "; " on one line (panel name kept as a prefix).
+  const tests = order.includes?.length ? `${panel}: ${order.includes.join("; ")}` : panel;
   const params = [
-    flat(l.full_name),
+    flat(nameField),
     flat(l.phone),
     flat(`${l.address}, ${l.pincode}`),
-    flat(`${panel}${fasting}`),
+    flat(`${tests}${fasting}`),
     flat(`${l.preferred_date}, ${slot}`),
   ];
 
