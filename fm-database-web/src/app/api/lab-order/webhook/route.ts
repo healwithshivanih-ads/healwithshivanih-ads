@@ -17,6 +17,14 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { findOrderByRazorpayOrderId, loadOrder, transitionOrder, type LabOrder } from "@/lib/fmdb/lab-orders";
+import { loadLabProvider } from "@/lib/fmdb/lab-providers";
+
+/** Profile id → the label for its hormone/extra test block (v3 message). */
+const HORMONE_HEADER: Record<number, string> = {
+  2: "Reproductive hormones",
+  3: "Perimenopause hormones",
+  4: "Male hormones",
+};
 
 export const dynamic = "force-dynamic";
 
@@ -97,6 +105,29 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   // Our cost = what Acumen invoices us (order.our_cost_inr — profile cost + any
   // add-ons at 50% of catalogue). NOT the client MRP; Acumen never sees margin.
   const ourCost = `₹${(order.our_cost_inr ?? 0).toLocaleString("en-IN")}`;
+
+  // v3 (fm_lab_booking_v3): the readable layout — bold labels + the tests split
+  // into a Base-panel block and a hormones/add-ons block (bullet " · " within
+  // each; true per-test line breaks aren't allowed inside a param). Split by
+  // matching against the Base profile's includes from the catalogue.
+  const provider = await loadLabProvider();
+  const baseIncludes = new Set(provider?.profiles.find((p) => p.id === 1)?.includes ?? []);
+  const allTests = order.includes?.length ? order.includes : [panel];
+  const baseTests = baseIncludes.size ? allTests.filter((t) => baseIncludes.has(t)) : allTests;
+  const extraTests = baseIncludes.size ? allTests.filter((t) => !baseIncludes.has(t)) : [];
+  const groupHeader = (order.profile_id != null && HORMONE_HEADER[order.profile_id]) || "Hormones & add-ons";
+  const collectionLine = `${l.preferred_date}, ${slot}${order.fasting_required ? " · fasting" : ""}`;
+  const v3Params = [
+    flat(nameField),                        // {{1}} Client (name · age/sex)
+    flat(l.phone),                          // {{2}} Phone
+    flat(packageName),                      // {{3}} Package (Base + <profile>)
+    flat(ourCost),                          // {{4}} Our cost (to Acumen)
+    flat(baseTests.join(" · ")) || "—",     // {{5}} Base panel markers
+    flat(groupHeader),                      // {{6}} hormones/add-ons block header
+    flat(extraTests.join(" · ")) || "—",    // {{7}} hormones/add-ons markers
+    flat(collectionLine),                   // {{8}} Collection (+ fasting)
+    flat(`${l.address}, ${l.pincode}`),     // {{9}} Address
+  ];
   // v2 (fm_lab_booking_v2): clean labelled lines incl. Package + Our cost.
   // Params can't contain newlines, so the test list is one "; "-joined line.
   const v2Params = [
@@ -150,11 +181,12 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
     }
   };
 
-  // Prefer the richer v2; fall back to v1 until v2 is approved on Meta.
+  // Prefer the richest approved template; fall back down the chain so a send
+  // never fails just because a newer template is still pending Meta approval.
   const sendTo = async (to: string): Promise<void> => {
-    if (!(await postTemplate(to, "fm_lab_booking_v2", v2Params))) {
-      await postTemplate(to, "fm_lab_booking_v1", v1Params);
-    }
+    if (await postTemplate(to, "fm_lab_booking_v3", v3Params)) return;
+    if (await postTemplate(to, "fm_lab_booking_v2", v2Params)) return;
+    await postTemplate(to, "fm_lab_booking_v1", v1Params);
   };
 
   // Independent sends — one bad number never blocks the others (or the webhook).
