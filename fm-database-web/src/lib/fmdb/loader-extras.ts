@@ -1662,8 +1662,11 @@ export async function getClientHealthSignals(
         /* no sessions dir — newer client */
       }
 
-      // Coach edits to client facts → contact (newest dated health_snapshot or
-      // measurements.measured_on).
+      // Coach edits to client facts → contact. Weight/measurement updates land
+      // in measurements_log (the weight editor's target — this is where the
+      // coach's "updated Geetika's weight" went); labs land in health_snapshots;
+      // measurements.measured_on is the profile bio block. Count the newest of
+      // all three.
       const dataDates: string[] = [];
       const hs = data.health_snapshots as Array<Record<string, unknown>> | undefined;
       if (Array.isArray(hs)) {
@@ -1671,6 +1674,10 @@ export async function getClientHealthSignals(
           const d = (s as { date?: unknown })?.date;
           if (typeof d === "string") dataDates.push(d);
         }
+      }
+      for (const e of log) {
+        const d = (e as { date?: unknown })?.date;
+        if (typeof d === "string") dataDates.push(d);
       }
       const meas = data.measurements as { measured_on?: unknown } | undefined;
       if (meas && typeof meas.measured_on === "string") dataDates.push(meas.measured_on);
