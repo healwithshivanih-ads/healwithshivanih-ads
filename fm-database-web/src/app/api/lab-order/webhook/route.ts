@@ -86,6 +86,13 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   // template placeholder (which would need Meta re-approval).
   const ageSex = await clientAgeSexLabel(order.client_id);
   const nameField = ageSex ? `${flat(l.full_name)} · ${ageSex}` : flat(l.full_name);
+  // The gender/age profiles (ids 2–4) are "Base panel + <profile>" — the Base
+  // panel is always included — so label the package that way for Acumen (e.g.
+  // "Base + Perimenopause"). Base itself (id 1) and add-on-only orders stay as-is.
+  const packageName =
+    order.profile_id === 1 ? "Base Panel"
+    : order.profile_id != null ? `Base + ${panel}`
+    : panel;
   const listText = order.includes?.length ? order.includes.join("; ") : panel;
   // Our cost = what Acumen invoices us (order.our_cost_inr — profile cost + any
   // add-ons at 50% of catalogue). NOT the client MRP; Acumen never sees margin.
@@ -95,7 +102,7 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   const v2Params = [
     flat(nameField),                        // {{1}} Client (name · age/sex)
     flat(l.phone),                          // {{2}} Phone
-    flat(panel),                            // {{3}} Package
+    flat(packageName),                      // {{3}} Package (Base + <profile>)
     flat(`${listText}${fasting}`),          // {{4}} Tests (full itemised list)
     flat(ourCost),                          // {{5}} Our cost (to Acumen)
     flat(`${l.address}, ${l.pincode}`),     // {{6}} Address
@@ -107,7 +114,7 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
     flat(nameField),
     flat(l.phone),
     flat(`${l.address}, ${l.pincode}`),
-    flat(`${panel}: ${listText}${fasting}`),
+    flat(`${packageName}: ${listText}${fasting}`),
     flat(`${l.preferred_date}, ${slot}`),
   ];
 
