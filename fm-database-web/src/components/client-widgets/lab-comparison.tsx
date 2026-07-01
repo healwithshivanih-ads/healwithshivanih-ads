@@ -9,8 +9,9 @@
 
 import { useState } from "react";
 import type { Client } from "@/lib/fmdb/types";
+import { collectMeasurementSnapshots, type UnifiedSnapshot } from "@/lib/fmdb/measurements";
 
-type Snapshot = NonNullable<Client["health_snapshots"]>[number];
+type Snapshot = UnifiedSnapshot;
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -110,9 +111,9 @@ function DeltaCell({ numA, numB, lowerIsBetter }: { numA: number | null; numB: n
 // ── Main component ─────────────────────────────────────────────────────────────
 
 export function LabComparison({ client }: { client: Client }) {
-  const snapshots: Snapshot[] = [...(client.health_snapshots ?? [])].sort(
-    (a, b) => b.date.localeCompare(a.date)          // newest first for dropdowns
-  );
+  // Union of all three measurement stores (incl. coach weight-log) + labs.
+  const snapshots: Snapshot[] = collectMeasurementSnapshots(client)
+    .reverse(); // newest first for dropdowns (reader returns ascending)
 
   const [idxA, setIdxA] = useState(0);
   const [idxB, setIdxB] = useState(Math.min(1, snapshots.length - 1));

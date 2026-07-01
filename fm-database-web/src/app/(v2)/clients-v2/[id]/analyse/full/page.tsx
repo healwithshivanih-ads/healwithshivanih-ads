@@ -20,6 +20,7 @@
  */
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans, loadAllOfKind } from "@/lib/fmdb/loader";
+import { latestMeasurements } from "@/lib/fmdb/measurements";
 import type { Symptom, Topic } from "@/lib/fmdb/types";
 import { AnalysePageShell } from "../analyse-page-shell";
 import { FmPageHeader } from "@/components/fm";
@@ -142,18 +143,11 @@ export default async function FullAssessmentPage({
     }))
     .filter((p) => p.session_id);
 
-  // Body comp — same merge logic the Overview uses (snapshot + flat).
+  // Body comp — canonical reader unions health_snapshots + measurements_log
+  // (coach weight editor) + flat bio, so coach-logged weights reach the AI too.
   const flatMeas = (c.measurements as Record<string, unknown> | undefined) ?? {};
-  const snaps =
-    (c.health_snapshots as Array<{
-      date?: string;
-      measurements?: Record<string, unknown>;
-    }> | undefined) ?? [];
   const latestSnapMeas =
-    snaps
-      .filter((sn) => sn.measurements && Object.keys(sn.measurements).length > 0)
-      .sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""))
-      .pop()?.measurements ?? {};
+    (latestMeasurements(c as Parameters<typeof latestMeasurements>[0])?.measurements as Record<string, unknown>) ?? {};
 
   function bc(snapKey: string, flatKey?: string): number | undefined {
     return (

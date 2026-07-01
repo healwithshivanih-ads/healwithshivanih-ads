@@ -16,6 +16,7 @@
 import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
+import { latestMeasurements } from "@/lib/fmdb/measurements";
 import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { HandoffActions, HandoffNote } from "./handoff-print";
 
@@ -119,14 +120,11 @@ export default async function HandoffPage({
   const familyHistory = (c.family_history as string | undefined) ?? "";
   const goals = asStrArr(c.goals);
 
-  // Body comp — latest snapshot first, fall back to flat client.measurements
+  // Body comp — canonical reader unions health_snapshots + measurements_log
+  // (coach weight editor) + flat bio, so a coach-logged weight shows here too.
   const flatMeas = (c.measurements as Record<string, unknown> | undefined) ?? {};
-  const snaps =
-    (c.health_snapshots as Array<{ date?: string; measurements?: Record<string, unknown> }> | undefined) ?? [];
-  const latestSnap = snaps
-    .filter((s) => s.measurements && Object.keys(s.measurements).length > 0)
-    .sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""))
-    .pop()?.measurements ?? {};
+  const latestSnap =
+    (latestMeasurements(c as Parameters<typeof latestMeasurements>[0])?.measurements as Record<string, unknown>) ?? {};
   const num = (k: string, alt?: string): number | undefined => {
     const v = latestSnap[k] ?? flatMeas[k] ?? (alt ? flatMeas[alt] : undefined);
     return typeof v === "number" && !Number.isNaN(v) ? v : undefined;

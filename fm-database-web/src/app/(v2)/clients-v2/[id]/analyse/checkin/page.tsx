@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { latestMeasurements } from "@/lib/fmdb/measurements";
 import { FmPageHeader } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
 import {
@@ -48,73 +49,21 @@ export default async function CheckInPage({
   // health_snapshot with any measurements → legacy flat .measurements
   // dict on client.yaml.
   const clientAny = client as Record<string, unknown>;
-  let previousMeasurements: PreviousMeasurementSnapshot | null = null;
-  const log = clientAny.measurements_log as
-    | Array<Record<string, unknown>>
-    | undefined;
-  if (Array.isArray(log) && log.length > 0) {
-    const sorted = [...log].sort((a, b) => {
-      const da = String(a.date ?? "");
-      const db = String(b.date ?? "");
-      return db.localeCompare(da);
-    });
-    const latest = sorted[0];
-    previousMeasurements = {
-      date: latest.date as string | undefined,
-      weight_kg: latest.weight_kg as number | undefined,
-      waist_cm: latest.waist_cm as number | undefined,
-      hip_cm: latest.hip_cm as number | undefined,
-      bp_systolic: latest.blood_pressure_systolic as number | undefined,
-      bp_diastolic: latest.blood_pressure_diastolic as number | undefined,
-      hr_bpm: latest.resting_heart_rate as number | undefined,
-    };
-  }
-  if (!previousMeasurements) {
-    const snapshots = clientAny.health_snapshots as
-      | Array<Record<string, unknown>>
-      | undefined;
-    if (Array.isArray(snapshots) && snapshots.length > 0) {
-      // Sort by date desc, pick first one with non-empty measurements
-      const sorted = [...snapshots].sort((a, b) =>
-        String(b.date ?? "").localeCompare(String(a.date ?? "")),
-      );
-      for (const snap of sorted) {
-        const m = (snap.measurements ?? {}) as Record<string, unknown>;
-        const hasAny =
-          m.weight_kg != null ||
-          m.waist_cm != null ||
-          m.hip_cm != null ||
-          m.bp_systolic != null ||
-          m.hr_bpm != null;
-        if (hasAny) {
-          previousMeasurements = {
-            date: snap.date as string | undefined,
-            weight_kg: m.weight_kg as number | undefined,
-            waist_cm: m.waist_cm as number | undefined,
-            hip_cm: m.hip_cm as number | undefined,
-            bp_systolic: m.bp_systolic as number | undefined,
-            bp_diastolic: m.bp_diastolic as number | undefined,
-            hr_bpm: m.hr_bpm as number | undefined,
-          };
-          break;
-        }
+  // Canonical reader unions all three stores (measurements_log = coach weight
+  // editor, health_snapshots = app/labs, flat bio) with field-level merge, so
+  // the newest value of each field surfaces regardless of which store it's in.
+  const _lm = latestMeasurements(client as Parameters<typeof latestMeasurements>[0]);
+  const previousMeasurements: PreviousMeasurementSnapshot | null = _lm
+    ? {
+        date: _lm.date,
+        weight_kg: _lm.measurements.weight_kg,
+        waist_cm: _lm.measurements.waist_cm,
+        hip_cm: _lm.measurements.hip_cm,
+        bp_systolic: _lm.measurements.bp_systolic,
+        bp_diastolic: _lm.measurements.bp_diastolic,
+        hr_bpm: _lm.measurements.hr_bpm,
       }
-    }
-  }
-  if (!previousMeasurements) {
-    const m = clientAny.measurements as Record<string, unknown> | undefined;
-    if (m) {
-      previousMeasurements = {
-        date: m.measured_on as string | undefined,
-        weight_kg: m.weight_kg as number | undefined,
-        waist_cm: m.waist_cm as number | undefined,
-        hip_cm: m.hip_cm as number | undefined,
-        bp_systolic: m.blood_pressure_systolic as number | undefined,
-        bp_diastolic: m.blood_pressure_diastolic as number | undefined,
-        hr_bpm: m.resting_heart_rate as number | undefined,
-      };
-    }
-  }
+    : null;
 
   // Protein focus — show the protein-intake check-in question only for
   // cohorts where protein is a priority: vegetarian/vegan (non-meat

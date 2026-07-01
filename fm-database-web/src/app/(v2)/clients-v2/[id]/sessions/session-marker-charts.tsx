@@ -24,6 +24,7 @@ import {
 // Next 16 forbids server components from invoking functions exported by
 // a "use client" file (the function becomes a client-reference proxy).
 import { pickDefaultMarkers } from "./marker-defaults";
+import { collectMeasurementSnapshots } from "@/lib/fmdb/measurements";
 
 const DEFAULT_CAP = 6;
 
@@ -99,9 +100,9 @@ export async function SessionMarkerCharts({
   client,
   cap = DEFAULT_CAP,
 }: SessionMarkerChartsProps) {
-  const snapshots = (client.health_snapshots ?? [])
-    .slice()
-    .sort((a, b) => a.date.localeCompare(b.date));
+  // Union of all three measurement stores (incl. coach weight-log) — see
+  // src/lib/fmdb/measurements.ts. Already ascending by date.
+  const snapshots = collectMeasurementSnapshots(client);
 
   // Build series map: key → list of points
   const series = new Map<string, { date: string; value: number }[]>();
