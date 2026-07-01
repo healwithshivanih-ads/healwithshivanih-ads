@@ -9,8 +9,7 @@ import {
   type CatalogueLabRange,
 } from "@/lib/server-actions/clients";
 import { rangeStatus, findCatalogueLabTest } from "@/lib/fmdb/lab-vault";
-
-type Snapshot = NonNullable<Client["health_snapshots"]>[number];
+import { collectMeasurementSnapshots } from "@/lib/fmdb/measurements";
 
 // ─── SVG sparkline ────────────────────────────────────────────────────────────
 
@@ -178,9 +177,10 @@ export function HealthTrends({ client }: { client: Client }) {
     loadLabTestsCatalogueAction().then(setLabCatalogue).catch(() => {});
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [(client as { client_id?: string }).client_id]);
-  const snapshots: Snapshot[] = (client.health_snapshots ?? []).sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
+  // Union of health_snapshots + measurements_log (coach weight editor) + flat
+  // bio, ascending by date, canonical keys — so coach-logged weights/measures
+  // show in the trends, not just client-app / lab snapshots.
+  const snapshots = collectMeasurementSnapshots(client);
 
   if (snapshots.length === 0) return null;
 
