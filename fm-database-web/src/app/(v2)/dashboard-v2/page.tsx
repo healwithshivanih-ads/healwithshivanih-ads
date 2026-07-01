@@ -541,7 +541,7 @@ export default async function DashboardV2() {
   // shape, ~30% faster dashboard render.
   const allClientIds = (clients as ClientRow[]).map((c) => c.client_id);
   const {
-    dormant: dormantClients,
+    dormant: dormantClientsRaw,
     plateaued: plateauedClients,
     regressed: regressedClients,
   } = await getClientHealthSignals(allClientIds, {
@@ -659,6 +659,12 @@ export default async function DashboardV2() {
     declined: [],
   } as Record<SignalKind, TriageRow[]>;
   for (const r of rows) grouped[r.signal.kind].push(r);
+
+  // Don't flag a not-yet-started client as "silent 14d" — they're in the
+  // awaiting_start bucket, not active care. Filters both the dormant banner
+  // and the dormantIds passed to practice-overview. (Coach ask 2026-07-01.)
+  const awaitingStartIds = new Set(grouped.awaiting_start.map((r) => r.client_id));
+  const dormantClients = dormantClientsRaw.filter((d) => !awaitingStartIds.has(d.client_id));
 
   // ── Booking-link-pending overlay ─────────────────────────────────────
   // Reads ~/fm-plans/_calcom_send_log.yaml: clients who got a cal.com
