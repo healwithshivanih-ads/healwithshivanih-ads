@@ -63,7 +63,15 @@ export async function POST(req: NextRequest) {
   const nowIst = new Date(Date.now() + 5.5 * 60 * 60 * 1000);
   const isApprovalDay = nowIst.getUTCDay() === 1;
 
-  const appUrl = (process.env.APP_URL || "http://localhost:3002").replace(/\/$/, "");
+  // Links go in an EMAIL the coach opens on her phone, so they must be the
+  // PUBLIC coach URL (cloudflared → fmcoach.shivanihari.com), NOT APP_URL
+  // (localhost, which the cron uses for its internal calls) and NOT
+  // NEXT_PUBLIC_APP_URL (that's the Fly intake host, which 404s coach routes).
+  const appUrl = (
+    process.env.COACH_PUBLIC_URL ||
+    process.env.APP_URL ||
+    "http://localhost:3002"
+  ).replace(/\/$/, "");
   const named = await Promise.all(
     actionable.map(async (r) => [r.clientId, await displayName(r.clientId)] as const),
   );
@@ -153,6 +161,7 @@ export async function POST(req: NextRequest) {
     ok: true,
     sent: 1,
     to,
+    base: appUrl,
     queued: count,
     ready: ready.length,
     attention: attention.length,
