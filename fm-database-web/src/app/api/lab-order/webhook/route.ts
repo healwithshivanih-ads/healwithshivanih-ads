@@ -86,19 +86,32 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   // template placeholder (which would need Meta re-approval).
   const ageSex = await clientAgeSexLabel(order.client_id);
   const nameField = ageSex ? `${flat(l.full_name)} · ${ageSex}` : flat(l.full_name);
-  // {{4}} = the full itemised test list, not just the panel name — Acumen needs
-  // every marker to run. WhatsApp template params can't contain newlines, so the
-  // groups are joined with "; " on one line (panel name kept as a prefix).
-  const tests = order.includes?.length ? `${panel}: ${order.includes.join("; ")}` : panel;
-  const params = [
+  const listText = order.includes?.length ? order.includes.join("; ") : panel;
+  // Our cost = what Acumen invoices us (order.our_cost_inr — profile cost + any
+  // add-ons at 50% of catalogue). NOT the client MRP; Acumen never sees margin.
+  const ourCost = `₹${(order.our_cost_inr ?? 0).toLocaleString("en-IN")}`;
+  // v2 (fm_lab_booking_v2): clean labelled lines incl. Package + Our cost.
+  // Params can't contain newlines, so the test list is one "; "-joined line.
+  const v2Params = [
+    flat(nameField),                        // {{1}} Client (name · age/sex)
+    flat(l.phone),                          // {{2}} Phone
+    flat(panel),                            // {{3}} Package
+    flat(`${listText}${fasting}`),          // {{4}} Tests (full itemised list)
+    flat(ourCost),                          // {{5}} Our cost (to Acumen)
+    flat(`${l.address}, ${l.pincode}`),     // {{6}} Address
+    flat(`${l.preferred_date}, ${slot}`),   // {{7}} Preferred collection
+  ];
+  // v1 (fm_lab_booking_v1): the original 5-field message — fallback while v2 is
+  // awaiting Meta approval, so a booking is never left un-notified.
+  const v1Params = [
     flat(nameField),
     flat(l.phone),
     flat(`${l.address}, ${l.pincode}`),
-    flat(`${tests}${fasting}`),
+    flat(`${panel}: ${listText}${fasting}`),
     flat(`${l.preferred_date}, ${slot}`),
   ];
 
-  const sendTo = async (to: string): Promise<void> => {
+  const postTemplate = async (to: string, templateName: string, templateParams: string[]): Promise<boolean> => {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 6000);
     try {
@@ -108,9 +121,9 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
         body: JSON.stringify({
           phone: to,
           type: "template",
-          templateName: "fm_lab_booking_v1",
+          templateName,
           templateLanguage: "en",
-          templateParams: params,
+          templateParams,
           origin: "api",
           originRef: "lab-booking",
         }),
@@ -118,12 +131,22 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
       });
       if (!res.ok) {
         const detail = await res.text().catch(() => "");
-        console.error(`[lab-notify] WA send to ${to} failed HTTP ${res.status}: ${detail.slice(0, 200)}`);
+        console.error(`[lab-notify] WA ${templateName} → ${to} failed HTTP ${res.status}: ${detail.slice(0, 200)}`);
+        return false;
       }
+      return true;
     } catch (e) {
-      console.error(`[lab-notify] WA send to ${to} threw:`, (e as Error).message);
+      console.error(`[lab-notify] WA ${templateName} → ${to} threw:`, (e as Error).message);
+      return false;
     } finally {
       clearTimeout(timer);
+    }
+  };
+
+  // Prefer the richer v2; fall back to v1 until v2 is approved on Meta.
+  const sendTo = async (to: string): Promise<void> => {
+    if (!(await postTemplate(to, "fm_lab_booking_v2", v2Params))) {
+      await postTemplate(to, "fm_lab_booking_v1", v1Params);
     }
   };
 

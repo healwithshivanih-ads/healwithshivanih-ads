@@ -156,9 +156,10 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
         catalogueInr: cat,
         // Acumen bills us 50% of catalogue (final deal). Round to whole rupees.
         ourCostInr: cat != null ? Math.round(cat * 0.5) : null,
-        // Client price intentionally null — pending the coach's add-on margin
-        // decision (see spec "Open decisions"). Not bookable in-app until set.
-        clientInr: null,
+        // Client pays the full Acumen catalogue price for add-ons (coach rule
+        // 2026-07-01) → we keep the 50% margin. Null when no catalogue price is on
+        // file (e.g. DHEA-S / total testosterone / CEA) → not bookable until priced.
+        clientInr: cat,
       };
     })
     .filter((a) => a.slug);
