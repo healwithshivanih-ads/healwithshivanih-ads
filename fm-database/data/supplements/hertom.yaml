@@ -1,0 +1,99 @@
+slug: hertom
+display_name: HerTOM (HerPulse — For that Time Of Month)
+aliases:
+- her-tom
+- hertom-tea
+- hertom-herbal-infusion
+category: herb
+forms_available:
+- powder
+typical_dose_range: {}
+timing_options:
+- morning
+- evening
+take_with_food: optional
+linked_to_topics:
+- premenstrual-syndrome
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_claims: []
+notes_for_coach: 'Branded herbal-infusion (tea sachet) product from HerPulse, affiliate
+  tie-up 2026-07. Age range per vendor: 12–50. Best fit: clients whose primary complaint
+  is period pain/cramps, acne flaring before/after periods, mood disturbance before/during
+  periods, or breast tenderness/bloating — i.e. classic PMS/dysmenorrhoea, not the
+  broader hormone-imbalance picture (that''s HerSantulan).
+
+  Ingredients: Cordyceps Militaris, Reishi, Spearmint, Licorice, Ashoka, Hibiscus.
+  Vendor mechanism claim: active ingredient adenosine acts as a muscle relaxant/vasodilator,
+  said to ease back/thigh pain and cramps within a few hours and improve blood flow
+  (lowering cramps, anxiety and acne on period days). This is a proprietary blend
+  — exact mg breakdown is not disclosed (vendor cites FSSAI RDA-limit compliance only).
+  Treat as fm_specific_thin: a single uncontrolled 60-day self-report study (150 women)
+  plus general ingredient-level literature (adenosine, licorice, hibiscus) — not a
+  trial of the finished product.
+
+  Dosing (vendor): 1 sachet/day, up to 3 sachets/day depending on symptom severity.
+  Vendor''s own study protocol used it for 7 days per cycle (2 days before + 5 days
+  during periods); daily year-round use is not the studied pattern — frame it to
+  clients as a cycle-timed period-support tea, not a daily supplement.
+
+  SAFETY (from vendor safety sheet): contraindicated in pregnancy and lactation.
+  Do NOT combine with any hormonal birth control / OCP — many PMS/dysmenorrhoea
+  clients are on an OCP for period regulation, so screen for this before suggesting.
+  Clients on blood pressure medication should consult their prescribing doctor first.
+  Not for anyone with a known mushroom allergy (Cordyceps, Reishi) or allergy to
+  any other listed ingredient. Vendor product claim language: "not intended to treat,
+  cure, or prevent any disease" — position as a comfort/lifestyle support tea, not
+  a treatment for underlying PMS pathology.
+
+  Affiliate purchase link (coach account): https://www.herpulse.in/product/hertom-for-periods/aff/106/'
+notes_for_client: A warm herbal tea (Cordyceps, Reishi, licorice, hibiscus and more)
+  many women sip in the days around their period to help ease cramps, back/thigh
+  pain, bloating and mood dips. Not a medicine — a comfort ritual alongside your
+  usual period-care habits.
+evidence_tier: fm_specific_thin
+contraindications:
+  conditions:
+  - pregnancy — vendor safety review states contraindicated
+  - lactation/breastfeeding — vendor safety review states contraindicated
+  - known allergy to mushrooms (Cordyceps militaris, Reishi) or any other listed
+    ingredient (spearmint, licorice, ashoka, hibiscus)
+  medications:
+  - hormonal birth control / oral contraceptive pills — vendor safety guidance says
+    do not combine (OCP, combined-oral-contraceptive, progestin-only-pill, mini-pill,
+    e.g. Novelon, Yasmin, Krimson, Mala-D, Femilon, Microgynon, Diane-35, Depo-Provera)
+  - blood pressure / antihypertensive medication — vendor safety guidance says consult
+    prescribing doctor before use (beta-blockers e.g. metoprolol, atenolol, propranolol,
+    bisoprolol, Concor; ACE inhibitors/ARBs e.g. enalapril, ramipril, losartan, telmisartan,
+    Cardace, Telma; thiazide diuretics e.g. hydrochlorothiazide, indapamide)
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Vendor safety review states the product is contraindicated
+  throughout pregnancy and while lactating/breastfeeding.
+sources:
+- id: herpulse-product-presentations
+  location: HerPulse Introduction Presentation — HerTOM (product support, key ingredients,
+    dosages)
+  quote: 'Active Ingredient Adenosine is a known muscle relaxant, a vasodilator.
+    It helps lower back, thigh pains and cramps experienced during periods... 1
+    Sachet/Day can be given up to 3 sachet/day depending on the symptoms.'
+- id: herpulse-product-presentations
+  location: Symptoms & HerPulse Products — Primary Symptoms mapping table
+  quote: 'Primary Symptoms: Pre-Menstrual Syndrome (12–50) → HerTOM: Period Pain/Cramps,
+    Acne before and after periods, Mood disturbance before/during periods, Breast
+    tenderness/bloating.'
+- id: herpulse-product-presentations
+  location: Product Presentation With Safety Information — Ingredient Dosages, Contradictions
+    & Interaction guidance
+  quote: Our product is contraindicated for Pregnant & Lactating women... Products
+    should not be combined with any type of Birth Control Pills... patients on e.g.,
+    blood pressure medication consult their doctor before use.
+version: 1
+status: active
+updated_at: '2026-07-01'
+updated_by: shivani

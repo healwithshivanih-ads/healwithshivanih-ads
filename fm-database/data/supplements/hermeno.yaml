@@ -1,0 +1,122 @@
+slug: hermeno
+display_name: HerMeno (HerPulse — For Changes before the Change)
+aliases:
+- her-meno
+- hermeno-tea
+- hermeno-herbal-infusion
+category: herb
+forms_available:
+- powder
+typical_dose_range: {}
+timing_options:
+- morning
+take_with_food: optional
+linked_to_topics:
+- perimenopause
+- perimenopause-and-menopause
+- menopause
+linked_to_mechanisms:
+- estrogen-decline
+- low-progesterone
+- hpa-axis-dysregulation
+linked_to_claims: []
+notes_for_coach: 'Branded herbal-infusion (tea sachet) product from HerPulse, affiliate
+  tie-up 2026-07. Age range per vendor: >40. Best fit: peri-menopause and post-menopause
+  symptom picture — heavy or long periods, fatigue, weak/brittle bones, low sexual
+  desire, vaginal dryness, disturbed sleep, hot flashes/night sweats, mood swings,
+  fast heartbeats, sore breasts, cramping, menopausal-thyroid overlap, anxiety/depression/panic/stress
+  during the transition, hair loss during the transition. Vendor notes average Indian
+  menopausal age is trending down to ~46.2 years — flag this product earlier than
+  the >40 label might suggest for clients showing perimenopausal signs in their
+  late 30s.
+
+  Ingredients: Flax seeds (lowers hot flashes/night sweating), Turmeric (vendor
+  claims improves vaginal dryness/lowers infection), Shatavari (sexual drive), Reishi
+  (mood swings/sleep), Shitake + Cordyceps (menopausal fatigue), plus Vitamin D,
+  Zinc, Vitamin E, B12. Vendor mechanism claim: the formulation has BOTH progesterone
+  and estrogenic effect — progesterone-driven action is said to lower vasomotor
+  symptoms during perimenopause, "eventually supporting E2 (estradiol) production"
+  after menopause plus bone health. Proprietary blend — exact mg breakdown not disclosed.
+  Treat as fm_specific_thin: a single uncontrolled 60-day self-report study (150
+  women across the HerPulse product range, not HerMeno specifically — the presentation
+  doesn''t break out HerMeno''s own data) plus ingredient-level literature (flax/hot
+  flashes, shatavari, reishi).
+
+  Dosing (vendor): 1 sachet/day.
+
+  COACH-ADDED CAUTION — ESTROGENIC ACTIVITY: because the vendor itself describes
+  "both progesterone and estrogenic effect," treat with the same caution as any
+  phytoestrogen-containing product for clients with a history of estrogen-sensitive
+  conditions (oestrogen-receptor-positive breast cancer, endometriosis, adenomyosis,
+  fibroids, or an active oestrogen-dominance pattern) — confirm with the client''s
+  oncologist/gynaecologist before suggesting, this is not addressed in the vendor''s
+  own safety sheet.
+
+  SAFETY (from vendor safety sheet): contraindicated in pregnancy and lactation.
+  Do NOT combine with any hormonal birth control / OCP (relevant for perimenopausal
+  clients still on an OCP for cycle control). Clients on blood pressure medication
+  should consult their prescribing doctor first. Not for anyone with a known mushroom
+  allergy (Shiitake, Reishi, Cordyceps) or allergy to any other listed ingredient.
+  Vendor product claim language: "not intended to treat, cure, or prevent any disease."
+
+  Affiliate purchase link (coach account): https://www.herpulse.in/product/hermeno-for-menopause/aff/106/'
+notes_for_client: A daily herbal tea (flax, shatavari, turmeric, reishi, shiitake
+  and more) formulated for the changes leading up to and through menopause — hot
+  flashes, sleep, mood, vaginal dryness, bone and energy support. Not a medicine
+  — if you have any history of oestrogen-sensitive conditions (breast cancer, endometriosis,
+  fibroids), check with your specialist before starting.
+evidence_tier: fm_specific_thin
+contraindications:
+  conditions:
+  - pregnancy — vendor safety review states contraindicated
+  - lactation/breastfeeding — vendor safety review states contraindicated
+  - known allergy to mushrooms (Shiitake, Reishi, Cordyceps militaris) or any other
+    listed ingredient (flax seeds, turmeric, shatavari)
+  - history of oestrogen-sensitive conditions (ER-positive breast cancer, endometriosis,
+    adenomyosis, fibroids, active oestrogen-dominance pattern) — coach-added caution,
+    not in vendor safety sheet, because the vendor describes an estrogenic effect;
+    confirm with client's oncologist/gynaecologist first
+  medications:
+  - hormonal birth control / oral contraceptive pills — vendor safety guidance says
+    do not combine (OCP, combined-oral-contraceptive, progestin-only-pill, mini-pill,
+    e.g. Novelon, Yasmin, Krimson, Mala-D, Femilon, Microgynon, Diane-35, Depo-Provera)
+  - blood pressure / antihypertensive medication — vendor safety guidance says consult
+    prescribing doctor before use (beta-blockers e.g. metoprolol, atenolol, propranolol,
+    bisoprolol, Concor; ACE inhibitors/ARBs e.g. enalapril, ramipril, losartan, telmisartan,
+    Cardace, Telma; thiazide diuretics e.g. hydrochlorothiazide, indapamide)
+  life_stages:
+  - perimenopause/menopause is the intended use window (>40 per vendor, though coach
+    may consider earlier for clients showing perimenopausal signs)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Vendor safety review states the product is contraindicated
+  throughout pregnancy and while lactating/breastfeeding.
+sources:
+- id: herpulse-product-presentations
+  location: HerPulse Introduction Presentation — HerMeno (product support, key ingredients,
+    dosages)
+  quote: 'Formulations have both progesterone and estrogenic effect. Progesterone
+    driven action gives a quick support to females by lowering the vasomotor symptoms
+    during perimenopause and eventually supporting E2 production after menopause
+    and ensuring good bone health.'
+- id: herpulse-product-presentations
+  location: Symptoms & HerPulse Products — Primary Symptoms mapping table
+  quote: 'Primary Symptoms: Peri-Menopause & Post-Menopause (>40) → HerMeno: Heavy
+    Periods, Long duration of periods, Fatigue, Weak & Brittle bones, Low Sexual
+    desire, Vaginal dryness, Disturbed Sleep Pattern, Hot flashes/Night Sweat, Mood
+    Swings, Fast Heartbeats, Sore Breasts, Cramping, Menopausal Thyroid, Anxiety/Depression/Panic/Stress
+    during Menopausal transition, Loss of hair during Menopausal transition.'
+- id: herpulse-product-presentations
+  location: Product Presentation With Safety Information — Ingredient Dosages, Contradictions
+    & Interaction guidance
+  quote: Our product is contraindicated for Pregnant & Lactating women... Products
+    should not be combined with any type of Birth Control Pills... patients on e.g.,
+    blood pressure medication consult their doctor before use.
+version: 1
+status: active
+updated_at: '2026-07-01'
+updated_by: shivani

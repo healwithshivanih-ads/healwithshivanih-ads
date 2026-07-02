@@ -1,0 +1,120 @@
+slug: herthyrom
+display_name: HerThyrom (HerPulse — Natural Thyrofood for Hypothyroidism)
+aliases:
+- her-thyrom
+- herthyrom-tea
+- herthyrom-herbal-infusion
+category: herb
+forms_available:
+- powder
+typical_dose_range: {}
+timing_options:
+- morning
+take_with_food: optional
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+- thyroid-dysfunction
+linked_to_mechanisms:
+- chronic-inflammation
+- hpa-axis-dysregulation
+linked_to_claims: []
+notes_for_coach: 'Branded herbal-infusion (tea sachet) product from HerPulse, affiliate
+  tie-up 2026-07. Age range per vendor: >18. Best fit: thyroiditis / pain-inflammation
+  in the thyroid gland / weight gain attributed to autoimmune thyroid disease —
+  i.e. clients with a known or suspected Hashimoto''s/autoimmune-thyroid picture,
+  not general hormone imbalance (that''s HerSantulan).
+
+  Ingredients (labelled B6/Ca/Zn on the box, plus): Turmeric + Zinc + Cordyceps (vendor
+  claim: reduces inflammation), Reishi + Turmeric (enhances energy), Nigella Sativa
+  + B12 (supports weight management), Chamomile + Vitamin C + Zinc + Iron (lowers
+  hair fall), Licorice + Spearmint + Vitamin B12 (improves digestion). Vendor also
+  cites third-party research on medicinal-mushroom-derived products for hypothyroid/autoimmune-thyroid
+  support (not literal ingredients of this product — background rationale only).
+  Proprietary blend — exact mg breakdown not disclosed. Treat as fm_specific_thin:
+  a single uncontrolled 60-day self-report study (150 women, the slowest-responding
+  of the four HerPulse products per the vendor''s own data — thyroid symptom score
+  only reached 8.0/10 by day 46-60) plus general ingredient-level literature.
+
+  Dosing (vendor): 1 sachet/day.
+
+  IMPORTANT CLINICAL FLAG — LEVOTHYROXINE TIMING: this product contains CALCIUM
+  and IRON (both well-established levothyroxine absorption inhibitors) alongside
+  ZINC. Any client on levothyroxine (Eltroxin, Thyronorm, Synthroid, etc.) who tries
+  this MUST take it at least 4 hours apart from their thyroid medication dose —
+  this is not called out in the vendor''s own safety sheet and is a coach-added
+  caution based on well-known calcium/iron-levothyroxine pharmacology. See structured
+  interaction below.
+
+  SAFETY (from vendor safety sheet): contraindicated in pregnancy and lactation.
+  Do NOT combine with any hormonal birth control / OCP. Clients on blood pressure
+  medication should consult their prescribing doctor first. Not for anyone with
+  a known mushroom allergy (Cordyceps, Reishi) or allergy to any other listed ingredient.
+  Vendor product claim language: "not intended to treat, cure, or prevent any disease"
+  — position as adjunct support alongside standard thyroid care, never as a substitute
+  for levothyroxine or endocrinologist follow-up.
+
+  Affiliate purchase link (coach account): https://www.herpulse.in/product/herthyrom-for-thyroid/aff/106/'
+notes_for_client: A daily herbal tea (turmeric, zinc, Cordyceps, Reishi, chamomile
+  and more) formulated to sit alongside your thyroid care — support for energy,
+  hair fall and inflammation, not a replacement for your thyroid medicine. If you're
+  on levothyroxine (Eltroxin/Thyronorm), take this tea at least 4 hours apart from
+  your thyroid tablet — it contains calcium and iron which can block absorption
+  if taken too close together.
+evidence_tier: fm_specific_thin
+contraindications:
+  conditions:
+  - pregnancy — vendor safety review states contraindicated
+  - lactation/breastfeeding — vendor safety review states contraindicated
+  - known allergy to mushrooms (Cordyceps militaris, Reishi) or any other listed
+    ingredient (nigella sativa, chamomile, licorice, spearmint)
+  medications:
+  - hormonal birth control / oral contraceptive pills — vendor safety guidance says
+    do not combine (OCP, combined-oral-contraceptive, progestin-only-pill, mini-pill,
+    e.g. Novelon, Yasmin, Krimson, Mala-D, Femilon, Microgynon, Diane-35, Depo-Provera)
+  - blood pressure / antihypertensive medication — vendor safety guidance says consult
+    prescribing doctor before use (beta-blockers e.g. metoprolol, atenolol, propranolol,
+    bisoprolol, Concor; ACE inhibitors/ARBs e.g. enalapril, ramipril, losartan, telmisartan,
+    Cardace, Telma; thiazide diuretics e.g. hydrochlorothiazide, indapamide)
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine (Eltroxin, Thyronorm, Synthroid, Letrox)
+    type: space_by_hours
+    reason: Coach-added caution (not in vendor safety sheet) — product contains
+      calcium and iron, both well-documented to impair levothyroxine absorption
+      if taken concurrently. Separate dosing by at least 4 hours.
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Vendor safety review states the product is contraindicated
+  throughout pregnancy and while lactating/breastfeeding.
+sources:
+- id: herpulse-product-presentations
+  location: HerPulse Introduction Presentation — HerThyrom (product support, key
+    ingredients, dosages)
+  quote: 'Turmeric + Zinc + Cordyceps: Helps reduce inflammation. Reishi + Turmeric:
+    Enhances energy levels. Nigella Sativa + B12: Support weight management. Chamomile
+    + Vit C + Zinc + Iron: Helps lower hair fall. Licorice + spearmint + Vit. B12:
+    Helps Improves digestion.'
+- id: herpulse-product-presentations
+  location: Symptoms & HerPulse Products — Primary Symptoms mapping table
+  quote: 'Primary Symptoms: Auto-Immune Thyroid (>18) → HerThyrom: Thyroditis, Pain/Inflammmation
+    in Thyroid gland, Weight Gain due to Auto-Immune Thyroid.'
+- id: herpulse-product-presentations
+  location: Product Presentation With Safety Information — Product study results
+    based on 60 days usage by 150 females
+  quote: 'Pure Thyroid Symtoms — Day 1-15: 2.4, Day 16-30: 2.0, Day 31-45: 7.0, Day
+    46-60: 8.0 (Average Rating 1 to 10)... Hormonal care, Thyroid care symptoms take
+    a longer time to show results in comparison to other female problems in study.'
+- id: herpulse-product-presentations
+  location: Product Presentation With Safety Information — Ingredient Dosages, Contradictions
+    & Interaction guidance
+  quote: Our product is contraindicated for Pregnant & Lactating women... Products
+    should not be combined with any type of Birth Control Pills... patients on e.g.,
+    blood pressure medication consult their doctor before use.
+version: 1
+status: active
+updated_at: '2026-07-01'
+updated_by: shivani

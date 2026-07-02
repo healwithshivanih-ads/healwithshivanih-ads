@@ -14,7 +14,26 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.74 (current)** — Medications as a first-class three-axis entity + drug-driven plan/letter/intake guardrails.
+**v0.75 (current)** — HerPulse herbal-tea affiliate tie-up (women's hormone health) added to the supplement catalogue.
+
+New affiliate partnership (started 2026-07-01): 4 branded herbal-infusion products from HerPulse (Biocredence), each added as a first-class `Supplement` catalogue entry so they surface in AI plan suggestions, the plan editor's interaction checker, and client letters like any other supplement:
+
+- **`hertom`** — cycle-timed PMS/period-pain tea (Cordyceps, Reishi, spearmint, licorice, ashoka, hibiscus). Age 12–50. Vendor claim: adenosine content eases cramps/back-thigh pain within hours. Dose 1–3 sachets/day, studied as a 7-day-per-cycle course (2 days before + 5 days during periods), not a year-round daily habit.
+- **`hersantulan`** — daily hormone-balance tea for PCOD/PCOS, irregular/heavy periods, acne, unwanted hair, hair thinning, infertility. Age 18–45. Vendor claims: improves insulin resistance, inhibits 5-alpha-reductase/DHT conversion, supports IVF oocyte quality and progesterone. 1 sachet/day.
+- **`herthyrom`** — autoimmune-thyroid support tea (turmeric/zinc/Cordyceps for inflammation, Reishi/turmeric for energy, nigella sativa/B12 for weight, chamomile/vit C/zinc/iron for hair fall, licorice/spearmint/B12 for digestion). Age >18. 1 sachet/day. **Contains calcium + iron** — coach-added caution (not in vendor material) to separate dosing from levothyroxine by 4+ hours, since both minerals are well-documented absorption blockers.
+- **`hermeno`** — peri-/post-menopause tea (flax, turmeric, shatavari, Reishi, shiitake+Cordyceps, D/Zn/E/B12). Age >40. Vendor describes both progesterone and estrogenic activity. Coach-added caution (not in vendor material): confirm with client's oncologist/gynaecologist before use in anyone with a history of oestrogen-sensitive conditions (ER+ breast cancer, endometriosis, fibroids).
+
+All 4 are proprietary blends — vendor does not disclose per-ingredient mg breakdown (FSSAI RDA-compliant only), so `typical_dose_range` is intentionally left empty (`{}`) per existing catalogue convention for undisclosed-dose herbs; dosing instructions live in `notes_for_coach` instead. `evidence_tier: fm_specific_thin` throughout — backing is a single uncontrolled 60-day self-report study (150 women) plus ingredient-level literature, not a trial of the finished product. New `Source` entry `herpulse-product-presentations` (source_type `other`, quality `low`) cites the 3 vendor PDFs.
+
+**Safety (from vendor's own safety sheet, applied to all 4 products):** contraindicated in pregnancy and lactation (`pregnancy_safety`/`lactation_safety` set to `contraindicated` on all 4, so the existing `PregnancySafetyPanel` auto-flags them); must not be combined with hormonal birth control / OCPs; clients on blood-pressure medication should consult their prescribing doctor; not for anyone with a mushroom allergy (Cordyceps/Reishi/Shiitake) or allergy to any listed ingredient. The OCP and BP-medication `contraindications.medications` text reuses the existing brand-alias lists from `data/drug_depletions/oral-contraceptives.yaml`, `ace-inhibitors-arbs.yaml`, `beta-blockers.yaml`, and `thiazide-diuretics.yaml` so the plan editor's `checkSupplementInteractionsAction` substring-matcher actually fires against real Indian brand names a client might have on file, not just generic terms.
+
+Affiliate links added to `~/fm-plans/supplement_links.yaml` (keys `hertom` / `hersantulan` / `hermeno` / `herthyrom`, `source: custom`) with the coach's referral URLs (`/aff/106/`). HerPulse affiliate dashboard credentials were shared via email but deliberately NOT stored in any repo file — only the public referral URLs (which already carry the affiliate ID) were persisted.
+
+**Key invariant:** these are the first `Supplement` catalogue entries representing a finished branded product with an *undisclosed* proprietary blend rather than a single compound/herb — `typical_dose_range: {}` + free-text dosing instructions in `notes_for_coach` is the established pattern for this case (see also `lemon-balm.yaml`), not a validation gap.
+
+---
+
+**v0.74** — Medications as a first-class three-axis entity + drug-driven plan/letter/intake guardrails.
 
 The `DrugDepletion` catalogue entity (which already existed but only captured nutrient depletions) is extended into a **three-axis medication entity**:
 
