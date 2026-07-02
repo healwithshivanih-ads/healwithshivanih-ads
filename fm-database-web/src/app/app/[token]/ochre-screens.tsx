@@ -13,6 +13,8 @@ import { EftLaunchCard, MindBodyNudge } from "./ochre-eft";
 import { SleepLaunchCard } from "./ochre-sleep";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
+import { GrowingTree } from "./growing-tree";
+import { isGrowingTreeEnabled } from "./growing-tree-flag";
 
 // ── time-of-day phase → the one thing to focus on right now ─────────────────
 
@@ -240,6 +242,9 @@ export function TodayScreen({
   onLogAll,
   dailyDone,
   dailyTotal,
+  streak,
+  bonusBlossoms,
+  bonusFruit,
   openMeal,
   openRemedy,
   goTab,
@@ -257,6 +262,9 @@ export function TodayScreen({
   onLogAll: () => void;
   dailyDone: number;
   dailyTotal: number;
+  streak: number;
+  bonusBlossoms: number;
+  bonusFruit: number;
   openMeal: (slot: string) => void;
   openRemedy: (r: AppRemedy) => void;
   goTab: (tab: string) => void;
@@ -307,8 +315,33 @@ export function TodayScreen({
           </button>
         </div>
         <div className="rn-ring">
-          <DailyRing done={dailyDone} total={dailyTotal} size={68} />
-          <div className="rn-ring-cap">today</div>
+          {isGrowingTreeEnabled(data.clientId) ? (
+            // Small living-tree thumb; taps through to the full tree in Progress.
+            <button
+              className="rn-tree-thumb"
+              onClick={() => goTab("progress")}
+              aria-label="See your tree grow in Progress"
+            >
+              <GrowingTree
+                week={data.client.week}
+                totalWeeks={data.client.totalWeeks}
+                dailyDone={dailyDone}
+                dailyTotal={dailyTotal}
+                streak={streak}
+                bonusBlossoms={bonusBlossoms}
+                bonusFruit={bonusFruit}
+                size={108}
+              />
+              <div className="rn-ring-cap">
+                {dailyDone} of {dailyTotal} today
+              </div>
+            </button>
+          ) : (
+            <>
+              <DailyRing done={dailyDone} total={dailyTotal} size={68} />
+              <div className="rn-ring-cap">today</div>
+            </>
+          )}
         </div>
       </div>
 

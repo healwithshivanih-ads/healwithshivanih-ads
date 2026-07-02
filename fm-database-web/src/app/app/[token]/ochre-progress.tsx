@@ -11,6 +11,8 @@ import { MiniRating, ProgressArc, Section } from "./ochre-ui";
 import type { MoveEntry } from "./ochre-checkin";
 import type { JourneyItem } from "@/lib/fmdb/client-app";
 import { MsqCard } from "./ochre-msq";
+import { GrowingTree } from "./growing-tree";
+import { isGrowingTreeEnabled } from "./growing-tree-flag";
 
 // ── symptom-score hero ───────────────────────────────────────────────────────
 
@@ -317,6 +319,11 @@ export function ProgressScreen({
   moves,
   onLogMove,
   openMsq,
+  dailyDone,
+  dailyTotal,
+  streak,
+  bonusBlossoms,
+  bonusFruit,
 }: {
   goCheckin: () => void;
   onLogFeeling: () => void;
@@ -324,6 +331,11 @@ export function ProgressScreen({
   moves: MoveEntry[];
   onLogMove: () => void;
   openMsq: () => void;
+  dailyDone: number;
+  dailyTotal: number;
+  streak: number;
+  bonusBlossoms: number;
+  bonusFruit: number;
 }) {
   const data = useOchre();
   const [open, setOpen] = useState(-2);
@@ -337,6 +349,35 @@ export function ProgressScreen({
           Week {data.client.week} of {data.client.totalWeeks} — here’s how it’s going.
         </div>
       </div>
+
+      {isGrowingTreeEnabled(data.clientId) && (
+        <div className="rn-tree-hero" style={{ marginTop: 6, marginBottom: 2 }}>
+          <GrowingTree
+            week={data.client.week}
+            totalWeeks={data.client.totalWeeks}
+            dailyDone={dailyDone}
+            dailyTotal={dailyTotal}
+            streak={streak}
+            bonusBlossoms={bonusBlossoms}
+            bonusFruit={bonusFruit}
+          />
+          {streak >= 3 && (
+            <div className="rn-tree-streak">🔥 {streak}-day streak — keep it alive</div>
+          )}
+          <p className="rn-tree-note">
+            This is your tree — it grows with you. Every week it gets a little taller, and each
+            supplement, habit, and check-in you log fills it with leaves. Reach a milestone and it
+            blossoms and fruits. Show up a little each day and watch it flourish.
+          </p>
+          {data.client.startsInDays > 0 ? (
+            <div className="rn-tree-nudge">🌱 It wakes up on {data.client.startDateLabel} — that&rsquo;s your Day 1.</div>
+          ) : dailyTotal > 0 && dailyDone < dailyTotal ? (
+            <div className="rn-tree-nudge">🌿 {dailyTotal - dailyDone} more to log today — each one grows a new leaf.</div>
+          ) : dailyTotal > 0 ? (
+            <div className="rn-tree-nudge">🎉 All logged today — your tree just grew. See you tomorrow!</div>
+          ) : null}
+        </div>
+      )}
 
       <div className="card" style={{ padding: "14px 0 6px", marginTop: 12 }}>
         <ProgressArc week={data.client.week} total={data.client.totalWeeks} />

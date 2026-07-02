@@ -748,6 +748,83 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .rn-ring .daily-ring circle:last-child { stroke: #fff; }
 .rn-ring-cap { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.7); }
 
+/* ---- growing-tree centerpiece hero ---------------------------------- */
+.rn-tree-hero { display: flex; flex-direction: column; align-items: center; margin-top: 2px; }
+.rn-tree-hero .ot-tree-host { width: 100%; }
+.rn-tree-cap {
+  font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--forest); font-weight: 600; opacity: .82; margin-top: 2px;
+}
+.rn-tree-hero + .rightnow { margin-top: 10px; }
+.rn-tree-thumb {
+  background: none; border: none; padding: 0; margin: 0; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  -webkit-tap-highlight-color: transparent; transition: transform .15s;
+}
+.rn-tree-thumb:active { transform: scale(0.96); }
+.rn-tree-note {
+  max-width: 300px; text-align: center; margin: 4px auto 0;
+  font-size: 12.5px; line-height: 1.55; color: var(--muted);
+}
+.rn-tree-nudge {
+  margin: 10px auto 0; max-width: max-content; text-align: center;
+  font-size: 12.5px; font-weight: 600; color: var(--forest);
+  background: color-mix(in srgb, var(--forest) 10%, transparent);
+  padding: 7px 15px; border-radius: 999px;
+}
+.rn-tree-streak {
+  margin: 8px auto 0; max-width: max-content; text-align: center;
+  font-size: 13px; font-weight: 700; color: var(--ochre-deep);
+  background: var(--ochre-tint); padding: 7px 16px; border-radius: 999px;
+}
+
+/* ---- log-complete celebration --------------------------------------- */
+.ot-celebrate {
+  position: fixed; inset: 0; z-index: 60; pointer-events: none;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.ot-celebrate-card {
+  text-align: center; background: var(--stage-bg-top, #fdfbf7);
+  border: 1px solid var(--line, #e7e0d4); border-radius: 18px;
+  padding: 20px 26px; box-shadow: 0 18px 50px rgba(60, 50, 30, 0.18);
+  animation: ot-celebrate-pop .5s cubic-bezier(.34, 1.5, .5, 1) both,
+             ot-celebrate-fade .5s ease 2.7s forwards;
+}
+.ot-celebrate-emoji { font-size: 40px; line-height: 1; }
+.ot-celebrate-title { font-family: var(--serif); font-size: 19px; color: var(--ink); margin-top: 6px; }
+.ot-celebrate-sub { font-size: 13px; color: var(--muted); margin-top: 3px; }
+@keyframes ot-celebrate-pop { from { opacity: 0; transform: scale(.8) translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes ot-celebrate-fade { to { opacity: 0; } }
+.ot-celebrate-leaf {
+  position: absolute; top: -8%; font-size: 22px; opacity: 0;
+  animation: ot-celebrate-fall 3s ease-in forwards;
+}
+@keyframes ot-celebrate-fall {
+  0% { opacity: 0; transform: translateY(-10vh) rotate(0deg); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(85vh) rotate(220deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ot-celebrate-card { animation: ot-celebrate-fade .5s ease 2.7s forwards; }
+  .ot-celebrate-leaf { display: none; }
+}
+
+/* ---- "while you were away" welcome-back banner ---------------------- */
+.ot-welcome-back {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--ochre-tint); color: var(--ink);
+  font-size: 13px; line-height: 1.5; padding: 10px 14px;
+}
+.ot-welcome-back strong { color: var(--ochre-deep); }
+.ot-wb-see {
+  flex-shrink: 0; background: var(--ochre); color: #fff; border: none;
+  border-radius: 999px; padding: 6px 13px; font-size: 12.5px; font-weight: 600; cursor: pointer;
+}
+.ot-wb-x {
+  flex-shrink: 0; background: transparent; border: none; color: var(--muted);
+  font-size: 18px; line-height: 1; padding: 0 2px; cursor: pointer;
+}
+
 /* ---- meal thumbnails + lite rows ------------------------------------ */
 .meal-thumb {
   position: relative; flex-shrink: 0; display: inline-flex;
