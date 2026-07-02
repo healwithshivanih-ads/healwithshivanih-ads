@@ -200,6 +200,22 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
             plan_published = True
         if not plan_published:
             return {"ok": False, "error": f"plan not published: {plan_slug}", **counts}
+        # Purge sibling staged plans for this client from an earlier phase.
+        # _refresh's purge below only fires for the marker's OWN plan_slug
+        # going unpublished — a superseded slug's marker gets overwritten to
+        # the new slug on re-stage, so the old file was never revisited and
+        # lingered forever. A client should only ever have ONE staged
+        # published plan; anything else here is a stale orphan (2026-07-02 —
+        # cl-005 got stuck on a leftover superseded copy this way).
+        for p in (stag / "published").glob("*-v*.yaml"):
+            if p.name.startswith(f"{plan_slug}-v"):
+                continue
+            try:
+                sib = yaml.safe_load(p.read_text()) or {}
+            except Exception:
+                continue
+            if sib.get("client_id") == client_id:
+                p.unlink(missing_ok=True)
 
     # 2. client.yaml — app keys merged over any existing staging stub
     auth_client = auth / "clients" / client_id / "client.yaml"
