@@ -792,6 +792,10 @@ export interface EndgameInfo {
   /** The 12-week effective recheck (graduation) date + a human label. */
   recheckDate: string | null;
   recheckLabel: string | null;
+  /** REVIEW only: true BEFORE the recheck date (client is approaching the end),
+   *  false on/after it (actually reached). Drives "final stretch" vs "finish
+   *  line" copy so we never tell an in-protocol client they're done early. */
+  approaching: boolean;
   /** MAINTENANCE / GRACE: paid-through date + human label. */
   paidThrough: string | null;
   paidThroughLabel: string | null;
@@ -912,6 +916,7 @@ function buildEndgame(
       reason: res.reason,
       recheckDate: recheck,
       recheckLabel: recheck ? formatLongDate(recheck) : null,
+      approaching: !!recheck && todayYmd < recheck,
       paidThrough,
       paidThroughLabel: paidThrough ? formatLongDate(paidThrough) : null,
       graceUntilLabel: graceUntil ? formatLongDate(graceUntil) : null,
@@ -2206,6 +2211,25 @@ function clientifyWhy(raw: string): string {
 // ── main loader ──────────────────────────────────────────────────────────────
 
 /** Find the highest-versioned published plan for a given client. */
+/** Order two published plans for the same client so the CURRENT phase wins:
+ *  newest publish event, then latest plan_period_start, then highest version.
+ *  Guards against a superseded plan lingering in the published bucket — e.g. a
+ *  Mutagen delete that didn't propagate to the Fly replica stranded cl-005 on
+ *  an old plan whose recheck window was open, so the app showed "finish line"
+ *  for a plan the coach had already replaced (2026-07-02). Picking by version
+ *  alone kept the alphabetically-first file on a tie. */
+function isNewerPublishedPlan(a: Dict, b: Dict): boolean {
+  const pa = extractPublishedAt(a) || "";
+  const pb = extractPublishedAt(b) || "";
+  if (pa !== pb) return pa > pb;
+  const sa = asYmd(a.plan_period_start) || "";
+  const sb = asYmd(b.plan_period_start) || "";
+  if (sa !== sb) return sa > sb;
+  const va = typeof a.version === "number" ? a.version : 0;
+  const vb = typeof b.version === "number" ? b.version : 0;
+  return va > vb;
+}
+
 async function latestPublishedPlanForClient(
   clientId: string,
 ): Promise<{ plan: Dict } | null> {
@@ -2216,15 +2240,14 @@ async function latestPublishedPlanForClient(
   } catch {
     return null;
   }
-  let best: { plan: Dict; version: number } | null = null;
+  let best: Dict | null = null;
   for (const name of entries) {
     if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
     const d = await readYamlIfExists(path.join(dir, name));
     if (!d || d.client_id !== clientId) continue;
-    const v = typeof d.version === "number" ? d.version : 0;
-    if (!best || v > best.version) best = { plan: d, version: v };
+    if (!best || isNewerPublishedPlan(d, best)) best = d;
   }
-  return best ? { plan: best.plan } : null;
+  return best ? { plan: best } : null;
 }
 
 /**
