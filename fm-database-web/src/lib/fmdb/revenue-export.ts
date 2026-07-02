@@ -100,7 +100,8 @@ export interface ActiveClientBreakdown {
 
 export function buildActiveClientCountEvent(
   breakdown: ActiveClientBreakdown,
-  config: { maxActiveClients: number; discoveryCallsPerWeek: number },
+  signupsThisWeek: number,
+  config: { maxActiveClients: number; maxNewSignupsPerWeek: number; discoveryCallsPerWeek: number },
   asOf: string,
 ): RevenueEventInput {
   // Minute-resolution IST key: deterministic within a minute (dedupes double
@@ -114,11 +115,43 @@ export function buildActiveClientCountEvent(
     data: {
       active_clients: breakdown.active_care + breakdown.awaiting_start + breakdown.onboarding,
       max_active_clients: config.maxActiveClients,
+      // The weekly intake throttle (coach input 2026-07-02, corrected): the
+      // practice caps NEW SIGNUPS at 20/week — that, not total load, is what
+      // gates lead-buying week to week. Trailing 7 days, not calendar week.
+      signups_this_week: signupsThisWeek,
+      max_new_signups_per_week: config.maxNewSignupsPerWeek,
       discovery_calls_per_week: config.discoveryCallsPerWeek,
       breakdown,
       as_of: asOf,
     },
   };
+}
+
+/**
+ * New signups in the trailing 7 days. A signup = programme enrolment:
+ * `programme_started_at` (stamped by the programme-signup handover) inside the
+ * window, or — for clients the coach enrols by hand — a record created inside
+ * the window that's already `engagement_status: signed_up` /
+ * `lifecycle_state: programme_active`.
+ */
+export function countSignupsThisWeek(
+  clients: Array<CountClient & { programme_started_at?: string; created_at?: string }>,
+  nowIso: string,
+): number {
+  const windowStart = new Date(nowIso).getTime() - 7 * 24 * 3600 * 1000;
+  const inWindow = (iso: string | undefined): boolean => {
+    if (!iso) return false;
+    const t = Date.parse(iso);
+    return Number.isFinite(t) && t >= windowStart && t <= Date.parse(nowIso);
+  };
+  let n = 0;
+  for (const c of clients) {
+    if (c.engagement_status === "declined") continue;
+    const enrolled =
+      c.lifecycle_state === "programme_active" || c.engagement_status === "signed_up";
+    if (inWindow(c.programme_started_at) || (enrolled && inWindow(c.created_at))) n += 1;
+  }
+  return n;
 }
 
 /** Minimal shapes for the count — both are loaded YAML, so fields are loose. */
@@ -232,11 +265,15 @@ function exportConfig(): { url: string; secret: string } | null {
   return { url, secret };
 }
 
-function capacityConfig(): { maxActiveClients: number; discoveryCallsPerWeek: number } {
-  const max = Number(process.env.FM_MAX_ACTIVE_CLIENTS ?? "20");
+function capacityConfig(): { maxActiveClients: number; maxNewSignupsPerWeek: number; discoveryCallsPerWeek: number } {
+  // Coach input 2026-07-02 (corrected): the practice holds 100 active clients;
+  // the weekly throttle is 20 NEW SIGNUPS — that's what gates lead-buying.
+  const max = Number(process.env.FM_MAX_ACTIVE_CLIENTS ?? "100");
+  const signups = Number(process.env.FM_MAX_SIGNUPS_PER_WEEK ?? "20");
   const calls = Number(process.env.FM_DISCOVERY_CALLS_PER_WEEK ?? "8");
   return {
-    maxActiveClients: Number.isFinite(max) && max > 0 ? max : 20,
+    maxActiveClients: Number.isFinite(max) && max > 0 ? max : 100,
+    maxNewSignupsPerWeek: Number.isFinite(signups) && signups > 0 ? signups : 20,
     discoveryCallsPerWeek: Number.isFinite(calls) && calls > 0 ? calls : 8,
   };
 }
@@ -344,7 +381,12 @@ export async function emitActiveClientCount(): Promise<{ ok: boolean }> {
       plans as unknown as CountPlan[],
       todayYmd,
     );
-    const ev = buildActiveClientCountEvent(breakdown, capacityConfig(), new Date().toISOString());
+    const nowIso = new Date().toISOString();
+    const signupsThisWeek = countSignupsThisWeek(
+      clients as unknown as Array<CountClient & { programme_started_at?: string; created_at?: string }>,
+      nowIso,
+    );
+    const ev = buildActiveClientCountEvent(breakdown, signupsThisWeek, capacityConfig(), nowIso);
     const r = await emitRevenueEvent(ev);
     return { ok: r.ok };
   } catch (e) {
