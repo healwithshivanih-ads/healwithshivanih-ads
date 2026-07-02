@@ -405,6 +405,9 @@ function ChoiceCard({ title, sub, onClick }: { title: string; sub: string; onCli
 export function GraduationReport({ onContinue, onMaintain }: { onContinue: () => void; onMaintain: () => void }) {
   const data = useOchre();
   const { client, coach } = data;
+  // Before the recheck date the client is still in-protocol (REVIEW opens ~2
+  // weeks early to drive the decision) — say "final stretch", not "reached".
+  const approaching = data.endgame?.approaching ?? false;
 
   const stats: { label: string; from: string; to: string; better: string | null }[] = [];
   const ss = data.symptomScore;
@@ -448,12 +451,16 @@ export function GraduationReport({ onContinue, onMaintain }: { onContinue: () =>
       <div style={{ textAlign: "center", padding: "18px 8px 10px" }}>
         <div aria-hidden="true" style={{ fontSize: 26, color: FOREST }}>✦</div>
         <h2 style={{ fontSize: 19, color: INK, margin: "9px 0 6px", fontWeight: 500 }}>
-          You&apos;ve reached the finish line, {client.firstName}
+          {approaching
+            ? `You're in the final stretch, ${client.firstName}`
+            : `You've reached the finish line, ${client.firstName}`}
         </h2>
         <p style={{ fontSize: 14, color: MUTED, lineHeight: 1.55, margin: 0 }}>
           {stats.length > 0
             ? "Look how far you've come — your journey in numbers."
-            : "You've completed your plan. Let's choose what comes next."}
+            : approaching
+              ? "You're almost through your 12 weeks. Let's choose what comes next."
+              : "You've completed your plan. Let's choose what comes next."}
         </p>
       </div>
 
