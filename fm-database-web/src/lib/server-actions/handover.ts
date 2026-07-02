@@ -20,6 +20,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { buildPaymentEvent, emitActiveClientCount, emitRevenueEvent } from "@/lib/fmdb/revenue-export";
 
 export interface HandoverClientIdentity {
   display_name: string;
@@ -266,6 +267,24 @@ export async function processProgrammeSignup(
   data.programme_payment_id = payload.razorpay_payment_id;
   data.handover_source = data.handover_source || payload.source;
   await writeClientYaml(clientId, data);
+
+  // Revenue export (Loop 1): echo the programme payment (ochre-funnel dedupes
+  // on razorpay_payment_id) + a fresh capacity snapshot — a signup consumes a
+  // slot. Best-effort; neither call throws.
+  await emitRevenueEvent(
+    buildPaymentEvent({
+      product: "programme",
+      amountPaisa: payload.amount_paisa ?? 0,
+      razorpayPaymentId: payload.razorpay_payment_id,
+      paidAt: payload.paid_at || nowIso(),
+      client: {
+        client_id: clientId,
+        email: payload.client.email?.trim().toLowerCase() || null,
+        phone_e164: payload.client.phone_e164?.replace(/\D/g, "") || null,
+      },
+    }),
+  );
+  await emitActiveClientCount();
 
   // Fire onboarding kit (best-effort — handover succeeds even if WA fails)
   const onboardingResult = await fireOnboardingKit(

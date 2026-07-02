@@ -128,6 +128,15 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 21:00 IST daily — revenue export to ochre-funnel (growth-system Loop 1):
+// graduation sweep + active_client_count snapshot + outbox drain. Idempotent;
+// no-op when OCHRE_FUNNEL_REVENUE_URL / FM_REVENUE_EXPORT_SECRET are unset.
+cron.schedule(
+  "0 21 * * *",
+  () => fire("revenue-export"),
+  { timezone: "Asia/Kolkata" },
+);
+
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
     + "\n  · 07:00 IST  weekly-menu-drafts"
@@ -136,6 +145,7 @@ console.log(
     + "\n  · 08:00 IST  menu-auto-approve"
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
+    + "\n  · 21:00 IST  revenue-export"
     + "\n  · * * * * *  pending-sends"
     + "\n  · * * * * *  intake-reconcile"
     + "\n  · * * * * *  app-reminders",

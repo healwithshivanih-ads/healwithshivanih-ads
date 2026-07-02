@@ -27,6 +27,7 @@ import {
   findMaintenanceSubscriptionById,
   type RzpSubscriptionEvent,
 } from "@/lib/fmdb/maintenance-subscription";
+import { buildPaymentEvent, clientJoinKeyFor, emitRevenueEvent } from "@/lib/fmdb/revenue-export";
 
 export const dynamic = "force-dynamic";
 
@@ -74,6 +75,20 @@ async function handleSubscriptionEvent(event: RzpSubscriptionEvent) {
   dropBackwardPaidThrough(outcome.patch, cur.paid_through);
 
   const next = await patchMaintenanceSubscription(clientId, outcome.subscriptionId, outcome.patch);
+  // Revenue export (Loop 1) — only actual charges, not lifecycle-only events.
+  // The webhook payload carries no amount for subscription charges, so use the
+  // record's display amount (the per-cycle price). Best-effort, never throws.
+  if (next && outcome.paymentId) {
+    await emitRevenueEvent(
+      buildPaymentEvent({
+        product: "maintenance",
+        amountPaisa: (cur.amount_inr ?? 0) * 100,
+        razorpayPaymentId: outcome.paymentId,
+        paidAt: new Date().toISOString(),
+        client: await clientJoinKeyFor(clientId),
+      }),
+    );
+  }
   return { ok: !!next };
 }
 
@@ -154,5 +169,17 @@ export async function POST(req: Request) {
     paid_at: new Date().toISOString(),
     paid_through: paidThrough,
   });
+  // Revenue export (Loop 1) — best-effort; emitRevenueEvent never throws.
+  if (next) {
+    await emitRevenueEvent(
+      buildPaymentEvent({
+        product: "maintenance",
+        amountPaisa: (order.amount_inr ?? 0) * 100,
+        razorpayPaymentId: rzpPaymentId,
+        paidAt: new Date().toISOString(),
+        client: await clientJoinKeyFor(clientId),
+      }),
+    );
+  }
   return NextResponse.json({ ok: !!next });
 }

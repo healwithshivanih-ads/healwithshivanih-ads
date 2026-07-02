@@ -703,6 +703,25 @@ export async function graduatePlan(
     // reflect the new state immediately.
     revalidatePath("/clients-v2");
     revalidatePath("/dashboard-v2");
+    // Revenue export (Loop 1): announce the completion + a fresh capacity
+    // snapshot — a graduation frees a slot. Best-effort; never blocks the UI.
+    try {
+      const { buildProgrammeCompletedEvent, clientJoinKeyFor, emitRevenueEvent, emitActiveClientCount } =
+        await import("@/lib/fmdb/revenue-export");
+      const plan = await loadPlanBySlug(slug);
+      if (plan?.client_id) {
+        await emitRevenueEvent(
+          buildProgrammeCompletedEvent({
+            planSlug: slug,
+            completedAt: new Date().toISOString(),
+            client: await clientJoinKeyFor(plan.client_id as string),
+          }),
+        );
+      }
+      await emitActiveClientCount();
+    } catch (e) {
+      console.error("[revenue-export] graduation emit failed:", (e as Error).message);
+    }
   }
   return r;
 }
