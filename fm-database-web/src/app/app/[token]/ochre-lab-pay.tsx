@@ -135,7 +135,9 @@ export function LabOrdersCard() {
   const inFlight = orders.filter((o) => o.status !== "recommended" && o.status !== "cancelled");
   if (recommended.length === 0 && inFlight.length === 0) return null;
 
-  // Prefill name/phone from the account, then open the collection form.
+  // Prefill name/phone + saved collection address from the account, then open the
+  // collection form. The address comes from a prior order (saved to the record),
+  // so a returning client doesn't re-type it.
   const startBooking = (order: LabOrder) => {
     setError("");
     const contact = (data.account?.contact ?? "").trim();
@@ -144,6 +146,8 @@ export function LabOrdersCard() {
       ...EMPTY_FORM,
       full_name: data.account?.name ?? "",
       phone: looksPhone ? contact : "",
+      address: data.account?.collectionAddress ?? "",
+      pincode: data.account?.collectionPincode ?? "",
     });
     setBookingId(order.order_id);
   };

@@ -1111,6 +1111,10 @@ export interface ClientAppData {
      *  in-app photo, or the coach/intake photo flowing through). null → use
      *  initials. */
     photoUrl: string | null;
+    /** Saved lab home-collection address (from a prior order) — pre-fills the
+     *  pay form so the client doesn't re-type it. "" when never entered. */
+    collectionAddress: string;
+    collectionPincode: string;
   };
   /** Body composition: read-only height/age from the coach dashboard +
    *  client-editable weight/waist/hip, plus the snapshot history that drives
@@ -1165,6 +1169,23 @@ function asStr(v: unknown): string {
 }
 function asArr(v: unknown): unknown[] {
   return Array.isArray(v) ? v : [];
+}
+
+/**
+ * Address to pre-fill the lab home-collection form with. Priority:
+ *   1. the client's saved lab collection address (from a prior order), else
+ *   2. the structured address on the record (coach-entered at client creation —
+ *      the intake form does NOT collect address, so this is the only other source).
+ * Returns "" for each part when nothing is on file.
+ */
+function resolveCollectionAddress(client: Record<string, unknown>): { address: string; pincode: string } {
+  const saved = asStr(client.collection_address).trim();
+  if (saved) return { address: saved, pincode: asStr(client.collection_pincode).trim() };
+  const composed = [client.address_line1, client.address_line2, client.city, client.state]
+    .map((v) => asStr(v).trim())
+    .filter(Boolean)
+    .join(", ");
+  return { address: composed, pincode: asStr(client.collection_pincode).trim() || asStr(client.pincode).trim() };
 }
 function asStrArr(v: unknown): string[] {
   return asArr(v).filter((x): x is string => typeof x === "string");
@@ -2612,6 +2633,8 @@ async function buildDiscoveryAppData(
       member: "",
       avatar: initials,
       photoUrl: null,
+      collectionAddress: resolveCollectionAddress(client).address,
+      collectionPincode: resolveCollectionAddress(client).pincode,
     },
     body: {
       heightCm: null,
@@ -4772,6 +4795,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       member,
       avatar: initials,
       photoUrl,
+      collectionAddress: resolveCollectionAddress(client).address,
+      collectionPincode: resolveCollectionAddress(client).pincode,
     },
     body,
     reminders,

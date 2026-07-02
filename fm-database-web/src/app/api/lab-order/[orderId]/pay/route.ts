@@ -9,13 +9,33 @@
  * by the verified webhook, never here.
  */
 import { NextResponse } from "next/server";
+import fs from "node:fs/promises";
+import path from "node:path";
+import yaml from "js-yaml";
 import Razorpay from "razorpay";
+import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
-import { loadOrder, validateOrderAmount, patchOrder, sanitizeLogistics } from "@/lib/fmdb/lab-orders";
+import { loadOrder, validateOrderAmount, patchOrder, sanitizeLogistics, type LabOrderLogistics } from "@/lib/fmdb/lab-orders";
 import { verifyAppClient } from "@/lib/fmdb/app-auth";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
+
+/**
+ * Persist the client's home-collection address to their own record (client.yaml)
+ * so the NEXT lab order pre-fills it — no re-typing. This is the client's OWN
+ * data (they just entered it), written under their token-authorised id. Best-effort:
+ * a failure here must never block a payment that's about to succeed. Only the
+ * address/pincode (+ phone if the record has none) are touched; nothing else.
+ */
+async function saveClientCollectionAddress(clientId: string, l: LabOrderLogistics): Promise<void> {
+  const file = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  const c = ((yaml.load(await fs.readFile(file, "utf8")) as Record<string, unknown>) ?? {});
+  c.collection_address = l.address;
+  c.collection_pincode = l.pincode;
+  if (!c.mobile_number && l.phone) c.mobile_number = l.phone;
+  await fs.writeFile(file, yaml.dump(c, { sortKeys: false }), "utf8");
+}
 
 const SAFE_ID = /^[A-Za-z0-9_-]+$/;
 
@@ -92,6 +112,10 @@ export async function POST(req: Request, ctx: { params: Promise<{ orderId: strin
   }
 
   await patchOrder(clientId, orderId, { razorpay_order_id: rzpOrderId, logistics: logi.logistics });
+  // Remember the collection address on the client's record for next time (best-effort).
+  await saveClientCollectionAddress(clientId, logi.logistics).catch((e) =>
+    console.error(`[lab-pay] could not save collection address for ${clientId}:`, (e as Error).message),
+  );
 
   return NextResponse.json({
     ok: true,

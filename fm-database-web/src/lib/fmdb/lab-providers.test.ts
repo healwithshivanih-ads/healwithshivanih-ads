@@ -21,6 +21,8 @@ const RAW = {
   addon_tests: [
     { slug: "methylmalonic-acid", name: "MMA Serum", quoted_inr: null, dos_list_inr: 3430 },
     { slug: "c-peptide", name: "C-Peptide", quoted_inr: 1400, dos_list_inr: 1400 },
+    // no catalogue price on file → clientInr stays null → not bookable
+    { slug: "dhea-s", name: "DHEA-S", quoted_inr: null, dos_list_inr: null },
   ],
 };
 
@@ -49,11 +51,14 @@ describe("parseAcumen", () => {
     expect([...women.coveredAddonSlugs].sort()).toEqual(["am-cortisol", "apob"]);
   });
 
-  it("derives add-on our-cost = 50% of catalogue; client price stays null (margin pending)", () => {
+  it("derives add-on our-cost = 50% of catalogue; client pays full catalogue (2026-07-01 rule)", () => {
     const mma = acumen.addons.find((a) => a.slug === "methylmalonic-acid")!;
     expect(mma.catalogueInr).toBe(3430);
     expect(mma.ourCostInr).toBe(1715); // 50% of 3430
-    expect(mma.clientInr).toBeNull();
+    expect(mma.clientInr).toBe(3430); // client pays full catalogue → we keep the 50% margin
+    // an add-on with no catalogue price on file stays unpriced (not bookable)
+    const dheas = acumen.addons.find((a) => a.slug === "dhea-s")!;
+    expect(dheas.clientInr).toBeNull();
   });
 
   it("carries provider metadata", () => {
@@ -150,8 +155,8 @@ describe("priceSelection — server-side derivation, never trust input", () => {
       error: expect.stringContaining('unknown add-on'),
     });
   });
-  it("rejects a known-but-unpriced add-on (margin pending) — blocks add-on booking", () => {
-    expect(priceSelection(acumen, { profileId: 1, addonSlugs: ["c-peptide"] })).toEqual({
+  it("rejects a known-but-unpriced add-on (no catalogue price) — blocks add-on booking", () => {
+    expect(priceSelection(acumen, { profileId: 1, addonSlugs: ["dhea-s"] })).toEqual({
       ok: false,
       error: expect.stringContaining("not yet priced"),
     });

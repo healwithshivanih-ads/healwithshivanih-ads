@@ -386,6 +386,10 @@ class Client(BaseModel):
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date
     family_history: Optional[str] = None  # hereditary diseases / family health history
+    # Lab home-collection address the client enters when booking tests in-app —
+    # saved to the record so future lab orders pre-fill it (no re-typing).
+    collection_address: Optional[str] = None
+    collection_pincode: Optional[str] = None
 
     # ── Maintenance / plan end-game (graduation → paid maintenance tier) ──────
     # After the 12-week protocol, a client can move to a hands-free paid
