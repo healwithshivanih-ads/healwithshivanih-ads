@@ -8,7 +8,8 @@
  * but resets each morning. The weekly check-in posts back to the coach.
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { isGrowingTreeEnabled } from "./growing-tree-flag";
 import type { AppRemedy, ClientAppData } from "@/lib/fmdb/client-app";
 import { Icon, Mark, OchreContext } from "./ochre-context";
 import { BottomNav, Header } from "./ochre-ui";
@@ -42,6 +43,12 @@ interface Stored {
   moves?: MoveEntry[];
   lastSeenPlanSlug?: string;
   lastSeenUpdatedAt?: string;
+  /** Rolling list of ISO days the client logged something — survives the daily
+   *  reset (unlike `logged`) so a consecutive-day streak can be computed. */
+  loggedDays?: string[];
+  /** Tree state at the last visit — drives the "while you were away" reveal. */
+  lastSeenWeek?: number;
+  lastSeenDay?: string;
 }
 
 function nowTime(): string {
@@ -55,6 +62,23 @@ function nowTime(): string {
 
 function todayIso(): string {
   return new Date().toISOString().slice(0, 10);
+}
+
+/** Consecutive-day logging streak from a set of ISO days. Counts back from today;
+ *  if today isn't logged yet the streak is still "alive" from yesterday (grace day),
+ *  and resets on any gap. UTC-day to match `todayIso`. */
+function computeStreak(days: string[]): number {
+  if (!days || days.length === 0) return 0;
+  const set = new Set(days);
+  const cur = new Date();
+  const iso = () => cur.toISOString().slice(0, 10);
+  if (!set.has(iso())) cur.setUTCDate(cur.getUTCDate() - 1); // grace: count up to yesterday
+  let n = 0;
+  while (set.has(iso())) {
+    n++;
+    cur.setUTCDate(cur.getUTCDate() - 1);
+  }
+  return n;
 }
 
 /** Device-level display preference (shared across clients on this phone). */
@@ -94,6 +118,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const [submittedWeek, setSubmittedWeek] = useState<number>(0);
   const [feel, setFeel] = useState<FeelMap>({});
   const [moves, setMoves] = useState<MoveEntry[]>([]);
+  const [loggedDays, setLoggedDays] = useState<string[]>([]);
 
   const [inCheckin, setInCheckin] = useState(false);
   const [maintOpen, setMaintOpen] = useState(false); // maintenance/renewal checkout overlay
@@ -125,6 +150,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // hydrate persisted state (per client; daily ticks reset each day)
   const [lastSeenPlanSlug, setLastSeenPlanSlug] = useState<string | null>(null);
   const [lastSeenUpdatedAt, setLastSeenUpdatedAt] = useState<string | null>(null);
+  const [lastSeenWeek, setLastSeenWeek] = useState<number | null>(null);
+  const [lastSeenDay, setLastSeenDay] = useState<string | null>(null);
+  const [welcomeBack, setWelcomeBack] = useState<{ toWeek: number } | null>(null);
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORE);
@@ -139,6 +167,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       setMoves(thisWeeksMoves(s.moves ?? []));
       setLastSeenPlanSlug(s.lastSeenPlanSlug ?? null);
       setLastSeenUpdatedAt(s.lastSeenUpdatedAt ?? null);
+      setLoggedDays(s.loggedDays ?? []);
+      setLastSeenWeek(typeof s.lastSeenWeek === "number" ? s.lastSeenWeek : null);
+      setLastSeenDay(s.lastSeenDay ?? null);
     } catch {
       /* fresh start */
     }
@@ -147,13 +178,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
   useEffect(() => {
     if (!hydrated) return;
-    const s: Stored = { day: todayIso(), logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug: lastSeenPlanSlug ?? undefined, lastSeenUpdatedAt: lastSeenUpdatedAt ?? undefined };
+    const s: Stored = { day: todayIso(), logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug: lastSeenPlanSlug ?? undefined, lastSeenUpdatedAt: lastSeenUpdatedAt ?? undefined, loggedDays, lastSeenWeek: lastSeenWeek ?? undefined, lastSeenDay: lastSeenDay ?? undefined };
     try {
       localStorage.setItem(STORE, JSON.stringify(s));
     } catch {
       /* storage full / private mode */
     }
-  }, [hydrated, logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug, lastSeenUpdatedAt, STORE]);
+  }, [hydrated, logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug, lastSeenUpdatedAt, loggedDays, lastSeenWeek, lastSeenDay, STORE]);
 
   useEffect(() => {
     const t1 = setTimeout(() => setFading(true), 900);
@@ -285,6 +316,68 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const dailyTotal = data.supplements.length + practices.length + dailyRemedies.length;
   const dailyDone = Object.keys(logged).length + practices.filter((p) => p.done).length;
 
+  // Record today as a "logged day" once anything is logged today. This rolling
+  // history survives the midnight reset (unlike `logged`), so the streak persists.
+  useEffect(() => {
+    if (!hydrated || dailyDone <= 0) return;
+    const t = todayIso();
+    setLoggedDays((prev) => (prev.includes(t) ? prev : [...prev, t].slice(-120)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated, dailyDone]);
+
+  // Consecutive-day logging streak → feeds the growing tree's birds/chicks.
+  const streak = computeStreak(loggedDays);
+
+  // Milestones → blossoms (each symptom-score improvement) + fruit (each
+  // completed weekly check-in). Both add to the tree on top of its stage.
+  const msqWins = useMemo(() => {
+    const e = data.msqEntries ?? [];
+    let n = 0;
+    for (let i = 1; i < e.length; i++) if (e[i].total < e[i - 1].total) n++;
+    return n;
+  }, [data.msqEntries]);
+  const checkinCount = useMemo(
+    () => (data.journey ?? []).filter((j) => j.kind === "checkin").length,
+    [data.journey]
+  );
+
+  // Log-complete celebration — fires once when today's log first hits 100%.
+  const [celebrating, setCelebrating] = useState(false);
+  const prevCompleteRef = useRef<boolean | null>(null);
+  const celebTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (!hydrated) return;
+    const complete = dailyTotal > 0 && dailyDone >= dailyTotal;
+    // First pass after hydration records the baseline only — never celebrate a
+    // day that was already complete when the app opened.
+    if (prevCompleteRef.current === null) {
+      prevCompleteRef.current = complete;
+      return;
+    }
+    if (complete && !prevCompleteRef.current) {
+      setCelebrating(true);
+      if (celebTimer.current) clearTimeout(celebTimer.current);
+      celebTimer.current = setTimeout(() => setCelebrating(false), 3200);
+    }
+    prevCompleteRef.current = complete;
+  }, [hydrated, dailyDone, dailyTotal]);
+  useEffect(() => () => { if (celebTimer.current) clearTimeout(celebTimer.current); }, []);
+
+  // "While you were away" — once per open, if the tree advanced a week since the
+  // last visit, greet the client with the growth. Then record this visit.
+  const revealDoneRef = useRef(false);
+  useEffect(() => {
+    if (!hydrated || revealDoneRef.current) return;
+    revealDoneRef.current = true;
+    const cur = data.client.week;
+    if (isGrowingTreeEnabled(data.clientId) && lastSeenWeek != null && cur > lastSeenWeek) {
+      setWelcomeBack({ toWeek: cur });
+    }
+    setLastSeenWeek(cur);
+    setLastSeenDay(todayIso());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated]);
+
   const submitted = submittedWeek >= data.client.week;
   const goCheckin = () => {
     setInCheckin(true);
@@ -358,6 +451,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         onLogAll={logAll}
         dailyDone={dailyDone}
         dailyTotal={dailyTotal}
+        streak={streak}
+        bonusBlossoms={msqWins}
+        bonusFruit={checkinCount}
         openMeal={openMeal}
         openRemedy={openRemedy}
         goTab={go}
@@ -383,7 +479,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     );
   } else if (tab === "progress") {
     screen = (
-      <ProgressScreen goCheckin={goCheckin} feel={feel} onLogFeeling={() => setFeelSheet(true)} moves={moves} onLogMove={() => setMoveSheet(true)} openMsq={openMsq} />
+      <ProgressScreen goCheckin={goCheckin} feel={feel} onLogFeeling={() => setFeelSheet(true)} moves={moves} onLogMove={() => setMoveSheet(true)} openMsq={openMsq} dailyDone={dailyDone} dailyTotal={dailyTotal} streak={streak} bonusBlossoms={msqWins} bonusFruit={checkinCount} />
     );
   } else if (tab === "labs") {
     screen = <LabsScreen />;
@@ -433,6 +529,15 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               >
                 ×
               </button>
+            </div>
+          )}
+          {welcomeBack && (
+            <div className="ot-welcome-back">
+              <span style={{ flex: 1 }}>
+                🌿 <strong>Welcome back{data.client.firstName ? `, ${data.client.firstName}` : ""}.</strong> While you were away, your tree grew — you&rsquo;re in Week {welcomeBack.toWeek} now.
+              </span>
+              <button className="ot-wb-see" onClick={() => { setWelcomeBack(null); go("progress"); }}>See it</button>
+              <button className="ot-wb-x" onClick={() => setWelcomeBack(null)} aria-label="Dismiss">×</button>
             </div>
           )}
           {previewing && (
@@ -485,6 +590,21 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
           <DailyFeelingSheet show={feelSheet} onClose={() => setFeelSheet(false)} onSave={logFeeling} />
           <MoveSheet show={moveSheet} onClose={() => setMoveSheet(false)} onSave={addMove} />
+
+          {celebrating && (
+            <div className="ot-celebrate" role="status" aria-live="polite">
+              {["🍃", "🌿", "🍃", "🌿", "🍃", "🌿"].map((lf, i) => (
+                <span key={i} className="ot-celebrate-leaf" style={{ left: `${8 + i * 15}%`, animationDelay: `${i * 0.18}s` }}>
+                  {lf}
+                </span>
+              ))}
+              <div className="ot-celebrate-card">
+                <div className="ot-celebrate-emoji">🌿</div>
+                <div className="ot-celebrate-title">Your tree grew today</div>
+                <div className="ot-celebrate-sub">Everything logged — lovely work.</div>
+              </div>
+            </div>
+          )}
 
           {booting && (
             <div className={"token-screen" + (fading ? " fade-out" : "")}>

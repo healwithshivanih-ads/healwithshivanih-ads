@@ -11,6 +11,8 @@
  * (_timing_slot in render-client-letter.py), kept in sync by hand.
  */
 
+import { isGrowingTreeEnabled } from "@/app/app/[token]/growing-tree-flag";
+
 export interface DerivedReminder {
   id: string;
   /** push body */
@@ -20,6 +22,8 @@ export interface DerivedReminder {
   cadence: "daily" | "weekly";
   /** 0=Sun … 6=Sat — weekly only */
   weekday?: number;
+  /** When false the reminder starts OFF (opt-in). Undefined = on by default. */
+  defaultOn?: boolean;
 }
 
 export interface ReminderOverride {
@@ -131,7 +135,14 @@ export function deriveReminders(
   }
   out.push({ id: "checkin", label: "Weekly check-in", time: "10:00", cadence: "weekly", weekday });
 
-  return out.slice(0, 3);
+  // Growing-tree clients get an opt-in daily nudge to tend their tree. Off by
+  // default (the client turns it on in Notifications) so it's never pushy.
+  const treeOn = isGrowingTreeEnabled(asStr(client.client_id));
+  if (treeOn) {
+    out.push({ id: "tree", label: "Your tree is waiting to grow today 🌱", time: "09:00", cadence: "daily", defaultOn: false });
+  }
+
+  return out.slice(0, treeOn ? 4 : 3);
 }
 
 /** Overlay the client's saved overrides (on/off + pinned time) onto a derived set. */
@@ -141,7 +152,7 @@ export function effectiveReminders(
 ): EffectiveReminder[] {
   return derived.map((d) => {
     const o = overrides[d.id] ?? {};
-    const on = typeof o.on === "boolean" ? o.on : true;
+    const on = typeof o.on === "boolean" ? o.on : d.defaultOn !== false;
     const timeCustom = !!(o.time_custom && o.time);
     // Floor applies to derived AND client-pinned times — never before 07:30.
     const time = floorTime(timeCustom ? (o.time as string) : d.time);
