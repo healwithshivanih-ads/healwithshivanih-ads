@@ -26,6 +26,7 @@ sources:
 evidence_tier: fm_specific_thin
 notes_for_coach: This is a therapeutic drug level, not a nutrient. A trace reading (~0.1) in someone not
   on lithium is an incidental panel inclusion, not a finding.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

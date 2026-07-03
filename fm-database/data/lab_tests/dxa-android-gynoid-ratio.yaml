@@ -26,6 +26,7 @@ sources:
 evidence_tier: plausible_emerging
 notes_for_coach: Central-vs-peripheral fat ratio; the most useful single DXA fat-distribution number.
   Women optimal <0.8. NOTE distinct from serum Albumin/Globulin 'A/G ratio' — different marker entirely.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

@@ -25,6 +25,7 @@ sources:
   location: Lab interpretation
 evidence_tier: strong
 notes_for_coach: Monitoring marker, not a screen. Flag for clinician; do not interpret as a cancer screen.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

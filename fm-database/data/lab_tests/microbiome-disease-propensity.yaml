@@ -25,6 +25,7 @@ sources:
 evidence_tier: fm_specific_thin
 notes_for_coach: Sova proprietary algorithmic risk estimate. No independent validation — informational
   vendor output, not a diagnosis.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

@@ -24,6 +24,7 @@ sources:
 evidence_tier: strong
 notes_for_coach: Non-specific tumour marker. A single mildly-raised value in a smoker is often benign;
   trend + clinical context matter. Coaching role is to flag for clinician review, not interpret.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

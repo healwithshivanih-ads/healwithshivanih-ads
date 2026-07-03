@@ -2374,6 +2374,7 @@ async function loadLabCatalogue(): Promise<CatalogueLabRange[]> {
         fm_optimal_high: numOrNull(t.fm_optimal_high),
         interpretation_low: asStr(t.interpretation_low) || undefined,
         interpretation_high: asStr(t.interpretation_high) || undefined,
+        client_visible: t.client_visible !== false,
         match_keys: Array.from(keys).filter(Boolean),
       });
     } catch {

@@ -37,6 +37,36 @@ export function rangeStatus(
   return tooLow || tooHigh ? "outside" : "optimal";
 }
 
+// ── Client-app sensitivity gate ───────────────────────────────────────────
+// Markers too alarming/sensitive to surface in the self-serve client Lab Vault.
+// Primary mechanism is the catalogue `client_visible: false` flag (precise,
+// coach-editable). This regex list is a SAFETY NET that also hides sensitive
+// markers whose raw name never resolved to a catalogue entry (variant spellings
+// / new labs), so a stray "CA 27.29" or "Body Fat %" can't leak through the
+// "Other" bucket. Coach-side surfaces never call buildLabVault, so nothing here
+// affects what the coach sees. Keep patterns specific to avoid false hides.
+const CLIENT_HIDDEN_MARKER_PATTERNS: RegExp[] = [
+  // Tumour / cancer markers
+  /\bpsa\b/, /\bcea\b/, /\bca[\s-]?125\b/, /\bca[\s-]?15[\s.-]?3\b/,
+  /\bca[\s-]?19[\s.-]?9\b/, /\bca[\s-]?27\b/, /cancer antigen/, /tumou?r marker/,
+  /alpha[\s-]?feto/, /\bafp\b/, /\bpsa[\s-]?(total|free)\b/,
+  // Algorithmic disease-risk / propensity scores
+  /disease propensity/, /disease risk score/,
+  // Body-composition fat metrics (body-image sensitive)
+  /body[\s-]?fat/, /fat[\s-]?mass/, /android[\s-]?fat/, /gynoid[\s-]?fat/,
+  /android[\s/]?gynoid/, /adiposity/,
+  // Cardiac-injury, infectious-disease, psych-drug levels
+  /troponin/, /\bhcv\b/, /hepatitis/, /\bhbsag\b/, /\bhiv\b/, /lithium/,
+];
+
+/** True if a marker name should be hidden from the client Lab Vault by the
+ *  safety-net patterns above (independent of the catalogue flag). */
+export function isClientHiddenMarkerName(testName: string): boolean {
+  const n = testName.trim().toLowerCase();
+  if (!n) return false;
+  return CLIENT_HIDDEN_MARKER_PATTERNS.some((re) => re.test(n));
+}
+
 /**
  * Find the catalogue LabTest record matching a free-form test name.
  * Case-insensitive: exact key match first, then bidirectional substring.
@@ -239,6 +269,16 @@ export function buildLabVault(
     const prev = points.length > 1 ? points[points.length - 2] : null;
 
     const match = findCatalogueLabTest(testName, catalogue);
+
+    // Client-app sensitivity gate: drop markers the catalogue flags coach-only
+    // (client_visible === false), or that match the sensitive-name safety net
+    // even when unresolved. These never enter any group, the pinned set, or the
+    // summary count — the client simply never sees them. Coach surfaces don't
+    // use buildLabVault, so their view is unaffected.
+    if (match?.client_visible === false || isClientHiddenMarkerName(testName)) {
+      continue;
+    }
+
     const override = refRanges[testName];
 
     const fmOptimal =

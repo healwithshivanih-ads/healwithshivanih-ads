@@ -28,6 +28,7 @@ sources:
 evidence_tier: strong
 notes_for_coach: Sex-specific 99th-percentile cut-offs (women lower than men). A single low baseline value
   is reassuring; any acute elevation is an emergency referral, never a coaching interpretation.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

@@ -27,6 +27,7 @@ sources:
 evidence_tier: strong
 notes_for_coach: 'Reported as signal-to-cut-off (S/CO): <1 non-reactive, >=1 reactive (confirm with HCV
   RNA). A value like 0.09 is a clearly negative screen.'
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

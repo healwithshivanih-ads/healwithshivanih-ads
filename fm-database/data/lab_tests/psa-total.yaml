@@ -26,6 +26,7 @@ sources:
 evidence_tier: strong
 notes_for_coach: Screening marker (males). Elevation is non-specific (BPH, prostatitis, recent ejaculation/cycling
   can raise it). Refer for elevated or rising values.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

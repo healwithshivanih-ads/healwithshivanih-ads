@@ -26,6 +26,7 @@ sources:
 evidence_tier: plausible_emerging
 notes_for_coach: Central (apple-shape) fat depot — the metabolically risky one. Read via the android/gynoid
   ratio rather than the raw %.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

@@ -561,6 +561,12 @@ class LabTest(BaseModel):
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     notes_for_coach: str = ""
+    # Client-app visibility gate. Default True = shown in the client-facing
+    # Lab Vault. Set False for markers too sensitive/alarming to surface in a
+    # self-serve client app (tumour markers, disease-propensity scores, DXA
+    # fat composition, cardiac-injury / infectious / psych-drug levels) — those
+    # stay coach-only. Coach-side surfaces ignore this flag and show everything.
+    client_visible: bool = True
     version: int = 1
     status: EntityStatus = EntityStatus.active
     updated_at: date

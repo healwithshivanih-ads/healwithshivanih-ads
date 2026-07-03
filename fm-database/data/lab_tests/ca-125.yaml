@@ -26,6 +26,7 @@ sources:
 evidence_tier: strong
 notes_for_coach: Very non-specific in premenopausal women (rises with endometriosis, fibroids, even menstruation).
   Flag for clinician; avoid alarming the client over a mild elevation.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

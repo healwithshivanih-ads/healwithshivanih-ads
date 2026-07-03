@@ -2232,6 +2232,9 @@ export interface CatalogueLabRange {
   fm_optimal_high?: number | null;
   interpretation_low?: string;
   interpretation_high?: string;
+  /** Client-app Lab Vault visibility. undefined/true = shown to the client;
+   *  false = coach-only (sensitive marker). Coach surfaces ignore this. */
+  client_visible?: boolean;
   /** Lowercased: slug + display_name + full_name + aliases. Used by matchLabTest(). */
   match_keys: string[];
 }
@@ -2254,6 +2257,7 @@ export async function loadLabTestsCatalogueAction(): Promise<CatalogueLabRange[]
       fm_optimal_high?: number | null;
       interpretation_low?: string;
       interpretation_high?: string;
+      client_visible?: boolean;
     };
     const tests = await loadAllOfKind<LT>("lab_tests");
     _labCatalogueCache = tests.map((t) => {
@@ -2274,6 +2278,7 @@ export async function loadLabTestsCatalogueAction(): Promise<CatalogueLabRange[]
         fm_optimal_high: t.fm_optimal_high ?? null,
         interpretation_low: t.interpretation_low,
         interpretation_high: t.interpretation_high,
+        client_visible: t.client_visible !== false,
         match_keys: Array.from(keys).filter(Boolean),
       } satisfies CatalogueLabRange;
     });

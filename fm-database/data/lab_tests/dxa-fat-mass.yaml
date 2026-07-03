@@ -25,6 +25,7 @@ sources:
 evidence_tier: strong
 notes_for_coach: Absolute fat mass in kg — no fixed 'normal'; value is in the trend across serial DXA
   scans and alongside body-fat %.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'

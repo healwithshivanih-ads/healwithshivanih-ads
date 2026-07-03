@@ -28,6 +28,7 @@ sources:
 evidence_tier: strong
 notes_for_coach: Female healthy ~21-33% (men ~8-20%). DXA is the most accurate body-fat measure. Track
   alongside android/gynoid distribution, not just total.
+client_visible: false
 version: 1
 status: active
 updated_at: '2026-07-02'
