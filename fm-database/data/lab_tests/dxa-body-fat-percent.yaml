@@ -1,0 +1,34 @@
+slug: dxa-body-fat-percent
+display_name: Body Fat % (DXA)
+full_name: Total Body Fat Percentage (DXA)
+aliases:
+- body fat
+- body fat percent
+- body fat % dxa total body
+- total body fat percent
+- dxa body fat
+units: '%'
+sample_type: blood
+conventional_low: 21
+conventional_high: 33
+fm_optimal_low: 21
+fm_optimal_high: 33
+interpretation_low: Low body fat (<21% women) — athletic or under-fat; can affect cycle/hormones if very
+  low.
+interpretation_high: High body fat (>33% women) — adiposity-driven metabolic risk; DXA is the gold-standard
+  measure.
+when_to_order: Body-composition assessment (DXA gold standard).
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Female healthy ~21-33% (men ~8-20%). DXA is the most accurate body-fat measure. Track
+  alongside android/gynoid distribution, not just total.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

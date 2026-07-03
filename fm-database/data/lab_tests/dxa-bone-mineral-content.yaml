@@ -1,0 +1,31 @@
+slug: dxa-bone-mineral-content
+display_name: Bone Mineral Content (DXA)
+full_name: Total Bone Mineral Content (DXA)
+aliases:
+- bone mineral content
+- bmc
+- bone mineral content dxa
+- dxa bmc
+units: kg
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: ''
+interpretation_high: ''
+when_to_order: Reported on whole-body DXA; interpret bone health via BMD T-scores, not raw BMC.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Total mineral mass in the skeleton. For bone-health decisions use the site BMD T-scores,
+  not this raw number.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

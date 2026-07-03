@@ -1,0 +1,30 @@
+slug: cea
+display_name: CEA
+full_name: Carcinoembryonic Antigen
+aliases:
+- cea
+- carcinoembryonic antigen
+units: ng/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 3
+fm_optimal_low: 0
+fm_optimal_high: 3
+interpretation_low: ''
+interpretation_high: '>3 (non-smoker) / >5 (smoker) — non-specific; can rise in GI/other malignancy but
+  also smoking, inflammation. Refer if persistently elevated.'
+when_to_order: Tumour-marker panel / oncology follow-up. Not a standalone screening test.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Non-specific tumour marker. A single mildly-raised value in a smoker is often benign;
+  trend + clinical context matter. Coaching role is to flag for clinician review, not interpret.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

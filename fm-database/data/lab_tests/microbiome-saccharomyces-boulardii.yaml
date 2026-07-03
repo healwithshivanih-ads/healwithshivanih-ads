@@ -1,0 +1,29 @@
+slug: microbiome-saccharomyces-boulardii
+display_name: Saccharomyces boulardii
+full_name: Saccharomyces boulardii (stool relative abundance)
+aliases:
+- saccharomyces boulardii
+- s boulardii
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 0.01
+conventional_high: 0.015
+fm_optimal_low: 0.01
+fm_optimal_high: 0.015
+interpretation_low: Low/absent S. boulardii — beneficial yeast, only present if supplemented.
+interpretation_high: Present S. boulardii — beneficial (usually supplement-derived).
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Beneficial yeast — normally absent unless taken as a probiotic. Absence is expected,
+  not a deficiency.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

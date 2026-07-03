@@ -1,0 +1,30 @@
+slug: microbiome-bacillus-complex
+display_name: Bacillus (combined species)
+full_name: Bacillus (combined species) (stool relative abundance)
+aliases:
+- bacillus coagulans subtilis indicus combined
+- bacillus combined
+- bacillus complex
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 0.01
+conventional_high: 0.054
+fm_optimal_low: 0.01
+fm_optimal_high: 0.054
+interpretation_low: Low/absent Bacillus — spore-forming probiotic species, usually supplement-derived.
+interpretation_high: Present Bacillus — beneficial (usually supplement-derived).
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Combined spore-forming probiotic Bacillus (coagulans/subtilis/indicus). Normally supplement-derived;
+  absence is expected without probiotics.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

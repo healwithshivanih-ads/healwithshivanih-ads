@@ -1,0 +1,33 @@
+slug: ionised-calcium
+display_name: Ionised Calcium
+full_name: Ionised (Free) Calcium
+aliases:
+- ionised calcium
+- ionized calcium
+- free calcium
+- ical
+- ca ionised
+units: mmol/L
+sample_type: blood
+conventional_low: 1.13
+conventional_high: 1.32
+fm_optimal_low: 1.13
+fm_optimal_high: 1.32
+interpretation_low: Low ionised Ca — the physiologically active fraction; hypoparathyroidism, vit D deficiency,
+  alkalosis.
+interpretation_high: High ionised Ca — hyperparathyroidism, malignancy; more accurate than total calcium.
+when_to_order: Calcium/parathyroid workup — more accurate than total calcium (unaffected by albumin).
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: The metabolically active calcium fraction; not albumin-dependent, so preferred over total
+  calcium when parathyroid/vit-D questions arise.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

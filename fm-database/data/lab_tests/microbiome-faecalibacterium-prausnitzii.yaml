@@ -1,0 +1,30 @@
+slug: microbiome-faecalibacterium-prausnitzii
+display_name: Faecalibacterium prausnitzii
+full_name: Faecalibacterium prausnitzii (stool relative abundance)
+aliases:
+- faecalibacterium prausnitzii
+- f prausnitzii
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 5
+conventional_high: 15
+fm_optimal_low: 5
+fm_optimal_high: 15
+interpretation_low: Low F. prausnitzii — reduced butyrate production; key anti-inflammatory keystone species.
+  Support with fibre, resistant starch, polyphenols.
+interpretation_high: High F. prausnitzii — generally favourable (butyrate producer).
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Keystone butyrate producer + anti-inflammatory marker. Low levels are a meaningful gut-health
+  target (feed with diverse fibre, resistant starch, polyphenols).
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

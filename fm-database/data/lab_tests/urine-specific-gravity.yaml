@@ -1,0 +1,33 @@
+slug: urine-specific-gravity
+display_name: Urine Specific Gravity
+full_name: Urine Specific Gravity
+aliases:
+- urine specific gravity
+- specific gravity urine
+- specific gravity
+- usg
+- sp gravity
+units: ''
+sample_type: urine
+conventional_low: 1.005
+conventional_high: 1.03
+fm_optimal_low: 1.01
+fm_optimal_high: 1.025
+interpretation_low: Dilute urine (<1.010) — high fluid intake, diabetes insipidus, impaired concentrating
+  ability.
+interpretation_high: Concentrated urine (>1.025) — dehydration, low fluid intake.
+when_to_order: Routine urinalysis — hydration and renal concentrating ability.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Mostly a hydration snapshot. Low values often just mean well-hydrated at collection;
+  interpret with the clinical question, not alone.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

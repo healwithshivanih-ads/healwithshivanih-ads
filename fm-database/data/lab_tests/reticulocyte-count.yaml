@@ -1,0 +1,33 @@
+slug: reticulocyte-count
+display_name: Reticulocyte Count
+full_name: Reticulocyte Count (%)
+aliases:
+- reticulocyte
+- reticulocyte count
+- retic
+- reticulocyte percent
+units: '%'
+sample_type: blood
+conventional_low: 0.5
+conventional_high: 2.5
+fm_optimal_low: 0.5
+fm_optimal_high: 2.5
+interpretation_low: Low retic — inadequate marrow response (iron/B12/folate deficiency, marrow suppression)
+  despite anaemia.
+interpretation_high: High retic — active red-cell production (recent blood loss, haemolysis, or response
+  to iron/B12 repletion).
+when_to_order: Anaemia workup — distinguishes production failure from loss/destruction.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: 'Key anaemia discriminator: low in nutritional/marrow causes, high after bleeding/haemolysis
+  or once repletion kicks in. Read with Hb, MCV, ferritin.'
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

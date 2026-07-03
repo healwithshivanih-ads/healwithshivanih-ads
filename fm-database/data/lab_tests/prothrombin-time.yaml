@@ -1,0 +1,33 @@
+slug: prothrombin-time
+display_name: PT
+full_name: Prothrombin Time
+aliases:
+- pt
+- prothrombin time
+- pt test
+- pt-test
+- pt test clot based assay
+units: sec
+sample_type: blood
+conventional_low: 11
+conventional_high: 13.5
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Short PT — usually not clinically significant.
+interpretation_high: Prolonged PT — warfarin, vitamin K deficiency, liver disease, DIC. Interpret via
+  INR.
+when_to_order: Bleeding/clotting workup, liver function, anticoagulation monitoring.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Reference range is highly reagent-dependent — always interpret via INR, not raw seconds.
+  Anchor on the lab's own range.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

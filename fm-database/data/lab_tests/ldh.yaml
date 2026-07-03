@@ -1,0 +1,31 @@
+slug: ldh
+display_name: LDH
+full_name: Lactate Dehydrogenase
+aliases:
+- ldh
+- lactate dehydrogenase
+- ldh serum
+units: U/L
+sample_type: blood
+conventional_low: 140
+conventional_high: 280
+fm_optimal_low: 140
+fm_optimal_high: 280
+interpretation_low: Low LDH — rarely significant.
+interpretation_high: High LDH — non-specific cell turnover/tissue damage (haemolysis, liver, muscle, infection,
+  malignancy). Interpret with the clinical picture.
+when_to_order: General cell-turnover / haemolysis / tissue-damage marker.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Very non-specific. Reference range is assay-dependent — anchor on the lab's own range.
+  Haemolysed samples falsely raise it.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

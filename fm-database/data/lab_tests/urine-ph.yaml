@@ -1,0 +1,31 @@
+slug: urine-ph
+display_name: Urine pH
+full_name: Urine pH
+aliases:
+- urine ph
+- ph urine
+- urinary ph
+units: ''
+sample_type: urine
+conventional_low: 4.5
+conventional_high: 8.0
+fm_optimal_low: 6.0
+fm_optimal_high: 7.0
+interpretation_low: Acidic urine (<6) — high-protein diet, metabolic acidosis, some stone risk (uric acid).
+interpretation_high: Alkaline urine (>7) — vegetarian diet, UTI (urease organisms), some stone risk (calcium
+  phosphate).
+when_to_order: Routine urinalysis — diet, stone-risk and acid-base context.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Diet-sensitive (meat lowers, plants raise). A single value reflects the last meal + hydration;
+  not diagnostic alone.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

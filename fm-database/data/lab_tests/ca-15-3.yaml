@@ -1,0 +1,31 @@
+slug: ca-15-3
+display_name: CA 15.3
+full_name: Cancer Antigen 15-3
+aliases:
+- ca 15.3
+- ca 15-3
+- ca153
+- cancer antigen 15-3
+units: U/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 25
+fm_optimal_low: 0
+fm_optimal_high: 25
+interpretation_low: ''
+interpretation_high: '>25-30 (assay-dependent) — used mainly to monitor known breast cancer, not to screen.
+  Mild elevations occur in benign breast/liver conditions.'
+when_to_order: Breast-cancer monitoring under oncology. Not a screening test.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Monitoring marker, not a screen. Flag for clinician; do not interpret as a cancer screen.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

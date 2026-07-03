@@ -1,0 +1,40 @@
+slug: copper-serum
+display_name: Copper (Serum)
+full_name: Serum Copper
+aliases:
+- copper level
+- copper serum
+- serum copper
+- copper
+units: µg/dL
+sample_type: blood
+conventional_low: 70
+conventional_high: 140
+fm_optimal_low: 70
+fm_optimal_high: 110
+interpretation_low: Low — copper deficiency (malabsorption, excess zinc
+  supplementation, coeliac disease, bariatric surgery); can cause anaemia and
+  neutropenia.
+interpretation_high: High — oestrogen/OCP use, pregnancy, inflammation, Wilson's
+  disease (rare — usually presents with low ceruloplasmin instead), excess
+  supplementation.
+when_to_order: Alongside zinc when the copper:zinc balance is in question
+  (high-dose zinc supplementation is a common cause of copper deficiency), or
+  Wilson's/liver workup.
+fasting_required: false
+typical_cost_inr: 700
+linked_to_topics:
+- zinc-nutrition
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Copper (Serum)
+evidence_tier: fm_specific_thin
+notes_for_coach: FM-optimal serum Zn:Cu ratio is roughly 8:1–12:1 — always read
+  copper alongside zinc, not in isolation. High-dose zinc supplementation (a
+  common FM protocol) is the most frequent cause of iatrogenic copper
+  deficiency; check this ratio in any client on long-term zinc.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

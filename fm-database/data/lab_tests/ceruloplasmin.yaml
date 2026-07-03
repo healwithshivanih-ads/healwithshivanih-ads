@@ -1,0 +1,37 @@
+slug: ceruloplasmin
+display_name: Ceruloplasmin
+full_name: Serum Ceruloplasmin
+aliases:
+- ceruloplasmin serum
+- ceruloplasmin level
+- serum ceruloplasmin
+units: mg/dL
+sample_type: blood
+conventional_low: 20
+conventional_high: 60
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low — copper deficiency, malnutrition, Wilson's disease (rare,
+  usually paired with low serum copper + high urinary copper), nephrotic syndrome,
+  severe liver disease.
+interpretation_high: High — acute-phase/inflammatory response, oestrogen/OCP use,
+  pregnancy, infection. Interpret alongside CRP — both are acute-phase reactants
+  and often rise together.
+when_to_order: Wilson's disease screening, unexplained liver enzyme abnormalities,
+  or alongside serum copper when copper balance is in question.
+fasting_required: false
+typical_cost_inr: 900
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Ceruloplasmin
+evidence_tier: fm_specific_thin
+notes_for_coach: No well-established FM-optimal narrowing beyond the lab's own
+  reference range — treat as a screening/context marker (Wilson's, acute-phase,
+  oestrogen status) rather than a standalone target. Reference range varies
+  meaningfully by assay; anchor on this lab's own printed range.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

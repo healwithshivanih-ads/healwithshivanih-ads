@@ -1,0 +1,32 @@
+slug: ca-125
+display_name: CA-125
+full_name: Cancer Antigen 125
+aliases:
+- ca 125
+- ca-125
+- ca125
+- cancer antigen 125
+units: U/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 35
+fm_optimal_low: 0
+fm_optimal_high: 35
+interpretation_low: ''
+interpretation_high: '>35 — non-specific; raised in ovarian pathology but also endometriosis, fibroids,
+  menstruation, pregnancy, inflammation. Refer if persistently high.'
+when_to_order: Ovarian/pelvic workup under gynaecology. Poor screening specificity premenopause.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Very non-specific in premenopausal women (rises with endometriosis, fibroids, even menstruation).
+  Flag for clinician; avoid alarming the client over a mild elevation.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: microbiome-rych-index
+display_name: Rych Index
+full_name: Rych Index (stool relative abundance)
+aliases:
+- rych index
+- rych index sova proprietary gut health score
+- rych gut health score
+units: score (-10 to +10)
+sample_type: stool
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low Rych Index — proprietary Sova composite below the average-user band; overall gut-health
+  concern.
+interpretation_high: High Rych Index — favourable composite gut-health score.
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Sova proprietary composite gut-health score (-10 to +10 scale); average healthy user
+  ~5-6. No independent validation — treat as the vendor's summary index, useful for tracking on their
+  platform, not a standalone clinical target.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

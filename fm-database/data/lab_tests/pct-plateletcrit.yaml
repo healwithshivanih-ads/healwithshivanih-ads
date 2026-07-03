@@ -1,0 +1,30 @@
+slug: pct-plateletcrit
+display_name: PCT (Plateletcrit)
+full_name: Plateletcrit
+aliases:
+- plateletcrit
+- pct plateletcrit
+- pct
+units: '%'
+sample_type: blood
+conventional_low: 0.17
+conventional_high: 0.35
+fm_optimal_low: 0.17
+fm_optimal_high: 0.35
+interpretation_low: Low plateletcrit — low platelet mass; correlate with platelet count.
+interpretation_high: High plateletcrit — raised total platelet mass; reactive thrombocytosis, inflammation.
+when_to_order: CBC platelet indices.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Total platelet mass (count x MPV). Alias 'PCT' collides with procalcitonin — this entry
+  is plateletcrit only; add a separate procalcitonin entry if that assay ever appears.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

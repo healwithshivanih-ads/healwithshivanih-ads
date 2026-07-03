@@ -1,0 +1,28 @@
+slug: microbiome-bifidobacterium-lactis
+display_name: Bifidobacterium lactis
+full_name: Bifidobacterium lactis (stool relative abundance)
+aliases:
+- bifidobacterium lactis
+- b lactis
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 0.01
+conventional_high: 0.03
+fm_optimal_low: 0.01
+fm_optimal_high: 0.03
+interpretation_low: Low/absent B. lactis — reduced beneficial Bifidobacteria.
+interpretation_high: Adequate B. lactis — beneficial.
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Beneficial Bifidobacterium (common probiotic strain). Low healthy band ~0.01-0.03%.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

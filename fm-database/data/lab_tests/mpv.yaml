@@ -1,0 +1,29 @@
+slug: mpv
+display_name: MPV
+full_name: Mean Platelet Volume
+aliases:
+- mean platelet volume
+- mpv
+units: fL
+sample_type: blood
+conventional_low: 7.5
+conventional_high: 11.5
+fm_optimal_low: 7.5
+fm_optimal_high: 11.5
+interpretation_low: Small platelets — bone-marrow suppression, some thrombocytopenias.
+interpretation_high: Large young platelets — increased turnover, inflammation, or early recovery of marrow.
+when_to_order: Part of the CBC — read alongside platelet count and PDW.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Platelet-size index; mildly abnormal values are usually incidental. Read with platelet
+  count + PDW, not alone.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

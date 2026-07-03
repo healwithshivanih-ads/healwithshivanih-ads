@@ -1,0 +1,34 @@
+slug: ldl-hdl-ratio
+display_name: LDL/HDL Ratio
+full_name: LDL to HDL Cholesterol Ratio
+aliases:
+- ldl hdl ratio
+- ldl/hdl ratio
+- 'ldl:hdl'
+- ldl hdl cholesterol
+- 'ldl : hdl cholesterol'
+units: ratio
+sample_type: blood
+conventional_low: 0
+conventional_high: 3.5
+fm_optimal_low: 0
+fm_optimal_high: 2.5
+interpretation_low: ''
+interpretation_high: '>2.5 above FM-optimal; >3.5 = elevated cardiovascular risk (excess LDL
+  relative to reverse-transport HDL capacity).'
+when_to_order: Computed from any standard lipid panel — no separate order needed.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- cardiovascular-disease
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — LDL/HDL ratio
+evidence_tier: strong
+notes_for_coach: Free derived lipid ratio. FM-optimal <2.5. Interpret alongside TG/HDL (better
+  for insulin resistance) and ApoB (best particle-burden marker).
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

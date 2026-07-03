@@ -1,0 +1,34 @@
+slug: inr
+display_name: INR
+full_name: International Normalised Ratio
+aliases:
+- inr
+- pt inr
+- pt-inr
+- pt inr calculated
+- international normalised ratio
+- international normalized ratio
+units: ratio
+sample_type: blood
+conventional_low: 0.8
+conventional_high: 1.2
+fm_optimal_low: 0.8
+fm_optimal_high: 1.2
+interpretation_low: <0.8 — mild hypercoagulable tendency; usually not acted on alone.
+interpretation_high: '>1.2 (off anticoagulants) — clotting-factor deficiency, vitamin K deficiency, liver
+  disease. On warfarin the target is 2-3.'
+when_to_order: Standardised prothrombin-time reporting; anticoagulation monitoring.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Standardised PT. Normal ~1.0 off anticoagulants; therapeutic target 2-3 on warfarin (do
+  not flag those as 'high').
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

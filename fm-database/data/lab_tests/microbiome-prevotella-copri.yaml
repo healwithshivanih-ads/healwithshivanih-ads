@@ -1,0 +1,30 @@
+slug: microbiome-prevotella-copri
+display_name: Prevotella copri
+full_name: Prevotella copri (stool relative abundance)
+aliases:
+- prevotella copri
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 5
+conventional_high: 15
+fm_optimal_low: 5
+fm_optimal_high: 15
+interpretation_low: Low Prevotella — lower fibre/plant-diverse intake.
+interpretation_high: Very high Prevotella (single-species dominance) — reduced diversity; can associate
+  with inflammation in some contexts.
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Fibre-fermenting genus. Healthy typically 5-15%; single-species dominance (e.g. 55%)
+  signals low diversity, not a 'good' result. Proprietary-panel band — interpret as diversity context,
+  not a hard target.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

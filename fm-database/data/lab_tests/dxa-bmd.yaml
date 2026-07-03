@@ -1,0 +1,37 @@
+slug: dxa-bmd
+display_name: Bone Density (DXA BMD)
+full_name: Bone Mineral Density by DXA (site-specific)
+aliases:
+- bmd
+- bone mineral density
+- total body bmd
+- ap spine bmd
+- ap spine l1-l4 bmd
+- femur neck bmd
+- femur neck l bmd
+- forearm radius 33 bmd
+- forearm radius 33% bmd
+- dxa bmd
+units: g/cm2
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low BMD — T-score -1.0 to -2.5 = osteopenia; <=-2.5 = osteoporosis.
+interpretation_high: Normal/high BMD — T-score >= -1.0.
+when_to_order: Bone-health assessment (DXA) — fracture-risk, perimenopause, low body weight, RED-S.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: 'Interpret by the T-SCORE reported with each site, not the raw g/cm2: >=-1 normal, -1
+  to -2.5 osteopenia, <=-2.5 osteoporosis. Read the site with the LOWEST T-score.'
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

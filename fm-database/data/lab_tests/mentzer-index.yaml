@@ -1,0 +1,29 @@
+slug: mentzer-index
+display_name: Mentzer Index
+full_name: Mentzer Index (MCV / RBC count)
+aliases:
+- mentzer index
+- mentzer
+units: ''
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: <13 — favours beta-thalassaemia trait over iron deficiency.
+interpretation_high: '>13 — favours iron-deficiency anaemia over thalassaemia trait.'
+when_to_order: Microcytosis workup — distinguishes iron deficiency from thalassaemia trait.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Screening heuristic only, NOT diagnostic. <13 suspicious for beta-thalassaemia trait;
+  >13 leans iron deficiency; 13 = indeterminate. Confirm with ferritin + Hb electrophoresis.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

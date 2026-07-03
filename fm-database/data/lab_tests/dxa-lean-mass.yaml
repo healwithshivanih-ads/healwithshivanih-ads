@@ -1,0 +1,32 @@
+slug: dxa-lean-mass
+display_name: Lean Mass (DXA)
+full_name: Total Lean Mass (DXA)
+aliases:
+- lean mass
+- lean mass dxa
+- dxa lean mass
+- total lean mass
+- fat free mass
+units: kg
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: ''
+interpretation_high: ''
+when_to_order: Body-composition tracking (DXA) — muscle-preservation goal during weight loss.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Absolute lean (mostly muscle) mass in kg. Key metric to PROTECT during weight loss —
+  track the trend; falling lean mass on a fat-loss plan signals over-restriction/low protein.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

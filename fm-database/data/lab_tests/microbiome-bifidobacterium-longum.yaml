@@ -1,0 +1,29 @@
+slug: microbiome-bifidobacterium-longum
+display_name: Bifidobacterium longum
+full_name: Bifidobacterium longum (stool relative abundance)
+aliases:
+- bifidobacterium longum
+- b longum
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 1.14
+conventional_high: 3.74
+fm_optimal_low: 1.14
+fm_optimal_high: 3.74
+interpretation_low: Low B. longum — reduced beneficial Bifidobacteria; support with prebiotics (GOS/inulin),
+  fermented foods.
+interpretation_high: Adequate B. longum — beneficial.
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Beneficial Bifidobacterium. Low = a probiotic/prebiotic target. Panel healthy band ~1.14-3.74%.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: albumin-globulin-ratio
+display_name: A/G Ratio
+full_name: Albumin/Globulin Ratio
+aliases:
+- a/g ratio
+- ag ratio
+- albumin globulin ratio
+- albumin/globulin ratio
+- albumin globulin
+units: ratio
+sample_type: blood
+conventional_low: 0.9
+conventional_high: 2.0
+fm_optimal_low: 1.5
+fm_optimal_high: 2.5
+interpretation_low: Low A/G (<1.5) — chronic immune activation / inflammation (raised globulins)
+  or low albumin (poor protein status, liver, gut absorption).
+interpretation_high: High A/G — usually low globulins; rarely significant on its own.
+when_to_order: Part of the liver/total-protein panel; inflammation and protein-status context.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Albumin/Globulin ratio
+evidence_tier: plausible_emerging
+notes_for_coach: Derived from albumin + globulin. FM likes >1.5 — a low ratio flags either
+  inflammation (high globulins) or under-nutrition/absorption (low albumin); check which
+  side is driving it. Distinct from the DXA Android/Gynoid ratio.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

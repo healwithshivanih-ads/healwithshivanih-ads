@@ -29,8 +29,16 @@ def _norm_marker(s: object) -> str:
     """Word-order- and punctuation-insensitive key for matching a lab name
     against the LabTest catalogue: lowercase, drop dots, tokenise, sort, join.
     So 'S.G.O.T.', 'Morning Cortisol' and 'Cortisol (Morning)' all collapse
-    onto a stable key the catalogue's aliases can be matched against."""
+    onto a stable key the catalogue's aliases can be matched against.
+
+    Draw-time fragments (e.g. "08:40AM", "8 am") are stripped before
+    tokenising — labs frequently append the exact draw time to
+    time-sensitive markers like cortisol, and without this the timestamp
+    tokens ("08", "40am") would prevent the name from ever matching the
+    catalogue alias ("cortisol morning"), silently dropping it into the
+    uninterpreted "Other" bucket instead of getting FM-optimal ranges."""
     t = str(s or "").lower().replace(".", "")
+    t = re.sub(r"\b\d{1,2}[:.]?\d{0,2}\s*(am|pm)\b", " ", t)
     toks = sorted(tok for tok in re.split(r"[^a-z0-9]+", t) if tok)
     return "".join(toks)
 
@@ -588,7 +596,9 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # 5. CARDIOVASCULAR & LIPIDS
     # ══════════════════════════════════════════════════════════════════════════
     tc = _find(extracted_labs,
-        r"total cholesterol|cholesterol.total|\btotal.chol\b|\bchol\b")
+        # include the reversed "Cholesterol - Total" / "Cholesterol, Total"
+        # ordering some Indian labs print (2026-07-02: was silently missed).
+        r"total cholesterol|cholesterol.total|cholesterol[\s:/,\-]+total|\btotal.chol\b|\bchol\b")
     # NOTE the \b before every `ldl` alternative — without it, the
     # `ldl.cholesterol` pattern matches the substring "ldl cholesterol"
     # INSIDE "vldl cholesterol", so a VLDL result silently overwrites LDL.
@@ -614,10 +624,16 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     hscrp = _find(extracted_labs,
         r"hs.crp|high.sensitivity.crp|hscrp|high sensitivity c.reactive|hs-crp"
         r"|c.?reactive.*sensitiv|sensitiv.*c.?reactive|crp.*sensitiv")
+    # "apolipoprotein.b\b" only tolerates exactly ONE separator char between
+    # the words — real lab names vary more than that ("Apolipoproteins B"
+    # has 2 chars: the plural "s" + space; "Apolipoprotein - A1" has 3:
+    # space-hyphen-space). Widened to an optional plural "s" + any run of
+    # whitespace/hyphen/colon/slash separators (caught 2026-07-02: both
+    # patterns silently missed real client lab values under the old regex).
     apob = _find(extracted_labs,
-        r"\bapo[ -]?b\b|apolipoprotein.b\b|apob\b")
+        r"\bapo[ -]?b\b|apolipoproteins?[\s\-:/]*b\b|apob\b")
     apoa1 = _find(extracted_labs,
-        r"\bapo[ -]?a[ -]?1\b|apolipoprotein.a1?\b|apoa1?\b")
+        r"\bapo[ -]?a[ -]?1\b|apolipoproteins?[\s\-:/]*a1?\b|apoa1?\b")
     lpa = _find(extracted_labs,
         r"\blp\(?a\)?\b|lipoprotein.{0,5}a\b|lipoprotein.little.a")
 
@@ -1210,6 +1226,27 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     lt_index = _lab_test_index()
     coded_keys = {_norm_marker(r.get("marker_name")) for r in results}
 
+    # Catalogue lab-tests whose value a coded handler above ALSO emits, under a
+    # different display name (labs frequently print HOMA-IR, A/G, Non-HDL,
+    # TC/HDL, LDL/HDL as their own pre-computed rows). Map catalogue slug ->
+    # the coded handler's display name. In the passthrough we skip a raw row
+    # ONLY when its coded equivalent is already present, so the computed
+    # marker wins and we avoid a duplicate — but when the coded handler didn't
+    # fire (missing components), the raw row still gets catalogue interpretation
+    # instead of being lost. NOTE cholesterol/hdl and ldl/hdl catalogue entries
+    # deliberately map onto the "TC/HDL ratio" / "LDL/HDL ratio" coded names
+    # even though the wording differs — same ratio, different label.
+    _coded_equivalent = {
+        "homa-ir": "HOMA-IR",
+        "non-hdl-cholesterol": "Non-HDL cholesterol",
+        "albumin-globulin-ratio": "Albumin/Globulin ratio",
+        "cholesterol-hdl-ratio": "TC/HDL ratio",
+        "ldl-hdl-ratio": "LDL/HDL ratio",
+    }
+    _coded_equivalent_keys = {
+        slug: _norm_marker(name) for slug, name in _coded_equivalent.items()
+    }
+
     def _rng(lo: object, hi: object) -> str:
         if lo is None and hi is None:
             return ""
@@ -1234,6 +1271,42 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         if not nkey or nkey in coded_keys:
             continue  # already represented by a coded marker
         lt = lt_index.get(nkey)
+        if lt is None:
+            # Tolerate compound labels that combine a full name with a
+            # parenthetical abbreviation/qualifier anywhere in the string —
+            # e.g. "PCV (Hematocrit)", "Packed Cell Volume (PCV)",
+            # "Sodium (Na+) - Serum" — where the combined token set never
+            # exactly equals a single catalogue alias's token set because
+            # the name is effectively said twice (or annotated) in one
+            # string. Retry with every parenthetical segment stripped out
+            # entirely, and with each parenthetical segment's own inner text
+            # on its own, before giving up.
+            #
+            # Known trade-off: this could misfire if a parenthetical is the
+            # ONLY thing distinguishing two catalogue-distinct variants of
+            # the same analyte (e.g. "Testosterone (Free)" vs "(Total)")
+            # AND one variant's catalogue entry carelessly aliases the bare
+            # analyte name. As of 2026-07 no such alias exists (checked
+            # free-testosterone.yaml / total-testosterone.yaml), so this is
+            # a theoretical risk to watch for in future catalogue authoring,
+            # not an active bug — never alias a bare generic analyte name
+            # onto a variant-specific LabTest entry.
+            parens = re.findall(r"\(([^)]*)\)", nm)
+            stripped = re.sub(r"\([^)]*\)", " ", nm)
+            for cand in (stripped, *parens):
+                pk = _norm_marker(cand)
+                if pk and pk in lt_index:
+                    lt = lt_index[pk]
+                    break
+        # If this catalogue marker duplicates one a coded handler already
+        # emitted (e.g. a pre-computed "HOMA-IR Index" row when the handler
+        # computed HOMA-IR from insulin+glucose), skip the raw row so the
+        # computed marker isn't shown twice. Only skips when the coded marker
+        # is actually present — otherwise the raw row is interpreted below.
+        if lt is not None:
+            eq = _coded_equivalent_keys.get(lt.get("slug"))
+            if eq and eq in coded_keys:
+                continue
         dkey = f"lt:{lt.get('slug')}" if lt else f"raw:{nkey}"
         prev = picked.get(dkey)
         if prev is None or _parse_lab_date(lab.get("date_drawn")) >= _parse_lab_date(prev[0].get("date_drawn")):

@@ -1,0 +1,28 @@
+slug: pdw
+display_name: PDW
+full_name: Platelet Distribution Width
+aliases:
+- platelet distribution width
+- pdw
+units: fL
+sample_type: blood
+conventional_low: 9
+conventional_high: 17
+fm_optimal_low: 9
+fm_optimal_high: 17
+interpretation_low: Uniform platelet size — usually incidental.
+interpretation_high: Variable platelet size — platelet activation, inflammation, or marrow turnover.
+when_to_order: Part of the CBC platelet indices.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Platelet size variability. Incidental in isolation; interpret with MPV + platelet count.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

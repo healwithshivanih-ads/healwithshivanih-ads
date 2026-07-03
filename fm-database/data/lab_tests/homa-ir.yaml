@@ -4,6 +4,10 @@ full_name: Homeostatic Model Assessment of Insulin Resistance
 aliases:
 - homa
 - insulin resistance index
+- homa ir index
+- homa-ir index
+- homa ir
+- homa2 ir
 units: ratio
 sample_type: calculated
 conventional_low: 0.5

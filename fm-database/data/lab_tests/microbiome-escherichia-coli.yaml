@@ -1,0 +1,31 @@
+slug: microbiome-escherichia-coli
+display_name: Escherichia coli
+full_name: Escherichia coli (stool relative abundance)
+aliases:
+- escherichia coli
+- e coli
+- e. coli
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 0
+conventional_high: 1
+fm_optimal_low: 0
+fm_optimal_high: 1
+interpretation_low: Low E. coli — usually fine.
+interpretation_high: '>1% — potential proteobacteria overgrowth; dysbiosis/inflammation signal in a stool
+  panel.'
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Commensal at low levels; >1% relative abundance flagged by the panel as potential overgrowth.
+  Read with overall diversity + symptoms.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

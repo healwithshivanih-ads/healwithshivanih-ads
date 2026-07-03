@@ -1,0 +1,29 @@
+slug: microbiome-bifidobacterium-bifidum
+display_name: Bifidobacterium bifidum
+full_name: Bifidobacterium bifidum (stool relative abundance)
+aliases:
+- bifidobacterium bifidum
+- b bifidum
+units: '% relative abundance'
+sample_type: stool
+conventional_low: 0.01
+conventional_high: 0.02
+fm_optimal_low: 0.01
+fm_optimal_high: 0.02
+interpretation_low: Low B. bifidum — reduced beneficial Bifidobacteria.
+interpretation_high: Adequate B. bifidum — beneficial.
+when_to_order: Stool microbiome panel (e.g. Sova) — gut-health assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: Beneficial Bifidobacterium (low healthy band ~0.01-0.02%). Support via prebiotics + fermented
+  foods.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

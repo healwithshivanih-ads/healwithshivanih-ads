@@ -1,0 +1,33 @@
+slug: rheumatoid-factor
+display_name: Rheumatoid Factor
+full_name: Rheumatoid Factor (Quantitative)
+aliases:
+- rheumatoid factor
+- ra factor
+- rf
+- rheumatoid factor quantitative
+- ra factor quantitative
+units: IU/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 14
+fm_optimal_low: 0
+fm_optimal_high: 14
+interpretation_low: ''
+interpretation_high: '>14 — positive; suggests rheumatoid arthritis or other autoimmune/chronic-inflammatory
+  conditions. Not specific — interpret with symptoms + anti-CCP.'
+when_to_order: Joint pain / suspected inflammatory arthritis / autoimmune workup.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Assay cut-off varies; anchor on the lab's own range. A positive RF is not diagnostic
+  on its own — pair with anti-CCP (more specific for RA) and clinical picture.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

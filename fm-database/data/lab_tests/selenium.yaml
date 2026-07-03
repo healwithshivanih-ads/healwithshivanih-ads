@@ -1,0 +1,31 @@
+slug: selenium
+display_name: Selenium
+full_name: Serum Selenium
+aliases:
+- selenium
+- serum selenium
+- se
+units: µg/L
+sample_type: blood
+conventional_low: 63
+conventional_high: 160
+fm_optimal_low: 100
+fm_optimal_high: 150
+interpretation_low: Low selenium — impaired thyroid T4->T3 conversion + glutathione peroxidase antioxidant
+  defence; relevant in Hashimoto's.
+interpretation_high: High selenium — usually over-supplementation; can be toxic (>400-500).
+when_to_order: Thyroid/autoimmune workup, antioxidant status, hair loss.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: FM targets upper-normal (~100-150) for thyroid conversion + glutathione. Important cofactor
+  in Hashimoto's protocols. Don't over-supplement — narrow therapeutic window.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

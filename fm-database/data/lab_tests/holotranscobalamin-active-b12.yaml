@@ -7,6 +7,10 @@ aliases:
   - HoloTC
   - biologically active B12
   - transcobalamin-bound B12
+  - holotranscobalamin
+  - vitamin b12 active
+  - vitamin b12 active holotranscobalamin
+  - b12 active
 units: pmol/L
 sample_type: blood
 conventional_low: 35

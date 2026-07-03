@@ -1,0 +1,34 @@
+slug: troponin-i-hs
+display_name: hs Troponin I
+full_name: High-Sensitivity Troponin I
+aliases:
+- hs tn-i
+- hs troponin i
+- high sensitivity troponin i
+- troponin i
+- hstni
+- hs-tni
+units: pg/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 15
+fm_optimal_low: 0
+fm_optimal_high: 15
+interpretation_low: ''
+interpretation_high: Elevated (assay- and sex-specific cut-off) — myocardial injury; acute rise = emergency.
+  A low stable value is reassuring for baseline cardiac risk.
+when_to_order: Cardiac injury assessment; acute chest pain is an emergency (not a coaching setting).
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Sex-specific 99th-percentile cut-offs (women lower than men). A single low baseline value
+  is reassuring; any acute elevation is an emergency referral, never a coaching interpretation.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

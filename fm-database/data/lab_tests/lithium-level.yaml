@@ -1,0 +1,32 @@
+slug: lithium-level
+display_name: Lithium
+full_name: Serum Lithium Level
+aliases:
+- lithium
+- lithium level
+- serum lithium
+- li
+units: mmol/L
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: ''
+interpretation_high: Therapeutic drug level (0.6-1.2 on lithium therapy); >1.5 toxic. A trace value off-therapy
+  is incidental.
+when_to_order: Only relevant if the client is on lithium therapy (drug-level monitoring).
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: fm_specific_thin
+notes_for_coach: This is a therapeutic drug level, not a nutrient. A trace reading (~0.1) in someone not
+  on lithium is an incidental panel inclusion, not a finding.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

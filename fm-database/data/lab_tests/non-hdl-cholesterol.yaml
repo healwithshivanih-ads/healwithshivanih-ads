@@ -1,7 +1,13 @@
 slug: non-hdl-cholesterol
 display_name: Non-HDL Cholesterol
 full_name: Non-HDL Cholesterol
-aliases: []
+aliases:
+- non hdl
+- non-hdl
+- non hdl cholesterol
+- non hdl component
+- non-hdl component
+- non hdl component cholesterol
 units: mg/dL
 sample_type: blood
 linked_to_topics: []

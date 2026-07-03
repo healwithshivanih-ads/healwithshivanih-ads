@@ -1,0 +1,32 @@
+slug: dxa-android-gynoid-ratio
+display_name: Android/Gynoid Ratio (DXA)
+full_name: Android-to-Gynoid Fat Ratio (DXA)
+aliases:
+- android gynoid ratio
+- android/gynoid ratio
+- a/g ratio dxa
+- android gynoid ratio dxa
+units: ''
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: 0
+fm_optimal_high: 1.0
+interpretation_low: ''
+interpretation_high: '>1.0 — central (android) fat predominance; higher cardiometabolic risk. Women optimal
+  <0.8, men <1.0.'
+when_to_order: DXA fat-distribution / cardiometabolic-risk assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: Central-vs-peripheral fat ratio; the most useful single DXA fat-distribution number.
+  Women optimal <0.8. NOTE distinct from serum Albumin/Globulin 'A/G ratio' — different marker entirely.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

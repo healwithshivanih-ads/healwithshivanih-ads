@@ -1,0 +1,35 @@
+slug: cholesterol-triglyceride-ratio
+display_name: Cholesterol/Triglyceride Ratio
+full_name: Total Cholesterol to Triglyceride Ratio
+aliases:
+- cholesterol triglyceride ratio
+- cholesterol/triglyceride ratio
+- chol/tg ratio
+- total cholesterol triglyceride ratio
+units: ratio
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: ''
+interpretation_high: ''
+when_to_order: Occasionally printed by Indian labs alongside the standard lipid
+  panel — no separate order needed.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Cholesterol/Triglyceride ratio
+evidence_tier: fm_specific_thin
+notes_for_coach: No independently validated FM-optimal cut-off exists for this
+  ratio — unlike TG/HDL or Cholesterol/HDL, it is not a recognised cardiovascular
+  or insulin-resistance risk marker in the literature. Some Indian labs print it
+  as a routine extra; treat as informational only and defer to the TG/HDL ratio
+  + Cholesterol/HDL ratio for actual risk stratification.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

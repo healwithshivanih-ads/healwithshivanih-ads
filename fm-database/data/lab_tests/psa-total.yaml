@@ -1,0 +1,32 @@
+slug: psa-total
+display_name: PSA (Total)
+full_name: Prostate-Specific Antigen, Total
+aliases:
+- psa
+- psa total
+- total psa
+- prostate specific antigen
+units: ng/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 4
+fm_optimal_low: 0
+fm_optimal_high: 4
+interpretation_low: ''
+interpretation_high: '>4 ng/mL — refer urology; can reflect BPH, prostatitis or malignancy. Age-specific
+  cut-offs apply.'
+when_to_order: Male prostate screening / urinary symptoms. Not applicable to female clients.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Screening marker (males). Elevation is non-specific (BPH, prostatitis, recent ejaculation/cycling
+  can raise it). Refer for elevated or rising values.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

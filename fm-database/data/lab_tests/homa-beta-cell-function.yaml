@@ -1,0 +1,35 @@
+slug: homa-beta-cell-function
+display_name: Beta Cell Function
+full_name: HOMA2 Beta-Cell Function (%B)
+aliases:
+- beta cell function
+- beta cell function %b
+- homa beta cell function
+- '%b'
+- homa2 b
+units: '%'
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low %B — reduced insulin secretory capacity; late/advanced insulin resistance or beta-cell
+  exhaustion.
+interpretation_high: High %B — beta cells over-secreting to compensate for insulin resistance (common
+  in early IR/PCOS).
+when_to_order: Computed from fasting glucose + insulin (HOMA2 model) — read with HOMA-IR and insulin sensitivity
+  (%S).
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: plausible_emerging
+notes_for_coach: 'HOMA2 %B: ~100% is the reference-normal. Interpret as a pair with %S — high %B + low
+  %S = compensated insulin resistance; low %B = failing secretion. Read alongside HOMA-IR.'
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: bmi
+display_name: BMI
+full_name: Body Mass Index
+aliases:
+- bmi
+- body mass index
+units: kg/m2
+sample_type: blood
+conventional_low: 18.5
+conventional_high: 24.9
+fm_optimal_low: 18.5
+fm_optimal_high: 23.0
+interpretation_low: Underweight (<18.5) — assess nutrition, cycle, bone health.
+interpretation_high: 'Asian-Pacific: >=23 overweight, >=25 obese (lower cut-offs than Western >=25/>=30).
+  Pair with waist + body-fat %, since BMI misses body composition.'
+when_to_order: Derived from height + weight; screening only.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation
+evidence_tier: strong
+notes_for_coach: Uses Asian-Pacific cut-offs (overweight >=23, obese >=25) per this practice's Indian
+  client base. BMI misses muscle vs fat — always read with waist:height + DXA body-fat % where available.
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: shivani
