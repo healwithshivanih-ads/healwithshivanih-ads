@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
+import { validateMeasurement } from "@/lib/fmdb/measurements";
 
 const execFileP = promisify(execFile);
 
@@ -1486,6 +1487,24 @@ export async function addMeasurementAction(
     const yaml = await import("js-yaml");
     const raw = await fs.readFile(clientYaml, "utf8");
     const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+
+    // Sanity-validate every provided metric value before writing — a value in
+    // the wrong unit (36 cm waist) or corrupt (-1.5 cm hip) is rejected here
+    // even if the UI let it through. Storage is always metric.
+    const toValidate: [string, number | undefined][] = [
+      ["weight_kg", input.weight_kg],
+      ["height_cm", input.height_cm],
+      ["waist_cm", input.waist_cm],
+      ["hip_cm", input.hip_cm],
+      ["blood_pressure_systolic", input.blood_pressure_systolic],
+      ["blood_pressure_diastolic", input.blood_pressure_diastolic],
+      ["resting_heart_rate", input.resting_heart_rate],
+    ];
+    for (const [key, val] of toValidate) {
+      if (val === undefined) continue;
+      const v = validateMeasurement(key, val);
+      if (!v.ok) return { ok: false, error: v.error };
+    }
 
     // Build entry with only the non-undefined fields
     const entry: Record<string, unknown> = { date: input.date };

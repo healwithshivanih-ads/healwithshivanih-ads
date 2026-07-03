@@ -11,6 +11,22 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FmPanel } from "./FmPanel";
 import { addMeasurementAction } from "@/lib/server-actions/clients";
+import {
+  validateMeasurement,
+  round1,
+  kgToLb,
+  lbToKg,
+  inchesToCm,
+  cmToInches,
+  ftInToCm,
+  cmToFtIn,
+} from "@/lib/fmdb/measurements";
+
+type MeasureUnits = "metric" | "imperial";
+function readUnitsPref(): MeasureUnits {
+  if (typeof window === "undefined") return "metric";
+  return window.localStorage?.getItem("fmcoach_units") === "imperial" ? "imperial" : "metric";
+}
 
 export interface BodyCompMetric {
   /** Display label, e.g. "Weight". */
@@ -303,16 +319,25 @@ function LogEntryModal({
   const [err, setErr] = useState<string | null>(null);
   const today = new Date().toISOString().slice(0, 10);
 
+  // Coach picks ONE unit system via the toggle; we store canonical metric.
+  const [units, setUnits] = useState<MeasureUnits>(readUnitsPref);
   const [date, setDate] = useState(today);
-  const [weightKg, setWeightKg] = useState(prefill?.weight_kg?.toString() ?? "");
-  const [weightLb, setWeightLb] = useState("");
+  // Value fields are held in the CURRENTLY selected unit's terms; switchUnits()
+  // converts them on toggle so nothing is lost. Height imperial = ft + in.
+  const initFtIn = prefill?.height_cm != null ? cmToFtIn(prefill.height_cm) : null;
+  const initUnits = readUnitsPref();
+  const [weight, setWeight] = useState(
+    prefill?.weight_kg != null ? (initUnits === "imperial" ? kgToLb(prefill.weight_kg) : prefill.weight_kg).toString() : "",
+  );
   const [heightCm, setHeightCm] = useState(prefill?.height_cm?.toString() ?? "");
-  const [heightFt, setHeightFt] = useState("");
-  const [heightIn, setHeightIn] = useState("");
-  const [waistCm, setWaistCm] = useState(prefill?.waist_cm?.toString() ?? "");
-  const [waistIn, setWaistIn] = useState("");
-  const [hipCm, setHipCm] = useState(prefill?.hip_cm?.toString() ?? "");
-  const [hipIn, setHipIn] = useState("");
+  const [heightFt, setHeightFt] = useState(initFtIn ? String(initFtIn.ft) : "");
+  const [heightIn, setHeightIn] = useState(initFtIn ? String(initFtIn.inch) : "");
+  const [waist, setWaist] = useState(
+    prefill?.waist_cm != null ? (initUnits === "imperial" ? cmToInches(prefill.waist_cm) : prefill.waist_cm).toString() : "",
+  );
+  const [hip, setHip] = useState(
+    prefill?.hip_cm != null ? (initUnits === "imperial" ? cmToInches(prefill.hip_cm) : prefill.hip_cm).toString() : "",
+  );
   const [sys, setSys] = useState(prefill?.blood_pressure_systolic?.toString() ?? "");
   const [dia, setDia] = useState(prefill?.blood_pressure_diastolic?.toString() ?? "");
   const [hr, setHr] = useState("");
@@ -323,43 +348,70 @@ function LogEntryModal({
     return s.trim() && !Number.isNaN(n) ? n : undefined;
   }
 
-  // Metric wins when both are filled; imperial converts to metric for storage
-  // (storage is always _cm / _kg so charts stay consistent over time).
+  /** Toggle unit system, converting the currently-typed values so the coach
+   *  never loses an in-progress entry. Persists the preference. */
+  function switchUnits(next: MeasureUnits) {
+    if (next === units) return;
+    if (next === "imperial") {
+      const w = num(weight); if (w !== undefined) setWeight(String(kgToLb(w)));
+      const c = num(heightCm);
+      if (c !== undefined) { const { ft, inch } = cmToFtIn(c); setHeightFt(String(ft)); setHeightIn(String(inch)); }
+      const wa = num(waist); if (wa !== undefined) setWaist(String(cmToInches(wa)));
+      const h = num(hip); if (h !== undefined) setHip(String(cmToInches(h)));
+    } else {
+      const w = num(weight); if (w !== undefined) setWeight(String(lbToKg(w)));
+      const ft = num(heightFt) ?? 0, inch = num(heightIn) ?? 0;
+      if (ft || inch) setHeightCm(String(ftInToCm(ft, inch)));
+      const wa = num(waist); if (wa !== undefined) setWaist(String(inchesToCm(wa)));
+      const h = num(hip); if (h !== undefined) setHip(String(inchesToCm(h)));
+    }
+    setUnits(next);
+    if (typeof window !== "undefined") window.localStorage?.setItem("fmcoach_units", next);
+  }
+
+  // Pickers read the ACTIVE unit's field(s) and return canonical metric.
   function pickWeight(): number | undefined {
-    const kg = num(weightKg);
-    if (kg !== undefined) return kg;
-    const lb = num(weightLb);
-    return lb !== undefined ? round1(lb * 0.453592) : undefined;
+    const v = num(weight);
+    if (v === undefined) return undefined;
+    return units === "imperial" ? lbToKg(v) : v;
   }
   function pickHeight(): number | undefined {
-    const cm = num(heightCm);
-    if (cm !== undefined) return cm;
-    const ft = num(heightFt) ?? 0;
-    const inches = num(heightIn) ?? 0;
-    const total = ft * 12 + inches;
-    return total > 0 ? round1(total * 2.54) : undefined;
+    if (units === "imperial") {
+      const ft = num(heightFt) ?? 0, inch = num(heightIn) ?? 0;
+      const total = ft * 12 + inch;
+      return total > 0 ? round1(total * 2.54) : undefined;
+    }
+    return num(heightCm);
   }
-  function pickFromInches(cmField: string, inField: string): number | undefined {
-    const cm = num(cmField);
-    if (cm !== undefined) return cm;
-    const i = num(inField);
-    return i !== undefined ? round1(i * 2.54) : undefined;
+  function pickLen(v: string): number | undefined {
+    const n = num(v);
+    if (n === undefined) return undefined;
+    return units === "imperial" ? inchesToCm(n) : n;
   }
-  function round1(n: number): number { return Math.round(n * 10) / 10; }
 
   function save() {
     setErr(null);
+    const payload = {
+      weight_kg: pickWeight(),
+      height_cm: pickHeight(),
+      waist_cm: pickLen(waist),
+      hip_cm: pickLen(hip),
+      blood_pressure_systolic: num(sys),
+      blood_pressure_diastolic: num(dia),
+      resting_heart_rate: num(hr),
+    };
+    // Client-side sanity check with a friendly unit-confusion hint before the
+    // round-trip. The server re-validates too (defence in depth).
+    for (const [key, val] of Object.entries(payload)) {
+      if (val === undefined) continue;
+      const v = validateMeasurement(key, val);
+      if (!v.ok) { setErr(v.error); return; }
+    }
     startTransition(async () => {
       const r = await addMeasurementAction({
         client_id: clientId,
         date,
-        weight_kg: pickWeight(),
-        height_cm: pickHeight(),
-        waist_cm: pickFromInches(waistCm, waistIn),
-        hip_cm: pickFromInches(hipCm, hipIn),
-        blood_pressure_systolic: num(sys),
-        blood_pressure_diastolic: num(dia),
-        resting_heart_rate: num(hr),
+        ...payload,
         notes: notes.trim() || undefined,
       });
       if (!r.ok) {
@@ -422,56 +474,61 @@ function LogEntryModal({
             <div style={labelStyle}>Date</div>
             <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={inputStyle} />
           </div>
-          <p style={{ fontSize: 11, color: "var(--fm-text-tertiary)", margin: 0, fontStyle: "italic" }}>
-            Fill either unit per row. Imperial values are converted to metric for storage.
-          </p>
+          {/* Unit toggle — coach picks one system; storage is always metric.
+              Switching converts any in-progress values so nothing is lost. */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={labelStyle}>Units</span>
+            <div style={{ display: "inline-flex", border: "1px solid var(--fm-border)", borderRadius: 6, overflow: "hidden" }}>
+              {(["metric", "imperial"] as const).map((u) => (
+                <button
+                  key={u}
+                  type="button"
+                  onClick={() => switchUnits(u)}
+                  style={{
+                    padding: "4px 12px",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    border: 0,
+                    background: units === u ? "var(--fm-accent, #2d5a3d)" : "white",
+                    color: units === u ? "white" : "var(--fm-text-secondary)",
+                  }}
+                >
+                  {u === "metric" ? "cm / kg" : "in / lb"}
+                </button>
+              ))}
+            </div>
+            <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)", fontStyle: "italic" }}>
+              stored as metric
+            </span>
+          </div>
           <div style={{ display: "grid", gap: 10 }}>
             {/* Weight */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-              <div>
-                <div style={labelStyle}>Weight (kg)</div>
-                <input type="number" step="0.1" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} style={inputStyle} placeholder="e.g. 68" />
-              </div>
-              <div>
-                <div style={labelStyle}>Weight (lb)</div>
-                <input type="number" step="0.1" value={weightLb} onChange={(e) => setWeightLb(e.target.value)} style={inputStyle} placeholder="e.g. 150" />
-              </div>
+            <div>
+              <div style={labelStyle}>Weight ({units === "imperial" ? "lb" : "kg"})</div>
+              <input type="number" step="0.1" value={weight} onChange={(e) => setWeight(e.target.value)} style={inputStyle} placeholder={units === "imperial" ? "e.g. 150" : "e.g. 68"} />
             </div>
             {/* Height */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-              <div>
-                <div style={labelStyle}>Height (cm)</div>
-                <input type="number" step="0.5" value={heightCm} onChange={(e) => setHeightCm(e.target.value)} style={inputStyle} placeholder="e.g. 165" />
-              </div>
-              <div>
-                <div style={labelStyle}>Height (ft + in)</div>
+            <div>
+              <div style={labelStyle}>Height ({units === "imperial" ? "ft + in" : "cm"})</div>
+              {units === "imperial" ? (
                 <div style={{ display: "flex", gap: 6 }}>
                   <input type="number" min={3} max={8} value={heightFt} onChange={(e) => setHeightFt(e.target.value)} style={inputStyle} placeholder="ft" />
                   <input type="number" min={0} max={11} value={heightIn} onChange={(e) => setHeightIn(e.target.value)} style={inputStyle} placeholder="in" />
                 </div>
-              </div>
+              ) : (
+                <input type="number" step="0.5" value={heightCm} onChange={(e) => setHeightCm(e.target.value)} style={inputStyle} placeholder="e.g. 165" />
+              )}
             </div>
             {/* Waist */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-              <div>
-                <div style={labelStyle}>Waist (cm)</div>
-                <input type="number" step="0.5" value={waistCm} onChange={(e) => setWaistCm(e.target.value)} style={inputStyle} placeholder="e.g. 82" />
-              </div>
-              <div>
-                <div style={labelStyle}>Waist (in)</div>
-                <input type="number" step="0.25" value={waistIn} onChange={(e) => setWaistIn(e.target.value)} style={inputStyle} placeholder="e.g. 32" />
-              </div>
+            <div>
+              <div style={labelStyle}>Waist ({units === "imperial" ? "in" : "cm"})</div>
+              <input type="number" step={units === "imperial" ? "0.25" : "0.5"} value={waist} onChange={(e) => setWaist(e.target.value)} style={inputStyle} placeholder={units === "imperial" ? "e.g. 32" : "e.g. 82"} />
             </div>
             {/* Hips */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-              <div>
-                <div style={labelStyle}>Hips (cm)</div>
-                <input type="number" step="0.5" value={hipCm} onChange={(e) => setHipCm(e.target.value)} style={inputStyle} placeholder="e.g. 96" />
-              </div>
-              <div>
-                <div style={labelStyle}>Hips (in)</div>
-                <input type="number" step="0.25" value={hipIn} onChange={(e) => setHipIn(e.target.value)} style={inputStyle} placeholder="e.g. 38" />
-              </div>
+            <div>
+              <div style={labelStyle}>Hips ({units === "imperial" ? "in" : "cm"})</div>
+              <input type="number" step={units === "imperial" ? "0.25" : "0.5"} value={hip} onChange={(e) => setHip(e.target.value)} style={inputStyle} placeholder={units === "imperial" ? "e.g. 38" : "e.g. 96"} />
             </div>
             {/* BP + HR — units are universal */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>

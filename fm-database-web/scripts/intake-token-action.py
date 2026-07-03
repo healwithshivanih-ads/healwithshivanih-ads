@@ -1404,6 +1404,35 @@ def _write_quick_note_session(client_id: str, payload: dict) -> str:
     return session_id
 
 
+# Sanity bounds (metric) — mirror of MEASUREMENT_BOUNDS in
+# fm-database-web/src/lib/fmdb/measurements.ts. A value in the wrong unit
+# (e.g. a 36 cm "waist" that was really 36 inches) or corrupt (-1.5 cm hip)
+# lands out of range and is DROPPED rather than persisted. Keep the two tables
+# in sync if either changes.
+_MEAS_BOUNDS = {
+    "height_cm": (90, 230),
+    "weight_kg": (20, 350),
+    "waist_cm": (40, 200),
+    "hip_cm": (45, 220),
+    "blood_pressure_systolic": (70, 260),
+    "blood_pressure_diastolic": (40, 180),
+    "resting_heart_rate": (30, 220),
+}
+
+
+def _sane_meas(key, val) -> bool:
+    """True if `val` is within the plausible human range for `key`. Unknown
+    keys pass through. Non-numeric / out-of-range values are rejected."""
+    b = _MEAS_BOUNDS.get(key)
+    if b is None:
+        return True
+    try:
+        v = float(val)
+    except (TypeError, ValueError):
+        return False
+    return b[0] <= v <= b[1]
+
+
 def _measurements_from_intake(submitted: dict) -> dict:
     """Canonical measurements dict built from the intake form's FLAT
     body-composition fields.
@@ -1444,7 +1473,7 @@ def _measurements_from_intake(submitted: dict) -> dict:
         h_cm = round((ft or 0) * 30.48 + (inch or 0) * 2.54, 1)
     if h_cm is None:
         h_cm = _num("height_cm")
-    if h_cm:
+    if h_cm and _sane_meas("height_cm", h_cm):
         out["height_cm"] = h_cm
 
     # Weight — kg direct (universal in India), else lb → kg.
@@ -1455,7 +1484,7 @@ def _measurements_from_intake(submitted: dict) -> dict:
         lb = _num("weight_now_lb")
         if lb is not None:
             w_kg = round(lb * 0.453592, 1)
-    if w_kg:
+    if w_kg and _sane_meas("weight_kg", w_kg):
         out["weight_kg"] = w_kg
 
     # Waist — in → cm, else cm direct.
@@ -1465,7 +1494,7 @@ def _measurements_from_intake(submitted: dict) -> dict:
         waist = round(waist_in_v * 2.54, 1)
     if waist is None:
         waist = _num("waist_cm")
-    if waist:
+    if waist and _sane_meas("waist_cm", waist):
         out["waist_cm"] = waist
 
     # Hip — in → cm, else cm direct.
@@ -1475,15 +1504,15 @@ def _measurements_from_intake(submitted: dict) -> dict:
         hip = round(hip_in_v * 2.54, 1)
     if hip is None:
         hip = _num("hip_cm")
-    if hip:
+    if hip and _sane_meas("hip_cm", hip):
         out["hip_cm"] = hip
 
     # Blood pressure — form keys bp_systolic / bp_diastolic.
     sys_bp = _num("bp_systolic")
-    if sys_bp:
+    if sys_bp and _sane_meas("blood_pressure_systolic", sys_bp):
         out["blood_pressure_systolic"] = int(round(sys_bp))
     dia_bp = _num("bp_diastolic")
-    if dia_bp:
+    if dia_bp and _sane_meas("blood_pressure_diastolic", dia_bp):
         out["blood_pressure_diastolic"] = int(round(dia_bp))
 
     return out
@@ -1736,6 +1765,11 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
         for k in meas_keys:
             v = incoming_meas.get(k)
             if v not in (None, "", 0):
+                # Sanity-gate: a nested `measurements` dict (the pre-2026-05-20
+                # fallback path) can carry unconverted / corrupt values like a
+                # 36 cm waist or -1.5 cm hip — drop those instead of persisting.
+                if not _sane_meas(k, v):
+                    continue
                 try:
                     existing_meas[k] = float(v) if "." in str(v) or k in ("height_cm", "weight_kg", "waist_cm", "hip_cm") else int(v)
                     meas_changed = True

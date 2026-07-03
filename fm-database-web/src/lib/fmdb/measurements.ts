@@ -195,3 +195,63 @@ export function latestMeasurements(client: ClientLike): { date: string; measurem
   const last = snaps[snaps.length - 1];
   return { date: last.date, measurements: last.measurements };
 }
+
+// ── Unit conversion (canonical storage is ALWAYS metric: cm / kg) ──────────
+// Every measurement write funnels through these + validateMeasurement() so a
+// value entered in the wrong unit (the "36 cm waist" / "-1.5 cm hip" bug on
+// cl-017) can't reach disk. Coach UI stores metric no matter which unit the
+// coach types in — charts stay consistent over time.
+export const round1 = (n: number): number => Math.round(n * 10) / 10;
+export const inchesToCm = (v: number): number => round1(v * 2.54);
+export const cmToInches = (v: number): number => round1(v / 2.54);
+export const lbToKg = (v: number): number => round1(v * 0.453592);
+export const kgToLb = (v: number): number => round1(v / 0.453592);
+export const ftInToCm = (ft: number, inch: number): number => round1(ft * 30.48 + inch * 2.54);
+export function cmToFtIn(cm: number): { ft: number; inch: number } {
+  const totalIn = cm / 2.54;
+  const ft = Math.floor(totalIn / 12);
+  return { ft, inch: round1(totalIn - ft * 12) };
+}
+
+// ── Sanity bounds (metric) ─────────────────────────────────────────────────
+// Adult functional-medicine practice: floors are set so a value entered in the
+// wrong unit lands OUT of range and is rejected with a conversion hint, rather
+// than silently persisting. Keyed by the AddMeasurementInput field names so
+// server + client validation share one table.
+export const MEASUREMENT_BOUNDS: Record<string, { min: number; max: number; label: string; unit: string }> = {
+  height_cm: { min: 90, max: 230, label: "Height", unit: "cm" },
+  weight_kg: { min: 20, max: 350, label: "Weight", unit: "kg" },
+  waist_cm: { min: 40, max: 200, label: "Waist", unit: "cm" },
+  hip_cm: { min: 45, max: 220, label: "Hips", unit: "cm" },
+  blood_pressure_systolic: { min: 70, max: 260, label: "Systolic BP", unit: "mmHg" },
+  blood_pressure_diastolic: { min: 40, max: 180, label: "Diastolic BP", unit: "mmHg" },
+  resting_heart_rate: { min: 30, max: 220, label: "Resting HR", unit: "bpm" },
+};
+
+export type MeasurementValidation = { ok: true; value: number } | { ok: false; error: string };
+
+/**
+ * Validate a metric measurement value against sane human bounds. Returns a
+ * helpful unit-confusion hint when an out-of-range value looks like it was
+ * entered in the wrong unit. Unknown keys pass through unchecked.
+ */
+export function validateMeasurement(key: string, value: number): MeasurementValidation {
+  const b = MEASUREMENT_BOUNDS[key];
+  if (!b) return { ok: true, value };
+  if (!Number.isFinite(value)) return { ok: false, error: `${b.label} must be a number.` };
+  if (value <= 0) return { ok: false, error: `${b.label} must be a positive number (got ${value}).` };
+  const lenKey = key === "waist_cm" || key === "hip_cm" || key === "height_cm";
+  if (value < b.min) {
+    let hint = "";
+    if (lenKey) hint = ` If you meant inches, switch the unit toggle — ${value} in ≈ ${inchesToCm(value)} cm.`;
+    else if (key === "weight_kg") hint = ` If you meant pounds, ${value} lb ≈ ${lbToKg(value)} kg.`;
+    return { ok: false, error: `${b.label} ${value} ${b.unit} is below the plausible range (${b.min}–${b.max} ${b.unit}).${hint}` };
+  }
+  if (value > b.max) {
+    let hint = "";
+    if (lenKey) hint = ` ${value} cm ≈ ${cmToInches(value)} in — check the value/unit.`;
+    else if (key === "weight_kg") hint = ` ${value} kg ≈ ${kgToLb(value)} lb — check the value/unit.`;
+    return { ok: false, error: `${b.label} ${value} ${b.unit} is above the plausible range (${b.min}–${b.max} ${b.unit}).${hint}` };
+  }
+  return { ok: true, value };
+}
