@@ -1601,28 +1601,51 @@ def synthesize(
     # supplements, lifestyle, labs and referrals.
     drug_context = _collect_drug_context(client_context)
 
-    # The main payload
-    user_payload = {
+    # Split the payload into a STABLE block (client context + catalogue
+    # subgraph + drug context + session history — byte-identical when the SAME
+    # client is re-analysed with the SAME selection) and a small VARIABLE block
+    # (the coach's symptom/topic selection + free-text notes). Compact
+    # separators throughout — indent=2 was ~25% pure whitespace waste.
+    stable_payload = {
         "client_context": client_context,
-        "selected_symptoms": selected_symptom_slugs,
-        "selected_topics": selected_topic_slugs,
-        "additional_notes": additional_notes,
         "session_history": session_history or [],
         "days_since_last_prescription": days_since_last_prescription,
         "vitaone_inventory": vitaone_inventory or [],
         "drug_context": drug_context,
         "catalogue_subgraph": subgraph,
     }
-    content.append({
+    variable_payload = {
+        "selected_symptoms": selected_symptom_slugs,
+        "selected_topics": selected_topic_slugs,
+        "additional_notes": additional_notes,
+    }
+    stable_block: dict[str, Any] = {
         "type": "text",
         "text": (
             "Synthesize an FM assessment for the client below. The catalogue "
             "subgraph defines the universe of slugs you may reference — do not "
             "invent any.\n\n"
-            # Compact separators (no indent) — the payload is ~450K+ tokens and
-            # indent=2 whitespace was ~20% pure waste ($0.30+/call) with zero
-            # quality difference (the model parses compact JSON identically).
-            + json.dumps(user_payload, separators=(",", ":"), default=str)
+            + json.dumps(stable_payload, separators=(",", ":"), default=str)
+        ),
+    }
+    # Opt-in Anthropic prompt caching (FM_ASSESS_CACHE=1) — DEFAULT OFF, and
+    # deliberately so. The assess.py shim already keeps a LOCAL disk result
+    # cache (~/.fm-cache/assess/) keyed on client_ctx+selection+notes+labs, so
+    # an identical re-run is served for $0 with NO API call at all — strictly
+    # better than prompt caching (which still bills ~10% of input) and with no
+    # 1.25× cache-WRITE surcharge. The only sliver prompt caching would add on
+    # top is a re-run with the SAME selection+labs but DIFFERENT free-text notes
+    # (local-cache miss, identical stable prefix) — too rare to justify paying
+    # the write surcharge on every one-shot. Kept, gated + measurable, for the
+    # FM_ASSESS_NO_CACHE=1 (local cache disabled) path only.
+    if os.environ.get("FM_ASSESS_CACHE") == "1":
+        stable_block["cache_control"] = {"type": "ephemeral"}
+    content.append(stable_block)
+    content.append({
+        "type": "text",
+        "text": (
+            "Coach's current selection + notes for this run:\n"
+            + json.dumps(variable_payload, separators=(",", ":"), default=str)
         ),
     })
 
