@@ -212,6 +212,114 @@ function groupLabMarkers(
   return ordered;
 }
 
+/**
+ * Client-specific "key markers" spotlight, pinned above the standard FM
+ * category groups. Derives which physiological systems matter for THIS client
+ * (from active_conditions + medical_history + the AI intake insights' root
+ * cause and ranked drivers), then pulls each system's signature markers to the
+ * top — regardless of which FM category they normally live in. The point: for
+ * an insulin-resistance client, TG/HDL (which normally sits under Lipids) is
+ * lifted to sit beside HOMA-IR + fasting insulin as one insulin-resistance
+ * picture. Within the cluster: flagged (out-of-range) markers first, then
+ * computed ratios (TG/HDL etc.), then the rest. Markers still also appear in
+ * their normal category below — this is a spotlight, not a move. Returns null
+ * when nothing relevant resolves (no strip shown).
+ */
+function pickClientKeyMarkers(
+  client: ClientWithMeta,
+  markers: NonNullable<ClientWithMeta["lab_markers"]>,
+): FmMarkerGroup | null {
+  const SYSTEMS: { label: string; driver: RegExp; sig: RegExp }[] = [
+    {
+      label: "insulin resistance",
+      driver: /insulin resist|metabolic|pcos|pcod|diabet|prediabet|blood sugar|glyca?emic|hyperinsulin|weight (gain|loss)|obes/i,
+      sig: /\bhoma\b|homa-?ir|insulin|hba1c|\bglucose\b|uric acid|tg\s*\/?\s*hdl|triglyceride.*hdl|c-?peptide|estimated average glucose/i,
+    },
+    {
+      label: "thyroid",
+      driver: /thyroid|hashimoto|hypothyroid|hyperthyroid|graves/i,
+      sig: /\btsh\b|free t[34]|\bft[34]\b|reverse t3|\brt3\b|\btpo\b|thyroglobulin|tg ab/i,
+    },
+    {
+      label: "lipids / cardiovascular",
+      driver: /cardiovascular|dyslipid|\blipid|cholesterol|atheroscler|cardiac|heart/i,
+      sig: /cholesterol|\bldl\b|\bhdl\b|triglyceride|apob|apo-?a|lp\(a\)|non-?hdl|tc\/?hdl|tg\s*\/?\s*hdl|ldl\/?hdl/i,
+    },
+    {
+      label: "iron & nutrients",
+      driver: /an[ae]mia|\biron\b|ferritin|fatigue|\bb12\b|deficien|hair loss|nutrient|methylation/i,
+      sig: /ferritin|\biron\b|transferrin|\bb12\b|b-?12|folate|vitamin d|25-?oh|magnesium|homocysteine|\bmma\b/i,
+    },
+    {
+      label: "inflammation / autoimmune",
+      driver: /inflamm|autoimmun|leaky gut|arthrit|\bgut\b/i,
+      sig: /\bcrp\b|hs-?crp|\besr\b|fibrinogen|homocysteine/i,
+    },
+    {
+      label: "adrenal / stress",
+      driver: /\bhpa\b|adrenal|cortisol|chronic stress/i,
+      sig: /cortisol|dhea/i,
+    },
+  ];
+
+  const ins = client as unknown as {
+    active_conditions?: string[];
+    medical_history?: string[];
+    intake_insights?: {
+      root_cause?: { label?: string };
+      top_hypotheses?: { driver?: string }[];
+    };
+  };
+  const blob = [
+    ...(ins.active_conditions ?? []),
+    ...(ins.medical_history ?? []),
+    ins.intake_insights?.root_cause?.label ?? "",
+    ...((ins.intake_insights?.top_hypotheses ?? []).map((h) => h.driver ?? "")),
+  ]
+    .join(" · ")
+    .toLowerCase();
+
+  const activeSystems = SYSTEMS.filter((s) => s.driver.test(blob));
+
+  const seen = new Set<string>();
+  const picked: FmMarker[] = [];
+  const collect = (pred: (m: (typeof markers)[number]) => boolean) => {
+    for (const m of markers) {
+      const key = m.marker_name.toLowerCase();
+      if (seen.has(key) || !pred(m)) continue;
+      seen.add(key);
+      picked.push({
+        name: m.marker_name,
+        value: typeof m.value === "number" ? m.value : String(m.value),
+        unit: m.unit ?? "",
+        range: m.reference_range,
+        flag: mapFlag(m.flag),
+        computed: !!m.computed,
+        meta: m.fm_interpretation,
+      });
+    }
+  };
+
+  if (activeSystems.length > 0) {
+    collect((m) => activeSystems.some((s) => s.sig.test(m.marker_name)));
+  } else {
+    // No derivable drivers → spotlight just the out-of-range markers.
+    collect((m) => mapFlag(m.flag) !== "ok");
+  }
+
+  if (picked.length === 0) return null;
+
+  // Flagged first, then computed ratios, then the rest — stable within tiers.
+  const rank = (m: FmMarker) => (m.flag !== "ok" ? 0 : m.computed ? 1 : 2);
+  picked.sort((a, b) => rank(a) - rank(b));
+
+  const CAP = 14;
+  const systemsLabel = activeSystems.length
+    ? activeSystems.map((s) => s.label).join(" · ")
+    : "flagged markers";
+  return { title: `Key markers · ${systemsLabel}`, icon: "⭐", markers: picked.slice(0, CAP) };
+}
+
 type MeasurementKey =
   | "height_cm"
   | "weight_kg"
@@ -865,7 +973,12 @@ export default async function ClientV2Page({
     ...m,
     value: typeof m.value === "string" ? parseFloat(m.value) || m.value : m.value,
   }));
-  const markerGroups = groupLabMarkers(labMarkers);
+  const baseMarkerGroups = groupLabMarkers(labMarkers);
+  // Client-specific spotlight pinned above the standard FM category groups.
+  const keyMarkerGroup = pickClientKeyMarkers(client, labMarkers);
+  const markerGroups = keyMarkerGroup
+    ? [keyMarkerGroup, ...baseMarkerGroups]
+    : baseMarkerGroups;
 
   // Body comp — pulls from health_snapshots, measurements_log (time-series
   // written by + Log entry), AND legacy flat measurements. measurements_log
