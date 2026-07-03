@@ -1074,7 +1074,8 @@ def main() -> int:
             "channel": channel,
         })
 
-    # Calculate days_since_last_prescription from history_bundle
+    # Calculate days_since_last_prescription from the FULL history (before the
+    # size cap below) — the last plan may predate the recent-N window.
     days_since_last_prescription: int | None = None
     for s in reversed(history_bundle):
         if s.get("generated_plan_slug"):
@@ -1084,6 +1085,16 @@ def main() -> int:
             except Exception:
                 pass
             break
+
+    # Cap the bundle SENT TO THE MODEL to the most recent N sessions.
+    # history_bundle is oldest→newest, so [-N:] keeps the newest N — the
+    # trajectory the history-aware synthesis actually uses. Prevents a client
+    # with a long session history from ballooning the prompt (each session is
+    # up to ~6 KB of trimmed notes); generous default so no realistic case
+    # loses signal. Env-overridable via FM_ASSESS_MAX_HISTORY.
+    _MAX_HISTORY = int(os.environ.get("FM_ASSESS_MAX_HISTORY") or 10)
+    if len(history_bundle) > _MAX_HISTORY:
+        history_bundle = history_bundle[-_MAX_HISTORY:]
 
     # Check for an existing session today (same-day reuse to avoid duplicates)
     existing_today_session: Session | None = None

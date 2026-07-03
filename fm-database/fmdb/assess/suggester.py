@@ -1619,7 +1619,10 @@ def synthesize(
             "Synthesize an FM assessment for the client below. The catalogue "
             "subgraph defines the universe of slugs you may reference — do not "
             "invent any.\n\n"
-            + json.dumps(user_payload, indent=2)
+            # Compact separators (no indent) — the payload is ~450K+ tokens and
+            # indent=2 whitespace was ~20% pure waste ($0.30+/call) with zero
+            # quality difference (the model parses compact JSON identically).
+            + json.dumps(user_payload, separators=(",", ":"), default=str)
         ),
     })
 
@@ -1829,6 +1832,7 @@ def chat(
     # full subgraph and is why chat dropped from ~$0.55/turn to ~$0.08/turn.
     context_text = (
         "Conversation context (given facts):\n\n"
+        # Compact separators — same token-saving as the synthesize payload.
         + json.dumps({
             "client": ctx.client_ctx,
             "selected_symptoms": ctx.selected_symptoms,
@@ -1837,7 +1841,7 @@ def chat(
             "prior_suggestions": ctx.suggestions,
             "session_history": ctx.session_history,
             "catalogue_slugs": _compact_index(ctx.subgraph),
-        }, indent=2)
+        }, separators=(",", ":"), default=str)
     )
 
     # Inject the context as the first user message (cached), then add real chat history.
