@@ -4536,14 +4536,18 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // ---- weight-loss daily calorie guide --------------------------------------
   // Only for clients whose goals mention weight loss. Same maths as the letter
   // generator's _calc_calorie_targets: Mifflin-St Jeor BMR → TDEE → a deficit
-  // that builds gradually across the plan. Activity defaults to "light" (most
-  // plans include a daily walk); pace defaults to moderate (≈0.5 kg/week).
+  // that builds gradually across the plan. Activity + pace come from the
+  // client's own weight_loss.activity_level / .pace (same mapping as the
+  // Python _calc_calorie_targets docstring); default to "light"/"moderate"
+  // only when those fields are unset, so existing clients keep their old
+  // numbers unless the coach actually recorded a different activity/pace.
   let weightLoss: ClientAppData["weightLoss"] = null;
   // Structured client.weight_loss.enabled (set via the intake/coach weight-loss
   // questionnaire) is the reliable signal — free-text goals ("goals: []" is
   // common when the coach fills weight_loss directly and never types a goals
   // sentence) is a fallback heuristic only, not the sole gate.
-  const wlEnabled = (client.weight_loss as Dict | undefined)?.enabled === true;
+  const wlGoal = (client.weight_loss as Dict | undefined) ?? undefined;
+  const wlEnabled = wlGoal?.enabled === true;
   const wantsWeightLoss = wlEnabled || /\b(weight|lose|loose|slim|fat ?loss)\b/.test(goals);
   if (wantsWeightLoss && body.heightCm && body.latest.weightKg && body.ageYears) {
     const w = body.latest.weightKg;
@@ -4551,8 +4555,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       body.sex === "M"
         ? 10 * w + 6.25 * body.heightCm - 5 * body.ageYears + 5
         : 10 * w + 6.25 * body.heightCm - 5 * body.ageYears - 161;
-    const tdee = Math.round(bmr * 1.375); // "light" activity multiplier
-    const fullDeficit = 500; // moderate pace, ≈0.5 kg/week
+    const ACTIVITY_MULT: Record<string, number> = {
+      sedentary: 1.2,
+      light: 1.375,
+      moderate: 1.55,
+      active: 1.725,
+    };
+    const PACE_DEFICIT: Record<string, number> = { slow: 250, moderate: 500, faster: 750 };
+    const activityMult = ACTIVITY_MULT[String(wlGoal?.activity_level || "")] ?? ACTIVITY_MULT.light;
+    const tdee = Math.round(bmr * activityMult);
+    const fullDeficit = PACE_DEFICIT[String(wlGoal?.pace || "")] ?? PACE_DEFICIT.moderate;
     // deficit builds gradually (same phase shape as the letter generator)
     const frac = week <= 2 ? 0.4 : week <= 4 ? 0.7 : week <= 8 ? 1.0 : week <= 10 ? 0.8 : 0.6;
     const dailyTarget = Math.max(1200, Math.round(tdee - fullDeficit * frac));
@@ -4583,7 +4595,6 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         adherence = calorieAdherence(estimatedDailyKcal, dailyTarget);
       }
     }
-    const wlGoal = (client.weight_loss as Dict | undefined) ?? undefined;
     const goal =
       wlGoal &&
       typeof wlGoal.starting_weight_kg === "number" &&
