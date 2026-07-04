@@ -4539,7 +4539,12 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // that builds gradually across the plan. Activity defaults to "light" (most
   // plans include a daily walk); pace defaults to moderate (≈0.5 kg/week).
   let weightLoss: ClientAppData["weightLoss"] = null;
-  const wantsWeightLoss = /\b(weight|lose|loose|slim|fat ?loss)\b/.test(goals);
+  // Structured client.weight_loss.enabled (set via the intake/coach weight-loss
+  // questionnaire) is the reliable signal — free-text goals ("goals: []" is
+  // common when the coach fills weight_loss directly and never types a goals
+  // sentence) is a fallback heuristic only, not the sole gate.
+  const wlEnabled = (client.weight_loss as Dict | undefined)?.enabled === true;
+  const wantsWeightLoss = wlEnabled || /\b(weight|lose|loose|slim|fat ?loss)\b/.test(goals);
   if (wantsWeightLoss && body.heightCm && body.latest.weightKg && body.ageYears) {
     const w = body.latest.weightKg;
     const bmr =
