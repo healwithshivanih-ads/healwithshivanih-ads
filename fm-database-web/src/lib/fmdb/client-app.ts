@@ -252,6 +252,9 @@ export interface AppSupplement {
   why: string;
   buyUrl?: string;
   buyLabel?: string;
+  /** VitaOne supplement-facts label thumbnail (from supplement_links.yaml),
+   *  shown beside the Reorder link. */
+  imageUrl?: string;
   /** True when timing is situational (as-needed, at-risk meals, PRN). Excluded from daily log. */
   asNeeded?: boolean;
   /** True when supplement should be taken on an empty stomach — sorts before with-food supplements. */
@@ -3246,6 +3249,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     const timing = asStr(p.timing) || row?.when || "";
     const dose = asStr(p.dose);
     let buyUrl = row?.buyUrl ?? htmlBuyFor(name);
+    let suppImageUrl: string | undefined;
     if (!buyUrl) {
       // No issued letter carrying buy links (e.g. nothing sent yet) — fall
       // back to the coach-curated supplement_links.yaml catalogue. Only a
@@ -3258,7 +3262,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         // Pass the catalogue slug so the product binds deterministically by
         // `covers`/slug — never by a coincidental name substring.
         const link = await resolveSupplementLink(name, slug);
-        if (link.source !== "search") buyUrl = link.url;
+        if (link.source !== "search") {
+          buyUrl = link.url;
+          suppImageUrl = link.image_url;
+        }
       } catch {
         /* no link — Reorder button simply hides */
       }
@@ -3289,6 +3296,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
             .replace(/^CONTINUE[^.]*\.\s*/i, ""),
         ),
       buyUrl,
+      imageUrl: suppImageUrl,
       buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
       ...(asNeeded ? { asNeeded: true } : {}),
       ...(emptyStomach ? { emptyStomach: true } : {}),

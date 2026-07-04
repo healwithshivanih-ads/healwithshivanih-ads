@@ -1,0 +1,40 @@
+slug: nmn
+display_name: NMN (Nicotinamide Mononucleotide)
+aliases:
+- nicotinamide-mononucleotide
+- nmn-uthever
+category: other
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics: []
+linked_to_mechanisms:
+- mitochondrial-energy-production
+linked_to_claims: []
+notes_for_coach: >-
+  NAD+ precursor marketed for cellular energy, metabolic and longevity support.
+  Evidence in humans is emerging, not established — treat claims cautiously.
+  VitaOne product (Uthever®) is a 500 mg capsule taken once daily. No major
+  drug interactions documented, but longevity/anti-ageing framing should stay
+  educational within coaching scope.
+notes_for_client: >-
+  NMN is a building block your body uses to make NAD+, a molecule involved in
+  cellular energy. Research is still early, so think of it as an optional extra,
+  not a foundation.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-product-catalog
+  location: Product page — NMN Uthever 500mg (vitaone.in/products/nmn-uthever-500mg-54)
+  quote: NMN (Uthever®) — 500 mg.
+version: 1
+status: active
+updated_at: '2026-07-04'
+updated_by: shivani

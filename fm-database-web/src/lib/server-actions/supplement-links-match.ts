@@ -24,6 +24,9 @@ export interface SupplementLink {
   source: LinkSource;
   notes?: string;
   unit_strength?: string;
+  /** VitaOne supplement-facts label image URL, when captured from the product
+   *  catalogue. Surfaced as a thumbnail next to the client's Reorder link. */
+  image_url?: string;
 }
 
 export interface LinksEntry {
@@ -38,6 +41,8 @@ export interface LinksEntry {
    *  over any name-based fuzzy match. */
   covers?: string[];
   unit_strength?: string;
+  /** VitaOne supplement-facts label image URL (added 2026-07-04 catalogue import). */
+  facts_image_url?: string;
 }
 
 export interface LinksFile {
