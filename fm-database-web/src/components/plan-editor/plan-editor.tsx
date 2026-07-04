@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MultiSelect, type MultiSelectOption } from "@/components/multi-select";
 import { updatePlan, saveSupplementSources, checkSupplementInteractionsAction } from "@/lib/server-actions/plans";
+import { resolveSupplementProducts } from "@/lib/server-actions/supplement-links";
 import type { SupplementSourcesMap, SupplementInteraction, DrugCaution } from "@/lib/server-actions/plans";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
@@ -46,6 +47,9 @@ interface SupplementItem {
   // Empty when not intake-driven. Rendered as a 💡 audit chip-row below
   // the recommendation card. Coach can edit / remove freely.
   intake_evidence?: string[];
+  // Per-supplement display override (e.g. "Vegetarian Omega-3"). Used to
+  // resolve the retailer/product for the capsule-dosing hint.
+  display_name?: string | null;
 }
 
 interface TrackingHabit {
@@ -978,6 +982,34 @@ export function PlanEditor(props: PlanEditorProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initial.slug]);
 
+  // Per-supplement retailer + fixed per-unit strength (VitaOne etc.). Lets the
+  // editor nudge the coach to dose in whole capsules of the actual product
+  // rather than an off-grid mg range the fixed product can't hit.
+  const [productInfo, setProductInfo] = useState<
+    Record<string, { source: string; unit_strength?: string }>
+  >({});
+  const suppLabelFor = (s: SupplementItem): string =>
+    s.display_name?.trim() ||
+    supplementOptions.find((o) => o.value === s.supplement_slug)?.label ||
+    (s.supplement_slug || "").replace(/-/g, " ").trim();
+  const suppNamesKey = ((plan.supplement_protocol as SupplementItem[]) ?? [])
+    .map(suppLabelFor)
+    .filter(Boolean)
+    .join("|");
+  useEffect(() => {
+    let cancelled = false;
+    const names = suppNamesKey ? suppNamesKey.split("|") : [];
+    if (!names.length) {
+      setProductInfo({});
+      return;
+    }
+    resolveSupplementProducts(names).then((res) => {
+      if (!cancelled) setProductInfo(res);
+    });
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [suppNamesKey]);
+
   // ── Timeline state (mirrors plan_period_* fields) ──────────────────────────
   const [timelineStart, setTimelineStart] = useState<string>(
     () => (initial.plan_period_start as string | undefined) ?? todayISO()
@@ -1482,15 +1514,28 @@ export function PlanEditor(props: PlanEditorProps) {
                           patch("supplement_protocol", next);
                         }}
                       />
-                      <Input
-                        placeholder="Dose (e.g. 200-400 mg)"
-                        value={s.dose ?? ""}
-                        onChange={(e) => {
-                          const next = [...supplements];
-                          next[i] = { ...next[i], dose: e.target.value };
-                          patch("supplement_protocol", next);
-                        }}
-                      />
+                      <div>
+                        <Input
+                          placeholder="Dose (e.g. 200-400 mg)"
+                          value={s.dose ?? ""}
+                          onChange={(e) => {
+                            const next = [...supplements];
+                            next[i] = { ...next[i], dose: e.target.value };
+                            patch("supplement_protocol", next);
+                          }}
+                        />
+                        {(() => {
+                          const info = productInfo[suppLabelFor(s)];
+                          if (!info || (info.source !== "vitaone" && info.source !== "fmnutrition")) return null;
+                          const label = info.source === "vitaone" ? "VitaOne" : "FM Nutrition";
+                          return (
+                            <p className="text-[11px] text-muted-foreground mt-1 leading-tight">
+                              {label}
+                              {info.unit_strength ? ` · ${info.unit_strength}` : ""} — dose in capsules
+                            </p>
+                          );
+                        })()}
+                      </div>
                       <Input
                         placeholder="Timing (e.g. evening)"
                         value={s.timing ?? ""}

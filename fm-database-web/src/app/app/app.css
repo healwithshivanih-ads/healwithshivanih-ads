@@ -412,7 +412,12 @@
 .supp .dose { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
 .badge {
   font-size: 10.5px; font-weight: 600; letter-spacing: .4px;
-  padding: 3px 8px; border-radius: 999px; white-space: nowrap;
+  padding: 3px 8px; border-radius: 999px;
+  /* Cap the timing pill so it can never steal the row from the name. Long
+     free-text timing is folded into the sub-line in SuppRow, so this only
+     ever wraps a borderline label rather than crushing the name column. */
+  white-space: normal; overflow-wrap: anywhere; text-align: center;
+  max-width: 46%; flex-shrink: 0;
   background: var(--ochre-tint); color: var(--ochre-deep);
 }
 .badge.forest { background: var(--forest-tint); color: var(--forest-deep); }
