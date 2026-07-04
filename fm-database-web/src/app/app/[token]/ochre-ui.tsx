@@ -374,6 +374,16 @@ export function SuppRow({
     }
     onToggle(supp.id);
   };
+  // Short, canonical timing labels ("With lunch", "Bedtime", "Empty stomach")
+  // read cleanly as a right-side pill. Long free-text timing — especially raw
+  // remedy instructions like "Once daily in plain water at 4pm & clear" that
+  // never went through displayTiming — would force the nowrap pill to steal the
+  // row's width and crush a multi-word name ("Partially Hydrolyzed Guar Gum")
+  // into one word per line (mobile format audit 2026-07-04). Fold long timing
+  // into the muted sub-line under the name instead, so the pill stays a pill.
+  const timing = (supp.timing || "").trim();
+  const pillTiming = timing.length > 0 && timing.length <= 22 ? timing : "";
+  const subline = [supp.dose, pillTiming ? "" : timing].filter(Boolean).join("  ·  ");
   return (
     <div className="supp">
       <button
@@ -389,9 +399,13 @@ export function SuppRow({
           {supp.name}
           {isRemedy && <span className="supp-remedy-tag">Remedy</span>}
         </span>
-        {logged ? <span className="taken-at">Taken · {takenAt}</span> : <span className="dose">{supp.dose}</span>}
+        {logged ? (
+          <span className="taken-at">Taken · {takenAt}</span>
+        ) : subline ? (
+          <span className="dose">{subline}</span>
+        ) : null}
       </span>
-      <span className={"badge" + (supp.slot === "Bedtime" ? " forest" : "")}>{supp.timing}</span>
+      {pillTiming && <span className={"badge" + (supp.slot === "Bedtime" ? " forest" : "")}>{pillTiming}</span>}
     </div>
   );
 }

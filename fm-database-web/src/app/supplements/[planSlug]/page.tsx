@@ -209,6 +209,7 @@ export default async function SupplementsPage({
 function sourceLabel(s: SupplementLink["source"]): string {
   switch (s) {
     case "vitaone": return "VitaOne";
+    case "fmnutrition": return "FM Nutrition";
     case "amazon": return "Amazon";
     case "iherb": return "iHerb";
     case "custom": return "store";

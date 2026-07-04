@@ -3250,6 +3250,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       // No issued letter carrying buy links (e.g. nothing sent yet) — fall
       // back to the coach-curated supplement_links.yaml catalogue. Only a
       // real entry counts; the generic "browse the shop" fallback is noise.
+      // resolveSupplementLink applies the retailer priority VitaOne →
+      // fmnutrition → amazon, so the client's Reorder button lands on the
+      // preferred store.
       try {
         const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
         const link = await resolveSupplementLink(name);

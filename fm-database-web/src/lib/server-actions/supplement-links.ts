@@ -18,11 +18,24 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 
 const VITAONE_REFERRAL = "?pr=vita13720sh";
 
+export type LinkSource =
+  | "vitaone"
+  | "fmnutrition"
+  | "amazon"
+  | "iherb"
+  | "custom"
+  | "search";
+
 export interface SupplementLink {
   display_name: string;
   url: string;
-  source: "vitaone" | "amazon" | "iherb" | "custom" | "search";
+  source: LinkSource;
   notes?: string;
+  /** The product's fixed per-unit strength, e.g. "5000 IU / capsule" or
+   *  "600 mg / capsule". Reference data (from the retailer's product page) that
+   *  lets the coach dose a plan in whole capsules instead of an off-grid mg
+   *  range. Populated by Codex from vitaone.in. Surfaced in the plan editor. */
+  unit_strength?: string;
 }
 
 interface LinksEntry {
@@ -31,6 +44,26 @@ interface LinksEntry {
   source?: string;
   notes?: string;
   aliases?: string[];
+  unit_strength?: string;
+}
+
+// Retailer preference — VitaOne is the priority store, then FM Nutrition, then
+// Amazon; the country-specific iHerb links and any custom/other entries rank
+// below. When more than one entry matches a supplement name equally well, the
+// higher-priority retailer wins. iHerb still resolves for a client whose name
+// maps specifically to an iHerb entry.
+const SOURCE_RANK: Record<string, number> = {
+  vitaone: 0,
+  fmnutrition: 1,
+  amazon: 2,
+  iherb: 3,
+  custom: 4,
+  other: 5,
+};
+function sourceRank(entry: LinksEntry): number {
+  const src =
+    entry.source ?? (entry.url?.includes("vitaone") ? "vitaone" : "other");
+  return SOURCE_RANK[src] ?? 9;
 }
 
 interface LinksFile {
@@ -79,28 +112,36 @@ export async function resolveSupplementLink(
     .replace(/^_+|_+$/g, "");
   const links = await readLinks();
 
-  // 1. Exact key match
-  // 2. Exact alias match (entry has an aliases[] field that includes the slug)
-  // 3. LONGEST bidirectional substring match across keys + aliases
+  // Gather every candidate entry with a match score (exact key > exact alias >
+  // longest bidirectional substring), then pick the best. Equal-quality matches
+  // are broken by retailer priority (VitaOne → fmnutrition → amazon → …), so a
+  // supplement stocked at several stores always resolves to the preferred one.
   const entries = Object.entries(links);
-  const entry: LinksEntry | undefined =
-    links[slug] ??
-    entries.find(([, v]) => v.aliases?.includes(slug))?.[1] ??
-    entries
-      .flatMap(([k, v]) =>
-        [k, ...(v.aliases ?? [])].map((tok) => ({ tok, v })),
-      )
-      .filter(({ tok }) => tok.length >= 3 && (slug.includes(tok) || tok.includes(slug)))
-      .sort((a, b) => b.tok.length - a.tok.length)[0]?.v;
+  const cands: { v: LinksEntry; score: number }[] = [];
+  if (links[slug]) cands.push({ v: links[slug], score: 1000 });
+  for (const [, v] of entries) {
+    if (v.aliases?.includes(slug)) cands.push({ v, score: 900 });
+  }
+  for (const [k, v] of entries) {
+    for (const tok of [k, ...(v.aliases ?? [])]) {
+      if (tok.length >= 3 && (slug.includes(tok) || tok.includes(slug))) {
+        cands.push({ v, score: tok.length });
+      }
+    }
+  }
+  const entry: LinksEntry | undefined = cands.sort(
+    (a, b) => b.score - a.score || sourceRank(a.v) - sourceRank(b.v),
+  )[0]?.v;
 
   if (entry?.url) {
     return {
       display_name: entry.display_name ?? name,
       url: entry.url,
       source:
-        (entry.source as SupplementLink["source"]) ??
+        (entry.source as LinkSource) ??
         (entry.url.includes("vitaone") ? "vitaone" : "custom"),
       notes: entry.notes,
+      unit_strength: entry.unit_strength,
     };
   }
 
@@ -109,4 +150,25 @@ export async function resolveSupplementLink(
     url: vitaoneSearchUrl(name),
     source: "search",
   };
+}
+
+/** Batch product lookup for the plan editor: name → resolved retailer +
+ *  per-unit strength. Only real catalogue matches are returned (the generic
+ *  "browse the shop" search fallback is dropped). Used to nudge the coach to
+ *  dose in whole capsules of the actual product. */
+export async function resolveSupplementProducts(
+  names: string[],
+): Promise<
+  Record<string, { source: LinkSource; url: string; unit_strength?: string }>
+> {
+  const out: Record<string, { source: LinkSource; url: string; unit_strength?: string }> = {};
+  for (const raw of names) {
+    const name = (raw || "").trim();
+    if (!name || out[name]) continue;
+    const link = await resolveSupplementLink(name);
+    if (link.source !== "search") {
+      out[name] = { source: link.source, url: link.url, unit_strength: link.unit_strength };
+    }
+  }
+  return out;
 }
