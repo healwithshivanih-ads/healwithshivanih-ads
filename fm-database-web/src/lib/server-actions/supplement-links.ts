@@ -15,60 +15,17 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import {
+  pickLinkEntry,
+  type LinkSource,
+  type LinksFile,
+  type SupplementLink,
+} from "@/lib/server-actions/supplement-links-match";
+// NB: this is a "use server" module — every export becomes a server action, so
+// it must NOT export types. Import LinkSource / SupplementLink directly from
+// "@/lib/server-actions/supplement-links-match" instead.
 
 const VITAONE_REFERRAL = "?pr=vita13720sh";
-
-export type LinkSource =
-  | "vitaone"
-  | "fmnutrition"
-  | "amazon"
-  | "iherb"
-  | "custom"
-  | "search";
-
-export interface SupplementLink {
-  display_name: string;
-  url: string;
-  source: LinkSource;
-  notes?: string;
-  /** The product's fixed per-unit strength, e.g. "5000 IU / capsule" or
-   *  "600 mg / capsule". Reference data (from the retailer's product page) that
-   *  lets the coach dose a plan in whole capsules instead of an off-grid mg
-   *  range. Populated by Codex from vitaone.in. Surfaced in the plan editor. */
-  unit_strength?: string;
-}
-
-interface LinksEntry {
-  display_name?: string;
-  url?: string;
-  source?: string;
-  notes?: string;
-  aliases?: string[];
-  unit_strength?: string;
-}
-
-// Retailer preference — VitaOne is the priority store, then FM Nutrition, then
-// Amazon; the country-specific iHerb links and any custom/other entries rank
-// below. When more than one entry matches a supplement name equally well, the
-// higher-priority retailer wins. iHerb still resolves for a client whose name
-// maps specifically to an iHerb entry.
-const SOURCE_RANK: Record<string, number> = {
-  vitaone: 0,
-  fmnutrition: 1,
-  amazon: 2,
-  iherb: 3,
-  custom: 4,
-  other: 5,
-};
-function sourceRank(entry: LinksEntry): number {
-  const src =
-    entry.source ?? (entry.url?.includes("vitaone") ? "vitaone" : "other");
-  return SOURCE_RANK[src] ?? 9;
-}
-
-interface LinksFile {
-  [key: string]: LinksEntry;
-}
 
 let cache: LinksFile | null = null;
 let cacheAt = 0;
@@ -104,34 +61,13 @@ function vitaoneSearchUrl(name: string): string {
 
 export async function resolveSupplementLink(
   rawName: string,
+  catalogueSlug?: string,
 ): Promise<SupplementLink> {
   const name = (rawName || "").trim();
-  const slug = name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_+|_+$/g, "");
   const links = await readLinks();
-
-  // Gather every candidate entry with a match score (exact key > exact alias >
-  // longest bidirectional substring), then pick the best. Equal-quality matches
-  // are broken by retailer priority (VitaOne → fmnutrition → amazon → …), so a
-  // supplement stocked at several stores always resolves to the preferred one.
-  const entries = Object.entries(links);
-  const cands: { v: LinksEntry; score: number }[] = [];
-  if (links[slug]) cands.push({ v: links[slug], score: 1000 });
-  for (const [, v] of entries) {
-    if (v.aliases?.includes(slug)) cands.push({ v, score: 900 });
-  }
-  for (const [k, v] of entries) {
-    for (const tok of [k, ...(v.aliases ?? [])]) {
-      if (tok.length >= 3 && (slug.includes(tok) || tok.includes(slug))) {
-        cands.push({ v, score: tok.length });
-      }
-    }
-  }
-  const entry: LinksEntry | undefined = cands.sort(
-    (a, b) => b.score - a.score || sourceRank(a.v) - sourceRank(b.v),
-  )[0]?.v;
+  // All matching logic (deterministic slug binding + hardened name fuzzy) lives
+  // in the pure, unit-tested pickLinkEntry — see supplement-links-match.ts.
+  const entry = pickLinkEntry(links, name, catalogueSlug);
 
   if (entry?.url) {
     return {

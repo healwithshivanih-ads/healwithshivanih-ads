@@ -18,7 +18,8 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { lookupLetterToken } from "@/lib/server-actions/letter-token";
-import { resolveSupplementLink, type SupplementLink } from "@/lib/server-actions/supplement-links";
+import { resolveSupplementLink } from "@/lib/server-actions/supplement-links";
+import type { SupplementLink } from "@/lib/server-actions/supplement-links-match";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 
 export const dynamic = "force-dynamic";

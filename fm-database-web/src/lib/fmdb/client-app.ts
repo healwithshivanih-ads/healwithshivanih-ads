@@ -3255,7 +3255,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       // preferred store.
       try {
         const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
-        const link = await resolveSupplementLink(name);
+        // Pass the catalogue slug so the product binds deterministically by
+        // `covers`/slug — never by a coincidental name substring.
+        const link = await resolveSupplementLink(name, slug);
         if (link.source !== "search") buyUrl = link.url;
       } catch {
         /* no link — Reorder button simply hides */
