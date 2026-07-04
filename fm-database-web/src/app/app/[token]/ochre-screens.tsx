@@ -687,6 +687,18 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
       </div>
       <div className="why">{supp.why}</div>
       <div className="supp-foot">
+        {supp.imageUrl && (
+          <img
+            className="supp-thumb"
+            src={supp.imageUrl}
+            alt={`${supp.name} label`}
+            loading="lazy"
+            style={{ width: 34, height: 34, borderRadius: 6, objectFit: "cover", flexShrink: 0 }}
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = "none";
+            }}
+          />
+        )}
         <span className="stock">
           <Icon name="pill" size={13} />
           {supp.buyLabel ?? "Recommended brand"}

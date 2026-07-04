@@ -25,7 +25,9 @@ import {
 // it must NOT export types. Import LinkSource / SupplementLink directly from
 // "@/lib/server-actions/supplement-links-match" instead.
 
-const VITAONE_REFERRAL = "?pr=vita13720sh";
+// VitaOne's attributing referral param is ?ref= (confirmed live on the product
+// page); ?pr= was the legacy/incorrect param and does not attribute orders.
+const VITAONE_REFERRAL = "?ref=vita13720sh";
 
 let cache: LinksFile | null = null;
 let cacheAt = 0;
@@ -78,6 +80,7 @@ export async function resolveSupplementLink(
         (entry.url.includes("vitaone") ? "vitaone" : "custom"),
       notes: entry.notes,
       unit_strength: entry.unit_strength,
+      image_url: entry.facts_image_url,
     };
   }
 
