@@ -1,0 +1,64 @@
+slug: methylene-blue
+display_name: Methylene Blue
+aliases:
+- methylthioninium chloride
+category: other
+forms_available:
+- tablet
+typical_dose_range:
+  tablet:
+    min: 10
+    max: 10
+    unit: mg
+timing_options:
+- morning
+take_with_food: optional
+contraindications:
+  conditions:
+  - G6PD deficiency
+  - concurrent serotonergic drug use (serotonin syndrome risk)
+  medications:
+  - SSRIs
+  - SNRIs
+  - MAOIs
+  - serotonergic drugs
+  life_stages:
+  - pregnancy
+  - lactation
+  - children
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+linked_to_topics:
+- cognitive-decline
+- chronic-fatigue-syndrome
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-energy-production
+- mitochondrial-dysfunction
+linked_to_claims: []
+notes_for_coach: >-
+  PRESCRIPTION-ONLY / clinician-gated — VitaOne lists it under Pharmacy, not
+  supplements. Pharmaceutical-grade mitochondrial electron donor and nootropic;
+  at microdoses (~10 mg) it supports ATP production in compromised mitochondria
+  and offers neuroprotection. OUT OF COACHING SCOPE to recommend or dose —
+  educate only, and refer to the prescribing clinician. Hard cautions: do NOT
+  combine with SSRIs/SNRIs/MAOIs or other serotonergic drugs (serotonin-syndrome
+  risk); contraindicated in G6PD deficiency, pregnancy, lactation, and children;
+  causes temporary blue discolouration of urine/stool. Evidence for cognitive /
+  fatigue / mitochondrial use is emerging, not established.
+notes_for_client: >-
+  Methylene blue is a prescription medicine, not a supplement — it should only be
+  used under a doctor's supervision. If a clinician has prescribed it, follow their
+  dosing exactly.
+evidence_tier: confirm_with_clinician
+sources:
+- id: vitaone-product-catalog
+  location: Product page — Methylene Blue (vitaone.in/products/methylene-blue-423)
+  quote: >-
+    Methylene Blue 10 mg is a pharmaceutical-grade antioxidant and mitochondrial
+    enhancer, used in cellular energy support and neuroprotection. Prescription
+    Required.
+version: 1
+status: active
+updated_at: '2026-07-04'
+updated_by: shivani

@@ -24,6 +24,7 @@ import {
   updateClientPreferences,
   updateClientProfile,
 } from "@/lib/server-actions/clients";
+import { ensureDetailedMenuAction } from "@/lib/server-actions/weekly-menu";
 import { PLAN_MODULES, type PlanModuleDef } from "@/lib/fmdb/plan-modules";
 import { AyurvedaToggle } from "./ayurveda-toggle";
 
@@ -246,16 +247,31 @@ function MealPlanTypeRow({
   const onPick = (next: MealPlanStyle) => {
     if (next === value) return;
     const prev = value;
+    const switchingToDetailed = next === "detailed" && prev !== "detailed";
     setValue(next);
     start(async () => {
       const res = await updateClientProfile({ client_id: clientId, meal_plan_style: next });
-      if (res.ok) {
-        toast.success(`Meal plan style → ${next}`);
-        router.refresh();
-      } else {
+      if (!res.ok) {
         toast.error(res.error ?? "Save failed", { duration: 12000 });
         setValue(prev);
+        return;
       }
+      toast.success(`Meal plan style → ${next}`);
+      if (switchingToDetailed) {
+        toast.message("Generating this client's daily menu — ~1-2 min…");
+        const gen = await ensureDetailedMenuAction(clientId);
+        if (!gen.ok) {
+          toast.error(
+            `Style saved, but the daily menu didn't generate: ${gen.error ?? "unknown error"}. Try again from the app-preview panel.`,
+            { duration: 15000 },
+          );
+        } else if (gen.alreadyDetailed) {
+          toast.success("This client already had a full detailed menu.");
+        } else {
+          toast.success(`Detailed menu ready — ${gen.weeks} week(s), ${gen.dishes} dishes.`);
+        }
+      }
+      router.refresh();
     });
   };
 

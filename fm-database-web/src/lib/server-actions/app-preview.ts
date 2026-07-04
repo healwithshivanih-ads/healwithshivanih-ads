@@ -337,8 +337,11 @@ export async function saveBuyLinkAction(
 ): Promise<{ ok: boolean; error?: string }> {
   let url = rawUrl.trim();
   if (!/^https?:\/\//i.test(url)) return { ok: false, error: "That doesn't look like a URL." };
-  if (/vitaone\.in/i.test(url) && !/pr=vita/i.test(url))
-    url += (url.includes("?") ? "&" : "?") + "pr=vita13720sh";
+  // VitaOne's attributing param is ?ref= (confirmed on the product page:
+  // "orders placed from it will be attributed to you"). Guard against BOTH
+  // ref= and the legacy pr= so we never double-append a referral.
+  if (/vitaone\.in/i.test(url) && !/[?&](ref|pr)=vita/i.test(url))
+    url += (url.includes("?") ? "&" : "?") + "ref=vita13720sh";
   try {
     const file = path.join(getPlansRoot(), "supplement_links.yaml");
     const links =

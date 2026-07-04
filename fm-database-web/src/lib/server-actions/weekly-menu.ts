@@ -57,6 +57,24 @@ async function publishedFileForClient(
   return null;
 }
 
+/** client.meal_plan_style — "detailed" | "principles" | "hybrid" (default
+ *  "hybrid"). Only "principles" changes weekly-cadence gating here: it means
+ *  no fixed weekly menu by design, same intent as the (never-written)
+ *  plan.no_weekly_menu flag. "detailed" vs "hybrid" is NOT used to gate the
+ *  cron — that's still driven by the plan's actual app_menu.is_sample (week
+ *  count), so flipping the picker alone can't silently stop/start cadence
+ *  for a client whose menu was already generated under the old default. */
+async function mealPlanStyle(clientId: string): Promise<"detailed" | "principles" | "hybrid"> {
+  try {
+    const f = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+    const doc = (yaml.load(await fs.readFile(f, "utf-8")) as { meal_plan_style?: string }) ?? {};
+    const v = doc.meal_plan_style;
+    return v === "detailed" || v === "principles" ? v : "hybrid";
+  } catch {
+    return "hybrid";
+  }
+}
+
 /** The client's current plan week (1-based), from the same Day-1 anchor the
  *  app uses. Returns 1 when no anchor exists yet. */
 function currentPlanWeek(plan: PlanDoc): number {
@@ -111,7 +129,7 @@ export async function generateWeekMenuAction(
   if (hit.plan.app_menu?.is_sample) {
     return { ok: false, error: "Hybrid/sample plan — it uses one fixed sample week, not a weekly cadence." };
   }
-  if (hit.plan.no_weekly_menu) {
+  if (hit.plan.no_weekly_menu || (await mealPlanStyle(clientId)) === "principles") {
     return { ok: false, error: "Principle plan — it shows the eating framework only (no weekly menu)." };
   }
   // Catch-up aware: if the CURRENT plan week has no menu, draft THAT (never
@@ -128,6 +146,43 @@ export async function generateWeekMenuAction(
   if (!out?.ok) return { ok: false, error: out?.error ?? "generation failed" };
   revalidatePath(`/clients-v2/${clientId}`);
   return { ok: true, changeNote: out.change_note, week: out.week };
+}
+
+/** Called right after the coach flips client.meal_plan_style → "detailed".
+ *  A principles/hybrid client typically has zero (or exactly one, sample)
+ *  weeks of structured app_menu — the picker alone doesn't create the daily
+ *  grid the client sees. This runs the SAME constraint engine as the initial
+ *  detailed build (scripts/generate-app-menu.py — dosha rules, exclusions,
+ *  seasonality, calorie/protein targets) for the client's current + next
+ *  plan week, and writes it straight onto the published plan (no draft/
+ *  approve step — this is an explicit coach action, not the weekly cron).
+ *  Once 2+ weeks exist, app_menu.is_sample flips false and the normal
+ *  weekly cron (generate-week-menu.py) takes over the recurring cadence.
+ *  No-ops (ok:true, alreadyDetailed:true) if the plan already has a real
+ *  (non-sample, 2+ week) menu — safe to call unconditionally. ~1-2 min. */
+export async function ensureDetailedMenuAction(
+  clientId: string,
+): Promise<{ ok: boolean; alreadyDetailed?: boolean; weeks?: number; dishes?: number; error?: string }> {
+  const hit = await publishedFileForClient(clientId);
+  if (!hit) return { ok: false, error: "No published plan." };
+  const weeksNow = hit.plan.app_menu?.weeks ?? [];
+  if (weeksNow.length >= 2 && !hit.plan.app_menu?.is_sample) {
+    return { ok: true, alreadyDetailed: true };
+  }
+  const cur = currentPlanWeek(hit.plan);
+  try {
+    const { runShim } = await import("@/lib/fmdb/shim");
+    const out = (await runShim(
+      "generate-app-menu.py",
+      { client_id: clientId, plan_slug: hit.plan.slug, weeks: [cur, cur + 1] },
+      360_000,
+    )) as { ok: boolean; weeks?: number; dishes?: number; error?: string };
+    if (!out?.ok) return { ok: false, error: out?.error ?? "generation failed" };
+    revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: true, weeks: out.weeks, dishes: out.dishes };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "generation failed" };
+  }
 }
 
 /** Coach approval: the pending week goes LIVE on the client's app. */
@@ -319,6 +374,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       seen.add(cid);
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
+      if ((await mealPlanStyle(cid)) === "principles") continue; // client.meal_plan_style opt-out
       const weeks = p.app_menu?.weeks ?? [];
       // weeks may be EMPTY here: a real (non-hybrid, non-principle) plan that's
       // missing its menu entirely → it falls through and gets its FIRST week
