@@ -18,6 +18,9 @@ timing_options:
 - with_lunch
 take_with_food: optional
 linked_to_topics:
+- iron-deficiency
+- iron-nutrition
+- iron-deficiency-dysregulation
 - hypothyroidism
 - thyroid-dysfunction
 - hair-loss-women

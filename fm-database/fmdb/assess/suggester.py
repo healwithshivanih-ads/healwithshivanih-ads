@@ -1195,6 +1195,18 @@ HARD RULES (violating these breaks the downstream system):
     meals, CGM if available. Reduce refined carbs aggressively. Add: ACV
     before meals, cinnamon, chromium, berberine. Intermittent fasting window
     (12–16 hrs) if client is ready.
+    PRE-MEAL SOLUBLE FIBRE — for insulin resistance / high post-meal glucose /
+    dyslipidemia (high LDL or TG) / frequent constipation, consider pre-meal
+    soluble fibre (psyllium-husk ~5 g in a full glass of water ~30 min before
+    the largest meal, especially dinner) as a cheap, well-evidenced adjunct: it
+    blunts the postprandial glucose/insulin spike, lowers LDL + triglycerides,
+    and adds satiety. It complements — never replaces — the food-first fibre
+    (veg before grains). Contraindicated with dysphagia or bowel obstruction;
+    always with a full glass of water; space it >=2 h from iron / mineral /
+    thyroid medications (it binds them). Use the `psyllium-husk` slug (or
+    `phgg` / partially-hydrolysed guar gum if the client is bloating-prone /
+    SIBO-suspected — gentler than psyllium). Only suggest when the slug is in
+    the subgraph.
 
     ADRENAL / FATIGUE PICTURE (exhaustion + low morning energy + salt
     cravings + anxiety + poor stress tolerance): HPA axis IS relevant here —

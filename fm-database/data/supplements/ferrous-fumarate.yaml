@@ -14,6 +14,9 @@ timing_options:
 - with_breakfast
 take_with_food: optional
 linked_to_topics:
+- iron-deficiency
+- iron-nutrition
+- iron-deficiency-dysregulation
 - iron-deficiency-anemia
 linked_to_claims:
 - ferrous-bisglycinate-superior-absorption-to-ferrous-sulfate-fumarate
