@@ -5170,11 +5170,11 @@ DOCUMENT STRUCTURE:
 
 2b. **How to swap meals** — `## 🔁 How to use this plan`
    Insert this short, warm box (≤ 8 lines, plain English) so {first_name} knows the rules of swapping BEFORE she reads the tables. Use bullets. Cover EXACTLY these rules and no more:
-   - You can swap a meal with the SAME meal on a different day in the same week. (e.g. if you'd rather have Wednesday's breakfast on Monday, just swap them — eat eggs both days if you like, and shift the ragi porridge to Wednesday.)
+   - You can swap a meal with the SAME meal on a different day in the same week. (e.g. if you'd rather have Wednesday's breakfast on Monday, just swap them — eat eggs both days if you like, and shift the moong dal chilla to Wednesday.)
    - You can NOT swap across meal slots — don't move breakfast into the lunch column or dinner into breakfast. The slot matters because each meal's nutrient density and timing are designed together (e.g. breakfast is the lower-glycaemic anchor, dinner is lighter).
    - If something doesn't fit your week, repeat a meal you liked from the same slot earlier in the week rather than skipping. Two breakfasts of eggs in a week is fine; eggs at dinner is not.
    - Mid-morning, evening, and bedtime snacks follow the same rule — they're independent slots, not "spare" meals.
-   - If you genuinely can't eat what's on the plan for a meal slot, fall back to a simple safe option: dal + sabzi + 1 roti for lunch/dinner; oats + nuts for breakfast.
+   - If you genuinely can't eat what's on the plan for a meal slot, fall back to a simple safe option: dal + sabzi + 1 roti for lunch/dinner; besan cheela or vegetable poha for breakfast.
 
    Keep the tone soft — this is freedom + structure, not rigidity.
 
@@ -5220,6 +5220,7 @@ RULES:
 - CRITICAL: NEVER suggest foods listed as reported triggers: {reported_triggers}
 - No clinical jargon — write like a knowledgeable friend
 - If Vegetarian Jain: NO root vegetables (onion, garlic, potato, carrot, beetroot, radish, turnip)
+- AVOID PORRIDGE-STYLE BREAKFASTS (ragi porridge, oats porridge, dalia, upma-as-porridge) by default — most Indian clients find them unappealing and skip them. Prefer moong dal chilla, besan cheela, poha, idli/dosa, vegetable paratha, sprouts, or egg preparations (if eaten) instead. Only use a porridge-style breakfast if the client has explicitly said they like it.
 - {"INCLUDE a *~kcal* row at the bottom of each weekly table with the per-day total (±50 kcal of the phase target)." if cal else "DO NOT add a *~kcal* row or any per-day calorie totals — this client is NOT on a weight-loss plan. Calorie counts are off-topic and create unnecessary anxiety."}
 
 {INDIAN_BRANDS}
