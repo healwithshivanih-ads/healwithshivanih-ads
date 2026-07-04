@@ -11,8 +11,8 @@ import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread
 import { FmPanel } from "@/components/fm";
 import { SendAppLinkButton } from "../send-app-link-button";
 import { VoiceNoteSender } from "../voice-note-sender";
-// Letter generation lives in the welcome-letter hero panel above
-// (NewCommunicatePanel → LetterGenerateTrigger, consolidated only).
+// Letters retired (2026-07-04): the welcome EMAIL (WelcomeEmailCard above)
+// + the client app are the deliverables; this panel is messaging only.
 // This panel is now purely the comms surfaces: app link, voice note,
 // booking link, message templates, email, contact, WhatsApp thread.
 
@@ -93,7 +93,7 @@ export function CommunicateClient({
         {clientEmail && (
           <FmPanel
             title="✉️ Email client"
-            subtitle="Quick mailto. For Send-with-attached-letter, open the letter in the editor and use its Send button."
+            subtitle="Quick mailto — for ad-hoc notes. The welcome email sends from the card above."
           >
             <div
               style={{

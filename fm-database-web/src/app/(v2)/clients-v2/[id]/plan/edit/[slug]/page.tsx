@@ -46,7 +46,6 @@ import { PlanStartDatesPanel } from "./plan-start-dates-panel";
 import { StartConfirmLinkButton } from "./start-confirm-link-button";
 import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { DeletePlanButton } from "@/components/plan-editor/delete-plan-button";
-import { SendToClientButton } from "@/components/plan-editor/send-to-client-modal";
 import { loadSupplementSources } from "@/lib/server-actions/plans";
 import { PlanStatusBadge } from "@/components/plan-status-badge";
 import { PlanPageShell } from "../../plan-page-shell";
@@ -260,12 +259,6 @@ export default async function V2PlanEditorPage({
             alignItems: "center",
           }}
         >
-          <SendToClientButton
-            planSlug={plan.slug}
-            clientId={plan.client_id}
-            clientEmail={planClient?.email}
-            clientName={planClient?.display_name ?? planClient?.client_id}
-          />
           <DeletePlanButton slug={plan.slug} status={status} />
         </div>
       </div>

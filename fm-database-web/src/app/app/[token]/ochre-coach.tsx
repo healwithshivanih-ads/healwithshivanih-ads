@@ -53,7 +53,14 @@ interface Msg {
   emergency?: boolean;
 }
 
-export function CoachScreen({ coachAlert }: { coachAlert: boolean }) {
+export function CoachScreen({
+  coachAlert,
+  openTour,
+}: {
+  coachAlert: boolean;
+  /** Re-opens the Getting-Started tour (auto-shown once on first open). */
+  openTour?: () => void;
+}) {
   const data = useOchre();
   const c = data.coach;
   const firstName = c.name.split(" ")[0];
@@ -177,6 +184,47 @@ export function CoachScreen({ coachAlert }: { coachAlert: boolean }) {
             <div style={{ fontSize: 14.5, color: "var(--ink)", fontWeight: 500, marginTop: 1 }}>{c.nextSession}</div>
           </div>
         </div>
+      )}
+
+      {openTour && (
+        <button
+          type="button"
+          className="next-session"
+          onClick={openTour}
+          style={{
+            marginTop: 10,
+            width: "100%",
+            border: "none",
+            background: "var(--paper-2)",
+            cursor: "pointer",
+            textAlign: "left",
+            font: "inherit",
+          }}
+        >
+          <span
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 12,
+              background: "var(--forest-tint)",
+              color: "var(--forest)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+              fontSize: 20,
+            }}
+            aria-hidden
+          >
+            🌱
+          </span>
+          <div>
+            <div style={{ fontSize: 12.5, color: "var(--muted)" }}>New here, or need a refresher?</div>
+            <div style={{ fontSize: 14.5, color: "var(--ink)", fontWeight: 500, marginTop: 1 }}>
+              Getting started — watch the tour again
+            </div>
+          </div>
+        </button>
       )}
 
       <Section title="Ask the co-pilot">

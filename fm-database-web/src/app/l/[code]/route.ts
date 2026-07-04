@@ -21,6 +21,6 @@ export async function GET(
     process.env.APP_ORIGIN?.replace(/\/$/, "") ??
     process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ??
     req.nextUrl.origin;
-  const dest = new URL(`/letter/${res.letter_token}`, base);
+  const dest = new URL(`/app/${res.letter_token}`, base); // letters retired → app
   return NextResponse.redirect(dest, 302);
 }

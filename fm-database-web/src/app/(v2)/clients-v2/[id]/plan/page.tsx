@@ -23,7 +23,6 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { effectivePlanStart, type PlanLike } from "@/lib/fmdb/plan-timing";
 // Letter send history moved to Communicate tab — single source of truth
 // for all client comms. Plan tab no longer reads the send log.
-import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { LabsViewPanel } from "./labs-view-panel";
 
@@ -322,11 +321,6 @@ export default async function PlanTabPage({
       );
     });
   const activePlan = activeSorted[0];
-  // Letter staleness — compares each saved letter mtime to plan.updated_at.
-  // Only runs when we have a plan; cheap (per-letter fs.stat).
-  const staleness = activePlan
-    ? await getLetterStalenessAction(activePlan.slug as string, id)
-    : null;
   // If separate drafts exist alongside a published plan, call them out
   // so the coach knows in-progress next versions are waiting. Multiple
   // drafts can accumulate when a coach re-runs Assess more than once
@@ -532,16 +526,7 @@ export default async function PlanTabPage({
   // Raw earliest meal_plan/consolidated letter savedAt (YYYY-MM-DD) — the
   // "a letter went out" signal for the shared resolver, which adds the ~3-day
   // adoption lag itself. Only consulted when the meal start isn't confirmed.
-  let letterSentYmd: string | null = null;
-  if (!planAny?.meal_plan_started_on && !planAny?.supplements_started_on && staleness?.entries) {
-    const candidates = staleness.entries
-      .filter((e) => e.type === "meal_plan" || e.type === "consolidated")
-      .map((e) => new Date(e.savedAt).getTime())
-      .filter((t) => !Number.isNaN(t));
-    if (candidates.length > 0) {
-      letterSentYmd = new Date(Math.min(...candidates)).toISOString().slice(0, 10);
-    }
-  }
+  const letterSentYmd: string | null = null; // letters retired — no letter-sent signal
   // Single source of truth (plan-timing.ts) — the SAME resolver the client app
   // and dashboard use, so the coach's retest dates can't drift from what the
   // client sees. The coach surface adds the letter-sent refinement (a signal

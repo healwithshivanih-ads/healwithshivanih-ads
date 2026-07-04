@@ -97,7 +97,7 @@ export async function generateWeekRecipesAction(
 }
 
 /** Append a `{letter_types:[recipes], plan_slug}` entry to the client's
- *  meal-plans/_send_log.yaml so isSentFile() lets the app read the
+ *  meal-plans/_send_log.yaml so the app treats the
  *  <slug>-recipes.md sidecar. Idempotent per (plan_slug, recipes). */
 async function recordRecipesIssued(clientId: string, planSlug: string): Promise<void> {
   const file = path.join(getPlansRoot(), "clients", clientId, "meal-plans", "_send_log.yaml");

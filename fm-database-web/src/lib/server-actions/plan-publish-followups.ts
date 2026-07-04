@@ -207,9 +207,9 @@ export async function firePlanPublishFollowups(input: {
   }
 
   const origin = publicOrigin();
-  const letterUrl = tokRes.short_code
-    ? `${origin}/l/${tokRes.short_code}`
-    : `${origin}/letter/${tokRes.token}`;
+  // Letters retired — the plan link IS the app link (same token; /l short
+  // codes and any old /letter URLs redirect into /app).
+  const letterUrl = `${origin}/app/${tokRes.token}`;
   // Token, never the slug — /supplements is token-gated (2026-06-11).
   const suppUrl = `${origin}/supplements/${tokRes.token}`;
 

@@ -25,6 +25,7 @@ import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./o
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { LabsScreen } from "./ochre-labs";
 import { CoachScreen } from "./ochre-coach";
+import { TourOverlay } from "./ochre-tour";
 import InstallPrompt from "./ochre-install";
 import { AccountOverlay, DocOverlay, MealOverlay, PortionsOverlay, RemedyOverlay } from "./ochre-overlays";
 import { BreathOverlay } from "./ochre-breath";
@@ -384,6 +385,23 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     scrollTop();
   };
 
+  // ── Getting-Started tour ────────────────────────────────────────────
+  // Auto-opens ONCE for new users (first two weeks, plan mode only — not
+  // discovery/onboarding/setup-hold/endgame). The seen flag is per-client
+  // localStorage so a re-install shows it again (harmless). Re-watchable
+  // any time from the Coach tab ("Watch the tour again").
+  const TOUR_KEY = `ochre.tour.seen.${data.clientId}`;
+  const [tourOpen, setTourOpen] = useState(false);
+  const tourAutoRef = useRef(false);
+  const closeTour = () => {
+    setTourOpen(false);
+    try {
+      localStorage.setItem(TOUR_KEY, new Date().toISOString());
+    } catch {
+      /* private mode — tour just re-offers next open */
+    }
+  };
+
   // Plan hasn't started yet (coach set a future start date) — show the
   // pre-start "on hold" screen for every plan-content tab. Coach + Labs
   // stay reachable so the client can still message / view past results.
@@ -404,6 +422,23 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // done yet. The whole app is the guided onboarding flow (no tabs) — the
   // Starting Map + upgrade countdown stay hidden until post_call.
   const onboarding = discovery && data.discoveryStage != null && data.discoveryStage !== "post_call";
+
+  // Auto-open the Getting-Started tour once, after hydration, for new
+  // plan-mode clients only. Effect lives BELOW the gating consts it reads.
+  useEffect(() => {
+    if (!hydrated || tourAutoRef.current) return;
+    tourAutoRef.current = true;
+    try {
+      if (localStorage.getItem(TOUR_KEY)) return;
+    } catch {
+      return; // storage unavailable — never auto-loop the tour
+    }
+    const normalMode = data.mode !== "REVIEW" && data.mode !== "MAINTENANCE" && data.mode !== "LIBRARY";
+    if (!discovery && !onboarding && !setupHold && normalMode && data.client.week <= 2) {
+      setTourOpen(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated]);
 
   let screen: React.ReactNode = null;
   if (onboarding) {
@@ -484,7 +519,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   } else if (tab === "labs") {
     screen = <LabsScreen />;
   } else if (tab === "coach") {
-    screen = <CoachScreen coachAlert={!submitted && !onHold} />;
+    screen = <CoachScreen coachAlert={!submitted && !onHold} openTour={() => setTourOpen(true)} />;
   }
 
   return (
@@ -587,6 +622,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
           )}
 
           {maintOpen && <MaintenanceCheckout onClose={() => setMaintOpen(false)} />}
+
+          {tourOpen && !booting && <TourOverlay onClose={closeTour} />}
 
           <DailyFeelingSheet show={feelSheet} onClose={() => setFeelSheet(false)} onSave={logFeeling} />
           <MoveSheet show={moveSheet} onClose={() => setMoveSheet(false)} onSave={addMove} />

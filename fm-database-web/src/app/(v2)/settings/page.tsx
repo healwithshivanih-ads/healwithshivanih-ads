@@ -170,7 +170,7 @@ export default async function SettingsPage() {
               }
             />
             <FmInfoRow
-              label="Gmail SMTP (welcome letter email)"
+              label="Gmail SMTP (welcome email)"
               value={
                 <span>
                   
@@ -518,7 +518,7 @@ export default async function SettingsPage() {
               </code>{" "}
               and{" "}
               <code style={{ fontFamily: "var(--fm-font-mono)" }}>
-                scripts/render-client-letter.py
+                src/lib/welcome-email.ts (welcome email) + scripts/brand_html.py (handouts)
               </code>
             </li>
           </ul>

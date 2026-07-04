@@ -26,7 +26,6 @@ import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
-import { loadMealPlan, type LetterType } from "@/lib/server-actions/plan-lifecycle";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { FmAppShell } from "@/components/fm";
 import { HeaderAvatar } from "../analyse/header-avatar";
@@ -126,27 +125,10 @@ export default async function ReferencePage({
   const nutrition: NutritionShape = (activePlan?.nutrition as NutritionShape) ?? {};
   const lifestyle: PracticeItem[] = (activePlan?.lifestyle_practices as PracticeItem[]) ?? [];
 
-  const letterTypesActive = (client.letter_types_active as string[] | undefined) ?? ["consolidated"];
-  const hasMealPlan = letterTypesActive.includes("meal_plan");
-  const hasConsolidated = letterTypesActive.includes("consolidated");
-
-  // Load the saved meal-plan letter HTML so the modals can show brand-
-  // styled per-week tables + supplement schedule WITHOUT having to
-  // re-render markdown→HTML ourselves. Prefer the dedicated meal_plan
-  // letter; fall back to consolidated (which embeds the same week tables
-  // inline). Best-effort — missing letter just means modal buttons hide.
-  let letterSections: LetterSections | null = null;
-  if (activePlanSlug) {
-    const preferredType: LetterType = hasMealPlan ? "meal_plan" : "consolidated";
-    const fallbackType: LetterType | null = hasMealPlan && hasConsolidated ? "consolidated" : null;
-    let letterData = await loadMealPlan(activePlanSlug, id, preferredType);
-    if ((!letterData.ok || !letterData.html) && fallbackType) {
-      letterData = await loadMealPlan(activePlanSlug, id, fallbackType);
-    }
-    if (letterData.ok && letterData.html) {
-      letterSections = extractLetterSections(letterData.html);
-    }
-  }
+  // Letters retired (2026-07-04) — the brand-styled letter modals are gone;
+  // the reference card reads the plan directly. letterSections stays null so
+  // reference-client simply hides those buttons.
+  const letterSections: LetterSections | null = null;
 
   // Current-week computation from plan_period_start. Capped at the
   // plan_period_weeks (typically 12) so the highlight doesn't wander
@@ -232,8 +214,8 @@ export default async function ReferencePage({
         lifestyle={lifestyle}
         notesForCoach={(activePlan?.notes_for_coach as string | undefined) ?? null}
         letterSections={letterSections}
-        hasMealPlanLetter={hasMealPlan}
-        hasConsolidatedLetter={hasConsolidated}
+        hasMealPlanLetter={false}
+        hasConsolidatedLetter={false}
       />
     </FmAppShell>
   );

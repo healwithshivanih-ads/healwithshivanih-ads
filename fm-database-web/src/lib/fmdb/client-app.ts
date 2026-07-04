@@ -221,12 +221,7 @@ import {
   shortTiming,
   displayTiming,
 } from "./client-app-format";
-import {
-  type LetterSupplementRow,
-  SUPP_NAME_OVERRIDES,
-  suppKey,
-  matchSupplementRow,
-} from "./client-app-supplements";
+import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
 
 export interface AppMealExtra {
   grad: string;
@@ -1262,68 +1257,6 @@ function cleanDishCell(raw: string): string {
   return c;
 }
 
-/** Parse meal week tables in BOTH letter generations:
- *  A (pre-reformat): `## 🗓 Week 1 Meal Plan`, rows = slots, cols = Mon..Sun.
- *  B (day-card era): `## Week 1`, header `| Day | Breakfast | … |`,
- *    rows = days ("Mon 8 Jun"). Normalised to shape A so downstream
- *    day-column logic is shared; the per-day dates are kept so "today"
- *    can match by real date first. */
-function parseWeekTables(md: string): WeekTable[] {
-  const tables: WeekTable[] = [];
-  const re = /^#{2,3} .*?Week (\d+)[^\n]*$/gim;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(md))) {
-    const week = parseInt(m[1], 10);
-    const rest = md.slice(m.index + m[0].length);
-    const tableLines: string[][] = [];
-    let inTable = false;
-    for (const line of rest.split("\n")) {
-      const t = line.trim();
-      if (t.startsWith("|")) {
-        inTable = true;
-        const cells = t.split("|").map((c) => c.trim()).filter((_, i, a) => i > 0 && i < a.length - 1);
-        if (cells.length >= 2 && !/^[-:\s]+$/.test(cells[0])) tableLines.push(cells);
-      } else if (inTable) {
-        break;
-      } else if (t.startsWith("#")) {
-        break; // next section before any table
-      }
-    }
-    if (tableLines.length < 2) continue;
-    const header = tableLines[0].map((c) => c.replace(/\*\*/g, "").trim());
-
-    if (/^day$/i.test(header[0])) {
-      // ── format B: rows are days, columns are slots ──────────────────
-      const slots = header.slice(1);
-      const rows = slots.map((slot) => ({ slot, cells: Array(7).fill("") as string[] }));
-      const dayDates: (string | null)[] = Array(7).fill(null);
-      for (const cells of tableLines.slice(1)) {
-        const dayCell = cells[0].replace(/\*\*/g, "").trim();
-        const dowM = dayCell.match(/^(mon|tue|wed|thu|fri|sat|sun)/i);
-        if (!dowM) continue;
-        const col = DOW_SHORT.indexOf(dowM[1].toLowerCase());
-        if (col < 0) continue;
-        const dateM = dayCell.match(/(\d{1,2}\s+\w{3,})/);
-        if (dateM) dayDates[col] = dateM[1];
-        slots.forEach((_, si) => {
-          rows[si].cells[col] = cleanDishCell(cells[si + 1] ?? "");
-        });
-      }
-      if (rows.some((r) => r.cells.some(Boolean))) tables.push({ week, rows, dayDates });
-    } else {
-      // ── format A: rows are slots, columns are Mon..Sun ──────────────
-      const rows: { slot: string; cells: string[] }[] = [];
-      for (const cells of tableLines.slice(1)) {
-        if (cells.length < 8) continue;
-        const slot = cells[0].replace(/\*\*/g, "").trim();
-        if (slot.startsWith("*")) continue; // the ~kcal footer row
-        rows.push({ slot, cells: cells.slice(1, 8).map(cleanDishCell) });
-      }
-      if (rows.length) tables.push({ week, rows });
-    }
-  }
-  return tables;
-}
 
 /** Format-B letters spell out the eating pattern as labelled food groups
  *  ("**Protein, every meal:** dal, rajma, …") under "Foods to enjoy" /
@@ -1351,64 +1284,6 @@ const ENJOY_HEAD_RE =
 const EASY_HEAD_RE =
   /^(?:#{2,4}\s+)?[^\w\n]{0,6}\s*\**((?:Foods to (?:go easy on|limit|reduce|avoid)|What to (?:reduce|avoid|go easy on))[^*\n]*)\**\s*$/im;
 
-function parseLetterFoods(md: string): LetterFoods | null {
-  const enjoyM = md.match(ENJOY_HEAD_RE);
-  const easyM = md.match(EASY_HEAD_RE);
-  if (!enjoyM || !easyM) return null;
-  /** Bullets / table rows under a heading, until the next heading. */
-  const sectionItems = (start: number): string[] => {
-    const rest = md.slice(start);
-    const lines: string[] = [];
-    let sawContent = false;
-    for (const line of rest.split("\n").slice(1)) {
-      const t = line.trim();
-      if (t === "") {
-        if (sawContent && lines.length) continue;
-        continue;
-      }
-      if (/^#{1,4}\s/.test(t)) break;
-      if (/^\*\*[^*]+\*\*\s*$/.test(t)) break; // next bold paragraph-heading
-      if (t.startsWith("- ")) {
-        lines.push(t.slice(2).trim());
-        sawContent = true;
-      } else if (t.startsWith("|")) {
-        const cells = t.split("|").map((c) => c.trim()).filter(Boolean);
-        if (!cells.length || /^[-:\s]+$/.test(cells[0]) || /^food$/i.test(cells[0].replace(/\*\*/g, ""))) continue;
-        lines.push(cells[0]);
-        sawContent = true;
-      } else if (sawContent) {
-        break;
-      }
-    }
-    return lines;
-  };
-  /** One bullet → {label, items[]}: labelled group, bold-lead, or prose. */
-  const toGroup = (b: string): LetterFoodGroup => {
-    const labelled = b.match(/^\*\*([^*]+?):\*\*:?\s*(.+)$/);
-    if (labelled) {
-      return {
-        label: labelled[1].trim(),
-        items: labelled[2].split(/,\s*(?![^()]*\))/).map((s) => s.replace(/\*\*/g, "").trim()).filter(Boolean),
-      };
-    }
-    const boldLead = b.match(/^\*\*([^*]+?)\*\*/);
-    if (boldLead) return { label: "", items: [boldLead[1].trim()] };
-    const short = b.replace(/\*\*/g, "").split(/\s+[—–]\s+/)[0].trim();
-    return { label: "", items: [short] };
-  };
-  const enjoy = sectionItems(enjoyM.index!).map(toGroup);
-  const easy = sectionItems(easyM.index!).map((b) => toGroup(b).items.join(", ")).filter(Boolean);
-  if (!enjoy.length || !easy.length) return null;
-  // the "sample week" guidance paragraph, if present
-  const noteM = md.match(/(?:^|\n)([^\n#|]*sample (?:week|to give you)[^\n]*)/i);
-  return {
-    enjoyTitle: enjoyM[1].trim().replace(/[—–-]\s*$/, "").trim(),
-    enjoy,
-    easyTitle: easyM[1].trim().replace(/[—–-]\s*$/, "").trim(),
-    easy,
-    note: noteM ? noteM[1].replace(/\*\*/g, "").trim() : "",
-  };
-}
 
 // ── send-log gating ──────────────────────────────────────────────────────────
 // The app shows ONLY content from letters the coach actually ISSUED.
@@ -1418,78 +1293,10 @@ function parseLetterFoods(md: string): LetterFoods | null {
 // in the folder must never feed the app — coach rule 2026-06-10, after
 // Hariharan's unsent May-5 draft surfaced a meal plan he was never given.
 
-interface SendEntry {
-  letter_types: string[];
-  plan_slug: string;
-  phase_start?: number;
-  phase_end?: number;
-}
 
-async function readSendLog(mealPlansDir: string): Promise<SendEntry[]> {
-  const raw = await readIfExists(path.join(mealPlansDir, "_send_log.yaml"));
-  if (!raw) return [];
-  try {
-    const d = yaml.load(raw);
-    if (!Array.isArray(d)) return [];
-    return d
-      .map((e) => {
-        const r = e as Dict;
-        return {
-          letter_types: asStrArr(r.letter_types),
-          plan_slug: asStr(r.plan_slug),
-          phase_start: typeof r.phase_start === "number" ? r.phase_start : undefined,
-          phase_end: typeof r.phase_end === "number" ? r.phase_end : undefined,
-        };
-      })
-      .filter((e) => e.plan_slug && e.letter_types.length);
-  } catch {
-    return [];
-  }
-}
 
-/** Map a meal-plans filename to the letter type its stem implies, relative
- *  to a sent plan_slug prefix. Returns null when the file doesn't belong to
- *  that slug. */
-function letterTypeForFile(fileName: string, slug: string): { type: string; phase?: [number, number] } | null {
-  if (!fileName.startsWith(slug)) return null;
-  const rest = fileName.slice(slug.length).replace(/\.(md|html)$/, "");
-  if (rest === "") return { type: "consolidated" };
-  const phaseM = rest.match(/^-meal_plan-wk(\d+)-(\d+)(-recipes)?$/);
-  if (phaseM) return { type: "meal_plan_phase", phase: [parseInt(phaseM[1], 10), parseInt(phaseM[2], 10)] };
-  if (rest === "-meal_plan") return { type: "meal_plan" };
-  if (rest === "-recipes") return { type: "recipes" };
-  if (rest === "-supplement_plan") return { type: "supplement_plan" };
-  if (rest === "-lifestyle_guide") return { type: "lifestyle_guide" };
-  if (rest === "-exercise_plan") return { type: "exercise_plan" };
-  return null;
-}
 
-/** Was this specific file issued? Phase letters check the recorded window
- *  when the send entry carries one (older entries don't — slug-level trust). */
-function isSentFile(fileName: string, log: SendEntry[]): boolean {
-  for (const e of log) {
-    const t = letterTypeForFile(fileName, e.plan_slug);
-    if (!t) continue;
-    if (!e.letter_types.includes(t.type)) continue;
-    if (t.type === "meal_plan_phase" && t.phase && e.phase_start != null && e.phase_end != null) {
-      if (e.phase_start !== t.phase[0] || e.phase_end !== t.phase[1]) continue;
-    }
-    return true;
-  }
-  return false;
-}
 
-/** First-letter HTML carries a "Buy here" list (buy-row entries) instead of
- *  the printed schedule table — harvest name → URL for reorder links. */
-function parseHtmlBuyRows(html: string): { name: string; url: string }[] {
-  const out: { name: string; url: string }[] = [];
-  const re = /buy-row-name">([^<]+)<[\s\S]{0,400}?href="([^"]+)"/g;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(html))) {
-    out.push({ name: m[1].trim(), url: m[2] });
-  }
-  return out;
-}
 
 interface LetterRecipe {
   title: string;
@@ -1773,38 +1580,6 @@ function parseRecipes(md: string): LetterRecipe[] {
   return out;
 }
 
-/** Parse supplement tables in either letter format:
- *  (a) single `| Supplement | Dose | When | Why | Buy |` table, or
- *  (b) split Morning / Evening tables with a `Where to Get It` column. */
-function parseSupplementRows(md: string): LetterSupplementRow[] {
-  const rows: LetterSupplementRow[] = [];
-  for (const line of md.split("\n")) {
-    const t = line.trim();
-    if (!t.startsWith("|")) continue;
-    const cells = t.split("|").map((c) => c.trim()).filter((_, i, a) => i > 0 && i < a.length - 1);
-    if (cells.length < 4) continue;
-    const first = cells[0].replace(/\*\*/g, "").trim();
-    if (/^supplement$/i.test(first) || /^-+$/.test(first.replace(/[:\s]/g, "-"))) continue;
-    // Heuristic: a supplement row's 2nd cell looks like a dose (contains digits + mg/mcg/g)
-    const dose = cells[1].replace(/\*\*/g, "").trim();
-    if (!/\d/.test(dose) || !/(mg|mcg|g\b|IU|billion)/i.test(dose)) continue;
-    const last = cells[cells.length - 1];
-    const link = last.match(/\[([^\]]+)\]\(([^)]+)\)/);
-    const why = (cells.length >= 5 ? cells[cells.length - 2] : cells[2])
-      .replace(/\*\*/g, "")
-      .trim();
-    const when = cells.length >= 5 ? cells[2].replace(/\*\*/g, "").trim() : "";
-    rows.push({
-      name: first.replace(/\s*\*\(optional[^)]*\)\*?/i, "").trim(),
-      dose,
-      when,
-      why,
-      buyLabel: link ? link[1] : undefined,
-      buyUrl: link ? link[2] : undefined,
-    });
-  }
-  return rows;
-}
 
 interface LetterRemedyBlurb {
   title: string;
@@ -1812,57 +1587,7 @@ interface LetterRemedyBlurb {
   what: string;
 }
 
-function parseRemedyBlurbs(md: string): LetterRemedyBlurb[] {
-  const sec = md.split(/^## .*Home Remedies.*$/m)[1];
-  if (!sec) return [];
-  const upToNext = sec.split(/^## /m)[0];
-  const out: LetterRemedyBlurb[] = [];
-  const parts = upToNext.split(/^### /m).slice(1);
-  for (const part of parts) {
-    const lines = part.split("\n");
-    const title = lines[0].trim();
-    const rest = lines.slice(1).join("\n").trim();
-    const whatM = rest.match(/\*\*What it does:?\*\*\s*([^\n]+)/);
-    const how = rest.split(/\*\*What it does/)[0].replace(/\s+/g, " ").trim();
-    out.push({ title, how, what: whatM ? whatM[1].trim() : "" });
-  }
-  return out;
-}
 
-function parseWatchList(md: string): { name: string; note: string }[] {
-  const sec = md.split(/^## .*What to Notice.*$/m)[1];
-  if (!sec) return [];
-  const upToNext = sec.split(/^## /m)[0];
-  const out: { name: string; note: string }[] = [];
-  // Format A: "✅ **Digestion:** Are you …"
-  for (const line of upToNext.split("\n")) {
-    const m = line.match(/^✅\s*\*\*([^:*]+):?\*\*:?\s*(.+)$/);
-    if (m) out.push({ name: m[1].trim(), note: m[2].replace(/\s+/g, " ").trim() });
-  }
-  if (out.length) return out;
-  // Format B: plain "- How does your energy feel …" question bullets —
-  // derive a short label from the dominant keyword.
-  const LABELS: [RegExp, string][] = [
-    [/energy|crash/i, "Energy"],
-    [/sleep|waking|falling asleep/i, "Sleep"],
-    [/mood/i, "Mood"],
-    [/digest|bloat|bowel/i, "Digestion"],
-    [/breath/i, "Breathing"],
-    [/calm|anxi|edge/i, "Calm"],
-    [/craving/i, "Cravings"],
-    [/body/i, "Body"],
-  ];
-  for (const line of upToNext.split("\n")) {
-    const m = line.match(/^[-•]\s+(.+)$/);
-    if (!m) continue;
-    const note = m[1].replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
-    const hit = LABELS.find(([re]) => re.test(note));
-    if (!hit) continue;
-    if (out.some((o) => o.name === hit[1])) continue;
-    out.push({ name: hit[1], note });
-  }
-  return out;
-}
 
 interface LetterPhase {
   name: string;
@@ -1871,32 +1596,7 @@ interface LetterPhase {
   note: string;
 }
 
-/** The 12-week overview section: `**Weeks 1–2: Foundation**` followed by a blurb. */
-function parsePhases(md: string): LetterPhase[] {
-  const out: LetterPhase[] = [];
-  const re = /\*\*Weeks?\s*(\d+)\s*[–-]\s*(\d+)[:\s]*\(?([A-Za-z ]+?)\)?\*\*[\s:]*\n+([^\n*][^\n]*(?:\n(?![*#])[^\n]+)*)/g;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(md))) {
-    const name = m[3].trim();
-    const from = parseInt(m[1], 10);
-    const to = parseInt(m[2], 10);
-    if (out.some((p) => p.weekFrom === from)) continue; // roadmap repeats later phases
-    out.push({ name, weekFrom: from, weekTo: to, note: m[4].replace(/\s+/g, " ").trim() });
-  }
-  out.sort((a, b) => a.weekFrom - b.weekFrom);
-  return out;
-}
 
-function parseCoachNote(md: string): string {
-  const sec = md.split(/^## .*Note [Ff]rom Your Coach.*$/m)[1];
-  if (!sec) return "";
-  const paras = sec
-    .split(/^## /m)[0]
-    .split("\n\n")
-    .map((p) => p.replace(/\s+/g, " ").trim())
-    .filter((p) => p && !/^Dear|^Hariharan|^With warmth|^\*\*/.test(p) && p.length > 60);
-  return paras[0] || "";
-}
 
 // ── remedy catalogue ─────────────────────────────────────────────────────────
 
@@ -2077,78 +1777,8 @@ function appMenuToWeekTables(menu: Dict): WeekTable[] {
   });
 }
 
-/** Letter-parsed WeekTables → the structured app_menu document. */
-export function weekTablesToAppMenu(tables: WeekTable[], syncedFrom: string): Dict {
-  return {
-    is_sample: tables.length === 1,
-    synced_from: syncedFrom,
-    synced_at: new Date().toISOString(),
-    weeks: tables.map((t) => ({
-      week: t.week,
-      day_dates: t.dayDates ?? null,
-      days: Array.from({ length: 7 }, (_, di) => ({
-        slots: t.rows
-          .map((r) => ({
-            slot: r.slot.replace(/\s*\([^)]*\)\s*$/, "").trim(),
-            dish: r.cells[di] ?? "",
-          }))
-          .filter((s) => s.dish),
-      })),
-    })),
-  };
-}
 
-/** Newest published file for a slug, or null. */
-async function publishedFileFor(planSlug: string): Promise<string | null> {
-  const dir = path.join(getPlansRoot(), "published");
-  try {
-    const match = (await fs.readdir(dir))
-      .filter((n) => n.startsWith(`${planSlug}-v`) && n.endsWith(".yaml"))
-      .sort()
-      .reverse()[0];
-    return match ? path.join(dir, match) : null;
-  } catch {
-    return null;
-  }
-}
 
-/** One-time migration: write the letter-derived menu into the published
- *  plan (amendment-logged) and clear the legacy meal_overrides layer. */
-async function migrateMenuIntoPlan(
-  planSlug: string,
-  clientDir: string,
-  tables: WeekTable[],
-  hadOverrides: boolean,
-): Promise<void> {
-  const file = await publishedFileFor(planSlug);
-  if (!file) return;
-  const raw = await fs.readFile(file, "utf-8");
-  const doc = (yaml.load(raw) as Dict) ?? {};
-  if (doc.app_menu) return; // raced — someone migrated already
-  doc.app_menu = weekTablesToAppMenu(tables, "issued letters (one-time migration)");
-  const amendments = Array.isArray(doc.amendments) ? (doc.amendments as Dict[]) : [];
-  amendments.push({
-    at: new Date().toISOString(),
-    by: "system",
-    field: "app_menu",
-    summary: `Menu migrated from issued letters${hadOverrides ? " (incl. coach meal swaps)" : ""} — the plan is now the source of truth.`,
-  });
-  doc.amendments = amendments;
-  const tmp = `${file}.tmp-${process.pid}`;
-  await fs.writeFile(tmp, yaml.dump(doc, { sortKeys: false, lineWidth: 100 }), "utf-8");
-  await fs.rename(tmp, file);
-  // clear the legacy patch layer — its content now lives in the plan
-  if (hadOverrides) {
-    try {
-      const ovPath = path.join(clientDir, "app-overrides.yaml");
-      const ov = (yaml.load(await fs.readFile(ovPath, "utf-8")) as Dict) ?? {};
-      delete ov.meal_overrides;
-      await fs.writeFile(ovPath, yaml.dump(ov, { sortKeys: false }), "utf-8");
-    } catch {
-      /* overrides file gone — fine */
-    }
-  }
-}
 
 /** Soften a coach_rationale into client-facing copy (mobile audit
  *  2026-06-11: raw rationales leaked lab readouts — "LDL 130, HDL 49,
@@ -2698,43 +2328,22 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   } catch {
     /* no letters dir */
   }
-  // SEND-LOG GATE: only files recorded as sent feed the app. A folder full
-  // of generated drafts (Hariharan's May-5 letter) contributes NOTHING
-  // until the coach actually issues a letter — the app then falls back to
-  // the plan YAML's principle fields.
-  const sendLog = await readSendLog(mealPlansDir);
-  const letterFiles = allLetterFiles.filter((n) => isSentFile(n, sendLog));
-  const sentSlugs = [...new Set(sendLog.map((e) => e.plan_slug))];
-  // base letter: prefer the published plan's own consolidated/meal_plan,
-  // else any sent slug's (phase letters are sometimes issued under a
-  // successor slug while the original plan stays published).
-  let baseStem = "";
-  for (const slug of [planSlug, ...sentSlugs.filter((s) => s !== planSlug)]) {
-    if (letterFiles.includes(`${slug}.md`)) {
-      baseStem = slug;
-      break;
-    }
-    if (letterFiles.includes(`${slug}-meal_plan.md`)) {
-      baseStem = `${slug}-meal_plan`;
-      break;
-    }
-  }
-  const baseMd = baseStem ? ((await readIfExists(path.join(mealPlansDir, `${baseStem}.md`))) ?? "") : "";
-  const baseHtml = baseStem ? ((await readIfExists(path.join(mealPlansDir, `${baseStem}.html`))) ?? "") : "";
-  // Recipe sidecars: send-log-gated files PLUS the published plan's OWN
-  // `-recipes.md` sidecars. The latter are current coach-managed content (the
-  // plan is the source of truth, same as app_menu) — they must load even when
-  // no send-log entry was recorded (auto-generated weekly, or hand-authored
-  // during an API cap). Send-log gating still applies to OTHER slugs' files.
-  const recipeFiles = new Set<string>(letterFiles.filter((n) => n.endsWith("-recipes.md")));
+  // LETTERS RETIRED (2026-07-04): the plan YAML + the recipe library ARE the
+  // content contract. The only file still read from meal-plans/ is the
+  // `-recipes.md` sidecar — the ACTIVE weekly recipe pipeline's output
+  // (generate-week-recipes.py via recipes.ts), coach-managed plan content,
+  // not a client letter. Everything the worded letters used to personalise
+  // (supplement why/dose/buy, menus, phases, food tiers, coach note) now
+  // renders from the plan's own fields — the same fallback path every
+  // never-sent client already exercised.
+  const recipeFiles = new Set<string>();
   for (const n of allLetterFiles) {
     if (n.endsWith("-recipes.md") && n.startsWith(planSlug)) recipeFiles.add(n);
   }
-  let recipesMd = baseMd;
+  let recipesMd = "";
   for (const n of recipeFiles) {
     recipesMd += "\n\n" + ((await readIfExists(path.join(mealPlansDir, n))) ?? "");
   }
-  const letterMd = baseMd;
 
   const recipes = parseRecipes(recipesMd);
   // Structured library = plan-side recipe source (no recipes letter needed).
@@ -2797,13 +2406,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // an out-of-diet recipe. Shared with the dashboard menu-image coverage scan
   // via buildLibraryRecipeResolver — one source of truth, no drift.
   const libraryRecipeFor = buildLibraryRecipeResolver(libraryRecipes);
-  const suppRows = parseSupplementRows(letterMd);
-  const htmlBuyRows = parseHtmlBuyRows(baseHtml);
-  const remedyBlurbs = parseRemedyBlurbs(letterMd);
-  const watchList = parseWatchList(letterMd);
-  const phases = parsePhases(letterMd);
-  const coachLetterNote = parseCoachNote(letterMd);
-  const letterFoods = parseLetterFoods(letterMd);
+  // Letter-derived personalisation layers are gone; the payload keeps their
+  // (empty) shapes so no app screen changes contract.
+  const watchList: { name: string; note: string }[] = [];
 
   // ---- dates / week math (12-week clock anchored on meal_plan_started_on) --
   // Single source of truth (plan-timing.ts) so the client's week counter and
@@ -2848,55 +2453,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // ---- meals for today ------------------------------------------------------
   // Source: the phase letter covering the current week (what the client was
   // actually sent for this fortnight), falling back to the base letter.
-  let mealMd = letterMd;
-  let phaseRanges: { from: number; to: number; file: string }[] = [];
-  for (const n of letterFiles) {
-    // letterFiles is already send-log-gated, so any phase letter here was
-    // issued — regardless of which plan slug it was generated under.
-    const pm = n.match(/-meal_plan-wk(\d+)-(\d+)\.md$/);
-    if (pm) phaseRanges.push({ from: parseInt(pm[1], 10), to: parseInt(pm[2], 10), file: n });
-  }
-  phaseRanges = phaseRanges.sort((a, b) => a.from - b.from);
-  const phaseHit =
-    phaseRanges.find((r) => week >= r.from && week <= r.to) ??
-    [...phaseRanges].reverse().find((r) => r.from <= week);
-  if (phaseHit) {
-    const phaseMdRaw = await readIfExists(path.join(mealPlansDir, phaseHit.file));
-    if (phaseMdRaw && parseWeekTables(phaseMdRaw).length) mealMd = phaseMdRaw;
-  }
-  let weekTables = parseWeekTables(mealMd);
-  if (!weekTables.length) {
-    // Last resort: the NEWEST letter in the folder that carries meal tables,
-    // regardless of slug prefix — phase letters are sometimes generated under
-    // a successor plan slug while the original plan stays the published one.
-    try {
-      const stats = await Promise.all(
-        letterFiles
-          .filter((n) => n.endsWith(".md") && !n.endsWith("-recipes.md"))
-          .map(async (n) => ({ n, s: await fs.stat(path.join(mealPlansDir, n)) })),
-      );
-      stats.sort((a, b) => b.s.mtimeMs - a.s.mtimeMs);
-      for (const { n } of stats) {
-        const raw = await readIfExists(path.join(mealPlansDir, n));
-        if (!raw) continue;
-        const t = parseWeekTables(raw);
-        if (t.length) {
-          mealMd = raw;
-          weekTables = t;
-          break;
-        }
-      }
-    } catch {
-      /* keep empty — principle-based plan, Today shows the framework card */
-    }
-  }
-  // ---- coach app-overrides (read once; used for meals here and remedies
-  // further down). Written by the "What the client sees" panel. -------------
+  // ---- coach app-overrides (read once; used for remedies further down).
+  // Written by the "What the client sees" panel. The legacy meal_overrides
+  // patch layer died with letter-parsed menus — plan.app_menu carries every
+  // coach edit directly now. -------------------------------------------------
   let appOverrides: {
     hidden_remedies?: string[];
     approved_suggestions?: string[];
-    /** "<week>|<dayIdx>|<slot lowercase>" → replacement dish text */
-    meal_overrides?: Record<string, string>;
   } = {};
   try {
     const ovRaw = await readIfExists(path.join(clientDir, "app-overrides.yaml"));
@@ -2905,44 +2468,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     /* none yet */
   }
 
-  // ════ OPTION A (2026-06-12): plan.app_menu is THE source of truth ════
-  // Letters used to be parsed for menus, which made a derived artifact a
-  // source of truth and forced coach edits into a patch layer. Now the
-  // published plan carries structured `app_menu`; the letter-parse below
-  // is only the LEGACY path + the one-time migration source.
+  // ════ plan.app_menu is THE (only) menu source ════ Letters retired; a
+  // plan without app_menu renders the principle-based framework instead.
   const planMenuRaw = plan.app_menu as Dict | undefined;
-  if (planMenuRaw && Array.isArray(planMenuRaw.weeks) && (planMenuRaw.weeks as Dict[]).length) {
-    weekTables = appMenuToWeekTables(planMenuRaw);
-  } else {
-    // LEGACY: coach meal_overrides patch the letter-parsed tables
-    const mealOverrides = appOverrides.meal_overrides ?? {};
-    for (const [key, dish] of Object.entries(mealOverrides)) {
-      const [wkStr, dayStr, slotKey] = key.split("|");
-      const t = weekTables.find((w) => w.week === parseInt(wkStr, 10));
-      if (!t || !dish) continue;
-      const row = t.rows.find(
-        (r) => r.slot.replace(/\s*\([^)]*\)\s*$/, "").trim().toLowerCase() === slotKey,
-      );
-      const di = parseInt(dayStr, 10);
-      if (row && di >= 0 && di < 7) row.cells[di] = dish;
-    }
-    // One-time SELF-MIGRATION (authoritative Mac store only — Fly carries
-    // FLY_INTAKE_ONLY and receives the migrated plan via staging): write
-    // the letter-derived menu (with any legacy overrides folded in) into
-    // the published plan, then clear the override patch layer.
-    if (weekTables.length && !process.env.FLY_INTAKE_ONLY) {
-      try {
-        await migrateMenuIntoPlan(planSlug, clientDir, weekTables, Object.keys(mealOverrides).length > 0);
-        // reflect the fold-in locally so this load already behaves migrated
-        appOverrides.meal_overrides = undefined;
-      } catch {
-        /* migration is best-effort; legacy path still rendered this load */
-      }
-    }
-  }
+  const weekTables: WeekTable[] =
+    planMenuRaw && Array.isArray(planMenuRaw.weeks) && (planMenuRaw.weeks as Dict[]).length
+      ? appMenuToWeekTables(planMenuRaw)
+      : [];
 
-  const mealLetterFoods = parseLetterFoods(mealMd) ?? letterFoods;
-  const sampleWeekNote = mealLetterFoods?.note || letterFoods?.note || "";
+  const mealLetterFoods: LetterFoods | null = null;
+  const sampleWeekNote = "";
 
   // Pick today's column: REAL DATE match first (format-B tables carry dates
   // per day, e.g. "Mon 8 Jun"); otherwise weekday within the rotation week.
@@ -3197,20 +2732,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   }
 
   // ---- supplements ----------------------------------------------------------
-  // Dose/timing: the PLAN YAML is canonical (quick edits like the omega-3
-  // reduction live there; an already-issued letter can be stale on dose).
-  // Client-voiced "why" + buy links come from the letter when it carries
-  // them; first-generation HTML letters carry buy links in a buy-row list.
-  const htmlBuyFor = (name: string): string | undefined => {
-    const tokens = suppKey(name).split(" ").filter((t) => t.length > 3);
-    let best: { url: string; score: number } | undefined;
-    for (const r of htmlBuyRows) {
-      const rk = suppKey(r.name);
-      const score = tokens.filter((t) => rk.includes(t)).length;
-      if (score > 0 && (!best || score > best.score)) best = { url: r.url, score };
-    }
-    return best?.url;
-  };
+  // Dose/timing/why: the PLAN YAML is canonical; buy links resolve from the
+  // coach-curated supplement_links.yaml catalogue (retailer-priority).
   const supplements: AppSupplement[] = [];
   const upcomingSupplements: AppSupplement[] = [];
   // Every supplement in the protocol, tagged with its phase + status — drives
@@ -3242,11 +2765,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     // Glycinate" → "Magnesium Glycinate", "vitaone-d3" → "D3". (Brand
     // attribution belongs on the buy-link badge.)
     const name = stripBrand(asStr(p.display_name) || SUPP_NAME_OVERRIDES[slug] || humanize(slug));
-    const row = matchSupplementRow(name, suppRows);
-    const timing = asStr(p.timing) || row?.when || "";
+    const timing = asStr(p.timing);
     const dose = asStr(p.dose);
-    let buyUrl = row?.buyUrl ?? htmlBuyFor(name);
-    if (!buyUrl) {
+    let buyUrl: string | undefined;
+    {
       // No issued letter carrying buy links (e.g. nothing sent yet) — fall
       // back to the coach-curated supplement_links.yaml catalogue. Only a
       // real entry counts; the generic "browse the shop" fallback is noise.
@@ -3277,19 +2799,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     const suppItem = {
       id: `s-${slug || i}`,
       name,
-      dose: shortDose(dose || row?.dose || ""),
+      dose: shortDose(dose),
       slot: slotFromRank(chronoRank),
       chronoRank,
       timing: displayTiming(timing),
-      why:
-        row?.why ||
-        clientifyWhy(
-          firstSentence(asStr(p.coach_rationale).replace(/^\[[^\]]*\]\s*/g, ""))
-            .replace(/^CRITICAL GAP[^:]*:\s*/i, "")
-            .replace(/^CONTINUE[^.]*\.\s*/i, ""),
-        ),
+      why: clientifyWhy(
+        firstSentence(asStr(p.coach_rationale).replace(/^\[[^\]]*\]\s*/g, ""))
+          .replace(/^CRITICAL GAP[^:]*:\s*/i, "")
+          .replace(/^CONTINUE[^.]*\.\s*/i, ""),
+      ),
       buyUrl,
-      buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
       ...(asNeeded ? { asNeeded: true } : {}),
       ...(emptyStomach ? { emptyStomach: true } : {}),
       ...(core ? { core: true } : {}),
@@ -3364,13 +2883,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const ayur = (plan.ayurveda as Dict) ?? {};
   const ayurRemedySlugs = asStrArr(ayur.remedies);
   const assignedSlugs = [...new Set([...dailyRemedySlugs, ...ayurRemedySlugs])];
-  const blurbFor = (r: AppRemedy): LetterRemedyBlurb | undefined => {
-    const tokens = suppKey(r.name).split(" ").filter((t) => t.length > 3);
-    return remedyBlurbs.find((b) => {
-      const bk = suppKey(b.title);
-      return tokens.some((t) => bk.includes(t));
-    });
-  };
+  // Letter remedy blurbs retired — catalogue copy (preparation/timing/benefit
+  // on the remedy record) is the client-facing text.
+  const blurbFor = (_r: AppRemedy): LetterRemedyBlurb | undefined => undefined;
   const remedies: AppRemedy[] = [];
   for (const slug of assignedSlugs) {
     const base = bySlug.get(slug);
@@ -3772,18 +3287,6 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
 
   // ---- principles (from the letter's meals note + plan meal_timing) --------
   const principles: { t: string; b: string }[] = [];
-  const noteSec = letterMd.split(/^### .*Note About Your Meals.*$/m)[1]?.split(/^## /m)[0];
-  if (noteSec) {
-    for (const para of noteSec.split("\n\n")) {
-      const b = para.replace(/\s+/g, " ").replace(/\*\*/g, "").replace(/^-+\s*/, "").trim();
-      if (b.length < 60) continue;
-      let t = "How we're eating";
-      if (/eggs?/i.test(b) && /protein/i.test(b)) t = "Eggs are your daily protein";
-      else if (/ragi|millet/i.test(b)) t = "Ragi instead of rice";
-      else if (/tea|chai/i.test(b)) t = "Tea after breakfast, not before";
-      principles.push({ t, b });
-    }
-  }
   if (mealTiming) {
     principles.push({
       t: "Protein and rhythm at every meal",
@@ -3814,9 +3317,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       week: 0,
       when: fmtDay(startDate),
       title: "Your plan began",
-      note: coachLetterNote
-        ? { who: coachName, text: coachLetterNote }
-        : { who: coachName, text: `Twelve weeks, one day at a time. I'm with you.` },
+      note: { who: coachName, text: `Twelve weeks, one day at a time. I'm with you.` },
     });
   }
   // real plan edits from status_history (skip the initial activation noise)
@@ -3836,18 +3337,6 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       when: fmtDay(d),
       title: "Plan updated",
       note: { who: coachName, text: clean },
-    });
-  }
-  // phase milestones that have already begun
-  for (const ph of phases) {
-    if (ph.weekFrom <= 1 || ph.weekFrom > week || !startDate) continue;
-    const d = new Date(startDate.getTime() + (ph.weekFrom - 1) * 7 * 86_400_000);
-    journey.push({
-      kind: "update",
-      week: ph.weekFrom,
-      when: fmtDay(d),
-      title: `Weeks ${ph.weekFrom}–${ph.weekTo} · ${ph.name}`,
-      note: { who: coachName, text: ph.note },
     });
   }
   // weekly check-in / poll replies from sessions (+ MSQ submissions)
@@ -4121,35 +3610,21 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     cooking.push({ t: asStr(d.display_name) || humanize(slug), b: firstSentence(how || summ) + (how && summ ? " " + firstSentence(summ) : "") });
   }
 
-  // ---- phases ribbon: condense the letter's 2-week phases into 3 arcs --------
+  // ---- phases ribbon: standard three arcs over the plan length --------------
   let ribbon: { name: string; weeks: string; note: string }[] = [];
-  if (phases.length >= 3) {
-    const arc = Math.ceil(phases.length / 3);
-    const groups = [phases.slice(0, arc), phases.slice(arc, arc * 2), phases.slice(arc * 2)];
-    ribbon = groups
-      .filter((g) => g.length)
-      .map((g, gi) => {
-        const name = gi === 2 ? g[g.length - 1].name : g[0].name;
-        return {
-          name,
-          weeks: `Weeks ${g[0].weekFrom}–${g[g.length - 1].weekTo}`,
-          note: firstSentence(g[0].note),
-        };
-      });
-  } else if (phases.length) {
-    ribbon = phases.map((p) => ({ name: p.name, weeks: `Weeks ${p.weekFrom}–${p.weekTo}`, note: firstSentence(p.note) }));
-  } else {
+  {
+    const tw = Math.max(totalWeeks || 12, 3);
+    const a = Math.ceil(tw / 3);
     ribbon = [
-      { name: "Foundation", weeks: "Weeks 1–4", note: "Calming the system and building a steady daily rhythm." },
-      { name: "Rebalance", weeks: "Weeks 5–8", note: "Settling blood sugar and stress hormones." },
-      { name: "Sustain", weeks: "Weeks 9–12", note: "Anchoring it all as a way of living." },
+      { name: "Foundation", weeks: `Weeks 1–${a}`, note: "Calming the system and building a steady daily rhythm." },
+      { name: "Rebalance", weeks: `Weeks ${a + 1}–${a * 2}`, note: "Settling blood sugar and stress hormones." },
+      { name: "Sustain", weeks: `Weeks ${a * 2 + 1}–${tw}`, note: "Anchoring it all as a way of living." },
     ];
   }
   const ribbonIdx = ribbon.findIndex((r) => {
     const m = r.weeks.match(/(\d+)–(\d+)/);
     return m && week >= parseInt(m[1], 10) && week <= parseInt(m[2], 10);
   });
-  const currentPhase = phases.filter((p) => p.weekFrom <= week).pop() ?? phases[0];
 
   // ---- lessons (education modules — already client-voiced) --------------------
   const LESSON_TITLES: Record<string, string> = {
@@ -4278,8 +3753,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         ? `${programBits[0]} reset`
         : `${programBits.slice(0, -1).join(", ")} & ${programBits[programBits.length - 1]} reset`;
 
-  const coachLine = currentPhase
-    ? `Week ${week} — you're in the ${currentPhase.name} phase now. ${firstSentence(currentPhase.note)} Keep going.`
+  const arcNow = ribbonIdx >= 0 ? ribbon[ribbonIdx] : undefined;
+  const coachLine = arcNow
+    ? `Week ${week} — you're in the ${arcNow.name} phase now. ${arcNow.note} Keep going.`
     : `Week ${week} of ${totalWeeks} — steady, one day at a time. Keep going.`;
 
   const startLabel = startDate
@@ -4783,7 +4259,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       accents,
       oils,
       foods,
-      letterFoods,
+      letterFoods: null,
       avoidWhy,
       cooking,
       focus: { why: focusWhy, conditions: focusConditions },
