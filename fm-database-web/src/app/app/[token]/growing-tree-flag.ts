@@ -12,7 +12,13 @@ export const GROWING_TREE_CLIENT_IDS: readonly string[] = [
   "cl-019", // Krittika Krishnan — plan just started
 ];
 
+/** When true, the tree is on for EVERY client (overrides the id list above).
+ *  Flip to false to return to the staged, id-gated rollout. */
+export const GROWING_TREE_ALL_CLIENTS = true;
+
 /** True when the growing-tree hero should show for this client. */
 export function isGrowingTreeEnabled(clientId: string | null | undefined): boolean {
-  return !!clientId && GROWING_TREE_CLIENT_IDS.includes(clientId);
+  if (!clientId) return false;
+  if (GROWING_TREE_ALL_CLIENTS) return true;
+  return GROWING_TREE_CLIENT_IDS.includes(clientId);
 }
