@@ -108,6 +108,11 @@ export function shortTiming(timing: string): string {
   if (/bedtime|before sleep|at night|\bnight\b/.test(t)) return "Bedtime";
   if (/\bmorning\b/.test(t)) return "Morning";
   if (/\bevening\b/.test(t)) return "Evening";
+  // explicit clock time → keep just the time as the token ("around 3 pm" → "3 pm")
+  const clock = t.match(/\b(\d{1,2})(?::(\d{2}))?\s*(a\.?m|p\.?m)\b/);
+  if (clock) return `${clock[1]}${clock[2] ? ":" + clock[2] : ""} ${clock[3].replace(/\./g, "").toLowerCase()}`;
+  // no meal/clock anchor — a whole-day window ("any time of day", "as convenient")
+  if (/any ?time|anytime|any time of day|as convenient|whenever|throughout the day/.test(t)) return "Anytime";
   // fallback: the first clause, cleaned + capped
   const first = timing.replace(/\([^)]*\)/g, "").split(/[,;]/)[0].trim();
   if (!first) return "With food";
@@ -120,12 +125,24 @@ export function shortTiming(timing: string): string {
 // "and" / "&" / "+"), show BOTH — "Morning & evening", "With lunch & dinner" — so
 // a twice-a-day capsule reads clearly on the daily tab. Single-phrase ranges
 // ("between breakfast and lunch") are left to shortTiming.
+/** A clause anchors a real dose-time (meal, clock time, part of day) — as
+ *  opposed to a descriptive tail like "tasteless and clear" or "with water". */
+function isTimePhrase(clause: string): boolean {
+  const t = ` ${clause.toLowerCase()} `;
+  return /\b(breakfast|lunch|dinner|supper|morning|evening|afternoon|midday|noon|night|bedtime|meal|meals|waking|\d{1,2}\s*(?:a\.?m|p\.?m))\b/.test(
+    t,
+  );
+}
+
 export function displayTiming(timing: string): string {
   const base = shortTiming(timing);
   const lc = timing.toLowerCase();
   if (!/\b(and|&|\+)\b/.test(lc) || /between/.test(lc)) return base;
   const halves = timing.split(/\s*(?:&|\+|\band\b)\s*/i).map((h) => h.trim()).filter(Boolean);
-  if (halves.length < 2) return base;
+  // Only treat this as a twice-daily "X & Y" when BOTH halves name an actual
+  // time — otherwise a descriptive clause ("... tasteless and clear") would be
+  // mis-split into a garbage second label. Fall back to the single base token.
+  if (halves.length < 2 || !halves.every(isTimePhrase)) return base;
   const labels: string[] = [];
   for (const h of halves) {
     const lab = shortTiming(h);

@@ -83,4 +83,17 @@ describe("timing", () => {
   it("leaves a single-phrase range to shortTiming (no false split)", () => {
     expect(displayTiming("between breakfast and lunch")).toBe(shortTiming("between breakfast and lunch"));
   });
+  it("collapses a whole-day-window sentence to a short pill token", () => {
+    // Regression: PHGG timing was a full sentence → badge blew out and crushed
+    // the supplement name to one word per line.
+    expect(displayTiming("Once daily in plain water at any time of day; tasteless and clear")).toBe("Anytime");
+    expect(shortTiming("any time of day")).toBe("Anytime");
+  });
+  it("keeps only the clock time from a verbose timing", () => {
+    expect(displayTiming("Around 3 pm — see rationale for spacing rules")).toBe("3 pm");
+    expect(shortTiming("take at 8 am with water")).toBe("8 am");
+  });
+  it("does not split a descriptive 'and' tail into a fake second time", () => {
+    expect(displayTiming("with breakfast, tasteless and clear")).toBe("With breakfast");
+  });
 });

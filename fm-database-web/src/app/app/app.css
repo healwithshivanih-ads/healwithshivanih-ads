@@ -416,6 +416,10 @@
   background: var(--ochre-tint); color: var(--ochre-deep);
 }
 .badge.forest { background: var(--forest-tint); color: var(--forest-deep); }
+/* Safety net: however verbose a supplement's timing is, the pill must never
+   steal the name's width (which collapses it to one word per line). Cap it and
+   ellipsize — displayTiming() already shortens to a token, this guards the rest. */
+.supp .badge { flex-shrink: 0; max-width: 40%; overflow: hidden; text-overflow: ellipsis; align-self: flex-start; margin-top: 1px; }
 .taken-at { font-size: 11px; color: var(--forest); margin-top: 2px; opacity: .9; }
 
 .log-all {
