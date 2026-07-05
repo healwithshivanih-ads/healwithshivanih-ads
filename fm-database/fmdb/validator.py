@@ -373,6 +373,14 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
                     "supplement", s.slug, "interactions.with_supplements",
                     "supplement", inter.slug,
                 ))
+        # Combination-product consolidation — each slug should resolve to
+        # another supplement (canonical or alias).
+        for cons_slug in s.consolidates:
+            if cons_slug not in valid_supplement_slugs:
+                warnings.append(Warning_(
+                    "supplement", s.slug, "consolidates",
+                    "supplement", cons_slug,
+                ))
 
     # ---- cooking_adjustments ----
     for ca in loaded.cooking_adjustments:

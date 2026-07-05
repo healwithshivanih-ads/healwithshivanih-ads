@@ -327,6 +327,12 @@ def build_subgraph(
             "contraindications": s.contraindications.model_dump(mode="json"),
             "interactions": s.interactions.model_dump(mode="json"),
             "linked_to_topics": s.linked_to_topics,
+            # Combination-product consolidation — slugs of the individual
+            # compounds this single entry replaces in one pill. Non-empty only
+            # on combo entries (e.g. methylated-b-complex). Lets the suggester
+            # collapse several single-compound suggestions into one combo for
+            # adherence (see system-prompt COMBINATION PRODUCTS rule).
+            "consolidates": getattr(s, "consolidates", []) or [],
             # Ayurvedic energetics — present on dosha-tagged supplements; lets the
             # suggester pick dosha-appropriate supplements the same way it does
             # remedies. Omitted (empty) for untagged supplements.

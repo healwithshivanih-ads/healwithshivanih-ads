@@ -813,6 +813,14 @@ class Supplement(BaseModel):
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
     linked_to_claims: list[str] = Field(default_factory=list)
+    # Combination-product consolidation — slugs of the individual supplement
+    # compounds this single entry replaces in one pill. Lets the AI suggester
+    # recommend ONE combo entry (e.g. a methylated B-complex) instead of
+    # splitting a protocol into 4+ separate items, improving client adherence.
+    # Empty for ordinary single-compound supplements, so existing entries load
+    # unchanged. Each slug should resolve (canonical or alias) to another
+    # supplement in the catalogue.
+    consolidates: list[str] = Field(default_factory=list)
     notes_for_coach: str = ""
     notes_for_client: str = ""
     sources: list[SourceCitation] = Field(default_factory=list)

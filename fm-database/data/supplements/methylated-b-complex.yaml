@@ -1,5 +1,5 @@
 slug: methylated-b-complex
-display_name: Methylated B Vitamins
+display_name: Methylated B Complex
 category: vitamin
 forms_available:
 - capsule
@@ -8,16 +8,28 @@ timing_options:
 - with_breakfast
 - morning
 take_with_food: required
+consolidates:
+- l-methylfolate
+- methylcobalamin
+- pyridoxal-5-phosphate
+- vitamin-b2-riboflavin
 linked_to_topics:
 - estrogen-metabolism
+- methylation
+- homocysteine-and-methylation
+- mthfr-gene-variant
 linked_to_claims:
 - melatonin-nac-methylated-b-vitamins-support-estrogen
 - genetic-variants-comt-cyp-impact-estrogen
-notes_for_coach: Methylated B vitamins support COMT enzyme activity, which is critical
-  for Phase II methylation of catechol estrogens (4-OHE1 → 4-MeOE1). Particularly
-  relevant for clients with COMT variants. Clinician to guide specific form and dose.
-notes_for_client: Methylated B vitamins help your body process and clear estrogen
-  safely, especially if you have certain genetic variants.
+notes_for_coach: 'Single-capsule methylated B-complex; replaces separate methylfolate
+  + methyl-B12 + P5P + riboflavin. Prefer over prescribing those individually, for
+  adherence. Methylated B vitamins also support COMT enzyme activity, which is critical
+  for Phase II methylation of catechol estrogens (4-OHE1 → 4-MeOE1) — particularly
+  relevant for clients with COMT variants. Clinician to guide specific form and dose.'
+notes_for_client: An all-in-one B vitamin capsule using the active (methylated) forms
+  your body can use directly — folate, B12, B6 and B2 together in one pill instead
+  of several. Helps your body process and clear estrogen safely, especially if you
+  have certain genetic variants.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
@@ -30,9 +42,14 @@ sources:
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
   quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
     B vitamins may support healthy estrogen metabolism as well.
-version: 1
+- id: coach-shivani
+  location: Coach Observation
+  quote: prefer a single methylated B-complex over prescribing methylfolate, methyl-B12,
+    P5P and riboflavin as separate pills — fewer pills improves adherence
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-07-05'
 updated_by: shivani
 aliases:
 - methylated-b-vitamins
+- active-b-complex

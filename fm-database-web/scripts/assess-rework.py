@@ -563,7 +563,16 @@ If a change came solely from the triggering event (e.g. new lab finding)
 and no intake observation reinforced it, use an empty list `[]`. Don't
 fabricate citations. Coach corrections in `coach_notes_for_ai` OVERRIDE
 AI inferences from raw fields — if the coach said something contradicts
-the intake form, treat the coach's note as ground truth and cite it."""
+the intake form, treat the coach's note as ground truth and cite it.
+
+COMBINATION PRODUCTS (prefer one combo over many single pills): some
+catalogue supplements are combination products that replace several
+single-compound supplements in one capsule (e.g. supplement slug
+'methylated-b-complex' replaces methylfolate + methyl-B12 + P5P +
+riboflavin; 'homocysteine-b-complex' adds TMG). When you would otherwise
+add ≥3 individual supplements that a single combo entry covers, suggest
+the ONE combo entry instead and state in the rationale which compounds it
+consolidates. Fewer pills = better adherence."""
 
 
 def main() -> int:
