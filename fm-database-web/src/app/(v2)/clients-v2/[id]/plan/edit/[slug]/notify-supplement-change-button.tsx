@@ -37,18 +37,20 @@ interface Props {
 
 export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: Props) {
   const [pending, start] = useTransition();
+  const [mode, setMode] = useState<"change" | "activate">("change");
   const [whatChanged, setWhatChanged] = useState("");
   const [why, setWhy] = useState("");
-  // Persisted send state — most recent supplement-change / order send.
+  // Persisted send state — most recent supplement-change / activate / order send.
   const [sentAt, setSentAt] = useState<string | null>(null);
 
   useEffect(() => {
     void (async () => {
-      const [a, b] = await Promise.all([
+      const [a, b, c] = await Promise.all([
         getLastSentAtAction(clientId, "fm_supplement_change_v1"),
+        getLastSentAtAction(clientId, "fm_supplement_activate_v1"),
         getLastSentAtAction(clientId, "fm_supplement_order_v2"),
       ]);
-      const latest = [a.sentAt, b.sentAt].filter(Boolean).sort().reverse()[0] ?? null;
+      const latest = [a.sentAt, b.sentAt, c.sentAt].filter(Boolean).sort().reverse()[0] ?? null;
       setSentAt(latest);
     })();
   }, [clientId]);
@@ -60,6 +62,7 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
       const r = await notifySupplementChangeAction({
         clientId,
         planSlug,
+        mode,
         whatChanged: whatChanged.trim() || undefined,
         why: why.trim() || undefined,
       });
@@ -91,41 +94,88 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
     fontFamily: "inherit",
   };
 
+  const isActivate = mode === "activate";
+  const copy = isActivate
+    ? {
+        title: "📦 Notify client: supplement now starting",
+        subtitle:
+          "For a supplement already in the plan that's now due to start. Sets the in-app banner and sends a WhatsApp.",
+        f1: "Which supplement is starting now",
+        f1ph: "Magnesium glycinate — 1 capsule at bedtime.",
+        f2: "Why now / how to take it",
+        f2ph: "We planned to add this once your routine settled — it supports sleep and calm.",
+        btn: "📦 Notify: supplement starting",
+      }
+    : {
+        title: "📦 Notify client: supplements changed",
+        subtitle:
+          "For a change to the supplements (swap / new / dose). Sets the in-app banner and sends a WhatsApp.",
+        f1: "What changed this period",
+        f1ph: "Your four separate B-vitamins are now one combined capsule (Homocysteine Defence B Complex).",
+        f2: "Why",
+        f2ph: "It’s simpler to take every day and gives you the same nutrients at better doses.",
+        btn: "📦 Notify: supplements changed",
+      };
+
+  const segStyle = (active: boolean) => ({
+    padding: "5px 12px",
+    borderRadius: 6,
+    border: "none",
+    fontSize: 12.5,
+    fontWeight: 600,
+    cursor: pending ? ("wait" as const) : ("pointer" as const),
+    background: active ? "#059669" : "transparent",
+    color: active ? "white" : "var(--fm-text-secondary)",
+  });
+
   return (
-    <FmPanel
-      title="📦 Notify client: supplements changed"
-      subtitle="Sets the in-app “Plan updated” banner and sends a WhatsApp stating what changed, why, and a link to order."
-    >
+    <FmPanel title={copy.title} subtitle={copy.subtitle}>
       <div style={{ display: "grid", gap: 10 }}>
+        <div
+          style={{
+            display: "inline-flex",
+            gap: 4,
+            background: "var(--fm-surface-2, #f1f1f1)",
+            padding: 3,
+            borderRadius: 8,
+            width: "fit-content",
+          }}
+        >
+          <button type="button" onClick={() => setMode("change")} disabled={pending} style={segStyle(!isActivate)}>
+            Changed
+          </button>
+          <button type="button" onClick={() => setMode("activate")} disabled={pending} style={segStyle(isActivate)}>
+            Now starting
+          </button>
+        </div>
+
         <label style={{ display: "grid", gap: 4 }}>
-          <span style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
-            What changed this period
-          </span>
+          <span style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>{copy.f1}</span>
           <textarea
             value={whatChanged}
             onChange={(e) => setWhatChanged(e.target.value)}
             disabled={pending}
             rows={2}
-            placeholder="Your four separate B-vitamins are now one combined capsule (Homocysteine Defence B Complex)."
+            placeholder={copy.f1ph}
             style={fieldStyle}
           />
         </label>
 
         <label style={{ display: "grid", gap: 4 }}>
-          <span style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>Why</span>
+          <span style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>{copy.f2}</span>
           <textarea
             value={why}
             onChange={(e) => setWhy(e.target.value)}
             disabled={pending}
             rows={2}
-            placeholder="It’s simpler to take every day and gives you the same nutrients at better doses."
+            placeholder={copy.f2ph}
             style={fieldStyle}
           />
         </label>
 
         {!canSendDetailed && (whatChanged.trim() || why.trim()) ? (
           <FmChip tone="neutral">
-            Fill in both “what changed” and “why” to send the detailed message — otherwise a plain order link goes out.
+            Fill in both fields to send the detailed message — otherwise a plain order link goes out.
           </FmChip>
         ) : null}
 
@@ -149,7 +199,7 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
               ? "Notifying…"
               : sentAt
                 ? `✓ Notified · ${relativeTimeShort(sentAt)} · Resend`
-                : "📦 Notify client: supplements changed"}
+                : copy.btn}
           </button>
 
           {!hasPhone && (

@@ -120,6 +120,10 @@ export interface NotifySupplementChangeResult {
 export async function notifySupplementChangeAction(input: {
   clientId: string;
   planSlug: string;
+  /** "change" = supplements were modified (swap / new / dose). "activate" = a
+   *  supplement ALREADY in the plan is now due to start (phased start_week).
+   *  Picks fm_supplement_change_v1 vs fm_supplement_activate_v1. Default "change". */
+  mode?: "change" | "activate";
   whatChanged?: string;
   why?: string;
   note?: string;
@@ -134,11 +138,15 @@ export async function notifySupplementChangeAction(input: {
     return { ok: false, flagged, whatsapp_sent: whatsappSent, error: "clientId + planSlug required" };
   }
 
+  const mode = input.mode === "activate" ? "activate" : "change";
   const whatChanged = input.whatChanged?.trim() || "";
   const why = input.why?.trim() || "";
-  const note =
-    input.note?.trim() ||
-    (whatChanged ? `${whatChanged} — please order it from the Supplements tab.` : DEFAULT_NOTE);
+  const bannerLead = !whatChanged
+    ? ""
+    : mode === "activate"
+      ? `Time to start: ${whatChanged} — order it from the Supplements tab.`
+      : `${whatChanged} — please order it from the Supplements tab.`;
+  const note = input.note?.trim() || bannerLead || DEFAULT_NOTE;
 
   // ── 1. Set the in-app "Plan updated" banner (published-safe in-place write)
   const hit = await publishedFileForSlug(planSlug);
@@ -211,17 +219,19 @@ export async function notifySupplementChangeAction(input: {
   // Prefer the detailed "what changed + why" template when we have both fields.
   // If it errors (e.g. still PENDING Meta approval), fall through to the bare
   // order-link template so the coach's click always reaches the client.
+  const detailedTemplate =
+    mode === "activate" ? "fm_supplement_activate_v1" : "fm_supplement_change_v1";
   if (whatChanged && why) {
     try {
       const res = await sendWhatsAppAction(
         phone,
-        "fm_supplement_change_v1",
+        detailedTemplate,
         [fname, whatChanged, why],
         { name: displayName || fname, buttonUrlParam: tokRes.token },
       );
       if (res.ok) {
         whatsappSent = true;
-        usedTemplate = "fm_supplement_change_v1";
+        usedTemplate = detailedTemplate;
       } else {
         errors.push(`whatsapp(detailed): ${res.error || "send_failed"} — falling back to order link`);
       }
@@ -253,10 +263,14 @@ export async function notifySupplementChangeAction(input: {
     // Persist a thread record so the send is visible in the WA panel + the coach
     // button can read its "✓ Sent · Resend" state on reload (durable rule
     // feedback-send-buttons-persist-state).
-    const body =
-      usedTemplate === "fm_supplement_change_v1"
-        ? `Hi ${fname} 👋 A quick update to your plan from ${coach}.\n\nWhat's changed this time:\n${whatChanged}\n\nWhy:\n${why}\n\nOrder your supplements:\n${suppUrl}\n\n— ${coach}`
-        : `Hi ${fname}, here's the link to order your supplements:\n\n${suppUrl}\n\n— ${coach}`;
+    let body: string;
+    if (usedTemplate === "fm_supplement_change_v1") {
+      body = `Hi ${fname} 👋 A quick update to your plan from ${coach}.\n\nWhat's changed this time:\n${whatChanged}\n\nWhy:\n${why}\n\nOrder your supplements:\n${suppUrl}\n\n— ${coach}`;
+    } else if (usedTemplate === "fm_supplement_activate_v1") {
+      body = `Hi ${fname} 👋 A note from ${coach}.\n\nAs planned, it's time to start the next supplement in your plan:\n${whatChanged}\n\n${why}\n\nOrder it here:\n${suppUrl}\n\n— ${coach}`;
+    } else {
+      body = `Hi ${fname}, here's the link to order your supplements:\n\n${suppUrl}\n\n— ${coach}`;
+    }
     try {
       await recordOutboundMessageAction({ clientId, templateName: usedTemplate, renderedBody: body });
     } catch {
