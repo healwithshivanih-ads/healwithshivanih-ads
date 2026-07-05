@@ -133,6 +133,33 @@ describe("pickLinkEntry — international mode", () => {
     expect(e?.url).toBe("https://brand.example.com/ashwagandha");
   });
 
+  it("India tie: a curated domestic affiliate link (source: other) beats iHerb", () => {
+    // The Nutrabay whey case (2026-07-05): both entries cover the slug; for an
+    // India client the coach's domestic affiliate link must win the tie, while
+    // the international pool still resolves to iHerb.
+    const L: LinksFile = {
+      whey_iherb: {
+        display_name: "Whey Isolate — iHerb",
+        url: "https://www.iherb.com/pr/whey/37837",
+        source: "iherb",
+        covers: ["protein-whey-isolate"],
+      },
+      whey_nutrabay: {
+        display_name: "Whey Isolate — Nutrabay",
+        url: "https://nutrabay.com/whey?ref=shivani1879",
+        source: "other",
+        covers: ["protein-whey-isolate"],
+      },
+    };
+    expect(pickLinkEntry(L, "Protein Whey Isolate", "protein-whey-isolate")?.url).toContain(
+      "nutrabay.com",
+    );
+    expect(
+      pickLinkEntry(L, "Protein Whey Isolate", "protein-whey-isolate", { international: true })
+        ?.url,
+    ).toContain("iherb.com");
+  });
+
   it("exact-key match is also gated by the international filter", () => {
     // "mag_glycinate_vo" isn't a key match; use the alias entry's key form.
     const e = pickLinkEntry(INTL_LINKS, "mag glycinate vo", undefined, {

@@ -53,15 +53,18 @@ export interface LinksFile {
 }
 
 // Retailer preference — VitaOne is the priority store, then FM Nutrition, then
-// Amazon; iHerb and custom/other rank below. Breaks ties between equally-scored
-// matches so a supplement stocked at several stores resolves to the preferred.
+// Amazon, then coach-curated custom/other affiliate links (Nutrabay etc.).
+// iHerb ranks LAST: it's the international store — for an India client any
+// curated domestic affiliate link should beat it on a tie. International
+// clients are unaffected (their candidate pool only contains iHerb /
+// ships_international entries — see pickLinkEntry's international filter).
 export const SOURCE_RANK: Record<string, number> = {
   vitaone: 0,
   fmnutrition: 1,
   amazon: 2,
-  iherb: 3,
-  custom: 4,
-  other: 5,
+  custom: 3,
+  other: 4,
+  iherb: 5,
 };
 
 export function sourceRank(entry: LinksEntry): number {
