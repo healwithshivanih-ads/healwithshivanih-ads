@@ -19,7 +19,10 @@ import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { lookupLetterToken } from "@/lib/server-actions/letter-token";
 import { resolveSupplementLink } from "@/lib/server-actions/supplement-links";
-import type { SupplementLink } from "@/lib/server-actions/supplement-links-match";
+import {
+  isInternationalClient,
+  type SupplementLink,
+} from "@/lib/server-actions/supplement-links-match";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 
 export const dynamic = "force-dynamic";
@@ -140,6 +143,24 @@ export default async function SupplementsPage({
     ? (plan.supplement_protocol as Array<Record<string, unknown>>)
     : [];
 
+  // Non-India client → links must ship to their country: resolution is
+  // restricted to international retailers (iHerb) and the search fallback
+  // becomes an iHerb keyword search instead of the VitaOne shop.
+  let international = false;
+  try {
+    const clientId = String(plan.client_id ?? "").trim();
+    if (clientId) {
+      const raw = await fs.readFile(
+        path.join(getPlansRoot(), "clients", clientId, "client.yaml"),
+        "utf-8",
+      );
+      const c = yaml.load(raw) as Record<string, unknown> | null;
+      international = isInternationalClient(c?.country);
+    }
+  } catch {
+    /* client.yaml unreadable → default India behaviour */
+  }
+
   const rows: SupplementRow[] = await Promise.all(
     supps.map(async (s): Promise<SupplementRow> => {
       // Fix F26 2026-05-23 — the canonical Plan field is
@@ -168,7 +189,13 @@ export default async function SupplementsPage({
         // can't dose in mg increments, only in capsule counts.
         dose: clientifyDose(rawDose),
         timing: (s.timing as string | undefined) ?? (s.when as string | undefined),
-        link: await resolveSupplementLink(name),
+        // Catalogue slug binds the product deterministically (covers/slug),
+        // never by a coincidental name substring.
+        link: await resolveSupplementLink(
+          name,
+          (s.supplement_slug as string | undefined) ?? undefined,
+          { international },
+        ),
       };
     }),
   );
@@ -191,7 +218,7 @@ export default async function SupplementsPage({
             {r.dose && <div style={META}>{r.dose}</div>}
             {r.timing && <div style={META}>🕐 {r.timing}</div>}
             <a href={r.link.url} target="_blank" rel="noopener noreferrer" style={BTN}>
-              Order on {sourceLabel(r.link.source)} →
+              Order on {sourceLabel(r.link.source, r.link.url)} →
             </a>
             {r.link.notes && <div style={NOTE}>{r.link.notes}</div>}
           </li>
@@ -207,14 +234,16 @@ export default async function SupplementsPage({
   );
 }
 
-function sourceLabel(s: SupplementLink["source"]): string {
+function sourceLabel(s: SupplementLink["source"], url?: string): string {
   switch (s) {
     case "vitaone": return "VitaOne";
     case "fmnutrition": return "FM Nutrition";
     case "amazon": return "Amazon";
     case "iherb": return "iHerb";
     case "custom": return "store";
-    case "search": return "VitaOne";
+    // The search fallback is retailer-dependent: iHerb keyword search for
+    // international clients, the VitaOne shop for India.
+    case "search": return url?.includes("iherb") ? "iHerb" : "VitaOne";
   }
 }
 

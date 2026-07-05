@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { pickLinkEntry, canonToken, type LinksFile } from "./supplement-links-match";
+import {
+  pickLinkEntry,
+  canonToken,
+  isInternationalClient,
+  type LinksFile,
+} from "./supplement-links-match";
 
 // A synthetic catalogue that reproduces the real-world hazard: a generic
 // "iron" product (VitaOne bisglycinate) sitting next to the specific product
@@ -67,5 +72,91 @@ describe("pickLinkEntry", () => {
 
   it("returns undefined when nothing plausibly matches", () => {
     expect(pickLinkEntry(LINKS, "Rhodiola Rosea", "rhodiola-rosea")).toBeUndefined();
+  });
+});
+
+// The Krittika bug (2026-07-05): a US client's iron / magnesium / omega-3
+// resolved to vitaone.in because the India products matched the plan slug at
+// a higher score than the *_iherb entries. International mode restricts the
+// candidate pool to internationally-shippable retailers BEFORE scoring.
+const INTL_LINKS: LinksFile = {
+  ...LINKS,
+  vo_iron_complex_bisglycinate: {
+    display_name: "Iron Complex (VitaOne)",
+    url: "https://vitaone.in/products/iron-complex-11",
+    source: "vitaone",
+    covers: ["iron-bisglycinate"],
+  },
+  iron_bisglycinate_iherb: {
+    display_name: "Iron Bisglycinate — iHerb",
+    url: "https://iherb.com/pr/now-foods-iron/54089",
+    source: "iherb",
+    covers: ["iron-bisglycinate"],
+  },
+  uk_brand_direct: {
+    display_name: "Ashwagandha (brand store, ships worldwide)",
+    url: "https://brand.example.com/ashwagandha",
+    source: "custom",
+    ships_international: true,
+    covers: ["ashwagandha-ksm66"],
+  },
+};
+
+describe("pickLinkEntry — international mode", () => {
+  it("India default: a vitaone product still wins on retailer priority", () => {
+    const e = pickLinkEntry(INTL_LINKS, "Iron Bisglycinate", "iron-bisglycinate");
+    expect(e?.url).toContain("vitaone.in");
+  });
+
+  it("international: the SAME lookup lands on iHerb, never vitaone", () => {
+    const e = pickLinkEntry(INTL_LINKS, "Iron Bisglycinate", "iron-bisglycinate", {
+      international: true,
+    });
+    expect(e?.url).toBe("https://iherb.com/pr/now-foods-iron/54089");
+  });
+
+  it("international with no shippable entry: undefined, NOT an Indian link", () => {
+    // PHGG exists only as an amzn.to (India) product.
+    const e = pickLinkEntry(
+      INTL_LINKS,
+      "Partially Hydrolyzed Guar Gum",
+      "partially-hydrolyzed-guar-gum",
+      { international: true },
+    );
+    expect(e).toBeUndefined();
+  });
+
+  it("ships_international opts a non-iHerb entry into the international pool", () => {
+    const e = pickLinkEntry(INTL_LINKS, "Ashwagandha", "ashwagandha-ksm66", {
+      international: true,
+    });
+    expect(e?.url).toBe("https://brand.example.com/ashwagandha");
+  });
+
+  it("exact-key match is also gated by the international filter", () => {
+    // "mag_glycinate_vo" isn't a key match; use the alias entry's key form.
+    const e = pickLinkEntry(INTL_LINKS, "mag glycinate vo", undefined, {
+      international: true,
+    });
+    expect(e).toBeUndefined();
+  });
+});
+
+describe("isInternationalClient", () => {
+  it("empty / missing country = India default", () => {
+    expect(isInternationalClient(undefined)).toBe(false);
+    expect(isInternationalClient("")).toBe(false);
+    expect(isInternationalClient("   ")).toBe(false);
+  });
+  it("India in any spelling stays domestic", () => {
+    expect(isInternationalClient("India")).toBe(false);
+    expect(isInternationalClient("india")).toBe(false);
+    expect(isInternationalClient("IN")).toBe(false);
+  });
+  it("non-India countries are international", () => {
+    expect(isInternationalClient("United States of America")).toBe(true);
+    expect(isInternationalClient("USA")).toBe(true);
+    expect(isInternationalClient("United Kingdom")).toBe(true);
+    expect(isInternationalClient("Indonesia")).toBe(true);
   });
 });

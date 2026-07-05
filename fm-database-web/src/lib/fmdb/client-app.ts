@@ -29,6 +29,7 @@ import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/travel-foods";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
+import { isInternationalClient } from "@/lib/server-actions/supplement-links-match";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
 import {
@@ -2330,6 +2331,12 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const clientDir = path.join(getPlansRoot(), "clients", clientId);
   const client = (await readYamlIfExists(path.join(clientDir, "client.yaml"))) ?? {};
 
+  // Non-India client → every buy link must ship to their country. Restricts
+  // supplement/remedy link resolution to international retailers (iHerb) and
+  // swaps the India search fallbacks for iHerb keyword searches. Empty
+  // country = India default (US_CLIENT_AFFILIATE_SYSTEM.md).
+  const international = isInternationalClient(client.country);
+
   // Travel/illness pause inputs (coach 2026-07-05). week_overrides lives under
   // weight_loss (the panel is generic — non-weight-loss clients still get travel
   // rows there). Genuine travel/illness freezes the week counter + extends the
@@ -2808,15 +2815,21 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       // real entry counts; the generic "browse the shop" fallback is noise.
       // resolveSupplementLink applies the retailer priority VitaOne →
       // fmnutrition → amazon, so the client's Reorder button lands on the
-      // preferred store.
+      // preferred store. International clients resolve against the iHerb
+      // pool only — never an India-only storefront.
       try {
         const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
         // Pass the catalogue slug so the product binds deterministically by
         // `covers`/slug — never by a coincidental name substring.
-        const link = await resolveSupplementLink(name, slug);
+        const link = await resolveSupplementLink(name, slug, { international });
         if (link.source !== "search") {
           buyUrl = link.url;
           suppImageUrl = link.image_url;
+        } else if (international) {
+          // The international search fallback is a targeted iHerb keyword
+          // search on the ingredient — fail-safe (right ingredient, referral
+          // attached), unlike the generic VitaOne shop link, so keep it.
+          buyUrl = link.url;
         }
       } catch {
         /* no link — Reorder button simply hides */
@@ -3171,11 +3184,15 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const visibleLib = safeLib.filter((r) => !hiddenRemedies.has(r.slug));
 
   // Purchase links for remedies that need buying (punarnava, triphala…) —
-  // curated supplement_links.yaml only, never a search URL.
+  // curated supplement_links.yaml only, never a search URL. International
+  // clients match against the iHerb pool only; with no curated iHerb entry
+  // the Get-it button hides rather than pointing at an India-only store.
   try {
     const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
     for (const r of [...remedies, ...visibleShelf]) {
-      const link = await resolveSupplementLink(r.name.split("(")[0].trim());
+      const link = await resolveSupplementLink(r.name.split("(")[0].trim(), undefined, {
+        international,
+      });
       if (link.source !== "search") r.buyUrl = link.url;
     }
   } catch {
@@ -4193,11 +4210,18 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
           const slug = asStr(it.salt_slug).trim();
           if (!slug) return null;
           const cat = tsMap.get(slug);
+          // The catalogue buyUrl is an amazon.in search (SBL brand) — India
+          // only. International clients get an iHerb search on the biochemic
+          // name instead (Hyland's carries the cell-salt range there).
+          const abbrev = (cat?.name ?? humanize(slug)).replace(/\s*\(No\..*\)$/, "");
+          const intlBuyUrl = `https://www.iherb.com/search?kw=${encodeURIComponent(
+            `${abbrev} 6X cell salt`,
+          )}&rcode=WNB6015`;
           return {
             name: cat?.name ?? humanize(slug),
             reason: asStr(it.reason).trim(),
             how: asStr(it.typical_use).trim() || (cat?.how ?? ""),
-            buyUrl: cat?.buyUrl ?? "",
+            buyUrl: international ? intlBuyUrl : (cat?.buyUrl ?? ""),
           };
         })
         .filter((x): x is { name: string; reason: string; how: string; buyUrl: string } => x !== null)
