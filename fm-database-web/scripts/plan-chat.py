@@ -133,7 +133,7 @@ You CANNOT invent slugs. Coach hits Submit → red error wall → bad UX.
    - `display_name`: the brand name the coach said (e.g. "VitaOne Gastric
      Zinc", "Berberine Liposomal (VitaOne)", "VitaOne B12 with Folate")
    - `buy_link`: the brand's product/store URL with referral code
-     (VitaOne: `https://vitaone.in/shop?pr=vita13720sh`)
+     (VitaOne: `https://vitaone.in/shop?ref=vita13720sh`)
    NEVER invent a brand-prefixed slug like `vitaone-gastric-zinc` or
    `berberine-liposomal` — those break publish.
 

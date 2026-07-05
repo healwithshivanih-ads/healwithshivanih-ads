@@ -1,13 +1,13 @@
 {
   "scraped_at": "2026-05-09T07:29:56Z",
-  "referral_code": "pr=vita13720sh",
+  "referral_code": "ref=vita13720sh",
   "base_url": "https://vitaone.in",
   "auth_mode": "session_id cookie (2xokSp…, 84 chars)",
   "auth_verified": true,
   "count": 76,
   "products": [
     {
-      "url": "https://vitaone.in/shop/199-per-order-on-event-registration-291?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/199-per-order-on-event-registration-291?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/199-per-order-on-event-registration-291",
       "name": "₹ 199 per order on Event Registration",
       "image": "https://vitaone.in/web/image/product.template/291/image_1024?unique=432af3e",
@@ -15,7 +15,7 @@
       "odoo_id": 291
     },
     {
-      "url": "https://vitaone.in/shop/1z-yinv-0l5m-liquid-angstrom-magnesium-24?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/1z-yinv-0l5m-liquid-angstrom-magnesium-24?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/1z-yinv-0l5m-liquid-angstrom-magnesium-24",
       "name": "Liquid Angstrom Magnesium",
       "image": "https://vitaone.in/web/image/product.template/24/image_1024?unique=1f2aa4e",
@@ -23,7 +23,7 @@
       "odoo_id": 24
     },
     {
-      "url": "https://vitaone.in/shop/3z-inby-uz48-mct-oil-8?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/3z-inby-uz48-mct-oil-8?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/3z-inby-uz48-mct-oil-8",
       "name": "MCT Oil",
       "image": "https://vitaone.in/web/image/product.template/8/image_1024?unique=2813c63",
@@ -31,7 +31,7 @@
       "odoo_id": 8
     },
     {
-      "url": "https://vitaone.in/shop/50-on-specific-products-32?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/50-on-specific-products-32?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/50-on-specific-products-32",
       "name": "50% on specific products",
       "image": "https://vitaone.in/web/image/product.template/32/image_1024?unique=432af3e",
@@ -39,7 +39,7 @@
       "odoo_id": 32
     },
     {
-      "url": "https://vitaone.in/shop/active-folate-b12-30?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/active-folate-b12-30?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/active-folate-b12-30",
       "name": "Active Folate B12",
       "image": "https://vitaone.in/web/image/product.template/30/image_1024?unique=710f681",
@@ -47,7 +47,7 @@
       "odoo_id": 30
     },
     {
-      "url": "https://vitaone.in/shop/advance-nerve-pain-support-548?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/advance-nerve-pain-support-548?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/advance-nerve-pain-support-548",
       "name": "Advance Nerve Pain Support for Sleep &amp; Stress Relief | Calm Support |",
       "image": "https://vitaone.in/web/image/product.product/565/image_1024/Advance%20Nerve%20Pain%C2%A0Support?unique=0905cc7",
@@ -55,7 +55,7 @@
       "odoo_id": 548
     },
     {
-      "url": "https://vitaone.in/shop/alpha-r-lipoic-acid-alpha-r-lipoic-acid-25?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/alpha-r-lipoic-acid-alpha-r-lipoic-acid-25?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/alpha-r-lipoic-acid-alpha-r-lipoic-acid-25",
       "name": "Alpha R Lipoic Acid",
       "image": "https://vitaone.in/web/image/product.template/25/image_1024?unique=39ad438",
@@ -63,7 +63,7 @@
       "odoo_id": 25
     },
     {
-      "url": "https://vitaone.in/shop/ashwagandha-ksm-66-600mg-strength-517?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/ashwagandha-ksm-66-600mg-strength-517?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/ashwagandha-ksm-66-600mg-strength-517",
       "name": "Ashwagandha KSM-66® 600Mg Strength for Sleep &amp; Stress Relief | Calm Su",
       "image": "https://vitaone.in/web/image/product.product/550/image_1024/Ashwagandha%20KSM-66%C2%AE%20600Mg%20Strength?unique=689feed",
@@ -71,7 +71,7 @@
       "odoo_id": 517
     },
     {
-      "url": "https://vitaone.in/shop/betaine-hcl-pepsin-betaine-hcl-pepsin-116?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/betaine-hcl-pepsin-betaine-hcl-pepsin-116?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/betaine-hcl-pepsin-betaine-hcl-pepsin-116",
       "name": "Betaine HCL + Pepsin",
       "image": "https://vitaone.in/web/image/product.template/116/image_1024?unique=00c15fd",
@@ -79,7 +79,7 @@
       "odoo_id": 116
     },
     {
-      "url": "https://vitaone.in/shop/c3-curcumin-complex-c3-curcumin-complex-19?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/c3-curcumin-complex-c3-curcumin-complex-19?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/c3-curcumin-complex-c3-curcumin-complex-19",
       "name": "C3 Curcumin Complex",
       "image": "https://vitaone.in/web/image/product.template/19/image_1024?unique=b49c47c",
@@ -87,7 +87,7 @@
       "odoo_id": 19
     },
     {
-      "url": "https://vitaone.in/shop/category/education-23?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/education-23?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/education-23",
       "name": "Education | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -95,7 +95,7 @@
       "odoo_id": 23
     },
     {
-      "url": "https://vitaone.in/shop/category/functional-food-1?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/functional-food-1?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/functional-food-1",
       "name": "Functional Food | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -103,7 +103,7 @@
       "odoo_id": 1
     },
     {
-      "url": "https://vitaone.in/shop/category/lab-tests-26?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/lab-tests-26?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/lab-tests-26",
       "name": "Lab Tests | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -111,7 +111,7 @@
       "odoo_id": 26
     },
     {
-      "url": "https://vitaone.in/shop/category/pharmacy-24?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/pharmacy-24?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/pharmacy-24",
       "name": "Pharmacy | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -119,7 +119,7 @@
       "odoo_id": 24
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-2?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-2?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-2",
       "name": "Supplements | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -127,7 +127,7 @@
       "odoo_id": 2
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-bone-health-3?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-bone-health-3?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-bone-health-3",
       "name": "Bone Health | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -135,7 +135,7 @@
       "odoo_id": 3
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-brain-function-11?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-brain-function-11?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-brain-function-11",
       "name": "Brain Function | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -143,7 +143,7 @@
       "odoo_id": 11
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-detoxification-4?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-detoxification-4?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-detoxification-4",
       "name": "Detoxification | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -151,7 +151,7 @@
       "odoo_id": 4
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-energy-5?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-energy-5?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-energy-5",
       "name": "Energy | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -159,7 +159,7 @@
       "odoo_id": 5
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-fitness-focus-15?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-fitness-focus-15?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-fitness-focus-15",
       "name": "Fitness Focus | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -167,7 +167,7 @@
       "odoo_id": 15
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-gut-health-6?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-gut-health-6?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-gut-health-6",
       "name": "Gut Health | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -175,7 +175,7 @@
       "odoo_id": 6
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-hair-and-nails-16?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-hair-and-nails-16?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-hair-and-nails-16",
       "name": "Hair And Nails | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -183,7 +183,7 @@
       "odoo_id": 16
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-heart-health-7?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-heart-health-7?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-heart-health-7",
       "name": "Heart Health | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -191,7 +191,7 @@
       "odoo_id": 7
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-hormone-8?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-hormone-8?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-hormone-8",
       "name": "Hormone | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -199,7 +199,7 @@
       "odoo_id": 8
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-immune-support-9?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-immune-support-9?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-immune-support-9",
       "name": "Immune Support | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -207,7 +207,7 @@
       "odoo_id": 9
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-liver-support-19?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-liver-support-19?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-liver-support-19",
       "name": "Liver Support | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -215,7 +215,7 @@
       "odoo_id": 19
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-methylation-10?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-methylation-10?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-methylation-10",
       "name": "Methylation | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -223,7 +223,7 @@
       "odoo_id": 10
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-microbiome-22?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-microbiome-22?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-microbiome-22",
       "name": "Microbiome | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -231,7 +231,7 @@
       "odoo_id": 22
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-minerals-14?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-minerals-14?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-minerals-14",
       "name": "Minerals | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -239,7 +239,7 @@
       "odoo_id": 14
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-mood-support-20?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-mood-support-20?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-mood-support-20",
       "name": "Mood Support | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -247,7 +247,7 @@
       "odoo_id": 20
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-muscle-health-21?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-muscle-health-21?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-muscle-health-21",
       "name": "Muscle Health | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -255,7 +255,7 @@
       "odoo_id": 21
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-sleep-and-stress-17?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-sleep-and-stress-17?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-sleep-and-stress-17",
       "name": "Sleep And Stress | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -263,7 +263,7 @@
       "odoo_id": 17
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-sugar-regulation-12?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-sugar-regulation-12?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-sugar-regulation-12",
       "name": "Sugar Regulation | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -271,7 +271,7 @@
       "odoo_id": 12
     },
     {
-      "url": "https://vitaone.in/shop/category/supplements-vitamins-13?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/category/supplements-vitamins-13?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/category/supplements-vitamins-13",
       "name": "Vitamins | VitaOne",
       "image": "https://vitaone.in/web/image/website/1/logo?unique=a761920",
@@ -279,7 +279,7 @@
       "odoo_id": 13
     },
     {
-      "url": "https://vitaone.in/shop/decode-biome-advanced-gut-microbiome-health-test-114?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/decode-biome-advanced-gut-microbiome-health-test-114?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/decode-biome-advanced-gut-microbiome-health-test-114",
       "name": "Decode Biome Advanced Gut Microbiome Health Test",
       "image": "https://vitaone.in/web/image/product.template/114/image_1024?unique=1647042",
@@ -287,7 +287,7 @@
       "odoo_id": 114
     },
     {
-      "url": "https://vitaone.in/shop/digestive-enzyme-digestive-enzyme-9?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/digestive-enzyme-digestive-enzyme-9?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/digestive-enzyme-digestive-enzyme-9",
       "name": "Digestive Enzyme",
       "image": "https://vitaone.in/web/image/product.template/9/image_1024?unique=3ddc804",
@@ -295,7 +295,7 @@
       "odoo_id": 9
     },
     {
-      "url": "https://vitaone.in/shop/functional-medicine-foundation-2?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/functional-medicine-foundation-2?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/functional-medicine-foundation-2",
       "name": "Functional Medicine Foundation",
       "image": "https://vitaone.in/web/image/product.template/2/image_1024?unique=432af3e",
@@ -303,7 +303,7 @@
       "odoo_id": 2
     },
     {
-      "url": "https://vitaone.in/shop/functional-medicine-foundation-global-497?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/functional-medicine-foundation-global-497?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/functional-medicine-foundation-global-497",
       "name": "Functional Medicine Foundation - Global",
       "image": "https://vitaone.in/web/image/product.template/497/image_1024?unique=432af3e",
@@ -311,7 +311,7 @@
       "odoo_id": 497
     },
     {
-      "url": "https://vitaone.in/shop/functional-medicine-in-clinical-nutrition-29?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/functional-medicine-in-clinical-nutrition-29?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/functional-medicine-in-clinical-nutrition-29",
       "name": "Functional Medicine in Clinical Nutrition",
       "image": "https://vitaone.in/web/image/product.template/29/image_1024?unique=432af3e",
@@ -319,7 +319,7 @@
       "odoo_id": 29
     },
     {
-      "url": "https://vitaone.in/shop/gastro-zinc-carnosine-gastro-zinc-carnosine-23?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/gastro-zinc-carnosine-gastro-zinc-carnosine-23?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/gastro-zinc-carnosine-gastro-zinc-carnosine-23",
       "name": "Gastro Zinc Carnosine",
       "image": "https://vitaone.in/web/image/product.template/23/image_1024?unique=f036ce3",
@@ -327,7 +327,7 @@
       "odoo_id": 23
     },
     {
-      "url": "https://vitaone.in/shop/gff-gluten-free-flour-14?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/gff-gluten-free-flour-14?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/gff-gluten-free-flour-14",
       "name": "Gluten Free Flour",
       "image": "https://vitaone.in/web/image/product.template/14/image_1024?unique=7809331",
@@ -335,7 +335,7 @@
       "odoo_id": 14
     },
     {
-      "url": "https://vitaone.in/shop/gi-map-lab-test-64?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/gi-map-lab-test-64?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/gi-map-lab-test-64",
       "name": "Gi Map Lab Test",
       "image": "https://vitaone.in/web/image/product.template/64/image_1024?unique=0ca505a",
@@ -343,7 +343,7 @@
       "odoo_id": 64
     },
     {
-      "url": "https://vitaone.in/shop/gi-map-lab-test-with-zonulin-63?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/gi-map-lab-test-with-zonulin-63?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/gi-map-lab-test-with-zonulin-63",
       "name": "GI Map Lab Test with Zonulin",
       "image": "https://vitaone.in/web/image/product.template/63/image_1024?unique=7ed1e93",
@@ -351,7 +351,7 @@
       "odoo_id": 63
     },
     {
-      "url": "https://vitaone.in/shop/h3-q5m6-imc5-l-glutamine-18?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/h3-q5m6-imc5-l-glutamine-18?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/h3-q5m6-imc5-l-glutamine-18",
       "name": "L-Glutamine",
       "image": "https://vitaone.in/web/image/product.template/18/image_1024?unique=4e86d38",
@@ -359,7 +359,7 @@
       "odoo_id": 18
     },
     {
-      "url": "https://vitaone.in/shop/homocysteine-defence-b-complex-6?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/homocysteine-defence-b-complex-6?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/homocysteine-defence-b-complex-6",
       "name": "Homocysteine Defence B Complex",
       "image": "https://vitaone.in/web/image/product.template/6/image_1024?unique=e0b9045",
@@ -367,7 +367,7 @@
       "odoo_id": 6
     },
     {
-      "url": "https://vitaone.in/shop/instant-keto-coffee-instant-keto-coffee-22?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/instant-keto-coffee-instant-keto-coffee-22?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/instant-keto-coffee-instant-keto-coffee-22",
       "name": "Instant Keto Coffee",
       "image": "https://vitaone.in/web/image/product.template/22/image_1024?unique=9ba49a0",
@@ -375,7 +375,7 @@
       "odoo_id": 22
     },
     {
-      "url": "https://vitaone.in/shop/ionic-140-ionic-magnesium-bisglycinate-115?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/ionic-140-ionic-magnesium-bisglycinate-115?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/ionic-140-ionic-magnesium-bisglycinate-115",
       "name": "Ionic Magnesium Bisglycinate",
       "image": "https://vitaone.in/web/image/product.template/115/image_1024?unique=3921a4f",
@@ -383,7 +383,7 @@
       "odoo_id": 115
     },
     {
-      "url": "https://vitaone.in/shop/ionic-magnesium-ionic-magnesium-13?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/ionic-magnesium-ionic-magnesium-13?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/ionic-magnesium-ionic-magnesium-13",
       "name": "Ionic Magnesium",
       "image": "https://vitaone.in/web/image/product.template/13/image_1024?unique=136debe",
@@ -391,7 +391,7 @@
       "odoo_id": 13
     },
     {
-      "url": "https://vitaone.in/shop/ionic-magnesium-sachet-345?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/ionic-magnesium-sachet-345?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/ionic-magnesium-sachet-345",
       "name": "Ionic Magnesium Sachet",
       "image": "https://vitaone.in/web/image/product.template/345/image_1024?unique=ee407d4",
@@ -399,7 +399,7 @@
       "odoo_id": 345
     },
     {
-      "url": "https://vitaone.in/shop/iron-complex-iron-complex-iron-bisglycinate-11?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/iron-complex-iron-complex-iron-bisglycinate-11?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/iron-complex-iron-complex-iron-bisglycinate-11",
       "name": "Iron Complex (Iron Bisglycinate)",
       "image": "https://vitaone.in/web/image/product.template/11/image_1024?unique=19fb817",
@@ -407,7 +407,7 @@
       "odoo_id": 11
     },
     {
-      "url": "https://vitaone.in/shop/lbc-c-liposomal-berberine-complex-cinnamon-chromium-458?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/lbc-c-liposomal-berberine-complex-cinnamon-chromium-458?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/lbc-c-liposomal-berberine-complex-cinnamon-chromium-458",
       "name": "Liposomal Berberine Complex Cinnamon + Chromium",
       "image": "https://vitaone.in/web/image/product.template/458/image_1024?unique=0ecbd39",
@@ -415,7 +415,7 @@
       "odoo_id": 458
     },
     {
-      "url": "https://vitaone.in/shop/liothyronine-sodium-t3-39?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/liothyronine-sodium-t3-39?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/liothyronine-sodium-t3-39",
       "name": "Liothyronine Sodium (T3)",
       "image": "https://vitaone.in/web/image/product.template/39/image_1024?unique=229a644",
@@ -423,7 +423,7 @@
       "odoo_id": 39
     },
     {
-      "url": "https://vitaone.in/shop/liquid-vitamin-d3-k2-117?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/liquid-vitamin-d3-k2-117?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/liquid-vitamin-d3-k2-117",
       "name": "Liquid Vitamin D3 + K2",
       "image": "https://vitaone.in/web/image/product.template/117/image_1024?unique=d035670",
@@ -431,7 +431,7 @@
       "odoo_id": 117
     },
     {
-      "url": "https://vitaone.in/shop/methylene-blue-423?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/methylene-blue-423?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/methylene-blue-423",
       "name": "Methylene Blue",
       "image": "https://vitaone.in/web/image/product.template/423/image_1024?unique=ef61396",
@@ -439,7 +439,7 @@
       "odoo_id": 423
     },
     {
-      "url": "https://vitaone.in/shop/microbiome-fiber-microbiome-fiber-16?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/microbiome-fiber-microbiome-fiber-16?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/microbiome-fiber-microbiome-fiber-16",
       "name": "Microbiome Fiber",
       "image": "https://vitaone.in/web/image/product.template/16/image_1024?unique=2bdadc2",
@@ -447,7 +447,7 @@
       "odoo_id": 16
     },
     {
-      "url": "https://vitaone.in/shop/nac-n-acetylcysteine-nac-n-acetylcysteine-17?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/nac-n-acetylcysteine-nac-n-acetylcysteine-17?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/nac-n-acetylcysteine-nac-n-acetylcysteine-17",
       "name": "(NAC) N-ACETYLCYSTEINE",
       "image": "https://vitaone.in/web/image/product.template/17/image_1024?unique=4d640fc",
@@ -455,7 +455,7 @@
       "odoo_id": 17
     },
     {
-      "url": "https://vitaone.in/shop/new-fs-organic-cold-pressed-flax-oil-26?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/new-fs-organic-cold-pressed-flax-oil-26?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/new-fs-organic-cold-pressed-flax-oil-26",
       "name": "Organic Cold Pressed Flax Oil",
       "image": "https://vitaone.in/web/image/product.template/26/image_1024?unique=7809331",
@@ -463,7 +463,7 @@
       "odoo_id": 26
     },
     {
-      "url": "https://vitaone.in/shop/pcos-w-pcos-support-complete-hormonal-metabolic-restoration-for-women-390?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/pcos-w-pcos-support-complete-hormonal-metabolic-restoration-for-women-390?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/pcos-w-pcos-support-complete-hormonal-metabolic-restoration-for-women-390",
       "name": "PCOS Support - Complete Hormonal &amp; Metabolic Restoration For Women",
       "image": "https://vitaone.in/web/image/product.template/390/image_1024?unique=c5b2532",
@@ -471,7 +471,7 @@
       "odoo_id": 390
     },
     {
-      "url": "https://vitaone.in/shop/premium-marine-collagen-peptides-bioactive-marine-collagen-27?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/premium-marine-collagen-peptides-bioactive-marine-collagen-27?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/premium-marine-collagen-peptides-bioactive-marine-collagen-27",
       "name": "Bioactive Marine Collagen",
       "image": "https://vitaone.in/web/image/product.template/27/image_1024?unique=28b2a2f",
@@ -479,7 +479,7 @@
       "odoo_id": 27
     },
     {
-      "url": "https://vitaone.in/shop/progesterone-450?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/progesterone-450?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/progesterone-450",
       "name": "Progesterone",
       "image": "https://vitaone.in/web/image/product.template/450/image_1024?unique=a831b01",
@@ -487,7 +487,7 @@
       "odoo_id": 450
     },
     {
-      "url": "https://vitaone.in/shop/rebuild-plant-protein-and-lipid-choco-rebuild-plant-protein-and-lipid-chocolate-28?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/rebuild-plant-protein-and-lipid-choco-rebuild-plant-protein-and-lipid-chocolate-28?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/rebuild-plant-protein-and-lipid-choco-rebuild-plant-protein-and-lipid-chocolate-28",
       "name": "Rebuild Plant Protein and Lipid Chocolate",
       "image": "https://vitaone.in/web/image/product.template/28/image_1024?unique=92bf9d2",
@@ -495,7 +495,7 @@
       "odoo_id": 28
     },
     {
-      "url": "https://vitaone.in/shop/rebuild-plant-protein-and-lipid-rebuild-plant-protein-and-lipid-15?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/rebuild-plant-protein-and-lipid-rebuild-plant-protein-and-lipid-15?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/rebuild-plant-protein-and-lipid-rebuild-plant-protein-and-lipid-15",
       "name": "Rebuild Plant Protein And Lipid",
       "image": "https://vitaone.in/web/image/product.template/15/image_1024?unique=ee8d9f5",
@@ -503,7 +503,7 @@
       "odoo_id": 15
     },
     {
-      "url": "https://vitaone.in/shop/sleep-support-advanced-sleep-support-more-than-just-melatonin-344?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/sleep-support-advanced-sleep-support-more-than-just-melatonin-344?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/sleep-support-advanced-sleep-support-more-than-just-melatonin-344",
       "name": "Advanced Sleep Support -  More Than Just Melatonin",
       "image": "https://vitaone.in/web/image/product.template/344/image_1024?unique=6a247f2",
@@ -511,7 +511,7 @@
       "odoo_id": 344
     },
     {
-      "url": "https://vitaone.in/shop/standard-practitioner-membership-334?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/standard-practitioner-membership-334?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/standard-practitioner-membership-334",
       "name": "Standard Practitioner Membership",
       "image": "https://vitaone.in/web/image/product.template/334/image_1024?unique=432af3e",
@@ -519,7 +519,7 @@
       "odoo_id": 334
     },
     {
-      "url": "https://vitaone.in/shop/thyroid-support-10?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/thyroid-support-10?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/thyroid-support-10",
       "name": "Thyroid Support",
       "image": "https://vitaone.in/web/image/product.template/10/image_1024?unique=cb68be2",
@@ -527,7 +527,7 @@
       "odoo_id": 10
     },
     {
-      "url": "https://vitaone.in/shop/triple-strength-omega-3-triple-strength-omega-3-20?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/triple-strength-omega-3-triple-strength-omega-3-20?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/triple-strength-omega-3-triple-strength-omega-3-20",
       "name": "Triple Strength Omega 3",
       "image": "https://vitaone.in/web/image/product.template/20/image_1024?unique=20d3539",
@@ -535,7 +535,7 @@
       "odoo_id": 20
     },
     {
-      "url": "https://vitaone.in/shop/vit-c-vitamin-c-ultra-potent-buffered-formula-439?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vit-c-vitamin-c-ultra-potent-buffered-formula-439?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vit-c-vitamin-c-ultra-potent-buffered-formula-439",
       "name": "Vitamin C – Ultra Potent Buffered Formula",
       "image": "https://vitaone.in/web/image/product.template/439/image_1024?unique=f017726",
@@ -543,7 +543,7 @@
       "odoo_id": 439
     },
     {
-      "url": "https://vitaone.in/shop/vitamin-d3-k2-7-12?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitamin-d3-k2-7-12?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitamin-d3-k2-7-12",
       "name": "Vitamin D3 + K2-7",
       "image": "https://vitaone.in/web/image/product.template/12/image_1024?unique=2460094",
@@ -551,7 +551,7 @@
       "odoo_id": 12
     },
     {
-      "url": "https://vitaone.in/shop/vitaone-advanced-functional-panel-577?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaone-advanced-functional-panel-577?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaone-advanced-functional-panel-577",
       "name": "VitaOne Advanced Functional Panel",
       "image": "https://vitaone.in/web/image/product.template/577/image_1024?unique=7891186",
@@ -559,7 +559,7 @@
       "odoo_id": 577
     },
     {
-      "url": "https://vitaone.in/shop/vitaone-complete-methylation-genetic-test-571?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaone-complete-methylation-genetic-test-571?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaone-complete-methylation-genetic-test-571",
       "name": "VitaOne® Complete Methylation Genetic Test",
       "image": "https://vitaone.in/web/image/product.template/571/image_1024?unique=5eee505",
@@ -567,7 +567,7 @@
       "odoo_id": 571
     },
     {
-      "url": "https://vitaone.in/shop/vitaone-core-nutrition-panel-575?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaone-core-nutrition-panel-575?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaone-core-nutrition-panel-575",
       "name": "VitaOne Core Nutrition Panel",
       "image": "https://vitaone.in/web/image/product.template/575/image_1024?unique=51e0d04",
@@ -575,7 +575,7 @@
       "odoo_id": 575
     },
     {
-      "url": "https://vitaone.in/shop/vitaone-hormone-balance-panel-589?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaone-hormone-balance-panel-589?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaone-hormone-balance-panel-589",
       "name": "VitaOne Hormone Balance Panel",
       "image": "https://vitaone.in/web/image/product.template/589/image_1024?unique=19a0470",
@@ -583,7 +583,7 @@
       "odoo_id": 589
     },
     {
-      "url": "https://vitaone.in/shop/vitaone-magnesium-oil-505?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaone-magnesium-oil-505?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaone-magnesium-oil-505",
       "name": "VitaOne Magnesium Oil  for Sleep &amp; Stress Relief | Calm Support | Vita",
       "image": "https://vitaone.in/web/image/product.product/530/image_1024/VitaOne%20Magnesium%20Oil%20?unique=b9e722f",
@@ -591,7 +591,7 @@
       "odoo_id": 505
     },
     {
-      "url": "https://vitaone.in/shop/vitaone-metabolic-balance-panel-576?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaone-metabolic-balance-panel-576?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaone-metabolic-balance-panel-576",
       "name": "VitaOne Metabolic Balance Panel",
       "image": "https://vitaone.in/web/image/product.template/576/image_1024?unique=3991dc8",
@@ -599,7 +599,7 @@
       "odoo_id": 576
     },
     {
-      "url": "https://vitaone.in/shop/vitaone-mthfr-genetic-test-569?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaone-mthfr-genetic-test-569?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaone-mthfr-genetic-test-569",
       "name": "VitaOne® MTHFR Genetic Test",
       "image": "https://vitaone.in/web/image/product.template/569/image_1024?unique=15101e6",
@@ -607,7 +607,7 @@
       "odoo_id": 569
     },
     {
-      "url": "https://vitaone.in/shop/vitaspore-probiotic-vitaspore-probiotic-173?pr=vita13720sh",
+      "url": "https://vitaone.in/shop/vitaspore-probiotic-vitaspore-probiotic-173?ref=vita13720sh",
       "url_raw": "https://vitaone.in/shop/vitaspore-probiotic-vitaspore-probiotic-173",
       "name": "VitaSpore Probiotic",
       "image": "https://vitaone.in/web/image/product.template/173/image_1024?unique=20d3539",
