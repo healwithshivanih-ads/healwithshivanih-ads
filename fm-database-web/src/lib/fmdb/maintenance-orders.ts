@@ -52,6 +52,9 @@ export interface MaintenanceOrder {
   razorpay_payment_id?: string;
   created_at: string;
   paid_at?: string;
+  /** Stamped once a receipt is generated. See fm-database-web/src/lib/fmdb/invoices.ts. */
+  invoice_number?: string;
+  invoice_generated_at?: string;
 }
 
 /** The fixed price for a term, or null if the term isn't offered. Pure. */

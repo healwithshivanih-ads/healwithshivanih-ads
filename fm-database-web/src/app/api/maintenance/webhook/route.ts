@@ -26,8 +26,10 @@ import {
   patchMaintenanceSubscription,
   findMaintenanceSubscriptionById,
   type RzpSubscriptionEvent,
+  type MaintenanceChargeRecord,
 } from "@/lib/fmdb/maintenance-subscription";
 import { buildPaymentEvent, clientJoinKeyFor, emitRevenueEvent } from "@/lib/fmdb/revenue-export";
+import { getOrCreateMaintenanceOrderInvoice, getOrCreateMaintenanceChargeInvoice } from "@/lib/fmdb/invoices";
 
 export const dynamic = "force-dynamic";
 
@@ -74,7 +76,23 @@ async function handleSubscriptionEvent(event: RzpSubscriptionEvent) {
   // regress paid_through (mirrors the one-time order's stack-forward discipline).
   dropBackwardPaidThrough(outcome.patch, cur.paid_through);
 
-  const next = await patchMaintenanceSubscription(clientId, outcome.subscriptionId, outcome.patch);
+  // A real charge (not just a lifecycle status move, e.g. activated/halted)
+  // gets its own append-only history entry — the rest of this record is
+  // mutated in place each cycle, so without this a past quarter's payment
+  // id/amount/date would be unrecoverable — and un-invoiceable — the moment
+  // the next charge lands. See MaintenanceSubscription.charge_history.
+  let patch = outcome.patch;
+  if (outcome.paymentId) {
+    const entry: MaintenanceChargeRecord = {
+      payment_id: outcome.paymentId,
+      amount_inr: cur.amount_inr ?? 0,
+      charged_at: new Date().toISOString(),
+      paid_through: patch.paid_through ?? cur.paid_through ?? "",
+    };
+    patch = { ...patch, charge_history: [...(cur.charge_history ?? []), entry] };
+  }
+
+  const next = await patchMaintenanceSubscription(clientId, outcome.subscriptionId, patch);
   // Revenue export (Loop 1) — only actual charges, not lifecycle-only events.
   // The webhook payload carries no amount for subscription charges, so use the
   // record's display amount (the per-cycle price). Best-effort, never throws.
@@ -88,6 +106,12 @@ async function handleSubscriptionEvent(event: RzpSubscriptionEvent) {
         client: await clientJoinKeyFor(clientId),
       }),
     );
+    // Receipt — best-effort, never blocks the webhook response.
+    try {
+      await getOrCreateMaintenanceChargeInvoice(clientId, outcome.subscriptionId, outcome.paymentId);
+    } catch (e) {
+      console.error("[maintenance/webhook] subscription invoice generation failed:", (e as Error).message);
+    }
   }
   return { ok: !!next };
 }
@@ -180,6 +204,12 @@ export async function POST(req: Request) {
         client: await clientJoinKeyFor(clientId),
       }),
     );
+    // Receipt — best-effort, never blocks the webhook response.
+    try {
+      await getOrCreateMaintenanceOrderInvoice(clientId, orderId);
+    } catch (e) {
+      console.error("[maintenance/webhook] order invoice generation failed:", (e as Error).message);
+    }
   }
   return NextResponse.json({ ok: !!next });
 }
