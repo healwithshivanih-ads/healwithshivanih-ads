@@ -4630,9 +4630,11 @@ calorie target — not on top of it.
   - 1 tbsp sunflower seeds ≈ 51 kcal
 
 Integration rules:
-  1. Pick ONE meal or snack where the seeds belong (e.g. breakfast
-     porridge, the morning smoothie, mid-afternoon snack, or lunch
-     dal/salad). Don't sprinkle 1 tbsp across two different meals.
+  1. Pick ONE meal or snack where the seeds belong (e.g. a breakfast
+     chilla/cheela, the morning smoothie, mid-afternoon snack, or lunch
+     dal/salad). Don't sprinkle 1 tbsp across two different meals. Do NOT
+     default to a porridge-style breakfast as the seed vehicle — see the
+     PORRIDGE ban elsewhere in these rules; it applies here too.
   2. ADD the seed kcal to that meal's calorie line in the meal plan
      table, then REDUCE another component of the same meal by the
      equivalent kcal (e.g. swap 2 tsp ghee for 2 tsp ghee + 2 tbsp
@@ -4641,7 +4643,7 @@ Integration rules:
   3. The total daily calories MUST still hit the target the calorie
      planner set. Do NOT add the seeds as 'free' food.
   4. State the swap explicitly in the meal plan table: e.g.
-     'Breakfast (380 kcal) — porridge 1 cup oats + 2 tbsp seeds
+     'Breakfast (380 kcal) — besan cheela 2 pieces + 2 tbsp seeds
      (replaces yesterday's almonds). Adjusted from 380 kcal target.'
   5. If the daily calorie target is NOT set (no weight-loss flag),
      just integrate seeds into a meal naturally without budget edits.
@@ -5220,7 +5222,7 @@ RULES:
 - CRITICAL: NEVER suggest foods listed as reported triggers: {reported_triggers}
 - No clinical jargon — write like a knowledgeable friend
 - If Vegetarian Jain: NO root vegetables (onion, garlic, potato, carrot, beetroot, radish, turnip)
-- AVOID PORRIDGE-STYLE BREAKFASTS (ragi porridge, oats porridge, dalia, upma-as-porridge) by default — most Indian clients find them unappealing and skip them. Prefer moong dal chilla, besan cheela, poha, idli/dosa, vegetable paratha, sprouts, or egg preparations (if eaten) instead. Only use a porridge-style breakfast if the client has explicitly said they like it.
+- CRITICAL — NO PORRIDGE-STYLE BREAKFASTS (ragi porridge, oats porridge, dalia, upma-as-porridge, any "grain cooked soft in milk/water" prep) ANYWHERE in this menu, including as a seed-cycling or supplement vehicle. Most Indian clients find them unappealing and quietly stop eating them. Use moong dal chilla, besan cheela, poha, idli/dosa, vegetable paratha, sprouts, or egg preparations (if eaten) instead. The ONLY exception: the client's own words (intake, session notes, or a quick_note) explicitly say they like or ask for a named porridge dish — a coach's general "keep it simple" note does not count as this exception.
 - {"INCLUDE a *~kcal* row at the bottom of each weekly table with the per-day total (±50 kcal of the phase target)." if cal else "DO NOT add a *~kcal* row or any per-day calorie totals — this client is NOT on a weight-loss plan. Calorie counts are off-topic and create unnecessary anxiety."}
 
 {INDIAN_BRANDS}
