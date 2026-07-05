@@ -12,11 +12,17 @@ import path from "path";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { ensureLetterToken } from "./letter-token";
 import { sendClientEmailAction, recordLetterSendAction } from "@/app/api/email/actions";
-import { buildWelcomeEmailHtml, welcomeEmailSubject, WELCOME_SHOTS } from "@/lib/welcome-email";
+import {
+  buildWelcomeEmailHtml,
+  welcomeEmailSubject,
+  WELCOME_SHOTS,
+  type WelcomeVariant,
+} from "@/lib/welcome-email";
 
 export async function sendWelcomeEmailAction(
   clientId: string,
   planSlug: string,
+  variant: WelcomeVariant = "welcome",
 ): Promise<{ ok: true } | { ok: false; error: string }> {
   const client = await loadClientById(clientId);
   if (!client) return { ok: false, error: `client not found: ${clientId}` };
@@ -45,13 +51,15 @@ export async function sendWelcomeEmailAction(
 
   const res = await sendClientEmailAction({
     to,
-    subject: welcomeEmailSubject(firstName),
-    htmlBody: buildWelcomeEmailHtml(firstName, appUrl),
+    subject: welcomeEmailSubject(firstName, variant),
+    htmlBody: buildWelcomeEmailHtml(firstName, appUrl, variant),
     attachments,
   });
   if (!res.ok) return res;
 
   // Best-effort audit trail (also what the "once on publish" guard reads).
+  // Both variants log as "welcome" so a client never gets the auto welcome
+  // AND a manual transition note counted as two separate onboardings.
   try {
     await recordLetterSendAction({ clientId, planSlug, letterTypes: ["welcome"], to });
   } catch { /* non-fatal */ }

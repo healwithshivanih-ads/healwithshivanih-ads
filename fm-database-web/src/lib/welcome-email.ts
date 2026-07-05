@@ -42,13 +42,48 @@ const tab = (n: number, name: string, intro: string, items: string[], cid: strin
   `<h2 style="margin:3px 0 0;font-family:${SERIF};font-size:22px;font-weight:normal;color:${SAGE};">${name}</h2>` +
   p(intro, 8) + bullets(items) + img(cid, name) + `</div>`;
 
-export function welcomeEmailSubject(firstName: string): string {
-  return `Welcome to your Ochre Tree, ${firstName} — your app guide`;
+/** "welcome" = brand-new client (default; auto-fires on first publish).
+ *  "transition" = existing mid-plan client whose plan used to arrive as
+ *  messages and now lives in the app — a one-time "we've moved" note. */
+export type WelcomeVariant = "welcome" | "transition";
+
+export function welcomeEmailSubject(
+  firstName: string,
+  variant: WelcomeVariant = "welcome",
+): string {
+  return variant === "transition"
+    ? `${firstName}, your plan has a new home 🌿`
+    : `Welcome to your Ochre Tree, ${firstName} — your app guide`;
 }
 
-export function buildWelcomeEmailHtml(firstName: string, appUrl: string): string {
+export function buildWelcomeEmailHtml(
+  firstName: string,
+  appUrl: string,
+  variant: WelcomeVariant = "welcome",
+): string {
   const fn = esc(firstName || "there");
   const url = esc(appUrl);
+  const transition = variant === "transition";
+
+  const eyebrow = transition ? "Your plan has moved &mdash; here's your guide" : "Your app, tab by tab";
+  const heading = transition ? "Everything's now in one place" : "Welcome to your Ochre Tree";
+
+  // The opening differs: new clients are being welcomed; mid-plan clients are
+  // being told their existing plan has moved into an app they've not seen.
+  const intro = transition
+    ? p(`You're already underway on your plan &mdash; and from today, it lives somewhere far better than a string of messages. Everything I've been sending you &mdash; your meals, your supplements, your daily practices &mdash; is now in one place made just for you: <strong>your Ochre Tree</strong>. Nothing about your plan changes; it just finally has a proper home, and from here it grows with you &mdash; each week you check in, and it quietly adapts.`)
+    : p(`I'm so glad to be walking this path with you. Everything we've mapped out — your plan, your meals, your supplements and your daily practices — now lives in one place made just for you: <strong>your Ochre Tree</strong>. Think of it as a living tree that grows with you: each week you check in, and your plan quietly adapts.`);
+
+  // The "day one" box: for new clients it's the starting line; for mid-plan
+  // clients it's the point we start measuring forward from.
+  const baselineBadge = transition ? "Take five minutes today" : "Do this on day one";
+  const baselineHeading = transition
+    ? "Your symptom check &mdash; the mark we measure from"
+    : "Your symptom baseline, in Progress";
+  const baselineCopy = transition
+    ? p(`Open the <strong>Progress</strong> tab and do your <strong>symptom check</strong> &mdash; even though you're already a few weeks in, this gives us a clear line to measure every future check-in against. About 5 minutes, once; every symptom starts at &ldquo;Never,&rdquo; so you only tap what applies. It re-opens <strong>every 3 weeks</strong>, and each time your number should fall.`, 8)
+    : p(`Before anything else, open the <strong>Progress</strong> tab and do your <strong>symptom check</strong> &mdash; your starting line. About 5 minutes, once; every symptom starts at &ldquo;Never,&rdquo; so you only tap what applies. It re-opens <strong>every 3 weeks</strong>, and each time your number should fall.`, 8);
+
   return `<div style="margin:0;padding:22px 12px;background:${PAPER};font-family:${SERIF};">
 <div style="max-width:600px;margin:0 auto;background:#FFFDF8;border:1px solid ${HAIR};border-radius:6px;padding:32px 30px 36px;">
   <div style="padding-bottom:16px;border-bottom:1px solid ${HAIR};">
@@ -56,10 +91,10 @@ export function buildWelcomeEmailHtml(firstName: string, appUrl: string): string
     <span style="display:inline-block;width:10px;height:10px;background:#C08080;border-radius:50%;vertical-align:middle;margin:0 9px 0 3px;"></span>
     <span style="font-family:${SERIF};font-size:20px;color:#2D3047;vertical-align:middle;">The <em style="color:${OCHRE};">Ochre</em> Tree</span>
   </div>
-  <p style="margin:26px 0 4px;font-family:${SANS};font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:${OCHRE};">Your app, tab by tab</p>
-  <h1 style="margin:0;font-family:${SERIF};font-size:32px;line-height:1.12;font-weight:normal;color:${SAGE};">Welcome to your Ochre Tree</h1>
+  <p style="margin:26px 0 4px;font-family:${SANS};font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:${OCHRE};">${eyebrow}</p>
+  <h1 style="margin:0;font-family:${SERIF};font-size:32px;line-height:1.12;font-weight:normal;color:${SAGE};">${heading}</h1>
   ${p(`Dear ${fn},`, 18)}
-  ${p(`I'm so glad to be walking this path with you. Everything we've mapped out — your plan, your meals, your supplements and your daily practices — now lives in one place made just for you: <strong>your Ochre Tree</strong>. Think of it as a living tree that grows with you: each week you check in, and your plan quietly adapts.`)}
+  ${intro}
   ${h2("Open your app")}
   ${p("Tap the button below on your phone:", 8)}
   <div style="text-align:center;margin:16px 0 6px;">
@@ -67,9 +102,9 @@ export function buildWelcomeEmailHtml(firstName: string, appUrl: string): string
   </div>
   ${p(`Then choose <strong>&ldquo;Add to Home Screen&rdquo;</strong> from your browser menu &mdash; it will sit on your phone like any other app. No password, no download.`, 8)}
   <div style="margin-top:28px;border:1.5px solid ${OCHRE};border-radius:8px;background:#FBF3EE;padding:18px 20px;">
-    <span style="display:inline-block;font-family:${SANS};font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:${OCHRE};border-radius:100px;padding:4px 11px;">Do this on day one</span>
-    <h2 style="margin:12px 0 0;font-family:${SERIF};font-size:19px;font-weight:normal;color:${SAGE};">Your symptom baseline, in Progress</h2>
-    ${p(`Before anything else, open the <strong>Progress</strong> tab and do your <strong>symptom check</strong> &mdash; your starting line. About 5 minutes, once; every symptom starts at &ldquo;Never,&rdquo; so you only tap what applies. It re-opens <strong>every 3 weeks</strong>, and each time your number should fall.`, 8)}
+    <span style="display:inline-block;font-family:${SANS};font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:${OCHRE};border-radius:100px;padding:4px 11px;">${baselineBadge}</span>
+    <h2 style="margin:12px 0 0;font-family:${SERIF};font-size:19px;font-weight:normal;color:${SAGE};">${baselineHeading}</h2>
+    ${baselineCopy}
     ${img("progress", "Progress baseline")}
   </div>
   <h2 style="margin:38px 0 2px;font-family:${SERIF};font-size:24px;font-weight:normal;color:${SAGE};">The five tabs</h2>
@@ -92,9 +127,9 @@ export function buildWelcomeEmailHtml(firstName: string, appUrl: string): string
     ${h2("Ready when you are")}
     <ol style="margin:12px 0 0;padding-left:20px;">
       <li style="margin:0 0 8px;font-family:${SERIF};font-size:15px;line-height:1.5;color:${INK};">Open your link &middot; Add to Home Screen.</li>
-      <li style="margin:0 0 8px;font-family:${SERIF};font-size:15px;line-height:1.5;color:${INK};">Do your symptom baseline in Progress.</li>
-      <li style="margin:0 0 8px;font-family:${SERIF};font-size:15px;line-height:1.5;color:${INK};">Glance at Today &amp; Plan.</li>
-      <li style="margin:0 0 8px;font-family:${SERIF};font-size:15px;line-height:1.5;color:${INK};">Start your supplements &mdash; pick your Day 1 when you're ready.</li>
+      <li style="margin:0 0 8px;font-family:${SERIF};font-size:15px;line-height:1.5;color:${INK};">Do your symptom ${transition ? "check" : "baseline"} in Progress.</li>
+      <li style="margin:0 0 8px;font-family:${SERIF};font-size:15px;line-height:1.5;color:${INK};">${transition ? "See today&rsquo;s meals in Today &amp; the fortnight in Plan." : "Glance at Today &amp; Plan."}</li>
+      <li style="margin:0 0 8px;font-family:${SERIF};font-size:15px;line-height:1.5;color:${INK};">${transition ? "Carry on with your plan, right where you left off." : "Start your supplements &mdash; pick your Day 1 when you're ready."}</li>
     </ol>
     ${p("Any question, message me from the Coach tab. I'm right here.")}
     <p style="margin:22px 0 0;font-family:${SERIF};font-size:16px;color:${INK};">With warmth,<br><span style="font-size:21px;color:${SAGE};">Shivani Hari</span><br><span style="font-family:${SANS};font-size:12px;color:${SAGES};">Your Functional Health Coach</span></p>
