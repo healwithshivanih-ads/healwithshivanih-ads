@@ -118,6 +118,11 @@ _APP_CLIENT_KEYS = (
     "maintenance_paid_through",
     "maintenance_term_months",
     "back_on_track_plan",
+    # weight_loss goal + travel/illness week_overrides. The app reads these for
+    # the weight-loss card AND the travel-extension (pause the plan clock, show
+    # the travel card). Coach-only subfields (notes_for_coach + each override's
+    # `reason`) are stripped below before staging.
+    "weight_loss",
 )
 
 # Coach-only fields stripped from the plan before it reaches the public Fly box —
@@ -274,6 +279,23 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
             merged.pop("health_snapshots", None)
     else:
         merged.pop("health_snapshots", None)
+    # weight_loss: strip coach-only text before it reaches the public Fly box.
+    # notes_for_coach is explicitly "never sent to client"; each week_override's
+    # `reason` is a coach sticky note (e.g. "work trip with client lunches").
+    # The app only needs the goal numbers + each override's dates/context/
+    # location/mode — those stay.
+    wl = merged.get("weight_loss")
+    if isinstance(wl, dict):
+        wl = dict(wl)
+        wl.pop("notes_for_coach", None)
+        ovs = wl.get("week_overrides")
+        if isinstance(ovs, list):
+            wl["week_overrides"] = [
+                {k: v for k, v in o.items() if k != "reason"}
+                if isinstance(o, dict) else o
+                for o in ovs
+            ]
+        merged["weight_loss"] = wl
     s_client.write_text(yaml.safe_dump(merged, sort_keys=False, allow_unicode=True))
 
     # 3. letters (md + html + sidecars) + the send log. The app trusts ONLY
