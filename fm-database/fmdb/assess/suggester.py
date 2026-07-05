@@ -1511,6 +1511,23 @@ HARD RULES (violating these breaks the downstream system):
       substitute for the supplement protocol or medical care. Keep `overview`
       warm and client-facing.
 
+30. COMBINATION PRODUCTS (prefer one combo over many single pills). Some
+    catalogue supplements carry a non-empty `consolidates` list — the slugs of
+    the individual single-compound supplements that ONE combo capsule replaces
+    (e.g. `methylated-b-complex` consolidates l-methylfolate + methylcobalamin
+    + pyridoxal-5-phosphate + vitamin-b2-riboflavin; `homocysteine-b-complex`
+    adds tmg). When ≥3 of the supplements you would otherwise recommend as
+    SEPARATE `supplement_suggestions` are all covered by a single combo entry
+    present in the subgraph, recommend that ONE combo entry INSTEAD of the
+    individual compounds. Drop the now-redundant single-compound suggestions.
+    State in the combo's rationale exactly which compounds it consolidates
+    (e.g. "replaces separate methylfolate, methyl-B12, P5P and riboflavin").
+    Fewer pills = better adherence. Only substitute when the combo genuinely
+    covers ≥3 of your intended items and none of them is individually
+    contraindicated for this client; if the client needs one compound at a very
+    different dose or a contraindication rules out one ingredient, keep the
+    individual items instead.
+
 Call `synthesize_assessment` exactly once with your structured result."""
 
 

@@ -1,0 +1,44 @@
+slug: homocysteine-b-complex
+display_name: Homocysteine B Complex
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+take_with_food: required
+consolidates:
+- l-methylfolate
+- methylcobalamin
+- pyridoxal-5-phosphate
+- vitamin-b2-riboflavin
+- tmg
+linked_to_topics:
+- homocysteine-and-methylation
+- methylation
+- mthfr-gene-variant
+linked_to_claims:
+- b6-b2-support-folate-cycle-and-homocysteine
+- tmg-homocysteine-lowering-methylation
+notes_for_coach: 'One-capsule homocysteine formula (active methylfolate + methyl-B12
+  + P5P + R5P + TMG). Replaces standalone methylfolate + P5P + riboflavin + TMG. Maps
+  to VitaOne ''Homocysteine Defence B Complex''. Prefer for elevated-homocysteine
+  / methylation-block clients.'
+notes_for_client: An all-in-one capsule for supporting healthy homocysteine levels
+  — it combines the active forms of folate, B12, B6 and B2 with TMG in a single pill,
+  so you take one capsule instead of four.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Foundational Support
+  quote: Choline, Betaine (TMG) for homocysteine metabolism
+- id: coach-shivani
+  location: Coach Observation
+  quote: for elevated-homocysteine clients, prefer a single homocysteine B-complex
+    (active folate + methyl-B12 + P5P + riboflavin + TMG) over four separate pills
+version: 1
+status: active
+updated_at: '2026-07-05'
+updated_by: shivani
