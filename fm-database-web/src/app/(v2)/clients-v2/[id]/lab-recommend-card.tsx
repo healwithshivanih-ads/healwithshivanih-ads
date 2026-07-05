@@ -14,6 +14,9 @@ import { FmPanel } from "@/components/fm";
 import type { LabMenu } from "@/lib/server-actions/lab-orders";
 import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
 import { checkCoverage } from "@/lib/fmdb/lab-coverage";
+import { getLabOrderInvoiceAction } from "@/lib/server-actions/invoices";
+import type { Invoice } from "@/lib/fmdb/invoices";
+import { InvoiceReceipt } from "@/components/invoice-receipt";
 
 const SLOT_LABEL: Record<LogisticsSlot, string> = {
   morning: "Morning (7–10 am)",
@@ -65,6 +68,21 @@ export function LabRecommendCard({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [okFlash, setOkFlash] = useState(false);
+  const [invoice, setInvoice] = useState<Invoice | null>(null);
+  const [invoiceBusy, setInvoiceBusy] = useState<string | null>(null); // order_id being fetched
+  const [invoiceError, setInvoiceError] = useState("");
+
+  const viewInvoice = async (orderId: string) => {
+    setInvoiceBusy(orderId);
+    setInvoiceError("");
+    const res = await getLabOrderInvoiceAction(clientId, orderId);
+    setInvoiceBusy(null);
+    if (!res.ok) {
+      setInvoiceError(res.error);
+      return;
+    }
+    setInvoice(res.invoice);
+  };
 
   const refresh = async () => {
     const { loadClientLabOrdersAction } = await import("@/lib/server-actions/lab-orders");
@@ -199,6 +217,7 @@ export function LabRecommendCard({
   }
 
   return (
+    <>
     <FmPanel title="🔬 Recommend labs" subtitle="Approve the panel + tests; the client pays in-app">
       {!menu ? (
         <div style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)" }}>Loading catalogue…</div>
@@ -398,6 +417,7 @@ export function LabRecommendCard({
                 const meta = STATUS_META[o.status] ?? { label: o.status, color: "#8a8378" };
                 const profileName = o.lines[0]?.label ?? "Add-ons";
                 const cancellable = o.status === "recommended"; // paid orders need a refund flow, not a silent void
+                const hasReceipt = o.status !== "recommended" && o.status !== "cancelled";
                 return (
                   <div key={o.order_id} style={{ display: "grid", gap: 5 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5 }}>
@@ -424,6 +444,17 @@ export function LabRecommendCard({
                           onClick={() => cancel(o.order_id)}
                         >
                           Cancel
+                        </button>
+                      )}
+                      {hasReceipt && (
+                        <button
+                          type="button"
+                          className="fm-btn"
+                          style={{ fontSize: 11, padding: "2px 7px" }}
+                          disabled={invoiceBusy === o.order_id}
+                          onClick={() => viewInvoice(o.order_id)}
+                        >
+                          {invoiceBusy === o.order_id ? "Loading…" : "📄 Invoice"}
                         </button>
                       )}
                     </div>
@@ -458,9 +489,40 @@ export function LabRecommendCard({
               })}
             </div>
           )}
+          {invoiceError && <div style={{ fontSize: 12, color: "#b3402a" }}>{invoiceError}</div>}
         </div>
       )}
     </FmPanel>
+    {invoice && (
+      <div
+        className="inv-no-print"
+        style={{
+          position: "fixed",
+          inset: 0,
+          background: "rgba(0,0,0,0.45)",
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "center",
+          padding: "5vh 16px",
+          zIndex: 1000,
+          overflowY: "auto",
+        }}
+        onClick={() => setInvoice(null)}
+      >
+        <div style={{ maxWidth: 560, width: "100%" }} onClick={(e) => e.stopPropagation()}>
+          <button
+            type="button"
+            className="fm-btn inv-no-print"
+            style={{ marginBottom: 8, background: "#fff" }}
+            onClick={() => setInvoice(null)}
+          >
+            ✕ Close
+          </button>
+          <InvoiceReceipt invoice={invoice} />
+        </div>
+      </div>
+    )}
+    </>
   );
 }
 

@@ -11,6 +11,8 @@
 import { useState, type CSSProperties } from "react";
 import { useOchre } from "./ochre-context";
 import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
+import type { Invoice } from "@/lib/fmdb/invoices";
+import { InvoiceReceipt } from "@/components/invoice-receipt";
 
 declare global {
   interface Window {
@@ -130,6 +132,24 @@ export function LabOrdersCard() {
   // Which order's collection form is open, + the form values.
   const [bookingId, setBookingId] = useState<string | null>(null);
   const [form, setForm] = useState<LogisticsForm>(EMPTY_FORM);
+  const [invoice, setInvoice] = useState<Invoice | null>(null);
+  const [invoiceBusy, setInvoiceBusy] = useState<string | null>(null);
+
+  const viewInvoice = async (order: LabOrder) => {
+    setInvoiceBusy(order.order_id);
+    setError("");
+    try {
+      const params = new URLSearchParams({ token: data.token, clientId: data.clientId });
+      const res = await fetch(`/api/invoice/lab-order/${order.order_id}?${params}`);
+      const j = (await res.json()) as { ok: boolean; invoice?: Invoice; error?: string };
+      if (!j.ok || !j.invoice) throw new Error(j.error || "couldn't load your receipt");
+      setInvoice(j.invoice);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "couldn't load your receipt");
+    } finally {
+      setInvoiceBusy(null);
+    }
+  };
 
   const recommended = orders.filter((o) => o.status === "recommended");
   const inFlight = orders.filter((o) => o.status !== "recommended" && o.status !== "cancelled");
@@ -288,9 +308,45 @@ export function LabOrdersCard() {
             <span>{o.lines[0]?.label ?? "Lab order"}{o.addon_slugs.length ? ` +${o.addon_slugs.length}` : ""}</span>
             <strong>{inr(o.amount_inr)}</strong>
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--forest, #2d5a3d)", marginTop: 3 }}>{STATUS_LABEL[o.status]}</div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3 }}>
+            <div style={{ fontSize: 11.5, color: "var(--forest, #2d5a3d)" }}>{STATUS_LABEL[o.status]}</div>
+            <button
+              onClick={() => viewInvoice(o)}
+              disabled={invoiceBusy === o.order_id}
+              style={{ background: "transparent", border: "none", color: "var(--muted, #6f6a5d)", fontSize: 11.5, textDecoration: "underline", cursor: "pointer", padding: 0 }}
+            >
+              {invoiceBusy === o.order_id ? "Loading…" : "📄 Receipt"}
+            </button>
+          </div>
         </div>
       ))}
+
+      {invoice && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.45)",
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "center",
+            padding: "5vh 16px",
+            zIndex: 1000,
+            overflowY: "auto",
+          }}
+          onClick={() => setInvoice(null)}
+        >
+          <div style={{ maxWidth: 480, width: "100%" }} onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setInvoice(null)}
+              style={{ marginBottom: 8, background: "#fff", border: "1px solid var(--line, #e6e1d6)", borderRadius: 6, padding: "6px 12px", fontSize: 12.5, cursor: "pointer" }}
+            >
+              ✕ Close
+            </button>
+            <InvoiceReceipt invoice={invoice} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

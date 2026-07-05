@@ -19,6 +19,7 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 import { findOrderByRazorpayOrderId, loadOrder, transitionOrder, type LabOrder } from "@/lib/fmdb/lab-orders";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
 import { buildPaymentEvent, clientJoinKeyFor, emitRevenueEvent } from "@/lib/fmdb/revenue-export";
+import { getOrCreateLabOrderInvoice } from "@/lib/fmdb/invoices";
 
 /** Profile id → the label for its hormone/extra test block (v3 message). */
 const HORMONE_HEADER: Record<number, string> = {
@@ -265,6 +266,15 @@ export async function POST(req: Request) {
   // Booking is paid — ping the lab partner so they can arrange collection.
   // Best-effort + awaited (so failures log); never blocks the 200 to Razorpay.
   if (res.ok) await notifyLabPartner(order);
+  // Receipt — best-effort, never blocks the webhook response. Idempotent (a
+  // re-delivered webhook just re-fetches the same invoice number).
+  if (res.ok) {
+    try {
+      await getOrCreateLabOrderInvoice(clientId, orderId);
+    } catch (e) {
+      console.error("[lab-order/webhook] invoice generation failed:", (e as Error).message);
+    }
+  }
   // Revenue export (Loop 1) — best-effort; emitRevenueEvent never throws.
   if (res.ok) {
     await emitRevenueEvent(

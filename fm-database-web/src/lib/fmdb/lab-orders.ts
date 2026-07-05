@@ -148,6 +148,11 @@ export interface LabOrder {
   results_snapshot_date: string | null;
   fasting_required: boolean;
   notes: string | null;
+  /** Stamped once a receipt is generated (webhook auto-fire, or coach/client
+   *  "view invoice" — both go through the same idempotent invoices.ts helper).
+   *  Absent until then. See fm-database-web/src/lib/fmdb/invoices.ts. */
+  invoice_number?: string;
+  invoice_generated_at?: string;
 }
 
 /** Each coach-set add-on line for a recommendation: slug + the client price. */

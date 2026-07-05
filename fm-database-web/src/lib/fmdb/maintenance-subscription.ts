@@ -47,6 +47,25 @@ export interface MaintenanceSubscription {
   last_payment_id?: string;
   created_at: string;
   updated_at: string;
+  /** Append-only log of every `subscription.charged` event, oldest first. Needed
+   *  because the rest of this record is mutated in place each cycle (only the
+   *  LATEST paid_through/last_payment_id survive on the top-level fields) — so
+   *  without this, a past quarter's payment id/amount/date would be unrecoverable
+   *  once the next charge lands, and it couldn't be invoiced individually. The
+   *  webhook appends a new entry on every real charge (never overwrites a past
+   *  one); invoices.ts stamps invoice_number/invoice_generated_at onto the
+   *  matching entry in place (idempotent — one invoice per payment_id). */
+  charge_history?: MaintenanceChargeRecord[];
+}
+
+/** One real `subscription.charged` event. See `charge_history` above. */
+export interface MaintenanceChargeRecord {
+  payment_id: string;
+  amount_inr: number;
+  charged_at: string; // ISO
+  paid_through: string; // YYYY-MM-DD — the cycle this charge extended coverage to
+  invoice_number?: string;
+  invoice_generated_at?: string;
 }
 
 /** Razorpay current_end is epoch SECONDS — convert to a UTC YYYY-MM-DD. Pure. */
