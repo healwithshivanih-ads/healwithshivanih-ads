@@ -3132,6 +3132,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [planBrief, setPlanBrief] = useState<PlanBrief>({});
   const [error, setError] = useState<string | null>(null);
   const [preflightBlocked, setPreflightBlocked] = useState(false);
+  const [needsSignupConfirmation, setNeedsSignupConfirmation] = useState(false);
   const [pending, startTransition] = useTransition();
   const [draftPending, startDraft] = useTransition();
   const [uploadPending, startUpload] = useTransition();
@@ -3605,9 +3606,10 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     });
   };
 
-  const onGenerateDraft = () => {
+  const onGenerateDraft = (opts?: { force?: boolean }) => {
     if (!result?.session_id || !clientId) return;
     setError(null);
+    setNeedsSignupConfirmation(false);
     startDraft(async () => {
       try {
         const res = await generateDraftAction({
@@ -3617,10 +3619,12 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           plan_brief: Object.keys(planBrief).some((k) => !!(planBrief as Record<string, unknown>)[k])
             ? planBrief
             : undefined,
+          force: opts?.force,
         });
         if (!res.ok) {
           const msg = res.error || "Draft generation failed";
           setError(msg);
+          setNeedsSignupConfirmation(!!res.needs_confirmation);
           toast.error(msg);
         } else if (res.slug) {
           toast.success(`Draft plan created at ${res.slug}`);
@@ -3847,7 +3851,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
       <Card>
         <CardContent className="pt-6 space-y-2">
           <Button
-            onClick={onGenerateDraft}
+            onClick={() => onGenerateDraft()}
             disabled={draftPending}
             className="w-full"
           >
@@ -3870,6 +3874,20 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
             <p className="text-xs text-center text-indigo-700">
               Template <strong>{PROTOCOL_TEMPLATES.find(t => t.id === planBrief.protocol_template_id)?.display_name}</strong> will be merged into the draft
             </p>
+          )}
+          {needsSignupConfirmation && (
+            <div className="text-sm bg-amber-50 border border-amber-200 rounded p-2 space-y-2">
+              <p className="text-amber-800">{error}</p>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onGenerateDraft({ force: true })}
+                disabled={draftPending}
+                className="w-full bg-white"
+              >
+                Generate the full plan anyway
+              </Button>
+            </div>
           )}
         </CardContent>
       </Card>

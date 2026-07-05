@@ -287,6 +287,12 @@ export interface GenerateDraftInput {
   picks: Record<string, boolean>;
   /** Optional coach brief — applied on top of AI suggestions */
   plan_brief?: PlanBrief;
+  /**
+   * Bypasses the engagement-status guardrail (see generateDraftAction) —
+   * set when the coach has already seen the "not signed up yet" warning
+   * and explicitly chosen to build the full plan anyway.
+   */
+  force?: boolean;
 }
 
 export interface GenerateDraftResult {
@@ -294,6 +300,15 @@ export interface GenerateDraftResult {
   slug?: string;
   path?: string;
   error?: string | null;
+  /**
+   * true when refused because the client's engagement_status isn't
+   * "signed_up" and `force` wasn't set — no plan was generated. The UI
+   * should show `error` alongside a "Generate anyway" action that retries
+   * with `force: true`.
+   */
+  needs_confirmation?: boolean;
+  /** The client's actual engagement_status at refusal time, for display. */
+  engagement_status?: string;
 }
 
 // ---------------------------------------------------------------------------

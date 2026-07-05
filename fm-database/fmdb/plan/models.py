@@ -297,13 +297,21 @@ class Client(BaseModel):
     - `display_name` is optional and intended for a coach's eyes only —
       can be a pseudonym.
     """
-    # `extra="ignore"` — historically this was forbid, but every new
-    # surface that wrote into client.yaml (uploadReportAction's
-    # external_reports list, intake form's evolving sections, etc.)
-    # tripped the validator and crashed assess loads. ignore lets us
-    # ship features without race-coupling the model. The validator
-    # warns on truly-unknown fields elsewhere.
-    model_config = ConfigDict(extra="ignore")
+    # `extra="allow"` (was "ignore" until 2026-07-05) — historically this was
+    # "forbid", but every new surface that wrote into client.yaml
+    # (uploadReportAction's external_reports list, intake form's evolving
+    # sections, etc.) tripped the validator and crashed assess loads. "ignore"
+    # let us ship features without race-coupling the model, but it silently
+    # DROPS any field the model doesn't declare on every write-back — this is
+    # how `engagement_status` (a TS-only field, never declared here, set by
+    # the Engagement picker / createClient / discovery-tier resolver) vanished
+    # from a real client's record the moment generate-draft.py or
+    # generate-intake-insights.py did a load_client -> write_client round-trip.
+    # "allow" keeps unknown fields as extras and re-emits them on
+    # model_dump(), so a Python-side write that only touches one field (e.g.
+    # ayurveda_assessment) no longer erases every TS-only field it doesn't
+    # know about. The validator still warns on truly-unknown fields elsewhere.
+    model_config = ConfigDict(extra="allow")
 
     client_id: str
     display_name: str = ""              # for coach's reference; can be pseudonym
