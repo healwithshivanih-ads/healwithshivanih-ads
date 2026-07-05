@@ -71,11 +71,19 @@ interface Point {
   title: string;
   note: string;
 }
+interface SupplementPick {
+  supplementSlug: string;
+  name: string;
+  dose: string;
+  timing: string;
+  why: string;
+}
 interface SummaryDraft {
   headline: string;
   hypotheses: Point[];
   foundationalChanges: Point[];
   journeyPreview: string[];
+  includedSupplements: SupplementPick[];
 }
 
 // Stable client-only row ids so editable lists don't key on array index (which
@@ -87,10 +95,17 @@ interface JourneyRow {
   id: string;
   value: string;
 }
+interface SupplementRow extends SupplementPick {
+  id: string;
+}
 let _rowSeq = 0;
 const rid = () => `row-${_rowSeq++}`;
 const toPointRows = (pts: Point[]): PointRow[] => pts.map((p) => ({ id: rid(), title: p.title, note: p.note }));
 const toJourneyRows = (xs: string[]): JourneyRow[] => xs.map((v) => ({ id: rid(), value: v }));
+const toSupplementRows = (xs: SupplementPick[]): SupplementRow[] =>
+  xs.map((s) => ({ id: rid(), ...s }));
+
+const MAX_INCLUDED_SUPPLEMENTS = 2;
 
 interface Props {
   clientId: string;
@@ -231,6 +246,58 @@ function PointListEditor({
   );
 }
 
+/** Optional, coach-decided 0–2 supplement picks — the ONE deliberate exception
+ *  to the consult's "no protocol" rule. Off by default; the coach opts in
+ *  per-client when a finding is significant enough to name explicitly (e.g. a
+ *  clear deficiency). Hard-capped at 2 so this never drifts into a de-facto
+ *  free protocol — the "+ Add" button disables once the cap is hit. */
+function SupplementPickEditor({
+  rows,
+  onChange,
+}: {
+  rows: SupplementRow[];
+  onChange: (next: SupplementRow[]) => void;
+}) {
+  const set = (id: string, patch: Partial<SupplementPick>) =>
+    onChange(rows.map((r) => (r.id === id ? { ...r, ...patch } : r)));
+  return (
+    <div style={{ display: "grid", gap: 7 }}>
+      <div style={SECTION_LABEL}>Supplements to include (optional, 0–{MAX_INCLUDED_SUPPLEMENTS})</div>
+      <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary, #6f6a5d)" }}>
+        Everything else on this map stays protocol-free — use this only when a finding is
+        significant enough to name a specific supplement. Keep dose/timing simple; this is a
+        starting nudge, not a titrated protocol.
+      </div>
+      {rows.map((s) => (
+        <div key={s.id} style={{ display: "grid", gap: 5, padding: "8px 9px", border: "1px solid var(--fm-border-light, #e6e1d6)", borderRadius: 8 }}>
+          <input style={FIELD} placeholder="Name (e.g. Iron bisglycinate)" value={s.name} onChange={(e) => set(s.id, { name: e.target.value })} />
+          <div style={{ display: "flex", gap: 6 }}>
+            <input style={{ ...FIELD, flex: 1 }} placeholder="Dose (e.g. 18-36 mg)" value={s.dose} onChange={(e) => set(s.id, { dose: e.target.value })} />
+            <input style={{ ...FIELD, flex: 1 }} placeholder="Timing (e.g. morning, empty stomach)" value={s.timing} onChange={(e) => set(s.id, { timing: e.target.value })} />
+          </div>
+          <textarea style={{ ...FIELD, minHeight: 36, resize: "vertical" }} placeholder="Why, in one plain-language line" value={s.why} onChange={(e) => set(s.id, { why: e.target.value })} />
+          <button
+            type="button"
+            onClick={() => onChange(rows.filter((r) => r.id !== s.id))}
+            style={{ justifySelf: "end", background: "transparent", border: "none", color: "var(--fm-muted, #6f6a5d)", fontSize: 12, cursor: "pointer" }}
+          >
+            Remove
+          </button>
+        </div>
+      ))}
+      <button
+        type="button"
+        className="fm-btn"
+        style={{ justifySelf: "start", fontSize: 12, padding: "4px 9px" }}
+        disabled={rows.length >= MAX_INCLUDED_SUPPLEMENTS}
+        onClick={() => onChange([...rows, { id: rid(), supplementSlug: "", name: "", dose: "", timing: "", why: "" }])}
+      >
+        {rows.length >= MAX_INCLUDED_SUPPLEMENTS ? `Max ${MAX_INCLUDED_SUPPLEMENTS} reached` : "+ Add"}
+      </button>
+    </div>
+  );
+}
+
 function StartingMapEditor({
   clientId,
   stage,
@@ -247,6 +314,7 @@ function StartingMapEditor({
   const [hyp, setHyp] = useState<PointRow[]>(() => toPointRows(initial.hypotheses));
   const [found, setFound] = useState<PointRow[]>(() => toPointRows(initial.foundationalChanges));
   const [journey, setJourney] = useState<JourneyRow[]>(() => toJourneyRows(initial.journeyPreview));
+  const [supps, setSupps] = useState<SupplementRow[]>(() => toSupplementRows(initial.includedSupplements));
   const [saving, setSaving] = useState(false);
   const [revealing, setRevealing] = useState(false);
   const [savedFlash, setSavedFlash] = useState(false);
@@ -257,6 +325,13 @@ function StartingMapEditor({
     hypotheses: hyp.map(({ title, note }) => ({ title, note })),
     foundationalChanges: found.map(({ title, note }) => ({ title, note })),
     journeyPreview: journey.map((j) => j.value),
+    includedSupplements: supps.map(({ supplementSlug, name, dose, timing, why }) => ({
+      supplementSlug,
+      name,
+      dose,
+      timing,
+      why,
+    })),
   });
 
   const save = async () => {
@@ -326,6 +401,8 @@ function StartingMapEditor({
           rows={found}
           onChange={setFound}
         />
+
+        <SupplementPickEditor rows={supps} onChange={setSupps} />
 
         <div style={{ display: "grid", gap: 6 }}>
           <div style={SECTION_LABEL}>Your full journey would add</div>

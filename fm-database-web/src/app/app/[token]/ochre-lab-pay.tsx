@@ -6,13 +6,27 @@
  * (in-app Razorpay Checkout); paid/booked/results show their status. "Paid" is
  * confirmed by the server webhook, not here — after Checkout we just show
  * "confirming". See docs/LAB_BOOKING_SPEC.md.
+ *
+ * Also carries the "ask for a reorder" self-service prompt (`showReorderCta`,
+ * default true) — a client whose orders are all done/results-in otherwise has
+ * NO way to request more labs later except going around the app. This is a
+ * request/contact trigger, same commercial-channel pattern as the discovery
+ * UpgradeCta — it opens a prefilled WhatsApp to the coach, it does NOT let the
+ * client self-checkout an arbitrary new order (the coach still recommends,
+ * same as today). Suppressed during pre-call onboarding (the `book_labs`
+ * stage in ochre-discovery.tsx) — asking to "reorder" before the first order
+ * even exists reads wrong.
  */
 
 import { useState, type CSSProperties } from "react";
-import { useOchre } from "./ochre-context";
+import { useOchre, Icon } from "./ochre-context";
 import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
 import type { Invoice } from "@/lib/fmdb/invoices";
 import { InvoiceReceipt } from "@/components/invoice-receipt";
+
+function waHref(number: string, text: string): string {
+  return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+}
 
 declare global {
   interface Window {
@@ -123,7 +137,36 @@ function PriceBlock({ listInr, amountInr }: { listInr?: number | null; amountInr
   );
 }
 
-export function LabOrdersCard() {
+/** Self-service "ask for a reorder" prompt — always available, not tied to any
+ *  order's status. Copy adapts to whether the client has ordered before. */
+function ReorderLabsCta({ hasOrderedBefore }: { hasOrderedBefore: boolean }) {
+  const { coach } = useOchre();
+  return (
+    <div className="card" style={{ padding: "13px 15px", marginTop: 10 }}>
+      <div style={{ fontSize: 13, color: "var(--ink, #2c2a24)", lineHeight: 1.5 }}>
+        {hasOrderedBefore
+          ? "Want to retest something, or add a lab down the line? Just ask — we'll set it up whenever you're ready."
+          : "Want to talk about getting some labs done? We'll recommend what fits, whenever you're ready."}
+      </div>
+      <a
+        className="wa-btn"
+        style={{ width: "auto", padding: "9px 16px", marginTop: 10, display: "inline-flex" }}
+        href={waHref(
+          coach.whatsappNumber,
+          hasOrderedBefore
+            ? "Hi, I'd like to talk about getting some labs retested or added on."
+            : "Hi, I'd like to talk about getting some labs done.",
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="whatsapp" size={16} /> Ask about labs
+      </a>
+    </div>
+  );
+}
+
+export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: boolean } = {}) {
   const data = useOchre();
   const orders: LabOrder[] = data.labOrders ?? [];
   const [busy, setBusy] = useState<string | null>(null);
@@ -153,7 +196,10 @@ export function LabOrdersCard() {
 
   const recommended = orders.filter((o) => o.status === "recommended");
   const inFlight = orders.filter((o) => o.status !== "recommended" && o.status !== "cancelled");
-  if (recommended.length === 0 && inFlight.length === 0) return null;
+  const hasAny = recommended.length > 0 || inFlight.length > 0;
+  // Never fully disappears when showReorderCta is on — a client with no active
+  // order still needs the self-service "ask about labs" prompt below.
+  if (!hasAny && !showReorderCta) return null;
 
   // Prefill name/phone + saved collection address from the account, then open the
   // collection form. The address comes from a prior order (saved to the record),
@@ -215,9 +261,11 @@ export function LabOrdersCard() {
 
   return (
     <section className="section" style={{ marginBottom: 4 }}>
-      <div className="section-head">
-        <h2>Your lab tests</h2>
-      </div>
+      {hasAny && (
+        <div className="section-head">
+          <h2>Your lab tests</h2>
+        </div>
+      )}
 
       {recommended.map((o) => (
         <div className="card" key={o.order_id} style={{ padding: "14px 15px", marginBottom: 10 }}>
@@ -347,6 +395,7 @@ export function LabOrdersCard() {
           </div>
         </div>
       )}
+      {showReorderCta && recommended.length === 0 && <ReorderLabsCta hasOrderedBefore={hasAny} />}
     </section>
   );
 }

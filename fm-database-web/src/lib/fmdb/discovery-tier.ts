@@ -111,6 +111,24 @@ export interface DiscoverySummaryPoint {
   title: string;
   note: string;
 }
+/** One coach-decided supplement named in the Starting Map — the deliberate,
+ *  per-client exception to "no protocol." Capped at 2 (enforced in the
+ *  authoring UI + save action, not the type). Default is zero: only used when
+ *  the coach judges a finding significant enough to name explicitly. */
+export interface DiscoverySummaryIncludedSupplement {
+  supplementSlug: string;
+  name: string;
+  dose: string;
+  timing: string;
+  why: string;
+  /** Resolved from the coach-curated supplement_links.yaml catalogue (retailer
+   *  priority: vitaone > fmnutrition > amazon > iherb), same resolver the full
+   *  package's supplement schedule uses. Undefined when no real catalogue
+   *  match exists — the generic "browse the shop" search fallback is dropped
+   *  here too (a card with no link is better than a misleading one). */
+  buyUrl?: string;
+  buySource?: string;
+}
 export interface DiscoverySummary {
   /** Warm one-liner; falls back to a default greeting when empty. */
   headline: string;
@@ -120,6 +138,9 @@ export interface DiscoverySummary {
   foundationalChanges: DiscoverySummaryPoint[];
   /** The honest "what your full journey would add" list — the upsell bridge. */
   journeyPreview: string[];
+  /** 0–2 coach-picked supplements, named explicitly. Everything else in this
+   *  summary stays protocol-free; this is the one deliberate exception. */
+  includedSupplements: DiscoverySummaryIncludedSupplement[];
 }
 
 /** Add n days to a YYYY-MM-DD string in UTC, returning YYYY-MM-DD. */

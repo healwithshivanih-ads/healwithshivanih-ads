@@ -175,11 +175,24 @@ export default async function DiscoveryPage({
           return { title: typeof o.title === "string" ? o.title : "", note: typeof o.note === "string" ? o.note : "" };
         })
       : [];
+  const includedSupplements = Array.isArray(rawSummary.included_supplements)
+    ? rawSummary.included_supplements.map((it) => {
+        const o = (it ?? {}) as Record<string, unknown>;
+        return {
+          supplementSlug: typeof o.supplement_slug === "string" ? o.supplement_slug : "",
+          name: typeof o.name === "string" ? o.name : "",
+          dose: typeof o.dose === "string" ? o.dose : "",
+          timing: typeof o.timing === "string" ? o.timing : "",
+          why: typeof o.why === "string" ? o.why : "",
+        };
+      })
+    : [];
   const existingSummary = {
     headline: typeof rawSummary.headline === "string" ? rawSummary.headline : "",
     hypotheses: points(rawSummary.hypotheses),
     foundationalChanges: points(rawSummary.foundational_changes),
     journeyPreview: Array.isArray(rawSummary.journey_preview) ? rawSummary.journey_preview.map(String) : [],
+    includedSupplements,
   };
 
   return (
