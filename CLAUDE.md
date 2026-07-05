@@ -882,7 +882,7 @@ Covers PRs #33–#37 (merged to main) + current branch work:
   - Used by `render-client-letter.py` to tailor meal plan (Jain → no root veg, vegetarian/non-vegetarian recipes, regional produce, seasonal foods for that city).
 
 - **🔗 VitaOne affiliate links** — complete 158-keyword catalog across all 4 pages of vitaone.in/shop verified and corrected:
-  - Referral code: `?pr=vita13720sh` on every VitaOne URL via `_v()` helper.
+  - Referral code: `?ref=vita13720sh` on every VitaOne URL via `_v()` helper.
   - Priority chain: custom links → VitaOne catalog → Amazon fallback → iHerb fallback → no link.
   - Fixed wrong slugs: NAC (`-17` not `-21`), MCT Oil (`3z-inby-uz48-mct-oil-8`), Betaine HCL (`-116` not `-32`).
   - Slippery elm intentionally NOT mapped to VitaOne — coach uses custom link or iHerb.
@@ -1582,7 +1582,7 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   Slugs: <first_name>-plan-N-YYYY-MM-DD-<client_id>
     render-client-letter.py       # 12-week client letter generator (the big one):
                                   #   - VITAONE_CATALOG: 158-keyword dict → (name, url)
-                                  #     pairs with ?pr=vita13720sh referral appended
+                                  #     pairs with ?ref=vita13720sh referral appended
                                   #   - _v(slug, name) builds VitaOne URL tuples
                                   #   - _vitaone_link() / _vitaone_url_only(): lookup
                                   #     by supplement name (lowercase, longest match)
@@ -1992,7 +1992,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ **💌 12-week client letter generator** — `ClientLetterButton` on client detail page. Weight loss questionnaire (goal kg/weeks, activity, pace, exercise detail). `_calc_calorie_targets()` computes TDEE + phase targets. `render-client-letter.py` generates warm 12-week healing journey letter with two 7-day meal plan tables for weeks 1-2. Supplement section injected by Python post-generation. Saves to disk. Refinement chat (multi-turn). Download branded HTML / Markdown.
 - ✅ **🗓 Per-week print buttons** — `brand_html.py` wraps AI-generated markdown in `<div id="print-week-N" class="week-section">` divs. Per-week print bar shows "🖨 Print Week N". JS sets `body[data-print-week="N"]`, CSS isolates that week, `window.print()`. No server round-trip. Works in browser.
 - ✅ **💊 Python-generated supplement schedule** — visual bubble timeline + table. 7 timing slots. `_build_supplement_schedule_html()`. "🖨 Print Schedule" button isolates `#supplement-schedule`. Buy links hidden on print.
-- ✅ **🔗 VitaOne affiliate links** — 158-keyword catalog, `?pr=vita13720sh` on all URLs. Priority chain: custom → VitaOne → Amazon → iHerb → none.
+- ✅ **🔗 VitaOne affiliate links** — 158-keyword catalog, `?ref=vita13720sh` on all URLs. Priority chain: custom → VitaOne → Amazon → iHerb → none.
 - ✅ **🥗 Client dietary preferences** — `PreferencesEditor` card (dietary_preference, location, non-negotiables). Used by meal plan generator.
 - ✅ **🔗 Supplement Links tab** in `/backlog` — CRUD for `~/fm-plans/supplement_links.yaml`
 - ✅ **📚 Dashboard git commit button** — amber banner, counts by entity type, optional commit message

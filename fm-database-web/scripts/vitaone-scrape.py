@@ -57,7 +57,7 @@ except ImportError:
     sys.exit(1)
 
 BASE = "https://vitaone.in"
-REFERRAL_CODE = "?pr=vita13720sh"
+REFERRAL_CODE = "?ref=vita13720sh"
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/127 Safari/537.36"
