@@ -176,9 +176,14 @@ export default async function CalendarPage({
     if (status !== "published") continue;
     const clientId = (p as { client_id?: string }).client_id;
     if (!clientId) continue;
-    const recheck = effectiveRecheckDate(p as Parameters<typeof effectiveRecheckDate>[0]);
-    if (!recheck) continue;
     const client = clients.find((c) => c.client_id === clientId);
+    // Travel/illness pause + weight-loss buffer shift the recheck out.
+    const wl = (client as { weight_loss?: { enabled?: boolean; week_overrides?: unknown[] } } | undefined)?.weight_loss;
+    const recheck = effectiveRecheckDate(
+      p as Parameters<typeof effectiveRecheckDate>[0],
+      { overrides: wl?.week_overrides as never, weightLossEnabled: wl?.enabled === true },
+    );
+    if (!recheck) continue;
     events.push({
       date: recheck,
       kind: "recheck_due",

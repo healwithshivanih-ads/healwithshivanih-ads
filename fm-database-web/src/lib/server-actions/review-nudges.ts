@@ -107,7 +107,13 @@ export async function listReviewNudgesAction(): Promise<ReviewNudgeFlag[]> {
     // ── review: effective recheck inside the REVIEW window ────────────────────
     const plan = planByClient.get(clientId);
     if (!plan) continue;
-    const recheck = effectiveRecheckDate(plan as never);
+    // Travel/illness pause + weight-loss buffer — don't nudge a review ~2 weeks
+    // early for a client who was travelling.
+    const wl = (c as { weight_loss?: { enabled?: boolean; week_overrides?: unknown[] } }).weight_loss;
+    const recheck = effectiveRecheckDate(plan as never, {
+      overrides: wl?.week_overrides as never,
+      weightLossEnabled: wl?.enabled === true,
+    });
     if (!recheck) continue;
     const reviewStart = addDaysYmd(recheck, -REVIEW_LEAD_DAYS);
     const reviewEnd = addDaysYmd(recheck, REVIEW_GRACE_DAYS);

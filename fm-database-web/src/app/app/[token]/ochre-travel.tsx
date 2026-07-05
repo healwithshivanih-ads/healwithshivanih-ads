@@ -132,6 +132,23 @@ export function TravelCard() {
           )}
         </div>
       </div>
+      {t.holdNotLose && t.kind !== "illness" && (
+        <div
+          style={{
+            marginTop: 10,
+            padding: "9px 11px",
+            borderRadius: 10,
+            background: "var(--sage-tint, rgba(74,97,82,.08))",
+            fontSize: 12.7,
+            lineHeight: 1.5,
+            color: "var(--ink)",
+          }}
+        >
+          On holiday the goal is to <strong>hold, not lose</strong> — enjoy
+          {t.location ? ` ${t.location}` : " the trip"}, keep to your rhythm
+          where you can, and we&rsquo;ll pick the plan back up when you&rsquo;re home.
+        </div>
+      )}
       {guide ? (
         <>
           <div style={{ display: "flex", alignItems: "baseline", gap: 6, margin: "10px 0 2px", flexWrap: "wrap" }}>

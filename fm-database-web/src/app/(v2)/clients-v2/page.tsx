@@ -221,8 +221,12 @@ export default async function ClientsListV2Page({
         // Effective recheck date accounts for the meal-plan adoption lag
         // (3-day default) and coach-asserted meal_plan_started_on.
         // See lib/fmdb/plan-timing.ts.
-        const recheckDate = effectiveRecheckDate(activeRaw as Parameters<typeof effectiveRecheckDate>[0])
-          ?? (activeRaw.plan_period_recheck_date as string | undefined);
+        // Travel/illness pause + weight-loss buffer shift the recheck out.
+        const wl = (client as { weight_loss?: { enabled?: boolean; week_overrides?: unknown[] } }).weight_loss;
+        const recheckDate = effectiveRecheckDate(
+          activeRaw as Parameters<typeof effectiveRecheckDate>[0],
+          { overrides: wl?.week_overrides as never, weightLossEnabled: wl?.enabled === true },
+        ) ?? (activeRaw.plan_period_recheck_date as string | undefined);
         activePlan = { slug: activeRaw.slug as string, status, recheckDate };
       }
 

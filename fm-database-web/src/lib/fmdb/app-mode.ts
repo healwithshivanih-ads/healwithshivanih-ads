@@ -26,7 +26,7 @@
  * gating branch.
  */
 
-import { effectiveRecheckDate } from "./plan-timing";
+import { effectiveRecheckDate, type RecheckOpts } from "./plan-timing";
 
 export type AppMode = "ACTIVE" | "REVIEW" | "MAINTENANCE" | "GRACE" | "LIBRARY";
 
@@ -55,6 +55,9 @@ export interface AppModeInput {
   maintenance_paid_through?: string | null;
   /** The current published plan (latest, as resolved from the app token). */
   plan?: AppModePlan | null;
+  /** Travel/illness pause + weight-loss buffer, so graduation timing extends
+   *  for travellers instead of flipping to REVIEW ~2 weeks early. */
+  recheckOpts?: RecheckOpts;
 }
 
 export interface AppModeResult {
@@ -134,7 +137,7 @@ export function resolveAppMode(
     return { mode: "LIBRARY", reason: "no plan on file", continued };
   }
 
-  const recheck = effectiveRecheckDate(input.plan);
+  const recheck = effectiveRecheckDate(input.plan, input.recheckOpts);
   if (!recheck) {
     // Published plan but we can't compute the window (missing dates) — stay
     // ACTIVE rather than prematurely show graduation.

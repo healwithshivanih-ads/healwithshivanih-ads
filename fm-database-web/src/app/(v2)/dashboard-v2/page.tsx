@@ -27,7 +27,7 @@ import {
 import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
 import { readAppOpens } from "@/lib/fmdb/app-opens";
 import { readAppInstalled } from "@/lib/fmdb/app-installed";
-import { effectiveRecheckDate, isRecheckOverdue, hasPlanStarted, effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
+import { effectiveRecheckDate, isRecheckOverdue, hasPlanStarted, effectiveMealPlanStart, type TravelOverrideLike } from "@/lib/fmdb/plan-timing";
 import { getCohortMsqOutcomes } from "@/lib/fmdb/msq-cohort";
 import { MsqCohortPanel } from "@/components/msq-cohort-panel";
 import { computePracticeOverview } from "@/lib/fmdb/practice-overview";
@@ -85,6 +85,12 @@ interface ClientRow {
     applied_at?: string;
     dismissed_at?: string;
   } | null;
+  /** Travel/illness pause + weight-loss goal — feeds the recheck extension so
+   *  a travelling client isn't flagged "recheck due" ~2 weeks early. */
+  weight_loss?: {
+    enabled?: boolean;
+    week_overrides?: TravelOverrideLike[];
+  } | null;
 }
 
 interface PlanRow {
@@ -140,16 +146,23 @@ async function computeSignal(
     return { kind: "follow_up_due", daysOverdue };
   }
 
+  // Travel/illness pause + weight-loss buffer — a travelling client's recheck
+  // shifts out (capped 14d), so she isn't flagged "recheck due" ~2 weeks early.
+  const rOpts = {
+    overrides: client.weight_loss?.week_overrides,
+    weightLossEnabled: client.weight_loss?.enabled === true,
+  };
+
   // 2. Published plan past its EFFECTIVE recheck → protocol complete.
   const overduePlan = clientPlans.find((p) => {
     if ((p._bucket ?? p.status) !== "published") return false;
-    return isRecheckOverdue(p, todayStr);
+    return isRecheckOverdue(p, todayStr, rOpts);
   });
   if (overduePlan) {
     return {
       kind: "protocol_complete",
       planSlug: overduePlan.slug,
-      recheckDate: effectiveRecheckDate(overduePlan) ?? overduePlan.plan_period_recheck_date,
+      recheckDate: effectiveRecheckDate(overduePlan, rOpts) ?? overduePlan.plan_period_recheck_date,
     };
   }
 
@@ -179,7 +192,7 @@ async function computeSignal(
       };
     }
     const recheckDate =
-      effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date;
+      effectiveRecheckDate(publishedPlan, rOpts) ?? publishedPlan.plan_period_recheck_date;
 
     // Phase-letter drip retired 2026-06-25 — client letters are no longer
     // sent; a published plan flows straight to the review-cadence check below.

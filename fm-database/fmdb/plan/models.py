@@ -1429,6 +1429,12 @@ class Plan(BaseModel):
     # to be ordered, delivered, then habit-built).
     MEAL_PLAN_DEFAULT_DELAY_DAYS: int = 3
     SUPPLEMENTS_DEFAULT_DELAY_DAYS: int = 7
+    # Travel extension (coach 2026-07-05) — mirrors plan-timing.ts. Genuine
+    # travel/illness pauses the protocol clock instead of moving Day-1: paused
+    # days are added to the recheck (capped) and excluded from the week counter.
+    # Fully derived from client.weight_loss.week_overrides, never persisted.
+    TRAVEL_EXTENSION_CAP_DAYS: int = 14
+    WEIGHT_LOSS_REENTRY_BUFFER_DAYS: int = 6
 
     @field_validator("slug")
     @classmethod
@@ -1456,7 +1462,11 @@ class Plan(BaseModel):
         from datetime import timedelta
         return self.plan_period_start + timedelta(days=self.SUPPLEMENTS_DEFAULT_DELAY_DAYS)
 
-    def effective_recheck_date(self) -> date:
+    def effective_recheck_date(
+        self,
+        overrides: "Optional[list]" = None,
+        weight_loss_enabled: bool = False,
+    ) -> date:
         """Computed recheck date based on EFFECTIVE meal-plan start, not the
         plan-period-start. This is what the dashboard, calendar, and coach
         nudges should use — the 12-week protocol window should give the
@@ -1468,6 +1478,91 @@ class Plan(BaseModel):
         Note: the stored `plan_period_recheck_date` field stays as the
         originally-scheduled date (audit / legacy display); coach-facing
         UI should call this method to get the live one.
+
+        `overrides` is the client's weight_loss.week_overrides list (dicts with
+        date_from/date_to/mode/context); when supplied, genuine travel/illness
+        windows push the recheck out (capped 14d). `weight_loss_enabled` adds a
+        6-day post-travel weigh-in buffer. Both default off → identical to the
+        old start + weeks×7. Mirrors effectiveRecheckDate() in plan-timing.ts.
         """
         from datetime import timedelta
-        return self.effective_meal_plan_start() + timedelta(weeks=self.plan_period_weeks)
+        start = self.effective_meal_plan_start()
+        base = start + timedelta(weeks=self.plan_period_weeks)
+        ext = _travel_extension_days(overrides, start, base, self.TRAVEL_EXTENSION_CAP_DAYS)
+        recheck = base + timedelta(days=ext)
+        if weight_loss_enabled:
+            ret = _latest_travel_return(overrides, start, recheck)
+            if ret is not None:
+                buffered = ret + timedelta(days=self.WEIGHT_LOSS_REENTRY_BUFFER_DAYS)
+                if buffered > recheck:
+                    recheck = buffered
+        return recheck
+
+
+# ── Travel-extension helpers (module-level; mirror plan-timing.ts) ───────────
+# Kept OUT of the pydantic model body: leading-underscore data attrs become
+# ModelPrivateAttr and `cls.CONST` on annotated fields returns FieldInfo, so
+# class-attr helpers broke. Module scope sidesteps pydantic entirely.
+_EXTENDING_CONTEXTS = frozenset({"travel", "illness"})
+_EXTENDING_MODES = frozenset({"maintenance", "skip"})
+
+
+def _parse_override_ymd(v):
+    """Coerce a YAML date_from/date_to (str 'YYYY-MM-DD' or date) → date | None."""
+    if v is None:
+        return None
+    if isinstance(v, date):
+        return v
+    try:
+        return datetime.fromisoformat(str(v)[:10]).date()
+    except Exception:
+        return None
+
+
+def _is_pausing_override(o) -> bool:
+    """True when a week_overrides entry is a genuine travel/illness pause that
+    should extend the plan. deeper_deficit / festival / plateau_break never do."""
+    if not isinstance(o, dict) or o.get("cancelled"):
+        return False
+    if o.get("context") not in _EXTENDING_CONTEXTS:
+        return False
+    return (o.get("mode") or "maintenance") in _EXTENDING_MODES
+
+
+def _travel_extension_days(overrides, win_start: date, win_end: date, cap: int) -> int:
+    """Inclusive paused days from qualifying overrides overlapping
+    [win_start, win_end], capped at `cap`."""
+    if not overrides or win_end < win_start:
+        return 0
+    total = 0
+    for o in overrides:
+        if not _is_pausing_override(o):
+            continue
+        f = _parse_override_ymd(o.get("date_from"))
+        t = _parse_override_ymd(o.get("date_to"))
+        if f is None or t is None or t < f:
+            continue
+        s = max(f, win_start)
+        e = min(t, win_end)
+        if e >= s:
+            total += (e - s).days + 1
+    return min(total, cap)
+
+
+def _latest_travel_return(overrides, win_start: date, win_end: date):
+    """Latest date_to among qualifying overrides overlapping the window, or None."""
+    if not overrides:
+        return None
+    latest = None
+    for o in overrides:
+        if not _is_pausing_override(o):
+            continue
+        f = _parse_override_ymd(o.get("date_from"))
+        t = _parse_override_ymd(o.get("date_to"))
+        if f is None or t is None or t < f:
+            continue
+        if min(t, win_end) < max(f, win_start):
+            continue
+        if latest is None or t > latest:
+            latest = t
+    return latest

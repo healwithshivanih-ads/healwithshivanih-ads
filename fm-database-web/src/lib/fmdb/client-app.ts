@@ -42,7 +42,13 @@ import {
 import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
 import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
-import { effectiveRecheckDate, effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
+import {
+  effectiveRecheckDate,
+  effectiveMealPlanStart,
+  travelExtensionDays,
+  type TravelOverrideLike,
+  type RecheckOpts,
+} from "@/lib/fmdb/plan-timing";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
@@ -880,6 +886,8 @@ function buildEndgame(
   recordThrough: string | null = null,
   /** quarterly auto-debit subscription wiring (env-gated) + whether one is live */
   sub: { available: boolean; inr: number; active: boolean } = { available: false, inr: 6000, active: false },
+  /** travel/illness pause + weight-loss buffer so graduation timing extends. */
+  recheckOpts: RecheckOpts = {},
 ): { mode: AppMode; endgame: EndgameInfo | null } {
   // Effective window = the later of client.yaml + the latest PAID record.
   const fromClient = asYmd(client.maintenance_paid_through) || null;
@@ -891,12 +899,13 @@ function buildEndgame(
       maintenance_status: asStr(client.maintenance_status) || null,
       maintenance_paid_through: paidThrough,
       plan,
+      recheckOpts,
     },
     todayYmd,
   );
   if (res.mode === "ACTIVE") return { mode: "ACTIVE", endgame: null };
 
-  const recheck = plan ? effectiveRecheckDate(plan) : null;
+  const recheck = plan ? effectiveRecheckDate(plan, recheckOpts) : null;
   const graceUntil =
     res.mode === "GRACE" && paidThrough ? addDaysUtcYmd(paidThrough, GRACE_DAYS) : null;
 
@@ -1010,6 +1019,9 @@ export interface ClientAppData {
     location: string;
     context: string;
     active: boolean;
+    /** Weight-loss clients only: reframe the card as "hold, don't lose" (the
+     *  goal on holiday is to maintain) instead of any deficit/scale nudge. */
+    holdNotLose?: boolean;
     /** Curated, plan-gated food guide for the destination/festival/situation
      *  (null when no dataset match — card falls back to generic rules). */
     localFoods?: TravelGuide | null;
@@ -2318,6 +2330,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const clientDir = path.join(getPlansRoot(), "clients", clientId);
   const client = (await readYamlIfExists(path.join(clientDir, "client.yaml"))) ?? {};
 
+  // Travel/illness pause inputs (coach 2026-07-05). week_overrides lives under
+  // weight_loss (the panel is generic — non-weight-loss clients still get travel
+  // rows there). Genuine travel/illness freezes the week counter + extends the
+  // recheck; weight-loss clients also get the post-travel weigh-in buffer.
+  const wlForTravel = client.weight_loss as
+    | { enabled?: boolean; week_overrides?: TravelOverrideLike[] }
+    | undefined;
+  const travelOverrides = wlForTravel?.week_overrides ?? undefined;
+  const weightLossEnabled = wlForTravel?.enabled === true;
+
   // ---- letters: the issued letters ARE the content contract ---------------
   // Base letter = `<slug>.md` (consolidated) or `<slug>-meal_plan.md`.
   // Meals come from the PHASE letter covering the current week when one has
@@ -2442,7 +2464,15 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   let week = 1;
   if (startDate) {
     const days = Math.floor((refUTC.getTime() - startDate.getTime()) / 86_400_000);
-    week = Math.min(Math.max(Math.floor(days / 7) + 1, 1), totalWeeks);
+    // Travel/illness freezes the counter: subtract paused days already elapsed
+    // (start → today, capped 14) so she doesn't tick through her trip — she
+    // resumes at the same week on return. Mirrors the recheck extension.
+    const paused = travelExtensionDays(
+      travelOverrides,
+      startDate.toISOString().slice(0, 10),
+      refUTC.toISOString().slice(0, 10),
+    );
+    week = Math.min(Math.max(Math.floor((days - paused) / 7) + 1, 1), totalWeeks);
   }
 
   // week strip: Sunday-start calendar week around today
@@ -3449,10 +3479,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // Window shown a touch early (from − 2d) so the client sees the travel
   // card while packing; expires silently the day after return.
   let travel: ClientAppData["travel"] = null;
+  const travelTodayYmd = new Date().toISOString().slice(0, 10);
+  const travelSoonYmd = new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10);
   if (latestTravel && !latestTravel.cancelled && latestTravel.from && latestTravel.to) {
-    const todayYmd = new Date().toISOString().slice(0, 10);
-    const soonYmd = new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10);
-    if (latestTravel.from <= soonYmd && todayYmd <= latestTravel.to) {
+    if (latestTravel.from <= travelSoonYmd && travelTodayYmd <= latestTravel.to) {
       const tkind = latestTravel.kind;
       travel = {
         from: latestTravel.from,
@@ -3461,7 +3491,37 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
           tkind === "festival" || tkind === "illness" ? tkind : "travel",
         location: latestTravel.location,
         context: latestTravel.context,
-        active: latestTravel.from <= todayYmd,
+        active: latestTravel.from <= travelTodayYmd,
+        ...(weightLossEnabled ? { holdNotLose: true } : {}),
+      };
+    }
+  }
+  // Fallback: COACH-set travel/illness/festival from weight_loss.week_overrides
+  // (the Communicate travel panel). The client-flagged travel_response above
+  // wins; this ensures a coach-entered trip drives the card too — the gap that
+  // left Dhanishta's app blank during her Australia holiday (2026-07-05).
+  if (!travel && travelOverrides?.length) {
+    const active = travelOverrides
+      .filter((o) => !o.cancelled && o.date_from && o.date_to)
+      .map((o) => ({
+        from: String(o.date_from).slice(0, 10),
+        to: String(o.date_to).slice(0, 10),
+        context: o.context ?? "travel",
+        location: o.location ?? "",
+      }))
+      .filter((o) => o.from <= travelSoonYmd && travelTodayYmd <= o.to)
+      // latest-returning active window wins if several overlap
+      .sort((a, b) => (a.to < b.to ? 1 : a.to > b.to ? -1 : 0))[0];
+    if (active) {
+      const ctx = active.context;
+      travel = {
+        from: active.from,
+        to: active.to,
+        kind: ctx === "festival" || ctx === "illness" ? ctx : "travel",
+        location: active.location,
+        context: ctx,
+        active: active.from <= travelTodayYmd,
+        ...(weightLossEnabled ? { holdNotLose: true } : {}),
       };
     }
   }
@@ -4199,7 +4259,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     available: subAvailable,
     inr: subInr,
     active: subActive,
-  });
+  }, { overrides: travelOverrides, weightLossEnabled });
 
   return {
     clientId,
