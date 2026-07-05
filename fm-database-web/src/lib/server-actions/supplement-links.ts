@@ -19,6 +19,7 @@ import {
   pickLinkEntry,
   type LinkSource,
   type LinksFile,
+  type PickLinkOpts,
   type SupplementLink,
 } from "@/lib/server-actions/supplement-links-match";
 // NB: this is a "use server" module — every export becomes a server action, so
@@ -28,6 +29,10 @@ import {
 // VitaOne's attributing referral param is ?ref= (confirmed live on the product
 // page); ?pr= was the legacy/incorrect param and does not attribute orders.
 const VITAONE_REFERRAL = "?ref=vita13720sh";
+
+// iHerb rewards/referral code — same code the curated *_iherb catalogue
+// entries carry (see ~/fm-plans/US_CLIENT_AFFILIATE_SYSTEM.md).
+const IHERB_REFERRAL = "rcode=WNB6015";
 
 let cache: LinksFile | null = null;
 let cacheAt = 0;
@@ -61,15 +66,27 @@ function vitaoneSearchUrl(name: string): string {
   return `https://www.vitaone.in/shop${VITAONE_REFERRAL}`;
 }
 
+function iherbSearchUrl(name: string): string {
+  // A KEYWORD search on the ingredient — fail-safe by construction (shows
+  // the right ingredient's options, never a wrong bottle) and carries the
+  // referral code. Parentheticals dropped: "Omega-3 (fish oil, EPA+DHA)"
+  // searches better as "Omega-3".
+  const kw = name.replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim() || name;
+  return `https://www.iherb.com/search?kw=${encodeURIComponent(kw)}&${IHERB_REFERRAL}`;
+}
+
 export async function resolveSupplementLink(
   rawName: string,
   catalogueSlug?: string,
+  opts?: PickLinkOpts,
 ): Promise<SupplementLink> {
   const name = (rawName || "").trim();
   const links = await readLinks();
   // All matching logic (deterministic slug binding + hardened name fuzzy) lives
   // in the pure, unit-tested pickLinkEntry — see supplement-links-match.ts.
-  const entry = pickLinkEntry(links, name, catalogueSlug);
+  // For international (non-India) clients the candidate pool is restricted to
+  // internationally-shippable retailers (iHerb) BEFORE scoring.
+  const entry = pickLinkEntry(links, name, catalogueSlug, opts);
 
   if (entry?.url) {
     return {
@@ -86,7 +103,9 @@ export async function resolveSupplementLink(
 
   return {
     display_name: name,
-    url: vitaoneSearchUrl(name),
+    // International fallback = iHerb keyword search (right ingredient, right
+    // referral, ships worldwide). India fallback stays the VitaOne shop.
+    url: opts?.international ? iherbSearchUrl(name) : vitaoneSearchUrl(name),
     source: "search",
   };
 }

@@ -43,6 +43,9 @@ export interface LinksEntry {
   unit_strength?: string;
   /** VitaOne supplement-facts label image URL (added 2026-07-04 catalogue import). */
   facts_image_url?: string;
+  /** Opt-in for an entry whose source isn't in INTERNATIONAL_SOURCES but
+   *  whose retailer ships worldwide (e.g. a brand's own global store). */
+  ships_international?: boolean;
 }
 
 export interface LinksFile {
@@ -65,6 +68,35 @@ export function sourceRank(entry: LinksEntry): number {
   const src =
     entry.source ?? (entry.url?.includes("vitaone") ? "vitaone" : "other");
   return SOURCE_RANK[src] ?? 9;
+}
+
+// Retailers that ship OUTSIDE India. VitaOne / FM Nutrition / the amzn.to
+// short-links are India-only storefronts — a non-India client must never be
+// handed one of those. iHerb ships worldwide and carries the coach's
+// referral code (?rcode=WNB6015).
+export const INTERNATIONAL_SOURCES = new Set(["iherb"]);
+
+export function shipsInternational(entry: LinksEntry): boolean {
+  if (entry.ships_international === true) return true;
+  const src =
+    entry.source ?? (entry.url?.includes("vitaone") ? "vitaone" : "other");
+  return INTERNATIONAL_SOURCES.has(src);
+}
+
+/** A client is "international" when their country is SET and is not India.
+ *  Empty/missing country keeps the default India behaviour (the practice's
+ *  home market) — same rule as US_CLIENT_AFFILIATE_SYSTEM.md. */
+export function isInternationalClient(country: unknown): boolean {
+  const c = String(country ?? "").trim().toLowerCase();
+  if (!c) return false;
+  return c !== "in" && !c.includes("india");
+}
+
+export interface PickLinkOpts {
+  /** Restrict matching to internationally-shippable products (iHerb).
+   *  No international match → undefined (fail-safe: no link is better than
+   *  sending a US client to vitaone.in). */
+  international?: boolean;
 }
 
 /** Canonical comparison form: lowercase, every run of non-alphanumerics → a
@@ -94,10 +126,16 @@ export function pickLinkEntry(
   links: LinksFile,
   rawName: string,
   catalogueSlug?: string,
+  opts?: PickLinkOpts,
 ): LinksEntry | undefined {
   const name = (rawName || "").trim();
   const slug = canonToken(name);
-  const entries = Object.entries(links);
+  // International clients only ever see internationally-shippable products —
+  // the India-only retailers are filtered out BEFORE scoring, so a perfect
+  // vitaone.in match can't outrank (or exist at all for) a US client.
+  const entries = Object.entries(links).filter(
+    ([, v]) => !opts?.international || shipsInternational(v),
+  );
   const cands: { v: LinksEntry; score: number }[] = [];
 
   const catSlug = canonToken(catalogueSlug ?? "");
@@ -108,7 +146,9 @@ export function pickLinkEntry(
     }
   }
 
-  if (slug && links[slug]) cands.push({ v: links[slug], score: 1000 });
+  if (slug && links[slug] && (!opts?.international || shipsInternational(links[slug]))) {
+    cands.push({ v: links[slug], score: 1000 });
+  }
   for (const [, v] of entries) {
     if (slug && (v.aliases ?? []).map(canonToken).includes(slug)) {
       cands.push({ v, score: 900 });
