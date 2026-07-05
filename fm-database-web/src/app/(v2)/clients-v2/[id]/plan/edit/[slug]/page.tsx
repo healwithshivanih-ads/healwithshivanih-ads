@@ -44,6 +44,7 @@ import { AIReadCard } from "./ai-read-card";
 import { InlineStatusBar } from "./inline-status-bar";
 import { PlanStartDatesPanel } from "./plan-start-dates-panel";
 import { StartConfirmLinkButton } from "./start-confirm-link-button";
+import { NotifySupplementChangeButton } from "./notify-supplement-change-button";
 import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { DeletePlanButton } from "@/components/plan-editor/delete-plan-button";
 import { loadSupplementSources } from "@/lib/server-actions/plans";
@@ -366,6 +367,21 @@ export default async function V2PlanEditorPage({
               />
             );
           })()}
+
+          {/* 📦 Notify client of a material supplement change — one button that
+              sets the in-app "Plan updated" banner AND sends the
+              fm_supplement_order_v2 WhatsApp with the supplement-order link.
+              Published plans only (nothing to notify about on a draft). Used
+              after editing the supplement protocol on a live plan. */}
+          {status === "published" && plan.client_id && (
+            <NotifySupplementChangeButton
+              clientId={plan.client_id as string}
+              planSlug={plan.slug}
+              hasPhone={Boolean(
+                (planClient as { mobile_number?: string | null } | undefined)?.mobile_number?.trim(),
+              )}
+            />
+          )}
 
           {/* 🧭 Attached FM protocol(s) — surface PROMINENTLY above the
               editor so the coach can see + edit which healing programs
