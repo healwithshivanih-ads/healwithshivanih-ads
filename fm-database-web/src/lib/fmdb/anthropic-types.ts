@@ -13,6 +13,15 @@ export interface AssessInput {
   complaints: string;
   attachments?: AssessAttachment[];
   dry_run?: boolean;
+  /**
+   * $0 path — skips both preflight guards and the Anthropic call entirely
+   * (no model output means no truncation risk, so the usual symptom+topic
+   * cap doesn't apply). `true` sends an empty scaffold: topics_in_play mirrors
+   * the coach's own `topics` selection, everything else stays empty for her
+   * to fill in via the plan editor. Used by the "Skip AI — draft manually"
+   * button that appears when the dashboard preflight blocks a broad selection.
+   */
+  manual_suggestions?: boolean;
   /** ISO date string (YYYY-MM-DD) to record as the session date. Defaults to today. */
   session_date?: string;
   /** Optional Five Pillars snapshot captured alongside the full session. */
@@ -256,6 +265,8 @@ export interface AssessResult {
   computed_ratios?: ComputedRatio[];
   usage?: AssessUsage;
   subgraph_size_bytes?: number;
+  /** true when refused BEFORE any API spend — broad selection or oversized attachments. */
+  preflight_blocked?: boolean;
   error?: string | null;
 }
 

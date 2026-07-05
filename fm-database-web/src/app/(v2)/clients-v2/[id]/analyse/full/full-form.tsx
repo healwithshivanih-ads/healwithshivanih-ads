@@ -447,6 +447,7 @@ export function FullAssessmentForm({
   const [picks, setPicks] = useState<Record<string, boolean>>({});
   const [planBrief, setPlanBrief] = useState<PlanBrief>({});
   const [error, setError] = useState<string | null>(null);
+  const [preflightBlocked, setPreflightBlocked] = useState(false);
   // Ref + freshness flag for the post-synthesis scroll. After a successful
   // run we scroll the new results into view so the coach immediately sees
   // the AI output — previously the button reset and the report rendered
@@ -556,8 +557,9 @@ export function FullAssessmentForm({
     });
   };
 
-  const onAnalyze = () => {
+  const onAnalyze = (opts?: { manual?: boolean }) => {
     setError(null);
+    setPreflightBlocked(false);
     // Combine delta inputs into one complaints payload for the AI.
     const complaintSections: string[] = [];
     if (deltaNotes.trim())
@@ -615,16 +617,23 @@ export function FullAssessmentForm({
             kind: u.kind,
           })),
           dry_run: false,
+          manual_suggestions: opts?.manual,
           session_date: new Date().toISOString().slice(0, 10),
         });
         if (!res.ok) {
           setError(res.error || "Analyze failed");
+          setPreflightBlocked(!!res.preflight_blocked);
           toast.error(res.error?.slice(0, 120) || "Analyze failed");
           setResult(null);
         } else {
           setResult(res);
           setPicks({});
           setJustFinished(true);
+          if (opts?.manual) {
+            toast.success(
+              "Draft started without AI — topics carried over from your selection. Fill in the rest in the plan editor."
+            );
+          }
           // Bring the new synthesis into view + briefly highlight the
           // "✓ Synthesis ready" pill so the coach doesn't think their click
           // failed (the button itself sits above the results in the layout).
@@ -1248,7 +1257,7 @@ export function FullAssessmentForm({
         {result?.ok && !pending && (
           <button
             type="button"
-            onClick={onAnalyze}
+            onClick={() => onAnalyze()}
             title="Discards the current synthesis and re-runs from scratch (~$0.20)"
             style={{
               background: "transparent",
@@ -1316,6 +1325,43 @@ export function FullAssessmentForm({
           }}
         >
           {error}
+        </div>
+      )}
+      {preflightBlocked && (
+        <div
+          style={{
+            padding: 10,
+            background: "rgba(220,38,38,0.04)",
+            border: "1px solid rgba(220,38,38,0.15)",
+            borderRadius: "var(--fm-radius-sm)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => onAnalyze({ manual: true })}
+            disabled={pending}
+            style={{
+              background: "#fff",
+              color: "var(--fm-text-primary)",
+              border: "1px solid var(--fm-border)",
+              padding: "9px 16px",
+              fontSize: 13,
+              fontWeight: 700,
+              borderRadius: "var(--fm-radius-sm)",
+              cursor: pending ? "wait" : "pointer",
+              fontFamily: "inherit",
+            }}
+          >
+            ✍️ Skip AI — draft manually
+          </button>
+          <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+            No API call is made — a session is created from your symptom/topic
+            picks (topics carry straight into the draft plan), and you fill in
+            drivers, supplements, nutrition and everything else in the plan editor.
+          </div>
         </div>
       )}
 

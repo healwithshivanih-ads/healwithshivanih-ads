@@ -3131,6 +3131,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [picks, setPicks] = useState<Record<string, boolean>>({});
   const [planBrief, setPlanBrief] = useState<PlanBrief>({});
   const [error, setError] = useState<string | null>(null);
+  const [preflightBlocked, setPreflightBlocked] = useState(false);
   const [pending, startTransition] = useTransition();
   const [draftPending, startDraft] = useTransition();
   const [uploadPending, startUpload] = useTransition();
@@ -3529,8 +3530,9 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     });
   };
 
-  const onAnalyze = () => {
+  const onAnalyze = (opts?: { manual?: boolean }) => {
     setError(null);
+    setPreflightBlocked(false);
     if (!clientId) {
       setError("Pick a client first");
       return;
@@ -3560,17 +3562,24 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
             kind: u.kind,
           })),
           dry_run: dryRun,
+          manual_suggestions: opts?.manual,
           session_date: sessionDate,
           five_pillars: hasFivePillars ? sessionFivePillars : undefined,
         });
         if (!res.ok) {
           const msg = res.error || "Analyze failed";
           setError(msg);
+          setPreflightBlocked(!!res.preflight_blocked);
           toast.error(msg);
           setResult(null);
         } else {
           setResult(res);
           setPicks({});
+          if (opts?.manual) {
+            toast.success(
+              "Draft started without AI — topics carried over from your selection. Fill in the rest in the plan editor."
+            );
+          }
           // Pre-fill root cause hypothesis from AI synthesis notes
           if (res.suggestions?.synthesis_notes) {
             setPlanBrief((prev) => ({
@@ -4586,15 +4595,33 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
             );
           })()}
           <Button
-            onClick={onAnalyze}
+            onClick={() => onAnalyze()}
             disabled={pending || uploadPending || !clientId}
             className="w-full"
           >
             {pending ? "Synthesizing…" : uploadPending ? "Waiting for lab extraction…" : "🔮 Analyze with AI"}
           </Button>
           {error && (
-            <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded p-2">
-              {error}
+            <div className="text-sm text-red-700 bg-red-50 border border-red-200 rounded p-2 space-y-2">
+              <p>{error}</p>
+              {preflightBlocked && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onAnalyze({ manual: true })}
+                  disabled={pending || uploadPending || !clientId}
+                  className="w-full bg-white"
+                >
+                  ✍️ Skip AI — draft manually
+                </Button>
+              )}
+            </div>
+          )}
+          {preflightBlocked && (
+            <p className="text-xs text-muted-foreground">
+              No API call is made — a session is created from your symptom/topic
+              picks (topics carry straight into the draft plan), and you fill in
+              drivers, supplements, nutrition and everything else in the plan editor.
             </p>
           )}
         </CardContent>

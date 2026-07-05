@@ -66,7 +66,12 @@ async function runShim(
 }
 
 export async function runAssess(input: AssessInput): Promise<AssessResult> {
-  const result = (await runShim("assess.py", input, 360_000)) as AssessResult;
+  // assess.py distinguishes "manual_suggestions key omitted" (normal flow)
+  // from "key present" (manual/$0 mode, even as an empty {} scaffold) — so
+  // the boolean flag on AssessInput must become an actual key, not `false`.
+  const { manual_suggestions, ...rest } = input;
+  const payload = manual_suggestions ? { ...rest, manual_suggestions: {} } : rest;
+  const result = (await runShim("assess.py", payload, 360_000)) as AssessResult;
   return result;
 }
 
