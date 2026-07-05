@@ -29,6 +29,17 @@ def build_client(api_key=None):
     from _api_guard import require_api_authorized
     require_api_authorized(sys.argv[0].rsplit("/", 1)[-1] or "shim")
 
+    # Guard against a poisoned ANTHROPIC_BASE_URL. If the env var is present but
+    # EMPTY (a footgun that leaks in when the coach's pm2 process is (re)started
+    # from a shell that exports `ANTHROPIC_BASE_URL=` — e.g. a Claude Code
+    # terminal), the SDK treats "" as an explicit base_url instead of falling
+    # back to the default, and EVERY request dies with
+    # `APIConnectionError: Connection error` (isolated 2026-07-05 — it silently
+    # broke all app-menu / weekly-menu generation). Drop the empty value so the
+    # SDK uses https://api.anthropic.com; a real non-empty override is preserved.
+    if not (os.environ.get("ANTHROPIC_BASE_URL") or "").strip():
+        os.environ.pop("ANTHROPIC_BASE_URL", None)
+
     from anthropic import Anthropic
     import httpx
 
