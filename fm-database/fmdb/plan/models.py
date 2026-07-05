@@ -1323,6 +1323,18 @@ class Plan(BaseModel):
     #   {"week": N, "days": [...same as app_menu...], "change_note": str,
     #    "generated_at": iso, "inputs_summary": str}
     app_menu_pending: Optional[dict] = None
+    # "Principle plan" flag: True = an eating-framework-only plan that is
+    # EXCLUDED from automatic weekly-menu drafting (no app_menu_pending is
+    # generated for it). Set by the coach via a plan amendment. Declared here
+    # so plan-check (extra="forbid") + the Python pipeline don't choke on plans
+    # the Next.js side wrote it onto.
+    no_weekly_menu: bool = False
+    # ISO timestamp (JS-written, e.g. '2026-07-01T08:44:45.064Z') stamped by the
+    # Next.js app whenever client-facing plan content changes (menu edits, remedy
+    # swaps) so the companion app can surface a "recently updated" signal without
+    # diffing. String (not datetime) to round-trip the raw JS value untouched.
+    # Declared so plan-check (extra="forbid") doesn't choke.
+    app_content_updated_at: Optional[str] = None
 
     # ── Plan end-game content (graduation → maintenance) ───────────────────
     # Generated once at graduation; rendered by the client app in MAINTENANCE
