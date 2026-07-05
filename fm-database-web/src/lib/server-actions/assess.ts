@@ -9,7 +9,7 @@ import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
-import { loadClientSessions, type ClientSession } from "@/lib/fmdb/loader-extras";
+import { loadClientSessions, loadClientById, type ClientSession } from "@/lib/fmdb/loader-extras";
 import {
   runAssess,
   generateDraftFromSuggestions,
@@ -216,9 +216,48 @@ export async function runAssessAction(
   return runAssess(input);
 }
 
+/**
+ * Guardrail: refuse to build a full draft plan for a client who hasn't
+ * signed up for the paid programme yet (e.g. foundation-call / discovery-only
+ * clients) unless the coach explicitly confirms. `engagement_status` is the
+ * real signal — see `loadClientJourney`'s "Sign-up" step and
+ * `discovery-tier.ts`'s `resolveAppTier()`, both of which already key off it.
+ * `lifecycle_state` is NOT used here — it defaults to "programme_active" for
+ * every manually-created client regardless of actual signup, so it can't be
+ * trusted as a gate.
+ */
+async function checkEngagementGuardrail(
+  clientId: string
+): Promise<{ blocked: boolean; engagementStatus: string; displayName: string }> {
+  const client = await loadClientById(clientId);
+  const engagementStatus =
+    ((client as unknown as Record<string, unknown> | null)?.engagement_status as
+      | string
+      | undefined) || "pending";
+  const displayName = client?.display_name || clientId;
+  return { blocked: engagementStatus !== "signed_up", engagementStatus, displayName };
+}
+
 export async function generateDraftAction(
   input: GenerateDraftInput
 ): Promise<GenerateDraftResult> {
+  if (!input.force) {
+    const { blocked, engagementStatus, displayName } = await checkEngagementGuardrail(
+      input.client_id
+    );
+    if (blocked) {
+      return {
+        ok: false,
+        needs_confirmation: true,
+        engagement_status: engagementStatus,
+        error:
+          `${displayName} hasn't signed up for the programme yet ` +
+          `(engagement status: ${engagementStatus}) — this looks like a ` +
+          `foundation-call / discovery-only client. Generate the full draft ` +
+          `plan anyway?`,
+      };
+    }
+  }
   // Resolve the protocol template (if any) from TypeScript data and embed it
   // so the Python shim doesn't need to know about the TS templates file.
   //

@@ -448,6 +448,7 @@ export function FullAssessmentForm({
   const [planBrief, setPlanBrief] = useState<PlanBrief>({});
   const [error, setError] = useState<string | null>(null);
   const [preflightBlocked, setPreflightBlocked] = useState(false);
+  const [draftSignupWarning, setDraftSignupWarning] = useState<string | null>(null);
   // Ref + freshness flag for the post-synthesis scroll. After a successful
   // run we scroll the new results into view so the coach immediately sees
   // the AI output — previously the button reset and the report rendered
@@ -658,8 +659,9 @@ export function FullAssessmentForm({
     });
   };
 
-  const onGenerateDraft = () => {
+  const onGenerateDraft = (opts?: { force?: boolean }) => {
     if (!result?.session_id) return;
+    setDraftSignupWarning(null);
     startDraft(async () => {
       try {
         const res = await generateDraftAction({
@@ -671,9 +673,13 @@ export function FullAssessmentForm({
           )
             ? planBrief
             : undefined,
+          force: opts?.force,
         });
         if (!res.ok) {
           toast.error(res.error || "Draft generation failed");
+          if (res.needs_confirmation) {
+            setDraftSignupWarning(res.error || "This client hasn't signed up yet.");
+          }
         } else if (res.slug) {
           toast.success(`Draft plan created at ${res.slug}`);
           router.push(`/clients-v2/${clientId}/plan/edit/${res.slug}`);
@@ -1448,7 +1454,7 @@ export function FullAssessmentForm({
           >
             <button
               type="button"
-              onClick={onGenerateDraft}
+              onClick={() => onGenerateDraft()}
               disabled={draftPending}
               style={{
                 background: "var(--fm-primary)",
@@ -1470,6 +1476,40 @@ export function FullAssessmentForm({
               You can edit, preview, and activate from there.
             </div>
           </div>
+          {draftSignupWarning && (
+            <div
+              style={{
+                padding: 10,
+                background: "rgba(217,119,6,0.08)",
+                border: "1px solid rgba(217,119,6,0.3)",
+                borderRadius: "var(--fm-radius-sm)",
+                display: "flex",
+                flexDirection: "column",
+                gap: 8,
+              }}
+            >
+              <div style={{ fontSize: 12, color: "#92400e" }}>{draftSignupWarning}</div>
+              <button
+                type="button"
+                onClick={() => onGenerateDraft({ force: true })}
+                disabled={draftPending}
+                style={{
+                  background: "#fff",
+                  color: "var(--fm-text-primary)",
+                  border: "1px solid var(--fm-border)",
+                  padding: "8px 14px",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  borderRadius: "var(--fm-radius-sm)",
+                  cursor: draftPending ? "wait" : "pointer",
+                  fontFamily: "inherit",
+                  alignSelf: "flex-start",
+                }}
+              >
+                Generate the full plan anyway
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
