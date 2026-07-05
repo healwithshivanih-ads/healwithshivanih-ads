@@ -16,8 +16,9 @@
     {
       "name": "fm-web-dev",
       "runtimeExecutable": "sh",
-      "runtimeArgs": ["-c", "cd fm-database-web && exec npm run dev -- -p 3014"],
-      "port": 3014
+      "runtimeArgs": ["-c", "cd fm-database-web && exec ./node_modules/.bin/next dev"],
+      "port": 3014,
+      "autoPort": true
     },
     {
       "name": "hypno-dev",
