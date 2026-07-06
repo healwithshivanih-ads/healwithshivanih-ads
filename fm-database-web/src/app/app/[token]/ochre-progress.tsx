@@ -202,6 +202,122 @@ function FeelStrip({ feel, onLogToday }: { feel: FeelMap; onLogToday: () => void
   );
 }
 
+// ── vitals (weight + blood pressure, self-logged from the energy sheet) ────
+
+function fmtShort(iso: string): string {
+  const d = new Date(`${iso}T00:00:00Z`);
+  return Number.isNaN(d.getTime())
+    ? iso
+    : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+}
+
+function VitalsCard({ onLog }: { onLog: () => void }) {
+  const { body } = useOchre();
+  const hist = body.history;
+  const weightPts = hist.filter((h) => h.weightKg != null) as { date: string; weightKg: number }[];
+  const bpPts = hist.filter((h) => h.bpSystolic != null && h.bpDiastolic != null) as {
+    date: string;
+    bpSystolic: number;
+    bpDiastolic: number;
+  }[];
+  const latestWeight = weightPts[weightPts.length - 1];
+  const latestBp = bpPts[bpPts.length - 1];
+  const weightDelta =
+    weightPts.length >= 2 ? Math.round((latestWeight.weightKg - weightPts[0].weightKg) * 10) / 10 : null;
+
+  if (!latestWeight && !latestBp) {
+    return (
+      <div className="card" style={{ padding: 16, display: "flex", flexDirection: "column", gap: 10 }}>
+        <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5 }}>
+          Log your weight or blood pressure any time — daily, weekly, whatever suits you. It builds a trend here.
+        </div>
+        <button className="feel-cta" onClick={onLog}>
+          <Icon name="plus" size={16} /> Log your vitals
+        </button>
+      </div>
+    );
+  }
+
+  const W = 260,
+    H = 52,
+    padX = 6,
+    padY = 8;
+  const vals = weightPts.map((p) => p.weightKg);
+  const lo = Math.min(...vals),
+    hi = Math.max(...vals);
+  const span = hi - lo || 1;
+  const vmin = lo - span * 0.15,
+    vmax = hi + span * 0.15;
+  const xs = weightPts.map((_, i) => padX + (i / Math.max(weightPts.length - 1, 1)) * (W - padX * 2));
+  const y = (val: number) => padY + (1 - (val - vmin) / (vmax - vmin)) * (H - padY * 2);
+  const line = weightPts.map((p, i) => `${i ? "L" : "M"} ${xs[i].toFixed(1)} ${y(p.weightKg).toFixed(1)}`).join(" ");
+
+  return (
+    <div className="card" style={{ padding: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+      <div style={{ display: "flex", gap: 22 }}>
+        {latestWeight && (
+          <div>
+            <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: 0.3 }}>
+              Weight
+            </div>
+            <div style={{ fontFamily: "var(--serif)", fontSize: 22, color: "var(--ink)" }}>
+              {latestWeight.weightKg}
+              <span style={{ fontSize: 12, color: "var(--muted)" }}> kg</span>
+            </div>
+            {weightDelta != null && (
+              <div
+                style={{
+                  fontSize: 11.5,
+                  fontWeight: 600,
+                  color: weightDelta < 0 ? "var(--forest)" : weightDelta > 0 ? "var(--ochre)" : "var(--muted)",
+                }}
+              >
+                {weightDelta === 0 ? "steady" : `${weightDelta > 0 ? "+" : ""}${weightDelta} kg since you started`}
+              </div>
+            )}
+          </div>
+        )}
+        {latestBp && (
+          <div>
+            <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: 0.3 }}>
+              Blood pressure
+            </div>
+            <div style={{ fontFamily: "var(--serif)", fontSize: 22, color: "var(--ink)" }}>
+              {latestBp.bpSystolic}/{latestBp.bpDiastolic}
+            </div>
+            <div style={{ fontSize: 11.5, color: "var(--muted)" }}>{fmtShort(latestBp.date)}</div>
+          </div>
+        )}
+      </div>
+      {weightPts.length >= 2 && (
+        <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ display: "block" }}>
+          <path d={line} fill="none" stroke="var(--forest)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx={xs[xs.length - 1]} cy={y(weightPts[weightPts.length - 1].weightKg)} r={3.4} fill="var(--forest)" />
+        </svg>
+      )}
+      <button
+        onClick={onLog}
+        style={{
+          alignSelf: "flex-start",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+          padding: "7px 12px",
+          borderRadius: 999,
+          border: "1px solid var(--line)",
+          background: "var(--paper)",
+          color: "var(--forest-deep)",
+          fontSize: 13,
+          fontWeight: 500,
+          cursor: "pointer",
+        }}
+      >
+        <Icon name="plus" size={13} /> Log today
+      </button>
+    </div>
+  );
+}
+
 // ── movement ─────────────────────────────────────────────────────────────────
 
 function MovementCard({ sessions, onAdd }: { sessions: MoveEntry[]; onAdd: () => void }) {
@@ -425,6 +541,10 @@ export function ProgressScreen({
 
       <Section title="How you’re feeling">
         <FeelStrip feel={feel} onLogToday={onLogFeeling} />
+      </Section>
+
+      <Section title="Your vitals">
+        <VitalsCard onLog={onLogFeeling} />
       </Section>
 
       <Section title="Movement">

@@ -66,6 +66,52 @@ describe("collectMeasurementSnapshots", () => {
   });
 });
 
+describe("latestMeasurements (the '3 stores' landmine)", () => {
+  it("keeps an older field's value alive when a newer entry only repeats a DIFFERENT field", () => {
+    // The bug: waist/BP were last recorded by the coach two weeks ago; today
+    // the client app logs weight only. The old implementation returned just
+    // the literal last-dated snapshot's fields (weight only), silently
+    // dropping waist/BP even though nothing changed. Each field must surface
+    // its own true latest value, independent of the others.
+    const latest = latestMeasurements({
+      measurements_log: [
+        { date: "2026-06-20", waist_cm: 82, bp_systolic: 118, bp_diastolic: 76 },
+      ],
+      health_snapshots: [
+        { date: "2026-07-06", source: "client_app", measurements: { weight_kg: 79.5 } },
+      ],
+    });
+    expect(latest?.measurements.weight_kg).toBe(79.5);
+    expect(latest?.measurements.waist_cm).toBe(82);
+    expect(latest?.measurements.bp_systolic).toBe(118);
+    expect(latest?.measurements.bp_diastolic).toBe(76);
+    // the "as of" caption reflects whichever field was touched most recently
+    expect(latest?.date).toBe("2026-07-06");
+  });
+
+  it("picks each field's own most recent value even when sources interleave across dates", () => {
+    const latest = latestMeasurements({
+      health_snapshots: [
+        { date: "2026-05-01", measurements: { weight_kg: 82, hr_bpm: 70 } },
+        { date: "2026-06-15", measurements: { weight_kg: 80 } },
+      ],
+      measurements_log: [
+        { date: "2026-06-01", waist_cm: 90, hip_cm: 100 },
+        { date: "2026-06-10", hip_cm: 98 },
+      ],
+    });
+    expect(latest?.measurements.weight_kg).toBe(80); // 06-15, newest weight
+    expect(latest?.measurements.waist_cm).toBe(90); // only ever set 06-01
+    expect(latest?.measurements.hip_cm).toBe(98); // 06-10 overwrote 06-01
+    expect(latest?.measurements.hr_bpm).toBe(70); // only ever set 05-01, must still surface
+    expect(latest?.date).toBe("2026-06-15");
+  });
+
+  it("returns null when there is nothing on file", () => {
+    expect(latestMeasurements({})).toBeNull();
+  });
+});
+
 describe("unit conversion", () => {
   it("inch/cm round-trips", () => {
     expect(inchesToCm(36)).toBeCloseTo(91.4, 1);

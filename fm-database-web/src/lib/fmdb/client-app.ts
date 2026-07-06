@@ -27,6 +27,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+import { collectMeasurementSnapshots, latestMeasurements } from "@/lib/fmdb/measurements";
 import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/travel-foods";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { isInternationalClient } from "@/lib/server-actions/supplement-links-match";
@@ -1168,9 +1169,26 @@ export interface ClientAppData {
     heightCm: number | null;
     ageYears: number | null;
     sex: "M" | "F" | "";
-    latest: { weightKg: number | null; waistCm: number | null; hipCm: number | null; measuredOn: string | null };
-    /** oldest → newest; only entries that carry at least a weight */
-    history: { date: string; weightKg: number | null; waistCm: number | null; hipCm: number | null }[];
+    latest: {
+      weightKg: number | null;
+      waistCm: number | null;
+      hipCm: number | null;
+      bpSystolic: number | null;
+      bpDiastolic: number | null;
+      measuredOn: string | null;
+    };
+    /** oldest → newest; only entries that carry at least one of the tracked fields */
+    history: {
+      date: string;
+      weightKg: number | null;
+      waistCm: number | null;
+      hipCm: number | null;
+      bpSystolic: number | null;
+      bpDiastolic: number | null;
+      /** 1-5, from the daily energy sheet — not a body measurement, carried
+       *  through the same snapshot so the vitals card can chart it alongside. */
+      moodScore: number | null;
+    }[];
   };
   reminders: {
     id: string;
@@ -2467,7 +2485,7 @@ async function buildDiscoveryAppData(
       heightCm: null,
       ageYears: null,
       sex,
-      latest: { weightKg: null, waistCm: null, hipCm: null, measuredOn: null },
+      latest: { weightKg: null, waistCm: null, hipCm: null, bpSystolic: null, bpDiastolic: null, measuredOn: null },
       history: [],
     },
     reminders: [],
@@ -4250,42 +4268,76 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     : null;
 
   // ---- body composition (read-only height/age + editable weight/waist/hip) --
+  //
+  // Goes through the SAME canonical union reader the coach dashboard uses
+  // (collectMeasurementSnapshots / latestMeasurements) instead of reading
+  // client.health_snapshots or the flat client.measurements block directly.
+  // Landmine this fixes: weight/BP/waist live in three stores that don't
+  // sync (health_snapshots from the app + labs, measurements_log from the
+  // coach's own "Log entry" editor, and the flat intake block) — a value
+  // last touched by a DIFFERENT source than the most recent entry must
+  // still surface here, not silently disappear because it wasn't repeated
+  // on that same date.
   const num = (v: unknown): number | null => {
     const n = typeof v === "number" ? v : typeof v === "string" ? parseFloat(v) : NaN;
     return Number.isFinite(n) && n > 0 ? n : null;
   };
   const meas = (client.measurements as Dict) || {};
-  const snaps = asArr(client.health_snapshots) as Dict[];
+  const measurementsLike = client as Parameters<typeof collectMeasurementSnapshots>[0];
+  // mood is a sibling of `measurements` on a health_snapshot entry (a daily
+  // energy tap, not a body measurement — see save-app-body.py), so it isn't
+  // carried by the shared union reader; build a small date lookup directly.
+  const moodByDate = new Map<string, number>();
+  for (const s of asArr(client.health_snapshots) as Dict[]) {
+    const d = asStr(s.date);
+    const m = num(s.mood_score);
+    if (d && m != null) moodByDate.set(d, m);
+  }
   // height: prefer the dashboard measurement, else the most recent snapshot
   let bodyHeight = num(meas.height_cm);
-  const bodyHistory = snaps
-    .map((s) => {
-      const m = (s.measurements as Dict) || {};
-      return {
-        date: asStr(s.date),
-        weightKg: num(m.weight_kg),
-        waistCm: num(m.waist_cm),
-        hipCm: num(m.hip_cm),
-        heightCm: num(m.height_cm),
-      };
-    })
-    .filter((e) => e.date && (e.weightKg != null || e.waistCm != null || e.hipCm != null))
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const bodyHistory = collectMeasurementSnapshots(measurementsLike)
+    .map((s) => ({
+      date: s.date,
+      weightKg: s.measurements.weight_kg ?? null,
+      waistCm: s.measurements.waist_cm ?? null,
+      hipCm: s.measurements.hip_cm ?? null,
+      heightCm: s.measurements.height_cm ?? null,
+      bpSystolic: s.measurements.bp_systolic ?? null,
+      bpDiastolic: s.measurements.bp_diastolic ?? null,
+      moodScore: moodByDate.get(s.date) ?? null,
+    }))
+    .filter(
+      (e) =>
+        e.weightKg != null || e.waistCm != null || e.hipCm != null || e.bpSystolic != null || e.moodScore != null,
+    );
+  // collectMeasurementSnapshots() already returns ascending-by-date, one
+  // merged entry per date across all three stores.
   if (bodyHeight == null) {
     const withH = bodyHistory.filter((e) => e.heightCm != null);
     if (withH.length) bodyHeight = withH[withH.length - 1].heightCm;
   }
+  const latest = latestMeasurements(measurementsLike);
   const body: ClientAppData["body"] = {
     heightCm: bodyHeight,
     ageYears,
     sex: sexRaw === "M" ? "M" : sexRaw === "F" ? "F" : "",
     latest: {
-      weightKg: num(meas.weight_kg),
-      waistCm: num(meas.waist_cm),
-      hipCm: num(meas.hip_cm),
-      measuredOn: asStr(meas.measured_on) || null,
+      weightKg: latest?.measurements.weight_kg ?? null,
+      waistCm: latest?.measurements.waist_cm ?? null,
+      hipCm: latest?.measurements.hip_cm ?? null,
+      bpSystolic: latest?.measurements.bp_systolic ?? null,
+      bpDiastolic: latest?.measurements.bp_diastolic ?? null,
+      measuredOn: latest?.date ?? null,
     },
-    history: bodyHistory.map(({ date, weightKg, waistCm, hipCm }) => ({ date, weightKg, waistCm, hipCm })),
+    history: bodyHistory.map(({ date, weightKg, waistCm, hipCm, bpSystolic, bpDiastolic, moodScore }) => ({
+      date,
+      weightKg,
+      waistCm,
+      hipCm,
+      bpSystolic,
+      bpDiastolic,
+      moodScore,
+    })),
   };
 
   // ---- coach's quick picks (off-catalogue product / remedy tips) ------------

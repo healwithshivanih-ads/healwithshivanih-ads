@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
-"""Persist a client-app body-composition update.
+"""Persist a client-app body-composition + vitals update.
 
 The client updates weight / waist / hip from the app's settings page
-(height + age are read-only, sourced from the coach dashboard). This
-writes the new numbers into the SAME places the coach dashboard reads,
-so a self-reported update shows up in health-trends and powers the
-app's own progress charts:
+(height + age are read-only, sourced from the coach dashboard), and
+optionally logs weight / blood pressure / energy from the daily quick-log
+sheet on the Progress tab. This writes the new numbers into the SAME
+places the coach dashboard reads, so a self-reported update shows up in
+health-trends and powers the app's own progress charts:
 
   · client.measurements  — the "latest" snapshot the dashboard shows
-    (weight_kg / waist_cm / hip_cm + measured_on bumped to today)
+    (weight_kg / waist_cm / hip_cm / bp_systolic / bp_diastolic +
+    measured_on bumped to today)
   · client.health_snapshots[] — append (or replace today's) an entry
     tagged source "client_app", which is what the trend charts read.
+    mood_score (1-5) rides along as a sibling of `measurements` on that
+    same entry — it's a daily energy tap, not a body measurement, so it
+    isn't folded into the measurements sub-dict or the coach's flat
+    "latest" snapshot.
 
 Only fields the client actually sent are touched; height is carried
 through from the existing measurement so the snapshot stays complete.
@@ -20,7 +26,10 @@ Reads JSON from stdin:
   "client_id": str,
   "weight_kg": number | null,
   "waist_cm":  number | null,
-  "hip_cm":    number | null
+  "hip_cm":    number | null,
+  "bp_systolic": number | null,
+  "bp_diastolic": number | null,
+  "mood_score": number | null   # integer 1-5
 }
 
 Writes JSON to stdout: {"ok": bool, "measured_on": str?, "error": str?}
@@ -38,7 +47,20 @@ _BOUNDS = {
     "weight_kg": (20.0, 400.0),
     "waist_cm": (30.0, 300.0),
     "hip_cm": (30.0, 300.0),
+    "bp_systolic": (70.0, 260.0),
+    "bp_diastolic": (40.0, 180.0),
 }
+
+
+def _clean_mood(payload: dict):
+    v = payload.get("mood_score")
+    if v is None or v == "":
+        return None
+    try:
+        n = int(round(float(v)))
+    except (TypeError, ValueError):
+        return None
+    return n if 1 <= n <= 5 else None
 
 
 def _plans_root() -> Path:
@@ -74,7 +96,8 @@ def main() -> int:
         return 2
 
     fields = {k: _clean(payload, k) for k in _BOUNDS}
-    if all(v is None for v in fields.values()):
+    mood = _clean_mood(payload)
+    if all(v is None for v in fields.values()) and mood is None:
         json.dump({"ok": False, "error": "no valid measurements provided"}, sys.stdout)
         return 2
 
@@ -106,17 +129,21 @@ def main() -> int:
     if not isinstance(meas, dict):
         meas = {}
     height_cm = meas.get("height_cm")
+    has_measurement = any(v is not None for v in fields.values())
 
-    # 1) update the dashboard "latest" measurement (only sent fields)
-    for k, v in fields.items():
-        if v is not None:
-            meas[k] = v
-    meas["measured_on"] = today
-    note = meas.get("notes") or ""
-    tag = f"[self-reported from app {today}]"
-    if tag not in note:
-        meas["notes"] = (note + " " + tag).strip()
-    data["measurements"] = meas
+    # 1) update the dashboard "latest" measurement (only sent fields). Skipped
+    # entirely on a mood-only submission — bumping measured_on/notes when no
+    # actual measurement came in would misrepresent when weight was last taken.
+    if has_measurement:
+        for k, v in fields.items():
+            if v is not None:
+                meas[k] = v
+        meas["measured_on"] = today
+        note = meas.get("notes") or ""
+        tag = f"[self-reported from app {today}]"
+        if tag not in note:
+            meas["notes"] = (note + " " + tag).strip()
+        data["measurements"] = meas
 
     # 2) append (or replace today's) health snapshot — source client_app
     snap_meas = {}
@@ -135,16 +162,21 @@ def main() -> int:
             existing = s.get("measurements") if isinstance(s.get("measurements"), dict) else {}
             existing.update(snap_meas)
             s["measurements"] = existing
+            if mood is not None:
+                s["mood_score"] = mood
             s["updated_at"] = now_iso
             replaced = True
             break
     if not replaced:
-        snaps.append({
+        entry = {
             "date": today,
             "source": "client_app",
             "measurements": snap_meas,
             "created_at": now_iso,
-        })
+        }
+        if mood is not None:
+            entry["mood_score"] = mood
+        snaps.append(entry)
     data["health_snapshots"] = snaps
 
     # atomic-ish write (temp + replace) so a crash can't truncate client.yaml
