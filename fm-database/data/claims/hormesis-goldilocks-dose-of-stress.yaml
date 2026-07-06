@@ -1,0 +1,31 @@
+slug: hormesis-goldilocks-dose-of-stress
+statement: A small dose of oxidative/inflammatory stress (light exercise, yoga, cold
+  exposure, sauna, sulforaphane) acts as a weak trigger that switches on cellular-defence
+  genes and builds resilience — the hormetic 'Goldilocks' response. Large doses (metabolic
+  overtraining, hours of high-heart-rate training) flip the same signal into damaging
+  inflammation and oxidative stress, especially harmful in complex chronic illness.
+evidence_tier: plausible_emerging
+rationale: 'Personalise the dose: enough movement/cold/heat to trigger defence, not
+  so much it drives inflammation. Watch for the overtrained, fatigued CrossFit client.'
+coaching_translation: 'Personalise the dose: enough movement/cold/heat to trigger
+  defence, not so much it drives inflammation. Watch for the overtrained, fatigued
+  CrossFit client.'
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- metabolic-overtraining
+- epigenetics-lifestyle-gene-expression
+linked_to_mechanisms:
+- mitohormesis
+- hpa-axis-hormesis
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Q&A — exercise, hormesis
+  quote: A little inflammation and oxidative stress drives resilience; larger doses
+    create so much inflammation you make someone sicker — it's the Goldilocks / hormetic
+    response.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

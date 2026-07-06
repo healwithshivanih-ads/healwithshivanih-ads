@@ -1,0 +1,39 @@
+slug: dtchorm-perimenopause-is-a-season-not-a-lab-diagnosis
+statement: Menopause is defined simply as one year since the final period; perimenopause
+  is the amorphous transition leading up to it and cannot be pinned down by a single
+  lab. A woman in her mid-30s with a few off periods and hot flashes is usually not
+  perimenopausal — it may be blood-sugar and stress dysregulation that resolves with
+  lifestyle change. Physiologically the transition should be brief; the drawn-out,
+  dramatic version is largely driven by chronic stress, poor diet, and xenoestrogen
+  exposure that lifestyle coaching can address.
+evidence_tier: plausible_emerging
+rationale: Clients often over-attribute symptoms to perimenopause and expect a lab
+  to confirm it; the coach can reframe it as a lifestyle-modifiable season and avoid
+  the lab-diagnosis trap.
+coaching_translation: When a younger client assumes she is perimenopausal from a lab
+  or a few symptoms, gently explain perimenopause isn't diagnosed by one test, and
+  focus coaching on stress, blood-sugar stability, and movement — often the symptoms
+  ease. Leave the menopausal-status call to her clinician.
+out_of_scope_notes: Diagnosing perimenopause or menopause is a clinician decision.
+caveats:
+- Timing of onset varies widely with genetics, stress, and lifestyle; there is no
+  fixed start point.
+linked_to_topics:
+- dtc-female-hormone-testing
+- perimenopause
+- perimenopause-and-menopause
+- stress-management
+linked_to_mechanisms:
+- fsh-elevation-aging-cascade
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Perimenopause definition and framing
+  quote: Menopause is a year since the last period; perimenopause is a hard-to-pin
+    transition, and a stressed 35-year-old with a couple of off periods is usually
+    not perimenopausal — physiologically it should be brief, and lifestyle can shorten
+    it.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

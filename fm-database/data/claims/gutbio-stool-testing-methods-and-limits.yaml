@@ -1,0 +1,37 @@
+slug: gutbio-stool-testing-methods-and-limits
+statement: Stool tests capture only a slice of the microbiome, and the method matters.
+  Old stool culture reads mostly aerobic bacteria from an anaerobic environment and
+  sees roughly 1% of what is present; 16S PCR probe panels see maybe 10-20% and are
+  good for gauging diversity and abundance; metagenomics reconstructs who lives there
+  and metabolomics measures the metabolites (postbiotics) the community makes. There
+  is no universal core microbiome, but there is a core set of metabolic functions
+  shared across species.
+evidence_tier: plausible_emerging
+rationale: Knowing what each method can and cannot see keeps a coach — and their client
+  — humble about how definitive any single stool report is.
+coaching_translation: Help clients hold stool results as a partial, moment-in-time
+  window rather than a complete or perfectly accurate map, and steer the conversation
+  toward the metabolic work being done (like short-chain fatty acids) rather than
+  a hunt for specific species.
+out_of_scope_notes: Choosing which stool method or lab to use, and interpreting the
+  technical output, is the clinician's role.
+caveats:
+- Because there is no single core microbiome, two healthy people can have very different
+  species yet similar functions.
+linked_to_topics:
+- gut-microbiome
+- gut-dysbiosis
+- gut-microbiome-and-gut-flora
+linked_to_mechanisms:
+- microbial-diversity-decline
+- gut-microbiome-modulation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Bacterial dysbiosis — culture, 16S PCR, metagenomics, metabolomics
+  quote: Culture sees ~1%, probes ~10-20%; metagenomics maps who lives there and metabolomics
+    the postbiotics; there is no core microbiome but a core metabolome.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,34 @@
+slug: b2b-serum-salivary-urine-test-types-plainly
+statement: 'Clients get confused about whether to test hormones by serum (blood),
+  saliva, or urine (e.g. DUTCH). In plain terms: blood gives a single snapshot level,
+  saliva estimates the free/active fraction, and urine collections capture metabolites
+  and how the body is processing a hormone across the day. The coach explains these
+  differences so the client can have an informed conversation with the clinician who
+  selects the test.'
+evidence_tier: plausible_emerging
+rationale: Demystifies a common source of client anxiety and supports better client–clinician
+  conversations.
+coaching_translation: 'Explain the three sample types simply, then hand test selection
+  back to the clinician: ''which one fits your situation is a great question for your
+  provider''.'
+out_of_scope_notes: Choosing, ordering, or interpreting which hormone test is appropriate
+  is a clinical decision.
+caveats:
+- Accuracy and the right test vary by hormone and life stage — defer specifics to
+  the provider.
+linked_to_topics:
+- coach-clinician-collaboration
+- estrogen-metabolism
+linked_to_mechanisms:
+- biomarker-data-fluency
+- interdisciplinary-care-integration
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: Female hormones — serum vs salivary vs urine
+  quote: Do I do serum, salivary, or urine — what's the difference? Explain the test
+    types and what each can measure across the lifespan.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

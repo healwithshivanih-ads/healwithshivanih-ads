@@ -1,0 +1,31 @@
+slug: scope-reconcile-prescribed-plan-with-client-capacity
+statement: 'When a prescribed food plan feels too big (e.g. eliminating 15 foods at
+  once), the coach reconciles: negotiate what the client can realistically start with,
+  feed that back to the clinician (''we''ll start with two foods and build''), then
+  support the client step-by-step as capacity grows.'
+evidence_tier: plausible_emerging
+rationale: The coach is the person in the middle who makes an ambitious clinical plan
+  actually implementable, preventing all-or-nothing failure and drop-off.
+coaching_translation: Meet the client where they are — 'What can you do right now?'
+  — start small (e.g. drop dairy first), review how it feels, then scale to the next
+  food when they're ready. Loop the clinician in on the modified pace.
+out_of_scope_notes: Changing the clinical intent of a prescription is not the coach's
+  call; the coach proposes a sustainable pace and defers to the clinician on the plan
+  itself.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-scope-ethics
+  location: Unit 19 — reconciling a demanding elimination diet
+  quote: You're the person in the middle reconciling what the practitioner wants and
+    what the client can actually do — start with the two foods they can be consistent
+    with and build on that.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

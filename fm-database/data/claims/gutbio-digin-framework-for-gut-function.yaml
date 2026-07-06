@@ -1,0 +1,38 @@
+slug: gutbio-digin-framework-for-gut-function
+statement: The functional medicine view of the gut is captured by the DIGIN framework
+  — Digestion/absorption, Intestinal permeability, Gut microbiome, Immune modulation/inflammation,
+  and Nervous system (the enteric nervous system). Stool and related biomarkers each
+  report on one of these five functions, so a coach can organise any gut report around
+  DIGIN rather than chasing individual numbers.
+evidence_tier: plausible_emerging
+rationale: DIGIN gives the coach a simple mental map to sort what a client's stool
+  report is actually pointing at, and to see the gut as one part of the whole person's
+  environment rather than an isolated organ.
+coaching_translation: When a client brings a stool report, walk the DIGIN letters
+  with them in plain language — "this section is about how well you break food down,
+  this is about the gut lining, this is about your bugs, this about your immune system,
+  this about your gut-brain wiring" — and use that to frame lifestyle conversation,
+  always deferring the numbers to their clinician.
+out_of_scope_notes: Interpreting or diagnosing from the report — deciding whether
+  a value is abnormal, what condition it implies, or what treatment follows — belongs
+  to the ordering clinician.
+caveats:
+- DIGIN is a teaching framework, not a diagnostic classification.
+linked_to_topics:
+- gastrointestinal-tract-overview
+- digestion-and-nutrient-absorption
+- gut-microbiome
+- gut-brain-axis
+linked_to_mechanisms:
+- leaky-gut
+- dysbiosis
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: A Functional Medicine Approach to the Gut — the DIGIN model
+  quote: Digestion/absorption, intestinal permeability, gut microbiome, immune modulation/inflammation,
+    and the enteric nervous system are the five gut functions coaches organise around.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

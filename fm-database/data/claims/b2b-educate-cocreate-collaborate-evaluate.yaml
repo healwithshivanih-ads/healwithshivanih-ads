@@ -1,0 +1,31 @@
+slug: b2b-educate-cocreate-collaborate-evaluate
+statement: 'The coaching role with labs breaks into four in-scope actions: educate
+  (translate the biomarker pattern into actionable insights and daily habits), co-create
+  (choose changes with the client, not for them), collaborate (loop in and refer to
+  licensed providers), and evaluate (track whether the changes are working). Doing
+  these keeps the coach helpful and in scope.'
+evidence_tier: plausible_emerging
+rationale: A simple, memorable scaffold that keeps every lab-related session inside
+  the coaching lane.
+coaching_translation: Structure lab sessions around the four verbs — educate on the
+  pattern, co-create the plan, collaborate with their clinician, evaluate progress
+  together.
+out_of_scope_notes: Diagnosis, prescribing, ordering tests, and clinical interpretation
+  are not part of these four actions.
+caveats: []
+linked_to_topics:
+- functional-medicine-coaching
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- behavior-change-accountability
+- patient-centered-care-model
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: The coaching role broken down
+  quote: The role is to educate, co-create, collaborate, and evaluate; if you're doing
+    those things you're in scope and helpful.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

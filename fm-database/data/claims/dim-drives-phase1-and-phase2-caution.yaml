@@ -1,0 +1,31 @@
+slug: dim-drives-phase1-and-phase2-caution
+statement: DIM up-regulates BOTH phase-I and phase-II detoxification, so it can be
+  the wrong choice when a client already has a fast phase-I / slow phase-II pattern
+  (it accelerates the activation step that is already too fast). Sulforaphane, which
+  favours NRF2-driven phase-II, is often preferable in that pattern.
+evidence_tier: plausible_emerging
+rationale: If a client's genetic report shows fast phase-I/slow phase-II, note that
+  DIM may not suit; the choice is the clinician's.
+coaching_translation: If a client's genetic report shows fast phase-I/slow phase-II,
+  note that DIM may not suit; the choice is the clinician's.
+out_of_scope_notes: Recommending for/against a specific supplement is a clinician
+  decision — surface the consideration, don't prescribe.
+caveats: []
+linked_to_topics:
+- metabolic-detoxification
+- estrogen-metabolism
+linked_to_mechanisms:
+- phase-1-phase-2-detox-imbalance
+- cyp450-phase-i-activation
+linked_to_supplements:
+- dim
+- sulforaphane
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mary case — targeted supplementation
+  quote: DIM increases both phase 1 and phase 2; knowing Mary has fast phase 1, I
+    don't want to activate phase 1 more, so I'd use sulforaphane instead.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

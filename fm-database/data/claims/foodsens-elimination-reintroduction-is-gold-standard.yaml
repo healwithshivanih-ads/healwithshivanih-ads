@@ -1,0 +1,34 @@
+slug: foodsens-elimination-reintroduction-is-gold-standard
+statement: The elimination-and-reintroduction food plan remains the gold standard
+  for identifying food sensitivities — this has not changed. Common allergens (dairy,
+  gluten, eggs, soy, sugar, coffee and others) are removed for roughly three to six
+  weeks, then reintroduced one at a time. The lived reintroduction response, not a
+  lab report, reveals what a person actually reacts to.
+evidence_tier: strong
+rationale: It is inexpensive, accessible and actionable, and it lets the body act
+  as its own biofeedback device — which builds far more buy-in and self-efficacy than
+  any test result.
+coaching_translation: Coach the client through a structured elimination, then a slow
+  one-food-at-a-time reintroduction, tracking symptoms each step. Frame it as an experiment
+  they run on their own body, not a verdict.
+out_of_scope_notes: The clinician decides scope of elimination and any medical supervision;
+  the coach supports adherence, menu planning and symptom tracking.
+caveats:
+- Sensitivities are not identified by allergy skin-prick or IgE testing — elimination-reintroduction
+  is specifically for delayed sensitivities.
+linked_to_topics:
+- food-sensitivity
+- elimination-diet
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: The elimination diet — gold standard
+  quote: 'The elimination diet is still the gold standard for identifying food sensitivities:
+    remove the big allergens for a few weeks, then reintroduce one at a time; the
+    reintroduction reveals in lived experience what a lab cannot.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

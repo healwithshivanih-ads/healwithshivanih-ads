@@ -1,0 +1,43 @@
+slug: gutbio-titrate-fiber-slowly-soluble-and-insoluble
+statement: Fibre feeds the microbiome, but the type and pace matter. Soluble/prebiotic
+  fibres (inulin, chicory, acacia, partially hydrolysed guar gum, psyllium) fuel short-chain
+  fatty acid production, while insoluble fibre adds bulk and supports motility. Ancestral
+  intakes ran 100-150 g/day; a realistic modern target is around 30 g/day, but pushing
+  fibre too fast causes bloating, gas and constipation — so it must be titrated up
+  slowly and personalised, since each person tolerates it differently.
+evidence_tier: plausible_emerging
+rationale: Fibre is one of the most powerful and coach-accessible microbiome levers,
+  and getting the pacing wrong is the main reason clients abandon it.
+coaching_translation: Start where the client is (often ~8-10 g/day), add fibre gradually
+  with foods first — vegetables, apples, berries, ground flax, chia, psyllium and
+  a little fermented food — and let symptoms guide the pace toward roughly 30 g/day;
+  note that highly processed prebiotics like manufactured FOS or inulin can bloat
+  sensitive clients, so favour whole-food and gentler sources.
+out_of_scope_notes: Managing fibre in someone with active IBD, severe SIBO or another
+  diagnosed gut disease should be coordinated with the clinician.
+caveats:
+- Marked bloating on inulin can itself hint at underlying dysbiosis.
+linked_to_topics:
+- fiber-gap
+- probiotic-and-prebiotic-support
+- constipation
+- gut-microbiome-personalized-nutrition
+linked_to_mechanisms:
+- soluble-fiber-gel-formation
+- dietary-fiber-modulation
+- butyrate-production
+- resistant-starch-fermentation
+linked_to_supplements:
+- psyllium
+- partially-hydrolyzed-guar-gum
+- chia-seeds
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Fibre and fermented foods discussion
+  quote: Soluble prebiotic fibres fuel SCFAs and insoluble fibre supports motility;
+    target ~30 g/day but titrate slowly and personalise, since too-fast fibre causes
+    bloating and constipation.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

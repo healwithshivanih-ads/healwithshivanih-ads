@@ -1,0 +1,33 @@
+slug: scope-hold-boundary-with-referring-provider
+statement: 'When a referring provider expects the coach to interpret labs, recommend
+  supplements, or otherwise act outside scope, respond by appreciating their work,
+  naming the coaching scope of practice, and re-describing what the coach can competently
+  offer: turning the provider''s plan into sustainable behaviour change with tracking
+  and accountability.'
+evidence_tier: plausible_emerging
+rationale: A warm, scope-clarifying reply protects the coach, educates the referrer,
+  and reframes the coach as an asset to the provider's practice rather than a subordinate
+  who does clinical tasks.
+coaching_translation: 'Thank the provider, name your scope (''I refrain from diagnosing,
+  prescribing, or interpreting labs''), then pitch value: ''I co-create the accountability
+  plan so your clients actually implement what you prescribe — how would that assist
+  your practice?'''
+out_of_scope_notes: The provider retains all diagnosis, prescribing, and lab-interpretation
+  duties; the coach must not adopt them even when asked by a clinician.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-scope-ethics
+  location: Unit 17 — responding to a referring provider
+  quote: The scope for health coaching dictates I refrain from diagnosing, prescribing
+    or interpreting labs; what I do well is provide the how-to for your what and co-create
+    an accountability plan.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

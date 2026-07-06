@@ -1,0 +1,30 @@
+slug: b2b-thread-lifestyle-to-lab-pattern
+statement: A coach's teachable skill is 'threading the needle' — explaining in plain,
+  everyday language how nutrition, movement, sleep, stress and connection influence
+  a given lab pattern, using metaphors and visual tools. This is education on the
+  pattern, framed as 'if this, then that', not a diagnosis.
+evidence_tier: plausible_emerging
+rationale: Turns an abstract number into a lived, changeable story the client can
+  act on.
+coaching_translation: Build your own plain-language metaphors linking each lifestyle
+  lever to the marker; show the client 'if you shift X, this pattern tends to move
+  like Y'.
+out_of_scope_notes: Promising a specific numeric result, or claiming the change treats
+  a diagnosed condition, is out of scope.
+caveats:
+- Effect size varies by person — frame as tendencies, not guarantees.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms:
+- biomarker-data-fluency
+- upstream-cause-identification
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: Education — translating biomarkers
+  quote: Be able to explain how nutrition, movement, sleep and stress influence any
+    given lab pattern; help people see if this, then that.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

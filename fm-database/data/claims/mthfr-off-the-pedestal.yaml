@@ -1,0 +1,27 @@
+slug: mthfr-off-the-pedestal
+statement: MTHFR is a single low-impact variant in the methylation pathway, not the
+  master gene the testing industry once marketed. It should be read in the context
+  of the whole methylation group rather than used to explain a client's symptoms or
+  drive supplement stacks on its own.
+evidence_tier: plausible_emerging
+rationale: 'Deflate MTHFR anxiety: it is one low-impact spelling change among many
+  methylation genes.'
+coaching_translation: 'Deflate MTHFR anxiety: it is one low-impact spelling change
+  among many methylation genes.'
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- nutrigenomics
+linked_to_mechanisms:
+- methylation-cycle
+- polygenic-scoring
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Genetics 101 — MTHFR
+  quote: We need to take MTHFR down from the pedestal and look at it in the context
+    of all the other genes impacting methylation.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: genetics-is-the-why-labs-are-the-what
+statement: Functional labs and biomarkers (e.g. a DUTCH hormone panel, a lipid fractionation)
+  show WHAT is happening; genetics explains WHY it is happening — for example why
+  oestrogen is being metabolised down a particular phase-I/phase-II pathway. The two
+  are complementary, not competing.
+evidence_tier: plausible_emerging
+rationale: Use genetics to add the 'why' behind a lab result and to personalise the
+  lifestyle plan.
+coaching_translation: Use genetics to add the 'why' behind a lab result and to personalise
+  the lifestyle plan.
+out_of_scope_notes: Interpreting the lab or the gene diagnostically is the clinician's
+  role.
+caveats: []
+linked_to_topics:
+- nutrigenomics
+- estrogen-metabolism
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- phase-1-phase-2-detox-imbalance
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Why genetics — precision testing
+  quote: Testing biomarkers is the what; genetics is the why. A DUTCH test shows the
+    metabolites, the genes tell you why it went down that pathway.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

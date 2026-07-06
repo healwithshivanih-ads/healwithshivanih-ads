@@ -1,0 +1,33 @@
+slug: b2b-refer-abnormal-results-to-clinician
+statement: Whenever a result is out of range, the coach invites the client to communicate
+  with their licensed provider, and clarifies who else on the client's team holds
+  a licence so referral back is easy. Coaches can even coach the practical navigation
+  — messaging a triage nurse to ask whether an abnormal value needs an earlier appointment
+  — while continuing the lifestyle work in parallel.
+evidence_tier: plausible_emerging
+rationale: Collaboration is the safety net; a coach who refers abnormal findings is
+  never out of scope.
+coaching_translation: For any abnormal marker, say 'that's one to check with your
+  provider', help them know how to reach the triage nurse, and keep working the lifestyle
+  piece meanwhile.
+out_of_scope_notes: Deciding whether a value is dangerous, how urgently to act, and
+  check-back frequency for abnormal markers is the clinician's call.
+caveats:
+- Some clients still won't contact their provider; document that you encouraged it
+  and continue in-scope work.
+linked_to_topics:
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- interdisciplinary-care-integration
+- biomarker-data-fluency
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: Collaboration is key
+  quote: Anything in the abnormal range, unless you have a license, make sure you've
+    invited them to communicate with their clinician; you'll never be out of scope
+    if you collaborate.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: sulforaphane-raw-cruciferous-nrf2-phase2
+statement: Sulforaphane, formed when raw cruciferous vegetables (broccoli, broccoli
+  sprouts) are chewed/crushed so myrosinase acts on glucoraphanin, is a weak pro-oxidant
+  that activates the NRF2 transcription factor — switching on ~500 cellular-defence
+  genes and up-regulating phase-II detoxification. Cooking destroys myrosinase, so
+  the sulforaphane effect needs the vegetable raw (or a myrosinase-active supplement).
+evidence_tier: plausible_emerging
+rationale: Encourage raw broccoli/broccoli sprouts, or lightly-crushed-then-brief-steamed;
+  add mustard powder to cooked cruciferous to restore myrosinase.
+coaching_translation: Encourage raw broccoli/broccoli sprouts, or lightly-crushed-then-brief-steamed;
+  add mustard powder to cooked cruciferous to restore myrosinase.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- metabolic-detoxification
+- epigenetics-lifestyle-gene-expression
+linked_to_mechanisms:
+- nrf2-pathway-activation
+- phase-2-conjugation
+linked_to_supplements:
+- sulforaphane
+- sulforaphane-broccoli-sprouts
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Detox epigenetics — sulforaphane
+  quote: Sulforaphane is a weak pro-oxidant that triggers NRF2, switching on about
+    500 defence genes; it must be raw because cooking destroys the myrosinase enzyme.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: dtchorm-abnormal-flag-is-not-always-abnormal
+statement: With DTC hormone testing, a value flagged "abnormal" is frequently normal
+  for the context, and a value that looks "normal" can still be misleading. The flag
+  depends entirely on collection nuances — cycle day, time of day, sample type, and
+  the hormone form the client uses. A result is only truly abnormal if it was collected
+  correctly.
+evidence_tier: plausible_emerging
+rationale: This is the single most important reassurance a coach can offer, and the
+  reason to always refer for real interpretation rather than react to a flag.
+coaching_translation: Keep a simple cheat sheet of what each test does and does not
+  measure. When a client is on the ledge over a flagged result, check whether it was
+  collected correctly; if not, reassure her not to worry and route her to her clinician.
+  Never confirm to the client that a value is normal or abnormal yourself.
+out_of_scope_notes: Deciding whether a value is genuinely normal or abnormal is a
+  clinician judgement, not a coaching one.
+caveats: []
+linked_to_topics:
+- dtc-female-hormone-testing
+- coach-clinician-collaboration
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Closing summary — normal vs abnormal
+  quote: What looks like a normal test may not be normal, and what looks abnormal
+    is often not abnormal; a value is only abnormal if it was collected at the right
+    time the correct way.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

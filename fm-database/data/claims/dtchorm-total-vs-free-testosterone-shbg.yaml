@@ -1,0 +1,35 @@
+slug: dtchorm-total-vs-free-testosterone-shbg
+statement: Most testosterone and estrogen in the blood is bound to a carrier protein,
+  sex hormone binding globulin (SHBG), and only the free/available fraction acts on
+  the body. A high total testosterone can therefore look alarming while the available
+  amount is fine. Testosterone can be ordered as both total and free; estradiol usually
+  reports only a total, so clinicians add an SHBG level to judge how much estrogen
+  is truly active.
+evidence_tier: strong
+rationale: A DTC report showing only a high total testosterone often frightens clients
+  unnecessarily — the body may not be "seeing" all of it.
+coaching_translation: If a client is worried about a high total testosterone with
+  no free value, reassure her the total alone may not reflect what her body actually
+  experiences, and suggest she ask her clinician for a free testosterone (or an SHBG
+  alongside estrogen).
+out_of_scope_notes: Ordering free testosterone/SHBG and interpreting bioavailable
+  hormone status are clinician tasks.
+caveats:
+- No standard blood test gives a directly available (free) estradiol; SHBG is the
+  workaround.
+linked_to_topics:
+- dtc-female-hormone-testing
+- sex-hormone-binding-globulin
+linked_to_mechanisms:
+- shbg-hormone-binding
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Total vs available testosterone and SHBG
+  quote: A high total testosterone isn't what the body sees; order total and free,
+    and use SHBG to judge how much estrogen is actually active before anyone worries
+    about the number.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

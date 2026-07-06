@@ -1,0 +1,27 @@
+slug: genes-guide-which-biomarkers-to-track
+statement: 'A genetic picture points to which functional biomarkers are worth a clinician''s
+  follow-up: micronutrients/B vitamins, hsCRP (inflammation), homocysteine (methylation),
+  HbA1c and fasting insulin (glucose), a hormone-balance panel, and — where a clotting
+  decision is in play — PT/INR.'
+evidence_tier: plausible_emerging
+rationale: Use the genetic areas of impact to suggest what a client might discuss
+  testing with their provider; never order labs yourself.
+coaching_translation: Use the genetic areas of impact to suggest what a client might
+  discuss testing with their provider; never order labs yourself.
+out_of_scope_notes: Ordering and interpreting labs is a clinician function.
+caveats: []
+linked_to_topics:
+- nutrigenomics
+- insulin-resistance
+linked_to_mechanisms:
+- methylation-cycle
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mary case — precision testing
+  quote: Genes help us figure out valuable biomarkers — micronutrients, hsCRP, homocysteine,
+    HbA1c and fasting insulin, hormone balance, and PT/INR for clotting.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

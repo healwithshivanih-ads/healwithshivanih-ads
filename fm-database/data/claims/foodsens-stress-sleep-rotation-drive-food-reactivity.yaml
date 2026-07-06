@@ -1,0 +1,37 @@
+slug: foodsens-stress-sleep-rotation-drive-food-reactivity
+statement: Lifestyle root causes shape how strongly someone reacts to foods. Stress
+  increases intestinal permeability and reduces the ability to digest food, and poor
+  sleep is a major driver of gut dysfunction and food reactions. Eating the same foods
+  every day for years also promotes reactivity, so rotating foods — for example three
+  different breakfasts, lunches and dinners across a three-day cycle — helps prevent
+  sensitivities.
+evidence_tier: plausible_emerging
+rationale: 'It points the coach''s leverage beyond the food list: managing stress,
+  improving sleep and rotating the diet address the upstream drivers of permeability
+  and reactivity.'
+coaching_translation: As foods come out, put healthy things in and address the drivers
+  — coach stress-reduction and sleep, and build a food-rotation habit so the client
+  is not eating the same items daily. Add fiber, fermented foods and phytochemicals
+  for gut repair as tolerated.
+out_of_scope_notes: Diagnosing the cause of intestinal permeability is the clinician's
+  role; the coach supports the lifestyle drivers.
+caveats: []
+linked_to_topics:
+- food-sensitivity
+- chronic-stress
+- sleep
+linked_to_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Root causes and rotation
+  quote: Stress increases intestinal permeability and impairs digestion; lack of sleep
+    drives food reactions; eating the same foods repeatedly promotes sensitivity,
+    so rotate foods on a three-day cycle. As you remove foods, add fiber, fermented
+    foods and phytochemicals for gut repair.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

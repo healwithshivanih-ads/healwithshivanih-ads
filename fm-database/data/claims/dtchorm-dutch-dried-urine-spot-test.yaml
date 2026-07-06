@@ -1,0 +1,41 @@
+slug: dtchorm-dutch-dried-urine-spot-test
+statement: The DUTCH test (Dried Urine Test for Comprehensive Hormones) is a convenient
+  at-home dried-spot urine panel clients increasingly order themselves. For a woman
+  not on hormones — whether still cycling or menopausal — it accurately measures estrogen,
+  progesterone, and testosterone, and uniquely reports the breakdown (metabolite)
+  products that show how well she is clearing and methylating her estrogen. It is
+  still accurate at the very low hormone levels of menopause, where a blood estradiol
+  can be hard to catch, but it is expensive.
+evidence_tier: plausible_emerging
+rationale: This is the DTC panel a coach is most likely to see. Knowing what it does
+  and does not measure lets the coach educate and reassure without interpreting.
+coaching_translation: If a client says she did "a Dutch test," explain it is a dried
+  urine panel, that cycle day still matters for progesterone, and that its estrogen
+  breakdown products help her clinician see how she clears estrogen. Reinforce any
+  estrogen-clearance lifestyle work (fibre, cruciferous vegetables, bowel regularity)
+  her clinician recommends.
+out_of_scope_notes: Interpreting DUTCH metabolite patterns and acting on them are
+  clinician tasks.
+caveats:
+- Progesterone on any spot urine is only meaningful at the right cycle day.
+- Data for tracking a woman ON hormone therapy is still emerging; estrogen tracking
+  looks solid, progesterone/testosterone validation is pending.
+linked_to_topics:
+- dtc-female-hormone-testing
+- estrogen-metabolism
+- menopause
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+- estrogen-phase-ii-methylation-deficit
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Urinary / DUTCH testing
+  quote: The dried-spot DUTCH urine test is accurate for a non-medicated cycling or
+    menopausal woman, gives estrogen and testosterone breakdown products and a read
+    on methylation, and works at the low levels of menopause where blood struggles
+    — but it is expensive.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

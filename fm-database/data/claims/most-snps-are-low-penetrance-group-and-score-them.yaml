@@ -1,0 +1,28 @@
+slug: most-snps-are-low-penetrance-group-and-score-them
+statement: Of the 3-4 million SNPs in the genome, most are clinically silent; the
+  coaching-relevant ones are low-penetrance and only become useful when grouped by
+  pathway and scored together (polygenic). High-penetrance medical variants (BRCA,
+  sickle-cell HBB) are a separate, clinician-only domain.
+evidence_tier: plausible_emerging
+rationale: Trust the report's grouped/scored pathway signal rather than chasing individual
+  genes.
+coaching_translation: Trust the report's grouped/scored pathway signal rather than
+  chasing individual genes.
+out_of_scope_notes: High-penetrance genetics (e.g. BRCA) belongs to genetic counsellors
+  and physicians.
+caveats: []
+linked_to_topics:
+- nutrigenomics
+- genetic-testing-in-coaching
+linked_to_mechanisms:
+- polygenic-scoring
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Genetics 101 — penetrance
+  quote: High penetrance is the world of medical genetics; low-penetrance variants
+    are insightful but not powerful by themselves — group them together for real information.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

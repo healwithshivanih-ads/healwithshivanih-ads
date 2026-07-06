@@ -1,0 +1,31 @@
+slug: b2b-n-of-one-cocreate-from-client-goals
+statement: 'Every client is an N of one: giving up alcohol lowers triglycerides for
+  one person, while exercise or cutting late-night sugar moves the dial for another.
+  So the coach co-creates the starting point from what matters to the client — their
+  big goal, their values, what they''re willing and able to do — rather than from
+  what the lab ''says''.'
+evidence_tier: plausible_emerging
+rationale: Anchoring on the client's own motivation makes the chosen change far more
+  likely to stick.
+coaching_translation: Ask 'what matters most to you, what's motivating, where do you
+  want to start?' and build the first small change around their answer, not around
+  the worst number.
+out_of_scope_notes: The clinician, not the coach, decides clinical priorities and
+  thresholds for action.
+caveats: []
+linked_to_topics:
+- functional-medicine-coaching
+- ambivalence-in-coaching
+linked_to_mechanisms:
+- patient-centered-care-model
+- change-talk-activation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: Co-creation — N of one
+  quote: Everyone's an N of one; the lab doesn't trump what the client wants and is
+    capable of doing — that's where you start.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

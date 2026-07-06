@@ -1,0 +1,33 @@
+slug: metab-treat-the-person-not-the-paper
+statement: Labs are ancillary — they confirm clinical suspicion built from the client's
+  story, symptoms and history, rather than being the definitive answer on their own.
+  In statistics terms, a test result is only as trustworthy as the pre-test probability;
+  testing for something unlikely can generate a confusing false result.
+evidence_tier: strong
+rationale: Coaches and clients both over-trust single lab numbers. Anchoring interpretation
+  in the whole story (and in the clinician's clinical picture) prevents chasing spurious
+  out-of-range values and keeps the focus on root-cause lifestyle drivers.
+coaching_translation: Keep listening to the client's whole story, not just the numbers.
+  When a client fixates on one 'abnormal' value, remind them labs support the picture
+  rather than define it, and encourage them to discuss the finding with their provider
+  in the context of how they actually feel.
+out_of_scope_notes: Deciding which tests are indicated (pre-test probability) and
+  how to weight a result clinically belongs to the ordering clinician.
+caveats:
+- Direct-to-consumer test panels often include low-pre-test-probability markers that
+  can mislead clients.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms:
+- upstream-cause-identification
+- patient-centered-care-model
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Treat people not paper — pre-test probability
+  quote: Without understanding a client's symptoms, history and root causes, we risk
+    being misled by labs rather than guided by them; labs confirm clinical suspicion.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

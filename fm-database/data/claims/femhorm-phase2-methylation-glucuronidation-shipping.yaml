@@ -1,0 +1,46 @@
+slug: femhorm-phase2-methylation-glucuronidation-shipping
+statement: After phase I hydroxylation, the liver's phase II 'shipping department'
+  neutralises and packages oestrogen metabolites for excretion via methylation, sulfation
+  and glucuronidation. Methylation acts like a priority sticker (needing the right
+  B12/folate and methyl-donor foods) and glucuronidation like bubble wrap for the
+  harsher metabolites. A coach supports phase II by coaching methyl-donor foods, cruciferous
+  vegetables, fibre and regular bowel movements — the clinician handles genes and
+  targeted supplements.
+evidence_tier: plausible_emerging
+rationale: Phase II is highly food- and habit-responsive, which makes it prime coaching
+  territory. Explaining it as 'packaging and shipping' makes an abstract pathway concrete
+  for clients.
+coaching_translation: 'Describe phase II as the liver''s shipping department: it wraps
+  and labels used-up oestrogen so the body can send it out. Coach the inputs — methyl-donor
+  foods (beets, spinach, eggs, quinoa), B-vitamin-rich foods, cruciferous veg and
+  fibre — plus daily bowel movements, so the packaging actually leaves the body.'
+out_of_scope_notes: Checking methylation genes (MTHFR, COMT), prescribing methylated
+  B vitamins or calcium-D-glucarate, and interpreting stool findings is the clinician's
+  job.
+caveats:
+- Even perfect phase II fails if the client is constipated — elimination is the final
+  step.
+- Coach food and bowel habits; leave gene testing and supplement dosing to the clinician.
+linked_to_topics:
+- estrogen-metabolism
+- liver-detoxification
+- methylation-mthfr
+- homocysteine-and-methylation
+linked_to_mechanisms:
+- estrogen-phase-ii-methylation-deficit
+- glucuronidation
+- sulphation
+- methylation-cycle
+- comt-cyp-pathway-activity
+linked_to_supplements:
+- methylated-b-complex
+- calcium-d-glucarate
+sources:
+- id: fmca-m11-female-hormone-testing-class
+  location: Estrogen metabolism — phase II conjugation
+  quote: 'Phase II is the liver''s shipping department: methylation, sulfation and
+    glucuronidation package and neutralise the metabolites so they can be excreted.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

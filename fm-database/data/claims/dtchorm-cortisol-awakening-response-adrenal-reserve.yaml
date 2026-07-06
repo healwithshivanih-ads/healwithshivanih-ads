@@ -1,0 +1,38 @@
+slug: dtchorm-cortisol-awakening-response-adrenal-reserve
+statement: The cortisol awakening response is a salivary measure comparing a sample
+  taken the moment a person wakes with one 30 minutes later; a healthy adrenal system
+  produces a clear rise. A flat or absent rise signals depleted adrenal reserve —
+  the person is "running on empty" even if they feel fine, because they have adapted
+  to chronic stress. This is a newer data point that gives coaches a concrete, real-time
+  picture of how a client's stress physiology is doing.
+evidence_tier: plausible_emerging
+rationale: A flat awakening response is a powerful coaching opening — hard data that
+  a high-functioning, "I'm fine" client is about to crash, which motivates them to
+  slow down.
+coaching_translation: If a client brings a cortisol-awakening-response result and
+  the rise is flat, use it (without interpreting it as a diagnosis) to open a conversation
+  — "How are you sleeping? How's your stress?" — and coach sleep, pacing, and stress
+  load, while she works with a clinician on anything further.
+out_of_scope_notes: Formally interpreting the cortisol pattern and prescribing adaptogenic
+  herbs or other treatment belong to the clinician.
+caveats:
+- Not every salivary panel reports the awakening response; it requires the wake-plus-30-minute
+  paired sampling.
+linked_to_topics:
+- dtc-female-hormone-testing
+- adrenal-hormone-function
+- stress-management
+linked_to_mechanisms:
+- cortisol-awakening-response
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Cortisol awakening response pearl
+  quote: The awakening response measures adrenal reserve; a flat rise means the fuel
+    gauge is near empty, and it is a great way to show a high-functioning client real-time
+    data that they need to slow down.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

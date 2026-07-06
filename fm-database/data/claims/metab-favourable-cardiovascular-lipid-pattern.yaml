@@ -1,0 +1,40 @@
+slug: metab-favourable-cardiovascular-lipid-pattern
+statement: A favourable functional cardiovascular pattern taught in this lecture aims
+  for HDL in the 60–70 range, triglycerides ~70, LDL ~70 and ApoB ~70 with hsCRP under
+  1.0 — the '70/70/70/70' shorthand — which is thought to make it hard to build new
+  arterial plaque. HDL acts as the plaque clean-up crew, while lipoprotein(a) reflects
+  a largely genetic clotting tendency and uric acid is an early vascular-damage flag.
+evidence_tier: fm_specific_thin
+rationale: These specific numbers are the presenter's clinical-experience heuristics,
+  not consensus guidelines, so they are best used as directional coaching targets
+  to celebrate movement rather than as clinical cut-offs. HDL, Lp(a) and uric acid
+  round out the vascular picture for pattern-reading.
+coaching_translation: Use '70/70/70/70 with hsCRP under 1' as a friendly directional
+  goal a client can rally around, while making clear it's a functional aim their provider
+  confirms — not a prescription. Frame HDL as the clean-up trucks (more is better)
+  and note that Lp(a) is largely inherited, so focus lifestyle energy on the modifiable
+  markers.
+out_of_scope_notes: These are one clinician's experience-based optimal ranges; a client's
+  actual targets and any treatment decisions must come from their own clinician.
+caveats:
+- Specific numeric targets here are experience-based, not guideline consensus.
+- Lp(a) is largely genetic and usually doesn't move much with lifestyle.
+linked_to_topics:
+- cardiovascular-lipid-pattern-recognition
+- cardiovascular-risk-assessment
+- gout
+linked_to_mechanisms:
+- reverse-cholesterol-transport
+- lipoprotein-a-atherogenicity
+- apob-atherogenic-particle-burden
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Cardiovascular labs — 70/70/70/70 goals, HDL, Lp(a), uric acid
+  quote: If your HDL, triglycerides, LDL and ApoB are around 70 and hsCRP is under
+    1.0, it's very hard to make new arterial plaque; HDL is the clean-up crew and
+    Lp(a) is a genetic clotting tendency.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

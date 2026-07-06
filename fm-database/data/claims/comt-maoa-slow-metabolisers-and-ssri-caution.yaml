@@ -1,0 +1,29 @@
+slug: comt-maoa-slow-metabolisers-and-ssri-caution
+statement: Slow COMT/MAOA metabolisers accumulate dopamine and serotonin rather than
+  running low, yet present with the same anxiety/insomnia picture as low-neurotransmitter
+  clients. An SSRI added on top of already-high neurotransmitters can worsen anxiety
+  and irritability.
+evidence_tier: plausible_emerging
+rationale: If mood worsens after an SSRI start, note it as a heads-up for the prescriber
+  — the biochemistry may be the opposite of what was assumed.
+coaching_translation: If mood worsens after an SSRI start, note it as a heads-up for
+  the prescriber — the biochemistry may be the opposite of what was assumed.
+out_of_scope_notes: Never interpret this as grounds to alter psychiatric medication;
+  refer to the prescriber.
+caveats: []
+linked_to_topics:
+- nutrigenomics
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+- neurotransmitter-synthesis-impairment
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mary case — mood & behaviour
+  quote: Patients get put on an SSRI, but we may not know if it's driven by high or
+    low neurotransmitters; with slow COMT/MAOA, Mary isn't breaking them down and
+    the SSRI may compound it.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

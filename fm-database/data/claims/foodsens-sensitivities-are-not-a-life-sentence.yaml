@@ -1,0 +1,34 @@
+slug: foodsens-sensitivities-are-not-a-life-sentence
+statement: A food sensitivity is rarely a permanent verdict. Unlike a severe IgE allergy,
+  a delayed sensitivity is usually a reaction that can stem from a leaky gut or from
+  over-consumption, so it can change once the gut is repaired and foods are rotated.
+  The goal is to find the dose and frequency a person can tolerate and keep dietary
+  variety, not to avoid a food forever.
+evidence_tier: plausible_emerging
+rationale: Many clients arrive terrified of a food they eliminated years ago after
+  a single old IgG test — that is a misuse of testing, and the coach can help reopen
+  a wider, less fearful diet.
+coaching_translation: Reassure clients that most sensitivities warrant a timeout and
+  re-challenge, not lifelong avoidance, and help them rebuild variety at a tolerable
+  dose. A true severe IgE allergy is the exception that stays permanent.
+out_of_scope_notes: Whether a specific food can be safely reintroduced, and any true
+  allergy exclusions, are clinician decisions.
+caveats:
+- A severe IgE allergy is a genuine exception and should not be reintroduced.
+linked_to_topics:
+- food-sensitivity
+- elimination-diet
+linked_to_mechanisms:
+- leaky-gut
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Coaching takeaways — not forever
+  quote: Sensitivities are not forever; find the tolerable dose so people keep food
+    variety. Being off a food for a decade on the basis of one old IgG test is the
+    wrong use of testing.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

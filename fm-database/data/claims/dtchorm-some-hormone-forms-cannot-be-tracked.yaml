@@ -1,0 +1,35 @@
+slug: dtchorm-some-hormone-forms-cannot-be-tracked
+statement: Several hormone delivery forms cannot be reliably tracked by any test.
+  Progesterone cream (which is available over the counter) has no accurate test. Hormone
+  pellets spike to extreme levels right after insertion then fade, and no blood, saliva,
+  or urine measure follows them meaningfully. Buccal/sublingual drops are hard to
+  follow because absorption varies. Patches also surge when first applied and then
+  decline, so the time since application changes the reading.
+evidence_tier: plausible_emerging
+rationale: Clients on these forms may bring "abnormal" results that are simply untrackable
+  by that method — the coach can pre-empt the panic and redirect.
+coaching_translation: When a client is worried about a hormone result, ask what form
+  she is using and how long it had been on/in before testing. If she uses progesterone
+  cream, pellets, or drops, explain there is no accurate way to follow those and route
+  her to a clinician who manages hormone dosing.
+out_of_scope_notes: Choosing hormone delivery forms, dosing, and deciding how (or
+  whether) to monitor them are clinician tasks.
+caveats:
+- Pellets in particular are sometimes over-dosed with no good monitoring — a reason
+  to refer to a clinician who understands the limits.
+linked_to_topics:
+- dtc-female-hormone-testing
+- bioidentical-hormone-replacement-therapy
+- progesterone-physiology
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Untrackable forms — creams, pellets, drops, patches
+  quote: There is no accurate test for progesterone cream, no meaningful way to follow
+    pellets, and patches spike then fade — so always ask what form and how long it
+    was on before the test.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,43 @@
+slug: gutbio-protein-breakdown-products-and-low-stomach-acid
+statement: When proteins are not fully broken down in the upper gut — because of low
+  stomach acid (hypochlorhydria) or low pancreatic enzymes — they pass downstream
+  and get fermented by bacteria, showing up on stool tests as products of protein
+  breakdown (putrefactive markers). If these are high but pancreatic elastase is normal,
+  the pattern points to low stomach acid; low elastase points to pancreatic insufficiency.
+  This maldigestion can feed small-intestinal bacterial overgrowth and impair absorption
+  of B12, iron and minerals.
+evidence_tier: plausible_emerging
+rationale: It links a lab pattern to the everyday consequences a coach hears about
+  — bloating, fatigue, low ferritin — and to modifiable upstream causes like rushed,
+  stressed eating.
+coaching_translation: Coach the upstream basics that support stomach acid and enzyme
+  release — relaxed parasympathetic eating, chewing well, not drinking large volumes
+  with meals, managing stress — and flag possible malabsorption of B12 and iron for
+  the clinician to test if symptoms fit.
+out_of_scope_notes: Diagnosing hypochlorhydria or SIBO, and prescribing betaine HCl,
+  enzymes or SIBO therapy, is the clinician's role.
+caveats:
+- Faecal fats and muscle-fibre markers are far less informative than elastase and
+  protein-breakdown products.
+linked_to_topics:
+- hypochlorhydria
+- low-stomach-acid
+- sibo
+- maldigestion
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- hcl-and-pepsin-protein-digestion
+- low-stomach-acid
+- sibo-dysbiosis
+- nutrient-malabsorption
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Products of protein breakdown / putrefactive SCFAs
+  quote: Undigested protein from low acid or low pancreatic enzymes is fermented downstream,
+    driving SIBO and impairing B12, iron and mineral absorption; high breakdown products
+    with normal elastase implies low stomach acid.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

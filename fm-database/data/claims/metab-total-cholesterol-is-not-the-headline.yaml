@@ -1,0 +1,37 @@
+slug: metab-total-cholesterol-is-not-the-headline
+statement: Total cholesterol is not very informative because it lumps together protective
+  HDL and the atherogenic LDL and triglyceride fractions — a total above 200 can come
+  from high HDL or from high LDL/triglycerides. Functional lipid insight comes from
+  the subfractions and from tracking non-HDL (total minus HDL) over time.
+evidence_tier: plausible_emerging
+rationale: Clients are often frightened by an old 'cholesterol over 200 is bad' message.
+  Explaining that total cholesterol hides the real story lets you point at the fractions
+  that lifestyle actually shifts and gives a cleaner progress marker (non-HDL trending
+  down).
+coaching_translation: If a client is worried about a total-cholesterol number, explain
+  that the total combines the 'clean-up crew' HDL with the LDL and triglyceride fractions,
+  so it can be high for good reasons. Encourage them to look at the breakdown with
+  their provider and to track non-HDL going down as diet, movement and gut work take
+  effect.
+out_of_scope_notes: Setting lipid targets, deciding on statin therapy, or interpreting
+  an individual's lipid risk is the clinician's role.
+caveats:
+- Non-HDL is a useful trend but individual risk interpretation still belongs to the
+  clinician.
+linked_to_topics:
+- lipid-panel-interpretation
+- atherogenic-dyslipidemia
+- cardiovascular-risk-assessment
+linked_to_mechanisms:
+- reverse-cholesterol-transport
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Cardiovascular labs — total cholesterol and subfractions
+  quote: Total cholesterol isn't very helpful — it can be high from lots of good HDL
+    or from too many triglycerides and LDL; use the subfractions and track non-HDL
+    over time.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

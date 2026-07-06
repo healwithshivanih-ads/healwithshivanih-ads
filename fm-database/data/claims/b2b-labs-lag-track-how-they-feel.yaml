@@ -1,0 +1,31 @@
+slug: b2b-labs-lag-track-how-they-feel
+statement: Labs lag behind how a client feels — someone can clean up their diet, start
+  walking and feel amazing while triglycerides or LDL have only nudged. Biomarkers
+  typically take about 12 weeks to shift meaningfully (HbA1c reflects roughly three
+  months because red cells live that long), so the coach evaluates progress by trend
+  plus subjective wellbeing, not by chasing a fast lab number.
+evidence_tier: plausible_emerging
+rationale: Prevents discouragement and premature plan changes when a marker hasn't
+  moved yet.
+coaching_translation: Reassure clients that feeling better comes first and the lab
+  catches up; retest on a sensible timeline (about 12 weeks) and track how they feel
+  alongside the number.
+out_of_scope_notes: Setting the clinical retest interval for out-of-range or high-stakes
+  markers is the clinician's decision.
+caveats:
+- 12 weeks is a general guide; the exact window varies by marker.
+linked_to_topics:
+- functional-medicine-coaching
+linked_to_mechanisms:
+- behavior-change-accountability
+- biomarker-data-fluency
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: Evaluation — labs lag
+  quote: Sometimes labs lag; people feel amazing before the number moves. It takes
+    about 12 weeks to see biomarkers change; HbA1c is a three-month number.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: check-clotting-risk-before-hormone-therapy
+statement: Factor V and Factor II (prothrombin) variants raise venous-thrombosis risk,
+  and combining that risk with hormone therapy increases the chance of a clot/DVT.
+  Genetic clotting status (plus family history of DVT) is worth knowing before a clinician
+  decides on HRT.
+evidence_tier: plausible_emerging
+rationale: If a client on/considering HRT has a personal or family clotting history,
+  encourage them to raise clotting-risk testing with their prescriber.
+coaching_translation: If a client on/considering HRT has a personal or family clotting
+  history, encourage them to raise clotting-risk testing with their prescriber.
+out_of_scope_notes: Assessing clotting risk and prescribing HRT are strictly clinician
+  decisions.
+caveats: []
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+linked_to_mechanisms:
+- prothrombotic-state
+- thromboembolism
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mary case — blood clotting
+  quote: We always want to know a blood-clotting risk before hormone therapy; Mary
+    has Factor V and Factor II heterozygous variants, which raises the risk substantially.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

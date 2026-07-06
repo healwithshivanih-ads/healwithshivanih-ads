@@ -1,0 +1,31 @@
+slug: foodsens-meet-client-where-they-are-partial-elimination
+statement: Meet the client where they are physiologically and emotionally. Testing
+  is useful for people who want data before making a move, and for clients unwilling
+  to eliminate everything, a smaller elimination (for example gluten and dairy first)
+  or removing only the top color-coded responders on a report can be the first doable
+  step. Small steps build confidence and capacity for change.
+evidence_tier: plausible_emerging
+rationale: A partial, achievable start often produces a felt improvement that motivates
+  further change — far better than an all-or-nothing plan the client abandons.
+coaching_translation: 'Offer graded options: a full elimination, a two-food start,
+  or just the highest responders. Let the client choose what is available to them
+  right now and build from there.'
+out_of_scope_notes: The clinician decides what ultimately needs elimination; the coach
+  helps sequence achievable steps toward that.
+caveats: []
+linked_to_topics:
+- elimination-diet
+- food-sensitivity
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Start where the client is at
+  quote: You start with what is available physiologically and emotionally — a smaller
+    elimination like gluten and dairy first, or just the top four-plus responders
+    on a fit test — because small steps build confidence and capacity for change.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

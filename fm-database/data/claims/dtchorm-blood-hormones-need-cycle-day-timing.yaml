@@ -1,0 +1,36 @@
+slug: dtchorm-blood-hormones-need-cycle-day-timing
+statement: Blood hormone tests are well-validated and accurate, but the result is
+  only meaningful if the sample was drawn at the right point in the cycle. Estrogen
+  and progesterone swing across the cycle, so a progesterone level meant to confirm
+  ovulation should be drawn around day 19-21 of a 28-day cycle (shifted for shorter
+  or longer cycles) and an FSH on about day 3. For consistency, hormone draws are
+  best done early morning and fasting.
+evidence_tier: strong
+rationale: A "random" estrogen or progesterone value with no cycle context can look
+  abnormal for no real reason. Knowing the cycle day tells you whether the number
+  even makes sense.
+coaching_translation: When a client brings hormone bloods, ask "Where were you in
+  your cycle when this was drawn, and do you know when your next period started?"
+  If she can't say, the result may not be interpretable — flag that gently and send
+  her back to her clinician.
+out_of_scope_notes: Deciding which hormone to draw, on which day, and interpreting
+  the value are clinician tasks.
+caveats:
+- Very irregular cycles make it hard to catch the right day; do not over-read a value
+  collected at an unknown cycle point.
+linked_to_topics:
+- dtc-female-hormone-testing
+- healthy-menstrual-cycle-baseline
+- coach-clinician-collaboration
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Blood testing — cycle timing
+  quote: Blood tests are accurate, but a progesterone check for ovulation needs day
+    19-21 of a 28-day cycle and FSH around day 3; always ask where she was in her
+    cycle or you may have to throw the result out.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

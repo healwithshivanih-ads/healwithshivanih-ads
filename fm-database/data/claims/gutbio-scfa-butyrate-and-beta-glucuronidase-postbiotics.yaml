@@ -1,0 +1,41 @@
+slug: gutbio-scfa-butyrate-and-beta-glucuronidase-postbiotics
+statement: Among microbial metabolites (postbiotics), short-chain fatty acids — especially
+  butyrate — are the best-studied marker of overall gut health, reflecting a well-fed,
+  balanced community. Beta-glucuronidase is a Goldilocks marker — too high lets oestrogens
+  and other hormones be de-conjugated and recirculated instead of excreted, while
+  too low also signals imbalance. Secondary bile acids are an emerging third readout.
+evidence_tier: plausible_emerging
+rationale: These metabolites connect the microbiome to whole-body outcomes a coach
+  cares about — energy, inflammation, and even oestrogen recirculation — and they
+  respond to diet.
+coaching_translation: When butyrate or short-chain fatty acids are low, coach for
+  their natural production — soluble/prebiotic fibre and colourful polyphenol-rich
+  foods — rather than relying only on a butyrate supplement; when beta-glucuronidase
+  is high, support fibre and a plant-diverse diet that helps hormone clearance, leaving
+  interpretation to the clinician.
+out_of_scope_notes: Interpreting beta-glucuronidase or bile-acid values clinically,
+  and linking them to a specific hormone or condition, is the clinician's role.
+caveats:
+- Aim to modify the environment so the body makes its own butyrate, not just to supplement
+  it.
+linked_to_topics:
+- scfa-short-chain-fatty-acids
+- estrobolome
+- gut-microbiome
+- estrogen-metabolism
+linked_to_mechanisms:
+- butyrate-production
+- beta-glucuronidase-deconjugation
+- estrogen-enterohepatic-recirculation
+- colonic-fermentation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Postbiotics — short-chain fatty acids, beta-glucuronidase, secondary bile
+    acids
+  quote: Butyrate is the most important postbiotic marker of gut health; beta-glucuronidase
+    is a Goldilocks marker where high recirculates oestrogen and low signals imbalance.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

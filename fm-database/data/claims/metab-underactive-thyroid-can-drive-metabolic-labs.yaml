@@ -1,0 +1,39 @@
+slug: metab-underactive-thyroid-can-drive-metabolic-labs
+statement: An underactive thyroid slows the burning of glucose and fat, so unaddressed
+  hypothyroidism can back-log blood sugar and fatty acids and show up as worsening
+  pre-diabetes and cholesterol markers. TSH plus free T4 (precursor) and free T3 (the
+  active form) give a fuller picture, and thyroid antibodies flag autoimmune involvement.
+evidence_tier: strong
+rationale: 'This is a key root-cause link: a client''s dysglycaemia or high cholesterol
+  may partly stem from suboptimal thyroid function. Knowing this helps the coach set
+  realistic expectations and reinforce the clinician''s thyroid workup rather than
+  blaming diet alone.'
+coaching_translation: If a client with stubborn blood-sugar or cholesterol numbers
+  also has thyroid symptoms, encourage them to have their provider look at the full
+  thyroid picture (TSH, free T4, free T3, antibodies). Frame it as 'the engine that
+  burns fuel may be running slow', and keep supporting the foundational lifestyle
+  habits that help either way.
+out_of_scope_notes: Diagnosing hypothyroidism, interpreting free T3/T4 and antibodies,
+  and prescribing thyroid treatment are the clinician's role.
+caveats:
+- Thyroid interpretation is nuanced (conversion, reverse T3, antibodies); leave the
+  clinical read to the provider.
+linked_to_topics:
+- hypothyroidism
+- thyroid-dysfunction
+- prediabetes-metabolic-syndrome
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+- hpt-axis-dysregulation
+- thyroid-autoimmunity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Thyroid panel
+  quote: An underactive thyroid means glucose and fat aren't burned well and can back-log,
+    raising blood sugar and cholesterol — so thyroid can be the root cause of metabolic
+    markers.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: foodsens-complement-tcell-distinguishes-inflammatory-reactions
+statement: Because IgG alone cannot tell you whether a food is driving inflammation,
+  better panels pair IgG with complement (C3d) or T-cell (CD3/CD4) activation markers.
+  Complement activation signals the immune alarm has been tripped and inflammation
+  is being generated; T-cell activation indicates definitive cell-mediated inflammation.
+  Combining IgG with complement or T-cell data gives a far more accurate read on the
+  inflammatory pattern.
+evidence_tier: plausible_emerging
+rationale: This is why practitioners increasingly choose panels with complement or
+  T-cell components — they separate a merely-present antibody from an actively inflammatory
+  reaction.
+coaching_translation: Help a client understand the difference between a test that
+  only shows antibodies and one that also shows an inflammatory signal, so they know
+  why their clinician may prefer one lab over another.
+out_of_scope_notes: Ordering and clinically interpreting complement or T-cell food
+  panels is strictly the clinician's role; the coach educates about what the markers
+  mean.
+caveats: []
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- chronic-inflammation
+linked_to_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Types of testing — complement and T-cell
+  quote: 'Combine IgG with complement (C3) or CD3 T-cell activation: complement means
+    inflammation is being triggered and T-cell activation means definitive cell-mediated
+    inflammation — that pairing gives the most accurate information.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

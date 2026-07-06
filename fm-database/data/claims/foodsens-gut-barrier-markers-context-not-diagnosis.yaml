@@ -1,0 +1,39 @@
+slug: foodsens-gut-barrier-markers-context-not-diagnosis
+statement: Some panels add gut-barrier markers that place food reactions in context.
+  Zonulin regulates tight junctions and, when elevated, suggests gaps letting food
+  proteins leak through. Occludin is a more advanced marker of leaky gut with inflammation.
+  Lipopolysaccharide (LPS) endotoxin points to gram-negative dysbiosis, and secretory
+  IgA one versus two can indicate whether the process is higher (stomach/small intestine)
+  or further along in the large intestine.
+evidence_tier: plausible_emerging
+rationale: These markers help answer the chicken-or-egg question — whether food reactivity
+  is driving gut permeability or a leaky gut is driving the food reactions — which
+  shapes the repair plan.
+coaching_translation: If a client's report shows these markers, explain in plain terms
+  what each points to (barrier integrity, dysbiosis, location) and encourage them
+  to work the results through with their clinician while you support gut-repair habits.
+out_of_scope_notes: Interpreting zonulin, occludin, LPS or secretory IgA and deciding
+  on treatment is the clinician's role.
+caveats:
+- A raised candida marker on these panels reflects normal gut candida leaking through
+  a permeable barrier — not systemic yeast requiring an anti-candida diet.
+linked_to_topics:
+- gut-dysbiosis
+linked_to_mechanisms:
+- tight-junction-dysfunction
+- lps-endotoxemia
+- galt-immune-activation
+- dysbiosis
+- leaky-gut
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Gut-barrier panel markers
+  quote: Zonulin and occludin relate to tight junctions and leaky gut with inflammation;
+    LPS signals gram-negative dysbiosis; IgA one vs two shows whether the process
+    is in the stomach/small intestine or the large intestine. A positive candida marker
+    means normal gut candida leaking through, not systemic yeast.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

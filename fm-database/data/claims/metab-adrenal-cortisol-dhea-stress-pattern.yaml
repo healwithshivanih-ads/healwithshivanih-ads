@@ -1,0 +1,41 @@
+slug: metab-adrenal-cortisol-dhea-stress-pattern
+statement: Because chronic stress affects metabolic health, the adrenal picture is
+  read as a pattern of morning cortisol (drawn within about two hours of waking) alongside
+  DHEA-sulphate, the calming counterweight to cortisol. High cortisol with falling
+  DHEA suggests a high-stress state, while low cortisol with low DHEA suggests deeper
+  stress depletion.
+evidence_tier: plausible_emerging
+rationale: Stress physiology is core coaching territory. Understanding the cortisol/DHEA
+  relationship helps the coach connect a client's lifestyle load to their metabolic
+  markers and target stress, sleep and recovery. Timing matters — a late morning draw
+  can fake a low cortisol.
+coaching_translation: 'Coach the modifiable side: stress regulation, sleep, boundaries
+  and recovery. If a client is testing morning cortisol, remind them it must be drawn
+  within ~2 hours of waking so a naturally-fallen value isn''t mistaken for low output.
+  Interpret the pattern as motivation to protect recovery, and leave the clinical
+  read to their provider.'
+out_of_scope_notes: Diagnosing adrenal dysfunction and interpreting cortisol/DHEA-S
+  results clinically are the clinician's role.
+caveats:
+- Morning cortisol is time-sensitive; a draw after ~2 hours post-waking can misleadingly
+  read low.
+- Adrenal-pattern interpretation is contested clinically — keep coaching to lifestyle.
+linked_to_topics:
+- adrenal-hormone-function
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- cortisol-elevation
+- dhea-depletion
+- dhea-cortisol-ratio-imbalance
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Adrenal panel — cortisol and DHEA-S
+  quote: High cortisol with dropping DHEA signals a high-stress state; low cortisol
+    with low DHEA signals stress depletion — and morning cortisol must be caught within
+    two hours of waking.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,63 @@
+slug: dtc-female-hormone-testing
+display_name: Direct-to-Consumer Female Hormone Testing (Scope & Nuance)
+aliases:
+- direct-to-consumer hormone testing
+- DTC hormone labs
+- female hormone test interpretation for coaches
+- hormone testing nuances
+summary: How a health coach supports a client who has ordered direct-to-consumer female-hormone
+  labs (blood, saliva, or dried-urine/DUTCH) without a clinician first interpreting
+  them. The accuracy of every hormone result depends on collection nuances — cycle
+  day, time of day, sample type, and what hormone form the client is taking — so a
+  value flagged "abnormal" is often normal for the context, and a "normal" value can
+  be misleading. The coach's job is to ask the when/how/what-else questions, take
+  the emotional heat off, and route the client back to their clinician for interpretation.
+common_symptoms: []
+red_flags:
+- client panicking over a flagged DTC hormone value and asking the coach to interpret
+  it or decide what to do
+- client self-adjusting hormones (including OTC progesterone cream) based on a DTC
+  result
+related_topics:
+- coach-clinician-collaboration
+- perimenopause
+- menopause
+- adrenal-hormone-function
+- estrogen-metabolism
+- sex-hormone-binding-globulin
+- fsh-as-aging-biomarker
+key_mechanisms:
+- fsh-elevation-aging-cascade
+- cortisol-awakening-response
+- shbg-hormone-binding
+- estrogen-clearance-liver-gut
+coaching_scope_notes: 'In scope: educate on WHY collection nuances matter, ask the
+  client when in her cycle and at what time of day the sample was taken and what hormone
+  forms she is using, reassure her that a flagged value may simply be the wrong test
+  done at the wrong time, and route her to a clinician for interpretation. A high
+  FSH in a menopausal woman is expected — the coach can calm that panic. Use the cortisol-awakening-response
+  pattern (when a client brings one) as an opening to coach sleep and stress.'
+clinician_scope_notes: Ordering hormone tests, interpreting values, deciding which
+  test fits the clinical question, and prescribing or adjusting hormone therapy all
+  belong to the clinician. The coach never tells a client a value is normal or abnormal.
+notes_for_coach: 'Cheat-sheet Wendy Warner suggests every coach keep. Blood: good
+  for testosterone (order total AND free/available), and for estradiol/progesterone
+  if you know the cycle day; cortisol and DHEA (not DHEA-S) must be drawn before 9am.
+  Saliva: ONLY cortisol is accurate — reassure clients about weird salivary estrogen/progesterone
+  results. Dried-urine "DUTCH" (Dried Urine Test for Comprehensive Hormones): convenient
+  home spot collection, accurate for a non-medicated cycling or menopausal woman,
+  and uniquely shows estrogen/testosterone breakdown products and methylation of estrogen.
+  Some hormone forms cannot be tracked by any test: progesterone cream, hormone pellets,
+  and buccal/sublingual drops. Patches and pellets spike high right after application
+  then fade, so timing of the draw matters.'
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Full conversation — summary cheat-sheet
+  quote: What looks like a normal test may not be normal and what looks abnormal is
+    often not abnormal; the coach asks when and how it was collected, calms the client,
+    and refers back to the clinician.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

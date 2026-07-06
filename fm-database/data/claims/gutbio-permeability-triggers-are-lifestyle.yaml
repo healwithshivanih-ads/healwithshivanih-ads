@@ -1,0 +1,41 @@
+slug: gutbio-permeability-triggers-are-lifestyle
+statement: The triggers of increased intestinal permeability are largely modifiable
+  — poor diet, stress, infection, dysbiosis, inflammation, poor digestion, alcohol
+  and toxins, medications (especially NSAIDs like aspirin, ibuprofen and naproxen),
+  and nutritional deficiencies — even traumatic brain injury, because a leaky brain
+  barrier and a leaky gut barrier travel together. Its downstream effects include
+  food allergies, sensitivities and intolerances as undigested antigens cross the
+  barrier and activate the immune system.
+evidence_tier: plausible_emerging
+rationale: Almost every permeability trigger is something a coach can help a client
+  shift, which is why permeability issues are described as primarily about stressors,
+  poor diet and toxins.
+coaching_translation: Focus lifestyle coaching on the modifiable triggers — an anti-inflammatory
+  whole-food diet, stress and vagal-tone work, reducing alcohol, and noting frequent
+  NSAID use so the client can discuss alternatives with their clinician.
+out_of_scope_notes: Advising a client to start or stop any medication, including NSAIDs,
+  and diagnosing food allergy or celiac disease, is the clinician's role.
+caveats:
+- Fasano's celiac model shows permeability usually acts alongside a genetic susceptibility
+  and an environmental trigger, not alone.
+linked_to_topics:
+- autoimmunity-leaky-gut-connection
+- anti-inflammatory-diet
+- food-sensitivities
+- celiac-disease
+linked_to_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
+- blood-brain-barrier-permeability
+- galt-immune-activation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Triggers and effects of increased intestinal permeability
+  quote: Poor diet, stress, infection, dysbiosis, inflammation, alcohol, toxins, NSAIDs,
+    nutrient deficiencies and even TBI trigger permeability, which then drives food
+    sensitivities and immune activation.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

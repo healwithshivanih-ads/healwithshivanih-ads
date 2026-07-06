@@ -1,0 +1,29 @@
+slug: omega3-epigenetically-downregulates-inflammation
+statement: Omega-3 fatty acids (EPA/DHA, and specialised pro-resolving mediators)
+  act epigenetically to down-regulate the TNF-alpha, IL-6 and IL-1 inflammatory genes
+  — a key reason they help clients who are switching on inflammation through overtraining
+  or toxic load.
+evidence_tier: plausible_emerging
+rationale: Reinforce omega-3-rich foods / a provider-recommended EPA-DHA to counter
+  inflammation from high training loads.
+coaching_translation: Reinforce omega-3-rich foods / a provider-recommended EPA-DHA
+  to counter inflammation from high training loads.
+out_of_scope_notes: Dosing is a clinician decision.
+caveats: []
+linked_to_topics:
+- metabolic-overtraining
+linked_to_mechanisms:
+- nrf2-pathway-activation
+linked_to_supplements:
+- fish-oil-epa-dha
+- omega-3
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Q&A — omega-3 epigenetics
+  quote: Omega-3s switch off the TNF-alpha, interleukin-6 and interleukin-1 genes
+    that up-regulate inflammation — we just didn't know it was epigenetics behind
+    it.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

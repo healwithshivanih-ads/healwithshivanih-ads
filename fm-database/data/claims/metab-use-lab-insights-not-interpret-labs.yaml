@@ -1,0 +1,36 @@
+slug: metab-use-lab-insights-not-interpret-labs
+statement: A health coach uses lab insights to support behaviour change; they do not
+  interpret or diagnose from labs, which stays with the ordering clinician. The coaching
+  value is gathering insights from lab patterns and using them to reinforce lifestyle
+  goals and celebrate progress.
+evidence_tier: plausible_emerging
+rationale: 'This is the scope line that keeps a coach legally and ethically safe.
+  Language matters: ''here is an insight this pattern points to'' educates and empowers;
+  ''your labs mean you have X'' diagnoses and is outside scope.'
+coaching_translation: Frame lab conversations as insight and education, never diagnosis.
+  Say things like 'this marker is one your provider tracks for heart health — the
+  good news is it responds to the food and movement changes we're working on' rather
+  than telling a client what a value 'means' clinically. Point clients back to their
+  clinician for interpretation.
+out_of_scope_notes: Interpreting labs, diagnosing, ordering tests, or prescribing
+  treatment based on lab values is the clinician's role. Independent coaches must
+  be especially careful with language.
+caveats:
+- Clinicians who delegate to a coach may share more interpretation; independent coaches
+  have a tighter boundary.
+linked_to_topics:
+- functional-medicine-coaching
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- biomarker-data-fluency
+- patient-centered-care-model
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Introduction — scope of practice
+  quote: Using lab insights to support clients — not interpreting labs, which is outside
+    a coach's scope of practice.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

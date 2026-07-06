@@ -1,0 +1,31 @@
+slug: scope-redirect-lab-questions-to-provider-prep
+statement: When a client presents lab findings and asks what they mean, the coach
+  does not interpret them. Instead the coach helps the client formulate specific,
+  focused questions for their provider, can role-play that appointment, and supports
+  a healthy lifestyle plan aligned with the doctor's recommendations.
+evidence_tier: plausible_emerging
+rationale: This keeps the coach in scope while still being genuinely useful — clients
+  often just want to feel heard and to walk into their appointment prepared.
+coaching_translation: 'Say: ''Interpreting individual findings is beyond a coach''s
+  scope, but I can help you build a full conversation and a set of questions for your
+  provider — we can even role-play it now — and support a lifestyle plan that fits
+  their recommendations.'''
+out_of_scope_notes: Explaining what a specific biomarker or allele means for that
+  individual is clinical interpretation and belongs to the provider.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-scope-ethics
+  location: Unit 18 — client asking what a lab marker means
+  quote: Beyond my scope to interpret individual lab findings; what I can support
+    is how to have a full conversation with your provider and prepare questions —
+    we can practise it in session.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

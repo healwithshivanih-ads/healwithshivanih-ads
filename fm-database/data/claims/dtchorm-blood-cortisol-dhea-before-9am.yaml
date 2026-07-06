@@ -1,0 +1,29 @@
+slug: dtchorm-blood-cortisol-dhea-before-9am
+statement: A blood cortisol is only meaningful if drawn before 9am, because cortisol
+  follows a strong daily (diurnal) rhythm; a level drawn later in the day should be
+  ignored. The same timing applies to plain DHEA. DHEA-sulfate (DHEA-S), by contrast,
+  lacks that diurnal swing and can be drawn accurately at any time of day.
+evidence_tier: strong
+rationale: A cortisol or DHEA value from a late-morning DTC draw can look off simply
+  because of timing, not physiology — knowing this prevents false alarm.
+coaching_translation: If a client is worried about a blood cortisol or DHEA result,
+  ask what time of day the blood was drawn. If it was well after 9am, gently note
+  the timing may make it unreliable and suggest she confirm with her clinician.
+out_of_scope_notes: Ordering and interpreting cortisol/DHEA are clinician tasks.
+caveats:
+- The before-9am rule is for cortisol and DHEA; DHEA-S is exempt.
+linked_to_topics:
+- dtc-female-hormone-testing
+- adrenal-hormone-function
+linked_to_mechanisms:
+- cortisol-awakening-response
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Blood cortisol and DHEA timing
+  quote: A blood cortisol must be drawn before 9am or it is ignored; DHEA has the
+    same rule, but DHEA-sulfate has no diurnal pattern and can be drawn any time.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

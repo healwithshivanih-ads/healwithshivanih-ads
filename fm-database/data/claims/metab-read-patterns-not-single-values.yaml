@@ -1,0 +1,35 @@
+slug: metab-read-patterns-not-single-values
+statement: No single lab value should define a case; insight comes from patterns across
+  several related markers. For example, one mildly off inflammation marker among six
+  that are otherwise fine is weak evidence, whereas all six trending off together
+  is a strong signal of inflammation.
+evidence_tier: plausible_emerging
+rationale: Pattern-thinking protects clients from over-reacting to one out-of-range
+  value and helps the coach spot the coherent story (inflammation, dysglycaemia, autoimmunity)
+  that lifestyle work can actually target.
+coaching_translation: When reviewing a set of results with a client, look at the constellation,
+  not the outlier. Reassure them that one slightly-off marker in an otherwise clean
+  panel is not a crisis, and that consistent patterns across markers are what matter
+  — and are exactly what daily habits move.
+out_of_scope_notes: Formally identifying a diagnostic pattern and acting on it is
+  the clinician's role; the coach observes patterns and offers supportive insight
+  only.
+caveats:
+- An out-of-range value can still be benign (e.g. an individual outlier); flag, don't
+  panic.
+linked_to_topics:
+- cardiovascular-lipid-pattern-recognition
+- chronic-inflammation
+linked_to_mechanisms:
+- biomarker-data-fluency
+- patient-centered-care-model
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Closing — look for patterns, not one value
+  quote: Never put everything on one lab value — look for patterns; six inflammation
+    markers off together is a much stronger signal than one.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

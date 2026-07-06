@@ -1,0 +1,30 @@
+slug: b2b-what-do-you-think-of-my-labs-trap
+statement: When a client hands over labs and asks 'what do you think of my labs?',
+  that is the moment a coach can step out of scope. Instead of interpreting, the coach
+  explores who ordered the test, why the client got it and what concern prompted it,
+  and what the client wants to do about it on the lifestyle side.
+evidence_tier: plausible_emerging
+rationale: A concrete, repeatable move that prevents the most common scope slip while
+  still engaging warmly with the client's data.
+coaching_translation: Treat that question as a neon warning sign; answer with the
+  who / why / what questions and 'there's a lot you can do with lifestyle', rather
+  than reading the result.
+out_of_scope_notes: Giving a clinical read of the labs — even a quick one — is the
+  clinician's job.
+caveats: []
+linked_to_topics:
+- functional-medicine-coaching
+- ambivalence-in-coaching
+linked_to_mechanisms:
+- biomarker-data-fluency
+- change-talk-activation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: The coaching trap — who, why, what
+  quote: When they ask what you think of their labs, don't take the bait; explore
+    who ordered it, why they got it, and what they want to do about it.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

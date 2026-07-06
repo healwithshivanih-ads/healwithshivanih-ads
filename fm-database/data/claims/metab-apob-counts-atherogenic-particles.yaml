@@ -1,0 +1,35 @@
+slug: metab-apob-counts-atherogenic-particles
+statement: Apolipoprotein B (ApoB) tags every atherogenic lipoprotein particle, so
+  it reports the total number of LDL/triglyceride-carrying particles in circulation
+  — the 'bad water balloons' — rather than the cholesterol they carry. A rising or
+  falling ApoB across serial tests is a clean way to see vascular risk moving.
+evidence_tier: strong
+rationale: 'Particle count (ApoB) predicts cardiovascular risk better than cholesterol
+  concentration alone, and it is intuitive for clients: fewer particles equals fewer
+  things that can lodge and inflame the artery wall. It gives a motivating before/after
+  number.'
+coaching_translation: Describe ApoB as a count of the particles that can drive artery
+  plaque — fewer is better. When a client's provider shares serial ApoB values, celebrate
+  a downward trend as concrete evidence their food, gut and detox work is paying off,
+  and encourage them to keep going.
+out_of_scope_notes: Ordering ApoB, setting a target, and deciding on medication belong
+  to the clinician; the coach educates and reinforces progress.
+caveats:
+- Different labs (e.g. Quest vs LabCorp) format the panel differently; the coach reads
+  the value, not the diagnosis.
+linked_to_topics:
+- cardiovascular-risk-assessment
+- atherogenic-dyslipidemia
+- lipid-panel-interpretation
+linked_to_mechanisms:
+- apob-atherogenic-particle-burden
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Cardiovascular labs — ApoB particle number
+  quote: ApoB equals the number of bad particles floating in the blood — each atherogenic
+    'water balloon' carries a B-for-bad tag.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

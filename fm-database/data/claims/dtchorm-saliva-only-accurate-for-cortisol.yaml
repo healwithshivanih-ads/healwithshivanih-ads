@@ -1,0 +1,32 @@
+statement: In saliva testing, the only hormone that is reliably accurate is cortisol.
+  Salivary estrogen, progesterone, testosterone, and DHEA are not dependable — for
+  example, salivary DHEA depends on how fast the person is salivating, so even the
+  smell of coffee or baked goods can skew it. Clients will still bring salivary panels
+  measuring all hormones, and those non-cortisol results can look strange without
+  meaning anything.
+slug: dtchorm-saliva-only-accurate-for-cortisol
+evidence_tier: plausible_emerging
+rationale: Some organisations teach that saliva is accurate for all hormones, which
+  isn't supported; a coach who knows this can defuse alarm over weird salivary estrogen/progesterone
+  numbers.
+coaching_translation: If a client brings a salivary panel with odd estrogen or progesterone
+  results, reassure her politely that saliva isn't accurate for anything except cortisol,
+  and suggest she ask her clinician about a more appropriate test.
+out_of_scope_notes: Choosing the right test and interpreting hormone values are clinician
+  tasks.
+caveats: []
+linked_to_topics:
+- dtc-female-hormone-testing
+- adrenal-hormone-function
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: Salivary testing
+  quote: The only saliva hormone test that is truly accurate is cortisol; salivary
+    DHEA and sex hormones are unreliable because output depends on salivation rate,
+    so reassure clients about odd non-cortisol salivary results.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

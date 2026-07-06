@@ -1,0 +1,34 @@
+slug: scope-coach-executes-food-plans-does-not-prescribe
+statement: With food plans, the coach does not prescribe. Either the client expresses
+  interest (e.g. fasting, ketogenic) or the clinician prescribes specifics (e.g. cardiometabolic
+  plan at 1400 kcal); the coach then executes using ready-made plans whose serving
+  sizes and macronutrient distribution were already designed by nutrition professionals.
+evidence_tier: plausible_emerging
+rationale: 'Clarifies the nutrition-counselling boundary: the coach''s job is deeper
+  questioning, education, and supporting the client''s felt experience of the plan
+  — not designing the diet.'
+coaching_translation: Respond to the client's desire or the clinician's prescription
+  with curious questions — 'What inspired this? Where do you want to start? How do
+  you feel when you do it?' — and hand over the pre-built plan and companion guides
+  rather than creating one.
+out_of_scope_notes: Designing an individualised therapeutic diet or macronutrient
+  prescription is registered-dietitian / clinician work; the coach executes and supports,
+  not prescribes.
+caveats:
+- The coach still needs to teach the client how to read and navigate the provided
+  food-plan sheets.
+linked_to_topics:
+- coaching-scope-of-practice
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-scope-ethics
+  location: Unit 19 — coach role within nutrition food plans
+  quote: You are not prescribing it; you respond to the client's desires or the clinician's
+    prescription and execute using food plans whose serving sizes and macronutrient
+    distribution were already worked out.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

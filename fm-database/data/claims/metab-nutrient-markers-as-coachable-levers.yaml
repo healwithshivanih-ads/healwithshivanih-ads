@@ -1,0 +1,38 @@
+slug: metab-nutrient-markers-as-coachable-levers
+statement: 'Several nutrient markers give insight into metabolic and cardiovascular
+  health and respond to food and lifestyle: homocysteine under ~7 suggests sufficient
+  B12 and folate for heart health, B12 is best in the upper quartile, vitamin D (25-OH)
+  is aimed at ~60–80, and magnesium ideally in the upper half. Iron has a sweet spot
+  — over-replacement (especially in non-menstruating clients) is a real risk to watch.'
+evidence_tier: plausible_emerging
+rationale: These are directly coachable through diet and, with clinician sign-off,
+  targeted supplementation, and they make satisfying progress markers. The iron caution
+  protects clients from harm from unsupervised supplementation.
+coaching_translation: 'Use nutrient markers to reinforce food-first habits — B12/folate-rich
+  foods for a lower homocysteine, sensible sun and vitamin-D-rich foods, magnesium-rich
+  whole foods. Flag over-supplementation risk: encourage clients (especially non-menstruating
+  ones on iron) to confirm any supplement plan with their provider rather than self-dosing
+  upward.'
+out_of_scope_notes: Diagnosing deficiency, setting individual optimal targets, and
+  prescribing supplement doses are the clinician's role; the coach educates and reinforces
+  food-first strategies.
+caveats:
+- Optimal nutrient ranges here are experience-based guidance, not consensus cut-offs.
+- Iron over-replacement can cause harm — never encourage clients to raise iron doses
+  on their own.
+linked_to_topics:
+- nutritional-deficiency-screening
+- homocysteine-and-methylation
+- vitamin-d3
+linked_to_mechanisms:
+- elevated-homocysteine
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Nutrient panel — homocysteine, B12, vitamin D, magnesium, iron
+  quote: Homocysteine under 7 suggests enough B12 and folate for heart health, vitamin
+    D aim is 60–80, and watch for iron over-replacement in non-menstruating clients.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

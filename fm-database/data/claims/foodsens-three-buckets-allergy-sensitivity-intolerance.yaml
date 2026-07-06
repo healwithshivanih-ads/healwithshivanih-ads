@@ -1,0 +1,37 @@
+slug: foodsens-three-buckets-allergy-sensitivity-intolerance
+statement: Food reactions fall into three distinct buckets. A food allergy is an immediate,
+  IgE-mediated immune reaction (minutes to hours; hives, swelling, anaphylaxis). A
+  food sensitivity is a delayed, often IgG-associated immune response (hours to days;
+  brain fog, fatigue, joint pain, bloating, rashes). A food intolerance is non-immune
+  — an inability to digest a food, such as lactose intolerance from missing the lactase
+  enzyme, producing gas, bloating and GI upset soon after eating.
+evidence_tier: strong
+rationale: Getting the category right prevents the common error of treating a mild
+  delayed sensitivity as if it were a dangerous allergy — the coaching conversation,
+  urgency and food-restriction decisions differ completely for each.
+coaching_translation: 'Help the client name which bucket their reaction likely falls
+  into using plain language: ''immediate alarm'' vs ''delayed low-grade reaction''
+  vs ''a digestion problem, not an immune one.'' Reinforce that only true allergy
+  is an emergency.'
+out_of_scope_notes: Diagnosing an allergy vs sensitivity vs intolerance, and any anaphylaxis
+  management, is the clinician's role.
+caveats:
+- An allergy is immediate and can be life-threatening; never reframe a diagnosed IgE
+  allergy as a mere sensitivity.
+linked_to_topics:
+- food-allergy-ige-mediated
+- food-sensitivity
+- food-intolerance
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Defining food reactions — three buckets
+  quote: 'Three categories: food allergies are immediate IgE reactions; food intolerances
+    (e.g. lactose) are non-immune digestive problems; food sensitivities are delayed
+    immune reactions hours to days later.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

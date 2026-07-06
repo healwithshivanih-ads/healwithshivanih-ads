@@ -1,0 +1,44 @@
+slug: femhorm-estrogen-metabolism-2-4-16-pathways
+statement: 'Urine (DUTCH-style) testing is where oestrogen metabolism shows up: after
+  oestrogen does its job it is processed in the liver into 2-, 4- and 16-hydroxy metabolites.
+  The 2-hydroxy path is the protective one, the 4-hydroxy path forms a reactive quinone
+  linked to DNA damage and higher breast-cancer risk, and 16-hydroxy is more inflammatory
+  (breast tenderness, fibroids, PMS). Crucially, this pathway is modifiable by lifestyle
+  — a coach can educate on this while leaving interpretation to the clinician.'
+evidence_tier: plausible_emerging
+rationale: 'Understanding the 2/4/16 split turns an intimidating lab into a lifestyle
+  lever: cruciferous vegetables, phytonutrients, movement and lower alcohol can shift
+  metabolism toward the protective pathway.'
+coaching_translation: 'Explain oestrogen metabolism simply: the body has a ''good''
+  route (2-OH) and less-favourable routes (4-OH, which is harsher, and 16-OH, which
+  is more inflammatory). The empowering part is that food and lifestyle can nudge
+  the body toward the protective route — so you coach cruciferous veg, colour/phytonutrient
+  diversity, movement and less alcohol, and let the clinician read the actual numbers.'
+out_of_scope_notes: Interpreting the 2:4:16 ratio, factoring in genes, and prescribing
+  targeted supplements (e.g. sulforaphane, NAC, resveratrol) is the clinician's role.
+caveats:
+- You can only measure oestrogen metabolism in urine, not blood or saliva.
+- Even the protective 2-OH metabolite still needs to be neutralised in phase II.
+linked_to_topics:
+- estrogen-metabolism
+- estrogen-dominance
+- liver-detoxification
+- breast-cancer-prevention
+- phytonutrient-dense-diet
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- estrogen-16-hydroxylation
+- phase-1-biotransformation
+linked_to_supplements:
+- sulforaphane
+- indole-3-carbinol
+- dim
+sources:
+- id: fmca-m11-female-hormone-testing-class
+  location: Estrogen metabolism — phase I hydroxylation
+  quote: Estrogen converts to 2, 4, or 16 hydroxy; two is protective, four is a dangerous
+    quinone, sixteen is inflammatory — and all are modifiable by lifestyle.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

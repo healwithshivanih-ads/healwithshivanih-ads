@@ -1,0 +1,39 @@
+slug: gutbio-dysbiosis-is-about-host-environment
+statement: Dysbiosis is a microbial imbalance, but it is not about a single "bad"
+  or "good" microbe — it is about the relationship between microbe and host, and the
+  host's environment determines which organisms live there and what work they do.
+  What we eat, how we move, how we sleep and how we think all shape the composition
+  and metabolic activity of the microbiome, so changing the environment is what changes
+  the community.
+evidence_tier: plausible_emerging
+rationale: This is the central coaching insight of the lecture — it moves the client
+  off "kill the bad bug / add the missing bug" and onto lifestyle change, which is
+  squarely in a coach's scope.
+coaching_translation: Frame the microbiome as a community shaped by daily choices,
+  and coach the environment — a diverse plant-rich anti-inflammatory diet, movement,
+  sleep and stress regulation — rather than encouraging clients to self-treat individual
+  bacteria they see on a report.
+out_of_scope_notes: Deciding whether a specific organism needs antimicrobial or targeted
+  treatment is the clinician's role.
+caveats:
+- Microbiome composition shifts day to day with diet, so single reports are best read
+  as patterns, not fixed facts.
+linked_to_topics:
+- gut-dysbiosis
+- gut-microbiome
+- gut-microbiome-personalized-nutrition
+- anti-inflammatory-diet
+linked_to_mechanisms:
+- dysbiosis
+- gut-microbiome-modulation
+- microbial-diversity-decline
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Dysbiosis and the host environment
+  quote: Dysbiosis is about the microbe's relationship with the host; the host environment
+    (diet, movement, sleep, thought) determines the microbiome's composition and activity.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,39 @@
+slug: metab-small-dense-ldl-plus-inflammation-oxidation-risk
+statement: Small, dense LDL particles are more vulnerable to oxidation, and high-sensitivity
+  CRP (hsCRP) reflects the level of systemic inflammation turning up the 'heat'. The
+  dangerous combination is lots of small LDL particles (the oil in the pan) together
+  with elevated hsCRP above ~1.0 (the stove turned up high), which promotes oxidised
+  LDL and plaque.
+evidence_tier: plausible_emerging
+rationale: This links two markers into one actionable mental model. Lowering inflammation
+  (hsCRP) buys time to improve particle quality; improving particle size and number
+  reduces the fuel. Both respond to lifestyle, so it's a rich coaching target.
+coaching_translation: 'Use the oil-in-a-pan picture: small dense LDL is easily-burnt
+  oil, and a raised hsCRP means the stove is up too high — together that''s smoking,
+  dangerous oil. Frame anti-inflammatory eating, better sleep, gut support and movement
+  as ''turning the stove down and cleaning up the oil'', and watch particle size fluff
+  up and hsCRP fall.'
+out_of_scope_notes: Interpreting oxidised-LDL, particle-size and hsCRP results clinically
+  and deciding on treatment is the clinician's role.
+caveats:
+- hsCRP is non-specific — an acute infection or injury transiently raises it, so avoid
+  over-reading a single value.
+linked_to_topics:
+- ldl-particle-size-and-number
+- atherogenic-dyslipidemia
+- chronic-inflammation
+linked_to_mechanisms:
+- small-dense-ldl-atherogenesis
+- ldl-oxidation
+- systemic-inflammation-cv
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Cardiovascular labs — small-dense LDL and hsCRP
+  quote: Small dense LDL is like olive oil in a pan and hsCRP is the stove setting
+    — too much vulnerable oil plus a stove turned up high makes the oil smoke and
+    oxidise.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

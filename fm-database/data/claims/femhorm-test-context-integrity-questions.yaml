@@ -1,0 +1,39 @@
+slug: femhorm-test-context-integrity-questions
+statement: Hormone test results only mean something if they reflect a typical day
+  and were collected correctly. Recent poor sleep, ongoing or physical stress, a recent
+  infection (cold, flu, COVID), caffeine, alcohol, over-exercise or several days of
+  fasting can all shift the values. A coach's contribution is to ask whether the test
+  was done at the right point in the cycle, collected the right way, and on a representative
+  day — surfacing context so the clinician can interpret accurately.
+evidence_tier: plausible_emerging
+rationale: Garbage-in-garbage-out is a real risk with at-home hormone testing. The
+  coach is well-placed to catch collection and context issues that would otherwise
+  mislead interpretation.
+coaching_translation: 'Before anyone leans hard on a hormone result, walk the client
+  through how they took it: was it the right cycle day, collected correctly, and on
+  a normal day — or were they sick, under-slept, over-caffeinated, fasting, or unusually
+  stressed that week? Flag anything that could have skewed the read so their clinician
+  has the full picture.'
+out_of_scope_notes: Judging whether a skewed result should be re-run or how to interpret
+  it clinically is the clinician's decision.
+caveats:
+- The coach surfaces context and asks questions; the coach does not re-interpret or
+  discount results.
+- Cycle timing matters especially for sex-hormone panels.
+linked_to_topics:
+- coach-clinician-collaboration
+- adrenal-hormone-function
+- estrogen-metabolism
+- healthy-menstrual-cycle-baseline
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-female-hormone-testing-class
+  location: Lifestyle factors that influence the result
+  quote: Make sure the test accurately reflects a typical day — sleep, stress, infection,
+    caffeine, alcohol, over-exercise or fasting can all influence the read.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

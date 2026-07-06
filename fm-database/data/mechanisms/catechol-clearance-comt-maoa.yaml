@@ -1,0 +1,36 @@
+slug: catechol-clearance-comt-maoa
+display_name: Catecholamine Clearance (COMT / MAOA Slow vs Fast)
+aliases:
+- COMT MAOA metabolism
+- neurotransmitter breakdown rate
+- dopamine serotonin clearance
+category: neurological
+summary: COMT and MAOA variants set how fast a person breaks down catecholamines and
+  other neurotransmitters. 'Slow' genotypes (e.g. MAOA TT + COMT AA) cause a build-up
+  — higher dopamine/serotonin — while 'fast' genotypes burn through them, leaving
+  lower levels. Because anxiety, low mood and insomnia can present from EITHER high
+  or low neurotransmitters, the same symptom picture can be driven by opposite biochemistry.
+  COMT is the 'Swiss-army-knife' gene, also touching oestrogen clearance and methylation.
+upstream_drivers:
+- methylation-cycle
+downstream_effects: []
+related_mechanisms:
+- neurotransmitter-synthesis-impairment
+- methylation-cycle
+- hepatic-estrogen-metabolism
+linked_to_topics:
+- nutrigenomics
+notes_for_coach: Clinically important because a client with slow COMT/MAOA (neurotransmitter
+  build-up) put on an SSRI may get MORE anxious/irritable. If mood worsens after an
+  SSRI or methyl-donor is started, that is a heads-up to route the client back to
+  their prescriber — never adjust medication yourself.
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mood & behaviour segment (Mary case)
+  quote: COMT is the Swiss-army-knife gene. With slow MAOA TT and slow COMT AA you
+    build up serotonin and dopamine, not low; the SSRI may be compounding the problem.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

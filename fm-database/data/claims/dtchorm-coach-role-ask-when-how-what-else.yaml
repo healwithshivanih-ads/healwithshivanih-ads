@@ -1,0 +1,34 @@
+slug: dtchorm-coach-role-ask-when-how-what-else
+statement: A coach does not order or interpret hormone labs, but clients now order
+  DTC panels themselves and bring them in with no interpretation. The coach's in-scope
+  job is to take the emotional heat off and gather the collection context by asking
+  three questions — WHEN was it done (cycle day and time of day), HOW long are your
+  cycles, and WHAT hormone forms are you taking — then route the client back to a
+  clinician for the actual interpretation.
+evidence_tier: plausible_emerging
+rationale: This is the practical, repeatable move for every DTC hormone lab a coach
+  encounters; most of the client's distress can be settled with the when/how/what-else
+  questions.
+coaching_translation: When a client brings a hormone result she is anxious about,
+  stay calm and ask when it was drawn, how long her cycles run, and what forms she
+  is using. Reassure her that a flagged value may just be a wrong-test-wrong-time
+  issue, and hand interpretation to her clinician.
+out_of_scope_notes: Telling a client whether a value is normal or abnormal, and interpreting
+  or acting on it, are clinician tasks — the coach educates and refers.
+caveats: []
+linked_to_topics:
+- dtc-female-hormone-testing
+- coach-clinician-collaboration
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m11-dtc-female-hormone-testing-warner
+  location: The coaching role — emotional triage
+  quote: You are not prescribing or interpreting, but it will come your way; the coaching
+    questions are when did you have it done, how long are your cycles, what else are
+    you taking — then navigate them back to their OB-GYN.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

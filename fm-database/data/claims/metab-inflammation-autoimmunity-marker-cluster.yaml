@@ -1,0 +1,40 @@
+slug: metab-inflammation-autoimmunity-marker-cluster
+statement: A pattern of inflammation or emerging autoimmunity can show up across a
+  cluster of markers — hsCRP over 1, uric acid creeping up, rising platelets or white
+  cells, elevated IgE, and a positive ANA or rheumatoid factor with a rising titre.
+  A positive ANA (especially at higher titre) points to addressing the common lifestyle
+  root causes of autoimmunity even when no formal diagnosis is named.
+evidence_tier: plausible_emerging
+rationale: Much of what drives autoimmune activity — stress, poor sleep, gut dysfunction,
+  toxin load and food triggers such as gluten — is squarely in the lifestyle domain
+  a coach supports. Reading the cluster (not one marker) keeps the focus on modifiable
+  drivers.
+coaching_translation: 'When a client''s provider flags a positive ANA or an inflammatory
+  cluster, focus your coaching on the modifiable root causes: stress regulation, sleep,
+  gut-supportive eating, reducing toxin exposure, and trialling common food triggers
+  (gluten) with their clinician''s blessing. Reassure them that lifestyle has real
+  leverage here.'
+out_of_scope_notes: Diagnosing an autoimmune condition, interpreting ANA/RF titres,
+  and any medical treatment belong to the clinician; genetic contribution is fixed
+  and not a coaching target.
+caveats:
+- A positive ANA is common and non-specific; it is not itself a diagnosis.
+- Food-trigger trials should be coordinated with the client's provider.
+linked_to_topics:
+- autoimmune
+- inflammation
+- chronic-inflammation
+linked_to_mechanisms:
+- systemic-inflammation
+- molecular-mimicry
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Inflammation and autoimmunity panel
+  quote: A positive ANA or rheumatoid factor with a rising titre points to the common
+    lifestyle root causes of autoimmunity — stress, poor sleep, gut issues, toxins
+    and food triggers like gluten.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

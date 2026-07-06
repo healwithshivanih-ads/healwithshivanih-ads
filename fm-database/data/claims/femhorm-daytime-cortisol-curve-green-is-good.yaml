@@ -1,0 +1,38 @@
+slug: femhorm-daytime-cortisol-curve-green-is-good
+statement: Beyond the morning spike, the whole-day cortisol curve should be highest
+  in the morning and taper down through the day (the 'green is good' pattern). Values
+  that stay in the yellow or red across mid-morning, afternoon and evening suggest
+  the nervous system is being repeatedly revved up during the day. The coach's job
+  is to help the client add nervous-system-balancing practices across the day, not
+  to interpret the graph clinically.
+evidence_tier: plausible_emerging
+rationale: A day-long elevated curve points to daytime triggers the coach can actually
+  work with — pacing, breathwork, blood-sugar balance and boundary-setting around
+  stressors.
+coaching_translation: When a client's cortisol runs high through the day, explore
+  what's keeping the nervous system switched on — back-to-back stress, skipped meals,
+  over-caffeination — and help them build in regulating micro-practices (breath work,
+  short walks, a calm lunch) at the times the graph is elevated.
+out_of_scope_notes: Reading the curve as a clinical finding and choosing any treatment
+  sits with the clinician.
+caveats:
+- The pattern only helps if the test day was reasonably typical.
+- Coaching targets the daily habits driving the pattern, not the numbers themselves.
+linked_to_topics:
+- adrenal-hormone-function
+- hpa-axis-cortisol-regulation
+- stress-management
+- blood-sugar-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-female-hormone-testing-class
+  location: Daytime cortisol curve interpretation
+  quote: Cortisol should be highest in the morning and taper; if it's in the yellow
+    or red through the day they need daytime practices that balance the nervous system.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

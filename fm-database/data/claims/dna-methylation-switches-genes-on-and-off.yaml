@@ -1,0 +1,27 @@
+slug: dna-methylation-switches-genes-on-and-off
+statement: 'DNA methylation is the epigenetic switch most relevant to coaching: adding
+  a methyl group silences a gene (switched off), removing it allows the gene to unwind,
+  transcribe and make its protein (switched on). It changes gene activity without
+  altering the DNA sequence.'
+evidence_tier: strong
+rationale: 'Explain simply: methylation is a dimmer switch on genes that lifestyle
+  can influence.'
+coaching_translation: 'Explain simply: methylation is a dimmer switch on genes that
+  lifestyle can influence.'
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- epigenetics-lifestyle-gene-expression
+linked_to_mechanisms:
+- epigenetic-gene-expression
+- methylation-cycle
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Epigenetics 101 — DNA methylation
+  quote: The absence of the methyl group is associated with gene expression switched
+    on; the presence of the methyl group silences gene expression.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

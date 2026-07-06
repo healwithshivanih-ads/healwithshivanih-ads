@@ -1,0 +1,28 @@
+slug: epigenetics-every-exposure-changes-gene-expression
+statement: 'Every exposure, moment to moment, modifies gene expression: food, pharmaceuticals,
+  the microbiome, environmental toxins, mood state, meditation and yoga, season/light,
+  social connection vs isolation, and exercise. Epigenetics ''determines action''
+  whereas genetics gives insight — the yin and yang.'
+evidence_tier: plausible_emerging
+rationale: 'This is the coach''s lever: diet, movement, stress, sleep, connection
+  and mindfulness all switch genes on/off.'
+coaching_translation: 'This is the coach''s lever: diet, movement, stress, sleep,
+  connection and mindfulness all switch genes on/off.'
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- epigenetics-lifestyle-gene-expression
+- lifestyle-epigenetic-mismatch-paradigm
+- nutrigenomics
+linked_to_mechanisms:
+- epigenetic-gene-expression
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Epigenetics 101 — environmental cues
+  quote: Every second of every day our exposures change how our genes express themselves
+    — pharmaceuticals, microbiome, toxins, mood, meditation, season, connection, exercise.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,38 @@
+slug: gutbio-calprotectin-distinguishes-ibd-from-ibs
+statement: Faecal calprotectin, released from neutrophils, is the most important stool
+  inflammation marker. Its two main uses are distinguishing inflammatory bowel disease
+  (IBD) from irritable bowel syndrome (IBS) — a normal calprotectin makes IBD very
+  unlikely — and monitoring mucosal healing in known IBD. On common thresholds under
+  50 is quiet, above roughly 120 warrants clinical action, and above 250 typically
+  prompts referral for scoping.
+evidence_tier: strong
+rationale: Coaches frequently meet clients unsure whether their gut symptoms are "just
+  IBS" or something inflammatory; understanding what calprotectin signals helps a
+  coach reinforce the clinician's plan and know when close medical involvement matters.
+coaching_translation: If a client's calprotectin is elevated, treat it as a cue to
+  work closely with their clinician and not to lean on lifestyle change alone; if
+  it is normal and they carry an IBS-type picture, support gut-directed lifestyle
+  and stress work with more confidence.
+out_of_scope_notes: Diagnosing IBD or IBS, deciding on colonoscopy referral, and interpreting
+  exact calprotectin cut-offs are the clinician's role.
+caveats:
+- Post-infectious IBS, GI cancers, certain infections, NSAID enteropathy and food
+  allergy can also raise calprotectin.
+linked_to_topics:
+- inflammatory-bowel-disease
+- ibs-ibd-differentiation
+- ibs
+- chronic-inflammation
+linked_to_mechanisms:
+- mucosal-inflammation
+- gut-immune-dysregulation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Immune and inflammatory markers — calprotectin
+  quote: Calprotectin is the key inflammation marker; a normal value virtually rules
+    out IBD, it monitors mucosal healing, and above 120-250 prompts action and referral.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

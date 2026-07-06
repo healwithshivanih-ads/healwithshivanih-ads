@@ -1,0 +1,41 @@
+slug: femhorm-cortisol-awakening-response-50-percent
+statement: The cortisol awakening response (CAR) is measured on waking, before getting
+  out of bed, and healthy cortisol should rise by at least about 50% within the first
+  30 minutes. A robust rise signals resilience, energy and readiness for the day;
+  a blunted CAR (well under 50%) can accompany early burnout, fatigue and immune challenges.
+  The coach uses this as a conversation-starter about sleep, stress and daily rhythm,
+  not as a diagnosis.
+evidence_tier: plausible_emerging
+rationale: The CAR is an easy, teachable marker of HPA-axis health. When it's blunted,
+  the coaching leverage is upstream — sleep timing, late eating, alcohol, chronic
+  stressors — which is exactly the coach's lane.
+coaching_translation: 'If a client''s report shows a flat morning cortisol rise, gently
+  explore what could be flattening it: are they sleeping enough, eating late, drinking
+  alcohol, under ongoing stress? Co-create morning-rhythm habits (consistent wake
+  time, early light, a calming ritual) to support a healthier morning cortisol bump
+  — without labelling it ''adrenal fatigue'' or promising to fix a number.'
+out_of_scope_notes: Diagnosing HPA dysfunction and deciding on adaptogens or other
+  prescriptions is the clinician's call based on the pattern.
+caveats:
+- A single morning's CAR can be skewed by one bad night, so confirm it reflects a
+  typical day.
+- The coach supports lifestyle upstream; the clinician determines any treatment.
+linked_to_topics:
+- adrenal-hormone-function
+- hpa-axis-cortisol-regulation
+- chronic-stress
+- sleep
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- cortisol-awakening-response
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-female-hormone-testing-class
+  location: Cortisol awakening response
+  quote: Cortisol should rise at least 50% in the first 30 minutes on waking; a blunted
+    CAR signals people are starting to burn out.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

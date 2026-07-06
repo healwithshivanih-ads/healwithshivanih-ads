@@ -1,0 +1,35 @@
+slug: metab-cmp-protein-and-liver-enzyme-insights
+statement: On a comprehensive metabolic panel, total protein in the upper half of
+  the range suggests a client is eating, digesting and absorbing protein well, while
+  the liver enzymes ALT, AST and especially GGT (an oxidative-stress 'smoke detector')
+  offer insight into detox load. Higher liver enzymes can reflect medications, alcohol
+  or oxidative stress rather than always signalling disease.
+evidence_tier: plausible_emerging
+rationale: These everyday markers connect directly to coachable behaviours — protein
+  intake and digestion, alcohol, and antioxidant-rich eating — giving the coach concrete,
+  in-scope levers and progress signals.
+coaching_translation: If protein sits in the upper-normal band, reinforce that their
+  protein intake and digestion look solid; if it's low, explore intake and digestive
+  comfort. For mildly raised liver enzymes, gently explore alcohol, medications and
+  oxidative-stress load, and support antioxidant-rich, whole-food eating — always
+  alongside their provider's view.
+out_of_scope_notes: Interpreting abnormal liver enzymes, attributing them to a specific
+  cause, and any medical follow-up are the clinician's responsibility.
+caveats:
+- Enzyme elevations have many causes; never attribute a cause to a client — surface
+  it as something to discuss with their clinician.
+linked_to_topics:
+- nutritional-deficiency-screening
+- metabolic-syndrome
+linked_to_mechanisms:
+- oxidative-stress
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Comprehensive metabolic panel — protein and liver enzymes
+  quote: Total protein in the top half suggests good protein intake, digestion and
+    absorption; GGT is a smoke detector for oxidative stress.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

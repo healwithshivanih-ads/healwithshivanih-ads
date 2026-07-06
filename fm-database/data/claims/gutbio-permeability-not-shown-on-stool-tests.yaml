@@ -1,0 +1,38 @@
+statement: Stool testing does not measure intestinal permeability (leaky gut). Permeability
+  is assessed instead by the lactulose-mannitol double-sugar urine test — a 40-year
+  gold standard where high absorbed lactulose signals a leaky barrier and low mannitol
+  signals damaged villi — or by zonulin antibodies in blood, with diffusely positive
+  food-antibody panels giving a supporting hint.
+slug: gutbio-permeability-not-shown-on-stool-tests
+evidence_tier: plausible_emerging
+rationale: Clients often assume a stool test tells them about "leaky gut"; a coach
+  who knows it does not can set accurate expectations and point permeability questions
+  to the right test and the clinician.
+coaching_translation: If a client wants to know about leaky gut, explain that stool
+  tests do not answer that and that the lactulose-mannitol or zonulin-antibody tests
+  are what clinicians use; keep the coaching focus on the lifestyle triggers of permeability
+  rather than the label.
+out_of_scope_notes: Ordering and interpreting the double-sugar or zonulin tests, and
+  diagnosing intestinal permeability, is the clinician's role.
+caveats:
+- Zonulin measured in blood as antibodies is generally the more reliable readout than
+  stool zonulin.
+linked_to_topics:
+- autoimmunity-leaky-gut-connection
+- food-sensitivities
+- gut-dysfunction
+linked_to_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
+- galt-immune-activation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Intestinal permeability — measurement methods
+  quote: Stool testing cannot assess permeability; the lactulose-mannitol double-sugar
+    test and zonulin antibodies are used instead, with food-antibody panels as a supporting
+    signal.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

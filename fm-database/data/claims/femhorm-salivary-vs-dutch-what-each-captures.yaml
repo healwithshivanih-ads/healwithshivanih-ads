@@ -1,0 +1,44 @@
+slug: femhorm-salivary-vs-dutch-what-each-captures
+statement: Female hormone status can be assessed by different methods, and each captures
+  something different. Salivary adrenal testing gives a clean read on the daily cortisol
+  pattern, while a urine/DUTCH panel gives a single-test snapshot of both adrenal
+  (cortisol) rhythm and sex hormones (oestrogen, progesterone, testosterone) plus
+  their metabolites. A coach helps the client understand which method their clinician
+  chose and what it does and does not measure — the coach does not decide which test
+  to run.
+evidence_tier: plausible_emerging
+rationale: Knowing what a test method captures lets the coach ask better questions
+  and set realistic expectations, instead of over-reading a single value. Salivary
+  is convenient for tracking the cortisol curve; DUTCH adds oestrogen-metabolism detail
+  from urine.
+coaching_translation: Help your client understand, in plain language, what their hormone
+  test looked at — a salivary adrenal test mainly shows their daily cortisol pattern,
+  whereas a DUTCH-style urine panel shows adrenal rhythm AND sex hormones and how
+  they're broken down. Frame it as 'here's what this snapshot can and can't tell us,'
+  and leave the choice of test and the reading of results to their clinician.
+out_of_scope_notes: Ordering tests, choosing between methods clinically, and interpreting
+  the numbers is the clinician's role.
+caveats:
+- Testosterone and progesterone on DUTCH are read via downstream metabolites, not
+  direct blood measurements; oestradiol is measured more directly.
+- A single method is a snapshot, not a diagnosis — marry it to how the client actually
+  feels.
+linked_to_topics:
+- adrenal-hormone-function
+- estrogen-metabolism
+- coach-clinician-collaboration
+- perimenopause
+- menopause
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- hepatic-estrogen-metabolism
+linked_to_supplements: []
+sources:
+- id: fmca-m11-female-hormone-testing-class
+  location: Salivary vs DUTCH testing overview
+  quote: Off one DUTCH test you get a snapshot of hormones and their metabolites plus
+    a snapshot of the adrenals; salivary just looks at the adrenal cortisol pattern.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

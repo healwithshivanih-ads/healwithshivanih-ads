@@ -1,0 +1,33 @@
+slug: scope-coaching-scope-is-behavior-change-not-clinical
+statement: Per NBHWC standards, health coaching supports wellness plans through active
+  listening, reflections, powerful questioning and building self-efficacy — it is
+  the domain of behaviour change and mindset, not of assessing, interpreting, diagnosing,
+  treating, prescribing, or interpreting labs. Coaches provide the 'how-to' for a
+  provider's 'what', not heavy advice-giving.
+evidence_tier: plausible_emerging
+rationale: Knowing the exact boundary lets the coach say yes to what builds change
+  and no to clinical acts that carry licensure and liability risk, without weakening
+  the relationship.
+coaching_translation: 'Frame yourself as the implementation partner: ''I support the
+  how — the steps of behaviour change, confidence, and a step-by-step accountability
+  plan — for what your provider recommended.'''
+out_of_scope_notes: Diagnosing, treating, prescribing, interpreting individual lab
+  findings, recommending supplements, and therapeutic/psychological counselling belong
+  to the licensed clinician.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+- functional-medicine-coaching
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-scope-ethics
+  location: Unit 17 — defining scope of practice
+  quote: Coaching supports wellness plans through active listening, reflection, powerful
+    questioning and building self-efficacy; it is not the domain of assessing, diagnosing,
+    treating or prescribing.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

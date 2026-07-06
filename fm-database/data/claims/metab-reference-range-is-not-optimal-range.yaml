@@ -1,0 +1,35 @@
+slug: metab-reference-range-is-not-optimal-range
+statement: A lab reference range is just the statistical band where roughly 80–90%
+  of the tested population falls — it means 'average', not 'healthy' or 'optimal'.
+  Since the average person today can be metabolically unwell, sitting inside the reference
+  range is not the same as thriving; functional medicine aims for the optimal portion
+  of the range.
+evidence_tier: plausible_emerging
+rationale: The reference-range-equals-healthy assumption is one of the biggest reasons
+  clients feel dismissed ('my labs are normal') while still symptomatic. A grade analogy
+  (A-plus range vs C or D within the same 'normal' band) helps clients see there's
+  room to improve without alarming them.
+coaching_translation: 'Explain that ''in range'' means average, not optimal. Use the
+  report-card analogy: staying in the A-plus part of the range as early and as long
+  as possible buys healthier ageing. This reframes a ''normal'' result into a motivating
+  goal to nudge markers toward optimal.'
+out_of_scope_notes: Defining a client's personal optimal targets and acting on them
+  clinically is the clinician's call; the coach educates on the concept.
+caveats:
+- Optimal ranges taught in FM are often clinical-experience-based, not consensus cut-offs
+  — present them as guidance, not fixed truth.
+linked_to_topics:
+- functional-medicine-coaching
+- cardiometabolic-health
+linked_to_mechanisms:
+- biomarker-data-fluency
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Labs as report cards — reference range vs optimal
+  quote: The reference range is the band where 80–90% of people fall — it means average,
+    which today can mean quite unwell; the goal is optimal, not average.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

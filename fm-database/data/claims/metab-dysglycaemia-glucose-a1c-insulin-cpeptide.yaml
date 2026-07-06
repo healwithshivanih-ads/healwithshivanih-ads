@@ -1,0 +1,42 @@
+slug: metab-dysglycaemia-glucose-a1c-insulin-cpeptide
+statement: Metabolic-health insight comes from reading fasting glucose, HbA1c (a ~3-month
+  average), fasting insulin and C-peptide together rather than one alone. Fasting
+  glucose has a 'Goldilocks' sweet spot (too low or too high is unfavourable), and
+  rising insulin or C-peptide can flag the pancreas working overtime before glucose
+  or HbA1c look abnormal — an early-warning window for insulin resistance.
+evidence_tier: plausible_emerging
+rationale: Insulin and C-peptide often move before glucose and HbA1c, so watching
+  them lets a coach celebrate early wins and keep clients motivated well before a
+  diabetes label. Each 0.1 rise in HbA1c is a coachable nudge back toward optimal.
+coaching_translation: 'Reframe these markers as a progress dashboard: a falling HbA1c,
+  easing fasting insulin, or a C-peptide drifting into the lower range are concrete
+  proof that glycaemic-friendly eating, movement and sleep are working. Use small
+  backward moves in HbA1c to celebrate momentum, and route any clinical concern to
+  the client''s provider.'
+out_of_scope_notes: Diagnosing pre-diabetes/diabetes, interpreting HOMA-IR/C-peptide
+  clinically, and any medication decisions belong to the clinician.
+caveats:
+- Fasting status affects glucose and insulin — check the client actually fasted before
+  over-reading a value.
+- Clients on glucose-lowering medication should coordinate lifestyle changes with
+  their prescriber.
+linked_to_topics:
+- insulin-resistance
+- insulin-resistance-early-detection
+- prediabetes-metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- pancreatic-beta-cell-dysfunction
+- beta-cell-exhaustion
+- glucotoxicity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Pancreas panel — glucose, HbA1c, insulin, C-peptide
+  quote: Fasting glucose has a Goldilocks range, HbA1c is a 3-month average, and rising
+    insulin or C-peptide shows the pancreas working too hard — an early sign to act
+    on.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: foodsens-lab-landscape-igg-vs-complement-vs-ige
+statement: Common labs differ meaningfully. Genova offers IgG only, so heavy consumption
+  can read positive without a real problem. KBMO's FIT test pairs IgG with C3d complement
+  and can add a gut-barrier panel. Quest and LabCorp run IgG panels but also IgE panels
+  — the IgE (immediate) component is valuable and is often insurance-covered, helping
+  catch a co-existing immediate reaction alongside a delayed one.
+evidence_tier: fm_specific_thin
+rationale: Knowing what each lab does and does not measure lets a coach make sense
+  of whichever report a direct-to-consumer client walks in with.
+coaching_translation: If a client brings a report, identify which lab and which markers
+  it used, and explain in plain terms what it can and cannot tell them — then route
+  interpretation and next steps back to their clinician.
+out_of_scope_notes: Choosing, ordering and interpreting a specific lab panel is the
+  clinician's responsibility.
+caveats:
+- Lab menus and marker combinations change over time; confirm the current panel with
+  the clinician rather than assuming.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- food-allergy-ige-mediated
+linked_to_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Lab testing landscape
+  quote: Genova tests IgG only; KBMO's FIT adds C3d complement plus a gut-barrier
+    panel; Quest and LabCorp run IgG and IgE panels, and the IgE (immediate) component
+    is useful and often insurance-covered.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

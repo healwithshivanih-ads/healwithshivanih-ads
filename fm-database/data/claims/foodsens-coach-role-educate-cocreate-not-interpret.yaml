@@ -1,0 +1,37 @@
+slug: foodsens-coach-role-educate-cocreate-not-interpret
+statement: The coach does not order or clinically interpret food-sensitivity tests.
+  The coach's job is to educate about what testing can and cannot show, co-create
+  the experiment with the client ('do you want to trial removing these foods and challenge
+  them one at a time?'), connect them with a functional-medicine clinician, and help
+  them evaluate outcomes. Questions like 'how do you feel off the food, and what happens
+  when you add it back?' drive the work — supported by self-rating tools such as the
+  MSQ.
+evidence_tier: strong
+rationale: 'Staying in scope keeps the coach effective and safe: the durable value
+  is in facilitating the elimination-reintroduction experiment and the client''s informed
+  choice, not in reading the lab.'
+coaching_translation: 'Ask, don''t tell: offer options, help the client decide on
+  an experiment, track symptoms with a scale like the MSQ before and after, and reinforce
+  their clinician''s recommendations. Give information so the client can make a conscious,
+  informed decision.'
+out_of_scope_notes: Ordering tests, interpreting results clinically, diagnosing and
+  prescribing all remain with the clinician.
+caveats: []
+linked_to_topics:
+- food-sensitivity
+- elimination-diet
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Role of the coach
+  quote: Coaches do not order or interpret the testing; they educate about it, co-create
+    the care plan by asking what the client wants to do, collaborate with the clinician,
+    and evaluate outcomes using scales like the MSQ before and after elimination and
+    reintroduction.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

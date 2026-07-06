@@ -1,0 +1,29 @@
+slug: scope-use-msq-self-report-as-client-biofeedback
+statement: 'The Medical Symptom Questionnaire (MSQ) is a coach-appropriate tool: have
+  the client self-rate symptoms before starting a food plan and again partway through
+  and at the end. Because change is self-reported, the client becomes their own biofeedback
+  device and sees their own improvement, which sustains motivation.'
+evidence_tier: plausible_emerging
+rationale: Self-reported symptom tracking stays firmly in coaching scope (it is the
+  client's own reporting, not the coach interpreting labs) while giving a concrete,
+  motivating measure of progress.
+coaching_translation: Have the client fill in the MSQ at baseline, mid-point and end
+  of a food-plan trial, then reflect together on what improved (energy, skin, joints,
+  headaches) so they own the evidence of change.
+out_of_scope_notes: The MSQ is a self-report of symptoms, not a diagnostic instrument;
+  the coach facilitates it and does not use it to diagnose or make clinical judgements.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-scope-ethics
+  location: Unit 19 — using the MSQ as a client tool
+  quote: The MSQ is a self-reported questionnaire — it's their own reporting, and
+    they are their best biofeedback device; change has to come from within.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

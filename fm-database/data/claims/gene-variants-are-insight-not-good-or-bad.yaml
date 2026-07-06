@@ -1,0 +1,28 @@
+slug: gene-variants-are-insight-not-good-or-bad
+statement: Gene variants (SNPs / 'spelling changes') are neither good nor bad — they
+  provide insight into who a client is and how they respond to the world, not a verdict
+  or a diagnosis. Coaching language should stay with 'this is your picture / how you
+  respond', never 'you have a bad mutation'.
+evidence_tier: plausible_emerging
+rationale: When a client frames a result as a good/bad mutation, reframe it as insight
+  into their responsiveness, then coach the lifestyle levers.
+coaching_translation: When a client frames a result as a good/bad mutation, reframe
+  it as insight into their responsiveness, then coach the lifestyle levers.
+out_of_scope_notes: Do not label variants as pathological or imply disease risk —
+  that is clinical interpretation.
+caveats: []
+linked_to_topics:
+- nutrigenomics
+- genetic-testing-in-coaching
+linked_to_mechanisms:
+- polygenic-scoring
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Coaching takeaways
+  quote: Gene variants are neither good nor bad, but they provide insight and information
+    into who your clients are and how they respond to the world around them.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

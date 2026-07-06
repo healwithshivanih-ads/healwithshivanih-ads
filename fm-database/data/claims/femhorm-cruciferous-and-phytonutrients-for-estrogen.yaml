@@ -1,0 +1,46 @@
+slug: femhorm-cruciferous-and-phytonutrients-for-estrogen
+statement: Cruciferous vegetables (broccoli, cauliflower, Brussels sprouts, kale,
+  arugula) are rich in indole-3-carbinol and DIM, which help shift oestrogen metabolism
+  toward the protective 2-hydroxy pathway and away from the 16- and 4-hydroxy routes.
+  Green tea supports the enzymes involved, and lemon and lime help activate liver
+  enzymes that clear oestrogen metabolites. Coaching a daily, colourful, cruciferous-forward,
+  phytonutrient-dense plate is a foundational, in-scope way to support healthy oestrogen
+  metabolism.
+evidence_tier: plausible_emerging
+rationale: Food is the coach's most powerful, lowest-risk lever on oestrogen metabolism.
+  Daily cruciferous veg plus phytonutrient diversity is easy to teach and act on.
+coaching_translation: Encourage a plant-forward plate with cruciferous vegetables
+  most days and lots of colour, plus green tea and citrus (lemon/lime in water). Explain
+  that these foods help the body favour the 'good' oestrogen pathway — a concrete,
+  doable habit clients can own, while any targeted supplement decisions stay with
+  the clinician.
+out_of_scope_notes: Prescribing concentrated I3C/DIM/sulforaphane supplements or dosing
+  them is the clinician's decision, often guided by genes and lab data.
+caveats:
+- Whole-food cruciferous vegetables differ from concentrated DIM/I3C supplements,
+  which need clinician oversight.
+- Build fermented foods slowly and watch for histamine reactions in sensitive clients.
+linked_to_topics:
+- estrogen-metabolism
+- phytonutrient-dense-diet
+- breast-cancer-prevention
+- liver-detoxification
+- anti-inflammatory-diet
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- nrf2-pathway-activation
+- phase-2-conjugation
+linked_to_supplements:
+- sulforaphane
+- indole-3-carbinol
+- dim
+- green-tea
+sources:
+- id: fmca-m11-female-hormone-testing-class
+  location: Foods for enhancing estrogen metabolism
+  quote: Cruciferous vegetables have indole-3-carbinol and DIM that shift to the healthier
+    2 and away from the 16 and 4; green tea and citrus help liver enzymes clear metabolites.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

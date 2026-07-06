@@ -1,0 +1,31 @@
+slug: b2b-labs-are-a-guide-not-the-end
+statement: Labs are pattern-recognition tools and a jumping-off point for lifestyle
+  change, not the end goal. They can be a motivating way for clients to track small
+  wins over time, but data alone doesn't change anyone — the conversation, support
+  and insight are what move the values. The coach matches tracking to the client (data-lover
+  vs. subjective, e.g. a simple 1–5 energy scale).
+evidence_tier: plausible_emerging
+rationale: Reframes labs as one motivating input, keeping the client — not the number
+  — at the centre.
+coaching_translation: Use the lab as a progress tracker when it motivates; for clients
+  who dislike numbers, use a simple subjective scale so there's still a baseline to
+  revisit.
+out_of_scope_notes: The clinical significance of a marker or its target range is defined
+  by the provider.
+caveats: []
+linked_to_topics:
+- functional-medicine-coaching
+- digital-health-coaching
+linked_to_mechanisms:
+- biomarker-data-fluency
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: In closing — labs are a guide
+  quote: Labs are pattern-recognition tools and a jumping-off point, not the end all;
+    data doesn't change people, the conversation and support change the lab values.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

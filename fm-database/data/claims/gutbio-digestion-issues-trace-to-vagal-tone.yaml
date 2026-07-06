@@ -1,0 +1,42 @@
+slug: gutbio-digestion-issues-trace-to-vagal-tone
+statement: Digestion and absorption depend on enzymes, stomach acid, bile and pancreatic
+  secretions that are all regulated by vagus-nerve (parasympathetic) activity. When
+  someone is stuck in a fight-or-flight sympathetic state, motility and secretion
+  shut down, so many digestive complaints trace back to poor vagal tone rather than
+  a missing enzyme. Restoring parasympathetic tone is often the highest-leverage first
+  move.
+evidence_tier: plausible_emerging
+rationale: This reframes "my digestion is bad" from something to supplement toward
+  something a coach can genuinely influence through nervous-system work — the lever
+  coaches own.
+coaching_translation: Teach and reinforce vagal-tone practices — slow diaphragmatic
+  breathing before meals, eating unhurried and undistracted, meditation or prayer,
+  gargling or humming, and time walking in nature (which the presenter found moved
+  his own heart-rate variability the most). Frame these as digestion support, not
+  just stress relief.
+out_of_scope_notes: Deciding whether pancreatic insufficiency, hypochlorhydria or
+  another pathology is present, and prescribing enzymes or acid support, is the clinician's
+  role.
+caveats:
+- Vagal-tone work supports, but does not replace, clinical evaluation of persistent
+  or severe symptoms.
+linked_to_topics:
+- vagal-tone
+- digestion-and-nutrient-absorption
+- stress-and-the-sympathetic-nervous-system
+- gut-brain-axis
+linked_to_mechanisms:
+- vagal-tone-enhancement
+- parasympathetic-activation
+- sympathetic-suppression-of-gastric-acid
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Digestion — impairments and vagal regulation
+  quote: Enzymes and motility are regulated by the vagus nerve; poor vagal tone from
+    stress shuts digestion down, so digestive issues are primarily a vagal-tone problem
+    coaches can help with.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: foodsens-igg-alone-can-cause-food-phobia
+statement: Acting on an IgG panel alone can be actively harmful. Because IgG rises
+  with frequent consumption and does not confirm inflammation, it produces many false
+  positives that can lead to unnecessary long-term food restriction, food phobia and
+  even disordered eating. This risk is highest in pregnant women, young people and
+  anyone with a history of eating disorders.
+evidence_tier: plausible_emerging
+rationale: Food restriction is not neutral — over-restricting based on a weak marker
+  can do more harm than the sensitivity itself, so the bar for permanent exclusion
+  should be high.
+coaching_translation: 'Actively protect food confidence: frame eliminations as short
+  experiments, watch for signs of food fear, and never encourage indefinite avoidance
+  of a food on the strength of an IgG number alone. Flag vulnerable clients to the
+  clinician.'
+out_of_scope_notes: Diagnosing or managing disordered eating, and deciding permanent
+  exclusions, is the clinician's role; coaches watch for red flags and refer.
+caveats:
+- Be especially cautious with pregnant women, adolescents and anyone with an eating-disorder
+  history.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- elimination-diet
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Limitations of IgG-alone
+  quote: 'IgG alone is often problematic: false positives can push people into unnecessary
+    restriction and food phobia and even eating disorders — especially risky for pregnant
+    women, young girls and those with an eating-disorder history.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: foodsens-pairing-igg-with-ige-changed-the-plan
+statement: In one case a person showed very high IgG to cow's milk, wheat and casein
+  — a pattern reflecting heavy dairy intake — while a paired IgE panel revealed a
+  low-level immediate response as well, correlating with fatigue and brain fog rather
+  than anaphylaxis. Seeing both branches of the immune system, immediate and delayed,
+  guided removal of dairy and wheat, after which energy and cognition returned within
+  a month.
+evidence_tier: fm_specific_thin
+rationale: It illustrates that layering test types (delayed plus immediate) can surface
+  information a single IgG panel would miss and can meaningfully change the plan.
+coaching_translation: 'Use such stories to show clients why a clinician might combine
+  tests — but keep the takeaway experiential: the confirmation still came from how
+  the person felt off the foods.'
+out_of_scope_notes: This is a single clinical anecdote; diagnosis and any test combination
+  decisions belong to the clinician.
+caveats:
+- A single case does not generalise; individual patterns vary widely.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- food-allergy-ige-mediated
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Case — IgG paired with IgE
+  quote: A person had very high IgG to dairy, wheat and casein plus a low-level IgE;
+    removing dairy and wheat restored energy and clarity within a month — an IgG panel
+    alone would have missed the inflammation.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

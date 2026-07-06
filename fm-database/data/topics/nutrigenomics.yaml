@@ -1,0 +1,46 @@
+slug: nutrigenomics
+display_name: Nutrigenomics (Genetic Responsiveness)
+aliases:
+- nutrigenetics
+- genetic responsiveness
+- gene-diet interaction
+- personalised nutrition genetics
+summary: Nutrigenomics studies how a person's genetic variation shapes their response
+  to food, nutrients, and lifestyle exposures. Joffe reframes the field as 'responsiveness'
+  — why two people with the same exposure (a meal, a stressor, a trauma) respond differently.
+  It works with low-penetrance ('low-impact') variants that are informative when grouped
+  and scored together, not deterministic single genes. For coaching it answers 'why
+  this client, specifically' and drives buy-in because the conversation is about the
+  client's own biology.
+common_symptoms: []
+red_flags: []
+related_topics:
+- epigenetics-lifestyle-gene-expression
+- lifestyle-epigenetic-mismatch-paradigm
+- genetic-testing-in-coaching
+- metabolic-detoxification
+key_mechanisms:
+- polygenic-scoring
+- epigenetic-gene-expression
+- phase-1-phase-2-detox-imbalance
+coaching_scope_notes: 'In scope: use a client''s already-run genetic report (e.g.
+  3X4, Genova) to personalise diet, movement and lifestyle education, and to reinforce
+  a provider''s recommendations. Frame variants as ''insight into how you respond
+  to the world'', never as ''good/bad'' or a diagnosis.'
+clinician_scope_notes: Ordering, clinical interpretation, and any medication/supplement
+  prescribing based on genetics sits with the clinician. High-penetrance (medical)
+  genetics such as BRCA belongs to genetic counsellors/physicians, not coaching.
+notes_for_coach: Joffe's one-word translation of nutrigenomics is 'responsiveness'.
+  Testing is the 'what'; genetics is the 'why'. Most SNPs (3-4 million in the genome)
+  are NOT clinically useful — focus only on the grouped, scored, actionable ones.
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Genetics & epigenetics 101 + why-genetics segment
+  quote: Nutrigenomics is responsiveness — why some people who have traumas develop
+    severe anxiety and others are resilient. Genetics tells us who we are and how
+    we respond to the world around us.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

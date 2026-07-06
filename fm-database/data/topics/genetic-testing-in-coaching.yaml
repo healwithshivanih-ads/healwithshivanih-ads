@@ -1,0 +1,45 @@
+slug: genetic-testing-in-coaching
+display_name: Genetic Testing in Health Coaching (Scope & Use)
+aliases:
+- direct-to-consumer genetic testing
+- DTC genetic reports
+- 3X4 genetics report
+- coaching with genetic reports
+summary: How a health coach can use a client's direct-to-consumer or clinician-ordered
+  genetic report within scope. Modern coach-facing reports (e.g. 3X4 Genetics) are
+  polygenic — they group and score the genes behind an area (detox, hormones, inflammation,
+  histamine) and translate them into the top 3 diet, top 3 lifestyle and top 3 supplement
+  priorities, so the coach never has to interpret raw SNPs. The coach executes behaviour
+  change and reinforces provider recommendations.
+common_symptoms: []
+red_flags:
+- client presenting a genetic result as a diagnosis or asking the coach to interpret
+  raw gene data or change medication
+related_topics:
+- nutrigenomics
+- coach-clinician-collaboration
+- functional-medicine-coaching
+key_mechanisms:
+- polygenic-scoring
+coaching_scope_notes: 'In scope: read the report''s plain-language lifestyle recommendations,
+  educate, and coach the behaviour. Out of scope: interpreting raw genotypes, ordering
+  tests, or starting/stopping supplements or medication off a gene result — route
+  those to the ordering clinician. Genetic buy-in is powerful for behaviour change
+  because it is personal (''this is about ME'').'
+clinician_scope_notes: Raw-genotype interpretation (Genova-style reports that list
+  genes but not actions), test ordering, and prescribing belong to the clinician.
+notes_for_coach: '3X4 gives coach-ready actions; Genova-style reports list genotypes
+  without actions (clinician territory). Other DTC labs Joffe names: DNA Company,
+  IntellxxDNA, Nutrigenomix. Learn to recognise the common report layouts before a
+  client brings one in.'
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: 3X4 report structure + scope Q&A
+  quote: We identify the three most important areas, the three diet interventions,
+    three lifestyle and three supplements — so it is totally in scope; the coach does
+    not have to start interpreting genetics.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,30 @@
+slug: histamine-degradation-dao-hnmt-and-estrogen
+statement: DAO and HNMT variants impair the breakdown of histamine, driving headaches,
+  gut symptoms and allergy-type reactions. Oestrogen and histamine interact bidirectionally
+  — rising oestrogen triggers mast-cell histamine release — so histamine load should
+  be considered whenever oestrogen symptoms appear.
+evidence_tier: plausible_emerging
+rationale: For histamine-pattern clients, educate on low-histamine and histamine-releasing
+  foods and the oestrogen link; testing/diagnosis stays clinical.
+coaching_translation: For histamine-pattern clients, educate on low-histamine and
+  histamine-releasing foods and the oestrogen link; testing/diagnosis stays clinical.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- histamine-intolerance
+- estrogen-metabolism
+- estrogen-dominance
+linked_to_mechanisms:
+- histamine-metabolism
+- histamine-enzyme-inhibition
+- mast-cell-degranulation-histamine-release
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mary case — histamine
+  quote: DAO and HNMT variants affect whether you can break down histamine; increasing
+    oestrogen generates mast cells, which triggers histamine — the two interact.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

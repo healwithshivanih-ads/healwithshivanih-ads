@@ -1,0 +1,29 @@
+slug: oestrogen-phase1-phase2-quinones-dna-adducts
+statement: Oestrogen is metabolised through phase-I (CYP450) then phase-II (COMT methylation,
+  glutathione/GST, quinone reductase). When this hand-off is unbalanced the 4-hydroxy
+  pathway can generate quinones that damage DNA ('DNA adducts'), a genotoxic concern.
+  Genetics explains why a given client tracks down a particular oestrogen metabolite
+  pathway on a DUTCH test.
+evidence_tier: plausible_emerging
+rationale: Support phase-II (cruciferous, B vitamins for methylation, adequate protein)
+  per the provider's plan; leave metabolite interpretation to the clinician.
+coaching_translation: Support phase-II (cruciferous, B vitamins for methylation, adequate
+  protein) per the provider's plan; leave metabolite interpretation to the clinician.
+out_of_scope_notes: Reading DUTCH metabolites and acting on them is clinician territory.
+caveats: []
+linked_to_topics:
+- estrogen-metabolism
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- estrogen-phase-ii-methylation-deficit
+- phase-2-conjugation
+linked_to_supplements: []
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mary case — hormone balance
+  quote: If phase 1 and phase 2 oestrogen metabolism isn't optimal we land up with
+    quinones, which damage DNA — the DNA adducts, little potholes in our DNA.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

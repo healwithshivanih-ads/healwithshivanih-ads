@@ -1,0 +1,34 @@
+slug: foodsens-leaky-gut-and-sensitivity-chicken-and-egg
+statement: 'Food sensitivity and leaky gut form a chicken-and-egg loop: dysbiosis
+  or a permeable gut can create food sensitivities, and reactive foods can in turn
+  damage the gut. Because either can come first, the repair approach addresses both
+  — remove the offending foods and rebuild the gut barrier, then reintroduce foods
+  one at a time to see what remains.'
+evidence_tier: plausible_emerging
+rationale: Treating only the food list without repairing the gut, or vice versa, tends
+  to under-deliver — the loop has to be worked from both ends.
+coaching_translation: 'Support the client on both fronts at once: help them run the
+  elimination while adopting gut-repair habits (fiber, fermented foods, phytochemicals
+  as tolerated), then guide the structured reintroduction.'
+out_of_scope_notes: Diagnosing dysbiosis or leaky gut and prescribing gut-repair protocols
+  is the clinician's role; the coach supports lifestyle and adherence.
+caveats: []
+linked_to_topics:
+- food-sensitivity
+- gut-dysbiosis
+- elimination-diet
+linked_to_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Chicken-and-egg — gut and food
+  quote: With food sensitivities and leaky gut it is always chicken-and-egg — did
+    the leaky gut cause the sensitivity or the food offline the gut? You must both
+    eliminate the foods and repair the gut, then reintroduce to see what is what.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

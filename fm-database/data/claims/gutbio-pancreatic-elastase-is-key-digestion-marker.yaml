@@ -1,0 +1,42 @@
+slug: gutbio-pancreatic-elastase-is-key-digestion-marker
+statement: Faecal pancreatic elastase is the single most useful stool digestion marker;
+  it flags exocrine pancreatic insufficiency (EPI), where the pancreas is not releasing
+  enough digestive enzymes. On typical scales below 100 is severe and 100-200 moderate
+  insufficiency, and EPI is far more common than usually recognised — often driven
+  by weak signalling from the small intestine or by low vagal tone rather than pancreatic
+  disease.
+evidence_tier: plausible_emerging
+rationale: A coach who knows this marker can recognise when malabsorption-type symptoms
+  may have a digestive-capacity cause the clinician should address, and can support
+  the client's nervous-system and eating habits meanwhile.
+coaching_translation: If a report shows low pancreatic elastase, reflect back that
+  this is about how well food is being broken down and encourage the client to keep
+  working it with their clinician; support with unhurried eating, thorough chewing
+  and vagal-tone practices. A one-third higher rate of osteoporosis with EPI is a
+  reason to make sure bone health is on the clinician's radar too.
+out_of_scope_notes: Confirming EPI, prescribing pancreatic enzyme replacement, and
+  following the marker under treatment are the clinician's job; low elastase is not
+  by itself an indicator of pancreatic cancer.
+caveats:
+- Values of 200-350 still suggest some decline in pancreatic function.
+- Elastase can be monitored even while a client takes enzymes, since supplemental
+  enzymes do not suppress the pancreas.
+linked_to_topics:
+- pancreatic-insufficiency
+- digestive-enzyme-insufficiency
+- digestion-and-nutrient-absorption
+- maldigestion
+linked_to_mechanisms:
+- exocrine-pancreatic-enzyme-deficiency
+- digestive-enzyme-deficiency
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Stool digestion markers — pancreatic elastase
+  quote: Pancreatic elastase is the number-one digestion marker; below 100 is severe
+    and 100-200 moderate exocrine pancreatic insufficiency, which is much more common
+    than realised.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

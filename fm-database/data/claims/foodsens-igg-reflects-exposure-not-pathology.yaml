@@ -1,0 +1,34 @@
+slug: foodsens-igg-reflects-exposure-not-pathology
+statement: An isolated IgG food panel largely reflects immune memory and exposure,
+  not necessarily pathology. IgG antibodies rise simply from eating a food often,
+  so a high IgG (for example to dairy in a heavy dairy eater) can appear even when
+  the person has no symptoms and stays fine on and off the food. A delayed IgG sensitivity
+  does not automatically mean inflammation is occurring.
+evidence_tier: plausible_emerging
+rationale: This is the single most misunderstood point in food-sensitivity testing
+  — a positive IgG is often a marker of frequent consumption, so acting on IgG alone
+  can wrongly restrict foods.
+coaching_translation: Teach clients that a high IgG number often just means 'you eat
+  this a lot,' and encourage food rotation rather than fear. Emphasise that the number
+  alone does not prove a food is harming them.
+out_of_scope_notes: The clinician decides whether any IgG result warrants elimination;
+  the coach does not interpret the panel as diagnostic.
+caveats:
+- IgG alone can drive unnecessary dietary restriction and food fear if treated as
+  diagnostic.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- autoimmune-conditions-igg-food-triggers
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Types of testing — IgG antibody
+  quote: IgG indicates immune memory and is not necessarily linked to inflammation;
+    it is often elevated simply because someone eats the same food repeatedly — like
+    doing the same exercise every day.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

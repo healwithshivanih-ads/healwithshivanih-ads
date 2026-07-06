@@ -1,0 +1,30 @@
+slug: scope-three-step-response-to-out-of-scope-client-request
+statement: 'When a client asks for an out-of-scope service, use three steps in order:
+  (1) lead with a strategic/powerful question, (2) define the coaching scope of practice,
+  (3) revisit the coaching agreement. Often step one alone resolves it, so the boundary
+  need never feel like a shutdown.'
+evidence_tier: plausible_emerging
+rationale: A strategic question keeps the conversation open and client-led, avoiding
+  the conversation-killing effect of leading with 'that's not in my scope.'
+coaching_translation: Instead of 'I can't interpret labs', ask 'What are you most
+  interested in discovering?' or 'What concerns you most?' — then redirect to preparing
+  questions for their provider and building their lifestyle plan.
+out_of_scope_notes: Actual interpretation of the client's individual lab findings
+  or biomarkers stays with their clinician; the coach helps them ask better questions
+  of that clinician.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-scope-ethics
+  location: Unit 18 — responding to a client expecting out-of-scope help
+  quote: 'Three steps: strategic questioning, define your coaching scope, revisit
+    the agreement; a strategic question like ''what are you most interested in discovering?''
+    turns it around and keeps it open.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

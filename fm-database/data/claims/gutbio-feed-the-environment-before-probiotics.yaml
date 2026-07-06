@@ -1,0 +1,41 @@
+slug: gutbio-feed-the-environment-before-probiotics
+statement: For most clients with dysbiosis, the answer is not more probiotics but
+  feeding the resident community — prebiotic soluble fibre, polyphenols (a diverse
+  range of colourful berries and plants) and fermented foods that let beneficial bacteria
+  grow and rebalance. Probiotics behave like tourists passing through — they can help
+  the economy while present, but relying on them creates dependence, so they are best
+  used like an antibiotic — a specific strain, at a specific dose, for a specific
+  purpose, for a set time.
+evidence_tier: plausible_emerging
+rationale: This reframes the common "I'm low on Lactobacillus so I'll just take Lactobacillus"
+  instinct and puts the highest-leverage lever — food and lifestyle — back in the
+  coach's and client's hands.
+coaching_translation: Coach the foundational plate first — prebiotic and soluble fibre,
+  polyphenol-rich berries and plants, and daily fermented foods like a forkful of
+  sauerkraut — and treat any probiotic as a short, targeted tool rather than a permanent
+  panacea, deferring specific strain choices to the clinician.
+out_of_scope_notes: Prescribing a specific probiotic strain, dose or antimicrobial
+  course is the clinician's role.
+caveats:
+- In someone very unstable or with marked imbalance, be judicious introducing strong
+  prebiotics so you do not feed the imbalanced bacteria.
+linked_to_topics:
+- probiotic-and-prebiotic-support
+- gut-dysbiosis
+- anti-inflammatory-diet
+- phytonutrient-dense-diet
+linked_to_mechanisms:
+- gut-microbiome-modulation
+- butyrate-production
+- microbial-diversity-decline
+linked_to_supplements:
+- prebiotic-fiber
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Coaching takeaways — feed the environment, probiotics as tourists
+  quote: Most dysbiosis is best addressed by prebiotics, polyphenols and fermented
+    foods; probiotics are tourists best used like an antibiotic, targeted and time-limited.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

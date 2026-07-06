@@ -1,0 +1,34 @@
+slug: gutbio-coaches-recognise-patterns-not-diagnose
+statement: A stool report is a pattern-recognition tool, not a diagnosis, and its
+  interlaced metabolome makes "one analyte, one problem" reading unreliable. Clients
+  often treat these direct-to-consumer tests as 100% accurate and complete; a coach's
+  job is not to interpret or treat but to recognise which DIGIN domain the pattern
+  points at, reinforce the clinician's plan, and drive lifestyle change — because
+  when the environment changes, the microbiome changes.
+evidence_tier: plausible_emerging
+rationale: This is the scope-defining takeaway — it keeps the coach firmly in education
+  and lifestyle work while still adding real value to a client holding a stool report.
+coaching_translation: When a client brings a stool test, set expectations that it
+  is a snapshot and a pattern, not a verdict; use DIGIN to point them toward the right
+  lifestyle focus and the right clinician conversation, and resist being pulled into
+  interpreting numbers or recommending treatments.
+out_of_scope_notes: Interpreting the report, diagnosing conditions, ordering tests,
+  and prescribing supplements, probiotics or medications all remain with the clinician.
+caveats:
+- Because microbiome results shift day to day, one report should never be over-weighted.
+linked_to_topics:
+- functional-medicine-coaching
+- coach-clinician-collaboration
+- gut-microbiome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m11-gut-stool-biomarkers-hanaway
+  location: Using a stool analysis as a pattern-recognition tool / coaching scope
+  quote: The metabolome is too interlaced for one-analyte reading; coaches recognise
+    patterns and change the environment through lifestyle rather than diagnosing or
+    treating.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

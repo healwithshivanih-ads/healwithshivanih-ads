@@ -1,0 +1,38 @@
+slug: polygenic-scoring
+display_name: Polygenic Scoring vs Single-Gene Thinking
+aliases:
+- polygenic score
+- total genotype score
+- gene grouping
+- low-penetrance variants
+category: signaling
+summary: Most nutrigenomic SNPs are low-penetrance ('low-impact') — informative but
+  not individually powerful enough to drive a recommendation. The useful signal comes
+  from grouping all the genes behind a pathway (e.g. detoxification or hormone metabolism),
+  scoring them together, and reading the aggregate impact. This contrasts with the
+  discredited single-gene approach (e.g. putting MTHFR on a pedestal) that over-weighted
+  one variant. High-penetrance ('high-impact') medical genetics such as BRCA or sickle-cell
+  HBB is a separate world handled by clinicians/genetic counsellors.
+upstream_drivers: []
+downstream_effects: []
+related_mechanisms:
+- epigenetic-gene-expression
+- phase-1-phase-2-detox-imbalance
+linked_to_topics:
+- nutrigenomics
+- genetic-testing-in-coaching
+notes_for_coach: 'No practitioner — regardless of qualification — should give a diet
+  or lifestyle recommendation off a single gene. If a client fixates on ''my MTHFR
+  mutation'', reframe: it is one low-impact variant read in the context of the whole
+  methylation group.'
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Genetics 101 + polygenic Q&A
+  quote: These variants are insightful and informative but not that powerful; when
+    we group them and score them they give really important information. We don't
+    believe anyone should give a recommendation based on a single gene.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

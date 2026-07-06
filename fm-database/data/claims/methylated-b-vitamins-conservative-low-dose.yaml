@@ -1,0 +1,33 @@
+slug: methylated-b-vitamins-conservative-low-dose
+statement: 'Methylated B vitamins should be used conservatively at LOW doses: because
+  methylfolate already bypasses the MTHFR step, an MTHFR variant does not justify
+  high doses. Over-methylation produces symptoms (anxiety, irritability, insomnia)
+  that mimic under-methylation, and many supplement brands over-dose them.'
+evidence_tier: plausible_emerging
+rationale: If a client turns more anxious/irritable/sleepless after starting a methylated-B
+  product, flag it as a possible over-methylation dose issue and route them back to
+  their clinician (they may need half the dose).
+coaching_translation: If a client turns more anxious/irritable/sleepless after starting
+  a methylated-B product, flag it as a possible over-methylation dose issue and route
+  them back to their clinician (they may need half the dose).
+out_of_scope_notes: Do not start, stop or re-dose supplements — that is the prescriber's
+  call.
+caveats: []
+linked_to_topics:
+- nutrigenomics
+linked_to_mechanisms:
+- methylation-cycle
+- homocysteine-remethylation
+linked_to_supplements:
+- methylated-b-complex
+- b-complex
+sources:
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Q&A — methylated B vitamins
+  quote: Methylfolate bypasses MTHFR, so you don't need high doses; over-methylation
+    mimics under-methylation — anxiety, irritability, insomnia. Many products dose
+    high; sometimes I tell people to take one, not two.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: foodsens-reintroduction-avoids-test-false-positives
+statement: Reintroduction is what avoids false positives. A test can flag a food a
+  person reacts to on paper, yet when that food is removed and added back the person
+  is genuinely fine either way. Eating a food constantly can mask the true magnitude
+  of a reaction until it is removed for three to six weeks and then challenged.
+evidence_tier: plausible_emerging
+rationale: This reframes testing as a starting point rather than a verdict — the challenge
+  phase is the real arbiter of whether a flagged food is a problem.
+coaching_translation: When a client is anxious about a long list of 'positive' foods
+  on a report, explain that the report is a hypothesis and the reintroduction challenge
+  is how they confirm or clear each food.
+out_of_scope_notes: Interpreting whether a specific lab positive is clinically meaningful
+  is the clinician's call.
+caveats: []
+linked_to_topics:
+- food-sensitivity
+- elimination-diet
+- food-sensitivity-igg-iga-mediated
+linked_to_mechanisms:
+- immune-food-reactivity
+linked_to_supplements: []
+sources:
+- id: fmca-m11-food-sensitivity
+  location: Reintroduction reveals false positives
+  quote: 'Reintroduction avoids false positives: a test can show a reaction to a food
+    the person has no real problem with — remove it and add it back and they are fine
+    either way.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

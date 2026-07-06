@@ -1,0 +1,30 @@
+slug: b2b-connect-biomarkers-to-behaviour-not-interpret
+statement: The coach's core job with labs is to connect biomarkers to behaviour change,
+  not to interpret the lab or tell the client what a result means clinically. Almost
+  every biomarker can move with lifestyle and behaviour, so the coach redirects the
+  conversation toward what the client can actually do.
+evidence_tier: plausible_emerging
+rationale: Keeps the coach in scope and focuses the session on the one lever coaches
+  genuinely own — sustained behaviour change that moves markers over time.
+coaching_translation: Frame every lab conversation around 'there's a lot you can change
+  with lifestyle here' and steer toward habits, rather than reading the result back
+  to them.
+out_of_scope_notes: Interpreting or diagnosing from the lab, and deciding what a value
+  means clinically, stays with the licensed clinician.
+caveats: []
+linked_to_topics:
+- functional-medicine-coaching
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- biomarker-data-fluency
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: fmca-m11-biomarkers-behavior-change
+  location: Coaching labs — the core message
+  quote: Our role is to connect biomarkers to behaviour change, not to interpret the
+    lab or tell them what to do; every biomarker can change with lifestyle.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani
