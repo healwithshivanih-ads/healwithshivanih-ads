@@ -9,6 +9,7 @@ that don't exist.
 
 from __future__ import annotations
 
+from dataclasses import dataclass, field
 from typing import Any
 
 from ..validator import Loaded
@@ -50,27 +51,44 @@ def _tier_rank(ev) -> int:
         return _TIER_RANK.get(str(ev), 5)
 
 
-def build_subgraph(
+@dataclass
+class AssessmentScope:
+    """The topic + mechanism scope a selection of symptoms/topics opens up.
+
+    This is the SINGLE source of truth for "what does picking these
+    symptoms/topics make reachable". Both callers go through
+    `assessment_scope()`:
+      - `build_subgraph()` seeds its bundle from it (live assess path);
+      - `find_orphans(demand=...)` unions it across real sessions to compute
+        the practical-reachability frontier.
+    Keeping both on one function means the reachability check can never
+    silently drift from what the assessment actually retrieves.
+    """
+    topic_set: set[str]          # final topic scope (selected + expanded)
+    mech_set: set[str]           # final mechanism scope (canonical, expanded)
+    core_topic_set: set[str]     # pre-expansion topics (used for ranking)
+    core_mech_set: set[str]      # pre-expansion mechanisms (used for ranking)
+    selected_symptoms: list = field(default_factory=list)  # resolved Symptom objects
+    sym_set: set[str] = field(default_factory=set)         # raw selected symptom slugs
+
+
+def assessment_scope(
     cat: Loaded,
     *,
     symptom_slugs: list[str],
     topic_slugs: list[str],
     extra_topic_hops: int = 1,
     ayurveda: bool = False,
-    schussler: bool = False,
-) -> dict[str, Any]:
-    """Return a JSON-serializable bundle of catalogue entities relevant
-    to the selected symptoms and topics.
+) -> AssessmentScope:
+    """Compute the topic/mechanism scope that an assessment with these
+    selections reaches — the same walk `build_subgraph` uses to seed itself.
 
-    Walk:
-      symptom  → topics + mechanisms it links to
-      topic    → topic.related_topics, topic.key_mechanisms, claims that
-                 cite it, supplements that link to it, cooking adjustments
-                 + home remedies that link to it
-      mechanism → related_mechanisms, mechanism.linked_to_topics
-
-    `extra_topic_hops` controls how aggressive the "related topics"
-    expansion is. 1 hop = "topics directly related to your selection".
+    A suggestible entity (supplement / cooking_adjustment / home_remedy /
+    protocol) can only surface if its links intersect `topic_set` or
+    `mech_set` here. `find_orphans(demand=...)` unions this across every real
+    session to answer "is this entity reachable by any assessment we've
+    actually run", which catches the case a static link check misses:
+    linked to a real topic that no client is ever tagged with.
     """
     # ----- start sets -----
     sym_set = set(symptom_slugs)
@@ -149,6 +167,57 @@ def build_subgraph(
                 topic_set.add(t_slug)
     mech_set |= {m for m in new_mech if m in mech_by_slug}
 
+    return AssessmentScope(
+        topic_set=topic_set,
+        mech_set=mech_set,
+        core_topic_set=core_topic_set,
+        core_mech_set=core_mech_set,
+        selected_symptoms=selected_symptoms,
+        sym_set=sym_set,
+    )
+
+
+def build_subgraph(
+    cat: Loaded,
+    *,
+    symptom_slugs: list[str],
+    topic_slugs: list[str],
+    extra_topic_hops: int = 1,
+    ayurveda: bool = False,
+    schussler: bool = False,
+) -> dict[str, Any]:
+    """Return a JSON-serializable bundle of catalogue entities relevant
+    to the selected symptoms and topics.
+
+    Walk:
+      symptom  → topics + mechanisms it links to
+      topic    → topic.related_topics, topic.key_mechanisms, claims that
+                 cite it, supplements that link to it, cooking adjustments
+                 + home remedies that link to it
+      mechanism → related_mechanisms, mechanism.linked_to_topics
+
+    `extra_topic_hops` controls how aggressive the "related topics"
+    expansion is. 1 hop = "topics directly related to your selection".
+    """
+    # ----- start sets (shared scope walk — see assessment_scope) -----
+    scope = assessment_scope(
+        cat,
+        symptom_slugs=symptom_slugs,
+        topic_slugs=topic_slugs,
+        extra_topic_hops=extra_topic_hops,
+        ayurveda=ayurveda,
+    )
+    topic_set = scope.topic_set
+    mech_set = scope.mech_set
+    core_topic_set = scope.core_topic_set
+    core_mech_set = scope.core_mech_set
+    selected_symptoms = scope.selected_symptoms
+    sym_set = scope.sym_set
+    # Lookup dicts re-derived here — still needed when materialising the bundle
+    # (ranking/hydrating topics + mechanisms further down).
+    topic_by_slug = {t.slug: t for t in cat.topics}
+    mech_by_slug = {m.slug: m for m in cat.mechanisms}
+
     # Claims that link to selected topics OR mechanisms
     relevant_claims = []
     for c in cat.claims:
@@ -197,7 +266,25 @@ def build_subgraph(
         _tier_rank(hr.evidence_tier),
         hr.slug,
     ))
+    _in_scope_remedies = relevant_remedies  # full ranked in-scope list (pre-cap)
     relevant_remedies = relevant_remedies[:MAX_HOME_REMEDIES]
+    # Coach-featured remedies bypass the cap: a pinned remedy force-included
+    # when it matches the client's CORE TOPICS (directly selected, or linked
+    # from a selected symptom) but ranked below the cap. This is the honest fix
+    # for the "thin-evidence tea crowded out for every client" case
+    # (`HomeRemedy.featured` / `fmdb orphans --demand`) — the coach's clinical
+    # override, not an evidence-tier lie. Gating on core TOPICS (not expanded
+    # scope, and not shared mechanisms) is deliberate: expansion + broad shared
+    # mechanisms like cortisol-elevation would fire a sleep tea into a bloating
+    # plan. A topic-core match means the remedy targets what the client actually
+    # presented with. (A remedy that only links to a mechanism won't fire — link
+    # it to the presentation topic to pin it precisely.)
+    _have = {hr.slug for hr in relevant_remedies}
+    relevant_remedies += [
+        hr for hr in _in_scope_remedies
+        if getattr(hr, "featured", False) and hr.slug not in _have
+        and set(hr.linked_to_topics) & core_topic_set
+    ]
     # Ayurveda track: the linked-by-clinical-topic set is too thin for a
     # dosha-appropriate palette (most remedies link to clinical topics like
     # 'asthma', not to dosha). Widen to dosha-tagged remedies so the model can
@@ -431,3 +518,77 @@ def build_subgraph(
         "protocols": [_pr(pr) for pr in relevant_protocols],
         "tissue_salts": [_ts(ts) for ts in relevant_tissue_salts],
     }
+
+
+# The suggestible-intervention kinds a coach authors and expects the assess AI
+# to surface. Coverage is measured for these; drivers/claims are context, not
+# recommendations, so they're excluded.
+DEMAND_KINDS = ("supplements", "cooking_adjustments", "home_remedies", "protocols")
+
+
+@dataclass
+class DemandCoverage:
+    """How often each suggestible entity actually survives into a REAL subgraph.
+
+    Built by replaying the true `build_subgraph` (caps and all) over every real
+    session's selections and counting membership. Coverage 0 = the coach
+    authored + linked it, but given the clients actually seen it never enters
+    any assessment's candidate set — invisible in practice. This is stricter
+    and more honest than a union-of-scope frontier: it accounts for the 20-item
+    home-remedy cap and the claim-mediated supplement route.
+    """
+    n_sessions: int                        # real sessions with a selection
+    by_kind: dict[str, "Counter"]          # bundle-key -> Counter(slug -> #sessions)
+    scope_frontier: set[str]               # every topic ∪ mechanism any real
+                                           # assessment reached (uncapped). Used to
+                                           # split coverage-0 entities into
+                                           # retrieval-dead (never a candidate) vs
+                                           # cap/tier casualty (candidate, capped out).
+
+    def reachable(self, kind: str) -> set[str]:
+        """Slugs that made it into >=1 real session's subgraph, for a bundle key."""
+        return {slug for slug, n in self.by_kind.get(kind, {}).items() if n > 0}
+
+    def count(self, kind: str, slug: str) -> int:
+        return self.by_kind.get(kind, {}).get(slug, 0)
+
+
+def build_demand_coverage(
+    cat: Loaded,
+    selections,
+    *,
+    ayurveda: bool = False,
+) -> DemandCoverage:
+    """Replay the real `build_subgraph` over historical selections and count
+    per-entity membership. `selections` is an iterable of
+    (symptom_slugs, topic_slugs) — one per real session; empty ones are skipped.
+
+    `ayurveda=False` measures the DEFAULT path every client gets. Dosha-tagged
+    remedies gain an extra route only for Ayurveda-track clients — noted, not
+    silently counted, so the default-path coverage stays honest.
+    """
+    from collections import Counter
+
+    by_kind: dict[str, Counter] = {k: Counter() for k in DEMAND_KINDS}
+    scope_frontier: set[str] = set()
+    n = 0
+    for symptom_slugs, topic_slugs in selections:
+        symptom_slugs = list(symptom_slugs or [])
+        topic_slugs = list(topic_slugs or [])
+        if not symptom_slugs and not topic_slugs:
+            continue
+        n += 1
+        # Uncapped candidate scope (why an entity IS/ISN'T a candidate) ...
+        sc = assessment_scope(
+            cat, symptom_slugs=symptom_slugs, topic_slugs=topic_slugs, ayurveda=ayurveda,
+        )
+        scope_frontier |= sc.topic_set | sc.mech_set
+        # ... vs post-cap membership (whether it actually surfaces).
+        bundle = build_subgraph(
+            cat, symptom_slugs=symptom_slugs, topic_slugs=topic_slugs, ayurveda=ayurveda,
+        )
+        for k in DEMAND_KINDS:
+            for e in bundle.get(k, []):
+                if isinstance(e, dict) and e.get("slug"):
+                    by_kind[k][e["slug"]] += 1
+    return DemandCoverage(n_sessions=n, by_kind=by_kind, scope_frontier=scope_frontier)

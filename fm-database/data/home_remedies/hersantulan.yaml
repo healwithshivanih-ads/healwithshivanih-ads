@@ -1,0 +1,49 @@
+slug: hersantulan
+display_name: HerSantulan (HerPulse — For Nourishing & Balancing Hormones)
+aliases:
+- her-santulan
+- hersantulan-tea
+category: herbal_tea
+route: internal
+summary: A proprietary HerPulse daily herbal infusion positioned for hormone balance in
+  PCOS and androgen-excess pictures — irregular or heavy periods, acne, unwanted facial hair
+  and hair thinning. A gentle daily adjunct alongside the core plan, not a hormonal medication.
+indications:
+- PCOS / polycystic ovary syndrome
+- irregular or heavy periods
+- hormonal acne
+- unwanted facial hair (hirsutism)
+- hair thinning / androgenic hair loss in women
+contraindications:
+- Pregnancy or breastfeeding (if used for fertility support, discontinue once pregnancy is confirmed)
+- On hormonal birth control (combined OCP / progestin-only pill / hormonal IUD) — do not combine
+- On blood-pressure medication — confirm with your doctor before starting
+suitable_sex: female
+suitable_stages:
+- menstruating
+- perimenopausal
+avoid_in:
+- pregnancy
+- lactation
+preparation: Prepare per the HerPulse pack instructions — typically steep one sachet /
+  measure in hot water and drink as a warm infusion.
+typical_dose: 1 cup daily as directed on the pack
+timing_notes: Warm, once daily; keep 4+ hours from any prescription thyroid tablet if also
+  taking one.
+linked_to_topics:
+- pcos
+- pcos-insulin-resistant
+- pcos-post-pill
+- pcos-fertility
+- acne-vulgaris
+- hair-loss-women
+linked_to_mechanisms: []
+featured: true
+sources:
+- id: herpulse-affiliate
+  location: Product page — HerSantulan (herpulse.in/product/hersantulan-for-hormonal-imbalance)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-06
+updated_by: Shivani

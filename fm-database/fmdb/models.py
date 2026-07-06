@@ -229,6 +229,16 @@ class HomeRemedy(BaseModel):
     timing_notes: str = ""
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
+    # ── Coach curation: exempt from the assessment size-cap ───────────────────
+    # The assess subgraph caps home remedies (MAX_HOME_REMEDIES) and ranks by
+    # evidence tier, so a thin-evidence remedy the coach deliberately authored
+    # can be crowded out for every client (see `fmdb orphans --demand`). Setting
+    # featured=True force-includes this remedy WHENEVER it is in scope for the
+    # assessment (its links match the selected topics/mechanisms) — the coach's
+    # explicit clinical override, NOT an evidence-tier inflation. Out-of-scope
+    # remedies are never injected, so this can't put a sleep tea in a diabetes
+    # plan. Keep the pinned set small; every pinned in-scope remedy adds tokens.
+    featured: bool = False
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     version: int = 1

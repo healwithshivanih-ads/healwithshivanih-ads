@@ -1,0 +1,40 @@
+slug: hertom
+display_name: HerTOM (HerPulse — For that Time Of Month)
+aliases:
+- her-tom
+- hertom-tea
+category: herbal_tea
+route: internal
+summary: A proprietary HerPulse cycle-timed herbal infusion positioned for PMS and period
+  pain — a gentle warm drink begun in the days before the period to ease cramps, bloating and
+  premenstrual mood symptoms. An adjunct alongside the core plan.
+indications:
+- premenstrual syndrome (PMS)
+- period pain / cramps (dysmenorrhea)
+- premenstrual bloating and mood symptoms
+contraindications:
+- Pregnancy or breastfeeding
+- On hormonal birth control (combined OCP / progestin-only pill / hormonal IUD) — do not combine
+- On blood-pressure medication — confirm with your doctor before starting
+suitable_sex: female
+suitable_stages:
+- menstruating
+avoid_in:
+- pregnancy
+- lactation
+preparation: Prepare per the HerPulse pack instructions — typically steep one sachet /
+  measure in hot water and drink as a warm infusion.
+typical_dose: 1 cup daily during the relevant part of the cycle, as directed on the pack
+timing_notes: Cycle-timed — begin a few days before your period per the HerPulse guidance.
+linked_to_topics:
+- premenstrual-syndrome
+linked_to_mechanisms: []
+featured: true
+sources:
+- id: herpulse-affiliate
+  location: Product page — HerTOM (herpulse.in/product/hertom-for-periods)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-06
+updated_by: Shivani
