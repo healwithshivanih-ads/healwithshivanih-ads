@@ -35,6 +35,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { latestMeasurements } from "@/lib/fmdb/measurements";
 
 // ── Direction table ────────────────────────────────────────────────────
 // Per FM optimal ranges. "lower" = lower value = better (until lower bound).
@@ -220,20 +221,19 @@ async function loadPlan(planSlug: string): Promise<Record<string, unknown> | nul
 /**
  * Pick the freshest data the client has for labs + measurements.
  *
- * Source priority (most authoritative first):
- *   1. Latest measurements_log entry  — the time-series source the coach
- *      writes to via "+ Log entry" and the check-in form. This is the
- *      explicit, dated, coach-recorded source — beats everything else.
- *   2. Latest health_snapshot.measurements — auto-captured from
- *      transcripts / intake / lab reports
- *   3. Flat client.measurements — legacy single-snapshot field
+ * Measurements go through `latestMeasurements()` — the canonical per-field
+ * union across all three stores (health_snapshots, measurements_log, flat
+ * client.measurements), regardless of which source or date produced each
+ * value. This replaced a hand-rolled "latest snapshot + latest log overlay"
+ * merge that only considered the SINGLE most-recent entry from each of the
+ * two buckets: if the coach's most-recent Log entry only had weight, an
+ * older log entry's waist/BP silently vanished from outcomes even though it
+ * hadn't changed. Same root cause as the bug this comment used to describe
+ * (cl-004 2026-05-18: weight logged, outcomes still showed unchanged) — the
+ * earlier fix only patched the "log entry invisible entirely" case, not the
+ * "log entry incomplete" case.
  *
  * For labs we use latest snapshot → flat (logs don't carry labs).
- *
- * Previously this only checked snapshots + flat, so a fresh "+ Log entry"
- * write to measurements_log was invisible in the outcomes panel.
- * Bug surfaced for cl-004 2026-05-18: weight 79kg logged → outcomes still
- * showed 80→80 unchanged.
  */
 function pickCurrentState(client: ClientYaml): {
   lab_values: Array<Record<string, unknown>>;
@@ -249,48 +249,19 @@ function pickCurrentState(client: ClientYaml): {
   });
   const latestSnap = snaps[0];
 
-  // Latest measurements_log entry — newest by date.
-  const log = (client.measurements_log ?? []).slice();
-  log.sort((a, b) => {
-    const da = String(a.date ?? "");
-    const db = String(b.date ?? "");
-    return db.localeCompare(da);
-  });
-  const latestLog = log[0];
+  // Per-field latest across all three stores. The body-comp UI / MEAS_FIELDS
+  // below reads the coach-log naming convention (blood_pressure_systolic
+  // etc.) — alias both so either reader finds the value.
+  const latest = latestMeasurements(client as Parameters<typeof latestMeasurements>[0]);
+  const measurements: Record<string, unknown> = { ...(latest?.measurements ?? {}) };
+  if (measurements.bp_systolic != null) measurements.blood_pressure_systolic = measurements.bp_systolic;
+  if (measurements.bp_diastolic != null) measurements.blood_pressure_diastolic = measurements.bp_diastolic;
+  if (measurements.hr_bpm != null) measurements.resting_heart_rate = measurements.hr_bpm;
 
-  // Merge: latestSnap.measurements as base, latestLog overlays (log wins).
-  // The measurement keys we accept come from MeasurementEntry (loader-extras):
-  //   weight_kg, waist_cm, hip_cm, height_cm,
-  //   blood_pressure_systolic, blood_pressure_diastolic, resting_heart_rate.
-  // The body-comp UI normalises to {weight_kg, waist_cm, hip_cm,
-  //   bp_systolic, bp_diastolic, hr_bpm} — so we map at this seam.
-  const measurements: Record<string, unknown> = {
-    ...(latestSnap?.measurements ?? client.measurements ?? {}),
-  };
-  if (latestLog) {
-    if (latestLog.weight_kg != null) measurements.weight_kg = latestLog.weight_kg;
-    if (latestLog.waist_cm != null) measurements.waist_cm = latestLog.waist_cm;
-    if (latestLog.hip_cm != null) measurements.hip_cm = latestLog.hip_cm;
-    if (latestLog.height_cm != null) measurements.height_cm = latestLog.height_cm;
-    if (latestLog.blood_pressure_systolic != null) {
-      measurements.bp_systolic = latestLog.blood_pressure_systolic;
-      measurements.blood_pressure_systolic = latestLog.blood_pressure_systolic;
-    }
-    if (latestLog.blood_pressure_diastolic != null) {
-      measurements.bp_diastolic = latestLog.blood_pressure_diastolic;
-      measurements.blood_pressure_diastolic = latestLog.blood_pressure_diastolic;
-    }
-    if (latestLog.resting_heart_rate != null) {
-      measurements.hr_bpm = latestLog.resting_heart_rate;
-      measurements.resting_heart_rate = latestLog.resting_heart_rate;
-    }
-  }
-
-  // Date used for the "X days elapsed" caption — pick whichever source
-  // contributed the freshest reading.
+  // Date used for the "X days elapsed" caption — whichever source
+  // contributed the freshest measurement reading, or the lab date.
   const candidates: string[] = [];
-  if (latestLog?.date) candidates.push(String(latestLog.date));
-  if (latestSnap?.date) candidates.push(String(latestSnap.date));
+  if (latest?.date) candidates.push(latest.date);
   if (client.lab_markers_date) candidates.push(client.lab_markers_date);
   candidates.sort();
   const currentDate = candidates.length > 0 ? candidates[candidates.length - 1] : undefined;

@@ -196,6 +196,39 @@ function CheckinBar({ onClose }: { onClose: () => void }) {
 
 const FEEL_WORDS = ["", "Drained", "Low", "Steady", "Good", "Bright"];
 
+/** Compact optional number field for the vitals disclosure below. */
+function VitalInput({
+  placeholder,
+  width,
+  value,
+  onChange,
+}: {
+  placeholder: string;
+  width?: number;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <input
+      type="number"
+      inputMode="decimal"
+      placeholder={placeholder}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      style={{
+        width: width ?? "100%",
+        border: "1px solid var(--line)",
+        borderRadius: 10,
+        padding: "9px 10px",
+        fontSize: 15,
+        color: "var(--ink)",
+        background: "var(--paper)",
+        fontFamily: "var(--sans)",
+      }}
+    />
+  );
+}
+
 export function DailyFeelingSheet({
   show,
   onClose,
@@ -208,14 +241,42 @@ export function DailyFeelingSheet({
   const data = useOchre();
   const [v, setV] = useState(0);
   const [saved, setSaved] = useState(false);
+  const [showVitals, setShowVitals] = useState(false);
+  const [weight, setWeight] = useState("");
+  const [bpSys, setBpSys] = useState("");
+  const [bpDia, setBpDia] = useState("");
+
+  const resetVitals = () => {
+    setShowVitals(false);
+    setWeight("");
+    setBpSys("");
+    setBpDia("");
+  };
+
   const submit = () => {
     setSaved(true);
     onSave(v);
+    // Best-effort sync to the coach — the mood tap used to be phone-local
+    // only; now it (and any weight/BP the client added) lands in the same
+    // daily health snapshot she already sees in health-trends. Never blocks
+    // the "Logged" confirmation on network — this is a 10-second quick-log.
+    void fetch("/api/app-body", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: data.token,
+        weight_kg: parseFloat(weight) || null,
+        bp_systolic: parseInt(bpSys, 10) || null,
+        bp_diastolic: parseInt(bpDia, 10) || null,
+        mood_score: v,
+      }),
+    }).catch(() => {});
     setTimeout(() => {
       onClose();
       setTimeout(() => {
         setSaved(false);
         setV(0);
+        resetVitals();
       }, 300);
     }, 900);
   };
@@ -255,6 +316,37 @@ export function DailyFeelingSheet({
               <span style={{ color: "var(--forest)", fontWeight: 600 }}>{FEEL_WORDS[v]}</span>
               <span>Bright</span>
             </div>
+
+            <button
+              type="button"
+              onClick={() => setShowVitals((s) => !s)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "var(--forest)",
+                fontSize: 13,
+                fontWeight: 600,
+                padding: "12px 0 4px",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
+              <Icon name={showVitals ? "chevDown" : "plus"} size={13} />
+              {showVitals ? "Hide weight / blood pressure" : "Also log your weight or blood pressure"}
+            </button>
+            {showVitals && (
+              <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
+                <div style={{ flex: "1 1 0" }}>
+                  <VitalInput placeholder="Weight (kg)" value={weight} onChange={setWeight} />
+                </div>
+                <VitalInput placeholder="Sys" width={64} value={bpSys} onChange={setBpSys} />
+                <span style={{ alignSelf: "center", color: "var(--muted)" }}>/</span>
+                <VitalInput placeholder="Dia" width={64} value={bpDia} onChange={setBpDia} />
+              </div>
+            )}
+
             <button className="submit-btn" disabled={!v} style={{ marginTop: 18 }} onClick={submit}>
               {v ? "Save today’s energy" : "Tap a number"}
             </button>
