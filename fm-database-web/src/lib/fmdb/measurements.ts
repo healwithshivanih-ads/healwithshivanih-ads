@@ -186,14 +186,38 @@ export function collectMeasurementSnapshots(client: ClientLike): UnifiedSnapshot
     .sort((x, y) => x.date.localeCompare(y.date));
 }
 
-/** The most recent non-empty measurements across all three stores. */
+/**
+ * The most recent value for EACH measurement field, independently, across
+ * all three stores — not just whichever fields happen to appear on the
+ * single most-recent snapshot date. This is the fix for the "3 stores"
+ * landmine: e.g. if the client logs only weight via the app today, but
+ * waist/BP were last recorded by the coach two weeks ago, both must still
+ * surface here — the old implementation dropped them because it returned
+ * only the last dated snapshot's own fields, silently hiding anything not
+ * re-entered on that same date.
+ *
+ * `date` is the most recent date across ALL fields (i.e. whichever field
+ * was touched last) — a single "as of" caption. Per-field provenance isn't
+ * tracked; callers needing "when was X actually measured" should walk
+ * `collectMeasurementSnapshots()` themselves.
+ */
 export function latestMeasurements(client: ClientLike): { date: string; measurements: UnifiedMeasurements } | null {
-  const snaps = collectMeasurementSnapshots(client).filter(
-    (s) => Object.keys(s.measurements).length > 0,
-  );
-  if (snaps.length === 0) return null;
-  const last = snaps[snaps.length - 1];
-  return { date: last.date, measurements: last.measurements };
+  const snaps = collectMeasurementSnapshots(client);
+  const measurements: UnifiedMeasurements = {};
+  let latestDate = "";
+  // ascending order — the last snapshot that carries a given field always
+  // overwrites earlier ones, so each field ends up holding its own true
+  // latest value regardless of which date or source produced it.
+  for (const s of snaps) {
+    for (const f of FIELDS) {
+      const v = s.measurements[f];
+      if (v !== undefined) {
+        measurements[f] = v;
+        latestDate = s.date;
+      }
+    }
+  }
+  return latestDate ? { date: latestDate, measurements } : null;
 }
 
 // ── Unit conversion (canonical storage is ALWAYS metric: cm / kg) ──────────
