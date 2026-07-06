@@ -8,7 +8,9 @@ route: internal
 summary: A proprietary HerPulse herbal infusion positioned for the peri- and post-menopause
   transition — traditional herbs to ease hot flushes, mood swings, disturbed sleep and
   the general hormonal shift as oestrogen declines. A gentle daily adjunct alongside the
-  core plan, not a hormone therapy.
+  core plan, not a hormone therapy. Ingredients (vendor) — flax, turmeric, shatavari, reishi,
+  shiitake and cordyceps mushrooms, plus vitamin D, zinc, vitamin E and B12. Vendor age band
+  >40 (flag earlier for late-30s clients showing perimenopausal signs).
 indications:
 - perimenopausal hot flushes and night sweats
 - mood swings and irritability in the menopause transition
@@ -20,6 +22,10 @@ contraindications:
 - On blood-pressure medication — confirm with your doctor before starting
 - History of an oestrogen-sensitive condition (e.g. ER-positive breast cancer, endometrial
   hyperplasia) — confirm with your doctor before starting
+- Known allergy to mushrooms — the blend contains shiitake, reishi and cordyceps
+- Phytoestrogenic activity (vendor describes both a progesterone and an oestrogenic effect)
+  — extra caution with active oestrogen-dominance / endometriosis / fibroids; confirm with
+  the client's gynaecologist or oncologist
 suitable_sex: female
 suitable_stages:
 - perimenopausal
@@ -36,11 +42,19 @@ linked_to_topics:
 - perimenopause
 - menopause
 - perimenopause-and-menopause
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- estrogen-decline
+- low-progesterone
+- hpa-axis-dysregulation
 featured: true
 sources:
 - id: herpulse-affiliate
   location: Product page — HerMeno (herpulse.in/product/hermeno-for-menopause)
+- id: herpulse-product-presentations
+  location: HerMeno product presentation — ingredients, symptom mapping, safety sheet
+  quote: 'Formulations have both progesterone and estrogenic effect. Progesterone driven
+    action gives a quick support ... lowering the vasomotor symptoms during perimenopause
+    and eventually supporting E2 production after menopause and ensuring good bone health.'
 evidence_tier: fm_specific_thin
 version: 1
 status: active

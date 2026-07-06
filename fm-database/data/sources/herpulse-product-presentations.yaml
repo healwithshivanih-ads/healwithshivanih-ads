@@ -1,0 +1,22 @@
+id: herpulse-product-presentations
+title: HerPulse — Product Introduction, Ingredient/Safety Presentation & Symptom-to-Product
+  Mapping (vendor materials, affiliate tie-up 2026-07)
+source_type: other
+quality: low
+authors:
+- HerPulse (Biocredence)
+publisher: HerPulse
+url: https://www.herpulse.in
+notes: 'Vendor product-presentation decks for the HerPulse herbal-infusion line (HerMeno /
+  HerSantulan / HerTOM / HerThyrom): per-product ingredient lists, a symptom-to-product
+  mapping table, vendor mechanism claims, and a safety sheet. EVIDENCE BASE (be honest —
+  this is why the catalogue entries are evidence_tier fm_specific_thin): the only outcome
+  data is a single uncontrolled ~60-day self-report study of ~150 women across the WHOLE
+  product range — NOT broken out per product — plus ingredient-level literature (flax/hot
+  flashes, shatavari, reishi, etc.). Vendor claim language: "not intended to treat, cure,
+  or prevent any disease." Extracted 2026-07-06 from branch claude/gallant-elbakyan-65bf81
+  (which had modeled the teas as supplements) into the canonical home_remedy entries.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani
