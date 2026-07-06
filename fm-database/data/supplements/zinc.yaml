@@ -105,32 +105,25 @@ linked_to_claims:
 - zinc-protective-beta-cells-diabetics-excrete-excess
 - murray-zinc-restores-thyroid-function
 - murray-hypothyroidism-treatment-summary
-notes_for_coach: 30 mg/day for diabetics. Take with food to avoid nausea. Long-term
-  use above 30 mg may deplete copper — consider 2 mg copper supplementation with sustained
-  use.
-notes_for_client: Diabetes causes zinc to be lost in urine — supplementing zinc supports
-  immune defence, wound healing, and insulin production.
+notes_for_coach: 30 mg/day for diabetics. Take with food to avoid nausea. Long-term use above 30 mg may deplete copper — consider 2 mg copper supplementation with sustained use.
+notes_for_client: Diabetes causes zinc to be lost in urine — supplementing zinc supports immune defence, wound healing, and insulin production.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: vitaone-practice-guide
-  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical
-    support for thyroid
+  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical support for thyroid
   quote: 'Zinc: Supports thyroid hormone conversion and immune regulation'
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Support T4→T3 Conversion
   quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
-  quote: 'Zinc: Modulates aromatase + supports progesterone; Helps acne, hair thinning;
-    15–30 mg/day; add copper if long-term.'
+  quote: 'Zinc: Modulates aromatase + supports progesterone; Helps acne, hair thinning; 15–30 mg/day; add copper if long-term.'
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — T4/Testosterone rows (p.4)
-  quote: 'Solution: Iodine, selenium, zinc, thyroid meds if required... Solution:
-    Strength training, zinc, Vit D, HRT if indicated.'
+  quote: 'Solution: Iodine, selenium, zinc, thyroid meds if required... Solution: Strength training, zinc, Vit D, HRT if indicated.'
 - id: vitaone-blood-sugar-cheatsheet
-  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
-    Depletions
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced Depletions
   quote: Zinc glycinate (15–30 mg/day)
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — Viral Hepatitis
@@ -143,17 +136,13 @@ sources:
   quote: 'Zinc: Important for immune function and thyroid hormone metabolism.'
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Repair
-  quote: Help the lining of the GI tract repair itself by supplying key nutrients
-    that can often be in short supply in a compromised gut, such as zinc, antioxidants
-    (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients that can often be in short supply in a compromised gut, such as zinc, antioxidants (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Zinc supplementation has been shown in multiple studies to lower HOMA-IR,
-    a measure of insulin resistance.
+  quote: Zinc supplementation has been shown in multiple studies to lower HOMA-IR, a measure of insulin resistance.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: A large body of research shows that zinc has strong anti-viral properties
-    against many viruses.
+  quote: A large body of research shows that zinc has strong anti-viral properties against many viruses.
 - id: vitaone-health-coaching-toolkit
   location: Management of Hashimoto's — Nutrient Optimization
   quote: 'Zinc: Important for immune function and thyroid hormone metabolism.'
@@ -174,31 +163,22 @@ sources:
   quote: Minerals like copper, zinc, vitamins like A, B, E, toxicity inside the body.
 - id: coconote-fm-sibo-sifo
   location: 5Rs Treatment Protocol – Repair
-  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
-    the L-butamine, all of these things, repair is important.
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and the L-butamine, all of these things, repair is important.
 - id: coconote-fm-zinc-deficiency
   location: Management / Supplementation
-  quote: If a patient has a severe nutritional deficiency, their requirements could
-    be higher. Good sources of zinc usually include oyster, beef, poultry, vegetarian
-    sources, good sources in terms of legumes, lentils, certain nuts and seeds like
-    pumpkin seeds, cashew, baked beans.
+  quote: If a patient has a severe nutritional deficiency, their requirements could be higher. Good sources of zinc usually include oyster, beef, poultry, vegetarian sources, good sources in terms of legumes, lentils, certain nuts and seeds like pumpkin seeds, cashew, baked beans.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXjjIqJjMSR/
-  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
-    selenium, zinc, and antioxidants helps restore metabolic resilience.
+  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10, selenium, zinc, and antioxidants helps restore metabolic resilience.
 - id: pizzorno-textbook-gi-2
   location: Benign Prostatic Hyperplasia — Supplements
-  quote: 'Zinc: 30 to 45 mg elemental zinc q.d. (picolinate preferred) for maximum
-    of 6 months. Reduce dose to 15 to 30 mg/day after 6 months and consider monitoring
-    copper status in long-term therapy.'
+  quote: 'Zinc: 30 to 45 mg elemental zinc q.d. (picolinate preferred) for maximum of 6 months. Reduce dose to 15 to 30 mg/day after 6 months and consider monitoring copper status in long-term therapy.'
 - id: pizzorno-textbook-hpylori
   location: Miscellaneous, p. 784
-  quote: 'Zinc: increases mucin production in vitro and has a protective effect on
-    PUs in animals and curative effect in human beings.'
+  quote: 'Zinc: increases mucin production in vitro and has a protective effect on PUs in animals and curative effect in human beings.'
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Zinc
-  quote: Diabetics excrete Zn excessively in urine. Supplements improve insulin levels
-    in T1DM and T2DM. Dose for diabetics is 30 mg q.d.
+  quote: Diabetics excrete Zn excessively in urine. Supplements improve insulin levels in T1DM and T2DM. Dose for diabetics is 30 mg q.d.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 68 — Hypothyroidism, Treatment Summary
   quote: Zinc included in Murray hypothyroidism nutrient protocol.
@@ -213,3 +193,4 @@ aliases:
 - zinc (serum or rbc)
 - zinc (serum)
 - zinc 20-50mg
+- zinc-picolinate
