@@ -13,20 +13,34 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: VitaOne-branded liver support formulation. Typical components
-  include milk thistle, NAC, alpha-lipoic acid, B vitamins for Phase 1/2
-  detoxification support. Stub entry — verify ingredients on the VitaOne product
-  page and refine dose / contraindication notes. Useful for liver/detox phase
-  protocols and chemical-sensitivity pictures.
+notes_for_coach: |
+  VitaOne / FM Nutrition Opti-Liver — liver support formulation.
+
+  VERIFIED ingredient panel (extracted from the VitaOne product page
+  2026-07-04): reduced L-glutathione, dandelion, milk thistle, lecithin,
+  N-acetyl cysteine (NAC), and trimethylglycine (TMG). Per-ingredient
+  amounts are not printed on the label. Suggested use: 1 capsule before
+  meals, or as recommended by a healthcare professional.
+
+  Useful for liver/detox phase protocols and chemical-sensitivity pictures.
+  The NAC + glutathione + TMG combination supports Phase 1/2 detoxification
+  AND methylation — TMG (betaine) is a methyl donor, worth noting alongside
+  any homocysteine-management goal. Milk thistle + dandelion support
+  hepatic drainage.
+
+  Product pages: https://vitaone.in/products/fm-nutrition-opti-liver-76?ref=vita13720sh
+  (SKU ODOO-76) and https://fmnutrition.in/product/fm-nutrition-opti-liver-60capsules/
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - liver-detoxification
 sources:
 - id: vitaone-product-catalog
-  location: vitaone.in/shop product page
-  quote: Stub catalogue entry — VitaOne-branded product. Refine when full
-    product details are parsed via scripts/vitaone-scrape.py.
+  location: vitaone.in/products/fm-nutrition-opti-liver-76
+  quote: VitaOne / FM Nutrition Opti-Liver — full ingredient panel (reduced
+    L-glutathione, dandelion, milk thistle, lecithin, NAC, TMG) verified
+    2026-07-04 via the commerce catalogue (~/fm-plans/supplement_links.yaml,
+    entry "vo_fm_nutrition_opti_liver" / "fmn_fm_nutrition_opti_liver_veg_60_capsules").
 status: active
-version: 1
-updated_at: '2026-05-09'
+version: 2
+updated_at: '2026-07-06'
 updated_by: shivani

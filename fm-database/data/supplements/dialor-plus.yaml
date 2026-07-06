@@ -20,28 +20,36 @@ timing_options:
 take_with_food: required
 notes_for_coach: |
   Liv Bio's Dialor Plus — modern functional medicine blood-sugar support
-  formulation distributed via the VitaOne shop. Capsule/tablet form, NOT a
-  traditional Ayurvedic churan / powder — do NOT describe it as a churan in
-  client-facing materials. Product page:
-  https://vitaone.in/shop/liv-bios-dialor-plus-124?ref=vita13720sh
+  formulation distributed via VitaOne and FM Nutrition. Capsule/tablet form,
+  NOT a traditional Ayurvedic churan / powder — do NOT describe it as a
+  churan in client-facing materials.
 
-  Typical components per the manufacturer's panel include berberine,
-  chromium, cinnamon, gymnema, and alpha-lipoic acid. Useful for
-  insulin-resistance and pre-diabetic pictures alongside dietary
+  VERIFIED ingredient panel per tablet (extracted from the VitaOne product
+  page 2026-07-04): berberine HCl 500 mg; fenugreek extract 150 mg; Gymnema
+  sylvestre extract 150 mg; cinnamon extract 150 mg; alpha-lipoic acid
+  100 mg; chromium picolinate 200 mcg. Suggested-use frequency is not
+  printed on the label — dose within the range below at coach discretion.
+
+  Useful for insulin-resistance and pre-diabetic pictures alongside dietary
   intervention. CONFIRM WITH CLINICIAN if client is on hypoglycaemic
-  medication (additive blood-sugar lowering risk). Stub entry — refine
-  exact dose + ingredient list when verified.
+  medication — berberine, chromium, cinnamon, and ALA all have independent
+  glucose-lowering action, so the combination has additive risk.
+
+  Product pages: https://vitaone.in/products/liv-bio-s-dialor-plus-124?ref=vita13720sh
+  (SKU ODOO-124) and https://fmnutrition.in/product/liv-bio-dialor-plus/
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - insulin-resistance
 - blood-sugar-regulation
 sources:
 - id: vitaone-product-catalog
-  location: vitaone.in/shop/liv-bios-dialor-plus-124
-  quote: Liv Bio's Dialor Plus — capsule/tablet blood-sugar support formula
-    distributed via VitaOne. URL captured 2026-05-09. Stub catalogue entry;
-    refine when full product panel is parsed via scripts/vitaone-scrape.py.
+  location: vitaone.in/products/liv-bio-s-dialor-plus-124
+  quote: Liv Bio's Dialor Plus — full ingredient panel (berberine HCl 500mg,
+    fenugreek 150mg, Gymnema sylvestre 150mg, cinnamon 150mg, alpha-lipoic
+    acid 100mg, chromium picolinate 200mcg) verified 2026-07-04 via the
+    commerce catalogue (~/fm-plans/supplement_links.yaml, entry
+    "fmn_livbio_dialor_plus_30_veg_tablets" / "dialor_plus").
 status: active
-version: 2
-updated_at: '2026-05-09'
+version: 3
+updated_at: '2026-07-06'
 updated_by: shivani

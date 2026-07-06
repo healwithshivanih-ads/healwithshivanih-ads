@@ -2,33 +2,54 @@ slug: vitaone-d3
 display_name: VitaOne Vitamin D3
 category: vitamin
 forms_available:
-- capsule
 - liquid
+- tablet
 typical_dose_range:
-  capsule:
-    min: 1000
-    max: 5000
-    unit: IU
   liquid:
-    min: 1000
-    max: 5000
-    unit: IU
+    min: 3
+    max: 4
+    unit: drops
+  tablet:
+    min: 1
+    max: 2
+    unit: tablets
 timing_options:
 - with_breakfast
 - with_lunch
 - morning
 take_with_food: required
-notes_for_coach: VitaOne-branded vitamin D3. Stub entry — refine forms / typical dose ranges when full product details are
-  confirmed. Standard FM target serum 60–80 ng/mL, typically 2000–5000 IU daily with fat-containing meal. Vegan clients need
-  lichen-derived D3 (not lanolin).
+notes_for_coach: |
+  VitaOne Vitamin D3 — two verified SKUs on file (both extracted 2026-07-04,
+  both co-formulated with K2):
+
+  1. Liquid Vitamin D3 + K2 (SKU ODOO-117) — vitamin D3 (cholecalciferol
+     from lichen, vegan-safe) 450 IU + vitamin K2 (MK-7) 9 IU per drop.
+     Label: adults 3-4 drops daily (~1350-1800 IU); children 1 drop daily.
+  2. Vitamin D3 + K2-7, 5000 IU tablet (SKU ODOO-12) — vitamin D3 5000 IU +
+     vitamin K2 (VitaMK7) 100 mcg per tablet. Label: 1-2 tablets daily.
+
+  Neither SKU is a standalone D3-only capsule — no capsule-only product
+  verified as of this writing, so "capsule" was dropped from the forms list.
+  The K2 co-formulation is a bonus (supports arterial calcium routing), not
+  a substitute for any separate calcium/vascular items already in a plan —
+  it complements rather than conflicts with the rest of a supplement stack.
+
+  Standard FM target serum 60–80 ng/mL. Vegan clients are already covered
+  by both SKUs (lichen-derived D3, not lanolin).
+
+  Product pages: https://vitaone.in/products/liquid-vitamin-d3-k2-117?ref=vita13720sh
+  and https://vitaone.in/products/vitamin-d3-k2-7-12?ref=vita13720sh
 evidence_tier: strong
 linked_to_topics:
 - vitamin-d3
 sources:
 - id: vitaone-product-catalog
-  location: vitaone.in/shop product page
-  quote: Stub catalogue entry — VitaOne-branded product. Refine when full product details are parsed via scripts/vitaone-scrape.py.
+  location: vitaone.in/products/vitamin-d3-k2-7-12
+  quote: VitaOne Vitamin D3 — two verified SKUs (liquid D3+K2 450IU/drop;
+    tablet D3+K2-7 5000IU) confirmed 2026-07-04 via the commerce catalogue
+    (~/fm-plans/supplement_links.yaml, entries "vo_liquid_vitamin_d3_k2" and
+    "vo_vitamin_d3_k2_7").
 status: active
-version: 1
-updated_at: '2026-05-09'
+version: 2
+updated_at: '2026-07-06'
 updated_by: shivani
