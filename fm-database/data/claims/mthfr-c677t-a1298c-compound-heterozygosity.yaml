@@ -1,0 +1,33 @@
+slug: mthfr-c677t-a1298c-compound-heterozygosity
+statement: The two clinically relevant MTHFR SNPs are C677T (rs1801133) and A1298C
+  (rs1801131). A1298C alone (heterozygous or homozygous) does not meaningfully
+  elevate homocysteine, but being heterozygous for BOTH C677T and A1298C together
+  produces an effect similar to being homozygous (TT) for C677T alone.
+evidence_tier: plausible_emerging
+rationale: Coach-relevant because a client may report "I have one MTHFR mutation"
+  without realising which SNP, or that carrying both simultaneously changes the
+  risk picture even though each alone looks mild.
+coaching_translation: Which specific MTHFR variant(s) a client carries matters —
+  one mild variant is very different from carrying two at once. This is a
+  clinician/genetic-counsellor conversation, not something to interpret solo.
+out_of_scope_notes: Genetic report interpretation and any supplement dosing decision
+  based on genotype stays with the prescribing clinician.
+caveats:
+- Reduced enzyme activity is a risk factor, not a diagnosis — most carriers never
+  develop clinically significant hyperhomocysteinemia.
+linked_to_topics:
+- methylation-mthfr
+- nutrigenomics
+linked_to_mechanisms:
+- mthfr-enzyme-dysfunction
+linked_to_supplements: []
+sources:
+- id: mthfr-polymorphisms-review-2025
+  location: MTHFR variant review
+  quote: The 1298A>C polymorphism does not lead to elevated homocysteine in
+    heterozygous or homozygous individuals, but combined heterozygosity of
+    1298A>C and 677C>T produces similar results to having a TT genotype.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

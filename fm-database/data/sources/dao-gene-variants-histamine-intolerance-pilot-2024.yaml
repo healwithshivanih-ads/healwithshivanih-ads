@@ -1,0 +1,17 @@
+id: dao-gene-variants-histamine-intolerance-pilot-2024
+title: Pilot Study on the Prevalence of Diamine Oxidase Gene Variants in Patients
+  with Symptoms of Histamine Intolerance
+source_type: peer_reviewed_paper
+quality: moderate
+year: 2024
+publisher: PMC (PubMed Central)
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11054051/
+notes: 'Pilot (small-sample) genetic study. Developed a "genetic DAO Score" summing
+  risk alleles across AOC1 gene positions (0 = no deficiency-associated allele, 1 =
+  heterozygous, 2 = homozygous per position). 17% of symptomatic histamine-intolerance
+  patients carried a high genetic score (4-5) vs 3% of healthy controls. Pilot-scale;
+  treat as suggestive, not confirmatory.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

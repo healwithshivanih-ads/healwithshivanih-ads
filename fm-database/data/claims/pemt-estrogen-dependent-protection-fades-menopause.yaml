@@ -1,0 +1,37 @@
+slug: pemt-estrogen-dependent-protection-fades-menopause
+statement: PEMT gene transcription is dose-dependently upregulated by estradiol in
+  hepatocytes — the mechanistic basis for why premenopausal women are relatively
+  protected from choline-deficiency-driven fatty liver, and why that protection
+  can fade as estrogen declines through perimenopause and menopause.
+evidence_tier: plausible_emerging
+rationale: Directly explains why a perimenopausal/postmenopausal client's choline
+  needs may shift even without any change in diet — a lifecycle-stage-specific
+  nutrient consideration.
+coaching_translation: As estrogen naturally declines through perimenopause and
+  menopause, the body's own choline production capacity can drop too — this is a
+  reasonable moment to pay closer attention to choline-rich foods (eggs, liver)
+  for a client in this life stage, especially if fatty liver or elevated liver
+  enzymes are already on the radar.
+out_of_scope_notes: ''
+caveats:
+- Mechanistic (cell-culture) evidence — supports the biological rationale but is
+  not itself a clinical outcomes trial.
+linked_to_topics:
+- liver-detoxification
+- nutrigenomics
+- perimenopause
+linked_to_mechanisms:
+- pemt-gene-choline-demand
+- hepatic-estrogen-metabolism
+linked_to_supplements:
+- phosphatidylcholine
+- cdp-choline
+sources:
+- id: pemt-estrogen-induction-hepatocytes-2007
+  location: Estradiol dose-response
+  quote: PEMT transcription was increased in a dose-dependent manner when primary
+    mouse and human hepatocytes were treated with 17-beta-estradiol.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

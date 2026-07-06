@@ -1,0 +1,17 @@
+id: mthfr-folate-homocysteine-china-stroke-trial-2018
+title: MTHFR Gene and Serum Folate Interaction on Serum Homocysteine Lowering — Prospect
+  for Precision Folic Acid Treatment
+source_type: peer_reviewed_paper
+quality: high
+year: 2018
+publisher: PubMed (China Stroke Primary Prevention Trial, post-hoc analysis)
+url: https://pubmed.ncbi.nlm.nih.gov/29371246/
+notes: Post-hoc analysis of a 4.5-year folic acid supplementation RCT in hypertensive
+  adults, stratified by MTHFR C677T genotype and serum folate level. Genotype-driven
+  differences in homocysteine-lowering response were eliminated once serum folate
+  reached roughly 15 ng/mL or higher — the clinically actionable finding is that
+  adequate folate status matters more than knowing the genotype.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

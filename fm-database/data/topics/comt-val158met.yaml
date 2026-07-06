@@ -1,10 +1,55 @@
 slug: comt-val158met
 display_name: COMT (Val158Met) Polymorphism
-aliases: []
-summary: Surfaced from MindMap 'anxiety-panic' under branch 'Genetics (one-time)'
-  (depth 2).
-evidence_tier: fm_specific_thin
+aliases:
+- COMT gene variant
+- COMT slow/fast metaboliser
+- rs4680
+summary: The Val158Met polymorphism (rs4680) determines how quickly COMT clears
+  catecholamines (dopamine, norepinephrine, epinephrine) and catechol estrogens.
+  The Met/Met ("slow") variant is thermolabile and clears these roughly 3-4x
+  slower than Val/Val ("fast"), causing a build-up of neurotransmitters and
+  catechol estrogens rather than a deficiency. Because anxiety, low mood, and
+  insomnia can present from either an excess OR a deficiency of these same
+  neurotransmitters, the same symptom picture can have opposite underlying
+  biochemistry — this is why COMT status is clinically relevant to SSRI response
+  and not just a personality-trait curiosity.
+common_symptoms:
+- anxiety
+- insomnia
+- pms
+red_flags: []
+related_topics:
+- nutrigenomics
+- estrogen-metabolism
+key_mechanisms:
+- catechol-clearance-comt-maoa
+- comt-cyp-pathway-activity
+coaching_scope_notes: Coach can flag COMT-related patterns (e.g. worsened anxiety
+  after starting an SSRI) as a heads-up for the client's prescriber — never
+  interpret genetic results diagnostically or suggest medication changes.
+clinician_scope_notes: Slow-COMT clients (Met/Met) on an SSRI or high-dose methyl
+  donor may need closer monitoring for increased anxiety/irritability, since they
+  already run higher baseline catecholamine/serotonin levels.
+notes_for_coach: Effect size is real but modest (per-variant, not deterministic)
+  — read alongside MAOA rather than in isolation; both feed into the shared
+  catechol-clearance mechanism.
+sources:
+- id: comt-catechol-metabolism-review-2002
+  location: Enzyme-substrate breadth
+  quote: COMT is crucial to the metabolism of carcinogenic catechols and
+    catecholamines, and catalyses the methylation of catechol estrogens to
+    methoxy estrogens.
+- id: comt-genotype-neuropsychiatric-review-2021
+  location: Val158Met and mood/cognition
+  quote: The variant (Met) isoform differs from wild-type COMT by being
+    thermolabile, leading to 2-3-fold lower levels of product formation.
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mood & behaviour segment (Mary case)
+  quote: COMT is the Swiss-army-knife gene. With slow MAOA TT and slow COMT AA
+    you build up serotonin and dopamine, not low; the SSRI may be compounding
+    the problem.
+evidence_tier: plausible_emerging
 status: active
-version: 1
-updated_at: '2026-05-18'
+version: 2
+updated_at: '2026-07-06'
 updated_by: Shivani

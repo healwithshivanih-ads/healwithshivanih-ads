@@ -1,0 +1,31 @@
+slug: dao-is-primary-exogenous-histamine-clearance
+statement: Diamine oxidase (DAO) is the principal enzyme clearing dietary
+  (exogenous) histamine, expressed mainly in small-intestine epithelium, placenta,
+  kidney, and liver. This is distinct from histamine-N-methyltransferase (HNMT),
+  which clears histamine intracellularly within tissues rather than in the gut
+  lumen.
+evidence_tier: strong
+rationale: Establishes why gut-focused interventions (avoiding histamine-releasing
+  foods, gut-barrier support) target DAO specifically, while systemic
+  antihistamines act on a different clearance route.
+coaching_translation: The gut is where most food-driven histamine reactions get
+  handled — which is why gut-support strategies (not just antihistamines) matter
+  for a histamine-intolerance picture.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- histamine-intolerance
+linked_to_mechanisms:
+- histamine-metabolism
+linked_to_supplements:
+- dao-enzyme
+sources:
+- id: dao-histamine-clinical-review-2023
+  location: DAO enzyme function and tissue expression
+  quote: The main enzyme for the degradation of exogenous histamine is DAO, mainly
+    expressed in epithelial cells of the small intestine, the placenta, the kidneys,
+    and the liver.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,36 @@
+slug: pemt-sole-endogenous-choline-pathway
+statement: PEMT provides the only pathway that synthesises new choline
+  endogenously (via methylation of phosphatidylethanolamine into
+  phosphatidylcholine). Knockout-mouse studies show that when PEMT activity is
+  absent, even a diet meeting the recommended choline intake is insufficient to
+  prevent hepatic steatosis.
+evidence_tier: strong
+rationale: Explains why choline-status coaching (diet or supplement) matters
+  independently of "eating enough" by RDA standards when PEMT capacity is
+  reduced.
+coaching_translation: If PEMT isn't working well, "eating the recommended amount
+  of choline" may not actually be enough — food sources (eggs, liver) or a
+  supplement may need to run higher than standard guidance suggests, in
+  consultation with a clinician for anyone with existing liver findings.
+out_of_scope_notes: ''
+caveats:
+- Primary evidence is from a mouse knockout model; human translation is
+  plausible but less directly established.
+linked_to_topics:
+- liver-detoxification
+- nutrigenomics
+linked_to_mechanisms:
+- pemt-gene-choline-demand
+linked_to_supplements:
+- phosphatidylcholine
+- cdp-choline
+sources:
+- id: pemt-knockout-choline-steatosis-2003
+  location: Knockout mouse hepatic steatosis findings
+  quote: Mice with homozygous disruption of the PEMT gene are dependent on
+    alternative pathways for phosphatidylcholine synthesis and develop severe
+    liver steatosis when fed a diet deficient in choline.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

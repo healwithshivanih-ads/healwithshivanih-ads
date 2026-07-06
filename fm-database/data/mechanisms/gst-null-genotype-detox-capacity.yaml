@@ -1,0 +1,40 @@
+slug: gst-null-genotype-detox-capacity
+display_name: GSTM1/GSTT1 Null Genotype Detoxification Capacity
+aliases:
+- GSTM1 null
+- GSTT1 null
+- glutathione S-transferase gene deletion
+- GST gene deletion
+category: metabolic
+summary: GSTM1 and GSTT1 are Phase 2 detoxification genes that can be completely
+  deleted (the "null genotype") rather than merely underperforming — a distinct
+  genetic mechanism from generic glutathione depletion caused by stress or
+  nutrient deficiency. Null-genotype carriers have reduced capacity to conjugate
+  and clear certain xenobiotics (air pollution, pesticides, tobacco smoke
+  by-products) via this specific pathway, though other Phase 2 routes
+  (glucuronidation, sulfation) remain available. Population frequency of the
+  null genotype varies widely by ancestry.
+upstream_drivers:
+- genetic-polymorphisms
+related_mechanisms:
+- glutathione-conjugation
+- glutathione-depletion
+- glutathione-peroxidase-activity
+linked_to_topics:
+- nutrigenomics
+notes_for_coach: Null genotype is common in the general population (not a rare
+  finding) and does not by itself indicate disease — other detox pathways
+  compensate. Coach-appropriate action is supporting Phase 2 detox broadly
+  (cruciferous vegetables, NAC, adequate protein/sulfur amino acids), not
+  treating a null result as a standalone diagnosis.
+sources:
+- id: gstm1-gstt1-healthy-volunteers-worldwide-review-2022
+  location: Worldwide frequency data
+  quote: East Asians present the highest frequencies worldwide for GSTM1 and
+    GSTT1 deletions, while Sub-Saharan Africans presented the lowest frequency
+    of GSTM1 worldwide.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

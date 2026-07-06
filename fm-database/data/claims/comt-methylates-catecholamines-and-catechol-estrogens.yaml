@@ -1,0 +1,32 @@
+slug: comt-methylates-catecholamines-and-catechol-estrogens
+statement: COMT methylates both catecholamine neurotransmitters (dopamine,
+  norepinephrine, epinephrine) and catechol estrogen metabolites — one enzyme
+  sitting at the intersection of mood/stress physiology and oestrogen clearance,
+  which is why COMT status shows up in both mental-health and hormone-balance
+  coaching conversations.
+evidence_tier: strong
+rationale: Explains why the same gene appears relevant across seemingly unrelated
+  topics (anxiety AND estrogen dominance) — useful for the coach to connect the
+  dots rather than treat them as two separate issues.
+coaching_translation: If a client's anxiety/mood picture and her hormone-balance
+  picture both keep surfacing, COMT is one plausible shared thread worth naming —
+  not diagnosing, just noting the connection.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- comt-val158met
+- estrogen-metabolism
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+- comt-cyp-pathway-activity
+linked_to_supplements: []
+sources:
+- id: comt-catechol-metabolism-review-2002
+  location: Enzyme substrate breadth
+  quote: COMT is a ubiquitous enzyme that is crucial to the metabolism of
+    carcinogenic catechols and catecholamines, and in the metabolism of catechol
+    estrogens in estrogen-induced hormonal cancers.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,42 @@
+slug: nos3-endothelial-gene-variants
+display_name: NOS3 (eNOS) Gene Variants
+aliases:
+- eNOS gene polymorphism
+- NOS3 Glu298Asp
+- endothelial nitric oxide synthase gene variant
+category: metabolic
+summary: NOS3 encodes endothelial nitric oxide synthase, the enzyme producing
+  vasodilating nitric oxide in blood vessel walls. Three variants are the most
+  studied — Glu298Asp (rs1799983), -786T>C (rs2070744), and an intron-4 VNTR —
+  each associated with modestly reduced NO output and lower vascular
+  reactivity. Per-allele coronary-artery-disease odds ratios are small
+  (~1.1-1.3 per variant) — a real but non-deterministic risk contributor,
+  not a standalone predictor of cardiovascular events.
+upstream_drivers:
+- genetic-polymorphisms
+related_mechanisms:
+- nitric-oxide-production
+- nitric-oxide-bioavailability
+- nitric-oxide-deficiency
+linked_to_topics:
+- nutrigenomics
+- dyslipidemia
+- atherogenic-dyslipidemia
+notes_for_coach: Family history of early cardiovascular disease is the more
+  actionable signal in coaching conversations than the gene variant itself —
+  variants act through modest, additive risk, and are not a substitute for
+  standard cardiometabolic risk management (lipids, blood pressure, glucose,
+  inflammation). Associations with hypertension, preeclampsia, and stroke
+  specifically remain uncertain per this review — do not overstate to a
+  client.
+sources:
+- id: nos3-cvd-huge-review-2006
+  location: Meta-analysis section — coronary heart disease
+  quote: A large meta-analysis of NOS3 polymorphisms in coronary heart disease
+    revealed per-allele odds ratios of 1.17 for Glu298Asp, 1.17 for -786T>C,
+    and 1.12 for intron 4.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

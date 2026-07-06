@@ -1,0 +1,35 @@
+slug: nos3-variants-modest-cad-risk
+statement: A HuGE (Human Genome Epidemiology) review of NOS3 (eNOS) gene variants
+  found modest per-allele coronary-artery-disease odds ratios — roughly 1.17 for
+  Glu298Asp, 1.17 for -786T>C, and 1.12 for intron 4 — meaningfully elevated risk,
+  but far from deterministic. Associations with hypertension, preeclampsia, stroke,
+  and diabetes specifically remain uncertain.
+evidence_tier: plausible_emerging
+rationale: Sets realistic expectations for how much weight a NOS3 result should
+  carry relative to standard modifiable cardiometabolic risk factors.
+coaching_translation: A NOS3 variant is a modest risk contributor, not a diagnosis
+  — standard cardiometabolic levers (lipids, blood pressure, glucose, movement,
+  inflammation) still do most of the work regardless of genotype.
+out_of_scope_notes: Family history and standard risk-factor management remain the
+  primary coaching levers; genetic result interpretation stays clinical.
+caveats:
+- Associations with hypertension, preeclampsia, and stroke specifically are NOT
+  well established per this review — do not extrapolate the CAD finding to
+  those conditions.
+linked_to_topics:
+- dyslipidemia
+- atherogenic-dyslipidemia
+- nutrigenomics
+linked_to_mechanisms:
+- nos3-endothelial-gene-variants
+linked_to_supplements: []
+sources:
+- id: nos3-cvd-huge-review-2006
+  location: Coronary heart disease meta-analysis
+  quote: A large meta-analysis of NOS3 polymorphisms in coronary heart disease
+    revealed per-allele odds ratios of 1.17 for Glu298Asp, 1.17 for -786T>C, and
+    1.12 for intron 4.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

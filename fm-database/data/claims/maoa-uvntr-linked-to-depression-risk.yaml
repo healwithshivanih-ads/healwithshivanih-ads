@@ -1,0 +1,31 @@
+slug: maoa-uvntr-linked-to-depression-risk
+statement: The MAOA upstream variable-number-tandem-repeat (uVNTR) polymorphism,
+  which affects monoamine (serotonin, dopamine, norepinephrine) clearance rate,
+  has a documented association with major depressive disorder per systematic
+  review — a more rigorous evidence base than the popular "warrior gene"
+  aggression framing this polymorphism is often reduced to.
+evidence_tier: plausible_emerging
+rationale: Corrects a common oversimplification (MAOA = "aggression gene") with
+  the actual, better-supported clinical association (mood regulation).
+coaching_translation: MAOA variants are more reliably tied to mood regulation than
+  to the "warrior gene" aggression narrative that circulates online — worth
+  gently correcting if a client brings that framing up.
+out_of_scope_notes: ''
+caveats:
+- Association evidence, not deterministic — gene-environment interaction
+  (childhood adversity, current stress load) modifies expression.
+linked_to_topics:
+- nutrigenomics
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+linked_to_supplements: []
+sources:
+- id: maoa-uvntr-mdd-systematic-review-2022
+  location: Systematic review findings
+  quote: Monoamine Oxidase A (MAOA) influences several neural pathways by
+    modulating neurotransmitter levels; systematic reviews have examined the
+    MAOA uVNTR polymorphism's influence on Major Depressive Disorder.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

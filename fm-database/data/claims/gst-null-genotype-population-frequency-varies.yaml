@@ -1,0 +1,32 @@
+slug: gst-null-genotype-population-frequency-varies
+statement: A worldwide systematic review of healthy volunteers found GSTM1/GSTT1
+  null-genotype (complete gene deletion) frequency varies substantially by
+  ancestry — highest in East Asian populations, lowest for GSTM1 in Sub-Saharan
+  African populations. Null genotype is common in the general healthy population,
+  not a rare finding.
+evidence_tier: strong
+rationale: Prevents overstating a null-genotype result to a client — it is common
+  in healthy people, not a red flag on its own.
+coaching_translation: A "null" result on this gene is common and does not by
+  itself mean anything is wrong — the body has other detox pathways that
+  compensate.
+out_of_scope_notes: ''
+caveats:
+- Frequency data is population-level; does not establish individual disease
+  risk on its own.
+linked_to_topics:
+- nutrigenomics
+- liver-detoxification
+linked_to_mechanisms:
+- gst-null-genotype-detox-capacity
+linked_to_supplements: []
+sources:
+- id: gstm1-gstt1-healthy-volunteers-worldwide-review-2022
+  location: Worldwide frequency findings
+  quote: East Asians present the highest frequencies worldwide for GSTM1 and
+    GSTT1 deletions, while Sub-Saharan Africans presented the lowest frequency
+    of GSTM1 worldwide.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

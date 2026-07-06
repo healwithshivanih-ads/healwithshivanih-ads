@@ -1,0 +1,32 @@
+slug: mthfr-folate-status-outweighs-genotype
+statement: In a 4.5-year RCT of hypertensive adults, genotype-driven differences
+  in homocysteine-lowering response to folic acid supplementation disappeared once
+  serum folate reached approximately 15 ng/mL or higher — meaning adequate folate
+  status can functionally override the MTHFR genotype's effect on homocysteine.
+evidence_tier: strong
+rationale: This is the single most coaching-actionable MTHFR finding available —
+  it reframes the goal from "worry about the genotype" to "get folate status
+  adequate," which is squarely within lifestyle/nutrition coaching scope.
+coaching_translation: Whatever your MTHFR genotype, getting your folate intake and
+  status genuinely adequate (leafy greens, or clinician-guided methylfolate) is the
+  lever that matters most — it can neutralise the genotype's effect on homocysteine.
+out_of_scope_notes: ''
+caveats:
+- Trial population was hypertensive adults on long-term folic acid supplementation
+  — generalising to other populations/interventions (e.g. dietary folate alone,
+  or methylfolate specifically) should be done cautiously.
+linked_to_topics:
+- methylation-mthfr
+- nutrigenomics
+linked_to_mechanisms:
+- mthfr-enzyme-dysfunction
+linked_to_supplements: []
+sources:
+- id: mthfr-folate-homocysteine-china-stroke-trial-2018
+  location: Post-hoc genotype x folate interaction analysis
+  quote: Differences in homocysteine by genotype were eliminated when plasma folate
+    levels reach approximately 15 ng/mL or higher.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

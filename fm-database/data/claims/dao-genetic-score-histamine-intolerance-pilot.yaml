@@ -1,0 +1,37 @@
+slug: dao-genetic-score-histamine-intolerance-pilot
+statement: A pilot study developed a genetic "DAO Score" summing risk alleles
+  across AOC1 gene positions. 17% of patients with histamine-intolerance symptoms
+  carried a high genetic score (4-5) versus only 3% of healthy controls — the
+  first genetic (not just enzyme-activity) evidence tying DAO gene variants to
+  clinical histamine intolerance.
+evidence_tier: plausible_emerging
+rationale: Directly relevant when a client's histamine picture has already been
+  clinically established (symptoms + reactive foods) but the coach wants to
+  understand there IS a genetic layer, distinct from acquired/gut-driven DAO
+  suppression.
+coaching_translation: Some people are genuinely more genetically prone to
+  histamine build-up, on top of anything going on in the gut — this doesn't
+  change the coaching approach (low-histamine diet, gut support) but explains
+  why it can feel disproportionate to what's on the plate.
+out_of_scope_notes: Genetic scoring/testing interpretation stays clinical; coach
+  role is dietary/lifestyle support regardless of genetic result.
+caveats:
+- Pilot-scale study (small sample) — treat as suggestive, not confirmatory. Needs
+  replication in larger cohorts.
+linked_to_topics:
+- histamine-intolerance
+- nutrigenomics
+linked_to_mechanisms:
+- histamine-metabolism
+linked_to_supplements:
+- dao-enzyme
+sources:
+- id: dao-gene-variants-histamine-intolerance-pilot-2024
+  location: Genetic DAO Score results
+  quote: Patients with symptoms of histamine intolerance had a higher percentage
+    with high genetic scores (4-5) in comparison to the control group, with 17%
+    of patients having high genetic load versus only 3% of healthy controls.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: multi-gene-panel-better-than-single-snp
+statement: A population-based study examining COMT, MAOA, and 5HTTLPR together
+  against cognitive outcomes demonstrates the value of a multi-gene ("polygenic")
+  design over single-SNP analysis — the genes interact, and reading any one in
+  isolation risks over- or under-stating its real contribution.
+evidence_tier: strong
+rationale: Directly supports the coaching-scope principle already established for
+  this catalogue (polygenic-scoring mechanism) — reinforces why single-gene
+  framing (e.g. "your dirty MTHFR gene") is methodologically weaker than
+  group-and-score approaches.
+coaching_translation: Genes work in groups, not solo — a single result rarely
+  tells the whole story on its own.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- nutrigenomics
+linked_to_mechanisms:
+- polygenic-scoring
+linked_to_supplements: []
+sources:
+- id: comt-maoa-5httlpr-cognitive-population-study-2011
+  location: Study design rationale
+  quote: A population-based study of COMT, MAOA, and 5HTTLPR examining cognitive
+    effects of genetic variation in monoamine neurotransmitter systems.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

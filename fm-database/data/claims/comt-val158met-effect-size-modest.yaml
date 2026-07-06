@@ -1,0 +1,29 @@
+slug: comt-val158met-effect-size-modest
+statement: The COMT Val158Met (rs4680) Met variant is thermolabile and clears
+  catecholamines roughly 2-3-fold slower than the Val variant, with well-documented
+  associations to anxiety, mood, and attentional traits — but this is one variant
+  among many contributing genes, not a standalone predictor.
+evidence_tier: plausible_emerging
+rationale: Counterbalances consumer-genetics overclaiming — Val158Met is real and
+  well-studied, but should be read as one contributing factor, in line with the
+  broader polygenic-scoring principle.
+coaching_translation: A "slow COMT" result explains a tendency, not a diagnosis —
+  it's one thread among several that shape how someone handles stress.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- comt-val158met
+- nutrigenomics
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+- polygenic-scoring
+linked_to_supplements: []
+sources:
+- id: comt-genotype-neuropsychiatric-review-2021
+  location: Val158Met kinetics
+  quote: The variant isoform differs from wild-type COMT by being thermolabile,
+    leading to 2-3-fold lower levels of product formation.
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani
