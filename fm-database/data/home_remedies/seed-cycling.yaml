@@ -1,0 +1,90 @@
+slug: seed-cycling
+display_name: Seed Cycling (Hormone-Balancing Seed Rotation)
+aliases:
+- seed-rotation
+- flax-pumpkin-sesame-sunflower-cycling
+category: kitchen_remedy
+route: internal
+summary: |
+  A functional-medicine dietary practice that rotates four ground seeds
+  across the menstrual cycle to gently support hormonal balance. In the
+  FOLLICULAR phase (roughly day 1-14, menstruation to ovulation): 1 tbsp
+  ground flaxseed + 1 tbsp ground pumpkin seed daily — flax lignans gently
+  modulate estrogen, pumpkin's zinc supports the run-up to ovulation. In
+  the LUTEAL phase (day 15-28, ovulation to next period): 1 tbsp ground
+  sesame + 1 tbsp ground sunflower seed daily — sesame lignans and
+  sunflower's selenium/vitamin E support progesterone and estrogen
+  clearance. The evidence is FM clinical tradition plus nutritional
+  plausibility (lignans, zinc, selenium, magnesium, ALA omega-3), not RCTs.
+  IMPORTANT — two safety gates: (1) it needs an ovulatory cycle to key the
+  phases to, so it does NOT apply when the cycle is pharmacologically
+  suppressed (dienogest/progestin, GnRH agonists, continuous OCP) — for
+  those clients, offer all four seeds together DAILY for the nutrients, not
+  the phased schedule; (2) the flax/pumpkin (estrogen-supporting) half is
+  cautioned in clear estrogen-dominance (normal-to-high estrogen with low
+  progesterone) — assess the hormonal picture first.
+indications:
+- premenstrual-syndrome
+- estrogen-dominance
+- luteal-phase-defect
+- dysmenorrhea
+- irregular-periods
+- pcos
+contraindications:
+- Cycle pharmacologically suppressed (dienogest / progestin-only / GnRH agonist /
+  continuous OCP) — no ovulatory cycle to phase to; use continuous daily seeds instead
+- Relative estrogen dominance (normal-to-high estrogen, low progesterone) — the
+  flax/pumpkin follicular half may worsen symptoms; assess hormones first
+- Flax or sesame seed allergy
+- Not a contraceptive and not a substitute for prescribed hormonal or gynaecological
+  treatment
+balances_dosha: []
+aggravates_dosha: []
+suitable_sex: female
+suitable_stages:
+- menstruating
+avoid_in: []
+rasa: []
+virya: null
+vipaka: null
+prabhava: ''
+ayurvedic_actions: []
+preparation: |
+  Grind seeds fresh (a small spice/coffee grinder) or buy pre-ground and
+  refrigerate — whole flax passes through undigested and ground seeds
+  oxidise, so grind in small batches. FOLLICULAR (day 1-14): 1 tbsp ground
+  flaxseed + 1 tbsp ground pumpkin seed. LUTEAL (day 15-28): 1 tbsp ground
+  sesame + 1 tbsp ground sunflower seed. Stir into warm (not hot) porridge-
+  free options like curd/yoghurt, a smoothie, dal, sabzi, or a glass of
+  water. If cycles are irregular, use the new moon → full moon window as a
+  proxy for follicular and full moon → new moon for luteal.
+  SUPPRESSED-CYCLE VERSION: all four seeds, 1 tbsp each, together, every
+  day — for the zinc/selenium/lignan/omega-3 nutrients, no phase timing.
+typical_dose: |
+  2 tbsp ground seeds daily (1 tbsp of each seed for the current phase).
+duration: |
+  Give it at least 3 full cycles (~3 months) to judge benefit; safe to
+  continue long-term as a food habit.
+timing_notes: |
+  Any time of day, with food. Space >=2h from thyroid medication and iron
+  supplements (the fibre and minerals can blunt absorption).
+linked_to_topics:
+- estrogen-dominance
+- luteal-phase-defect
+- premenstrual-syndrome
+- endometriosis
+- pcos
+- pcos-insulin-resistant
+- healthy-menstrual-cycle-baseline
+- gut-skin-hormone-axis
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Q&A — Seed Cycling
+- id: coconote-fm-estrogen-dominance
+  location: Luteal Phase Defect — seed cycling cautions
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-06
+updated_by: shivani
