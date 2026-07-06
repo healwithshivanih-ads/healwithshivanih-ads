@@ -1036,7 +1036,7 @@ export interface ClientAppData {
    *  tab's "whole plan, by week" view. Today's surfaces use `supplements`. */
   allSupplements: AppSupplement[];
   slotOrder: string[];
-  practices: { id: string; name: string; when: string }[];
+  practices: { id: string; name: string; when: string; details?: string }[];
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
   /** Guided EFT (tapping) config when the plan prescribes a tapping practice
@@ -1801,6 +1801,25 @@ function appMenuToWeekTables(menu: Dict): WeekTable[] {
  *  Lp(a) 32", "(204 ng/dL, below range)" — and coach-speak like
  *  "mandatory correction" / "gap in prior protocol" into the app).
  *  Letter-provided why-lines are already client-voiced and skip this. */
+/** Practice `details` are multi-sentence instructions (unlike the one-line
+ *  supplement "why"), so this is a LIGHT scrub — strip a leading coach
+ *  change-log stamp / [tag] / bare ISO date and tidy spacing, but PRESERVE the
+ *  full instructional text and its line breaks (bulleted steps render on their
+ *  own lines via white-space: pre-wrap). Never rephrase or truncate. */
+function clientifyPracticeDetail(raw: string): string {
+  let s = raw || "";
+  s = s.replace(
+    /^\s*(?:FORM\s+SWAP|SWAP|UPDATE|CHANGE|REVISED|NOTE)\b[^—–\n:]*?(?:[—–-]\s*|:\s*)/i,
+    "",
+  );
+  s = s.replace(/^\s*\[[^\]]*\]\s*/g, "");
+  s = s.replace(/\b20\d\d-\d\d-\d\d\b/g, "");
+  s = s.replace(/[ \t]{2,}/g, " ");
+  // tidy whitespace around newlines but keep the line breaks themselves
+  s = s.replace(/[ \t]*\n[ \t]*/g, "\n").replace(/\n{3,}/g, "\n\n");
+  return s.trim();
+}
+
 function clientifyWhy(raw: string): string {
   let s = raw;
   // strip leading coach change-log stamps: "FORM SWAP 2026-05-24 — …",
@@ -3200,7 +3219,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   }
 
   // ---- practices (exclude the remedy drinks — they live with meals) --------
-  const practices: { id: string; name: string; when: string }[] = [];
+  const practices: { id: string; name: string; when: string; details?: string }[] = [];
   const lifestyle = asArr(plan.lifestyle_practices) as Dict[];
   // A weekly-frequency phrase anywhere in the name or cadence — "2 sessions
   // per week", "3x/week", "3× week", "2x weekly". Group 1 = the count.
@@ -3267,7 +3286,17 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // their authored order — only the clearly time-anchored ones move.
   collected.sort((a, b) => a.rank - b.rank);
   for (const c of collected) {
-    practices.push({ id: `p${pIdx++}`, name: c.name, when: c.when });
+    // Surface the coach's instructions to the client (e.g. seed-cycling's
+    // follicular-vs-luteal steps) — the card shows name + cadence, tap "How"
+    // to read the full details. Light-scrubbed; omitted when empty.
+    const rawDetails = asStr(c.raw.details);
+    const details = rawDetails ? clientifyPracticeDetail(rawDetails) : "";
+    practices.push({
+      id: `p${pIdx++}`,
+      name: c.name,
+      when: c.when,
+      ...(details ? { details } : {}),
+    });
     practiceRaw.push(c.raw);
   }
 

@@ -469,12 +469,24 @@
 .tile .t2 { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 
 /* ---- plan: practices checklist -------------------------------------- */
+/* Divider lives on the wrapper so an expanded details panel sits inside the
+   same bordered row (and the last row still has no divider). */
+.practice-item { border-bottom: 1px solid var(--line-soft); }
+.practice-item:last-child { border-bottom: none; }
+.practice-item .practice { border-bottom: none; }
 .practice {
   display: flex; align-items: center; gap: 13px;
   padding: 13px 14px; border-bottom: 1px solid var(--line-soft);
   cursor: pointer;
 }
 .practice:last-child { border-bottom: none; }
+.p-trailing { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.p-details {
+  padding: 0 16px 14px 47px;   /* indent under the name, past the checkbox */
+  font-size: 13px; line-height: 1.55; color: var(--muted);
+  white-space: pre-wrap;
+}
+.app.text-lg .p-details { font-size: 14.5px; }
 .check-sq {
   width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0;
   border: 2px solid rgba(74,97,82,0.32); background: var(--paper);

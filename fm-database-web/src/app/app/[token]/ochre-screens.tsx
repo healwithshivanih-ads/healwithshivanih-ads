@@ -273,7 +273,7 @@ export function TodayScreen({
   openBreath: () => void;
   openEft: () => void;
   openSleep: () => void;
-  practices: { id: string; name: string; when: string; done: boolean }[];
+  practices: { id: string; name: string; when: string; details?: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
 }) {
@@ -281,6 +281,14 @@ export function TodayScreen({
   const hour = new Date().getHours();
   const ph = usePhaseNow(hour);
   const externalRemedies = data.remedies.filter((r) => r.assigned && r.route === "external");
+  // Which practice cards have their "How" details expanded.
+  const [openPractice, setOpenPractice] = useState<Set<string>>(new Set());
+  const togglePracticeDetail = (id: string) =>
+    setOpenPractice((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
 
   const onCta = () => {
     if (ph.target === "supps") {
@@ -397,32 +405,51 @@ export function TodayScreen({
             {practices.map((p) => {
               const on = !!p.done;
               const isBreath = data.breathwork?.practiceId === p.id;
+              const hasDetails = !!p.details && !isBreath;
+              const expanded = openPractice.has(p.id);
               return (
-                <button
-                  key={p.id}
-                  className="practice"
-                  onClick={() => onTogglePractice(p.id)}
-                  style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left" }}
-                >
-                  <span className={"check-sq" + (on ? " on" : "")}>
-                    <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
-                  </span>
-                  <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
-                  {isBreath ? (
-                    <span
-                      className="p-guide"
-                      role="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openBreath();
-                      }}
-                    >
-                      <Icon name="breath" size={13} /> Guide
+                <div key={p.id} className="practice-item">
+                  <button
+                    className="practice"
+                    onClick={() => onTogglePractice(p.id)}
+                    style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left" }}
+                  >
+                    <span className={"check-sq" + (on ? " on" : "")}>
+                      <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
                     </span>
-                  ) : (
-                    <span className="p-when">{p.when}</span>
-                  )}
-                </button>
+                    <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
+                    {isBreath ? (
+                      <span
+                        className="p-guide"
+                        role="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openBreath();
+                        }}
+                      >
+                        <Icon name="breath" size={13} /> Guide
+                      </span>
+                    ) : (
+                      <span className="p-trailing">
+                        {p.when && <span className="p-when">{p.when}</span>}
+                        {hasDetails && (
+                          <span
+                            className="p-guide"
+                            role="button"
+                            aria-expanded={expanded}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              togglePracticeDetail(p.id);
+                            }}
+                          >
+                            {expanded ? "Hide ▲" : "How ▾"}
+                          </span>
+                        )}
+                      </span>
+                    )}
+                  </button>
+                  {hasDetails && expanded && <div className="p-details">{p.details}</div>}
+                </div>
               );
             })}
           </div>
