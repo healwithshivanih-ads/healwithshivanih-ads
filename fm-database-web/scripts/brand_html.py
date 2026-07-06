@@ -790,6 +790,8 @@ body[data-print-supplement] #supplement-schedule {{
 .remedy-prep {{ font-size: 13.5px; color: {INK}; line-height: 1.5; margin: 0 0 6px; }}
 .remedy-when {{ font-size: 13px; color: {INK}; line-height: 1.45; margin: 4px 0 0; }}
 .remedy-when strong, .remedy-prep strong {{ color: var(--forest); }}
+.remedy-buy {{ font-size: 13px; margin: 8px 0 0; }}
+.remedy-buy a {{ color: var(--forest); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--forest); }}
 @media print {{ .supp-buy {{ display: none !important; }} }}
 
 .slot-chip {{

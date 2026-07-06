@@ -109,18 +109,53 @@ def cmd_pending_refs(args: argparse.Namespace) -> None:
             print(f"  ← {w.source_entity} {w.source_slug}.{w.field}")
 
 
-def cmd_orphans(args: argparse.Namespace) -> None:
-    """List catalogue entities the assessment subgraph can never reach.
+def _collect_session_selections(root: Path):
+    """Yield (selected_symptoms, selected_topics) for every real session.
 
-    The inverse of pending-refs: these entities EXIST and validate, but
-    nothing points at them through the edges the assess subgraph walks, so
-    the AI can never surface them. The exact failure that hid
-    beta-glucuronidase-deconjugation until it was wired into the estrogen-gut
-    cluster.
+    Reads `<root>/clients/*/sessions/*.yaml`. Used to build the demand
+    frontier — what topics/mechanisms the assessments actually reach.
+    """
+    sessions_glob = root / "clients"
+    if not sessions_glob.exists():
+        return
+    for sess in sorted(sessions_glob.glob("*/sessions/*.yaml")):
+        try:
+            d = yaml.safe_load(sess.read_text()) or {}
+        except Exception:
+            continue
+        if not isinstance(d, dict):
+            continue
+        yield (d.get("selected_symptoms") or [], d.get("selected_topics") or [])
+
+
+def cmd_orphans(args: argparse.Namespace) -> None:
+    """List catalogue entities the assessment can never reach.
+
+    Two modes:
+      - default: STRUCTURAL orphans — entities that EXIST and validate, but
+        nothing points at them through the edges the assess subgraph walks
+        (the failure that hid beta-glucuronidase-deconjugation).
+      - --demand: also DEMAND orphans — links resolve, but no assessment
+        you've actually run reaches them (the "added a tea, it never shows
+        up" failure). Built from real session selections in the plans root.
     """
     from .validator import find_orphans, load_all
 
-    orphans = find_orphans(load_all(DATA_DIR))
+    loaded = load_all(DATA_DIR)
+
+    coverage = None
+    kwargs: dict = {}
+    if getattr(args, "demand", False):
+        from .assess.subgraph import DEMAND_KINDS, build_demand_coverage
+        root = _plans_root(args)
+        coverage = build_demand_coverage(loaded, _collect_session_selections(root))
+        kwargs = dict(
+            demand_reachable={k: coverage.reachable(k) for k in DEMAND_KINDS},
+            demand_scope_frontier=coverage.scope_frontier,
+            demand_sessions=coverage.n_sessions,
+        )
+
+    orphans = find_orphans(loaded, **kwargs)
     if args.kind:
         orphans = [o for o in orphans if o.kind == args.kind]
     if args.blocking:
@@ -128,12 +163,34 @@ def cmd_orphans(args: argparse.Namespace) -> None:
 
     if args.json:
         import json
+        # Bare array — the dashboard chip (catalogue-orphan-action.ts) guards on
+        # Array.isArray. `category` is additive; consumers ignore unknown fields.
         print(json.dumps([
             {"kind": o.kind, "slug": o.slug, "display_name": o.display_name,
-             "reason": o.reason, "blocking": o.blocking}
+             "reason": o.reason, "blocking": o.blocking, "category": o.category}
             for o in orphans
         ], indent=2))
         return
+
+    if coverage is not None:
+        n_hr = len(loaded.home_remedies)
+        seen_hr = len(coverage.reachable("home_remedies"))
+        # Split the invisible home remedies into the two fixes.
+        fr = coverage.scope_frontier
+        cap = relink = 0
+        for hr in loaded.home_remedies:
+            if hr.slug in coverage.reachable("home_remedies"):
+                continue
+            links = set(hr.linked_to_topics or []) | set(hr.linked_to_mechanisms or [])
+            if links & fr:
+                cap += 1
+            else:
+                relink += 1
+        print(f"Demand coverage: replayed {coverage.n_sessions} real assessment(s). "
+              f"{seen_hr}/{n_hr} home remedies surface in >=1.\n"
+              f"Of the {n_hr - seen_hr} that don't: {cap} are cap/tier casualties "
+              f"(reachable but crowded out — use a Protocol or direct-add), "
+              f"{relink} are retrieval-dead (re-link to an in-demand topic).\n")
 
     if not orphans:
         print("(no orphans — every entity is reachable by the assessment)")
@@ -144,23 +201,38 @@ def cmd_orphans(args: argparse.Namespace) -> None:
         by_kind.setdefault(o.kind, []).append(o)
 
     n_block = sum(1 for o in orphans if o.blocking)
+    n_demand = sum(1 for o in orphans if o.category == "demand")
+    n_struct = len(orphans) - n_block - n_demand
     print(f"{len(orphans)} orphan(s) — {n_block} assessment-blocking, "
-          f"{len(orphans) - n_block} secondary\n")
+          f"{n_struct} structural-secondary, {n_demand} demand-unreachable\n")
     order = ["mechanism", "supplement", "claim", "protocol",
              "cooking_adjustment", "home_remedy", "symptom"]
     for kind in sorted(by_kind, key=lambda k: order.index(k) if k in order else 99):
         items = by_kind[kind]
-        flag = "[BLOCKING]" if items[0].blocking else "[secondary]"
+        n_d = sum(1 for o in items if o.category == "demand")
+        if items[0].blocking:
+            flag = "[BLOCKING]"
+        elif n_d == len(items):
+            flag = "[demand]"
+        elif n_d:
+            flag = "[mixed]"
+        else:
+            flag = "[secondary]"
         print(f"{flag} {kind} ({len(items)})")
         shown = items if args.verbose else items[:15]
         for o in shown:
-            print(f"   {o.slug}  —  {o.display_name}")
+            tag = " ·demand" if o.category == "demand" else ""
+            print(f"   {o.slug}  —  {o.display_name}{tag}")
         if len(items) > len(shown):
             print(f"   ... +{len(items) - len(shown)} more (use -v)")
         print()
     if n_block:
         print("Fix a BLOCKING orphan by adding it to the key_mechanisms / "
               "related_mechanisms / linked_to_* of an in-scope entity, then re-run.")
+    if n_demand:
+        print("Fix a DEMAND orphan by linking it to a topic/mechanism your "
+              "assessments actually select (see the frontier), or add it to a "
+              "client's plan directly.")
 
 
 # ---------------------------------------------------------------------------
@@ -210,6 +282,61 @@ def _slugify(name: str) -> str:
     s = name.lower().strip()
     s = re.sub(r"[^a-z0-9]+", "-", s)
     return s.strip("-")
+
+
+def cmd_remedy_feature(args: argparse.Namespace) -> None:
+    """Pin / unpin a home remedy so the assessment force-includes it past the
+    size-cap whenever it's in scope. Text-surgical edit (preserves YAML)."""
+    from .loader import load_home_remedies
+
+    path = DATA_DIR / "home_remedies" / f"{args.slug}.yaml"
+    if not path.exists():
+        print(f"error: no home remedy '{args.slug}' at {path}")
+        raise SystemExit(1)
+    want = not args.off
+    text = path.read_text()
+    d = yaml.safe_load(text) or {}
+    if bool(d.get("featured", False)) == want:
+        print(f"{args.slug}: already featured={want} — no change")
+        return
+
+    lines = text.splitlines(keepends=True)
+    new_line = f"featured: {'true' if want else 'false'}\n"
+    for i, ln in enumerate(lines):
+        if ln.lstrip().startswith("featured:") and not ln.startswith(" "):
+            lines[i] = new_line
+            break
+    else:
+        # insert before `sources:` (featured precedes it in the model), else before evidence_tier
+        anchor = next((i for i, ln in enumerate(lines) if ln.startswith("sources:")), None)
+        if anchor is None:
+            anchor = next((i for i, ln in enumerate(lines) if ln.startswith("evidence_tier:")), len(lines))
+        lines.insert(anchor, new_line)
+    path.write_text("".join(lines))
+
+    # Re-validate: the file must still load as a valid HomeRemedy.
+    try:
+        load_home_remedies(DATA_DIR)
+    except Exception as e:  # pragma: no cover - defensive
+        path.write_text(text)  # roll back
+        print(f"error: edit produced an invalid remedy, rolled back: {e}")
+        raise SystemExit(1)
+    print(f"{args.slug}: featured={want}. It will now be force-included in any "
+          f"assessment where it's in scope (its links match the selection).")
+
+
+def cmd_remedies_featured(args: argparse.Namespace) -> None:
+    """List every home remedy currently pinned (featured=True)."""
+    from .loader import load_home_remedies
+
+    feats = [hr for hr in load_home_remedies(DATA_DIR) if getattr(hr, "featured", False)]
+    if not feats:
+        print("(no featured home remedies — pin one with: fmdb remedy-feature <slug>)")
+        return
+    print(f"{len(feats)} featured home remedy(ies):")
+    for hr in sorted(feats, key=lambda h: h.slug):
+        topics = ", ".join(hr.linked_to_topics[:4]) or "(no topic links)"
+        print(f"   {hr.slug}  —  {hr.display_name}\n      in scope for: {topics}")
 
 
 def cmd_backlog_list(args: argparse.Namespace) -> None:
@@ -1955,9 +2082,19 @@ def main() -> None:
     orph = sub.add_parser("orphans", help="list entities the assessment subgraph can never reach (inverse of pending-refs)")
     orph.add_argument("--kind", help="filter to one kind (mechanism / supplement / claim / ...)")
     orph.add_argument("--blocking", action="store_true", help="only assessment-blocking orphans (mechanisms + supplements)")
+    orph.add_argument("--demand", action="store_true", help="also flag interventions whose links resolve but no real assessment reaches them (demand-unreachable)")
+    orph.add_argument("--plans-dir", help="override plans root for --demand (default: $FMDB_PLANS_DIR or ~/fm-plans)")
     orph.add_argument("--json", action="store_true", help="machine-readable output (for the dashboard)")
     orph.add_argument("-v", "--verbose", action="store_true", help="show all, not just first 15 per kind")
     orph.set_defaults(func=cmd_orphans)
+
+    rf = sub.add_parser("remedy-feature", help="pin/unpin a home remedy so the assessment force-includes it past the size-cap when in scope")
+    rf.add_argument("slug", help="home remedy slug (e.g. jatamansi-brahmi-sleep-tea)")
+    rf.add_argument("--off", action="store_true", help="un-pin instead of pin")
+    rf.set_defaults(func=cmd_remedy_feature)
+
+    rfl = sub.add_parser("remedies-featured", help="list home remedies currently pinned (featured=True)")
+    rfl.set_defaults(func=cmd_remedies_featured)
 
     bl = sub.add_parser("backlog-list", help="list catalogue-additions backlog")
     bl.add_argument("--status", choices=["open", "added", "rejected", "all"], default="open")

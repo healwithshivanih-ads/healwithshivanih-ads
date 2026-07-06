@@ -582,14 +582,39 @@ class Orphan:
     display_name: str
     reason: str
     blocking: bool       # True = assessment-blocking (mechanism/supplement); False = secondary
+    category: str = "structural"  # "structural" = broken/absent link; "demand" = links
+                                  #   resolve but no real assessment reaches it
 
     def render(self) -> str:
-        flag = "🔴" if self.blocking else "🟡"
+        flag = "🔴" if self.blocking else ("🟠" if self.category == "demand" else "🟡")
         return f"{flag} {self.kind} {self.slug!r} — {self.reason}"
 
 
-def find_orphans(loaded: Loaded) -> list[Orphan]:
+def find_orphans(
+    loaded: Loaded,
+    *,
+    demand_reachable: dict | None = None,
+    demand_scope_frontier: set | None = None,
+    demand_sessions: int = 0,
+) -> list[Orphan]:
     """Find entities unreachable by the assessment subgraph.
+
+    Two independent reachability tests:
+
+    - STRUCTURAL (always): does the entity carry any link that RESOLVES to an
+      existing entity? A home_remedy with a broken/absent topic link can never
+      be pulled in. Mirrors fmdb/assess/subgraph.py exactly (alias-aware).
+
+    - DEMAND (only when `demand_reachable` is passed): the links resolve, but
+      does the entity ever actually survive into a REAL assessment's subgraph?
+      `demand_reachable` maps each bundle key ("supplements", "home_remedies",
+      "cooking_adjustments", "protocols") to the set of slugs that appeared in
+      >=1 real session (`DemandCoverage.reachable`, built from the true
+      build_subgraph including caps + the claim route). An entity linked to a
+      valid topic no client is ever tagged with passes STRUCTURAL but is
+      invisible in practice — this catches the "added a tea, it never shows up"
+      class. Demand orphans are `category="demand"`, non-blocking.
+      `demand_sessions` is the denominator for the message.
 
     Reachability mirrors fmdb/assess/subgraph.py exactly (alias-aware):
 
@@ -710,6 +735,64 @@ def find_orphans(loaded: Loaded) -> list[Orphan]:
                 "dead end — links to no topic/mechanism, so picking it adds nothing to the subgraph",
                 blocking=False,
             ))
+
+    # --- DEMAND pass: links resolve, but no real assessment surfaces them ---
+    if demand_reachable is not None:
+        already = {(o.kind, o.slug) for o in orphans}  # don't double-flag structural
+        frontier = demand_scope_frontier if demand_scope_frontier is not None else None
+
+        def _is_candidate(e) -> bool:
+            """Does the entity's topic/mechanism scope intersect the frontier —
+            i.e. was it ever a candidate, or never even retrieved? Only reliable
+            for topic/mechanism-routed kinds; supplements also ride the claim
+            route, so we don't classify them (frontier is None-checked)."""
+            if frontier is None:
+                return False
+            links = set(getattr(e, "linked_to_topics", []) or []) | set(
+                getattr(e, "linked_to_mechanisms", []) or [])
+            return bool(links & frontier)
+
+        def _reason(e, kind: str, dosha_route: bool) -> str:
+            # supplements: report coverage only (claim route makes the
+            # candidate/cap split unreliable).
+            if kind == "supplement":
+                base = (f"never surfaces across {demand_sessions} real assessment(s) "
+                        f"— invisible for the clients actually seen")
+            elif _is_candidate(e):
+                base = (f"reached as a candidate but never survives the size cap in "
+                        f"{demand_sessions} real assessment(s) — a cap/tier casualty, "
+                        f"not a linking gap (fix: add to a relevant Protocol, or add "
+                        f"to the client's plan directly; do NOT inflate evidence_tier)")
+            else:
+                base = (f"never even enters the candidate scope across {demand_sessions} "
+                        f"real assessment(s) — link it to a topic/mechanism your "
+                        f"assessments actually select")
+            if dosha_route:
+                base += " (Ayurveda-track clients can still reach it via its dosha tags)"
+            return base
+
+        # (bundle key, entity kind, iterable) — coverage came from the real
+        # build_subgraph, so the claim route (supplements) + caps are honoured.
+        _passes = [
+            ("supplements", "supplement", loaded.supplements),
+            ("cooking_adjustments", "cooking_adjustment", loaded.cooking_adjustments),
+            ("home_remedies", "home_remedy", loaded.home_remedies),
+            ("protocols", "protocol", loaded.protocols),
+        ]
+        for bundle_key, kind, entities in _passes:
+            reachable = demand_reachable.get(bundle_key, set())
+            for e in entities:
+                if (kind, e.slug) in already:
+                    continue  # structurally unreachable already reported
+                if e.slug in reachable:
+                    continue  # surfaces in >=1 real assessment
+                dosha = bool(
+                    getattr(e, "balances_dosha", None) or getattr(e, "aggravates_dosha", None)
+                )
+                orphans.append(Orphan(
+                    kind, e.slug, e.display_name, _reason(e, kind, dosha),
+                    blocking=False, category="demand",
+                ))
 
     return orphans
 

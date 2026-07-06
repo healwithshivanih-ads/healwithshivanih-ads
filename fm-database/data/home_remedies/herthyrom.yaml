@@ -1,0 +1,44 @@
+slug: herthyrom
+display_name: HerThyrom (HerPulse — Natural Thyrofood for Hypothyroidism)
+aliases:
+- her-thyrom
+- herthyrom-tea
+category: herbal_tea
+route: internal
+summary: A proprietary HerPulse herbal infusion positioned as a nutritional "thyrofood"
+  adjunct for hypothyroid and autoimmune-thyroid support. A gentle daily drink alongside —
+  never in place of — prescribed thyroid medication and the core plan.
+indications:
+- hypothyroid nutritional support
+- autoimmune (Hashimoto's) thyroid support
+- fatigue and sluggishness associated with low thyroid
+contraindications:
+- Pregnancy or breastfeeding
+- On hormonal birth control (combined OCP / progestin-only pill / hormonal IUD) — do not combine
+- On blood-pressure medication — confirm with your doctor before starting
+- Contains calcium and iron — take at least 4 hours apart from levothyroxine / thyroid tablet,
+  which they otherwise block from absorbing
+suitable_sex: female
+suitable_stages: []
+avoid_in:
+- pregnancy
+- lactation
+preparation: Prepare per the HerPulse pack instructions — typically steep one sachet /
+  measure in hot water and drink as a warm infusion.
+typical_dose: 1 cup daily as directed on the pack
+timing_notes: Separate from levothyroxine by 4+ hours — its calcium and iron block thyroid-hormone
+  absorption. Take the thyroid tablet on an empty stomach in the morning; drink this tea later
+  in the day.
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_mechanisms: []
+featured: true
+sources:
+- id: herpulse-affiliate
+  location: Product page — HerThyrom (herpulse.in/product/herthyrom-for-thyroid)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-06
+updated_by: Shivani
