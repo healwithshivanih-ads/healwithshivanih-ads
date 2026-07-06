@@ -7,7 +7,9 @@ category: herbal_tea
 route: internal
 summary: A proprietary HerPulse cycle-timed herbal infusion positioned for PMS and period
   pain — a gentle warm drink begun in the days before the period to ease cramps, bloating and
-  premenstrual mood symptoms. An adjunct alongside the core plan.
+  premenstrual mood symptoms. An adjunct alongside the core plan. Ingredients (vendor) —
+  ashoka, hibiscus, licorice, spearmint plus cordyceps and reishi mushrooms. Vendor age band
+  12-50; cycle-timed for PMS/dysmenorrhoea, distinct from HerSantulan's everyday hormone balance.
 indications:
 - premenstrual syndrome (PMS)
 - period pain / cramps (dysmenorrhea)
@@ -16,6 +18,7 @@ contraindications:
 - Pregnancy or breastfeeding
 - On hormonal birth control (combined OCP / progestin-only pill / hormonal IUD) — do not combine
 - On blood-pressure medication — confirm with your doctor before starting
+- Known allergy to mushrooms — the blend contains cordyceps and reishi
 suitable_sex: female
 suitable_stages:
 - menstruating
@@ -28,11 +31,14 @@ typical_dose: 1 cup daily during the relevant part of the cycle, as directed on 
 timing_notes: Cycle-timed — begin a few days before your period per the HerPulse guidance.
 linked_to_topics:
 - premenstrual-syndrome
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- chronic-inflammation
 featured: true
 sources:
 - id: herpulse-affiliate
   location: Product page — HerTOM (herpulse.in/product/hertom-for-periods)
+- id: herpulse-product-presentations
+  location: HerTOM product presentation — ingredients, symptom mapping, safety sheet
 evidence_tier: fm_specific_thin
 version: 1
 status: active

@@ -7,7 +7,10 @@ category: herbal_tea
 route: internal
 summary: A proprietary HerPulse herbal infusion positioned as a nutritional "thyrofood"
   adjunct for hypothyroid and autoimmune-thyroid support. A gentle daily drink alongside —
-  never in place of — prescribed thyroid medication and the core plan.
+  never in place of — prescribed thyroid medication and the core plan. Ingredients (vendor) —
+  nigella sativa (kalonji), chamomile, licorice, spearmint plus cordyceps and reishi mushrooms,
+  with added vitamin B6, calcium and zinc. Vendor age band >18; positioned specifically for an
+  autoimmune/Hashimoto's thyroid picture, not general hormone imbalance (that is HerSantulan).
 indications:
 - hypothyroid nutritional support
 - autoimmune (Hashimoto's) thyroid support
@@ -16,8 +19,9 @@ contraindications:
 - Pregnancy or breastfeeding
 - On hormonal birth control (combined OCP / progestin-only pill / hormonal IUD) — do not combine
 - On blood-pressure medication — confirm with your doctor before starting
-- Contains calcium and iron — take at least 4 hours apart from levothyroxine / thyroid tablet,
-  which they otherwise block from absorbing
+- Known allergy to mushrooms — the blend contains cordyceps and reishi
+- Contains added calcium (plus zinc and B6) — take at least 4 hours apart from levothyroxine /
+  thyroid tablet, since calcium blocks thyroid-hormone absorption
 suitable_sex: female
 suitable_stages: []
 avoid_in:
@@ -26,17 +30,21 @@ avoid_in:
 preparation: Prepare per the HerPulse pack instructions — typically steep one sachet /
   measure in hot water and drink as a warm infusion.
 typical_dose: 1 cup daily as directed on the pack
-timing_notes: Separate from levothyroxine by 4+ hours — its calcium and iron block thyroid-hormone
+timing_notes: Separate from levothyroxine by 4+ hours — its added calcium blocks thyroid-hormone
   absorption. Take the thyroid tablet on an empty stomach in the morning; drink this tea later
   in the day.
 linked_to_topics:
 - hypothyroidism
 - autoimmune-thyroiditis
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- chronic-inflammation
+- hpa-axis-dysregulation
 featured: true
 sources:
 - id: herpulse-affiliate
   location: Product page — HerThyrom (herpulse.in/product/herthyrom-for-thyroid)
+- id: herpulse-product-presentations
+  location: HerThyrom product presentation — ingredients (B6/Ca/Zn label), symptom mapping, safety sheet
 evidence_tier: fm_specific_thin
 version: 1
 status: active

@@ -8,6 +8,9 @@ route: internal
 summary: A proprietary HerPulse daily herbal infusion positioned for hormone balance in
   PCOS and androgen-excess pictures — irregular or heavy periods, acne, unwanted facial hair
   and hair thinning. A gentle daily adjunct alongside the core plan, not a hormonal medication.
+  Ingredients (vendor) — shatavari, lodhra, chamomile, turmeric, fenugreek, spearmint plus
+  cordyceps and reishi mushrooms. Vendor age band 18-45; positioned as the everyday
+  hormone-balance product (distinct from HerTOM's cycle-timed PMS focus).
 indications:
 - PCOS / polycystic ovary syndrome
 - irregular or heavy periods
@@ -18,6 +21,7 @@ contraindications:
 - Pregnancy or breastfeeding (if used for fertility support, discontinue once pregnancy is confirmed)
 - On hormonal birth control (combined OCP / progestin-only pill / hormonal IUD) — do not combine
 - On blood-pressure medication — confirm with your doctor before starting
+- Known allergy to mushrooms — the blend contains cordyceps and reishi
 suitable_sex: female
 suitable_stages:
 - menstruating
@@ -37,11 +41,17 @@ linked_to_topics:
 - pcos-fertility
 - acne-vulgaris
 - hair-loss-women
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- insulin-resistance
+- 5-alpha-reductase-dht-conversion
+- hpa-axis-dysregulation
+- low-progesterone
 featured: true
 sources:
 - id: herpulse-affiliate
   location: Product page — HerSantulan (herpulse.in/product/hersantulan-for-hormonal-imbalance)
+- id: herpulse-product-presentations
+  location: HerSantulan product presentation — ingredients, symptom mapping, safety sheet
 evidence_tier: fm_specific_thin
 version: 1
 status: active
