@@ -79,6 +79,14 @@ _APP_CLIENT_KEYS = (
     "ayurveda_constitution",
     "ayurveda_assessment",
     "cycle_status",
+    # Cycle-sync data drives the client app's computed seed-cycling section
+    # (which seeds to eat today = follicular flax+pumpkin vs luteal
+    # sesame+sunflower). Client-updatable via the in-app "period started"
+    # reset (save-app-period.py).
+    "last_menstrual_period",
+    "last_period_end_date",
+    "cycle_length_days",
+    "cycle_regularity",
     "pregnancy_status",
     "lactation_started",
     "app_token",

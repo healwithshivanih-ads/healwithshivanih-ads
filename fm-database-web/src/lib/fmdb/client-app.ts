@@ -376,6 +376,25 @@ export interface AppBreathwork {
   }[];
 }
 
+/** Computed seed-cycling guidance — the app works out which seeds to eat
+ *  TODAY from the client's cycle data so she doesn't have to track the phase
+ *  herself. `mode: "phased"` uses last_menstrual_period + cycle length to pick
+ *  the follicular (flax + pumpkin) or luteal (sesame + sunflower) seeds;
+ *  `mode: "daily"` (cycle suppressed / post-menopausal) shows all four every
+ *  day. `needsDate` = phased but no period date on file → prompt the client. */
+export interface AppSeedCycling {
+  mode: "phased" | "daily";
+  phase: "follicular" | "luteal" | null;
+  dayInCycle: number | null;
+  cycleLength: number;
+  lastPeriodStart: string | null; // ISO YYYY-MM-DD
+  needsDate: boolean;
+  /** Today's seeds — the headline. */
+  today: { seeds: string[]; line: string; note: string };
+  /** The full two-phase schedule, for the "see the whole rhythm" disclosure. */
+  schedule: { follicular: string; luteal: string };
+}
+
 /** A guided EFT (tapping) session — a fixed point sequence with per-point
  *  phrases. Phase 1 uses a coach-authored library script chosen by theme; the
  *  plan can later carry an approved, per-client (Haiku-filled) script. The 7
@@ -1037,6 +1056,9 @@ export interface ClientAppData {
   allSupplements: AppSupplement[];
   slotOrder: string[];
   practices: { id: string; name: string; when: string; details?: string }[];
+  /** Computed seed-cycling section (which seeds today) — its own section
+   *  under the menu. null when the plan doesn't prescribe seed cycling. */
+  seedCycling: AppSeedCycling | null;
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
   /** Guided EFT (tapping) config when the plan prescribes a tapping practice
@@ -1820,6 +1842,91 @@ function clientifyPracticeDetail(raw: string): string {
   return s.trim();
 }
 
+/** Work out which seeds the client should eat TODAY from her cycle data, so
+ *  she never has to count cycle days herself. Pure + unit-testable. */
+function computeSeedCycling(
+  enabled: boolean,
+  client: Dict,
+  todayUTC: Date,
+): AppSeedCycling | null {
+  if (!enabled) return null;
+  const FOLLICULAR = ["flaxseed", "pumpkin seed"];
+  const LUTEAL = ["sesame (til)", "sunflower seed"];
+  const schedule = {
+    follicular: "1 tbsp ground flaxseed + 1 tbsp ground pumpkin seed daily",
+    luteal: "1 tbsp ground sesame (til) + 1 tbsp ground sunflower seed daily",
+  };
+  const cycleStatus = String(client.cycle_status ?? "").toLowerCase();
+  const suppressed =
+    cycleStatus === "postmenopausal" || cycleStatus === "not_applicable";
+  const rawLen = Number(client.cycle_length_days);
+  const cycleLength =
+    Number.isFinite(rawLen) && rawLen >= 20 && rawLen <= 45 ? Math.round(rawLen) : 28;
+
+  // DAILY mode — no ovulatory cycle to phase to → all four seeds every day.
+  if (suppressed) {
+    return {
+      mode: "daily",
+      phase: null,
+      dayInCycle: null,
+      cycleLength,
+      lastPeriodStart: null,
+      needsDate: false,
+      today: {
+        seeds: [...FOLLICULAR, ...LUTEAL],
+        line: "All four seeds today",
+        note: "Grind about 1 tbsp each of flaxseed, pumpkin, sesame and sunflower (≈2 tbsp total) into your food. Take them together every day for the nutrients.",
+      },
+      schedule,
+    };
+  }
+
+  // PHASED mode — needs the period start date.
+  const lmpStr = asStr(client.last_menstrual_period);
+  const lmp = lmpStr ? new Date(`${lmpStr}T00:00:00Z`) : null;
+  if (!lmp || isNaN(lmp.getTime())) {
+    return {
+      mode: "phased",
+      phase: null,
+      dayInCycle: null,
+      cycleLength,
+      lastPeriodStart: null,
+      needsDate: true,
+      today: {
+        seeds: [],
+        line: "Tell me when your period started",
+        note: "Tap “My period started today” on the first day of your next period and I'll pick the right seeds for you each day.",
+      },
+      schedule,
+    };
+  }
+
+  const daysSince = Math.floor((todayUTC.getTime() - lmp.getTime()) / 86_400_000);
+  // 1-indexed day within the cycle, robust to a stale or future date.
+  const dayInCycle = (((daysSince % cycleLength) + cycleLength) % cycleLength) + 1;
+  const ovulation = Math.round(cycleLength / 2);
+  const phase: "follicular" | "luteal" = dayInCycle <= ovulation ? "follicular" : "luteal";
+  const seeds = phase === "follicular" ? FOLLICULAR : LUTEAL;
+  const note =
+    phase === "follicular"
+      ? "Grind 1 tbsp flaxseed + 1 tbsp pumpkin seed into your food today (curd, a smoothie or dal). These support the first half of your cycle."
+      : "Grind 1 tbsp sesame (til) + 1 tbsp sunflower seed into your food today (curd, a smoothie or dal). These support the second half of your cycle.";
+  return {
+    mode: "phased",
+    phase,
+    dayInCycle,
+    cycleLength,
+    lastPeriodStart: lmpStr,
+    needsDate: false,
+    today: {
+      seeds,
+      line: `${phase === "follicular" ? "Follicular half" : "Luteal half"} · day ${dayInCycle}`,
+      note,
+    },
+    schedule,
+  };
+}
+
 function clientifyWhy(raw: string): string {
   let s = raw;
   // strip leading coach change-log stamps: "FORM SWAP 2026-05-24 — …",
@@ -2255,6 +2362,7 @@ async function buildDiscoveryAppData(
     allSupplements: [],
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: [],
+    seedCycling: null,
     breathwork: null,
     eft: null,
     sleep: null,
@@ -3270,10 +3378,14 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const practiceRaw: Dict[] = []; // index-aligned with practices[]
   // Collect first so we can stable-sort by time of day before assigning ids.
   const collected: { name: string; when: string; rank: number; raw: Dict }[] = [];
+  // Seed cycling gets its OWN computed section under the menu (which seeds
+  // today), so it's pulled out of the flat practices list here.
+  let seedCyclingPrescribed = false;
   for (const p of lifestyle) {
     const name = asStr(p.name);
     if (!name) continue;
     if (/ccf tea|golden milk|haldi doodh/i.test(name)) continue;
+    if (/seed.?cycl/i.test(name)) { seedCyclingPrescribed = true; continue; }
     const cadence = asStr(p.cadence);
     collected.push({
       name: cleanPracticeName(name),
@@ -3299,6 +3411,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     });
     practiceRaw.push(c.raw);
   }
+
+  // ---- seed cycling: its own computed section under the menu ----------------
+  // Works out today's seeds from the client's cycle data so she never has to
+  // count cycle days herself.
+  const seedCycling = computeSeedCycling(seedCyclingPrescribed, client, todayUTC);
 
   // ---- guided breathwork (paced exactly to the prescribed technique) -------
   // The animation is driven entirely from these numbers, so it can never
@@ -4370,6 +4487,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     allSupplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: practicesVisible,
+    seedCycling,
     breathwork,
     eft: eftVisible,
     sleep: sleepVisible,

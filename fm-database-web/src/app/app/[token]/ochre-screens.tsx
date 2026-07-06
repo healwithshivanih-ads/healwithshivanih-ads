@@ -236,6 +236,96 @@ export function PlanHoldScreen({ goCoach, openOrder }: { goCoach: () => void; op
   );
 }
 
+/** Seed-cycling section (its own block under the menu). The app has already
+ *  worked out today's seeds from the client's cycle data — she just reads it.
+ *  A "period started" tap re-keys the cycle so it stays accurate over time. */
+function SeedCyclingSection() {
+  const data = useOchre();
+  const sc = data.seedCycling;
+  const [showSchedule, setShowSchedule] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+  if (!sc) return null;
+
+  const markPeriodStarted = async () => {
+    if (saving) return;
+    setSaving(true);
+    setMsg(null);
+    try {
+      const res = await fetch("/api/app-period", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token }),
+      });
+      const j = (await res.json()) as { ok?: boolean; error?: string };
+      if (j.ok) {
+        setMsg("Got it — updating your seeds…");
+        setTimeout(() => window.location.reload(), 700);
+      } else {
+        setMsg(j.error || "Couldn't save — please try again");
+        setSaving(false);
+      }
+    } catch {
+      setMsg("Couldn't save — please try again");
+      setSaving(false);
+    }
+  };
+
+  return (
+    <Section title="Seed cycling">
+      <div className="card seed-card">
+        <span className="seed-phase">{sc.today.line}</span>
+        {sc.today.seeds.length > 0 && (
+          <div className="seed-chips">
+            {sc.today.seeds.map((s) => (
+              <span key={s} className="seed-chip">
+                <Icon name="leaf" size={14} /> {s}
+              </span>
+            ))}
+          </div>
+        )}
+        <p className="seed-note">{sc.today.note}</p>
+
+        {sc.mode === "phased" && (
+          <div className="seed-actions">
+            <button className="seed-btn" onClick={markPeriodStarted} disabled={saving}>
+              {saving ? "Saving…" : "My period started today"}
+            </button>
+            {!sc.needsDate && (
+              <button
+                className="seed-link"
+                onClick={() => setShowSchedule((v) => !v)}
+                aria-expanded={showSchedule}
+              >
+                {showSchedule ? "Hide the full rhythm" : "See the full rhythm"}
+              </button>
+            )}
+          </div>
+        )}
+        {msg && <p className="seed-saved">{msg}</p>}
+
+        {showSchedule && (
+          <div className="seed-schedule">
+            <div>
+              <strong>First half (follicular)</strong>
+              <br />
+              {sc.schedule.follicular}
+            </div>
+            <div>
+              <strong>Second half (luteal)</strong>
+              <br />
+              {sc.schedule.luteal}
+            </div>
+            <p className="seed-note" style={{ marginTop: 0 }}>
+              Grind the seeds fresh and stir into curd, a smoothie or dal — not very hot food.
+            </p>
+          </div>
+        )}
+      </div>
+    </Section>
+  );
+}
+
 export function TodayScreen({
   logged,
   onToggleSupp,
@@ -387,6 +477,8 @@ export function TodayScreen({
         )}
         <MealList openMeal={openMeal} logged={logged} onToggle={onToggleSupp} openRemedy={openRemedy} />
       </Section>
+
+      {data.seedCycling && <SeedCyclingSection />}
 
       <Section title="Your supplements">
         <div id="today-supps" />

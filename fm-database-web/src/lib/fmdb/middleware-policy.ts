@@ -54,6 +54,11 @@ export const PUBLIC_PATH_PREFIXES = [
   "/api/app-travel",
   "/api/app-body",
   "/api/app-swap",
+  // Period-start write-back for the seed-cycling section (client taps "my
+  // period started today"). Token-scoped, re-verified server-side. Must be
+  // public or it 404s on Fly under FLY_INTAKE_ONLY and the seed-cycling reset
+  // silently breaks for every client.
+  "/api/app-period",
   // Mind-body practice log write-back (breathing / EFT / sleep wind-down).
   // Token-scoped, re-verified server-side. Feeds the adherence scanner + the
   // progressive-unlock drip engine. (Was missing → 404'd on Fly under
