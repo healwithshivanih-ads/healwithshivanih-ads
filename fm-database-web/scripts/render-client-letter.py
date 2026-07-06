@@ -3007,6 +3007,56 @@ def _load_home_remedy(slug: str) -> dict | None:
         return None
 
 
+def _client_life_stages(client: dict) -> set:
+    """Machine-checkable life stages for home-remedy safety gating on the LETTER
+    surface. Mirrors the pregnancy/lactation overlay logic used elsewhere in
+    this file (pregnancy_status not in {'', not_applicable, not_pregnant})."""
+    stages: set = set()
+    preg = (client.get("pregnancy_status") or "").strip()
+    if preg and preg not in ("not_applicable", "not_pregnant", ""):
+        stages.add("pregnancy")
+    if (client.get("lactation_started") or "").strip():
+        stages.add("lactation")
+    return stages
+
+
+def _remedy_blocked_for_client(hr: dict, client: dict) -> bool:
+    """Life-stage / sex safety gate for a catalogue home remedy on the LETTER.
+
+    The phone app enforces avoid_in / suitable_sex via filterEligible(); the
+    letter render path did NOT — so a hormonal/thyroid tea (and its affiliate
+    buy-link) could print for a pregnant / lactating / male-flagged client.
+    This closes that gap. Drops a remedy whose avoid_in intersects the client's
+    stage, or whose suitable_sex excludes the client's sex.
+    """
+    avoid = {str(s).strip().lower() for s in (hr.get("avoid_in") or [])}
+    if avoid & _client_life_stages(client):
+        return True
+    want = str(hr.get("suitable_sex") or "any").strip().lower()
+    if want in ("female", "male"):
+        raw = (client.get("sex") or "").strip().lower()
+        sex = {"f": "female", "m": "male", "female": "female", "male": "male"}.get(raw, "")
+        if sex and sex != want:
+            return True
+    return False
+
+
+def _remedy_buy_html(name: str, slug: str) -> str:
+    """Affiliate buy-badge for a catalogue remedy that has a coach-set custom
+    link in supplement_links.yaml (e.g. a HerPulse tea, bound by its `slug:`
+    field). Returns '' when no link is configured. rel='sponsored' is the honest
+    affiliate-disclosure attribute; .no-print hides it on the printed handout
+    (the affiliate click only works on the digital letter anyway)."""
+    buy = _vitaone_url_only(name, slug=str(slug))
+    if not buy:
+        return ""
+    _pname, url = buy
+    return (
+        f'<p class="remedy-buy no-print"><a href="{url}" target="_blank" '
+        f'rel="noopener sponsored">Where to get it →</a></p>'
+    )
+
+
 def _inject_after_last_meal_grid(html: str, snippet: str) -> "str | None":
     """Insert snippet right after the LAST <div class="meal-grid">…</div> (the
     Week-N day cards) so '🍵 Drinks & digestives' sits next to the meal plan.
@@ -3029,11 +3079,15 @@ def _inject_after_last_meal_grid(html: str, snippet: str) -> "str | None":
     return None
 
 
-def _build_remedies_html(plan: dict) -> str:
+def _build_remedies_html(plan: dict, client: dict) -> str:
     """Conditional '🍵 Drinks & digestives' section. Renders the plan's catalogue
     home_remedies (churan / tea / juice / infused water — with preparation) PLUS
     any bespoke custom_remedies (a kitchen-spice blend authored for this client).
     Returns '' when the plan has none, so the section only shows when relevant.
+
+    Catalogue remedies pass the life-stage / sex safety gate (pregnancy /
+    lactation / suitable_sex) before rendering, and carry an affiliate buy-badge
+    when a coach-set custom link exists (e.g. a HerPulse tea).
     """
     nutrition = plan.get("nutrition") or {}
     cards: list[str] = []
@@ -3051,12 +3105,15 @@ def _build_remedies_html(plan: dict) -> str:
         hr = _load_home_remedy(str(slug))
         if not hr:
             continue
+        if _remedy_blocked_for_client(hr, client):
+            continue  # pregnancy/lactation/sex safety gate — never render for an ineligible client
         name = hr.get("display_name") or str(slug).replace("-", " ").title()
         prep = (hr.get("preparation") or "").strip()
         when = (hr.get("typical_dose") or hr.get("timing_notes") or "").strip()
         cards.append(_card(name, str(hr.get("category") or "").replace("_", " "), [
             f'<p class="remedy-prep">{prep}</p>' if prep else "",
             f'<p class="remedy-when"><strong>When:</strong> {when}</p>' if when else "",
+            _remedy_buy_html(name, str(slug)),
         ]))
 
     # 2. Bespoke custom remedies (authored for this client)
@@ -3140,6 +3197,8 @@ def _build_ayurveda_html(plan: dict, client: dict) -> str:
         hr = _load_home_remedy(str(slug))
         if not hr:
             continue
+        if _remedy_blocked_for_client(hr, client):
+            continue  # pregnancy/lactation/sex safety gate
         name = hr.get("display_name") or str(slug).replace("-", " ").title()
         prep = (hr.get("preparation") or "").strip()
         when = (hr.get("typical_dose") or hr.get("timing_notes") or "").strip()
@@ -3153,6 +3212,7 @@ def _build_ayurveda_html(plan: dict, client: dict) -> str:
             f'    <article class="remedy-card"><h3 class="remedy-name">{name}{kind_chip}</h3>'
             + (f'<p class="remedy-prep">{prep}</p>' if prep else "")
             + (f'<p class="remedy-when"><strong>{when_label}:</strong> {when}</p>' if when else "")
+            + _remedy_buy_html(name, str(slug))
             + "</article>"
         )
 
@@ -8175,7 +8235,7 @@ def main() -> int:
             # catalogue home_remedies or bespoke custom_remedies. Placed right
             # AFTER the meal plan (coach 2026-06-07: it's a food/drink ritual).
             # Falls back to the supplement (TAKE) block when there's no meal grid.
-            remedies_html = _build_remedies_html(plan)
+            remedies_html = _build_remedies_html(plan, client)
             if remedies_html:
                 _placed = _inject_after_last_meal_grid(html, remedies_html)
                 if _placed is not None:

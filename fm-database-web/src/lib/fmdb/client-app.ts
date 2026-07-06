@@ -27,6 +27,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+import { collectMeasurementSnapshots, latestMeasurements } from "@/lib/fmdb/measurements";
 import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/travel-foods";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { isInternationalClient } from "@/lib/server-actions/supplement-links-match";
@@ -393,6 +394,15 @@ export interface AppSeedCycling {
   today: { seeds: string[]; line: string; note: string };
   /** The full two-phase schedule, for the "see the whole rhythm" disclosure. */
   schedule: { follicular: string; luteal: string };
+}
+
+/** Cycle-timed cramp support — shows a ginger-tea prompt (with the tea
+ *  quantities) ONLY on the dates that matter: the ~2 days before the client's
+ *  expected period and the first few crampy days. null the rest of the month. */
+export interface AppPeriodCare {
+  heading: string;
+  line: string;
+  recipe: string;
 }
 
 /** A guided EFT (tapping) session — a fixed point sequence with per-point
@@ -1059,6 +1069,9 @@ export interface ClientAppData {
   /** Computed seed-cycling section (which seeds today) — its own section
    *  under the menu. null when the plan doesn't prescribe seed cycling. */
   seedCycling: AppSeedCycling | null;
+  /** Cycle-timed cramp support (ginger tea) — non-null only on the dates
+   *  around the client's period; null the rest of the month. */
+  periodCare: AppPeriodCare | null;
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
   /** Guided EFT (tapping) config when the plan prescribes a tapping practice
@@ -1156,9 +1169,26 @@ export interface ClientAppData {
     heightCm: number | null;
     ageYears: number | null;
     sex: "M" | "F" | "";
-    latest: { weightKg: number | null; waistCm: number | null; hipCm: number | null; measuredOn: string | null };
-    /** oldest → newest; only entries that carry at least a weight */
-    history: { date: string; weightKg: number | null; waistCm: number | null; hipCm: number | null }[];
+    latest: {
+      weightKg: number | null;
+      waistCm: number | null;
+      hipCm: number | null;
+      bpSystolic: number | null;
+      bpDiastolic: number | null;
+      measuredOn: string | null;
+    };
+    /** oldest → newest; only entries that carry at least one of the tracked fields */
+    history: {
+      date: string;
+      weightKg: number | null;
+      waistCm: number | null;
+      hipCm: number | null;
+      bpSystolic: number | null;
+      bpDiastolic: number | null;
+      /** 1-5, from the daily energy sheet — not a body measurement, carried
+       *  through the same snapshot so the vitals card can chart it alongside. */
+      moodScore: number | null;
+    }[];
   };
   reminders: {
     id: string;
@@ -1842,6 +1872,46 @@ function clientifyPracticeDetail(raw: string): string {
   return s.trim();
 }
 
+/** Cycle-timed cramp support: surface a ginger-tea prompt only on the dates
+ *  that help — from ~2 days before the expected period through the first few
+ *  crampy days — so the client never has to work out when to start it. Returns
+ *  null outside that window (nothing shows). Pure + reuses the cycle math. */
+function computePeriodCare(
+  enabled: boolean,
+  client: Dict,
+  todayUTC: Date,
+): AppPeriodCare | null {
+  if (!enabled) return null;
+  const cs = String(client.cycle_status ?? "").toLowerCase();
+  if (cs === "postmenopausal" || cs === "not_applicable") return null;
+  const lmpStr = asStr(client.last_menstrual_period);
+  const lmp = lmpStr ? new Date(`${lmpStr}T00:00:00Z`) : null;
+  if (!lmp || isNaN(lmp.getTime())) return null;
+  const rawLen = Number(client.cycle_length_days);
+  const cycleLength =
+    Number.isFinite(rawLen) && rawLen >= 20 && rawLen <= 45 ? Math.round(rawLen) : 28;
+  const daysSince = Math.floor((todayUTC.getTime() - lmp.getTime()) / 86_400_000);
+  const dayInCycle = (((daysSince % cycleLength) + cycleLength) % cycleLength) + 1;
+  const isPre = dayInCycle >= cycleLength - 2; // ~2 days before the next period
+  const isDuring = dayInCycle <= 4; // the first few days (cramps peak days 2-3)
+  if (!isPre && !isDuring) return null;
+  const recipe =
+    "Simmer a 1-inch piece of fresh ginger (sliced or lightly smashed) in 1½ cups water for 7-8 minutes, strain, and add a squeeze of lemon. Have 2-3 cups through the day. A heat pad on your lower tummy helps alongside it.";
+  if (isPre) {
+    const daysToPeriod = cycleLength - dayInCycle + 1;
+    return {
+      heading: "Your period's due soon",
+      line: `About ${daysToPeriod} day${daysToPeriod === 1 ? "" : "s"} to go — start your ginger tea now to get ahead of the cramps.`,
+      recipe,
+    };
+  }
+  return {
+    heading: "Ginger tea for cramps",
+    line: `Day ${dayInCycle} — keep the ginger tea going while the cramps are around.`,
+    recipe,
+  };
+}
+
 /** Work out which seeds the client should eat TODAY from her cycle data, so
  *  she never has to count cycle days herself. Pure + unit-testable. */
 function computeSeedCycling(
@@ -2363,6 +2433,7 @@ async function buildDiscoveryAppData(
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: [],
     seedCycling: null,
+    periodCare: null,
     breathwork: null,
     eft: null,
     sleep: null,
@@ -2414,7 +2485,7 @@ async function buildDiscoveryAppData(
       heightCm: null,
       ageYears: null,
       sex,
-      latest: { weightKg: null, waistCm: null, hipCm: null, measuredOn: null },
+      latest: { weightKg: null, waistCm: null, hipCm: null, bpSystolic: null, bpDiastolic: null, measuredOn: null },
       history: [],
     },
     reminders: [],
@@ -3381,11 +3452,15 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // Seed cycling gets its OWN computed section under the menu (which seeds
   // today), so it's pulled out of the flat practices list here.
   let seedCyclingPrescribed = false;
+  // Ginger-tea-for-cramps is a cycle-timed prompt, not a daily practice — it's
+  // pulled out here and surfaced only on the relevant period dates.
+  let gingerCrampPrescribed = false;
   for (const p of lifestyle) {
     const name = asStr(p.name);
     if (!name) continue;
     if (/ccf tea|golden milk|haldi doodh/i.test(name)) continue;
     if (/seed.?cycl/i.test(name)) { seedCyclingPrescribed = true; continue; }
+    if (/ginger/i.test(name) && /cramp|period|menstru/i.test(name)) { gingerCrampPrescribed = true; continue; }
     const cadence = asStr(p.cadence);
     collected.push({
       name: cleanPracticeName(name),
@@ -3416,6 +3491,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // Works out today's seeds from the client's cycle data so she never has to
   // count cycle days herself.
   const seedCycling = computeSeedCycling(seedCyclingPrescribed, client, todayUTC);
+  const periodCare = computePeriodCare(gingerCrampPrescribed, client, todayUTC);
 
   // ---- guided breathwork (paced exactly to the prescribed technique) -------
   // The animation is driven entirely from these numbers, so it can never
@@ -4192,42 +4268,76 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     : null;
 
   // ---- body composition (read-only height/age + editable weight/waist/hip) --
+  //
+  // Goes through the SAME canonical union reader the coach dashboard uses
+  // (collectMeasurementSnapshots / latestMeasurements) instead of reading
+  // client.health_snapshots or the flat client.measurements block directly.
+  // Landmine this fixes: weight/BP/waist live in three stores that don't
+  // sync (health_snapshots from the app + labs, measurements_log from the
+  // coach's own "Log entry" editor, and the flat intake block) — a value
+  // last touched by a DIFFERENT source than the most recent entry must
+  // still surface here, not silently disappear because it wasn't repeated
+  // on that same date.
   const num = (v: unknown): number | null => {
     const n = typeof v === "number" ? v : typeof v === "string" ? parseFloat(v) : NaN;
     return Number.isFinite(n) && n > 0 ? n : null;
   };
   const meas = (client.measurements as Dict) || {};
-  const snaps = asArr(client.health_snapshots) as Dict[];
+  const measurementsLike = client as Parameters<typeof collectMeasurementSnapshots>[0];
+  // mood is a sibling of `measurements` on a health_snapshot entry (a daily
+  // energy tap, not a body measurement — see save-app-body.py), so it isn't
+  // carried by the shared union reader; build a small date lookup directly.
+  const moodByDate = new Map<string, number>();
+  for (const s of asArr(client.health_snapshots) as Dict[]) {
+    const d = asStr(s.date);
+    const m = num(s.mood_score);
+    if (d && m != null) moodByDate.set(d, m);
+  }
   // height: prefer the dashboard measurement, else the most recent snapshot
   let bodyHeight = num(meas.height_cm);
-  const bodyHistory = snaps
-    .map((s) => {
-      const m = (s.measurements as Dict) || {};
-      return {
-        date: asStr(s.date),
-        weightKg: num(m.weight_kg),
-        waistCm: num(m.waist_cm),
-        hipCm: num(m.hip_cm),
-        heightCm: num(m.height_cm),
-      };
-    })
-    .filter((e) => e.date && (e.weightKg != null || e.waistCm != null || e.hipCm != null))
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const bodyHistory = collectMeasurementSnapshots(measurementsLike)
+    .map((s) => ({
+      date: s.date,
+      weightKg: s.measurements.weight_kg ?? null,
+      waistCm: s.measurements.waist_cm ?? null,
+      hipCm: s.measurements.hip_cm ?? null,
+      heightCm: s.measurements.height_cm ?? null,
+      bpSystolic: s.measurements.bp_systolic ?? null,
+      bpDiastolic: s.measurements.bp_diastolic ?? null,
+      moodScore: moodByDate.get(s.date) ?? null,
+    }))
+    .filter(
+      (e) =>
+        e.weightKg != null || e.waistCm != null || e.hipCm != null || e.bpSystolic != null || e.moodScore != null,
+    );
+  // collectMeasurementSnapshots() already returns ascending-by-date, one
+  // merged entry per date across all three stores.
   if (bodyHeight == null) {
     const withH = bodyHistory.filter((e) => e.heightCm != null);
     if (withH.length) bodyHeight = withH[withH.length - 1].heightCm;
   }
+  const latest = latestMeasurements(measurementsLike);
   const body: ClientAppData["body"] = {
     heightCm: bodyHeight,
     ageYears,
     sex: sexRaw === "M" ? "M" : sexRaw === "F" ? "F" : "",
     latest: {
-      weightKg: num(meas.weight_kg),
-      waistCm: num(meas.waist_cm),
-      hipCm: num(meas.hip_cm),
-      measuredOn: asStr(meas.measured_on) || null,
+      weightKg: latest?.measurements.weight_kg ?? null,
+      waistCm: latest?.measurements.waist_cm ?? null,
+      hipCm: latest?.measurements.hip_cm ?? null,
+      bpSystolic: latest?.measurements.bp_systolic ?? null,
+      bpDiastolic: latest?.measurements.bp_diastolic ?? null,
+      measuredOn: latest?.date ?? null,
     },
-    history: bodyHistory.map(({ date, weightKg, waistCm, hipCm }) => ({ date, weightKg, waistCm, hipCm })),
+    history: bodyHistory.map(({ date, weightKg, waistCm, hipCm, bpSystolic, bpDiastolic, moodScore }) => ({
+      date,
+      weightKg,
+      waistCm,
+      hipCm,
+      bpSystolic,
+      bpDiastolic,
+      moodScore,
+    })),
   };
 
   // ---- coach's quick picks (off-catalogue product / remedy tips) ------------
@@ -4488,6 +4598,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: practicesVisible,
     seedCycling,
+    periodCare,
     breathwork,
     eft: eftVisible,
     sleep: sleepVisible,

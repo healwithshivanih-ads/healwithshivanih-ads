@@ -1,0 +1,48 @@
+slug: hermeno
+display_name: HerMeno (HerPulse — For Changes before the Change)
+aliases:
+- her-meno
+- hermeno-tea
+category: herbal_tea
+route: internal
+summary: A proprietary HerPulse herbal infusion positioned for the peri- and post-menopause
+  transition — traditional herbs to ease hot flushes, mood swings, disturbed sleep and
+  the general hormonal shift as oestrogen declines. A gentle daily adjunct alongside the
+  core plan, not a hormone therapy.
+indications:
+- perimenopausal hot flushes and night sweats
+- mood swings and irritability in the menopause transition
+- disturbed sleep around perimenopause
+- general peri-/post-menopause hormonal support
+contraindications:
+- Pregnancy or breastfeeding
+- On hormonal birth control (combined OCP / progestin-only pill / hormonal IUD) — do not combine
+- On blood-pressure medication — confirm with your doctor before starting
+- History of an oestrogen-sensitive condition (e.g. ER-positive breast cancer, endometrial
+  hyperplasia) — confirm with your doctor before starting
+suitable_sex: female
+suitable_stages:
+- perimenopausal
+- postmenopausal
+avoid_in:
+- pregnancy
+- lactation
+preparation: Prepare per the HerPulse pack instructions — typically steep one sachet /
+  measure in hot water and drink as a warm infusion.
+typical_dose: 1 cup daily as directed on the pack
+timing_notes: Warm, once daily; keep 4+ hours from any prescription thyroid tablet if also
+  taking one.
+linked_to_topics:
+- perimenopause
+- menopause
+- perimenopause-and-menopause
+linked_to_mechanisms: []
+featured: true
+sources:
+- id: herpulse-affiliate
+  location: Product page — HerMeno (herpulse.in/product/hermeno-for-menopause)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-06
+updated_by: Shivani

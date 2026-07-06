@@ -480,6 +480,18 @@ export function TodayScreen({
 
       {data.seedCycling && <SeedCyclingSection />}
 
+      {data.periodCare && (
+        <Section title="Cramp care">
+          <div className="card seed-card">
+            <span className="seed-phase">{data.periodCare.heading}</span>
+            <p className="seed-note" style={{ color: "var(--ink)", marginTop: 11 }}>
+              {data.periodCare.line}
+            </p>
+            <p className="seed-note">{data.periodCare.recipe}</p>
+          </div>
+        </Section>
+      )}
+
       <Section title="Your supplements">
         <div id="today-supps" />
         <SupplementSlots logged={logged} onToggle={onToggleSupp} onLogAll={onLogAll} onOpenRemedy={openRemedy} />

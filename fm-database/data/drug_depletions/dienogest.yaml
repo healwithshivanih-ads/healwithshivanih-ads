@@ -28,16 +28,17 @@ summary: 'Dienogest is a fourth-generation progestin. As 2 mg monotherapy (Visan
   classic OCP folate/B6/B12/zinc/magnesium picture largely does not apply here.'
 depletes: []
 condition_implications:
-- label: Endometriosis / adenomyosis (or heavy/painful bleeding under work-up)
+- label: A gynae condition under active management (endometriosis, ovarian cyst, or
+    heavy/painful bleeding)
   confidence: moderate
-  rationale: Continuous dienogest 2 mg monotherapy (Visanne / Dinagest) is specifically
-    licensed for endometriosis and adenomyosis, so a client on continuous standalone
-    dienogest very likely has that diagnosis or strong suspicion. But shorter/cyclical
-    courses are also used for heavy menstrual bleeding, severe dysmenorrhoea and cycle
-    regulation without confirmed endometriosis — so treat it as a strong pointer to an
-    estrogen-dominant / painful-heavy-period picture and confirm the indication rather
-    than assuming laparoscopic endometriosis.
-  topic_slug: endometriosis
+  rationale: Dienogest is a progestin used for SEVERAL indications — do NOT assume
+    endometriosis. Continuous 2 mg monotherapy (Visanne / Dinagest) is licensed for
+    endometriosis/adenomyosis, but it is ALSO commonly prescribed as a timed course
+    (e.g. ~3 months) to suppress/shrink a large or functional OVARIAN CYST, and for
+    heavy menstrual bleeding, severe dysmenorrhoea or cycle regulation. Treat it as a
+    pointer to an actively-managed hormonal/gynae issue and CONFIRM the actual
+    indication with the client/gynae rather than inferring a diagnosis from the drug.
+  topic_slug: estrogen-dominance
 - label: Heavy or painful menstrual bleeding (dysmenorrhoea / menorrhagia)
   confidence: moderate
   rationale: Dienogest is also used to control heavy menstrual bleeding and severe

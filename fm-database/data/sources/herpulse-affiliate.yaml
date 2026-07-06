@@ -1,0 +1,17 @@
+id: herpulse-affiliate
+title: HerPulse — Herbal Infusions for Women's Hormonal & Thyroid Health
+source_type: website
+quality: low
+authors: []
+publisher: HerPulse
+url: https://www.herpulse.in
+notes: 'Affiliate partner (tie-up 2026-07-01). Proprietary traditional herbal-infusion
+  products (HerMeno, HerSantulan, HerTOM, HerThyrom). Indications and formulations are
+  manufacturer / traditional-use claims, NOT functional-medicine RCT evidence — the
+  catalogue entries derived from this source carry evidence_tier fm_specific_thin and
+  are offered as gentle adjuncts, never as primary therapy. Buy-links live in
+  ~/fm-plans/supplement_links.yaml, never in the catalogue YAML.'
+version: 1
+status: active
+updated_at: '2026-07-06'
+updated_by: Shivani

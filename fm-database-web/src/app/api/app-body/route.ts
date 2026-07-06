@@ -1,10 +1,13 @@
 /**
- * POST /api/app-body — body-composition write-back from the client app.
+ * POST /api/app-body — body-composition + vitals write-back from the client app.
  *
  * The client updates weight / waist / hip from the settings page (height
- * and age are read-only). The numbers land in client.measurements +
- * a `source: client_app` health snapshot, so they show up in the coach's
- * health-trends and power the app's own progress charts.
+ * and age are read-only), and optionally logs weight / blood pressure /
+ * energy from the daily quick-log sheet on the Progress tab. The numbers
+ * land in client.measurements + a `source: client_app` health snapshot, so
+ * they show up in the coach's health-trends and power the app's own
+ * progress charts. mood_score is a daily 1-5 energy tap, not a body
+ * measurement — it rides along on the same snapshot entry.
  *
  * Auth: body.token must resolve to the client's app/letter token. The
  * client is derived server-side from the token — never trusted from the
@@ -21,6 +24,14 @@ export const dynamic = "force-dynamic";
 function num(v: unknown): number | null {
   const n = typeof v === "number" ? v : typeof v === "string" ? parseFloat(v) : NaN;
   return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+/** Accept an integer 1-5, else null (the shim re-checks the range). */
+function moodNum(v: unknown): number | null {
+  const n = typeof v === "number" ? v : typeof v === "string" ? parseFloat(v) : NaN;
+  if (!Number.isFinite(n)) return null;
+  const r = Math.round(n);
+  return r >= 1 && r <= 5 ? r : null;
 }
 
 export async function POST(req: NextRequest) {
@@ -48,6 +59,9 @@ export async function POST(req: NextRequest) {
       weight_kg: num(body.weight_kg),
       waist_cm: num(body.waist_cm),
       hip_cm: num(body.hip_cm),
+      bp_systolic: num(body.bp_systolic),
+      bp_diastolic: num(body.bp_diastolic),
+      mood_score: moodNum(body.mood_score),
     })) as { ok?: boolean; measured_on?: string; error?: string };
     if (!out.ok) {
       return NextResponse.json({ ok: false, error: out.error ?? "save failed" }, { status: 400 });
