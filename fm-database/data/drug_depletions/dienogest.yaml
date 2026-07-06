@@ -14,23 +14,29 @@ drug_class: oral_contraceptive
 summary: 'Dienogest is a fourth-generation progestin. As 2 mg monotherapy (Visanne
   / Dinagest) it is a first-line medical treatment for endometriosis and adenomyosis:
   it creates a stable progestin-dominant, relatively hypo-estrogenic environment that
-  decidualises then atrophies ectopic endometrial tissue, and usually suppresses ovulation
-  and induces amenorrhoea or scanty, irregular bleeding. It is also combined with
-  estradiol valerate in some contraceptive pills (Qlaira / Natazia). Because ovulation
-  and the normal follicular/luteal rhythm are pharmacologically suppressed, any
-  cycle-phase-timed intervention (seed cycling, phase-based herbs) has no natural
-  cycle to key on. Unlike combined estrogen-containing OCPs, a progestin-only agent
+  decidualises then atrophies ectopic endometrial tissue. Taken CONTINUOUSLY (the
+  endometriosis regimen), it usually suppresses ovulation and induces amenorrhoea or
+  scanty irregular bleeding — so on continuous use there is no follicular/luteal
+  rhythm and cycle-phase-timed interventions (seed cycling, phase-based herbs) have
+  no cycle to key on. A SHORT or CYCLICAL course (e.g. a 10-14 day luteal/short course
+  for heavy bleeding or cycle regulation) often PRESERVES normal ovulatory periods —
+  in that case the cycle is intact and phase-based protocols still apply. Always check
+  the client''s actual bleeding pattern rather than assuming suppression from the drug
+  name. Dienogest is also combined with estradiol valerate in some contraceptive pills
+  (Qlaira / Natazia). Unlike combined estrogen-containing OCPs, a progestin-only agent
   does NOT carry the strong estrogen-driven multi-nutrient depletion profile, so the
   classic OCP folate/B6/B12/zinc/magnesium picture largely does not apply here.'
 depletes: []
 condition_implications:
-- label: Endometriosis / adenomyosis
-  confidence: high
-  rationale: Dienogest 2 mg monotherapy (Visanne / Dinagest) is specifically licensed
-    and prescribed for endometriosis and adenomyosis. In an Indian coaching context a
-    client on standalone dienogest almost always has a diagnosis (or strong clinical
-    suspicion) of endometriosis/adenomyosis, typically with dysmenorrhoea, heavy or
-    prolonged bleeding, or chronic pelvic pain.
+- label: Endometriosis / adenomyosis (or heavy/painful bleeding under work-up)
+  confidence: moderate
+  rationale: Continuous dienogest 2 mg monotherapy (Visanne / Dinagest) is specifically
+    licensed for endometriosis and adenomyosis, so a client on continuous standalone
+    dienogest very likely has that diagnosis or strong suspicion. But shorter/cyclical
+    courses are also used for heavy menstrual bleeding, severe dysmenorrhoea and cycle
+    regulation without confirmed endometriosis — so treat it as a strong pointer to an
+    estrogen-dominant / painful-heavy-period picture and confirm the indication rather
+    than assuming laparoscopic endometriosis.
   topic_slug: endometriosis
 - label: Heavy or painful menstrual bleeding (dysmenorrhoea / menorrhagia)
   confidence: moderate
@@ -39,20 +45,22 @@ condition_implications:
     done. Treat as a strong pointer to an estrogen-dominant / painful-period picture.
   topic_slug: estrogen-dominance
 protocol_cautions:
-- kind: avoid_practice
-  item: Phase-based seed cycling and any cycle-phase-timed protocol (follicular vs
-    luteal seeds, phase-timed herbs)
+- kind: monitor
+  item: Check whether the client still has an ovulatory cycle BEFORE choosing phase-based
+    vs daily seed cycling (or any cycle-phase-timed protocol)
   severity: warning
-  reason: Dienogest suppresses ovulation and the follicular/luteal rhythm and usually
-    induces amenorrhoea, so there is no natural cycle to time seeds or herbs to.
-    Offer continuous DAILY seeds (all four, together, every day) for their nutrient
-    value — zinc, selenium, lignans, omega-3 — rather than a phase-based schedule.
+  reason: On CONTINUOUS dienogest (endometriosis 2 mg daily) ovulation is usually
+    suppressed and periods stop — there is no follicular/luteal rhythm, so use a daily
+    all-four-seed blend, not a phased schedule. On a SHORT or CYCLICAL course the client
+    often still gets normal periods — then phase-based seed cycling (follicular flax +
+    pumpkin, luteal sesame + sunflower) is correct. Confirm the actual bleeding pattern;
+    do not assume suppression from the drug name.
 - kind: prefer_food
-  item: Daily ground flax + pumpkin + sesame + sunflower seeds (1-2 tbsp), taken
-    continuously
+  item: Ground flax + pumpkin + sesame + sunflower seeds — phased if she still cycles,
+    otherwise all four together daily
   severity: info
-  reason: The nutrient rationale for seeds (zinc, selenium, magnesium, lignans, ALA)
-    still holds on a suppressed cycle — just deliver it continuously, not phased.
+  reason: The seed nutrients (zinc, selenium, magnesium, lignans, ALA omega-3) are
+    worth having either way; only the SCHEDULE depends on whether her cycle is intact.
 - kind: monitor
   item: Mood, libido, and breakthrough bleeding / spotting
   severity: info
@@ -70,18 +78,22 @@ contraindicated_supplements: []
 monitoring_labs:
 - Vitamin D (relevant to bone health on a hypo-estrogenic progestin)
 - Ferritin + CBC if heavy bleeding preceded treatment
-coach_notes: 'Standalone dienogest = treat the client as having endometriosis /
-  adenomyosis until told otherwise; anchor likely_drivers there, not just at the
-  presenting symptom. KEY COACHING POINT: do NOT put a client on dienogest on
-  PHASE-BASED seed cycling or any cycle-timed protocol — there is no ovulatory cycle
-  to time to. The seeds are still worth using for their micronutrients (zinc,
-  selenium, magnesium, lignans, omega-3) but as a continuous daily habit (all four
-  seeds together, every day). Because dienogest is progestin-only, the estrogen-driven
-  OCP nutrient-depletion profile (folate/B6/B12/zinc/magnesium) is NOT strongly
-  established here — depletes is intentionally left empty; do not import the combined-OCP
-  depletion list. Watch for low mood, low libido and breakthrough spotting (progestin
-  side effects) and refer those to the prescriber. On long-term use, support bone
-  health (vitamin D, K2, weight-bearing exercise, protein).'
+coach_notes: 'Continuous standalone dienogest points strongly to endometriosis /
+  adenomyosis — anchor likely_drivers there, not just at the presenting symptom — but
+  shorter/cyclical courses are also used for heavy bleeding and dysmenorrhoea, so
+  confirm the indication. KEY COACHING POINT (the reason this entry exists): the
+  DOSING REGIMEN decides the seed-cycling schedule. CONTINUOUS dienogest (endometriosis,
+  2 mg daily) usually stops ovulation and periods → no follicular/luteal rhythm → use a
+  DAILY all-four-seed blend, not a phased one. A SHORT or CYCLICAL course (e.g. a 10-14
+  day course) usually leaves normal periods intact → PHASE-BASED seed cycling is correct
+  (follicular flax+pumpkin, luteal sesame+sunflower). Always check the actual bleeding
+  pattern — do not assume suppression from the drug name. Because dienogest is
+  progestin-only, the estrogen-driven OCP nutrient-depletion profile
+  (folate/B6/B12/zinc/magnesium) is NOT strongly established — depletes is intentionally
+  left empty; do not import the combined-OCP depletion list. Watch for low mood, low
+  libido and breakthrough spotting (progestin side effects) and refer those to the
+  prescriber. On prolonged CONTINUOUS use, support bone health (vitamin D, K2,
+  weight-bearing exercise, protein).'
 linked_to_topics:
 - endometriosis
 - estrogen-dominance
