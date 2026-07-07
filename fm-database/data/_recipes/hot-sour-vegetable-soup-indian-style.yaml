@@ -1,0 +1,140 @@
+slug: hot-sour-vegetable-soup-indian-style
+name: Hot & Sour Vegetable Soup (Indian Style)
+meal_type:
+- soup
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Indian
+seasons:
+- monsoon
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- pungent
+- salty
+main_ingredients:
+- ginger
+- garlic
+- seasonal vegetables
+- tomato
+- vinegar
+contains_allergens:
+- sesame
+- soy
+ingredients:
+- item: fresh ginger
+  qty: '2'
+  unit: inch piece, finely grated
+- item: garlic
+  qty: '6'
+  unit: cloves, minced
+- item: green chilli
+  qty: '2'
+  unit: whole, slit
+- item: carrot
+  qty: '1'
+  unit: medium, julienned
+- item: French beans
+  qty: '8'
+  unit: whole, finely sliced on the diagonal
+- item: cabbage
+  qty: '1'
+  unit: cup, thinly shredded
+- item: tomato
+  qty: '2'
+  unit: medium, finely chopped
+- item: spring onion greens
+  qty: '3'
+  unit: tbsp, sliced
+- item: apple cider vinegar or white vinegar
+  qty: '2'
+  unit: tbsp
+- item: soy-free tamari or coconut aminos
+  qty: '1'
+  unit: tbsp
+- item: black pepper powder
+  qty: '0.75'
+  unit: tsp
+- item: white pepper powder
+  qty: '0.25'
+  unit: tsp
+- item: cold-pressed sesame oil
+  qty: '1'
+  unit: tsp
+- item: water or light vegetable stock
+  qty: '5'
+  unit: cup
+- item: salt
+  qty: '1'
+  unit: tsp, or to taste
+- item: cornflour (corn starch)
+  qty: '1'
+  unit: tbsp (optional, for very light body)
+- item: coriander leaves
+  qty: '2'
+  unit: tbsp, chopped
+steps:
+- Heat sesame oil in a deep pot over medium-high flame. Add ginger, garlic, and green
+  chillies; sauté for 1–2 minutes until fragrant but not browned.
+- Add the chopped tomatoes and cook for 3 minutes, pressing them down to release their
+  juices and form a quick base.
+- Pour in the water or stock and bring to a vigorous boil. Add carrots and beans;
+  cook for 4 minutes.
+- Add the shredded cabbage, vinegar, tamari or coconut aminos, black pepper, white
+  pepper, and salt. Simmer for 3–4 minutes — the vegetables should be just tender
+  and still have colour.
+- If you want a very light body, mix cornflour with 2 tbsp cold water and drizzle
+  it in while stirring; simmer for 1 minute until just slightly thickened. Skip this
+  step for a fully clear broth.
+- Taste and adjust the sourness (more vinegar) or heat (more black pepper) to your
+  preference. Ladle into bowls and finish with spring onion greens and coriander.
+servings: 3–4
+prep_time_min: 15
+cook_time_min: 20
+one_line: A clear, tangy ginger-garlic broth packed with seasonal vegetables — spiced
+  simply and ready in under thirty minutes.
+headnote: The base is built on a strong ginger-garlic broth rather than stock cubes,
+  so the heat comes from real aromatics. Use whatever vegetables look best at the
+  monsoon market — the soup is forgiving and genuinely warming on a damp evening.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon soup set; coach to verify tamari/coconut
+  aminos inclusion for dietary guidelines and confirm cornflour step preference before
+  publishing.
+approx_kcal_per_serving: 32
+kcal_is_estimate: true
+protein_g: 1.1
+kcal_per_serving: 32
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 32.0
+  protein_g: 1.1
+  carbs_g: 4.3
+  fat_g: 1.4
+  fibre_g: 1.1
+  iron_mg: 0.4
+  calcium_mg: 18.3
+  magnesium_mg: 9.5
+  zinc_mg: 0.1
+  potassium_mg: 102
+  folate_ug: 15.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 11.3
+  omega3_mg: 11.2
+nutrient_coverage_pct: 50.5
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

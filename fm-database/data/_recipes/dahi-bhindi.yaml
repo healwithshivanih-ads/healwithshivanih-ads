@@ -1,0 +1,128 @@
+slug: dahi-bhindi
+name: Dahi Bhindi
+meal_type:
+- lunch
+- dinner
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: North Indian / Rajasthani
+seasons:
+- monsoon
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- bhindi
+- curd
+contains_allergens:
+- dairy
+ingredients:
+- item: bhindi (okra), washed, dried, and cut into 3 cm pieces
+  qty: '300'
+  unit: g
+- item: full-fat curd, whisked smooth
+  qty: '1'
+  unit: cup
+- item: oil
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: asafoetida (hing)
+  qty: a pinch
+  unit: ''
+- item: onion, finely sliced
+  qty: '1'
+  unit: medium
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: whole
+- item: turmeric powder
+  qty: ¼
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: red chilli powder
+  qty: ½
+  unit: tsp
+- item: salt
+  qty: ¾
+  unit: tsp
+- item: besan (chickpea flour)
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat 1 tbsp oil in a wide pan over medium-high heat. Add the bhindi pieces in a
+  single layer and cook, stirring occasionally, for 8–10 minutes until lightly browned
+  and no longer sticky. Remove and set aside.
+- In the same pan, heat the remaining 1 tbsp oil over medium heat. Add cumin seeds
+  and a pinch of hing; once the seeds splutter, add the onion and cook for 4–5 minutes
+  until golden.
+- Add ginger and green chilli, stir for 30 seconds, then add turmeric, coriander powder,
+  red chilli powder, and salt. Cook the spices for 1 minute.
+- Whisk the besan into the curd until fully smooth (this prevents splitting). Reduce
+  the heat to low and pour the curd mixture into the pan, stirring constantly.
+- Stir gently on low heat for 3–4 minutes until the gravy is warm and just beginning
+  to bubble — do not boil hard. Fold in the pan-roasted bhindi and simmer for 2 minutes
+  so the okra absorbs the sauce.
+- Garnish with fresh coriander and serve hot with phulka or steamed rice.
+servings: '3'
+prep_time_min: 10
+cook_time_min: 25
+one_line: Tender okra cooked in a lightly spiced, tangy yogurt gravy.
+headnote: Curd-based gravies are a gentle, probiotic-friendly way to eat well through
+  the damp monsoon months. The okra is pan-roasted first so it stays firm and never
+  slimy, then folded into a warm, cumin-tempered yogurt sauce that keeps its tang
+  without curdling.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for B12/probiotic lunch-dinner slot — coach to
+  review curd quantity and spice levels.
+approx_kcal_per_serving: 141
+kcal_is_estimate: true
+protein_g: 2.8
+kcal_per_serving: 141
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 141
+  protein_g: 2.8
+  carbs_g: 13.2
+  fat_g: 9.7
+  fibre_g: 4.6
+  iron_mg: 1.9
+  calcium_mg: 110
+  magnesium_mg: 69.6
+  zinc_mg: 0.8
+  potassium_mg: 412
+  folate_ug: 71.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 28.3
+  omega3_mg: 85.5
+nutrient_coverage_pct: 93.9
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

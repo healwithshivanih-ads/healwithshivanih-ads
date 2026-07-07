@@ -1,0 +1,135 @@
+slug: tempeh-tawa-masala
+name: Tempeh Tawa Masala
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Fusion / Pan-Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+- vata
+rasa:
+- pungent
+- sour
+- astringent
+main_ingredients:
+- tempeh
+- onion
+- capsicum
+contains_allergens:
+- soy
+ingredients:
+- item: tempeh, cut into 1 cm thick slices
+  qty: '250'
+  unit: g
+- item: oil
+  qty: '3'
+  unit: tbsp
+- item: onion, thinly sliced
+  qty: '2'
+  unit: medium
+- item: green capsicum, thinly sliced
+  qty: '1'
+  unit: large
+- item: tomato, finely chopped
+  qty: '2'
+  unit: medium
+- item: ginger-garlic paste
+  qty: 1½
+  unit: tsp
+- item: turmeric powder
+  qty: ¼
+  unit: tsp
+- item: coriander powder
+  qty: 1½
+  unit: tsp
+- item: cumin powder
+  qty: ½
+  unit: tsp
+- item: red chilli powder
+  qty: ¾
+  unit: tsp
+- item: garam masala
+  qty: ½
+  unit: tsp
+- item: amchur (dry mango powder)
+  qty: ½
+  unit: tsp
+- item: salt
+  qty: ¾
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Mix turmeric, ¼ tsp red chilli powder, ¼ tsp salt, and 1 tbsp oil in a bowl. Toss
+  the tempeh slices in this marinade and set aside for 10 minutes.
+- Heat a tawa or flat skillet over high heat. Place the marinated tempeh slices on
+  the dry tawa and cook for 2–3 minutes per side until charred patches appear. Remove
+  and set aside.
+- Drizzle 2 tbsp oil on the same tawa over medium-high heat. Add sliced onions and
+  cook, tossing frequently, for 5–6 minutes until they begin to brown at the edges.
+- Add ginger-garlic paste and cook for 1 minute. Add the chopped tomatoes, remaining
+  spices (coriander powder, cumin powder, remaining red chilli powder, garam masala,
+  amchur, and remaining salt) and cook until the tomatoes are soft and oil starts
+  to separate, about 5 minutes.
+- Add the capsicum strips and toss for 2 minutes — they should stay slightly crunchy.
+  Slide in the seared tempeh slices and press them gently into the masala. Cook together
+  for 2 minutes, turning once.
+- Squeeze lemon juice over the top, garnish with fresh coriander, and serve hot with
+  roti or as a bowl with cucumber slices on the side.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 20
+one_line: Sliced tempeh tossed on a hot tawa with onion, capsicum, and punchy Indian
+  spices.
+headnote: Tempeh is made by fermenting whole soybeans into a firm, nutty cake — that
+  fermentation makes the protein easier to absorb and brings B-vitamins along for
+  the ride. Cooking it on a dry tawa gives it a slightly charred crust that takes
+  the masala coating beautifully.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for vegan B12/fermented-protein lunch-dinner slot
+  — coach to verify tempeh sourcing and spice tolerances.
+approx_kcal_per_serving: 186
+kcal_is_estimate: true
+protein_g: 2.4
+kcal_per_serving: 186
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 186
+  protein_g: 2.4
+  carbs_g: 14.7
+  fat_g: 14.3
+  fibre_g: 4.0
+  iron_mg: 1.5
+  calcium_mg: 44.8
+  magnesium_mg: 28.7
+  zinc_mg: 0.6
+  potassium_mg: 436
+  folate_ug: 51.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 88.3
+  omega3_mg: 127
+nutrient_coverage_pct: 91.6
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

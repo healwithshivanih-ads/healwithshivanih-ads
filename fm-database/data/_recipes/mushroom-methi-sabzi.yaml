@@ -1,0 +1,129 @@
+slug: mushroom-methi-sabzi
+name: Mushroom Methi Sabzi
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+- vegetarian
+region: North India
+seasons:
+- winter
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- pungent
+- salty
+- sour
+main_ingredients:
+- button mushrooms
+- fresh fenugreek leaves
+- onion
+contains_allergens: []
+ingredients:
+- item: button mushrooms, wiped and quartered
+  qty: '250'
+  unit: g
+- item: fresh methi (fenugreek) leaves, washed and roughly chopped
+  qty: '2'
+  unit: cups
+- item: onion, finely chopped
+  qty: '1'
+  unit: large
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: garlic, minced
+  qty: '3'
+  unit: cloves
+- item: tomato, finely chopped
+  qty: '1'
+  unit: medium
+- item: oil
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: amchur (dry mango powder)
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '0.75'
+  unit: tsp
+steps:
+- Place quartered mushrooms gills-up in direct sunlight for 20 minutes before cooking.
+- Heat oil in a wide pan over medium heat. Add cumin seeds and let them splutter.
+  Add onion and cook until translucent and lightly golden, about 6–7 minutes.
+- Stir in ginger and garlic and cook for 1 minute. Add tomato, turmeric, coriander
+  powder, chilli powder, and salt. Cook until the tomato is soft and the mixture comes
+  together, about 4–5 minutes.
+- Add the sun-dried mushrooms; cook on medium-high heat, stirring occasionally, for
+  4 minutes until they release their moisture and begin to brown.
+- Add the chopped methi leaves and stir well. Cook uncovered on medium heat for 5–6
+  minutes, stirring now and then, until the methi wilts completely and the sabzi looks
+  dry and cohesive.
+- Sprinkle amchur, stir through, taste and adjust salt, and serve as a side with dal
+  and rice or with phulka.
+servings: 2–3
+prep_time_min: 25
+cook_time_min: 20
+one_line: Fresh fenugreek leaves and sun-dried mushrooms cooked together into a dry,
+  iron-rich winter sabzi.
+headnote: Fresh methi — fenugreek greens — are one of winter's most iron-dense vegetables,
+  and pairing them with mushrooms that have been given 20 minutes of winter sun (gills
+  facing up) adds a quiet but real vitamin D boost. The slight bitterness of methi
+  rounds out the earthiness of the mushrooms beautifully.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for vitamin-D set; requires coach review
+  before publishing.
+approx_kcal_per_serving: 151
+kcal_is_estimate: true
+protein_g: 2.7
+kcal_per_serving: 151
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 151
+  protein_g: 2.7
+  carbs_g: 11.0
+  fat_g: 11.6
+  fibre_g: 3.7
+  iron_mg: 3.0
+  calcium_mg: 114
+  magnesium_mg: 35.1
+  zinc_mg: 0.5
+  potassium_mg: 333
+  folate_ug: 35.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 25.1
+  omega3_mg: 125
+nutrient_coverage_pct: 86.1
+rich_in:
+- iron
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

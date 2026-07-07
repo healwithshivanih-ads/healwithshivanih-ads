@@ -1,0 +1,142 @@
+slug: khaman-dhokla
+name: Khaman Dhokla
+meal_type:
+- breakfast
+- snack
+diet:
+- dairy_free
+- nut_free
+- vegetarian
+region: Gujarati
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- salty
+- pungent
+- sweet
+main_ingredients:
+- besan
+- curd
+- eno fruit salt
+contains_allergens:
+- dairy
+- sesame
+ingredients:
+- item: besan (chickpea flour), sifted
+  qty: 1½
+  unit: cups
+- item: curd, whisked smooth
+  qty: ¾
+  unit: cup
+- item: water
+  qty: ½
+  unit: cup
+- item: ginger-green chilli paste
+  qty: 1½
+  unit: tsp
+- item: turmeric powder
+  qty: ¼
+  unit: tsp
+- item: sugar
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: ¾
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: eno fruit salt (plain)
+  qty: '1'
+  unit: tsp
+- item: oil, for greasing and tempering
+  qty: '2'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: sesame seeds
+  qty: '1'
+  unit: tsp
+- item: green chillies, slit lengthwise
+  qty: '2'
+  unit: whole
+- item: curry leaves
+  qty: '8'
+  unit: whole
+- item: water (for tempering)
+  qty: '3'
+  unit: tbsp
+- item: sugar (for tempering)
+  qty: '1'
+  unit: tsp
+- item: fresh coriander and grated coconut, to garnish
+  qty: '2'
+  unit: tbsp
+steps:
+- In a large bowl, whisk together the besan, curd, water, ginger-chilli paste, turmeric,
+  sugar, salt, and lemon juice into a smooth, lump-free batter of pouring consistency.
+  Cover and rest for 30 minutes at room temperature to allow a gentle fermentation.
+- Set up a steamer with 2 inches of water and bring it to a boil. Grease a round 20
+  cm cake tin or thali generously with oil.
+- Just before steaming, sprinkle the eno fruit salt over the batter. Pour 1 tbsp water
+  over the eno and stir quickly in one direction for about 15 seconds until the batter
+  turns frothy — do not over-mix. Pour immediately into the greased tin.
+- Place the tin in the steamer, cover with a lid, and steam on medium-high heat for
+  18–20 minutes. Insert a toothpick in the centre — it should come out clean. Rest
+  for 5 minutes before unmoulding onto a plate and cutting into squares.
+- For the tempering, heat 2 tbsp oil in a small pan. Add mustard seeds; once they
+  pop, add sesame seeds, green chillies, and curry leaves. Stir for 20 seconds, then
+  add 3 tbsp water and 1 tsp sugar. Let it bubble for 10 seconds and pour the temper
+  evenly over the dhokla squares.
+- Garnish with fresh coriander and grated coconut. Serve warm with green chutney on
+  the side.
+servings: '4'
+prep_time_min: 45
+cook_time_min: 20
+one_line: Soft, spongy steamed chickpea flour cakes with a mustard-sesame tempering.
+headnote: Khaman is made from a fermented besan batter that gets its lift from a short
+  leavening rest — that brief fermentation is exactly what makes the B-vitamins in
+  the batter more available to the body. Steaming keeps it light, and the tempering
+  of mustard seeds, curry leaves, and green chilli gives it a warm, savory finish
+  without any frying.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for fermented B-vitamin breakfast-snack slot —
+  coach to review fermentation rest time and eno quantity for desired texture.
+approx_kcal_per_serving: 106
+kcal_is_estimate: true
+protein_g: 5.9
+kcal_per_serving: 106
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 106
+  protein_g: 5.9
+  carbs_g: 15.2
+  fat_g: 2.4
+  fibre_g: 3.1
+  iron_mg: 1.5
+  calcium_mg: 55.8
+  magnesium_mg: 47.9
+  zinc_mg: 0.8
+  potassium_mg: 259
+  folate_ug: 108
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.1
+  omega3_mg: 34.4
+nutrient_coverage_pct: 56.3
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

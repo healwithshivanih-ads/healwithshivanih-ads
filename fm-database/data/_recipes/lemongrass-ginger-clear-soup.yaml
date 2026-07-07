@@ -1,0 +1,127 @@
+slug: lemongrass-ginger-clear-soup
+name: Lemongrass Ginger Clear Soup
+meal_type:
+- soup
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Indian
+seasons:
+- monsoon
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- pungent
+- sour
+- astringent
+main_ingredients:
+- lemongrass
+- ginger
+- garlic
+- vegetable broth
+contains_allergens:
+- sesame
+ingredients:
+- item: lemongrass stalks
+  qty: '3'
+  unit: whole, bruised and cut into 2-inch pieces
+- item: fresh ginger
+  qty: '2'
+  unit: inch piece, sliced into coins
+- item: garlic
+  qty: '4'
+  unit: cloves, lightly smashed
+- item: green chilli
+  qty: '1'
+  unit: whole, slit
+- item: carrot
+  qty: '1'
+  unit: medium, diced small (for stock body)
+- item: celery stalk
+  qty: '1'
+  unit: whole, roughly chopped
+- item: spring onion
+  qty: '2'
+  unit: whole stalks, roughly chopped
+- item: black pepper
+  qty: '0.75'
+  unit: tsp, coarsely cracked
+- item: water
+  qty: '5'
+  unit: cup
+- item: lime juice
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: '0.75'
+  unit: tsp, or to taste
+- item: cold-pressed sesame oil
+  qty: '0.5'
+  unit: tsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp, leaves only, for finishing
+- item: thin rice noodles (optional)
+  qty: '40'
+  unit: g, soaked and drained
+steps:
+- Bruise the lemongrass stalks firmly with the flat of a knife to release their oils.
+  Combine lemongrass, ginger coins, smashed garlic, green chilli, carrot, celery,
+  and spring onion in a pot with 5 cups water.
+- Bring to a boil, then reduce to a steady simmer. Steep uncovered for 20 minutes
+  so the aromatics fully infuse the broth.
+- Strain the broth through a fine sieve, pressing the solids gently; discard the spent
+  aromatics. Return the clear broth to the pot.
+- Season with salt, cracked black pepper, and sesame oil. Bring back to a gentle simmer.
+- If using rice noodles, add the pre-soaked noodles and simmer for 2 minutes until
+  just soft. For a fully clear soup, skip the noodles.
+- Turn off the heat, stir in the lime juice, and taste — adjust salt and lime as needed.
+  Pour into bowls and finish with fresh coriander leaves.
+servings: 3–4
+prep_time_min: 10
+cook_time_min: 25
+one_line: A pale, aromatic clear broth steeped with lemongrass and ginger — light
+  enough for heavy monsoon evenings when a full meal feels like too much.
+headnote: Lemongrass and ginger infused into a vegetable broth make the kitchen smell
+  like something is being deeply cared for. The soup does its best work when the broth
+  is strained and kept genuinely clear — all warmth, no weight.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon soup set; coach to confirm whether
+  rice noodles should be included as a standard option or removed for the clear-soup
+  intent before publishing.
+approx_kcal_per_serving: 36
+kcal_is_estimate: true
+protein_g: 0.8
+kcal_per_serving: 36
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 36.3
+  protein_g: 0.8
+  carbs_g: 7.2
+  fat_g: 0.8
+  fibre_g: 1.3
+  iron_mg: 0.3
+  calcium_mg: 17.8
+  magnesium_mg: 8.9
+  zinc_mg: 0.1
+  potassium_mg: 119
+  folate_ug: 13.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 7.4
+  omega3_mg: 6.2
+nutrient_coverage_pct: 59.4
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

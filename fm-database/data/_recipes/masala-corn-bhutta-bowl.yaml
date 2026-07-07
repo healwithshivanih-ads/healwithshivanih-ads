@@ -1,0 +1,112 @@
+slug: masala-corn-bhutta-bowl
+name: Masala Corn Bhutta Bowl
+meal_type:
+- snack
+- breakfast
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Pan-India street food
+seasons:
+- monsoon
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+- pitta
+rasa:
+- pungent
+- sour
+- salty
+main_ingredients:
+- corn on the cob
+- lemon
+- green chilli
+- chaat masala
+contains_allergens: []
+ingredients:
+- item: corn on the cob
+  qty: '4'
+  unit: whole
+- item: oil
+  qty: '1'
+  unit: tsp
+- item: green chilli, finely chopped
+  qty: '2'
+  unit: whole
+- item: lemon juice
+  qty: '2'
+  unit: tbsp
+- item: chaat masala
+  qty: '1'
+  unit: tsp
+- item: red chilli powder
+  qty: 1/2
+  unit: tsp
+- item: black salt
+  qty: 1/4
+  unit: tsp
+- item: salt
+  qty: 1/4
+  unit: tsp
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: ginger, finely grated
+  qty: 1/2
+  unit: tsp
+steps:
+- Roast the corn cobs directly over a gas flame on medium-high heat, turning with
+  tongs every minute, until kernels are charred in spots and cooked through — about
+  8–10 minutes. Alternatively, roast under a hot grill for 12 minutes, turning halfway.
+- Let the cobs cool for 5 minutes, then stand each upright on a cutting board and
+  slice the kernels off with a sharp knife.
+- Tip the kernels into a bowl. Add the oil, green chilli, ginger, red chilli powder,
+  black salt, and regular salt. Toss well.
+- Add lemon juice and chaat masala, toss again, then taste and adjust salt or lemon.
+  Top with coriander leaves and serve immediately while still warm.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 15
+one_line: Charred corn kernels tossed with lemon, chilli, and chaat masala — a monsoon
+  street classic brought home.
+headnote: Corn on the cob over open flame is the definitive monsoon smell in every
+  Indian city. This bowl version strips the kernels after charring so the smoky, caramelised
+  flavour is in every bite. A squeeze of lemon and a pinch of chaat masala is all
+  it needs — simple food that tastes exactly like the season.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon snack set — coach to verify chaat masala
+  brand for any hidden allergens before publishing.
+approx_kcal_per_serving: 91
+kcal_is_estimate: true
+protein_g: 3.1
+kcal_per_serving: 91
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 91.3
+  protein_g: 3.1
+  carbs_g: 18.1
+  fat_g: 2.5
+  fibre_g: 2.0
+  iron_mg: 0.5
+  calcium_mg: 3.8
+  magnesium_mg: 35.1
+  zinc_mg: 0.5
+  potassium_mg: 269
+  folate_ug: 40.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 12.2
+  omega3_mg: 24.2
+nutrient_coverage_pct: 93.2
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

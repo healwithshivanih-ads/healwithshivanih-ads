@@ -1,0 +1,119 @@
+slug: masala-roasted-chana
+name: Masala Roasted Chana
+meal_type:
+- snack
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: North India
+seasons:
+- monsoon
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+- pitta
+rasa:
+- pungent
+- sour
+- salty
+- astringent
+main_ingredients:
+- dried white chickpeas
+- spices
+contains_allergens:
+- sesame
+ingredients:
+- item: dried whole white chickpeas (kabuli chana), soaked overnight and boiled until
+    just tender (not mushy)
+  qty: '1.5'
+  unit: cup
+- item: oil
+  qty: '1'
+  unit: tsp
+- item: cumin powder
+  qty: 1/2
+  unit: tsp
+- item: coriander powder
+  qty: 1/2
+  unit: tsp
+- item: red chilli powder
+  qty: 1/4
+  unit: tsp
+- item: amchur (dry mango powder)
+  qty: 1/2
+  unit: tsp
+- item: chaat masala
+  qty: 1/2
+  unit: tsp
+- item: black salt
+  qty: 1/4
+  unit: tsp
+- item: regular salt
+  qty: 1/4
+  unit: tsp
+steps:
+- After boiling, spread the chickpeas on a clean kitchen cloth and pat completely
+  dry — any surface moisture will steam them in the pan instead of roasting them.
+- Heat a heavy iron or non-stick pan on medium heat with no oil. Add the dried chickpeas
+  in a single layer and dry-roast, stirring every 2–3 minutes, for 12–15 minutes until
+  the skins are visibly crisped and the chickpeas sound hollow when you press one
+  against the pan.
+- Reduce the heat to low, drizzle in the teaspoon of oil, and toss so every chickpea
+  gets a light coat.
+- Add all the spices — cumin, coriander, chilli, amchur, chaat masala, black salt,
+  and regular salt — and toss quickly for 1 minute so the spices bloom without burning.
+- Spread on a plate to cool completely before storing or serving; they crisp up further
+  as they cool. Store in an airtight jar for up to a week.
+servings: '4'
+prep_time_min: 480
+cook_time_min: 20
+one_line: Dry-roasted whole chickpeas tossed with tangy spices for a crunchy, protein-rich
+  snack.
+headnote: Whole dried chickpeas roasted in a dry pan concentrate their nutty flavour
+  and keep their crunch for days — the fibre in the skin slows digestion nicely, and
+  amchur adds a brightness that makes them hard to put down. A handful goes a long
+  way on a hungry monsoon afternoon.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon protein-snack set — coach to verify
+  spice ratios and preferred chickpea variety (kabuli vs. desi).
+approx_kcal_per_serving: 296
+kcal_is_estimate: true
+protein_g: 15.5
+kcal_per_serving: 296
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 296
+  protein_g: 15.5
+  carbs_g: 47.6
+  fat_g: 5.8
+  fibre_g: 9.4
+  iron_mg: 3.5
+  calcium_mg: 48.3
+  magnesium_mg: 61.7
+  zinc_mg: 2.1
+  potassium_mg: 551
+  folate_ug: 418
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 3.2
+  omega3_mg: 85.0
+nutrient_coverage_pct: 83.8
+rich_in:
+- protein
+- fibre
+- iron
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

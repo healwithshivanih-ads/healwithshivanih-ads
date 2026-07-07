@@ -1,0 +1,145 @@
+slug: mushroom-millet-khichdi
+name: Mushroom Millet Khichdi
+meal_type:
+- lunch
+- dinner
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: South/Central India fusion
+seasons:
+- monsoon
+- winter
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- pungent
+- salty
+- bitter
+main_ingredients:
+- foxtail millet
+- button mushrooms
+- moong dal
+- ghee
+contains_allergens:
+- dairy
+ingredients:
+- item: foxtail millet, washed and soaked 20 min
+  qty: '0.75'
+  unit: cup
+- item: yellow moong dal, washed
+  qty: '0.5'
+  unit: cup
+- item: button mushrooms, roughly chopped
+  qty: '200'
+  unit: g
+- item: ghee
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: bay leaf
+  qty: '1'
+  unit: whole
+- item: onion, finely chopped
+  qty: '1'
+  unit: whole
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: garlic, minced
+  qty: '3'
+  unit: cloves
+- item: green chilli, slit
+  qty: '1'
+  unit: whole
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: black pepper, freshly cracked
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '4.5'
+  unit: cups
+- item: fresh coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat ghee in a pressure cooker or heavy pot over medium heat. Add cumin seeds and
+  bay leaf; let splutter for 30 seconds.
+- Add onion and cook for 4–5 minutes until golden. Stir in ginger, garlic and green
+  chilli; cook 1 minute.
+- Add mushrooms and sauté for 3–4 minutes until they release and reabsorb their moisture.
+- Drain the millet and add it along with moong dal to the pot. Stir in turmeric, coriander
+  powder, black pepper and salt.
+- Pour in 4.5 cups of water, stir well, and pressure-cook for 3 whistles (or simmer
+  covered in a pot for 25 minutes), until the millet and dal are fully soft. Add a
+  splash of hot water if needed to reach a thick, flowing consistency.
+- Finish with lemon juice and fresh coriander. Serve hot with a small drizzle of ghee
+  on top if desired.
+servings: 3–4
+prep_time_min: 15
+cook_time_min: 30
+one_line: A nourishing one-pot khichdi with foxtail millet and mushrooms — warming
+  on cold or rainy days and rich in both vitamin D and magnesium.
+headnote: Foxtail millet is one of the better whole-grain sources of magnesium, and
+  pairing it with mushrooms in a single pot makes this a genuinely restorative meal
+  for monsoon and winter days when both nutrients tend to run low. The slow simmer
+  coaxes out a thick, porridge-adjacent texture — keep a little extra hot water handy
+  to loosen it to your liking.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for vitamin-D + magnesium one-pot lunch/dinner
+  slot; awaiting coach review on millet-to-dal ratio and water quantity.
+approx_kcal_per_serving: 305
+kcal_is_estimate: true
+protein_g: 12.6
+kcal_per_serving: 305
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 305
+  protein_g: 12.6
+  carbs_g: 45.8
+  fat_g: 8.2
+  fibre_g: 6.6
+  iron_mg: 3.2
+  calcium_mg: 59.4
+  magnesium_mg: 78.3
+  zinc_mg: 1.9
+  potassium_mg: 529
+  folate_ug: 171
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 7.3
+  omega3_mg: 80.0
+nutrient_coverage_pct: 87.3
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

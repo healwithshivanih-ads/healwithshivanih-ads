@@ -1,0 +1,136 @@
+slug: jowar-vegetable-khichdi
+name: Jowar Vegetable Khichdi
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Maharashtra / Deccan
+seasons:
+- monsoon
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- jowar
+- yellow moong dal
+- carrot
+- french beans
+- bottle gourd
+contains_allergens:
+- peanut
+ingredients:
+- item: whole jowar (sorghum), soaked overnight and drained
+  qty: 3/4
+  unit: cup
+- item: yellow moong dal, rinsed
+  qty: 1/3
+  unit: cup
+- item: carrot, diced small
+  qty: 1/2
+  unit: cup
+- item: French beans, chopped into 1 cm pieces
+  qty: 1/2
+  unit: cup
+- item: bottle gourd (lauki), peeled and diced
+  qty: 1/2
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: whole
+- item: tomato, chopped
+  qty: '1'
+  unit: whole
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: garlic cloves, minced
+  qty: '2'
+  unit: whole
+- item: turmeric powder
+  qty: 1/4
+  unit: tsp
+- item: cumin seeds
+  qty: 1/2
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: cold-pressed groundnut oil
+  qty: '1'
+  unit: tbsp
+- item: water
+  qty: '4'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat oil in a pressure cooker over medium heat. Add cumin seeds and let them crackle,
+  then sauté onion, garlic and ginger until lightly golden, about 5 minutes.
+- Add tomato, turmeric, coriander powder and salt. Cook until the tomato softens and
+  the masala comes together, about 3 minutes.
+- Add the soaked jowar, moong dal, all the vegetables and water. Stir to combine.
+- Close the cooker and pressure-cook on medium heat for 6–7 whistles until the jowar
+  is fully cooked and the dal is creamy. Allow pressure to release naturally.
+- Open the cooker; the khichdi should be thick and porridge-adjacent but with whole,
+  distinct grains of jowar. Add a splash of water and stir over low heat if it looks
+  too stiff.
+- Garnish with fresh coriander and serve hot.
+servings: 3–4
+prep_time_min: 15
+cook_time_min: 45
+one_line: A warm, one-pot khichdi of whole jowar, yellow moong dal and seasonal vegetables.
+headnote: Whole jowar takes longer than rice but repays the wait with a satisfying
+  chew and a slow-releasing energy that suits a heavy monsoon day. Keeping the vegetables
+  soft and the seasoning gentle makes this easy on a sluggish monsoon digestion.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for monsoon khichdi slot — please review
+  jowar cook time, pressure-cooker whistle count, and dosha notes before publishing.
+approx_kcal_per_serving: 192
+kcal_is_estimate: true
+protein_g: 8.7
+kcal_per_serving: 192
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 192
+  protein_g: 8.7
+  carbs_g: 37.6
+  fat_g: 1.0
+  fibre_g: 6.5
+  iron_mg: 2.7
+  calcium_mg: 60.0
+  magnesium_mg: 77.3
+  zinc_mg: 1.4
+  potassium_mg: 565
+  folate_ug: 135
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 12.2
+  omega3_mg: 38.2
+nutrient_coverage_pct: 94.9
+rich_in:
+- fibre
+- magnesium
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

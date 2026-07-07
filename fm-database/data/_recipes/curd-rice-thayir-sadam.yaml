@@ -1,0 +1,122 @@
+slug: curd-rice-thayir-sadam
+name: Curd Rice (Thayir Sadam)
+meal_type:
+- lunch
+diet:
+- gluten_free
+- vegetarian
+region: Tamil Nadu, South India
+seasons:
+- summer
+- all
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sour
+- salty
+- pungent
+main_ingredients:
+- rice
+- curd
+- milk
+- mustard seeds
+- curry leaves
+contains_allergens:
+- dairy
+ingredients:
+- item: short-grain or sona masoori rice
+  qty: 3/4
+  unit: cup
+- item: fresh full-fat curd (yogurt)
+  qty: '1.5'
+  unit: cup
+- item: whole milk
+  qty: 1/4
+  unit: cup
+- item: salt
+  qty: 3/4
+  unit: tsp
+- item: coconut oil or neutral oil
+  qty: '1'
+  unit: tsp
+- item: mustard seeds
+  qty: 1/2
+  unit: tsp
+- item: dried red chilli
+  qty: '1'
+  unit: whole
+- item: curry leaves
+  qty: '10'
+  unit: whole
+- item: ginger, finely grated
+  qty: 1/2
+  unit: tsp
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: whole
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+- item: pomegranate arils or seedless grapes, halved (optional)
+  qty: '2'
+  unit: tbsp
+steps:
+- Cook rice with 1½ cups water in a covered pot over medium heat for 18–20 minutes
+  until very soft. Spread on a plate and let it cool to just warm — it should not
+  be hot when curd is added.
+- Mash the rice lightly with the back of a spoon, then mix in the milk first to loosen
+  it, followed by the curd and salt. Stir until you have a creamy, cohesive mixture.
+  Adjust curd to your preferred consistency.
+- Heat oil in a small tadka pan over medium heat. Add mustard seeds and let them splutter,
+  then add the dried red chilli and curry leaves and fry for 20 seconds until fragrant.
+- Pour the temper immediately over the curd rice. Add grated ginger and green chilli
+  and fold everything together gently.
+- Scatter fresh coriander on top and add pomegranate arils or grapes if using. Serve
+  at room temperature — not chilled.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+one_line: Soft cooked rice mixed with fresh curd and finished with a mustard-curry
+  leaf temper.
+headnote: Fresh homemade or good-quality curd is the heart of this dish — the live
+  cultures it carries support gut health and provide a meaningful dose of B12. Eating
+  it slightly cool (not straight from the fridge) keeps the cultures active. A generous
+  quantity of curd relative to rice is what makes this genuinely nourishing rather
+  than just a leftover fix.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review; proportions weighted toward curd
+  for B12 and probiotic intent.
+approx_kcal_per_serving: 59
+kcal_is_estimate: true
+protein_g: 2.1
+kcal_per_serving: 59
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 59.4
+  protein_g: 2.1
+  carbs_g: 4.5
+  fat_g: 3.8
+  fibre_g: 1.1
+  iron_mg: 0.3
+  calcium_mg: 123
+  magnesium_mg: 13.9
+  zinc_mg: 0.2
+  potassium_mg: 165
+  folate_ug: 14.8
+  b12_ug: 0.2
+  vit_d_ug: 0.3
+  vit_c_mg: 4.2
+  omega3_mg: 22.8
+nutrient_coverage_pct: 53.1
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

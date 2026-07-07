@@ -1,0 +1,124 @@
+slug: parwal-aloo-sabzi
+name: Parwal Aloo Sabzi
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Eastern India
+seasons:
+- monsoon
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- bitter
+- astringent
+main_ingredients:
+- parwal (pointed gourd)
+- potato
+contains_allergens: []
+ingredients:
+- item: parwal (pointed gourd)
+  qty: '300'
+  unit: g
+- item: potato
+  qty: '2'
+  unit: medium
+- item: mustard oil
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: dried red chilli
+  qty: '2'
+  unit: whole
+- item: onion
+  qty: '1'
+  unit: medium
+- item: ginger
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: ½
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: cumin powder
+  qty: ½
+  unit: tsp
+- item: red chilli powder
+  qty: ¼
+  unit: tsp
+- item: salt
+  qty: ¾
+  unit: tsp
+- item: fresh coriander leaves
+  qty: '2'
+  unit: tbsp
+steps:
+- Scrape the parwal lightly, trim the ends, and cut each into 2–3 diagonal pieces.
+  Peel the potatoes and cut into similar-sized chunks. Keep both aside.
+- Heat mustard oil in a heavy kadai over medium-high heat until it just begins to
+  smoke, then lower the flame. Add cumin seeds and dried red chillies and let them
+  splutter for 20 seconds.
+- Add the sliced onion and ginger, and cook, stirring occasionally, for 6–7 minutes
+  until the onion is soft and lightly golden.
+- Add turmeric, coriander powder, cumin powder, red chilli powder, and salt. Stir
+  for 30 seconds, then add the potato pieces. Mix well to coat and cook for 3 minutes.
+- Add the parwal, stir everything together, and splash in 3 tablespoons of water.
+  Cover and cook on low-medium heat for 12–14 minutes, lifting the lid to stir every
+  few minutes, until both the potato and parwal are cooked through and lightly browned.
+- Uncover, raise the heat briefly to drive off any remaining moisture, then finish
+  with fresh coriander leaves and serve hot.
+servings: 3–4
+prep_time_min: 15
+cook_time_min: 25
+one_line: Pointed gourd and potato cooked together in a simple spiced dry sabzi.
+headnote: Parwal is one of the few vegetables that thrives right through the monsoon
+  and is traditionally valued for being easy on a sluggish digestive system. Keeping
+  the sabzi fairly dry lets the mild, grassy flavour of the gourd come through.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for monsoon set — please review quantities,
+  spice levels, and regional accuracy before publishing.
+approx_kcal_per_serving: 127
+kcal_is_estimate: true
+protein_g: 4.4
+kcal_per_serving: 127
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 127
+  protein_g: 4.4
+  carbs_g: 21.4
+  fat_g: 3.1
+  fibre_g: 4.2
+  iron_mg: 2.6
+  calcium_mg: 52.8
+  magnesium_mg: 58.5
+  zinc_mg: 0.9
+  potassium_mg: 530
+  folate_ug: 32.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 21.3
+  omega3_mg: 41.7
+nutrient_coverage_pct: 93.8
+rich_in:
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

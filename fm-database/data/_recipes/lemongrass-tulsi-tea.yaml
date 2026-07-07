@@ -1,0 +1,94 @@
+slug: lemongrass-tulsi-tea
+name: Lemongrass Tulsi Tea
+meal_type:
+- drink
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+region: Pan-India
+seasons:
+- monsoon
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+- sweet
+main_ingredients:
+- lemongrass
+- tulsi
+- ginger
+contains_allergens: []
+ingredients:
+- item: fresh lemongrass stalks
+  qty: '2'
+  unit: whole
+- item: fresh tulsi (holy basil) leaves
+  qty: '12'
+  unit: whole
+- item: fresh ginger
+  qty: '1'
+  unit: inch piece
+- item: water
+  qty: '2.5'
+  unit: cups
+- item: honey or jaggery (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Bruise the lemongrass stalks by pressing them firmly with the flat of a knife, then
+  cut into 2-inch pieces. Slice the ginger thinly without peeling.
+- Bring the water to a boil in a small saucepan. Add the lemongrass and ginger, reduce
+  heat to low, and simmer for 6–7 minutes until the water turns pale yellow and fragrant.
+- Add the tulsi leaves, turn off the heat, and cover the pan. Let the leaves steep
+  for 2–3 minutes — no longer, to keep the flavour bright and not bitter.
+- Strain into two cups. Stir in honey or jaggery if using, and serve immediately while
+  hot.
+servings: 2 cups
+prep_time_min: 5
+cook_time_min: 10
+one_line: A simple herbal tea brewed with fresh lemongrass and tulsi to warm damp
+  monsoon evenings.
+headnote: Lemongrass carries natural oils that ease a heavy, humid feeling in the
+  chest, while tulsi leaves — best picked just before brewing — lend a clove-like
+  warmth that settles the stomach. Together they make a tea that feels genuinely restorative
+  on a grey rainy evening, without any heaviness. A small piece of fresh ginger adds
+  gentle heat and aids digestion after a monsoon meal.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review — monsoon herbal drink, nutritional
+  intent centred on lemongrass and tulsi as warming, digestion-supportive herbs.
+approx_kcal_per_serving: 13
+kcal_is_estimate: true
+protein_g: 0.1
+kcal_per_serving: 13
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 13.2
+  protein_g: 0.1
+  carbs_g: 3.5
+  fat_g: 0.0
+  fibre_g: 0.1
+  iron_mg: 0.0
+  calcium_mg: 0.7
+  magnesium_mg: 1.4
+  zinc_mg: 0.0
+  potassium_mg: 14.3
+  folate_ug: 0.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.2
+  omega3_mg: 0.9
+nutrient_coverage_pct: 17.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

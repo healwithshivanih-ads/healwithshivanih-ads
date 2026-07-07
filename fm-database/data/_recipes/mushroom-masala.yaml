@@ -1,0 +1,135 @@
+slug: mushroom-masala
+name: Mushroom Masala
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+- vegetarian
+region: North India
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- salty
+- astringent
+main_ingredients:
+- button mushrooms
+- tomato
+- onion
+contains_allergens: []
+ingredients:
+- item: button mushrooms, wiped clean and sliced
+  qty: '300'
+  unit: g
+- item: onion, finely chopped
+  qty: '2'
+  unit: medium
+- item: tomatoes, finely chopped
+  qty: '3'
+  unit: medium
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: garlic, minced
+  qty: '4'
+  unit: cloves
+- item: oil
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: bay leaf
+  qty: '1'
+  unit: whole
+- item: coriander powder
+  qty: '1.5'
+  unit: tsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+- item: water
+  qty: '0.5'
+  unit: cup
+steps:
+- Sun-dry the sliced mushrooms gills-up in direct sunlight for 20 minutes before cooking,
+  then set aside.
+- Heat oil in a kadai over medium heat. Add cumin seeds and bay leaf; let them splutter
+  for 30 seconds. Add onions and cook, stirring often, until deep golden, about 10
+  minutes.
+- Stir in ginger and garlic and cook for 1–2 minutes until the raw smell is gone.
+  Add tomatoes, salt, turmeric, coriander powder, cumin powder, and chilli powder.
+  Cook until the tomatoes break down and oil begins to release at the sides, about
+  7–8 minutes.
+- Add the sun-dried mushrooms, stir well to coat with the masala, and cook on medium-high
+  heat for 4–5 minutes until the mushrooms are tender and slightly browned.
+- Pour in the water, stir, and simmer for 3–4 minutes so the gravy comes together.
+  Sprinkle in garam masala, adjust salt, and cook for 1 more minute.
+- Finish with fresh coriander and serve hot with roti or rice.
+servings: 3–4
+prep_time_min: 30
+cook_time_min: 25
+one_line: Button mushrooms in a gently spiced tomato-onion masala — a weeknight curry
+  that quietly puts vitamin D on the table.
+headnote: Mushrooms are one of the few plant sources of vitamin D2, but only when
+  they've had a little sun. Before you start cooking, spread the sliced mushrooms
+  gills-up on a plate or tray and leave them in direct sunlight for 20 minutes — that
+  brief exposure measurably raises their D2 content. The rest of the dish is a straightforward
+  Indian masala that lets them shine.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for vitamin-D set; requires coach review
+  before publishing.
+approx_kcal_per_serving: 125
+kcal_is_estimate: true
+protein_g: 2.1
+kcal_per_serving: 125
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 125
+  protein_g: 2.1
+  carbs_g: 11.9
+  fat_g: 8.5
+  fibre_g: 3.0
+  iron_mg: 1.7
+  calcium_mg: 49.1
+  magnesium_mg: 25.6
+  zinc_mg: 0.5
+  potassium_mg: 360
+  folate_ug: 25.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 18.5
+  omega3_mg: 70.1
+nutrient_coverage_pct: 90.6
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

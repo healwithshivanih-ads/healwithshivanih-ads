@@ -1,0 +1,128 @@
+slug: egg-paratha-roll
+name: Egg Paratha Roll
+meal_type:
+- breakfast
+diet:
+- eggetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- salty
+- sour
+main_ingredients:
+- whole-wheat flour
+- eggs
+- onion
+- green chilli
+contains_allergens:
+- egg
+- gluten
+ingredients:
+- item: whole-wheat flour (atta)
+  qty: '2'
+  unit: cup
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: water, warm
+  qty: '0.75'
+  unit: cup
+- item: oil or ghee for cooking paratha
+  qty: '4'
+  unit: tsp
+- item: eggs
+  qty: '4'
+  unit: whole
+- item: onion, finely chopped
+  qty: '1'
+  unit: small
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: whole
+- item: fresh coriander, finely chopped
+  qty: '3'
+  unit: tbsp
+- item: red chilli powder
+  qty: '0.25'
+  unit: tsp
+- item: chaat masala
+  qty: '0.5'
+  unit: tsp
+- item: salt for egg
+  qty: '0.25'
+  unit: tsp
+- item: green chutney
+  qty: '4'
+  unit: tbsp
+- item: onion, thinly sliced for filling
+  qty: '0.5'
+  unit: medium
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Mix the whole-wheat flour, half a teaspoon of salt, and warm water into a soft,
+  smooth dough. Cover and rest for 15 minutes. Divide into 4 equal balls and roll
+  each into a thin round about 22 cm across.
+- In a bowl, beat one egg with a pinch each of the chopped onion, green chilli, coriander,
+  red chilli powder, and salt for each paratha — repeat per roll, keeping the egg
+  mix per portion separate.
+- Heat a tawa over medium-high heat. Place a paratha on it and cook for about 1 minute
+  until small bubbles appear. Flip it, drizzle half a teaspoon of oil or ghee around
+  the edges, and immediately pour one egg mixture over the uncooked surface, spreading
+  it quickly to cover the paratha.
+- Press gently with a spatula and cook for 1–2 minutes until the egg is set and the
+  underside is golden. Flip once more for 30 seconds to finish the egg side. Remove
+  from the tawa.
+- Spread a tablespoon of green chutney down the centre, add a few slices of raw onion,
+  a squeeze of lemon juice, and a pinch of chaat masala. Roll tightly and serve immediately,
+  or wrap in foil for an on-the-go breakfast.
+servings: 4 rolls
+prep_time_min: 20
+cook_time_min: 20
+one_line: A crisp whole-wheat paratha cooked with a spiced egg layer, rolled up with
+  chutney and onion for a quick, protein-rich breakfast.
+headnote: Eggs cooked directly onto the paratha — rather than as a separate scramble
+  — give a thinner layer that cooks through quickly and keeps the yolk nutrients intact.
+  The whole-wheat dough adds B vitamins and sustaining fibre to anchor the meal.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review — vitamin-D and protein intent
+  via one egg per roll; whole-wheat dough (2 cups atta for 4 rolls) provides fibre
+  and B vitamins; egg cooked onto paratha surface to preserve yolk nutrients.
+approx_kcal_per_serving: 129
+kcal_is_estimate: true
+protein_g: 6.9
+kcal_per_serving: 129
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 129
+  protein_g: 6.9
+  carbs_g: 4.4
+  fat_g: 9.3
+  fibre_g: 0.9
+  iron_mg: 1.2
+  calcium_mg: 39.0
+  magnesium_mg: 11.6
+  zinc_mg: 0.8
+  potassium_mg: 149
+  folate_ug: 34.0
+  b12_ug: 0.5
+  vit_d_ug: 1.0
+  vit_c_mg: 6.5
+  omega3_mg: 88.7
+nutrient_coverage_pct: 86.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

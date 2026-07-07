@@ -1,0 +1,117 @@
+slug: vegetable-paniyaram
+name: Vegetable Paniyaram
+meal_type:
+- breakfast
+- snack
+diet:
+- dairy_free
+- nut_free
+- vegetarian
+region: South India
+seasons:
+- monsoon
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- pungent
+- salty
+main_ingredients:
+- idli-dosa batter
+- onion
+- carrot
+- green chilli
+- curry leaves
+contains_allergens: []
+ingredients:
+- item: idli-dosa batter (fermented)
+  qty: '2'
+  unit: cups
+- item: onion, finely chopped
+  qty: '1'
+  unit: medium
+- item: carrot, finely grated
+  qty: '1'
+  unit: small
+- item: green chilli, finely chopped
+  qty: '2'
+  unit: whole
+- item: curry leaves, torn
+  qty: '10'
+  unit: whole
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: mustard seeds
+  qty: 1/2
+  unit: tsp
+- item: cumin seeds
+  qty: 1/2
+  unit: tsp
+- item: oil
+  qty: '2'
+  unit: tsp
+- item: salt
+  qty: 3/4
+  unit: tsp
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat 1 tsp oil in a small pan over medium heat. Add mustard seeds and let them splutter,
+  then add cumin seeds, curry leaves, green chilli, and ginger. Sauté for 30 seconds.
+- Add the onion and carrot, stir-fry for 2–3 minutes until the onion softens slightly.
+  Remove from heat and let cool for 5 minutes.
+- Stir the sautéed vegetables, coriander leaves, and salt into the fermented batter.
+  Mix gently — do not over-stir.
+- Heat a paniyaram pan over medium heat. Add a few drops of oil into each cavity.
+  Pour a spoonful of batter into each cavity, filling about three-quarters full.
+- Cover and cook for 3–4 minutes until the bottoms are golden and the tops look set.
+  Flip each paniyaram with a skewer or thin spoon and cook uncovered for 2 more minutes.
+- Remove and serve hot with coconut chutney or tomato chutney.
+servings: 3 (makes ~18 paniyarams)
+prep_time_min: 15
+cook_time_min: 20
+one_line: Fluffy fermented-batter rounds studded with vegetables, cooked in a paniyaram
+  pan.
+headnote: A fermented idli-dosa batter base means these little rounds are easy on
+  digestion and naturally light. The vegetables add colour and a bit of crunch without
+  weighing the batter down. A reliable warm breakfast for humid monsoon mornings when
+  you want something satisfying but not heavy.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon breakfast set — coach to review quantities,
+  batter sourcing note, and chutney pairing.
+approx_kcal_per_serving: 61
+kcal_is_estimate: true
+protein_g: 1.3
+kcal_per_serving: 61
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 61.0
+  protein_g: 1.3
+  carbs_g: 6.8
+  fat_g: 3.5
+  fibre_g: 1.6
+  iron_mg: 0.6
+  calcium_mg: 75.1
+  magnesium_mg: 13.4
+  zinc_mg: 0.2
+  potassium_mg: 181
+  folate_ug: 18.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 7.8
+  omega3_mg: 34.8
+nutrient_coverage_pct: 87.1
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

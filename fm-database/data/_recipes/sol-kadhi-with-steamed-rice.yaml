@@ -1,0 +1,117 @@
+slug: sol-kadhi-with-steamed-rice
+name: Sol Kadhi with Steamed Rice
+meal_type:
+- lunch
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+region: Konkan / Goa
+seasons:
+- monsoon
+- summer
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- salty
+- sweet
+- pungent
+main_ingredients:
+- kokum
+- coconut milk
+- green chilli
+- garlic
+- coriander
+contains_allergens:
+- dairy
+ingredients:
+- item: dried kokum pieces
+  qty: '8'
+  unit: whole
+- item: warm water, for soaking kokum
+  qty: 1/2
+  unit: cup
+- item: thick fresh coconut milk (first press)
+  qty: '1'
+  unit: cup
+- item: thin coconut milk (second press or packaged)
+  qty: 1/2
+  unit: cup
+- item: garlic cloves, finely minced
+  qty: '3'
+  unit: whole
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: whole
+- item: cumin seeds, lightly dry-roasted and coarsely crushed
+  qty: 1/4
+  unit: tsp
+- item: salt
+  qty: 1/2
+  unit: tsp
+- item: fresh coriander leaves, finely chopped
+  qty: '2'
+  unit: tbsp
+- item: raw rice, for serving
+  qty: 3/4
+  unit: cup
+steps:
+- Soak the kokum pieces in warm water for 20 minutes. Squeeze them well to extract
+  all the deep-purple liquid; discard the spent kokum skins and reserve the extract.
+- Steam or boil the rice using your usual method and keep it warm.
+- In a bowl or jug, combine the kokum extract with both the thick and thin coconut
+  milks. Stir well — the mixture will turn a beautiful dusky pink.
+- Add the minced garlic, green chilli, crushed cumin and salt. Stir and taste; adjust
+  salt and tartness with a tiny pinch more salt or an extra soaked kokum if needed.
+- Do not heat the sol kadhi — it is served at room temperature or lightly chilled.
+  Stir in the fresh coriander just before serving.
+- Serve the kadhi in a small bowl alongside a plate of steamed rice, to be sipped
+  and spooned through the meal.
+servings: 2–3
+prep_time_min: 25
+cook_time_min: 20
+one_line: A cooling pink kokum-coconut kadhi served alongside plain steamed rice.
+headnote: Kokum gives this Konkani staple its deep pink colour and a gentle tartness
+  that calms a heavy or overheated stomach — exactly what the coastal monsoon season
+  asks for. Fresh coconut milk keeps it light; drinking a small bowl before or alongside
+  rice helps settle digestion after a rich meal.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for monsoon-summer sol kadhi slot — coach
+  to verify kokum quantity for desired tartness and confirm no-heat serving convention
+  before publishing.
+approx_kcal_per_serving: 421
+kcal_is_estimate: true
+protein_g: 7.1
+kcal_per_serving: 421
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 421
+  protein_g: 7.1
+  carbs_g: 49.8
+  fat_g: 22.7
+  fibre_g: 3.1
+  iron_mg: 4.1
+  calcium_mg: 36.3
+  magnesium_mg: 59.4
+  zinc_mg: 1.4
+  potassium_mg: 349
+  folate_ug: 20.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.0
+  omega3_mg: 9.8
+nutrient_coverage_pct: 94.5
+rich_in:
+- iron
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

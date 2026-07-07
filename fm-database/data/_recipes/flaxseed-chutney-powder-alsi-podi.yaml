@@ -1,0 +1,117 @@
+slug: flaxseed-chutney-powder-alsi-podi
+name: Flaxseed Chutney Powder (Alsi Podi)
+meal_type:
+- condiment
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Karnataka / Maharashtra
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+- salty
+- astringent
+main_ingredients:
+- flaxseeds
+- chana dal
+- dry red chillies
+- garlic
+contains_allergens:
+- sesame
+ingredients:
+- item: flaxseeds (alsi)
+  qty: 1/2
+  unit: cup
+- item: chana dal
+  qty: '3'
+  unit: tbsp
+- item: white sesame seeds
+  qty: '2'
+  unit: tbsp
+- item: dry red chillies
+  qty: '5'
+  unit: whole
+- item: garlic cloves
+  qty: '4'
+  unit: whole
+- item: cumin seeds
+  qty: 1/2
+  unit: tsp
+- item: asafoetida (hing)
+  qty: 1/8
+  unit: tsp
+- item: salt
+  qty: 3/4
+  unit: tsp
+- item: jaggery powder
+  qty: 1/2
+  unit: tsp
+steps:
+- Dry-roast chana dal in a heavy pan over low-medium heat for 3–4 minutes until it
+  turns golden. Remove and set aside. In the same pan, roast dry red chillies and
+  garlic cloves for 1–2 minutes. Remove.
+- Add flaxseeds to the pan and roast on low heat, stirring constantly, for 3–4 minutes.
+  The seeds will begin to pop — this is normal. Remove as soon as they smell nutty
+  and fragrant; do not over-roast or the oil turns bitter.
+- Add sesame seeds and cumin seeds to the pan for 1 minute until lightly toasted.
+  Remove and let everything cool completely on a plate.
+- Once fully cool, combine all roasted ingredients with asafoetida, salt, and jaggery
+  powder in a dry mixer jar. Pulse to a coarse, slightly textured powder — avoid grinding
+  too fine, as flaxseed oil releases and the powder can clump.
+- Store in an airtight glass jar at room temperature for up to 3 weeks, or refrigerate
+  for up to 6 weeks. Use 1–2 tablespoons mixed into warm rice with a little oil or
+  ghee, or alongside idli and roti.
+servings: 16 tbsp (approx. 1 cup)
+prep_time_min: 5
+cook_time_min: 12
+one_line: A dry, roasted flaxseed chutney powder to sprinkle over rice, idli, or roti
+  — a simple everyday source of plant omega-3.
+headnote: Two tablespoons of roasted flaxseed provide a meaningful amount of ALA,
+  the plant-based omega-3 fatty acid. Roasting and coarsely grinding the seeds helps
+  break the hard shell so the body can actually access the oil inside. This podi keeps
+  well for weeks and makes it easy to add flax to any meal without changing its character
+  much.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review; nutritional intent around roasted
+  flaxseed as the primary ALA omega-3 source in a dry condiment format.
+approx_kcal_per_serving: 44
+kcal_is_estimate: true
+protein_g: 1.7
+kcal_per_serving: 44
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 44.1
+  protein_g: 1.7
+  carbs_g: 3.6
+  fat_g: 2.8
+  fibre_g: 1.8
+  iron_mg: 0.6
+  calcium_mg: 27.6
+  magnesium_mg: 27.3
+  zinc_mg: 0.4
+  potassium_mg: 73.8
+  folate_ug: 10.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 2.0
+  omega3_mg: 1147
+nutrient_coverage_pct: 100.0
+rich_in:
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

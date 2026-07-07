@@ -1,0 +1,118 @@
+slug: sarson-fish-curry-bengali-mustard-fish
+name: Sarson Fish Curry (Bengali Mustard Fish)
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- non_vegetarian
+- nut_free
+region: West Bengal
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- salty
+- bitter
+main_ingredients:
+- rohu fish
+- yellow mustard seeds
+- black mustard seeds
+- mustard oil
+- green chillies
+- turmeric
+contains_allergens:
+- mustard
+ingredients:
+- item: rohu or hilsa fish steaks
+  qty: '600'
+  unit: g
+- item: yellow mustard seeds
+  qty: '3'
+  unit: tbsp
+- item: black mustard seeds
+  qty: '1'
+  unit: tbsp
+- item: white poppy seeds (posto)
+  qty: '1'
+  unit: tbsp
+- item: green chillies, slit
+  qty: '4'
+  unit: whole
+- item: turmeric powder
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '1.5'
+  unit: tsp
+- item: mustard oil
+  qty: '3'
+  unit: tbsp
+- item: water
+  qty: '1.5'
+  unit: cup
+- item: fresh coriander leaves, torn
+  qty: '2'
+  unit: tbsp
+steps:
+- Soak yellow mustard seeds, black mustard seeds and poppy seeds in 3 tbsp water for
+  15 minutes, then grind to a smooth paste with 2 green chillies, a pinch of salt
+  and 2 tbsp water.
+- Rub the fish steaks with ½ tsp turmeric and ½ tsp salt; let them sit for 10 minutes.
+- Heat mustard oil in a wide pan over medium-high heat until it just begins to smoke,
+  then lower to medium. Lightly fry the fish steaks for 2 minutes per side until the
+  surface turns golden; remove and set aside.
+- In the same pan add the mustard-poppy paste and the remaining ½ tsp turmeric; stir
+  for 2 minutes until fragrant and the raw edge of the mustard has softened.
+- Pour in 1½ cups water, remaining salt and the rest of the slit green chillies; bring
+  to a gentle simmer.
+- Slide the fish back in and cook uncovered for 8–10 minutes, spooning the gravy over
+  the steaks once or twice, until the oil floats to the surface.
+- Finish with torn coriander and serve hot with steamed rice.
+servings: 3–4
+prep_time_min: 20
+cook_time_min: 25
+one_line: Tender fish simmered in a sharp, golden mustard-poppy paste — a weekday
+  staple from the Bengali kitchen.
+headnote: Mustard seeds and mustard oil both carry alpha-linolenic acid, and a fatty
+  fish like rohu or hilsa adds the longer-chain EPA and DHA that the body can use
+  directly. Grinding the mustard fresh keeps its oils intact and the flavour clean.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 set; coach to verify fish variety availability
+  and mustard-paste grind notes.
+approx_kcal_per_serving: 132
+kcal_is_estimate: true
+protein_g: 6.7
+kcal_per_serving: 132
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 132
+  protein_g: 6.7
+  carbs_g: 8.2
+  fat_g: 9.0
+  fibre_g: 3.4
+  iron_mg: 2.9
+  calcium_mg: 70.1
+  magnesium_mg: 95.9
+  zinc_mg: 1.6
+  potassium_mg: 225
+  folate_ug: 42.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 8.3
+  omega3_mg: 84.9
+nutrient_coverage_pct: 66.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

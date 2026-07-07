@@ -1,0 +1,100 @@
+slug: steamed-sweet-corn-chaat
+name: Steamed Sweet Corn Chaat
+meal_type:
+- snack
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Indian
+seasons:
+- monsoon
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- sour
+- pungent
+- salty
+main_ingredients:
+- sweet corn kernels
+contains_allergens: []
+ingredients:
+- item: sweet corn kernels (fresh or frozen)
+  qty: '2'
+  unit: cups
+- item: lemon juice
+  qty: 1½
+  unit: tbsp
+- item: roasted cumin powder
+  qty: ¾
+  unit: tsp
+- item: red chilli powder
+  qty: ¼
+  unit: tsp
+- item: black salt (kala namak)
+  qty: ¼
+  unit: tsp
+- item: regular salt
+  qty: ¼
+  unit: tsp
+- item: fresh coriander leaves, finely chopped
+  qty: '3'
+  unit: tbsp
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: small
+steps:
+- If using fresh corn, shuck the cobs and cut the kernels off. Place the kernels in
+  a steamer basket set over boiling water, cover, and steam for 10–12 minutes until
+  just tender. Frozen kernels need only 5–6 minutes.
+- Transfer the hot steamed corn to a mixing bowl and let it sit for a minute — you
+  want it warm, not piping hot, when you dress it.
+- Add the lemon juice, roasted cumin powder, red chilli powder, black salt, and regular
+  salt. Toss well so every kernel is coated.
+- Add the chopped coriander leaves and green chilli, toss once more, taste and adjust
+  lemon or salt, and serve immediately in small bowls or paper cones.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 12
+one_line: Steamed corn kernels tossed with lemon juice, roasted cumin, and fresh coriander.
+headnote: Corn on the cob is the quintessential monsoon street food across India.
+  Steaming the kernels rather than boiling keeps them sweet and firm, and the simple
+  toss of roasted cumin, lemon, and coriander is all the seasoning they need.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for monsoon set — please confirm spice levels
+  and black salt usage align with coach's dietary guidelines before publishing.
+approx_kcal_per_serving: 132
+kcal_is_estimate: true
+protein_g: 5.1
+kcal_per_serving: 132
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 132
+  protein_g: 5.1
+  carbs_g: 28.9
+  fat_g: 2.3
+  fibre_g: 3.2
+  iron_mg: 1.4
+  calcium_mg: 14.3
+  magnesium_mg: 58.8
+  zinc_mg: 0.8
+  potassium_mg: 436
+  folate_ug: 64.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 15.4
+  omega3_mg: 26.7
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

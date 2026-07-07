@@ -1,0 +1,100 @@
+slug: sukku-malli-kaapi-dry-ginger-coriander-brew
+name: Sukku Malli Kaapi (Dry Ginger-Coriander Brew)
+meal_type:
+- drink
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Tamil Nadu
+seasons:
+- monsoon
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+- sweet
+main_ingredients:
+- dry ginger
+- coriander seeds
+contains_allergens: []
+ingredients:
+- item: dry ginger (sukku), broken into small pieces
+  qty: '1'
+  unit: inch piece
+- item: coriander seeds (malli)
+  qty: '1.5'
+  unit: tbsp
+- item: black peppercorns
+  qty: '6'
+  unit: whole
+- item: water
+  qty: '2.5'
+  unit: cup
+- item: jaggery, grated (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- In a dry pan over medium-low heat, toast the dry ginger pieces, coriander seeds,
+  and black peppercorns together, stirring constantly, for 2–3 minutes until the coriander
+  seeds turn a shade darker and the kitchen smells fragrant. Do not let them scorch.
+- Transfer to a mortar and give them a rough crack — you are not making a fine powder,
+  just opening them up so the water can draw out their flavour.
+- Bring the water to a boil in a small saucepan. Add the cracked spices, reduce heat,
+  and simmer uncovered for 8–10 minutes until the liquid reduces slightly and turns
+  a warm golden-brown.
+- Strain through a fine sieve into cups, pressing the solids lightly to extract all
+  the liquid.
+- Stir in jaggery while still hot if using. Serve as is — no milk, no cream. Sip slowly.
+servings: '2'
+prep_time_min: 2
+cook_time_min: 12
+one_line: A caffeine-free Tamil brew of dry ginger and coriander seeds, earthy and
+  deeply warming.
+headnote: Sukku malli kaapi is not coffee at all — the name simply means the brew
+  sits in that same after-meal or morning ritual space. Dry ginger (sukku) and coriander
+  seeds (malli) are toasted together so their oils deepen before steeping; the result
+  is a slightly earthy, faintly sweet drink that soothes a heavy monsoon belly and
+  warms the hands around the cup. It is a staple in Tamil households when the rains
+  drag on.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon-winter drinks set — coach to verify
+  sukku piece size and whether palm jaggery is preferred over cane jaggery in a Tamil
+  context.
+approx_kcal_per_serving: 15
+kcal_is_estimate: true
+protein_g: 0.2
+kcal_per_serving: 15
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 15.0
+  protein_g: 0.2
+  carbs_g: 3.4
+  fat_g: 0.2
+  fibre_g: 0.6
+  iron_mg: 0.3
+  calcium_mg: 10.8
+  magnesium_mg: 6.8
+  zinc_mg: 0.1
+  potassium_mg: 53.0
+  folate_ug: 0.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.3
+  omega3_mg: 2.3
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)
