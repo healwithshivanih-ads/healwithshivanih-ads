@@ -416,6 +416,23 @@ export function DishPicker({
                       <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
                         {[r.kcalPerServing ? `${r.kcalPerServing} kcal` : null, r.time].filter(Boolean).join(" · ") || "no nutrition yet"}
                       </span>
+                      {r.labMatchedTags && r.labMatchedTags.length > 0 && (
+                        <span
+                          title="This client is low on these on their latest labs — this dish is rich in them"
+                          style={{
+                            display: "inline-block",
+                            marginTop: 3,
+                            fontSize: 10,
+                            fontWeight: 700,
+                            color: "var(--fm-primary, #4a6152)",
+                            background: "rgba(74,97,82,0.12)",
+                            borderRadius: 999,
+                            padding: "1px 7px",
+                          }}
+                        >
+                          🩸 rich in {r.labMatchedTags.map((t) => t.replace(/-/g, " ")).join(", ")}
+                        </span>
+                      )}
                     </span>
                     {r.imageUrl && <span style={{ fontSize: 14 }}>📷</span>}
                   </button>
