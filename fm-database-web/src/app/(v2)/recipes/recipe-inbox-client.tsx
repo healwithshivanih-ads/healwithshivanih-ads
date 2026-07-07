@@ -472,6 +472,49 @@ export default function RecipeInboxClient({ initial }: { initial: RecipeCandidat
   const [candidates, setCandidates] = useState(
     initial.filter((c) => c.status === "new" || c.status === "parsed"),
   );
+  const [armed, setArmed] = useState(false);
+  const [bulk, setBulk] = useState<{ done: number; total: number } | null>(null);
+  const [bulkSummary, setBulkSummary] = useState("");
+
+  const parsedReady = candidates.filter((c) => c.status === "parsed" && c.parsed);
+
+  // Bulk approve: every PARSED draft goes through the same approve gates,
+  // one at a time (each runs a Python shim + nutrient compute + image
+  // download). force stays FALSE — anything the gates question (duplicate,
+  // porridge) is SKIPPED and left in the queue for individual review, never
+  // force-approved in bulk.
+  async function approveAll() {
+    setArmed(false);
+    const queue = [...parsedReady];
+    setBulk({ done: 0, total: queue.length });
+    let added = 0,
+      skipped = 0,
+      failed = 0;
+    for (let i = 0; i < queue.length; i++) {
+      const c = queue[i];
+      try {
+        const draft = normalizeDraft(JSON.parse(JSON.stringify(c.parsed)));
+        const res = await approveRecipeCandidateAction(c.id, draft, false);
+        if (res.ok && res.slug) {
+          added += 1;
+          setCandidates((l) => l.filter((x) => x.id !== c.id));
+        } else if (res.needs_confirm) {
+          skipped += 1; // stays in the list — review that one by hand
+        } else {
+          failed += 1;
+        }
+      } catch {
+        failed += 1;
+      }
+      setBulk({ done: i + 1, total: queue.length });
+    }
+    setBulk(null);
+    setBulkSummary(
+      `✅ ${added} added to the library` +
+        (skipped ? ` · ⚠ ${skipped} need your eyes (duplicate/rule flags — review below)` : "") +
+        (failed ? ` · ✕ ${failed} failed` : ""),
+    );
+  }
 
   return (
     <section className="space-y-3">
@@ -488,6 +531,49 @@ export default function RecipeInboxClient({ initial }: { initial: RecipeCandidat
         allowlisted phone (RECIPE_INBOX_NUMBERS) and they land here — or add one manually below.
         Nothing enters the library without your review.
       </p>
+
+      {parsedReady.length >= 2 && (
+        <div className="border rounded-lg p-3 bg-muted/40 flex items-center gap-3 flex-wrap">
+          {bulk ? (
+            <span className="text-sm font-medium">
+              Approving {bulk.done}/{bulk.total}… (each one is checked, nutrient-scored and gets
+              its photo — leave this page open)
+            </span>
+          ) : armed ? (
+            <>
+              <span className="text-sm">
+                Approve all {parsedReady.length} parsed drafts as they are? Anything the safety
+                gates question is skipped for individual review.
+              </span>
+              <button
+                onClick={approveAll}
+                className="text-xs bg-primary text-primary-foreground rounded px-3 py-1.5 font-semibold"
+              >
+                Yes, approve {parsedReady.length}
+              </button>
+              <button onClick={() => setArmed(false)} className="text-xs text-muted-foreground">
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="text-sm text-muted-foreground">
+                {parsedReady.length} drafts are parsed and ready.
+              </span>
+              <button
+                onClick={() => setArmed(true)}
+                className="text-xs bg-primary text-primary-foreground rounded px-3 py-1.5 font-semibold"
+              >
+                ✅ Approve all {parsedReady.length} →
+              </button>
+            </>
+          )}
+        </div>
+      )}
+      {bulkSummary && (
+        <p className="text-sm bg-green-50 border border-green-200 rounded p-2">{bulkSummary}</p>
+      )}
+
       <AddCandidateCard onCreated={(c) => setCandidates((l) => [c, ...l])} />
       {candidates.map((c) => (
         <CandidateCard
