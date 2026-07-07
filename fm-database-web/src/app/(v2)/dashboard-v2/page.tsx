@@ -55,6 +55,7 @@ import {
   FmChip,
   FmCatalogueCommitBanner,
   FmCatalogueOrphanChip,
+  FmVitaoneCoverageChip,
   FmRecipeImageChip,
   FmInboundMessagesBanner,
   FmIntakeActivityBanner,
@@ -1469,6 +1470,12 @@ export default async function DashboardV2() {
               when every entity is reachable. Surfaces orphans like the
               beta-glucuronidase gap before they strand silently. */}
           <FmCatalogueOrphanChip />
+
+          {/* VitaOne commission-leak guardrail — self-loading, hides when no
+              leaks. Flags VitaOne products with empty `covers` (invisible to
+              the resolver) + prescribed items resolving to FM Nutrition (10%
+              vs VitaOne's 30%). */}
+          <FmVitaoneCoverageChip />
 
           {/* Recipe-image coverage guardrail — self-loading, hides when every
               recipe has a photo. Flags recipes that would show a plain tile in
