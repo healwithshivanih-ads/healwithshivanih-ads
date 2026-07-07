@@ -60,6 +60,11 @@ const ACCEPTED_GAPS = new Set<string>([
   "zinc-picolinate",
   "indole-3-carbinol",
   "vitamin-k2",
+  // FM Nutrition / Autoimmunity Care brand blends — no VitaOne equivalent
+  // (verified 2026-07-07; VitaOne's nearest is Gastro Zinc Carnosine, a
+  // different single-ingredient product).
+  "h-pylori-combo",
+  "leaky-gut-care",
 ]);
 
 function sourceOf(e: LinksEntry): string {

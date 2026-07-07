@@ -39,6 +39,9 @@ ACCEPTED_GAPS = {
     "cordyceps", "medicinal-mushrooms", "taurine", "l-theanine", "bromelain",
     "chromium", "creatine-monohydrate", "oregano-oil", "saccharomyces-boulardii",
     "zinc-picolinate", "indole-3-carbinol", "vitamin-k2",
+    # FM Nutrition / Autoimmunity Care brand blends — no VitaOne equivalent
+    # (verified 2026-07-07).
+    "h-pylori-combo", "leaky-gut-care",
 }
 
 
