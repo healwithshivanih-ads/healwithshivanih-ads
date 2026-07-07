@@ -43,6 +43,61 @@ def plans_root() -> Path:
     return Path.home() / "fm-plans"
 
 
+_MONTHS = {
+    m: i
+    for i, m in enumerate(
+        ["jan", "feb", "mar", "apr", "may", "jun",
+         "jul", "aug", "sep", "oct", "nov", "dec"], 1)
+}
+
+
+def normalize_date_iso(s):
+    """Coerce a lab/report date string to ISO YYYY-MM-DD.
+
+    Lab-report extractors read dates verbatim off the PDF — e.g.
+    Indian labs print "06/Jul/2026" or "13/03/2026". Stored unnormalised,
+    those string-sort BELOW real ISO dates ("06/..." < "2026-..."), so
+    recompute-lab-markers.py treats the newest report as the OLDEST and
+    the coach's markers silently keep stale values (Nidhi 2026-07-07:
+    July HbA1c never overrode May). Normalise at ingest so every
+    downstream date compare is correct. Unparseable input is returned
+    unchanged (never crash, never drop the value).
+    """
+    import re
+    import datetime
+    if not isinstance(s, str):
+        return s
+    v = s.strip()
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", v):
+        return v  # already ISO
+    # DD/Mon/YYYY or DD-Mon-YYYY (month name) — e.g. 06/Jul/2026
+    m = re.fullmatch(r"(\d{1,2})[/\-\s]([A-Za-z]{3,})[/\-\s](\d{4})", v)
+    if m:
+        mon = _MONTHS.get(m.group(2)[:3].lower())
+        if mon:
+            try:
+                return datetime.date(int(m.group(3)), mon, int(m.group(1))).isoformat()
+            except ValueError:
+                pass
+    # DD/MM/YYYY or DD-MM-YYYY — Indian day-first convention
+    m = re.fullmatch(r"(\d{1,2})[/\-](\d{1,2})[/\-](\d{4})", v)
+    if m:
+        a, b, yy = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        dd, mm = (a, b) if not (a <= 12 and b > 12) else (b, a)
+        try:
+            return datetime.date(yy, mm, dd).isoformat()
+        except ValueError:
+            pass
+    # YYYY/MM/DD
+    m = re.fullmatch(r"(\d{4})[/\-](\d{1,2})[/\-](\d{1,2})", v)
+    if m:
+        try:
+            return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3))).isoformat()
+        except ValueError:
+            pass
+    return v  # unrecognised — leave untouched
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -261,6 +316,12 @@ def main() -> int:
     snap_date = datetime.date.today().isoformat()
     snap_labs_in = payload.get("lab_values") or []
     if isinstance(snap_labs_in, list) and snap_labs_in:
+        # Normalise each extracted date_drawn to ISO BEFORE deriving the
+        # snapshot date — labs print "06/Jul/2026" etc., which would
+        # otherwise string-sort as older than every real ISO date.
+        for lv in snap_labs_in:
+            if isinstance(lv, dict) and lv.get("date_drawn"):
+                lv["date_drawn"] = normalize_date_iso(lv["date_drawn"])
         # Use the EARLIEST date_drawn across the bundle as the snapshot
         # date (a single report is usually one collection day; if multiple
         # dates leak in, earliest captures the report's primary draw).
@@ -269,7 +330,7 @@ def main() -> int:
             if d and isinstance(d, str)
         )
         if drawn_dates:
-            snap_date = drawn_dates[0]
+            snap_date = normalize_date_iso(drawn_dates[0])
     snap: dict = {
         "date": snap_date,
         "source": source,
