@@ -1,0 +1,24 @@
+slug: low-fiber-can-help-an-inflamed-gut
+statement: People with IBS, SIBO, IBD or gut inflammation may worsen on high fibre
+  or raw foods; starting lower-fibre (around 10 g/day in an IBD flare) with cooked,
+  peeled vegetables and titrating up as the gut heals is often better tolerated.
+evidence_tier: plausible_emerging
+rationale: Cites low-fibre/low-FODMAP tolerance in inflamed guts.
+coaching_translation: If raw veg and lots of fibre make your gut worse, easing back
+  to cooked, peeled veg for a while can help it settle.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- fiber-gap
+- irritable-bowel-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Inflamed guts may worsen on high fibre; start low (~10 g/day in IBD flare)
+    and titrate up.
+  location: Ch 10 & 17
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

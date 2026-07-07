@@ -1,0 +1,22 @@
+slug: testing-is-useful-only-if-it-changes-treatment
+statement: 'Testing is only helpful if it demonstrably changes treatment: many functional-medicine
+  tests are more academic than clinical, and more testing does not mean better results.'
+evidence_tier: plausible_emerging
+rationale: Ch 32 testing philosophy.
+coaching_translation: Only run a test if the result would actually change the plan
+  — more tests don't mean better care.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- finding-a-functional-medicine-provider
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Testing helps only if it changes treatment; more testing does not mean better
+    results.
+  location: Ch 32
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

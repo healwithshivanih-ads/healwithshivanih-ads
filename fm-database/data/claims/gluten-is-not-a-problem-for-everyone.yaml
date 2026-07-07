@@ -1,0 +1,24 @@
+slug: gluten-is-not-a-problem-for-everyone
+statement: Gluten is not a universal poison — it should be avoided according to a
+  person's individual level of reaction; whole grains also show documented benefits
+  including heart-disease protection, better bowel function and lower cholesterol
+  and body fat.
+evidence_tier: plausible_emerging
+rationale: Balances the NCGS evidence with whole-grain benefit data; the honest 'it
+  depends' framing is the load-bearing insight.
+coaching_translation: Gluten isn't automatically bad for everyone — tailor it to how
+  you actually react, not to fear.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gluten-sensitivity
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Gluten is not a problem for everyone; whole grains carry real benefits.
+  location: Ch 7
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

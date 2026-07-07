@@ -1,0 +1,24 @@
+slug: berberine-has-two-dose-ranges
+statement: 'Berberine is dosed differently by target: about 1–1.5 g/day for blood
+  sugar (as effective as metformin in two systematic reviews) versus up to about 5
+  g/day for SIBO.'
+evidence_tier: plausible_emerging
+rationale: Cites berberine metabolic and SIBO dosing.
+coaching_translation: Berberine's dose depends on the goal — lower for blood sugar,
+  higher for gut overgrowth.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements:
+- berberine
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Berberine ~1-1.5 g/day for blood sugar (matching metformin); up to ~5 g/day
+    for SIBO.
+  location: Ch 17
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

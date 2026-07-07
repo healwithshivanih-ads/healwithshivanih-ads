@@ -1,0 +1,23 @@
+slug: birth-mode-and-feeding-shape-lifelong-risk
+statement: 'Birth mode and infant feeding shape lifelong risk: C-section birth raises
+  the risk of type-1 diabetes, celiac, asthma and obesity, while breastfeeding lowers
+  infection, celiac, asthma, type-2 diabetes and obesity risk and improves cognition.'
+evidence_tier: strong
+rationale: Cites C-section and breastfeeding meta-analyses.
+coaching_translation: How we're born and fed as infants leaves a lasting mark on the
+  gut and immune system.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gut-microbiome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: C-section raises autoimmune/asthma/obesity risk; breastfeeding lowers infection,
+    celiac, diabetes and obesity risk.
+  location: Ch 5
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

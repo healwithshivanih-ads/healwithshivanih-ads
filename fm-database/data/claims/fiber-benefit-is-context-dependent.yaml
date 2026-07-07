@@ -1,0 +1,25 @@
+slug: fiber-benefit-is-context-dependent
+statement: 'Fibre''s benefits are context-dependent, not automatic: roughly equal
+  high-quality evidence shows it does and does not protect against digestive-tract
+  cancers, and any whole-food diet that avoids processed food lowers colon-cancer
+  risk regardless of fibre or carb level.'
+evidence_tier: plausible_emerging
+rationale: Presents both directions of the fibre-cancer evidence; the honest 'it depends'
+  conclusion is the point.
+coaching_translation: More fibre isn't universally better — a whole-food diet protects
+  the colon whether it's higher or lower in fibre.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- fiber-gap
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Fibre benefits are context-dependent; whole-food diets lower colon-cancer
+    risk regardless of fibre level.
+  location: Ch 10
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

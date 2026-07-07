@@ -1,0 +1,24 @@
+slug: vitamin-d-is-often-a-marker-not-a-cause
+statement: 'Low vitamin D is more likely a marker of ill health than its cause: supplementing
+  sick people generally did not reverse illness in a large umbrella review, so the
+  underlying problem — often the gut — should be addressed rather than just the number.'
+evidence_tier: strong
+rationale: Cites the 2014 BMJ umbrella review of vitamin D supplementation trials.
+coaching_translation: A low vitamin D reading is often a sign of underlying illness
+  — worth correcting, but don't expect the pill alone to fix things.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- vitamin-d3
+linked_to_mechanisms: []
+linked_to_supplements:
+- vitamin-d3
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Low vitamin D is more a marker than a cause; supplementing sick people generally
+    didn't reverse illness.
+  location: Ch 11
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

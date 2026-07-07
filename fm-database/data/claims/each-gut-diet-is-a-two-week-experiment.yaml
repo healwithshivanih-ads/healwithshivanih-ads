@@ -1,0 +1,24 @@
+slug: each-gut-diet-is-a-two-week-experiment
+statement: Each gut-healing diet is a two-to-three-week experiment — if it works you
+  usually notice within about two weeks; if a roughly 80%-adherent protocol doesn't
+  help, the problem is not the diet and you should move to non-dietary steps rather
+  than getting stricter.
+evidence_tier: plausible_emerging
+rationale: Ruscio's responders-vs-non-responders framing.
+coaching_translation: Give a diet change about two weeks; if it's clearly not helping,
+  the answer usually isn't 'be even stricter'.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- low-fodmap-diet
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Each diet is a 2-3 week experiment; if ~80%-adherent and not helping, move
+    to non-dietary steps.
+  location: Ch 24
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

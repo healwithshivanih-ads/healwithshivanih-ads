@@ -1,0 +1,29 @@
+slug: betaine-hcl-do-not-titrate-to-burning
+statement: Supplemental stomach acid (betaine HCl) should not be titrated upward until
+  a burning sensation, because burning can signal damage and a healthy lining may
+  never burn; it is best reserved for those with autoimmunity, anaemia, age over 65
+  or documented low acid, and avoided entirely when an ulcer is present.
+evidence_tier: fm_specific_thin
+rationale: Ruscio flags the popular 'increase-to-burning' method as unsafe; his own
+  evidence base for HCl is thin.
+coaching_translation: Don't do the 'take more HCl until it burns' trick — burning
+  can mean harm; acid supplements suit only specific people and never with an ulcer.
+out_of_scope_notes: ''
+caveats:
+- Avoid supplemental acid entirely if an ulcer is present.
+linked_to_topics:
+- hypochlorhydria
+- low-stomach-acid
+linked_to_mechanisms:
+- hcl-and-pepsin-protein-digestion
+linked_to_supplements:
+- betaine-hcl
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Don't titrate betaine HCl to burning; reserve for autoimmunity/anaemia/age>65/low
+    acid; avoid with ulcers.
+  location: Ch 15
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

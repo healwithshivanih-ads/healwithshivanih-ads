@@ -1,0 +1,25 @@
+slug: long-term-acid-blockers-carry-risk
+statement: A short four-to-eight-week course of acid-blocking medication effectively
+  heals ulcers, but long-term acid-blocker use raises the risk of SIBO, fungal overgrowth,
+  mineral malabsorption, osteoporosis and fractures.
+evidence_tier: strong
+rationale: Cites PPI long-term risk literature.
+coaching_translation: Acid blockers are fine short-term to heal an ulcer, but long-term
+  use has real downsides for the gut and bones.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- low-stomach-acid
+- hypochlorhydria
+linked_to_mechanisms:
+- sibo-dysbiosis
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Short PPI courses heal ulcers; long-term use risks SIBO, overgrowth, malabsorption,
+    osteoporosis and fractures.
+  location: Ch 15
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

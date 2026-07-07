@@ -1,0 +1,24 @@
+slug: herbal-antimicrobials-match-rifaximin-for-sibo
+statement: Herbal antimicrobials such as berberine and oregano have been shown as
+  effective as the antibiotic rifaximin for treating SIBO, making them a reasonable
+  first-line removal tool under clinician guidance.
+evidence_tier: plausible_emerging
+rationale: Cites the herbal-vs-rifaximin SIBO comparison.
+coaching_translation: Herbal antimicrobials can work as well as the antibiotic rifaximin
+  for overgrowth — a valid option to discuss with your clinician.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements:
+- berberine
+- oregano-oil
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Herbal antimicrobials were as effective as rifaximin for SIBO.
+  location: Ch 17
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

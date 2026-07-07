@@ -1,0 +1,24 @@
+slug: elemental-diet-matches-steroids-for-ibd
+statement: Elemental and semielemental diets match corticosteroids for inducing remission
+  and preventing relapse in inflammatory bowel disease, and semielemental works as
+  well as full elemental while being more filling — reasonable to try before steroids.
+evidence_tier: strong
+rationale: Cites two Cochrane systematic reviews.
+coaching_translation: A medical liquid 'elemental' diet can calm IBD as well as steroids
+  — worth discussing with a clinician.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sibo
+- irritable-bowel-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Elemental/semielemental diets match corticosteroids for IBD remission (Cochrane);
+    semielemental works as well as full.
+  location: Ch 18
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

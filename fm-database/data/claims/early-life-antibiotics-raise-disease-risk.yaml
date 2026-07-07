@@ -1,0 +1,25 @@
+slug: early-life-antibiotics-raise-disease-risk
+statement: Early-life antibiotic use raises the risk of eczema, asthma, allergies,
+  weight gain and inflammatory bowel disease, with greater harm the earlier, more
+  frequent and broader-spectrum the use — because the microbiota mostly forms by age
+  two to three.
+evidence_tier: strong
+rationale: Cites antibiotic-exposure meta-analyses.
+coaching_translation: Antibiotics early in life shape the gut for years — used only
+  when truly needed, especially in the first couple of years.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gut-microbiome
+linked_to_mechanisms:
+- microbial-diversity-decline
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Early, frequent, broad-spectrum antibiotics raise eczema, asthma, obesity
+    and IBD risk.
+  location: Ch 5
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

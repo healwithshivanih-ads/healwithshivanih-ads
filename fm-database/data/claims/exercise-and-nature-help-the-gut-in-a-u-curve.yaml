@@ -1,0 +1,23 @@
+slug: exercise-and-nature-help-the-gut-in-a-u-curve
+statement: Moderate exercise and time in nature improve microbial diversity, mood
+  and immunity, but the benefit follows a U-curve — too little or too much (overtraining)
+  harms the gut through leaky gut and immune suppression.
+evidence_tier: plausible_emerging
+rationale: Cites the rugby-player diversity study and forest-bathing research.
+coaching_translation: Move regularly and get outdoors, but don't overtrain — both
+  too little and too much stress the gut.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gut-microbiome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Exercise and nature improve microbial diversity and immunity, but overtraining
+    harms the gut.
+  location: Ch 11
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

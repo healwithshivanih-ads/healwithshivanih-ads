@@ -1,0 +1,22 @@
+slug: nsaids-harm-the-gut-lining
+statement: Regular NSAIDs (ibuprofen, aspirin) reduce lactobacilli, impair protective
+  mucus and cause leaky gut and mucosal injury, so natural anti-inflammatories are
+  preferable where appropriate and chronic pain warrants a provider.
+evidence_tier: plausible_emerging
+rationale: Cites NSAID gut-injury data.
+coaching_translation: Frequent painkillers like ibuprofen can quietly damage the gut
+  lining — use sparingly and get persistent pain looked at.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms:
+- leaky-gut
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: NSAIDs reduce lactobacilli, impair mucus and cause leaky gut/mucosal injury.
+  location: Ch 9
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

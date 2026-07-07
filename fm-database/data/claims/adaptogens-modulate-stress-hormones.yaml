@@ -1,0 +1,27 @@
+slug: adaptogens-modulate-stress-hormones
+statement: Adaptogenic herbs such as ginseng, rhodiola, ashwagandha and bacopa bidirectionally
+  normalise high or low stress and adrenal hormones, with human-trial support for
+  improved mood, fatigue, cortisol, memory and immunity and a good safety record.
+evidence_tier: plausible_emerging
+rationale: Cites human adaptogen trials; long Ayurvedic/TCM use.
+coaching_translation: Herbs like ashwagandha and rhodiola can gently steady the stress
+  response — a helpful support alongside lifestyle work.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- adrenal-fatigue
+linked_to_mechanisms: []
+linked_to_supplements:
+- ashwagandha
+- rhodiola
+- panax-ginseng
+- bacopa-monnieri
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Adaptogens (ginseng, rhodiola, ashwagandha, bacopa) bidirectionally normalise
+    stress hormones with human-trial support.
+  location: Ch 13
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

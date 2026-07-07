@@ -1,0 +1,24 @@
+slug: leaky-gut-causes-transient-food-reactions
+statement: Gut inflammation, infection or stress causes leaky gut, which can produce
+  many 'false' food reactions that resolve once the gut heals — the author personally
+  had 23 food reactions from a parasite that all disappeared after gut healing.
+evidence_tier: fm_specific_thin
+rationale: Illustrated by the author's own case; mechanistically plausible.
+coaching_translation: A long list of food reactions often shrinks dramatically once
+  the gut heals — you may not be stuck avoiding all of them.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- food-intolerance
+linked_to_mechanisms:
+- leaky-gut
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Leaky gut produces multiple transient food reactions that resolve after the
+    gut heals.
+  location: Ch 6
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

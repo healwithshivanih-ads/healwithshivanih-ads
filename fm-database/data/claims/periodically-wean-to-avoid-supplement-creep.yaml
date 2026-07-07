@@ -1,0 +1,22 @@
+slug: periodically-wean-to-avoid-supplement-creep
+statement: 'Beware ''supplement creep'': once you have been stable for two to three
+  months, periodically discontinue supplements one at a time to check whether each
+  still helps, aiming for the minimal effective long-term program.'
+evidence_tier: plausible_emerging
+rationale: The Step-7 weaning principle.
+coaching_translation: Every so often, drop a supplement to see if you still need it
+  — the goal is the shortest list that keeps you well.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Periodically discontinue supplements to test ongoing benefit; aim for the
+    minimal effective program.
+  location: Ch 30 (Step 7 — Wean)
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

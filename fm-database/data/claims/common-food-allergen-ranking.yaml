@@ -1,0 +1,23 @@
+slug: common-food-allergen-ranking
+statement: The most reactive food allergens are gluten-containing grains, dairy and
+  soy; eggs and nuts are intermediate; while gluten-free grains, potato and sweet
+  potato, nightshades and legumes tend to be best tolerated.
+evidence_tier: plausible_emerging
+rationale: A practical ranking Ruscio uses to structure elimination diets.
+coaching_translation: When trimming the diet, start with the biggest culprits — gluten,
+  dairy and soy — before cutting well-tolerated foods.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- food-intolerance
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Gluten, dairy and soy are the most problematic allergens; gluten-free grains,
+    potato, nightshades and legumes are best tolerated.
+  location: Ch 6
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

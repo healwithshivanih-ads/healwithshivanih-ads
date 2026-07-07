@@ -1,0 +1,24 @@
+slug: weigh-rcts-not-single-bacteria
+statement: 'Don''t reduce gut health to a single bacterium or a single study: weigh
+  human randomised trials, systematic reviews and meta-analyses above animal, cell-culture
+  and one-off observational findings.'
+evidence_tier: strong
+rationale: The book's signature evidence-discipline stance, illustrated with F. prausnitzii
+  and Prevotella copri counter-examples.
+coaching_translation: Be skeptical of 'this one bug fixes everything' claims — look
+  for real human-trial evidence, not headlines.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gut-microbiome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Demand human RCT outcome data; never decide from a single study or a single
+    bacterium.
+  location: Ch 4
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

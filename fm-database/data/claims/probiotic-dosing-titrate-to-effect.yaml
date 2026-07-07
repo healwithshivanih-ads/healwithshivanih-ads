@@ -1,0 +1,26 @@
+slug: probiotic-dosing-titrate-to-effect
+statement: Effective probiotic dosing is a Lactobacillus/Bifidobacterium blend at
+  roughly 100–900 billion CFU/day (start near 100 billion and titrate up only until
+  symptoms improve) and Saccharomyces boulardii at about 1 g/day (~20 billion CFU)
+  — more is not better once you have improvement.
+evidence_tier: strong
+rationale: Cites probiotic meta-analyses for IBS/IBD dosing.
+coaching_translation: Start probiotics low and only go higher until you feel better
+  — there's no benefit to megadosing past that.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- probiotic-and-prebiotic-support
+linked_to_mechanisms: []
+linked_to_supplements:
+- probiotics-lactobacillus-bifidobacterium
+- saccharomyces-boulardii
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Lacto/Bifido blend 100-900 billion CFU/day (titrate to effect); S. boulardii
+    ~1 g/day (~20 billion CFU).
+  location: Ch 14
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

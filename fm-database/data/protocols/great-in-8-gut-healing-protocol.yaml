@@ -1,0 +1,160 @@
+slug: great-in-8-gut-healing-protocol
+display_name: The Great-in-8 Action Plan (Ruscio)
+aliases:
+- great in 8
+- great-in-8
+- ruscio 8-step gut protocol
+category: gut_healing
+summary: 'Dr. Michael Ruscio''s self-guided, sequenced 8-step gut-healing program. Steps are ordered so
+  the most commonly-needed interventions come first, and the client advances only as far as they need
+  to: diet and lifestyle first, then probiotic and digestive support, then removing overgrowth, then protecting
+  motility, then broadening the diet and feeding beneficial bacteria, then tapering to a minimal maintenance
+  program. The emphasis is on process and sequencing rather than any single ''magic'' supplement.'
+indications:
+- IBS
+- SIBO
+- dysbiosis
+- gut-driven fatigue/mood/skin symptoms
+- bloating and altered bowels
+contraindications:
+- active ulcer (avoid supplemental acid)
+- pregnancy (herbal antimicrobials)
+- serious/undiagnosed disease without clinician oversight
+typical_duration_weeks: null
+phases:
+- name: Step 1 — Reset
+  weeks: 1
+  summary: A brief 2–4 day liquid modified fast (cleansing lemonade or homemade broth), then transition
+    to a personalised gut-healing diet (Paleo → Autoimmune Paleo → low-FODMAP as needed) plus lifestyle
+    foundations.
+  key_actions:
+  - 2–4 day modified fast (stop at day 2 if reacting)
+  - adopt a personalised gut-healing diet
+  - sleep, sun, nature, stress, movement foundations
+- name: Step 2 — Support
+  weeks: 4
+  summary: Add the three probiotic categories together, digestive enzymes with HCl, adrenal/adaptogen
+    support, and optional vitamin D. Start at the minimum dose of any range.
+  key_actions:
+  - Lacto/Bifido blend + S. boulardii + soil-based/spore probiotic
+  - digestive enzymes (± HCl) with meals
+  - adaptogen/adrenal support; optional vitamin D+K2
+- name: Step 3 — Remove
+  weeks: 8
+  summary: Reduce unwanted bacteria/fungi with a ~2-month herbal antimicrobial course (or an elemental
+    diet for reactors), while continuing probiotics.
+  key_actions:
+  - ~2-month herbal antimicrobial course
+  - add antibiofilm (NAC) / antiprotozoal (artemisia) if partial response
+  - elemental diet fallback for non-responders/reactors
+- name: Step 4 — Rebalance
+  weeks: 8
+  summary: 'Always paired with Step 3: add a prokinetic to preserve motility and stop overgrowth returning
+    after antimicrobials.'
+  key_actions:
+  - add a prokinetic (e.g. Iberogast)
+  - protect the migrating motor complex
+- name: Step 5 — Reintroduce
+  weeks: 4
+  summary: Systematically broaden the diet and increase carbs to discover individual food and carbohydrate
+    tolerances.
+  key_actions:
+  - reintroduce foods removed in Step 3
+  - find personal carb tolerance
+- name: Step 6 — Feed
+  weeks: 4
+  summary: Trial prebiotics and fibre to feed beneficial bacteria — only after overgrowth is addressed,
+    and not during an active flare.
+  key_actions:
+  - trial prebiotics/fibre (e.g. FOS ~3.5–5 g/day)
+  - introduce gradually; avoid in active SIBO/IBS flare
+- name: Step 7 — Wean
+  weeks: null
+  summary: Once stable for 2–3 months, taper supplements to the minimum effective program, discontinuing
+    one at a time to see what still helps.
+  key_actions:
+  - wean supplements one at a time
+  - keep only what demonstrably helps
+- name: Step 8 — Maintenance & Fun
+  weeks: null
+  summary: Yearly check-in, a plan for handling inevitable setbacks, avoiding health-obsession, and deliberately
+    shifting focus back to life and enjoyment.
+  key_actions:
+  - annual functional-medicine review
+  - revisit-what-worked plan for flares
+  - get back to life / avoid health obsession
+key_steps:
+- Reset
+- Support
+- Remove
+- Rebalance
+- Reintroduce
+- Feed
+- Wean
+- Maintenance & Fun
+foods_to_emphasise:
+- vegetables
+- berries
+- quality proteins
+- healthy fats
+foods_to_remove:
+- common inflammatory foods per personalised elimination (gluten, dairy, high-FODMAP as needed)
+- processed foods and emulsified additives
+supplements_typically_used:
+- probiotics-lactobacillus-bifidobacterium
+- saccharomyces-boulardii
+- probiotic-spore-based
+- digestive-enzymes
+- betaine-hcl
+- berberine
+- oregano-oil
+- artemisia
+- nac
+- iberogast
+- ashwagandha
+- vitamin-d3
+expected_outcomes:
+- reduced bloating/gas and normalised bowels
+- improved energy, mood and sleep
+- identification of personal food and carb tolerances
+- minimal long-term supplement program
+cautions:
+- escalate only if not improving — do not add every tool at once
+- start at the minimum dose; more is not better
+- herbal antimicrobials and elemental diet should have clinician oversight
+- distinguish transient die-off (resolves in days–1 week) from allergy (persists)
+prerequisites: []
+recommended_followup:
+- annual functional-medicine review
+- revisit prior effective steps during setbacks
+incompatible_with: []
+linked_to_topics:
+- sibo
+- irritable-bowel-syndrome
+- gut-dysbiosis
+- hypochlorhydria
+- probiotic-and-prebiotic-support
+linked_to_mechanisms:
+- sibo-dysbiosis
+- dysbiosis
+- migrating-motor-complex
+- interstitial-cells-of-cajal-regeneration
+linked_to_symptoms:
+- bloating
+- abdominal-gas
+- constipation
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: 'Sequenced 8-step gut-healing plan: Reset, Support, Remove, Rebalance, Reintroduce, Feed, Wean,
+    Maintenance — advance only as far as needed.'
+  location: Ch 23–31 — The Great-in-8 Action Plan
+evidence_tier: fm_specific_thin
+notes_for_coach: 'Advancement logic: if satisfied after Step 1–2, skip to Step 5; Steps 3 and 4 are always
+  done together; everyone completes Steps 5–8. The whole-program sequencing is clinical-experience-based
+  (fm_specific_thin) though many individual components (probiotics, low-FODMAP, elemental diet) have stronger
+  evidence. Coaching scope: coaches can educate on the arc, diet/lifestyle steps, and tracking; herbal
+  antimicrobials, HCl, elemental diet and any medication changes are clinician-directed.'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

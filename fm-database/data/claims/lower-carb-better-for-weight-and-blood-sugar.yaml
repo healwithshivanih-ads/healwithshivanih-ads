@@ -1,0 +1,24 @@
+slug: lower-carb-better-for-weight-and-blood-sugar
+statement: Lower-carb diets outperform higher-carb, lower-fat diets for weight loss
+  and blood sugar (systematic review plus the Gardner A-to-Z RCT), with most people
+  feeling best at roughly 100–150 g of carbohydrate a day or less and insulin-resistant
+  people responding most.
+evidence_tier: strong
+rationale: Cites a systematic review/meta-analysis and the Gardner JAMA A-to-Z RCT.
+coaching_translation: Most people feel best keeping carbs moderate-to-low — cut dense
+  starches first and lean on vegetables and berries.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- low-fodmap-diet
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Low-carb beat higher-carb for weight and blood sugar; most feel best around
+    <=100-150 g carbs/day.
+  location: Ch 3 & 8
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

@@ -1,0 +1,25 @@
+slug: poor-sleep-lowers-melatonin-and-worsens-leaky-gut
+statement: Poor sleep lowers melatonin, which correlates with more intestinal permeability,
+  so improving sleep may reduce gut damage; melatonin supplementation has also improved
+  IBS symptoms.
+evidence_tier: plausible_emerging
+rationale: Cites melatonin–permeability correlations and melatonin-in-IBS data.
+coaching_translation: Protecting your sleep protects your gut lining — they're more
+  connected than people realise.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sleep
+linked_to_mechanisms:
+- melatonin-gut-barrier-protection
+- leaky-gut
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Poor sleep lowers melatonin, which correlates with more leaky gut; melatonin
+    has helped IBS.
+  location: Ch 12
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

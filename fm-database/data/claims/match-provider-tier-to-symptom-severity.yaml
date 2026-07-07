@@ -1,0 +1,23 @@
+slug: match-provider-tier-to-symptom-severity
+statement: 'Match the provider to the need: mild symptoms can often be helped by a
+  health coach or nutritionist, while severe symptoms, high sensitivity or a diagnosed
+  disease call for a licensed doctor who specialises in the relevant area.'
+evidence_tier: fm_specific_thin
+rationale: Ch 32 provider-selection guidance.
+coaching_translation: Pick help to fit the problem — a coach or nutritionist for milder
+  issues, a specialist doctor for serious or diagnosed conditions.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- finding-a-functional-medicine-provider
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: 'Mild symptoms: coach/nutritionist may suffice; severe/diagnosed: see a licensed
+    specialist.'
+  location: Ch 32
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

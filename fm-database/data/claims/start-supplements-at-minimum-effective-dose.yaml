@@ -1,0 +1,21 @@
+slug: start-supplements-at-minimum-effective-dose
+statement: For any supplement dose range, start at the minimum and increase only if
+  more improvement is needed, because more is not always better.
+evidence_tier: fm_specific_thin
+rationale: A dosing principle applied throughout the action plan.
+coaching_translation: Start every supplement low and only go up if you actually need
+  more — bigger doses aren't automatically better.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Start at the minimum dose of any range; increase only if more improvement
+    is needed.
+  location: Ch 25
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

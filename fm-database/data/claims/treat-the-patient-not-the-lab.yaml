@@ -1,0 +1,23 @@
+slug: treat-the-patient-not-the-lab
+statement: When symptoms have resolved, a persistently abnormal lab need not trigger
+  further treatment — treat the patient, not the number, since over-focusing on labs
+  can make an improved person feel like a failure and lead to needless re-treatment.
+evidence_tier: plausible_emerging
+rationale: Ch 32 'Rob' case where a positive SIBO test persisted despite full symptom
+  resolution.
+coaching_translation: If you feel well, a still-abnormal test doesn't automatically
+  need more treatment — how you feel matters most.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- finding-a-functional-medicine-provider
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: When symptoms resolve, a persisting abnormal lab need not trigger more treatment.
+  location: Ch 32
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

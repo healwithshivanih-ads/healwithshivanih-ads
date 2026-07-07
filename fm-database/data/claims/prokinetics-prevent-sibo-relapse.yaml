@@ -1,0 +1,27 @@
+slug: prokinetics-prevent-sibo-relapse
+statement: After clearing overgrowth, a prokinetic supports the migrating motor complex
+  and helps prevent SIBO relapse — low-dose erythromycin extended SIBO-free time to
+  about 140 days and tegaserod to about 220 days versus roughly 60 days with nothing.
+evidence_tier: plausible_emerging
+rationale: Cites prokinetic relapse-prevention data; pairs with Great-in-8 Step 4.
+coaching_translation: After clearing overgrowth, a motility agent keeps the small
+  intestine 'flowing' so the overgrowth is less likely to come back.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- motility
+- sibo
+linked_to_mechanisms:
+- migrating-motor-complex
+- interstitial-cells-of-cajal-regeneration
+linked_to_supplements:
+- iberogast
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Prokinetics support the MMC and prevent SIBO relapse (erythromycin ~140 days,
+    tegaserod ~220 vs ~60 with nothing).
+  location: Ch 19
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

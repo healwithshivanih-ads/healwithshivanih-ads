@@ -1,0 +1,24 @@
+slug: sibo-drives-large-fraction-of-ibs
+statement: A large share of IBS (up to ~84% in some series) appears driven by small-intestinal
+  bacterial overgrowth, and symptoms often improve on diets and treatments that reduce
+  that overgrowth.
+evidence_tier: plausible_emerging
+rationale: Cites Pimentel's IBS/SIBO work; the exact percentage varies by test used.
+coaching_translation: For many people, 'IBS' is really bacterial overgrowth in the
+  small intestine — and that can be treated.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sibo
+- irritable-bowel-syndrome
+linked_to_mechanisms:
+- sibo-dysbiosis
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Much of IBS may be driven by SIBO; treating the overgrowth improves symptoms.
+  location: Ch 1–2
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

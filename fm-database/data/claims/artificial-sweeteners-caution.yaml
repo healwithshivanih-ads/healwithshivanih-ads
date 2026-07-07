@@ -1,0 +1,23 @@
+slug: artificial-sweeteners-caution
+statement: Artificial sweeteners may harm the microbiota and glucose control — 'responders'
+  show raised blood glucose — and observational data link them to weight gain and
+  metabolic syndrome, so they are best used only occasionally.
+evidence_tier: plausible_emerging
+rationale: Cites microbiota/glucose studies and observational metabolic associations.
+coaching_translation: Diet sweeteners aren't a free pass — use them sparingly; small
+  amounts of natural sweeteners are usually a better bet.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms:
+- dysbiosis
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Artificial sweeteners may harm the microbiota and glucose control; occasional
+    use only.
+  location: Ch 9
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

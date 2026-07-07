@@ -1,0 +1,25 @@
+slug: non-celiac-gluten-sensitivity-is-validated
+statement: 'Non-celiac gluten sensitivity is scientifically validated: four of five
+  placebo-controlled trials found gluten itself problematic in non-celiacs, and studies
+  using FODMAP-free gluten still provoked reactions, isolating gluten as the cause.'
+evidence_tier: plausible_emerging
+rationale: Cites five RCTs on NCGS; placebo-controlled design rules out a purely psychosomatic
+  effect.
+coaching_translation: Reacting to gluten without having celiac disease is real and
+  measurable — not 'in your head'.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gluten-sensitivity
+- celiac-disease
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Placebo-controlled RCTs confirm non-celiac gluten sensitivity; FODMAP-free
+    gluten still triggered reactions.
+  location: Ch 7 — Gluten
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

@@ -1,0 +1,58 @@
+slug: artemisia
+display_name: Artemisia (Wormwood / Sweet Wormwood)
+aliases:
+- wormwood
+- sweet wormwood
+- artemisia annua
+- artemisinin
+- artemisia absinthium
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options:
+- on_empty_stomach
+take_with_food: avoid
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+pregnancy_safety: unknown
+lactation_safety: unknown
+pregnancy_safety_note: ''
+rasa: []
+virya: null
+vipaka: null
+prabhava: ''
+balances_dosha: []
+aggravates_dosha: []
+ayurvedic_actions: []
+linked_to_topics:
+- sibo
+- parasite-infection
+- intestinal-protozoan-infestation
+linked_to_mechanisms:
+- biofilm-antimicrobial-resistance
+linked_to_claims: []
+consolidates: []
+notes_for_coach: Herbal antimicrobial with both anti-inflammatory and antiprotozoal
+  action (used against Blastocystis, Giardia, Toxoplasma, Cryptosporidium). Ruscio
+  adds it as a second-line agent when an initial herbal antimicrobial protocol under-responds,
+  and cites systematic-review evidence for an anti-inflammatory effect in IBD comparable
+  to mesalamine. Avoid overuse (antimicrobial resistance); antimicrobial dosing/duration
+  is clinician-directed. Dose stub — fill from the treating clinician's product.
+notes_for_client: ''
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Wormwood/artemisia has anti-inflammatory and antiprotozoal action; added
+    when the initial herbal protocol under-responds.
+  location: Ch 17 — Antibacterial Treatments
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

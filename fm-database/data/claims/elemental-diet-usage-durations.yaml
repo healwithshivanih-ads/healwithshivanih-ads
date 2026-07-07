@@ -1,0 +1,24 @@
+slug: elemental-diet-usage-durations
+statement: 'Elemental-diet use follows three patterns: 2–4 days to quell a flare,
+  1–3 weeks exclusively (under medical supervision) as formal treatment, or intermittent
+  hybrid use for maintenance; one study normalised the SIBO breath test in about 80%
+  after two weeks.'
+evidence_tier: plausible_emerging
+rationale: Cites the Vivonex SIBO study and clinical usage patterns.
+coaching_translation: You can use an elemental diet briefly to settle a flare or,
+  with supervision, for a couple of weeks as treatment.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: 'Elemental diet: 2-4 days for flares, 1-3 weeks supervised as treatment;
+    normalised SIBO breath test in ~80%.'
+  location: Ch 18
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani
