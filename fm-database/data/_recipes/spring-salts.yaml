@@ -69,8 +69,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/31/67/44/piczhWy5y.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: SPRING SALTS
@@ -82,3 +82,23 @@ kcal_per_serving: 5
 kcal_total: 120
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 2.2
+  protein_g: 0.1
+  carbs_g: 0.5
+  fat_g: 0.1
+  fibre_g: 0.3
+  iron_mg: 0.5
+  calcium_mg: 12.9
+  magnesium_mg: 3.1
+  zinc_mg: 0.0
+  potassium_mg: 11.6
+  folate_ug: 1.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.2
+  omega3_mg: 3.4
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

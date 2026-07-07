@@ -74,8 +74,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://paleoleap.com/wp-content/uploads/2015/11/apple-grappe-salad-main.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: fruit salad trio
@@ -87,3 +87,26 @@ kcal_per_serving: 210
 kcal_total: 210
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 317
+  protein_g: 2.3
+  carbs_g: 84.6
+  fat_g: 0.8
+  fibre_g: 9.9
+  iron_mg: 1.0
+  calcium_mg: 53.1
+  magnesium_mg: 43.9
+  zinc_mg: 0.4
+  potassium_mg: 774
+  folate_ug: 25.1
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 30.4
+  omega3_mg: 37.4
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

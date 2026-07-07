@@ -79,8 +79,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cdn.loveandlemons.com/wp-content/uploads/opengraph/2019/02/IMG_16074.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ROASTED CHICKPEAS
@@ -92,3 +92,23 @@ kcal_per_serving: 52
 kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 82.5
+  protein_g: 3.8
+  carbs_g: 12.3
+  fat_g: 2.3
+  fibre_g: 3.4
+  iron_mg: 1.5
+  calcium_mg: 26.9
+  magnesium_mg: 22.3
+  zinc_mg: 0.7
+  potassium_mg: 135
+  folate_ug: 71.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.6
+  omega3_mg: 19.1
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

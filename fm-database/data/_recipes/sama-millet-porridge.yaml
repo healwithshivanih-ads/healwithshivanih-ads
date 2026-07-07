@@ -71,8 +71,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://static.wixstatic.com/media/2d1e77_20764963074142cd9cb5e10428fae833~mv2.jpg/v1/fill/w_856,h_1000,al_c,q_85,usm_0.66_1.00_0.01/2d1e77_20764963074142cd9cb5e10428fae833~mv2.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Sama millet porridge
@@ -84,3 +84,30 @@ kcal_per_serving: 190
 kcal_total: 380
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 419
+  protein_g: 11.3
+  carbs_g: 71.3
+  fat_g: 11.4
+  fibre_g: 7.1
+  iron_mg: 2.9
+  calcium_mg: 311
+  magnesium_mg: 83.2
+  zinc_mg: 2.5
+  potassium_mg: 715
+  folate_ug: 34.0
+  b12_ug: 1.2
+  vit_d_ug: 2.5
+  vit_c_mg: 0.0
+  omega3_mg: 86.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- calcium
+- magnesium
+- zinc
+- potassium
+- b12
+- vitamin-d
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

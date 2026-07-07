@@ -80,8 +80,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.nazninskitchen.com/wp-content/uploads/2023/07/Yogi-Tea-Recipe.webp
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: lad-ayurveda-science-of-self-healing-1984
   location: Yogi Tea
@@ -93,3 +93,23 @@ kcal_per_serving: 20
 kcal_total: 80
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 8.8
+  protein_g: 0.3
+  carbs_g: 1.5
+  fat_g: 0.3
+  fibre_g: 0.6
+  iron_mg: 0.1
+  calcium_mg: 18.1
+  magnesium_mg: 2.8
+  zinc_mg: 0.1
+  potassium_mg: 22.1
+  folate_ug: 0.6
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 0.1
+  omega3_mg: 2.1
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

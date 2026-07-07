@@ -22,8 +22,10 @@ ingredients:
 - item: ghee/coconut oil to cook
 steps:
 - Mix flour + salt with warm water to a soft dough; rest 5 min.
-- Divide, pat or roll between sheets into small rotis (these flours don't stretch like wheat).
-- Cook on a hot tawa till spotted on both sides, brushing lightly with ghee or coconut oil.
+- Divide, pat or roll between sheets into small rotis (these flours don't stretch
+  like wheat).
+- Cook on a hot tawa till spotted on both sides, brushing lightly with ghee or coconut
+  oil.
 - 'Tip: Pat with damp fingers if it cracks — millet doughs like a little extra moisture.'
 source: coach-authored (Shivani) 2026-06-13
 image:
@@ -31,5 +33,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://wp-backend.thefearlesscooking.com/wp-content/uploads/2024/04/Buckwheat-Flour-Tortilla-Kuttu-Ki-Roti.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 123
+  protein_g: 3.8
+  carbs_g: 21.2
+  fat_g: 3.4
+  fibre_g: 3.0
+  iron_mg: 1.2
+  calcium_mg: 12.6
+  magnesium_mg: 75.3
+  zinc_mg: 0.9
+  potassium_mg: 173
+  folate_ug: 16.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 41.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- magnesium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

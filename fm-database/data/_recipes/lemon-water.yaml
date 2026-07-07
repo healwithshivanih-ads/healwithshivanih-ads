@@ -24,3 +24,24 @@ steps:
 - Sip slowly on an empty stomach, then wait 20–30 minutes before tea or coffee.
 tip: Rinse your mouth with plain water afterwards to protect tooth enamel.
 source: coach-authored (Shivani) 2026-07-07
+nutrients_per_serving:
+  kcal: 18.9
+  protein_g: 0.7
+  carbs_g: 6.0
+  fat_g: 0.2
+  fibre_g: 1.8
+  iron_mg: 0.4
+  calcium_mg: 16.9
+  magnesium_mg: 5.2
+  zinc_mg: 0.1
+  potassium_mg: 89.7
+  folate_ug: 7.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 34.5
+  omega3_mg: 16.9
+nutrient_coverage_pct: 100.0
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

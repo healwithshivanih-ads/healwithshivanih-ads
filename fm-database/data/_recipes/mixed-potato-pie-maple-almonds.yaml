@@ -104,8 +104,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://maplejubilee.com/wp-content/uploads/2023/11/Brown-Butter-Sweet-Potato-Pie-V2.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: mixed potato pie with roasted maple almonds
@@ -117,3 +117,25 @@ kcal_per_serving: 207
 kcal_total: 1240
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 276
+  protein_g: 7.4
+  carbs_g: 25.4
+  fat_g: 17.3
+  fibre_g: 5.2
+  iron_mg: 1.7
+  calcium_mg: 97.2
+  magnesium_mg: 85.9
+  zinc_mg: 1.2
+  potassium_mg: 479
+  folate_ug: 23.1
+  b12_ug: 0.1
+  vit_d_ug: 0.2
+  vit_c_mg: 6.2
+  omega3_mg: 51.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- magnesium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

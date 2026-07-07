@@ -86,8 +86,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.daringgourmet.com/wp-content/uploads/2023/05/Curry-Powder-Recipe-5.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: SPRING SPICE MIX
@@ -99,3 +99,23 @@ kcal_per_serving: 7
 kcal_total: 85
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 9.3
+  protein_g: 0.4
+  carbs_g: 1.7
+  fat_g: 0.3
+  fibre_g: 0.6
+  iron_mg: 1.1
+  calcium_mg: 11.5
+  magnesium_mg: 7.1
+  zinc_mg: 0.1
+  potassium_mg: 43.5
+  folate_ug: 0.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.2
+  omega3_mg: 6.1
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

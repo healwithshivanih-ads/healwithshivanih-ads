@@ -67,8 +67,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://entirelyelizabeth.com/wp-content/uploads/2025/11/Herb-Salt-Recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: winter ayurvedic spice mix and salts
@@ -80,3 +80,24 @@ kcal_per_serving: 20
 kcal_total: 60
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 47.7
+  protein_g: 0.8
+  carbs_g: 11.0
+  fat_g: 0.7
+  fibre_g: 2.8
+  iron_mg: 3.2
+  calcium_mg: 102
+  magnesium_mg: 27.2
+  zinc_mg: 0.3
+  potassium_mg: 169
+  folate_ug: 12.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 2.2
+  omega3_mg: 45.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- iron
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

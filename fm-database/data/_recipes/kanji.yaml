@@ -33,5 +33,25 @@ image:
   credit: web reference (coach-selected)
   source_url: https://myheartbeets.com/wp-content/uploads/2014/09/Carrot-Kanji.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 58.4
+  protein_g: 2.2
+  carbs_g: 7.8
+  fat_g: 2.5
+  fibre_g: 2.6
+  iron_mg: 0.8
+  calcium_mg: 38.2
+  magnesium_mg: 31.3
+  zinc_mg: 0.5
+  potassium_mg: 251
+  folate_ug: 22.1
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.4
+  omega3_mg: 23.1
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

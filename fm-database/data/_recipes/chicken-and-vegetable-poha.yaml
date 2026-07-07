@@ -88,8 +88,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://imgstaticcontent.lbb.in/lbbnew/wp-content/uploads/sites/7/2016/08/040816_Bhujing-ParikshitRao.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Chicken and vegetable poha
@@ -101,3 +101,24 @@ kcal_per_serving: 170
 kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 280
+  protein_g: 18.0
+  carbs_g: 10.6
+  fat_g: 19.0
+  fibre_g: 2.5
+  iron_mg: 2.9
+  calcium_mg: 57.0
+  magnesium_mg: 51.4
+  zinc_mg: 1.5
+  potassium_mg: 455
+  folate_ug: 24.3
+  b12_ug: 0.2
+  vit_d_ug: 0.1
+  vit_c_mg: 6.6
+  omega3_mg: 67.9
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

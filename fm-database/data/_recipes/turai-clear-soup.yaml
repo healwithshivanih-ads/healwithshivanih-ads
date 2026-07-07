@@ -78,8 +78,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://images.chefpriya.com/ridge-gourd-curry-turai-sabzi.png
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Turai clear soup
@@ -91,3 +91,23 @@ kcal_per_serving: 40
 kcal_total: 80
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 46.7
+  protein_g: 1.5
+  carbs_g: 5.6
+  fat_g: 2.6
+  fibre_g: 1.4
+  iron_mg: 0.8
+  calcium_mg: 26.8
+  magnesium_mg: 18.6
+  zinc_mg: 0.4
+  potassium_mg: 178
+  folate_ug: 42.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 14.5
+  omega3_mg: 23.5
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

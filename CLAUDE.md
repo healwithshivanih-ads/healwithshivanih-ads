@@ -14,7 +14,26 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.74 (current)** — Medications as a first-class three-axis entity + drug-driven plan/letter/intake guardrails.
+**v0.75 (current)** — Recipe inbox (WhatsApp/manual → review → library) + deterministic macro/micro nutrient engine.
+
+**Phase 2 — nutrient engine:**
+- New `fm-database/data/_ingredient_nutrients.yaml` — 202 canonical ingredients, per-100g kcal/protein/carbs/fat/fibre + 10 micros (iron, calcium, magnesium, zinc, potassium, folate, B12, vit D, vit C, omega-3), alias lists covering all 729 ingredient spellings in the recipe library, cup/piece/leaf densities. IFCT 2017 / USDA reference values (AI-assisted authoring — spot-check for clinical claims).
+- New `fm-database-web/scripts/nutrients_lib.py` — deterministic engine ($0, no AI): normalises ingredient lines, parses qty/unit → grams (fractions, ranges, embedded amounts like "3 eggs", cooked-volume reinterpretation when a recipe measures >100g dry legume per serving, 20% factor for steeped-and-strained drink spices), writes `nutrients_per_serving` + `nutrient_coverage_pct` + `rich_in` badges (thresholds ≈15-20% daily need per serving; withheld under 70% coverage).
+- `compute-recipe-nutrients.py` backfilled all 316 recipes with ingredients (100% ingredient-mass coverage, validator clean). 212 recipes carry ≥1 `rich_in` badge (fibre 94, magnesium 79, iron 70, vitamin-c 70, potassium 67, protein 66, folate 65, zinc 57, calcium 45, b12 28, vitamin-d 12, omega-3 6). **`kcal_per_serving` (basis ai_haiku) is NOT touched** — app weight-tracking keeps reading it; the table figure lives in `nutrients_per_serving.kcal` alongside.
+
+**Phase 1 — recipe inbox:**
+- Coach forwards reels/cookbook photos/recipe PDFs from her personal WhatsApp to the coach number → staged as candidates in `~/fm-plans/_recipe_inbox/` (Mutagen-synced, same mechanism as `_whatsapp_unmatched.yaml`). Trigger: sender in **`RECIPE_INBOX_NUMBERS`** (comma-separated, last-10-digit match — set as env on the Fly app where the webhook runs; documented in `.env.local.example`), OR an Instagram link from a non-client number. No AI call in the webhook.
+- `/recipes` page (nav renamed "Recipe images" → "Recipes"): inbox review UI (✨ Parse → editable draft → ✅ Add to library / Reject) + "Add manually" card (paste caption / link / upload photo or PDF — auto-parses on save). Existing image workflow unchanged below it.
+- `parse-recipe-candidate.py`: Haiku for text/images, Sonnet for PDFs; forced tool-use → library-schema draft; steps rewritten in own words (copyright); og:description fetch salvages captions from bare public IG links; friendly "paste the caption" error when nothing is parseable. Uses shared `build_client()` (FM_API_OK cost gate).
+- `approve-recipe-candidate.py` gates before writing `fm-database/data/_recipes/<slug>.yaml`: duplicate name-token check (≥75% overlap → needs force), no-porridge rule (needs force), diet-consistency fixes (meat strips veg/vegan/jain claims, dairy strips vegan, roots strip jain), allergen derivation from ingredients (ghee ≠ dairy per library convention), enum validation, deterministic nutrients with `kcal_basis: ingredient_table_v1`. Server actions in `src/lib/server-actions/recipe-inbox.ts`.
+
+**Key invariants (v0.75):**
+- `RECIPE_INBOX_NUMBERS` must be set on Fly (`flyctl secrets set ... -a theochretree-coach`) for the forwarding path; the manual add card works without it.
+- Candidate ids match `^rc-[a-z0-9-]+$` and are path-validated in both TS and Python.
+- Recipe-candidate YAML writes from TS use `dumpYaml` (PyYAML underscore-int guard); candidate media lives under `_recipe_inbox/media/`.
+- The nutrient table's alias index is the single matching surface — when adding an ingredient spelling, add it as an alias in `_ingredient_nutrients.yaml`, don't fork matching logic.
+
+**v0.74** — Medications as a first-class three-axis entity + drug-driven plan/letter/intake guardrails.
 
 The `DrugDepletion` catalogue entity (which already existed but only captured nutrient depletions) is extended into a **three-axis medication entity**:
 

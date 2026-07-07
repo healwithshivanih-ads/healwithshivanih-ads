@@ -35,9 +35,11 @@ ingredients:
 steps:
 - Marinate fish in a pinch of turmeric + salt, rest 10 min.
 - Heat coconut oil; add curry leaves and onion, sauté till soft (no browning).
-- Add ginger-garlic, then turmeric, chilli and coriander powder; bhuno 1 min with a splash of water.
+- Add ginger-garlic, then turmeric, chilli and coriander powder; bhuno 1 min with
+  a splash of water.
 - Pour in coconut milk + 1/4 cup water, bring to a gentle simmer.
-- Slide in the fish, cover, simmer 8-10 min till just cooked — don't boil hard or coconut splits.
+- Slide in the fish, cover, simmer 8-10 min till just cooked — don't boil hard or
+  coconut splits.
 - Check salt, finish with a few fresh curry leaves.
 - 'Tip: No tomato — the tang comes from a squeeze of lime at the table if you like.'
 source: coach-authored (Shivani) 2026-06-13
@@ -46,5 +48,25 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/10/fish-curry-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 166
+  protein_g: 5.1
+  carbs_g: 10.6
+  fat_g: 12.5
+  fibre_g: 2.9
+  iron_mg: 2.6
+  calcium_mg: 104
+  magnesium_mg: 38.4
+  zinc_mg: 0.7
+  potassium_mg: 341
+  folate_ug: 25.0
+  b12_ug: 0.3
+  vit_d_ug: 1.2
+  vit_c_mg: 6.1
+  omega3_mg: 105
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

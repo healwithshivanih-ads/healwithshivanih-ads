@@ -82,8 +82,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.maddielymburner.com/cdn/shop/articles/IMG_6205_1024x1024.PNG?v=1564167946
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: hemp protein squares
@@ -95,3 +95,24 @@ kcal_per_serving: 120
 kcal_total: 720
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 165
+  protein_g: 5.4
+  carbs_g: 12.3
+  fat_g: 11.4
+  fibre_g: 3.5
+  iron_mg: 1.4
+  calcium_mg: 42.6
+  magnesium_mg: 75.9
+  zinc_mg: 0.8
+  potassium_mg: 260
+  folate_ug: 12.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.2
+  omega3_mg: 101
+nutrient_coverage_pct: 100.0
+rich_in:
+- magnesium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

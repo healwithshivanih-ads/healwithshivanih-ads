@@ -41,5 +41,27 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cdn.loveandlemons.com/wp-content/uploads/2026/01/shakshuka-social.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 149
+  protein_g: 10.2
+  carbs_g: 5.2
+  fat_g: 9.6
+  fibre_g: 1.2
+  iron_mg: 1.8
+  calcium_mg: 55.3
+  magnesium_mg: 17.1
+  zinc_mg: 1.1
+  potassium_mg: 221
+  folate_ug: 54.9
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 40.8
+  omega3_mg: 85.3
+nutrient_coverage_pct: 100.0
+rich_in:
+- b12
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

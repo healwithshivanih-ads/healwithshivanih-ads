@@ -38,5 +38,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.wellplated.com/wp-content/uploads/2023/12/Oven-Baked-Chicken-Thighs.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 120
+  protein_g: 15.7
+  carbs_g: 3.8
+  fat_g: 4.9
+  fibre_g: 1.1
+  iron_mg: 1.0
+  calcium_mg: 17.6
+  magnesium_mg: 22.4
+  zinc_mg: 1.0
+  potassium_mg: 243
+  folate_ug: 8.9
+  b12_ug: 0.2
+  vit_d_ug: 0.1
+  vit_c_mg: 17.5
+  omega3_mg: 68.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

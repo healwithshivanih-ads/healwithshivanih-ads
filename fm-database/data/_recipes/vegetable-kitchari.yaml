@@ -64,10 +64,13 @@ ingredients:
   unit: tbsp
 steps:
 - Rinse the moong dal and rice together and drain.
-- Heat ghee in a pressure cooker; splutter the cumin, then add curry leaves, ginger and turmeric.
+- Heat ghee in a pressure cooker; splutter the cumin, then add curry leaves, ginger
+  and turmeric.
 - Add all the chopped vegetables and saute 2 minutes.
-- Add the dal-rice, salt and water; pressure-cook 3-4 whistles until everything is soft.
-- Mash lightly to a soft khichdi, loosen with hot water if needed, and finish with coriander.
+- Add the dal-rice, salt and water; pressure-cook 3-4 whistles until everything is
+  soft.
+- Mash lightly to a soft khichdi, loosen with hot water if needed, and finish with
+  coriander.
 servings: '2'
 prep_time_min: 12
 cook_time_min: 25
@@ -77,8 +80,8 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 one_line: A vegetable-loaded moong kitchari — soft, soupy and gut-friendly.
-headnote: 'The everyday vegetable khichdi: moong dal, a small grain and whatever seasonal veg is on hand,
-  cooked soft with a light tempering.'
+headnote: 'The everyday vegetable khichdi: moong dal, a small grain and whatever seasonal
+  veg is on hand, cooked soft with a light tempering.'
 kcal_is_estimate: true
 kcal_per_serving: 300
 kcal_basis: estimate
@@ -97,5 +100,33 @@ image:
   credit: Vegetable Khichdi 1.jpg by Dolon Prova — Wikimedia Commons (CC BY-SA 4.0)
   source_url: https://commons.wikimedia.org/wiki/File:Vegetable_Khichdi_1.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 449
+  protein_g: 18.4
+  carbs_g: 75.6
+  fat_g: 8.2
+  fibre_g: 8.5
+  iron_mg: 4.1
+  calcium_mg: 87.8
+  magnesium_mg: 99.7
+  zinc_mg: 2.5
+  potassium_mg: 905
+  folate_ug: 318
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 24.0
+  omega3_mg: 114
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

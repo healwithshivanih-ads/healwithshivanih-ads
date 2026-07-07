@@ -110,8 +110,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://i0.wp.com/wanderingchickpea.com/wp-content/uploads/2021/12/img_2640.jpg?resize=800%2C1200&ssl=1
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: red pumpkin dal
@@ -123,3 +123,29 @@ kcal_per_serving: 120
 kcal_total: 480
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 321
+  protein_g: 13.6
+  carbs_g: 38.1
+  fat_g: 14.4
+  fibre_g: 6.5
+  iron_mg: 5.4
+  calcium_mg: 46.2
+  magnesium_mg: 53.1
+  zinc_mg: 2.1
+  potassium_mg: 663
+  folate_ug: 244
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 8.2
+  omega3_mg: 56.6
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

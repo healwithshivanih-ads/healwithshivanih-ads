@@ -36,12 +36,35 @@ steps:
 - Add 1/2 cup water + vegetables, cover, simmer 12-15 min.
 - Add coconut milk, warm through gently (do not boil).
 - Season with salt; serve with a millet roti.
-- 'Tip: Gentle, warming and very gut-friendly — keep the simmer low after the coconut milk goes in.'
+- 'Tip: Gentle, warming and very gut-friendly — keep the simmer low after the coconut
+  milk goes in.'
 source: coach-authored (Shivani) 2026-06-13
 image:
   file: images/web/chicken-stew-kerala-style.jpg
   credit: web reference (coach-selected)
   source_url: https://www.whiskaffair.com/wp-content/uploads/2023/02/Kerala-Style-Chicken-Stew-3-2.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 249
+  protein_g: 18.3
+  carbs_g: 12.9
+  fat_g: 14.4
+  fibre_g: 3.3
+  iron_mg: 2.5
+  calcium_mg: 110
+  magnesium_mg: 52.8
+  zinc_mg: 1.5
+  potassium_mg: 566
+  folate_ug: 35.4
+  b12_ug: 0.2
+  vit_d_ug: 0.1
+  vit_c_mg: 6.9
+  omega3_mg: 73.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- potassium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

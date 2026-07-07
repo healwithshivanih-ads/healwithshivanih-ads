@@ -59,7 +59,8 @@ ingredients:
   unit: tsp
 steps:
 - Heat oil in a wok or kadai until hot; add garlic and ginger and stir for 20 seconds.
-- Add the firmest vegetables first (beans, broccoli), then peppers, stir-frying on high so they stay crisp.
+- Add the firmest vegetables first (beans, broccoli), then peppers, stir-frying on
+  high so they stay crisp.
 - Push the vegetables aside, add the paneer cubes and sear 1-2 minutes.
 - Season with salt and pepper, toss everything together for a minute.
 - Finish with a squeeze of lemon and serve hot with a small salad or roti.
@@ -71,8 +72,8 @@ protein_g: 16
 good_for:
 - digestion-and-nutrient-absorption
 one_line: A quick, crisp paneer and vegetable stir-fry.
-headnote: 'High-protein and low-effort: paneer seared with crisp-tender vegetables and a bright lemon
-  finish. Keep the heat high and the cooking short.'
+headnote: 'High-protein and low-effort: paneer seared with crisp-tender vegetables
+  and a bright lemon finish. Keep the heat high and the cooking short.'
 kcal_is_estimate: true
 kcal_per_serving: 300
 kcal_basis: estimate
@@ -88,8 +89,32 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/paneer-vegetable-stir-fry.jpg
-  credit: Homemade Paneer Bhurji cooked in pan India.jpg by Status 401 — Wikimedia Commons (CC BY-SA 4.0)
+  credit: Homemade Paneer Bhurji cooked in pan India.jpg by Status 401 — Wikimedia
+    Commons (CC BY-SA 4.0)
   source_url: https://commons.wikimedia.org/wiki/File:Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 252
+  protein_g: 12.1
+  carbs_g: 12.1
+  fat_g: 18.6
+  fibre_g: 3.4
+  iron_mg: 1.3
+  calcium_mg: 283
+  magnesium_mg: 35.5
+  zinc_mg: 1.5
+  potassium_mg: 398
+  folate_ug: 73.6
+  b12_ug: 0.4
+  vit_d_ug: 0.1
+  vit_c_mg: 122
+  omega3_mg: 182
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- calcium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

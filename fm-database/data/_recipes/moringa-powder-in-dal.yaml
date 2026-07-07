@@ -90,8 +90,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://ministryofcurry.com/wp-content/uploads/2016/09/morings-dal_-3.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Moringa powder in dal
@@ -103,3 +103,26 @@ kcal_per_serving: 210
 kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 125
+  protein_g: 6.4
+  carbs_g: 8.5
+  fat_g: 7.5
+  fibre_g: 4.7
+  iron_mg: 7.4
+  calcium_mg: 472
+  magnesium_mg: 88.2
+  zinc_mg: 0.8
+  potassium_mg: 350
+  folate_ug: 11.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.3
+  omega3_mg: 61.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- iron
+- calcium
+- magnesium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

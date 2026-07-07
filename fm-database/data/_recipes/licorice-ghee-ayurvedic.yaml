@@ -71,8 +71,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://levooil.com/cdn/shop/articles/how-make-homemade-ghee-levo_7f6d0469-76c6-4a9a-8797-5a4ece08250e.jpg?v=1772571111&width=1500
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: lad-ayurveda-science-of-self-healing-1984
   location: Licorice Ghee
@@ -84,3 +84,23 @@ kcal_per_serving: 40
 kcal_total: 480
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 4.1
+  protein_g: 0.0
+  carbs_g: 0.2
+  fat_g: 0.4
+  fibre_g: 0.0
+  iron_mg: 0.0
+  calcium_mg: 0.3
+  magnesium_mg: 0.1
+  zinc_mg: 0.0
+  potassium_mg: 1.5
+  folate_ug: 0.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 3.0
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

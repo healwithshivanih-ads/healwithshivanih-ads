@@ -76,8 +76,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOyEqfv6uuKn7X6O_sTr49kL0o2S1B2idUJCUH2qI2e5Boc0YQuSEZoj3fpiqv19cZIOmcQY5IIKnN7l6Yk6GjgyIEAWJCXZ2Y7qNVtWPkVDvaJmUtlnX9j8QTPRtTXgcMfYfGCuyO-IGq/s640/IMG_2708.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Lauki-tofu sabzi
@@ -89,3 +89,24 @@ kcal_per_serving: 100
 kcal_total: 200
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 151
+  protein_g: 8.3
+  carbs_g: 7.6
+  fat_g: 10.3
+  fibre_g: 2.7
+  iron_mg: 2.3
+  calcium_mg: 173
+  magnesium_mg: 45.4
+  zinc_mg: 1.0
+  potassium_mg: 268
+  folate_ug: 36.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 15.4
+  omega3_mg: 266
+nutrient_coverage_pct: 100.0
+rich_in:
+- calcium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

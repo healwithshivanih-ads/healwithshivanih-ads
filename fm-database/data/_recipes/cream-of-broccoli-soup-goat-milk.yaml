@@ -78,8 +78,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cookieandkate.com/images/2021/04/cream-of-broccoli-soup-recipe-5.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: surprising cream of broccoli soup
@@ -91,3 +91,25 @@ kcal_per_serving: 160
 kcal_total: 320
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 73.6
+  protein_g: 5.0
+  carbs_g: 9.9
+  fat_g: 2.5
+  fibre_g: 2.9
+  iron_mg: 1.6
+  calcium_mg: 133
+  magnesium_mg: 32.7
+  zinc_mg: 0.8
+  potassium_mg: 451
+  folate_ug: 83.2
+  b12_ug: 0.3
+  vit_d_ug: 0.6
+  vit_c_mg: 101
+  omega3_mg: 104
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

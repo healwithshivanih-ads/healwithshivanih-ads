@@ -89,8 +89,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://aahaaramonline.com/wp-content/uploads/2022/05/CKP_Style_Valache_Birde_Birdhe.png
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Val dal
@@ -102,3 +102,29 @@ kcal_per_serving: 230
 kcal_total: 460
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 328
+  protein_g: 18.2
+  carbs_g: 47.3
+  fat_g: 8.3
+  fibre_g: 7.9
+  iron_mg: 4.8
+  calcium_mg: 119
+  magnesium_mg: 133
+  zinc_mg: 2.4
+  potassium_mg: 978
+  folate_ug: 77.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.4
+  omega3_mg: 136
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

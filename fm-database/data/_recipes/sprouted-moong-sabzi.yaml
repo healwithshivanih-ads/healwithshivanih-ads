@@ -90,8 +90,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.vegrecipesofindia.com/wp-content/uploads/2015/06/mixed-sprouts-curry.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Sprouted moong sabzi
@@ -103,3 +103,30 @@ kcal_per_serving: 110
 kcal_total: 220
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 327
+  protein_g: 17.3
+  carbs_g: 42.7
+  fat_g: 9.8
+  fibre_g: 6.4
+  iron_mg: 3.5
+  calcium_mg: 72.0
+  magnesium_mg: 95.8
+  zinc_mg: 2.0
+  potassium_mg: 845
+  folate_ug: 378
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 2.0
+  omega3_mg: 80.3
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

@@ -91,8 +91,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cdn.loveandlemons.com/wp-content/uploads/opengraph/2021/09/sweet-potato-soup-1.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: sweet potato bisque
@@ -104,3 +104,23 @@ kcal_per_serving: 190
 kcal_total: 380
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 239
+  protein_g: 2.6
+  carbs_g: 21.3
+  fat_g: 16.4
+  fibre_g: 3.2
+  iron_mg: 1.1
+  calcium_mg: 52.6
+  magnesium_mg: 29.4
+  zinc_mg: 0.4
+  potassium_mg: 383
+  folate_ug: 12.5
+  b12_ug: 0.1
+  vit_d_ug: 0.2
+  vit_c_mg: 2.6
+  omega3_mg: 144
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

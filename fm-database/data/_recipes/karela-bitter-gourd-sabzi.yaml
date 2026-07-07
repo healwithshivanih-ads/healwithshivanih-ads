@@ -39,5 +39,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/bitter-gourd-karela-sabzi-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 54.3
+  protein_g: 1.2
+  carbs_g: 7.6
+  fat_g: 2.5
+  fibre_g: 2.7
+  iron_mg: 0.7
+  calcium_mg: 27.6
+  magnesium_mg: 16.9
+  zinc_mg: 0.6
+  potassium_mg: 245
+  folate_ug: 46.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 46.4
+  omega3_mg: 6.9
+nutrient_coverage_pct: 100.0
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

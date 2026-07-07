@@ -59,12 +59,15 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Dry-roast the moong dal in a pan for 2 minutes until fragrant, then rinse the dal and rice together.
-- Heat ghee in a pressure cooker; add cumin seeds and let them splutter, then add ginger and turmeric.
+- Dry-roast the moong dal in a pan for 2 minutes until fragrant, then rinse the dal
+  and rice together.
+- Heat ghee in a pressure cooker; add cumin seeds and let them splutter, then add
+  ginger and turmeric.
 - Add the diced vegetables and saute for a minute.
-- Add the drained dal-rice, salt and water. Pressure-cook 3-4 whistles (or simmer covered 25-30 min) until
-  soft and porridge-like.
-- Stir to a soft, soupy consistency, adding hot water if needed. Garnish with coriander and serve warm.
+- Add the drained dal-rice, salt and water. Pressure-cook 3-4 whistles (or simmer
+  covered 25-30 min) until soft and porridge-like.
+- Stir to a soft, soupy consistency, adding hot water if needed. Garnish with coriander
+  and serve warm.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 25
@@ -73,9 +76,10 @@ protein_g: 12
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: The classic one-pot moong dal and rice kitchari — light, soupy and easy to digest.
-headnote: 'A gentle ''agni-reset'' meal: moong dal and a small grain cooked soft with a simple tempering.
-  Easy on digestion, naturally tridoshic.'
+one_line: The classic one-pot moong dal and rice kitchari — light, soupy and easy
+  to digest.
+headnote: 'A gentle ''agni-reset'' meal: moong dal and a small grain cooked soft with
+  a simple tempering. Easy on digestion, naturally tridoshic.'
 kcal_is_estimate: true
 kcal_per_serving: 320
 kcal_basis: estimate
@@ -94,5 +98,32 @@ image:
   credit: MoongDal Khichdi.jpg by Mrudit161187 — Wikimedia Commons (CC BY-SA 4.0)
   source_url: https://commons.wikimedia.org/wiki/File:MoongDal_Khichdi.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 434
+  protein_g: 17.6
+  carbs_g: 72.6
+  fat_g: 8.1
+  fibre_g: 7.5
+  iron_mg: 3.9
+  calcium_mg: 69.7
+  magnesium_mg: 93.2
+  zinc_mg: 2.3
+  potassium_mg: 820
+  folate_ug: 304
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 16.4
+  omega3_mg: 102
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

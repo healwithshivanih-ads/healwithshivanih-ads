@@ -63,10 +63,11 @@ ingredients:
   unit: tbsp
 steps:
 - Dry-roast the rinsed quinoa for 2 minutes until the grains separate.
-- Heat oil; splutter mustard seeds and chana dal, then add curry leaves, ginger and green chilli.
+- Heat oil; splutter mustard seeds and chana dal, then add curry leaves, ginger and
+  green chilli.
 - Add the vegetables with a little salt and saute 3-4 minutes.
-- Add the quinoa and water, bring to a boil, then cover and simmer 12-14 minutes until the water is absorbed
-  and the grains are fluffy.
+- Add the quinoa and water, bring to a boil, then cover and simmer 12-14 minutes until
+  the water is absorbed and the grains are fluffy.
 - Rest 5 minutes off heat, then fluff and fold in lemon juice and coriander.
 servings: '2'
 prep_time_min: 10
@@ -77,8 +78,8 @@ good_for:
 - blood-sugar-balance
 - digestion-and-nutrient-absorption
 one_line: A protein-rich quinoa upma with a South-Indian tempering.
-headnote: Quinoa stands in for rava here — more protein and a gentler glycaemic load, with the familiar
-  mustard-curry-leaf tempering.
+headnote: Quinoa stands in for rava here — more protein and a gentler glycaemic load,
+  with the familiar mustard-curry-leaf tempering.
 kcal_is_estimate: true
 kcal_per_serving: 300
 kcal_basis: estimate
@@ -94,8 +95,35 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/vegetable-quinoa-upma.jpg
-  credit: Palak quinoa adai.JPG by Kalaiselvi Murugesan — Wikimedia Commons (CC BY-SA 4.0)
+  credit: Palak quinoa adai.JPG by Kalaiselvi Murugesan — Wikimedia Commons (CC BY-SA
+    4.0)
   source_url: https://commons.wikimedia.org/wiki/File:Palak_quinoa_adai.JPG
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 338
+  protein_g: 11.3
+  carbs_g: 48.7
+  fat_g: 11.3
+  fibre_g: 6.8
+  iron_mg: 3.7
+  calcium_mg: 61.6
+  magnesium_mg: 146
+  zinc_mg: 2.4
+  potassium_mg: 562
+  folate_ug: 151
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.2
+  omega3_mg: 245
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

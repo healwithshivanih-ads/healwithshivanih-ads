@@ -104,8 +104,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://assets.bonappetit.com/photos/643728200c835d5defadb818/1%3A1/w_2560%2Cc_limit/Recipe_Beauty_Vegan_Ramen_0227_Horizontal_Select_COMP.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: noodle bowl with toasted nori and mineral gomasio
@@ -117,3 +117,33 @@ kcal_per_serving: 340
 kcal_total: 680
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 511
+  protein_g: 25.5
+  carbs_g: 54.0
+  fat_g: 24.4
+  fibre_g: 11.1
+  iron_mg: 10.1
+  calcium_mg: 648
+  magnesium_mg: 229
+  zinc_mg: 5.2
+  potassium_mg: 824
+  folate_ug: 141
+  b12_ug: 0.1
+  vit_d_ug: 0.0
+  vit_c_mg: 32.9
+  omega3_mg: 603
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

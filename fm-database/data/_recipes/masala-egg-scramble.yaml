@@ -63,7 +63,8 @@ steps:
 - Heat oil; splutter cumin, then saute the onion and green chilli until soft.
 - Add the tomato and turmeric and cook until pulpy.
 - Stir in the spinach and let it wilt for a minute.
-- Beat the eggs with salt and pepper, pour in, and stir gently over medium heat until just set and creamy.
+- Beat the eggs with salt and pepper, pour in, and stir gently over medium heat until
+  just set and creamy.
 - Finish with coriander and serve with a small millet or jowar roti.
 servings: '1'
 prep_time_min: 5
@@ -73,8 +74,8 @@ protein_g: 20
 good_for:
 - digestion-and-nutrient-absorption
 one_line: A protein-packed Indian-style spiced egg scramble with greens.
-headnote: Eggs scrambled soft with onion, tomato and spinach — a fast, high-protein breakfast (akin to
-  bhurji, kept creamy not dry).
+headnote: Eggs scrambled soft with onion, tomato and spinach — a fast, high-protein
+  breakfast (akin to bhurji, kept creamy not dry).
 kcal_is_estimate: true
 kcal_per_serving: 290
 kcal_basis: estimate
@@ -90,9 +91,37 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/masala-egg-scramble.jpg
-  credit: Spicy egg bhurji @ the eggfactory.jpg by Praveen from Bangalore, India — Wikimedia Commons (CC
-    BY 2.0)
+  credit: Spicy egg bhurji @ the eggfactory.jpg by Praveen from Bangalore, India —
+    Wikimedia Commons (CC BY 2.0)
   source_url: https://commons.wikimedia.org/wiki/File:Spicy_egg_bhurji_@_the_eggfactory.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 306
+  protein_g: 21.2
+  carbs_g: 11.6
+  fat_g: 19.4
+  fibre_g: 3.0
+  iron_mg: 5.3
+  calcium_mg: 143
+  magnesium_mg: 61.2
+  zinc_mg: 2.4
+  potassium_mg: 655
+  folate_ug: 136
+  b12_ug: 1.4
+  vit_d_ug: 3.0
+  vit_c_mg: 28.8
+  omega3_mg: 238
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- iron
+- zinc
+- potassium
+- folate
+- b12
+- vitamin-c
+- vitamin-d
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

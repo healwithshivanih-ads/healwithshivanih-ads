@@ -20,7 +20,29 @@ ingredients:
 - item: 1 cup water
 steps:
 - 'Either: soak the ajwain in 1 cup water overnight, strain and drink in the morning.'
-- 'Or: simmer the ajwain in 1 cup water for 3–4 minutes, cool to warm, strain and sip.'
+- 'Or: simmer the ajwain in 1 cup water for 3–4 minutes, cool to warm, strain and
+  sip.'
 - Drink on an empty stomach or after a heavy meal, as your plan suggests.
-tip: Ajwain is warming — if you run hot or it feels too strong, use the smaller ½ tsp amount.
+tip: Ajwain is warming — if you run hot or it feels too strong, use the smaller ½
+  tsp amount.
 source: coach-authored (Shivani) 2026-07-07
+nutrients_per_serving:
+  kcal: 1.1
+  protein_g: 0.1
+  carbs_g: 0.1
+  fat_g: 0.0
+  fibre_g: 0.1
+  iron_mg: 0.0
+  calcium_mg: 4.8
+  magnesium_mg: 0.4
+  zinc_mg: 0.0
+  potassium_mg: 4.2
+  folate_ug: 0.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 0.0
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

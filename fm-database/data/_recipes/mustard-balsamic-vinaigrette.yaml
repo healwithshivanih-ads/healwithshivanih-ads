@@ -70,8 +70,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://assets.wsimgs.com/wsimgs/rk/images/dp/recipe/202539/0001/img67l.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: mustard balsamic vinaigrette
@@ -83,3 +83,23 @@ kcal_per_serving: 120
 kcal_total: 360
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 114
+  protein_g: 0.3
+  carbs_g: 8.2
+  fat_g: 9.1
+  fibre_g: 0.1
+  iron_mg: 0.2
+  calcium_mg: 5.2
+  magnesium_mg: 3.3
+  zinc_mg: 0.0
+  potassium_mg: 28.2
+  folate_ug: 0.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.1
+  omega3_mg: 5.4
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

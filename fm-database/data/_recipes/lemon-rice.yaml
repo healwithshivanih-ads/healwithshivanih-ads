@@ -110,8 +110,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2022/02/lemon-rice-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: LEMON RICE
@@ -123,3 +123,25 @@ kcal_per_serving: 350
 kcal_total: 700
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 487
+  protein_g: 11.2
+  carbs_g: 79.5
+  fat_g: 14.0
+  fibre_g: 4.7
+  iron_mg: 2.5
+  calcium_mg: 31.5
+  magnesium_mg: 70.1
+  zinc_mg: 2.0
+  potassium_mg: 342
+  folate_ug: 35.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 10.3
+  omega3_mg: 34.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- magnesium
+- zinc
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

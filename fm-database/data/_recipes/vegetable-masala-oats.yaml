@@ -62,11 +62,12 @@ ingredients:
   unit: tbsp
 steps:
 - Dry-roast the oats for 2 minutes until lightly fragrant; set aside.
-- Heat oil; splutter mustard seeds, then add curry leaves, onion, ginger and turmeric and saute until
-  soft.
+- Heat oil; splutter mustard seeds, then add curry leaves, onion, ginger and turmeric
+  and saute until soft.
 - Add the vegetables and a little salt; cook 3-4 minutes until just tender.
 - Add water and bring to a boil, then stir in the roasted oats.
-- Simmer 3-4 minutes to a soft, savoury porridge; finish with coriander and serve hot.
+- Simmer 3-4 minutes to a soft, savoury porridge; finish with coriander and serve
+  hot.
 servings: '1'
 prep_time_min: 8
 cook_time_min: 10
@@ -76,8 +77,8 @@ good_for:
 - blood-sugar-balance
 - digestion-and-nutrient-absorption
 one_line: A savoury, vegetable-rich masala oats — upma-style.
-headnote: 'Oats cooked like upma: a quick savoury bowl with vegetables and a South-Indian tempering. A
-  warm alternative to sweet oats.'
+headnote: 'Oats cooked like upma: a quick savoury bowl with vegetables and a South-Indian
+  tempering. A warm alternative to sweet oats.'
 kcal_is_estimate: true
 kcal_per_serving: 270
 kcal_basis: estimate
@@ -93,8 +94,36 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/vegetable-masala-oats.jpg
-  credit: Cooked oatmeal in bowl 3.jpg by Bodhi Peace — Wikimedia Commons (CC BY-SA 4.0)
+  credit: Cooked oatmeal in bowl 3.jpg by Bodhi Peace — Wikimedia Commons (CC BY-SA
+    4.0)
   source_url: https://commons.wikimedia.org/wiki/File:Cooked_oatmeal_in_bowl_3.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 301
+  protein_g: 11.6
+  carbs_g: 46.0
+  fat_g: 8.8
+  fibre_g: 9.7
+  iron_mg: 3.9
+  calcium_mg: 93.2
+  magnesium_mg: 119
+  zinc_mg: 2.7
+  potassium_mg: 610
+  folate_ug: 88.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 33.4
+  omega3_mg: 141
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

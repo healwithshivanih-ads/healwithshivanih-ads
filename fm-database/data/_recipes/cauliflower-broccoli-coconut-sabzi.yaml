@@ -38,5 +38,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2024/06/broccoli-stir-fry-curry-indian.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 61.7
+  protein_g: 1.7
+  carbs_g: 5.0
+  fat_g: 4.3
+  fibre_g: 2.1
+  iron_mg: 0.7
+  calcium_mg: 64.6
+  magnesium_mg: 15.0
+  zinc_mg: 0.3
+  potassium_mg: 238
+  folate_ug: 38.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 26.1
+  omega3_mg: 29.3
+nutrient_coverage_pct: 100.0
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

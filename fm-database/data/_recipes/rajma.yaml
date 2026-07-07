@@ -64,10 +64,13 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Pressure-cook the soaked rajma with salt and 2.5 cups water for 5-6 whistles until very soft.
-- Heat oil; splutter cumin, then saute onion until golden. Add ginger-garlic paste and cook 1 minute.
+- Pressure-cook the soaked rajma with salt and 2.5 cups water for 5-6 whistles until
+  very soft.
+- Heat oil; splutter cumin, then saute onion until golden. Add ginger-garlic paste
+  and cook 1 minute.
 - Add the tomato puree and dry spices; cook down until the oil separates.
-- Add the cooked rajma with its liquid; simmer 12-15 minutes, mashing a few beans to thicken the gravy.
+- Add the cooked rajma with its liquid; simmer 12-15 minutes, mashing a few beans
+  to thicken the gravy.
 - Finish with garam masala and coriander; serve with brown rice or roti.
 servings: '2'
 prep_time_min: 10
@@ -77,8 +80,8 @@ protein_g: 13
 good_for:
 - digestion-and-nutrient-absorption
 one_line: A comforting home-style kidney-bean curry, lightly spiced.
-headnote: Soaked-and-soft rajma in a simple onion-tomato base. High in plant protein and fibre; pairs
-  with a small portion of rice.
+headnote: Soaked-and-soft rajma in a simple onion-tomato base. High in plant protein
+  and fibre; pairs with a small portion of rice.
 kcal_is_estimate: true
 kcal_per_serving: 260
 kcal_basis: estimate
@@ -97,5 +100,34 @@ image:
   credit: Chitra Rajma by Sanjay Acharya — Wikimedia Commons (CC BY-SA 4.0)
   source_url: https://commons.wikimedia.org/wiki/File:Chitra_Rajma.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 354
+  protein_g: 18.8
+  carbs_g: 54.8
+  fat_g: 8.3
+  fibre_g: 14.0
+  iron_mg: 6.9
+  calcium_mg: 153
+  magnesium_mg: 128
+  zinc_mg: 2.5
+  potassium_mg: 1399
+  folate_ug: 301
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.6
+  omega3_mg: 274
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

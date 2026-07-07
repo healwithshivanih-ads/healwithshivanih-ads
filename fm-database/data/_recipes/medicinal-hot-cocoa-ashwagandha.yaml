@@ -78,8 +78,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://minimalistbaker.com/wp-content/uploads/2020/01/QUICK-EASY-Adaptogenic-Hot-Chocolate-Mix-Cacao-powder-stress-lowering-adaptogens-SO-delicious-recipe-minimalistbaker-plantbased-chocolate-glutenfree-adaptogen-6.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: medicinal hot cocoa
@@ -91,3 +91,30 @@ kcal_per_serving: 210
 kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 224
+  protein_g: 10.2
+  carbs_g: 27.6
+  fat_g: 9.6
+  fibre_g: 6.0
+  iron_mg: 2.1
+  calcium_mg: 328
+  magnesium_mg: 84.4
+  zinc_mg: 2.0
+  potassium_mg: 528
+  folate_ug: 16.0
+  b12_ug: 1.2
+  vit_d_ug: 2.4
+  vit_c_mg: 0.1
+  omega3_mg: 60.4
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- calcium
+- magnesium
+- zinc
+- potassium
+- b12
+- vitamin-d
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

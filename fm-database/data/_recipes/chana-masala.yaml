@@ -103,3 +103,30 @@ kcal_per_serving: 210
 kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 491
+  protein_g: 22.3
+  carbs_g: 73.9
+  fat_g: 13.5
+  fibre_g: 14.9
+  iron_mg: 6.1
+  calcium_mg: 103
+  magnesium_mg: 103
+  zinc_mg: 3.2
+  potassium_mg: 1008
+  folate_ug: 577
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 17.1
+  omega3_mg: 165
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

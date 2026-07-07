@@ -73,8 +73,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://lifemadesweeter.com/wp-content/uploads/Easy-Apple-Butter-Recipe-Photo-Picture-300x300.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: gingered apple butter
@@ -86,3 +86,23 @@ kcal_per_serving: 80
 kcal_total: 480
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 108
+  protein_g: 0.6
+  carbs_g: 28.8
+  fat_g: 0.4
+  fibre_g: 4.5
+  iron_mg: 0.3
+  calcium_mg: 17.4
+  magnesium_mg: 11.6
+  zinc_mg: 0.2
+  potassium_mg: 225
+  folate_ug: 8.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 13.5
+  omega3_mg: 17.4
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

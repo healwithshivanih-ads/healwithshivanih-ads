@@ -72,6 +72,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import { execFile } from "child_process";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { findClientByPhoneAction } from "@/lib/server-actions/clients";
 import { parseInboundStartDateIntent } from "@/lib/start-date-parser";
 import { recordInboundCycleDate } from "@/lib/server-actions/cycle-date-collector";
@@ -510,6 +511,103 @@ async function saveUnmatchedMessage(
   }
 }
 
+// ── Recipe inbox (coach-forwarded recipe material) ────────────────────────────
+//
+// The coach forwards recipe material — Instagram reel shares, cookbook page
+// photos, recipe PDFs, pasted captions — from her personal WhatsApp to the
+// coach number. Two triggers stage a message as a recipe candidate in
+// ~/fm-plans/_recipe_inbox/ (Mutagen-synced, same mechanism as
+// _whatsapp_unmatched.yaml) instead of the client-note path:
+//
+//   1. Sender is listed in RECIPE_INBOX_NUMBERS (comma-separated; matched on
+//      the last 10 digits) — the "recipe remote control". EVERY inbound
+//      message from these numbers becomes a candidate, so keep the list to
+//      the coach's own personal number(s).
+//   2. An inbound message from a NON-client number contains an Instagram
+//      link — a reel share would otherwise sit unread in the unmatched file.
+//
+// No AI call happens here (webhook stays fast); parsing runs on demand from
+// the /recipes review page on the coach Mac.
+
+const RECIPE_INBOX_DIR = path.join(PLANS_ROOT, "_recipe_inbox");
+
+function last10Digits(phone: string): string {
+  return phone.replace(/\D/g, "").slice(-10);
+}
+
+function isRecipeInboxSender(phone: string): boolean {
+  const raw = process.env.RECIPE_INBOX_NUMBERS ?? "";
+  const allow = raw
+    .split(",")
+    .map((s) => last10Digits(s.trim()))
+    .filter((s) => s.length === 10);
+  return allow.length > 0 && allow.includes(last10Digits(phone));
+}
+
+function extractInstagramUrl(text: string): string | null {
+  const m = text.match(/https?:\/\/(?:www\.)?instagram\.com\/[^\s]+/i);
+  return m ? m[0] : null;
+}
+
+async function saveRecipeCandidate(opts: {
+  fromPhone: string;
+  fromName: string;
+  text: string;
+  msgId: string | null;
+  mediaBase64: string | null;
+  mediaMime: string | null;
+  mediaFilename: string | null;
+}): Promise<{ id: string } | null> {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const shortId = (opts.msgId || Math.random().toString(36).slice(2))
+      .replace(/[^\w]/g, "")
+      .slice(-10)
+      .toLowerCase();
+    const id = `rc-${today}-${shortId}`;
+
+    let mediaFile: string | null = null;
+    if (opts.mediaBase64) {
+      const ext =
+        (opts.mediaMime && MIME_EXT[opts.mediaMime.toLowerCase()]) ||
+        (opts.mediaFilename?.includes(".")
+          ? opts.mediaFilename.split(".").pop()!.toLowerCase()
+          : "bin");
+      mediaFile = `media/${id}.${ext}`;
+      await fs.mkdir(path.join(RECIPE_INBOX_DIR, "media"), { recursive: true });
+      await fs.writeFile(
+        path.join(RECIPE_INBOX_DIR, mediaFile),
+        Buffer.from(opts.mediaBase64, "base64"),
+      );
+    } else {
+      await fs.mkdir(RECIPE_INBOX_DIR, { recursive: true });
+    }
+
+    const urlMatch = opts.text.match(/https?:\/\/[^\s]+/i);
+    const candidate = {
+      id,
+      received_at: new Date().toISOString(),
+      source: "whatsapp",
+      from_phone: opts.fromPhone,
+      from_name: opts.fromName || null,
+      text: opts.text,
+      source_url: urlMatch ? urlMatch[0] : null,
+      media_file: mediaFile,
+      media_mime: opts.mediaMime,
+      status: "new",
+    };
+    await fs.writeFile(
+      path.join(RECIPE_INBOX_DIR, `${id}.yaml`),
+      dumpYaml(candidate, { lineWidth: 120 }),
+      "utf-8",
+    );
+    return { id };
+  } catch (err) {
+    console.error("[whatsapp-webhook] Failed to save recipe candidate:", err);
+    return null;
+  }
+}
+
 // ── Delivery-status events (Meta sent/delivered/read/failed callbacks) ───────
 //
 // THE gap Meghana's dosha quiz exposed (2026-06-22): fm-coach's send path
@@ -824,6 +922,25 @@ export async function POST(req: NextRequest) {
     ? new Date(body.timestamp as string).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
     : new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
 
+  // ── Recipe-inbox branch (before client matching) ───────────────────────────
+  // Inbound messages from RECIPE_INBOX_NUMBERS (the coach's personal phone)
+  // are recipe material, never client notes — stage as a candidate and stop.
+  if (direction !== "outbound" && isRecipeInboxSender(rawPhone)) {
+    const cand = await saveRecipeCandidate({
+      fromPhone: rawPhone,
+      fromName: senderName,
+      text: messageText.trim(),
+      msgId: (body.external_message_id ?? null) as string | null,
+      mediaBase64: (body.media_base64 ?? null) as string | null,
+      mediaMime: (body.media_mime ?? null) as string | null,
+      mediaFilename: (body.media_filename ?? null) as string | null,
+    });
+    console.log(
+      `[whatsapp-webhook] ✓ RECIPE candidate from allowlisted ${rawPhone} → ${cand?.id ?? "FAILED"}`,
+    );
+    return NextResponse.json({ ok: true, recipe_candidate: cand?.id ?? null });
+  }
+
   const match = await findClientByPhoneAction(rawPhone);
   if (!match.ok || !match.client_id) {
     console.warn(`[whatsapp-webhook] No client found for phone ${rawPhone}: ${match.error}`);
@@ -832,6 +949,23 @@ export async function POST(req: NextRequest) {
     // in the unmatched file for coach review.
     if (direction === "outbound") {
       return NextResponse.json({ ok: true, matched: false, direction: "outbound" });
+    }
+    // An Instagram link from a non-client is a shared reel — a recipe
+    // candidate, not a mystery message for the unmatched pile.
+    if (extractInstagramUrl(messageText)) {
+      const cand = await saveRecipeCandidate({
+        fromPhone: rawPhone,
+        fromName: senderName,
+        text: messageText.trim(),
+        msgId: (body.external_message_id ?? null) as string | null,
+        mediaBase64: (body.media_base64 ?? null) as string | null,
+        mediaMime: (body.media_mime ?? null) as string | null,
+        mediaFilename: (body.media_filename ?? null) as string | null,
+      });
+      console.log(
+        `[whatsapp-webhook] ✓ RECIPE candidate (instagram link, unmatched ${rawPhone}) → ${cand?.id ?? "FAILED"}`,
+      );
+      return NextResponse.json({ ok: true, recipe_candidate: cand?.id ?? null });
     }
     await saveUnmatchedMessage(rawPhone, senderName, messageText, ts);
     return NextResponse.json({
