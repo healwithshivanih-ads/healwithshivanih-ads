@@ -49,9 +49,11 @@ ingredients:
   unit: tsp
 steps:
 - In a jar, combine the oats, milk or yogurt, chia seeds and cinnamon and stir well.
-- Cover and refrigerate overnight (at least 6 hours) so the oats and chia soften and swell.
+- Cover and refrigerate overnight (at least 6 hours) so the oats and chia soften and
+  swell.
 - In the morning, stir, loosen with a splash of milk if thick.
-- Top with the berries and walnuts, and a touch of honey or chopped soaked dates if needed.
+- Top with the berries and walnuts, and a touch of honey or chopped soaked dates if
+  needed.
 - Eat cold — no cooking required.
 servings: '1'
 prep_time_min: 5
@@ -62,8 +64,8 @@ good_for:
 - blood-sugar-balance
 - digestion-and-nutrient-absorption
 one_line: No-cook oats soaked overnight with chia, berries and walnuts.
-headnote: Soak it the night before and breakfast is ready. The chia and oats give steady, fibre-rich energy;
-  berries and walnuts add antioxidants and good fats.
+headnote: Soak it the night before and breakfast is ready. The chia and oats give
+  steady, fibre-rich energy; berries and walnuts add antioxidants and good fats.
 kcal_is_estimate: true
 kcal_per_serving: 340
 kcal_basis: estimate
@@ -79,9 +81,39 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/overnight-oats.jpg
-  credit: 'Muesli.jpg by Original description was: I, VirtualSteve took this photograph on February 19,
-    2 — Wikimedia Commons (CC BY-SA 2.5)'
+  credit: 'Muesli.jpg by Original description was: I, VirtualSteve took this photograph
+    on February 19, 2 — Wikimedia Commons (CC BY-SA 2.5)'
   source_url: https://commons.wikimedia.org/wiki/File:Muesli.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 471
+  protein_g: 17.7
+  carbs_g: 58.3
+  fat_g: 20.6
+  fibre_g: 12.0
+  iron_mg: 3.8
+  calcium_mg: 322
+  magnesium_mg: 162
+  zinc_mg: 3.6
+  potassium_mg: 626
+  folate_ug: 65.7
+  b12_ug: 0.9
+  vit_d_ug: 1.8
+  vit_c_mg: 23.5
+  omega3_mg: 3065
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- b12
+- vitamin-c
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

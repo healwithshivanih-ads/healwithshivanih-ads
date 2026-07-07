@@ -129,8 +129,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2022/05/sambar-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: south indian sambar
@@ -142,3 +142,26 @@ kcal_per_serving: 115
 kcal_total: 460
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 180
+  protein_g: 8.0
+  carbs_g: 24.7
+  fat_g: 6.1
+  fibre_g: 5.2
+  iron_mg: 2.4
+  calcium_mg: 58.2
+  magnesium_mg: 56.7
+  zinc_mg: 1.1
+  potassium_mg: 616
+  folate_ug: 165
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 15.7
+  omega3_mg: 32.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

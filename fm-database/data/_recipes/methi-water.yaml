@@ -1,6 +1,7 @@
 slug: methi-water
 name: Methi Water
-one_line: Overnight-soaked fenugreek seed water — sipped first thing for blood sugar and digestion.
+one_line: Overnight-soaked fenugreek seed water — sipped first thing for blood sugar
+  and digestion.
 meal_type:
 - drink
 diet:
@@ -19,8 +20,31 @@ ingredients:
 - item: 1 tsp methi (fenugreek) seeds
 - item: 1 cup water (room temperature)
 steps:
-- The night before, add 1 tsp methi seeds to 1 cup of water. Cover and leave on the counter overnight.
+- The night before, add 1 tsp methi seeds to 1 cup of water. Cover and leave on the
+  counter overnight.
 - In the morning, strain and drink the water on an empty stomach, before tea or coffee.
-- The softened seeds can be chewed and swallowed too, or added to your breakfast — don't cook a fresh batch from this.
-tip: Soak tonight, drink tomorrow — keep a small covered glass by the kitchen sink so it becomes automatic.
+- The softened seeds can be chewed and swallowed too, or added to your breakfast —
+  don't cook a fresh batch from this.
+tip: Soak tonight, drink tomorrow — keep a small covered glass by the kitchen sink
+  so it becomes automatic.
 source: coach-authored (Shivani) 2026-07-07
+nutrients_per_serving:
+  kcal: 2.0
+  protein_g: 0.1
+  carbs_g: 0.4
+  fat_g: 0.0
+  fibre_g: 0.2
+  iron_mg: 0.2
+  calcium_mg: 1.1
+  magnesium_mg: 1.2
+  zinc_mg: 0.0
+  potassium_mg: 4.8
+  folate_ug: 0.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 0.6
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

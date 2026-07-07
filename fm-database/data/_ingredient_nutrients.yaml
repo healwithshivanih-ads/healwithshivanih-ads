@@ -1,0 +1,5402 @@
+_meta:
+  version: 1
+  description: Canonical ingredient -> per-100g nutrients + densities for the recipe library. Values authored from IFCT 2017 (NIN) / USDA FDC reference knowledge (AI-assisted, spot-check advised for clinical
+    claims). Read by scripts/nutrients_lib.py.
+  nutrient_keys:
+  - kcal
+  - protein_g
+  - carbs_g
+  - fat_g
+  - fibre_g
+  - iron_mg
+  - calcium_mg
+  - magnesium_mg
+  - zinc_mg
+  - potassium_mg
+  - folate_ug
+  - b12_ug
+  - vit_d_ug
+  - vit_c_mg
+  - omega3_mg
+  authored: '2026-07-07'
+ajwain:
+  category: spice
+  basis: dry
+  aliases:
+  - ajwain seeds
+  - ajwain
+  per_100g:
+    kcal: 360
+    protein_g: 16.0
+    carbs_g: 43.0
+    fat_g: 15.0
+    fibre_g: 21.0
+    iron_mg: 12.0
+    calcium_mg: 1525
+    magnesium_mg: 130
+    zinc_mg: 3.4
+    potassium_mg: 1360
+    folate_ug: 5
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 5
+    omega3_mg: 0
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
+almond-butter:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - raw almond butter
+  per_100g:
+    kcal: 614
+    protein_g: 21.0
+    carbs_g: 18.8
+    fat_g: 55.5
+    fibre_g: 10.3
+    iron_mg: 3.5
+    calcium_mg: 347
+    magnesium_mg: 279
+    zinc_mg: 3.3
+    potassium_mg: 748
+    folate_ug: 53
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 10
+  density:
+    g_per_cup: 250
+    g_per_piece: null
+    g_per_leaf: null
+almond-flour:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - almond flour
+  - almond meal
+  per_100g:
+    kcal: 600
+    protein_g: 21.0
+    carbs_g: 21.0
+    fat_g: 52.0
+    fibre_g: 10.5
+    iron_mg: 3.7
+    calcium_mg: 270
+    magnesium_mg: 270
+    zinc_mg: 3.1
+    potassium_mg: 730
+    folate_ug: 44
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 6
+  density:
+    g_per_cup: 96
+    g_per_piece: null
+    g_per_leaf: null
+almond-milk:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - almond milk
+  - everyday almond milk
+  - unsweetened rice milk
+  per_100g:
+    kcal: 15
+    protein_g: 0.6
+    carbs_g: 0.6
+    fat_g: 1.2
+    fibre_g: 0.4
+    iron_mg: 0.3
+    calcium_mg: 184
+    magnesium_mg: 7
+    zinc_mg: 0.1
+    potassium_mg: 67
+    folate_ug: 1
+    b12_ug: 0
+    vit_d_ug: 1
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+almonds:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - raw almonds
+  - almonds
+  - almond
+  - soaked almonds
+  - whole almonds
+  - chopped almonds
+  per_100g:
+    kcal: 579
+    protein_g: 21.2
+    carbs_g: 21.6
+    fat_g: 49.9
+    fibre_g: 12.5
+    iron_mg: 3.7
+    calcium_mg: 269
+    magnesium_mg: 270
+    zinc_mg: 3.1
+    potassium_mg: 733
+    folate_ug: 44
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 6
+  density:
+    g_per_cup: 143
+    g_per_piece: 1.2
+    g_per_leaf: null
+amla-powder:
+  category: spice
+  basis: dry
+  aliases:
+  - amla powder
+  per_100g:
+    kcal: 320
+    protein_g: 6.0
+    carbs_g: 70.0
+    fat_g: 2.0
+    fibre_g: 30.0
+    iron_mg: 15.0
+    calcium_mg: 350
+    magnesium_mg: 100
+    zinc_mg: 2.0
+    potassium_mg: 800
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 600
+    omega3_mg: 0
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+apple:
+  category: fruit
+  basis: raw
+  aliases:
+  - apple
+  - apples
+  - large apples
+  - medium apples
+  - large apple
+  - pear
+  per_100g:
+    kcal: 52
+    protein_g: 0.3
+    carbs_g: 14
+    fat_g: 0.2
+    fibre_g: 2.4
+    iron_mg: 0.1
+    calcium_mg: 6
+    magnesium_mg: 5
+    zinc_mg: 0.04
+    potassium_mg: 107
+    folate_ug: 3
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4.6
+    omega3_mg: 9
+  density:
+    g_per_cup: 125
+    g_per_piece: 180
+    g_per_leaf: null
+artichoke:
+  category: vegetable
+  basis: raw
+  aliases:
+  - marinated drained artichoke hearts
+  - whole artichoke hearts
+  - artichoke hearts
+  per_100g:
+    kcal: 47
+    protein_g: 3.3
+    carbs_g: 11
+    fat_g: 0.2
+    fibre_g: 5.4
+    iron_mg: 1.3
+    calcium_mg: 44
+    magnesium_mg: 60
+    zinc_mg: 0.5
+    potassium_mg: 370
+    folate_ug: 68
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12
+    omega3_mg: 17
+  density:
+    g_per_cup: 150
+    g_per_piece: 120
+    g_per_leaf: null
+asafoetida:
+  category: spice
+  basis: dry
+  aliases:
+  - asafoetida
+  - asafetida
+  - asafetida powder
+  - hing
+  per_100g:
+    kcal: 297
+    protein_g: 4.0
+    carbs_g: 68.0
+    fat_g: 1.1
+    fibre_g: 4.1
+    iron_mg: 39.0
+    calcium_mg: 690
+    magnesium_mg: 80
+    zinc_mg: 1.4
+    potassium_mg: 730
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+ash-gourd:
+  category: vegetable
+  basis: raw
+  aliases:
+  - ash gourd
+  per_100g:
+    kcal: 13
+    protein_g: 0.4
+    carbs_g: 3.0
+    fat_g: 0.2
+    fibre_g: 2.9
+    iron_mg: 0.4
+    calcium_mg: 19
+    magnesium_mg: 10
+    zinc_mg: 0.6
+    potassium_mg: 6
+    folate_ug: 5
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 13
+    omega3_mg: 2
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
+ashwagandha:
+  category: spice
+  basis: dry
+  aliases:
+  - ashwagandha powder
+  per_100g:
+    kcal: 245
+    protein_g: 3.9
+    carbs_g: 49.9
+    fat_g: 0.3
+    fibre_g: 32.3
+    iron_mg: 3.3
+    calcium_mg: 23
+    magnesium_mg: 10
+    zinc_mg: 1.4
+    potassium_mg: 190
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3.7
+    omega3_mg: 0
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
+asparagus:
+  category: vegetable
+  basis: raw
+  aliases:
+  - asparagus stalks
+  - asparagus
+  per_100g:
+    kcal: 20
+    protein_g: 2.2
+    carbs_g: 3.9
+    fat_g: 0.1
+    fibre_g: 2.1
+    iron_mg: 2.1
+    calcium_mg: 24
+    magnesium_mg: 14
+    zinc_mg: 0.5
+    potassium_mg: 202
+    folate_ug: 52
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 5.6
+    omega3_mg: 10
+  density:
+    g_per_cup: 134
+    g_per_piece: 16
+    g_per_leaf: null
+avocado:
+  category: fruit
+  basis: raw
+  aliases:
+  - avocado
+  per_100g:
+    kcal: 160
+    protein_g: 2.0
+    carbs_g: 8.5
+    fat_g: 15
+    fibre_g: 6.7
+    iron_mg: 0.6
+    calcium_mg: 12
+    magnesium_mg: 29
+    zinc_mg: 0.6
+    potassium_mg: 485
+    folate_ug: 81
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 10
+    omega3_mg: 110
+  density:
+    g_per_cup: 150
+    g_per_piece: 140
+    g_per_leaf: null
+baingan:
+  category: vegetable
+  basis: raw
+  aliases:
+  - baingan
+  - eggplant
+  - brinjal
+  per_100g:
+    kcal: 25
+    protein_g: 1.0
+    carbs_g: 5.9
+    fat_g: 0.2
+    fibre_g: 3.0
+    iron_mg: 0.2
+    calcium_mg: 9
+    magnesium_mg: 14
+    zinc_mg: 0.2
+    potassium_mg: 229
+    folate_ug: 22
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 2.2
+    omega3_mg: 13
+  density:
+    g_per_cup: 82
+    g_per_piece: 250
+    g_per_leaf: null
+bajra-flour:
+  category: flour
+  basis: dry
+  aliases:
+  - bajra flour
+  - bajra rava
+  - bajra
+  per_100g:
+    kcal: 348
+    protein_g: 11.0
+    carbs_g: 61.8
+    fat_g: 5.4
+    fibre_g: 11.5
+    iron_mg: 6.4
+    calcium_mg: 27
+    magnesium_mg: 124
+    zinc_mg: 2.8
+    potassium_mg: 307
+    folate_ug: 36
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 120
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+baking-soda:
+  category: other
+  basis: dry
+  aliases:
+  - baking soda
+  - baking powder
+  per_100g:
+    kcal: 0
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 0
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 220
+    g_per_piece: null
+    g_per_leaf: null
+banana:
+  category: fruit
+  basis: raw
+  aliases:
+  - raw banana
+  - banana
+  per_100g:
+    kcal: 89
+    protein_g: 1.1
+    carbs_g: 23
+    fat_g: 0.3
+    fibre_g: 2.6
+    iron_mg: 0.3
+    calcium_mg: 5
+    magnesium_mg: 27
+    zinc_mg: 0.2
+    potassium_mg: 358
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 8.7
+    omega3_mg: 27
+  density:
+    g_per_cup: 150
+    g_per_piece: 120
+    g_per_leaf: null
+barley:
+  category: grain
+  basis: dry
+  aliases:
+  - pearled barley
+  - barley
+  per_100g:
+    kcal: 352
+    protein_g: 9.9
+    carbs_g: 77.7
+    fat_g: 1.2
+    fibre_g: 15.6
+    iron_mg: 2.5
+    calcium_mg: 29
+    magnesium_mg: 79
+    zinc_mg: 2.1
+    potassium_mg: 280
+    folate_ug: 23
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 55
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+basil-fresh:
+  category: herb
+  basis: raw
+  aliases:
+  - fresh basil leaves
+  - basil
+  per_100g:
+    kcal: 23
+    protein_g: 3.2
+    carbs_g: 2.7
+    fat_g: 0.6
+    fibre_g: 1.6
+    iron_mg: 3.2
+    calcium_mg: 177
+    magnesium_mg: 64
+    zinc_mg: 0.8
+    potassium_mg: 295
+    folate_ug: 68
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 18
+    omega3_mg: 310
+  density:
+    g_per_cup: 24
+    g_per_piece: null
+    g_per_leaf: 0.5
+beetroot:
+  category: vegetable
+  basis: raw
+  aliases:
+  - medium beets
+  - beet
+  - beets
+  - large beet
+  - beetroot
+  per_100g:
+    kcal: 43
+    protein_g: 1.6
+    carbs_g: 9.6
+    fat_g: 0.2
+    fibre_g: 2.8
+    iron_mg: 0.8
+    calcium_mg: 16
+    magnesium_mg: 23
+    zinc_mg: 0.4
+    potassium_mg: 325
+    folate_ug: 109
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4.9
+    omega3_mg: 5
+  density:
+    g_per_cup: 136
+    g_per_piece: 80
+    g_per_leaf: null
+berries:
+  category: fruit
+  basis: raw
+  aliases:
+  - strawberries
+  - raspberries
+  - blueberries
+  - mixed berries
+  - frozen berries
+  - fresh cranberries
+  per_100g:
+    kcal: 45
+    protein_g: 0.9
+    carbs_g: 11
+    fat_g: 0.4
+    fibre_g: 4.0
+    iron_mg: 0.5
+    calcium_mg: 18
+    magnesium_mg: 15
+    zinc_mg: 0.3
+    potassium_mg: 130
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 33
+    omega3_mg: 90
+  density:
+    g_per_cup: 140
+    g_per_piece: null
+    g_per_leaf: null
+besan:
+  category: flour
+  basis: dry
+  aliases:
+  - besan
+  - chickpea flour
+  - gram flour
+  per_100g:
+    kcal: 387
+    protein_g: 22.4
+    carbs_g: 57.8
+    fat_g: 6.7
+    fibre_g: 10.8
+    iron_mg: 4.9
+    calcium_mg: 45
+    magnesium_mg: 166
+    zinc_mg: 2.8
+    potassium_mg: 846
+    folate_ug: 437
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 100
+  density:
+    g_per_cup: 92
+    g_per_piece: null
+    g_per_leaf: null
+bhindi:
+  category: vegetable
+  basis: raw
+  aliases:
+  - bhindi
+  - okra
+  per_100g:
+    kcal: 33
+    protein_g: 1.9
+    carbs_g: 7.5
+    fat_g: 0.2
+    fibre_g: 3.2
+    iron_mg: 0.6
+    calcium_mg: 82
+    magnesium_mg: 57
+    zinc_mg: 0.6
+    potassium_mg: 299
+    folate_ug: 60
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 23
+    omega3_mg: 10
+  density:
+    g_per_cup: 100
+    g_per_piece: 12
+    g_per_leaf: null
+black-beans:
+  category: dal_legume
+  basis: cooked
+  aliases:
+  - cooked black beans
+  - black beans
+  per_100g:
+    kcal: 132
+    protein_g: 8.9
+    carbs_g: 23.7
+    fat_g: 0.5
+    fibre_g: 8.7
+    iron_mg: 2.1
+    calcium_mg: 27
+    magnesium_mg: 70
+    zinc_mg: 1.1
+    potassium_mg: 355
+    folate_ug: 149
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 110
+  density:
+    g_per_cup: 172
+    g_per_piece: null
+    g_per_leaf: null
+black-pepper:
+  category: spice
+  basis: dry
+  aliases:
+  - black pepper
+  - freshly ground black pepper
+  - pepper
+  - freshly ground pepper
+  - black peppercorns
+  per_100g:
+    kcal: 265
+    protein_g: 10.4
+    carbs_g: 63.9
+    fat_g: 3.3
+    fibre_g: 25.3
+    iron_mg: 9.7
+    calcium_mg: 443
+    magnesium_mg: 171
+    zinc_mg: 1.2
+    potassium_mg: 1329
+    folate_ug: 17
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 160
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
+bok-choy:
+  category: vegetable
+  basis: raw
+  aliases:
+  - bok choy stalks
+  - bok choy
+  per_100g:
+    kcal: 13
+    protein_g: 1.5
+    carbs_g: 2.2
+    fat_g: 0.2
+    fibre_g: 1.0
+    iron_mg: 0.8
+    calcium_mg: 105
+    magnesium_mg: 19
+    zinc_mg: 0.2
+    potassium_mg: 252
+    folate_ug: 66
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 45
+    omega3_mg: 55
+  density:
+    g_per_cup: 70
+    g_per_piece: null
+    g_per_leaf: 15
+broccoli:
+  category: vegetable
+  basis: raw
+  aliases:
+  - broccoli florets
+  - broccoli
+  per_100g:
+    kcal: 34
+    protein_g: 2.8
+    carbs_g: 6.6
+    fat_g: 0.4
+    fibre_g: 2.6
+    iron_mg: 0.7
+    calcium_mg: 47
+    magnesium_mg: 21
+    zinc_mg: 0.4
+    potassium_mg: 316
+    folate_ug: 63
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 89
+    omega3_mg: 100
+  density:
+    g_per_cup: 91
+    g_per_piece: null
+    g_per_leaf: null
+broth:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - vegetable broth
+  - broth
+  - cooking liquid from beans
+  per_100g:
+    kcal: 5
+    protein_g: 0.2
+    carbs_g: 1.0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0.1
+    calcium_mg: 5
+    magnesium_mg: 2
+    zinc_mg: 0
+    potassium_mg: 30
+    folate_ug: 2
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+brown-rice:
+  category: grain
+  basis: dry
+  aliases:
+  - brown basmati rice
+  - brown rice
+  per_100g:
+    kcal: 370
+    protein_g: 7.5
+    carbs_g: 77.0
+    fat_g: 2.7
+    fibre_g: 3.4
+    iron_mg: 1.5
+    calcium_mg: 23
+    magnesium_mg: 143
+    zinc_mg: 2.0
+    potassium_mg: 223
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 34
+  density:
+    g_per_cup: 190
+    g_per_piece: null
+    g_per_leaf: null
+brussels-sprouts:
+  category: vegetable
+  basis: raw
+  aliases:
+  - brussels sprouts
+  per_100g:
+    kcal: 43
+    protein_g: 3.4
+    carbs_g: 9.0
+    fat_g: 0.3
+    fibre_g: 3.8
+    iron_mg: 1.4
+    calcium_mg: 42
+    magnesium_mg: 23
+    zinc_mg: 0.4
+    potassium_mg: 389
+    folate_ug: 61
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 85
+    omega3_mg: 100
+  density:
+    g_per_cup: 88
+    g_per_piece: 19
+    g_per_leaf: null
+buckwheat:
+  category: grain
+  basis: dry
+  aliases:
+  - dry buckwheat
+  - buckwheat
+  per_100g:
+    kcal: 343
+    protein_g: 13.3
+    carbs_g: 71.5
+    fat_g: 3.4
+    fibre_g: 10.0
+    iron_mg: 2.2
+    calcium_mg: 18
+    magnesium_mg: 231
+    zinc_mg: 2.4
+    potassium_mg: 460
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 78
+  density:
+    g_per_cup: 170
+    g_per_piece: null
+    g_per_leaf: null
+buckwheat-flour:
+  category: flour
+  basis: dry
+  aliases:
+  - buckwheat flour
+  per_100g:
+    kcal: 335
+    protein_g: 12.6
+    carbs_g: 70.6
+    fat_g: 3.1
+    fibre_g: 10.0
+    iron_mg: 4.1
+    calcium_mg: 41
+    magnesium_mg: 251
+    zinc_mg: 3.1
+    potassium_mg: 577
+    folate_ug: 54
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 70
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+bulgur:
+  category: grain
+  basis: dry
+  aliases:
+  - bulgur wheat
+  per_100g:
+    kcal: 342
+    protein_g: 12.3
+    carbs_g: 75.9
+    fat_g: 1.3
+    fibre_g: 12.5
+    iron_mg: 2.5
+    calcium_mg: 35
+    magnesium_mg: 164
+    zinc_mg: 1.9
+    potassium_mg: 410
+    folate_ug: 27
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 50
+  density:
+    g_per_cup: 140
+    g_per_piece: null
+    g_per_leaf: null
+butter:
+  category: oil_fat
+  basis: as_consumed
+  aliases:
+  - organic unsalted butter
+  - unsalted butter
+  - butter
+  per_100g:
+    kcal: 717
+    protein_g: 0.9
+    carbs_g: 0.1
+    fat_g: 81.1
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 24
+    magnesium_mg: 2
+    zinc_mg: 0.1
+    potassium_mg: 24
+    folate_ug: 3
+    b12_ug: 0.2
+    vit_d_ug: 0.6
+    vit_c_mg: 0
+    omega3_mg: 300
+  density:
+    g_per_cup: 227
+    g_per_piece: null
+    g_per_leaf: null
+cabbage:
+  category: vegetable
+  basis: raw
+  aliases:
+  - cabbage
+  - red cabbage
+  - finely diced cabbage
+  per_100g:
+    kcal: 25
+    protein_g: 1.3
+    carbs_g: 5.8
+    fat_g: 0.1
+    fibre_g: 2.5
+    iron_mg: 0.5
+    calcium_mg: 40
+    magnesium_mg: 12
+    zinc_mg: 0.2
+    potassium_mg: 170
+    folate_ug: 43
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 37
+    omega3_mg: 12
+  density:
+    g_per_cup: 89
+    g_per_piece: null
+    g_per_leaf: 20
+cacao:
+  category: other
+  basis: dry
+  aliases:
+  - finely ground cacao powder
+  - cacao powder
+  - cacao nibs
+  per_100g:
+    kcal: 350
+    protein_g: 19.6
+    carbs_g: 57.9
+    fat_g: 13.7
+    fibre_g: 37.0
+    iron_mg: 13.9
+    calcium_mg: 128
+    magnesium_mg: 499
+    zinc_mg: 6.8
+    potassium_mg: 1524
+    folate_ug: 32
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 100
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+calamus-root:
+  category: spice
+  basis: dry
+  aliases:
+  - calamus root powder
+  per_100g:
+    kcal: 335
+    protein_g: 5.0
+    carbs_g: 75.0
+    fat_g: 1.5
+    fibre_g: 20.0
+    iron_mg: 5.0
+    calcium_mg: 100
+    magnesium_mg: 50
+    zinc_mg: 1.0
+    potassium_mg: 500
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+capsicum:
+  category: vegetable
+  basis: raw
+  aliases:
+  - capsicum
+  - red bell pepper
+  - bell peppers
+  - diced roasted red pepper
+  per_100g:
+    kcal: 26
+    protein_g: 1.0
+    carbs_g: 6.0
+    fat_g: 0.3
+    fibre_g: 2.1
+    iron_mg: 0.4
+    calcium_mg: 10
+    magnesium_mg: 12
+    zinc_mg: 0.3
+    potassium_mg: 211
+    folate_ug: 46
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 128
+    omega3_mg: 25
+  density:
+    g_per_cup: 120
+    g_per_piece: 120
+    g_per_leaf: null
+cardamom:
+  category: spice
+  basis: dry
+  aliases:
+  - cardamom powder
+  - powdered cardamom
+  - ground cardamom
+  - green cardamom pods
+  - whole cardamom seeds
+  - cardamom
+  per_100g:
+    kcal: 311
+    protein_g: 10.8
+    carbs_g: 68.5
+    fat_g: 6.7
+    fibre_g: 28.0
+    iron_mg: 14.0
+    calcium_mg: 383
+    magnesium_mg: 229
+    zinc_mg: 7.5
+    potassium_mg: 1119
+    folate_ug: 3
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 21
+    omega3_mg: 30
+  density:
+    g_per_cup: 90
+    g_per_piece: 0.3
+    g_per_leaf: null
+carrot:
+  category: vegetable
+  basis: raw
+  aliases:
+  - carrot
+  - carrots
+  - medium carrot
+  - small carrot + few beans
+  - shredded carrots, cabbage
+  - black carrots
+  per_100g:
+    kcal: 41
+    protein_g: 0.9
+    carbs_g: 9.6
+    fat_g: 0.2
+    fibre_g: 2.8
+    iron_mg: 0.3
+    calcium_mg: 33
+    magnesium_mg: 12
+    zinc_mg: 0.2
+    potassium_mg: 320
+    folate_ug: 19
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 5.9
+    omega3_mg: 2
+  density:
+    g_per_cup: 128
+    g_per_piece: 60
+    g_per_leaf: null
+cashews:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - cashews
+  per_100g:
+    kcal: 553
+    protein_g: 18.2
+    carbs_g: 30.2
+    fat_g: 43.8
+    fibre_g: 3.3
+    iron_mg: 6.7
+    calcium_mg: 37
+    magnesium_mg: 292
+    zinc_mg: 5.8
+    potassium_mg: 660
+    folate_ug: 25
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.5
+    omega3_mg: 62
+  density:
+    g_per_cup: 140
+    g_per_piece: 1.5
+    g_per_leaf: null
+cauliflower:
+  category: vegetable
+  basis: raw
+  aliases:
+  - small head cauliflower
+  - cauliflower
+  - grated cauliflower
+  - cauliflower + broccoli florets
+  - cauliflower broccoli
+  - broccoli cauliflower coconut
+  per_100g:
+    kcal: 25
+    protein_g: 1.9
+    carbs_g: 5.0
+    fat_g: 0.3
+    fibre_g: 2.0
+    iron_mg: 0.4
+    calcium_mg: 22
+    magnesium_mg: 15
+    zinc_mg: 0.3
+    potassium_mg: 299
+    folate_ug: 57
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 48
+    omega3_mg: 37
+  density:
+    g_per_cup: 107
+    g_per_piece: null
+    g_per_leaf: null
+celery:
+  category: vegetable
+  basis: raw
+  aliases:
+  - chopped celery
+  - celery
+  per_100g:
+    kcal: 14
+    protein_g: 0.7
+    carbs_g: 3.0
+    fat_g: 0.2
+    fibre_g: 1.6
+    iron_mg: 0.2
+    calcium_mg: 40
+    magnesium_mg: 11
+    zinc_mg: 0.1
+    potassium_mg: 260
+    folate_ug: 36
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3.1
+    omega3_mg: 0
+  density:
+    g_per_cup: 101
+    g_per_piece: 40
+    g_per_leaf: null
+chana-dal:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - chana dal
+  per_100g:
+    kcal: 360
+    protein_g: 21.5
+    carbs_g: 58.0
+    fat_g: 5.3
+    fibre_g: 10.0
+    iron_mg: 4.6
+    calcium_mg: 56
+    magnesium_mg: 119
+    zinc_mg: 2.7
+    potassium_mg: 720
+    folate_ug: 200
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1
+    omega3_mg: 90
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+chia-seeds:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - chia seeds
+  per_100g:
+    kcal: 486
+    protein_g: 16.5
+    carbs_g: 42.1
+    fat_g: 30.7
+    fibre_g: 34.4
+    iron_mg: 7.7
+    calcium_mg: 631
+    magnesium_mg: 335
+    zinc_mg: 4.6
+    potassium_mg: 407
+    folate_ug: 49
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.6
+    omega3_mg: 17800
+  density:
+    g_per_cup: 160
+    g_per_piece: null
+    g_per_leaf: null
+chicken:
+  category: protein
+  basis: as_consumed
+  aliases:
+  - chicken
+  - g chicken
+  - boneless chicken thigh
+  - chicken breast
+  - g chicken, small pieces
+  - leg
+  per_100g:
+    kcal: 120
+    protein_g: 21.0
+    carbs_g: 0
+    fat_g: 3.5
+    fibre_g: 0
+    iron_mg: 0.7
+    calcium_mg: 8
+    magnesium_mg: 25
+    zinc_mg: 1.3
+    potassium_mg: 250
+    folate_ug: 7
+    b12_ug: 0.3
+    vit_d_ug: 0.1
+    vit_c_mg: 0
+    omega3_mg: 80
+  density:
+    g_per_cup: 140
+    g_per_piece: 145
+    g_per_leaf: null
+chickpeas:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - chickpeas
+  - dried chickpeas
+  - roasted chickpeas
+  - chana
+  per_100g:
+    kcal: 378
+    protein_g: 20.5
+    carbs_g: 63.0
+    fat_g: 6.0
+    fibre_g: 12.2
+    iron_mg: 4.3
+    calcium_mg: 57
+    magnesium_mg: 79
+    zinc_mg: 2.8
+    potassium_mg: 718
+    folate_ug: 557
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4
+    omega3_mg: 100
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+chickpeas-cooked:
+  category: dal_legume
+  basis: cooked
+  aliases:
+  - cooked chickpeas
+  per_100g:
+    kcal: 164
+    protein_g: 8.9
+    carbs_g: 27.4
+    fat_g: 2.6
+    fibre_g: 7.6
+    iron_mg: 2.9
+    calcium_mg: 49
+    magnesium_mg: 48
+    zinc_mg: 1.5
+    potassium_mg: 291
+    folate_ug: 172
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.3
+    omega3_mg: 43
+  density:
+    g_per_cup: 165
+    g_per_piece: null
+    g_per_leaf: null
+chilli-powder:
+  category: spice
+  basis: dry
+  aliases:
+  - chili powder
+  - red chilli powder
+  - chilli powder
+  - cayenne pepper
+  - cayenne powder
+  - paprika
+  per_100g:
+    kcal: 320
+    protein_g: 13.0
+    carbs_g: 54.0
+    fat_g: 14.0
+    fibre_g: 30.0
+    iron_mg: 9.0
+    calcium_mg: 150
+    magnesium_mg: 150
+    zinc_mg: 2.5
+    potassium_mg: 2000
+    folate_ug: 100
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 70
+    omega3_mg: 300
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+cinnamon:
+  category: spice
+  basis: dry
+  aliases:
+  - cinnamon
+  - cinnamon powder
+  - cinnamon stick
+  - cinnamon sticks
+  - cinnamon, cardamom
+  per_100g:
+    kcal: 280
+    protein_g: 4.0
+    carbs_g: 80.6
+    fat_g: 1.2
+    fibre_g: 53.1
+    iron_mg: 8.3
+    calcium_mg: 1002
+    magnesium_mg: 60
+    zinc_mg: 1.8
+    potassium_mg: 431
+    folate_ug: 6
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3.8
+    omega3_mg: 11
+  density:
+    g_per_cup: 120
+    g_per_piece: 3
+    g_per_leaf: null
+cloves:
+  category: spice
+  basis: dry
+  aliases:
+  - whole cloves
+  - cloves
+  - clove powder
+  - bay leaf + 2 cloves + small cinnamon
+  per_100g:
+    kcal: 325
+    protein_g: 6.0
+    carbs_g: 65.5
+    fat_g: 13.0
+    fibre_g: 33.9
+    iron_mg: 11.8
+    calcium_mg: 632
+    magnesium_mg: 259
+    zinc_mg: 2.3
+    potassium_mg: 1020
+    folate_ug: 25
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.2
+    omega3_mg: 90
+  density:
+    g_per_cup: 100
+    g_per_piece: 0.1
+    g_per_leaf: null
+coconut-fresh:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - grated fresh coconut
+  - grated coconut
+  - coconut
+  - shredded coconut
+  - unsweetened shredded coconut
+  - unsweetened dried coconut
+  per_100g:
+    kcal: 354
+    protein_g: 3.3
+    carbs_g: 15.2
+    fat_g: 33.5
+    fibre_g: 9.0
+    iron_mg: 2.4
+    calcium_mg: 14
+    magnesium_mg: 32
+    zinc_mg: 1.1
+    potassium_mg: 356
+    folate_ug: 26
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3.3
+    omega3_mg: 0
+  density:
+    g_per_cup: 80
+    g_per_piece: null
+    g_per_leaf: null
+coconut-milk:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - light coconut milk
+  - coconut milk
+  - canned coconut milk
+  per_100g:
+    kcal: 150
+    protein_g: 1.6
+    carbs_g: 3.5
+    fat_g: 15.5
+    fibre_g: 1.0
+    iron_mg: 2.4
+    calcium_mg: 15
+    magnesium_mg: 30
+    zinc_mg: 0.5
+    potassium_mg: 180
+    folate_ug: 10
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+coconut-oil:
+  category: oil_fat
+  basis: as_consumed
+  aliases:
+  - coconut oil
+  - coconut oil, mustard seeds, curry leaves
+  per_100g:
+    kcal: 892
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 99.1
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 0
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 218
+    g_per_piece: null
+    g_per_leaf: null
+coconut-sugar:
+  category: sweetener
+  basis: as_consumed
+  aliases:
+  - coconut sugar
+  per_100g:
+    kcal: 375
+    protein_g: 1.0
+    carbs_g: 92.0
+    fat_g: 0.4
+    fibre_g: 0
+    iron_mg: 2.0
+    calcium_mg: 8
+    magnesium_mg: 29
+    zinc_mg: 2.0
+    potassium_mg: 625
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+coconut-water:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - coconut water
+  per_100g:
+    kcal: 19
+    protein_g: 0.7
+    carbs_g: 3.7
+    fat_g: 0.2
+    fibre_g: 1.1
+    iron_mg: 0.3
+    calcium_mg: 24
+    magnesium_mg: 25
+    zinc_mg: 0.1
+    potassium_mg: 250
+    folate_ug: 3
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 2.4
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+collard-greens:
+  category: leafy
+  basis: raw
+  aliases:
+  - large collard leaves
+  - collard greens
+  per_100g:
+    kcal: 32
+    protein_g: 3.0
+    carbs_g: 5.4
+    fat_g: 0.6
+    fibre_g: 4.0
+    iron_mg: 0.5
+    calcium_mg: 232
+    magnesium_mg: 27
+    zinc_mg: 0.2
+    potassium_mg: 213
+    folate_ug: 129
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 35
+    omega3_mg: 110
+  density:
+    g_per_cup: 36
+    g_per_piece: null
+    g_per_leaf: 30
+coriander-fresh:
+  category: herb
+  basis: raw
+  aliases:
+  - fresh coriander
+  - coriander
+  - fresh cilantro
+  - fresh cilantro leaves
+  - cilantro
+  - lemon juice and coriander
+  - fresh coriander and mint
+  per_100g:
+    kcal: 23
+    protein_g: 2.1
+    carbs_g: 3.7
+    fat_g: 0.5
+    fibre_g: 2.8
+    iron_mg: 1.8
+    calcium_mg: 67
+    magnesium_mg: 26
+    zinc_mg: 0.5
+    potassium_mg: 521
+    folate_ug: 62
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 27
+    omega3_mg: 0
+  density:
+    g_per_cup: 16
+    g_per_piece: null
+    g_per_leaf: 0.2
+coriander-powder:
+  category: spice
+  basis: dry
+  aliases:
+  - coriander powder
+  per_100g:
+    kcal: 355
+    protein_g: 12.4
+    carbs_g: 55.0
+    fat_g: 17.8
+    fibre_g: 41.9
+    iron_mg: 16.3
+    calcium_mg: 709
+    magnesium_mg: 330
+    zinc_mg: 4.7
+    potassium_mg: 1267
+    folate_ug: 1
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 21
+    omega3_mg: 50
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+coriander-seeds:
+  category: spice
+  basis: dry
+  aliases:
+  - coriander seeds
+  - coriander seed
+  - whole coriander seed
+  - whole coriander seeds
+  - coriander, fennel
+  per_100g:
+    kcal: 355
+    protein_g: 12.4
+    carbs_g: 55.0
+    fat_g: 17.8
+    fibre_g: 41.9
+    iron_mg: 16.3
+    calcium_mg: 709
+    magnesium_mg: 330
+    zinc_mg: 4.7
+    potassium_mg: 1267
+    folate_ug: 1
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 21
+    omega3_mg: 50
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+corn:
+  category: vegetable
+  basis: raw
+  aliases:
+  - ears of fresh corn
+  - corn
+  - sweet corn
+  per_100g:
+    kcal: 86
+    protein_g: 3.3
+    carbs_g: 19
+    fat_g: 1.4
+    fibre_g: 2.0
+    iron_mg: 0.5
+    calcium_mg: 2
+    magnesium_mg: 37
+    zinc_mg: 0.5
+    potassium_mg: 270
+    folate_ug: 42
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 6.8
+    omega3_mg: 16
+  density:
+    g_per_cup: 145
+    g_per_piece: 90
+    g_per_leaf: null
+corn-tortilla:
+  category: grain
+  basis: as_consumed
+  aliases:
+  - corn tortillas
+  per_100g:
+    kcal: 218
+    protein_g: 5.7
+    carbs_g: 44.6
+    fat_g: 2.9
+    fibre_g: 6.3
+    iron_mg: 1.2
+    calcium_mg: 81
+    magnesium_mg: 72
+    zinc_mg: 1.3
+    potassium_mg: 186
+    folate_ug: 6
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 30
+  density:
+    g_per_cup: 55
+    g_per_piece: 25
+    g_per_leaf: null
+cream:
+  category: dairy
+  basis: as_consumed
+  aliases:
+  - heavy cow's cream
+  - extra cream
+  per_100g:
+    kcal: 340
+    protein_g: 2.8
+    carbs_g: 2.8
+    fat_g: 36.0
+    fibre_g: 0
+    iron_mg: 0.1
+    calcium_mg: 66
+    magnesium_mg: 7
+    zinc_mg: 0.3
+    potassium_mg: 95
+    folate_ug: 4
+    b12_ug: 0.2
+    vit_d_ug: 0.6
+    vit_c_mg: 0.6
+    omega3_mg: 300
+  density:
+    g_per_cup: 238
+    g_per_piece: null
+    g_per_leaf: null
+cucumber:
+  category: vegetable
+  basis: raw
+  aliases:
+  - cucumber
+  - cucumbers
+  - medium cucumber
+  - large cucumber
+  per_100g:
+    kcal: 15
+    protein_g: 0.7
+    carbs_g: 3.6
+    fat_g: 0.1
+    fibre_g: 0.5
+    iron_mg: 0.3
+    calcium_mg: 16
+    magnesium_mg: 13
+    zinc_mg: 0.2
+    potassium_mg: 147
+    folate_ug: 7
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 2.8
+    omega3_mg: 5
+  density:
+    g_per_cup: 120
+    g_per_piece: 200
+    g_per_leaf: null
+cumin-powder:
+  category: spice
+  basis: dry
+  aliases:
+  - cumin powder
+  - roasted cumin powder
+  - ground cumin
+  - cumin
+  - cinnamon, cumin
+  per_100g:
+    kcal: 375
+    protein_g: 17.8
+    carbs_g: 44.2
+    fat_g: 22.3
+    fibre_g: 10.5
+    iron_mg: 66.4
+    calcium_mg: 931
+    magnesium_mg: 366
+    zinc_mg: 4.8
+    potassium_mg: 1788
+    folate_ug: 10
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 7.7
+    omega3_mg: 250
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+cumin-seeds:
+  category: spice
+  basis: dry
+  aliases:
+  - cumin seeds
+  - cumin seed
+  - whole cumin seed
+  - whole cumin seeds
+  - jeera seeds
+  per_100g:
+    kcal: 375
+    protein_g: 17.8
+    carbs_g: 44.2
+    fat_g: 22.3
+    fibre_g: 10.5
+    iron_mg: 66.4
+    calcium_mg: 931
+    magnesium_mg: 366
+    zinc_mg: 4.8
+    potassium_mg: 1788
+    folate_ug: 10
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 7.7
+    omega3_mg: 250
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
+curry-leaves:
+  category: herb
+  basis: raw
+  aliases:
+  - curry leaves
+  - fresh curry leaf
+  - fresh curry leaf sprigs
+  - few curry leaves
+  per_100g:
+    kcal: 108
+    protein_g: 6.1
+    carbs_g: 18.7
+    fat_g: 1.0
+    fibre_g: 6.4
+    iron_mg: 0.9
+    calcium_mg: 830
+    magnesium_mg: 44
+    zinc_mg: 0.2
+    potassium_mg: 811
+    folate_ug: 93
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4
+    omega3_mg: 100
+  density:
+    g_per_cup: 8
+    g_per_piece: null
+    g_per_leaf: 0.3
+daikon:
+  category: vegetable
+  basis: raw
+  aliases:
+  - daikon radish
+  per_100g:
+    kcal: 18
+    protein_g: 0.6
+    carbs_g: 4.1
+    fat_g: 0.1
+    fibre_g: 1.6
+    iron_mg: 0.4
+    calcium_mg: 27
+    magnesium_mg: 16
+    zinc_mg: 0.2
+    potassium_mg: 227
+    folate_ug: 28
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 22
+    omega3_mg: 30
+  density:
+    g_per_cup: 116
+    g_per_piece: 300
+    g_per_leaf: null
+dates:
+  category: dried_fruit
+  basis: dried
+  aliases:
+  - dates
+  - medjool dates
+  - pitted medjool dates
+  - deglet noor dates
+  - medjool date
+  - chopped pitted dates
+  per_100g:
+    kcal: 277
+    protein_g: 1.8
+    carbs_g: 75
+    fat_g: 0.2
+    fibre_g: 6.7
+    iron_mg: 0.9
+    calcium_mg: 64
+    magnesium_mg: 54
+    zinc_mg: 0.4
+    potassium_mg: 696
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 3
+  density:
+    g_per_cup: 147
+    g_per_piece: 20
+    g_per_leaf: null
+dijon-mustard:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - dijon mustard
+  per_100g:
+    kcal: 66
+    protein_g: 4.4
+    carbs_g: 5.3
+    fat_g: 3.4
+    fibre_g: 3.3
+    iron_mg: 1.5
+    calcium_mg: 58
+    magnesium_mg: 48
+    zinc_mg: 0.6
+    potassium_mg: 138
+    folate_ug: 7
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.5
+    omega3_mg: 100
+  density:
+    g_per_cup: 249
+    g_per_piece: null
+    g_per_leaf: null
+dill:
+  category: herb
+  basis: raw
+  aliases:
+  - fresh dill
+  per_100g:
+    kcal: 43
+    protein_g: 3.5
+    carbs_g: 7.0
+    fat_g: 1.1
+    fibre_g: 2.1
+    iron_mg: 6.6
+    calcium_mg: 208
+    magnesium_mg: 55
+    zinc_mg: 0.9
+    potassium_mg: 738
+    folate_ug: 150
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 85
+    omega3_mg: 30
+  density:
+    g_per_cup: 9
+    g_per_piece: null
+    g_per_leaf: 0.2
+dried-apricots:
+  category: dried_fruit
+  basis: dried
+  aliases:
+  - dried apricots
+  per_100g:
+    kcal: 241
+    protein_g: 3.4
+    carbs_g: 63
+    fat_g: 0.5
+    fibre_g: 7.3
+    iron_mg: 2.7
+    calcium_mg: 55
+    magnesium_mg: 32
+    zinc_mg: 0.4
+    potassium_mg: 1160
+    folate_ug: 10
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1
+    omega3_mg: 0
+  density:
+    g_per_cup: 130
+    g_per_piece: 8
+    g_per_leaf: null
+dried-cranberries:
+  category: dried_fruit
+  basis: dried
+  aliases:
+  - dried cranberries
+  - dried cherries
+  per_100g:
+    kcal: 308
+    protein_g: 0.2
+    carbs_g: 82
+    fat_g: 1.1
+    fibre_g: 5.3
+    iron_mg: 0.4
+    calcium_mg: 9
+    magnesium_mg: 4
+    zinc_mg: 0.1
+    potassium_mg: 49
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.2
+    omega3_mg: 22
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+dried-figs:
+  category: dried_fruit
+  basis: dried
+  aliases:
+  - dried figs
+  per_100g:
+    kcal: 249
+    protein_g: 3.3
+    carbs_g: 64
+    fat_g: 0.9
+    fibre_g: 9.8
+    iron_mg: 2.0
+    calcium_mg: 162
+    magnesium_mg: 68
+    zinc_mg: 0.6
+    potassium_mg: 680
+    folate_ug: 9
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.2
+    omega3_mg: 0
+  density:
+    g_per_cup: 150
+    g_per_piece: 8
+    g_per_leaf: null
+dried-fruit-mixed:
+  category: dried_fruit
+  basis: dried
+  aliases:
+  - dried fruit
+  - dried pineapple rings
+  per_100g:
+    kcal: 270
+    protein_g: 2.7
+    carbs_g: 70
+    fat_g: 0.6
+    fibre_g: 6.5
+    iron_mg: 1.7
+    calcium_mg: 70
+    magnesium_mg: 43
+    zinc_mg: 0.4
+    potassium_mg: 760
+    folate_ug: 8
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1
+    omega3_mg: 8
+  density:
+    g_per_cup: 145
+    g_per_piece: null
+    g_per_leaf: null
+dried-herbs:
+  category: spice
+  basis: dry
+  aliases:
+  - dried sage
+  - dried thyme
+  - dried marjoram
+  - dried basil
+  - dried lemon zest
+  per_100g:
+    kcal: 290
+    protein_g: 14.2
+    carbs_g: 57.5
+    fat_g: 8.0
+    fibre_g: 38.3
+    iron_mg: 80.0
+    calcium_mg: 1927
+    magnesium_mg: 453
+    zinc_mg: 6.0
+    potassium_mg: 1500
+    folate_ug: 150
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 28
+    omega3_mg: 500
+  density:
+    g_per_cup: 40
+    g_per_piece: null
+    g_per_leaf: null
+dried-red-chilli:
+  category: spice
+  basis: dry
+  aliases:
+  - dried red chilies
+  - dried red chilli
+  per_100g:
+    kcal: 282
+    protein_g: 13.5
+    carbs_g: 50.0
+    fat_g: 5.8
+    fibre_g: 28.7
+    iron_mg: 7.0
+    calcium_mg: 45
+    magnesium_mg: 152
+    zinc_mg: 1.9
+    potassium_mg: 2010
+    folate_ug: 106
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 65
+    omega3_mg: 300
+  density:
+    g_per_cup: 40
+    g_per_piece: 2
+    g_per_leaf: null
+drumstick:
+  category: vegetable
+  basis: raw
+  aliases:
+  - drumstick
+  per_100g:
+    kcal: 37
+    protein_g: 2.1
+    carbs_g: 8.5
+    fat_g: 0.2
+    fibre_g: 3.2
+    iron_mg: 0.4
+    calcium_mg: 30
+    magnesium_mg: 45
+    zinc_mg: 0.5
+    potassium_mg: 461
+    folate_ug: 44
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 120
+    omega3_mg: 20
+  density:
+    g_per_cup: 100
+    g_per_piece: 120
+    g_per_leaf: null
+egg:
+  category: protein
+  basis: as_consumed
+  aliases:
+  - eggs
+  - egg
+  per_100g:
+    kcal: 143
+    protein_g: 12.6
+    carbs_g: 0.7
+    fat_g: 9.5
+    fibre_g: 0
+    iron_mg: 1.8
+    calcium_mg: 56
+    magnesium_mg: 12
+    zinc_mg: 1.3
+    potassium_mg: 138
+    folate_ug: 47
+    b12_ug: 0.9
+    vit_d_ug: 2
+    vit_c_mg: 0
+    omega3_mg: 100
+  density:
+    g_per_cup: 243
+    g_per_piece: 50
+    g_per_leaf: null
+fennel-bulb:
+  category: vegetable
+  basis: raw
+  aliases:
+  - fennel bulb
+  per_100g:
+    kcal: 31
+    protein_g: 1.2
+    carbs_g: 7.3
+    fat_g: 0.2
+    fibre_g: 3.1
+    iron_mg: 0.7
+    calcium_mg: 49
+    magnesium_mg: 17
+    zinc_mg: 0.2
+    potassium_mg: 414
+    folate_ug: 27
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12
+    omega3_mg: 0
+  density:
+    g_per_cup: 87
+    g_per_piece: 230
+    g_per_leaf: null
+fennel-seeds:
+  category: spice
+  basis: dry
+  aliases:
+  - fennel seeds
+  - fennel seed
+  - whole fennel seeds
+  - whole fennel seed
+  per_100g:
+    kcal: 345
+    protein_g: 15.8
+    carbs_g: 52.3
+    fat_g: 14.9
+    fibre_g: 39.8
+    iron_mg: 18.5
+    calcium_mg: 1196
+    magnesium_mg: 385
+    zinc_mg: 3.7
+    potassium_mg: 1694
+    folate_ug: 27
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 21
+    omega3_mg: 90
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+fenugreek-seeds:
+  category: spice
+  basis: dry
+  aliases:
+  - fenugreek seeds
+  - fenugreek seed
+  - methi seeds
+  per_100g:
+    kcal: 323
+    protein_g: 23.0
+    carbs_g: 58.4
+    fat_g: 6.4
+    fibre_g: 24.6
+    iron_mg: 33.5
+    calcium_mg: 176
+    magnesium_mg: 191
+    zinc_mg: 2.5
+    potassium_mg: 770
+    folate_ug: 57
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3
+    omega3_mg: 90
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+fish:
+  category: protein
+  basis: as_consumed
+  aliases:
+  - fish
+  - fillet fish
+  per_100g:
+    kcal: 100
+    protein_g: 18.0
+    carbs_g: 0
+    fat_g: 3.0
+    fibre_g: 0
+    iron_mg: 1.0
+    calcium_mg: 100
+    magnesium_mg: 30
+    zinc_mg: 1.0
+    potassium_mg: 300
+    folate_ug: 10
+    b12_ug: 2
+    vit_d_ug: 8
+    vit_c_mg: 0
+    omega3_mg: 600
+  density:
+    g_per_cup: 140
+    g_per_piece: null
+    g_per_leaf: null
+flaxseed:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - ground flaxseed
+  - flaxseed
+  per_100g:
+    kcal: 534
+    protein_g: 18.3
+    carbs_g: 28.9
+    fat_g: 42.2
+    fibre_g: 27.3
+    iron_mg: 5.7
+    calcium_mg: 255
+    magnesium_mg: 392
+    zinc_mg: 4.3
+    potassium_mg: 813
+    folate_ug: 87
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.6
+    omega3_mg: 22800
+  density:
+    g_per_cup: 160
+    g_per_piece: null
+    g_per_leaf: null
+foxtail-flour:
+  category: flour
+  basis: dry
+  aliases:
+  - foxtail flour
+  - kodo flour
+  - millet flour
+  - vegetable flour
+  per_100g:
+    kcal: 331
+    protein_g: 12.3
+    carbs_g: 60.9
+    fat_g: 4.3
+    fibre_g: 8.0
+    iron_mg: 2.8
+    calcium_mg: 31
+    magnesium_mg: 81
+    zinc_mg: 2.4
+    potassium_mg: 250
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 50
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+garam-masala:
+  category: spice
+  basis: dry
+  aliases:
+  - garam masala
+  - chana masala
+  - sambar powder
+  per_100g:
+    kcal: 320
+    protein_g: 13.0
+    carbs_g: 45.0
+    fat_g: 15.0
+    fibre_g: 25.0
+    iron_mg: 30.0
+    calcium_mg: 500
+    magnesium_mg: 200
+    zinc_mg: 3.5
+    potassium_mg: 1300
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 10
+    omega3_mg: 150
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
+garlic:
+  category: vegetable
+  basis: raw
+  aliases:
+  - garlic
+  - garlic clove
+  per_100g:
+    kcal: 149
+    protein_g: 6.4
+    carbs_g: 33
+    fat_g: 0.5
+    fibre_g: 2.1
+    iron_mg: 1.7
+    calcium_mg: 181
+    magnesium_mg: 25
+    zinc_mg: 1.2
+    potassium_mg: 401
+    folate_ug: 3
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 31
+    omega3_mg: 20
+  density:
+    g_per_cup: 136
+    g_per_piece: 3
+    g_per_leaf: null
+ghee:
+  category: oil_fat
+  basis: as_consumed
+  aliases:
+  - ghee
+  - melted ghee
+  - ghee, coconut oil
+  - ghee, olive oil
+  - ghee, coconut oil, maple syrup, and
+  per_100g:
+    kcal: 900
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 100
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 0
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0.5
+    vit_c_mg: 0
+    omega3_mg: 800
+  density:
+    g_per_cup: 218
+    g_per_piece: null
+    g_per_leaf: null
+ginger-fresh:
+  category: vegetable
+  basis: raw
+  aliases:
+  - ginger
+  - fresh gingerroot
+  - fresh ginger
+  - gingerroot
+  - freshly grated ginger
+  - finely grated fresh gingerroot
+  per_100g:
+    kcal: 80
+    protein_g: 1.8
+    carbs_g: 18
+    fat_g: 0.8
+    fibre_g: 2.0
+    iron_mg: 0.6
+    calcium_mg: 16
+    magnesium_mg: 43
+    zinc_mg: 0.3
+    potassium_mg: 415
+    folate_ug: 11
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 5
+    omega3_mg: 30
+  density:
+    g_per_cup: 96
+    g_per_piece: 6
+    g_per_leaf: null
+    g_per_inch: 6
+ginger-garlic-paste:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - ginger-garlic paste
+  per_100g:
+    kcal: 115
+    protein_g: 4.1
+    carbs_g: 25.5
+    fat_g: 0.6
+    fibre_g: 2.1
+    iron_mg: 1.15
+    calcium_mg: 98
+    magnesium_mg: 34
+    zinc_mg: 0.75
+    potassium_mg: 408
+    folate_ug: 7
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 18
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+ginger-powder:
+  category: spice
+  basis: dry
+  aliases:
+  - ginger powder
+  per_100g:
+    kcal: 335
+    protein_g: 8.9
+    carbs_g: 71.6
+    fat_g: 4.2
+    fibre_g: 14.1
+    iron_mg: 19.8
+    calcium_mg: 114
+    magnesium_mg: 214
+    zinc_mg: 3.6
+    potassium_mg: 1320
+    folate_ug: 13
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.7
+    omega3_mg: 34
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
+goat-cheese:
+  category: dairy
+  basis: as_consumed
+  aliases:
+  - goat cheese
+  - chèvre
+  per_100g:
+    kcal: 264
+    protein_g: 18.5
+    carbs_g: 2.5
+    fat_g: 21.1
+    fibre_g: 0
+    iron_mg: 1.9
+    calcium_mg: 140
+    magnesium_mg: 16
+    zinc_mg: 0.9
+    potassium_mg: 26
+    folate_ug: 12
+    b12_ug: 0.2
+    vit_d_ug: 0.4
+    vit_c_mg: 0
+    omega3_mg: 200
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+grapes:
+  category: fruit
+  basis: raw
+  aliases:
+  - red grapes
+  per_100g:
+    kcal: 69
+    protein_g: 0.7
+    carbs_g: 18
+    fat_g: 0.2
+    fibre_g: 0.9
+    iron_mg: 0.4
+    calcium_mg: 10
+    magnesium_mg: 7
+    zinc_mg: 0.1
+    potassium_mg: 191
+    folate_ug: 2
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3.2
+    omega3_mg: 11
+  density:
+    g_per_cup: 151
+    g_per_piece: 5
+    g_per_leaf: null
+green-beans:
+  category: vegetable
+  basis: raw
+  aliases:
+  - green beans
+  - chopped french beans
+  - beans
+  - bean
+  - cluster beans
+  per_100g:
+    kcal: 31
+    protein_g: 1.8
+    carbs_g: 7.0
+    fat_g: 0.2
+    fibre_g: 2.7
+    iron_mg: 1.0
+    calcium_mg: 37
+    magnesium_mg: 25
+    zinc_mg: 0.2
+    potassium_mg: 211
+    folate_ug: 33
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12
+    omega3_mg: 70
+  density:
+    g_per_cup: 110
+    g_per_piece: 5
+    g_per_leaf: null
+green-chilli:
+  category: vegetable
+  basis: raw
+  aliases:
+  - green chilli
+  - small green chilies
+  - chilli
+  - pinch chilli
+  per_100g:
+    kcal: 40
+    protein_g: 2.0
+    carbs_g: 9.5
+    fat_g: 0.2
+    fibre_g: 1.5
+    iron_mg: 1.2
+    calcium_mg: 18
+    magnesium_mg: 25
+    zinc_mg: 0.3
+    potassium_mg: 340
+    folate_ug: 23
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 111
+    omega3_mg: 10
+  density:
+    g_per_cup: 75
+    g_per_piece: 5
+    g_per_leaf: null
+green-mango:
+  category: fruit
+  basis: raw
+  aliases:
+  - green mangoes
+  per_100g:
+    kcal: 60
+    protein_g: 0.7
+    carbs_g: 15
+    fat_g: 0.3
+    fibre_g: 1.8
+    iron_mg: 0.5
+    calcium_mg: 14
+    magnesium_mg: 12
+    zinc_mg: 0.1
+    potassium_mg: 168
+    folate_ug: 43
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 46
+    omega3_mg: 30
+  density:
+    g_per_cup: 165
+    g_per_piece: 200
+    g_per_leaf: null
+hemp-protein:
+  category: protein
+  basis: as_consumed
+  aliases:
+  - hemp protein powder
+  per_100g:
+    kcal: 400
+    protein_g: 50.0
+    carbs_g: 23.0
+    fat_g: 11.0
+    fibre_g: 18.0
+    iron_mg: 13.0
+    calcium_mg: 60
+    magnesium_mg: 750
+    zinc_mg: 7.0
+    potassium_mg: 1100
+    folate_ug: 100
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 2000
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+herbs-fresh:
+  category: herb
+  basis: raw
+  aliases:
+  - fresh herbs
+  - fresh herbs with stems
+  per_100g:
+    kcal: 32
+    protein_g: 2.9
+    carbs_g: 4.9
+    fat_g: 0.7
+    fibre_g: 3.0
+    iron_mg: 4.5
+    calcium_mg: 145
+    magnesium_mg: 50
+    zinc_mg: 0.9
+    potassium_mg: 460
+    folate_ug: 97
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 48
+    omega3_mg: 170
+  density:
+    g_per_cup: 25
+    g_per_piece: null
+    g_per_leaf: 0.3
+honey:
+  category: sweetener
+  basis: as_consumed
+  aliases:
+  - raw honey
+  - honey
+  - raw honey dissolved in warm water
+  - honey for garnish
+  per_100g:
+    kcal: 304
+    protein_g: 0.3
+    carbs_g: 82.4
+    fat_g: 0
+    fibre_g: 0.2
+    iron_mg: 0.4
+    calcium_mg: 6
+    magnesium_mg: 2
+    zinc_mg: 0.2
+    potassium_mg: 52
+    folate_ug: 2
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.5
+    omega3_mg: 0
+  density:
+    g_per_cup: 340
+    g_per_piece: null
+    g_per_leaf: null
+idli-dosa-batter:
+  category: composite
+  basis: as_consumed
+  aliases:
+  - fermented millet-and-dal batter
+  - fermented rice-and-dal batter
+  per_100g:
+    kcal: 145
+    protein_g: 4.5
+    carbs_g: 29.0
+    fat_g: 0.6
+    fibre_g: 1.8
+    iron_mg: 1.0
+    calcium_mg: 15
+    magnesium_mg: 25
+    zinc_mg: 0.7
+    potassium_mg: 120
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 10
+  density:
+    g_per_cup: 250
+    g_per_piece: null
+    g_per_leaf: null
+jaggery:
+  category: sweetener
+  basis: as_consumed
+  aliases:
+  - dehydrated sugarcane
+  - dehydrated cane juice
+  - jaggery
+  per_100g:
+    kcal: 383
+    protein_g: 0.4
+    carbs_g: 95.0
+    fat_g: 0.1
+    fibre_g: 0
+    iron_mg: 2.6
+    calcium_mg: 80
+    magnesium_mg: 80
+    zinc_mg: 0.4
+    potassium_mg: 1050
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+jowar-flour:
+  category: flour
+  basis: dry
+  aliases:
+  - jowar flour
+  - jowar
+  per_100g:
+    kcal: 334
+    protein_g: 10.0
+    carbs_g: 67.7
+    fat_g: 1.7
+    fibre_g: 10.2
+    iron_mg: 4.0
+    calcium_mg: 28
+    magnesium_mg: 133
+    zinc_mg: 2.0
+    potassium_mg: 328
+    folate_ug: 39
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 65
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+kale:
+  category: leafy
+  basis: raw
+  aliases:
+  - kale leaves
+  - kale
+  - lacinato kale
+  - chopped kale
+  - lacinato kale leaves
+  - kale, swiss chard leaves
+  - chopped kale, collard greens, swiss chard
+  per_100g:
+    kcal: 43
+    protein_g: 2.9
+    carbs_g: 4.4
+    fat_g: 1.5
+    fibre_g: 4.1
+    iron_mg: 1.6
+    calcium_mg: 254
+    magnesium_mg: 33
+    zinc_mg: 0.4
+    potassium_mg: 348
+    folate_ug: 62
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 93
+    omega3_mg: 180
+  density:
+    g_per_cup: 40
+    g_per_piece: null
+    g_per_leaf: 25
+karela:
+  category: vegetable
+  basis: raw
+  aliases:
+  - karela
+  - bitter gourd
+  per_100g:
+    kcal: 17
+    protein_g: 1.0
+    carbs_g: 3.7
+    fat_g: 0.2
+    fibre_g: 2.8
+    iron_mg: 0.4
+    calcium_mg: 19
+    magnesium_mg: 17
+    zinc_mg: 0.8
+    potassium_mg: 296
+    folate_ug: 72
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 84
+    omega3_mg: 5
+  density:
+    g_per_cup: 95
+    g_per_piece: 100
+    g_per_leaf: null
+kidney-beans:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - kidney beans
+  per_100g:
+    kcal: 333
+    protein_g: 23.6
+    carbs_g: 60.0
+    fat_g: 0.8
+    fibre_g: 15.2
+    iron_mg: 6.7
+    calcium_mg: 143
+    magnesium_mg: 140
+    zinc_mg: 2.8
+    potassium_mg: 1406
+    folate_ug: 394
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4.5
+    omega3_mg: 300
+  density:
+    g_per_cup: 185
+    g_per_piece: null
+    g_per_leaf: null
+lamb:
+  category: protein
+  basis: as_consumed
+  aliases:
+  - lean lamb
+  per_100g:
+    kcal: 134
+    protein_g: 20.3
+    carbs_g: 0
+    fat_g: 5.3
+    fibre_g: 0
+    iron_mg: 1.8
+    calcium_mg: 10
+    magnesium_mg: 25
+    zinc_mg: 3.9
+    potassium_mg: 280
+    folate_ug: 20
+    b12_ug: 2.6
+    vit_d_ug: 0.1
+    vit_c_mg: 0
+    omega3_mg: 200
+  density:
+    g_per_cup: 135
+    g_per_piece: null
+    g_per_leaf: null
+lauki:
+  category: vegetable
+  basis: raw
+  aliases:
+  - lauki
+  - bottle gourd
+  - doodhi
+  - mixed lauki + ash gourd
+  per_100g:
+    kcal: 14
+    protein_g: 0.6
+    carbs_g: 3.4
+    fat_g: 0.02
+    fibre_g: 0.5
+    iron_mg: 0.2
+    calcium_mg: 26
+    magnesium_mg: 11
+    zinc_mg: 0.7
+    potassium_mg: 150
+    folate_ug: 6
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 10
+    omega3_mg: 2
+  density:
+    g_per_cup: 115
+    g_per_piece: null
+    g_per_leaf: null
+leek:
+  category: vegetable
+  basis: raw
+  aliases:
+  - leek
+  per_100g:
+    kcal: 61
+    protein_g: 1.5
+    carbs_g: 14
+    fat_g: 0.3
+    fibre_g: 1.8
+    iron_mg: 2.1
+    calcium_mg: 59
+    magnesium_mg: 28
+    zinc_mg: 0.1
+    potassium_mg: 180
+    folate_ug: 64
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12
+    omega3_mg: 100
+  density:
+    g_per_cup: 89
+    g_per_piece: 90
+    g_per_leaf: null
+lemon:
+  category: fruit
+  basis: raw
+  aliases:
+  - lemon
+  - organic lemon
+  - lemon wedge
+  - lemon wedges
+  - lime
+  - small lime
+  - lime wedges
+  - whole lemon
+  - small lemon
+  per_100g:
+    kcal: 29
+    protein_g: 1.1
+    carbs_g: 9.3
+    fat_g: 0.3
+    fibre_g: 2.8
+    iron_mg: 0.6
+    calcium_mg: 26
+    magnesium_mg: 8
+    zinc_mg: 0.1
+    potassium_mg: 138
+    folate_ug: 11
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 53
+    omega3_mg: 26
+  density:
+    g_per_cup: 212
+    g_per_piece: 65
+    g_per_leaf: null
+lemon-juice:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - lemon juice
+  - fresh lemon juice
+  - lime juice
+  - fresh lime juice
+  - juice of half lemon
+  per_100g:
+    kcal: 22
+    protein_g: 0.4
+    carbs_g: 6.9
+    fat_g: 0.2
+    fibre_g: 0.3
+    iron_mg: 0.1
+    calcium_mg: 6
+    magnesium_mg: 6
+    zinc_mg: 0.1
+    potassium_mg: 103
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 38.7
+    omega3_mg: 0
+  density:
+    g_per_cup: 244
+    g_per_piece: null
+    g_per_leaf: null
+licorice-root:
+  category: spice
+  basis: dry
+  aliases:
+  - licorice root powder
+  per_100g:
+    kcal: 344
+    protein_g: 5.0
+    carbs_g: 80.0
+    fat_g: 0.5
+    fibre_g: 24.0
+    iron_mg: 4.0
+    calcium_mg: 140
+    magnesium_mg: 40
+    zinc_mg: 0.6
+    potassium_mg: 700
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+maple-syrup:
+  category: sweetener
+  basis: as_consumed
+  aliases:
+  - maple syrup
+  - maple syrup, coconut sugar
+  per_100g:
+    kcal: 260
+    protein_g: 0
+    carbs_g: 67.0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0.1
+    calcium_mg: 102
+    magnesium_mg: 21
+    zinc_mg: 1.5
+    potassium_mg: 212
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 315
+    g_per_piece: null
+    g_per_leaf: null
+masoor-cooked:
+  category: dal_legume
+  basis: cooked
+  aliases:
+  - cooked red lentils
+  per_100g:
+    kcal: 116
+    protein_g: 9.0
+    carbs_g: 20.1
+    fat_g: 0.4
+    fibre_g: 4.5
+    iron_mg: 3.3
+    calcium_mg: 19
+    magnesium_mg: 36
+    zinc_mg: 1.3
+    potassium_mg: 369
+    folate_ug: 181
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.5
+    omega3_mg: 37
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+masoor-dal:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - masoor dal
+  - masoor
+  - red lentils
+  per_100g:
+    kcal: 352
+    protein_g: 24.6
+    carbs_g: 63.3
+    fat_g: 1.1
+    fibre_g: 10.7
+    iron_mg: 6.5
+    calcium_mg: 35
+    magnesium_mg: 47
+    zinc_mg: 3.3
+    potassium_mg: 677
+    folate_ug: 479
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4.5
+    omega3_mg: 110
+  density:
+    g_per_cup: 190
+    g_per_piece: null
+    g_per_leaf: null
+melon:
+  category: fruit
+  basis: raw
+  aliases:
+  - honeydew
+  - melon
+  - chopped, honeydew
+  per_100g:
+    kcal: 36
+    protein_g: 0.5
+    carbs_g: 9.1
+    fat_g: 0.1
+    fibre_g: 0.8
+    iron_mg: 0.2
+    calcium_mg: 6
+    magnesium_mg: 10
+    zinc_mg: 0.1
+    potassium_mg: 228
+    folate_ug: 19
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 18
+    omega3_mg: 33
+  density:
+    g_per_cup: 170
+    g_per_piece: null
+    g_per_leaf: null
+methi-leaves:
+  category: leafy
+  basis: raw
+  aliases:
+  - methi leaves
+  - methi
+  - small bunch methi leaves
+  per_100g:
+    kcal: 34
+    protein_g: 4.0
+    carbs_g: 4.0
+    fat_g: 0.9
+    fibre_g: 4.9
+    iron_mg: 4.0
+    calcium_mg: 274
+    magnesium_mg: 61
+    zinc_mg: 0.7
+    potassium_mg: 335
+    folate_ug: 62
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 47
+    omega3_mg: 120
+  density:
+    g_per_cup: 35
+    g_per_piece: null
+    g_per_leaf: 0.3
+milk:
+  category: dairy
+  basis: as_consumed
+  aliases:
+  - whole milk
+  - milk
+  - cow's milk
+  - whole cow's milk
+  - goat's milk
+  per_100g:
+    kcal: 61
+    protein_g: 3.2
+    carbs_g: 4.8
+    fat_g: 3.3
+    fibre_g: 0
+    iron_mg: 0.1
+    calcium_mg: 113
+    magnesium_mg: 10
+    zinc_mg: 0.4
+    potassium_mg: 132
+    folate_ug: 5
+    b12_ug: 0.5
+    vit_d_ug: 1
+    vit_c_mg: 0
+    omega3_mg: 20
+  density:
+    g_per_cup: 244
+    g_per_piece: null
+    g_per_leaf: null
+millet-cooked:
+  category: grain
+  basis: cooked
+  aliases:
+  - cooked millet
+  per_100g:
+    kcal: 119
+    protein_g: 3.5
+    carbs_g: 23.7
+    fat_g: 1.0
+    fibre_g: 1.3
+    iron_mg: 0.6
+    calcium_mg: 3
+    magnesium_mg: 44
+    zinc_mg: 0.9
+    potassium_mg: 62
+    folate_ug: 19
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 30
+  density:
+    g_per_cup: 175
+    g_per_piece: null
+    g_per_leaf: null
+millet-foxtail:
+  category: grain
+  basis: dry
+  aliases:
+  - foxtail
+  - foxtail millet
+  per_100g:
+    kcal: 331
+    protein_g: 12.3
+    carbs_g: 60.1
+    fat_g: 4.3
+    fibre_g: 8.0
+    iron_mg: 2.8
+    calcium_mg: 31
+    magnesium_mg: 81
+    zinc_mg: 2.4
+    potassium_mg: 250
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 50
+  density:
+    g_per_cup: 180
+    g_per_piece: null
+    g_per_leaf: null
+millet-generic:
+  category: grain
+  basis: dry
+  aliases:
+  - uncooked millet grains
+  - millet
+  per_100g:
+    kcal: 378
+    protein_g: 11.0
+    carbs_g: 72.9
+    fat_g: 4.2
+    fibre_g: 8.5
+    iron_mg: 3.0
+    calcium_mg: 8
+    magnesium_mg: 114
+    zinc_mg: 1.7
+    potassium_mg: 195
+    folate_ug: 85
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 120
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+millet-kodo:
+  category: grain
+  basis: dry
+  aliases:
+  - kodo millet
+  - kodo
+  per_100g:
+    kcal: 331
+    protein_g: 8.9
+    carbs_g: 66.2
+    fat_g: 2.6
+    fibre_g: 6.4
+    iron_mg: 2.3
+    calcium_mg: 15
+    magnesium_mg: 122
+    zinc_mg: 1.7
+    potassium_mg: 144
+    folate_ug: 33
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 40
+  density:
+    g_per_cup: 180
+    g_per_piece: null
+    g_per_leaf: null
+millet-sama:
+  category: grain
+  basis: dry
+  aliases:
+  - sama
+  - sama millet
+  - barnyard millet
+  per_100g:
+    kcal: 307
+    protein_g: 6.2
+    carbs_g: 65.5
+    fat_g: 2.2
+    fibre_g: 9.8
+    iron_mg: 5.0
+    calcium_mg: 20
+    magnesium_mg: 82
+    zinc_mg: 3.0
+    potassium_mg: 250
+    folate_ug: 35
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 40
+  density:
+    g_per_cup: 180
+    g_per_piece: null
+    g_per_leaf: null
+mint-fresh:
+  category: herb
+  basis: raw
+  aliases:
+  - fresh mint leaves
+  - mint
+  - fresh mint sprigs
+  - fresh mint sprig
+  - fresh mint
+  per_100g:
+    kcal: 44
+    protein_g: 3.3
+    carbs_g: 8.4
+    fat_g: 0.7
+    fibre_g: 6.8
+    iron_mg: 11.9
+    calcium_mg: 199
+    magnesium_mg: 63
+    zinc_mg: 1.1
+    potassium_mg: 458
+    folate_ug: 105
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 13
+    omega3_mg: 330
+  density:
+    g_per_cup: 25
+    g_per_piece: null
+    g_per_leaf: 0.15
+miso:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - red miso
+  - red miso dissolved in 1 tbsp hot water
+  per_100g:
+    kcal: 199
+    protein_g: 12.8
+    carbs_g: 26.5
+    fat_g: 6.0
+    fibre_g: 5.4
+    iron_mg: 2.5
+    calcium_mg: 57
+    magnesium_mg: 48
+    zinc_mg: 2.6
+    potassium_mg: 210
+    folate_ug: 19
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 300
+  density:
+    g_per_cup: 275
+    g_per_piece: null
+    g_per_leaf: null
+mixed-vegetables:
+  category: vegetable
+  basis: raw
+  aliases:
+  - mixed vegetables
+  - vegetables
+  - vegetable
+  - finely chopped vegetables
+  - diced seasonal vegetables
+  - chopped mixed vegetables
+  - mixed summer vegetables
+  - roughly chopped vegetables and
+  - mixed salad vegetables
+  - green
+  per_100g:
+    kcal: 45
+    protein_g: 2.3
+    carbs_g: 9.0
+    fat_g: 0.3
+    fibre_g: 3.0
+    iron_mg: 0.8
+    calcium_mg: 27
+    magnesium_mg: 20
+    zinc_mg: 0.5
+    potassium_mg: 250
+    folate_ug: 41
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 25
+    omega3_mg: 35
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+moong-dal:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - split yellow moong dal
+  - moong dal
+  - yellow split mung beans
+  - yellow split mung dal
+  - split yellow mung beans
+  - moong
+  per_100g:
+    kcal: 348
+    protein_g: 24.5
+    carbs_g: 59.9
+    fat_g: 1.2
+    fibre_g: 8.2
+    iron_mg: 3.9
+    calcium_mg: 75
+    magnesium_mg: 127
+    zinc_mg: 2.7
+    potassium_mg: 1150
+    folate_ug: 549
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 2
+    omega3_mg: 26
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+moringa-leaves:
+  category: leafy
+  basis: raw
+  aliases:
+  - moringa
+  - moringa leaves
+  per_100g:
+    kcal: 64
+    protein_g: 9.4
+    carbs_g: 8.3
+    fat_g: 1.4
+    fibre_g: 2.0
+    iron_mg: 4.0
+    calcium_mg: 185
+    magnesium_mg: 42
+    zinc_mg: 0.6
+    potassium_mg: 337
+    folate_ug: 40
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 52
+    omega3_mg: 200
+  density:
+    g_per_cup: 21
+    g_per_piece: null
+    g_per_leaf: 0.2
+moringa-powder:
+  category: spice
+  basis: dry
+  aliases:
+  - moringa powder in
+  - moringa powder
+  per_100g:
+    kcal: 245
+    protein_g: 27.1
+    carbs_g: 30.0
+    fat_g: 2.3
+    fibre_g: 19.2
+    iron_mg: 28.2
+    calcium_mg: 2003
+    magnesium_mg: 368
+    zinc_mg: 3.3
+    potassium_mg: 1324
+    folate_ug: 40
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 17.3
+    omega3_mg: 0
+  density:
+    g_per_cup: 60
+    g_per_piece: null
+    g_per_leaf: null
+mung-whole:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - whole green mung beans
+  - green mung beans
+  - mung beans
+  per_100g:
+    kcal: 347
+    protein_g: 23.9
+    carbs_g: 62.6
+    fat_g: 1.2
+    fibre_g: 16.3
+    iron_mg: 6.7
+    calcium_mg: 132
+    magnesium_mg: 189
+    zinc_mg: 2.7
+    potassium_mg: 1246
+    folate_ug: 625
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4.8
+    omega3_mg: 170
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+mustard-seeds:
+  category: spice
+  basis: dry
+  aliases:
+  - mustard seeds
+  - black mustard seeds
+  - mustard powder
+  - mustard
+  per_100g:
+    kcal: 508
+    protein_g: 26.0
+    carbs_g: 28.0
+    fat_g: 36.0
+    fibre_g: 12.2
+    iron_mg: 9.2
+    calcium_mg: 266
+    magnesium_mg: 370
+    zinc_mg: 6.1
+    potassium_mg: 738
+    folate_ug: 162
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 7.1
+    omega3_mg: 320
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+nutmeg:
+  category: spice
+  basis: dry
+  aliases:
+  - nutmeg
+  - freshly grated nutmeg
+  per_100g:
+    kcal: 525
+    protein_g: 5.8
+    carbs_g: 49.3
+    fat_g: 36.3
+    fibre_g: 20.8
+    iron_mg: 3.0
+    calcium_mg: 184
+    magnesium_mg: 183
+    zinc_mg: 2.1
+    potassium_mg: 350
+    folate_ug: 76
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3
+    omega3_mg: 160
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
+nutritional-yeast:
+  category: condiment
+  basis: dry
+  aliases:
+  - nutritional yeast
+  per_100g:
+    kcal: 385
+    protein_g: 50.0
+    carbs_g: 36.0
+    fat_g: 5.0
+    fibre_g: 22.0
+    iron_mg: 5.0
+    calcium_mg: 30
+    magnesium_mg: 120
+    zinc_mg: 8.0
+    potassium_mg: 1200
+    folate_ug: 1000
+    b12_ug: 44
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 60
+    g_per_piece: null
+    g_per_leaf: null
+oat-flour:
+  category: flour
+  basis: dry
+  aliases:
+  - oat flour
+  per_100g:
+    kcal: 404
+    protein_g: 14.7
+    carbs_g: 65.7
+    fat_g: 9.1
+    fibre_g: 6.5
+    iron_mg: 4.0
+    calcium_mg: 55
+    magnesium_mg: 144
+    zinc_mg: 3.2
+    potassium_mg: 371
+    folate_ug: 32
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 140
+  density:
+    g_per_cup: 92
+    g_per_piece: null
+    g_per_leaf: null
+olive-oil:
+  category: oil_fat
+  basis: as_consumed
+  aliases:
+  - olive oil
+  - cold-pressed olive oil
+  - olive
+  - olive, sunflower
+  - oil
+  - oil for drizzling
+  per_100g:
+    kcal: 884
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 100
+    fibre_g: 0
+    iron_mg: 0.6
+    calcium_mg: 1
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 1
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 760
+  density:
+    g_per_cup: 216
+    g_per_piece: null
+    g_per_leaf: null
+onion:
+  category: vegetable
+  basis: raw
+  aliases:
+  - onion
+  - small onion
+  - red onion
+  - diced red onion
+  per_100g:
+    kcal: 40
+    protein_g: 1.1
+    carbs_g: 9.3
+    fat_g: 0.1
+    fibre_g: 1.7
+    iron_mg: 0.4
+    calcium_mg: 23
+    magnesium_mg: 10
+    zinc_mg: 0.2
+    potassium_mg: 146
+    folate_ug: 19
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 7.4
+    omega3_mg: 4
+  density:
+    g_per_cup: 115
+    g_per_piece: 110
+    g_per_leaf: null
+orange:
+  category: fruit
+  basis: raw
+  aliases:
+  - orange
+  - fresh orange
+  - grapefruit
+  per_100g:
+    kcal: 47
+    protein_g: 0.9
+    carbs_g: 12
+    fat_g: 0.1
+    fibre_g: 2.4
+    iron_mg: 0.1
+    calcium_mg: 40
+    magnesium_mg: 10
+    zinc_mg: 0.1
+    potassium_mg: 181
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 53
+    omega3_mg: 7
+  density:
+    g_per_cup: 180
+    g_per_piece: 130
+    g_per_leaf: null
+orange-juice:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - orange juice
+  - apple juice
+  - apple cider
+  - pomegranate juice
+  per_100g:
+    kcal: 45
+    protein_g: 0.7
+    carbs_g: 10.4
+    fat_g: 0.2
+    fibre_g: 0.2
+    iron_mg: 0.2
+    calcium_mg: 11
+    magnesium_mg: 11
+    zinc_mg: 0.1
+    potassium_mg: 200
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 50
+    omega3_mg: 10
+  density:
+    g_per_cup: 248
+    g_per_piece: null
+    g_per_leaf: null
+paneer:
+  category: dairy
+  basis: as_consumed
+  aliases:
+  - paneer
+  - g paneer
+  per_100g:
+    kcal: 296
+    protein_g: 19.1
+    carbs_g: 4.8
+    fat_g: 22.8
+    fibre_g: 0
+    iron_mg: 0.6
+    calcium_mg: 480
+    magnesium_mg: 20
+    zinc_mg: 2.2
+    potassium_mg: 100
+    folate_ug: 15
+    b12_ug: 0.8
+    vit_d_ug: 0.2
+    vit_c_mg: 0
+    omega3_mg: 100
+  density:
+    g_per_cup: 130
+    g_per_piece: null
+    g_per_leaf: null
+parsley:
+  category: herb
+  basis: raw
+  aliases:
+  - fresh parsley
+  - flat-leaf parsley leaves
+  - fresh parsley leaves
+  per_100g:
+    kcal: 36
+    protein_g: 3.0
+    carbs_g: 6.3
+    fat_g: 0.8
+    fibre_g: 3.3
+    iron_mg: 6.2
+    calcium_mg: 138
+    magnesium_mg: 50
+    zinc_mg: 1.1
+    potassium_mg: 554
+    folate_ug: 152
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 133
+    omega3_mg: 8
+  density:
+    g_per_cup: 60
+    g_per_piece: null
+    g_per_leaf: 0.3
+parsnip:
+  category: vegetable
+  basis: raw
+  aliases:
+  - parsnips
+  per_100g:
+    kcal: 75
+    protein_g: 1.2
+    carbs_g: 18
+    fat_g: 0.3
+    fibre_g: 4.9
+    iron_mg: 0.6
+    calcium_mg: 36
+    magnesium_mg: 29
+    zinc_mg: 0.6
+    potassium_mg: 375
+    folate_ug: 67
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 17
+    omega3_mg: 3
+  density:
+    g_per_cup: 133
+    g_per_piece: 100
+    g_per_leaf: null
+peach:
+  category: fruit
+  basis: raw
+  aliases:
+  - peach
+  per_100g:
+    kcal: 39
+    protein_g: 0.9
+    carbs_g: 9.5
+    fat_g: 0.3
+    fibre_g: 1.5
+    iron_mg: 0.3
+    calcium_mg: 6
+    magnesium_mg: 9
+    zinc_mg: 0.2
+    potassium_mg: 190
+    folate_ug: 4
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 6.6
+    omega3_mg: 2
+  density:
+    g_per_cup: 154
+    g_per_piece: 150
+    g_per_leaf: null
+peanuts:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - roasted peanuts
+  - peanuts
+  per_100g:
+    kcal: 567
+    protein_g: 25.8
+    carbs_g: 16.1
+    fat_g: 49.2
+    fibre_g: 8.5
+    iron_mg: 4.6
+    calcium_mg: 92
+    magnesium_mg: 168
+    zinc_mg: 3.3
+    potassium_mg: 705
+    folate_ug: 240
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 3
+  density:
+    g_per_cup: 146
+    g_per_piece: 0.8
+    g_per_leaf: null
+peas:
+  category: vegetable
+  basis: raw
+  aliases:
+  - peas
+  - peas and diced vegetables
+  per_100g:
+    kcal: 81
+    protein_g: 5.4
+    carbs_g: 14
+    fat_g: 0.4
+    fibre_g: 5.1
+    iron_mg: 1.5
+    calcium_mg: 25
+    magnesium_mg: 33
+    zinc_mg: 1.2
+    potassium_mg: 244
+    folate_ug: 65
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 40
+    omega3_mg: 35
+  density:
+    g_per_cup: 145
+    g_per_piece: null
+    g_per_leaf: null
+poha:
+  category: grain
+  basis: dry
+  aliases:
+  - flattened millet
+  - flattened rice
+  - poha
+  - rice poha
+  per_100g:
+    kcal: 346
+    protein_g: 7.5
+    carbs_g: 76.0
+    fat_g: 1.2
+    fibre_g: 3.5
+    iron_mg: 6.0
+    calcium_mg: 20
+    magnesium_mg: 60
+    zinc_mg: 1.5
+    potassium_mg: 150
+    folate_ug: 12
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 15
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+potato:
+  category: vegetable
+  basis: raw
+  aliases:
+  - medium white potato
+  - white potato
+  - potato
+  per_100g:
+    kcal: 77
+    protein_g: 2.0
+    carbs_g: 17
+    fat_g: 0.1
+    fibre_g: 2.2
+    iron_mg: 0.8
+    calcium_mg: 12
+    magnesium_mg: 23
+    zinc_mg: 0.3
+    potassium_mg: 425
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 20
+    omega3_mg: 10
+  density:
+    g_per_cup: 150
+    g_per_piece: 150
+    g_per_leaf: null
+prawns:
+  category: protein
+  basis: as_consumed
+  aliases:
+  - prawns
+  per_100g:
+    kcal: 85
+    protein_g: 20.1
+    carbs_g: 0.9
+    fat_g: 0.5
+    fibre_g: 0
+    iron_mg: 0.5
+    calcium_mg: 64
+    magnesium_mg: 35
+    zinc_mg: 1.3
+    potassium_mg: 264
+    folate_ug: 19
+    b12_ug: 1.1
+    vit_d_ug: 0.2
+    vit_c_mg: 0
+    omega3_mg: 300
+  density:
+    g_per_cup: 145
+    g_per_piece: 10
+    g_per_leaf: null
+prunes:
+  category: dried_fruit
+  basis: dried
+  aliases:
+  - prunes
+  per_100g:
+    kcal: 240
+    protein_g: 2.2
+    carbs_g: 64
+    fat_g: 0.4
+    fibre_g: 7.1
+    iron_mg: 0.9
+    calcium_mg: 43
+    magnesium_mg: 41
+    zinc_mg: 0.4
+    potassium_mg: 732
+    folate_ug: 4
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.6
+    omega3_mg: 17
+  density:
+    g_per_cup: 174
+    g_per_piece: 9
+    g_per_leaf: null
+pumpkin:
+  category: vegetable
+  basis: raw
+  aliases:
+  - pumpkin puree
+  - kabocha squash
+  - buttercup squash
+  - cooked butternut squash
+  - butternut squash
+  - pumpkin
+  per_100g:
+    kcal: 26
+    protein_g: 1.0
+    carbs_g: 6.5
+    fat_g: 0.1
+    fibre_g: 0.5
+    iron_mg: 0.8
+    calcium_mg: 21
+    magnesium_mg: 12
+    zinc_mg: 0.3
+    potassium_mg: 340
+    folate_ug: 16
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 9
+    omega3_mg: 3
+  density:
+    g_per_cup: 116
+    g_per_piece: null
+    g_per_leaf: null
+pumpkin-seeds:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - raw pumpkin seeds
+  - pumpkin seeds
+  per_100g:
+    kcal: 559
+    protein_g: 30.2
+    carbs_g: 10.7
+    fat_g: 49.0
+    fibre_g: 6.0
+    iron_mg: 8.8
+    calcium_mg: 46
+    magnesium_mg: 592
+    zinc_mg: 7.8
+    potassium_mg: 809
+    folate_ug: 58
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.9
+    omega3_mg: 120
+  density:
+    g_per_cup: 130
+    g_per_piece: null
+    g_per_leaf: null
+quinoa:
+  category: grain
+  basis: dry
+  aliases:
+  - quinoa
+  - white quinoa
+  per_100g:
+    kcal: 368
+    protein_g: 14.1
+    carbs_g: 64.2
+    fat_g: 6.1
+    fibre_g: 7.0
+    iron_mg: 4.6
+    calcium_mg: 47
+    magnesium_mg: 197
+    zinc_mg: 3.1
+    potassium_mg: 563
+    folate_ug: 184
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 260
+  density:
+    g_per_cup: 170
+    g_per_piece: null
+    g_per_leaf: null
+quinoa-cooked:
+  category: grain
+  basis: cooked
+  aliases:
+  - cooked quinoa
+  per_100g:
+    kcal: 120
+    protein_g: 4.4
+    carbs_g: 21.3
+    fat_g: 1.9
+    fibre_g: 2.8
+    iron_mg: 1.5
+    calcium_mg: 17
+    magnesium_mg: 64
+    zinc_mg: 1.1
+    potassium_mg: 172
+    folate_ug: 42
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 85
+  density:
+    g_per_cup: 185
+    g_per_piece: null
+    g_per_leaf: null
+radish:
+  category: vegetable
+  basis: raw
+  aliases:
+  - radish
+  per_100g:
+    kcal: 16
+    protein_g: 0.7
+    carbs_g: 3.4
+    fat_g: 0.1
+    fibre_g: 1.6
+    iron_mg: 0.3
+    calcium_mg: 25
+    magnesium_mg: 10
+    zinc_mg: 0.3
+    potassium_mg: 233
+    folate_ug: 25
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 15
+    omega3_mg: 30
+  density:
+    g_per_cup: 116
+    g_per_piece: 10
+    g_per_leaf: null
+ragi:
+  category: grain
+  basis: dry
+  aliases:
+  - ragi
+  - ragi flour
+  - finger millet
+  per_100g:
+    kcal: 321
+    protein_g: 7.2
+    carbs_g: 66.8
+    fat_g: 1.9
+    fibre_g: 11.2
+    iron_mg: 4.6
+    calcium_mg: 364
+    magnesium_mg: 146
+    zinc_mg: 2.5
+    potassium_mg: 408
+    folate_ug: 35
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 30
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+raisins:
+  category: dried_fruit
+  basis: dried
+  aliases:
+  - raisins
+  - golden raisins
+  per_100g:
+    kcal: 299
+    protein_g: 3.1
+    carbs_g: 79
+    fat_g: 0.5
+    fibre_g: 3.7
+    iron_mg: 1.9
+    calcium_mg: 50
+    magnesium_mg: 32
+    zinc_mg: 0.2
+    potassium_mg: 749
+    folate_ug: 5
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 2.3
+    omega3_mg: 7
+  density:
+    g_per_cup: 145
+    g_per_piece: null
+    g_per_leaf: null
+rice-cooked:
+  category: grain
+  basis: cooked
+  aliases:
+  - cooked basmati rice
+  - cooked white basmati rice
+  - cooked white jasmine rice
+  - cooked grain of choice
+  - cooked white
+  per_100g:
+    kcal: 130
+    protein_g: 2.7
+    carbs_g: 28.2
+    fat_g: 0.3
+    fibre_g: 0.4
+    iron_mg: 0.2
+    calcium_mg: 10
+    magnesium_mg: 12
+    zinc_mg: 0.5
+    potassium_mg: 35
+    folate_ug: 3
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 5
+  density:
+    g_per_cup: 160
+    g_per_piece: null
+    g_per_leaf: null
+rice-noodles:
+  category: grain
+  basis: dry
+  aliases:
+  - rice noodles
+  - kelp noodles
+  per_100g:
+    kcal: 364
+    protein_g: 5.9
+    carbs_g: 83.2
+    fat_g: 0.6
+    fibre_g: 1.6
+    iron_mg: 0.7
+    calcium_mg: 18
+    magnesium_mg: 12
+    zinc_mg: 0.7
+    potassium_mg: 30
+    folate_ug: 3
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 10
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+ridge-gourd:
+  category: vegetable
+  basis: raw
+  aliases:
+  - turai
+  - ridge gourd
+  per_100g:
+    kcal: 20
+    protein_g: 1.2
+    carbs_g: 4.4
+    fat_g: 0.2
+    fibre_g: 1.1
+    iron_mg: 0.4
+    calcium_mg: 18
+    magnesium_mg: 14
+    zinc_mg: 0.3
+    potassium_mg: 139
+    folate_ug: 37
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12
+    omega3_mg: 3
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
+rolled-oats:
+  category: grain
+  basis: dry
+  aliases:
+  - rolled oats
+  - oats
+  per_100g:
+    kcal: 389
+    protein_g: 16.9
+    carbs_g: 66.3
+    fat_g: 6.9
+    fibre_g: 10.6
+    iron_mg: 4.7
+    calcium_mg: 54
+    magnesium_mg: 177
+    zinc_mg: 4.0
+    potassium_mg: 429
+    folate_ug: 56
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 111
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+romaine:
+  category: leafy
+  basis: raw
+  aliases:
+  - romaine
+  - lettuce
+  per_100g:
+    kcal: 17
+    protein_g: 1.2
+    carbs_g: 3.3
+    fat_g: 0.3
+    fibre_g: 2.1
+    iron_mg: 1.0
+    calcium_mg: 33
+    magnesium_mg: 14
+    zinc_mg: 0.2
+    potassium_mg: 247
+    folate_ug: 136
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4
+    omega3_mg: 110
+  density:
+    g_per_cup: 47
+    g_per_piece: null
+    g_per_leaf: 15
+rosemary:
+  category: herb
+  basis: dried
+  aliases:
+  - dried rosemary
+  - fresh rosemary, fennel seeds
+  - rosemary
+  per_100g:
+    kcal: 331
+    protein_g: 4.9
+    carbs_g: 64
+    fat_g: 15
+    fibre_g: 43
+    iron_mg: 29
+    calcium_mg: 1280
+    magnesium_mg: 220
+    zinc_mg: 3.2
+    potassium_mg: 955
+    folate_ug: 307
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 61
+    omega3_mg: 1100
+  density:
+    g_per_cup: 40
+    g_per_piece: null
+    g_per_leaf: null
+saffron:
+  category: spice
+  basis: dry
+  aliases:
+  - saffron thread
+  - saffron threads
+  - saffron
+  per_100g:
+    kcal: 310
+    protein_g: 11.4
+    carbs_g: 65.4
+    fat_g: 5.9
+    fibre_g: 3.9
+    iron_mg: 11.1
+    calcium_mg: 111
+    magnesium_mg: 264
+    zinc_mg: 1.1
+    potassium_mg: 1724
+    folate_ug: 93
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 80.8
+    omega3_mg: 0
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+salad-dressing:
+  category: composite
+  basis: as_consumed
+  aliases:
+  - all-seasons salad dressing
+  per_100g:
+    kcal: 460
+    protein_g: 0.1
+    carbs_g: 2.5
+    fat_g: 50.0
+    fibre_g: 0.1
+    iron_mg: 0.3
+    calcium_mg: 5
+    magnesium_mg: 2
+    zinc_mg: 0.1
+    potassium_mg: 35
+    folate_ug: 4
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12
+    omega3_mg: 380
+  density:
+    g_per_cup: 215
+    g_per_piece: null
+    g_per_leaf: null
+salsa:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - salsa
+  per_100g:
+    kcal: 36
+    protein_g: 1.5
+    carbs_g: 7.0
+    fat_g: 0.2
+    fibre_g: 1.8
+    iron_mg: 0.6
+    calcium_mg: 32
+    magnesium_mg: 15
+    zinc_mg: 0.2
+    potassium_mg: 288
+    folate_ug: 12
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 4
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+salt:
+  category: spice
+  basis: dry
+  aliases:
+  - salt
+  - sea salt
+  - rock salt
+  - pinch salt
+  - finely ground pink salt
+  - finely ground salt
+  - salt to taste
+  - salt and pepper
+  per_100g:
+    kcal: 0
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 30
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 273
+    g_per_piece: null
+    g_per_leaf: null
+sea-vegetables:
+  category: vegetable
+  basis: dried
+  aliases:
+  - dried sea vegetables
+  - sushi nori sheets
+  - dulse flakes
+  per_100g:
+    kcal: 260
+    protein_g: 30
+    carbs_g: 42
+    fat_g: 3.0
+    fibre_g: 12
+    iron_mg: 20
+    calcium_mg: 300
+    magnesium_mg: 300
+    zinc_mg: 2.5
+    potassium_mg: 2400
+    folate_ug: 500
+    b12_ug: 1.5
+    vit_d_ug: 0
+    vit_c_mg: 40
+    omega3_mg: 1200
+  density:
+    g_per_cup: 15
+    g_per_piece: 3
+    g_per_leaf: null
+sesame-oil:
+  category: oil_fat
+  basis: as_consumed
+  aliases:
+  - sesame oil
+  per_100g:
+    kcal: 884
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 100
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 0
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 300
+  density:
+    g_per_cup: 218
+    g_per_piece: null
+    g_per_leaf: null
+sesame-seeds:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - sesame seeds
+  - til
+  per_100g:
+    kcal: 573
+    protein_g: 17.7
+    carbs_g: 23.4
+    fat_g: 49.7
+    fibre_g: 11.8
+    iron_mg: 14.6
+    calcium_mg: 975
+    magnesium_mg: 351
+    zinc_mg: 7.8
+    potassium_mg: 468
+    folate_ug: 97
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 380
+  density:
+    g_per_cup: 144
+    g_per_piece: null
+    g_per_leaf: null
+snake-gourd:
+  category: vegetable
+  basis: raw
+  aliases:
+  - snake gourd
+  per_100g:
+    kcal: 18
+    protein_g: 0.6
+    carbs_g: 3.9
+    fat_g: 0.3
+    fibre_g: 0.8
+    iron_mg: 0.3
+    calcium_mg: 26
+    magnesium_mg: 16
+    zinc_mg: 0.3
+    potassium_mg: 121
+    folate_ug: 13
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12
+    omega3_mg: 3
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
+spice-mix-savory:
+  category: spice
+  basis: dry
+  aliases:
+  - everyday savory spice mix
+  - everyday digestive salts
+  - spring salts
+  - winter salts
+  per_100g:
+    kcal: 260
+    protein_g: 11.5
+    carbs_g: 38.0
+    fat_g: 13.8
+    fibre_g: 23.0
+    iron_mg: 25.3
+    calcium_mg: 716
+    magnesium_mg: 270
+    zinc_mg: 3.3
+    potassium_mg: 1187
+    folate_ug: 8
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 12.4
+    omega3_mg: 100
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
+spice-mix-sweet:
+  category: spice
+  basis: dry
+  aliases:
+  - everyday sweet spice mix
+  - sweet spice mix
+  - winter spice mix
+  - summer spice mix
+  - spring spice mix
+  - fall spice mix
+  per_100g:
+    kcal: 298
+    protein_g: 7.9
+    carbs_g: 73.6
+    fat_g: 4.0
+    fibre_g: 31.7
+    iron_mg: 14.0
+    calcium_mg: 500
+    magnesium_mg: 168
+    zinc_mg: 4.3
+    potassium_mg: 957
+    folate_ug: 10
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 8.5
+    omega3_mg: 20
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+spinach:
+  category: leafy
+  basis: raw
+  aliases:
+  - spinach
+  - baby spinach
+  - palak
+  per_100g:
+    kcal: 24
+    protein_g: 2.1
+    carbs_g: 2.9
+    fat_g: 0.6
+    fibre_g: 2.4
+    iron_mg: 2.9
+    calcium_mg: 82
+    magnesium_mg: 74
+    zinc_mg: 0.4
+    potassium_mg: 460
+    folate_ug: 140
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 30
+    omega3_mg: 140
+  density:
+    g_per_cup: 30
+    g_per_piece: null
+    g_per_leaf: 8
+star-anise:
+  category: spice
+  basis: dry
+  aliases:
+  - star anise
+  per_100g:
+    kcal: 337
+    protein_g: 17.6
+    carbs_g: 50.0
+    fat_g: 15.9
+    fibre_g: 14.6
+    iron_mg: 37.0
+    calcium_mg: 646
+    magnesium_mg: 170
+    zinc_mg: 5.3
+    potassium_mg: 1441
+    folate_ug: 10
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 21
+    omega3_mg: 100
+  density:
+    g_per_cup: 90
+    g_per_piece: 1
+    g_per_leaf: null
+sunflower-oil:
+  category: oil_fat
+  basis: as_consumed
+  aliases:
+  - sunflower oil
+  - sunflower
+  per_100g:
+    kcal: 884
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 100
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 0
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 40
+  density:
+    g_per_cup: 218
+    g_per_piece: null
+    g_per_leaf: null
+sunflower-seeds:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - toasted sunflower seeds
+  - sunflower seeds
+  per_100g:
+    kcal: 584
+    protein_g: 20.8
+    carbs_g: 20.0
+    fat_g: 51.5
+    fibre_g: 8.6
+    iron_mg: 5.3
+    calcium_mg: 78
+    magnesium_mg: 325
+    zinc_mg: 5.0
+    potassium_mg: 645
+    folate_ug: 227
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.4
+    omega3_mg: 60
+  density:
+    g_per_cup: 140
+    g_per_piece: null
+    g_per_leaf: null
+sweet-potato:
+  category: vegetable
+  basis: raw
+  aliases:
+  - mashed sweet potato
+  - baked sweet potatoes
+  - cooked sweet potato
+  - sweet potato
+  - cubed sweet potatoes, white potatoes
+  - medium yams
+  - yams
+  per_100g:
+    kcal: 86
+    protein_g: 1.6
+    carbs_g: 20
+    fat_g: 0.1
+    fibre_g: 3.0
+    iron_mg: 0.6
+    calcium_mg: 30
+    magnesium_mg: 25
+    zinc_mg: 0.3
+    potassium_mg: 337
+    folate_ug: 11
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 2.4
+    omega3_mg: 6
+  density:
+    g_per_cup: 133
+    g_per_piece: 130
+    g_per_leaf: null
+swiss-chard:
+  category: leafy
+  basis: raw
+  aliases:
+  - swiss chard leaves
+  - rainbow swiss chard
+  - chopped swiss chard
+  - swiss chard
+  per_100g:
+    kcal: 19
+    protein_g: 1.8
+    carbs_g: 3.7
+    fat_g: 0.2
+    fibre_g: 1.6
+    iron_mg: 1.8
+    calcium_mg: 51
+    magnesium_mg: 81
+    zinc_mg: 0.4
+    potassium_mg: 379
+    folate_ug: 14
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 30
+    omega3_mg: 7
+  density:
+    g_per_cup: 36
+    g_per_piece: null
+    g_per_leaf: 25
+tahini:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - sesame tahini
+  - tahini
+  - sunflower seed butter
+  per_100g:
+    kcal: 595
+    protein_g: 17.0
+    carbs_g: 21.2
+    fat_g: 53.8
+    fibre_g: 9.3
+    iron_mg: 8.9
+    calcium_mg: 426
+    magnesium_mg: 95
+    zinc_mg: 4.6
+    potassium_mg: 414
+    folate_ug: 98
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 400
+  density:
+    g_per_cup: 250
+    g_per_piece: null
+    g_per_leaf: null
+tamari:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - tamari
+  - soy sauce
+  per_100g:
+    kcal: 60
+    protein_g: 10.5
+    carbs_g: 5.6
+    fat_g: 0.1
+    fibre_g: 0.8
+    iron_mg: 2.4
+    calcium_mg: 20
+    magnesium_mg: 40
+    zinc_mg: 0.4
+    potassium_mg: 212
+    folate_ug: 18
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 255
+    g_per_piece: null
+    g_per_leaf: null
+tamarind:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - tamarind
+  per_100g:
+    kcal: 239
+    protein_g: 2.8
+    carbs_g: 62.5
+    fat_g: 0.6
+    fibre_g: 5.1
+    iron_mg: 2.8
+    calcium_mg: 74
+    magnesium_mg: 92
+    zinc_mg: 0.1
+    potassium_mg: 628
+    folate_ug: 14
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3.5
+    omega3_mg: 0
+  density:
+    g_per_cup: 250
+    g_per_piece: null
+    g_per_leaf: null
+tea-dust:
+  category: other
+  basis: dry
+  aliases:
+  - indian-style fine tea dust
+  per_100g:
+    kcal: 0
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 0
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+tendli:
+  category: vegetable
+  basis: raw
+  aliases:
+  - tendli
+  - ivy gourd
+  per_100g:
+    kcal: 18
+    protein_g: 1.2
+    carbs_g: 3.1
+    fat_g: 0.1
+    fibre_g: 1.6
+    iron_mg: 1.4
+    calcium_mg: 40
+    magnesium_mg: 17
+    zinc_mg: 0.3
+    potassium_mg: 30
+    folate_ug: 14
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 15
+    omega3_mg: 3
+  density:
+    g_per_cup: 110
+    g_per_piece: 8
+    g_per_leaf: null
+tinda:
+  category: vegetable
+  basis: raw
+  aliases:
+  - tinda
+  per_100g:
+    kcal: 21
+    protein_g: 1.4
+    carbs_g: 3.4
+    fat_g: 0.2
+    fibre_g: 1.6
+    iron_mg: 0.9
+    calcium_mg: 25
+    magnesium_mg: 12
+    zinc_mg: 0.3
+    potassium_mg: 150
+    folate_ug: 12
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 18
+    omega3_mg: 3
+  density:
+    g_per_cup: 110
+    g_per_piece: 50
+    g_per_leaf: null
+tofu:
+  category: protein
+  basis: as_consumed
+  aliases:
+  - firm tofu
+  - extra firm tofu
+  per_100g:
+    kcal: 78
+    protein_g: 9.0
+    carbs_g: 2.0
+    fat_g: 4.2
+    fibre_g: 0.9
+    iron_mg: 1.6
+    calcium_mg: 200
+    magnesium_mg: 40
+    zinc_mg: 0.8
+    potassium_mg: 121
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 250
+  density:
+    g_per_cup: 250
+    g_per_piece: 200
+    g_per_leaf: null
+tomato:
+  category: vegetable
+  basis: raw
+  aliases:
+  - tomato
+  - small tomatoes
+  - fresh whole tomatoes
+  - fresh tomato
+  - home-canned tomatoes
+  - tomatoes
+  per_100g:
+    kcal: 18
+    protein_g: 0.9
+    carbs_g: 3.9
+    fat_g: 0.2
+    fibre_g: 1.2
+    iron_mg: 0.3
+    calcium_mg: 10
+    magnesium_mg: 11
+    zinc_mg: 0.2
+    potassium_mg: 237
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 14
+    omega3_mg: 3
+  density:
+    g_per_cup: 150
+    g_per_piece: 100
+    g_per_leaf: null
+toor-dal:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - toor dal
+  - toor
+  per_100g:
+    kcal: 335
+    protein_g: 21.7
+    carbs_g: 60.0
+    fat_g: 1.7
+    fibre_g: 9.5
+    iron_mg: 3.9
+    calcium_mg: 73
+    magnesium_mg: 92
+    zinc_mg: 2.5
+    potassium_mg: 1100
+    folate_ug: 150
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 80
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+turmeric:
+  category: spice
+  basis: dry
+  aliases:
+  - turmeric
+  - turmeric powder
+  per_100g:
+    kcal: 312
+    protein_g: 9.7
+    carbs_g: 67.1
+    fat_g: 3.2
+    fibre_g: 22.7
+    iron_mg: 55
+    calcium_mg: 168
+    magnesium_mg: 208
+    zinc_mg: 4.5
+    potassium_mg: 2080
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.7
+    omega3_mg: 480
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+urad-dal:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - urad dal
+  per_100g:
+    kcal: 341
+    protein_g: 25.2
+    carbs_g: 59.0
+    fat_g: 1.6
+    fibre_g: 11.8
+    iron_mg: 7.6
+    calcium_mg: 138
+    magnesium_mg: 267
+    zinc_mg: 3.3
+    potassium_mg: 983
+    folate_ug: 216
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 150
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+val-beans:
+  category: dal_legume
+  basis: dry
+  aliases:
+  - val
+  - val beans
+  per_100g:
+    kcal: 344
+    protein_g: 23.9
+    carbs_g: 60.7
+    fat_g: 1.7
+    fibre_g: 10.0
+    iron_mg: 5.1
+    calcium_mg: 130
+    magnesium_mg: 170
+    zinc_mg: 3.1
+    potassium_mg: 1235
+    folate_ug: 100
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 100
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+vanilla:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - pure vanilla extract
+  - vanilla extract
+  per_100g:
+    kcal: 52
+    protein_g: 0.1
+    carbs_g: 12.7
+    fat_g: 0.1
+    fibre_g: 0
+    iron_mg: 0.12
+    calcium_mg: 11
+    magnesium_mg: 12
+    zinc_mg: 0.11
+    potassium_mg: 148
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 208
+    g_per_piece: null
+    g_per_leaf: null
+vinegar:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - apple cider vinegar
+  - rice vinegar
+  - ume plum vinegar
+  - fine balsamic vinegar
+  - high-quality balsamic vinegar
+  - balsamic vinegar
+  per_100g:
+    kcal: 48
+    protein_g: 0.3
+    carbs_g: 11.0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0.46
+    calcium_mg: 17
+    magnesium_mg: 8
+    zinc_mg: 0.06
+    potassium_mg: 92
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+walnuts:
+  category: nut_seed
+  basis: as_consumed
+  aliases:
+  - walnuts
+  - chopped pecans
+  - raw hazelnuts
+  per_100g:
+    kcal: 654
+    protein_g: 15.2
+    carbs_g: 13.7
+    fat_g: 65.2
+    fibre_g: 6.7
+    iron_mg: 2.9
+    calcium_mg: 98
+    magnesium_mg: 158
+    zinc_mg: 3.1
+    potassium_mg: 441
+    folate_ug: 98
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1.3
+    omega3_mg: 9080
+  density:
+    g_per_cup: 117
+    g_per_piece: 2.5
+    g_per_leaf: null
+water:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - water
+  - warm water
+  - hot water
+  - purified water
+  - fresh water
+  - boiling water
+  - warm water to bind
+  - water for soaking
+  - water for steaming
+  - ice cubes
+  - ice cubes to thicken
+  - apple juice, cider
+  - little
+  per_100g:
+    kcal: 0
+    protein_g: 0
+    carbs_g: 0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 0
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 0
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+white-beans:
+  category: dal_legume
+  basis: cooked
+  aliases:
+  - cooked white beans
+  - cooked white cannellini beans
+  - white beans
+  - cannellini beans
+  per_100g:
+    kcal: 139
+    protein_g: 9.7
+    carbs_g: 25.1
+    fat_g: 0.4
+    fibre_g: 6.3
+    iron_mg: 3.7
+    calcium_mg: 90
+    magnesium_mg: 63
+    zinc_mg: 1.4
+    potassium_mg: 561
+    folate_ug: 81
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 120
+  density:
+    g_per_cup: 179
+    g_per_piece: null
+    g_per_leaf: null
+white-rice:
+  category: grain
+  basis: dry
+  aliases:
+  - white rice
+  - white basmati rice
+  - basmati rice
+  - raw basmati rice
+  - rice
+  per_100g:
+    kcal: 356
+    protein_g: 8.0
+    carbs_g: 78.0
+    fat_g: 0.6
+    fibre_g: 2.8
+    iron_mg: 0.7
+    calcium_mg: 9
+    magnesium_mg: 25
+    zinc_mg: 1.2
+    potassium_mg: 110
+    folate_ug: 9
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 15
+  density:
+    g_per_cup: 185
+    g_per_piece: null
+    g_per_leaf: null
+yogurt:
+  category: dairy
+  basis: as_consumed
+  aliases:
+  - organic whole milk yogurt
+  - plain yogurt
+  - whole milk yogurt
+  - yogurt
+  - yogurt culture
+  per_100g:
+    kcal: 61
+    protein_g: 3.5
+    carbs_g: 4.7
+    fat_g: 3.3
+    fibre_g: 0
+    iron_mg: 0.1
+    calcium_mg: 121
+    magnesium_mg: 12
+    zinc_mg: 0.6
+    potassium_mg: 155
+    folate_ug: 7
+    b12_ug: 0.4
+    vit_d_ug: 0.1
+    vit_c_mg: 0.5
+    omega3_mg: 20
+  density:
+    g_per_cup: 245
+    g_per_piece: null
+    g_per_leaf: null
+zest:
+  category: condiment
+  basis: as_consumed
+  aliases:
+  - lemon zest
+  - orange zest
+  per_100g:
+    kcal: 72
+    protein_g: 1.5
+    carbs_g: 20.0
+    fat_g: 0.3
+    fibre_g: 10.6
+    iron_mg: 0.8
+    calcium_mg: 147
+    magnesium_mg: 20
+    zinc_mg: 0.25
+    potassium_mg: 200
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 130
+    omega3_mg: 0
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
+zucchini:
+  category: vegetable
+  basis: raw
+  aliases:
+  - zucchini
+  - small zucchini
+  - medium zucchini
+  - small to medium zucchini
+  - yellow summer squash
+  per_100g:
+    kcal: 17
+    protein_g: 1.2
+    carbs_g: 3.1
+    fat_g: 0.3
+    fibre_g: 1.0
+    iron_mg: 0.4
+    calcium_mg: 16
+    magnesium_mg: 18
+    zinc_mg: 0.3
+    potassium_mg: 261
+    folate_ug: 24
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 18
+    omega3_mg: 45
+  density:
+    g_per_cup: 124
+    g_per_piece: 200
+    g_per_leaf: null
+mung-sprouted:
+  category: dal_legume
+  basis: sprouted
+  aliases:
+  - sprouted mung beans
+  - fresh sprouted mung beans
+  - sprouted moong
+  - mung bean sprouts
+  - moong sprouts
+  per_100g:
+    kcal: 30
+    protein_g: 3.0
+    carbs_g: 5.9
+    fat_g: 0.2
+    fibre_g: 1.8
+    iron_mg: 0.9
+    calcium_mg: 13
+    magnesium_mg: 21
+    zinc_mg: 0.4
+    potassium_mg: 149
+    folate_ug: 61
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 13
+    omega3_mg: 15
+  density:
+    g_per_cup: 104
+    g_per_piece: null
+    g_per_leaf: null
+moong-dal-thin:
+  category: dal_legume
+  basis: as_consumed
+  aliases:
+  - thin moong dal
+  - thin dal
+  - palak moong
+  per_100g:
+    kcal: 45
+    protein_g: 3.1
+    carbs_g: 7.5
+    fat_g: 0.4
+    fibre_g: 1.2
+    iron_mg: 0.6
+    calcium_mg: 12
+    magnesium_mg: 18
+    zinc_mg: 0.4
+    potassium_mg: 160
+    folate_ug: 70
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0.5
+    omega3_mg: 4
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
+moong-dal-soaked:
+  category: dal_legume
+  basis: soaked
+  aliases:
+  - soaked split moong dal
+  - soaked moong dal
+  per_100g:
+    kcal: 160
+    protein_g: 11.2
+    carbs_g: 27.5
+    fat_g: 0.6
+    fibre_g: 3.8
+    iron_mg: 1.8
+    calcium_mg: 34
+    magnesium_mg: 58
+    zinc_mg: 1.2
+    potassium_mg: 528
+    folate_ug: 252
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1
+    omega3_mg: 12
+  density:
+    g_per_cup: 185
+    g_per_piece: null
+    g_per_leaf: null

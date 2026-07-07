@@ -29,7 +29,8 @@ ingredients:
 - item: 1 tsp coconut oil
 - item: salt
 steps:
-- Heat oil, crackle cumin; add onion, cauliflower, beans + turmeric, sauté 4 min till tender.
+- Heat oil, crackle cumin; add onion, cauliflower, beans + turmeric, sauté 4 min till
+  tender.
 - Beat eggs with salt, pour in.
 - Scramble on medium till just set — don't overcook.
 source: coach-authored (Shivani) 2026-06-13
@@ -38,5 +39,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2023/01/egg-bhurji-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 135
+  protein_g: 9.8
+  carbs_g: 2.1
+  fat_g: 9.5
+  fibre_g: 0.5
+  iron_mg: 1.9
+  calcium_mg: 50.7
+  magnesium_mg: 14.0
+  zinc_mg: 1.0
+  potassium_mg: 157
+  folate_ug: 42.1
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 4.3
+  omega3_mg: 85.1
+nutrient_coverage_pct: 100.0
+rich_in:
+- b12
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

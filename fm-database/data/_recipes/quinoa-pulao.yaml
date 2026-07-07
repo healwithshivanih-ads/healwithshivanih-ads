@@ -40,5 +40,28 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/12/quinoa-upma-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 210
+  protein_g: 8.1
+  carbs_g: 38.3
+  fat_g: 3.2
+  fibre_g: 5.9
+  iron_mg: 2.9
+  calcium_mg: 52.6
+  magnesium_mg: 103
+  zinc_mg: 1.8
+  potassium_mg: 483
+  folate_ug: 114
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.2
+  omega3_mg: 135
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- magnesium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

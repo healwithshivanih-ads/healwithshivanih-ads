@@ -88,8 +88,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://assets.nourishingmeals.com/sites/default/files/styles/content/public/recipes/classic%20hummus-2.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: herbed hummus
@@ -101,3 +101,26 @@ kcal_per_serving: 150
 kcal_total: 1200
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 297
+  protein_g: 11.7
+  carbs_g: 33.8
+  fat_g: 14.0
+  fibre_g: 6.9
+  iron_mg: 3.0
+  calcium_mg: 65.0
+  magnesium_mg: 48.2
+  zinc_mg: 1.8
+  potassium_mg: 406
+  folate_ug: 289
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.7
+  omega3_mg: 135
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

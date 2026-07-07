@@ -36,5 +36,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.theloveofspice.com/wp-content/uploads/2021/05/indian-masala-omelette.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 131
+  protein_g: 9.6
+  carbs_g: 1.4
+  fat_g: 9.4
+  fibre_g: 0.3
+  iron_mg: 1.4
+  calcium_mg: 46.8
+  magnesium_mg: 10.6
+  zinc_mg: 1.0
+  potassium_mg: 124
+  folate_ug: 38.7
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 2.5
+  omega3_mg: 76.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- b12
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

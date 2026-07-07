@@ -56,7 +56,8 @@ ingredients:
   unit: tbsp
 steps:
 - Pan-sear the paneer cubes in a little oil until golden on the edges; set aside.
-- In the same pan, saute the garlic and vegetables on high heat 3-4 minutes so they stay crisp.
+- In the same pan, saute the garlic and vegetables on high heat 3-4 minutes so they
+  stay crisp.
 - Add the cooked quinoa, salt and pepper, and toss through to warm.
 - Return the paneer, add lemon juice and herbs, and toss gently.
 - Serve warm as a balanced bowl with a side salad.
@@ -68,8 +69,8 @@ protein_g: 18
 good_for:
 - digestion-and-nutrient-absorption
 one_line: A balanced bowl of quinoa, crisp vegetables and pan-seared paneer.
-headnote: 'A protein-forward bowl: quinoa for complex carbs, paneer for protein and crisp-tender vegetables,
-  finished bright with lemon.'
+headnote: 'A protein-forward bowl: quinoa for complex carbs, paneer for protein and
+  crisp-tender vegetables, finished bright with lemon.'
 kcal_is_estimate: true
 kcal_per_serving: 360
 kcal_basis: estimate
@@ -85,8 +86,36 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/quinoa-vegetable-paneer-bowl.jpg
-  credit: Healthy quinoa salad with dried fruit.jpg by TorbeyCharbel — Wikimedia Commons (CC BY 4.0)
+  credit: Healthy quinoa salad with dried fruit.jpg by TorbeyCharbel — Wikimedia Commons
+    (CC BY 4.0)
   source_url: https://commons.wikimedia.org/wiki/File:Healthy_quinoa_salad_with_dried_fruit.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution before external
-    or commercial use
+  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
+    before external or commercial use
+nutrients_per_serving:
+  kcal: 365
+  protein_g: 15.9
+  carbs_g: 31.6
+  fat_g: 20.2
+  fibre_g: 5.5
+  iron_mg: 2.6
+  calcium_mg: 288
+  magnesium_mg: 89.7
+  zinc_mg: 2.6
+  potassium_mg: 462
+  folate_ug: 86.4
+  b12_ug: 0.4
+  vit_d_ug: 0.1
+  vit_c_mg: 26.6
+  omega3_mg: 215
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- calcium
+- magnesium
+- zinc
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

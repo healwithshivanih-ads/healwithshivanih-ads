@@ -73,8 +73,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://sp-ao.shortpixel.ai/client/to_webp%2Cq_glossy%2Cret_img%2Cw_1083%2Ch_722/https%3A//www.goodfoodstories.com/wp-content/uploads/2012/01/lemon-ginger-cayenne-shot-1-Photograph-%C2%A9-Good-Food-Stories-LLC.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: refresh-o-rama
@@ -86,3 +86,24 @@ kcal_per_serving: 90
 kcal_total: 180
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 108
+  protein_g: 1.8
+  carbs_g: 28.0
+  fat_g: 0.3
+  fibre_g: 4.5
+  iron_mg: 0.3
+  calcium_mg: 74.3
+  magnesium_mg: 21.3
+  zinc_mg: 0.2
+  potassium_mg: 368
+  folate_ug: 57.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 102
+  omega3_mg: 14.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

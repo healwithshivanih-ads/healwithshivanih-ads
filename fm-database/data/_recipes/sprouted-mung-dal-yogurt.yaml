@@ -102,8 +102,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.vegrecipesofindia.com/wp-content/uploads/2015/07/whole-green-moong-dal-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: sprouted mung dal with yogurt
@@ -115,3 +115,29 @@ kcal_per_serving: 130
 kcal_total: 520
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 285
+  protein_g: 14.6
+  carbs_g: 47.7
+  fat_g: 4.9
+  fibre_g: 11.1
+  iron_mg: 4.6
+  calcium_mg: 126
+  magnesium_mg: 140
+  zinc_mg: 1.9
+  potassium_mg: 999
+  folate_ug: 333
+  b12_ug: 0.1
+  vit_d_ug: 0.0
+  vit_c_mg: 13.4
+  omega3_mg: 125
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

@@ -66,8 +66,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://lifemadesweeter.com/wp-content/uploads/Easy-Stuffed-Dates-Recipe-Photo.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: stuffed dates
@@ -79,3 +79,23 @@ kcal_per_serving: 190
 kcal_total: 380
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 189
+  protein_g: 3.4
+  carbs_g: 32.7
+  fat_g: 7.1
+  fibre_g: 4.1
+  iron_mg: 0.8
+  calcium_mg: 69.5
+  magnesium_mg: 57.6
+  zinc_mg: 0.6
+  potassium_mg: 376
+  folate_ug: 12.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 2.4
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

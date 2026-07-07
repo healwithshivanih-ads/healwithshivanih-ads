@@ -66,8 +66,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cdn.loveandlemons.com/wp-content/uploads/opengraph/2019/08/baked-sweet-potato-2.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: the yam bomb
@@ -79,3 +79,23 @@ kcal_per_serving: 140
 kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 153
+  protein_g: 2.1
+  carbs_g: 26.0
+  fat_g: 4.7
+  fibre_g: 3.9
+  iron_mg: 0.8
+  calcium_mg: 39.0
+  magnesium_mg: 32.5
+  zinc_mg: 0.4
+  potassium_mg: 438
+  folate_ug: 14.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 3.1
+  omega3_mg: 44.1
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

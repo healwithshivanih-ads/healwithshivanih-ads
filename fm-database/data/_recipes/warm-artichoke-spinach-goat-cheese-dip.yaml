@@ -71,8 +71,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cookieandkate.com/images/2020/12/creamy-spinach-artichoke-dip-recipe-2.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: 'warm artichoke, spinach, and goat cheese
@@ -86,3 +86,32 @@ kcal_per_serving: 60
 kcal_total: 120
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 200
+  protein_g: 14.4
+  carbs_g: 36.0
+  fat_g: 4.2
+  fibre_g: 18.4
+  iron_mg: 6.8
+  calcium_mg: 226
+  magnesium_mg: 247
+  zinc_mg: 2.0
+  potassium_mg: 1512
+  folate_ug: 325
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 61.6
+  omega3_mg: 199
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

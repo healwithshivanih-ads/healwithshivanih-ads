@@ -86,8 +86,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cdn.foodaciously.com/static/recipes/2593736a-ed20-4361-b4b0-0667c5780717/beetroot-kale-smoothie-97ffa3c6be899c60e6df8d8b063ebf1a-960.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: the beet queen
@@ -99,3 +99,26 @@ kcal_per_serving: 55
 kcal_total: 110
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 97.6
+  protein_g: 2.6
+  carbs_g: 18.9
+  fat_g: 2.3
+  fibre_g: 6.1
+  iron_mg: 1.8
+  calcium_mg: 134
+  magnesium_mg: 41.4
+  zinc_mg: 0.6
+  potassium_mg: 350
+  folate_ug: 62.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 49.0
+  omega3_mg: 956
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- vitamin-c
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

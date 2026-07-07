@@ -65,8 +65,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2024/04/ragi-roti-ragi-rotti-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Ragi roti
@@ -78,3 +78,28 @@ kcal_per_serving: 240
 kcal_total: 480
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 309
+  protein_g: 6.5
+  carbs_g: 60.1
+  fat_g: 4.0
+  fibre_g: 10.1
+  iron_mg: 4.1
+  calcium_mg: 328
+  magnesium_mg: 131
+  zinc_mg: 2.2
+  potassium_mg: 367
+  folate_ug: 31.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 45.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

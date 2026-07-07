@@ -79,8 +79,8 @@ image:
   credit: web reference (coach-selected)
   source_url: http://static1.squarespace.com/static/5eeb86f9f276e77b63c8a0a1/5eeba2a0a9e1da0ba0566a7e/6871d69f7a0f3059f606101e/1777987747773/IMG_3591.jpeg?format=1500w
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: winter ayurvedic spice mix and salts
@@ -92,3 +92,24 @@ kcal_per_serving: 20
 kcal_total: 80
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 46.6
+  protein_g: 1.6
+  carbs_g: 8.5
+  fat_g: 1.4
+  fibre_g: 3.0
+  iron_mg: 5.4
+  calcium_mg: 64.0
+  magnesium_mg: 35.3
+  zinc_mg: 0.5
+  potassium_mg: 228
+  folate_ug: 1.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.9
+  omega3_mg: 33.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- iron
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

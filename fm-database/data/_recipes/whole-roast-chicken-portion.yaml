@@ -28,7 +28,8 @@ ingredients:
 - item: few curry leaves
 steps:
 - Slash the portion, rub with all the spices + oil + salt; rest 20 min.
-- Roast in a hot oven (200C) 30-35 min, or pan-roast covered, turning, till juices run clear.
+- Roast in a hot oven (200C) 30-35 min, or pan-roast covered, turning, till juices
+  run clear.
 - Scatter curry leaves in the last 5 min for aroma.
 - Rest before serving.
 source: coach-authored (Shivani) 2026-06-13
@@ -37,5 +38,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.recipetineats.com/tachyon/2016/05/Roast-Chicken_6a.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 116
+  protein_g: 15.5
+  carbs_g: 1.8
+  fat_g: 4.9
+  fibre_g: 0.5
+  iron_mg: 1.0
+  calcium_mg: 24.6
+  magnesium_mg: 22.2
+  zinc_mg: 1.0
+  potassium_mg: 227
+  folate_ug: 6.9
+  b12_ug: 0.2
+  vit_d_ug: 0.1
+  vit_c_mg: 0.5
+  omega3_mg: 64.1
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

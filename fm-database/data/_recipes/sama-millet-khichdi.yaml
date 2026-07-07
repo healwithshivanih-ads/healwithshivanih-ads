@@ -85,8 +85,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://images.archanaskitchen.com/images/recipes/indian/main-course/indian-rice-recipes/khichdi-recipes/Sama_Rice_Khichdi_Recipe_Vrat_Navratri_Festival_Fasting_Food_2_6c23c03d9b.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Sama millet khichdi
@@ -98,3 +98,29 @@ kcal_per_serving: 260
 kcal_total: 520
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 319
+  protein_g: 10.5
+  carbs_g: 50.9
+  fat_g: 8.4
+  fibre_g: 8.4
+  iron_mg: 4.5
+  calcium_mg: 53.1
+  magnesium_mg: 84.2
+  zinc_mg: 2.4
+  potassium_mg: 575
+  folate_ug: 178
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 15.6
+  omega3_mg: 103
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

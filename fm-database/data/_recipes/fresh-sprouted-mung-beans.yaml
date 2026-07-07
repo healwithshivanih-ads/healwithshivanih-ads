@@ -63,8 +63,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://assets.bonappetit.com/photos/644167b1e757a8816cf1952e/16%3A9/w_2560%2Cc_limit/GettyImages-157726216.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: fresh sprouted mung beans
@@ -76,3 +76,24 @@ kcal_per_serving: 30
 kcal_total: 120
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 86.8
+  protein_g: 6.0
+  carbs_g: 15.7
+  fat_g: 0.3
+  fibre_g: 4.1
+  iron_mg: 1.7
+  calcium_mg: 33.0
+  magnesium_mg: 47.2
+  zinc_mg: 0.7
+  potassium_mg: 312
+  folate_ug: 156
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.2
+  omega3_mg: 42.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

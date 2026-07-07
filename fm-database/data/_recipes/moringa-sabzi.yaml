@@ -90,8 +90,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.vidhyashomecooking.com/wp-content/uploads/2021/02/MurungaiKeeraiPoriyal.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Moringa sabzi
@@ -103,3 +103,23 @@ kcal_per_serving: 140
 kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 103
+  protein_g: 2.7
+  carbs_g: 3.8
+  fat_g: 9.3
+  fibre_g: 1.3
+  iron_mg: 1.7
+  calcium_mg: 59.9
+  magnesium_mg: 18.3
+  zinc_mg: 0.3
+  potassium_mg: 134
+  folate_ug: 13.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 11.6
+  omega3_mg: 105
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

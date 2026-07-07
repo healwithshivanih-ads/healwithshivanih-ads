@@ -101,8 +101,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2022/06/green-moong-dal-green-gram-curry-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: spicy andhra-style dal
@@ -114,3 +114,29 @@ kcal_per_serving: 110
 kcal_total: 440
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 227
+  protein_g: 12.9
+  carbs_g: 34.3
+  fat_g: 5.1
+  fibre_g: 9.2
+  iron_mg: 4.5
+  calcium_mg: 87.3
+  magnesium_mg: 110
+  zinc_mg: 1.6
+  potassium_mg: 700
+  folate_ug: 319
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 6.3
+  omega3_mg: 125
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

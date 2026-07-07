@@ -30,7 +30,8 @@ ingredients:
 - item: coriander
 steps:
 - Heat oil, crackle cumin + chilli.
-- Add lauki, turmeric, salt; cover and cook on low 12 min till soft (it releases its own water).
+- Add lauki, turmeric, salt; cover and cook on low 12 min till soft (it releases its
+  own water).
 - Finish with coriander.
 - 'Tip: Ash gourd works the same way — light and cooling.'
 source: coach-authored (Shivani) 2026-06-13
@@ -39,5 +40,25 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2023/08/lauki-sabzi-dudhi-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 32.0
+  protein_g: 0.5
+  carbs_g: 2.6
+  fat_g: 2.4
+  fibre_g: 0.5
+  iron_mg: 0.6
+  calcium_mg: 20.3
+  magnesium_mg: 9.3
+  zinc_mg: 0.5
+  potassium_mg: 116
+  folate_ug: 5.1
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 9.0
+  omega3_mg: 4.1
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

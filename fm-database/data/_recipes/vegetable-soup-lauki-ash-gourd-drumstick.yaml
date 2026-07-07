@@ -39,5 +39,26 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/08/vegetable-soup-recipe.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 60.4
+  protein_g: 2.1
+  carbs_g: 8.9
+  fat_g: 2.5
+  fibre_g: 2.8
+  iron_mg: 0.5
+  calcium_mg: 85.7
+  magnesium_mg: 38.1
+  zinc_mg: 0.7
+  potassium_mg: 435
+  folate_ug: 36.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 78.5
+  omega3_mg: 20.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

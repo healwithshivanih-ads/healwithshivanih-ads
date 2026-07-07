@@ -149,8 +149,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://cookieandkate.com/images/2017/05/best-huevos-rancheros-recipe-2.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: huevos rancheros and brussels sprouts hash
@@ -162,3 +162,34 @@ kcal_per_serving: 310
 kcal_total: 620
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 495
+  protein_g: 21.4
+  carbs_g: 48.2
+  fat_g: 26.1
+  fibre_g: 12.4
+  iron_mg: 6.5
+  calcium_mg: 224
+  magnesium_mg: 110
+  zinc_mg: 3.0
+  potassium_mg: 1295
+  folate_ug: 159
+  b12_ug: 0.9
+  vit_d_ug: 2.1
+  vit_c_mg: 97.5
+  omega3_mg: 334
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- b12
+- vitamin-c
+- vitamin-d
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

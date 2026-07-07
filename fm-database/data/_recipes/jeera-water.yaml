@@ -20,7 +20,29 @@ ingredients:
 - item: 1 cup water
 steps:
 - 'Either: soak 1 tsp jeera in 1 cup water overnight, strain and drink in the morning.'
-- 'Or the quick way: simmer 1 tsp jeera in 1 cup water for 3–4 minutes, cool to warm, strain and sip.'
+- 'Or the quick way: simmer 1 tsp jeera in 1 cup water for 3–4 minutes, cool to warm,
+  strain and sip.'
 - Drink on an empty stomach, before tea or coffee.
-tip: The overnight soak is zero effort — pair it with your methi water routine if both are on your plan.
+tip: The overnight soak is zero effort — pair it with your methi water routine if
+  both are on your plan.
 source: coach-authored (Shivani) 2026-07-07
+nutrients_per_serving:
+  kcal: 1.6
+  protein_g: 0.1
+  carbs_g: 0.2
+  fat_g: 0.1
+  fibre_g: 0.0
+  iron_mg: 0.3
+  calcium_mg: 3.9
+  magnesium_mg: 1.5
+  zinc_mg: 0.0
+  potassium_mg: 7.5
+  folate_ug: 0.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 1.0
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

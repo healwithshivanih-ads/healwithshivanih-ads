@@ -71,8 +71,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://frommybowl.com/wp-content/uploads/2025/08/Creamy_Zucchini_Soup_Vegan_FromMyBowl-11.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ONLY ZUCCHINI SOUP
@@ -84,3 +84,25 @@ kcal_per_serving: 60
 kcal_total: 120
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 54.4
+  protein_g: 2.4
+  carbs_g: 6.2
+  fat_g: 2.9
+  fibre_g: 2.0
+  iron_mg: 0.8
+  calcium_mg: 32.2
+  magnesium_mg: 36.0
+  zinc_mg: 0.6
+  potassium_mg: 522
+  folate_ug: 48.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 36.0
+  omega3_mg: 108
+nutrient_coverage_pct: 100.0
+rich_in:
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'

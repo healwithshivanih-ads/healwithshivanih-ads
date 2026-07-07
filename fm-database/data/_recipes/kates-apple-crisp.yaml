@@ -104,8 +104,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://minimalistbaker.com/wp-content/uploads/2015/10/THE-BEST-Vegan-Apple-Crisp-with-a-Pecan-Oat-Topping-1-Bowl-and-NATURALLY-SWEETENED-vegan-apple-fall-thanksgiving-dessert-applecrisp-minimalistbaker.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: kate's apple crisp
@@ -117,3 +117,25 @@ kcal_per_serving: 190
 kcal_total: 950
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
+nutrients_per_serving:
+  kcal: 354
+  protein_g: 6.0
+  carbs_g: 46.5
+  fat_g: 18.2
+  fibre_g: 7.2
+  iron_mg: 1.6
+  calcium_mg: 72.2
+  magnesium_mg: 76.0
+  zinc_mg: 1.3
+  potassium_mg: 392
+  folate_ug: 19.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 7.7
+  omega3_mg: 29.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- magnesium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
