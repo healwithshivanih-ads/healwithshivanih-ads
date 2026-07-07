@@ -1,0 +1,24 @@
+slug: meal-frequency-and-fasting-are-personal
+statement: 'Meal frequency is individual: eat every three to five hours if you feel
+  worse skipping meals, but periodic fasting or two-meals-a-day can benefit IBS and
+  IBD by resting the gut, and skipping meals does not appreciably slow metabolism.'
+evidence_tier: plausible_emerging
+rationale: Cites meal-frequency/body-composition meta-analysis and fasting benefits
+  in IBS/IBD.
+coaching_translation: There's no single right meal schedule — some do best with regular
+  meals, others with a rest from eating; both are fine.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- irritable-bowel-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Eat every 3-5 h if hypoglycaemic, but fasting/2-meals can rest and help the
+    gut; skipping meals doesn't slow metabolism.
+  location: Ch 8
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

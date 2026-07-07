@@ -1,0 +1,21 @@
+slug: distinguish-die-off-from-allergy-by-time
+statement: 'When adding supplements to a sensitive client, introduce them one at a
+  time: a die-off reaction resolves within a few days to a week, whereas an allergic
+  reaction persists — time is the distinguishing feature.'
+evidence_tier: plausible_emerging
+rationale: Ruscio's rule for reactive clients.
+coaching_translation: A short-lived flare when starting something is often 'die-off'
+  and passes in days; a reaction that keeps going is a true intolerance.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Add supplements one at a time; die-off resolves in days-1 week, allergy persists.
+  location: Ch 25–26
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

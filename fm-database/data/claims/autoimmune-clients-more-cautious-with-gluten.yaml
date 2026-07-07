@@ -1,0 +1,26 @@
+slug: autoimmune-clients-more-cautious-with-gluten
+statement: People with autoimmune conditions should be more cautious with gluten;
+  a gluten-free diet reliably helps autoimmune thyroid mainly when celiac disease
+  is also present, and a family history of celiac warrants extra caution.
+evidence_tier: plausible_emerging
+rationale: Cites inconclusive autoimmune-thyroid gluten data outside of coexisting
+  celiac.
+coaching_translation: If you have an autoimmune condition, be more careful with gluten
+  — especially with any family history of celiac.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gluten-sensitivity
+- celiac-disease
+- autoimmunity-leaky-gut-connection
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Autoimmune clients should be more cautious with gluten; gluten-free reliably
+    helps thyroid autoimmunity mainly with coexisting celiac.
+  location: Ch 7
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

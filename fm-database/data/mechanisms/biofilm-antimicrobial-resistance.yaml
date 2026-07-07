@@ -1,0 +1,34 @@
+slug: biofilm-antimicrobial-resistance
+display_name: Biofilm-Mediated Antimicrobial Resistance
+aliases:
+- gut biofilm
+- biofilm treatment resistance
+category: gut
+summary: Colonies of bacteria or fungi build a protective biofilm coating over themselves
+  that shields them from antibiotics and herbal antimicrobials, which can explain
+  a partial or stalled treatment response. Disrupting the biofilm with an antibiofilm
+  agent (e.g. N-acetylcysteine) improves eradication.
+upstream_drivers:
+- chronic microbial overgrowth
+- incomplete antimicrobial treatment
+downstream_effects:
+- persistent infection
+- partial treatment response
+related_mechanisms:
+- antimicrobial-resistance
+linked_to_topics:
+- h-pylori-infection
+- sibo
+notes_for_coach: If a client only partially responds to an antimicrobial course, a
+  biofilm may be shielding the microbes; clinicians sometimes add an antibiofilm agent
+  such as NAC. Antimicrobial choice/dosing is clinician territory.
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Biofilms shield microbes from antimicrobials; adding NAC raised H. pylori
+    clearance from 20% to 65%.
+  location: Ch 17 — Antibacterial Treatments
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

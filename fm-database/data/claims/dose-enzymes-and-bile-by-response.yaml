@@ -1,0 +1,27 @@
+slug: dose-enzymes-and-bile-by-response
+statement: Digestive enzymes and supplemental bile should be dosed by symptom response
+  rather than lab testing, at the minimum dose for the minimum time — excess bile
+  can itself cause diarrhoea, so more is not better.
+evidence_tier: plausible_emerging
+rationale: Enzyme evidence is stronger than for HCl but mostly from documented deficiency
+  populations.
+coaching_translation: Judge digestive enzymes by whether symptoms improve — use the
+  least you need, for the shortest time.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- digestive-enzyme-supplementation
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+linked_to_supplements:
+- digestive-enzymes
+- ox-bile
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Dose enzymes/bile by symptom response, minimum dose for minimum time; excess
+    bile causes diarrhoea.
+  location: Ch 16
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

@@ -1,0 +1,25 @@
+slug: high-stool-scfa-can-signal-overgrowth
+statement: Elevated stool short-chain fatty acids or butyrate can indicate bacterial
+  overgrowth (as in obesity and celiac disease) rather than a healthy gut, and can
+  normalise after treatment such as a gluten-free diet.
+evidence_tier: plausible_emerging
+rationale: Cites celiac/obesity microbiota data; reframes a marker usually read as
+  'good'.
+coaching_translation: High butyrate on a stool test isn't always good news — sometimes
+  it's a sign of overgrowth.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms:
+- butyrate-production
+- sibo-dysbiosis
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: High stool SCFAs can reflect overgrowth, not health, and normalise after
+    treatment.
+  location: Ch 2
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

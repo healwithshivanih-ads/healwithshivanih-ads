@@ -1,0 +1,23 @@
+slug: gluten-enzymes-do-not-enable-eating-gluten
+statement: Gluten-digesting enzymes do not reliably prevent symptoms or intestinal
+  damage in celiac disease and offer minor help at best, so celiac patients should
+  not rely on them to eat meaningful amounts of gluten.
+evidence_tier: plausible_emerging
+rationale: Cites gluten-enzyme (AN-PEP/ALV003) trials.
+coaching_translation: '''Gluten enzymes'' won''t make gluten safe for someone with
+  celiac — don''t use them to cheat.'
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- celiac-disease
+linked_to_mechanisms: []
+linked_to_supplements:
+- digestive-enzymes
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Gluten-digesting enzymes don't reliably prevent celiac symptoms or damage.
+  location: Ch 16
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

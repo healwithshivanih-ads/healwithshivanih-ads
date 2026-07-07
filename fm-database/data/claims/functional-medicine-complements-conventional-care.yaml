@@ -1,0 +1,23 @@
+slug: functional-medicine-complements-conventional-care
+statement: Functional medicine complements rather than replaces conventional medicine,
+  so conventional screening — for example cancer screening — should continue with
+  the conventional doctor even while pursuing functional gut work.
+evidence_tier: fm_specific_thin
+rationale: Ch 32 scope guidance.
+coaching_translation: Functional and conventional care work together — keep your regular
+  screenings even while healing the gut.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- finding-a-functional-medicine-provider
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: FM complements, not replaces, conventional care; keep conventional screening
+    with the conventional doctor.
+  location: Ch 32
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

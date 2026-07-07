@@ -1,0 +1,25 @@
+slug: remove-overgrowth-before-feeding-bacteria
+statement: Remove overgrowth and infection (with antimicrobials or an elemental diet)
+  before feeding beneficial bacteria with prebiotics and fibre — feeding an imbalanced
+  microbiome mainly supports the imbalanced growth.
+evidence_tier: plausible_emerging
+rationale: A core sequencing principle of the book's action plan.
+coaching_translation: Clear the overgrowth first, then feed the good bacteria — feeding
+  too early just fuels the imbalance.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gut-dysbiosis
+- probiotic-and-prebiotic-support
+linked_to_mechanisms:
+- dysbiosis
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Remove bad bugs before feeding good ones; feeding an imbalanced microbiome
+    supports imbalance.
+  location: Ch 17–21
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

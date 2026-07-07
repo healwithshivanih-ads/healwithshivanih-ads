@@ -1,0 +1,22 @@
+slug: elimination-reintroduction-beats-food-testing
+statement: The most useful approach to food intolerance is structured elimination
+  to symptom improvement followed by gradual reintroduction — not food-allergy testing,
+  which is costly and misses FODMAP, blood-sugar and leaky-gut reactions.
+evidence_tier: plausible_emerging
+rationale: Ruscio's clinical stance backed by the limits of IgG/allergy testing.
+coaching_translation: The best 'food test' is removing suspects until you feel better,
+  then adding them back one at a time.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- food-intolerance
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Food exclusion then gradual reintroduction beats food-allergy testing.
+  location: Ch 6
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

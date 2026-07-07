@@ -1,0 +1,24 @@
+slug: shift-work-raises-ibs-risk
+statement: Rotating shift work is associated with developing IBS and abdominal pain
+  independent of sleep quality — a disrupted circadian rhythm alone raises gut-symptom
+  risk.
+evidence_tier: plausible_emerging
+rationale: Cites shift-work/IBS association data.
+coaching_translation: Irregular shift schedules can trigger IBS even when you're sleeping
+  enough — rhythm itself matters.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- irritable-bowel-syndrome
+- sleep
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Rotating shift work is associated with IBS and abdominal pain independent
+    of sleep quality.
+  location: Ch 12
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

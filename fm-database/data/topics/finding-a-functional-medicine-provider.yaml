@@ -1,0 +1,34 @@
+slug: finding-a-functional-medicine-provider
+display_name: Finding a Good Functional-Medicine Provider
+aliases:
+- choosing an fm doctor
+- fm provider red flags
+summary: Guidance on choosing a functional-medicine provider along a spectrum from
+  health coach to nutritionist to licensed doctor (ND/DC/MD/DO). Mild symptoms can
+  often be helped by a coach or nutritionist; severe symptoms, high sensitivity, or
+  a diagnosed disease call for a licensed provider who specialises in the area. Functional
+  medicine complements rather than replaces conventional care, and clients should
+  watch for red flags such as costly bundled testing-plus-treatment packages and excessive
+  up-front testing.
+common_symptoms: []
+red_flags: []
+related_topics: []
+key_mechanisms: []
+coaching_scope_notes: A coach can help clients set expectations, match a provider
+  tier to symptom severity, and recognise red flags (bundled $5,000 packages, $3,500
+  of testing before starting, a clinician who does not listen). Encourage keeping
+  conventional screening (e.g. cancer screening) with the conventional doctor.
+clinician_scope_notes: Ruscio notes FM practice is currently unregulated and credentials
+  do not guarantee quality; recommends conservative, personalised testing only when
+  it changes treatment.
+notes_for_coach: ''
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Match provider to severity; watch for bundled/expensive testing packages;
+    FM complements, not replaces, conventional care.
+  location: 'Ch 32 — If You Need More Help: Finding a Good Doctor'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

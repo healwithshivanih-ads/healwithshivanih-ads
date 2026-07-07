@@ -1,0 +1,34 @@
+slug: melatonin-gut-barrier-protection
+display_name: Melatonin–Gut Barrier Protection Axis
+aliases:
+- sleep melatonin leaky gut
+category: gut
+summary: Good sleep raises melatonin, and higher melatonin is associated with reduced
+  intestinal permeability, whereas poor sleep lowers melatonin and correlates with
+  more leaky gut. Melatonin supplementation has also improved IBS symptoms — linking
+  sleep quality mechanistically to gut-barrier integrity.
+upstream_drivers:
+- poor sleep
+- circadian disruption
+- low melatonin
+downstream_effects:
+- increased intestinal permeability
+- leaky-gut
+related_mechanisms:
+- leaky-gut
+- late-light-melatonin-suppression
+linked_to_topics:
+- sleep
+notes_for_coach: 'A concrete reason sleep is a gut intervention, not just a wellness
+  nicety: protecting sleep (and thus melatonin) supports the gut barrier. Coach sleep
+  hygiene; melatonin dosing for IBS is clinician-guided.'
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Higher melatonin correlates with less intestinal permeability; poor sleep
+    lowers melatonin and worsens leaky gut.
+  location: Ch 12 — Sleep
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: hpylori-eradication-can-lower-thyroid-antibodies
+statement: Eradicating Helicobacter pylori can reverse stomach autoimmunity and lower
+  thyroid (TPO) antibodies, with one study showing a far larger antibody drop in treated
+  versus untreated Hashimoto's patients who also carried H. pylori.
+evidence_tier: plausible_emerging
+rationale: Cites an Italian study of H. pylori treatment in Hashimoto's.
+coaching_translation: Clearing a stomach H. pylori infection can calm thyroid autoimmunity
+  in some people — a real gut–thyroid link.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- h-pylori-infection
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Eradicating H. pylori reversed stomach autoimmunity and lowered thyroid antibodies.
+  location: Ch 15 & 17
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

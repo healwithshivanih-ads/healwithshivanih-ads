@@ -1,0 +1,28 @@
+slug: celiac-persistent-symptoms-screen-for-sibo
+statement: In celiac disease, small-intestinal bacterial counts and stool butyrate
+  rise and only normalise after a year or more gluten-free; SIBO is a common reason
+  celiac symptoms persist despite a gluten-free diet, and treating it can make patients
+  symptom-free.
+evidence_tier: strong
+rationale: Cites celiac-microbiota studies and a trial where 10 of 15 gluten-free-but-symptomatic
+  celiacs had SIBO and rifaximin resolved them.
+coaching_translation: If a celiac client is strict gluten-free but still suffering,
+  bacterial overgrowth is a likely missed cause worth investigating.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- celiac-disease
+- sibo
+linked_to_mechanisms:
+- sibo-dysbiosis
+- butyrate-production
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Celiac patients still symptomatic on a gluten-free diet were often found
+    to have SIBO; treating it resolved symptoms.
+  location: Ch 2 & 17
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: emulsifier-mucous-barrier-degradation
+display_name: Emulsifier-Induced Mucous Barrier Degradation
+aliases:
+- cmc gut barrier damage
+- polysorbate-80 gut inflammation
+category: gut
+summary: Dietary emulsifiers (carboxymethylcellulose, polysorbate-80) thin the protective
+  intestinal mucous layer, letting bacteria contact and translocate across the gut
+  wall. This drives low-grade inflammation, metabolic syndrome and colitis in animal
+  models, and CMC induced small-intestinal bacterial overgrowth in mice.
+upstream_drivers:
+- processed food additives
+- emulsifiers
+downstream_effects:
+- leaky-gut
+- bacterial translocation
+- low-grade inflammation
+related_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
+linked_to_topics:
+- gut-dysbiosis
+notes_for_coach: 'Practical takeaway: clients with autoimmune disease or IBD (or a
+  family history) are reasonable to steer away from heavily emulsified processed foods.
+  Read ingredient lists for carboxymethylcellulose/cellulose gum and polysorbate-80.'
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Emulsifiers degrade the gut mucous barrier, allowing bacterial translocation
+    and inflammation; CMC caused SIBO in mice.
+  location: Ch 9 — Processed Food & Additives
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

@@ -1,0 +1,23 @@
+slug: carb-fat-inverse-rule
+statement: 'Carbohydrate and fat should be eaten in opposing amounts: as carbs go
+  up, trim fat (and slightly protein) by choosing leaner meats and less oil — never
+  combine a high-carb and high-fat meal.'
+evidence_tier: plausible_emerging
+rationale: A practical macro rule Ruscio gives; mechanistic rationale around metabolic
+  load.
+coaching_translation: Pair higher-carb meals with less fat, and higher-fat meals with
+  fewer carbs — don't stack both.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Fats and carbs should be consumed in opposing amounts; never high-carb plus
+    high-fat.
+  location: Ch 8
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

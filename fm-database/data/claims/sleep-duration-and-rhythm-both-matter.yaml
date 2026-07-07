@@ -1,0 +1,23 @@
+slug: sleep-duration-and-rhythm-both-matter
+statement: Consistently sleeping under seven or over nine hours is associated with
+  more disease and death, and circadian rhythm consistency may matter as much as duration
+  — shift workers with adequate sleep length still show raised disease risk.
+evidence_tier: strong
+rationale: Cites multiple sleep-duration meta-analyses plus shift-work data.
+coaching_translation: Aim for 7–9 hours on a consistent schedule — when you sleep
+  matters as much as how long.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sleep
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: <7 or >9 h sleep raises disease/death risk; rhythm consistency matters as
+    much as duration.
+  location: Ch 12
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

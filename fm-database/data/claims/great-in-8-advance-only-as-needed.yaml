@@ -1,0 +1,23 @@
+slug: great-in-8-advance-only-as-needed
+statement: 'In the Great-in-8 plan you advance only as far as you need to: if satisfied
+  after Step 1 or 2 you skip ahead to reintroduction, Steps 3 (Remove) and 4 (Rebalance)
+  are always done together, and everyone completes the final reintroduce-feed-wean-maintain
+  steps.'
+evidence_tier: fm_specific_thin
+rationale: The program's sequencing logic; clinical-experience-based.
+coaching_translation: You don't need every step — stop when you feel well, but always
+  pair the 'remove' and 'motility' steps, and finish with reintroduction and maintenance.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Advance only as needed; Steps 3 and 4 are always done together; everyone
+    completes Steps 5-8.
+  location: Ch 23
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

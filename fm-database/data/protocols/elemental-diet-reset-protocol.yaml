@@ -1,0 +1,76 @@
+slug: elemental-diet-reset-protocol
+display_name: Elemental / Semielemental Diet Reset
+aliases:
+- elemental diet
+- semielemental diet
+- liquid elemental reset
+category: gut_healing
+summary: A short course of hypoallergenic liquid nutrition made of pre-digested nutrients (free amino
+  acids, digested carbohydrate, essentially no fibre). It is antibacterial, anti-inflammatory and reparative
+  — resting the gut while starving small-intestinal overgrowth. Used as a reset for flares, as a formal
+  treatment for antimicrobial non-responders, or intermittently as hybrid maintenance.
+indications:
+- SIBO
+- IBS not responding to herbal antimicrobials
+- IBD flare
+- highly food-reactive clients
+contraindications:
+- exclusive use beyond a few days without medical supervision
+typical_duration_weeks: null
+phases:
+- name: Flare reset
+  weeks: null
+  summary: 2–4 days exclusive liquid elemental/semielemental nutrition to quell a flare and rest the gut.
+  key_actions:
+  - sip formula throughout the day for 2–4 days
+- name: Formal treatment
+  weeks: 3
+  summary: Up to ~1–3 weeks exclusive, under clinician supervision, as a removal tool for non-responders.
+  key_actions:
+  - exclusive elemental nutrition 1–3 weeks with supervision
+- name: Hybrid maintenance
+  weeks: null
+  summary: Intermittent use — e.g. a shake for breakfast/lunch plus a whole-food dinner — for ongoing
+    support.
+  key_actions:
+  - partial daily replacement as tolerated
+key_steps:
+- 2–4 day flare reset
+- 1–3 week exclusive (supervised) treatment
+- intermittent hybrid maintenance
+foods_to_emphasise: []
+foods_to_remove:
+- all solid food during exclusive phases
+supplements_typically_used: []
+expected_outcomes:
+- reduced SIBO breath-test positivity
+- improved IBS symptoms
+- IBD remission comparable to corticosteroids
+cautions:
+- exclusive use >a few days needs medical supervision
+- semielemental is better tolerated and works as well as full elemental
+prerequisites: []
+recommended_followup:
+- reintroduce food and add a prokinetic to prevent relapse
+incompatible_with: []
+linked_to_topics:
+- sibo
+- irritable-bowel-syndrome
+linked_to_mechanisms:
+- sibo-dysbiosis
+linked_to_symptoms:
+- bloating
+- abdominal-pain
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Hypoallergenic pre-digested liquid diet; matches corticosteroids for IBD remission (Cochrane);
+    normalised SIBO breath test in ~80%.
+  location: Ch 18 — The Liquid-Elemental and Semielemental Diets
+evidence_tier: plausible_emerging
+notes_for_coach: Strong (Cochrane-level) evidence for inducing IBD remission; SIBO/IBS use is plausible_emerging.
+  Semielemental works as well as full elemental and is more filling (better for underweight clients).
+  Exclusive courses beyond a few days are clinician-supervised.
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

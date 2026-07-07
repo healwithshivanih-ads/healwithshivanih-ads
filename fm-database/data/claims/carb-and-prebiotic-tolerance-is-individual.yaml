@@ -1,0 +1,25 @@
+slug: carb-and-prebiotic-tolerance-is-individual
+statement: 'There is no universal carbohydrate or prebiotic intake: the right amount
+  sits on a spectrum shaped by ancestry, latitude, insulin sensitivity and existing
+  overgrowth, so copying another population''s high-carb, high-fibre microbiota-diet
+  can backfire in a Westerner.'
+evidence_tier: plausible_emerging
+rationale: Cites population-microbiota differences (equol producers, seaweed-digesting
+  bacteria, Hadza).
+coaching_translation: The 'perfect' amount of carbs and fibre is personal — what suits
+  one culture's gut can harm another's.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- probiotic-and-prebiotic-support
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Diet–microbiota adaptations are population-specific; don't replicate another
+    population's diet.
+  location: Ch 3
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

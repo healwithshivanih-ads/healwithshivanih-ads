@@ -1,0 +1,23 @@
+slug: chronic-sun-exposure-has-benefits
+statement: Chronic (not intermittent) sun exposure carries cancer-protective and all-cause-mortality
+  benefits partly independent of vitamin D — a Swedish cohort found sun-avoiders had
+  about twice the mortality with no rise in skin-cancer death.
+evidence_tier: plausible_emerging
+rationale: Cites European cancer and Swedish cohort mortality data.
+coaching_translation: Sensible regular sunlight is protective for overall health —
+  sun avoidance carries its own risks.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- vitamin-d3
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Chronic sun exposure carries cancer-protective and mortality benefits; sun-avoiders
+    had ~2x mortality.
+  location: Ch 11
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

@@ -1,0 +1,26 @@
+slug: adrenal-fatigue-testing-is-unreliable
+statement: '''Adrenal fatigue'' is driven by the stressor rather than a primary adrenal
+  failure, and a 58-study systematic review found adrenal-fatigue testing inaccurate
+  — so the practical move is to treat the root stress, which is frequently the gut,
+  rather than chase adrenal tests.'
+evidence_tier: confirm_with_clinician
+rationale: Cites Cadegiani & Kater 2016 systematic review; touches on testing/diagnosis,
+  which is clinician territory.
+coaching_translation: Skip the pricey 'adrenal fatigue' tests — the fix is addressing
+  the underlying stress (often the gut), which a coach can support.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- adrenal-fatigue
+- hpa-axis-dysregulation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: A 58-study review found adrenal-fatigue testing inaccurate; treat the root
+    stressor, often the gut.
+  location: Ch 13
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

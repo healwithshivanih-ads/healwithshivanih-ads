@@ -1,0 +1,27 @@
+slug: probiotic-triple-therapy-framework
+statement: Ruscio's probiotic approach uses all three categories together — a Lactobacillus/Bifidobacterium
+  blend, Saccharomyces boulardii, and a soil-based/spore (Bacillus) probiotic — because
+  each acts through different mechanisms and they complement one another.
+evidence_tier: plausible_emerging
+rationale: The book's Step-2 'Support' framework; each category has its own trial
+  evidence.
+coaching_translation: Rather than one probiotic, use all three types together — a
+  lacto/bifido blend, S. boulardii, and a soil-based/spore one.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- probiotic-and-prebiotic-support
+linked_to_mechanisms: []
+linked_to_supplements:
+- probiotics-lactobacillus-bifidobacterium
+- saccharomyces-boulardii
+- probiotic-spore-based
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: 'Combine all three probiotic categories: Lacto/Bifido blend, S. boulardii,
+    and soil-based/spore Bacillus.'
+  location: Ch 14
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

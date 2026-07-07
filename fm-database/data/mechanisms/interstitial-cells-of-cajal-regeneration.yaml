@@ -1,0 +1,37 @@
+slug: interstitial-cells-of-cajal-regeneration
+display_name: Interstitial Cells of Cajal — Motility Pacemaker Regeneration
+aliases:
+- icc regeneration
+- gut pacemaker cell recovery
+category: gut
+summary: The interstitial cells of Cajal are pacemaker cells that set gut motility.
+  Post-infectious autoimmune damage to them (e.g. after food poisoning) slows the
+  migrating motor complex and predisposes to bacterial overgrowth, but the ICC can
+  regenerate and recover over roughly six months to two years, especially when inflammation
+  and blood sugar are controlled — the rationale for prokinetics.
+upstream_drivers:
+- post-infectious autoimmunity
+- inflammation
+- hyperglycaemia
+downstream_effects:
+- impaired migrating motor complex
+- bacterial overgrowth recurrence
+related_mechanisms:
+- migrating-motor-complex
+- altered-gi-motility
+linked_to_topics:
+- motility
+- sibo
+notes_for_coach: Explains why motility support (prokinetics) is used after clearing
+  SIBO — to keep the small intestine 'flowing' while the pacemaker cells recover,
+  so overgrowth does not simply return.
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: ICC pacemaker cells can regenerate over ~6 months to 2 years once inflammation
+    and blood sugar are controlled.
+  location: Ch 19 — Prokinetics & Intestinal Motility
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

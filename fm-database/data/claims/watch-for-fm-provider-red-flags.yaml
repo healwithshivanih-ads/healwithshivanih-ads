@@ -1,0 +1,23 @@
+slug: watch-for-fm-provider-red-flags
+statement: 'Watch for provider red flags: costly bundled testing-plus-treatment packages,
+  excessive up-front testing, and a hard-driving clinician who does not listen — and
+  remember functional-medicine practice is currently unregulated, so vet carefully.'
+evidence_tier: fm_specific_thin
+rationale: Ch 32 red-flags list.
+coaching_translation: Be cautious of big bundled packages, huge up-front test bills,
+  or a practitioner who won't listen — do your homework.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- finding-a-functional-medicine-provider
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: 'Red flags: costly bundled packages, excessive up-front testing, a clinician
+    who doesn''t listen; FM is unregulated.'
+  location: Ch 32
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

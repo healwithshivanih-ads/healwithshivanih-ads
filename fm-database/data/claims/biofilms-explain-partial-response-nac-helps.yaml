@@ -1,0 +1,25 @@
+slug: biofilms-explain-partial-response-nac-helps
+statement: Microbial biofilms can shield bacteria and fungi from antimicrobials and
+  explain a partial treatment response; adding the antibiofilm agent N-acetylcysteine
+  to an antibiotic raised H. pylori clearance from 20% to 65% in one trial.
+evidence_tier: plausible_emerging
+rationale: Cites the NAC + antibiotic H. pylori trial.
+coaching_translation: If treatment only half-works, a protective biofilm may be shielding
+  the bugs — clinicians sometimes add NAC to break it down.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- h-pylori-infection
+linked_to_mechanisms:
+- biofilm-antimicrobial-resistance
+linked_to_supplements:
+- nac
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Biofilms shield microbes; adding NAC to an antibiotic raised H. pylori clearance
+    from 20% to 65%.
+  location: Ch 17
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

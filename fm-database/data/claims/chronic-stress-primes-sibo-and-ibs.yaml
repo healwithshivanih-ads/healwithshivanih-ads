@@ -1,0 +1,27 @@
+slug: chronic-stress-primes-sibo-and-ibs
+statement: Chronic stress causes leaky gut, lowers stomach acid, slows small-intestinal
+  motility and suppresses gut immunity — a 'perfect storm' that sets up SIBO and IBS,
+  so managing the stressor is part of gut healing.
+evidence_tier: plausible_emerging
+rationale: Cites stress-physiology effects on the gut.
+coaching_translation: Ongoing stress physically changes the gut — acid, motility and
+  the barrier — so stress management is real gut medicine.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sibo
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- leaky-gut
+- low-stomach-acid
+- altered-gi-motility
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Chronic stress causes leaky gut, low acid, slowed motility and reduced gut
+    immunity — a setup for SIBO/IBS.
+  location: Ch 13
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

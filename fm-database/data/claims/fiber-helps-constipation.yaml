@@ -1,0 +1,23 @@
+slug: fiber-helps-constipation
+statement: Increased dietary fibre, especially from cereal grains, increases stool
+  bulk and frequency and relieves constipation, with no negative bowel side effects
+  across large reviews.
+evidence_tier: strong
+rationale: Cites reviews of 65 and 51 studies on fibre and bowel function.
+coaching_translation: For plain constipation, more fibre — especially whole grains
+  — reliably helps things move.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- fiber-gap
+linked_to_mechanisms: []
+linked_to_supplements:
+- dietary-fiber-psyllium
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Cereal-grain fibre increases stool bulk and frequency and relieves constipation.
+  location: Ch 10
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

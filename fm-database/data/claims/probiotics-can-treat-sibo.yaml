@@ -1,0 +1,25 @@
+slug: probiotics-can-treat-sibo
+statement: Probiotics can treat SIBO as a stand-alone therapy — one multi-strain trial
+  produced about 82% symptomatic improvement, outperforming the antibiotic metronidazole
+  — and both lactic-acid and soil-based/spore types have shown benefit.
+evidence_tier: plausible_emerging
+rationale: Cites SIBO probiotic trials incl. a probiotic-vs-metronidazole comparison.
+coaching_translation: Counter-intuitively, probiotics can actually help clear small-intestine
+  overgrowth, not feed it.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements:
+- probiotics-lactobacillus-bifidobacterium
+- probiotic-spore-based
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Probiotics treated SIBO as stand-alone therapy (~82% improvement, beating
+    metronidazole in one trial).
+  location: Ch 14
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

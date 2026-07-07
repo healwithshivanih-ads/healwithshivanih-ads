@@ -1,0 +1,25 @@
+slug: emulsifiers-and-additives-harm-gut-barrier
+statement: Emulsifiers and additives such as carboxymethylcellulose and polysorbate-80
+  degrade the protective gut mucous barrier, promoting bacterial translocation, leaky
+  gut and inflammation, and are linked to rising rates of inflammatory bowel disease.
+evidence_tier: plausible_emerging
+rationale: Cites additive/mucous-barrier studies including CMC-induced SIBO in mice.
+coaching_translation: Heavily processed, emulsified foods can thin the gut's protective
+  lining — worth minimising, especially with autoimmune issues.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gut-dysbiosis
+linked_to_mechanisms:
+- emulsifier-mucous-barrier-degradation
+- leaky-gut
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: Emulsifiers degrade the mucous barrier, driving translocation and inflammation;
+    linked to rising IBD.
+  location: Ch 9
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani

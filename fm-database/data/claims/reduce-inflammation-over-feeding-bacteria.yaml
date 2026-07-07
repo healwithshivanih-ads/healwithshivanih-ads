@@ -1,0 +1,25 @@
+slug: reduce-inflammation-over-feeding-bacteria
+statement: 'Eating to reduce inflammation matters more than eating to feed gut bacteria:
+  an inflamed gut environment kills beneficial bacteria and favours harmful ones,
+  so calming inflammation improves the microbiota on its own.'
+evidence_tier: plausible_emerging
+rationale: A recurring, cross-cutting thesis; mechanistic plus supportive clinical
+  observation (microbiota normalising after anti-inflammatory treatment).
+coaching_translation: Calming gut inflammation does more for your bacteria than piling
+  on fibre and prebiotics.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- gut-dysbiosis
+linked_to_mechanisms:
+- dysbiosis
+linked_to_supplements: []
+sources:
+- id: ruscio-healthy-gut-healthy-you-2018
+  quote: For your gut bacteria, environment is more important than food; eating to
+    control inflammation beats eating to feed bugs.
+  location: Ch 2 & 6
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani
