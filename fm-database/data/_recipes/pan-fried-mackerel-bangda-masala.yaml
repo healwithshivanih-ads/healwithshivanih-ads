@@ -1,0 +1,119 @@
+slug: pan-fried-mackerel-bangda-masala
+name: Pan-Fried Mackerel (Bangda) Masala
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- non_vegetarian
+- nut_free
+region: Konkan / Goa
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+- vata
+rasa:
+- pungent
+- sour
+- salty
+main_ingredients:
+- mackerel
+- red chillies
+- garlic
+- vinegar
+- turmeric
+- coconut oil
+contains_allergens: []
+ingredients:
+- item: whole mackerel (bangda), cleaned
+  qty: '3'
+  unit: whole
+- item: dried Kashmiri red chillies
+  qty: '5'
+  unit: whole
+- item: garlic cloves
+  qty: '6'
+  unit: whole
+- item: coriander seeds
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: ½
+  unit: tsp
+- item: black peppercorns
+  qty: '6'
+  unit: whole
+- item: turmeric powder
+  qty: ½
+  unit: tsp
+- item: apple cider or coconut vinegar
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: coconut oil or rice bran oil
+  qty: '3'
+  unit: tbsp
+- item: lime wedges, to serve
+  qty: '2'
+  unit: whole
+steps:
+- Grind dried red chillies, garlic, coriander seeds, cumin, peppercorns, turmeric,
+  vinegar and salt into a thick smooth masala paste, adding 1 tbsp water if needed.
+- Score each mackerel three times diagonally on both sides down to the bone; rub the
+  masala paste all over and into the scores. Marinate for 15 minutes at room temperature.
+- Heat oil in a flat, heavy tawa or cast-iron pan over medium-high heat.
+- Lay the fish in a single layer and fry undisturbed for 4–5 minutes until the underside
+  is deeply crusted and releases easily from the pan.
+- Flip carefully and fry the other side for another 4 minutes until the skin is crisp
+  and the flesh is cooked through — it should flake near the backbone.
+- Serve immediately with lime wedges and thinly sliced onion rings.
+servings: 2–3
+prep_time_min: 20
+cook_time_min: 15
+one_line: Whole mackerel scored and fried in a fiery red masala crust — a Konkani
+  coastal classic.
+headnote: Mackerel is one of the fattiest small fish available in Indian markets,
+  making it one of the richest everyday sources of EPA and DHA. Scoring the flesh
+  lets the masala penetrate and ensures the skin crisps evenly without long cooking
+  that would otherwise degrade the delicate fats.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 set; coach to confirm preferred fish
+  size and vinegar type for regional authenticity.
+approx_kcal_per_serving: 192
+kcal_is_estimate: true
+protein_g: 1.8
+kcal_per_serving: 192
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 192
+  protein_g: 1.8
+  carbs_g: 11.7
+  fat_g: 16.8
+  fibre_g: 2.9
+  iron_mg: 1.5
+  calcium_mg: 50.9
+  magnesium_mg: 18.9
+  zinc_mg: 0.3
+  potassium_mg: 215
+  folate_ug: 11.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 45.7
+  omega3_mg: 25.1
+nutrient_coverage_pct: 89.4
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

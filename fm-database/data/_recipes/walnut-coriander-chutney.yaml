@@ -1,0 +1,111 @@
+slug: walnut-coriander-chutney
+name: Walnut Coriander Chutney
+meal_type:
+- condiment
+- side
+diet:
+- dairy_free
+- gluten_free
+- vegan
+region: North India
+seasons:
+- all
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- pungent
+- bitter
+- sour
+- salty
+main_ingredients:
+- walnuts
+- fresh coriander
+- green chilli
+- lemon juice
+contains_allergens:
+- nuts
+ingredients:
+- item: walnuts, shelled
+  qty: 1/4
+  unit: cup
+- item: fresh coriander (leaves and tender stems)
+  qty: '1.5'
+  unit: cups
+- item: green chilli
+  qty: '1'
+  unit: whole
+- item: garlic cloves
+  qty: '2'
+  unit: whole
+- item: ginger, roughly chopped
+  qty: 1/2
+  unit: tsp
+- item: cumin seeds, lightly toasted
+  qty: 1/4
+  unit: tsp
+- item: lemon juice
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: 1/2
+  unit: tsp
+- item: water, for blending
+  qty: 3–4
+  unit: tbsp
+steps:
+- If the walnuts taste at all bitter, soak them in cold water for 15–20 minutes, then
+  drain and pat dry. This is optional but makes the chutney milder.
+- Combine walnuts, coriander, green chilli, garlic, ginger, and toasted cumin in a
+  blender jar. Add lemon juice, salt, and 3 tablespoons of water.
+- Blend to a smooth, pourable chutney, scraping down the sides once. Add the remaining
+  tablespoon of water only if needed to loosen.
+- Taste and adjust salt and lemon. The chutney should be bright, slightly nutty, and
+  gently spiced.
+- Transfer to a small serving bowl or airtight jar. Serve immediately alongside any
+  meal, or refrigerate for up to 2 days. Stir before serving if it settles.
+servings: '6'
+prep_time_min: 10
+cook_time_min: 15
+one_line: A fresh green chutney blended with walnuts — cool, herby, and a genuinely
+  good everyday source of plant omega-3.
+headnote: Walnuts are one of the richest plant sources of ALA omega-3, and blending
+  them raw into a chutney keeps the fatty acids intact. Fresh coriander adds a clean,
+  cooling note and pairs the chutney naturally with a wide range of Indian meals.
+  A small bowlful alongside any meal is enough to make a difference.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review; nutritional intent around raw
+  walnuts as the primary ALA omega-3 source in a fresh green chutney.
+approx_kcal_per_serving: 36
+kcal_is_estimate: true
+protein_g: 0.9
+kcal_per_serving: 36
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 35.9
+  protein_g: 0.9
+  carbs_g: 1.6
+  fat_g: 3.2
+  fibre_g: 0.5
+  iron_mg: 0.3
+  calcium_mg: 10.6
+  magnesium_mg: 9.8
+  zinc_mg: 0.2
+  potassium_mg: 55.4
+  folate_ug: 8.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 3.9
+  omega3_mg: 443
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

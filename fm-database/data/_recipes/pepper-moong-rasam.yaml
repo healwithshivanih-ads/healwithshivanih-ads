@@ -1,0 +1,141 @@
+slug: pepper-moong-rasam
+name: Pepper Moong Rasam
+meal_type:
+- soup
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: South India
+seasons:
+- monsoon
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- black pepper
+- moong dal
+- tamarind
+- tomato
+- ginger
+contains_allergens:
+- sesame
+- soy
+ingredients:
+- item: split yellow moong dal
+  qty: '3'
+  unit: tbsp
+- item: tamarind
+  qty: '1'
+  unit: small lime-sized ball
+- item: water (warm, for soaking)
+  qty: '1'
+  unit: cup
+- item: tomato
+  qty: '2'
+  unit: medium, roughly chopped
+- item: fresh ginger
+  qty: '1'
+  unit: inch piece, grated
+- item: black pepper
+  qty: '2'
+  unit: tsp, coarsely cracked
+- item: whole black peppercorns
+  qty: '0.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: asafoetida (hing)
+  qty: '0.25'
+  unit: tsp
+- item: dry red chilli
+  qty: '2'
+  unit: whole
+- item: curry leaves
+  qty: '10'
+  unit: whole
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: cold-pressed sesame oil
+  qty: '1.5'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp, or to taste
+- item: water (for rasam)
+  qty: '3.5'
+  unit: cup
+- item: coriander leaves
+  qty: '2'
+  unit: tbsp, chopped
+steps:
+- Pressure-cook the moong dal with 1 cup water for 2 whistles until soft but not mushy;
+  set aside. Alternatively, boil in an open pot for 15 minutes.
+- Soak tamarind in 1 cup warm water for 10 minutes; squeeze and strain to extract
+  the pulp.
+- Combine the tamarind extract, chopped tomatoes, grated ginger, turmeric, cracked
+  black pepper, and 3.5 cups water in a wide pot. Bring to a boil and simmer uncovered
+  for 12 minutes.
+- Stir in the cooked moong dal and salt; simmer for 5 more minutes. The rasam should
+  remain watery — the dal should be visible but not turn the broth thick.
+- Heat sesame oil in a tempering pan. Add mustard seeds and let them pop, then add
+  whole peppercorns, cumin seeds, dry red chillies, curry leaves, and asafoetida;
+  fry for 30 seconds.
+- Pour the tempering over the rasam, stir, and simmer together for 1 minute. Garnish
+  with coriander and serve immediately.
+servings: 3–4
+prep_time_min: 10
+cook_time_min: 25
+one_line: A light, peppery rasam with soft cooked moong dal stirred through — thin
+  enough to sip, substantial enough to be a meal-starter on cold evenings.
+headnote: Moong dal cooked until just soft adds a quiet protein backbone without thickening
+  the rasam into a dal. Black pepper in two forms — cracked into the broth and whole
+  in the tempering — gives layered heat that builds slowly.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon/winter soup set; coach to confirm moong
+  quantity for intended protein level before publishing.
+approx_kcal_per_serving: 88
+kcal_is_estimate: true
+protein_g: 3.7
+kcal_per_serving: 88
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 88.2
+  protein_g: 3.7
+  carbs_g: 13.5
+  fat_g: 2.6
+  fibre_g: 2.2
+  iron_mg: 1.5
+  calcium_mg: 77.2
+  magnesium_mg: 30.8
+  zinc_mg: 0.4
+  potassium_mg: 268
+  folate_ug: 67.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.2
+  omega3_mg: 22.0
+nutrient_coverage_pct: 80.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

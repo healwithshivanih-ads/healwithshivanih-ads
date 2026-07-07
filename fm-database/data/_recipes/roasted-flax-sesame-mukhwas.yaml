@@ -1,0 +1,110 @@
+slug: roasted-flax-sesame-mukhwas
+name: Roasted Flax-Sesame Mukhwas
+meal_type:
+- condiment
+- snack
+diet:
+- dairy_free
+- gluten_free
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- bitter
+main_ingredients:
+- flaxseeds
+- sesame seeds
+- fennel seeds
+contains_allergens:
+- sesame
+ingredients:
+- item: whole flaxseeds (alsi)
+  qty: ½
+  unit: cup
+- item: white sesame seeds (til)
+  qty: ¼
+  unit: cup
+- item: fennel seeds (saunf)
+  qty: '2'
+  unit: tbsp
+- item: carom seeds (ajwain)
+  qty: '1'
+  unit: tsp
+- item: rock salt (sendha namak)
+  qty: ¼
+  unit: tsp
+- item: dry-roasted cumin powder
+  qty: ½
+  unit: tsp
+- item: jaggery powder (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Heat a heavy dry pan over low-medium heat. Add flaxseeds and dry-roast, stirring
+  constantly, for 3–4 minutes until they begin to pop and smell nutty — do not let
+  them darken.
+- Push flaxseeds to one side and add sesame seeds; roast together for 1–2 minutes,
+  stirring, until sesame turns light golden.
+- Add fennel seeds and carom seeds; roast for another minute until fragrant. Remove
+  from heat and spread on a plate to cool completely.
+- Once cool, combine all seeds in a bowl with rock salt, cumin powder and jaggery
+  powder if using; mix well.
+- Store in an airtight glass jar. Offer as a 1-teaspoon after-meal digestive or a
+  small snack pinch.
+servings: about 20 teaspoon-size servings
+prep_time_min: 5
+cook_time_min: 10
+one_line: A small daily spoonful of toasted flax, sesame and fennel seeds — digestive
+  and quietly nourishing.
+headnote: Flaxseeds are the best plant source of ALA omega-3s, and sesame brings calcium
+  and lignans alongside. A brief dry roast unlocks the aroma without destroying the
+  fats — keep heat gentle and the pan moving. One heaped teaspoon after a meal is
+  all you need.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 and calcium seed condiment; coach to
+  review jaggery inclusion for specific dietary protocols.
+approx_kcal_per_serving: 346
+kcal_is_estimate: true
+protein_g: 11.5
+kcal_per_serving: 346
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 346
+  protein_g: 11.5
+  carbs_g: 21.0
+  fat_g: 26.8
+  fibre_g: 15.3
+  iron_mg: 6.4
+  calcium_mg: 352
+  magnesium_mg: 246
+  zinc_mg: 3.4
+  potassium_mg: 538
+  folate_ug: 53.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.5
+  omega3_mg: 9195
+nutrient_coverage_pct: 81.7
+rich_in:
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

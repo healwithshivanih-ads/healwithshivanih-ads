@@ -1,0 +1,116 @@
+slug: mushroom-jeera-stir-fry
+name: Mushroom Jeera Stir-Fry
+meal_type:
+- side
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: North India
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- pungent
+- bitter
+- astringent
+main_ingredients:
+- button mushrooms
+- cumin seeds
+- green chilli
+- ginger
+contains_allergens: []
+ingredients:
+- item: button mushrooms, thickly sliced
+  qty: '300'
+  unit: g
+- item: oil (any neutral)
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: whole
+- item: ginger, finely grated
+  qty: '1'
+  unit: tsp
+- item: garlic, minced
+  qty: '3'
+  unit: cloves
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: coriander powder
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: black pepper, freshly cracked
+  qty: '0.25'
+  unit: tsp
+- item: fresh coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Heat oil in a wide pan over medium-high heat. Add cumin seeds and let them splutter
+  for 20 seconds.
+- Add the slit green chilli, ginger and garlic; sauté for 1 minute until fragrant.
+- Add mushrooms in a single layer. Do not stir for 2–3 minutes, letting them colour
+  on one side.
+- Toss the mushrooms, sprinkle in turmeric, coriander powder, salt and black pepper,
+  and stir-fry for another 4–5 minutes until all moisture evaporates and edges are
+  lightly golden.
+- Turn off the heat, finish with lemon juice and fresh coriander, and serve immediately.
+servings: 2–3
+prep_time_min: 10
+cook_time_min: 12
+one_line: Button mushrooms tossed in a cumin-forward tempering — a fast, earthy side
+  that brings vitamin D to any plate.
+headnote: Leaving mushroom slices in a single layer on a hot pan (rather than stirring
+  constantly) lets them brown properly and deepens their natural vitamin-D content,
+  which builds up when mushrooms are briefly exposed to sunlight gills-up before cooking.
+  Cumin adds warmth and aids digestion.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for vitamin-D side dish slot; awaiting coach review
+  for portion and spice levels.
+approx_kcal_per_serving: 86
+kcal_is_estimate: true
+protein_g: 0.6
+kcal_per_serving: 86
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 85.5
+  protein_g: 0.6
+  carbs_g: 2.7
+  fat_g: 8.4
+  fibre_g: 0.6
+  iron_mg: 1.0
+  calcium_mg: 20.8
+  magnesium_mg: 7.8
+  zinc_mg: 0.1
+  potassium_mg: 61.4
+  folate_ug: 1.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.6
+  omega3_mg: 66.9
+nutrient_coverage_pct: 62.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

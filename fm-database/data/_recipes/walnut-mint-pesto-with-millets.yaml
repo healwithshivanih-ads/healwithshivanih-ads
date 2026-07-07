@@ -1,0 +1,132 @@
+slug: walnut-mint-pesto-with-millets
+name: Walnut Mint Pesto with Millets
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- pungent
+- sour
+- astringent
+main_ingredients:
+- walnuts
+- mint
+- foxtail millet
+- lemon
+- garlic
+contains_allergens:
+- nuts
+- peanut
+ingredients:
+- item: foxtail millet (kangni) or little millet
+  qty: '1'
+  unit: cup
+- item: water
+  qty: '2'
+  unit: cup
+- item: salt
+  qty: ¾
+  unit: tsp
+- item: walnut halves
+  qty: ½
+  unit: cup
+- item: fresh mint leaves, tightly packed
+  qty: '1'
+  unit: cup
+- item: fresh coriander leaves, tightly packed
+  qty: ½
+  unit: cup
+- item: garlic cloves
+  qty: '2'
+  unit: whole
+- item: lemon juice
+  qty: '2'
+  unit: tbsp
+- item: extra-virgin olive oil or cold-pressed groundnut oil
+  qty: '3'
+  unit: tbsp
+- item: black pepper, freshly ground
+  qty: ¼
+  unit: tsp
+- item: green chilli (optional)
+  qty: '1'
+  unit: whole
+- item: cherry tomatoes, halved (to serve)
+  qty: '8'
+  unit: whole
+steps:
+- Rinse the millet well; toast in a dry saucepan over medium heat for 2 minutes, then
+  add 2 cups water and ½ tsp salt. Bring to a boil, cover and simmer on low for 15
+  minutes until water is absorbed. Turn off heat and rest, covered, for 5 minutes,
+  then fluff with a fork.
+- While the millet cooks, lightly toast the walnuts in a dry pan over low heat for
+  3–4 minutes until fragrant; cool slightly.
+- Blend walnuts, mint, coriander, garlic, lemon juice, oil, remaining ¼ tsp salt,
+  black pepper and green chilli (if using) into a coarse-textured pesto — pulse rather
+  than over-blend to keep some body.
+- Taste the pesto and adjust lemon and salt. If it is too thick, loosen with 1–2 tbsp
+  water.
+- Fold the pesto through the warm fluffed millet until every grain is coated; serve
+  topped with halved cherry tomatoes.
+servings: 2–3
+prep_time_min: 15
+cook_time_min: 20
+one_line: Earthy cooked millet tossed through a fresh walnut and mint pesto — simple,
+  filling and green.
+headnote: Walnuts stand apart from most nuts for their meaningful ALA omega-3 content;
+  a quarter cup folded into a meal-sized bowl delivers a genuinely useful amount.
+  Mint keeps the pesto light and digestive, and foxtail or little millet gives a slower-releasing
+  grain base that pairs well with the oily nut.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 set; coach to confirm millet variety
+  preference and whether parmesan-style addition is appropriate for the client base.
+approx_kcal_per_serving: 452
+kcal_is_estimate: true
+protein_g: 12.4
+kcal_per_serving: 452
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 452
+  protein_g: 12.4
+  carbs_g: 58.7
+  fat_g: 20.1
+  fibre_g: 10.5
+  iron_mg: 4.4
+  calcium_mg: 83.4
+  magnesium_mg: 103
+  zinc_mg: 2.5
+  potassium_mg: 1033
+  folate_ug: 74.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 54.6
+  omega3_mg: 203
+nutrient_coverage_pct: 97.3
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

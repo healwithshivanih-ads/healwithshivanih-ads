@@ -1,0 +1,142 @@
+slug: green-goddess-chickpea-bowl
+name: Green Goddess Chickpea Bowl
+meal_type:
+- lunch
+diet:
+- vegetarian
+region: Modern Western
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa:
+- bitter
+- salty
+- sour
+main_ingredients:
+- quinoa
+- chickpeas
+- avocado
+- yogurt
+contains_allergens:
+- dairy
+ingredients:
+- item: whole-milk plain Greek-style yogurt
+  qty: 1/4
+  unit: cup
+- item: fresh flat-leaf parsley, chopped
+  qty: '2'
+  unit: tbsp
+- item: fresh tarragon, chopped
+  qty: '1'
+  unit: tbsp
+- item: fresh chives, chopped
+  qty: '1'
+  unit: tbsp
+- item: mayonnaise
+  qty: '1'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: water
+  qty: '1'
+  unit: tbsp
+- item: nonpareil capers, drained
+  qty: '1'
+  unit: tsp
+- item: garlic clove, minced
+  qty: '1'
+  unit: medium
+- item: salt
+  qty: 1/4
+  unit: tsp
+- item: salt
+  qty: 1/8
+  unit: tsp
+- item: cooked white quinoa
+  qty: '1'
+  unit: cup
+- item: canned no-salt-added chickpeas, rinsed
+  qty: '1'
+  unit: 15-ounce can
+- item: medium carrot, peeled
+  qty: '1'
+  unit: whole
+- item: red cabbage, thinly sliced
+  qty: '1'
+  unit: cup
+- item: scallions, thinly sliced
+  qty: 1/2
+  unit: cup
+- item: avocado
+  qty: 1/2
+  unit: medium
+steps:
+- Combine yogurt, parsley, tarragon, chives, mayonnaise, lemon juice, water, capers,
+  minced garlic, and salt (1/4 tsp) in a mini food processor or blender.
+- Blend until the dressing is smooth and bright green, about 1 minute.
+- Divide the cooked quinoa between two bowls as the base.
+- Arrange the rinsed chickpeas, shaved carrot ribbons, sliced red cabbage, and scallions
+  over the quinoa.
+- Top each bowl with avocado slices.
+- Sprinkle the remaining salt (1/8 tsp) evenly over both bowls.
+- Drizzle the green goddess dressing generously over each bowl and serve immediately.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 15
+one_line: A fresh, herbaceous grain bowl with chickpeas, raw vegetables, and a creamy
+  yogurt-herb dressing.
+headnote: Light and nourishing, perfect for lunch or a quick dinner when you want
+  something bright and satisfying without cooking vegetables.
+attribution:
+  author: eatingwell.com
+  source_id: recipe-inbox
+  source_url: https://www.eatingwell.com/green-goddess-chickpea-bowl-11906206
+parse_notes: No cooking required; quinoa assumed to be pre-cooked or quick-cooked
+  ahead (not included in 20-min total). Salt listed separately in two quantities in
+  source (1/4 + 1/8 tsp) — both recorded for accuracy.
+approx_kcal_per_serving: 416
+kcal_is_estimate: true
+protein_g: 14.8
+kcal_per_serving: 416
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 416
+  protein_g: 14.8
+  carbs_g: 65.7
+  fat_g: 11.6
+  fibre_g: 10.4
+  iron_mg: 4.7
+  calcium_mg: 118
+  magnesium_mg: 193
+  zinc_mg: 3.2
+  potassium_mg: 902
+  folate_ug: 219
+  b12_ug: 0.1
+  vit_d_ug: 0.0
+  vit_c_mg: 30.3
+  omega3_mg: 272
+nutrient_coverage_pct: 72.6
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/green-goddess-chickpea-bowl.jpg
+  credit: 'eatingwell.com'
+  source_url: https://www.eatingwell.com/thmb/ibPk58F9hj3Qo3smVsxa4lHG0RY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GreenGoddessChickpeaBowl-Hero-02_preview_maxWidth_4000_maxHeight_4000_ppi_300_quality_100-75e7e07f26484549bca8ea0a8bd25dbb.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

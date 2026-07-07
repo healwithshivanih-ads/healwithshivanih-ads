@@ -1,0 +1,116 @@
+slug: walnut-beet-salad-with-curd-dressing
+name: Walnut Beet Salad with Curd Dressing
+meal_type:
+- salad
+- side
+diet:
+- gluten_free
+- vegetarian
+region: Pan-Indian
+seasons:
+- winter
+- spring
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- sour
+- astringent
+- pungent
+main_ingredients:
+- beetroot
+- walnuts
+- curd
+contains_allergens:
+- dairy
+- nuts
+ingredients:
+- item: medium beetroots, scrubbed
+  qty: '3'
+  unit: whole
+- item: walnut halves
+  qty: '0.33'
+  unit: cup
+- item: thick curd (dahi), whisked
+  qty: '0.5'
+  unit: cup
+- item: olive oil or cold-pressed mustard oil
+  qty: '1'
+  unit: tsp
+- item: roasted cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: black pepper, freshly ground
+  qty: '0.25'
+  unit: tsp
+- item: honey or jaggery powder
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: fresh coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Wrap the beetroots individually in foil and roast in an oven at 200 °C (or in a
+  covered kadai on the stovetop with a little water) for 35–40 minutes until a knife
+  passes through without resistance. Cool, peel, and cut into bite-sized cubes.
+- Meanwhile, toast walnut halves in a dry pan over low heat for 3–4 minutes until
+  fragrant and very lightly coloured. Set aside to cool, then roughly break each half
+  into two or three pieces.
+- Whisk together the curd, lemon juice, oil, roasted cumin, black pepper, honey, and
+  salt in a small bowl until smooth and pourable.
+- Arrange the warm or room-temperature beet cubes on a serving plate, scatter the
+  walnuts over the top, then spoon the curd dressing over everything.
+- Finish with chopped coriander and serve immediately while the beets are still slightly
+  warm against the cool dressing.
+servings: 2–3
+prep_time_min: 10
+cook_time_min: 40
+one_line: Roasted beets and toasted walnuts tossed in a light spiced curd dressing.
+headnote: Walnuts bring the plant omega-3 load here, and beets — especially the deep-red
+  variety at their sweetest in late winter and early spring — are a good natural source
+  of folate. Roasting the beets instead of boiling them keeps more of that folate
+  intact and concentrates their sweetness beautifully.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 salad/side slot; coach to confirm dressing
+  thickness and beetroot variety preference.
+approx_kcal_per_serving: 65
+kcal_is_estimate: true
+protein_g: 1.7
+kcal_per_serving: 65
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 64.6
+  protein_g: 1.7
+  carbs_g: 10.9
+  fat_g: 2.1
+  fibre_g: 2.8
+  iron_mg: 1.2
+  calcium_mg: 22.0
+  magnesium_mg: 24.6
+  zinc_mg: 0.4
+  potassium_mg: 331
+  folate_ug: 106
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.8
+  omega3_mg: 20.1
+nutrient_coverage_pct: 81.2
+rich_in:
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

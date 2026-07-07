@@ -1,0 +1,95 @@
+slug: ginger-tulsi-kadha
+name: Ginger Tulsi Kadha
+meal_type:
+- drink
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+region: Pan-India
+seasons:
+- monsoon
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+main_ingredients:
+- ginger
+- tulsi
+- black pepper
+contains_allergens: []
+ingredients:
+- item: fresh ginger, sliced thin (no need to peel)
+  qty: '1.5'
+  unit: inch piece
+- item: fresh tulsi (holy basil) leaves
+  qty: '15'
+  unit: whole
+- item: black peppercorns, lightly crushed
+  qty: '8'
+  unit: whole
+- item: water
+  qty: '2.5'
+  unit: cup
+- item: honey, to stir in at serving (optional)
+  qty: 1–2
+  unit: tsp
+steps:
+- Bring the water to a boil in a small saucepan. Add the ginger slices and crushed
+  black peppercorns.
+- Reduce heat and simmer for 5 minutes until the water takes on a pale amber colour
+  and smells strongly of ginger.
+- Add the tulsi leaves, stir once, and simmer for 2 more minutes — no longer, so the
+  tulsi keeps its volatile oils.
+- Strain into cups through a fine sieve. Let it cool for a minute until it is hot
+  but drinkable.
+- Stir in honey at this point if using — never while the liquid is still boiling,
+  as high heat diminishes honey's qualities. Serve immediately.
+servings: '2'
+prep_time_min: 3
+cook_time_min: 8
+one_line: A simple warming brew of fresh ginger, tulsi, and black pepper to see you
+  through the monsoon.
+headnote: This is the household kadha most Indian kitchens reach for at the first
+  sign of a scratchy throat — fresh ginger warms the chest, tulsi leaves carry their
+  characteristic sharpness, and a crack of black pepper opens everything up. A little
+  honey stirred in off the heat rounds it without overpowering the bitterness. The
+  whole thing takes under ten minutes.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon drinks set — coach to confirm tulsi
+  leaf quantity and whether dried tulsi is an acceptable substitute.
+approx_kcal_per_serving: 22
+kcal_is_estimate: true
+protein_g: 0.2
+kcal_per_serving: 22
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 21.9
+  protein_g: 0.2
+  carbs_g: 5.7
+  fat_g: 0.1
+  fibre_g: 0.3
+  iron_mg: 0.1
+  calcium_mg: 4.6
+  magnesium_mg: 3.4
+  zinc_mg: 0.0
+  potassium_mg: 32.1
+  folate_ug: 0.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.3
+  omega3_mg: 2.6
+nutrient_coverage_pct: 47.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

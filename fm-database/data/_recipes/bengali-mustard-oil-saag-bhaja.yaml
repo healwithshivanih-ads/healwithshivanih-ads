@@ -1,0 +1,110 @@
+slug: bengali-mustard-oil-saag-bhaja
+name: Bengali Mustard-Oil Saag Bhaja
+meal_type:
+- side
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: West Bengal
+seasons:
+- winter
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+- astringent
+main_ingredients:
+- mustard oil
+- mixed winter greens
+- garlic
+- dried red chilli
+contains_allergens: []
+ingredients:
+- item: mixed winter greens (sarson/spinach/methi or a mix), washed and roughly chopped
+  qty: '400'
+  unit: g
+- item: mustard oil
+  qty: '2'
+  unit: tbsp
+- item: garlic cloves, thinly sliced
+  qty: '4'
+  unit: whole
+- item: dried red chillies
+  qty: '2'
+  unit: whole
+- item: nigella seeds (kalonji)
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Heat mustard oil in a wide iron or heavy pan over medium-high heat until it just
+  begins to smoke lightly, then lower the flame to medium — this removes the raw sharpness
+  of the oil.
+- Add dried red chillies and nigella seeds; let them sizzle for 20 seconds until fragrant.
+- Add the sliced garlic and stir for about 30 seconds until it turns pale golden at
+  the edges.
+- Add all the greens at once with the salt. Toss well to coat every leaf in the oil
+  and temper.
+- Sauté on medium-high heat, turning frequently, for 5–7 minutes until the greens
+  are wilted, glossy, and any excess water has cooked off. The bhaja should be dry,
+  not soupy.
+- Finish with a squeeze of lemon juice, toss once, and serve hot alongside rice or
+  roti.
+servings: 2–3
+prep_time_min: 10
+cook_time_min: 10
+one_line: Seasonal winter greens dry-sautéed in pungent mustard oil with a simple
+  Bengali tempering.
+headnote: Mustard oil carries its own plant omega-3 in the form of alpha-linolenic
+  acid, and cooking greens briefly in it at a moderate flame keeps both the oil's
+  character and the leaves' nutrients largely intact. Use spinach, sarson, or any
+  leafy green you can find at the winter market.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 side slot; coach to confirm greens
+  preference and oil quantity.
+approx_kcal_per_serving: 135
+kcal_is_estimate: true
+protein_g: 6.8
+kcal_per_serving: 135
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 135
+  protein_g: 6.8
+  carbs_g: 19.7
+  fat_g: 4.2
+  fibre_g: 6.6
+  iron_mg: 2.4
+  calcium_mg: 79.7
+  magnesium_mg: 72.8
+  zinc_mg: 1.5
+  potassium_mg: 527
+  folate_ug: 84.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 44.0
+  omega3_mg: 93.8
+nutrient_coverage_pct: 93.7
+rich_in:
+- fibre
+- magnesium
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

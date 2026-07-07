@@ -1,0 +1,148 @@
+slug: south-indian-egg-curry
+name: South Indian Egg Curry
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- eggetarian
+- gluten_free
+- nut_free
+region: South India
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sour
+- salty
+- sweet
+main_ingredients:
+- eggs
+- coconut milk
+- tomato
+- onion
+contains_allergens:
+- dairy
+- egg
+ingredients:
+- item: eggs
+  qty: '6'
+  unit: whole
+- item: coconut oil
+  qty: '2'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: fennel seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '12'
+  unit: whole
+- item: onion, finely sliced
+  qty: '2'
+  unit: medium
+- item: ginger, grated
+  qty: '1.5'
+  unit: tsp
+- item: garlic, minced
+  qty: '5'
+  unit: cloves
+- item: tomatoes, chopped
+  qty: '2'
+  unit: medium
+- item: coriander powder
+  qty: '1.5'
+  unit: tsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: black pepper, coarsely ground
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.75'
+  unit: tsp
+- item: thin coconut milk
+  qty: '1.5'
+  unit: cup
+- item: thick coconut milk
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Hard-boil the eggs for 10 minutes, cool, peel, and make 3–4 shallow slits in each
+  with a knife so the gravy can seep in. Set aside.
+- Heat coconut oil in a wide pan. Add mustard seeds; once they pop, add fennel seeds
+  and curry leaves and fry for 30 seconds. Add sliced onions and cook on medium heat
+  for 10 minutes until deep golden.
+- Add ginger and garlic, fry 1 minute, then add tomatoes, turmeric, coriander, cumin,
+  chilli powder, and half the black pepper. Cook until tomatoes are completely soft
+  and the oil begins to separate, about 6–7 minutes.
+- Pour in the thin coconut milk, add salt, stir well, and bring to a gentle simmer.
+  Add the peeled eggs and simmer uncovered for 8 minutes so the eggs absorb the gravy.
+- Stir in the thick coconut milk and remaining black pepper; cook on low for 2 minutes
+  without boiling. Garnish with fresh coriander and serve with rice or appam.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 25
+one_line: Hard-boiled eggs simmered in a thin, tangy coconut-tomato gravy spiced the
+  Chettinad way.
+headnote: Eggs are one of the few everyday sources of natural vitamin D and B12 together
+  — keeping the yolks whole and just simmered in gravy (not overcooked) preserves
+  as much of that as possible. The coconut milk base keeps the gravy light and rounds
+  out the pepper and fennel.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review — vitamin-D and B12 intent honoured
+  via 6 whole eggs; yolks kept intact; coconut milk base authentic to South Indian
+  egg curry style.
+approx_kcal_per_serving: 403
+kcal_is_estimate: true
+protein_g: 13.5
+kcal_per_serving: 403
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 403
+  protein_g: 13.5
+  carbs_g: 15.9
+  fat_g: 33.3
+  fibre_g: 4.1
+  iron_mg: 5.4
+  calcium_mg: 152
+  magnesium_mg: 69.1
+  zinc_mg: 2.0
+  potassium_mg: 633
+  folate_ug: 72.8
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 14.5
+  omega3_mg: 92.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- iron
+- calcium
+- zinc
+- potassium
+- b12
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

@@ -1,0 +1,129 @@
+slug: kerala-mushroom-roast
+name: Kerala Mushroom Roast
+meal_type:
+- lunch
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Kerala
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+- astringent
+- sweet
+main_ingredients:
+- button mushrooms
+- fresh coconut
+- curry leaves
+- black pepper
+contains_allergens: []
+ingredients:
+- item: button mushrooms, quartered
+  qty: '350'
+  unit: g
+- item: coconut oil
+  qty: '2'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: dried red chillies
+  qty: '2'
+  unit: whole
+- item: curry leaves
+  qty: '15'
+  unit: whole
+- item: onion, thinly sliced
+  qty: '1'
+  unit: whole
+- item: ginger, julienned
+  qty: '1.5'
+  unit: tsp
+- item: garlic, thinly sliced
+  qty: '4'
+  unit: cloves
+- item: green chilli, slit
+  qty: '2'
+  unit: whole
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: black pepper, coarsely ground
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '0.75'
+  unit: tsp
+- item: freshly grated coconut
+  qty: '0.33'
+  unit: cup
+steps:
+- Heat coconut oil in a wide heavy pan over medium heat. Add mustard seeds and let
+  them splutter, then add dried red chillies and curry leaves — stand back as they
+  crackle.
+- Add sliced onion and cook for 6–7 minutes over medium heat, stirring occasionally,
+  until deep golden.
+- Stir in ginger, garlic and green chillies; sauté for 2 minutes until fragrant.
+- Add mushrooms, turmeric, coriander powder, black pepper and salt. Stir well, then
+  cook uncovered over medium-high heat for 8–10 minutes, stirring every couple of
+  minutes, until all mushroom moisture evaporates and the pieces start to colour.
+- Reduce heat to low, add the freshly grated coconut, and roast for a further 4–5
+  minutes, stirring frequently, until the coconut is lightly golden and the mixture
+  is dry and fragrant. Serve hot with rice or appam.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 25
+one_line: Mushrooms slow-roasted with coconut, curry leaves and black pepper in the
+  Kerala style — deeply flavoured and unapologetically spiced.
+headnote: 'This dry-style roast is built on patience: letting the mushrooms cook down
+  with freshly grated coconut until nearly all moisture is gone gives an almost caramelised
+  finish. Black pepper, a cornerstone of Kerala cooking, enhances the absorption of
+  the fat-soluble vitamin D that mushrooms carry. Curry leaves add their own quiet
+  anti-inflammatory note.'
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for vitamin-D Kerala-style side/main slot; awaiting
+  coach review on pepper quantity and coconut proportion.
+approx_kcal_per_serving: 159
+kcal_is_estimate: true
+protein_g: 2.2
+kcal_per_serving: 159
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 159
+  protein_g: 2.2
+  carbs_g: 10.4
+  fat_g: 12.6
+  fibre_g: 3.3
+  iron_mg: 1.1
+  calcium_mg: 113
+  magnesium_mg: 22.2
+  zinc_mg: 0.4
+  potassium_mg: 255
+  folate_ug: 22.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 9.5
+  omega3_mg: 21.9
+nutrient_coverage_pct: 88.7
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

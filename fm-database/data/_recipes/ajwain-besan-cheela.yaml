@@ -1,0 +1,122 @@
+slug: ajwain-besan-cheela
+name: Ajwain Besan Cheela
+meal_type:
+- breakfast
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: North India
+seasons:
+- monsoon
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+- salty
+main_ingredients:
+- besan
+- ajwain
+- onion
+- green chilli
+- ginger
+contains_allergens: []
+ingredients:
+- item: besan (chickpea flour)
+  qty: '1'
+  unit: cup
+- item: ajwain (carom seeds)
+  qty: '1'
+  unit: tsp
+- item: onion, finely chopped
+  qty: '1'
+  unit: small
+- item: green chilli, finely chopped
+  qty: '2'
+  unit: whole
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: 1/4
+  unit: tsp
+- item: red chilli powder
+  qty: 1/4
+  unit: tsp
+- item: cumin powder
+  qty: 1/2
+  unit: tsp
+- item: salt
+  qty: 3/4
+  unit: tsp
+- item: water
+  qty: 3/4
+  unit: cup
+- item: oil
+  qty: '2'
+  unit: tsp
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Whisk besan, turmeric, red chilli powder, cumin powder, ajwain, and salt together
+  in a bowl. Gradually add water, whisking to a smooth, lump-free batter the consistency
+  of single cream.
+- Stir in the onion, green chilli, ginger, and coriander leaves. Rest the batter for
+  5 minutes.
+- Heat a flat non-stick tawa over medium heat. Drizzle a few drops of oil and wipe
+  with a paper towel. Pour a ladleful of batter (about 1/3 cup) into the centre and
+  spread in a circular motion to a thin round roughly 18 cm across.
+- Drizzle 1/4 tsp oil around the edges. Cook for 2–3 minutes until the underside is
+  golden and the surface looks dry with no wet spots.
+- Flip carefully and cook for 1–2 minutes more until the second side has golden patches.
+  Remove and repeat with remaining batter. Serve hot with green chutney or pickle.
+servings: 3 (makes ~6 cheelas)
+prep_time_min: 10
+cook_time_min: 20
+one_line: Thin, crisp chickpea-flour pancakes spiced with carom seeds for easy monsoon-morning
+  digestion.
+headnote: Besan is naturally warming and protein-rich, and ajwain (carom seed) is
+  one of the oldest kitchen remedies for sluggish digestion on damp, cool days. Together
+  they make a batter that cooks into a light, slightly crispy pancake with a distinctive
+  earthy warmth. A quick breakfast that genuinely earns its place in wet-weather eating.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon breakfast set — coach to review ajwain
+  quantity and confirm no gluten cross-contamination in besan brand used.
+approx_kcal_per_serving: 163
+kcal_is_estimate: true
+protein_g: 7.5
+kcal_per_serving: 163
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 163
+  protein_g: 7.5
+  carbs_g: 21.3
+  fat_g: 5.4
+  fibre_g: 4.3
+  iron_mg: 2.2
+  calcium_mg: 36.5
+  magnesium_mg: 58.0
+  zinc_mg: 1.0
+  potassium_mg: 341
+  folate_ug: 140
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 6.0
+  omega3_mg: 57.9
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

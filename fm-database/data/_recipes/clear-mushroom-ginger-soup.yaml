@@ -1,0 +1,120 @@
+slug: clear-mushroom-ginger-soup
+name: Clear Mushroom Ginger Soup
+meal_type:
+- soup
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+- vegetarian
+region: Indian fusion
+seasons:
+- monsoon
+- winter
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- salty
+- pungent
+- sour
+main_ingredients:
+- button mushrooms
+- ginger
+- vegetable broth
+contains_allergens:
+- soy
+ingredients:
+- item: button mushrooms, wiped and thinly sliced
+  qty: '250'
+  unit: g
+- item: ginger, cut into thin matchsticks
+  qty: '1.5'
+  unit: inch piece
+- item: garlic, thinly sliced
+  qty: '3'
+  unit: cloves
+- item: spring onion, thinly sliced (whites and greens separated)
+  qty: '2'
+  unit: stalks
+- item: vegetable broth or water
+  qty: '4'
+  unit: cups
+- item: soy sauce (gluten-free tamari if needed)
+  qty: '1'
+  unit: tbsp
+- item: black pepper, freshly ground
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: oil
+  qty: '1'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: fresh coriander, roughly torn
+  qty: '2'
+  unit: tbsp
+steps:
+- Spread mushroom slices gills-up in available light for 20 minutes before cooking.
+- Warm the oil in a medium saucepan over medium heat. Add garlic, ginger, and the
+  white parts of the spring onion; sauté for 1–2 minutes until fragrant but not browned.
+- Add the sun-dried mushroom slices and stir for 2–3 minutes until they soften slightly
+  and begin to colour at the edges.
+- Pour in the vegetable broth, add soy sauce, salt, and black pepper. Bring to a gentle
+  boil, then reduce heat and simmer uncovered for 10 minutes so the flavours meld.
+- Stir in the lemon juice, taste and adjust salt and pepper. The broth should be clear,
+  savoury, and gently spiced.
+- Ladle into bowls, scatter the spring onion greens and fresh coriander on top, and
+  serve immediately.
+servings: 2–3
+prep_time_min: 25
+cook_time_min: 20
+one_line: A thin, warming broth with sliced mushrooms and fresh ginger — simple comfort
+  for a cold or rainy evening.
+headnote: Laying the mushrooms gills-up in whatever light is available for 20 minutes
+  before they go into the pot helps preserve as much of their natural vitamin D2 as
+  possible. Ginger keeps the broth warming without heat, which is exactly what a monsoon
+  or winter evening calls for. This is a light soup — it works as a starter or a gentle
+  dinner on its own.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for vitamin-D set; requires coach review
+  before publishing.
+approx_kcal_per_serving: 43
+kcal_is_estimate: true
+protein_g: 1.4
+kcal_per_serving: 43
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 43.4
+  protein_g: 1.4
+  carbs_g: 5.9
+  fat_g: 1.9
+  fibre_g: 0.9
+  iron_mg: 0.4
+  calcium_mg: 18.8
+  magnesium_mg: 9.5
+  zinc_mg: 0.2
+  potassium_mg: 106
+  folate_ug: 9.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 6.2
+  omega3_mg: 17.4
+nutrient_coverage_pct: 82.3
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

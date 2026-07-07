@@ -1,0 +1,114 @@
+slug: steamed-sabudana-muthia
+name: Steamed Sabudana Muthia
+meal_type:
+- snack
+- breakfast
+diet:
+- dairy_free
+- gluten_free
+- vegetarian
+region: Gujarat
+seasons:
+- monsoon
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- pungent
+- salty
+- sour
+main_ingredients:
+- sabudana
+- peanuts
+- potato
+contains_allergens:
+- peanut
+ingredients:
+- item: sabudana (tapioca pearls), soaked 4 hours and drained
+  qty: '1'
+  unit: cup
+- item: roasted peanuts, coarsely crushed
+  qty: 1/2
+  unit: cup
+- item: boiled potato, mashed
+  qty: '1'
+  unit: large
+- item: green chilli, finely chopped
+  qty: '2'
+  unit: whole
+- item: fresh ginger, grated
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: 1/2
+  unit: tsp
+- item: rock salt (sendha namak)
+  qty: 3/4
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: fresh coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: oil (for greasing hands and steamer)
+  qty: '1'
+  unit: tsp
+steps:
+- Ensure soaked sabudana is well-drained and not sticky-wet; spread on a cloth for
+  a few minutes if needed.
+- In a large bowl, combine sabudana, mashed potato, crushed peanuts, green chilli,
+  ginger, cumin seeds, rock salt, lemon juice, and coriander. Mix well until the mixture
+  holds together when pressed — if too wet, add a spoonful more crushed peanuts.
+- Grease your palms lightly with oil and shape the mixture into short cylindrical
+  dumplings (muthia) about 5–6 cm long, pressing firmly so they hold their shape.
+- Set up a steamer with water brought to a rolling boil. Grease the steamer plate
+  or line with banana leaf. Place muthia with a little space between each.
+- Steam on medium-high heat for 15–18 minutes until the surface looks set and a skewer
+  inserted in the centre comes out clean.
+- Rest for 2 minutes before unmoulding. Serve warm with green chutney.
+servings: 3–4 (makes about 12 muthia)
+prep_time_min: 20
+cook_time_min: 20
+one_line: Soft steamed tapioca-peanut dumplings spiced with ginger and green chilli.
+headnote: Steaming keeps these dumplings light on the stomach — the peanuts bring
+  in a decent hit of protein and good fats to balance the starchy sabudana, making
+  this a more sustaining snack than the fried version. Good for a damp monsoon morning
+  when you want something warm and gentle.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon snack set — coach to review seasoning
+  levels and soaking time guidance.
+approx_kcal_per_serving: 210
+kcal_is_estimate: true
+protein_g: 7.9
+kcal_per_serving: 210
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 210
+  protein_g: 7.9
+  carbs_g: 16.8
+  fat_g: 13.6
+  fibre_g: 3.7
+  iron_mg: 2.0
+  calcium_mg: 35.9
+  magnesium_mg: 59.8
+  zinc_mg: 1.1
+  potassium_mg: 498
+  folate_ug: 71.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.9
+  omega3_mg: 20.5
+nutrient_coverage_pct: 91.5
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

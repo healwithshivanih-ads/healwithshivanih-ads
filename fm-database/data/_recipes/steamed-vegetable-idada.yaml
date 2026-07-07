@@ -1,0 +1,126 @@
+slug: steamed-vegetable-idada
+name: Steamed Vegetable Idada
+meal_type:
+- breakfast
+- lunch
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: Gujarat
+seasons:
+- monsoon
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sour
+- salty
+- sweet
+- astringent
+main_ingredients:
+- rice
+- urad dal
+- bottle gourd
+- carrot
+- curd
+contains_allergens:
+- dairy
+- sesame
+ingredients:
+- item: raw rice, soaked 6 hours and drained
+  qty: '1'
+  unit: cup
+- item: urad dal, soaked 4 hours and drained
+  qty: 1/4
+  unit: cup
+- item: sour curd (for fermenting agent and tang)
+  qty: '3'
+  unit: tbsp
+- item: bottle gourd (lauki), peeled and finely grated
+  qty: 1/2
+  unit: cup
+- item: carrot, finely grated
+  qty: 1/3
+  unit: cup
+- item: ginger, finely grated
+  qty: 1/2
+  unit: tsp
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: whole
+- item: turmeric powder
+  qty: 1/4
+  unit: tsp
+- item: salt
+  qty: 3/4
+  unit: tsp
+- item: fruit salt (Eno), plain
+  qty: 1/2
+  unit: tsp
+- item: oil, for greasing the thali
+  qty: '1'
+  unit: tsp
+- item: sesame seeds, for topping
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped, for topping
+  qty: '1'
+  unit: tbsp
+steps:
+- Grind the soaked rice and urad dal together with the curd and just enough water
+  (about 1/4 cup) to form a thick, smooth batter. Cover and leave to ferment at room
+  temperature for 8–10 hours or overnight.
+- When ready to steam, stir the grated bottle gourd, carrot, ginger, green chilli,
+  turmeric and salt into the fermented batter. The batter should be thick but pourable.
+- Sprinkle in the fruit salt and fold gently — the batter will aerate and rise slightly.
+  Do not over-mix.
+- Grease a flat 8-inch steel thali or round pan with oil. Pour the batter in and spread
+  evenly about 1.5 cm thick. Scatter sesame seeds and coriander on top.
+- Steam in a covered steamer or large pot over boiling water for 18–20 minutes until
+  a skewer inserted in the centre comes out clean.
+- Allow to cool for 5 minutes, then cut into squares and serve with green chutney.
+servings: 3–4
+prep_time_min: 20
+cook_time_min: 25
+one_line: Gujarati steamed fermented rice-and-dal cakes layered with grated vegetables.
+headnote: Idada is a lighter cousin of dhokla — a thick, soft slab steamed in a thali
+  and then cut into squares. Folding grated bottle gourd and carrot into the fermented
+  batter keeps it moist, adds a gentle sweetness, and makes each piece quietly more
+  filling than it looks.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for monsoon breakfast slot — coach to verify
+  fermentation time guidance and regional authenticity of Gujarati Idada before publishing.
+approx_kcal_per_serving: 251
+kcal_is_estimate: true
+protein_g: 8.2
+kcal_per_serving: 251
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 251
+  protein_g: 8.2
+  carbs_g: 51.9
+  fat_g: 1.0
+  fibre_g: 3.8
+  iron_mg: 1.8
+  calcium_mg: 42.6
+  magnesium_mg: 58.7
+  zinc_mg: 1.3
+  potassium_mg: 278
+  folate_ug: 40.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.0
+  omega3_mg: 34.5
+nutrient_coverage_pct: 85.5
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

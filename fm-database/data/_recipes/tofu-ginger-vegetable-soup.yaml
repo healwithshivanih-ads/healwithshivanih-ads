@@ -1,0 +1,159 @@
+slug: tofu-ginger-vegetable-soup
+name: Tofu-Ginger Vegetable Soup
+meal_type:
+- soup
+diet:
+- vegan
+- vegetarian
+region: East Asian-inspired
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa:
+- sweet
+- salty
+- pungent
+main_ingredients:
+- tofu
+- ginger
+- carrot
+- celery
+- mushroom
+- snow pea
+- bean sprout
+- water chestnut
+- scallion
+- cilantro
+contains_allergens:
+- sesame
+- soy
+ingredients:
+- item: sesame oil
+  qty: '3'
+  unit: tbsp
+- item: carrots, chopped
+  qty: '100'
+  unit: g
+- item: celery, chopped
+  qty: '100'
+  unit: g
+- item: white onions, chopped
+  qty: '100'
+  unit: g
+- item: ginger, minced
+  qty: '1'
+  unit: tbsp
+- item: garlic, minced
+  qty: '1'
+  unit: tbsp
+- item: miso
+  qty: '3'
+  unit: tbsp
+- item: water
+  qty: '8'
+  unit: cup
+- item: soy sauce
+  qty: '3'
+  unit: tbsp
+- item: scallions, chopped
+  qty: '3'
+  unit: tbsp
+- item: cilantro, chopped
+  qty: '3'
+  unit: tbsp
+- item: tofu, drained and cubed
+  qty: '500'
+  unit: g
+- item: bean sprouts
+  qty: '200'
+  unit: g
+- item: carrots, shredded
+  qty: '200'
+  unit: g
+- item: snow peas, diagonally cut
+  qty: '200'
+  unit: g
+- item: mushrooms, sliced
+  qty: '400'
+  unit: g
+- item: water chestnuts, drained
+  qty: '1'
+  unit: cup
+- item: brown rice, cooked
+  qty: '1'
+  unit: cup
+- item: dried red pepper flakes
+  qty: ⅛
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat sesame oil in a large soup pot over medium heat.
+- Sauté the chopped onions, carrots, and celery until softened, about 5–7 minutes.
+- Add the minced ginger and garlic, stirring constantly for about 1 minute until fragrant.
+- Stir in the miso paste until dissolved, then add the water and soy sauce.
+- Bring the soup to a boil, then lower the heat and simmer gently.
+- About 30 minutes before serving, add the tofu cubes, bean sprouts, shredded carrots,
+  snow peas, mushrooms, water chestnuts, and cooked brown rice.
+- Simmer until all vegetables are tender and the flavours meld, about 25–30 minutes.
+- Taste and adjust salt as needed.
+- Stir in the scallions and cilantro just before serving.
+- Add red pepper flakes to taste for a gentle heat.
+servings: 3–4
+prep_time_min: 20
+cook_time_min: 50
+one_line: A warming ginger-miso tofu soup with vegetables and brown rice, rounded
+  out with fresh herbs and water chestnuts.
+headnote: This is a complete, nourishing bowl that balances plant protein and whole
+  grains with a broth deep enough to satisfy. The long simmer lets the miso and ginger
+  build flavour naturally—it suits lunch or dinner any time of year.
+attribution:
+  author: Harvard University Dining Services
+  source_id: recipe-inbox
+  source_url: https://nutritionsource.hsph.harvard.edu/tofu-soup/
+parse_notes: 'Original recipe scaled for 100 servings (5 gallons water, etc.) and
+  rescaled to a home batch of 3–4 servings using cup/tbsp/tsp conversions. Quantities
+  for all add-in vegetables estimated as proportional reductions. Recipe originally
+  called for institutional #10 can of water chestnuts; converted to home-cook equivalent
+  of 1 cup drained.'
+approx_kcal_per_serving: 573
+kcal_is_estimate: true
+protein_g: 25.9
+kcal_per_serving: 573
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 573
+  protein_g: 25.9
+  carbs_g: 74.2
+  fat_g: 20.7
+  fibre_g: 11.9
+  iron_mg: 5.7
+  calcium_mg: 396
+  magnesium_mg: 198
+  zinc_mg: 3.8
+  potassium_mg: 1025
+  folate_ug: 126
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 38.8
+  omega3_mg: 519
+nutrient_coverage_pct: 95.1
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

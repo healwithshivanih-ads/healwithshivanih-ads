@@ -1,0 +1,148 @@
+slug: masala-baked-eggs-with-greens
+name: Masala Baked Eggs with Greens
+meal_type:
+- breakfast
+- lunch
+diet:
+- dairy_free
+- eggetarian
+- gluten_free
+- nut_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- pungent
+- sour
+- salty
+main_ingredients:
+- eggs
+- spinach
+- fresh fenugreek leaves
+- tomato
+- onion
+contains_allergens:
+- egg
+ingredients:
+- item: eggs
+  qty: '6'
+  unit: whole
+- item: coconut oil or neutral oil
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: onion, finely chopped
+  qty: '1'
+  unit: large
+- item: garlic, minced
+  qty: '4'
+  unit: cloves
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: whole
+- item: tomatoes, finely chopped
+  qty: '2'
+  unit: medium
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: fresh spinach, roughly chopped
+  qty: '100'
+  unit: g
+- item: fresh methi (fenugreek) leaves
+  qty: '50'
+  unit: g
+- item: salt
+  qty: '0.75'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Preheat your oven to 200 °C. Heat oil in an oven-safe wide pan or skillet over medium
+  heat. Add cumin seeds and let them sizzle, then add the onion and cook for 6–7 minutes
+  until soft and golden.
+- Add ginger, garlic, and green chilli; fry for 1 minute. Add the tomatoes along with
+  turmeric, coriander powder, cumin powder, chilli powder, and salt. Cook, stirring,
+  for 5–6 minutes until the tomatoes break down and the masala looks dry.
+- Add the spinach and methi in batches, stirring each addition until just wilted.
+  The greens will shrink considerably — cook for 2–3 minutes total. Stir in lemon
+  juice.
+- Make 6 small wells in the masala with the back of a spoon and crack one egg into
+  each well. Season the eggs lightly with a pinch of salt.
+- Transfer the pan to the oven and bake for 8–10 minutes, until the whites are set
+  but the yolks are still slightly soft. Scatter fresh coriander on top and serve
+  straight from the pan with whole-wheat toast or roti.
+servings: 3–4
+prep_time_min: 15
+cook_time_min: 25
+one_line: Eggs baked into a spiced spinach and methi masala — a one-pan breakfast
+  or lunch that packs iron, folate, and both egg-derived vitamins.
+headnote: Eggs bring vitamin D and B12, while fresh spinach and methi together provide
+  a real folate and iron lift — the tomato and lemon in the base help the body absorb
+  that plant iron more readily. Baking keeps the yolks just-set so every nutrient
+  stays in the pan.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review — vitamin-D and B12 intent via
+  6 eggs; iron and folate intent via meaningful spinach (100 g) and methi (50 g) quantities;
+  lemon added to aid plant-iron absorption.
+approx_kcal_per_serving: 246
+kcal_is_estimate: true
+protein_g: 13.6
+kcal_per_serving: 246
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 246
+  protein_g: 13.6
+  carbs_g: 11.0
+  fat_g: 16.7
+  fibre_g: 3.5
+  iron_mg: 4.6
+  calcium_mg: 149
+  magnesium_mg: 59.4
+  zinc_mg: 1.7
+  potassium_mg: 561
+  folate_ug: 108
+  b12_ug: 0.8
+  vit_d_ug: 1.7
+  vit_c_mg: 30.4
+  omega3_mg: 152
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- iron
+- potassium
+- folate
+- b12
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

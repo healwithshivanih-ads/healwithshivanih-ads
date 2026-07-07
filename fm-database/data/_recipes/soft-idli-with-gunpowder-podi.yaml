@@ -1,0 +1,139 @@
+slug: soft-idli-with-gunpowder-podi
+name: Soft Idli with Gunpowder Podi
+meal_type:
+- breakfast
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: South India
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- salty
+- pungent
+- astringent
+main_ingredients:
+- idli rice
+- urad dal
+- sesame seeds
+- chana dal
+- curd
+contains_allergens:
+- dairy
+- sesame
+ingredients:
+- item: idli rice (parboiled rice)
+  qty: '2'
+  unit: cups
+- item: whole white urad dal
+  qty: 3/4
+  unit: cup
+- item: fenugreek seeds
+  qty: 1/2
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: water, for grinding
+  qty: as needed
+  unit: ''
+- item: oil or ghee, for greasing moulds
+  qty: '1'
+  unit: tsp
+- item: white sesame seeds
+  qty: '3'
+  unit: tbsp
+- item: chana dal
+  qty: '2'
+  unit: tbsp
+- item: urad dal
+  qty: '1'
+  unit: tbsp
+- item: dry red chillies
+  qty: '4'
+  unit: whole
+- item: curry leaves
+  qty: '10'
+  unit: whole
+- item: asafoetida (hing)
+  qty: 1/8
+  unit: tsp
+- item: salt for podi
+  qty: 1/2
+  unit: tsp
+- item: plain curd (yoghurt), to serve
+  qty: 1/2
+  unit: cup
+steps:
+- Soak idli rice and urad dal with fenugreek seeds separately in water for 6–8 hours.
+  Grind the urad dal first to a smooth, airy batter, then grind the rice to a slightly
+  coarser batter. Mix together, add salt, and ferment in a warm place for 8–10 hours
+  until the batter is well-risen and bubbly.
+- 'To make the podi: dry-roast chana dal and urad dal in a pan over low heat for 3–4
+  minutes until golden. Add dry red chillies, curry leaves, and sesame seeds; roast
+  for another 2 minutes. Cool completely, then blitz to a coarse powder with asafoetida
+  and salt. Store in an airtight jar.'
+- When ready to make idlis, grease idli moulds lightly and fill each cavity about
+  three-quarters full with fermented batter.
+- Steam in a covered idli steamer or pressure cooker (without the weight) over high
+  heat for 10–12 minutes. A toothpick inserted in the centre should come out clean.
+  Let them rest for 2 minutes before unmoulding.
+- Serve 3–4 warm idlis per portion with a generous pinch of podi alongside a small
+  bowl of plain curd.
+servings: '4'
+prep_time_min: 20
+cook_time_min: 15
+one_line: Fluffy steamed idlis paired with a sesame-lentil podi and a side of curd
+  for a complete fermented breakfast.
+headnote: The overnight fermentation of rice and urad dal develops natural probiotics
+  and makes the batter light and easy to digest. The gunpowder podi brings roasted
+  sesame and lentils — good everyday protein and a nutty, savoury bite. Eating both
+  with a small bowl of curd closes the B12 loop naturally.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review; nutritional intent around fermented
+  idli batter for probiotics and sesame-lentil podi for protein, paired with curd
+  for B12.
+approx_kcal_per_serving: 548
+kcal_is_estimate: true
+protein_g: 20.7
+kcal_per_serving: 548
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 548
+  protein_g: 20.7
+  carbs_g: 103
+  fat_g: 6.1
+  fibre_g: 9.3
+  iron_mg: 5.3
+  calcium_mg: 178
+  magnesium_mg: 167
+  zinc_mg: 3.2
+  potassium_mg: 639
+  folate_ug: 121
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.8
+  omega3_mg: 120
+nutrient_coverage_pct: 95.5
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

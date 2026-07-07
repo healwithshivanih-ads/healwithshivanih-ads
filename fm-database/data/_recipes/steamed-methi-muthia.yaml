@@ -1,0 +1,141 @@
+slug: steamed-methi-muthia
+name: Steamed Methi Muthia
+meal_type:
+- breakfast
+- snack
+diet:
+- dairy_free
+- vegetarian
+region: Gujarat
+seasons:
+- monsoon
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- pungent
+- salty
+- astringent
+main_ingredients:
+- fresh methi leaves
+- besan
+- whole wheat flour
+- curd
+contains_allergens:
+- dairy
+- gluten
+- sesame
+ingredients:
+- item: fresh methi (fenugreek) leaves, chopped
+  qty: '2'
+  unit: cups
+- item: besan (chickpea flour)
+  qty: '1'
+  unit: cup
+- item: whole wheat flour
+  qty: 1/4
+  unit: cup
+- item: curd (yogurt)
+  qty: '3'
+  unit: tbsp
+- item: ginger-green chilli paste
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: 1/4
+  unit: tsp
+- item: red chilli powder
+  qty: 1/2
+  unit: tsp
+- item: ajwain (carom seeds)
+  qty: 1/2
+  unit: tsp
+- item: sugar
+  qty: '1'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: 3/4
+  unit: tsp
+- item: oil
+  qty: '1'
+  unit: tbsp
+- item: oil (for tempering)
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: sesame seeds
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: whole
+- item: green chilli, slit
+  qty: '1'
+  unit: whole
+steps:
+- Combine methi leaves, besan, whole wheat flour, curd, ginger-green chilli paste,
+  turmeric, red chilli powder, ajwain, sugar, lemon juice, salt, and 1 tbsp oil in
+  a bowl. Mix to a firm, non-sticky dough, adding a few teaspoons of water only if
+  needed.
+- Divide the dough into 3–4 equal portions and roll each into a smooth log about 4–5
+  cm in diameter.
+- Place the logs in a greased steamer basket. Steam over high heat for 18–20 minutes,
+  or until a toothpick inserted in the centre comes out clean. Allow to cool for 5
+  minutes, then slice into 2 cm rounds.
+- For the tempering, heat 1 tbsp oil in a small pan. Add mustard seeds and let them
+  splutter, then add sesame seeds, curry leaves, and slit green chilli. Sauté for
+  30 seconds.
+- Add the sliced muthia to the pan and toss gently for 1–2 minutes so each piece is
+  coated with the tempering. Serve warm with green chutney.
+servings: '4'
+prep_time_min: 20
+cook_time_min: 25
+one_line: Gujarati steamed dumplings of besan and fresh methi, finished with a light
+  mustard-sesame tempering.
+headnote: Fresh methi is at its most bitter-sweet during the monsoon and pairs naturally
+  with chickpea flour to make dumplings that steam up firm yet tender. Steaming instead
+  of frying keeps them light, and the quick tempering at the end adds enough warmth
+  and aroma to make each bite interesting.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon snack set — coach to review curd quantity
+  and gluten flag from whole wheat flour.
+approx_kcal_per_serving: 173
+kcal_is_estimate: true
+protein_g: 6.6
+kcal_per_serving: 173
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 173
+  protein_g: 6.6
+  carbs_g: 16.0
+  fat_g: 9.4
+  fibre_g: 4.1
+  iron_mg: 2.7
+  calcium_mg: 107
+  magnesium_mg: 59.0
+  zinc_mg: 0.9
+  potassium_mg: 320
+  folate_ug: 119
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 12.0
+  omega3_mg: 108
+nutrient_coverage_pct: 72.8
+rich_in:
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

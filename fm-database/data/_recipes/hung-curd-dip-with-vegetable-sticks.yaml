@@ -1,0 +1,113 @@
+slug: hung-curd-dip-with-vegetable-sticks
+name: Hung Curd Dip with Vegetable Sticks
+meal_type:
+- snack
+- side
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: Pan-Indian
+seasons:
+- summer
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- hung curd
+- cucumber
+- carrot
+contains_allergens:
+- dairy
+ingredients:
+- item: full-fat curd (hung overnight in a muslin cloth)
+  qty: '1'
+  unit: cup
+- item: cucumber
+  qty: '1'
+  unit: medium
+- item: carrot
+  qty: '2'
+  unit: medium
+- item: fresh mint leaves, finely chopped
+  qty: '2'
+  unit: tbsp
+- item: fresh coriander leaves, finely chopped
+  qty: '2'
+  unit: tbsp
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: whole
+- item: roasted cumin powder
+  qty: ½
+  unit: tsp
+- item: chaat masala
+  qty: ¼
+  unit: tsp
+- item: black salt
+  qty: ¼
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Place full-fat curd in a muslin cloth, tie it up, and hang it over a bowl in the
+  refrigerator for at least 4 hours or overnight until thick and whey-free — you should
+  have about 1 cup of hung curd.
+- Tip the hung curd into a bowl and whisk it briefly until smooth. Add the chopped
+  mint, coriander, green chilli, roasted cumin powder, chaat masala, black salt, and
+  lemon juice. Mix well and taste for seasoning.
+- Peel the carrots and cut them into batons roughly 8 cm long. Halve the cucumber
+  lengthwise, scoop out the seeds with a spoon, and cut into similar-sized sticks.
+  Arrange on a plate.
+- Transfer the dip to a small serving bowl, dust lightly with a pinch of roasted cumin
+  powder, and place it alongside the vegetable sticks. Serve immediately or refrigerate
+  the dip (covered) for up to one day.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 15
+one_line: A thick, herbed yogurt dip served with crisp cucumber and carrot sticks.
+headnote: Hung curd is simply curd drained of whey for a few hours — the result is
+  dense, protein-rich, and tangy. It makes an honest dip that keeps you full well
+  past snack time. Pair it with cool cucumber and sweet carrot sticks for a refreshing
+  plate on a warm afternoon.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for B12/protein snack slot — coach to review quantities
+  and seasoning balance.
+approx_kcal_per_serving: 44
+kcal_is_estimate: true
+protein_g: 1.5
+kcal_per_serving: 44
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 44.4
+  protein_g: 1.5
+  carbs_g: 10.2
+  fat_g: 0.4
+  fibre_g: 2.4
+  iron_mg: 1.1
+  calcium_mg: 46.2
+  magnesium_mg: 24.5
+  zinc_mg: 0.4
+  potassium_mg: 374
+  folate_ug: 21.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 10.6
+  omega3_mg: 13.2
+nutrient_coverage_pct: 84.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

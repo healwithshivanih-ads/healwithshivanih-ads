@@ -1,0 +1,106 @@
+slug: alsi-pinni-flaxseed-laddu-light
+name: Alsi Pinni (Flaxseed Laddu, Light)
+meal_type:
+- snack
+diet:
+- vegetarian
+region: Punjab
+seasons:
+- winter
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- flaxseeds
+- whole wheat flour
+- jaggery
+- ghee
+contains_allergens:
+- gluten
+ingredients:
+- item: flaxseeds (alsi)
+  qty: '1'
+  unit: cup
+- item: whole wheat flour (atta)
+  qty: '0.5'
+  unit: cup
+- item: ghee
+  qty: '3'
+  unit: tbsp
+- item: jaggery powder
+  qty: '0.33'
+  unit: cup
+- item: green cardamom powder
+  qty: '0.5'
+  unit: tsp
+- item: dry ginger powder (sonth)
+  qty: '0.25'
+  unit: tsp
+- item: water
+  qty: '1'
+  unit: tbsp
+steps:
+- Dry-roast the flaxseeds in a thick pan over medium heat for 3–4 minutes, stirring
+  constantly, until they begin to pop and smell nutty. Spread on a plate to cool completely.
+- In the same pan, add 1 tbsp ghee and roast the whole wheat flour on low heat for
+  6–8 minutes, stirring without a break, until it turns a warm golden-brown and smells
+  like biscuit. Remove and cool.
+- Grind the cooled flaxseeds to a coarse powder in a small grinder — a little texture
+  is fine.
+- Combine the ground flaxseed, roasted flour, jaggery powder, cardamom, and dry ginger
+  in a bowl. Add the remaining 2 tbsp ghee and the tablespoon of water, then mix thoroughly
+  with your hands until the mixture just comes together.
+- Pinch off small portions and roll between your palms into compact laddus roughly
+  the size of a large marble. If the mix feels too dry, add a few more drops of warm
+  ghee.
+- Arrange on a tray and rest for 15 minutes so they firm up before storing in an airtight
+  tin.
+servings: 12–14 small laddus
+prep_time_min: 15
+cook_time_min: 20
+one_line: Small winter laddus made from roasted flaxseed, whole wheat flour, ghee,
+  and jaggery.
+headnote: Flaxseeds are one of the richest plant sources of omega-3, and roasting
+  them lightly before grinding wakes up their nutty flavour without destroying the
+  fats. Keeping jaggery moderate means you can comfortably eat two of these as a winter
+  afternoon snack without feeling heavy.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 snack slot; coach to verify jaggery
+  level and laddu size guidance.
+approx_kcal_per_serving: 123
+kcal_is_estimate: true
+protein_g: 2.5
+kcal_per_serving: 123
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 123
+  protein_g: 2.5
+  carbs_g: 9.2
+  fat_g: 9.0
+  fibre_g: 3.7
+  iron_mg: 0.9
+  calcium_mg: 38.7
+  magnesium_mg: 56.9
+  zinc_mg: 0.6
+  potassium_mg: 168
+  folate_ug: 11.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.1
+  omega3_mg: 3067
+nutrient_coverage_pct: 89.9
+rich_in:
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

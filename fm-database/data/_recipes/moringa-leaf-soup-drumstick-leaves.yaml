@@ -1,0 +1,122 @@
+slug: moringa-leaf-soup-drumstick-leaves
+name: Moringa Leaf Soup (Drumstick Leaves)
+meal_type:
+- soup
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: South India
+seasons:
+- monsoon
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- pungent
+- astringent
+main_ingredients:
+- moringa leaves
+- yellow moong dal
+- tomato
+- onion
+- garlic
+contains_allergens: []
+ingredients:
+- item: fresh moringa (drumstick) leaves, picked and washed
+  qty: '2'
+  unit: cups
+- item: yellow moong dal, rinsed
+  qty: 1/4
+  unit: cup
+- item: tomato, roughly chopped
+  qty: '1'
+  unit: whole
+- item: onion, finely chopped
+  qty: '1'
+  unit: whole
+- item: garlic cloves, minced
+  qty: '4'
+  unit: whole
+- item: green chilli, slit
+  qty: '1'
+  unit: whole
+- item: turmeric powder
+  qty: 1/4
+  unit: tsp
+- item: cumin seeds
+  qty: 1/2
+  unit: tsp
+- item: black pepper, freshly cracked
+  qty: 1/4
+  unit: tsp
+- item: salt
+  qty: 3/4
+  unit: tsp
+- item: coconut oil
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '4'
+  unit: cups
+steps:
+- Pressure-cook the moong dal with 2 cups water and turmeric for 3 whistles until
+  completely soft; whisk smooth and set aside.
+- Heat coconut oil in a deep pot over medium heat. Add cumin seeds and let them splutter,
+  then add onion and garlic and sauté until the onion turns translucent, about 4 minutes.
+- Add tomato and green chilli, cook until the tomato breaks down and the oil just
+  separates, about 3 minutes.
+- Pour in the cooked dal along with the remaining 2 cups of water. Stir well, bring
+  to a gentle simmer.
+- Add the moringa leaves and black pepper. Simmer uncovered for 5 minutes — the leaves
+  will wilt and soften but retain their colour.
+- Taste, adjust salt, and serve hot.
+servings: 3–4
+prep_time_min: 15
+cook_time_min: 30
+one_line: A thin, nourishing dal-based soup packed with fresh moringa leaves.
+headnote: Moringa leaves are one of the richest plant sources of iron and calcium
+  you can find in an Indian kitchen — using a generous two cups here means every bowl
+  genuinely delivers. The moong dal base keeps the soup light enough for a monsoon
+  evening when appetites are gentler.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for monsoon soup slot — please review quantities,
+  dosha notes, and regional attribution before publishing.
+approx_kcal_per_serving: 95
+kcal_is_estimate: true
+protein_g: 5.6
+kcal_per_serving: 95
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 94.6
+  protein_g: 5.6
+  carbs_g: 15.2
+  fat_g: 1.8
+  fibre_g: 2.5
+  iron_mg: 1.7
+  calcium_mg: 53.6
+  magnesium_mg: 32.5
+  zinc_mg: 0.6
+  potassium_mg: 349
+  folate_ug: 94.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 15.5
+  omega3_mg: 32.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

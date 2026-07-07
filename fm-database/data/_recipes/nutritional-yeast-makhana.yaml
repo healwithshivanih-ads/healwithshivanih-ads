@@ -1,0 +1,101 @@
+slug: nutritional-yeast-makhana
+name: Nutritional Yeast Makhana
+meal_type:
+- snack
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- salty
+- pungent
+- bitter
+main_ingredients:
+- makhana
+- nutritional yeast
+- ghee
+contains_allergens: []
+ingredients:
+- item: makhana (fox nuts / lotus seeds)
+  qty: '3'
+  unit: cup
+- item: ghee
+  qty: '1.5'
+  unit: tbsp
+- item: nutritional yeast flakes
+  qty: '4'
+  unit: tbsp
+- item: black pepper, freshly ground
+  qty: 1/2
+  unit: tsp
+- item: rock salt or sendha namak
+  qty: 1/2
+  unit: tsp
+- item: red chilli powder
+  qty: 1/4
+  unit: tsp
+- item: turmeric powder
+  qty: 1/8
+  unit: tsp
+steps:
+- Heat ghee in a wide, heavy pan over low-medium heat. Add the makhana in a single
+  layer and roast, stirring every minute, for 10–12 minutes until they are crisp and
+  lightly golden. Break one open — it should be crunchy all the way through with no
+  softness.
+- Remove the pan from the heat but keep the makhana in the warm pan. Immediately sprinkle
+  over the nutritional yeast, black pepper, salt, red chilli powder, and turmeric.
+- Toss quickly and thoroughly for about 30 seconds while the pan is still warm so
+  the yeast flakes toast lightly onto the surface of the makhana.
+- Spread on a plate to cool for 2 minutes — they crisp up further as they cool. Store
+  any leftovers in an airtight container for up to 3 days.
+servings: '2'
+prep_time_min: 2
+cook_time_min: 12
+one_line: Ghee-roasted fox nuts tossed with nutritional yeast, black pepper, and a
+  pinch of chilli for a light, savoury snack.
+headnote: Fox nuts (makhana) are a naturally light, low-fat base that carries flavour
+  beautifully when slow-roasted in ghee. Tossing them while still warm with nutritional
+  yeast means the flakes cling and toast slightly, making every bite carry the fortified
+  B12 this snack is built around. Two tablespoons of nutritional yeast per serving
+  is enough to matter without making it taste unfamiliar.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review; 4 tbsp nutritional yeast across
+  2 servings ensures a meaningful fortified B12 contribution per snack portion.
+approx_kcal_per_serving: 124
+kcal_is_estimate: true
+protein_g: 3.9
+kcal_per_serving: 124
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 124
+  protein_g: 3.9
+  carbs_g: 3.3
+  fat_g: 10.7
+  fibre_g: 1.9
+  iron_mg: 0.6
+  calcium_mg: 5.8
+  magnesium_mg: 10.8
+  zinc_mg: 0.6
+  potassium_mg: 107
+  folate_ug: 75.4
+  b12_ug: 3.3
+  vit_d_ug: 0.1
+  vit_c_mg: 0.2
+  omega3_mg: 84.5
+nutrient_coverage_pct: 57.3
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

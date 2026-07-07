@@ -1,0 +1,131 @@
+slug: mushroom-pepper-fry
+name: Mushroom Pepper Fry
+meal_type:
+- side
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: South India
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+- vata
+rasa:
+- pungent
+- salty
+- bitter
+main_ingredients:
+- button mushrooms
+- black pepper
+- curry leaves
+- onion
+contains_allergens: []
+ingredients:
+- item: button mushrooms
+  qty: '400'
+  unit: g
+- item: coconut oil
+  qty: '2'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: dried red chillies
+  qty: '2'
+  unit: whole
+- item: curry leaves
+  qty: 12–15
+  unit: whole
+- item: onion, thinly sliced
+  qty: '1'
+  unit: medium
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: garlic, minced
+  qty: '4'
+  unit: cloves
+- item: black pepper, coarsely cracked
+  qty: '1.5'
+  unit: tsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: '0.75'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Wipe mushrooms clean and halve or quarter them so all pieces are roughly the same
+  size. If time allows, spread them gills-up on a tray in direct sunlight for 20 minutes
+  before cooking.
+- Heat coconut oil in a wide, heavy pan over medium-high heat. Add mustard seeds and
+  let them splutter, then drop in the dried red chillies and curry leaves and fry
+  for 30 seconds until fragrant.
+- Add the sliced onion and cook, stirring often, for 7–8 minutes until it turns golden
+  at the edges.
+- Stir in the ginger and garlic and fry for 1 minute, then add turmeric, cumin powder,
+  half the cracked pepper, and salt, stirring to coat the onions.
+- Add the mushrooms, toss well, and spread into a single layer. Cook on high heat
+  without stirring for 3–4 minutes so the mushrooms sear and release their moisture,
+  then toss and cook for another 3–4 minutes until dry and slightly browned.
+- Take off the heat, add the remaining cracked pepper and lemon juice, toss well,
+  and finish with fresh coriander. Serve hot.
+servings: 3–4 as a side
+prep_time_min: 10
+cook_time_min: 20
+one_line: A South Indian dry fry of mushrooms and cracked pepper that makes the most
+  of every vitamin-D-rich bite.
+headnote: Spreading mushrooms out in a single layer on a tray and leaving them in
+  direct sunlight for 20 minutes gills-up before cooking can meaningfully boost their
+  vitamin D. The generous cracked pepper here is not just heat — it is the flavour
+  backbone of a classic South Indian kali mirch fry.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for coach review — vitamin-D intent honoured via
+  sun-activated mushrooms and meaningful quantity; pepper quantity reflects South
+  Indian kali mirch fry tradition.
+approx_kcal_per_serving: 128
+kcal_is_estimate: true
+protein_g: 2.0
+kcal_per_serving: 128
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 128
+  protein_g: 2.0
+  carbs_g: 8.8
+  fat_g: 9.9
+  fibre_g: 2.2
+  iron_mg: 1.1
+  calcium_mg: 105
+  magnesium_mg: 20.2
+  zinc_mg: 0.3
+  potassium_mg: 214
+  folate_ug: 20.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 6.2
+  omega3_mg: 23.9
+nutrient_coverage_pct: 87.1
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

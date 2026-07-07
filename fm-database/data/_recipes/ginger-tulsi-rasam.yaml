@@ -1,0 +1,136 @@
+slug: ginger-tulsi-rasam
+name: Ginger Tulsi Rasam
+meal_type:
+- soup
+- dinner
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: South India
+seasons:
+- monsoon
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- ginger
+- tulsi
+- black pepper
+- tamarind
+- tomato
+contains_allergens:
+- sesame
+- soy
+ingredients:
+- item: tamarind
+  qty: '1'
+  unit: small lime-sized ball
+- item: water (warm, for soaking)
+  qty: '1.5'
+  unit: cup
+- item: tomato
+  qty: '2'
+  unit: medium, roughly chopped
+- item: fresh ginger
+  qty: '2'
+  unit: inch piece, grated or pounded
+- item: fresh tulsi (holy basil) leaves
+  qty: '20'
+  unit: whole leaves
+- item: black pepper
+  qty: '1.5'
+  unit: tsp, coarsely cracked
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: asafoetida (hing)
+  qty: '0.25'
+  unit: tsp
+- item: dry red chilli
+  qty: '2'
+  unit: whole
+- item: curry leaves
+  qty: '10'
+  unit: whole
+- item: cold-pressed coconut oil or sesame oil
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp, or to taste
+- item: water (for rasam)
+  qty: '3'
+  unit: cup
+- item: coriander leaves
+  qty: '2'
+  unit: tbsp, chopped
+steps:
+- Soak the tamarind in 1.5 cups warm water for 10 minutes, then squeeze and strain
+  to extract the pulp; discard the fibre.
+- Blend the chopped tomatoes with the grated ginger and a splash of water into a rough
+  purée.
+- Combine the tamarind extract, tomato-ginger purée, turmeric, and 3 cups water in
+  a pot. Bring to a boil, then simmer uncovered for 10 minutes until the raw tamarind
+  smell mellows.
+- Add the cracked black pepper and salt; simmer for another 5 minutes. The rasam should
+  remain thin — do not reduce it further.
+- Heat the oil in a small tempering pan. Add cumin seeds, dry red chillies, asafoetida,
+  and curry leaves; let them splutter for 30 seconds, then pour the tempering into
+  the rasam.
+- Turn off the heat and immediately stir in the fresh tulsi leaves. Cover and rest
+  for 2 minutes so the tulsi steeps without losing its oils.
+- Ladle into bowls, garnish with coriander, and serve hot — drink directly from the
+  bowl or spoon over plain rice.
+servings: 3–4
+prep_time_min: 10
+cook_time_min: 20
+one_line: A thin, warming rasam built on fresh ginger, tulsi leaves, and cracked pepper
+  — good for heavy monsoon evenings when the body needs a little heat.
+headnote: Fresh tulsi leaves steeped at the end keep their volatile oils intact, giving
+  this rasam its gentle antioxidant warmth. A generous hand with ginger and black
+  pepper makes this genuinely heating rather than merely flavoured.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for monsoon soup set; coach to verify pepper quantity
+  and tulsi timing before publishing.
+approx_kcal_per_serving: 42
+kcal_is_estimate: true
+protein_g: 0.9
+kcal_per_serving: 42
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 42.1
+  protein_g: 0.9
+  carbs_g: 6.9
+  fat_g: 1.6
+  fibre_g: 1.1
+  iron_mg: 1.0
+  calcium_mg: 65.2
+  magnesium_mg: 14.7
+  zinc_mg: 0.1
+  potassium_mg: 140
+  folate_ug: 7.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.0
+  omega3_mg: 11.0
+nutrient_coverage_pct: 57.7
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

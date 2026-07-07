@@ -1,0 +1,94 @@
+slug: chia-lemon-cooler
+name: Chia Lemon Cooler
+meal_type:
+- drink
+diet:
+- dairy_free
+- gluten_free
+- nut_free
+- vegan
+region: Pan-Indian
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha: []
+rasa:
+- sour
+- sweet
+main_ingredients:
+- chia seeds
+- lemon
+- jaggery
+contains_allergens: []
+ingredients:
+- item: chia seeds
+  qty: '3'
+  unit: tbsp
+- item: cold water
+  qty: '2.5'
+  unit: cups
+- item: lemon juice, freshly squeezed
+  qty: '3'
+  unit: tbsp
+- item: jaggery powder
+  qty: '1.5'
+  unit: tsp
+- item: rock salt (sendha namak)
+  qty: '0.25'
+  unit: tsp
+- item: fresh mint leaves
+  qty: '8'
+  unit: whole
+steps:
+- Stir chia seeds into 2.5 cups of cold water in a jug and leave to soak for 20–25
+  minutes, stirring once halfway, until each seed is surrounded by a clear gel.
+- Dissolve jaggery powder in the lemon juice by stirring briskly for a minute, then
+  pour the sweetened lemon juice into the soaked chia water.
+- Add rock salt and stir everything together gently so the chia gel stays intact rather
+  than breaking up.
+- Drop in the mint leaves, give one last stir, pour into two glasses over ice if available,
+  and serve immediately.
+servings: 2 glasses
+prep_time_min: 25
+cook_time_min: 15
+one_line: Soaked chia seeds in chilled lemon water with a touch of jaggery.
+headnote: Chia seeds soaked for at least 20 minutes swell into a gel that delivers
+  a quiet but meaningful hit of plant omega-3. A squeeze of fresh lemon and a little
+  jaggery keep this cooling drink honest and easy to sip through a hot afternoon.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler for omega-3 drink slot; coach to review sweetness
+  level and salt.
+approx_kcal_per_serving: 93
+kcal_is_estimate: true
+protein_g: 2.8
+kcal_per_serving: 93
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 93.4
+  protein_g: 2.8
+  carbs_g: 11.5
+  fat_g: 4.7
+  fibre_g: 5.8
+  iron_mg: 2.2
+  calcium_mg: 115
+  magnesium_mg: 59.2
+  zinc_mg: 0.8
+  potassium_mg: 154
+  folate_ug: 20.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 10.1
+  omega3_mg: 2696
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

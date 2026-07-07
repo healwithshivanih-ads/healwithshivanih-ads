@@ -1,0 +1,92 @@
+slug: ghee-roasted-makhana-with-pepper
+name: Ghee-Roasted Makhana with Pepper
+meal_type:
+- snack
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: Indian
+seasons:
+- monsoon
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- astringent
+- salty
+main_ingredients:
+- makhana (fox nuts)
+- ghee
+- black pepper
+contains_allergens:
+- dairy
+ingredients:
+- item: makhana (fox nuts)
+  qty: '2'
+  unit: cups
+- item: ghee
+  qty: 1½
+  unit: tsp
+- item: black pepper, freshly coarsely ground
+  qty: ½
+  unit: tsp
+- item: rock salt (sendha namak)
+  qty: ¼
+  unit: tsp
+steps:
+- Heat a wide, heavy-bottomed pan or kadai over low-medium heat. Add the ghee and
+  let it melt and coat the pan.
+- Add the makhana in a single layer and roast on low heat, stirring every minute or
+  so, for 9–11 minutes until they turn crisp and sound hollow when pressed between
+  your fingers — patience here is the whole technique.
+- Turn off the heat, immediately sprinkle over the coarsely ground black pepper and
+  rock salt, and toss well so the seasoning coats every piece while the residual heat
+  is still there.
+- Spread on a plate to cool for 2–3 minutes — they crisp up further as they cool.
+  Serve immediately or store in an airtight container for up to 2 days.
+servings: '2'
+prep_time_min: 2
+cook_time_min: 12
+one_line: Fox nuts slow-roasted in ghee with black pepper and rock salt — a light,
+  warming monsoon snack.
+headnote: Makhana roasted low and slow in ghee turns genuinely crisp without any heaviness.
+  Black pepper adds a gentle warmth that is welcome on cool, damp monsoon evenings,
+  and rock salt keeps the flavour clean and uncluttered.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+parse_notes: AI-drafted gap-filler recipe for monsoon set — please verify ghee quantity
+  and roasting time for batch-size consistency before publishing.
+approx_kcal_per_serving: 22
+kcal_is_estimate: true
+protein_g: 0.1
+kcal_per_serving: 22
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 21.8
+  protein_g: 0.1
+  carbs_g: 0.3
+  fat_g: 2.3
+  fibre_g: 0.1
+  iron_mg: 0.1
+  calcium_mg: 2.5
+  magnesium_mg: 0.9
+  zinc_mg: 0.0
+  potassium_mg: 6.9
+  folate_ug: 0.1
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 19.0
+nutrient_coverage_pct: 18.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)

@@ -1,0 +1,151 @@
+slug: wild-mushroom-soup-with-soba
+name: Wild Mushroom Soup with Soba
+meal_type:
+- soup
+diet:
+- gluten_free
+- vegetarian
+region: Japanese-inspired
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa:
+- salty
+main_ingredients:
+- mushrooms
+- soba noodles
+- kombu
+- garlic
+- scallions
+contains_allergens:
+- sesame
+- soy
+ingredients:
+- item: mushrooms (mixed), cut into 1-inch pieces
+  qty: '10'
+  unit: ounces
+- item: water
+  qty: '2.25'
+  unit: quarts
+- item: salt
+  qty: '0.25'
+  unit: teaspoon
+- item: vegetable oil
+  qty: '2'
+  unit: tablespoons
+- item: garlic clove, chopped
+  qty: '1'
+  unit: whole
+- item: dry white wine or dry vermouth
+  qty: '2'
+  unit: tablespoons
+- item: reduced-sodium soy sauce
+  qty: '2'
+  unit: tablespoons
+- item: dried shiitake mushrooms
+  qty: '1'
+  unit: ounce
+- item: black peppercorns
+  qty: '1'
+  unit: teaspoon
+- item: kombu, broken into pieces
+  qty: '1'
+  unit: ounce
+- item: soba noodles
+  qty: '8'
+  unit: ounces
+- item: enoki mushrooms, trimmed
+  qty: '2'
+  unit: ounces
+- item: scallions, sliced thin
+  qty: '2'
+  unit: whole
+- item: radishes, sliced thin
+  qty: '4'
+  unit: whole
+- item: sesame oil for serving
+  qty: as desired
+  unit: unit
+steps:
+- In a pressure cooker, combine fresh mushrooms, 1/4 cup water, and salt. Cook over
+  high heat, stirring occasionally, until water evaporates and mushrooms release their
+  moisture (8–12 minutes).
+- Reduce heat to medium, add oil, and cook mushrooms, stirring often, until they are
+  deeply browned (4–6 minutes).
+- Stir in garlic and cook until fragrant (about 30 seconds). Add wine and soy sauce,
+  scraping up any browned bits from the bottom, and cook until wine evaporates (about
+  1 minute).
+- Pour in the remaining 2 quarts water and add peppercorns. Lock the lid in place
+  and bring to high pressure over high heat.
+- As soon as high pressure is reached, reduce heat to medium-low and maintain pressure
+  for 30 minutes.
+- Remove pot from heat and allow pressure to release naturally for 15 minutes. Quick
+  release any remaining pressure, then carefully open the lid away from you.
+- Return the soup to a simmer over low heat. Add kombu and cook until it softens and
+  roughly doubles in size (about 10 minutes).
+- Strain the soup through a fine-mesh strainer into a bowl, pressing on solids to
+  extract maximum liquid. Reserve the cooked mushrooms; discard kombu and peppercorns
+  (or leave peppercorns in if desired for their soft, berry-like texture).
+- In a separate pot, bring 2 quarts of fresh water to a boil. Add soba noodles and
+  cook, stirring occasionally, until just tender (about 5 minutes). Drain in a fine-mesh
+  strainer and divide between bowls.
+- In the now-empty pressure-cooker pot, gently reheat the strained mushroom broth
+  with the reserved cooked mushrooms and enoki mushrooms over medium-low heat until
+  simmering.
+- Ladle the hot soup and mushrooms over the noodles in each bowl. Top with radishes
+  and scallions. Drizzle with sesame oil if desired and serve.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 75
+one_line: A deeply umami mushroom broth with soba noodles, fresh enoki, and crisp
+  radishes, built layer by layer through patient browning and pressure cooking.
+headnote: This soup rewards a pressure cooker but builds real depth through the browning
+  step first. The kombu adds clean savoury notes without dairy. It works year-round
+  and scales well for weeknight dinners when you want something nourishing without
+  heaviness.
+attribution:
+  author: Tim Chin
+  source_id: recipe-inbox
+  source_url: https://nutritionsource.hsph.harvard.edu/wild-mushroom-soup-with-soba/
+parse_notes: Recipe sourced from Harvard T.H. Chan School of Public Health Nutrition
+  Source. All quantities and method as published. Soba noodles contain buckwheat,
+  which is gluten-free, but some commercial soba contain wheat; marked as gluten_free
+  based on the buckwheat base but the cook should verify their specific brand. Sesame
+  oil is optional garnish but listed as allergen due to potential cross-contact.
+approx_kcal_per_serving: 35
+kcal_is_estimate: true
+protein_g: 2.9
+kcal_per_serving: 35
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 34.9
+  protein_g: 2.9
+  carbs_g: 6.1
+  fat_g: 0.2
+  fibre_g: 1.9
+  iron_mg: 0.8
+  calcium_mg: 21.5
+  magnesium_mg: 17.6
+  zinc_mg: 0.4
+  potassium_mg: 186
+  folate_ug: 25.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 14.2
+  omega3_mg: 21.0
+nutrient_coverage_pct: 55.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-07'
+version: 1
+status: active
+updated_at: '2026-07-07'
+updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/wild-mushroom-soup-with-soba.jpg
+  credit: 'nutritionsource.hsph.harvard.edu'
+  source_url: https://nutritionsource.hsph.harvard.edu/wp-content/uploads/2020/03/Soba5-1024x683.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
