@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import uuid
 from datetime import datetime, timezone
@@ -40,6 +41,46 @@ MODEL = "claude-sonnet-4-6"
 
 sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
+
+# Tool-use can serialise an array field as a JSON string; coerce every
+# list-typed recipe field back to a real list so downstream (review UI,
+# approve gate) never chokes on a str where a list belongs.
+_LIST_FIELDS = ("meal_type", "diet", "seasons", "balances_dosha", "aggravates_dosha",
+                "rasa", "main_ingredients", "contains_allergens", "steps", "ingredients")
+
+
+def _coerce_list(v):
+    if isinstance(v, list) or v is None:
+        return v
+    if isinstance(v, str):
+        s = v.strip().rstrip(",").strip()
+        if s.startswith("["):
+            cleaned = re.sub(r",(\s*[\]}])", r"\1", s)
+            if cleaned.endswith("]"):
+                try:
+                    p = json.loads(cleaned)
+                    if isinstance(p, list):
+                        return [str(x) for x in p]
+                except Exception:
+                    pass
+            quoted = re.findall(r'"((?:[^"\\]|\\.)*)"', s)
+            if quoted:
+                return [q.replace('\\"', '"') for q in quoted]
+        return [re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", ln).strip()
+                for ln in s.splitlines() if ln.strip()] or [s]
+    return [v]
+
+
+def _normalize_lists(parsed: dict) -> None:
+    for f in _LIST_FIELDS:
+        if f in parsed:
+            parsed[f] = _coerce_list(parsed[f])
+    ings = parsed.get("ingredients")
+    if isinstance(ings, list):
+        parsed["ingredients"] = [
+            i if isinstance(i, dict) else {"item": str(i), "qty": "", "unit": ""}
+            for i in ings
+        ]
 
 
 def _load_env() -> None:
@@ -177,6 +218,9 @@ def main() -> int:
                 print(f"batch failed: {e}", file=sys.stderr)
                 continue
 
+        for d in drafts:
+            if isinstance(d, dict):
+                _normalize_lists(d)
         by_name = { (d.get("name") or "").strip().lower(): d for d in drafts }
         for spec in batch:
             draft = by_name.get(spec["name"].strip().lower()) or (drafts.pop(0) if drafts else None)

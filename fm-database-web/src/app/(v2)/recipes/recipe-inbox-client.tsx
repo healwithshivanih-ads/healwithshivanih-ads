@@ -13,6 +13,49 @@ import {
 const MEAL_TYPES = ["breakfast", "lunch", "dinner", "snack", "side", "drink", "salad", "soup", "condiment"];
 const DIETS = ["vegetarian", "vegan", "jain", "eggetarian", "non_vegetarian", "gluten_free", "dairy_free", "nut_free"];
 
+// Tool-use occasionally serialises an array field as a STRING (a JSON array,
+// or newline text). Coerce so the editor never calls .join/.map on a string
+// and takes down the whole review page. Belt-and-braces with the shim-side
+// normalisation — a legacy candidate saved before that fix still opens.
+function toStringArray(v: unknown): string[] {
+  if (Array.isArray(v)) return v.map((x) => String(x));
+  if (typeof v === "string") {
+    const s = v.trim().replace(/,\s*$/, "").trim(); // models sometimes append a trailing comma
+    if (s.startsWith("[")) {
+      const cleaned = s.replace(/,(\s*[\]}])/g, "$1");
+      if (cleaned.endsWith("]")) {
+        try {
+          const p = JSON.parse(cleaned);
+          if (Array.isArray(p)) return p.map((x) => String(x));
+        } catch {
+          /* fall through */
+        }
+      }
+      const quoted = s.match(/"((?:[^"\\]|\\.)*)"/g);
+      if (quoted) return quoted.map((q) => q.slice(1, -1).replace(/\\"/g, '"'));
+    }
+    return s
+      .split("\n")
+      .map((ln) => ln.replace(/^\s*(?:[-*•]|\d+[.)])\s*/, "").trim())
+      .filter(Boolean);
+  }
+  return [];
+}
+
+function normalizeDraft(raw: Record<string, unknown>): ParsedRecipeDraft {
+  const d = { ...raw } as Record<string, unknown>;
+  for (const f of ["meal_type", "diet", "seasons", "balances_dosha", "aggravates_dosha", "rasa", "main_ingredients", "contains_allergens", "steps"]) {
+    if (f in d) d[f] = toStringArray(d[f]);
+  }
+  const ings = d.ingredients;
+  d.ingredients = (Array.isArray(ings) ? ings : []).map((i) =>
+    i && typeof i === "object"
+      ? { item: String((i as RecipeIngredient).item ?? ""), qty: String((i as RecipeIngredient).qty ?? ""), unit: String((i as RecipeIngredient).unit ?? "") }
+      : { item: String(i), qty: "", unit: "" },
+  );
+  return d as unknown as ParsedRecipeDraft;
+}
+
 function ChipToggle({
   value,
   options,
@@ -51,7 +94,7 @@ function DraftEditor({
   onApproved: (slug: string) => void;
 }) {
   const [draft, setDraft] = useState<ParsedRecipeDraft>(
-    () => JSON.parse(JSON.stringify(candidate.parsed)) as ParsedRecipeDraft,
+    () => normalizeDraft(JSON.parse(JSON.stringify(candidate.parsed))),
   );
   const [warnings, setWarnings] = useState<string[]>([]);
   const [needsConfirm, setNeedsConfirm] = useState(false);
