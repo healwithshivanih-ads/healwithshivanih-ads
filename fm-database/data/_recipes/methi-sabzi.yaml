@@ -109,7 +109,7 @@ nutrients_per_serving:
   carbs_g: 3.4
   fat_g: 9.3
   fibre_g: 2.6
-  iron_mg: 2.2
+  iron_mg: 3.1
   calcium_mg: 117
   magnesium_mg: 30.8
   zinc_mg: 0.4
@@ -120,6 +120,7 @@ nutrients_per_serving:
   vit_c_mg: 17.1
   omega3_mg: 105
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- iron
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-07'

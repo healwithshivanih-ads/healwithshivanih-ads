@@ -19,6 +19,9 @@ _meta:
   - vit_c_mg
   - omega3_mg
   authored: '2026-07-07'
+  verified: '2026-07-07'
+  verification: 'All 200 ingredients cross-checked vs IFCT 2017 / USDA FDC by an independent skeptical pass (25-agent workflow). 6 corrections applied: ajwain fat/fibre, tendli potassium, methi-leaves iron,
+    vanilla kcal, cacao kcal. Remainder confirmed within tolerance.'
 ajwain:
   category: spice
   basis: dry
@@ -29,8 +32,8 @@ ajwain:
     kcal: 360
     protein_g: 16.0
     carbs_g: 43.0
-    fat_g: 15.0
-    fibre_g: 21.0
+    fat_g: 25.0
+    fibre_g: 39.0
     iron_mg: 12.0
     calcium_mg: 1525
     magnesium_mg: 130
@@ -957,7 +960,7 @@ cacao:
   - cacao powder
   - cacao nibs
   per_100g:
-    kcal: 350
+    kcal: 228
     protein_g: 19.6
     carbs_g: 57.9
     fat_g: 13.7
@@ -3118,7 +3121,7 @@ methi-leaves:
     carbs_g: 4.0
     fat_g: 0.9
     fibre_g: 4.9
-    iron_mg: 4.0
+    iron_mg: 6.5
     calcium_mg: 274
     magnesium_mg: 61
     zinc_mg: 0.7
@@ -4863,7 +4866,7 @@ tendli:
     calcium_mg: 40
     magnesium_mg: 17
     zinc_mg: 0.3
-    potassium_mg: 30
+    potassium_mg: 200
     folate_ug: 14
     b12_ug: 0
     vit_d_ug: 0
@@ -5064,7 +5067,7 @@ vanilla:
   - pure vanilla extract
   - vanilla extract
   per_100g:
-    kcal: 52
+    kcal: 288
     protein_g: 0.1
     carbs_g: 12.7
     fat_g: 0.1
