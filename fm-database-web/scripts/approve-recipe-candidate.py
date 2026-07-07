@@ -92,7 +92,13 @@ def _name_tokens(name: str) -> set[str]:
 
 
 def _similar_existing(name: str) -> list[str]:
-    """Existing recipe names whose token sets overlap heavily with this one."""
+    """Existing recipe names that are NEAR-IDENTICAL to this one.
+
+    Uses Jaccard similarity (shared tokens / all distinct tokens) — symmetric,
+    so a short existing name like 'Ghee' can't false-match 'Ghee Roasted
+    Makhana' just because they share one word. Also requires ≥2 shared tokens
+    so a single common food word (ghee / dal / sabzi) never flags on its own.
+    """
     mine = _name_tokens(name)
     if not mine:
         return []
@@ -110,7 +116,11 @@ def _similar_existing(name: str) -> list[str]:
         if not theirs:
             continue
         overlap = len(mine & theirs)
-        if overlap and (overlap / min(len(mine), len(theirs))) >= 0.75:
+        jaccard = overlap / len(mine | theirs)
+        # near-identical name: high overlap of the whole set. A 1-word name that
+        # exactly equals a 1-word name is still caught (overlap==len==1 → j==1).
+        exact_short = overlap >= 1 and mine == theirs
+        if exact_short or (overlap >= 2 and jaccard >= 0.7):
             hits.append(f"{other.get('name')} ({p.stem})")
     return hits
 
