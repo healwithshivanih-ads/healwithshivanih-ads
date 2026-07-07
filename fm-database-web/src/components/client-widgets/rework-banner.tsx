@@ -1,9 +1,11 @@
 "use client";
 
 /**
- * ReworkBanner — surfaces the most recent AI plan-rework suggestion when its
- * estimated benefit is meaningful (>= 30%). Click → modal with full rationale,
- * suggested changes, and action buttons (dismiss / snooze / generate successor).
+ * ReworkBanner — surfaces the most recent AI plan-rework suggestion. At >= 30%
+ * estimated benefit it renders a loud amber/orange/red banner; below 30% it
+ * renders a muted slate "reviewed — low benefit" strip (so the coach always
+ * knows the check ran and can open the details). Click → modal with full
+ * rationale, suggested changes, and actions (dismiss / snooze / rework).
  */
 
 import { useState, useTransition } from "react";
@@ -40,7 +42,6 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
   // nagging the coach to apply it again. Set by applyReworkSuggestionAction
   // once apply-rework.py creates/updates the draft.
   if (suggestion.applied_at) return null;
-  if (suggestion.benefit_pct < 30) return null;
 
   // Honour snooze
   if (suggestion.snoozed_until) {
@@ -48,8 +49,15 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
     if (until > new Date()) return null;
   }
 
-  const bannerColor =
-    suggestion.benefit_pct >= 80
+  // Below 30% we no longer hide the assessment entirely — that made a
+  // high-confidence near-miss (e.g. an incidental lab finding) look like the
+  // feature was gone. Instead show a muted "reviewed — low benefit" strip that
+  // still opens the full modal so the coach can read the rationale/changes.
+  const lowBenefit = suggestion.benefit_pct < 30;
+
+  const bannerColor = lowBenefit
+    ? "border-slate-200 bg-slate-50 text-slate-600"
+    : suggestion.benefit_pct >= 80
       ? "border-red-300 bg-red-50 text-red-800"
       : suggestion.benefit_pct >= 60
         ? "border-orange-300 bg-orange-50 text-orange-800"
@@ -110,13 +118,17 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
       >
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <span className="text-xl">🔄</span>
+            <span className="text-xl">{lowBenefit ? "🔎" : "🔄"}</span>
             <div>
               <p className="text-sm font-semibold">
-                AI suggests plan rework — {suggestion.benefit_pct}% benefit estimated
+                {lowBenefit
+                  ? `Plan reviewed — low benefit (${suggestion.benefit_pct}%)`
+                  : `AI suggests plan rework — ${suggestion.benefit_pct}% benefit estimated`}
               </p>
               <p className="text-xs opacity-80 mt-0.5">
-                Triggered by {triggerLabel} · click to review →
+                {lowBenefit
+                  ? `Triggered by ${triggerLabel} · tap for details →`
+                  : `Triggered by ${triggerLabel} · click to review →`}
               </p>
             </div>
           </div>
