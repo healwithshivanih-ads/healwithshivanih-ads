@@ -41,7 +41,7 @@ import {
   type DiscoverySummary,
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
-import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS, SHORT_PLAN_MAX_WEEKS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
 import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
 import {
@@ -839,6 +839,10 @@ export interface EndgameInfo {
   backOnTrack: BackOnTrack | null;
   /** This month's do's & don'ts (from plan.monthly_cards[YYYY-MM]), if generated. */
   monthlyCard: MonthlyCard | null;
+  /** True when the plan is a short engagement (≤ SHORT_PLAN_MAX_WEEKS). Drives
+   *  single-track graduation copy: Continue-the-full-programme only, no
+   *  maintenance offer (pricing is emptied unless already on maintenance). */
+  shortEngagement: boolean;
   /** Offered ONE-TIME maintenance blocks (manual, e.g. 6 months ₹10,000).
    *  Server-fixed prices — the pay route re-derives, never trusts the client. */
   pricing: { termMonths: number; inr: number }[];
@@ -946,6 +950,15 @@ function buildEndgame(
       ? formatLongDate(paidThrough)
       : null;
 
+  // Short engagements (≤ SHORT_PLAN_MAX_WEEKS, e.g. a 1-month foundation) that
+  // never bought maintenance don't get the maintenance offer at graduation —
+  // it's a post-full-programme product, and offering it here undercuts the
+  // continue-to-full-programme conversation (coach decision 2026-07-07).
+  // Clients already ON the maintenance track keep their renew offers.
+  const planWeeks = Number(plan?.plan_period_weeks);
+  const shortEngagement = Number.isFinite(planWeeks) && planWeeks >= 1 && planWeeks <= SHORT_PLAN_MAX_WEEKS;
+  const offerMaintenance = !shortEngagement || !!paidThrough;
+
   return {
     mode: res.mode,
     endgame: {
@@ -959,8 +972,9 @@ function buildEndgame(
       graceUntilLabel: graceUntil ? formatLongDate(graceUntil) : null,
       backOnTrack: parseBackOnTrack(client.back_on_track_plan),
       monthlyCard: parseMonthlyCard(monthlyCards, todayYmd.slice(0, 7)),
-      pricing: MAINTENANCE_PRICING_LIST,
-      subscriptionOffer: sub.available ? { intervalMonths: 3, inr: sub.inr } : null,
+      shortEngagement,
+      pricing: offerMaintenance ? MAINTENANCE_PRICING_LIST : [],
+      subscriptionOffer: offerMaintenance && sub.available ? { intervalMonths: 3, inr: sub.inr } : null,
       subscriptionActive: sub.active,
       renewalDueLabel,
     },

@@ -316,9 +316,13 @@ export function EndgameBanner({ goCoach, onRenew }: { goCoach: () => void; onRen
 
   if (endgame.mode === "REVIEW") {
     title = `Your ${client.totalWeeks} weeks are wrapping up`;
-    body = endgame.recheckLabel
-      ? `You reach your recheck point around ${endgame.recheckLabel}. Let's choose what's next — a fresh phase, or a lighter maintenance plan.`
+    // Short engagements get one track (the full programme); standard plans two.
+    const whatNext = endgame.shortEngagement
+      ? "Let's plan what's next — the full programme picks up right where this month leaves off."
       : "Let's choose what's next — a fresh phase, or a lighter maintenance plan.";
+    body = endgame.recheckLabel
+      ? `You reach your recheck point around ${endgame.recheckLabel}. ${whatNext}`
+      : whatNext;
     cta = "Plan what's next";
   } else if (endgame.mode === "GRACE") {
     tint = "rgba(176,123,30,0.10)";
@@ -470,11 +474,22 @@ export function GraduationReport({ onContinue, onMaintain }: { onContinue: () =>
 
       <div style={{ ...cardStyle, marginTop: 14 }}>
         <div style={{ fontSize: 15, fontWeight: 500, color: INK }}>What&apos;s next?</div>
-        <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.5, margin: "5px 0 11px" }}>
-          Two ways to keep your momentum — {coach.name} tailors either to where you are now.
-        </p>
-        <ChoiceCard title="Continue" sub="A fresh phase — keep building on what's working." onClick={onContinue} />
-        <ChoiceCard title="Maintain" sub="A lighter plan to hold your gains, with regular check-ins." onClick={onMaintain} />
+        {data.endgame?.shortEngagement ? (
+          <>
+            <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.5, margin: "5px 0 11px" }}>
+              This month was the foundation — {coach.name} tailors the full programme to where you are now.
+            </p>
+            <ChoiceCard title="Continue" sub="The full programme — deeper protocol phases, and the retests that show your numbers moving." onClick={onContinue} />
+          </>
+        ) : (
+          <>
+            <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.5, margin: "5px 0 11px" }}>
+              Two ways to keep your momentum — {coach.name} tailors either to where you are now.
+            </p>
+            <ChoiceCard title="Continue" sub="A fresh phase — keep building on what's working." onClick={onContinue} />
+            <ChoiceCard title="Maintain" sub="A lighter plan to hold your gains, with regular check-ins." onClick={onMaintain} />
+          </>
+        )}
       </div>
 
       <KeepsakeLink recipeCount={(data.recipePack ?? []).length} />
@@ -682,7 +697,9 @@ export function LibraryFloorScreen({ goCoach, goTab }: { goCoach: () => void; go
       <div style={cardStyle}>
         <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Ready for the next chapter?</div>
         <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 0" }}>
-          Whether it&apos;s a new focus or a lighter maintenance plan, {coach.name} is one message away.
+          {data.endgame?.shortEngagement
+            ? <>When you&apos;re ready for the full programme, {coach.name} is one message away.</>
+            : <>Whether it&apos;s a new focus or a lighter maintenance plan, {coach.name} is one message away.</>}
         </p>
         <CtaButton label={`Talk to ${coach.name}`} onClick={goCoach} />
       </div>
