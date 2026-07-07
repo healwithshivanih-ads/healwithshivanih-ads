@@ -7,12 +7,23 @@ import type { CatalogueKind, Plan, Client, PlanStatus } from "./types";
 import { withFsRetry } from "./fs-retry";
 
 async function readYaml<T>(absPath: string): Promise<T | null> {
+  let raw: string;
   try {
-    const raw = await withFsRetry(() => fs.readFile(absPath, "utf-8"));
-    return yaml.load(raw) as T;
+    raw = await withFsRetry(() => fs.readFile(absPath, "utf-8"));
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
-    throw err;
+    throw err; // real I/O error (permissions, etc.) — surface it
+  }
+  try {
+    return yaml.load(raw) as T;
+  } catch (err) {
+    // A single malformed file (e.g. a duplicate key js-yaml rejects but
+    // PyYAML tolerates) must NOT take down a whole listing — loadAllClients
+    // skips nulls, so degrade gracefully and log which file to fix.
+    console.error(
+      `[loader] skipping unparseable YAML: ${absPath} — ${(err as Error).message?.split("\n")[0]}`,
+    );
+    return null;
   }
 }
 
