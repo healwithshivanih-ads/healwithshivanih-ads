@@ -35,6 +35,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { loadOrder, patchOrder, type LabOrder } from "./lab-orders";
+import { loadLabProvider } from "./lab-providers";
 import { loadMaintenanceOrder, patchMaintenanceOrder, type MaintenanceOrder } from "./maintenance-orders";
 import {
   loadMaintenanceSubscription,
@@ -59,6 +60,14 @@ export interface InvoiceLine {
   inr: number;
 }
 
+/** A "what's included" section on the receipt — the human-readable test names
+ *  grouped by panel (e.g. "Base Panel", "Perimenopause"). Purely descriptive;
+ *  the money still comes from `lines`. */
+export interface InvoiceTestGroup {
+  heading: string;
+  tests: string[];
+}
+
 export type InvoiceSourceType = "lab_order" | "maintenance_order" | "maintenance_subscription";
 
 export interface InvoiceBiller {
@@ -79,6 +88,9 @@ export interface Invoice {
    *  — not the subscription id — is what uniquely identifies ONE billable event). */
   source_id: string;
   lines: InvoiceLine[];
+  /** Detailed "what's included" breakdown for lab receipts — the full test list
+   *  grouped by panel. Absent/empty for maintenance receipts. */
+  test_groups?: InvoiceTestGroup[];
   amount_inr: number;
   razorpay_payment_id: string | null;
   paid_at: string | null;
@@ -154,6 +166,51 @@ function labOrderInvoiceLines(order: LabOrder): InvoiceLine[] {
   ];
 }
 
+/**
+ * Break the ordered tests into a "what's included" list, grouped by panel, so
+ * the receipt shows every test — not just the one priced "Perimenopause" line.
+ *
+ * The order stores only a FLAT `includes` array (base panel + this profile's
+ * extras + any add-on names — see buildOrder), so the base/extra split is
+ * reconstructed from the catalogue: a profile's `includes` is `base ∪ extras`,
+ * so `extras = profile.includes − base.includes`. Add-on names are pulled out
+ * via the priced add-on lines (the ones carrying a slug) into their own group.
+ *
+ * Best-effort: if the provider/profile can't be resolved it degrades to a
+ * single "Tests included" group so the detail still appears.
+ */
+async function labOrderTestGroups(order: LabOrder): Promise<InvoiceTestGroup[]> {
+  const includes = Array.isArray(order.includes)
+    ? order.includes.filter((s): s is string => typeof s === "string" && s.trim().length > 0)
+    : [];
+  if (includes.length === 0) return [];
+
+  // Add-on names live in `includes` too; separate them out via the slugged lines.
+  const addonNames = (order.lines ?? []).filter((l) => l.slug).map((l) => l.label);
+  const addonSet = new Set(addonNames);
+  const panelIncludes = includes.filter((s) => !addonSet.has(s));
+
+  const groups: InvoiceTestGroup[] = [];
+
+  const provider = order.profile_id != null ? await loadLabProvider(order.provider).catch(() => null) : null;
+  const profile = provider?.profiles.find((p) => p.id === order.profile_id) ?? null;
+  const baseProfile = provider?.profiles.find((p) => p.id === 1) ?? null;
+
+  if (profile && baseProfile) {
+    const baseSet = new Set(baseProfile.includes);
+    const extrasSet = new Set(profile.includes.filter((s) => !baseSet.has(s)));
+    const baseTests = panelIncludes.filter((s) => !extrasSet.has(s));
+    const extraTests = panelIncludes.filter((s) => extrasSet.has(s));
+    if (baseTests.length > 0) groups.push({ heading: baseProfile.name, tests: baseTests });
+    if (extraTests.length > 0) groups.push({ heading: profile.name, tests: extraTests });
+  } else if (panelIncludes.length > 0) {
+    groups.push({ heading: "Tests included", tests: panelIncludes });
+  }
+
+  if (addonNames.length > 0) groups.push({ heading: "Add-on tests", tests: addonNames });
+  return groups;
+}
+
 // ── lab orders ────────────────────────────────────────────────────────────
 
 /**
@@ -186,6 +243,7 @@ export async function getOrCreateLabOrderInvoice(clientId: string, orderId: stri
     source_type: "lab_order",
     source_id: orderId,
     lines: labOrderInvoiceLines(order),
+    test_groups: await labOrderTestGroups(order),
     amount_inr: order.amount_inr,
     razorpay_payment_id: order.razorpay_payment_id,
     paid_at: order.paid_at,

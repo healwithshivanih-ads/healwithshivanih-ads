@@ -20,6 +20,8 @@
 // the client bundle. The biller identity is snapshotted onto invoice.biller
 // at generation time for exactly this reason — see invoices.ts.
 import type { Invoice } from "@/lib/fmdb/invoices";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
@@ -103,6 +105,24 @@ function ReceiptBody({ invoice }: { invoice: Invoice }) {
         </tfoot>
       </table>
 
+      {invoice.test_groups && invoice.test_groups.length > 0 && (
+        <div style={{ marginBottom: 22 }}>
+          <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 0.6, color: "#8a8378", marginBottom: 10 }}>
+            What&apos;s included
+          </div>
+          {invoice.test_groups.map((g, gi) => (
+            <div key={gi} style={{ marginBottom: gi === invoice.test_groups!.length - 1 ? 0 : 14 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#2d5a3d", marginBottom: 4 }}>{g.heading}</div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12.5, lineHeight: 1.55, color: "#3a382f" }}>
+                {g.tests.map((t, ti) => (
+                  <li key={ti} style={{ marginBottom: 2 }}>{t}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div style={{ fontSize: 12, color: "#6f6a5d", lineHeight: 1.6 }}>
         <div>
           <strong>Payment method:</strong> Razorpay
@@ -126,6 +146,14 @@ function ReceiptBody({ invoice }: { invoice: Invoice }) {
 }
 
 export function InvoiceReceipt({ invoice }: { invoice: Invoice }) {
+  // The print-isolation CSS keys off `body > #invoice-print-root`, so the print
+  // copy MUST be a direct child of <body>. This component renders deep inside
+  // the client-app modal, so we portal the print root to document.body —
+  // otherwise `body > * { display:none }` hides its ancestors and the PDF comes
+  // out blank. Gated on mount so it's a no-op during SSR.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <div>
       <style dangerouslySetInnerHTML={{ __html: PRINT_CSS }} />
@@ -155,10 +183,15 @@ export function InvoiceReceipt({ invoice }: { invoice: Invoice }) {
         <ReceiptBody invoice={invoice} />
       </div>
 
-      {/* Always rendered for print isolation — hidden from screen via CSS. */}
-      <div id="invoice-print-root" className="inv-print-only">
-        <ReceiptBody invoice={invoice} />
-      </div>
+      {/* Portaled to <body> so it's a direct body child (the print CSS requires
+          it) — hidden from screen via `.inv-print-only`, revealed only on print. */}
+      {mounted &&
+        createPortal(
+          <div id="invoice-print-root" className="inv-print-only">
+            <ReceiptBody invoice={invoice} />
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
