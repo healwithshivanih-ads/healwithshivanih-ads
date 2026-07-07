@@ -261,8 +261,12 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
     try {
       const params = new URLSearchParams({ token: data.token, clientId: data.clientId });
       const res = await fetch(`/api/invoice/lab-order/${order.order_id}?${params}`);
-      const j = (await res.json()) as { ok: boolean; invoice?: Invoice; error?: string };
-      if (!j.ok || !j.invoice) throw new Error(j.error || "couldn't load your receipt");
+      // Guard against a non-JSON body (e.g. a plain-text "Not Found" 404) so the
+      // client shows a friendly message instead of a raw JSON-parse error.
+      const j = (await res.json().catch(() => null)) as
+        | { ok: boolean; invoice?: Invoice; error?: string }
+        | null;
+      if (!res.ok || !j?.ok || !j.invoice) throw new Error(j?.error || "couldn't load your receipt");
       setInvoice(j.invoice);
     } catch (e) {
       setError(e instanceof Error ? e.message : "couldn't load your receipt");
