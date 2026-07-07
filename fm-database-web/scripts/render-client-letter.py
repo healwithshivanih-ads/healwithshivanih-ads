@@ -4576,7 +4576,7 @@ This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
 - Gut health for oestrogen recycling: cruciferous vegetables, fibre 25–35g.
 - Reference '{first_name}'s postmenopausal status' explicitly when giving
   food / movement advice — this is the lens the whole plan uses.
-""".replace("{first_name}", client.get("display_name", "the client").split()[0])
+""".replace("{first_name}", ((client.get("display_name") or "the client").split() or ["the client"])[0])
 
     if not phase or status == "perimenopausal" and not day:
         return ""

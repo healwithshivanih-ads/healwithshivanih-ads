@@ -673,12 +673,16 @@ export function FullAssessmentForm({
 
   const onGenerateDraft = (opts?: { force?: boolean; confirmStale?: boolean }) => {
     if (!result?.session_id) return;
-    // Freshness guard — the synthesis on screen was rehydrated from a
-    // prior saved run and has NOT been re-analysed this session. Building
-    // a plan now bakes in whatever labs/notes that old run saw, silently
-    // ignoring any report/intake added since. Force the coach to either
-    // Re-run or explicitly acknowledge before we generate.
-    if (rehydratedFrom && !opts?.confirmStale) {
+    // Freshness guard — the synthesis on screen was rehydrated from a saved
+    // run on a PRIOR day and has NOT been re-analysed today. Building a plan
+    // now bakes in whatever labs/notes that old run saw, silently ignoring
+    // any report/intake added since (Nidhi 2026-07-07: a plan was generated
+    // off a May "cap-test" synthesis). Only warn when the synthesis is stale
+    // (older than today) — a same-day synthesis is fresh, so don't nag.
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const staleSynthesis =
+      !!rehydratedFrom && !!rehydratedFrom.date && rehydratedFrom.date !== todayStr;
+    if (staleSynthesis && !opts?.confirmStale) {
       setStaleGenerateConfirm(true);
       return;
     }

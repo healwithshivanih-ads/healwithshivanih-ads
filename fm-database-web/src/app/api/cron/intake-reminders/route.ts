@@ -24,6 +24,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
@@ -168,7 +169,7 @@ export async function POST(req: NextRequest) {
       list.push(todayIso);
       data.intake_reminders_sent_at = list;
       data.updated_at = todayIso;
-      await fs.writeFile(yamlPath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+      await fs.writeFile(yamlPath, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
       sent.push(cand.client_id);
     } catch (err) {
       // Send succeeded but logging failed — still count it as sent but flag

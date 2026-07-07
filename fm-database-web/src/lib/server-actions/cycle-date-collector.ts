@@ -22,6 +22,7 @@ import path from "path";
 import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
@@ -146,7 +147,7 @@ export async function sendCycleDateCheckAction(
     const data = yaml.load(await fs.readFile(p, "utf8")) as Record<string, unknown>;
     data.last_cycle_ask_sent = todayIso();
     data.updated_at = new Date().toISOString();
-    await fs.writeFile(p, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(p, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
 
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath("/dashboard-v2");
@@ -197,7 +198,7 @@ export async function recordInboundCycleDate(
     const prev = (data.last_menstrual_period as string | undefined) ?? null;
     data.last_menstrual_period = date;
     data.updated_at = new Date().toISOString();
-    await fs.writeFile(p, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(p, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
 
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath("/dashboard-v2");

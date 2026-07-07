@@ -924,7 +924,13 @@ def main() -> int:
             # spot reads.
             "log": [
                 {"date": e.get("date"), **{k: v for k, v in e.items() if k != "date" and v is not None}}
-                for e in (getattr(client, "measurements_log", None) or [])
+                # measurements_log is typed list[MeasurementEntry] on the Client
+                # model, so each entry loads as a Pydantic OBJECT, not a dict —
+                # model_dump() first so .get()/.items() below don't AttributeError.
+                for e in (
+                    (m.model_dump() if hasattr(m, "model_dump") else m)
+                    for m in (getattr(client, "measurements_log", None) or [])
+                )
             ] or None,
         })(),
     }

@@ -834,6 +834,104 @@ _INTAKE_REPEATER_FIELDS = [
     "statins_bp_diabetes",
 ]
 
+# Each repeater field → the Pydantic sub-model it must validate against.
+_REPEATER_MODEL_NAME = {
+    "contraception_history": "ContraceptionEntry",
+    "pregnancies": "PregnancyEntry",
+}
+for _mb in (
+    "glp1_medications", "acid_suppressants", "nsaids_daily",
+    "antibiotics_last_12mo", "hormonal_contraception_hrt", "thyroid_medication",
+    "psych_medications", "biologics_immunosuppressants", "statins_bp_diabetes",
+):
+    _REPEATER_MODEL_NAME[_mb] = "MedicationCategoryEntry"
+
+_MONTHS_ABBR = {m: i for i, m in enumerate(
+    ["jan", "feb", "mar", "apr", "may", "jun",
+     "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+
+
+def _norm_iso_date(s):
+    """Coerce a submitted date string to ISO YYYY-MM-DD, or None if unparseable.
+
+    Storing a non-ISO date (e.g. '06/Jul/2026', '13/03/2026') makes the strict
+    Pydantic Optional[date] field reject the whole client.yaml on the next
+    Python load, crashing every shim. Mirrors update-client-data.normalize_date_iso.
+    """
+    import re
+    import datetime
+    if not isinstance(s, str):
+        return None
+    v = s.strip()
+    if not v:
+        return None
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", v):
+        return v
+    m = re.fullmatch(r"(\d{1,2})[/\-\s]([A-Za-z]{3,})[/\-\s](\d{4})", v)
+    if m:
+        mon = _MONTHS_ABBR.get(m.group(2)[:3].lower())
+        if mon:
+            try:
+                return datetime.date(int(m.group(3)), mon, int(m.group(1))).isoformat()
+            except ValueError:
+                pass
+    m = re.fullmatch(r"(\d{1,2})[/\-](\d{1,2})[/\-](\d{4})", v)
+    if m:
+        a, b, yy = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        dd, mm = (a, b) if not (a <= 12 and b > 12) else (b, a)
+        try:
+            return datetime.date(yy, mm, dd).isoformat()
+        except ValueError:
+            pass
+    m = re.fullmatch(r"(\d{4})[/\-](\d{1,2})[/\-](\d{1,2})", v)
+    if m:
+        try:
+            return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3))).isoformat()
+        except ValueError:
+            pass
+    return None
+
+
+def _clean_repeater_rows(field, rows):
+    """Validate each repeater row through its Pydantic sub-model before storing.
+
+    The sub-models use extra='forbid' and carry Optional[int] fields, so a stray
+    UI key or an empty-string year would make the strict load reject the whole
+    client.yaml later. We keep only model fields, let Pydantic coerce/apply
+    defaults, and DROP any row that still can't be salvaged rather than persist
+    load-crashing garbage.
+    """
+    model_name = _REPEATER_MODEL_NAME.get(field)
+    Model = None
+    if model_name:
+        try:
+            from fmdb.plan import models as _pm
+            Model = getattr(_pm, model_name, None)
+        except Exception:
+            Model = None
+    out = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        if Model is None:
+            # Fallback: drop empty-string values so Optional int/bool fields
+            # fall back to their default instead of "".
+            out.append({k: v for k, v in row.items() if v != ""})
+            continue
+        allowed = set(Model.model_fields.keys())
+        cleaned = {k: v for k, v in row.items() if k in allowed}
+        try:
+            out.append(Model(**cleaned).model_dump())
+            continue
+        except Exception:
+            pass
+        retry = {k: v for k, v in cleaned.items() if v not in ("", None)}
+        try:
+            out.append(Model(**retry).model_dump())
+        except Exception:
+            continue  # unsalvageable row — skip rather than store crashing data
+    return out
+
 
 def _canonicalise_condition(s: str) -> str:
     """D2 fix 2026-05-23 — semantic key for active_conditions dedup.
@@ -1583,8 +1681,9 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
     for field in _DATE_FIELDS:
         if field in submitted:
             v = (submitted.get(field) or "").strip() if isinstance(submitted.get(field), str) else None
-            if v:
-                data[field] = v
+            iso = _norm_iso_date(v) if v else None  # store ISO only; skip unparseable
+            if iso and data.get(field) != iso:
+                data[field] = iso
                 fields_updated.append(field)
 
     # ── int fields ──
@@ -1664,13 +1763,15 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                 # Filter out empty rows (no meaningful content). Each repeater
                 # has its own "is this row blank?" heuristic, but a safe
                 # generic: skip rows that are entirely empty/None values.
-                cleaned_rows: list[dict] = []
-                for row in incoming:
-                    if not isinstance(row, dict):
-                        continue
-                    # Keep the row if any value is truthy / non-empty.
-                    if any(v not in (None, "", [], {}) for v in row.values()):
-                        cleaned_rows.append(row)
+                non_blank = [
+                    row for row in incoming
+                    if isinstance(row, dict)
+                    and any(v not in (None, "", [], {}) for v in row.values())
+                ]
+                # Validate each surviving row through its Pydantic sub-model so
+                # stored data can never crash a later strict load (empty-string
+                # years, stray UI keys under extra='forbid', …).
+                cleaned_rows = _clean_repeater_rows(field, non_blank)
                 if data.get(field) != cleaned_rows:
                     data[field] = cleaned_rows
                     fields_updated.append(field)

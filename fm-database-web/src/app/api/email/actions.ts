@@ -6,6 +6,7 @@ import fs from "node:fs/promises";
 import nodemailer from "nodemailer";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 
 /** Calendar date (YYYY-MM-DD) of an ISO timestamp in IST (Asia/Kolkata, +05:30). */
@@ -150,7 +151,7 @@ export async function recordLetterSendAction(input: {
     // at scale, swap to an atomic-append JSONL format.
     await fs.writeFile(
       filePath,
-      yaml.dump(existing, { noRefs: true, lineWidth: 100 }),
+      dumpYaml(existing, { noRefs: true, lineWidth: 100 }),
       "utf-8",
     );
   } catch (err) {
@@ -439,7 +440,7 @@ export async function updateClientFieldsAction(
     }
     data.updated_at = new Date().toISOString();
 
-    await fs.writeFile(clientFile, yaml.dump(data), "utf-8");
+    await fs.writeFile(clientFile, dumpYaml(data), "utf-8");
     revalidatePath(`/clients/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/analyse`);

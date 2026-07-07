@@ -15,6 +15,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
@@ -112,7 +113,7 @@ async function revokeAppToken(
   if (!data.app_token) return { ok: true }; // already gone
   delete data.app_token;
   delete data.app_token_created_at;
-  await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");
+  await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }), "utf-8");
   // Re-project to Fly so the cleared token is reflected on the public host.
   const slug = await latestPublishedSlug(clientId);
   if (slug) await stageClientAppArtifacts(clientId, slug).catch(() => {});
@@ -138,7 +139,7 @@ async function revokeLetterToken(
   delete data.letter_token;
   delete data.letter_token_created_at;
   delete data.letter_short_code;
-  await fs.writeFile(file, yaml.dump(data, { sortKeys: false }), "utf-8");
+  await fs.writeFile(file, dumpYaml(data, { sortKeys: false }), "utf-8");
   if (clientId) await stageClientAppArtifacts(clientId, planSlug).catch(() => {});
   return { ok: true };
 }

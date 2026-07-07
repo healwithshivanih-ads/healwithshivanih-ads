@@ -18,6 +18,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { buildPaymentEvent, emitActiveClientCount, emitRevenueEvent } from "@/lib/fmdb/revenue-export";
@@ -149,7 +150,7 @@ async function writeNewClient(
   };
   await fs.writeFile(
     path.join(dir, "client.yaml"),
-    yaml.dump(payload, { noRefs: true, sortKeys: false }),
+    dumpYaml(payload, { noRefs: true, sortKeys: false }),
     "utf8",
   );
   // Sibling dirs the rest of the app expects to exist
@@ -166,7 +167,7 @@ async function readClientYaml(clientId: string): Promise<Record<string, unknown>
 async function writeClientYaml(clientId: string, data: Record<string, unknown>): Promise<void> {
   const file = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
   data.updated_at = nowIso();
-  await fs.writeFile(file, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+  await fs.writeFile(file, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
 }
 
 // ── Stage 1: discovery-complete ──────────────────────────────────────────
@@ -403,7 +404,7 @@ async function fireOnboardingKit(
       version: 1,
       status: "active",
     };
-    await fs.writeFile(sessionFile, yaml.dump(sessionDoc, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(sessionFile, dumpYaml(sessionDoc, { noRefs: true, sortKeys: false }), "utf8");
   } catch {
     // Silent — handover audit nice-to-have, not blocking.
   }

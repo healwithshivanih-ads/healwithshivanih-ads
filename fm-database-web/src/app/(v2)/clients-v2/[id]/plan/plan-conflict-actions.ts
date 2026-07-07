@@ -3,6 +3,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
@@ -85,7 +86,7 @@ export async function applyConflictFixAction(
     data.updated_at = new Date().toISOString();
     await fs.writeFile(
       clientFile,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf-8",
     );
     revalidatePath(`/clients-v2/${clientId}`);

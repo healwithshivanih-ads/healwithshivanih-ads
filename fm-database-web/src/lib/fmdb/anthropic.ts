@@ -51,8 +51,11 @@ async function runShim(
   });
 
   if (!stdout.trim()) {
+    // Keep 4000 chars of stderr — a Python traceback alone fills 800, which
+    // truncated the actual exception (e.g. "assessment truncated — hit the
+    // output token limit") and left only an opaque "produced no output".
     throw new Error(
-      `${scriptName} produced no output. stderr: ${stderr.slice(0, 800)}`
+      `${scriptName} produced no output. stderr: ${stderr.slice(0, 4000)}`
     );
   }
   try {
@@ -71,7 +74,10 @@ export async function runAssess(input: AssessInput): Promise<AssessResult> {
   // the boolean flag on AssessInput must become an actual key, not `false`.
   const { manual_suggestions, ...rest } = input;
   const payload = manual_suggestions ? { ...rest, manual_suggestions: {} } : rest;
-  const result = (await runShim("assess.py", payload, 360_000)) as AssessResult;
+  // 900s, not 360s: a full synthesis for a complex client (large input +
+  // up to 32K streamed output) can run 5–8 min. The old 6-min ceiling
+  // SIGTERM-killed the shim mid-stream → empty stdout → "produced no output".
+  const result = (await runShim("assess.py", payload, 900_000)) as AssessResult;
   return result;
 }
 

@@ -659,6 +659,29 @@ HARD RULES (violating these breaks the downstream system):
     This reflects the coach's standing rule (2026-05-20): food is
     prioritised over supplements wherever food can do the job.
 
+3d. FEWER SUPPLEMENTS — keep the total stack as small as it can be
+    (coach's standing rule, 2026-07-07). A long list hurts adherence,
+    especially for elderly clients, and adds cost; every supplement must
+    earn its place.
+      • Suggest only supplements clearly indicated by a driver, a measured
+        deficiency, or a documented drug-depletion. After drafting the
+        stack, RE-READ it and cut anything that is merely "nice to have"
+        or redundant with another item.
+      • Don't stack several agents that do the same job (e.g. magnesium +
+        melatonin + GABA + L-theanine + glycine all for sleep). Pick the
+        few that matter. Where a single combo product could cover two or
+        more of your suggestions, SAY SO — in `synthesis_notes` or the
+        item's `coach_rationale` (e.g. "magnesium + melatonin here could
+        be one sleep-blend product — consolidate") — so the coach can pick
+        one product instead of several bottles. You suggest catalogue
+        slugs; the coach maps them to the actual product. Your job is to
+        flag the consolidation opportunity and NOT pad the list.
+      • When consolidating onto a combo, watch for nutrient double-ups: if
+        a blend already contains magnesium, do NOT also list a standalone
+        magnesium. And flag any dose mismatch a combo introduces (e.g.
+        "this sleep blend's melatonin is 5 mg — higher than the 0.5–1 mg
+        I'd start an 80-year-old on; monitor").
+
 4. Lab interpretation: extract values verbatim from reports. Use FM-optimal
    ranges where appropriate (e.g., TSH 0.5-2.5, ferritin > 70 for women,
    vit D 50-80 ng/mL — these are FM-specific not consensus). Flag interpretation
@@ -1543,7 +1566,12 @@ def synthesize(
     days_since_last_prescription: int | None = None,
     vitaone_inventory: list[dict[str, Any]] | None = None,
     model: str | None = None,
-    max_tokens: int = 16000,
+    # 32K, not 16K: complex clients (Nidhi 2026-07-07 — T2DM + dyslipidaemia +
+    # perimenopause + GI-MAP) generate a structured synthesis that overran the
+    # old 16K cap and truncated (stop_reason=max_tokens → RuntimeError, nothing
+    # saved). claude-sonnet-4-6 allows up to 128K output; we already stream via
+    # messages.stream(), so a higher cap only bills for tokens actually used.
+    max_tokens: int = 32000,
 ) -> AssessResult:
     """Synthesize FM-coaching suggestions for one client / one analysis.
 

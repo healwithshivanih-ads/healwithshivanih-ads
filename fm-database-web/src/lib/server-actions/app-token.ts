@@ -16,6 +16,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { stageClientAppArtifacts, stageDiscoveryClientArtifacts } from "./letter-token";
@@ -67,7 +68,7 @@ export async function ensureClientAppToken(
   const token = newAppToken();
   data.app_token = token;
   data.app_token_created_at = new Date().toISOString();
-  await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");
+  await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }), "utf-8");
 
   // Re-stage so Fly picks up the new client token
   const planSlug = await _latestPublishedPlanSlug(clientId);
@@ -133,7 +134,7 @@ export async function markDiscoveryCallDoneAction(
   if (!callDate) {
     callDate = istTodayYmd();
     data.discovery_call_date = callDate;
-    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");
+    await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }), "utf-8");
   }
   await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
   const credit = resolveDiscoveryCredit(callDate, istTodayYmd());
@@ -239,7 +240,7 @@ export async function saveDiscoverySummaryAction(
     data.discovery_summary = { headline, hypotheses, foundational_changes, journey_preview, included_supplements };
   }
   data.updated_at = new Date().toISOString();
-  await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");
+  await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }), "utf-8");
   await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort */});
   revalidatePath(`/clients-v2/${clientId}`);
   revalidatePath(`/clients-v2/${clientId}/analyse/discovery`);

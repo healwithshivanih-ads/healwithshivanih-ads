@@ -301,16 +301,29 @@ def main() -> int:
 
     # Track drivers so we don't double-add when a "topic" slug is really a mechanism.
     _driver_slugs_seen: set[str] = set()
+    # Drivers whose mechanism slug isn't in the catalogue — collected here and
+    # surfaced in notes_for_coach instead of written into the plan.
+    _dropped_driver_slugs: list[str] = []
 
     for d in suggestions.get("likely_drivers", []) or []:
         slug_d = d.get("mechanism_slug") or ""
-        if picks.get(f"driver_{slug_d}", True):
-            plan.hypothesized_drivers.append(HypothesizedDriver(
-                mechanism=slug_d,
-                reasoning=d.get("reasoning", ""),
-            ))
+        if not picks.get(f"driver_{slug_d}", True):
+            continue
+        # Validate the mechanism slug (alias-aware) BEFORE writing it. An
+        # unknown slug becomes a CRITICAL plan-check finding that blocks
+        # publishing (Manju 2026-07-07: the AI invented an off-catalogue
+        # 'circadian-rhythm-disruption' driver), so drop it and tell the
+        # coach rather than emit an unpublishable draft. Mirrors the
+        # topics_in_play guard below.
+        if not _is_mechanism(slug_d):
             if slug_d:
-                _driver_slugs_seen.add(slug_d)
+                _dropped_driver_slugs.append(slug_d)
+            continue
+        plan.hypothesized_drivers.append(HypothesizedDriver(
+            mechanism=slug_d,
+            reasoning=d.get("reasoning", ""),
+        ))
+        _driver_slugs_seen.add(slug_d)
 
     for t in suggestions.get("topics_in_play", []) or []:
         role = t.get("role", "primary")
@@ -787,6 +800,16 @@ def main() -> int:
                 timeline_section.extend(atm_buckets[key])
         if len(timeline_section) > 1:
             notes_parts.append("\n".join(timeline_section))
+
+    if _dropped_driver_slugs:
+        notes_parts.append(
+            "## ⚠ Drivers left out (not in catalogue)\n"
+            "The AI named these as root-cause drivers but their mechanism slugs "
+            "aren't in the catalogue, so they were omitted to keep this plan "
+            "publishable. Add each as a mechanism (or an alias on an existing one) "
+            "and re-add the driver if it's clinically relevant:\n"
+            + "\n".join(f"- `{s}`" for s in _dropped_driver_slugs)
+        )
 
     if notes_parts:
         plan.notes_for_coach = "\n\n".join(notes_parts)

@@ -12,6 +12,7 @@ import { NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import Razorpay from "razorpay";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
@@ -34,7 +35,7 @@ async function saveClientCollectionAddress(clientId: string, l: LabOrderLogistic
   c.collection_address = l.address;
   c.collection_pincode = l.pincode;
   if (!c.mobile_number && l.phone) c.mobile_number = l.phone;
-  await fs.writeFile(file, yaml.dump(c, { sortKeys: false }), "utf8");
+  await fs.writeFile(file, dumpYaml(c, { sortKeys: false }), "utf8");
 }
 
 const SAFE_ID = /^[A-Za-z0-9_-]+$/;
