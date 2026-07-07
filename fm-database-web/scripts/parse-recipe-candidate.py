@@ -145,10 +145,7 @@ def _fetch_og_image(url: str) -> tuple[str | None, str | None]:
         import requests
         from urllib.parse import urljoin, urlparse
 
-        resp = requests.get(
-            url, timeout=10,
-            headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
-        )
+        resp = requests.get(url, timeout=10, headers=_BROWSER_HEADERS)
         if resp.status_code != 200:
             return None, None
         img = None
@@ -178,24 +175,122 @@ def _fetch_og_image(url: str) -> tuple[str | None, str | None]:
         return None, None
 
 
+# Browser-like headers so recipe sites don't reject the fetch as a bare bot.
+_BROWSER_HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 "
+                   "(KHTML, like Gecko) Version/17.0 Safari/605.1.15"),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.google.com/",
+}
+
+# Sentinel returned when the site actively blocks automated reading (403/429 /
+# bot challenge) — the caller turns this into a "paste the text" message that
+# names the block, instead of a generic "nothing parseable".
+_BLOCKED = "\x00BLOCKED\x00"
+
+
+def _find_recipe_jsonld(text: str) -> dict | None:
+    """Most recipe sites embed a schema.org Recipe as JSON-LD — the cleanest,
+    most reliable source of ingredients + steps. Return the Recipe object."""
+    def walk(obj):
+        if isinstance(obj, dict):
+            t = obj.get("@type")
+            if t == "Recipe" or (isinstance(t, list) and "Recipe" in t):
+                return obj
+            for v in obj.values():
+                r = walk(v)
+                if r:
+                    return r
+        elif isinstance(obj, list):
+            for v in obj:
+                r = walk(v)
+                if r:
+                    return r
+        return None
+
+    for block in re.findall(r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>',
+                            text, re.S):
+        try:
+            rec = walk(json.loads(block.strip()))
+            if rec:
+                return rec
+        except Exception:
+            continue
+    return None
+
+
+def _jsonld_to_text(rec: dict) -> str | None:
+    """Format a schema.org Recipe into clean plain text for the extractor."""
+    name = str(rec.get("name") or "").strip()
+    ings = rec.get("recipeIngredient") or rec.get("ingredients") or []
+    if isinstance(ings, str):
+        ings = [ings]
+    instr = rec.get("recipeInstructions") or []
+
+    def flat_steps(x):
+        out = []
+        if isinstance(x, str):
+            out.append(x)
+        elif isinstance(x, dict):
+            if x.get("@type") == "HowToSection":
+                for s in x.get("itemListElement") or []:
+                    out += flat_steps(s)
+            else:
+                t = x.get("text") or x.get("name")
+                if t:
+                    out.append(str(t))
+        elif isinstance(x, list):
+            for s in x:
+                out += flat_steps(s)
+        return out
+
+    steps = flat_steps(instr)
+    if not ings and not steps:
+        return None
+    parts = []
+    if name:
+        parts.append(name)
+    y = rec.get("recipeYield")
+    if y:
+        parts.append(f"Serves: {y if isinstance(y, str) else (y[0] if isinstance(y, list) and y else y)}")
+    for k in ("prepTime", "cookTime", "totalTime"):
+        if rec.get(k):
+            parts.append(f"{k}: {rec[k]}")
+    if ings:
+        parts.append("\nIngredients:\n" + "\n".join(f"- {html_lib.unescape(str(i))}" for i in ings))
+    if steps:
+        parts.append("\nInstructions:\n" + "\n".join(
+            f"{n}. {html_lib.unescape(s)}" for n, s in enumerate(steps, 1)))
+    return "\n".join(parts).strip()
+
+
 def _fetch_page_text(url: str, cap: int = 7000) -> str | None:
-    """Fetch a full recipe web page (blog / Harvard / any non-Instagram site)
-    and convert the body to plain text via html2text. The recipe lives in the
-    page body — og:description alone never carries it. Strips nav/scripts,
-    caps length so the model payload stays small. None on any failure."""
+    """Fetch a recipe web page and return clean recipe text. Prefers the
+    embedded schema.org Recipe (JSON-LD); falls back to the html2text body.
+    Returns _BLOCKED when the site rejects automated reading, None otherwise."""
     try:
         import requests
 
-        resp = requests.get(
-            url,
-            timeout=12,
-            headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
-        )
+        resp = requests.get(url, timeout=12, headers=_BROWSER_HEADERS)
+        if resp.status_code in (403, 401, 429) or (
+            resp.status_code == 200
+            and re.search(r"(?i)just a moment|attention required|enable javascript|cf-browser-verification|access denied", resp.text[:4000])
+        ):
+            return _BLOCKED
         if resp.status_code != 200:
             return None
         raw = resp.text
-        # drop script/style blocks before conversion so we don't ship JS
-        raw = re.sub(r"<(script|style|noscript)[^>]*>.*?</\1>", " ", raw, flags=re.I | re.S)
+
+        # 1) schema.org Recipe — cleanest, most reliable
+        rec = _find_recipe_jsonld(raw)
+        if rec:
+            structured = _jsonld_to_text(rec)
+            if structured and len(structured) > 80:
+                return structured[:cap]
+
+        # 2) fall back to the page body
+        stripped = re.sub(r"<(script|style|noscript)[^>]*>.*?</\1>", " ", raw, flags=re.I | re.S)
         try:
             import html2text
 
@@ -203,12 +298,10 @@ def _fetch_page_text(url: str, cap: int = 7000) -> str | None:
             h.ignore_links = True
             h.ignore_images = True
             h.body_width = 0
-            body = h.handle(raw)
+            body = h.handle(stripped)
         except Exception:
-            # last-resort tag strip if html2text isn't available
-            body = html_lib.unescape(re.sub(r"<[^>]+>", " ", raw))
+            body = html_lib.unescape(re.sub(r"<[^>]+>", " ", stripped))
         body = re.sub(r"\n{3,}", "\n\n", body).strip()
-        # trim boilerplate above the recipe where we can spot the ingredient list
         m = re.search(r"(?im)^\s*#*\s*ingredients?\b", body)
         if m and m.start() > 400:
             body = body[max(0, m.start() - 200):]
@@ -370,7 +463,16 @@ def main() -> int:
             # Any other recipe site (blog / Harvard / etc.): the ingredients +
             # method are in the page body — fetch and convert the whole page.
             page = _fetch_page_text(url)
-            if page:
+            if page == _BLOCKED:
+                from urllib.parse import urlparse
+                host = urlparse(url).netloc.replace("www.", "")
+                _fail(
+                    f"{host} blocks automated reading, so I can't pull this recipe from the "
+                    f"link. Two easy ways round it: open the page, copy the recipe text and "
+                    f"paste it into the box above; or forward a screenshot of the recipe. "
+                    f"Then parse again."
+                )
+            elif page:
                 fetched_caption = True
                 text = f"{text}\n\n[recipe page fetched from link]\n{page}"
             else:
