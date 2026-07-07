@@ -168,8 +168,8 @@ def main() -> int:
                         drafts = list(block.input.get("recipes") or [])
                 try:
                     from fmdb.usage import log_usage  # type: ignore
-                    log_usage(None, "batch-draft-recipe-candidates", MODEL, resp.usage,
-                              notes=f"batch of {len(batch)}")
+                    log_usage(client_id=None, script="batch-draft-recipe-candidates",
+                              model=MODEL, usage=resp.usage, notes=f"batch of {len(batch)}")
                 except Exception:
                     pass
             except Exception as e:  # noqa: BLE001

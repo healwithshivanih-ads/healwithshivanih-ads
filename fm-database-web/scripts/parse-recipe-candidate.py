@@ -358,8 +358,8 @@ def main() -> int:
             try:
                 from fmdb.usage import log_usage  # type: ignore
 
-                log_usage(None, "parse-recipe-candidate", model, resp.usage,
-                          notes=f"candidate={cid}")
+                log_usage(client_id=None, script="parse-recipe-candidate",
+                          model=model, usage=resp.usage, notes=f"candidate={cid}")
             except Exception:
                 pass
         except Exception as e:  # noqa: BLE001
