@@ -283,7 +283,7 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
     if (status === "done" && !completedRef.current) {
       completedRef.current = true;
       try {
-        localStorage.setItem(`ochre.eft.${eft.practiceId}.${new Date().toISOString().slice(0, 10)}`, "1");
+        localStorage.setItem(`ochre.eft.${eft.practiceId}.${new Date().toLocaleDateString("en-CA")}`, "1");
       } catch {
         /* private mode */
       }

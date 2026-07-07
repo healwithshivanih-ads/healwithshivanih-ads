@@ -37,13 +37,27 @@ const CATCHUP_WINDOW_MIN = 180;
 
 type Dict = Record<string, unknown>;
 
-function todayIST(): string {
-  return new Date().toLocaleDateString("sv-SE", { timeZone: IST_TZ });
+/** client.yaml#timezone when it's a valid IANA name, else IST. Reminder times
+ *  are wall-clock ("08:00 breakfast") — a US client gets them at HER 08:00,
+ *  not at India's. */
+function clientTz(client: Dict): string {
+  const tz = typeof client.timezone === "string" ? client.timezone.trim() : "";
+  if (!tz) return IST_TZ;
+  try {
+    new Intl.DateTimeFormat("en-US", { timeZone: tz });
+    return tz;
+  } catch {
+    return IST_TZ;
+  }
 }
 
-function nowIST(): { minutes: number; weekday: number } {
+function todayInTz(tz: string): string {
+  return new Date().toLocaleDateString("sv-SE", { timeZone: tz });
+}
+
+function nowInTz(tz: string): { minutes: number; weekday: number } {
   const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone: IST_TZ,
+    timeZone: tz,
     hour: "2-digit",
     minute: "2-digit",
     weekday: "short",
@@ -105,8 +119,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
   }
 
-  const today = todayIST();
-  const { minutes: nowMin, weekday: nowWeekday } = nowIST();
+  const today = todayInTz(IST_TZ); // response metadata only; per-client math below
 
   const clientsDir = path.join(getPlansRoot(), "clients");
   let clientIds: string[] = [];
@@ -127,6 +140,11 @@ export async function POST(req: NextRequest) {
     const plan = await publishedPlanForClient(clientId);
     if (!plan) continue;
     const client = await readClientYaml(clientId);
+    // Reminder times fire on the CLIENT's wall clock (client.yaml#timezone,
+    // IST default) — and the idempotence day-stamp uses her day, not IST's.
+    const tz = clientTz(client);
+    const clientToday = todayInTz(tz);
+    const { minutes: nowMin, weekday: nowWeekday } = nowInTz(tz);
 
     const { token, overrides } = await readOverrides(clientId);
     const reminders = effectiveReminders(deriveReminders(plan, client), overrides);
@@ -144,7 +162,7 @@ export async function POST(req: NextRequest) {
       if (remMin === null) continue;
       const lateBy = nowMin - remMin;
       if (lateBy < 0 || lateBy > CATCHUP_WINDOW_MIN) continue;
-      if (fired[r.id] === today) continue;
+      if (fired[r.id] === clientToday) continue;
 
       const ok = await sendPushToClient(clientId, {
         title: "The Ochre Tree 🌿",
@@ -153,7 +171,7 @@ export async function POST(req: NextRequest) {
         tag: `reminder:${r.id}`,
       });
       if (ok) {
-        fired[r.id] = today;
+        fired[r.id] = clientToday;
         dirty = true;
         sent.push({ clientId, id: r.id });
       } else {
@@ -171,7 +189,6 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({
     ok: true,
     today,
-    now_ist_min: nowMin,
     sent: sent.length,
     skipped: skipped.length,
     detail: { sent, skipped },

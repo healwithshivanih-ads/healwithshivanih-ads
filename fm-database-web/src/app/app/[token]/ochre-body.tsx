@@ -454,7 +454,7 @@ export function BodySection() {
       if (res.ok && out.ok) {
         // optimistic: fold today's reading into the local history so the
         // chart updates immediately (replace today's if it already exists)
-        const today = out.measured_on || new Date().toISOString().slice(0, 10);
+        const today = out.measured_on || new Date().toLocaleDateString("en-CA");
         setHist((prev) => {
           const rest = prev.filter((p) => p.date !== today);
           return [...rest, { date: today, weightKg: wNum, waistCm: waNum, hipCm: hNum }].sort((a, c) =>

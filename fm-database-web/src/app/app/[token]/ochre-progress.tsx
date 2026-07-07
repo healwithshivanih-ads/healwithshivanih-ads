@@ -160,7 +160,7 @@ function FeelStrip({ feel, onLogToday }: { feel: FeelMap; onLogToday: () => void
   const now = new Date();
   for (let i = 13; i >= 0; i--) {
     const d = new Date(now.getTime() - i * 86_400_000);
-    const iso = d.toISOString().slice(0, 10);
+    const iso = d.toLocaleDateString("en-CA"); // local day, matches todayIso keys
     days.push({ d: String(d.getDate()), v: feel[iso] ?? null });
   }
   const logged = days.filter((x) => x.v != null) as { d: string; v: number }[];

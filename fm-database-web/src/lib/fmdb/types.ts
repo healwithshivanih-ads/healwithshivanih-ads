@@ -548,6 +548,12 @@ export interface Client {
    *    hybrid     = principles first, then a sample week (default) */
   meal_plan_style?: "detailed" | "principles" | "hybrid";
 
+  /** IANA timezone (e.g. "America/New_York") — anchors the client app's
+   *  "today" (menu day, week counter) and reminder wall-clock times for
+   *  clients outside India. Unset ⇒ IST. The app's ochre_tz device cookie
+   *  auto-corrects on top of this. */
+  timezone?: string;
+
   /** Per-client weight loss goal. Persists across plan revisions. Read
    *  by render-client-letter.py to compute calorie targets + portion
    *  control + per-week mode overrides. Null = no goal active. */
