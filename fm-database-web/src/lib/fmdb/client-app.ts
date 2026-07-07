@@ -2270,7 +2270,7 @@ function asYmd(v: unknown): string {
 /** Parse the coach-authored `discovery_summary` block off client.yaml into the
  *  Starting Map view-model. Every section is optional; empties render as
  *  graceful placeholders in the Summary screen. */
-function parseDiscoverySummary(client: Dict, firstName: string): DiscoverySummary {
+async function parseDiscoverySummary(client: Dict, firstName: string): Promise<DiscoverySummary> {
   const raw = (client.discovery_summary as Dict) ?? {};
   const points = (v: unknown): { title: string; note: string }[] =>
     asArr(v)
@@ -2279,11 +2279,44 @@ function parseDiscoverySummary(client: Dict, firstName: string): DiscoverySummar
         return { title: asStr(o.title).trim(), note: asStr(o.note).trim() };
       })
       .filter((p) => p.title || p.note);
+  // Cap at 2 defensively, even if a hand-edited YAML has more — the read side
+  // enforces the same limit the authoring UI does.
+  const rawSupplements = asArr(raw.included_supplements)
+    .map((it) => {
+      const o = (it ?? {}) as Dict;
+      return {
+        supplementSlug: asStr(o.supplement_slug).trim(),
+        name: asStr(o.name).trim(),
+        dose: asStr(o.dose).trim(),
+        timing: asStr(o.timing).trim(),
+        why: asStr(o.why).trim(),
+      };
+    })
+    .filter((s) => s.name)
+    .slice(0, 2);
+  // Same coach-curated supplement_links.yaml resolver + retailer priority
+  // (vitaone > fmnutrition > amazon > iherb) the full package's supplement
+  // schedule uses (see the ~line 2799 usage above). At most 2 lookups here.
+  const includedSupplements = await Promise.all(
+    rawSupplements.map(async (s) => {
+      try {
+        const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
+        const link = await resolveSupplementLink(s.name, s.supplementSlug || undefined);
+        if (link.source !== "search") {
+          return { ...s, buyUrl: link.url, buySource: link.source };
+        }
+      } catch {
+        /* no link — card renders without one */
+      }
+      return s;
+    }),
+  );
   return {
     headline: asStr(raw.headline).trim() || `Here's your starting map, ${firstName}`,
     hypotheses: points(raw.hypotheses),
     foundationalChanges: points(raw.foundational_changes),
     journeyPreview: asStrArr(raw.journey_preview),
+    includedSupplements,
   };
 }
 
@@ -2390,7 +2423,7 @@ async function buildDiscoveryAppData(
     token,
     tier: "discovery",
     discoveryCredit: tierRes.credit,
-    discoverySummary: parseDiscoverySummary(client, firstName),
+    discoverySummary: await parseDiscoverySummary(client, firstName),
     discoveryStage,
     intakeUrl,
     mode: "ACTIVE",

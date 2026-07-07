@@ -6,13 +6,34 @@
  * (in-app Razorpay Checkout); paid/booked/results show their status. "Paid" is
  * confirmed by the server webhook, not here — after Checkout we just show
  * "confirming". See docs/LAB_BOOKING_SPEC.md.
+ *
+ * Also carries the self-service rebook/reorder surface (`showReorderCta`,
+ * default true) — a client whose orders are all done/results-in otherwise has
+ * NO way to get more labs later except going around the app. Two tiers:
+ *   1. RebookCta — when there's a past (non-cancelled) order, one tap calls
+ *      POST /api/lab-order/rebook, which re-derives that same profile/add-on
+ *      selection at CURRENT catalogue pricing and mints a fresh `recommended`
+ *      order (same buildOrder() path a coach recommendation uses — see that
+ *      route for the full contract). The new order is fed straight into the
+ *      SAME booking form + Razorpay flow below — no separate pipeline, no
+ *      coach round-trip.
+ *   2. ReorderLabsCta — a plain "ask about labs" WhatsApp prompt, always
+ *      available as the fallback (first-ever order, or something different
+ *      than the last package).
+ * Suppressed during pre-call onboarding (the `book_labs` stage in
+ * ochre-discovery.tsx) — asking to "reorder" before the first order even
+ * exists reads wrong.
  */
 
 import { useState, type CSSProperties } from "react";
-import { useOchre } from "./ochre-context";
+import { useOchre, Icon } from "./ochre-context";
 import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
 import type { Invoice } from "@/lib/fmdb/invoices";
 import { InvoiceReceipt } from "@/components/invoice-receipt";
+
+function waHref(number: string, text: string): string {
+  return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+}
 
 declare global {
   interface Window {
@@ -123,9 +144,108 @@ function PriceBlock({ listInr, amountInr }: { listInr?: number | null; amountInr
   );
 }
 
-export function LabOrdersCard() {
+/** Self-service "ask for a reorder" prompt — always available, not tied to any
+ *  order's status. Copy adapts to whether the client has ordered before, and
+ *  shrinks to a single-line link when a RebookCta is already showing above it
+ *  (so the two don't compete for attention). */
+function ReorderLabsCta({ hasOrderedBefore, compact = false }: { hasOrderedBefore: boolean; compact?: boolean }) {
+  const { coach } = useOchre();
+  const waLink = (
+    <a
+      className={compact ? undefined : "wa-btn"}
+      style={
+        compact
+          ? { fontSize: 12.5, color: "var(--forest, #2d5a3d)", display: "inline-flex", alignItems: "center", gap: 5 }
+          : { width: "auto", padding: "9px 16px", marginTop: 10, display: "inline-flex" }
+      }
+      href={waHref(
+        coach.whatsappNumber,
+        hasOrderedBefore
+          ? "Hi, I'd like to talk about getting some labs retested or added on."
+          : "Hi, I'd like to talk about getting some labs done.",
+      )}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="whatsapp" size={compact ? 14 : 16} /> {compact ? "Ask about something different" : "Ask about labs"}
+    </a>
+  );
+  if (compact) return <div style={{ marginTop: 8, textAlign: "center" }}>{waLink}</div>;
+  return (
+    <div className="card" style={{ padding: "13px 15px", marginTop: 10 }}>
+      <div style={{ fontSize: 13, color: "var(--ink, #2c2a24)", lineHeight: 1.5 }}>
+        {hasOrderedBefore
+          ? "Want to retest something, or add a lab down the line? Just ask — we'll set it up whenever you're ready."
+          : "Want to talk about getting some labs done? We'll recommend what fits, whenever you're ready."}
+      </div>
+      {waLink}
+    </div>
+  );
+}
+
+/** One-tap self-service rebook of the client's last (non-cancelled) package.
+ *  Creates a fresh `recommended` order at current pricing via the rebook API,
+ *  then hands it straight to the caller to open in the same booking form the
+ *  coach-recommended flow uses. */
+function RebookCta({
+  lastOrder,
+  onRebooked,
+}: {
+  lastOrder: LabOrder;
+  onRebooked: (order: LabOrder) => void;
+}) {
   const data = useOchre();
-  const orders: LabOrder[] = data.labOrders ?? [];
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const label = lastOrder.lines[0]?.label ?? "your last package";
+  const addonCount = lastOrder.addon_slugs?.length ?? 0;
+
+  const rebook = async () => {
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch("/api/lab-order/rebook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token }),
+      });
+      const j = (await res.json()) as { ok: boolean; error?: string; order?: LabOrder };
+      if (!j.ok || !j.order) throw new Error(j.error || "could not rebook");
+      onRebooked(j.order);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "could not rebook");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="card" style={{ padding: "13px 15px", marginTop: 10 }}>
+      <div style={{ fontSize: 13, color: "var(--ink, #2c2a24)", lineHeight: 1.5 }}>
+        Want to retest the same panel — <strong>{label}</strong>
+        {addonCount > 0 ? ` +${addonCount}` : ""}? Book it again below, right in the app (current pricing applies).
+      </div>
+      <button
+        type="button"
+        className="submit-btn"
+        style={{ width: "auto", padding: "10px 20px", marginTop: 10 }}
+        onClick={rebook}
+        disabled={busy}
+      >
+        {busy ? "Setting it up…" : `Rebook ${label} →`}
+      </button>
+      {error && <div style={{ fontSize: 12.5, color: "#b3402a", marginTop: 8 }}>{error}</div>}
+    </div>
+  );
+}
+
+export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: boolean } = {}) {
+  const data = useOchre();
+  // Orders just self-service-created via /api/lab-order/rebook — not yet in
+  // data.labOrders (that's a page-load snapshot). Prepended so they render +
+  // become bookable immediately, no reload needed.
+  const [rebookedOrders, setRebookedOrders] = useState<LabOrder[]>([]);
+  const orders: LabOrder[] = [...rebookedOrders, ...(data.labOrders ?? [])];
   const [busy, setBusy] = useState<string | null>(null);
   const [confirming, setConfirming] = useState<Record<string, boolean>>({});
   const [error, setError] = useState("");
@@ -153,7 +273,13 @@ export function LabOrdersCard() {
 
   const recommended = orders.filter((o) => o.status === "recommended");
   const inFlight = orders.filter((o) => o.status !== "recommended" && o.status !== "cancelled");
-  if (recommended.length === 0 && inFlight.length === 0) return null;
+  const hasAny = recommended.length > 0 || inFlight.length > 0;
+  // The most recent non-cancelled order — the "package they were last tested
+  // for", offered as a one-tap rebook. Mirrors the server route's own lookup.
+  const lastBookable = orders.find((o) => o.status !== "cancelled") ?? null;
+  // Never fully disappears when showReorderCta is on — a client with no active
+  // order still needs the self-service "ask about labs" prompt below.
+  if (!hasAny && !showReorderCta) return null;
 
   // Prefill name/phone + saved collection address from the account, then open the
   // collection form. The address comes from a prior order (saved to the record),
@@ -170,6 +296,14 @@ export function LabOrdersCard() {
       pincode: data.account?.collectionPincode ?? "",
     });
     setBookingId(order.order_id);
+  };
+
+  // A rebook just minted this order server-side — surface it immediately (no
+  // reload) and drop straight into the same booking form as any other
+  // recommended order.
+  const handleRebooked = (order: LabOrder) => {
+    setRebookedOrders((r) => [order, ...r]);
+    startBooking(order);
   };
 
   const setField = (k: keyof LogisticsForm, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -215,9 +349,11 @@ export function LabOrdersCard() {
 
   return (
     <section className="section" style={{ marginBottom: 4 }}>
-      <div className="section-head">
-        <h2>Your lab tests</h2>
-      </div>
+      {hasAny && (
+        <div className="section-head">
+          <h2>Your lab tests</h2>
+        </div>
+      )}
 
       {recommended.map((o) => (
         <div className="card" key={o.order_id} style={{ padding: "14px 15px", marginBottom: 10 }}>
@@ -346,6 +482,12 @@ export function LabOrdersCard() {
             <InvoiceReceipt invoice={invoice} />
           </div>
         </div>
+      )}
+      {showReorderCta && recommended.length === 0 && (
+        <>
+          {lastBookable && <RebookCta lastOrder={lastBookable} onRebooked={handleRebooked} />}
+          <ReorderLabsCta hasOrderedBefore={hasAny} compact={!!lastBookable} />
+        </>
       )}
     </section>
   );

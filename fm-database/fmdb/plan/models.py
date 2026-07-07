@@ -274,18 +274,36 @@ class DiscoverySummaryPoint(BaseModel):
     note: str = ""
 
 
+class DiscoverySummarySupplement(BaseModel):
+    """One coach-decided supplement surfaced in the discovery Starting Map — the
+    deliberate, per-client exception to the "no protocol" rule. Capped at 2 by
+    convention (enforced in the authoring UI + save action, not the model) so a
+    one-time consult never turns into a de-facto free protocol. Only ever
+    populated when the coach judges a finding significant enough to name (e.g.
+    a clear deficiency) — default is zero."""
+    model_config = ConfigDict(extra="ignore")
+
+    supplement_slug: str = ""   # optional catalogue link, for a buy-link lookup later
+    name: str = ""              # client-facing display name
+    dose: str = ""              # kept simple/generic — this is a starting nudge, not a titrated protocol
+    timing: str = ""
+    why: str = ""               # one-line, plain-language reason
+
+
 class DiscoverySummary(BaseModel):
     """The consult-tier "Your Starting Map" artifact, authored by the coach after
     the discovery call and shown read-only in the discovery app. Deliberately
-    orientation-only — carries NO protocol. The client app renders it via
-    parseDiscoverySummary (client-app.ts); the snake_case keys here are its
-    contract. See docs/DISCOVERY_TIER_SPEC.md."""
+    orientation-only — carries NO protocol, with ONE coach-decided exception:
+    `included_supplements` (0-2, see DiscoverySummarySupplement). The client app
+    renders it via parseDiscoverySummary (client-app.ts); the snake_case keys
+    here are its contract. See docs/DISCOVERY_TIER_SPEC.md."""
     model_config = ConfigDict(extra="ignore")
 
     headline: str = ""
     hypotheses: list[DiscoverySummaryPoint] = Field(default_factory=list)
     foundational_changes: list[DiscoverySummaryPoint] = Field(default_factory=list)
     journey_preview: list[str] = Field(default_factory=list)
+    included_supplements: list[DiscoverySummarySupplement] = Field(default_factory=list)
 
 
 class Client(BaseModel):

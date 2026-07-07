@@ -147,12 +147,27 @@ export interface DiscoverySummaryPointInput {
   title: string;
   note: string;
 }
+/** One coach-decided supplement in the Starting Map — the deliberate, per-client
+ *  exception to "no protocol." Hard-capped at 2 below (MAX_INCLUDED_SUPPLEMENTS)
+ *  regardless of what the caller sends, so this can never drift into a de-facto
+ *  free protocol. */
+export interface DiscoverySummarySupplementInput {
+  supplementSlug?: string;
+  name: string;
+  dose: string;
+  timing: string;
+  why: string;
+}
+
 export interface DiscoverySummaryInput {
   headline: string;
   hypotheses: DiscoverySummaryPointInput[];
   foundationalChanges: DiscoverySummaryPointInput[];
   journeyPreview: string[];
+  includedSupplements?: DiscoverySummarySupplementInput[];
 }
+
+const MAX_INCLUDED_SUPPLEMENTS = 2;
 
 const _trim = (v: unknown, max: number): string =>
   typeof v === "string" ? v.trim().slice(0, max) : "";
@@ -166,6 +181,23 @@ function _points(v: unknown, maxItems: number): DiscoverySummaryPointInput[] {
       return { title: _trim(o.title, 160), note: _trim(o.note, 400) };
     })
     .filter((p) => p.title || p.note);
+}
+
+function _supplements(v: unknown): Record<string, string>[] {
+  if (!Array.isArray(v)) return [];
+  return v
+    .slice(0, MAX_INCLUDED_SUPPLEMENTS)
+    .map((it) => {
+      const o = (it ?? {}) as Record<string, unknown>;
+      return {
+        supplement_slug: _trim(o.supplementSlug, 80),
+        name: _trim(o.name, 120),
+        dose: _trim(o.dose, 100),
+        timing: _trim(o.timing, 100),
+        why: _trim(o.why, 300),
+      };
+    })
+    .filter((s) => s.name);
 }
 
 /**
@@ -193,11 +225,18 @@ export async function saveDiscoverySummaryAction(
   const journey_preview = Array.isArray(input?.journeyPreview)
     ? input.journeyPreview.map((x) => _trim(x, 200)).filter(Boolean).slice(0, 12)
     : [];
+  const included_supplements = _supplements(input?.includedSupplements);
 
-  if (!headline && !hypotheses.length && !foundational_changes.length && !journey_preview.length) {
+  if (
+    !headline &&
+    !hypotheses.length &&
+    !foundational_changes.length &&
+    !journey_preview.length &&
+    !included_supplements.length
+  ) {
     delete data.discovery_summary; // empty → clear the map
   } else {
-    data.discovery_summary = { headline, hypotheses, foundational_changes, journey_preview };
+    data.discovery_summary = { headline, hypotheses, foundational_changes, journey_preview, included_supplements };
   }
   data.updated_at = new Date().toISOString();
   await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }), "utf-8");

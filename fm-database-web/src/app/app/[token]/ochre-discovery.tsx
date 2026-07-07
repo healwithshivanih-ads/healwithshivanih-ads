@@ -165,6 +165,38 @@ export function DiscoverySummaryScreen() {
         </section>
       )}
 
+      {/* Coach-picked supplements — the one deliberate exception to "no protocol".
+          Only rendered when the coach has explicitly named 1-2; otherwise this
+          section doesn't exist, same as every other optional block here. */}
+      {sum && sum.includedSupplements.length > 0 && (
+        <section className="section" style={{ marginTop: 8 }}>
+          <div className="section-head"><h2>Worth starting now</h2></div>
+          {sum.includedSupplements.map((s, i) => (
+            <div className="card" key={i} style={{ padding: "12px 14px", marginBottom: 10 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
+                <div style={{ fontWeight: 700, fontSize: 14.5, color: "var(--ink)" }}>{s.name}</div>
+                {s.buyUrl && (
+                  <a className="reorder" href={s.buyUrl} target="_blank" rel="noreferrer" style={{ flexShrink: 0 }}>
+                    <Icon name="bag" size={14} /> Where to buy
+                  </a>
+                )}
+              </div>
+              {(s.dose || s.timing) && (
+                <div style={{ fontSize: 12.5, color: "var(--forest)", fontWeight: 600, marginTop: 2 }}>
+                  {[s.dose, s.timing].filter(Boolean).join(" · ")}
+                </div>
+              )}
+              {s.why && (
+                <div style={{ fontSize: 13.5, lineHeight: 1.5, color: "var(--muted)", marginTop: 4 }}>{s.why}</div>
+              )}
+            </div>
+          ))}
+          <div style={{ fontSize: 12, color: "var(--muted)", padding: "0 2px" }}>
+            A couple of specific starting picks from your call — check with your doctor before starting if you&apos;re on any medication.
+          </div>
+        </section>
+      )}
+
       {/* What the full journey adds — the honest upsell bridge */}
       {sum && sum.journeyPreview.length > 0 && (
         <section className="section" style={{ marginTop: 8 }}>
@@ -386,7 +418,7 @@ export function DiscoveryOnboardingScreen() {
             body="Based on your intake, here are the tests we&apos;d like to run. Book a home collection below — we&apos;ll arrange the rest."
           />
           <div style={{ marginTop: 16 }}>
-            <LabOrdersCard />
+            <LabOrdersCard showReorderCta={false} />
           </div>
         </>
       )}
