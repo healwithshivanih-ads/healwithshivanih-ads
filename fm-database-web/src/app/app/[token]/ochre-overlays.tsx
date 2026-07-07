@@ -487,6 +487,11 @@ function RecipeDetailBody({ r }: { r: AppRecipe }) {
           {r.tip}
         </p>
       )}
+      {r.imageCredit && (
+        <p style={{ fontSize: 10.5, color: "var(--muted)", opacity: 0.7, marginTop: 10 }}>
+          Photo: {r.imageCredit}
+        </p>
+      )}
     </div>
   );
 }
