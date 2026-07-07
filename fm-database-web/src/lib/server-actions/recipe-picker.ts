@@ -17,6 +17,7 @@ import fs from "fs";
 import yaml from "js-yaml";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { runShim } from "@/lib/fmdb/shim";
+import { labNutrientPriorities, recipeLabBoost, matchedPriorityTags } from "@/lib/fmdb/lab-nutrient-priorities";
 
 const RECIPES_DIR = path.join(process.cwd(), "..", "fm-database", "data", "_recipes");
 
@@ -28,6 +29,8 @@ export interface PickerRecipe {
   time: string | null;
   mains: string[];
   diet: string[];
+  /** rich_in tags this recipe covers that the client is low on (lab-aware) */
+  labMatchedTags?: string[];
 }
 
 const MEAT_RE = /\b(chicken|mutton|lamb|beef|pork|fish|prawn|shrimp|crab|seafood|\bmeat\b|keema|kheema|bacon|ham\b|turkey|egg whites?\b)\b/i;
@@ -62,6 +65,9 @@ export async function searchRecipesAction(
     ).toLowerCase();
     const lvl = clientDietLevel(dietPref);
     const isJain = /jain/.test(dietPref);
+    // lab-aware: nutrients this client is low on → boost matching rich_in dishes
+    const labPriorities = labNutrientPriorities(client as { lab_markers?: unknown } | null);
+    const hasLabPriorities = Object.keys(labPriorities).length > 0;
 
     // Foods the client avoids — never offer a recipe that uses one. The field
     // is free-form (a list, a comma string like "Onion, Garlic", or prose), so
@@ -147,6 +153,7 @@ export async function searchRecipesAction(
       const imageUrl =
         imgFile && String(img?.rights_status) !== "none" ? `/recipe-images/${imgFile}` : null;
       const mins = (Number(r.prep_time_min) || 0) + (Number(r.cook_time_min) || 0);
+      const richIn = (Array.isArray(r.rich_in) ? r.rich_in : []).map(String);
 
       out.push({
         slug: String(r.slug ?? f.replace(/\.yaml$/, "")),
@@ -156,11 +163,17 @@ export async function searchRecipesAction(
         time: mins ? `${mins} min` : null,
         mains,
         diet,
-      });
+        labMatchedTags: hasLabPriorities ? matchedPriorityTags(richIn, labPriorities) : undefined,
+        _labBoost: hasLabPriorities ? recipeLabBoost(richIn, labPriorities) : 0,
+      } as PickerRecipe & { _labBoost: number });
     }
 
-    // rank: title starts with the query, then has a photo, then alphabetical
-    out.sort((a, b) => {
+    // rank: lab-priority boost first (client's low nutrients), then query
+    // prefix, then photo, then alphabetical.
+    const scored = out as (PickerRecipe & { _labBoost?: number })[];
+    scored.sort((a, b) => {
+      const lb = (b._labBoost ?? 0) - (a._labBoost ?? 0);
+      if (lb !== 0) return lb;
       const aw = q && a.title.toLowerCase().startsWith(q) ? 0 : 1;
       const bw = q && b.title.toLowerCase().startsWith(q) ? 0 : 1;
       if (aw !== bw) return aw - bw;
@@ -168,7 +181,11 @@ export async function searchRecipesAction(
       return a.title.localeCompare(b.title);
     });
 
-    return { ok: true, recipes: out.slice(0, 40) };
+    const recipes = scored.slice(0, 40).map(({ _labBoost, ...rest }) => {
+      void _labBoost;
+      return rest;
+    });
+    return { ok: true, recipes };
   } catch (e) {
     return { ok: false, recipes: [], error: e instanceof Error ? e.message : "search failed" };
   }

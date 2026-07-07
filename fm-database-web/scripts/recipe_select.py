@@ -156,7 +156,8 @@ def is_safe(recipe: dict, allergies: list, avoid_tokens: set[str]) -> bool:
     return True
 
 def score_recipe(recipe: dict, doshas: set[str], season: str | None,
-                 topics: set[str], region: str, weight_loss: bool) -> float:
+                 topics: set[str], region: str, weight_loss: bool,
+                 lab_priorities: dict | None = None) -> float:
     s = 0.0
     bal = set(d.lower() for d in (recipe.get("balances_dosha") or []))
     agg = set(d.lower() for d in (recipe.get("aggravates_dosha") or []))
@@ -173,6 +174,10 @@ def score_recipe(recipe: dict, doshas: set[str], season: str | None,
         k = recipe.get("approx_kcal_per_serving")
         if isinstance(k, (int, float)):
             s += 1.0 if k <= 350 else (-1.0 if k >= 550 else 0.0)
+    # lab-aware: up-rank recipes rich in a nutrient the client is low on
+    if lab_priorities:
+        rich = {str(t).lower() for t in (recipe.get("rich_in") or [])}
+        s += sum(w for tag, w in lab_priorities.items() if tag in rich)
     return s
 
 # ── selection ──────────────────────────────────────────────────────────────
@@ -188,6 +193,11 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
     topics = set(str(t).lower() for t in ((plan or {}).get("assessment", {}) or {}).get("focus_topics", []))
     topics |= set(str(c).lower() for c in (client.get("active_conditions") or []))
     region = (client.get("region") or "").lower()
+    try:
+        from lab_nutrient_priorities import lab_nutrient_priorities
+        lab_priorities = lab_nutrient_priorities(client)
+    except Exception:
+        lab_priorities = {}
 
     eligible = []
     for r in recipes:
@@ -195,7 +205,7 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
             continue
         if not is_safe(r, allergies, avoid):
             continue
-        eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss), r))
+        eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss, lab_priorities), r))
     eligible.sort(key=lambda x: x[0], reverse=True)
 
     # coverage: take up to `per_meal` per meal_type, then global cap
