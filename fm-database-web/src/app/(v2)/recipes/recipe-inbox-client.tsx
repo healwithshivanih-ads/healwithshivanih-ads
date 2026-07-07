@@ -270,7 +270,9 @@ function CandidateCard({
   return (
     <div className="border rounded-lg p-4">
       <div className="flex items-center gap-2 flex-wrap text-xs text-muted-foreground">
-        <span>{cand.source === "whatsapp" ? "💬 WhatsApp" : "✍️ Manual"}</span>
+        <span>
+          {cand.source === "whatsapp" ? "💬 WhatsApp" : cand.source === "ai_batch" ? "🤖 AI draft" : "✍️ Manual"}
+        </span>
         <span>· {received}</span>
         {cand.from_name && <span>· from {cand.from_name}</span>}
         {cand.media_file && <span className="bg-muted rounded px-1.5 py-0.5">📎 {cand.media_mime}</span>}

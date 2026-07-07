@@ -9,7 +9,8 @@ diet:
 - vegan
 - gluten_free
 region: Ayurvedic
-seasons: []
+seasons:
+- all
 balances_dosha:
 - vata
 - pitta
