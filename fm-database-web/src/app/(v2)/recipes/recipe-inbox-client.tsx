@@ -4,9 +4,11 @@ import {
   RecipeCandidate,
   ParsedRecipeDraft,
   RecipeIngredient,
+  DuplicateTarget,
   createRecipeCandidateAction,
   parseRecipeCandidateAction,
   approveRecipeCandidateAction,
+  attachPhotoToExistingAction,
   rejectRecipeCandidateAction,
 } from "@/lib/server-actions/recipe-inbox";
 
@@ -98,9 +100,16 @@ function DraftEditor({
   );
   const [warnings, setWarnings] = useState<string[]>([]);
   const [needsConfirm, setNeedsConfirm] = useState(false);
+  const [dupes, setDupes] = useState<DuplicateTarget[]>([]);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
+  const [merged, setMerged] = useState("");
   const [, startTransition] = useTransition();
+
+  const hasPhoto = Boolean(candidate.image_url || candidate.media_file);
+  // existing recipes this forward duplicates that LACK a photo — the ones
+  // worth enriching with the forwarded photo
+  const enrichTargets = dupes.filter((d) => !d.has_photo);
 
   function set<K extends keyof ParsedRecipeDraft>(key: K, val: ParsedRecipeDraft[K]) {
     setDraft((d) => ({ ...d, [key]: val }));
@@ -123,9 +132,24 @@ function DraftEditor({
         onApproved(res.slug);
       } else if (res.needs_confirm) {
         setWarnings(res.warnings ?? []);
+        setDupes(res.duplicate_of ?? []);
         setNeedsConfirm(true);
       } else {
         setErr(res.error ?? "approve failed");
+      }
+    });
+  }
+
+  function usePhotoOnExisting(slug: string) {
+    setBusy(true);
+    setErr("");
+    startTransition(async () => {
+      const res = await attachPhotoToExistingAction(candidate.id, slug);
+      setBusy(false);
+      if (res.ok) {
+        setMerged(slug);
+      } else {
+        setErr(res.error ?? "couldn't attach the photo");
       }
     });
   }
@@ -236,27 +260,56 @@ function DraftEditor({
           ))}
         </div>
       )}
+
+      {/* Duplicate that brings a photo the existing recipe lacks → offer to
+          enrich the existing recipe instead of making a second copy. */}
+      {needsConfirm && hasPhoto && enrichTargets.length > 0 && !merged && (
+        <div className="text-xs bg-sky-50 border border-sky-200 rounded p-2 space-y-1.5">
+          <p>
+            You already have this dish, but your forward has a photo it&rsquo;s missing. Add the
+            photo to the existing recipe instead of making a duplicate:
+          </p>
+          {enrichTargets.map((d) => (
+            <button
+              key={d.slug}
+              type="button"
+              onClick={() => usePhotoOnExisting(d.slug)}
+              disabled={busy}
+              className="text-xs bg-sky-600 text-white rounded px-3 py-1.5 disabled:opacity-50 mr-2"
+            >
+              {busy ? "Adding photo…" : `📷 Use this photo on “${d.name}”`}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {merged && (
+        <p className="text-xs text-green-700 bg-green-50 border border-green-200 rounded p-2">
+          ✓ Photo added to <span className="font-mono">{merged}</span>. No duplicate created — this
+          candidate is done.
+        </p>
+      )}
       {err && <p className="text-xs text-red-600">{err}</p>}
 
-      <div className="flex gap-2">
-        <button
-          type="button"
-          onClick={() => approve(needsConfirm)}
-          disabled={busy || !draft.name.trim()}
-          className={`text-xs rounded px-3 py-1.5 disabled:opacity-50 ${
-            needsConfirm
-              ? "bg-amber-600 text-white"
-              : "bg-primary text-primary-foreground"
-          }`}
-        >
-          {busy ? "Adding…" : needsConfirm ? "⚠ Approve anyway" : "✅ Add to library"}
-        </button>
-        {needsConfirm && (
-          <span className="text-xs text-muted-foreground self-center">
-            review the warnings above, then confirm
-          </span>
-        )}
-      </div>
+      {!merged && (
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => approve(needsConfirm)}
+            disabled={busy || !draft.name.trim()}
+            className={`text-xs rounded px-3 py-1.5 disabled:opacity-50 ${
+              needsConfirm ? "bg-amber-600 text-white" : "bg-primary text-primary-foreground"
+            }`}
+          >
+            {busy ? "Adding…" : needsConfirm ? "⚠ Approve anyway (new copy)" : "✅ Add to library"}
+          </button>
+          {needsConfirm && (
+            <span className="text-xs text-muted-foreground self-center">
+              review the warnings above, then confirm
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

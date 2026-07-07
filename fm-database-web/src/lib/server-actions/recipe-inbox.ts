@@ -180,6 +180,12 @@ export async function parseRecipeCandidateAction(
   }
 }
 
+export interface DuplicateTarget {
+  name: string;
+  slug: string;
+  has_photo: boolean;
+}
+
 export interface ApproveRecipeResult {
   ok: boolean;
   slug?: string;
@@ -188,6 +194,8 @@ export interface ApproveRecipeResult {
   nutrients?: Record<string, number> | null;
   rich_in?: string[];
   coverage_pct?: number;
+  duplicate_of?: DuplicateTarget[];
+  candidate_has_photo?: boolean;
   error?: string;
 }
 
@@ -203,6 +211,30 @@ export async function approveRecipeCandidateAction(
       { candidate_id: id, recipe, force },
       60_000,
     )) as ApproveRecipeResult;
+    if (out.ok) revalidatePath("/recipes");
+    return out;
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : String(err) };
+  }
+}
+
+/**
+ * A forwarded recipe the coach already has, but this forward brings a photo the
+ * existing library recipe lacks. Attach that photo (credited) to the EXISTING
+ * recipe and mark the candidate merged — no duplicate created, no photo lost.
+ */
+export async function attachPhotoToExistingAction(
+  id: string,
+  targetSlug: string,
+): Promise<{ ok: boolean; img?: string | null; error?: string }> {
+  if (!ID_RE.test(id)) return { ok: false, error: "bad candidate id" };
+  if (!/^[a-z0-9-]+$/.test(targetSlug)) return { ok: false, error: "bad recipe slug" };
+  try {
+    const out = (await runShim(
+      "enrich-recipe-photo.py",
+      { candidate_id: id, target_slug: targetSlug },
+      60_000,
+    )) as { ok: boolean; img?: string | null; error?: string };
     if (out.ok) revalidatePath("/recipes");
     return out;
   } catch (err) {

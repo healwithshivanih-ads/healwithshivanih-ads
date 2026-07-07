@@ -121,7 +121,11 @@ def _similar_existing(name: str) -> list[str]:
         # exactly equals a 1-word name is still caught (overlap==len==1 → j==1).
         exact_short = overlap >= 1 and mine == theirs
         if exact_short or (overlap >= 2 and jaccard >= 0.7):
-            hits.append(f"{other.get('name')} ({p.stem})")
+            hits.append({
+                "name": str(other.get("name") or p.stem),
+                "slug": p.stem,
+                "has_photo": bool((other.get("image") or {}).get("file")),
+            })
     return hits
 
 
@@ -187,7 +191,10 @@ def main() -> int:
     # ── 2. duplicates ──────────────────────────────────────────────────────
     similar = _similar_existing(name)
     if similar:
-        blockers.append("looks like a duplicate of: " + "; ".join(similar[:4]))
+        blockers.append(
+            "looks like a duplicate of: "
+            + "; ".join(f"{d['name']} ({d['slug']})" for d in similar[:4])
+        )
 
     # ── 3. no-porridge guard ───────────────────────────────────────────────
     if "porridge" in name.lower() or "porridge" in ing_text:
@@ -229,7 +236,17 @@ def main() -> int:
 
     if blockers and not force:
         json.dump(
-            {"ok": False, "needs_confirm": True, "warnings": blockers + warnings},
+            {
+                "ok": False,
+                "needs_confirm": True,
+                "warnings": blockers + warnings,
+                # structured so the UI can offer "use this photo on the existing
+                # recipe" when the forward is a dup that brings a photo
+                "duplicate_of": similar,
+                "candidate_has_photo": bool(
+                    candidate.get("image_url") or candidate.get("media_file")
+                ),
+            },
             sys.stdout,
         )
         return 0
