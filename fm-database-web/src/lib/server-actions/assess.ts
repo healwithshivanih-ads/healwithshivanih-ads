@@ -917,6 +917,24 @@ export async function autoRouteUploadedReportAction(
     if (!apply.ok) {
       return { ok: false, routed_to: "skipped", error: apply.error ?? "apply failed" };
     }
+    // Fire-and-forget AI rework assessment, mirroring the Overview "Upload labs"
+    // panel. Without this, labs entered through the Record/Analyse flow save a
+    // snapshot but never generate a rework_suggestion — so the ReworkBanner
+    // never appears even when fresh labs would warrant a plan review.
+    if (labs.length > 0) {
+      const flaggedLabs = labs
+        .slice(0, 8)
+        .map((l) => `${l.test_name} ${l.value} ${l.unit ?? ""}`.trim())
+        .join("; ");
+      const { assessReworkBenefitAction } = await import(
+        "@/lib/server-actions/clients"
+      );
+      void assessReworkBenefitAction({
+        clientId,
+        triggeredBy: "lab_snapshot",
+        eventSummary: `New lab snapshot: ${flaggedLabs}`,
+      });
+    }
     // Pull the earliest date_drawn for the toast (older reports → history).
     const drawnDates = labs
       .map((l) => l.date_drawn)
