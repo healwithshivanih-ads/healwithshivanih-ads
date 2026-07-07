@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS } from "./app-mode";
+import {
+  resolveAppMode,
+  reviewLeadDays,
+  GRACE_DAYS,
+  REVIEW_LEAD_DAYS,
+  REVIEW_LEAD_DAYS_SHORT,
+  SHORT_PLAN_MAX_WEEKS,
+} from "./app-mode";
 
 const TODAY = "2026-06-15";
 
@@ -99,5 +106,46 @@ describe("resolveAppMode — maintenance track (keys off paid_through)", () => {
 
   it("status lapsed but no paid_through → LIBRARY", () => {
     expect(resolveAppMode({ maintenance_status: "lapsed" }, TODAY).mode).toBe("LIBRARY");
+  });
+});
+
+// Short-engagement plans (≤ SHORT_PLAN_MAX_WEEKS) get a 7-day REVIEW lead so
+// graduation copy doesn't appear at the halfway mark of a 4-week programme.
+describe("resolveAppMode — short-engagement review lead", () => {
+  // recheck = started + weeks*7, so back-date the start to land it `daysOut` away.
+  function shortPlan(daysOut: number, weeks: number) {
+    const started = addDays(TODAY, daysOut - weeks * 7);
+    return {
+      plan_period_start: started,
+      plan_period_weeks: weeks,
+      meal_plan_started_on: started,
+      status: "published",
+    };
+  }
+
+  it("reviewLeadDays: short plans → 7, standard plans / missing weeks → 14", () => {
+    expect(reviewLeadDays({ plan_period_weeks: 4 })).toBe(REVIEW_LEAD_DAYS_SHORT);
+    expect(reviewLeadDays({ plan_period_weeks: SHORT_PLAN_MAX_WEEKS })).toBe(REVIEW_LEAD_DAYS_SHORT);
+    expect(reviewLeadDays({ plan_period_weeks: SHORT_PLAN_MAX_WEEKS + 1 })).toBe(REVIEW_LEAD_DAYS);
+    expect(reviewLeadDays({ plan_period_weeks: 12 })).toBe(REVIEW_LEAD_DAYS);
+    expect(reviewLeadDays({})).toBe(REVIEW_LEAD_DAYS);
+    expect(reviewLeadDays(null)).toBe(REVIEW_LEAD_DAYS);
+  });
+
+  it("4-week plan stays ACTIVE inside days 8–13 before recheck (where a 12-week plan is already REVIEW)", () => {
+    expect(resolveAppMode({ plan: shortPlan(REVIEW_LEAD_DAYS_SHORT + 1, 4) }, TODAY).mode).toBe("ACTIVE");
+    expect(resolveAppMode({ plan: shortPlan(REVIEW_LEAD_DAYS, 4) }, TODAY).mode).toBe("ACTIVE");
+  });
+
+  it("4-week plan flips to REVIEW exactly 7 days before recheck", () => {
+    expect(resolveAppMode({ plan: shortPlan(REVIEW_LEAD_DAYS_SHORT, 4) }, TODAY).mode).toBe("REVIEW");
+  });
+
+  it("7-week plan keeps the standard 14-day lead", () => {
+    expect(resolveAppMode({ plan: shortPlan(REVIEW_LEAD_DAYS, 7) }, TODAY).mode).toBe("REVIEW");
+  });
+
+  it("short plan still degrades to LIBRARY past recheck + grace", () => {
+    expect(resolveAppMode({ plan: shortPlan(-(GRACE_DAYS + 1), 4) }, TODAY).mode).toBe("LIBRARY");
   });
 });

@@ -32,6 +32,11 @@ export type AppMode = "ACTIVE" | "REVIEW" | "MAINTENANCE" | "GRACE" | "LIBRARY";
 
 /** Days before the effective recheck that the REVIEW window opens. */
 export const REVIEW_LEAD_DAYS = 14;
+/** Shorter REVIEW lead for short engagements (coach decision 2026-07-07): a
+ *  14-day lead on a 4-week plan would show graduation copy at the halfway
+ *  mark, so plans of SHORT_PLAN_MAX_WEEKS or fewer open REVIEW 7 days out. */
+export const REVIEW_LEAD_DAYS_SHORT = 7;
+export const SHORT_PLAN_MAX_WEEKS = 6;
 /** Full-access window after maintenance lapses before dropping to LIBRARY. */
 export const GRACE_DAYS = 15;
 
@@ -46,6 +51,17 @@ export interface AppModePlan {
   supplements_started_on?: string | Date | null;
   supersedes?: string | null;
   status?: string | null;
+}
+
+/** REVIEW lead for a given plan: REVIEW_LEAD_DAYS_SHORT for short engagements
+ *  (plan_period_weeks ≤ SHORT_PLAN_MAX_WEEKS), REVIEW_LEAD_DAYS otherwise.
+ *  Every REVIEW-window computation (resolver + coach nudges) must go through
+ *  this so the app and the coach dashboard agree on when the window opens. */
+export function reviewLeadDays(plan: AppModePlan | null | undefined): number {
+  const w = Number(plan?.plan_period_weeks);
+  return Number.isFinite(w) && w >= 1 && w <= SHORT_PLAN_MAX_WEEKS
+    ? REVIEW_LEAD_DAYS_SHORT
+    : REVIEW_LEAD_DAYS;
 }
 
 export interface AppModeInput {
@@ -144,12 +160,12 @@ export function resolveAppMode(
     return { mode: "ACTIVE", reason: "active; recheck date unknown", continued };
   }
 
-  const reviewStart = addDaysYmd(recheck, -REVIEW_LEAD_DAYS);
+  const reviewStart = addDaysYmd(recheck, -reviewLeadDays(input.plan));
   if (todayYmd < reviewStart) {
     return { mode: "ACTIVE", reason: `in protocol; recheck ${recheck}`, continued };
   }
 
-  // REVIEW runs from REVIEW_LEAD_DAYS before the recheck through GRACE_DAYS
+  // REVIEW runs from the plan's review lead before the recheck through GRACE_DAYS
   // after it. Past that window with no continue/maintain decision → LIBRARY
   // (same 15-day grace as the maintenance-lapse path; coach decision 2026-06-15).
   const reviewEnd = addDaysYmd(recheck, GRACE_DAYS);

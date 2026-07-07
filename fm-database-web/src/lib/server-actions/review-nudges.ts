@@ -5,7 +5,8 @@
  *
  * Two kinds, both computed from data already on disk:
  *   - "review"  : the plan's effective recheck is within the REVIEW window
- *                 (recheck −14d … +15d, mirroring app-mode.ts) — time to decide
+ *                 (recheck −14d, or −7d for short plans ≤6 weeks … +15d,
+ *                 mirroring app-mode.ts reviewLeadDays) — time to decide
  *                 Continue / Maintain before the app drops to the library floor.
  *   - "renewal" : a client on the maintenance tier whose `maintenance_paid_through`
  *                 is within the next 14 days — time to renew.
@@ -22,10 +23,10 @@
 
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
+import { reviewLeadDays } from "@/lib/fmdb/app-mode";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
 import { getLastSentAtAction } from "@/app/api/whatsapp/actions";
 
-const REVIEW_LEAD_DAYS = 14;
 const REVIEW_GRACE_DAYS = 15;
 const RENEWAL_LEAD_DAYS = 14;
 const GRACE_DAYS = 15; // mirrors app-mode.ts GRACE_DAYS
@@ -115,7 +116,7 @@ export async function listReviewNudgesAction(): Promise<ReviewNudgeFlag[]> {
       weightLossEnabled: wl?.enabled === true,
     });
     if (!recheck) continue;
-    const reviewStart = addDaysYmd(recheck, -REVIEW_LEAD_DAYS);
+    const reviewStart = addDaysYmd(recheck, -reviewLeadDays(plan as { plan_period_weeks?: number }));
     const reviewEnd = addDaysYmd(recheck, REVIEW_GRACE_DAYS);
     if (today >= reviewStart && today <= reviewEnd) {
       flags.push({ clientId, name, phone, kind: "review", date: recheck, lastSentAt: null });

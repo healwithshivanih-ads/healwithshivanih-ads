@@ -303,7 +303,7 @@ function CtaButton({ label, onClick, tone = FOREST }: { label: string; onClick: 
 }
 
 export function EndgameBanner({ goCoach, onRenew }: { goCoach: () => void; onRenew: () => void }) {
-  const { endgame } = useOchre();
+  const { endgame, client } = useOchre();
   // LIBRARY has its own full screen; ACTIVE has no banner.
   if (!endgame || endgame.mode === "LIBRARY") return null;
 
@@ -315,7 +315,7 @@ export function EndgameBanner({ goCoach, onRenew }: { goCoach: () => void; onRen
   let cta: string | null = null;
 
   if (endgame.mode === "REVIEW") {
-    title = "Your 12 weeks are wrapping up";
+    title = `Your ${client.totalWeeks} weeks are wrapping up`;
     body = endgame.recheckLabel
       ? `You reach your recheck point around ${endgame.recheckLabel}. Let's choose what's next — a fresh phase, or a lighter maintenance plan.`
       : "Let's choose what's next — a fresh phase, or a lighter maintenance plan.";
@@ -459,7 +459,7 @@ export function GraduationReport({ onContinue, onMaintain }: { onContinue: () =>
           {stats.length > 0
             ? "Look how far you've come — your journey in numbers."
             : approaching
-              ? "You're almost through your 12 weeks. Let's choose what comes next."
+              ? `You're almost through your ${client.totalWeeks} weeks. Let's choose what comes next.`
               : "You've completed your plan. Let's choose what comes next."}
         </p>
       </div>
