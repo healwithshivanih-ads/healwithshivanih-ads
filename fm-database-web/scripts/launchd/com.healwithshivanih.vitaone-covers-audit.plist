@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.healwithshivanih.vitaone-covers-audit</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/shivani/code/healwithshivanih-ads/fm-database/.venv/bin/python</string>
+    <string>/Users/shivani/code/healwithshivanih-ads/fm-database-web/scripts/audit-vitaone-covers.py</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>1</integer>
+    <key>Hour</key><integer>8</integer>
+    <key>Minute</key><integer>13</integer>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/Users/shivani/fm-plans/_vitaone_covers_audit.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/shivani/fm-plans/_vitaone_covers_audit.log</string>
+</dict>
+</plist>
