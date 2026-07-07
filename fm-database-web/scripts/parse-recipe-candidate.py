@@ -62,6 +62,51 @@ def _fail(msg: str) -> None:
     sys.exit(0)
 
 
+_LIST_FIELDS = ("meal_type", "diet", "seasons", "balances_dosha", "aggravates_dosha",
+                "rasa", "main_ingredients", "contains_allergens", "steps", "ingredients")
+
+
+def _coerce_list(v):
+    """Tool-use occasionally serialises an array field as a STRING (a JSON
+    array, or newline/numbered text). Coerce back to a real list so the
+    review UI and approve gate never choke on a str where a list belongs."""
+    if isinstance(v, list) or v is None:
+        return v
+    if isinstance(v, str):
+        s = v.strip().rstrip(",").strip()  # models sometimes append a trailing comma
+        if s.startswith("["):
+            cleaned = re.sub(r",(\s*[\]}])", r"\1", s)  # drop trailing commas inside
+            if cleaned.endswith("]"):
+                try:
+                    parsed = json.loads(cleaned)
+                    if isinstance(parsed, list):
+                        return [str(x) for x in parsed]
+                except Exception:
+                    pass
+            quoted = re.findall(r'"((?:[^"\\]|\\.)*)"', s)  # pull quoted items
+            if quoted:
+                return [q.replace('\\"', '"') for q in quoted]
+        # plain string: split on newlines, dropping list bullets / numbering
+        parts = [re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", ln).strip()
+                 for ln in s.splitlines() if ln.strip()]
+        return parts or [s]
+    return [v]
+
+
+def _normalize_lists(parsed: dict) -> None:
+    """Force every list-typed recipe field to an actual list, in place."""
+    for f in _LIST_FIELDS:
+        if f in parsed:
+            parsed[f] = _coerce_list(parsed[f])
+    # ingredients must be a list of dicts, not strings
+    ings = parsed.get("ingredients")
+    if isinstance(ings, list):
+        parsed["ingredients"] = [
+            i if isinstance(i, dict) else {"item": str(i), "qty": "", "unit": ""}
+            for i in ings
+        ]
+
+
 def _is_instagram(url: str) -> bool:
     return "instagram.com" in (url or "").lower()
 
@@ -371,6 +416,7 @@ def main() -> int:
             "attach a clearer photo, then parse again."
         )
 
+    _normalize_lists(parsed)
     candidate["parsed"] = parsed
     candidate["status"] = "parsed"
     candidate["parsed_at"] = datetime.now(timezone.utc).isoformat()
