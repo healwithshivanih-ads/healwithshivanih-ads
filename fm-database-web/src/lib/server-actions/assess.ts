@@ -7,6 +7,7 @@ import { execFile } from "node:child_process";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { loadClientSessions, loadClientById, type ClientSession } from "@/lib/fmdb/loader-extras";
@@ -1260,7 +1261,9 @@ export async function updateSessionFieldsAction(
   foundData.last_edited_at = new Date().toISOString();
 
   try {
-    const dump = YAML.dump(foundData, {
+    // dumpYaml so numeric-underscore chip strings stay quoted for PyYAML
+    // (session YAMLs are loaded by the Python shims too).
+    const dump = dumpYaml(foundData, {
       sortKeys: false,
       lineWidth: 200,
     });

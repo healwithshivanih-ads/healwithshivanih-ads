@@ -2,6 +2,7 @@ import "server-only";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
+import { dumpYaml } from "./yaml-dump";
 import { getPlansRoot } from "./paths";
 import type { Plan, PlanStatus } from "./types";
 
@@ -144,7 +145,7 @@ export async function writePlan(plan: Plan): Promise<void> {
     }
   }
 
-  const dump = yaml.dump(next, {
+  const dump = dumpYaml(next, {
     sortKeys: false,
     lineWidth: 120,
     noRefs: true,

@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { validateMeasurement } from "@/lib/fmdb/measurements";
 
 const execFileP = promisify(execFile);
@@ -343,7 +344,7 @@ export async function createClient(
         const raw = await fs.readFile(clientYaml, "utf8");
         const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
         Object.assign(data, extraFields);
-        await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+        await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
       } catch {
         // non-fatal — fields missing is OK
       }
@@ -573,7 +574,7 @@ export async function updateClientFromTranscriptAction(
 
     rec.updated_at = new Date().toISOString();
 
-    await fs.writeFile(clientYaml, yaml.dump(rec, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(clientYaml, dumpYaml(rec, { noRefs: true, sortKeys: false }), "utf8");
     revalidatePath(`/clients/${clientId}`);
     return { ok: true, updated_fields: updated };
   } catch (err) {
@@ -953,7 +954,7 @@ export async function updateClientProfile(
 
     await fs.writeFile(
       clientYaml,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8"
     );
 
@@ -1024,7 +1025,7 @@ export async function updateCycleTracking(
 
     await fs.writeFile(
       clientYaml,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8"
     );
 
@@ -1061,7 +1062,7 @@ export async function setMindbodyOverride(
     if (state === "auto") delete data[key];
     else data[key] = state;
     data.updated_at = new Date().toISOString();
-    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
     revalidatePath(`/clients-v2/${clientId}`);
     return { ok: true };
   } catch (err) {
@@ -1088,7 +1089,7 @@ export async function setEftThemes(
     if (!themes || themes.length === 0) delete data.eft_themes;
     else data.eft_themes = themes;
     data.updated_at = new Date().toISOString();
-    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
     revalidatePath(`/clients-v2/${clientId}`);
     return { ok: true };
   } catch (err) {
@@ -1143,7 +1144,7 @@ export async function updateClientTimeline(
     data.updated_at = new Date().toISOString();
     await fs.writeFile(
       clientYaml,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8",
     );
     revalidatePath(`/clients/${input.client_id}`);
@@ -1299,7 +1300,7 @@ export async function updateClientPreferences(
 
     await fs.writeFile(
       clientYaml,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8"
     );
 
@@ -1427,7 +1428,7 @@ export async function uploadReportAction(input: UploadReportInput): Promise<Uplo
     data.external_reports = [...existing, report];
     await fs.writeFile(
       clientYaml,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8"
     );
 
@@ -1529,7 +1530,7 @@ export async function addMeasurementAction(
     data.measurements_log = log;
     data.updated_at = new Date().toISOString();
 
-    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
     // Revalidate both v1 + v2 client routes — the v2 dashboard / Overview
     // / Plan / Analyse tabs all need a fresh body-comp read. Forgetting
     // the v2 paths was the original reason "+ Log entry" appeared to do
@@ -1607,7 +1608,7 @@ export async function deleteMeasurementSnapshotAction(
     data.updated_at = new Date().toISOString();
     await fs.writeFile(
       clientYaml,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8",
     );
     revalidatePath(`/clients/${input.client_id}`);
@@ -1712,11 +1713,13 @@ async function writeClientYaml(
   data: Record<string, unknown>,
   clientId: string,
 ): Promise<void> {
-  const yamlMod = await import("js-yaml");
   data.updated_at = new Date().toISOString();
   await fs.writeFile(
     filePath,
-    yamlMod.dump(data, { noRefs: true, sortKeys: false }),
+    // dumpYaml (not raw js-yaml) so numeric-underscore chip strings like
+    // time_to_fall_asleep: "30_60" stay quoted — else PyYAML reads them as
+    // int 3060 and every Python shim that loads this client crashes.
+    dumpYaml(data, { sortKeys: false }),
     "utf8",
   );
   // Revalidate every surface that reads weight_loss
@@ -1983,7 +1986,7 @@ export async function deleteReportAction(clientId: string, reportId: string): Pr
     }
 
     data.external_reports = reports.filter((r) => r.id !== reportId);
-    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
 
     revalidatePath(`/clients/${clientId}`);
     return { ok: true };
@@ -2226,7 +2229,7 @@ export async function saveLabReferenceRangesAction(
     const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
     data.lab_reference_ranges = ranges;
     data.updated_at = new Date().toISOString();
-    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
     revalidatePath(`/clients/${clientId}`);
     return { ok: true };
   } catch (err) {
@@ -2369,7 +2372,7 @@ export async function saveSessionChartMarkersAction(
     data.updated_at = new Date().toISOString();
     // Ensure parent dir exists
     await fs.mkdir(path.dirname(filePath), { recursive: true });
-    await fs.writeFile(filePath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    await fs.writeFile(filePath, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
     return { ok: true };
   } catch (err) {
     const e = err as { message?: string };
@@ -2909,7 +2912,7 @@ export async function parseFunctionalTestAction(
             const raw = await fs.readFile(result.file_path, "utf-8");
             const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
             data.linked_session_id = link.session_id;
-            await fs.writeFile(result.file_path, yaml.dump(data, { sortKeys: false }));
+            await fs.writeFile(result.file_path, dumpYaml(data, { sortKeys: false }));
           }
         } catch {
           // Linking is best-effort — don't fail the parse if it errors.
@@ -3096,7 +3099,7 @@ export async function dismissReworkSuggestionAction(
     if (!sug) return { ok: true };
     sug.dismissed_at = new Date().toISOString();
     data.rework_suggestion = sug;
-    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+    await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }));
     // Coach bug 2026-05-19: banner kept reappearing after Dismiss
     // because we only revalidated v1 paths. v2 (the surface coach
     // actually uses) cached the old banner. Revalidate every place
@@ -3166,7 +3169,7 @@ export async function applyReworkSuggestionAction(input: {
           sug.applied_at = new Date().toISOString();
           if (result.slug) sug.applied_to_plan = result.slug;
           data.rework_suggestion = sug;
-          await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+          await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }));
         }
       } catch {
         /* non-fatal — the draft was created; worst case the banner
@@ -3203,7 +3206,7 @@ export async function snoozeReworkSuggestionAction(
     until.setDate(until.getDate() + days);
     sug.snoozed_until = until.toISOString().slice(0, 10);
     data.rework_suggestion = sug;
-    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+    await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }));
     // Same v2 revalidation fix as dismiss/apply actions (2026-05-19).
     revalidatePath(`/clients/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}`);
@@ -3267,7 +3270,7 @@ export async function parseGeneticReportAction(
           const raw = await fs.readFile(result.file_path, "utf-8");
           const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
           data.linked_session_id = link.session_id;
-          await fs.writeFile(result.file_path, yaml.dump(data, { sortKeys: false }));
+          await fs.writeFile(result.file_path, dumpYaml(data, { sortKeys: false }));
         }
       } catch {
         // Linking is best-effort
@@ -3379,7 +3382,7 @@ export async function saveExamFindingAction(input: {
     existing.push(entry);
     data.physical_exam_findings = existing;
     data.updated_at = new Date().toISOString();
-    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false, lineWidth: 120 }), "utf8");
+    await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false, lineWidth: 120 }), "utf8");
     return { ok: true, count: existing.length };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
@@ -3479,7 +3482,7 @@ export async function setMaintenanceStatus(
 
     await fs.writeFile(
       clientYaml,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8"
     );
 

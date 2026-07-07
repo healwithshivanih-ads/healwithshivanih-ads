@@ -5,6 +5,7 @@ import { spawn } from "node:child_process";
 import path from "node:path";
 import fs from "node:fs/promises";
 import yaml from "js-yaml";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
@@ -212,7 +213,7 @@ export async function removeSupplementFromActivePlan(
 
     await fs.writeFile(
       planPath,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf-8",
     );
 
@@ -357,7 +358,7 @@ export async function quickEditActivePlanSupplement(
 
     await fs.writeFile(
       planPath,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf-8",
     );
 
@@ -422,7 +423,7 @@ export async function applyChatPatchToPublishedPlan(
     });
     data.status_history = history;
 
-    await fs.writeFile(planPath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf-8");
+    await fs.writeFile(planPath, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf-8");
 
     const clientId = (data.client_id as string | undefined) ?? "";
     if (clientId) {
@@ -509,7 +510,7 @@ export async function editCoachRecommendation(
     });
     data.status_history = history;
 
-    await fs.writeFile(planPath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf-8");
+    await fs.writeFile(planPath, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf-8");
 
     const clientId = (data.client_id as string | undefined) ?? "";
     if (clientId) {
@@ -641,7 +642,7 @@ export async function quickEditActivePlanPractice(
 
     await fs.writeFile(
       planPath,
-      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf-8",
     );
 
@@ -947,7 +948,7 @@ export async function createSuccessor(
     const filePath = path.join(draftsDir, `${newSlug}.yaml`);
     await fs.writeFile(
       filePath,
-      yaml.dump(successor, { noRefs: true, sortKeys: false }),
+      dumpYaml(successor, { noRefs: true, sortKeys: false }),
       "utf-8"
     );
   }
@@ -1093,7 +1094,7 @@ export async function generateFollowUpPlan(
     const filePath = path.join(draftsDir, `${newSlug}.yaml`);
     await fs.writeFile(
       filePath,
-      yaml.dump(successor, { noRefs: true, sortKeys: false }),
+      dumpYaml(successor, { noRefs: true, sortKeys: false }),
       "utf-8"
     );
   }

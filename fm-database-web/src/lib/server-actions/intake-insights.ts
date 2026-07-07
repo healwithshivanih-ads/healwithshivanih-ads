@@ -6,6 +6,7 @@ import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
@@ -207,7 +208,10 @@ export async function updateInsightsCoachNotes(
     }
     insights.coach_notes_for_ai = coachNotes ?? "";
     parsed.intake_insights = insights;
-    const dumped = yaml.dump(parsed, { sortKeys: false, lineWidth: 120 });
+    // dumpYaml so numeric-underscore chip strings (e.g. "30_60") stay quoted
+    // for PyYAML — this rewrites the whole client.yaml, so a plain js-yaml
+    // dump here would silently strip the quotes off intake chip fields.
+    const dumped = dumpYaml(parsed, { sortKeys: false, lineWidth: 120 });
     await fs.writeFile(actualPath, dumped, "utf8");
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/intake-view`);
