@@ -69,6 +69,9 @@ _APP_CLIENT_KEYS = (
     "mobile_number",
     "city",
     "country",
+    # IANA tz — the Fly app anchors "today" (menu day / week counter) and the
+    # reminders cron on this; without it a US client renders on IST.
+    "timezone",
     "intake_date",
     "next_contact_date",
     "active_conditions",
