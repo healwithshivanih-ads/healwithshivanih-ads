@@ -80,6 +80,26 @@ def _infer_sample(label: str) -> str:
     return "Blood"
 
 
+def _load_lab_bundles() -> dict[str, list[str]]:
+    """Map a named bundle (KFT, LFT, Lipid Profile …) → its component tests,
+    from the shared lab-bundles.json — the SAME source the discovery form
+    builds its bundle cards from, so the slip always lists exactly what the
+    coach selected. Returns {} if the file is missing (older deploys)."""
+    p = Path(__file__).resolve().parents[1] / "src" / "lib" / "fmdb" / "lab-bundles.json"
+    try:
+        data = json.loads(p.read_text())
+        return {
+            str(b["name"]): [str(c) for c in (b.get("components") or [])]
+            for b in data
+            if isinstance(b, dict) and b.get("name")
+        }
+    except Exception:
+        return {}
+
+
+BUNDLE_COMPONENTS = _load_lab_bundles()
+
+
 def _load_yaml(path: Path) -> dict | None:
     if not path.exists():
         return None
@@ -223,7 +243,12 @@ def _build_markdown(plan: dict, client: dict) -> str:
                 test = (it.get("test") or "").strip()
                 reason = (it.get("reason") or "").strip()
                 line = f"- **{test}**"
-                if reason:
+                comps = BUNDLE_COMPONENTS.get(test)
+                if comps:
+                    # Named bundle — spell out the component tests so the lab
+                    # knows exactly what to run under the bundle name.
+                    line += f" — _includes:_ {', '.join(comps)}"
+                elif reason:
                     line += f" — _why:_ {reason}"
                 lines.append(line)
             lines.append("")
@@ -234,7 +259,10 @@ def _build_markdown(plan: dict, client: dict) -> str:
                 reason = (it.get("reason") or "").strip()
                 weeks = it.get("due_in_weeks")
                 line = f"- **{test}**"
-                if reason:
+                comps = BUNDLE_COMPONENTS.get(test)
+                if comps:
+                    line += f" — _includes:_ {', '.join(comps)}"
+                elif reason:
                     line += f" — _why:_ {reason}"
                 if isinstance(weeks, (int, float)) and weeks > 0:
                     line += f" _(after week {int(weeks)})_"

@@ -91,11 +91,26 @@ export function findCatalogueLabTest(
 
 // ── System grouping (keyed off LAB_PANELS — the catalogue has no category) ────
 
-const PANEL_INDEX = LAB_PANELS.map((p) => ({
-  system: p.group,
-  icon: p.icon,
-  keys: p.labs.map((l) => l.name.trim().toLowerCase()).filter(Boolean),
-}));
+const _lc = (s: string) => s.trim().toLowerCase();
+const PANEL_INDEX = LAB_PANELS.flatMap((p) =>
+  // Bundle groups (items carry `components` + their own `system`) index each
+  // bundle's component markers to that bundle's system, so a result like
+  // "Serum Creatinine" classifies as Kidney instead of falling through to
+  // "Other" now that it lives inside the KFT bundle rather than as its own lab.
+  p.labs.some((l) => l.components && l.components.length)
+    ? p.labs.map((l) => ({
+        system: l.system ?? p.group,
+        icon: l.icon ?? p.icon,
+        keys: [l.name, ...(l.components ?? [])].map(_lc).filter(Boolean),
+      }))
+    : [
+        {
+          system: p.group,
+          icon: p.icon,
+          keys: p.labs.map((l) => _lc(l.name)).filter(Boolean),
+        },
+      ],
+);
 
 /** Map a marker name → its FM lab-panel system (Thyroid / Iron / …) or "Other". */
 export function markerSystem(
@@ -212,9 +227,11 @@ const SYSTEM_CONCERN_HINTS: Record<string, string[]> = {
   "Thyroid Function": ["thyroid", "hashimoto", "hypothyroid", "hyperthyroid", "graves", "goit", "tsh", "tpo"],
   "Blood Sugar & Insulin": ["diabet", "insulin", "blood sugar", "glucose", "hba1c", "prediab", "pcos", "metabolic syndrome", "weight"],
   "Inflammation": ["inflamm", "crp", "autoimmun", "arthrit", "pain", "fatigue", "long covid", "histamine", "mcas"],
-  "Lipid Panel": ["cholesterol", "lipid", "ldl", "hdl", "triglycer", "dyslipid", "statin"],
-  "Complete Blood Count": ["anaem", "anemia", "iron", "fatigue", "blood count"],
-  "Metabolic Panel": ["liver", "kidney", "renal", "fatty liver", "egfr", "creatinine", "metabolic"],
+  "Lipids": ["cholesterol", "lipid", "ldl", "hdl", "triglycer", "dyslipid", "statin"],
+  "Blood Count": ["anaem", "anemia", "iron", "fatigue", "blood count", "cbc", "platelet"],
+  "Kidney": ["kidney", "renal", "egfr", "creatinine", "urea", "uric acid", "kft"],
+  "Liver": ["liver", "fatty liver", "hepatic", "sgot", "sgpt", "bilirubin", "lft"],
+  "Advanced Kidney & Metabolic": ["kidney", "renal", "egfr", "creatinine", "metabolic", "cystatin"],
   "Nutrients": ["vitamin", "deficien", "b12", "vit d", "magnesium", "zinc", "iron", "ferritin", "fatigue", "hair"],
   "Sex Hormones — Female": ["perimenopaus", "menopaus", "estrogen", "oestrogen", "progesterone", "pcos", "fertil", "period", "cycle", "amenorr", "pms", "hormone", "fibroid", "endometrios"],
   "Sex Hormones — Common": ["testosterone", "shbg", "dhea", "prolactin", "pcos", "hormone", "libido", "androgen", "acne"],

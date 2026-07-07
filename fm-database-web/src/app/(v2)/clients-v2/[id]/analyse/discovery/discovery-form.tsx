@@ -162,6 +162,16 @@ export function DiscoveryForm({
         }
       }
     }
+    // Also honor per-item `default: true` — the standard named bundles (KFT,
+    // LFT, CBC…) mark themselves default, so they arrive pre-ticked without
+    // having to list the whole "Standard Lab Panels" group.
+    for (const p of visiblePanels) {
+      for (const l of p.labs) {
+        if (!l.default || l.specialty) continue;
+        if (l.sex && clientSex && l.sex !== clientSex) continue;
+        out.add(l.name);
+      }
+    }
     return out;
   }, [visiblePanels, clientSex, prefillExtraPanels, savedLabs]);
   const [selectedLabs, setSelectedLabs] = useState<Set<string>>(initialLabs);
