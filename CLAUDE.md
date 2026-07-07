@@ -27,11 +27,17 @@ published plans as JSON artifacts.
 - `parse-recipe-candidate.py`: Haiku for text/images, Sonnet for PDFs; forced tool-use → library-schema draft; steps rewritten in own words (copyright); og:description fetch salvages captions from bare public IG links; friendly "paste the caption" error when nothing is parseable. Uses shared `build_client()` (FM_API_OK cost gate).
 - `approve-recipe-candidate.py` gates before writing `fm-database/data/_recipes/<slug>.yaml`: duplicate name-token check (≥75% overlap → needs force), no-porridge rule (needs force), diet-consistency fixes (meat strips veg/vegan/jain claims, dairy strips vegan, roots strip jain), allergen derivation from ingredients (ghee ≠ dairy per library convention), enum validation, deterministic nutrients with `kcal_basis: ingredient_table_v1`. Server actions in `src/lib/server-actions/recipe-inbox.ts`.
 
+**Phase 3 — the two nutrient-driven surfaces (built on the Phase 2 data):**
+- **Menu-level balancing**: `src/lib/fmdb/menu-nutrients.ts` name-matches each pending weekly-menu dish to a library recipe's `nutrients_per_serving` (recipe wins; else a ~75-key Indian home-food fallback macro table with count/size multipliers). `weeklyMenuStatusAction` returns `pendingNutrition` (per-day protein/fibre/kcal + coverage). The app-preview review panel (`app-preview-panel.tsx` `MenuNutrientStrip`) shows weekly-average protein/fibre vs the client's **protein floor (weight × 1.2 g/kg)** + 25 g fibre floor, and flags days under the floor — coach fixes before approving, no auto-swaps.
+- **Lab-aware ranking**: `scripts/lab_nutrient_priorities.py` maps off-range `client.lab_markers` (flag `low`/`suboptimal` → the nutrient; homocysteine-high → folate+B12; CRP/ESR-high → omega-3) to `rich_in` tags. Threaded into `recipe_select.py` `score_recipe` (letter/menu shortlist) AND mirrored in `lab-nutrient-priorities.ts` for `recipe-picker.ts` (dish picker up-ranks matching dishes + shows a `🩸 rich in …` badge). Nudge, never filter.
+
 **Key invariants (v0.75):**
 - `RECIPE_INBOX_NUMBERS` must be set on Fly (`flyctl secrets set ... -a theochretree-coach`) for the forwarding path; the manual add card works without it.
 - Candidate ids match `^rc-[a-z0-9-]+$` and are path-validated in both TS and Python.
 - Recipe-candidate YAML writes from TS use `dumpYaml` (PyYAML underscore-int guard); candidate media lives under `_recipe_inbox/media/`.
 - The nutrient table's alias index is the single matching surface — when adding an ingredient spelling, add it as an alias in `_ingredient_nutrients.yaml`, don't fork matching logic.
+- Lab-priority logic is duplicated on purpose (Python `lab_nutrient_priorities.py` for the engine + TS `lab-nutrient-priorities.ts` for the picker) — keep them in lockstep. Menu-balance protein/fibre are ESTIMATES (recipe-name match + fallback table, ~55% dish coverage); the strip shows the coverage % and never blocks approval.
+- Phase 3 surfaces are coach-side only (localhost pm2) — no Fly redeploy needed; the Fly app never imports `menu-nutrients.ts` / `recipe_select.py`.
 
 **v0.74** — Medications as a first-class three-axis entity + drug-driven plan/letter/intake guardrails.
 
