@@ -62,22 +62,24 @@ function nowTime(): string {
 }
 
 function todayIso(): string {
-  return new Date().toISOString().slice(0, 10);
+  // The device's LOCAL calendar day — not toISOString() (UTC), which flips a
+  // US client's daily ticks/streak at an arbitrary afternoon hour.
+  return new Date().toLocaleDateString("en-CA");
 }
 
 /** Consecutive-day logging streak from a set of ISO days. Counts back from today;
  *  if today isn't logged yet the streak is still "alive" from yesterday (grace day),
- *  and resets on any gap. UTC-day to match `todayIso`. */
+ *  and resets on any gap. Local-day to match `todayIso`. */
 function computeStreak(days: string[]): number {
   if (!days || days.length === 0) return 0;
   const set = new Set(days);
   const cur = new Date();
-  const iso = () => cur.toISOString().slice(0, 10);
-  if (!set.has(iso())) cur.setUTCDate(cur.getUTCDate() - 1); // grace: count up to yesterday
+  const iso = () => cur.toLocaleDateString("en-CA");
+  if (!set.has(iso())) cur.setDate(cur.getDate() - 1); // grace: count up to yesterday
   let n = 0;
   while (set.has(iso())) {
     n++;
-    cur.setUTCDate(cur.getUTCDate() - 1);
+    cur.setDate(cur.getDate() - 1);
   }
   return n;
 }
@@ -109,6 +111,23 @@ type Overlay =
 
 export default function OchreApp({ data }: { data: ClientAppData }) {
   const STORE = `ochre.app.${data.clientId}`;
+
+  // Timezone self-correction: the server rendered "today" in data.timezone
+  // (ochre_tz cookie → client.yaml → IST). If this device disagrees (US client,
+  // or travelling), pin the device tz in the cookie and re-render once — the
+  // sessionStorage guard stops any reload loop if the server can't honour it.
+  useEffect(() => {
+    try {
+      const deviceTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (!deviceTz || !data.timezone || deviceTz === data.timezone) return;
+      if (sessionStorage.getItem("ochre.tz.corrected") === deviceTz) return;
+      document.cookie = `ochre_tz=${encodeURIComponent(deviceTz)}; path=/; max-age=31536000; SameSite=Lax`;
+      sessionStorage.setItem("ochre.tz.corrected", deviceTz);
+      window.location.reload();
+    } catch {
+      /* Intl/storage unavailable — render as served */
+    }
+  }, [data.timezone]);
 
   const [hydrated, setHydrated] = useState(false);
   const [booting, setBooting] = useState(true);

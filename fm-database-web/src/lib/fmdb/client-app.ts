@@ -971,6 +971,10 @@ export interface ClientAppData {
   clientId: string;
   planSlug: string;
   token: string;
+  /** IANA timezone all server-side "today" math used for this render — device
+   *  cookie → client.yaml#timezone → IST. The app shell compares it against
+   *  the browser tz and self-corrects via the ochre_tz cookie. */
+  timezone: string;
   /** Commercial tier. "package" is the full app (every existing client). A
    *  consult-only client with no published plan resolves to "discovery" — a
    *  read-only Lab Vault + Summary, Plan/Progress locked. See discovery-tier.ts
@@ -1256,9 +1260,28 @@ function asStrArr(v: unknown): string[] {
 
 const IST = "Asia/Kolkata";
 
-function istNow(): Date {
-  // Render dates in the client's timezone (India-based practice).
-  const s = new Date().toLocaleString("en-US", { timeZone: IST });
+/** Returns tz when it's an IANA name Intl can resolve, else null. */
+function validTz(tz: string | null | undefined): string | null {
+  const t = (tz ?? "").trim();
+  if (!t) return null;
+  try {
+    new Intl.DateTimeFormat("en-US", { timeZone: t });
+    return t;
+  } catch {
+    return null;
+  }
+}
+
+/** The timezone the app renders "today" in: the client's device (ochre_tz
+ *  cookie, auto-detected by the app shell) wins, then a coach-set
+ *  client.yaml#timezone, then IST. A US client must not have her menu flip
+ *  at India midnight (Krittika, 2026-07-07). */
+function resolveAppTz(client: Dict, deviceTz?: string | null): string {
+  return validTz(deviceTz) ?? validTz(asStr(client.timezone)) ?? IST;
+}
+
+function tzNow(tz: string): Date {
+  const s = new Date().toLocaleString("en-US", { timeZone: tz });
   return new Date(s);
 }
 
@@ -2249,10 +2272,10 @@ async function resolveDiscoveryClientByToken(
   return null;
 }
 
-/** Today in IST as YYYY-MM-DD (en-CA formats that way) — for the credit-window
- *  resolver, which compares day strings. */
-function istTodayYmd(): string {
-  return new Date().toLocaleDateString("en-CA", { timeZone: IST });
+/** Today in the given timezone as YYYY-MM-DD (en-CA formats that way) — for
+ *  the credit-window / endgame resolvers, which compare day strings. */
+function tzTodayYmd(tz: string): string {
+  return new Date().toLocaleDateString("en-CA", { timeZone: tz });
 }
 
 /** Coerce a YAML date field to YYYY-MM-DD. js-yaml auto-parses an unquoted
@@ -2331,6 +2354,7 @@ async function buildDiscoveryAppData(
   client: Dict,
   clientId: string,
   token: string,
+  tz: string,
 ): Promise<ClientAppData | null> {
   // A signed_up client (enrol→build gap) is NOT discovery even with no plan yet
   // — leave them on the existing null path (status quo: OchreAppError).
@@ -2340,7 +2364,7 @@ async function buildDiscoveryAppData(
       hasPublishedPlan: false,
       discoveryCallDate: asYmd(client.discovery_call_date) || null,
     },
-    istTodayYmd(),
+    tzTodayYmd(tz),
   );
   if (tierRes.tier !== "discovery") return null;
 
@@ -2387,10 +2411,10 @@ async function buildDiscoveryAppData(
   // Redact our_cost_inr — never expose the coach's wholesale cost to the client.
   const discoveryLabOrders = await projectClientLabOrders(clientId);
 
-  // today (IST) — only the chrome reads this; weekStrip is empty in discovery.
+  // today (client tz) — only the chrome reads this; weekStrip is empty in discovery.
   const now = new Date();
   const fmt = (o: Intl.DateTimeFormatOptions) =>
-    now.toLocaleDateString("en-GB", { ...o, timeZone: IST });
+    now.toLocaleDateString("en-GB", { ...o, timeZone: tz });
   const DOW = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const dowName = fmt({ weekday: "long" });
 
@@ -2421,6 +2445,7 @@ async function buildDiscoveryAppData(
     clientId,
     planSlug: "",
     token,
+    timezone: tz,
     tier: "discovery",
     discoveryCredit: tierRes.credit,
     discoverySummary: await parseDiscoverySummary(client, firstName),
@@ -2528,7 +2553,10 @@ async function buildDiscoveryAppData(
   };
 }
 
-export async function loadClientAppData(token: string): Promise<ClientAppData | null> {
+export async function loadClientAppData(
+  token: string,
+  opts?: { deviceTz?: string | null },
+): Promise<ClientAppData | null> {
   if (!token || token.length < 16) return null;
 
   // 1. Try stable client-level app_token (survives plan superseding)
@@ -2547,7 +2575,12 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       //    null, so every package client is byte-for-byte unaffected.
       const disc = await resolveDiscoveryClientByToken(token);
       if (disc) {
-        const discoveryData = await buildDiscoveryAppData(disc.client, disc.clientId, token);
+        const discoveryData = await buildDiscoveryAppData(
+          disc.client,
+          disc.clientId,
+          token,
+          resolveAppTz(disc.client, opts?.deviceTz),
+        );
         if (discoveryData) return discoveryData;
       }
       return null;
@@ -2561,6 +2594,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
 
   const clientDir = path.join(getPlansRoot(), "clients", clientId);
   const client = (await readYamlIfExists(path.join(clientDir, "client.yaml"))) ?? {};
+  const appTz = resolveAppTz(client, opts?.deviceTz);
 
   // Non-India client → every buy link must ship to their country. Restricts
   // supplement/remedy link resolution to international retailers (iHerb) and
@@ -2684,7 +2718,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     plan_period_start: plan.plan_period_start as string | Date | undefined,
   });
   const startDate = startStr ? new Date(`${startStr}T00:00:00Z`) : null;
-  const now = istNow();
+  const now = tzNow(appTz);
   const todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
   // "Effective today" for plan CONTENT (which day's menu, week number, the
   // header date + week strip). Before the start date we clamp FORWARD to the
@@ -2807,19 +2841,32 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     "evening snack": "linear-gradient(140deg,#e8dcc0 0%,#cdbf86 60%,#a89a63 100%)",
     dinner: "linear-gradient(140deg,#c9a98a 0%,#9a7e63 55%,#6f5a44 100%)",
   };
+  // A dish only gets a recipe it actually NAMES: (almost) every meaningful
+  // token of the recipe TITLE must appear in the dish. The old any-shared-token
+  // rule served "Sautéed Methi Greens" for "Methi water" (Geetika, 2026-07-07)
+  // — no recipe (→ category card) beats a wrong recipe on a client's phone.
+  // Tokens ≥3 chars so "dal"/"egg" still count ("Chana Dal" must not shrink to
+  // just "chana"); long titles tolerate floor(n/3) missing tokens so decorated
+  // names ("Spiced Buttermilk / Chaas") still match their dish. Ranked by
+  // hits−misses, then fewer misses — so "Steamed Fish" beats "Grilled Rohu or
+  // Surmai Fish" for a steamed-fish dish.
+  const LETTER_TITLE_STOP = new Set(["with", "and", "the", "for", "style"]);
   const recipeFor = (dish: string): LetterRecipe | undefined => {
     const dk = suppKey(dish);
-    const tokens = dk.split(" ").filter((t) => t.length > 3);
-    let best: { r: LetterRecipe; score: number } | undefined;
+    let best: { r: LetterRecipe; score: number; misses: number } | undefined;
     for (const r of recipes) {
       const rk = suppKey(r.title);
-      let score = 0;
-      for (const t of tokens) if (rk.includes(t)) score++;
-      if (score > 0 && (!best || score > best.score)) best = { r, score };
+      if (rk === dk) return r; // exact name — always wins
+      const rToks = rk.split(" ").filter((t) => t.length >= 3 && !LETTER_TITLE_STOP.has(t));
+      if (!rToks.length) continue;
+      const misses = rToks.filter((t) => !dk.includes(t)).length;
+      if (misses > (rToks.length >= 3 ? Math.floor(rToks.length / 3) : 0)) continue;
+      const score = rToks.length - 2 * misses; // hits − misses
+      if (!best || score > best.score || (score === best.score && misses < best.misses))
+        best = { r, score, misses };
     }
-    const letterHit = best && best.score >= 2 ? best.r : best && best.score >= 1 && tokens.length <= 2 ? best.r : undefined;
     // letter recipes (personalised) win; the structured library fills gaps
-    return letterHit ?? libraryRecipeFor(dish);
+    return best?.r ?? libraryRecipeFor(dish);
   };
   if (table) {
     for (const row of table.rows) {
@@ -2923,10 +2970,14 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   for (const l of libraryRecipes) if (pinnedSlugs.has(l.slug)) usedLibrary.add(l.recipe);
   for (const w of weekMenus)
     for (const d of w.days)
-      for (const s of d.slots) {
-        const r = recipeFor(s.dish);
-        if (r && !recipes.includes(r)) usedLibrary.add(r);
-      }
+      for (const s of d.slots)
+        // per component, not the whole cell — matching the joined string lets
+        // tokens from DIFFERENT components combine into a recipe nothing on
+        // the menu actually is ("methi water + amla …" ⇏ "Amla Water").
+        for (const c of splitDishComponents(s.dish)) {
+          const r = recipeFor(c.title);
+          if (r && !recipes.includes(r)) usedLibrary.add(r);
+        }
   const packRecipes = [...recipes, ...usedLibrary];
   // Legacy letter-parsed recipes have no structured quantities / kcal. Borrow
   // them from a same-named library recipe so the cook-for-N scaler + calories
@@ -4568,7 +4619,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const subAvailable = !!process.env.RAZORPAY_QUARTERLY_PLAN_ID;
   const subInr = Number(process.env.RAZORPAY_QUARTERLY_PLAN_AMOUNT_INR || 6000);
   const subActive = subAvailable ? await hasLiveSubscription(clientId).catch(() => false) : false;
-  const { mode: appMode, endgame } = buildEndgame(client, modePlan, istTodayYmd(), plan.monthly_cards, recordThrough, {
+  const { mode: appMode, endgame } = buildEndgame(client, modePlan, tzTodayYmd(appTz), plan.monthly_cards, recordThrough, {
     available: subAvailable,
     inr: subInr,
     active: subActive,
@@ -4582,6 +4633,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     planUpdatedAt,
     clientUpdateNote,
     token,
+    timezone: appTz,
     tier: "package",
     discoveryCredit: null,
     discoverySummary: null,

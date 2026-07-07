@@ -7,6 +7,7 @@
  * render from the same app data — no app chrome, isolated print surface.
  */
 
+import { cookies } from "next/headers";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { KeepsakePrintButton } from "./keepsake-print-button";
 
@@ -23,7 +24,8 @@ export default async function KeepsakePage({ params }: { params: Promise<{ token
   const { token } = await params;
   let data = null;
   try {
-    data = await loadClientAppData(token);
+    const deviceTz = (await cookies()).get("ochre_tz")?.value ?? null;
+    data = await loadClientAppData(token, { deviceTz });
   } catch (err) {
     console.error("[keepsake] failed to assemble app data:", err);
   }

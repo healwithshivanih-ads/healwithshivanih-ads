@@ -66,7 +66,9 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const data = await loadClientAppData(token);
+    const data = await loadClientAppData(token, {
+      deviceTz: req.cookies.get("ochre_tz")?.value ?? null,
+    });
     if (!data) return NextResponse.json({ ok: true, answer: "DEFER" });
     const context =
       `Client: ${data.client.firstName}, week ${data.client.week} of ${data.client.totalWeeks}, ${data.client.program}. ` +

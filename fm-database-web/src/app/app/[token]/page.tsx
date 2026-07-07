@@ -6,6 +6,7 @@
  * Everything renders from the real published plan + client record.
  */
 
+import { cookies } from "next/headers";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { logAppOpen } from "@/lib/fmdb/app-opens";
 import OchreApp, { OchreAppError } from "./ochre-app";
@@ -16,7 +17,10 @@ export default async function ClientAppPage({ params }: { params: Promise<{ toke
   const { token } = await params;
   let data = null;
   try {
-    data = await loadClientAppData(token);
+    // Device timezone pinned by the app shell on first open — all "today" math
+    // (menu day, week counter) renders in the client's local day, not IST.
+    const deviceTz = (await cookies()).get("ochre_tz")?.value ?? null;
+    data = await loadClientAppData(token, { deviceTz });
   } catch (err) {
     console.error("[client-app] failed to assemble app data:", err);
   }
