@@ -36,6 +36,128 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 from atomic_write import write_text_atomic  # noqa: E402
 from meal_foods import relevant_meal_foods  # noqa: E402
 
+try:
+    from lab_nutrient_priorities import lab_nutrient_priorities  # noqa: E402
+except Exception:  # pragma: no cover
+    lab_nutrient_priorities = lambda c: {}  # noqa: E731
+
+
+# ── nutrient targets (protein floor + lab-driven priorities) ─────────────────
+#
+# Closes the loop on menu balancing: instead of only FLAGGING a thin week in
+# the coach's review (menu-nutrients.ts), we tell the drafter the client's
+# protein floor and which nutrients their labs say they're low on, so the
+# menu comes out balanced and targeted in the first place.
+
+_PROTEIN_G_PER_KG = 1.2          # floor for a typical client
+_PROTEIN_G_PER_KG_RENAL = 0.8    # capped when uric acid / kidney is flagged
+_FIBRE_FLOOR_G = 25
+
+# food hints so the AI grounds each priority nutrient in real Indian dishes
+_NUTRIENT_FOODS = {
+    "iron": "dark leafy greens, sprouted moong, jaggery, sesame, dates, ragi",
+    "b12": "curd/yogurt, paneer, fermented idli/dosa/dhokla, eggs (if eaten), nutritional yeast",
+    "folate": "leafy greens, sprouts, legumes, beetroot",
+    "vitamin-d": "sun-exposed mushrooms, eggs (if eaten), fortified milk",
+    "magnesium": "millets, nuts, seeds, dark greens, banana",
+    "calcium": "ragi, sesame (til), curd, paneer, amaranth greens",
+    "zinc": "pumpkin seeds, sesame, legumes, cashews",
+    "potassium": "banana, coconut water, leafy greens, beans",
+    "omega-3": "flaxseed, chia, walnuts, mustard oil, fish (if eaten)",
+    "protein": "dals, sprouts, paneer, curd, eggs (if eaten)",
+    "vitamin-c": "amla, lemon, capsicum, guava, seasonal citrus",
+}
+
+_RENAL_NEEDLES = ("uric acid", "creatinine", "egfr", "bun", "urea")
+
+
+def _client_weight_kg(client: dict) -> float | None:
+    m = client.get("measurements")
+    if isinstance(m, dict):
+        try:
+            w = float(m.get("weight_kg"))
+            if w > 20:
+                return w
+        except (TypeError, ValueError):
+            pass
+    for k in ("latest_weight_kg", "current_weight_kg", "weight_kg"):
+        try:
+            w = float(client.get(k))
+            if w > 20:
+                return w
+        except (TypeError, ValueError):
+            pass
+    wl = client.get("weight_loss")
+    if isinstance(wl, dict):
+        try:
+            w = float(wl.get("starting_weight_kg"))
+            if w > 20:
+                return w
+        except (TypeError, ValueError):
+            pass
+    return None
+
+
+def _protein_suppressed(client: dict) -> bool:
+    """True when a renal / uric-acid marker is flagged high — protein must be
+    moderated, not maximised (project protein-management rule)."""
+    for m in client.get("lab_markers") or []:
+        if not isinstance(m, dict):
+            continue
+        name = str(m.get("marker_name") or "").lower()
+        flag = str(m.get("flag") or "").lower()
+        if flag == "high" and any(n in name for n in _RENAL_NEEDLES):
+            return True
+    return False
+
+
+def _nutrient_targets_block(client: dict) -> list[str]:
+    """Prompt lines: protein/fibre floors + lab-driven nutrient emphasis."""
+    weight = _client_weight_kg(client)
+    suppressed = _protein_suppressed(client)
+    lines: list[str] = []
+
+    if weight:
+        gpk = _PROTEIN_G_PER_KG_RENAL if suppressed else _PROTEIN_G_PER_KG
+        floor = round(weight * gpk)
+        if suppressed:
+            lines.append(
+                f"- Protein: aim for ~{floor} g/day (MODERATE — a raised uric-acid/kidney "
+                f"marker means do NOT push high protein; keep dals/legumes reasonable, "
+                f"avoid loading extra paneer/eggs/meat)."
+            )
+        else:
+            lines.append(
+                f"- Protein: each day should reach at least ~{floor} g "
+                f"(≈1.2 g/kg). Anchor most meals with a real protein — dal, sprouts, "
+                f"paneer, curd, eggs (if eaten) — not just grain + vegetable."
+            )
+    else:
+        lines.append(
+            "- Protein: anchor every main meal with a real protein source "
+            "(dal, sprouts, paneer, curd, eggs if eaten), not grain + veg alone."
+        )
+
+    lines.append(
+        f"- Fibre: aim for ~{_FIBRE_FLOOR_G} g/day — whole grains/millets, "
+        f"legumes, plenty of vegetables and some fruit."
+    )
+
+    priorities = lab_nutrient_priorities(client)
+    if suppressed:
+        priorities.pop("protein", None)
+    if priorities:
+        ranked = sorted(priorities, key=lambda t: -priorities[t])[:5]
+        hints = "; ".join(
+            f"{t.replace('-', ' ')} ({_NUTRIENT_FOODS.get(t, '')})" for t in ranked
+        )
+        lines.append(
+            "- This client's recent labs are LOW on: " + hints + ". "
+            "Lean the week toward dishes naturally rich in these — weave them in "
+            "as normal meals, do not single them out to the client."
+        )
+    return lines
+
 
 def _load_dotenv() -> None:
     try:
@@ -115,7 +237,8 @@ HARD RULES:
 7. Repeat dishes across the week where natural (Indian households batch-cook) — 4-5 distinct breakfasts is better than 7.
 7b. CRITICAL — NO PORRIDGE-STYLE BREAKFASTS (ragi porridge, oats porridge, dalia, upma-as-porridge, any "grain cooked soft in milk/water" prep) ANYWHERE in this week's menu — most Indian clients find them unappealing and quietly stop eating them. This applies even if a porridge dish is already sitting in the CURRENT menu — remove it, don't just repeat it. Use moong dal chilla, besan cheela, poha, idli/dosa, vegetable paratha, sprouts, or egg preparations (if the client eats eggs) instead. The ONLY exception: the client's own words (feedback, session notes, or a direct request) explicitly say they like or ask for a named porridge dish — the dish merely being present in an old menu does NOT count as this exception.
 8. PORTIONS ARE EXPLICIT — every component of every dish carries a clear single-serving household quantity in brackets: "(1 bowl)", "(2)", "(1 cup)", "(small bowl)", "(30 g)", "(1 tbsp)". Write each dish as "Component (qty) + Component (qty)". This lets the app show portions on every meal and estimate calories. Use realistic one-person portions (this plan is weight-aware) — never leave a component without a quantity.
-9. THERAPEUTIC FOODS ARE MEALS, NOT REMEDIES — when a CONDITION-APPROPRIATE THERAPEUTIC FOODS list is provided, weave those foods into the week as REAL DISHES in the slot where they fit (e.g. a kitchari dinner, a glass of spiced buttermilk with lunch, an Agni-reset light dinner). They are part of this client's protocol and the menu is where she receives them — do not list them separately. Keep them occasional and natural (1-3 times across the week, not daily), and always with explicit portions."""
+9. THERAPEUTIC FOODS ARE MEALS, NOT REMEDIES — when a CONDITION-APPROPRIATE THERAPEUTIC FOODS list is provided, weave those foods into the week as REAL DISHES in the slot where they fit (e.g. a kitchari dinner, a glass of spiced buttermilk with lunch, an Agni-reset light dinner). They are part of this client's protocol and the menu is where she receives them — do not list them separately. Keep them occasional and natural (1-3 times across the week, not daily), and always with explicit portions.
+10. NUTRIENT-BALANCE THE WEEK — a NUTRIENT TARGETS block gives this client's protein floor, fibre floor, and the nutrients their labs say they're low on. Build the week so most days reach the protein floor (anchor mains with a real protein, not grain+veg alone) and clear the fibre floor, and quietly favour dishes rich in the flagged low nutrients. This is a balancing constraint, NOT a licence to break rule 1 (framework), rule 7b (no porridge), or the client's diet/avoid rules — those always win. If the protein note says MODERATE (raised uric acid / kidney marker), do the opposite: keep protein reasonable, never loaded. Never mention grams, nutrients, or lab values to the client — the change_note stays warm and food-first."""
 
 
 def _plans_root() -> Path:
@@ -236,6 +359,9 @@ def main() -> None:
             "",
             "CONDITION-APPROPRIATE THERAPEUTIC FOODS (weave these in as real dishes — rule 9):",
             *(mfood_lines or ["none for this client"]),
+            "",
+            "NUTRIENT TARGETS FOR THIS CLIENT (rule 10 — balance the week to these):",
+            *_nutrient_targets_block(client),
             "",
             "CURRENT MENU (vary from this):",
             *cur_lines,

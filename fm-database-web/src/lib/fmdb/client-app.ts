@@ -32,6 +32,7 @@ import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/tr
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { isInternationalClient } from "@/lib/server-actions/supplement-links-match";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
+import { weekNourishment } from "@/lib/fmdb/nourishment";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
 import {
   resolveAppTier,
@@ -160,6 +161,10 @@ export interface AppWeekMenu {
   /** the rotation week the client is currently in */
   current: boolean;
   days: WeekMenuDay[];
+  /** a warm, food-first one-liner about what this week is naturally rich in
+   *  (from the dishes' rich_in tags) — NO grams, no lab data. Empty when the
+   *  week has too little signal to say something true. */
+  nourishment?: string;
 }
 
 /** One line on the shopping list. Generated per fortnight by
@@ -1419,6 +1424,9 @@ interface LetterRecipe {
   servingsNum?: number;
   /** accurate kcal/serving (AI-precomputed for library recipes) */
   kcalPerServing?: number;
+  /** nutrients this recipe is rich in per serving (Phase-2 nutrient engine) —
+   *  drives the warm per-week "nourishment" note in the client app. */
+  richIn?: string[];
   method: string[];
   tip?: string;
   imageUrl?: string;
@@ -1464,6 +1472,7 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
           serves: asStr(r.servings) || undefined,
           servingsNum: Number(r.servings) || undefined,
           kcalPerServing: Number(r.kcal_per_serving) || undefined,
+          richIn: asStrArr(r.rich_in),
           diet: asStrArr(r.diet),
           mains: asStrArr(r.main_ingredients),
           time: mins ? `${mins} min` : undefined,
@@ -2964,6 +2973,25 @@ export async function loadClientAppData(
         .filter((s) => s.dish),
     })),
   }));
+
+  // Warm, food-first "nourishment" note per week — what the week's dishes are
+  // collectively rich in, from their rich_in tags (Phase-2 nutrient engine).
+  // Client-facing, so NO grams and NO lab data (labs stay coach-mediated); see
+  // nourishment.ts. Resolves each dish component to its library recipe and
+  // tallies the tags across the whole week.
+  for (const wm of weekMenus) {
+    const tagCounts: Record<string, number> = {};
+    for (const day of wm.days) {
+      for (const slot of day.slots) {
+        for (const part of slot.dish.split(/\s*\+\s*/)) {
+          const rec = recipeFor(part.trim());
+          for (const tag of rec?.richIn ?? []) tagCounts[tag] = (tagCounts[tag] ?? 0) + 1;
+        }
+      }
+    }
+    const note = weekNourishment(tagCounts);
+    if (note.line) wm.nourishment = note.line;
+  }
 
   // Hybrid/principle plans carry ONE illustrative week — present it as a
   // mix-and-match "Sample menu", not a prescriptive week-by-week schedule
