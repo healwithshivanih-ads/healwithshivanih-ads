@@ -82,6 +82,17 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 06:45 IST daily — duplicate-key integrity check on every client.yaml. A file
+// js-yaml can't parse (dup keys, e.g. the cl-021 incident) is silently skipped
+// by loader.ts, so that client vanishes from the dashboard + their app. Scan-
+// only; emails the coach ONLY when something is corrupt (with a 1-line repair
+// command). Cheap pure-Python scan; no-op-quiet on clean days.
+cron.schedule(
+  "45 6 * * *",
+  () => fire("client-yaml-integrity"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // 07:00 IST daily — auto-draft next week's menus for clients whose new week
 // starts within 3 days (weekly cadence, 2026-06-12). Drafts wait for coach
 // approval in the studio; nothing reaches clients automatically.
@@ -139,6 +150,7 @@ cron.schedule(
 
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
+    + "\n  · 06:45 IST  client-yaml-integrity"
     + "\n  · 07:00 IST  weekly-menu-drafts"
     + "\n  · 07:30 IST  menu-approval-digest"
     + "\n  · 07:45 IST  grocery-backfill"
