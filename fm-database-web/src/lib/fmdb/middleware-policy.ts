@@ -83,6 +83,12 @@ export const PUBLIC_PATH_PREFIXES = [
   // /[clientId]/pay charges a SERVER-FIXED amount; /webhook is HMAC-verified and
   // is the only path that marks a maintenance order paid.
   "/api/maintenance/",
+  // Client-app receipts for lab / maintenance payments. Token-scoped
+  // (verifyAppClient re-checks the letter token against the query clientId
+  // server-side) — same posture as /api/lab-order/. Without this the receipt
+  // fetch 404s on Fly under FLY_INTAKE_ONLY and the client-side res.json()
+  // chokes on the plain-text "Not Found" body.
+  "/api/invoice/",
   // Static PWA assets (manifest + home-screen icons). No data.
   "/ochre-app/",
   // Recipe photos for the client app's recipe cards. Generic food images.
