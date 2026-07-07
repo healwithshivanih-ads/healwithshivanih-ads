@@ -15,6 +15,7 @@ import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
+import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
 import { generateGroceryListAction } from "./grocery";
 
 export interface PendingWeekMenu {
@@ -98,6 +99,18 @@ export interface WeeklyMenuStatus {
   /** structured menu exists at all (weekly cadence only applies then) */
   hasMenu: boolean;
   isSample: boolean;
+  /** per-day protein/fibre/kcal for the PENDING menu vs client targets;
+   *  null when there's no pending menu to balance. */
+  pendingNutrition: MenuNutrition | null;
+}
+
+async function loadClientDoc(clientId: string): Promise<Record<string, unknown> | null> {
+  try {
+    const f = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+    return (yaml.load(await fs.readFile(f, "utf-8")) as Record<string, unknown>) ?? null;
+  } catch {
+    return null;
+  }
 }
 
 export async function weeklyMenuStatusAction(
@@ -108,15 +121,25 @@ export async function weeklyMenuStatusAction(
   const { plan } = hit;
   const weeks = plan.app_menu?.weeks ?? [];
   const cur = currentPlanWeek(plan);
+  const pending = plan.app_menu_pending ?? null;
+  let pendingNutrition: MenuNutrition | null = null;
+  if (pending?.days?.length) {
+    try {
+      pendingNutrition = menuNutrition(pending.days, await loadClientDoc(clientId));
+    } catch {
+      pendingNutrition = null; // never block the review over a nutrient calc
+    }
+  }
   return {
     ok: true,
     planSlug: String(plan.slug ?? ""),
     currentWeek: cur,
     totalWeeks: Number(plan.plan_period_weeks) || 12,
     nextWeekReady: weeks.some((w) => Number(w.week) === cur + 1),
-    pending: plan.app_menu_pending ?? null,
+    pending,
     hasMenu: weeks.length > 0,
     isSample: !!plan.app_menu?.is_sample,
+    pendingNutrition,
   };
 }
 

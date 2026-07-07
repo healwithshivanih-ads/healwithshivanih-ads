@@ -39,6 +39,7 @@ import {
   weeklyMenuStatusAction,
   type WeeklyMenuStatus,
 } from "@/lib/server-actions/weekly-menu";
+import type { MenuNutrition } from "@/lib/fmdb/menu-nutrients";
 
 const btn: React.CSSProperties = {
   padding: "5px 12px",
@@ -49,6 +50,76 @@ const btn: React.CSSProperties = {
   fontWeight: 600,
   cursor: "pointer",
 };
+
+/**
+ * Per-week nutrient balance for a pending menu: weekly average protein/fibre
+ * vs the client's floors, plus a count of days that fall short. Deterministic
+ * (recipe `nutrients_per_serving` name-matched to menu dishes) — surfaced so
+ * the coach can spot a thin week before it goes live, not a hard gate.
+ */
+function MenuNutrientStrip({ n }: { n: MenuNutrition }) {
+  const nd = n.days.length || 1;
+  const avgProtein = Math.round(n.days.reduce((a, d) => a + d.protein_g, 0) / nd);
+  const avgFibre = Math.round(n.days.reduce((a, d) => a + d.fibre_g, 0) / nd);
+  const lowProteinDays = n.days.filter((d) => d.matched > 0 && d.protein_g < n.proteinFloorG).length;
+  const lowFibreDays = n.days.filter((d) => d.matched > 0 && d.fibre_g < n.fibreFloorG).length;
+  const lowCoverage = n.coverage < 0.6;
+  const proteinOk = avgProtein >= n.proteinFloorG;
+  const fibreOk = avgFibre >= n.fibreFloorG;
+
+  const pill = (ok: boolean): React.CSSProperties => ({
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 4,
+    padding: "2px 9px",
+    borderRadius: 999,
+    fontSize: 11,
+    fontWeight: 700,
+    background: ok ? "rgba(74,97,82,0.12)" : "rgba(179,64,42,0.10)",
+    color: ok ? "var(--fm-primary, #4a6152)" : "#b3402a",
+  });
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        gap: 8,
+        flexWrap: "wrap",
+        alignItems: "center",
+        margin: "2px 0 10px",
+        fontVariantNumeric: "tabular-nums",
+      }}
+    >
+      <span style={pill(proteinOk)}>
+        Protein ≈{avgProtein}g/day
+        <span style={{ fontWeight: 500, opacity: 0.8 }}>
+          {" "}
+          (floor {n.proteinFloorG}
+          {n.weightKg ? "" : ", no weight on file"})
+        </span>
+      </span>
+      <span style={pill(fibreOk)}>Fibre ≈{avgFibre}g/day (floor {n.fibreFloorG})</span>
+      {lowProteinDays > 0 && (
+        <span style={{ fontSize: 11, color: "#b3402a", fontWeight: 600 }}>
+          ⚠ {lowProteinDays} day{lowProteinDays > 1 ? "s" : ""} under protein floor
+        </span>
+      )}
+      {lowFibreDays > 0 && lowProteinDays === 0 && (
+        <span style={{ fontSize: 11, color: "#b3402a", fontWeight: 600 }}>
+          ⚠ {lowFibreDays} day{lowFibreDays > 1 ? "s" : ""} low fibre
+        </span>
+      )}
+      {lowCoverage && (
+        <span
+          title={`Only ${Math.round(n.coverage * 100)}% of menu dishes matched a library recipe — nutrient totals are a partial estimate. Add the unmatched dishes to the recipe library for a full read.`}
+          style={{ fontSize: 11, color: "var(--fm-text-tertiary)", fontStyle: "italic" }}
+        >
+          estimate partial ({Math.round(n.coverage * 100)}% matched)
+        </span>
+      )}
+    </div>
+  );
+}
 
 function BuyLinkAdder({
   itemKey,
@@ -389,15 +460,37 @@ export function AppPreviewPanel({
                   Drafted {new Date(weekly.pending.generated_at).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
                   {weekly.pending.inputs_summary ? ` · from ${weekly.pending.inputs_summary}` : ""}
                 </div>
+                {weekly.pendingNutrition && (
+                  <MenuNutrientStrip n={weekly.pendingNutrition} />
+                )}
                 <div style={{ display: "grid", gap: 3, fontSize: 12, marginBottom: 10 }}>
-                  {weekly.pending.days.map((d, di) => (
-                    <div key={di} style={{ display: "flex", gap: 8 }}>
-                      <span style={{ flexShrink: 0, width: 44, fontWeight: 700, color: "var(--fm-text-secondary)" }}>Day {di + 1}</span>
-                      <span style={{ flex: 1, minWidth: 0, color: "var(--fm-text-secondary)" }}>
-                        {d.slots.map((s) => s.dish).join(" · ")}
-                      </span>
-                    </div>
-                  ))}
+                  {weekly.pending.days.map((d, di) => {
+                    const dn = weekly.pendingNutrition?.days[di];
+                    const floor = weekly.pendingNutrition?.proteinFloorG ?? 0;
+                    const lowProtein = !!dn && dn.matched > 0 && dn.protein_g < floor;
+                    return (
+                      <div key={di} style={{ display: "flex", gap: 8 }}>
+                        <span style={{ flexShrink: 0, width: 44, fontWeight: 700, color: "var(--fm-text-secondary)" }}>Day {di + 1}</span>
+                        <span style={{ flex: 1, minWidth: 0, color: "var(--fm-text-secondary)" }}>
+                          {d.slots.map((s) => s.dish).join(" · ")}
+                        </span>
+                        {dn && (
+                          <span
+                            title={`≈${dn.protein_g} g protein · ${dn.fibre_g} g fibre · ${dn.kcal} kcal (from ${dn.matched}/${dn.total} matched dishes)`}
+                            style={{
+                              flexShrink: 0,
+                              fontSize: 11,
+                              fontVariantNumeric: "tabular-nums",
+                              color: lowProtein ? "#b3402a" : "var(--fm-text-tertiary)",
+                              fontWeight: lowProtein ? 700 : 500,
+                            }}
+                          >
+                            {dn.protein_g}p · {dn.fibre_g}f{lowProtein ? " ⚠" : ""}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   <button
