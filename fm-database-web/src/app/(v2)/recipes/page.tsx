@@ -4,6 +4,11 @@ import { listRecipeCandidatesAction } from "@/lib/server-actions/recipe-inbox";
 import RecipeImagesClient from "./recipes-client";
 import RecipeInboxClient from "./recipe-inbox-client";
 
+// Candidates arrive OUT-OF-BAND (WhatsApp webhook via Mutagen, batch drafts)
+// with no revalidatePath — a statically prerendered page would freeze at
+// build-time state and new forwards would never appear. Always render live.
+export const dynamic = "force-dynamic";
+
 export default async function RecipesPage() {
   const [recipes, candidates] = await Promise.all([
     listRecipeImageStatuses(),
