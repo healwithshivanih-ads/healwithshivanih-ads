@@ -62,6 +62,10 @@ def _fail(msg: str) -> None:
     sys.exit(0)
 
 
+def _is_instagram(url: str) -> bool:
+    return "instagram.com" in (url or "").lower()
+
+
 def _fetch_og_description(url: str) -> str | None:
     """Anonymous fetch of a page's og:description — works for many public
     Instagram posts; returns None on any failure (login wall, timeout...)."""
@@ -84,6 +88,45 @@ def _fetch_og_description(url: str) -> str | None:
             return None
         text = html_lib.unescape(m.group(1)).strip()
         return text if len(text) > 40 else None
+    except Exception:
+        return None
+
+
+def _fetch_page_text(url: str, cap: int = 7000) -> str | None:
+    """Fetch a full recipe web page (blog / Harvard / any non-Instagram site)
+    and convert the body to plain text via html2text. The recipe lives in the
+    page body — og:description alone never carries it. Strips nav/scripts,
+    caps length so the model payload stays small. None on any failure."""
+    try:
+        import requests
+
+        resp = requests.get(
+            url,
+            timeout=12,
+            headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
+        )
+        if resp.status_code != 200:
+            return None
+        raw = resp.text
+        # drop script/style blocks before conversion so we don't ship JS
+        raw = re.sub(r"<(script|style|noscript)[^>]*>.*?</\1>", " ", raw, flags=re.I | re.S)
+        try:
+            import html2text
+
+            h = html2text.HTML2Text()
+            h.ignore_links = True
+            h.ignore_images = True
+            h.body_width = 0
+            body = h.handle(raw)
+        except Exception:
+            # last-resort tag strip if html2text isn't available
+            body = html_lib.unescape(re.sub(r"<[^>]+>", " ", raw))
+        body = re.sub(r"\n{3,}", "\n\n", body).strip()
+        # trim boilerplate above the recipe where we can spot the ingredient list
+        m = re.search(r"(?im)^\s*#*\s*ingredients?\b", body)
+        if m and m.start() > 400:
+            body = body[max(0, m.start() - 200):]
+        return body[:cap] if len(body) > 120 else None
     except Exception:
         return None
 
@@ -183,6 +226,12 @@ Rules:
 1. Ingredient lists are facts — capture items and quantities faithfully. If quantities
    are NOT stated, give sensible home-cook estimates and say so in parse_notes. Never
    leave qty blank when an amount is guessable; use unit conventions tsp/tbsp/cup/g/whole.
+1b. HOME PORTIONS: if the source is scaled for many servings (canteen / institutional /
+   catering — e.g. serves 50-100, quantities in pounds/quarts), RESCALE the whole recipe
+   down to a normal home batch of 2-4 servings and convert to Indian home units
+   (cups/tbsp/tsp/g). Set servings to that small number. Note the rescale in parse_notes.
+   Also prefer Indian pantry equivalents where natural (e.g. mixed vegetables, local
+   greens) without changing the dish's character.
 2. Method steps and descriptions must be REWRITTEN in your own words (copyright) —
    concise, home-kitchen instructions. Never copy the author's prose.
 3. diet[] is derived strictly from ingredients: meat/fish/prawns -> non_vegetarian;
@@ -224,9 +273,25 @@ def main() -> int:
     # Enrich a bare instagram/web link with the page's og:description caption.
     fetched_caption = None
     if source_url and len(re.sub(r"https?://\S+", "", text).strip()) < 40:
-        fetched_caption = _fetch_og_description(str(source_url))
-        if fetched_caption:
-            text = f"{text}\n\n[caption fetched from link]\n{fetched_caption}"
+        url = str(source_url)
+        if _is_instagram(url):
+            # Instagram: the recipe lives in the caption; full-page fetch hits a
+            # login wall, so og:description is the best anonymous signal.
+            fetched_caption = _fetch_og_description(url)
+            if fetched_caption:
+                text = f"{text}\n\n[caption fetched from link]\n{fetched_caption}"
+        else:
+            # Any other recipe site (blog / Harvard / etc.): the ingredients +
+            # method are in the page body — fetch and convert the whole page.
+            page = _fetch_page_text(url)
+            if page:
+                fetched_caption = True
+                text = f"{text}\n\n[recipe page fetched from link]\n{page}"
+            else:
+                og = _fetch_og_description(url)
+                if og:
+                    fetched_caption = True
+                    text = f"{text}\n\n[summary fetched from link]\n{og}"
 
     content: list[dict] = []
     model = HAIKU
