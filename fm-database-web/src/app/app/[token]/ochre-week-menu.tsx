@@ -127,6 +127,23 @@ export function WeekMenuSection({
         </button>
       )}
 
+      {menu.nourishment && (
+        <div
+          style={{
+            fontSize: 13,
+            lineHeight: 1.5,
+            color: "#3f5347",
+            background: "rgba(74,97,82,0.08)",
+            border: "1px solid rgba(74,97,82,0.18)",
+            borderRadius: 12,
+            padding: "9px 13px",
+            margin: "0 0 12px",
+          }}
+        >
+          {menu.nourishment}
+        </div>
+      )}
+
       <div className="card" style={{ overflow: "hidden" }}>
         {menu.days.map((d, di) => (
           <div key={d.dow} className={"wm-day" + (!sample && d.today ? " today" : "")}>
