@@ -208,6 +208,9 @@ export interface AppRecipe {
   tip?: string;
   ayurveda?: boolean;
   imageUrl?: string;
+  /** tiny source credit shown under the recipe when the photo came from a
+   *  forwarded reel / web recipe (e.g. "@creator" or "site.com"). */
+  imageCredit?: string;
 }
 
 /** One scored MSQ submission (written by scripts/save-app-msq.py). */
@@ -1430,6 +1433,7 @@ interface LetterRecipe {
   method: string[];
   tip?: string;
   imageUrl?: string;
+  imageCredit?: string;
 }
 
 /** The structured recipe library (fm-database/data/_recipes/) — the plan-side
@@ -1465,6 +1469,12 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
         imgFile && asStr(imgRaw?.rights_status) !== "none"
           ? `/recipe-images/${imgFile}`
           : undefined;
+      // only surface a credit for borrowed (web/forwarded) photos — our own /
+      // licensed photos need no line
+      const imgCredit =
+        imgUrl && asStr(imgRaw?.rights_status) === "web_reference_uncleared"
+          ? asStr(imgRaw?.credit) || undefined
+          : undefined;
       out.push({
         slug: asStr(r.slug) || f.replace(/\.yaml$/, ""),
         recipe: {
@@ -1481,6 +1491,7 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
           method: (asArr(r.steps) as unknown[]).map((s) => String(s)),
           tip: asStr(r.one_line) || asStr(r.headnote) || undefined,
           imageUrl: imgUrl,
+          imageCredit: imgCredit,
         },
       });
     } catch {
@@ -3039,6 +3050,7 @@ export async function loadClientAppData(
       method: r.method,
       tip: r.tip,
       imageUrl: r.imageUrl ?? lib?.imageUrl, // was dropped here → recipe cards never showed a photo
+      imageCredit: r.imageCredit ?? lib?.imageCredit,
       ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
     };
   });

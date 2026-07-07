@@ -287,6 +287,11 @@ def main() -> int:
         yaml.safe_dump(record, sort_keys=False, allow_unicode=True)
     )
 
+    # Attach the source photo the coach forwarded (og:image or the forwarded
+    # photo itself). Best-effort: the recipe is already saved, so an image
+    # failure never blocks approval — the coach can add one later at /recipes.
+    image_status = _attach_image(candidate, slug, warnings)
+
     candidate["status"] = "approved"
     candidate["approved_slug"] = slug
     candidate["approved_at"] = datetime.now(timezone.utc).isoformat()
@@ -300,10 +305,95 @@ def main() -> int:
             "nutrients": (nutrients or {}).get("per_serving"),
             "rich_in": (nutrients or {}).get("rich_in", []),
             "coverage_pct": (nutrients or {}).get("coverage_pct"),
+            "image": image_status,
         },
         sys.stdout,
     )
     return 0
+
+
+# public/recipe-images/images/web/<slug>.jpg — where the app + coach UI read from
+_WEB_IMG_DIR = SCRIPTS_DIR.parent / "public" / "recipe-images" / "images" / "web"
+
+
+def _attach_image(candidate: dict, slug: str, warnings: list) -> dict | None:
+    """Give the new recipe the source photo the coach forwarded, credited.
+
+    - Forwarded photo: copy the media file into the web-image dir + write the
+      recipe's image block (rights_status web_reference_uncleared).
+    - Forwarded link: download the captured og:image via the existing
+      recipe-image-from-url.py (--no-qc so it's free; it validates + resizes +
+      writes the block, and its size check rejects favicons automatically).
+    Best-effort — returns a status dict or None, never raises."""
+    credit = str(candidate.get("image_credit") or "").strip()
+    try:
+        media_file = candidate.get("media_file")
+        if media_file:
+            src = INBOX_DIR / str(media_file)
+            if not src.exists():
+                return {"ok": False, "reason": "forwarded photo missing"}
+            _WEB_IMG_DIR.mkdir(parents=True, exist_ok=True)
+            import shutil
+
+            # normalise to .jpg via sips if available; else copy as-is
+            dst = _WEB_IMG_DIR / f"{slug}.jpg"
+            if src.suffix.lower() in (".jpg", ".jpeg"):
+                shutil.copyfile(src, dst)
+            else:
+                import subprocess
+
+                r = subprocess.run(
+                    ["sips", "-s", "format", "jpeg", str(src), "--out", str(dst)],
+                    capture_output=True,
+                )
+                if r.returncode != 0:
+                    shutil.copyfile(src, dst)  # fall back to raw copy
+            _write_recipe_image_block(slug, f"images/web/{slug}.jpg",
+                                      str(candidate.get("source_url") or ""),
+                                      credit or "forwarded photo")
+            return {"ok": True, "kind": "photo", "credit": credit or "forwarded photo"}
+
+        img_url = candidate.get("image_url")
+        if img_url:
+            import subprocess
+
+            args = [sys.executable,
+                    str(SCRIPTS_DIR / "recipe-image-from-url.py"), slug, str(img_url),
+                    "--no-qc"]
+            if credit:
+                args += ["--credit", credit]
+            r = subprocess.run(args, capture_output=True, text=True, timeout=60)
+            try:
+                out = json.loads(r.stdout or "{}")
+            except Exception:
+                out = {"ok": False}
+            if out.get("ok"):
+                return {"ok": True, "kind": "link", "credit": credit, "url": img_url}
+            warnings.append(f"couldn't attach the source photo ({out.get('error', 'download failed')}) — add one at /recipes")
+            return {"ok": False, "reason": out.get("error", "download failed")}
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "reason": str(e)}
+    return None
+
+
+def _write_recipe_image_block(slug: str, rel_file: str, source_url: str, credit: str) -> None:
+    """Mirror recipe-image-from-url.write_image_block for the local-photo path."""
+    p = RECIPES_DIR / f"{slug}.yaml"
+    txt = p.read_text()
+    c = (credit or "forwarded photo").replace("'", "''")
+    block = (
+        "image:\n"
+        f"  file: {rel_file}\n"
+        f"  credit: '{c}'\n"
+        + (f"  source_url: {source_url}\n" if source_url else "")
+        + "  rights_status: web_reference_uncleared\n"
+        "  note: forwarded photo; replace with licensed or original before any external use\n"
+    )
+    if re.search(r"^image:", txt, re.M):
+        txt = re.sub(r"^image:\n(?:[ \t]+.*\n?)*", block, txt, count=1, flags=re.M)
+    else:
+        txt = txt.rstrip() + "\n" + block
+    p.write_text(txt)
 
 
 if __name__ == "__main__":

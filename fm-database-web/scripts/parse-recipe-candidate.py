@@ -137,6 +137,47 @@ def _fetch_og_description(url: str) -> str | None:
         return None
 
 
+def _fetch_og_image(url: str) -> tuple[str | None, str | None]:
+    """Return (image_url, credit) for a page's hero photo, from og:image /
+    twitter:image. Skips obvious logos/favicons. credit is the source host or
+    @handle so the recipe can attribute it. (None, None) on any failure."""
+    try:
+        import requests
+        from urllib.parse import urljoin, urlparse
+
+        resp = requests.get(
+            url, timeout=10,
+            headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"},
+        )
+        if resp.status_code != 200:
+            return None, None
+        img = None
+        for pat in (
+            r'<meta[^>]+property="og:image(?::secure_url)?"[^>]+content="([^"]+)"',
+            r'<meta[^>]+content="([^"]+)"[^>]+property="og:image"',
+            r'<meta[^>]+name="twitter:image"[^>]+content="([^"]+)"',
+        ):
+            m = re.search(pat, resp.text)
+            if m:
+                img = html_lib.unescape(m.group(1)).strip()
+                break
+        if not img:
+            return None, None
+        img = urljoin(url, img)
+        low = img.lower()
+        if any(bad in low for bad in ("favicon", "logo", "sprite", "icon", "avatar")):
+            return None, None
+        host = urlparse(url).netloc.replace("www.", "")
+        if "instagram.com" in host:
+            m = re.search(r"instagram\.com/([^/?#]+)", url)
+            credit = f"@{m.group(1)}" if m and m.group(1) not in ("reel", "p") else host
+        else:
+            credit = host
+        return img, credit
+    except Exception:
+        return None, None
+
+
 def _fetch_page_text(url: str, cap: int = 7000) -> str | None:
     """Fetch a full recipe web page (blog / Harvard / any non-Instagram site)
     and convert the body to plain text via html2text. The recipe lives in the
@@ -417,6 +458,18 @@ def main() -> int:
         )
 
     _normalize_lists(parsed)
+
+    # Capture the source photo so the forwarded recipe keeps its own image
+    # (attached on approve). A forwarded photo IS the image; a link exposes one
+    # via og:image. Store the reference + a source credit on the candidate.
+    if not candidate.get("image_url") and not media_file and source_url:
+        img_url, credit = _fetch_og_image(str(source_url))
+        if img_url:
+            candidate["image_url"] = img_url
+            candidate["image_credit"] = credit
+    if media_file and not candidate.get("image_credit"):
+        candidate["image_credit"] = "forwarded photo"
+
     candidate["parsed"] = parsed
     candidate["status"] = "parsed"
     candidate["parsed_at"] = datetime.now(timezone.utc).isoformat()

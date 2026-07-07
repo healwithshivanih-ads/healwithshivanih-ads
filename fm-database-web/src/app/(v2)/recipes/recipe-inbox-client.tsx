@@ -336,6 +336,21 @@ function CandidateCard({
         </p>
       )}
 
+      {cand.image_url && (
+        <div className="mt-2 flex items-start gap-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={cand.image_url}
+            alt="source photo"
+            className="w-28 h-20 object-cover rounded border"
+          />
+          <span className="text-[11px] text-muted-foreground">
+            📷 Source photo — will be attached to the recipe on approve
+            {cand.image_credit ? <>, credited “{cand.image_credit}”</> : null}.
+          </span>
+        </div>
+      )}
+
       {cand.status === "new" && (
         <div className="mt-2">
           <button

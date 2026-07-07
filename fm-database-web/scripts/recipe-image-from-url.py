@@ -97,12 +97,14 @@ def crop_band(src, dst):
     return os.path.exists(dst)
 
 
-def write_image_block(yaml_path, rel_file, source_url):
+def write_image_block(yaml_path, rel_file, source_url, credit=""):
     txt = open(yaml_path, encoding="utf-8").read()
+    credit_line = credit.strip() or "web reference (coach-selected)"
+    # single-quote the credit so an @handle or comma never breaks YAML
     block = (
         "image:\n"
         f"  file: {rel_file}\n"
-        "  credit: web reference (coach-selected)\n"
+        f"  credit: '{credit_line.replace(chr(39), chr(39) * 2)}'\n"
         f"  source_url: {source_url}\n"
         "  rights_status: web_reference_uncleared\n"
         "  note: coach-selected image; replace with licensed or original photo\n"
@@ -123,6 +125,7 @@ def main():
     ap.add_argument("slug")
     ap.add_argument("url")
     ap.add_argument("--dish", default="")
+    ap.add_argument("--credit", default="")
     ap.add_argument("--no-qc", action="store_true")
     args = ap.parse_args()
 
@@ -206,7 +209,7 @@ def main():
         sys.exit(1)
     os.unlink(tmp)
 
-    write_image_block(recipe_path, f"images/web/{args.slug}.jpg", args.url)
+    write_image_block(recipe_path, f"images/web/{args.slug}.jpg", args.url, args.credit)
 
     print(json.dumps({
         "ok": True,

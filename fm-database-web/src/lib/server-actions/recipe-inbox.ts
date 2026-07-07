@@ -71,6 +71,10 @@ export interface RecipeCandidate {
   parsed?: ParsedRecipeDraft | null;
   approved_slug?: string | null;
   rejected_note?: string | null;
+  /** source photo captured from the forward (og:image or the forwarded photo);
+   *  attached to the recipe on approve, credited to image_credit. */
+  image_url?: string | null;
+  image_credit?: string | null;
 }
 
 function candidatePath(id: string): string {
