@@ -98,9 +98,13 @@ def _similar_existing(name: str) -> list[str]:
         return []
     hits = []
     for p in RECIPES_DIR.glob("*.yaml"):
+        if p.name.startswith("_"):
+            continue  # _candidates.yaml / _README etc. — not real recipes
         try:
             other = yaml.safe_load(p.read_text()) or {}
         except Exception:
+            continue
+        if not isinstance(other, dict):
             continue
         theirs = _name_tokens(other.get("name", ""))
         if not theirs:
