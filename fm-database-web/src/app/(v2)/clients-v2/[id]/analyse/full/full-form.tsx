@@ -449,6 +449,12 @@ export function FullAssessmentForm({
   const [error, setError] = useState<string | null>(null);
   const [preflightBlocked, setPreflightBlocked] = useState(false);
   const [draftSignupWarning, setDraftSignupWarning] = useState<string | null>(null);
+  // Freshness guard: set true when the coach clicks Generate-draft while the
+  // on-screen synthesis is a REHYDRATED old run (loaded on mount, never
+  // re-analysed this session). Nidhi 2026-07-07: a plan was generated off a
+  // stale May "cap-test" synthesis because rehydration made the button read
+  // "✓ Synthesis ready" — so the new July report never reached the plan.
+  const [staleGenerateConfirm, setStaleGenerateConfirm] = useState(false);
   // Ref + freshness flag for the post-synthesis scroll. After a successful
   // run we scroll the new results into view so the coach immediately sees
   // the AI output — previously the button reset and the report rendered
@@ -630,6 +636,12 @@ export function FullAssessmentForm({
           setResult(res);
           setPicks({});
           setJustFinished(true);
+          // Fresh synthesis this session — this run reflects the latest
+          // uploads/notes, so drop the "rehydrated stale" marker and
+          // dismiss any pending freshness confirmation. Generate-draft
+          // now proceeds without the guard.
+          setRehydratedFrom(null);
+          setStaleGenerateConfirm(false);
           if (opts?.manual) {
             toast.success(
               "Draft started without AI — topics carried over from your selection. Fill in the rest in the plan editor."
@@ -659,8 +671,18 @@ export function FullAssessmentForm({
     });
   };
 
-  const onGenerateDraft = (opts?: { force?: boolean }) => {
+  const onGenerateDraft = (opts?: { force?: boolean; confirmStale?: boolean }) => {
     if (!result?.session_id) return;
+    // Freshness guard — the synthesis on screen was rehydrated from a
+    // prior saved run and has NOT been re-analysed this session. Building
+    // a plan now bakes in whatever labs/notes that old run saw, silently
+    // ignoring any report/intake added since. Force the coach to either
+    // Re-run or explicitly acknowledge before we generate.
+    if (rehydratedFrom && !opts?.confirmStale) {
+      setStaleGenerateConfirm(true);
+      return;
+    }
+    setStaleGenerateConfirm(false);
     setDraftSignupWarning(null);
     startDraft(async () => {
       try {
@@ -1476,6 +1498,69 @@ export function FullAssessmentForm({
               You can edit, preview, and activate from there.
             </div>
           </div>
+          {staleGenerateConfirm && (
+            <div
+              style={{
+                padding: 12,
+                background: "rgba(217,119,6,0.10)",
+                border: "1px solid rgba(217,119,6,0.4)",
+                borderRadius: "var(--fm-radius-sm)",
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+              }}
+            >
+              <div style={{ fontSize: 12, color: "#92400e", lineHeight: 1.5 }}>
+                ⚠️ This synthesis was loaded from{" "}
+                <strong>{rehydratedFrom?.date ?? "an earlier run"}</strong> and
+                hasn&apos;t been re-analysed this session. If you&apos;ve uploaded
+                new reports or saved a new intake since then, the plan will{" "}
+                <strong>ignore them</strong> and use the old data. Re-run first so
+                the plan reflects the latest reports.
+              </div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStaleGenerateConfirm(false);
+                    onAnalyze();
+                  }}
+                  disabled={pending || draftPending}
+                  style={{
+                    background: "var(--fm-primary)",
+                    color: "#fff",
+                    border: 0,
+                    padding: "8px 14px",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    borderRadius: "var(--fm-radius-sm)",
+                    cursor: pending || draftPending ? "wait" : "pointer",
+                    fontFamily: "inherit",
+                  }}
+                >
+                  🔁 Re-run synthesis first
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onGenerateDraft({ confirmStale: true })}
+                  disabled={draftPending}
+                  style={{
+                    background: "#fff",
+                    color: "var(--fm-text-primary)",
+                    border: "1px solid var(--fm-border)",
+                    padding: "8px 14px",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    borderRadius: "var(--fm-radius-sm)",
+                    cursor: draftPending ? "wait" : "pointer",
+                    fontFamily: "inherit",
+                  }}
+                >
+                  Generate from {rehydratedFrom?.date ?? "old"} synthesis anyway
+                </button>
+              </div>
+            </div>
+          )}
           {draftSignupWarning && (
             <div
               style={{
