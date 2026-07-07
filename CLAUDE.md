@@ -14,7 +14,21 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.75 (current)** — Recipe inbox (WhatsApp/manual → review → library) + deterministic macro/micro nutrient engine.
+**v0.76 (current)** — Nutrient system deepened: table hardened, drafter balances, coverage mapped, client sees warm nourishment notes.
+
+Four follow-ons to v0.75's nutrient engine, all shipped (main + pm2 + Fly):
+- **Phase A — hardened the ingredient table.** A 25-agent skeptical workflow cross-checked all 200 ingredients in `_ingredient_nutrients.yaml` vs IFCT 2017 / USDA FDC. 6 corrections applied (ajwain fat/fibre, tendli potassium, methi iron, vanilla + cacao kcal); rest confirmed in tolerance. `_meta.verified` stamped; all 316 recipes recomputed.
+- **Phase B — protein/fibre + lab-aware weekly drafting** (`scripts/generate-week-menu.py`). The drafter now receives the client's protein floor (weight×1.2 g/kg, **suppressed to ×0.8 + "keep moderate" when a uric-acid/kidney marker is flagged high** — project protein rule), a 25 g fibre floor, and their lab-flagged low nutrients (via `lab_nutrient_priorities.py`) with Indian-food hints. SYSTEM rule 10 balances the week without overriding framework / no-porridge / diet rules; the change_note stays warm and never names grams/nutrients/labs to the client.
+- **Phase C — coverage gap analysis.** Cross-referenced the 323-recipe library's `rich_in` supply against client lab need. Key finding: the library is thinnest on exactly what clients most need — **vitamin-D (9 low / 10 veg dishes) and B12 (8 low / 16 veg dishes) are scarce**, monsoon has 4 recipes, 49 recipes untagged for season. Deliverable is a browsable coverage-report Artifact with a priority-ranked fill-list (no auto-generation — the coach sources via the inbox).
+- **Phase D — client-facing nourishment note** (`src/lib/fmdb/nourishment.ts` + client-app.ts + `ochre-week-menu.tsx`). The Ochre Tree app shows ONE warm per-week line ("🌿 Lots of whole grains and vegetables this week — fibre for easy digestion, iron for steady energy…") derived from the week's dishes' `rich_in` tags. **Deliberately NOT a grams dashboard** — brand voice is warm/food-first and nutrient numbers invite the calorie anxiety FM coaching avoids; no grams, no floors, no lab data (labs stay coach-mediated).
+
+**Key invariants (v0.76):**
+- Lab-priority logic is triplicated on purpose — `lab_nutrient_priorities.py` (recipe_select shortlist + week drafter), `lab-nutrient-priorities.ts` (dish picker). Keep in lockstep.
+- The client app (`/app/<token>`) serves from **Fly** (in the middleware-policy public allowlist) — Phase D + recipe-data changes need a Fly redeploy, not just pm2. Phase B (drafter) is Mac-cron only.
+- Protein floor is SUPPRESSED for renal/urate-flagged clients — never push protein on them. `_protein_suppressed()` checks lab_markers for high uric-acid/creatinine/eGFR/BUN.
+- Menu-balance protein/fibre are ESTIMATES (~55% dish coverage); the coach strip shows coverage %, the client note shows nothing numeric.
+
+**v0.75** — Recipe inbox (WhatsApp/manual → review → library) + deterministic macro/micro nutrient engine.
 
 **Phase 2 — nutrient engine:**
 - New `fm-database/data/_ingredient_nutrients.yaml` — 202 canonical ingredients, per-100g kcal/protein/carbs/fat/fibre + 10 micros (iron, calcium, magnesium, zinc, potassium, folate, B12, vit D, vit C, omega-3), alias lists covering all 729 ingredient spellings in the recipe library, cup/piece/leaf densities. IFCT 2017 / USDA reference values (AI-assisted authoring — spot-check for clinical claims).
