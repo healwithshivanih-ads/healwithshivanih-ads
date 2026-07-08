@@ -41,6 +41,7 @@ key_mechanisms:
 - impaired-t4-to-t3-conversion
 - thyroid-autoimmunity
 - hpa-axis-dysregulation
+- halogen-iodine-displacement
 coaching_scope_notes: Coaches can support lifestyle, diet, and nutrient optimization.
   Lab interpretation and medication decisions (e.g., levothyroxine, NDT) are clinician
   scope.
@@ -68,7 +69,7 @@ sources:
   quote: Natural treatment strategies for normalizing thyroid function vary depending
     on whether there is an autoimmune hypothyroid condition, clinical hypothyroidism,
     subclinical hypothyroidism, or hypothyroid syndrome.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-08'
 updated_by: shivani

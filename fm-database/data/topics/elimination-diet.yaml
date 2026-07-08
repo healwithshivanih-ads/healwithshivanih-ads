@@ -10,8 +10,9 @@ aliases:
 - dietary elimination
 - elimination phase
 - food sensitivity elimination protocol
-summary: A structured dietary intervention removing common trigger foods to identify sensitivities and reduce baseline symptoms.
-  RCT evidence cited for significant symptom improvement in participants.
+summary: A structured dietary intervention removing common trigger foods to identify
+  sensitivities and reduce baseline symptoms. RCT evidence cited for significant symptom
+  improvement in participants.
 common_symptoms:
 - unidentified food reactions
 - constant-bloating
@@ -50,9 +51,11 @@ key_mechanisms:
 - food-trigger-immune-activation
 - histamine-enzyme-inhibition
 - upstream-cause-identification
-coaching_scope_notes: Coaches can support patient adherence to elimination diets prescribed by clinicians — including meal
-  planning, family/household navigation, and accountability.
-clinician_scope_notes: Clinicians prescribe and interpret elimination diet protocols; coaches support implementation.
+- food-immune-cross-reactivity
+coaching_scope_notes: Coaches can support patient adherence to elimination diets prescribed
+  by clinicians — including meal planning, family/household navigation, and accountability.
+clinician_scope_notes: Clinicians prescribe and interpret elimination diet protocols;
+  coaches support implementation.
 evidence_tier: strong
 red_flags:
 - severe weight loss during elimination
@@ -65,21 +68,22 @@ red_flags:
 sources:
 - id: thurlow-microbiome-session-2
   location: Q&A section — practical recommendations
-  quote: Do you think you have a sensitivity? I would just do like a whole 30. And that's not meant to be done forever, but
-    it can be a really insightful and helpful tool.
+  quote: Do you think you have a sensitivity? I would just do like a whole 30. And
+    that's not meant to be done forever, but it can be a really insightful and helpful
+    tool.
 - id: vitaone-elimination-diet-toolkit
   location: Low FODMAP Vegetarian Diet Plan
-  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination) designed to calm IBS-type symptoms
-    while you figure out your personal triggers.
+  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
+    designed to calm IBS-type symptoms while you figure out your personal triggers.
 - id: vitaone-health-coaching-toolkit
   location: Low FODMAP Vegetarian Diet Plan introduction
-  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination) designed to calm IBS-type symptoms
-    while you figure out your personal triggers.
+  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
+    designed to calm IBS-type symptoms while you figure out your personal triggers.
 - id: ask-expert-future-fm
   location: Evidence Supporting Coaching Integration Section
-  quote: We have randomized controlled trials testing out elimination diets and participants showing baseline symptoms improving
-    significantly.
-version: 4
+  quote: We have randomized controlled trials testing out elimination diets and participants
+    showing baseline symptoms improving significantly.
+version: 5
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-07-08'
 updated_by: shivani

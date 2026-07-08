@@ -52,6 +52,8 @@ key_mechanisms:
 - noradrenaline-signaling
 - cortisol-elevation
 - neuroimmune-inflammation-loop
+- stress-induced-viral-reactivation
+- biphasic-stress-immune-response
 coaching_scope_notes: Stress awareness, digital hygiene, community connection, sleep
   regularity, movement, breathwork, journaling, and mindfulness are coaching-safe
   domains.
@@ -77,7 +79,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 5
+version: 6
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-07-08'
 updated_by: shivani

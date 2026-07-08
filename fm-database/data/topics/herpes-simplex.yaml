@@ -20,6 +20,7 @@ key_mechanisms:
 - viral-replication
 - impaired-cell-mediated-immunity
 - arginine-lysine-imbalance
+- stress-induced-viral-reactivation
 common_symptoms:
 - cold-sores
 - genital-blisters
@@ -36,7 +37,7 @@ sources:
     herpes infection. A diet that avoids arginine-rich foods while promoting lysine-rich
     foods can be quite effective.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
-updated_by: Shivani
+updated_at: '2026-07-08'
+updated_by: shivani

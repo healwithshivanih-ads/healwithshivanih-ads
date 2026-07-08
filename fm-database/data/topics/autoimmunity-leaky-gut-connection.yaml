@@ -24,6 +24,7 @@ key_mechanisms:
 - molecular-mimicry
 - tight-junction-dysfunction
 - lps-endotoxemia
+- loss-of-self-tolerance
 coaching_scope_notes: Coaches can educate clients on the three-factor autoimmune model
   and support gut healing lifestyle changes. Autoimmune diagnosis and treatment must
   be managed by a clinician.
@@ -43,7 +44,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-08'
 updated_by: shivani

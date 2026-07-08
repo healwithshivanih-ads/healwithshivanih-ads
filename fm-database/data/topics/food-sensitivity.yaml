@@ -25,6 +25,7 @@ key_mechanisms:
 - leaky-gut
 - dysbiosis-gut-microbiome-imbalance
 - nf-kb-activation
+- food-immune-cross-reactivity
 coaching_scope_notes: Coaches can guide elimination and reintroduction diets (gold
   standard). IgG/IgA panel ordering and interpretation require clinician.
 clinician_scope_notes: Distinguish from IgE allergy. Use elimination diet + reintroduction
@@ -36,7 +37,7 @@ sources:
   location: Food Allergy vs Food Sensitivity — Page 04
   quote: A delayed immune or digestive response (non-IgE). Dose-dependent, not life-threatening,
     but can drive chronic inflammation.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-07-08'
 updated_by: shivani

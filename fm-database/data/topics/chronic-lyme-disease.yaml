@@ -26,6 +26,7 @@ key_mechanisms:
 - immune-dysregulation
 - chronic-inflammation
 - mitochondrial-dysfunction
+- bystander-activation-cryptic-antigen
 common_symptoms:
 - migratory-pain
 - fatigue
@@ -48,7 +49,7 @@ sources:
     you have been exposed to Lyme disease — 23, 31, 34, 39, 83/93. 95% of my patients
     have migratory pain.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
-updated_by: Shivani
+updated_at: '2026-07-08'
+updated_by: shivani

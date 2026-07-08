@@ -26,6 +26,8 @@ key_mechanisms:
 - leaky-gut
 - molecular-mimicry
 - th17-dominance
+- loss-of-self-tolerance
+- toxin-induced-treg-thymic-suppression
 coaching_scope_notes: Coach can guide elimination diets, stress reduction, sleep optimization,
   and anti-inflammatory lifestyle. All supplement dosing and lab interpretation require
   clinician involvement.
@@ -41,7 +43,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-08'
 updated_by: shivani

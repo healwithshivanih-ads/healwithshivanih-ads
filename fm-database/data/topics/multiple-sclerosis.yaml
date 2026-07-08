@@ -38,6 +38,8 @@ key_mechanisms:
 - blood-brain-barrier-permeability
 - molecular-mimicry
 - thyroid-autoimmunity
+- bystander-activation-cryptic-antigen
+- stress-induced-viral-reactivation
 coaching_scope_notes: Coaches refer suspected MS to a neurologist immediately. Coaching
   role is supportive — diet (Swank/low-saturated-fat), vitamin D status, omega-3,
   stress management, mind-body practices.
@@ -54,7 +56,7 @@ sources:
     and axons within the brain, spinal cord, and optic nerves... most common disabling
     neurologic disease of young and middle-aged adults in North America and Europe.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-07-08'
+updated_by: shivani
