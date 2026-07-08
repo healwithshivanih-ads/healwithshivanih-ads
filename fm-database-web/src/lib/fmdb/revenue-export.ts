@@ -257,25 +257,29 @@ export function computeActiveClientCounts(
 }
 
 /**
- * Derive the CRM tag for one client from its state + plan facts. Returns null
- * when there's no meaningful stage to sync yet (a bare record). Precedence:
- * declined → graduated/maintenance → active coaching → discovery → prospect.
+ * Derive the CRM tag for one client from its state + plan facts. Every client
+ * gets a tag (a bare record falls through to `prospect`) — buildClientSyncEvent
+ * is what drops keyless clients. Precedence: declined → graduated/maintenance →
+ * active coaching → discovery → prospect.
+ *
+ * NOTE: `lifecycle_state` is deliberately NOT used to detect active coaching —
+ * it reads "programme_active" for nearly every record (a broad default), so it
+ * would mislabel discovery + pending clients. A PUBLISHED plan or an explicit
+ * engagement_status="signed_up" is the real active-coaching signal.
  */
 export function deriveCoachTag(
   c: SyncClient,
   hasPublishedActivePlan: boolean,
   hasMaintenancePlan: boolean,
   isGraduated: boolean,
-): CoachTag | null {
+): CoachTag {
   if (c.engagement_status === "declined") return "declined_lapsed";
   if (c.maintenance_status === "active" || isGraduated || (hasMaintenancePlan && !hasPublishedActivePlan))
     return "graduated_maint";
-  if (hasPublishedActivePlan || c.engagement_status === "signed_up" || c.lifecycle_state === "programme_active")
-    return "fm_coaching_client";
+  if (hasPublishedActivePlan || c.engagement_status === "signed_up") return "fm_coaching_client";
   if (c.discovery_call_date || c.discovery_completed_at || c.discovery_session_completed_at)
     return "discovery_client";
-  if (c.lifecycle_state === "prospect" || c.handover_received_at) return "prospect";
-  return null;
+  return "prospect";
 }
 
 /** Build a client_sync event, or null when the client has no contact key
@@ -344,10 +348,6 @@ export async function reconcileClientSync(): Promise<{ ok: boolean; synced: numb
         continue;
       }
       const tag = deriveCoachTag(c, activeByCid.has(cid), maintByCid.has(cid), gradByCid.has(cid));
-      if (!tag) {
-        skipped++;
-        continue;
-      }
       const ev = buildClientSyncEvent({ client: c, tag, nowIso });
       if (!ev) {
         skipped++;
