@@ -13,7 +13,7 @@
  * Auth: x-cron-secret header matching CRON_SECRET env.
  */
 import { NextRequest, NextResponse } from "next/server";
-import { emitActiveClientCount, flushRevenueOutbox, sweepGraduatedPlans } from "@/lib/fmdb/revenue-export";
+import { emitActiveClientCount, flushRevenueOutbox, reconcileClientSync, sweepGraduatedPlans } from "@/lib/fmdb/revenue-export";
 
 export const dynamic = "force-dynamic";
 
@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
   }
   const sweep = await sweepGraduatedPlans();
   const count = await emitActiveClientCount();
+  const sync = await reconcileClientSync();
   const drain = await flushRevenueOutbox();
-  return NextResponse.json({ ok: true, sweep, count, drain });
+  return NextResponse.json({ ok: true, sweep, count, sync, drain });
 }

@@ -22,8 +22,42 @@ import yaml from "js-yaml";
 // fs helpers dynamically import "@/…/paths" instead.
 import { hasPlanStarted } from "./plan-timing";
 
-export type RevenueEventType = "payment" | "programme_completed" | "active_client_count";
+export type RevenueEventType = "payment" | "programme_completed" | "active_client_count" | "client_sync";
 export type RevenueProduct = "lab" | "maintenance" | "programme" | "consultation" | "triage" | "other";
+
+// ── Client-sync (CRM contact tagging) ────────────────────────────────────────
+// Every fm-coach client mirrors into the ochre-funnel contact DB, tagged by the
+// stage of the coaching relationship. Five tags, mapped onto the Contact's
+// existing handoverStage (fine tag) + lifecycleStage (handed_over vs churned)
+// fields — no ochre-funnel schema migration needed.
+export type CoachTag =
+  | "prospect" // handed over from the funnel, pre-discovery
+  | "discovery_client" // paid discovery consult, no programme yet
+  | "fm_coaching_client" // enrolled / active plan
+  | "graduated_maint" // finished programme / on maintenance
+  | "declined_lapsed"; // declined or churned
+
+const TAG_TO_STAGE: Record<CoachTag, { handoverStage: string; lifecycleStage: string }> = {
+  prospect: { handoverStage: "prospect", lifecycleStage: "handed_over" },
+  discovery_client: { handoverStage: "discovery", lifecycleStage: "handed_over" },
+  fm_coaching_client: { handoverStage: "programme", lifecycleStage: "handed_over" },
+  graduated_maint: { handoverStage: "graduated_maintenance", lifecycleStage: "handed_over" },
+  declined_lapsed: { handoverStage: "declined", lifecycleStage: "churned" },
+};
+
+export interface SyncClient {
+  client_id?: string;
+  display_name?: string;
+  email?: string | null;
+  mobile_number?: string | null;
+  engagement_status?: string;
+  lifecycle_state?: string;
+  maintenance_status?: string | null;
+  discovery_call_date?: string | null;
+  discovery_completed_at?: string | null;
+  discovery_session_completed_at?: string | null;
+  handover_received_at?: string | null;
+}
 
 export interface RevenueClientKey {
   client_id: string | null;
@@ -220,6 +254,114 @@ export function computeActiveClientCounts(
     }
   }
   return breakdown;
+}
+
+/**
+ * Derive the CRM tag for one client from its state + plan facts. Returns null
+ * when there's no meaningful stage to sync yet (a bare record). Precedence:
+ * declined → graduated/maintenance → active coaching → discovery → prospect.
+ */
+export function deriveCoachTag(
+  c: SyncClient,
+  hasPublishedActivePlan: boolean,
+  hasMaintenancePlan: boolean,
+  isGraduated: boolean,
+): CoachTag | null {
+  if (c.engagement_status === "declined") return "declined_lapsed";
+  if (c.maintenance_status === "active" || isGraduated || (hasMaintenancePlan && !hasPublishedActivePlan))
+    return "graduated_maint";
+  if (hasPublishedActivePlan || c.engagement_status === "signed_up" || c.lifecycle_state === "programme_active")
+    return "fm_coaching_client";
+  if (c.discovery_call_date || c.discovery_completed_at || c.discovery_session_completed_at)
+    return "discovery_client";
+  if (c.lifecycle_state === "prospect" || c.handover_received_at) return "prospect";
+  return null;
+}
+
+/** Build a client_sync event, or null when the client has no contact key
+ *  (email + phone both missing → nothing to upsert on). */
+export function buildClientSyncEvent(input: { client: SyncClient; tag: CoachTag; nowIso?: string }): RevenueEventInput | null {
+  const email = (input.client.email ?? "").trim().toLowerCase() || null;
+  const digits = (input.client.mobile_number ?? "").replace(/\D/g, "");
+  const phone = digits.length >= 8 ? digits : null;
+  if (!email && !phone) return null;
+  const stage = TAG_TO_STAGE[input.tag];
+  const name = (input.client.display_name ?? "").trim();
+  const sp = name.indexOf(" ");
+  const firstName = sp > 0 ? name.slice(0, sp) : name || "Client";
+  const lastName = sp > 0 ? name.slice(sp + 1).trim() : null;
+  return {
+    // Idempotent per (client, stage): re-emitting the same stage is a no-op in
+    // the outbox; a stage CHANGE mints a new event_id → the handler re-upserts.
+    event_id: `client_sync:${input.client.client_id ?? email ?? phone}:${stage.handoverStage}`,
+    event_type: "client_sync",
+    occurred_at: input.nowIso ?? new Date().toISOString(),
+    data: {
+      client: {
+        client_id: input.client.client_id ?? null,
+        email,
+        phone_e164: phone,
+        first_name: firstName,
+        last_name: lastName,
+      },
+      tag: input.tag,
+      handover_stage: stage.handoverStage,
+      lifecycle_stage: stage.lifecycleStage,
+    },
+  };
+}
+
+/**
+ * Reconcile EVERY fm-coach client into the ochre-funnel contact DB (backfill +
+ * daily self-heal). Idempotent — a client whose tag hasn't changed produces an
+ * event_id already in the outbox, so nothing re-sends. Never throws.
+ */
+export async function reconcileClientSync(): Promise<{ ok: boolean; synced: number; skipped: number }> {
+  try {
+    const { loadAllClients, loadAllPlans } = await import("@/lib/fmdb/loader");
+    const [clients, plans] = await Promise.all([loadAllClients(), loadAllPlans()]);
+    const nowIso = new Date().toISOString();
+
+    const activeByCid = new Set<string>();
+    const maintByCid = new Set<string>();
+    const gradByCid = new Set<string>();
+    for (const p of plans as unknown as CountPlan[]) {
+      const cid = p.client_id ?? "";
+      if (!cid) continue;
+      const state = p._bucket ?? p.status ?? "";
+      if (state === "graduated") gradByCid.add(cid);
+      if (state !== "published") continue;
+      if ((p.slug ?? "").includes("-maintenance-")) maintByCid.add(cid);
+      else activeByCid.add(cid);
+    }
+
+    let synced = 0;
+    let skipped = 0;
+    for (const c of clients as unknown as SyncClient[]) {
+      const cid = c.client_id ?? "";
+      if (!cid) {
+        skipped++;
+        continue;
+      }
+      const tag = deriveCoachTag(c, activeByCid.has(cid), maintByCid.has(cid), gradByCid.has(cid));
+      if (!tag) {
+        skipped++;
+        continue;
+      }
+      const ev = buildClientSyncEvent({ client: c, tag, nowIso });
+      if (!ev) {
+        skipped++;
+        continue;
+      }
+      const r = await emitRevenueEvent(ev);
+      if (r.ok || r.added) synced++;
+      else skipped++;
+    }
+    return { ok: true, synced, skipped };
+  } catch (e) {
+    console.error("[revenue-export] client sync reconcile failed:", (e as Error).message);
+    return { ok: false, synced: 0, skipped: 0 };
+  }
 }
 
 /** Append if the event_id isn't already in the outbox. Pure. */
