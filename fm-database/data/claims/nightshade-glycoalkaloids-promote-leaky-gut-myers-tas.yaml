@@ -1,0 +1,22 @@
+slug: nightshade-glycoalkaloids-promote-leaky-gut-myers-tas
+statement: Nightshade glycoalkaloids (a class of saponins) can promote intestinal
+  permeability, feed dysbiosis, and are removed during the 30-day elimination phase.
+evidence_tier: plausible_emerging
+rationale: Glycoalkaloids in tomatoes, peppers, eggplant, and white potatoes can disrupt
+  cell membranes and gut integrity in sensitive individuals.
+coaching_translation: Nightshades like tomato, pepper, eggplant and white potato are
+  paused during the reset because they can irritate the gut.
+linked_to_topics:
+- nightshade-sensitivity
+linked_to_mechanisms:
+- glycoalkaloid-toxicity
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

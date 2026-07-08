@@ -1,0 +1,23 @@
+slug: supplements-compensate-soil-depletion-toxins-stress-snps-myers-tas
+statement: Supplements are used alongside diet because modern soil and food are nutrient-depleted,
+  toxic burden and stress raise needs, and detox-gene SNPs (MTHFR, GSTM1, COMT) increase
+  requirements for specific nutrients.
+evidence_tier: fm_specific_thin
+rationale: Diet alone may not meet elevated needs in a high-toxin, high-stress environment,
+  especially with impaired detox genetics.
+coaching_translation: Even a great diet may need targeted supplements, because today's
+  food, stress, and genetics can raise what you need.
+linked_to_topics:
+- detoxification
+- methylation-cycle
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 8
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

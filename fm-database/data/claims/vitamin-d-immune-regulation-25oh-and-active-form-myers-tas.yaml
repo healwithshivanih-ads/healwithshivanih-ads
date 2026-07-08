@@ -1,0 +1,25 @@
+slug: vitamin-d-immune-regulation-25oh-and-active-form-myers-tas
+statement: Vitamin D is important for immune regulation; Myers cites the view that
+  checking both 25-hydroxy and 1,25-dihydroxy vitamin D matters, since high active-form
+  with low 25-OH may reflect immune dysregulation.
+evidence_tier: confirm_with_clinician
+rationale: Vitamin D modulates immune tolerance; the 1,25/25-OH interpretation (Marshall
+  hypothesis) is used by some functional practitioners but is not standard.
+coaching_translation: Vitamin D supports immune balance. The idea of testing the 'active'
+  form too is debated — leave interpretation to your clinician.
+linked_to_topics:
+- vitamin-d3
+linked_to_supplements:
+- vitamin-d3
+caveats:
+- The 1,25-dihydroxy / Marshall Protocol interpretation is controversial and not consensus;
+  lab interpretation is clinician-only.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

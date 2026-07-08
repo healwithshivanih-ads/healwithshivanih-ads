@@ -1,0 +1,24 @@
+slug: l-glutamine-repairs-gut-lining-myers-tas
+statement: L-glutamine is used to help rejuvenate and repair the intestinal lining
+  in the Repair step of gut healing.
+evidence_tier: plausible_emerging
+rationale: Glutamine is a primary fuel for enterocytes and supports epithelial integrity;
+  Myers names it a favourite repair-phase supplement.
+linked_to_supplements:
+- l-glutamine
+linked_to_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: One of my favorites is L-glutamine, an amino acid that helps to rejuvenate
+    the gut wall lining.
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

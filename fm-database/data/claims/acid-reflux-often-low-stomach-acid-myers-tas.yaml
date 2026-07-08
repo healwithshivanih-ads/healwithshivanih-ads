@@ -1,0 +1,27 @@
+slug: acid-reflux-often-low-stomach-acid-myers-tas
+statement: Acid reflux frequently reflects too little stomach acid rather than too
+  much, so acid-blocking medication can worsen the underlying digestive problem.
+evidence_tier: fm_specific_thin
+rationale: Low stomach acid slows gastric emptying and impairs protein digestion;
+  food and small amounts of acid back up into the esophagus. Acid blockers further
+  reduce acid and enzymes needed for digestion.
+coaching_translation: Reflux is often a sign of low stomach acid, not high — which
+  is why acid blockers can backfire over time.
+linked_to_topics:
+- gerd
+linked_to_mechanisms:
+- hypochlorhydria
+- low-stomach-acid
+caveats:
+- Reflux has multiple causes; red-flag symptoms (weight loss, dysphagia, GI bleeding)
+  need medical evaluation, not self-managed acid support.
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: acid reflux more often results from not enough acid
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

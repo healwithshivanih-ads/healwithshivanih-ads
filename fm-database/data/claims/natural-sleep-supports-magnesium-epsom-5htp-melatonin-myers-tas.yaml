@@ -1,0 +1,27 @@
+slug: natural-sleep-supports-magnesium-epsom-5htp-melatonin-myers-tas
+statement: Gentle, natural sleep supports include a warm Epsom-salt (magnesium) bath
+  before bed, oral magnesium for muscle relaxation, 5-HTP as a serotonin precursor,
+  and melatonin to cue sleep, preferred over habitual sleeping pills.
+evidence_tier: fm_specific_thin
+rationale: These options support the body's own sleep chemistry and relaxation rather
+  than sedating it.
+coaching_translation: An Epsom-salt bath and magnesium relax the body; 5-HTP or a
+  little melatonin can gently nudge sleep when needed.
+linked_to_supplements:
+- magnesium
+- 5-htp
+- melatonin
+linked_to_topics:
+- sleep-optimisation
+caveats:
+- 5-HTP and melatonin can interact with antidepressants and other medications and
+  are not for everyone; check suitability and defer dosing/timing to a clinician.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Appendix F
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

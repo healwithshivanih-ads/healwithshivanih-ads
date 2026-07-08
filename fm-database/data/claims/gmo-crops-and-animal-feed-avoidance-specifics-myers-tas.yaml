@@ -1,0 +1,25 @@
+slug: gmo-crops-and-animal-feed-avoidance-specifics-myers-tas
+statement: The main GMO crops in the US food supply are corn, soy, canola/rapeseed,
+  sugar beet, alfalfa, cottonseed, and some papaya and squash, and because these dominate
+  animal feed, non-organic meat and poultry also carry GMO exposure; choosing certified
+  organic, non-GMO, or 100% grass-fed-and-finished reduces it.
+evidence_tier: fm_specific_thin
+rationale: GMO exposure is both direct (processed foods) and indirect (feed passed
+  up the food chain); label literacy is the practical defence.
+coaching_translation: Corn, soy, canola and sugar-beet are usually GMO, and they're
+  in most animal feed too — organic or fully grass-fed choices cut the exposure.
+linked_to_topics:
+- environmental-toxin-exposure
+caveats:
+- The strength of GMO-health claims is debated; framed here as the book's precautionary
+  position.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Appendix A
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

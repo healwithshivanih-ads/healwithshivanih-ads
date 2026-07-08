@@ -1,0 +1,26 @@
+slug: gut-produces-95-percent-serotonin-myers-tas
+statement: Roughly 95% of the body's serotonin is produced in the gut, so gut dysbiosis
+  and yeast overgrowth can impair neurotransmitter production and worsen mood, anxiety,
+  and brain fog.
+evidence_tier: plausible_emerging
+rationale: Enterochromaffin cells and gut microbes influence serotonin synthesis;
+  Myers uses the gut-brain link to connect gut infections to depression, anxiety,
+  and cognitive symptoms.
+coaching_translation: Most of your serotonin is made in the gut, so gut trouble can
+  show up as low mood or foggy thinking.
+linked_to_topics:
+- gut-brain-axis
+linked_to_mechanisms:
+- gut-serotonin-production
+- gut-brain-axis-disruption
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: Your gut produces 95 percent of your serotonin
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

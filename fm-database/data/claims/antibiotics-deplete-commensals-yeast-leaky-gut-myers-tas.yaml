@@ -1,0 +1,24 @@
+slug: antibiotics-deplete-commensals-yeast-leaky-gut-myers-tas
+statement: Repeated antibiotic courses deplete commensal bacteria, favouring yeast
+  (Candida) overgrowth and contributing to leaky gut and immune dysregulation.
+evidence_tier: plausible_emerging
+rationale: Antibiotics are non-selective; loss of friendly bacteria opens niches for
+  Candida and unfriendly organisms, degrading the epithelial barrier over time.
+coaching_translation: Frequent antibiotics can knock out good bacteria and let yeast
+  take over, which stresses the gut lining.
+linked_to_topics:
+- candida-overgrowth
+- yeast-overgrowth
+linked_to_mechanisms:
+- dysbiosis
+- leaky-gut
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

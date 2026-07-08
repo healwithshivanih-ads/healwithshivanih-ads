@@ -1,0 +1,30 @@
+slug: stress-induced-viral-reactivation
+display_name: Stress-Induced Latent Viral Reactivation
+aliases:
+- glucocorticoid viral reactivation
+- stress reactivates latent virus
+category: immune
+summary: Latent herpes-family viruses (herpes simplex, Epstein-Barr, varicella zoster)
+  are cued to reactivate when the immune system is suppressed. Because stress-driven
+  glucocorticoids (cortisol) lower immune surveillance, physical or psychological
+  stress can reactivate these viruses; each reactivation re-provokes the immune system
+  and can drive autoimmune flares.
+upstream_drivers:
+- cortisol-elevation
+- hpa-axis-dysregulation
+downstream_effects:
+- ebv-reactivation
+related_mechanisms:
+- ebv-reactivation
+- bystander-activation-cryptic-antigen
+linked_to_topics:
+- chronic-stress
+- herpes-simplex
+evidence_tier: plausible_emerging
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

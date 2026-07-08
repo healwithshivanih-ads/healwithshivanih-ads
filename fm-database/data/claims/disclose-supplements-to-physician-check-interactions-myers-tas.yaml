@@ -1,0 +1,23 @@
+slug: disclose-supplements-to-physician-check-interactions-myers-tas
+statement: Always tell your physician which supplements you are taking so medication
+  interactions and contraindications can be checked, even if the physician is skeptical
+  of supplements.
+evidence_tier: fm_specific_thin
+rationale: Transparency lets the prescribing clinician screen for interactions and
+  safely track labs; it keeps care coordinated.
+coaching_translation: Keep your doctor in the loop on every supplement — it keeps
+  everything safe and coordinated with your medications.
+caveats:
+- Interaction and contraindication checks are the clinician's responsibility; the
+  coach encourages disclosure and refers, and never advises against prescribed medication.
+out_of_scope_notes: ''
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 11
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

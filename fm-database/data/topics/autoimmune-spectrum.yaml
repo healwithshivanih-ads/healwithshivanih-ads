@@ -1,0 +1,28 @@
+slug: autoimmune-spectrum
+display_name: The Autoimmune Spectrum
+aliases:
+- autoimmune continuum
+- on the autoimmune spectrum
+summary: Amy Myers' framing that autoimmunity is a continuum rather than an on/off
+  diagnosis. Long before a labelled autoimmune disease appears, rising inflammation
+  and immune dysregulation move a person 'up the spectrum'; addressing root causes
+  (gut, diet, toxins, infections, stress) can move them back down. Genetics is described
+  as roughly 25% of the picture and environment/lifestyle ~75%.
+related_topics:
+- autoimmune-disease
+- autoimmunity-leaky-gut-connection
+coaching_scope_notes: Useful client education framing for prevention and early intervention.
+  Coach lifestyle drivers; never diagnose autoimmune disease or stage its progression.
+evidence_tier: fm_specific_thin
+common_symptoms: []
+red_flags: []
+key_mechanisms:
+- loss-of-self-tolerance
+clinician_scope_notes: ''
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4 (and Chapters 1-3)
+version: 2
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

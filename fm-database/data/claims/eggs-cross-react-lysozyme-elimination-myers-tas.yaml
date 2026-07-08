@@ -1,0 +1,22 @@
+slug: eggs-cross-react-lysozyme-elimination-myers-tas
+statement: Eggs are removed during the 30-day elimination because they can cross-react
+  with gluten and egg-white lysozyme may aggravate the gut lining.
+evidence_tier: fm_specific_thin
+rationale: Cross-reactivity plus lysozyme (a seed-defence-like protein in eggs) makes
+  eggs a common reintroduction test food after the reset.
+coaching_translation: Eggs are paused during the reset and tested on reintroduction
+  — some people react to them.
+linked_to_topics:
+- elimination-diet
+linked_to_mechanisms:
+- food-immune-cross-reactivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

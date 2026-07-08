@@ -1,0 +1,23 @@
+slug: infections-trigger-autoimmunity-three-mechanisms-myers-tas
+statement: Infections can trigger autoimmunity through molecular mimicry, bystander
+  activation, and cryptic-antigen (viral hijacking) exposure.
+evidence_tier: plausible_emerging
+rationale: All three routes lead the immune system to attack self-tissue while responding
+  to a pathogen; viruses that burrow into cells are especially prone to bystander
+  and cryptic-antigen effects.
+coaching_translation: An infection can confuse the immune system into attacking the
+  body's own tissue in a few different ways.
+linked_to_mechanisms:
+- molecular-mimicry
+- bystander-activation-cryptic-antigen
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

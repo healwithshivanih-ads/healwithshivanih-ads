@@ -1,0 +1,24 @@
+slug: gluten-zonulin-opens-tight-junctions-myers-tas
+statement: Gluten stimulates release of zonulin, which loosens intestinal tight junctions
+  and can produce leaky gut even in people without celiac disease.
+evidence_tier: plausible_emerging
+rationale: Alessio Fasano's research showed gliadin triggers zonulin, transiently
+  opening tight junctions; with chronic overexposure the junctions stay open, allowing
+  antigens through.
+coaching_translation: Gluten can loosen the seams of the gut lining for everyone —
+  not only people with celiac disease.
+linked_to_mechanisms:
+- gluten-mediated-tight-junction-disruption
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+  quote: gluten triggers the production of a substance known as "zonulin," which causes
+    the tight junctions of the epithelial cell wall to loosen.
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

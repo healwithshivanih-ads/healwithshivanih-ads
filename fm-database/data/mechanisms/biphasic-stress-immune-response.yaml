@@ -1,0 +1,29 @@
+slug: biphasic-stress-immune-response
+display_name: Biphasic Stress-Immune Response
+aliases:
+- acute vs chronic stress immunity
+- stress immune activation then suppression
+category: immune
+summary: Stress affects immunity in two phases. Acute stress briefly activates the
+  immune system (roughly an hour) then returns it to baseline. Sustained chronic stress
+  drives cortisol that suppresses immunity well below baseline, while fluctuating
+  or escalating chronic stress can over-activate the immune system — a pattern the
+  body did not evolve to handle, raising autoimmune risk.
+upstream_drivers:
+- hpa-axis-dysregulation
+- cortisol-elevation
+downstream_effects:
+- chronic-inflammation
+related_mechanisms:
+- cortisol-elevation
+- glucocorticoid-receptor-resistance
+linked_to_topics:
+- chronic-stress
+evidence_tier: plausible_emerging
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

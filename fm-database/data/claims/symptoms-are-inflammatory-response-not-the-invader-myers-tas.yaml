@@ -1,0 +1,22 @@
+slug: symptoms-are-inflammatory-response-not-the-invader-myers-tas
+statement: Many symptoms — whether flu misery or an autoimmune flare — are caused
+  by the immune system's own inflammatory response rather than directly by the invader
+  or trigger.
+evidence_tier: plausible_emerging
+rationale: Fever, swelling, and pain are immune-generated; this reframes symptoms
+  as the body's response, which can be modulated by lowering inflammation.
+coaching_translation: A lot of how you feel is your immune system's reaction, not
+  the trigger itself — which is why calming that reaction helps.
+linked_to_topics:
+- inflammation
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

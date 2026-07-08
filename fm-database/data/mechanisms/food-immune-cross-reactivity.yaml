@@ -1,0 +1,31 @@
+slug: food-immune-cross-reactivity
+display_name: Food Immune Cross-Reactivity
+aliases:
+- cross-reactivity
+- gluten cross-reactivity
+- cross-reactive foods
+category: immune
+summary: Antibodies raised against one food protein (classically gliadin/gluten) can
+  recognise structurally similar proteins in other foods and trigger the same inflammatory
+  response. Commonly cited gluten cross-reactive foods include dairy (casein/whey),
+  corn, rice, millet, oats, and yeast, which is a rationale for broad grain elimination
+  in autoimmune protocols.
+upstream_drivers:
+- leaky-gut
+- molecular-mimicry
+downstream_effects:
+- chronic-inflammation
+related_mechanisms:
+- molecular-mimicry
+- lectin-driven-gut-inflammation
+linked_to_topics:
+- gluten-sensitivity
+- elimination-diet
+evidence_tier: fm_specific_thin
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

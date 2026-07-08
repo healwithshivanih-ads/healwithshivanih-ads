@@ -1,0 +1,22 @@
+slug: gut-cell-turnover-enables-rapid-healing-myers-tas
+statement: Intestinal epithelial cells turn over within days, which is why gut healing
+  and symptom relief can occur relatively quickly once irritants are removed and repair
+  support is added.
+evidence_tier: plausible_emerging
+rationale: Rapid enterocyte turnover means damaged lining can be replaced quickly
+  when the gut is properly supported.
+coaching_translation: Gut lining cells renew every few days, so people often feel
+  better within weeks of changing diet and support.
+linked_to_mechanisms:
+- leaky-gut
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

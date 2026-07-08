@@ -1,0 +1,22 @@
+slug: gluten-avoidance-must-be-complete-in-autoimmunity-myers-tas
+statement: For gluten-reactive autoimmune conditions, even trace gluten can raise
+  anti-self antibodies for weeks to months, so avoidance needs to be complete rather
+  than partial.
+evidence_tier: fm_specific_thin
+rationale: Myers argues a single small exposure can keep antibodies elevated, so occasional
+  gluten undermines the protocol; hence '100 percent, not 99.5 percent'.
+coaching_translation: If gluten is a trigger for you, all-or-nothing works better
+  than cutting back — small amounts still keep the reaction going.
+linked_to_topics:
+- gluten-sensitivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

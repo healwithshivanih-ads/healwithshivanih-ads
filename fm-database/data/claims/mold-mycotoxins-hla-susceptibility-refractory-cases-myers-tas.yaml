@@ -1,0 +1,25 @@
+slug: mold-mycotoxins-hla-susceptibility-refractory-cases-myers-tas
+statement: Mycotoxins from water-damaged buildings can drive illness, but only about
+  a quarter of people are genetically (HLA) susceptible, so mould may affect one family
+  member while others are fine; consider it with odd, refractory, or recurrent-yeast
+  presentations.
+evidence_tier: plausible_emerging
+rationale: HLA-linked susceptibility explains why mould illness clusters unevenly;
+  Myers screens for it when diet alone fails or symptoms don't add up.
+coaching_translation: Toxic mould can make one person in a household sick while others
+  are fine — worth investigating when symptoms are strange or stubborn.
+linked_to_topics:
+- mold-mycotoxin-exposure
+linked_to_mechanisms:
+- fungal-overgrowth-toxin-production
+- hla-genetics-immune-tolerance
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

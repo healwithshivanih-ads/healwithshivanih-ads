@@ -1,0 +1,22 @@
+slug: soaking-sprouting-reduces-lectins-myers-tas
+statement: Traditional soaking and sprouting of legumes leaches out lectins and makes
+  them more digestible than modern quick-cooked preparations.
+evidence_tier: fm_specific_thin
+rationale: Ancestral preparation reduced antinutrient load; Myers contrasts this with
+  packaged/quick modern legume foods.
+coaching_translation: Soaking and sprouting beans overnight lowers their irritant
+  load — a useful step if legumes are reintroduced.
+linked_to_topics:
+- lectin-sensitivity
+- legume-based-eating-pattern
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

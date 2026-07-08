@@ -1,0 +1,32 @@
+slug: loss-of-self-tolerance
+display_name: Loss of Immune Tolerance of Self
+aliases:
+- loss of tolerance of self
+- breakdown of self-tolerance
+- immune tolerance breakdown
+category: immune
+summary: Autoimmunity is fundamentally a breakdown of the immune system's tolerance
+  of the body's own tissues. Normally regulatory T cells and thymic education keep
+  the immune system from attacking self; when chronic inflammation and immune overstimulation
+  overwhelm these controls, antibodies and T cells begin targeting self-tissue (e.g.,
+  thyroid in Hashimoto's, myelin in MS). Reducing the inflammatory burden can help
+  the immune system regain tolerance.
+upstream_drivers:
+- chronic-inflammation
+- molecular-mimicry
+- toxin-induced-treg-thymic-suppression
+downstream_effects: []
+related_mechanisms:
+- molecular-mimicry
+- hla-genetics-immune-tolerance
+linked_to_topics:
+- autoimmune-spectrum
+- chronic-inflammation
+evidence_tier: plausible_emerging
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

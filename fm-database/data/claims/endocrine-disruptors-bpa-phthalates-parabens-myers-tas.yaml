@@ -1,0 +1,23 @@
+slug: endocrine-disruptors-bpa-phthalates-parabens-myers-tas
+statement: BPA, phthalates, and parabens are estrogen-mimicking endocrine disruptors
+  found in plastics, can linings, and personal-care products, and 'BPA-free' plastics
+  can leach similar estrogenic chemicals.
+evidence_tier: plausible_emerging
+rationale: These xenoestrogens disrupt thyroid, adrenal, and sex-hormone signalling;
+  testing has shown most plastics — BPA-free included — release estrogenic activity.
+coaching_translation: Many plastics and cosmetics act like fake estrogen — storing
+  food in glass and choosing cleaner body products helps.
+linked_to_mechanisms:
+- bpa-endocrine-disruption
+- endocrine-disruption-by-toxicants
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

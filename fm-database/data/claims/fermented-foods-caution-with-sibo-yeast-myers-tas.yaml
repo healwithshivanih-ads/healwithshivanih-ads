@@ -1,0 +1,23 @@
+slug: fermented-foods-caution-with-sibo-yeast-myers-tas
+statement: Fermented foods act as natural probiotics but can feed unfriendly organisms
+  and worsen symptoms when SIBO or yeast overgrowth is present, so they are best added
+  after the gut is balanced.
+evidence_tier: fm_specific_thin
+rationale: Fermented foods supply both bacteria and fermentable substrate; in overgrowth
+  states the substrate can aggravate rather than help.
+coaching_translation: Fermented foods are great once the gut is balanced, but can
+  backfire if there's an overgrowth — timing matters.
+linked_to_topics:
+- sibo
+- candida-overgrowth
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

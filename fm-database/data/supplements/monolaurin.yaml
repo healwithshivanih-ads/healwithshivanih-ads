@@ -1,0 +1,27 @@
+slug: monolaurin
+display_name: Monolaurin
+aliases:
+- glycerol monolaurate
+- lauricidin
+category: other
+evidence_tier: fm_specific_thin
+notes_for_coach: Coconut-derived monoglyceride used in functional-medicine protocols
+  for immune support against enveloped (herpes-family) viruses such as EBV and HSV.
+  Amy Myers pairs it with L-lysine and coconut-oil derivatives. Educational/immune-support
+  use only; not a treatment for diagnosed infection — refer for medical care.
+linked_to_topics:
+- herpes-simplex
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+take_with_food: optional
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

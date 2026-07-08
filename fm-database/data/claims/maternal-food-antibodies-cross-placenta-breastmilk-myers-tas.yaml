@@ -1,0 +1,24 @@
+slug: maternal-food-antibodies-cross-placenta-breastmilk-myers-tas
+statement: Maternal gluten or dairy antibodies can be passed to a baby through the
+  placenta or breast milk, so gluten and dairy avoidance is emphasised during pregnancy
+  and postpartum.
+evidence_tier: plausible_emerging
+rationale: Antibody transfer means an infant can carry reactivity to foods it never
+  ate; pregnancy and birth can also trigger autoimmunity in the mother.
+coaching_translation: What mum reacts to can pass to baby before and after birth —
+  worth extra care with gluten and dairy in pregnancy.
+linked_to_topics:
+- food-sensitivity
+caveats:
+- Pregnancy and lactation nutrition should be supervised by the client's physician;
+  do not impose restrictive elimination without medical oversight.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 8
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

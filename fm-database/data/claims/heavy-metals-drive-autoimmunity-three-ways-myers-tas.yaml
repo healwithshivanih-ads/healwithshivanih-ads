@@ -1,0 +1,25 @@
+slug: heavy-metals-drive-autoimmunity-three-ways-myers-tas
+statement: Heavy metals are proposed to trigger autoimmunity by altering self-tissue
+  so it looks foreign (mimicry), overstimulating the immune system, and atrophying
+  the thymus so it makes fewer regulatory T cells.
+evidence_tier: plausible_emerging
+rationale: Three converging theories all raise inflammation and erode tolerance of
+  self, tying heavy-metal load to autoimmune onset.
+coaching_translation: Heavy metals can confuse and over-rev the immune system, making
+  it more likely to attack the body's own tissues.
+linked_to_topics:
+- heavy-metal-toxicity
+linked_to_mechanisms:
+- heavy-metal-toxicity
+- toxin-induced-treg-thymic-suppression
+- molecular-mimicry
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

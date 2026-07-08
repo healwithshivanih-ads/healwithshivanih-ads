@@ -1,0 +1,25 @@
+slug: enzyme-inhibitors-impair-digestion-feed-dysbiosis-myers-tas
+statement: Amylase and protease inhibitors in grains and legumes block digestion,
+  leave undigested food to feed unfriendly bacteria (promoting SIBO and yeast overgrowth),
+  and stress the pancreas.
+evidence_tier: fm_specific_thin
+rationale: These enzyme inhibitors survive cooking; undigested residue fuels dysbiosis
+  while extra pancreatic enzyme demand can loosen tight junctions.
+coaching_translation: Beans and grains contain 'anti-digestion' compounds that can
+  feed the wrong gut bacteria and add strain on the pancreas.
+linked_to_topics:
+- sibo
+- gut-dysbiosis
+linked_to_mechanisms:
+- lectin-driven-gut-inflammation
+- dysbiosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

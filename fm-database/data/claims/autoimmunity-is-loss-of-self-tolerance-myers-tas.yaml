@@ -1,0 +1,24 @@
+slug: autoimmunity-is-loss-of-self-tolerance-myers-tas
+statement: Autoimmunity occurs when the immune system loses tolerance of self and
+  attacks the body's own tissue — the thyroid in Hashimoto's, myelin in MS, muscle
+  in polymyositis.
+evidence_tier: plausible_emerging
+rationale: Loss of self-tolerance, governed partly by thymic T-cell regulation, is
+  the unifying event across autoimmune diseases.
+coaching_translation: In autoimmunity the immune system mistakes part of your own
+  body for an invader and attacks it.
+linked_to_mechanisms:
+- loss-of-self-tolerance
+- molecular-mimicry
+linked_to_topics:
+- autoimmune-spectrum
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: circadian-light-hygiene-for-sleep-myers-tas
+statement: Evening bright and blue light suppresses melatonin and delays sleep, so
+  amber bulbs and blue-light filters (e.g., f.lux) after sunset, blackout curtains,
+  daytime natural-light exposure, and a consistent bedtime are used to restore the
+  sleep-wake rhythm.
+evidence_tier: plausible_emerging
+rationale: Light is the dominant circadian cue; managing evening light and reinforcing
+  daytime light aligns melatonin timing for deeper sleep.
+coaching_translation: Dim and warm your light after sunset, get daylight during the
+  day, and keep a steady bedtime — that's how you cue good sleep naturally.
+linked_to_topics:
+- sleep-optimisation
+- circadian-rhythm-disruption
+linked_to_mechanisms:
+- late-light-melatonin-suppression
+- blue-light-melatonin-suppression
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Appendix F
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

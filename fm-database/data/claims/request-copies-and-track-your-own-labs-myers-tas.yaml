@@ -1,0 +1,21 @@
+slug: request-copies-and-track-your-own-labs-myers-tas
+statement: Patients should request copies of their lab reports at the visit, keep
+  organised records, and track symptoms weekly (e.g., a symptom questionnaire/tracker)
+  to monitor progress and share trends with their physician.
+evidence_tier: fm_specific_thin
+rationale: Self-advocacy and longitudinal record-keeping let a client and their providers
+  see trajectory over time, which supports better decisions than isolated snapshots.
+coaching_translation: Ask for copies of every lab, keep them together, and note your
+  symptoms each week — the trend tells the story.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 11
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

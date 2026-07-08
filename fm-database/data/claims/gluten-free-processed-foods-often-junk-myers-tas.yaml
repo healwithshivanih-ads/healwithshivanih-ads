@@ -1,0 +1,21 @@
+slug: gluten-free-processed-foods-often-junk-myers-tas
+statement: Commercial gluten-free processed products are often high in sugar, refined
+  starch, additives, and GMO corn or soy, so 'gluten-free' does not mean healthy.
+evidence_tier: fm_specific_thin
+rationale: Removing wheat bulk is usually compensated with sugar and refined flours,
+  spiking blood sugar; label claims like 'organic' or 'all natural' don't fix this.
+coaching_translation: A gluten-free label doesn't make a packaged snack healthy —
+  it's often just sugar and refined starch instead.
+linked_to_topics:
+- elimination-diet
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

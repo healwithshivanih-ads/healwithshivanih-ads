@@ -1,0 +1,21 @@
+slug: licorice-aloe-soothe-gut-lining-myers-tas
+statement: DGL licorice root and aloe vera are used to soothe the gut lining and reduce
+  inflammation during gut repair.
+evidence_tier: fm_specific_thin
+rationale: Demulcent, mucosa-soothing agents named alongside L-glutamine and omega-3
+  for the Repair phase.
+linked_to_supplements:
+- dgl-licorice
+- aloe-vera
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

@@ -1,0 +1,24 @@
+slug: iga-ige-igg-antibody-roles-myers-tas
+statement: IgA guards mucosal surfaces (a low stool IgA can signal yeast overgrowth
+  and immune suppression), IgE drives immediate allergy, and IgG produces delayed
+  (up to 72-hour) food sensitivities.
+evidence_tier: plausible_emerging
+rationale: These immunoglobulin classes explain the difference between fast allergic
+  reactions and slow, hard-to-pinpoint sensitivities central to the Myers Way.
+coaching_translation: Allergies (IgE) are fast and obvious; food sensitivities (IgG)
+  are slow and sneaky, sometimes showing up days later.
+linked_to_topics:
+- food-allergy-ige-mediated
+- food-sensitivity-igg-iga-mediated
+linked_to_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

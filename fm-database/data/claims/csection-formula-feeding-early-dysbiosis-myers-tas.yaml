@@ -1,0 +1,23 @@
+slug: csection-formula-feeding-early-dysbiosis-myers-tas
+statement: Birth by C-section and formula (rather than breast) feeding reduce an infant's
+  acquisition of commensal bacteria and immune factors, contributing to early gut
+  dysbiosis and later autoimmune risk.
+evidence_tier: plausible_emerging
+rationale: Vaginal birth and breast milk seed and support the infant microbiome; missing
+  these inputs is described as an early upstream driver on the autoimmune spectrum.
+coaching_translation: How we were born and fed as babies helps set up our gut bacteria
+  — a clue when tracing where gut trouble began.
+linked_to_mechanisms:
+- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

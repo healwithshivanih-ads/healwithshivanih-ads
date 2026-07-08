@@ -1,0 +1,22 @@
+slug: chronic-low-dose-toxins-worse-than-acute-myers-tas
+statement: Chronic low-level toxin exposure is more harmful to the immune system than
+  a single large acute exposure, because the cumulative burden builds over time.
+evidence_tier: fm_specific_thin
+rationale: 'Myers'' ''cup filling drop by drop'' model: repeated small insults from
+  food, water, air, and personal-care products keep the immune system chronically
+  stressed.'
+coaching_translation: It's the steady daily drips of toxins that fill the cup — small,
+  consistent swaps matter more than any one big fix.
+linked_to_mechanisms:
+- toxin-load-accumulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

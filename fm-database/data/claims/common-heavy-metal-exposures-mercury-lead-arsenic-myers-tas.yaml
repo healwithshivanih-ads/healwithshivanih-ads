@@ -1,0 +1,22 @@
+slug: common-heavy-metal-exposures-mercury-lead-arsenic-myers-tas
+statement: Common heavy-metal exposures include mercury (large fish, dental amalgams,
+  cosmetics), lead (old pipes, lipstick, imported pottery/toys), and arsenic (rice,
+  poultry feed, some water).
+evidence_tier: fm_specific_thin
+rationale: Myers routinely screens autoimmune patients for aluminium, arsenic, cadmium,
+  mercury, and lead given how widespread these exposures are.
+coaching_translation: Mercury, lead, and arsenic show up in everyday places like big
+  fish, old plumbing, and rice — worth being aware of.
+linked_to_topics:
+- heavy-metal-toxicity
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

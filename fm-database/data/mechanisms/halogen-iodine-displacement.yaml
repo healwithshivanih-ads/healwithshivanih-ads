@@ -1,0 +1,24 @@
+slug: halogen-iodine-displacement
+display_name: Halogen Displacement of Iodine
+aliases:
+- fluoride bromide chlorine iodine competition
+- halide iodine displacement
+category: endocrine
+summary: Fluoride, bromide, and chlorine are halogens chemically similar to iodine
+  and can compete with or displace iodine at the thyroid and elsewhere. Because the
+  thyroid depends on iodine to make hormone, chronic exposure to these halogens in
+  water and food is proposed to contribute to thyroid dysfunction.
+upstream_drivers:
+- environmental-toxin-load
+downstream_effects: []
+linked_to_topics:
+- environmental-toxin-exposure
+evidence_tier: fm_specific_thin
+related_mechanisms: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

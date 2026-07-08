@@ -1,0 +1,27 @@
+slug: non-celiac-gluten-sensitivity-igg-delayed-myers-tas
+statement: Non-celiac gluten sensitivity is IgG-mediated with delayed reactions (up
+  to ~72 hours), affecting a far larger share of people than celiac disease or wheat
+  allergy, and is frequently missed by standard testing.
+evidence_tier: plausible_emerging
+rationale: IgE tests catch allergy and biopsy catches celiac, but the more common
+  IgG-mediated sensitivity is delayed and under-detected; symptoms can appear days
+  after exposure.
+coaching_translation: Gluten can bother you even if celiac tests are negative, and
+  the reaction may take a day or two to show up.
+linked_to_topics:
+- gluten-sensitivity
+- gluten-intolerance
+linked_to_mechanisms:
+- food-immune-cross-reactivity
+caveats:
+- Test interpretation and celiac diagnosis are clinician-only; coach educates on elimination-and-reintroduction,
+  not diagnosis.
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

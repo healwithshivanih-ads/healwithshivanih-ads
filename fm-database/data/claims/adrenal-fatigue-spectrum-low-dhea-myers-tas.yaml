@@ -1,0 +1,28 @@
+slug: adrenal-fatigue-spectrum-low-dhea-myers-tas
+statement: Chronic stress can dysregulate the HPA axis along an 'adrenal fatigue'
+  spectrum with cortisol too high, too low, or both, and lowered DHEA, which Myers
+  frames as a risk factor for autoimmunity; she assesses it with a four-point salivary
+  cortisol test.
+evidence_tier: fm_specific_thin
+rationale: A diurnal salivary cortisol curve captures rhythm disturbances a single
+  blood test misses; low DHEA reflects HPA depletion.
+coaching_translation: Long-term stress can throw your daily cortisol rhythm off, leaving
+  you wired or exhausted — supporting recovery matters.
+linked_to_topics:
+- adrenal-fatigue
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- dhea-depletion
+caveats:
+- '''Adrenal fatigue'' is a functional-medicine construct not recognised in conventional
+  endocrinology; testing/interpretation is clinician-led.'
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani
