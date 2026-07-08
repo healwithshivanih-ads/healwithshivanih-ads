@@ -1,0 +1,24 @@
+slug: heavy-metal-testing-rbc-and-challenge-myers-tas
+statement: Heavy-metal status is assessed with an RBC test (reflecting exposure over
+  the prior ~3 months) and a provoked 'challenge' urine test using a chelating agent
+  (e.g., DMPS) to estimate body stores held in bone.
+evidence_tier: fm_specific_thin
+rationale: Unprovoked blood tests capture recent exposure, while a challenge test
+  mobilises stored metals to gauge accumulated burden.
+coaching_translation: There are two kinds of heavy-metal test — one for recent exposure,
+  one that measures what's stored in the body.
+linked_to_topics:
+- heavy-metal-toxicity
+caveats:
+- Heavy-metal testing and provoked challenge tests are clinician-ordered and interpreted;
+  the coach educates and refers, never orders or reads them.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Appendix B
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

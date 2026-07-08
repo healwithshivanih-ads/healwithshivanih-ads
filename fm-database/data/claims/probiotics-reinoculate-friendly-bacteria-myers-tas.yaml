@@ -1,0 +1,21 @@
+slug: probiotics-reinoculate-friendly-bacteria-myers-tas
+statement: Probiotics are used to reinoculate the gut with friendly bacteria depleted
+  by antibiotics, steroids, acid blockers, poor diet, and stress.
+evidence_tier: plausible_emerging
+rationale: Reinoculate-phase support replenishes commensals to defend the barrier
+  and crowd out unfriendly organisms.
+linked_to_supplements:
+- probiotics
+linked_to_mechanisms:
+- dysbiosis
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: chronic-inflammation-central-driver-of-autoimmunity-myers-tas
+statement: Unlike self-limiting acute inflammation, chronic inflammation from unrelenting
+  triggers keeps the immune system on permanent alert and is the central driver that
+  can tip it into attacking self-tissue.
+evidence_tier: plausible_emerging
+rationale: Persistent low-grade inflammation exhausts immune regulation; lowering
+  it is the shared aim across all four Myers Way pillars.
+coaching_translation: It's ongoing, never-resolving inflammation — not a one-off —
+  that pushes the immune system toward attacking the body.
+linked_to_topics:
+- chronic-inflammation
+- inflammation
+- autoimmune-spectrum
+linked_to_mechanisms:
+- chronic-inflammation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

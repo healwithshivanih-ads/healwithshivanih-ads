@@ -1,0 +1,29 @@
+slug: bystander-activation-cryptic-antigen
+display_name: Bystander Activation & Cryptic Antigen Exposure
+aliases:
+- bystander activation
+- cryptic antigen
+- viral hijacking of self-cells
+category: immune
+summary: Two infection-driven routes to autoimmunity distinct from molecular mimicry.
+  In bystander activation, the immune response to an infection also damages nearby
+  ('bystander') self-tissue. In cryptic antigen exposure, a virus that has hidden
+  inside host cells (e.g., herpes, Epstein-Barr) is targeted along with the host cells
+  it hijacked, exposing previously hidden self-antigens to the immune system.
+upstream_drivers:
+- ebv-reactivation
+downstream_effects:
+- chronic-inflammation
+related_mechanisms:
+- molecular-mimicry
+linked_to_topics:
+- multiple-sclerosis
+- rheumatoid-arthritis
+evidence_tier: plausible_emerging
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

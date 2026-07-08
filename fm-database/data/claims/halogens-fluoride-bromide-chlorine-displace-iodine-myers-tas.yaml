@@ -1,0 +1,22 @@
+slug: halogens-fluoride-bromide-chlorine-displace-iodine-myers-tas
+statement: Fluoride, bromide, and chlorine in water and food compete with iodine and
+  may contribute to thyroid dysfunction by displacing it.
+evidence_tier: fm_specific_thin
+rationale: As halogens chemically similar to iodine, they can crowd iodine out at
+  the thyroid, which Myers links to rising thyroid disease.
+coaching_translation: Chemicals like fluoride and chlorine can crowd out iodine, which
+  the thyroid needs — filtered water helps.
+linked_to_mechanisms:
+- halogen-iodine-displacement
+linked_to_topics:
+- environmental-toxin-exposure
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

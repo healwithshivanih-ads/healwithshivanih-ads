@@ -1,0 +1,30 @@
+slug: leaky-gut-precondition-for-autoimmunity-myers-tas
+statement: Intestinal permeability ('leaky gut') is presented as a necessary precondition
+  for developing autoimmunity, alongside genetic predisposition and an environmental
+  trigger.
+evidence_tier: plausible_emerging
+rationale: 'Myers cites Alessio Fasano''s work: a leaky gut allows antigens to cross
+  the epithelial barrier, driving immune activation and molecular mimicry. Framed
+  as one of three legs (genes, trigger, permeability).'
+coaching_translation: A leaky gut lining lets food and microbes reach the immune system,
+  which can set the stage for the body attacking itself.
+linked_to_topics:
+- autoimmunity-leaky-gut-connection
+linked_to_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
+- molecular-mimicry
+caveats:
+- Single-author functional-medicine synthesis; the strict 'must have leaky gut' claim
+  is stronger than current consensus.
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: He believes that in order to develop an autoimmune condition, you must have
+    leaky gut.
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

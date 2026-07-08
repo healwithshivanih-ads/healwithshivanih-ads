@@ -1,0 +1,25 @@
+slug: acute-vs-chronic-stress-biphasic-immunity-myers-tas
+statement: Acute stress briefly boosts immunity then resolves, but unrelenting chronic
+  stress suppresses immunity far below baseline while fluctuating or escalating chronic
+  stress can over-activate it — the pattern most linked to triggering autoimmunity.
+evidence_tier: plausible_emerging
+rationale: The stress-immune system evolved for short or steady challenges, not repeated
+  on-off cycles; erratic chronic stress dysregulates the coordinated immune switches.
+coaching_translation: Short bursts of stress are fine; it's the never-ending, up-and-down
+  stress that most unsettles the immune system.
+linked_to_topics:
+- chronic-stress
+linked_to_mechanisms:
+- biphasic-stress-immune-response
+- hpa-axis-dysregulation
+- cortisol-elevation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: lysine-monolaurin-coconut-antiviral-support-myers-tas
+statement: L-lysine and monolaurin (a coconut-derived compound), along with coconut-oil
+  derivatives, are used in functional medicine to support immune control of herpes-family
+  viruses.
+evidence_tier: fm_specific_thin
+rationale: Lysine and monolaurin have proposed antiviral activity against enveloped
+  viruses; Myers uses them alongside immune-supportive lifestyle rather than as standalone
+  cures.
+coaching_translation: Lysine and coconut-derived monolaurin are gentle immune supports
+  some people use for cold-sore-type viruses.
+linked_to_supplements:
+- l-lysine
+- monolaurin
+- caprylic-acid
+linked_to_topics:
+- herpes-simplex
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

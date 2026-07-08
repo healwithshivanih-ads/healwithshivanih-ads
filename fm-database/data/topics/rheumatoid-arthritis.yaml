@@ -35,6 +35,7 @@ key_mechanisms:
 - leaky-gut
 - molecular-mimicry
 - chronic-inflammation
+- bystander-activation-cryptic-antigen
 coaching_scope_notes: 'Refer suspected RA to rheumatology immediately — early aggressive
   DMARD therapy changes outcomes. Coaching role: anti-inflammatory diet (Mediterranean/vegetarian,
   gluten-free trial), gut healing (5R), stress management, omega-3 + GLA support,
@@ -57,7 +58,7 @@ sources:
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
 evidence_tier: strong
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-07-08'
+updated_by: shivani

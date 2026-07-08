@@ -1,0 +1,30 @@
+slug: toxin-induced-treg-thymic-suppression
+display_name: Toxin-Induced Thymic / Regulatory T-Cell Suppression
+aliases:
+- thymic atrophy from toxins
+- toxin-driven loss of self-tolerance
+category: immune
+summary: Environmental toxins (notably heavy metals and solvents such as TCE) are
+  proposed to shrink the thymus and impair the education of regulatory T cells (Tregs).
+  With fewer or poorly trained Tregs, effector T cells are more likely to lose tolerance
+  of self and attack the body's own tissues — one of the mechanisms Myers invokes
+  to explain how toxic burden triggers autoimmunity.
+upstream_drivers:
+- heavy-metal-toxicity
+- toxin-load-accumulation
+downstream_effects:
+- chronic-inflammation
+related_mechanisms:
+- molecular-mimicry
+- hla-genetics-immune-tolerance
+linked_to_topics:
+- heavy-metal-toxicity
+- environmental-toxin-exposure
+evidence_tier: fm_specific_thin
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

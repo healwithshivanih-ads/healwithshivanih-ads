@@ -1,0 +1,25 @@
+slug: silver-amalgam-mercury-biological-dentist-removal-myers-tas
+statement: Silver dental amalgams contain mercury that can leach into the body, and
+  if removed they should be taken out by a biological dentist using protective protocols
+  to avoid mercury-vapour exposure.
+evidence_tier: fm_specific_thin
+rationale: Improper amalgam removal can release mercury vapour; a trained biological
+  dentist uses isolation and ventilation to reduce exposure.
+coaching_translation: If you consider removing old silver fillings, use a biological
+  dentist who removes them safely — never rush it.
+linked_to_topics:
+- dental-amalgam-mercury
+- mercury-amalgam-removal
+caveats:
+- Removal decisions are dental/medical; the coach educates and refers, does not advise
+  for or against extraction.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

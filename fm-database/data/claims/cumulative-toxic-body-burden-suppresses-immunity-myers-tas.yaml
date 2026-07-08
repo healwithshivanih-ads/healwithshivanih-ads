@@ -1,0 +1,26 @@
+slug: cumulative-toxic-body-burden-suppresses-immunity-myers-tas
+statement: The average person carries dozens of industrial chemicals and heavy metals,
+  many of them immunosuppressive, and this cumulative body burden is proposed as a
+  major driver of the autoimmune epidemic.
+evidence_tier: plausible_emerging
+rationale: Body-burden studies (e.g., EWG/Mount Sinai) detected an average of ~91
+  chemicals per person, over half known to suppress immune function; Myers frames
+  total load, not any single toxin, as the problem.
+coaching_translation: We're all carrying a load of everyday chemicals, and lightening
+  that load takes strain off the immune system.
+linked_to_topics:
+- toxic-body-burden
+- total-toxic-load
+- environmental-toxin-exposure
+linked_to_mechanisms:
+- toxin-load-accumulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

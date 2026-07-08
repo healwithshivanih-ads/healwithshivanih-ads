@@ -1,0 +1,23 @@
+slug: immune-complexes-deposit-in-joints-cause-pain-myers-tas
+statement: When inflammation is high, circulating immune complexes can settle in the
+  joints, causing the redness, swelling, heat, and pain that can herald rheumatoid
+  arthritis.
+evidence_tier: plausible_emerging
+rationale: Immune-complex deposition is a recognised route to inflammatory joint disease;
+  lowering systemic inflammation reduces it.
+coaching_translation: High body-wide inflammation can land in the joints as pain and
+  swelling — calming inflammation helps the joints too.
+linked_to_topics:
+- rheumatoid-arthritis
+linked_to_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

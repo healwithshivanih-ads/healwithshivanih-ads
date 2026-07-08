@@ -1,0 +1,26 @@
+slug: casomorphin-gluteomorphin-cravings-myers-tas
+statement: Dairy-derived casomorphins and gluten-derived gluteomorphins can bind opioid
+  receptors, producing feel-good effects and withdrawal-like cravings that make these
+  foods hard to give up.
+evidence_tier: plausible_emerging
+rationale: Partially digested casein and gluten peptides can act as exorphins at opioid
+  receptors in susceptible individuals, which Myers uses to explain intense dairy
+  and gluten cravings.
+coaching_translation: Dairy and gluten can act a little like mild opioids for some
+  people, which is why cutting them can feel like withdrawal at first.
+linked_to_mechanisms:
+- gluten-casein-opioid-peptides
+- opioid-peptide-absorption
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: gluten contains "gluteomorphins," which act in the same manner, which is
+    why so many people crave gluten and have a hard time giving it up.
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

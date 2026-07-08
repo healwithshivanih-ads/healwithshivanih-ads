@@ -1,0 +1,26 @@
+slug: chelation-agents-natural-and-pharmaceutical-with-support-myers-tas
+statement: Chelation may use gentler agents like cilantro for low-but-significant
+  burdens or DMSA (FDA-approved for lead) for higher burdens, always with detox support
+  such as glutathione and minerals; cholestyramine is used to bind mycotoxins.
+evidence_tier: fm_specific_thin
+rationale: Agent choice is matched to burden, and cofactor support protects detox
+  pathways during mobilisation.
+coaching_translation: If metals need removing, it's done in stages with nutrient support
+  — under a doctor's care.
+linked_to_topics:
+- heavy-metal-toxicity
+linked_to_supplements:
+- glutathione
+- chlorella
+caveats:
+- Chelation and binder use are physician-directed; coach does not advise or supply
+  these agents.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Appendices B-C
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

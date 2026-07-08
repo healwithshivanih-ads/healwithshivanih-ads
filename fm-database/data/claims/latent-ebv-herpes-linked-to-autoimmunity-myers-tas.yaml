@@ -1,0 +1,25 @@
+slug: latent-ebv-herpes-linked-to-autoimmunity-myers-tas
+statement: Latent herpes-family viruses, especially Epstein-Barr, are strongly associated
+  with autoimmune conditions (MS, lupus, Hashimoto's, Graves', Sjögren's, chronic
+  fatigue), and autoimmune patients tend to carry higher viral loads.
+evidence_tier: plausible_emerging
+rationale: EBV persists for life after mono; epidemiology links it tightly to MS and
+  lupus, with higher viral loads in autoimmune patients suggesting an active immune
+  provocation.
+coaching_translation: Old viruses like Epstein-Barr never fully leave and can keep
+  nudging the immune system, which is why supporting immunity matters.
+linked_to_topics:
+- multiple-sclerosis
+- herpes-simplex
+linked_to_mechanisms:
+- ebv-reactivation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

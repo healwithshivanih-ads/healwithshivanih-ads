@@ -1,0 +1,22 @@
+slug: food-is-medicine-nutrient-density-over-rda-myers-tas
+statement: The Myers Way treats food as medicine and prioritises nutrient density,
+  noting that government RDAs are minimums to prevent deficiency disease, not targets
+  for optimal health.
+evidence_tier: fm_specific_thin
+rationale: Nutrient-dense whole foods supply the amino acids, fats, and fibre the
+  gut and immune system need beyond bare-minimum requirements.
+coaching_translation: Aim for nutrient-rich food, not just 'enough to get by' — the
+  official minimums aren't the same as thriving.
+linked_to_topics:
+- anti-inflammatory-diet
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 8
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

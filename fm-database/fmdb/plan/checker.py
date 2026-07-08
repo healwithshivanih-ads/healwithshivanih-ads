@@ -371,6 +371,148 @@ def _check_food_first_redundancy(plan: Plan, findings: list[Finding]) -> None:
             ))
 
 
+# Heavy-metal chelation / mobilising agents. Per The Autoimmune Solution
+# (Appendix B) and standard FM practice, mobilising stored metals before the
+# gut is healed and detox/elimination pathways are open risks reabsorption —
+# "run, don't walk, from any provider who wants to chelate you first." This is a
+# non-negotiable SAFETY rule, so it lives in the deterministic checker (always
+# fires, blocks/gates) rather than as an evidence-graph claim (ranked + capped
+# at MAX_CLAIMS, so it may never reach the assess prompt).
+_CHELATION_TOKENS = ("dmsa", "dmps", "edta", "dimercapto", "chelat")
+_MOULD_MCAS_TOKENS = ("mould", "mold", "mcas", "mast cell", "cirs", "mycotoxin")
+
+
+def _check_aggressive_detox(
+    plan: Plan, client: Client | None, findings: list[Finding]
+) -> None:
+    """WARNING when the protocol contains a chelation / metal-mobilising agent.
+
+    Mobilising stored heavy metals before the gut is healed and detox pathways
+    are supported can drive reabsorption and harm — highest-risk with a
+    mould/MCAS history. WARNING (requires ack to publish), never a silent pass.
+    """
+    for item in plan.supplement_protocol:
+        haystack = " ".join(
+            str(x).lower()
+            for x in (
+                item.supplement_slug,
+                getattr(item, "display_name", "") or "",
+                getattr(item, "coach_rationale", "") or "",
+            )
+        )
+        if not any(tok in haystack for tok in _CHELATION_TOKENS):
+            continue
+        detail = (
+            f"{item.supplement_slug!r} looks like a chelation / metal-mobilising "
+            "agent. Confirm the gut is healed and detox + elimination pathways are "
+            "open and supported BEFORE mobilising stored metals — doing it first "
+            "risks reabsorption (The Autoimmune Solution, Appendix B). Sequence "
+            "gut-first; this is clinician-supervised territory."
+        )
+        # Escalate the NOTE (not the severity) when the client's history flags
+        # mould / mast-cell involvement — the highest-risk scenario.
+        if client is not None:
+            hist = " ".join(
+                str(x).lower()
+                for x in (
+                    list(getattr(client, "medical_history", []) or [])
+                    + list(getattr(client, "active_conditions", []) or [])
+                    + [getattr(client, "reported_triggers", "") or ""]
+                )
+            )
+            if any(tok in hist for tok in _MOULD_MCAS_TOKENS):
+                detail += (
+                    " Client history flags mould/mast-cell involvement — do NOT "
+                    "run aggressive detox until immune status is known."
+                )
+        findings.append(
+            Finding(
+                "WARNING", "supplement_protocol", "aggressive_detox",
+                detail, target=item.supplement_slug,
+            )
+        )
+
+
+# Gluten in an autoimmune client. Per The Autoimmune Solution (ch. 5), even
+# trace gluten can keep anti-self antibodies elevated for weeks in autoimmune /
+# gluten-reactive conditions, so gluten avoidance must be 100% — a
+# non-negotiable rule that belongs in the checker, not the evidence graph.
+# Only unambiguous gluten grains are listed (bread/pasta excluded — GF versions
+# are common); `_is_negated` already suppresses "gluten-free" / "avoid gluten".
+_AUTOIMMUNE_CONDITION_TOKENS = (
+    "autoimmun", "hashimoto", "graves", "lupus", "sle", "rheumatoid",
+    "psoriasis", "psoriatic", "sjogren", "sjögren", "multiple sclerosis",
+    "celiac", "coeliac", "crohn", "ulcerative colitis", "inflammatory bowel",
+    "type 1 diabetes", "t1dm", "vitiligo", "alopecia areata", "thyroiditis",
+    "myasthenia", "scleroderma", "ankylosing spondylitis", "antiphospholipid",
+    "addison", "pernicious anemia",
+)
+_GLUTEN_TOKENS = (
+    "gluten", "wheat", "atta", "maida", "roti", "chapati", "chapathi",
+    "phulka", "paratha", "naan", "seitan", "barley", "rye", "semolina",
+    "suji", "sooji", "rava", "spelt", "kamut", "triticale", "couscous",
+    "bulgur", "dalia", "daliya",
+)
+
+
+def _gluten_hits(text: str) -> list[str]:
+    """Gluten-bearing tokens RECOMMENDED in text (word-boundary; skips
+    exclusionary/"-free" contexts via _is_negated)."""
+    low, out = text.lower(), []
+    for word in _GLUTEN_TOKENS:
+        for m in _re.finditer(r"\b" + _re.escape(word) + r"\b", low):
+            if _is_negated(low, m.start(), m.end()):
+                continue
+            out.append(word)
+            break
+    return out
+
+
+def _check_gluten_in_autoimmune(
+    plan: Plan, client: Client | None, findings: list[Finding]
+) -> None:
+    """WARNING when a gluten-bearing food is recommended to a client whose
+    conditions/history flag autoimmunity. WARNING (not CRITICAL) because
+    food-string matching is fuzzy and a reintroduction phase can be a genuine
+    exception — but it requires explicit ack to publish, enforcing the rule."""
+    if client is None:
+        return
+    cond_blob = " ".join(
+        str(x).lower()
+        for x in (
+            list(getattr(client, "active_conditions", []) or [])
+            + list(getattr(client, "medical_history", []) or [])
+        )
+    )
+    if not any(tok in cond_blob for tok in _AUTOIMMUNE_CONDITION_TOKENS):
+        return  # rule applies only to autoimmune / spectrum clients
+
+    seen: set[str] = set()
+
+    def _flag(section: str, field: str, word: str, ctx: str) -> None:
+        if word in seen:
+            return
+        seen.add(word)
+        findings.append(Finding(
+            "WARNING", section, field,
+            (f"{ctx} {word!r} (gluten-bearing), but the client has an autoimmune "
+             "condition — gluten should be removed 100%. Even trace gluten can "
+             "keep anti-self antibodies elevated for weeks (The Autoimmune "
+             "Solution, ch. 5). Swap for a gluten-free alternative, or ack if this "
+             "is a deliberate reintroduction."),
+            target=word,
+        ))
+
+    for item in plan.nutrition.add:
+        for w in _gluten_hits(item):
+            _flag("nutrition", "add", w, "recommends")
+    for prac in plan.lifestyle_practices:
+        for w in _gluten_hits(f"{prac.name} {prac.details}"):
+            _flag("lifestyle_practices", "name", w, f"practice {prac.name!r} references")
+    for w in _gluten_hits(plan.nutrition.pattern):
+        _flag("nutrition", "pattern", w, "nutrition pattern mentions")
+
+
 def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Finding]:
     """Run deterministic checks. Returns findings sorted by severity."""
     findings: list[Finding] = []
@@ -698,6 +840,12 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Food-first redundancy ----------
     _check_food_first_redundancy(plan, findings)
+
+    # ---------- Aggressive-detox / chelation safety ----------
+    _check_aggressive_detox(plan, client, findings)
+
+    # ---------- Gluten in an autoimmune client (100% rule) ----------
+    _check_gluten_in_autoimmune(plan, client, findings)
 
     # Sort: CRITICAL first, then WARNING, then INFO
     severity_order = {"CRITICAL": 0, "WARNING": 1, "INFO": 2}

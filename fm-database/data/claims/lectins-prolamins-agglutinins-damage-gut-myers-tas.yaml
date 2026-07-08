@@ -1,0 +1,25 @@
+slug: lectins-prolamins-agglutinins-damage-gut-myers-tas
+statement: Lectins — including prolamins and agglutinins in grains and legumes — damage
+  the brush border, open tight junctions, activate the immune system, and feed unfriendly
+  bacteria.
+evidence_tier: fm_specific_thin
+rationale: Prolamins behave like gluten and stress the villi; agglutinins bind immune
+  cells and promote leaky gut; both are seed defence proteins not fully deactivated
+  by cooking.
+coaching_translation: Grains and beans carry plant-defence proteins that can irritate
+  the gut lining and stir up the immune system.
+linked_to_topics:
+- lectin-sensitivity
+linked_to_mechanisms:
+- lectin-driven-gut-inflammation
+- leaky-gut
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

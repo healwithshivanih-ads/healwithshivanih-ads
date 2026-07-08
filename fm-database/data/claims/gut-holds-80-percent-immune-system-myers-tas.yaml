@@ -1,0 +1,25 @@
+slug: gut-holds-80-percent-immune-system-myers-tas
+statement: Approximately 80% of the immune system resides in the gut, so gut health
+  is inseparable from immune health.
+evidence_tier: plausible_emerging
+rationale: The gut-associated lymphoid tissue (GALT) is the largest immune compartment
+  in the body; Myers uses this to argue that healing the gut is the first pillar of
+  reversing autoimmunity.
+coaching_translation: A large share of your immune system lives in your gut, which
+  is why we start by supporting digestion and the gut lining.
+linked_to_topics:
+- gut-microbiome
+linked_to_mechanisms:
+- gut-immune-dysregulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: 80 percent of the immune system is located in the gut, meaning that if you
+    don't have a healthy gut, you can't have a healthy immune system.
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

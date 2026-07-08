@@ -1,0 +1,22 @@
+slug: one-autoimmune-condition-triples-risk-of-second-myers-tas
+statement: Having one autoimmune condition raises the risk of developing a second
+  by roughly threefold, which is a key reason to sustain anti-inflammatory living
+  rather than just resolve initial symptoms.
+evidence_tier: plausible_emerging
+rationale: Shared upstream drivers (leaky gut, inflammation, triggers) predispose
+  to additional autoimmune diagnoses.
+coaching_translation: Once you have one autoimmune condition you're more likely to
+  develop another — which is why we keep inflammation down for the long run.
+linked_to_topics:
+- autoimmune-spectrum
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 8
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

@@ -1,0 +1,23 @@
+slug: cortisol-weight-gain-adipose-inflammation-cycle-myers-tas
+statement: Chronic cortisol promotes fat retention and weight gain even without extra
+  calories, and body fat is itself an inflammatory endocrine organ, creating a stress-weight-inflammation
+  vicious cycle.
+evidence_tier: plausible_emerging
+rationale: Animal studies show stress-induced weight gain independent of intake; adipose
+  tissue secretes inflammatory cytokines that further stress the immune system.
+coaching_translation: Stress can add belly fat even without overeating, and that fat
+  fuels more inflammation — so stress relief helps weight too.
+linked_to_topics:
+- chronic-stress
+linked_to_mechanisms:
+- cortisol-elevation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

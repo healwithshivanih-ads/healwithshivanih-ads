@@ -1,0 +1,26 @@
+slug: two-phase-liver-detox-needs-cofactors-protein-myers-tas
+statement: Liver detoxification is a two-phase process; phase 1 creates reactive intermediates
+  that phase 2 must conjugate for excretion, so stalling in phase 1 is worse than
+  not detoxing, and the process needs protein and nutrient cofactors.
+evidence_tier: plausible_emerging
+rationale: Balanced phase 1/phase 2 flow requires B vitamins, amino acids, and antioxidants;
+  incomplete conjugation leaves toxic intermediates circulating.
+coaching_translation: Detox happens in two steps — the body needs the right nutrients
+  and enough protein to finish the job safely.
+linked_to_topics:
+- detoxification
+- liver-detoxification
+linked_to_mechanisms:
+- phase-1-biotransformation
+- phase-2-conjugation
+- phase-1-phase-2-detox-imbalance
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

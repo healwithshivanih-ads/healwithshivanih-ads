@@ -1,0 +1,22 @@
+slug: reintroduction-after-reset-gluten-dairy-stay-out-myers-tas
+statement: After symptoms settle, foods are reintroduced carefully one at a time,
+  but gluten and dairy are kept out long-term for people with autoimmunity or on the
+  spectrum because of their strong inflammatory effect.
+evidence_tier: fm_specific_thin
+rationale: Systematic single-food reintroduction reveals individual triggers; gluten
+  and dairy remain the highest-risk foods to keep excluded.
+coaching_translation: Once you feel better we test foods back one at a time — but
+  gluten and dairy usually stay out for good.
+linked_to_topics:
+- elimination-diet
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 10
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

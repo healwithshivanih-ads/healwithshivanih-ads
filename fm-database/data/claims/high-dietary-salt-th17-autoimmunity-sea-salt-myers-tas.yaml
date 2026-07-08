@@ -1,0 +1,24 @@
+slug: high-dietary-salt-th17-autoimmunity-sea-salt-myers-tas
+statement: A diet high in processed table salt has been linked to more inflammatory
+  Th17 cells and autoimmunity in research, so The Myers Way uses small amounts of
+  trace-mineral-rich sea salt instead.
+evidence_tier: plausible_emerging
+rationale: Mouse studies associated high-salt diets with Th17 expansion; Myers distinguishes
+  processed salt in packaged food from modest sea salt.
+coaching_translation: Heavy processed-salt diets may stoke inflammatory immune cells
+  — a little good-quality sea salt is fine.
+linked_to_mechanisms:
+- th17-dominance
+caveats:
+- Evidence is early and largely preclinical; salt targets should follow the client's
+  blood-pressure and medical guidance.
+out_of_scope_notes: ''
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 8
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

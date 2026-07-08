@@ -1,0 +1,24 @@
+slug: four-r-gut-healing-protocol-myers-tas
+statement: The 4R gut-healing protocol — Remove, Restore, Reinoculate, Repair — is
+  the functional-medicine framework Myers uses to heal the gut.
+evidence_tier: fm_specific_thin
+rationale: Remove inflammatory foods/infections/irritant medications; Restore stomach
+  acid and digestive enzymes; Reinoculate with probiotics/fermented foods; Repair
+  the lining with gut-supportive nutrients. Predecessor framing to the 5R protocol.
+coaching_translation: 'We heal the gut in four moves: take out what irritates it,
+  bring back digestion support, replant friendly bacteria, and repair the lining.'
+linked_to_topics:
+- 5r-gut-protocol
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: 'the 4Rs. The name comes from the four key steps: remove, restore, reinoculate,
+    and repair.'
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

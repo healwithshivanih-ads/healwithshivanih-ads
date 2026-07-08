@@ -1,0 +1,24 @@
+slug: stress-reactivates-latent-viruses-drives-flares-myers-tas
+statement: Stress-driven glucocorticoids can reactivate latent EBV and herpes viruses,
+  and each reactivation re-provokes the immune system, contributing to autoimmune
+  flares.
+evidence_tier: plausible_emerging
+rationale: Lowered immune surveillance during stress lets latent viruses replicate;
+  the renewed immune response then damages self-tissue via mimicry or bystander effects.
+coaching_translation: Stress can wake up dormant viruses, which is one way a stressful
+  stretch can set off a flare.
+linked_to_mechanisms:
+- stress-induced-viral-reactivation
+- ebv-reactivation
+linked_to_topics:
+- chronic-stress
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

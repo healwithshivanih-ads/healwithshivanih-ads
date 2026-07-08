@@ -1,0 +1,21 @@
+slug: sweating-infrared-sauna-supports-detox-myers-tas
+statement: Sweating, including via infrared sauna, is used to support toxin excretion
+  and is a useful option when exercise is limited.
+evidence_tier: fm_specific_thin
+rationale: Sweat is one excretion route for some toxins; saunas provide it passively
+  when movement is restricted.
+coaching_translation: A daily sweat — through movement or an infrared sauna — is one
+  gentle way to help the body clear toxins.
+linked_to_mechanisms:
+- sweat-mediated-toxin-excretion
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

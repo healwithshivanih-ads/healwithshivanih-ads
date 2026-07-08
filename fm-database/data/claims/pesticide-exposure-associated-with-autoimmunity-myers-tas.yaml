@@ -1,0 +1,23 @@
+slug: pesticide-exposure-associated-with-autoimmunity-myers-tas
+statement: Occupational pesticide exposure has been associated with higher autoimmune
+  mortality, elevated antinuclear antibodies, and lupus, and many pesticides are systemic
+  so washing produce does not remove them.
+evidence_tier: plausible_emerging
+rationale: Farmer cohort studies link chronic pesticide exposure to autoimmune outcomes;
+  systemic pesticides are integrated into the plant, supporting a preference for organic
+  where possible.
+coaching_translation: Pesticides are linked to autoimmune risk and can't just be washed
+  off — buying organic for the most-sprayed foods helps.
+linked_to_topics:
+- environmental-toxin-exposure
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

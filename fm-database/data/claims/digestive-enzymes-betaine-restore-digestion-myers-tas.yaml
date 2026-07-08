@@ -1,0 +1,24 @@
+slug: digestive-enzymes-betaine-restore-digestion-myers-tas
+statement: Supplemental digestive enzymes and, where needed, betaine HCl are used
+  to restore proper digestion and stomach-acid function.
+evidence_tier: fm_specific_thin
+rationale: 'Restore-phase support: enzymes and acid help fully break down food, improving
+  nutrient absorption and reducing the antigen load on the gut.'
+linked_to_supplements:
+- digestive-enzymes
+- betaine-hcl
+linked_to_mechanisms:
+- hypochlorhydria
+caveats:
+- Betaine HCl is contraindicated with active ulcers or NSAID/steroid use; use under
+  clinician guidance.
+coaching_translation: ''
+out_of_scope_notes: ''
+linked_to_topics: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

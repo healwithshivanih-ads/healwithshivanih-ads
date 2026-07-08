@@ -1,0 +1,23 @@
+slug: gluten-molecular-mimicry-thyroid-hashimotos-myers-tas
+statement: Antibodies made against gliadin can, through molecular mimicry, cross-target
+  thyroid tissue and contribute to Hashimoto's thyroiditis.
+evidence_tier: plausible_emerging
+rationale: Gliadin shares structural similarity with thyroid tissue; in gluten-reactive
+  individuals the immune system may attack the thyroid whenever gluten is eaten.
+coaching_translation: In some people, gluten antibodies get confused and also attack
+  the thyroid, which is one reason gluten-free helps Hashimoto's.
+linked_to_topics:
+- molecular-mimicry-gluten-thyroid
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- molecular-mimicry
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

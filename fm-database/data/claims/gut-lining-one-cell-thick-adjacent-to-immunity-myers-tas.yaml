@@ -1,0 +1,22 @@
+slug: gut-lining-one-cell-thick-adjacent-to-immunity-myers-tas
+statement: The gut epithelium is only one cell thick with the majority of the immune
+  system just beyond it, so barrier integrity is inseparable from immune health.
+evidence_tier: plausible_emerging
+rationale: A single-cell-thick barrier separates gut contents from a large immune
+  compartment; when it leaks, the immune system is directly provoked.
+coaching_translation: The gut wall is one cell thin with much of your immune system
+  right behind it — keeping that wall intact keeps immunity calm.
+linked_to_topics:
+- gut-microbiome
+linked_to_mechanisms:
+- leaky-gut
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

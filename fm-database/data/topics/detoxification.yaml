@@ -42,7 +42,11 @@ key_mechanisms:
 - phase-3-elimination
 - balanced-detoxification
 - mitochondrial-toxin-disruption
-coaching_scope_notes: 'Coach educates on toxicant exposure sources (food, water, air, personal
+coaching_scope_notes: '⚠ SAFETY: do not pursue chelation or aggressive metal ''detox''
+  before the gut is healed and elimination/detox pathways are supported — mobilising
+  stored metals first risks reabsorption; highest-risk with a mould/MCAS history.
+  Gut-first, clinician-supervised. Coach educates on toxicant exposure sources (food,
+  water, air, personal
 
   care, household), avoidance strategies, and supportive nutrition
 
@@ -52,10 +56,9 @@ coaching_scope_notes: 'Coach educates on toxicant exposure sources (food, water,
 
   Coach does NOT prescribe detox protocols for diagnosed disease,
 
-  recommend chelation, or interpret toxicant lab panels.
-
-  '
-clinician_scope_notes: 'Clinical detox protocols, heavy-metal chelation, toxicant lab
+  recommend chelation, or interpret toxicant lab panels.'
+clinician_scope_notes: 'Clinical detox protocols, heavy-metal chelation, toxicant
+  lab
 
   interpretation (urine porphyrins, DMSA-provoked metals, mycotoxin
 
@@ -67,7 +70,7 @@ sources:
 - id: minich-detox-basics-fmca-transcript
   location: Introduction and Learning Objectives
   quote: detoxification basics for health coaches… toxin load and how to reduce it
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-07-08'
 updated_by: shivani

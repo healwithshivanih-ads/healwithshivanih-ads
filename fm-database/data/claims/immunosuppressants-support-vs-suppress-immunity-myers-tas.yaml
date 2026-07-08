@@ -1,0 +1,25 @@
+slug: immunosuppressants-support-vs-suppress-immunity-myers-tas
+statement: Immunosuppressant drugs can lower immune function below normal, raising
+  infection risk, whereas the functional-medicine approach aims to remove triggers
+  and support the immune system rather than suppress it.
+evidence_tier: plausible_emerging
+rationale: The book contrasts symptom-suppressing pharmacology with root-cause support;
+  both can coexist in real care.
+coaching_translation: Some medications quiet the immune system while we work on the
+  root causes that let it settle on its own.
+linked_to_topics:
+- autoimmune-spectrum
+caveats:
+- Medication decisions belong to the prescribing physician. The coach never advises
+  starting, stopping, or tapering immunosuppressants and supports the client alongside
+  their medical care.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapters 2-3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

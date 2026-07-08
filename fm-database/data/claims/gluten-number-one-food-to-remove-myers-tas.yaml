@@ -1,0 +1,24 @@
+slug: gluten-number-one-food-to-remove-myers-tas
+statement: Myers regards removing gluten as the single highest-impact dietary change
+  for autoimmune and inflammatory conditions.
+evidence_tier: fm_specific_thin
+rationale: Gluten is framed as the number-one inflammatory food because of its role
+  in triggering intestinal permeability and immune reactivity; if a person does only
+  one thing, she recommends removing gluten.
+coaching_translation: If you change only one thing, dropping gluten tends to give
+  the biggest return for inflammation.
+linked_to_topics:
+- food-sensitivity
+linked_to_mechanisms:
+- gluten-mediated-tight-junction-disruption
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 4
+  quote: removing gluten from your diet is far and away the best thing you can do.
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

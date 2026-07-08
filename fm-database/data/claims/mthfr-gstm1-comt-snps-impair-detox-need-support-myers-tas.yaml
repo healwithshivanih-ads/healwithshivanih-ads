@@ -1,0 +1,36 @@
+slug: mthfr-gstm1-comt-snps-impair-detox-need-support-myers-tas
+statement: SNPs in MTHFR, GSTM1, and COMT reduce methylation, glutathione handling,
+  and estrogen/toxin clearance, so affected people benefit from methylated B6/B12/folate,
+  extra cruciferous vegetables, and detox support such as glutathione, ALA, milk thistle,
+  NAC, and magnesium.
+evidence_tier: plausible_emerging
+rationale: These common variants slow key detox and methylation steps; targeted nutrient
+  support compensates for reduced enzyme capacity.
+coaching_translation: Common genetic quirks (MTHFR, GSTM1, COMT) can slow detox —
+  the right B-vitamin forms and detox-support nutrients help make up for it.
+linked_to_topics:
+- mthfr-gene-variant
+- comt-val158met
+- methylation-cycle
+linked_to_mechanisms:
+- methylation-cycle
+- gst-null-genotype-detox-capacity
+linked_to_supplements:
+- l-methylfolate
+- methylcobalamin
+- vitamin-b6
+- alpha-lipoic-acid
+- milk-thistle
+- n-acetylcysteine
+- magnesium
+caveats:
+- Genetic testing and interpretation are clinician-only; coach supports lifestyle
+  and refers for testing.
+out_of_scope_notes: ''
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 6
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

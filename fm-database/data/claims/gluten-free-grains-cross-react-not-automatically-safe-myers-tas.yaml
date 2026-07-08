@@ -1,0 +1,26 @@
+slug: gluten-free-grains-cross-react-not-automatically-safe-myers-tas
+statement: Gluten-free grains are not automatically safe in autoimmunity because they
+  carry lectins, are frequently cross-contaminated, and can cross-react with gluten
+  antibodies.
+evidence_tier: fm_specific_thin
+rationale: Cross-reactivity plus lectin content means rice, corn, millet, oats and
+  pseudo-grains like quinoa can still provoke inflammation in reactive individuals;
+  hence broad grain removal in the 30-day phase.
+coaching_translation: Swapping to gluten-free grains isn't always enough — they can
+  still trigger the same reaction during the elimination phase.
+linked_to_topics:
+- lectin-sensitivity
+- elimination-diet
+linked_to_mechanisms:
+- food-immune-cross-reactivity
+- lectin-driven-gut-inflammation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

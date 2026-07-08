@@ -1,0 +1,25 @@
+slug: lyme-mimics-and-coexists-with-autoimmune-arthritis-myers-tas
+statement: Lyme disease can cause persistent arthritis and is frequently confused
+  with, or coexists with, autoimmune conditions; conventional Lyme testing has a high
+  false-negative rate.
+evidence_tier: fm_specific_thin
+rationale: Post-infectious Lyme arthritis may arise via bystander activation or mimicry;
+  because standard tests miss cases, accurate diagnosis matters before attributing
+  symptoms to autoimmunity.
+coaching_translation: Lyme can look just like an autoimmune joint condition — accurate
+  testing matters so the right thing gets treated.
+linked_to_topics:
+- chronic-lyme-disease
+caveats:
+- Lyme diagnosis and treatment are strictly medical; coach does not diagnose or recommend
+  antibiotics.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

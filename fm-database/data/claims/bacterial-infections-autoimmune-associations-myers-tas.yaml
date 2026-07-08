@@ -1,0 +1,25 @@
+slug: bacterial-infections-autoimmune-associations-myers-tas
+statement: Specific bacteria are associated with specific autoimmune conditions —
+  e.g., Klebsiella with ankylosing spondylitis, Yersinia with thyroid autoimmunity,
+  Campylobacter with Guillain-Barré, and Streptococcus pyogenes with rheumatic fever.
+evidence_tier: plausible_emerging
+rationale: Molecular-mimicry and post-infectious immune responses underlie several
+  of these classic microbe-disease associations, which can guide targeted testing
+  in refractory cases.
+coaching_translation: Certain infections are tied to certain autoimmune diseases —
+  worth investigating with a doctor if progress stalls.
+linked_to_topics:
+- rheumatoid-arthritis
+linked_to_mechanisms:
+- molecular-mimicry
+caveats:
+- Testing and antibiotic decisions are clinician-only; the coach educates and refers.
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

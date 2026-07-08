@@ -1,0 +1,26 @@
+slug: adaptogens-modulate-stress-hormones-myers-tas
+statement: Adaptogenic herbs are used to help normalise stress-hormone output — raising
+  it when low and lowering it when high — as part of adrenal support.
+evidence_tier: fm_specific_thin
+rationale: Adaptogens like ashwagandha, rhodiola, and holy basil are proposed to buffer
+  the HPA-axis stress response.
+coaching_translation: Adaptogen herbs like ashwagandha and holy basil can help steady
+  your stress response.
+linked_to_supplements:
+- ashwagandha
+- rhodiola
+- holy-basil
+linked_to_topics:
+- adrenal-fatigue
+caveats:
+- Some adaptogens are not advised in pregnancy or with certain medications; check
+  suitability per client.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 7
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

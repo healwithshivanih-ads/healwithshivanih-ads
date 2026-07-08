@@ -20,6 +20,7 @@ related_topics:
 - yeast-overgrowth
 key_mechanisms:
 - lectin-gut-inflammation
+- food-immune-cross-reactivity
 coaching_scope_notes: Coaches can educate clients on lectin-reducing food preparation
   techniques. Emphasise soaking legumes, rinsing quinoa, using sourdough, and de-seeding/de-skinning
   nightshades.
@@ -31,7 +32,7 @@ sources:
   location: Lectins Section
   quote: Lectins are only a problem if they get into the blood. If lectins get into
     the blood, they increase inflammation in it.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-07-08'
 updated_by: shivani

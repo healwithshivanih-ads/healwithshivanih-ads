@@ -1,0 +1,24 @@
+slug: remove-sugar-feeds-yeast-suppresses-immunity-myers-tas
+statement: Sugar is removed during the reset because it feeds yeast overgrowth and
+  SIBO, suppresses immunity, drives blood-sugar spikes and crashes, and stresses the
+  adrenals.
+evidence_tier: plausible_emerging
+rationale: Dietary sugar fuels dysbiotic organisms and the glucose roller-coaster
+  while adding to immune and adrenal load.
+coaching_translation: Sugar feeds the wrong gut bugs and sends energy up-and-down
+  — cutting it out steadies things and calms the gut.
+linked_to_topics:
+- candida-overgrowth
+- chronic-inflammation
+linked_to_mechanisms:
+- dysbiosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 8
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

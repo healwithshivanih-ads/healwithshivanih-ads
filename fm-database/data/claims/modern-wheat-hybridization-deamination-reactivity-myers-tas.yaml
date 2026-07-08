@@ -1,0 +1,22 @@
+slug: modern-wheat-hybridization-deamination-reactivity-myers-tas
+statement: Modern wheat has been hybridized and deaminated, creating novel gluten
+  proteins and enabling gluten's use as a ubiquitous additive, which Myers links to
+  greater immune reactivity than historical wheat.
+evidence_tier: fm_specific_thin
+rationale: Hybridization introduces proteins the body has not adapted to; deamination
+  makes gluten water-soluble and pervasive, increasing exposure and reactivity.
+coaching_translation: Today's wheat isn't your grandmother's wheat — it's been changed
+  and is now in far more products.
+linked_to_mechanisms:
+- gluten-mediated-tight-junction-disruption
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 5
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

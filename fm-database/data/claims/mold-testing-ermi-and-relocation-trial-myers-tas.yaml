@@ -1,0 +1,28 @@
+slug: mold-testing-ermi-and-relocation-trial-myers-tas
+statement: Because standard spore/air tests miss mycotoxin-producing molds, an ERMI
+  dust test or (better) a 10-14 day trial of living somewhere mold-free — 'your body
+  knows better than the test' — helps identify mould illness; cholestyramine can bind
+  mycotoxins.
+evidence_tier: fm_specific_thin
+rationale: Symptom improvement away from home and relapse on return is a practical
+  read-out when testing is unreliable; VOC-producing molds like Stachybotrys and Aspergillus
+  are the concern.
+coaching_translation: If mould is suspected, a couple of weeks staying elsewhere can
+  be more telling than a home test — feeling better away and worse back home is a
+  strong clue.
+linked_to_topics:
+- mold-mycotoxin-exposure
+linked_to_mechanisms:
+- fungal-overgrowth-toxin-production
+caveats:
+- Remediation chemicals can also stress a sensitive immune system; binder medication
+  is clinician-prescribed.
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Appendix C
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

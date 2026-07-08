@@ -45,6 +45,8 @@ key_mechanisms:
 - hpa-axis-dysregulation
 - endorphin-immune-modulation
 - ldn-endorphin-rebound
+- loss-of-self-tolerance
+- halogen-iodine-displacement
 coaching_scope_notes: Coaches may support lifestyle and dietary factors. LDN prescribing
   and thyroid hormone monitoring are clinician scope.
 clinician_scope_notes: LDN may reduce anti-thyroid antibodies and inflammation. Monitor
@@ -88,7 +90,7 @@ sources:
   quote: Natural treatment strategies for normalizing thyroid function vary depending
     on whether there is an autoimmune hypothyroid condition, clinical hypothyroidism,
     subclinical hypothyroidism, or hypothyroid syndrome.
-version: 4
+version: 5
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-07-08'
 updated_by: shivani

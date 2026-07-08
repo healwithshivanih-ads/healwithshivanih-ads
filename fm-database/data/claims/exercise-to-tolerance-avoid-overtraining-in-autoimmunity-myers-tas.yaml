@@ -1,0 +1,24 @@
+slug: exercise-to-tolerance-avoid-overtraining-in-autoimmunity-myers-tas
+statement: Movement supports immunity, but over-exercising can set back autoimmune
+  and adrenal recovery; intensity should be scaled so the person feels energised afterward
+  and the next day, backing off if symptoms worsen.
+evidence_tier: plausible_emerging
+rationale: Excess training is a physical stressor that raises cortisol and inflammation
+  in an already-stressed system; feeling worse after exercise signals too much.
+coaching_translation: Move regularly but gently — if you feel wiped out the next day,
+  that's a sign to dial it back.
+linked_to_topics:
+- exercise-prescription-fm
+- adrenal-fatigue
+linked_to_mechanisms:
+- exercise-induced-anti-inflammatory-signaling
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 8
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

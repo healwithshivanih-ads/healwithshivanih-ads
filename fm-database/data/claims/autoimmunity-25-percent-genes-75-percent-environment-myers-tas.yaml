@@ -1,0 +1,24 @@
+slug: autoimmunity-25-percent-genes-75-percent-environment-myers-tas
+statement: Twin studies suggest autoimmunity is roughly 25% heritable and 75% environmental,
+  and because gene expression is epigenetically modifiable, diet and lifestyle can
+  turn predisposing genes up or down.
+evidence_tier: plausible_emerging
+rationale: Genetic predisposition needs an environmental trigger; epigenetics means
+  the environment strongly shapes whether autoimmune genes are expressed.
+coaching_translation: Your genes load the gun, but diet and lifestyle largely pull
+  the trigger — which means you have real influence.
+linked_to_topics:
+- autoimmune-spectrum
+- epigenetics-lifestyle-gene-expression
+linked_to_mechanisms:
+- epigenetic-gene-expression
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapters 2-3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani

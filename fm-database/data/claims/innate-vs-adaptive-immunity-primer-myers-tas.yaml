@@ -1,0 +1,23 @@
+slug: innate-vs-adaptive-immunity-primer-myers-tas
+statement: The immune system has an innate arm (fast, no memory, drives acute inflammation)
+  and an adaptive arm (slower, antibody-based memory); understanding both explains
+  how food reactions and infections provoke inflammation.
+evidence_tier: plausible_emerging
+rationale: Innate immunity responds immediately and non-specifically; adaptive immunity
+  learns and makes targeted antibodies, which is where mimicry and food sensitivities
+  arise.
+coaching_translation: You have a fast 'first responder' immune arm and a slower 'memory'
+  arm — food and infections can set off either.
+linked_to_mechanisms:
+- innate-immune-modulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics: []
+linked_to_supplements: []
+sources:
+- id: amy-myers-autoimmune-solution
+  location: Chapter 3
+version: 1
+status: active
+updated_at: '2026-07-08'
+updated_by: shivani
