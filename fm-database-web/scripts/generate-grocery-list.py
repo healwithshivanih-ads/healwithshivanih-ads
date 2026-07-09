@@ -109,19 +109,25 @@ SYSTEM = """You are building a weekly grocery shopping list for an Indian functi
 HARD RULES:
 1. Derive ingredients ONLY from the dishes on the menu (and the recipe pack's ingredient lists when given). Never invent dishes or add foods that aren't implied by the menu.
 2. Use Indian shopping names a Mumbai household uses: atta (not flour types in English alone), dahi, paneer, methi, palak, jeera, haldi, sabzi vegetable names. Keep English in brackets only when helpful, e.g. "Ragi (finger millet) atta".
-3. Quantities are for ONE person for ONE week, rounded to practical purchase sizes (e.g. "500 g", "1 small bunch", "12 (1/day + cooking)"). Count repeated dishes across the week when sizing.
+3. Quantities are for ONE person for ONE week, in INDIAN METRIC ONLY — grams / kilograms / millilitres / litres or count ("500 g", "1.5 kg", "1 small bunch", "12 (1/day + cooking)"). NEVER use pounds (lb), ounces (oz) or cups-as-purchase-size — a Mumbai shopper buys in grams and kilos. Count repeated dishes across the week when sizing.
 4. Categorise for the shopping trip using exactly the given categories.
 5. Mark `staple: true` for pantry items virtually every Indian kitchen already stocks (salt, haldi, jeera, basic oil, common whole spices) — buyers skip these unless out.
 6. Aggregate: one line per ingredient per week, not per dish. List the dishes it's for in `for` (max 4, short names).
 7. Respect the stated dietary preference absolutely — never list ingredients that violate it.
-8. Keep each week's list focused: typically 20-40 lines including staples."""
+8. NEVER list any food on the client's avoid-list (or a dish/ingredient built on it) — not even as a staple.
+9. Keep each week's list focused: typically 20-40 lines including staples."""
 
 
 def _build_user(payload: dict[str, Any]) -> str:
     lines: list[str] = []
     pref = payload.get("dietary_preference") or ""
+    avoid = payload.get("foods_to_avoid") or ""
     if pref:
-        lines.append(f"DIETARY PREFERENCE (absolute): {pref}\n")
+        lines.append(f"DIETARY PREFERENCE (absolute): {pref}")
+    if avoid:
+        lines.append(f"FOODS TO AVOID (never list): {avoid}")
+    if pref or avoid:
+        lines.append("")
     for wk in payload.get("weeks") or []:
         lines.append(f"## Week {wk.get('week')}")
         for day in wk.get("days") or []:
@@ -165,12 +171,13 @@ def main() -> None:
     # weeks back together so the app still gets one grocery doc with a tab per
     # rotation week (the app shows the current week, with a toggle to the other).
     pref = payload.get("dietary_preference") or ""
+    avoid = payload.get("foods_to_avoid") or ""
     recipes_text = payload.get("recipes_text") or ""
     all_weeks: list[dict[str, Any]] = []
     usage_entry = None
     for wk in weeks:
         wk_no = wk.get("week")
-        sub = {"dietary_preference": pref, "weeks": [wk], "recipes_text": recipes_text}
+        sub = {"dietary_preference": pref, "foods_to_avoid": avoid, "weeks": [wk], "recipes_text": recipes_text}
         try:
             resp = client.messages.create(
                 model=MODEL,
