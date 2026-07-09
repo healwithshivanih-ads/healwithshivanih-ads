@@ -111,8 +111,10 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
-// 07:45 IST daily — backfill grocery lists for any client with a live menu but
-// no grocery file (migrated menus / failed background jobs). Idempotent.
+// 07:45 IST daily — menu-artifact freshness guard: regenerate grocery + recipes
+// for any client whose artifact is MISSING, WEEK-MISMATCHED, or STALE (built
+// before the menu was last changed — catches menus edited outside the approve
+// flow). Idempotent; fresh artifacts are skipped.
 cron.schedule(
   "45 7 * * *",
   () => fire("grocery-backfill"),
