@@ -90,16 +90,19 @@ export async function generateGroceryListAction(
     /* fine — the menu alone is enough */
   }
 
-  const dietaryPreference = await (async () => {
+  const { dietaryPreference, foodsToAvoid } = await (async () => {
     try {
       const raw = await fs.readFile(
         path.join(getPlansRoot(), "clients", clientId, "client.yaml"),
         "utf-8",
       );
-      const c = yaml.load(raw) as { dietary_preference?: string };
-      return c?.dietary_preference ?? "";
+      const c = yaml.load(raw) as { dietary_preference?: string; foods_to_avoid?: string | string[] };
+      const fta = Array.isArray(c?.foods_to_avoid)
+        ? c.foods_to_avoid.join(", ")
+        : c?.foods_to_avoid ?? "";
+      return { dietaryPreference: c?.dietary_preference ?? "", foodsToAvoid: fta };
     } catch {
-      return "";
+      return { dietaryPreference: "", foodsToAvoid: "" };
     }
   })();
 
@@ -109,6 +112,7 @@ export async function generateGroceryListAction(
       client_id: clientId,
       plan_slug: planSlug,
       dietary_preference: dietaryPreference,
+      foods_to_avoid: foodsToAvoid,
       weeks: data.weekMenus.map((w) => ({
         week: w.week,
         days: w.days.map((d) => ({
