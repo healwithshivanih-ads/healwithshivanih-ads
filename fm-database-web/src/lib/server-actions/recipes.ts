@@ -57,9 +57,9 @@ export async function generateWeekRecipesAction(
   const client = await (async () => {
     try {
       const raw = await fs.readFile(path.join(getPlansRoot(), "clients", clientId, "client.yaml"), "utf-8");
-      return yaml.load(raw) as { dietary_preference?: string; foods_to_avoid?: string | string[] };
+      return yaml.load(raw) as { dietary_preference?: string; foods_to_avoid?: string | string[]; country?: string };
     } catch {
-      return {} as { dietary_preference?: string; foods_to_avoid?: string | string[] };
+      return {} as { dietary_preference?: string; foods_to_avoid?: string | string[]; country?: string };
     }
   })();
   const foodsToAvoid = Array.isArray(client.foods_to_avoid)
@@ -73,6 +73,7 @@ export async function generateWeekRecipesAction(
       plan_slug: planSlug,
       dietary_preference: client.dietary_preference ?? "",
       foods_to_avoid: foodsToAvoid,
+      country: client.country ?? "",
       weeks: data.weekMenus.map((w) => ({
         week: w.week,
         days: w.days.map((d) => ({

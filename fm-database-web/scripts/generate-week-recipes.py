@@ -35,6 +35,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 from atomic_write import write_text_atomic  # noqa: E402
+from locale_profile import locale_directive  # noqa: E402
 
 
 def _load_dotenv() -> None:
@@ -92,7 +93,7 @@ HARD RULES:
 1. Write a recipe for every DISTINCT COOKABLE main/side dish on the menu — curries, sabzis, dals, khichdis, cheelas, rotis, stews, omelettes/bhurji, poriyals, chutneys, soups. SKIP trivial no-cook items (plain nuts, a piece of fruit, plain curd, tea/coffee, protein shake, methi water, plain boiled eggs) — they need no recipe.
 2. NEVER invent dishes that aren't on the menu. If a menu cell combines several dishes ("fish curry + green-bean poriyal + quinoa"), write a SEPARATE recipe for each cookable component.
 3. Respect the dietary preference and the avoid-list ABSOLUTELY — if a dish says "no tomato", the recipe uses no tomato. Never introduce a forbidden ingredient.
-4. Methods are concise home-cook steps (4-9 numbered steps), Indian kitchen technique + names (tadka, bhuno, dahi, jeera, haldi). Quantities for 1-2 servings.
+4. Methods are concise home-cook steps (4-9 numbered steps), Indian kitchen technique + names (tadka, bhuno, dahi, jeera, haldi). Quantities for 1-2 servings, in the units given under LOCALE in the user message (metric for India, US units for a US-based client).
 5. Deduplicate ONLY exact repeats: if the IDENTICAL dish recurs across days, write it once. But dishes with DIFFERENT names are DIFFERENT recipes — "Chana masala", "Chana-spinach", and "Chickpea-spinach curry" are three separate recipes; NEVER merge similar-but-differently-named dishes into one.
 6. Cover EVERY cookable dish — do NOT cap or trim the set to keep it short. If the menu has 30 distinct cookable dishes, write 30 recipes.
 7. TITLE each recipe to match its menu dish name closely (dish "Chickpea-spinach curry" → title "Chickpea Spinach Curry"), with NO extra parenthetical alternate names — the app links a recipe to a dish by matching the title's words against the dish, so a decorated title ("Chana Palak (Chickpea & Spinach)") fails to link. Sort alphabetically by title."""
@@ -111,6 +112,7 @@ def _collect_dishes(payload: dict[str, Any]) -> list[str]:
 
 def _build_user(payload: dict[str, Any], dishes: list[str]) -> str:
     lines: list[str] = []
+    lines.append(locale_directive(payload.get("country"), "recipe"))
     pref = payload.get("dietary_preference") or ""
     avoid = payload.get("foods_to_avoid") or ""
     if pref:
@@ -215,6 +217,7 @@ HARD RULES:
 
 def _build_fill_user(payload: dict[str, Any], items: list[str]) -> str:
     lines: list[str] = []
+    lines.append(locale_directive(payload.get("country"), "recipe"))
     pref = payload.get("dietary_preference") or ""
     avoid = payload.get("foods_to_avoid") or ""
     if pref:

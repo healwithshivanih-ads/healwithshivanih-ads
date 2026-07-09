@@ -40,6 +40,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 from atomic_write import write_text_atomic  # noqa: E402
+from locale_profile import locale_directive  # noqa: E402
 
 
 def _load_dotenv() -> None:
@@ -108,8 +109,8 @@ SYSTEM = """You are building a weekly grocery shopping list for an Indian functi
 
 HARD RULES:
 1. Derive ingredients ONLY from the dishes on the menu (and the recipe pack's ingredient lists when given). Never invent dishes or add foods that aren't implied by the menu.
-2. Use Indian shopping names a Mumbai household uses: atta (not flour types in English alone), dahi, paneer, methi, palak, jeera, haldi, sabzi vegetable names. Keep English in brackets only when helpful, e.g. "Ragi (finger millet) atta".
-3. Quantities are for ONE person for ONE week, in INDIAN METRIC ONLY — grams / kilograms / millilitres / litres or count ("500 g", "1.5 kg", "1 small bunch", "12 (1/day + cooking)"). NEVER use pounds (lb), ounces (oz) or cups-as-purchase-size — a Mumbai shopper buys in grams and kilos. Count repeated dishes across the week when sizing.
+2. Use the shopping NAMES and sourcing appropriate to the client's LOCATION — follow the LOCALE directive at the top of the user message (Indian names for an India client; US grocery names with the Indian name in brackets for a US client; etc.).
+3. Quantities are for ONE person for ONE week, rounded to practical purchase sizes, in the LOCATION's everyday units — follow LOCALE (metric g/kg/ml for India; lb/oz/count for the US). Count repeated dishes across the week when sizing ("1 small bunch", "12 (1/day + cooking)").
 4. Categorise for the shopping trip using exactly the given categories.
 5. Mark `staple: true` for pantry items virtually every Indian kitchen already stocks (salt, haldi, jeera, basic oil, common whole spices) — buyers skip these unless out.
 6. Aggregate: one line per ingredient per week, not per dish. List the dishes it's for in `for` (max 4, short names).
@@ -120,6 +121,8 @@ HARD RULES:
 
 def _build_user(payload: dict[str, Any]) -> str:
     lines: list[str] = []
+    lines.append(locale_directive(payload.get("country"), "grocery"))
+    lines.append("")
     pref = payload.get("dietary_preference") or ""
     avoid = payload.get("foods_to_avoid") or ""
     if pref:
@@ -172,12 +175,13 @@ def main() -> None:
     # rotation week (the app shows the current week, with a toggle to the other).
     pref = payload.get("dietary_preference") or ""
     avoid = payload.get("foods_to_avoid") or ""
+    country = payload.get("country") or ""
     recipes_text = payload.get("recipes_text") or ""
     all_weeks: list[dict[str, Any]] = []
     usage_entry = None
     for wk in weeks:
         wk_no = wk.get("week")
-        sub = {"dietary_preference": pref, "foods_to_avoid": avoid, "weeks": [wk], "recipes_text": recipes_text}
+        sub = {"dietary_preference": pref, "foods_to_avoid": avoid, "country": country, "weeks": [wk], "recipes_text": recipes_text}
         try:
             resp = client.messages.create(
                 model=MODEL,
