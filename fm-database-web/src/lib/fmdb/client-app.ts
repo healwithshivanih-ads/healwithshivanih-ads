@@ -2354,12 +2354,24 @@ async function parseDiscoverySummary(client: Dict, firstName: string): Promise<D
   // Same coach-curated supplement_links.yaml resolver + retailer priority
   // (vitaone > fmnutrition > amazon > iherb) the full package's supplement
   // schedule uses (see the ~line 2799 usage above). At most 2 lookups here.
+  // Country-aware, exactly like the plan path: an international client (country
+  // set and not India) resolves against the iHerb pool only — never an
+  // India-only storefront like VitaOne.
+  const international = isInternationalClient(client.country);
   const includedSupplements = await Promise.all(
     rawSupplements.map(async (s) => {
       try {
         const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
-        const link = await resolveSupplementLink(s.name, s.supplementSlug || undefined);
+        const link = await resolveSupplementLink(s.name, s.supplementSlug || undefined, {
+          international,
+        });
         if (link.source !== "search") {
+          return { ...s, buyUrl: link.url, buySource: link.source };
+        }
+        if (international) {
+          // The international search fallback is a targeted iHerb keyword search
+          // on the ingredient (referral attached) — fail-safe, unlike the
+          // generic VitaOne shop link, so keep it.
           return { ...s, buyUrl: link.url, buySource: link.source };
         }
       } catch {
