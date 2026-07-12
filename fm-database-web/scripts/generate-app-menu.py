@@ -25,6 +25,10 @@ Side effects on the PUBLISHED plan YAML:
   - plan.meal_plan_started_on ← today (IST) IF unset — Day 1 anchors on the
     first menu going live in the app (coach decision 2026-06-12, replaces the
     old "first meal-plan letter send" anchor). Once set it is IMMUTABLE.
+  - plan.nutrition.custom_remedies ← condition-matched morning rituals appended
+    idempotently (ghee water, soaked raisins, chia, methi, figs — gated per
+    client; see morning_rituals.py). Additive only: never overwrites or
+    duplicates existing / coach-authored entries. (coach directive 2026-07-12)
   - plan.amendments  ← audit entry
 """
 from __future__ import annotations
@@ -44,6 +48,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # scripts dir
 
 from meal_foods import relevant_meal_foods  # noqa: E402
+from morning_rituals import ensure_morning_rituals  # noqa: E402
 
 SLOTS = ["Breakfast", "Mid-morning", "Lunch", "Evening snack", "Dinner"]
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -274,6 +279,12 @@ def main() -> int:
         day1 = datetime.now(IST).date().isoformat()
         doc["meal_plan_started_on"] = day1
 
+    # Condition-matched morning rituals (ghee water, soaked raisins, chia, methi,
+    # figs) appended idempotently to nutrition.custom_remedies — additive only,
+    # never overwrites coach hand-adds, never duplicates, and menu regen never
+    # touches custom_remedies again after this. (coach directive 2026-07-12)
+    added_rituals = ensure_morning_rituals(doc, client)
+
     amendments = doc.get("amendments") or []
     amendments.append({
         "at": datetime.now(timezone.utc).isoformat(),
@@ -282,6 +293,14 @@ def main() -> int:
         "summary": f"Menu weeks {sorted(w['week'] for w in norm_weeks)} generated for the app (no letter)."
         + (f" Day 1 anchored: {day1}." if day1 else ""),
     })
+    if added_rituals:
+        amendments.append({
+            "at": datetime.now(timezone.utc).isoformat(),
+            "by": "coach",
+            "field": "nutrition.custom_remedies",
+            "summary": "Auto-added condition-matched morning ritual(s): " + ", ".join(added_rituals) + ".",
+        })
+        doc["app_content_updated_at"] = datetime.now(timezone.utc).isoformat()
     doc["amendments"] = amendments
 
     tmp = plan_file.with_suffix(f".tmp-{os.getpid()}")
