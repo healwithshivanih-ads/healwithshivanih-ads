@@ -79,11 +79,10 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/besan-uttapam.jpg
-  credit: web reference (auto-sourced)
-  source_url: https://www.zaykakatadka.com/wp-content/uploads/2020/01/Isabels-Travel-Blog-2020-01-08T145849.752.png
-  rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with licensed or
-    original photo before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: chatgpt-generated://besan-uttapam
+  rights_status: generated_reference
+  note: coach-selected generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Besan uttapam

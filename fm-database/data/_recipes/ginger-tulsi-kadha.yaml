@@ -98,8 +98,7 @@ updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/ginger-tulsi-kadha.jpg
-  credit: 'web reference (coach-selected)'
-  source_url: https://www.cubesnjuliennes.com/wp-content/uploads/2024/02/Ginger-Turmeric-Tea-Recipe-1024x1024.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: chatgpt-generated://ginger-tulsi-kadha
+  rights_status: generated_reference
+  note: coach-selected generated image; visually reviewed for no people, hands, text, or watermark

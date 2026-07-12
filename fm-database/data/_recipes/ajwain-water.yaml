@@ -52,8 +52,7 @@ seasons:
 - all
 image:
   file: images/web/ajwain-water.jpg
-  credit: 'web reference (coach-selected)'
-  source_url: https://images.news18.com/webstories/uploads/2024/11/jeera-cumin-water-9-2024-11-754d77e040f7b03c26d523435bd2f8ea.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: chatgpt-generated://ajwain-water
+  rights_status: generated_reference
+  note: coach-selected generated image; visually reviewed for no people, hands, text, or watermark
