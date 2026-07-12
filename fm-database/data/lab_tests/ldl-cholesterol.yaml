@@ -1,0 +1,37 @@
+slug: ldl-cholesterol
+display_name: LDL Cholesterol
+full_name: Low-Density Lipoprotein Cholesterol
+aliases:
+- ldl
+- ldl-c
+- ldl cholesterol
+- ldl cholesterol direct
+- ldl cholesterol calculated
+- ldl-c direct
+- direct ldl
+- serum ldl
+units: mg/dL
+sample_type: blood
+conventional_low: 0
+conventional_high: 100
+fm_optimal_low: 0
+fm_optimal_high: 80
+interpretation_low: Low — generally favourable for cardiovascular risk
+interpretation_high: Above target — a driver of atherogenic risk; confirm with ApoB where possible
+when_to_order: Routine lipid panel and cardiovascular risk assessment
+fasting_required: true
+typical_cost_inr: 200
+linked_to_topics:
+- cardiovascular-disease
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation section
+evidence_tier: strong
+notes_for_coach: FM prefers ApoB as the primary atherogenic marker, but LDL-C is the
+  everyday panel value. <100 conventional target, <80 FM-optimal. Direct and calculated
+  LDL both map here.
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: shivani

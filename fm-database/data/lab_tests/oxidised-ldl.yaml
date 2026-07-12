@@ -1,6 +1,6 @@
 slug: oxidised-ldl
 display_name: Oxidised LDL
-full_name: LDL Cholesterol
+full_name: Oxidised LDL (oxLDL)
 aliases: []
 units: mg/dL
 sample_type: blood
@@ -11,9 +11,8 @@ sources:
   location: mindmap-mining 2026-05-13 (haiku classify)
   quote: ''
 evidence_tier: fm_specific_thin
-notes_for_coach: Stub created 2026-05-13 from backlog via Haiku classifier. Flesh
-  out conventional + FM-optimal ranges, interpretation, when_to_order before clinical
-  use.
+notes_for_coach: Stub created 2026-05-13 from backlog via Haiku classifier. Flesh out conventional + FM-optimal
+  ranges, interpretation, when_to_order before clinical use.
 version: 1
 status: active
 updated_at: '2026-05-14'

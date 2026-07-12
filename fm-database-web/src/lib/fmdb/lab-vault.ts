@@ -67,26 +67,69 @@ export function isClientHiddenMarkerName(testName: string): boolean {
   return CLIENT_HIDDEN_MARKER_PATTERNS.some((re) => re.test(n));
 }
 
+const _escRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/** True when `sub` occurs in `hay` as WHOLE token(s) (word-boundary), not as a
+ *  substring inside a word. Guards against a short catalogue alias ("se", "k",
+ *  "na", "ca", "pt") matching inside an unrelated word ("serum", "leukocyte",
+ *  "hexokinase", "calculated", "sgpt") — the class of bug that made the client
+ *  Lab Vault show Magnesium as "Selenium", glucose as "Sodium", eGFR as
+ *  "Potassium". Min 3 chars: 1–2 char aliases never fuzzy-match. */
+function tokenIncludes(hay: string, sub: string): boolean {
+  if (sub.length < 3) return false;
+  return new RegExp(`(?:^|[^a-z0-9])${_escRe(sub)}(?:[^a-z0-9]|$)`, "i").test(hay);
+}
+/** Ratio / compound test names — a marker like "Creatinine" or "Albumin" must
+ *  not fuzzy-match a compound entry ("spot urine calcium/creatinine ratio",
+ *  "albumin/globulin ratio") just because its name is a token inside it. */
+const isCompoundName = (s: string) => /\bratio\b|\/|-to-|\bindex\b/i.test(s);
+
 /**
  * Find the catalogue LabTest record matching a free-form test name.
- * Case-insensitive: exact key match first, then bidirectional substring.
- * (Behaviour preserved exactly from the coach-side original.)
+ * Exact match-key first; then WHOLE-TOKEN (word-boundary) fuzzy matching with
+ * three guards so a marker never lands on an unrelated test:
+ *  - min 3-char keys, matched only at word boundaries (kills "se"⊂"serum");
+ *  - the "marker name inside a longer key" direction is refused when either
+ *    side is a ratio/compound (kills "Creatinine"→"…/creatinine ratio");
+ *  - when a value is supplied, a fuzzy candidate whose value is grossly outside
+ *    its own conventional range is rejected (kills a ratio 0.68 landing on ApoB
+ *    50–130). Exact matches are always trusted.
  */
 export function findCatalogueLabTest(
   testName: string,
   catalogue: CatalogueLabRange[],
+  opts?: { value?: number },
 ): CatalogueLabRange | null {
   const needle = testName.trim().toLowerCase();
   if (!needle) return null;
+  // 1. Exact match-key — trustworthy, always wins.
   for (const t of catalogue) {
     if (t.match_keys.includes(needle)) return t;
   }
+  // 2. Whole-token fuzzy match with the guards above. Pick the MOST-SPECIFIC
+  //    candidate (longest matched key) so "Non-HDL Cholesterol (Calculated)"
+  //    lands on "Non-HDL Cholesterol", not "HDL".
+  const needleCompound = isCompoundName(needle);
+  const val = opts?.value;
+  let best: { t: CatalogueLabRange; score: number } | null = null;
   for (const t of catalogue) {
     for (const key of t.match_keys) {
-      if (needle.includes(key) || key.includes(needle)) return t;
+      if (key.length < 3) continue;
+      const hit =
+        tokenIncludes(needle, key) ||
+        (!needleCompound && !isCompoundName(key) && tokenIncludes(key, needle));
+      if (!hit) continue;
+      if (
+        val != null &&
+        t.conventional_high != null &&
+        t.conventional_low != null &&
+        (val > t.conventional_high * 5 || (t.conventional_low > 0 && val < t.conventional_low / 5))
+      ) {
+        continue; // value grossly outside this test's range → wrong match
+      }
+      if (!best || key.length > best.score) best = { t, score: key.length };
     }
   }
-  return null;
+  return best?.t ?? null;
 }
 
 // ── System grouping (keyed off LAB_PANELS — the catalogue has no category) ────
@@ -217,6 +260,7 @@ function normUnit(u?: string): string {
   // Known equivalences — same numeric scale, different notation. Without these,
   // a textual difference would wrongly suppress a valid range comparison.
   if (s === "uiu/ml") s = "miu/l"; // 1 µIU/mL ≡ 1 mIU/L (thyroid, insulin)
+  if (s === "meq/l") s = "mmol/l"; // monovalent ions Na/K/Cl: 1 mEq/L ≡ 1 mmol/L
   return s;
 }
 
@@ -285,7 +329,7 @@ export function buildLabVault(
     const latest = points[points.length - 1];
     const prev = points.length > 1 ? points[points.length - 2] : null;
 
-    const match = findCatalogueLabTest(testName, catalogue);
+    const match = findCatalogueLabTest(testName, catalogue, { value: latest.value });
 
     // Client-app sensitivity gate: drop markers the catalogue flags coach-only
     // (client_visible === false), or that match the sensitive-name safety net
