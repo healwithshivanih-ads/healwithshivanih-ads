@@ -125,7 +125,9 @@ export async function weeklyMenuStatusAction(
   let pendingNutrition: MenuNutrition | null = null;
   if (pending?.days?.length) {
     try {
-      pendingNutrition = menuNutrition(pending.days, await loadClientDoc(clientId));
+      pendingNutrition = menuNutrition(pending.days, await loadClientDoc(clientId), {
+        plan: plan as unknown as Record<string, unknown>,
+      });
     } catch {
       pendingNutrition = null; // never block the review over a nutrient calc
     }

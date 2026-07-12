@@ -94,10 +94,23 @@ function MenuNutrientStrip({ n }: { n: MenuNutrition }) {
         Protein ≈{avgProtein}g/day
         <span style={{ fontWeight: 500, opacity: 0.8 }}>
           {" "}
-          (floor {n.proteinFloorG}
-          {n.weightKg ? "" : ", no weight on file"})
+          {n.proteinSuppressed ? "(moderate floor " : "(floor "}
+          {n.proteinFloorG}
+          {n.proteinSuppressed
+            ? `, kept moderate — ${n.proteinSuppressReason === "kidney" ? "renal" : n.proteinSuppressReason === "uric_acid" ? "urate/gout" : "liver"})`
+            : n.weightKg
+              ? ")"
+              : ", no weight on file)"}
         </span>
       </span>
+      {n.supplementProteinG > 0 && (
+        <span
+          title={`Includes ~${n.supplementProteinG} g/day from the protein powder in the plan's supplement schedule — the daily scoop is counted toward each day's total.`}
+          style={{ fontSize: 11, color: "var(--fm-text-tertiary)", fontStyle: "italic" }}
+        >
+          incl. ~{n.supplementProteinG}g/day scoop
+        </span>
+      )}
       <span style={pill(fibreOk)}>Fibre ≈{avgFibre}g/day (floor {n.fibreFloorG})</span>
       {lowProteinDays > 0 && (
         <span style={{ fontSize: 11, color: "#b3402a", fontWeight: 600 }}>
@@ -476,7 +489,7 @@ export function AppPreviewPanel({
                         </span>
                         {dn && (
                           <span
-                            title={`≈${dn.protein_g} g protein · ${dn.fibre_g} g fibre · ${dn.kcal} kcal (from ${dn.matched}/${dn.total} matched dishes)`}
+                            title={`≈${dn.protein_g} g protein${weekly.pendingNutrition && weekly.pendingNutrition.supplementProteinG > 0 ? ` (${dn.foodProteinG} g food + ${weekly.pendingNutrition.supplementProteinG} g protein scoop)` : ""} · ${dn.fibre_g} g fibre · ${dn.kcal} kcal (from ${dn.matched}/${dn.total} matched dishes)`}
                             style={{
                               flexShrink: 0,
                               fontSize: 11,

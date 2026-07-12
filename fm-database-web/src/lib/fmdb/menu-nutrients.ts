@@ -238,7 +238,8 @@ export function componentNutrients(
 export interface DayNutrition {
   day: number;
   kcal: number;
-  protein_g: number;
+  protein_g: number; // total for the day — food PLUS the daily protein-powder top-up
+  foodProteinG: number; // food-only (for an honest per-day tooltip)
   fibre_g: number;
   matched: number; // recipe-matched components
   total: number; // total non-trivial components
@@ -272,6 +273,7 @@ export function dayNutrition(day: number, dishes: string[], lookup: RecipeNutrie
     day,
     kcal: Math.round(kcal),
     protein_g: Math.round(protein),
+    foodProteinG: Math.round(protein),
     fibre_g: Math.round(fibre),
     matched,
     total,
@@ -280,15 +282,210 @@ export function dayNutrition(day: number, dishes: string[], lookup: RecipeNutrie
 
 export interface MenuNutrition {
   days: DayNutrition[];
-  proteinFloorG: number; // g/day — 1.2 g/kg (or fallback)
-  proteinTargetG: number; // g/day — 1.5 g/kg
+  proteinFloorG: number; // g/day — 1.4 g/kg (or fallback), suppression-aware
+  proteinTargetG: number; // g/day — 1.6 g/kg
   fibreFloorG: number; // g/day
   weightKg: number | null;
+  /** daily grams of protein contributed by a protein-powder in the plan's
+   *  supplement_protocol — already folded into each day's protein_g. 0 when
+   *  no protein powder is prescribed (or no plan was passed). */
+  supplementProteinG: number;
+  /** true when a kidney / urate / decompensated-liver contraindication means
+   *  we deliberately DON'T raise the floor — protein is kept moderate and
+   *  doctor-guided. Mirrors protein_logic.py. */
+  proteinSuppressed: boolean;
+  proteinSuppressReason: string; // "kidney" | "liver" | "uric_acid" | ""
   /** average matched-component coverage across the week, 0-1 */
   coverage: number;
 }
 
 const FIBRE_FLOOR_G = 25;
+
+// ── protein floor, mirroring scripts/protein_logic.py calc_protein_target ──
+// Baseline 1.4-1.6 g/kg (lifted from the old flat 1.2-1.5 — for this practice's
+// over-50 / vegetarian / bone-health clientele the 1.2 minimum consistently
+// under-served). Raised to 1.6-2.0 in a weight-loss deficit to protect lean
+// mass. SUPPRESSED (kept moderate, ~0.8 g/kg, no raised floor) for kidney
+// disease / low eGFR / high creatinine / gout / high urate / decompensated
+// liver — never push protein on those clients. Keep in lockstep with
+// protein_logic.py so the strip and the plan generator can't drift.
+const PROTEIN_KIDNEY_TERMS = [
+  "kidney disease", "chronic kidney", "ckd", "renal failure",
+  "renal insufficiency", "renal disease", "nephropathy", "dialysis",
+];
+const PROTEIN_URIC_TERMS = [
+  "gout", "hyperuricemia", "hyperuricaemia", "high uric acid",
+  "elevated uric acid", "raised uric acid",
+];
+const PROTEIN_LIVER_TERMS = [
+  "cirrhosis", "hepatic encephalopathy", "liver failure", "decompensated",
+  "esld", "end-stage liver", "portal hypertension",
+];
+const PROTEIN_SLUGS = [
+  "protein-plant-blend", "protein-whey-isolate", "protein-yeast-fermented",
+  "plant-based-protein-powder", "whey-protein", "protein-whey",
+];
+
+function proteinConditionText(client: Record<string, unknown>): string {
+  const parts: string[] = [];
+  for (const key of ["active_conditions", "medical_history"]) {
+    const v = client[key];
+    if (Array.isArray(v)) parts.push(...v.map((x) => String(x)));
+    else if (v) parts.push(String(v));
+  }
+  for (const key of ["notes", "dietary_preference"]) {
+    if (client[key]) parts.push(String(client[key]));
+  }
+  return parts.join(" ").toLowerCase();
+}
+
+/** Yield [name_lower, value] over lab_markers + health_snapshots.lab_values. */
+function* iterLabValues(client: Record<string, unknown>): Generator<[string, number]> {
+  const num = (v: unknown): number | null => {
+    const f = Number(String(v ?? "").trim());
+    return Number.isFinite(f) ? f : null;
+  };
+  const lm = client.lab_markers;
+  if (Array.isArray(lm)) {
+    for (const m of lm) {
+      if (!m || typeof m !== "object") continue;
+      const r = m as Record<string, unknown>;
+      const name = String(r.marker_name ?? r.name ?? "").toLowerCase();
+      const val = num(r.value);
+      if (name && val !== null) yield [name, val];
+    }
+  }
+  const hs = client.health_snapshots;
+  if (Array.isArray(hs)) {
+    for (const snap of hs) {
+      if (!snap || typeof snap !== "object") continue;
+      const lv = (snap as Record<string, unknown>).lab_values;
+      if (!Array.isArray(lv)) continue;
+      for (const row of lv) {
+        if (!row || typeof row !== "object") continue;
+        const r = row as Record<string, unknown>;
+        const name = String(r.test_name ?? r.name ?? "").toLowerCase();
+        const val = num(r.value);
+        if (name && val !== null) yield [name, val];
+      }
+    }
+  }
+}
+
+/** First numeric lab whose name contains a term and none of `exclude`. */
+function labValue(
+  client: Record<string, unknown>,
+  terms: string[],
+  exclude: string[] = [],
+): number | null {
+  for (const [name, val] of iterLabValues(client)) {
+    if (terms.some((t) => name.includes(t)) && !exclude.some((x) => name.includes(x))) {
+      return val;
+    }
+  }
+  return null;
+}
+
+/** True if a lab_markers row matching a term carries a high/elevated flag. */
+function labMarkerHigh(client: Record<string, unknown>, terms: string[]): boolean {
+  const lm = client.lab_markers;
+  if (!Array.isArray(lm)) return false;
+  for (const m of lm) {
+    if (!m || typeof m !== "object") continue;
+    const r = m as Record<string, unknown>;
+    const name = String(r.marker_name ?? r.name ?? "").toLowerCase();
+    if (!terms.some((t) => name.includes(t))) continue;
+    const flag = String(r.flag ?? "").toLowerCase();
+    if (["high", "elevat", "above", "raised"].some((w) => flag.includes(w))) return true;
+  }
+  return false;
+}
+
+interface ProteinFloor {
+  perKgFloor: number;
+  perKgTarget: number;
+  floorG: number;
+  targetG: number;
+  suppressed: boolean;
+  suppressReason: string;
+}
+
+/** Suppression-aware protein floor/target for a client. Weight in kg or null. */
+export function clientProteinFloor(
+  client: Record<string, unknown> | null,
+  weightKg: number | null,
+): ProteinFloor {
+  const c = client ?? {};
+  const condText = proteinConditionText(c);
+  const sex = String(c.sex ?? "").trim().toLowerCase();
+
+  const egfr = labValue(c, ["egfr", "gfr"]);
+  const creat = labValue(c, ["creatinine"], ["ratio", "bun", "clearance", "urine"]);
+  const kidney =
+    PROTEIN_KIDNEY_TERMS.some((t) => condText.includes(t)) ||
+    labMarkerHigh(c, ["creatinine"]) ||
+    (egfr !== null && egfr < 60) ||
+    (creat !== null && creat > 1.3);
+
+  const liver = PROTEIN_LIVER_TERMS.some((t) => condText.includes(t));
+
+  const urate = labValue(c, ["uric acid", "urate"], ["ratio", "urine"]);
+  const urateCeiling = sex === "f" || sex === "female" ? 6.0 : 7.0;
+  const uric =
+    PROTEIN_URIC_TERMS.some((t) => condText.includes(t)) ||
+    labMarkerHigh(c, ["uric acid", "urate"]) ||
+    (urate !== null && urate > urateCeiling);
+
+  const suppressReason = kidney ? "kidney" : liver ? "liver" : uric ? "uric_acid" : "";
+
+  // weight-loss deficit → raise protein to protect lean mass (unless suppressed)
+  const wl = c.weight_loss as Record<string, unknown> | undefined;
+  const deficit =
+    !!wl &&
+    typeof wl === "object" &&
+    wl.enabled !== false &&
+    !!(wl.enabled || wl.goal_kg || wl.starting_weight_kg);
+
+  // Floor is the "menu shouldn't drop below this" line — kept at a realistic
+  // 1.4 g/kg so the strip flags genuinely thin weeks, not every home-cooked veg
+  // menu. The deficit protein bump (protect lean mass in a calorie deficit) and
+  // the general stretch goal live in the TARGET, not the floor, so a weight-loss
+  // client's floor doesn't balloon to an unmeetable 2.0 g/kg. Suppressed clients
+  // keep a moderate floor and target — we never push protein on them.
+  let perKgFloor = 1.4;
+  let perKgTarget = 1.6;
+  if (suppressReason) {
+    perKgFloor = 0.8;
+    perKgTarget = 1.0;
+  } else if (deficit) {
+    perKgTarget = 2.0;
+  }
+
+  const floorG = weightKg ? Math.round(weightKg * perKgFloor) : suppressReason ? 45 : 70;
+  const targetG = weightKg ? Math.round(weightKg * perKgTarget) : suppressReason ? 55 : 80;
+  return { perKgFloor, perKgTarget, floorG, targetG, suppressed: !!suppressReason, suppressReason };
+}
+
+/** Daily grams of protein from a protein-powder in the plan's supplement_protocol.
+ *  Parses the LOW end of any "N-M g" in the dose (conservative). 0 if none. */
+export function supplementProteinPerDay(plan: Record<string, unknown> | null | undefined): number {
+  const sp = plan?.supplement_protocol;
+  if (!Array.isArray(sp)) return 0;
+  let grams = 0;
+  for (const item of sp) {
+    if (!item || typeof item !== "object") continue;
+    const r = item as Record<string, unknown>;
+    const slug = String(r.supplement_slug ?? "").toLowerCase();
+    if (!(PROTEIN_SLUGS.includes(slug) || slug.includes("protein"))) continue;
+    const dose = String(r.dose ?? "");
+    // grab the gram figure — prefer one adjacent to "protein", else first "N g"
+    const m =
+      dose.match(/(\d{1,3})(?:\s*[-–]\s*(\d{1,3}))?\s*g\b[^.]*protein/i) ||
+      dose.match(/(\d{1,3})(?:\s*[-–]\s*(\d{1,3}))?\s*g\b/i);
+    if (m) grams += parseInt(m[1], 10); // low end
+  }
+  return grams;
+}
 
 /** Resolve the client's body weight for protein-floor maths (kg), or null. */
 export function clientWeightKg(client: Record<string, unknown> | null): number | null {
@@ -314,10 +511,15 @@ export function clientWeightKg(client: Record<string, unknown> | null): number |
   return null;
 }
 
-/** Full per-day nutrient summary for a weekly menu + client-derived targets. */
+/** Full per-day nutrient summary for a weekly menu + client-derived targets.
+ *  Pass the client's published plan (opts.plan) so a prescribed protein powder
+ *  is counted toward each day's protein — the scoop is taken daily and the food
+ *  menu alone systematically under-reads without it. Floor is suppression-aware
+ *  (kidney/urate/liver clients keep a moderate floor, not a raised one). */
 export function menuNutrition(
   days: { slots: { slot: string; dish: string }[] }[],
   client: Record<string, unknown> | null,
+  opts?: { plan?: Record<string, unknown> | null },
 ): MenuNutrition {
   const lookup = buildRecipeNutrientLookup();
   const perDay = days.map((d, i) =>
@@ -328,19 +530,27 @@ export function menuNutrition(
     ),
   );
   const weightKg = clientWeightKg(client);
-  // protein floor 1.2 g/kg, stretch target 1.5 g/kg (memory: 1.2-1.5 g/kg,
-  // suppressed for kidney/uric-acid clients — coach reads the flag, we don't
-  // auto-suppress here). Fallback 55 g/day when weight is unknown.
-  const proteinFloorG = weightKg ? Math.round(weightKg * 1.2) : 55;
-  const proteinTargetG = weightKg ? Math.round(weightKg * 1.5) : 70;
+  const floor = clientProteinFloor(client, weightKg);
+
+  // Fold the daily protein-powder top-up into each day's protein. Every day
+  // carries the scoop, so it lifts the whole week uniformly; foodProteinG keeps
+  // the food-only figure for an honest tooltip.
+  const supplementProteinG = supplementProteinPerDay(opts?.plan);
+  if (supplementProteinG > 0) {
+    for (const d of perDay) d.protein_g = Math.round(d.foodProteinG + supplementProteinG);
+  }
+
   const totMatched = perDay.reduce((a, d) => a + d.matched, 0);
   const totComp = perDay.reduce((a, d) => a + d.total, 0);
   return {
     days: perDay,
-    proteinFloorG,
-    proteinTargetG,
+    proteinFloorG: floor.floorG,
+    proteinTargetG: floor.targetG,
     fibreFloorG: FIBRE_FLOOR_G,
     weightKg,
+    supplementProteinG,
+    proteinSuppressed: floor.suppressed,
+    proteinSuppressReason: floor.suppressReason,
     coverage: totComp ? totMatched / totComp : 0,
   };
 }
