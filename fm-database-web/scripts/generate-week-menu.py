@@ -41,6 +41,16 @@ try:
 except Exception:  # pragma: no cover
     lab_nutrient_priorities = lambda c: {}  # noqa: E731
 
+# Single source of truth for the protein contraindication scan (kidney / low
+# eGFR / high creatinine / gout / high urate / decompensated liver). Keeps the
+# drafter's suppression decision in lockstep with the plan generator, the
+# letter, and the coach-side menu strip (clientProteinFloor in
+# menu-nutrients.ts).
+try:
+    from protein_logic import calc_protein_target  # noqa: E402
+except Exception:  # pragma: no cover
+    calc_protein_target = None  # type: ignore
+
 
 # ── nutrient targets (protein floor + lab-driven priorities) ─────────────────
 #
@@ -49,7 +59,9 @@ except Exception:  # pragma: no cover
 # protein floor and which nutrients their labs say they're low on, so the
 # menu comes out balanced and targeted in the first place.
 
-_PROTEIN_G_PER_KG = 1.2          # floor for a typical client
+_PROTEIN_G_PER_KG = 1.4          # menu floor for a typical client (matches the
+                                 # coach-side strip; deficit/stretch lives in the
+                                 # letter target, not this menu floor)
 _PROTEIN_G_PER_KG_RENAL = 0.8    # capped when uric acid / kidney is flagged
 _FIBRE_FLOOR_G = 25
 
@@ -99,8 +111,21 @@ def _client_weight_kg(client: dict) -> float | None:
 
 
 def _protein_suppressed(client: dict) -> bool:
-    """True when a renal / uric-acid marker is flagged high — protein must be
-    moderated, not maximised (project protein-management rule)."""
+    """True when protein must be moderated, not maximised (project
+    protein-management rule).
+
+    Delegates to protein_logic.calc_protein_target so the drafter's decision
+    stays in exact lockstep with the plan generator, the letter, and the coach
+    strip — and, crucially, catches the cases a flag-only scan misses: a low
+    eGFR (<60) or high creatinine that carries a 'low'/'suboptimal' flag rather
+    than 'high' (e.g. a stage-3 CKD client), plus gout / renal condition text.
+    Falls back to the old flag-scan if protein_logic is unavailable."""
+    if calc_protein_target is not None:
+        try:
+            t = calc_protein_target(client)
+            return bool(t and t.get("suppressed"))
+        except Exception:  # pragma: no cover
+            pass
     for m in client.get("lab_markers") or []:
         if not isinstance(m, dict):
             continue
@@ -128,9 +153,11 @@ def _nutrient_targets_block(client: dict) -> list[str]:
             )
         else:
             lines.append(
-                f"- Protein: each day should reach at least ~{floor} g "
-                f"(≈1.2 g/kg). Anchor most meals with a real protein — dal, sprouts, "
-                f"paneer, curd, eggs (if eaten) — not just grain + vegetable."
+                f"- Protein: EVERY day must reach at least ~{floor} g "
+                f"(≈1.4 g/kg). Anchor at least two meals a day with a concentrated "
+                f"protein — dal/sprouts (1 full bowl), paneer, tofu, curd, eggs (if "
+                f"eaten) — never a grain + vegetable day with no real protein. A thin "
+                f"protein day is not acceptable; add a paneer/tofu/curd side to lift it."
             )
     else:
         lines.append(
@@ -238,7 +265,7 @@ HARD RULES:
 7b. CRITICAL — NO PORRIDGE-STYLE BREAKFASTS (ragi porridge, oats porridge, dalia, upma-as-porridge, any "grain cooked soft in milk/water" prep) ANYWHERE in this week's menu — most Indian clients find them unappealing and quietly stop eating them. This applies even if a porridge dish is already sitting in the CURRENT menu — remove it, don't just repeat it. Use moong dal chilla, besan cheela, poha, idli/dosa, vegetable paratha, sprouts, or egg preparations (if the client eats eggs) instead. The ONLY exception: the client's own words (feedback, session notes, or a direct request) explicitly say they like or ask for a named porridge dish — the dish merely being present in an old menu does NOT count as this exception.
 8. PORTIONS ARE EXPLICIT — every component of every dish carries a clear single-serving household quantity in brackets: "(1 bowl)", "(2)", "(1 cup)", "(small bowl)", "(30 g)", "(1 tbsp)". Write each dish as "Component (qty) + Component (qty)". This lets the app show portions on every meal and estimate calories. Use realistic one-person portions (this plan is weight-aware) — never leave a component without a quantity.
 9. THERAPEUTIC FOODS ARE MEALS, NOT REMEDIES — when a CONDITION-APPROPRIATE THERAPEUTIC FOODS list is provided, weave those foods into the week as REAL DISHES in the slot where they fit (e.g. a kitchari dinner, a glass of spiced buttermilk with lunch, an Agni-reset light dinner). They are part of this client's protocol and the menu is where she receives them — do not list them separately. Keep them occasional and natural (1-3 times across the week, not daily), and always with explicit portions.
-10. NUTRIENT-BALANCE THE WEEK — a NUTRIENT TARGETS block gives this client's protein floor, fibre floor, and the nutrients their labs say they're low on. Build the week so most days reach the protein floor (anchor mains with a real protein, not grain+veg alone) and clear the fibre floor, and quietly favour dishes rich in the flagged low nutrients. This is a balancing constraint, NOT a licence to break rule 1 (framework), rule 7b (no porridge), or the client's diet/avoid rules — those always win. If the protein note says MODERATE (raised uric acid / kidney marker), do the opposite: keep protein reasonable, never loaded. Never mention grams, nutrients, or lab values to the client — the change_note stays warm and food-first."""
+10. NUTRIENT-BALANCE THE WEEK — a NUTRIENT TARGETS block gives this client's protein floor, fibre floor, and the nutrients their labs say they're low on. Build the week so EVERY day reaches the protein floor — anchor at least two meals each day with a concentrated protein (dal/sprouts in a full bowl, paneer, tofu, curd, egg if eaten), never a grain+vegetable day with no real protein — and clear the fibre floor, and quietly favour dishes rich in the flagged low nutrients. This is a balancing constraint, NOT a licence to break rule 1 (framework), rule 7b (no porridge), or the client's diet/avoid rules — those always win. If the protein note says MODERATE (raised uric acid / kidney marker), do the opposite: keep protein reasonable, never loaded. Never mention grams, nutrients, or lab values to the client — the change_note stays warm and food-first."""
 
 
 def _plans_root() -> Path:
