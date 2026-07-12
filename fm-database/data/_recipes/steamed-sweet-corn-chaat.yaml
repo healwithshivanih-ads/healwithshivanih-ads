@@ -60,6 +60,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
 one_line: Steamed corn kernels tossed with lemon juice, roasted cumin, and fresh coriander.
 headnote: Corn on the cob is the quintessential monsoon street food across India.
   Steaming the kernels rather than boiling keeps them sweet and firm, and the simple

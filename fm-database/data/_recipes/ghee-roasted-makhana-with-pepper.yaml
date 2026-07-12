@@ -51,6 +51,9 @@ steps:
 servings: '2'
 prep_time_min: 2
 cook_time_min: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
 one_line: Fox nuts slow-roasted in ghee with black pepper and rock salt — a light,
   warming monsoon snack.
 headnote: Makhana roasted low and slow in ghee turns genuinely crisp without any heaviness.

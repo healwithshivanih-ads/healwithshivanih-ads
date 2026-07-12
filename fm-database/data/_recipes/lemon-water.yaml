@@ -1,5 +1,7 @@
 slug: lemon-water
 name: Lemon Water
+good_for:
+- hydration-and-brain-function
 one_line: Warm lemon water to gently wake up digestion and hydrate first thing.
 meal_type:
 - drink

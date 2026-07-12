@@ -66,6 +66,10 @@ steps:
 servings: '3'
 prep_time_min: 15
 cook_time_min: 15
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- acid-reflux-and-cardiac-sphincter-weakness
 one_line: Soft steamed plate-idlis made instantly from a rice-poha batter folded with
   grated bottle gourd.
 headnote: Bottle gourd (lauki) keeps these idlis light and cooling, adding moisture

@@ -43,6 +43,7 @@ PLANS_ROOT = Path(os.environ.get("FMDB_PLANS_DIR") or (Path.home() / "fm-plans")
 INBOX_DIR = PLANS_ROOT / "_recipe_inbox"
 
 from nutrients_lib import NutrientTable, compute_recipe_nutrients  # noqa: E402
+from good_for_lib import derive_good_for  # noqa: E402
 
 MEAL_TYPES = {"breakfast", "lunch", "dinner", "snack", "side", "drink", "salad", "soup", "condiment"}
 DIETS = {"vegetarian", "vegan", "jain", "eggetarian", "non_vegetarian", "gluten_free", "dairy_free", "nut_free"}
@@ -307,6 +308,13 @@ def main() -> int:
         record["rich_in"] = nutrients["rich_in"]
         record["nutrient_basis"] = "ingredient_table_v1"
         record["nutrients_computed_at"] = date.today().isoformat()
+
+    # good_for condition tags — keep any coach-supplied list, else derive
+    # deterministically from rich_in + ingredients + meal_type ($0, no API).
+    # This is the salience lever that lets score_recipe up-rank the recipe for a
+    # client whose plan/conditions match (see recipe_select.py score_recipe).
+    coach_good_for = [str(t).strip() for t in (recipe.get("good_for") or []) if str(t).strip()]
+    record["good_for"] = coach_good_for or derive_good_for(record)
 
     record["version"] = 1
     record["status"] = "active"

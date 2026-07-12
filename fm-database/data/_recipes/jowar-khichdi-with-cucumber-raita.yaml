@@ -73,6 +73,11 @@ steps:
 servings: '3'
 prep_time_min: 15
 cook_time_min: 30
+good_for:
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
 one_line: A cooling jowar millet khichdi tempered with peanuts and paneer, served
   with chilled cucumber raita.
 headnote: Jowar (sorghum) is naturally gluten-free and high in fibre, so this khichdi

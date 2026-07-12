@@ -102,6 +102,12 @@ steps:
 servings: '4'
 prep_time_min: 10
 cook_time_min: 25
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+- gut-microbiome
+- anti-inflammatory-diet
 one_line: A saucy sprouted moong curry topped with fresh curd, served as a nourishing
   breakfast or light lunch.
 headnote: Sprouting moong doubles its folate and makes the protein easier to digest.

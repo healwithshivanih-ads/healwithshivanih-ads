@@ -58,6 +58,10 @@ steps:
 servings: '2'
 prep_time_min: 2
 cook_time_min: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
 one_line: Ghee-roasted fox nuts tossed with nutritional yeast, black pepper, and a
   pinch of chilli for a light, savoury snack.
 headnote: Fox nuts (makhana) are a naturally light, low-fat base that carries flavour

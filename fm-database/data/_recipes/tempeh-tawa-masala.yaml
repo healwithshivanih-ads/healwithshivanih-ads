@@ -92,6 +92,11 @@ steps:
 servings: '3'
 prep_time_min: 15
 cook_time_min: 20
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-microbiome
+- anti-inflammatory-diet
 one_line: Sliced tempeh tossed on a hot tawa with onion, capsicum, and punchy Indian
   spices.
 headnote: Tempeh is made by fermenting whole soybeans into a firm, nutty cake — that

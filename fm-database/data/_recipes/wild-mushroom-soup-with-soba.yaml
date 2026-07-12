@@ -98,6 +98,9 @@ steps:
 servings: '4'
 prep_time_min: 15
 cook_time_min: 75
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
 one_line: A deeply umami mushroom broth with soba noodles, fresh enoki, and crisp
   radishes, built layer by layer through patient browning and pressure cooking.
 headnote: This soup rewards a pressure cooker but builds real depth through the browning

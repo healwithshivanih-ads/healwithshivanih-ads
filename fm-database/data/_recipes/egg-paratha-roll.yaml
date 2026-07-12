@@ -86,6 +86,9 @@ steps:
 servings: 4 rolls
 prep_time_min: 20
 cook_time_min: 20
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
 one_line: A crisp whole-wheat paratha cooked with a spiced egg layer, rolled up with
   chutney and onion for a quick, protein-rich breakfast.
 headnote: Eggs cooked directly onto the paratha — rather than as a separate scramble

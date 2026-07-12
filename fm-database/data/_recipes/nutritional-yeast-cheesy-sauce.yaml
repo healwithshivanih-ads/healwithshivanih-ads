@@ -75,6 +75,10 @@ steps:
 servings: '4'
 prep_time_min: 15
 cook_time_min: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
 one_line: A smooth cashew and nutritional yeast sauce that coats vegetables or millets
   with a savoury, cheesy warmth.
 headnote: Nutritional yeast is one of the most reliable plant-based sources of fortified

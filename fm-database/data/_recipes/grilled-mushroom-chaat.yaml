@@ -77,6 +77,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 10
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
 one_line: Charred mushrooms tossed with chaat masala, red onion and lemon — a punchy
   vitamin-D snack that eats like street food.
 headnote: Grilling mushrooms over high heat concentrates their flavour and keeps the

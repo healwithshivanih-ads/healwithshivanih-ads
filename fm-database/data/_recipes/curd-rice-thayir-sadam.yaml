@@ -79,6 +79,11 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 20
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-microbiome
+- anti-inflammatory-diet
 one_line: Soft cooked rice mixed with fresh curd and finished with a mustard-curry
   leaf temper.
 headnote: Fresh homemade or good-quality curd is the heart of this dish — the live

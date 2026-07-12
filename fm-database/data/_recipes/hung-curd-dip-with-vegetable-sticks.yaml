@@ -72,6 +72,10 @@ steps:
 servings: '2'
 prep_time_min: 15
 cook_time_min: 15
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-microbiome
 one_line: A thick, herbed yogurt dip served with crisp cucumber and carrot sticks.
 headnote: Hung curd is simply curd drained of whey for a few hours — the result is
   dense, protein-rich, and tangy. It makes an honest dip that keeps you full well
