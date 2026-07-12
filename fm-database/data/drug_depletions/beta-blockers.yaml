@@ -35,18 +35,24 @@ depletes:
 - nutrient: Melatonin
   severity: moderate
   mechanism: Beta-blockade suppresses pineal melatonin production, causing insomnia / poor sleep quality.
-  monitoring_recommendation: Sleep diary + symptoms; dim-light melatonin onset (DLMO) testing rare in clinical practice
+  monitoring_recommendation: Sleep diary + symptoms; dim-light melatonin onset (DLMO) testing rare in
+    clinical practice
   typical_supplement_dose: 0.3-1 mg sublingual melatonin 30 min before bed (start LOW)
 condition_implications:
-- label: Hypertension / arrhythmia / post-MI / heart failure
+- label: Hypertension
   confidence: high
-  rationale: Beta-blockers indicate cardiovascular pathology — hypertension, atrial fibrillation, post-MI, heart failure with
-    reduced ejection fraction.
+  rationale: Beta-blockers indicate cardiovascular pathology — hypertension, atrial fibrillation, post-MI,
+    heart failure with reduced ejection fraction.
+  topic_slug: hypertension
+- label: Cardiac arrhythmia / post-MI / heart failure
+  confidence: low
+  rationale: Only when the clinical picture supports it — a bare beta-blocker is most often for hypertension,
+    anxiety or tremor.
   topic_slug: hypertension
 - label: Anxiety / performance anxiety / essential tremor (lower confidence)
   confidence: low
-  rationale: Beta-blockers (especially propranolol) are also prescribed off-label for performance anxiety and essential tremor
-    — coach should clarify.
+  rationale: Beta-blockers (especially propranolol) are also prescribed off-label for performance anxiety
+    and essential tremor — coach should clarify.
   topic_slug: anxiety
 protocol_cautions: []
 timing_separations: []

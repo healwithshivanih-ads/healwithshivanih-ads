@@ -1958,6 +1958,28 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
     try:
         derived_conditions = _derive_conditions_from_intake(submitted)
         if derived_conditions:
+            # GUARD (2026-07-12): a drug-implied condition must not DUPLICATE a
+            # condition the coach already authored in more detail. The semantic
+            # (token-sorted) dedup below can't see a short label like
+            # "Hypertension" inside "Hypertension — ON TREATMENT — Telma 40…",
+            # so drop a derived condition when a significant keyword of it
+            # already appears in an existing active condition.
+            _existing_blob = " | ".join(
+                str(c).lower() for c in (data.get("active_conditions") or [])
+            )
+            _COND_STOP = {"chronic", "acute", "disease", "disorder", "syndrome",
+                          "term", "long", "suspected"}
+
+            def _already_covered(cond: str) -> bool:
+                core = cond.lower().split(":", 1)[-1]
+                words = "".join(ch if ch.isalpha() else " " for ch in core).split()
+                kws = [w for w in words if len(w) >= 4 and w not in _COND_STOP]
+                return any(w in _existing_blob for w in kws)
+
+            derived_conditions = [
+                c for c in derived_conditions if not _already_covered(c)
+            ]
+        if derived_conditions:
             merged, changed = _merge_lists(data.get("active_conditions"), derived_conditions)
             if changed:
                 data["active_conditions"] = merged

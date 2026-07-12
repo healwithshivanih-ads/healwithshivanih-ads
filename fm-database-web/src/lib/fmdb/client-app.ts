@@ -1280,6 +1280,16 @@ function asStrArr(v: unknown): string[] {
   return asArr(v).filter((x): x is string => typeof x === "string");
 }
 
+/** Active conditions safe to drive CLIENT-FACING personalization. Drops
+ *  unconfirmed "Suspected: …" drug-inferred conditions so an inference the
+ *  coach hasn't confirmed never shapes what the client sees — lab-vault
+ *  ordering, meal targeting, or the plan "why". Especially important for a
+ *  health-anxious client, for whom a stray "Suspected: kidney disease" steering
+ *  their app is counter-therapeutic. Coach surfaces keep the full list. */
+function concernConditions(c: Dict): string[] {
+  return asStrArr(c.active_conditions).filter((x) => !/^\s*suspected\s*:/i.test(x));
+}
+
 /**
  * CLIENT-FACING SAFETY GATE — the last line of defence before a coach-editable
  * free-text field (non_negotiables, foods_to_avoid) is rendered on the client
@@ -2592,7 +2602,7 @@ async function buildDiscoveryAppData(
   // together"). No plan, so no plan-targeted markers.
   const labCatalogue = await loadLabCatalogue();
   const concernTerms = [
-    ...asStrArr(client.active_conditions),
+    ...concernConditions(client),
     ...asStrArr(client.goals),
     ...asStrArr(client.medical_history),
   ];
@@ -3563,7 +3573,7 @@ export async function loadClientAppData(
     { re: /menopaus|hot flash|hot flush/i, ind: /menopaus|hot flash|hot flush/i, label: "menopause comfort" },
     { re: /anaemia|anemia|\biron\b/i, ind: /\biron\b|an(?:a)?emia/i, label: "iron" },
   ];
-  const clientConditionTerms = [...asStrArr(client.active_conditions), ...asStrArr(client.goals)].join(" | ");
+  const clientConditionTerms = [...concernConditions(client), ...asStrArr(client.goals)].join(" | ");
   const clientTerms = [
     clientConditionTerms,
     ...asStrArr(plan.primary_topics).map(humanize),
@@ -3824,7 +3834,7 @@ export async function loadClientAppData(
   const eft = deriveEft(
     practices,
     practiceRaw,
-    `${asStrArr(client.goals).join(" ")} ${asStrArr(client.active_conditions).join(" ")} ${asStr(client.reported_triggers)}`,
+    `${asStrArr(client.goals).join(" ")} ${concernConditions(client).join(" ")} ${asStr(client.reported_triggers)}`,
     Array.isArray((client as Record<string, unknown>).eft_themes)
       ? ((client as Record<string, unknown>).eft_themes as string[])
       : undefined,
@@ -4486,7 +4496,7 @@ export async function loadClientAppData(
       : a.length === 2
         ? `${a[0]} and ${a[1]}`
         : `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}`;
-  const focusConditions = asStrArr(client.active_conditions)
+  const focusConditions = concernConditions(client)
     .map(cleanCondition)
     .filter(Boolean)
     // life-stage labels aren't therapeutic targets — keep them out of the "why"
@@ -4758,7 +4768,7 @@ export async function loadClientAppData(
   const labCatalogue = await loadLabCatalogue();
   const targetedMarkers = (asArr(plan.lab_orders) as Dict[]).map((l) => asStr(l.test)).filter(Boolean);
   const concernTerms = [
-    ...asStrArr(client.active_conditions),
+    ...concernConditions(client),
     ...asStrArr(client.goals),
     ...asStrArr(client.medical_history),
   ];

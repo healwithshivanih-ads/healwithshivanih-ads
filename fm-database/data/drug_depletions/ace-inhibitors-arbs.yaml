@@ -39,18 +39,19 @@ depletes:
 condition_implications:
 - label: Hypertension
   confidence: high
-  rationale: ACE inhibitors / ARBs are first-line for hypertension, often with secondary indications (diabetic nephropathy,
-    heart failure, proteinuria).
+  rationale: ACE inhibitors / ARBs are first-line for hypertension, often with secondary indications (diabetic
+    nephropathy, heart failure, proteinuria).
   topic_slug: hypertension
 - label: Diabetic nephropathy / chronic kidney disease
-  confidence: moderate
+  confidence: low
   rationale: ACE/ARBs are reno-protective in diabetic kidney disease + proteinuric CKD.
   topic_slug: chronic-kidney-disease
 protocol_cautions:
 - kind: avoid_supplement
-  item: 'High-dose potassium'
+  item: High-dose potassium
   severity: critical
-  reason: 'ACE inhibitors / ARBs raise potassium — added high-dose potassium risks hyperkalaemia. Only under prescriber monitoring.'
+  reason: ACE inhibitors / ARBs raise potassium — added high-dose potassium risks hyperkalaemia. Only
+    under prescriber monitoring.
 timing_separations: []
 contraindicated_supplements:
 - high-dose-potassium
