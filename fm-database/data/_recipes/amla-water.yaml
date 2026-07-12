@@ -50,3 +50,10 @@ nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-07'
 seasons:
 - all
+image:
+  file: images/web/amla-water.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://upload.wikimedia.org/wikipedia/commons/7/7f/Phyllanthus_officinalis.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

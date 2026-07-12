@@ -119,3 +119,10 @@ version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/walnut-beet-salad-with-curd-dressing.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://cdn.loveandlemons.com/wp-content/uploads/2021/11/beet-salad.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
