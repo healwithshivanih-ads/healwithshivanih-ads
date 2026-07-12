@@ -5,7 +5,12 @@ import fs from "node:fs/promises";
 import yaml from "js-yaml";
 import { getCataloguePath } from "@/lib/fmdb/paths";
 import { loadAllPlans, loadAllClients } from "@/lib/fmdb/loader";
-import { loadLibraryRecipes, buildLibraryRecipeResolver, snackCategoryImage } from "@/lib/fmdb/client-app";
+import {
+  loadLibraryRecipes,
+  buildLibraryRecipeResolver,
+  snackCategoryImage,
+  recipeConsistentWithDish,
+} from "@/lib/fmdb/client-app";
 
 /** One catalogue recipe that would show in the client app without a real
  *  photo — so the coach can source/generate one before any client sees it. */
@@ -189,5 +194,98 @@ export async function getMenuImageCoverage(): Promise<MenuImageCoverage> {
     return { plansScanned, dishGaps, menus };
   } catch {
     return EMPTY_MENU;
+  }
+}
+
+/** A live menu dish that resolves to a recipe the consistency gate REJECTS —
+ *  so the client now sees the dish name with no recipe. The coach should fix
+ *  the menu wording or add a matching recipe. */
+export interface MenuRecipeGap {
+  clientId: string;
+  clientName: string;
+  planSlug: string;
+  dishes: string[]; // distinct dishes whose recipe fails the consistency gate
+}
+
+export interface MenuRecipeCoverage {
+  plansScanned: number;
+  dishGaps: number;
+  menus: MenuRecipeGap[];
+}
+
+const EMPTY_RECIPE: MenuRecipeCoverage = { plansScanned: 0, dishGaps: 0, menus: [] };
+
+/**
+ * Menu-approval PRE-FLIGHT for recipe reliability. Walks every published plan's
+ * `app_menu` and, for each dish, runs the SAME library resolver the client app
+ * uses, then the SAME consistency gate (recipeConsistentWithDish). It flags the
+ * dishes where the resolver found a recipe that the gate REJECTS — i.e. the app
+ * will now (correctly) hide it, so the client sees the dish name with no recipe.
+ * These are exactly the "nonsense recipe" cases that erode trust: surfacing them
+ * lets the coach fix the menu wording or add a matching recipe BEFORE a client
+ * ever notices. Missing-photo (getMenuImageCoverage) and no-recipe-at-all are
+ * separate, gentler signals — this one is specifically "a wrong recipe was
+ * caught". Library-only (mirrors the image scan); per-client generated packs are
+ * not loaded here.
+ *
+ * Defensive: any failure returns empty so the chip simply hides.
+ */
+export async function getMenuRecipeCoverage(): Promise<MenuRecipeCoverage> {
+  try {
+    const [plans, clients, library] = await Promise.all([
+      loadAllPlans(),
+      loadAllClients(),
+      loadLibraryRecipes(),
+    ]);
+    const resolver = buildLibraryRecipeResolver(library);
+    const nameById = new Map<string, string>(
+      clients.map((c) => [String(c.id), String(c.display_name || c.id)]),
+    );
+
+    const menus: MenuRecipeGap[] = [];
+    let plansScanned = 0;
+    let dishGaps = 0;
+
+    for (const plan of plans) {
+      if (plan._bucket !== "published") continue;
+      const menu = plan.app_menu as
+        | { weeks?: { days?: { slots?: { slot?: string; dish?: string }[] }[] }[] }
+        | undefined;
+      if (!menu || !Array.isArray(menu.weeks)) continue;
+      plansScanned += 1;
+
+      const seen = new Set<string>();
+      const flagged: string[] = [];
+      for (const w of menu.weeks ?? [])
+        for (const d of w.days ?? [])
+          for (const s of d.slots ?? []) {
+            const slot = (s.slot ?? "").toLowerCase();
+            if (slot.includes("bedtime")) continue;
+            const dish = (s.dish ?? "").trim();
+            if (!dish || seen.has(dish)) continue;
+            seen.add(dish);
+            // Only the FIRST cookable component carries the recipe (mirrors the
+            // client app's per-pill resolution); a wrong recipe there is the bug.
+            const head = dish.split(/\s\+\s|→|⇒|:/)[0]?.trim() || dish;
+            const rec = resolver(head);
+            if (rec && !recipeConsistentWithDish(head, rec)) flagged.push(dish);
+          }
+
+      if (flagged.length) {
+        dishGaps += flagged.length;
+        const clientId = String(plan.client_id ?? "");
+        menus.push({
+          clientId,
+          clientName: nameById.get(clientId) ?? clientId ?? "—",
+          planSlug: String(plan.slug ?? ""),
+          dishes: flagged.sort((a, b) => a.localeCompare(b)),
+        });
+      }
+    }
+
+    menus.sort((a, b) => b.dishes.length - a.dishes.length || a.clientName.localeCompare(b.clientName));
+    return { plansScanned, dishGaps, menus };
+  } catch {
+    return EMPTY_RECIPE;
   }
 }

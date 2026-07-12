@@ -18,9 +18,11 @@ import { useEffect, useState, useTransition } from "react";
 import {
   getRecipeImageCoverage,
   getMenuImageCoverage,
+  getMenuRecipeCoverage,
   type RecipeImageCoverage,
   type RecipeImageGap,
   type MenuImageCoverage,
+  type MenuRecipeCoverage,
 } from "@/app/recipe-image-coverage-action";
 
 const REASON_LABEL: Record<RecipeImageGap["reason"], string> = {
@@ -62,29 +64,32 @@ const sectionLabel: React.CSSProperties = {
 export function FmRecipeImageChip() {
   const [recipes, setRecipes] = useState<RecipeImageCoverage | null>(null);
   const [menus, setMenus] = useState<MenuImageCoverage | null>(null);
+  const [badRecipes, setBadRecipes] = useState<MenuRecipeCoverage | null>(null);
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
 
-  const load = () =>
-    start(async () => {
-      const [r, m] = await Promise.all([getRecipeImageCoverage(), getMenuImageCoverage()]);
-      setRecipes(r);
-      setMenus(m);
-    });
+  const fetchAll = async () => {
+    const [r, m, b] = await Promise.all([
+      getRecipeImageCoverage(),
+      getMenuImageCoverage(),
+      getMenuRecipeCoverage(),
+    ]);
+    setRecipes(r);
+    setMenus(m);
+    setBadRecipes(b);
+  };
+  const load = () => start(() => fetchAll());
 
   useEffect(() => {
-    void (async () => {
-      const [r, m] = await Promise.all([getRecipeImageCoverage(), getMenuImageCoverage()]);
-      setRecipes(r);
-      setMenus(m);
-    })();
+    void fetchAll();
   }, []);
 
-  // Render nothing until loaded; hide when both views are clean.
-  if (!recipes || !menus) return null;
+  // Render nothing until loaded; hide when all views are clean.
+  if (!recipes || !menus || !badRecipes) return null;
   const menuGaps = menus.dishGaps;
   const recipeGaps = recipes.gaps.length;
-  if (menuGaps === 0 && recipeGaps === 0) return null;
+  const wrongGaps = badRecipes.dishGaps;
+  if (menuGaps === 0 && recipeGaps === 0 && wrongGaps === 0) return null;
 
   // Group catalogue gaps by reason for the disclosure.
   const byReason = new Map<RecipeImageGap["reason"], RecipeImageGap[]>();
@@ -94,16 +99,22 @@ export function FmRecipeImageChip() {
     byReason.set(g.reason, arr);
   }
 
-  // Headline = the client-facing number when there is one, else catalogue.
+  // Headline prioritises the TRUST-critical signal — a wrong/garbled recipe was
+  // caught — over the gentler photo gaps.
   const headline =
-    menuGaps > 0
-      ? `${menuGaps} live menu dish${menuGaps === 1 ? "" : "es"} would show no photo`
-      : `${recipeGaps} recipe${recipeGaps === 1 ? "" : "s"} need${recipeGaps === 1 ? "s" : ""} a photo`;
+    wrongGaps > 0
+      ? `${wrongGaps} live menu dish${wrongGaps === 1 ? "" : "es"} would show a wrong recipe`
+      : menuGaps > 0
+        ? `${menuGaps} live menu dish${menuGaps === 1 ? "" : "es"} would show no photo`
+        : `${recipeGaps} recipe${recipeGaps === 1 ? "" : "s"} need${recipeGaps === 1 ? "s" : ""} a photo`;
   const subline =
-    menuGaps > 0
-      ? `across ${menus.menus.length} client${menus.menus.length === 1 ? "" : "s"}` +
-        (recipeGaps > 0 ? ` · ${recipeGaps} catalogue recipe${recipeGaps === 1 ? "" : "s"} also missing an image` : "")
-      : `${recipes.imaged}/${recipes.total} catalogue recipes have an image — these would show a plain tile`;
+    wrongGaps > 0
+      ? `across ${badRecipes.menus.length} client${badRecipes.menus.length === 1 ? "" : "s"} — the app now hides these; fix the menu wording or add a matching recipe` +
+        (menuGaps > 0 ? ` · ${menuGaps} also missing a photo` : "")
+      : menuGaps > 0
+        ? `across ${menus.menus.length} client${menus.menus.length === 1 ? "" : "s"}` +
+          (recipeGaps > 0 ? ` · ${recipeGaps} catalogue recipe${recipeGaps === 1 ? "" : "s"} also missing an image` : "")
+        : `${recipes.imaged}/${recipes.total} catalogue recipes have an image — these would show a plain tile`;
 
   return (
     <section
@@ -144,6 +155,41 @@ export function FmRecipeImageChip() {
             borderRadius: "var(--fm-radius-md)",
           }}
         >
+          {/* Wrong/garbled recipe caught — the trust-critical view, first. */}
+          {badRecipes.menus.length > 0 && (
+            <div style={{ marginBottom: menuGaps > 0 || recipeGaps > 0 ? 16 : 0 }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "#b91c1c",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.7,
+                  marginBottom: 10,
+                }}
+              >
+                Wrong recipe caught — the app hides these; fix the dish wording or add a recipe
+              </div>
+              {badRecipes.menus.map((m) => (
+                <div key={m.planSlug} style={{ marginBottom: 12 }}>
+                  <div style={sectionLabel}>
+                    {m.clientName} ({m.dishes.length})
+                  </div>
+                  <div style={{ display: "grid", gap: 4, maxHeight: 220, overflowY: "auto" }}>
+                    {m.dishes.map((dish) => (
+                      <div
+                        key={dish}
+                        style={{ ...slugChip, background: "rgba(185,28,28,0.06)", border: "1px solid rgba(185,28,28,0.20)" }}
+                      >
+                        <span style={{ color: "var(--fm-text-secondary)", minWidth: 0 }}>{dish}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* Live menus — the client-facing gaps, grouped by client. */}
           {menus.menus.length > 0 && (
             <div style={{ marginBottom: recipeGaps > 0 ? 16 : 0 }}>
