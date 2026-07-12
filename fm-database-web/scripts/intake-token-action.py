@@ -421,6 +421,34 @@ def _reconcile_one(client_id: str) -> dict:
 
     actions: list[str] = []
 
+    # ── Phase-1 coach-edit guard (2026-07-12) ──────────────────────────────
+    # If the coach edited the authoritative record MORE RECENTLY than the
+    # client last touched the intake form, the coach's edits win — a stale or
+    # prefill-echo draft/submission must not clobber them. A prefill built from
+    # coach-entered client.yaml can get autosaved as intake_form_draft and then
+    # re-applied every cron cycle, reverting coach edits and leaking coach copy
+    # into client-facing fields. Genuine client submissions are newer than the
+    # coach's last edit, so they still reconcile. Fail-safe: if either timestamp
+    # is missing/unparseable, fall through to the normal reconcile.
+    # See docs/RECONCILE_DRAFT_MIRROR_FIX_SCOPE.md.
+    def _parse_iso(v: object):
+        s = str(v or "").strip()
+        if not s:
+            return None
+        try:
+            return datetime.fromisoformat(s.replace("Z", "+00:00"))
+        except Exception:
+            return None
+
+    coach_dt = _parse_iso(adata.get("updated_at"))
+    client_dt = _parse_iso(
+        sdata.get("intake_last_submitted_at")
+        or sdata.get("intake_submitted_at")
+        or sdata.get("intake_form_draft_saved_at")
+    )
+    if coach_dt and client_dt and coach_dt > client_dt:
+        return {"client_id": client_id, "actions": ["skipped_coach_newer"]}
+
     # 1. live-watch mirror (draft + first-opened)
     changed = False
     for k in ("intake_form_draft", "intake_first_opened_at"):

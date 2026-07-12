@@ -2026,13 +2026,57 @@ function appMenuToWeekTables(menu: Dict): WeekTable[] {
  *  Lp(a) 32", "(204 ng/dL, below range)" — and coach-speak like
  *  "mandatory correction" / "gap in prior protocol" into the app).
  *  Letter-provided why-lines are already client-voiced and skip this. */
+/** Coach copy is written ABOUT the client in the third person ("Her calcium…",
+ *  "she keeps", "given her age"). On the client's own app that reads wrong —
+ *  it must be second person ("Your calcium…", "you keep", "given your age").
+ *  Deterministic pronoun/verb conversion (no AI). In coach_rationale / practice
+ *  text, she/he/her/his always refer to the CLIENT (the coach never writes
+ *  about herself there), so the conversion is unambiguous. */
+function toSecondPerson(input: string): string {
+  let t = input || "";
+  // contractions first
+  t = t
+    .replace(/\b(?:she|he)['’]s\b/gi, "you're")
+    .replace(/\b(?:she|he)['’]ll\b/gi, "you'll")
+    .replace(/\b(?:she|he)['’]d\b/gi, "you'd")
+    .replace(/\b(?:she|he)['’]ve\b/gi, "you've");
+  // irregular "subject + verb" pairs (must precede the regular -s rule, or
+  // "has"→"ha", "is"→"i")
+  const IRREGULAR: [string, string][] = [
+    ["is", "are"], ["was", "were"], ["has", "have"], ["does", "do"],
+    ["goes", "go"], ["isn't", "aren't"], ["hasn't", "haven't"],
+    ["doesn't", "don't"], ["wasn't", "weren't"],
+  ];
+  for (const [a, b] of IRREGULAR) {
+    t = t.replace(
+      new RegExp(`\\b(?:she|he)\\s+${a.replace(/'/g, "['’]")}\\b`, "gi"),
+      `you ${b}`,
+    );
+  }
+  // regular 3rd-person -s verbs: "she keeps" → "you keep", "he takes" → "you take"
+  t = t.replace(/\b(?:she|he)\s+([a-z]+?)s\b/gi, (_m, v) => `you ${v}`);
+  // any remaining subject she/he → you
+  t = t.replace(/\b(?:she|he)\b/gi, "you");
+  // possessive "her/his <noun>" → "your <noun>" — but NOT when what follows is
+  // an article/preposition ("gave her the …" is an object, → "you the …")
+  t = t.replace(
+    /\b(?:her|his)\s+(?!(?:the|a|an|to|for|with|at|on|in|of|and|or|but)\b)/gi,
+    "your ",
+  );
+  // possessive pronoun hers → yours; object her/him → you
+  t = t.replace(/\bhers\b/gi, "yours").replace(/\b(?:her|him)\b/gi, "you");
+  // re-capitalise a sentence that now starts lowercase ("Her …" → "your …")
+  t = t.replace(/^\s*[a-z]/, (m) => m.toUpperCase());
+  return t;
+}
+
 /** Practice `details` are multi-sentence instructions (unlike the one-line
  *  supplement "why"), so this is a LIGHT scrub — strip a leading coach
  *  change-log stamp / [tag] / bare ISO date and tidy spacing, but PRESERVE the
  *  full instructional text and its line breaks (bulleted steps render on their
  *  own lines via white-space: pre-wrap). Never rephrase or truncate. */
 function clientifyPracticeDetail(raw: string): string {
-  let s = raw || "";
+  let s = toSecondPerson(raw || "");
   s = s.replace(
     /^\s*(?:FORM\s+SWAP|SWAP|UPDATE|CHANGE|REVISED|NOTE)\b[^—–\n:]*?(?:[—–-]\s*|:\s*)/i,
     "",
@@ -2171,7 +2215,7 @@ function computeSeedCycling(
 }
 
 function clientifyWhy(raw: string): string {
-  let s = raw;
+  let s = toSecondPerson(raw);
   // strip leading coach change-log stamps: "FORM SWAP 2026-05-24 — …",
   // "[2026-05-24] …", "UPDATE: …" (the dated clause is the coach's audit note)
   s = s.replace(/^\s*(?:FORM\s+SWAP|SWAP|UPDATE|CHANGE|REVISED|NOTE)\b[^—–\n]*?(?:[—–-]\s*|:\s*)/i, "");
