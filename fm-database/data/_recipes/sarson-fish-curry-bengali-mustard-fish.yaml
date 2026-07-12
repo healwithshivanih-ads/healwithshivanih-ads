@@ -120,3 +120,10 @@ version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/sarson-fish-curry-bengali-mustard-fish.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://upload.wikimedia.org/wikipedia/commons/9/9a/%E0%A6%90%E0%A6%A4%E0%A6%BF%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80_%E0%A6%B8%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87_%E0%A6%87%E0%A6%B2%E0%A6%BF%E0%A6%B6.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

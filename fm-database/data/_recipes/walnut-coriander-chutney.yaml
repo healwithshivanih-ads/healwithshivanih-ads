@@ -113,3 +113,10 @@ version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/walnut-coriander-chutney.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://www.indianveggiedelight.com/wp-content/uploads/2018/10/walnut_chutney-final.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

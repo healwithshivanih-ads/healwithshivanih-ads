@@ -49,3 +49,10 @@ nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-07'
 seasons:
 - all
+image:
+  file: images/web/lemon-water.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://image.idntimes.com/post/20210726/fromandroid-1cea9f9edc452bd8bab778f3b01f0b54.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

@@ -103,3 +103,10 @@ version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/nutritional-yeast-makhana.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://upload.wikimedia.org/wikipedia/commons/1/12/Makhana_%28Foxnut%29_roasted_with_masala_and_ghee.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

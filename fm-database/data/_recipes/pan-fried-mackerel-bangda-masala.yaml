@@ -121,3 +121,10 @@ version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/pan-fried-mackerel-bangda-masala.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2015/03/fish-fry-1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

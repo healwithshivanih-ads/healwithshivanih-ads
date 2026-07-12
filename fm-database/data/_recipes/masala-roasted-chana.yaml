@@ -123,3 +123,10 @@ version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
+image:
+  file: images/web/masala-roasted-chana.jpg
+  credit: 'web reference (coach-selected)'
+  source_url: https://glenindia.com/cdn/shop/articles/image2-28_90705614-f7c2-4b6f-87c4-809219490e04_1200x675.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
