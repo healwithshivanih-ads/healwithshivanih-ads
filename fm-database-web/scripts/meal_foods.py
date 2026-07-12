@@ -25,6 +25,17 @@ _FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 
 MEAL_FOOD_CATEGORIES = {"kitchen_remedy", "vegetable_juice"}
 
+# Some `kitchen_remedy` entries are actually MEDICINAL preparations (single-herb
+# tonics, kashayams, decoctions, churans) — NOT foods you eat as a dish. Weaving
+# them into a meal slot produces things like "Arjuna heart tonic tea" sitting in
+# a dinner. Meal slots hold FOODS (kitchari, buttermilk, dal soups, rasam);
+# medicinal preparations belong on the remedy/supplement layer, never in a meal.
+# If a meal-food candidate's name/slug/summary hits any of these markers, drop it.
+_MEDICINAL_MARKERS = (
+    "tonic", "kashayam", "kashaya", "kadha", "decoction", "churan", "churna",
+    "arishta", "asava", "tincture", "medicinal", "guggulu", "syrup", "elixir",
+)
+
 # (label, condition-term keywords, indication keywords). Mirrors the
 # client-app.ts NEED_RULES, trimmed to groups meal-foods plausibly serve.
 _NEED: list[tuple[str, tuple[str, ...], tuple[str, ...]]] = [
@@ -129,6 +140,10 @@ def relevant_meal_foods(
             continue
         if r.get("category") not in MEAL_FOOD_CATEGORIES:
             continue
+        _blob = (str(r.get("display_name") or "") + " " + str(r.get("slug") or "")
+                 + " " + str(r.get("summary") or "")).lower()
+        if any(m in _blob for m in _MEDICINAL_MARKERS):
+            continue  # medicinal preparation, not a dish-food — never weave into a meal
         agg = [str(x).lower() for x in (r.get("aggravates_dosha") or [])]
         if doshas and any(a in doshas for a in agg):
             continue  # don't push a dosha-aggravating food

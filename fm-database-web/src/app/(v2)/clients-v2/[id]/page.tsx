@@ -30,6 +30,7 @@ import {
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
+import { WeightQuickLog } from "./weight-quick-log";
 import { CoachNotesButton } from "@/components/client-widgets/coach-notes-launcher";
 import { SendIntakeFormButton } from "./send-intake-form-button";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
@@ -990,6 +991,18 @@ export default async function ClientV2Page({
       .measurements_log,
   );
 
+  // Latest weigh-in for the inline Overview weight logger — the newest point of
+  // the unified weight series (series is oldest → newest across all stores).
+  const _weightMetric = bodyComp.find((m) => m.label === "Weight");
+  const currentWeightKg =
+    _weightMetric && _weightMetric.series.length
+      ? _weightMetric.series[_weightMetric.series.length - 1]
+      : null;
+  const currentWeightDate =
+    _weightMetric?.seriesDates && _weightMetric.seriesDates.length
+      ? _weightMetric.seriesDates[_weightMetric.seriesDates.length - 1]
+      : null;
+
   // B2 — collect ALL body-comp snapshots from both storage paths so the
   // "Manage entries" expander on the FmBodyCompGrid can offer per-row
   // delete. Same shape both sides: {origin, date, source?, values[]}.
@@ -1252,6 +1265,7 @@ export default async function ClientV2Page({
                 city: (client as unknown as { city?: string }).city,
                 state: (client as unknown as { state?: string }).state,
                 country: (client as unknown as { country?: string }).country,
+                cycle_status: client.cycle_status,
               }}
             />
           </>
@@ -1273,6 +1287,26 @@ export default async function ClientV2Page({
         >
           💸 API spend: ₹{apiSpend.all_time_inr.toLocaleString("en-IN")} (${apiSpend.all_time_usd}) · {apiSpend.all_time_calls} calls
         </span>
+      </div>
+
+      {/* Inline weight logger — writes a dated reading via addMeasurementAction,
+          which reconciles the flat current-weight so the newest weigh-in
+          surfaces everywhere (menu protein floor, letters, dashboards) while
+          older readings stay in the trend for comparison. */}
+      <div
+        style={{
+          margin: "0 0 10px",
+          padding: "8px 12px",
+          borderRadius: 10,
+          background: "var(--fm-surface-2, #f6f5f1)",
+          border: "1px solid var(--fm-border, #e5e2db)",
+        }}
+      >
+        <WeightQuickLog
+          clientId={client.client_id}
+          currentWeightKg={currentWeightKg}
+          currentWeightDate={currentWeightDate}
+        />
       </div>
 
       <div

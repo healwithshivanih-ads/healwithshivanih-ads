@@ -4920,6 +4920,16 @@ surface mg-level titration to the client. Same rule for back-off:
   - GOOD: "If stools become too loose, drop back to 1 capsule and
     message me."
 
+STAPLE-GRAIN RULE — DON'T STRIP WHEAT AND RICE BY DEFAULT:
+Whole-wheat roti/phulka/chapati and rice are normal Indian staples and
+the DEFAULT base of the menu. Use millets (jowar, ragi, bajra, foxtail,
+kodo, sama) for VARIETY and rotation — NOT as a wholesale replacement for
+wheat and rice. Make millets/low-GI grains the PRIMARY base ONLY when this
+client has a metabolic indication (insulin resistance, prediabetes,
+diabetes, PCOS, fatty liver) or active weight-loss. For a client WITHOUT
+such an indication, an all-millet, no-wheat, no-white-rice week is WRONG —
+keep wheat roti and rice as everyday staples with millets sprinkled in.
+
 SEASONAL GRAIN RULE — India-specific, non-negotiable:
 Bajra (pearl millet) is a WINTER grain (Nov–Feb). It generates internal
 heat (Ayurvedic: heating, agni-increasing). NEVER recommend bajra during

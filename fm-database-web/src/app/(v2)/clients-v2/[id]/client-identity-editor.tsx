@@ -27,6 +27,7 @@ export interface ClientIdentityInitial {
   city?: string;
   state?: string;
   country?: string;
+  cycle_status?: "menstruating" | "perimenopausal" | "postmenopausal" | "not_applicable";
 }
 
 interface Props {
@@ -46,6 +47,9 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
   const [city, setCity] = useState(initial.city ?? "");
   const [stateField, setStateField] = useState(initial.state ?? "");
   const [country, setCountry] = useState(initial.country ?? "India");
+  const [cycleStatus, setCycleStatus] = useState<
+    "menstruating" | "perimenopausal" | "postmenopausal" | "not_applicable" | ""
+  >(initial.cycle_status ?? "");
 
   const reset = () => {
     setDisplayName(initial.display_name ?? "");
@@ -56,6 +60,7 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
     setCity(initial.city ?? "");
     setStateField(initial.state ?? "");
     setCountry(initial.country ?? "India");
+    setCycleStatus(initial.cycle_status ?? "");
   };
 
   const save = () => {
@@ -70,6 +75,7 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
         city,
         state: stateField,
         country,
+        cycle_status: cycleStatus === "" ? undefined : cycleStatus,
       });
       if (res.ok) {
         toast.success("✓ Saved — identity fields updated");
@@ -227,6 +233,30 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
             style={inputStyle}
           />
         </Field>
+        {sex !== "M" && (
+          <Field label="Hormonal stage">
+            <select
+              value={cycleStatus}
+              onChange={(e) =>
+                setCycleStatus(
+                  e.target.value as
+                    | "menstruating"
+                    | "perimenopausal"
+                    | "postmenopausal"
+                    | "not_applicable"
+                    | "",
+                )
+              }
+              style={inputStyle}
+            >
+              <option value="">— not set —</option>
+              <option value="menstruating">Menstruating</option>
+              <option value="perimenopausal">Perimenopausal</option>
+              <option value="postmenopausal">Postmenopausal</option>
+              <option value="not_applicable">Not applicable</option>
+            </select>
+          </Field>
+        )}
       </div>
 
       <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>

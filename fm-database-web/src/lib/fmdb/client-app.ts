@@ -1280,6 +1280,41 @@ function asStrArr(v: unknown): string[] {
   return asArr(v).filter((x): x is string => typeof x === "string");
 }
 
+/**
+ * CLIENT-FACING SAFETY GATE — the last line of defence before a coach-editable
+ * free-text field (non_negotiables, foods_to_avoid) is rendered on the client
+ * app. These fields have been mis-filled with coach instructions / clinical
+ * shorthand / sensitive context, from manual edits, the intake reconcile, AND
+ * AI/dashboard generation — so we never trust the value; we sanitise at render.
+ *
+ * A genuine food entry is SHORT and in food-voice ("Masala chai", "Brinjal").
+ * A leaked coach note is a sentence with 3rd-person pronouns, instruction verbs,
+ * clinical terms, or ALL-CAPS directives. When in doubt we DROP it — a missing
+ * food line is harmless; a leaked coaching note is not.
+ */
+function looksLikeCoachNote(s: string): boolean {
+  const t = (s || "").trim();
+  if (!t) return true;
+  if (t.length > 60) return true; // foods are short; a sentence is a note
+  if (/\b(she|her|hers|client|coach|patient)\b/i.test(t)) return true; // 3rd-person = coach voice
+  if (/[A-Z]{4,}/.test(t)) return true; // ALL-CAPS directive (NO WEIGHT LOSS, NEVER)
+  if (
+    /\b(never|must|do not|don'?t|should|weight[-\s]?loss|protein floor|g\/kg|egfr|lab\b|framework|prescrib|titrat|generat|calorie|frame\b|language)\b/i.test(
+      t,
+    )
+  )
+    return true;
+  return false;
+}
+/** Returns the string if it is client-safe food text, else "". */
+function clientSafeFood(s: string): string {
+  return looksLikeCoachNote(s) ? "" : s.trim();
+}
+/** Filters a list to client-safe food entries only. */
+function clientSafeFoods(list: string[]): string[] {
+  return list.map((s) => clientSafeFood(s)).filter(Boolean);
+}
+
 const IST = "Asia/Kolkata";
 
 /** Returns tz when it's an IANA name Intl can resolve, else null. */
@@ -1512,6 +1547,78 @@ export const recipeLibKey = (s: string) =>
 const recipeLibToks = (s: string) =>
   recipeLibKey(s).split(" ").filter((t) => t.length > 3 && !RECIPE_LIB_STOP.has(t));
 
+// ── Recipe-consistency gate (the "no recipe beats a wrong recipe" guarantee) ──
+// The LAST seam before a recipe reaches a client. Even if matching or generation
+// drifts, this refuses to show a recipe that (a) is garbled (no ingredients or no
+// method), or (b) does not actually contain the dish's headline ingredient. A
+// failing recipe renders as the clean dish name + portion, never as nonsense —
+// which is what erodes trust and compliance. Kept deliberately CONSERVATIVE: it
+// only kills clear nonsense, so it doesn't hide good recipes.
+//
+// Words that are dish-types / preparations / aromatics / units — NOT the
+// distinctive "headline" food a dish is named after. Dropped before comparing.
+const DISH_GENERIC = new Set([
+  "curry","sabzi","sabji","sabzee","dal","daal","masala","fry","stir","gravy",
+  "soup","shorba","salad","chutney","raita","kachumber","roti","phulka","chapati",
+  "bhakri","rice","pulao","pulav","biryani","khichdi","kitchari","chilla","cheela",
+  "dosa","idli","upma","poha","paratha","thepla","bhurji","scramble","stew",
+  "poriyal","kootu","kadhi","kadi","tikka","bhaji","bhajji","wrap","bowl","toast",
+  "spiced","roasted","steamed","boiled","fresh","plain","mixed","home","homemade",
+  "light","warm","cooked","tempered","seasoned","simple","everyday","style",
+  "healing","detox","cleansing","weight","loss","herb","herbal","seasonal",
+  "ginger","garlic","onion","tomato","jeera","cumin","salt","oil","ghee","butter",
+  "coriander","cilantro","turmeric","haldi","pepper","chilli","chili","lemon",
+  "lime","water","milk","spice","spices","masala",
+  "with","and","the","for","cup","glass","tbsp","tsp","katori","piece","small",
+  "large","medium","serves","min","grams","slice","slices","handful","pinch",
+]);
+// Fold common Indian ↔ English food-name pairs so a synonym mismatch (dish says
+// "spinach", recipe lists "palak") does NOT false-reject a correct recipe.
+const _FOOD_SYNONYM: Record<string, string> = {
+  palak: "spinach", spinach: "spinach",
+  chana: "chickpea", chole: "chickpea", chhole: "chickpea", chickpea: "chickpea",
+  chickpeas: "chickpea", garbanzo: "chickpea", kabuli: "chickpea",
+  paneer: "paneer", cottage: "paneer",
+  baingan: "brinjal", brinjal: "brinjal", aubergine: "brinjal", eggplant: "brinjal",
+  curd: "yogurt", dahi: "yogurt", yoghurt: "yogurt", yogurt: "yogurt", lassi: "yogurt",
+  methi: "fenugreek", fenugreek: "fenugreek",
+  lauki: "gourd", doodhi: "gourd", ghia: "gourd", bottle: "gourd", tinda: "gourd",
+  turai: "gourd", ridge: "gourd", karela: "bittergourd",
+  bhindi: "okra", okra: "okra",
+  gobi: "cauliflower", cauliflower: "cauliflower",
+  rajma: "kidneybean", kidney: "kidneybean",
+  moong: "mung", mung: "mung", masoor: "lentil", toor: "lentil", arhar: "lentil",
+  urad: "blackgram", chawli: "cowpea", lobia: "cowpea",
+  aloo: "potato", potato: "potato",
+  jowar: "sorghum", sorghum: "sorghum", ragi: "fingermillet", bajra: "pearlmillet",
+  soya: "soy", soybean: "soy", tofu: "tofu",
+};
+const _foldFood = (t: string) => _FOOD_SYNONYM[t] ?? t;
+const _dishHeadlineFoods = (s: string): string[] =>
+  recipeLibKey(s)
+    .split(" ")
+    .filter((t) => t.length >= 3 && !DISH_GENERIC.has(t) && !RECIPE_LIB_STOP.has(t))
+    .map(_foldFood);
+
+/** True when `recipe` is safe to show for `dish`: it has real content and it
+ *  actually contains the dish's headline ingredient. Exported so the coach's
+ *  menu pre-flight flags the same dishes the client app would silently drop. */
+export function recipeConsistentWithDish(
+  dish: string,
+  r: { title?: string; ingredients?: string[]; method?: string[]; mains?: string[] },
+): boolean {
+  // (a) garble guard — a recipe with no ingredients or no method is nonsense.
+  if (!r.ingredients?.length || !r.method?.length) return false;
+  // (b) headline-ingredient presence.
+  const dishToks = _dishHeadlineFoods(dish);
+  if (!dishToks.length) return true; // dish has no distinctive food (e.g. "Kitchari") — trust the match
+  const blob = recipeLibKey(
+    [r.title ?? "", ...(r.mains ?? []), ...(r.ingredients ?? [])].join(" "),
+  );
+  const recipeToks = new Set(blob.split(" ").filter((t) => t.length >= 3).map(_foldFood));
+  return dishToks.some((t) => recipeToks.has(t));
+}
+
 /**
  * Build the dish → library-recipe resolver. An exact normalized-title match
  * wins outright (the Plan-tab DishPicker composes dishes from EXACT recipe
@@ -1562,8 +1669,17 @@ export function buildLibraryRecipeResolver(
         //     "Masala egg scramble … + jowar roti" must not resolve to the
         //     jowar-roti recipe just because that side's title is fully present.
         // (c) single-token title matched by a single-token dish.
+        // Guard on (a): NEVER accept a match that has BOTH a missed recipe token
+        // AND an extra dish token — that is a DIFFERENT dish, not a portion/side
+        // variation. "Tofu and spinach curry" vs recipe "Tofu Vegetable Curry"
+        // (miss "vegetable" + extra "spinach") must NOT match — the dish names a
+        // different headline ingredient. "no match > wrong match". A dish that is
+        // "<recipe> + <side>" (extra, no miss) still matches; a recipe with a lead
+        // descriptor the dish drops ("Cilantro Mint Chutney" ← "mint chutney":
+        // miss, no extra) still matches. Only miss AND extra together is rejected.
         const ok =
-          (hit >= 2 && rt.length - hit <= 1 && extra <= 1) ||
+          (hit >= 2 && rt.length - hit <= 1 && extra <= 1 &&
+            (rt.length - hit === 0 || extra === 0)) ||
           (pi === 0 && hit === rt.length && rt.length >= 2) ||
           (rt.length === 1 && hit === 1 && pt.length === 1);
         // slack = how far from an exact match (unmatched recipe tokens + extra
@@ -2911,8 +3027,16 @@ export async function loadClientAppData(
       if (!best || score > best.score || (score === best.score && misses < best.misses))
         best = { r, score, misses };
     }
-    // letter recipes (personalised) win; the structured library fills gaps
-    return best?.r ?? libraryRecipeFor(dish);
+    // letter recipes (personalised) win; the structured library fills gaps.
+    // CONSISTENCY GATE (the last seam): only return a recipe that actually
+    // matches the dish — a garbled or wrong-ingredient recipe is dropped so the
+    // dish renders as its clean name + portion, never as nonsense. A bad pack
+    // recipe must not block a good library one, so each is gated independently.
+    const packR = best?.r;
+    if (packR && recipeConsistentWithDish(dish, packR)) return packR;
+    const libR = libraryRecipeFor(dish);
+    if (libR && recipeConsistentWithDish(dish, libR)) return libR;
+    return undefined;
   };
   if (table) {
     for (const row of table.rows) {
@@ -3095,7 +3219,7 @@ export async function loadClientAppData(
       // (plan YAML) + the client's own foods_to_avoid memory field.
       const avoidTexts = [
         ...asStrArr(((plan.nutrition as Dict) ?? {}).reduce),
-        ...asStr(client.foods_to_avoid).split(/[,\n]/),
+        ...clientSafeFoods(asStr(client.foods_to_avoid).split(/[,\n]/)),
       ]
         .map((s) => s.trim().toLowerCase())
         .filter(Boolean);
@@ -3158,9 +3282,15 @@ export async function loadClientAppData(
     let buyUrl: string | undefined;
     let suppImageUrl: string | undefined;
     {
-      // No issued letter carrying buy links (e.g. nothing sent yet) — fall
-      // back to the coach-curated supplement_links.yaml catalogue. Only a
-      // real entry counts; the generic "browse the shop" fallback is noise.
+      // Coach-set per-plan buy-link override WINS — a specific product the coach
+      // pinned on the plan entry (e.g. "Autoimmunity Care UTI Care") that may not
+      // resolve to a supplement_links.yaml catalogue entry by slug/name. This
+      // mirrors the letter generator's buy_link override; without it the app's
+      // Reorder button hid whenever the pinned product wasn't in the catalogue.
+      const overrideBuy = asStr((p as Dict).buy_link).trim();
+      if (overrideBuy) buyUrl = overrideBuy;
+      // Then the coach-curated supplement_links.yaml catalogue — fills the URL
+      // only when there's no override, and always supplies the product image.
       // resolveSupplementLink applies the retailer priority VitaOne →
       // fmnutrition → amazon, so the client's Reorder button lands on the
       // preferred store. International clients resolve against the iHerb
@@ -3171,16 +3301,16 @@ export async function loadClientAppData(
         // `covers`/slug — never by a coincidental name substring.
         const link = await resolveSupplementLink(name, slug, { international });
         if (link.source !== "search") {
-          buyUrl = link.url;
+          if (!buyUrl) buyUrl = link.url;
           suppImageUrl = link.image_url;
-        } else if (international) {
+        } else if (!buyUrl && international) {
           // The international search fallback is a targeted iHerb keyword
           // search on the ingredient — fail-safe (right ingredient, referral
           // attached), unlike the generic VitaOne shop link, so keep it.
           buyUrl = link.url;
         }
       } catch {
-        /* no link — Reorder button simply hides */
+        /* no catalogue link — the override (if any) still applies; else the button hides */
       }
     }
     const asNeeded = /as.?needed|at.?risk meals?|prn\b|immediately before at.?risk|as a precaution|precaution only/i.test(timing);
@@ -3950,11 +4080,13 @@ export async function loadClientAppData(
   const addShort = addList.map(shortFoodName);
   const reduceShort = reduceList.map(shortFoodName);
   const dietPref = asStr(client.dietary_preference);
-  const clientAvoid = asStr(client.foods_to_avoid)
-    .split(/[,\n]/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-  const nonNeg = asStr(client.non_negotiables).trim();
+  const clientAvoid = clientSafeFoods(
+    asStr(client.foods_to_avoid)
+      .split(/[,\n]/)
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
+  const nonNeg = clientSafeFood(asStr(client.non_negotiables).trim());
 
   // ---- travel local foods — render cascade ----------------------------------
   // Attached after dietPref/clientAvoid exist.

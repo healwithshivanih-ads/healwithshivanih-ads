@@ -188,7 +188,10 @@ def main() -> int:
             "light dinner). They are part of this client's protocol and the menu "
             "is where she receives them — do not list them separately. Keep them "
             "occasional and natural (a few times across the fortnight, not "
-            "daily), each with an explicit portion:\n"
+            "daily), each with an explicit portion. ONLY genuine foods eaten as a "
+            "dish qualify — NEVER put a medicinal tea, tonic, kashayam, kadha, "
+            "churan or single-herb decoction into a meal slot; those are remedies, "
+            "not meal components:\n"
             + "\n".join(f"- {f['name']} — {f['why']}" for f in mfoods)
         )
 

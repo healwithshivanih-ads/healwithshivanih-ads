@@ -73,7 +73,7 @@ _TOOL = {
                     "type": "object",
                     "properties": {
                         "title": {"type": "string", "description": "Dish name, Title Case"},
-                        "serves": {"type": "string", "description": "e.g. '1' or '1-2'"},
+                        "serves": {"type": "string", "description": "always '1' (single serving, matching the dish's stated portion)"},
                         "time": {"type": "string", "description": "e.g. '20 min'"},
                         "ingredients": {"type": "array", "items": {"type": "string"}},
                         "method": {"type": "array", "items": {"type": "string"}},
@@ -93,10 +93,11 @@ HARD RULES:
 1. Write a recipe for every DISTINCT COOKABLE main/side dish on the menu — curries, sabzis, dals, khichdis, cheelas, rotis, stews, omelettes/bhurji, poriyals, chutneys, soups. SKIP trivial no-cook items (plain nuts, a piece of fruit, plain curd, tea/coffee, protein shake, methi water, plain boiled eggs) — they need no recipe.
 2. NEVER invent dishes that aren't on the menu. If a menu cell combines several dishes ("fish curry + green-bean poriyal + quinoa"), write a SEPARATE recipe for each cookable component.
 3. Respect the dietary preference and the avoid-list ABSOLUTELY — if a dish says "no tomato", the recipe uses no tomato. Never introduce a forbidden ingredient.
-4. Methods are concise home-cook steps (4-9 numbered steps), Indian kitchen technique + names (tadka, bhuno, dahi, jeera, haldi). Quantities for 1-2 servings, in the units given under LOCALE in the user message (metric for India, US units for a US-based client).
+4. Methods are concise home-cook steps (4-9 numbered steps), Indian kitchen technique + names (tadka, bhuno, dahi, jeera, haldi). Quantities are for EXACTLY 1 serving (a single portion) — set serves = "1" — and they MUST match the portion the dish states: if the dish says "tofu 100g", use 100 g tofu (not 150 g); if it says "(1 cup)" / "(1 bowl)", make that one serving. Units per LOCALE in the user message (metric for India, US units for a US-based client). NEVER scale to 2 servings.
 5. Deduplicate ONLY exact repeats: if the IDENTICAL dish recurs across days, write it once. But dishes with DIFFERENT names are DIFFERENT recipes — "Chana masala", "Chana-spinach", and "Chickpea-spinach curry" are three separate recipes; NEVER merge similar-but-differently-named dishes into one.
 6. Cover EVERY cookable dish — do NOT cap or trim the set to keep it short. If the menu has 30 distinct cookable dishes, write 30 recipes.
-7. TITLE each recipe to match its menu dish name closely (dish "Chickpea-spinach curry" → title "Chickpea Spinach Curry"), with NO extra parenthetical alternate names — the app links a recipe to a dish by matching the title's words against the dish, so a decorated title ("Chana Palak (Chickpea & Spinach)") fails to link. Sort alphabetically by title."""
+7. TITLE each recipe to match its menu dish name closely (dish "Chickpea-spinach curry" → title "Chickpea Spinach Curry"), with NO extra parenthetical alternate names — the app links a recipe to a dish by matching the title's words against the dish, so a decorated title ("Chana Palak (Chickpea & Spinach)") fails to link. Sort alphabetically by title.
+8. INGREDIENT FIDELITY — the recipe must BE the dish the menu names, not a reinvention. The headline ingredients are exactly the ones the dish names and no others: "Tofu and spinach curry" = tofu + spinach — do NOT add a different or extra headline vegetable or protein the dish doesn't name (no capsicum, no mushroom, no paneer, no mixed veg unless the dish says so). Only basic aromatics and pantry staples may be added: onion, tomato, ginger, garlic, green chilli, jeera, haldi, mustard seeds, oil/ghee, salt, lemon, coriander. If the dish states a quantity for an ingredient, use exactly that quantity. The name, the ingredients, and the method must all describe the SAME dish."""
 
 
 def _collect_dishes(payload: dict[str, Any]) -> list[str]:
@@ -181,7 +182,14 @@ def _dish_has_recipe(dish: str, titles: list[str]) -> bool:
             continue
         misses = sum(1 for x in rtoks if x not in dk)
         thr = (len(rtoks) // 3) if len(rtoks) >= 3 else 0
-        if misses <= thr:
+        # Lockstep with client-app.ts buildLibraryRecipeResolver: reject a match
+        # that has BOTH a missed recipe token AND an extra dish content-token —
+        # that is a DIFFERENT dish ("Tofu Vegetable Curry" must NOT cover
+        # "Tofu and spinach curry"). Such a dish stays UNCOVERED so it gets a
+        # faithful generated recipe instead of a wrong library one.
+        dtoks = [x for x in dk.split(" ") if len(x) >= 3 and x not in _TITLE_STOP]
+        extra = sum(1 for x in dtoks if x not in rk)
+        if misses <= thr and (misses == 0 or extra == 0):
             return True
     return False
 

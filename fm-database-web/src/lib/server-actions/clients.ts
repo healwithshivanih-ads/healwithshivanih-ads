@@ -836,6 +836,10 @@ export interface UpdateClientProfileInput {
   city?: string;
   state?: string;
   country?: string;
+  /** Female cycle / menopause stage. Drives the cycle-aware test
+   *  recommender + hormone-lab interpretation + meal-plan framing.
+   *  Settable from the Edit-identity panel on Overview. */
+  cycle_status?: "menstruating" | "perimenopausal" | "postmenopausal" | "not_applicable";
   // Did the client sign on after discovery? Stored as
   // `engagement_status` on client.yaml. Drives the new "Engagement" step
   // on the journey strip + the stage-banner copy on Overview.
@@ -901,6 +905,8 @@ export async function updateClientProfile(
     if (input.state !== undefined) data.state = input.state.trim() || undefined;
     if (input.country !== undefined)
       data.country = input.country.trim() || undefined;
+    if (input.cycle_status !== undefined)
+      data.cycle_status = input.cycle_status || undefined;
     if (input.engagement_status !== undefined)
       data.engagement_status = input.engagement_status;
     // Dietary / lifestyle memory — accept empty string as "clear".
@@ -1475,6 +1481,61 @@ export type AddMeasurementResult =
  * Appends (or updates same-date entry) to the client's measurements_log
  * time-series array. Sorts descending by date.
  */
+/**
+ * After a measurement write, make the flat "current weight" fields reflect the
+ * NEWEST-dated weigh-in across every store (measurements_log, health_snapshots,
+ * flat measurements) — so single-field readers surface the latest, while the
+ * log keeps the full history for comparison.
+ *
+ * WHY this exists: addMeasurementAction only appends to `measurements_log`, but
+ * the protein-floor / menu strip (`clientWeightKg` in menu-nutrients.ts) and the
+ * letter BMR/calorie calc (render-client-letter.py) read only the flat
+ * `measurements.weight_kg` / `weight_now_kg`. Without this reconcile a coach
+ * Log-entry never reached those surfaces (the cl-004 2026-05-18 bug — coach
+ * logged 79 kg, everything else kept using the intake 80 kg). The client-app
+ * self-log (save-app-body.py) already bumps the flat fields; this brings the
+ * coach path to parity.
+ *
+ * Resolution matches the Overview trend + weight-progress detector: newest date
+ * wins; same-date tie → measurements_log > health_snapshots > flat. Backdated
+ * corrections therefore stay as history and never clobber a newer current weight.
+ */
+function reconcileCurrentWeight(data: Record<string, unknown>): void {
+  type Cand = { date: string; kg: number; prio: number };
+  const num = (v: unknown): number | null => {
+    const n = typeof v === "number" ? v : Number(v);
+    return Number.isFinite(n) && n > 20 ? n : null; // >20 guards lb/typo noise
+  };
+  const cands: Cand[] = [];
+
+  const flat = (data.measurements as Record<string, unknown> | undefined) ?? undefined;
+  const flatKg = num(flat?.weight_kg);
+  const flatDate =
+    typeof flat?.measured_on === "string" && flat.measured_on ? (flat.measured_on as string) : null;
+  if (flatKg && flatDate) cands.push({ date: flatDate, kg: flatKg, prio: 0 });
+
+  for (const s of (data.health_snapshots as Array<Record<string, unknown>> | undefined) ?? []) {
+    const d = typeof s?.date === "string" ? s.date : null;
+    const kg = num((s?.measurements as Record<string, unknown> | undefined)?.weight_kg);
+    if (d && kg) cands.push({ date: d, kg, prio: 1 });
+  }
+  for (const e of (data.measurements_log as Array<Record<string, unknown>> | undefined) ?? []) {
+    const d = typeof e?.date === "string" ? e.date : null;
+    const kg = num(e?.weight_kg);
+    if (d && kg) cands.push({ date: d, kg, prio: 2 });
+  }
+  if (!cands.length) return;
+
+  cands.sort((a, b) => (a.date === b.date ? b.prio - a.prio : b.date.localeCompare(a.date)));
+  const win = cands[0];
+
+  const meas = (data.measurements as Record<string, unknown> | undefined) ?? {};
+  meas.weight_kg = win.kg;
+  meas.measured_on = win.date;
+  data.measurements = meas;
+  data.weight_now_kg = win.kg; // fallback the menu-strip / weight-loss card read
+}
+
 export async function addMeasurementAction(
   input: AddMeasurementInput
 ): Promise<AddMeasurementResult> {
@@ -1528,6 +1589,9 @@ export async function addMeasurementAction(
     // Sort newest first
     log.sort((a, b) => String(b.date).localeCompare(String(a.date)));
     data.measurements_log = log;
+    // Surface the latest weigh-in to the flat current-weight fields the
+    // menu strip / protein floor / letter calc read (see helper docstring).
+    reconcileCurrentWeight(data);
     data.updated_at = new Date().toISOString();
 
     await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
