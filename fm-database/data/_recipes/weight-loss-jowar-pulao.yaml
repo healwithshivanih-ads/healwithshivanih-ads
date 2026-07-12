@@ -1,0 +1,141 @@
+slug: weight-loss-jowar-pulao
+name: Weight-Loss Jowar Pulao
+meal_type:
+- lunch
+diet:
+- gluten_free
+- vegetarian
+region: South Indian-inspired
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- pungent
+- salty
+main_ingredients:
+- jowar
+- mixed vegetables
+- peanuts
+contains_allergens:
+- peanut
+ingredients:
+- item: jowar (sorghum millet)
+  qty: '1'
+  unit: cup
+- item: water
+  qty: '4'
+  unit: cups
+- item: ghee or oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: peanuts
+  qty: 1/4
+  unit: cup
+- item: ginger, chopped
+  qty: '1'
+  unit: tsp
+- item: green chillies
+  qty: '2'
+  unit: whole
+- item: curry leaves
+  qty: '1'
+  unit: sprig
+- item: carrot, chopped
+  qty: 1/4
+  unit: cup
+- item: green beans, chopped
+  qty: 1/4
+  unit: cup
+- item: green peas
+  qty: 1/4
+  unit: cup
+- item: sweet corn
+  qty: 1/4
+  unit: cup
+- item: tomato, chopped
+  qty: 1/4
+  unit: cup
+- item: black pepper powder
+  qty: 1/2
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Soak the jowar overnight, then pressure cook it with the water and salt for 10–12
+  whistles until soft; drain any excess water.
+- Heat the ghee or oil and let the mustard seeds crackle, then add the cumin seeds
+  and peanuts and sauté for 2 minutes.
+- Stir in the ginger, green chillies and curry leaves and cook for a minute until
+  fragrant.
+- Add the chopped carrot, beans, peas, sweet corn and tomato and cook for about 5
+  minutes until just tender.
+- Fold in the cooked jowar with the pepper, lemon juice, salt and coriander, mix well
+  and serve hot.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 25
+one_line: A high-fibre jowar millet pulao loaded with vegetables and a peanut crunch
+  — filling and light.
+headnote: Swapping rice for jowar (sorghum) roughly triples the fibre and slows digestion,
+  so this pulao keeps you full for hours. A handful of vegetables and peanuts rounds
+  out the protein for a satisfying, weight-loss-friendly lunch. The source reports
+  about 380 kcal, 14 g protein and 15 g fibre per serving.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+  source_url: https://www.instagram.com/reel/Dah8AM6vm1N/?igsh=MThzNGN4dHI0M2s4
+parse_notes: Hand-parsed from forwarded Instagram reel caption (no API); steps paraphrased
+  for copyright.
+approx_kcal_per_serving: 422
+kcal_is_estimate: true
+protein_g: 13.2
+kcal_per_serving: 422
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 422
+  protein_g: 13.2
+  carbs_g: 53.9
+  fat_g: 18.2
+  fibre_g: 10.2
+  iron_mg: 4.7
+  calcium_mg: 74.7
+  magnesium_mg: 142
+  zinc_mg: 2.3
+  potassium_mg: 611
+  folate_ug: 97.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 17.3
+  omega3_mg: 124
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani (recipe inbox)

@@ -1,0 +1,124 @@
+slug: jowar-khichdi-with-cucumber-raita
+name: Jowar Khichdi with Cucumber Raita
+meal_type:
+- lunch
+diet:
+- gluten_free
+- vegetarian
+region: Maharashtra
+seasons:
+- all
+balances_dosha:
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- sour
+- salty
+main_ingredients:
+- jowar
+- yogurt
+- cucumber
+- peanuts
+- paneer
+contains_allergens:
+- dairy
+- peanut
+ingredients:
+- item: jowar (sorghum millet)
+  qty: '1'
+  unit: cup
+- item: fresh yogurt (curd)
+  qty: '3'
+  unit: cups
+- item: cucumber, grated
+  qty: '2'
+  unit: whole
+- item: cumin powder
+  qty: 1/4
+  unit: tsp
+- item: cumin seeds (jeera)
+  qty: 1/4
+  unit: tsp
+- item: roasted peanuts, crushed
+  qty: 3/4
+  unit: cup
+- item: green chilli and coriander paste
+  qty: '2'
+  unit: tsp
+- item: paneer, crushed
+  qty: 1/2
+  unit: cup
+- item: oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Rinse the jowar well several times, then soak it in hot water for about 2 hours
+  until it swells.
+- Pressure cook the soaked jowar for 7–8 whistles until the grains turn slightly translucent
+  and tender; drain off any extra water.
+- For the raita, whisk the fresh yogurt with the grated cucumber and a little salt,
+  and keep it chilled.
+- Heat the oil in a pan, add the cumin seeds, green chilli-coriander paste, crushed
+  roasted peanuts and crushed paneer, and sauté for 2–3 minutes.
+- Fold in the cooked jowar with salt, cumin powder and lemon juice, and warm through.
+- Serve the hot jowar khichdi with the chilled cucumber raita.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 30
+one_line: A cooling jowar millet khichdi tempered with peanuts and paneer, served
+  with chilled cucumber raita.
+headnote: Jowar (sorghum) is naturally gluten-free and high in fibre, so this khichdi
+  is filling without feeling heavy. Peanuts and paneer add plant-and-dairy protein,
+  while the chilled cucumber raita keeps the whole plate cooling — a good summer lunch.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+  source_url: https://www.instagram.com/reel/DYHkUNqKNtr/?igsh=MWV1azN1Z2FpZ2pscg==
+parse_notes: Hand-parsed from forwarded Instagram reel caption (no API); steps paraphrased
+  for copyright. Source names it Babudana Khichdi.
+approx_kcal_per_serving: 656
+kcal_is_estimate: true
+protein_g: 27.2
+kcal_per_serving: 656
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 656
+  protein_g: 27.2
+  carbs_g: 50.7
+  fat_g: 40.9
+  fibre_g: 7.9
+  iron_mg: 4.4
+  calcium_mg: 471
+  magnesium_mg: 167
+  zinc_mg: 4.2
+  potassium_mg: 998
+  folate_ug: 134
+  b12_ug: 1.2
+  vit_d_ug: 0.3
+  vit_c_mg: 6.8
+  omega3_mg: 174
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- b12
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani (recipe inbox)

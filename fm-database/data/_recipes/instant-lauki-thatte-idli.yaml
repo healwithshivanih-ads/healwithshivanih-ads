@@ -1,0 +1,109 @@
+slug: instant-lauki-thatte-idli
+name: Instant Lauki Thatte Idli
+meal_type:
+- breakfast
+diet:
+- gluten_free
+- nut_free
+- vegetarian
+region: Karnataka
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- salty
+main_ingredients:
+- rice
+- poha
+- bottle gourd
+- curd
+contains_allergens:
+- dairy
+ingredients:
+- item: soaked rice
+  qty: '1'
+  unit: cup
+- item: soaked poha (flattened rice)
+  qty: 1/2
+  unit: cup
+- item: thick curd
+  qty: '2'
+  unit: tsp
+- item: lauki (bottle gourd), grated
+  qty: '2'
+  unit: cups
+- item: green chillies
+  qty: '3'
+  unit: whole
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: 1/2
+  unit: tsp
+- item: Eno fruit salt
+  qty: '1'
+  unit: tsp
+- item: oil, for greasing
+  qty: '1'
+  unit: tsp
+steps:
+- Soak the rice for 3–4 hours and the poha for about 30 minutes, then drain.
+- Blend the rice, poha, curd, grated bottle gourd, green chillies and coriander into
+  a smooth, slightly thick batter, adding a little water only as needed.
+- Stir in the salt and check the consistency — it should be thick enough to hold on
+  a spoon.
+- Just before steaming, fold in the Eno gently so the batter turns airy; do not overmix.
+- Lightly grease thatte (plate) idli moulds with oil and pour the batter in thickly.
+- Steam for 10–15 minutes until the idlis are set and spring back to the touch.
+- Serve warm with chutney, podi, a little ghee and sambar.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 15
+one_line: Soft steamed plate-idlis made instantly from a rice-poha batter folded with
+  grated bottle gourd.
+headnote: Bottle gourd (lauki) keeps these idlis light and cooling, adding moisture
+  and fibre without heaviness. Skipping the overnight ferment (Eno does the lift)
+  makes this a quick, gut-friendly breakfast — steam it soft and serve with chutney
+  and sambar.
+attribution:
+  author: unknown
+  source_id: recipe-inbox
+  source_url: https://www.instagram.com/reel/DYXC3Igze_9/?igsh=azc3Njh1YTBvczJ2
+parse_notes: Hand-parsed from forwarded Instagram reel caption (no API); steps paraphrased
+  for copyright.
+approx_kcal_per_serving: 284
+kcal_is_estimate: true
+protein_g: 6.6
+kcal_per_serving: 284
+kcal_basis: ingredient_table_v1
+nutrients_per_serving:
+  kcal: 284
+  protein_g: 6.6
+  carbs_g: 62.6
+  fat_g: 0.6
+  fibre_g: 2.7
+  iron_mg: 1.6
+  calcium_mg: 30.7
+  magnesium_mg: 34.3
+  zinc_mg: 1.5
+  potassium_mg: 226
+  folate_ug: 13.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 13.4
+  omega3_mg: 13.5
+nutrient_coverage_pct: 89.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani (recipe inbox)
