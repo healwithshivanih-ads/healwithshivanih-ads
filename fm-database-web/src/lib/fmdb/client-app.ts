@@ -3623,6 +3623,17 @@ export async function loadClientAppData(
   // SEQUENCE (ghee water → tea → raisins) isn't collapsed to a single item.
   {
     const existingNames = new Set(remedies.map((r) => r.name.toLowerCase().trim()));
+    // Order within the morning sequence: the true first-thing / before-tea items
+    // list first, then other empty-stomach items, then the morning beverage —
+    // "what goes in on an empty stomach lists first" (ghee water → soaked raisins
+    // → morning tea).
+    const ritualOrder = (t: string): number =>
+      /first thing|before (?:your )?(?:morning )?(?:tea|breakfast)/i.test(t)
+        ? 0
+        : /empty stomach/i.test(t)
+          ? 1
+          : 2;
+    const customEntries: AppRemedy[] = [];
     for (const cr of asArr(nutrition.custom_remedies) as Dict[]) {
       const name = asStr(cr.name).trim();
       if (!name || existingNames.has(name.toLowerCase())) continue;
@@ -3640,7 +3651,7 @@ export async function loadClientAppData(
       const beforeBreakfast =
         /waking|empty stomach|first thing|before (?:your )?(?:morning )?(?:tea|breakfast|meal)/i.test(timing);
       const slug = "custom-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-      remedies.push({
+      customEntries.push({
         slug,
         name,
         also: "",
@@ -3669,6 +3680,8 @@ export async function loadClientAppData(
       });
       existingNames.add(name.toLowerCase());
     }
+    customEntries.sort((a, b) => ritualOrder(a.timing) - ritualOrder(b.timing));
+    remedies.push(...customEntries);
   }
 
   // ---- remedy eligibility (hard gates) + relevance shelf --------------------
