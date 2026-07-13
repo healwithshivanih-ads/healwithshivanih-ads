@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# stray image-review renders (image-rework artifacts, not app content)
+*-generated-review.jpg
