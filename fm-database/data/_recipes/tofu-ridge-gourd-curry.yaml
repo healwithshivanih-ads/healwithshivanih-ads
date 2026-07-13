@@ -1,0 +1,136 @@
+slug: tofu-ridge-gourd-curry
+name: Tofu and ridge gourd curry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- tofu
+- ridge gourd
+- onion
+- tomato
+- ground spices
+contains_allergens:
+- soy
+ingredients:
+- item: firm tofu, cubed
+  qty: '200'
+  unit: g
+- item: ridge gourd (turai), peeled and diced
+  qty: '2'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Pat the tofu cubes dry and set aside. Peel the ridge gourd, removing the tough ridges,
+  and dice into bite-sized pieces.
+- Heat oil in a kadai over medium heat. Add mustard seeds and let them pop, then add
+  cumin seeds and the onion; sauté until soft.
+- Stir in the ginger-garlic paste and cook 1 minute, then add the tomato with turmeric,
+  chilli powder, and coriander powder. Cook 5-6 minutes until softened.
+- Add the ridge gourd and salt, stir to coat, cover, and cook on low 8-10 minutes
+  — the gourd releases its own water, so add only a splash if needed.
+- Gently add the tofu cubes and simmer another 4-5 minutes until warmed through and
+  the gourd is tender.
+- Garnish with fresh coriander and serve hot with rice or millet roti.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 20
+protein_g: 19
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: Light, watery ridge gourd cooked with tofu in a simple tempered masala —
+  a gentle gluten-free main.
+headnote: Ridge gourd is cooling and hydrating and cooks down quickly in its own moisture,
+  making this an easy, light curry. Tofu turns a humble everyday sabzi into a protein-complete
+  meal.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/tofu-ridge-gourd-curry.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Tofu and ridge gourd curry
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 155
+  protein_g: 12.3
+  carbs_g: 17.7
+  fat_g: 5.4
+  fibre_g: 4.8
+  iron_mg: 3.4
+  calcium_mg: 264
+  magnesium_mg: 80.8
+  zinc_mg: 1.6
+  potassium_mg: 562
+  folate_ug: 77.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 26.7
+  omega3_mg: 266
+nutrient_coverage_pct: 95.6
+rich_in:
+- protein
+- iron
+- calcium
+- magnesium
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -1,0 +1,112 @@
+slug: paneer-sandwich
+name: Paneer sandwich
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- salty
+main_ingredients:
+- whole-wheat bread
+- paneer
+- onion
+- capsicum
+contains_allergens:
+- gluten
+- dairy
+ingredients:
+- item: whole-wheat bread
+  qty: '4'
+  unit: slice
+- item: paneer, crumbled
+  qty: '1'
+  unit: cup
+- item: onion, finely chopped
+  qty: 1/2
+  unit: piece
+- item: capsicum, finely chopped
+  qty: 1/2
+  unit: piece
+- item: tomato, finely chopped
+  qty: '1'
+  unit: piece
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: turmeric
+  qty: 1/4
+  unit: tsp
+- item: chaat masala and salt
+  qty: to taste
+  unit: ''
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- In a bowl, mix crumbled paneer with onion, capsicum, tomato, green chilli, turmeric,
+  chaat masala, salt and coriander.
+- Spread the paneer filling on two bread slices and cover with the other two.
+- Toast on a hot pan or sandwich press for 3 to 4 minutes until golden, or eat as
+  is.
+- Cut in half and serve warm.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 4
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: A protein-rich paneer sandwich that comes together with no real cooking.
+headnote: Soft paneer is crumbled with onion, capsicum and warm spices to make a quick,
+  satisfying filling. Eat it fresh or give it a light toast for a crisp finish.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/paneer-sandwich.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Paneer sandwich
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 223
+  protein_g: 13.6
+  carbs_g: 10.0
+  fat_g: 15.1
+  fibre_g: 1.9
+  iron_mg: 1.0
+  calcium_mg: 328
+  magnesium_mg: 26.5
+  zinc_mg: 1.7
+  potassium_mg: 309
+  folate_ug: 37.5
+  b12_ug: 0.5
+  vit_d_ug: 0.1
+  vit_c_mg: 50.5
+  omega3_mg: 77.2
+nutrient_coverage_pct: 85.5
+rich_in:
+- protein
+- calcium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

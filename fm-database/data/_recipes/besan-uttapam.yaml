@@ -80,9 +80,9 @@ attribution:
 image:
   file: images/web/besan-uttapam.jpg
   credit: 'generated with ChatGPT image generation'
-  source_url: chatgpt-generated://besan-uttapam
-  rights_status: generated_reference
-  note: coach-selected generated image; visually reviewed for no people, hands, text, or watermark
+  source_url: 'chatgpt-generated://besan-uttapam'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Besan uttapam

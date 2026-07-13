@@ -1,0 +1,90 @@
+slug: plain-paratha
+name: Plain paratha
+meal_type:
+- breakfast
+- lunch
+- side
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- whole-wheat atta
+- ghee
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat atta
+  qty: '2'
+  unit: cup
+- item: ghee (for layering and cooking)
+  qty: '3'
+  unit: tbsp
+- item: water
+  qty: '0.75'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Mix atta with a pinch of salt, add water gradually and knead into a soft, pliable
+  dough.
+- Cover and rest 15 minutes, then divide into 5 balls.
+- Roll one ball into a round, smear with ghee, dust with flour, fold into a triangle
+  or coil, then roll out again.
+- Cook on a hot tawa until light bubbles appear, flip and drizzle ghee.
+- Press gently and cook both sides until flaky and golden.
+- Serve hot with any curry, dal or curd.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 15
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: Flaky layered wheat parathas, the plain everyday partner to any curry.
+headnote: Folding ghee into the dough gives these parathas their signature flaky layers.
+  Simple, versatile, and ready for whatever sabzi or dal is on the stove.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/plain-paratha.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Plain paratha
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 184
+  protein_g: 0.0
+  carbs_g: 0.0
+  fat_g: 20.4
+  fibre_g: 0.0
+  iron_mg: 0.0
+  calcium_mg: 0.0
+  magnesium_mg: 0.0
+  zinc_mg: 0.0
+  potassium_mg: 0.0
+  folate_ug: 0.0
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 0.0
+  omega3_mg: 164
+nutrient_coverage_pct: 57.7
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

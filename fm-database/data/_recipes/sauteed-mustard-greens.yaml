@@ -1,0 +1,119 @@
+slug: sauteed-mustard-greens
+name: Sautéed mustard greens
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- pungent
+- bitter
+- astringent
+main_ingredients:
+- mustard greens (sarson)
+- garlic
+contains_allergens: []
+ingredients:
+- item: mustard greens (sarson), cleaned and chopped
+  qty: '4'
+  unit: cup
+- item: garlic, crushed
+  qty: '5'
+  unit: piece
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a kadhai and add hing, then the crushed garlic, ginger and green chilli.
+- Saute for a minute till the garlic is fragrant, then add the onion and cook till
+  soft.
+- Add the chopped mustard greens with haldi and salt.
+- Cook uncovered on medium heat, stirring, till the greens wilt right down and soften,
+  about 10 minutes.
+- Dry off any moisture so the saag is thick, not watery, and serve hot with roti or
+  bajra rotla.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 15
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: A pungent, garlicky sarson saute that tastes like a light winter saag.
+headnote: Mustard greens carry a peppery bite and plenty of fibre and minerals. Slow-wilting
+  them with garlic and ginger tames the sharpness into a warm, comforting green.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sauteed-mustard-greens.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed mustard greens
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 2067
+  protein_g: 105
+  carbs_g: 120
+  fat_g: 144
+  fibre_g: 50.0
+  iron_mg: 37.2
+  calcium_mg: 1092
+  magnesium_mg: 1489
+  zinc_mg: 24.6
+  potassium_mg: 3076
+  folate_ug: 659
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 37.6
+  omega3_mg: 1284
+nutrient_coverage_pct: 94.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

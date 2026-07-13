@@ -1,0 +1,90 @@
+slug: whole-wheat-roti
+name: Whole-wheat roti
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- whole-wheat atta
+- water
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat atta
+  qty: '2'
+  unit: cup
+- item: water
+  qty: '0.75'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: ghee (optional, to smear)
+  qty: '1'
+  unit: tsp
+steps:
+- Mix atta with a pinch of salt, add water little by little and knead into a soft,
+  smooth dough.
+- Cover and rest the dough 15 minutes, then divide into 6 equal balls.
+- Dust with flour and roll each ball into a thin round using a rolling pin.
+- Cook on a hot tawa until pale bubbles appear, flip and press lightly with a cloth.
+- Puff over an open flame or on the tawa until it balloons, then smear with a little
+  ghee if you like.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 15
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: Soft everyday whole-wheat rounds that puff up warm off the tawa.
+headnote: The plain daily bread of most Indian homes, made from just atta and water.
+  Keep the dough soft and rest it so the rotis stay tender.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/whole-wheat-roti.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Whole-wheat roti
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 20.4
+  protein_g: 0.0
+  carbs_g: 0.0
+  fat_g: 2.3
+  fibre_g: 0.0
+  iron_mg: 0.0
+  calcium_mg: 0.0
+  magnesium_mg: 0.0
+  zinc_mg: 0.0
+  potassium_mg: 0.0
+  folate_ug: 0.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 18.2
+nutrient_coverage_pct: 13.1
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

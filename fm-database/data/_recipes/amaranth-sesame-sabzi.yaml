@@ -1,0 +1,111 @@
+slug: amaranth-sesame-sabzi
+name: Amaranth leaves sabzi with sesame and turmeric
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- astringent
+- sweet
+- pungent
+main_ingredients:
+- amaranth leaves (chaulai)
+- sesame seeds
+contains_allergens:
+- sesame
+ingredients:
+- item: amaranth leaves (chaulai), cleaned and chopped
+  qty: '4'
+  unit: cup
+- item: sesame seeds (til)
+  qty: '1.5'
+  unit: tbsp
+- item: garlic, crushed
+  qty: '4'
+  unit: piece
+- item: rai (mustard seeds)
+  qty: '0.5'
+  unit: tsp
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: haldi (turmeric)
+  qty: '0.5'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Dry-roast the sesame seeds in a pan till golden and fragrant, then set aside.
+- In the same pan heat oil, add rai and let it splutter, then add hing, garlic and
+  green chilli.
+- Add the chopped amaranth leaves with haldi and salt, and toss well.
+- Cook uncovered on medium heat, stirring, till the leaves wilt and soften, about
+  6 to 8 minutes.
+- Dry off any moisture, then sprinkle the roasted sesame seeds over and toss through.
+- Serve hot with roti or as a side to dal-rice.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 12
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A mineral-rich amaranth-leaf saute finished with nutty roasted sesame and
+  turmeric.
+headnote: Amaranth leaves are loaded with iron, calcium and fibre, and sesame adds
+  a nutty crunch plus extra calcium. The turmeric and garlic make this an easy, nourishing
+  green side.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/amaranth-sesame-sabzi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Amaranth leaves sabzi with sesame and turmeric
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 49.1
+  protein_g: 1.6
+  carbs_g: 3.9
+  fat_g: 3.4
+  fibre_g: 1.0
+  iron_mg: 1.2
+  calcium_mg: 78.2
+  magnesium_mg: 25.9
+  zinc_mg: 0.6
+  potassium_mg: 65.2
+  folate_ug: 7.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.6
+  omega3_mg: 27.1
+nutrient_coverage_pct: 20.4
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

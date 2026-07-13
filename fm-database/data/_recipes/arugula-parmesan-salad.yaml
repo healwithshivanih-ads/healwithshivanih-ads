@@ -1,0 +1,106 @@
+slug: arugula-parmesan-salad
+name: Arugula & Parmesan Salad
+meal_type:
+- salad
+- side
+diet:
+- vegetarian
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 3 cups arugula leaves
+- 1 tbsp olive oil
+- 2 tbsp lemon juice
+- salt, to taste
+- freshly ground black pepper, to taste
+- ½ cup parmesan cheese, shaved/crumbled
+- ½ cup pomegranate kernels, optional
+- 1 tbsp sunflower seeds, optional
+contains_allergens:
+- dairy
+ingredients:
+- item: 3 cups arugula leaves
+  qty: ''
+  unit: ''
+- item: 1 tbsp olive oil
+  qty: ''
+  unit: ''
+- item: 2 tbsp lemon juice
+  qty: ''
+  unit: ''
+- item: salt, to taste
+  qty: ''
+  unit: ''
+- item: freshly ground black pepper, to taste
+  qty: ''
+  unit: ''
+- item: ½ cup parmesan cheese, shaved/crumbled
+  qty: ''
+  unit: ''
+- item: ½ cup pomegranate kernels, optional
+  qty: ''
+  unit: ''
+- item: 1 tbsp sunflower seeds, optional
+  qty: ''
+  unit: ''
+steps:
+- Wash the arugula under cold water, spin-dry and place in a large bowl.
+- Whisk the lemon juice, olive oil, salt and pepper together, drizzle over the arugula
+  and toss.
+- Shave the parmesan over the salad to taste.
+- Finish with pomegranate kernels and sunflower seeds if using.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 0
+approx_kcal_per_serving: 148
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A classic arugula salad with shaved parmesan and a simple lemon vinaigrette.
+headnote: Peppery arugula, salty shaved parmesan and a bright lemon dressing. Pomegranate
+  and seeds add extra crunch.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/arugula-parmesan-salad.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Arugula & Parmesan Salad
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 91.2
+  protein_g: 1.1
+  carbs_g: 2.6
+  fat_g: 9.1
+  fibre_g: 0.7
+  iron_mg: 0.4
+  calcium_mg: 9.1
+  magnesium_mg: 16.8
+  zinc_mg: 0.2
+  potassium_mg: 57.3
+  folate_ug: 13.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 6.0
+  omega3_mg: 55.5
+nutrient_coverage_pct: 38.7
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

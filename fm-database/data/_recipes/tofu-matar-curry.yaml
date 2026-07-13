@@ -1,0 +1,137 @@
+slug: tofu-matar-curry
+name: Tofu matar curry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- astringent
+main_ingredients:
+- tofu
+- green peas
+- onion
+- tomato
+- ground spices
+contains_allergens:
+- soy
+ingredients:
+- item: firm tofu, cubed
+  qty: '200'
+  unit: g
+- item: green peas
+  qty: '0.75'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, pureed
+  qty: '2'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Pat the tofu cubes dry with a cloth to remove excess moisture. Set aside.
+- Heat oil in a kadai over medium heat. Add cumin seeds, let them splutter, then add
+  the onion and sauté until golden.
+- Stir in the ginger-garlic paste and cook 1 minute, then add the tomato puree with
+  turmeric, chilli powder, and coriander powder. Cook 6-8 minutes until the oil separates.
+- Add the green peas and salt, pour in 1 cup water, and simmer 6-7 minutes until the
+  peas are nearly tender.
+- Gently slide in the tofu cubes and simmer another 4-5 minutes, stirring lightly
+  so they hold their shape and soak up the gravy.
+- Sprinkle garam masala, stir, and garnish with fresh coriander. Serve hot with rice
+  or millet roti.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+protein_g: 20
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: Soft tofu and sweet green peas in a spiced onion-tomato gravy, a gluten-free
+  plant-protein main.
+headnote: Patting the tofu dry helps it stay firm and pick up the masala instead of
+  falling apart. Peas add colour and a little sweetness to balance the spices.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/tofu-matar-curry.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Tofu matar curry
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 160
+  protein_g: 12.4
+  carbs_g: 19.0
+  fat_g: 5.3
+  fibre_g: 5.6
+  iron_mg: 3.9
+  calcium_mg: 266
+  magnesium_mg: 79.0
+  zinc_mg: 1.6
+  potassium_mg: 648
+  folate_ug: 61.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 31.8
+  omega3_mg: 279
+nutrient_coverage_pct: 95.4
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

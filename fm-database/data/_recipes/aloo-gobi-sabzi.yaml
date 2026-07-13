@@ -1,0 +1,126 @@
+slug: aloo-gobi-sabzi
+name: Aloo gobi sabzi
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- astringent
+- sweet
+main_ingredients:
+- potato
+- cauliflower
+contains_allergens: []
+ingredients:
+- item: potato, cubed small
+  qty: '2'
+  unit: piece
+- item: cauliflower, small florets
+  qty: '2'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tsp
+- item: jeera (cumin seeds)
+  qty: '1'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: dhania (coriander) powder
+  qty: '1'
+  unit: tsp
+- item: cooking oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat oil in a kadhai and crackle the jeera.
+- Add onion and ginger-garlic paste; saute till the onion turns soft and golden.
+- Add tomato, haldi, chilli and dhania powder with a splash of water; cook till the
+  masala thickens.
+- Add the potato and cauliflower with salt, toss to coat in the masala.
+- Cover and cook on low heat, stirring occasionally, till both are fork-tender, about
+  15 minutes.
+- Uncover, turn up the heat and dry off any moisture so the edges catch a little colour.
+- Finish with fresh coriander and serve hot with roti.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 25
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- anti-inflammatory-diet
+one_line: A homely dry curry of potato and cauliflower simmered in a warm tomato-onion
+  masala.
+headnote: This everyday sabzi pairs starchy potato with fibre-rich cauliflower for
+  a satisfying plate. The turmeric and cumin add gentle anti-inflammatory warmth and
+  help digestion.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/aloo-gobi-sabzi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Aloo gobi sabzi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 178
+  protein_g: 6.3
+  carbs_g: 38.9
+  fat_g: 0.7
+  fibre_g: 7.2
+  iron_mg: 2.1
+  calcium_mg: 63.2
+  magnesium_mg: 63.6
+  zinc_mg: 1.0
+  potassium_mg: 1184
+  folate_ug: 103
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 93.6
+  omega3_mg: 60.2
+nutrient_coverage_pct: 85.9
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

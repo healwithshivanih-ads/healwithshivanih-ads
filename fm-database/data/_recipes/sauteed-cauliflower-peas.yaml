@@ -1,0 +1,119 @@
+slug: sauteed-cauliflower-peas
+name: Sautéed cauliflower and peas
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+- sweet
+- pungent
+main_ingredients:
+- cauliflower
+- green peas
+contains_allergens: []
+ingredients:
+- item: cauliflower, small florets
+  qty: '3'
+  unit: cup
+- item: green peas
+  qty: '0.5'
+  unit: cup
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: jeera (cumin seeds)
+  qty: '1'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.25'
+  unit: tsp
+- item: dhania (coriander) powder
+  qty: '1'
+  unit: tsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat oil in a kadhai and crackle the jeera.
+- Add onion and grated ginger and saute till the onion softens.
+- Add the cauliflower and peas with haldi, chilli, dhania powder and salt; toss to
+  coat.
+- Sprinkle a little water, cover and cook on low heat till the cauliflower is just
+  tender, about 12 minutes.
+- Uncover, raise the heat and dry off the moisture so the florets brown lightly.
+- Finish with fresh coriander and serve hot.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 18
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- anti-inflammatory-diet
+one_line: A comforting dry sabzi of cauliflower and sweet green peas.
+headnote: Cauliflower and peas together give fibre, plant protein and a little natural
+  sweetness. Cooked dry with cumin and ginger, this is a light side that goes with
+  any Indian meal.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sauteed-cauliflower-peas.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed cauliflower and peas
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 77.5
+  protein_g: 4.4
+  carbs_g: 16.2
+  fat_g: 0.7
+  fibre_g: 5.2
+  iron_mg: 1.1
+  calcium_mg: 57.0
+  magnesium_mg: 36.6
+  zinc_mg: 0.8
+  potassium_mg: 648
+  folate_ug: 115
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 89.0
+  omega3_mg: 73.3
+nutrient_coverage_pct: 80.5
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -1,0 +1,105 @@
+slug: jeera-rice
+name: Jeera rice
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+main_ingredients:
+- basmati rice
+- cumin seeds
+contains_allergens: []
+ingredients:
+- item: basmati rice
+  qty: '1'
+  unit: cup
+- item: cumin seeds (jeera)
+  qty: '1'
+  unit: tsp
+- item: oil
+  qty: '1.5'
+  unit: tbsp
+- item: bay leaf
+  qty: '1'
+  unit: piece
+- item: green chilli (slit)
+  qty: '1'
+  unit: piece
+- item: water
+  qty: '2'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: coriander leaves (to garnish)
+  qty: '1'
+  unit: tbsp
+steps:
+- Rinse the basmati rice until the water runs clear, then soak for 20 minutes and
+  drain.
+- Heat oil in a pot and add cumin seeds and bay leaf; let the cumin crackle and turn
+  fragrant.
+- Add the slit green chilli, then the drained rice, and toss gently for a minute.
+- Pour in the water, add salt, and bring to a boil.
+- Cover, lower the heat and simmer until the rice is tender and the water is absorbed,
+  about 12 minutes.
+- Fluff with a fork, garnish with coriander and rest 5 minutes before serving.
+servings: '2'
+prep_time_min: 25
+cook_time_min: 15
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: Fragrant cumin-tempered basmati that pairs with any dal or curry.
+headnote: The simplest way to lift plain rice, with cumin bloomed in hot oil for aroma.
+  Soaking the basmati keeps every grain long and separate.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/jeera-rice.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Jeera rice
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 424
+  protein_g: 7.6
+  carbs_g: 72.9
+  fat_g: 10.9
+  fibre_g: 2.8
+  iron_mg: 1.4
+  calcium_mg: 18.9
+  magnesium_mg: 27.7
+  zinc_mg: 1.2
+  potassium_mg: 132
+  folate_ug: 9.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 3.0
+  omega3_mg: 93.7
+nutrient_coverage_pct: 87.7
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

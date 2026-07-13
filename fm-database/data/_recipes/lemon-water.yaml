@@ -51,8 +51,7 @@ seasons:
 - all
 image:
   file: images/web/lemon-water.jpg
-  credit: 'web reference (coach-selected)'
-  source_url: https://image.idntimes.com/post/20210726/fromandroid-1cea9f9edc452bd8bab778f3b01f0b54.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://lemon-water'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark

@@ -1,0 +1,107 @@
+slug: watermelon-salad
+name: Watermelon Salad
+meal_type:
+- salad
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 4 cups watermelon, chopped and deseeded
+- 2 cups arugula leaves, washed
+- ½ cup fresh mint leaves
+- ¼ cup pecans
+- 1 tbsp chia seeds
+- juice & zest of 1 lemon
+- 1 tbsp maple syrup
+- salt, to taste
+contains_allergens:
+- nuts
+ingredients:
+- item: 4 cups watermelon, chopped and deseeded
+  qty: ''
+  unit: ''
+- item: 2 cups arugula leaves, washed
+  qty: ''
+  unit: ''
+- item: ½ cup fresh mint leaves
+  qty: ''
+  unit: ''
+- item: ¼ cup pecans
+  qty: ''
+  unit: ''
+- item: 1 tbsp chia seeds
+  qty: ''
+  unit: ''
+- item: juice & zest of 1 lemon
+  qty: ''
+  unit: ''
+- item: 1 tbsp maple syrup
+  qty: ''
+  unit: ''
+- item: salt, to taste
+  qty: ''
+  unit: ''
+steps:
+- In a large bowl, whisk together the maple syrup, a little rock salt and the zest
+  and juice of the lime.
+- Add the chopped watermelon and toss gently to coat.
+- Fold in the mint and arugula, then scatter over the pecans and chia seeds.
+- Check the seasoning and serve chilled.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 0
+approx_kcal_per_serving: 83
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A refreshing watermelon salad with peppery arugula, mint and crunchy pecans.
+headnote: Sweet, juicy watermelon set against bitter arugula and crunchy walnut-like
+  pecans, in a light maple-lime dressing. Best served well chilled.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/watermelon-salad.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Watermelon Salad
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 30.0
+  protein_g: 0.6
+  carbs_g: 5.9
+  fat_g: 0.8
+  fibre_g: 1.4
+  iron_mg: 0.4
+  calcium_mg: 26.7
+  magnesium_mg: 11.2
+  zinc_mg: 0.2
+  potassium_mg: 46.5
+  folate_ug: 3.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 8.8
+  omega3_mg: 452
+nutrient_coverage_pct: 52.6
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

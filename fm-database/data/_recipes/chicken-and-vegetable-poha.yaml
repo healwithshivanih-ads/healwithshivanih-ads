@@ -85,11 +85,10 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/chicken-and-vegetable-poha.jpg
-  credit: web reference (coach-selected)
-  source_url: https://imgstaticcontent.lbb.in/lbbnew/wp-content/uploads/sites/7/2016/08/040816_Bhujing-ParikshitRao.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://chicken-and-vegetable-poha'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Chicken and vegetable poha

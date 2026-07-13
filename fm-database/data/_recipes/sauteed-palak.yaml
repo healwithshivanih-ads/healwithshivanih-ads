@@ -1,0 +1,107 @@
+slug: sauteed-palak
+name: Sautéed palak
+meal_type:
+- side
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- astringent
+- bitter
+- pungent
+main_ingredients:
+- spinach (palak)
+- garlic
+contains_allergens: []
+ingredients:
+- item: spinach (palak), washed and roughly chopped
+  qty: '4'
+  unit: cup
+- item: garlic, sliced
+  qty: '4'
+  unit: piece
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: piece
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Heat oil in a kadhai and crackle the jeera with hing.
+- Add the sliced garlic and green chilli and saute till the garlic is just golden.
+- Add the chopped spinach with haldi and salt, and toss on high heat.
+- Cook uncovered for 3 to 4 minutes, stirring, till the spinach wilts and any water
+  dries off.
+- Squeeze over the lemon juice, toss once and serve hot.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 8
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A quick garlicky spinach saute that keeps the greens bright and fresh.
+headnote: Cooking spinach fast on high heat keeps its colour and folate intact. Garlic
+  and a squeeze of lemon lift the greens and help you absorb the iron.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sauteed-palak.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed palak
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 25.3
+  protein_g: 1.7
+  carbs_g: 4.2
+  fat_g: 0.4
+  fibre_g: 1.6
+  iron_mg: 1.9
+  calcium_mg: 61.7
+  magnesium_mg: 46.8
+  zinc_mg: 0.3
+  potassium_mg: 312
+  folate_ug: 85.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.6
+  omega3_mg: 85.5
+nutrient_coverage_pct: 61.3
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

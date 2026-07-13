@@ -1,0 +1,145 @@
+slug: chickpea-vegetable-pulao
+name: Chickpea-vegetable pulao
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- white rice
+- chickpeas (chana)
+- mixed vegetables
+- whole spices
+- cumin seeds
+contains_allergens: []
+ingredients:
+- item: white rice, soaked 20 minutes
+  qty: '1'
+  unit: cup
+- item: cooked chickpeas (or soaked and boiled)
+  qty: '0.75'
+  unit: cup
+- item: cold-pressed vegetable oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: bay leaf
+  qty: '1'
+  unit: piece
+- item: cinnamon stick
+  qty: '1'
+  unit: piece
+- item: green cardamom
+  qty: '2'
+  unit: piece
+- item: cloves
+  qty: '3'
+  unit: piece
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tsp
+- item: diced mixed vegetables (carrot, beans, peas)
+  qty: '1'
+  unit: cup
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '2'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Drain the soaked rice and set aside; keep the cooked chickpeas ready.
+- Heat the oil in a heavy pot, add the cumin seeds, bay leaf, cinnamon, cardamom and
+  cloves, and let them sizzle for a few seconds.
+- Add the sliced onion and saute until soft and pale gold, then stir in the ginger-garlic
+  paste for half a minute.
+- Add the diced vegetables, turmeric and salt, and saute for 2 minutes.
+- Stir in the drained rice and chickpeas, coating them gently in the spices for a
+  minute.
+- Pour in the water, bring to a boil, then cover and cook on low for 12-15 minutes
+  until the rice is soft and the water is absorbed.
+- Turn off the heat and let it rest, covered, for 5 minutes, then fluff gently with
+  a fork and garnish with coriander.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 20
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: A fragrant one-pot rice pulao with protein-rich chickpeas and mixed vegetables.
+headnote: Whole spices bloomed in oil give this pulao its warmth, while the chickpeas
+  turn a simple rice dish into a balanced one-pot meal. Cook the rice soft and let
+  it rest so every grain stays separate.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/chickpea-vegetable-pulao.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Chickpea-vegetable pulao
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 496
+  protein_g: 15.5
+  carbs_g: 103
+  fat_g: 2.7
+  fibre_g: 11.4
+  iron_mg: 4.3
+  calcium_mg: 99.6
+  magnesium_mg: 79.2
+  zinc_mg: 2.6
+  potassium_mg: 580
+  folate_ug: 153
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 22.2
+  omega3_mg: 70.5
+nutrient_coverage_pct: 94.9
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

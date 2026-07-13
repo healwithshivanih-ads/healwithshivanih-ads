@@ -1,0 +1,122 @@
+slug: methi-paneer
+name: Methi paneer
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- bitter
+- astringent
+- sweet
+main_ingredients:
+- paneer
+- fresh methi leaves
+- tomato
+- onion
+contains_allergens:
+- dairy
+ingredients:
+- item: paneer, cubed
+  qty: '200'
+  unit: g
+- item: fresh methi (fenugreek) leaves, chopped
+  qty: '2'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, pureed
+  qty: '2'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat the oil in a pan and sauté the chopped onion until soft and golden.
+- Add the ginger-garlic paste and cook for a minute until the raw smell goes.
+- Stir in the tomato puree, turmeric, coriander powder and salt; cook until the oil
+  separates.
+- Add the chopped methi leaves and cook down for 3 to 4 minutes until wilted and fragrant.
+- Fold in the paneer cubes and a splash of water to loosen the gravy.
+- Simmer gently for 5 minutes so the paneer absorbs the flavours.
+- Finish with garam masala, stir through, and serve hot with roti or rice.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 20
+protein_g: 20
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: Soft paneer simmered with wilted fenugreek greens in a light onion-tomato
+  gravy.
+headnote: The slight bitterness of methi balances the richness of paneer beautifully,
+  and a light tomato base keeps the dish from feeling heavy. It comes together in
+  one pan and pairs equally well with roti or steamed rice.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/methi-paneer.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Methi paneer
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 364
+  protein_g: 22.6
+  carbs_g: 18.3
+  fat_g: 23.7
+  fibre_g: 4.8
+  iron_mg: 4.1
+  calcium_mg: 618
+  magnesium_mg: 66.4
+  zinc_mg: 2.9
+  potassium_mg: 596
+  folate_ug: 62.9
+  b12_ug: 0.8
+  vit_d_ug: 0.2
+  vit_c_mg: 36.2
+  omega3_mg: 150
+nutrient_coverage_pct: 95.2
+rich_in:
+- protein
+- iron
+- calcium
+- zinc
+- potassium
+- b12
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -1,0 +1,135 @@
+slug: kodo-millet-pulao
+name: Kodo millet pulao with peas and jeera
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- kodo millet
+- green peas
+- cumin seeds
+- whole spices
+- onion
+contains_allergens: []
+ingredients:
+- item: kodo millet, rinsed and soaked 20 minutes
+  qty: '1'
+  unit: cup
+- item: green peas (fresh or frozen)
+  qty: '0.75'
+  unit: cup
+- item: cold-pressed vegetable oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: bay leaf
+  qty: '1'
+  unit: piece
+- item: cinnamon stick
+  qty: '1'
+  unit: piece
+- item: cloves
+  qty: '3'
+  unit: piece
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: diced carrot
+  qty: '0.5'
+  unit: cup
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '2.5'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Drain the soaked kodo millet and set aside; keep the peas and carrot ready.
+- Heat the oil in a heavy pot, add the cumin seeds, bay leaf, cinnamon and cloves,
+  and let the cumin splutter.
+- Add the sliced onion and saute until soft and pale gold, then stir in the grated
+  ginger for half a minute.
+- Add the carrot, peas, turmeric and salt, and saute for 2 minutes.
+- Stir in the drained kodo millet and toss gently to coat in the spices for a minute.
+- Pour in the water, bring to a boil, then cover and cook on low for 15-18 minutes
+  until the millet is soft and the water is absorbed.
+- Rest, covered, for 5 minutes, then fluff gently with a fork and garnish with coriander.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 20
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A light, jeera-scented kodo millet pulao studded with sweet green peas.
+headnote: Kodo millet makes a lovely, light stand-in for rice in this simple pulao.
+  A cumin-forward tempering and sweet peas keep it comforting while staying gentle
+  on digestion.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/kodo-millet-pulao.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Kodo millet pulao with peas and jeera
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 367
+  protein_g: 10.4
+  carbs_g: 74.6
+  fat_g: 2.9
+  fibre_g: 10.2
+  iron_mg: 3.9
+  calcium_mg: 77.5
+  magnesium_mg: 136
+  zinc_mg: 2.1
+  potassium_mg: 483
+  folate_ug: 68.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.1
+  omega3_mg: 61.6
+nutrient_coverage_pct: 93.9
+rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

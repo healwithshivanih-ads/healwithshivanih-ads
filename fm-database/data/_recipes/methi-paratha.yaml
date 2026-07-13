@@ -1,0 +1,103 @@
+slug: methi-paratha
+name: Methi paratha
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- bitter
+- pungent
+- astringent
+main_ingredients:
+- whole-wheat atta
+- fenugreek leaves
+- ghee
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat atta
+  qty: '2'
+  unit: cup
+- item: fresh fenugreek leaves (methi, chopped)
+  qty: '1.5'
+  unit: cup
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: ajwain
+  qty: '0.5'
+  unit: tsp
+- item: oil (to bind)
+  qty: '1'
+  unit: tbsp
+- item: ghee (for cooking)
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Wash and finely chop the fenugreek leaves and sprinkle with a little salt to soften.
+- Mix atta with the methi, turmeric, red chilli powder, ajwain, oil and salt.
+- Add water gradually and knead into a soft dough, then rest 15 minutes.
+- Divide into 6 balls and roll each into a medium round, dusting with flour.
+- Cook on a hot tawa, flip, and drizzle ghee on both sides until golden spots form.
+- Serve hot with curd or pickle.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 18
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Earthy fenugreek-flecked parathas with a gentle bitter warmth.
+headnote: Fresh methi kneaded straight into the dough gives these parathas a lovely
+  bitter-savoury depth. They keep well, so pack the extras for a lunchbox.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/methi-paratha.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Methi paratha
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 187
+  protein_g: 0.2
+  carbs_g: 0.8
+  fat_g: 20.6
+  fibre_g: 0.5
+  iron_mg: 0.4
+  calcium_mg: 9.6
+  magnesium_mg: 2.4
+  zinc_mg: 0.1
+  potassium_mg: 27.8
+  folate_ug: 0.7
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 0.5
+  omega3_mg: 164
+nutrient_coverage_pct: 42.2
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

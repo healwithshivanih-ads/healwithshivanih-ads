@@ -1,0 +1,113 @@
+slug: methi-bajra-thepla
+name: Methi-bajra thepla
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- bitter
+- astringent
+- sweet
+main_ingredients:
+- whole wheat flour (atta)
+- bajra (pearl millet) flour
+- fresh methi leaves
+contains_allergens:
+- gluten
+ingredients:
+- item: whole wheat flour (atta)
+  qty: '1'
+  unit: cup
+- item: bajra (pearl millet) flour
+  qty: '0.5'
+  unit: cup
+- item: fresh methi (fenugreek) leaves, chopped
+  qty: '1'
+  unit: cup
+- item: curd (yogurt)
+  qty: '2'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil, for dough and cooking
+  qty: '2'
+  unit: tbsp
+steps:
+- Combine the wheat flour, bajra flour, chopped methi, curd, turmeric, chilli, cumin,
+  salt and 1 tsp oil in a bowl.
+- Add water a little at a time and knead into a soft, pliable dough; rest for 15 minutes.
+- Divide into small balls and roll each out thin on a lightly floured surface into
+  a round thepla.
+- Heat a tawa on medium and cook the thepla until light brown spots appear underneath.
+- Flip, brush with a little oil, and press gently while it cooks the other side.
+- Turn once more and cook until both sides are golden and cooked through.
+- Stack and serve warm with curd or pickle.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 15
+protein_g: 10
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+- gut-microbiome
+- anti-inflammatory-diet
+one_line: A soft griddle flatbread of wheat and pearl millet flecked with fenugreek,
+  sturdy enough to pack for lunch.
+headnote: Bajra brings an earthy warmth and extra fibre to this everyday Gujarati
+  flatbread while methi keeps it aromatic and gently bittersweet. Theplas keep well
+  for hours, making them ideal for tiffins and travel.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/methi-bajra-thepla.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Methi-bajra thepla
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 116
+  protein_g: 4.2
+  carbs_g: 20.1
+  fat_g: 2.0
+  fibre_g: 4.6
+  iron_mg: 3.7
+  calcium_mg: 63.5
+  magnesium_mg: 51.9
+  zinc_mg: 1.0
+  potassium_mg: 183
+  folate_ug: 22.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 8.7
+  omega3_mg: 62.3
+nutrient_coverage_pct: 52.2
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

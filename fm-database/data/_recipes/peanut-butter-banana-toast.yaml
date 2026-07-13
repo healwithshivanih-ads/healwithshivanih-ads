@@ -1,0 +1,94 @@
+slug: peanut-butter-banana-toast
+name: Peanut butter banana toast
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- whole-wheat bread
+- peanut butter
+- banana
+contains_allergens:
+- gluten
+- peanut
+ingredients:
+- item: whole-wheat bread
+  qty: '2'
+  unit: slice
+- item: natural peanut butter
+  qty: '2'
+  unit: tbsp
+- item: banana, sliced
+  qty: '1'
+  unit: piece
+- item: cinnamon powder
+  qty: 1/4
+  unit: tsp
+- item: chia or flax seeds (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Toast the bread slices until crisp.
+- Spread a tablespoon of peanut butter over each slice.
+- Arrange banana slices on top and dust with cinnamon.
+- Scatter chia or flax seeds if using, and serve straight away.
+servings: '2'
+prep_time_min: 3
+cook_time_min: 3
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A quick sweet-and-nutty toast that feels like a treat but keeps you full.
+headnote: Creamy peanut butter and soft banana on crisp wholewheat toast make an easy,
+  energising bite. A dusting of cinnamon and a few seeds round it out with no extra
+  effort.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/peanut-butter-banana-toast.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Peanut butter banana toast
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 156
+  protein_g: 0.8
+  carbs_g: 14.1
+  fat_g: 11.7
+  fibre_g: 1.7
+  iron_mg: 0.2
+  calcium_mg: 9.5
+  magnesium_mg: 16.7
+  zinc_mg: 0.1
+  potassium_mg: 220
+  folate_ug: 12.4
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 5.2
+  omega3_mg: 58.8
+nutrient_coverage_pct: 71.3
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

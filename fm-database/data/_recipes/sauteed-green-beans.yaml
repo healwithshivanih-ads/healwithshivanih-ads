@@ -1,0 +1,114 @@
+slug: sauteed-green-beans
+name: Sautéed green beans
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+- sweet
+- pungent
+main_ingredients:
+- green beans
+- coconut
+contains_allergens: []
+ingredients:
+- item: green beans, finely chopped
+  qty: '3'
+  unit: cup
+- item: fresh grated coconut
+  qty: '3'
+  unit: tbsp
+- item: rai (mustard seeds)
+  qty: '0.5'
+  unit: tsp
+- item: urad dal (split black gram)
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: piece
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a kadhai, add rai and let it splutter, then add urad dal and fry till
+  golden.
+- Add curry leaves, green chilli and hing.
+- Add the chopped beans with haldi and salt, and toss well.
+- Sprinkle a little water, cover and cook on low heat till the beans are tender, about
+  10 minutes.
+- Uncover, stir in the grated coconut and cook off any moisture for 2 minutes.
+- Serve hot as a poriyal-style side with rice or roti.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 15
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A South Indian beans poriyal finished with fresh coconut.
+headnote: Green beans are rich in fibre and cook down into a sweet, tender poriyal.
+  The coconut and urad dal tempering add a nutty finish and a little staying power.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sauteed-green-beans.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed green beans
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 94.9
+  protein_g: 4.3
+  carbs_g: 15.8
+  fat_g: 3.0
+  fibre_g: 5.9
+  iron_mg: 2.1
+  calcium_mg: 133
+  magnesium_mg: 53.5
+  zinc_mg: 0.5
+  potassium_mg: 470
+  folate_ug: 68.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.1
+  omega3_mg: 127
+nutrient_coverage_pct: 80.5
+rich_in:
+- fibre
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

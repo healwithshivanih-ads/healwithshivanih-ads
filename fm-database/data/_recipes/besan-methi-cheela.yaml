@@ -1,0 +1,115 @@
+slug: besan-methi-cheela
+name: Besan cheela with methi
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- bitter
+- astringent
+main_ingredients:
+- gram flour (besan)
+- fresh methi leaves
+contains_allergens: []
+ingredients:
+- item: gram flour (besan)
+  qty: '1'
+  unit: cup
+- item: fresh methi (fenugreek) leaves, chopped
+  qty: '1'
+  unit: cup
+- item: water
+  qty: '1'
+  unit: cup
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil, for cooking
+  qty: '2'
+  unit: tsp
+steps:
+- Whisk the gram flour with water into a smooth, lump-free batter of pouring consistency.
+- Stir in the chopped methi, green chilli, ginger, turmeric, cumin and salt; rest
+  the batter for 10 minutes.
+- Heat a flat tawa on medium and lightly grease it.
+- Pour a ladle of batter and spread into a thin round with the back of the ladle.
+- Drizzle a few drops of oil around the edges and cook until the underside is golden
+  and lifts easily.
+- Flip and cook the other side for a minute until cooked through.
+- Repeat with the remaining batter and serve hot with chutney.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A thin savoury gram-flour pancake studded with fresh fenugreek leaves for
+  a protein-rich start to the day.
+headnote: Besan gives this cheela a naturally high protein content while the methi
+  lends a gentle bitterness that supports digestion. It cooks in minutes on a single
+  tawa and needs nothing more than chutney alongside.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/besan-methi-cheela.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Besan cheela with methi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 189
+  protein_g: 11.2
+  carbs_g: 28.2
+  fat_g: 3.4
+  fibre_g: 6.0
+  iron_mg: 4.1
+  calcium_mg: 75.7
+  magnesium_mg: 91.2
+  zinc_mg: 1.5
+  potassium_mg: 480
+  folate_ug: 213
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 11.1
+  omega3_mg: 71.0
+nutrient_coverage_pct: 81.9
+rich_in:
+- fibre
+- iron
+- magnesium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -1,0 +1,123 @@
+slug: chicken-ginger-turmeric-soup
+name: Chicken soup with ginger, garlic and turmeric
+meal_type:
+- soup
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- chicken (bone-in)
+- ginger
+- garlic
+- turmeric
+contains_allergens: []
+ingredients:
+- item: bone-in chicken pieces
+  qty: '400'
+  unit: g
+- item: ginger, julienned
+  qty: '2'
+  unit: tbsp
+- item: garlic, crushed
+  qty: '6'
+  unit: piece
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: black peppercorns, crushed
+  qty: '0.5'
+  unit: tsp
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: curry leaves
+  qty: '1'
+  unit: tbsp
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon
+  qty: '0.5'
+  unit: piece
+steps:
+- Heat ghee in a pot, add curry leaves, crushed garlic and julienned ginger, and saute
+  for a minute until aromatic.
+- Add the chopped onion and cook until translucent.
+- Add the chicken pieces, turmeric, crushed pepper and salt, and toss for 2-3 minutes
+  to coat.
+- Pour in 4 cups of water, bring to a boil, then lower the heat and simmer covered
+  for 30-35 minutes until the chicken is tender and the broth is golden.
+- Lift out the chicken, shred the meat off the bone and return it to the pot; discard
+  the bones.
+- Finish with chopped coriander and a squeeze of lemon and serve piping hot.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 40
+protein_g: 34
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A restorative bone-in chicken broth simmered with ginger, garlic, turmeric
+  and crushed pepper till golden and soothing.
+headnote: The kind of soup you reach for on a low day — warming ginger and garlic
+  in a clear golden broth. Simmering bone-in chicken keeps the broth rich and the
+  meat meltingly soft.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/chicken-ginger-turmeric-soup.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Chicken soup with ginger, garlic and turmeric
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 351
+  protein_g: 43.6
+  carbs_g: 11.6
+  fat_g: 14.1
+  fibre_g: 2.1
+  iron_mg: 2.4
+  calcium_mg: 56.5
+  magnesium_mg: 64.5
+  zinc_mg: 2.9
+  potassium_mg: 694
+  folate_ug: 28.3
+  b12_ug: 0.6
+  vit_d_ug: 0.2
+  vit_c_mg: 16.1
+  omega3_mg: 229
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- zinc
+- potassium
+- b12
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -1,0 +1,132 @@
+slug: vegetable-bajra-khichdi
+name: Vegetable bajra khichdi
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- bajra (pearl millet)
+- split yellow moong dal
+- mixed vegetables
+- ghee
+- cumin seeds
+contains_allergens: []
+ingredients:
+- item: bajra (pearl millet), soaked
+  qty: '0.5'
+  unit: cup
+- item: split yellow moong dal
+  qty: '0.5'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: asafoetida (hing)
+  qty: '1'
+  unit: pinch
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: diced mixed vegetables (carrot, beans, peas, bottle gourd)
+  qty: '1.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '5'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Soak the bajra in plenty of water for 4-6 hours (or overnight), then drain; rinse
+  the moong dal and set both aside.
+- Heat the ghee in a pressure cooker, add the cumin seeds and hing, and let the cumin
+  splutter.
+- Stir in the grated ginger and turmeric, then add the diced vegetables and saute
+  for a minute.
+- Add the drained bajra, moong dal, salt and water, and stir well.
+- Pressure-cook for 6-7 whistles (or simmer covered for 40-45 minutes) until the bajra
+  is very soft and the khichdi is porridge-like.
+- Open the cooker and mash lightly, loosening with hot water to a soft, spoonable
+  consistency.
+- Garnish with fresh coriander and serve warm with a little extra ghee if you like.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 45
+protein_g: 13
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: A warming winter khichdi of soaked bajra and moong dal cooked soft with
+  vegetables.
+headnote: Pearl millet makes this khichdi hearty and grounding, ideal for cooler months.
+  Soaking the bajra and cooking it right down keeps it soft and easy to digest.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-bajra-khichdi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable bajra khichdi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 388
+  protein_g: 17.9
+  carbs_g: 57.9
+  fat_g: 9.6
+  fibre_g: 10.6
+  iron_mg: 5.8
+  calcium_mg: 82.8
+  magnesium_mg: 125
+  zinc_mg: 2.7
+  potassium_mg: 937
+  folate_ug: 323
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.9
+  omega3_mg: 142
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

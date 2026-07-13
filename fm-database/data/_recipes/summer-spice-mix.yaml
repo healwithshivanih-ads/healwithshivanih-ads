@@ -72,11 +72,10 @@ attribution:
   page: 234
 image:
   file: images/web/summer-spice-mix.jpg
-  credit: web reference (coach-selected)
-  source_url: http://static1.squarespace.com/static/5eeb86f9f276e77b63c8a0a1/5eeba2a0a9e1da0ba0566a7e/6871d69f7a0f3059f606101e/1777987747773/IMG_3591.jpeg?format=1500w
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://summer-spice-mix'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: SUMMER SPICE MIX

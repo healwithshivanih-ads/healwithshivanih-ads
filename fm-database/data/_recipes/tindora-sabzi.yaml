@@ -1,0 +1,118 @@
+slug: tindora-sabzi
+name: Tindora sabzi
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+- pungent
+- bitter
+main_ingredients:
+- ivy gourd (tindora)
+- onion
+contains_allergens: []
+ingredients:
+- item: ivy gourd (tindora), sliced into rounds
+  qty: '250'
+  unit: g
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: rai (mustard seeds)
+  qty: '0.5'
+  unit: tsp
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: piece
+- item: haldi (turmeric)
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: dhania (coriander) powder
+  qty: '1'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a kadhai, add rai and let it splutter, then add jeera, curry leaves
+  and hing.
+- Add the onion and saute till soft.
+- Add the sliced tindora, haldi, chilli, dhania powder and salt; toss to coat.
+- Cover and cook on low heat, stirring occasionally, till the tindora is tender, about
+  15 minutes.
+- Uncover, raise the heat and cook till the pieces are dry and lightly crisp at the
+  edges.
+- Serve hot with roti or dal-rice.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A crisp, tempered ivy-gourd stir-fry that is a South Indian everyday favourite.
+headnote: Tindora is a low-calorie, fibre-rich gourd traditionally valued for steadying
+  blood sugar. Cooked dry with mustard and curry leaves, it makes a light, digestible
+  side.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/tindora-sabzi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Tindora sabzi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 55.6
+  protein_g: 2.7
+  carbs_g: 10.9
+  fat_g: 0.3
+  fibre_g: 3.6
+  iron_mg: 2.2
+  calcium_mg: 131
+  magnesium_mg: 31.3
+  zinc_mg: 0.5
+  potassium_mg: 409
+  folate_ug: 36.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.6
+  omega3_mg: 15.8
+nutrient_coverage_pct: 71.6
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

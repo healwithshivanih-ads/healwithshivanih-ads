@@ -1,0 +1,133 @@
+slug: vegetable-moong-khichdi
+name: Vegetable moong khichdi
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- split yellow moong dal
+- white rice
+- mixed vegetables
+- ghee
+- cumin seeds
+contains_allergens: []
+ingredients:
+- item: split yellow moong dal
+  qty: '0.5'
+  unit: cup
+- item: white rice
+  qty: '0.5'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: asafoetida (hing)
+  qty: '1'
+  unit: pinch
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: diced mixed vegetables (carrot, beans, bottle gourd, peas)
+  qty: '1.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '4'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Rinse the moong dal and rice together in a couple of changes of water, then drain
+  and set aside.
+- Heat the ghee in a pressure cooker, add the cumin seeds and hing, and let the cumin
+  splutter.
+- Add the grated ginger and turmeric, stir for a few seconds, then add the diced vegetables
+  and saute for a minute.
+- Add the drained dal and rice with the salt and water, and stir well.
+- Pressure-cook for 3-4 whistles (or simmer covered for 25-30 minutes) until everything
+  is very soft and porridge-like.
+- Open the cooker, stir to a soft, soupy consistency, loosening with hot water if
+  it has thickened too much.
+- Garnish with fresh coriander and serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 25
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: A soft, soupy one-pot khichdi of moong dal and rice cooked down with seasonal
+  vegetables.
+headnote: This is the everyday comfort khichdi — moong dal and rice simmered soft
+  with a gentle cumin-ghee tempering. The mixed vegetables add colour and fibre while
+  keeping it easy on digestion.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-moong-khichdi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable moong khichdi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 448
+  protein_g: 18.3
+  carbs_g: 75.4
+  fat_g: 8.2
+  fibre_g: 8.4
+  iron_mg: 4.2
+  calcium_mg: 78.8
+  magnesium_mg: 99.3
+  zinc_mg: 2.5
+  potassium_mg: 896
+  folate_ug: 317
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.9
+  omega3_mg: 113
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -66,7 +66,7 @@ kcal_is_estimate: true
 protein_g: 3
 good_for:
 - agni-digestive-fire
-- gut-health
+- gut-microbiome
 one_line: A light, warming turai clear soup — soothing and easy on digestion.
 headnote: A gentle turai soup with ginger and pepper is warming, hydrating, and the
   perfect light dinner when you want to rest the gut.
@@ -75,11 +75,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/turai-clear-soup.jpg
-  credit: web reference (coach-selected)
-  source_url: https://images.chefpriya.com/ridge-gourd-curry-turai-sabzi.png
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://turai-clear-soup
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Turai clear soup

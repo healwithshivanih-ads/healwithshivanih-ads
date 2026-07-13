@@ -1,0 +1,99 @@
+slug: egg-sandwich
+name: Egg sandwich
+meal_type:
+- breakfast
+- lunch
+diet:
+- eggetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- salty
+- pungent
+- sweet
+main_ingredients:
+- whole-wheat bread
+- eggs
+- onion
+- black pepper
+contains_allergens:
+- gluten
+- egg
+ingredients:
+- item: whole-wheat bread
+  qty: '4'
+  unit: slice
+- item: eggs, boiled and peeled
+  qty: '3'
+  unit: piece
+- item: onion, finely chopped
+  qty: 1/2
+  unit: piece
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: mustard paste
+  qty: 1/2
+  unit: tsp
+- item: black pepper and salt
+  qty: to taste
+  unit: ''
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Mash the boiled eggs roughly with a fork.
+- Mix in onion, green chilli, mustard paste, black pepper, salt and coriander.
+- Spread the egg filling over two bread slices and close with the other two.
+- Press gently, halve and serve; toast lightly if you prefer it warm.
+servings: '2'
+prep_time_min: 6
+cook_time_min: 10
+protein_g: 11
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A hearty boiled-egg sandwich with just a little chopping and mixing.
+headnote: Boiled eggs are mashed with onion, mustard and pepper for a protein-dense
+  filling that skips the mayo. Boil the eggs ahead and it comes together in minutes.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/egg-sandwich.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Egg sandwich
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 125
+  protein_g: 10.1
+  carbs_g: 3.6
+  fat_g: 7.5
+  fibre_g: 0.7
+  iron_mg: 1.6
+  calcium_mg: 52.2
+  magnesium_mg: 16.5
+  zinc_mg: 1.1
+  potassium_mg: 165
+  folate_ug: 43.4
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 5.2
+  omega3_mg: 79.7
+nutrient_coverage_pct: 87.7
+rich_in:
+- b12
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

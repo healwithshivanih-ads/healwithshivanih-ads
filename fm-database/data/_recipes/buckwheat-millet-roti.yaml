@@ -34,11 +34,10 @@ steps:
 source: coach-authored (Shivani) 2026-06-13
 image:
   file: images/web/buckwheat-millet-roti.jpg
-  credit: web reference (coach-selected)
-  source_url: https://wp-backend.thefearlesscooking.com/wp-content/uploads/2024/04/Buckwheat-Flour-Tortilla-Kuttu-Ki-Roti.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://buckwheat-millet-roti'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 nutrients_per_serving:
   kcal: 123
   protein_g: 3.8

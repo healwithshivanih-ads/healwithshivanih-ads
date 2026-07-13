@@ -1,0 +1,112 @@
+slug: roasted-capsicum-tomato-soup
+name: Roasted Capsicum & Tomato Soup
+meal_type:
+- soup
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 2 red capsicums (bell peppers)
+- 4 tomatoes, cut into 8
+- 2 cloves garlic
+- 2 bay leaves
+- 2 tbsp vegan Worcestershire sauce
+- salt, to taste
+- hot sauce, optional, for extra heat
+contains_allergens: []
+ingredients:
+- item: 2 red capsicums (bell peppers)
+  qty: ''
+  unit: ''
+- item: 4 tomatoes, cut into 8
+  qty: ''
+  unit: ''
+- item: 2 cloves garlic
+  qty: ''
+  unit: ''
+- item: 2 bay leaves
+  qty: ''
+  unit: ''
+- item: 2 tbsp vegan Worcestershire sauce
+  qty: ''
+  unit: ''
+- item: salt, to taste
+  qty: ''
+  unit: ''
+- item: hot sauce, optional, for extra heat
+  qty: ''
+  unit: ''
+steps:
+- Roast the capsicums over a flame, turning until the skin blackens all over. Rest
+  them in a bowl to cool, then peel, deseed and quarter.
+- Simmer the tomatoes with the bay leaves and garlic in about 3 cups of water until
+  the tomatoes turn soft.
+- Discard the bay leaves and the loosened tomato skins, add the roasted capsicum and
+  blend smooth in the pot.
+- Return to the heat, stir in the Worcestershire sauce and salt, and simmer about
+  5 minutes. Serve hot, with hot sauce if you like it fiery.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+approx_kcal_per_serving: 86
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+one_line: A fiery-red soup of flame-roasted capsicum and tangy tomatoes.
+headnote: Charred red peppers lend a smoky sweetness that plays off tangy tomato.
+  Add a dash of hot sauce for extra heat.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/roasted-capsicum-tomato-soup.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Roasted Capsicum & Tomato Soup
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 71.7
+  protein_g: 3.2
+  carbs_g: 16.0
+  fat_g: 0.8
+  fibre_g: 5.0
+  iron_mg: 1.1
+  calcium_mg: 37.7
+  magnesium_mg: 37.1
+  zinc_mg: 0.8
+  potassium_mg: 739
+  folate_ug: 85.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 183
+  omega3_mg: 36.6
+nutrient_coverage_pct: 87.8
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

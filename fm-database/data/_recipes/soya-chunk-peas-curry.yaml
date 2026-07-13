@@ -1,0 +1,132 @@
+slug: soya-chunk-peas-curry
+name: Soya chunk and peas curry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- astringent
+main_ingredients:
+- soya chunks
+- green peas
+- onion
+- tomato
+- ground spices
+contains_allergens:
+- soy
+ingredients:
+- item: soya chunks
+  qty: '1'
+  unit: cup
+- item: green peas
+  qty: '0.75'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, chopped
+  qty: '2'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Boil the soya chunks in salted water for 4-5 minutes until soft, drain, and squeeze
+  out the water well. Set aside.
+- Heat oil in a kadai over medium heat. Add cumin seeds, let them splutter, then add
+  the onion and sauté until golden.
+- Stir in the ginger-garlic paste and cook 1 minute, then add the chopped tomato with
+  turmeric, chilli powder, and coriander powder. Cook 6-8 minutes until softened and
+  the oil separates.
+- Add the green peas and the squeezed soya chunks, stir to coat in the masala, and
+  season with salt.
+- Pour in 1 cup water, cover, and simmer 10-12 minutes until the peas are tender and
+  the chunks have soaked up the gravy.
+- Sprinkle garam masala, stir, and finish with fresh coriander. Serve hot with roti
+  or rice.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 25
+protein_g: 28
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Soya chunks and green peas simmered in a homely onion-tomato masala for
+  a double hit of plant protein.
+headnote: Peas add sweetness and extra protein alongside the soya chunks, making this
+  a filling everyday main. Squeezing the boiled chunks well is what lets them absorb
+  the gravy.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/soya-chunk-peas-curry.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Soya chunk and peas curry
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 82.3
+  protein_g: 3.4
+  carbs_g: 17.0
+  fat_g: 1.1
+  fibre_g: 4.7
+  iron_mg: 2.3
+  calcium_mg: 65.6
+  magnesium_mg: 39.0
+  zinc_mg: 0.8
+  potassium_mg: 527
+  folate_ug: 46.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 31.8
+  omega3_mg: 28.7
+nutrient_coverage_pct: 87.6
+rich_in:
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

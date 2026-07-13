@@ -1,0 +1,106 @@
+slug: sauteed-methi
+name: Sautéed methi
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- bitter
+- pungent
+- astringent
+main_ingredients:
+- fenugreek leaves (methi)
+- garlic
+contains_allergens: []
+ingredients:
+- item: fenugreek leaves (methi), cleaned and chopped
+  qty: '3'
+  unit: cup
+- item: garlic, crushed
+  qty: '4'
+  unit: piece
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.25'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a kadhai, crackle the jeera and add hing.
+- Add the crushed garlic and onion and saute till soft and golden.
+- Add the chopped methi with haldi, chilli powder and salt.
+- Cook uncovered on medium heat, stirring, till the leaves wilt and the bitterness
+  mellows, about 6 to 8 minutes.
+- Dry off any moisture so the methi is soft but not watery, and serve hot with roti.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 12
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A soft, mildly bitter fenugreek saute that pairs beautifully with roti.
+headnote: Fenugreek leaves are a traditional friend to blood sugar and digestion.
+  Cooking them with garlic and onion softens the bitterness into a gentle, savoury
+  green.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sauteed-methi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed methi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 32.4
+  protein_g: 1.0
+  carbs_g: 7.4
+  fat_g: 0.1
+  fibre_g: 1.2
+  iron_mg: 0.4
+  calcium_mg: 25.0
+  magnesium_mg: 7.6
+  zinc_mg: 0.2
+  potassium_mg: 112
+  folate_ug: 10.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 6.1
+  omega3_mg: 4.3
+nutrient_coverage_pct: 50.6
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

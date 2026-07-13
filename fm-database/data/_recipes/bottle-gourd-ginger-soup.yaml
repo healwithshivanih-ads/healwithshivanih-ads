@@ -1,0 +1,117 @@
+slug: bottle-gourd-ginger-soup
+name: Bottle gourd ginger soup
+meal_type:
+- soup
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- bottle gourd
+- ginger
+- cumin
+contains_allergens: []
+ingredients:
+- item: bottle gourd (lauki), peeled and cubed
+  qty: '2'
+  unit: cup
+- item: ginger
+  qty: '1'
+  unit: tsp
+- item: garlic
+  qty: '2'
+  unit: piece
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: oil
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '3'
+  unit: cup
+- item: coriander leaves
+  qty: '2'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Peel the bottle gourd, remove any large seeds and cut into small cubes.
+- In a pot, heat the oil, add cumin seeds and let them splutter, then add the chopped
+  ginger and garlic and saute for a minute.
+- Add the bottle gourd cubes, turmeric and salt, and toss for 2 minutes.
+- Pour in 3 cups of water, cover and simmer for 12-15 minutes until the gourd is completely
+  soft.
+- Blend to a smooth soup, return to the pot and adjust the consistency with a little
+  hot water if needed; season with black pepper.
+- Finish with lemon juice and chopped coriander, and serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 18
+protein_g: 2
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A light, cooling bottle gourd soup with warming ginger that is hydrating
+  and easy to digest.
+headnote: Bottle gourd is one of the most soothing vegetables for the gut, and ginger
+  keeps this soup gently warming rather than cold. It is a good choice for light dinners
+  or when the stomach feels heavy.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/bottle-gourd-ginger-soup.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Bottle gourd ginger soup
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 45.9
+  protein_g: 1.1
+  carbs_g: 6.0
+  fat_g: 2.4
+  fibre_g: 0.9
+  iron_mg: 0.9
+  calcium_mg: 43.0
+  magnesium_mg: 17.4
+  zinc_mg: 0.9
+  potassium_mg: 217
+  folate_ug: 8.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 13.8
+  omega3_mg: 23.9
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

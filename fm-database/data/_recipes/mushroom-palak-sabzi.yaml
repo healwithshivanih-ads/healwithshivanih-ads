@@ -1,0 +1,111 @@
+slug: mushroom-palak-sabzi
+name: Sautéed mushroom and palak
+meal_type:
+- side
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+- pungent
+- sweet
+main_ingredients:
+- button mushrooms
+- spinach (palak)
+contains_allergens: []
+ingredients:
+- item: button mushrooms, sliced
+  qty: '200'
+  unit: g
+- item: spinach (palak), chopped
+  qty: '3'
+  unit: cup
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: garlic, chopped
+  qty: '4'
+  unit: piece
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.25'
+  unit: tsp
+- item: black pepper, crushed
+  qty: '0.25'
+  unit: tsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a pan and crackle the jeera, then add garlic and onion; saute till soft.
+- Add the sliced mushrooms and cook on high heat till they release their water and
+  it dries off.
+- Stir in haldi, chilli powder, crushed pepper and salt.
+- Add the chopped spinach and toss on high heat till it wilts, about 3 to 4 minutes.
+- Cook off any extra moisture so the sabzi is dry, and serve hot with roti.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 15
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: An earthy mushroom and spinach saute that is light yet satisfying.
+headnote: Mushrooms bring a savoury, meaty bite and spinach adds iron and folate,
+  making this a filling low-starch side. Cooking the mushrooms dry first keeps the
+  sabzi from turning watery.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/mushroom-palak-sabzi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed mushroom and palak
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 43.4
+  protein_g: 2.0
+  carbs_g: 8.7
+  fat_g: 0.4
+  fibre_g: 2.3
+  iron_mg: 1.7
+  calcium_mg: 62.0
+  magnesium_mg: 41.2
+  zinc_mg: 0.4
+  potassium_mg: 321
+  folate_ug: 74.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.6
+  omega3_mg: 67.8
+nutrient_coverage_pct: 64.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

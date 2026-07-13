@@ -1,0 +1,118 @@
+slug: stir-fried-cabbage
+name: Stir-fried cabbage
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+- sweet
+- pungent
+main_ingredients:
+- cabbage
+- green peas
+contains_allergens: []
+ingredients:
+- item: cabbage, finely shredded
+  qty: '4'
+  unit: cup
+- item: green peas
+  qty: '0.25'
+  unit: cup
+- item: rai (mustard seeds)
+  qty: '0.5'
+  unit: tsp
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: urad dal (split black gram)
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: piece
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a kadhai, add rai and let it splutter, then add jeera and urad dal and
+  fry till golden.
+- Add curry leaves, green chilli and hing.
+- Add the shredded cabbage and peas with haldi and salt, and toss well.
+- Cook uncovered on medium-high heat, stirring, for 6 to 8 minutes so the cabbage
+  stays a little crunchy.
+- Do not cover for long or the cabbage will turn soggy; serve hot with dal-rice or
+  roti.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 12
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A crunchy, tempered cabbage thoran that comes together in minutes.
+headnote: Shredded cabbage cooked quickly with a mustard and urad dal tempering stays
+  sweet and crisp. It is light, high in fibre and very gentle on blood sugar.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/stir-fried-cabbage.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Stir-fried cabbage
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 68.4
+  protein_g: 3.7
+  carbs_g: 14.7
+  fat_g: 0.3
+  fibre_g: 5.7
+  iron_mg: 1.3
+  calcium_mg: 146
+  magnesium_mg: 34.2
+  zinc_mg: 0.5
+  potassium_mg: 435
+  folate_ug: 95.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 72.7
+  omega3_mg: 38.0
+nutrient_coverage_pct: 77.4
+rich_in:
+- fibre
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

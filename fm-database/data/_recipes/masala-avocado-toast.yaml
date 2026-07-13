@@ -1,0 +1,106 @@
+slug: masala-avocado-toast
+name: Masala avocado toast
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- pungent
+- sour
+- astringent
+main_ingredients:
+- whole-wheat bread
+- avocado
+- onion
+- tomato
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat bread
+  qty: '2'
+  unit: slice
+- item: ripe avocado
+  qty: '1'
+  unit: piece
+- item: onion, finely chopped
+  qty: '2'
+  unit: tbsp
+- item: tomato, finely chopped
+  qty: '2'
+  unit: tbsp
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: piece
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: chaat masala and salt
+  qty: to taste
+  unit: ''
+- item: coriander leaves, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Toast the bread slices until crisp.
+- Mash the avocado in a bowl with lemon juice, chaat masala and salt.
+- Fold in onion, tomato, green chilli and coriander.
+- Spread thickly over the toast and serve right away.
+servings: '2'
+prep_time_min: 6
+cook_time_min: 3
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+one_line: Creamy avocado with an Indian masala twist on quick wholewheat toast.
+headnote: Mashed avocado gets a desi lift from chaat masala, green chilli and lemon
+  in this no-fuss toast. It is ready in minutes and needs nothing more than a ripe
+  avocado.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/masala-avocado-toast.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Masala avocado toast
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 118
+  protein_g: 1.6
+  carbs_g: 7.4
+  fat_g: 10.5
+  fibre_g: 5.0
+  iron_mg: 0.5
+  calcium_mg: 11.9
+  magnesium_mg: 23.0
+  zinc_mg: 0.5
+  potassium_mg: 386
+  folate_ug: 60.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 12.7
+  omega3_mg: 77.8
+nutrient_coverage_pct: 75.4
+rich_in:
+- fibre
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

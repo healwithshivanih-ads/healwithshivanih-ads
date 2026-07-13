@@ -1,0 +1,111 @@
+slug: palak-sesame-chutney
+name: Palak sesame chutney
+meal_type:
+- condiment
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- bitter
+- astringent
+- pungent
+main_ingredients:
+- palak (spinach)
+- roasted sesame seeds
+- green chilli
+contains_allergens:
+- sesame
+ingredients:
+- item: palak (spinach) leaves, chopped
+  qty: '2'
+  unit: cup
+- item: white sesame seeds (til)
+  qty: '0.25'
+  unit: cup
+- item: green chilli
+  qty: '2'
+  unit: piece
+- item: garlic cloves
+  qty: '2'
+  unit: piece
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil
+  qty: '1'
+  unit: tsp
+steps:
+- Dry-roast the sesame seeds on low heat until golden and fragrant, then set aside.
+- Heat the oil in a pan, crackle the cumin seeds and add the green chilli and garlic.
+- Add the chopped spinach and sauté for 2 to 3 minutes until just wilted.
+- Let the mixture cool slightly to keep the colour bright.
+- Combine the wilted spinach, roasted sesame, salt and lemon juice in a grinder.
+- Grind to a smooth or slightly coarse chutney, adding a splash of water if needed.
+- Transfer to a bowl and serve alongside rice, roti or dosa.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 5
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A vivid green chutney of wilted spinach and toasted sesame, bright with
+  lemon and garlic.
+headnote: Spinach and sesame together make this chutney rich in iron and calcium while
+  staying fresh and tangy. A quick sauté keeps the greens vivid, so grind it just
+  enough to hold a little texture.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/palak-sesame-chutney.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Palak sesame chutney
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 119
+  protein_g: 4.2
+  carbs_g: 7.0
+  fat_g: 9.3
+  fibre_g: 3.0
+  iron_mg: 4.0
+  calcium_mg: 211
+  magnesium_mg: 89.4
+  zinc_mg: 1.6
+  potassium_mg: 263
+  folate_ug: 61.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 16.5
+  omega3_mg: 113
+nutrient_coverage_pct: 79.7
+rich_in:
+- iron
+- calcium
+- magnesium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

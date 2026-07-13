@@ -1,0 +1,122 @@
+slug: veg-biryani
+name: Vegetable biryani
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- sour
+- astringent
+main_ingredients:
+- basmati rice
+- mixed vegetables
+- curd
+- ghee
+contains_allergens:
+- dairy
+ingredients:
+- item: basmati rice
+  qty: '1'
+  unit: cup
+- item: mixed vegetables (carrot, beans, cauliflower, peas)
+  qty: '2'
+  unit: cup
+- item: onion (thinly sliced)
+  qty: '1'
+  unit: piece
+- item: curd (whisked)
+  qty: '0.5'
+  unit: cup
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: biryani masala
+  qty: '1.5'
+  unit: tsp
+- item: whole spices (bay leaf, cardamom, cloves, cinnamon)
+  qty: '1'
+  unit: tsp
+- item: ghee
+  qty: '2'
+  unit: tbsp
+- item: mint and coriander leaves (chopped)
+  qty: '0.25'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Rinse and soak the basmati rice for 20 minutes, then boil with the whole spices
+  and salt until 70 percent cooked and drain.
+- Heat ghee in a heavy pot and fry the sliced onion until golden, setting aside half
+  for garnish.
+- Add ginger-garlic paste and the mixed vegetables and saute for a few minutes.
+- Stir in the whisked curd, biryani masala and salt, and cook until the vegetables
+  are almost tender.
+- Layer the par-boiled rice over the vegetables, scatter mint, coriander and the reserved
+  fried onion, and drizzle a little ghee.
+- Cover tightly and cook on the lowest heat (dum) for 15 minutes, then fluff gently
+  and serve with raita.
+servings: '2'
+prep_time_min: 30
+cook_time_min: 30
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- gut-microbiome
+- anti-inflammatory-diet
+one_line: Fragrant layered vegetable biryani steamed on slow dum with mint and fried
+  onion.
+headnote: A festive one-pot rice where spiced vegetables and par-boiled basmati steam
+  together to soak up every aroma. The slow dum finish is what makes it special.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/veg-biryani.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable biryani
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 538
+  protein_g: 11.2
+  carbs_g: 90.2
+  fat_g: 14.7
+  fibre_g: 7.5
+  iron_mg: 2.3
+  calcium_mg: 66.9
+  magnesium_mg: 57.1
+  zinc_mg: 1.9
+  potassium_mg: 527
+  folate_ug: 71.8
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 35.8
+  omega3_mg: 177
+nutrient_coverage_pct: 86.6
+rich_in:
+- fibre
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

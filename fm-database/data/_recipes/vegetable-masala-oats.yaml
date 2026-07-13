@@ -74,7 +74,7 @@ cook_time_min: 10
 approx_kcal_per_serving: 270
 protein_g: 9
 good_for:
-- blood-sugar-balance
+- blood-sugar-regulation
 - digestion-and-nutrient-absorption
 one_line: A savoury, vegetable-rich masala oats — upma-style.
 headnote: 'Oats cooked like upma: a quick savoury bowl with vegetables and a South-Indian
@@ -94,12 +94,11 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/vegetable-masala-oats.jpg
-  credit: Cooked oatmeal in bowl 3.jpg by Bodhi Peace — Wikimedia Commons (CC BY-SA
-    4.0)
-  source_url: https://commons.wikimedia.org/wiki/File:Cooked_oatmeal_in_bowl_3.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
-    before external or commercial use
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://vegetable-masala-oats
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 nutrients_per_serving:
   kcal: 301
   protein_g: 11.6

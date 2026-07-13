@@ -1,0 +1,137 @@
+slug: soya-chunk-pulao
+name: Soya chunk pulao with vegetables
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- astringent
+main_ingredients:
+- soya chunks
+- basmati rice
+- mixed vegetables
+- whole spices
+- onion
+contains_allergens:
+- soy
+ingredients:
+- item: soya chunks
+  qty: '0.75'
+  unit: cup
+- item: basmati rice, soaked
+  qty: '1'
+  unit: cup
+- item: mixed vegetables (carrot, beans, peas), chopped
+  qty: '1'
+  unit: cup
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: cooking oil
+  qty: '2'
+  unit: tbsp
+- item: bay leaf
+  qty: '1'
+  unit: piece
+- item: cloves
+  qty: '3'
+  unit: piece
+- item: green cardamom
+  qty: '2'
+  unit: piece
+- item: cinnamon stick
+  qty: '1'
+  unit: piece
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Boil the soya chunks in salted water for 4-5 minutes, drain, and squeeze out the
+  water. Set aside.
+- Heat oil in a heavy pot over medium heat. Add bay leaf, cloves, cardamom, cinnamon,
+  and cumin seeds; let them sizzle until fragrant.
+- Add the sliced onion and sauté until golden, then stir in the ginger-garlic paste
+  and cook 1 minute.
+- Add the mixed vegetables and squeezed soya chunks, sauté 3-4 minutes, then sprinkle
+  garam masala and salt.
+- Drain the soaked rice and add it to the pot, stirring gently to coat in the masala
+  without breaking the grains.
+- Pour in 2 cups water, bring to a boil, then cover and cook on low 12-15 minutes
+  until the rice is fluffy and water is absorbed.
+- Rest covered 5 minutes, fluff with a fork, and garnish with fresh coriander before
+  serving.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 25
+protein_g: 22
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- anti-inflammatory-diet
+one_line: A one-pot basmati pulao layered with soya chunks and mixed vegetables for
+  a complete protein-forward meal.
+headnote: Building the whole spices into hot oil first perfumes the whole pot, while
+  the soya chunks and vegetables turn plain rice into a balanced meal. Rest before
+  fluffing so the grains stay separate.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/soya-chunk-pulao.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Soya chunk pulao with vegetables
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 398
+  protein_g: 10.1
+  carbs_g: 86.8
+  fat_g: 1.2
+  fibre_g: 6.7
+  iron_mg: 2.5
+  calcium_mg: 74.6
+  magnesium_mg: 50.3
+  zinc_mg: 1.7
+  potassium_mg: 405
+  folate_ug: 44.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 20.9
+  omega3_mg: 40.9
+nutrient_coverage_pct: 83.0
+rich_in:
+- fibre
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

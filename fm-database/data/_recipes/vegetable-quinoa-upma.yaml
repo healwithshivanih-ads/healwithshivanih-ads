@@ -75,7 +75,7 @@ cook_time_min: 18
 approx_kcal_per_serving: 300
 protein_g: 10
 good_for:
-- blood-sugar-balance
+- blood-sugar-regulation
 - digestion-and-nutrient-absorption
 one_line: A protein-rich quinoa upma with a South-Indian tempering.
 headnote: Quinoa stands in for rava here — more protein and a gentler glycaemic load,
@@ -95,12 +95,11 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/vegetable-quinoa-upma.jpg
-  credit: Palak quinoa adai.JPG by Kalaiselvi Murugesan — Wikimedia Commons (CC BY-SA
-    4.0)
-  source_url: https://commons.wikimedia.org/wiki/File:Palak_quinoa_adai.JPG
-  rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
-    before external or commercial use
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://vegetable-quinoa-upma
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 nutrients_per_serving:
   kcal: 338
   protein_g: 11.3

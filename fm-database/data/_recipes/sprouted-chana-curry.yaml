@@ -1,0 +1,125 @@
+slug: sprouted-chana-curry
+name: Sprouted chana curry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha: []
+rasa:
+- astringent
+- pungent
+- sweet
+main_ingredients:
+- sprouted brown chana
+- onion
+- tomato
+contains_allergens: []
+ingredients:
+- item: sprouted brown chana (chickpeas)
+  qty: '2'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, chopped
+  qty: '2'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat the oil in a pan and crackle the cumin seeds.
+- Add the chopped onion and sauté until soft and lightly browned.
+- Stir in the ginger-garlic paste and cook for a minute, then add the tomato, turmeric,
+  coriander powder and salt.
+- Cook until the tomato breaks down and the masala thickens.
+- Add the sprouted chana with a cup of water and bring to a simmer.
+- Cover and cook for 12 to 15 minutes until the sprouts are tender but still hold
+  shape.
+- Finish with garam masala, stir, and serve hot with roti or rice.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+protein_g: 15
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: Tender sprouted chickpeas simmered in a spiced onion-tomato masala for a
+  protein-packed everyday curry.
+headnote: Sprouting the chana makes it easier to digest and lifts its protein availability
+  while keeping the curry light. A simple onion-tomato base lets the nutty sprouts
+  stay the star of the plate.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sprouted-chana-curry.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sprouted chana curry
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 317
+  protein_g: 16.2
+  carbs_g: 55.4
+  fat_g: 4.9
+  fibre_g: 11.4
+  iron_mg: 4.8
+  calcium_mg: 90.6
+  magnesium_mg: 82.6
+  zinc_mg: 2.4
+  potassium_mg: 885
+  folate_ug: 405
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 22.5
+  omega3_mg: 79.1
+nutrient_coverage_pct: 96.1
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

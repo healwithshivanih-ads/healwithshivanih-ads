@@ -1,0 +1,114 @@
+slug: pointed-gourd-sabzi
+name: Pointed gourd sabzi
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- bitter
+- astringent
+- pungent
+main_ingredients:
+- pointed gourd (parwal)
+- onion
+contains_allergens: []
+ingredients:
+- item: pointed gourd (parwal), sliced lengthwise
+  qty: '250'
+  unit: g
+- item: onion, thinly sliced
+  qty: '1'
+  unit: piece
+- item: rai (mustard seeds)
+  qty: '0.5'
+  unit: tsp
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: dhania (coriander) powder
+  qty: '1'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat oil in a kadhai and add rai; when it splutters add jeera and hing.
+- Add the sliced onion and saute till soft and translucent.
+- Add the pointed gourd, haldi, chilli, dhania powder and salt; toss well to coat.
+- Cover and cook on low heat, stirring now and then, till the parwal is tender, about
+  15 minutes.
+- Uncover and cook off any moisture so the pieces lightly brown at the edges.
+- Finish with fresh coriander and serve hot with roti or rice.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A light, lightly bitter parwal stir-fry that sits easy on the stomach.
+headnote: Pointed gourd is a gentle, low-starch vegetable that many find soothing
+  to digest. The mild bitterness and turmeric support the liver and steady blood sugar.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/pointed-gourd-sabzi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Pointed gourd sabzi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 24.6
+  protein_g: 0.7
+  carbs_g: 5.6
+  fat_g: 0.1
+  fibre_g: 1.1
+  iron_mg: 0.3
+  calcium_mg: 15.0
+  magnesium_mg: 6.7
+  zinc_mg: 0.1
+  potassium_mg: 96.5
+  folate_ug: 11.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.6
+  omega3_mg: 4.1
+nutrient_coverage_pct: 38.5
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

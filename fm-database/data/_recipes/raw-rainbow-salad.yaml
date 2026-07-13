@@ -1,0 +1,138 @@
+slug: raw-rainbow-salad
+name: Raw Rainbow Salad
+meal_type:
+- salad
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 2 cups mixed green & purple lettuce
+- 1 cup arugula leaves
+- 1 cup purple cabbage, shredded
+- 6 cherry tomatoes, halved
+- ½ cup cucumber, sliced
+- ½ cup carrots, sliced
+- 2 tbsp almonds, slivered
+- 1 tbsp chia seeds
+- 2 tbsp pomegranate seeds
+- 2 tbsp olive oil
+- 1 tbsp maple syrup
+- salt and black pepper, to taste
+contains_allergens:
+- nuts
+ingredients:
+- item: 2 cups mixed green & purple lettuce
+  qty: ''
+  unit: ''
+- item: 1 cup arugula leaves
+  qty: ''
+  unit: ''
+- item: 1 cup purple cabbage, shredded
+  qty: ''
+  unit: ''
+- item: 6 cherry tomatoes, halved
+  qty: ''
+  unit: ''
+- item: ½ cup cucumber, sliced
+  qty: ''
+  unit: ''
+- item: ½ cup carrots, sliced
+  qty: ''
+  unit: ''
+- item: 2 tbsp almonds, slivered
+  qty: ''
+  unit: ''
+- item: 1 tbsp chia seeds
+  qty: ''
+  unit: ''
+- item: 2 tbsp pomegranate seeds
+  qty: ''
+  unit: ''
+- item: 2 tbsp olive oil
+  qty: ''
+  unit: ''
+- item: 1 tbsp maple syrup
+  qty: ''
+  unit: ''
+- item: salt and black pepper, to taste
+  qty: ''
+  unit: ''
+- item: juice of 1 lemon
+  qty: ''
+  unit: ''
+steps:
+- In a large bowl, mix the lettuce and arugula leaves.
+- Loosely scatter over the purple cabbage, cucumber and halved cherry tomatoes (cut
+  side up looks pretty).
+- Sprinkle with the slivered almonds, pomegranate seeds and chia.
+- Shake the olive oil, maple syrup, lemon juice, salt and pepper together in a jar,
+  drizzle over the salad and serve.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 0
+approx_kcal_per_serving: 221
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A colourful bowl of raw vegetables with a light maple-lemon dressing.
+headnote: A crunchy mix of leaves, purple cabbage, cucumber and cherry tomatoes topped
+  with almonds, pomegranate and chia — as nourishing as it is pretty.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/raw-rainbow-salad.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Raw Rainbow Salad
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 331
+  protein_g: 7.9
+  carbs_g: 36.0
+  fat_g: 20.5
+  fibre_g: 10.8
+  iron_mg: 3.0
+  calcium_mg: 164
+  magnesium_mg: 107
+  zinc_mg: 1.7
+  potassium_mg: 1297
+  folate_ug: 151
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 82.2
+  omega3_mg: 1073
+nutrient_coverage_pct: 95.2
+rich_in:
+- fibre
+- iron
+- calcium
+- magnesium
+- potassium
+- folate
+- vitamin-c
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

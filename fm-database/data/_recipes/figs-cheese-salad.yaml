@@ -1,0 +1,113 @@
+slug: figs-cheese-salad
+name: Figs & Cheese Salad
+meal_type:
+- salad
+- side
+diet:
+- vegetarian
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 6 fresh figs
+- 10-12 almonds & walnuts
+- 1 tbsp maple syrup
+- 1 tsp brown sugar
+- a pinch of salt
+- 50 g cottage cheese, crumbled
+- 3 cups iceberg lettuce
+- 2 tbsp extra virgin olive oil
+- 1 tbsp grape vinegar
+contains_allergens:
+- dairy
+- nuts
+ingredients:
+- item: 6 fresh figs
+  qty: ''
+  unit: ''
+- item: 10-12 almonds & walnuts
+  qty: ''
+  unit: ''
+- item: 1 tbsp maple syrup
+  qty: ''
+  unit: ''
+- item: 1 tsp brown sugar
+  qty: ''
+  unit: ''
+- item: a pinch of salt
+  qty: ''
+  unit: ''
+- item: 50 g cottage cheese, crumbled
+  qty: ''
+  unit: ''
+- item: 3 cups iceberg lettuce
+  qty: ''
+  unit: ''
+- item: 2 tbsp extra virgin olive oil
+  qty: ''
+  unit: ''
+- item: 1 tbsp grape vinegar
+  qty: ''
+  unit: ''
+steps:
+- Rinse the lettuce and crisp it in a bowl of iced water.
+- Toss the nuts with the maple syrup, sugar and a pinch of salt until coated, then
+  roast at 180°C for about 3 minutes and set aside to cool.
+- Trim and quarter the figs.
+- Divide the figs, crumbled cheese, lettuce and candied nuts among four plates.
+- Whisk the olive oil and vinegar together, drizzle over each plate and serve.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 5
+approx_kcal_per_serving: 163
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Soft figs and crumbled cheese with crisp lettuce and maple-candied nuts.
+headnote: A pretty salad that balances soft figs and cheese against crunchy candied
+  nuts and crisp lettuce, dressed simply in oil and vinegar.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/figs-cheese-salad.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Figs & Cheese Salad
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 99.4
+  protein_g: 1.1
+  carbs_g: 5.6
+  fat_g: 8.5
+  fibre_g: 1.2
+  iron_mg: 0.5
+  calcium_mg: 26.4
+  magnesium_mg: 15.2
+  zinc_mg: 0.2
+  potassium_mg: 125
+  folate_ug: 49.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.4
+  omega3_mg: 90.3
+nutrient_coverage_pct: 70.8
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

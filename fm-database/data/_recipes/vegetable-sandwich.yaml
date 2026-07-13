@@ -1,0 +1,110 @@
+slug: vegetable-sandwich
+name: Vegetable sandwich
+meal_type:
+- breakfast
+- snack
+- lunch
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- astringent
+- pungent
+- sweet
+main_ingredients:
+- whole-wheat bread
+- cucumber
+- tomato
+- green chutney
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat bread
+  qty: '4'
+  unit: slice
+- item: cucumber, thinly sliced
+  qty: '1'
+  unit: piece
+- item: tomato, thinly sliced
+  qty: '1'
+  unit: piece
+- item: onion, thinly sliced
+  qty: 1/2
+  unit: piece
+- item: capsicum, thinly sliced
+  qty: 1/2
+  unit: piece
+- item: boiled potato, sliced (optional)
+  qty: '1'
+  unit: piece
+- item: green mint-coriander chutney
+  qty: '3'
+  unit: tbsp
+- item: chaat masala
+  qty: to taste
+  unit: ''
+- item: black pepper and salt
+  qty: to taste
+  unit: ''
+steps:
+- Spread green chutney generously on all four bread slices.
+- Layer cucumber, tomato, onion, capsicum and potato on two slices.
+- Sprinkle chaat masala, salt and pepper over the veggies.
+- Close with the remaining slices, press gently, halve and serve. Toast in a pan or
+  sandwich press if you like.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 0
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A cool, crunchy no-cook sandwich you can throw together in minutes.
+headnote: This is the classic Indian veg sandwich, stacked with fresh raw vegetables
+  and zingy green chutney. It needs no cooking at all, so it is perfect for a rushed
+  morning or a light lunch.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-sandwich.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable sandwich
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 101
+  protein_g: 3.3
+  carbs_g: 22.7
+  fat_g: 0.4
+  fibre_g: 3.9
+  iron_mg: 1.3
+  calcium_mg: 40.3
+  magnesium_mg: 42.5
+  zinc_mg: 0.7
+  potassium_mg: 696
+  folate_ug: 45.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 65.6
+  omega3_mg: 22.6
+nutrient_coverage_pct: 90.4
+rich_in:
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

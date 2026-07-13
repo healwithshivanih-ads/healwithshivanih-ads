@@ -1,0 +1,124 @@
+slug: sama-mung-kitchari
+name: Kitchari with split mung dal and sama
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- sama (barnyard millet)
+- split mung dal
+- ghee
+- cumin seeds
+- ginger
+contains_allergens: []
+ingredients:
+- item: sama (barnyard millet)
+  qty: '0.5'
+  unit: cup
+- item: split mung dal (yellow moong)
+  qty: '0.5'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: asafoetida (hing)
+  qty: '1'
+  unit: pinch
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: diced seasonal vegetables (bottle gourd, carrot, beans)
+  qty: '1'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '4.5'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Dry-roast the split mung dal in a pan for 2 minutes until fragrant, then rinse the
+  dal and sama together and drain.
+- Heat the ghee in a pressure cooker, add the cumin seeds and hing, and let the cumin
+  splutter.
+- Add the grated ginger and turmeric, stir briefly, then add the diced vegetables
+  and saute for a minute.
+- Add the drained sama and mung dal with the salt and water, and stir well.
+- Pressure-cook for 3-4 whistles (or simmer covered for 25-30 minutes) until soft
+  and porridge-like.
+- Open the cooker and stir to a soft, soupy kitchari, adding hot water if it has thickened.
+- Garnish with fresh coriander and serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 25
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A light, tridoshic kitchari of split mung dal and quick-cooking sama millet.
+headnote: Sama (barnyard millet) stands in for rice here, giving a lighter grain that
+  still cooks down soft and soupy. A classic agni-reset meal that suits fasting days
+  and gentle resets alike.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sama-mung-kitchari.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Kitchari with split mung dal and sama
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 234
+  protein_g: 4.5
+  carbs_g: 36.2
+  fat_g: 8.3
+  fibre_g: 6.6
+  iron_mg: 3.9
+  calcium_mg: 38.1
+  magnesium_mg: 55.1
+  zinc_mg: 1.7
+  potassium_mg: 308
+  folate_ug: 41.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 15.4
+  omega3_mg: 100
+nutrient_coverage_pct: 88.5
+rich_in:
+- fibre
+- iron
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

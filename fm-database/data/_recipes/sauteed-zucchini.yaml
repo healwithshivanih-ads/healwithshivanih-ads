@@ -1,0 +1,110 @@
+slug: sauteed-zucchini
+name: Sautéed zucchini
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- zucchini
+- garlic
+contains_allergens: []
+ingredients:
+- item: zucchini, sliced into half-moons
+  qty: '2'
+  unit: piece
+- item: garlic, chopped
+  qty: '3'
+  unit: piece
+- item: rai (mustard seeds)
+  qty: '0.5'
+  unit: tsp
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '6'
+  unit: piece
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.25'
+  unit: tsp
+- item: cooking oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat oil in a pan and add rai; when it splutters add jeera, curry leaves and garlic.
+- Saute the garlic for a few seconds till fragrant.
+- Add the zucchini with haldi, chilli powder and salt, and toss well.
+- Cook on medium-high heat, stirring, for 5 to 6 minutes so the zucchini is just tender
+  with a little bite.
+- Do not overcook or it will turn watery; finish with fresh coriander and serve hot.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 10
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A light South-Indian-tempered zucchini saute, quick and easy on the gut.
+headnote: Zucchini is high in water and fibre and very light to digest. A simple mustard
+  and curry-leaf tempering turns it into a homely everyday side.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sauteed-zucchini.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed zucchini
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 48.3
+  protein_g: 3.1
+  carbs_g: 9.0
+  fat_g: 0.7
+  fibre_g: 2.6
+  iron_mg: 1.0
+  calcium_mg: 90.7
+  magnesium_mg: 40.4
+  zinc_mg: 0.7
+  potassium_mg: 598
+  folate_ug: 54.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 38.0
+  omega3_mg: 97.8
+nutrient_coverage_pct: 77.9
+rich_in:
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -1,0 +1,104 @@
+slug: sprouts-sandwich
+name: Sprouts and veg sandwich
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+- pungent
+- sour
+main_ingredients:
+- whole-wheat bread
+- moong sprouts
+- onion
+- tomato
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat bread
+  qty: '4'
+  unit: slice
+- item: moong sprouts, lightly steamed
+  qty: '1'
+  unit: cup
+- item: onion, finely chopped
+  qty: 1/2
+  unit: piece
+- item: tomato, finely chopped
+  qty: '1'
+  unit: piece
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: chaat masala and salt
+  qty: to taste
+  unit: ''
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Lightly mash the steamed moong sprouts with a fork.
+- Mix in onion, tomato, green chilli, lemon juice, chaat masala, salt and coriander.
+- Spread the sprout filling on two bread slices and top with the other two.
+- Toast lightly if you like, then halve and serve.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 3
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+one_line: A protein-packed sprouts filling in bread, ready in minutes.
+headnote: Fibre-rich moong sprouts are tossed with crunchy vegetables and tangy chaat
+  masala for a filling that needs barely any cooking. A quick steam keeps the sprouts
+  easy to digest.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sprouts-sandwich.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sprouts and veg sandwich
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 37.4
+  protein_g: 2.4
+  carbs_g: 8.0
+  fat_g: 0.2
+  fibre_g: 2.1
+  iron_mg: 0.8
+  calcium_mg: 19.4
+  magnesium_mg: 20.2
+  zinc_mg: 0.4
+  potassium_mg: 252
+  folate_ug: 46.1
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.8
+  omega3_mg: 10.7
+nutrient_coverage_pct: 81.9
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

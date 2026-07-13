@@ -1,0 +1,125 @@
+slug: chicken-liver-masala
+name: Chicken liver masala
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- pungent
+- bitter
+main_ingredients:
+- chicken liver
+- onion
+- tomato
+- garam masala
+contains_allergens:
+- none
+ingredients:
+- item: chicken liver, trimmed and cut into bite-size pieces
+  qty: '400'
+  unit: g
+- item: onion, finely chopped
+  qty: '2'
+  unit: piece
+- item: tomato, chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: piece
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: ghee or oil
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Rinse the chicken liver well, pat dry, and rub with a pinch of turmeric and salt.
+- Heat ghee in a pan, add the chopped onion and slit green chilli, and saute until
+  the onion turns golden.
+- Stir in the ginger-garlic paste and cook for a minute until the raw smell goes.
+- Add the tomato, turmeric, chilli powder and salt, and cook down to a soft masala
+  with the oil separating.
+- Add the chicken liver and toss on medium-high for 6-8 minutes, stirring, until browned
+  and just cooked through — do not overcook or it turns tough.
+- Sprinkle garam masala and coriander, toss once, and serve hot.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 18
+protein_g: 40
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Iron-rich chicken liver tossed in a quick golden onion-tomato masala with
+  garam masala and fresh coriander.
+headnote: A deeply nourishing, iron-rich dish that comes together fast on a weeknight.
+  The key is a hot pan and a short cook so the liver stays soft rather than turning
+  rubbery.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/chicken-liver-masala.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Chicken liver masala
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 401
+  protein_g: 44.3
+  carbs_g: 15.5
+  fat_g: 17.7
+  fibre_g: 3.2
+  iron_mg: 2.8
+  calcium_mg: 59.6
+  magnesium_mg: 73.5
+  zinc_mg: 3.1
+  potassium_mg: 859
+  folate_ug: 45.0
+  b12_ug: 0.6
+  vit_d_ug: 0.3
+  vit_c_mg: 20.0
+  omega3_mg: 254
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- magnesium
+- zinc
+- potassium
+- b12
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

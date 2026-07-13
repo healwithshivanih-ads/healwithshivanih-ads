@@ -1,0 +1,125 @@
+slug: soya-chunk-curry
+name: Soya chunk curry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- astringent
+main_ingredients:
+- soya chunks
+- onion
+- tomato
+- ginger-garlic paste
+- ground spices
+contains_allergens:
+- soy
+ingredients:
+- item: soya chunks
+  qty: '1'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, pureed
+  qty: '2'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Boil the soya chunks in salted water for 4-5 minutes until soft, drain, and squeeze
+  out the water thoroughly. Set aside.
+- Heat oil in a kadai over medium heat. Add cumin seeds and let them splutter, then
+  add the chopped onion and sauté until golden.
+- Stir in the ginger-garlic paste and cook 1 minute until the raw smell goes.
+- Add the tomato puree along with turmeric, chilli powder, and coriander powder. Cook
+  6-8 minutes until the oil separates from the masala.
+- Add the squeezed soya chunks and salt, stir to coat, then pour in 1 cup water. Simmer
+  covered for 8-10 minutes so the chunks absorb the gravy.
+- Sprinkle garam masala, stir, and garnish with fresh coriander. Serve hot with roti
+  or rice.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 25
+protein_g: 26
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A protein-rich soya chunk curry in a spiced onion-tomato gravy, everyday
+  Indian home style.
+headnote: Boiling and squeezing the soya chunks first lets them drink up the masala
+  and stay tender. This is a hearty vegetarian main that carries a full meal's worth
+  of plant protein.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/soya-chunk-curry.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Soya chunk curry
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 62.1
+  protein_g: 2.4
+  carbs_g: 12.9
+  fat_g: 0.9
+  fibre_g: 3.4
+  iron_mg: 1.9
+  calcium_mg: 53.4
+  magnesium_mg: 30.0
+  zinc_mg: 0.5
+  potassium_mg: 415
+  folate_ug: 27.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 20.5
+  omega3_mg: 13.0
+nutrient_coverage_pct: 84.8
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

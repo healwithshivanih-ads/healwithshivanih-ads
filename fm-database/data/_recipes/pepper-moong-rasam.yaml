@@ -147,6 +147,6 @@ updated_by: Shivani (recipe inbox)
 image:
   file: images/web/pepper-moong-rasam.jpg
   credit: 'generated with ChatGPT image generation'
-  source_url: chatgpt-generated://pepper-moong-rasam
-  rights_status: generated_reference
-  note: coach-selected generated image; visually reviewed for no people, hands, text, or watermark
+  source_url: 'chatgpt-generated://pepper-moong-rasam'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark

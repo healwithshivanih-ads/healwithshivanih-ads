@@ -86,12 +86,10 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/quinoa-vegetable-paneer-bowl.jpg
-  credit: Healthy quinoa salad with dried fruit.jpg by TorbeyCharbel — Wikimedia Commons
-    (CC BY 4.0)
-  source_url: https://commons.wikimedia.org/wiki/File:Healthy_quinoa_salad_with_dried_fruit.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
-    before external or commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://quinoa-vegetable-paneer-bowl'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 nutrients_per_serving:
   kcal: 365
   protein_g: 15.9

@@ -1,0 +1,109 @@
+slug: pan-seared-chicken-breast
+name: Pan-seared chicken breast
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- chicken breast
+- turmeric
+- black pepper
+contains_allergens:
+- none
+ingredients:
+- item: boneless chicken breast
+  qty: '400'
+  unit: g
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: black pepper, freshly cracked
+  qty: '0.5'
+  unit: tsp
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: lemon
+  qty: '1'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+- item: ghee or coconut oil
+  qty: '1'
+  unit: tbsp
+steps:
+- Butterfly each chicken breast or pound it to an even thickness so it cooks through
+  evenly.
+- Rub with turmeric, cracked pepper, ginger-garlic paste, salt and the juice of half
+  the lemon; rest for 20 minutes.
+- Heat the ghee in a heavy pan on medium-high until hot.
+- Lay the chicken down and sear undisturbed for 4-5 minutes until the underside is
+  deep golden.
+- Flip once and cook the other side for 4-5 minutes until the juices run clear and
+  the centre is no longer pink.
+- Rest for 3 minutes off the heat, squeeze over the remaining lemon, slice and serve.
+servings: '2'
+prep_time_min: 25
+cook_time_min: 10
+protein_g: 46
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Lean chicken breast rubbed with haldi, pepper and ginger-garlic, then seared
+  golden and rested so it stays juicy.
+headnote: A high-protein staple that stays tender when you pound it even and rest
+  it after cooking. Simple haldi-pepper-lemon seasoning keeps it light and everyday.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/pan-seared-chicken-breast.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Pan-seared chicken breast
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 323
+  protein_g: 42.8
+  carbs_g: 5.8
+  fat_g: 14.0
+  fibre_g: 1.4
+  iron_mg: 2.2
+  calcium_mg: 35.4
+  magnesium_mg: 57.7
+  zinc_mg: 2.7
+  potassium_mg: 599
+  folate_ug: 18.3
+  b12_ug: 0.6
+  vit_d_ug: 0.2
+  vit_c_mg: 18.6
+  omega3_mg: 228
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- zinc
+- potassium
+- b12
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

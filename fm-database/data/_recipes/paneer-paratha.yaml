@@ -1,0 +1,109 @@
+slug: paneer-paratha
+name: Paneer paratha
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- whole-wheat atta
+- paneer
+- ghee
+contains_allergens:
+- gluten
+- dairy
+ingredients:
+- item: whole-wheat atta
+  qty: '1.5'
+  unit: cup
+- item: paneer (grated)
+  qty: '1'
+  unit: cup
+- item: green chilli (finely chopped)
+  qty: '1'
+  unit: piece
+- item: coriander leaves (chopped)
+  qty: '2'
+  unit: tbsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: garam masala
+  qty: '0.25'
+  unit: tsp
+- item: ghee (for cooking)
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Knead the atta with a pinch of salt and water into a soft dough, cover and rest
+  15 minutes.
+- Grate the paneer and mix with green chilli, coriander, cumin powder, garam masala
+  and salt.
+- Divide dough into 4 balls, flatten each, place the paneer filling in the centre
+  and pinch the edges to seal.
+- Dust with flour and roll gently into a paratha, keeping the filling evenly spread.
+- Cook on a hot tawa, flip, and drizzle ghee on both sides until golden and lightly
+  crisp.
+- Serve hot with curd or pickle.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 18
+protein_g: 14
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- protein-adequacy-vegetarian
+one_line: Soft parathas stuffed with spiced fresh paneer for a protein-rich start.
+headnote: Grated paneer seasoned with green chilli and coriander makes a rich, satisfying
+  stuffing. A favourite when you want something more filling than a plain paratha.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/paneer-paratha.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Paneer paratha
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 319
+  protein_g: 12.6
+  carbs_g: 3.8
+  fat_g: 28.6
+  fibre_g: 0.2
+  iron_mg: 0.9
+  calcium_mg: 320
+  magnesium_mg: 16.7
+  zinc_mg: 1.5
+  potassium_mg: 93.3
+  folate_ug: 11.1
+  b12_ug: 0.5
+  vit_d_ug: 0.2
+  vit_c_mg: 3.1
+  omega3_mg: 176
+nutrient_coverage_pct: 84.7
+rich_in:
+- protein
+- calcium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

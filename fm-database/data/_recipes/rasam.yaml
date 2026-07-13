@@ -1,0 +1,125 @@
+slug: rasam
+name: Rasam
+meal_type:
+- soup
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- tamarind
+- tomato
+- rasam powder
+contains_allergens: []
+ingredients:
+- item: tamarind
+  qty: '1'
+  unit: tbsp
+- item: tomato
+  qty: '1'
+  unit: piece
+- item: rasam powder
+  qty: '1.5'
+  unit: tsp
+- item: black pepper (crushed)
+  qty: '0.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: garlic
+  qty: '3'
+  unit: piece
+- item: curry leaves
+  qty: '1'
+  unit: tbsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: coriander leaves
+  qty: '2'
+  unit: tbsp
+- item: ghee or oil
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '3'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Soak the tamarind in half a cup of warm water for 10 minutes, then squeeze out the
+  pulp and discard the fibres.
+- Crush the black pepper, cumin seeds and garlic coarsely in a mortar.
+- In a pot, add the tamarind extract, chopped tomato, turmeric, rasam powder, the
+  crushed spice mix and 3 cups of water. Season with salt.
+- Simmer on medium heat for 8-10 minutes until the raw tamarind smell goes and the
+  tomato softens; do not boil hard, keep it thin and brothy.
+- In a small pan, heat the ghee, splutter the hing and curry leaves, then pour this
+  tempering over the rasam.
+- Finish with chopped coriander leaves and switch off just as it begins to froth.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 12
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A thin, tangy South Indian tamarind-and-pepper broth that soothes digestion
+  and clears the sinuses.
+headnote: Rasam is the everyday comfort soup of South Indian homes, sipped on its
+  own or spooned over rice. The pepper, cumin and garlic make it gently warming and
+  easy on a tired gut.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/rasam.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Rasam
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 60.3
+  protein_g: 1.2
+  carbs_g: 9.3
+  fat_g: 2.6
+  fibre_g: 1.4
+  iron_mg: 1.1
+  calcium_mg: 30.5
+  magnesium_mg: 17.9
+  zinc_mg: 0.2
+  potassium_mg: 218
+  folate_ug: 9.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 9.0
+  omega3_mg: 24.8
+nutrient_coverage_pct: 81.8
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

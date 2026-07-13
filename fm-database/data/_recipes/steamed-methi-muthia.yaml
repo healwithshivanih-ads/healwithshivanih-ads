@@ -147,8 +147,7 @@ updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/steamed-methi-muthia.jpg
-  credit: 'web reference (coach-selected)'
-  source_url: https://upload.wikimedia.org/wikipedia/commons/8/87/Gujrati_Muthia.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://steamed-methi-muthia'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark

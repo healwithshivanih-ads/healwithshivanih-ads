@@ -1,0 +1,123 @@
+slug: ringan-bharta
+name: Ringan bharta
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- astringent
+main_ingredients:
+- brinjal (eggplant)
+- onion
+- tomato
+contains_allergens: []
+ingredients:
+- item: large round brinjal (eggplant)
+  qty: '1'
+  unit: piece
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, finely chopped
+  qty: '2'
+  unit: piece
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tsp
+- item: jeera (cumin seeds)
+  qty: '1'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: cooking oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Rub the brinjal with a little oil and roast it over an open flame or in the oven
+  till the skin chars and the flesh is soft.
+- Cool, peel off the charred skin and mash the smoky flesh with a fork.
+- Heat oil in a kadhai, crackle the jeera, then add onion, green chilli and ginger-garlic
+  paste; saute till golden.
+- Add tomato, haldi and chilli powder; cook till the tomato breaks down and the oil
+  separates.
+- Stir in the mashed brinjal with salt and cook for 5 to 7 minutes so the flavours
+  come together.
+- Finish with fresh coriander and serve hot with roti or bajra rotla.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 25
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- anti-inflammatory-diet
+one_line: A smoky flame-roasted brinjal mash simmered with onion and tomato.
+headnote: Charring the brinjal gives this classic bharta its signature smoky depth
+  without any heaviness. Brinjal is low in starch and rich in fibre, making this a
+  light, blood-sugar-friendly side.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/ringan-bharta.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Ringan bharta
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 77.4
+  protein_g: 3.0
+  carbs_g: 17.6
+  fat_g: 0.6
+  fibre_g: 6.2
+  iron_mg: 0.9
+  calcium_mg: 38.4
+  magnesium_mg: 36.7
+  zinc_mg: 0.6
+  potassium_mg: 640
+  folate_ug: 54.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 24.8
+  omega3_mg: 23.6
+nutrient_coverage_pct: 86.4
+rich_in:
+- fibre
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

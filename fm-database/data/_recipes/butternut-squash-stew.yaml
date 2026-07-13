@@ -1,0 +1,118 @@
+slug: butternut-squash-stew
+name: Butternut Squash Stew
+meal_type:
+- soup
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 300 g butternut squash, peeled & chopped into bite-size pieces
+- 6-7 cloves garlic, chopped
+- 1 onion, chopped
+- 2 tomatoes, chopped
+- 1 green chilli, chopped
+- 1 tsp dried thyme
+- 1 tsp dried rosemary
+- 3 cups vegetable stock
+- salt, to taste
+- 4 tbsp olive oil
+contains_allergens: []
+ingredients:
+- item: 300 g butternut squash, peeled & chopped into bite-size pieces
+  qty: ''
+  unit: ''
+- item: 6-7 cloves garlic, chopped
+  qty: ''
+  unit: ''
+- item: 1 onion, chopped
+  qty: ''
+  unit: ''
+- item: 2 tomatoes, chopped
+  qty: ''
+  unit: ''
+- item: 1 green chilli, chopped
+  qty: ''
+  unit: ''
+- item: 1 tsp dried thyme
+  qty: ''
+  unit: ''
+- item: 1 tsp dried rosemary
+  qty: ''
+  unit: ''
+- item: 3 cups vegetable stock
+  qty: ''
+  unit: ''
+- item: salt, to taste
+  qty: ''
+  unit: ''
+- item: 4 tbsp olive oil
+  qty: ''
+  unit: ''
+steps:
+- Toss the squash with the chopped garlic, dried thyme, rosemary and 1 tbsp olive
+  oil, then roast at 220°C for about 15 minutes.
+- In a deep pot, soften the onion and green chilli in the remaining oil for about
+  5 minutes, then add the tomatoes and cook another 5 minutes.
+- Tip in the roasted squash and garlic with all their juices, add the stock, bring
+  to a boil and simmer about 5 minutes. Serve hot.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 20
+approx_kcal_per_serving: 199
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A mildly spiced stew of oven-roasted butternut squash with onion and tomato.
+headnote: Roasting deepens the natural sweetness of butternut squash before it simmers
+  into a rustic stew. Works just as well with pumpkin or other winter squash.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/butternut-squash-stew.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Butternut Squash Stew
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 208
+  protein_g: 3.9
+  carbs_g: 19.5
+  fat_g: 14.0
+  fibre_g: 4.4
+  iron_mg: 2.0
+  calcium_mg: 67.4
+  magnesium_mg: 38.2
+  zinc_mg: 0.9
+  potassium_mg: 668
+  folate_ug: 63.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 41.4
+  omega3_mg: 143
+nutrient_coverage_pct: 100.0
+rich_in:
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

@@ -1,0 +1,133 @@
+slug: tofu-bhurji
+name: Tofu bhurji with capsicum and tomato
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- astringent
+main_ingredients:
+- tofu
+- capsicum
+- tomato
+- onion
+- ground spices
+contains_allergens:
+- soy
+ingredients:
+- item: firm tofu, crumbled
+  qty: '250'
+  unit: g
+- item: capsicum, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, finely chopped
+  qty: '1'
+  unit: piece
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Press the tofu gently to drain excess water, then crumble it into coarse pieces
+  with your fingers or a fork.
+- Heat oil in a pan over medium heat. Add cumin seeds, let them splutter, then add
+  the onion and sauté until soft.
+- Stir in the ginger-garlic paste and cook 1 minute, then add the capsicum and sauté
+  2-3 minutes until it just softens.
+- Add the tomato with turmeric and chilli powder, and cook 3-4 minutes until pulpy.
+- Add the crumbled tofu and salt, stir well, and cook 4-5 minutes on medium so the
+  tofu dries slightly and absorbs the masala.
+- Sprinkle garam masala, fold through, and garnish with fresh coriander. Serve hot
+  with millet roti or as a filling.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+protein_g: 22
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: A quick scrambled tofu bhurji with capsicum and tomato — a high-protein,
+  egg-free breakfast or light lunch.
+headnote: Crumbled tofu stands in beautifully for an egg bhurji, catching the tempering
+  and staying light. Pressing out the water first keeps it from going soggy in the
+  pan.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/tofu-bhurji.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Tofu bhurji with capsicum and tomato
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 156
+  protein_g: 13.4
+  carbs_g: 15.1
+  fat_g: 6.0
+  fibre_g: 4.5
+  iron_mg: 3.8
+  calcium_mg: 291
+  magnesium_mg: 75.9
+  zinc_mg: 1.5
+  potassium_mg: 538
+  folate_ug: 66.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 89.2
+  omega3_mg: 338
+nutrient_coverage_pct: 95.2
+rich_in:
+- protein
+- iron
+- calcium
+- magnesium
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

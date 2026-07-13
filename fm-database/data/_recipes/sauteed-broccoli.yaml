@@ -1,0 +1,108 @@
+slug: sauteed-broccoli
+name: Sautéed broccoli
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+- bitter
+- pungent
+main_ingredients:
+- broccoli
+- garlic
+contains_allergens: []
+ingredients:
+- item: broccoli, small florets
+  qty: '3'
+  unit: cup
+- item: garlic, sliced
+  qty: '4'
+  unit: piece
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: piece
+- item: haldi (turmeric)
+  qty: '0.25'
+  unit: tsp
+- item: black pepper, crushed
+  qty: '0.25'
+  unit: tsp
+- item: cooking oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Blanch the broccoli florets in hot salted water for 2 minutes, then drain well.
+- Heat oil in a pan, crackle the jeera and add the sliced garlic and green chilli.
+- Saute the garlic till just golden and fragrant.
+- Add the broccoli with haldi, crushed pepper and salt, and toss on high heat for
+  3 to 4 minutes.
+- Keep the florets bright green with a little bite; do not overcook.
+- Squeeze over the lemon juice, toss once and serve hot.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 10
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A garlicky, peppery broccoli stir-fry that stays crisp and green.
+headnote: A quick blanch and a hot saute keep broccoli's cruciferous goodness and
+  crunch intact. Garlic, pepper and lemon make it a lively, low-starch side.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sauteed-broccoli.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sautéed broccoli
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 57.6
+  protein_g: 4.3
+  carbs_g: 11.6
+  fat_g: 0.6
+  fibre_g: 3.8
+  iron_mg: 1.1
+  calcium_mg: 76.8
+  magnesium_mg: 31.4
+  zinc_mg: 0.6
+  potassium_mg: 470
+  folate_ug: 87.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 127
+  omega3_mg: 138
+nutrient_coverage_pct: 76.7
+rich_in:
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

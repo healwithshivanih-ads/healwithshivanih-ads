@@ -135,8 +135,7 @@ updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/mushroom-pepper-fry.jpg
-  credit: 'web reference (coach-selected)'
-  source_url: https://cookilicious.com/wp-content/uploads/2020/05/indian-mushroom-pepper-fry-13.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://mushroom-pepper-fry'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark

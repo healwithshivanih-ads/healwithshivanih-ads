@@ -1,0 +1,109 @@
+slug: vegetable-frankie
+name: Vegetable frankie
+meal_type:
+- lunch
+- snack
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- sour
+- salty
+main_ingredients:
+- whole-wheat roti
+- potato
+- onion
+- butter
+contains_allergens:
+- gluten
+- dairy
+ingredients:
+- item: whole-wheat rotis
+  qty: '2'
+  unit: piece
+- item: boiled potato, mashed
+  qty: '1'
+  unit: cup
+- item: onion, thinly sliced
+  qty: '1'
+  unit: piece
+- item: butter, for toasting
+  qty: '1'
+  unit: tbsp
+- item: frankie or chaat masala
+  qty: '1'
+  unit: tsp
+- item: red chilli powder
+  qty: 1/2
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: green chutney
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Mash the boiled potato with red chilli powder, half the frankie masala and salt,
+  and shape into two logs.
+- Toast the rotis with a little butter on a hot pan for a minute each side.
+- Spread green chutney over each roti, place a potato log along the edge, and top
+  with sliced onion.
+- Sprinkle the remaining frankie masala and lemon juice, roll up tightly and serve.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 5
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A rolled-up street-style wrap you can make at home in minutes.
+headnote: Spiced mashed potato and tangy onions are rolled into a buttery wholewheat
+  roti for a quick take on the Mumbai frankie. Use a leftover roti and it is on the
+  table in no time.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-frankie.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable frankie
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 137
+  protein_g: 2.4
+  carbs_g: 19.1
+  fat_g: 6.0
+  fibre_g: 3.0
+  iron_mg: 0.9
+  calcium_mg: 26.5
+  magnesium_mg: 25.5
+  zinc_mg: 0.4
+  potassium_mg: 435
+  folate_ug: 26.1
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 22.4
+  omega3_mg: 35.5
+nutrient_coverage_pct: 83.1
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

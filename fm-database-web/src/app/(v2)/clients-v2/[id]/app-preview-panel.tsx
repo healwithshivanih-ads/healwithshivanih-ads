@@ -29,6 +29,7 @@ import {
 import { setClientRemedies } from "@/lib/server-actions/remedies";
 import { DishPicker } from "./dish-picker";
 import { ManageRemediesPanel } from "./manage-remedies-panel";
+import { AiRecipeFlagsPanel } from "./ai-recipe-flags-panel";
 import {
   QuickEditSupplementsPanel,
   type QuickEditSupplementRow,
@@ -686,6 +687,11 @@ export function AppPreviewPanel({
                 library recipes) and the app picks them up automatically.
               </div>
             )}
+
+            {/* AI-generated recipe flag: which menu dishes are served by the
+                AI pack (not the catalogue), with one-click add-to-catalogue.
+                Self-hides when there are none. */}
+            {showMenu && <AiRecipeFlagsPanel clientId={clientId} />}
 
             {/* 📅 the full menu, dish by dish — click any dish to swap it.
                 Overrides apply before everything that derives from the

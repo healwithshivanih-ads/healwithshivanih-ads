@@ -1,0 +1,131 @@
+slug: indian-sprouts-salad
+name: Indian Sprouts Salad
+meal_type:
+- salad
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 2 cups sprouted moong beans
+- ¼ cup green capsicum
+- ½ cup tomatoes
+- ¼ cup red onion
+- ¼ cucumber
+- 1 green chilli
+- ¼ cup fresh coriander
+- ½ cup pomegranate seeds
+- juice of 1 lime
+- 1 tsp cumin powder
+- 1 tsp dry mango powder
+- salt and black pepper, to taste
+contains_allergens: []
+ingredients:
+- item: 2 cups sprouted moong beans
+  qty: ''
+  unit: ''
+- item: ¼ cup green capsicum
+  qty: ''
+  unit: ''
+- item: ½ cup tomatoes
+  qty: ''
+  unit: ''
+- item: ¼ cup red onion
+  qty: ''
+  unit: ''
+- item: ¼ cucumber
+  qty: ''
+  unit: ''
+- item: 1 green chilli
+  qty: ''
+  unit: ''
+- item: ¼ cup fresh coriander
+  qty: ''
+  unit: ''
+- item: ½ cup pomegranate seeds
+  qty: ''
+  unit: ''
+- item: juice of 1 lime
+  qty: ''
+  unit: ''
+- item: 1 tsp cumin powder
+  qty: ''
+  unit: ''
+- item: 1 tsp dry mango powder
+  qty: ''
+  unit: ''
+- item: salt and black pepper, to taste
+  qty: ''
+  unit: ''
+steps:
+- Finely chop all the vegetables to a similar small size.
+- In a large bowl, toss together the chopped vegetables, sprouted moong and half the
+  pomegranate seeds.
+- Season with lime juice, cumin, dry mango powder, salt, pepper and fresh coriander,
+  and mix well.
+- Scatter over the remaining pomegranate seeds and serve. (Steam or boil the sprouts
+  first and cool them if you are unsure of their source.)
+servings: '2'
+prep_time_min: 15
+cook_time_min: 0
+approx_kcal_per_serving: 97
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+one_line: A tangy, spicy moong-sprout salad with fresh vegetables and pomegranate.
+headnote: Soft-crunchy sprouted moong tossed with crisp vegetables and pomegranate,
+  seasoned Indian-style with lime, cumin and dry mango. If unsure of your sprouts'
+  source, steam them first.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/indian-sprouts-salad.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Indian Sprouts Salad
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 108
+  protein_g: 6.1
+  carbs_g: 24.3
+  fat_g: 1.0
+  fibre_g: 6.3
+  iron_mg: 2.9
+  calcium_mg: 75.0
+  magnesium_mg: 61.2
+  zinc_mg: 1.1
+  potassium_mg: 711
+  folate_ug: 121
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 125
+  omega3_mg: 51.1
+nutrient_coverage_pct: 93.1
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

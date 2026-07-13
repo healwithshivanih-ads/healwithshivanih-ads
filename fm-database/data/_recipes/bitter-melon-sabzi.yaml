@@ -1,0 +1,119 @@
+slug: bitter-melon-sabzi
+name: Bitter melon sabzi
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- bitter
+- pungent
+- astringent
+main_ingredients:
+- bitter gourd (karela)
+- onion
+contains_allergens: []
+ingredients:
+- item: bitter gourd (karela), sliced into thin rounds
+  qty: '250'
+  unit: g
+- item: onion, thinly sliced
+  qty: '2'
+  unit: piece
+- item: rai (mustard seeds)
+  qty: '0.5'
+  unit: tsp
+- item: jeera (cumin seeds)
+  qty: '0.5'
+  unit: tsp
+- item: haldi (turmeric)
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: dhania (coriander) powder
+  qty: '1'
+  unit: tsp
+- item: amchur (dry mango powder)
+  qty: '0.5'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cooking oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Rub the sliced karela with a little salt and set aside for 15 minutes, then squeeze
+  out the bitter juice and rinse lightly.
+- Heat oil in a kadhai, add rai and let it splutter, then add jeera and hing.
+- Add the sliced onion and saute till soft and golden.
+- Add the karela with haldi, chilli, dhania powder and salt; toss to coat.
+- Cover and cook on low heat, stirring often, till the karela is soft, about 15 minutes.
+- Uncover, sprinkle amchur, raise the heat and cook till dry and lightly crisp; serve
+  hot with roti.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 22
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- anti-inflammatory-diet
+one_line: A classic dry karela sabzi with sweet onions to balance the bitterness.
+headnote: Bitter gourd is one of the most respected foods for blood sugar in Indian
+  kitchens. Salting it first and cooking it down with sweet onion and amchur softens
+  the bitterness into a moreish side.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/bitter-melon-sabzi.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Bitter melon sabzi
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 67.7
+  protein_g: 2.5
+  carbs_g: 15.3
+  fat_g: 0.4
+  fibre_g: 5.6
+  iron_mg: 1.1
+  calcium_mg: 51.0
+  magnesium_mg: 33.3
+  zinc_mg: 1.2
+  potassium_mg: 544
+  folate_ug: 112
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 114
+  omega3_mg: 12.5
+nutrient_coverage_pct: 72.4
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

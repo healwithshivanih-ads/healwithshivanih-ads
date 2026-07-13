@@ -61,7 +61,7 @@ cook_time_min: 0
 approx_kcal_per_serving: 340
 protein_g: 14
 good_for:
-- blood-sugar-balance
+- blood-sugar-regulation
 - digestion-and-nutrient-absorption
 one_line: No-cook oats soaked overnight with chia, berries and walnuts.
 headnote: Soak it the night before and breakfast is ready. The chia and oats give
@@ -81,12 +81,11 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/overnight-oats.jpg
-  credit: 'Muesli.jpg by Original description was: I, VirtualSteve took this photograph
-    on February 19, 2 — Wikimedia Commons (CC BY-SA 2.5)'
-  source_url: https://commons.wikimedia.org/wiki/File:Muesli.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
-    before external or commercial use
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://overnight-oats
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 nutrients_per_serving:
   kcal: 471
   protein_g: 17.7

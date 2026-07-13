@@ -1,0 +1,101 @@
+slug: green-chutney-sandwich
+name: Green chutney sandwich
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- astringent
+- bitter
+main_ingredients:
+- whole-wheat bread
+- mint
+- coriander
+- cucumber
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat bread
+  qty: '4'
+  unit: slice
+- item: mint leaves
+  qty: '1'
+  unit: cup
+- item: coriander leaves
+  qty: '1'
+  unit: cup
+- item: green chilli
+  qty: '1'
+  unit: piece
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: cucumber, thinly sliced
+  qty: '1'
+  unit: piece
+- item: salt and roasted cumin powder
+  qty: to taste
+  unit: ''
+steps:
+- Blend mint, coriander, green chilli, lemon juice, salt and a splash of water into
+  a thick green chutney.
+- Spread the chutney on all four bread slices.
+- Lay cucumber slices on two of them, sprinkle cumin powder, and close with the remaining
+  slices.
+- Press, halve and serve straight away.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: The fastest fresh sandwich there is — just chutney, cucumber and bread.
+headnote: A bright mint-coriander chutney does all the work in this no-cook sandwich.
+  It is cooling, herby and ready in the time it takes to blend the greens.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/green-chutney-sandwich.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Green chutney sandwich
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 23.9
+  protein_g: 1.3
+  carbs_g: 5.4
+  fat_g: 0.2
+  fibre_g: 1.6
+  iron_mg: 2.0
+  calcium_mg: 46.8
+  magnesium_mg: 23.7
+  zinc_mg: 0.4
+  potassium_mg: 257
+  folate_ug: 26.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 10.3
+  omega3_mg: 46.5
+nutrient_coverage_pct: 89.3
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

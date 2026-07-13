@@ -1,0 +1,133 @@
+slug: tofu-spinach-curry
+name: Tofu and spinach curry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- astringent
+- bitter
+main_ingredients:
+- tofu
+- spinach
+- onion
+- tomato
+- ground spices
+contains_allergens:
+- soy
+ingredients:
+- item: firm tofu, cubed
+  qty: '200'
+  unit: g
+- item: spinach, blanched and pureed
+  qty: '4'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: cooking oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: piece
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Pat the tofu cubes dry and set aside. Blanch the spinach in hot water for 2 minutes,
+  drain, and blend to a smooth puree.
+- Heat oil in a kadai over medium heat. Add cumin seeds, let them splutter, then add
+  the onion and green chilli and sauté until soft.
+- Stir in the ginger-garlic paste and cook 1 minute, then add the chopped tomato with
+  turmeric and coriander powder. Cook 5-6 minutes until pulpy.
+- Pour in the spinach puree, add salt, and simmer 5 minutes on low, stirring, so the
+  raw taste cooks off.
+- Gently add the tofu cubes and simmer 4-5 minutes, stirring lightly so they warm
+  through and take on the greens.
+- Sprinkle garam masala, stir, and serve hot with rice or millet roti.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 20
+protein_g: 21
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: Tofu simmered in a smooth spiced spinach gravy — an iron-and-protein-rich
+  gluten-free main.
+headnote: Blanching the spinach keeps the gravy a bright green and easy to digest,
+  while tofu carries the plant protein. A homely palak-style dish without any dairy.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/tofu-spinach-curry.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Tofu and spinach curry
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 144
+  protein_g: 12.1
+  carbs_g: 14.6
+  fat_g: 5.3
+  fibre_g: 4.9
+  iron_mg: 5.1
+  calcium_mg: 296
+  magnesium_mg: 108
+  zinc_mg: 1.5
+  potassium_mg: 684
+  folate_ug: 118
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 33.6
+  omega3_mg: 344
+nutrient_coverage_pct: 94.9
+rich_in:
+- protein
+- iron
+- calcium
+- magnesium
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

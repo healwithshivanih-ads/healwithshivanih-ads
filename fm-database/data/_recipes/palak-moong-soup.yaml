@@ -1,0 +1,119 @@
+slug: palak-moong-soup
+name: Palak-moong soup
+meal_type:
+- soup
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- spinach
+- moong dal
+- ginger
+contains_allergens: []
+ingredients:
+- item: spinach (palak)
+  qty: '2'
+  unit: cup
+- item: yellow moong dal
+  qty: '0.33'
+  unit: cup
+- item: ginger
+  qty: '1'
+  unit: tsp
+- item: garlic
+  qty: '2'
+  unit: piece
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: ghee
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '3'
+  unit: cup
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Rinse the moong dal and pressure-cook it with turmeric and 2 cups of water until
+  soft, about 3 whistles.
+- Meanwhile, wash the spinach well and roughly chop it along with the ginger and garlic.
+- In a pot, heat the ghee, add cumin seeds and let them crackle, then add the ginger
+  and garlic and saute for a minute.
+- Add the chopped spinach and cook for 2-3 minutes until wilted, then add the cooked
+  dal and 1 more cup of water.
+- Simmer for 5 minutes, then blend to a smooth soup and return to the pot; season
+  with salt and black pepper.
+- Warm through, finish with a squeeze of lemon and serve hot.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A smooth, protein-rich green soup of spinach and moong dal that is nourishing
+  and gentle on digestion.
+headnote: Moong dal gives this soup a soft body and easy-to-digest protein, while
+  spinach adds iron and folate. It is a comforting one-bowl meal for cool evenings
+  or light dinners.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/palak-moong-soup.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Palak-moong soup
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 152
+  protein_g: 9.1
+  carbs_g: 22.6
+  fat_g: 3.0
+  fibre_g: 3.7
+  iron_mg: 2.8
+  calcium_mg: 61.8
+  magnesium_mg: 68.6
+  zinc_mg: 1.1
+  potassium_mg: 557
+  folate_ug: 224
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 11.7
+  omega3_mg: 73.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

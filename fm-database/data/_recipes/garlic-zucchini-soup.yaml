@@ -1,0 +1,122 @@
+slug: garlic-zucchini-soup
+name: Garlic & Zucchini Soup
+meal_type:
+- soup
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 1 tbsp olive oil
+- 1 bay leaf
+- 4 cloves garlic, smashed & peeled
+- 1 green chilli, chopped
+- 1 small onion, peeled & chopped
+- 1 zucchini, cut into cubes (with peel)
+- 3 cups vegetable stock
+- salt, to taste
+- freshly ground pepper, to taste
+- olive oil & fresh chives, to garnish
+contains_allergens: []
+ingredients:
+- item: 1 tbsp olive oil
+  qty: ''
+  unit: ''
+- item: 1 bay leaf
+  qty: ''
+  unit: ''
+- item: 4 cloves garlic, smashed & peeled
+  qty: ''
+  unit: ''
+- item: 1 green chilli, chopped
+  qty: ''
+  unit: ''
+- item: 1 small onion, peeled & chopped
+  qty: ''
+  unit: ''
+- item: 1 zucchini, cut into cubes (with peel)
+  qty: ''
+  unit: ''
+- item: 3 cups vegetable stock
+  qty: ''
+  unit: ''
+- item: salt, to taste
+  qty: ''
+  unit: ''
+- item: freshly ground pepper, to taste
+  qty: ''
+  unit: ''
+- item: olive oil & fresh chives, to garnish
+  qty: ''
+  unit: ''
+steps:
+- Heat the oil in a deep pot and sauté the bay leaf, garlic and green chilli until
+  the garlic browns and some of it lightly chars.
+- Add the onion, zucchini, stock, salt and pepper; cover and cook about 10 minutes
+  until the zucchini is soft.
+- Discard the bay leaf and blend the soup smooth in the pot. Serve with fresh chives
+  and a swirl of olive oil.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 129
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+one_line: A naturally creamy zucchini soup with the deep aroma of lightly burnt garlic.
+headnote: Zucchini blends to a smooth, creamy soup with no cream at all, while browned
+  garlic adds a strong, earthy note.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/garlic-zucchini-soup.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Garlic & Zucchini Soup
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 214
+  protein_g: 6.5
+  carbs_g: 27.3
+  fat_g: 10.2
+  fibre_g: 7.8
+  iron_mg: 2.3
+  calcium_mg: 93.4
+  magnesium_mg: 63.3
+  zinc_mg: 1.4
+  potassium_mg: 837
+  folate_ug: 109
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 71.7
+  omega3_mg: 184
+nutrient_coverage_pct: 95.9
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

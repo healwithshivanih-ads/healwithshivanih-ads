@@ -1,0 +1,116 @@
+slug: tomato-rice
+name: Tomato rice
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+- salty
+main_ingredients:
+- rice
+- tomato
+contains_allergens: []
+ingredients:
+- item: cooked rice
+  qty: '3'
+  unit: cup
+- item: tomato (finely chopped)
+  qty: '3'
+  unit: piece
+- item: onion (sliced)
+  qty: '1'
+  unit: piece
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '10'
+  unit: piece
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '1'
+  unit: tsp
+- item: oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a pan and splutter the mustard seeds, then add curry leaves.
+- Add the sliced onion and saute until soft and light golden.
+- Stir in the chopped tomato, turmeric, red chilli powder and salt, and cook until
+  the tomato breaks down into a thick masala.
+- Add the cooked rice and toss gently so every grain is coated, without mashing the
+  rice.
+- Cover and cook on low for 3 to 4 minutes to let the flavours mingle.
+- Garnish with coriander and serve warm with papad or curd.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 20
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: Tangy South-Indian tomato rice tempered with mustard and curry leaves.
+headnote: A quick, comforting one-pot rice built on a thick tomato masala. A great
+  way to use up leftover rice from the night before.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/tomato-rice.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Tomato rice
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 1178
+  protein_g: 25.2
+  carbs_g: 231
+  fat_g: 16.2
+  fibre_g: 11.7
+  iron_mg: 3.2
+  calcium_mg: 141
+  magnesium_mg: 102
+  zinc_mg: 3.9
+  potassium_mg: 863
+  folate_ug: 70.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 26.4
+  omega3_mg: 170
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

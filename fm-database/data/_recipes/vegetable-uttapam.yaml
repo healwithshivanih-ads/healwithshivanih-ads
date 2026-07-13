@@ -1,0 +1,111 @@
+slug: vegetable-uttapam
+name: Vegetable uttapam
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sour
+- sweet
+- pungent
+main_ingredients:
+- fermented rice-urad batter
+- onion
+- tomato
+- capsicum
+contains_allergens: []
+ingredients:
+- item: fermented dosa batter (rice and urad dal)
+  qty: '2'
+  unit: cup
+- item: onion, finely chopped
+  qty: '0.5'
+  unit: cup
+- item: tomato, finely chopped
+  qty: '0.5'
+  unit: cup
+- item: capsicum, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil, for cooking
+  qty: '2'
+  unit: tsp
+steps:
+- Stir the fermented batter well and season with salt to a thick, spoonable consistency.
+- Toss the chopped onion, tomato, capsicum, green chilli and coriander together in
+  a bowl.
+- Heat a tawa on medium and lightly grease it.
+- Pour a ladle of batter and spread into a thick round, thicker than a dosa.
+- Scatter a generous handful of the vegetable mix over the top and press gently so
+  it sticks.
+- Drizzle a few drops of oil around the edges and cover; cook until the base is golden.
+- Flip and cook the vegetable side for a minute or two until set, then serve hot with
+  chutney.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+- gut-microbiome
+one_line: A thick fermented rice pancake topped with a fresh confetti of onion, tomato
+  and capsicum.
+headnote: The fermented rice-and-urad batter makes this uttapam naturally light and
+  easy to digest, and the vegetable topping turns it into a complete breakfast. Cook
+  it slow and thick so the centre stays soft while the base crisps.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-uttapam.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable uttapam
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 23.4
+  protein_g: 0.9
+  carbs_g: 5.3
+  fat_g: 0.2
+  fibre_g: 1.3
+  iron_mg: 0.3
+  calcium_mg: 13.0
+  magnesium_mg: 9.7
+  zinc_mg: 0.2
+  potassium_mg: 176
+  folate_ug: 19.2
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 29.6
+  omega3_mg: 6.3
+nutrient_coverage_pct: 73.9
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

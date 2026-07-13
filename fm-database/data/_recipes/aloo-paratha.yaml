@@ -1,0 +1,108 @@
+slug: aloo-paratha
+name: Aloo paratha
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- whole-wheat atta
+- potato
+- ghee
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat atta
+  qty: '1.5'
+  unit: cup
+- item: potato (boiled and mashed)
+  qty: '2'
+  unit: piece
+- item: green chilli (finely chopped)
+  qty: '1'
+  unit: piece
+- item: coriander leaves (chopped)
+  qty: '2'
+  unit: tbsp
+- item: ajwain
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: ghee (for cooking)
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Knead the atta with a pinch of salt and water into a soft dough, cover and rest
+  15 minutes.
+- Mash the boiled potatoes and mix in green chilli, coriander, ajwain, red chilli
+  powder and salt.
+- Divide dough into 4 balls, roll each into a small round, place a scoop of filling
+  in the centre and pleat the edges to seal.
+- Dust with flour and gently roll the stuffed ball into a paratha, keeping the filling
+  even.
+- Cook on a hot tawa, flip, and drizzle ghee on both sides until golden brown spots
+  appear.
+- Serve hot with curd or pickle.
+servings: '2'
+prep_time_min: 25
+cook_time_min: 20
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: Golden potato-stuffed parathas crisped in ghee for a filling morning meal.
+headnote: A North Indian breakfast favourite where spiced mashed potato is folded
+  into soft wheat dough. Serve straight off the tawa with a spoon of curd.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/aloo-paratha.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Aloo paratha
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 243
+  protein_g: 3.2
+  carbs_g: 26.3
+  fat_g: 14.0
+  fibre_g: 3.8
+  iron_mg: 1.4
+  calcium_mg: 28.0
+  magnesium_mg: 37.0
+  zinc_mg: 0.5
+  potassium_mg: 671
+  folate_ug: 24.3
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 33.5
+  omega3_mg: 126
+nutrient_coverage_pct: 91.8
+rich_in:
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

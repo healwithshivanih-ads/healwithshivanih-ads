@@ -1,0 +1,146 @@
+slug: spinach-salad-roasted-chickpeas
+name: Spinach Salad with Roasted Chickpeas
+meal_type:
+- salad
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 3 cups baby spinach leaves (~400 g)
+- 1 cup chickpeas, boiled and drained
+- 1 cup sweet potato, chopped
+- 1 red onion, sliced
+- 2 tsp cumin powder
+- 1 tsp paprika powder
+- sea salt, to taste
+- black pepper, to taste
+- 2 tbsp olive oil
+- juice of ½ lemon
+- 2 tbsp tahini
+- 2 tsp maple syrup
+contains_allergens:
+- sesame
+ingredients:
+- item: 3 cups baby spinach leaves (~400 g)
+  qty: ''
+  unit: ''
+- item: 1 cup chickpeas, boiled and drained
+  qty: ''
+  unit: ''
+- item: 1 cup sweet potato, chopped
+  qty: ''
+  unit: ''
+- item: 1 red onion, sliced
+  qty: ''
+  unit: ''
+- item: 2 tsp cumin powder
+  qty: ''
+  unit: ''
+- item: 1 tsp paprika powder
+  qty: ''
+  unit: ''
+- item: sea salt, to taste
+  qty: ''
+  unit: ''
+- item: black pepper, to taste
+  qty: ''
+  unit: ''
+- item: 2 tbsp olive oil
+  qty: ''
+  unit: ''
+- item: juice of ½ lemon
+  qty: ''
+  unit: ''
+- item: 2 tbsp tahini
+  qty: ''
+  unit: ''
+- item: 2 tsp maple syrup
+  qty: ''
+  unit: ''
+- item: 2 tsp olive oil
+  qty: ''
+  unit: ''
+- item: 2-3 tbsp warm water
+  qty: ''
+  unit: ''
+steps:
+- Toss the chickpeas with cumin, paprika and a little olive oil and roast at 180°C
+  for about 5 minutes.
+- Toss the sweet potato with a little oil, add to the tray and roast about 10 minutes
+  more; add the sliced onion for the last 2 minutes.
+- Whisk the tahini, lemon, maple syrup, olive oil and warm water into a smooth, pourable
+  dressing, loosening with a little more water if needed.
+- Pile the roasted vegetables over the spinach and drizzle with the tahini dressing.
+  Serve warm, with extra dressing on the side.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 25
+approx_kcal_per_serving: 277
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- anti-inflammatory-diet
+one_line: Baby spinach with spicy roasted chickpeas, sweet potato and onion in a lemony
+  tahini dressing.
+headnote: A hearty warm salad — crisp roasted chickpeas and sweet potato over baby
+  spinach, pulled together with a smooth lemon-tahini dressing.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/spinach-salad-roasted-chickpeas.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Spinach Salad with Roasted Chickpeas
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 381
+  protein_g: 13.4
+  carbs_g: 47.9
+  fat_g: 16.8
+  fibre_g: 9.7
+  iron_mg: 4.9
+  calcium_mg: 119
+  magnesium_mg: 83.0
+  zinc_mg: 2.2
+  potassium_mg: 718
+  folate_ug: 329
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 20.7
+  omega3_mg: 194
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

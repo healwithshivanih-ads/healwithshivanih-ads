@@ -1,0 +1,108 @@
+slug: pan-seared-fish
+name: Pan-seared fish
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- fish fillets (basa/surmai/rohu/mackerel)
+- turmeric
+- lemon
+contains_allergens:
+- fish
+ingredients:
+- item: fish fillets (basa, surmai, rohu or mackerel)
+  qty: '400'
+  unit: g
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: black pepper, freshly cracked
+  qty: '0.5'
+  unit: tsp
+- item: lemon
+  qty: '1'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+- item: coconut oil or ghee
+  qty: '1'
+  unit: tbsp
+steps:
+- Pat the fillets thoroughly dry with a kitchen towel — dry fish is what gives a good
+  sear.
+- Rub turmeric, salt, cracked pepper and a squeeze of lemon over both sides and rest
+  for 15 minutes.
+- Heat the coconut oil or ghee in a heavy pan on medium-high until shimmering.
+- Place the fillets skin-side down and press gently; sear undisturbed for 3-4 minutes
+  until the edges turn opaque.
+- Flip once and cook the second side for 2-3 minutes until just cooked through.
+- Finish with a squeeze of lemon and serve straight from the pan.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 8
+protein_g: 38
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Dry-rubbed Indian fish fillets seared hard in coconut oil for a golden crust
+  and a tender, flaky centre.
+headnote: A quick weeknight fish done in one pan with just haldi, pepper and lemon.
+  The trick is patting the fillet properly dry so it sears instead of steaming.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/pan-seared-fish.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Pan-seared fish
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 274
+  protein_g: 36.5
+  carbs_g: 3.9
+  fat_g: 12.9
+  fibre_g: 1.2
+  iron_mg: 2.7
+  calcium_mg: 212
+  magnesium_mg: 65.1
+  zinc_mg: 2.1
+  potassium_mg: 668
+  folate_ug: 23.8
+  b12_ug: 4.0
+  vit_d_ug: 16.0
+  vit_c_mg: 17.2
+  omega3_mg: 1213
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- calcium
+- zinc
+- potassium
+- b12
+- vitamin-d
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

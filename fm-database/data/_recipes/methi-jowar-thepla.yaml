@@ -1,0 +1,113 @@
+slug: methi-jowar-thepla
+name: Methi-jowar thepla
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+rasa:
+- bitter
+- astringent
+- sweet
+main_ingredients:
+- whole wheat flour (atta)
+- jowar (sorghum) flour
+- fresh methi leaves
+contains_allergens:
+- gluten
+ingredients:
+- item: whole wheat flour (atta)
+  qty: '1'
+  unit: cup
+- item: jowar (sorghum) flour
+  qty: '0.5'
+  unit: cup
+- item: fresh methi (fenugreek) leaves, chopped
+  qty: '1'
+  unit: cup
+- item: curd (yogurt)
+  qty: '2'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: ginger-green chilli paste
+  qty: '1'
+  unit: tsp
+- item: sesame seeds
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil, for dough and cooking
+  qty: '2'
+  unit: tbsp
+steps:
+- Mix the wheat flour, jowar flour, chopped methi, curd, turmeric, ginger-chilli paste,
+  sesame seeds, salt and 1 tsp oil in a bowl.
+- Add water gradually and knead into a smooth, medium-soft dough; rest for 15 minutes.
+- Pinch off small portions and roll each into a thin round thepla, dusting with flour
+  as needed.
+- Heat a tawa on medium and place the thepla to cook until spots form on the underside.
+- Flip, smear lightly with oil, and cook while pressing gently with a spatula.
+- Turn again and cook until both sides are evenly golden.
+- Serve warm, folded, with a spoon of pickle or a bowl of curd.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 15
+protein_g: 10
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+- gut-microbiome
+- anti-inflammatory-diet
+one_line: A wheat-and-sorghum flatbread with fenugreek and a scatter of sesame, cooling
+  and easy on the stomach.
+headnote: Jowar makes this thepla lighter and cooling, a good choice when the weather
+  turns hot, while methi and sesame add depth and a nutty finish. Roll them thin so
+  they stay soft even once cooled for a tiffin.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/methi-jowar-thepla.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Methi-jowar thepla
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 116
+  protein_g: 4.0
+  carbs_g: 21.7
+  fat_g: 1.4
+  fibre_g: 4.2
+  iron_mg: 2.8
+  calcium_mg: 71.8
+  magnesium_mg: 56.8
+  zinc_mg: 0.9
+  potassium_mg: 175
+  folate_ug: 24.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 9.1
+  omega3_mg: 48.2
+nutrient_coverage_pct: 52.7
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

@@ -1,0 +1,110 @@
+slug: vegetable-paratha
+name: Mixed vegetable paratha
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- astringent
+main_ingredients:
+- whole-wheat atta
+- mixed vegetables
+- ghee
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat atta
+  qty: '2'
+  unit: cup
+- item: carrot (grated)
+  qty: '0.5'
+  unit: cup
+- item: cabbage (finely shredded)
+  qty: '0.5'
+  unit: cup
+- item: green peas (mashed)
+  qty: '0.25'
+  unit: cup
+- item: green chilli (finely chopped)
+  qty: '1'
+  unit: piece
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander leaves (chopped)
+  qty: '2'
+  unit: tbsp
+- item: ghee (for cooking)
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Knead the atta with a pinch of salt and water into a soft dough, cover and rest
+  15 minutes.
+- Mix the grated carrot, cabbage, mashed peas, green chilli, cumin powder, coriander
+  and salt into a moist filling.
+- Divide dough into 5 balls, flatten each, spoon in the vegetable filling and seal
+  the edges.
+- Dust with flour and roll gently into a paratha, keeping the vegetables tucked in
+  evenly.
+- Cook on a hot tawa, flip, and drizzle ghee on both sides until golden and cooked
+  through.
+- Serve hot with curd or chutney.
+servings: '2'
+prep_time_min: 25
+cook_time_min: 20
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: Colourful vegetable-packed parathas that sneak greens into every bite.
+headnote: A tidy way to fold carrot, cabbage and peas into breakfast. Keep the filling
+  well-drained so the parathas roll out without tearing.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-paratha.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Mixed vegetable paratha
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 152
+  protein_g: 1.1
+  carbs_g: 6.3
+  fat_g: 13.9
+  fibre_g: 2.0
+  iron_mg: 0.8
+  calcium_mg: 30.4
+  magnesium_mg: 12.7
+  zinc_mg: 0.2
+  potassium_mg: 203
+  folate_ug: 23.1
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 17.0
+  omega3_mg: 119
+nutrient_coverage_pct: 85.3
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

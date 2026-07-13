@@ -1,0 +1,107 @@
+slug: sesame-chutney
+name: Sesame chutney
+meal_type:
+- condiment
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- bitter
+- pungent
+- sweet
+main_ingredients:
+- roasted sesame seeds
+- garlic
+- dry red chilli
+contains_allergens:
+- sesame
+ingredients:
+- item: white sesame seeds (til)
+  qty: '0.5'
+  unit: cup
+- item: garlic cloves
+  qty: '3'
+  unit: piece
+- item: dry red chilli
+  qty: '2'
+  unit: piece
+- item: tamarind
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '3'
+  unit: tbsp
+steps:
+- Dry-roast the sesame seeds on low heat until they turn golden and fragrant, then
+  set aside to cool.
+- In the same pan, lightly roast the dry red chillies and cumin seeds for half a minute.
+- Combine the roasted sesame, chillies, cumin, garlic, tamarind and salt in a grinder.
+- Grind to a coarse powder first, then add water a little at a time.
+- Blend to a thick, spreadable chutney, scraping down the sides as needed.
+- Taste and adjust salt and tamarind, then transfer to a bowl and serve.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 5
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A nutty, garlicky roasted-sesame chutney with a tang of tamarind to lift
+  any meal.
+headnote: Toasting the sesame slowly is what gives this chutney its deep, nutty flavour
+  and a good hit of calcium. It keeps for a few days and turns a plain roti or rice
+  plate into something moreish.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sesame-chutney.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Sesame chutney
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 223
+  protein_g: 6.9
+  carbs_g: 12.2
+  fat_g: 18.1
+  fibre_g: 4.6
+  iron_mg: 5.8
+  calcium_mg: 367
+  magnesium_mg: 133
+  zinc_mg: 2.9
+  potassium_mg: 229
+  folate_ug: 36.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 7.1
+  omega3_mg: 140
+nutrient_coverage_pct: 100.0
+rich_in:
+- iron
+- calcium
+- magnesium
+- zinc
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

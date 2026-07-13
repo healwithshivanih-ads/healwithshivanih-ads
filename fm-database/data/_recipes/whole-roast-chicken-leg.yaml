@@ -1,0 +1,109 @@
+slug: whole-roast-chicken-leg
+name: Whole-roast chicken leg
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- chicken leg (whole, bone-in)
+- turmeric
+- ginger-garlic
+contains_allergens:
+- none
+ingredients:
+- item: whole bone-in chicken legs (thigh + drumstick)
+  qty: '2'
+  unit: piece
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: ginger-garlic paste
+  qty: '1.5'
+  unit: tbsp
+- item: black pepper, freshly cracked
+  qty: '0.5'
+  unit: tsp
+- item: lemon
+  qty: '1'
+  unit: piece
+- item: ghee or oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Pat the chicken legs dry and make deep slits through the thickest part so the marinade
+  reaches the bone.
+- Mix turmeric, chilli powder, cracked pepper, ginger-garlic paste, salt, the juice
+  of half the lemon and the ghee into a paste and rub it all over and into the slits.
+- Let the legs marinate for at least 30 minutes.
+- Heat the oven to 200C, place the legs on a lined tray, and roast for 30 minutes.
+- Turn the legs, baste with the pan juices, and roast for another 15-20 minutes until
+  deeply golden and the juices at the bone run clear.
+- Rest for 5 minutes, squeeze over the remaining lemon and serve.
+servings: '2'
+prep_time_min: 35
+cook_time_min: 50
+protein_g: 42
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Bone-in chicken legs marinated in haldi, ginger-garlic and pepper, then
+  slow-roasted till golden and falling off the bone.
+headnote: Slitting the legs to the bone lets the marinade go all the way in, and roasting
+  on the bone keeps the meat moist. A hands-off dish once it goes in the oven.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/whole-roast-chicken-leg.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Whole-roast chicken leg
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 263
+  protein_g: 31.5
+  carbs_g: 7.1
+  fat_g: 12.2
+  fibre_g: 1.6
+  iron_mg: 1.9
+  calcium_mg: 35.6
+  magnesium_mg: 46.1
+  zinc_mg: 2.1
+  potassium_mg: 489
+  folate_ug: 15.4
+  b12_ug: 0.4
+  vit_d_ug: 0.2
+  vit_c_mg: 19.7
+  omega3_mg: 185
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- zinc
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

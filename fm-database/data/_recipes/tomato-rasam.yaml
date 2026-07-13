@@ -1,0 +1,131 @@
+slug: tomato-rasam
+name: Tomato rasam
+meal_type:
+- soup
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- tomato
+- tamarind
+- rasam powder
+contains_allergens: []
+ingredients:
+- item: ripe tomatoes
+  qty: '3'
+  unit: piece
+- item: tamarind
+  qty: '1'
+  unit: tsp
+- item: rasam powder
+  qty: '1.5'
+  unit: tsp
+- item: black pepper (crushed)
+  qty: '0.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: garlic
+  qty: '3'
+  unit: piece
+- item: curry leaves
+  qty: '1'
+  unit: tbsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: coriander leaves
+  qty: '2'
+  unit: tbsp
+- item: ghee or oil
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '3'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Soak the tamarind in a little warm water and extract a thin pulp.
+- Chop the tomatoes and mash them lightly with your hand or a masher so they break
+  down quickly.
+- In a pot, combine the mashed tomatoes, tamarind extract, turmeric, rasam powder
+  and 3 cups of water; add salt.
+- Coarsely crush the pepper, cumin and garlic and stir them in, then simmer on medium
+  heat for 8-10 minutes until the tomatoes dissolve into a thin, brothy soup — do
+  not let it boil hard.
+- In a small pan, heat the ghee, splutter the mustard seeds, hing and curry leaves,
+  and pour this tempering over the rasam.
+- Garnish with coriander leaves and turn off the heat just as the rasam starts to
+  froth.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 12
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A bright, tomato-forward rasam that is tangy, peppery and light enough to
+  sip when appetite is low.
+headnote: This version leans on ripe tomatoes for body and colour, with just a touch
+  of tamarind for balance. It is a household favourite when someone is recovering
+  from a cold or a heavy meal.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/tomato-rasam.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Tomato rasam
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 71.2
+  protein_g: 2.2
+  carbs_g: 10.3
+  fat_g: 3.1
+  fibre_g: 2.5
+  iron_mg: 1.4
+  calcium_mg: 39.4
+  magnesium_mg: 28.0
+  zinc_mg: 0.5
+  potassium_mg: 430
+  folate_ug: 25.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 22.9
+  omega3_mg: 31.2
+nutrient_coverage_pct: 91.6
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

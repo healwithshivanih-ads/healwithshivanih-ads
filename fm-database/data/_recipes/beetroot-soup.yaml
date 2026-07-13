@@ -1,0 +1,131 @@
+slug: beetroot-soup
+name: Beetroot Soup
+meal_type:
+- soup
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- 2 beetroots (~250 g), grated
+- 1 onion, chopped
+- 4 tomatoes, quartered
+- 4 cloves garlic, peeled & chopped
+- salt, to taste
+- freshly ground pepper, to taste
+- 400 ml vegetable stock
+- 3 tbsp olive oil
+- 8-10 croutons, optional (omit for gluten-free)
+- 1 sprig spring onion, to garnish
+- 2 tbsp cream (use soy cream for vegan), optional
+contains_allergens: []
+ingredients:
+- item: 2 beetroots (~250 g), grated
+  qty: ''
+  unit: ''
+- item: 1 onion, chopped
+  qty: ''
+  unit: ''
+- item: 4 tomatoes, quartered
+  qty: ''
+  unit: ''
+- item: 4 cloves garlic, peeled & chopped
+  qty: ''
+  unit: ''
+- item: salt, to taste
+  qty: ''
+  unit: ''
+- item: freshly ground pepper, to taste
+  qty: ''
+  unit: ''
+- item: 400 ml vegetable stock
+  qty: ''
+  unit: ''
+- item: 3 tbsp olive oil
+  qty: ''
+  unit: ''
+- item: 8-10 croutons, optional (omit for gluten-free)
+  qty: ''
+  unit: ''
+- item: 1 sprig spring onion, to garnish
+  qty: ''
+  unit: ''
+- item: 2 tbsp cream (use soy cream for vegan), optional
+  qty: ''
+  unit: ''
+steps:
+- Roast the quartered tomatoes and garlic with 1 tbsp olive oil at 200°C for about
+  20 minutes.
+- Soften the onion in the remaining oil in a deep pot for 4-5 minutes.
+- Peel and mash the cooled roasted tomatoes.
+- Add the grated beetroot, stock and seasoning to the onion, cover and cook about
+  10 minutes, stirring occasionally; stir in the mashed tomato and cook a minute more.
+- Blend smooth. Serve topped with a little cream, croutons and spring onion greens.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 30
+approx_kcal_per_serving: 286
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+one_line: A vivid beetroot soup with roasted tomatoes and garlic, served with a swirl
+  of cream and croutons.
+headnote: Grated beets and roasted tomato blend into a jewel-red soup. Top with cream
+  (soy cream to keep it vegan) and croutons — skip the croutons for gluten-free.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/beetroot-soup.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: Beetroot Soup
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 446
+  protein_g: 9.8
+  carbs_g: 46.7
+  fat_g: 26.9
+  fibre_g: 12.9
+  iron_mg: 3.6
+  calcium_mg: 138
+  magnesium_mg: 95.7
+  zinc_mg: 2.1
+  potassium_mg: 1446
+  folate_ug: 221
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 92.0
+  omega3_mg: 286
+nutrient_coverage_pct: 97.7
+rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

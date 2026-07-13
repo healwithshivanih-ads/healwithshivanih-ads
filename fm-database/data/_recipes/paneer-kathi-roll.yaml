@@ -1,0 +1,111 @@
+slug: paneer-kathi-roll
+name: Paneer kathi roll
+meal_type:
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- pungent
+- sweet
+- sour
+main_ingredients:
+- whole-wheat roti
+- paneer
+- onion
+- capsicum
+contains_allergens:
+- gluten
+- dairy
+ingredients:
+- item: whole-wheat rotis
+  qty: '2'
+  unit: piece
+- item: paneer, cut in strips
+  qty: '1'
+  unit: cup
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: capsicum, sliced
+  qty: 1/2
+  unit: piece
+- item: curd
+  qty: '2'
+  unit: tbsp
+- item: tandoori or garam masala
+  qty: '1'
+  unit: tsp
+- item: red chilli powder and salt
+  qty: to taste
+  unit: ''
+- item: green chutney
+  qty: '2'
+  unit: tbsp
+- item: oil
+  qty: '1'
+  unit: tbsp
+steps:
+- Toss paneer strips with curd, tandoori masala, chilli powder and salt.
+- Heat oil in a pan and sauté the onion and capsicum for a minute, then add the paneer
+  and cook 3 to 4 minutes until lightly charred.
+- Warm the rotis, spread green chutney, and pile the paneer filling along one edge.
+- Roll up tightly, halve and serve hot.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 6
+protein_g: 14
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- protein-adequacy-vegetarian
+- gut-microbiome
+one_line: A protein-loaded paneer roll that cooks in one quick pan.
+headnote: Marinated paneer is seared with onion and capsicum, then rolled into a wholewheat
+  roti with green chutney. It is a filling, restaurant-style wrap you can make faster
+  than ordering in.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/paneer-kathi-roll.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Paneer kathi roll
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 285
+  protein_g: 13.5
+  carbs_g: 10.7
+  fat_g: 21.7
+  fibre_g: 1.8
+  iron_mg: 0.8
+  calcium_mg: 330
+  magnesium_mg: 23.6
+  zinc_mg: 1.7
+  potassium_mg: 227
+  folate_ug: 37.1
+  b12_ug: 0.5
+  vit_d_ug: 0.1
+  vit_c_mg: 44.3
+  omega3_mg: 129
+nutrient_coverage_pct: 78.5
+rich_in:
+- protein
+- calcium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

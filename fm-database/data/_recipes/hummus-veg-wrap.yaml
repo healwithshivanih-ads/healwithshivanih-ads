@@ -1,0 +1,104 @@
+slug: hummus-veg-wrap
+name: Hummus and veggie wrap
+meal_type:
+- lunch
+- snack
+diet:
+- vegetarian
+- vegan
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- astringent
+- sour
+- pungent
+main_ingredients:
+- whole-wheat roti
+- hummus
+- cucumber
+- carrot
+contains_allergens:
+- gluten
+- sesame
+ingredients:
+- item: whole-wheat rotis
+  qty: '2'
+  unit: piece
+- item: hummus
+  qty: '4'
+  unit: tbsp
+- item: cucumber, cut in strips
+  qty: '1'
+  unit: piece
+- item: carrot, grated
+  qty: '1'
+  unit: piece
+- item: lettuce or cabbage, shredded
+  qty: '1'
+  unit: cup
+- item: onion, thinly sliced
+  qty: 1/2
+  unit: piece
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: black pepper and salt
+  qty: to taste
+  unit: ''
+steps:
+- Warm the rotis so they roll without cracking.
+- Spread two tablespoons of hummus over each roti.
+- Layer cucumber, carrot, lettuce and onion along one edge, then season with lemon,
+  pepper and salt.
+- Roll up tightly, cut in half and serve.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A fresh, no-cook wrap built on creamy hummus and crunchy veg.
+headnote: Smooth hummus and a pile of raw vegetables roll into a wholewheat roti for
+  a light, fibre-rich lunch. There is no cooking at all, so it comes together in minutes.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/hummus-veg-wrap.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Hummus and veggie wrap
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 42.9
+  protein_g: 1.6
+  carbs_g: 10.0
+  fat_g: 0.3
+  fibre_g: 2.3
+  iron_mg: 0.7
+  calcium_mg: 40.1
+  magnesium_mg: 22.8
+  zinc_mg: 0.4
+  potassium_mg: 344
+  folate_ug: 50.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 8.5
+  omega3_mg: 32.6
+nutrient_coverage_pct: 86.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

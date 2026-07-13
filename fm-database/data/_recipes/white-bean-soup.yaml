@@ -1,0 +1,147 @@
+slug: white-bean-soup
+name: White Bean Soup
+meal_type:
+- soup
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Global
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- ½ cup dry white beans, soaked overnight (or canned)
+- 1 tbsp olive oil
+- 3-4 cloves garlic, peeled & chopped
+- 1 inch ginger, peeled & chopped
+- 1 green chilli, chopped
+- 1 carrot
+- 1 onion
+- 1 red capsicum
+- 3 cups vegetable stock
+- 2 tbsp tomato puree
+- salt, to taste
+- freshly ground black pepper, to taste
+contains_allergens: []
+ingredients:
+- item: ½ cup dry white beans, soaked overnight (or canned)
+  qty: ''
+  unit: ''
+- item: 1 tbsp olive oil
+  qty: ''
+  unit: ''
+- item: 3-4 cloves garlic, peeled & chopped
+  qty: ''
+  unit: ''
+- item: 1 inch ginger, peeled & chopped
+  qty: ''
+  unit: ''
+- item: 1 green chilli, chopped
+  qty: ''
+  unit: ''
+- item: 1 carrot
+  qty: ''
+  unit: ''
+- item: 1 onion
+  qty: ''
+  unit: ''
+- item: 1 red capsicum
+  qty: ''
+  unit: ''
+- item: 3 cups vegetable stock
+  qty: ''
+  unit: ''
+- item: 2 tbsp tomato puree
+  qty: ''
+  unit: ''
+- item: salt, to taste
+  qty: ''
+  unit: ''
+- item: freshly ground black pepper, to taste
+  qty: ''
+  unit: ''
+- item: 2 tsp dried dill
+  qty: ''
+  unit: ''
+- item: 2 tsp dried parsley
+  qty: ''
+  unit: ''
+- item: juice of 1 lemon
+  qty: ''
+  unit: ''
+- item: fresh dill and parsley, to garnish
+  qty: ''
+  unit: ''
+steps:
+- Pressure-cook the soaked beans for 3-4 whistles (or boil with salt until tender).
+  If using canned beans, rinse them well under running water.
+- Chop all the vegetables into small cubes.
+- Heat the olive oil and sauté the garlic, ginger and green chilli for a minute, then
+  add the chopped vegetables and stock and cook covered until soft.
+- Stir in the cooked beans and tomato puree and simmer for about 15 minutes.
+- Season, mix in the lemon juice, and ladle into bowls topped with fresh dill and
+  parsley.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 45
+approx_kcal_per_serving: 197
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- blood-sugar-regulation
+- anti-inflammatory-diet
+one_line: A homestyle white bean soup with seasonal vegetables and a light dill-and-parsley
+  seasoning.
+headnote: Tender white beans and diced vegetables in a light, nourishing broth. A
+  comforting one-bowl vegetarian meal.
+attribution:
+  author: Ashima — My Weekend Kitchen
+  source_id: my-weekend-kitchen-soups-salads
+image:
+  file: images/web/white-bean-soup.jpg
+  credit: My Weekend Kitchen (myweekendkitchen.in) — 'Soups & Salads' ebook by Ashima
+  source_url: https://www.myweekendkitchen.in
+  rights_status: web_reference_uncleared
+  note: hero photo from the My Weekend Kitchen 'Soups & Salads' ebook (© myweekendkitchen.in)
+    — internal app reference only; replace with a licensed or original photo before
+    any external or commercial use
+sources:
+- id: my-weekend-kitchen-soups-salads
+  location: White Bean Soup
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
+provenance: ingested_my_weekend_kitchen_ebook
+nutrients_per_serving:
+  kcal: 231
+  protein_g: 7.7
+  carbs_g: 37.0
+  fat_g: 7.9
+  fibre_g: 10.6
+  iron_mg: 3.0
+  calcium_mg: 116
+  magnesium_mg: 68.7
+  zinc_mg: 1.6
+  potassium_mg: 951
+  folate_ug: 136
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 154
+  omega3_mg: 157
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-13'

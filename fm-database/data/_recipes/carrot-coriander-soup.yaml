@@ -1,0 +1,116 @@
+slug: carrot-coriander-soup
+name: Carrot-coriander soup
+meal_type:
+- soup
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- carrot
+- coriander
+- ginger
+contains_allergens: []
+ingredients:
+- item: carrots, peeled and chopped
+  qty: '3'
+  unit: piece
+- item: coriander leaves
+  qty: '0.5'
+  unit: cup
+- item: ginger
+  qty: '1'
+  unit: tsp
+- item: garlic
+  qty: '2'
+  unit: piece
+- item: onion
+  qty: '0.5'
+  unit: piece
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: oil
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '3'
+  unit: cup
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Peel and chop the carrots, onion, ginger and garlic.
+- In a pot, heat the oil, add cumin seeds and let them crackle, then saute the onion,
+  ginger and garlic until soft.
+- Add the chopped carrots and salt, toss for 2 minutes, then pour in 3 cups of water.
+- Cover and simmer for 15 minutes until the carrots are completely tender.
+- Add most of the coriander leaves, blend the soup smooth, then return to the pot
+  and season with black pepper.
+- Finish with lemon juice and the remaining fresh coriander, and serve hot.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 18
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A naturally sweet carrot soup brightened with fresh coriander and a hint
+  of ginger.
+headnote: The natural sweetness of carrots is balanced here by coriander and pepper
+  for a soup that feels light yet satisfying. It is rich in beta-carotene and makes
+  an easy starter or a warming light meal.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/carrot-coriander-soup.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Carrot-coriander soup
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 77.2
+  protein_g: 1.5
+  carbs_g: 13.1
+  fat_g: 2.6
+  fibre_g: 3.3
+  iron_mg: 0.9
+  calcium_mg: 50.5
+  magnesium_mg: 18.3
+  zinc_mg: 0.3
+  potassium_mg: 381
+  folate_ug: 25.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 10.4
+  omega3_mg: 22.6
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

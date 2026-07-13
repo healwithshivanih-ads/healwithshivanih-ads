@@ -103,8 +103,7 @@ updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/steamed-sweet-corn-chaat.jpg
-  credit: 'web reference (coach-selected)'
-  source_url: https://www.indianveggiedelight.com/wp-content/uploads/2017/03/sweet-corn-bhel-featured-720x960.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://steamed-sweet-corn-chaat'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark

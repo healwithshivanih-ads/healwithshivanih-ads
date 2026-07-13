@@ -1,0 +1,112 @@
+slug: vegetable-fried-rice
+name: Vegetable fried rice
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- salty
+- sweet
+main_ingredients:
+- rice
+- mixed vegetables
+contains_allergens: []
+ingredients:
+- item: cooked rice (cooled)
+  qty: '3'
+  unit: cup
+- item: carrot (finely diced)
+  qty: '0.5'
+  unit: cup
+- item: french beans (finely chopped)
+  qty: '0.5'
+  unit: cup
+- item: capsicum (diced)
+  qty: '0.5'
+  unit: cup
+- item: spring onion (chopped)
+  qty: '0.25'
+  unit: cup
+- item: garlic (minced)
+  qty: '1'
+  unit: tbsp
+- item: oil
+  qty: '2'
+  unit: tbsp
+- item: black pepper powder
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat oil in a wok on high and add the minced garlic, stirring for a few seconds.
+- Add the carrot, beans and capsicum and stir-fry on high heat so they stay crunchy.
+- Toss in the white part of the spring onion and cook for a minute.
+- Add the cooled cooked rice, black pepper and salt, and toss briskly to combine.
+- Stir-fry on high for 2 to 3 minutes so the rice picks up a light smoky flavour.
+- Finish with the green spring onion tops and serve hot.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 12
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- protein-adequacy-vegetarian
+one_line: Quick high-flame veg fried rice, crunchy vegetables in every forkful.
+headnote: An Indo-Chinese staple that comes together fast on a hot wok. Use cooled,
+  day-old rice so the grains stay separate and never turn mushy.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-fried-rice.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable fried rice
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 1150
+  protein_g: 23.8
+  carbs_g: 226
+  fat_g: 15.4
+  fibre_g: 10.5
+  iron_mg: 2.7
+  calcium_mg: 62.2
+  magnesium_mg: 87.1
+  zinc_mg: 3.6
+  potassium_mg: 574
+  folate_ug: 56.9
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 46.0
+  omega3_mg: 174
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- magnesium
+- zinc
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

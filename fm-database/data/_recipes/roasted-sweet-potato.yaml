@@ -1,0 +1,106 @@
+slug: roasted-sweet-potato
+name: Roasted sweet potato
+meal_type:
+- side
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- sweet potato
+contains_allergens: []
+ingredients:
+- item: sweet potato, cut into cubes
+  qty: '2'
+  unit: piece
+- item: cold-pressed oil
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: roasted cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: chaat masala
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Peel and cube the sweet potatoes into even bite-sized pieces.
+- Toss the cubes with oil, turmeric, chilli powder, cumin powder and salt until evenly
+  coated.
+- Spread them in a single layer on a baking tray or heavy pan.
+- Roast in a hot oven, or cook covered on the stovetop, turning occasionally, until
+  tender inside.
+- Continue until the edges are caramelised and crisp, about 25 minutes.
+- Sprinkle with chaat masala and a squeeze of lemon juice.
+- Toss once and serve warm as a side or snack.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 25
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Caramelised cubes of sweet potato tossed with warm spices, chaat masala
+  and a squeeze of lemon.
+headnote: Roasting brings out the natural sweetness of the tubers and gives them crisp,
+  caramelised edges without much fuss. A dusting of chaat masala and lemon at the
+  end keeps each bite bright and craveable.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/roasted-sweet-potato.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Roasted sweet potato
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 118
+  protein_g: 2.3
+  carbs_g: 27.1
+  fat_g: 0.4
+  fibre_g: 4.2
+  iron_mg: 1.5
+  calcium_mg: 46.6
+  magnesium_mg: 36.7
+  zinc_mg: 0.5
+  potassium_mg: 473
+  folate_ug: 15.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.6
+  omega3_mg: 13.1
+nutrient_coverage_pct: 81.7
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

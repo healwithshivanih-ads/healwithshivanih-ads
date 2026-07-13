@@ -43,8 +43,7 @@ updated_at: '2026-06-09'
 updated_by: Shivani
 image:
   file: images/web/spiced-oat-porridge.jpg
-  credit: web reference (coach-selected)
-  source_url: https://cdn.loveandlemons.com/wp-content/uploads/opengraph/2022/09/overnight-oats-recipe.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://spiced-oat-porridge'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark

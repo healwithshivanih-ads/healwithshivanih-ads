@@ -1,0 +1,128 @@
+slug: fish-stew
+name: Fish stew
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- fish (surmai/rohu/basa/catla)
+- coconut milk
+- curry leaves
+contains_allergens: []
+ingredients:
+- item: firm fish, cut into chunks (surmai, rohu, basa or catla)
+  qty: '400'
+  unit: g
+- item: coconut milk
+  qty: '1'
+  unit: cup
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: tomato, chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: green chilli, slit
+  qty: '1'
+  unit: piece
+- item: curry leaves
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon
+  qty: '0.5'
+  unit: piece
+steps:
+- Rub the fish chunks with a little turmeric and salt and set aside while you build
+  the base.
+- Heat coconut oil in a pot, add curry leaves and sliced onion, and saute until the
+  onion softens.
+- Stir in the ginger-garlic paste and slit green chilli and cook for a minute until
+  fragrant.
+- Add the tomato, remaining turmeric and salt, and cook down to a soft masala.
+- Pour in the coconut milk with half a cup of water, bring to a gentle simmer, then
+  slide in the fish chunks.
+- Simmer uncovered on low for 8-10 minutes until the fish is just cooked; finish with
+  a squeeze of lemon and serve warm.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 20
+protein_g: 36
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: A gentle coconut-milk fish stew with curry leaves and a light onion-tomato
+  masala, simmered till the fish is just flaky.
+headnote: A soothing coastal-style stew that stays light on spice and easy on digestion.
+  The fish poaches gently in coconut milk so it stays soft and never rubbery.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/fish-stew.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Fish stew
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 489
+  protein_g: 39.6
+  carbs_g: 15.5
+  fat_g: 31.6
+  fibre_g: 3.6
+  iron_mg: 5.9
+  calcium_mg: 251
+  magnesium_mg: 113
+  zinc_mg: 2.9
+  potassium_mg: 1095
+  folate_ug: 53.2
+  b12_ug: 4.0
+  vit_d_ug: 16.0
+  vit_c_mg: 25.0
+  omega3_mg: 1212
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- b12
+- vitamin-c
+- vitamin-d
+- omega-3
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

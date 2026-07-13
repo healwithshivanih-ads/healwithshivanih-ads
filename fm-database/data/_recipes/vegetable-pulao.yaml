@@ -1,0 +1,133 @@
+slug: vegetable-pulao
+name: Vegetable rice pulao with vegetables
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- white rice
+- mixed vegetables
+- whole spices
+- cumin seeds
+- onion
+contains_allergens: []
+ingredients:
+- item: white rice, soaked 20 minutes
+  qty: '1'
+  unit: cup
+- item: cold-pressed vegetable oil
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: bay leaf
+  qty: '1'
+  unit: piece
+- item: cinnamon stick
+  qty: '1'
+  unit: piece
+- item: green cardamom
+  qty: '2'
+  unit: piece
+- item: cloves
+  qty: '3'
+  unit: piece
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tsp
+- item: diced mixed vegetables (carrot, beans, peas, cauliflower)
+  qty: '1.5'
+  unit: cup
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '2'
+  unit: cups
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Drain the soaked rice and set aside.
+- Heat the oil in a heavy pot, add the cumin seeds, bay leaf, cinnamon, cardamom and
+  cloves, and let them sizzle for a few seconds.
+- Add the sliced onion and saute until soft and pale gold, then stir in the ginger-garlic
+  paste for half a minute.
+- Add the diced vegetables, turmeric and salt, and saute for 2-3 minutes until they
+  start to soften.
+- Stir in the drained rice and toss gently to coat in the spices for a minute.
+- Pour in the water, bring to a boil, then cover and cook on low for 12-15 minutes
+  until the rice is soft and the water is absorbed.
+- Rest, covered, for 5 minutes, then fluff gently with a fork and garnish with coriander.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 20
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- constipation
+- anti-inflammatory-diet
+one_line: A simple, fragrant one-pot rice pulao loaded with soft-cooked mixed vegetables.
+headnote: An everyday pulao where whole spices bloomed in oil carry the flavour and
+  the vegetables do the rest. Cook the rice soft and let it rest so it stays light
+  and fluffy.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/vegetable-pulao.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Vegetable rice pulao with vegetables
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 408
+  protein_g: 10.7
+  carbs_g: 88.8
+  fat_g: 1.2
+  fibre_g: 7.6
+  iron_mg: 2.8
+  calcium_mg: 77.4
+  magnesium_mg: 55.5
+  zinc_mg: 1.8
+  potassium_mg: 475
+  folate_ug: 59.1
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 28.9
+  omega3_mg: 54.4
+nutrient_coverage_pct: 94.3
+rich_in:
+- fibre
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'

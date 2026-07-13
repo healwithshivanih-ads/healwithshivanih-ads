@@ -1,0 +1,106 @@
+slug: gobi-paratha
+name: Gobi paratha
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa:
+- pungent
+- astringent
+- sweet
+main_ingredients:
+- whole-wheat atta
+- cauliflower
+- ghee
+contains_allergens:
+- gluten
+ingredients:
+- item: whole-wheat atta
+  qty: '1.5'
+  unit: cup
+- item: cauliflower (finely grated)
+  qty: '2'
+  unit: cup
+- item: ginger (grated)
+  qty: '1'
+  unit: tsp
+- item: green chilli (finely chopped)
+  qty: '1'
+  unit: piece
+- item: coriander leaves (chopped)
+  qty: '2'
+  unit: tbsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: ghee (for cooking)
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Knead the atta with a pinch of salt and water into a soft dough, cover and rest
+  15 minutes.
+- Grate the cauliflower, squeeze out any moisture, and mix with ginger, green chilli,
+  coriander, cumin powder and salt.
+- Divide dough into 4 balls, flatten each, place the cauliflower filling in the centre
+  and seal the edges well.
+- Dust with flour and roll gently into a paratha, taking care not to tear the surface.
+- Cook on a hot tawa, flip, and drizzle ghee on both sides until crisp and golden.
+- Serve hot with curd or a dab of butter.
+servings: '2'
+prep_time_min: 25
+cook_time_min: 20
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+one_line: Spiced grated-cauliflower parathas cooked crisp and golden on the tawa.
+headnote: Grated cauliflower seasoned with ginger and green chilli makes a fragrant
+  winter-morning stuffing. Squeeze the cauliflower dry so the parathas roll out neatly.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/gobi-paratha.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: no photo yet — source a licensed/original image before external use
+sources:
+- id: shivani-hari-original
+  location: Gobi paratha
+version: 1
+status: active
+updated_at: '2026-07-12'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 154
+  protein_g: 2.2
+  carbs_g: 6.1
+  fat_g: 14.1
+  fibre_g: 2.3
+  iron_mg: 0.9
+  calcium_mg: 30.6
+  magnesium_mg: 19.7
+  zinc_mg: 0.4
+  potassium_mg: 349
+  folate_ug: 62.4
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 54.5
+  omega3_mg: 151
+nutrient_coverage_pct: 89.3
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-12'
