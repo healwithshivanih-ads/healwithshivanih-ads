@@ -19,22 +19,18 @@
  * suggested.  This panel surfaces every field with FM v2 typography.
  *
  * Design reference: FM Backlog Explorations Group D5 — the locked
- * design called for a 7-day × meal grid with featured-recipe sidecar
- * BUT plans don't carry day-by-day meal data (that lives in the
- * generated client letter, not the plan YAML).  Until plans carry
- * per-day meals, this primitive renders the structured nutrition
- * data that DOES exist + a link out to the generated letter where
- * the actual 7-day table lives.
+ * design called for a 7-day × meal grid with featured-recipe sidecar.
+ * That grid now lives on the plan as `plan.app_menu` (authored + approved
+ * in the Menu studio / AppPreviewPanel and delivered by the client app —
+ * letters are retired).  This primitive renders the structured nutrition
+ * fields (pattern / add / reduce / timing / cooking / remedies) with FM v2
+ * typography, plus a pointer to the Menu studio where the 7-day menu lives.
  */
-import Link from "next/link";
 import { useState } from "react";
 
 export interface FmNutritionPanelProps {
   /** Raw plan.nutrition object — any shape from the plan YAML. */
   nutrition: Record<string, unknown> | null | undefined;
-  /** Plan slug — used to deep-link to the meal-plan letter on the
-   *  classic editor (where Generate / Preview / Save live today). */
-  planSlug: string;
 }
 
 function asList(v: unknown): string[] {
@@ -52,7 +48,7 @@ function prettySlug(slug: string): string {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-export function FmNutritionPanel({ nutrition, planSlug }: FmNutritionPanelProps) {
+export function FmNutritionPanel({ nutrition }: FmNutritionPanelProps) {
   const [showFullPattern, setShowFullPattern] = useState(false);
 
   const pattern = asString(nutrition?.pattern);
@@ -237,7 +233,7 @@ export function FmNutritionPanel({ nutrition, planSlug }: FmNutritionPanelProps)
         </div>
       )}
 
-      {/* CTA — generated meal-plan letter */}
+      {/* Info — the full 7-day menu lives on the plan, delivered in-app */}
       <div
         style={{
           display: "flex",
@@ -252,26 +248,11 @@ export function FmNutritionPanel({ nutrition, planSlug }: FmNutritionPanelProps)
       >
         <span style={{ fontSize: 18 }}>🍽</span>
         <div style={{ flex: 1, lineHeight: 1.5 }}>
-          The 7-day × meal grid + Indian recipe collection is generated as
-          part of the client meal-plan letter. Open it on the classic Plan
-          editor → Lifecycle tab.
+          The full 7-day menu grid + Indian recipe collection lives on the
+          plan — generate and approve it in the Menu studio (the app preview
+          further down this tab). The client&apos;s app delivers it from the
+          published plan; there&apos;s no separate letter to send.
         </div>
-        <Link
-          href={`/plans/${planSlug}?tab=lifecycle`}
-          style={{
-            padding: "6px 12px",
-            background: "var(--fm-surface)",
-            border: "1px solid var(--fm-border)",
-            borderRadius: "var(--fm-radius-sm)",
-            color: "var(--fm-text-primary)",
-            textDecoration: "none",
-            fontWeight: 700,
-            fontSize: 11,
-            whiteSpace: "nowrap",
-          }}
-        >
-          🍽 Meal plan letter →
-        </Link>
       </div>
     </div>
   );

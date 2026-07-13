@@ -148,7 +148,7 @@ drug_depletions.protocol_cautions[].kind:
   prefer_food | prefer_supplement | timing | refer | monitor
 
 drug_depletions.protocol_cautions[].severity:
-  critical = HARD BLOCK. Letter generator drops the offending item.
+  critical = HARD BLOCK. The plan/menu generator drops the offending item.
              Use sparingly (St John's wort + TKI; betaine HCl + active PPI).
   warning  = surfaces in plan-check, doesn't block.
   info     = best-practice tip / informs AI tone.

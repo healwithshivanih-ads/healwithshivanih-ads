@@ -55,7 +55,7 @@ interface Props {
 const SOURCE_LABEL: Record<NonNullable<Props["planStartSource"]>, string> = {
   confirmed: "client-confirmed",
   supplements: "supplements-confirmed",
-  "letter+3d": "letter emailed + 3 days (typical adoption lag — confirm with client to lock)",
+  "letter+3d": "plan shared + 3 days (typical adoption lag — confirm with client to lock)",
   plan_period: "derived from plan period",
   none: "—",
 };
@@ -247,7 +247,7 @@ export function LabsViewPanel({
         >
           ℹ️ Retest dates are estimated from{" "}
           {planStartSource === "letter+3d"
-            ? "when the letter was emailed + 3 days adoption lag"
+            ? "when the plan was shared + 3 days adoption lag"
             : planStartSource === "supplements"
               ? "the supplements start date"
               : "the plan period"}
@@ -267,9 +267,9 @@ export function LabsViewPanel({
             color: "var(--fm-text-secondary)",
           }}
         >
-          ℹ️ Retest due dates can&apos;t be computed yet — no letter on file
+          ℹ️ Retest due dates can&apos;t be computed yet — no start date on file
           and no <strong>meal plan started on</strong> set. Generate &amp;
-          send a letter, or set the start date manually below.
+          publish the plan, or set the start date manually below.
         </div>
       )}
 

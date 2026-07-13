@@ -242,7 +242,7 @@ export function LifecyclePanel({
             Chat tab removed — the floating 💬 bubble is the same component
             and is reachable from any tab, so the duplicate was just noise.
             Export renamed → "Plan brief" so it isn't confused with the
-            client-facing letter under the Communicate tab (different
+            client app / welcome email under the Communicate tab (different
             audience, different output). */}
         <div className="flex gap-1 border-b">
           {([

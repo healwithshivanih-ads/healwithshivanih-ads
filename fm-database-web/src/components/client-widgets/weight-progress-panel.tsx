@@ -105,7 +105,7 @@ export function WeightProgressPanel({
       toast.success(
         value == null
           ? "Reverted to predicted TDEE"
-          : `Calorie targets now use the observed ${value} kcal — applies to the next letter`,
+          : `Calorie targets now use the observed ${value} kcal — applies to the next menu`,
       );
       router.refresh();
     });
@@ -231,7 +231,7 @@ function TdeeRealityCheck({
       <div style={{ marginTop: 6, display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
         {tdee.alreadyApplied ? (
           <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
-            ✓ Letters use the observed {tdee.currentOverride} kcal
+            ✓ The menu uses the observed {tdee.currentOverride} kcal
           </span>
         ) : (
           <button

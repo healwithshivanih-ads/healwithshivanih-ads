@@ -97,7 +97,7 @@ export default async function BacklogPage({
         <h1 className="text-3xl font-bold">Catalogue queue</h1>
         <p className="text-muted-foreground mt-1">
           Items waiting to be authored into the catalogue, plus product
-          links (supplements, foods, devices) used in client letters.
+          links (supplements, foods, devices) used in client plans.
         </p>
       </div>
 

@@ -1176,7 +1176,7 @@ export function IntakeForm({
       {/* 3 · Food + lifestyle */}
       <FmFormSection
         title="3 · Food & lifestyle preferences"
-        description="Drives every meal plan, supplement contraindication check, and client letter. Sets once at intake; coach edits over time."
+        description="Drives every meal plan, supplement contraindication check, and the client app. Sets once at intake; coach edits over time."
       >
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           <FmField label="Dietary preference" hint="e.g. Lacto-vegetarian · Eggetarian · Jain · Vegan · Pescatarian · Omnivore">

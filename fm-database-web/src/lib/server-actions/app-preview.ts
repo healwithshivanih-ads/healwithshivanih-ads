@@ -125,7 +125,7 @@ async function appTokenFor(clientId: string): Promise<string | null> {
 
 export async function loadAppPreviewAction(clientId: string): Promise<AppPreviewResult> {
   const token = await appTokenFor(clientId);
-  if (!token) return { ok: false, error: "No app/letter token yet — share the app first." };
+  if (!token) return { ok: false, error: "No app token yet — share the app first." };
   const data = await loadClientAppData(token);
   if (!data) return { ok: false, error: "Could not load the client app data." };
   const ov = await readOverrides(clientId);

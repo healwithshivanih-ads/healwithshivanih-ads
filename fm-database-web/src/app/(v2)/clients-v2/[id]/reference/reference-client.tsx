@@ -222,8 +222,8 @@ function FallbackSchedule({
   return (
     <div style={{ padding: 24, display: "grid", gap: 18 }}>
       <p style={{ fontSize: 12, color: "#92400e", background: "#fef3c7", padding: "8px 12px", borderRadius: 6, margin: 0 }}>
-        💡 The client letter for this plan hasn&apos;t been generated yet, so
-        showing the raw protocol. Generate the letter from <strong>Communicate</strong>
+        💡 This plan isn&apos;t published yet, so showing the raw protocol.
+        Publish it from <strong>Communicate</strong>
         for the brand-styled timeline + buy links.
       </p>
       {grouped.map(({ slot, items }) => (
@@ -508,8 +508,8 @@ export function ReferenceClient({
                 {availableWeekNums.length > 0
                   ? `Tap a week below to see ${firstName}'s plan for those 7 days.`
                   : hasLetter
-                    ? "The saved letter doesn't have per-week sections."
-                    : "Generate the meal-plan letter from Communicate to enable weekly tables."}
+                    ? "This plan doesn't have per-week menu sections yet."
+                    : "Approve the menu in the Plan tab's Menu studio to enable weekly tables."}
               </div>
             </button>
           </div>
@@ -788,7 +788,7 @@ export function ReferenceClient({
                   textDecoration: "underline",
                 }}
               >
-                Open full letter ↗
+                Open full plan ↗
               </a>
             )}
             <Link

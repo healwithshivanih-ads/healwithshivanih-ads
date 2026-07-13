@@ -7,7 +7,7 @@
  * PlanConflictPanel and FmRecheckPanel. One scannable row:
  *
  *   ● Plan active · {slug} | Week 5 of 12 · N days in | ↻ next follow-up
- *     …………………………………………………………… [⚠ N to review ▾]  [Welcome letter →]
+ *     …………………………………………………………… [⚠ N to review ▾]  [Welcome email →]
  *
  * Conflicts + recheck don't disappear — they fold into the expandable
  * "N to review" pill, rendered as `children` so the real interactive
@@ -41,7 +41,7 @@ export interface StatusStripProps {
   followDate?: string;
   /** Count shown on the amber pill; pill hidden when 0 and no children. */
   alertCount?: number;
-  /** Trailing right-side action (e.g. "Welcome letter →" or activate). */
+  /** Trailing right-side action (e.g. "Welcome email →" or activate). */
   trailing?: React.ReactNode;
   /**
    * Folded behind the "N to review" pill — the real PlanConflictPanel +

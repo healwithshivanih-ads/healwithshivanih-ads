@@ -303,7 +303,7 @@ export function detectPlanConflicts(
         details:
           `The client has listed ${overlapping.join(", ")} as both a food to avoid ` +
           `AND as a non-negotiable. Decide which list is authoritative and remove ` +
-          `from the other before generating the plan letter.`,
+          `from the other before publishing the plan.`,
       });
     }
   }

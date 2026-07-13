@@ -1410,7 +1410,7 @@ export function SuggestionsView({
 
       {protocols.length > 0 && (
         <CollapsibleCard
-          title={<span>🧭 Recommended protocols (top 2) <span className="text-[11px] font-normal text-muted-foreground">— pick ONE; it shapes all letters</span></span>}
+          title={<span>🧭 Recommended protocols (top 2) <span className="text-[11px] font-normal text-muted-foreground">— pick ONE; it shapes the whole plan</span></span>}
           storageKey="protocols"
         >
           <CardContent className="space-y-3 text-sm">

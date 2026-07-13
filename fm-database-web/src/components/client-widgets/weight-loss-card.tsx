@@ -494,8 +494,8 @@ function WeightLossCardInner({
               }}
             >
               Maintenance ≈ {caloriePhases.tdee.toLocaleString()} kcal · deficit
-              ramps 40 → 70 → 100 → 80 → 60% · flows straight into the client
-              letter.
+              ramps 40 → 70 → 100 → 80 → 60% · flows straight into the app
+              menu.
             </div>
           </div>
         )}
@@ -562,7 +562,7 @@ function WeightLossCardInner({
               fontFamily: "var(--fm-font-mono)",
             }}
           >
-            Applies automatically to every meal-plan letter
+            Applies automatically to every app menu
           </span>
         </div>
       </div>
@@ -583,7 +583,7 @@ function WeightLossEmpty({ onSet }: { onSet: () => void }) {
       <h3>No weight-loss goal active</h3>
       <p>
         Add a goal if this client is working toward a target weight. The
-        system uses it on every meal-plan letter automatically — set
+        system uses it on every app menu automatically — set
         once, never re-asked.
       </p>
       <div style={{ display: "flex", gap: 8 }}>
@@ -733,7 +733,7 @@ function EditGoalModal({
       <header>
         <h3>{isNew ? "Set weight-loss goal" : "Edit weight-loss goal"}</h3>
         <p>
-          Applies automatically to every letter from the next send onward.
+          Applies automatically to every menu from the next publish onward.
         </p>
       </header>
       <div className="body">
@@ -893,7 +893,7 @@ function EditGoalModal({
 
         <FmFieldShell
           label="Notes for coach"
-          help="Won't be sent to client — only used internally and by the letter generator."
+          help="Won't be sent to client — only used internally and by the menu generator."
         >
           <textarea
             className="FmTextarea"
@@ -963,7 +963,7 @@ function AddOverrideModal({
       return;
     }
     if (context === "travel" && !location.trim()) {
-      toast.error("Add a destination — letter uses it for local meal swaps");
+      toast.error("Add a destination — the menu uses it for local meal swaps");
       return;
     }
     const payload: WeightLossWeekOverridePayload = {
@@ -996,14 +996,14 @@ function AddOverrideModal({
         <h3>Add override</h3>
         <p>
           Coach adds this whenever a client tells you about travel, a
-          festival, illness, or you want a plateau break. The meal-plan
-          letter auto-applies it forever — you never re-enter.
+          festival, illness, or you want a plateau break. The menu
+          auto-applies it forever — you never re-enter.
         </p>
       </header>
       <div className="body">
         <FmFieldShell
           label="Dates"
-          help="Inclusive. Letter generator maps to protocol weeks automatically."
+          help="Inclusive. The menu generator maps to protocol weeks automatically."
         >
           <div className="range-pick">
             <input
@@ -1052,7 +1052,7 @@ function AddOverrideModal({
         {context === "travel" && (
           <FmFieldShell
             label="Destination"
-            help="City + country. The letter swaps to local cuisine + restaurant guidance for these dates."
+            help="City + country. The app menu swaps to local cuisine + restaurant guidance for these dates."
           >
             <input
               className="FmInput"
@@ -1118,7 +1118,7 @@ function AddOverrideModal({
 
         <FmFieldShell
           label="Coach note"
-          help="Free-text sticky note — surfaces in the letter only when context is set."
+          help="Free-text sticky note — surfaces in the menu only when context is set."
         >
           <input
             className="FmInput"
@@ -1136,9 +1136,9 @@ function AddOverrideModal({
       </div>
       <div className="footer">
         <span className="note">
-          {mode === "maintenance" && "Letters in these weeks will use maintenance tables."}
+          {mode === "maintenance" && "The menu in these weeks will use maintenance tables."}
           {mode === "deeper_deficit" && "Adds the kcal offset on top of base."}
-          {mode === "skip" && "Weight-loss content removed from those letters."}
+          {mode === "skip" && "Weight-loss content removed from those menus."}
         </span>
         <button
           type="button"

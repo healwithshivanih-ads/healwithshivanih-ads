@@ -439,15 +439,15 @@ export async function loadClientJourney(
     steps.push({
       id: "next_phase",
       label: overdue
-        ? `Phase letter overdue (wk ${nextPhaseRange.start}–${nextPhaseRange.end})`
-        : `Next phase letter (wk ${nextPhaseRange.start}–${nextPhaseRange.end})`,
+        ? `Next batch overdue (wk ${nextPhaseRange.start}–${nextPhaseRange.end})`
+        : `Next menu batch (wk ${nextPhaseRange.start}–${nextPhaseRange.end})`,
       status: overdue ? "active" : "pending",
       caption: nextPhaseStartIso,
     });
   } else {
     steps.push({
       id: "next_phase",
-      label: "Next phase letter",
+      label: "Next menu batch",
       status: "na",
       caption: publishedPlan ? "final phase" : "—",
     });
@@ -520,7 +520,7 @@ export async function loadClientJourney(
         ? "Draft plan ready — activate it to make it live for the client."
         : "Build the protocol from the AI synthesis.",
       week: "Plan is live — log this week's check-in.",
-      next_phase: "Phase letter due — generate and send.",
+      next_phase: "Next menu batch due.",
       plan_end: "Plan period complete — reassess and supersede.",
     };
     nextStep = {

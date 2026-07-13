@@ -1206,7 +1206,7 @@ export function PlanEditor(props: PlanEditorProps) {
               href={`/clients-v2/${clientId}/communicate`}
               className="text-xs text-violet-900 bg-violet-50/60 border border-violet-200 rounded-md px-3 py-1.5 flex items-center justify-between gap-3 hover:bg-violet-100/60 transition-colors no-underline"
             >
-              <span>📤 Plan is live — generate the client letter from the <strong>Communicate</strong> tab.</span>
+              <span>📤 Plan is live — the client app now shows it. Send the welcome email from the <strong>Communicate</strong> tab.</span>
               <span className="font-semibold whitespace-nowrap">Open →</span>
             </a>
           );
@@ -1432,7 +1432,7 @@ export function PlanEditor(props: PlanEditorProps) {
                       </summary>
                       <div className="mt-2 space-y-2 rounded-md border border-amber-200 bg-white px-3 py-2">
                         <p className="text-[11px] text-muted-foreground">
-                          The client&apos;s medications imply these protocol constraints. Reflect them in the plan, meal letter, and supplement choices.
+                          The client&apos;s medications imply these protocol constraints. Reflect them in the plan, menu, and supplement choices.
                         </p>
                         {[...critical, ...warning, ...info].map((c, i) => {
                           const sevColor = c.severity === "critical" ? "rose" : c.severity === "warning" ? "amber" : "slate";
@@ -1755,7 +1755,7 @@ export function PlanEditor(props: PlanEditorProps) {
                   </label>
                   <p className="text-xs text-muted-foreground mb-2">
                     A kitchen-spice churan, tea, or juice authored just for this client (e.g. a jeera-saunf-ajwain
-                    digestive). Shows in the letter&apos;s &ldquo;🍵 Drinks &amp; digestives&rdquo; section.
+                    digestive). Shows in the app&apos;s &ldquo;🍵 Drinks &amp; digestives&rdquo; section.
                   </p>
                   {customRemedies.map((r, i) => (
                     <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20 mb-2">
@@ -1919,7 +1919,7 @@ export function PlanEditor(props: PlanEditorProps) {
                   </label>
                   <p className="text-xs text-muted-foreground mb-2">
                     A churan, tea, oil, or decoction authored just for this client — full ingredients
-                    + preparation + timing. Shows in the letter&apos;s Ayurvedic guidance section.
+                    + preparation + timing. Shows in the app&apos;s Ayurvedic guidance section.
                   </p>
                   {ayurCustomRemedies.map((r, i) => (
                     <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20 mb-2">
@@ -2072,7 +2072,7 @@ export function PlanEditor(props: PlanEditorProps) {
               <div className="pt-3 space-y-4 px-1">
                 <p className="text-xs text-muted-foreground">
                   Gentle biochemic adjuncts (cell salts + Bio-Combinations). Optional support — renders in the
-                  letter + app when set. Pick from the catalogue; the AI also suggests relevant salts during
+                  app when set. Pick from the catalogue; the AI also suggests relevant salts during
                   assessment.
                 </p>
                 <div>

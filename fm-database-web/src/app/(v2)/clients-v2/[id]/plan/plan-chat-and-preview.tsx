@@ -112,7 +112,7 @@ export function PlanChatAndPreview({
             color: "var(--fm-text-primary)",
           }}
         >
-          Preview as client letter
+          Preview plan
         </span>
         <span
           style={{
@@ -144,7 +144,7 @@ export function PlanChatAndPreview({
                 padding: "8px 0",
               }}
             >
-              Rendering plan as client letter…
+              Rendering plan preview…
             </div>
           )}
           {previewError && (

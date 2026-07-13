@@ -260,7 +260,7 @@ export function ClientAppLinksPanel({
         ))}
       </div>
       <div style={{ fontSize: 12, color: "var(--fm-muted, #6f6a5d)", marginTop: 10 }}>
-        Same token as the plan letter — revoking a plan disables its link. 📨 Send invite uses the
+        Same token as the published plan — revoking a plan disables its link. 📨 Send invite uses the
         approved template + logs to the chat thread; “Opened” comes from real app loads on the
         client&apos;s phone (your own previews don&apos;t count). “Installed” = the app is on the home
         screen (standalone) — counted from today on, so it can&apos;t backfill anyone who installed

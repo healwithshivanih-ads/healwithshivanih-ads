@@ -73,7 +73,6 @@ const ACTIVE_BUCKETS = new Set([
   "active",
   "awaiting_start", // published, not begun yet — still an active-funnel client
   "protocol_complete",
-  "phase_letter_due",
   "plan_review_due",
   "follow_up_due",
   "labs_pending",

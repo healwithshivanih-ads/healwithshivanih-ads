@@ -664,7 +664,6 @@ export default async function DashboardV2() {
     labs_pending: [],
     booking_link_pending: [],
     awaiting_signup: [],
-    phase_letter_due: [],
     plan_review_due: [],
     active: [],
     awaiting_start: [],

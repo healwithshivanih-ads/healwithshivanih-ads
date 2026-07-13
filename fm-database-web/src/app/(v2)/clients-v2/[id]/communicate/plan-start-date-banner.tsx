@@ -136,9 +136,9 @@ export function PlanStartDateBanner({
             lineHeight: 1.5,
           }}
         >
-          This is Day 1. Every letter numbers its weeks from here — Week 1
+          This is Day 1. The plan numbers its weeks from here — Week 1
           is this date, Week 2 is a week later, and so on. Ask the client
-          on the call and set it before you generate letters.
+          on the call and set it before you publish the plan.
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
           <input
@@ -220,7 +220,7 @@ export function PlanStartDateBanner({
         }}
       >
         <div style={{ fontSize: 12.5, color: "#92400e", lineHeight: 1.5 }}>
-          <strong>⚠ Plan start date not set.</strong> Letters will assume the
+          <strong>⚠ Plan start date not set.</strong> The plan will assume the
           client starts{" "}
           <strong>
             {planPeriodStart ? fmtHuman(planPeriodStart) : "the day the plan was generated"}
@@ -269,7 +269,7 @@ export function PlanStartDateBanner({
         📅 <strong>Plan starts {fmtHuman(mealPlanStartedOn!)}</strong> — Week 1
         begins here.{" "}
         <span style={{ color: "var(--fm-text-tertiary)" }}>
-          All letter weeks + recheck (~{recheck}) count from this date.
+          All plan weeks + recheck (~{recheck}) count from this date.
         </span>
       </div>
       <button

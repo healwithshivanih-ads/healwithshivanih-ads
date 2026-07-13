@@ -512,7 +512,7 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
               <Field label={<>Mobile number *{isAuto("mobileNumber") && <AutoBadge />}</>} hint="required — duplicate check">
                 <Input type="tel" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} placeholder="+91 98765 43210" required />
               </Field>
-              <Field label={<>Email{isAuto("email") && <AutoBadge />}</>} hint="for sending client letters">
+              <Field label={<>Email{isAuto("email") && <AutoBadge />}</>} hint="for the welcome email">
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="anjali@example.com" />
               </Field>
             </div>
@@ -768,7 +768,7 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
 
           {/* ── Section 7: Food & lifestyle preferences ── */}
           <Section title="Food & lifestyle preferences" emoji="🥗" defaultOpen>
-            <p className="text-xs text-muted-foreground -mt-2">Used when generating the personalised meal plan and supplement letter.</p>
+            <p className="text-xs text-muted-foreground -mt-2">Used when generating the personalised meal plan and supplements.</p>
             <div className="grid gap-4 md:grid-cols-2">
               <Field label="Dietary preference">
                 <select value={dietaryPreference} onChange={(e) => setDietaryPreference(e.target.value)}

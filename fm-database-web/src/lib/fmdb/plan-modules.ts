@@ -51,7 +51,7 @@ export const PLAN_MODULES: PlanModuleDef[] = [
     label: "Ayurveda layer",
     icon: "🪔",
     blurb:
-      "Constitution scoring in assessments + an Ayurvedic section in the plan & letters.",
+      "Constitution scoring in assessments + an Ayurvedic section in the plan & app.",
     status: "wired",
     storage: "ayurveda_enabled",
   },
@@ -60,7 +60,7 @@ export const PLAN_MODULES: PlanModuleDef[] = [
     label: "Meal plan type",
     icon: "🍽",
     blurb:
-      "How the meal plan is shaped in letters and the app menu — full tables, principles only, or a hybrid.",
+      "How the meal plan is shaped in the app menu — full tables, principles only, or a hybrid.",
     status: "wired",
     storage: "meal_plan_style",
   },
@@ -69,7 +69,7 @@ export const PLAN_MODULES: PlanModuleDef[] = [
     label: "Schüssler's salts (cell salts)",
     icon: "🧂",
     blurb:
-      "Schüssler tissue salts woven through assessment → plan → letter → app. The AI suggests catalogue cell salts for the client's issues; coach edits on the plan's 🧂 section.",
+      "Schüssler tissue salts woven through assessment → plan → app. The AI suggests catalogue cell salts for the client's issues; coach edits on the plan's 🧂 section.",
     status: "wired",
     storage: "plan_modules",
   },

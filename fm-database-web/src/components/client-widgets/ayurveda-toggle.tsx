@@ -158,7 +158,7 @@ export function AyurvedaToggle({
         🪔 Ayurveda layer for this client
       </label>
       <p style={{ fontSize: 11, color: "var(--fm-text-tertiary)", margin: "4px 0 0 24px" }}>
-        Constitution scoring in assessments + an Ayurvedic section in the plan &amp; letters.
+        Constitution scoring in assessments + an Ayurvedic section in the plan &amp; app.
       </p>
 
       {/* Decoupled, default-on dosha-questions-in-intake switch. Independent

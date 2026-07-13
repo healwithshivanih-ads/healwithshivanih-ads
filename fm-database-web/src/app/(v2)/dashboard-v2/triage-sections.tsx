@@ -37,7 +37,6 @@ export type SignalKind =
   | "labs_pending"
   | "booking_link_pending"
   | "awaiting_signup"
-  | "phase_letter_due"
   | "plan_review_due"
   | "active"
   | "awaiting_start"
@@ -76,11 +75,6 @@ export interface TriageRow {
      *  and confirms before re-firing. Durable rule
      *  feedback-send-buttons-persist-state. */
     lastCheckinNudgeAt?: string | null;
-    /** For phase_letter_due — the week range that letter covers
-     *  (e.g. {start: 3, end: 4}) + the due date that's now in the past.
-     *  Surfaced in the card so coach knows which fortnight she owes. */
-    phaseLetterRange?: { start: number; end: number };
-    phaseLetterDueDate?: string;
     /** For awaiting_start — the effective meal-plan start date (future). */
     startDate?: string;
   };
@@ -169,15 +163,6 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   // ── 🔵 In progress ───────────────────────────────────────────────
-  phase_letter_due: {
-    title: "Phase letter overdue",
-    icon: "✉️",
-    accent: "rgba(26, 127, 187, 0.10)",
-    border: "rgba(26, 127, 187, 0.38)",
-    badgeColor: "#1a7fbb",
-    cta: "✉️ Send welcome letter",
-    ctaHref: (r) => `/clients-v2/${r.client_id}/communicate`,
-  },
   plan_review_due: {
     title: "Check-in needed (3+ weeks quiet)",
     icon: "💬",
@@ -1064,35 +1049,6 @@ function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
         <span style={labelStyle}>Status:</span>
         <span style={valueStyle}>
           Declined after discovery{signal.discoveryDate ? ` · ${signal.discoveryDate}` : ""}
-        </span>
-      </div>
-    );
-  }
-
-  if (signal.kind === "phase_letter_due") {
-    const r = signal.phaseLetterRange;
-    return (
-      <div style={wrap}>
-        <span style={labelStyle}>Phase letter:</span>
-        <span style={valueStyle}>
-          {r ? `Week ${r.start}–${r.end}` : "next phase"}
-          {signal.phaseLetterDueDate && (
-            <span style={{ marginLeft: 6, color: "var(--fm-text-tertiary)" }}>
-              · due {signal.phaseLetterDueDate}
-            </span>
-          )}
-          {signal.planSlug && (
-            <span
-              style={{
-                fontFamily: "var(--fm-font-mono)",
-                fontSize: 11,
-                marginLeft: 6,
-                color: "var(--fm-text-tertiary)",
-              }}
-            >
-              · {signal.planSlug}
-            </span>
-          )}
         </span>
       </div>
     );

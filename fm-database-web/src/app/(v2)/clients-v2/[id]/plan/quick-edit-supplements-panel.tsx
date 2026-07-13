@@ -65,7 +65,7 @@ export function QuickEditSupplementsPanel({ planSlug, supplements, catalogueOpti
   return (
     <FmPanel
       title="✏️ Quick edit supplements"
-      subtitle="Add a supplement, adjust a dose or timing, or remove one — without rebuilding the plan. Changes flow into all future letters; already-sent letters get a regenerate prompt."
+      subtitle="Add a supplement, adjust a dose or timing, or remove one — without rebuilding the plan. Changes flow into the client app immediately once the plan is published."
       rightSlot={
         <button
           onClick={() => setOpen((v) => !v)}

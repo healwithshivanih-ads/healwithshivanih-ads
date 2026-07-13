@@ -49,14 +49,14 @@ export interface IssuedToken {
 
 const KIND_LABEL: Record<TokenKind, string> = {
   app: "App link",
-  letter: "Plan letter",
+  letter: "Plan link",
   intake: "Intake form",
   start_confirmation: "Start date",
 };
 
 const KIND_UNLOCKS: Record<TokenKind, string> = {
   app: "Companion app — full plan, meals, supplements, check-ins (PHI)",
-  letter: "Published plan letter (PHI)",
+  letter: "Published plan (PHI)",
   intake: "Intake form — prefill, draft + submit",
   start_confirmation: "Confirm meal-plan start date",
 };
