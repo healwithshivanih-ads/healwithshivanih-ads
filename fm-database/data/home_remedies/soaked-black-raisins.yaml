@@ -1,0 +1,56 @@
+slug: soaked-black-raisins
+display_name: Soaked black raisins on waking
+aliases:
+- soaked-black-raisins-on-waking
+- soaked-raisins
+- kishmish-soaked
+- black-raisins-water
+category: other
+route: internal
+summary: 'Cooling and gentle — it supports easy digestion and regularity, is soothing
+  for the bladder, and adds a little natural iron.'
+indications:
+- constipation
+- acidity
+- acid-reflux
+- anxiety
+- chronic-stress
+- iron-deficiency-anaemia
+- cystitis
+- interstitial-cystitis
+- urinary-tract-infection
+- vulvodynia
+contraindications:
+- diabetes or metabolic syndrome (natural sugars — prefer a fibre-first start)
+- active weight-loss goal
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+- laxative
+- cooling
+- hematinic
+preparation: Soak 8–10 black raisins in water overnight. In the morning, eat the raisins
+  and drink the soaking water.
+typical_dose: 8–10 black raisins (kishmish) + ½ cup water
+duration: Daily; ongoing.
+timing_notes: In the morning on an empty stomach, before breakfast.
+daily_ritual: true
+ritual_priority: 2
+ritual_avoid:
+- metabolic
+- weight_loss
+sources:
+- id: coach-shivani
+  location: Standing morning ritual — cooling, bladder-soothing, gentle iron
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani

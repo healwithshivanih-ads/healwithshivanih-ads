@@ -1,0 +1,51 @@
+slug: soaked-figs
+display_name: Soaked figs on waking
+aliases:
+- soaked-figs-on-waking
+- soaked-anjeer
+- anjeer-water
+category: other
+route: internal
+summary: 'Soft, mineral-rich and full of fibre — a gentle way to support strong bones
+  and muscles and easy digestion as we age.'
+indications:
+- sarcopenia
+- muscle-loss
+- osteoporosis
+- osteopenia
+- bone-health
+- constipation
+- tendinopathy
+- frailty
+contraindications:
+- diabetes or metabolic syndrome (natural sugars)
+- active weight-loss goal
+balances_dosha:
+- vata
+- pitta
+rasa:
+- sweet
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+- laxative
+- nourishing
+- mineral-rich
+preparation: Soak 2 dried figs in water overnight. In the morning, eat the figs and
+  drink the soaking water.
+typical_dose: 2 dried figs (anjeer) + ½ cup water
+duration: Daily; ongoing.
+timing_notes: In the morning on an empty stomach, before breakfast.
+daily_ritual: true
+ritual_priority: 5
+ritual_avoid:
+- metabolic
+- weight_loss
+sources:
+- id: coach-shivani
+  location: Standing morning ritual — bone / muscle nourishment, gentle fibre
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani

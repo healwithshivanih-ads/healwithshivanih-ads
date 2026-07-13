@@ -1,0 +1,52 @@
+slug: soaked-chia-water
+display_name: Soaked chia water on waking
+aliases:
+- soaked-chia-water-on-waking
+- chia-water
+- chia-seed-water
+category: infused_water
+route: internal
+summary: 'A cooling, high-fibre start that steadies digestion and blood sugar and keeps
+  things regular. Drink it soon after mixing, before it thickens too much.'
+indications:
+- constipation
+- insulin-resistance
+- prediabetes
+- type-2-diabetes
+- blood-sugar-dysregulation
+- dyslipidemia
+- hypertriglyceridemia
+- high-cholesterol
+- metabolic-syndrome
+- pcos
+- fatty-liver
+- nafld
+contraindications:
+- difficulty swallowing / stricture (gel-forming — take with enough water)
+balances_dosha:
+- pitta
+- kapha
+rasa:
+- sweet
+- astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+- bulk-laxative
+- cooling
+preparation: Stir 1 tsp chia seeds into a cup of water and let it sit 10–15 minutes
+  until gel-like (or soak overnight).
+typical_dose: 1 tsp chia seeds + 1 cup water
+duration: Daily; ongoing.
+timing_notes: In the morning on an empty stomach, soon after mixing.
+daily_ritual: true
+ritual_priority: 3
+ritual_avoid: []
+sources:
+- id: coach-shivani
+  location: Standing morning ritual — fibre-first metabolic start
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani

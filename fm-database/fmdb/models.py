@@ -239,6 +239,27 @@ class HomeRemedy(BaseModel):
     # remedies are never injected, so this can't put a sleep tea in a diabetes
     # plan. Keep the pinned set small; every pinned in-scope remedy adds tokens.
     featured: bool = False
+    # ── Standing daily ritual (catalogue-driven morning-ritual engine) ─────────
+    # daily_ritual=True marks this remedy as an opt-in STANDING daily ritual the
+    # app-menu generator (scripts/morning_rituals.py) may append to a client's
+    # plan.nutrition.custom_remedies when it is in scope AND passes every gate
+    # (>=1 indication match, contraindications / avoid_in / suitable_sex clear,
+    # diet flags clear). This REPLACES the old hardcoded 5-ritual list — adding a
+    # new tea/drink ritual is now a pure data operation. Default False so the
+    # ~230 existing remedies are never auto-surfaced. ritual_priority breaks ties
+    # when more rituals match than the per-client cap allows (lower = preferred;
+    # e.g. warm ghee water = 1, figs = 5).
+    daily_ritual: bool = False
+    ritual_priority: int = 100
+    # Ritual-only exclusion tokens for the morning-ritual engine. Each token is
+    # EITHER a computed client diet/metabolic flag (vegan, dairy_free, metabolic,
+    # fatty_liver, dyslipidemia, weight_loss) — checked against the client's
+    # computed flags — OR a condition keyword (e.g. reflux, acidity, cystitis),
+    # substring-matched against the client's topics/conditions. If any fires the
+    # ritual is withheld. (Life-stage exclusions use the structured avoid_in
+    # field; suitable_sex handles sex. This covers the diet + condition gates the
+    # model has no other structured home for.)
+    ritual_avoid: list[str] = Field(default_factory=list)
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     version: int = 1

@@ -1,5 +1,5 @@
 slug: soaked-methi-water
-display_name: Soaked Methi (Fenugreek) Water
+display_name: Methi (fenugreek) water on waking
 aliases:
 - methi-water
 - fenugreek-water
@@ -7,21 +7,8 @@ aliases:
 - soaked-fenugreek-water
 - methi-dana-water
 category: infused_water
-summary: 'Whole fenugreek (methi) seeds soaked overnight in water and the water
-
-  drunk first thing in the morning (the softened seeds can be chewed or
-
-  eaten). A traditional Indian morning ritual used to support blood-sugar
-
-  control, insulin sensitivity, and digestion. The soluble fibre
-
-  (galactomannan) slows glucose absorption and adds a gentle prebiotic
-
-  effect; well-suited to insulin-resistance, PCOS, and perimenopausal
-
-  metabolic patterns.
-
-  '
+summary: 'A traditional support for steady blood sugar and easy digestion. It''s slightly
+  bitter, which is normal — start with a small amount and see how you feel.'
 indications:
 - blood-sugar-dysregulation
 - insulin-resistance
@@ -76,11 +63,23 @@ linked_to_topics:
 - perimenopause
 linked_to_mechanisms:
 - insulin-resistance
+daily_ritual: true
+ritual_priority: 4
+ritual_avoid:
+- gerd
+- reflux
+- acidity
+- dyspepsia
+- hypochlorhydria
+- cystitis
+- interstitial
+- urinary
+- uti
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Home Remedies / Indian Tradition
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: 2026-06-05
-updated_by: shivani
+updated_at: '2026-07-13'
+updated_by: Shivani
