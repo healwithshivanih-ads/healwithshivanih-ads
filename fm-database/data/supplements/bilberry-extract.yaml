@@ -27,12 +27,26 @@ notes_for_client: Bilberry is the top choice for protecting eyesight in diabetes
   its anthocyanidins target the exact mechanism that damages retinal blood vessels.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
+contraindications:
+  conditions:
+  - bleeding disorders / haemorrhagic conditions — high-dose fruit extract (≥480 mg/day)
+    has antiplatelet activity; use cautiously (WHO Monographs Vol 4)
+  medications:
+  - anticoagulants / antiplatelet drugs — additive bleeding risk at high dose (WHO
+    Monographs Vol 4)
+  life_stages: []
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Flavonoids table
   quote: Bilberry extract (25% anthocyanidins) 160-320 mg — Best choice in diabetic
     retinopathy or cataracts.
-version: 1
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Fructus Myrtilli, Warnings / Drug interactions (pp. 221–225)
+  quote: 'Fruit extracts have antiplatelet-aggregating properties (480 mg/day ex vivo);
+    very high doses should be used cautiously in patients with haemorrhagic disorders.
+    If diarrhoea persists more than 3–4 days or is associated with abdominal pain or
+    rectal bleeding, consult a health-care professional.'
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-07-13'
 updated_by: Shivani

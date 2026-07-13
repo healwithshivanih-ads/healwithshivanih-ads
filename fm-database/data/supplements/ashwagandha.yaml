@@ -127,9 +127,26 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 11
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Radix Withaniae, Precautions (Drug interactions) & Adverse reactions (pp. 387–388)
+  quote: 'The crude drug may potentiate the effects of barbiturates and reduce the
+    effects of diazepam and clonazepam. May cause nausea, vomiting and diarrhoea.
+    Due to the lack of safety data and its traditional use to induce abortion, use
+    during pregnancy or breastfeeding is contraindicated.'
+contraindications:
+  conditions: []
+  medications:
+  - Barbiturates — ashwagandha may potentiate their sedative effect (WHO Monographs
+    on Selected Medicinal Plants, Vol 4)
+  - Benzodiazepines including diazepam, clonazepam and alprazolam — ashwagandha may
+    reduce their anxiolytic/sedative effect (WHO Monographs on Selected Medicinal
+    Plants, Vol 4); review co-use before recommending
+  life_stages:
+  - pregnancy
+  - breastfeeding
+version: 12
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-07-13'
 updated_by: Shivani
 pregnancy_safety: contraindicated
 lactation_safety: caution

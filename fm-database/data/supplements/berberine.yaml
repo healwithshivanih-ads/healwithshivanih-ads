@@ -37,10 +37,15 @@ contraindications:
   conditions:
   - G6PD deficiency
   - jaundice in newborns
+  - use with caution in high blood pressure, diabetes, glaucoma or cardiovascular disease
+    (WHO Monographs Vol 4)
   medications:
-  - cyclosporine
+  - cyclosporine — berberine raised blood levels by ~75% in renal-transplant patients
+    (WHO Monographs Vol 4)
   - metformin (additive)
   - CYP3A4 substrates
+  - P-glycoprotein-substrate chemotherapy such as paclitaxel — berberine upregulates
+    the multidrug-resistance transporter and may reduce drug retention (WHO Monographs Vol 4)
   life_stages:
   - pregnancy
   - lactation
@@ -70,7 +75,14 @@ sources:
 - id: functional-genomic-nutrition
   location: MC Stabilizer ingredients
   quote: Berberine extract standardized to 97% Berberine HCl may support mast cell stabilizing.
-version: 4
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Cortex Berberidis, Precautions / Drug interactions (pp. 42–46)
+  quote: 'Use with caution in patients with high blood pressure, diabetes, glaucoma or
+    a history of cardiovascular disease. Berberine upregulates the multidrug-resistance
+    transporter (PGP170) — treatment may reduce retention of chemotherapeutic agents
+    such as paclitaxel. Berberine enhanced blood concentrations of cyclosporin by 75%
+    in renal-transplant patients.'
+version: 5
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-07-13'
 updated_by: Shivani

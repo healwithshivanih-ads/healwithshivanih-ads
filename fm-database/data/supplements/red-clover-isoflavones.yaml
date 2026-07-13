@@ -35,13 +35,16 @@ contraindications:
   - hormone-sensitive-breast-cancer
   - hormone-sensitive-endometrial-cancer
   - estrogen-sensitive-cancers
+  - hypersensitivity or allergy to red clover (WHO Monographs Vol 4)
   medications:
   - warfarin
-  - tamoxifen
+  - tamoxifen — conflicting data; isoflavones may enhance or interfere with antiestrogen
+    therapy (WHO Monographs Vol 4)
   - oral-contraceptives
   life_stages:
   - pregnancy
   - lactation
+  - children under 12 years (WHO Monographs Vol 4)
 rasa:
 - bitter
 - sweet
@@ -64,7 +67,13 @@ sources:
   location: Menopause — Soy foods / isoflavones (pp 633)
   quote: Black cohosh, red clover, soy, bioflavonoids, kava, and the proprietary formula
     Women's Phase II have proven scientific efficacy for menopausal symptoms.
-version: 1
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Flos Trifolii, Contraindications / Warnings / Drug interactions (pp. 348–352)
+  quote: 'Contraindicated in hypersensitivity/allergy, pregnancy, breastfeeding, children
+    under 12 years, and hormone-associated diseases. Patients with estrogen-dependent
+    cancers or a family history should consult a provider before use. Conflicting data
+    on interaction with tamoxifen and other antiestrogenic drugs.'
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-07-13'
 updated_by: Shivani

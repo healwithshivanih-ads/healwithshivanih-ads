@@ -26,11 +26,27 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_claims: []
 notes_for_client: ''
+contraindications:
+  conditions:
+  - hypersensitivity or allergy to artichoke or other Compositae/Asteraceae plants
+    (WHO Monographs Vol 4)
+  - obstruction of the bile ducts (WHO Monographs Vol 4)
+  - gallstones — seek health-care provider advice before use (WHO Monographs Vol 4)
+  medications:
+  - coumarin-type anticoagulants — possible interaction (WHO Monographs Vol 4)
+  life_stages:
+  - pregnancy
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: Artichoke Extract - Bile flow, liver support - 300–600 mg/day - With meals
-version: 2
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Folium Cynarae, Contraindications / Warnings / Adverse reactions (pp. 103–107)
+  quote: 'Contraindicated in hypersensitivity/allergy to artichoke and other Compositae/Asteraceae,
+    and in obstruction of the bile ducts. Possible interaction with coumarin-type anticoagulants;
+    patients with gallstones should seek provider advice. GI complaints (mild diarrhoea,
+    cramps, nausea, heartburn) reported. Not recommended in pregnancy (lack of data).'
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: shivani

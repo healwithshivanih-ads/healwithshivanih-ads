@@ -28,6 +28,16 @@ notes_for_client: American ginseng root taken before meals is the best-studied h
   option for reducing blood sugar spikes after eating.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
+contraindications:
+  conditions:
+  - known allergy or hypersensitivity to Panax quinquefolius (WHO Monographs Vol 4)
+  medications:
+  - antidiabetic drugs — American ginseng may lower blood sugar; additive hypoglycaemia
+    possible (WHO Monographs Vol 4)
+  - drugs metabolised by CYP1A1/CYP1A2/CYP1B1 — in-vitro inhibition, potential interaction
+    (WHO Monographs Vol 4)
+  - warfarin — monitor INR (coach note; see notes_for_coach)
+  life_stages: []
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Panax quinquefolius
@@ -37,7 +47,13 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 2
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Radix Panacis Quinquefolii, Contraindications / Drug interactions (pp. 239–243)
+  quote: 'Contraindicated in known allergy or hypersensitivity to the plant. An extract
+    inhibited CYP1A1, CYP1A2 and CYP1B1 in vitro — potential for interactions with drugs
+    metabolised by these enzymes. May lower blood sugar; interactions with antidiabetic
+    drugs are possible.'
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: Shivani

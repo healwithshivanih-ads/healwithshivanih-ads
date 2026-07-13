@@ -35,11 +35,25 @@ notes_for_coach: 'Latin: Punica granatum; Lythraceae. Sanskrit: Dadima. Traditio
   (round, pin, tapeworm), sore throat, ulcers, colitis, diarrhea, dysentery, prolapse of rectum or vagina,
   leucorrhea, conjunctivitis, anemia, chronic bronchitis, tuberculosis. Precautions: constipation. Ayurvedic
   energetics from The Yoga of Herbs (Frawley & Lad).'
+contraindications:
+  conditions:
+  - hypersensitivity or allergy to the plant material (WHO Monographs Vol 4)
+  - 'rind / root-bark preparations (Pericarpium & Cortex Granati): the anthelmintic
+    root-bark contains alkaloids toxic in overdose — use only at appropriate dose.
+    NOTE: WHO safety data pertain to the rind/bark, not the edible fruit or juice
+    (WHO Monographs Vol 4)'
+  medications: []
+  life_stages: []
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — POMEGRANATE
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Cortex/Pericarpium Granati (rind & root-bark), Contraindications / Warnings (pp. 122–126)
+  quote: 'Contraindicated in hypersensitivity or allergy to the plant material. In
+    cases of diarrhoea lasting longer than 3 days, or associated with fever, nausea,
+    vomiting or bloody stools, contact a health-care provider.'
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-07-13'
 updated_by: Shivani

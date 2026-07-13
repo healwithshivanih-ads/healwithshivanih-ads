@@ -37,11 +37,27 @@ notes_for_coach: Whole barberry root (Berberis spp.; Ayurvedic Daruharidra / 'wo
   heating hepatic and blood cleanser whose special potency (prabhava) is to destroy ama (toxins) and regulate
   liver function; less vata-aggravating than other bitters, especially with turmeric. The isolated alkaloid
   is catalogued separately as 'berberine'. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+contraindications:
+  conditions:
+  - use with caution in high blood pressure, diabetes, glaucoma or cardiovascular disease
+    (WHO Monographs Vol 4 — Cortex Berberidis)
+  medications:
+  - cyclosporine — berberine-containing barberry may raise blood levels (WHO Monographs Vol 4)
+  - P-glycoprotein-substrate chemotherapy such as paclitaxel — may reduce drug retention
+    (WHO Monographs Vol 4)
+  life_stages:
+  - pregnancy
+  - lactation
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — BARBERRY
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Cortex Berberidis, Precautions / Drug interactions (pp. 42–46)
+  quote: 'Use with caution in patients with high blood pressure, diabetes, glaucoma or
+    a history of cardiovascular disease. Berberine upregulates the multidrug-resistance
+    transporter and enhanced cyclosporin blood levels by 75% in renal-transplant patients.'
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-07-13'
 updated_by: Shivani

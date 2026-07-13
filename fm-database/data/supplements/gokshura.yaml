@@ -34,12 +34,28 @@ notes_for_coach: 'Latin: Tribulus terrestris; Zygophyllaceae. Sanskrit: Gokshura
   indications: difficult or painful urination, edema, kidney or bladder stones, chronic cystitis, nephritis,
   hematuria, gout, rheumatism, lumbago, sciatica, impotence, infertility, seminal debility, venereal diseases,
   cough, dyspnea, hemorrhoids, diabetes. Precautions: dehydration. Ayurvedic energetics from The Yoga
-  of Herbs (Frawley & Lad).'
+  of Herbs (Frawley & Lad). WHO Vol 4 safety: possible phototoxicity — advise limiting
+  excess sun / high-SPF sunscreen while taking; avoid in pregnancy, lactation and children
+  under 12; no drug interactions documented.'
+contraindications:
+  conditions:
+  - Hypersensitivity or allergy to Tribulus/gokshura (WHO Monographs Vol 4)
+  medications: []
+  life_stages:
+  - pregnancy
+  - breastfeeding
+  - children under 12 years
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — GOKSHURA
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Fructus Tribuli, Contraindications / Warnings / Precautions (pp. 331–332)
+  quote: 'Contraindicated in cases of hypersensitivity or allergy to the plant. Due
+    to the possibility of phototoxic reactions, avoid excessive sun exposure and use
+    high-SPF sunscreen while taking. Not recommended in pregnancy, breastfeeding, or
+    children under 12 years (lack of safety data). No drug interactions were found.'
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-07-13'
 updated_by: Shivani

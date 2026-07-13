@@ -21,12 +21,15 @@ contraindications:
   conditions:
     - hormone-sensitive-cancers (ER+ breast, endometrial)
     - pregnancy
+    - hypersensitivity or allergy to Tribulus (WHO Monographs Vol 4)
+    - phototoxic potential — limit excess sun / use high-SPF sunscreen while taking (WHO Monographs Vol 4)
   medications:
     - antihypertensives (monitor — may have mild BP-lowering effect)
     - antidiabetics (mild blood sugar lowering)
   life_stages:
     - pregnancy
     - lactation (insufficient data)
+    - children under 12 years (not recommended — WHO Monographs Vol 4)
 interactions:
   with_supplements: []
   with_foods: []
@@ -68,8 +71,14 @@ sources:
       DHEA, restores vitality and libido. Use ONLY Bulgarian-grown standardised to
       40% furosterol saponins by UV analysis — Chinese and Indian NOT interchangeable.
       Best used Days 5–14 of cycle."
+  - id: who-monographs-selected-medicinal-plants
+    location: "Vol 4 (2009) — Fructus Tribuli, Contraindications / Warnings / Precautions (pp. 331–332)"
+    quote: "Contraindicated in hypersensitivity or allergy to the plant. Possible
+      phototoxic reactions — avoid excessive sun exposure, use high-SPF sunscreen.
+      Not recommended in pregnancy, breastfeeding or children under 12. No drug
+      interactions were found."
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-08'
+updated_at: '2026-07-13'
 updated_by: shivani

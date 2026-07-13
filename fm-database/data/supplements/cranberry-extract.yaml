@@ -35,9 +35,16 @@ notes_for_client: Cranberry prevents H. pylori (and UTI bacteria) from sticking 
 contraindications:
   conditions:
   - kidney-stones-oxalate-history
+  - Impaired kidney function / kidney stones — use only with provider oversight; cranberry
+    may raise urinary oxalate and uric acid (WHO Monographs Vol 4)
+  - Diabetes — use sugar-free preparations, not sweetened juice (high sugar load) (WHO
+    Monographs Vol 4)
   medications:
-  - warfarin
-  life_stages: []
+  - warfarin — may raise INR and bleeding risk; multiple case reports + MHRA case series
+    (WHO Monographs Vol 4)
+  life_stages:
+  - children — cranberry is ineffective for treating UTIs in paediatric populations
+    (WHO Monographs Vol 4)
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 sources:
@@ -45,7 +52,14 @@ sources:
   location: Natural Eradication Agents — Cranberry
   quote: Cranberries may help suppress the growth of H. pylori. Cranberry helps suppress
     bacterial growth and prevents adhesion to the stomach lining.
-version: 1
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Fructus Macrocarponii, Drug interactions / Warnings / Precautions (pp. 162–163)
+  quote: 'Numerous cases of a possible interaction between cranberry juice and warfarin,
+    leading to changes in the INR or to bleeding (MHRA). Patients with kidney stones
+    or impaired kidney function should consult their health-care provider. People with
+    diabetes should use sugar-free preparations. Cranberry for treating urinary-tract
+    disease in paediatric populations is ineffective and not recommended.'
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-07-13'
 updated_by: Shivani

@@ -31,6 +31,11 @@ notes_for_client: Boswellia is a resin from Indian frankincense tree with anti-i
   properties. Best taken with a fatty meal.
 evidence_tier: strong
 linked_to_mechanisms: []
+contraindications:
+  conditions:
+  - hypersensitivity or allergy to Boswellia (WHO Monographs Vol 4)
+  medications: []
+  life_stages: []
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Autoimmune Disease Cheatsheet — Page 25
@@ -38,7 +43,11 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Knee Pain Cheatsheet
   quote: Collagen, Bromelain, Vitamin C, Boswellia
-version: 5
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Gummi Boswellii, Adverse reactions / Contraindications (pp. 56–60)
+  quote: 'Minor gastrointestinal side-effects reported in clinical trials. Contraindicated
+    in hypersensitivity or allergy to the crude drug. No drug interactions found.'
+version: 6
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: shivani
