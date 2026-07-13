@@ -1456,7 +1456,7 @@ const EASY_HEAD_RE =
 
 
 
-interface LetterRecipe {
+export interface LetterRecipe {
   title: string;
   serves?: string;
   time?: string;
@@ -1757,7 +1757,58 @@ export function snackCategoryImage(dish: string): string | undefined {
   return cat ? `/recipe-images/categories/${cat}.jpg` : undefined;
 }
 
-function parseRecipes(md: string): LetterRecipe[] {
+/** The pack (AI-generated) branch of `recipeFor`, extracted so the coach
+ *  dashboard can flag exactly the dishes the client app serves from the
+ *  AI-generated recipe pack (vs the catalogue library). Returns the pack recipe
+ *  that WOULD be served for `dish`, or undefined when the pack has no consistent
+ *  match (the catalogue then fills the gap). Keep in lockstep with recipeFor. */
+export function matchPackRecipe(
+  dish: string,
+  recipes: LetterRecipe[],
+): LetterRecipe | undefined {
+  const LETTER_TITLE_STOP = new Set(["with", "and", "the", "for", "style"]);
+  const dk = suppKey(dish);
+  let best: { r: LetterRecipe; score: number; misses: number } | undefined;
+  for (const r of recipes) {
+    const rk = suppKey(r.title);
+    if (rk === dk) return r; // exact name — always wins (no gate, mirrors recipeFor)
+    const rToks = rk.split(" ").filter((t) => t.length >= 3 && !LETTER_TITLE_STOP.has(t));
+    if (!rToks.length) continue;
+    const misses = rToks.filter((t) => !dk.includes(t)).length;
+    if (misses > (rToks.length >= 3 ? Math.floor(rToks.length / 3) : 0)) continue;
+    const score = rToks.length - 2 * misses;
+    if (!best || score > best.score || (score === best.score && misses < best.misses))
+      best = { r, score, misses };
+  }
+  const packR = best?.r;
+  if (packR && recipeConsistentWithDish(dish, packR)) return packR;
+  return undefined;
+}
+
+/** Load + parse a plan's AI-generated recipe pack (`meal-plans/<planSlug>-recipes.md`
+ *  sidecars) — the same source loadClientAppData reads. The coach dashboard pairs
+ *  this with matchPackRecipe to flag AI-served menu dishes. */
+export async function loadPackRecipes(
+  clientId: string,
+  planSlug: string,
+): Promise<LetterRecipe[]> {
+  const dir = path.join(getPlansRoot(), "clients", clientId, "meal-plans");
+  let files: string[] = [];
+  try {
+    files = await fs.readdir(dir);
+  } catch {
+    return [];
+  }
+  let md = "";
+  for (const n of files) {
+    if (n.endsWith("-recipes.md") && n.startsWith(planSlug)) {
+      md += "\n\n" + ((await readIfExists(path.join(dir, n))) ?? "");
+    }
+  }
+  return parseRecipes(md);
+}
+
+export function parseRecipes(md: string): LetterRecipe[] {
   const out: LetterRecipe[] = [];
   // Letter generations drifted on the recipe marker (✦ / ✨ / ⭐) — accept
   // all three, same as cleanDishCell does for menu cells (fix 2026-06-11:
@@ -2902,7 +2953,54 @@ export async function loadClientAppData(
     }
     return true;
   };
-  const libraryRecipes = libraryRecipesAll.filter((l) => recipeAllowed(l.recipe));
+  // ── AVOID-LIST SAFETY ──────────────────────────────────────────────────────
+  // Catalogue recipes are generic, so a library recipe can name a food this
+  // client AVOIDS (the personalised AI pack omitted it — coach concern
+  // 2026-07-13, when catalogue recipes became the first choice over the pack).
+  // Drop any library recipe whose title/mains/ingredients name an avoided food
+  // so the dish falls through to the pack or a clean category card, never a
+  // curated recipe that contradicts foods_to_avoid.
+  // foods_to_avoid is messy free text (comma lists, but also multi-line
+  // narratives + parentheticals). Two-pass parse: (1) category triggers scan
+  // the WHOLE string and expand to member ingredients (so "Gluten (wheat/atta…)"
+  // drops every wheat recipe, not just the literal words); (2) short food tokens
+  // (≤3 words) — long narrative fragments are skipped so a rambling avoid note
+  // can't nuke the whole library. Word-boundary match avoids rice→licorice.
+  const AVOID_EXPAND: Record<string, string[]> = {
+    dairy: ["milk", "curd", "dahi", "yogurt", "yoghurt", "paneer", "cheese", "cream", "khoya", "malai", "lassi", "buttermilk"],
+    gluten: ["wheat", "atta", "maida", "suji", "rava", "semolina", "bread", "pasta", "barley", "rye", "dalia", "paratha", "roti", "chapati", "thepla", "poori"],
+    nut: ["almond", "cashew", "walnut", "pistachio", "hazelnut", "pecan"],
+    onion: ["onion", "shallot", "leek"],
+    soy: ["soy", "soya", "tofu", "tempeh", "edamame"],
+  };
+  const AVOID_CATEGORY_TRIGGERS: [RegExp, keyof typeof AVOID_EXPAND][] = [
+    [/\b(dairy|lactose|milk)\b/, "dairy"],
+    [/\b(gluten|wheat|atta|maida)\b/, "gluten"],
+    [/\b(tree ?nut|nuts)\b/, "nut"],
+    [/\bonion\b/, "onion"],
+    [/\b(soy|soya)\b/, "soy"],
+  ];
+  const AVOID_STOP = new Set(["oil", "salt", "water", "ghee"]);
+  const avoidRaw = asStr(client.foods_to_avoid).toLowerCase();
+  const avoidTokens = new Set<string>();
+  for (const [rx, cat] of AVOID_CATEGORY_TRIGGERS)
+    if (rx.test(avoidRaw)) for (const m of AVOID_EXPAND[cat]) avoidTokens.add(m);
+  for (const t of avoidRaw.split(/[,;/&\n()]|\band\b/)) {
+    const w = t.replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+    const words = w ? w.split(" ") : [];
+    if (words.length === 0 || words.length > 3) continue; // blank or narrative fragment
+    if (w.length < 3 || w.length > 22 || AVOID_STOP.has(w)) continue;
+    avoidTokens.add(w);
+  }
+  const avoidRes = [...avoidTokens].map((t) => new RegExp(`\\b${t}\\b`));
+  const recipeAvoidsSafe = (r: LetterRecipe): boolean => {
+    if (!avoidRes.length) return true;
+    const blob = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`.toLowerCase();
+    return !avoidRes.some((rx) => rx.test(blob));
+  };
+  const libraryRecipes = libraryRecipesAll.filter(
+    (l) => recipeAllowed(l.recipe) && recipeAvoidsSafe(l.recipe),
+  );
   // recipe-name → accurate kcal/serving (drives per-meal calories + swap maths)
   const recipeKcalLookup = buildRecipeKcalLookup(
     libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
@@ -3066,30 +3164,20 @@ export async function loadClientAppData(
   // names ("Spiced Buttermilk / Chaas") still match their dish. Ranked by
   // hits−misses, then fewer misses — so "Steamed Fish" beats "Grilled Rohu or
   // Surmai Fish" for a steamed-fish dish.
-  const LETTER_TITLE_STOP = new Set(["with", "and", "the", "for", "style"]);
+  // CATALOGUE FIRST (coach decision 2026-07-12): a curated library recipe is
+  // preferred over an AI-generated pack recipe. The library is vetted, correct,
+  // and photo-backed; the AI pack is the FALLBACK, used only when the catalogue
+  // doesn't cover the dish. buildLibraryRecipeResolver matches exact-title first
+  // then a STRICT token scan, and recipeConsistentWithDish gates out a wrong
+  // library recipe — so a mismatched library entry cleanly falls through to the
+  // pack rather than attaching nonsense. The pack match + gate is extracted to
+  // the exported matchPackRecipe so the coach dashboard flags exactly the
+  // dishes that still fall back to AI (catalogue doesn't cover them yet).
   const recipeFor = (dish: string): LetterRecipe | undefined => {
-    const dk = suppKey(dish);
-    let best: { r: LetterRecipe; score: number; misses: number } | undefined;
-    for (const r of recipes) {
-      const rk = suppKey(r.title);
-      if (rk === dk) return r; // exact name — always wins
-      const rToks = rk.split(" ").filter((t) => t.length >= 3 && !LETTER_TITLE_STOP.has(t));
-      if (!rToks.length) continue;
-      const misses = rToks.filter((t) => !dk.includes(t)).length;
-      if (misses > (rToks.length >= 3 ? Math.floor(rToks.length / 3) : 0)) continue;
-      const score = rToks.length - 2 * misses; // hits − misses
-      if (!best || score > best.score || (score === best.score && misses < best.misses))
-        best = { r, score, misses };
-    }
-    // letter recipes (personalised) win; the structured library fills gaps.
-    // CONSISTENCY GATE (the last seam): only return a recipe that actually
-    // matches the dish — a garbled or wrong-ingredient recipe is dropped so the
-    // dish renders as its clean name + portion, never as nonsense. A bad pack
-    // recipe must not block a good library one, so each is gated independently.
-    const packR = best?.r;
-    if (packR && recipeConsistentWithDish(dish, packR)) return packR;
     const libR = libraryRecipeFor(dish);
     if (libR && recipeConsistentWithDish(dish, libR)) return libR;
+    const packR = matchPackRecipe(dish, recipes);
+    if (packR) return packR;
     return undefined;
   };
   if (table) {
@@ -3524,6 +3612,63 @@ export async function loadClientAppData(
     }
     // primaries first, alternatives after, original order otherwise
     remedies.sort((a, b) => Number(a.alternative ?? false) - Number(b.alternative ?? false));
+  }
+
+  // ---- bespoke per-client rituals (plan.nutrition.custom_remedies) ----------
+  // Coach-authored drinks/foods/churans that are NOT catalogue slugs — warm ghee
+  // water on waking, soaked raisins, a bespoke morning tea, plus the auto-appended
+  // morning rituals (morning_rituals.py). These live in nutrition.custom_remedies
+  // and were never projected to the app, so they silently didn't render. Add them
+  // as assigned daily remedies AFTER the drink-dedup so a coach-authored morning
+  // SEQUENCE (ghee water → tea → raisins) isn't collapsed to a single item.
+  {
+    const existingNames = new Set(remedies.map((r) => r.name.toLowerCase().trim()));
+    for (const cr of asArr(nutrition.custom_remedies) as Dict[]) {
+      const name = asStr(cr.name).trim();
+      if (!name || existingNames.has(name.toLowerCase())) continue;
+      const kind = asStr(cr.kind).toLowerCase();
+      const category =
+        kind === "churan"
+          ? "ayurvedic_churan"
+          : /tea|infused|drink|decoction|juice|water|milk/.test(kind)
+            ? "infused_water"
+            : "kitchen_remedy";
+      const timing = asStr(cr.timing);
+      const prep = asStr(cr.preparation);
+      const reason = asStr(cr.reason);
+      const bedtime = /bed|night/i.test(timing);
+      const beforeBreakfast =
+        /waking|empty stomach|first thing|before (?:your )?(?:morning )?(?:tea|breakfast|meal)/i.test(timing);
+      const slug = "custom-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      remedies.push({
+        slug,
+        name,
+        also: "",
+        category,
+        route: "internal",
+        icon: remedyIcon(category, "internal", slug),
+        summary: reason || prep,
+        prepSteps: prep ? [prep] : [],
+        dose: asStr(cr.ingredients),
+        duration: "",
+        timing,
+        cautions: [],
+        indications: [],
+        bal: [],
+        agg: [],
+        virya: null,
+        stub: false,
+        suitableSex: "any",
+        suitableStages: [],
+        avoidIn: [],
+        assigned: true,
+        daily: true,
+        when: bedtime ? "Bedtime" : /morning|waking/i.test(timing) ? "Morning" : "Daily",
+        why: reason || firstSentence(prep || name),
+        ...(beforeBreakfast ? { beforeBreakfast: true } : {}),
+      });
+      existingNames.add(name.toLowerCase());
+    }
   }
 
   // ---- remedy eligibility (hard gates) + relevance shelf --------------------
