@@ -167,18 +167,19 @@ def _ind_match(ind: str, hay_str: str, hay_tokens: set[str]) -> bool:
     return any(t in hay_tokens for t in _tokens(ind))
 
 
-def relevant_morning_rituals(plan: dict, client: dict, max_n: int = 2) -> list[dict]:
-    """Return up to max_n catalogue-driven daily rituals, best-first.
-
-    A ritual qualifies with ≥1 indication match AND passing every gate
-    (ritual_avoid, avoid_in, suitable_sex, suitable_stages). Client-facing
-    fields only."""
+def _select_rituals(plan: dict, client: dict, max_n: int = 2) -> list[dict]:
+    """Return up to max_n matching catalogue ritual dicts (RAW HomeRemedy dicts,
+    incl. slug), best-first. A ritual qualifies with ≥1 indication match AND
+    passing every gate (ritual_avoid, avoid_in, suitable_sex, suitable_stages)."""
     topics_blob = _topics_blob(plan)
     cond_text = " | ".join(
         _as_list(client.get("active_conditions")) + _as_list(client.get("goals"))
     ).lower()
     hay = topics_blob + " | " + cond_text
     hay_tokens = set(re.split(r"[^a-z0-9]+", hay))
+    # hyphens/pipes -> spaces so a multi-word gate token ("heart-failure") matches
+    # the client's free-text condition ("congestive heart failure") and vice versa.
+    hay_norm = re.sub(r"[^a-z0-9]+", " ", hay)
     flags = _compute_flags(plan, client, topics_blob)
     active_flags = {f for f in _DIET_FLAGS if flags.get(f)}
     stages = _client_life_stages(client)
@@ -188,7 +189,7 @@ def relevant_morning_rituals(plan: dict, client: dict, max_n: int = 2) -> list[d
     for r in _load_daily_rituals():
         # ── life-stage hard gate (structured avoid_in + text fallback) ──
         avoid_in = [str(x).lower() for x in _as_list(r.get("avoid_in"))]
-        if any((st in stages) or (len(st) >= 6 and st[:6] in hay) for st in avoid_in):
+        if any((st in stages) or (len(st) >= 6 and st[:6] in hay_norm) for st in avoid_in):
             continue
         # ── suitable_stages: if declared, client stage must be among them ──
         suit_stages = [str(x).lower() for x in _as_list(r.get("suitable_stages"))]
@@ -209,9 +210,11 @@ def relevant_morning_rituals(plan: dict, client: dict, max_n: int = 2) -> list[d
                 if tok in active_flags:
                     skip = True
                     break
-            elif tok in hay:
-                skip = True
-                break
+            else:
+                tok_norm = re.sub(r"[^a-z0-9]+", " ", tok).strip()
+                if tok_norm and tok_norm in hay_norm:
+                    skip = True
+                    break
         if skip:
             continue
         # ── relevance: ≥1 indication match ──
@@ -222,7 +225,12 @@ def relevant_morning_rituals(plan: dict, client: dict, max_n: int = 2) -> list[d
         scored.append((len(hits), prio, str(r.get("slug") or ""), r))
 
     scored.sort(key=lambda x: (-x[0], x[1], x[2]))
-    return [_to_custom_remedy(r) for _hits, _prio, _slug, r in scored[:max_n]]
+    return [r for _hits, _prio, _slug, r in scored[:max_n]]
+
+
+def relevant_morning_rituals(plan: dict, client: dict, max_n: int = 2) -> list[dict]:
+    """Client-facing custom_remedy dicts for the best-matching daily rituals."""
+    return [_to_custom_remedy(r) for r in _select_rituals(plan, client, max_n)]
 
 
 def _to_custom_remedy(r: dict) -> dict:
@@ -243,24 +251,49 @@ def _norm(name: Any) -> str:
     return str(name or "").strip().lower()
 
 
+# Words that don't identify WHICH remedy (form / prep / timing filler) — stripped
+# so the fuzzy dedup keys on the distinctive herb/food word (nettle, ghee, methi…).
+_RITUAL_STOPWORDS = {
+    "soaked", "warm", "water", "morning", "tea", "waking", "seed", "seeds",
+    "drink", "with", "black", "white", "green", "the", "and", "your",
+}
+
+
+def _ident_tokens(slug: Any) -> set[str]:
+    """Distinctive identity tokens for a ritual (from its slug) — used to avoid
+    adding a second remedy of the same herb/food a client already has under a
+    variant name (e.g. Kamla's 'Nettle & Ceylon-cinnamon morning tea')."""
+    return {
+        t for t in re.split(r"[^a-z0-9]+", str(slug).lower())
+        if len(t) >= 4 and t not in _RITUAL_STOPWORDS
+    }
+
+
 def ensure_morning_rituals(plan: dict, client: dict, max_n: int = 2) -> list[str]:
     """Idempotently append matched rituals to plan.nutrition.custom_remedies.
 
-    Additive only — never removes or edits existing entries, and never adds a
-    ritual whose name already appears (so coach hand-adds are preserved and
-    never duplicated). Returns the names actually added."""
-    matched = relevant_morning_rituals(plan, client, max_n)
+    Additive only — never removes or edits existing entries. Skips a candidate if
+    a remedy with the same name is present OR the client already has a remedy of
+    the same herb/food (fuzzy identity-token match), so coach hand-adds and name
+    variants are preserved and never duplicated. Returns the names added."""
+    selected = _select_rituals(plan, client, max_n)
     nutrition = plan.setdefault("nutrition", {}) or {}
     plan["nutrition"] = nutrition
     remedies = nutrition.setdefault("custom_remedies", []) or []
     nutrition["custom_remedies"] = remedies
 
-    existing = {_norm(r.get("name")) for r in remedies if isinstance(r, dict)}
+    existing_names = [_norm(r.get("name")) for r in remedies if isinstance(r, dict)]
+    existing_blob = " ".join(existing_names)
     added: list[str] = []
-    for entry in matched:
-        if _norm(entry["name"]) in existing:
+    for r in selected:
+        entry = _to_custom_remedy(r)
+        nm = _norm(entry["name"])
+        if nm in existing_names:
+            continue
+        if any(tok in existing_blob for tok in _ident_tokens(r.get("slug"))):
             continue
         remedies.append(entry)
-        existing.add(_norm(entry["name"]))
+        existing_names.append(nm)
+        existing_blob += " " + nm
         added.append(entry["name"])
     return added

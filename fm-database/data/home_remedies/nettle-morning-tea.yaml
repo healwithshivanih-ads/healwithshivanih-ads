@@ -1,0 +1,80 @@
+slug: nettle-morning-tea
+display_name: Nettle morning tea
+aliases:
+- nettle-tea
+- nettle-leaf-tea
+- urtica-dioica-tea
+- stinging-nettle-tea
+category: herbal_tea
+route: internal
+summary: 'A gentle, mineral-rich morning tea — traditionally used to soothe and gently
+  flush the urinary tract and as a nourishing tonic. Sip it warm, and make sure you''re
+  drinking enough water through the day.'
+indications:
+- urinary-tract-infection
+- cystitis
+- interstitial-cystitis
+- recurrent-uti
+- urinary-irritation
+- vulvodynia
+- fluid-retention
+- joint-pain
+- rheumatism
+- iron-deficiency-anaemia
+- allergic-rhinitis
+contraindications:
+- Conditions requiring fluid restriction (oedema from heart or kidney failure) — nettle
+  increases urine flow and needs adequate fluid intake (EMA)
+- On warfarin or other anticoagulants — nettle leaf contains vitamin K and may reduce
+  their effect; check with the clinician (limited data)
+- Allergy to nettle
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- astringent
+- bitter
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- diuretic
+- alterative
+- nutritive
+- hemostatic
+avoid_in:
+- pregnancy
+- lactation
+- children
+preparation: Steep 1 tsp dried nettle leaf (or a nettle tea bag) in 1 cup hot water,
+  covered, for 5–7 minutes. Strain and sip warm.
+typical_dose: 1 tsp dried nettle leaf (or 1 tea bag) + 1 cup hot water
+duration: Daily; ongoing while it feels good. Keep water intake up alongside it.
+timing_notes: In the morning, on an empty stomach or with breakfast. Drink plenty
+  of water through the day.
+daily_ritual: true
+ritual_priority: 2
+ritual_avoid:
+- heart-failure
+- cardiac-insufficiency
+- congestive-cardiac
+- renal-failure
+- kidney-failure
+- dialysis
+- fluid-restriction
+linked_to_topics:
+- urinary-tract-infection
+- interstitial-cystitis
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: Urticae folium (nettle leaf) — traditional use for urinary-tract flushing
+    / minor urinary complaints & as an adjuvant in rheumatic complaints; contraindicated
+    where fluid restriction is required; not in pregnancy / lactation / under 12.
+- id: coach-shivani
+  location: Standing morning ritual — bladder-soothing, nourishing urinary tonic
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani
