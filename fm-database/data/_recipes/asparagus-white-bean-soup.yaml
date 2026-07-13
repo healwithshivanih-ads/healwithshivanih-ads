@@ -88,11 +88,10 @@ attribution:
   page: 113
 image:
   file: images/web/asparagus-white-bean-soup.jpg
-  credit: web reference (coach-selected)
-  source_url: https://www.ranchogordo.com/cdn/shop/articles/italian-style-white-bean-and-asparagus-soup-2247179.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://asparagus-white-bean-soup'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: asparagus and white bean soup

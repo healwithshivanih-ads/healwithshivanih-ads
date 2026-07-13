@@ -87,11 +87,10 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/tinda-sabzi.jpg
-  credit: web reference (coach-selected)
-  source_url: https://i1.wp.com/whatscookingmom.in/wp-content/uploads/2021/06/Tinde-ki-sabzi.jpg?fit=1200%2C800&ssl=1
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://tinda-sabzi'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Tinda sabzi

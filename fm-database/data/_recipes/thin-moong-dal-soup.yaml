@@ -76,11 +76,10 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/thin-moong-dal-soup.jpg
-  credit: web reference (coach-selected)
-  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/moong-dal-recipe.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://thin-moong-dal-soup'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Thin moong dal soup

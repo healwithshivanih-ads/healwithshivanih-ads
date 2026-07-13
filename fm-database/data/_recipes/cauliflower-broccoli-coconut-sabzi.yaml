@@ -39,11 +39,10 @@ steps:
 source: coach-authored (Shivani) 2026-06-13
 image:
   file: images/web/cauliflower-broccoli-coconut-sabzi.jpg
-  credit: web reference (coach-selected)
-  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2024/06/broccoli-stir-fry-curry-indian.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://cauliflower-broccoli-coconut-sabzi'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 nutrients_per_serving:
   kcal: 61.7
   protein_g: 1.7

@@ -70,11 +70,10 @@ attribution:
   page: 252
 image:
   file: images/web/fruit-salad-citrus.jpg
-  credit: web reference (coach-selected)
-  source_url: https://lifemadesweeter.com/wp-content/uploads/Citrus-Salad-Recipe-Photo-Picture--300x300.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://fruit-salad-citrus'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: fruit salad trio

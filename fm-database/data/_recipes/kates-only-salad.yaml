@@ -83,11 +83,10 @@ attribution:
   page: null
 image:
   file: images/web/kates-only-salad.jpg
-  credit: web reference (coach-selected)
-  source_url: https://assets.bonappetit.com/photos/5aaaa6fa275dc52331d91907/1:1/w_1280,c_limit/shaved-fennel-salad-with-croutons-and-walnuts.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://kates-only-salad'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: kate's only salad

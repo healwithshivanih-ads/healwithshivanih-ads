@@ -74,11 +74,10 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/til-chutney.jpg
-  credit: web reference (auto-sourced)
-  source_url: https://mildlyindian.com/wp-content/uploads/2023/01/til-chutney-693x1024.jpg
-  rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with licensed or
-    original photo before any external/commercial use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://til-chutney'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Til chutney
