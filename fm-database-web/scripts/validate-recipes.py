@@ -44,7 +44,7 @@ def check(d, fname, errs, warns):
     if not (d.get("method") or "").strip() and not (d.get("steps") or []):
         warns.append(f"{fname}: no method/steps stored")
     img = d.get("image") or {}
-    if isinstance(img, dict) and img.get("rights_status") not in (None, "", "none", "book_reference_uncleared", "web_reference_uncleared", "licensed", "original"):
+    if isinstance(img, dict) and img.get("rights_status") not in (None, "", "none", "book_reference_uncleared", "web_reference_uncleared", "licensed", "original", "original_generated", "generated_reference"):
         errs.append(f"{fname}: image.rights_status invalid ({img.get('rights_status')!r})")
 
 def main():
