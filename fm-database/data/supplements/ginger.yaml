@@ -77,7 +77,20 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 4
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 1 (1999) — Rhizoma Zingiberis, Precautions / Drug interactions
+  quote: 'Patients taking anticoagulants or with blood-coagulation disorders, and those
+    with gallstones, should consult a physician before self-medicating with ginger.
+    Ginger may affect bleeding times (thromboxane-synthase inhibition), though a 2 g/day
+    study showed no significant platelet effect.'
+contraindications:
+  conditions:
+  - gallstones — consult a physician before use (WHO Monographs Vol 1)
+  - bleeding / coagulation disorders — consult a physician (WHO Monographs Vol 1)
+  medications:
+  - anticoagulant / antiplatelet drugs — possible additive bleeding at higher doses (WHO Monographs Vol 1)
+  life_stages: []
+version: 5
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: shivani

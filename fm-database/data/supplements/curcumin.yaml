@@ -143,7 +143,20 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 21
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 1 (1999) — Rhizoma Curcumae Longae, Contraindications / Adverse reactions
+  quote: 'Contraindicated in obstruction of the biliary tract; in gallstones use only
+    after consulting a physician. Hypersensitivity to the drug; allergic dermatitis
+    has been reported.'
+contraindications:
+  conditions:
+  - obstruction of the biliary tract (WHO Monographs Vol 1)
+  - gallstones — use only after consulting a physician (WHO Monographs Vol 1)
+  - hypersensitivity / allergic contact dermatitis to turmeric (WHO Monographs Vol 1)
+  medications:
+  - anticoagulant / antiplatelet drugs — high-dose curcumin may add bleeding risk; caution
+  life_stages: []
+version: 22
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: shivani

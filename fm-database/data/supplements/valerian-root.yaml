@@ -55,9 +55,23 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia
   quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
-version: 2
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 1 (1999) — Radix Valerianae, Contraindications / Precautions / Adverse reactions
+  quote: 'Contraindicated in pregnancy and lactation. May cause drowsiness — affected
+    people should not drive or operate machinery. Chronic use may cause headaches,
+    excitability, uneasiness or insomnia; very large doses may cause bradycardia and
+    arrhythmias.'
+contraindications:
+  conditions:
+  - may cause drowsiness — avoid driving or operating machinery after taking (WHO Monographs Vol 1)
+  medications:
+  - CNS depressants / sedatives / alcohol — additive sedation (WHO Monographs Vol 1)
+  life_stages:
+  - pregnancy
+  - lactation
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: shivani
 aliases:
 - valerian root 100-200mg
