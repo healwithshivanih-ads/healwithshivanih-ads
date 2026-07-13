@@ -1,0 +1,82 @@
+slug: picrorhiza-kurroa
+display_name: Picrorhiza (Picrorhiza kurroa / Kutki)
+aliases:
+- kutki
+- katuka
+- katuki
+- kutaki
+- hu-huang-lian
+category: herb
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 250
+    max: 500
+    unit: mg
+  capsule:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+rasa:
+- bitter
+- pungent
+virya: cooling
+vipaka: pungent
+prabhava: the "Indian goldenseal" — a premier bitter hepatic tonic; kutkin / picrosides
+  are hepatoprotective and choleretic, supporting liver, spleen and bile flow
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- bitter tonic
+- antipyretic
+- alterative
+- laxative
+- hepatoprotective
+- cholagogue
+linked_to_topics:
+- liver-detoxification
+- fatty-liver
+- metabolic-detoxification
+- immune-support
+notes_for_coach: 'Kutki (Picrorhiza kurroa) — the classic Ayurvedic bitter hepatic tonic,
+  used like Golden Seal in India. Hepatoprotective + choleretic (kutkin / picroside I & II),
+  immune-modulating, antipyretic; supports liver/spleen and stimulates digestive fire and
+  bile flow. Energetics + traditional uses (fever, cough, hepatitis, asthma, parasites,
+  toxic-blood conditions, obesity, diabetes) from The Yoga of Herbs (Frawley & Lad).
+  Precautions: high-Vata / dryness-depletion states, severe debility, and hypoglycaemia
+  (bitter + can lower blood sugar). WHO Vol 4 (Rhizoma Picrorhizae) documents the traditional
+  hepatoprotective use but lists no specific contraindications or interactions.'
+notes_for_client: Kutki is a traditional bitter herb used to support the liver and digestion.
+contraindications:
+  conditions:
+  - high-vata / dryness or depletion states (Yoga of Herbs precaution)
+  - severe debility or wasting (Yoga of Herbs precaution)
+  - hypoglycaemia — bitter and may lower blood sugar (Yoga of Herbs precaution)
+  medications:
+  - antidiabetic drugs — possible additive blood-sugar lowering; monitor
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — KATUKA / Kutki (Picrorhiza kurroa)
+  quote: 'Actions: bitter tonic, antipyretic, alterative, laxative, antibiotic. Uses:
+    fever, hepatitis, asthma, bronchitis, parasites, toxic blood conditions, obesity,
+    diabetes. Precautions: high Vata conditions, severe debility, hypoglycemia.'
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 4 (2009) — Rhizoma Picrorhizae (traditional hepatoprotective use; no
+    contraindications, warnings or interactions documented)
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani

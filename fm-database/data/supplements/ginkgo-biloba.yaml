@@ -78,7 +78,12 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 4
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 1 (1999) — Folium Ginkgo, Contraindications / Adverse reactions
+  quote: 'Contraindicated in hypersensitivity to G. biloba preparations. Possible
+    adverse effects: headache, gastrointestinal disturbance, allergic skin reactions.
+    (Antiplatelet potential — bleeding risk with anticoagulants is widely documented.)'
+version: 5
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: Shivani

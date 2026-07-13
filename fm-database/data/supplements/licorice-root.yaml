@@ -1,5 +1,5 @@
 slug: licorice-root
-display_name: Licorice Root (DGL)
+display_name: Licorice Root (Glycyrrhiza glabra)
 category: herb
 forms_available:
 - capsule
@@ -33,9 +33,14 @@ linked_to_claims:
 - licorice-root-supports-immune-and-reduces-viral-growth
 - herbal-antimicrobials-effective-in-sibo
 - murray-topical-glycyrrhetinic-acid-eczema
-notes_for_coach: Licorice root supports gut mucosal healing and has antimicrobial
-  properties. DGL (deglycyrrhizinated licorice) is preferred to avoid blood pressure
-  effects. Confirm form and duration with clinician.
+notes_for_coach: 'This entry is WHOLE / glycyrrhizinated licorice root (Glycyrrhiza
+  glabra) — the form used for immune, antiviral and adrenal/HPA support. It carries
+  real blood-pressure and potassium risks (see contraindications): AVOID in
+  hypertension, hypokalaemia, renal or cholestatic/liver disease, and pregnancy, and
+  do not combine with diuretics, digoxin, antihypertensives, corticosteroids or
+  spironolactone. For gut mucosal healing use the separate DGL (deglycyrrhizinated)
+  entries instead — those have the glycyrrhizin removed and are BP-safe. Confirm form
+  and duration with clinician.'
 notes_for_client: Licorice root helps soothe and repair the gut lining while also
   having mild antibacterial effects.
 rasa:
@@ -60,6 +65,20 @@ ayurvedic_actions:
 - emetic
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
+contraindications:
+  conditions:
+  - hypertension / high blood pressure (glycyrrhizin raises BP — WHO Monographs Vol 1)
+  - hypokalaemia / low potassium (WHO Monographs Vol 1)
+  - chronic renal insufficiency (WHO Monographs Vol 1)
+  - cholestatic liver disorders or cirrhosis (WHO Monographs Vol 1)
+  medications:
+  - thiazide or loop diuretics — added potassium loss (WHO Monographs Vol 1)
+  - digoxin / cardiac glycosides — hypokalaemia raises toxicity risk (WHO Monographs Vol 1)
+  - antihypertensive drugs — glycyrrhizin can reduce their effect (WHO Monographs Vol 1)
+  - corticosteroids — do not combine (WHO Monographs Vol 1)
+  - spironolactone or amiloride (WHO Monographs Vol 1)
+  life_stages:
+  - pregnancy
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
@@ -75,7 +94,14 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 5
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 1 (1999) — Radix Glycyrrhizae, Contraindications / Warnings / Drug interactions
+  quote: 'Contraindicated in hypertension, cholestatic disorders or cirrhosis,
+    hypokalaemia, chronic renal insufficiency, and pregnancy. Prolonged high doses
+    cause pseudoaldosteronism (potassium loss, sodium/water retention, raised BP). Do
+    not use with thiazide/loop diuretics, cardiac glycosides, spironolactone/amiloride
+    or corticosteroids; may reduce antihypertensive drug effect.'
+version: 6
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: shivani

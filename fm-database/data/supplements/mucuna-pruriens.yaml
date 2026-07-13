@@ -1,0 +1,84 @@
+slug: mucuna-pruriens
+display_name: Mucuna (Mucuna pruriens / Kapikacchu)
+aliases:
+- kapikacchu
+- kaunch
+- kaunch-beej
+- cowhage
+- velvet-bean
+- atmagupta
+- vanari
+category: herb
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 250
+    max: 1000
+    unit: mg
+  capsule:
+    min: 250
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+rasa:
+- bitter
+- sweet
+virya: heating
+vipaka: sweet
+prabhava: one of the best tonics and aphrodisiacs to the reproductive and nervous systems;
+  Ayurvedic rejuvenative (rasayana) for shukra (reproductive tissue) and majja (nerve tissue)
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- tonic
+- rejuvenative
+- aphrodisiac
+- nervine
+- astringent
+linked_to_topics:
+- parkinsons-disease
+- nervous-system-regulation
+- low-libido
+- male-infertility
+- emotional-wellbeing
+notes_for_coach: 'Mucuna seed (Kapikacchu) is a naturally L-DOPA-rich (levodopa) bean —
+  the dopaminergic action underlies its use for Parkinson''s, motivation/mood, libido,
+  and lowering prolactin. Standardise to L-DOPA content and start low. Ayurvedic energetics
+  + traditional indications (general/sexual/nervous debility, infertility, asthma, paralysis,
+  Parkinson''s) from The Yoga of Herbs (Frawley & Lad); precaution: menstrual bleeding /
+  menorrhagia. Because of the L-DOPA content, treat drug interactions as real — see
+  contraindications; a clinician must manage co-use with Parkinson''s medication.'
+notes_for_client: Mucuna (kaunch) is a traditional tonic bean used to support steady energy,
+  mood and vitality.
+contraindications:
+  conditions:
+  - heavy menstrual bleeding / menorrhagia (Yoga of Herbs precaution)
+  - active psychosis or on dopamine-blocking antipsychotics (dopaminergic)
+  - melanoma (levodopa caution)
+  medications:
+  - levodopa / carbidopa — additive dopaminergic effect; dose must be managed by a clinician
+  - MAO inhibitors — risk of hypertensive / serotonergic reaction
+  - dopamine antagonists / antipsychotics (e.g. metoclopramide, haloperidol) — opposing action
+  - antihypertensive drugs — may add to blood-pressure lowering
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — KAPIKACCHU (Mucuna pruriens)
+  quote: 'Actions: tonic, rejuvenative, aphrodisiac, astringent. Indications: general
+    debility, sexual debility, impotence, infertility, nervous debility, paralysis,
+    Parkinson''s disease. Precautions: menstrual bleeding, menorrhagia.'
+version: 1
+status: active
+updated_at: '2026-07-13'
+updated_by: Shivani

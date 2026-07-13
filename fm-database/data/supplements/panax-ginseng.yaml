@@ -58,6 +58,13 @@ linked_to_claims:
 - murray-adaptogens-anxiety-mild-moderate
 notes_for_client: Ginseng may help your body adapt to stress by moderating stress
   hormone release and supporting brain resilience.
+contraindications:
+  conditions:
+  - diabetes — may slightly lower blood glucose; monitor (WHO Monographs Vol 1)
+  medications:
+  - MAO inhibitors (e.g. phenelzine) — reports of interaction (WHO Monographs Vol 1)
+  - antidiabetic drugs — additive blood-sugar lowering possible (WHO Monographs Vol 1)
+  life_stages: []
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
@@ -73,7 +80,12 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 4
+- id: who-monographs-selected-medicinal-plants
+  location: Vol 1 (1999) — Radix Ginseng, Precautions / Drug interactions
+  quote: 'No contraindications documented. Diabetic patients should consult a physician
+    as ginseng may slightly reduce blood glucose. Reports of an interaction with the
+    MAO inhibitor phenelzine.'
+version: 5
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-13'
 updated_by: Shivani
