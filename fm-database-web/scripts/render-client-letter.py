@@ -4101,6 +4101,7 @@ def _weight_loss_readiness_caveat(client: dict) -> str:
 import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import protein_logic as _protein
+from catalogue_dishes import catalogue_dish_names as _catalogue_dish_names
 # Back-compat aliases — _protein_guidance_block below calls these names.
 _calc_protein_target = _protein.calc_protein_target
 _pick_protein_source = _protein.pick_protein_source
@@ -5197,6 +5198,8 @@ MOVEMENT & WELLNESS:
     recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     coach_name = client.get("assigned_coach") or "Shivani"
+    _cat_names = _catalogue_dish_names(client.get("dietary_preference") or "")
+    catalogue_block = "CATALOGUE DISHES (reuse these EXACT names for cookable mains): " + ", ".join(_cat_names)
     prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
 The coach ({coach_name}) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
 
@@ -5294,6 +5297,9 @@ RULES:
 - If Vegetarian Jain: NO root vegetables (onion, garlic, potato, carrot, beetroot, radish, turnip)
 - CRITICAL — NO PORRIDGE-STYLE BREAKFASTS (ragi porridge, oats porridge, dalia, upma-as-porridge, any "grain cooked soft in milk/water" prep) ANYWHERE in this menu, including as a seed-cycling or supplement vehicle. Most Indian clients find them unappealing and quietly stop eating them. Use moong dal chilla, besan cheela, poha, idli/dosa, vegetable paratha, sprouts, or egg preparations (if eaten) instead. The ONLY exception: the client's own words (intake, session notes, or a quick_note) explicitly say they like or ask for a named porridge dish — a coach's general "keep it simple" note does not count as this exception.
 - SMALL SALAD WITH BOTH MAIN MEALS — include a small raw or lightly-steamed salad/kachumber (e.g. cucumber, tomato, carrot, beetroot, onion-lemon, sprouts) alongside BOTH lunch and dinner, always with an explicit portion (e.g. "small kachumber salad (small bowl)"). Do NOT add salad to breakfast, mid-morning, or tea/snack slots. Keep it small and simple, and honour the diet/avoid rules (no root veg for Vegetarian Jain). For elderly clients or anyone with weak digestion / functional dyspepsia, prefer a lightly-steamed or warm salad — especially at dinner — over a large bowl of cold raw greens.
+- CATALOGUE-FIRST — name every cookable main dish (breakfast dish, dal, sabzi, curry, khichdi, cheela, dosa/idli, roti, soup, rasam, pulao, etc.) with an EXACT title from the CATALOGUE DISHES list below, so the app serves the curated recipe + photo instead of an AI-written one. Do NOT invent a descriptive name when a catalogue dish fits ("Tofu spinach curry", not "Tofu and spinach curry with capsicum"); invent a new name ONLY when the catalogue genuinely has nothing suitable. Trivial no-recipe items (plain fruit, nuts, curd, tea, buttermilk, a small salad, plain rice or roti) are named normally.
+
+{catalogue_block}
 - {"INCLUDE a *~kcal* row at the bottom of each weekly table with the per-day total (±50 kcal of the phase target)." if cal else "DO NOT add a *~kcal* row or any per-day calorie totals — this client is NOT on a weight-loss plan. Calorie counts are off-topic and create unnecessary anxiety."}
 
 {INDIAN_BRANDS}

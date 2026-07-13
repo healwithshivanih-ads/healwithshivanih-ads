@@ -34,6 +34,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 from atomic_write import write_text_atomic  # noqa: E402
+from catalogue_dishes import catalogue_dish_names  # noqa: E402
 from meal_foods import relevant_meal_foods  # noqa: E402
 
 try:
@@ -267,7 +268,8 @@ HARD RULES:
 9. THERAPEUTIC FOODS ARE MEALS, NOT REMEDIES — when a CONDITION-APPROPRIATE THERAPEUTIC FOODS list is provided, weave those foods into the week as REAL DISHES in the slot where they fit (e.g. a kitchari dinner, a glass of spiced buttermilk with lunch, an Agni-reset light dinner). They are part of this client's protocol and the menu is where she receives them — do not list them separately. Keep them occasional and natural (1-3 times across the week, not daily), and always with explicit portions. ONLY genuine foods eaten as a dish qualify (kitchari, spiced buttermilk, dal soups, rasam, vegetable dishes). NEVER put a medicinal tea, tonic, kashayam, kadha, churan, decoction, or single-herb preparation (e.g. "arjuna heart tonic tea") into a meal slot — those are remedies handled on the supplement/remedy layer, not meal components. Every meal component must be a food a family would recognise as part of a meal.
 10. NUTRIENT-BALANCE THE WEEK — a NUTRIENT TARGETS block gives this client's protein floor, fibre floor, and the nutrients their labs say they're low on. Build the week so EVERY day reaches the protein floor — anchor at least two meals each day with a concentrated protein (dal/sprouts in a full bowl, paneer, tofu, curd, egg if eaten), never a grain+vegetable day with no real protein — and clear the fibre floor, and quietly favour dishes rich in the flagged low nutrients. This is a balancing constraint, NOT a licence to break rule 1 (framework), rule 7b (no porridge), or the client's diet/avoid rules — those always win. If the protein note says MODERATE (raised uric acid / kidney marker), do the opposite: keep protein reasonable, never loaded. Never mention grams, nutrients, or lab values to the client — the change_note stays warm and food-first.
 11. GRAINS — DON'T STRIP WHEAT AND RICE BY DEFAULT. Whole-wheat roti/phulka/chapati and rice are normal Indian staples and the DEFAULT base of the menu. Use millets (jowar, ragi, bajra, foxtail, kodo, sama) for VARIETY and rotation across the week — NOT as a wholesale replacement for wheat and rice. Favour millets / low-GI grains as the primary base ONLY when this client's conditions include a metabolic indication (insulin resistance, prediabetes, diabetes, PCOS, fatty liver) OR active weight-loss — check the NUTRIENT TARGETS / framework for that signal. For a client WITHOUT such an indication, an all-millet, no-wheat, no-white-rice week is WRONG: keep wheat roti and rice as everyday staples with millets sprinkled in for variety. Still rotate grains (rule: never the same grain at both lunch and dinner on one day).
-12. SMALL SALAD WITH BOTH MAIN MEALS — every lunch and every dinner includes a small raw or lightly-steamed salad/kachumber (cucumber, tomato, carrot, beetroot, onion-lemon, sprouts) as a component, always with an explicit portion per rule 8 (e.g. "small kachumber salad (small bowl)"). NEVER add salad to breakfast, mid-morning, or evening/tea slots. Keep it small and simple, and honour the diet/avoid rules (no root veg for Vegetarian Jain). For elderly clients or anyone with weak digestion / functional dyspepsia, prefer a lightly-steamed or warm salad — especially at dinner — over a large bowl of cold raw greens."""
+12. SMALL SALAD WITH BOTH MAIN MEALS — every lunch and every dinner includes a small raw or lightly-steamed salad/kachumber (cucumber, tomato, carrot, beetroot, onion-lemon, sprouts) as a component, always with an explicit portion per rule 8 (e.g. "small kachumber salad (small bowl)"). NEVER add salad to breakfast, mid-morning, or evening/tea slots. Keep it small and simple, and honour the diet/avoid rules (no root veg for Vegetarian Jain). For elderly clients or anyone with weak digestion / functional dyspepsia, prefer a lightly-steamed or warm salad — especially at dinner — over a large bowl of cold raw greens.
+13. CATALOGUE-FIRST (dish names) — a CATALOGUE DISHES list is provided in the user message. Name EVERY cookable main dish (breakfast dish, dal, sabzi, curry, khichdi, cheela, dosa/idli, roti, soup, rasam, pulao, etc.) with an EXACT title copied verbatim from that list, followed by the portion in brackets — so the client's app serves the curated recipe and photo instead of an AI-written one. Do NOT invent a descriptive dish name when a suitable catalogue dish exists (use "Tofu spinach curry" from the list, never "Tofu and spinach curry with capsicum"). Introduce a NEW dish name ONLY when the catalogue genuinely has nothing that fits a slot this client's framework or nutrient targets require — keep such inventions rare and name them short and literal. Trivial no-recipe items (plain fruit, nuts, curd, tea, buttermilk, a small salad, plain rice or roti) are named normally. This never overrides the framework, diet/avoid, protein/fibre, or no-porridge rules."""
 
 
 def _plans_root() -> Path:
@@ -373,6 +375,7 @@ def main() -> None:
     # (coach directive 2026-06-15). The menu is where the client receives them.
     mfoods = relevant_meal_foods(plan, client)
     mfood_lines = [f"- {f['name']} — {f['why']}" for f in mfoods]
+    cat_names = catalogue_dish_names(client.get("dietary_preference") or "")
 
     user = "\n".join(
         [
@@ -391,6 +394,9 @@ def main() -> None:
             "",
             "NUTRIENT TARGETS FOR THIS CLIENT (rule 10 — balance the week to these):",
             *_nutrient_targets_block(client),
+            "",
+            "CATALOGUE DISHES — name every cookable main dish with one of these EXACT titles (rule 13):",
+            ", ".join(cat_names),
             "",
             "CURRENT MENU (vary from this):",
             *cur_lines,
