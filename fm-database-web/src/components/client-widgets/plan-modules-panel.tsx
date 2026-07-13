@@ -88,7 +88,7 @@ export function PlanModulesPanel({
       >
         Tick the optional layers to weave into this client&apos;s plan, so none get
         missed when you author it. Enabled layers carry forward to assessment, the
-        plan, letters &amp; the app.
+        plan &amp; the app.
       </p>
 
       {PLAN_MODULES.map((m) => {
@@ -215,7 +215,7 @@ const MEAL_STYLE_OPTIONS: {
     value: "detailed",
     emoji: "📅",
     label: "Detailed",
-    desc: "Full Mon-Sun tables every fortnight letter.",
+    desc: "Full Mon-Sun tables in the app menu.",
   },
   {
     value: "principles",

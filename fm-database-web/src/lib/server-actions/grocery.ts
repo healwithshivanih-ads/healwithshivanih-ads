@@ -72,7 +72,7 @@ export async function generateGroceryListAction(
   // Resolve the plan's letter token so we can reuse the app's own loader —
   // guarantees the grocery list is built from EXACTLY the menu the app shows.
   const token = await readPlanField(planSlug, "letter_token");
-  if (!token) return { ok: false, error: "Plan has no letter token yet — share the letter/app first." };
+  if (!token) return { ok: false, error: "Plan has no app token yet — share the app first." };
 
   const data = await loadClientAppData(token);
   if (!data) return { ok: false, error: "Could not load the client app data for this plan." };

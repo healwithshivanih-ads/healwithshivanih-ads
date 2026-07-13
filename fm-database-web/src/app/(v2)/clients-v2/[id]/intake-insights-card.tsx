@@ -560,7 +560,7 @@ export function IntakeInsightsCard({ clientId, initial, submittedAt }: Props) {
             onChange={(e) => setCoachNotes(e.target.value)}
             onBlur={handleSaveCoachNotes}
             rows={4}
-            placeholder="e.g. 'B12 and ferritin are in the uploaded report — don't ask me to order them' or 'She's already tried magnesium, didn't help'. These notes override the AI on the next regenerate AND flow into every downstream call (assess / rework / letter / sanity check)."
+            placeholder="e.g. 'B12 and ferritin are in the uploaded report — don't ask me to order them' or 'She's already tried magnesium, didn't help'. These notes override the AI on the next regenerate AND flow into every downstream call (assess / rework / menu / sanity check)."
             style={{
               width: "100%",
               fontSize: 12,

@@ -119,7 +119,7 @@ export function PlanStartDatesPanel({
   return (
     <FmPanel
       title="📅 Plan start date"
-      subtitle="Day 1 of the 12-week plan. Set a future date to put the plan ON HOLD — the client's app shows a 'starts on this date' screen until then. Recheck date + letter framing key off this."
+      subtitle="Day 1 of the 12-week plan. Set a future date to put the plan ON HOLD — the client's app shows a 'starts on this date' screen until then. Recheck date + plan framing key off this."
     >
       <div style={{ display: "grid", gap: 14 }}>
         <div

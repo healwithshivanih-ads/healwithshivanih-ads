@@ -100,10 +100,10 @@ protocol_cautions kinds:
   prefer_food | prefer_supplement | timing | refer | monitor
 
 protocol_cautions severity:
-  critical = blocks the plan. Letter generator drops the offending
+  critical = blocks the plan. The plan/menu generator drops the offending
              item entirely if it would violate this caution.
   warning  = surfaces in plan-check, doesn't block.
-  info     = best-practice nudge; informs AI letter tone.
+  info     = best-practice nudge; informs AI plan tone.
 
 Drug schema:
 

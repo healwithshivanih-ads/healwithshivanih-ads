@@ -43,9 +43,9 @@ export function ApiUsagePanel({ clientId }: { clientId: string }) {
   const scriptLabel: Record<string, string> = {
     "assess.py":                      "🧠 Assess (Sonnet)",
     "chat.py":                        "💬 Assess chat",
-    "render-client-letter.py":        "📝 Client letters",
-    "render-client-letter.py:validator": "✅ Letter QA (Haiku)",
-    "refine-letter.py":               "✏️ Letter refinement",
+    "render-client-letter.py":        "📝 App menu / plan render",
+    "render-client-letter.py:validator": "✅ Menu QA (Haiku)",
+    "refine-letter.py":               "✏️ Content refinement",
     "extract-symptoms.py":            "📞 Transcript / lab extract",
     "parse-functional-test.py":       "🧪 Functional test parser",
     "parse-genetic-report.py":        "🧬 Genetic report parser",

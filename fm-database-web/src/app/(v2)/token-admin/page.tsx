@@ -27,7 +27,7 @@ export default async function TokenAdminPage() {
         <FmPanel>
           <p style={{ margin: 0, color: "var(--fm-text-secondary)", fontSize: 14 }}>
             No tokens issued yet. They appear here once you share an app link, publish a
-            plan letter, or send an intake / start-date link.
+            plan, or send an intake / start-date link.
           </p>
         </FmPanel>
       ) : (

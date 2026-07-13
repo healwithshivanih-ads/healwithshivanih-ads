@@ -166,7 +166,7 @@ export function TravelOverridesPanel({
               fontStyle: "italic",
             }}
           >
-            None active — letters use the base protocol for every week.
+            None active — the menu uses the base protocol for every week.
           </span>
         )}
         {overrides.map((o, i) => (
@@ -338,7 +338,7 @@ function AddOverrideModal({
       return;
     }
     if (context === "travel" && !location.trim()) {
-      toast.error("Add a destination — the letter uses it for local meal swaps");
+      toast.error("Add a destination — the menu uses it for local meal swaps");
       return;
     }
     const payload: WeightLossWeekOverridePayload = {
@@ -372,10 +372,10 @@ function AddOverrideModal({
             `🧳 Travel saved · ${location.trim()} (${dateFrom} → ${dateTo})`,
             {
               description:
-                "Letters are already issued. Want a dedicated vacation letter for this window?",
+                "The plan is already live. Want a dedicated travel guide for this window?",
               duration: 12000,
               action: {
-                label: "Generate vacation letter →",
+                label: "Generate travel guide →",
                 onClick: () => {
                   router.push(
                     `/clients-v2/${clientId}/communicate?intent=vacation_letter&from=${encodeURIComponent(
@@ -391,11 +391,11 @@ function AddOverrideModal({
         } else if (hasIssuedLetters) {
           toast.success("Override saved", {
             description:
-              "Letters are already issued. Generate a fresh letter from Communicate if this window needs its own coverage.",
+              "The plan is already live. Generate a fresh travel guide from Communicate if this window needs its own coverage.",
             duration: 8000,
           });
         } else {
-          toast.success("Override saved · next letter will use it");
+          toast.success("Override saved · the next menu will use it");
         }
       } else {
         toast.error(res.error ?? "Couldn't add override");
@@ -465,7 +465,7 @@ function AddOverrideModal({
               color: "var(--fm-text-2, #5A5A5A)",
             }}
           >
-            Set this BEFORE you generate the next letter. The meal plan
+            Set this BEFORE you generate the next menu. The meal plan
             auto-applies it to weeks overlapping these dates — you never
             re-type the destination or dates.
           </p>
@@ -529,7 +529,7 @@ function AddOverrideModal({
         {context === "travel" && (
           <Field
             label="Destination"
-            help="City + country. Letter swaps to local cuisine + restaurant guidance for these dates."
+            help="City + country. The app menu swaps to local cuisine + restaurant guidance for these dates."
           >
             <input
               value={location}

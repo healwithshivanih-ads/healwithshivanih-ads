@@ -127,7 +127,7 @@ export function RecipeSuggestionsCard({
       {error && <p className="text-xs text-red-600">{error}</p>}
       {!loading && !error && shown.length === 0 && (
         <p className="text-xs text-muted-foreground">
-          No recipes selected — the meal-plan letter will auto-suggest from the
+          No recipes selected — the app menu will auto-suggest from the
           library.
         </p>
       )}
@@ -162,7 +162,7 @@ export function RecipeSuggestionsCard({
       {shown.length > 0 && (
         <p className="mt-2 text-[11px] text-muted-foreground">
           {shown.length} recipe{shown.length === 1 ? "" : "s"} · the AI can still
-          add other dishes in the letter (⚠-marked for your review).
+          add other dishes in the menu (⚠-marked for your review).
         </p>
       )}
     </div>

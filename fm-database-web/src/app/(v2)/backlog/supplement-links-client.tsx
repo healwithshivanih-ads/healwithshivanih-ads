@@ -353,7 +353,7 @@ export function SupplementLinksClient({
       <div>
         <p className="text-sm text-muted-foreground">
           Affiliate / referral links for any <strong>supplement, food, device, or product</strong>{" "}
-          you reference in client plans. Auto-substituted into the letter
+          you reference in client plans. Auto-substituted into the plan and app
           when the matched name appears — protein powders, organic grains,
           red-light panels, ghee, anything.
         </p>

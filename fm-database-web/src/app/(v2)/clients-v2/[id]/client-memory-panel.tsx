@@ -211,7 +211,7 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
           }}
         >
           What the system has learned. The plan-chat AI appends to these
-          as you mention things in chat; the meal-plan letter generator
+          as you mention things in chat; the menu generator
           treats them as hard rules.
         </p>
         {visibleFields.map((f) => {

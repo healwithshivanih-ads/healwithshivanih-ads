@@ -2,7 +2,7 @@
 """Generate the client's menu DIRECTLY as structured plan.app_menu — no letter.
 
 Letters are retired as a data layer (coach decision 2026-06-12): only the
-worded welcome letter is still sent; menus live on the published plan and the
+welcome email (the tab-by-tab app guide) is still sent; menus live on the published plan and the
 client app renders them natively. This script reuses the meal-plan letter's
 entire constraint engine (dosha food rules, exclusions, seasonality, calorie
 targets, protein floors — everything in _build_prompt_meal_plan) but forces

@@ -21,7 +21,7 @@ const WORKFLOW = [
   },
   {
     title: "2 · Record a Discovery session",
-    body: "Open Analyse → Discovery. The Plan tab will then guide them through the intake handoff packet: welcome letter, questionnaire link, lab booking link, coaching fee.",
+    body: "Open Analyse → Discovery. The Plan tab will then guide them through the intake handoff packet: welcome email, questionnaire link, lab booking link, coaching fee.",
   },
   {
     title: "3 · Run a Full Assessment",
@@ -32,8 +32,8 @@ const WORKFLOW = [
     body: "Plan tab → Edit → Activate. Plan-check runs deterministic + AI sanity checks first.",
   },
   {
-    title: "5 · Send the welcome letter",
-    body: "Communicate tab → generate + send the welcome letter (the one worded letter). Everything else — menus, supplement schedule, lifestyle, recipes — lives in the client's app, driven by the published plan.",
+    title: "5 · Send the welcome email",
+    body: "Communicate tab → generate + send the welcome email (the tab-by-tab app guide). Everything else — menus, supplement schedule, lifestyle, recipes — lives in the client's app, driven by the published plan.",
   },
   {
     title: "6 · Check in weekly",

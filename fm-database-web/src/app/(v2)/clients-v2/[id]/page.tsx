@@ -672,7 +672,7 @@ function deriveStage(
       stage: "active",
       title: `Plan active — ${published.slug}`,
       detail: recheckDate ? `Next follow-up ${recheckDate}.` : undefined,
-      cta: "Generate letters",
+      cta: "Open Communicate",
     };
   }
 

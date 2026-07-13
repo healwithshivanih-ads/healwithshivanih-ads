@@ -245,7 +245,7 @@ export function PlanConflictPanel({ clientId, conflicts: initial }: Props) {
       >
         Conflicts auto-detected from the client&apos;s preferences vs the draft
         plan. Applying a suggestion updates the underlying client profile;
-        the next regenerated letter will reflect it.
+        the next regenerated plan will reflect it.
       </div>
     </FmCallout>
   );

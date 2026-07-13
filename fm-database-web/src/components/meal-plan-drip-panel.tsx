@@ -83,7 +83,7 @@ export function MealPlanDripPanel() {
   return (
     <FmPanel
       title="🍽 Fortnight meal plans"
-      subtitle="Next 2-week letter due per client — review & send from Communicate"
+      subtitle="Next menu update due per client — review from the Plan tab"
     >
       <ul className="space-y-2">
         {rows.map((r) => {

@@ -214,7 +214,7 @@ function deriveStage(
       stage: "draft",
       title: `Plan in ${status.replace(/_/g, " ")}`,
       detail:
-        "Activate below to publish the plan + send the welcome letter. Open the editor first if you want to tweak any sections.",
+        "Activate below to publish the plan + send the welcome email. Open the editor first if you want to tweak any sections.",
       cta: "Open editor",
       ctaHref: `/clients-v2/${clientId}/plan/edit/${activePlan.slug}`,
     };
@@ -247,8 +247,8 @@ function deriveStage(
       title: `Plan active — ${activePlan.slug}`,
       detail: recheckDate
         ? `Next follow-up ${recheckDate}.`
-        : "Welcome letter can go out now.",
-      cta: "Send welcome letter",
+        : "Welcome email can go out now.",
+      cta: "Send welcome email",
       ctaHref: `/clients-v2/${clientId}/communicate`,
     };
   }
@@ -745,7 +745,6 @@ export default async function PlanTabPage({
         node: (
           <FmNutritionPanel
             nutrition={activePlan.nutrition as Record<string, unknown> | null | undefined}
-            planSlug={activePlan.slug}
           />
         ),
       },
@@ -952,7 +951,7 @@ export default async function PlanTabPage({
           alertCount={alertCount}
           trailing={
             <StatusStripLink href={`/clients-v2/${id}/communicate`}>
-              ✉ Welcome letter →
+              ✉ Welcome email →
             </StatusStripLink>
           }
         >
@@ -1063,7 +1062,7 @@ export default async function PlanTabPage({
               <ActionLink
                 href={`/clients-v2/${id}/communicate`}
                 icon="📤"
-                label="Welcome letter / message"
+                label="Welcome email / message"
               />
               <ActionLink
                 href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
@@ -1488,7 +1487,7 @@ export default async function PlanTabPage({
                 lives in the generated client letter (panel pinned at top). */}
             <FmPanel
               title="🥗 Nutrition guidance"
-              subtitle="Pattern · foods to add or reduce · meal timing · cooking + home remedies. 7-day meal grid lives in the client letter."
+              subtitle="Pattern · foods to add or reduce · meal timing · cooking + home remedies. The 7-day menu grid lives on the plan (Menu studio) and is delivered in the client's app."
             >
               <FmNutritionPanel
                 nutrition={
@@ -1497,7 +1496,6 @@ export default async function PlanTabPage({
                     | null
                     | undefined
                 }
-                planSlug={activePlan.slug}
               />
             </FmPanel>
 
@@ -1617,7 +1615,7 @@ export default async function PlanTabPage({
                   icon="📤"
                   label={
                     isPublished
-                      ? "Welcome letter / message"
+                      ? "Welcome email / message"
                       : "Communicate (locks at publish)"
                   }
                 />

@@ -112,7 +112,7 @@ export function CoachNotesButton({ clientId }: { clientId: string }) {
               {!loading && !error && data && data.notesForCoach.trim() && (
                 <>
                   <p style={{ fontSize: 12, color: "var(--fm-text-secondary)", margin: "0 0 12px" }}>
-                    Your clinical reasoning for the active plan · private — never appears on client letters.
+                    Your clinical reasoning for the active plan · private — never appears in the client app.
                   </p>
                   <FmCoachNotes text={data.notesForCoach} planSlug={data.planSlug} />
                 </>

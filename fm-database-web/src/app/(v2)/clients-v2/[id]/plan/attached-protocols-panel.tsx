@@ -418,8 +418,8 @@ export function AttachedProtocolsPanel({ planSlug, locked, plan }: Props) {
         title="🧭 Healing protocol"
         subtitle={
           currentAttached.length > 0
-            ? "The FM protocol this plan is anchored to. Letter generation references this for phase structure."
-            : "Pick the primary FM protocol for this plan — seeds content and structures the letter."
+            ? "The FM protocol this plan is anchored to. The plan references this for phase structure."
+            : "Pick the primary FM protocol for this plan — seeds content and structures the plan."
         }
         rightSlot={
           !locked ? (

@@ -247,7 +247,7 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
         {isLocked ? (
           <p className="text-amber-700 font-medium">⚠ Making changes will move this plan back to Draft status.</p>
         ) : (
-          <p className="text-[11px]">For meal plan letter edits, use the Export tab → Generate client documents → refinement chat.</p>
+          <p className="text-[11px]">For menu edits, use the Menu studio on the Plan tab.</p>
         )}
         {history.length > 0 && (
           <p className="text-[10.5px] text-emerald-700">

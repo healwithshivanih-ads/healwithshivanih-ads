@@ -70,7 +70,7 @@ export function GroceryPanel({ clientId, planSlug }: { clientId: string; planSlu
         <div style={{ color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
           Builds the weekly shopping list the client sees on their app&apos;s menu view —
           categorised, with quantities, from this fortnight&apos;s meals. Regenerate after
-          each new phase letter.
+          each new fortnight&apos;s menu.
         </div>
         {error && (
           <div style={{ color: "#c0392b", fontSize: 12.5 }}>{error}</div>
