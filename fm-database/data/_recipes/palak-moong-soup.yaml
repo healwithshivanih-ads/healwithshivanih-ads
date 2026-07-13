@@ -84,10 +84,10 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/palak-moong-soup.jpg
-  credit: web reference (auto-sourced)
-  source_url: ''
-  rights_status: none
-  note: no photo yet — source a licensed/original image before external use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://palak-moong-soup'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Palak-moong soup
