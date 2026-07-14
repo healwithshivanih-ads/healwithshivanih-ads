@@ -9,7 +9,9 @@ import {
   type ClientSnp,
   type DgBand,
   type DgPathwayResult,
+  type DgLabFlag,
 } from "@/lib/fmdb/dirty-genes";
+import type { PrefillProvenance } from "@/lib/fmdb/dirty-genes-prefill";
 import { buildPlanContribution } from "@/lib/fmdb/dirty-genes-plan";
 import { saveDirtyGenesAssessment } from "@/lib/server-actions/dirty-genes";
 import { applyDirtyGenesToPlan, type ApplyDgResult } from "@/lib/server-actions/dirty-genes-plan";
@@ -111,6 +113,23 @@ function ResultCard({ p }: { p: DgPathwayResult }) {
         <BandChip band={p.band} pct={Math.round(p.fraction * 100)} />
       </div>
       <div style={{ padding: "10px 12px", fontSize: 12.5, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
+        {/* lab-escalated — objective signal raised the band above the symptom tally */}
+        {p.labEscalated && (
+          <div
+            style={{
+              marginBottom: 8,
+              padding: "6px 8px",
+              borderRadius: 6,
+              background: "rgba(37,99,235,0.08)",
+              border: "1px solid rgba(37,99,235,0.28)",
+              color: "#1d4ed8",
+              fontSize: 11.5,
+              fontWeight: 600,
+            }}
+          >
+            🔬 Raised to {DG_BAND_LABEL[p.labEscalated.to]} by labs — {p.labEscalated.marker}: {p.labEscalated.note}
+          </div>
+        )}
         {/* what the client ticked */}
         {p.drivers.length > 0 && (
           <div style={{ marginBottom: 8 }}>
@@ -218,6 +237,9 @@ export function DirtyGenesClient({
   initialNote,
   previousScreenDate,
   draftPlanSlug,
+  prefillChecked,
+  labFlags,
+  prefillProvenance,
 }: {
   clientId: string;
   questionnaire: DgQuestionnaire;
@@ -227,8 +249,15 @@ export function DirtyGenesClient({
   initialNote: string;
   previousScreenDate?: string;
   draftPlanSlug: string | null;
+  prefillChecked: string[];
+  labFlags: DgLabFlag[];
+  prefillProvenance: PrefillProvenance[];
 }) {
-  const [checked, setChecked] = useState<Set<string>>(new Set(initialChecked));
+  // If the client already has a saved screen, use it; otherwise seed from the
+  // auto-prefill (record-driven). Coach can tick/untick freely either way.
+  const [checked, setChecked] = useState<Set<string>>(
+    new Set(initialChecked.length ? initialChecked : prefillChecked),
+  );
   const [note, setNote] = useState(initialNote);
   const [saving, startSave] = useTransition();
   const [savedAt, setSavedAt] = useState<string | null>(null);
@@ -236,8 +265,8 @@ export function DirtyGenesClient({
   const [applyResult, setApplyResult] = useState<ApplyDgResult | null>(null);
 
   const result = useMemo(
-    () => scoreAssessment(questionnaire, [...checked], snps),
-    [questionnaire, checked, snps],
+    () => scoreAssessment(questionnaire, [...checked], snps, labFlags),
+    [questionnaire, checked, snps, labFlags],
   );
 
   function toggle(id: string) {
@@ -312,6 +341,32 @@ export function DirtyGenesClient({
           <span>No genetic report on file — questionnaire-only screen.</span>
         )}
       </div>
+
+      {prefillProvenance.length > 0 && (
+        <div
+          style={{
+            padding: "8px 12px",
+            borderRadius: "var(--fm-radius-md)",
+            background: "rgba(59,130,246,0.08)",
+            border: "1px solid rgba(59,130,246,0.28)",
+            fontSize: 11.5,
+            color: "#1d4ed8",
+            marginBottom: 16,
+            lineHeight: 1.5,
+          }}
+        >
+          <b>📋 Auto-prefilled from this client&apos;s record</b>{" "}
+          {initialChecked.length ? "(overridden by the saved screen below)" : "— review + adjust the ticks"}:
+          <ul style={{ margin: "4px 0 0", paddingLeft: 18 }}>
+            {prefillProvenance.map((p, i) => (
+              <li key={i}>
+                <span style={{ textTransform: "uppercase", fontSize: 9.5, opacity: 0.7 }}>{p.source}</span>{" "}
+                {p.evidence}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 20 }} className="dg-grid">
         {/* LEFT: questionnaire */}

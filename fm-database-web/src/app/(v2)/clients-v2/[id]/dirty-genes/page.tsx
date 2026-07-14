@@ -22,7 +22,28 @@ import {
   loadClientSnps,
   loadLatestDirtyGenesAssessment,
 } from "@/lib/server-actions/dirty-genes";
+import { computePrefill } from "@/lib/fmdb/dirty-genes-prefill";
 import { DirtyGenesClient } from "./dirty-genes-client";
+
+/** Build a lowercased marker→latest-value map from health_snapshots. */
+function extractLabValues(client: Record<string, unknown>): Record<string, number> {
+  const out: Record<string, number> = {};
+  const snaps = (client.health_snapshots as Array<Record<string, unknown>>) ?? [];
+  for (const snap of snaps) {
+    for (const lv of (snap.lab_values as Array<Record<string, unknown>>) ?? []) {
+      const name = String(lv.test_name ?? "").trim().toLowerCase();
+      const num = typeof lv.value === "number" ? lv.value : parseFloat(String(lv.value ?? ""));
+      if (name && !Number.isNaN(num)) out[name] = num; // later snapshot wins
+    }
+  }
+  return out;
+}
+
+function toText(v: unknown): string {
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) return v.filter((x) => typeof x === "string").join(" · ");
+  return "";
+}
 
 export const dynamic = "force-dynamic";
 
@@ -50,6 +71,20 @@ export default async function DirtyGenesPage({
     .filter((p) => p.client_id === id && ((p.status as string) ?? "draft") === "draft")
     .sort((a, b) => String(b.updated_at ?? "").localeCompare(String(a.updated_at ?? "")))[0];
   const draftPlanSlug = (draftPlan?.slug as string | undefined) ?? null;
+
+  // P2 auto-prefill: pre-flag pathways from the client's own record.
+  const prefill = computePrefill({
+    labValues: extractLabValues(client),
+    conditionsText: [
+      toText(client.active_conditions),
+      toText(client.reported_triggers),
+      toText(client.foods_to_avoid),
+      toText(client.medical_history),
+    ]
+      .join(" · ")
+      .toLowerCase(),
+    dietaryPreference: String(client.dietary_preference ?? "").toLowerCase(),
+  });
 
   return (
     <FmAppShell
@@ -111,6 +146,9 @@ export default async function DirtyGenesPage({
           initialNote={latest.note}
           previousScreenDate={latest.screenDate}
           draftPlanSlug={draftPlanSlug}
+          prefillChecked={prefill.autoChecked}
+          labFlags={prefill.labFlags}
+          prefillProvenance={prefill.provenance}
         />
       ) : (
         <div style={{ padding: 16, fontSize: 13, color: "var(--fm-text-tertiary)" }}>

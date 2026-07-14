@@ -81,6 +81,17 @@ export interface ClientSnp {
 
 export type DgBand = "clear" | "mild" | "moderate" | "high";
 
+/** An objective lab signal that escalates a pathway's band regardless of the
+ *  symptom tally (e.g. homocysteine 22 → MTHFR high). Computed server-side from
+ *  the client's health_snapshots by dirty-genes-prefill.ts. */
+export interface DgLabFlag {
+  pathwayId: string;
+  escalateTo: DgBand;
+  marker: string;
+  value?: number;
+  note: string;
+}
+
 export interface DgGeneticMatch {
   gene: string;
   rsid?: string;
@@ -109,6 +120,8 @@ export interface DgPathwayResult {
   genetics: DgGeneticMatch[];
   mechanism_slugs: string[];
   interventions?: DgInterventions;
+  /** set when a lab signal raised the band above the symptom tally */
+  labEscalated?: { to: DgBand; note: string; marker: string };
 }
 
 export interface DgResult {
@@ -193,13 +206,25 @@ export function scoreAssessment(
   q: DgQuestionnaire,
   checkedIds: string[],
   snps: ClientSnp[] = [],
+  labFlags: DgLabFlag[] = [],
 ): DgResult {
   const checked = new Set(checkedIds);
   const bands = q._meta.bands;
-  const pathways = q.pathways.map((p) => scorePathway(p, checked, bands, snps));
+  const pathways = q.pathways.map((p) => {
+    const base = scorePathway(p, checked, bands, snps);
+    // apply the strongest lab signal for this pathway; only ESCALATES.
+    const lf = labFlags
+      .filter((f) => f.pathwayId === p.id)
+      .sort((a, b) => BAND_ORDER[b.escalateTo] - BAND_ORDER[a.escalateTo])[0];
+    if (lf && BAND_ORDER[lf.escalateTo] > BAND_ORDER[base.band]) {
+      return { ...base, band: lf.escalateTo, labEscalated: { to: lf.escalateTo, note: lf.note, marker: lf.marker } };
+    }
+    return base;
+  });
   const flagged = pathways
     .filter((p) => BAND_ORDER[p.band] >= BAND_ORDER.moderate)
-    .sort((a, b) => b.fraction - a.fraction);
+    // escalated pathways sort by band first, then symptom fraction
+    .sort((a, b) => BAND_ORDER[b.band] - BAND_ORDER[a.band] || b.fraction - a.fraction);
   return {
     pathways,
     flagged,
