@@ -1,32 +1,98 @@
 slug: glutathione-conjugation
-display_name: Glutathione Conjugation (GST Pathway)
+display_name: Glutathione Conjugation & Antioxidant Defence (GST/GPX)
 aliases:
 - glutathione-S-transferase
 - GST detox
 - glutathione binding
+- GST pathway
+- GPX pathway
+- glutathione detox
+- phase II conjugation
+- GSH conjugation
+- phase II detox
+- xenobiotic conjugation
+- glutathione transfer
+- phase 2 detox
+- glutathione conjugation
+- antioxidant defense
+- glutathione-S-transferase pathway
+- glutathione antioxidant system
 category: metabolic
-summary: Glutathione (GSH), a tripeptide antioxidant, conjugates with reactive intermediates via glutathione-S-transferase
-  enzymes in Phase 2. This detoxifies electrophilic intermediates, reduces oxidative stress, and prepares the conjugate for
-  biliary excretion. Glutathione depletion is a critical vulnerability in toxic overload states.
+summary: GST enzymes conjugate glutathione to electrophilic toxins and oxidised lipids,
+  rendering them water-soluble for excretion. GPX enzymes use glutathione to neutralise
+  hydrogen peroxide and lipid peroxides, preventing cell membrane damage. Both require
+  adequate glutathione (itself requiring riboflavin for recycling) and selenium (GPX
+  cofactor). Variants reduce detox and antioxidant capacity.
 upstream_drivers:
 - phase-2-conjugation
 - cysteine-availability
 - oxidative-stress
+- GSTM1/GSTT1 null variants
+- heavy metal or chemical burden
+- poor methylation (limits glutathione synthesis)
+- inadequate glycine/cysteine intake
+- chemical-exposure
+- chronic-stress
+- methylation-cycle-disruption
+- insufficient-cysteine
+- insufficient-riboflavin
+- insufficient-selenium
+- environmental-toxin-exposure
+- pesticide-load
+- mold-exposure
+- glutathione-depletion
+- nutrient-deficiency
+- GST-GPX-variants
+- riboflavin-deficiency
+- selenium-deficiency
+- heavy-metal-burden
+- chronic-inflammation
+- xenobiotic-overload
 downstream_effects:
 - intermediate-detoxification
 - reduced-oxidative-stress
+- increased-chemical-sensitivity
+- elevated-oxidative-stress
+- DNA-damage-accumulation
+- autoimmune-risk
+- reduced-xenobiotic-clearance
+- chemical-sensitivity
+- methylation-cycle-disruption
+- bh4-depletion
+- mitochondrial-dysfunction
+- increased-oxidative-stress
+- toxin-accumulation
+- impaired-immune-function
+- accelerated-gene-dirtying
+- oxidative-stress
+- cell-membrane-damage
+- increased-cancer-risk
+- NOS3-uncoupling
 related_mechanisms:
 - phase-2-conjugation
 - reactive-intermediate-accumulation
+- methylation
+- oxidative-stress
+- hydrogen-peroxide-oxidative-stress
+- methylation-cycle-disruption
+- nitric-oxide-bioavailability
+- oxidative-stress-antioxidant-defense
 linked_to_topics:
 - liver-detoxification
+- gst-gpx-glutathione-detox
+- clean-genes-protocol
+- nos3-nitric-oxide-cardiovascular
+- comt-slow-catechol-clearance
 evidence_tier: strong
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Phase 2 Conjugation Pathways
-  quote: The other important pathway is glutathione, there's about 20 oxygens, so we can bind glutathione with anything, and
-    acetyl transferase.
-version: 1
+  quote: The other important pathway is glutathione, there's about 20 oxygens, so
+    we can bind glutathione with anything, and acetyl transferase.
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: A dirty GST or GPX affects your body's ability to rid itself of chemicals.
+version: 5
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

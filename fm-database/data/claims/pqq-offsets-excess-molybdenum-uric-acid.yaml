@@ -1,0 +1,24 @@
+slug: pqq-offsets-excess-molybdenum-uric-acid
+statement: Molybdenum used for sulfite sensitivity can, in excess and over time, raise
+  uric acid and provoke gout-like effects; PQQ is suggested to offset molybdenum's
+  side effects.
+evidence_tier: fm_specific_thin
+rationale: Molybdenum's role in sulfite oxidation is established; the uric-acid caution
+  and PQQ offset are the author's clinical guidance.
+coaching_translation: More molybdenum isn't better — too much can raise uric acid;
+  stop and reassess if joints flare.
+out_of_scope_notes: Dosing is confirm_with_clinician, especially with gout/urate history.
+caveats:
+- Source is a consumer trade book (Ben Lynch, Dirty Genes), not primary literature.
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- molybdenum
+- pqq-pyrroloquinoline-quinone
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 15: Spot Cleaning Your DAO'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-chunk5

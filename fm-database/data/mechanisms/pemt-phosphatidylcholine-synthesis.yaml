@@ -1,0 +1,58 @@
+slug: pemt-phosphatidylcholine-synthesis
+display_name: PEMT-Dependent Phosphatidylcholine Synthesis
+aliases:
+- phosphatidylcholine biosynthesis
+- CDP-choline pathway
+- cell membrane lipid synthesis
+- PEMT pathway
+- endogenous choline synthesis
+- SAMe-phospholipid synthesis
+category: metabolic
+summary: PEMT sequentially methylates phosphatidylethanolamine (PE) to phosphatidylcholine
+  (PC) using three SAMe molecules per reaction. This pathway is the only endogenous
+  route to PC synthesis in the liver and is upregulated by oestrogen. Variants reduce
+  PC production, impairing cell membrane integrity, bile flow, VLDL export, and gut
+  epithelial health.
+upstream_drivers:
+- low-same
+- methylation-cycle-disruption
+- low-estrogen-menopause
+- dirty-mthfr-snp
+- low-dietary-choline
+- PEMT-variant
+- low-estrogen
+- SAMe-deficiency
+- methylation-impairment
+- vegan-vegetarian-diet
+downstream_effects:
+- cell-membrane-dysfunction
+- fatty-liver-triglyceride-accumulation
+- bile-flow-impairment-sibo
+- muscle-membrane-failure
+- leaky-gut
+- fatty-liver
+- gallbladder-dysfunction
+- SIBO
+- cell-membrane-fragility
+- gut-barrier-dysfunction
+- pregnancy-complications
+related_mechanisms:
+- methylation-cycle-disruption
+- mitochondrial-dysfunction
+- methylation
+- bile-flow-regulation
+- gut-barrier-dysfunction
+linked_to_topics:
+- pemt-choline-cell-membrane
+- mthfr-methylation-support
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 11 — PEMT, Methylfolate, and the Methylation Cycle
+  quote: About 70 percent of your SAMe is used by your PEMT enzyme to support the
+    production of cell membranes, leaving only 30 percent for the other two hundred
+    processes that depend on methylation.
+version: 2
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

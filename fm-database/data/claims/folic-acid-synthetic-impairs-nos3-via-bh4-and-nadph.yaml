@@ -1,0 +1,31 @@
+slug: folic-acid-synthetic-impairs-nos3-via-bh4-and-nadph
+statement: Synthetic folic acid (as opposed to natural food folate) competes for NADPH—a
+  cofactor also required by NOS3—and elevates unmetabolised folic acid levels that
+  reduce BH4 availability, thereby impairing nitric oxide production.
+evidence_tier: plausible_emerging
+rationale: Lynch's specific claim about folic acid competing for NADPH and reducing
+  BH4 is mechanistically coherent and has some support in the literature on unmetabolised
+  folic acid and MTHFR variants, but the direct NOS3 implication at typical supplemental
+  doses is not firmly established by RCTs.
+coaching_translation: Recommend clients obtain folate from food sources (leafy greens)
+  or methylfolate supplements rather than synthetic folic acid, especially in the
+  context of cardiovascular or NOS3 support.
+caveats:
+- Source is a consumer trade book
+- Avoidance of all folic-acid-fortified foods is extreme advice that requires clinician
+  discussion in pregnancy
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 10 — Folic Acid: Your Foe'
+  quote: Your NOS3 depends on a compound called NADPH, which folic acid also uses.
+    So the more folic acid you consume, the more NADPH you pull away from supporting
+    your NOS3. Second, as your level of folic acid increases, your level of BH4 decreases.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

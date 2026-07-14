@@ -1,0 +1,27 @@
+slug: electrolyte-deficiency-symptoms
+display_name: Electrolyte Deficiency Symptoms
+aliases:
+- irregular heartbeat
+- orthostatic dizziness
+- poor sweating
+category: constitutional
+severity: common
+description: A cluster of symptoms including muscle twitching, palpitations, dizziness
+  on standing, excessive or absent sweating, and rapid urination after fluid intake,
+  indicating low electrolyte status.
+linked_to_topics:
+- clean-genes-protocol
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Electrolytes, Week 1
+  quote: Common signs of electrolyte deficiency are muscle contraction, irregular
+    heartbeat, mental and physical fatigue, brain fog, frequent urination, urinating
+    within minutes of drinking water, feeling dizzy upon standing, and not sweating
+    well.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

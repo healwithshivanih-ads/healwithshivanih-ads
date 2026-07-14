@@ -1,0 +1,29 @@
+slug: sleep-maintenance-insomnia
+display_name: Sleep Maintenance Insomnia / Night Waking
+aliases:
+- waking at night
+- 3am wakeups
+- can't stay asleep
+- needing a midnight snack to sleep
+category: sleep
+severity: common
+description: Waking after initial sleep onset and struggling to return to sleep—sometimes
+  with a need to eat. In this framework, fast MAOA depletes serotonin too rapidly,
+  leaving insufficient substrate for melatonin production needed to sustain sleep
+  architecture.
+when_to_refer: Refer for sleep study if sleep apnea is suspected (particularly relevant
+  with NOS3/snoring overlap) or if chronic insomnia is unresponsive to lifestyle changes.
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+- nos3-nitric-oxide-cardiovascular
+linked_to_mechanisms:
+- tryptophan-serotonin-melatonin-pathway
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 8 — Signs of a dirty MAOA
+  quote: Fast MAOA. Common signs include … difficulty staying asleep, fatigue, and
+    flat affect.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,5 +1,5 @@
 slug: insomnia
-display_name: Insomnia & Restless Sleep
+display_name: Insomnia / Poor Sleep Quality
 aliases:
 - trouble sleeping
 - night-time-alertness
@@ -42,12 +42,15 @@ aliases:
 - sleep-disturbances
 - disrupted sleep
 - disturbed sleep
+- difficulty winding down
+- tossing and turning
 category: sleep
 severity: common
-description: Insomnia and restless sleep linked to B5, B6, vitamin D, magnesium, and
-  sodium/potassium imbalance.
-when_to_refer: If sleep disturbance is severe, chronic, or associated with psychiatric
-  symptoms.
+description: Difficulty falling or staying asleep, linked by Lynch to late-evening
+  protein (overloading MAOA), excess blue light exposure, B-vitamin supplements taken
+  near bedtime, and circadian rhythm disruption from late screen use.
+when_to_refer: Suspected sleep apnea or snoring with daytime sleepiness warrants sleep
+  study referral.
 linked_to_topics:
 - low-progesterone
 - perimenopause
@@ -72,6 +75,12 @@ linked_to_topics:
 - adrenal-fatigue
 - nutrition-deficiency
 - depression-like-symptoms
+- comt-catechol-clearance
+- maoa-neurotransmitter-gene
+- mthfr-methylation-gene
+- maoa-neurotransmitter-balance
+- nos3-nitric-oxide
+- clean-genes-protocol
 linked_to_mechanisms:
 - low-progesterone
 - hpa-axis-dysregulation
@@ -90,6 +99,10 @@ linked_to_mechanisms:
 - cellular-hydration
 - dhea-cortisol-ratio-imbalance
 - mitochondrial-energy-production
+- catechol-methylation-comt
+- monoamine-oxidase-activity
+- methylation
+- catechol-clearance-comt-maoa
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: How to Balance Progesterone Hormone
@@ -133,10 +146,6 @@ sources:
   location: Symptoms Discussed
   quote: Insomnia and restless sleep - Linked to B5, B6, vitamin D, magnesium, sodium/potassium
     imbalance, and depression-mimicking magnesium patterns.
-- id: vitaone-fm-nutrition-cheatsheets
-  location: Symptoms Discussed
-  quote: Insomnia and restless sleep - Linked to B5, B6, vitamin D, magnesium, sodium/potassium
-    imbalance, and depression-mimicking magnesium patterns.
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
   quote: Poor sleep, jet lag, poor REM, and delayed sleep onset — Linked to low melatonin,
@@ -161,7 +170,12 @@ sources:
   location: Case Study — Rekha
   quote: had very low energy levels, now here are the very menopausal symptoms appearing.
     Disturbed sleep and was diagnosed with hypothyroidism also.
-version: 14
+- id: dirty-genes-lynch
+  location: Chapter 2 — Poor Sleep
+  quote: When you don't get a good night's sleep, you don't methylate properly. And
+    when you don't methylate properly, you don't make melatonin, a natural biochemical
+    that helps you fall asleep—and stay asleep.
+version: 16
 status: active
-updated_at: '2026-05-06'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

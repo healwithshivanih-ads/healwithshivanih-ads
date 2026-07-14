@@ -1,0 +1,32 @@
+slug: metformin-inhibits-dao-increases-histamine
+statement: Metformin slows DAO enzyme activity, increasing intestinal histamine accumulation
+  and worsening histamine intolerance symptoms in susceptible individuals.
+evidence_tier: plausible_emerging
+rationale: 'Lynch cites metformin as a DAO inhibitor based on published pharmacological
+  data. Mechanistically plausible given metformin''s effects on intestinal enzyme
+  expression. Relevant clinical implication: patients on metformin for diabetes or
+  PCOS may have worsened histamine symptoms and require greater dietary histamine
+  restriction.'
+coaching_translation: Clients taking metformin should be made aware they may be more
+  sensitive to histamine-containing foods and may need to follow a stricter low-histamine
+  diet.
+out_of_scope_notes: Never recommend stopping or adjusting metformin — refer to prescribing
+  physician.
+caveats:
+- Source is a consumer trade book. Degree of DAO inhibition by metformin and clinical
+  significance may vary by individual.
+- This does not mean metformin should be stopped — it is prescribed for important
+  metabolic indications.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_supplements:
+- copper
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Spot Cleaning Your DAO (Medications)
+  quote: Metformin slows the DAO enzyme, thereby increasing histamine.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

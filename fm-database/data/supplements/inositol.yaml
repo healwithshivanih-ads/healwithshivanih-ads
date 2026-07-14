@@ -1,25 +1,28 @@
 slug: inositol
-display_name: Myo-Inositol (+ D-Chiro Inositol for PCOS)
-category: other
+display_name: Inositol (Myo-Inositol)
+category: vitamin
 forms_available:
 - capsule
 - powder
 typical_dose_range:
   powder:
-    min: 2000
-    max: 4000
+    min: 500
+    max: 2000
     unit: mg
 timing_options:
 - with_breakfast
 - with_dinner
+- morning
 take_with_food: optional
 linked_to_topics:
 - hairfall
-notes_for_coach: Myo-inositol + D-chiro inositol at 40:1 ratio is the most studied
-  form for PCOS (insulin sensitization, androgen reduction, cycle regulation). Multiple
-  RCTs in PCOS. Combine with omega-3 and magnesium for hormonal hair loss.
-notes_for_client: Inositol is a natural compound that helps with insulin sensitivity
-  and hormonal balance, particularly useful in PCOS.
+- maoa-fast-serotonin-depletion
+notes_for_coach: Lynch recommends for fast MAOA to regulate serotonin and improve
+  mood. However, inositol burdens and slows MAOA in the slow variant — causes overstimulation.
+  Lynch notes lithium orotate and inositol act opposite to each other — if one worsens,
+  the other may help. Use as a MAOA discriminator. Start low.
+notes_for_client: A natural compound that helps regulate serotonin. Some people find
+  it improves mood; others find it overstimulating. Start with a small amount.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 linked_to_claims: []
@@ -27,10 +30,14 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Hairfall Cheatsheet
   quote: Inositol, Omega-3, Myo+D-Chiro inositol, Magnesium
-version: 1
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Fast MAOA
+  quote: Inositol. Start with a small dose to regulate serotonin and improve mood,
+    and increase as tolerated.
+version: 2
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Myo-inositol + d-chiro-inositol both safe. Used for gestational

@@ -1,0 +1,33 @@
+slug: dietary-nitrate-supports-nos3-cardiovascular
+statement: Increasing dietary nitrate through arginine-rich and nitrate-rich vegetables
+  (e.g., leafy greens, beets, arugula, celery) can support nitric oxide production
+  via NOS3 and may help manage cardiovascular risk associated with NOS3 variants.
+evidence_tier: plausible_emerging
+rationale: Dietary nitrate → nitrite → NO pathway is established. RCTs show blood
+  pressure lowering from dietary nitrate. NOS3-variant individuals may have heightened
+  dependence on this exogenous pathway. Lynch's specific food list is mechanistically
+  reasonable but not SNP-specific RCT-proven.
+coaching_translation: Eating more nitrate-rich and arginine-rich vegetables — especially
+  leafy greens, beetroot, celery, and arugula — helps your body make nitric oxide,
+  which keeps blood vessels healthy and flexible.
+out_of_scope_notes: Blood pressure management and cardiovascular risk reduction require
+  clinician oversight. Do not advise stopping antihypertensive medications.
+caveats:
+- The specific link between dietary nitrate and NOS3 genotype is mechanistically plausible
+  but not proven in SNP-stratified RCTs.
+- Source is a consumer trade book.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Success Stories
+  quote: 'I also advised him to increase his intake of arginine, a nutrient needed
+    to support the NOS3 enzyme that the NOS3 gene produces. So Jamal began loading
+    up his diet with arginine-rich foods: arugula, bacon, beets, bok choy, celery,
+    Chinese cabbage, cucumber, fennel, leeks, mustard greens, parsley, and watercress.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

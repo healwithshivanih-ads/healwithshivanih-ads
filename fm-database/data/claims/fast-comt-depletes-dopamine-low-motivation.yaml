@@ -1,0 +1,32 @@
+slug: fast-comt-depletes-dopamine-low-motivation
+statement: Fast COMT variants over-clear dopamine and norepinephrine, resulting in
+  chronically lower catecholamine tone — associated with ADHD-like inattention, low
+  motivation, depression tendency, and poor stress response.
+evidence_tier: plausible_emerging
+rationale: The Met allele vs. Val allele COMT distinction is genuinely bidirectional,
+  with fast metabolisers showing lower prefrontal dopamine in some studies. The ADHD
+  and depression associations are plausible but not robustly confirmed at population
+  level. Individual variation is large. Source is a consumer book.
+coaching_translation: If you have fast COMT traits (spacey, low motivation, need coffee
+  to function, feel great on high-protein days), your body burns through its 'focus
+  chemicals' too quickly. A high-protein diet, good sleep, and engaging activities
+  help your brain rebuild dopamine stores.
+caveats:
+- COMT variant alone does not determine ADHD or depression diagnosis
+- Dietary protein is the appropriate first intervention; tyrosine supplementation
+  requires clinician input
+linked_to_topics:
+- comt-gene-catechol-clearance
+linked_to_supplements:
+- tyrosine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Ritalin and Adderall'
+  quote: A fast COMT can lead to low dopamine levels, which are frequently responsible
+    for poor focus and lack of motivation.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

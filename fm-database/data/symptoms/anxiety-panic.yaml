@@ -1,0 +1,29 @@
+slug: anxiety-panic
+display_name: Anxiety / Panic
+aliases:
+- anxious
+- panicky
+- wired feeling
+- racing thoughts
+- on edge
+category: mood
+severity: common
+description: Episodes of anxiety, worry, or panic — particularly linked to slow COMT
+  causing accumulation of stress neurotransmitters, or to MTHFR-driven methylation
+  insufficiency affecting neurotransmitter balance.
+when_to_refer: Panic disorder diagnosis, agoraphobia, inability to function daily.
+linked_to_topics:
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+- methylation-cycle
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Meet Your Dirty MTHFR'
+  quote: Those of us with dirty MTHFRs can be blue and depressed some days, while
+    other days we're anxious.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

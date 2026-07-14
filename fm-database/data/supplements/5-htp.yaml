@@ -50,11 +50,11 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Insufficient safety data in pregnancy and lactation; affects
   fetal serotonin signalling.
-notes_for_coach: Direct serotonin precursor. Do NOT combine with SSRIs/SNRIs or MAOIs
-  (serotonin syndrome risk — potentially fatal). Also avoid with tramadol, triptans,
-  dextromethorphan, linezolid (all serotonergic). Should not be used long-term without
-  B6 cofactor. Caution in bipolar disorder (mania risk) and Parkinson's disease (interaction
-  with carbidopa). Clinician review recommended.
+notes_for_coach: 'Serotonin precursor — most appropriate for fast MAOA (serotonin
+  depleted too quickly) and as adjunct in fast COMT. CONTRAINDICATED with SSRIs (serotonin
+  syndrome risk). AVOID in slow MAOA (worsens excess serotonin). Sleep-maintenance
+  issues: Lynch suggests sustained-release form for overnight delivery. Lynch specifically
+  flags this worsens slow MAOA and makes slow COMT more irritable.'
 evidence_tier: plausible_emerging
 linked_to_topics:
 - anxiety
@@ -64,12 +64,16 @@ linked_to_topics:
 - sleep-optimisation
 - major-depressive-disorder
 - depression-mood-disorder
+- maoa-fast-serotonin-depletion
+- comt-fast-dopamine-depletion
 linked_to_mechanisms: []
 linked_to_claims:
 - serotonin-gut-microbiome-mood-link
 - murray-5htp-rem-deep-sleep
-notes_for_client: 5-HTP helps your body make serotonin — the mood-balancing brain
-  chemical. It's best taken in the evening.
+- 5-htp-raises-serotonin-fast-maoa
+notes_for_client: A natural building block for serotonin that may help mood and sleep.
+  Do NOT combine with antidepressant medications. If you feel anxious or irritable
+  after taking it, stop immediately.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
@@ -82,7 +86,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia
   quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
-version: 4
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Fast MAOA
+  quote: However, do not take this supplement if you're taking an SSRI.
+version: 5
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

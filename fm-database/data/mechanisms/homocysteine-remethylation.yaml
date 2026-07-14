@@ -3,28 +3,60 @@ display_name: Homocysteine Remethylation
 aliases:
 - methionine synthesis
 - homocysteine-to-methionine conversion
+- homocysteine conversion
+- methionine cycle
+- betaine pathway
+- homocysteine clearance
+- methionine regeneration
 category: metabolic
-summary: 5-MTHF donates a methyl group to cobalamin (B12), which then remethylates homocysteine to methionine via methionine
-  synthase. Both adequate active folate and functional B12 are required. MTHFR variants reduce 5-MTHF supply, slowing this
-  reaction and raising homocysteine.
+summary: Homocysteine generated during SAMe-dependent methylation reactions must be
+  remethylated back to methionine by MTHFR-derived 5-MTHF and methyl-B12, or transsulfurated
+  to cysteine (and eventually glutathione). Elevated homocysteine is a marker of impaired
+  methylation and an independent cardiovascular risk factor.
 upstream_drivers:
 - mthfr-enzyme-dysfunction
 - b12-deficiency
 - folate-deficiency
 - riboflavin-deficiency
+- methylfolate-availability
+- methylcobalamin-availability
+- choline-availability
+- oxidative-stress-level
+- MTHFR-variant
+- vitamin-B12-deficiency
+- riboflavin-B2-deficiency
 downstream_effects:
 - elevated-homocysteine
 - reduced-methionine
 - reduced-sam-methylation-capacity
+- SAMe-regeneration
+- glutathione-synthesis
+- cardiovascular-homocysteine-burden
+- cardiovascular-risk
+- nos3-uncoupling
+- oxidative-stress
 related_mechanisms:
 - mthfr-enzyme-dysfunction
 - methyl-trap
+- methylation-cycle
+- glutathione-conjugation
+- methylation
+- nitric-oxide-bioavailability
 linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+- mthfr-methylation-support
+- nos3-nitric-oxide-cardiovascular
+- pemt-choline-cell-membrane
 evidence_tier: strong
-sources: []
-version: 1
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: The Methylation Cycle Part 2'
+  quote: Homocysteine gets scooped up, methylated, and eventually turned into SAMe—and
+    the whole cycle begins again.
+version: 3
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

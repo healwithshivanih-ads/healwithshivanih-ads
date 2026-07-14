@@ -1,0 +1,83 @@
+slug: pemt-choline-cell-membrane
+display_name: PEMT — Choline Demand & Cell Membrane Integrity
+aliases:
+- PEMT gene
+- choline deficiency
+- choline synthesis
+- choline synthesis deficiency
+- choline synthesis gene
+- dirty PEMT
+- pemt-choline-demand
+- phosphatidylcholine deficiency
+- phosphatidylethanolamine N-methyltransferase
+- phosphatidylethanolamine N-methyltransferase variant
+summary: PEMT catalyses the endogenous synthesis of phosphatidylcholine in the liver
+  using SAMe as a methyl donor. Variants dramatically increase dietary choline requirements,
+  particularly during pregnancy, breastfeeding, and after menopause (when oestrogen
+  normally upregulates PEMT). Insufficiency manifests as fatty liver, gallbladder
+  problems, SIBO, musculoskeletal pain, and poor fat digestion.
+common_symptoms:
+- muscle-pain
+- fatty-liver-sensation
+- gallstones
+- sibo
+- cognitive-dullness-vegan-diet
+- fatty-liver
+- elevated-triglycerides
+- muscle-pain-weakness
+- brain-fog
+- fatigue
+- digestive-heaviness-after-fat
+- constipation
+- gallstones-gallbladder-issues
+- poor-fat-tolerance
+- generalised-pain
+- pregnancy-worsening-symptoms
+- breastfeeding-exhaustion
+- liver-discomfort
+- poor-fat-digestion
+red_flags:
+- acute gallbladder disease
+- liver enzyme elevation
+- SIBO unresponsive to treatment
+- jaundice-or-right-upper-quadrant-pain
+- neural-tube-defect-history
+- severe-gallbladder-disease
+- Severe cholestasis in pregnancy
+- Congenital birth defects (neural tube)
+- Active liver disease
+related_topics:
+- mthfr-methylation-gene
+- leaky-gut
+- nos3-nitric-oxide-cardiovascular
+- gst-gpx-glutathione-detox
+- mthfr-methylation-support
+- histamine-intolerance-dao
+- clean-genes-protocol
+- mthfr-methylation
+key_mechanisms:
+- phosphatidylcholine-synthesis
+- methylation
+- bile-flow-regulation
+- pemt-phosphatidylcholine-synthesis
+- methylation-cycle-disruption
+- mitochondrial-dysfunction
+- pemt-gene-choline-demand
+coaching_scope_notes: Coach can encourage eggs, meat, and leafy green vegetable intake,
+  flag low-fat vegan diets as high-risk, support gallbladder health via ox bile and
+  bitters. Phosphatidylcholine supplement dosing and oestrogen assessment require
+  clinician oversight.
+clinician_scope_notes: 'Order: serum choline, ALT (liver), GGT (fatty liver), CPK
+  (muscle membrane), TMAO, lipid peroxides, homocysteine, SAM:SAH ratio, estrogen
+  (DUTCH), fasting insulin. SIBO breath test if indicated.'
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: This gene affects your body's ability to produce phosphatidylcholine, an
+    essential compound that you need to maintain cell membranes, bile flow, muscle
+    health, and brain development.
+version: 3
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,33 @@
+slug: folic-acid-blocks-methylfolate-absorption
+statement: Synthetic folic acid (added to fortified grains and supplements) competes
+  with natural methylfolate at folate receptors, blocking cellular uptake of the active
+  form and potentially worsening methylation in individuals with MTHFR variants.
+evidence_tier: plausible_emerging
+rationale: Folic acid and 5-MTHF share folate receptors; unmetabolised folic acid
+  (UMFA) is documented in populations consuming fortified diets. Competitive inhibition
+  hypothesis is mechanistically plausible and supported by early evidence, but the
+  clinical magnitude of harm in non-MTHFR individuals is not firmly established.
+coaching_translation: Avoid foods with 'folic acid' listed as an ingredient (most
+  enriched breads, cereals, pasta) and choose natural folate sources like leafy greens
+  instead.
+caveats:
+- FDA fortification policy remains in place; mainstream consensus does not yet consider
+  folic acid harmful for the general population.
+- High-dose supplemental folic acid is more concerning than modest food fortification
+  for most people.
+- Source is a consumer book — clinician guidance recommended before changing supplementation.
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_supplements:
+- methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 2 — Folic Acid
+  quote: Because folic acid resembles folate, it gets into your folate receptors,
+    where it blocks natural folate from getting where it needs to—inside your cell.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

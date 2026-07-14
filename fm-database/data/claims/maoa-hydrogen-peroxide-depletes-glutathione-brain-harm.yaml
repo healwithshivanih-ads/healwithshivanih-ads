@@ -1,0 +1,31 @@
+slug: maoa-hydrogen-peroxide-depletes-glutathione-brain-harm
+statement: MAOA-driven catabolism of stress neurotransmitters generates hydrogen peroxide
+  as a by-product; under chronic stress, this exceeds glutathione's neutralising capacity,
+  causing oxidative damage to the brain, contributing to premature hair greying and
+  potentially to neurodegenerative conditions.
+evidence_tier: plausible_emerging
+rationale: MAOA-generated H2O2 and its neutralisation by GPX/glutathione is biochemically
+  established. The link to premature greying and neurodegeneration is plausible but
+  Lynch's causal framing is stronger than the current evidence supports.
+coaching_translation: Chronic stress generates oxidative stress inside the brain and
+  body. Supporting antioxidant status (through diet, sleep, and stress management)
+  helps protect the nervous system from this ongoing damage.
+caveats:
+- Source is a consumer trade book
+- Causal chain from MAOA H2O2 to ALS/Parkinson's is speculative at individual level
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — Going Gray: Part 1'
+  quote: Too much hydrogen peroxide affects more than hair color. It's bad for your
+    brain, too, commonly resulting in behavioral issues—erratic moods, memory problems,
+    irritability, and aggression.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

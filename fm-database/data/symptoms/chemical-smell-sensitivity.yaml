@@ -1,0 +1,26 @@
+slug: chemical-smell-sensitivity
+display_name: Chemical & Scent Sensitivity
+aliases:
+- sensitive to chemicals
+- fragrance intolerance
+- multiple chemical sensitivity
+- smell sensitivity
+category: other
+severity: common
+description: Adverse reactions to everyday chemicals, cleaning products, perfumes,
+  or environmental odours. A primary indicator of reduced glutathione detoxification
+  capacity (GST/GPX) in Lynch's framework.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_mechanisms:
+- glutathione-conjugation
+- xenobiotic-detoxification
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — GST/GPX symptom checklist
+  quote: I'm sensitive to chemicals and smells.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

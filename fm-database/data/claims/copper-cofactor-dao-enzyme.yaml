@@ -1,0 +1,31 @@
+slug: copper-cofactor-dao-enzyme
+statement: Copper is the primary enzymatic cofactor for diamine oxidase (DAO); copper
+  deficiency — often from chronic zinc supplementation — impairs DAO activity and
+  worsens histamine intolerance.
+evidence_tier: plausible_emerging
+rationale: DAO is a copper-dependent amine oxidase; this cofactor requirement is biochemically
+  established. Zinc competitively inhibits copper absorption, so chronic zinc supplementation
+  can induce relative copper deficiency. The clinical implication for histamine intolerance
+  is mechanistically plausible, though direct RCTs in this population are lacking.
+coaching_translation: If a client has been taking zinc supplements for a long time,
+  copper depletion may be contributing to histamine symptoms. Consider copper-rich
+  foods and check whether the multivitamin includes copper.
+caveats:
+- Source is a consumer trade book.
+- Excess copper is itself inflammatory and can worsen oxidative stress — do not over-supplement.
+- Lab assessment of copper status (serum copper, ceruloplasmin) recommended before
+  supplementing.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_supplements:
+- copper
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Additional Supplements for Your DAO
+  quote: The primary nutrient that your DAO enzyme needs to work properly is copper.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

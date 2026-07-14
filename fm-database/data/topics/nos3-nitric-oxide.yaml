@@ -1,0 +1,66 @@
+slug: nos3-nitric-oxide
+display_name: NOS3 & Nitric Oxide Bioavailability
+aliases:
+- NOS3 SNP
+- dirty NOS3
+- eNOS
+- eNOS gene
+- eNOS variant
+- endothelial nitric oxide synthase
+- nitric oxide deficiency
+- nos3-nitric-oxide-cardiovascular
+summary: NOS3 encodes endothelial nitric oxide synthase, which produces nitric oxide
+  for vascular tone, blood flow, and neurotransmission. Lynch links a 'dirty NOS3'
+  to mouth-breathing, snoring, and oxidative stress, and recommends nasal breathing,
+  nuts/seeds, and support of upstream methylation pathways.
+common_symptoms:
+- snoring
+- poor-sleep
+- cold-hands-and-feet
+- headaches
+- cold-hands-feet
+- high-blood-pressure
+- slow-wound-healing
+- migraines
+- sinus-congestion
+- erectile-dysfunction
+- anxiety
+- depression
+- asthma
+- snoring-sleep-apnea
+- memory-deterioration
+- mood-instability
+- atherosclerosis
+related_topics:
+- clean-genes-protocol
+- gst-gpx-glutathione-detox
+- mthfr-methylation
+- mthfr-methylation-gene
+- homocysteine-cardiovascular-risk
+- maoa-neurotransmitter-metabolism
+- pemt-choline-cell-membrane
+- mthfr-methylation-support
+key_mechanisms:
+- nitric-oxide-bioavailability
+- endothelial-function
+- vascular-inflammation
+- bh4-cofactor-depletion
+- oxidative-stress-superoxide-production
+- methylation-cycle-disruption
+- nos3-uncoupling-superoxide
+- arginine-availability
+coaching_scope_notes: Encourage nasal breathing, slow diaphragmatic breathing exercises.
+  Foods with nuts and seeds support NOS3. Address snoring with dentist referral. Support
+  upstream GST, MTHFR, PEMT.
+evidence_tier: fm_specific_thin
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: dirty-genes-lynch
+  location: Sleep — Soak and Scrub Week 1
+  quote: Snoring and mouth-breathing make for a poor night's sleep and, as we saw,
+    a dirty NOS3.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

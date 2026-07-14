@@ -1,0 +1,30 @@
+slug: nos3-uncoupling-produces-superoxide-not-no
+statement: When NOS3 lacks sufficient arginine and/or BH4—due to chronic inflammation,
+  infections, chemical exposure, or high homocysteine—it becomes 'uncoupled' and produces
+  superoxide (a dangerous free radical) instead of nitric oxide, worsening cardiovascular
+  and neurological outcomes.
+evidence_tier: strong
+rationale: NOS3 uncoupling via BH4 depletion or L-arginine insufficiency resulting
+  in superoxide production instead of NO is well documented in peer-reviewed cardiovascular
+  biology literature.
+coaching_translation: Cleaning up the underlying triggers (inflammation, oxidative
+  stress, infections, chemical exposure, poor methylation) is essential before adding
+  arginine—without fixing BH4 status, extra arginine simply produces more superoxide.
+caveats:
+- Arginine supplementation without addressing BH4 may be harmful in some contexts—refer
+  to clinician
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 10 — The Arginine Steal
+  quote: An uncoupled NOS3 is one that's operating with insufficient arginine and
+    BH4. Instead of making nitric oxide, which your blood vessels can use, an uncoupled
+    NOS3 makes superoxide, which we've seen is highly dangerous.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

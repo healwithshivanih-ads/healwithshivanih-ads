@@ -1,0 +1,26 @@
+slug: food-cravings
+display_name: Intense Food Cravings
+aliases:
+- carb cravings
+- compulsive eating urges
+- stress eating
+category: metabolic
+severity: common
+description: Specific desire for carbohydrate-dense or calorie-dense foods, particularly
+  under stress. Lynch attributes this to fast MAOA rapidly depleting serotonin/dopamine,
+  prompting the brain to seek precursor nutrients from carbs.
+linked_to_topics:
+- maoa-neurotransmitter-balance
+- clean-genes-protocol
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Food — Tune In to Your Body and Emotions
+  quote: When you're stressed out, you go for carbohydrates and suck down calorie-dense
+    foods to give yourself a feel-good dopamine rush.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

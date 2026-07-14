@@ -1,28 +1,21 @@
 slug: histamine-metabolism
-display_name: Histamine Metabolism (DAO and HNMT)
+display_name: Histamine Degradation (DAO/HNMT)
 aliases:
 - histamine breakdown
 - DAO/HNMT degradation pathway
 - histamine degradation
 - DAO/HNMT pathway
+- DAO enzyme pathway
+- gut histamine clearance
+- DAO pathway
+- diamine oxidase activity
+- histamine clearance
 category: metabolic
-summary: 'Histamine is degraded through two distinct enzyme systems. Diamine Oxidase
-
-  (DAO) operates extracellularly in the gut lumen and is the primary clearance
-
-  route for dietary histamine. Histamine-N-methyltransferase (HNMT) operates
-
-  intracellularly, clearing histamine within tissues including the CNS.
-
-  Enzyme efficiency depends on cofactors — vitamin C, B6, and copper for DAO;
-
-  SAMe for HNMT. NSAIDs, certain antibiotics, and alcohol inhibit DAO.
-
-  Insufficient enzyme capacity creates the "histamine bucket" overflow that
-
-  drives intolerance symptoms.
-
-  '
+summary: Diamine oxidase (DAO) degrades ingested histamine in the gut epithelium;
+  HNMT handles intracellular histamine methylation. Reduced DAO activity allows dietary
+  histamine to accumulate systemically, triggering pseudo-allergic reactions. Leftovers,
+  fermented foods, and aged proteins are high-histamine triggers. Molybdenum supports
+  sulfite/sulfur clearance adjacent to this pathway.
 upstream_drivers:
 - histamine-enzyme-inhibition
 - hnmt-variants
@@ -31,25 +24,58 @@ upstream_drivers:
 - dao-cofactor-deficiency
 - gut-mucosal-damage
 - dao-inhibiting-medications
+- DAO-enzyme-activity
+- gut-barrier-integrity
+- microbiome-balance
+- SAMe-availability
+- dietary-histamine-load
+- estrogen-level
+- reduced-DAO-activity
+- high-histamine-diet
+- leaky-gut
+- gut-dysbiosis
+- alcohol
 downstream_effects:
 - histamine-bucket-overflow
 - histamine-receptor-signaling
 - postprandial-flushing
 - migraine
+- immune-overactivation
+- gut-inflammation
+- neurological-histamine-effects
+- cardiovascular-histamine-effects
+- systemic-histamine-excess
+- pseudo-allergic-reactions
+- headaches
+- flushing
+- gi-symptoms
 related_mechanisms:
 - gut-microbiome-histamine-balance
 - histamine-receptor-signaling
+- methylation-cycle
+- leaky-gut
+- gut-microbiome-dysbiosis
+- methylation
+- gut-barrier-dysfunction
 linked_to_topics:
 - histamine-intolerance
+- dao-histamine-intolerance
+- leaky-gut
+- clean-genes-protocol
 evidence_tier: strong
 sources:
 - id: iemt
   location: Histamine Metabolism and Enzymes
-  quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase (HNMT).'
+  quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase
+    (HNMT).'
 - id: vinmec
   location: DAO Function Overview
   quote: DAO breaks down dietary histamine in the gut before systemic absorption.
-version: 2
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO: The Basics'
+  quote: 'The DAO enzyme helps process a key biochemical called histamine. Your body''s
+    supply of histamine exists in two places: within your cells and outside your cells.'
+version: 4
 status: active
-updated_at: '2024-05-22'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

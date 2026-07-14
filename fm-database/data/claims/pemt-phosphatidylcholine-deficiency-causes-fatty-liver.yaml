@@ -1,0 +1,31 @@
+slug: pemt-phosphatidylcholine-deficiency-causes-fatty-liver
+statement: Insufficient phosphatidylcholine—from dirty PEMT, low dietary choline,
+  or disrupted methylation—impairs the liver's ability to assemble and secrete VLDL
+  particles, causing triglycerides to accumulate in hepatocytes and contributing to
+  non-alcoholic fatty liver disease.
+evidence_tier: plausible_emerging
+rationale: The role of phosphatidylcholine in hepatic VLDL secretion and the association
+  of choline deficiency with fatty liver are well established in rodent models and
+  human dietary studies; the PEMT-SNP-specific framing is an extension into nutrigenomics
+  with more limited direct RCT support.
+coaching_translation: Clients with fatty liver—especially those who eat few animal
+  products, are postmenopausal, or have MTHFR variants—should prioritise choline-rich
+  foods and avoid alcohol, excess refined carbs, and sugar, which further stress liver
+  function.
+linked_to_topics:
+- pemt-choline-cell-membrane
+linked_to_supplements:
+- phosphatidylcholine
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 11 — PEMT: The Basics'
+  quote: Phosphatidylcholine also helps package and move triglycerides, a type of
+    fat, out of your liver. Without enough phosphatidylcholine, you can develop a
+    condition known as fatty liver.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

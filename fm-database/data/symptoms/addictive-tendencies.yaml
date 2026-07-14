@@ -1,0 +1,29 @@
+slug: addictive-tendencies
+display_name: Addictive Tendencies
+aliases:
+- prone to addiction
+- compulsive behaviour
+- easily addicted
+- video game addiction
+- social media overuse
+category: mood
+severity: common
+description: Susceptibility to excessive engagement with rewarding behaviours (gaming,
+  social media, substances, gambling). Lynch links this to fast COMT and resultant
+  low baseline dopamine, driving dopamine-seeking behaviour.
+when_to_refer: Active substance use disorder requires specialist addiction medicine
+  or psychology referral.
+linked_to_topics:
+- comt-fast-dopamine-depletion
+linked_to_mechanisms:
+- catechol-methylation
+- dopamine-norepinephrine-regulation
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — COMT fast symptom checklist
+  quote: 'I find that I can easily get addicted to things or activities: video games,
+    social media, smoking, drinking, shopping, drugs, gambling.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

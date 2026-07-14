@@ -1,0 +1,29 @@
+slug: pms-menstrual-issues
+display_name: PMS & Menstrual Issues
+aliases:
+- premenstrual syndrome
+- menorrhagia
+- menstrual cramps
+- clots in period
+category: hormonal
+severity: common
+description: Premenstrual syndrome, heavy or cramping menstruation, menstrual blood
+  clots — linked to estrogen accumulation from slow COMT variant failing to clear
+  estrogen metabolites, or insufficient methylation supporting estrogen excretion.
+when_to_refer: Suspected fibroids, endometriosis, or abnormal uterine bleeding requiring
+  imaging or hormonal evaluation.
+linked_to_topics:
+- comt-gene-catechol-clearance
+- mthfr-methylation-gene
+linked_to_mechanisms:
+- estrogen-methylation
+- catechol-clearance-comt-maoa
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Your COMT in Action'
+  quote: The extra estrogen gave Margo glowing skin and good sexual function, but
+    it also caused monster PMS and put her at risk for breast and ovarian cancer.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

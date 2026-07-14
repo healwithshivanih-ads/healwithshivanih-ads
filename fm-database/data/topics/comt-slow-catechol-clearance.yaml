@@ -1,0 +1,45 @@
+slug: comt-slow-catechol-clearance
+display_name: Slow COMT — Catechol & Estrogen Clearance
+aliases:
+- dirty COMT slow
+- catechol-O-methyltransferase slow variant
+- slow estrogen clearance
+summary: COMT methylates and clears catecholamines (dopamine, epinephrine, norepinephrine)
+  and catechol estrogens. A slow variant leads to prolonged neurotransmitter and estrogen
+  activity, manifesting as irritability, PMS, insomnia, and risk of estrogen-sensitive
+  conditions. High-protein or catechol-rich diets amplify the problem.
+common_symptoms:
+- slow-to-calm-after-irritation
+- pms
+- insomnia-night-owl
+- uterine-fibroids
+- caffeine-sensitivity-irritability
+- risk-aversion
+- long-focus-capacity
+red_flags:
+- Estrogen-sensitive cancer history
+- Severe treatment-resistant PMS/PMDD
+related_topics:
+- mthfr-methylation-support
+- histamine-intolerance-dao
+- maoa-slow-serotonin-excess
+- gst-gpx-glutathione-detox
+key_mechanisms:
+- catechol-methylation
+- estrogen-catechol-clearance
+- dopamine-norepinephrine-regulation
+coaching_scope_notes: 'Coach can guide: reducing catechol-rich foods (coffee, green
+  tea, chocolate), timed protein intake, stress management, cruciferous vegetable
+  intake, magnesium forms. Supplement dosing (SAMe, methylfolate, DIM/I3C) requires
+  clinician oversight. Flag estrogen-containing contraceptive or HRT interactions.'
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — Being Happy with Your Haplotype
+  quote: SNPs in both MTHFR and COMT (slow) increase aggression, irritability, and
+    your risk of estrogen-related cancers.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

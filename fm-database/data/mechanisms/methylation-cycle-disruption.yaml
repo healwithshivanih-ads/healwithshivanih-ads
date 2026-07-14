@@ -1,0 +1,46 @@
+slug: methylation-cycle-disruption
+display_name: Methylation Cycle Disruption
+aliases:
+- SAMe depletion
+- MTHFR pathway dysfunction
+- one-carbon metabolism disruption
+- homocysteine elevation
+category: metabolic
+summary: The methylation cycle converts methionine to SAMe, the universal methyl donor
+  for over 200 reactions including neurotransmitter metabolism, DNA methylation, glutathione
+  synthesis, phosphatidylcholine production, and histamine clearance. Disruption—from
+  MTHFR variants, B12/folate deficiency, oxidative stress, or excess demand—elevates
+  homocysteine, depletes SAMe, impairs BH4 production, and creates downstream pathology
+  across multiple organ systems.
+upstream_drivers:
+- mthfr-snp
+- low-methylfolate
+- low-b12
+- chronic-stress
+- low-glutathione
+- high-homocysteine
+downstream_effects:
+- high-homocysteine-adma-elevation
+- low-same-pemt-dysfunction
+- low-bh4-nos3-uncoupling
+- impaired-glutathione-synthesis
+- nos3-dirty
+related_mechanisms:
+- pemt-phosphatidylcholine-synthesis
+- nitric-oxide-bioavailability
+- bh4-cofactor-depletion
+- glutathione-conjugation
+linked_to_topics:
+- pemt-choline-cell-membrane
+- nos3-nitric-oxide-cardiovascular
+- gst-gpx-glutathione-detox
+evidence_tier: strong
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — What Makes GST/GPX Dirty?
+  quote: Whenever your Methylation Cycle struggles, you have trouble making all the
+    glutathione your body needs. This puts a big strain on your GST/GPX.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

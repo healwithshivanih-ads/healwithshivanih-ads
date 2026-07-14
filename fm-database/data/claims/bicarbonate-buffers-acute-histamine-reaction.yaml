@@ -1,0 +1,22 @@
+slug: bicarbonate-buffers-acute-histamine-reaction
+statement: Sodium or potassium bicarbonate taken with water can rapidly blunt an acute
+  histamine reaction after acidic or high-histamine food.
+evidence_tier: fm_specific_thin
+rationale: An acute self-care tactic from the book; symptomatic buffering, not a treatment
+  for the underlying intolerance.
+coaching_translation: A little bicarbonate in water can take the edge off a sudden
+  food-histamine flare.
+out_of_scope_notes: ''
+caveats:
+- Source is a consumer trade book (Ben Lynch, Dirty Genes), not primary literature.
+linked_to_topics: []
+linked_to_mechanisms:
+- histamine-metabolism
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 15: Spot Cleaning Your DAO'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-chunk5

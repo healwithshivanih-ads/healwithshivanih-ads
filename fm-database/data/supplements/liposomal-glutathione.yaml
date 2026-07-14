@@ -1,0 +1,47 @@
+slug: liposomal-glutathione
+display_name: Liposomal Glutathione
+category: other
+forms_available:
+- liquid
+- capsule
+typical_dose_range:
+  liquid:
+    min: 1
+    max: 2
+    unit: teaspoons
+timing_options:
+- morning
+- on_empty_stomach
+- with_breakfast
+- with_lunch
+take_with_food: avoid
+linked_to_topics:
+- gst-gpx-glutathione-detox
+- clean-genes-protocol
+- nos3-nitric-oxide-cardiovascular
+linked_to_claims:
+- glutathione-supports-chemical-detox-gst-gpx
+- liposomal-glutathione-supports-detox-pathways
+- liposomal-glutathione-supports-gst-gpx-detox
+- glutathione-protects-nitric-oxide-from-superoxide
+notes_for_coach: Liposomal delivery bypasses gut degradation of oral glutathione.
+  Lynch recommends intermittent use (a few times per week initially, not daily) to
+  avoid over-suppression of endogenous glutathione synthesis. Requires adequate selenium
+  and riboflavin to regenerate spent glutathione. Also protects NOS3-derived nitric
+  oxide from converting to superoxide.
+notes_for_client: Glutathione is your body's master antioxidant. The liposomal form
+  delivers it directly into your cells. Take a few times a week to start — daily long-term
+  is not usually necessary.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
+  quote: 'I advised her to take liposomal glutathione (an over-the-counter supplement)
+    on a graduated dosage: she started with a tiny bit and moved up slowly in response
+    to her symptoms. This supplemented her body''s own inadequate production of glutathione,
+    a key antioxidant.'
+version: 3
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

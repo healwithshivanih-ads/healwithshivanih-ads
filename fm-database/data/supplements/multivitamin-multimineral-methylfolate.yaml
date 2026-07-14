@@ -1,0 +1,40 @@
+slug: multivitamin-multimineral-methylfolate
+display_name: Multivitamin/Multimineral with Methylfolate (no folic acid)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 0.25
+    max: 1.0
+    unit: tablets
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- mthfr-methylation
+- clean-genes-protocol
+linked_to_claims:
+- methylfolate-preferred-over-folic-acid
+- b-vitamins-stimulating-near-bedtime
+notes_for_coach: 'Must contain methylfolate and folinic acid — NOT folic acid. Ideally
+  iron-free unless client is confirmed iron-deficient. Never within 5 hours of bedtime
+  (B vitamins are stimulating). Use Pulse Method: take only if feeling fatigued or
+  brain-fogged; stop when feeling well.'
+notes_for_client: Look for 'methylfolate' or '5-MTHF' on the label, not 'folic acid'.
+  Take with breakfast or lunch only — never at night. Start with a quarter of the
+  suggested dose.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Multivitamin, Week 1
+  quote: choose a multivitamin with methylfolate and folinic acid, which are the best
+    forms of supplemental folate available. Iron can be inflammatory, so ideally find
+    a multi without iron.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

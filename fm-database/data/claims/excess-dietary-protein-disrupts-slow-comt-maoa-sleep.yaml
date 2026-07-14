@@ -1,0 +1,31 @@
+slug: excess-dietary-protein-disrupts-slow-comt-maoa-sleep
+statement: Consuming high amounts of protein late in the day can overstimulate catecholamine
+  production in individuals with slow COMT or slow MAOA variants, leading to sleep
+  disruption and anxiety.
+evidence_tier: fm_specific_thin
+rationale: Dietary tyrosine and tryptophan are precursors to dopamine/norepinephrine
+  and serotonin respectively. In slow COMT/MAOA, these neurotransmitters accumulate.
+  High evening protein increases precursor load. Mechanistically plausible but direct
+  human RCT evidence for this specific genotype-diet interaction is limited.
+coaching_translation: If you identify as slow COMT or slow MAOA, keep dinner light
+  on protein — focus on vegetables, salads, and healthy fats in the evening.
+caveats:
+- Single-SNP determinism overstated in consumer framing
+- Clinician or certified genetics counselor should interpret COMT/MAOA genotyping
+out_of_scope_notes: Specific genotype interpretation from SNP testing should involve
+  a clinician.
+linked_to_topics:
+- comt-catechol-clearance
+- maoa-neurotransmitter-balance
+- clean-genes-protocol
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Gene Meal Guide — Chapter 13
+  quote: 'Slow COMT, Slow MAOA: Dinner with little protein, more salad, and fat.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,32 @@
+slug: dim-i3c-breaks-down-estrogen-supports-slow-comt
+statement: DIM (diindolylmethane) and indole-3-carbinol promote the metabolism of
+  oestrogen toward less potent hydroxylated metabolites, reducing catechol oestrogen
+  accumulation and easing the burden on the slow COMT enzyme.
+evidence_tier: plausible_emerging
+rationale: DIM and I3C promote CYP1A1/1A2-mediated 2-hydroxylation of oestrogen (producing
+  weaker 2-OHE1/2) over the 16α-hydroxylation pathway. This shifts the oestrogen metabolite
+  profile in a direction consistent with reduced catechol oestrogen accumulation.
+  Several small human trials support DIM's effect on oestrogen metabolism. The direct
+  benefit to COMT is mechanistic extrapolation.
+coaching_translation: Clients with slow COMT who experience PMS, fibroid history,
+  or oestrogen-sensitive symptoms may benefit from DIM/I3C alongside cruciferous vegetable
+  intake.
+caveats:
+- Source is a consumer trade book.
+- Hormone-sensitive cancer history requires clinician guidance before DIM/I3C use.
+- These should not be used to self-manage oestrogen without clinician oversight.
+linked_to_topics:
+- comt-slow-catechol-clearance
+linked_to_supplements:
+- dim-indole-3-carbinol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow COMT
+  quote: Indole-3-carbinol and DIM. These supplements help break down estrogens so
+    that they can be eliminated from your body.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

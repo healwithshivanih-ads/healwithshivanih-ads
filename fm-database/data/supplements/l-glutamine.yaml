@@ -7,7 +7,7 @@ forms_available:
 - tablet
 typical_dose_range:
   powder:
-    min: 1.6
+    min: 1
     max: 5
     unit: g
   capsule:
@@ -23,7 +23,7 @@ timing_options:
 - on_waking
 - with_lunch
 - with_dinner
-take_with_food: optional
+take_with_food: avoid
 linked_to_topics:
 - thyroid
 - autoimmunity-leaky-gut-triad
@@ -45,6 +45,8 @@ linked_to_topics:
 - gut-skin-hormone-axis
 - peptic-ulcer-disease
 - helicobacter-pylori-infection
+- clean-genes-protocol
+- histamine-intolerance-dao
 linked_to_claims:
 - leaky-gut-triggers-hashimotos
 - gluten-free-reduces-hashimotos-triggers
@@ -66,11 +68,15 @@ linked_to_claims:
 - 5rs-repair-includes-l-glutamine
 - l-glutamine-1600mg-superior-conventional-pu-treatment
 - cabbage-juice-heals-pu-10-days
-notes_for_coach: L-Glutamine supports hexosamine biosynthesis in gastric mucoproteins.
-  1.6 g/day cited as clinically effective; verify dose with clinician. Also present
-  in high concentrations in raw cabbage juice.
-notes_for_client: L-Glutamine is an amino acid that helps rebuild the protective lining
-  of your stomach and intestine. It's naturally found in high amounts in cabbage.
+- l-glutamine-heals-small-intestine-supports-dao
+notes_for_coach: Primary fuel for small intestinal enterocytes where DAO enzyme resides.
+  Lynch recommends starting at 1 g and titrating up. Can increase irritability in
+  some — if this occurs, pause and take magnesium, B6, and niacin for a few days before
+  resuming. More effective when combined with aloe vera, zinc carnosine, and marshmallow
+  root. Use after pathogen load is reduced.
+notes_for_client: An amino acid that feeds and repairs the cells lining your small
+  intestine, helping your histamine-clearing enzyme work better. Start with a small
+  amount — some people feel more irritable initially.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -142,10 +148,14 @@ sources:
   location: Nutritional Factors — Cabbage, p. 783
   quote: A dose of 1.6 g q.d. l-glutamine is more effective than conventional treatment;
     almost all patients tested showed complete relief and healing within 4 weeks.
-version: 17
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: Use zinc carnosine, aloe vera gel, and L-glutamine to help heal the stomach
+    ulcer.
+version: 19
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 pregnancy_safety: caution
 lactation_safety: likely_safe
 pregnancy_safety_note: Limited pregnancy data; food amounts (lentils, cabbage, beef)

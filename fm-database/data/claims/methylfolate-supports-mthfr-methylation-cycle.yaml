@@ -1,0 +1,36 @@
+slug: methylfolate-supports-mthfr-methylation-cycle
+statement: L-methylfolate (5-MTHF) supplementation can restore impaired methylation
+  cycle function in individuals with MTHFR variants, reducing homocysteine and supporting
+  neurotransmitter and DNA methylation.
+evidence_tier: plausible_emerging
+rationale: MTHFR variants reduce conversion of dietary folate to the active 5-MTHF
+  form required for homocysteine remethylation. Supplementing the active end-product
+  bypasses this enzymatic step. RCT evidence exists for homocysteine lowering with
+  5-MTHF; functional benefit across all MTHFR-linked symptoms is extrapolated from
+  mechanistic plausibility in Lynch's consumer model rather than direct RCT evidence
+  for all claimed outcomes.
+coaching_translation: For clients with suspected MTHFR issues, start with a low-dose
+  active folate (400 mcg) and titrate slowly. Stop immediately if anxiety, irritability,
+  or hives develop.
+out_of_scope_notes: Dosing above 400 mcg and interpretation of homocysteine or folate
+  receptor antibody labs require clinician oversight.
+caveats:
+- Source is a consumer trade book (Lynch 2018) — not primary literature. Mechanistic
+  plausibility is strong; direct RCT evidence for the full symptom cluster is limited.
+- Folic acid (synthetic form) blocks folate receptors and must be removed from diet/supplements
+  before supplementing 5-MTHF.
+- B12 deficiency will trap methylfolate and prevent its use.
+linked_to_topics:
+- mthfr-methylation-support
+linked_to_supplements:
+- methylfolate-5-mthf
+- riboflavin-b2
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your MTHFR
+  quote: L-5-MTHF or 6S-MTHF. These are both quality forms of methylfolate.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

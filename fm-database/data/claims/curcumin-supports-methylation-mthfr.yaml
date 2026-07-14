@@ -1,0 +1,34 @@
+slug: curcumin-supports-methylation-mthfr
+statement: Curcumin may support healthy methylation and MTHFR function, in part through
+  anti-inflammatory and Nrf2-activating pathways that reduce the oxidative stress
+  burden on methylation enzymes.
+evidence_tier: fm_specific_thin
+rationale: Curcumin's Nrf2 activation upregulates glutathione synthesis and reduces
+  oxidative stress, potentially easing demands on the methylation pathway. Direct
+  MTHFR-specific RCT evidence is absent. Lynch's recommendation is clinically used
+  but thin on peer-reviewed support in this specific context.
+coaching_translation: Turmeric/curcumin is a potent anti-inflammatory that may indirectly
+  support your body's ability to methylate well by reducing oxidative stress. Best
+  absorbed when taken with fat and black pepper.
+caveats:
+- No direct RCT evidence for curcumin specifically improving MTHFR function or methylation
+  in humans.
+- Bioavailability of standard curcumin is very low — liposomal or piperine-enhanced
+  forms are recommended.
+- Source is a consumer trade book.
+linked_to_topics:
+- mthfr-methylation-gene
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Success Stories
+  quote: I also had her take curcumin and PQQ, both of which would support her MTHFR
+    gene and promote healthy methylation.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

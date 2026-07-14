@@ -1,0 +1,29 @@
+slug: difficulty-calming-down
+display_name: Difficulty Calming Down / Prolonged Anger
+aliases:
+- can't calm down
+- prolonged irritability
+- hair-trigger temper
+- slow to power down
+- anger that lingers
+category: mood
+severity: common
+description: Once upset or stressed, the individual takes hours to return to baseline.
+  Associated with slow MAOA, which allows dopamine and norepinephrine to persist at
+  elevated levels, preventing the nervous system from downregulating.
+when_to_refer: Refer if aggressive behaviour poses safety risks or if anger management
+  has failed.
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+linked_to_mechanisms:
+- maoa-neurotransmitter-catabolism
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 8 — Signs of a dirty MAOA
+  quote: Slow MAOA. Common signs include difficulty falling asleep, overactive startle
+    reflex, headaches, irritability, mood swings, prolonged anxiety, rage and/or aggressive
+    behavior, and trouble relaxing or powering down.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

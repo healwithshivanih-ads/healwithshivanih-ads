@@ -1,0 +1,36 @@
+slug: creatine-conserves-same-spares-methylation
+statement: Supplemental creatine reduces endogenous creatine synthesis, thereby conserving
+  SAMe for other methylation-dependent reactions including COMT function and phosphatidylcholine
+  production.
+evidence_tier: plausible_emerging
+rationale: Endogenous creatine synthesis from arginine, glycine, and methionine is
+  the single largest consumer of SAMe in the body. This is biochemically well established.
+  Supplemental creatine bypassing endogenous synthesis and thereby freeing SAMe is
+  mechanistically sound, though direct RCTs demonstrating improved COMT function or
+  PC synthesis from creatine supplementation are limited.
+coaching_translation: Creatine is a good, well-tolerated strategy to support methylation
+  resources, particularly for those who can't tolerate methylfolate or methylcobalamin
+  directly.
+caveats:
+- Source is a consumer trade book — not primary literature.
+- Claims about autism/speech in children are anecdotal — parents should discuss with
+  a paediatrician.
+- Drink adequate water when using creatine.
+linked_to_topics:
+- comt-slow-catechol-clearance
+- pemt-choline-cell-membrane
+- mthfr-methylation-support
+linked_to_supplements:
+- creatine-monohydrate
+- phosphatidylcholine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow COMT
+  quote: When you take supplemental creatine, you conserve methyl donors and SAMe,
+    leaving your SAMe free for other things, like helping your slow COMT.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

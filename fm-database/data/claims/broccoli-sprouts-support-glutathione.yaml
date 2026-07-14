@@ -1,0 +1,29 @@
+slug: broccoli-sprouts-support-glutathione
+statement: Broccoli and radish sprouts—particularly broccoli sprouts harvested on
+  day three—contain sulforaphane and other glucosinolates that induce Nrf2-mediated
+  upregulation of GST and GPX enzymes, supporting endogenous glutathione production.
+evidence_tier: plausible_emerging
+rationale: Sulforaphane from broccoli sprouts inducing Nrf2/ARE pathway and upregulating
+  phase II detox enzymes including GSTs is well supported in peer-reviewed literature
+  with RCT evidence in some populations.
+coaching_translation: Growing or purchasing broccoli sprouts and eating them raw (day
+  3 after sprouting for peak sulforaphane) is an evidence-backed food strategy to
+  support GST enzyme activity and glutathione levels. Pair with radish sprouts for
+  added effect per Lynch.
+caveats:
+- Sulfur-sensitive clients should introduce brassica sprouts cautiously
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_mechanisms:
+- glutathione-conjugation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — Making the Most of GST/GPX
+  quote: Grow broccoli sprouts and radish sprouts. … Eating broccoli sprouts on the
+    third day after they sprout gives maximum benefits.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

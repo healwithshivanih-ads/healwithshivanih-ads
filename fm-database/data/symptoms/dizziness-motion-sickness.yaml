@@ -1,0 +1,25 @@
+slug: dizziness-motion-sickness
+display_name: Dizziness / Motion Sickness
+aliases:
+- vertigo
+- carsickness
+- seasickness
+- nausea and dizziness
+category: neurological
+severity: common
+description: Susceptibility to motion sickness, vertigo, or dizziness — associated
+  with excess histamine affecting vestibular function, a common DAO-related symptom
+  pattern.
+linked_to_topics:
+- dao-histamine-intolerance
+linked_to_mechanisms:
+- histamine-metabolism
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO The Basics'
+  quote: Common signs include... car sickness and seasickness.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

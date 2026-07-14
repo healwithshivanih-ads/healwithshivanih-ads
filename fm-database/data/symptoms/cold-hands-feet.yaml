@@ -1,0 +1,27 @@
+slug: cold-hands-feet
+display_name: Cold Hands and Feet
+aliases:
+- poor peripheral circulation
+- Raynaud-like symptoms
+- extremity coldness
+category: cardiovascular
+severity: common
+description: Persistent coldness of the hands and feet, reflecting reduced peripheral
+  vasodilation. Associated with NOS3 variants limiting nitric oxide production and
+  with MTHFR-associated hyperhomocysteinaemia impairing endothelial function.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+- mthfr-methylation-gene
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+- methylation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 4 — Laundry List 1
+  quote: I have cold hands and feet — [listed under both MTHFR and NOS3 in Laundry
+    List 1].
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

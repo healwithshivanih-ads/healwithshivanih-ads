@@ -1,0 +1,34 @@
+slug: leaky-gut-amplifies-dao-histamine-burden
+statement: Intestinal permeability (leaky gut) impairs DAO-mediated histamine clearance
+  by reducing the number of DAO-producing enterocytes and simultaneously increasing
+  histamine generation — creating a reinforcing cycle of food reactivity.
+evidence_tier: plausible_emerging
+rationale: DAO enzyme is primarily expressed in intestinal epithelial cells; gut damage
+  reduces this cellular substrate. Concurrently, increased antigen exposure through
+  leaky tight junctions stimulates mast cell and immune histamine release. The reinforcing
+  cycle described is mechanistically coherent. Source is a consumer book.
+coaching_translation: Healing your gut lining is one of the most powerful things you
+  can do for histamine tolerance. As your intestinal cells regenerate, you literally
+  grow more of the DAO enzyme that breaks histamine down.
+caveats:
+- '''Leaky gut'' as a clinical entity remains partially contested in mainstream medicine,
+  though intestinal permeability is measurable'
+- Gut-healing protocol design requires clinician or registered dietitian oversight
+linked_to_topics:
+- dao-histamine-intolerance
+- leaky-gut
+linked_to_mechanisms:
+- leaky-gut
+- histamine-metabolism
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: Hello, Leaky Gut'
+  quote: The DAO enzyme—whose job, we've noted, is to process histamine—lives in the
+    cells of your gut wall. So if your gut wall is distressed, with fewer cells and
+    less integrity, you're going to have less of that DAO enzyme.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,38 @@
+slug: nadh-coq10
+display_name: NADH + CoQ10
+category: other
+forms_available:
+- tablet
+- lozenge
+typical_dose_range:
+  tablet:
+    min: 5
+    max: 20
+    unit: mg
+timing_options:
+- on_waking
+- on_empty_stomach
+take_with_food: avoid
+linked_to_topics:
+- comt-fast-dopamine-depletion
+- maoa-fast-serotonin-depletion
+linked_to_claims:
+- nadh-coq10-wakes-mitochondria-replaces-caffeine
+notes_for_coach: Lynch recommends sublingual tablet dissolved under the tongue while
+  still in bed — reportedly wakes within minutes. Used for fast COMT and fast MAOA
+  who struggle to rise and function without caffeine. Can serve as a non-stimulating
+  caffeine replacement. Do not take with food. Only use in the morning.
+notes_for_client: These compounds give your cells' energy factories an immediate fuel
+  boost. Dissolve one under your tongue while still in bed for a caffeine-free wake-up
+  effect.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Fast COMT
+  quote: Take one tablet and let it dissolve under your tongue while you're still
+    lying in bed. This can literally wake you up in minutes.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

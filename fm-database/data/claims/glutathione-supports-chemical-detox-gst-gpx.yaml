@@ -1,0 +1,34 @@
+slug: glutathione-supports-chemical-detox-gst-gpx
+statement: Adequate glutathione levels are essential for neutralising environmental
+  chemicals, heavy metals, and reactive oxygen species, and GST/GPX variants that
+  reduce glutathione utilisation increase susceptibility to chemical sensitivity and
+  oxidative damage.
+evidence_tier: plausible_emerging
+rationale: GST/GPX biology and the role of glutathione in Phase II detoxification
+  is well characterised. GSTM1/GSTT1 null genotypes are associated with increased
+  oxidative stress and chemical sensitivity in epidemiological studies, though the
+  clinical value of routine supplementation is not consensus-established.
+coaching_translation: Supporting your body's natural detox system — through clean
+  air, clean water, organic food, and nutrients that support glutathione (like glycine,
+  cysteine, and selenium) — is especially important if you react strongly to chemicals.
+out_of_scope_notes: Liposomal glutathione dosing and IV glutathione are clinician-only
+  decisions.
+caveats:
+- Association between GST null genotypes and disease risk varies across populations
+  and exposures.
+- Source is a consumer trade book.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- liposomal-glutathione
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Cleaning Up Your Dirty Genes
+  quote: Those are the genes that help us use glutathione, a key detox agent that
+    our body produces. Without glutathione, we have a heck of a time ridding our body
+    of toxins.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

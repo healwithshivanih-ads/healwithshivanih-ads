@@ -1,0 +1,34 @@
+slug: folate-receptor-blockade-folic-acid
+display_name: Folic Acid Blockade of Folate Receptors
+aliases:
+- folic acid methylation block
+- synthetic folate competitive inhibition
+- unmetabolised folic acid
+category: metabolic
+summary: Synthetic folic acid (the oxidised form of B9 added to fortified foods) competitively
+  occupies folate receptors without being rapidly converted to active methylfolate.
+  This blocks natural dietary folate from entering cells, thereby impairing the methylation
+  cycle — particularly problematic in individuals with MTHFR variants who already
+  convert folate inefficiently.
+upstream_drivers:
+- consumption of folic-acid-fortified foods (bread, cereal, pasta, rice)
+- folic acid supplement use
+- MTHFR variant slowing conversion
+downstream_effects:
+- impaired-methylation
+- reduced-methylfolate-availability
+- worsened-MTHFR-phenotype
+related_mechanisms:
+- methylation
+linked_to_topics:
+- mthfr-methylation-gene
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 2 — Folic Acid
+  quote: Because folic acid resembles folate, it gets into your folate receptors,
+    where it blocks natural folate from getting where it needs to—inside your cell.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

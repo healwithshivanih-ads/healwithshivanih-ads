@@ -1,0 +1,32 @@
+slug: steady-protein-intake-stabilises-neurotransmitters-fast-maoa
+statement: Distributing moderate protein intake across all meals—rather than skipping
+  breakfast or relying on simple carbohydrates—helps stabilise serotonin, dopamine,
+  and norepinephrine levels in people with fast MAOA, reducing mood swings, carb cravings,
+  and sleep disruption.
+evidence_tier: plausible_emerging
+rationale: Protein distribution effects on appetite, glycaemia, and neurotransmitter
+  precursor availability have reasonable mechanistic and epidemiological support;
+  the specific MAOA-SNP context is Lynch's clinical application.
+coaching_translation: Encourage clients to start the day with a protein-containing
+  breakfast (eggs, fish, poultry) and include protein with each subsequent meal, rather
+  than relying on simple carbs alone. This is a central lifestyle prescription for
+  MAOA support.
+caveats:
+- Source is a consumer trade book
+- RCT evidence specifically in MAOA-variant populations is lacking
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — MAOA: Mood Swings and Carb Cravings'
+  quote: Research has shown that if you consume a moderate amount of protein throughout
+    the day, your neurotransmitters will be more stable. This will reduce your food
+    cravings, mood swings, and tendency to binge, and it will also help you sleep
+    through the night.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

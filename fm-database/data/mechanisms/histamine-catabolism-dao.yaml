@@ -1,0 +1,59 @@
+slug: histamine-catabolism-dao
+display_name: Intestinal Histamine Catabolism (DAO)
+aliases:
+- histamine degradation
+- DAO enzyme pathway
+- intestinal histamine clearance
+- diamine oxidase pathway
+- dietary histamine degradation
+- gut histamine clearance
+category: metabolic
+summary: Diamine oxidase (DAO), expressed in intestinal epithelial cells, is the main
+  enzyme degrading ingested histamine before it enters systemic circulation. DAO requires
+  copper as a cofactor and is impaired by gut inflammation, SIBO, pathogenic bacteria,
+  and certain drugs (metformin, NSAIDs). Reduced DAO activity allows histamine accumulation,
+  triggering pseudo-allergic and inflammatory reactions.
+upstream_drivers:
+- DAO gene variant
+- gut inflammation/leaky-gut
+- metformin use
+- antacid use
+- high-histamine dietary load
+- impaired methylation
+- DAO-gene-variant
+- gut-inflammation
+- SIBO
+- pathogenic-bacteria-overgrowth
+- leaky-gut
+- copper-deficiency
+- metformin
+- NSAIDs
+downstream_effects:
+- histamine-accumulation
+- mast-cell-activation-overlap
+- food-intolerance-symptoms
+- headache
+- skin-reactions
+- systemic-histamine-excess
+- mast-cell-activation
+- vascular-permeability
+- neurological-symptoms
+related_mechanisms:
+- methylation
+- gut-barrier-dysfunction
+- bacterial-histamine-production
+- mast-cell-activation
+linked_to_topics:
+- dao-histamine-metabolism
+- histamine-intolerance-dao
+- mthfr-methylation-support
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 3 — The Super Seven: A Snapshot'
+  quote: DAO affects your body's response to histamine from food and bacteria, which
+    in turn affects your vulnerability to allergy symptoms and food intolerance.
+version: 2
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

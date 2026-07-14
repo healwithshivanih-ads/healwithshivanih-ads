@@ -1,0 +1,41 @@
+slug: leaky-gut
+display_name: Leaky Gut (Intestinal Permeability)
+aliases:
+- intestinal permeability
+- intestinal hyperpermeability
+- gut-barrier-dysfunction
+summary: Loosening of the tight junctions between gut epithelial cells allows partially
+  digested food particles and bacterial products to enter the bloodstream, provoking
+  systemic immune activation, chronic inflammation, and excess histamine release that
+  compounds DAO burden and food reactivity.
+common_symptoms:
+- food-reactions
+- brain-fog
+- joint-pain
+- fatigue
+- bloating
+red_flags:
+- autoimmune-flare
+- unexplained-weight-loss
+- blood-in-stool
+related_topics:
+- dao-histamine-intolerance
+- microbiome-dysbiosis
+key_mechanisms:
+- leaky-gut
+- chronic-inflammation
+- histamine-metabolism
+coaching_scope_notes: Coaches can address dietary triggers (gluten, cow dairy), stress
+  reduction, adequate sleep, and fresh whole-food focus. Gut-healing supplement protocols
+  require clinician oversight.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO: Oversensitivity to Foods'
+  quote: Leaky gut is a condition of the intestinal lining that allows partially digested
+    matter into the bloodstream, where it triggers an immune response.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

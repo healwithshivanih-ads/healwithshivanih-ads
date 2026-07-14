@@ -1,0 +1,210 @@
+# dirty_genes_assessment.yaml
+#
+# Coach-side functional pathway-burden screen, modelled on the "Dirty Genes"
+# framework (Ben Lynch, 2018). Screens SEVEN gene-associated pathways for
+# FUNCTIONAL burden using symptoms + lifestyle — NOT a genetic diagnosis.
+#
+# House rules (see coaching-scope-of-practice topic + nutrigenomics memory):
+#   - This is a COACHING tool. It scores how heavily a client's symptoms load
+#     onto each pathway. It does NOT diagnose a gene defect.
+#   - Genetics (if a report is on file) is an OVERLAY only — a nudge, never a
+#     verdict. Effect sizes are modest, low-penetrance, genotype x environment.
+#     Many genotype differences resolve with adequate nutrient status.
+#   - Coach educates lifestyle + nutrition. Never interprets SNPs diagnostically
+#     or prescribes. Dose-bearing supplement items are confirm_with_clinician.
+#
+# Item text is authored in-house (functional FM symptom associations), NOT
+# copied from the book's questionnaire. Intervention slugs are verified against
+# the live catalogue.
+#
+# Scoring (see src/lib/fmdb/dirty-genes.ts): burden % = sum(checked weights) /
+# sum(all weights) per pathway. Bands: <15 clear, 15-39 mild, 40-64 moderate,
+# >=65 high. Genetics overlay flags but never changes the band.
+
+_meta:
+  version: 1
+  framework: "Dirty Genes (Ben Lynch, 2018) — functional pathway-burden screen"
+  source: dirty-genes-lynch
+  bands:
+    clear: 0.15      # below this = clear
+    mild: 0.40       # below this = mild
+    moderate: 0.65   # below this = moderate; at/above = high
+  scope_note: >-
+    Coaching screen only. Scores functional burden on 7 gene-associated
+    pathways from symptoms and lifestyle. Not a genetic diagnosis. Genetics
+    overlay is supporting context (nudge, not verdict). Coach educates
+    lifestyle; never interprets SNPs diagnostically or prescribes.
+
+pathways:
+  - id: mthfr
+    gene: MTHFR
+    label: "Methylation (MTHFR)"
+    plain: "The methylation master — folate/B12 into homocysteine clearance, neurotransmitters, DNA and detox methylation."
+    mechanism_slugs: [methylation, homocysteine-remethylation, methylation-cycle-dysfunction]
+    genes:
+      - gene: MTHFR
+        rsids: [rs1801133, rs1801131]   # C677T, A1298C
+        risk_note: "TT (C677T) or compound het can raise homocysteine when folate/B2 status is low — the difference typically resolves once serum folate is adequate."
+    items:
+      - { id: mthfr_homocysteine, text: "Homocysteine has run high on a blood test", weight: 2 }
+      - { id: mthfr_bvit_response, text: "Low mood, irritability or fatigue that eased noticeably on B vitamins / folate", weight: 1 }
+      - { id: mthfr_folic_intolerance, text: "Feels 'off' on standard multivitamins or folic-acid-fortified processed foods", weight: 1 }
+      - { id: mthfr_reproductive, text: "History of recurrent miscarriage, neural-tube defect or pregnancy complications (self or first-degree family)", weight: 2 }
+      - { id: mthfr_low_greens, text: "Eats very few leafy greens / low dietary folate", weight: 1 }
+      - { id: mthfr_mood_anxiety, text: "Long-standing anxiety, brain fog or depression", weight: 1 }
+      - { id: mthfr_chem_sensitive, text: "Feels easily 'toxic' or chemically sensitive", weight: 1 }
+    interventions:
+      supplements: [methylfolate-b9, methylcobalamin, vitamin-b2-riboflavin, tmg]
+      foods_emphasise: ["dark leafy greens (spinach, methi, amaranth)", "legumes", "beetroot", "sunflower seeds"]
+      foods_reduce: ["folic-acid-fortified processed/packaged foods", "excess alcohol"]
+      lifestyle: ["reduce alcohol (depletes folate + B6)", "cook greens lightly to preserve folate"]
+      labs_to_track: ["homocysteine", "serum/RBC folate", "vitamin B12"]
+      caution: "Start LOW with methylfolate — over-methylation causes anxiety/irritability in some. Dose is confirm_with_clinician, especially with active mood symptoms."
+
+  - id: comt
+    gene: COMT
+    label: "Catechol clearance (COMT)"
+    plain: "Clears catecholamines (adrenaline, dopamine) and processes estrogen. 'Slow' COMT = wired, sensitive to stress; 'fast' = flat, low focus."
+    mechanism_slugs: [catechol-clearance-comt-maoa, comt-cyp-pathway-activity, estrogen-phase-ii-methylation-deficit]
+    genes:
+      - gene: COMT
+        rsids: [rs4680]   # Val158Met
+        risk_note: "Met/Met ('slow') clears catecholamines and estrogen more slowly — tends toward stress sensitivity, PMS, harder to wind down. Val/Val ('fast') tends flatter/lower focus."
+    items:
+      - { id: comt_overstimulated, text: "Easily overstimulated — racing mind, hard to switch off at night", weight: 2 }
+      - { id: comt_caffeine, text: "Very sensitive to caffeine (jittery on a small amount)", weight: 1 }
+      - { id: comt_stress_reactive, text: "Highly stress-reactive, anxious or 'on edge' under pressure", weight: 1 }
+      - { id: comt_perfectionist, text: "Driven / perfectionist / struggles to relax", weight: 1 }
+      - { id: comt_estrogen, text: "Estrogen-dominant pattern — PMS, tender breasts, heavy periods, fibroids", weight: 2 }
+      - { id: comt_irritable, text: "Irritable, quick to anger or tearful with hormonal shifts", weight: 1 }
+      - { id: comt_pain_sensitive, text: "Low pain threshold / very sensitive to stimulation", weight: 1 }
+    interventions:
+      supplements: [magnesium-glycinate, dim, calcium-d-glucarate]
+      foods_emphasise: ["magnesium-rich foods (pumpkin seeds, greens)", "cruciferous veg for estrogen clearance", "adequate protein"]
+      foods_reduce: ["caffeine + green-tea catechins if slow-COMT and wired", "excess processed sugar"]
+      lifestyle: ["stress down-regulation (yoga, breathwork, slow evenings)", "avoid over-scheduling", "protect sleep"]
+      labs_to_track: ["estrogen metabolites (if available)", "stress/sleep patterns"]
+      caution: "Slow-COMT types can react badly to high-dose methyl donors (methylfolate/TMG) — go gentle. Confirm dosing with clinician."
+
+  - id: dao
+    gene: DAO
+    label: "Histamine clearance (DAO)"
+    plain: "Diamine oxidase breaks down dietary histamine in the gut. Low DAO = food/wine reactions, flushing, headaches, congestion."
+    mechanism_slugs: [histamine-metabolism, histamine-enzyme-inhibition]
+    genes:
+      - gene: AOC1
+        rsids: [rs10156191, rs1049742, rs1049793]
+        risk_note: "Variants can lower DAO enzyme activity, reducing tolerance to dietary histamine — heavily modified by gut health, B6 status and medications."
+    items:
+      - { id: dao_food_react, text: "Reacts to high-histamine foods — aged cheese, wine, fermented foods, leftovers", weight: 2 }
+      - { id: dao_flush, text: "Flushing, hives or itching after certain foods", weight: 1 }
+      - { id: dao_headache_food, text: "Headaches or migraines triggered by food or red wine", weight: 1 }
+      - { id: dao_congestion, text: "Frequent nasal congestion, runny nose or sinus issues", weight: 1 }
+      - { id: dao_alcohol, text: "Symptoms clearly worse with alcohol", weight: 1 }
+      - { id: dao_gut, text: "Ongoing bloating, loose stools or multiple food intolerances", weight: 1 }
+      - { id: dao_leftovers, text: "Feels worse eating leftovers / slow-cooked or aged proteins", weight: 1 }
+    interventions:
+      supplements: [dao-enzyme, vitamin-c, quercetin, vitamin-b6-pyridoxine]
+      foods_emphasise: ["fresh (not aged) proteins", "freshly cooked meals", "vitamin-C rich produce (amla, guava, capsicum)"]
+      foods_reduce: ["aged cheese, cured meats, wine, fermented foods, leftovers (trial low-histamine period)"]
+      lifestyle: ["cook and eat fresh; freeze leftovers promptly", "address gut health (histamine is largely a gut-integrity story)"]
+      labs_to_track: ["symptom-food diary", "gut health markers if available"]
+      caution: "A low-histamine trial is diagnostic-by-elimination, not a permanent diet. Reintroduce as gut heals. Rule out mast-cell issues with clinician if severe."
+
+  - id: maoa
+    gene: MAOA
+    label: "Serotonin/dopamine turnover (MAOA)"
+    plain: "Breaks down serotonin, dopamine, noradrenaline. 'Slow' = mood swings + carb cravings; 'fast' = low serotonin, low mood."
+    mechanism_slugs: [catechol-clearance-comt-maoa]
+    genes:
+      - gene: MAOA
+        rsids: [rs6323]
+        risk_note: "Activity variants shift monoamine turnover — expressed strongly through blood-sugar stability, sleep and stress, so lifestyle dominates."
+    items:
+      - { id: maoa_mood_swings, text: "Mood swings — up then irritable/agitated", weight: 2 }
+      - { id: maoa_carb_craving, text: "Reaches for carbs, sugar or chocolate to lift mood", weight: 1 }
+      - { id: maoa_temper, text: "Quick temper or aggression when stressed or hungry", weight: 1 }
+      - { id: maoa_sleep, text: "Trouble falling or staying asleep", weight: 1 }
+      - { id: maoa_low_mood, text: "Persistent low mood or low motivation", weight: 1 }
+      - { id: maoa_hangry, text: "Gets 'hangry' — noticeably worse mood when a meal is late", weight: 1 }
+    interventions:
+      supplements: [magnesium-glycinate, vitamin-b2-riboflavin, 5-htp, l-tryptophan]
+      foods_emphasise: ["protein at every meal for stable blood sugar", "tryptophan-rich foods (eggs, seeds, dairy)", "complex carbs not refined sugar"]
+      foods_reduce: ["refined sugar / mood-driven snacking", "skipping meals"]
+      lifestyle: ["regular meals to steady blood sugar", "morning light + movement for serotonin", "protect sleep"]
+      labs_to_track: ["mood + energy diary", "blood-sugar pattern"]
+      caution: "5-HTP / tryptophan interact with antidepressants (serotonin risk) — do NOT combine without a prescriber. Blood-sugar stability first, supplements last."
+
+  - id: gst_gpx
+    gene: GST/GPX
+    label: "Glutathione detox (GST/GPX)"
+    plain: "Glutathione-based defence against oxidative stress and toxins. Low capacity = chemically sensitive, poor detox tolerance."
+    mechanism_slugs: [glutathione-conjugation, glutathione-depletion, glutathione-peroxidase-activity]
+    genes:
+      - gene: GSTM1
+        rsids: [gstm1-null]
+        risk_note: "GSTM1/GSTT1 null (whole-gene deletions) reduce one conjugation route — usually compensated by diet/lifestyle and other enzymes."
+    items:
+      - { id: gst_chem_sensitive, text: "Very sensitive to smells, perfumes, exhaust or cleaning products", weight: 2 }
+      - { id: gst_detox_intolerant, text: "Feels awful ('toxic') with detoxes, saunas or new supplements", weight: 1 }
+      - { id: gst_grey_early, text: "Premature greying or ageing", weight: 1 }
+      - { id: gst_mould, text: "Reacts badly to damp / mould exposure", weight: 1 }
+      - { id: gst_chronic_illness, text: "History of high oxidative load — chronic illness, heavy medication or toxin exposure", weight: 1 }
+      - { id: gst_low_veg, text: "Eats few cruciferous/sulphur vegetables", weight: 1 }
+      - { id: gst_alcohol_smoke, text: "Regular alcohol, smoking or high pollution exposure", weight: 1 }
+    interventions:
+      supplements: [nac, l-glutathione, selenium, sulforaphane]
+      foods_emphasise: ["cruciferous veg (broccoli, cabbage, sprouts)", "sulphur foods (onion, garlic, eggs)", "colourful antioxidant produce"]
+      foods_reduce: ["alcohol", "chargrilled/burnt foods", "processed food chemical load"]
+      lifestyle: ["reduce household chemical/toxin exposure", "gentle sweating (build up slowly)", "filter water/air if exposed"]
+      labs_to_track: ["symptom diary on exposures", "oxidative-stress markers if available"]
+      caution: "Go SLOW with anything that mobilises toxins — support elimination first. Dose is confirm_with_clinician."
+
+  - id: nos3
+    gene: NOS3
+    label: "Nitric oxide / circulation (NOS3)"
+    plain: "Makes nitric oxide for blood-vessel dilation and circulation. Poor function = cold extremities, BP and cardiovascular strain."
+    mechanism_slugs: [nitric-oxide-bioavailability, nitric-oxide-production, nitric-oxide-deficiency]
+    genes:
+      - gene: NOS3
+        rsids: [rs1799983]
+        risk_note: "Variants can lower nitric-oxide output; strongly modified by exercise, arginine/nitrate intake and cardiometabolic health."
+    items:
+      - { id: nos3_cold, text: "Cold hands and feet / poor circulation", weight: 1 }
+      - { id: nos3_bp, text: "High or borderline blood pressure", weight: 2 }
+      - { id: nos3_family_cvd, text: "Family history of heart disease or stroke", weight: 1 }
+      - { id: nos3_recovery, text: "Poor exercise tolerance or slow recovery / breathlessness", weight: 1 }
+      - { id: nos3_healing, text: "Slow wound healing", weight: 1 }
+      - { id: nos3_sedentary, text: "Largely sedentary", weight: 1 }
+      - { id: nos3_erectile, text: "Erectile difficulty / circulation-related complaints", weight: 1 }
+    interventions:
+      supplements: [l-arginine, vitamin-c]
+      foods_emphasise: ["dietary nitrates (beetroot, leafy greens, arugula)", "citrus / vitamin C", "watermelon (citrulline)"]
+      foods_reduce: ["excess salt", "processed foods", "smoking"]
+      lifestyle: ["regular aerobic exercise (biggest NO lever)", "nasal breathing", "sunlight exposure"]
+      labs_to_track: ["blood pressure", "lipid panel", "fasting glucose/HbA1c"]
+      caution: "BP and cardiovascular symptoms are MEDICAL — coach lifestyle only, refer for assessment. Arginine dosing is confirm_with_clinician."
+
+  - id: pemt
+    gene: PEMT
+    label: "Choline / membranes / liver (PEMT)"
+    plain: "Makes phosphatidylcholine for cell membranes, bile and liver fat export. Low activity + low-choline diet = fatty liver, gallbladder, muscle and hormone issues."
+    mechanism_slugs: [pemt-gene-choline-demand]
+    genes:
+      - gene: PEMT
+        rsids: [rs7946]
+        risk_note: "Variants raise dietary choline demand — most relevant in postmenopausal women and low-choline (vegan/very-low-egg) diets."
+    items:
+      - { id: pemt_gallbladder, text: "Gallbladder trouble, fatty liver or sluggish bile", weight: 2 }
+      - { id: pemt_fat_digest, text: "Poor tolerance of fatty meals / fat maldigestion", weight: 1 }
+      - { id: pemt_muscle, text: "Unexplained muscle aches or weakness", weight: 1 }
+      - { id: pemt_low_choline_diet, text: "Vegan / very low egg + organ-meat intake (low dietary choline)", weight: 2 }
+      - { id: pemt_postmeno, text: "Postmenopausal (lower estrogen-driven choline synthesis)", weight: 1 }
+      - { id: pemt_hormone, text: "Hormone-related symptoms alongside digestive issues", weight: 1 }
+    interventions:
+      supplements: [phosphatidylcholine, cdp-choline, tmg]
+      foods_emphasise: ["eggs (yolks)", "choline foods (if non-veg: liver, fish)", "cruciferous veg", "sunflower lecithin for vegetarians"]
+      foods_reduce: ["excess alcohol (liver load)", "very high-fat meals if bile-sluggish"]
+      lifestyle: ["support bile flow (bitter foods, hydration, movement)", "adequate protein"]
+      labs_to_track: ["liver enzymes (ALT/AST/GGT)", "lipid panel", "ultrasound if fatty-liver suspected"]
+      caution: "Vegetarian/vegan clients are the key group — choline gap is real. Sunflower lecithin + eggs (if ovo) are veg-safe options. Confirm supplement dosing with clinician."

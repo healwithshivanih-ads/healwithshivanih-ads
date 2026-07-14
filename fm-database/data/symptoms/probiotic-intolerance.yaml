@@ -1,0 +1,27 @@
+slug: probiotic-intolerance
+display_name: Intolerance to Common Probiotics
+aliases:
+- probiotics make me worse
+- Lactobacillus intolerance
+- probiotic sensitivity
+category: gi
+severity: common
+description: Worsening of symptoms (flushing, headache, gut upset, insomnia) after
+  taking Lactobacillus-containing probiotics. Occurs because certain Lactobacillus
+  strains (L. casei, L. bulgaricus) produce or liberate histamine, further loading
+  an already impaired DAO system.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_mechanisms:
+- histamine-catabolism-dao
+- bacterial-histamine-production
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Spot Cleaning Your DAO
+  quote: Avoid Lactobacillus probiotics until you restore your gut, including Lactobacillus
+    casei and Lactobacillus bulgaricus.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

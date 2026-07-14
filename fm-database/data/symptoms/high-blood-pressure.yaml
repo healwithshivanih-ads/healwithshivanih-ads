@@ -1,0 +1,28 @@
+slug: high-blood-pressure
+display_name: High Blood Pressure / Hypertension
+aliases:
+- hypertension
+- elevated BP
+- essential hypertension
+category: cardiovascular
+severity: concerning
+description: Sustained elevation of blood pressure. In the NOS3 framework, impaired
+  nitric oxide production reduces vasodilation, increasing pressure within vessel
+  walls. Mouth-breathing, sinus congestion, stress, and inactivity can all compound
+  this effect.
+when_to_refer: Always refer for blood pressure measurement and medical management;
+  lifestyle coaching is adjunctive only.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 10 — NOS3: Heart Issues'
+  quote: When your blood vessels don't dilate properly, the blood flowing through
+    them puts more pressure on the vessel walls. This can happen even when you're
+    otherwise in pretty good health. It's called essential hypertension.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

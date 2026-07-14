@@ -1,0 +1,43 @@
+slug: comt-fast-dopamine-depletion
+display_name: Fast COMT — Dopamine & Norepinephrine Depletion
+aliases:
+- dirty COMT fast
+- fast COMT variant
+- dopamine burn-off
+summary: A fast COMT variant clears catecholamines too rapidly, leaving insufficient
+  dopamine and norepinephrine. This presents as poor focus, low drive, depression,
+  sensation-seeking behaviour, addictive tendencies, and difficulty waking in the
+  morning. Exercise, protein intake, and certain supplements can help raise and sustain
+  catecholamine levels.
+common_symptoms:
+- difficulty-paying-attention
+- depression
+- risk-taking-sensation-seeking
+- fidgeting
+- morning-grogginess
+- addictive-tendencies
+- low-libido
+- craving-high-fat-high-sugar-foods
+red_flags:
+- ADHD diagnosis in childhood
+- Substance use disorder
+related_topics:
+- maoa-fast-serotonin-depletion
+- comt-slow-catechol-clearance
+key_mechanisms:
+- catechol-methylation
+- dopamine-norepinephrine-regulation
+coaching_scope_notes: Coach can encourage morning exercise, adequate protein at each
+  meal, brain-stimulating social activities. NADH/CoQ10, tyrosine, and 5-HTP dosing
+  require clinician oversight especially with psychiatric medications.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — Being Happy with Your Haplotype
+  quote: The haplotype of SNPs in COMT (fast) and MAOA (fast) increases your risk
+    for ADD/ADHD, lack of drive, and depression.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

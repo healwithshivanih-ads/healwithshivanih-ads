@@ -1,0 +1,42 @@
+slug: hydrogen-peroxide-oxidative-stress
+display_name: Hydrogen Peroxide Accumulation & Oxidative Stress
+aliases:
+- H2O2 accumulation
+- oxidative stress from MAOA
+- reactive oxygen species
+category: metabolic
+summary: MAOA catabolism of stress neurotransmitters generates hydrogen peroxide as
+  a by-product. Normally, GPX uses glutathione to convert H2O2 to water. When glutathione
+  is depleted by chronic stress, infection, or poor diet, excess H2O2 damages DNA,
+  hair pigment cells, mitochondria, and brain tissue, contributing to premature graying,
+  neurodegeneration, and mood disturbance.
+upstream_drivers:
+- maoa-neurotransmitter-catabolism
+- chronic-stress
+- infection
+- low-glutathione
+- insufficient-selenium
+downstream_effects:
+- glutathione-depletion
+- methylation-cycle-disruption
+- hair-graying
+- neurological-damage
+- bh4-depletion
+related_mechanisms:
+- glutathione-conjugation
+- maoa-neurotransmitter-catabolism
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+- gst-gpx-glutathione-detox
+- nos3-nitric-oxide-cardiovascular
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — Going Gray: Part 1'
+  quote: During times of stress, your body produces a lot of norepinephrine and dopamine,
+    as we've seen. Your MAOA needs to remove them from your system—and a natural by-product
+    of that process is hydrogen peroxide.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

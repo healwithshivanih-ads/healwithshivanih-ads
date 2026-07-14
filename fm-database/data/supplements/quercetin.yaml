@@ -1,13 +1,13 @@
 slug: quercetin
 display_name: Quercetin
-category: other
+category: herb
 forms_available:
 - capsule
 - tablet
 typical_dose_range:
   capsule:
     min: 250
-    max: 1000
+    max: 500
     unit: mg
   tablet:
     min: 250
@@ -18,17 +18,10 @@ timing_options:
 - with_dinner
 - with_lunch
 take_with_food: required
-notes_for_coach: Quercetin is a bioflavonoid with three coach-relevant roles. (1)
-  Mast cell stabiliser — inhibits degranulation and the histidine-to-histamine conversion;
-  this is its strongest evidence base. (2) Anti-inflammatory — inhibits NF-kB signalling
-  and lowers inflammatory cytokines; relevant where hsCRP is elevated. (3) Cardiometabolic
-  — mild antihypertensive and endothelial support, and it inhibits xanthine oxidase
-  so it modestly lowers serum uric acid (useful when uric acid runs high). Bioavailability
-  is poor in standard form — liposomal or phytosome preparations (e.g. quercetin-bromelain
-  combos) are markedly better absorbed. Typical clinical dose 500-1000 mg two to three
-  times daily with food; onset is gradual (2-4 weeks for full effect). CAUTION — quercetin
-  has mild antiplatelet activity; review before use in any client with a bleeding
-  tendency, recent epistaxis, or on blood thinners.
+notes_for_coach: Lynch recommends as part of a combination (stinging nettle, luteolin,
+  bromelain, quercetin) for natural histamine blocking — stabilises mast cells and
+  reduces histamine release. Useful adjunct while gut healing is underway. Generally
+  well tolerated.
 contraindications:
   conditions: []
   medications:
@@ -54,6 +47,7 @@ linked_to_topics:
 - essential-hypertension
 - chronic-inflammation
 - asthma
+- histamine-intolerance-dao
 linked_to_mechanisms:
 - mast-cell-degranulation
 - histamine-receptor-signaling
@@ -68,7 +62,15 @@ sources:
   location: Mast cell-stabilizing nutrients
   quote: Quercetin acts as a mast cell stabilizer, inhibiting degranulation and histidine
     conversion.
-version: 4
+- id: dirty-genes-lynch
+  location: Chapter 15 — Additional Supplements for Your DAO
+  quote: A combination of stinging nettle, luteolin, bromelain, and quercetin works
+    wonders to help keep histamine locked up and not troubling you.
+version: 5
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
+linked_to_claims:
+- quercetin-stinging-nettle-luteolin-bromelain-block-histamine
+notes_for_client: A plant compound that helps keep histamine from triggering symptoms.
+  Works best combined with other natural antihistamine compounds like nettle and luteolin.

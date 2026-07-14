@@ -1,0 +1,36 @@
+slug: fatigue
+display_name: Fatigue / Low Energy
+aliases:
+- tiredness
+- exhaustion
+- low stamina
+- sluggishness
+- feeling run down
+- low energy
+- physical fatigue
+- mental fatigue
+category: constitutional
+severity: common
+description: Persistent physical and mental tiredness associated by Lynch with electrolyte
+  depletion, poor nutrient absorption, high toxin burden, and multiple dirty gene
+  states including MTHFR and GST/GPX.
+linked_to_topics:
+- mthfr-methylation-gene
+- gst-gpx-glutathione-detox
+- clean-genes-protocol
+- mthfr-methylation
+linked_to_mechanisms:
+- methylation
+- glutathione-conjugation
+- hpa-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 2 — Brain and Muscle Health
+  quote: Methylation also produces creatine, a compound that both your brain and your
+    muscles use as fuel. If you've got muscular aches and pains, feel rundown and
+    fatigued … poor methylation and low creatine might be the reason.
+version: 2
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

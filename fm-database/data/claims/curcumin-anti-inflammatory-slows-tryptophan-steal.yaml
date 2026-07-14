@@ -1,0 +1,33 @@
+slug: curcumin-anti-inflammatory-slows-tryptophan-steal
+statement: Liposomal curcumin reduces IDO1-mediated tryptophan diversion (the 'tryptophan
+  steal') by lowering chronic inflammation, thereby preserving tryptophan for serotonin
+  synthesis in fast-MAOA phenotypes.
+evidence_tier: plausible_emerging
+rationale: Curcumin is a well-established NF-κB pathway inhibitor with anti-inflammatory
+  effects documented in multiple RCTs. IDO1 is upregulated by inflammatory cytokines;
+  reducing inflammation logically decreases IDO1-driven tryptophan diversion. The
+  direct link from curcumin to serotonin preservation via IDO1 inhibition is mechanistically
+  coherent but not directly RCT-proven in a fast-MAOA cohort.
+coaching_translation: For clients with fast MAOA and chronic inflammation (autoimmune,
+  infections, mold exposure), anti-inflammatory strategies including curcumin may
+  help preserve mood stability by protecting serotonin supply.
+caveats:
+- Source is a consumer trade book.
+- Liposomal form is important — standard curcumin has very poor oral bioavailability.
+- Anti-inflammatory diet and infection resolution are foundational; supplements are
+  adjunctive.
+linked_to_topics:
+- maoa-fast-serotonin-depletion
+linked_to_supplements:
+- liposomal-curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Fast MAOA
+  quote: This helps slow the Tryptophan Steal that we discussed earlier, thereby conserving
+    tryptophan for your fast MAOA.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,51 @@
+slug: gut-barrier-dysfunction
+display_name: Gut Barrier Dysfunction (Leaky Gut)
+aliases:
+- intestinal permeability
+- tight junction impairment
+- intestinal hyperpermeability
+- leaky gut syndrome
+category: gut
+summary: Increased intestinal permeability allows luminal antigens, bacterial products
+  (LPS), and undigested proteins to cross the epithelium, triggering systemic immune
+  activation and worsening histamine, DAO, and MTHFR function. Pathogenic bacteria,
+  stress, NSAIDs, and food intolerances all contribute.
+upstream_drivers:
+- poor diet (sugar, gluten, processed foods)
+- chronic stress
+- antibiotic or medication use
+- DAO variant reducing epithelial repair signalling
+- pathogenic-bacteria
+- SIBO
+- stress
+- NSAIDs-and-aspirin
+- food-intolerances
+- DAO-dysfunction
+downstream_effects:
+- food-intolerance-reactions
+- systemic-inflammation
+- worsened-histamine-load
+- autoimmune-risk
+- histamine-excess
+- folate-receptor-antibody-formation
+- autoimmune-activation
+related_mechanisms:
+- histamine-catabolism-dao
+- glutathione-conjugation
+- pemt-phosphatidylcholine-synthesis
+- methylation
+linked_to_topics:
+- dao-histamine-metabolism
+- histamine-intolerance-dao
+- mthfr-methylation-support
+- pemt-choline-cell-membrane
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: 'When DAO is born dirty … Weaknesses: food sensitivities, pregnancy complications,
+    leaky gut syndrome, allergic reactions.'
+version: 2
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,28 @@
+slug: mood-swings-irritability-depression
+display_name: Mood Swings — Cycling Irritability & Depression
+aliases:
+- irritability and depression
+- mood lability
+- emotional reactivity
+category: mood
+severity: common
+description: Alternating periods of irritability/anger and depression, often without
+  clear external triggers. Linked in Lynch's framework to impaired methylation (MTHFR),
+  slow COMT, or slow MAOA affecting neurotransmitter balance.
+linked_to_topics:
+- mthfr-methylation-support
+- comt-slow-catechol-clearance
+- maoa-slow-serotonin-excess
+linked_to_mechanisms:
+- methylation
+- catechol-methylation
+- monoamine-oxidation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — MTHFR symptom checklist
+  quote: My moods often fluctuate between irritability and depression.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

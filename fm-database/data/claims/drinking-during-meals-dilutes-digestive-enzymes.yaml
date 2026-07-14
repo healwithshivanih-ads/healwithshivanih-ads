@@ -1,0 +1,27 @@
+slug: drinking-during-meals-dilutes-digestive-enzymes
+statement: Consuming large amounts of liquid during meals may dilute gastric acid
+  and digestive enzyme concentrations, impairing nutrient absorption.
+evidence_tier: fm_specific_thin
+rationale: Widely stated in FM practice; theoretical basis in gastric pH dilution.
+  Evidence base is indirect and largely observational. The recommendation to limit
+  to one glass is conservative and unlikely to cause harm.
+coaching_translation: Limit drinking during meals to one glass. Drink most of your
+  water between meals for best digestion.
+caveats:
+- Robust RCT evidence is lacking; mechanism is physiologically plausible but effect
+  size in healthy individuals is debated
+linked_to_topics:
+- clean-genes-protocol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Eating to Clean Your Genes: The Basics'
+  quote: Limit drinking during meals. Have one glass of filtered water, goat's milk,
+    almond milk, tea, or—every so often—wine, but never any more than one glass. Don't
+    dilute your digestive enzymes.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

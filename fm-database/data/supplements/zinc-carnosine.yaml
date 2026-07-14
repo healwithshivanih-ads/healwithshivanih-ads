@@ -20,7 +20,7 @@ timing_options:
 - on_empty_stomach
 - bedtime
 - morning
-take_with_food: avoid
+take_with_food: required
 linked_to_topics:
 - thyroid
 - autoimmunity-leaky-gut-triad
@@ -35,6 +35,7 @@ linked_to_topics:
 - gut-skin-hormone-axis
 - psoriasis-gut-immune
 - 5r-gut-protocol
+- clean-genes-protocol
 linked_to_claims:
 - leaky-gut-triggers-hashimotos
 - zinc-carnosine-tight-junction-healing
@@ -44,9 +45,11 @@ linked_to_claims:
 - zinc-deficiency-indicated-by-low-alkaline-phosphatase
 - zinc-carnosine-supports-gastric-lining-repair
 - gut-healing-requires-glutamine-zinc-omega3-bcomplex
-notes_for_coach: Zinc carnosine is a chelated compound with documented gastric mucosal protective effects. Typically dosed
-  between meals for best mucosal contact. Dosing range should be confirmed by clinician.
-notes_for_client: Zinc carnosine helps soothe and repair your gut lining. It is different from regular zinc supplements.
+notes_for_coach: Specifically recommended alongside aloe vera gel and L-glutamine
+  for gastric ulcer healing. Use when betaine HCl is contraindicated due to suspected
+  ulcer.
+notes_for_client: If you have or suspect a stomach ulcer, use zinc carnosine, aloe
+  vera gel, and L-glutamine to help heal the lining before starting HCl supplementation.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -55,8 +58,8 @@ sources:
   quote: 'Heal intestinal lining: Bone broth, L-glutamine, zinc carnosine'
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: Zinc carnosine/ Any form Zinc - Immune, gut repair, mucosal lining /acid reflux - 15-30 mg/day - With food (to avoid
-    nausea) or after
+  quote: Zinc carnosine/ Any form Zinc - Immune, gut repair, mucosal lining /acid
+    reflux - 15-30 mg/day - With food (to avoid nausea) or after
 - id: vitaone-thyroid-cheatsheet
   location: What Nutritionists/Health Coaches Miss — Ignore Gut Health
   quote: Repair gut with probiotics, prebiotics, L-glutamine, and zinc carnosine
@@ -67,27 +70,35 @@ sources:
   location: Inflammation Cheatsheet — Page 02
   quote: Use probiotics, L-glutamine, zinc carnosine
 - id: vitaone-elimination-diet-cheatsheet
-  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing Phase
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing
+    Phase
   quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
 - id: coconote-fm-gut-skin-hormone-axis
   location: 5R Protocol — Repair
   quote: L-glutamine and zinc carnosine help here in repairing the stomach lining.
 - id: coconote-fm-hypochlorhydria
   location: Treatment / 5R Gut Protocol — Repair
-  quote: Zygcarnosine is a supplement which could be used in terms of repairing the gastrointestinal liver and help you in
-    terms of production of beta-hydrochloric acid.
+  quote: Zygcarnosine is a supplement which could be used in terms of repairing the
+    gastrointestinal liver and help you in terms of production of beta-hydrochloric
+    acid.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXbyLyYjP__/
-  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex, bitters'
+  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
   quote: 'Repair: Zinc l-carnosine, aloe vera'
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Repair: Zinc l-carnosine, aloe vera.'
-version: 9
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: Use zinc carnosine, aloe vera gel, and L-glutamine to help heal the stomach
+    ulcer.
+version: 10
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 aliases:
 - zinc-l-carnosine

@@ -1,0 +1,26 @@
+slug: selenium-required-for-gpx-h2o2-clearance
+statement: Selenium is an essential trace mineral cofactor for glutathione peroxidase
+  (GPX); without adequate selenium, GPX cannot convert hydrogen peroxide to water,
+  allowing H2O2 to accumulate and cause oxidative damage.
+evidence_tier: strong
+rationale: All mammalian GPX isoforms are selenoproteins—the selenium requirement
+  is unambiguously established in biochemistry and nutritional science.
+coaching_translation: 'Encourage selenium-containing foods daily: 1–2 Brazil nuts,
+  tuna, halibut, sardines, beef, eggs. Many people are selenium-deficient, which undermines
+  their ability to neutralise oxidative stress.'
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- selenium
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — What Makes GST/GPX Dirty?
+  quote: In order for your glutathione to turn hydrogen peroxide into water, it needs
+    selenium. Without selenium, your GPX enzyme can't get rid of hydrogen peroxide.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

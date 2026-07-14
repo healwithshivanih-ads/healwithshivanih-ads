@@ -1,44 +1,59 @@
 slug: pemt-gene-choline-demand
-display_name: PEMT Gene Choline Demand
+display_name: PEMT Choline Synthesis & Phosphatidylcholine Demand
 aliases:
 - PEMT deficiency
 - phosphatidylethanolamine N-methyltransferase gene variant
 - endogenous choline synthesis pathway
+- PEMT pathway
+- phosphatidylcholine biosynthesis
+- choline methylation
 category: metabolic
-summary: PEMT (phosphatidylethanolamine N-methyltransferase) methylates
-  phosphatidylethanolamine into phosphatidylcholine — the only pathway that
-  synthesises new choline endogenously, distinct from dietary choline intake.
-  When PEMT activity is low, even RDA-level dietary choline intake can be
-  insufficient, raising risk of hepatic steatosis and muscle/cell-membrane
-  symptoms. PEMT transcription is upregulated by estradiol, so premenopausal
-  women are relatively protected; that protection fades with declining
-  estrogen (perimenopause/menopause) or with genetic variants reducing
-  baseline PEMT activity.
+summary: PEMT methylates phosphatidylethanolamine to phosphatidylcholine using SAMe,
+  supporting cell membrane fluidity, hepatic VLDL export, and bile acid production.
+  When PEMT is under-active ('dirty'), dietary choline from eggs, meat, and beets
+  becomes essential to meet demand. Under-methylation and low B12/folate further impair
+  PEMT activity.
 upstream_drivers:
 - methylation-cycle
 - estrogen-decline
+- low-dietary-choline
+- methylation-insufficiency
+- low-B12
+- low-folate
 related_mechanisms:
 - methylation-cycle
 - hepatic-estrogen-metabolism
+- methylation
 linked_to_topics:
 - nutrigenomics
 - liver-detoxification
-notes_for_coach: Vegetarian/vegan clients and perimenopausal/postmenopausal
-  women are the two groups most likely to need deliberate choline attention
-  (eggs, liver, or a choline/phosphatidylcholine supplement) rather than
-  relying on endogenous PEMT synthesis alone.
+- pemt-choline-demand
+- clean-genes-protocol
+notes_for_coach: Vegetarian/vegan clients and perimenopausal/postmenopausal women
+  are the two groups most likely to need deliberate choline attention (eggs, liver,
+  or a choline/phosphatidylcholine supplement) rather than relying on endogenous PEMT
+  synthesis alone.
 sources:
 - id: pemt-knockout-choline-steatosis-2003
   location: Knockout mouse model — hepatic steatosis
-  quote: Mice with homozygous disruption of the PEMT gene are dependent on
-    alternative pathways for phosphatidylcholine synthesis and develop severe
-    liver steatosis when fed a diet deficient in choline.
+  quote: Mice with homozygous disruption of the PEMT gene are dependent on alternative
+    pathways for phosphatidylcholine synthesis and develop severe liver steatosis
+    when fed a diet deficient in choline.
 - id: pemt-estrogen-induction-hepatocytes-2007
   location: Estradiol dose-response in hepatocytes
-  quote: PEMT transcription was increased in a dose-dependent manner when
-    primary mouse and human hepatocytes were treated with 17-beta-estradiol.
+  quote: PEMT transcription was increased in a dose-dependent manner when primary
+    mouse and human hepatocytes were treated with 17-beta-estradiol.
+- id: dirty-genes-lynch
+  location: Gene Meal Guide — Chapter 13
+  quote: 'Dirty PEMT: Any recipe with eggs, beets, quinoa, or lamb; Any recipe that
+    supports MTHFR.'
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-06'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
+downstream_effects:
+- impaired-cell-membrane-integrity
+- hepatic-fat-accumulation
+- poor-bile-production
+- brain-fog

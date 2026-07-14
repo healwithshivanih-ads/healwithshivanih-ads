@@ -1,0 +1,24 @@
+slug: saccharomyces-boulardii-survives-antibiotics
+statement: Saccharomyces boulardii is a beneficial yeast not killed by antibiotics,
+  making it useful to take alongside an antibiotic course; Lynch suggests limiting
+  continuous use to roughly 3–6 months.
+evidence_tier: plausible_emerging
+rationale: S. boulardii's antibiotic resistance and role in antibiotic-associated
+  diarrhoea is reasonably supported; the 3–6 month limit is the author's guidance.
+coaching_translation: A yeast-based probiotic can be taken during antibiotics because
+  the antibiotic doesn't wipe it out.
+out_of_scope_notes: ''
+caveats:
+- Source is a consumer trade book (Ben Lynch, Dirty Genes), not primary literature.
+linked_to_topics: []
+linked_to_mechanisms:
+- leaky-gut
+linked_to_supplements:
+- saccharomyces-boulardii
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 15: Spot Cleaning Your DAO'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-chunk5

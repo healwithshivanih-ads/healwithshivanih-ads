@@ -1,0 +1,30 @@
+slug: food-reactions-histamine
+display_name: Multi-Food Reactions / Histamine Sensitivity
+aliases:
+- food intolerances
+- reacting to many foods
+- histamine food reaction
+- pseudo-allergy
+category: gi
+severity: common
+description: Variable and inconsistent adverse reactions to a broad range of foods
+  — especially fermented, aged, cured, leftover, or high-protein foods — that do not
+  show up on standard allergy testing, reflecting histamine intolerance rather than
+  IgE-mediated allergy.
+when_to_refer: Anaphylaxis, severe GI blood loss, unexplained weight loss, suspected
+  MCAS.
+linked_to_topics:
+- dao-histamine-intolerance
+- leaky-gut
+linked_to_mechanisms:
+- histamine-metabolism
+- leaky-gut
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO: Oversensitivity to Foods'
+  quote: One meal I'm good and the next I feel awful. I get headaches. I'm always
+    irritable. If I eat the wrong thing, I get sweaty and my heart races.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

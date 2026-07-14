@@ -1,0 +1,38 @@
+slug: tryptophan-serotonin-melatonin-pathway
+display_name: Tryptophan → Serotonin → Melatonin Pathway
+aliases:
+- tryptophan steal
+- melatonin synthesis
+category: neurological
+summary: Tryptophan from carbohydrate sources crosses the blood-brain barrier and
+  is converted to serotonin by MAOA. Serotonin is further converted to melatonin,
+  linking mood, sleep, and circadian regulation. Under chronic stress or inflammation,
+  tryptophan is shunted toward quinolinic acid (a neurotoxin) instead of serotonin,
+  depleting both serotonin and melatonin.
+upstream_drivers:
+- chronic-stress
+- inflammation
+- chronic-disease
+- maoa-neurotransmitter-catabolism
+downstream_effects:
+- low-serotonin-depression
+- melatonin-deficiency-sleep-disturbance
+- quinolinic-acid-neurotoxicity
+- carb-cravings
+related_mechanisms:
+- maoa-neurotransmitter-catabolism
+- hydrogen-peroxide-oxidative-stress
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 8 — The Tryptophan Steal
+  quote: The calmer you are and the less your body suffers from inflammation, the
+    more of your tryptophan goes toward making serotonin. The more stressed out or
+    inflamed you are, the more of your tryptophan goes toward making quinolinic acid,
+    a substance that's bad for your brain.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

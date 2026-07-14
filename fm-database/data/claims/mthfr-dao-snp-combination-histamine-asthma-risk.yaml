@@ -1,0 +1,33 @@
+slug: mthfr-dao-snp-combination-histamine-asthma-risk
+statement: Co-occurring MTHFR and DAO variants synergistically increase histamine
+  intolerance and the risk of chronic or exercise-induced asthma by simultaneously
+  impairing dietary histamine clearance and the methylation-dependent alternative
+  histamine processing route.
+evidence_tier: fm_specific_thin
+rationale: DAO degrades dietary histamine; COMT and HNMT provide secondary methylation-dependent
+  histamine processing routes. MTHFR variants reduce methylation capacity, potentially
+  impairing these alternative routes. The combined burden logic is mechanistically
+  coherent within Lynch's framework but lacks direct haplotype-outcome RCT evidence.
+coaching_translation: Clients who score high on both MTHFR and DAO checklists should
+  adopt strict low-histamine eating, focus on aerobic exercise that builds lung capacity
+  (not high-intensity triggers), and prioritise gut healing.
+caveats:
+- Source is a consumer trade book — fm_specific_thin evidence tier.
+- Exercise-induced asthma warrants physician evaluation regardless of genetic speculation.
+- Histamine-asthma link is established; the specific gene-combination causation is
+  extrapolated.
+linked_to_topics:
+- histamine-intolerance-dao
+- mthfr-methylation-support
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — Being Happy with Your Haplotype
+  quote: SNPS in both MTHFR and DAO increase histamine intolerance, putting you at
+    risk of chronic or exercise-induced asthma.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

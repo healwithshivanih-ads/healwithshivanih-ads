@@ -1,0 +1,42 @@
+slug: maoa-slow-serotonin-excess
+display_name: Slow MAOA — Serotonin & Dopamine Accumulation
+aliases:
+- dirty MAOA slow
+- MAO-A slow variant
+- excess serotonin phenotype
+summary: Monoamine oxidase A (MAOA) degrades serotonin, dopamine, and norepinephrine
+  after use. A slow variant leads to neurotransmitter accumulation, presenting as
+  aggression, slow wind-down, long focus, insomnia, and adverse reactions to SSRIs
+  or serotonin precursors. Dietary tyramine (cheese, wine, chocolate) worsens the
+  picture.
+common_symptoms:
+- aggression-difficulty-slowing-down
+- long-focus-capacity
+- angry-drunk-response
+- tyramine-food-irritability
+- slow-sleep-onset
+- ssri-induced-irritability
+- melatonin-worsening-wakefulness
+red_flags:
+- Severe aggression or violence history
+- Hypertensive crisis on MAOI medications
+related_topics:
+- comt-slow-catechol-clearance
+- histamine-intolerance-dao
+key_mechanisms:
+- monoamine-oxidation
+- serotonin-dopamine-clearance
+coaching_scope_notes: Coach can identify tyramine-rich food triggers, discuss sleep
+  hygiene strategies, encourage slow COMT lifestyle guidance. Riboflavin dosing and
+  lithium orotate use require clinician oversight. Flag SSRI and testosterone medication
+  interactions.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — Laundry List 2 (MAOA slow)
+  quote: Melatonin doesn't work well for me. It makes me feel more awake and irritable.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

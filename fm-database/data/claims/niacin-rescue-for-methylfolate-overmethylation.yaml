@@ -1,0 +1,26 @@
+slug: niacin-rescue-for-methylfolate-overmethylation
+statement: Over-methylation from too much methylfolate (anxiety, irritability, insomnia,
+  hives, joint pain, runny nose) can be eased with small niacin doses (~50 mg, repeatable
+  a few times) that mop up excess methyl groups — with caution in people with low
+  blood pressure.
+evidence_tier: fm_specific_thin
+rationale: Niacin as a methyl 'sponge' is a widely-used functional tactic with mechanistic
+  basis but little trial evidence; the low-BP caution is important.
+coaching_translation: If methylfolate makes you wired or itchy, that's a sign of too
+  much — a small niacin dose can settle it, and back off the folate.
+out_of_scope_notes: Symptomatic dosing is confirm_with_clinician; niacin can lower
+  blood pressure further.
+caveats:
+- Source is a consumer trade book (Ben Lynch, Dirty Genes), not primary literature.
+linked_to_topics: []
+linked_to_mechanisms:
+- methylation
+linked_to_supplements:
+- methylfolate
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 15: Spot Cleaning Your MTHFR'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-chunk5

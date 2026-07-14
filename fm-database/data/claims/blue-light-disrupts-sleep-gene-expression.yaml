@@ -1,0 +1,31 @@
+slug: blue-light-disrupts-sleep-gene-expression
+statement: Evening blue light exposure from screens suppresses melatonin secretion,
+  disrupts circadian rhythms, and contributes to poor sleep quality that further impairs
+  gene-level repair processes.
+evidence_tier: strong
+rationale: Well-established that blue-wavelength light (~480 nm) suppresses pineal
+  melatonin via ipRGC retinal cells. This is supported by multiple RCTs. The downstream
+  gene-pathway framing is more speculative but plausible.
+coaching_translation: Stop all screen use 1 hour before bed. Install blue-light filter
+  apps (f.lux, Night Shift). Turn off night-lights and block street light from the
+  bedroom.
+caveats:
+- The direct gene-pathway framing is consumer-level extrapolation; the circadian/melatonin
+  mechanism is well-established
+linked_to_topics:
+- clean-genes-protocol
+- maoa-neurotransmitter-balance
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Sleep — Improve Your Sleep Quality
+  quote: Stop all electronic activity at least one hour before sleep, and put your
+    devices on airplane mode until morning. Install a blue-light filter on computers,
+    phones, and devices.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

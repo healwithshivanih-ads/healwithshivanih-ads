@@ -1,7 +1,11 @@
 slug: epigenetics-lifestyle-gene-expression
 display_name: Epigenetics and Lifestyle-Driven Gene Expression
 aliases:
+- SNP modification
+- dirty genes concept
 - epigenetics
+- epigenetics-gene-expression-control
+- gene expression
 - gene expression modulation
 summary: The concept that while genetic predispositions exist, approximately 80% of
   disease expression is driven by lifestyle and diet, and that epigenetic changes
@@ -9,8 +13,14 @@ summary: The concept that while genetic predispositions exist, approximately 80%
 related_topics:
 - chronic-pain-and-fatigue
 - fibromyalgia
+- mthfr-methylation-gene
+- comt-catechol-clearance
+- dao-histamine-metabolism
 key_mechanisms:
 - epigenetic-modulation
+- methylation
+- gene-silencing
+- dna-methylation-epigenetic-tagging
 coaching_scope_notes: Coaches can use this framework to empower clients who feel their
   diagnosis is 'in their genes' — framing lifestyle change as epigenetic influence.
 evidence_tier: plausible_emerging
@@ -22,6 +32,12 @@ sources:
   location: Genes Section
   quote: 80% is your lifestyle and food, and 20% is your genes. So we are responsible
     for our own genes.
+- id: dirty-genes-lynch
+  location: Introduction — Your Genes Are Not Your Destiny
+  quote: This process of turning genes on and off is known as epigenetics. What I
+    have learned since that momentous day in 2007 is that we can transform our genetic
+    destiny through a combination of diet, supplements, sleep, stress relief, and
+    reduced exposure to environmental toxins.
 version: 1
 status: active
 updated_at: '2026-05-05'

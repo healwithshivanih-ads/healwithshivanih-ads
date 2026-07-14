@@ -1,0 +1,41 @@
+slug: monoamine-oxidation
+display_name: Monoamine Oxidation (MAOA/MAOB)
+aliases:
+- MAO-A pathway
+- serotonin degradation
+- dopamine catabolism via MAO
+category: metabolic
+summary: Monoamine oxidase A (MAOA) oxidatively deaminates serotonin, norepinephrine,
+  and dopamine after synaptic reuptake, controlling their duration of action. Riboflavin
+  (B2) is the essential cofactor. Slow variants accumulate monoamines; fast variants
+  deplete them. Tryptophan availability (itself depleted by inflammation via IDO1)
+  limits serotonin synthesis upstream of MAOA.
+upstream_drivers:
+- MAOA-SNP
+- riboflavin-deficiency
+- tryptophan-deficiency
+- inflammation-IDO1-activation
+- SSRI-medications
+- tyramine-rich-diet
+downstream_effects:
+- altered-serotonin-tone
+- mood-disorders
+- sleep-disruption
+- aggression-or-depression
+related_mechanisms:
+- tryptophan-steal-ido1
+- catechol-methylation
+- serotonin-dopamine-clearance
+linked_to_topics:
+- maoa-slow-serotonin-excess
+- maoa-fast-serotonin-depletion
+- comt-slow-catechol-clearance
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow MAOA
+  quote: Consider taking 400 milligrams of riboflavin to help support your slow MAOA.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

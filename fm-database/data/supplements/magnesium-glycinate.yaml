@@ -12,8 +12,8 @@ forms_available:
 - tablet
 typical_dose_range:
   capsule:
-    min: 300
-    max: 600
+    min: 100
+    max: 400
     unit: mg
   powder:
     min: 300
@@ -92,6 +92,7 @@ linked_to_topics:
 - osteoporosis
 - bone-health
 - asthma
+- comt-slow-catechol-clearance
 linked_to_mechanisms: []
 linked_to_claims:
 - magnesium-glycinate-improves-sleep-quality
@@ -128,11 +129,14 @@ linked_to_claims:
 - murray-nocturnal-hypoglycemia-sleep-maintenance
 - murray-b6-magnesium-pms-foundation
 - murray-calcium-alone-insufficient-osteoporosis
-notes_for_coach: Glycinate form is well-tolerated and preferred for its calming and
-  sleep-supportive effects. Recommended for PPI-induced depletion and LCHF adaptation
-  electrolyte support. Dosing range to be confirmed by clinician.
-notes_for_client: Magnesium glycinate is a gentle, well-absorbed form of magnesium
-  that supports sleep, muscle relaxation, and stress resilience.
+- magnesium-calms-slow-comt-supports-liver
+notes_for_coach: Lynch specifies magnesium glycinate chelate for COMT support (calming,
+  liver function). Also lists magnesium taurate, malate, and threonate as effective
+  alternatives. If magnesium levels remain low despite supplementation, consider low
+  taurine (often from gut dysbiosis) as a limiting factor. Intracellular RBC magnesium
+  is more accurate than serum magnesium for assessing status.
+notes_for_client: Magnesium helps your nervous system wind down, supports liver detox
+  pathways, and can improve sleep quality. The glycinate form is gentle on digestion.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, sleep-supporting supplements
@@ -215,20 +219,16 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 71 — Insomnia
-  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 85 — Premenstrual Syndrome
-  quote: Comprehensive natural treatment for PMS + PMDD.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 81 — Osteoporosis
-  quote: Comprehensive natural prevention + treatment of osteoporosis.
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow COMT
+  quote: Magnesium glycinate chelate is a good form; it helps moderate anxiety and
+    supports liver fiction. Three other effective forms are magnesium taurate, magnesium
+    malate, and magnesium threonate.
 evidence_tier: plausible_emerging
-version: 29
+version: 30
 status: active
-updated_at: '2026-06-18'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Glycinate form well-tolerated. 400 mg/day OK throughout. Helps

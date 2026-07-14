@@ -1,0 +1,29 @@
+slug: muscle-pain-weakness
+display_name: Unexplained Muscle Pain & Weakness
+aliases:
+- myalgia
+- muscle aches
+- fibromyalgia-like pain
+- generalised muscle soreness
+category: musculoskeletal
+severity: common
+description: Diffuse muscle soreness, aching, or weakness without clear physical cause.
+  Lynch attributes this pattern partly to phosphatidylcholine deficiency compromising
+  muscle cell membrane integrity, triggering inflammation within muscle tissue.
+when_to_refer: Refer if accompanied by elevated CK, weakness progressing to impaired
+  function, or features of inflammatory myopathy.
+linked_to_topics:
+- pemt-choline-cell-membrane
+linked_to_mechanisms:
+- pemt-phosphatidylcholine-synthesis
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 11 — PEMT and Muscle Pain
+  quote: Muscle cell membranes are quite fragile, and when they fail, that decline
+    triggers inflammation. You start to get sore muscles, for no apparent reason.
+    Prolonged phosphatidylcholine deficiency increases the severity of muscle cell
+    membrane failure.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

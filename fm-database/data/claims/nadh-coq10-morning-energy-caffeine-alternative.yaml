@@ -1,0 +1,23 @@
+slug: nadh-coq10-morning-energy-caffeine-alternative
+statement: Sublingual NADH with CoQ10 on waking is suggested for fast-COMT/fast-MAOA
+  types as fast, non-stimulant morning energy and a caffeine alternative, taken away
+  from food.
+evidence_tier: fm_specific_thin
+rationale: Mitochondrial-cofactor rationale is plausible; benefit is individual and
+  evidence is thin for this specific use.
+coaching_translation: For slow mornings, a dissolvable NADH+CoQ10 can give clean energy
+  without the caffeine spike-and-crash.
+out_of_scope_notes: ''
+caveats:
+- Source is a consumer trade book (Ben Lynch, Dirty Genes), not primary literature.
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- nadh-coq10
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 15: Spot Cleaning Your Fast COMT'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-chunk5

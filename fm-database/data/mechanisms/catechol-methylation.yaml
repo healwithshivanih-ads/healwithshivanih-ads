@@ -1,0 +1,42 @@
+slug: catechol-methylation
+display_name: Catecholamine & Catechol Estrogen Methylation (COMT)
+aliases:
+- COMT pathway
+- dopamine clearance
+- catechol-O-methylation
+- estrogen catechol methylation
+category: metabolic
+summary: COMT methylates and inactivates catecholamines (dopamine, norepinephrine,
+  epinephrine), catechol estrogens, and dietary catechols. Slow variants prolong neurotransmitter
+  and estrogen exposure; fast variants deplete them. The reaction consumes SAMe, creating
+  a direct link between methylation capacity and neurotransmitter regulation.
+upstream_drivers:
+- COMT-SNP
+- high-protein-high-tyrosine-diet
+- estrogen-exposure
+- catechol-foods
+- SAMe-deficiency
+- methylfolate-excess
+downstream_effects:
+- altered-dopamine-norepinephrine-tone
+- catechol-estrogen-accumulation
+- pms-and-hormonal-symptoms
+- mood-and-sleep-disruption
+related_mechanisms:
+- methylation
+- estrogen-catechol-clearance
+- monoamine-oxidation
+linked_to_topics:
+- comt-slow-catechol-clearance
+- comt-fast-dopamine-depletion
+- mthfr-methylation-support
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supporting a Slow COMT
+  quote: Protein provides tyrosine, a nutrient that your COMT enzyme uses. If you
+    give it a lot of tyrosine, you're potentially slowing it down.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

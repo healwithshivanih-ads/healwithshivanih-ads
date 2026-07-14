@@ -4,28 +4,49 @@ category: other
 forms_available:
 - capsule
 - liquid
+- powder
 timing_options:
 - with_breakfast
 - with_lunch
+- with_dinner
 take_with_food: required
 linked_to_topics:
 - liver-detoxification
 - gallstones
+- pemt-choline-cell-membrane
+- comt-slow-catechol-clearance
 linked_to_claims:
 - phosphatidylcholine-bile-flow-support
-notes_for_coach: Phosphatidylcholine is a key component of bile and cell membranes.
-  Used to support bile flow and liver membrane integrity. Clinician review recommended
-  for dosing.
-notes_for_client: Phosphatidylcholine is a fat-like nutrient that supports healthy
-  bile production and liver cell health.
+- pemt-phosphatidylcholine-deficiency-causes-fatty-liver
+- choline-deficiency-worsens-with-menopause
+- phosphatidylcholine-supports-pemt-conserves-same
+notes_for_coach: Use non-GMO, soy-free (preferably sunflower-derived) form. Can cause
+  depression in excess — essential to use Pulse Method and stop when feeling well.
+  Conserves SAMe (important for slow COMT). Store liquid form in cool dry area (not
+  refrigerator). Monitor for depressive mood changes as a stopping signal.
+notes_for_client: Provides the building blocks for healthy cell membranes, liver function,
+  and gut lining. Because it can occasionally cause low mood if taken too long, stop
+  when you feel good and resume only if symptoms return.
 evidence_tier: plausible_emerging
-typical_dose_range: {}
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 3
+    unit: capsules
+  liquid:
+    min: 420
+    max: 2400
+    unit: mg
 linked_to_mechanisms: []
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
   quote: Taurine, Phosphatidylcholine, Digestive enzymes
-version: 2
+- id: dirty-genes-lynch
+  location: Chapter 11 — Key Nutrients for a Healthy PEMT
+  quote: In the Clean Genes Protocol, I'll also suggest ways to supplement with choline
+    and/or phosphatidylcholine, especially if you're a vegan or vegetarian.
+version: 4
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

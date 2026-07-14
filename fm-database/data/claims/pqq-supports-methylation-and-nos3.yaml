@@ -1,0 +1,32 @@
+slug: pqq-supports-methylation-and-nos3
+statement: PQQ (pyrroloquinoline quinone) may support healthy methylation and cardiovascular
+  function via NOS3, and was used clinically in Lynch's protocol as a complementary
+  supplement to glutathione.
+evidence_tier: fm_specific_thin
+rationale: PQQ has demonstrated antioxidant and mitochondrial biogenesis activity
+  in animal and small human studies. Its use alongside glutathione in an NOS3/MTHFR
+  support context is an FM-specific application without strong RCT evidence. Lynch
+  provides a clinical case narrative but no mechanism detail in this excerpt.
+coaching_translation: PQQ is a natural compound that may support your cells' energy
+  production and antioxidant defences. It was used in combination with glutathione
+  as part of a heart-health and methylation support programme.
+out_of_scope_notes: Specific dosing requires clinician guidance.
+caveats:
+- Evidence is largely preclinical or from small studies.
+- Source is a consumer trade book.
+- Mechanism for MTHFR/NOS3 specificity not elaborated in this excerpt.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+- mthfr-methylation-gene
+linked_to_supplements:
+- pqq-pyrroloquinoline-quinone
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Success Stories
+  quote: I also had her take curcumin and PQQ, both of which would support her MTHFR
+    gene and promote healthy methylation.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

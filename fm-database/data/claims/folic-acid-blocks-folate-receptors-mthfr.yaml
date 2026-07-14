@@ -1,0 +1,31 @@
+slug: folic-acid-blocks-folate-receptors-mthfr
+statement: Synthetic folic acid, found in fortified foods and most standard multivitamins,
+  may competitively block folate receptors and interfere with natural methylfolate
+  uptake, particularly in individuals with MTHFR variants.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistically credible: unmetabolised folic acid (UMFA) has been documented
+  in individuals consuming fortified foods. Some evidence suggests UMFA may occupy
+  folate receptors with lower functional activity than methylfolate. Full clinical
+  impact in MTHFR carriers remains an active research question. Source is a consumer
+  book.'
+coaching_translation: For MTHFR-variant individuals, switching from folic-acid-fortified
+  foods and supplements to natural food-form folate (leafy greens) or methylfolate
+  is a reasonable dietary strategy.
+caveats:
+- Evidence for clinically significant receptor blockade by UMFA is emerging, not consensus
+- Important to discuss folate form with clinician, particularly during pregnancy
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_supplements:
+- methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Making the Most of MTHFR'
+  quote: Folic acid is your enemy. And it's everywhere—supplements, energy bars, foods,
+    drinks.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

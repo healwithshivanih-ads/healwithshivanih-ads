@@ -1,12 +1,12 @@
 slug: creatine-monohydrate
 display_name: Creatine Monohydrate
-category: other
+category: amino_acid
 forms_available:
 - powder
 - capsule
 typical_dose_range:
   powder:
-    min: 3
+    min: 2
     max: 5
     unit: g
   capsule:
@@ -20,22 +20,34 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Preferred post-workout; increasingly used in women's health for muscle,
-  brain fog, and energy, not just athletic performance.
+notes_for_coach: Endogenous creatine synthesis is a major consumer of SAMe. Supplemental
+  creatine 'spares' SAMe for phosphatidylcholine synthesis and COMT support. Lynch
+  notes exceptional benefit in autistic or speech-delayed children. Mix with filtered
+  water; can be combined with electrolytes. Well tolerated even by supplement-sensitive
+  individuals.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - sarcopenia-skeletal-muscle-loss
 - cognitive-decline
+- pemt-choline-cell-membrane
+- comt-slow-catechol-clearance
 linked_to_mechanisms:
 - mitochondrial-energy-production
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- creatine-conserves-same-spares-methylation
+notes_for_client: Creatine is best known for muscle energy, but it also takes pressure
+  off your body's methylation system, freeing up resources for other critical functions.
+  Mix in water throughout the day.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Creatine Monohydrate - Muscle, brain, cellular energy - 3–5 g/day - Anytime,
     preferably post-workout
-version: 2
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow COMT
+  quote: When you take supplemental creatine, you conserve methyl donors and SAMe,
+    leaving your SAMe free for other things, like helping your slow COMT.
+version: 3
 status: active
-updated_at: '2026-06-18'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

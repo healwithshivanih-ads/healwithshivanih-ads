@@ -1,0 +1,32 @@
+slug: pemt-variant-increases-choline-demand-vegans
+statement: Individuals with PEMT variants have reduced capacity for endogenous phosphatidylcholine
+  synthesis and therefore have greater dietary choline requirements, making them especially
+  vulnerable to deficiency on vegan or low-animal-product diets.
+evidence_tier: plausible_emerging
+rationale: PEMT V175M is associated with choline deficiency-induced organ dysfunction
+  in studies by Zeisel and colleagues. Vegans obtain no dietary phosphatidylcholine
+  from animal sources and must rely on PEMT; this interaction is mechanistically well-supported
+  though large clinical trial data are limited.
+coaching_translation: If you're vegan or rarely eat eggs, meat, or fish, and notice
+  muscle aches, digestive issues, or cognitive dullness, your PEMT gene may need extra
+  support through choline-rich plant sources like soybeans or a practitioner-guided
+  supplement.
+out_of_scope_notes: Choline supplementation dosing should be guided by a clinician,
+  especially in pregnancy.
+caveats:
+- Most evidence is from controlled dietary depletion studies, not free-living vegan
+  populations.
+- Source is a consumer trade book.
+linked_to_topics:
+- pemt-choline-cell-membrane
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: 'PEMT … Weaknesses: gallbladder disorders, small intestine bacterial overgrowth
+    (SIBO), pregnancy complications, cell membrane weakness, muscle pain.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

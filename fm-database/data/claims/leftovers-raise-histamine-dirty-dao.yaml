@@ -1,0 +1,28 @@
+slug: leftovers-raise-histamine-dirty-dao
+statement: For individuals with reduced DAO activity, consuming leftover or pre-cooked
+  foods significantly increases histamine exposure because bacterial growth on stored
+  food generates histamine over time.
+evidence_tier: plausible_emerging
+rationale: Histamine forms in protein-containing foods as bacteria decarboxylate histidine.
+  Refrigeration slows but does not halt this process. DAO-insufficient individuals
+  cannot adequately break down the increased dietary histamine load. Well-established
+  in food science; DAO pharmacogenomics are biologically plausible.
+coaching_translation: Cook and eat food fresh the same day. Avoid leftovers, aged
+  meats, canned fish, and fermented foods if you have histamine sensitivity.
+caveats:
+- DAO activity testing not widely standardized
+- Individual tolerance varies considerably
+linked_to_topics:
+- histamine-intolerance
+- clean-genes-protocol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Food — Make Wise Food Choices, Week 1
+  quote: Leftovers are especially problematic if you're struggling with a dirty DAO.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

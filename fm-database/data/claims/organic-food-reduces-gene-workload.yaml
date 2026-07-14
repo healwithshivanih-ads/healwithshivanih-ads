@@ -1,0 +1,27 @@
+slug: organic-food-reduces-gene-workload
+statement: Organically grown produce contains lower pesticide residues than conventionally
+  grown produce, reducing the detoxification burden on GST/GPX and related gene pathways.
+evidence_tier: plausible_emerging
+rationale: Multiple systematic reviews confirm lower organophosphate residues on organic
+  produce. The link to specifically reducing genetic/enzymatic detox burden is biologically
+  plausible but not directly RCT-confirmed.
+coaching_translation: Prioritize organic for the EWG Dirty Dozen list (strawberries,
+  apples, spinach, kale, etc.). Conventional 'Clean Fifteen' produce is lower risk.
+caveats:
+- Direct evidence linking organic consumption to improved GST/GPX function is lacking
+- Consumer book framing
+linked_to_topics:
+- clean-genes-protocol
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Eating to Clean Your Genes: The Basics'
+  quote: By eating organically, you reduce how much work your genes have to do. Organically
+    grown foods also have more nutritional content compared to nonorganically grown.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

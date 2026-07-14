@@ -1,0 +1,31 @@
+slug: epigenetics-lifestyle-modifies-gene-expression
+statement: Diet, sleep, stress, and environmental toxin exposure can modify gene expression
+  through epigenetic mechanisms, meaning genetic susceptibility to disease is not
+  a fixed destiny.
+evidence_tier: strong
+rationale: Epigenetic modification of gene expression by environmental inputs is a
+  well-established biological mechanism supported by substantial peer-reviewed evidence
+  including the classic agouti mouse studies referenced in this book.
+coaching_translation: Your genes are not your destiny. Every food choice, sleep habit,
+  and stress management practice is literally changing how your genes behave right
+  now.
+caveats:
+- Source is a consumer trade book, not a primary literature review. Specific SNP-to-disease
+  claims should be interpreted cautiously.
+linked_to_topics:
+- epigenetics-gene-expression-control
+- mthfr-methylation-gene
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Introduction — Your Genes Are Not Your Destiny
+  quote: This process of turning genes on and off is known as epigenetics. What I
+    have learned since that momentous day in 2007 is that we can transform our genetic
+    destiny through a combination of diet, supplements, sleep, stress relief, and
+    reduced exposure to environmental toxins.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,34 @@
+slug: fast-maoa-depletes-serotonin-causing-carb-cravings
+statement: A fast MAOA variant degrades serotonin, dopamine, and norepinephrine more
+  rapidly than normal, producing low serotonin states that drive carbohydrate and
+  sugar cravings as a compensatory self-medication via the tryptophan pathway.
+evidence_tier: plausible_emerging
+rationale: The MAOA enzyme's role in monoamine catabolism is well established; the
+  specific SNP-to-phenotype link (fast MAOA → serotonin depletion → carb craving)
+  is mechanistically plausible but relies on single-SNP determinism that is not well
+  supported by RCT evidence. Source is a consumer trade book.
+coaching_translation: If a client craves carbs or sweets intensely, especially in
+  the evening, and feels depressed beforehand but briefly better after eating, this
+  pattern may reflect rapid serotonin turnover. Supporting regular protein intake
+  throughout the day and choosing complex carbs may help stabilise mood and reduce
+  cravings.
+caveats:
+- Source is a consumer trade book, not primary literature
+- Single-SNP causation is oversimplified; environment and lifestyle interact
+- Genetic testing interpretation and medication decisions require clinician input
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+linked_to_supplements:
+- riboflavin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — MAOA: Mood Swings and Carb Cravings'
+  quote: Thanks to her dirty fast MAOA gene, Keisha's serotonin levels fell way too
+    fast. She knew only one way to pick them back up again—with sweet, starchy foods
+    that do offer a temporary serotonin boost, probably the fastest one around.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

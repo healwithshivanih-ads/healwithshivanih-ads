@@ -1,0 +1,34 @@
+slug: pmt-method-supplement-dosing-key-principle
+statement: 'Optimal supplement dosing is dynamic and individual: the Pulse Method
+  — taking a supplement until symptoms resolve then stopping, resuming when they return
+  — is more effective than fixed chronic dosing.'
+evidence_tier: fm_specific_thin
+rationale: Lynch's Pulse Method is a clinical heuristic from practice rather than
+  an RCT-derived protocol. It reflects the valid principle that supplemental nutrients
+  can cause harm in excess (e.g., over-methylation with methylfolate, depression from
+  excess phosphatidylcholine) and that physiological needs change over time. The principle
+  is pragmatic FM/integrative practice standard.
+coaching_translation: Teach clients to check in with how they feel before taking each
+  supplement each day, and stop when they feel well rather than taking indefinitely.
+caveats:
+- Source is a consumer trade book — this is a clinical heuristic, not an evidence-based
+  protocol.
+- Some supplements (e.g., methylfolate) require gradual titration rather than abrupt
+  stop-start.
+- Pulse Method should not be applied to prescribed medications.
+linked_to_topics:
+- mthfr-methylation-support
+- comt-slow-catechol-clearance
+- pemt-choline-cell-membrane
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Implement the Pulse Method
+  quote: Because your body is always changing, the 'right amount' of any supplement
+    is always changing too.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

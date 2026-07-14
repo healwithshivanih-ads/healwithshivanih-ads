@@ -1,0 +1,28 @@
+slug: hives-itchy-skin
+display_name: Hives / Itchy Skin
+aliases:
+- rash after eating
+- eczema
+- itchiness
+- skin flushing
+category: skin
+severity: common
+description: Episodic hives, widespread itching, eczema patches, or dermal flushing
+  — a common histamine-overload symptom reflecting DAO insufficiency and/or mast cell
+  reactivity, frequently appearing minutes to two hours after eating high-histamine
+  foods.
+when_to_refer: Angioedema, anaphylaxis, or chronic urticaria unresponsive to dietary
+  management.
+linked_to_topics:
+- dao-histamine-intolerance
+linked_to_mechanisms:
+- histamine-metabolism
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: Meet Your Dirty DAO'
+  quote: I might develop patches of eczema on my neck, or maybe my nose would start
+    to bleed.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

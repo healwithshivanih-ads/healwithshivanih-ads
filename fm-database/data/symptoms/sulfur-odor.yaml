@@ -1,0 +1,27 @@
+slug: sulfur-odor
+display_name: Sulfurous Body Odor / Gas
+aliases:
+- sulfur breath
+- sulfur-smelling gas
+- sulfurous armpit odor
+- sulfite sensitivity
+category: constitutional
+severity: common
+description: Breath, underarm, or flatus odor with a sulfur or rotten-egg quality,
+  which Lynch associates with impaired sulfite oxidase activity supported by molybdenum,
+  and overload of the sulfur/glutathione pathway.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+- clean-genes-protocol
+linked_to_mechanisms:
+- glutathione-conjugation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: Take molybdenum if your breath, armpits, and/or gas smells of sulfur, or
+    if you're sensitive to sulfites.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

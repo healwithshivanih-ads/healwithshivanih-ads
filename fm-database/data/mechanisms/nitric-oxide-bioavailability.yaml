@@ -1,29 +1,68 @@
 slug: nitric-oxide-bioavailability
-display_name: Nitric Oxide Bioavailability
+display_name: Nitric Oxide Bioavailability (NOS3)
 aliases:
 - NO bioavailability
 - endothelial nitric oxide
 - vasodilation via NO
+- eNOS pathway
+- NO production
+- endothelial NOS pathway
+- eNOS
+- NOS3 uncoupling
 category: signaling
-summary: Riboflavin-mediated stabilization of the MTHFR enzyme may increase active folate availability, which in turn may
-  improve nitric oxide bioavailability, supporting endothelial vasodilation and blood pressure regulation. This is the proposed
-  mechanism linking riboflavin to blood pressure reduction in 677TT individuals.
+summary: Endothelial nitric oxide synthase (NOS3) converts arginine to nitric oxide
+  (NO), which relaxes vascular smooth muscle, supports memory, and has antimicrobial
+  properties. When uncoupled — due to oxidative stress, BH4 depletion, or high homocysteine
+  — NOS3 produces superoxide instead of NO, driving cardiovascular damage. Exercise
+  and sauna physiologically stimulate NOS3 function.
 upstream_drivers:
 - mthfr-enzyme-dysfunction
 - riboflavin-deficiency
 - reduced-5-mthf-production
+- oxidative-stress
+- mouth-breathing
+- snoring
+- methylation-insufficiency
+- low-antioxidant-diet
+- NOS3-variant
+- high-homocysteine
+- arginine-deficiency
+- BH4-depletion
+- infections-consuming-arginine
+- insulin-resistance
 downstream_effects:
 - vascular-smooth-muscle-relaxation
 - blood-pressure-reduction
+- impaired-vascular-dilation
+- poor-circulation
+- cold-extremities
+- headaches
+- hypertension
+- endothelial-dysfunction
+- atherosclerosis
+- cognitive-decline
+- impaired-immune-defence
 related_mechanisms:
 - mthfr-enzyme-dysfunction
 - homocysteine-remethylation
+- glutathione-conjugation
+- methylation
+- oxidative-stress-antioxidant-defense
 linked_to_topics:
 - riboflavin-and-blood-pressure-mthfr
 - mthfr-polymorphisms
+- nos3-nitric-oxide
+- clean-genes-protocol
+- nos3-nitric-oxide-cardiovascular
+- mthfr-methylation-support
+- gst-gpx-glutathione-detox
 evidence_tier: plausible_emerging
-sources: []
-version: 1
+sources:
+- id: dirty-genes-lynch
+  location: Sleep — Soak and Scrub Week 1
+  quote: Snoring and mouth-breathing make for a poor night's sleep and, as we saw,
+    a dirty NOS3.
+version: 3
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

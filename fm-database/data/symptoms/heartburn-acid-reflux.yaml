@@ -1,0 +1,26 @@
+slug: heartburn-acid-reflux
+display_name: Heartburn / Acid Reflux
+aliases:
+- GERD
+- acid indigestion
+- reflux
+- stomach burning
+category: gi
+severity: common
+description: Burning sensation in the esophagus from acid reflux — linked in this
+  framework to excess gut histamine stimulating parietal cell acid secretion, particularly
+  when DAO is overwhelmed by high-histamine foods.
+linked_to_topics:
+- dao-histamine-intolerance
+linked_to_mechanisms:
+- histamine-metabolism
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: The Antacid Connection'
+  quote: 'Here''s another problem with too much histamine in your gut: it causes acid
+    reflux and heartburn.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

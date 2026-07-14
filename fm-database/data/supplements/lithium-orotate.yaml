@@ -1,0 +1,38 @@
+slug: lithium-orotate
+display_name: Lithium Orotate (Low-Dose)
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 5
+    max: 10
+    unit: mg
+timing_options:
+- evening
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- maoa-slow-serotonin-excess
+linked_to_claims:
+- lithium-orotate-calms-excess-serotonin-slow-maoa
+notes_for_coach: Lynch recommends 5 mg lithium orotate (OTC low-dose form, not pharmaceutical
+  lithium carbonate) for slow MAOA to calm excess serotonin activity. Slow MAOA patients
+  often report benefit; fast MAOA patients report worsening. Inositol and lithium
+  act oppositely — if one fails, try the other. Distinguish clearly from prescription
+  lithium carbonate (much higher doses, requires serum monitoring).
+notes_for_client: A mineral-based supplement at very low doses that can help balance
+  serotonin activity. This is a food supplement dose, not the same as prescription
+  lithium medication.
+evidence_tier: confirm_with_clinician
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow MAOA
+  quote: Consider 5 milligrams of lithium orotate, a supplement that helps calm the
+    activity of excess serotonin.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

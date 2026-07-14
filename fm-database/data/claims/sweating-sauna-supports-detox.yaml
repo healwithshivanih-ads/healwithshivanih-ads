@@ -1,0 +1,30 @@
+slug: sweating-sauna-supports-detox
+statement: Regular sweating through exercise, sauna use, or hot baths supports toxin
+  excretion via the skin, reducing the burden on hepatic and renal detox pathways.
+evidence_tier: plausible_emerging
+rationale: Sweat contains trace amounts of heavy metals (arsenic, cadmium, lead, mercury)
+  and some persistent organic pollutants. Sauna use is associated with improved cardiovascular
+  biomarkers in epidemiological data. However, the quantitative detox contribution
+  via sweat compared to liver/kidney is debated.
+coaching_translation: Aim to break a sweat daily — exercise, brisk walking in warm
+  clothes, Epsom salt baths, or low-temperature sauna. Always shower and use soap
+  afterward to rinse toxins off skin.
+caveats:
+- Quantitative contribution of sweat to total toxin elimination is debated
+- Sauna contraindicated in some cardiovascular conditions — refer out
+- Always replenish electrolytes
+linked_to_topics:
+- clean-genes-protocol
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Detoxification — Soak and Scrub Week 1
+  quote: Sweat. Do this however you can. Exercise, fast walks with lots of warm clothes,
+    and Epsom salt baths are all good options.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

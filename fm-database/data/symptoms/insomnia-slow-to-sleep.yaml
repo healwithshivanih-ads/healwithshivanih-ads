@@ -1,0 +1,31 @@
+slug: insomnia-slow-to-sleep
+display_name: Difficulty Falling Asleep (Sleep-Onset Insomnia)
+aliases:
+- can't fall asleep
+- lying awake
+- racing mind at night
+- night owl
+category: sleep
+severity: common
+description: Prolonged time to sleep onset, often with a racing or active mind. Lynch
+  attributes this to slow COMT, slow MAOA, or excess histamine (difficulty sleeping
+  after eating), all of which prolong stimulatory neurotransmitter activity in the
+  evening.
+linked_to_topics:
+- comt-slow-catechol-clearance
+- maoa-slow-serotonin-excess
+- histamine-intolerance-dao
+linked_to_mechanisms:
+- catechol-methylation
+- monoamine-oxidation
+- histamine-catabolism-dao
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — COMT slow symptom checklist
+  quote: I've struggled with falling asleep since I was a child. I know the ceiling
+    patterns well.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

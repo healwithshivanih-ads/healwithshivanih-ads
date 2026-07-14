@@ -1,0 +1,38 @@
+slug: gut-microbiome-dysbiosis
+display_name: Gut Microbiome Dysbiosis
+aliases:
+- microbiome imbalance
+- SIBO
+- gut flora imbalance
+category: gut
+summary: Imbalance in gut microbial populations — including SIBO, Candida overgrowth,
+  or dominance of histamine-producing bacterial species — increases luminal histamine
+  load, triggers immune activation, and burdens the DAO enzyme. A diverse, balanced
+  microbiome is protective; disruption by antibiotics, stress, poor diet, or infection
+  propagates inflammation and food intolerance.
+upstream_drivers:
+- antibiotic-use
+- chronic-stress
+- poor-diet
+- toxic-exposure
+- infections
+downstream_effects:
+- excess-histamine-production
+- increased-gut-permeability
+- DAO-overwhelm
+- immune-dysregulation
+related_mechanisms:
+- histamine-metabolism
+- leaky-gut
+linked_to_topics:
+- dao-histamine-intolerance
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO: Oversensitivity to Foods'
+  quote: Identifying and eliminating gut pathogens is essential in overcoming a dirty
+    DAO.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

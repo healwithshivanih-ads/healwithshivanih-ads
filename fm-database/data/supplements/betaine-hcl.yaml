@@ -1,6 +1,6 @@
 slug: betaine-hcl
-display_name: Betaine HCL
-category: other
+display_name: Betaine HCl (with Digestive Enzymes)
+category: enzyme
 forms_available:
 - capsule
 - tablet
@@ -18,11 +18,10 @@ timing_options:
 - with_dinner
 - with_breakfast
 take_with_food: required
-notes_for_coach: Used both diagnostically (titration challenge) and therapeutically
-  for hypochlorhydria. Start with one capsule per meal and increase incrementally,
-  stopping at the dose that produces warmth/tingling — indicating adequate acid. Not
-  for long-term use without clinician oversight. Contraindicated with active ulcers
-  or NSAIDs.
+notes_for_coach: Use only with meals; not needed for light meals. CONTRAINDICATED
+  in confirmed or suspected gastric ulcers. Do not open capsules (highly acidic).
+  Pancreatic enzymes should be combined. For fat intolerance, add lipase or ox bile
+  (~250 mg).
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - hypochlorhydria
@@ -32,6 +31,8 @@ linked_to_topics:
 - gut-dysbiosis
 - rheumatoid-arthritis
 - autoimmune
+- histamine-intolerance
+- clean-genes-protocol
 linked_to_mechanisms: []
 linked_to_claims:
 - betaine-hcl-corrects-hypochlorhydria
@@ -44,9 +45,8 @@ linked_to_claims:
 - betaine-hcl-titration-diagnoses-hypochlorhydria
 - betaine-hcl-replaces-gastric-acid
 - murray-low-stomach-acid-ra-sibo-cascade
-notes_for_client: These capsules contain hydrochloric acid to support your stomach's
-  digestion. Always take with a protein-containing meal. Start low and increase slowly
-  as guided by your practitioner.
+notes_for_client: Take at the start of a main meal to support stomach acid and digestion.
+  Never take if you have or suspect a stomach ulcer.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
@@ -78,7 +78,12 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 7
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: Consider taking betaine hydrochloride (HCl) along with pancreatic enzymes.
+    If you're intolerant to fats or oils, add in lipase or about 250 milligrams of
+    ox bile.
+version: 8
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

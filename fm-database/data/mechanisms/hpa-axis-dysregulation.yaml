@@ -1,5 +1,5 @@
 slug: hpa-axis-dysregulation
-display_name: HPA Axis Dysregulation
+display_name: HPA Axis Dysregulation & Stress Response
 aliases:
 - hpa-axis-dysfunction
 - allostatic overload
@@ -50,9 +50,10 @@ aliases:
 - stress axis modulation
 - HPA hyperactivation
 category: endocrine
-summary: Chronic activation of the hypothalamic–pituitary–adrenal axis leads to sustained elevation of cortisol, impairing
-  neuroplasticity (particularly in the hippocampus), disrupting sleep architecture, and promoting systemic inflammation via
-  pro-inflammatory cytokines such as IL-6, TNF-α, and IL-1β.
+summary: Chronic psychological and physiological stress activates the HPA axis, depleting
+  B vitamins, vitamin C, magnesium, and electrolytes while upregulating catecholamine
+  synthesis. Lynch frames this as 'dirtying genes' by increasing demand on COMT, MAOA,
+  and methylation pathways beyond their capacity.
 upstream_drivers:
 - chronic psychological stress
 - systemic-inflammation
@@ -92,6 +93,8 @@ upstream_drivers:
 - adverse-childhood-experiences
 - toxic-relationships
 - vagal-nerve-dysregulation
+- poor-diet
+- environmental-toxins
 downstream_effects:
 - reduced T4→T3 conversion (raises reverse T3)
 - leaky gut via cortisol effects on tight junctions
@@ -145,6 +148,9 @@ downstream_effects:
 - thyroid-suppression
 - elevated-morning-cortisol
 - hippocampal-neuroplasticity-loss
+- neurotransmitter-dysregulation
+- electrolyte-depletion
+- impaired-methylation
 related_mechanisms:
 - leaky-gut
 - insulin-resistance
@@ -175,6 +181,8 @@ related_mechanisms:
 - gabaergic-modulation
 - gut-microbiome-hpa-axis-pathway
 - melatonin-secretion
+- catechol-clearance-comt-maoa
+- methylation
 linked_to_topics:
 - anxiety
 - insomnia
@@ -218,6 +226,9 @@ linked_to_topics:
 - pcos-fertility
 - hpa-axis-cortisol-regulation
 - sleep-quality
+- clean-genes-protocol
+- comt-catechol-clearance
+- maoa-neurotransmitter-balance
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Nervous System & HPA section
@@ -229,7 +240,8 @@ sources:
   quote: Chronic stress → High cortisol steals pregnenolone (pregnenolone steal).
 - id: vitaone-adrenal-cheatsheet
   location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
-  quote: Persistent HPA activation → ↑ Cortisol, ↓ DHEA → Mitochondrial suppression, altered glucose metabolism
+  quote: Persistent HPA activation → ↑ Cortisol, ↓ DHEA → Mitochondrial suppression,
+    altered glucose metabolism
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Root Cause Framework
   quote: Chronic cortisol elevation, sleep deprivation, circadian misalignment
@@ -238,53 +250,67 @@ sources:
   quote: Stress must be addressed — Cortisol worsens permeability
 - id: vitaone-inflammation-cheatsheet
   location: Autoimmune Disease Cheatsheet — Page 23
-  quote: Cortisol dysregulation suppresses resolution of inflammation. Adrenal dysfunction = poor immune modulation.
+  quote: Cortisol dysregulation suppresses resolution of inflammation. Adrenal dysfunction
+    = poor immune modulation.
 - id: vitaone-nutrition-cheatsheet
   location: Hairfall – Supplement Stack
   quote: Lowers cortisol & supports postpartum or chronic stress–related loss
 - id: vitaone-thyroid-ebook
   location: 'Chapter 6: Causes of Thyroid Disorders'
-  quote: Stress dysregulates the hypothalamic-pituitary-adrenal (HPA) axis, which also interacts with the thyroid axis (HPAT).
-    Chronic stress lowers TRH release from the hypothalamus and TSH release from the pituitary.
+  quote: Stress dysregulates the hypothalamic-pituitary-adrenal (HPA) axis, which
+    also interacts with the thyroid axis (HPAT). Chronic stress lowers TRH release
+    from the hypothalamus and TSH release from the pituitary.
 - id: vitaone-blood-sugar-ebook
   location: Section 4.0.2 — Mechanistic Contributors
-  quote: Hyper-cortisolaemia- cortisol increases hepatic gluconeogenesis & visceral fat deposition.
+  quote: Hyper-cortisolaemia- cortisol increases hepatic gluconeogenesis & visceral
+    fat deposition.
 - id: vitaone-adrenal-toolkit
   location: HPA Axis Questionnaire
-  quote: The hypothalamus, pituitary, adrenal (HPA) axis is the body's central stress response system.
+  quote: The hypothalamus, pituitary, adrenal (HPA) axis is the body's central stress
+    response system.
 - id: vitaone-health-coaching-toolkit
   location: Practicing Gratitude with the IFM Gratitude Journal
-  quote: These benefits include decreased stress levels, lowered blood pressure, better sleep quality, stronger immune systems,
-    and increased feelings of joy, happiness, forgiveness, and compassion.
+  quote: These benefits include decreased stress levels, lowered blood pressure, better
+    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
+    forgiveness, and compassion.
 - id: coconote-fm-biomarkers-cvs
   location: Autonomic Nervous System
-  quote: when the patient is in stress, they increase their cortisol level. And as we know, cortisol level can lead to the
-    metabolic dysfunction. Even cortisol is creating a problem with the cardiovascular functions.
+  quote: when the patient is in stress, they increase their cortisol level. And as
+    we know, cortisol level can lead to the metabolic dysfunction. Even cortisol is
+    creating a problem with the cardiovascular functions.
 - id: coconote-fm-estrogen-dominance
   location: HPA Axis Dysfunction
-  quote: If your adrenal is not good, which means that your cortisol hormone is not working properly, if your thyroid is not
-    working properly, because T3 is responsible for maintaining it, it increases your progesterone.
+  quote: If your adrenal is not good, which means that your cortisol hormone is not
+    working properly, if your thyroid is not working properly, because T3 is responsible
+    for maintaining it, it increases your progesterone.
 - id: coconote-fm-chronic-pain-fatigue
   location: Stress & Lifestyle Section
-  quote: Stress management is a big one. People are having, we know that if people are stressed then everything will be compromised.
-    Even stress, sleep also cause inflammation.
+  quote: Stress management is a big one. People are having, we know that if people
+    are stressed then everything will be compromised. Even stress, sleep also cause
+    inflammation.
 - id: coconote-fm-sibo-sifo
   location: Gut-Brain Axis Section
-  quote: Gut-based access disruption work, the hormone activity will also have a disruption. Thyroids, subclinical thyroid,
-    insulin resistance, PcOS.
+  quote: Gut-based access disruption work, the hormone activity will also have a disruption.
+    Thyroids, subclinical thyroid, insulin resistance, PcOS.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXtzQLWjKjv/
   quote: 'Forgetting stress biology: high cortisol alone can derail ovulation.'
 - id: coconote-fm-intestinal-permeability-anish
   location: Triggers and Mediators of Intestinal Permeability
-  quote: Stress as we know stress is going to change your autonomic nervous system and you put on sympathetic nervous system
-    and cortisol and then adrenaline, non-adrenaline or the stress hormone can increase the intestinal permeability.
+  quote: Stress as we know stress is going to change your autonomic nervous system
+    and you put on sympathetic nervous system and cortisol and then adrenaline, non-adrenaline
+    or the stress hormone can increase the intestinal permeability.
 - id: coach-shivani
   location: Coach Observation — Plant-Derived Adaptogens and Herbs
-  quote: It has been reported to reduce acute exercise-induced cortisol and improve neuroplasticity in the hippocampus, which
-    is often damaged by chronic cortisol elevation.
+  quote: It has been reported to reduce acute exercise-induced cortisol and improve
+    neuroplasticity in the hippocampus, which is often damaged by chronic cortisol
+    elevation.
+- id: dirty-genes-lynch
+  location: Supplements — Adaptogens, Week 1
+  quote: Herbal compounds that support your ability to handle stress are known as
+    adaptogens.
 evidence_tier: strong
-version: 21
+version: 22
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

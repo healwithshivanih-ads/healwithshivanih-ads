@@ -1,0 +1,31 @@
+slug: diet-lifestyle-can-offset-mthfr-snp-expression
+statement: Diet, lifestyle, and environmental factors can substantially modify the
+  functional expression of MTHFR variants — individuals with the same SNP may be entirely
+  asymptomatic when dietary and lifestyle support is adequate.
+evidence_tier: plausible_emerging
+rationale: The Italian population example used by Lynch (high C677T prevalence yet
+  low birth defect rates) reflects a real epidemiological observation and is consistent
+  with the gene-environment interaction principle that underlies epigenetics. The
+  broader claim that 'clean genes protocol' fully overrides genetic risk is extrapolated
+  beyond current evidence. Source is a consumer book.
+coaching_translation: Having an MTHFR variant is not a life sentence. How you eat,
+  sleep, and manage stress has a huge influence on whether that variant actually causes
+  problems. Genetics loads the gun; lifestyle pulls the trigger.
+caveats:
+- Gene-environment interaction evidence is strongest for folate/NTD associations in
+  pregnancy; extrapolation to all MTHFR-associated conditions is speculative
+- Source is a consumer book
+linked_to_topics:
+- mthfr-methylation-gene
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Meet Your Dirty MTHFR'
+  quote: Even if you were born with a 30 percent MTHFR, you might experience absolutely
+    no symptoms at all.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

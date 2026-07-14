@@ -1,0 +1,29 @@
+slug: headaches
+display_name: Headaches
+aliases:
+- head pain
+- frequent headaches
+category: neurological
+severity: common
+description: Recurrent headaches that Lynch associates with multiple dirty gene states,
+  including histamine excess (DAO), impaired nitric oxide signaling (NOS3), and methylation
+  insufficiency (MTHFR).
+when_to_refer: Sudden severe headache, headache with neurological signs, or new-onset
+  headache in midlife warrants medical evaluation.
+linked_to_topics:
+- histamine-intolerance
+- nos3-nitric-oxide
+- mthfr-methylation
+linked_to_mechanisms:
+- histamine-metabolism
+- nitric-oxide-bioavailability
+- methylation
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 12 Introduction
+  quote: your headaches, rashes, weight gain, and insomnia are all results of one
+    or more dirty genes
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

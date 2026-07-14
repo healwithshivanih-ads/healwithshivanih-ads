@@ -1,0 +1,41 @@
+slug: bh4-cofactor-depletion
+display_name: BH4 (Tetrahydrobiopterin) Cofactor Depletion
+aliases:
+- tetrahydrobiopterin deficiency
+- BH4 uncoupling
+- NOS3 uncoupling
+category: metabolic
+summary: BH4 is an essential cofactor for NOS3; it is also required for synthesis
+  of serotonin, dopamine, and other neurotransmitters. BH4 is highly sensitive to
+  oxidative stress—industrial chemicals, nicotine, and excess hydrogen peroxide rapidly
+  degrade it. When BH4 falls, NOS3 switches from producing nitric oxide to producing
+  superoxide, driving cardiovascular and neurological harm. BH4 synthesis requires
+  folate, magnesium, and zinc via MTHFR-dependent pathways.
+upstream_drivers:
+- oxidative-stress
+- industrial-chemical-exposure
+- smoking
+- folic-acid-synthetic
+- low-glutathione
+- poor-methylation
+downstream_effects:
+- nos3-uncoupling-superoxide-production
+- reduced-nitric-oxide
+- reduced-neurotransmitter-synthesis
+- cardiovascular-disease
+related_mechanisms:
+- nitric-oxide-bioavailability
+- methylation-cycle-disruption
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 10 — Pollution, Smoking, and Stress
+  quote: NOS3 relies upon a compound known as BH4, which your body produces. BH4 loves
+    things clean. If your body is stressed by or dirtied up with toxins—including
+    nicotine and industrial chemicals—your BH4 levels will go way down.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -4,14 +4,19 @@ category: mineral
 forms_available:
 - capsule
 - tablet
+- liquid
 typical_dose_range:
   capsule:
-    min: 50
-    max: 250
+    min: 75
+    max: 500
     unit: mcg
   tablet:
     min: 50
     max: 250
+    unit: mcg
+  liquid:
+    min: 25
+    max: 100
     unit: mcg
 timing_options:
 - morning
@@ -19,21 +24,36 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Enzyme cofactor for sulfite detoxification; used in sulfur sensitivity
-  and detox protocols.
+notes_for_coach: Molybdenum is a cofactor for the sulfite oxidase enzyme that converts
+  sulfites to sulfates. Lynch recommends it for sulfite sensitivity (wine/food-triggered
+  headaches) and notes it helps with cruciferous vegetable gas in slow COMT. Long-term
+  high doses can raise uric acid and cause gout — use intermittently. If side effects
+  occur, add PQQ to counteract. Choose molybdenum not bound to ammonia.
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - detoxification
+- gst-gpx-glutathione-detox
+- clean-genes-protocol
+- histamine-intolerance-dao
+- comt-slow-catechol-clearance
 linked_to_mechanisms:
 - transsulfuration-pathway
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- molybdenum-sulfite-oxidase-support
+- molybdenum-processes-sulfites-supports-dao
+notes_for_client: If you notice headaches from wine or sulfite-containing foods, molybdenum
+  may help your body process those compounds. Start low and don't take it indefinitely.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Molybdenum - Sulfite detox, enzyme cofactor - 50–250 mcg/day - With or without
     food
-version: 2
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: Take molybdenum if your breath, armpits, and/or gas smells of sulfur, or
+    if you're sensitive to sulfites. Start with 75 micrograms of molybdenum using
+    The Pulse Method.
+version: 4
 status: active
-updated_at: '2026-06-18'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

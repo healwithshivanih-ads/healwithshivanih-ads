@@ -1,0 +1,30 @@
+slug: aspirin-nsaids-increase-histamine-release
+statement: Aspirin and other NSAIDs increase histamine release, contributing to worsening
+  histamine intolerance symptoms in DAO-compromised individuals.
+evidence_tier: plausible_emerging
+rationale: NSAIDs and aspirin are known mast-cell degranulators and can directly stimulate
+  histamine release independent of DAO enzyme activity. This is a pharmacologically
+  established mechanism. Lynch flags this as a consideration for DAO-compromised clients
+  who regularly use anti-inflammatory medications.
+coaching_translation: Clients with histamine intolerance should note that pain-relief
+  medications like ibuprofen or aspirin can trigger or worsen histamine symptoms.
+  Encourage discussion with their doctor about alternatives.
+out_of_scope_notes: Coach should not recommend stopping prescribed aspirin (e.g.,
+  cardiac protection). Refer to physician.
+caveats:
+- Source is a consumer trade book.
+- Low-dose aspirin for cardiovascular prevention carries different risk/benefit than
+  OTC pain relief doses.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Spot Cleaning Your DAO (Medications)
+  quote: Aspirin and other NSAIDs and salicylates also contribute to increased histamine
+    release.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

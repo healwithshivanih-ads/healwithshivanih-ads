@@ -1,0 +1,36 @@
+slug: tryptophan-steal-ido1
+display_name: Tryptophan Steal via IDO1 (Inflammation)
+aliases:
+- tryptophan diversion
+- IDO1 activation
+- kynurenine pathway shunt
+category: immune
+summary: During inflammation, infection, or chronic stress, the enzyme IDO1 diverts
+  tryptophan away from serotonin synthesis toward the kynurenine pathway. This 'tryptophan
+  steal' depletes serotonin precursor availability and mimics a fast-MAOA phenotype,
+  worsening mood, focus, and sleep even when the MAOA gene itself is not fast.
+upstream_drivers:
+- systemic-inflammation
+- chronic-infection
+- chronic-stress
+- autoimmune-activation
+downstream_effects:
+- serotonin-precursor-depletion
+- depression-and-anxiety
+- poor-focus
+- elevated-quinolinate-kynurenate
+related_mechanisms:
+- monoamine-oxidation
+- serotonin-dopamine-clearance
+linked_to_topics:
+- maoa-fast-serotonin-depletion
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Appendix A — MAOA
+  quote: Tryptophan can also move through another enzyme called IDO1 (in addition
+    to MAOA), which increases during times of stress, infection, and inflammation.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,29 @@
+slug: fatty-liver-symptoms
+display_name: Fatty Liver / Right Upper Quadrant Heaviness
+aliases:
+- fatty liver
+- NAFLD
+- right side heaviness after fat
+- liver congestion
+- sluggish liver
+category: metabolic
+severity: concerning
+description: Accumulation of triglycerides in hepatocytes, presenting as heaviness
+  or discomfort under the right ribcage, elevated serum triglycerides, and intolerance
+  of fatty foods. In the PEMT framework, insufficient phosphatidylcholine means VLDLs
+  cannot package and export liver triglycerides, causing fat build-up.
+when_to_refer: Refer for liver ultrasound, liver enzymes, and metabolic workup.
+linked_to_topics:
+- pemt-choline-cell-membrane
+linked_to_mechanisms:
+- pemt-phosphatidylcholine-synthesis
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 11 — PEMT: Cell Membrane and Liver Problems'
+  quote: A dirty PEMT is related to a syndrome called fatty liver. If you have that
+    condition, your liver doesn't function well, partly because your PEMT isn't moving
+    triglycerides out of your liver.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

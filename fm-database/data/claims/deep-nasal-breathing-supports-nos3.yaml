@@ -1,0 +1,28 @@
+slug: deep-nasal-breathing-supports-nos3
+statement: Nasal diaphragmatic breathing maximises oxygen delivery and nitric oxide
+  production (nitric oxide is generated in the nasal sinuses); mouth-breathing and
+  shallow chest-breathing reduce oxygen saturation and impair NOS3 activity.
+evidence_tier: plausible_emerging
+rationale: Nitric oxide production in the nasal passages and its role in conditioning
+  inhaled air is documented in the peer-reviewed literature; the clinical implications
+  for NOS3 gene expression and blood pressure are mechanistically plausible and supported
+  by some small studies.
+coaching_translation: Teaching diaphragmatic nasal breathing—breathing slowly in and
+  out through the nose, belly expanding on inhale—is Lynch's single most important
+  recommendation for NOS3 support and stress reduction. Can be practised throughout
+  the day.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 10 — Key Nutrients for a Healthy NOS3
+  quote: If you could implement only one change in your life to support your NOS3,
+    I would—without hesitation—say to improve your breathing.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

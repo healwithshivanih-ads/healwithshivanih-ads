@@ -1,0 +1,34 @@
+slug: slow-comt-accumulates-catecholamines-estrogen
+statement: Slow COMT variants reduce the rate at which dopamine, norepinephrine, epinephrine,
+  and estrogen metabolites are cleared, leading to elevated levels of these compounds
+  and associated symptoms including anxiety, sleep disruption, PMS, and estrogen-dominant
+  conditions.
+evidence_tier: plausible_emerging
+rationale: The Val158Met COMT polymorphism (producing 'slow' COMT) is associated with
+  reduced enzymatic activity and is a well-studied functional variant. Associations
+  with anxiety, pain sensitivity, and hormonal-related conditions have biological
+  plausibility and some research support, though individual phenotypic expression
+  is highly variable. Source is a consumer book.
+coaching_translation: If you have slow COMT traits (wired, anxious, trouble winding
+  down, PMS, caffeine-sensitive), your body holds onto stress chemicals and estrogen
+  longer than ideal. Regular exercise, stress breaks, and limiting catechol-heavy
+  foods (coffee, chocolate, green tea) can help your body clear these naturally.
+caveats:
+- Phenotypic expression of COMT SNPs is highly variable and context-dependent
+- Slow COMT does not inevitably produce symptoms in the context of a clean diet and
+  lifestyle
+- Source is a consumer book, not primary literature
+linked_to_topics:
+- comt-gene-catechol-clearance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Your COMT in Action'
+  quote: Margo's slow COMT was slow to clear catechols, estrogen, dopamine, norepinephrine,
+    and epinephrine from her system.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

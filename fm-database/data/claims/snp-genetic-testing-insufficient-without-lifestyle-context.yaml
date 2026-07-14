@@ -1,0 +1,32 @@
+slug: snp-genetic-testing-insufficient-without-lifestyle-context
+statement: SNP genetic test results alone are insufficient guides to treatment because
+  genes that carry no variant can act dysfunctionally due to poor diet and lifestyle,
+  while genes with variants may function adequately with optimal lifestyle support.
+evidence_tier: plausible_emerging
+rationale: Gene-environment interaction is a cornerstone of epigenetics research.
+  Lynch's clinical claim that lifestyle context determines phenotypic expression more
+  than genotype alone is consistent with current epigenetics science, though the specific
+  thresholds are not precisely quantifiable from a book source.
+coaching_translation: Knowing your SNPs is less important than living in a way that
+  supports good gene expression. A 'clean' gene can be made dirty by poor habits;
+  a 'dirty' gene can behave well with the right lifestyle support.
+caveats:
+- This is a general principle, not a validated clinical protocol.
+- Some SNPs (e.g., high-penetrance disease variants) confer significant risk regardless
+  of lifestyle.
+- Source is a consumer trade book.
+linked_to_topics:
+- epigenetics-gene-expression-control
+- mthfr-methylation-gene
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — If You've Had Genetic Testing
+  quote: If you're eating right, getting terrific sleep, avoiding toxins, and keeping
+    stress at bay, your born-dirty genes—your SNPs—might not be giving you any trouble.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

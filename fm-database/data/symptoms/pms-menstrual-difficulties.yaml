@@ -1,0 +1,29 @@
+slug: pms-menstrual-difficulties
+display_name: PMS / Menstrual Difficulties
+aliases:
+- premenstrual syndrome
+- menstrual cramps
+- difficult periods
+- hormonal mood changes
+category: hormonal
+severity: common
+description: Cyclic mood, pain, and physical symptoms in the premenstrual phase. Associated
+  with slow COMT variants slowing catechol-estrogen clearance, leaving elevated oestrogen
+  in the luteal phase, and with poor methylation impairing overall hormonal detoxification.
+linked_to_topics:
+- comt-catechol-clearance
+- mthfr-methylation-gene
+linked_to_mechanisms:
+- catechol-methylation-comt
+- estrogen-metabolism
+- methylation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Introduction
+  quote: SNPs in the COMT gene can lead to workaholism, sleep issues, PMS, problems
+    with menopause.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

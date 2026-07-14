@@ -1,0 +1,32 @@
+slug: molybdenum-sulfite-oxidase-support
+statement: Molybdenum is a required cofactor for sulfite oxidase, the enzyme that
+  converts sulfites to sulfates; supplementation may reduce sulfur odor and sulfite
+  sensitivity when this pathway is under-active.
+evidence_tier: plausible_emerging
+rationale: Sulfite oxidase requires molybdenum as a cofactor; molybdenum deficiency
+  impairs sulfite clearance. Dietary molybdenum is generally adequate, but genetic
+  variants in SUOX or high sulfur/glutathione cycling may increase demand. The specific
+  dose of 75 mcg is within safe range.
+coaching_translation: If you notice a sulfur or rotten-egg smell from your gas, breath,
+  or sweat, start 75 mcg of molybdenum daily and see if it resolves within a few days.
+caveats:
+- 75 mcg starting dose appears from consumer book without cited trial; verify with
+  clinician for ongoing use
+- Molybdenum excess can antagonize copper absorption
+out_of_scope_notes: Dosing guidance should be verified with a clinician.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+- clean-genes-protocol
+linked_to_supplements:
+- molybdenum
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: Take molybdenum if your breath, armpits, and/or gas smells of sulfur, or
+    if you're sensitive to sulfites. Start with 75 micrograms of molybdenum using
+    The Pulse Method.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

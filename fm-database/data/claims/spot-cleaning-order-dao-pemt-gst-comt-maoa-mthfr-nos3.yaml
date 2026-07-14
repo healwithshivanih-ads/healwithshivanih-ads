@@ -1,0 +1,26 @@
+slug: spot-cleaning-order-dao-pemt-gst-comt-maoa-mthfr-nos3
+statement: Lynch's spot-cleaning protocol works dirty genes in a set order — DAO,
+  PEMT, GST/GPX, COMT, MAOA, MTHFR, then NOS3 — rather than starting with the 'dirtiest'
+  gene, because supporting the gut, membrane and detox genes first offloads the methylation
+  and nitric-oxide genes downstream.
+evidence_tier: fm_specific_thin
+rationale: A sequencing heuristic from the book, not a validated clinical algorithm.
+  The physiological logic (upstream gut/detox burden drives methylation and NOS3 stress)
+  is plausible but the specific order is the author's clinical opinion.
+coaching_translation: When several systems are struggling, start with digestion and
+  detox support before pushing methylation nutrients — clearing the load upstream
+  often settles the rest.
+out_of_scope_notes: ''
+caveats:
+- Source is a consumer trade book (Ben Lynch, Dirty Genes), not primary literature.
+linked_to_topics:
+- clean-genes-protocol
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 15: Spot Cleaning — order of genes'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-chunk5

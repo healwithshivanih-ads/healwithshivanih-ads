@@ -1,0 +1,28 @@
+slug: riboflavin-regenerates-glutathione
+statement: Riboflavin (vitamin B2) is required for the glutathione reductase reaction
+  that converts oxidised glutathione back to its active reduced form; insufficient
+  riboflavin therefore impairs the body's ability to sustain glutathione-mediated
+  detoxification.
+evidence_tier: strong
+rationale: Glutathione reductase is an FAD-dependent enzyme—the riboflavin-to-glutathione
+  recycling link is well established in biochemistry and peer-reviewed literature.
+coaching_translation: Eating riboflavin-rich foods (liver, eggs, salmon, almonds,
+  mushrooms, spinach) regularly helps your body keep glutathione recycled and functional—a
+  critical support for detox capacity.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- riboflavin-b2
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — What Makes GST/GPX Dirty?
+  quote: Your body uses riboflavin to regenerate decaying, dysfunctional glutathione
+    back into whole, functional glutathione. If you're not consuming enough foods
+    that are rich in riboflavin, your supply of glutathione can't keep up.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

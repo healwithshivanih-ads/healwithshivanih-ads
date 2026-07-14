@@ -1,0 +1,29 @@
+slug: depression-low-affect
+display_name: Depression / Low Affect
+aliases:
+- feeling flat
+- persistent low mood
+- feeling blue
+- anhedonia
+category: mood
+severity: common
+description: Persistent low mood, emotional flatness, or lack of enjoyment in life,
+  sometimes fluctuating with periods of anxiety — a functional presentation linked
+  to impaired methylation, low SAMe, and altered dopamine/serotonin availability.
+when_to_refer: Suicidal ideation, severe functional impairment, or failure to improve
+  with lifestyle intervention.
+linked_to_topics:
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+linked_to_mechanisms:
+- methylation-cycle
+- catechol-clearance-comt-maoa
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: MTHFR The Basics'
+  quote: Common signs include anxiety, brain fog, chemical sensitivity, depression,
+    irritability, and a hair-trigger temper.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
