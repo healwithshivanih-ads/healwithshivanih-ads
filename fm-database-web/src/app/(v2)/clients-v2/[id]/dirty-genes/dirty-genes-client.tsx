@@ -10,7 +10,9 @@ import {
   type DgBand,
   type DgPathwayResult,
 } from "@/lib/fmdb/dirty-genes";
+import { buildPlanContribution } from "@/lib/fmdb/dirty-genes-plan";
 import { saveDirtyGenesAssessment } from "@/lib/server-actions/dirty-genes";
+import { applyDirtyGenesToPlan, type ApplyDgResult } from "@/lib/server-actions/dirty-genes-plan";
 
 const BAND_COLOR: Record<DgBand, { bg: string; fg: string; border: string }> = {
   clear: { bg: "var(--fm-surface-subtle, #f4f4f2)", fg: "var(--fm-text-tertiary)", border: "var(--fm-border-light)" },
@@ -215,6 +217,7 @@ export function DirtyGenesClient({
   initialChecked,
   initialNote,
   previousScreenDate,
+  draftPlanSlug,
 }: {
   clientId: string;
   questionnaire: DgQuestionnaire;
@@ -223,11 +226,14 @@ export function DirtyGenesClient({
   initialChecked: string[];
   initialNote: string;
   previousScreenDate?: string;
+  draftPlanSlug: string | null;
 }) {
   const [checked, setChecked] = useState<Set<string>>(new Set(initialChecked));
   const [note, setNote] = useState(initialNote);
   const [saving, startSave] = useTransition();
   const [savedAt, setSavedAt] = useState<string | null>(null);
+  const [applying, startApply] = useTransition();
+  const [applyResult, setApplyResult] = useState<ApplyDgResult | null>(null);
 
   const result = useMemo(
     () => scoreAssessment(questionnaire, [...checked], snps),
@@ -262,6 +268,22 @@ export function DirtyGenesClient({
   }
 
   const flagged = result.flagged;
+
+  function onApplyToPlan() {
+    if (!draftPlanSlug) return;
+    startApply(async () => {
+      const contribution = buildPlanContribution(
+        flagged,
+        new Date().toISOString().slice(0, 10),
+      );
+      const res = await applyDirtyGenesToPlan({
+        clientId,
+        contribution,
+        planSlug: draftPlanSlug,
+      });
+      setApplyResult(res);
+    });
+  }
 
   return (
     <div>
@@ -390,6 +412,72 @@ export function DirtyGenesClient({
             </div>
           ) : (
             flagged.map((p) => <ResultCard key={p.id} p={p} />)
+          )}
+
+          {/* add to plan draft — coach-side, gene-free */}
+          {flagged.length > 0 && (
+            <div
+              style={{
+                marginTop: 14,
+                padding: "10px 12px",
+                border: "1px solid var(--fm-border-light)",
+                borderRadius: "var(--fm-radius-md)",
+                background: "var(--fm-surface)",
+              }}
+            >
+              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 4 }}>→ Add to plan draft</div>
+              <div style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)", marginBottom: 8, lineHeight: 1.5 }}>
+                Folds the flagged pathways' foods, lifestyle and supplements into the
+                client's <b>draft</b> plan. The client never sees a gene word — pathway
+                reasoning is written only to the coach-only notes. Already-covered
+                supplements (incl. combo-formula components) are skipped.
+              </div>
+              {!draftPlanSlug ? (
+                <div style={{ fontSize: 12, color: "var(--fm-text-tertiary)", fontStyle: "italic" }}>
+                  No draft plan for this client — create a draft plan first, then come back.
+                </div>
+              ) : (
+                <>
+                  <button
+                    onClick={onApplyToPlan}
+                    disabled={applying}
+                    style={{
+                      fontSize: 12.5,
+                      fontWeight: 700,
+                      padding: "7px 14px",
+                      borderRadius: "var(--fm-radius-md)",
+                      border: "1px solid var(--fm-border)",
+                      background: "var(--fm-surface-subtle, #eef1ee)",
+                      cursor: applying ? "default" : "pointer",
+                      opacity: applying ? 0.6 : 1,
+                    }}
+                  >
+                    {applying ? "Adding…" : `Add ${flagged.length} pathway${flagged.length > 1 ? "s" : ""} to draft`}
+                  </button>
+                  {applyResult && (
+                    <div style={{ marginTop: 8, fontSize: 12, lineHeight: 1.5 }}>
+                      {applyResult.ok ? (
+                        <div style={{ color: "#166534" }}>
+                          ✓ Added to <b>{applyResult.planSlug}</b>:{" "}
+                          {applyResult.added?.supplements.length ?? 0} supplement(s),{" "}
+                          {applyResult.added?.foods ?? 0} food(s), {applyResult.added?.lifestyle ?? 0} practice(s).
+                          {applyResult.skipped && applyResult.skipped.length > 0 && (
+                            <div style={{ color: "var(--fm-text-tertiary)" }}>
+                              Skipped (already on plan): {applyResult.skipped.join(", ")}
+                            </div>
+                          )}
+                          <div style={{ color: "var(--fm-text-tertiary)" }}>
+                            Review in the Plan editor before publishing.
+                          </div>
+                        </div>
+                      ) : (
+                        <div style={{ color: "#b91c1c" }}>⚠ {applyResult.error}</div>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
           )}
 
           {/* save */}

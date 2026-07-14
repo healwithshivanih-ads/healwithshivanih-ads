@@ -13,6 +13,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { loadAllPlans } from "@/lib/fmdb/loader";
 import { FmAppShell } from "@/components/fm";
 import { HeaderAvatar } from "../analyse/header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
@@ -31,16 +32,24 @@ export default async function DirtyGenesPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [client, qres, snpRes, latest] = await Promise.all([
+  const [client, qres, snpRes, latest, allPlans] = await Promise.all([
     loadClientById(id),
     loadDirtyGenesQuestionnaire(),
     loadClientSnps(id),
     loadLatestDirtyGenesAssessment(id),
+    loadAllPlans(),
   ]);
 
   if (!client) notFound();
 
   const displayName = client.display_name ?? client.client_id ?? id;
+
+  // Target for "add to plan" = the client's most-recent DRAFT plan (only drafts
+  // are writable). null → the panel shows "create a draft first".
+  const draftPlan = allPlans
+    .filter((p) => p.client_id === id && ((p.status as string) ?? "draft") === "draft")
+    .sort((a, b) => String(b.updated_at ?? "").localeCompare(String(a.updated_at ?? "")))[0];
+  const draftPlanSlug = (draftPlan?.slug as string | undefined) ?? null;
 
   return (
     <FmAppShell
@@ -101,6 +110,7 @@ export default async function DirtyGenesPage({
           initialChecked={latest.checkedIds}
           initialNote={latest.note}
           previousScreenDate={latest.screenDate}
+          draftPlanSlug={draftPlanSlug}
         />
       ) : (
         <div style={{ padding: 16, fontSize: 13, color: "var(--fm-text-tertiary)" }}>
