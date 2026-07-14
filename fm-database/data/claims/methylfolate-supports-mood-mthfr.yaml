@@ -1,0 +1,33 @@
+slug: methylfolate-supports-mood-mthfr
+statement: Supplemental methylfolate (5-MTHF) may improve mood and reduce depression
+  symptoms in individuals with MTHFR variants by restoring the active folate needed
+  for neurotransmitter synthesis.
+evidence_tier: plausible_emerging
+rationale: Several RCTs and open-label studies support L-methylfolate as an adjunct
+  for depression, particularly in those with MTHFR variants and low folate status.
+  Mechanism via SAM-dependent monoamine synthesis is well characterised. Lynch's case
+  narrative is illustrative, not clinical proof.
+coaching_translation: If you have a dirty MTHFR and struggle with low mood, eating
+  more leafy greens (or working with a clinician on methylfolate supplementation)
+  may help restore the folate your brain needs to make feel-good neurotransmitters.
+out_of_scope_notes: Specific methylfolate dosing, titration, and decision to use as
+  adjunct to antidepressants must be managed by a clinician.
+caveats:
+- Starting dose too high can worsen anxiety in some MTHFR variants (over-methylation
+  risk).
+- This is a trade-book case report, not an RCT.
+- Depression is a serious medical condition requiring clinician oversight.
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_supplements:
+- methylfolate
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Success Stories
+  quote: Sure enough, after a few days of taking methylfolate and avoiding folic acid,
+    Taylor felt better; her depression lifted quickly.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

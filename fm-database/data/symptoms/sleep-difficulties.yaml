@@ -1,0 +1,29 @@
+slug: sleep-difficulties
+display_name: Sleep Difficulties / Insomnia
+aliases:
+- trouble falling asleep
+- wired at bedtime
+- trouble staying asleep
+- 3am wakeups
+category: sleep
+severity: common
+description: Difficulty initiating or maintaining sleep — linked to slow COMT (failure
+  to clear stress neurotransmitters by bedtime), histamine excess (DAO), and/or impaired
+  melatonin synthesis (methylation of serotonin to melatonin requires adequate SAMe).
+linked_to_topics:
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+- dao-histamine-intolerance
+linked_to_mechanisms:
+- methylation-cycle
+- catechol-clearance-comt-maoa
+- histamine-metabolism
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: COMT: Focus and Buoyancy'
+  quote: She had trouble sleeping. Caffeine made her more irritable and anxious.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

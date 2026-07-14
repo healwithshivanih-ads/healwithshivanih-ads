@@ -1,0 +1,31 @@
+slug: choline-rich-foods-support-pemt
+statement: Dietary choline from eggs, beets, quinoa, and lamb is particularly important
+  for individuals with reduced PEMT activity, as the enzyme that synthesizes phosphatidylcholine
+  endogenously is less active.
+evidence_tier: plausible_emerging
+rationale: PEMT rs7946 is associated with reduced phosphatidylcholine synthesis; affected
+  individuals depend more heavily on dietary choline. Eggs are the richest dietary
+  source; beets contain betaine which feeds the methylation cycle supporting PEMT.
+  Biologically coherent and partially supported by nutrigenomics research.
+coaching_translation: Eat eggs regularly (2–3 per day is fine). Include beets, quinoa,
+  and lamb in weekly rotation if you suspect low choline status.
+caveats:
+- Consumer book framing; individual PEMT genotype not confirmed in coaching context
+- Clinician input for hepatic fat or choline deficiency workup recommended
+linked_to_topics:
+- pemt-choline-demand
+- clean-genes-protocol
+linked_to_mechanisms:
+- pemt-gene-choline-demand
+- methylation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Gene Meal Guide — Chapter 13
+  quote: 'Dirty PEMT: Any recipe with eggs, beets, quinoa, or lamb; Any recipe that
+    supports MTHFR.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

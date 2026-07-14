@@ -1,0 +1,30 @@
+slug: sauna-therapy-supports-gst-gpx-detox
+statement: Regular sauna use promotes excretion of environmental toxins through sweat,
+  reducing the chemical burden on GST/GPX detoxification pathways and supporting overall
+  gene cleanliness.
+evidence_tier: fm_specific_thin
+rationale: Sweat is a documented excretion route for some heavy metals and lipophilic
+  toxins. Evidence for sauna as a primary detox modality is limited to small studies
+  and case reports; it is widely used in FM practice but not consensus medicine.
+coaching_translation: Twice-weekly sauna sessions can help your body sweat out some
+  of the chemical load, giving your detox genes a break. It's also a great stress
+  reliever.
+caveats:
+- Evidence for meaningful toxin elimination via sauna is limited and substance-specific.
+- Contraindicated in cardiovascular instability, pregnancy, some medications.
+- Source is a consumer trade book.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Success Stories
+  quote: Keri began to take twice-weekly saunas so that she could 'sweat it out.'
+    (I love saunas. Besides the fabulous stress relief, they're terrific for helping
+    your body get rid of harmful chemicals.)
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,29 @@
+slug: carb-sugar-cravings
+display_name: Carb & Sugar Cravings
+aliases:
+- sweet cravings
+- carbohydrate addiction
+- starchy food cravings
+- carb cycling
+category: metabolic
+severity: common
+description: Compulsive drive to consume carbohydrate-rich or sweet foods, often as
+  a transient mood-lifter. In the dirty-genes framework linked to fast MAOA (low serotonin
+  → carb-seeking for serotonin precursor tryptophan) and fast COMT (low dopamine →
+  dopamine-seeking through food reward).
+linked_to_topics:
+- maoa-neurotransmitter-gene
+- comt-catechol-clearance
+linked_to_mechanisms:
+- monoamine-oxidase-activity
+- catechol-methylation-comt
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: 'MAOA, the gene that affects mood swings and carb cravings … Weaknesses:
+    mood swings, carb cravings, irritability, headaches, insomnia, addictions.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

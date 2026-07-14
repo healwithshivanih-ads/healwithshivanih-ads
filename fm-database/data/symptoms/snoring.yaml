@@ -1,0 +1,27 @@
+slug: snoring
+display_name: Snoring / Mouth-Breathing at Night
+aliases:
+- mouth breathing
+- sleep snoring
+- nocturnal mouth breathing
+category: sleep
+severity: concerning
+description: Audible snoring or habitual mouth-breathing during sleep, which Lynch
+  links to impaired nitric oxide production via NOS3 and degraded deep sleep quality.
+when_to_refer: Refer to dentist or sleep specialist; suspect obstructive sleep apnea
+  if accompanied by daytime sleepiness.
+linked_to_topics:
+- nos3-nitric-oxide
+- clean-genes-protocol
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+sources:
+- id: dirty-genes-lynch
+  location: Sleep — Soak and Scrub Week 1
+  quote: Ask someone if you snore or are a mouth-breather at night. If the answer
+    is yes, talk with your dentist. Snoring and mouth-breathing make for a poor night's
+    sleep and, as we saw, a dirty NOS3.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

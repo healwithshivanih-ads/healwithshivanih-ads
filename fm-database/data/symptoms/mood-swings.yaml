@@ -22,10 +22,20 @@ aliases:
 - anxiety from food
 - mood-disturbances
 - mood-disturbance
+- emotional volatility
+- up-and-down moods
+- affective instability
+- emotional roller coaster
+- alternating depression and anxiety
+- volatile moods
+- hot and cold emotionally
+- emotional roller-coaster
+- erratic moods
 category: mood
 severity: common
-description: Rapid or unpredictable mood changes associated with blood sugar instability,
-  nutrient depletion (B12, magnesium), HPA axis dysregulation, and hormonal imbalances.
+description: Rapid, significant shifts in emotional state—from calm to irritable,
+  or from hopeful to despairing—linked in this framework to imbalanced serotonin,
+  dopamine, and norepinephrine levels driven by MAOA activity variants.
 linked_to_topics:
 - insulin-resistance
 - blood-sugar-dysfunction
@@ -39,6 +49,11 @@ linked_to_topics:
 - medication-induced-nutrient-depletion
 - adrenal-fatigue
 - modern-diet-systemic-dysfunction
+- maoa-neurotransmitter-gene
+- comt-catechol-clearance
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+- maoa-neurotransmitter-metabolism
 linked_to_mechanisms:
 - insulin-resistance
 - hpa-axis-dysregulation
@@ -46,8 +61,13 @@ linked_to_mechanisms:
 - gut-brain-axis-disruption
 - limbic-system-overactivation
 - progesterone-deficiency
-when_to_refer: If severe, lasting, or accompanied by suicidal ideation; refer to psychiatrist
-  or clinician.
+- monoamine-oxidase-activity
+- catechol-methylation-comt
+- methylation-cycle
+- catechol-clearance-comt-maoa
+- maoa-neurotransmitter-catabolism
+when_to_refer: Refer if mood swings are severe, cyclical (possible bipolar pattern),
+  or accompanied by functional impairment.
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.2 — Progressing Insulin Resistance
@@ -86,7 +106,10 @@ sources:
   location: IgG Symptoms Section
   quote: they might be having an edema... emotional or you can say they might be having
     an edema... sometimes we see a lot of emotional issues and they feel a low energy
-version: 5
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: MAOA, the gene that affects mood swings and carb cravings.
+version: 8
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

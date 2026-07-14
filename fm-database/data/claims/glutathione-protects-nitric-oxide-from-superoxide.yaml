@@ -1,0 +1,35 @@
+slug: glutathione-protects-nitric-oxide-from-superoxide
+statement: Liposomal glutathione and liposomal vitamin C work synergistically to prevent
+  NOS3-produced nitric oxide from being quenched or converted to superoxide, thereby
+  preserving endothelial and cardiovascular function.
+evidence_tier: plausible_emerging
+rationale: Oxidative stress degrades nitric oxide by reacting it with superoxide to
+  form peroxynitrite. Glutathione and vitamin C reduce this oxidative burden, effectively
+  improving NO bioavailability. This mechanism is well established in cardiovascular
+  biochemistry; the specific therapeutic benefit of liposomal forms in this context
+  is extrapolated from absorption pharmacokinetics.
+coaching_translation: For clients with cardiovascular risk markers and NOS3 dysfunction,
+  supporting antioxidant capacity with glutathione and vitamin C can help preserve
+  beneficial nitric oxide.
+caveats:
+- Source is a consumer trade book.
+- Antioxidant supplementation does not replace addressing root causes (infection,
+  homocysteine, lifestyle).
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- liposomal-glutathione
+- vitamin-c-liposomal
+- pqq-pyrroloquinoline-quinone
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your NOS3
+  quote: Liposomal vitamin C and liposomal glutathione. These supplements help keep
+    your nitric oxide happy and prevent it from turning into superoxide.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

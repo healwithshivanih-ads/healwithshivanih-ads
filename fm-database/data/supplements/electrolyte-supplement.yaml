@@ -1,0 +1,34 @@
+slug: electrolyte-supplement
+display_name: Electrolyte Supplement (with Taurine)
+category: mineral
+forms_available:
+- powder
+- capsule
+- liquid
+timing_options:
+- on_waking
+- morning
+take_with_food: optional
+linked_to_topics:
+- clean-genes-protocol
+linked_to_claims:
+- electrolyte-depletion-common
+notes_for_coach: 'Should contain at minimum: potassium, magnesium, chloride, sodium,
+  and taurine. No sugar, artificial colors or sweeteners. Taurine aids electrolyte
+  transport. Stop if not exercising or sauna-using and symptom-free. If constipation
+  occurs, increase water or skip a day.'
+notes_for_client: Take before exercise or on waking. Sea salt in filtered water is
+  a simple starting option. Stop when you feel well — use the Pulse Method.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Electrolytes, Week 1
+  quote: You should be taking an electrolyte supplement that contains, at a minimum,
+    potassium, magnesium, chloride, sodium, and taurine, with no sugar, food coloring,
+    or artificial anything. Taurine is needed as it helps carry electrolytes.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

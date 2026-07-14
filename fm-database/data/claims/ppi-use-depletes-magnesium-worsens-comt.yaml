@@ -1,0 +1,30 @@
+slug: ppi-use-depletes-magnesium-worsens-comt
+statement: Long-term use of proton pump inhibitors (PPIs) reduces magnesium absorption,
+  which can secondarily impair COMT and methylation cycle enzyme function.
+evidence_tier: strong
+rationale: PPI-induced hypomagnesemia is an established, FDA-labelled risk — strong
+  evidence. The downstream effect on magnesium-dependent enzymes including COMT is
+  a reasonable mechanistic inference. Source is a consumer book.
+coaching_translation: If you're on a proton pump inhibitor (like omeprazole/Prilosec),
+  your magnesium levels may be silently dropping, which can weaken both your COMT
+  gene function and your methylation cycle. Discuss magnesium monitoring with your
+  doctor.
+caveats:
+- PPI discontinuation should only occur under medical supervision
+- The specific COMT-impairment link is mechanistically inferred, not directly demonstrated
+linked_to_topics:
+- comt-gene-catechol-clearance
+- mthfr-methylation-gene
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Key Nutrients for a Healthy COMT'
+  quote: 'There are two common reasons for magnesium deficiency: caffeine intake and
+    the long-term use of a group of antacids called proton pump inhibitors (PPIs).'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

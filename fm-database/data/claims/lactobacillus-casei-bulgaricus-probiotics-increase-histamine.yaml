@@ -1,0 +1,31 @@
+slug: lactobacillus-casei-bulgaricus-probiotics-increase-histamine
+statement: Certain Lactobacillus probiotic strains — particularly L. casei and L.
+  bulgaricus — produce histamine in the gut and may worsen symptoms in individuals
+  with DAO insufficiency.
+evidence_tier: plausible_emerging
+rationale: Some Lactobacillus species are histamine-producing, documented in microbiology
+  literature. Clinical significance in sensitive individuals is plausible and has
+  entered functional medicine practice guidance. Direct RCT evidence in DAO-deficient
+  individuals is limited. Source is a consumer book.
+coaching_translation: Not all probiotics are alike for histamine-sensitive individuals.
+  Check your probiotic label — if it contains L. casei or L. bulgaricus, it may be
+  worsening your symptoms. Seek out histamine-neutral or histamine-degrading strains
+  instead.
+caveats:
+- Probiotic strain selection for histamine-sensitive individuals requires clinical
+  input
+- Other Lactobacillus species (e.g., L. rhamnosus, L. reuteri) may be better tolerated
+  or even beneficial
+linked_to_topics:
+- dao-histamine-intolerance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: Making the Most of DAO'
+  quote: Stop taking probiotics containing Lactobacillus casei and Lactobacillus bulgaricus.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

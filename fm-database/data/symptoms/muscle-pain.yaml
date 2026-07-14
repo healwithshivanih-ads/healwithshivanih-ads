@@ -1,5 +1,5 @@
 slug: muscle-pain
-display_name: Muscle Pain / Myalgia
+display_name: Generalised Muscle Pain
 aliases:
 - sore muscles
 - muscular pain
@@ -13,30 +13,41 @@ aliases:
 - myalgia
 - muscle soreness
 - statin myalgia
+- fibromyalgia-like aches
+- generalised aching
 category: musculoskeletal
 severity: common
-description: Diffuse or localised muscle pain not attributable to acute injury; linked to elevated CRP, omega-3 deficiency,
-  and systemic inflammation.
+description: Widespread or diffuse muscle achiness, associated in the dirty-genes
+  framework with PEMT variant-driven phosphatidylcholine deficiency (impairing cell
+  membrane integrity) and poor methylation reducing creatine synthesis.
 linked_to_topics:
 - chronic-pain-and-fatigue
 - fibromyalgia
+- pemt-choline-cell-membrane
+- mthfr-methylation-gene
 linked_to_mechanisms:
 - systemic-inflammation
 - omega-3-omega-6-imbalance
+- phosphatidylcholine-synthesis-pemt
+- methylation
 when_to_refer: ''
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Personal Case Study
-  quote: I felt like a muscle pain. So I thought maybe I did some exercise or something, I pulled it... after starting a high
-    omega-3, my dyspnea went away.
+  quote: I felt like a muscle pain. So I thought maybe I did some exercise or something,
+    I pulled it... after starting a high omega-3, my dyspnea went away.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Statin side effects / case discussion
-  quote: He has muscle pain and he's taking the medication over there. And he was in pain and he called me and I got, I don't
-    have pain now.
+  quote: He has muscle pain and he's taking the medication over there. And he was
+    in pain and he called me and I got, I don't have pain now.
 - id: coconote-fm-reality-of-statins
   location: Side Effects of Statins Section
   quote: It may cause myalgia and atrophy and atrophy.
-version: 1
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: 'PEMT … Weaknesses: gallbladder disorders, small intestine bacterial overgrowth
+    (SIBO), pregnancy complications, cell membrane weakness, muscle pain.'
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

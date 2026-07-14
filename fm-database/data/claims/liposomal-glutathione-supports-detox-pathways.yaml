@@ -1,0 +1,32 @@
+slug: liposomal-glutathione-supports-detox-pathways
+statement: Liposomal glutathione supplementation can replenish intracellular glutathione
+  levels to support phase-2 detoxification, antioxidant defense, and GST/GPX gene
+  pathway function.
+evidence_tier: plausible_emerging
+rationale: Oral glutathione has historically poor bioavailability; liposomal forms
+  show improved plasma and intracellular glutathione elevation in small trials. Depleted
+  glutathione is common in high-toxin-burden individuals. The Week-2 sequencing (after
+  establishing multivitamin cofactors) is clinically logical.
+coaching_translation: Introduce liposomal glutathione in Week 2 after establishing
+  your multivitamin. Start with just a few drops and increase slowly. Stop when you
+  feel consistently well.
+caveats:
+- Small trial evidence for liposomal form; large RCTs lacking
+- Cofactor requirement (multivitamin first) is prudent clinical practice, not RCT-proven
+linked_to_topics:
+- gst-gpx-glutathione-detox
+- clean-genes-protocol
+linked_to_supplements:
+- liposomal-glutathione
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: Add in liposomal glutathione. This nutrient, which many people are low in,
+    helps countless important pathways. Don't take it unless you're already taking
+    a multivitamin, however.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

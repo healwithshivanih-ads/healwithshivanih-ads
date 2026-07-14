@@ -1,0 +1,27 @@
+slug: moderate-exercise-improves-nos3-efficiency
+statement: Moderate aerobic exercise enhances NOS3 gene expression and enzyme efficiency
+  through shear-stress-mediated signalling in endothelial cells, improving nitric
+  oxide production and vascular function.
+evidence_tier: strong
+rationale: Exercise-induced upregulation of eNOS (NOS3) via fluid shear stress on
+  endothelium is well established in peer-reviewed cardiovascular literature with
+  strong mechanistic and RCT evidence.
+coaching_translation: Regular moderate-intensity movement (e.g., 20+ minutes daily
+  walking, cycling, swimming) is one of the most powerful tools for NOS3 support and
+  blood pressure management—independent of weight loss.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 10 — Key Nutrients for a Healthy NOS3
+  quote: Moderate exercise actually helps support your NOS3 gene by making it work
+    more efficiently.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

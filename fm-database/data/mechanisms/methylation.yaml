@@ -1,38 +1,104 @@
 slug: methylation
-display_name: Methylation Cycle (SAM Cycle)
+display_name: One-Carbon Methylation Cycle
 aliases:
 - one-carbon metabolism
 - SAM cycle
 - activated methyl cycle
 - methyl cycle
+- methyl donor cycling
+- SAM/SAH cycle
+- methyl donor pathway
+- SAMe cycle
+- folate-B12 methylation
+- SAMe-dependent methylation
+- folate-methionine cycle
 category: metabolic
-summary: The methylation cycle converts homocysteine to methionine, which is then activated to SAM (S-adenosylmethionine),
-  the universal methyl donor for DNA, RNA, protein, lipid methylation, neurotransmitter synthesis (dopamine, serotonin), and
-  myelin production. Requires folate, B12, B6, and B2 as cofactors.
+summary: A network of reactions transferring one-carbon methyl groups via SAMe to
+  DNA, histones, neurotransmitters, phospholipids, and detoxification substrates.
+  Requires activated folate (5-MTHF), methylcobalamin (B12), riboflavin (B2), and
+  methionine. Impaired methylation elevates homocysteine and reduces SAMe availability
+  throughout the body.
 upstream_drivers:
 - adequate-folate
 - adequate-b12
 - mthfr-function
+- folate intake (natural)
+- methionine supply
+- B12 status
+- stress load
+- toxic burden
+- sleep quality
+- folic-acid-overconsumption
+- dietary-folate-deficiency
+- synthetic-folic-acid-intake
+- B12-deficiency
+- stress
+- environmental-toxin-load
+- MTHFR variant
+- low dietary folate
+- vitamin-B12-deficiency
+- riboflavin-deficiency
+- heavy-metal-burden
+- oxidative-stress
+- infections
 downstream_effects:
 - dna-methylation
 - neurotransmitter-synthesis
 - myelin-production
 - nrf2-pathway-activation
+- gene-silencing
+- neurotransmitter-balance
+- glutathione-production
+- phosphatidylcholine-synthesis
+- carnitine-synthesis
+- creatine-synthesis
+- melatonin-production
+- impaired-neurotransmitter-synthesis
+- elevated-homocysteine
+- reduced-glutathione-production
+- altered-gene-expression
+- impaired-dna-repair
+- neurotransmitter-synthesis-deficit
+- reduced-phosphatidylcholine-production
+- immune-dysregulation
 related_mechanisms:
 - mthfr-enzyme-dysfunction
 - homocysteine-metabolism
 - methylation-cycle
+- homocysteine-accumulation
+- folate-receptor-blockade-folic-acid
+- glutathione-conjugation
+- folate-metabolism
+- histamine-metabolism
+- catechol-clearance-comt-maoa
+- homocysteine-remethylation
+- pemt-phosphatidylcholine-synthesis
+- catechol-methylation
 linked_to_topics:
 - folate-nutrition
 - vitamin-b12
 - mthfr-gene-variant
+- mthfr-methylation-gene
+- comt-catechol-clearance
+- pemt-choline-cell-membrane
+- maoa-neurotransmitter-gene
+- mthfr-methylation
+- clean-genes-protocol
+- mthfr-methylation-support
+- comt-slow-catechol-clearance
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Methylcobalamin / SAM section
-  quote: SAM is very necessary for the methylation of various biochemical reactions in the body, including the myelin production.
-    Now it is also necessary for the production of some very important neurotransmitters like dopamine and serotonin.
-version: 1
+  quote: SAM is very necessary for the methylation of various biochemical reactions
+    in the body, including the myelin production. Now it is also necessary for the
+    production of some very important neurotransmitters like dopamine and serotonin.
+- id: dirty-genes-lynch
+  location: 'Chapter 2 — Methylation: Your Key to Clean Genes'
+  quote: Methylation controls your genetic expression. It determines whether a particular
+    gene will be turned on—or off. Every gene in every cell is ultimately regulated
+    by methylation.
+version: 4
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

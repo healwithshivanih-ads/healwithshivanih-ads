@@ -1,0 +1,34 @@
+slug: moderate-exercise-improves-methylation
+statement: Regular moderate aerobic exercise induces new methylation patterns on muscle
+  cell genomes, while excessive exercise (overtraining) increases physiological stress
+  and disrupts healthy methylation.
+evidence_tier: plausible_emerging
+rationale: The Karolinska Institute cycling study (referenced by Lynch) demonstrated
+  exercise-induced differential methylation at >5,000 muscle genome sites. Overtraining-induced
+  HPA axis stress is documented to increase methyl group consumption. This is a reasonable
+  extrapolation, though direct evidence on overtraining and methylation is limited.
+coaching_translation: 'Moving your body regularly — at a pace that feels good rather
+  than exhausting — actively improves how your genes work. More is not always better:
+  training to exhaustion can actually disrupt your gene function.'
+caveats:
+- The Karolinska study cited was in healthy young adults over 3 months on a specific
+  protocol — generalisability is uncertain.
+- Source is a consumer trade book and does not cite the study with full bibliographic
+  detail.
+linked_to_topics:
+- epigenetics-gene-expression-control
+- mthfr-methylation-gene
+linked_to_mechanisms:
+- methylation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 2 — The Wrong Amount of Exercise
+  quote: The researchers found that more than five thousand sites on the muscle cells'
+    genome showed new patterns of methylation—but only on the muscles of the leg that
+    had exercised.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -34,9 +34,8 @@ timing_options:
 - on_empty_stomach
 - evening
 take_with_food: optional
-notes_for_coach: 500 mg t.i.d. in therapeutic approach. 500 mg alone equals efficacy
-  of 1000–2000 mg. Combine with alpha-tocopherol, zinc, beta-carotene for enhanced
-  antioxidant synergy. Also promotes lead excretion.
+notes_for_coach: Noted as supportive for stress response. Also recycles glutathione.
+  Consider alongside adaptogen protocol.
 evidence_tier: strong
 linked_to_topics:
 - thyroid
@@ -75,9 +74,13 @@ linked_to_topics:
 - tendinopathy
 - asthma
 - common-cold
+- clean-genes-protocol
+- gst-gpx-glutathione-detox
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
+- glutathione-conjugation
+- hpa-axis-dysregulation
 linked_to_claims:
 - adaptogens-rebalance-hpa-axis
 - low-dhea-high-cortisol-indicates-adrenal-burnout
@@ -165,10 +168,13 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-version: 23
+- id: dirty-genes-lynch
+  location: Supplements — Adaptogens, Week 1
+  quote: Vitamin B5 and vitamin C are also supportive for stress.
+version: 24
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 aliases:
 - vitamin-c-ascorbic-acid
 - vitamin c 1-2g

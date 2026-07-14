@@ -1,0 +1,28 @@
+slug: estrogen-upregulates-pemt-reducing-choline-need
+statement: Oestrogen upregulates PEMT gene expression, enabling premenopausal women
+  to synthesise more phosphatidylcholine endogenously and be less dependent on dietary
+  choline; the drop in oestrogen at menopause substantially increases choline requirements.
+evidence_tier: plausible_emerging
+rationale: Oestrogen-responsive elements in the PEMT gene promoter and sex-specific
+  differences in choline requirements have been documented in peer-reviewed nutritional
+  genetics research (e.g., Resseguie et al.), supporting this mechanism.
+coaching_translation: Postmenopausal women and men are at higher risk of choline deficiency
+  than premenopausal women. This should inform dietary planning—increasing choline-rich
+  foods (eggs, liver, fish) becomes especially important after menopause.
+linked_to_topics:
+- pemt-choline-cell-membrane
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 11 — PEMT: Cell Membrane and Liver Problems'
+  quote: For many women, estrogen stimulates PEMT to serve as a backup, synthesizing
+    phosphatidylcholine even when they're not eating enough choline. Before menopause,
+    estrogen levels are higher and can often help compensate for a dietary shortage.
+    During menopause, though, estrogen levels drop.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

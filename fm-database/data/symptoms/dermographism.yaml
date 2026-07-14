@@ -1,0 +1,25 @@
+slug: dermographism
+display_name: Dermographism (Red Streaks on Skin Scratch)
+aliases:
+- skin writing
+- red streaks from scratching
+- dermatographia
+category: skin
+severity: common
+description: Wheal and flare response forming red raised lines when the skin is lightly
+  scratched. Indicates elevated mast cell reactivity and histamine burden, commonly
+  observed with DAO deficiency in Lynch's framework.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_mechanisms:
+- histamine-catabolism-dao
+- mast-cell-activation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — DAO symptom checklist
+  quote: If I scratch my skin, I get red streaks.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

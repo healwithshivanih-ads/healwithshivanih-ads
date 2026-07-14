@@ -1,0 +1,77 @@
+slug: comt-catechol-clearance
+display_name: COMT Catechol & Estrogen Clearance
+aliases:
+- COMT gene
+- COMT gene variant
+- COMT slow/fast metaboliser
+- catechol-O-methyltransferase
+- comt-gene-catechol-clearance
+- comt-val158met
+- dirty COMT
+- fast COMT
+- rs4680
+- slow COMT
+summary: 'COMT methylates and clears catecholamines (dopamine, norepinephrine, epinephrine)
+  and catechol-estrogens. A slow COMT variant leads to neurotransmitter and estrogen
+  accumulation; a fast COMT clears them too quickly. Lynch frames meal protein content
+  as a key lever: slow COMT benefits from lower evening protein.'
+common_symptoms:
+- insomnia
+- anxiety
+- irritability
+- pms
+- brain-fog
+- lack-of-motivation
+- attention-difficulties
+- mood-swings
+- sleep-difficulties
+- poor-focus
+- depression
+- caffeine-sensitivity
+red_flags:
+- estrogen-sensitive cancer history
+- severe mood instability
+related_topics:
+- mthfr-methylation-gene
+- maoa-neurotransmitter-gene
+- clean-genes-protocol
+- maoa-neurotransmitter-balance
+- methylation-cycle
+- nutrigenomics
+- estrogen-metabolism
+key_mechanisms:
+- catechol-methylation-comt
+- estrogen-metabolism
+- dopamine-regulation
+- catechol-clearance-comt-maoa
+- methylation
+- dopamine-quinone-formation
+- estrogen-methylation
+- comt-cyp-pathway-activity
+coaching_scope_notes: 'Slow COMT: reduce protein at dinner, emphasize complex carbs
+  and salads. Fast COMT: ensure balanced protein at all meals. Avoid excess stimulants.'
+clinician_scope_notes: COMT Val158Met is a well-characterised variant. High-estrogen
+  load (HRT, OCP) may disproportionately burden slow-COMT individuals.
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: COMT and its SNPs have powerful effects on mood, focus, and how your body
+    handles estrogen, a key factor in the menstrual cycle, in fibroids, and in some
+    estrogen-sensitive cancers.
+- id: comt-catechol-metabolism-review-2002
+  location: Enzyme-substrate breadth
+  quote: COMT is crucial to the metabolism of carcinogenic catechols and catecholamines,
+    and catalyses the methylation of catechol estrogens to methoxy estrogens.
+- id: comt-genotype-neuropsychiatric-review-2021
+  location: Val158Met and mood/cognition
+  quote: The variant (Met) isoform differs from wild-type COMT by being thermolabile,
+    leading to 2-3-fold lower levels of product formation.
+- id: fmca-m11-genetics-epigenetics-joffe
+  location: Mood & behaviour segment (Mary case)
+  quote: COMT is the Swiss-army-knife gene. With slow MAOA TT and slow COMT AA you
+    build up serotonin and dopamine, not low; the SSRI may be compounding the problem.
+version: 2
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,30 @@
+slug: low-choline-pregnancy-increases-neural-tube-defect-risk
+statement: Women with low dietary choline intake during pregnancy face a substantially
+  higher risk of neural tube defects in their babies, comparable in importance to
+  folate status, due to choline's role in supplying methyl groups and phosphatidylcholine
+  for fetal neural development.
+evidence_tier: plausible_emerging
+rationale: Epidemiological studies do link maternal choline status to neural tube
+  defect risk; some research suggests the increased risk with low choline is in the
+  2–2.5× range. However, choline's independent role vs folate is not as firmly established
+  as folate, and optimal supplemental doses are not definitively set by RCT.
+out_of_scope_notes: Pregnancy supplementation dosing (Lynch cites 900 mg/day) requires
+  clinician oversight.
+caveats:
+- Source is a consumer trade book
+- Confirm choline supplementation with obstetric or functional medicine clinician
+  in pregnancy
+linked_to_topics:
+- pemt-choline-cell-membrane
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 11 — PEMT, Pregnancy, and Breastfeeding
+  quote: Research shows that women with a diet low in choline have 2.4 times greater
+    risk of having babies with neural tube defects, such as spina bifida.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

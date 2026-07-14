@@ -1,0 +1,29 @@
+slug: intolerance-fermented-high-histamine-foods
+display_name: Intolerance to Fermented or High-Histamine Foods
+aliases:
+- can't tolerate yogurt
+- wine intolerance
+- cheese intolerance
+- chocolate sensitivity
+- citrus intolerance
+- kefir intolerance
+category: gi
+severity: common
+description: Adverse reactions — headache, flushing, gut upset, skin reactions, or
+  insomnia — triggered specifically by yogurt, kefir, aged cheese, alcohol (especially
+  red wine), chocolate, citrus fruits, and fermented foods. Indicates reduced capacity
+  to degrade dietary histamine.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_mechanisms:
+- histamine-catabolism-dao
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — DAO symptom checklist
+  quote: I can't tolerate yogurt, kefir, chocolate, alcohol, citrus, fish, wine (especially
+    red), or cheese.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

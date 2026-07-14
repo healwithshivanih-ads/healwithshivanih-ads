@@ -1,0 +1,31 @@
+slug: low-estrogen-impairs-pemt-postmenopause
+statement: Low oestrogen — particularly after menopause — impairs PEMT gene expression,
+  increasing dietary choline requirements and raising the risk of fatty liver, gallbladder
+  dysfunction, and musculoskeletal symptoms.
+evidence_tier: plausible_emerging
+rationale: Oestrogen directly upregulates PEMT gene transcription; this mechanism
+  is established in animal and human cell studies. Postmenopausal women have substantially
+  increased choline requirements compared to premenopausal women — a finding supported
+  by Institute of Medicine dietary reference intake data. The clinical manifestations
+  (fatty liver, gallbladder, pain) follow plausibly from reduced PC synthesis.
+coaching_translation: Postmenopausal women or those with low oestrogen should be encouraged
+  to eat choline-rich foods (eggs, liver, meat) and may need additional phosphatidylcholine
+  support.
+caveats:
+- Source is a consumer trade book.
+- Low oestrogen evaluation and HRT decisions require clinician involvement.
+- Vegetarian/vegan postmenopausal women are at highest risk and warrant dietary counselling.
+linked_to_topics:
+- pemt-choline-cell-membrane
+linked_to_supplements:
+- phosphatidylcholine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — PEMT symptom checklist
+  quote: I'm postmenopausal. My estrogen levels are low.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

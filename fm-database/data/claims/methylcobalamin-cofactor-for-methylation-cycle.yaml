@@ -1,0 +1,31 @@
+slug: methylcobalamin-cofactor-for-methylation-cycle
+statement: Methylcobalamin (methylated B12) works together with methylfolate as an
+  essential co-substrate for the methylation cycle; deficiency in either prevents
+  the cycle from completing.
+evidence_tier: strong
+rationale: 'Well-established biochemistry: methylcobalamin serves as the cofactor
+  for methionine synthase, the enzyme that transfers the methyl group from methylfolate
+  to homocysteine. B12 deficiency is a recognised cause of functional folate deficiency
+  (''folate trap'').'
+coaching_translation: B12 and folate are partners — you need both to run the methylation
+  cycle effectively. Vegans and vegetarians are at particular risk of B12 deficiency
+  and should consider methylcobalamin supplementation.
+caveats:
+- Serum B12 is an imperfect marker — methylmalonic acid (MMA) or holotranscobalamin
+  are better functional measures
+- Dose selection requires clinician input
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_supplements:
+- methylcobalamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Beautiful B12'
+  quote: Your Methylation Cycle depends on the teamwork of methylfolate and methylcobalamin.
+    If either nutrient is deficient, your Methylation Cycle can't get a good start.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

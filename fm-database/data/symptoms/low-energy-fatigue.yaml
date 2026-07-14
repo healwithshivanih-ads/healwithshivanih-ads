@@ -1,0 +1,28 @@
+slug: low-energy-fatigue
+display_name: Low Energy / Fatigue
+aliases:
+- exhaustion
+- tiredness
+- low vitality
+category: constitutional
+severity: common
+description: Persistent lack of energy, need for extended recovery after exertion,
+  or difficulty starting the day — associated with methylation insufficiency, low
+  SAMe, depleted dopamine/norepinephrine (fast COMT), or histamine-driven systemic
+  inflammation.
+linked_to_topics:
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+- dao-histamine-intolerance
+linked_to_mechanisms:
+- methylation-cycle
+- catechol-clearance-comt-maoa
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: MTHFR: Methylation Master'
+  quote: Your energy level droops. Your mental outlook suffers.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,32 @@
+slug: carb-cravings
+display_name: Carbohydrate & Sugar Cravings
+aliases:
+- carb addiction
+- sweet cravings
+- need for carbs at night
+- bingeing on chocolate
+category: metabolic
+severity: common
+description: An intense, recurring drive to eat simple carbohydrates or sugar, often
+  experienced as a compulsion rather than hunger. In the MAOA framework, fast MAOA
+  depletes serotonin rapidly; the body self-medicates with simple carbs to temporarily
+  restore serotonin via the tryptophan pathway. Stress and inflammation exacerbate
+  the cycle via the 'tryptophan steal'.
+when_to_refer: If cravings are associated with binge-eating disorder, significant
+  disordered eating, or are unresponsive to dietary intervention, refer to a clinician
+  or eating-disorder specialist.
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+linked_to_mechanisms:
+- maoa-neurotransmitter-catabolism
+- tryptophan-serotonin-melatonin-pathway
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 8 — Signs of a dirty MAOA
+  quote: Fast MAOA. Common signs include alcoholism and/or other addictions, ADHD,
+    carb and sugar cravings, depression, difficulty staying asleep, fatigue, and flat
+    affect.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

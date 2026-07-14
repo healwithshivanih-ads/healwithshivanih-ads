@@ -1,0 +1,34 @@
+slug: riboflavin-cofactor-mthfr-maoa-gst
+statement: Riboflavin (vitamin B2) is a critical cofactor for MTHFR (folate activation),
+  MAOA (monoamine oxidation), and glutathione peroxidase recycling, and deficiency
+  impairs all three pathways simultaneously.
+evidence_tier: plausible_emerging
+rationale: Riboflavin's role as FAD/FMN cofactor in these enzymes is biochemically
+  established. Lynch's clinical use extends this to personalised symptom presentation
+  (migraines, mood, detox) and doses up to 400 mg; evidence for high-dose riboflavin
+  in migraines is moderate (several RCTs). For MAOA and GST support, evidence is primarily
+  mechanistic.
+coaching_translation: Riboflavin (preferably as R5P) is a good first-step support
+  nutrient for MTHFR, slow MAOA, and GST/GPX. Watch for improvement in energy, mood,
+  and migraine frequency.
+caveats:
+- Source is a consumer trade book — not primary literature.
+- Hypothyroidism impairs riboflavin activation; thyroid function should be evaluated
+  if supplementation seems ineffective.
+- 400 mg is a therapeutic dose — confirm with clinician for sustained high-dose use.
+linked_to_topics:
+- mthfr-methylation-support
+- maoa-slow-serotonin-excess
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- riboflavin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Hypothyroidism and a Dirty MTHFR
+  quote: Hypothyroidism slows your ability to activate vitamin B2.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

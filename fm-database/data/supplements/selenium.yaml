@@ -23,6 +23,7 @@ linked_to_topics:
 - immune-nutrition
 - detoxification
 - atherosclerosis
+- gst-gpx-glutathione-detox
 linked_to_claims:
 - selenium-supplementation-reduces-tpo-antibodies-in-hashimotos
 - selenium-zinc-iron-required-for-t4-to-t3-conversion
@@ -42,15 +43,18 @@ linked_to_claims:
 - vitamin-e-coq10-selenium-synergistic-antioxidant
 - murray-selenium-reduces-thyroid-antibodies
 - murray-hypothyroidism-treatment-summary
-notes_for_coach: Component of glutathione peroxidase; works with vitamin E to prevent
-  free radical damage to cell membranes. Low selenium status associated with CAD.
-  Do not exceed 400 mcg/day (toxicity threshold).
-notes_for_client: Selenium is an antioxidant mineral that protects cell membranes
-  and works in tandem with vitamin E for heart protection.
+- selenium-required-for-gpx-h2o2-clearance
+- selenium-cofactor-glutathione-peroxidase
+notes_for_coach: Essential cofactor for GPX enzymes — without it, glutathione cannot
+  neutralise hydrogen peroxide. Toxicity threshold is relatively low (~400 mcg/day);
+  blood selenium should be monitored especially if using IV nutrient therapy. Lynch
+  notes 'too much selenium is toxic' — check serum levels before supplementing.
+notes_for_client: A trace mineral your body needs to use glutathione effectively.
+  A little goes a long way — don't exceed recommended amounts.
 typical_dose_range:
   capsule:
-    min: 200
-    max: 300
+    min: 100
+    max: 200
     unit: mcg
   tablet:
     min: 100
@@ -61,7 +65,7 @@ timing_options:
 - with_breakfast
 - with_lunch
 - with_dinner
-take_with_food: optional
+take_with_food: required
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
@@ -113,10 +117,14 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 68 — Hypothyroidism, Treatment Summary
   quote: Selenium included in Murray hypothyroidism nutrient protocol.
-version: 17
+- id: dirty-genes-lynch
+  location: Chapter 9 — What Makes GST/GPX Dirty?
+  quote: In order for your glutathione to turn hydrogen peroxide into water, it needs
+    selenium. Without selenium, your GPX enzyme can't get rid of hydrogen peroxide.
+version: 19
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 aliases:
 - selenium (deiodinase enzymes)
 - selenium (plasma)

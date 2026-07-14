@@ -1,0 +1,40 @@
+slug: catechol-methylation-comt
+display_name: Catechol-O-Methyltransferase (COMT) Activity
+aliases:
+- COMT pathway
+- catecholamine methylation
+- dopamine clearance
+- estrogen catechol methylation
+category: endocrine
+summary: COMT uses S-adenosylmethionine (SAM) to add a methyl group to catechol substrates
+  including dopamine, norepinephrine, epinephrine, and catechol estrogens, rendering
+  them inactive. Slow COMT variants accumulate these substrates (high energy/anxiety/estrogen
+  effects); fast COMT variants clear them rapidly (low motivation/low estrogen effects).
+  COMT activity is directly dependent on methylation status.
+upstream_drivers:
+- SAM availability (methylation status)
+- COMT Val158Met genotype
+- dietary catechol load
+- estrogen load (HRT, OCP)
+downstream_effects:
+- dopamine-level-regulation
+- estrogen-clearance
+- norepinephrine-modulation
+- mood-and-focus-phenotype
+related_mechanisms:
+- methylation
+- estrogen-metabolism
+linked_to_topics:
+- comt-catechol-clearance
+- maoa-neurotransmitter-gene
+evidence_tier: strong
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 3 — The Super Seven: A Snapshot'
+  quote: COMT affects metabolism of dopamine, norepinephrine, and epinephrine, affecting
+    your mood, energy level, ability to calm down, ability to sleep, and ability to
+    focus; it also affects estrogen metabolism.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

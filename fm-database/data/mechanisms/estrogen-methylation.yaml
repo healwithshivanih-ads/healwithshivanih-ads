@@ -1,0 +1,39 @@
+slug: estrogen-methylation
+display_name: Estrogen Methylation & Clearance
+aliases:
+- estrogen detoxification
+- catechol estrogen clearance
+category: endocrine
+summary: Active estrogen metabolites are methylated by COMT (using SAMe) and subsequently
+  excreted. When COMT is slow, estrogen accumulates, driving PMS, fibroids, menorrhagia,
+  and elevated risk of estrogen-sensitive cancers. When COMT is fast, estrogen is
+  over-cleared, leading to deficiency symptoms including vaginal dryness, menopause
+  challenges, and cardiac risk.
+upstream_drivers:
+- COMT-activity
+- SAMe-availability
+- body-fat-percentage
+- xenoestrogen-exposure
+- aromatase-activity
+downstream_effects:
+- PMS
+- fibroids
+- estrogen-related-cancer-risk
+- menstrual-disorders
+- menopausal-symptoms
+related_mechanisms:
+- catechol-clearance-comt-maoa
+- methylation-cycle
+linked_to_topics:
+- comt-gene-catechol-clearance
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: The Methylation Cycle Part 3'
+  quote: Unmethylated estrogen is active, but methylated estrogen is expelled from
+    your body. So methylation protects you from excess estrogen, which can cause PMS,
+    menstrual issues, and the risk of estrogen-related cancers.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

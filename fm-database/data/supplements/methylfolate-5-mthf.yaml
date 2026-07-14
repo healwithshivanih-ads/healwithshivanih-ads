@@ -1,0 +1,40 @@
+slug: methylfolate-5-mthf
+display_name: Methylfolate (5-MTHF / L-methylfolate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 400
+    max: 7500
+    unit: mcg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- mthfr-methylation-support
+linked_to_claims:
+- methylfolate-supports-mthfr-methylation-cycle
+notes_for_coach: Start at 400 mcg and titrate slowly (Pulse Method). Anxiety, irritability,
+  runny nose, joint pain, or insomnia at any dose = too much — stop and take 50 mg
+  niacin to clear. Folic acid in the diet or supplements will compete with and block
+  receptors; ensure client avoids synthetic folic acid. Must have adequate B12 or
+  methylfolate becomes 'trapped'. L-methylfolate (6S form) is the active isomer —
+  verify product label specifies this.
+notes_for_client: This is the activated form of folate your body can actually use.
+  Start with a small amount and increase slowly — more is not better, and too much
+  can feel worse than too little. Stop if you feel anxious, wired, or irritable.
+evidence_tier: confirm_with_clinician
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your MTHFR
+  quote: Many people do well with just a multivitamin containing 400 micrograms of
+    MTHF. If you feel no change with 400 micrograms, try more.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

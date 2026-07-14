@@ -1,0 +1,27 @@
+slug: morning-grogginess
+display_name: Difficulty Waking / Morning Grogginess
+aliases:
+- hard to wake up
+- slow starter
+- morning fog
+- can't get going in the morning
+category: sleep
+severity: common
+description: Significant difficulty getting out of bed, requiring long warm-up before
+  function. In Lynch's framework this correlates with fast COMT or fast MAOA (low
+  catecholamines on waking) or adrenal insufficiency (low cortisol).
+linked_to_topics:
+- comt-fast-dopamine-depletion
+- maoa-fast-serotonin-depletion
+linked_to_mechanisms:
+- catechol-methylation
+- monoamine-oxidation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — COMT fast symptom checklist
+  quote: I have a hard time getting going in the morning.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

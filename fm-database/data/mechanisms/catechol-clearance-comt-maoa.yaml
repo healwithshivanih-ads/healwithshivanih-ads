@@ -1,25 +1,58 @@
 slug: catechol-clearance-comt-maoa
-display_name: Catecholamine Clearance (COMT / MAOA Slow vs Fast)
+display_name: Catecholamine & Monoamine Clearance (COMT/MAOA)
 aliases:
 - COMT MAOA metabolism
 - neurotransmitter breakdown rate
 - dopamine serotonin clearance
+- catecholamine metabolism
+- dopamine clearance
+- norepinephrine clearance
+- epinephrine clearance
+- catechol metabolism
+- serotonin degradation
+- monoamine oxidation
+- neurotransmitter methylation
 category: neurological
-summary: COMT and MAOA variants set how fast a person breaks down catecholamines and
-  other neurotransmitters. 'Slow' genotypes (e.g. MAOA TT + COMT AA) cause a build-up
-  — higher dopamine/serotonin — while 'fast' genotypes burn through them, leaving
-  lower levels. Because anxiety, low mood and insomnia can present from EITHER high
-  or low neurotransmitters, the same symptom picture can be driven by opposite biochemistry.
-  COMT is the 'Swiss-army-knife' gene, also touching oestrogen clearance and methylation.
+summary: COMT methylates catecholamines (dopamine, epinephrine, norepinephrine) and
+  catechol-estrogens using SAMe. MAOA oxidatively deaminates serotonin, dopamine,
+  and norepinephrine. Slow variants accumulate neurotransmitters; fast variants deplete
+  them rapidly. High dietary protein elevates amino acid precursors (tyrosine, tryptophan),
+  increasing load on these enzymes.
 upstream_drivers:
 - methylation-cycle
-downstream_effects: []
+- SAMe-availability
+- methylation-cycle-throughput
+- dietary-catechol-load
+- stress-neurotransmitter-load
+- estrogen-level
+- high-dietary-protein
+- stress
+- methylation-insufficiency
+- B-vitamin-deficiency
+downstream_effects:
+- dopamine-norepinephrine-balance
+- estrogen-clearance
+- dopamine-quinone-formation-if-overwhelmed
+- mood-regulation
+- sleep-wake-balance
+- anxiety
+- insomnia
+- mood-instability
+- carb-cravings
+- estrogen-excess
 related_mechanisms:
 - neurotransmitter-synthesis-impairment
 - methylation-cycle
 - hepatic-estrogen-metabolism
+- dopamine-quinone-formation
+- methylation
 linked_to_topics:
 - nutrigenomics
+- comt-gene-catechol-clearance
+- mthfr-methylation-gene
+- comt-catechol-clearance
+- maoa-neurotransmitter-balance
+- clean-genes-protocol
 notes_for_coach: Clinically important because a client with slow COMT/MAOA (neurotransmitter
   build-up) put on an SSRI may get MORE anxious/irritable. If mood worsens after an
   SSRI or methyl-donor is started, that is a heads-up to route the client back to
@@ -29,8 +62,12 @@ sources:
   location: Mood & behaviour segment (Mary case)
   quote: COMT is the Swiss-army-knife gene. With slow MAOA TT and slow COMT AA you
     build up serotonin and dopamine, not low; the SSRI may be compounding the problem.
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Your COMT in Action'
+  quote: The COMT gene affects the way you metabolize estrogen, catechols from food
+    and drink, and the stress neurotransmitters dopamine, norepinephrine, and epinephrine.
 evidence_tier: plausible_emerging
-version: 1
+version: 3
 status: active
-updated_at: '2026-07-06'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

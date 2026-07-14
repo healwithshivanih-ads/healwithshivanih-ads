@@ -16,17 +16,24 @@ typical_dose_range:
 timing_options:
 - with_breakfast
 - with_dinner
-take_with_food: optional
+- with_lunch
+take_with_food: required
 linked_to_topics:
 - pancreatic-insufficiency
+- histamine-intolerance-dao
 linked_to_claims:
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
-notes_for_coach: Copper is listed alongside zinc as a mineral cofactor relevant to
-  enzyme synthesis. Often balanced with zinc supplementation. Verify need via labs
-  with clinician.
-notes_for_client: Copper works alongside zinc as a mineral cofactor for enzyme production.
-  It is typically found in adequate amounts in a varied diet.
-evidence_tier: fm_specific_thin
+- copper-cofactor-dao-enzyme
+notes_for_coach: Copper is the primary cofactor for DAO enzyme activity. Lynch notes
+  most people get enough from food but long-term zinc supplementation can deplete
+  copper. Start with low dose (1 mg) and only if copper is not already present in
+  a multivitamin. Excess copper is inflammatory — check copper levels via lab before
+  supplementing. Do not supplement if copper toxicity is suspected (e.g., Wilson's
+  disease).
+notes_for_client: Your histamine-clearing enzyme needs copper to work. Most people
+  get enough from food — only consider supplementing if you've been taking zinc for
+  a long time.
+evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-pancreatic-insufficiency
@@ -34,7 +41,10 @@ sources:
   quote: Damaged microvilli, which basically are responsible for the absorption of
     nutrition, which would help in terms of formation of these enzymes, minerals like
     copper, zinc, vitamins like A, B, E, toxicity inside the body.
-version: 1
+- id: dirty-genes-lynch
+  location: Chapter 15 — Additional Supplements for Your DAO
+  quote: The primary nutrient that your DAO enzyme needs to work properly is copper.
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

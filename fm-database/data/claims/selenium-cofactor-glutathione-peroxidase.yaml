@@ -1,0 +1,31 @@
+slug: selenium-cofactor-glutathione-peroxidase
+statement: Selenium is the essential cofactor for glutathione peroxidase enzymes (GPX);
+  without adequate selenium, glutathione cannot neutralise hydrogen peroxide, leaving
+  cells vulnerable to oxidative damage.
+evidence_tier: strong
+rationale: Selenium incorporation into selenocysteine at the GPX active site is a
+  well-established biochemical fact; the role of selenoenzymes in peroxide clearance
+  has strong mechanistic and epidemiological support. This is one of the better-grounded
+  claims in Lynch's framework.
+coaching_translation: Ensure clients eating selenium-poor diets (e.g., Midwest US
+  soils, vegans) understand selenium is critical for antioxidant function. Brazil
+  nuts (2/day) provide dietary selenium.
+caveats:
+- Toxicity threshold is relatively low (~400 mcg/day); testing before supplementing
+  is advisable.
+- Serum selenium does not always reflect tissue status — RBC selenium or functional
+  GPX assay is more informative.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- selenium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Spot Cleaning Your GST/GPX
+  quote: Without selenium, you can't use your glutathione to get rid of hydrogen peroxide.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

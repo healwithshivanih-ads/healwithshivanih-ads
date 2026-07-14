@@ -1,5 +1,5 @@
 slug: curcumin
-display_name: Curcumin (Turmeric Extract)
+display_name: Curcumin
 category: herb
 forms_available:
 - capsule
@@ -8,7 +8,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 500
-    max: 1000
+    max: 2000
     unit: mg
   tablet:
     min: 500
@@ -56,6 +56,8 @@ linked_to_topics:
 - autoimmune-dermatitis
 - gallstones
 - osteoarthritis
+- mthfr-methylation-gene
+- gst-gpx-glutathione-detox
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - loneliness-activates-inflammatory-pathways
@@ -75,12 +77,13 @@ linked_to_claims:
 - murray-curcumin-bioavailable-forms
 - murray-curcumin-equals-phenylbutazone-ra
 - murray-topical-curcumin-vs-calcipotriene
-notes_for_coach: Curcumin has both anti-inflammatory properties and is cited as a
-  stimulant of enzymatic activity. Bioavailability is enhanced with black pepper (piperine)
-  or fat. Source is expert consensus lecture.
-notes_for_client: Curcumin, the active compound in turmeric, has anti-inflammatory
-  properties and may help stimulate digestive enzymes. Best absorbed when taken with
-  food and a source of fat.
+- curcumin-supports-methylation-mthfr
+notes_for_coach: Lynch mentions curcumin as supportive for MTHFR and healthy methylation.
+  Bioavailability is very low without a lipid carrier or piperine. Anti-inflammatory
+  and Nrf2-activating mechanisms are plausible.
+notes_for_client: The active compound in turmeric, curcumin may help support healthy
+  methylation and reduce inflammation. Take with a fat-containing meal to improve
+  absorption.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -137,26 +140,26 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 89 — Rheumatoid Arthritis
-  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 88 — Psoriasis
-  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
 - id: who-monographs-selected-medicinal-plants
   location: Vol 1 (1999) — Rhizoma Curcumae Longae, Contraindications / Adverse reactions
-  quote: 'Contraindicated in obstruction of the biliary tract; in gallstones use only
+  quote: Contraindicated in obstruction of the biliary tract; in gallstones use only
     after consulting a physician. Hypersensitivity to the drug; allergic dermatitis
-    has been reported.'
+    has been reported.
+- id: dirty-genes-lynch
+  location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
+  quote: I also had her take curcumin and PQQ, both of which would support her MTHFR
+    gene and promote healthy methylation.
 contraindications:
   conditions:
   - obstruction of the biliary tract (WHO Monographs Vol 1)
   - gallstones — use only after consulting a physician (WHO Monographs Vol 1)
-  - hypersensitivity / allergic contact dermatitis to turmeric (WHO Monographs Vol 1)
+  - hypersensitivity / allergic contact dermatitis to turmeric (WHO Monographs Vol
+    1)
   medications:
-  - anticoagulant / antiplatelet drugs — high-dose curcumin may add bleeding risk; caution
+  - anticoagulant / antiplatelet drugs — high-dose curcumin may add bleeding risk;
+    caution
   life_stages: []
-version: 22
+version: 23
 status: active
-updated_at: '2026-07-13'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

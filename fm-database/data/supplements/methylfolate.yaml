@@ -1,0 +1,42 @@
+slug: methylfolate
+display_name: Methylfolate (5-MTHF)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 0.1
+    max: 15
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_claims:
+- folic-acid-blocks-methylfolate-absorption
+- methylfolate-supports-mood-mthfr
+- mthfr-snp-reduces-methylfolate-production
+- methylfolate-supports-methylation-cycle
+notes_for_coach: Source book recommends starting very low and increasing slowly. Some
+  individuals experience significant mood or anxiety side effects (overmethylation)
+  at higher doses. Start with a 'Soak and Scrub' dietary approach before supplementing.
+  Dose selection is clinician territory.
+notes_for_client: This is the activated form of folate your body can actually use,
+  especially if you have an MTHFR variant. Start low — even a very small dose can
+  have a big effect. Leafy greens first, supplements second.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
+  quote: I started her on a twice-weekly supplement of methylfolate, one of the active
+    forms of folate/vitamin B9 (and a nutrient essential to the methylation process
+    on which good health depends).
+version: 2
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

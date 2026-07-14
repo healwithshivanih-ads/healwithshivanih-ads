@@ -19,15 +19,19 @@ linked_to_topics:
 - psoriasis
 - psoriasis-gut-immune
 - autoimmune
+- histamine-intolerance-dao
+- pemt-choline-cell-membrane
 linked_to_claims:
 - sluggish-bile-flow-overlooked-root-cause
 - murray-bile-acid-psoriasis-dramatic
-notes_for_coach: Direct bile replacement — particularly useful post-cholecystectomy
-  or severe steatorrhea. Take with fat-containing meals. Clinician oversight for dosing.
-notes_for_client: Ox bile provides direct bile salts to help digest fats — especially
-  helpful if your gallbladder has been removed or your bile flow is significantly
-  impaired.
-evidence_tier: fm_specific_thin
+- ox-bile-supports-sibo-fat-digestion-dao
+notes_for_coach: Lynch recommends starting with 250 mg at dinner for SIBO (antimicrobial
+  action in small intestine) and for those without a gallbladder. Supports fat digestion
+  and bile flow which is impaired in dirty PEMT. Also used in visceral/gallbladder
+  support alongside PEMT spot cleaning.
+notes_for_client: A digestive supplement that mimics your own bile — helpful for fat
+  digestion, supporting beneficial bacteria balance, and those without a gallbladder.
+evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: vitaone-gut-cheatsheet
@@ -36,7 +40,11 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 2
+- id: dirty-genes-lynch
+  location: Chapter 15 — SIBO section
+  quote: Ox bile in small doses can help support the elimination of harmful bacteria
+    in your small intestine, which will also support your DAO.
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

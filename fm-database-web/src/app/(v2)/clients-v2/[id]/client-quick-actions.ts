@@ -73,5 +73,16 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       hint: "Full referral packet — print-ready PDF for the clinician",
       href: `/clients-v2/${clientId}/handoff`,
     },
+    {
+      // Ad-hoc nutrigenomics screen for complex multi-system cases — scores
+      // functional burden across the 7 "Dirty Genes" pathways from symptoms +
+      // lifestyle (genetics overlaid if a report is on file). Coaching tool,
+      // not a genetic diagnosis. See dirty-genes/page.tsx.
+      id: "dirty-genes",
+      icon: "🧬",
+      label: "Dirty Genes screen",
+      hint: "7-pathway functional burden — for complex multi-system cases",
+      href: `/clients-v2/${clientId}/dirty-genes`,
+    },
   ];
 }

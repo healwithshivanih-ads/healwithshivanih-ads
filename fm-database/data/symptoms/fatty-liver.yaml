@@ -1,0 +1,26 @@
+slug: fatty-liver
+display_name: Fatty Liver (Non-Alcoholic)
+aliases:
+- NAFLD
+- hepatic steatosis
+- liver fat accumulation
+category: metabolic
+severity: concerning
+description: Excess triglyceride accumulation in hepatocytes. Lynch links this to
+  PEMT variants reducing liver phosphatidylcholine production, impairing VLDL assembly
+  and lipid export from hepatocytes. Also linked to low-choline vegetarian diets.
+when_to_refer: Elevated ALT, GGT, or ultrasound-confirmed steatosis warrants physician
+  evaluation.
+linked_to_topics:
+- pemt-choline-cell-membrane
+linked_to_mechanisms:
+- pemt-phosphatidylcholine-synthesis
+- methylation
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — PEMT symptom checklist
+  quote: I've been told I have fatty liver.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

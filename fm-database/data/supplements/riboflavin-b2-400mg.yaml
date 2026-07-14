@@ -1,0 +1,34 @@
+slug: riboflavin-b2-400mg
+display_name: Riboflavin 400 mg (MAOA Support)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 400
+    max: 400
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- maoa-slow-serotonin-excess
+linked_to_claims:
+- riboflavin-cofactor-mthfr-maoa-gst
+notes_for_coach: Lynch recommends 400 mg riboflavin specifically for slow MAOA support
+  (and for migraines linked to MTHFR). This is a high dose — same entity as riboflavin-b2
+  but at therapeutic range. Harmless urinary yellowing expected.
+notes_for_client: This B vitamin at a higher dose helps support the enzyme responsible
+  for clearing excess serotonin and other mood-regulating brain chemicals.
+evidence_tier: confirm_with_clinician
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow MAOA
+  quote: Consider taking 400 milligrams of riboflavin to help support your slow MAOA.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

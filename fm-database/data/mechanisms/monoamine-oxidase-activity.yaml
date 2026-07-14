@@ -1,0 +1,38 @@
+slug: monoamine-oxidase-activity
+display_name: Monoamine Oxidase A (MAOA) Activity
+aliases:
+- MAO-A pathway
+- serotonin catabolism
+- dopamine degradation MAOA
+category: neurological
+summary: MAOA oxidatively deaminates serotonin, dopamine, and norepinephrine in the
+  presynaptic neuron and in the liver, governing the available pool of these mood-regulating
+  amines. Slow MAOA accumulates monoamines (irritability, insomnia, headache susceptibility
+  with tyramine-rich foods); fast MAOA depletes them rapidly (depression, low motivation,
+  carbohydrate-driven serotonin-seeking).
+upstream_drivers:
+- MAOA promoter VNTR genotype (3R/4R)
+- tyramine-rich food intake
+- stress-driven monoamine turnover
+- sleep deprivation
+downstream_effects:
+- serotonin-level-dysregulation
+- dopamine-balance
+- mood-instability
+- carb-craving-as-serotonin-seeking
+- tyramine-sensitivity
+related_mechanisms:
+- catechol-methylation-comt
+linked_to_topics:
+- maoa-neurotransmitter-gene
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: 'This gene helps govern your levels of dopamine, norepinephrine, and serotonin:
+    key brain chemicals that affect mood, alertness, energy, vulnerability to addictions,
+    self-confidence, and sleep.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

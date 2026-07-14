@@ -1,0 +1,28 @@
+slug: vitamin-b5-pantothenic-acid
+display_name: Vitamin B5 (Pantothenic Acid)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- clean-genes-protocol
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+notes_for_coach: Mentioned alongside vitamin C as supportive for the stress response/adrenal
+  axis. Include in adaptogen context.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Adaptogens, Week 1
+  quote: Vitamin B5 and vitamin C are also supportive for stress.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

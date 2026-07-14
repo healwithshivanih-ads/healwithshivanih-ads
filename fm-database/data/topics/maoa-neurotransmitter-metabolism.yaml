@@ -1,0 +1,68 @@
+slug: maoa-neurotransmitter-metabolism
+display_name: MAOA Gene & Neurotransmitter Metabolism
+aliases:
+- MAO-A gene
+- dirty MAOA
+- fast MAOA
+- maoa-neurotransmitter-balance
+- maoa-neurotransmitter-gene
+- monoamine oxidase A
+- mood swings gene
+- slow MAOA
+summary: The MAOA gene encodes an enzyme that breaks down key neurotransmitters—dopamine,
+  norepinephrine, and serotonin. Genetic variants or environmental stressors can make
+  MAOA run too fast (depleting neurotransmitters, causing low mood and carb cravings)
+  or too slow (accumulating them, causing irritability, anxiety, and difficulty calming
+  down). Lynch frames both as 'dirty MAOA' presentations requiring distinct dietary
+  and lifestyle support.
+common_symptoms:
+- carb-cravings
+- sugar-cravings
+- mood-swings
+- depression-low-mood
+- insomnia-sleep-maintenance
+- irritability
+- anxiety
+- difficulty-calming-down
+- fatigue
+- food-cravings
+- insomnia
+- early-waking
+- migraine
+- depression
+red_flags:
+- rage-or-aggressive-behavior
+- suicidal-ideation
+- inability-to-function-daily
+related_topics:
+- gst-gpx-glutathione-detox
+- nos3-nitric-oxide-cardiovascular
+- pemt-choline-cell-membrane
+- clean-genes-protocol
+- comt-catechol-clearance
+- mthfr-methylation-gene
+key_mechanisms:
+- maoa-neurotransmitter-catabolism
+- tryptophan-serotonin-melatonin-pathway
+- hydrogen-peroxide-oxidative-stress
+- catechol-clearance-comt-maoa
+- monoamine-oxidase-activity
+- serotonin-regulation
+- dopamine-regulation
+coaching_scope_notes: Coaches can support dietary protein distribution, complex-carb
+  selection, sleep hygiene, and stress-reduction practices. Do not advise stopping
+  MAO inhibitors or other medications.
+clinician_scope_notes: Genetic SNP interpretation, MAO inhibitor prescribing/deprescribing,
+  and psychiatric diagnosis are clinician territory.
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — MAOA: The Basics'
+  quote: The MAOA gene produces the MAOA enzyme, which helps you process two key stress
+    neurotransmitters—dopamine and norepinephrine—both of which enable you to rev
+    your body up for the stress response. MAOA also helps you process serotonin, a
+    neurotransmitter that enables you to feel calm and optimistic.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

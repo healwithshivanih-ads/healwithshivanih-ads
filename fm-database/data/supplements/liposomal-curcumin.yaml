@@ -1,0 +1,38 @@
+slug: liposomal-curcumin
+display_name: Liposomal Curcumin
+category: herb
+forms_available:
+- liquid
+- capsule
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- maoa-fast-serotonin-depletion
+linked_to_claims:
+- curcumin-anti-inflammatory-slows-tryptophan-steal
+notes_for_coach: Lynch recommends for fast MAOA to reduce inflammation — specifically
+  to slow down IDO1-mediated tryptophan steal, thereby conserving tryptophan for serotonin
+  synthesis. Liposomal form preferred for absorption. 1–3 times daily.
+notes_for_client: A potent anti-inflammatory from turmeric that helps protect your
+  tryptophan supply so your body can make serotonin. The liposomal form is much better
+  absorbed than standard curcumin.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Fast MAOA
+  quote: Consider taking this great anti-inflammatory one to three times daily. This
+    helps slow the Tryptophan Steal that we discussed earlier, thereby conserving
+    tryptophan for your fast MAOA.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

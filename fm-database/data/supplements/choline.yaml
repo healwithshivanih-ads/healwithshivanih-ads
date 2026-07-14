@@ -1,0 +1,38 @@
+slug: choline
+display_name: Choline
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 550
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- mthfr-methylation-gene
+notes_for_coach: 'Choline enables the ''Betaine Shortcut'' for homocysteine remethylation
+  when methylfolate/methylcobalamin are insufficient. Particularly important for vegans
+  and vegetarians who are at high risk of deficiency. Food sources: eggs, red meat,
+  poultry, fish, liver, organ meats. Cannot fully replace primary methylation cycle
+  long-term.'
+notes_for_client: Choline provides a backup route for your methylation cycle when
+  folate and B12 are running low. It's most abundant in eggs, meat, and organ meats.
+  Vegans and vegetarians particularly benefit from supplementing.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: The Choline Shortcut'
+  quote: This shortcut, like the Methylation Cycle, methylates homocysteine, but instead
+    of relying on the B vitamins for that task, it relies on the nutrient choline.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

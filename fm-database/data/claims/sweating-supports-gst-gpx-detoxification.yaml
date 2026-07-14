@@ -1,0 +1,29 @@
+slug: sweating-supports-gst-gpx-detoxification
+statement: Regular sweating through sauna, vigorous exercise, or hot yoga enhances
+  elimination of toxins through the skin, reducing the xenobiotic burden on GST/GPX
+  and supporting overall detoxification capacity.
+evidence_tier: fm_specific_thin
+rationale: Sweat does contain trace amounts of some heavy metals and environmental
+  toxins; the magnitude of contribution to overall elimination relative to hepatic/renal
+  routes is debated in the literature. This is a common FM practice recommendation
+  with limited RCT evidence.
+coaching_translation: Encourage at least two sweat-inducing sessions per week (sauna,
+  vigorous exercise, hot yoga) as a complement to dietary and environmental toxin-reduction
+  strategies for clients with chemical sensitivity or suspected GST/GPX impairment.
+caveats:
+- Source is a consumer trade book
+- Sweat detox contribution vs renal/hepatic routes is not well quantified in RCTs
+linked_to_topics:
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — Making the Most of GST/GPX
+  quote: Your body detoxes in four ways—breath, pee, poop, and sweat. … Now let's
+    get you breaking a sweat at least two times a week.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

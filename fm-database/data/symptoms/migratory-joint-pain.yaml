@@ -1,0 +1,25 @@
+slug: migratory-joint-pain
+display_name: Migratory Joint Pain
+aliases:
+- random joint pains
+- wandering joint pain
+- moving joint aches
+category: musculoskeletal
+severity: common
+description: Joint pain that shifts location and comes and goes without a clear inflammatory
+  pattern; linked in Lynch's framework to systemic histamine excess from DAO insufficiency
+  or gut pathogen overgrowth.
+when_to_refer: Persistent joint swelling, morning stiffness > 30 min, or elevated
+  inflammatory markers — rule out rheumatoid arthritis or autoimmune arthropathy.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_mechanisms:
+- histamine-catabolism-dao
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — DAO symptom checklist
+  quote: I get random joint pains that move around and come and go.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

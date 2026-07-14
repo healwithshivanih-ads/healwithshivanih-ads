@@ -1,16 +1,16 @@
 slug: sam-e
-display_name: SAM-e (S-Adenosyl-L-Methionine)
+display_name: SAMe (S-Adenosylmethionine)
 aliases:
 - s-adenosyl-methionine
 - ademetionine
-category: amino_acid
+category: other
 forms_available:
 - tablet
 - capsule
 typical_dose_range:
   tablet:
-    min: 400
-    max: 1200
+    min: 200
+    max: 800
     unit: mg
   capsule:
     min: 400
@@ -19,35 +19,26 @@ typical_dose_range:
 timing_options:
 - on_empty_stomach
 - with_breakfast
-take_with_food: optional
+- morning
+take_with_food: avoid
 linked_to_topics:
 - major-depressive-disorder
 - depression-mood-disorder
 - osteoarthritis
 - gallstones
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
 linked_to_mechanisms: []
-notes_for_coach: 'Active methyl donor for over 100 methylation reactions including
-  neurotransmitter
-
-  synthesis. Murray dose for depression: 200 mg twice daily up to 400 mg three times
-
-  daily (~1,200 mg/day). Enteric-coated tablets essential — non-enteric forms largely
-
-  destroyed by stomach acid. Effect typically within 1-2 weeks (faster than SSRIs).
-
-  Also has strong evidence for osteoarthritis (matches NSAIDs for symptom relief).
-
-  '
-notes_for_client: 'SAM-e is a natural compound your body makes for hundreds of essential
-  functions.
-
-  As a supplement, it can lift mild-to-moderate depression often faster than
-
-  prescription antidepressants. Take on empty stomach 30 min before breakfast +
-
-  again before lunch. Enteric-coated form only — others are destroyed by stomach acid.
-
-  '
+notes_for_coach: 'The universal methyl donor produced by the methylation cycle. Available
+  OTC in the US; prescription only in several European countries. Highly context-dependent:
+  beneficial for slow COMT under stress load; can cause depression, fatigue, or mood
+  destabilization if catecholamines are already adequate or if COMT is fast. Do NOT
+  recommend without full picture of client''s COMT status and stress context. Defer
+  to clinician.'
+notes_for_client: SAMe is produced naturally by your own methylation cycle. It CAN
+  be taken as a supplement but has powerful and sometimes unpredictable effects depending
+  on your COMT gene type and stress levels. Please work with your clinician before
+  trying it.
 evidence_tier: strong
 contraindications:
   conditions:
@@ -63,7 +54,12 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression
   quote: 'SAM-e: 200 mg twice a day up to 400 mg three times a day.'
-version: 3
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Spectacular SAMe'
+  quote: SAMe may not be right for you. (You will learn in later chapters whether
+    you're a good candidate for supplemental SAMe.)
+version: 4
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
+linked_to_claims: []

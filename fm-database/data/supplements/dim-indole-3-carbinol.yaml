@@ -1,0 +1,37 @@
+slug: dim-indole-3-carbinol
+display_name: DIM + Indole-3-Carbinol (I3C)
+category: herb
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 200
+    unit: mg
+timing_options:
+- with_dinner
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- comt-slow-catechol-clearance
+linked_to_claims:
+- dim-i3c-breaks-down-estrogen-supports-slow-comt
+notes_for_coach: Lynch recommends these as a pair for supporting oestrogen metabolism
+  in slow COMT — both promote conversion of potent 16-OH estrogens to the weaker 2-OH
+  pathway. Often packaged together. Useful when catechol estrogen accumulation is
+  driving symptoms (PMS, fibroids, insomnia). Clinician oversight warranted for anyone
+  with a hormone-sensitive cancer history.
+notes_for_client: These compounds from cruciferous vegetables help your body process
+  and clear oestrogen more efficiently, which can relieve PMS symptoms and reduce
+  hormonal burden.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow COMT
+  quote: Indole-3-carbinol and DIM. These supplements help break down estrogens so
+    that they can be eliminated from your body.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

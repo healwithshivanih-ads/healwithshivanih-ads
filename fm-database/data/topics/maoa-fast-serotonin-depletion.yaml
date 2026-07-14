@@ -1,0 +1,45 @@
+slug: maoa-fast-serotonin-depletion
+display_name: Fast MAOA — Serotonin & Mood Depletion
+aliases:
+- dirty MAOA fast
+- MAO-A fast variant
+- low serotonin phenotype
+summary: A fast MAOA variant degrades serotonin, dopamine, and norepinephrine too
+  quickly. This underpins depression, anxiety, obsessive tendencies, poor focus since
+  childhood, disrupted sleep maintenance, carbohydrate cravings, and mood sensitivity
+  to seasonal light changes. Inflammation and infections worsen the phenotype by diverting
+  tryptophan away from serotonin synthesis via the IDO1 pathway.
+common_symptoms:
+- childhood-attention-difficulties
+- depression-anxiety
+- carbohydrate-craving-mood-relief
+- obsessive-tendencies
+- seasonal-affective-disorder
+- middle-of-night-waking
+- fibromyalgia-ibs-constipation
+- chronic-inflammation
+red_flags:
+- Active autoimmune disease worsening mood
+- Seasonal affective disorder not responding to light therapy
+related_topics:
+- comt-fast-dopamine-depletion
+- histamine-intolerance-dao
+- gst-gpx-glutathione-detox
+key_mechanisms:
+- monoamine-oxidation
+- tryptophan-steal-ido1
+- serotonin-dopamine-clearance
+coaching_scope_notes: Coach can encourage morning exercise, anti-inflammatory diet,
+  mold assessment, elimination diet for food intolerances, HRV monitoring to prevent
+  overtraining. 5-HTP, inositol, melatonin, and liposomal curcumin dosing require
+  clinician guidance. Do NOT recommend 5-HTP alongside SSRIs.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — Laundry List 2 (MAOA fast)
+  quote: I crave carbohydrates, and they make me feel less depressed.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

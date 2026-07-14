@@ -1,0 +1,25 @@
+slug: fatigue-toxic-feeling
+display_name: Fatigue & 'Toxic' Feeling
+aliases:
+- feeling tired and toxic
+- toxic sluggishness
+category: constitutional
+severity: common
+description: Persistent tiredness accompanied by a subjective sense of toxicity or
+  heaviness. In Lynch's framework this cross-links to GST/GPX impairment (xenobiotic
+  accumulation) and MTHFR dysfunction (methylation bottleneck).
+linked_to_topics:
+- gst-gpx-glutathione-detox
+- mthfr-methylation-support
+linked_to_mechanisms:
+- glutathione-conjugation
+- methylation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — MTHFR symptom checklist
+  quote: I feel generally tired and "toxic."
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

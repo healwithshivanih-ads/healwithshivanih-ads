@@ -1,0 +1,33 @@
+slug: methylfolate-supports-methylation-cycle
+statement: Increasing dietary and supplemental methylfolate intake can partially compensate
+  for reduced MTHFR enzyme activity, supporting the methylation cycle and potentially
+  improving mood, energy, and cognitive function.
+evidence_tier: plausible_emerging
+rationale: 'Biologically plausible: providing the enzyme''s product (methylfolate)
+  bypasses the rate-limiting MTHFR step. Some clinical trials support methylfolate
+  in depression adjunctive therapy. However, the dramatic anecdotal responses described
+  in the book are not representative of controlled trial outcomes. Source is a consumer
+  trade book.'
+coaching_translation: Eating more leafy greens (spinach, romaine, bok choy) and, if
+  recommended by your clinician, taking a methylfolate supplement can help fill the
+  gap your MTHFR variant creates.
+caveats:
+- Start low with supplemental methylfolate — some people react strongly even to small
+  doses
+- Verify supplementation approach with clinician
+- Avoid folic acid (synthetic form) as it may block folate receptors
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_supplements:
+- methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: MTHFR: Methylation Master'
+  quote: You can help your dirty MTHFR by eating foods that already contain a lot
+    of methylfolate, easing its burden and supporting your cycle.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

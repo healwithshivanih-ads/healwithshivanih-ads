@@ -39,11 +39,14 @@ linked_to_claims:
 - methylfolate-preferred-over-folic-acid-for-mthfr
 - methylfolate-required-for-homocysteine-to-methionine
 - folate-supplementation-prevents-neural-tube-defects
-notes_for_coach: Start low (e.g. 400 mcg) and titrate slowly. Some clients are sensitive to methyl donors and may experience
-  anxiety, irritability, or insomnia with higher doses. Always pair folate decisions with B12 status assessment. Prefer active
-  forms (5-MTHF / L-methylfolate) over folic acid for MTHFR clients. Dosing decisions should be confirmed with a clinician.
-notes_for_client: This is the active, ready-to-use form of folate — your body doesn't need to convert it, which makes it more
-  suitable if you have an MTHFR variant. Start with a low dose and increase only under practitioner guidance.
+notes_for_coach: Start low (e.g. 400 mcg) and titrate slowly. Some clients are sensitive
+  to methyl donors and may experience anxiety, irritability, or insomnia with higher
+  doses. Always pair folate decisions with B12 status assessment. Prefer active forms
+  (5-MTHF / L-methylfolate) over folic acid for MTHFR clients. Dosing decisions should
+  be confirmed with a clinician.
+notes_for_client: This is the active, ready-to-use form of folate — your body doesn't
+  need to convert it, which makes it more suitable if you have an MTHFR variant. Start
+  with a low dose and increase only under practitioner guidance.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -52,14 +55,14 @@ sources:
   quote: Many people can't convert folic acid effectively.
 - id: coach-shivani
   location: Coach Observation
-  quote: use active folate such as low-dose L-methylfolate for a short while, pair folate decisions with B12 status
+  quote: use active folate such as low-dose L-methylfolate for a short while, pair
+    folate decisions with B12 status
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Supplementation for MTHFR section
-  quote: The first most important supplement is as you have seen the folate supplement but it should be in the form of methylfolate
-    which is the active form.
+  quote: The first most important supplement is as you have seen the folate supplement
+    but it should be in the form of methylfolate which is the active form.
 version: 3
 status: active
 updated_at: '2026-05-13'
 updated_by: Shivani
-aliases:
-- methylfolate
+aliases: []

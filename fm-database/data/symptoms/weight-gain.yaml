@@ -1,0 +1,25 @@
+slug: weight-gain
+display_name: Unexplained Weight Gain
+aliases:
+- gaining weight
+- can't lose weight
+category: metabolic
+severity: common
+description: Weight accumulation that Lynch associates with dietary cravings driven
+  by dirty MAOA, poor metabolic efficiency from multiple dirty gene states, and poor
+  food quality choices.
+linked_to_topics:
+- maoa-neurotransmitter-balance
+- clean-genes-protocol
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 12 Introduction
+  quote: your headaches, rashes, weight gain, and insomnia are all results of one
+    or more dirty genes
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

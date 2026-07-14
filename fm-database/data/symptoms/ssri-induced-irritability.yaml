@@ -1,0 +1,27 @@
+slug: ssri-induced-irritability
+display_name: SSRI-Induced Irritability or Worsening Mood
+aliases:
+- SSRI side effects irritability
+- antidepressant causing agitation
+- SSRI activation syndrome
+category: mood
+severity: concerning
+description: Development of significant irritability, agitation, or worsening mood
+  after starting an SSRI. Lynch flags this as a potential marker of slow MAOA (excess
+  serotonin already present; SSRI further increases it) or slow COMT haplotype.
+when_to_refer: Always refer to prescribing physician before adjusting or stopping
+  psychiatric medication.
+linked_to_topics:
+- maoa-slow-serotonin-excess
+- comt-slow-catechol-clearance
+linked_to_mechanisms:
+- monoamine-oxidation
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — MAOA slow symptom checklist
+  quote: My doctor put me on an SSRI for depression, and I got very irritable from
+    it.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

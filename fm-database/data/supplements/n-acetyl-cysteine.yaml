@@ -1,0 +1,45 @@
+slug: n-acetyl-cysteine
+display_name: N-Acetyl Cysteine (NAC)
+category: amino_acid
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 1800
+    unit: mg
+  powder:
+    min: 600
+    max: 1800
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_claims:
+- cysteine-is-rate-limiting-for-glutathione-synthesis
+notes_for_coach: NAC supplies cysteine, the rate-limiting amino acid for glutathione
+  synthesis. However, Lynch explicitly cautions that NAC is a sulfur-containing supplement—in
+  clients with microbiome-driven hydrogen sulfide excess or sulfur intolerance, NAC
+  can worsen symptoms. Should be used cautiously and monitored. Not appropriate if
+  client shows sulfur intolerance signs (rotten-egg body odour, loose stool from cruciferous
+  veg). Clinician guidance recommended before initiating.
+notes_for_client: NAC is a supplement form of cysteine—the building block your body
+  uses to make glutathione. It can be helpful for some people, but it contains sulfur,
+  which not everyone tolerates well. Start with food sources of cysteine (eggs, chicken,
+  broccoli, onions) and only consider supplementing with guidance from a clinician.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — Balancing Your Sulfur
+  quote: Cut back on any sulfur-based supplements you're taking, such as MSM (methylsulfonylmethane)
+    or NAC (N-acetyl cysteine).
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,31 @@
+slug: folate-trap
+display_name: Folate Trap (Folic Acid Receptor Blockade)
+aliases:
+- folic acid blockade
+- folate receptor blocking
+category: metabolic
+summary: Unmetabolized synthetic folic acid (from fortified foods and supplements)
+  can competitively occupy folate receptors, blocking the uptake of natural methylfolate
+  and effectively starving the methylation cycle even when serum folate appears elevated.
+  This is particularly relevant in individuals with MTHFR SNPs who cannot efficiently
+  convert folic acid to methylfolate.
+upstream_drivers:
+- synthetic-folic-acid-intake
+- MTHFR-SNP-reduced-activity
+downstream_effects:
+- reduced-methylation-cycle-throughput
+- elevated-unmethylated-folate
+- misleading-serum-folate-result
+related_mechanisms:
+- methylation-cycle
+linked_to_topics:
+- mthfr-methylation-gene
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: What Makes MTHFR Dirty?'
+  quote: Folic acid (which blocks your folate receptors)
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

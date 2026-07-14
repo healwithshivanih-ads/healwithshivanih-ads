@@ -1,5 +1,5 @@
 slug: irritability
-display_name: Irritability
+display_name: Irritability / Hair-Trigger Temper
 aliases:
 - mood changes
 - emotional instability
@@ -7,17 +7,26 @@ aliases:
 - mood-changes-irritability
 - emotional sensitivity
 - anxious gut
+- anger flare-ups
+- easily frustrated
+- snapping at people
 category: mood
 severity: common
-description: Mood disturbances including irritability associated with folate or B12
-  deficiency and impaired neurotransmitter synthesis (dopamine, serotonin).
+description: Rapid-onset anger or irritability disproportionate to trigger. Linked
+  to slow MAOA or MTHFR variants impairing rapid catecholamine clearance, leaving
+  excess norepinephrine during stress.
 when_to_refer: Refer if mood disturbances are severe or accompanied by depression
   or psychosis.
 linked_to_topics:
 - folate-nutrition
 - mthfr-gene-variant
+- mthfr-methylation-gene
+- maoa-neurotransmitter-gene
+- comt-catechol-clearance
 linked_to_mechanisms:
 - methylation
+- monoamine-oxidase-activity
+- catechol-methylation-comt
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Folate Deficiency Signs & Symptoms
@@ -26,7 +35,11 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 2
   quote: Mood changes / irritability
-version: 1
+- id: dirty-genes-lynch
+  location: Chapter 1 — Some Genes Are Born Dirty
+  quote: SNPs also contribute to anxiety, depression, irritability, workaholism, obsessiveness,
+    difficulty paying attention, trouble winding down.
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,31 @@
+slug: glutathione-required-for-b12-cellular-transport
+statement: Glutathione acts as a binding co-factor that helps vitamin B12 attach to
+  its carrier proteins for cellular uptake; low glutathione status can perpetuate
+  functional B12 deficiency even when serum B12 appears normal.
+evidence_tier: fm_specific_thin
+rationale: This is a mechanistic claim made by Lynch in a consumer book. The idea
+  that glutathione facilitates B12 transport has some biochemical basis but is not
+  well established in the peer-reviewed nutritional science literature. Treat as FM-specific
+  hypothesis.
+coaching_translation: A client who continues to show B12 deficiency symptoms despite
+  supplementation may have inadequate glutathione impeding B12 cellular uptake. Support
+  glutathione status through diet and stress management alongside B12 repletion.
+caveats:
+- Source is a consumer trade book
+- This specific mechanism is not well established in peer-reviewed literature
+- Verify with clinician
+linked_to_topics:
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — Glutathione and Vitamin B12
+  quote: Glutathione is the glue that helps B12 stick to the carriers. So if you're
+    low on glutathione, you can take all the B12 supplements you want and it won't
+    be transported to the places where your body needs it.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

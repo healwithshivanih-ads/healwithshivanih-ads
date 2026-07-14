@@ -1,0 +1,127 @@
+slug: mthfr-methylation
+display_name: MTHFR & Methylation
+aliases:
+- A1298C
+- C677T
+- MTHFR SNP
+- MTHFR gene variants
+- MTHFR mutation
+- MTHFR polymorphism
+- MTHFR variant
+- dirty MTHFR
+- folate metabolism
+- methylation cycle dysfunction
+- methylation dysfunction
+- methylation master
+- methylation master gene
+- methylation-mthfr
+- methylenetetrahydrofolate reductase deficiency
+- mthfr-gene-variant
+- mthfr-methylation-gene
+- mthfr-methylation-support
+- mthfr-polymorphisms
+- mthfr-variants
+- one-carbon metabolism
+summary: MTHFR encodes methylenetetrahydrofolate reductase, which converts dietary
+  folate to active methylfolate for the methylation cycle. Lynch frames a 'dirty MTHFR'
+  as impairing DNA methylation, neurotransmitter synthesis, and detoxification, worsened
+  by synthetic folic acid intake.
+common_symptoms:
+- brain-fog
+- fatigue
+- mood-swings
+- headaches
+- elevated-homocysteine
+- lethargy
+- anxiety
+- recurrent-miscarriage
+- chemical-sensitivities
+- poor-concentration
+- low-mood
+- depression
+- insomnia
+- irritability
+- cold-hands-feet
+- low-energy
+- chemical-sensitivity
+- poor-sleep
+- shortness-of-breath-on-exertion
+- exercise-induced-asthma
+- mood-swings-irritability-depression
+- alcohol-intolerance
+- fatigue-toxic-feeling
+- difficulty-falling-asleep
+- slow-to-calm-after-irritation
+- functional-b12-deficiency-symptoms
+related_topics:
+- clean-genes-protocol
+- histamine-intolerance
+- liver-detoxification
+- estrogen-dominance
+- autoimmune-thyroid
+- folate-nutrition
+- vitamin-b12
+- homocysteine-and-methylation
+- methylation
+- comt-catechol-clearance
+- dao-histamine-metabolism
+- maoa-neurotransmitter-gene
+- homocysteine-cardiovascular-risk
+- comt-gene-catechol-clearance
+- dao-histamine-intolerance
+- histamine-metabolism
+- histamine-intolerance-dao
+- comt-slow-catechol-clearance
+- nos3-nitric-oxide-cardiovascular
+- pemt-choline-cell-membrane
+- methylation-cycle
+- homocysteine-regulation
+- methylation-mthfr
+- riboflavin-and-blood-pressure
+- vitamin-b-complex-deficiency
+key_mechanisms:
+- methylation
+- folate-metabolism
+- methylation-cycle-dysfunction
+- elevated-homocysteine
+- glutathione-depletion
+- mthfr-enzyme-dysfunction
+- homocysteine-accumulation
+- folate-receptor-blockade-folic-acid
+- methylation-cycle
+- homocysteine-remethylation
+- folate-trap
+- folate-activation
+- methyl-trap
+- impaired-folate-to-5-mthf-conversion
+coaching_scope_notes: Support with methylfolate-containing multivitamin, leafy greens,
+  legumes. Avoid synthetic folic acid in processed foods.
+clinician_scope_notes: MTHFR C677T/A1298C SNPs have modest individual effect sizes;
+  population-level risk associations are weaker than consumer presentations suggest.
+  Methylfolate dosing requires clinician guidance.
+evidence_tier: plausible_emerging
+red_flags: []
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Week 1
+  quote: Just be sure that you're getting one with no folic acid, which—as you know
+    by now—can dirty your genes instead of clean them. Instead, choose a multivitamin
+    with methylfolate and folinic acid, which are the best forms of supplemental folate
+    available.
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: MTHFR (methylenetetrahydrofolate reductase) is a key enzyme in the methylation
+    cycle that converts folate (B9) into its active form, 5-MTHF.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: MTHFR section
+  quote: MTHFR is actually a very common genetic variant that causes this key enzyme
+    in the body to function at a lower than normal rate.
+- id: coach-shivani
+  location: Coach Observation
+  quote: MTHFR variants usually do not block B12 or folate absorption; they can reduce
+    conversion of folate into active 5-MTHF, which may impair B12 function and raise
+    homocysteine.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,29 @@
+slug: high-fiber-diet-supports-gst-via-microbiome
+statement: A high-fibre diet supports the microbiome's own GST enzyme activity, promotes
+  production of detoxification enzymes in gut bacteria, and enables fibre to physically
+  bind xenobiotics and escort them out in faeces, reducing the burden on hepatic GST.
+evidence_tier: plausible_emerging
+rationale: Fibre's role in binding bile acids and some toxins, and in supporting microbiome
+  composition, has peer-reviewed support. The specific claim about microbiome GST
+  enzymes is biologically plausible but less rigorously established.
+coaching_translation: 'Encourage daily consumption of high-fibre foods—artichokes,
+  avocados, lentils, berries, chia seeds, flaxseed, broccoli, oats. Exception: avoid
+  increasing fibre if the client has active SIBO, which should be addressed first.'
+caveats:
+- Avoid high-fibre recommendation in clients with confirmed or suspected SIBO until
+  addressed
+linked_to_topics:
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — Making the Most of GST/GPX
+  quote: Fiber contributes to the production of detoxification enzymes, and it also
+    binds to xenobiotics. Once fiber hooks up with those chemicals, it ushers them
+    out through your stool.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

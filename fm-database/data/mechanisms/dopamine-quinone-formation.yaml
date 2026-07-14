@@ -1,0 +1,35 @@
+slug: dopamine-quinone-formation
+display_name: Dopamine Quinone Formation
+aliases:
+- dopamine oxidation
+- catecholamine oxidative byproduct
+category: neurological
+summary: When COMT is overwhelmed or dysfunctional, dopamine is shunted toward oxidative
+  pathways forming dopamine quinone — a reactive, neurotoxic compound associated with
+  nigrostriatal cell damage. Linked to Parkinson's disease risk and cognitive decline;
+  worsened by heavy-metal burden and GST/GPX gene dysfunction.
+upstream_drivers:
+- COMT-dysfunction
+- excess-dopamine-substrate
+- heavy-metal-burden
+- oxidative-stress
+downstream_effects:
+- neuronal-cell-death
+- Parkinson's-disease-risk
+- ADHD-exacerbation
+related_mechanisms:
+- catechol-clearance-comt-maoa
+- glutathione-conjugation
+linked_to_topics:
+- comt-gene-catechol-clearance
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Dopamine Dangers'
+  quote: If your COMT is dirty—either born dirty or acting that way—you could end
+    up with a form of dopamine known as dopamine quinone, which is very harmful to
+    the brain.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

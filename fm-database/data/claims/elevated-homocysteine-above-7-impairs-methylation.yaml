@@ -1,0 +1,33 @@
+slug: elevated-homocysteine-above-7-impairs-methylation
+statement: Homocysteine levels above 7 µmol/L may indicate suboptimal methylation
+  cycle throughput and are associated with cardiovascular, neurological, and mood-related
+  health risks.
+evidence_tier: plausible_emerging
+rationale: Conventional labs flag homocysteine > 15 µmol/L. The author's FM-optimal
+  threshold of < 7 µmol/L is more conservative than evidence consensus. Elevated homocysteine
+  as a cardiovascular and neurological risk marker is established; the specific 7
+  µmol/L threshold is FM-specific and not widely endorsed by mainstream guidelines.
+  Source is a consumer book.
+coaching_translation: Your homocysteine lab number tells you something about your
+  methylation — but it's not the full picture. Aim to understand the actual number
+  rather than just 'normal' vs. 'high' from the lab report.
+out_of_scope_notes: Lab interpretation and the decision to treat homocysteine with
+  supplements is clinician territory.
+caveats:
+- Conventional normal upper limit is 15 µmol/L; 7 µmol/L threshold is FM-specific
+  and not consensus
+- Homocysteine levels reflect many factors beyond MTHFR
+- Normal homocysteine does not rule out poor methylation; elevated homocysteine can
+  have causes other than methylation deficiency
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Your MTHFR in Action'
+  quote: My homocysteine levels are routinely high—above 12 micromoles per liter.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

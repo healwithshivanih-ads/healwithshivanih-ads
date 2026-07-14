@@ -1,0 +1,31 @@
+slug: choline-deficiency-worsens-with-menopause
+statement: Postmenopausal women face substantially higher choline requirements than
+  premenopausal women because the oestrogen-driven upregulation of PEMT that previously
+  compensated for low dietary choline is lost; this increases risk of fatty liver,
+  muscle damage, and cognitive decline if diet is not adjusted.
+evidence_tier: plausible_emerging
+rationale: This claim follows directly from the oestrogen/PEMT mechanism and is supported
+  by published research on sex-stratified choline requirements. Specific dosing (900
+  mg in pregnancy) cited by Lynch should be confirmed with a clinician.
+out_of_scope_notes: Specific choline dosing recommendations during pregnancy and breastfeeding
+  require clinician oversight.
+caveats:
+- Source is a consumer trade book
+- Confirm dosing with clinician, especially in pregnancy
+linked_to_topics:
+- pemt-choline-cell-membrane
+linked_to_supplements:
+- phosphatidylcholine
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 11 — Who Is Most at Risk for Choline Deficiency?
+  quote: Postmenopausal women. High levels of estrogen trigger a clean PEMT to make
+    phosphatidylcholine—but after menopause, estrogen levels drop. Even if you were
+    born with a clean PEMT, menopause could make it dirty—unless you get enough choline
+    in your diet.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

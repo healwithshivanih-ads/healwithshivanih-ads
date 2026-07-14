@@ -1,0 +1,32 @@
+slug: tryptophan-steal-stress-shunts-tryptophan-to-quinolinic-acid
+statement: Chronic stress and systemic inflammation divert dietary tryptophan away
+  from the serotonin-melatonin pathway and toward quinolinic acid synthesis, a neurotoxic
+  metabolite, depleting serotonin and impairing sleep even in people without MAOA
+  variants.
+evidence_tier: plausible_emerging
+rationale: The IDO/kynurenine pathway shunting tryptophan toward quinolinic acid under
+  inflammatory conditions is a well-documented mechanism in the peer-reviewed literature;
+  however, labelling it 'tryptophan steal' and linking it primarily to MAOA is Lynch's
+  framing.
+coaching_translation: Stress and inflammation can disrupt mood and sleep even with
+  a perfect diet. Reducing inflammatory triggers (food sensitivities, sleep deprivation,
+  chronic stressors) helps preserve tryptophan for serotonin and melatonin production.
+caveats:
+- Source is a consumer trade book
+- The kynurenine pathway claim has peer-reviewed support; the MAOA-centric framing
+  is an authorial overlay
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 8 — The Tryptophan Steal
+  quote: The calmer you are and the less your body suffers from inflammation, the
+    more of your tryptophan goes toward making serotonin. The more stressed out or
+    inflamed you are, the more of your tryptophan goes toward making quinolinic acid.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

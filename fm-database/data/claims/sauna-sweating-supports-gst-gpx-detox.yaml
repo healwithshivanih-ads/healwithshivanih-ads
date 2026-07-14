@@ -1,0 +1,30 @@
+slug: sauna-sweating-supports-gst-gpx-detox
+statement: Regular sauna use and intentional sweating help the body excrete industrial
+  chemicals and xenobiotics, reducing the burden on GST/GPX detoxification enzymes.
+evidence_tier: fm_specific_thin
+rationale: Sweat contains trace amounts of heavy metals and some lipophilic environmental
+  chemicals. Some studies support sauna-facilitated excretion of certain toxicants
+  (e.g., BPA, some heavy metals). However, the quantitative contribution of sweating
+  to total toxicant excretion relative to hepatic/renal routes is modest and population-variable.
+  The claim is popular in FM and biologically plausible.
+coaching_translation: Encourage regular sauna use (2x/week) or exercise-induced sweating
+  as a supportive detox practice for GST/GPX-challenged clients, alongside dietary
+  fibre and chemical exposure reduction.
+caveats:
+- Source is a consumer trade book.
+- Sweating is adjunctive — reducing chemical exposure at source is primary.
+- Adequate hydration and electrolyte replacement essential during sauna use.
+linked_to_topics:
+- gst-gpx-glutathione-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — The Dirty GST/GPX Lifestyle
+  quote: Sweating via a sauna, an Epsom salt bath, exercising, or hot yoga helps your
+    body expel the industrial chemicals that burden your GST/GPX.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

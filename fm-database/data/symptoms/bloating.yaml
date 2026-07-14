@@ -1,5 +1,5 @@
 slug: bloating
-display_name: Bloating / Abdominal Distension
+display_name: Bloating & Gas
 aliases:
 - feeling full and gassy
 - puffy belly
@@ -44,9 +44,9 @@ aliases:
 - gaseousness
 category: gi
 severity: common
-description: Sensation of abdominal fullness and visible distension due to gas accumulation
-  from FODMAP fermentation, SIBO, dysbiosis, or low gastric acid. Very common in IBS,
-  IBD, and maldigestion.
+description: Abdominal gas and distension during or after meals, linked by Lynch to
+  insufficient stomach acid and digestive enzyme activity, histamine-rich foods, and
+  nutrient malabsorption.
 when_to_refer: Sudden onset, significant unintentional weight loss, or blood in stool—refer
   to gastroenterology.
 linked_to_topics:
@@ -88,6 +88,8 @@ linked_to_topics:
 - irritable-bowel-syndrome
 - maldigestion
 - inflammatory-bowel-disease
+- histamine-intolerance
+- clean-genes-protocol
 linked_to_mechanisms:
 - microbial-diversity-decline
 - leaky-gut
@@ -124,6 +126,7 @@ linked_to_mechanisms:
 - fodmap-fermentation
 - dysbiosis
 - hypochlorhydria
+- histamine-metabolism
 sources:
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 6 — bloating discussion
@@ -220,7 +223,11 @@ sources:
 - id: pizzorno-textbook-gi
   location: Maldigestion — Common Signs and Symptoms of Low Gastric Acidity
   quote: Bloating, belching, burning, and flatulence immediately after meals.
-version: 30
+- id: dirty-genes-lynch
+  location: Supplements — Soak and Scrub Week 2
+  quote: If you're still experiencing gas, bloating, or belching during or after meals,
+    you need additional digestive support.
+version: 31
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,26 @@
+slug: post-meal-irritability-heat-itch
+display_name: Post-meal Irritability, Flushing, or Itching
+aliases:
+- irritable after eating
+- hot after food
+- itchy after meals
+- histamine flush
+category: gi
+severity: common
+description: Feeling warm, irritable, or itchy within minutes to 30 minutes of eating,
+  particularly after high-histamine foods, fermented foods, alcohol, or citrus. A
+  hallmark presentation linked to reduced DAO activity and histamine accumulation.
+when_to_refer: If accompanied by throat swelling, difficulty breathing, or rapid heart
+  rate — possible IgE-mediated allergy requiring emergency evaluation.
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_mechanisms:
+- histamine-catabolism-dao
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — DAO symptom checklist
+  quote: I'm often irritable, hot, or itchy after eating.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

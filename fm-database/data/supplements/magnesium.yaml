@@ -46,6 +46,8 @@ linked_to_topics:
 - bone-health
 - asthma
 - high-blood-pressure
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -70,18 +72,19 @@ linked_to_claims:
 - murray-lactate-anxiety-six-nutritional-drivers
 - murray-b6-magnesium-pms-foundation
 - murray-calcium-alone-insufficient-osteoporosis
-notes_for_coach: 'Preferred forms: aspartate, malate, citrate, succinate, fumarate.
-  Avoid oxide, sulfate, or chloride (laxative effect). Recommended 6–10 mg/kg/day
-  for hypertensives. Use in divided doses. Caution in kidney disease or high-grade
-  AV block.'
-notes_for_client: Magnesium helps relax blood vessels. Take in split doses with meals.
-  Loose stools may occur — if so, switch to a gentler form (citrate or glycinate)
-  and reduce dose.
+notes_for_coach: 'Essential cofactor for both the methylation cycle and COMT enzyme
+  function. Approx. 50% of US adults are deficient. Common causes of depletion: high
+  caffeine intake and long-term PPI use. Food sources: dark leafy greens, nuts, seeds,
+  fish, beans, avocados, whole grains. Supplement form (glycinate, malate) matters
+  for tolerability.'
+notes_for_client: 'Magnesium is crucial for both your methylation cycle and your COMT
+  gene. About half of all adults don''t get enough. Cut back on caffeine — it depletes
+  magnesium. Top food sources: dark leafy greens, nuts, seeds, avocados.'
 evidence_tier: strong
 typical_dose_range:
   capsule:
-    min: 400
-    max: 1200
+    min: 100
+    max: 400
     unit: mg
   powder:
     min: 400
@@ -160,16 +163,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 85 — Premenstrual Syndrome
-  quote: Comprehensive natural treatment for PMS + PMDD.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 81 — Osteoporosis
-  quote: Comprehensive natural prevention + treatment of osteoporosis.
-version: 23
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Key Nutrients for a Healthy COMT'
+  quote: That final nutrient, magnesium, is especially important for your COMT to
+    function properly. So if you don't have enough magnesium in your diet—and about
+    50 percent of all U.S. residents don't—you're going to dirty up your COMT.
+version: 24
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 aliases:
 - magnesium 400-600mg
 contraindications:

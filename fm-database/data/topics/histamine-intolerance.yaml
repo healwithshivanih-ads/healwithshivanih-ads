@@ -1,34 +1,58 @@
 slug: histamine-intolerance
-display_name: Histamine Intolerance
+display_name: Histamine Intolerance / Dirty DAO
 aliases:
-- HIT
-- histamine bucket overflow
-- DAO deficiency syndrome
-- histamine sensitivity
 - DAO deficiency
-summary: 'Histamine Intolerance (HIT) is a functional metabolic state where systemic
-
-  histamine load exceeds degradation capacity. Primary drivers are deficient
-
-  Diamine Oxidase (DAO, extracellular/gut) or Histamine-N-methyltransferase
-
-  (HNMT, intracellular) activity. Often secondary to gut dysbiosis, SIBO, or
-
-  cofactor deficiency (vitamin B6, vitamin C, copper). Presents as flushing,
-
-  migraine, urticaria, GI cramping, and tachycardia after high-histamine
-
-  meals. The "histamine bucket" model is useful client-facing language —
-
-  symptoms appear when intake plus endogenous production exceeds clearance.
-
-  '
+- DAO deficiency syndrome
+- DAO gene
+- HIT
+- dao-histamine-intolerance
+- dao-histamine-metabolism
+- diamine oxidase
+- diamine oxidase deficiency
+- diamine oxidase insufficiency
+- dirty DAO
+- histamine bucket overflow
+- histamine intolerance gene
+- histamine sensitivity
+- histamine-intolerance-dao
+summary: DAO (diamine oxidase) is the primary enzyme for degrading ingested histamine
+  from food. When DAO activity is reduced ('dirty DAO'), histamine accumulates and
+  triggers a range of symptoms. Key dietary triggers include fermented foods, leftovers,
+  aged meats, and certain vegetables.
 common_symptoms:
 - migraine
 - flushing
 - urticaria
 - visceral-hypersensitivity
 - tachycardia
+- runny-nose
+- headaches
+- skin-flushing
+- bloating
+- irritability
+- food-reactions
+- hives
+- heartburn
+- insomnia
+- itchy-skin
+- nausea
+- joint-pain
+- dizziness
+- food-intolerance-reactions
+- racing-heart
+- nosebleeds
+- sweating-after-eating
+- post-meal-irritability-heat-itch
+- intolerance-fermented-high-histamine-foods
+- migratory-joint-pain
+- eczema-hives-psoriasis
+- dermographism
+- probiotic-intolerance
+- tinnitus-after-eating
+- migraines
+- runny-nose-nosebleeds
+- insomnia-after-eating
+- asthma
 red_flags:
 - anaphylaxis-like reactions after high-histamine meals
 - severe chronic migraine unresponsive to standard care
@@ -38,20 +62,26 @@ related_topics:
 - mast-cell-activation-syndrome
 - gut-dysbiosis
 - sibo
+- clean-genes-protocol
+- leaky-gut
+- mthfr-methylation-gene
+- histamine-metabolism
+- microbiome-dysbiosis
+- mthfr-methylation-support
+- comt-slow-catechol-clearance
 key_mechanisms:
 - histamine-metabolism
 - gut-microbiome-histamine-balance
 - histamine-receptor-signaling
-coaching_scope_notes: 'Coach educates on the histamine bucket model, low-histamine
-  eating, fresh-
-
-  versus-aged protein storage, and cofactor-rich foods (vitamin C, B6, copper).
-
-  Coach can support trial elimination/reintroduction but does not prescribe
-
-  DAO supplements or antihistamines.
-
-  '
+- leaky-gut
+- gut-microbiome-dysbiosis
+- histamine-catabolism-dao
+- gut-barrier-dysfunction
+- histamine-accumulation
+- bacterial-histamine-production
+coaching_scope_notes: 'Guide low-histamine food choices: freshly prepared foods only,
+  no leftovers, avoid fermented foods, aged cheese, wine, tomatoes, spinach. Molybdenum
+  and digestive enzymes may support.'
 clinician_scope_notes: 'Refer if symptoms persist despite low-histamine diet — this
   may mask MCAS,
 
@@ -73,7 +103,11 @@ sources:
 - id: notebooklm-mast-cell-histamine-synthesis
   location: Roadmap to Relief infographic
   quote: HIT is primarily a diet-driven breakdown failure.
-version: 2
+- id: dirty-genes-lynch
+  location: Food — Soak and Scrub Week 1
+  quote: While fermented foods might be great for me, replenishing my microbiome and
+    healing my leaky gut, you might have a dirty DAO that can't handle the extra bacteria.
+version: 3
 status: active
-updated_at: '2024-05-22'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,31 @@
+slug: high-histamine-foods-worsen-dao-symptoms
+statement: Fermented foods, aged cheeses, cured meats, alcohol (especially red wine),
+  bone broth, and leftover foods are high in histamine and can trigger or worsen symptoms
+  in individuals with impaired DAO activity.
+evidence_tier: plausible_emerging
+rationale: The histamine content of these food categories is well-documented analytically.
+  The clinical link to symptoms in DAO-deficient individuals is biologically plausible
+  and widely applied in clinical practice, though controlled trial evidence is limited.
+  Source is a consumer book.
+coaching_translation: 'If your body struggles to clear histamine, these foods are
+  the main dietary culprits: red wine, aged cheese, fermented foods (sauerkraut, kimchi,
+  kefir), cured meats, bone broth, and yesterday''s leftovers. Fresh food is your
+  friend.'
+caveats:
+- Individual thresholds vary widely
+- Histamine content of foods varies by preparation and storage method
+- A low-histamine diet is a therapeutic elimination diet — full guidance from a registered
+  dietitian is ideal
+linked_to_topics:
+- dao-histamine-intolerance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO: Oversensitivity to Foods'
+  quote: Bone broth is all the rage these days, and boy, talk about a histamine bomb!
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

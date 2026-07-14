@@ -1,0 +1,37 @@
+slug: same-s-adenosylmethionine
+display_name: SAMe (S-Adenosyl Methionine)
+category: other
+forms_available:
+- tablet
+typical_dose_range:
+  tablet:
+    min: 200
+    max: 400
+    unit: mg
+timing_options:
+- bedtime
+take_with_food: avoid
+linked_to_topics:
+- comt-slow-catechol-clearance
+- pemt-choline-cell-membrane
+linked_to_claims:
+- same-supports-comt-methylation-when-cycle-functional
+notes_for_coach: 'Lynch''s test: take 250 mg SAMe at bedtime — if it helps sleep,
+  the Methylation Cycle is working; if insomnia worsens, it''s blocked (heavy metals,
+  low B12, low glutathione, etc.). If worsening occurs, stop and take 50–150 mg niacin
+  to clear SAMe. For fast COMT, daily SAMe may deplete dopamine — use intermittently
+  via Pulse Method. Contraindicated with bipolar disorder or MAOIs.'
+notes_for_client: 'SAMe helps drive your methylation system and supports mood and
+  liver health — but only when your body is ready for it. Use it as a test: if sleep
+  improves, keep using it; if you feel worse, stop and don''t force it.'
+evidence_tier: confirm_with_clinician
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow COMT
+  quote: Take a 250-milligram capsule of SAMe before bed. If it helps you fall asleep,
+    great. Keep using it.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,27 @@
+slug: middle-of-night-waking
+display_name: Middle-of-Night Waking (Sleep Maintenance Insomnia)
+aliases:
+- waking at 3am
+- can't stay asleep
+- need a snack to fall back asleep
+- early morning waking
+category: sleep
+severity: common
+description: Waking in the early hours (often with inability to return to sleep without
+  eating) — linked in Lynch's framework to fast MAOA (serotonin depletion) and blood
+  glucose fluctuations.
+linked_to_topics:
+- maoa-fast-serotonin-depletion
+linked_to_mechanisms:
+- monoamine-oxidation
+- tryptophan-steal-ido1
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — MAOA fast symptom checklist
+  quote: I fall asleep quite well, but I tend not to be able to sleep through the
+    night. I need a snack to fall back asleep.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

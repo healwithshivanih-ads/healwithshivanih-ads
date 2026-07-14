@@ -1,0 +1,28 @@
+slug: poor-focus-adhd-pattern
+display_name: Poor Focus / ADHD Pattern
+aliases:
+- distractibility
+- inattention
+- trouble concentrating
+- forgetfulness
+- spaciness
+- ADHD
+category: neurological
+severity: common
+description: Difficulty sustaining attention, forgetfulness, and motivation deficits
+  — a pattern associated with fast COMT's rapid depletion of dopamine and norepinephrine,
+  producing chronically low catecholamine tone in prefrontal circuits.
+linked_to_topics:
+- comt-gene-catechol-clearance
+linked_to_mechanisms:
+- catechol-clearance-comt-maoa
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: COMT The Basics'
+  quote: Fast COMT. Common signs include... difficulty completing tasks, difficulty
+    focusing, forgetfulness, lack of confidence or optimism, low energy.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

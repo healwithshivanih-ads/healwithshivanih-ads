@@ -1,0 +1,37 @@
+slug: beet-root-citrulline-ornithine-raise-arginine-nos3
+statement: Beet root, citrulline, and ornithine can raise arginine bioavailability
+  indirectly, supporting NOS3 nitric oxide production without the risks associated
+  with direct arginine supplementation.
+evidence_tier: plausible_emerging
+rationale: Dietary nitrate (beet root) is converted to nitric oxide via the enterosalivary
+  nitrate-nitrite-NO pathway, providing an alternative to eNOS. Citrulline is converted
+  to arginine in the kidney via the urea cycle and has demonstrated better oral bioavailability
+  than arginine itself. Lynch's caution about direct arginine (risks in herpes, infection-driven
+  arginine consumption) reflects published concerns. Indirect approaches are considered
+  safer.
+coaching_translation: Beet root powder in smoothies is a safe, food-based way to support
+  nitric oxide and blood pressure. Citrulline supplements are a reasonable addition
+  for those needing more support.
+caveats:
+- Source is a consumer trade book.
+- NOS3 supplementation should only begin after other 'dirty genes' are addressed —
+  otherwise inflammation and oxidative stress will uncouple NOS3 toward superoxide
+  regardless.
+- High homocysteine or active infection must be addressed first.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+linked_to_supplements:
+- beet-root-powder
+- pqq-pyrroloquinoline-quinone
+- liposomal-glutathione
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your NOS3
+  quote: If you're generally healthy, increasing arginine levels via these supplements
+    may be all you need.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

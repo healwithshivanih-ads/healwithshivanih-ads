@@ -1,0 +1,31 @@
+slug: pulse-method-supplement-titration
+statement: Supplements should be taken only when a deficiency is present and tapered
+  down once optimal status is achieved; continuing beyond the point of benefit risks
+  creating a surplus with new adverse symptoms.
+evidence_tier: fm_specific_thin
+rationale: 'Physiological principle: supplementing a depleted system restores homeostasis,
+  but continued supplementation past repletion creates excess. Applied broadly to
+  all nutrients in this protocol using a titrate-up, titrate-down approach (the ''Pulse
+  Method'').'
+coaching_translation: When a supplement is helping you, keep taking it. The moment
+  you feel great consistently, reduce the dose. If symptoms return, increase again.
+  Never take a supplement indefinitely without reassessing.
+caveats:
+- Method is experiential/clinical heuristic, not RCT-validated
+- Some nutrients (e.g., iron, fat-soluble vitamins) can accumulate to toxic levels
+  — clinician oversight needed for these
+linked_to_topics:
+- clean-genes-protocol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Follow the Pulse Method — Supplements, Week 1
+  quote: As the diagram shows, the moment you feel great is the moment you should
+    stop or reduce a supplemental nutrient. First lower your dose—then keep lowering
+    it, until you're down to little or no dose at all.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

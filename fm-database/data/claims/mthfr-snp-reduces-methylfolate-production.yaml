@@ -1,0 +1,34 @@
+slug: mthfr-snp-reduces-methylfolate-production
+statement: MTHFR gene variants (SNPs) reduce the enzyme's ability to convert dietary
+  folate into methylfolate, impairing the methylation cycle and potentially affecting
+  hundreds of downstream biochemical processes.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistically well-established: MTHFR C677T and A1298C polymorphisms
+  reduce enzyme activity 30–70%. Clinical significance in otherwise healthy individuals
+  with adequate diet is actively debated; the claim that ''hundreds of processes''
+  are necessarily affected oversimplifies population heterogeneity. Source is a consumer
+  trade book.'
+coaching_translation: If you have an MTHFR variant, your body may struggle to activate
+  folate from food. Loading up on leafy greens (which contain pre-activated methylfolate)
+  and avoiding synthetic folic acid gives your system the raw material it needs.
+caveats:
+- Source is a consumer book, not primary literature
+- Penetrance of MTHFR SNPs is highly context-dependent — many carriers are entirely
+  asymptomatic
+- Magnitude of functional impairment varies by SNP type, diet, and lifestyle
+linked_to_topics:
+- mthfr-methylation-gene
+linked_to_supplements:
+- methylfolate
+- riboflavin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 5: MTHFR: Methylation Master'
+  quote: MTHFR gene was dirty, hundreds of functions in Yasmin's body weren't being
+    properly methylated.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,36 @@
+slug: dao-enzyme-supplement
+display_name: DAO Enzyme Supplement
+category: enzyme
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 3
+    unit: capsules
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- dao-histamine-intolerance
+notes_for_coach: Exogenous DAO enzyme taken before high-histamine meals to supplement
+  endogenous DAO activity. Referenced in source as a supplemental probiotic approach
+  helping Hunter process histamine. Useful as a bridge strategy while gut healing
+  occurs; not intended as permanent replacement for underlying gut repair.
+notes_for_client: Taking a DAO enzyme before meals high in histamine (aged cheese,
+  wine, fermented foods) can help your body break down histamine before it causes
+  symptoms. Think of it as a bridge while you work on healing your gut.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: Making the Most of DAO'
+  quote: He was making good use of a supplemental probiotic that helps process histamine.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

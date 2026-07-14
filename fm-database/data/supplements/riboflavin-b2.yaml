@@ -6,32 +6,44 @@ forms_available:
 - tablet
 typical_dose_range:
   capsule:
-    min: 10
+    min: 20
     max: 400
     unit: mg
   tablet:
-    min: 5
-    max: 10
+    min: 25
+    max: 400
     unit: mg
 timing_options:
 - with_breakfast
 - with_lunch
 - morning
-take_with_food: required
+take_with_food: optional
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - mthfr-variants
 - carpal-tunnel-syndrome
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+- maoa-neurotransmitter-metabolism
+- gst-gpx-glutathione-detox
+- mthfr-methylation-support
+- maoa-slow-serotonin-excess
 linked_to_claims:
 - riboflavin-fat-metabolism-signal
 - riboflavin-400mg-migraine-reduction
 - riboflavin-stabilises-mthfr-enzyme-c677t
 - cts-b6-b2-combined-benefit
-notes_for_coach: 'Required cofactor for converting pyridoxine to active P5P. For CTS:
-  5–10 mg daily as adjunct to B6. Urine turns bright yellow — expected and harmless.'
-notes_for_client: Riboflavin (vitamin B2) is an important supporting nutrient for
-  the MTHFR enzyme — especially if you have two copies of the C677T variant. It may
-  also help support healthy blood pressure.
+- maoa-requires-riboflavin-cofactor
+- riboflavin-regenerates-glutathione
+- riboflavin-cofactor-mthfr-maoa-gst
+notes_for_coach: Riboflavin-5-phosphate (R5P) is the active form preferred in FM.
+  Key cofactor for MTHFR (folate activation), MAOA (monoamine oxidation), and glutathione
+  recycling (GPX). Lynch recommends 20 mg daily for MTHFR support; 400 mg for slow
+  MAOA and migraines. Hypothyroidism impairs B2 activation — check thyroid if supplementation
+  seems ineffective.
+notes_for_client: A B vitamin that helps your body convert folate into its usable
+  form, supports mood regulation, and helps recycle your antioxidant defences. Urine
+  will turn bright yellow — this is harmless.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
@@ -47,7 +59,12 @@ sources:
 - id: pizzorno-textbook-gi-2
   location: Carpal Tunnel Syndrome — Supplements
   quote: 'Riboflavin: 5 to 10 mg q.d.'
-version: 3
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Riboflavin: A Crucial Nutrient'
+  quote: Riboflavin is crucial to the function of your MTHFR gene. Without it, your
+    MTHFR can't function properly. What's more, a dirty MTHFR needs even more riboflavin
+    than a clean one.
+version: 6
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

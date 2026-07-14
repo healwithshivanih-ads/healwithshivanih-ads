@@ -1,0 +1,33 @@
+slug: magnesium-required-for-comt-function
+statement: Magnesium is an essential cofactor for the COMT enzyme, and deficiency
+  — prevalent in approximately half of US adults — can functionally impair COMT activity
+  independent of genetic variants.
+evidence_tier: plausible_emerging
+rationale: COMT is a magnesium-dependent enzyme — biologically plausible and consistent
+  with known biochemistry. The 50% US prevalence of suboptimal magnesium intake is
+  supported by NHANES data. The direct clinical link between marginal magnesium intake
+  and COMT-related symptoms is less rigorously studied. Source is a consumer book.
+coaching_translation: 'Even if you were born with a clean COMT gene, getting too little
+  magnesium can make it act dirty. Aim for magnesium-rich foods daily: dark leafy
+  greens, nuts, seeds, avocados, beans.'
+caveats:
+- PPIs and high caffeine intake are additional drivers of magnesium depletion — both
+  common
+- Magnesium supplement form matters for absorption; clinician can advise on form and
+  dose
+linked_to_topics:
+- comt-gene-catechol-clearance
+- mthfr-methylation-gene
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: Key Nutrients for a Healthy COMT'
+  quote: That final nutrient, magnesium, is especially important for your COMT to
+    function properly.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

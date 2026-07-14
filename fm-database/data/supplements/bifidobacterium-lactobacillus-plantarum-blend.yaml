@@ -1,0 +1,36 @@
+slug: bifidobacterium-lactobacillus-plantarum-blend
+display_name: Bifidobacterium & Lactobacillus plantarum Probiotic Blend
+category: probiotic
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: capsules
+timing_options:
+- evening
+take_with_food: optional
+linked_to_topics:
+- histamine-intolerance-dao
+linked_to_claims:
+- bifidobacterium-plantarum-breaks-down-histamine
+notes_for_coach: Lynch specifies Bifidobacterium + L. plantarum as the probiotic combination
+  most effective at degrading histamine in the gut. Avoid L. casei and L. bulgaricus
+  strains which can produce histamine. Start restoration with a Bifidobacterium-only
+  blend, then add L. plantarum. Best taken after dinner.
+notes_for_client: These specific probiotic strains help break down histamine in your
+  gut. Avoid probiotics containing Lactobacillus casei or bulgaricus, which can make
+  histamine symptoms worse.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Spot Cleaning Your DAO
+  quote: A combination of Bifidobacterium and Lactobacillus plantarum probiotics is
+    fantastic at helping break down histamine.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

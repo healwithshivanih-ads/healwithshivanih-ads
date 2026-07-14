@@ -1,0 +1,34 @@
+slug: dao-snp-reduces-histamine-clearance
+statement: DAO gene variants (SNPs) reduce diamine oxidase enzyme activity in the
+  gut, lowering the threshold at which dietary histamine triggers symptoms — but actual
+  symptoms require multiple cofactors including gut barrier integrity, microbiome
+  balance, and histamine load.
+evidence_tier: plausible_emerging
+rationale: AOC1 gene SNPs reducing DAO activity are documented in the literature.
+  The multi-factorial model (genetic variant + gut integrity + microbiome + histamine
+  load) is clinically reasonable and better reflects real patient variability than
+  single-gene determinism. Source is a consumer book.
+coaching_translation: Having a DAO variant means you have a lower tolerance for histamine,
+  but it doesn't mean you'll always have problems. Keeping your gut healthy, your
+  diet low in histamine triggers, and your stress managed can dramatically change
+  your day-to-day experience.
+caveats:
+- DAO SNP testing is not standardised; functional DAO activity testing (plasma DAO
+  enzyme activity) is more clinically meaningful
+- Symptom expression is highly variable and context-dependent
+- Source is a consumer book, not primary literature
+linked_to_topics:
+- dao-histamine-intolerance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO: Oversensitivity to Foods'
+  quote: Hunter had been born with a lower-than-normal ability to process histamine.
+    As a result, foods containing lots of histamine would likely—but not necessarily—be
+    challenging for him.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

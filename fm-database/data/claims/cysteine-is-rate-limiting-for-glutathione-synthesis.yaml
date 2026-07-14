@@ -1,0 +1,29 @@
+slug: cysteine-is-rate-limiting-for-glutathione-synthesis
+statement: Cysteine—a sulfur-containing amino acid obtained from protein-rich foods
+  or as NAC supplement—is the rate-limiting precursor for glutathione synthesis; inadequate
+  cysteine limits the body's ability to produce glutathione regardless of selenium
+  and riboflavin status.
+evidence_tier: strong
+rationale: Cysteine as the rate-limiting substrate for glutathione synthesis via the
+  gamma-glutamylcysteine synthetase pathway is well established in the peer-reviewed
+  literature.
+coaching_translation: Protein-rich foods containing cysteine—red meat, chicken, turkey,
+  eggs, broccoli, cabbage, onions—help the body manufacture adequate glutathione.
+  Sulfur-sensitive individuals should introduce these foods cautiously.
+caveats:
+- NAC supplementation should be medically supervised given sulfur-intolerance risk
+linked_to_topics:
+- gst-gpx-glutathione-detox
+linked_to_supplements:
+- n-acetyl-cysteine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 9 — What Makes GST/GPX Dirty?
+  quote: Cysteine, found in many nutritious foods and made from your homocysteine,
+    is the key ingredient in glutathione.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,79 @@
+slug: gst-gpx-glutathione-detox
+display_name: GST/GPX — Glutathione & Environmental Detoxification
+aliases:
+- GST gene
+- GPX gene
+- glutathione S-transferase
+- glutathione peroxidase
+- dirty GST
+- dirty GPX
+- chemical sensitivity genetics
+- dirty GST/GPX
+- glutathione-S-transferase variant
+- glutathione peroxidase variant
+summary: Glutathione S-transferase (GST) and glutathione peroxidase (GPX) enzymes
+  use glutathione to conjugate and neutralise environmental toxins, xenobiotics, and
+  reactive oxygen species. Variants reduce detoxification capacity, increasing sensitivity
+  to chemicals, promoting oxidative stress, and contributing to autoimmune and cancer
+  risk. Sweating, fibre, and glutathione-supporting nutrients are key interventions.
+common_symptoms:
+- chemical-sensitivity
+- wheezing-from-odours
+- skin-reactions-to-products
+- fatigue
+- runny-nose-from-chemicals
+- eye-irritation
+- runny-nose-watery-eyes
+- skin-rashes-hives
+- brain-fog
+- headaches
+- weight-gain
+- chemical-smell-sensitivity
+- sauna-benefit-sweating
+- easy-weight-gain-despite-good-diet
+- family-cancer-history
+- stress-related-premature-graying
+- high-blood-pressure
+- chronic-fatigue-toxic-feeling
+- asthma-breathing-difficulty
+- chronic-inflammation
+red_flags:
+- progressive chemical sensitivity (MCAS overlap)
+- autoimmune activation
+- persistent-symptoms-after-environmental-cleanup-suggest-mold-exposure
+- cancer-family-history-with-multiple-chemical-sensitivities
+- Known heavy metal toxicity
+- Active cancer diagnosis
+related_topics:
+- mthfr-methylation-gene
+- environmental-toxin-burden
+- maoa-neurotransmitter-metabolism
+- nos3-nitric-oxide-cardiovascular
+- clean-genes-protocol
+- mthfr-methylation
+- mthfr-methylation-support
+- comt-slow-catechol-clearance
+key_mechanisms:
+- glutathione-conjugation
+- phase-ii-detoxification
+- oxidative-stress
+- hydrogen-peroxide-oxidative-stress
+- methylation-cycle-disruption
+- oxidative-stress-antioxidant-defense
+- xenobiotic-detoxification
+coaching_scope_notes: Coach can support sauna/sweating practices, dietary fibre increase,
+  avoidance of chemical exposures, riboflavin and selenium food sources. Liposomal
+  glutathione dosing and selenium supplementation require clinician oversight.
+clinician_scope_notes: 'Order: RBC glutathione peroxidase, RBC glutathione, lipid
+  peroxidation, selenium levels, urinary organic acids for riboflavin deficiency markers.'
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Cleaning Up Your Dirty Genes
+  quote: Those are the genes that help us use glutathione, a key detox agent that
+    our body produces. Without glutathione, we have a heck of a time ridding our body
+    of toxins.
+version: 4
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

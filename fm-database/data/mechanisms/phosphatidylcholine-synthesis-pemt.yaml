@@ -1,0 +1,39 @@
+slug: phosphatidylcholine-synthesis-pemt
+display_name: Phosphatidylcholine Synthesis via PEMT
+aliases:
+- PEMT pathway
+- endogenous choline production
+- hepatic phosphatidylcholine
+category: metabolic
+summary: PEMT sequentially methylates phosphatidylethanolamine using SAM to produce
+  phosphatidylcholine, the predominant cell-membrane phospholipid and a component
+  of bile. PEMT variants increase reliance on dietary choline for cell membrane integrity,
+  bile production, liver fat export, and small intestinal bacterial control. Choline
+  demand spikes during pregnancy and on low-animal-product diets.
+upstream_drivers:
+- PEMT V175M variant
+- low-SAM (poor methylation)
+- vegan/vegetarian diet
+- pregnancy
+- low dietary choline
+downstream_effects:
+- impaired-cell-membrane-integrity
+- reduced-bile-phosphatidylcholine
+- fatty-liver
+- gallstone-risk
+- SIBO-susceptibility
+related_mechanisms:
+- methylation
+linked_to_topics:
+- pemt-choline-cell-membrane
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: This gene affects your body's ability to produce phosphatidylcholine, an
+    essential compound that you need to maintain cell membranes, bile flow, muscle
+    health, and brain development.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

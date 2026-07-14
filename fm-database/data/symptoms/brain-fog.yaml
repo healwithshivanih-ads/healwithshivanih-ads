@@ -4,37 +4,58 @@ aliases:
 - cognitive cloudiness
 - mental fogginess
 - difficulty concentrating
+- mental cloudiness
+- cognitive fog
+- can't think clearly
+- foggy head
+- difficulty thinking clearly
+- fuzzy thinking
+- cognitive sluggishness
+- brain fog
+- foggy thinking
+- mental confusion
+- memory problems
+- slow thinking
+- feeling foggy
+- mental fatigue
 category: neurological
 severity: common
-description: 'Subjective sense of impaired clarity, slowed thinking, poor recall,
-
-  and difficulty concentrating. Common across many FM presentations
-
-  including toxin-load patterns, dysbiosis, blood-sugar dysregulation,
-
-  thyroid dysfunction, perimenopause, post-viral states, and chronic
-
-  inflammation.
-
-  '
-when_to_refer: 'Refer to clinician if brain fog is sudden-onset, accompanied by
-
-  neurological deficits (weakness, vision change, speech change), follows
-
-  head injury, or is severe enough to impair daily function.
-
-  '
+description: A subjective sense of impaired mental clarity, poor concentration, and
+  slowed thinking that Lynch associates with multiple dirty gene pathways, particularly
+  MTHFR (methylation insufficiency), electrolyte depletion, and blood sugar dysregulation.
+when_to_refer: Persistent or worsening cognitive impairment warrants neurological
+  or medical evaluation.
 linked_to_topics:
 - toxin-load
 - detoxification
+- mthfr-methylation-gene
+- gst-gpx-glutathione-detox
+- dao-histamine-intolerance
+- leaky-gut
+- maoa-neurotransmitter-metabolism
+- pemt-choline-cell-membrane
+- nos3-nitric-oxide-cardiovascular
+- mthfr-methylation
+- clean-genes-protocol
 linked_to_mechanisms:
 - mitochondrial-toxin-disruption
 - oxidative-stress-from-toxicants
+- methylation
+- glutathione-conjugation
+- methylation-cycle
+- histamine-metabolism
+- maoa-neurotransmitter-catabolism
+- pemt-phosphatidylcholine-synthesis
+- hpa-axis-dysregulation
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Conditions associated with detox issues section
   quote: complaining of brain fog… anxiety… issues with blood sugar… immune issues
-version: 1
+- id: dirty-genes-lynch
+  location: Introduction — Your Dynamic Genes
+  quote: Your brain runs on thousands of biochemical reactions, and there are countless
+    ways the process can go wrong.
+version: 5
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,25 @@
+slug: cold-hands-and-feet
+display_name: Cold Hands and Feet
+aliases:
+- cold extremities
+- poor peripheral circulation
+- freezing hands
+category: cardiovascular
+severity: common
+description: Persistent coldness in fingers and toes reflecting peripheral vasoconstriction.
+  Lynch links this to insufficient nitric oxide from a dirty NOS3, which impairs vessel
+  dilation in the extremities.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 10 — Cold Hands and Feet
+  quote: Cold extremities are a sign that your NOS3 is dirty. If your blood can't
+    get out to your fingers and toes, it means that your blood vessels are too constricted.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

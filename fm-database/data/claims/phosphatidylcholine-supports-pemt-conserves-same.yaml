@@ -1,0 +1,36 @@
+slug: phosphatidylcholine-supports-pemt-conserves-same
+statement: Supplemental phosphatidylcholine supports PEMT-deficient individuals by
+  directly providing the phospholipid the body cannot efficiently synthesise, while
+  simultaneously reducing SAMe consumption by the PEMT pathway.
+evidence_tier: plausible_emerging
+rationale: PEMT uses SAMe to synthesise phosphatidylcholine; when dietary PC is supplied
+  exogenously, the demand on the PEMT-SAMe pathway is reduced. RCT evidence for phosphatidylcholine
+  in non-alcoholic fatty liver disease provides some support, though the specific
+  genetic context (PEMT SNP) is extrapolated. Depression as a side effect from over-supplementation
+  (noted by Lynch) warrants monitoring.
+coaching_translation: Phosphatidylcholine is one of the most important PEMT supplements,
+  but the Pulse Method is essential — depression on supplementation is a signal to
+  stop.
+caveats:
+- Source is a consumer trade book.
+- Depression as a side effect is a real clinical concern — clients must be monitored.
+- Use non-GMO, soy-free (sunflower-derived) form to reduce allergen exposure.
+- Elevated TMAO levels (cardiovascular risk marker) have been associated with PC supplementation
+  in some individuals — check with clinician.
+linked_to_topics:
+- pemt-choline-cell-membrane
+- comt-slow-catechol-clearance
+linked_to_supplements:
+- phosphatidylcholine
+- creatine-monohydrate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Slow COMT
+  quote: Taking additional phosphatidylcholine leaves your body more SAMe to support
+    your COMT.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

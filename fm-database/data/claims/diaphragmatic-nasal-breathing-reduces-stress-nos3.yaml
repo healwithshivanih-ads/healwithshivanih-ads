@@ -1,0 +1,31 @@
+slug: diaphragmatic-nasal-breathing-reduces-stress-nos3
+statement: Slow, diaphragmatic nasal breathing activates the parasympathetic nervous
+  system, reduces HPA axis activation, improves circulation, and supports NOS3 nitric
+  oxide production.
+evidence_tier: plausible_emerging
+rationale: Slow breathing at 4–6 breaths/min activates baroreceptor-mediated vagal
+  tone and is supported by RCTs for reducing anxiety and blood pressure. Nasal breathing
+  specifically is linked to nitric oxide release from paranasal sinuses. Consumer
+  framing links to gene pathways specifically (NOS3) which is more speculative.
+coaching_translation: Practice 5 minutes of slow, nose-only belly breathing daily.
+  This calms the nervous system, improves circulation, and may support nitric oxide
+  production.
+linked_to_topics:
+- nos3-nitric-oxide
+- clean-genes-protocol
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Stress Relief — Breathe Deeply
+  quote: Breathe only through your nose at a slow and steady rate... When people are
+    stressed, a common response is to breathe faster and more shallowly from the chest
+    up, rather than slowly and deeply from the belly.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

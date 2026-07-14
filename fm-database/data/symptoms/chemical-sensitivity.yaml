@@ -1,26 +1,41 @@
 slug: chemical-sensitivity
-display_name: Chemical Sensitivity
+display_name: Chemical Sensitivity / Fragrance Intolerance
 aliases:
 - sensitivity to fragrances
 - environmental sensitivity
 - reactive to chemicals
 - multiple chemical sensitivity
 - MCS
+- smell sensitivity
+- toxic exposure reactions
+- sensitivity to smells
+- sensitivity to environmental chemicals
+- fragrance sensitivity
+- fragrance intolerance
+- hypersensitivity to smells
+- toxic chemical reactions
 category: other
 severity: common
-description: Heightened reactivity to environmental chemicals, fragrances, and xenobiotics,
-  associated with chronic candidiasis, impaired liver detoxification, and environmental
-  illness.
-when_to_refer: Severe MCS with significant functional impairment
+description: Disproportionate or symptomatic reactions to low-level exposure to common
+  industrial chemicals, fragrances, cleaning products, pesticides, or plastics. In
+  the GST/GPX framework, impaired glutathione conjugation means xenobiotics linger
+  longer, triggering immune and inflammatory responses.
+when_to_refer: Refer for suspected mold illness, anaphylaxis risk, or when symptoms
+  severely impair daily function.
 linked_to_topics:
 - detoxification-support
 - chronic-candidiasis
 - chronic-fatigue-syndrome
+- gst-gpx-glutathione-detox
+- mthfr-methylation-gene
 linked_to_mechanisms:
 - toxin-load-accumulation
 - impaired-phase-2-conjugation
 - dysbiosis
 - leaky-gut
+- glutathione-conjugation
+- oxidative-stress
+- methylation-cycle
 sources:
 - id: fmca-detoxification-basics-minich
   location: Pages 2-3
@@ -31,7 +46,11 @@ sources:
     cells, particles, toxins; result is ''yeast syndrome'' or ''feeling sick all over'':
     fatigue, allergies, immune system malfunction, depression, chemical sensitivities,
     and digestive disturbances.'
-version: 2
+- id: dirty-genes-lynch
+  location: Chapter 1 — Cleaning Up Your Dirty Genes
+  quote: Just a whiff of paint starts me wheezing … Every time I clean the kitchen
+    floor, my eyes tear up.
+version: 5
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

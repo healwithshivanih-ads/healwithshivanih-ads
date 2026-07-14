@@ -1,0 +1,24 @@
+slug: nos3-cleaned-last-downstream-of-other-genes
+statement: NOS3 is cleaned last because a dirty NOS3 is usually driven by other dirty
+  genes (GST, PEMT, MTHFR, COMT, MAOA, DAO) plus low exercise and low dietary nitrate;
+  correcting those, with homocysteine and infections addressed first, often resolves
+  NOS3 without direct supplementation.
+evidence_tier: fm_specific_thin
+rationale: NOS3 uncoupling is influenced by oxidative stress, BH4 and homocysteine
+  — so upstream support is plausible; the 'do it last' rule is the author's sequencing.
+coaching_translation: Circulation tends to improve on its own once the other systems
+  and homocysteine are handled — plus regular gentle exercise.
+out_of_scope_notes: ''
+caveats:
+- Source is a consumer trade book (Ben Lynch, Dirty Genes), not primary literature.
+linked_to_topics: []
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 15: Spot Cleaning Your NOS3'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-chunk5

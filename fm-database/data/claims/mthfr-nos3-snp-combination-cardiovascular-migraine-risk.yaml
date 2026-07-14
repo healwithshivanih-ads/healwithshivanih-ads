@@ -1,0 +1,32 @@
+slug: mthfr-nos3-snp-combination-cardiovascular-migraine-risk
+statement: Co-occurrence of SNP variants in both MTHFR and NOS3 genes is associated
+  with increased risk of cardiovascular issues and migraines, likely mediated through
+  impaired homocysteine clearance reducing nitric oxide bioavailability.
+evidence_tier: plausible_emerging
+rationale: Both MTHFR (via homocysteine accumulation) and NOS3 (via direct NO production
+  impairment) affect endothelial function. Gene-gene interaction studies in this haplotype
+  combination have been published in cardiovascular literature. Lynch's framing of
+  combined SNP risk is mechanistically coherent, though the specific combination is
+  extrapolated from individual gene studies rather than formal haplotype RCTs.
+coaching_translation: Clients who score high on both MTHFR and NOS3 checklists should
+  prioritise methylation support (B2, methylfolate, B12), cardiovascular lifestyle
+  (exercise, no smoking), and stress reduction.
+caveats:
+- Source is a consumer trade book — haplotype risk claims are directional, not diagnostic.
+- Individual SNPs do not determine destiny; lifestyle, diet, and environment are the
+  dominant drivers per Lynch's own framework.
+linked_to_topics:
+- mthfr-methylation-support
+- nos3-nitric-oxide-cardiovascular
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 14 — Being Happy with Your Haplotype
+  quote: SNPs in both MTHFR and NOS3 give you an increased risk of cardiovascular
+    issues and migraines.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -17,41 +17,53 @@ aliases:
 - premenstrual-tension
 - premenstrual mood changes
 - cycle-related mood swings
+- pre-menstrual irritability
+- menstrual mood worsening
 category: hormonal
 severity: common
-description: Cluster of physical and emotional symptoms in the luteal phase linked to low progesterone, relative estrogen
-  dominance, and HPA axis disruption.
-when_to_refer: Severe PMDD with functional impairment warrants psychiatric/gynecological assessment.
+description: Cyclical irritability, mood swings, bloating, or pain in the luteal phase.
+  Lynch links this to slow COMT's reduced ability to clear catechol estrogens, with
+  oestrogen-driven further COMT slowing creating a feedback loop.
+when_to_refer: PMDD (severe, functionally impairing PMS) warrants clinician evaluation
+  of hormones and consideration of SSRI or hormonal therapy.
 linked_to_topics:
 - estrogen-dominance
 - low-progesterone
 - pcos
 - perimenopause
 - hpa-axis-dysregulation
+- comt-slow-catechol-clearance
 linked_to_mechanisms:
 - low-progesterone
 - estrogen-enterohepatic-recirculation
 - chronic-inflammation
 - hpa-axis-dysregulation
+- catechol-methylation
+- estrogen-catechol-clearance
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
   quote: Reduces PMS, breast tenderness, acne.
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — Progesterone row (p.4)
-  quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex, stress reduction.'
+  quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex,
+    stress reduction.'
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism
-  quote: Estrogen Dominance can exacerbate endometriosis, premenstrual syndrome (PMS), polycystic ovarian syndrome (PCOS),
-    premenstrual dysphoric disorder (PMDD).
+  quote: Estrogen Dominance can exacerbate endometriosis, premenstrual syndrome (PMS),
+    polycystic ovarian syndrome (PCOS), premenstrual dysphoric disorder (PMDD).
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: PMS, infertility, irregular cycles, estrogen dominance, fibroids, PCOS, low libido, and low sperm count — Linked
-    to progesterone, estrogen, testosterone, FSH, LH, prolactin, stress, insulin resistance, and HPO-axis disruption.
+  quote: PMS, infertility, irregular cycles, estrogen dominance, fibroids, PCOS, low
+    libido, and low sperm count — Linked to progesterone, estrogen, testosterone,
+    FSH, LH, prolactin, stress, insulin resistance, and HPO-axis disruption.
 - id: barbara-oneil-healing-mind
   location: Hormonal Depression Section
   quote: It's one of the main causes of premenstrual tension.
-version: 2
+- id: dirty-genes-lynch
+  location: Chapter 14 — COMT slow symptom checklist
+  quote: I routinely have (or used to have) PMS.
+version: 3
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

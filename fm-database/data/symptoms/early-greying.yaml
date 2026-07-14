@@ -1,0 +1,28 @@
+slug: early-greying
+display_name: Premature / Rapid Hair Greying
+aliases:
+- premature grey hair
+- rapid graying under stress
+- white hair from stress
+category: skin
+severity: common
+description: Hair turning grey or white, potentially accelerated by chronic stress.
+  Mechanistically attributed to excess hydrogen peroxide (by-product of MAOA activity)
+  overwhelming glutathione-mediated clearance, damaging melanocytes in hair follicles.
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+- gst-gpx-glutathione-detox
+linked_to_mechanisms:
+- hydrogen-peroxide-oxidative-stress
+- glutathione-conjugation
+when_to_refer: ''
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — Going Gray: Part 1'
+  quote: Ever see a person who was under tremendous stress whose hair turned gray
+    or white in a matter of days? That's a real thing, and it's caused by hydrogen
+    peroxide—not applied from the outside, but produced from within.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

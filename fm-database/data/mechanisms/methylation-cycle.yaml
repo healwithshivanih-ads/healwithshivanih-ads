@@ -12,25 +12,50 @@ aliases:
 - MTHFR dysfunction
 - methylation defect
 - impaired one-carbon metabolism
+- SAMe cycle
+- methyl-donor pathway
 category: metabolic
-summary: The methylation cycle involves transfer of methyl groups critical for DNA
-  repair, neurotransmitter synthesis, gene expression, and detoxification. B12 and
-  folate (as methylcobalamin and methyltetrahydrofolate) are rate-limiting cofactors.
-  MTHFR genetic variants reduce enzymatic efficiency, requiring active-form B vitamins.
+summary: A cyclic biochemical pathway in which MTHFR converts folate to methylfolate,
+  which donates a methyl group to homocysteine to form methionine; methionine is then
+  converted to S-adenosylmethionine (SAMe), the universal methyl donor for over 200
+  enzymatic reactions spanning neurotransmitter synthesis, epigenetic regulation,
+  detoxification, hormone clearance, and cell membrane maintenance.
 upstream_drivers:
 - dietary-folate
 - vitamin-b12-intake
 - mthfr-genotype
+- adequate-methylfolate
+- methylcobalamin-b12
+- riboflavin-b2
+- magnesium
+- choline
+- MTHFR-enzyme-activity
 downstream_effects:
 - homocysteine-levels
 - dna-methylation
 - neurotransmitter-synthesis
 - detoxification-capacity
+- SAMe-production
+- homocysteine-clearance
+- neurotransmitter-methylation
+- estrogen-methylation
+- histamine-methylation
+- glutathione-synthesis
+- melatonin-synthesis
+- creatine-synthesis
+- phosphatidylcholine-synthesis
 related_mechanisms:
 - homocysteine-metabolism
+- homocysteine-remethylation
+- catechol-clearance-comt-maoa
+- histamine-metabolism
+- folate-trap
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - vitamin-b12
+- mthfr-methylation-gene
+- comt-gene-catechol-clearance
+- dao-histamine-intolerance
 evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
@@ -41,16 +66,17 @@ sources:
   location: Key Mechanisms Explained – methylation-support
   quote: The source describes folate, B12, choline, riboflavin, niacin, glycine, creatine,
     and TMG as nutrient supports for methylation.
-- id: vitaone-fm-nutrition-cheatsheets
-  location: Key Mechanisms Explained — methylation-support
-  quote: The source describes folate, B12, choline, riboflavin, niacin, glycine, creatine,
-    and TMG as nutrient supports for methylation.
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting
   quote: this whole reaction is is covered by the mthfr gene and you can say methyl
     tetrahydrofolic enzyme and this enzyme requires four factors vitamin b vitamin
     b9 and vitamin b12 so typically this is called methylation process
-version: 1
+- id: dirty-genes-lynch
+  location: 'Chapter 5: The Methylation Cycle Part 2'
+  quote: MTHFR gets the process going by passing a methyl group to folate. That methylfolate
+    then interacts with another biochemical—homocysteine, for example—passing the
+    methyl group to it.
+version: 2
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

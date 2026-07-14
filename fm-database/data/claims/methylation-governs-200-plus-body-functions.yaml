@@ -1,0 +1,30 @@
+slug: methylation-governs-200-plus-body-functions
+statement: The methylation cycle facilitates over 200 distinct physiological processes
+  including gene expression, neurotransmitter synthesis, detoxification of hormones
+  and chemicals, DNA repair, and cell membrane production.
+evidence_tier: strong
+rationale: Methylation-dependent reactions are extensively documented in biochemistry.
+  SAM-dependent methyltransferases catalyse hundreds of reactions across nearly every
+  metabolic pathway.
+coaching_translation: Methylation is like the body's master control switch — it touches
+  everything from mood and energy to how well you detox and repair your DNA. Supporting
+  it with leafy greens, B vitamins, and good sleep has far-reaching benefits.
+caveats:
+- The specific count of '200+' is a narrative simplification; the actual number of
+  methylation-dependent reactions is likely much higher.
+linked_to_topics:
+- mthfr-methylation-gene
+- epigenetics-gene-expression-control
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — How Dirty Genes Mess with Your Health
+  quote: methylation—a key process that facilitates at least two hundred functions
+    in your body, from skin repair, digestion, and detoxification to mood balance
+    and clear thought.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

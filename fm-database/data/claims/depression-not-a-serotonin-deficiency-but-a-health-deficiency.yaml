@@ -1,0 +1,30 @@
+slug: depression-not-a-serotonin-deficiency-but-a-health-deficiency
+statement: Lynch argues that depression is primarily driven by inflammation and chronic
+  stress—rather than a simple serotonin deficiency—making lifestyle and environmental
+  interventions more effective long-term than serotonin-targeting drugs alone.
+evidence_tier: plausible_emerging
+rationale: The inflammatory hypothesis of depression is an active and growing area
+  of peer-reviewed research with supporting RCT evidence; however, the claim that
+  lifestyle approaches alone are superior to pharmacotherapy is not established and
+  should not lead coaches to advise discontinuation of medications.
+out_of_scope_notes: Coaches must not advise clients to discontinue antidepressants,
+  anti-anxiety medications, or MAO inhibitors. Refer to prescribing clinician.
+caveats:
+- Source is a consumer trade book
+- Never advise medication cessation
+- The inflammatory model of depression is supported but not consensus
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — MAO Inhibitors: Mere Band-Aids'
+  quote: The real problems behind depression are inflammation and stress. Depression
+    isn't a serotonin deficiency. It's a health deficiency. Chronic disease drives
+    depression.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

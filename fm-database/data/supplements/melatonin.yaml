@@ -9,8 +9,8 @@ forms_available:
 - lozenge
 typical_dose_range:
   tablet:
-    min: 1
-    max: 5
+    min: 0.5
+    max: 3
     unit: mg
   capsule:
     min: 1
@@ -45,6 +45,7 @@ linked_to_topics:
 - peptic-ulcer-disease
 - sleep-quality
 - sleep-optimisation
+- maoa-fast-serotonin-depletion
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - melatonin-as-acid-suppressor-gerd
@@ -54,11 +55,13 @@ linked_to_claims:
 - melatonin-reduces-inflammation-and-promotes-sleep
 - melatonin-mitigates-gastric-lining-breakdown-du
 - murray-melatonin-only-when-low
-notes_for_coach: Most applicable for duodenal ulcers with acid hypersecretion. Antioxidant
-  and cytoprotective roles in gastric mucosa described. Research mostly in animal/hypersecretion
-  models; human clinical evidence limited.
-notes_for_client: Melatonin does more than help with sleep — it also helps protect
-  the lining of your stomach from acid damage, especially at night.
+notes_for_coach: Lynch notes melatonin works well for fast MAOA (depleted serotonin
+  → depleted melatonin). However, it worsens slow MAOA — causes increased wakefulness
+  and irritability. This is a clinically useful discriminator between the two MAOA
+  phenotypes. Do not recommend routinely without assessing MAOA phenotype. Tryptophan,
+  5-HTP, and melatonin all burden slow MAOA.
+notes_for_client: Melatonin can be helpful for sleep in some people but makes others
+  feel more awake and irritable. Pay attention to how it affects you personally.
 evidence_tier: strong
 linked_to_mechanisms:
 - blue-light-melatonin-suppression
@@ -103,10 +106,13 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia
   quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
-version: 13
+- id: dirty-genes-lynch
+  location: Chapter 14 — MAOA fast symptom checklist
+  quote: Melatonin works quite well to help me sleep.
+version: 14
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
 contraindications:
   conditions:
   - paradoxical activation in a subset of clients — start with lowest dose available

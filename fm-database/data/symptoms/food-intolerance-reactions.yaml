@@ -1,0 +1,30 @@
+slug: food-intolerance-reactions
+display_name: Food Intolerance / Histamine Reactions
+aliases:
+- food sensitivity
+- reaction after eating
+- pseudo-allergic food response
+- histamine food reaction
+category: gi
+severity: common
+description: Symptoms (headache, skin flushing, racing heart, nosebleeds, sweating,
+  runny nose) occurring after consuming histamine-rich foods — aged cheese, wine,
+  fermented foods, leftovers, smoked meats — without positive IgE allergy testing.
+  Characteristic of impaired DAO activity.
+when_to_refer: Anaphylaxis, progressive food restriction impacting nutrition, suspected
+  MCAS.
+linked_to_topics:
+- dao-histamine-metabolism
+linked_to_mechanisms:
+- histamine-catabolism-dao
+- gut-barrier-dysfunction
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 4 — Laundry List 1
+  quote: 'I tend to suffer from one or more of the following symptoms after eating
+    leftovers, citrus, or fish: irritability, sweatiness, nosebleeds, runny nose,
+    and/or headache.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

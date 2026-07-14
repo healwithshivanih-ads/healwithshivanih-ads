@@ -1,0 +1,28 @@
+slug: 5-htp-contraindicated-with-ssri
+statement: 5-HTP should not be taken concurrently with SSRI antidepressants due to
+  the risk of serotonin syndrome from additive serotonergic activity.
+evidence_tier: strong
+rationale: Serotonin syndrome risk from combining serotonin precursors (5-HTP) with
+  SSRIs is well-established pharmacologically and in case reports. This is a confirmed
+  clinical safety concern regardless of the consumer book source.
+coaching_translation: Always ask clients about SSRI use before discussing 5-HTP. If
+  an SSRI is being taken, 5-HTP is off the table entirely — refer to prescribing clinician.
+out_of_scope_notes: Any concerns about psychiatric medication should be directed to
+  the prescribing clinician.
+caveats:
+- This contraindication applies equally to tryptophan supplementation at high doses.
+linked_to_topics:
+- maoa-fast-serotonin-depletion
+- comt-fast-dopamine-depletion
+- maoa-slow-serotonin-excess
+linked_to_supplements:
+- 5-htp
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Fast MAOA
+  quote: However, do not take this supplement if you're taking an SSRI.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

@@ -1,0 +1,27 @@
+slug: dietary-nitrates-support-nos3
+statement: Foods naturally rich in nitrates—arugula, beets, celery, spinach—provide
+  a dietary substrate that can be converted to nitric oxide via the nitrate-nitrite-NO
+  pathway, supplementing endogenous NOS3 activity.
+evidence_tier: strong
+rationale: The entero-salivary nitrate recycling pathway and dietary nitrate supplementation
+  effects on blood pressure and exercise performance are well documented in peer-reviewed
+  literature, including multiple RCTs.
+coaching_translation: Encourage daily intake of nitrate-rich vegetables—especially
+  arugula, beets, celery, and spinach—as a food-first strategy to support nitric oxide
+  availability, particularly in clients with cardiovascular risk or NOS3 concerns.
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 10 — Making the Most of NOS3
+  quote: 'Consume some foods that contain natural nitrates, which also support nitric
+    oxide production: for example, arugula, bacon, beets, celery, and spinach.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

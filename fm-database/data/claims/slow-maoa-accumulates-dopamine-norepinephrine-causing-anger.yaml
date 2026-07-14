@@ -1,0 +1,30 @@
+slug: slow-maoa-accumulates-dopamine-norepinephrine-causing-anger
+statement: A slow MAOA variant allows dopamine and norepinephrine to accumulate, making
+  it difficult to calm down after stress, producing a hair-trigger temper, prolonged
+  irritability, and an overactive startle reflex.
+evidence_tier: plausible_emerging
+rationale: Monoamine accumulation via slow MAOA is biologically plausible and consistent
+  with the 'warrior gene' literature; however, the direction of causality from SNP
+  to behavioural phenotype is complex and population-level associations do not reliably
+  predict individual experience.
+coaching_translation: Clients with slow MAOA profiles may need targeted stress-management
+  strategies—movement breaks, breathing exercises, limiting carbohydrate/sugar spikes—to
+  reduce the neurotransmitter load their MAOA must clear.
+caveats:
+- Source is a consumer trade book
+- MAOA genotype is not deterministic of aggression or temperament
+- Psychiatric referral appropriate if anger poses safety risk
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — MAOA: Mood Swings and Carb Cravings'
+  quote: His dirty slow MAOA moved stress neurotransmitters out of his body more slowly
+    than normal.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

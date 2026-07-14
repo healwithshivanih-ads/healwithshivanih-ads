@@ -1,0 +1,47 @@
+slug: clean-genes-protocol
+display_name: Clean Genes Protocol (Soak & Scrub)
+aliases:
+- dirty genes program
+- soak and scrub
+- spot cleaning
+summary: A two-week foundational lifestyle reset designed by Ben Lynch to reduce the
+  epigenetic and metabolic load on seven key gene pathways (MTHFR, COMT, MAOA, DAO,
+  GST/GPX, NOS3, PEMT) through food quality, targeted supplementation, environmental
+  toxin reduction, sleep optimization, and stress management.
+common_symptoms:
+- headaches
+- brain-fog
+- insomnia
+- weight-gain
+- food-cravings
+- fatigue
+- bloating
+- gas
+- mood-swings
+red_flags:
+- prolonged-high-fever
+- stomach-ulcer-suspected
+- snoring-with-suspected-apnea
+related_topics:
+- mthfr-methylation
+- histamine-intolerance
+- leaky-gut
+key_mechanisms:
+- methylation
+- glutathione-conjugation
+- histamine-metabolism
+coaching_scope_notes: Coaches can guide food choices, supplement timing, sleep hygiene,
+  and detox practices per the Soak & Scrub framework. Gene-specific SNP interpretation
+  and prescription medication tapering are out of scope.
+clinician_scope_notes: Single-SNP determinism overstated in consumer framing. Medication
+  tapering (e.g., antacids) requires clinician oversight. Genetic testing results
+  need validated interpretation.
+evidence_tier: fm_specific_thin
+sources:
+- id: dirty-genes-lynch
+  location: 'Soak and Scrub: Your First Two Weeks'
+  quote: This program is designed to give your genes all the support they require.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

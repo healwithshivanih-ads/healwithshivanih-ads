@@ -1,0 +1,29 @@
+slug: maoa-requires-riboflavin-cofactor
+statement: The MAOA enzyme requires riboflavin (vitamin B2) as a cofactor; deficiency
+  or excess of riboflavin can alter MAOA activity and thus neurotransmitter balance—with
+  fast MAOA needing less riboflavin and slow MAOA needing more.
+evidence_tier: plausible_emerging
+rationale: MAOA is a flavoprotein that uses FAD (derived from riboflavin) as a cofactor—this
+  is well established biochemistry. The directional nuance for fast vs slow MAOA variants
+  is Lynch's clinical interpretation, not directly from RCTs.
+coaching_translation: Encourage riboflavin-rich foods (liver, eggs, wild salmon, almonds,
+  mushrooms) for clients with suspected slow MAOA. For fast MAOA, riboflavin is still
+  needed but Lynch suggests intake should be moderate, not excess.
+caveats:
+- Source is a consumer trade book
+- Optimal riboflavin doses by MAOA variant are not established by RCT
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+linked_to_supplements:
+- riboflavin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 8 — Key Nutrients for a Healthy MAOA
+  quote: Your MAOA gene needs a steady supply of riboflavin/vitamin B2 to work its
+    magic.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

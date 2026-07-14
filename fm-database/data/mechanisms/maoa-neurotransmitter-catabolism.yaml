@@ -1,0 +1,39 @@
+slug: maoa-neurotransmitter-catabolism
+display_name: MAOA-Mediated Neurotransmitter Catabolism
+aliases:
+- monoamine oxidation
+- serotonin catabolism
+- dopamine catabolism
+category: neurological
+summary: The MAOA enzyme oxidatively deaminates serotonin, dopamine, and norepinephrine,
+  producing aldehydes and hydrogen peroxide as by-products. Variant activity—too fast
+  or too slow—distorts the balance of these neurotransmitters, driving mood, sleep,
+  appetite, and stress-response dysregulation.
+upstream_drivers:
+- chronic-stress
+- high-tryptophan-intake
+- low-riboflavin-b2
+- low-glutathione
+- blood-sugar-imbalance
+- leaky-gut-sibo
+downstream_effects:
+- low-serotonin-depression-fast-maoa
+- high-serotonin-irritability-slow-maoa
+- melatonin-deficiency
+- hydrogen-peroxide-accumulation
+- carb-cravings
+related_mechanisms:
+- tryptophan-serotonin-melatonin-pathway
+- hydrogen-peroxide-oxidative-stress
+linked_to_topics:
+- maoa-neurotransmitter-metabolism
+evidence_tier: plausible_emerging
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 8 — MAOA: The Basics'
+  quote: A fast MAOA eliminates norepinephrine, dopamine, and serotonin too quickly,
+    which can set you up for a shortage of these vital neurotransmitters.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

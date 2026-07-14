@@ -4,32 +4,43 @@ category: amino_acid
 forms_available:
 - capsule
 - powder
+- tablet
 typical_dose_range:
   capsule:
     min: 500
-    max: 1000
+    max: 1500
     unit: mg
 timing_options:
 - morning
 - on_empty_stomach
-take_with_food: avoid
+- mid_morning
+take_with_food: optional
 linked_to_topics:
 - hypothyroidism
-linked_to_claims: []
-notes_for_coach: Tyrosine is the amino acid backbone of both T3 and T4. Deficiency
-  impairs hormone synthesis. Food sources include eggs, chicken, legumes. Supplementation
-  is fm_specific_thin — used in practice but limited RCT support for thyroid outcomes
-  specifically.
-notes_for_client: Tyrosine is an amino acid that your thyroid uses to build its hormones.
-  Good dietary sources include eggs, meat, and legumes.
-evidence_tier: fm_specific_thin
+- comt-gene-catechol-clearance
+- comt-fast-dopamine-depletion
+linked_to_claims:
+- tyrosine-supports-dopamine-synthesis-fast-comt
+- tyrosine-precursor-dopamine-norepinephrine-fast-comt
+notes_for_coach: Lynch recommends for fast COMT as a precursor to dopamine, norepinephrine,
+  and epinephrine. NEVER within 6 hours of bedtime (stimulating). AVOID in slow COMT
+  — worsens excess catecholamine burden. Also a MAOA burden — avoid in slow MAOA.
+  Only appropriate when catecholamine levels are genuinely low (fast COMT). Discuss
+  with clinician if prescribed as any medication could interact.
+notes_for_client: An amino acid that helps your body make energising brain chemicals.
+  Take only in the morning or early afternoon — never close to bedtime.
+evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: vitaone-thyroid-ebook
   location: 'Chapter 6: Nutrient Deficiencies'
   quote: 'Tyrosine (amino acid): Backbone of both T3 and T4. Deficiency effects: Impaired
     hormone synthesis.'
-version: 1
+- id: dirty-genes-lynch
+  location: 'Chapter 6: ADHD Support Without Ritalin'
+  quote: Supplemental tyrosine. He has a bottle in his bathroom, and he takes a capsule
+    every morning.
+version: 3
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

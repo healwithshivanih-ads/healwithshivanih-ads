@@ -1,0 +1,28 @@
+slug: intermittent-fasting-12-16-hours-gene-support
+statement: Daily fasting windows of 12–16 hours reduce the metabolic workload on detoxification
+  and metabolic gene pathways, supporting cellular repair and reducing toxin accumulation.
+evidence_tier: plausible_emerging
+rationale: Time-restricted eating activates autophagy, reduces postprandial oxidative
+  stress, and allows phase-1/phase-2 detox enzymes to work on endogenous substrates
+  rather than dietary antigens. Growing body of evidence for metabolic benefits of
+  12–16 hour fasting windows.
+coaching_translation: Aim to stop eating by 7–7:30 PM and don't eat again until at
+  least 7–11 AM. This gives your body a 12–16 hour break to clean and repair itself.
+caveats:
+- Not appropriate for hypoglycemia-prone individuals without supervision
+- Consumer book framing attributes benefits specifically to gene pathways without
+  direct RCT evidence for that mechanism
+linked_to_topics:
+- clean-genes-protocol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Eating to Clean Your Genes: The Basics'
+  quote: Fast for twelve to sixteen hours daily. This is easily accomplished if you
+    stop eating at 7 P.M. and then wake up to breakfast at 7 a.m.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

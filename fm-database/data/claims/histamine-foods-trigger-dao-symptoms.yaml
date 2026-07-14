@@ -1,0 +1,37 @@
+slug: histamine-foods-trigger-dao-symptoms
+statement: High-histamine foods (aged cheese, wine, fermented foods, smoked meats,
+  leftovers) and DAO-blocking agents (some medications, alcohol) provoke symptoms
+  in individuals with impaired DAO activity, including headache, flushing, nasal congestion,
+  and skin reactions.
+evidence_tier: plausible_emerging
+rationale: Dietary histamine intolerance is recognised in the medical literature with
+  documented symptom patterns following high-histamine meals. DAO enzyme activity
+  reduction by alcohol and some medications is established. Genetic DAO variants as
+  primary cause of intolerance are plausible but evidence is more limited than environmental
+  DAO inhibition.
+coaching_translation: If you react to wine, aged cheeses, leftovers, or fermented
+  foods with headaches, a runny nose, or skin reactions, your body may be struggling
+  to break down histamine. Try switching to fresh, non-fermented, low-histamine foods
+  and see if symptoms improve.
+caveats:
+- Standard IgE allergy testing will be negative in histamine intolerance — this can
+  confuse both clients and clinicians.
+- The distinction between MCAS and dietary histamine intolerance requires clinician
+  evaluation.
+- DAO genetic variants have not been as consistently demonstrated to cause clinically
+  significant histamine intolerance as dietary and medication-related DAO inhibition.
+linked_to_topics:
+- dao-histamine-metabolism
+linked_to_mechanisms:
+- histamine-catabolism-dao
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 1 — The Clean Genes Protocol
+  quote: 'Avoid foods that are high in histamines: wine, some types of cheese, and
+    smoked and/or preserved meat and fish if you''re particularly susceptible.'
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

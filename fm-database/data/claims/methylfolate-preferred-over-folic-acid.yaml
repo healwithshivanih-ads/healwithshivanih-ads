@@ -1,0 +1,34 @@
+slug: methylfolate-preferred-over-folic-acid
+statement: Synthetic folic acid in processed foods and supplements may impair gene
+  function (particularly MTHFR-dependent methylation), while methylfolate and folinic
+  acid are the biologically active forms that support methylation without this risk.
+evidence_tier: plausible_emerging
+rationale: MTHFR variants reduce conversion of synthetic folic acid to 5-methyltetrahydrofolate.
+  Unmetabolized folic acid (UMFA) may competitively inhibit folate receptors and is
+  associated with masking of B12 deficiency. Active folate forms bypass MTHFR and
+  are directly usable. Source is a consumer trade book; specific RCT citations not
+  provided.
+coaching_translation: Check your multivitamin label for 'methylfolate' or '5-MTHF'
+  instead of 'folic acid'. Avoid fortified processed foods (bread, cereal, pasta)
+  that contain synthetic folic acid.
+caveats:
+- Source is consumer trade book, not primary literature
+- MTHFR SNP effect sizes are modest at population level
+- Methylfolate dosing requires clinician guidance
+linked_to_topics:
+- mthfr-methylation
+- clean-genes-protocol
+linked_to_supplements:
+- multivitamin-multimineral-methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Multivitamin, Week 1
+  quote: Just be sure that you're getting one with no folic acid, which—as you know
+    by now—can dirty your genes instead of clean them. Instead, choose a multivitamin
+    with methylfolate and folinic acid.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

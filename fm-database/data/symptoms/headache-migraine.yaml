@@ -1,0 +1,40 @@
+slug: headache-migraine
+display_name: Headaches / Migraines
+aliases:
+- migraines
+- histamine headache
+- vascular headache
+- migraine with aura
+- frequent headaches
+- hormonal migraine
+- food-triggered migraine
+category: neurological
+severity: common
+description: Recurrent headaches or migraines, often triggered by specific foods (alcohol,
+  aged cheese, chocolate, citrus) or hormonal fluctuations — associated with excess
+  histamine (DAO), excess catecholamines (COMT), and/or elevated homocysteine (MTHFR).
+when_to_refer: New-onset severe headache, neurological symptoms accompanying migraine,
+  or headache unresponsive to lifestyle measures.
+linked_to_topics:
+- mthfr-methylation-gene
+- dao-histamine-metabolism
+- maoa-neurotransmitter-gene
+- nos3-nitric-oxide-cardiovascular
+- dao-histamine-intolerance
+- comt-gene-catechol-clearance
+linked_to_mechanisms:
+- methylation
+- histamine-catabolism-dao
+- monoamine-oxidase-activity
+- nitric-oxide-bioavailability
+- histamine-metabolism
+- methylation-cycle
+sources:
+- id: dirty-genes-lynch
+  location: Introduction
+  quote: SNPs in the MTHFR gene can create a whole host of health problems—everything
+    from irritability and obsessiveness to birth defects and cancer.
+version: 2
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

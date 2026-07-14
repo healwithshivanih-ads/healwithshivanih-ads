@@ -1,0 +1,35 @@
+slug: tyrosine-supports-dopamine-synthesis-fast-comt
+statement: For individuals with fast COMT phenotype, adequate dietary protein and
+  supplemental L-tyrosine may support dopamine synthesis, helping to offset the rapid
+  catecholamine depletion driven by their gene variant.
+evidence_tier: fm_specific_thin
+rationale: Tyrosine is the immediate precursor for dopamine synthesis via tyrosine
+  hydroxylase. That dietary tyrosine supports dopamine production is established;
+  the specific application to fast COMT individuals and the expectation of meaningful
+  symptom improvement is extrapolated from basic biochemistry and anecdote. Source
+  is a consumer book.
+coaching_translation: If you run low on dopamine (poor focus, low motivation, need
+  caffeine to feel normal), ensuring you eat high-quality protein at every meal —
+  and potentially using supplemental tyrosine — gives your brain more raw material
+  to make dopamine.
+out_of_scope_notes: Tyrosine dosing, especially in children or individuals on psychiatric
+  medications, requires clinician supervision. Dose-sensitive — excess can cause irritability.
+caveats:
+- Single-case clinical vignette only; no RCT data cited
+- Highly dose-sensitive — individual monitoring required
+- Contraindicated or requires caution with MAOIs, thyroid medications, and stimulant
+  medications
+linked_to_topics:
+- comt-gene-catechol-clearance
+linked_to_supplements:
+- tyrosine
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: 'Chapter 6: ADHD Support Without Ritalin'
+  quote: Dopamine is made from protein—specifically, from the amino acid known as
+    tyrosine.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

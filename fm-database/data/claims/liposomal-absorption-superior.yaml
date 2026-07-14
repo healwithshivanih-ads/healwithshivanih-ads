@@ -1,0 +1,29 @@
+slug: liposomal-absorption-superior
+statement: Liposomal supplement delivery (nutrients encapsulated in microscopic fat
+  vesicles) provides superior cellular bioavailability compared to standard capsule
+  or tablet forms.
+evidence_tier: plausible_emerging
+rationale: Liposomal encapsulation protects nutrients from GI degradation and facilitates
+  direct cellular uptake via membrane fusion. Some clinical evidence exists for vitamin
+  C and glutathione, though head-to-head comparisons across all nutrients are limited.
+coaching_translation: When choosing supplement forms, prioritize liquid/liposomal
+  > lozenge > powder > capsule > tablet, especially for sensitive individuals or those
+  with digestive issues.
+caveats:
+- Evidence strongest for vitamin C and glutathione; weaker for other nutrients
+- Consumer book source
+linked_to_topics:
+- clean-genes-protocol
+linked_to_supplements:
+- liposomal-glutathione
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Choose the Form of Supplement — Supplements, Week 1
+  quote: The easiest form of supplement to absorb is liposomal (delivered via microscopic
+    fat balls in liquid). The hardest is tablet.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

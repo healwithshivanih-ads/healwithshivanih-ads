@@ -1,0 +1,28 @@
+slug: b-vitamins-stimulating-near-bedtime
+statement: Taking B-vitamin-containing multivitamins within 5 hours of bedtime can
+  be stimulating and disrupt deep sleep quality.
+evidence_tier: fm_specific_thin
+rationale: B vitamins (particularly B6, B12) are involved in neurotransmitter synthesis
+  and energy metabolism; evening dosing may sustain alertness. Clinically observed
+  but lacking robust RCT evidence. Widely cited in functional medicine practice.
+coaching_translation: Take your multivitamin with breakfast or lunch only — never
+  in the afternoon or evening.
+caveats:
+- Consumer book claim; no specific RCT cited
+- Individual sensitivity varies
+linked_to_topics:
+- clean-genes-protocol
+- maoa-neurotransmitter-balance
+linked_to_supplements:
+- multivitamin-multimineral-methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Supplements — Multivitamin, Week 1
+  quote: Never take a multivitamin within five hours of bedtime. The B vitamins can
+    be quite stimulating and prevent you from experiencing deep sleep.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

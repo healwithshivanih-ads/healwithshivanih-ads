@@ -1,0 +1,38 @@
+slug: vitamin-c-liposomal
+display_name: Liposomal Vitamin C
+category: vitamin
+forms_available:
+- liquid
+- capsule
+typical_dose_range:
+  liquid:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- histamine-intolerance-dao
+- nos3-nitric-oxide-cardiovascular
+linked_to_claims:
+- vitamin-c-fish-oil-stabilise-mast-cells
+notes_for_coach: Lynch notes vitamin C and fish oil help stabilise mast cells (storing
+  and releasing histamine) and also protect nitric oxide from oxidative degradation.
+  Liposomal form improves bioavailability at higher doses. Also supports NOS3 by preventing
+  superoxide formation.
+notes_for_client: Vitamin C helps stabilise the immune cells that release histamine
+  and supports your cardiovascular system. The liposomal form is absorbed better than
+  standard vitamin C.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Additional Supplements for Your DAO
+  quote: Vitamin C and fish oil. These nutrients help stabilize mast cells (cells
+    that store and release histamine).
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest

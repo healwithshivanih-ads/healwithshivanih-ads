@@ -1,0 +1,36 @@
+slug: beet-root-powder
+display_name: Beet Root Powder
+category: other
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 3
+    max: 6
+    unit: g
+timing_options:
+- morning
+- with_breakfast
+- mid_morning
+take_with_food: optional
+linked_to_topics:
+- nos3-nitric-oxide-cardiovascular
+linked_to_claims:
+- beet-root-citrulline-ornithine-raise-arginine-nos3
+notes_for_coach: Lynch prefers beet root, ornithine, and citrulline as indirect arginine
+  donors over direct arginine supplementation (which can worsen herpetic infections
+  and has other risks). Beet root provides dietary nitrates reduced to nitric oxide
+  in the gut. Easy to add to smoothies.
+notes_for_client: Beet root is a natural source of nitrates that your body converts
+  to nitric oxide, supporting healthy blood pressure and circulation.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your NOS3
+  quote: If you're generally healthy, increasing arginine levels via these supplements
+    may be all you need.
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: claude-dirty-genes-ingest
