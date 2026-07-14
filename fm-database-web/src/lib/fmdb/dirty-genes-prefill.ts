@@ -126,6 +126,17 @@ const COND_RULES: CondRule[] = [
     ticks: ["gst_chem_sensitive", "gst_mould"], evidence: "chemical / mould sensitivity" },
   { pathwayId: "maoa", patterns: [/mood swing|bipolar/i],
     ticks: ["maoa_mood_swings"], evidence: "mood swings documented" },
+  // --- free-text functional symptoms (labs/structured fields can't reach) ---
+  { pathwayId: "dao", patterns: [/react(s|ing)? (badly |strongly )?to (red )?wine|aged cheese|flush(es|ing)? after (eating|food|meals?|wine)|red wine gives me/i],
+    ticks: ["dao_food_react", "dao_alcohol"], evidence: "wine / food flushing reaction (narrative)" },
+  { pathwayId: "comt", patterns: [/sensitive to caffeine|caffeine (keeps me|makes me|makes her).{0,20}(up|wired|jittery|anxious)|can'?t (do|have|handle) (coffee|caffeine)|jittery (on|from) (coffee|caffeine)/i],
+    ticks: ["comt_caffeine"], evidence: "caffeine sensitivity (narrative)" },
+  { pathwayId: "gst_gpx", patterns: [/sensitive to (smells?|perfumes?|fragrances?|exhaust|cleaning products?)|(smells?|perfumes?|fragrances?)[^.]{0,30}(bother|overwhelm|get to|too (strong|much)|make me (sick|nauseous)|give me (a )?headache)|strong (smells?|perfumes?)/i],
+    ticks: ["gst_chem_sensitive"], evidence: "smell / fragrance sensitivity (narrative)" },
+  { pathwayId: "nos3", patterns: [/cold hands( and| &)? (and )?(feet|toes)?|cold feet|poor circulation|always (feel )?cold/i],
+    ticks: ["nos3_cold"], evidence: "cold extremities / poor circulation (narrative)" },
+  { pathwayId: "maoa", patterns: [/carb craving|sugar craving|crave (carbs|sugar|sweets)|\bhangry\b|mood (drops|crashes) when hungry/i],
+    ticks: ["maoa_carb_craving", "maoa_hangry"], evidence: "carb/sugar cravings / hangry (narrative)" },
 ];
 
 function passes(v: number, op: ">" | "<", t: number): boolean {
@@ -147,11 +158,35 @@ export function extractPrefillInput(client: Record<string, unknown>): PrefillInp
   }
   const toText = (v: unknown): string =>
     typeof v === "string" ? v : Array.isArray(v) ? v.filter((x) => typeof x === "string").join(" · ") : "";
+  // Structured fields FIRST, then the free-text intake narrative clients
+  // actually volunteer histamine / caffeine / chemical-sensitivity signals in
+  // (the "lean" alternative to adding intake questions). All coach-side.
+  const NARRATIVE_FIELDS = [
+    "notes",
+    "discovery_call_notes",
+    "digestion_notes",
+    "bowel_pattern",
+    "bowel_historical",
+    "tolerance_changes",
+    "skin_signs",
+    "hair_other",
+    "stress_response",
+    "energy_crashes",
+    "energy_pattern",
+    "sleep_notes",
+    "cold_heat_tolerance",
+    "menstrual_notes",
+    "covid_long_symptoms",
+    "pain_pattern",
+    "pain_locations",
+    "ayurveda_constitution_notes",
+  ];
   const conditionsText = [
     toText(client.active_conditions),
     toText(client.reported_triggers),
     toText(client.foods_to_avoid),
     toText(client.medical_history),
+    ...NARRATIVE_FIELDS.map((f) => toText(client[f])),
   ]
     .join(" · ")
     .toLowerCase();
