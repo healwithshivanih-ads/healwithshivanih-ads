@@ -370,6 +370,44 @@ def _load_external_reports(plans_root: Path, client_id: str) -> list[dict]:
     return out
 
 
+def _load_dirty_genes_screen(plans_root: Path, client_id: str) -> dict | None:
+    """Latest coach-run Dirty Genes pathway-burden screen, if any, from
+    clients/<id>/dirty_genes/*.yaml. Returns the flagged pathways
+    (moderate+) + the coach-only note (which carries the sequencing/safety
+    reasoning). None when no screen has been run.
+
+    This is a COACHING screen (functional burden from symptoms + labs), not
+    a genetic diagnosis — the suggester weights it, never diagnoses from it,
+    and keeps gene/pathway language OUT of client-facing output.
+    """
+    import yaml  # local import
+    dg_dir = plans_root / "clients" / client_id / "dirty_genes"
+    if not dg_dir.exists():
+        return None
+    files = sorted(dg_dir.glob("*.yaml"))
+    if not files:
+        return None
+    try:
+        d = yaml.safe_load(files[-1].read_text()) or {}
+    except Exception:
+        return None
+    if not isinstance(d, dict):
+        return None
+    summary = d.get("pathway_summary") or []
+    flagged = [
+        {"label": p.get("label"), "band": p.get("band")}
+        for p in summary
+        if isinstance(p, dict) and p.get("band") in ("moderate", "high")
+    ]
+    if not flagged and not d.get("coach_note"):
+        return None
+    return {
+        "screen_date": d.get("screen_date"),
+        "flagged_pathways": flagged,
+        "coach_note": d.get("coach_note") or "",
+    }
+
+
 def _load_functional_tests(plans_root: Path, client_id: str) -> list[dict]:
     """Walk clients/<id>/functional_tests/*.yaml and return a compact
     summary per file. Skip anything unreadable. Coach uploads DUTCH /
@@ -824,6 +862,13 @@ def main() -> int:
         # mentioned gut. Inject the parsed summaries so the AI can weight
         # them as primary drivers.
         "functional_test_findings": _load_functional_tests(root, client.client_id),
+        # Dirty Genes pathway-burden screen (coach-run, clients/<id>/dirty_genes/).
+        # Flagged pathways + the coach-only note (sequencing/safety). Until now
+        # the screen was coach-side only and the initial draft was generated
+        # blind to it. Feed the flagged pathways in so the FIRST plan accounts
+        # for them. See suggester rule 11y. Coaching screen, NOT a diagnosis —
+        # gene/pathway language stays out of client-facing output.
+        "dirty_genes_screen": _load_dirty_genes_screen(root, client.client_id),
         # External reports (genetic / food sensitivity / OAT / imaging /
         # DEXA / etc.) uploaded via the Reports tab. parse-external-report.py
         # already extracts these to per-report YAML; until now the

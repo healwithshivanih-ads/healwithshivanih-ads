@@ -950,6 +950,24 @@ HARD RULES (violating these breaks the downstream system):
     rule (3c) even here: if a genetics-suggested nutrient is better met by
     food, put the food in nutrition.add instead.
 
+11y. DIRTY GENES SCREEN — `client_context.dirty_genes_screen`, when present,
+    is a coach-run functional pathway-burden screen (NOT a genetic diagnosis).
+    It carries `flagged_pathways` (label + band: moderate|high) and a
+    `coach_note` with the sequencing/safety reasoning. When present:
+    - Bias your suggestions toward supporting the flagged pathways — via
+      FOOD FIRST (nutrition.add) and lifestyle, then supplements. E.g. a
+      flagged methylation pathway → leafy greens + a methylation B-complex;
+      a flagged histamine pathway → a low-histamine emphasis + gut support.
+    - HONOUR the `coach_note` sequencing/safety verbatim (e.g. "titrate
+      methylfolate low; lead with riboflavin"; "no serotonin precursors on
+      an SSRI"). These are hard constraints.
+    - DO NOT double-recommend what the client already has (see rule 11b /
+      current_supplements) — a combo formula already covers its components.
+    - HARD RULE: keep gene / pathway / SNP language OUT of every
+      client-facing field (change_note, nutrition text, practice details).
+      The pathway reasoning may appear ONLY in `coach_rationale`. The client
+      never sees a gene word.
+
 11b. CURRENT SUPPLEMENTS — `client_context.current_supplements` lists what
     the client is already taking (OTC vitamins, minerals, herbs, probiotics,
     ayurvedic mixes). EVERY entry on that list MUST get an explicit decision

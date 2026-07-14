@@ -40,6 +40,9 @@ import { MonthlyCardButton } from "./monthly-card-button";
 import type { BackOnTrackCard } from "@/lib/server-actions/clients";
 import { Tier1AdvisoryCard } from "./tier1-advisory-card";
 import { detectTier1Advisory } from "@/lib/fmdb/tier1-advisory";
+import { DirtyGenesOverviewCard } from "./dirty-genes-overview-card";
+import { computePrefill, extractPrefillInput } from "@/lib/fmdb/dirty-genes-prefill";
+import { loadLatestDirtyGenesAssessment } from "@/lib/server-actions/dirty-genes";
 import { LiverDetoxAdvisoryCard } from "./liver-detox-advisory-card";
 import { detectLiverDetoxAdvisory } from "@/lib/fmdb/liver-detox-advisory";
 import { IntakeProgressCard } from "./intake-progress-card";
@@ -716,6 +719,12 @@ export default async function ClientV2Page({
   ]);
 
   if (!client) notFound();
+
+  // Dirty Genes: proactive Overview card. Prefill from the client's own record
+  // (labs/conditions/diet) + last saved screen date. Card self-hides if nothing
+  // flags AND no prior screen.
+  const dgLatest = await loadLatestDirtyGenesAssessment(id);
+  const dgPrefill = computePrefill(extractPrefillInput(client as unknown as Record<string, unknown>));
 
   const plansForClient = (allPlans as unknown as PlanRow[]).filter(
     (p) => p.client_id === id,
@@ -1715,6 +1724,15 @@ export default async function ClientV2Page({
                         one-click "Reissue Tier 1" button (fires the existing
                         fm_intake_topup_v1 template). Self-hides cleanly when
                         no signals OR when client already filled Tier 1. */}
+                    {/* Gene-pathway screen — proactive, self-hiding: shows only
+                        when the client's labs/conditions flag a pathway or a
+                        screen was already run. Coach-side; no gene language to
+                        clients. */}
+                    <DirtyGenesOverviewCard
+                      clientId={client.client_id}
+                      prefill={dgPrefill}
+                      lastScreenDate={dgLatest.screenDate ?? null}
+                    />
                     <Tier1AdvisoryCard
                       clientId={client.client_id}
                       advisory={detectTier1Advisory(client as unknown as Record<string, unknown>)}
