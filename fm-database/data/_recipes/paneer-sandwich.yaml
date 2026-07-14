@@ -76,10 +76,10 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/paneer-sandwich.jpg
-  credit: web reference (auto-sourced)
-  source_url: ''
-  rights_status: none
-  note: no photo yet — source a licensed/original image before external use
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://paneer-sandwich'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
 sources:
 - id: shivani-hari-original
   location: Paneer sandwich
