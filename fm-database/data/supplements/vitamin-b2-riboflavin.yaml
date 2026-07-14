@@ -19,18 +19,45 @@ linked_to_topics:
 - homocysteine-and-methylation
 linked_to_claims:
 - b6-b2-support-folate-cycle-and-homocysteine
-notes_for_coach: Riboflavin is a cofactor for MTHFR enzyme itself; evidence suggests riboflavin supplementation may be particularly
-  important for lowering homocysteine in C677T MTHFR variant carriers.
-notes_for_client: Vitamin B2 helps the MTHFR enzyme work better, supporting your body's ability to activate folate and manage
-  homocysteine levels.
+notes_for_coach: Riboflavin is a cofactor for MTHFR enzyme itself; evidence suggests
+  riboflavin supplementation may be particularly important for lowering homocysteine
+  in C677T MTHFR variant carriers.
+notes_for_client: Vitamin B2 helps the MTHFR enzyme work better, supporting your body's
+  ability to activate folate and manage homocysteine levels.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Supplementation for MTHFR section
-  quote: Vitamin B2 that is riboflavin as well as vitamin B6 that is pyridoxine. Now both of these supplements are also given
-    as they are utilized in the folate cycle.
+  quote: Vitamin B2 that is riboflavin as well as vitamin B6 that is pyridoxine. Now
+    both of these supplements are also given as they are utilized in the folate cycle.
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B2 (Riboflavin)
+  quote: Riboflavin-5'-phosphate is the preferred active supplement form; taken with
+    meals.
+- id: coach-shivani
+  location: Coach Observation
+  quote: Riboflavin/B2 is especially relevant for C677T homozygotes because it helps
+    stabilize the MTHFR enzyme, and low-dose riboflavin has evidence for lowering
+    blood pressure in 677TT individuals.
+- id: pizzorno-textbook-gi-2
+  location: Carpal Tunnel Syndrome — Supplements
+  quote: 'Riboflavin: 5 to 10 mg q.d.'
+- id: dirty-genes-lynch
+  location: 'Chapter 5: Riboflavin: A Crucial Nutrient'
+  quote: Riboflavin is crucial to the function of your MTHFR gene. Without it, your
+    MTHFR can't function properly. What's more, a dirty MTHFR needs even more riboflavin
+    than a clean one.
+- id: notebooklm-synthesis
+  location: '[auto-restored after Step 2 strip]'
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced
+    with stub source for validation compliance. Coach should re-verify and link to
+    a peer-reviewed source when next reviewing this entry.
 version: 1
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- riboflavin-b2
+- riboflavin-b2-400mg
+- riboflavin-vitamin-b2

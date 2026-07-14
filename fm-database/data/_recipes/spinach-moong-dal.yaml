@@ -1,0 +1,96 @@
+slug: spinach-moong-dal
+name: Spinach Moong Dal
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- Moong dal, whole — 1/2 cup, rinsed
+- Fresh spinach — 1 cup, roughly chopped
+- Water — 1 3/4 cups
+- Ghee — 1/2 tsp
+- Cumin seeds — 1/4 tsp
+- Turmeric powder — 1/4 tsp
+- Salt — to taste
+- Black pepper — pinch
+contains_allergens: []
+ingredients:
+- item: Moong dal, whole — 1/2 cup, rinsed
+  qty: ''
+  unit: ''
+- item: Fresh spinach — 1 cup, roughly chopped
+  qty: ''
+  unit: ''
+- item: Water — 1 3/4 cups
+  qty: ''
+  unit: ''
+- item: Ghee — 1/2 tsp
+  qty: ''
+  unit: ''
+- item: Cumin seeds — 1/4 tsp
+  qty: ''
+  unit: ''
+- item: Turmeric powder — 1/4 tsp
+  qty: ''
+  unit: ''
+- item: Salt — to taste
+  qty: ''
+  unit: ''
+- item: Black pepper — pinch
+  qty: ''
+  unit: ''
+steps:
+- Rinse moong dal thoroughly under cold water.
+- Boil water in a pot; add dal and turmeric.
+- Simmer for 10 minutes until dal begins to soften.
+- Add chopped spinach and stir; cook for another 3–4 minutes until spinach wilts and
+  dal is very soft.
+- Heat ghee in a small pan; add cumin seeds and let them splutter.
+- Pour the tadka into the cooked dal; stir well.
+- Season with salt and black pepper. Serve warm.
+servings: '2'
+one_line: Spinach Moong Dal — a simple, home-style Indian recipe.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/spinach-moong-dal.jpg
+  credit: 'generated with ChatGPT image generation'
+  source_url: 'chatgpt-generated://spinach-moong-dal'
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or watermark
+sources:
+- id: shivani-hari-original
+  location: Spinach Moong Dal
+version: 1
+status: active
+updated_at: '2026-07-14'
+updated_by: Shivani
+provenance: promoted_from_ai_pack
+nutrients_per_serving:
+  kcal: 68.0
+  protein_g: 2.9
+  carbs_g: 7.9
+  fat_g: 2.9
+  fibre_g: 1.5
+  iron_mg: 1.8
+  calcium_mg: 27.3
+  magnesium_mg: 23.9
+  zinc_mg: 0.4
+  potassium_mg: 190
+  folate_ug: 62.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.8
+  omega3_mg: 38.5
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-14'

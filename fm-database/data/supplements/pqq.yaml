@@ -26,10 +26,15 @@ notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh 
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
+- id: dirty-genes-lynch
+  location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
+  quote: He took liposomal glutathione, as Keri did, as well as a supplement called
+    PQQ (more formally known as pyrroloquinoline quinone).
 evidence_tier: fm_specific_thin
 version: 2
 status: active
 updated_at: '2026-06-18'
 updated_by: shivani
 aliases:
+- pqq-pyrroloquinoline-quinone
 - pyrroloquinoline-quinone

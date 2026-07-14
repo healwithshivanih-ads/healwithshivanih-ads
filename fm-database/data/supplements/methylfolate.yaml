@@ -36,7 +36,42 @@ sources:
   quote: I started her on a twice-weekly supplement of methylfolate, one of the active
     forms of folate/vitamin B9 (and a nutrient essential to the methylation process
     on which good health depends).
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
+  quote: Many people can't convert folic acid effectively.
+- id: coach-shivani
+  location: Coach Observation
+  quote: use active folate such as low-dose L-methylfolate for a short while, pair
+    folate decisions with B12 status
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Supplementation for MTHFR section
+  quote: The first most important supplement is as you have seen the folate supplement
+    but it should be in the form of methylfolate which is the active form.
+- id: coconote-fm-biomarkers-cvs
+  location: Homocysteine and Clotting
+  quote: By the way, folic acid is not vitamin B9. Vitamin B9 is phytohydroxychloroquine.
+    That we call it active vitamin B9.
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Foundational Support
+  quote: 'Active folate: 5-MTHF'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Folate (Methylfolate) - Methylation, pregnancy, detox - 800-1200 mcg/day
+    - sublingual morning pre breakfast OR homocysteine before breakfast
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Use with MTHF if MTHFR issue suspected.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
+    Depletions
+  quote: Folate (as methyl tetra hydro folate)
 version: 2
 status: active
 updated_at: '2026-07-14'
 updated_by: claude-dirty-genes-ingest
+aliases:
+- 5-mthf
+- folate-methylfolate
+- l-methylfolate
+- methylfolate-5-mthf
+- methylfolate-b9

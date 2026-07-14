@@ -9,7 +9,7 @@ timing_options:
 - morning
 take_with_food: required
 consolidates:
-- l-methylfolate
+- methylfolate
 - methylcobalamin
 - pyridoxal-5-phosphate
 - vitamin-b2-riboflavin
@@ -21,11 +21,11 @@ linked_to_topics:
 linked_to_claims:
 - melatonin-nac-methylated-b-vitamins-support-estrogen
 - genetic-variants-comt-cyp-impact-estrogen
-notes_for_coach: 'Single-capsule methylated B-complex; replaces separate methylfolate
+notes_for_coach: Single-capsule methylated B-complex; replaces separate methylfolate
   + methyl-B12 + P5P + riboflavin. Prefer over prescribing those individually, for
   adherence. Methylated B vitamins also support COMT enzyme activity, which is critical
   for Phase II methylation of catechol estrogens (4-OHE1 → 4-MeOE1) — particularly
-  relevant for clients with COMT variants. Clinician to guide specific form and dose.'
+  relevant for clients with COMT variants. Clinician to guide specific form and dose.
 notes_for_client: An all-in-one B vitamin capsule using the active (methylated) forms
   your body can use directly — folate, B12, B6 and B2 together in one pill instead
   of several. Helps your body process and clear estrogen safely, especially if you

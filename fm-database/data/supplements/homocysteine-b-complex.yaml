@@ -8,7 +8,7 @@ timing_options:
 - with_breakfast
 take_with_food: required
 consolidates:
-- l-methylfolate
+- methylfolate
 - methylcobalamin
 - pyridoxal-5-phosphate
 - vitamin-b2-riboflavin
@@ -20,10 +20,10 @@ linked_to_topics:
 linked_to_claims:
 - b6-b2-support-folate-cycle-and-homocysteine
 - tmg-homocysteine-lowering-methylation
-notes_for_coach: 'One-capsule homocysteine formula (active methylfolate + methyl-B12
+notes_for_coach: One-capsule homocysteine formula (active methylfolate + methyl-B12
   + P5P + R5P + TMG). Replaces standalone methylfolate + P5P + riboflavin + TMG. Maps
-  to VitaOne ''Homocysteine Defence B Complex''. Prefer for elevated-homocysteine
-  / methylation-block clients.'
+  to VitaOne 'Homocysteine Defence B Complex'. Prefer for elevated-homocysteine /
+  methylation-block clients.
 notes_for_client: An all-in-one capsule for supporting healthy homocysteine levels
   — it combines the active forms of folate, B12, B6 and B2 with TMG in a single pill,
   so you take one capsule instead of four.

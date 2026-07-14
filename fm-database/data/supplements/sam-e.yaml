@@ -1,8 +1,9 @@
 slug: sam-e
 display_name: SAMe (S-Adenosylmethionine)
 aliases:
-- s-adenosyl-methionine
 - ademetionine
+- s-adenosyl-methionine
+- same-s-adenosylmethionine
 category: other
 forms_available:
 - tablet

@@ -41,7 +41,17 @@ sources:
     on a graduated dosage: she started with a tiny bit and moved up slowly in response
     to her symptoms. This supplemented her body''s own inadequate production of glutathione,
     a key antioxidant.'
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol
+  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
+    600–1200 mg'
+- id: vitaone-health-coaching-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure Recommendations
+  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
+    600–1200 mg'
 version: 3
 status: active
 updated_at: '2026-07-14'
 updated_by: claude-dirty-genes-ingest
+aliases:
+- glutathione-liposomal
