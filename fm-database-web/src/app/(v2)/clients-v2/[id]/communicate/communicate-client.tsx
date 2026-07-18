@@ -10,6 +10,7 @@ import { SendBookingLinkPanel } from "@/components/client-widgets/send-booking-l
 import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread-panel";
 import { FmPanel } from "@/components/fm";
 import { SendAppLinkButton } from "../send-app-link-button";
+import { DiscoveryAppCard } from "../discovery-app-card";
 import { VoiceNoteSender } from "../voice-note-sender";
 // Letters retired (2026-07-04): the welcome EMAIL (WelcomeEmailCard above)
 // + the client app are the deliverables; this panel is messaging only.
@@ -26,6 +27,9 @@ export interface CommunicateClientProps {
   /** stable client app token — renders the 📲 share-the-app panel here
    *  (moved from the Plan tab 2026-06-12: sharing is communication) */
   appToken?: string | null;
+  /** client.discovery_call_date (YYYY-MM-DD) if set — feeds the discovery-stage
+   *  share card's credit-window chip when no published plan exists yet. */
+  discoveryCallDate?: string | null;
 }
 
 export function CommunicateClient({
@@ -36,6 +40,7 @@ export function CommunicateClient({
   activePlan,
   whatsappConfigured,
   appToken = null,
+  discoveryCallDate = null,
 }: CommunicateClientProps) {
   const firstName = displayName.split(" ")[0];
   const isPublished = activePlan?.status === "published";
@@ -45,13 +50,30 @@ export function CommunicateClient({
       {/* LEFT — main comms surfaces */}
       <div style={{ minWidth: 0, display: "grid", gap: 16 }}>
         {/* 📲 Share the client app — moved here from the Plan tab
-            (2026-06-12): sharing is communication; Plan edits content. */}
-        {isPublished && (
+            (2026-06-12): sharing is communication; Plan edits content.
+            Two stages of the SAME stable app_token:
+              • published plan → the full Ochre Tree app (SendAppLinkButton).
+              • no plan yet → the read-only DISCOVERY app (DiscoveryAppCard),
+                so a consult-tier client can be sent the link and complete
+                intake + book labs BEFORE any plan is built. Previously this
+                whole block was gated on `isPublished`, which hid every
+                app-share affordance until a full plan was published — the
+                coach had to run the entire assessment before she could even
+                generate the link. */}
+        {isPublished ? (
           <SendAppLinkButton
             clientId={clientId}
             mobileNumber={clientPhone}
             displayName={displayName}
             existingToken={appToken}
+          />
+        ) : (
+          <DiscoveryAppCard
+            clientId={clientId}
+            mobileNumber={clientPhone}
+            displayName={displayName}
+            existingToken={appToken}
+            existingCallDate={discoveryCallDate}
           />
         )}
 

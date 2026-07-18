@@ -196,6 +196,12 @@ export default async function CommunicateTabPage({
           appToken={
             ((client as unknown as { app_token?: string }).app_token as string | undefined) ?? null
           }
+          discoveryCallDate={(() => {
+            const v = (client as unknown as { discovery_call_date?: unknown }).discovery_call_date;
+            if (v instanceof Date) return v.toISOString().slice(0, 10);
+            if (typeof v === "string") return v.slice(0, 10);
+            return null;
+          })()}
         />
       </div>
 
