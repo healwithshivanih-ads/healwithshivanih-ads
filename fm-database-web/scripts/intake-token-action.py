@@ -557,6 +557,18 @@ def action_generate(payload: dict) -> dict:
         if not data.get("intake_full_unlocked_at"):
             data["intake_full_unlocked_at"] = _now_iso()
         data["engagement_status"] = "signed_up"
+    # Auto-reopen a finalised intake (2026-07-21). Issuing a token IS the
+    # coach saying "I want this client in the form again", so a stale
+    # `intake_finalised_at` must not outlive it: `action_lookup` refuses any
+    # token whose client is finalised ("Form locked by your coach"), which
+    # made every re-issue to a past client dead on arrival until someone
+    # remembered to hit reopen first. Same one-line clear as
+    # `action_reopen_finalised_intake` — folded into this write so the value
+    # reaching `_write_staging_stub` below (and therefore Fly) is already
+    # null. No-op for first-time intakes, where the key is absent.
+    was_finalised = bool(data.get("intake_finalised_at"))
+    if was_finalised:
+        data["intake_finalised_at"] = None
     _save_client(client_id, data)
 
     # Mirror a minimal stub into the Fly-synced staging tree so the public
@@ -571,6 +583,7 @@ def action_generate(payload: dict) -> dict:
     return {
         "ok": True,
         "unlock_full": unlock_full,
+        "reopened": was_finalised,
         "token": token,
         "short_code": short_code,
         "expires_at": expires.isoformat(),
