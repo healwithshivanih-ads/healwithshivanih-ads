@@ -69,8 +69,12 @@ async function mealPlanStyle(clientId: string): Promise<"detailed" | "principles
   try {
     const f = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
     const doc = (yaml.load(await fs.readFile(f, "utf-8")) as { meal_plan_style?: string }) ?? {};
-    const v = doc.meal_plan_style;
-    return v === "detailed" || v === "principles" ? v : "hybrid";
+    // Case/whitespace-tolerant: the UI always writes a lowercase exact value,
+    // but a hand-edited client.yaml (or a value carried over from before this
+    // toggle existed) shouldn't silently fail to opt a client out of the
+    // weekly cadence just because it reads "Principles" or " principles ".
+    const v = String(doc.meal_plan_style ?? "").trim().toLowerCase();
+    return v === "detailed" || v === "principles" ? (v as "detailed" | "principles") : "hybrid";
   } catch {
     return "hybrid";
   }

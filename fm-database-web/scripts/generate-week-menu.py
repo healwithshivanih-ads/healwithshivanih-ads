@@ -341,14 +341,31 @@ def main() -> None:
         print(json.dumps({"ok": False, "error": f"published plan not found: {plan_slug}"}))
         return
     plan = yaml.safe_load(pf.read_text()) or {}
+
+    client_yaml = _plans_root() / "clients" / client_id / "client.yaml"
+    client = yaml.safe_load(client_yaml.read_text()) if client_yaml.exists() else {}
+
+    # Defense-in-depth: never spend a Sonnet call drafting a weekly menu for a
+    # framework-only ("principles") client. weeklyMenuQueueAction (weekly-menu.ts)
+    # already excludes these before this shim is ever invoked, but that's a
+    # single point of failure — a client whose meal_plan_style drifted out of
+    # sync with the coach's intent (e.g. flipped to "principles" after an
+    # app_menu already existed, or hand-edited YAML with different casing)
+    # would otherwise get charged an API call every day it's picked up by the
+    # cron. Re-check here, independent of the caller, before touching the model.
+    style = str(client.get("meal_plan_style") or "").strip().lower()
+    if style == "principles" or plan.get("no_weekly_menu"):
+        print(json.dumps({
+            "ok": False,
+            "error": "principles-style plan — framework only by design, no weekly menu generated",
+        }))
+        return
+
     menu = plan.get("app_menu") or {}
     weeks = menu.get("weeks") or []
     if not weeks:
         print(json.dumps({"ok": False, "error": "plan has no app_menu yet — publish/migrate first"}))
         return
-
-    client_yaml = _plans_root() / "clients" / client_id / "client.yaml"
-    client = yaml.safe_load(client_yaml.read_text()) if client_yaml.exists() else {}
 
     nutrition = plan.get("nutrition") or {}
     # current menu rendered compactly for the prompt
