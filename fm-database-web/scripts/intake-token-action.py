@@ -371,10 +371,24 @@ def _staging_last_submitted_payload(client_id: str) -> dict:
 
 def _should_purge_staging(adata: dict) -> bool:
     """An intake's staging copy should exist only while the form is live.
-    Live = authoritative has an active token, not finalised, not expired.
-    Returns True once it's finalised / revoked (token cleared) / expired."""
-    if adata.get("intake_finalised_at"):
-        return True
+    Live = authoritative has an active token, not expired.
+    Returns True once the token is cleared (finalised / revoked) or expired.
+
+    NB (2026-07-21): there used to be a `if adata.get("intake_finalised_at")`
+    branch here. It was redundant AND actively harmful:
+
+      - Redundant, because `action_finalise` already clears `intake_token`
+        (and calls `_purge_staging` itself), so a genuinely finalised intake
+        is swept by the `not intake_token` check below anyway.
+      - Harmful, because `action_generate` deliberately does NOT clear
+        `intake_finalised_at` (it's history — "this client completed an
+        intake once"). So RE-ISSUING a link to a past client wrote a fresh
+        staging stub which this sweep then deleted within the minute,
+        and the public form answered "We couldn't find this link".
+        (Nazneen cl-022, re-issued ?focus=dosha link, 2026-07-21.)
+
+    The token is the single source of truth for "is this form live".
+    """
     if not adata.get("intake_token"):
         return True  # revoked, or token cleared
     exp = adata.get("intake_token_expires_at")
