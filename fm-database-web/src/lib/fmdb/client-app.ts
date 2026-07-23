@@ -2947,7 +2947,11 @@ export async function loadClientAppData(
   const recipeAllowed = (r: LetterRecipe): boolean => {
     if (recipeDietLevel(r) > clientDietLevel) return false;
     if (clientIsJain) {
-      const jt = `${r.title} ${(r.mains ?? []).join(" ")}`;
+      // Must scan the FULL ingredient list, not just title/mains — garlic and
+      // onion are routinely tempering ingredients (e.g. "2 piece garlic") that
+      // never make it into main_ingredients, so a title+mains-only scan lets
+      // them slip past the Jain gate.
+      const jt = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`;
       const negated = /no.?onion|no.?garlic|without (onion|garlic)|onion.?free|garlic.?free/i.test(jt);
       if (JAIN_RE.test(jt) && !negated) return false;
     }
