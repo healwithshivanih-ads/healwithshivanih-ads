@@ -97,7 +97,15 @@ _TOOL = {
                                                     "description": (
                                                         "Components joined with ' + ', each with an explicit "
                                                         "household portion in brackets, e.g. "
-                                                        "'Moong dal (1 bowl) + jowar roti (2) + lauki sabzi (1 cup)'."
+                                                        "'Moong dal (1 bowl) + jowar roti (2) + lauki sabzi (1 cup)'. "
+                                                        "Every component is a DISH the client eats — never a raw "
+                                                        "tempering spice (garlic, ginger, turmeric, cumin, mustard "
+                                                        "seeds, hing, black pepper, etc.) listed as its own "
+                                                        "component; those belong inside the dish's recipe. Join "
+                                                        "components ONLY with ' + ' — never 'then:', '—', or any "
+                                                        "other narrative connector. The FIRST component is shown as "
+                                                        "the meal's title in the app, so it must be the actual "
+                                                        "headline dish, not a spice or garnish."
                                                     ),
                                                 },
                                             },
@@ -140,7 +148,13 @@ single-serving portion on EVERY component — written
 Use realistic one-person home portions (this plan is weight-aware);
 never leave a component without a quantity — the app shows portions on
 every meal and estimates calories from them. Use " + " between
-components. No markdown, no emoji markers, no calorie counts in the
+components — nothing else. Never write "then:", "—", or any other
+narrative connector inside a dish string, and never list a raw
+tempering spice (garlic, ginger, turmeric, cumin, mustard seeds, hing,
+black pepper, etc.) as its own component — those belong inside the
+dish's recipe, not spelled out at the meal level. The FIRST component
+becomes the meal's title in the app, so it must always be the actual
+headline dish. No markdown, no emoji markers, no calorie counts in the
 dish text. Vary dishes across the days and between the two weeks.
 """
 
