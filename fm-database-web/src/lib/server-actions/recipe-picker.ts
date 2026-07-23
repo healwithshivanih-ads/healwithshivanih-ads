@@ -133,7 +133,10 @@ export async function searchRecipesAction(
       // ── diet safety gate (mirror client-app.ts) ──
       if (recipeDietLevel(title, mains, ingredients, diet) > lvl) continue;
       if (isJain) {
-        const jt = `${title} ${mains.join(" ")}`;
+        // Full ingredient list, not just title/mains — see client-app.ts
+        // recipeAllowed for why (garlic/onion often live only in the
+        // tempering step, absent from main_ingredients).
+        const jt = `${title} ${mains.join(" ")} ${ingredients.join(" ")}`;
         const negated = /no.?onion|no.?garlic|without (onion|garlic)|onion.?free|garlic.?free/i.test(jt);
         if (JAIN_RE.test(jt) && !negated) continue;
       }

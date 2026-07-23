@@ -91,6 +91,13 @@ export interface AppMeal {
   kcal?: number;
   /** dish is a classic Ayurvedic preparation → "Ayurveda recommends" badge */
   ayurveda?: boolean;
+  /** the meal's headline title — the matched library recipe's canonical name
+   *  when one resolves, else pills[0]. Matching runs over the WHOLE dish cell
+   *  (not just pills[0]) so a drafter that lists a tempering ingredient first
+   *  ("Garlic (1 clove crushed) + ginger (…) + … + Pointed gourd sabzi (…)")
+   *  still headlines the actual dish, not the spice. Falls back to pills[0]
+   *  when no recipe matches. */
+  dishTitle?: string;
 }
 
 /** Classic Ayurvedic preparations — drives the "Ayurveda recommends" badge
@@ -2947,7 +2954,11 @@ export async function loadClientAppData(
   const recipeAllowed = (r: LetterRecipe): boolean => {
     if (recipeDietLevel(r) > clientDietLevel) return false;
     if (clientIsJain) {
-      const jt = `${r.title} ${(r.mains ?? []).join(" ")}`;
+      // Must scan the FULL ingredient list, not just title/mains — garlic and
+      // onion are routinely tempering ingredients (e.g. "2 piece garlic") that
+      // never make it into main_ingredients, so a title+mains-only scan lets
+      // them slip past the Jain gate.
+      const jt = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`;
       const negated = /no.?onion|no.?garlic|without (onion|garlic)|onion.?free|garlic.?free/i.test(jt);
       if (JAIN_RE.test(jt) && !negated) return false;
     }
@@ -3190,6 +3201,13 @@ export async function loadClientAppData(
       // strip header qualifiers like "Breakfast (≥25 g protein)" for the label
       const slotName = row.slot.replace(/\s*\([^)]*\)\s*$/, "").trim();
       const slotKey = slotName.toLowerCase();
+      // Match against the WHOLE cell, not pills[0] — buildLibraryRecipeResolver
+      // already splits internally on " + "/"→"/"⇒"/":" and scans every
+      // resulting piece, so it finds the real dish even when a drafter lists a
+      // tempering ingredient first (e.g. "Garlic (…) + ginger (…) + … — then:
+      // Pointed gourd sabzi (…) + Rajma (…) + …" — pills[0] alone is just
+      // "Garlic (…)", which never matches any recipe title).
+      const rec = recipeFor(cell);
       meals.push({
         slot: slotName,
         timeHint: slotKey.includes("waking") ? "First thing, before tea" : slotTime(slotL),
@@ -3207,8 +3225,8 @@ export async function loadClientAppData(
         note: slotNote(slotL),
         kcal: dishKcal(cell),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
+        dishTitle: rec?.title || pills[0],
       });
-      const rec = recipeFor(pills[0] ?? cell);
       const swaps: { name: string; note: string; kcal?: number }[] = [];
       const seen = new Set<string>([cell]);
       // coach-approved swaps = the other dishes this plan serves in the SAME slot
@@ -3227,7 +3245,7 @@ export async function loadClientAppData(
         // photo — fall back to the library recipe's image so the thumbnail
         // shows a picture instead of the gradient (mirrors the recipe-card
         // fix below; fixes "all the food pictures disappeared" 2026-06-15).
-        imageUrl: rec?.imageUrl ?? libraryRecipeFor(pills[0] ?? cell)?.imageUrl ?? snackCategoryImage(cell),
+        imageUrl: rec?.imageUrl ?? libraryRecipeFor(cell)?.imageUrl ?? snackCategoryImage(cell),
         mins: rec?.time,
         serves: rec?.serves,
         ingredients: rec?.ingredients ?? [],

@@ -121,6 +121,21 @@ def _tokens(*free_text) -> set[str]:
 _JAIN_BAD = ("onion", "garlic", "potato", "carrot", "beet", "radish", "turnip",
              "yam", "sweet potato", "mushroom", "ginger root")
 
+def _full_ingredient_text(recipe: dict) -> str:
+    """main_ingredients + the FULL ingredients list, lowercased.
+
+    main_ingredients alone misses tempering/flavour-base items (garlic, onion)
+    that recipes routinely list only in `ingredients` — a Jain- or
+    avoid-list-scan against main_ingredients only will pass those through.
+    """
+    parts = list(recipe.get("main_ingredients") or [])
+    for ing in recipe.get("ingredients") or []:
+        if isinstance(ing, dict):
+            parts.append(str(ing.get("item", "")))
+        else:
+            parts.append(str(ing))
+    return " ".join(parts).lower()
+
 def diet_ok(recipe: dict, dietary_preference: str) -> bool:
     dp = (dietary_preference or "").lower()
     diets = set(d.lower() for d in (recipe.get("diet") or []))
@@ -131,7 +146,7 @@ def diet_ok(recipe: dict, dietary_preference: str) -> bool:
             return False
         if "jain" in diets:
             return True
-        ings = " ".join(recipe.get("main_ingredients") or []).lower()
+        ings = _full_ingredient_text(recipe)
         return not any(b in ings for b in _JAIN_BAD)
     if "egg" in dp:                                   # eggetarian
         return bool({"vegetarian", "vegan", "eggetarian"} & diets)
@@ -148,8 +163,8 @@ def is_safe(recipe: dict, allergies: list, avoid_tokens: set[str]) -> bool:
         a = str(a).lower().strip()
         if a and any(a in ra or ra in a for ra in rec_allergens):
             return False
-    # foods-to-avoid / triggers: substring match against main ingredients
-    ings = " ".join(recipe.get("main_ingredients") or []).lower()
+    # foods-to-avoid / triggers: substring match against the full ingredient list
+    ings = _full_ingredient_text(recipe)
     for tok in avoid_tokens:
         if tok in ings:
             return False

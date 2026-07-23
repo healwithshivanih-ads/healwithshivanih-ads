@@ -119,7 +119,7 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
               {meal.timeHint ? ` · ${meal.timeHint}` : ""}
             </div>
             <h2 className="h-serif" style={{ fontSize: 24, margin: "6px 0 0" }}>
-              {meal.pills[0]}
+              {meal.dishTitle || meal.pills[0]}
             </h2>
             {meal.ayurveda && (
               <span className="rx-ayur" style={{ marginTop: 8, display: "inline-flex" }}>
