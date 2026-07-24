@@ -449,15 +449,33 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
       if ((await mealPlanStyle(cid)) === "principles") continue; // client.meal_plan_style opt-out
-      // Dormant in the app → stop auto-drafting, but keep the row and tag it
-      // with `dormantDays` rather than dropping it. Same treatment as
-      // `onTravel`: the cron filters these out so nothing is generated, while
-      // the dashboard still shows the coach WHO has gone quiet. Silently
-      // vanishing would trade a spend problem for a visibility problem —
-      // a client who stops opening the app is exactly who needs chasing.
+      // Dormant in the app → auto-drafting is off for them. Emit the row here
+      // and SHORT-CIRCUIT, deliberately bypassing the due/pending logic below.
+      //
+      // The obvious implementation — tag the row and let it fall through, the
+      // way `onTravel` does — looks right and is wrong: a client whose current
+      // AND next week are already loaded is `!due && !pending`, so the row gets
+      // dropped further down and the pause becomes invisible on exactly the
+      // days nothing is owed. All three currently-dormant clients were in that
+      // state, so the panel rendered empty. "Who is paused" is a standing fact
+      // about the client, not a function of what's due this instant, so it must
+      // not be gated on due-ness.
       const dormantRaw = DORMANT_DAYS > 0 ? await daysSinceLastAppOpen(cid) : null;
-      const dormantDays =
-        dormantRaw !== null && dormantRaw >= DORMANT_DAYS ? dormantRaw : undefined;
+      if (dormantRaw !== null && dormantRaw >= DORMANT_DAYS) {
+        const curWeek = currentPlanWeek(p);
+        rows.push({
+          clientId: cid,
+          planSlug: String(p.slug ?? ""),
+          currentWeek: curWeek,
+          targetWeek: curWeek,
+          daysToNextWeek: 0,
+          behind: false,
+          pending: !!p.app_menu_pending,
+          onTravel: false,
+          dormantDays: dormantRaw,
+        });
+        continue;
+      }
       const weeks = p.app_menu?.weeks ?? [];
       // weeks may be EMPTY here: a real (non-hybrid, non-principle) plan that's
       // missing its menu entirely → it falls through and gets its FIRST week
@@ -503,7 +521,6 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
         onTravel: !!travelNote,
         travelNote: travelNote ?? undefined,
         changeNote: pending?.change_note,
-        dormantDays,
       });
     } catch {
       /* skip unparseable */
