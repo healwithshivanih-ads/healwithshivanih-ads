@@ -447,10 +447,17 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"total bilirubin|bilirubin.total|t.bili\b")
     bilirubin_direct = _find(extracted_labs,
         r"direct bilirubin|conjugated bilirubin|d.bili\b")
+    # Both patterns must exclude the "Albumin/Globulin Ratio" row (matches
+    # either bare word) and any *binding* globulin — SHBG, thyroxine-binding
+    # globulin, cortisol-binding globulin — which are unrelated transport
+    # proteins reported in nmol/L. Without the guard, cl-022's SHBG of 67.74
+    # was read as her globulin (real value 2.52 g/dL), which also poisoned the
+    # A/G ratio. Same class of collision as the serum-vs-RBC magnesium split.
+    _NOT_RATIO_OR_BINDING = r"^(?!.*ratio)(?!.*binding)(?!.*\bshbg\b)"
     albumin = _find(extracted_labs,
-        r"\balbumin\b|serum albumin")
+        _NOT_RATIO_OR_BINDING + r".*\balbumin\b")
     globulin = _find(extracted_labs,
-        r"\bglobulin\b|serum globulin")
+        _NOT_RATIO_OR_BINDING + r".*\bglobulin\b")
 
     if alt is not None:
         flag = "high" if alt > 25 else ("suboptimal" if alt > 20 else "optimal")

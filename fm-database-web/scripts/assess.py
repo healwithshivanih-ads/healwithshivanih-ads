@@ -1198,6 +1198,38 @@ def main() -> int:
                 f"(cap {_MAX_SELECTION} combined) — trim to the ~3-4 highest-yield of each; "
                 "a broad selection bloats the subgraph and truncates the output"
             )
+        # Guard D — refuse to pay for an assessment authored blind to labs
+        # that are already sitting on disk. Guard A stops us re-sending raw
+        # PDFs because the values "should already be parsed into the client
+        # record" — but nothing ever checked that they actually WERE. cl-022
+        # had a 42-page panel uploaded and parsed, an empty health_snapshots,
+        # and a $0.72 synthesis that ran with extracted_labs: [] and never
+        # saw a single value. It failed silently: no error, just a confident
+        # assessment built on nothing. This is the check that closes that gap.
+        _lab_file_exts = (".pdf", ".jpg", ".jpeg", ".png", ".webp")
+        try:
+            _files_dir = root / "clients" / client_id / "files"
+            _lab_files_on_disk = [
+                p.name for p in _files_dir.iterdir()
+                if p.is_file() and p.suffix.lower() in _lab_file_exts
+                and p.stat().st_size > 1024  # skip the 23-byte "Authentication required" stubs
+            ] if _files_dir.is_dir() else []
+        except OSError:
+            _lab_files_on_disk = []
+        _labs_on_record = sum(
+            len(s.get("lab_values") or [])
+            for s in (getattr(client, "health_snapshots", None) or [])
+            if isinstance(s, dict)
+        )
+        if _lab_files_on_disk and _labs_on_record == 0:
+            _reasons.append(
+                f"{len(_lab_files_on_disk)} report file(s) are on disk for this client "
+                f"({', '.join(sorted(_lab_files_on_disk)[:3])}"
+                f"{'…' if len(_lab_files_on_disk) > 3 else ''}) but ZERO lab values have "
+                "reached health_snapshots — the assessment would be authored blind to every "
+                "one of them. Apply the labs first (lab-upload panel → Apply, or "
+                "update-client-data.py), then re-run"
+            )
         if _reasons:
             json.dump({
                 "ok": False,
@@ -1305,6 +1337,46 @@ def main() -> int:
                     vitaone_inventory=_load_vitaone_inventory(),
                 )
             except Exception as e:
+                # If the API call actually completed (truncation / no-tool-
+                # block failures in suggester.py attach `.usage`), real
+                # tokens were billed even though nothing usable came back.
+                # Log it so the spend isn't invisible, and say so plainly —
+                # otherwise the coach has no way to tell "this failed for
+                # free" from "this failed after billing $0.50+", and a blind
+                # retry on the same oversized selection just repeats the
+                # same wasted spend (incident 2026-07-24, cl-022 Nazneen).
+                err_usage = getattr(e, "usage", None)
+                if err_usage is not None:
+                    usage_dump = (
+                        err_usage.model_dump() if hasattr(err_usage, "model_dump") else err_usage
+                    )
+                    try:
+                        from fmdb.usage import log_usage as _log_usage
+                        _log_usage(
+                            client_id=client_id,
+                            script="assess.py",
+                            model=usage_dump.get("model"),
+                            usage=usage_dump,
+                            notes=f"FAILED ({type(e).__name__}) — {len(symptoms)} symptoms, "
+                                  f"{len(topics)} conditions — no result saved",
+                        )
+                    except Exception:
+                        pass
+                    _in = usage_dump.get("input_tokens") or 0
+                    _out = usage_dump.get("output_tokens") or 0
+                    cost_note = (
+                        f" This call was BILLED (~{_in:,} input + {_out:,} output tokens, "
+                        f"model {usage_dump.get('model') or '?'}) despite producing no result. "
+                        "Do not just retry the same selection — it will likely fail (and bill) "
+                        "again. Trim symptoms/topics/notes, or use the $0 manual/Skip-AI path."
+                    )
+                    json.dump({
+                        "ok": False,
+                        "billed_but_failed": True,
+                        "usage": usage_dump,
+                        "error": f"synthesize() failed: {type(e).__name__}: {e}.{cost_note}",
+                    }, sys.stdout)
+                    return 1
                 json.dump({"ok": False, "error": f"synthesize() failed: {type(e).__name__}: {e}"}, sys.stdout)
                 return 1
             # `result` is an AssessResult Pydantic model with typed .suggestions.
