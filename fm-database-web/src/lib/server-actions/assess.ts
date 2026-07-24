@@ -984,6 +984,32 @@ export async function applyTranscriptDataAction(
   try {
     const result = JSON.parse(stdout) as ApplyClientDataResult;
     if (result.ok) {
+      // Close the extraction loop: extract-symptoms.py writes a durable
+      // *.extracted.json sidecar next to each parsed report so a billed
+      // extraction can't be lost by closing the tab. Once the labs actually
+      // reach health_snapshots, stamp those sidecars applied — otherwise
+      // assess.py's Guard D would keep flagging labs that are already in,
+      // and a real warning that cries wolf gets ignored.
+      if (input.lab_values?.length) {
+        try {
+          const dir = path.join(getPlansRoot(), "clients", input.client_id, "files");
+          const stamp = new Date().toISOString();
+          await Promise.all(
+            (await fs.readdir(dir))
+              .filter((n) => n.endsWith(".extracted.json"))
+              .map(async (n) => {
+                const f = path.join(dir, n);
+                const doc = JSON.parse(await fs.readFile(f, "utf-8"));
+                if (doc.applied) return;
+                doc.applied = true;
+                doc.applied_at = stamp;
+                await fs.writeFile(f, JSON.stringify(doc, null, 2), "utf-8");
+              }),
+          );
+        } catch {
+          /* sidecar bookkeeping must never fail the apply itself */
+        }
+      }
       revalidatePath(`/clients/${input.client_id}`);
     }
     return result;
