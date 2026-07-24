@@ -1491,3 +1491,121 @@ export async function loadCatalogueProtocolsAction(): Promise<CataloguePickerEnt
   out.sort((a, b) => a.display_name.localeCompare(b.display_name));
   return out;
 }
+
+// ---------------------------------------------------------------------------
+// Pending lab extractions — the "approve it" half of the durability fix.
+//
+// extract-symptoms.py writes a `<report>.extracted.json` sidecar the moment an
+// extraction is billed, so closing the tab no longer loses the labs, and
+// assess.py's Guard D refuses to run an assessment while one is unapplied.
+// But durability without a way to APPROVE is a trap: the coach was left with a
+// blocked assessment and no button, whose only escapes were re-extracting
+// (paying twice — the exact thing we were preventing) or force-bypassing
+// (throwing the labs away). These three actions are that missing button.
+// ---------------------------------------------------------------------------
+
+export interface PendingExtraction {
+  file: string;          // sidecar filename — the id used by apply/discard
+  sourceFile: string;    // the report it came from, for display
+  extractedAt: string;
+  labCount: number;
+  labs: Array<{ test_name: string; value: string; unit: string; date_drawn?: string | null }>;
+}
+
+/** Reject path traversal — `file` comes from the client and is joined to a path. */
+function safeSidecarName(file: string): string | null {
+  if (!file || file.includes("/") || file.includes("\\") || file.includes("..")) return null;
+  if (!file.endsWith(".extracted.json")) return null;
+  return file;
+}
+
+export async function listPendingExtractionsAction(
+  clientId: string,
+): Promise<PendingExtraction[]> {
+  const out: PendingExtraction[] = [];
+  try {
+    const dir = path.join(getPlansRoot(), "clients", clientId, "files");
+    for (const n of await fs.readdir(dir)) {
+      if (!n.endsWith(".extracted.json")) continue;
+      try {
+        const doc = JSON.parse(await fs.readFile(path.join(dir, n), "utf-8"));
+        if (doc.applied) continue;
+        const labs = Array.isArray(doc.lab_values) ? doc.lab_values : [];
+        if (!labs.length) continue;
+        out.push({
+          file: n,
+          sourceFile: String(doc.source_file ?? n.replace(/\.extracted\.json$/, "")),
+          extractedAt: String(doc.extracted_at ?? ""),
+          labCount: labs.length,
+          labs,
+        });
+      } catch {
+        /* a corrupt sidecar shouldn't hide the healthy ones */
+      }
+    }
+  } catch {
+    /* no files dir yet */
+  }
+  out.sort((a, b) => b.extractedAt.localeCompare(a.extractedAt));
+  return out;
+}
+
+/** Import a saved extraction's labs. Costs nothing — the AI call was already
+ *  billed when the sidecar was written. Routes through the normal apply path,
+ *  which persists the snapshot, recomputes lab_markers AND stamps the sidecar
+ *  applied, so Guard D clears itself. */
+export async function applyPendingExtractionAction(
+  clientId: string,
+  file: string,
+): Promise<{ ok: boolean; applied?: number; error?: string }> {
+  const safe = safeSidecarName(file);
+  if (!safe) return { ok: false, error: "Invalid extraction reference." };
+  try {
+    const p = path.join(getPlansRoot(), "clients", clientId, "files", safe);
+    const doc = JSON.parse(await fs.readFile(p, "utf-8"));
+    if (doc.applied) return { ok: true, applied: 0 };
+    const labs = Array.isArray(doc.lab_values) ? doc.lab_values : [];
+    if (!labs.length) return { ok: false, error: "That extraction has no lab values." };
+    const res = await applyTranscriptDataAction({
+      client_id: clientId,
+      lab_values: labs.map((lv: Record<string, unknown>) => ({
+        test_name: String(lv.test_name ?? ""),
+        value: String(lv.value ?? ""),
+        unit: String(lv.unit ?? ""),
+        date_drawn: (lv.date_drawn as string | null) ?? null,
+      })),
+      measurements: doc.measurements ?? undefined,
+      medications: doc.medications ?? undefined,
+      conditions: doc.conditions ?? undefined,
+      source: "lab_report",
+    });
+    if (!res.ok) return { ok: false, error: res.error ?? "Apply failed." };
+    return { ok: true, applied: labs.length };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "Apply failed." };
+  }
+}
+
+/** Not a lab report (a scan, a letter, a duplicate) — retire the sidecar so it
+ *  stops blocking assessments, WITHOUT importing anything. Marked rather than
+ *  deleted: the extraction was paid for, and a discarded-by-mistake sidecar
+ *  should be recoverable from disk. */
+export async function discardPendingExtractionAction(
+  clientId: string,
+  file: string,
+): Promise<{ ok: boolean; error?: string }> {
+  const safe = safeSidecarName(file);
+  if (!safe) return { ok: false, error: "Invalid extraction reference." };
+  try {
+    const p = path.join(getPlansRoot(), "clients", clientId, "files", safe);
+    const doc = JSON.parse(await fs.readFile(p, "utf-8"));
+    doc.applied = true;
+    doc.applied_at = new Date().toISOString();
+    doc.discarded = true;
+    await fs.writeFile(p, JSON.stringify(doc, null, 2), "utf-8");
+    revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "Discard failed." };
+  }
+}

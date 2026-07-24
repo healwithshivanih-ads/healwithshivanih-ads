@@ -78,6 +78,7 @@ import {
 import { useFormDraft } from "@/lib/fmdb/use-form-draft";
 import { IFM_NODES, computeIFMMatrix, type IFMNodeId } from "@/lib/fmdb/ifm-matrix";
 import { LabUploadPanel } from "@/components/client-widgets/lab-upload-panel";
+import { PendingExtractionsBanner } from "@/components/client-widgets/pending-extractions-banner";
 import { FunctionalTestPanel } from "@/components/client-widgets/functional-test-panel";
 import { GeneticReportPanel } from "@/components/client-widgets/genetic-report-panel";
 import { VerifyChecklist, useVerifyChecklist } from "./verify-checklist";
@@ -1999,6 +2000,7 @@ export function IntakeForm({
         title="9 · Lab reports already on file"
         description="Drop PDFs of blood work, urine, stool, breath etc. Sonnet extracts the marker values and they show up on the Overview FM markers panel."
       >
+        <PendingExtractionsBanner clientId={clientId} />
         <LabUploadPanel clientId={clientId} />
       </FmFormSection>
 
