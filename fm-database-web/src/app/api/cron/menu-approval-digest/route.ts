@@ -49,8 +49,10 @@ export async function POST(req: NextRequest) {
   // including catch-up rows whose draft hasn't generated yet.
   const queue = await weeklyMenuQueueAction(7);
   // Travel/maintenance-window clients are paused — never ask the coach to
-  // approve a menu for a holiday week.
-  const actionable = queue.filter((r) => !r.onTravel);
+  // approve a menu for a holiday week. Same for app-dormant clients: we've
+  // deliberately stopped drafting for them, so nagging her to approve their
+  // menu would undo the point of the pause.
+  const actionable = queue.filter((r) => !r.onTravel && !r.dormantDays);
   if (actionable.length === 0) {
     return NextResponse.json({ ok: true, sent: 0, reason: "nothing actionable (queue empty or all on travel)" });
   }

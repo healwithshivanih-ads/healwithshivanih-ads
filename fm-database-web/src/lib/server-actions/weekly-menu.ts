@@ -427,6 +427,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
     onTravel: boolean; // target week overlaps a travel/maintenance override
     travelNote?: string;
     changeNote?: string;
+    dormantDays?: number; // set when auto-draft is PAUSED (client not opening the app)
   }[]
 > {
   const dir = path.join(getPlansRoot(), "published");
@@ -448,12 +449,15 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
       if ((await mealPlanStyle(cid)) === "principles") continue; // client.meal_plan_style opt-out
-      // Dormant in the app → stop drafting for them. Listed as `dormantDays`
-      // on the row rather than silently vanishing, so the coach can still see
-      // who has gone quiet and chase them instead of quietly paying to
-      // generate menus nobody opens.
-      const dormant = DORMANT_DAYS > 0 ? await daysSinceLastAppOpen(cid) : null;
-      if (dormant !== null && dormant >= DORMANT_DAYS) continue;
+      // Dormant in the app → stop auto-drafting, but keep the row and tag it
+      // with `dormantDays` rather than dropping it. Same treatment as
+      // `onTravel`: the cron filters these out so nothing is generated, while
+      // the dashboard still shows the coach WHO has gone quiet. Silently
+      // vanishing would trade a spend problem for a visibility problem —
+      // a client who stops opening the app is exactly who needs chasing.
+      const dormantRaw = DORMANT_DAYS > 0 ? await daysSinceLastAppOpen(cid) : null;
+      const dormantDays =
+        dormantRaw !== null && dormantRaw >= DORMANT_DAYS ? dormantRaw : undefined;
       const weeks = p.app_menu?.weeks ?? [];
       // weeks may be EMPTY here: a real (non-hybrid, non-principle) plan that's
       // missing its menu entirely → it falls through and gets its FIRST week
@@ -499,6 +503,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
         onTravel: !!travelNote,
         travelNote: travelNote ?? undefined,
         changeNote: pending?.change_note,
+        dormantDays,
       });
     } catch {
       /* skip unparseable */
