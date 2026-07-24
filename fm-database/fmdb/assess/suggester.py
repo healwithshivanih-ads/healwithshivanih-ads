@@ -1764,11 +1764,20 @@ def synthesize(
     # missing drivers/supplements/labs with empty defaults, and the caller would
     # cache that blank result as a "success". Fail loudly so the shim emits
     # ok:false and nothing is cached.
+    #
+    # The API call already completed and billed real tokens by this point —
+    # attach usage_obj to the exception so the caller (assess.py) can still
+    # log the spend instead of it vanishing (incident 2026-07-24, cl-022:
+    # a truncated run billed real tokens, returned nothing, and left zero
+    # trace in _api_usage.jsonl — inviting a blind retry that repeats the
+    # same wasted spend).
     if usage_obj.stop_reason == "max_tokens":
-        raise RuntimeError(
+        err = RuntimeError(
             "assessment truncated — hit the output token limit; not saved. "
             "Retry with fewer symptoms/topics."
         )
+        err.usage = usage_obj
+        raise err
 
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use" and block.name == "synthesize_assessment":
@@ -1787,11 +1796,14 @@ def synthesize(
 
     # No synthesize_assessment tool block in the response — the model didn't
     # produce an assessment. Don't return a blank result the caller would cache
-    # as success (audit Phase-1b).
-    raise RuntimeError(
+    # as success (audit Phase-1b). Same billed-but-unlogged risk as the
+    # truncation guard above — attach usage so the caller can log the spend.
+    err = RuntimeError(
         "assessment synthesis produced no result (model returned no "
         "synthesize_assessment block) — not saved."
     )
+    err.usage = usage_obj
+    raise err
 
 
 # ---------------------------------------------------------------------------

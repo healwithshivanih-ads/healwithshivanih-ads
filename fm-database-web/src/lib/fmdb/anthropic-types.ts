@@ -267,6 +267,10 @@ export interface AssessResult {
   subgraph_size_bytes?: number;
   /** true when refused BEFORE any API spend — broad selection or oversized attachments. */
   preflight_blocked?: boolean;
+  /** true when the API call completed and billed real tokens (see `usage`) but produced
+   *  no usable result (truncation, malformed tool-use) — distinguishes a wasted spend
+   *  from a free failure (network/auth error, or preflight_blocked). */
+  billed_but_failed?: boolean;
   error?: string | null;
 }
 

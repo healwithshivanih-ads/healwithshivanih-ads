@@ -1305,6 +1305,46 @@ def main() -> int:
                     vitaone_inventory=_load_vitaone_inventory(),
                 )
             except Exception as e:
+                # If the API call actually completed (truncation / no-tool-
+                # block failures in suggester.py attach `.usage`), real
+                # tokens were billed even though nothing usable came back.
+                # Log it so the spend isn't invisible, and say so plainly —
+                # otherwise the coach has no way to tell "this failed for
+                # free" from "this failed after billing $0.50+", and a blind
+                # retry on the same oversized selection just repeats the
+                # same wasted spend (incident 2026-07-24, cl-022 Nazneen).
+                err_usage = getattr(e, "usage", None)
+                if err_usage is not None:
+                    usage_dump = (
+                        err_usage.model_dump() if hasattr(err_usage, "model_dump") else err_usage
+                    )
+                    try:
+                        from fmdb.usage import log_usage as _log_usage
+                        _log_usage(
+                            client_id=client_id,
+                            script="assess.py",
+                            model=usage_dump.get("model"),
+                            usage=usage_dump,
+                            notes=f"FAILED ({type(e).__name__}) — {len(symptoms)} symptoms, "
+                                  f"{len(topics)} conditions — no result saved",
+                        )
+                    except Exception:
+                        pass
+                    _in = usage_dump.get("input_tokens") or 0
+                    _out = usage_dump.get("output_tokens") or 0
+                    cost_note = (
+                        f" This call was BILLED (~{_in:,} input + {_out:,} output tokens, "
+                        f"model {usage_dump.get('model') or '?'}) despite producing no result. "
+                        "Do not just retry the same selection — it will likely fail (and bill) "
+                        "again. Trim symptoms/topics/notes, or use the $0 manual/Skip-AI path."
+                    )
+                    json.dump({
+                        "ok": False,
+                        "billed_but_failed": True,
+                        "usage": usage_dump,
+                        "error": f"synthesize() failed: {type(e).__name__}: {e}.{cost_note}",
+                    }, sys.stdout)
+                    return 1
                 json.dump({"ok": False, "error": f"synthesize() failed: {type(e).__name__}: {e}"}, sys.stdout)
                 return 1
             # `result` is an AssessResult Pydantic model with typed .suggestions.
