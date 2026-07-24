@@ -44,10 +44,20 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
 
   if (!rows || rows.length === 0) return null;
 
-  const approveRows = rows.filter((r) => r.pending && !r.onTravel);
-  const travelRows = rows.filter((r) => r.pending && r.onTravel);
-  const upcoming = rows.filter((r) => !r.pending && !r.onTravel);
-  if (approveRows.length === 0 && travelRows.length === 0 && upcoming.length === 0) return null;
+  // Paused rows come FIRST in the filter chain so a dormant client can never
+  // also appear in the approve/upcoming groups — the pause is the whole story
+  // for them and showing them twice would be misleading.
+  const pausedRows = rows.filter((r) => !!r.dormantDays);
+  const approveRows = rows.filter((r) => r.pending && !r.onTravel && !r.dormantDays);
+  const travelRows = rows.filter((r) => r.pending && r.onTravel && !r.dormantDays);
+  const upcoming = rows.filter((r) => !r.pending && !r.onTravel && !r.dormantDays);
+  if (
+    approveRows.length === 0 &&
+    travelRows.length === 0 &&
+    upcoming.length === 0 &&
+    pausedRows.length === 0
+  )
+    return null;
 
   const approveAll = () => {
     setArmed(false);
@@ -274,6 +284,57 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
                 >
                   Dismiss draft
                 </button>
+              </div>
+            ))}
+          </div>
+        </FmPanel>
+      )}
+
+      {pausedRows.length > 0 && (
+        <FmPanel
+          title={`⏸ Menu paused — not opening the app (${pausedRows.length})`}
+          subtitle="Auto-drafting is stopped for these clients because they haven't opened the Ochre Tree app recently. Nothing is being generated and nothing reaches them. It resumes on its own the moment they open the app — but a client who has gone quiet is usually one worth chasing."
+        >
+          <div style={{ display: "grid", gap: 6 }}>
+            {pausedRows.map((r) => (
+              <div
+                key={r.clientId}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  flexWrap: "wrap",
+                  padding: "8px 10px",
+                  border: "1px solid rgba(120,113,108,0.18)",
+                  borderRadius: "var(--fm-radius-md, 10px)",
+                  fontSize: 12.5,
+                  opacity: 0.85,
+                }}
+              >
+                <span style={{ flex: 1, minWidth: 160 }}>
+                  <strong>{names[r.clientId] ?? r.clientId}</strong>
+                  <span style={{ color: "var(--fm-text-tertiary)" }}>
+                    {" "}
+                    · week {r.targetWeek} · last opened {r.dormantDays} days ago
+                    {/* A draft may already exist from before they went quiet.
+                        Say so explicitly — it's paid for, it just isn't being
+                        pushed, and she'd otherwise wonder where it went. */}
+                    {r.pending ? " · a drafted menu is already waiting" : ""}
+                  </span>
+                </span>
+                <a
+                  href={`/clients-v2/${r.clientId}/plan`}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: 999,
+                    border: "1px solid rgba(120,113,108,0.3)",
+                    color: "var(--fm-text-secondary)",
+                    fontSize: 11.5,
+                    textDecoration: "none",
+                  }}
+                >
+                  Open plan
+                </a>
               </div>
             ))}
           </div>

@@ -304,6 +304,9 @@ def main() -> int:
     # Drivers whose mechanism slug isn't in the catalogue — collected here and
     # surfaced in notes_for_coach instead of written into the plan.
     _dropped_driver_slugs: list[str] = []
+    # Supplements the assessment explicitly said to STOP — deliberately kept out
+    # of supplement_protocol and reported to the coach instead (see loop below).
+    _stopped_supplements: list[tuple[str, str]] = []
 
     for d in suggestions.get("likely_drivers", []) or []:
         slug_d = d.get("mechanism_slug") or ""
@@ -464,6 +467,16 @@ def main() -> int:
     for sp in suggestions.get("supplement_suggestions", []) or []:
         slug_s = sp.get("supplement_slug", "")
         if not slug_s:
+            continue
+        # continue_or_change == "stop" means the assessment is telling the coach
+        # to TAKE THIS AWAY — e.g. cl-022, where ashwagandha had to stop because
+        # she turned out TPO-positive and it is thyroid-stimulating. Copying it
+        # into supplement_protocol turned a de-prescribing instruction into an
+        # active prescription, which is the most dangerous direction for this
+        # bug to fail in. Skip it here and surface it under its own heading in
+        # notes_for_coach so the decision stays visible instead of vanishing.
+        if str(sp.get("continue_or_change") or "").lower() == "stop":
+            _stopped_supplements.append((slug_s, sp.get("rationale", "") or ""))
             continue
         if picks.get(f"supp_{slug_s}", True):
             # Remap generic → VitaOne brand variant when one exists.
@@ -809,6 +822,18 @@ def main() -> int:
             "publishable. Add each as a mechanism (or an alias on an existing one) "
             "and re-add the driver if it's clinically relevant:\n"
             + "\n".join(f"- `{s}`" for s in _dropped_driver_slugs)
+        )
+
+    if _stopped_supplements:
+        notes_parts.append(
+            "## 🛑 Supplements to STOP (deliberately not in the protocol)\n"
+            "The assessment flagged these to be taken away, so they were kept OUT "
+            "of the supplement protocol on purpose. Tell the client to stop each "
+            "one — they won't appear anywhere else in the plan:\n"
+            + "\n".join(
+                f"- `{s}`" + (f" — {r.strip()}" if r.strip() else "")
+                for s, r in _stopped_supplements
+            )
         )
 
     if notes_parts:

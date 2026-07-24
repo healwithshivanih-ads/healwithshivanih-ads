@@ -1198,6 +1198,91 @@ def main() -> int:
                 f"(cap {_MAX_SELECTION} combined) — trim to the ~3-4 highest-yield of each; "
                 "a broad selection bloats the subgraph and truncates the output"
             )
+        # Guard D — refuse to pay for an assessment authored blind to labs
+        # that are already sitting on disk. Guard A stops us re-sending raw
+        # PDFs because the values "should already be parsed into the client
+        # record" — but nothing ever checked that they actually WERE. cl-022
+        # had a 42-page panel uploaded and parsed, an empty health_snapshots,
+        # and a $0.72 synthesis that ran with extracted_labs: [] and never
+        # saw a single value. It failed silently: no error, just a confident
+        # assessment built on nothing. This is the check that closes that gap.
+        _lab_file_exts = (".pdf", ".jpg", ".jpeg", ".png", ".webp")
+        try:
+            _files_dir = root / "clients" / client_id / "files"
+            _lab_files_on_disk = [
+                p.name for p in _files_dir.iterdir()
+                if p.is_file() and p.suffix.lower() in _lab_file_exts
+                and p.stat().st_size > 1024  # skip the 23-byte "Authentication required" stubs
+            ] if _files_dir.is_dir() else []
+        except OSError:
+            _lab_files_on_disk = []
+        _labs_on_record = sum(
+            len(s.get("lab_values") or [])
+            for s in (getattr(client, "health_snapshots", None) or [])
+            if isinstance(s, dict)
+        )
+        if _lab_files_on_disk and _labs_on_record == 0:
+            _reasons.append(
+                f"{len(_lab_files_on_disk)} report file(s) are on disk for this client "
+                f"({', '.join(sorted(_lab_files_on_disk)[:3])}"
+                f"{'…' if len(_lab_files_on_disk) > 3 else ''}) but ZERO lab values have "
+                "reached health_snapshots — the assessment would be authored blind to every "
+                "one of them. Apply the labs first (lab-upload panel → Apply, or "
+                "update-client-data.py), then re-run"
+            )
+        elif _labs_on_record:
+            # The zero-labs case above is the LOUD failure. The quiet one is a
+            # client who already has old labs on record and a NEW report that
+            # was extracted but never applied — Guard D would pass and we'd pay
+            # for an assessment authored against stale values. Root cause:
+            # extract-symptoms.py persists nothing, and the extracted values sit
+            # in React state until the coach clicks Apply. Close the tab and the
+            # spend is gone with the data. So compare recency, not just presence.
+            # PDFs only: a stray WhatsApp photo shouldn't block an assessment.
+            _newest_snap = max(
+                (str(s.get("date") or "") for s in (getattr(client, "health_snapshots", None) or [])
+                 if isinstance(s, dict)),
+                default="",
+            )
+            _unapplied: list[str] = []
+            try:
+                _files_dir = root / "clients" / client_id / "files"
+                # Preferred signal: an extract-symptoms.py sidecar still marked
+                # applied:false. This is exact — it knows labs were parsed and
+                # never persisted — so it can't false-positive on a non-lab PDF.
+                for p in _files_dir.glob("*.extracted.json"):
+                    try:
+                        _doc = json.loads(p.read_text(encoding="utf-8"))
+                    except (OSError, ValueError):
+                        continue
+                    if _doc.get("applied"):
+                        continue
+                    _n = len(_doc.get("lab_values") or [])
+                    if _n:
+                        _unapplied.append(
+                            f"{_doc.get('source_file') or p.name}: {_n} lab value(s) "
+                            f"extracted {str(_doc.get('extracted_at') or '')[:10]}, never applied"
+                        )
+                # Fallback for reports parsed BEFORE sidecars existed: a report
+                # PDF newer than the newest applied lab. Heuristic, so PDFs only.
+                if not _unapplied:
+                    for p in _files_dir.iterdir():
+                        if not p.is_file() or p.suffix.lower() != ".pdf" or p.stat().st_size <= 1024:
+                            continue
+                        f_date = date.fromtimestamp(p.stat().st_mtime).isoformat()
+                        if _newest_snap and f_date > _newest_snap:
+                            _unapplied.append(f"{p.name} ({f_date})")
+            except OSError:
+                pass
+            if _unapplied:
+                _reasons.append(
+                    f"labs on this client were extracted but never applied "
+                    f"(newest applied health_snapshot is {_newest_snap or 'none'}): "
+                    f"{'; '.join(sorted(_unapplied)[:3])}"
+                    f"{'…' if len(_unapplied) > 3 else ''} — the assessment would be authored "
+                    "against stale values. Apply them (lab-upload panel → Apply), or re-run "
+                    "with FM_ASSESS_FORCE=1 if that report genuinely isn't a lab panel"
+                )
         if _reasons:
             json.dump({
                 "ok": False,

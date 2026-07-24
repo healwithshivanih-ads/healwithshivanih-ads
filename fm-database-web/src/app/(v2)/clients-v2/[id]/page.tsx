@@ -56,6 +56,7 @@ import { TierOneSuspicionsPanel } from "./tier-one-suspicions-panel";
 import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
+import { PendingExtractionsBanner } from "@/components/client-widgets/pending-extractions-banner";
 import { MindbodyDripPanel } from "./mindbody-drip-panel";
 import { loadMindbodyDrip } from "@/lib/fmdb/mindbody-status";
 import { EftThemesPanel } from "./eft-themes-panel";
@@ -1471,6 +1472,12 @@ export default async function ClientV2Page({
               })()
             }
           />
+
+          {/* Labs that were read (and billed) but never imported. Sits directly
+              above the markers panel because that's the panel it explains:
+              markers look stale/empty precisely when an extraction is stranded
+              here. Self-hides when nothing is pending. */}
+          <PendingExtractionsBanner clientId={client.client_id} />
 
           {markerGroups.length > 0 ? (
             <MarkerPanelWithRecompute

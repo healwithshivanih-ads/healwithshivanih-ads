@@ -30,7 +30,11 @@ export async function POST(req: NextRequest) {
   // Skip clients with a pending draft (idempotent) AND clients whose target
   // week falls in a travel / maintenance window — don't draft a menu the
   // client can't use on holiday.
-  const due = (await weeklyMenuQueueAction(3)).filter((r) => !r.pending && !r.onTravel);
+  // `dormantDays` rows are listed for the dashboard but must never be drafted —
+  // that's the whole point of the pause (see DORMANT_DAYS in weekly-menu.ts).
+  const due = (await weeklyMenuQueueAction(3)).filter(
+    (r) => !r.pending && !r.onTravel && !r.dormantDays,
+  );
   const results: { clientId: string; ok: boolean; error?: string }[] = [];
   for (const row of due) {
     try {

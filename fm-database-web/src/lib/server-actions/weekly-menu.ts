@@ -76,6 +76,37 @@ async function mealPlanStyle(clientId: string): Promise<"detailed" | "principles
   }
 }
 
+/** Days since the client last opened the Ochre Tree app, from
+ *  ~/fm-plans/clients/<id>/_app_opens.yaml. Returns null when the file is
+ *  missing or empty — a client who has NEVER opened the app is deliberately
+ *  NOT treated as dormant, because a brand-new client hasn't had the chance
+ *  yet and we'd pause their very first menu. */
+async function daysSinceLastAppOpen(clientId: string): Promise<number | null> {
+  try {
+    const f = path.join(getPlansRoot(), "clients", clientId, "_app_opens.yaml");
+    const doc = (yaml.load(await fs.readFile(f, "utf-8")) as { opens?: unknown[] }) ?? {};
+    const opens = (doc.opens ?? []).map(String).filter(Boolean);
+    if (!opens.length) return null;
+    const last = Date.parse(opens.reduce((a, b) => (a > b ? a : b)));
+    if (!Number.isFinite(last)) return null;
+    return Math.floor((Date.now() - last) / 86_400_000);
+  } catch {
+    return null;
+  }
+}
+
+/** Dormancy cut-off, in days since last app open, past which we stop
+ *  auto-drafting weekly menus (and the grocery/recipe packs that follow).
+ *
+ *  WHY: menu + grocery + recipe generation costs roughly $0.09/client/week in
+ *  Haiku calls, and it was running every week for clients who had not opened
+ *  the app in nearly three weeks (cl-007 and cl-008 were both 19 days dormant).
+ *  Nobody was reading the output. Coach set the threshold at 14 days on
+ *  2026-07-24 — two missed weeks is a clear signal, and it reverses itself the
+ *  moment the client opens the app again, so nothing needs un-pausing by hand.
+ *  Override with FM_MENU_DORMANT_DAYS (0 disables the pause entirely). */
+const DORMANT_DAYS = Number(process.env.FM_MENU_DORMANT_DAYS ?? 14);
+
 /** The client's current plan week (1-based), from the same Day-1 anchor the
  *  app uses. Returns 1 when no anchor exists yet. */
 function currentPlanWeek(plan: PlanDoc): number {
@@ -148,6 +179,7 @@ export async function weeklyMenuStatusAction(
 /** Draft next week's menu via the Sonnet shim (~30-60s, ~$0.05). */
 export async function generateWeekMenuAction(
   clientId: string,
+  force = false,
 ): Promise<{ ok: boolean; error?: string; changeNote?: string; week?: number }> {
   const hit = await publishedFileForClient(clientId);
   if (!hit) return { ok: false, error: "No published plan." };
@@ -156,6 +188,22 @@ export async function generateWeekMenuAction(
   }
   if (hit.plan.no_weekly_menu || (await mealPlanStyle(clientId)) === "principles") {
     return { ok: false, error: "Principle plan — it shows the eating framework only (no weekly menu)." };
+  }
+  // Auto-draft is paused for dormant clients (see DORMANT_DAYS). This is the
+  // AUTOMATIC path only — the coach pressing "Draft menu" in the UI passes
+  // force and always wins, because she may be prepping for a client she has
+  // just re-engaged over WhatsApp.
+  if (!force && DORMANT_DAYS > 0) {
+    const dormant = await daysSinceLastAppOpen(clientId);
+    if (dormant !== null && dormant >= DORMANT_DAYS) {
+      return {
+        ok: false,
+        error:
+          `Auto-draft paused — client hasn't opened the app in ${dormant} days ` +
+          `(threshold ${DORMANT_DAYS}). It resumes on their next open; use the ` +
+          `Draft menu button to override.`,
+      };
+    }
   }
   // Catch-up aware: if the CURRENT plan week has no menu, draft THAT (never
   // skip it → no more non-contiguous [4,6]); otherwise pre-load next week.
@@ -379,6 +427,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
     onTravel: boolean; // target week overlaps a travel/maintenance override
     travelNote?: string;
     changeNote?: string;
+    dormantDays?: number; // set when auto-draft is PAUSED (client not opening the app)
   }[]
 > {
   const dir = path.join(getPlansRoot(), "published");
@@ -400,6 +449,33 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
       if ((await mealPlanStyle(cid)) === "principles") continue; // client.meal_plan_style opt-out
+      // Dormant in the app → auto-drafting is off for them. Emit the row here
+      // and SHORT-CIRCUIT, deliberately bypassing the due/pending logic below.
+      //
+      // The obvious implementation — tag the row and let it fall through, the
+      // way `onTravel` does — looks right and is wrong: a client whose current
+      // AND next week are already loaded is `!due && !pending`, so the row gets
+      // dropped further down and the pause becomes invisible on exactly the
+      // days nothing is owed. All three currently-dormant clients were in that
+      // state, so the panel rendered empty. "Who is paused" is a standing fact
+      // about the client, not a function of what's due this instant, so it must
+      // not be gated on due-ness.
+      const dormantRaw = DORMANT_DAYS > 0 ? await daysSinceLastAppOpen(cid) : null;
+      if (dormantRaw !== null && dormantRaw >= DORMANT_DAYS) {
+        const curWeek = currentPlanWeek(p);
+        rows.push({
+          clientId: cid,
+          planSlug: String(p.slug ?? ""),
+          currentWeek: curWeek,
+          targetWeek: curWeek,
+          daysToNextWeek: 0,
+          behind: false,
+          pending: !!p.app_menu_pending,
+          onTravel: false,
+          dormantDays: dormantRaw,
+        });
+        continue;
+      }
       const weeks = p.app_menu?.weeks ?? [];
       // weeks may be EMPTY here: a real (non-hybrid, non-principle) plan that's
       // missing its menu entirely → it falls through and gets its FIRST week

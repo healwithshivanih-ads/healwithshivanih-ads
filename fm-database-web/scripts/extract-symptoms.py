@@ -41,6 +41,7 @@ import base64
 import json
 import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
@@ -378,6 +379,38 @@ def main() -> int:
         "medications": [m for m in (raw_data.get("medications") or []) if isinstance(m, str) and m.strip()],
         "conditions": [c for c in (raw_data.get("conditions") or []) if isinstance(c, str) and c.strip()],
     }
+
+    # ── Persist the extraction so the spend can never be thrown away ──────
+    # This call costs real money (~$0.10 on a 40-page panel) but historically
+    # returned to stdout and nowhere else: the values sat in React state until
+    # the coach pressed Apply, so closing the tab burned the spend AND lost the
+    # labs. That is exactly how cl-022 reached a $0.72 assessment with
+    # extracted_labs: [] — the panel was parsed on 23/7 and never applied.
+    # Writing a sidecar next to the source file makes the result durable and
+    # re-openable, and gives assess.py's Guard D something specific to point at
+    # ("N labs extracted on <date>, never applied") instead of the coach having
+    # to notice by herself. Best-effort: a sidecar failure must never turn a
+    # successful, already-billed extraction into an error.
+    if inferred_client_id and transcript_path and extracted_data["lab_values"]:
+        try:
+            src = Path(transcript_path)
+            sidecar = src.with_suffix(src.suffix + ".extracted.json")
+            sidecar.write_text(
+                json.dumps(
+                    {
+                        "extracted_at": datetime.now(timezone.utc).isoformat(),
+                        "source_file": src.name,
+                        "client_id": inferred_client_id,
+                        "applied": False,
+                        "applied_at": None,
+                        **extracted_data,
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+        except Exception:
+            pass
 
     json.dump({
         "ok": True,

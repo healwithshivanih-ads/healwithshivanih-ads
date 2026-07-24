@@ -446,6 +446,43 @@ def main() -> int:
     with client_yaml.open("w", encoding="utf-8") as f:
         yaml.dump(data, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
 
+    # ── Close the extraction sidecar loop ─────────────────────────────────────
+    # extract-symptoms.py writes a `<report>.extracted.json` sidecar with
+    # applied:false so a billed extraction survives the coach closing the tab,
+    # and assess.py's Guard D refuses to run an assessment while one is still
+    # unapplied. Nothing was ever flipping the flag, which turned a
+    # money-waste bug into a hard blocker: once a sidecar existed, EVERY future
+    # assessment for that client was refused even after the labs had landed
+    # (verified on cl-022 — 95 applied labs, still blocked). This is the write
+    # path every real Apply goes through, so it is the correct place to mark
+    # them applied. Best-effort: never fail a completed, already-persisted
+    # write because a sidecar could not be updated.
+    #
+    # NOTE: applyTranscriptDataAction in src/lib/server-actions/assess.ts does
+    # the same stamping for UI applies. That overlap is deliberate, not an
+    # oversight — this shim is the lower layer and is also invoked directly
+    # (chat-ingest, CLI, a hand-authored apply like cl-022's 95-value backfill),
+    # where no Server Action runs at all. Both sides are idempotent via the
+    # `applied` check, so double-stamping is a no-op. Keep them in lockstep.
+    if new_lab_values:
+        try:
+            from datetime import datetime, timezone
+            files_dir = client_yaml.parent / "files"
+            stamp = datetime.now(timezone.utc).isoformat()
+            for sc in files_dir.glob("*.extracted.json"):
+                try:
+                    doc = json.loads(sc.read_text(encoding="utf-8"))
+                except (OSError, ValueError):
+                    continue
+                if doc.get("applied"):
+                    continue
+                doc["applied"] = True
+                doc["applied_at"] = stamp
+                sc.write_text(json.dumps(doc, indent=2), encoding="utf-8")
+                updated_fields.append(f"sidecar_marked_applied: {sc.name}")
+        except OSError:
+            pass
+
     json.dump({"ok": True, "updated_fields": updated_fields}, sys.stdout)
     return 0
 

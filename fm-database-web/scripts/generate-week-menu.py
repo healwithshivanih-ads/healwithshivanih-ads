@@ -333,10 +333,60 @@ def _recent_feedback(client_id: str, days: int = 14) -> list[str]:
                 out.append(f"[travel] {tr.get('from')} to {tr.get('to')} — {tr.get('context')}")
         pc = str(s.get("presenting_complaints") or "")
         if "quick_note" in pc or "[source: client" in pc:
-            body = pc.split("\n\n", 1)[-1][:250]
-            if body:
-                out.append(f"[{date} note] {body}")
+            out.extend(_thread_messages(pc, date))
     return out[:15]
+
+
+# WhatsApp threads accumulate into ONE session's presenting_complaints, newest
+# appended at the BOTTOM, blocks separated by '---'. The original code did
+# `pc.split("\n\n", 1)[-1][:250]`, which takes 250 characters from the TOP of
+# that thread — i.e. the OLDEST message, usually the intake-invite we sent
+# weeks ago — and threw the rest away. That is how Naz's meal journal (sitting
+# ~6,300 characters in) never reached the menu generator: the model was being
+# shown a stale outbound link and nothing else. Parse the thread into real
+# messages, keep the CLIENT's own inbound ones, and hand over the most recent
+# in the order they were sent.
+# 2200, not 900: a real food journal runs longer than it looks. Naz's was 1,806
+# characters and the part the menu generator most needs — the week's dinner
+# rotation — sat at char 1,367 onward, so a 900 cap silently dropped exactly the
+# content this whole function exists to deliver. Voice-note transcripts run to
+# ~2,000. Six messages at this cap is ~1.5k tokens of prompt, which is nothing
+# against the 466 dish names already in there.
+_MSG_CHARS = 2200  # per message
+_MAX_MSGS = 6      # newest N inbound messages per session
+
+
+def _thread_messages(pc: str, date: str) -> list[str]:
+    msgs: list[str] = []
+    for block in pc.split("\n---\n"):
+        # Only the client's own words. Our outbound sends are noise here, and
+        # feeding them back invites the model to echo our phrasing as if the
+        # client had said it.
+        if "whatsapp_outbound" in block:
+            continue
+        if "whatsapp_webhook" not in block and "[source: client" not in block:
+            continue
+        body_lines = [
+            ln for ln in block.splitlines()
+            if ln.strip()
+            and not ln.lstrip().startswith("[plan:")
+            and not ln.lstrip().startswith("[window:")
+            and not ln.lstrip().startswith("[attachment:")
+            and not ln.startswith("WhatsApp message from")
+        ]
+        stamp = ""
+        for i, ln in enumerate(body_lines):
+            if ln.startswith("Received:"):
+                stamp = ln.replace("Received:", "").strip()[:16]
+                body_lines = body_lines[i + 1:]
+                break
+        body = "\n".join(body_lines).strip()
+        if not body:
+            continue
+        if len(body) > _MSG_CHARS:
+            body = body[:_MSG_CHARS].rstrip() + " …"
+        msgs.append(f"[{stamp or date} client] {body}")
+    return msgs[-_MAX_MSGS:]
 
 
 def main() -> None:
