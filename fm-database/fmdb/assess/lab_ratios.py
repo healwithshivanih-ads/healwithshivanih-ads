@@ -24,6 +24,39 @@ _CONSUMED_IDS: set[int] = set()
 # LabTest catalogue the first time compute_ratios' passthrough needs it.
 _LAB_TEST_INDEX: dict | None = None
 
+# ── Off-panel test guard ──────────────────────────────────────────────────────
+# Specialty tests a client is very unlikely to have on file. Catalogue lab_tests
+# carry generic FM coach-education in notes_for_coach / interpretation_* that
+# routinely references these ("less informative than 4-point salivary cortisol
+# or DUTCH", "confirm on GI-MAP"…). When that text is surfaced as a PER-CLIENT
+# marker interpretation, it reads as a claim about a test the client never had —
+# which is exactly what the coach flagged on cl-022's AM Cortisol (she only has
+# a single morning serum cortisol and has never ordered salivary/DUTCH). This is
+# a deterministic guard, not a manual scrub: any sentence naming one of these
+# tests is dropped before the text reaches a client's card.
+_OFFPANEL_TEST_TOKENS: tuple[str, ...] = (
+    "salivary", "saliva", "4-point", "4 point", "four-point", "four point",
+    "dutch", "gi-map", "gimap", "gi map", "organic acid", "oat test",
+    "zonulin", "dried urine", "stool test", "cortisol curve",
+    "diurnal cortisol",
+)
+
+
+def _scrub_offpanel(text: object) -> str:
+    """Drop any sentence that names an off-panel specialty test (see
+    _OFFPANEL_TEST_TOKENS). Returns the surviving sentences joined, or "" if the
+    whole note was about tests the client doesn't have. Deterministic — no AI —
+    so no hallucinated / off-panel test reference can reach a per-client marker."""
+    s = str(text or "").strip()
+    if not s:
+        return ""
+    sentences = re.split(r"(?<=[.!?])\s+", s)
+    kept = [
+        seg for seg in sentences
+        if not any(tok in seg.lower() for tok in _OFFPANEL_TEST_TOKENS)
+    ]
+    return " ".join(seg.strip() for seg in kept if seg.strip()).strip()
+
 
 def _norm_marker(s: object) -> str:
     """Word-order- and punctuation-insensitive key for matching a lab name
@@ -1356,7 +1389,22 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             base = (lt.get("interpretation_low") if num < (fl or 0) else lt.get("interpretation_high")) or ""
             interp = ("Within the lab's normal range but outside FM-optimal. " + base).strip()
         else:
-            interp = lt.get("notes_for_coach") or ""
+            # GUARD (2026-07-25): an optimal/normal marker used to dump the
+            # catalogue's generic notes_for_coach verbatim — coach-education
+            # prose that references off-panel tests and reads as a claim about
+            # THIS client's labs. State the value is in range instead, and only
+            # append the catalogue note if it survives the off-panel scrub.
+            _u = (" " + lt.get("units")) if lt.get("units") else ""
+            interp = f"{num}{_u} — within FM-optimal range"
+            if _rng(fl, fh):
+                interp += f" ({_rng(fl, fh)})"
+            interp += "."
+            _note = _scrub_offpanel(lt.get("notes_for_coach"))
+            if _note:
+                interp = f"{interp} {_note}"
+        # Belt-and-braces: no off-panel test reference reaches a client's card,
+        # whatever branch produced the text (interpretation_low/high included).
+        interp = _scrub_offpanel(interp)
         if not interp:
             interp = f"{lt.get('display_name') or nm} — {num}{(' ' + lt.get('units')) if lt.get('units') else ''}."
         add(lt.get("display_name") or nm, num,

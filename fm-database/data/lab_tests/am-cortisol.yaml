@@ -31,9 +31,11 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Lab interpretation — Morning Serum Cortisol (8 AM)
 evidence_tier: strong
-notes_for_coach: Single timepoint blood cortisol is less informative than 4-point saliva or
-  DUTCH. FM uses AM serum as screen; refers to DUTCH if abnormal.
-version: 1
+notes_for_coach: Morning serum cortisol is the screening measure — read it against
+  the 12–18 µg/dL FM-optimal window. A single 8 AM value reflects the peak only, not
+  the full day's rhythm, so weigh it alongside the client's energy pattern, sleep and
+  stress rather than in isolation.
+version: 2
 status: active
-updated_at: '2026-05-10'
+updated_at: '2026-07-25'
 updated_by: shivani
