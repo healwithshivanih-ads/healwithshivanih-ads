@@ -267,6 +267,16 @@ export interface AssessResult {
   subgraph_size_bytes?: number;
   /** true when refused BEFORE any API spend — broad selection or oversized attachments. */
   preflight_blocked?: boolean;
+  /** Author-gate findings (fmdb/assess/author_gate.py). Present when a gate ran:
+   *  chat_authored submissions are BLOCKED on hard failures (ok=false,
+   *  gate_blocked=true); synthesize() output is advisory — findings are attached
+   *  here and persisted into the session under ai_analysis._gate. */
+  gate?: {
+    ok: boolean;
+    hard_failures: Array<{ severity: string; section: string; code: string; message: string; target?: string }>;
+    warnings: Array<{ severity: string; section: string; code: string; message: string; target?: string }>;
+  } | null;
+  gate_blocked?: boolean;
   /** true when the API call completed and billed real tokens (see `usage`) but produced
    *  no usable result (truncation, malformed tool-use) — distinguishes a wasted spend
    *  from a free failure (network/auth error, or preflight_blocked). */

@@ -1351,6 +1351,19 @@ def main() -> int:
     # Author-gate findings, when a gate ran for this path (chat_authored = strict,
     # synthesize = advisory). None on dry-run/manual, which bypass the fence.
     gate_report = None
+
+    def _analysis_payload() -> dict:
+        """The suggestions dict as persisted, with any gate findings attached.
+
+        The API path's gate is advisory, so its findings were previously returned
+        in the response and nowhere else — close the tab and they were gone (the
+        same loss class as an unapplied lab extraction). Embedding them under
+        `_gate` makes them durable. AssessSuggestions is extra="ignore", so the
+        key is dropped transparently on re-read and can never corrupt the shape."""
+        d = suggestions.model_dump()
+        if gate_report is not None:
+            d["_gate"] = gate_report.as_dict()
+        return d
     if dry_run:
         # Synthetic result parsed into typed model so both branches share
         # the same attribute-access interface below.
@@ -1698,7 +1711,7 @@ def main() -> int:
                 presenting_complaints=complaints,
                 uploaded_files=file_refs if file_refs else sess.uploaded_files,
                 measurements_snapshot=client.measurements,
-                ai_analysis=suggestions.model_dump(),
+                ai_analysis=_analysis_payload(),
                 api_usage=usage,
                 chat_log=sess.chat_log,
                 generated_plan_slug=sess.generated_plan_slug,
@@ -1721,7 +1734,7 @@ def main() -> int:
                 presenting_complaints=complaints,
                 uploaded_files=file_refs,
                 measurements_snapshot=client.measurements,
-                ai_analysis=suggestions.model_dump(),
+                ai_analysis=_analysis_payload(),
                 api_usage=usage,
                 five_pillars=five_pillars_obj,
             )
@@ -1741,7 +1754,7 @@ def main() -> int:
             presenting_complaints=complaints,
             uploaded_files=file_refs,
             measurements_snapshot=client.measurements,
-            ai_analysis=suggestions.model_dump(),
+            ai_analysis=_analysis_payload(),
             api_usage=usage,
             five_pillars=five_pillars_obj,
         )
