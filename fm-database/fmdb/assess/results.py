@@ -30,8 +30,13 @@ def _coerce_none_strings(data: Any) -> Any:
     if not isinstance(data, dict):
         return data
     return {
+        # `_percent` is listed alongside `_pct`: the field is `fit_percent`, which
+        # does NOT end in `_pct`, so None was being rewritten to "" and then failing
+        # float parsing. That made model_dump() output un-revalidatable — any
+        # persisted assessment carrying a suggested_protocol could not be re-read
+        # (surfaced 2026-07-25 by the author gate on cl-022's real session).
         k: ("" if v is None and isinstance(k, str) and not k.endswith(
-            ("_score", "_count", "_weeks", "_pct", "_tokens")
+            ("_score", "_count", "_weeks", "_pct", "_percent", "_tokens")
         ) else v)
         for k, v in data.items()
     }

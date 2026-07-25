@@ -1175,6 +1175,59 @@ def main() -> int:
             # Use the most recent one from today
     existing_sid: str | None = existing_today_session.session_id if existing_today_session else None
 
+    # ── author_context: emit the API model's exact briefing, spend nothing ──
+    # The chat-authoring path used to run on my memory of the rules (CLAUDE.md +
+    # notes) rather than the rules themselves, which is why its output drifted
+    # from what synthesize() would produce. This mode dumps the SAME dossier the
+    # paid model receives — assembled by the SAME code, immediately above — plus
+    # the 47-rule SYSTEM prompt and the subgraph slug whitelist, then stops.
+    # No Anthropic call, no preflight (nothing is being spent).
+    #
+    # Deliberately placed AFTER assembly and BEFORE the cost gate so the briefing
+    # can never silently diverge from the real call's inputs: if assembly changes,
+    # both paths change together.
+    if payload.get("author_context"):
+        _sys_prompt = ""
+        _drug_ctx: dict = {}
+        try:
+            from fmdb.assess.suggester import _SYSTEM_PROMPT, _collect_drug_context
+            _sys_prompt = _SYSTEM_PROMPT
+            _drug_ctx = _collect_drug_context(client_ctx)
+        except Exception as e:  # pragma: no cover
+            _sys_prompt = f"<<could not load SYSTEM prompt: {type(e).__name__}: {e}>>"
+
+        # The whitelist: every slug the author is allowed to reference, by kind.
+        _whitelist: dict = {}
+        for _k, _v in (subgraph or {}).items():
+            if isinstance(_v, list):
+                _slugs = [
+                    it.get("slug") for it in _v
+                    if isinstance(it, dict) and it.get("slug")
+                ]
+                if _slugs:
+                    _whitelist[_k] = sorted(_slugs)
+
+        json.dump({
+            "ok": True,
+            "mode": "author_context",
+            "client_id": client_id,
+            "session_id_would_be": existing_sid,
+            "system_prompt": _sys_prompt,
+            "client_ctx": client_ctx,
+            "drug_context": _drug_ctx,
+            "subgraph": subgraph,
+            "slug_whitelist": _whitelist,
+            "selected": {"symptoms": symptoms, "topics": topics},
+            "session_history": history_bundle,
+            "note": (
+                "Author strictly from THIS document — it is what the paid model "
+                "would have seen. Reference only slugs in slug_whitelist; anything "
+                "else belongs in catalogue_additions_suggested. Submit via "
+                "chat_authored to run the validation gate."
+            ),
+        }, sys.stdout, default=str)
+        return 0
+
     # ── Pre-flight cost gate (B) ─────────────────────────────────────────
     # A synthesize() call that hits the output-token cap bills FULL input +
     # max output and returns nothing — the worst possible spend. We refuse
@@ -1295,6 +1348,9 @@ def main() -> int:
             }, sys.stdout)
             return 2
 
+    # Author-gate findings, when a gate ran for this path (chat_authored = strict,
+    # synthesize = advisory). None on dry-run/manual, which bypass the fence.
+    gate_report = None
     if dry_run:
         # Synthetic result parsed into typed model so both branches share
         # the same attribute-access interface below.
@@ -1302,6 +1358,53 @@ def main() -> int:
         synthetic = _synthetic_result(payload)
         suggestions = AssessSuggestions.model_validate(synthetic["suggestions"])
         usage = AssessUsage.model_validate(synthetic["usage"]).model_dump()
+    elif payload.get("chat_authored") is not None:
+        # ── Chat-authored, gated ($0) ────────────────────────────────────────
+        # Same shape as manual_suggestions, but validation is ON instead of
+        # skipped. Hard failures REFUSE the write and return the findings so the
+        # author can fix and resubmit — retrying costs nothing, so blocking is
+        # the right call here (unlike the API path below, where the money is
+        # already spent and refusing to save would waste it entirely).
+        from fmdb.assess.results import AssessSuggestions, AssessUsage
+        from fmdb.assess.author_gate import validate as _gate_validate
+
+        _raw = payload.get("chat_authored") or {}
+        _drug_ctx = {}
+        try:
+            from fmdb.assess.suggester import _collect_drug_context
+            _drug_ctx = _collect_drug_context(client_ctx)
+        except Exception:  # pragma: no cover
+            pass
+
+        _report = _gate_validate(
+            _raw,
+            cat=cat,
+            client=(client.model_dump() if hasattr(client, "model_dump") else client),
+            subgraph=subgraph,
+            drug_context=_drug_ctx,
+        )
+        if not _report.ok:
+            json.dump({
+                "ok": False,
+                "gate_blocked": True,
+                "error": (
+                    f"{len(_report.hard_failures)} hard failure(s) — assessment NOT "
+                    "saved. Fix these and resubmit:\n" + _report.render()
+                ),
+                "gate": _report.as_dict(),
+            }, sys.stdout, default=str)
+            return 2
+
+        suggestions = AssessSuggestions.model_validate(_raw)
+        gate_report = _report  # surfaced in the response below
+        usage = AssessUsage.model_validate({
+            "model": "chat_authored (validated, no Anthropic call)",
+            "stop_reason": "end_turn",
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+        }).model_dump()
     elif is_manual:
         # $0 path — no Anthropic call, no preflight limits (nothing here can
         # truncate). Either persist a hand-authored AssessSuggestions dict
@@ -1445,6 +1548,34 @@ def main() -> int:
                     "usage": usage,
                 },
             )
+        # ── Same fence, other author ─────────────────────────────────────────
+        # synthesize()'s guardrails live in a prompt, which is a request the model
+        # has demonstrably ignored (Manju's off-catalogue mechanism slug blocked
+        # publishing; Archana's rework re-ordered an on-file vitamin D and emitted
+        # six duplicate lab orders). Run the identical battery over the API output.
+        #
+        # NON-BLOCKING here, deliberately: the call is already billed, so refusing
+        # to save would waste it outright — the exact failure Guard B exists to
+        # prevent. Findings are attached to the response and written into the
+        # session so the coach sees them before acting.
+        try:
+            from fmdb.assess.author_gate import validate as _gate_validate
+            _api_drug_ctx = {}
+            try:
+                from fmdb.assess.suggester import _collect_drug_context
+                _api_drug_ctx = _collect_drug_context(client_ctx)
+            except Exception:  # pragma: no cover
+                pass
+            gate_report = _gate_validate(
+                suggestions,
+                cat=cat,
+                client=(client.model_dump() if hasattr(client, "model_dump") else client),
+                subgraph=subgraph,
+                drug_context=_api_drug_ctx,
+            )
+        except Exception as _ge:  # pragma: no cover — never fail a paid call on the gate
+            print(f"WARN: author gate skipped: {type(_ge).__name__}: {_ge}", file=sys.stderr)
+
         try:
             from fmdb.usage import log_usage as _log_usage
             _log_usage(
@@ -1620,6 +1751,7 @@ def main() -> int:
         "ok": True,
         "session_id": sid,
         "suggestions": suggestions.model_dump(),
+        "gate": (gate_report.as_dict() if gate_report is not None else None),
         "computed_ratios": computed_ratios,
         "usage": usage,
         "subgraph_size_bytes": subgraph_bytes,
