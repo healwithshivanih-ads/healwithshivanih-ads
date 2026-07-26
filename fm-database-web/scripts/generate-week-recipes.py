@@ -172,8 +172,16 @@ def _catalogue_titles() -> list[str]:
                 d = yaml.safe_load(f.read_text(encoding="utf-8"))
             except Exception:
                 continue
-            if isinstance(d, dict) and isinstance(d.get("name"), str):
+            if not isinstance(d, dict):
+                continue
+            if isinstance(d.get("name"), str):
                 titles.append(d["name"])
+            # Recipe aliases carry the coach's OWN menu wording ("Roasted chana"
+            # for "Masala Roasted Chana"). Reading only `name` made adding an
+            # alias a no-op, so the same dish kept being regenerated every week.
+            for a in d.get("aliases") or []:
+                if isinstance(a, str):
+                    titles.append(a)
         for f in (root / "home_remedies").glob("*.yaml"):
             try:
                 d = yaml.safe_load(f.read_text(encoding="utf-8"))

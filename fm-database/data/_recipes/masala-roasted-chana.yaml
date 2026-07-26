@@ -27,8 +27,7 @@ main_ingredients:
 contains_allergens:
 - sesame
 ingredients:
-- item: dried whole white chickpeas (kabuli chana), soaked overnight and boiled until
-    just tender (not mushy)
+- item: dried whole white chickpeas (kabuli chana), soaked overnight and boiled until just tender (not mushy)
   qty: '1.5'
   unit: cup
 - item: oil
@@ -56,18 +55,11 @@ ingredients:
   qty: 1/4
   unit: tsp
 steps:
-- After boiling, spread the chickpeas on a clean kitchen cloth and pat completely
-  dry — any surface moisture will steam them in the pan instead of roasting them.
-- Heat a heavy iron or non-stick pan on medium heat with no oil. Add the dried chickpeas
-  in a single layer and dry-roast, stirring every 2–3 minutes, for 12–15 minutes until
-  the skins are visibly crisped and the chickpeas sound hollow when you press one
-  against the pan.
-- Reduce the heat to low, drizzle in the teaspoon of oil, and toss so every chickpea
-  gets a light coat.
-- Add all the spices — cumin, coriander, chilli, amchur, chaat masala, black salt,
-  and regular salt — and toss quickly for 1 minute so the spices bloom without burning.
-- Spread on a plate to cool completely before storing or serving; they crisp up further
-  as they cool. Store in an airtight jar for up to a week.
+- After boiling, spread the chickpeas on a clean kitchen cloth and pat completely dry — any surface moisture will steam them in the pan instead of roasting them.
+- Heat a heavy iron or non-stick pan on medium heat with no oil. Add the dried chickpeas in a single layer and dry-roast, stirring every 2–3 minutes, for 12–15 minutes until the skins are visibly crisped and the chickpeas sound hollow when you press one against the pan.
+- Reduce the heat to low, drizzle in the teaspoon of oil, and toss so every chickpea gets a light coat.
+- Add all the spices — cumin, coriander, chilli, amchur, chaat masala, black salt, and regular salt — and toss quickly for 1 minute so the spices bloom without burning.
+- Spread on a plate to cool completely before storing or serving; they crisp up further as they cool. Store in an airtight jar for up to a week.
 servings: '4'
 prep_time_min: 480
 cook_time_min: 20
@@ -77,17 +69,12 @@ good_for:
 - constipation
 - blood-sugar-regulation
 - protein-adequacy-vegetarian
-one_line: Dry-roasted whole chickpeas tossed with tangy spices for a crunchy, protein-rich
-  snack.
-headnote: Whole dried chickpeas roasted in a dry pan concentrate their nutty flavour
-  and keep their crunch for days — the fibre in the skin slows digestion nicely, and
-  amchur adds a brightness that makes them hard to put down. A handful goes a long
-  way on a hungry monsoon afternoon.
+one_line: Dry-roasted whole chickpeas tossed with tangy spices for a crunchy, protein-rich snack.
+headnote: Whole dried chickpeas roasted in a dry pan concentrate their nutty flavour and keep their crunch for days — the fibre in the skin slows digestion nicely, and amchur adds a brightness that makes them hard to put down. A handful goes a long way on a hungry monsoon afternoon.
 attribution:
   author: unknown
   source_id: recipe-inbox
-parse_notes: AI-drafted gap-filler for monsoon protein-snack set — coach to verify
-  spice ratios and preferred chickpea variety (kabuli vs. desi).
+parse_notes: AI-drafted gap-filler for monsoon protein-snack set — coach to verify spice ratios and preferred chickpea variety (kabuli vs. desi).
 approx_kcal_per_serving: 296
 kcal_is_estimate: true
 protein_g: 15.5
@@ -128,5 +115,6 @@ image:
   credit: web reference (coach-selected)
   source_url: https://glenindia.com/cdn/shop/articles/image2-28_90705614-f7c2-4b6f-87c4-809219490e04_1200x675.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial use
+aliases:
+- Roasted chana
