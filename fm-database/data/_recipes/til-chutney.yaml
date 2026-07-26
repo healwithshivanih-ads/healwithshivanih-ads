@@ -26,7 +26,8 @@ main_ingredients:
 - salt
 - water
 - 'for tempering: coconut oil, mustard seeds, curry leaves'
-contains_allergens: []
+contains_allergens:
+- sesame
 ingredients:
 - item: til
   qty: '1'

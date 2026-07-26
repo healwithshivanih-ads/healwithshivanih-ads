@@ -27,7 +27,8 @@ main_ingredients:
 - vinegar
 - turmeric
 - coconut oil
-contains_allergens: []
+contains_allergens:
+- fish
 ingredients:
 - item: whole mackerel (bangda), cleaned
   qty: '3'

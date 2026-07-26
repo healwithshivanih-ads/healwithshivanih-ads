@@ -21,7 +21,9 @@ main_ingredients:
 - jowar (sorghum) flour
 - fresh methi leaves
 contains_allergens:
+- dairy
 - gluten
+- sesame
 ingredients:
 - item: whole wheat flour (atta)
   qty: '1'

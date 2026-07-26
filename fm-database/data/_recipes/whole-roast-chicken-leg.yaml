@@ -20,8 +20,7 @@ main_ingredients:
 - chicken leg (whole, bone-in)
 - turmeric
 - ginger-garlic
-contains_allergens:
-- none
+contains_allergens: []
 ingredients:
 - item: whole bone-in chicken legs (thigh + drumstick)
   qty: '2'

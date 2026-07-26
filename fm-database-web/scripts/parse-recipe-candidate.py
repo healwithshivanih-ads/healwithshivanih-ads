@@ -42,6 +42,9 @@ HAIKU = "claude-haiku-4-5"
 SONNET = "claude-sonnet-4-6"
 
 sys.path.insert(0, str(FMDB_ROOT))
+sys.path.insert(0, str(SCRIPTS_DIR))
+
+from recipe_schema import ALLERGENS  # noqa: E402
 
 
 def _load_env() -> None:
@@ -356,9 +359,7 @@ RECIPE_TOOL = {
             },
             "contains_allergens": {
                 "type": "array",
-                "items": {"type": "string", "enum": [
-                    "dairy", "gluten", "nuts", "peanut", "soy", "egg",
-                    "shellfish", "sesame", "mustard"]},
+                "items": {"type": "string", "enum": sorted(ALLERGENS)},
             },
             "ingredients": {
                 "type": "array",

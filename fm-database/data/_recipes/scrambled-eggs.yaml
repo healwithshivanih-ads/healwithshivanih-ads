@@ -25,7 +25,8 @@ main_ingredients:
 - turmeric
 - salt and pepper
 - fresh coriander
-contains_allergens: []
+contains_allergens:
+- egg
 ingredients:
 - item: eggs
   qty: '2'

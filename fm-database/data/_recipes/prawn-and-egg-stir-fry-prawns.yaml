@@ -27,7 +27,8 @@ main_ingredients:
 - light coconut milk
 - salt
 - fresh coriander
-contains_allergens: []
+contains_allergens:
+- shellfish
 ingredients:
 - item: prawns
   qty: '150'

@@ -42,6 +42,8 @@ MODEL = "claude-sonnet-4-6"
 sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
+from recipe_schema import ALLERGENS  # noqa: E402
+
 # Tool-use can serialise an array field as a JSON string; coerce every
 # list-typed recipe field back to a real list so downstream (review UI,
 # approve gate) never chokes on a str where a list belongs.
@@ -111,8 +113,7 @@ RECIPE_PROPS = {
     "rasa": {"type": "array", "items": {"type": "string", "enum": [
         "sweet", "sour", "salty", "pungent", "bitter", "astringent"]}},
     "main_ingredients": {"type": "array", "items": {"type": "string"}},
-    "contains_allergens": {"type": "array", "items": {"type": "string", "enum": [
-        "dairy", "gluten", "nuts", "peanut", "soy", "egg", "shellfish", "sesame", "mustard"]}},
+    "contains_allergens": {"type": "array", "items": {"type": "string", "enum": sorted(ALLERGENS)}},
     "ingredients": {"type": "array", "items": {"type": "object", "properties": {
         "item": {"type": "string"}, "qty": {"type": "string"}, "unit": {"type": "string"}},
         "required": ["item", "qty", "unit"]}},

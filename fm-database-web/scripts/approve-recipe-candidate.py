@@ -47,27 +47,13 @@ INBOX_DIR = PLANS_ROOT / "_recipe_inbox"
 from nutrients_lib import NutrientTable, compute_recipe_nutrients  # noqa: E402
 from good_for_lib import derive_good_for  # noqa: E402
 from recipe_times import check_times  # noqa: E402
+# vocabulary is shared with the validator and the AI schemas — add new values
+# in recipe_schema.py, not here
+from recipe_schema import (  # noqa: E402
+    ALLERGENS, DIETS, DOSHAS, MEAL_TYPES, MEAT_WORDS, RASAS, ROOT_WORDS, SEASONS,
+    derive_allergens,
+)
 
-MEAL_TYPES = {"breakfast", "lunch", "dinner", "snack", "side", "drink", "salad", "soup", "condiment"}
-DIETS = {"vegetarian", "vegan", "jain", "eggetarian", "non_vegetarian", "gluten_free", "dairy_free", "nut_free"}
-DOSHAS = {"vata", "pitta", "kapha"}
-SEASONS = {"spring", "summer", "monsoon", "autumn", "winter", "all"}
-RASAS = {"sweet", "sour", "salty", "pungent", "bitter", "astringent"}
-ALLERGENS = {"dairy", "gluten", "nuts", "peanut", "soy", "egg", "shellfish", "sesame", "mustard"}
-
-# ingredient keyword -> allergen (ghee deliberately absent — library convention)
-ALLERGEN_KEYWORDS = {
-    "dairy": ["milk", "paneer", "yogurt", "curd", "cheese", "cream", "butter", "chhena", "khoya"],
-    "gluten": ["wheat", "atta", "maida", "barley", "bulgur", "rye", "semolina", "rava", "sooji", "seitan"],
-    "nuts": ["almond", "cashew", "walnut", "pistachio", "pecan", "hazelnut", "macadamia"],
-    "peanut": ["peanut", "groundnut"],
-    "egg": ["egg"],
-    "shellfish": ["prawn", "shrimp", "crab", "lobster"],
-    "soy": ["soy", "tofu", "tamari", "edamame", "miso"],
-    "sesame": ["sesame", "tahini", "til "],
-}
-MEAT_WORDS = ["chicken", "mutton", "lamb", "fish", "prawn", "shrimp", "crab", "meat", "beef", "pork", "keema"]
-ROOT_WORDS = ["onion", "garlic", "potato", "carrot", "beet", "radish", "ginger", "turnip", "yam"]
 DAIRY_VEGAN_WORDS = ["milk ", "paneer", "yogurt", "curd", "cheese", "cream", "ghee", "butter", "honey"]
 
 STOPWORDS = {"and", "with", "the", "a", "of", "in", "style", "easy", "quick", "simple", "healthy"}
@@ -237,10 +223,9 @@ def main() -> int:
 
     # ── 5. allergen derivation ─────────────────────────────────────────────
     derived = set(recipe["contains_allergens"])
-    for allergen, words in ALLERGEN_KEYWORDS.items():
-        if any(w in ing_text for w in words) and allergen not in derived:
-            derived.add(allergen)
-            warnings.append(f"added allergen '{allergen}' from ingredient list")
+    for allergen in sorted(derive_allergens(ing_text) - derived):
+        derived.add(allergen)
+        warnings.append(f"added allergen '{allergen}' from ingredient list")
     recipe["contains_allergens"] = sorted(derived)
 
     if blockers and not force:

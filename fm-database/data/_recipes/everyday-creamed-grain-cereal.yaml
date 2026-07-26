@@ -23,6 +23,7 @@ main_ingredients:
   hemp)
 - everyday sweet spice mix
 contains_allergens:
+- gluten
 - nuts
 ingredients:
 - item: cooked grain of choice (e.g. oats, rice, barley, millet)

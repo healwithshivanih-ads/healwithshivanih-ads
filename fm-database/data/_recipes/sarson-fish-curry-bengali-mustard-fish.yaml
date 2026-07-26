@@ -27,6 +27,7 @@ main_ingredients:
 - green chillies
 - turmeric
 contains_allergens:
+- fish
 - mustard
 ingredients:
 - item: rohu or hilsa fish steaks

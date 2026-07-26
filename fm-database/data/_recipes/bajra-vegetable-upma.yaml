@@ -25,7 +25,8 @@ main_ingredients:
 - curry leaves
 - oil
 - ginger
-contains_allergens: []
+contains_allergens:
+- sesame
 ingredients:
 - item: bajra (pearl millet) rava / coarse flour
   qty: '0.75'

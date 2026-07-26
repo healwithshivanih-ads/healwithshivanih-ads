@@ -28,6 +28,7 @@ main_ingredients:
 - ume plum vinegar (optional)
 contains_allergens:
 - sesame
+- soy
 ingredients:
 - item: sesame seeds
   qty: '2'

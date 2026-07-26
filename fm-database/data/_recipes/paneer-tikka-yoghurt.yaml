@@ -25,7 +25,8 @@ main_ingredients:
 - turmeric
 - salt
 - fresh coriander
-contains_allergens: []
+contains_allergens:
+- dairy
 ingredients:
 - item: paneer, cubed
   qty: '150'

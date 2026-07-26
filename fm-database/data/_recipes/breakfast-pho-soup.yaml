@@ -29,7 +29,8 @@ main_ingredients:
 - tamari
 - lime, juiced
 - lime wedges for garnish
-contains_allergens: []
+contains_allergens:
+- soy
 ingredients:
 - item: water
   qty: '4'

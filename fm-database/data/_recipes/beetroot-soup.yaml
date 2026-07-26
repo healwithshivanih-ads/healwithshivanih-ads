@@ -26,7 +26,8 @@ main_ingredients:
 - 8-10 croutons, optional (omit for gluten-free)
 - 1 sprig spring onion, to garnish
 - 2 tbsp cream (use soy cream for vegan), optional
-contains_allergens: []
+contains_allergens:
+- dairy
 ingredients:
 - item: 2 beetroots (~250 g), grated
   qty: ''

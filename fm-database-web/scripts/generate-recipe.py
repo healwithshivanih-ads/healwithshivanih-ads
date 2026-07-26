@@ -33,6 +33,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 from recipe_times import normalise_prep_min  # noqa: E402
+from recipe_schema import check_recipe, derive_allergens  # noqa: E402
 
 MODEL = "claude-sonnet-4-6"
 
@@ -214,7 +215,10 @@ def main() -> None:
         "balances_dosha": list(rec.get("balances_dosha") or []),
         "aggravates_dosha": [],
         "main_ingredients": [str(m) for m in (rec.get("main_ingredients") or [])],
-        "contains_allergens": [],
+        # was hardcoded [] — every recipe this shim wrote reached clients with
+        # no allergen tag at all, so allergy filtering never excluded it
+        "contains_allergens": sorted(derive_allergens(
+            " ".join([str(rec.get("main_ingredients") or ""), str(ingredients)]))),
         "ingredients": ingredients,
         "steps": [str(s) for s in (rec.get("steps") or [])],
         "servings": str(rec.get("servings") or 2),
@@ -226,6 +230,11 @@ def main() -> None:
         "status": "active",
         "kcal_per_serving": int(rec.get("kcal_per_serving") or 0),
     }
+
+    schema_errs, schema_warns = check_recipe(doc, f"{slug}.yaml")
+    if schema_errs:
+        print(json.dumps({"ok": False, "error": "schema check failed: " + "; ".join(schema_errs)}))
+        return
 
     RECIPES_DIR.mkdir(parents=True, exist_ok=True)
     (RECIPES_DIR / f"{slug}.yaml").write_text(
@@ -240,8 +249,9 @@ def main() -> None:
         pass
 
     out = {"ok": True, "slug": slug, "title": title, "kcal_per_serving": doc["kcal_per_serving"], "error": None}
-    if prep_warning:
-        out["warnings"] = [prep_warning]
+    all_warnings = ([prep_warning] if prep_warning else []) + schema_warns
+    if all_warnings:
+        out["warnings"] = all_warnings
     print(json.dumps(out))
 
 

@@ -36,20 +36,13 @@ try:
 except Exception:  # pragma: no cover
     NutrientTable = None  # type: ignore
 
-MEAL_TYPES = {"breakfast", "lunch", "dinner", "snack", "side", "drink", "salad", "soup", "condiment"}
+from recipe_schema import MEAL_TYPES, check_recipe, derive_allergens  # noqa: E402
 
 MEAT_RE = re.compile(r"\b(chicken|mutton|lamb|beef|pork|fish|prawn|shrimp|crab|seafood|meat|keema|kheema|bacon|ham|turkey|liver)\b", re.I)
 EGG_RE = re.compile(r"\begg(s|y)?\b|omelette|omelet|bhurji|shakshuka|frittata", re.I)
-_ALLERGEN_RULES = (
-    ("dairy", r"\b(milk|curd|dahi|yogurt|yoghurt|paneer|cheese|cream|butter|khoya|malai)\b"),
-    ("gluten", r"\b(wheat|atta|maida|suji|rava|semolina|dalia|seitan|barley|bread|pasta)\b"),
-    ("nuts", r"\b(almond|cashew|walnut|pistachio|hazelnut|pecan)\b"),
-    ("peanut", r"\b(peanut|groundnut|moongphali)\b"),
-    ("sesame", r"\b(sesame|til|tahini)\b"),
-    ("soy", r"\b(soy|soya|tofu|tempeh|edamame)\b"),
-    ("egg", r"\begg(s|y)?\b|omelette|bhurji|shakshuka"),
-    ("fish", r"\b(fish|prawn|shrimp|crab|seafood|anchovy)\b"),
-)
+# allergen derivation moved to recipe_schema.derive_allergens — this table had
+# drifted (it emitted `fish`, which nothing else accepted, and lumped prawn
+# under fish while the approve gate called it shellfish)
 
 
 def _fail(msg: str) -> None:
@@ -130,10 +123,7 @@ def main() -> int:
         diet = ["non_vegetarian"]
         warnings.append("meat/fish detected — diet set to non_vegetarian")
 
-    allergens = sorted({a for a, rx in _ALLERGEN_RULES if re.search(rx, ing_text)})
-    # ghee alone is NOT dairy (library convention)
-    if "dairy" in allergens and not re.search(r"\b(milk|curd|dahi|yogurt|yoghurt|paneer|cheese|cream|khoya|malai)\b", ing_text):
-        allergens.remove("dairy")
+    allergens = sorted(derive_allergens(ing_text))
 
     meal_type = [m for m in (payload.get("meal_type") or []) if m in MEAL_TYPES] or ["lunch", "dinner"]
 
@@ -181,6 +171,13 @@ def main() -> int:
                 warnings.append(f"nutrient coverage {result['coverage_pct']:.0f}% — refine ingredient quantities")
         except Exception as e:  # noqa: BLE001
             warnings.append(f"nutrient computation skipped: {e}")
+
+    # same schema check the library-wide validator runs — catch it here rather
+    # than after it has been committed and served to a client
+    errs, schema_warns = check_recipe(record, f"{slug}.yaml")
+    if errs:
+        _fail("schema check failed: " + "; ".join(errs))
+    warnings.extend(schema_warns)
 
     (RECIPES_DIR / f"{slug}.yaml").write_text(
         yaml.safe_dump(record, sort_keys=False, allow_unicode=True)

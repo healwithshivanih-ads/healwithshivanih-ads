@@ -24,7 +24,8 @@ main_ingredients:
 - 1 tsp coriander powder
 - 1 tsp coconut oil
 - salt to taste
-contains_allergens: []
+contains_allergens:
+- fish
 ingredients:
 - item: 1 fillet fish (surmai/rohi), cut in pieces
 - item: 1/2 cup coconut milk (or ground fresh coconut + water)

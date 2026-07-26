@@ -23,7 +23,8 @@ main_ingredients:
 - dijon mustard
 - raw honey dissolved in warm water
 - tamari
-contains_allergens: []
+contains_allergens:
+- soy
 ingredients:
 - item: sunflower or grapeseed oil
   qty: '2'

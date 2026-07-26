@@ -33,6 +33,7 @@ main_ingredients:
 - salt
 contains_allergens:
 - sesame
+- soy
 ingredients:
 - item: medium beets, peeled
   qty: '2'

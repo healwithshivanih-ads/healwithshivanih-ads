@@ -23,7 +23,8 @@ main_ingredients:
 - cardamom powder
 - dates or soaked raisins
 - salt
-contains_allergens: []
+contains_allergens:
+- dairy
 ingredients:
 - item: foxtail
   qty: '0.5'

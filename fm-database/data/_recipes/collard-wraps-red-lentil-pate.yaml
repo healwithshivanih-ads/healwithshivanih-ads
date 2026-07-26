@@ -31,6 +31,7 @@ main_ingredients:
 - shredded carrots, cabbage, or beets (optional)
 contains_allergens:
 - sesame
+- soy
 ingredients:
 - item: red lentils
   qty: '0.5'

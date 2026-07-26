@@ -22,8 +22,7 @@ main_ingredients:
 - onion
 - tomato
 - garam masala
-contains_allergens:
-- none
+contains_allergens: []
 ingredients:
 - item: chicken liver, trimmed and cut into bite-size pieces
   qty: '400'

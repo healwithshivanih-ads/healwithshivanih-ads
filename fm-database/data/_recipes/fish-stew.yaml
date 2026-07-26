@@ -21,7 +21,8 @@ main_ingredients:
 - fish (surmai/rohu/basa/catla)
 - coconut milk
 - curry leaves
-contains_allergens: []
+contains_allergens:
+- fish
 ingredients:
 - item: firm fish, cut into chunks (surmai, rohu, basa or catla)
   qty: '400'

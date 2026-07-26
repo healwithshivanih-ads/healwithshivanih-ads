@@ -25,7 +25,8 @@ main_ingredients:
 - cardamom powder
 - coconut milk
 - coconut sugar (optional)
-contains_allergens: []
+contains_allergens:
+- gluten
 ingredients:
 - item: pearled barley
   qty: '0.5'
