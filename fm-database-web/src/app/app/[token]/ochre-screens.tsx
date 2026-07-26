@@ -16,6 +16,13 @@ import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
 import { isGrowingTreeEnabled } from "./growing-tree-flag";
 
+/** How many meal components the compact "today" row lists before it collapses
+ *  the rest into "+N more". The row is two lines on a phone (.ml-dishes), which
+ *  fits about five short items. Anything past this is COUNTED, never silently
+ *  dropped — a capped-and-silent row hid a client's prescribed before-3pm juice
+ *  entirely, and she had no way to know the row was incomplete. */
+const ML_MAX_COMPONENTS = 5;
+
 // ── time-of-day phase → the one thing to focus on right now ─────────────────
 
 interface PhaseNow {
@@ -689,11 +696,11 @@ function MealList({
                   </span>
                 </span>
                 <span className="ml-dishes">
-                  {m.components.slice(0, 3).map((c, ci) => (
+                  {m.components.slice(0, ML_MAX_COMPONENTS).map((c, ci) => (
                     <span key={ci}>
                       {c.title}
                       {c.portion && <span className="ml-portion">{c.portion}</span>}
-                      {ci < Math.min(m.components.length, 3) - 1 && " · "}
+                      {ci < Math.min(m.components.length, ML_MAX_COMPONENTS) - 1 && " · "}
                     </span>
                   ))}
                   {/* The line caps at 3 to stay readable on a phone, but the cap
@@ -702,8 +709,8 @@ function MealList({
                       juice — the whole point of moving it off her evening). The
                       row opens the full meal, so the fix is to say something is
                       there, not to overflow the line. */}
-                  {m.components.length > 3 && (
-                    <span className="ml-more"> · +{m.components.length - 3} more</span>
+                  {m.components.length > ML_MAX_COMPONENTS && (
+                    <span className="ml-more"> · +{m.components.length - ML_MAX_COMPONENTS} more</span>
                   )}
                 </span>
               </span>
