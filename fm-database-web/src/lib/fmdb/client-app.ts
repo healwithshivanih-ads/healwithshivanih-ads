@@ -1584,14 +1584,36 @@ function containsWord(key: string, token: string): boolean {
 const containsLoose = (key: string, token: string): boolean => key.includes(token);
 
 /**
+ * How rare a token is across the candidate corpus — document frequency, where
+ * the "document" is a CANDIDATE (all the names it answers to collapsed into
+ * one), not a name. The question being asked is "how many library entries does
+ * this word identify", so a remedy listing `chaas` as both slug-word and alias
+ * still counts once.
+ */
+function tokenDocFrequency<T>(candidates: NamedCandidate<T>[]): Map<string, number> {
+  const df = new Map<string, number>();
+  for (const c of candidates) {
+    const seen = new Set<string>();
+    for (const n of c.names) for (const t of recipeLibToks(n)) seen.add(t);
+    for (const t of seen) df.set(t, (df.get(t) ?? 0) + 1);
+  }
+  return df;
+}
+
+/**
  * The shared dish → candidate matcher. Exact normalised-name match wins
  * outright; otherwise a strict token near-equality scan over every name each
  * candidate answers to. `contains` is the containment policy (see the two
  * above) — the only axis on which the library and remedy surfaces differ.
+ *
+ * `distinctiveOneWordNames` opts a surface into one extra, LAST-RESORT rule
+ * (see the bottom of the scan). It is off for the library, so `_recipes`
+ * matching is bit-for-bit what it always was.
  */
 function buildNameResolver<T>(
   candidates: NamedCandidate<T>[],
   contains: (key: string, token: string) => boolean,
+  distinctiveOneWordNames = false,
 ): (dish: string) => T | undefined {
   const byExactKey = new Map<string, T>();
   for (const c of candidates)
@@ -1599,6 +1621,18 @@ function buildNameResolver<T>(
       const k = recipeLibKey(n);
       if (k && !byExactKey.has(k)) byExactKey.set(k, c.value);
     }
+  // Each candidate's WHOLE identity as one key — every name it answers to run
+  // together. The per-name scan asks "is the dish this name?"; the last-resort
+  // rule asks "is every word of the dish one this entry answers to?". Built
+  // once per resolver, alongside the corpus word counts it is judged against.
+  const df = distinctiveOneWordNames ? tokenDocFrequency(candidates) : new Map<string, number>();
+  const identity = distinctiveOneWordNames
+    ? candidates.map((c) => ({
+        c,
+        key: c.names.map(recipeLibKey).join(" "),
+        width: new Set(c.names.flatMap(recipeLibToks)).size,
+      }))
+    : [];
   return (dish: string): T | undefined => {
     // A slot's recipe may come ONLY from the component that gives the dish its
     // identity — its first substantive one (primaryDishPart; bracket-aware, so
@@ -1659,7 +1693,53 @@ function buildNameResolver<T>(
           best = { r: c.value, hit, slack, pos };
       }
     }
-    return best?.r;
+    if (best) return best.r;
+    if (!distinctiveOneWordNames) return undefined;
+    // ── LAST RESORT: a DISTINCTIVE one-word name, corroborated ──────────────
+    // Rule (b) accepts a dish that contains a recipe's whole name, but only
+    // from two words up, because a one-word name is normally too weak to
+    // identify anything: "Fresh Ginger Tea" reduces to ["ginger"], and letting
+    // that claim a slot would hand "Ginger garlic paste" a cup of tea.
+    //
+    // That blanket refusal also loses real matches. "Spiced buttermilk /
+    // chaas" IS the Spiced Lassi (Buttermilk) remedy — which answers to the
+    // one-word alias `chaas` — but no single one of its names clears the
+    // 2-token bar (`spiced` is only in the display name, `chaas` only in the
+    // aliases), so 6 live slots opened to an apology.
+    //
+    // What separates the two is not the word COUNT, it is how much the word
+    // narrows the catalogue — so measure that from the corpus rather than
+    // curate a list, and the rule keeps working as entries are added. df is
+    // the number of entries a word names: `chaas` names exactly one, so
+    // reading it is an identification; `ginger` names 18 and `water` 26, so
+    // reading either is a coincidence. Hence df === 1 — not a tuned cutoff but
+    // the definitional floor, "this word belongs to one entry and no other".
+    //
+    // Distinctiveness alone still is not enough, because a distinctive word
+    // can appear inside a dish that is plainly something else — "Oats porridge
+    // with figs" is not the soaked-figs remedy. So the REST of the dish has to
+    // corroborate: every other content word must also be one this entry
+    // answers to (`oats`/`porridge` are not, and sink it). Measured over the
+    // 15 published menus, that pair is what tells `chaas` (accepted) apart
+    // from `Pumpkin seeds`→seed-cycling, `Fresh papaya`→papaya-juice-for-
+    // hyperacidity and `BBQ chicken`→bone-broth (all refused: each shares only
+    // a FRAGMENT of a longer name, never a whole one).
+    //
+    // Runs only when nothing above matched, so it can add a method to a blank
+    // slot but can never re-decide one that already resolves.
+    let alt: { r: T; width: number } | undefined;
+    for (const { c, key, width } of identity) {
+      if (!pt.every((t) => contains(key, t))) continue;
+      const owns = c.names.some((n) => {
+        const rt = recipeLibToks(n);
+        return rt.length === 1 && df.get(rt[0]) === 1 && contains(pk, rt[0]);
+      });
+      // On the (rare) tie the leaner identity wins — the entry the dish
+      // accounts for most of, rather than one with a long alias list to catch
+      // things in.
+      if (owns && (!alt || width < alt.width)) alt = { r: c.value, width };
+    }
+    return alt?.r;
   };
 }
 
@@ -1763,6 +1843,11 @@ export function homeRemedyAsRecipe(r: AppRemedy): LetterRecipe {
  * and food-shaped, so a substring rule would hand "Methi water" to a methionine
  * anything. And the same consistency gate the library answers to applies, read
  * against the remedy's preparation prose since it has no ingredient list.
+ *
+ * This surface ALSO opts into the distinctive-one-word-name rule, which the
+ * library does not — a remedy's words are scattered across a display name, a
+ * slug and a handful of aliases, so the dish that names it may line up with no
+ * single one of them. A recipe has exactly one name and no such gap.
  */
 export function buildHomeRemedyResolver(
   remedies: AppRemedy[],
@@ -1771,7 +1856,7 @@ export function buildHomeRemedyResolver(
     names: [r.name, r.slug, ...r.aliases].filter(Boolean),
     value: { remedy: r, recipe: homeRemedyAsRecipe(r) },
   }));
-  const resolve = buildNameResolver(candidates, containsWord);
+  const resolve = buildNameResolver(candidates, containsWord, true);
   return (dish: string): LetterRecipe | undefined => {
     const hit = resolve(dish);
     if (!hit) return undefined;

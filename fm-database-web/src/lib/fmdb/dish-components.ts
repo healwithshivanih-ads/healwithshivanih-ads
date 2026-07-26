@@ -25,10 +25,17 @@
  *    and must never supply the recipe. "No recipe" beats "someone else's
  *    recipe" — a wrong method on a client's phone is what erodes trust.
  *
+ * 3. An em-dash was read as a descriptor even when it introduced the dish's own
+ *    INGREDIENTS, so "ABC juice — apple (½ medium) + beetroot (¼ small) + …"
+ *    split into three foods and titled itself after one of them. See "The gloss
+ *    dash" below for why punctuation alone cannot decide this.
+ *
  * Pure (no fs / no server-only) so both the server assembly and the tests can
  * share it, and so the six call sites that used to hand-roll the split can't
  * drift apart again.
  */
+
+import PANTRY_PHRASES from "./dish-pantry.json";
 
 /** One component of a dish — a clean title plus the portion lifted off it. */
 export interface DishComponent {
@@ -152,11 +159,11 @@ const SEP_SEQ = new RegExp(SEQ_THEN, "y");
  * primary component: "(1 glass water + 1 tsp sabja seeds soaked)" is one
  * parenthetical, not two components.
  */
-function splitTopLevel(s: string, sep: RegExp): string[] {
+function splitTopLevel(s: string, sep: RegExp, max = Infinity): string[] {
   const parts: string[] = [];
   let depth = 0;
   let start = 0;
-  for (let i = 0; i < s.length; i++) {
+  for (let i = 0; i < s.length && parts.length < max; i++) {
     const c = s[i];
     if (c === "(" || c === "[") {
       depth++;
@@ -182,15 +189,23 @@ function splitTopLevel(s: string, sep: RegExp): string[] {
 }
 
 /** The raw component strings of a dish, in menu order, for RECIPE MATCHING
- *  (splits on " + ", "→", "⇒", ":"). */
+ *  (splits on " + ", "→", "⇒", ":"). A dash-plus-gloss yields the head alone:
+ *  the dish IS "ABC juice", and matching on the ingredient list behind it is
+ *  how a juice ends up opening someone else's recipe. */
 export function splitDishParts(dish: string): string[] {
+  const head = glossHead(dish);
+  if (head) return [head];
   return splitTopLevel(dish ?? "", SEP_ALL);
 }
 
 /** The dish's components as the client reads them — VERBATIM, portions still
  *  attached ("Masala Roasted Chana (2 tbsp)"). The meal overlay lists these,
- *  so the portion must survive; only the bracket-aware boundary changes. */
+ *  so the portion must survive; only the bracket-aware boundary changes.
+ *  A gloss is one pill, and it keeps the WHOLE cell: that ingredient list is
+ *  the only method the client has for a drink with no recipe, so removing the
+ *  false boundaries must not remove the ingredients with them. */
 export function splitDishPills(dish: string): string[] {
+  if (glossHead(dish)) return [(dish ?? "").trim()];
   return splitTopLevel(dish ?? "", SEP_PLUS);
 }
 
@@ -208,19 +223,26 @@ export function splitDishStages(dish: string): string[] {
  *  edits place portions inconsistently, so the DISPLAY is where they get
  *  normalised. */
 export function splitDishComponents(dish: string): DishComponent[] {
-  return splitTopLevel(dish ?? "", SEP_PLUS).map((comp) => {
-    const portions: string[] = [];
-    const title = comp
-      .replace(DISH_PORTION_RE, (_m, p) => {
-        const v = String(p).trim();
-        if (v) portions.push(v);
-        return " ";
-      })
-      .replace(/\s+,/g, ",")
-      .replace(/\s+/g, " ")
-      .trim();
-    return { title: title || comp, portion: portions[0] || undefined };
-  });
+  // A gloss is ONE component and its title is the head — the grid shows
+  // "ABC juice", not "ABC juice — apple" with the rest of the drink beside it
+  // as if they were separate foods.
+  const head = glossHead(dish);
+  if (head) return [toComponent(head)];
+  return splitTopLevel(dish ?? "", SEP_PLUS).map(toComponent);
+}
+
+function toComponent(comp: string): DishComponent {
+  const portions: string[] = [];
+  const title = comp
+    .replace(DISH_PORTION_RE, (_m, p) => {
+      const v = String(p).trim();
+      if (v) portions.push(v);
+      return " ";
+    })
+    .replace(/\s+,/g, ",")
+    .replace(/\s+/g, " ")
+    .trim();
+  return { title: title || comp, portion: portions[0] || undefined };
 }
 
 /**
@@ -255,6 +277,154 @@ function namesADish(part: string): boolean {
   return recipeLibKey(part)
     .split(" ")
     .some((t) => t.length >= 3 && !NON_DISH_WORDS.has(t));
+}
+
+/**
+ * ── The gloss dash ──────────────────────────────────────────────────────────
+ *
+ * An em-dash introduces one of two completely different things, and punctuation
+ * alone cannot tell them apart:
+ *
+ *   GLOSS      "ABC juice — apple (½ medium) + beetroot (¼ small) + carrot (1 small)"
+ *              …the post-dash items are the drink's OWN INGREDIENTS. The " + "
+ *              are not component boundaries; the whole cell is ONE dish.
+ *   DESCRIPTOR "Paneer & spinach sabzi — well cooked (1 bowl) + rajgira roti (1)
+ *              + moong dal soup (1 bowl)"
+ *              …the dash qualifies the sabzi and the " + " are three real
+ *              dinner dishes.
+ *
+ * Read as a descriptor, the gloss shreds: the slot titles itself "ABC juice —
+ * apple (½ medium)" and the client is shown a drink named after one of its
+ * ingredients. Read as a gloss, the descriptor case is catastrophic — three
+ * dinner dishes collapse into one and two of them vanish off the plate. So the
+ * question is decided by asking what the post-dash items ARE, not where the
+ * punctuation sits, and every ambiguity resolves to "descriptor" (today's
+ * behaviour).
+ *
+ * The signal is the ingredient table (dish-pantry.json, generated from
+ * fm-database/data/_ingredient_nutrients.yaml by scripts/gen-dish-pantry.py):
+ * "apple", "beetroot", "raw honey", "warm water" are pantry ingredients;
+ * "rajgira roti" and "moong dal soup" are prepared dishes. A gloss lists only
+ * the former.
+ */
+
+/**
+ * Words that mark a fragment as something SERVED IN ITS OWN RIGHT on an Indian
+ * plate. A component carrying one can never be read as a gloss ingredient,
+ * whatever else it contains.
+ *
+ * This veto is why the pantry test can be trusted. The ingredient table's
+ * aliases include "moong dal", "brown rice", "foxtail millet" and "mixed salad
+ * vegetables", so on the pantry list alone a real side would read as a bare
+ * ingredient and be swallowed into the dish in front of it. Kept SEPARATE from
+ * DISH_GENERIC, which mixes these nouns with aromatics and prep words for a
+ * different question entirely.
+ *
+ * Grains and paneer are here for that reason, not because they aren't
+ * ingredients — they are, but they also arrive as their own katori. Over-
+ * including only means a gloss goes unmerged (today's behaviour);
+ * under-including deletes food off a client's plate.
+ *
+ * Deliberately absent: juice / drink / tea / milk / water. Those name pantry
+ * ingredients as often as dishes ("lemon juice (1 tsp)" inside a gloss), and
+ * vetoing them would block the very cases this exists to fix.
+ */
+const DISH_TYPE_WORDS = new Set([
+  "roti","phulka","chapati","chapatti","bhakri","paratha","thepla","naan","puri","poori",
+  "dal","daal","sabzi","sabji","sabzee","curry","gravy","soup","shorba","stew","rasam",
+  "sambar","kadhi","kadi","kootu","poriyal","thoran","bharta","bhurji","scramble",
+  "omelette","omelet","shakshuka","salad","kachumber","raita","chutney","pickle","achar",
+  "rice","pulao","pulav","biryani","khichdi","khichri","kitchari","risotto",
+  "dosa","idli","uttapam","upma","poha","chilla","cheela","muthia","dhokla","paniyaram",
+  "tikka","kebab","bhaji","bhajji","wrap","toast","sandwich","burger","medley",
+  "halwa","kheer","porridge","pancake","smoothie","lassi","chaas","buttermilk",
+  "millet","quinoa","pasta","noodles","cutlet","paneer",
+]);
+
+/**
+ * Preparation and serving words a coach writes between the foods in a gloss —
+ * "carrot (half medium) BLENDED with water", "ginger (½ inch) — FRESHLY
+ * PRESSED, SERVED IMMEDIATELY". Without them those fragments carry a word the
+ * pantry can't account for and the gloss goes unrecognised.
+ *
+ * This list is exactly the words the live menus need, and nothing else. Every
+ * speculative addition ("chopped", "sliced", "optional", …) was tried and
+ * dropped: each one widens the rule for a case no plan has ever written, and an
+ * unrecognised word is precisely what stops "steamed FRENCH beans" and "BRAZIL
+ * nuts" being swallowed as gloss items. The bar for adding one is a real menu
+ * that needs it — plus the corpus diff to prove nothing else moves.
+ * (NON_DISH_WORDS already supplies the seasonings, units and connectives.)
+ */
+const PREP_WORDS = new Set(["blended", "pressed", "freshly", "served", "immediately"]);
+
+/** Pantry ingredient names, for longest-phrase matching. */
+const PANTRY = new Set<string>(PANTRY_PHRASES);
+const PANTRY_MAX_WORDS = Math.max(...PANTRY_PHRASES.map((p) => p.split(" ").length));
+
+/**
+ * True when a fragment is nothing but pantry ingredients — every word is either
+ * part of an ingredient name, a preparation word or a unit, and at least one
+ * real ingredient is named.
+ *
+ * The "every word must be accounted for" rule is what makes this safe. A single
+ * unrecognised word ("steamed FRENCH beans", "BRAZIL nuts", "AGNI-reset light
+ * dinner", "SOFT Medjool dates") is enough to refuse — so an unfamiliar side
+ * dish is never mistaken for an ingredient of the dish in front of it.
+ */
+function isBareIngredient(part: string): boolean {
+  const toks = recipeLibKey(part)
+    .split(" ")
+    // <3 chars is "of" / "in" / "or" / a stray unit letter; the pantry phrases
+    // are built with the same filter, so dropping them here keeps both sides
+    // aligned ("juice of half lemon" ⇄ "juice half lemon").
+    .filter((t) => t.length >= 3);
+  if (toks.some((t) => DISH_TYPE_WORDS.has(t))) return false;
+  let foods = 0;
+  for (let i = 0; i < toks.length; ) {
+    let span = 0;
+    for (let n = Math.min(PANTRY_MAX_WORDS, toks.length - i); n >= 1; n--)
+      if (PANTRY.has(toks.slice(i, i + n).join(" "))) {
+        span = n;
+        break;
+      }
+    if (span) {
+      foods++;
+      i += span;
+      continue;
+    }
+    if (NON_DISH_WORDS.has(toks[i]) || PREP_WORDS.has(toks[i])) {
+      i++;
+      continue;
+    }
+    return false;
+  }
+  return foods > 0;
+}
+
+/** A spaced dash — the only shape that can introduce a gloss. Unspaced hyphens
+ *  are word-internal ("Dates-in-ghee", "skin-off", "3–4 nuts"). */
+const GLOSS_DASH = /\s[—–-]\s/y;
+
+/**
+ * The pre-dash head when `dish` is a dash-plus-gloss, else null.
+ *
+ * Every clause is a refusal, and each one exists to protect a real menu:
+ *  - a sequenced dish ("… — then: …") already owns its dash;
+ *  - a head that is itself several components ("Banana (…) + ghee (…) + …
+ *    — served warm") is a list, not a dish being glossed;
+ *  - with nothing to split after the dash there is no boundary at stake, so
+ *    changing the reading could only move recipe matching for no gain;
+ *  - and one post-dash item that isn't a bare ingredient means the dash was a
+ *    descriptor and the " + " after it are real dishes.
+ */
+function glossHead(dish: string): string | null {
+  const s = dish ?? "";
+  if (splitTopLevel(s, SEP_SEQ).length > 1) return null;
+  const [head, tail] = splitTopLevel(s, GLOSS_DASH, 1);
+  if (!tail || splitTopLevel(head, SEP_PLUS).length > 1) return null;
+  const items = splitTopLevel(tail, SEP_PLUS);
+  if (items.length < 2) return null;
+  return items.every(isBareIngredient) ? head : null;
 }
 
 /**

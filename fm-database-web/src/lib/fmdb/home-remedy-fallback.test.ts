@@ -133,6 +133,107 @@ describe("remedies only ever fill a gap", () => {
   });
 });
 
+/**
+ * The one-word-name rule. A remedy's words are spread across its display name,
+ * its slug and its aliases, so a dish can name it unmistakably and still not
+ * line up with any ONE of those names — "Spiced buttermilk / chaas" is the
+ * Spiced Lassi (Buttermilk) remedy, whose alias is literally `chaas`, yet
+ * `spiced` lives only in the display name and `chaas` only in the aliases.
+ *
+ * The word count is not what makes a match safe; how far the word narrows the
+ * catalogue is. These pin both halves of that: the anchor word must belong to
+ * exactly ONE entry, and the rest of the dish must corroborate rather than
+ * contradict. Break either and a client gets someone else's drink.
+ */
+describe("a one-word name counts only when it identifies exactly one remedy", () => {
+  const CHAAS = "Spiced Lassi (Buttermilk) for Digestion";
+
+  it("resolves the buttermilk/chaas dish that no single name matched", async () => {
+    const resolve = buildHomeRemedyResolver(await loadRemedyFallbackLibrary());
+    // The live menu strings — 6 published slots across Shruti's plan.
+    expect(resolve("Spiced buttermilk / chaas (1 glass)")?.title).toBe(CHAAS);
+    expect(resolve("Spiced buttermilk / chaas (1 glass) + roasted makhana (1 small bowl)")?.title)
+      .toBe(CHAAS);
+    // and it carries a real method, not an empty shell
+    expect(resolve("Spiced buttermilk / chaas (1 glass)")!.method.length).toBeGreaterThan(1);
+  });
+
+  it("does NOT hand a ginger dish a ginger remedy — 'ginger' names 18 entries", async () => {
+    const resolve = buildHomeRemedyResolver(await loadRemedyFallbackLibrary());
+    // "Fresh Ginger Tea (Adrak Chai)" reduces to the single word ["ginger"].
+    // Accepting a one-word name on word-count alone would serve tea here.
+    const paste = resolve("Ginger garlic paste (1 tsp)");
+    expect(paste).toBeUndefined();
+    expect(resolve("Ginger garlic paste (1 tsp) + jowar roti (2)")).toBeUndefined();
+  });
+
+  it("refuses the plain foods a distinctive word could otherwise drag in", async () => {
+    const resolve = buildHomeRemedyResolver(await loadRemedyFallbackLibrary());
+    // Each of these shares one word with a real remedy whose name is LONGER —
+    // a fragment, never a whole name. Serving them would tell a client to
+    // juice her papaya with sugar, or drink bone broth for her BBQ chicken.
+    for (const dish of [
+      "Kiwi (1)",
+      "Fresh papaya (1 cup)",
+      "Orange (1 medium) + almonds (10)",
+      "Fruit (1 medium) + roasted makhana (1/2 cup)",
+      "Pumpkin seeds (1 tbsp) + walnuts (5 halves)",
+      "Tender coconut water (1 glass)",
+      "BBQ chicken (small portion, ~80g) + brown rice (1 small bowl)",
+      "Moong dal (1 cup) + Everyday Basmati Rice (1/2 cup)",
+    ])
+      expect(resolve(dish), dish).toBeUndefined();
+  });
+
+  it("needs the REST of the dish to corroborate, not just the one word", () => {
+    const lib = [
+      remedy({ slug: "soaked-figs", name: "Soaked figs", aliases: ["anjeer"] }),
+      remedy({ slug: "jeera-water", name: "Jeera water" }),
+    ];
+    const resolve = buildHomeRemedyResolver(lib);
+    // "figs" identifies exactly one remedy here — but the dish is a porridge.
+    // Its other words are evidence AGAINST, and must sink the match.
+    expect(resolve("Oats porridge with figs (1 bowl)")).toBeUndefined();
+    expect(resolve("Anjeer walnut smoothie (1 glass)")).toBeUndefined();
+    // the same word with nothing contradicting it does resolve
+    expect(resolve("Soaked figs (2)")?.title).toBe("Soaked figs");
+    expect(resolve("Anjeer (2)")?.title).toBe("Soaked figs");
+  });
+
+  it("drops the one-word name as soon as a second remedy answers to it", () => {
+    const shared = { aliases: ["chaas"] };
+    const alone = [remedy({ slug: "spiced-lassi", name: "Spiced Lassi for Digestion", ...shared })];
+    // one owner → "chaas" identifies it, and the dish resolves
+    expect(buildHomeRemedyResolver(alone)("Spiced chaas (1 glass)")?.title).toBe(
+      "Spiced Lassi for Digestion",
+    );
+    // a second owner → the word no longer names anything in particular, so
+    // there is no honest way to choose and the slot stays blank.
+    const contested = [
+      ...alone,
+      remedy({ slug: "cooling-yogurt-tonic", name: "Cooling Yogurt Tonic", ...shared }),
+    ];
+    expect(buildHomeRemedyResolver(contested)("Spiced chaas (1 glass)")).toBeUndefined();
+  });
+
+  it("never overrides a match the ordinary rules already made", async () => {
+    const resolve = buildHomeRemedyResolver(await loadRemedyFallbackLibrary());
+    // CCF tea resolves on its names alone; the one-word rule runs only after
+    // everything above it has missed, so it cannot re-point an answered slot.
+    for (const dish of CCF_DISHES) expect(resolve(dish)?.title, dish).toBe(CCF_REMEDY);
+
+    // Head-to-head, because that is what makes the rule safe to add at all:
+    // "Golden latte" wins the dish on its name, even though the cooler's
+    // one-word `chaas` would otherwise cover it. A last-resort rule that
+    // outranked a real name match could re-point slots that already work.
+    const both = [
+      remedy({ slug: "golden-latte", name: "Golden latte" }),
+      remedy({ slug: "buttermilk-cooler", name: "Buttermilk Cooler", aliases: ["chaas", "golden", "latte"] }),
+    ];
+    expect(buildHomeRemedyResolver(both)("Golden chaas latte (1 glass)")?.title).toBe("Golden latte");
+  });
+});
+
 describe("matching is word-boundary, not substring", () => {
   const lib = [
     remedy({ slug: "methi-ajwain-water", name: "Methi ajwain water" }),

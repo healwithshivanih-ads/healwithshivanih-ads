@@ -177,3 +177,143 @@ describe("a sequence connective is one separator, consumed whole", () => {
     ]);
   });
 });
+
+/**
+ * An em-dash introduces either a dish's OWN INGREDIENTS or a descriptor
+ * followed by genuinely separate dishes, and punctuation cannot tell them
+ * apart. Both readings are load-bearing: read as a descriptor, "ABC juice —
+ * apple (½ medium) + …" titles a client's slot after one of the juice's
+ * ingredients (9 published slots across 3 clients did exactly this); read as a
+ * gloss, a three-dish dinner collapses to one and two dishes vanish off the
+ * plate. The second failure is far worse, so every ambiguous case must keep
+ * today's split.
+ */
+describe("a dash introducing a dish's own ingredients is not a boundary", () => {
+  const ABC = "ABC juice — apple (½ medium) + beetroot (¼ small) + carrot (1 small)";
+
+  it("reads the whole cell as ONE dish, titled by the pre-dash head", () => {
+    expect(splitDishComponents(ABC)).toEqual([{ title: "ABC juice", portion: undefined }]);
+    expect(primaryDishPart(ABC)).toBe("ABC juice");
+  });
+
+  it("keeps the ingredient list in the pill — it is the only method the client has", () => {
+    // Collapsing the false boundaries must not also delete the recipe: no
+    // library or pack entry is named "ABC juice" on most plans.
+    expect(splitDishPills(ABC)).toEqual([ABC]);
+  });
+
+  it("still splits a descriptor dash followed by real dishes", () => {
+    const dinner =
+      "Paneer & spinach sabzi — well cooked (1 bowl) + rajgira roti (1) + moong dal soup (1 bowl)";
+    expect(splitDishComponents(dinner).map((c) => c.title)).toEqual([
+      "Paneer & spinach sabzi — well cooked",
+      "rajgira roti",
+      "moong dal soup",
+    ]);
+    expect(primaryDishPart(dinner)).toBe("Paneer & spinach sabzi — well cooked (1 bowl)");
+  });
+
+  it("handles the gloss variants live plans actually carry", () => {
+    for (const dish of [
+      "ABC juice — apple (half) + beetroot (small piece 30 g) + carrot (half medium) blended with water (1 glass) + lemon juice (1 tsp)",
+      "ABC Juice — apple (1 small) + beetroot (½ medium) + ginger (½ inch) — freshly pressed, served immediately",
+      "ABC juice — apple (½ medium) + beetroot (¼ small) + carrot (1 small), freshly pressed (1 glass)",
+      "Honey and apple cider vinegar drink — raw honey (1 tsp) + apple cider vinegar (1 tsp) + warm water (1 glass)",
+    ])
+      expect(splitDishComponents(dish), dish).toHaveLength(1);
+  });
+
+  it("refuses when any post-dash item names a prepared dish", () => {
+    // "moong dal", "brown rice" and "foxtail millet" are all literal entries in
+    // the ingredient table, so the pantry test alone would read these sides as
+    // gloss items and swallow the client's dal into the drink in front of it.
+    // The dish-type noun is the only thing keeping them apart.
+    for (const side of ["moong dal (½ cup)", "brown rice (½ cup)", "foxtail millet (¾ cup)"])
+      expect(
+        splitDishComponents(`Amla shot — amla powder (1 tsp) + ${side}`),
+        side,
+      ).toHaveLength(2);
+    expect(
+      splitDishComponents("Amla shot — amla powder (1 tsp) + Beetroot salad (1 small bowl)"),
+    ).toHaveLength(2);
+    expect(
+      splitDishComponents(
+        "Grilled fish — mackerel/sardine (100 g) + Broccoli-cauliflower coconut sabzi (1 bowl) + Foxtail millet roti (1 small)",
+      ),
+    ).toHaveLength(3);
+  });
+
+  it("refuses when a post-dash item carries a word the pantry doesn't know", () => {
+    // "French", "Brazil" and "soft" are not ingredients, so these fragments
+    // cannot be claimed as part of the dish in front of them — the refusal is
+    // what stops an unfamiliar side being swallowed.
+    expect(
+      splitDishComponents(
+        "Fish stew (1 bowl) — basa/catla (100 g) in coconut milk + steamed French beans (1 small bowl)",
+      ),
+    ).toHaveLength(2);
+    expect(
+      splitDishComponents(
+        "Dates-in-ghee vitality tonic — soft Medjool dates (2) warmed with ghee (½ tsp) + cardamom (pinch) + Brazil nuts (2)",
+      ),
+    ).toHaveLength(3);
+  });
+
+  it("refuses when a post-dash item names no food at all", () => {
+    // "plain" is a preparation word, so on the every-word-accounted-for test
+    // alone the fragment would pass and take the banana down with it. A gloss
+    // lists FOODS; a fragment that names none is a descriptor.
+    expect(splitDishComponents("Curd — plain (1 bowl) + banana (1)")).toHaveLength(2);
+  });
+
+  it("refuses when the head is itself several components", () => {
+    // The dash qualifies the medley, but the eggs in front of it are their own
+    // dish — merging would delete them from the plate.
+    expect(
+      splitDishComponents(
+        "Boiled eggs (2) + roasted vegetable medley — zucchini (½ cup) + capsicum (¼ cup)",
+      ),
+    ).toHaveLength(3);
+    expect(
+      splitDishComponents(
+        "Banana (1 small, ripe) + raw honey (½ tsp) + black pepper (1 pinch) — mashed together",
+      ),
+    ).toHaveLength(3);
+  });
+
+  it("leaves a sequenced dish to the sequence connective", () => {
+    // "— then:" already means eat X then Y. Reading its dash as a gloss would
+    // swallow the food that follows into the drink that precedes it.
+    const d = "Jeera water (1 cup) — then: banana (1) + soaked almonds (6)";
+    expect(splitDishComponents(d).map((c) => c.title)).toEqual([
+      "Jeera water",
+      "banana",
+      "soaked almonds",
+    ]);
+    expect(primaryDishPart(d)).toBe("banana (1)");
+  });
+
+  it("needs the dash to be spaced — an unspaced one is inside a word", () => {
+    // Without the spacing rule the first "dash" here is the hyphen in
+    // "Ghee-roasted", and the slot titles itself "Ghee".
+    expect(splitDishComponents("Ghee-roasted almonds — almonds (6) + ghee (½ tsp)")).toEqual([
+      { title: "Ghee-roasted almonds", portion: undefined },
+    ]);
+  });
+
+  it("ignores a dash inside an annotation", () => {
+    expect(
+      splitDishComponents("Seasonal fruit (1 medium — papaya or guava) + Brazil nuts (2 whole)"),
+    ).toHaveLength(2);
+    expect(splitDishComponents("Brazil nuts, soaked (3–4 nuts)")).toHaveLength(1);
+  });
+
+  it("leaves the reading alone when no boundary is at stake", () => {
+    // One post-dash item cannot be shredded, so re-reading it as a gloss could
+    // only move which recipe the slot opens — for a slightly tidier title. The
+    // rule intervenes ONLY where a false component boundary actually exists.
+    const d =
+      "Almond-saffron-cardamom warm milk (½ cup) — 4 soaked almonds blended, saffron (2 strands), cardamom (pinch)";
+    expect(primaryDishPart(d)).toBe(d);
+  });
+});
