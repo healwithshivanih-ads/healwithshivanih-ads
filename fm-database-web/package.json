@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/pm2-restart-if-running.mjs",
     "start": "next start",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
