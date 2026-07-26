@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
-    "doctor": "node scripts/doctor.mjs"
+    "doctor": "node scripts/doctor.mjs",
+    "validate:recipes": "../fm-database/.venv/bin/python scripts/validate-recipes.py"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

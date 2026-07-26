@@ -7,7 +7,6 @@ diet:
 - vegetarian
 - vegan
 - gluten_free
-- jain_friendly_variant
 region: Indian
 seasons:
 - all
@@ -84,7 +83,11 @@ notes_for_coach: 'TIMING IS CLINICAL, NOT PREFERENCE: ash gourd is a diuretic, s
   it for one night (cl-022, 23/7/2026). Recipe is the coach''s own, as given to that
   client. Makes 4 glasses — one glass is a serving. Pick ONE of carrot / cucumber
   / beetroot rather than all three. Skip the leafy greens in monsoon. Amla is the
-  vitamin-C anchor; do not drop it.'
+  vitamin-C anchor; do not drop it. JAIN: the ash gourd base is jain-friendly, but
+  the recipe as written is not — pick cucumber (not carrot or beetroot) and leave
+  the ginger out. Not tagged `jain` on purpose: that tag makes the picker skip its
+  root-ingredient check, so a Jain client would be served this with the ginger and
+  carrot still in it. Prescribe the cucumber-no-ginger version by hand instead.'
 version: 1
 status: active
 updated_at: '2026-07-26'

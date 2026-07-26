@@ -1,0 +1,36 @@
+#!/bin/sh
+# Recipe YAML goes straight to clients' phones, so bad data is a client-visible
+# bug, not a lint nit — an overnight soak parked in prep_time_min showed a
+# chickpea snack as "500 min" on a live card (2026-07-26).
+#
+# Only runs when the commit actually touches fm-database/data/_recipes/.
+# Bypass with `git commit --no-verify` when you need to.
+#
+# Enabled per clone via:  git config core.hooksPath .githooks
+
+set -e
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+PYTHON="$REPO_ROOT/fm-database/.venv/bin/python"
+VALIDATOR="$REPO_ROOT/fm-database-web/scripts/validate-recipes.py"
+
+if ! git diff --cached --name-only --diff-filter=ACM \
+     | grep -q '^fm-database/data/_recipes/.*\.yaml$'; then
+  exit 0
+fi
+
+# A missing venv must not block every commit on a fresh machine — warn and pass.
+if [ ! -x "$PYTHON" ] || [ ! -f "$VALIDATOR" ]; then
+  echo "pre-commit: recipe validator unavailable (no venv at $PYTHON) — skipping." >&2
+  exit 0
+fi
+
+echo "pre-commit: validating recipe library…"
+# Note: validates the working tree, not the staged snapshot. With staged and
+# unstaged recipe edits in flight it can disagree with what you're committing.
+if ! FMDB_RECIPES_DIR="$REPO_ROOT/fm-database/data/_recipes" "$PYTHON" "$VALIDATOR"; then
+  echo "" >&2
+  echo "pre-commit: recipe validation FAILED — commit blocked." >&2
+  echo "Fix the errors above, or bypass with: git commit --no-verify" >&2
+  exit 1
+fi

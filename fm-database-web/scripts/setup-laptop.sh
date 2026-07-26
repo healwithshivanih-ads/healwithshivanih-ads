@@ -82,6 +82,15 @@ prompt_if_missing WHATSAPP_SERVER_API_KEY "WHATSAPP_SERVER_API_KEY (paste from F
 prompt_if_missing WHATSAPP_WEBHOOK_SECRET "WHATSAPP_WEBHOOK_SECRET (matches WA server's FM_COACH_WEBHOOK_SECRET)" secret
 echo
 
+# ── Step 1b: git hooks ────────────────────────────────────────────────────────
+# .git/hooks isn't version-controlled, so point git at the committed .githooks/
+# instead — otherwise the recipe validator only guards whichever machine it was
+# turned on for.
+
+echo "→ Enabling committed git hooks (recipe validation on commit)"
+git -C "$ROOT" config core.hooksPath .githooks
+echo
+
 # ── Step 2: install + build ───────────────────────────────────────────────────
 
 echo "→ npm install"
