@@ -637,4 +637,23 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except KeyboardInterrupt:
+        # The reconcile cron runs every minute, so a `pm2 restart` (now fired
+        # automatically after every build) routinely lands mid-refresh. pm2
+        # SIGINTs the Node parent and this child dies with it — wherever the
+        # interpreter happened to be standing, usually deep inside a
+        # yaml.safe_load. KeyboardInterrupt is a BaseException, so it walks
+        # straight through _refresh's and _stage_one's `except Exception`
+        # guards and out to the top, printing a traceback that reads exactly
+        # like a corrupt client.yaml. It is not: nothing was half-written, and
+        # the next run a minute later picks up cleanly.
+        #
+        # Emit valid JSON so runShim reports an interrupted run instead of
+        # "produced no output" + a misleading stack trace (2026-07-26: this
+        # cost an hour of chasing a data bug that did not exist).
+        json.dump({"ok": False, "interrupted": True,
+                   "error": "interrupted mid-refresh (server restart) — retries next run"},
+                  sys.stdout)
+        raise SystemExit(0)
