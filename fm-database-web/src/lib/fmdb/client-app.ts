@@ -1901,13 +1901,23 @@ export function buildDishRecipeResolver(sources: {
   packRecipes: LetterRecipe[];
   fromRemedy: (dish: string) => LetterRecipe | undefined;
 }): (dish: string) => LetterRecipe | undefined {
+  // Order is CATALOGUE FIRST, AI LAST — the coach's standing design rule: prefer
+  // curated content, minimise AI-generated recipes. Both _recipes/ and
+  // home_remedies/ are catalogue, so BOTH outrank the per-client AI pack.
+  //
+  // The remedy tier sat below the pack when it was first added (a conservative
+  // "change nothing that already resolves" instinct), which quietly inverted that
+  // rule: an AI recipe was beating curated content. It also lost safety
+  // information — a catalogue remedy carries contraindications and cautions the
+  // generated recipe has no way to know about, so the AI version winning meant a
+  // client could read a method with the warnings stripped off.
   return (dish: string): LetterRecipe | undefined => {
     const head = primaryDishPart(dish);
     const libR = sources.fromLibrary(dish);
     if (libR && recipeConsistentWithDish(head, libR)) return libR;
-    const packR = matchPackRecipe(head, sources.packRecipes);
-    if (packR) return packR;
-    return sources.fromRemedy(dish);
+    const remR = sources.fromRemedy(dish);
+    if (remR) return remR;
+    return matchPackRecipe(head, sources.packRecipes);
   };
 }
 

@@ -115,10 +115,13 @@ describe("remedies only ever fill a gap", () => {
       expect(resolve(dish)?.title, dish).toBe("Cumin-Coriander-Fennel Tea");
   });
 
-  it("a pack recipe also wins — the remedy is the LAST source, not the second", async () => {
+  it("a CATALOGUE remedy beats the AI pack — curated content outranks generated", async () => {
+    // The coach's standing rule is catalogue first, AI last. Both _recipes/ and
+    // home_remedies/ are catalogue, so a same-named pack recipe must NOT win: the
+    // generated version has no way to carry the remedy's contraindications, so
+    // letting it through would show a method with the warnings stripped off.
     const resolve = await chain([], [CCF_LIBRARY_RECIPE]);
-    for (const dish of CCF_DISHES)
-      expect(resolve(dish)?.title, dish).toBe("Cumin-Coriander-Fennel Tea");
+    for (const dish of CCF_DISHES) expect(resolve(dish)?.title, dish).toBe(CCF_REMEDY);
   });
 
   it("with no recipe anywhere, the chain reaches the remedy", async () => {
