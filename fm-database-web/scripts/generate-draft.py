@@ -307,8 +307,24 @@ def main() -> int:
     # Supplements the assessment explicitly said to STOP — deliberately kept out
     # of supplement_protocol and reported to the coach instead (see loop below).
     _stopped_supplements: list[tuple[str, str]] = []
+    # Suggestion entries that arrived as bare strings instead of the objects the
+    # synthesiser emits — hand-authored sessions from the May-2026 API cap do this
+    # (cl-008 stores topics_in_play + referral_triggers as plain strings, which
+    # crashed this script on the first `.get()`). A bare string is a DEGRADED
+    # record: there's no way to know which field it was meant to fill, and
+    # guessing invents clinical meaning (referral prose read as a referral
+    # recipient, a cadence nobody chose). Skip it and tell the coach.
+    _degraded_suggestions: list[tuple[str, str]] = []
+
+    def _degraded(section: str, item: object) -> None:
+        text = str(item).strip()
+        if text:
+            _degraded_suggestions.append((section, text))
 
     for d in suggestions.get("likely_drivers", []) or []:
+        if not isinstance(d, dict):
+            _degraded("likely_drivers", d)
+            continue
         slug_d = d.get("mechanism_slug") or ""
         if not picks.get(f"driver_{slug_d}", True):
             continue
@@ -329,6 +345,9 @@ def main() -> int:
         _driver_slugs_seen.add(slug_d)
 
     for t in suggestions.get("topics_in_play", []) or []:
+        if not isinstance(t, dict):
+            _degraded("topics_in_play", t)
+            continue
         role = t.get("role", "primary")
         slug_t = t.get("topic_slug", "")
         if not slug_t:
@@ -357,6 +376,9 @@ def main() -> int:
         # already captures these for backlog triage).
 
     for i, ls in enumerate(suggestions.get("lifestyle_suggestions", []) or []):
+        if not isinstance(ls, dict):
+            _degraded("lifestyle_suggestions", ls)
+            continue
         if picks.get(f"lifestyle_{i}_{ls.get('name', '')}", True):
             plan.lifestyle_practices.append(PracticeItem(
                 name=ls.get("name", ""),
@@ -364,7 +386,12 @@ def main() -> int:
                 details=ls.get("details", ""),
             ))
 
-    nut = suggestions.get("nutrition_suggestions") or {}
+    # Same degraded-shape guard as the ayurveda / tissue_salts blocks below:
+    # a string here used to survive `or {}` and then blow up on `.get()`.
+    nut = suggestions.get("nutrition_suggestions")
+    if nut and not isinstance(nut, dict):
+        _degraded("nutrition_suggestions", nut)
+    nut = nut if isinstance(nut, dict) else {}
     if nut and picks.get("nutrition_block", True):
         plan.nutrition = NutritionPlan(
             pattern=nut.get("pattern", ""),
@@ -465,6 +492,9 @@ def main() -> int:
             )
 
     for sp in suggestions.get("supplement_suggestions", []) or []:
+        if not isinstance(sp, dict):
+            _degraded("supplement_suggestions", sp)
+            continue
         slug_s = sp.get("supplement_slug", "")
         if not slug_s:
             continue
@@ -496,6 +526,9 @@ def main() -> int:
             ))
 
     for i, lf in enumerate(suggestions.get("lab_followups", []) or []):
+        if not isinstance(lf, dict):
+            _degraded("lab_followups", lf)
+            continue
         if picks.get(f"lab_{i}_{lf.get('test', '')}", True):
             kind = lf.get("kind") or None
             due = lf.get("due_in_weeks")
@@ -507,6 +540,9 @@ def main() -> int:
             ))
 
     for i, r in enumerate(suggestions.get("referral_triggers", []) or []):
+        if not isinstance(r, dict):
+            _degraded("referral_triggers", r)
+            continue
         if picks.get(f"ref_{i}", True):
             plan.referrals.append(ReferralItem(
                 to=r.get("to", ""),
@@ -515,6 +551,9 @@ def main() -> int:
             ))
 
     for i, ed in enumerate(suggestions.get("education_framings", []) or []):
+        if not isinstance(ed, dict):
+            _degraded("education_framings", ed)
+            continue
         if picks.get(f"edu_{i}_{ed.get('target_slug', '')}", True):
             plan.education.append(EducationModule(
                 target_kind=ed.get("target_kind", "topic"),
@@ -564,6 +603,9 @@ def main() -> int:
     # 404'd because no Plan exists at that slug. Renamed to proto_slug
     # to make the scope explicit.
     for ps in suggestions.get("suggested_protocols", []) or []:
+        if not isinstance(ps, dict):
+            _degraded("suggested_protocols", ps)
+            continue
         proto_slug = ps.get("protocol_slug", "")
         if proto_slug and picks.get(f"protocol_{proto_slug}"):
             if proto_slug not in plan.attached_protocols:
@@ -784,6 +826,9 @@ def main() -> int:
             "antecedent": [], "trigger": [], "mediator": [], "resolution": [],
         }
         for ev in ifm_timeline:
+            if not isinstance(ev, dict):
+                _degraded("ifm_timeline", ev)
+                continue
             atm = (ev.get("atm") or "").lower()
             if atm not in atm_buckets:
                 continue
@@ -822,6 +867,17 @@ def main() -> int:
             "publishable. Add each as a mechanism (or an alias on an existing one) "
             "and re-add the driver if it's clinically relevant:\n"
             + "\n".join(f"- `{s}`" for s in _dropped_driver_slugs)
+        )
+
+    if _degraded_suggestions:
+        notes_parts.append(
+            "## ⚠ Suggestions left out (unreadable shape)\n"
+            "These arrived as plain text instead of structured records, so there "
+            "was no safe way to tell which field each value belonged to — reading "
+            "one as a slug, a dose or a referral recipient would have invented "
+            "clinical meaning. They were left out rather than guessed at. Re-run "
+            "the analysis, or add them by hand where they belong:\n"
+            + "\n".join(f"- **{sec}** — {txt}" for sec, txt in _degraded_suggestions)
         )
 
     if _stopped_supplements:

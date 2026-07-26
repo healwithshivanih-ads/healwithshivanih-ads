@@ -102,6 +102,28 @@ _PROTEIN_PUSH = ("protein", "whey", "high-protein", "high protein")
 
 _VALID_CONTINUE = {"new", "continue", "adjust", "stop"}
 
+# Words that carry no allergen meaning. Real client.yaml files hold entries like
+# "none", "no known drug allergies", "mild dairy intolerance" — scanning those
+# verbatim would match supplement names on the filler, not the allergen.
+_ALLERGY_STOPWORDS = {
+    "none", "nil", "nka", "nkda", "n/a", "not", "known", "unknown", "denies",
+    "allergy", "allergies", "allergic", "intolerance", "intolerant",
+    "sensitivity", "sensitive", "reaction", "reactions", "drug", "drugs",
+    "food", "foods", "medication", "medications", "mild", "moderate", "severe",
+    "seasonal", "history", "reported", "the", "and", "with", "any",
+}
+
+# 3+ chars so "no" / "to" never become allergens; hyphens kept so "tree-nut"
+# survives as one token.
+_ALLERGY_WORD = re.compile(r"[a-z][a-z-]{2,}")
+
+# Free-text life-stage contraindications are hedged and dose-conditional in the
+# real catalogue ("pregnancy (supplement dose probably safe…)"), so these are
+# matched loosely and reported as WARN. The structured pregnancy_safety /
+# lactation_safety enums are what earn a HARD block.
+_PREGNANCY_NEEDLES = ("pregnan",)
+_LACTATION_NEEDLES = ("lactat", "breastfeed", "breast-feed", "nursing")
+
 
 def _norm(s: Any) -> str:
     return str(s or "").strip().lower()
@@ -110,6 +132,43 @@ def _norm(s: Any) -> str:
 def _resolve(idx: dict, slug: Any) -> Optional[str]:
     """Alias-aware slug resolution. Returns the canonical slug or None."""
     return idx.get(_norm(slug))
+
+
+def _allergen_tokens(client: dict) -> set:
+    """Allergen words worth scanning supplement names for.
+
+    Reuses the plan-checker's negation guard so "no nut allergy" does not
+    register 'nut' as an allergen — the same false-positive class it was
+    written for on the dietary side.
+    """
+    from fmdb.plan.checker import _is_negated
+
+    raw = list(client.get("known_allergies") or []) + list(client.get("allergies") or [])
+    tokens: set = set()
+    for entry in raw:
+        low = _norm(entry)
+        if not low:
+            continue
+        for m in _ALLERGY_WORD.finditer(low):
+            word = m.group(0).strip("-")
+            if len(word) < 3 or word in _ALLERGY_STOPWORDS:
+                continue
+            if _is_negated(low, m.start(), m.end()):
+                continue
+            tokens.add(word)
+    return tokens
+
+
+def _life_stage_flags(client: dict) -> tuple:
+    """(is_pregnant, is_lactating) from the client's structured fields.
+
+    Substring matching is wrong here — 'not_pregnant' contains 'pregnant' and
+    'postpartum_not_lactating' contains 'lactating'.
+    """
+    status = _norm(client.get("pregnancy_status"))
+    pregnant = status.startswith("pregnant")
+    lactating = status == "lactating" or bool(client.get("lactation_started"))
+    return pregnant, lactating
 
 
 # ── Main entry point ─────────────────────────────────────────────────────────
@@ -154,9 +213,11 @@ def validate(
 
     _check_slugs(rep, payload, cat, subgraph)
     _check_supplements(rep, payload, cat, client, drug_context)
+    _check_allergies(rep, payload, cat, client)
     _check_labs(rep, payload, client)
     _check_protein(rep, payload, client)
     _check_prose(rep, payload)
+    _check_numbers(rep, payload)
     return rep
 
 
@@ -302,6 +363,7 @@ def _check_supplements(
             client.get("medications") or []
         )
         meds = {_norm(m) for m in meds_raw if m}
+        pregnant, lactating = _life_stage_flags(client)
 
         for s in supps:
             slug = s.get("supplement_slug")
@@ -319,6 +381,50 @@ def _check_supplements(
                         f"condition {cond!r}. Remove it or justify explicitly.",
                         target=str(slug),
                     ))
+
+            # Same substring-both-ways rule the interaction scan below uses, so
+            # "metformin" still matches "Janumet 50/500 (metformin)".
+            for cmed in (getattr(contra, "medications", []) or []):
+                cname = _norm(cmed)
+                if len(cname) < 4:
+                    continue
+                if any(cname in m or m in cname for m in meds if len(m) > 3):
+                    rep.hard_failures.append(GateFinding(
+                        "HARD", "supplement_suggestions", "contraindicated_medication",
+                        f"{slug!r} is contraindicated with the client's medication "
+                        f"{cmed!r}. Remove it or justify explicitly.",
+                        target=str(slug),
+                    ))
+
+            for stage in (getattr(contra, "life_stages", []) or []):
+                low_stage = _norm(stage)
+                hit = (pregnant and any(n in low_stage for n in _PREGNANCY_NEEDLES)) or (
+                    lactating and any(n in low_stage for n in _LACTATION_NEEDLES)
+                )
+                if hit:
+                    rep.warnings.append(GateFinding(
+                        "WARN", "supplement_suggestions", "contraindicated_life_stage",
+                        f"{slug!r} lists life-stage contraindication {stage!r} and this "
+                        "client is in that stage. Check the dose caveat before keeping it.",
+                        target=str(slug),
+                    ))
+
+            preg_safety = _norm(getattr(getattr(supp, "pregnancy_safety", None), "value", ""))
+            if pregnant and preg_safety == "contraindicated":
+                rep.hard_failures.append(GateFinding(
+                    "HARD", "supplement_suggestions", "pregnancy_contraindicated",
+                    f"{slug!r} is catalogue-tagged pregnancy_safety: contraindicated and "
+                    "this client is pregnant. Remove it.",
+                    target=str(slug),
+                ))
+            lact_safety = _norm(getattr(getattr(supp, "lactation_safety", None), "value", ""))
+            if lactating and lact_safety == "contraindicated":
+                rep.hard_failures.append(GateFinding(
+                    "HARD", "supplement_suggestions", "lactation_contraindicated",
+                    f"{slug!r} is catalogue-tagged lactation_safety: contraindicated and "
+                    "this client is lactating. Remove it.",
+                    target=str(slug),
+                ))
 
             inter = getattr(supp, "interactions", None)
             for mi in (getattr(inter, "with_medications", []) or []):
@@ -376,6 +482,61 @@ def _check_supplements(
                     ))
 
 
+# ── 3b. Allergen scan ────────────────────────────────────────────────────────
+
+
+def _check_allergies(rep: GateReport, payload: dict, cat: Any, client: Optional[dict]) -> None:
+    """Nothing consulted `known_allergies` before this: a suggestion could name
+    the exact substance on the client's allergy list and pass clean.
+
+    Matching is word-boundary on the supplement's slug + display_name only. A
+    literal name collision is objectively decidable, so it is HARD; derivation
+    allergens (shellfish-sourced glucosamine) are deliberately out of scope
+    rather than guessed at.
+    """
+    if not client:
+        return
+    supps = payload.get("supplement_suggestions") or []
+    if not supps:
+        return
+    tokens = _allergen_tokens(client)
+    if not tokens:
+        return
+
+    by_slug: dict = {}
+    supp_idx: dict = {}
+    if cat is not None:
+        from fmdb.validator import _resolve_index
+
+        supp_idx = _resolve_index(cat.supplements)
+        by_slug = {getattr(x, "slug", ""): x for x in cat.supplements}
+
+    for s in supps:
+        slug = s.get("supplement_slug")
+        if not slug:
+            continue
+        canonical = _resolve(supp_idx, slug) if supp_idx else None
+        supp = by_slug.get(canonical) if canonical else None
+        text = _norm(slug).replace("-", " ")
+        if supp is not None:
+            text += " " + _norm(getattr(supp, "display_name", "")).replace("-", " ")
+
+        for tok in sorted(tokens):
+            word = tok.replace("-", " ")
+            patterns = [word]
+            # "nuts" must still hit "nut oil"; the -ss guard keeps "moss" whole.
+            if len(word) > 3 and word.endswith("s") and not word.endswith("ss"):
+                patterns.append(word[:-1])
+            if any(re.search(r"\b" + re.escape(p) + r"\b", text) for p in patterns):
+                rep.hard_failures.append(GateFinding(
+                    "HARD", "supplement_suggestions", "client_allergy",
+                    f"{slug!r} matches the client's known allergy {tok!r}. Remove it or "
+                    "pick a different source.",
+                    target=str(slug),
+                ))
+                break
+
+
 # ── 4. Lab orders ────────────────────────────────────────────────────────────
 
 
@@ -384,21 +545,23 @@ def _check_labs(rep: GateReport, payload: dict, client: Optional[dict]) -> None:
     did exactly this on Archana (vitamin D, 5 days old). A repeat is legitimate —
     but it must be declared `kind: "repeat"` so downstream dedup can see it."""
     labs = payload.get("lab_followups") or []
-    if not labs or not client:
+    if not labs:
         return
 
+    # The intra-payload dedup below is client-independent, so it must NOT sit
+    # behind the labs-on-file guards: a client with no labs yet is exactly the
+    # one most likely to receive a big first-order list, and the 6x
+    # oestrogen-metabolite bug would have sailed straight through.
     on_file: set = set()
-    for snap in client.get("health_snapshots") or []:
+    for snap in (client or {}).get("health_snapshots") or []:
         if not isinstance(snap, dict):
             continue
         for lv in snap.get("lab_values") or []:
             if isinstance(lv, dict) and lv.get("test_name"):
                 on_file.add(_norm(lv["test_name"]))
-    for m in client.get("lab_markers") or []:
+    for m in (client or {}).get("lab_markers") or []:
         if isinstance(m, dict) and m.get("marker_name"):
             on_file.add(_norm(m["marker_name"]))
-    if not on_file:
-        return
 
     # Duplicate orders within the payload itself (the 6x oestrogen-metabolite bug).
     seen: set = set()
@@ -414,6 +577,9 @@ def _check_labs(rep: GateReport, payload: dict, client: Optional[dict]) -> None:
             ))
             continue
         seen.add(test)
+
+        if not on_file:
+            continue  # nothing to compare against — dedup above still ran
 
         if _norm(lab.get("kind")) == "repeat":
             continue  # explicitly a re-check — fine
@@ -529,3 +695,35 @@ def _check_prose(rep: GateReport, payload: dict) -> None:
                     "instead. Offending text: " + str(text)[:80],
                 ))
                 break
+
+
+# ── 7. Numeric sanity (warnings only) ────────────────────────────────────────
+
+
+def _check_numbers(rep: GateReport, payload: dict) -> None:
+    """The schema types these as int/float, so `confidence_pct: 900` validates
+    clean and renders as a 900% confidence bar. WARN not HARD: an out-of-range
+    number is a display bug, not a clinical hazard, and the coach may still want
+    the rest of the assessment saved."""
+    # (section, id_field, num_field, low, high) — high=None means unbounded.
+    ranges = [
+        ("topics_in_play", "topic_slug", "confidence_pct", 0, 100),
+        ("suggested_protocols", "protocol_slug", "fit_percent", 0, 100),
+        ("supplement_suggestions", "supplement_slug", "duration_weeks", 1, None),
+        ("lab_followups", "test", "due_in_weeks", 0, None),
+    ]
+    for section, id_field, num_field, low, high in ranges:
+        for item in payload.get(section) or []:
+            if not isinstance(item, dict):
+                continue
+            val = item.get(num_field)
+            if val is None or isinstance(val, bool) or not isinstance(val, (int, float)):
+                continue
+            if val < low or (high is not None and val > high):
+                bound = f"{low}–{high}" if high is not None else f"≥ {low}"
+                rep.warnings.append(GateFinding(
+                    "WARN", section, "out_of_range",
+                    f"{num_field}={val!r} is outside the sane range ({bound}). "
+                    "Downstream UI renders this verbatim.",
+                    target=str(item.get(id_field) or ""),
+                ))

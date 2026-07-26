@@ -35,11 +35,30 @@ def _coerce_none_strings(data: Any) -> Any:
         # float parsing. That made model_dump() output un-revalidatable — any
         # persisted assessment carrying a suggested_protocol could not be re-read
         # (surfaced 2026-07-25 by the author gate on cl-022's real session).
+        # `_week` sits alongside `_weeks`: the field is `start_week`, an int,
+        # which does NOT end in `_weeks`. Without this the AI emitting a null
+        # start_week became "" and then failed int parsing, so the whole
+        # assessment was rejected.
         k: ("" if v is None and isinstance(k, str) and not k.endswith(
-            ("_score", "_count", "_weeks", "_pct", "_percent", "_tokens")
+            ("_score", "_count", "_week", "_weeks", "_pct", "_percent", "_tokens")
         ) else v)
         for k, v in data.items()
     }
+
+
+def _blank_to_list(v: Any) -> Any:
+    """Normalise a missing `intake_evidence` to [].
+
+    `_coerce_none_strings` rewrites a null to "" because the field name has no
+    numeric suffix, and "" is not a valid list — so a null from the AI would
+    reject the entire assessment. Exempting `_evidence` in the suffix tuple is
+    not an option: `chain_evidence` is a plain `str` and would then break on
+    null instead. Handles None directly too, so it does not depend on which
+    validator runs first.
+    """
+    if v is None or (isinstance(v, str) and v.strip() == ""):
+        return []
+    return v
 
 
 def _empty_int_to_none(data: Any, fields: tuple[str, ...]) -> Any:
@@ -107,6 +126,8 @@ class LikelyDriver(BaseModel):
     atm_role: str | None = None  # "antecedent" | "trigger" | "mediator" | "expression"
     parents: list[str] = Field(default_factory=list)  # mechanism slugs that PRECEDED this in the cascade
     chain_evidence: str = ""  # 1-2 sentences: why this position, what makes it root vs downstream
+    intake_evidence: list[str] = Field(default_factory=list)  # "observation (source_field)" audit citations
+    _blank_ev = field_validator("intake_evidence", mode="before")(_blank_to_list)
 
 
 class TopicInPlay(BaseModel):
@@ -133,6 +154,8 @@ class LifestyleSuggestion(BaseModel):
     details: str = ""
     rationale: str = ""
     addresses_mechanism: list[str] = Field(default_factory=list)
+    intake_evidence: list[str] = Field(default_factory=list)
+    _blank_ev = field_validator("intake_evidence", mode="before")(_blank_to_list)
 
 
 class NutritionSuggestions(BaseModel):
@@ -155,6 +178,12 @@ class SupplementSuggestion(BaseModel):
     dose: str = ""
     timing: str = ""
     duration_weeks: int | None = None
+    # Protocol week this supplement is INTRODUCED. generate-draft.py reads it as
+    # `sp.get("start_week") or 1`, so dropping it silently collapsed a staged
+    # protocol into "everything at week 1" — the exact load the staging rule exists
+    # to prevent. `titration` was lost the same way, taking the ramp instructions.
+    start_week: int | None = None
+    titration: str = ""
     rationale: str = ""
     evidence_tier_caveat: str = ""
     contraindication_check: str = ""
@@ -164,6 +193,8 @@ class SupplementSuggestion(BaseModel):
     # decision so she can scan the protocol in seconds.
     is_existing: bool = False
     continue_or_change: str = "new"  # "new" | "continue" | "adjust" | "stop"
+    intake_evidence: list[str] = Field(default_factory=list)
+    _blank_ev = field_validator("intake_evidence", mode="before")(_blank_to_list)
 
 
 class FactorScores(BaseModel):
@@ -267,6 +298,8 @@ class LabFollowup(BaseModel):
     # be set so the coach can scheduling the re-test relative to today.
     kind: Optional[str] = None
     due_in_weeks: Optional[int] = None
+    intake_evidence: list[str] = Field(default_factory=list)
+    _blank_ev = field_validator("intake_evidence", mode="before")(_blank_to_list)
 
 
 class ReferralTrigger(BaseModel):

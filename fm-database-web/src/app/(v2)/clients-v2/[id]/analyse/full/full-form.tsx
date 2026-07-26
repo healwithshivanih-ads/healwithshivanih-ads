@@ -44,6 +44,7 @@ import {
 } from "@/components/assess/assess-client";
 import { FmPanel, FmCollapsibleStep } from "@/components/fm";
 import { TriadDetectionBanner } from "@/components/assess/triad-detection-banner";
+import { GateFindingsPanel } from "@/components/assess/gate-findings-panel";
 
 interface IntakeSnapshot {
   chief_complaint?: string;
@@ -1416,6 +1417,10 @@ export function FullAssessmentForm({
               ✓ Synthesis complete. Review the AI&apos;s findings below.
             </div>
           )}
+          {/* Gate findings sit ABOVE the suggestions — the coach must see what
+              was blocked / flagged BEFORE she starts ticking through content. */}
+          <GateFindingsPanel gate={result.gate} />
+
           {result.computed_ratios && result.computed_ratios.length > 0 && (
             <ComputedRatiosCard ratios={result.computed_ratios} />
           )}
