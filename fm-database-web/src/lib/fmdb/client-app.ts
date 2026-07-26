@@ -245,6 +245,7 @@ import {
   displayTiming,
 } from "./client-app-format";
 import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
+import { stripEvidenceHedging } from "./client-app-evidence-hedge";
 
 export interface AppMealExtra {
   grad: string;
@@ -2151,6 +2152,7 @@ function clientifyPracticeDetail(raw: string): string {
   );
   s = s.replace(/^\s*\[[^\]]*\]\s*/g, "");
   s = s.replace(/\b20\d\d-\d\d-\d\d\b/g, "");
+  s = stripEvidenceHedging(s);
   s = s.replace(/[ \t]{2,}/g, " ");
   // tidy whitespace around newlines but keep the line breaks themselves
   s = s.replace(/[ \t]*\n[ \t]*/g, "\n").replace(/\n{3,}/g, "\n\n");
@@ -2289,6 +2291,11 @@ function clientifyWhy(raw: string): string {
   s = s.replace(/^\s*(?:FORM\s+SWAP|SWAP|UPDATE|CHANGE|REVISED|NOTE)\b[^—–\n]*?(?:[—–-]\s*|:\s*)/i, "");
   s = s.replace(/^\s*\[[^\]]*\]\s*/g, "");
   s = s.replace(/\b20\d\d-\d\d-\d\d\b/g, "");
+  // Evidence-tier hedging ("Evidence tier plausible_emerging — trial it for
+  // 12 weeks…") — same leak class as clientifyPracticeDetail, caught live on
+  // this exact field (cl-022's calcium-d-glucarate rationale). See
+  // stripEvidenceHedging for why this is a class fix, not a one-off.
+  s = stripEvidenceHedging(s);
   // Drug-nutrient depletion clauses name the client's actual medication +
   // class — "Telma 40 (ARB) depletes magnesium", "ARB (Telma 40) depletes
   // zinc". Rephrase to a generic, client-voiced line BEFORE other scrubs so
