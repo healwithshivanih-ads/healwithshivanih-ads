@@ -82,14 +82,44 @@ cd fm-database && .venv/bin/python -m fmdb.cli plan-check <plan-slug>
 ## What the gate checks
 
 **Hard (blocks the write)** — schema; unknown catalogue slugs (alias-aware);
-supplement contraindicated with an active condition; `avoid_together` medication
-interaction; drug-caution `avoid_supplement`; a lab already on file not marked
-`repeat`; duplicate lab orders; protein pushed on a renal/urate-flagged client;
-invalid `continue_or_change`.
+supplement contraindicated with an active condition, a current medication, a
+life-stage, or the client's pregnancy/lactation state; a supplement matching a
+`known_allergies` entry; `avoid_together` medication interaction; drug-caution
+`avoid_supplement`; a lab already on file not marked `repeat`; duplicate lab
+orders (within the payload, whether or not the client has labs on file); protein
+pushed on a renal/urate-flagged client; invalid `continue_or_change`.
 
 **Warn (saves, but tells you)** — real slug that wasn't in this subgraph; missing
 evidence-tier caveat on a thin-tier supplement; a repeat named but not
-structured; generic filler prose.
+structured; out-of-range numerics (confidence_pct, fit_percent, duration_weeks,
+due_in_weeks); generic filler prose.
+
+## 4b. Adversarial self-review (the clinical-reasoning layer, $0)
+
+The gate is mechanical: it catches unsafe and broken, never *unsound*. Before telling
+the coach an assessment is ready, run one deliberate skeptic pass over your own work.
+Model it on `fm-database/fmdb/plan/ai_check.py`, which does exactly this for a plan —
+read its SYSTEM prompt for the categories and severity language, then apply the same
+lens yourself, for free, instead of billing a Sonnet call.
+
+Check, in this order, and state the verdict per item rather than a general impression:
+
+1. **Coherence** — does the protocol actually address the drivers you named, or did you
+   list drivers and then prescribe around them?
+2. **Client fit** — re-read `client_ctx.active_conditions`, `current_medications`,
+   `known_allergies`, `dietary_preference`, `non_negotiables`. Does every single item
+   survive those? Name the ones you checked.
+3. **Translation fidelity** — for each supplement, does your rationale match what the
+   CATALOGUE says that supplement does? Inventing a plausible mechanism is the easiest
+   error to make and the hardest for the coach to catch.
+4. **Grounding** — can you point at a specific datum (a lab value, a quoted symptom, a
+   medication) behind each recommendation? Anything you cannot ground is a guess wearing
+   a clinical voice; cut it or label it.
+5. **Sequencing** — is the load realistic for THIS client in week 1, given their
+   anxiety, budget, and what they already take?
+
+Write the findings down for the coach. If a check fails, fix it and re-submit through
+the gate — do not report an assessment as ready with a known-soft finding buried.
 
 ## What the gate does NOT check
 
