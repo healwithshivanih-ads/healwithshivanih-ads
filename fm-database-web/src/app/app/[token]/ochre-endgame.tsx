@@ -638,8 +638,16 @@ export function LibraryFloorScreen({ goCoach, goTab }: { goCoach: () => void; go
   const data = useOchre();
   const { endgame, client, coach } = data;
   const bot = endgame?.backOnTrack ?? null;
+  // The recipe cap is DISCLOSED — the copy says "a taste"/"a few" and the
+  // keepsake link below carries the full count and a way to open all of them.
   const sampleRecipes = (data.recipePack ?? []).slice(0, 4);
-  const buyableSupps = (data.allSupplements ?? []).filter((s) => s.buyUrl).slice(0, 6);
+  // Supplements are NOT capped. This list used to .slice(0, 6) silently while
+  // the card promised "your links don't expire" — a client on a 7- or 8-item
+  // protocol lost re-order links to prescribed supplements with nothing on
+  // screen saying so, and unlike the Today meal row there is no drill-in to
+  // recover them. Same failure shape as the cl-022 meal-row drop. Protocols
+  // are small by design, so the honest list is the whole list.
+  const buyableSupps = (data.allSupplements ?? []).filter((s) => s.buyUrl);
 
   return (
     <div style={{ padding: "8px 14px 24px" }}>

@@ -625,8 +625,11 @@ function RemedyToday({ openRemedy }: { openRemedy: (r: AppRemedy) => void }) {
   );
 }
 
-/** Compact meal rows; edible daily Ayurvedic drinks fold in by timing. */
-function MealList({
+/** Compact meal rows; edible daily Ayurvedic drinks fold in by timing.
+ *  Exported only so the render-parity test can mount this row on its own —
+ *  mounting the whole TodayScreen would couple that test to twenty unrelated
+ *  fields of ClientAppData and go red for reasons that aren't the meal row. */
+export function MealList({
   openMeal,
   logged,
   onToggle,
@@ -703,12 +706,13 @@ function MealList({
                       {ci < Math.min(m.components.length, ML_MAX_COMPONENTS) - 1 && " · "}
                     </span>
                   ))}
-                  {/* The line caps at 3 to stay readable on a phone, but the cap
-                      used to be SILENT: a 4-item slot simply lost its tail, so a
+                  {/* The line caps to stay readable on a phone, but the cap used
+                      to be SILENT: a 4-item slot simply lost its tail, so a
                       prescribed item was invisible (cl-022's before-3pm vegetable
                       juice — the whole point of moving it off her evening). The
                       row opens the full meal, so the fix is to say something is
-                      there, not to overflow the line. */}
+                      there, not to overflow the line. Conservation is pinned by
+                      ochre-screens-render.test.tsx. */}
                   {m.components.length > ML_MAX_COMPONENTS && (
                     <span className="ml-more"> · +{m.components.length - ML_MAX_COMPONENTS} more</span>
                   )}

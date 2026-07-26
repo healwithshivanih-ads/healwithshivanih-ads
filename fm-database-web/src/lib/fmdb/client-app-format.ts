@@ -74,7 +74,27 @@ const BEDTIME_CUE = /bedtime|\bbed\b|\bsleep|\bnight(?:ly|s)?\b|\bretiring\b/;
  */
 export function timingRank(timing: string, dose: string, emptyStomach: boolean, asNeeded: boolean): number {
   if (asNeeded) return 100;
-  const t = ` ${`${timing} ${dose}`.toLowerCase()} `;
+  // The TIMING field is the coach's explicit statement of when to take it; `dose`
+  // is titration prose that merely MENTIONS times. Scanning both together let the
+  // dose overrule the instruction: cl-007's magnesium is timed "Bedtime, with a
+  // full glass of water" but its dose reads "…to one comfortable Bristol 3-4 stool
+  // each morning" — that stray "morning" cancelled the bedtime pin and filed a
+  // sleep supplement under Morning on the client's phone. So resolve on `timing`
+  // alone first, and only widen to the dose when timing says nothing definite
+  // (rank 25 is this function's "I could not tell" default).
+  const timingOnly = timing.trim()
+    ? rankTimingText(` ${timing.toLowerCase()} `, emptyStomach)
+    : UNKNOWN_TIMING_RANK;
+  if (timingOnly !== UNKNOWN_TIMING_RANK) return timingOnly;
+  return rankTimingText(` ${`${timing} ${dose}`.toLowerCase()} `, emptyStomach);
+}
+
+/** Rank a single already-lowercased, space-padded timing string. Split out of
+ *  `timingRank` so the timing field can be resolved on its own before the dose
+ *  is allowed to contribute — see the note there. */
+const UNKNOWN_TIMING_RANK = 25;
+
+function rankTimingText(t: string, emptyStomach: boolean): number {
   // an item pinned to ONE late time (and no earlier cue) belongs at that time
   const earlier = /morning|breakfast|\blunch\b|midday|\bnoon\b|before meal|before breakfast|empty stomach|on waking|upon waking|first thing|mid.?morning/;
   if (BEDTIME_CUE.test(t) && !earlier.test(t)) return 70;

@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
+    "parity": "node scripts/parity-sweep.mjs",
     "doctor": "node scripts/doctor.mjs",
     "validate:recipes": "../fm-database/.venv/bin/python scripts/validate-recipes.py"
   },
