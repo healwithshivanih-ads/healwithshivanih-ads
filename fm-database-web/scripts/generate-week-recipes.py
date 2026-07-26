@@ -111,6 +111,90 @@ def _collect_dishes(payload: dict[str, Any]) -> list[str]:
     return seen
 
 
+def _catalogue_covers(dish: str, titles: list[str]) -> bool:
+    """True only when the catalogue answers the dish's HEADLINE component.
+
+    Must agree with what the CLIENT APP actually resolves, which is
+    `primaryDishPart` — the first component that names a dish — NOT any component.
+    Judging on any component skipped 81 real dishes: "BBQ chicken (~80g) + brown
+    rice + kachumber salad" matched the catalogue's kachumber salad, so no recipe
+    was written, while the app looked up "BBQ chicken" and found nothing. The
+    client would have opened the meal to an empty method.
+
+    Two deliberate conservatisms, both chosen by measurement:
+
+    * The FIRST component, not a full primaryDishPart re-implementation. Python's
+      splitter is a stale mirror of the TS one, and a sixth copy of that logic is
+      how the timing parsers drifted.
+    * EXACT title match, not the fuzzy token-threshold used by the second-pass
+      "still uncovered" check. Fuzzy left 27 dishes skipped-here-but-unresolved-in
+      -the-app, because the TS side applies a consistency gate this does not.
+      Chasing byte-parity between two matchers is the trap; requiring certainty is
+      not. Exact skips 48% of dishes with zero real holes, measured across every
+      published menu.
+
+    Erring toward GENERATING costs a little money; erring toward skipping costs
+    the client a method. That asymmetry decides the direction every time.
+    """
+    parts = _split_components(dish)
+    head = parts[0] if parts else (dish or "")
+    if not head:
+        return False
+    return _supp_key(head) in {_supp_key(t) for t in titles}
+
+
+_CATALOGUE_TITLES: list[str] | None = None
+
+
+def _catalogue_titles() -> list[str]:
+    """Every dish name the CATALOGUE already answers to — recipe names plus
+    home-remedy display names and aliases.
+
+    The client app resolves a menu dish catalogue-first (recipe → remedy → this
+    generated pack), so any dish the catalogue already covers will NEVER show the
+    generated version. Asking the model to write it is pure waste: measured at
+    391 of 652 distinct menu components (59%) across the published corpus.
+
+    Skipping them also serves the standing design rule — prefer curated content,
+    minimise AI-generated recipes. Fewer generated recipes is the goal, not a
+    side effect.
+    """
+    global _CATALOGUE_TITLES
+    if _CATALOGUE_TITLES is not None:
+        return _CATALOGUE_TITLES
+    titles: list[str] = []
+    root = SCRIPTS_DIR.parent.parent / "fm-database" / "data"
+    try:
+        import yaml  # type: ignore
+
+        for f in (root / "_recipes").glob("*.yaml"):
+            try:
+                d = yaml.safe_load(f.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if isinstance(d, dict) and isinstance(d.get("name"), str):
+                titles.append(d["name"])
+        for f in (root / "home_remedies").glob("*.yaml"):
+            try:
+                d = yaml.safe_load(f.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if not isinstance(d, dict):
+                continue
+            if isinstance(d.get("display_name"), str):
+                titles.append(d["display_name"])
+            for a in d.get("aliases") or []:
+                if isinstance(a, str):
+                    titles.append(a)
+    except Exception as e:  # pragma: no cover
+        # Catalogue unreadable — fall back to generating everything rather than
+        # silently shipping a menu with no methods at all.
+        print(f"WARN: catalogue unreadable, not skipping: {e}", file=sys.stderr)
+        return []
+    _CATALOGUE_TITLES = titles
+    return titles
+
+
 def _build_user(payload: dict[str, Any], dishes: list[str]) -> str:
     lines: list[str] = []
     lines.append(locale_directive(payload.get("country"), "recipe"))
@@ -329,7 +413,17 @@ def main() -> None:
         return
 
     if payload.get("dry_run"):
-        print(json.dumps({"ok": True, "path": str(out_path), "count": len(_collect_dishes(payload)), "usage": None, "error": None, "dry_run": True}))
+        # Report what would ACTUALLY be sent, i.e. after the catalogue skip —
+        # a dry run that overstates the ask is worse than none, because it is
+        # the number used to sanity-check spend before a real run.
+        _all = _collect_dishes(payload)
+        _cat = _catalogue_titles()
+        _todo = [d for d in _all if not _catalogue_covers(d, _cat)] if _cat else _all
+        print(json.dumps({
+            "ok": True, "path": str(out_path), "count": len(_todo),
+            "dishes_on_menu": len(_all), "skipped_already_in_catalogue": len(_all) - len(_todo),
+            "usage": None, "error": None, "dry_run": True,
+        }))
         return
 
     from anthropic_client import build_client  # noqa: E402
@@ -339,6 +433,19 @@ def main() -> None:
     # overflow the token cap. Accumulate + dedupe across batches, then ONE atomic
     # write at the end (the Fly-synced .md is never seen half-written).
     dishes = _collect_dishes(payload)
+    # Catalogue-first: never pay to write a dish the catalogue already answers.
+    # Reuses _dish_has_recipe, the same matcher the "still uncovered" second pass
+    # uses, so a dish is judged covered here exactly as it is there.
+    _cat = _catalogue_titles()
+    if _cat:
+        _before = len(dishes)
+        dishes = [d for d in dishes if not _catalogue_covers(d, _cat)]
+        _skipped = _before - len(dishes)
+        if _skipped:
+            print(
+                f"[recipes] {_skipped}/{_before} dishes already in the catalogue — not generating those",
+                file=sys.stderr,
+            )
     all_recipes: list[dict[str, Any]] = []
     seen: set[str] = set()
     usage_entry = None
