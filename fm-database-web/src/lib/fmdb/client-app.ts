@@ -3928,6 +3928,13 @@ export async function loadClientAppData(
     const fm = text.match(FREQ_RE);
     if (fm) return `${fm[1]}× / week`;
     if (/alternate days?|every other day/i.test(text)) return "Alternate days";
+    // "As needed" practices (EFT tapping is the house convention — 5 clients
+    // carry it) had NO handler here, so they fell through to the "Daily"
+    // default — telling the client to do an as-needed practice every single
+    // day. Caught 2026-07-26 adding EFT for cl-017; swept and confirmed the
+    // same silent mislabel on 5 other clients' plans.
+    if (/as\s*[- ]?needed|whenever needed|when needed|as required|\bprn\b/i.test(text))
+      return "As needed";
     if (n.includes("sunlight")) return "Morning";
     if (n.includes("breath")) return "Morning & night";
     if (n.includes("sleep schedule") || n.includes("lights out")) return "Night";
