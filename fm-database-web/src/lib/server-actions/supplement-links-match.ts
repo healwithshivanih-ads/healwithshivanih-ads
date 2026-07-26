@@ -113,6 +113,20 @@ export function canonToken(s: string): string {
 }
 
 /**
+ * True when `needle` appears inside `hay` aligned to underscore word boundaries
+ * on BOTH ends — i.e. as a whole word or a whole run of words.
+ *
+ * `"methi"` must NOT match `"seleno_methionine"`; `"magnesium_glycinate"` must
+ * still match `"now_foods_magnesium_glycinate_180"`. Both strings come from
+ * canonToken, so they are already `[a-z0-9_]` only.
+ */
+export function containsAtBoundary(hay: string, needle: string): boolean {
+  if (!hay || !needle) return false;
+  if (hay === needle) return true;
+  return `_${hay}_`.includes(`_${needle}_`);
+}
+
+/**
  * Score every entry and return the best, or undefined if nothing matches.
  * Score tiers, most→least trusted:
  *   2000  DETERMINISTIC — the plan's catalogue slug exactly equals this
@@ -161,10 +175,17 @@ export function pickLinkEntry(
     for (const [k, v] of entries) {
       for (const tok of [k, ...(v.aliases ?? [])].map(canonToken)) {
         if (tok.length < 3) continue;
-        // product token is more specific than (contains) the query → always
-        // safe; query more specific than the token → trust only a multi-word
-        // token, so a bare category word can't hijack a specific formulation.
-        const safe = tok.includes(slug) || (slug.includes(tok) && tok.includes("_"));
+        // product token is more specific than (contains) the query → safe, but
+        // ONLY when the query lands on WORD BOUNDARIES. Raw `.includes` matched
+        // mid-word and put fenugreek on an FM Nutrition selenium product:
+        // "methi" is a substring of "seleno_methionine". Same trap family as
+        // "am" matching "amla". Tokens are underscore-delimited (canonToken),
+        // so boundary containment is exact, not a heuristic.
+        //
+        // The reverse direction (query more specific than the token) keeps its
+        // original guard — trust only a multi-word token, so a bare category
+        // word can't hijack a specific formulation.
+        const safe = containsAtBoundary(tok, slug) || (slug.includes(tok) && tok.includes("_"));
         if (safe) cands.push({ v, score: tok.length });
       }
     }

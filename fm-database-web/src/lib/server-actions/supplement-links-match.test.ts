@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import {
+  containsAtBoundary,
   pickLinkEntry,
   canonToken,
   isInternationalClient,
@@ -185,5 +186,28 @@ describe("isInternationalClient", () => {
     expect(isInternationalClient("USA")).toBe(true);
     expect(isInternationalClient("United Kingdom")).toBe(true);
     expect(isInternationalClient("Indonesia")).toBe(true);
+  });
+});
+
+describe("word-boundary containment (fenugreek/selenomethionine trap)", () => {
+  // Fenugreek was being surfaced to a client as an FM Nutrition SELENIUM
+  // product, because "methi" is a raw substring of "seleno_methionine".
+  // Containment must land on underscore word boundaries — same trap family as
+  // "am" inside "amla".
+  it("rejects a mid-word substring", () => {
+    expect(containsAtBoundary("seleno_methionine", "methi")).toBe(false);
+    expect(containsAtBoundary("amla", "am")).toBe(false);
+    expect(containsAtBoundary("afternoon", "noon")).toBe(false);
+  });
+  it("still accepts whole-word and whole-run containment", () => {
+    expect(containsAtBoundary("now_foods_magnesium_glycinate_180", "magnesium_glycinate")).toBe(true);
+    expect(containsAtBoundary("zinc", "zinc")).toBe(true);
+    expect(containsAtBoundary("thorne_zinc_picolinate", "zinc")).toBe(true);
+  });
+  it("does not match a bare remedy word to an unrelated product", () => {
+    const links = {
+      fmn_selenium: { display_name: "L-seleno Methionine", url: "https://x", source: "fmnutrition" },
+    } as unknown as LinksFile;
+    expect(pickLinkEntry(links, "methi", undefined, undefined)).toBeUndefined();
   });
 });
