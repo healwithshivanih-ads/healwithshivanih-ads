@@ -9,6 +9,8 @@ fm-database/data/_recipes/<slug>.yaml and marks the candidate approved:
      (warn + require force; slug collisions get a -2 suffix automatically)
   3. no-porridge guard — standing rule: porridge-type breakfasts are banned
      from client menus, so a porridge recipe needs an explicit force
+  3b. hands-on timings — prep_time_min is hands-on minutes only; a folded-in
+     overnight soak shows up as "500 min" on the client's card (recipe_times)
   4. diet consistency — meat/egg/dairy in the ingredient list strips
      vegetarian/vegan/jain claims; corrections applied and reported
   5. allergen derivation — union of AI-claimed + ingredient-derived
@@ -44,6 +46,7 @@ INBOX_DIR = PLANS_ROOT / "_recipe_inbox"
 
 from nutrients_lib import NutrientTable, compute_recipe_nutrients  # noqa: E402
 from good_for_lib import derive_good_for  # noqa: E402
+from recipe_times import check_times  # noqa: E402
 
 MEAL_TYPES = {"breakfast", "lunch", "dinner", "snack", "side", "drink", "salad", "soup", "condiment"}
 DIETS = {"vegetarian", "vegan", "jain", "eggetarian", "non_vegetarian", "gluten_free", "dairy_free", "nut_free"}
@@ -200,6 +203,11 @@ def main() -> int:
     # ── 3. no-porridge guard ───────────────────────────────────────────────
     if "porridge" in name.lower() or "porridge" in ing_text:
         blockers.append("porridge-type recipe — porridge breakfasts are banned from client menus (standing rule)")
+
+    # ── 3b. hands-on timings ───────────────────────────────────────────────
+    # the card shows prep+cook as one number, so a folded-in overnight soak
+    # reads as "500 min" to the client
+    blockers.extend(check_times(recipe.get("prep_time_min"), recipe.get("cook_time_min")))
 
     # ── 4. diet consistency ────────────────────────────────────────────────
     diet = set(recipe["diet"])

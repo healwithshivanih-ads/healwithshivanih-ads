@@ -377,7 +377,7 @@ RECIPE_TOOL = {
                 "description": "Method rewritten in YOUR OWN words — never the author's prose",
             },
             "servings": {"type": "string"},
-            "prep_time_min": {"type": "integer"},
+            "prep_time_min": {"type": "integer", "description": "HANDS-ON minutes only. NEVER include passive waits — overnight soaking, marinating, chilling, setting, fermenting. Those go in the ingredient line or a step. Typical value 5-30."},
             "cook_time_min": {"type": "integer"},
             "one_line": {"type": "string", "description": "One-sentence description in our own words"},
             "headnote": {"type": "string", "description": "Short warm note on why/when this dish works"},

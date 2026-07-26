@@ -5,6 +5,9 @@ any error. Run: python scripts/validate-recipes.py
 """
 import os, sys, glob, yaml
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from recipe_times import check_times  # noqa: E402
+
 MEAL_TYPES = {"breakfast", "lunch", "dinner", "snack", "side", "drink", "salad", "soup", "condiment"}
 # non_vegetarian is in active use across the library AND the app's dietary
 # filter keys on it (client-app.ts recipeDietLevel) — it MUST be valid here.
@@ -43,6 +46,10 @@ def check(d, fname, errs, warns):
             errs.append(f"{fname}: {k} must be a number")
     if not (d.get("method") or "").strip() and not (d.get("steps") or []):
         warns.append(f"{fname}: no method/steps stored")
+    # the client card shows prep+cook as one "N min" chip, so passive soak
+    # time folded into prep is a client-visible error, not a nitpick
+    for msg in check_times(d.get("prep_time_min"), d.get("cook_time_min")):
+        errs.append(f"{fname}: {msg}")
     img = d.get("image") or {}
     if isinstance(img, dict) and img.get("rights_status") not in (None, "", "none", "book_reference_uncleared", "web_reference_uncleared", "licensed", "original", "original_generated", "generated_reference"):
         errs.append(f"{fname}: image.rights_status invalid ({img.get('rights_status')!r})")
