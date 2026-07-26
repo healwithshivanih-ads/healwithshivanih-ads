@@ -189,7 +189,10 @@ function classifyTiming(raw: string | undefined): string {
   const t = raw.toLowerCase();
   if (/(early\s*morning|first thing|wake|empty stomach)/.test(t)) return "early_morning";
   if (/with dinner|at dinner|dinner/.test(t)) return "dinner";
-  if (/(bedtime|before bed|at night|evening)/.test(t)) return "bedtime";
+  // Shares the bedtime cue with BEDTIME_CUE in lib/fmdb/client-app-format.ts,
+  // plus "evening" — this bucket folds evening in. Word boundaries keep
+  // "bedside", "bedroom" and "nightshades" out.
+  if (/bedtime|\bbed\b|\bsleep|\bnight(?:ly|s)?\b|\bretiring\b|evening/.test(t)) return "bedtime";
   if (/(breakfast|morning meal)/.test(t)) return "breakfast";
   if (/(mid[- ]?morning|11 ?am|10 ?am)/.test(t)) return "mid_morning";
   if (/(lunch|midday|1 ?pm|2 ?pm)/.test(t)) return "lunch";
