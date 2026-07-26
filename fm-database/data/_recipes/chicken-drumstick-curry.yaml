@@ -17,7 +17,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- chicken
+- chicken drumsticks
 - coconut oil
 - onion, sliced
 - ginger-garlic paste
@@ -29,7 +29,7 @@ main_ingredients:
 - fresh coriander
 contains_allergens: []
 ingredients:
-- item: chicken
+- item: chicken drumsticks
   qty: '150'
   unit: g
 - item: coconut oil
@@ -102,23 +102,24 @@ kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 280
-  protein_g: 18.0
-  carbs_g: 10.6
-  fat_g: 19.0
-  fibre_g: 2.5
-  iron_mg: 2.9
-  calcium_mg: 57.0
-  magnesium_mg: 51.4
-  zinc_mg: 1.5
-  potassium_mg: 455
-  folate_ug: 24.3
-  b12_ug: 0.2
-  vit_d_ug: 0.1
-  vit_c_mg: 6.6
-  omega3_mg: 67.9
+  kcal: 218
+  protein_g: 3.8
+  carbs_g: 17.0
+  fat_g: 16.6
+  fibre_g: 4.9
+  iron_mg: 2.7
+  calcium_mg: 73.5
+  magnesium_mg: 66.4
+  zinc_mg: 0.9
+  potassium_mg: 613
+  folate_ug: 52.0
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 96.6
+  omega3_mg: 22.9
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
+- potassium
+- vitamin-c
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-26'

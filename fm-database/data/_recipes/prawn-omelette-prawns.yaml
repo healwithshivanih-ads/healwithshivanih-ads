@@ -1,5 +1,5 @@
 slug: prawn-omelette-prawns
-name: Prawn omelette (75g prawns
+name: Prawn omelette
 meal_type:
 - lunch
 - dinner
@@ -30,6 +30,9 @@ main_ingredients:
 contains_allergens:
 - shellfish
 ingredients:
+- item: eggs, beaten
+  qty: '2'
+  unit: piece
 - item: prawns
   qty: '150'
   unit: g
@@ -103,24 +106,27 @@ kcal_total: 310
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 254
-  protein_g: 17.3
-  carbs_g: 11.3
-  fat_g: 16.8
+  kcal: 325
+  protein_g: 23.6
+  carbs_g: 11.7
+  fat_g: 21.5
   fibre_g: 2.5
-  iron_mg: 2.8
-  calcium_mg: 99.0
-  magnesium_mg: 58.9
-  zinc_mg: 1.5
-  potassium_mg: 465
-  folate_ug: 33.3
-  b12_ug: 0.8
-  vit_d_ug: 0.1
+  iron_mg: 3.7
+  calcium_mg: 127
+  magnesium_mg: 64.9
+  zinc_mg: 2.2
+  potassium_mg: 534
+  folate_ug: 56.8
+  b12_ug: 1.3
+  vit_d_ug: 1.1
   vit_c_mg: 6.6
-  omega3_mg: 233
+  omega3_mg: 283
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- iron
+- zinc
+- potassium
 - b12
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-26'

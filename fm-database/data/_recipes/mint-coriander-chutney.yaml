@@ -28,6 +28,9 @@ main_ingredients:
 - 'for tempering: coconut oil, mustard seeds, curry leaves'
 contains_allergens: []
 ingredients:
+- item: fresh mint leaves
+  qty: '0.5'
+  unit: cup
 - item: coriander
   qty: '1'
   unit: cup
@@ -92,21 +95,21 @@ kcal_total: 180
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 64.6
-  protein_g: 0.6
-  carbs_g: 3.1
-  fat_g: 5.9
-  fibre_g: 1.2
-  iron_mg: 0.4
-  calcium_mg: 8.1
-  magnesium_mg: 7.7
+  kcal: 67.4
+  protein_g: 0.8
+  carbs_g: 3.6
+  fat_g: 6.0
+  fibre_g: 1.7
+  iron_mg: 1.2
+  calcium_mg: 20.6
+  magnesium_mg: 11.6
   zinc_mg: 0.2
-  potassium_mg: 106
-  folate_ug: 10.0
+  potassium_mg: 135
+  folate_ug: 16.6
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 8.4
-  omega3_mg: 1.1
+  vit_c_mg: 9.2
+  omega3_mg: 21.8
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1

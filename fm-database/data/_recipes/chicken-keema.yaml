@@ -17,7 +17,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- chicken
+- chicken mince (keema)
 - coconut oil
 - onion, sliced
 - ginger-garlic paste
@@ -29,7 +29,7 @@ main_ingredients:
 - fresh coriander
 contains_allergens: []
 ingredients:
-- item: chicken
+- item: chicken mince (keema)
   qty: '150'
   unit: g
 - item: coconut oil

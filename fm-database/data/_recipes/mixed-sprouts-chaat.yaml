@@ -28,7 +28,7 @@ main_ingredients:
 - coconut oil or cold-pressed oil (optional)
 contains_allergens: []
 ingredients:
-- item: mixed salad vegetables / sprouts (as named)
+- item: mixed sprouts (moong, moth, chana)
   qty: '2'
   unit: cups
 - item: cucumber, diced
@@ -89,23 +89,22 @@ kcal_total: 180
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 83.0
-  protein_g: 3.1
-  carbs_g: 12.7
-  fat_g: 2.8
-  fibre_g: 3.9
-  iron_mg: 1.5
-  calcium_mg: 44.1
-  magnesium_mg: 30.9
-  zinc_mg: 0.7
-  potassium_mg: 368
-  folate_ug: 53.5
+  kcal: 29.0
+  protein_g: 0.4
+  carbs_g: 1.9
+  fat_g: 2.4
+  fibre_g: 0.3
+  iron_mg: 0.5
+  calcium_mg: 11.7
+  magnesium_mg: 6.9
+  zinc_mg: 0.1
+  potassium_mg: 68.3
+  folate_ug: 4.3
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 34.1
-  omega3_mg: 45.1
-nutrient_coverage_pct: 100.0
-rich_in:
-- vitamin-c
+  vit_c_mg: 4.1
+  omega3_mg: 3.1
+nutrient_coverage_pct: 73.5
+rich_in: []
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-26'

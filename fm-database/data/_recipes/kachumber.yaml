@@ -28,7 +28,7 @@ main_ingredients:
 - coconut oil or cold-pressed oil (optional)
 contains_allergens: []
 ingredients:
-- item: mixed salad vegetables / sprouts (as named)
+- item: tomato and onion, finely diced
   qty: '2'
   unit: cups
 - item: cucumber, diced
@@ -88,21 +88,21 @@ kcal_total: 120
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 83.0
-  protein_g: 3.1
-  carbs_g: 12.7
-  fat_g: 2.8
-  fibre_g: 3.9
-  iron_mg: 1.5
-  calcium_mg: 44.1
-  magnesium_mg: 30.9
-  zinc_mg: 0.7
-  potassium_mg: 368
-  folate_ug: 53.5
+  kcal: 56.0
+  protein_g: 1.7
+  carbs_g: 7.8
+  fat_g: 2.7
+  fibre_g: 2.1
+  iron_mg: 1.0
+  calcium_mg: 26.7
+  magnesium_mg: 23.4
+  zinc_mg: 0.4
+  potassium_mg: 424
+  folate_ug: 26.8
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 34.1
-  omega3_mg: 45.1
+  vit_c_mg: 25.1
+  omega3_mg: 7.6
 nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c

@@ -6,10 +6,20 @@ any error. Run: python scripts/validate-recipes.py  (or npm run validate:recipes
 The vocabulary and the per-recipe checks live in recipe_schema.py so the write
 paths enforce the same rules; this file is just the whole-library CLI.
 """
-import os, sys, glob, yaml
+import os, sys, glob, re, yaml
+from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from recipe_schema import check_recipe  # noqa: E402
+
+
+def _ingredient_key(d):
+    """Normalised ingredient set, for spotting template clones."""
+    items = []
+    for i in (d.get("ingredients") or []):
+        it = str(i.get("item", "")) if isinstance(i, dict) else str(i)
+        items.append(" ".join(re.sub(r"[^a-z ]", " ", it.lower()).split()))
+    return tuple(sorted(x for x in items if x))
 
 
 def _dir():
@@ -24,6 +34,7 @@ def main():
     files = [f for f in sorted(glob.glob(os.path.join(directory, "*.yaml")))
              if not os.path.basename(f).startswith("_")]
     errs, warns = [], []
+    by_ingredients = defaultdict(list)
     for fp in files:
         name = os.path.basename(fp)
         try:
@@ -34,6 +45,16 @@ def main():
             errs.append(f"{name}: not a mapping"); continue
         e, w = check_recipe(d, name)
         errs.extend(e); warns.extend(w)
+        k = _ingredient_key(d)
+        if k:
+            by_ingredients[k].append(name)
+
+    # template clones: different titles, byte-identical ingredient lists. This
+    # is how 11 salads ended up with no beetroot/radish/cabbage in them.
+    for group in sorted(by_ingredients.values(), key=lambda g: (-len(g), g)):
+        if len(group) > 1:
+            warns.append(f"{len(group)} recipes share one identical ingredient list: "
+                         + ", ".join(sorted(group)))
     print(f"checked {len(files)} recipe(s) in {directory}")
     for w in warns: print(f"  WARN  {w}")
     for e in errs: print(f"  ERROR {e}")

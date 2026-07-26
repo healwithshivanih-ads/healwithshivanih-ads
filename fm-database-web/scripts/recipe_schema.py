@@ -34,6 +34,9 @@ ALLERGENS = {"dairy", "gluten", "nuts", "peanut", "soy", "egg", "fish", "shellfi
 
 REQUIRED = ("slug", "name", "meal_type", "one_line")
 
+# template slots that were meant to be substituted before the recipe shipped
+_PLACEHOLDER_RE = re.compile(r"\(as named\)|\bas named\b|\(as appropriate\)|<[a-z_]+>|\{\{", re.I)
+
 IMAGE_RIGHTS = (None, "", "none", "book_reference_uncleared", "web_reference_uncleared",
                 "licensed", "original", "original_generated", "generated_reference")
 
@@ -157,6 +160,23 @@ def check_recipe(d: dict, fname: str) -> tuple[list[str], list[str]]:
         warns.append(
             f"{fname}: ingredients suggest {sorted(missed)} but contains_allergens "
             f"is {sorted(declared) or '[]'} — clients with that allergy are not filtered out")
+
+    # unfilled template slot: "mixed salad vegetables / sprouts (as named)"
+    # shipped to clients on 11 salads before anyone noticed
+    for ing in (d.get("ingredients") or []):
+        item = str(ing.get("item", "") if isinstance(ing, dict) else ing)
+        if _PLACEHOLDER_RE.search(item):
+            errs.append(f"{fname}: ingredient {item!r} still holds a template placeholder "
+                        f"— substitute the food the title names")
+
+    # a name cut mid-parenthesis ("Prawn omelette (75g prawns") is a bad split,
+    # and the client sees the raw title
+    nm = str(d.get("name") or "")
+    if nm.count("(") != nm.count(")"):
+        errs.append(f"{fname}: name {nm!r} has unbalanced parentheses — looks truncated")
+
+    if not (d.get("ingredients") or []):
+        warns.append(f"{fname}: no ingredients — the client app skips recipes like this")
 
     img = d.get("image") or {}
     if isinstance(img, dict) and img.get("rights_status") not in IMAGE_RIGHTS:
