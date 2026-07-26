@@ -11,6 +11,7 @@ import {
   snackCategoryImage,
   recipeConsistentWithDish,
 } from "@/lib/fmdb/client-app";
+import { primaryDishPart } from "@/lib/fmdb/dish-components";
 
 /** One catalogue recipe that would show in the client app without a real
  *  photo — so the coach can source/generate one before any client sees it. */
@@ -264,9 +265,9 @@ export async function getMenuRecipeCoverage(): Promise<MenuRecipeCoverage> {
             const dish = (s.dish ?? "").trim();
             if (!dish || seen.has(dish)) continue;
             seen.add(dish);
-            // Only the FIRST cookable component carries the recipe (mirrors the
-            // client app's per-pill resolution); a wrong recipe there is the bug.
-            const head = dish.split(/\s\+\s|→|⇒|:/)[0]?.trim() || dish;
+            // Only the PRIMARY component carries the recipe (shared helper, so
+            // this scan can't drift from the app); a wrong recipe there is the bug.
+            const head = primaryDishPart(dish);
             const rec = resolver(head);
             if (rec && !recipeConsistentWithDish(head, rec)) flagged.push(dish);
           }

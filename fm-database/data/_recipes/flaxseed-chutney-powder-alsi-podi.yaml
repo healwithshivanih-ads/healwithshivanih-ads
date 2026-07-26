@@ -113,15 +113,15 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'
 version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/flaxseed-chutney-powder-alsi-podi.jpg
-  credit: 'web reference (coach-selected)'
+  credit: web reference (coach-selected)
   source_url: https://www.indianveggiedelight.com/wp-content/uploads/2018/01/flaxseed-chutney-powder-featured.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use

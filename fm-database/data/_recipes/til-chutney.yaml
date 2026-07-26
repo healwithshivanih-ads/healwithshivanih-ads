@@ -74,10 +74,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/til-chutney.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://til-chutney'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://til-chutney
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Til chutney
@@ -114,4 +115,4 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'

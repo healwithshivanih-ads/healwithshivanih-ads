@@ -1,0 +1,112 @@
+slug: ash-gourd-vegetable-juice
+name: Ash Gourd Vegetable Juice
+meal_type:
+- drink
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- jain_friendly_variant
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- sour
+- astringent
+main_ingredients:
+- Ash gourd (petha / safed kaddu), peeled and cubed — 1.5 cups
+- Tomatoes — 2 medium
+- Carrot, cucumber or beetroot — 1 medium (pick one)
+- Coriander, basil, parsley or baby spinach leaves — a handful
+- Celery, stick part only — less than a handful
+- Ginger — 1 inch
+- Amla (Indian gooseberry) — 1 whole
+- Lime juice — 2 tbsp
+- Roasted jeera (cumin) powder — a pinch
+contains_allergens: []
+ingredients:
+- item: Ash gourd (petha), peeled and cubed
+  qty: '1.5'
+  unit: cup
+- item: Tomatoes
+  qty: '2'
+  unit: piece
+- item: Carrot (or cucumber, or beetroot — pick one)
+  qty: '1'
+  unit: piece
+- item: Coriander leaves (or basil, parsley, baby spinach) — leaves only, not the
+    stalks
+  qty: '1'
+  unit: handful
+- item: Celery, stick part only
+  qty: '0.5'
+  unit: handful
+- item: Ginger
+  qty: '1'
+  unit: inch
+- item: Amla (Indian gooseberry)
+  qty: '1'
+  unit: piece
+- item: Lime juice
+  qty: '2'
+  unit: tablespoon
+- item: Roasted jeera (cumin) powder
+  qty: '1'
+  unit: pinch
+steps:
+- Wash everything well. Peel the ash gourd and cut into rough cubes. Quarter the tomatoes
+  and the carrot (or cucumber or beetroot — just one of the three).
+- Pick the leaves off the coriander — use the leaves only, not the stalks. In the
+  monsoon months, leave the leafy greens out altogether.
+- Add everything to a blender with just enough water to get the blades moving, then
+  add more water as it blends.
+- Strain once through a sieve, pressing everything down firmly. There should be very
+  little pulp left to throw away.
+- Stir in the lime juice and a pinch of roasted jeera powder. Serve fresh.
+servings: 4
+one_line: A light, hydrating everyday juice built on ash gourd, with amla for vitamin
+  C and jeera to keep it easy on the stomach.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Ash Gourd Vegetable Juice
+notes_for_coach: 'TIMING IS CLINICAL, NOT PREFERENCE: ash gourd is a diuretic, so
+  this juice must be taken BEFORE 3pm. A client drinking it at 6-6.30pm was waking
+  repeatedly to urinate and losing sleep; she confirmed the link herself by skipping
+  it for one night (cl-022, 23/7/2026). Recipe is the coach''s own, as given to that
+  client. Makes 4 glasses — one glass is a serving. Pick ONE of carrot / cucumber
+  / beetroot rather than all three. Skip the leafy greens in monsoon. Amla is the
+  vitamin-C anchor; do not drop it.'
+version: 1
+status: active
+updated_at: '2026-07-26'
+updated_by: Shivani
+provenance: coach_original
+nutrients_per_serving:
+  kcal: 25.8
+  protein_g: 0.9
+  carbs_g: 6.1
+  fat_g: 0.3
+  fibre_g: 2.4
+  iron_mg: 0.4
+  calcium_mg: 21.1
+  magnesium_mg: 13.6
+  zinc_mg: 0.4
+  potassium_mg: 206
+  folate_ug: 17.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.5
+  omega3_mg: 3.1
+nutrient_coverage_pct: 89.8
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-26'

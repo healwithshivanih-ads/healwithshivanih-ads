@@ -72,10 +72,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/masala-avocado-toast.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://masala-avocado-toast'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://masala-avocado-toast
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Masala avocado toast
@@ -103,4 +104,4 @@ nutrient_coverage_pct: 75.4
 rich_in:
 - fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-13'
+nutrients_computed_at: '2026-07-26'

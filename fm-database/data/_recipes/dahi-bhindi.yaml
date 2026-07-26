@@ -127,15 +127,15 @@ nutrient_coverage_pct: 93.9
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'
 version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/dahi-bhindi.jpg
-  credit: 'web reference (coach-selected)'
+  credit: web reference (coach-selected)
   source_url: https://www.cookwithkushi.com/wp-content/uploads/2022/06/IMG_1093l.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use

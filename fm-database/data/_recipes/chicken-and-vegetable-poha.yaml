@@ -85,10 +85,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/chicken-and-vegetable-poha.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://chicken-and-vegetable-poha'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://chicken-and-vegetable-poha
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Chicken and vegetable poha
@@ -120,4 +121,4 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'

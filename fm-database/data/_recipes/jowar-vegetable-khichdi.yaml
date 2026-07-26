@@ -135,14 +135,15 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'
 version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/jowar-vegetable-khichdi.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://jowar-vegetable-khichdi'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://jowar-vegetable-khichdi
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark

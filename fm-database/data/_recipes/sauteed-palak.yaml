@@ -74,10 +74,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/sauteed-palak.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://sauteed-palak'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sauteed-palak
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Sautéed palak
@@ -104,4 +105,4 @@ nutrients_per_serving:
 nutrient_coverage_pct: 61.3
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-12'
+nutrients_computed_at: '2026-07-26'

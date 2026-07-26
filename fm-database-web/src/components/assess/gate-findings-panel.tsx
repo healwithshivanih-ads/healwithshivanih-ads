@@ -33,12 +33,20 @@ export interface GateReport {
 
 interface Props {
   gate?: GateReport | null;
+  /**
+   * true when the gate REFUSED the write (assess.py `gate_blocked`): nothing
+   * reached the client's record and there are no suggestions rendered below
+   * this panel. The default copy says warnings "did save" and points at
+   * suggestions "below" — both are lies on a blocked run, and telling the
+   * coach something saved when it didn't is the worst possible failure here.
+   */
+  blocked?: boolean;
 }
 
 const HARD_TONE = { bg: "rgba(239, 68, 68, 0.10)", color: "#b91c1c", emoji: "✗" };
 const WARN_TONE = { bg: "rgba(245, 158, 11, 0.10)", color: "#92400e", emoji: "⚠" };
 
-export function GateFindingsPanel({ gate }: Props) {
+export function GateFindingsPanel({ gate, blocked }: Props) {
   const hardFailures = gate?.hard_failures ?? [];
   const warnings = gate?.warnings ?? [];
 
@@ -46,11 +54,17 @@ export function GateFindingsPanel({ gate }: Props) {
 
   return (
     <FmPanel
-      title="🚦 Safety checks on this assessment"
+      title={
+        blocked
+          ? "🚦 Assessment blocked — nothing was saved"
+          : "🚦 Safety checks on this assessment"
+      }
       subtitle={
-        hardFailures.length > 0
-          ? "Anything under “Blocked” stopped this assessment from being saved — fix it and run the analysis again. Anything under “Worth a look” did save, but read it before you act on the suggestions below."
-          : "These checks passed, with notes. Nothing was blocked — the assessment saved. Read these before you act on the suggestions below."
+        blocked
+          ? "This assessment was refused before anything reached the client's record — no session was written, no plan changed. Fix every point below, then run it again."
+          : hardFailures.length > 0
+            ? "Anything under “Blocked” stopped this assessment from being saved — fix it and run the analysis again. Anything under “Worth a look” did save, but read it before you act on the suggestions below."
+            : "These checks passed, with notes. Nothing was blocked — the assessment saved. Read these before you act on the suggestions below."
       }
       rightSlot={
         <div style={{ display: "inline-flex", gap: 8 }}>
@@ -72,7 +86,7 @@ export function GateFindingsPanel({ gate }: Props) {
         {hardFailures.length > 0 && (
           <section>
             <h4 style={sectionTitle()}>
-              ✗ Blocked — fix these and re-run the analysis
+              ✗ Blocked — fix these and run the assessment again
             </h4>
             <div style={{ display: "grid", gap: 6 }}>
               {hardFailures.map((f, i) => (
@@ -85,7 +99,9 @@ export function GateFindingsPanel({ gate }: Props) {
         {warnings.length > 0 && (
           <section>
             <h4 style={sectionTitle()}>
-              ⚠ Worth a look — saved, but check these before you build the plan
+              {blocked
+                ? "⚠ Also flagged — not saved either; sort these out in the same pass"
+                : "⚠ Worth a look — saved, but check these before you build the plan"}
             </h4>
             <div style={{ display: "grid", gap: 6 }}>
               {warnings.map((f, i) => (

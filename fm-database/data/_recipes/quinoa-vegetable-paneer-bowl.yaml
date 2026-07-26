@@ -86,10 +86,11 @@ updated_at: '2026-06-19'
 updated_by: Shivani
 image:
   file: images/web/quinoa-vegetable-paneer-bowl.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://quinoa-vegetable-paneer-bowl'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://quinoa-vegetable-paneer-bowl
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 nutrients_per_serving:
   kcal: 365
   protein_g: 15.9
@@ -116,4 +117,4 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'

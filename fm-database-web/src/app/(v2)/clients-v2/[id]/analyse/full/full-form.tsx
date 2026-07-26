@@ -449,6 +449,13 @@ export function FullAssessmentForm({
   const [planBrief, setPlanBrief] = useState<PlanBrief>({});
   const [error, setError] = useState<string | null>(null);
   const [preflightBlocked, setPreflightBlocked] = useState(false);
+  // The author gate's findings when it REFUSED the write (assess.py returns
+  // ok:false + gate_blocked). They cannot live on `result` — a failed run
+  // clears `result`, and the whole results block is gated behind result.ok,
+  // so the findings the coach needs in order to fix the run were computed,
+  // shipped to the browser and then thrown away with only a 120-char toast
+  // left behind. Own state, rendered outside that gate.
+  const [blockedGate, setBlockedGate] = useState<AssessResult["gate"] | null>(null);
   const [draftSignupWarning, setDraftSignupWarning] = useState<string | null>(null);
   // Freshness guard: set true when the coach clicks Generate-draft while the
   // on-screen synthesis is a REHYDRATED old run (loaded on mount, never
@@ -568,6 +575,7 @@ export function FullAssessmentForm({
   const onAnalyze = (opts?: { manual?: boolean }) => {
     setError(null);
     setPreflightBlocked(false);
+    setBlockedGate(null);
     // Combine delta inputs into one complaints payload for the AI.
     const complaintSections: string[] = [];
     if (deltaNotes.trim())
@@ -629,7 +637,13 @@ export function FullAssessmentForm({
           session_date: new Date().toISOString().slice(0, 10),
         });
         if (!res.ok) {
-          setError(res.error || "Analyze failed");
+          const gateHardFailures = res.gate?.hard_failures?.length ?? 0;
+          // res.error for a gated refusal is the gate's own multi-line
+          // render() — newlines collapse in the plain error <div>, so it
+          // arrives as an unreadable run-on blob. The panel below shows the
+          // exact same findings, structured. Show one or the other, never both.
+          setError(gateHardFailures > 0 ? null : res.error || "Analyze failed");
+          setBlockedGate(gateHardFailures > 0 ? res.gate ?? null : null);
           setPreflightBlocked(!!res.preflight_blocked);
           toast.error(res.error?.slice(0, 120) || "Analyze failed");
           setResult(null);
@@ -1359,6 +1373,12 @@ export function FullAssessmentForm({
         >
           {error}
         </div>
+      )}
+      {/* A gate refusal kills `result`, so this CANNOT live inside the
+          result?.ok results block below — that is exactly how the findings
+          went missing. Sits above it, on its own state. */}
+      {(blockedGate?.hard_failures?.length ?? 0) > 0 && (
+        <GateFindingsPanel gate={blockedGate} blocked />
       )}
       {preflightBlocked && (
         <div

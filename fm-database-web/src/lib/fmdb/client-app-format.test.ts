@@ -97,3 +97,52 @@ describe("timing", () => {
     expect(displayTiming("with breakfast, tasteless and clear")).toBe("With breakfast");
   });
 });
+
+describe("bedtime phrasings", () => {
+  // Magnesium glycinate timed "Before Bed" ranked 25 (the unknown-default) and
+  // rendered in the app's MORNING slot, beside breakfast. The cue regex tested
+  // /bedtime|before sleep|at night|\bnight\b/ — no bed alternative at all.
+  it("ranks every bed phrasing the coach actually writes as Bedtime", () => {
+    for (const t of ["Before Bed", "before bed", "1 hour before bed", "take before bed", "30 min before bed", "pre-bed"]) {
+      expect(timingRank(t, "", false, false), t).toBe(70);
+      expect(slotFromRank(timingRank(t, "", false, false)), t).toBe("Bedtime");
+    }
+  });
+  it("still ranks the phrasings that already worked", () => {
+    for (const t of ["bedtime", "at bedtime", "before bedtime", "at night", "before sleep", "each night", "last thing at night"]) {
+      expect(timingRank(t, "", false, false), t).toBe(70);
+    }
+  });
+  it("covers the other end-of-day phrasings that hit the same gap", () => {
+    for (const t of ["on retiring", "nightly", "before you sleep"]) {
+      expect(timingRank(t, "", false, false), t).toBe(70);
+    }
+  });
+  it("does not fire on words that merely contain 'bed'", () => {
+    for (const t of ["keep on the bedside table", "store in the bedroom", "embedded in the capsule"]) {
+      expect(slotFromRank(timingRank(t, "", false, false)), t).toBe("Morning");
+    }
+  });
+  it("keeps dinner-adjacent phrasings at dinner, not bedtime", () => {
+    for (const t of ["post-dinner", "after dinner", "with the evening meal"]) {
+      expect(timingRank(t, "", false, false), t).toBe(60);
+    }
+  });
+  it("anchors a two-dose timing at its EARLIEST dose, not the bedtime one", () => {
+    expect(timingRank("morning and before bed", "", false, false)).toBe(20);
+    expect(timingRank("breakfast and before bed", "", false, false)).toBe(20);
+    expect(timingRank("on waking and on retiring", "", false, false)).toBe(10);
+    expect(timingRank("with lunch and before bed", "", false, false)).toBe(40);
+  });
+  it("labels bed phrasings 'Bedtime' rather than echoing the raw text", () => {
+    for (const t of ["before bed", "1 hour before bed", "pre-bed", "on retiring", "nightly"]) {
+      expect(shortTiming(t), t).toBe("Bedtime");
+    }
+  });
+  it("shows BOTH doses when the second one is a bed phrasing", () => {
+    // isTimePhrase() omitted "bed", so the twice-daily split rejected the pair
+    // and collapsed to "Morning" — hiding the bedtime dose from the client.
+    expect(displayTiming("morning and before bed")).toBe("Morning & bedtime");
+    expect(displayTiming("breakfast and before bed")).toBe("With breakfast & bedtime");
+  });
+});

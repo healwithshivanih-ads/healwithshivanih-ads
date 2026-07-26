@@ -133,6 +133,11 @@ export interface WeeklyMenuStatus {
   /** per-day protein/fibre/kcal for the PENDING menu vs client targets;
    *  null when there's no pending menu to balance. */
   pendingNutrition: MenuNutrition | null;
+  /** Slots in the PENDING menu whose headline dish has no matching recipe, so
+   *  the client would tap it and get nothing. Surfaced at review time because
+   *  that is the last point where fixing it is cheap — once approved it is in
+   *  her app. See unresolvedDishesForWeek(). */
+  pendingUnresolved: { day: number; slot: string; dish: string; primary: string }[];
 }
 
 async function loadClientDoc(clientId: string): Promise<Record<string, unknown> | null> {
@@ -142,6 +147,39 @@ async function loadClientDoc(clientId: string): Promise<Record<string, unknown> 
   } catch {
     return null;
   }
+}
+
+/** Menu slots whose PRIMARY dish component matches no recipe.
+ *
+ *  WHY THIS EXISTS: a menu dish is free text, and the client app resolves it to
+ *  a recipe by name. If the headline component has no recipe, the client taps a
+ *  meal and gets nothing — or, before the primary-component fix, got a TRAILING
+ *  SIDE's recipe (cl-022's evening snack read "Sabja seeds drink + Masala
+ *  Roasted Chana" and opened the chana method). The matcher now refuses to show
+ *  a wrong recipe, which converts a silent mis-match into a silent blank.
+ *
+ *  Neither is acceptable to ship unknowingly, so the check runs at REVIEW time —
+ *  the last moment where a fix is one word in the studio rather than a re-publish.
+ *  It reports; it never blocks. Some dishes legitimately have no recipe (a piece
+ *  of fruit, a cup of coffee), so this is a prompt for the coach's judgement,
+ *  not a gate. */
+export async function unresolvedDishesForWeek(
+  week: { days?: { slots?: { slot?: string; dish?: string }[] }[] } | null | undefined,
+): Promise<{ day: number; slot: string; dish: string; primary: string }[]> {
+  if (!week?.days?.length) return [];
+  const [{ loadLibraryRecipes, buildLibraryRecipeResolver }, { primaryDishPart }] =
+    await Promise.all([import("@/lib/fmdb/client-app"), import("@/lib/fmdb/dish-components")]);
+  const resolve = buildLibraryRecipeResolver(await loadLibraryRecipes());
+  const out: { day: number; slot: string; dish: string; primary: string }[] = [];
+  week.days.forEach((day, i) => {
+    for (const sl of day?.slots ?? []) {
+      const dish = String(sl?.dish ?? "").trim();
+      if (!dish) continue;
+      if (resolve(dish)) continue;
+      out.push({ day: i + 1, slot: String(sl?.slot ?? ""), dish, primary: primaryDishPart(dish) });
+    }
+  });
+  return out;
 }
 
 export async function weeklyMenuStatusAction(
@@ -173,6 +211,7 @@ export async function weeklyMenuStatusAction(
     hasMenu: weeks.length > 0,
     isSample: !!plan.app_menu?.is_sample,
     pendingNutrition,
+    pendingUnresolved: pending ? await unresolvedDishesForWeek(pending) : [],
   };
 }
 

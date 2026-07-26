@@ -1198,6 +1198,37 @@ chana-dal:
     g_per_cup: 200
     g_per_piece: null
     g_per_leaf: null
+sabja-seeds:
+  category: nut_seed
+  basis: as_consumed
+  # Sabja (Ocimum basilicum / falooda seed) is NOT chia — lower fat and omega-3,
+  # comparable fibre and calcium. Values are published basil-seed figures, not an
+  # IFCT/USDA cross-check like the rest of this table (see _meta.verified), so treat
+  # as provisional. Typical use is 1 tsp (~3 g), where the contribution is small; the
+  # drink is prescribed for its mucilage, not its macros.
+  needs_verification: true
+  aliases:
+  - sabja seeds
+  - sabja
+  - basil seeds
+  - falooda seeds
+  - tukmaria
+  per_100g:
+    kcal: 233
+    protein_g: 14.8
+    carbs_g: 63.8
+    fat_g: 13.8
+    fibre_g: 40.5
+    iron_mg: 3.9
+    calcium_mg: 1490
+    magnesium_mg: 310
+    zinc_mg: 3.4
+    potassium_mg: 630
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 2350
 chia-seeds:
   category: nut_seed
   basis: as_consumed

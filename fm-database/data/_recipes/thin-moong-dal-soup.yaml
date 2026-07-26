@@ -76,10 +76,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/thin-moong-dal-soup.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://thin-moong-dal-soup'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://thin-moong-dal-soup
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Thin moong dal soup
@@ -111,4 +112,4 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'

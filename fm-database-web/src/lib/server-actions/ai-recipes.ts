@@ -10,6 +10,7 @@ import {
   matchPackRecipe,
   recipeConsistentWithDish,
 } from "@/lib/fmdb/client-app";
+import { primaryDishPart } from "@/lib/fmdb/dish-components";
 import type { MenuAiRecipes, AiRecipeFlag, PromoteResult } from "@/lib/fmdb/ai-recipes-types";
 
 /**
@@ -56,8 +57,9 @@ export async function getMenuAiRecipesAction(
         for (const s of d.slots ?? []) {
           const dish = (s.dish ?? "").trim();
           if (!dish) continue;
-          // per-pill: the head cookable component is what carries a recipe
-          const head = dish.split(/\s\+\s|→|⇒|:/)[0]?.trim() || dish;
+          // The primary component is what carries the recipe — shared with the
+          // client app so this flag can't disagree with what she actually serves.
+          const head = primaryDishPart(dish);
           const key = head.toLowerCase();
           if (seen.has(key)) continue;
           seen.add(key);

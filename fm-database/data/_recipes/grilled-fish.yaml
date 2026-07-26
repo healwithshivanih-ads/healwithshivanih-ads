@@ -71,10 +71,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/grilled-fish.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://grilled-fish'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://grilled-fish
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Grilled fish
@@ -110,4 +111,4 @@ rich_in:
 - vitamin-d
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-12'
+nutrients_computed_at: '2026-07-26'

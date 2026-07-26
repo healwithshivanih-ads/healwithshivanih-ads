@@ -105,48 +105,21 @@ export interface AppMeal {
 export const AYURVEDIC_DISH_RE =
   /khichdi|khichri|kanji\b|kashayam|churan|golden milk|haldi doodh|turmeric milk|ccf tea|cumin[- ]coriander[- ]fennel|buttermilk|chaas|lassi|methi water|jeera water|triphala|amla|haldi milk/i;
 
-/** A portion-shaped "(…)" — a count or a household/metric unit. Lets the app
- *  lift the portion off a dish component and show it as a clean muted token
- *  instead of raw inline parens. Kept deliberately in sync with dish-picker's
- *  PORTION_RE (coach authoring) — both sides must agree on what counts as a
- *  portion. Non-portion parens like "(new)" or "(fermented)" carry no digit or
- *  unit, so they're left untouched in the title. Global flag: a component can
- *  carry more than one (we keep the first, drop accidental doubles). */
-const DISH_PORTION_RE =
-  /\(\s*([^)]*?(?:\d|½|¼|¾|⅓|⅔|bowls?|cups?|glass(?:es)?|katori|tbsp|tsp|teaspoons?|tablespoons?|pieces?|small|large|medium|\bml\b|grams?|\bg\b|slices?|handful|palm)[^)]*?)\s*\)/gi;
-
-/** One component of a dish — a clean title plus the portion lifted off it. */
-export interface DishComponent {
-  title: string;
-  /** household portion, e.g. "2", "2 tbsp", "½ cup". Absent when none stated. */
-  portion?: string;
-}
-
-/** Break a composite dish ("Ragi dosa (2) + chutney (2 tbsp)") into clean
- *  components, lifting each portion-shaped "(…)" out of the title wherever it
- *  sits — trailing ("dosa (2)"), leading ("(2) eggs"), or standalone
- *  ("(1) amla") — and dropping accidental doubles ("(1 cup) (1 bowl)" keeps the
- *  first). Tolerant by design: the generators and coach edits place portions
- *  inconsistently, so the DISPLAY is where they get normalised. */
-export function splitDishComponents(dish: string): DishComponent[] {
-  return (dish ?? "")
-    .split(/\s\+\s/)
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .map((comp) => {
-      const portions: string[] = [];
-      const title = comp
-        .replace(DISH_PORTION_RE, (_m, p) => {
-          const v = String(p).trim();
-          if (v) portions.push(v);
-          return " ";
-        })
-        .replace(/\s+,/g, ",")
-        .replace(/\s+/g, " ")
-        .trim();
-      return { title: title || comp, portion: portions[0] || undefined };
-    });
-}
+// Dish anatomy (component splitting + which component the dish IS) lives in
+// the PURE module ./dish-components — six call sites used to hand-roll the
+// split and drifted apart. Re-exported so existing importers are unaffected.
+export type { DishComponent } from "./dish-components";
+export { splitDishComponents, splitDishParts, primaryDishPart, recipeLibKey } from "./dish-components";
+import type { DishComponent } from "./dish-components";
+import {
+  splitDishComponents,
+  splitDishPills,
+  primaryDishPart,
+  recipeLibKey,
+  recipeLibToks,
+  dishHeadlineFoods,
+  foldFood,
+} from "./dish-components";
 
 /** One slot of one day in the full-week menu view. */
 export interface WeekMenuSlot {
@@ -1554,17 +1527,6 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
   return out;
 }
 
-/** Stop-words ignored when token-matching a dish to a library recipe title. */
-const RECIPE_LIB_STOP = new Set(["with", "and", "tbsp", "tsp", "cup", "roasted", "soaked", "ground", "fresh", "everyday", "style"]);
-/** Normalize a dish/recipe name for matching: drop "(portion)" annotations and
- *  punctuation so "Paneer sabzi (1 bowl)" keys the same as "Paneer sabzi" —
- *  the real reason menu photos vanished once dishes carried explicit portions
- *  (2026-06-15). */
-export const recipeLibKey = (s: string) =>
-  s.toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
-const recipeLibToks = (s: string) =>
-  recipeLibKey(s).split(" ").filter((t) => t.length > 3 && !RECIPE_LIB_STOP.has(t));
-
 // ── Recipe-consistency gate (the "no recipe beats a wrong recipe" guarantee) ──
 // The LAST seam before a recipe reaches a client. Even if matching or generation
 // drifts, this refuses to show a recipe that (a) is garbled (no ingredients or no
@@ -1572,51 +1534,6 @@ const recipeLibToks = (s: string) =>
 // failing recipe renders as the clean dish name + portion, never as nonsense —
 // which is what erodes trust and compliance. Kept deliberately CONSERVATIVE: it
 // only kills clear nonsense, so it doesn't hide good recipes.
-//
-// Words that are dish-types / preparations / aromatics / units — NOT the
-// distinctive "headline" food a dish is named after. Dropped before comparing.
-const DISH_GENERIC = new Set([
-  "curry","sabzi","sabji","sabzee","dal","daal","masala","fry","stir","gravy",
-  "soup","shorba","salad","chutney","raita","kachumber","roti","phulka","chapati",
-  "bhakri","rice","pulao","pulav","biryani","khichdi","kitchari","chilla","cheela",
-  "dosa","idli","upma","poha","paratha","thepla","bhurji","scramble","stew",
-  "poriyal","kootu","kadhi","kadi","tikka","bhaji","bhajji","wrap","bowl","toast",
-  "spiced","roasted","steamed","boiled","fresh","plain","mixed","home","homemade",
-  "light","warm","cooked","tempered","seasoned","simple","everyday","style",
-  "healing","detox","cleansing","weight","loss","herb","herbal","seasonal",
-  "ginger","garlic","onion","tomato","jeera","cumin","salt","oil","ghee","butter",
-  "coriander","cilantro","turmeric","haldi","pepper","chilli","chili","lemon",
-  "lime","water","milk","spice","spices","masala",
-  "with","and","the","for","cup","glass","tbsp","tsp","katori","piece","small",
-  "large","medium","serves","min","grams","slice","slices","handful","pinch",
-]);
-// Fold common Indian ↔ English food-name pairs so a synonym mismatch (dish says
-// "spinach", recipe lists "palak") does NOT false-reject a correct recipe.
-const _FOOD_SYNONYM: Record<string, string> = {
-  palak: "spinach", spinach: "spinach",
-  chana: "chickpea", chole: "chickpea", chhole: "chickpea", chickpea: "chickpea",
-  chickpeas: "chickpea", garbanzo: "chickpea", kabuli: "chickpea",
-  paneer: "paneer", cottage: "paneer",
-  baingan: "brinjal", brinjal: "brinjal", aubergine: "brinjal", eggplant: "brinjal",
-  curd: "yogurt", dahi: "yogurt", yoghurt: "yogurt", yogurt: "yogurt", lassi: "yogurt",
-  methi: "fenugreek", fenugreek: "fenugreek",
-  lauki: "gourd", doodhi: "gourd", ghia: "gourd", bottle: "gourd", tinda: "gourd",
-  turai: "gourd", ridge: "gourd", karela: "bittergourd",
-  bhindi: "okra", okra: "okra",
-  gobi: "cauliflower", cauliflower: "cauliflower",
-  rajma: "kidneybean", kidney: "kidneybean",
-  moong: "mung", mung: "mung", masoor: "lentil", toor: "lentil", arhar: "lentil",
-  urad: "blackgram", chawli: "cowpea", lobia: "cowpea",
-  aloo: "potato", potato: "potato",
-  jowar: "sorghum", sorghum: "sorghum", ragi: "fingermillet", bajra: "pearlmillet",
-  soya: "soy", soybean: "soy", tofu: "tofu",
-};
-const _foldFood = (t: string) => _FOOD_SYNONYM[t] ?? t;
-const _dishHeadlineFoods = (s: string): string[] =>
-  recipeLibKey(s)
-    .split(" ")
-    .filter((t) => t.length >= 3 && !DISH_GENERIC.has(t) && !RECIPE_LIB_STOP.has(t))
-    .map(_foldFood);
 
 /** True when `recipe` is safe to show for `dish`: it has real content and it
  *  actually contains the dish's headline ingredient. Exported so the coach's
@@ -1628,12 +1545,12 @@ export function recipeConsistentWithDish(
   // (a) garble guard — a recipe with no ingredients or no method is nonsense.
   if (!r.ingredients?.length || !r.method?.length) return false;
   // (b) headline-ingredient presence.
-  const dishToks = _dishHeadlineFoods(dish);
+  const dishToks = dishHeadlineFoods(dish);
   if (!dishToks.length) return true; // dish has no distinctive food (e.g. "Kitchari") — trust the match
   const blob = recipeLibKey(
     [r.title ?? "", ...(r.mains ?? []), ...(r.ingredients ?? [])].join(" "),
   );
-  const recipeToks = new Set(blob.split(" ").filter((t) => t.length >= 3).map(_foldFood));
+  const recipeToks = new Set(blob.split(" ").filter((t) => t.length >= 3).map(foldFood));
   return dishToks.some((t) => recipeToks.has(t));
 }
 
@@ -1660,66 +1577,64 @@ export function buildLibraryRecipeResolver(
     if (k && !byExactKey.has(k)) byExactKey.set(k, l.recipe);
   }
   return (dish: string): LetterRecipe | undefined => {
-    // Component separators used across menus: " + ", "→", "⇒", ":". The "⇒"
-    // (U+21D2) is what the multi-component dinner menus actually use ("Green
-    // moong sabzi ⇒ masoor dal ⇒ sama millet") — omitting it meant those whole
-    // dishes never split, so the first component's recipe (and photo) was lost.
-    const pills = dish.split(/\s\+\s|→|⇒|:/).map((s) => s.trim()).filter(Boolean);
-    for (let pi = 0; pi < pills.length; pi++) {
-      const pill = pills[pi];
-      const exact = byExactKey.get(recipeLibKey(pill));
-      if (exact) return exact;
-      const pt = recipeLibToks(pill);
-      if (!pt.length) continue;
-      const pk = recipeLibKey(pill);
-      let best: { r: LetterRecipe; hit: number; slack: number; pos: number } | undefined;
-      for (const l of libraryRecipes) {
-        const rt = recipeLibToks(l.recipe.title);
-        if (!rt.length) continue;
-        const hit = rt.filter((t) => pk.includes(t)).length;
-        const rk = recipeLibKey(l.recipe.title);
-        const extra = pt.filter((t) => !rk.includes(t)).length;
-        // (a) near-equality (≥2 title tokens hit, ≤1 missed, ≤1 extra), or
-        // (b) the ENTIRE multi-token recipe title appears in the FIRST pill —
-        //     a dish that is "<recipe> with <sides>" (e.g. "Besan chilla with
-        //     onion + capsicum") IS that recipe plus additions. Restricted to
-        //     pill 0 (the main dish) so a trailing SIDE can't hijack the photo:
-        //     "Masala egg scramble … + jowar roti" must not resolve to the
-        //     jowar-roti recipe just because that side's title is fully present.
-        // (c) single-token title matched by a single-token dish.
-        // Guard on (a): NEVER accept a match that has BOTH a missed recipe token
-        // AND an extra dish token — that is a DIFFERENT dish, not a portion/side
-        // variation. "Tofu and spinach curry" vs recipe "Tofu Vegetable Curry"
-        // (miss "vegetable" + extra "spinach") must NOT match — the dish names a
-        // different headline ingredient. "no match > wrong match". A dish that is
-        // "<recipe> + <side>" (extra, no miss) still matches; a recipe with a lead
-        // descriptor the dish drops ("Cilantro Mint Chutney" ← "mint chutney":
-        // miss, no extra) still matches. Only miss AND extra together is rejected.
-        const ok =
-          (hit >= 2 && rt.length - hit <= 1 && extra <= 1 &&
-            (rt.length - hit === 0 || extra === 0)) ||
-          (pi === 0 && hit === rt.length && rt.length >= 2) ||
-          (rt.length === 1 && hit === 1 && pt.length === 1);
-        // slack = how far from an exact match (unmatched recipe tokens + extra
-        // dish tokens). Prefer more hits, then the CLOSEST title — so
-        // "Vegetable poha" wins over "Chicken and vegetable poha".
-        const slack = rt.length - hit + extra;
-        // pos = where the title first appears among the dish's tokens. On an
-        // otherwise-tied match, the title that starts EARLIEST wins — the head
-        // dish, not a trailing medium: "Ragi-oats porridge in almond milk" →
-        // Ragi porridge, not Almond Milk.
-        const pos = Math.min(...rt.map((t) => { const i = pt.indexOf(t); return i < 0 ? 1e9 : i; }));
-        if (
-          ok &&
-          (!best ||
-            hit > best.hit ||
-            (hit === best.hit && (slack < best.slack || (slack === best.slack && pos < best.pos))))
-        )
-          best = { r: l.recipe, hit, slack, pos };
-      }
-      if (best) return best.r;
+    // A slot's recipe may come ONLY from the component that gives the dish its
+    // identity — its first substantive one (primaryDishPart; bracket-aware, so
+    // a " + " inside a portion annotation no longer shreds it, and a tempering
+    // aromatic listed first is skipped). Scanning on past it is how a trailing
+    // side hijacked the slot: Nazneen's evening snack "Sabja seeds drink (…) +
+    // Masala Roasted Chana (2 tbsp)" opened the CHANA method, because no sabja
+    // recipe existed yet. When the primary has no recipe the slot gets none —
+    // the overlay then offers the recipe pack, which is honest; someone else's
+    // method sitting under the client's dish name is not.
+    const pill = primaryDishPart(dish);
+    const exact = byExactKey.get(recipeLibKey(pill));
+    if (exact) return exact;
+    const pt = recipeLibToks(pill);
+    if (!pt.length) return undefined;
+    const pk = recipeLibKey(pill);
+    let best: { r: LetterRecipe; hit: number; slack: number; pos: number } | undefined;
+    for (const l of libraryRecipes) {
+      const rt = recipeLibToks(l.recipe.title);
+      if (!rt.length) continue;
+      const hit = rt.filter((t) => pk.includes(t)).length;
+      const rk = recipeLibKey(l.recipe.title);
+      const extra = pt.filter((t) => !rk.includes(t)).length;
+      // (a) near-equality (≥2 title tokens hit, ≤1 missed, ≤1 extra), or
+      // (b) the ENTIRE multi-token recipe title appears in the primary
+      //     component — a dish that is "<recipe> with <sides>" (e.g. "Besan
+      //     chilla with onion + capsicum") IS that recipe plus additions.
+      // (c) single-token title matched by a single-token dish.
+      // Guard on (a): NEVER accept a match that has BOTH a missed recipe token
+      // AND an extra dish token — that is a DIFFERENT dish, not a portion/side
+      // variation. "Tofu and spinach curry" vs recipe "Tofu Vegetable Curry"
+      // (miss "vegetable" + extra "spinach") must NOT match — the dish names a
+      // different headline ingredient. "no match > wrong match". A dish that is
+      // "<recipe> + <side>" (extra, no miss) still matches; a recipe with a lead
+      // descriptor the dish drops ("Cilantro Mint Chutney" ← "mint chutney":
+      // miss, no extra) still matches. Only miss AND extra together is rejected.
+      const ok =
+        (hit >= 2 && rt.length - hit <= 1 && extra <= 1 &&
+          (rt.length - hit === 0 || extra === 0)) ||
+        (hit === rt.length && rt.length >= 2) ||
+        (rt.length === 1 && hit === 1 && pt.length === 1);
+      // slack = how far from an exact match (unmatched recipe tokens + extra
+      // dish tokens). Prefer more hits, then the CLOSEST title — so
+      // "Vegetable poha" wins over "Chicken and vegetable poha".
+      const slack = rt.length - hit + extra;
+      // pos = where the title first appears among the dish's tokens. On an
+      // otherwise-tied match, the title that starts EARLIEST wins — the head
+      // dish, not a trailing medium: "Ragi-oats porridge in almond milk" →
+      // Ragi porridge, not Almond Milk.
+      const pos = Math.min(...rt.map((t) => { const i = pt.indexOf(t); return i < 0 ? 1e9 : i; }));
+      if (
+        ok &&
+        (!best ||
+          hit > best.hit ||
+          (hit === best.hit && (slack < best.slack || (slack === best.slack && pos < best.pos))))
+      )
+        best = { r: l.recipe, hit, slack, pos };
     }
-    return undefined;
+    return best?.r;
   };
 }
 
@@ -1760,8 +1675,7 @@ function categoryFor(text: string): string | null {
  *  nothing matches (the caller then falls back to the labelled tile). Exported
  *  so the dashboard coverage scan counts category-covered dishes as covered. */
 export function snackCategoryImage(dish: string): string | undefined {
-  const firstPill = dish.split(/\s\+\s|→|⇒|:/)[0] ?? dish;
-  const cat = categoryFor(firstPill) ?? categoryFor(dish);
+  const cat = categoryFor(primaryDishPart(dish)) ?? categoryFor(dish);
   return cat ? `/recipe-images/categories/${cat}.jpg` : undefined;
 }
 
@@ -3192,9 +3106,16 @@ export async function loadClientAppData(
   // the exported matchPackRecipe so the coach dashboard flags exactly the
   // dishes that still fall back to AI (catalogue doesn't cover them yet).
   const recipeFor = (dish: string): LetterRecipe | undefined => {
+    // Both branches judge the PRIMARY component, not the whole cell. Against
+    // the whole cell the gate is toothless (any component's food satisfies it)
+    // and matchPackRecipe — which does no splitting at all — happily returns a
+    // trailing side's recipe. That is the second half of the Nazneen hijack:
+    // even with the library scoped to the primary, the pack would still have
+    // served Masala Roasted Chana for a sabja-led slot.
+    const head = primaryDishPart(dish);
     const libR = libraryRecipeFor(dish);
-    if (libR && recipeConsistentWithDish(dish, libR)) return libR;
-    const packR = matchPackRecipe(dish, recipes);
+    if (libR && recipeConsistentWithDish(head, libR)) return libR;
+    const packR = matchPackRecipe(head, recipes);
     if (packR) return packR;
     return undefined;
   };
@@ -3204,7 +3125,7 @@ export async function loadClientAppData(
       if (slotL.includes("bedtime")) continue; // bedtime drinks are remedies, folded in separately
       const cell = row.cells[colIdx] ?? row.cells[0] ?? "";
       if (!cell) continue;
-      const pills = cell.split(/\s\+\s/).map((p) => p.trim()).filter(Boolean);
+      const pills = splitDishPills(cell);
       // strip header qualifiers like "Breakfast (≥25 g protein)" for the label
       const slotName = row.slot.replace(/\s*\([^)]*\)\s*$/, "").trim();
       const slotKey = slotName.toLowerCase();
@@ -3297,8 +3218,8 @@ export async function loadClientAppData(
     const tagCounts: Record<string, number> = {};
     for (const day of wm.days) {
       for (const slot of day.slots) {
-        for (const part of slot.dish.split(/\s*\+\s*/)) {
-          const rec = recipeFor(part.trim());
+        for (const part of splitDishPills(slot.dish)) {
+          const rec = recipeFor(part);
           for (const tag of rec?.richIn ?? []) tagCounts[tag] = (tagCounts[tag] ?? 0) + 1;
         }
       }

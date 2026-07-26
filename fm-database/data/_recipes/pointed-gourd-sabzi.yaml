@@ -81,10 +81,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/pointed-gourd-sabzi.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://pointed-gourd-sabzi'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://pointed-gourd-sabzi
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Pointed gourd sabzi
@@ -111,4 +112,4 @@ nutrients_per_serving:
 nutrient_coverage_pct: 38.5
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-12'
+nutrients_computed_at: '2026-07-26'

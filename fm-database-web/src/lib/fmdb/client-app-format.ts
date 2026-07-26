@@ -52,6 +52,18 @@ export function shortDose(dose: string): string {
   return out.length > 44 ? (qty ? qty[0].trim() : `${out.slice(0, 42).trim()}…`) : out;
 }
 
+// The end-of-day cue, defined ONCE because it is tested in three places
+// (timingRank's pinned-late check, timingRank's fallthrough, and shortTiming)
+// and those copies silently drifted. All three tested
+// /bedtime|before sleep|at night|\bnight\b/ — which never matched "before bed",
+// the phrasing coaches actually write. Magnesium glycinate prescribed for sleep
+// therefore fell past every branch to the unknown-default rank (25) and rendered
+// in the client app's MORNING slot, next to breakfast (2026-07-26).
+// \bbed\b, never a bare /bed/: "bedside", "bedroom" and "embedded" must not fire.
+// \bsleep (open-ended) keeps "before sleeping" matching, as it did before, and
+// keeps this in step with the letter generator's bare "sleep" keyword.
+const BEDTIME_CUE = /bedtime|\bbed\b|\bsleep|\bnight(?:ly|s)?\b|\bretiring\b/;
+
 /**
  * Chronological rank for a supplement's timing — the order it's actually
  * taken through the day. Multi-dose items ("morning and evening") anchor at
@@ -65,7 +77,7 @@ export function timingRank(timing: string, dose: string, emptyStomach: boolean, 
   const t = ` ${`${timing} ${dose}`.toLowerCase()} `;
   // an item pinned to ONE late time (and no earlier cue) belongs at that time
   const earlier = /morning|breakfast|\blunch\b|midday|\bnoon\b|before meal|before breakfast|empty stomach|on waking|upon waking|first thing|mid.?morning/;
-  if (/bedtime|before sleep|at night|\bnight\b/.test(t) && !earlier.test(t)) return 70;
+  if (BEDTIME_CUE.test(t) && !earlier.test(t)) return 70;
   if (/\bafternoon\b/.test(t) && !/morning|breakfast|before breakfast|empty stomach|on waking|first thing/.test(t)) return 50;
   // first thing / empty stomach on waking → start of the day, UNLESS the dose
   // is explicitly a later between-meal (e.g. "mid-morning, empty stomach")
@@ -80,7 +92,7 @@ export function timingRank(timing: string, dose: string, emptyStomach: boolean, 
   if (/\blunch\b|midday|\bnoon\b/.test(t)) return 40;
   if (/\bafternoon\b/.test(t)) return 50;
   if (/\bdinner\b|evening meal|with evening|supper|\bevening\b/.test(t)) return 60;
-  if (/bedtime|before sleep|at night|\bnight\b/.test(t)) return 70;
+  if (BEDTIME_CUE.test(t)) return 70;
   if (/with meals|with food|with a meal|largest meal|main meal|fat.?containing|fatty meal/.test(t)) return 45;
   return 25; // unknown → treat as a morning/first-meal item
 }
@@ -105,7 +117,7 @@ export function shortTiming(timing: string): string {
   if (/mid.?afternoon|early afternoon|\bafternoon\b/.test(t)) return "Afternoon";
   if (/with dinner|with evening meal|with evening|evening meal/.test(t)) return "With dinner";
   if (/largest meal|main meal|biggest meal|fat.?containing|with a fat|with meals|with food|with a meal/.test(t)) return "With a meal";
-  if (/bedtime|before sleep|at night|\bnight\b/.test(t)) return "Bedtime";
+  if (BEDTIME_CUE.test(t)) return "Bedtime";
   if (/\bmorning\b/.test(t)) return "Morning";
   if (/\bevening\b/.test(t)) return "Evening";
   // explicit clock time → keep just the time as the token ("around 3 pm" → "3 pm")
@@ -129,6 +141,10 @@ export function shortTiming(timing: string): string {
  *  opposed to a descriptive tail like "tasteless and clear" or "with water". */
 function isTimePhrase(clause: string): boolean {
   const t = ` ${clause.toLowerCase()} `;
+  // Shares BEDTIME_CUE rather than restating the late-day words: this list
+  // omitted "bed", so "morning and before bed" failed the every()-check below
+  // and collapsed to just "Morning" — hiding the bedtime dose entirely.
+  if (BEDTIME_CUE.test(t)) return true;
   return /\b(breakfast|lunch|dinner|supper|morning|evening|afternoon|midday|noon|night|bedtime|meal|meals|waking|\d{1,2}\s*(?:a\.?m|p\.?m))\b/.test(
     t,
   );

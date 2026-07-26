@@ -74,10 +74,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/paneer-paratha.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://paneer-paratha'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://paneer-paratha
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Paneer paratha
@@ -106,4 +107,4 @@ rich_in:
 - protein
 - calcium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-12'
+nutrients_computed_at: '2026-07-26'

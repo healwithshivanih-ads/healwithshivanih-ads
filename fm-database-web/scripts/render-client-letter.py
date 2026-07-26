@@ -2000,13 +2000,23 @@ def vitaone_url_for_supplement(supplement_name_or_slug: str) -> str | None:
 # ── Supplement timing slots ──────────────────────────────────────────────────
 _TIMING_SLOTS: list[tuple[int, str, str, list[str]]] = [
     # (sort_index, label, emoji, keywords_in_timing_field)
-    (0, "Early Morning", "🌅", ["early morning", "empty stomach", "fasting", "before breakfast", "wake"]),
+    # "waking" and "first thing" are spelled out because slot 6 now recognises
+    # "retiring": without them "on waking and on retiring" matched no early slot
+    # and fell all the way to Before Bed, i.e. the opposite end of the day from
+    # its first dose. "wake" alone cannot cover them — single-word keywords are
+    # word-boundary matched, so \bwake\b never sees "waking".
+    (0, "Early Morning", "🌅", ["early morning", "empty stomach", "fasting", "before breakfast", "wake", "waking", "first thing"]),
     (1, "With Breakfast", "☀️", ["breakfast", "morning", "with food", "am", "8 am", "7 am", "9 am"]),
     (2, "Mid-Morning",   "🕙", ["mid-morning", "mid morning", "10 am", "between meals", "snack"]),
     (3, "With Lunch",    "🥗", ["lunch", "midday", "noon", "1 pm", "12 pm"]),
     (4, "Afternoon",     "🌤", ["afternoon", "2 pm", "3 pm", "4 pm"]),
     (5, "With Dinner",   "🌆", ["dinner", "evening meal", "supper", "6 pm", "7 pm", "5 pm", "with evening"]),
-    (6, "Before Bed",    "🌙", ["bedtime", "before bed", "night", "sleep", "9 pm", "10 pm", "before sleep"]),
+    # "bed" / "nightly" / "retiring" mirror BEDTIME_CUE in
+    # src/lib/fmdb/client-app-format.ts — the letter and the client app must put
+    # a supplement in the same slot or the coach's timing reads two ways. Bare
+    # "bed" is safe here because single-word keywords are word-boundary matched,
+    # so "bedside"/"bedroom" cannot reach this slot; "pre-bed" still can.
+    (6, "Before Bed",    "🌙", ["bedtime", "before bed", "bed", "night", "nightly", "sleep", "retiring", "9 pm", "10 pm", "before sleep"]),
 ]
 
 def _timing_slot(timing_str: str) -> tuple[int, str, str]:
@@ -2550,7 +2560,22 @@ def _parse_routine_pos(text: str) -> dict[int, int]:
             if i != -1:
                 pos[slot] = min(pos.get(slot, i), i)
 
-    mark(6, "bedtime", "before bed", "before sleep", "at night")
+    def mark_re(slot: int, pattern: str) -> None:
+        mt = re.search(pattern, t)
+        if mt:
+            pos[slot] = min(pos.get(slot, mt.start()), mt.start())
+
+    # Needs word boundaries, so it cannot use the plain-substring mark() above:
+    # bare "bed" would drag "bedside"/"bedroom" here, and bare "night" would drag
+    # "nightshades". The literal list this replaces ("bedtime", "before bed",
+    # "before sleep", "at night") missed "on retiring", "pre-bed", "nightly",
+    # "each night" and "every night" — those fell through to the {1: 0}
+    # with-breakfast default, so a bedtime magnesium was printed at breakfast on
+    # the Daily Routine while the dose table above it correctly said Before Bed.
+    # Deliberately stricter about "sleep" than the dose table's cue: this parser
+    # returns EVERY matching slot, so a non-temporal "supports sleep" would list
+    # the supplement a second time rather than merely mis-sort it.
+    mark_re(6, r"bedtime|\bbed\b|before\s+(?:\w+\s+){0,2}sleep|\bnight(?:ly|s)?\b|\bretiring\b")
     mark(2, "mid-morning", "mid morning")
     mark(4, "mid-afternoon", "mid afternoon", "afternoon")
     # "before breakfast" (e.g. "30 min before breakfast") → On waking (slot 0),

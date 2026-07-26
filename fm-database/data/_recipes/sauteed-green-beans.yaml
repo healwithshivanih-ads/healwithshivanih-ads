@@ -79,10 +79,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/sauteed-green-beans.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://sauteed-green-beans'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sauteed-green-beans
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Sautéed green beans
@@ -111,4 +112,4 @@ rich_in:
 - fibre
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-12'
+nutrients_computed_at: '2026-07-26'

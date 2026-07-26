@@ -87,10 +87,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/tinda-sabzi.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://tinda-sabzi'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://tinda-sabzi
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Tinda sabzi
@@ -122,4 +123,4 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'

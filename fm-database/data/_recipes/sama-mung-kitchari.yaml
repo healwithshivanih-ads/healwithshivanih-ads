@@ -89,10 +89,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/sama-mung-kitchari.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://sama-mung-kitchari'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sama-mung-kitchari
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Kitchari with split mung dal and sama
@@ -121,4 +122,4 @@ rich_in:
 - fibre
 - iron
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-12'
+nutrients_computed_at: '2026-07-26'

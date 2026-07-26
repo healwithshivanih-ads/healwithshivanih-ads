@@ -98,7 +98,12 @@ const SLOTS: SlotDef[] = [
     label: "Before Bed",
     short: "Bedtime",
     emoji: "🌙",
-    keywords: ["bedtime", "before bed", "night", "sleep", "9 pm", "10 pm", "before sleep"],
+    // Mirrors the Before Bed keywords in render-client-letter.py's _TIMING_SLOTS,
+    // which gained these so a supplement timed "on retiring" / "pre-bed" stops
+    // defaulting to With Breakfast. Spelled out rather than using a bare "bed"
+    // like the Python list does: classifySlot below matches by substring, so
+    // "bed" would also swallow "bedside" and "bedroom".
+    keywords: ["bedtime", "before bed", "pre-bed", "retiring", "night", "sleep", "9 pm", "10 pm", "before sleep"],
   },
 ];
 

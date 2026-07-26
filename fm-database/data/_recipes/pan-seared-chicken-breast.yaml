@@ -72,10 +72,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/pan-seared-chicken-breast.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://pan-seared-chicken-breast'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://pan-seared-chicken-breast
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Pan-seared chicken breast
@@ -106,4 +107,4 @@ rich_in:
 - potassium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-12'
+nutrients_computed_at: '2026-07-26'

@@ -140,13 +140,13 @@ nutrients_per_serving:
 nutrient_coverage_pct: 55.9
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-07'
+nutrients_computed_at: '2026-07-26'
 version: 1
 status: active
 updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/wild-mushroom-soup-with-soba.jpg
-  credit: 'nutritionsource.hsph.harvard.edu'
+  credit: nutritionsource.hsph.harvard.edu
   source_url: https://nutritionsource.hsph.harvard.edu/wp-content/uploads/2020/03/Soba5-1024x683.jpg
   rights_status: web_reference_uncleared
