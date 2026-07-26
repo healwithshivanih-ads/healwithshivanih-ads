@@ -689,13 +689,22 @@ function MealList({
                   </span>
                 </span>
                 <span className="ml-dishes">
-                  {m.components.slice(0, 3).map((c, ci, arr) => (
+                  {m.components.slice(0, 3).map((c, ci) => (
                     <span key={ci}>
                       {c.title}
                       {c.portion && <span className="ml-portion">{c.portion}</span>}
-                      {ci < arr.length - 1 && " · "}
+                      {ci < Math.min(m.components.length, 3) - 1 && " · "}
                     </span>
                   ))}
+                  {/* The line caps at 3 to stay readable on a phone, but the cap
+                      used to be SILENT: a 4-item slot simply lost its tail, so a
+                      prescribed item was invisible (cl-022's before-3pm vegetable
+                      juice — the whole point of moving it off her evening). The
+                      row opens the full meal, so the fix is to say something is
+                      there, not to overflow the line. */}
+                  {m.components.length > 3 && (
+                    <span className="ml-more"> · +{m.components.length - 3} more</span>
+                  )}
                 </span>
               </span>
               <span className="chev">

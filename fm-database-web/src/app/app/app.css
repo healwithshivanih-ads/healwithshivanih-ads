@@ -1720,6 +1720,13 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
   color: var(--ochre-deep);
 }
 
+/* "+N more" on a meal row whose component list is capped at 3. Deliberately
+   quieter than .ml-portion — it is a hint that the row holds more, not a dish. */
+.ml-more {
+  font-size: 11px; font-weight: 600; font-style: italic;
+  color: var(--ochre-deep); opacity: 0.75;
+}
+
 /* inline "what does 1 bowl mean?" key, right above the week menu */
 .portion-key-link {
   display: flex; align-items: center; gap: 7px; width: 100%;
