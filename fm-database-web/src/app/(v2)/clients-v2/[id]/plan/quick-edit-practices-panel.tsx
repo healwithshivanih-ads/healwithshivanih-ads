@@ -230,9 +230,13 @@ function PracticeRow({
   const [pending, start] = useTransition();
   const [name, setName] = useState(row.name);
   const [cadence, setCadence] = useState(row.cadence);
+  const [details, setDetails] = useState(row.details ?? "");
   const [confirmRemove, setConfirmRemove] = useState(false);
 
-  const dirty = name.trim() !== row.name || cadence.trim() !== row.cadence;
+  const dirty =
+    name.trim() !== row.name ||
+    cadence.trim() !== row.cadence ||
+    details.trim() !== (row.details ?? "").trim();
 
   const onSave = () => {
     if (!dirty || !name.trim()) return;
@@ -242,6 +246,7 @@ function PracticeRow({
         originalName: row.name,
         name: name.trim(),
         cadence: cadence.trim(),
+        details: details.trim(),
       });
       if (!r.ok) return void toast.error(r.error);
       if (!r.changed) return void toast.info("No change to save");
@@ -303,6 +308,22 @@ function PracticeRow({
           <input value={cadence} onChange={(e) => setCadence(e.target.value)} disabled={pending} style={inputStyle} placeholder="e.g. daily, after meals" />
         </div>
       </div>
+      <div style={{ marginBottom: 8 }}>
+        <label style={labelStyle}>
+          Instructions{" "}
+          <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>
+            — what the client reads under &quot;How&quot; on their app
+          </span>
+        </label>
+        <textarea
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
+          disabled={pending}
+          rows={4}
+          style={{ ...inputStyle, resize: "vertical", fontFamily: "inherit", lineHeight: 1.4 }}
+          placeholder="Full instructions — dose/timing/technique, written directly to the client."
+        />
+      </div>
       <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
         {dirty && (
           <button onClick={onSave} disabled={pending} style={{ ...btn, background: "var(--fm-primary)", color: "#fff", border: 0 }}>
@@ -310,7 +331,11 @@ function PracticeRow({
           </button>
         )}
         {dirty && (
-          <button onClick={() => { setName(row.name); setCadence(row.cadence); }} disabled={pending} style={btn}>
+          <button
+            onClick={() => { setName(row.name); setCadence(row.cadence); setDetails(row.details ?? ""); }}
+            disabled={pending}
+            style={btn}
+          >
             Cancel
           </button>
         )}
