@@ -48,6 +48,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # scripts dir
 
 from meal_foods import relevant_meal_foods  # noqa: E402
+from menu_hygiene import scrub_menu_days  # noqa: E402
 from morning_rituals import ensure_morning_rituals  # noqa: E402
 
 SLOTS = ["Breakfast", "Mid-morning", "Lunch", "Evening snack", "Dinner"]
@@ -258,13 +259,19 @@ def main() -> int:
         if len(days) != 7:
             json.dump({"ok": False, "error": f"week {w.get('week')} returned {len(days)} days (need 7)"}, sys.stdout)
             return 1
+        norm_days = [
+            {"slots": [{"slot": s.get("slot", ""), "dish": str(s.get("dish", "")).strip()} for s in (d.get("slots") or []) if str(s.get("dish", "")).strip()]}
+            for d in days
+        ]
+        # A capsule is not a meal — it is already on the supplement schedule,
+        # and counting it as a dish double-tells the client and skews the
+        # menu's nutrient tally. See scripts/menu_hygiene.py.
+        for note in scrub_menu_days(norm_days):
+            print(f"[app-menu] week {w.get('week')}: supplement dose removed — {note}", file=sys.stderr)
         norm_weeks.append({
             "week": int(w.get("week") or 0),
             "day_dates": None,
-            "days": [
-                {"slots": [{"slot": s.get("slot", ""), "dish": str(s.get("dish", "")).strip()} for s in (d.get("slots") or []) if str(s.get("dish", "")).strip()]}
-                for d in days
-            ],
+            "days": norm_days,
         })
     if not norm_weeks:
         json.dump({"ok": False, "error": "no weeks in model output"}, sys.stdout)

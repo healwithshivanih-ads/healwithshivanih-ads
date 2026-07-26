@@ -36,6 +36,7 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 from atomic_write import write_text_atomic  # noqa: E402
 from catalogue_dishes import catalogue_dish_names  # noqa: E402
 from meal_foods import relevant_meal_foods  # noqa: E402
+from menu_hygiene import scrub_menu_days  # noqa: E402
 
 try:
     from lab_nutrient_priorities import lab_nutrient_priorities  # noqa: E402
@@ -504,6 +505,17 @@ def main() -> None:
             break
     if not tool_input or not tool_input.get("days"):
         print(json.dumps({"ok": False, "error": "model returned no menu"}))
+        return
+
+    # A supplement is not food. The drafter reads last week's menu for
+    # continuity, so once a capsule lands in a meal slot the AI copies it
+    # forward every week — rule 9's "no remedies in meal slots" never
+    # converges on its own. Deterministic pass, after the model, before disk.
+    dropped_supplements = scrub_menu_days(tool_input["days"])
+    if dropped_supplements:
+        print(f"[week-menu] supplement doses removed: {dropped_supplements}", file=sys.stderr)
+    if not any(isinstance(d, dict) and (d.get("slots") or []) for d in tool_input["days"]):
+        print(json.dumps({"ok": False, "error": "menu had no food left after hygiene pass"}))
         return
 
     # re-read the plan fresh (avoid clobbering concurrent panel edits)

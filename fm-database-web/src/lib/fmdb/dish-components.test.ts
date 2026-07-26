@@ -13,11 +13,18 @@ import {
   splitDishComponents,
   splitDishParts,
   splitDishPills,
+  splitDishStages,
   primaryDishPart,
 } from "./dish-components";
 
 const NAZNEEN =
   "Sabja seeds drink (1 glass water + 1 tsp sabja seeds soaked) + Masala Roasted Chana (2 tbsp)";
+
+/** Verbatim from nidhi-plan-2-2026-05-15, week 10 day 1 Lunch (and 13 more). */
+const SEQUENCED_LUNCH =
+  "Garlic (1 clove crushed) + ginger (1/2 tsp grated) + lime juice (1 tsp) pre-meal shot " +
+  "(small cup) — then: Ridge gourd sabzi (3/4 cup) + Masoor dal (1/2 cup) + Jowar roti (1) " +
+  "+ turmeric (1/4 tsp) + black pepper (pinch) + small Kachumber salad (small bowl)";
 
 describe("component splitting is bracket-aware", () => {
   it("does not split on a ' + ' inside a portion annotation", () => {
@@ -114,5 +121,59 @@ describe("primaryDishPart — which component the dish IS", () => {
 
   it("returns a single-component dish unchanged", () => {
     expect(primaryDishPart("Vegetable poha (1 bowl)")).toBe("Vegetable poha (1 bowl)");
+  });
+});
+
+/**
+ * The separator list used to carry a bare ":", which cut "… — then: <meal>" at
+ * the colon and left "— then" welded to the drink in front of it. That
+ * fragment names a food, so it won the slot: 14 of Nidhi's lunches titled
+ * themselves "lime juice (1 tsp) pre-meal shot (small cup) — then".
+ */
+describe("a sequence connective is one separator, consumed whole", () => {
+  it("never leaves a dangling connective on a component", () => {
+    for (const part of splitDishParts(SEQUENCED_LUNCH))
+      expect(part, `dangling connective in "${part}"`).not.toMatch(/[—–-]?\s*then$/i);
+    for (const pill of splitDishPills(SEQUENCED_LUNCH))
+      expect(pill, `dangling connective in "${pill}"`).not.toMatch(/[—–-]?\s*then$/i);
+  });
+
+  it("keeps the preamble and the meal apart, connective in neither", () => {
+    expect(splitDishStages(SEQUENCED_LUNCH)).toHaveLength(2);
+    expect(splitDishParts(SEQUENCED_LUNCH)).toContain(
+      "lime juice (1 tsp) pre-meal shot (small cup)",
+    );
+    expect(splitDishParts(SEQUENCED_LUNCH)).toContain("Ridge gourd sabzi (3/4 cup)");
+  });
+
+  it("titles the slot with the MEAL, not the ritual that precedes it", () => {
+    expect(primaryDishPart(SEQUENCED_LUNCH)).toBe("Ridge gourd sabzi (3/4 cup)");
+    expect(
+      primaryDishPart(
+        "Bottle Gourd (Lauki) Juice (1 small glass) — then: Tofu stir-fry with mixed " +
+          "vegetables (3/4 cup) + Moong dal (1/2 cup)",
+      ),
+    ).toBe("Tofu stir-fry with mixed vegetables (3/4 cup)");
+  });
+
+  it("reads a descriptive dash as part of the label, not as a boundary", () => {
+    // Only a dash that introduces the connective sequences; "— well cooked" and
+    // "— served warm" describe the component they follow.
+    expect(splitDishParts("Paneer & spinach sabzi — well cooked (1 bowl) + jowar roti (1)")).toEqual(
+      ["Paneer & spinach sabzi — well cooked (1 bowl)", "jowar roti (1)"],
+    );
+    expect(
+      primaryDishPart(
+        "Banana (1 small, ripe) + ghee (1/2 tsp) + cardamom (1 pinch) — served warm, mashed " +
+          "— then: Palak moong dal (1 cup) + Ragi roti (1)",
+      ),
+    ).toBe("Palak moong dal (1 cup)");
+  });
+
+  it("leaves an unsequenced dish with exactly one stage", () => {
+    expect(splitDishStages(NAZNEEN)).toEqual([NAZNEEN]);
+    expect(splitDishStages("Ragi dosa (2) + chutney (2 tbsp)")).toEqual([
+      "Ragi dosa (2) + chutney (2 tbsp)",
+    ]);
   });
 });

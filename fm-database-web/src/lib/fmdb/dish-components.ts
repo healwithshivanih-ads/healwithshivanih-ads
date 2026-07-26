@@ -111,13 +111,40 @@ export const dishHeadlineFoods = (s: string): string[] =>
     .filter((t) => t.length >= 3 && !DISH_GENERIC.has(t) && !RECIPE_LIB_STOP.has(t))
     .map(foldFood);
 
+/**
+ * A SEQUENCE connective — "— then", "— then:", "then:", "— and then:".
+ *
+ * The coach writes it to mean EAT X, THEN EAT Y: a drink-led slot ("digestive
+ * shot — then: the meal"), or a warm-banana ritual before dinner. It is a
+ * genuine component boundary, and the connective itself belongs to NEITHER
+ * side.
+ *
+ * That last clause is the bug this fixes. The separator list used to carry a
+ * bare ":", which cut "… pre-meal shot (small cup) — then: Ridge gourd sabzi"
+ * at the colon and welded the orphaned "— then" onto the drink. The fragment
+ * "lime juice (1 tsp) pre-meal shot (small cup) — then" then WON the slot (it
+ * names a food, so it passed namesADish) and became the lunch title on 14 of
+ * Nidhi's days. Matching the whole phrase — dash, connective and colon as one
+ * separator — is the general rule: a separator is consumed entirely or not at
+ * all, never half of it.
+ *
+ * Deliberately punctuated: a dash before "then", or a colon after it. A bare
+ * narrative "then" inside a component ("soak, then rinse") is not a boundary.
+ */
+const SEQ_THEN = String.raw`[—–-]\s*(?:and\s+)?then\b\s*:?|\bthen\s*:`;
+
 /** Component separators as they appear in real menus. " + " is universal; the
- *  arrows and colon show up on multi-component dinners ("Green moong sabzi ⇒
- *  masoor dal ⇒ sama millet") and on "… — then: <meal>" drink-led slots. */
-const SEP_ALL = /\s\+\s|→|⇒|:/y;
-/** Display split — " + " only. Arrows/colons are part of how a coach writes a
- *  single dish's narrative, so they must not fragment the label she typed. */
-const SEP_PLUS = /\s\+\s/y;
+ *  arrows show up on multi-component dinners ("Green moong sabzi ⇒ masoor dal
+ *  ⇒ sama millet"). The sequence connective is matched FIRST so the bare ":"
+ *  alternative can never claim half of it. */
+const SEP_ALL = new RegExp(String.raw`${SEQ_THEN}|\s\+\s|→|⇒|:`, "y");
+/** Display split — " + " plus the sequence connective. A bare arrow or colon
+ *  is part of how a coach writes a single dish's narrative and must not
+ *  fragment the label she typed, but "X — then: Y" is two things the client
+ *  eats and belongs in two pills. */
+const SEP_PLUS = new RegExp(String.raw`${SEQ_THEN}|\s\+\s`, "y");
+/** Stage boundary only — splits a sequenced dish into "before" and "after". */
+const SEP_SEQ = new RegExp(SEQ_THEN, "y");
 
 /**
  * Split on `sep`, but ONLY at bracket depth 0, so a separator inside a portion
@@ -165,6 +192,12 @@ export function splitDishParts(dish: string): string[] {
  *  so the portion must survive; only the bracket-aware boundary changes. */
 export function splitDishPills(dish: string): string[] {
   return splitTopLevel(dish ?? "", SEP_PLUS);
+}
+
+/** The stages of a sequenced dish: "shot (1 cup) — then: khichdi (1 bowl)" is
+ *  two. Almost every dish is a single stage. */
+export function splitDishStages(dish: string): string[] {
+  return splitTopLevel(dish ?? "", SEP_SEQ);
 }
 
 /** Break a composite dish ("Ragi dosa (2) + chutney (2 tbsp)") into clean
@@ -231,12 +264,23 @@ function namesADish(part: string): boolean {
  * because a drafter putting the tadka first doesn't make garlic the meal.
  * Everything AFTER the primary is a side and never supplies the slot's recipe.
  *
+ * A sequence connective is read the same way, and it is the stronger signal:
+ * "digestive shot (small cup) — then: Ridge gourd sabzi (¾ cup) + …" says in
+ * so many words that the shot is a preamble and the meal is what follows. So
+ * the LAST stage that names a dish wins — a pre-meal ritual can no more claim
+ * the slot's recipe than a tadka can.
+ *
  * Falls back to the first component when nothing names a dish (e.g. "ghee +
  * jeera water") — no better answer exists, and it preserves the old behaviour
  * for those slots.
  */
 export function primaryDishPart(dish: string): string {
+  const stages = splitDishStages(dish);
+  for (let i = stages.length - 1; i >= 0; i--) {
+    const hit = splitDishParts(stages[i]).find(namesADish);
+    if (hit) return hit;
+  }
   const parts = splitDishParts(dish);
   if (!parts.length) return (dish ?? "").trim();
-  return parts.find(namesADish) ?? parts[0];
+  return parts[0];
 }

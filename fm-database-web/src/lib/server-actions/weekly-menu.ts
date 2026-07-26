@@ -12,7 +12,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
-import { getPlansRoot } from "@/lib/fmdb/paths";
+import { getCataloguePath, getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
 import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
@@ -163,6 +163,57 @@ async function loadClientDoc(clientId: string): Promise<Record<string, unknown> 
  *  It reports; it never blocks. Some dishes legitimately have no recipe (a piece
  *  of fruit, a cup of coffee), so this is a prompt for the coach's judgement,
  *  not a gate. */
+/** Whole-food names from the ingredient table (201 canonical + 585 aliases).
+ *
+ *  A menu slot reading "Kiwi (1)" or "Brazil nuts (2)" has NO recipe and needs
+ *  none — nobody wants a method for a kiwi. Without this the unresolved-dish
+ *  report is 371 rows of mostly-fine produce, which the coach would correctly
+ *  learn to ignore, and the handful of real problems would drown in it. A guard
+ *  nobody reads is worse than no guard. */
+let wholeFoodCache: Set<string> | null = null;
+async function wholeFoodNames(): Promise<Set<string>> {
+  if (wholeFoodCache) return wholeFoodCache;
+  const out = new Set<string>();
+  try {
+    const f = path.join(getCataloguePath(), "_ingredient_nutrients.yaml");
+    const doc = (yaml.load(await fs.readFile(f, "utf-8")) as Record<string, unknown>) ?? {};
+    for (const [k, v] of Object.entries(doc)) {
+      if (!v || typeof v !== "object" || !("per_100g" in (v as object))) continue;
+      out.add(k.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim());
+      for (const a of ((v as { aliases?: string[] }).aliases ?? [])) {
+        out.add(String(a).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim());
+      }
+    }
+  } catch {
+    /* table unreadable — fall back to reporting everything rather than hiding problems */
+  }
+  wholeFoodCache = out;
+  return out;
+}
+
+/** Strip the portion annotation and any count so "Brazil nuts (2)" and "2 Kiwi"
+ *  both reduce to bare words for the whole-food lookup. */
+function bareFoodWords(s: string): string[] {
+  return s
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/[^a-zA-Z ]+/g, " ")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+/** Descriptors and units that carry no dish identity — "fresh", "piece", "small".
+ *  A primary made only of these plus known foods is produce, not a recipe. */
+const FOOD_FILLER = new Set([
+  "fresh", "piece", "pieces", "small", "large", "medium", "raw", "plain", "whole",
+  "cup", "glass", "bowl", "tbsp", "tsp", "soaked", "ripe", "seasonal", "handful",
+  "chopped", "sliced", "a", "of", "and", "or", "with", "long", "black", "warm",
+  "cold", "hot", "boiled", "half", "quarter",
+]);
+
+/** Foods the ingredient table doesn't carry but which plainly need no method. */
+const EXTRA_WHOLE_FOODS = new Set(["coffee", "tea", "water", "kiwi", "milk", "curd"]);
+
 export async function unresolvedDishesForWeek(
   week: { days?: { slots?: { slot?: string; dish?: string }[] }[] } | null | undefined,
 ): Promise<{ day: number; slot: string; dish: string; primary: string }[]> {
@@ -170,13 +221,29 @@ export async function unresolvedDishesForWeek(
   const [{ loadLibraryRecipes, buildLibraryRecipeResolver }, { primaryDishPart }] =
     await Promise.all([import("@/lib/fmdb/client-app"), import("@/lib/fmdb/dish-components")]);
   const resolve = buildLibraryRecipeResolver(await loadLibraryRecipes());
+  const foods = await wholeFoodNames();
   const out: { day: number; slot: string; dish: string; primary: string }[] = [];
   week.days.forEach((day, i) => {
     for (const sl of day?.slots ?? []) {
       const dish = String(sl?.dish ?? "").trim();
       if (!dish) continue;
       if (resolve(dish)) continue;
-      out.push({ day: i + 1, slot: String(sl?.slot ?? ""), dish, primary: primaryDishPart(dish) });
+      const primary = primaryDishPart(dish);
+      // A plain whole food legitimately has no method — don't report it. The
+      // test is that EVERY meaningful word is a known food or a bare descriptor,
+      // so "fresh coconut piece" is produce but "Butter chicken" is a real gap.
+      const words = bareFoodWords(primary);
+      const allFood =
+        words.length > 0 &&
+        words.every(
+          (w) =>
+            FOOD_FILLER.has(w) ||
+            EXTRA_WHOLE_FOODS.has(w) ||
+            foods.has(w) ||
+            [...foods].some((f) => f === w || f.split(" ").includes(w)),
+        );
+      if (allFood) continue;
+      out.push({ day: i + 1, slot: String(sl?.slot ?? ""), dish, primary });
     }
   });
   return out;

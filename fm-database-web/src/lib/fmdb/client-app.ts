@@ -268,6 +268,10 @@ export interface AppRemedy {
   slug: string;
   name: string;
   also: string;
+  /** every catalogue alias, raw. `also` is the trimmed display form; this is
+   *  the match surface — a menu dish names a remedy by whichever name the
+   *  coach happened to type ("chaas", "CCF water"), so all of them index. */
+  aliases: string[];
   category: string;
   route: "internal" | "external";
   icon: string;
@@ -1554,29 +1558,48 @@ export function recipeConsistentWithDish(
   return dishToks.some((t) => recipeToks.has(t));
 }
 
+/** One thing a dish can resolve to, plus every name it answers to. A library
+ *  recipe answers to exactly one (its title); a home remedy answers to its
+ *  display name, its slug and all its aliases. */
+interface NamedCandidate<T> {
+  names: string[];
+  value: T;
+}
+
+/** Does `key` (a recipeLibKey-normalised, space-separated string) contain
+ *  `token` as a WHOLE WORD? Singular/plural fold together ("date"⇄"dates",
+ *  "juice"⇄"juices") but nothing else does, so "methi" can never be found
+ *  inside "methionine". */
+function containsWord(key: string, token: string): boolean {
+  const stem = token.replace(/(?:es|s)$/, "");
+  if (!stem) return false;
+  return new RegExp(`(?:^| )${stem}(?:e?s)?(?: |$)`).test(key);
+}
+
+/** The legacy containment the library resolver has always used: raw substring.
+ *  Loose (it also matches inside a longer word), but it is what buys stem
+ *  tolerance for the 300-recipe library, and tightening it would silently
+ *  re-decide which recipe hundreds of live menu slots open. New match surfaces
+ *  use `containsWord`; this one stays frozen under the library. */
+const containsLoose = (key: string, token: string): boolean => key.includes(token);
+
 /**
- * Build the dish → library-recipe resolver. An exact normalized-title match
- * wins outright (the Plan-tab DishPicker composes dishes from EXACT recipe
- * titles, so a picked dish resolves deterministically to its recipe — and
- * photo — with none of the token-threshold fragility); otherwise a strict
- * token near-equality scan handles legacy letter-parsed dish text ("mint
- * chutney" → Cilantro Mint Chutney, but a "raita-free bowl" never gets the
- * Cucumber Mint Raita method).
- *
- * Extracted to module scope so the dashboard's menu-image coverage scan
- * resolves dishes EXACTLY as the client app does — one source of truth, no
- * drift. Pass a diet-filtered list to match what a given client can see, or
- * the full library for a coverage flag.
+ * The shared dish → candidate matcher. Exact normalised-name match wins
+ * outright; otherwise a strict token near-equality scan over every name each
+ * candidate answers to. `contains` is the containment policy (see the two
+ * above) — the only axis on which the library and remedy surfaces differ.
  */
-export function buildLibraryRecipeResolver(
-  libraryRecipes: { slug: string; recipe: LetterRecipe }[],
-): (dish: string) => LetterRecipe | undefined {
-  const byExactKey = new Map<string, LetterRecipe>();
-  for (const l of libraryRecipes) {
-    const k = recipeLibKey(l.recipe.title);
-    if (k && !byExactKey.has(k)) byExactKey.set(k, l.recipe);
-  }
-  return (dish: string): LetterRecipe | undefined => {
+function buildNameResolver<T>(
+  candidates: NamedCandidate<T>[],
+  contains: (key: string, token: string) => boolean,
+): (dish: string) => T | undefined {
+  const byExactKey = new Map<string, T>();
+  for (const c of candidates)
+    for (const n of c.names) {
+      const k = recipeLibKey(n);
+      if (k && !byExactKey.has(k)) byExactKey.set(k, c.value);
+    }
+  return (dish: string): T | undefined => {
     // A slot's recipe may come ONLY from the component that gives the dish its
     // identity — its first substantive one (primaryDishPart; bracket-aware, so
     // a " + " inside a portion annotation no longer shreds it, and a tempering
@@ -1592,49 +1615,214 @@ export function buildLibraryRecipeResolver(
     const pt = recipeLibToks(pill);
     if (!pt.length) return undefined;
     const pk = recipeLibKey(pill);
-    let best: { r: LetterRecipe; hit: number; slack: number; pos: number } | undefined;
-    for (const l of libraryRecipes) {
-      const rt = recipeLibToks(l.recipe.title);
-      if (!rt.length) continue;
-      const hit = rt.filter((t) => pk.includes(t)).length;
-      const rk = recipeLibKey(l.recipe.title);
-      const extra = pt.filter((t) => !rk.includes(t)).length;
-      // (a) near-equality (≥2 title tokens hit, ≤1 missed, ≤1 extra), or
-      // (b) the ENTIRE multi-token recipe title appears in the primary
-      //     component — a dish that is "<recipe> with <sides>" (e.g. "Besan
-      //     chilla with onion + capsicum") IS that recipe plus additions.
-      // (c) single-token title matched by a single-token dish.
-      // Guard on (a): NEVER accept a match that has BOTH a missed recipe token
-      // AND an extra dish token — that is a DIFFERENT dish, not a portion/side
-      // variation. "Tofu and spinach curry" vs recipe "Tofu Vegetable Curry"
-      // (miss "vegetable" + extra "spinach") must NOT match — the dish names a
-      // different headline ingredient. "no match > wrong match". A dish that is
-      // "<recipe> + <side>" (extra, no miss) still matches; a recipe with a lead
-      // descriptor the dish drops ("Cilantro Mint Chutney" ← "mint chutney":
-      // miss, no extra) still matches. Only miss AND extra together is rejected.
-      const ok =
-        (hit >= 2 && rt.length - hit <= 1 && extra <= 1 &&
-          (rt.length - hit === 0 || extra === 0)) ||
-        (hit === rt.length && rt.length >= 2) ||
-        (rt.length === 1 && hit === 1 && pt.length === 1);
-      // slack = how far from an exact match (unmatched recipe tokens + extra
-      // dish tokens). Prefer more hits, then the CLOSEST title — so
-      // "Vegetable poha" wins over "Chicken and vegetable poha".
-      const slack = rt.length - hit + extra;
-      // pos = where the title first appears among the dish's tokens. On an
-      // otherwise-tied match, the title that starts EARLIEST wins — the head
-      // dish, not a trailing medium: "Ragi-oats porridge in almond milk" →
-      // Ragi porridge, not Almond Milk.
-      const pos = Math.min(...rt.map((t) => { const i = pt.indexOf(t); return i < 0 ? 1e9 : i; }));
-      if (
-        ok &&
-        (!best ||
-          hit > best.hit ||
-          (hit === best.hit && (slack < best.slack || (slack === best.slack && pos < best.pos))))
-      )
-        best = { r: l.recipe, hit, slack, pos };
+    let best: { r: T; hit: number; slack: number; pos: number } | undefined;
+    for (const c of candidates) {
+      for (const name of c.names) {
+        const rt = recipeLibToks(name);
+        if (!rt.length) continue;
+        const hit = rt.filter((t) => contains(pk, t)).length;
+        const rk = recipeLibKey(name);
+        const extra = pt.filter((t) => !contains(rk, t)).length;
+        // (a) near-equality (≥2 title tokens hit, ≤1 missed, ≤1 extra), or
+        // (b) the ENTIRE multi-token recipe title appears in the primary
+        //     component — a dish that is "<recipe> with <sides>" (e.g. "Besan
+        //     chilla with onion + capsicum") IS that recipe plus additions.
+        // (c) single-token title matched by a single-token dish.
+        // Guard on (a): NEVER accept a match that has BOTH a missed recipe token
+        // AND an extra dish token — that is a DIFFERENT dish, not a portion/side
+        // variation. "Tofu and spinach curry" vs recipe "Tofu Vegetable Curry"
+        // (miss "vegetable" + extra "spinach") must NOT match — the dish names a
+        // different headline ingredient. "no match > wrong match". A dish that is
+        // "<recipe> + <side>" (extra, no miss) still matches; a recipe with a lead
+        // descriptor the dish drops ("Cilantro Mint Chutney" ← "mint chutney":
+        // miss, no extra) still matches. Only miss AND extra together is rejected.
+        const ok =
+          (hit >= 2 && rt.length - hit <= 1 && extra <= 1 &&
+            (rt.length - hit === 0 || extra === 0)) ||
+          (hit === rt.length && rt.length >= 2) ||
+          (rt.length === 1 && hit === 1 && pt.length === 1);
+        // slack = how far from an exact match (unmatched recipe tokens + extra
+        // dish tokens). Prefer more hits, then the CLOSEST title — so
+        // "Vegetable poha" wins over "Chicken and vegetable poha".
+        const slack = rt.length - hit + extra;
+        // pos = where the title first appears among the dish's tokens. On an
+        // otherwise-tied match, the title that starts EARLIEST wins — the head
+        // dish, not a trailing medium: "Ragi-oats porridge in almond milk" →
+        // Ragi porridge, not Almond Milk.
+        const pos = Math.min(...rt.map((t) => { const i = pt.indexOf(t); return i < 0 ? 1e9 : i; }));
+        if (
+          ok &&
+          (!best ||
+            hit > best.hit ||
+            (hit === best.hit && (slack < best.slack || (slack === best.slack && pos < best.pos))))
+        )
+          best = { r: c.value, hit, slack, pos };
+      }
     }
     return best?.r;
+  };
+}
+
+/**
+ * Build the dish → library-recipe resolver. Behaviour is unchanged from when
+ * this held the matcher inline: one name per recipe (its title), matched with
+ * the legacy loose containment.
+ *
+ * Extracted to module scope so the dashboard's menu-image coverage scan
+ * resolves dishes EXACTLY as the client app does — one source of truth, no
+ * drift. Pass a diet-filtered list to match what a given client can see, or
+ * the full library for a coverage flag.
+ */
+export function buildLibraryRecipeResolver(
+  libraryRecipes: { slug: string; recipe: LetterRecipe }[],
+): (dish: string) => LetterRecipe | undefined {
+  return buildNameResolver(
+    libraryRecipes.map((l) => ({ names: [l.recipe.title], value: l.recipe })),
+    containsLoose,
+  );
+}
+
+// ── home-remedy fallback (the "no method at all" gap) ────────────────────────
+// Roughly a third of live menu slots resolved to NOTHING — and the biggest
+// clusters were not missing recipes at all, they were remedies: CCF tea,
+// spiced buttermilk/chaas, amla, the honey+ACV morning drink, papaya juice,
+// tender coconut water. The menu generators deliberately weave food-type
+// remedies (kitchen_remedy / vegetable_juice) into a detailed client's MEALS
+// rather than leaving them on the remedy shelf (coach rule 2026-06-15) — but
+// the dish→method resolver only ever read _recipes/, so those slots opened to
+// an apology. home_remedies/ has 224 entries, 213 with full `preparation`.
+//
+// The remedy is a FALLBACK, never a competitor: it is consulted only after the
+// curated recipe library AND the client's own recipe pack have both missed.
+
+/** Only remedies you INGEST, and only ones with a method. `route: external` is
+ *  57 massages, steams, packs and gargles — serving one as "how to make your
+ *  breakfast" would be worse than the blank tile it replaces. */
+export function isMealMethodRemedy(r: AppRemedy): boolean {
+  return r.route !== "external" && !r.stub && r.prepSteps.length > 0;
+}
+
+/** The ingestible, method-bearing slice of the remedy catalogue. */
+export async function loadRemedyFallbackLibrary(): Promise<AppRemedy[]> {
+  return (await loadRemedyLibrary()).filter(isMealMethodRemedy);
+}
+
+/**
+ * Project a remedy into the shape the meal overlay and recipe pack render.
+ *
+ * A remedy carries what a recipe does not: a dose, a timing window, a duration
+ * and CONTRAINDICATIONS. The render shape has nowhere structured to put any of
+ * them — `tip` is not shown in the meal overlay at all — so they are folded
+ * into the method text, cautions last. Dropping a caution to show a method
+ * would be strictly worse than showing nothing.
+ *
+ * `ingredients` stays empty on purpose: a remedy's ingredients live inside its
+ * preparation prose, and inventing a list would put words in the coach's
+ * mouth. The overlay hides that section when it is empty.
+ */
+export function homeRemedyAsRecipe(r: AppRemedy): LetterRecipe {
+  const method = [...r.prepSteps];
+  if (r.dose) method.push(`How much: ${r.dose}`);
+  if (r.timing) method.push(`When: ${r.timing}`);
+  if (r.duration) method.push(`How long: ${r.duration}`);
+  const cautions: string[] = [];
+  const seen = new Set<string>();
+  for (const c of [...r.cautions, ...r.avoidIn]) {
+    const t = c.trim().replace(/\.$/, "");
+    const k = t.toLowerCase();
+    if (t && !seen.has(k)) {
+      seen.add(k);
+      cautions.push(t);
+    }
+  }
+  if (cautions.length)
+    method.push(
+      `⚠️ Take care — skip this or check with your coach first if any of these apply to you: ${cautions.join("; ")}.`,
+    );
+  return {
+    title: r.name,
+    // never rendered; `mains` is the blob the diet, avoid-list and
+    // dish-consistency checks read, and a remedy's foods are named in the
+    // names it answers to.
+    mains: [r.name, ...r.aliases],
+    ingredients: [],
+    method,
+    tip: r.summary || undefined,
+  };
+}
+
+/**
+ * Build the dish → home-remedy resolver, mirroring the library one: exact
+ * normalised-name match first, then the same token near-equality scan — but
+ * over EVERY name the remedy answers to (display name, slug, aliases), because
+ * a menu says "Cumin-Coriander-Fennel tea" where the catalogue says "CCF Tea".
+ * Case never matters: both sides go through recipeLibKey.
+ *
+ * Containment here is WORD-BOUNDARY (`containsWord`), not the library's legacy
+ * substring: this surface matches against slugs and aliases, which are short
+ * and food-shaped, so a substring rule would hand "Methi water" to a methionine
+ * anything. And the same consistency gate the library answers to applies, read
+ * against the remedy's preparation prose since it has no ingredient list.
+ */
+export function buildHomeRemedyResolver(
+  remedies: AppRemedy[],
+): (dish: string) => LetterRecipe | undefined {
+  const candidates = remedies.map((r) => ({
+    names: [r.name, r.slug, ...r.aliases].filter(Boolean),
+    value: { remedy: r, recipe: homeRemedyAsRecipe(r) },
+  }));
+  const resolve = buildNameResolver(candidates, containsWord);
+  return (dish: string): LetterRecipe | undefined => {
+    const hit = resolve(dish);
+    if (!hit) return undefined;
+    const head = primaryDishPart(dish);
+    return recipeConsistentWithDish(head, {
+      title: hit.recipe.title,
+      mains: hit.recipe.mains,
+      ingredients: hit.remedy.prepSteps,
+      method: hit.recipe.method,
+    })
+      ? hit.recipe
+      : undefined;
+  };
+}
+
+/**
+ * The whole dish → method chain, in priority order, at module scope so the
+ * ORDER itself is testable — it is the thing that decides what opens on a
+ * client's phone, and it used to be a closure buried inside the payload
+ * assembly where no test could reach it.
+ *
+ * CATALOGUE FIRST (coach decision 2026-07-12): a curated library recipe is
+ * preferred over an AI-generated pack recipe. The library is vetted, correct,
+ * and photo-backed; the AI pack is the FALLBACK, used only when the catalogue
+ * doesn't cover the dish. A mismatched library entry is gated out by
+ * recipeConsistentWithDish and falls through cleanly rather than attaching
+ * nonsense.
+ *
+ * The home-remedy catalogue comes LAST and only ever fills a gap: every real
+ * recipe, curated or personalised, has already had its say, so adding it
+ * cannot change what an already-resolving slot opens.
+ *
+ * Every branch judges the PRIMARY component, not the whole cell. Against the
+ * whole cell the gate is toothless (any component's food satisfies it) and
+ * matchPackRecipe — which does no splitting at all — happily returns a
+ * trailing side's recipe. That is the second half of the Nazneen hijack: even
+ * with the library scoped to the primary, the pack would still have served
+ * Masala Roasted Chana for a sabja-led slot.
+ */
+export function buildDishRecipeResolver(sources: {
+  fromLibrary: (dish: string) => LetterRecipe | undefined;
+  packRecipes: LetterRecipe[];
+  fromRemedy: (dish: string) => LetterRecipe | undefined;
+}): (dish: string) => LetterRecipe | undefined {
+  return (dish: string): LetterRecipe | undefined => {
+    const head = primaryDishPart(dish);
+    const libR = sources.fromLibrary(dish);
+    if (libR && recipeConsistentWithDish(head, libR)) return libR;
+    const packR = matchPackRecipe(head, sources.packRecipes);
+    if (packR) return packR;
+    return sources.fromRemedy(dish);
   };
 }
 
@@ -1936,6 +2124,7 @@ async function loadRemedyLibrary(): Promise<AppRemedy[]> {
       slug,
       name: asStr(d.display_name) || humanize(slug),
       also: aliases.slice(0, 2).map(humanize).join(" · "),
+      aliases,
       category,
       route,
       icon: remedyIcon(category, route, slug),
@@ -2949,6 +3138,20 @@ export async function loadClientAppData(
   // an out-of-diet recipe. Shared with the dashboard menu-image coverage scan
   // via buildLibraryRecipeResolver — one source of truth, no drift.
   const libraryRecipeFor = buildLibraryRecipeResolver(libraryRecipes);
+  // Dish → home-remedy resolver, the last-resort method source. Runs through
+  // the SAME diet + avoid-list gates as the recipe library: a remedy names its
+  // foods in prose, so the probe hands that prose in as the ingredient list —
+  // otherwise a dairy-avoider could be served a buttermilk remedy whose title
+  // never says milk.
+  const remedyRecipeFor = buildHomeRemedyResolver(
+    (await loadRemedyFallbackLibrary()).filter((r) => {
+      const probe: LetterRecipe = {
+        ...homeRemedyAsRecipe(r),
+        ingredients: [...r.prepSteps, r.dose],
+      };
+      return recipeAllowed(probe) && recipeAvoidsSafe(probe);
+    }),
+  );
   // Letter-derived personalisation layers are gone; the payload keeps their
   // (empty) shapes so no app screen changes contract.
   const watchList: { name: string; note: string }[] = [];
@@ -3087,38 +3290,14 @@ export async function loadClientAppData(
     "evening snack": "linear-gradient(140deg,#e8dcc0 0%,#cdbf86 60%,#a89a63 100%)",
     dinner: "linear-gradient(140deg,#c9a98a 0%,#9a7e63 55%,#6f5a44 100%)",
   };
-  // A dish only gets a recipe it actually NAMES: (almost) every meaningful
-  // token of the recipe TITLE must appear in the dish. The old any-shared-token
-  // rule served "Sautéed Methi Greens" for "Methi water" (Geetika, 2026-07-07)
-  // — no recipe (→ category card) beats a wrong recipe on a client's phone.
-  // Tokens ≥3 chars so "dal"/"egg" still count ("Chana Dal" must not shrink to
-  // just "chana"); long titles tolerate floor(n/3) missing tokens so decorated
-  // names ("Spiced Buttermilk / Chaas") still match their dish. Ranked by
-  // hits−misses, then fewer misses — so "Steamed Fish" beats "Grilled Rohu or
-  // Surmai Fish" for a steamed-fish dish.
-  // CATALOGUE FIRST (coach decision 2026-07-12): a curated library recipe is
-  // preferred over an AI-generated pack recipe. The library is vetted, correct,
-  // and photo-backed; the AI pack is the FALLBACK, used only when the catalogue
-  // doesn't cover the dish. buildLibraryRecipeResolver matches exact-title first
-  // then a STRICT token scan, and recipeConsistentWithDish gates out a wrong
-  // library recipe — so a mismatched library entry cleanly falls through to the
-  // pack rather than attaching nonsense. The pack match + gate is extracted to
-  // the exported matchPackRecipe so the coach dashboard flags exactly the
-  // dishes that still fall back to AI (catalogue doesn't cover them yet).
-  const recipeFor = (dish: string): LetterRecipe | undefined => {
-    // Both branches judge the PRIMARY component, not the whole cell. Against
-    // the whole cell the gate is toothless (any component's food satisfies it)
-    // and matchPackRecipe — which does no splitting at all — happily returns a
-    // trailing side's recipe. That is the second half of the Nazneen hijack:
-    // even with the library scoped to the primary, the pack would still have
-    // served Masala Roasted Chana for a sabja-led slot.
-    const head = primaryDishPart(dish);
-    const libR = libraryRecipeFor(dish);
-    if (libR && recipeConsistentWithDish(head, libR)) return libR;
-    const packR = matchPackRecipe(head, recipes);
-    if (packR) return packR;
-    return undefined;
-  };
+  // Library → the client's own recipe pack → the home-remedy catalogue.
+  // The order (and why each branch judges only the dish's primary component)
+  // is documented on buildDishRecipeResolver.
+  const recipeFor = buildDishRecipeResolver({
+    fromLibrary: libraryRecipeFor,
+    packRecipes: recipes,
+    fromRemedy: remedyRecipeFor,
+  });
   if (table) {
     for (const row of table.rows) {
       const slotL = row.slot.toLowerCase();
@@ -3601,6 +3780,7 @@ export async function loadClientAppData(
         slug,
         name,
         also: "",
+        aliases: [], // bespoke, off-catalogue — it answers to its name only
         category,
         route: "internal",
         icon: remedyIcon(category, "internal", slug),
