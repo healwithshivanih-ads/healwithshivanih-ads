@@ -118,7 +118,7 @@ RECIPE_PROPS = {
         "required": ["item", "qty", "unit"]}},
     "steps": {"type": "array", "items": {"type": "string"}},
     "servings": {"type": "string"},
-    "prep_time_min": {"type": "integer"},
+    "prep_time_min": {"type": "integer", "description": "HANDS-ON minutes only. NEVER include passive waits — overnight soaking, marinating, chilling, setting, fermenting. Those go in the ingredient line or a step. Typical value 5-30."},
     "cook_time_min": {"type": "integer"},
     "one_line": {"type": "string"},
     "headnote": {"type": "string"},

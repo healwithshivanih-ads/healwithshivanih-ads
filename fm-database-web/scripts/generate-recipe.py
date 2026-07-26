@@ -32,6 +32,8 @@ RECIPES_DIR = FMDB_ROOT / "data" / "_recipes"
 sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
+from recipe_times import normalise_prep_min  # noqa: E402
+
 MODEL = "claude-sonnet-4-6"
 
 
@@ -95,7 +97,7 @@ _TOOL = {
             },
             "steps": {"type": "array", "items": {"type": "string"}, "minItems": 2},
             "servings": {"type": "integer"},
-            "prep_time_min": {"type": "integer"},
+            "prep_time_min": {"type": "integer", "description": "HANDS-ON minutes only. NEVER include passive waits — overnight soaking, marinating, chilling, setting, fermenting. Those go in the ingredient line or a step. Typical value 5-30."},
             "cook_time_min": {"type": "integer"},
             "kcal_per_serving": {"type": "integer"},
             "balances_dosha": {"type": "array", "items": {"type": "string", "enum": ["vata", "pitta", "kapha"]}},
@@ -199,6 +201,9 @@ def main() -> None:
         for i in (rec.get("ingredients") or [])
         if i.get("item")
     ]
+    # nobody reviews this write, so clamp a passive soak out of prep rather
+    # than shipping a "500 min" chip to the client's card
+    prep_min, prep_warning = normalise_prep_min(rec.get("prep_time_min"))
     doc = {
         "slug": slug,
         "name": title,
@@ -213,7 +218,7 @@ def main() -> None:
         "ingredients": ingredients,
         "steps": [str(s) for s in (rec.get("steps") or [])],
         "servings": str(rec.get("servings") or 2),
-        "prep_time_min": int(rec.get("prep_time_min") or 0),
+        "prep_time_min": prep_min,
         "cook_time_min": int(rec.get("cook_time_min") or 0),
         "one_line": str(rec.get("one_line") or ""),
         "source": "ai_generated (coach dish picker)",
@@ -234,7 +239,10 @@ def main() -> None:
     except Exception:
         pass
 
-    print(json.dumps({"ok": True, "slug": slug, "title": title, "kcal_per_serving": doc["kcal_per_serving"], "error": None}))
+    out = {"ok": True, "slug": slug, "title": title, "kcal_per_serving": doc["kcal_per_serving"], "error": None}
+    if prep_warning:
+        out["warnings"] = [prep_warning]
+    print(json.dumps(out))
 
 
 if __name__ == "__main__":
