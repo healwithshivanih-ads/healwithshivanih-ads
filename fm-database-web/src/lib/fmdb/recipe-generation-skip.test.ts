@@ -20,9 +20,9 @@ import {
   loadRemedyFallbackLibrary,
 } from "./client-app";
 import { primaryDishPart } from "./dish-components";
+import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
 
 const REPO = path.resolve(__dirname, "../../../..");
-const PY = path.join(REPO, "fm-database/.venv/bin/python3");
 const GEN = path.join(REPO, "fm-database-web/scripts/generate-week-recipes.py");
 
 /** Ask the real Python predicate which of these dishes it would skip. */
@@ -35,7 +35,10 @@ cat = m._catalogue_titles()
 dishes = json.load(sys.stdin)
 print(json.dumps([d for d in dishes if m._catalogue_covers(d, cat)]))
 `;
-  const out = execFileSync(PY, ["-c", src], { input: JSON.stringify(dishes), encoding: "utf-8" });
+  const out = execFileSync(TEST_PYTHON, ["-c", src], {
+    input: JSON.stringify(dishes),
+    encoding: "utf-8",
+  });
   return JSON.parse(out) as string[];
 }
 
@@ -67,11 +70,18 @@ describe("generator skip ⊆ app resolve", () => {
       return head.startsWith(first.slice(0, 8)); // same component → a real hole
     });
     expect(holes, `generator skips these but the app resolves nothing:\n${holes.join("\n")}`).toEqual([]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("actually read the catalogue — otherwise this suite passes vacuously", () => {
+    // _catalogue_titles() swallows an unreadable catalogue (missing pyyaml, say)
+    // and returns [], which skips nothing and makes every assertion here hold
+    // for the wrong reason. Pin a dish the catalogue definitely answers.
+    expect(pythonSkips(["Jeera rice (1 cup)"])).toEqual(["Jeera rice (1 cup)"]);
+  }, PY_TEST_TIMEOUT_MS);
 
   it("still generates for a dish the catalogue does not have", () => {
     // If this ever returns it as skipped, the matcher has gone loose and the
     // client silently loses methods for genuinely new dishes.
     expect(pythonSkips(["Chicken shawarma (small portion, 1 wrap)"])).toEqual([]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 });
