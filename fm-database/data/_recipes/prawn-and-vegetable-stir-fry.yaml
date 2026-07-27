@@ -22,14 +22,13 @@ main_ingredients:
 - french beans
 - spring onion
 contains_allergens:
-- sesame
 - shellfish
 - soy
 ingredients:
 - item: prawns, cleaned
   qty: '250'
   unit: g
-- item: coconut or sesame oil
+- item: coconut oil
   qty: '1'
   unit: tbsp
 - item: garlic, minced
@@ -96,17 +95,17 @@ kcal_total: 310
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 252
-  protein_g: 30.5
-  carbs_g: 32.4
-  fat_g: 2.0
-  fibre_g: 7.1
-  iron_mg: 2.7
+  kcal: 304
+  protein_g: 30.4
+  carbs_g: 32.0
+  fat_g: 7.9
+  fibre_g: 6.8
+  iron_mg: 2.6
   calcium_mg: 172
-  magnesium_mg: 93.5
+  magnesium_mg: 92.7
   zinc_mg: 2.5
-  potassium_mg: 955
-  folate_ug: 114
+  potassium_mg: 946
+  folate_ug: 113
   b12_ug: 1.4
   vit_d_ug: 0.2
   vit_c_mg: 102

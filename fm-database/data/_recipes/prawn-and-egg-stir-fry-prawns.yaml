@@ -23,7 +23,6 @@ main_ingredients:
 - garlic
 contains_allergens:
 - egg
-- sesame
 - shellfish
 - soy
 ingredients:
@@ -33,7 +32,7 @@ ingredients:
 - item: eggs, beaten
   qty: '2'
   unit: piece
-- item: coconut or sesame oil
+- item: coconut oil
   qty: '1'
   unit: tbsp
 - item: garlic, minced
@@ -90,20 +89,20 @@ kcal_total: 310
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 243
-  protein_g: 29.2
-  carbs_g: 19.1
-  fat_g: 6.3
-  fibre_g: 3.3
-  iron_mg: 2.4
-  calcium_mg: 142
-  magnesium_mg: 62.4
+  kcal: 295
+  protein_g: 29.1
+  carbs_g: 18.7
+  fat_g: 12.2
+  fibre_g: 3.1
+  iron_mg: 2.3
+  calcium_mg: 141
+  magnesium_mg: 61.6
   zinc_mg: 2.4
-  potassium_mg: 619
-  folate_ug: 75.7
+  potassium_mg: 610
+  folate_ug: 75.0
   b12_ug: 1.6
   vit_d_ug: 1.2
-  vit_c_mg: 13.7
+  vit_c_mg: 13.6
   omega3_mg: 358
 nutrient_coverage_pct: 100.0
 rich_in:

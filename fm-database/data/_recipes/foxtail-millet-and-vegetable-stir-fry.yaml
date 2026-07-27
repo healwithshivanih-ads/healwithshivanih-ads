@@ -24,13 +24,12 @@ main_ingredients:
 - carrot
 - french beans
 contains_allergens:
-- sesame
 - soy
 ingredients:
 - item: foxtail millet, cooked and cooled
   qty: '2'
   unit: cup
-- item: sesame or coconut oil
+- item: coconut oil
   qty: '1'
   unit: tbsp
 - item: garlic, minced
@@ -99,10 +98,10 @@ kcal_total: 520
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 715
+  kcal: 776
   protein_g: 26.7
   carbs_g: 135
-  fat_g: 8.3
+  fat_g: 15.0
   fibre_g: 20.7
   iron_mg: 6.8
   calcium_mg: 137
@@ -114,7 +113,7 @@ nutrients_per_serving:
   vit_d_ug: 0.0
   vit_c_mg: 97.1
   omega3_mg: 143
-nutrient_coverage_pct: 97.0
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - fibre

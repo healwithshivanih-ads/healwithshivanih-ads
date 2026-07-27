@@ -22,13 +22,12 @@ main_ingredients:
 - garlic
 - black pepper
 contains_allergens:
-- sesame
 - soy
 ingredients:
 - item: firm tofu, cubed and patted dry
   qty: '250'
   unit: g
-- item: sesame or coconut oil
+- item: coconut oil
   qty: '1'
   unit: tbsp
 - item: garlic, sliced
@@ -88,10 +87,10 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 198
+  kcal: 259
   protein_g: 14.8
   carbs_g: 25.2
-  fat_g: 5.5
+  fat_g: 12.3
   fibre_g: 5.2
   iron_mg: 3.2
   calcium_mg: 313
@@ -103,7 +102,7 @@ nutrients_per_serving:
   vit_d_ug: 0.0
   vit_c_mg: 17.7
   omega3_mg: 323
-nutrient_coverage_pct: 96.0
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - fibre
