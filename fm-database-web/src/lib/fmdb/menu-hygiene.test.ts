@@ -18,7 +18,7 @@
 import { describe, it, expect } from "vitest";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
-import { PYTHON } from "./shim";
+import { TEST_PYTHON } from "./test-python";
 
 const SCRIPTS = path.resolve(process.cwd(), "scripts");
 
@@ -30,7 +30,7 @@ function strip(dishes: string[]): [string, string[]][] {
     "from menu_hygiene import strip_supplement_doses",
     "print(json.dumps([strip_supplement_doses(d) for d in json.load(sys.stdin)]))",
   ].join("\n");
-  const out = execFileSync(PYTHON, ["-c", src], {
+  const out = execFileSync(TEST_PYTHON, ["-c", src], {
     input: JSON.stringify(dishes),
     encoding: "utf-8",
   });
