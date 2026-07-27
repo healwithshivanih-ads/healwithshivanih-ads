@@ -1,0 +1,31 @@
+slug: coach-scope-and-legal-foundations
+display_name: Coach Scope, Consent, Ethics and Legal Foundations (HIPAA, Liability)
+aliases:
+- hipaa for coaches
+- coach liability
+- scope of practice legal
+- informed consent coaching
+summary: 'Practical legal and ethical scaffolding for health coaches: informed consent,
+  HIPAA-adjacent privacy practices (coaches are usually not covered entities but hold
+  sensitive health information), professional liability insurance, and the bright
+  lines (no diagnosis, no lab interpretation, no prescriptions).'
+related_topics:
+- coaching-scope-of-practice
+sources:
+- id: fmca-m3-consent-ethics-scope-jordan
+  location: Jordan lecture
+  quote: Scope of practice defines what we do and — just as importantly — what we
+    don't do.
+- id: fmca-m3-hipaa-fraley
+  location: Fraley HIPAA transcript
+  quote: Handle client health information as if HIPAA applies, whether or not it technically
+    does.
+- id: fmca-m3-liability-insurance-fraley
+  location: Fraley liability transcript
+  quote: Carry professional liability insurance from day one — even when starting
+    out.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

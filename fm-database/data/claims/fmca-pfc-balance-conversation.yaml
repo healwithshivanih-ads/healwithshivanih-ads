@@ -1,0 +1,19 @@
+slug: fmca-pfc-balance-conversation
+statement: Coaches can teach the concept of protein-fat-carb balance (blood-sugar
+  stability, satiety, satisfaction) without prescribing macros. Specific gram targets
+  are a nutritionist's or physician's domain; the coach's craft is helping the client
+  notice how balance feels.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ifm-core-food-plan
+- coaching-scope-of-practice
+sources:
+- id: fmca-m3-macronutrients-pfc-class
+  location: PFC transcript
+  quote: Teach the concept of balance — don't prescribe grams.
+rationale: '''How did that meal leave you feeling in 2 hours?'' — the coach''s macro
+  question.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

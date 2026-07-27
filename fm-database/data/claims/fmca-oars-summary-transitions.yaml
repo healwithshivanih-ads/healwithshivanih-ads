@@ -1,0 +1,17 @@
+slug: fmca-oars-summary-transitions
+statement: Summaries in MI serve three purposes — collecting (gather what the client
+  said), linking (tie themes together), transitioning (move the session forward).
+  A well-placed transitional summary saves 10 minutes of drift.
+evidence_tier: strong
+linked_to_topics:
+- mi-oars
+sources:
+- id: fmca-m2-mi-oars-lanier
+  location: OARS transcript — summaries section
+  quote: Summaries collect, link and transition.
+rationale: Use a transitional summary whenever the client circles the same story a
+  third time.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

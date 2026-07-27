@@ -1,0 +1,25 @@
+slug: motivational-interviewing
+display_name: Motivational Interviewing (MI) in Coaching
+aliases:
+- motivational interviewing
+- mi coaching
+- mi spirit
+summary: MI is a collaborative, goal-oriented style of communication that strengthens
+  a client's own motivation and commitment to change by exploring and resolving ambivalence.
+  In coaching it operates through the spirit (partnership, acceptance, compassion,
+  evocation) and the core skills (OARS).
+related_topics:
+- ambivalence-in-coaching
+- coaching-scope-of-practice
+sources:
+- id: fmca-m2-mi-oars-lanier
+  location: Module 2 · OARS transcript
+  quote: Come with Compassion, Acceptance, Partnership, and Empowerment for your client.
+- id: fmca-m3-mi-deep-dive-miller-lanier
+  location: Module 3 · MI Deep Dive
+  quote: MI is a way of being with people, not a set of techniques to apply.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

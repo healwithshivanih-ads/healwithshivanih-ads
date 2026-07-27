@@ -1,0 +1,18 @@
+slug: fmca-smarter-evaluate-reward
+statement: The 'E' and 'R' in SMARTER — Evaluate and Reward (or Re-adjust) — turn
+  a one-shot goal into a learning loop. Building the evaluation moment into the goal
+  is what converts a plan into a practice.
+evidence_tier: strong
+linked_to_topics:
+- smarter-goals
+sources:
+- id: fmca-m3-smarter-goals-heller-p2
+  location: Heller Part 2 transcript
+  quote: Add Evaluate and Reward so the goal becomes a learning loop, not a single
+    event.
+rationale: For every SMART goal, agree the check-in date + the reward before we close
+  the session.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

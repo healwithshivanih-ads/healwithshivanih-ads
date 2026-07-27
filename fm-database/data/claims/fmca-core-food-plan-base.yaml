@@ -1,0 +1,17 @@
+slug: fmca-core-food-plan-base
+statement: The IFM Core Food Plan is the base plate other therapeutic food plans build
+  on — whole foods, non-starchy vegetables at every meal, quality protein, healthy
+  fats, low-glycemic carbs, hydration, chewing and rhythm.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ifm-core-food-plan
+sources:
+- id: fmca-m3-core-food-plan-class
+  location: Core Food Plan transcript
+  quote: The Core Food Plan is a food plan for everybody of all ages.
+rationale: Coach clients into the Core Food Plan first; only layer therapeutic plans
+  when there's a clear driver.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

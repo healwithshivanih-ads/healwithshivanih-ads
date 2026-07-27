@@ -1,0 +1,17 @@
+slug: fmca-cia-stages-of-change-live-demo
+statement: Live stages-of-change demonstrations show the tell — the client's own language
+  reveals the stage. 'I know I should' = contemplation; 'I've been thinking about
+  how to' = preparation; 'I'm doing it three times a week' = action.
+evidence_tier: strong
+linked_to_topics:
+- stages-of-change
+sources:
+- id: fmca-m3-cia-stages-of-change
+  location: CIA stages demo transcript
+  quote: The client's language reveals the stage — don't guess, listen.
+rationale: Track the verb tense a client uses about their target behaviour — a stage
+  clue.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

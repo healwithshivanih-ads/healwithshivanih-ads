@@ -1,0 +1,19 @@
+slug: fmca-hipaa-treat-as-if-applies
+statement: 'Most solo coaches are not HIPAA covered entities but hold sensitive client
+  health information anyway. Best practice: treat all client data as if HIPAA applies
+  — encrypted storage, minimal retention, secure comms, explicit release for any info-sharing
+  with clinicians.'
+evidence_tier: strong
+linked_to_topics:
+- coach-scope-and-legal-foundations
+sources:
+- id: fmca-m3-hipaa-fraley
+  location: Fraley HIPAA transcript
+  quote: Handle client health information as if HIPAA applies, whether or not it technically
+    does.
+rationale: 'Audit my client storage yearly: encryption on, no PHI in email subject
+  lines, no shared drives.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

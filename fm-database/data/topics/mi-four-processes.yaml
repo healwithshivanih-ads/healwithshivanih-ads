@@ -1,0 +1,25 @@
+slug: mi-four-processes
+display_name: MI Four Processes — Engaging, Focusing, Evoking, Planning
+aliases:
+- engaging focusing evoking planning
+- mi processes
+summary: 'MI unfolds through four sequential, recursive processes: Engaging (building
+  the working relationship), Focusing (agreeing on a change target), Evoking (drawing
+  out the client''s own motivation and change talk), Planning (co-creating concrete
+  next steps when the client is ready).'
+related_topics:
+- motivational-interviewing
+- mi-oars
+sources:
+- id: fmca-m2-mi-focusing-lanier
+  location: Focusing task transcript
+  quote: Focusing is agreeing on a direction — you can't evoke change talk without
+    a target.
+- id: fmca-m2-mi-evoking-lanier
+  location: Evoking task transcript
+  quote: Evoking is drawing out the client's own arguments for change.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

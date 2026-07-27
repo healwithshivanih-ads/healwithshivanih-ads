@@ -1,0 +1,23 @@
+slug: tiny-habits-behavior-design
+display_name: Tiny Habits and Behavior Design (BJ Fogg)
+aliases:
+- tiny habits
+- bj fogg
+- behavior design
+- fogg behavior model
+summary: 'BJ Fogg''s behavior-design framework: behaviour happens when motivation,
+  ability and prompt converge (B=MAP). The Tiny Habits method starts with the smallest
+  possible version of a behaviour, anchors it to an existing routine, and uses immediate
+  positive emotion to wire in the habit. Designed for durability, not willpower.'
+related_topics:
+- motivational-interviewing
+sources:
+- id: fmca-m3-tiny-habits-fogg
+  location: Tiny Habits Part 1 transcript
+  quote: B=MAP — behavior happens when motivation, ability and prompt come together
+    at the same moment.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

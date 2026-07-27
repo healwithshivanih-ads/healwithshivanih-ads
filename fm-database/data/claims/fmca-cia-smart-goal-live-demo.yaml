@@ -1,0 +1,17 @@
+slug: fmca-cia-smart-goal-live-demo
+statement: 'Live SMART-goal demos reveal the coach''s job: shrink the goal until it''s
+  a certainty, not a stretch. If the client hesitates on the ability question, the
+  goal is still too big.'
+evidence_tier: strong
+linked_to_topics:
+- smarter-goals
+sources:
+- id: fmca-m3-cia-smart-goal
+  location: CIA SMART goal transcript
+  quote: If the client hesitates on ability, shrink the goal.
+rationale: Ask 'on a 0–10 how confident?' before every goal is locked. Anything <7,
+  shrink it.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

@@ -1,0 +1,16 @@
+slug: fmca-food-categories-serving-visual
+statement: Educate clients on food categories and serving sizes using visual cues
+  (palm = protein, cupped hand = carbs, thumb = fat, two hands = veg) — clients don't
+  weigh food, and shame-free visual portions travel between cultures.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ifm-core-food-plan
+sources:
+- id: fmca-m3-ifm-food-categories-serving-sizes-class
+  location: IFM Food Categories transcript
+  quote: Use visual cues — clients don't weigh food.
+rationale: For portion talks, always use the hand-based cues, never grams.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

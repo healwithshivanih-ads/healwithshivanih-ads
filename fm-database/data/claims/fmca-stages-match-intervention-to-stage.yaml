@@ -1,0 +1,17 @@
+slug: fmca-stages-match-intervention-to-stage
+statement: 'Stage-matched coaching means the intervention fits the stage: consciousness-raising
+  and decisional balance in pre-contemplation/contemplation; action planning in preparation/action;
+  relapse-prevention in maintenance. Skipping stages produces resistance.'
+evidence_tier: strong
+linked_to_topics:
+- stages-of-change
+sources:
+- id: fmca-m2-stages-of-change-frates
+  location: Frates transcript
+  quote: Match readiness to stage-specific activities and behavior-change processes.
+rationale: In the first 10 min, name the stage. In the next 10, pick a stage-appropriate
+  intervention.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

@@ -1,0 +1,21 @@
+slug: ifm-core-food-plan
+display_name: IFM Core Food Plan
+aliases:
+- core food plan
+- ifm food plan
+summary: The Institute for Functional Medicine's foundational nutrition template —
+  a whole-food, phytonutrient-dense plate emphasising non-starchy vegetables, quality
+  protein, healthy fats, low-glycemic carbs, and hydration. Serves as the base plate
+  that other therapeutic food plans (elimination, mito, cardiometabolic) are built
+  on.
+related_topics:
+- functional-medicine-coaching
+sources:
+- id: fmca-m3-core-food-plan-class
+  location: Coaching Core Food Plan transcript
+  quote: The Core Food Plan is a food plan for everybody of all ages.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

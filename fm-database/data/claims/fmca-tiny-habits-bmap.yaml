@@ -1,0 +1,18 @@
+slug: fmca-tiny-habits-bmap
+statement: 'Fogg''s Behavior Model: B=MAP — behaviour happens when Motivation, Ability,
+  and Prompt converge in the same moment. Ability is the easiest lever to move; make
+  the behaviour tiny to close the gap.'
+evidence_tier: strong
+linked_to_topics:
+- tiny-habits-behavior-design
+sources:
+- id: fmca-m3-tiny-habits-fogg
+  location: Tiny Habits transcript
+  quote: Behavior happens when motivation, ability and prompt come together at the
+    same moment.
+rationale: 'For any stalled habit, ask: is motivation, ability, or prompt the weakest
+  link?'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

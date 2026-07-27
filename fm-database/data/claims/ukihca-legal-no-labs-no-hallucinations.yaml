@@ -1,0 +1,17 @@
+slug: ukihca-legal-no-labs-no-hallucinations
+statement: 'Legal essentials: don''t order or interpret labs — it''s practising medicine
+  without a licence and damages trust with doctors. Use AI for back-office work but
+  verify — it can hallucinate. Your network is your net worth; partner with practices.'
+evidence_tier: strong
+linked_to_topics:
+- coach-scope-and-legal-foundations
+sources:
+- id: ukihca-legal-essentials-rattigan-2025-12
+  location: Reflection notes
+  quote: Ordering or interpreting labs is practising medicine without a licence.
+rationale: Any lab conversation with a client — educate about markers, refer back
+  to the ordering clinician.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

@@ -1,0 +1,27 @@
+slug: stages-of-change
+display_name: Transtheoretical Stages of Change (Prochaska–DiClemente)
+aliases:
+- ttm
+- transtheoretical model
+- prochaska
+- pre-contemplation contemplation preparation action maintenance
+summary: Behaviour change moves through pre-contemplation, contemplation, preparation,
+  action, maintenance (and sometimes relapse). Coach interventions are stage-matched
+  — consciousness-raising in early stages, decisional balance in contemplation, action
+  plans in preparation/action, relapse-prevention in maintenance. Movement is non-linear.
+related_topics:
+- motivational-interviewing
+- ambivalence-in-coaching
+sources:
+- id: fmca-m2-stages-of-change-class
+  location: Stages of Change class transcript
+  quote: Stages of change is a great theory, but don't get so hooked on stages that
+    you lose connection with the client.
+- id: fmca-m2-stages-of-change-frates
+  location: Frates stages of change transcript
+  quote: Match readiness to stage-specific activities and behavior-change processes.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

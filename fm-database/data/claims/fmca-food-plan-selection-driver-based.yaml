@@ -1,0 +1,17 @@
+slug: fmca-food-plan-selection-driver-based
+statement: 'Therapeutic food plan selection is driver-based: Core = general, Cardiometabolic
+  = insulin resistance/dyslipidaemia, Elimination = suspected sensitivities, Detox
+  = biotransformation load, Mito = fatigue/energy, ReNew = gut repair. Match plan
+  to matrix imbalance, not to fashion.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ifm-core-food-plan
+sources:
+- id: fmca-m3-navigating-therapeutic-food-plans-class
+  location: Navigating Food Plans transcript
+  quote: Match the food plan to the matrix imbalance, not to the trend of the year.
+rationale: Before proposing a food plan, name the matrix node or ATM it's targeting.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

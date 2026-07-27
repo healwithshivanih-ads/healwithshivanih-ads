@@ -1,0 +1,19 @@
+slug: fmca-flow-conditions
+statement: Flow arises when a task's challenge slightly exceeds a person's current
+  skill, feedback is immediate, and attention is undivided. In coaching, help clients
+  design activities that meet these conditions — often something they used to love
+  that they've stopped doing.
+evidence_tier: strong
+linked_to_topics:
+- positive-psychology-in-health-coaching
+sources:
+- id: fmca-m3-flow-awe-tarragona
+  location: Tarragona interview
+  quote: Flow needs challenge slightly above skill, immediate feedback, and undivided
+    attention.
+rationale: '''What used to put you in flow?'' — a great late-session question when
+  a client feels flat.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

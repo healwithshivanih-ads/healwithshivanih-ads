@@ -1,0 +1,26 @@
+slug: positive-psychology-in-health-coaching
+display_name: Positive Psychology in Health Coaching
+aliases:
+- positive psychology
+- flow
+- awe
+- character strengths
+summary: Applies the science of well-being (flow, awe, gratitude, character strengths,
+  positive emotions) to health-behaviour change. Positive states expand cognition
+  and coping resources; leveraging strengths and awe supports adherence and resilience
+  alongside behaviour-change tools.
+related_topics:
+- motivational-interviewing
+sources:
+- id: fmca-m3-positive-psychology-taylor
+  location: Taylor lecture
+  quote: We are highly integrated beings — mind and body are one system.
+- id: fmca-m3-flow-awe-tarragona
+  location: Tarragona interview
+  quote: Flow and awe are experiences that expand well-being beyond the absence of
+    illness.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

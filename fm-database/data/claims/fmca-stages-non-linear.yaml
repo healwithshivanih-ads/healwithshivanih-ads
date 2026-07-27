@@ -1,0 +1,16 @@
+slug: fmca-stages-non-linear
+statement: Movement through stages is non-linear — clients cycle back, revisit contemplation,
+  sit in preparation twice. Treat 'relapse' as data about triggers and support, not
+  failure.
+evidence_tier: strong
+linked_to_topics:
+- stages-of-change
+sources:
+- id: fmca-m2-stages-of-change-frates
+  location: Frates — relapse section
+  quote: Clients cycle through stages; relapse is information, not failure.
+rationale: 'Reframe every relapse for the client: ''what did we learn about triggers?'''
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
