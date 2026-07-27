@@ -5,7 +5,10 @@ statement: Coming off hormonal birth control, the priority is supporting micronu
   etc.) and keep up diet/lifestyle. Post-menopause the focus shifts to circadian support
   (melatonin, oxytocin, nitric oxide).
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- pcos-post-pill
+- female-infertility
 sources:
 - id: ukihca-cycle-syncing-hormonal-rhythm-2025-11
   location: Reflection notes

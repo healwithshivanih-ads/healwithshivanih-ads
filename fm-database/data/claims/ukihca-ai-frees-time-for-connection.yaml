@@ -3,7 +3,9 @@ statement: AI in coaching is best used as a collaborator that frees time for the
   part — the face-to-face connection. It doesn't have to be perfect; the relationship
   matters more than getting everything right. Always verify sources.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- functional-medicine-coaching
+- digital-health-coaching
 sources:
 - id: ukihca-csm-ai-and-listening-2026-03
   location: Reflection notes
