@@ -20,3 +20,12 @@ function resolvePython(): string {
 }
 
 export const TEST_PYTHON = resolvePython();
+
+/**
+ * Timeout for a test that shells out to Python. Every call is a cold
+ * interpreter that then reads the whole catalogue off disk (1,100+ recipe and
+ * remedy YAMLs) — ~1.5s on a dev Mac but 4-5s on a CI runner, which blew
+ * vitest's 5s default. Generous on purpose: this budget is for slow I/O, not
+ * for a hang.
+ */
+export const PY_TEST_TIMEOUT_MS = 30_000;

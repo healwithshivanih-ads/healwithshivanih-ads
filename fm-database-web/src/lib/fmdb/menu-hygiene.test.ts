@@ -18,7 +18,7 @@
 import { describe, it, expect } from "vitest";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
-import { TEST_PYTHON } from "./test-python";
+import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
 
 const SCRIPTS = path.resolve(process.cwd(), "scripts");
 
@@ -42,7 +42,7 @@ describe("supplement doses never reach a meal slot", () => {
     expect(strip(["Warm milk (½ cup) + magnesium glycinate (1 capsule)"])).toEqual([
       ["Warm milk (½ cup)", ["magnesium glycinate (1 capsule)"]],
     ]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 
   it("catches the other dose presentations, not just the word capsule", () => {
     const dishes = [
@@ -55,12 +55,12 @@ describe("supplement doses never reach a meal slot", () => {
       expect(removed).toHaveLength(1);
       expect(cleaned).not.toMatch(/magnesium|ashwagandha|probiotic|vitamin/i);
     }
-  });
+  }, PY_TEST_TIMEOUT_MS);
 
   it("removes a vitamin or mineral whatever portion is written next to it", () => {
     // "Iron (1 tsp)" is not food; the never-food categories need no dose word.
     expect(strip(["Poha (1 bowl) + iron (1 tsp)"])[0][1]).toEqual(["iron (1 tsp)"]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 
   it("leaves real food alone even when the catalogue also sells it", () => {
     // Every one of these names IS a catalogue supplement. None is a dose.
@@ -76,18 +76,18 @@ describe("supplement doses never reach a meal slot", () => {
       expect(removed, `wrongly removed from "${cleaned}"`).toEqual([]);
     }
     expect(strip(food).map(([c]) => c)).toEqual(food);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 
   it("does not match a supplement name buried inside a dish name", () => {
     // Whole-title match only — "Turmeric latte" is a drink, not turmeric.
     expect(strip(["Turmeric latte (1 cup) + turmeric (500 mg)"])).toEqual([
       ["Turmeric latte (1 cup)", ["turmeric (500 mg)"]],
     ]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 
   it("leaves a slot empty rather than inventing food to replace a capsule", () => {
     expect(strip(["magnesium glycinate (1 capsule)"])).toEqual([
       ["", ["magnesium glycinate (1 capsule)"]],
     ]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 });

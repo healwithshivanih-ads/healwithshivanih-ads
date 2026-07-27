@@ -20,7 +20,7 @@ import {
   loadRemedyFallbackLibrary,
 } from "./client-app";
 import { primaryDishPart } from "./dish-components";
-import { TEST_PYTHON } from "./test-python";
+import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
 
 const REPO = path.resolve(__dirname, "../../../..");
 const GEN = path.join(REPO, "fm-database-web/scripts/generate-week-recipes.py");
@@ -70,18 +70,18 @@ describe("generator skip ⊆ app resolve", () => {
       return head.startsWith(first.slice(0, 8)); // same component → a real hole
     });
     expect(holes, `generator skips these but the app resolves nothing:\n${holes.join("\n")}`).toEqual([]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 
   it("actually read the catalogue — otherwise this suite passes vacuously", () => {
     // _catalogue_titles() swallows an unreadable catalogue (missing pyyaml, say)
     // and returns [], which skips nothing and makes every assertion here hold
     // for the wrong reason. Pin a dish the catalogue definitely answers.
     expect(pythonSkips(["Jeera rice (1 cup)"])).toEqual(["Jeera rice (1 cup)"]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 
   it("still generates for a dish the catalogue does not have", () => {
     // If this ever returns it as skipped, the matcher has gone loose and the
     // client silently loses methods for genuinely new dishes.
     expect(pythonSkips(["Chicken shawarma (small portion, 1 wrap)"])).toEqual([]);
-  });
+  }, PY_TEST_TIMEOUT_MS);
 });
