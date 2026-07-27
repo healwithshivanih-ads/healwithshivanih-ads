@@ -60,7 +60,7 @@ ingredients:
 - item: curry leaves
   qty: '10'
   unit: whole
-- item: asafoetida (hing)
+- item: asafoetida (hing — skip if going gluten-free)
   qty: 1/8
   unit: tsp
 - item: salt for podi

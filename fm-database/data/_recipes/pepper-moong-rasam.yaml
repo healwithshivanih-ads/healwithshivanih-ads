@@ -58,7 +58,7 @@ ingredients:
 - item: turmeric powder
   qty: '0.25'
   unit: tsp
-- item: asafoetida (hing)
+- item: asafoetida (hing — skip if going gluten-free)
   qty: '0.25'
   unit: tsp
 - item: dry red chilli

@@ -46,7 +46,7 @@ ingredients:
 - item: curry leaves
   qty: '10'
   unit: leaves
-- item: asafoetida (hing)
+- item: asafoetida (hing — skip if going gluten-free)
   qty: '1'
   unit: pinch
 - item: cashews (optional)

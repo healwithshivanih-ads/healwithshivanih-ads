@@ -46,7 +46,7 @@ ingredients:
 - item: haldi (turmeric)
   qty: '0.25'
   unit: tsp
-- item: hing (asafoetida)
+- item: hing (asafoetida — skip if going gluten-free)
   qty: '1'
   unit: pinch
 - item: cooking oil

@@ -71,7 +71,7 @@ ingredients:
 - item: fresh curry leaf sprigs (optional)
   qty: '2'
   unit: sprigs
-- item: hing (asafetida)
+- item: hing (asafetida — skip if going gluten-free)
   qty: '2'
   unit: pinches
 - item: grated coconut

@@ -45,7 +45,7 @@ ingredients:
 - item: curry leaves
   qty: '1'
   unit: tbsp
-- item: hing (asafoetida)
+- item: hing (asafoetida — skip if going gluten-free)
   qty: '1'
   unit: pinch
 - item: turmeric

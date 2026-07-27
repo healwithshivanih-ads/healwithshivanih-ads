@@ -48,7 +48,7 @@ ingredients:
 - item: dry red chilli
   qty: '2'
   unit: piece
-- item: asafoetida (hing)
+- item: asafoetida (hing — skip if going gluten-free)
   qty: '1'
   unit: pinch
 - item: red chilli powder

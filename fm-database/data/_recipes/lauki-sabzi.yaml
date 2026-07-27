@@ -34,7 +34,7 @@ ingredients:
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
-- item: asafoetida (hing)
+- item: asafoetida (hing — skip if going gluten-free)
   qty: '1'
   unit: pinch
 - item: ginger, grated

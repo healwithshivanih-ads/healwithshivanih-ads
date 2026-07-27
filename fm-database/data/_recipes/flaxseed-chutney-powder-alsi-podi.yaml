@@ -46,7 +46,7 @@ ingredients:
 - item: cumin seeds
   qty: 1/2
   unit: tsp
-- item: asafoetida (hing)
+- item: asafoetida (hing — skip if going gluten-free)
   qty: 1/8
   unit: tsp
 - item: salt

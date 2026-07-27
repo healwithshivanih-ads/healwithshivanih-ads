@@ -51,7 +51,7 @@ ingredients:
 - item: cashews
   qty: '2'
   unit: tbsp
-- item: asafetida (hing)
+- item: asafetida (hing — skip if going gluten-free)
   qty: '0.25'
   unit: tsp
 - item: turmeric powder
