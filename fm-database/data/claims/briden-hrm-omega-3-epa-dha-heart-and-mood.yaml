@@ -1,0 +1,21 @@
+slug: briden-hrm-omega-3-epa-dha-heart-and-mood
+statement: Fish oil providing ≥720 mg EPA daily (usually 2000 mg total fish oil) reduces
+  coronary heart disease risk per a large meta-analysis, and does well for major depression
+  via inflammation-reduction and cell-membrane fluidity. Check with doctor if on blood-thinners.
+  Preformed EPA + DHA available only from animal sources — vegans supplement algae-derived
+  EPA/DHA at similar doses.
+evidence_tier: strong
+linked_to_topics:
+- cardiovascular-disease-prevention
+- second-puberty-perimenopause
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 7 — Fish oil + Ch 10 — Fish oil, pg 187, 285–286
+  quote: Supplementation with EPA and DHA omega-3 is effective for reducing the risk
+    of coronary heart disease.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 'Standard EPA dose target: ≥720 mg (usually 2 g total). Read the label
+  — the total mg is not the EPA mg.'

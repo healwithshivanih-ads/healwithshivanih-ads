@@ -1,0 +1,20 @@
+slug: briden-hrm-protein-target-1-2gkg-menopause
+statement: Menopausal women need ~1.2 g protein per kg ideal body weight per day (up
+  from ~1.0 g/kg in reproductive years) just to maintain muscle mass against the loss
+  of estrogen's anabolic effect. For a 65 kg woman that's ~78 g/day = ~26 g per meal,
+  or 20 g × 3 meals + a protein snack. High-intensity exercisers and women with insulin
+  resistance need more still.
+evidence_tier: strong
+linked_to_topics:
+- menopause
+- midlife-weight-gain
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 5 — Protein, pg 122
+  quote: With menopause, you need closer to 1.2 grams per kilogram per day, so more
+    like 78 grams in total which is 26 grams per meal.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Concrete target the coach can hand a client for meal planning.

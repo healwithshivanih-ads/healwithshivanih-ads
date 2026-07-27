@@ -1,0 +1,23 @@
+slug: briden-hrm-oral-progesterone-strongly-sedating
+statement: Oral micronised progesterone (100–300 mg) is strongly sedating because
+  it converts to allopregnanolone, a neurosteroid that activates GABA receptors —
+  so it MUST be taken at bedtime or the client will feel groggy. Progesterone also
+  improves deep-sleep architecture directly, reduces mast-cell activation / histamine,
+  and unlike sleeping tablets does not impair the breathing reflex (safe with other
+  sleep meds).
+evidence_tier: strong
+linked_to_topics:
+- menopausal-hormone-therapy
+- sleep
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 7 — Conventional treatment for menopausal sleep disturbance, pg
+    164
+  quote: Progesterone is so sedating that if you have been prescribed progesterone
+    for another condition, you should take it at bedtime or it will cause you to feel
+    groggy.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Instruction to give every client starting Prometrium — timing matters.

@@ -1,0 +1,23 @@
+slug: briden-hrm-vitamin-d-plus-k2-for-bones
+statement: 'Vitamin D3 (1000–3000 IU) must be paired with vitamin K2 as MK-7 (menaquinone-7,
+  75 mcg) — together they absorb calcium AND direct it into bones instead of blood
+  vessels. K2 alone ''rivals bisphosphonate therapy'' for fracture-risk reduction
+  per one Canadian researcher, without the toxicity. Vitamin D3 without K2 can cause
+  hypercalcaemia and vessel calcification (worsening atherosclerosis). Food K2: hard
+  cheeses, natto, sauerkraut (careful with histamine). Also protects the heart via
+  preventing arterial calcification.'
+evidence_tier: strong
+linked_to_topics:
+- osteoporosis
+- cardiovascular-disease-prevention
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 10 — Vitamins D3 and K2, pg 275–276, 284
+  quote: Vitamins D3 and K2 work in tandem to absorb calcium and put it where it's
+    supposed to be, which is into bones and not blood vessels.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Never recommend high-dose D3 without K2. Every 50+ client on vitamin D
+  should also be on K2 (MK-7).

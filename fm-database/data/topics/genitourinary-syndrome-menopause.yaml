@@ -1,0 +1,70 @@
+slug: genitourinary-syndrome-menopause
+display_name: Genitourinary Syndrome of Menopause (GSM)
+aliases:
+- gsm
+- vulvovaginal atrophy
+- atrophic vaginitis
+- menopausal urogenital atrophy
+summary: 'Umbrella term (replacing the older "vulvovaginal atrophy") for the entire
+  cluster of
+
+  vagina / vulva / bladder / pelvic-floor symptoms driven by menopausal low estrogen:
+  dryness,
+
+  burning, itching, painful intercourse or bleeding, painful urination, bladder urgency,
+
+  stress incontinence, recurrent UTIs, loss of libido, arousal or orgasm, and vaginal
+  wall
+
+  prolapse. 50% chance by age 60, 75% by age 70 — and unlike hot flushes, GSM does
+  NOT
+
+  self-resolve; without treatment it progressively worsens. Highly treatable. Vaginal
+
+  estrogen (Vagifem Low® estradiol or Ovestin® estriol) is the number-one treatment
+  and is
+
+  very safe — carries essentially none of the systemic estrogen risks and may even
+  be safe
+
+  after breast cancer per ACOG guidance. Adjuncts: oral zinc 30 mg for epithelial
+  integrity
+
+  (Bradfield Strydom protocol — vaginal dryness can improve significantly in weeks),
+
+  vaginal probiotic (Lactobacillus rhamnosus GR-1 + L. reuteri RC-14) for microbiome
+
+  balance, D-mannose 2 g/day for UTI prevention, sea buckthorn oil 3 g/day, silicone-
+  or
+
+  water-based lubricants with vagina-friendly pH 4.5 and osmolality <1200 mOsm/kg.
+  Avoid
+
+  douches, wipes, high-osmolality lubricants and mineral-oil-based products (BV promoters).
+
+  '
+key_mechanisms:
+- estrogen-signaling
+- vaginal-microbiome-dysbiosis
+common_symptoms:
+- vaginal dryness
+- painful intercourse
+- urinary frequency
+- recurrent utis
+- vulvar itching
+- low libido
+related_topics:
+- menopause
+- menopausal-hormone-therapy
+- urinary-tract-infection
+- vaginal-microbiome
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: 'Chapter 10 — What comes after: Genitourinary syndrome of menopause, pg
+    255–263'
+  quote: GSM is a lot more than just dryness and some of the symptoms can be debilitating.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

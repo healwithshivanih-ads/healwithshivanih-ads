@@ -1,0 +1,21 @@
+slug: briden-hrm-hidden-cycling-post-hysterectomy
+statement: A partial hysterectomy (uterus removed, ovaries retained) does NOT cause
+  menopause — ovaries keep cycling, producing high estrogen and premenstrual-pattern
+  symptoms (breast pain, monthly migraines, mood swings) with no bleed to signal the
+  cycle. Coaches should not assume 'no period' means 'menopausal'; FSH can be tested
+  to distinguish.
+evidence_tier: strong
+linked_to_topics:
+- perimenopause-and-menopause
+- menopausal-hormone-therapy
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 1 — Rita patient story, pg 25–27
+  quote: Only because you don't have a uterus to bleed. But your ovaries are cycling
+    and making lots of estrogen.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Prevents the classic mistake of prescribing estrogen therapy for high-estrogen
+  symptoms.

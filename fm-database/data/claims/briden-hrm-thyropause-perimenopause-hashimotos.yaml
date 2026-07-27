@@ -1,0 +1,24 @@
+slug: briden-hrm-thyropause-perimenopause-hashimotos
+statement: '''Thyropause'' — perimenopause is a common trigger for autoimmune thyroid
+  disease (Hashimoto''s) because losing progesterone destabilises immune regulation
+  and progesterone directly modulates thyroid hormone. Symptoms of hypothyroidism
+  and perimenopause overlap heavily (fatigue, weight gain, brain fog, heavy periods,
+  hair loss, aches) — miss the thyroid diagnosis and you''ll misattribute the symptoms.
+  Always ask for TSH + free T4 + THYROID ANTIBODIES (TPO). A family history of autoimmune
+  disease + hypothyroid symptoms = insist on the antibody test.'
+evidence_tier: strong
+linked_to_topics:
+- hypothyroidism
+- second-puberty-perimenopause
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 8 — Autoimmune thyroid disease + Bernadette patient story, pg
+    200–204
+  quote: Hypothyroidism associated with or triggered by a drop in ovarian hormones,
+    particularly progesterone.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 'Coach red flag: any perimenopausal complaint checklist should include
+  thyroid antibody testing.'

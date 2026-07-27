@@ -1,0 +1,21 @@
+slug: briden-hrm-insulin-resistance-test-with-insulin
+statement: 'Insulin resistance affects ~1 in 2 midlife women and cannot be ruled out
+  by a normal glucose test. The correct test is a fasting insulin OR a glucose tolerance
+  test WITH insulin at fasting, 1h and 2h intervals. Optimal: fasting insulin <10
+  mIU/L (60 pmol/L); 1h and 2h insulin <60 mIU/L (410 pmol/L). Doctors often only
+  order glucose — coach must brief the client to specifically request insulin.'
+evidence_tier: strong
+linked_to_topics:
+- insulin-resistance
+- midlife-weight-gain
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 5 — Testing for insulin resistance, pg 103–104
+  quote: The test for insulin resistance is a test for the hormone insulin – not a
+    test for glucose.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Highest-leverage single test recommendation in the book. Every midlife
+  client should have it.

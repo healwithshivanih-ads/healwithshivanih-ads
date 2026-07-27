@@ -1,0 +1,21 @@
+slug: briden-hrm-menopausal-intracrinology
+statement: 'After menopause, cells throughout the body (heart, brain, breast) can
+  make their own estrogen locally from androgen precursors using the enzyme aromatase
+  — a process called intracrinology. Maintaining a healthy level of the adrenal androgen
+  DHEA is what supports this local production. Explains why ovaries removed at menopause
+  is more consequential than natural menopause: it strips the androgen precursor supply.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- menopause
+- menopausal-hormone-therapy
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 4 — Losing estrogen, pg 80–81
+  quote: In menopause, ovarian estrogen production falls away and intracrinology once
+    again takes over.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Justifies not automatically removing ovaries during hysterectomy unless
+  clear ovarian cancer risk.

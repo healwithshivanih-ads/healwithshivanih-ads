@@ -1,0 +1,23 @@
+slug: briden-hrm-iodine-for-breast-pain
+statement: 'Iodine (molecular I2 form preferred, brand Violet®, 3 mg/day if no thyroid
+  antibodies) is Briden''s #1 supplement for cyclical or non-cyclical breast pain
+  (mastalgia) and fibrocystic breast disease — stabilises and downregulates estrogen
+  receptors, which are abundant in breast tissue. Molecular I2 is preferentially absorbed
+  by breast over thyroid, making it safer than potassium iodide. Test thyroid antibodies
+  BEFORE dosing above 500 mcg.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- genitourinary-syndrome-menopause
+- menopausal-hormone-therapy
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 9 — Iodine for breast pain + Sasha & Mia stories, pg 252, 136,
+    261
+  quote: The best type of iodine for breasts is molecular iodine (I2), which is available
+    as the brand Violet.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Underused. First-line for the client with cyclic breast pain — but MUST
+  test antibodies first.

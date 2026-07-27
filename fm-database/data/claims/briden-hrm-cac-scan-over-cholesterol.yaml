@@ -1,0 +1,21 @@
+slug: briden-hrm-cac-scan-over-cholesterol
+statement: 'Coronary artery calcium (CAC) scoring — a CT-based measure of actual plaque
+  calcification — is currently the best test for predicting cardiovascular risk, and
+  per Sydney cardiologist Ross Walker ''far more useful than a cholesterol test.''
+  If the doctor is pressuring you to take a statin, request a CAC scan first: if you''re
+  high-risk enough for a statin, you''re high-risk enough for a CAC. Cholesterol is
+  a surrogate marker; CAC measures the actual disease.'
+evidence_tier: strong
+linked_to_topics:
+- cardiovascular-disease-prevention
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 10 — Assessing risk of heart attack and stroke, pg 279–280
+  quote: The best predictive test for heart disease risk and far more useful than
+    a cholesterol test.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Coaching lever for the client who is scared into statins by a single high
+  cholesterol reading.

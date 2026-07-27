@@ -1,0 +1,22 @@
+slug: briden-hrm-statin-side-effects-women
+statement: 'Statins have reasonable evidence for SECONDARY prevention (after a heart
+  attack), thin evidence for PRIMARY prevention (number-needed-to-treat as high as
+  400). Women are more likely than men to experience statin side effects: muscle pain,
+  insulin resistance, type 2 diabetes, fatigue, memory loss and insomnia. High cholesterol
+  can also be a symptom of untreated hypothyroidism — screen thyroid first. Coach:
+  if the client has no family history of heart disease and only isolated high cholesterol,
+  help her advocate for a CAC scan and cardiology referral before starting a statin.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cardiovascular-disease-prevention
+- hypothyroidism
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 10 — Statins special topic + Ruth patient story, pg 282–283
+  quote: In the case of statins, 400 healthy people would need to take the drug for
+    five years to prevent one heart attack.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Coaching scripts explicitly included in the book for this GP conversation.

@@ -1,0 +1,22 @@
+slug: briden-hrm-b12-deficiency-common-after-50
+statement: 'By age 50, ~40% chance of vitamin B12 deficiency — critical brain nutrient,
+  deficiency causes fatigue, brain fog, memory problems, tingling, permanent nerve
+  damage if untreated. Ask for the numeric result: optimal ≥ 400 pg/mL (not the 200
+  pg/mL lab cutoff). Metformin, PPI stomach acid meds and alcohol all impair absorption.
+  If low, treat with B12 injections or 1000 mcg sublingual spray — oral tablets absorb
+  poorly at this age.'
+evidence_tier: strong
+linked_to_topics:
+- cognitive-decline
+- menopause
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 7 — Vitamin B12, pg 177
+  quote: By the age of 50, you have at least a 40 per cent chance of being deficient
+    in vitamin B12.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Cheap, universal screening question. Coach every 50+ client to ask for
+  their actual B12 number.

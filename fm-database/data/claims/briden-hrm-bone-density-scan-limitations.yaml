@@ -1,0 +1,24 @@
+slug: briden-hrm-bone-density-scan-limitations
+statement: DEXA bone density scans predict fewer than 30% of future fractures — LESS
+  predictive than the simple question 'do you have impaired balance?' (40%). In type
+  2 diabetes, high DEXA density paradoxically predicts HIGHER fracture risk. Osteoporosis
+  is really a condition of low TENSILE strength (collagen) — not just low mineral
+  density — which DEXA cannot measure and calcium supplementation cannot improve.
+  Bisphosphonates and denosumab improve density but can weaken microstructure and
+  cause jaw osteonecrosis and atypical femoral fracture. Reserve for catastrophic
+  bone loss (cancer treatment, high-dose prednisone, Paget's) — not for isolated 'bad
+  DEXA' with no fractures.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- osteoporosis
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 10 — Bone mineral density testing, pg 269–274
+  quote: A DEXA result less predictive of fractures than the simple question of 'Do
+    you have impaired balance?'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 'Coach: don''t panic-refer for bisphosphonates on DEXA alone. Discuss CAC-scan-analogue
+  thinking with the client.'

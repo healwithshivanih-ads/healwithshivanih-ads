@@ -1,0 +1,20 @@
+slug: briden-hrm-selenium-for-hashimotos
+statement: Selenium 100–150 mcg/day significantly reduces thyroid antibodies in both
+  Hashimoto's and Graves' disease in multiple clinical trials — works as a component
+  of selenoproteins that reduce inflammation and oxidative stress in the thyroid gland,
+  aids T4 → T3 conversion, and protects the thyroid from iodine. Do NOT exceed 200
+  mcg/day from all sources (including Brazil nuts).
+evidence_tier: strong
+linked_to_topics:
+- hypothyroidism
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 8 — Selenium, pg 209–210
+  quote: Selenium has undergone several clinical trials for autoimmune thyroid disease
+    and been found to significantly reduce thyroid antibodies.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Under-prescribed. Add to every Hashimoto's client's stack (with clinician
+  sign-off).

@@ -1,0 +1,20 @@
+slug: briden-hrm-dementia-anticholinergic-warning
+statement: 'Chronic use of anticholinergic medications quadruples dementia risk. Includes:
+  antihistamines (diphenhydramine, doxylamine — often taken for sleep), benzodiazepines,
+  sleeping tablets like Ambien®, and the antidepressant Paxil®. Short-term use is
+  fine. For perimenopausal sleep, coach steer clients away from OTC antihistamine
+  sleep aids toward magnesium/glycine/taurine/progesterone/melatonin instead.'
+evidence_tier: strong
+linked_to_topics:
+- cognitive-decline
+- sleep
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 10 — Risk reduction for dementia, pg 287
+  quote: Chronic use of anticholinergics can quadruple your risk of dementia.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 'Coach red flag: many perimenopausal women are on OTC Benadryl / doxylamine
+  for sleep — dementia risk over decades.'

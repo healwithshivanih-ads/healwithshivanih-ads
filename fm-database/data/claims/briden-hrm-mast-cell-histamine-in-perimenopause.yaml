@@ -1,0 +1,22 @@
+slug: briden-hrm-mast-cell-histamine-in-perimenopause
+statement: High perimenopausal estrogen directly stimulates mast cells and downregulates
+  the DAO enzyme that clears histamine — creating a vicious cycle where estrogen raises
+  histamine and histamine feeds back to raise estrogen. Many symptoms attributed to
+  'estrogen dominance' (PMS-like irritability, insomnia, migraines, hives, heavy periods)
+  are actually mast-cell / histamine symptoms and respond to antihistamine measures.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- second-puberty-perimenopause
+- histamine-perimenopause
+- histamine-intolerance
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: 'Chapter 4 — Special topic: MCAS and high histamine, pg 78–80'
+  quote: The net result can be a vicious cycle of estrogen → histamine → estrogen
+    → histamine.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Explains why low-histamine diet, B6, quercetin, DAO-supporting nutrients
+  often relieve 'hormonal' symptoms.

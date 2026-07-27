@@ -1,0 +1,71 @@
+slug: menopausal-hormone-therapy
+display_name: Menopausal Hormone Therapy (MHT)
+aliases:
+- mht
+- hormone therapy for menopause
+- hormone replacement therapy modernized
+summary: 'Modern replacement of the old term HRT. Umbrella for body-identical estradiol
+  (transdermal
+
+  patch/gel preferred over oral because it doesn''t form dangerous clotting factors
+  in the
+
+  liver) plus oral micronised progesterone (Prometrium / Utrogestan) — NOT progestins
+  like
+
+  medroxyprogesterone (Provera), norethisterone (Primolut), dydrogesterone or the
+
+  levonorgestrel IUD, which drive the breast-cancer risk historically attributed to
+  HRT.
+
+  Distinct from BHRT (which traditionally referred to compounded custom formulas from
+
+  compounding chemists). Briden''s rules of thumb: (1) if you take MHT, always pair
+  estrogen
+
+  with real progesterone, even after hysterectomy (progesterone helps sleep, mood,
+  breasts,
+
+  bones, not just uterine lining); (2) transdermal estradiol + oral micronised progesterone
+
+  is the safest combination; (3) start within 10 years of the final period ("window
+  of
+
+  opportunity") — starting later can INCREASE dementia and cardiovascular risk; (4)
+  vaginal
+
+  estrogen is very safe (may even be safe with breast-cancer history) and treats GSM
+
+  effectively without systemic risk; (5) progesterone-alone (no estrogen) is often
+  the
+
+  BETTER treatment for the high-estrogen perimenopause phase.
+
+  '
+key_mechanisms:
+- estrogen-signaling
+- hpa-axis-dysregulation
+- insulin-resistance
+common_symptoms:
+- hot flashes
+- night sweats
+- insomnia
+- vaginal dryness
+- mood swings
+- body aches
+related_topics:
+- bhrt
+- perimenopause-and-menopause
+- menopause
+- hormone-therapy-safety
+- osteoporosis
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 6 — Menopausal hormone therapy (MHT), pg 138–158
+  quote: Body identical estradiol and progesterone are safer than non-body identical
+    hormone therapy.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

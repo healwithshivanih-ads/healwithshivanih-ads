@@ -1,0 +1,68 @@
+slug: neurosteroid-change-sensitivity
+display_name: Neurosteroid Change Sensitivity (PMDD-linked GABA response)
+aliases:
+- allopregnanolone sensitivity
+- progesterone paradox response
+- pmdd gaba receptor sensitivity
+summary: 'Researcher Tory Eisenlohr-Moul''s framing (adopted by Briden) for the ~1-in-20
+  women whose
+
+  GABA-A receptors cannot adapt smoothly to shifting levels of allopregnanolone —
+  the
+
+  neurosteroid metabolite of progesterone. In these women progesterone changes (up
+  OR down)
+
+  cause paradoxical anxiety, rage, insomnia and depression instead of the usual calming
+
+  effect. Underlies both PMDD and much of the "I can''t tolerate progesterone" reports
+  in
+
+  perimenopause. Key clinical consequences: (1) low-dose progesterone (cream 20 mg)
+  can
+
+  worsen symptoms in these women while a MODERATE dose (100–200 mg oral capsule) calms
+  them
+
+  — bimodal association between serum allopregnanolone and mood; (2) the underlying
+
+  receptor rigidity can be improved by reducing histamine, treating chronic inflammation,
+
+  and supplementing vitamin B6 (P5P, 20–100 mg/day in divided doses; cap at 150 mg
+  to avoid
+
+  nerve damage); (3) avoiding cow''s dairy is one of Briden''s key recommendations
+  for severe
+
+  PMDD; (4) if progesterone truly cannot be tolerated at any dose, do NOT force it
+  — work
+
+  on underlying histamine/inflammation/gut issues first, or move to a different treatment
+
+  strategy.
+
+  '
+key_mechanisms:
+- gaba-a-receptor-modulation
+- histamine-intolerance
+- mast-cell-activation
+common_symptoms:
+- pmdd anxiety
+- rage
+- premenstrual insomnia
+- paradoxical anxiety on progesterone
+related_topics:
+- second-puberty-perimenopause
+- histamine-perimenopause
+- low-progesterone
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: 'Chapter 7 — Perimenopausal mood symptoms + Special topic: Progesterone
+    sensitivity, pg 180–187'
+  quote: Neurosteroid change sensitivity is an adverse mood reaction to any change
+    in the level of progesterone, either up or down.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: briden-hrm-berberine-outperforms-metformin
+statement: 'Berberine (350–500 mg concentrated extract twice daily) can match or outperform
+  metformin for insulin resistance — activates AMPK (''metabolic master switch''),
+  directly sensitises cells to insulin, decreases liver glucose production, slows
+  gut carbohydrate absorption. Precautions: not in pregnancy/breastfeeding; do not
+  combine with metformin (hypoglycaemia risk); limit to 8-week courses (5 days on/2
+  off) then break — long-term antimicrobial effect depletes gut microbiome. Interacts
+  with beta-blockers, antibiotics, antidepressants, immunosuppressants.'
+evidence_tier: strong
+linked_to_topics:
+- insulin-resistance
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 8 — Berberine, pg 199–200
+  quote: In several clinical trials, berberine has been effective for treating insulin
+    resistance and has even outperformed the diabetes drug metformin.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 'Powerful but not benign. Coach: cycle it, don''t take with metformin,
+  refer to clinician for stack.'

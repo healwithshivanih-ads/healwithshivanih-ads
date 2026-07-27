@@ -1,0 +1,23 @@
+slug: briden-hrm-transdermal-estradiol-preferred
+statement: 'Transdermal (patch or gel) body-identical estradiol is the safest form
+  of systemic estrogen — enters the bloodstream directly, bypassing first-pass liver
+  metabolism and so not producing the dangerous clotting factors that oral estrogen
+  does. Products: Estradot®, Climara®, Sandrena®, Estrogel®. Oral conjugated equine
+  estrogens (Premarin®) increase blood clot, heart disease and breast risk and are
+  essentially obsolete.'
+evidence_tier: strong
+linked_to_topics:
+- menopausal-hormone-therapy
+- bhrt
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 6 — Estrogen + Horse estrogens special topic, pg 139–141
+  quote: Modern estrogen therapy is usually body identical estradiol and transdermal
+    which allows it to directly enter the bloodstream and not form dangerous blood-clotting
+    factors in the liver.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: If a client on any oral estrogen tablet comes in, prompt them to ask their
+  doctor about switching to a patch/gel.

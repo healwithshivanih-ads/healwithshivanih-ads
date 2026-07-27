@@ -1,0 +1,24 @@
+slug: briden-hrm-progestin-vs-progesterone
+statement: 'Progestins (medroxyprogesterone acetate/Provera®, norethisterone/Primolut®,
+  levonorgestrel in Mirena IUD, dydrogesterone) are NOT progesterone. They protect
+  the uterine lining but drive the breast-cancer risk historically attributed to HRT,
+  and can cause mood problems, hair loss and weight gain. Oral micronised progesterone
+  (Prometrium® / Utrogestan®) does the same uterine-protection job WITHOUT the breast
+  risk, and may actually reduce breast cancer risk. Rule of thumb: if the label reads
+  ''progesterone'' but the ingredient is medroxyprogesterone / norethisterone / dydrogesterone
+  / levonorgestrel, it is a progestin.'
+evidence_tier: strong
+linked_to_topics:
+- menopausal-hormone-therapy
+- bhrt
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 6 — Progesterone, pg 141–144
+  quote: New research has identified progestins, and particularly medroxyprogesterone,
+    as the primary cause of the breast cancer risk associated with hormone therapy.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Central safety distinction the coach must never conflate. Ask what's actually
+  in the bottle.

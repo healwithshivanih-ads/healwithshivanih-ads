@@ -1,0 +1,22 @@
+slug: briden-hrm-a1-casein-inflammation
+statement: About 1 in 3 people cannot tolerate A1 beta-casein (found in Holstein cow
+  milk) — an enzyme converts it to inflammatory peptide BCM-7. Presents as heavy periods,
+  PMS mood, period pain, digestive bloating, chronic sinus/tonsillitis history. A2
+  dairy (goat, sheep, jersey cow) plus low-casein products (butter, ghee, ricotta,
+  whey) are usually fine. A dairy-free (A1-free) trial for 2 months is Briden's most-cited
+  single dietary intervention for heavy bleeding and mood.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- perimenopause
+- anovulatory-bleeding
+- food-sensitivities
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 5 — Dairy + Shirley patient story, pg 109–111
+  quote: A1 casein can cause inflammation and mast cell activation.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 'One of the two food-sensitivity trials (dairy, gluten) that Briden defaults
+  to. Coach India: ghee = safe, A1 dahi = suspect.'

@@ -1,0 +1,23 @@
+slug: briden-hrm-iodine-safety-in-women-40s
+statement: 'Iodine deficiency is most common in women 40–49 — iodine matters for thyroid,
+  immune, eyes, brain, ovaries and breasts. Downregulates estrogen receptors, making
+  cells less sensitive to estrogen swings; helps ovulation pain, ovarian cysts, fibroids,
+  premenstrual mood, breast pain. BUT dose depends on thyroid antibody status: with
+  antibodies, cap at 500 mcg (0.5 mg)/day; without antibodies, can safely go to 3
+  mg/day (Briden''s clinical dose for breast pain). Always co-supplement 150 mcg selenium
+  to protect the thyroid. Prefer molecular iodine (I2, brand Violet®) — absorbs preferentially
+  into breast tissue over thyroid.'
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- perimenopause
+- menopausal-hormone-therapy
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 5 — Iodine, pg 134–136; Ch 9 — Iodine for breast pain, pg 252
+  quote: The dose I prescribe ranges from 250 mcg to 3000 mcg depending on their requirements
+    and the baseline health of their thyroid.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Always test TPO antibodies before recommending iodine above 500 mcg — safety-critical.

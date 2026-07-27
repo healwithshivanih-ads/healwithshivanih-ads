@@ -1,0 +1,21 @@
+slug: briden-hrm-melatonin-timing-vs-dose
+statement: 'Dr Heidi Roth (UNC neurologist) protocol: melatonin works best when taken
+  ~6 hours BEFORE bedtime at a low dose of 0.5–1 mg, not the usual 3–5 mg taken at
+  bedtime. Higher doses (3+ mg) are appropriate for fibromyalgia, migraine prevention,
+  and possibly osteoporosis/breast cancer risk reduction — but not for straightforward
+  sleep. Melatonin is prescription-only in Australia and NZ; over-the-counter ''melatonin''
+  is homeopathic and won''t work.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- sleep
+sources:
+- id: briden-hormone-repair-manual-2021
+  location: Chapter 7 — Melatonin, pg 167–168
+  quote: Melatonin works best for sleep when taken about six hours before bedtime
+    and at a dose of 0.5–1.0 mg.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Counterintuitive — most patients (and doctors) get the timing and dose
+  wrong.
