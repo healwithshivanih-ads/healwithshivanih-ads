@@ -96,6 +96,11 @@ function slugify(name: string): string {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
+  // "general" is the catch-all opener (fm_coach_message_v1) — you type the
+  // whole message at send time. Kept first in message_templates.yaml so it
+  // renders as the top group: it's the one reached for most, and it was
+  // otherwise the last row of the third group.
+  general:     "bg-indigo-50 text-indigo-700 border-indigo-200",
   labs:        "bg-purple-50 text-purple-700 border-purple-200",
   protocol:    "bg-blue-50 text-blue-700 border-blue-200",
   "follow-up": "bg-emerald-50 text-emerald-700 border-emerald-200",
