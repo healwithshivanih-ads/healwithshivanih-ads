@@ -21,8 +21,11 @@
  *               table of unambiguous coach phrases and where a human says they
  *               belong. It must NEVER call timingRank/slotFromRank: an
  *               expectation computed by the parser under test can't fail when
- *               the parser is wrong. Phrases absent from the table are reported
- *               unclassified, never guessed.
+ *               the parser is wrong. A phrase naming several times resolves to
+ *               the earliest of them THROUGH that same table; a phrase naming
+ *               no time is reported unspecified (nothing to verify); anything
+ *               else the table cannot read is reported unclassified, never
+ *               guessed.
  *   TARGET    — a buy link must plausibly BE the item. Asserted on the OUTPUT
  *               (resolved product name vs item name, whole-word), independent
  *               of pickLinkEntry's scoring, which is the thing that was wrong.
@@ -37,7 +40,8 @@ export type ParityFamily = "presence" | "placement" | "target";
 
 /** error = a client is seeing something wrong right now. warn = a legitimate
  *  coach-side suppression could explain it, so a human must look. info =
- *  coverage bookkeeping (an unclassified timing phrase), never a defect. */
+ *  bookkeeping (a timing phrase we could not classify, or one that states no
+ *  time at all), never a defect. */
 export type ParitySeverity = "error" | "warn" | "info";
 
 export interface ParityFinding {
@@ -80,6 +84,11 @@ export interface ParityOpts {
    *  (per-plan coach override, search fallback): not assertable, so skipped.
    *  Omit the whole callback to skip the TARGET family. */
   productNameForUrl?: (url: string) => string | string[] | null;
+  /** The client record (client.yaml). Only the `mindbody_<technique>` drip
+   *  overrides are read: a technique the coach set to `locked` is SUPPOSED to
+   *  be absent from the payload, and warning about it is a false alarm. Omit
+   *  it and every missing drippable practice warns, as it did before. */
+  client?: Dict | null;
 }
 
 type Dict = Record<string, unknown>;
@@ -91,12 +100,25 @@ type Dict = Record<string, unknown>;
 // With meals / Bedtime — so each entry answers: "a coach wrote this on the
 // plan; which of those three headings must the client find it under?"
 //
-// Membership rule: only phrases where the answer is beyond argument. Anything
-// with two anchors ("morning and/or bedtime"), no anchor ("anytime", "away
-// from tea/coffee") or a genuinely ambiguous one ("between meals", "before
-// food") is deliberately ABSENT — it gets reported unclassified instead of
-// silently guessed. Every string below is a real coach phrase from the live
-// corpus (surveyed 2026-07-26), normalised by normTiming().
+// Two reading rules make the answers consistent, and both are statements about
+// the coach's words, not about any code:
+//
+//   MEAL ANCHOR, NO TIME OF DAY → "With meals". The middle group is literally
+//     the meal group, so a dose defined only by its relation to food — with,
+//     just before, or just after "a meal" / "meals" / "food" — belongs there
+//     whichever side of the plate it falls on. (Naming BREAKFAST is different:
+//     that is a time of day, and it reads Morning.)
+//   TWO OR MORE ANCHORS → the EARLIEST of them, resolved by expectedSlotFor
+//     from the single-anchor entries here. Never hand-written per combination.
+//
+// Membership rule: only phrases where the answer is beyond argument. A phrase
+// that names no time at all ("anytime", "away from tea/coffee") is listed in
+// TIMING_NO_TIME_STATED instead; a genuinely two-sided one ("between meals" —
+// mid-morning or mid-afternoon, no way to choose) is deliberately ABSENT and
+// gets reported unclassified rather than silently guessed. Every string below
+// is a real coach phrase from the live corpus (surveyed 2026-07-27), or a bare
+// anchor that multi-anchor phrases in it resolve through, normalised by
+// normTiming().
 export const CURATED_TIMING_SLOT: Record<string, "Morning" | "With meals" | "Bedtime"> = {
   // ── Bedtime: the last thing before sleep. "before bed" is first on this
   //    list on purpose — it is the exact phrase that shipped in Morning.
@@ -122,11 +144,24 @@ export const CURATED_TIMING_SLOT: Record<string, "Morning" | "With meals" | "Bed
   "on waking": "Morning",
   "on waking, empty stomach": "Morning",
   "on an empty stomach": "Morning",
+  "on empty stomach": "Morning",
+  "morning on empty stomach": "Morning",
   "empty stomach": "Morning",
   "before breakfast": "Morning",
   "30 minutes before breakfast": "Morning",
+  "30 min before breakfast on empty stomach": "Morning",
   "mid-morning": "Morning",
   "mid morning": "Morning",
+  // The window between the first two meals IS mid-morning — one span, one time.
+  "between breakfast and lunch": "Morning",
+  "morning only": "Morning",
+  // The shake is the vehicle, not a second time: the dose is the morning one.
+  "morning with protein shake": "Morning",
+  // Two anchors inside one bracket (mid-morning + afternoon); the earliest is
+  // mid-morning, and this as-needed calmer is found in the morning routine.
+  "daytime (mid-morning + a tense afternoon)": "Morning",
+  // Taken before her MORNING movement session — the exercise names the hour.
+  "~30-60 min before her morning yoga / physio / movement": "Morning",
 
   // ── With meals: anchored to a meal that is not breakfast, or to "a meal"
   //    with no time given. (The group is literally named for this case.)
@@ -139,12 +174,104 @@ export const CURATED_TIMING_SLOT: Record<string, "Morning" | "With meals" | "Bed
   "with food": "With meals",
   "with the largest meal of the day": "With meals",
   "with largest meal of the day": "With meals",
+  "with the main/largest meal": "With meals",
+  "with the two largest meals": "With meals",
   "with a fat-containing meal": "With meals",
   "with lunch or dinner": "With meals",
   "30 min before dinner": "With meals",
   "~30 min before dinner": "With meals",
   lunch: "With meals",
+  dinner: "With meals",
+
+  // Before / after the plate. Same group as "with": the meal is the anchor and
+  // no hour is named, so the client finds it where their meals are. Berberine
+  // "before meals" is a dose at EVERY meal — filing it under Morning would read
+  // as one dose at breakfast.
+  "before food": "With meals",
+  "before meals": "With meals",
+  "before a meal": "With meals",
+  "15-20 min before a meal": "With meals",
+  "~20 min before meals": "With meals",
+  "after a meal": "With meals",
+  "with or after a meal": "With meals",
+
+  // Evening and afternoon: neither is waking-time, and neither is the last
+  // thing before sleep (that is what Bedtime means here) — they are the middle
+  // of the client's day, alongside lunch and dinner.
+  evening: "With meals",
+  afternoon: "With meals",
+  "mid-afternoon": "With meals",
+  "early afternoon": "With meals",
+  "around 3 pm": "With meals",
+
+  // Long coach phrases whose ONE stated dose-time is unmistakable, kept verbatim
+  // because their trailing prose mentions other times that belong to something
+  // else (another medicine, another supplement, a second optional meal).
+  // "…(lunch or dinner)" / "…(lunch + dinner)": both options are the meal group,
+  // so the alternative cannot change the answer.
+  "with a fat-containing meal (lunch or dinner)": "With meals",
+  "with main meals (lunch + dinner)": "With meals",
+  "once weekly, sunday lunch (fixed day), with fat-containing meal": "With meals",
+  "~30 min before dinner (± lunch once tolerated), always with a full glass of water": "With meals",
+  // The bracket is the rationale for an evening dose and names the BEDTIME
+  // MAGNESIUM it is paired with — a different bottle, not this one's time.
+  "with dinner (evening dose to lower upper-normal cortisol + pair with bedtime magnesium)": "With meals",
+  // Iron. The only dose-time stated is "early afternoon"; the morning mentioned
+  // is the client's THYRONORM, the thing this dose must stay 4 h away from.
+  "early afternoon - at least 4 hours after your morning thyronorm (iron and levothyroxine block each other). pair with a vitamin-c food (amla, lemon, tomato); keep away from tea/coffee":
+    "With meals",
+  // Same evening-or-bedtime choice as "Evening, with dinner or at bedtime"
+  // above → the earlier option, dinner. The second sentence is the reason for
+  // the LATER option and names her morning levothyroxine, not this dose.
+  // Earliest-anchor would say dinner → With meals, but the coach's OWN second
+  // sentence states WHY bedtime is the intended one ("keeps it well clear of the
+  // morning Thyronorm"): the later option is the clinical point, not a tie. Read
+  // it as the coach's stated preference.
+  "evening with dinner or at bedtime. bedtime keeps it well clear of the morning thyronorm (minerals must be ≥4 h from levothyroxine)":
+    "Bedtime",
 };
+
+// ─────────────────── ground truth: phrases that state no time ──────────────
+//
+// The coach deliberately left the hour open ("anytime"), or wrote only an
+// interaction rule ("away from tea/coffee; pair with vitamin C") that says what
+// to keep it apart from and nothing about when. There is no right group to
+// assert, so these are NOT a coverage gap — they are excluded from the
+// denominator and reported separately from phrases we simply could not read.
+// Hand-listed, exact, normalised: an unfamiliar phrase falls through to
+// "unclassified", which is the safe direction.
+export const TIMING_NO_TIME_STATED: ReadonlySet<string> = new Set([
+  "any time of day - simplest stirred into the morning protein shake",
+  "anytime - preferably post-workout on training days",
+  "once daily in plain water at any time of day; tasteless and clear",
+  "away from tea/coffee",
+  "away from tea/coffee/calcium; pair with vitamin c",
+  "with vitamin c, away from tea/coffee/dairy",
+]);
+
+/** True when the plan states no dose time for this item — either nothing at all
+ *  or one of the deliberately open phrases above. Placement is unverifiable and
+ *  that is the coach's choice, not a gap in this table. */
+/** Phrases with TWO defensible readings, deliberately left unverified.
+ *
+ *  "evening, with dinner or at bedtime" (magnesium glycinate, cl-004 + cl-006):
+ *  earliest-anchor reads dinner → With meals, which is the documented contract and
+ *  what the multi-anchor rule would return. The app reads Bedtime, which is the
+ *  clinical point for magnesium glycinate. The client takes it in the evening under
+ *  either reading, so NEITHER is a client-visible defect — and encoding either as
+ *  ground truth manufactures a false error that trains the coach to ignore the sweep.
+ *  Refusing is the honest answer; a wrong ground truth is worse than 2 points of
+ *  coverage. Reinstate a reading only if the coach adjudicates the phrase. */
+const TIMING_AMBIGUOUS_BY_DESIGN = new Set(["evening, with dinner or at bedtime"]);
+
+export function timingIsAmbiguousByDesign(timing: string): boolean {
+  return TIMING_AMBIGUOUS_BY_DESIGN.has(normTiming(timing));
+}
+
+export function timingStatesNoTime(rawTiming: string): boolean {
+  const t = normTiming(rawTiming);
+  return !t || TIMING_NO_TIME_STATED.has(t);
+}
 
 // ───────────────────────── ground truth: product synonyms ──────────────────
 //
@@ -241,13 +368,14 @@ export function normTiming(raw: string): string {
 
 /**
  * Time-of-day families a phrase mentions. Deliberately a tiny hand list of
- * unmistakable cue words — it is used only to REFUSE to classify, never to
- * classify: two families in one phrase ("morning on empty stomach and at
- * bedtime") means the phrase has no single answer and must stay unverified.
+ * unmistakable cue words, and it never answers "which group" — it only decides
+ * whether a clause SAYS something about when, so an unrecognised clause that
+ * does can block a guess instead of being ignored.
  */
 const ANCHOR_CUES: [string, RegExp][] = [
   ["morning", /\bmorning\b|\bbreakfast\b|\bwaking\b|empty stomach/],
   ["midday", /\blunch\b|\bmidday\b|\bnoon\b/],
+  ["afternoon", /\bafternoon\b/],
   ["evening", /\bdinner\b|\bevening\b|\bsupper\b/],
   ["bedtime", /\bbedtime\b|before bed\b|\bnight\b|\bsleep\b|\bretiring\b/],
 ];
@@ -258,32 +386,100 @@ function anchorFamilies(t: string): Set<string> {
   return out;
 }
 
+/** The three groups in the order the client's day actually runs — a fact about
+ *  the day, stated by hand. Used to pick the earliest of several anchors. */
+const SLOT_ORDER = ["Morning", "With meals", "Bedtime"] as const;
+type Slot = (typeof SLOT_ORDER)[number];
+
 /**
- * The slot a coach phrase must land in, or null when this phrase has no
- * single unambiguous answer.
+ * Does this clause say nothing at all about when to take the dose? "once
+ * daily", "chew, do not swallow whole", "keep 2h from tea/coffee" — inert
+ * detail that cannot move the earliest anchor, so the rest of the phrase can
+ * still be resolved around it.
  *
- * Two lookups, both against the CURATED table — never against the parser:
- *   1. the whole phrase;
- *   2. its leading clause, when the coach appended detail
- *      ("With lunch (largest carb meal)", "Bedtime, with a full glass of
- *      water"). The lead only counts when the trailing detail introduces no
- *      time-of-day the lead doesn't already name — otherwise "with food
- *      (morning)" would be read as a meal item when the coach said morning.
- *
- * Anything mentioning two times of day is refused outright: the app shows one
- * group per supplement, so there is no single correct answer to assert.
+ * A clause naming a time of day, a MEAL, or a clock hour is NOT inert: it is an
+ * anchor, and if the curated table does not recognise it we must refuse rather
+ * than quietly leave a real dose-time out of the earliest-anchor calculation.
  */
-export function expectedSlotFor(rawTiming: string): "Morning" | "With meals" | "Bedtime" | null {
-  const full = normTiming(rawTiming);
-  if (!full) return null;
-  const famFull = anchorFamilies(full);
-  if (famFull.size > 1) return null;
-  if (CURATED_TIMING_SLOT[full]) return CURATED_TIMING_SLOT[full];
-  const lead = normTiming(full.split(/\s*[(;,]|\s-\s/)[0]);
-  if (!lead || lead === full) return null;
+function statesNoDoseTime(clause: string): boolean {
+  return (
+    anchorFamilies(clause).size === 0 &&
+    !/\b(meal|meals|food|snack)\b/.test(clause) &&
+    !/\b\d{1,2}(?::\d{2})?\s*(?:a\.?m|p\.?m)\b/.test(clause)
+  );
+}
+
+/** Split a phrase into the clauses a coach joined together, at the top level
+ *  only: text inside brackets is one unit, because a bracket is a qualifier on
+ *  the clause it follows ("Bedtime (with or after dinner)"), not a separate
+ *  dose. Hyphen-dash separators count; "/" does not (it joins alternatives
+ *  inside one clause: "tea/coffee", "yoga / physio"). */
+function splitAnchorClauses(t: string): string[] {
+  const brackets: string[] = [];
+  const masked = t.replace(/\([^)]*\)/g, (m) => `{${brackets.push(m) - 1}}`);
+  return masked
+    .split(/\s*(?:[,;]|\band\/or\b|\band\b|\bor\b|\+|&)\s*|\s-\s/)
+    .map((c) => normTiming(c.replace(/\{(\d+)\}/g, (_, i) => brackets[Number(i)])))
+    .filter(Boolean);
+}
+
+/**
+ * The group a single clause names, from the CURATED table only — never the
+ * parser. Two lookups:
+ *   1. the whole clause;
+ *   2. its leading part, when the coach appended detail ("With lunch (largest
+ *      carb meal)", "Bedtime, with a full glass of water"). The lead only
+ *      counts when the trailing detail introduces no time-of-day the lead
+ *      doesn't already name — otherwise "with food (morning)" would be read as
+ *      a meal item when the coach said morning.
+ */
+function curatedSlotFor(clause: string): Slot | null {
+  const direct = CURATED_TIMING_SLOT[clause];
+  if (direct) return direct;
+  const lead = normTiming(clause.split(/\s*[(;,]|\s-\s/)[0]);
+  if (!lead || lead === clause) return null;
   const famLead = anchorFamilies(lead);
-  for (const f of famFull) if (!famLead.has(f)) return null;
+  for (const f of anchorFamilies(clause)) if (!famLead.has(f)) return null;
   return CURATED_TIMING_SLOT[lead] ?? null;
+}
+
+/**
+ * The slot a coach phrase must land in, or null when this phrase has no single
+ * unambiguous answer.
+ *
+ * Resolution order, all of it grounded in CURATED_TIMING_SLOT:
+ *   1. the whole phrase;
+ *   2. multi-anchor — split at the coach's own conjunctions, look EACH clause
+ *      up, and take the EARLIEST group named. A twice-daily item is found where
+ *      its first dose falls ("morning and before bed" → Morning); an either/or
+ *      item is found at the earlier option, because that may well be the one
+ *      the client takes. Refused unless every clause either resolves or says
+ *      nothing about time at all, so one unreadable dose-time can never be
+ *      silently dropped from the calculation;
+ *   3. the single-clause lead reading (see curatedSlotFor).
+ */
+export function expectedSlotFor(rawTiming: string): Slot | null {
+  if (timingIsAmbiguousByDesign(rawTiming)) return null;
+  const full = normTiming(rawTiming);
+  if (!full || timingStatesNoTime(full)) return null;
+  const direct = CURATED_TIMING_SLOT[full];
+  if (direct) return direct;
+  const clauses = splitAnchorClauses(full);
+  if (clauses.length > 1) {
+    const found: Slot[] = [];
+    let unreadableAnchor = false;
+    for (const c of clauses) {
+      const slot = curatedSlotFor(c);
+      if (slot) found.push(slot);
+      else if (!statesNoDoseTime(c)) {
+        unreadableAnchor = true;
+        break;
+      }
+    }
+    if (!unreadableAnchor && found.length)
+      return SLOT_ORDER.find((s) => found.includes(s)) ?? null;
+  }
+  return curatedSlotFor(full);
 }
 
 /** Vitamin letters — a lone "B" or "D" on a label IS the product's identity,
@@ -547,17 +743,30 @@ function practiceAccountedFor(name: string, app: ParityAppData): boolean {
   return false;
 }
 
-/** The two guided techniques the mind-body drip can hide deliberately (coach
- *  sets mindbody_<tech> = locked, and then even the "unlocks soon" nudge is
- *  suppressed). Absence of these is a warn, not an error. */
-const DRIPPABLE = /tapping|\beft\b|wind.?down|sleep routine|sleep hygiene/i;
+/** The two guided techniques the mind-body drip can hide deliberately, and the
+ *  coach's own words for each. The override lives on the client as
+ *  `mindbody_<key>`: set to `locked` it suppresses the card, the checklist row
+ *  AND the "unlocks soon" nudge, so the practice is legitimately invisible.
+ *  Without the client record we cannot tell locked from lost — hence warn. */
+const DRIPPABLE_TECHNIQUES: { key: "eft" | "sleep"; matches: RegExp }[] = [
+  { key: "eft", matches: /tapping|\beft\b/i },
+  { key: "sleep", matches: /wind.?down|sleep routine|sleep hygiene/i },
+];
 
-function checkPracticePresence(plan: Dict, app: ParityAppData, out: ParityFinding[]): void {
+function checkPracticePresence(
+  plan: Dict,
+  app: ParityAppData,
+  client: Dict | null | undefined,
+  out: ParityFinding[],
+): void {
   for (const p of arr(plan.lifestyle_practices)) {
     const name = str(p.name).trim();
     if (!name) continue;
     if (practiceAccountedFor(name, app)) continue;
-    const drippable = DRIPPABLE.test(name);
+    const tech = DRIPPABLE_TECHNIQUES.find((t) => t.matches.test(name));
+    // Coach-locked: the client is meant not to see this yet. Nothing to report.
+    if (tech && str(client?.[`mindbody_${tech.key}`]).trim().toLowerCase() === "locked") continue;
+    const drippable = Boolean(tech);
     add(out, {
       family: "presence",
       severity: drippable ? "warn" : "error",
@@ -593,7 +802,8 @@ function checkRemedyPresence(plan: Dict, app: ParityAppData, out: ParityFinding[
 // ────────────────────────────────── PLACEMENT ──────────────────────────────
 
 function checkPlacement(plan: Dict, app: ParityAppData, out: ParityFinding[]): void {
-  const seenUnclassified = new Set<string>();
+  // one info line per distinct phrase per client, whichever kind it is
+  const seenTimingPhrase = new Set<string>();
   arr(plan.supplement_protocol).forEach((p, i) => {
     const slug = str(p.supplement_slug);
     const label = str(p.display_name) || slug || `#${i + 1}`;
@@ -603,10 +813,30 @@ function checkPlacement(plan: Dict, app: ParityAppData, out: ParityFinding[]): v
       app.allSupplements.find((s) => s.id === `s-${slug || i}`) ??
       app.allSupplements.find((s) => sharesWord(s.name, str(p.display_name) || slug));
     if (!row) return; // PRESENCE already reported it
+    // No time stated at all: the coach left it open on purpose, so there is no
+    // group to be right or wrong about. Reported apart from the phrases we
+    // simply could not read, and left out of the coverage denominator.
+    if (timingStatesNoTime(raw)) {
+      const openKey = key || "(blank)";
+      if (!seenTimingPhrase.has(openKey)) {
+        seenTimingPhrase.add(openKey);
+        add(out, {
+          family: "placement",
+          severity: "info",
+          code: "timing-unspecified",
+          item: label,
+          actual: row.slot,
+          detail: raw.trim()
+            ? `Timing "${raw}" states no time of day — the coach left it open, so placement is not assertable.`
+            : `${label} carries no timing at all in the plan — placement is not assertable.`,
+        });
+      }
+      return;
+    }
     const expected = expectedSlotFor(raw);
     if (!expected) {
-      if (key && !seenUnclassified.has(key)) {
-        seenUnclassified.add(key);
+      if (key && !seenTimingPhrase.has(key)) {
+        seenTimingPhrase.add(key);
         add(out, {
           family: "placement",
           severity: "info",
@@ -671,7 +901,7 @@ export function checkPlanAppParity(
   const out: ParityFinding[] = [];
   checkSupplementPresence(plan, app, out);
   checkMenuPresence(plan, app, out);
-  checkPracticePresence(plan, app, out);
+  checkPracticePresence(plan, app, opts.client, out);
   checkRemedyPresence(plan, app, out);
   checkPlacement(plan, app, out);
   checkTarget(app, opts, out);

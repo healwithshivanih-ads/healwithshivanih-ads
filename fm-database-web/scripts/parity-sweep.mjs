@@ -96,9 +96,8 @@ const server = await createServer({
 let exitCode = 0;
 try {
   const { loadClientAppData } = await server.ssrLoadModule("/src/lib/fmdb/client-app.ts");
-  const { checkPlanAppParity, countBySeverity, expectedSlotFor } = await server.ssrLoadModule(
-    "/src/lib/fmdb/plan-app-parity.ts",
-  );
+  const { checkPlanAppParity, countBySeverity, expectedSlotFor, timingStatesNoTime } =
+    await server.ssrLoadModule("/src/lib/fmdb/plan-app-parity.ts");
 
   const productByUrl = buildProductIndex();
   // A url can be published under two names for the same bottle — hand back all
@@ -116,9 +115,12 @@ try {
   let skipped = 0;
   // How much of the corpus PLACEMENT actually verifies. Reported so a green
   // sweep is never read as "every supplement is in the right group" — only the
-  // timings the curated table recognises are checked at all.
+  // timings the curated table recognises are checked at all. Timings that state
+  // no time of day are counted separately, NOT as a miss: the coach left them
+  // open, so there is no group to check and they must not drag the % down.
   let timingsTotal = 0;
   let timingsClassified = 0;
+  let timingsOpen = 0;
 
   for (const id of ids.sort()) {
     const client = readYaml(path.join(clientsDir, id, "client.yaml"));
@@ -148,10 +150,15 @@ try {
       continue;
     }
 
-    const kept = checkPlanAppParity(plan, app, { productNameForUrl });
+    const kept = checkPlanAppParity(plan, app, { productNameForUrl, client });
     for (const p of Array.isArray(plan.supplement_protocol) ? plan.supplement_protocol : []) {
+      const timing = String(p?.timing ?? "");
+      if (timingStatesNoTime(timing)) {
+        timingsOpen++;
+        continue;
+      }
       timingsTotal++;
-      if (expectedSlotFor(String(p?.timing ?? ""))) timingsClassified++;
+      if (expectedSlotFor(timing)) timingsClassified++;
     }
 
     swept++;
@@ -187,7 +194,8 @@ try {
   );
   console.log(
     `${D}placement coverage: ${timingsClassified}/${timingsTotal} supplement timings (${pct}%) matched the curated table; ` +
-      `the rest are unverified, not verified-good${X}`,
+      `the rest are unverified, not verified-good` +
+      `${timingsOpen ? ` · ${timingsOpen} more state no time at all (nothing to verify, excluded)` : ""}${X}`,
   );
   if (byCode.size) {
     console.log(`${D}by code:${X}`);
@@ -195,7 +203,7 @@ try {
       console.log(`  ${String(n).padStart(4)}  ${code}`);
   }
   if (!process.env.PARITY_VERBOSE && totals.info)
-    console.log(`${D}(PARITY_VERBOSE=1 to list unclassified timing phrases)${X}`);
+    console.log(`${D}(PARITY_VERBOSE=1 to list the unclassified / no-time timing phrases)${X}`);
 } finally {
   await server.close();
 }

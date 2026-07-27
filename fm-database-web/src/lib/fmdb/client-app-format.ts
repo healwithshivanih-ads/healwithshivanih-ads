@@ -82,16 +82,53 @@ export function timingRank(timing: string, dose: string, emptyStomach: boolean, 
   // sleep supplement under Morning on the client's phone. So resolve on `timing`
   // alone first, and only widen to the dose when timing says nothing definite
   // (rank 25 is this function's "I could not tell" default).
-  const timingOnly = timing.trim()
-    ? rankTimingText(` ${timing.toLowerCase()} `, emptyStomach)
-    : UNKNOWN_TIMING_RANK;
-  if (timingOnly !== UNKNOWN_TIMING_RANK) return timingOnly;
-  return rankTimingText(` ${`${timing} ${dose}`.toLowerCase()} `, emptyStomach);
+  // Within the timing field the dose time is stated in the LEADING clause; what
+  // follows an em-dash / full stop / semicolon is the coach explaining why, and
+  // that explanation routinely names OTHER times as reference points. Read on:
+  //   "Early afternoon — at least 4 hours after your morning Thyronorm"
+  //   "Evening with dinner or at bedtime. Bedtime keeps it clear of the morning …"
+  // Both are afternoon/evening doses whose rationale says "morning", and both were
+  // filed under Morning — putting cl-013's iron next to the levothyroxine the note
+  // exists to keep it 4 h away from. So try the leading clause first, then the
+  // whole timing field, and only then widen to the dose prose.
+  for (const text of [leadingClause(timing), timing, `${timing} ${dose}`]) {
+    if (!text.trim()) continue;
+    const r = rankTimingText(` ${text.toLowerCase()} `, emptyStomach);
+    if (r !== UNKNOWN_TIMING_RANK) return r;
+  }
+  return UNKNOWN_TIMING_RANK;
 }
 
 /** Rank a single already-lowercased, space-padded timing string. Split out of
  *  `timingRank` so the timing field can be resolved on its own before the dose
  *  is allowed to contribute — see the note there. */
+/** The dose-time clause of a timing string: everything before the first em-dash,
+ *  full stop or semicolon. The coach's rationale lives after that boundary and
+ *  names other times as reference points ("…4 hours after your morning Thyronorm"),
+ *  which must not out-vote the dose time itself. */
+function leadingClause(timing: string): string {
+  const head = (timing || "").split(/\s+[—–]\s+|[.;]/)[0] ?? "";
+  // Drop parentheticals: a bracket qualifies the dose, it never states a second
+  // one. "With dinner (… pair with bedtime magnesium)" is a dinner dose whose
+  // note happens to name another bottle's bedtime.
+  return head.replace(/\([^)]*\)/g, " ");
+}
+
+/** A bare clock hour, when no worded cue matched. The parser had no clock reading
+ *  at all, so a deliberately-timed "Around 3 pm" iron dose (moved off breakfast to
+ *  clear tea/coffee and other minerals) landed in the breakfast band. */
+function rankClockHour(t: string): number {
+  const m = /\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/.exec(t);
+  if (!m) return UNKNOWN_TIMING_RANK;
+  let h = Number(m[1]) % 12;
+  if (m[3] === "pm") h += 12;
+  if (h < 11) return 20;   // morning
+  if (h < 15) return 40;   // around lunch
+  if (h < 18) return 50;   // afternoon
+  if (h < 21) return 60;   // evening / dinner
+  return 70;               // late — bedtime
+}
+
 const UNKNOWN_TIMING_RANK = 25;
 
 function rankTimingText(t: string, emptyStomach: boolean): number {
@@ -106,14 +143,16 @@ function rankTimingText(t: string, emptyStomach: boolean): number {
     if (/\bafternoon\b/.test(t)) return 50;
     return 10;
   }
-  if (/before meal|before each meal|before main meal|before food/.test(t)) return 14;
   if (/\bbreakfast\b|\bmorning\b/.test(t) && !/mid.?morning/.test(t)) return 20;
+  if (/before\s+(?:a|the|each|your|main)?\s*meals?\b|before food|after\s+(?:a|the|your)?\s*meals?\b|with or after\s+(?:a|the)?\s*meal/.test(t)) return 45;
   if (/mid.?morning|between breakfast and lunch|after breakfast|between meals/.test(t)) return 30;
   if (/\blunch\b|midday|\bnoon\b/.test(t)) return 40;
   if (/\bafternoon\b/.test(t)) return 50;
   if (/\bdinner\b|evening meal|with evening|supper|\bevening\b/.test(t)) return 60;
   if (BEDTIME_CUE.test(t)) return 70;
   if (/with meals|with food|with a meal|largest meal|main meal|fat.?containing|fatty meal/.test(t)) return 45;
+  const clock = rankClockHour(t);
+  if (clock !== UNKNOWN_TIMING_RANK) return clock;
   return 25; // unknown → treat as a morning/first-meal item
 }
 
