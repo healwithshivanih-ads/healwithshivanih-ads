@@ -27,7 +27,6 @@ main_ingredients:
 - tamarind
 - tomato
 contains_allergens:
-- sesame
 - soy
 ingredients:
 - item: tamarind
@@ -63,7 +62,7 @@ ingredients:
 - item: curry leaves
   qty: '10'
   unit: whole
-- item: cold-pressed coconut oil or sesame oil
+- item: cold-pressed coconut oil
   qty: '1'
   unit: tsp
 - item: salt
