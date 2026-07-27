@@ -18,59 +18,61 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- fermented millet-and-dal batter
-- water
-- ginger, grated
-- green chilli, minced (optional)
-- turmeric
-- finely chopped vegetables (onion, capsicum, coriander)
-- salt
-- ghee or oil for cooking
-contains_allergens: []
+- ragi flour
+- rice flour
+- curd
+contains_allergens:
+- dairy
 ingredients:
-- item: fermented millet-and-dal batter
+- item: ragi (finger millet) flour
   qty: '1'
   unit: cup
-- item: water
-  qty: as needed
-  unit: ''
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: green chilli, minced (optional)
+- item: rice flour
+  qty: '0.25'
+  unit: cup
+- item: curd
+  qty: '0.25'
+  unit: cup
+- item: onion, finely chopped
   qty: '1'
   unit: piece
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: finely chopped vegetables (onion, capsicum, coriander)
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
+- item: cumin seeds
   qty: '0.5'
-  unit: cup
+  unit: tsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
 - item: salt
   qty: to taste
   unit: ''
-- item: ghee or oil for cooking
+- item: oil for cooking
   qty: '2'
-  unit: tsp
+  unit: tbsp
+- item: water
+  qty: '2'
+  unit: cup
 steps:
-- Whisk fermented millet-and-dal batter with water into a smooth, pourable batter
-  (like thin pancake batter).
-- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
-  and spread into a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
-  golden, flip, and cook the other side 1-2 minutes.
-- Serve hot with chutney.
+- Whisk the ragi flour, rice flour, curd and water into a thin, lump-free batter —
+  much thinner than a regular dosa batter.
+- Stir in the onion, green chilli, cumin, coriander and salt. Rest 10 minutes.
+- Heat the tawa well. Instead of spreading, POUR the thin batter from a height in
+  a ring, filling the gaps.
+- Drizzle oil around the edge and cook until crisp and lacy. This style doesn't need
+  flipping if the pan is hot enough.
+- Serve straight off the pan — it softens as it sits.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 20
 approx_kcal_per_serving: 180
 kcal_is_estimate: true
 protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich ragi dosa — quick, gut-friendly, and naturally gluten-free.
+one_line: An instant ragi dosa — no fermenting, mixed and cooked the same morning.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
@@ -95,22 +97,26 @@ kcal_total: 450
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 239
-  protein_g: 6.4
-  carbs_g: 39.6
-  fat_g: 5.4
-  fibre_g: 3.3
-  iron_mg: 1.7
-  calcium_mg: 28.1
-  magnesium_mg: 39.1
-  zinc_mg: 1.1
-  potassium_mg: 246
-  folate_ug: 50.6
+  kcal: 300
+  protein_g: 6.9
+  carbs_g: 63.7
+  fat_g: 1.5
+  fibre_g: 8.4
+  iron_mg: 3.5
+  calcium_mg: 239
+  magnesium_mg: 102
+  zinc_mg: 1.9
+  potassium_mg: 374
+  folate_ug: 34.8
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 10.3
-  omega3_mg: 61.8
-nutrient_coverage_pct: 100.0
-rich_in: []
+  vit_c_mg: 7.2
+  omega3_mg: 25.2
+nutrient_coverage_pct: 82.6
+rich_in:
+- fibre
+- iron
+- calcium
+- magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

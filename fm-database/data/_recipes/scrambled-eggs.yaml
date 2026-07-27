@@ -18,55 +18,47 @@ rasa:
 - pungent
 main_ingredients:
 - eggs
-- ghee or coconut oil
-- cumin seeds
-- onion, chopped
-- vegetables (capsicum, spinach, tomato)
-- turmeric
-- salt and pepper
-- fresh coriander
+- ghee
+- black pepper
 contains_allergens:
+- dairy
 - egg
 ingredients:
-- item: eggs
-  qty: '2'
-  unit: whole
-- item: ghee or coconut oil
+- item: eggs, beaten
+  qty: '3'
+  unit: piece
+- item: ghee
   qty: '1'
   unit: tsp
-- item: cumin seeds
-  qty: '0.25'
-  unit: tsp
-- item: onion, chopped
-  qty: '0.5'
-  unit: medium
-- item: vegetables (capsicum, spinach, tomato)
-  qty: '0.5'
-  unit: cup
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: salt and pepper
-  qty: to taste
-  unit: ''
-- item: fresh coriander
+- item: milk (optional, for softness)
   qty: '1'
   unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: black pepper, freshly ground
+  qty: '0.25'
+  unit: tsp
 steps:
-- Heat ghee, add cumin seeds, then onion; sauté until soft.
-- Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour in, and stir continuously until just set
-  and soft.
-- Garnish with coriander and serve warm.
+- Beat the eggs with the milk, salt and pepper until just combined — don't over-whisk
+  or they turn rubbery.
+- Melt the ghee in a heavy pan on LOW heat. Low is the whole trick with scrambled
+  eggs.
+- Pour in the eggs and leave them for 20 seconds, then push them slowly from the edge
+  to the centre with a spatula.
+- Take the pan off the heat while they still look slightly underdone — they carry
+  on cooking in their own heat.
+- Serve immediately; scrambled eggs go tough if they sit.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 5
+cook_time_min: 5
 approx_kcal_per_serving: 220
 kcal_is_estimate: true
 protein_g: 14
 good_for:
 - agni-digestive-fire
-one_line: A protein-rich scrambled eggs cooked with vegetables and gentle spices.
+one_line: Soft, plainly seasoned scrambled eggs — the gentlest way to start a heavy-protein
+  morning.
 headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
   meal that keeps blood sugar even through the morning.
 attribution:
@@ -91,22 +83,23 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 119
-  protein_g: 7.4
-  carbs_g: 6.0
-  fat_g: 7.2
-  fibre_g: 1.5
-  iron_mg: 1.6
-  calcium_mg: 45.8
-  magnesium_mg: 16.6
-  zinc_mg: 0.9
-  potassium_mg: 200
-  folate_ug: 41.4
-  b12_ug: 0.5
-  vit_d_ug: 1.0
-  vit_c_mg: 9.7
-  omega3_mg: 82.3
+  kcal: 133
+  protein_g: 9.7
+  carbs_g: 1.1
+  fat_g: 9.7
+  fibre_g: 0.1
+  iron_mg: 1.4
+  calcium_mg: 51.8
+  magnesium_mg: 10.2
+  zinc_mg: 1.0
+  potassium_mg: 117
+  folate_ug: 35.7
+  b12_ug: 0.7
+  vit_d_ug: 1.6
+  vit_c_mg: 0.0
+  omega3_mg: 95.1
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

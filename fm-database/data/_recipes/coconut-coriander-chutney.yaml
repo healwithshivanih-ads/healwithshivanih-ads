@@ -18,56 +18,66 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
+- fresh coconut
 - coriander
-- grated coconut
-- ginger
-- green chilli (optional)
-- lemon juice
-- salt
-- water
-- 'for tempering: coconut oil, mustard seeds, curry leaves'
+- roasted chana dal
+- curry leaves
 contains_allergens: []
 ingredients:
-- item: coriander
+- item: grated fresh coconut
   qty: '1'
   unit: cup
-- item: grated coconut
-  qty: '0.25'
+- item: fresh coriander
+  qty: '0.75'
   unit: cup
-- item: ginger
-  qty: 1 inch
-  unit: ''
-- item: green chilli (optional)
-  qty: '1'
-  unit: piece
-- item: lemon juice
-  qty: '1'
+- item: roasted chana dal (putani)
+  qty: '2'
   unit: tbsp
+- item: green chilli
+  qty: '2'
+  unit: piece
+- item: ginger
+  qty: '0.5'
+  unit: inch
+- item: tamarind paste
+  qty: '0.25'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
 - item: water
-  qty: as needed
-  unit: ''
-- item: 'for tempering: coconut oil, mustard seeds, curry leaves'
-  qty: 1 set
-  unit: ''
+  qty: '0.5'
+  unit: cup
+- item: coconut oil
+  qty: '1'
+  unit: tsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: dry red chilli
+  qty: '1'
+  unit: piece
+- item: curry leaves
+  qty: '8'
+  unit: leaves
 steps:
-- Blend coriander, coconut, ginger, chilli, lemon juice, and salt with a little water
-  into a smooth chutney.
-- Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the
-  chutney.
-- Serve fresh alongside chilla, dosa, idli, or rice.
+- Grind the coconut, coriander, roasted chana dal, green chilli, ginger, tamarind
+  and salt with the water to a smooth chutney.
+- The roasted chana dal is what gives it body — without it the chutney separates.
+- Adjust with more water to the consistency you want.
+- For the tempering, splutter the mustard seeds in the coconut oil with the red chilli
+  and curry leaves.
+- Pour the tempering over the chutney and stir it in just before serving.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 5
 approx_kcal_per_serving: 70
 kcal_is_estimate: true
 protein_g: 2
 good_for:
 - agni-digestive-fire
-one_line: A fresh, bright coconut-coriander chutney to lift any meal — no preservatives,
-  made fresh.
+one_line: The South Indian coconut chutney, greened with coriander and finished with
+  a tempering.
 headnote: Fresh chutneys add flavour, enzymes, and a hit of herbs without sugar or
   preservatives — make a small batch and use it the same day.
 attribution:
@@ -92,22 +102,23 @@ kcal_total: 140
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 64.6
-  protein_g: 0.6
-  carbs_g: 3.1
-  fat_g: 5.9
-  fibre_g: 1.2
-  iron_mg: 0.4
-  calcium_mg: 8.1
-  magnesium_mg: 7.7
-  zinc_mg: 0.2
-  potassium_mg: 106
-  folate_ug: 10.0
+  kcal: 221
+  protein_g: 4.7
+  carbs_g: 15.5
+  fat_g: 16.8
+  fibre_g: 5.4
+  iron_mg: 1.9
+  calcium_mg: 31.4
+  magnesium_mg: 36.7
+  zinc_mg: 0.9
+  potassium_mg: 317
+  folate_ug: 43.9
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 8.4
-  omega3_mg: 1.1
+  vit_c_mg: 11.6
+  omega3_mg: 17.0
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

@@ -19,67 +19,62 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- foxtail
-- ghee or coconut oil
-- mustard seeds
-- urad dal
-- curry leaves
-- ginger, grated
-- onion, chopped (optional)
-- mixed vegetables, diced (carrot, peas, beans)
-- salt
-- fresh coriander
-contains_allergens: []
+- foxtail millet
+- capsicum
+- carrot
+- french beans
+contains_allergens:
+- sesame
+- soy
 ingredients:
-- item: foxtail
-  qty: '1'
+- item: foxtail millet, cooked and cooled
+  qty: '2'
   unit: cup
-- item: ghee or coconut oil
+- item: sesame or coconut oil
   qty: '1'
   unit: tbsp
-- item: mustard seeds
-  qty: '0.5'
-  unit: tsp
-- item: urad dal
+- item: garlic, minced
+  qty: '3'
+  unit: clove
+- item: carrot, julienned
   qty: '1'
-  unit: tsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: onion, chopped (optional)
-  qty: '0.5'
-  unit: medium
-- item: mixed vegetables, diced (carrot, peas, beans)
+  unit: piece
+- item: french beans, cut diagonally
   qty: '0.75'
   unit: cup
+- item: capsicum, sliced
+  qty: '1'
+  unit: piece
+- item: spring onion, chopped
+  qty: '3'
+  unit: piece
+- item: black pepper
+  qty: '0.5'
+  unit: tsp
+- item: tamari
+  qty: '1'
+  unit: tbsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
-  unit: tbsp
 steps:
-- Dry-roast the foxtail in a pan 2-3 minutes until nutty. Set aside.
-- Heat ghee, add mustard seeds and urad dal; once they pop add curry leaves, ginger,
-  and onion. Sauté until soft.
-- Add diced vegetables; stir-fry 2 minutes.
-- Add 2.5 cups water and salt; bring to a boil. Stir in the roasted foxtail.
-- Cover and cook on low 12-15 minutes until the water is absorbed and the grain is
-  fluffy. Rest 5 minutes, garnish with coriander, and serve warm.
+- Use millet cooked earlier and cooled — warm millet clumps and turns sticky in a
+  stir-fry.
+- Get the pan hot, add the oil and the garlic for 20 seconds.
+- Toss in the beans and carrot for 2 minutes, then the capsicum for one more.
+- Add the cooled millet, tamari, pepper and salt, and toss on high until heated through.
+- Finish with spring onion off the heat.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 12
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 6
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, fluffy foxtail upma tempered with mustard and curry leaves and
-  studded with vegetables.
+one_line: Cooked foxtail millet tossed hot with crisp vegetables — a dry, quick pan
+  dish.
 headnote: Dry-roasting the foxtail before cooking keeps the upma light and fluffy
   rather than sticky — a warm, grounding breakfast that's gentle on digestion.
 attribution:
@@ -104,27 +99,30 @@ kcal_total: 520
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 405
-  protein_g: 13.3
-  carbs_g: 62.7
-  fat_g: 11.3
-  fibre_g: 9.5
-  iron_mg: 3.3
-  calcium_mg: 64.1
-  magnesium_mg: 95.4
-  zinc_mg: 2.6
-  potassium_mg: 426
-  folate_ug: 45.3
+  kcal: 715
+  protein_g: 26.7
+  carbs_g: 135
+  fat_g: 8.3
+  fibre_g: 20.7
+  iron_mg: 6.8
+  calcium_mg: 137
+  magnesium_mg: 189
+  zinc_mg: 5.1
+  potassium_mg: 1042
+  folate_ug: 107
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 13.7
-  omega3_mg: 124
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 97.1
+  omega3_mg: 143
+nutrient_coverage_pct: 97.0
 rich_in:
 - protein
 - fibre
 - iron
 - magnesium
 - zinc
+- potassium
+- folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

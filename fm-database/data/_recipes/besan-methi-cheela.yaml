@@ -50,10 +50,12 @@ ingredients:
   unit: tsp
 steps:
 - Whisk the gram flour with water into a smooth, lump-free batter of pouring consistency.
-- Stir in the chopped methi, green chilli, ginger, turmeric, cumin and salt; rest the batter for 10 minutes.
+- Stir in the chopped methi, green chilli, ginger, turmeric, cumin and salt; rest
+  the batter for 10 minutes.
 - Heat a flat tawa on medium and lightly grease it.
 - Pour a ladle of batter and spread into a thin round with the back of the ladle.
-- Drizzle a few drops of oil around the edges and cook until the underside is golden and lifts easily.
+- Drizzle a few drops of oil around the edges and cook until the underside is golden
+  and lifts easily.
 - Flip and cook the other side for a minute until cooked through.
 - Repeat with the remaining batter and serve hot with chutney.
 servings: '2'
@@ -66,8 +68,11 @@ good_for:
 - constipation
 - blood-sugar-regulation
 - anti-inflammatory-diet
-one_line: A thin savoury gram-flour pancake studded with fresh fenugreek leaves for a protein-rich start to the day.
-headnote: Besan gives this cheela a naturally high protein content while the methi lends a gentle bitterness that supports digestion. It cooks in minutes on a single tawa and needs nothing more than chutney alongside.
+one_line: A thin savoury gram-flour pancake studded with fresh fenugreek leaves for
+  a protein-rich start to the day.
+headnote: Besan gives this cheela a naturally high protein content while the methi
+  lends a gentle bitterness that supports digestion. It cooks in minutes on a single
+  tawa and needs nothing more than chutney alongside.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -76,7 +81,8 @@ image:
   credit: generated with ChatGPT image generation
   source_url: chatgpt-generated://besan-methi-cheela
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Besan cheela with methi
@@ -107,6 +113,6 @@ rich_in:
 - magnesium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'
 aliases:
 - Besan-methi cheela

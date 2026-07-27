@@ -18,55 +18,68 @@ rasa:
 - pungent
 main_ingredients:
 - eggs
-- ghee or coconut oil
-- cumin seeds
-- onion, chopped
-- vegetables (capsicum, spinach, tomato)
-- turmeric
-- salt and pepper
-- fresh coriander
+- coconut milk
+- tomato
+- onion
 contains_allergens:
 - egg
 ingredients:
-- item: eggs
+- item: eggs, hard-boiled and peeled
+  qty: '4'
+  unit: piece
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: tomato, chopped
   qty: '2'
-  unit: whole
-- item: ghee or coconut oil
+  unit: piece
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
   qty: '1'
   unit: tsp
-- item: cumin seeds
-  qty: '0.25'
+- item: red chilli powder
+  qty: '0.5'
   unit: tsp
-- item: onion, chopped
-  qty: '0.5'
-  unit: medium
-- item: vegetables (capsicum, spinach, tomato)
-  qty: '0.5'
+- item: light coconut milk
+  qty: '0.75'
   unit: cup
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: salt and pepper
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: salt
   qty: to taste
   unit: ''
 - item: fresh coriander
-  qty: '1'
+  qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds, then onion; sauté until soft.
-- Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour over the vegetables, and cook covered on
-  low until set, folding once.
-- Garnish with coriander and serve warm.
+- Boil, cool and peel the eggs. Prick each one a few times with a fork so the gravy
+  gets in.
+- Heat the coconut oil, crackle the curry leaves, then brown the onion well.
+- Add the ginger-garlic paste, cook off the raw smell, then the tomato, turmeric,
+  coriander powder and chilli powder.
+- Cook until the tomato breaks down and the oil separates.
+- Pour in the coconut milk with the salt, slide the eggs in, and simmer gently for
+  6–8 minutes. Don't boil hard or the coconut milk splits.
+- Finish with coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 22
 approx_kcal_per_serving: 220
 kcal_is_estimate: true
 protein_g: 14
 good_for:
 - agni-digestive-fire
-one_line: A protein-rich egg curry cooked with vegetables and gentle spices.
+one_line: Boiled eggs in a proper coconut-tomato gravy — a full lunch curry, not a
+  scramble.
 headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
   meal that keeps blood sugar even through the morning.
 attribution:
@@ -91,22 +104,30 @@ kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 119
-  protein_g: 7.4
-  carbs_g: 6.0
-  fat_g: 7.2
-  fibre_g: 1.5
-  iron_mg: 1.6
-  calcium_mg: 45.8
-  magnesium_mg: 16.6
-  zinc_mg: 0.9
-  potassium_mg: 200
-  folate_ug: 41.4
-  b12_ug: 0.5
-  vit_d_ug: 1.0
-  vit_c_mg: 9.7
-  omega3_mg: 82.3
+  kcal: 398
+  protein_g: 16.3
+  carbs_g: 16.6
+  fat_g: 30.9
+  fibre_g: 4.2
+  iron_mg: 5.3
+  calcium_mg: 121
+  magnesium_mg: 65.5
+  zinc_mg: 2.2
+  potassium_mg: 707
+  folate_ug: 84.5
+  b12_ug: 0.9
+  vit_d_ug: 2.0
+  vit_c_mg: 21.3
+  omega3_mg: 113
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- protein
+- iron
+- zinc
+- potassium
+- folate
+- b12
+- vitamin-c
+- vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

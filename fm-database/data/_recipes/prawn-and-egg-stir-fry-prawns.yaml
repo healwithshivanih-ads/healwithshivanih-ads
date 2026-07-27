@@ -18,70 +18,54 @@ rasa:
 - pungent
 main_ingredients:
 - prawns
-- coconut oil
-- onion, sliced
-- ginger-garlic paste
-- curry leaves
-- turmeric
-- coriander powder
-- light coconut milk
-- salt
-- fresh coriander
+- eggs
+- spring onion
+- garlic
 contains_allergens:
+- egg
+- sesame
 - shellfish
+- soy
 ingredients:
+- item: prawns, cleaned
+  qty: '200'
+  unit: g
 - item: eggs, beaten
   qty: '2'
   unit: piece
-- item: prawns
-  qty: '150'
-  unit: g
-- item: coconut oil
+- item: coconut or sesame oil
   qty: '1'
   unit: tbsp
-- item: onion, sliced
-  qty: '1'
-  unit: medium
-- item: ginger-garlic paste
-  qty: '1'
-  unit: tbsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
-- item: turmeric
+- item: garlic, minced
+  qty: '3'
+  unit: clove
+- item: spring onion, chopped
+  qty: '3'
+  unit: piece
+- item: black pepper
   qty: '0.5'
   unit: tsp
-- item: coriander powder
-  qty: '1'
+- item: tamari
+  qty: '2'
   unit: tsp
-- item: light coconut milk
-  qty: '0.5'
-  unit: cup
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
-  unit: tbsp
 steps:
-- Clean and cut the prawns into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
-  paste and cook 1 minute.
-- Add turmeric and coriander powder; stir 30 seconds.
-- Add the prawns and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
-  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
-  5-6 min).
-- Finish with fresh coriander. Serve warm with rice or millet.
+- Sear the prawns in half the oil for 2 minutes until they just curl, then push them
+  to one side of the pan.
+- Add the remaining oil and the garlic to the empty side for 20 seconds.
+- Pour the beaten eggs in and scramble them softly, then fold everything together.
+- Season with tamari, pepper and salt, and finish with the spring onion off the heat.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 8
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based prawn and egg stir-fry (75g prawns — no tomato, gently
-  spiced and freshly made.
+one_line: Prawns and egg scrambled together in one hot pan with spring onion.
 headnote: Freshly cooked prawns in a light coconut-curry-leaf base keeps the meal
   clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
@@ -106,27 +90,26 @@ kcal_total: 310
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 325
-  protein_g: 23.6
-  carbs_g: 11.7
-  fat_g: 21.5
-  fibre_g: 2.5
-  iron_mg: 3.7
-  calcium_mg: 127
-  magnesium_mg: 64.9
-  zinc_mg: 2.2
-  potassium_mg: 534
-  folate_ug: 56.8
-  b12_ug: 1.3
-  vit_d_ug: 1.1
-  vit_c_mg: 6.6
-  omega3_mg: 283
+  kcal: 243
+  protein_g: 29.2
+  carbs_g: 19.1
+  fat_g: 6.3
+  fibre_g: 3.3
+  iron_mg: 2.4
+  calcium_mg: 142
+  magnesium_mg: 62.4
+  zinc_mg: 2.4
+  potassium_mg: 619
+  folate_ug: 75.7
+  b12_ug: 1.6
+  vit_d_ug: 1.2
+  vit_c_mg: 13.7
+  omega3_mg: 358
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
-- iron
 - zinc
 - potassium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

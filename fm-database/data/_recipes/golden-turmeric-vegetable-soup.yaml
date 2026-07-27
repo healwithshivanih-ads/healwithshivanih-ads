@@ -28,17 +28,70 @@ main_ingredients:
 - cumin
 - coconut milk
 contains_allergens: []
+ingredients:
+- item: red lentils (masoor dal), rinsed
+  qty: '0.5'
+  unit: cup
+- item: mixed seasonal vegetables (carrot, pumpkin, beans), diced
+  qty: '3'
+  unit: cup
+- item: coconut oil or ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: garlic, minced
+  qty: '3'
+  unit: clove
+- item: ginger, grated
+  qty: '1'
+  unit: tbsp
+- item: turmeric
+  qty: '1'
+  unit: tsp
+- item: black pepper, freshly ground
+  qty: '0.5'
+  unit: tsp
+- item: light coconut milk
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '4'
+  unit: cup
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Crackle the cumin in the oil, then soften the onion, garlic and ginger.
+- Stir in the turmeric and black pepper together — the pepper is what makes the turmeric
+  usable, so don't leave it out.
+- Add the lentils, vegetables, water and salt. Simmer 20–25 minutes until the lentils
+  have collapsed.
+- Blend about half the soup and stir it back in, so it is thick but still has pieces.
+- Add the coconut milk and warm through without boiling. Finish with lemon juice and
+  coriander.
 approx_kcal_per_serving: 230
 protein_g: 10
 good_for:
 - inflammation
 - immune-support
 - agni-digestive-fire
-one_line: Warming anti-inflammatory soup of seasonal veg + red lentils with turmeric, ginger and a touch
-  of coconut milk.
+one_line: Warming anti-inflammatory soup of seasonal veg + red lentils with turmeric,
+  ginger and a touch of coconut milk.
 method: '1. Saute 1 tsp cumin + 1 tsp grated ginger in 1 tbsp oil; add 1/2 tsp turmeric.
 
-  2. Add 1/3 cup red lentils + 2 cups chopped seasonal vegetables + 4 cups water; simmer 20 min.
+  2. Add 1/3 cup red lentils + 2 cups chopped seasonal vegetables + 4 cups water;
+  simmer 20 min.
 
   3. Stir in 1/4 cup coconut milk, salt to taste; blend partly for a creamy soup.'
 source: odonnell-everyday-ayurveda-cookbook-2015
@@ -51,5 +104,33 @@ image:
   credit: web reference (coach-selected)
   source_url: https://biancazapatka.com/wp-content/uploads/2022/11/linsensuppe-720x1008.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
+nutrients_per_serving:
+  kcal: 442
+  protein_g: 18.2
+  carbs_g: 57.9
+  fat_g: 17.5
+  fibre_g: 12.8
+  iron_mg: 7.9
+  calcium_mg: 111
+  magnesium_mg: 92.9
+  zinc_mg: 3.1
+  potassium_mg: 1061
+  folate_ug: 321
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 56.7
+  omega3_mg: 130
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-27'

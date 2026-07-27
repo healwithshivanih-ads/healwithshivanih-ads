@@ -18,40 +18,40 @@ rasa:
 - pungent
 main_ingredients:
 - chicken
-- coconut oil
-- onion, sliced
-- ginger-garlic paste
+- coconut milk
 - curry leaves
-- turmeric
-- coriander powder
-- light coconut milk
-- salt
-- fresh coriander
+- shallots
 contains_allergens: []
 ingredients:
-- item: chicken
-  qty: '150'
+- item: chicken, curry cut
+  qty: '500'
   unit: g
 - item: coconut oil
-  qty: '1'
+  qty: '2'
   unit: tbsp
-- item: onion, sliced
-  qty: '1'
-  unit: medium
-- item: ginger-garlic paste
-  qty: '1'
-  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
 - item: curry leaves
-  qty: 8-10
+  qty: '12'
   unit: leaves
+- item: shallots or onion, sliced
+  qty: '1.5'
+  unit: cup
+- item: ginger-garlic paste
+  qty: '1.5'
+  unit: tbsp
+- item: green chilli, slit
+  qty: '2'
+  unit: piece
 - item: turmeric
   qty: '0.5'
   unit: tsp
 - item: coriander powder
-  qty: '1'
+  qty: '2'
   unit: tsp
 - item: light coconut milk
-  qty: '0.5'
+  qty: '1.5'
   unit: cup
 - item: salt
   qty: to taste
@@ -60,24 +60,23 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Clean and cut the chicken into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
-  paste and cook 1 minute.
-- Add turmeric and coriander powder; stir 30 seconds.
-- Add the chicken and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
-  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
-  5-6 min).
-- Finish with fresh coriander. Serve warm with rice or millet.
+- Splutter the mustard seeds in the coconut oil and add the curry leaves.
+- Soften the shallots, then add the ginger-garlic paste and green chilli.
+- Stir in the turmeric and coriander powder, then the chicken and salt. Seal the pieces
+  on all sides.
+- Pour in the coconut milk, bring to a bare simmer, cover and cook 25 minutes until
+  the chicken is tender.
+- Keep it below a boil throughout — coconut milk splits if pushed. Finish with coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 15
+cook_time_min: 35
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based chicken-coconut curry — no tomato, gently spiced
-  and freshly made.
+one_line: A South Indian coconut-milk chicken curry with curry leaves — lighter than
+  a tomato gravy.
 headnote: Freshly cooked chicken in a light coconut-curry-leaf base keeps the meal
   clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
@@ -102,23 +101,28 @@ kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 280
-  protein_g: 18.0
-  carbs_g: 10.6
-  fat_g: 19.0
-  fibre_g: 2.5
-  iron_mg: 2.9
-  calcium_mg: 57.0
-  magnesium_mg: 51.4
-  zinc_mg: 1.5
-  potassium_mg: 455
-  folate_ug: 24.3
-  b12_ug: 0.2
-  vit_d_ug: 0.1
-  vit_c_mg: 6.6
-  omega3_mg: 67.9
-nutrient_coverage_pct: 100.0
+  kcal: 725
+  protein_g: 56.7
+  carbs_g: 12.2
+  fat_g: 51.1
+  fibre_g: 3.6
+  iron_mg: 7.2
+  calcium_mg: 96.3
+  magnesium_mg: 136
+  zinc_mg: 4.5
+  potassium_mg: 1087
+  folate_ug: 41.6
+  b12_ug: 0.8
+  vit_d_ug: 0.2
+  vit_c_mg: 10.3
+  omega3_mg: 211
+nutrient_coverage_pct: 96.9
 rich_in:
 - protein
+- iron
+- magnesium
+- zinc
+- potassium
+- b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

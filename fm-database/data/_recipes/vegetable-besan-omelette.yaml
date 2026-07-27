@@ -18,60 +18,64 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- besan (gram flour)
-- water
-- ginger, grated
-- green chilli, minced (optional)
-- turmeric
-- finely chopped vegetables (onion, capsicum, coriander)
-- salt
-- ghee or oil for cooking
+- besan
+- capsicum
+- onion
+- black salt
 contains_allergens: []
 ingredients:
 - item: besan (gram flour)
-  qty: '1'
+  qty: '0.75'
   unit: cup
-- item: water
-  qty: as needed
-  unit: ''
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: green chilli, minced (optional)
-  qty: '1'
+- item: onion, finely chopped
+  qty: '0.5'
   unit: piece
+- item: capsicum, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: tomato, deseeded and chopped
+  qty: '0.25'
+  unit: cup
+- item: black salt (kala namak)
+  qty: '0.25'
+  unit: tsp
 - item: turmeric
   qty: '0.25'
   unit: tsp
-- item: finely chopped vegetables (onion, capsicum, coriander)
-  qty: '0.5'
-  unit: cup
+- item: baking soda
+  qty: '1'
+  unit: pinch
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
 - item: salt
   qty: to taste
   unit: ''
-- item: ghee or oil for cooking
+- item: water
+  qty: '0.75'
+  unit: cup
+- item: oil for cooking
   qty: '2'
   unit: tsp
 steps:
-- Whisk besan (gram flour) with water into a smooth, pourable batter (like thin pancake
-  batter).
-- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
-  and spread into a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
-  golden, flip, and cook the other side 1-2 minutes.
-- Serve hot with chutney.
+- Whisk the besan with water to a smooth batter, slightly thicker than chilla.
+- Add the black salt — it is what gives this its eggy note — plus turmeric, salt and
+  the pinch of soda.
+- Fold in the vegetables and coriander.
+- Pour a round onto a medium-hot oiled pan and cook covered for 2–3 minutes until
+  the top is nearly set.
+- Fold in half like an omelette, press gently, and cook another minute.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 12
 approx_kcal_per_serving: 180
 kcal_is_estimate: true
 protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich vegetable besan omelette — quick, gut-friendly,
-  and naturally gluten-free.
+one_line: An eggless besan omelette folded like the real thing — soft rather than
+  crisp.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
@@ -96,25 +100,24 @@ kcal_total: 400
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 235
-  protein_g: 11.1
-  carbs_g: 30.0
-  fat_g: 7.7
-  fibre_g: 6.0
-  iron_mg: 2.7
-  calcium_mg: 30.1
-  magnesium_mg: 84.2
-  zinc_mg: 1.5
-  potassium_mg: 485
-  folate_ug: 214
+  kcal: 153
+  protein_g: 8.4
+  carbs_g: 24.4
+  fat_g: 2.4
+  fibre_g: 4.9
+  iron_mg: 2.1
+  calcium_mg: 26.8
+  magnesium_mg: 65.0
+  zinc_mg: 1.1
+  potassium_mg: 421
+  folate_ug: 166
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 10.3
-  omega3_mg: 95.3
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 24.1
+  omega3_mg: 41.8
+nutrient_coverage_pct: 86.7
 rich_in:
-- fibre
-- magnesium
 - folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

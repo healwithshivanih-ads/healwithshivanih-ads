@@ -19,34 +19,36 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- lauki, chopped
-- ghee or coconut oil
-- cumin seeds
-- ginger, grated
+- lauki
+- ginger
 - black pepper
-- salt
-- lemon juice
-- fresh coriander
+- lemon
 contains_allergens: []
 ingredients:
-- item: lauki, chopped
-  qty: '2'
-  unit: cups
+- item: lauki (bottle gourd), peeled and cubed
+  qty: '3'
+  unit: cup
 - item: ghee or coconut oil
   qty: '1'
   unit: tsp
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
-- item: ginger, grated
+- item: ginger, julienned
+  qty: '2'
+  unit: tbsp
+- item: green chilli, slit
   qty: '1'
-  unit: tsp
-- item: black pepper
-  qty: '0.25'
+  unit: piece
+- item: black pepper, coarsely crushed
+  qty: '0.5'
   unit: tsp
 - item: salt
   qty: to taste
   unit: ''
+- item: water
+  qty: '2.5'
+  unit: cup
 - item: lemon juice
   qty: '1'
   unit: tsp
@@ -54,20 +56,24 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the chopped lauki and 3 cups water. Simmer covered 12-15 minutes until soft.
-- Blend smooth (or leave brothy). Season with salt and pepper.
-- Finish with lemon juice and coriander. Serve warm.
+- Check the lauki for bitterness before you start.
+- Crackle the cumin in the ghee, then add most of the ginger and the green chilli
+  and fry for a minute.
+- Add the lauki, water and salt, and simmer covered 15 minutes.
+- Blend smooth, then return to the heat with the crushed pepper.
+- Finish with the remaining raw ginger, lemon juice and coriander stirred in off the
+  heat — that late ginger is what makes this different from a plain lauki soup.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 20
 approx_kcal_per_serving: 90
 kcal_is_estimate: true
 protein_g: 3
 good_for:
 - agni-digestive-fire
 - gut-microbiome
-one_line: A light, warming lauki ginger soup — soothing and easy on digestion.
+one_line: Bottle gourd simmered with a generous amount of ginger — warming, for a
+  sluggish digestion.
 headnote: A gentle lauki soup with ginger and pepper is warming, hydrating, and the
   perfect light dinner when you want to rest the gut.
 attribution:
@@ -92,22 +98,23 @@ kcal_total: 90
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 40.8
-  protein_g: 0.9
-  carbs_g: 4.7
-  fat_g: 2.4
-  fibre_g: 0.8
-  iron_mg: 0.6
-  calcium_mg: 36.9
-  magnesium_mg: 15.8
-  zinc_mg: 0.8
-  potassium_mg: 197
-  folate_ug: 8.2
+  kcal: 54.5
+  protein_g: 1.4
+  carbs_g: 8.0
+  fat_g: 2.5
+  fibre_g: 1.2
+  iron_mg: 0.8
+  calcium_mg: 54.2
+  magnesium_mg: 25.4
+  zinc_mg: 1.3
+  potassium_mg: 316
+  folate_ug: 12.9
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 12.8
-  omega3_mg: 22.5
+  vit_c_mg: 21.6
+  omega3_mg: 25.8
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

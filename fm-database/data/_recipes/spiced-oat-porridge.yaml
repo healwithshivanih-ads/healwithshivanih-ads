@@ -24,18 +24,52 @@ main_ingredients:
 - almond milk
 contains_allergens:
 - nuts
+ingredients:
+- item: rolled oats
+  qty: '0.75'
+  unit: cup
+- item: almond milk or water
+  qty: '2'
+  unit: cup
+- item: dates, chopped
+  qty: '3'
+  unit: piece
+- item: cinnamon
+  qty: '0.5'
+  unit: tsp
+- item: green cardamom, crushed
+  qty: '2'
+  unit: piece
+- item: ginger, grated
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: pinch
+- item: ghee or coconut oil
+  qty: '0.5'
+  unit: tsp
+steps:
+- Warm the ghee and toast the oats for a minute with the cinnamon, cardamom and ginger
+  — toasting stops the porridge tasting flat.
+- Add the liquid, dates and the pinch of salt.
+- Simmer on low, stirring often, for 8–10 minutes until thick and creamy.
+- Add a splash more liquid if it tightens — it thickens further off the heat.
+- Serve warm.
 approx_kcal_per_serving: 290
 protein_g: 7
 good_for:
 - constipation
 - agni-digestive-fire
-one_line: Creamy cinnamon-cardamom oats simmered with dates — warming, grounding breakfast (use water/oat
-  milk for nut-free).
-method: '1. Simmer 1/2 cup rolled oats with 1.5 cups almond milk (or water) over low heat.
+one_line: Creamy cinnamon-cardamom oats simmered with dates — warming, grounding breakfast
+  (use water/oat milk for nut-free).
+method: '1. Simmer 1/2 cup rolled oats with 1.5 cups almond milk (or water) over low
+  heat.
 
   2. Add 1/4 tsp cinnamon, pinch cardamom, pinch dry ginger, 2-3 chopped dates.
 
-  3. Cook ~8 min, stirring, to a soft porridge. Top with a few soaked chopped almonds (omit for nut allergy).'
+  3. Cook ~8 min, stirring, to a soft porridge. Top with a few soaked chopped almonds
+  (omit for nut allergy).'
 source: lad-ayurveda-science-of-self-healing-1984
 version: 1
 status: active
@@ -43,7 +77,33 @@ updated_at: '2026-06-09'
 updated_by: Shivani
 image:
   file: images/web/spiced-oat-porridge.jpg
-  credit: 'generated with ChatGPT image generation'
-  source_url: 'chatgpt-generated://spiced-oat-porridge'
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://spiced-oat-porridge
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
+nutrients_per_serving:
+  kcal: 264
+  protein_g: 7.8
+  carbs_g: 47.1
+  fat_g: 6.4
+  fibre_g: 7.0
+  iron_mg: 2.7
+  calcium_mg: 487
+  magnesium_mg: 94.0
+  zinc_mg: 1.7
+  potassium_mg: 523
+  folate_ug: 25.9
+  b12_ug: 0.0
+  vit_d_ug: 2.4
+  vit_c_mg: 0.1
+  omega3_mg: 47.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- calcium
+- magnesium
+- potassium
+- vitamin-d
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-27'

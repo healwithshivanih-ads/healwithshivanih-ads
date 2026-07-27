@@ -19,23 +19,29 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- mixed salad vegetables / sprouts (as named)
-- cucumber, diced
-- lemon juice
-- roasted cumin powder
-- rock salt
-- fresh coriander and mint
-- coconut oil or cold-pressed oil (optional)
+- sprouted moong
+- cucumber
+- tomato
+- lemon
 contains_allergens: []
 ingredients:
-- item: sprouted moong
+- item: sprouted whole moong
   qty: '2'
-  unit: cups
+  unit: cup
 - item: cucumber, diced
+  qty: '0.75'
+  unit: cup
+- item: tomato, diced
   qty: '0.5'
   unit: cup
+- item: onion, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
 - item: lemon juice
-  qty: '1'
+  qty: '1.5'
   unit: tbsp
 - item: roasted cumin powder
   qty: '0.5'
@@ -43,28 +49,26 @@ ingredients:
 - item: rock salt
   qty: to taste
   unit: ''
-- item: fresh coriander and mint
-  qty: '2'
-  unit: tbsp
-- item: coconut oil or cold-pressed oil (optional)
+- item: cold-pressed oil (optional)
   qty: '1'
   unit: tsp
 steps:
-- Chop or lightly steam the main vegetables/sprouts as appropriate (sprouts are gentler
-  on digestion lightly steamed).
-- Toss with cucumber, lemon juice, roasted cumin, and rock salt.
-- Fold through fresh herbs and a touch of oil if using. Serve fresh.
+- Steam the sprouts for 4–5 minutes if your digestion is delicate; otherwise use them
+  raw.
+- Let them cool completely — dressing warm sprouts makes the salad watery.
+- Toss with the cucumber, tomato, onion and coriander.
+- Dress with lemon juice, roasted cumin, rock salt and the oil if using.
+- Serve straight away; it weeps if it stands.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 0
 approx_kcal_per_serving: 110
 kcal_is_estimate: true
 protein_g: 6
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A fresh, crunchy sprouted moong salad dressed simply with lemon, cumin,
-  and herbs.
+one_line: A plain raw sprout salad with cucumber, tomato and lemon.
 headnote: A simple salad of fresh or lightly steamed vegetables with lemon and roasted
   cumin adds fibre and freshness — sprouts are best lightly steamed for easy digestion.
 attribution:
@@ -89,22 +93,23 @@ kcal_total: 120
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 60.2
-  protein_g: 3.5
-  carbs_g: 8.1
-  fat_g: 2.6
-  fibre_g: 2.1
-  iron_mg: 1.5
-  calcium_mg: 25.3
-  magnesium_mg: 28.7
-  zinc_mg: 0.5
-  potassium_mg: 223
-  folate_ug: 67.7
+  kcal: 55.5
+  protein_g: 4.1
+  carbs_g: 11.7
+  fat_g: 0.5
+  fibre_g: 2.9
+  iron_mg: 1.7
+  calcium_mg: 35.0
+  magnesium_mg: 36.5
+  zinc_mg: 0.7
+  potassium_mg: 359
+  folate_ug: 77.9
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 17.6
-  omega3_mg: 18.7
-nutrient_coverage_pct: 100.0
-rich_in: []
+  vit_c_mg: 25.8
+  omega3_mg: 21.1
+nutrient_coverage_pct: 93.4
+rich_in:
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

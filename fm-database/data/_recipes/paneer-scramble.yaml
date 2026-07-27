@@ -17,56 +17,53 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- paneer, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
+- paneer
+- onion
 - turmeric
-- salt
-- fresh coriander
+- coriander
 contains_allergens:
 - dairy
 ingredients:
-- item: paneer, cubed
-  qty: '150'
+- item: paneer, crumbled
+  qty: '200'
   unit: g
-- item: ghee or oil
+- item: ghee
   qty: '1'
-  unit: tbsp
-- item: cumin seeds
+  unit: tsp
+- item: onion, finely chopped
   qty: '0.5'
-  unit: tsp
-- item: ginger, grated
+  unit: piece
+- item: green chilli, minced
   qty: '1'
-  unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
-  qty: '1'
-  unit: cup
+  unit: piece
 - item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: black pepper, freshly ground
   qty: '0.25'
   unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
+- item: fresh coriander, chopped
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the paneer and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Soften the onion and green chilli in the ghee for 2 minutes — you want them translucent,
+  not browned.
+- Add the turmeric, then the crumbled paneer, salt and pepper.
+- Toss gently over low heat for 2–3 minutes, just until warmed through.
+- Fold in the coriander off the heat.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 6
+cook_time_min: 6
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich paneer scramble with vegetables and a light tempering.
+one_line: A lighter, quicker paneer crumble with no tomato — soft, mild and ready
+  in ten minutes.
 headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -91,21 +88,21 @@ kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 315
-  protein_g: 15.9
-  carbs_g: 9.7
-  fat_g: 24.2
-  fibre_g: 2.0
-  iron_mg: 1.5
-  calcium_mg: 383
-  magnesium_mg: 30.4
-  zinc_mg: 2.0
-  potassium_mg: 252
-  folate_ug: 36.7
-  b12_ug: 0.6
+  kcal: 331
+  protein_g: 19.5
+  carbs_g: 8.1
+  fat_g: 25.1
+  fibre_g: 0.7
+  iron_mg: 1.0
+  calcium_mg: 489
+  magnesium_mg: 24.9
+  zinc_mg: 2.3
+  potassium_mg: 165
+  folate_ug: 21.5
+  b12_ug: 0.8
   vit_d_ug: 0.2
-  vit_c_mg: 15.4
-  omega3_mg: 154
+  vit_c_mg: 5.1
+  omega3_mg: 122
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -113,4 +110,4 @@ rich_in:
 - zinc
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

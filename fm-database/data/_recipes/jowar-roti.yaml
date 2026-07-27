@@ -20,32 +20,31 @@ rasa:
 - pungent
 main_ingredients:
 - jowar flour
-- warm water
-- salt
-- ghee or oil
+- hot water
 contains_allergens: []
 ingredients:
-- item: jowar flour
+- item: jowar (sorghum) flour
+  qty: '2'
+  unit: cup
+- item: hot water
   qty: '1.5'
-  unit: cups
-- item: warm water
-  qty: as needed
-  unit: ''
+  unit: cup
 - item: salt
-  qty: to taste
-  unit: ''
-- item: ghee or oil
+  qty: '0.25'
+  unit: tsp
+- item: ghee (optional, to serve)
   qty: '1'
   unit: tsp
 steps:
-- Mix jowar flour with salt. Add warm water a little at a time, kneading into a soft,
-  pliable dough. Rest 10 minutes.
-- Divide into balls. Pat or roll each into a round flatbread on a floured surface
-  (gluten-free flours roll best between two sheets of parchment).
-- Cook on a hot tava 1-2 minutes per side until brown spots appear and it puffs.
-- Smear lightly with ghee and serve warm.
+- Bring the water to a rolling boil with the salt — jowar has no gluten, and it is
+  the hot water that binds the dough.
+- Pour it over the flour and mix with a spoon until cool enough to handle, then knead
+  into a smooth, soft dough.
+- Keep the dough covered and warm; it cracks as it cools.
+- Take a ball and pat it out into a round with wet palms, turning as you go.
+- Cook on a hot tawa, turning twice; press gently with a cloth and it should puff.
 servings: '2'
-prep_time_min: 10
+prep_time_min: 20
 cook_time_min: 15
 approx_kcal_per_serving: 120
 kcal_is_estimate: true
@@ -53,8 +52,8 @@ protein_g: 3
 good_for:
 - blood-sugar-regulation
 - agni-digestive-fire
-one_line: A wholesome jowar flatbread — naturally gluten-free and far steadier on
-  blood sugar than wheat.
+one_line: A soft hand-patted jowar roti — gluten-free, so it is shaped by hand, not
+  rolled.
 headnote: 'Jowar rotis are a traditional millet/whole-grain bread: more fibre, more
   minerals, and a gentler glucose response than refined wheat.'
 attribution:
@@ -79,25 +78,27 @@ kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 321
-  protein_g: 9.0
-  carbs_g: 60.9
-  fat_g: 3.8
-  fibre_g: 9.2
-  iron_mg: 3.6
-  calcium_mg: 25.2
-  magnesium_mg: 120
-  zinc_mg: 1.8
-  potassium_mg: 295
-  folate_ug: 35.1
+  kcal: 421
+  protein_g: 12.0
+  carbs_g: 81.2
+  fat_g: 4.3
+  fibre_g: 12.2
+  iron_mg: 4.8
+  calcium_mg: 33.8
+  magnesium_mg: 160
+  zinc_mg: 2.4
+  potassium_mg: 394
+  folate_ug: 46.8
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 76.7
+  omega3_mg: 96.2
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
 - fibre
 - iron
 - magnesium
+- zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

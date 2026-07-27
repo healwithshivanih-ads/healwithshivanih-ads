@@ -18,55 +18,50 @@ rasa:
 - pungent
 main_ingredients:
 - eggs
-- ghee or coconut oil
-- cumin seeds
-- onion, chopped
-- vegetables (capsicum, spinach, tomato)
+- onion
+- green chilli
 - turmeric
-- salt and pepper
-- fresh coriander
 contains_allergens:
 - egg
 ingredients:
-- item: eggs
-  qty: '2'
-  unit: whole
+- item: eggs, beaten
+  qty: '3'
+  unit: piece
 - item: ghee or coconut oil
   qty: '1'
   unit: tsp
-- item: cumin seeds
-  qty: '0.25'
-  unit: tsp
-- item: onion, chopped
+- item: onion, finely chopped
   qty: '0.5'
-  unit: medium
-- item: vegetables (capsicum, spinach, tomato)
-  qty: '0.5'
-  unit: cup
+  unit: piece
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
 - item: turmeric
   qty: '0.25'
   unit: tsp
-- item: salt and pepper
+- item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
+- item: fresh coriander, chopped
   qty: '1'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds, then onion; sauté until soft.
-- Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour in, and stir continuously until just set
-  and soft.
-- Garnish with coriander and serve warm.
+- Heat the ghee and soften the onion and green chilli for 2–3 minutes until the raw
+  smell goes.
+- Stir in the turmeric and let it bloom for 10 seconds.
+- Pour in the beaten eggs with the salt, drop the heat low, and push them gently until
+  just set.
+- Fold through the coriander off the heat and serve hot.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 6
+cook_time_min: 7
 approx_kcal_per_serving: 220
 kcal_is_estimate: true
 protein_g: 14
 good_for:
 - agni-digestive-fire
-one_line: A protein-rich masala scrambled eggs cooked with vegetables and gentle spices.
+one_line: Scrambled eggs with onion, green chilli and turmeric — more warming than
+  plain, quicker than bhurji.
 headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
   meal that keeps blood sugar even through the morning.
 attribution:
@@ -91,22 +86,23 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 119
-  protein_g: 7.4
-  carbs_g: 6.0
-  fat_g: 7.2
-  fibre_g: 1.5
-  iron_mg: 1.6
-  calcium_mg: 45.8
-  magnesium_mg: 16.6
-  zinc_mg: 0.9
-  potassium_mg: 200
+  kcal: 141
+  protein_g: 9.9
+  carbs_g: 3.6
+  fat_g: 9.4
+  fibre_g: 0.6
+  iron_mg: 1.7
+  calcium_mg: 49.8
+  magnesium_mg: 13.3
+  zinc_mg: 1.1
+  potassium_mg: 163
   folate_ug: 41.4
-  b12_ug: 0.5
-  vit_d_ug: 1.0
-  vit_c_mg: 9.7
-  omega3_mg: 82.3
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 4.9
+  omega3_mg: 96.4
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

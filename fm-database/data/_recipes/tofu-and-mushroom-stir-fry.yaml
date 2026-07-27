@@ -17,57 +17,56 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- firm tofu, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
-- turmeric
-- salt
-- fresh coriander
+- tofu
+- mushroom
+- garlic
+- black pepper
 contains_allergens:
+- sesame
 - soy
 ingredients:
 - item: firm tofu, cubed
-  qty: '150'
+  qty: '200'
   unit: g
-- item: ghee or oil
+- item: button mushrooms, halved
+  qty: '200'
+  unit: g
+- item: sesame or coconut oil
   qty: '1'
   unit: tbsp
-- item: cumin seeds
+- item: garlic, sliced
+  qty: '4'
+  unit: clove
+- item: tamari
+  qty: '1'
+  unit: tbsp
+- item: black pepper
   qty: '0.5'
-  unit: tsp
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
-  qty: '1'
-  unit: cup
-- item: turmeric
-  qty: '0.25'
   unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
+- item: fresh coriander or spring onion
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the firm tofu and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Mushrooms release a lot of water — cook them in a wide pan, and don't crowd it or
+  they will stew.
+- Sear the tofu first until golden, then set it aside.
+- Add the mushrooms to the hot pan and leave them alone until they colour, then toss
+  and let their water cook off completely.
+- Add the garlic for 30 seconds, return the tofu, and season with tamari, pepper and
+  salt.
+- Finish with coriander or spring onion.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 14
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich tofu and mushroom stir-fry with vegetables and a
-  light tempering.
+one_line: Tofu and mushrooms browned hard together — deeply savoury without any meat.
 headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -92,23 +91,23 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 151
-  protein_g: 8.3
-  carbs_g: 7.6
-  fat_g: 10.3
-  fibre_g: 2.7
-  iron_mg: 2.3
-  calcium_mg: 173
-  magnesium_mg: 45.4
-  zinc_mg: 1.0
-  potassium_mg: 268
-  folate_ug: 36.7
+  kcal: 93.3
+  protein_g: 10.3
+  carbs_g: 4.8
+  fat_g: 4.3
+  fibre_g: 1.2
+  iron_mg: 2.0
+  calcium_mg: 215
+  magnesium_mg: 45.8
+  zinc_mg: 0.9
+  potassium_mg: 174
+  folate_ug: 17.3
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 15.4
-  omega3_mg: 266
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 2.1
+  omega3_mg: 252
+nutrient_coverage_pct: 79.4
 rich_in:
 - calcium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

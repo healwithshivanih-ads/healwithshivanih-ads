@@ -19,19 +19,24 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- lauki, chopped
-- ghee or coconut oil
-- cumin seeds
-- ginger, grated
-- black pepper
-- salt
-- lemon juice
-- fresh coriander
+- lauki
+- carrot
+- french beans
+- moong dal
 contains_allergens: []
 ingredients:
-- item: lauki, chopped
+- item: lauki (bottle gourd), peeled and diced
   qty: '2'
-  unit: cups
+  unit: cup
+- item: carrot, diced
+  qty: '1'
+  unit: piece
+- item: french beans, chopped
+  qty: '0.5'
+  unit: cup
+- item: split yellow moong dal
+  qty: '2'
+  unit: tbsp
 - item: ghee or coconut oil
   qty: '1'
   unit: tsp
@@ -41,33 +46,39 @@ ingredients:
 - item: ginger, grated
   qty: '1'
   unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
 - item: black pepper
   qty: '0.25'
   unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: lemon juice
-  qty: '1'
-  unit: tsp
+- item: water
+  qty: '3'
+  unit: cup
 - item: fresh coriander
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the chopped lauki and 3 cups water. Simmer covered 12-15 minutes until soft.
-- Blend smooth (or leave brothy). Season with salt and pepper.
-- Finish with lemon juice and coriander. Serve warm.
+- Rinse the moong dal — a small handful gives the broth body without making it heavy.
+- Crackle the cumin in the ghee, add the ginger and turmeric.
+- Add all the vegetables and the dal with the water and salt.
+- Simmer uncovered 20 minutes until the dal has broken down and the vegetables are
+  tender but still hold their shape.
+- Do NOT blend this one. Finish with pepper and coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 15
+cook_time_min: 25
 approx_kcal_per_serving: 90
 kcal_is_estimate: true
 protein_g: 3
 good_for:
 - agni-digestive-fire
 - gut-microbiome
-one_line: A light, warming vegetable soup (lauki — soothing and easy on digestion.
+one_line: A chunky mixed-vegetable soup built on lauki — left unblended, with pieces
+  you can chew.
 headnote: A gentle lauki soup with ginger and pepper is warming, hydrating, and the
   perfect light dinner when you want to rest the gut.
 attribution:
@@ -92,22 +103,24 @@ kcal_total: 80
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 40.8
-  protein_g: 0.9
-  carbs_g: 4.7
-  fat_g: 2.4
-  fibre_g: 0.8
-  iron_mg: 0.6
-  calcium_mg: 36.9
-  magnesium_mg: 15.8
-  zinc_mg: 0.8
-  potassium_mg: 197
-  folate_ug: 8.2
+  kcal: 106
+  protein_g: 4.7
+  carbs_g: 17.1
+  fat_g: 2.7
+  fibre_g: 3.4
+  iron_mg: 1.7
+  calcium_mg: 66.8
+  magnesium_mg: 42.9
+  zinc_mg: 1.3
+  potassium_mg: 501
+  folate_ug: 91.2
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 12.8
-  omega3_mg: 22.5
+  vit_c_mg: 17.2
+  omega3_mg: 47.5
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

@@ -17,56 +17,63 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- paneer, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
-- turmeric
-- salt
-- fresh coriander
+- paneer
+- onion
+- tomato
+- coriander
 contains_allergens:
 - dairy
 ingredients:
-- item: paneer, cubed
-  qty: '150'
+- item: paneer, crumbled
+  qty: '200'
   unit: g
 - item: ghee or oil
-  qty: '1'
-  unit: tbsp
-- item: cumin seeds
-  qty: '0.5'
+  qty: '2'
   unit: tsp
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, finely chopped
+  qty: '1'
+  unit: piece
 - item: ginger, grated
   qty: '1'
   unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
+- item: green chilli, minced
   qty: '1'
-  unit: cup
+  unit: piece
 - item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.25'
+  unit: tsp
+- item: garam masala
   qty: '0.25'
   unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
+- item: fresh coriander, chopped
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the paneer and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Crumble the paneer by hand — a grater makes it pasty.
+- Heat the ghee, fry the onion until golden, then add the ginger and green chilli.
+- Add the tomato and cook until it collapses and the oil separates.
+- Stir in the turmeric, chilli powder and salt, then fold in the paneer.
+- Cook just 2–3 minutes — paneer turns rubbery if you keep going. Finish with garam
+  masala and coriander.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 10
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich paneer bhurji with vegetables and a light tempering.
+one_line: Crumbled paneer cooked down with onion, tomato and masala — the vegetarian
+  answer to egg bhurji.
 headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -91,21 +98,21 @@ kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 315
-  protein_g: 15.9
-  carbs_g: 9.7
-  fat_g: 24.2
-  fibre_g: 2.0
-  iron_mg: 1.5
-  calcium_mg: 383
-  magnesium_mg: 30.4
-  zinc_mg: 2.0
-  potassium_mg: 252
-  folate_ug: 36.7
-  b12_ug: 0.6
+  kcal: 373
+  protein_g: 20.4
+  carbs_g: 12.9
+  fat_g: 27.6
+  fibre_g: 1.9
+  iron_mg: 1.3
+  calcium_mg: 501
+  magnesium_mg: 34.1
+  zinc_mg: 2.5
+  potassium_mg: 334
+  folate_ug: 34.7
+  b12_ug: 0.8
   vit_d_ug: 0.2
-  vit_c_mg: 15.4
-  omega3_mg: 154
+  vit_c_mg: 14.4
+  omega3_mg: 144
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -113,4 +120,4 @@ rich_in:
 - zinc
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

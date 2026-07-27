@@ -59,12 +59,17 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Rinse the moong dal and rice together in a couple of changes of water, then drain and set aside.
-- Heat the ghee in a pressure cooker, add the cumin seeds and hing, and let the cumin splutter.
-- Add the grated ginger and turmeric, stir for a few seconds, then add the diced vegetables and saute for a minute.
+- Rinse the moong dal and rice together in a couple of changes of water, then drain
+  and set aside.
+- Heat the ghee in a pressure cooker, add the cumin seeds and hing, and let the cumin
+  splutter.
+- Add the grated ginger and turmeric, stir for a few seconds, then add the diced vegetables
+  and saute for a minute.
 - Add the drained dal and rice with the salt and water, and stir well.
-- Pressure-cook for 3-4 whistles (or simmer covered for 25-30 minutes) until everything is very soft and porridge-like.
-- Open the cooker, stir to a soft, soupy consistency, loosening with hot water if it has thickened too much.
+- Pressure-cook for 3-4 whistles (or simmer covered for 25-30 minutes) until everything
+  is very soft and porridge-like.
+- Open the cooker, stir to a soft, soupy consistency, loosening with hot water if
+  it has thickened too much.
 - Garnish with fresh coriander and serve warm.
 servings: '2'
 prep_time_min: 10
@@ -77,8 +82,11 @@ good_for:
 - blood-sugar-regulation
 - protein-adequacy-vegetarian
 - anti-inflammatory-diet
-one_line: A soft, soupy one-pot khichdi of moong dal and rice cooked down with seasonal vegetables.
-headnote: This is the everyday comfort khichdi — moong dal and rice simmered soft with a gentle cumin-ghee tempering. The mixed vegetables add colour and fibre while keeping it easy on digestion.
+one_line: A soft, soupy one-pot khichdi of moong dal and rice cooked down with seasonal
+  vegetables.
+headnote: This is the everyday comfort khichdi — moong dal and rice simmered soft
+  with a gentle cumin-ghee tempering. The mixed vegetables add colour and fibre while
+  keeping it easy on digestion.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -87,7 +95,8 @@ image:
   credit: generated with ChatGPT image generation
   source_url: chatgpt-generated://vegetable-moong-khichdi
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text, or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: shivani-hari-original
   location: Vegetable moong khichdi
@@ -122,6 +131,6 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'
 aliases:
 - Moong-vegetable khichdi

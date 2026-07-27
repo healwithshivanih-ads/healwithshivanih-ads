@@ -18,67 +18,70 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- vegetable
-- turmeric
-- ghee
-- cumin seeds
-- ginger, grated
-- curry leaves
-- asafoetida (hing)
-- salt
-- lemon juice
-- fresh coriander
+- toor dal
+- onion
+- tomato
+- garam masala
 contains_allergens: []
 ingredients:
-- item: vegetable
-  qty: '0.75'
+- item: toor dal (arhar)
+  qty: '1'
   unit: cup
 - item: turmeric
   qty: '0.5'
   unit: tsp
-- item: ghee
-  qty: '1'
+- item: water
+  qty: '3'
+  unit: cup
+- item: ghee or oil
+  qty: '1.5'
   unit: tbsp
 - item: cumin seeds
-  qty: '0.5'
-  unit: tsp
-- item: ginger, grated
   qty: '1'
   unit: tsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
-- item: asafoetida (hing)
-  qty: 1 pinch
-  unit: ''
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: tomato, chopped
+  qty: '2'
+  unit: piece
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: garam masala
+  qty: '0.25'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: lemon juice
-  qty: '1'
-  unit: tsp
 - item: fresh coriander
-  qty: '2'
+  qty: '3'
   unit: tbsp
 steps:
-- Rinse the vegetable well. Pressure-cook with turmeric and 2.5 cups water until soft
-  (3-4 whistles), or simmer covered 25-30 minutes. Whisk smooth.
-- Heat ghee in a small pan. Add cumin seeds, let them splutter, then add ginger, curry
-  leaves, and a pinch of hing; sauté 20 seconds.
-- Pour the tempering into the cooked dal. Add salt and a little hot water for a pourable
-  consistency. Simmer 3-4 minutes.
-- Finish with lemon juice and coriander. Serve warm with rice or roti.
+- Pressure-cook the dal with turmeric and water until soft. Don't whisk it as smooth
+  as for tadka — dal fry keeps some texture.
+- In a separate pan, crackle the cumin in the ghee and brown the onion properly.
+- Add the ginger-garlic paste, then the tomato, coriander powder and chilli powder.
+- Cook until the masala thickens and the oil separates out.
+- Tip the cooked dal into the masala (not the other way round), add salt, and simmer
+  5–7 minutes so they marry. Finish with garam masala and coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 15
+cook_time_min: 30
 approx_kcal_per_serving: 190
 kcal_is_estimate: true
 protein_g: 11
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A comforting, well-tempered vegetable simmered soft and finished with a
-  ghee-cumin tadka.
+one_line: Dal cooked into a fried onion-tomato masala rather than tempered at the
+  end — thicker and richer.
 headnote: A simple vegetable is one of the most digestible protein sources — cooked
   soft, spiced gently with cumin and ginger, and kept free of heavy onion-tomato gravy.
 attribution:
@@ -103,22 +106,30 @@ kcal_total: 480
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 90.5
-  protein_g: 1.4
-  carbs_g: 5.8
-  fat_g: 7.1
-  fibre_g: 1.7
-  iron_mg: 1.4
-  calcium_mg: 33.9
-  magnesium_mg: 14.4
-  zinc_mg: 0.3
-  potassium_mg: 165
-  folate_ug: 21.2
+  kcal: 490
+  protein_g: 24.1
+  carbs_g: 73.1
+  fat_g: 12.8
+  fibre_g: 12.9
+  iron_mg: 6.0
+  calcium_mg: 126
+  magnesium_mg: 122
+  zinc_mg: 3.0
+  potassium_mg: 1522
+  folate_ug: 178
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 12.7
-  omega3_mg: 77.0
+  vit_d_ug: 0.1
+  vit_c_mg: 20.6
+  omega3_mg: 176
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

@@ -18,55 +18,61 @@ rasa:
 - pungent
 main_ingredients:
 - eggs
-- ghee or coconut oil
-- cumin seeds
-- onion, chopped
-- vegetables (capsicum, spinach, tomato)
-- turmeric
-- salt and pepper
-- fresh coriander
+- onion
+- tomato
+- coriander
 contains_allergens:
 - egg
 ingredients:
-- item: eggs
+- item: eggs, beaten
+  qty: '3'
+  unit: piece
+- item: ghee or oil
   qty: '2'
-  unit: whole
-- item: ghee or coconut oil
+  unit: tsp
+- item: onion, finely chopped
   qty: '1'
-  unit: tsp
-- item: cumin seeds
-  qty: '0.25'
-  unit: tsp
-- item: onion, chopped
+  unit: piece
+- item: tomato, finely chopped
+  qty: '1'
+  unit: piece
+- item: ginger, grated
   qty: '0.5'
-  unit: medium
-- item: vegetables (capsicum, spinach, tomato)
-  qty: '0.5'
-  unit: cup
+  unit: tsp
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
 - item: turmeric
   qty: '0.25'
   unit: tsp
-- item: salt and pepper
+- item: red chilli powder
+  qty: '0.25'
+  unit: tsp
+- item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '1'
+- item: fresh coriander, chopped
+  qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds, then onion; sauté until soft.
-- Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour in, and stir continuously until just set
-  and soft.
-- Garnish with coriander and serve warm.
+- Heat the ghee and fry the onion until it turns properly golden — bhurji lives or
+  dies on this step, so give it 5–6 minutes.
+- Add the ginger and green chilli, then the tomato. Cook until the tomato collapses
+  and the oil separates at the edges.
+- Stir in the turmeric, chilli powder and salt.
+- Pour in the eggs and stir continuously on medium heat, breaking up the curds, until
+  dry and crumbly.
+- Finish with a big handful of coriander. Eat with roti or on its own.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 12
 approx_kcal_per_serving: 220
 kcal_is_estimate: true
 protein_g: 14
 good_for:
 - agni-digestive-fire
-one_line: A protein-rich egg bhurji cooked with vegetables and gentle spices.
+one_line: The classic Indian scramble — eggs cooked down with onion, tomato and masala
+  until rich and dry.
 headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
   meal that keeps blood sugar even through the morning.
 attribution:
@@ -91,22 +97,23 @@ kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 119
-  protein_g: 7.4
-  carbs_g: 6.0
-  fat_g: 7.2
-  fibre_g: 1.5
-  iron_mg: 1.6
-  calcium_mg: 45.8
-  magnesium_mg: 16.6
-  zinc_mg: 0.9
-  potassium_mg: 200
-  folate_ug: 41.4
-  b12_ug: 0.5
-  vit_d_ug: 1.0
-  vit_c_mg: 9.7
-  omega3_mg: 82.3
+  kcal: 183
+  protein_g: 10.7
+  carbs_g: 8.4
+  fat_g: 11.9
+  fibre_g: 1.8
+  iron_mg: 2.0
+  calcium_mg: 62.0
+  magnesium_mg: 22.4
+  zinc_mg: 1.2
+  potassium_mg: 332
+  folate_ug: 54.8
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 14.4
+  omega3_mg: 118
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

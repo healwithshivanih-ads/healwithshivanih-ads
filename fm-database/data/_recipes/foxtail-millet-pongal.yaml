@@ -19,67 +19,64 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- foxtail
-- ghee or coconut oil
-- mustard seeds
-- urad dal
-- curry leaves
-- ginger, grated
-- onion, chopped (optional)
-- mixed vegetables, diced (carrot, peas, beans)
-- salt
-- fresh coriander
+- foxtail millet
+- moong dal
+- black pepper
+- ghee
 contains_allergens: []
 ingredients:
-- item: foxtail
-  qty: '1'
-  unit: cup
-- item: ghee or coconut oil
-  qty: '1'
-  unit: tbsp
-- item: mustard seeds
-  qty: '0.5'
-  unit: tsp
-- item: urad dal
-  qty: '1'
-  unit: tsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: onion, chopped (optional)
-  qty: '0.5'
-  unit: medium
-- item: mixed vegetables, diced (carrot, peas, beans)
+- item: foxtail millet
   qty: '0.75'
   unit: cup
+- item: split yellow moong dal
+  qty: '0.25'
+  unit: cup
+- item: ghee
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: whole black peppercorns, lightly crushed
+  qty: '1'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tbsp
+- item: curry leaves
+  qty: '10'
+  unit: leaves
+- item: asafoetida (hing)
+  qty: '1'
+  unit: pinch
+- item: cashews (optional)
+  qty: '8'
+  unit: piece
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
-  unit: tbsp
+- item: water
+  qty: '3.5'
+  unit: cup
 steps:
-- Dry-roast the foxtail in a pan 2-3 minutes until nutty. Set aside.
-- Heat ghee, add mustard seeds and urad dal; once they pop add curry leaves, ginger,
-  and onion. Sauté until soft.
-- Add diced vegetables; stir-fry 2 minutes.
-- Add 2.5 cups water and salt; bring to a boil. Stir in the roasted foxtail.
-- Cover and cook on low 12-15 minutes until the water is absorbed and the grain is
-  fluffy. Rest 5 minutes, garnish with coriander, and serve warm.
+- Dry-roast the moong dal until fragrant, then rinse it with the millet.
+- Pressure-cook the millet and dal with the water and salt for 3 whistles, or simmer
+  covered until very soft. Pongal should be soft and loose, not grainy.
+- Heat the ghee in a small pan, fry the cashews, then add the cumin, crushed pepper,
+  ginger, curry leaves and hing.
+- Pour the whole tempering into the cooked pongal and stir it through.
+- Loosen with hot water if it tightens as it sits.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 30
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 6
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, fluffy foxtail upma tempered with mustard and curry leaves and
-  studded with vegetables.
+one_line: A soft, peppery foxtail-millet pongal with moong dal, ghee and whole black
+  pepper.
 headnote: Dry-roasting the foxtail before cooking keeps the upma light and fluffy
   rather than sticky — a warm, grounding breakfast that's gentle on digestion.
 attribution:
@@ -104,21 +101,21 @@ kcal_total: 580
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 405
-  protein_g: 13.3
-  carbs_g: 62.7
-  fat_g: 11.3
-  fibre_g: 9.5
-  iron_mg: 3.3
-  calcium_mg: 64.1
-  magnesium_mg: 95.4
-  zinc_mg: 2.6
-  potassium_mg: 426
-  folate_ug: 45.3
+  kcal: 477
+  protein_g: 16.0
+  carbs_g: 59.4
+  fat_g: 19.8
+  fibre_g: 8.2
+  iron_mg: 4.1
+  calcium_mg: 70.2
+  magnesium_mg: 112
+  zinc_mg: 2.7
+  potassium_mg: 554
+  folate_ug: 151
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 13.7
-  omega3_mg: 124
+  vit_d_ug: 0.1
+  vit_c_mg: 0.8
+  omega3_mg: 160
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -126,5 +123,7 @@ rich_in:
 - iron
 - magnesium
 - zinc
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

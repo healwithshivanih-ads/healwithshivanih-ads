@@ -17,56 +17,53 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- firm tofu, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
-- turmeric
-- salt
-- fresh coriander
+- tofu
+- spring onion
+- garlic
+- black pepper
 contains_allergens:
+- sesame
 - soy
 ingredients:
-- item: firm tofu, cubed
-  qty: '150'
+- item: firm tofu, cubed and patted dry
+  qty: '250'
   unit: g
-- item: ghee or oil
+- item: sesame or coconut oil
   qty: '1'
   unit: tbsp
-- item: cumin seeds
+- item: garlic, sliced
+  qty: '3'
+  unit: clove
+- item: spring onion, cut in lengths
+  qty: '4'
+  unit: piece
+- item: tamari
+  qty: '1'
+  unit: tbsp
+- item: black pepper, coarsely ground
   qty: '0.5'
-  unit: tsp
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
-  qty: '1'
-  unit: cup
-- item: turmeric
-  qty: '0.25'
   unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
-  unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the firm tofu and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Pat the tofu properly dry and leave it under a weighted plate for 10 minutes if
+  you have time — wet tofu steams instead of browning.
+- Get the pan hot before the oil goes in. Sear the tofu in a single layer, undisturbed,
+  until one side is golden.
+- Turn the cubes, add the garlic and the white parts of the spring onion, and toss
+  for a minute.
+- Splash in the tamari and pepper, throw in the green spring onion tops, and take
+  it off the heat.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 10
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich tofu stir-fry with vegetables and a light tempering.
+one_line: A plain, fast tofu stir-fry with spring onion and pepper — the base version.
 headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -91,23 +88,28 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 151
-  protein_g: 8.3
-  carbs_g: 7.6
-  fat_g: 10.3
-  fibre_g: 2.7
-  iron_mg: 2.3
-  calcium_mg: 173
-  magnesium_mg: 45.4
-  zinc_mg: 1.0
-  potassium_mg: 268
-  folate_ug: 36.7
+  kcal: 198
+  protein_g: 14.8
+  carbs_g: 25.2
+  fat_g: 5.5
+  fibre_g: 5.2
+  iron_mg: 3.2
+  calcium_mg: 313
+  magnesium_mg: 77.2
+  zinc_mg: 1.5
+  potassium_mg: 514
+  folate_ug: 62.2
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 15.4
-  omega3_mg: 266
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 17.7
+  omega3_mg: 323
+nutrient_coverage_pct: 96.0
 rich_in:
+- protein
+- fibre
+- iron
 - calcium
+- magnesium
+- potassium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

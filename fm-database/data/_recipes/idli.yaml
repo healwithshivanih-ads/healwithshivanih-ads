@@ -18,51 +18,36 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- fermented rice-and-dal batter
-- water
-- ginger, grated
-- green chilli, minced (optional)
-- turmeric
-- finely chopped vegetables (onion, capsicum, coriander)
-- salt
-- ghee or oil for cooking
+- idli rice
+- urad dal
+- fenugreek
 contains_allergens: []
 ingredients:
-- item: fermented rice-and-dal batter
-  qty: '1'
+- item: idli rice or parboiled rice
+  qty: '2'
   unit: cup
-- item: water
-  qty: as needed
-  unit: ''
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: green chilli, minced (optional)
-  qty: '1'
-  unit: piece
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: finely chopped vegetables (onion, capsicum, coriander)
+- item: urad dal
   qty: '0.5'
   unit: cup
+- item: fenugreek (methi) seeds
+  qty: '0.5'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: ghee or oil for cooking
-  qty: '2'
+- item: oil for greasing
+  qty: '1'
   unit: tsp
 steps:
-- Whisk fermented rice-and-dal batter with water into a smooth, pourable batter (like
-  thin pancake batter).
-- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
-  and spread into a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
-  golden, flip, and cook the other side 1-2 minutes.
-- Serve hot with chutney.
+- Soak the rice and the dal-with-methi separately for 5–6 hours.
+- Grind the dal to a very light, aerated paste and the rice to a fine one. Combine
+  gently — the air you beat in is what makes idlis soft.
+- Add salt and ferment overnight until risen and mildly sour.
+- Grease the idli moulds, pour the batter in to about three-quarters, and steam for
+  10–12 minutes.
+- A skewer should come out clean. Rest for 2 minutes before unmoulding.
 servings: '2'
-prep_time_min: 10
+prep_time_min: 20
 cook_time_min: 15
 approx_kcal_per_serving: 180
 kcal_is_estimate: true
@@ -70,7 +55,8 @@ protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich idli — quick, gut-friendly, and naturally gluten-free.
+one_line: Steamed rice-and-dal cakes — soft, plain and the easiest thing on a tired
+  gut.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
@@ -95,22 +81,29 @@ kcal_total: 220
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 239
-  protein_g: 6.4
-  carbs_g: 39.6
-  fat_g: 5.4
-  fibre_g: 3.3
-  iron_mg: 1.7
-  calcium_mg: 28.1
-  magnesium_mg: 39.1
-  zinc_mg: 1.1
-  potassium_mg: 246
-  folate_ug: 50.6
+  kcal: 832
+  protein_g: 27.6
+  carbs_g: 174
+  fat_g: 2.0
+  fibre_g: 11.3
+  iron_mg: 5.4
+  calcium_mg: 87.0
+  magnesium_mg: 181
+  zinc_mg: 3.9
+  potassium_mg: 701
+  folate_ug: 125
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 10.3
-  omega3_mg: 61.8
-nutrient_coverage_pct: 100.0
-rich_in: []
+  vit_c_mg: 0.0
+  omega3_mg: 103
+nutrient_coverage_pct: 94.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

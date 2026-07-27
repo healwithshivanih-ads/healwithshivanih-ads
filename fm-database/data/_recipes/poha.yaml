@@ -18,21 +18,15 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- flattened millet/rice poha
-- coconut oil
+- poha
+- onion
 - mustard seeds
 - curry leaves
-- onion, chopped
-- peas and diced vegetables
-- turmeric
-- roasted peanuts (optional)
-- salt
-- lemon juice and coriander
 contains_allergens: []
 ingredients:
-- item: flattened millet/rice poha
-  qty: '1.5'
-  unit: cups
+- item: thick poha (flattened rice)
+  qty: '2'
+  unit: cup
 - item: coconut oil
   qty: '1'
   unit: tbsp
@@ -40,41 +34,43 @@ ingredients:
   qty: '0.5'
   unit: tsp
 - item: curry leaves
-  qty: 8-10
+  qty: '10'
   unit: leaves
 - item: onion, chopped
-  qty: '0.5'
-  unit: medium
-- item: peas and diced vegetables
-  qty: '0.5'
-  unit: cup
+  qty: '1'
+  unit: piece
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
 - item: turmeric
-  qty: '0.25'
+  qty: '0.5'
   unit: tsp
-- item: roasted peanuts (optional)
-  qty: '2'
-  unit: tbsp
 - item: salt
   qty: to taste
   unit: ''
-- item: lemon juice and coriander
-  qty: to finish
-  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
 steps:
-- Rinse the poha briefly in a colander until just softened; drain and set aside.
-- Heat oil, pop mustard seeds, add curry leaves and onion; sauté until soft.
-- Add vegetables, turmeric, peanuts, and salt; cook 3-4 minutes.
-- Fold in the drained poha gently, warm through 2 minutes.
-- Finish with lemon juice and coriander. Serve warm.
+- Rinse the poha in a colander under running water for a few seconds, then leave it
+  to drain and swell. Never soak it standing in water.
+- Splutter the mustard seeds in the oil and add the curry leaves.
+- Add the onion and green chilli and cook until soft.
+- Stir in the turmeric and salt, then fold in the drained poha gently with a light
+  hand.
+- Cover on low for 2 minutes, then finish with lemon juice and coriander.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 12
 approx_kcal_per_serving: 220
 kcal_is_estimate: true
 protein_g: 5
 good_for:
 - agni-digestive-fire
-one_line: A light, savoury poha — a quick, no-sugar breakfast.
+one_line: Plain flattened-rice poha with a mustard-and-curry-leaf tempering.
 headnote: Poha made with millet or rice flakes and plenty of vegetables is a light,
   quick breakfast — skip the sugar and lean on lemon and curry leaves for flavour.
 attribution:
@@ -99,25 +95,23 @@ kcal_total: 380
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 394
-  protein_g: 10.1
-  carbs_g: 61.2
-  fat_g: 12.6
-  fibre_g: 5.8
-  iron_mg: 5.4
-  calcium_mg: 51.9
-  magnesium_mg: 75.8
-  zinc_mg: 1.9
-  potassium_mg: 321
-  folate_ug: 61.8
+  kcal: 406
+  protein_g: 7.9
+  carbs_g: 75.4
+  fat_g: 8.3
+  fibre_g: 4.6
+  iron_mg: 6.2
+  calcium_mg: 48.8
+  magnesium_mg: 67.0
+  zinc_mg: 1.6
+  potassium_mg: 273
+  folate_ug: 27.2
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 16.7
-  omega3_mg: 30.7
+  vit_c_mg: 10.2
+  omega3_mg: 24.5
 nutrient_coverage_pct: 100.0
 rich_in:
-- fibre
 - iron
-- magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

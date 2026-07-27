@@ -17,57 +17,68 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- paneer, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
-- turmeric
-- salt
-- fresh coriander
+- paneer
+- yoghurt
+- capsicum
+- onion
 contains_allergens:
 - dairy
 ingredients:
 - item: paneer, cubed
-  qty: '150'
+  qty: '250'
   unit: g
-- item: ghee or oil
+- item: thick curd (yoghurt)
+  qty: '0.5'
+  unit: cup
+- item: ginger-garlic paste
   qty: '1'
-  unit: tbsp
-- item: cumin seeds
+  unit: tsp
+- item: red chilli powder
   qty: '0.5'
   unit: tsp
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
-  qty: '1'
-  unit: cup
 - item: turmeric
   qty: '0.25'
   unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: roasted besan
+  qty: '1'
+  unit: tbsp
+- item: capsicum, cut in squares
+  qty: '1'
+  unit: piece
+- item: onion, cut in squares
+  qty: '1'
+  unit: piece
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
+- item: oil for cooking
   qty: '2'
-  unit: tbsp
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the paneer and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Hang the curd in a muslin for a few minutes if it looks thin — a watery marinade
+  slides off the paneer.
+- Whisk the curd with the ginger-garlic paste, chilli powder, turmeric, garam masala,
+  roasted besan and salt.
+- Fold in the paneer, capsicum and onion and leave to marinate for 20 minutes at room
+  temperature.
+- Heat the oil in a heavy pan and cook the pieces in a single layer, turning once,
+  until charred at the edges.
+- Squeeze lemon over just before serving.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 15
+cook_time_min: 12
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich paneer tikka (yoghurt with vegetables and a light
-  tempering.
+one_line: Yoghurt-marinated paneer cubes, charred in a pan with capsicum and onion.
 headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -92,26 +103,27 @@ kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 315
-  protein_g: 15.9
-  carbs_g: 9.7
-  fat_g: 24.2
-  fibre_g: 2.0
-  iron_mg: 1.5
-  calcium_mg: 383
-  magnesium_mg: 30.4
-  zinc_mg: 2.0
-  potassium_mg: 252
-  folate_ug: 36.7
-  b12_ug: 0.6
+  kcal: 427
+  protein_g: 26.0
+  carbs_g: 18.0
+  fat_g: 29.1
+  fibre_g: 3.0
+  iron_mg: 1.8
+  calcium_mg: 627
+  magnesium_mg: 46.3
+  zinc_mg: 3.2
+  potassium_mg: 396
+  folate_ug: 70.9
+  b12_ug: 1.0
   vit_d_ug: 0.2
-  vit_c_mg: 15.4
-  omega3_mg: 154
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 82.8
+  omega3_mg: 150
+nutrient_coverage_pct: 89.3
 rich_in:
 - protein
 - calcium
 - zinc
 - b12
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

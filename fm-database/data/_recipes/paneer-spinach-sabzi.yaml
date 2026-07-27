@@ -17,57 +17,56 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- paneer, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
-- turmeric
-- salt
-- fresh coriander
+- paneer
+- spinach
+- garlic
+- cumin
 contains_allergens:
 - dairy
 ingredients:
 - item: paneer, cubed
-  qty: '150'
+  qty: '200'
   unit: g
+- item: spinach (palak), chopped
+  qty: '4'
+  unit: cup
 - item: ghee or oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
-- item: ginger, grated
+- item: garlic, sliced
+  qty: '3'
+  unit: clove
+- item: green chilli, slit
   qty: '1'
-  unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
-  qty: '1'
-  unit: cup
+  unit: piece
 - item: turmeric
   qty: '0.25'
   unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
-  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the paneer and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Heat the ghee and crackle the cumin seeds, then add the garlic and green chilli.
+- Add the spinach and cook uncovered until it wilts and the water dries off — this
+  keeps the sabzi dry rather than soupy.
+- Stir in the turmeric and salt.
+- Fold in the paneer cubes and warm through for 2 minutes only.
+- Finish with lemon juice off the heat.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 12
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich paneer & spinach sabzi with vegetables and a light
-  tempering.
+one_line: Paneer cubes folded into a dry palak sabzi — greens and protein in one pan.
 headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -92,26 +91,29 @@ kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 315
-  protein_g: 15.9
-  carbs_g: 9.7
-  fat_g: 24.2
-  fibre_g: 2.0
-  iron_mg: 1.5
-  calcium_mg: 383
-  magnesium_mg: 30.4
-  zinc_mg: 2.0
-  potassium_mg: 252
-  folate_ug: 36.7
-  b12_ug: 0.6
+  kcal: 363
+  protein_g: 20.8
+  carbs_g: 8.9
+  fat_g: 27.9
+  fibre_g: 1.7
+  iron_mg: 3.0
+  calcium_mg: 543
+  magnesium_mg: 69.0
+  zinc_mg: 2.5
+  potassium_mg: 423
+  folate_ug: 100
+  b12_ug: 0.8
   vit_d_ug: 0.2
-  vit_c_mg: 15.4
-  omega3_mg: 154
+  vit_c_mg: 23.2
+  omega3_mg: 225
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- iron
 - calcium
 - zinc
+- folate
 - b12
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

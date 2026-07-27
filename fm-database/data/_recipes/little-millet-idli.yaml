@@ -18,51 +18,35 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- fermented millet-and-dal batter
-- water
-- ginger, grated
-- green chilli, minced (optional)
-- turmeric
-- finely chopped vegetables (onion, capsicum, coriander)
-- salt
-- ghee or oil for cooking
+- little millet
+- urad dal
+- fenugreek
 contains_allergens: []
 ingredients:
-- item: fermented millet-and-dal batter
-  qty: '1'
+- item: little millet (samai)
+  qty: '2'
   unit: cup
-- item: water
-  qty: as needed
-  unit: ''
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: green chilli, minced (optional)
-  qty: '1'
-  unit: piece
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: finely chopped vegetables (onion, capsicum, coriander)
+- item: urad dal
   qty: '0.5'
   unit: cup
+- item: fenugreek (methi) seeds
+  qty: '0.5'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: ghee or oil for cooking
-  qty: '2'
+- item: oil for greasing
+  qty: '1'
   unit: tsp
 steps:
-- Whisk fermented millet-and-dal batter with water into a smooth, pourable batter
-  (like thin pancake batter).
-- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
-  and spread into a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
-  golden, flip, and cook the other side 1-2 minutes.
-- Serve hot with chutney.
+- Rinse the little millet through several changes of water until it runs clear.
+- Soak the millet separately, and the urad dal with methi, for 5 hours.
+- Grind the dal very light, then the millet fine. Fold together with salt and ferment
+  overnight.
+- Pour into greased moulds and steam for 12 minutes.
+- These are slightly denser than rice idlis — don't overfill the moulds.
 servings: '2'
-prep_time_min: 10
+prep_time_min: 20
 cook_time_min: 15
 approx_kcal_per_serving: 180
 kcal_is_estimate: true
@@ -70,8 +54,7 @@ protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich little millet idli — quick, gut-friendly, and naturally
-  gluten-free.
+one_line: Steamed idlis made with little millet (samai) in place of most of the rice.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
@@ -96,22 +79,29 @@ kcal_total: 320
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 239
-  protein_g: 6.4
-  carbs_g: 39.6
-  fat_g: 5.4
-  fibre_g: 3.3
-  iron_mg: 1.7
-  calcium_mg: 28.1
-  magnesium_mg: 39.1
-  zinc_mg: 1.1
-  potassium_mg: 246
-  folate_ug: 50.6
+  kcal: 929
+  protein_g: 34.8
+  carbs_g: 176
+  fat_g: 9.3
+  fibre_g: 23.1
+  iron_mg: 10.1
+  calcium_mg: 86.4
+  magnesium_mg: 363
+  zinc_mg: 5.1
+  potassium_mg: 888
+  folate_ug: 278
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 10.3
-  omega3_mg: 61.8
-nutrient_coverage_pct: 100.0
-rich_in: []
+  vit_c_mg: 0.0
+  omega3_mg: 316
+nutrient_coverage_pct: 94.4
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

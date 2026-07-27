@@ -18,59 +18,47 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- fermented millet-and-dal batter
-- water
-- ginger, grated
-- green chilli, minced (optional)
-- turmeric
-- finely chopped vegetables (onion, capsicum, coriander)
-- salt
-- ghee or oil for cooking
+- ragi
+- urad dal
+- idli rice
 contains_allergens: []
 ingredients:
-- item: fermented millet-and-dal batter
-  qty: '1'
+- item: ragi (finger millet), whole or flour
+  qty: '1.5'
   unit: cup
-- item: water
-  qty: as needed
-  unit: ''
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: green chilli, minced (optional)
-  qty: '1'
-  unit: piece
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: finely chopped vegetables (onion, capsicum, coriander)
+- item: idli rice
   qty: '0.5'
   unit: cup
+- item: urad dal
+  qty: '0.5'
+  unit: cup
+- item: fenugreek (methi) seeds
+  qty: '0.5'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: ghee or oil for cooking
-  qty: '2'
+- item: oil for greasing
+  qty: '1'
   unit: tsp
 steps:
-- Whisk fermented millet-and-dal batter with water into a smooth, pourable batter
-  (like thin pancake batter).
-- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
-  and spread into a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
-  golden, flip, and cook the other side 1-2 minutes.
-- Serve hot with chutney.
+- Soak the rice and the dal-with-methi separately for 5 hours. If using whole ragi,
+  soak that too.
+- Grind the dal to a light aerated paste, then the rice and ragi finer.
+- Combine gently with salt and ferment overnight. Ragi batter looks darker and rises
+  less dramatically than white idli batter — that's normal.
+- Pour into greased moulds and steam 12–14 minutes.
+- Rest 2 minutes before unmoulding or they tear.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 20
+cook_time_min: 18
 approx_kcal_per_serving: 180
 kcal_is_estimate: true
 protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich ragi idli — quick, gut-friendly, and naturally gluten-free.
+one_line: Steamed ragi idlis — soft, iron-rich and mild.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
@@ -95,22 +83,30 @@ kcal_total: 380
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 239
-  protein_g: 6.4
-  carbs_g: 39.6
-  fat_g: 5.4
-  fibre_g: 3.3
-  iron_mg: 1.7
-  calcium_mg: 28.1
-  magnesium_mg: 39.1
-  zinc_mg: 1.1
-  potassium_mg: 246
-  folate_ug: 50.6
+  kcal: 627
+  protein_g: 23.0
+  carbs_g: 126
+  fat_g: 2.8
+  fibre_g: 17.5
+  iron_mg: 8.5
+  calcium_mg: 402
+  magnesium_mg: 278
+  zinc_mg: 4.5
+  potassium_mg: 916
+  folate_ug: 144
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 10.3
-  omega3_mg: 61.8
-nutrient_coverage_pct: 100.0
-rich_in: []
+  vit_c_mg: 0.0
+  omega3_mg: 110
+nutrient_coverage_pct: 92.6
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

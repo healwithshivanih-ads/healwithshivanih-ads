@@ -18,55 +18,48 @@ rasa:
 - pungent
 main_ingredients:
 - eggs
-- ghee or coconut oil
-- cumin seeds
-- onion, chopped
-- vegetables (capsicum, spinach, tomato)
-- turmeric
-- salt and pepper
-- fresh coriander
+- spinach
+- onion
 contains_allergens:
 - egg
 ingredients:
-- item: eggs
-  qty: '2'
-  unit: whole
-- item: ghee or coconut oil
-  qty: '1'
-  unit: tsp
-- item: cumin seeds
-  qty: '0.25'
-  unit: tsp
-- item: onion, chopped
-  qty: '0.5'
-  unit: medium
-- item: vegetables (capsicum, spinach, tomato)
-  qty: '0.5'
+- item: eggs, beaten
+  qty: '3'
+  unit: piece
+- item: spinach (palak), finely chopped
+  qty: '1.5'
   unit: cup
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: salt and pepper
+- item: onion, finely chopped
+  qty: '0.5'
+  unit: piece
+- item: garlic, minced
+  qty: '1'
+  unit: clove
+- item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: ghee or oil
   qty: '1'
-  unit: tbsp
+  unit: tsp
 steps:
-- Heat ghee, add cumin seeds, then onion; sauté until soft.
-- Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour over the vegetables, and cook covered on
-  low until set, folding once.
-- Garnish with coriander and serve warm.
+- Heat the ghee and soften the onion and garlic for 2 minutes.
+- Add the spinach and cook just until it wilts and its water dries off — wet spinach
+  makes a soggy omelette.
+- Beat the eggs with salt and pepper and pour them over the spinach, tilting to spread.
+- Cook on low until the base sets, fold over, and cook a minute more.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 8
+cook_time_min: 7
 approx_kcal_per_serving: 220
 kcal_is_estimate: true
 protein_g: 14
 good_for:
 - agni-digestive-fire
-one_line: A protein-rich egg spinach omelette cooked with vegetables and gentle spices.
+one_line: An omelette with wilted palak folded through — an easy way to get greens
+  in at breakfast.
 headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
   meal that keeps blood sugar even through the morning.
 attribution:
@@ -91,22 +84,23 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 119
-  protein_g: 7.4
-  carbs_g: 6.0
-  fat_g: 7.2
-  fibre_g: 1.5
-  iron_mg: 1.6
-  calcium_mg: 45.8
-  magnesium_mg: 16.6
-  zinc_mg: 0.9
-  potassium_mg: 200
-  folate_ug: 41.4
-  b12_ug: 0.5
-  vit_d_ug: 1.0
-  vit_c_mg: 9.7
-  omega3_mg: 82.3
+  kcal: 147
+  protein_g: 10.3
+  carbs_g: 4.4
+  fat_g: 9.6
+  fibre_g: 1.1
+  iron_mg: 2.2
+  calcium_mg: 70.6
+  magnesium_mg: 29.2
+  zinc_mg: 1.1
+  potassium_mg: 257
+  folate_ug: 72.1
+  b12_ug: 0.7
+  vit_d_ug: 1.5
+  vit_c_mg: 9.2
+  omega3_mg: 126
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

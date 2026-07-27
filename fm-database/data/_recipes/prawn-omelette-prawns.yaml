@@ -17,71 +17,57 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
+- eggs
 - prawns
-- coconut oil
-- onion, sliced
-- ginger-garlic paste
 - curry leaves
-- turmeric
-- coriander powder
-- light coconut milk
-- salt
-- fresh coriander
+- onion
 contains_allergens:
+- egg
 - shellfish
 ingredients:
 - item: eggs, beaten
-  qty: '2'
+  qty: '3'
   unit: piece
-- item: prawns
+- item: prawns, small, cleaned
   qty: '150'
   unit: g
 - item: coconut oil
-  qty: '1'
-  unit: tbsp
-- item: onion, sliced
-  qty: '1'
-  unit: medium
-- item: ginger-garlic paste
-  qty: '1'
-  unit: tbsp
-- item: curry leaves
-  qty: 8-10
+  qty: '2'
+  unit: tsp
+- item: onion, finely chopped
+  qty: '0.5'
+  unit: piece
+- item: curry leaves, chopped
+  qty: '8'
   unit: leaves
-- item: turmeric
-  qty: '0.5'
-  unit: tsp
-- item: coriander powder
+- item: green chilli, minced
   qty: '1'
+  unit: piece
+- item: turmeric
+  qty: '0.25'
   unit: tsp
-- item: light coconut milk
-  qty: '0.5'
-  unit: cup
 - item: salt
   qty: to taste
   unit: ''
 - item: fresh coriander
-  qty: '2'
+  qty: '1'
   unit: tbsp
 steps:
-- Clean and cut the prawns into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
-  paste and cook 1 minute.
-- Add turmeric and coriander powder; stir 30 seconds.
-- Add the prawns and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
-  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
-  5-6 min).
-- Finish with fresh coriander. Serve warm with rice or millet.
+- Toss the prawns with the turmeric and a pinch of salt, then sear them in 1 tsp oil
+  for 2 minutes. Lift out and chop roughly.
+- In the same pan soften the onion, curry leaves and green chilli.
+- Beat the eggs with salt, stir in the cooked prawns and coriander.
+- Add the remaining oil, pour in the egg mixture and tilt to spread.
+- Cook on low until the base sets, fold over, and give it one more minute.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 8
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based prawn omelette (75g prawns — no tomato, gently spiced
-  and freshly made.
+one_line: A folded omelette with prawns and curry leaves through it — a Coastal breakfast.
 headnote: Freshly cooked prawns in a light coconut-curry-leaf base keeps the meal
   clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
@@ -106,27 +92,25 @@ kcal_total: 310
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 325
-  protein_g: 23.6
-  carbs_g: 11.7
-  fat_g: 21.5
-  fibre_g: 2.5
-  iron_mg: 3.7
-  calcium_mg: 127
-  magnesium_mg: 64.9
-  zinc_mg: 2.2
-  potassium_mg: 534
+  kcal: 226
+  protein_g: 25.0
+  carbs_g: 4.5
+  fat_g: 12.1
+  fibre_g: 0.7
+  iron_mg: 2.1
+  calcium_mg: 108
+  magnesium_mg: 40.1
+  zinc_mg: 2.0
+  potassium_mg: 371
   folate_ug: 56.8
-  b12_ug: 1.3
-  vit_d_ug: 1.1
-  vit_c_mg: 6.6
-  omega3_mg: 283
+  b12_ug: 1.5
+  vit_d_ug: 1.6
+  vit_c_mg: 5.0
+  omega3_mg: 304
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
-- iron
 - zinc
-- potassium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

@@ -19,55 +19,48 @@ rasa:
 - pungent
 main_ingredients:
 - coriander
-- grated coconut
-- ginger
-- green chilli (optional)
-- lemon juice
-- salt
-- water
-- 'for tempering: coconut oil, mustard seeds, curry leaves'
+- green chilli
+- lemon
+- cumin
 contains_allergens: []
 ingredients:
-- item: coriander
-  qty: '1'
+- item: fresh coriander with tender stalks
+  qty: '2'
   unit: cup
-- item: grated coconut
-  qty: '0.25'
-  unit: cup
-- item: ginger
-  qty: 1 inch
-  unit: ''
-- item: green chilli (optional)
-  qty: '1'
+- item: green chilli
+  qty: '2'
   unit: piece
+- item: ginger
+  qty: '0.5'
+  unit: inch
+- item: roasted cumin powder
+  qty: '0.5'
+  unit: tsp
 - item: lemon juice
-  qty: '1'
+  qty: '1.5'
   unit: tbsp
 - item: salt
   qty: to taste
   unit: ''
 - item: water
-  qty: as needed
-  unit: ''
-- item: 'for tempering: coconut oil, mustard seeds, curry leaves'
-  qty: 1 set
-  unit: ''
+  qty: '2'
+  unit: tbsp
 steps:
-- Blend coriander, coconut, ginger, chilli, lemon juice, and salt with a little water
-  into a smooth chutney.
-- Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the
-  chutney.
-- Serve fresh alongside chilla, dosa, idli, or rice.
+- Use the tender stalks as well as the leaves — they carry a lot of the flavour.
+- Grind the coriander, green chilli and ginger with as little water as the blender
+  will allow.
+- Add the cumin powder, salt and lemon juice and pulse once more.
+- Taste and adjust the lemon — this chutney should be sharp.
+- Keeps 2 days refrigerated; the colour dulls after that.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 0
 approx_kcal_per_serving: 70
 kcal_is_estimate: true
 protein_g: 2
 good_for:
 - agni-digestive-fire
-one_line: A fresh, bright coriander chutney to lift any meal — no preservatives, made
-  fresh.
+one_line: A sharp green chutney of coriander, green chilli and lemon — no coconut.
 headnote: Fresh chutneys add flavour, enzymes, and a hit of herbs without sugar or
   preservatives — make a small batch and use it the same day.
 attribution:
@@ -92,22 +85,22 @@ kcal_total: 140
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 64.6
+  kcal: 11.7
   protein_g: 0.6
-  carbs_g: 3.1
-  fat_g: 5.9
-  fibre_g: 1.2
-  iron_mg: 0.4
-  calcium_mg: 8.1
-  magnesium_mg: 7.7
-  zinc_mg: 0.2
-  potassium_mg: 106
-  folate_ug: 10.0
+  carbs_g: 2.4
+  fat_g: 0.3
+  fibre_g: 0.7
+  iron_mg: 0.8
+  calcium_mg: 18.4
+  magnesium_mg: 9.0
+  zinc_mg: 0.1
+  potassium_mg: 130
+  folate_ug: 13.6
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 8.4
-  omega3_mg: 1.1
+  vit_c_mg: 14.4
+  omega3_mg: 2.5
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

@@ -18,67 +18,53 @@ rasa:
 - pungent
 main_ingredients:
 - prawns
-- coconut oil
-- onion, sliced
-- ginger-garlic paste
+- garlic
+- black pepper
 - curry leaves
-- turmeric
-- coriander powder
-- light coconut milk
-- salt
-- fresh coriander
 contains_allergens:
 - shellfish
 ingredients:
-- item: prawns
-  qty: '150'
+- item: prawns, cleaned and patted dry
+  qty: '300'
   unit: g
 - item: coconut oil
   qty: '1'
   unit: tbsp
-- item: onion, sliced
-  qty: '1'
-  unit: medium
-- item: ginger-garlic paste
-  qty: '1'
-  unit: tbsp
+- item: garlic, sliced
+  qty: '5'
+  unit: clove
 - item: curry leaves
-  qty: 8-10
+  qty: '10'
   unit: leaves
-- item: turmeric
-  qty: '0.5'
-  unit: tsp
-- item: coriander powder
+- item: black pepper, coarsely crushed
   qty: '1'
   unit: tsp
-- item: light coconut milk
-  qty: '0.5'
-  unit: cup
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
+- item: lemon juice
+  qty: '1'
   unit: tbsp
 steps:
-- Clean and cut the prawns into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
-  paste and cook 1 minute.
-- Add turmeric and coriander powder; stir 30 seconds.
-- Add the prawns and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
-  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
-  5-6 min).
-- Finish with fresh coriander. Serve warm with rice or millet.
+- Pat the prawns properly dry — wet prawns steam and go tough.
+- Get the pan very hot, add the oil, then the garlic and curry leaves for 20 seconds.
+- Add the prawns in one layer with the turmeric and salt. Leave them undisturbed for
+  90 seconds.
+- Turn once, add the crushed pepper, and cook another 2 minutes until just opaque.
+- Squeeze lemon over and serve straight away.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 6
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based prawn stir-fry — no tomato, gently spiced and freshly
-  made.
+one_line: Prawns tossed hot and fast with garlic and pepper — five minutes in the
+  pan.
 headnote: Freshly cooked prawns in a light coconut-curry-leaf base keeps the meal
   clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
@@ -103,24 +89,25 @@ kcal_total: 310
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 254
-  protein_g: 17.3
-  carbs_g: 11.3
-  fat_g: 16.8
-  fibre_g: 2.5
-  iron_mg: 2.8
-  calcium_mg: 99.0
-  magnesium_mg: 58.9
-  zinc_mg: 1.5
-  potassium_mg: 465
-  folate_ug: 33.3
-  b12_ug: 0.8
-  vit_d_ug: 0.1
-  vit_c_mg: 6.6
-  omega3_mg: 233
+  kcal: 207
+  protein_g: 30.9
+  carbs_g: 5.6
+  fat_g: 7.6
+  fibre_g: 0.6
+  iron_mg: 1.2
+  calcium_mg: 128
+  magnesium_mg: 58.1
+  zinc_mg: 2.1
+  potassium_mg: 468
+  folate_ug: 31.9
+  b12_ug: 1.6
+  vit_d_ug: 0.3
+  vit_c_mg: 5.3
+  omega3_mg: 457
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- zinc
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

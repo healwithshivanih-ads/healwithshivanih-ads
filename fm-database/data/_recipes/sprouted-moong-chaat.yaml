@@ -19,52 +19,70 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- mixed salad vegetables / sprouts (as named)
-- cucumber, diced
-- lemon juice
-- roasted cumin powder
-- rock salt
-- fresh coriander and mint
-- coconut oil or cold-pressed oil (optional)
+- sprouted moong
+- chaat masala
+- pomegranate
+- amchur
 contains_allergens: []
 ingredients:
-- item: sprouted moong
+- item: sprouted whole moong
   qty: '2'
-  unit: cups
-- item: cucumber, diced
+  unit: cup
+- item: boiled potato, diced (optional)
   qty: '0.5'
   unit: cup
-- item: lemon juice
+- item: onion, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: tomato, diced
+  qty: '0.5'
+  unit: cup
+- item: pomegranate seeds
+  qty: '0.25'
+  unit: cup
+- item: green chutney
   qty: '1'
   unit: tbsp
+- item: chaat masala
+  qty: '1'
+  unit: tsp
+- item: amchur (dry mango powder)
+  qty: '0.25'
+  unit: tsp
 - item: roasted cumin powder
   qty: '0.5'
   unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
 - item: rock salt
   qty: to taste
   unit: ''
-- item: fresh coriander and mint
+- item: fresh coriander
   qty: '2'
   unit: tbsp
-- item: coconut oil or cold-pressed oil (optional)
-  qty: '1'
-  unit: tsp
+- item: roasted peanuts (optional)
+  qty: '2'
+  unit: tbsp
 steps:
-- Chop or lightly steam the main vegetables/sprouts as appropriate (sprouts are gentler
-  on digestion lightly steamed).
-- Toss with cucumber, lemon juice, roasted cumin, and rock salt.
-- Fold through fresh herbs and a touch of oil if using. Serve fresh.
+- Steam the sprouts 5 minutes and cool them completely.
+- Toss with the potato, onion, tomato and pomegranate.
+- Add the green chutney, chaat masala, amchur, roasted cumin, lemon juice and rock
+  salt and mix well — a chaat should be assertively sour and salty, unlike the plain
+  salad.
+- Fold in the peanuts and coriander at the very end so they stay crunchy.
+- Serve immediately.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 15
+cook_time_min: 0
 approx_kcal_per_serving: 110
 kcal_is_estimate: true
 protein_g: 6
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A fresh, crunchy sprouted moong chaat dressed simply with lemon, cumin,
-  and herbs.
+one_line: The sprout salad turned into a chaat — chaat masala, amchur, pomegranate
+  and sev-free crunch.
 headnote: A simple salad of fresh or lightly steamed vegetables with lemon and roasted
   cumin adds fibre and freshness — sprouts are best lightly steamed for easy digestion.
 attribution:
@@ -89,22 +107,25 @@ kcal_total: 120
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 60.2
-  protein_g: 3.5
-  carbs_g: 8.1
-  fat_g: 2.6
-  fibre_g: 2.1
-  iron_mg: 1.5
-  calcium_mg: 25.3
-  magnesium_mg: 28.7
-  zinc_mg: 0.5
-  potassium_mg: 223
-  folate_ug: 67.7
+  kcal: 130
+  protein_g: 7.0
+  carbs_g: 18.0
+  fat_g: 5.0
+  fibre_g: 4.4
+  iron_mg: 2.3
+  calcium_mg: 41.4
+  magnesium_mg: 55.1
+  zinc_mg: 1.0
+  potassium_mg: 522
+  folate_ug: 103
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 17.6
-  omega3_mg: 18.7
-nutrient_coverage_pct: 100.0
-rich_in: []
+  vit_c_mg: 31.5
+  omega3_mg: 24.2
+nutrient_coverage_pct: 82.7
+rich_in:
+- potassium
+- folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

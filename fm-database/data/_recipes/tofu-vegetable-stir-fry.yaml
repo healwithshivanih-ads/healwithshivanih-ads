@@ -17,57 +17,63 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- firm tofu, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
-- turmeric
-- salt
-- fresh coriander
+- tofu
+- french beans
+- carrot
+- capsicum
 contains_allergens:
+- sesame
 - soy
 ingredients:
 - item: firm tofu, cubed
-  qty: '150'
+  qty: '200'
   unit: g
-- item: ghee or oil
+- item: sesame or coconut oil
   qty: '1'
   unit: tbsp
-- item: cumin seeds
-  qty: '0.5'
-  unit: tsp
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
+- item: french beans, cut diagonally
   qty: '1'
   unit: cup
-- item: turmeric
-  qty: '0.25'
+- item: carrot, julienned
+  qty: '1'
+  unit: piece
+- item: capsicum, sliced
+  qty: '1'
+  unit: piece
+- item: garlic, minced
+  qty: '3'
+  unit: clove
+- item: ginger, julienned
+  qty: '1'
   unit: tsp
+- item: tamari
+  qty: '1'
+  unit: tbsp
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
+- item: spring onion greens
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the firm tofu and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Cut every vegetable to a similar thickness so they finish together.
+- Sear the tofu in the hot oil until golden on two sides, then lift it out and set
+  aside.
+- In the same pan, toss the garlic and ginger for 20 seconds, then the beans and carrot
+  for 2 minutes.
+- Add the capsicum and stir-fry another minute — it should still snap.
+- Return the tofu, add the tamari and salt, toss once, and finish with spring onion
+  greens.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 10
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich tofu-vegetable stir-fry with vegetables and a light
-  tempering.
+one_line: Tofu with beans, carrot and capsicum, tossed hot and fast so the vegetables
+  stay crisp.
 headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -92,23 +98,27 @@ kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 151
-  protein_g: 8.3
-  carbs_g: 7.6
-  fat_g: 10.3
-  fibre_g: 2.7
-  iron_mg: 2.3
-  calcium_mg: 173
-  magnesium_mg: 45.4
-  zinc_mg: 1.0
-  potassium_mg: 268
-  folate_ug: 36.7
+  kcal: 139
+  protein_g: 12.2
+  carbs_g: 15.1
+  fat_g: 4.6
+  fibre_g: 4.9
+  iron_mg: 2.8
+  calcium_mg: 248
+  magnesium_mg: 70.8
+  zinc_mg: 1.3
+  potassium_mg: 517
+  folate_ug: 71.2
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 15.4
-  omega3_mg: 266
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 88.5
+  omega3_mg: 308
+nutrient_coverage_pct: 94.7
 rich_in:
+- protein
 - calcium
+- magnesium
+- potassium
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

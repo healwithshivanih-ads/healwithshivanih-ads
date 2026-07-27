@@ -17,34 +17,39 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- firm tofu, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
+- tofu
+- capsicum
+- cumin
 - turmeric
-- salt
-- fresh coriander
 contains_allergens:
 - soy
 ingredients:
 - item: firm tofu, cubed
-  qty: '150'
+  qty: '250'
   unit: g
-- item: ghee or oil
+- item: coconut oil or ghee
   qty: '1'
   unit: tbsp
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: capsicum, sliced
+  qty: '2'
+  unit: piece
 - item: ginger, grated
   qty: '1'
   unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
-  qty: '1'
-  unit: cup
 - item: turmeric
-  qty: '0.25'
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: amchur (dry mango powder)
+  qty: '0.5'
   unit: tsp
 - item: salt
   qty: to taste
@@ -53,21 +58,23 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the firm tofu and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Crackle the cumin seeds in the hot oil.
+- Add the onion and cook until soft, then the ginger.
+- Add the capsicum and stir-fry on high for 2–3 minutes so it keeps its bite.
+- Stir in the turmeric, coriander powder and salt, then fold in the tofu and warm
+  through for 3 minutes.
+- Finish with amchur and fresh coriander — the amchur is what makes this taste Indian
+  rather than Chinese.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 12
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich tofu & capsicum sabzi with vegetables and a light
-  tempering.
+one_line: An Indian-spiced tofu sabzi with capsicum — turmeric and jeera rather than
+  soy and sesame.
 headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -92,23 +99,30 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 151
-  protein_g: 8.3
-  carbs_g: 7.6
-  fat_g: 10.3
-  fibre_g: 2.7
-  iron_mg: 2.3
-  calcium_mg: 173
-  magnesium_mg: 45.4
-  zinc_mg: 1.0
-  potassium_mg: 268
-  folate_ug: 36.7
+  kcal: 221
+  protein_g: 13.4
+  carbs_g: 16.5
+  fat_g: 12.8
+  fibre_g: 5.4
+  iron_mg: 3.7
+  calcium_mg: 291
+  magnesium_mg: 78.2
+  zinc_mg: 1.6
+  potassium_mg: 536
+  folate_ug: 85.4
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 15.4
-  omega3_mg: 266
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 158
+  omega3_mg: 351
+nutrient_coverage_pct: 95.4
 rich_in:
+- protein
+- fibre
+- iron
 - calcium
+- magnesium
+- potassium
+- folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

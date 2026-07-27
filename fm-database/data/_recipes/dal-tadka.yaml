@@ -18,67 +18,64 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- vegetable
-- turmeric
+- toor dal
+- cumin
+- garlic
 - ghee
-- cumin seeds
-- ginger, grated
-- curry leaves
-- asafoetida (hing)
-- salt
-- lemon juice
-- fresh coriander
 contains_allergens: []
 ingredients:
-- item: vegetable
-  qty: '0.75'
+- item: toor dal (arhar)
+  qty: '1'
   unit: cup
 - item: turmeric
   qty: '0.5'
   unit: tsp
-- item: ghee
-  qty: '1'
-  unit: tbsp
-- item: cumin seeds
-  qty: '0.5'
-  unit: tsp
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
-- item: asafoetida (hing)
-  qty: 1 pinch
-  unit: ''
 - item: salt
   qty: to taste
   unit: ''
-- item: lemon juice
+- item: water
+  qty: '3'
+  unit: cup
+- item: ghee
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
   qty: '1'
+  unit: tsp
+- item: garlic, sliced
+  qty: '4'
+  unit: clove
+- item: dry red chilli
+  qty: '2'
+  unit: piece
+- item: asafoetida (hing)
+  qty: '1'
+  unit: pinch
+- item: red chilli powder
+  qty: '0.25'
   unit: tsp
 - item: fresh coriander
   qty: '2'
   unit: tbsp
 steps:
-- Rinse the vegetable well. Pressure-cook with turmeric and 2.5 cups water until soft
-  (3-4 whistles), or simmer covered 25-30 minutes. Whisk smooth.
-- Heat ghee in a small pan. Add cumin seeds, let them splutter, then add ginger, curry
-  leaves, and a pinch of hing; sauté 20 seconds.
-- Pour the tempering into the cooked dal. Add salt and a little hot water for a pourable
-  consistency. Simmer 3-4 minutes.
-- Finish with lemon juice and coriander. Serve warm with rice or roti.
+- Pressure-cook the dal with the turmeric, salt and water until completely soft, then
+  whisk it smooth.
+- Heat the ghee in a small tempering pan until properly hot.
+- Add the cumin, then the garlic, red chillies and hing. Take it off the moment the
+  garlic turns golden — a second longer and it's bitter.
+- Stir in the chilli powder off the heat so it doesn't burn.
+- Pour the whole sizzling tempering over the dal at the table and stir it in. Finish
+  with coriander.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 25
 approx_kcal_per_serving: 190
 kcal_is_estimate: true
 protein_g: 11
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A comforting, well-tempered vegetable simmered soft and finished with a
-  ghee-cumin tadka.
+one_line: Cooked toor dal finished with a hot ghee tempering poured over at the table.
 headnote: A simple vegetable is one of the most digestible protein sources — cooked
   soft, spiced gently with cumin and ginger, and kept free of heavy onion-tomato gravy.
 attribution:
@@ -103,22 +100,29 @@ kcal_total: 480
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 90.5
-  protein_g: 1.4
-  carbs_g: 5.8
-  fat_g: 7.1
-  fibre_g: 1.7
-  iron_mg: 1.4
-  calcium_mg: 33.9
-  magnesium_mg: 14.4
-  zinc_mg: 0.3
-  potassium_mg: 165
-  folate_ug: 21.2
+  kcal: 446
+  protein_g: 22.5
+  carbs_g: 63.7
+  fat_g: 12.3
+  fibre_g: 10.1
+  iron_mg: 5.3
+  calcium_mg: 97.9
+  magnesium_mg: 101
+  zinc_mg: 2.7
+  potassium_mg: 1188
+  folate_ug: 153
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 12.7
-  omega3_mg: 77.0
+  vit_d_ug: 0.1
+  vit_c_mg: 8.0
+  omega3_mg: 171
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

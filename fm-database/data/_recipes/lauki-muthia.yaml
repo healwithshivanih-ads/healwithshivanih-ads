@@ -19,67 +19,72 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- lauki, diced
-- ghee or coconut oil
-- mustard seeds
-- cumin seeds
-- curry leaves
-- ginger, grated
-- turmeric
-- grated fresh coconut (optional)
-- salt
-- fresh coriander, chopped
-contains_allergens: []
+- lauki
+- besan
+- jowar flour
+- sesame seeds
+contains_allergens:
+- sesame
 ingredients:
-- item: lauki, diced
+- item: lauki (bottle gourd), grated and squeezed
   qty: '2'
-  unit: cups
-- item: ghee or coconut oil
+  unit: cup
+- item: besan (gram flour)
+  qty: '0.75'
+  unit: cup
+- item: jowar or bajra flour
+  qty: '0.5'
+  unit: cup
+- item: ginger-green chilli paste
+  qty: '1'
+  unit: tbsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: sugar or jaggery
+  qty: '0.5'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: oil
   qty: '1'
   unit: tbsp
 - item: mustard seeds
   qty: '0.5'
   unit: tsp
-- item: cumin seeds
-  qty: '0.5'
-  unit: tsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
-- item: ginger, grated
+- item: sesame seeds
   qty: '1'
   unit: tsp
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: grated fresh coconut (optional)
-  qty: '2'
-  unit: tbsp
-- item: salt
-  qty: to taste
-  unit: ''
-- item: fresh coriander, chopped
+- item: curry leaves
+  qty: '10'
+  unit: leaves
+- item: fresh coriander
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee in a kadai over medium heat. Add mustard seeds and let them pop, then
-  add cumin seeds, curry leaves, and ginger; sauté 30 seconds until fragrant.
-- Add the diced lauki and turmeric. Stir to coat in the tempering.
-- Add salt, cover, and cook on low 8-12 minutes, stirring occasionally, until the
-  vegetable is just tender (not mushy). Add a splash of water only if it sticks.
-- Uncover, raise heat briefly to dry off any moisture. Stir in grated coconut if using.
-- Garnish with fresh coriander and serve warm with roti or rice.
+- Squeeze the grated lauki firmly and KEEP the water — use it to bind the dough instead
+  of fresh water.
+- Mix the lauki with both flours, the ginger-chilli paste, turmeric, jaggery, lemon
+  juice, salt and a teaspoon of oil into a soft dough.
+- Shape into two or three cylinders and steam for 18–20 minutes, until a skewer comes
+  out clean.
+- Cool completely, then slice into rounds — hot muthia crumbles when cut.
+- Splutter the mustard and sesame seeds in the remaining oil with the curry leaves,
+  toss the slices through until lightly crisp, and finish with coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 25
+cook_time_min: 25
 approx_kcal_per_serving: 120
 kcal_is_estimate: true
 protein_g: 4
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A light, dry South-Indian style lauki sabzi tempered with mustard, cumin
-  and curry leaves.
+one_line: Steamed savoury dumplings of grated lauki and flour, sliced and tempered.
 headnote: Cooking lauki gently with a simple tempering keeps it easy to digest and
   lets the vegetable's own flavour come through — no heavy gravy, no tomato.
 attribution:
@@ -104,22 +109,29 @@ kcal_total: 150
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 106
-  protein_g: 1.4
-  carbs_g: 5.9
-  fat_g: 9.0
-  fibre_g: 1.4
-  iron_mg: 1.0
-  calcium_mg: 50.9
-  magnesium_mg: 22.1
-  zinc_mg: 1.0
-  potassium_mg: 236
-  folate_ug: 12.0
+  kcal: 329
+  protein_g: 12.2
+  carbs_g: 46.0
+  fat_g: 10.8
+  fibre_g: 8.0
+  iron_mg: 4.0
+  calcium_mg: 86.3
+  magnesium_mg: 122
+  zinc_mg: 2.6
+  potassium_mg: 622
+  folate_ug: 176
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 12.2
-  omega3_mg: 65.0
-nutrient_coverage_pct: 100.0
-rich_in: []
+  vit_c_mg: 15.5
+  omega3_mg: 122
+nutrient_coverage_pct: 92.9
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

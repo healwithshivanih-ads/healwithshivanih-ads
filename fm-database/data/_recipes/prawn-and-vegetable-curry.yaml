@@ -18,33 +18,36 @@ rasa:
 - pungent
 main_ingredients:
 - prawns
-- coconut oil
-- onion, sliced
-- ginger-garlic paste
+- coconut milk
+- mixed vegetables
 - curry leaves
-- turmeric
-- coriander powder
-- light coconut milk
-- salt
-- fresh coriander
 contains_allergens:
 - shellfish
 ingredients:
-- item: prawns
-  qty: '150'
+- item: prawns, cleaned
+  qty: '250'
   unit: g
 - item: coconut oil
   qty: '1'
   unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '10'
+  unit: leaves
 - item: onion, sliced
   qty: '1'
-  unit: medium
+  unit: piece
 - item: ginger-garlic paste
   qty: '1'
   unit: tbsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
+- item: carrot and beans, diced
+  qty: '1.5'
+  unit: cup
+- item: drumstick, cut in fingers (optional)
+  qty: '1'
+  unit: piece
 - item: turmeric
   qty: '0.5'
   unit: tsp
@@ -52,7 +55,7 @@ ingredients:
   qty: '1'
   unit: tsp
 - item: light coconut milk
-  qty: '0.5'
+  qty: '1'
   unit: cup
 - item: salt
   qty: to taste
@@ -61,24 +64,21 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Clean and cut the prawns into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
-  paste and cook 1 minute.
-- Add turmeric and coriander powder; stir 30 seconds.
-- Add the prawns and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
-  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
-  5-6 min).
-- Finish with fresh coriander. Serve warm with rice or millet.
+- Splutter the mustard seeds in the coconut oil and add the curry leaves.
+- Soften the onion, add the ginger-garlic paste, then the turmeric and coriander powder.
+- Add the vegetables with a little water, cover, and cook until just tender.
+- Pour in the coconut milk and bring to a bare simmer.
+- Slide in the prawns and cook 4 minutes only, until they curl and turn opaque. Finish
+  with coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 15
+cook_time_min: 18
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based prawn and vegetable curry — no tomato, gently spiced
-  and freshly made.
+one_line: Prawns and vegetables in a light coconut gravy with curry leaves.
 headnote: Freshly cooked prawns in a light coconut-curry-leaf base keeps the meal
   clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
@@ -103,24 +103,32 @@ kcal_total: 310
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 254
-  protein_g: 17.3
-  carbs_g: 11.3
-  fat_g: 16.8
-  fibre_g: 2.5
-  iron_mg: 2.8
-  calcium_mg: 99.0
-  magnesium_mg: 58.9
-  zinc_mg: 1.5
-  potassium_mg: 465
-  folate_ug: 33.3
-  b12_ug: 0.8
-  vit_d_ug: 0.1
-  vit_c_mg: 6.6
-  omega3_mg: 233
+  kcal: 453
+  protein_g: 30.7
+  carbs_g: 28.5
+  fat_g: 27.0
+  fibre_g: 7.9
+  iron_mg: 5.1
+  calcium_mg: 194
+  magnesium_mg: 137
+  zinc_mg: 3.0
+  potassium_mg: 1298
+  folate_ug: 95.2
+  b12_ug: 1.4
+  vit_d_ug: 0.2
+  vit_c_mg: 85.0
+  omega3_mg: 400
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
 - b12
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

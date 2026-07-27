@@ -18,55 +18,61 @@ rasa:
 - pungent
 main_ingredients:
 - eggs
-- ghee or coconut oil
-- cumin seeds
-- onion, chopped
-- vegetables (capsicum, spinach, tomato)
-- turmeric
-- salt and pepper
-- fresh coriander
+- tomato
+- capsicum
+- cumin
 contains_allergens:
 - egg
 ingredients:
 - item: eggs
-  qty: '2'
-  unit: whole
-- item: ghee or coconut oil
-  qty: '1'
-  unit: tsp
-- item: cumin seeds
-  qty: '0.25'
-  unit: tsp
-- item: onion, chopped
-  qty: '0.5'
-  unit: medium
-- item: vegetables (capsicum, spinach, tomato)
-  qty: '0.5'
-  unit: cup
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: salt and pepper
-  qty: to taste
-  unit: ''
-- item: fresh coriander
+  qty: '4'
+  unit: piece
+- item: olive oil or ghee
   qty: '1'
   unit: tbsp
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: capsicum, sliced
+  qty: '1'
+  unit: piece
+- item: garlic, sliced
+  qty: '3'
+  unit: clove
+- item: tomato, chopped
+  qty: '4'
+  unit: piece
+- item: cumin powder
+  qty: '1'
+  unit: tsp
+- item: paprika or red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander or parsley
+  qty: '2'
+  unit: tbsp
 steps:
-- Heat ghee, add cumin seeds, then onion; sauté until soft.
-- Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour over the vegetables, and cook covered on
-  low until set, folding once.
-- Garnish with coriander and serve warm.
+- Heat the oil in a wide shallow pan and soften the onion, capsicum and garlic for
+  5–6 minutes.
+- Add the tomato, cumin, paprika and salt. Simmer 10–12 minutes until it thickens
+  into a sauce you can draw a spoon through.
+- Make four wells in the sauce with the back of a spoon and crack an egg into each.
+- Cover and cook on low for 5–7 minutes, until the whites are set but the yolks still
+  wobble.
+- Scatter with herbs and bring the pan to the table.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 25
 approx_kcal_per_serving: 220
 kcal_is_estimate: true
 protein_g: 14
 good_for:
 - agni-digestive-fire
-one_line: A protein-rich egg shakshuka cooked with vegetables and gentle spices.
+one_line: Eggs poached directly in a spiced tomato and capsicum base, served straight
+  from the pan.
 headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
   meal that keeps blood sugar even through the morning.
 attribution:
@@ -91,22 +97,31 @@ kcal_total: 280
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 119
-  protein_g: 7.4
-  carbs_g: 6.0
-  fat_g: 7.2
-  fibre_g: 1.5
-  iron_mg: 1.6
-  calcium_mg: 45.8
-  magnesium_mg: 16.6
-  zinc_mg: 0.9
-  potassium_mg: 200
-  folate_ug: 41.4
-  b12_ug: 0.5
-  vit_d_ug: 1.0
-  vit_c_mg: 9.7
-  omega3_mg: 82.3
+  kcal: 290
+  protein_g: 16.2
+  carbs_g: 19.6
+  fat_g: 17.3
+  fibre_g: 5.0
+  iron_mg: 3.9
+  calcium_mg: 116
+  magnesium_mg: 53.6
+  zinc_mg: 2.1
+  potassium_mg: 877
+  folate_ug: 117
+  b12_ug: 0.9
+  vit_d_ug: 2.0
+  vit_c_mg: 111
+  omega3_mg: 180
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- protein
+- fibre
+- iron
+- zinc
+- potassium
+- folate
+- b12
+- vitamin-c
+- vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

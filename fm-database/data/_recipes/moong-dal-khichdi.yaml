@@ -28,22 +28,63 @@ main_ingredients:
 - turmeric
 - coriander
 contains_allergens: []
+ingredients:
+- item: split yellow moong dal
+  qty: '0.5'
+  unit: cup
+- item: white basmati rice
+  qty: '0.5'
+  unit: cup
+- item: ghee
+  qty: '1.5'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: asafoetida (hing)
+  qty: '1'
+  unit: pinch
+- item: ginger, grated
+  qty: '1'
+  unit: tbsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '4'
+  unit: cup
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Dry-roast the moong dal for 2–3 minutes until it smells nutty, then rinse it with
+  the rice until the water runs clear.
+- Heat the ghee, crackle the cumin, and add the hing, ginger and turmeric.
+- Add the drained rice and dal and toss for a minute so every grain is coated.
+- Add the water and salt. Pressure-cook for 3 whistles, or simmer covered for 25 minutes.
+- Khichdi should be soft and pourable, not fluffy — loosen with hot water if needed,
+  and finish with coriander and a spoon of ghee.
 approx_kcal_per_serving: 320
 protein_g: 12
 good_for:
 - agni-digestive-fire
 - constipation
 - detoxification
-one_line: Soft tridoshic mung-dal & rice one-pot with cumin, ginger and ghee — easy to digest, gentle
-  reset.
-method: '1. Rinse 1/2 cup split mung dal + 1/2 cup basmati rice until water runs clear; soak 15 min.
+one_line: Soft tridoshic mung-dal & rice one-pot with cumin, ginger and ghee — easy
+  to digest, gentle reset.
+method: '1. Rinse 1/2 cup split mung dal + 1/2 cup basmati rice until water runs clear;
+  soak 15 min.
 
-  2. Warm 1 tbsp ghee, temper 1 tsp cumin seeds until fragrant; add 1 tsp grated ginger, 1/2 tsp turmeric.
+  2. Warm 1 tbsp ghee, temper 1 tsp cumin seeds until fragrant; add 1 tsp grated ginger,
+  1/2 tsp turmeric.
 
   3. Add drained dal+rice, stir 1 min; add 4-5 cups water + 1/2 tsp salt.
 
-  4. Simmer covered 25-30 min to a soft porridge; finish with chopped coriander. Add more water for a
-  thinner, lighter dish.'
+  4. Simmer covered 25-30 min to a soft porridge; finish with chopped coriander. Add
+  more water for a thinner, lighter dish.'
 source: odonnell-everyday-ayurveda-cookbook-2015
 version: 1
 status: active
@@ -54,5 +95,32 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://greenbowl2soul.com/wp-content/uploads/2020/01/moong-dal-khichdi.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
+nutrients_per_serving:
+  kcal: 440
+  protein_g: 16.3
+  carbs_g: 67.7
+  fat_g: 11.4
+  fibre_g: 5.8
+  iron_mg: 3.5
+  calcium_mg: 54.9
+  magnesium_mg: 82.2
+  zinc_mg: 2.0
+  potassium_mg: 680
+  folate_ug: 280
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 1.5
+  omega3_mg: 109
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-27'

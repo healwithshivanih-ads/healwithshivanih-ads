@@ -18,66 +18,72 @@ rasa:
 - pungent
 main_ingredients:
 - chicken
-- coconut oil
-- onion, sliced
-- ginger-garlic paste
-- curry leaves
-- turmeric
-- coriander powder
-- light coconut milk
-- salt
-- fresh coriander
+- coconut milk
+- potato
+- carrot
 contains_allergens: []
 ingredients:
-- item: chicken
-  qty: '150'
+- item: chicken, cubed
+  qty: '400'
   unit: g
 - item: coconut oil
   qty: '1'
   unit: tbsp
 - item: onion, sliced
   qty: '1'
-  unit: medium
-- item: ginger-garlic paste
+  unit: piece
+- item: ginger, julienned
   qty: '1'
   unit: tbsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
-- item: turmeric
-  qty: '0.5'
-  unit: tsp
-- item: coriander powder
+- item: green chilli, slit
+  qty: '2'
+  unit: piece
+- item: carrot, cubed
   qty: '1'
-  unit: tsp
-- item: light coconut milk
+  unit: piece
+- item: potato, cubed
+  qty: '1'
+  unit: piece
+- item: french beans, cut
   qty: '0.5'
   unit: cup
+- item: whole black pepper, crushed
+  qty: '0.5'
+  unit: tsp
+- item: cinnamon
+  qty: '1'
+  unit: piece
+- item: cloves
+  qty: '3'
+  unit: piece
+- item: light coconut milk
+  qty: '1.5'
+  unit: cup
+- item: curry leaves
+  qty: '10'
+  unit: leaves
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
-  unit: tbsp
 steps:
-- Clean and cut the chicken into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
-  paste and cook 1 minute.
-- Add turmeric and coriander powder; stir 30 seconds.
-- Add the chicken and salt; sear 2-3 minutes. Pour in coconut milk and enough water
-  for a light broth. Cover and simmer until just cooked through (fish 8-10 min, chicken
-  18-20 min, prawns 5-6 min).
-- Finish with fresh coriander. Serve warm with rice or millet.
+- Warm the coconut oil and add the cinnamon and cloves for a few seconds.
+- Soften the onion, ginger and green chilli without browning them — a stew should
+  stay pale.
+- Add the vegetables, crushed pepper and salt with half a cup of water. Cover and
+  cook until nearly tender.
+- Add the chicken and the coconut milk. Simmer very gently for 20 minutes.
+- Drop in the curry leaves at the end and rest the stew off the heat for 10 minutes
+  before serving.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 15
+cook_time_min: 35
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based chicken stew — no tomato, gently spiced and freshly
-  made.
+one_line: A gentle Kerala-style stew — chicken and vegetables in thin coconut milk,
+  barely spiced.
 headnote: Freshly cooked chicken in a light coconut-curry-leaf base keeps the meal
   clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
@@ -102,23 +108,30 @@ kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 280
-  protein_g: 18.0
-  carbs_g: 10.6
-  fat_g: 19.0
-  fibre_g: 2.5
-  iron_mg: 2.9
-  calcium_mg: 57.0
-  magnesium_mg: 51.4
-  zinc_mg: 1.5
-  potassium_mg: 455
-  folate_ug: 24.3
-  b12_ug: 0.2
-  vit_d_ug: 0.1
-  vit_c_mg: 6.6
-  omega3_mg: 67.9
+  kcal: 683
+  protein_g: 48.1
+  carbs_g: 31.9
+  fat_g: 42.0
+  fibre_g: 7.2
+  iron_mg: 7.2
+  calcium_mg: 117
+  magnesium_mg: 143
+  zinc_mg: 4.0
+  potassium_mg: 1434
+  folate_ug: 71.6
+  b12_ug: 0.6
+  vit_d_ug: 0.2
+  vit_c_mg: 31.8
+  omega3_mg: 194
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- b12
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

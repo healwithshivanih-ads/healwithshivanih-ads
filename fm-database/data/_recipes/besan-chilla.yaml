@@ -18,51 +18,47 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- besan (gram flour)
-- water
-- ginger, grated
-- green chilli, minced (optional)
-- turmeric
-- finely chopped vegetables (onion, capsicum, coriander)
-- salt
-- ghee or oil for cooking
+- besan
+- onion
+- coriander
+- ajwain
 contains_allergens: []
 ingredients:
 - item: besan (gram flour)
   qty: '1'
   unit: cup
-- item: water
-  qty: as needed
-  unit: ''
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: green chilli, minced (optional)
+- item: onion, finely chopped
+  qty: '0.5'
+  unit: piece
+- item: green chilli, minced
   qty: '1'
   unit: piece
+- item: fresh coriander, chopped
+  qty: '3'
+  unit: tbsp
+- item: ajwain (carom seeds)
+  qty: '0.25'
+  unit: tsp
 - item: turmeric
   qty: '0.25'
   unit: tsp
-- item: finely chopped vegetables (onion, capsicum, coriander)
-  qty: '0.5'
-  unit: cup
 - item: salt
   qty: to taste
   unit: ''
+- item: water
+  qty: '1'
+  unit: cup
 - item: ghee or oil for cooking
   qty: '2'
-  unit: tsp
+  unit: tbsp
 steps:
-- Whisk besan (gram flour) with water into a smooth, pourable batter (like thin pancake
-  batter).
-- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
-  and spread into a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
-  golden, flip, and cook the other side 1-2 minutes.
-- Serve hot with chutney.
+- Whisk the besan with the water gradually — adding it all at once guarantees lumps.
+- Stir in the onion, chilli, coriander, ajwain, turmeric and salt. The batter should
+  coat a spoon but pour easily.
+- Heat a tawa on medium, pour a ladleful and spread thin.
+- Drizzle ghee around the edge, cook 2 minutes until it lifts, flip and finish.
 servings: '2'
-prep_time_min: 10
+prep_time_min: 8
 cook_time_min: 15
 approx_kcal_per_serving: 180
 kcal_is_estimate: true
@@ -70,8 +66,8 @@ protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich besan chilla — quick, gut-friendly, and naturally
-  gluten-free.
+one_line: A thin gram-flour pancake with onion and coriander — the fastest savoury
+  breakfast there is.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
@@ -96,25 +92,25 @@ kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 235
-  protein_g: 11.1
-  carbs_g: 30.0
-  fat_g: 7.7
-  fibre_g: 6.0
+  kcal: 315
+  protein_g: 10.8
+  carbs_g: 29.8
+  fat_g: 16.8
+  fibre_g: 5.7
   iron_mg: 2.7
-  calcium_mg: 30.1
-  magnesium_mg: 84.2
-  zinc_mg: 1.5
-  potassium_mg: 485
-  folate_ug: 214
+  calcium_mg: 33.1
+  magnesium_mg: 81.3
+  zinc_mg: 1.4
+  potassium_mg: 457
+  folate_ug: 208
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 10.3
-  omega3_mg: 95.3
+  vit_d_ug: 0.1
+  vit_c_mg: 5.2
+  omega3_mg: 158
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - magnesium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

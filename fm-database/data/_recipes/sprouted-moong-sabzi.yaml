@@ -19,67 +19,66 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- moong, diced
-- ghee or coconut oil
-- mustard seeds
-- cumin seeds
+- sprouted moong
+- fresh coconut
 - curry leaves
-- ginger, grated
-- turmeric
-- grated fresh coconut (optional)
-- salt
-- fresh coriander, chopped
+- mustard seeds
 contains_allergens: []
 ingredients:
-- item: moong, diced
+- item: sprouted whole moong
   qty: '2'
-  unit: cups
-- item: ghee or coconut oil
+  unit: cup
+- item: coconut oil
   qty: '1'
   unit: tbsp
 - item: mustard seeds
   qty: '0.5'
   unit: tsp
-- item: cumin seeds
-  qty: '0.5'
-  unit: tsp
 - item: curry leaves
-  qty: 8-10
+  qty: '10'
   unit: leaves
+- item: onion, chopped
+  qty: '1'
+  unit: piece
 - item: ginger, grated
   qty: '1'
   unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: piece
 - item: turmeric
-  qty: '0.25'
+  qty: '0.5'
   unit: tsp
-- item: grated fresh coconut (optional)
-  qty: '2'
-  unit: tbsp
+- item: grated fresh coconut
+  qty: '0.25'
+  unit: cup
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander, chopped
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee in a kadai over medium heat. Add mustard seeds and let them pop, then
-  add cumin seeds, curry leaves, and ginger; sauté 30 seconds until fragrant.
-- Add the diced moong and turmeric. Stir to coat in the tempering.
-- Add salt, cover, and cook on low 8-12 minutes, stirring occasionally, until the
-  vegetable is just tender (not mushy). Add a splash of water only if it sticks.
-- Uncover, raise heat briefly to dry off any moisture. Stir in grated coconut if using.
-- Garnish with fresh coriander and serve warm with roti or rice.
+- Sprouts need no pre-boiling — steam them for 5 minutes only, or skip straight to
+  the pan if you like them crunchy.
+- Splutter the mustard seeds in the coconut oil with the curry leaves.
+- Add the onion, ginger and green chilli and soften.
+- Add the sprouts with the turmeric and salt and toss on medium for 5–6 minutes.
+- Fold in the coconut, lemon juice and coriander off the heat.
 servings: '2'
 prep_time_min: 10
-cook_time_min: 15
+cook_time_min: 12
 approx_kcal_per_serving: 120
 kcal_is_estimate: true
 protein_g: 4
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A light, dry South-Indian style moong sabzi tempered with mustard, cumin
-  and curry leaves.
+one_line: The same sabzi made with sprouted moong — quicker to cook and lighter on
+  the gut.
 headnote: Cooking moong gently with a simple tempering keeps it easy to digest and
   lets the vegetable's own flavour come through — no heavy gravy, no tomato.
 attribution:
@@ -104,29 +103,24 @@ kcal_total: 220
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 327
-  protein_g: 17.3
-  carbs_g: 42.7
-  fat_g: 9.8
-  fibre_g: 6.4
-  iron_mg: 3.5
-  calcium_mg: 72.0
-  magnesium_mg: 95.8
-  zinc_mg: 2.0
-  potassium_mg: 845
-  folate_ug: 378
+  kcal: 161
+  protein_g: 4.6
+  carbs_g: 14.5
+  fat_g: 10.8
+  fibre_g: 4.2
+  iron_mg: 2.0
+  calcium_mg: 45.5
+  magnesium_mg: 38.1
+  zinc_mg: 0.8
+  potassium_mg: 327
+  folate_ug: 81.5
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 2.0
-  omega3_mg: 80.3
+  vit_c_mg: 22.1
+  omega3_mg: 26.9
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
-- fibre
-- iron
-- magnesium
-- zinc
-- potassium
 - folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

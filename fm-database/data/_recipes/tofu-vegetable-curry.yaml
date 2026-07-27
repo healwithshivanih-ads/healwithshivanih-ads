@@ -17,35 +17,43 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- firm tofu, cubed
-- ghee or oil
-- cumin seeds
-- ginger, grated
-- vegetables (capsicum, spinach, mushroom)
-- turmeric
-- salt
-- fresh coriander
+- tofu
+- coconut milk
+- mixed vegetables
+- curry leaves
 contains_allergens:
 - soy
 ingredients:
 - item: firm tofu, cubed
-  qty: '150'
+  qty: '250'
   unit: g
-- item: ghee or oil
+- item: coconut oil
   qty: '1'
   unit: tbsp
-- item: cumin seeds
+- item: mustard seeds
   qty: '0.5'
   unit: tsp
-- item: ginger, grated
+- item: curry leaves
+  qty: '10'
+  unit: leaves
+- item: onion, sliced
   qty: '1'
-  unit: tsp
-- item: vegetables (capsicum, spinach, mushroom)
+  unit: piece
+- item: ginger-garlic paste
   qty: '1'
+  unit: tbsp
+- item: mixed vegetables (carrot, beans, peas), diced
+  qty: '2'
   unit: cup
 - item: turmeric
-  qty: '0.25'
+  qty: '0.5'
   unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: light coconut milk
+  qty: '1'
+  unit: cup
 - item: salt
   qty: to taste
   unit: ''
@@ -53,21 +61,23 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the firm tofu and salt; toss gently 3-4 minutes until heated through and lightly
-  golden (don't overcook or it toughens).
-- Garnish with coriander and serve warm.
+- Splutter the mustard seeds in the coconut oil, then add the curry leaves.
+- Soften the onion, add the ginger-garlic paste and cook off the raw smell.
+- Add the vegetables with the turmeric, coriander powder and salt, and a splash of
+  water. Cover and cook until just tender.
+- Pour in the coconut milk and bring to a bare simmer — never a rolling boil, or it
+  splits.
+- Slide in the tofu, warm through for 3–4 minutes, and finish with coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 20
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich tofu & vegetable curry with vegetables and a light
-  tempering.
+one_line: Tofu simmered in a light coconut curry with mixed vegetables — a proper
+  gravy dish.
 headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein that
   doesn't need a heavy gravy to taste good.
 attribution:
@@ -92,23 +102,31 @@ kcal_total: 420
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 151
-  protein_g: 8.3
-  carbs_g: 7.6
-  fat_g: 10.3
-  fibre_g: 2.7
-  iron_mg: 2.3
-  calcium_mg: 173
-  magnesium_mg: 45.4
-  zinc_mg: 1.0
-  potassium_mg: 268
-  folate_ug: 36.7
+  kcal: 437
+  protein_g: 17.5
+  carbs_g: 26.3
+  fat_g: 31.7
+  fibre_g: 8.0
+  iron_mg: 6.9
+  calcium_mg: 346
+  magnesium_mg: 129
+  zinc_mg: 2.5
+  potassium_mg: 835
+  folate_ug: 94.8
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 15.4
-  omega3_mg: 266
+  vit_c_mg: 37.3
+  omega3_mg: 366
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- fibre
+- iron
 - calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

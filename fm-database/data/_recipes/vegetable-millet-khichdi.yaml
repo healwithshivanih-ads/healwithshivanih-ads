@@ -18,19 +18,14 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- vegetable
-- split yellow moong dal
+- millet
+- moong dal
+- mixed vegetables
 - ghee
-- cumin seeds
-- ginger, grated
-- turmeric
-- mixed vegetables, diced (carrot, beans, peas)
-- asafoetida (hing)
-- salt
 contains_allergens: []
 ingredients:
-- item: vegetable
-  qty: '0.5'
+- item: mixed millet (foxtail, kodo or little millet)
+  qty: '0.75'
   unit: cup
 - item: split yellow moong dal
   qty: '0.25'
@@ -39,33 +34,51 @@ ingredients:
   qty: '1'
   unit: tbsp
 - item: cumin seeds
-  qty: '0.5'
+  qty: '1'
   unit: tsp
+- item: asafoetida (hing)
+  qty: '1'
+  unit: pinch
 - item: ginger, grated
   qty: '1'
   unit: tsp
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: mixed vegetables, diced (carrot, beans, peas)
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: carrot, diced
+  qty: '1'
+  unit: piece
+- item: french beans, chopped
+  qty: '0.5'
+  unit: cup
+- item: peas
+  qty: '0.5'
+  unit: cup
+- item: bottle gourd or pumpkin, diced
   qty: '1'
   unit: cup
-- item: asafoetida (hing)
-  qty: 1 pinch
-  unit: ''
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
+- item: water
+  qty: '4'
+  unit: cup
+- item: fresh coriander
+  qty: '3'
+  unit: tbsp
 steps:
-- Rinse the vegetable and moong dal together until the water runs clear.
-- Heat ghee in a pressure cooker. Add cumin seeds, ginger, and hing; sauté 20 seconds.
-- Add the diced vegetables and turmeric; stir 1 minute.
-- Add the drained vegetable-dal, salt, and 3 cups water. Pressure-cook 3-4 whistles
-  (or simmer covered 25 minutes) until soft and porridge-like.
-- Rest 5 minutes, fluff gently, and serve warm with a little extra ghee.
+- Rinse the millet and dal together.
+- Heat the ghee, crackle the cumin, add the hing, ginger and onion and soften.
+- Add all the vegetables with the turmeric and toss for 3 minutes.
+- Add the millet, dal, water and salt. Pressure-cook 3 whistles or simmer covered
+  25–30 minutes.
+- Everything should be soft enough to eat with a spoon. Finish with plenty of coriander.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 18
+cook_time_min: 30
 approx_kcal_per_serving: 240
 kcal_is_estimate: true
 protein_g: 9
@@ -73,8 +86,8 @@ good_for:
 - agni-digestive-fire
 - gut-microbiome
 - digestion-and-nutrient-absorption
-one_line: A soft, one-pot vegetable khichdi with moong dal and vegetables — the classic
-  gut-rest meal.
+one_line: The millet khichdi built out with plenty of vegetables into a full one-pot
+  dinner.
 headnote: 'Khichdi is Ayurveda''s most healing everyday meal: vegetable and moong
   dal cooked soft together are easy to digest and gently nourishing.'
 attribution:
@@ -99,25 +112,30 @@ kcal_total: 380
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 194
-  protein_g: 8.4
-  carbs_g: 24.1
-  fat_g: 7.5
-  fibre_g: 4.9
-  iron_mg: 2.5
-  calcium_mg: 52.2
-  magnesium_mg: 53.3
-  zinc_mg: 1.2
-  potassium_mg: 538
-  folate_ug: 174
+  kcal: 520
+  protein_g: 18.4
+  carbs_g: 87.9
+  fat_g: 10.9
+  fibre_g: 13.4
+  iron_mg: 5.7
+  calcium_mg: 94.7
+  magnesium_mg: 158
+  zinc_mg: 3.1
+  potassium_mg: 891
+  folate_ug: 255
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 23.1
-  omega3_mg: 96.0
+  vit_c_mg: 30.4
+  omega3_mg: 194
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

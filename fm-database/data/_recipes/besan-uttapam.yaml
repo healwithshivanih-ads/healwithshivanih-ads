@@ -18,60 +18,66 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- besan (gram flour)
-- water
-- ginger, grated
-- green chilli, minced (optional)
-- turmeric
-- finely chopped vegetables (onion, capsicum, coriander)
-- salt
-- ghee or oil for cooking
-contains_allergens: []
+- besan
+- tomato
+- onion
+- capsicum
+contains_allergens:
+- dairy
 ingredients:
 - item: besan (gram flour)
   qty: '1'
   unit: cup
-- item: water
-  qty: as needed
-  unit: ''
-- item: ginger, grated
-  qty: '1'
-  unit: tsp
-- item: green chilli, minced (optional)
-  qty: '1'
-  unit: piece
-- item: turmeric
-  qty: '0.25'
-  unit: tsp
-- item: finely chopped vegetables (onion, capsicum, coriander)
+- item: curd
+  qty: '2'
+  unit: tbsp
+- item: onion, finely chopped
   qty: '0.5'
   unit: cup
+- item: tomato, deseeded and chopped
+  qty: '0.5'
+  unit: cup
+- item: capsicum, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
+- item: fresh coriander
+  qty: '3'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
-- item: ghee or oil for cooking
+- item: water
+  qty: '0.75'
+  unit: cup
+- item: oil for cooking
   qty: '2'
-  unit: tsp
+  unit: tbsp
 steps:
-- Whisk besan (gram flour) with water into a smooth, pourable batter (like thin pancake
-  batter).
-- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
-  and spread into a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
-  golden, flip, and cook the other side 1-2 minutes.
-- Serve hot with chutney.
+- Whisk the besan, curd and water into a batter noticeably thicker than chilla batter
+  — it has to hold the toppings.
+- Add the cumin and salt and rest 10 minutes.
+- Pour a thick round onto a medium tawa. Don't spread it out.
+- Scatter the onion, tomato, capsicum, chilli and coriander over the top and press
+  them in gently with the back of the ladle.
+- Drizzle oil around the edge, cover, and cook until the base is golden. Flip carefully
+  and give the topping a minute on the pan.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 12
+cook_time_min: 18
 approx_kcal_per_serving: 180
 kcal_is_estimate: true
 protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich besan uttapam — quick, gut-friendly, and naturally
-  gluten-free.
+one_line: A thicker besan pancake with vegetables pressed into the top — uttapam style,
+  not spread thin.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
@@ -96,25 +102,27 @@ kcal_total: 520
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 235
-  protein_g: 11.1
-  carbs_g: 30.0
-  fat_g: 7.7
-  fibre_g: 6.0
-  iron_mg: 2.7
-  calcium_mg: 30.1
-  magnesium_mg: 84.2
+  kcal: 203
+  protein_g: 11.3
+  carbs_g: 32.1
+  fat_g: 3.4
+  fibre_g: 6.4
+  iron_mg: 2.9
+  calcium_mg: 38.9
+  magnesium_mg: 88.1
   zinc_mg: 1.5
-  potassium_mg: 485
-  folate_ug: 214
+  potassium_mg: 577
+  folate_ug: 221
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 10.3
-  omega3_mg: 95.3
-nutrient_coverage_pct: 100.0
+  vit_c_mg: 29.8
+  omega3_mg: 53.6
+nutrient_coverage_pct: 81.5
 rich_in:
 - fibre
 - magnesium
+- potassium
 - folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'

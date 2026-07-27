@@ -18,66 +18,70 @@ rasa:
 - pungent
 main_ingredients:
 - chicken
-- coconut oil
-- onion, sliced
-- ginger-garlic paste
-- curry leaves
-- turmeric
-- coriander powder
-- light coconut milk
-- salt
-- fresh coriander
+- coconut
+- dry red chilli
+- coriander seeds
 contains_allergens: []
 ingredients:
-- item: chicken
-  qty: '150'
+- item: chicken, small cut
+  qty: '500'
   unit: g
 - item: coconut oil
-  qty: '1'
+  qty: '2'
   unit: tbsp
-- item: onion, sliced
+- item: grated fresh coconut
+  qty: '0.75'
+  unit: cup
+- item: dry red chillies
+  qty: '5'
+  unit: piece
+- item: coriander seeds
+  qty: '1.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: black peppercorns
+  qty: '0.5'
+  unit: tsp
+- item: onion, finely chopped
   qty: '1'
-  unit: medium
+  unit: piece
 - item: ginger-garlic paste
-  qty: '1'
+  qty: '1.5'
   unit: tbsp
-- item: curry leaves
-  qty: 8-10
-  unit: leaves
 - item: turmeric
   qty: '0.5'
   unit: tsp
-- item: coriander powder
+- item: tamarind paste
   qty: '1'
   unit: tsp
-- item: light coconut milk
-  qty: '0.5'
-  unit: cup
+- item: curry leaves
+  qty: '12'
+  unit: leaves
 - item: salt
   qty: to taste
   unit: ''
-- item: fresh coriander
-  qty: '2'
-  unit: tbsp
 steps:
-- Clean and cut the chicken into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
-  paste and cook 1 minute.
-- Add turmeric and coriander powder; stir 30 seconds.
-- Add the chicken and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
-  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
-  5-6 min).
-- Finish with fresh coriander. Serve warm with rice or millet.
+- Dry-roast the red chillies, coriander seeds, cumin and peppercorns in a pan until
+  fragrant, then grind coarsely.
+- In the same pan, dry-roast the grated coconut until it turns light brown. Watch
+  it — it goes from golden to burnt fast.
+- Heat the coconut oil, fry the onion and curry leaves, then the ginger-garlic paste.
+- Add the chicken, turmeric, ground spice mix and salt. Cover and cook in its own
+  juices for 20 minutes.
+- Uncover, add the tamarind and roasted coconut, and keep cooking on medium until
+  completely dry and clinging.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
+prep_time_min: 20
+cook_time_min: 35
 approx_kcal_per_serving: 260
 kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based chicken sukka — no tomato, gently spiced and freshly
-  made.
+one_line: A dry Mangalorean-style chicken, roasted down with coconut until it clings
+  to the meat.
 headnote: Freshly cooked chicken in a light coconut-curry-leaf base keeps the meal
   clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
@@ -102,23 +106,30 @@ kcal_total: 340
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 280
-  protein_g: 18.0
-  carbs_g: 10.6
-  fat_g: 19.0
-  fibre_g: 2.5
-  iron_mg: 2.9
-  calcium_mg: 57.0
-  magnesium_mg: 51.4
-  zinc_mg: 1.5
-  potassium_mg: 455
-  folate_ug: 24.3
-  b12_ug: 0.2
-  vit_d_ug: 0.1
-  vit_c_mg: 6.6
-  omega3_mg: 67.9
+  kcal: 587
+  protein_g: 55.4
+  carbs_g: 17.6
+  fat_g: 32.9
+  fibre_g: 5.3
+  iron_mg: 4.1
+  calcium_mg: 85.4
+  magnesium_mg: 96.8
+  zinc_mg: 4.0
+  potassium_mg: 982
+  folate_ug: 41.8
+  b12_ug: 0.8
+  vit_d_ug: 0.2
+  vit_c_mg: 21.5
+  omega3_mg: 212
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- b12
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-26'
+nutrients_computed_at: '2026-07-27'
