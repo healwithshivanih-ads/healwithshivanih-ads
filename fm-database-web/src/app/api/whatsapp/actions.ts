@@ -176,6 +176,62 @@ async function waPost(body: Record<string, unknown>): Promise<WaPostResult> {
   };
 }
 
+// ── Live template status (replaces hardcoded approved/marketing lists) ───────
+//
+// The WA server proxies Meta's template list, so approval status and the
+// billing category are knowable at runtime. Before this, the message-templates
+// panel gated its Send button on a hand-maintained Set of template names —
+// which meant a newly-approved template stayed disabled until someone
+// remembered to edit code AND rebuild, and the MARKETING cost warning listed 2
+// templates when the WABA actually has dozens.
+//
+// This is the same class of bug the panel already carried once (it compared
+// local slugs against Meta template names, so everything read "Not approved"
+// until 2026-05-15). Reading the real source removes the class, not just the
+// instance.
+
+export interface WhatsAppTemplateStatus {
+  name: string;
+  status: string;   // APPROVED | PENDING | REJECTED | PAUSED …
+  category: string; // UTILITY | MARKETING | AUTHENTICATION
+}
+
+export async function listWhatsAppTemplateStatusAction(): Promise<{
+  ok: boolean;
+  items?: WhatsAppTemplateStatus[];
+  error?: string;
+}> {
+  if (!isWhatsappConfigured()) {
+    return { ok: false, error: "WhatsApp not configured" };
+  }
+  try {
+    const res = await fetch(`${WA_SERVER_URL}/api/templates`, {
+      headers: { "x-api-key": WA_SERVER_API_KEY },
+      signal: AbortSignal.timeout(WA_TIMEOUT_MS),
+      // Meta's list changes only when a template is submitted or approved.
+      // A short cache keeps the panel snappy without going stale for long.
+      next: { revalidate: 300 },
+    });
+    if (!res.ok) return { ok: false, error: `HTTP ${res.status}` };
+    const json = (await res.json()) as { items?: Array<Record<string, unknown>> };
+    const items = (json.items ?? [])
+      .filter((t): t is Record<string, unknown> => !!t && typeof t === "object")
+      .map((t) => ({
+        name: String(t.name ?? ""),
+        status: String(t.status ?? ""),
+        category: String(t.category ?? ""),
+      }))
+      .filter((t) => t.name);
+    return { ok: true, items };
+  } catch (err) {
+    const { code, message } = unwrapCause(err);
+    // Non-fatal by design: the caller falls back to its static list, so a
+    // flaky edge degrades the badge accuracy, never the ability to send.
+    console.error("[whatsapp] template status fetch failed:", code, message);
+    return { ok: false, error: `${code || "network"}: ${message}` };
+  }
+}
+
 // ── Single send ───────────────────────────────────────────────────────────────
 
 /**

@@ -7,6 +7,7 @@ import {
   deleteMessageTemplateAction,
   sendWhatsAppAction,
   checkWhatsAppConfigAction,
+  listWhatsAppTemplateStatusAction,
   recordOutboundMessageAction,
   type MessageTemplate,
 } from "@/app/api/whatsapp/actions";
@@ -21,22 +22,25 @@ interface Props {
 }
 
 /**
- * Meta-approved WhatsApp templates registered on the self-hosted WA server.
- * Inventory is the source of truth — see
- * ~/.claude/projects/-Users-shivani-code-healwithshivanih-ads/memory/project_whatsapp_templates.md
- * for the live mapping (template name → status → call site).
+ * Approval status + billing category now come from Meta at runtime, via the
+ * WA server's /api/templates proxy (see listWhatsAppTemplateStatusAction).
  *
- * Each MessageTemplate's `whatsapp_template_name` field is the Meta-approved
- * template; the check is against THAT name, not the local slug. Previous
- * implementation checked the slug ("lab-reminder") against template names
- * ("fm_lab_reminder") — they never matched, so the panel always showed
- * "Not approved". Fixed 2026-05-15.
+ * The sets below are FALLBACK ONLY — used when that call fails (the Fly edge
+ * is intermittently flaky; see the transport notes in whatsapp/actions.ts).
+ *
+ * Why the switch: these lists were hand-maintained, so a freshly-approved
+ * template stayed disabled in this panel until someone edited code and
+ * rebuilt — and the MARKETING list named 2 templates when the WABA actually
+ * carries dozens, meaning the 7×-cost warning silently under-reported. This
+ * panel has already been bitten once by a stale local notion of what Meta
+ * thinks (it compared local slugs like "lab-reminder" against Meta names like
+ * "fm_lab_reminder", so everything read "Not approved" until 2026-05-15).
+ * Reading the real source retires the whole class of bug.
+ *
+ * The check is always against `whatsapp_template_name` (the Meta name), never
+ * the local slug.
  */
-const APPROVED_WHATSAPP_TEMPLATES = new Set<string>([
-  // All 17 production templates APPROVED on the WABA as of 2026-05-16.
-  // The 5 listed here are the ones surfaced via the message-templates panel
-  // (manual sends). The other 12 are wired into cron / poll / handover code
-  // paths and never reach this UI — they don't need to live in this set.
+const FALLBACK_APPROVED_TEMPLATES = new Set<string>([
   "fm_lab_reminder",
   "fm_session_confirm",
   "fm_supplement_instructions",
@@ -44,20 +48,33 @@ const APPROVED_WHATSAPP_TEMPLATES = new Set<string>([
   "fm_checkin_nudge",
 ]);
 
-/** Meta-locked MARKETING category — 7× per-message cost vs UTILITY. */
-const MARKETING_WHATSAPP_TEMPLATES = new Set<string>([
+/** Meta-locked MARKETING category — ~7× per-message cost vs UTILITY. */
+const FALLBACK_MARKETING_TEMPLATES = new Set<string>([
   "fm_encouragement",
   "fm_checkin_nudge",
 ]);
 
-function isWhatsappApproved(template: { whatsapp_template_name?: string }): boolean {
-  if (!template.whatsapp_template_name) return false;
-  return APPROVED_WHATSAPP_TEMPLATES.has(template.whatsapp_template_name);
+/** Live Meta status keyed by template name; null until loaded (or on failure). */
+type TemplateStatusMap = Map<string, { status: string; category: string }> | null;
+
+function isWhatsappApproved(
+  template: { whatsapp_template_name?: string },
+  live: TemplateStatusMap,
+): boolean {
+  const name = template.whatsapp_template_name;
+  if (!name) return false;
+  if (live) return live.get(name)?.status === "APPROVED";
+  return FALLBACK_APPROVED_TEMPLATES.has(name);
 }
 
-function isWhatsappMarketing(template: { whatsapp_template_name?: string }): boolean {
-  if (!template.whatsapp_template_name) return false;
-  return MARKETING_WHATSAPP_TEMPLATES.has(template.whatsapp_template_name);
+function isWhatsappMarketing(
+  template: { whatsapp_template_name?: string },
+  live: TemplateStatusMap,
+): boolean {
+  const name = template.whatsapp_template_name;
+  if (!name) return false;
+  if (live) return live.get(name)?.category === "MARKETING";
+  return FALLBACK_MARKETING_TEMPLATES.has(name);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -218,6 +235,7 @@ function ComposeView({
   clientPhone,
   clientEmail,
   whatsappConfigured,
+  liveStatus,
   onBack,
 }: {
   template: MessageTemplate;
@@ -226,6 +244,7 @@ function ComposeView({
   clientPhone?: string;
   clientEmail?: string;
   whatsappConfigured?: boolean;
+  liveStatus: TemplateStatusMap;
   onBack: () => void;
 }) {
   const vars = extractVariables(template.body);
@@ -240,8 +259,14 @@ function ComposeView({
   const [sending, setSending] = useState(false);
   const [sendResult, setSendResult] = useState<{ ok: boolean; error?: string } | null>(null);
 
-  const whatsappApproved = isWhatsappApproved(template);
-  const whatsappMarketing = isWhatsappMarketing(template);
+  const whatsappApproved = isWhatsappApproved(template, liveStatus);
+  const whatsappMarketing = isWhatsappMarketing(template, liveStatus);
+  // When the live list loaded, we can say WHY a template isn't sendable —
+  // "PENDING at Meta" (wait) reads very differently from "never submitted"
+  // (act). Falls back to the vaguer wording when the status call failed.
+  const waMetaStatus = template.whatsapp_template_name
+    ? liveStatus?.get(template.whatsapp_template_name)?.status
+    : undefined;
   const filled = fillTemplate(template.body, values);
   // Meta rejects template sends with empty {{N}} placeholders (the WA
   // server bubbles this up as a generic `internal_error`). Disable the
@@ -414,10 +439,18 @@ function ComposeView({
           title={
             whatsappApproved
               ? "Template is Meta-approved + registered on the WhatsApp server. Send will work."
-              : "Template isn't Meta-approved yet. Email and copy still work; WhatsApp send is disabled."
+              : waMetaStatus === "PENDING"
+                ? "Submitted to Meta and awaiting review — usually minutes to 24h. It enables itself here once approved; no code change needed. Email and copy work now."
+                : waMetaStatus
+                  ? `Meta status: ${waMetaStatus}. WhatsApp send is disabled; email and copy still work.`
+                  : "Template isn't Meta-approved yet. Email and copy still work; WhatsApp send is disabled."
           }
         >
-          {whatsappApproved ? "✓ WhatsApp approved" : "⚠ Not approved"}
+          {whatsappApproved
+            ? "✓ WhatsApp approved"
+            : waMetaStatus === "PENDING"
+              ? "⏳ Awaiting Meta review"
+              : "⚠ Not approved"}
         </span>
         {whatsappMarketing && (
           <span
@@ -490,7 +523,9 @@ function ComposeView({
             className="text-[10px] text-muted-foreground italic"
             title="Template must be Meta-approved + registered on the WhatsApp server first"
           >
-            WhatsApp disabled — template not approved
+            {waMetaStatus === "PENDING"
+              ? "WhatsApp disabled — awaiting Meta review"
+              : "WhatsApp disabled — template not approved"}
           </span>
         )}
 
@@ -521,15 +556,26 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
   const [selected, setSelected] = useState<MessageTemplate | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [whatsappConfigured, setWhatsappConfigured] = useState<boolean>(whatsappConfiguredProp ?? false);
+  // Live Meta approval status. Stays null when the call fails, which is the
+  // signal for the helpers above to fall back to the static lists — a flaky
+  // WA server degrades badge accuracy, never the ability to send.
+  const [liveStatus, setLiveStatus] = useState<TemplateStatusMap>(null);
 
   const loadTemplates = useCallback(async () => {
     setLoading(true);
-    const [ts, cfg] = await Promise.all([
+    const [ts, cfg, statuses] = await Promise.all([
       loadMessageTemplatesAction(),
       checkWhatsAppConfigAction(),
+      listWhatsAppTemplateStatusAction(),
     ]);
     setTemplates(ts);
     setWhatsappConfigured(cfg.configured);
+    if (statuses.ok && statuses.items) {
+      setLiveStatus(new Map(statuses.items.map((t) => [t.name, { status: t.status, category: t.category }])));
+    } else {
+      setLiveStatus(null);
+      if (statuses.error) console.warn("[message-templates] live status unavailable:", statuses.error);
+    }
     setLoading(false);
   }, []);
 
@@ -651,6 +697,7 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
               clientPhone={clientPhone}
               clientEmail={clientEmail}
               whatsappConfigured={whatsappConfigured}
+              liveStatus={liveStatus}
               onBack={() => setSelected(null)}
             />
           </div>
