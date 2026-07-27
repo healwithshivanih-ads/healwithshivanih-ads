@@ -57,6 +57,125 @@ function cleanWaPhone(raw: string): string {
 // backend. The WA server accepts the phone string as-is and handles
 // normalisation server-side.
 
+// ── Transport: POST to the WA server, with timeout + connect-phase retry ─────
+//
+// The bug this fixes (2026-07-27): the coach clicked "Send via WhatsApp" and
+// got the bare string `Error: fetch failed`. That is undici's generic wrapper
+// — it says nothing about what went wrong, and critically nothing about
+// whether the message went out. Reproduced against the live Fly app: five
+// consecutive requests to whatsapp-server-shivani.fly.dev timed out at 25s
+// while the machine itself was `started` with health checks passing, then it
+// recovered on its own. A flaky Fly edge / cold path, not a config error.
+//
+// Two things were wrong and are fixed here:
+//   1. NO TIMEOUT. Node's fetch has no default deadline, so a hung edge left
+//      the Server Action pending until something upstream gave up. Now a hard
+//      25s AbortSignal.
+//   2. NO DIAGNOSIS. `fetch failed` hides `err.cause.code`. Now unwrapped and
+//      turned into a sentence that tells the coach what to do next AND
+//      whether anything was sent.
+//
+// RETRY POLICY — deliberately narrow. A retry after the server already
+// accepted the request would send the client the SAME WhatsApp message twice,
+// which is worse than a failed send. So we retry ONLY on connect-phase
+// failures, where the request provably never reached the app: DNS, refused
+// connection, TLS, connect timeout. A response-phase timeout or abort is
+// never retried — it is reported as "may or may not have gone out, check the
+// thread before resending".
+const WA_TIMEOUT_MS = 25_000;
+
+/** undici error codes that mean "we never got a request onto the wire". */
+const CONNECT_PHASE_CODES = new Set([
+  "ENOTFOUND",
+  "EAI_AGAIN",
+  "ECONNREFUSED",
+  "EHOSTUNREACH",
+  "ENETUNREACH",
+  "UND_ERR_CONNECT_TIMEOUT",
+  "CERT_HAS_EXPIRED",
+  "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+  "DEPTH_ZERO_SELF_SIGNED_CERT",
+]);
+
+function unwrapCause(err: unknown): { code: string; message: string } {
+  const e = err as { message?: string; name?: string; cause?: { code?: string; message?: string } };
+  return {
+    code: e?.cause?.code ?? (e?.name === "TimeoutError" || e?.name === "AbortError" ? "ETIMEDOUT" : ""),
+    message: e?.cause?.message ?? e?.message ?? "unknown error",
+  };
+}
+
+type WaPostResult =
+  | { ok: true; json: { ok?: boolean; error?: string; code?: string } }
+  | { ok: false; transportError: string };
+
+/**
+ * POST a JSON body to the WA server's /api/send. Returns either the parsed
+ * response (whatever it says — including app-level failures, which the caller
+ * maps to its own friendly text) or a transport error already phrased for the
+ * coach.
+ */
+async function waPost(body: Record<string, unknown>): Promise<WaPostResult> {
+  const MAX_ATTEMPTS = 2;
+  let last = { code: "", message: "" };
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      const res = await fetch(`${WA_SERVER_URL}/api/send`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(WA_TIMEOUT_MS),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        code?: string;
+      };
+      // Surface HTTP status to the caller when the body carried no error.
+      if (!res.ok && !json.error) json.error = `HTTP ${res.status}`;
+      if (!res.ok) json.ok = false;
+      return { ok: true, json };
+    } catch (err) {
+      last = unwrapCause(err);
+      const retryable = CONNECT_PHASE_CODES.has(last.code);
+      console.error(
+        `[whatsapp] send attempt ${attempt}/${MAX_ATTEMPTS} failed:`,
+        last.code || "(no code)",
+        last.message,
+        retryable ? "(retrying)" : "(not retrying)",
+      );
+      if (!retryable || attempt === MAX_ATTEMPTS) break;
+      await new Promise((r) => setTimeout(r, 1_500));
+    }
+  }
+
+  const host = WA_SERVER_URL.replace(/^https?:\/\//, "");
+  if (last.code === "ETIMEDOUT") {
+    return {
+      ok: false,
+      transportError:
+        `The WhatsApp server (${host}) did not respond within ${WA_TIMEOUT_MS / 1000}s. ` +
+        `It may still have sent the message — open the WhatsApp thread and check before resending, ` +
+        `or you'll message the client twice.`,
+    };
+  }
+  if (CONNECT_PHASE_CODES.has(last.code)) {
+    return {
+      ok: false,
+      transportError:
+        `Couldn't reach the WhatsApp server (${host}) — ${last.code}. ` +
+        `Nothing was sent. It's usually starting up or the network is flaky; wait ~15s and press Send again.`,
+    };
+  }
+  return {
+    ok: false,
+    transportError:
+      `WhatsApp server request failed${last.code ? ` (${last.code})` : ""}: ${last.message}. ` +
+      `Check the WhatsApp thread before resending in case it went out.`,
+  };
+}
+
 // ── Single send ───────────────────────────────────────────────────────────────
 
 /**
@@ -103,33 +222,16 @@ async function sendViaWaServer(
   // The WA server appends a button component with sub_type:"url" when this is set.
   if (opts?.buttonUrlParam) body.buttonUrlParam = opts.buttonUrlParam;
 
-  try {
-    const res = await fetch(`${WA_SERVER_URL}/api/send`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
-      body: JSON.stringify(body),
-    });
+  const out = await waPost(body);
+  if (!out.ok) return { ok: false, error: out.transportError, backend: "wa_server" };
 
-    const json = (await res.json().catch(() => ({}))) as {
-      ok?: boolean;
-      error?: string;
-      code?: string;
-    };
-
-    if (!res.ok || json.ok === false) {
-      const detail = json.error ?? `HTTP ${res.status}`;
-      const code = json.code ? ` [${json.code}]` : "";
-      return { ok: false, error: `WhatsApp server${code}: ${detail}`, backend: "wa_server" };
-    }
-    return { ok: true, backend: "wa_server" };
-  } catch (err) {
-    const e = err as { message?: string };
-    return {
-      ok: false,
-      error: e.message ?? "Network error calling WhatsApp server",
-      backend: "wa_server",
-    };
+  const { json } = out;
+  if (json.ok === false) {
+    const detail = json.error ?? "unknown error";
+    const code = json.code ? ` [${json.code}]` : "";
+    return { ok: false, error: `WhatsApp server${code}: ${detail}`, backend: "wa_server" };
   }
+  return { ok: true, backend: "wa_server" };
 }
 
 // sendViaAisensy removed 2026-05-15. AiSensy fully decommissioned.
@@ -164,34 +266,23 @@ export async function sendWhatsAppTextAction(
     origin: "api",
     originRef: "fm-coach",
   };
-  try {
-    const res = await fetch(`${WA_SERVER_URL}/api/send`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
-      body: JSON.stringify(body),
-    });
-    const json = (await res.json().catch(() => ({}))) as {
-      ok?: boolean;
-      error?: string;
-      code?: string;
-    };
-    if (!res.ok || json.ok === false) {
-      const detail = json.error ?? `HTTP ${res.status}`;
-      const code = json.code ? ` [${json.code}]` : "";
-      // Meta returns error 131047 "re-engagement message" when outside
-      // the 24-hour window — surface that clearly so coach knows to
-      // use a template instead.
-      const friendly =
-        json.code === "131047" || /re-engagement|24.hour/i.test(detail)
-          ? "24-hour reply window closed — use an approved template to start a fresh conversation."
-          : `WhatsApp server${code}: ${detail}`;
-      return { ok: false, error: friendly };
-    }
-    return { ok: true };
-  } catch (err) {
-    const e = err as { message?: string };
-    return { ok: false, error: e.message ?? "Network error calling WhatsApp server" };
+  const out = await waPost(body);
+  if (!out.ok) return { ok: false, error: out.transportError };
+
+  const { json } = out;
+  if (json.ok === false) {
+    const detail = json.error ?? "unknown error";
+    const code = json.code ? ` [${json.code}]` : "";
+    // Meta returns error 131047 "re-engagement message" when outside
+    // the 24-hour window — surface that clearly so coach knows to
+    // use a template instead.
+    const friendly =
+      json.code === "131047" || /re-engagement|24.hour/i.test(detail)
+        ? "24-hour reply window closed — use an approved template to start a fresh conversation."
+        : `WhatsApp server${code}: ${detail}`;
+    return { ok: false, error: friendly };
   }
+  return { ok: true };
 }
 
 // ── Outbound logging (for chat-thread view) ──────────────────────────────────
@@ -388,30 +479,18 @@ export async function sendVoiceNoteAction(input: {
     originRef: "fm-coach",
   };
 
-  try {
-    const res = await fetch(`${WA_SERVER_URL}/api/send`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
-      body: JSON.stringify(body),
-    });
-    const json = (await res.json().catch(() => ({}))) as {
-      ok?: boolean;
-      error?: string;
-      code?: string;
-    };
-    if (!res.ok || json.ok === false) {
-      const detail = json.error ?? `HTTP ${res.status}`;
-      const friendly =
-        json.code === "outside_service_window" ||
-        json.code === "131047" ||
-        /re-engagement|24.hour|service.window/i.test(detail)
-          ? "24-hour reply window closed — the client must message you first (a real reply), then send the voice note within 24h."
-          : `WhatsApp server: ${detail}`;
-      return { ok: false, error: friendly };
-    }
-  } catch (err) {
-    const e = err as { message?: string };
-    return { ok: false, error: e.message ?? "Network error calling WhatsApp server" };
+  const out = await waPost(body);
+  if (!out.ok) return { ok: false, error: out.transportError };
+
+  if (out.json.ok === false) {
+    const detail = out.json.error ?? "unknown error";
+    const friendly =
+      out.json.code === "outside_service_window" ||
+      out.json.code === "131047" ||
+      /re-engagement|24.hour|service.window/i.test(detail)
+        ? "24-hour reply window closed — the client must message you first (a real reply), then send the voice note within 24h."
+        : `WhatsApp server: ${detail}`;
+    return { ok: false, error: friendly };
   }
 
   // Record into the chat thread (never block the send return on the audit).
