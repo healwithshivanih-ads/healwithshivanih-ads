@@ -28,6 +28,9 @@ ingredients:
 - item: cabbage, finely shredded
   qty: '4'
   unit: cup
+- item: shallots (or 1/4 small onion), sliced
+  qty: '4'
+  unit: piece
 - item: grated fresh coconut
   qty: '0.75'
   unit: cup
@@ -63,9 +66,11 @@ ingredients:
   unit: ''
 steps:
 - Crush the coconut coarsely with the green chilli, garlic and cumin — a few pulses
-  in a mortar, not a paste. This crushed mix is what makes a thoran a thoran.
+  in a mortar, not a paste. Some households instead fold in plain grated coconut;
+  both are done, and crushing releases more moisture.
 - Splutter the mustard seeds in the coconut oil, add the urad dal, red chilli and
   curry leaves.
+- Add the shallots and soften them for a minute — every Kerala version starts here.
 - Add the cabbage with the turmeric and salt and toss on high.
 - Cover and cook 5 minutes on low — the cabbage should steam in its own water, with
   none added.
@@ -98,6 +103,7 @@ sources:
 - id: shivani-hari-original
   location: Cabbage-coconut thoran
 version: 1
+kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
@@ -121,7 +127,7 @@ nutrients_per_serving:
   vit_d_ug: 0.0
   vit_c_mg: 79.1
   omega3_mg: 34.4
-nutrient_coverage_pct: 100.0
+nutrient_coverage_pct: 94.0
 rich_in:
 - fibre
 - potassium

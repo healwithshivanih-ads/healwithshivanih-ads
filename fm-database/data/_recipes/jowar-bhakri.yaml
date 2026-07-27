@@ -36,14 +36,17 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Make the dough exactly as for roti, with boiling salted water, but keep it a shade
-  stiffer.
-- Pat each ball out THICKER than a roti — about twice as thick — on a board dusted
-  with dry jowar flour.
-- Cook on a medium tawa, not a hot one. A bhakri needs longer and gentler heat to
-  cook through.
-- Turn once the base is speckled, then finish it directly over the flame for a few
-  seconds so it puffs.
+- Make the dough as for roti, with boiling salted water — soft and pliable. A stiff
+  dough is what cracks when you pat it out.
+- Pat each ball out slightly thicker than a roti, no more, on a board dusted with
+  dry jowar flour.
+- Cook on a medium-high tawa. A cool tawa makes a bhakri hard rather than gentle —
+  this is the commonest mistake.
+- Once the base has set, wet the top surface all over with your fingers before you
+  flip. This carries off the dusting flour, and the moistened skin is what sets and
+  lifts.
+- Turn, cook the watered side, then finish directly over the flame for a few seconds
+  so it puffs.
 - Serve hot with ghee or white butter.
 servings: '2'
 prep_time_min: 20
@@ -71,6 +74,7 @@ sources:
 - id: shivani-hari-original
   location: Jowar bhakri
 version: 1
+kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani

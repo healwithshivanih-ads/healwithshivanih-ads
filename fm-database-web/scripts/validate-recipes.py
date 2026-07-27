@@ -33,7 +33,7 @@ def main():
     directory = _dir()
     files = [f for f in sorted(glob.glob(os.path.join(directory, "*.yaml")))
              if not os.path.basename(f).startswith("_")]
-    errs, warns = [], []
+    errs, warns, untested = [], [], []
     by_ingredients = defaultdict(list)
     for fp in files:
         name = os.path.basename(fp)
@@ -45,6 +45,8 @@ def main():
             errs.append(f"{name}: not a mapping"); continue
         e, w = check_recipe(d, name)
         errs.extend(e); warns.extend(w)
+        if d.get("kitchen_tested") is False:
+            untested.append(name)
         k = _ingredient_key(d)
         if k:
             by_ingredients[k].append(name)
@@ -56,6 +58,9 @@ def main():
             warns.append(f"{len(group)} recipes share one identical ingredient list: "
                          + ", ".join(sorted(group)))
     print(f"checked {len(files)} recipe(s) in {directory}")
+    if untested:
+        print(f"  INFO  {len(untested)} recipe(s) marked kitchen_tested: false "
+              f"— AI-written, not yet cooked by anyone. Not an error; clear the flag as each is confirmed.")
     for w in warns: print(f"  WARN  {w}")
     for e in errs: print(f"  ERROR {e}")
     print(f"\n{len(errs)} error(s), {len(warns)} warning(s)")

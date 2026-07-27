@@ -416,6 +416,23 @@ export function DishPicker({
                       <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
                         {[r.kcalPerServing ? `${r.kcalPerServing} kcal` : null, r.time].filter(Boolean).join(" · ") || "no nutrition yet"}
                       </span>
+                      {!r.kitchenTested && (
+                        <span
+                          title="AI-written recipe — nobody has cooked it yet. Fine to use; worth a read before it goes to a client."
+                          style={{
+                            display: "inline-block",
+                            marginTop: 3,
+                            marginRight: 4,
+                            fontSize: 10,
+                            padding: "1px 5px",
+                            borderRadius: 4,
+                            background: "var(--fm-surface-sunken, #f0ece2)",
+                            color: "var(--fm-text-tertiary)",
+                          }}
+                        >
+                          untested
+                        </span>
+                      )}
                       {r.labMatchedTags && r.labMatchedTags.length > 0 && (
                         <span
                           title="This client is low on these on their latest labs — this dish is rich in them"

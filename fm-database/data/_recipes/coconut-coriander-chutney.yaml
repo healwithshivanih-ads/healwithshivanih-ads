@@ -54,6 +54,9 @@ ingredients:
 - item: mustard seeds
   qty: '0.5'
   unit: tsp
+- item: urad dal (for the tempering)
+  qty: '0.5'
+  unit: tsp
 - item: dry red chilli
   qty: '1'
   unit: piece
@@ -63,10 +66,12 @@ ingredients:
 steps:
 - Grind the coconut, coriander, roasted chana dal, green chilli, ginger, tamarind
   and salt with the water to a smooth chutney.
-- The roasted chana dal is what gives it body — without it the chutney separates.
+- The roasted chana dal thickens it and helps it hold together; it is optional, but
+  if you leave it out use less water.
 - Adjust with more water to the consistency you want.
-- For the tempering, splutter the mustard seeds in the coconut oil with the red chilli
-  and curry leaves.
+- For the tempering, splutter the mustard seeds in the coconut oil, then add the urad
+  dal and fry until it turns golden — that nuttiness is the point of the tadka. Add
+  the red chilli and curry leaves last.
 - Pour the tempering over the chutney and stir it in just before serving.
 servings: '2'
 prep_time_min: 12
@@ -94,6 +99,7 @@ sources:
 - id: shivani-hari-original
   location: Coconut-coriander chutney
 version: 1
+kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
@@ -102,21 +108,21 @@ kcal_total: 140
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 221
-  protein_g: 4.7
-  carbs_g: 15.5
+  kcal: 224
+  protein_g: 4.9
+  carbs_g: 16.1
   fat_g: 16.8
-  fibre_g: 5.4
+  fibre_g: 5.5
   iron_mg: 1.9
-  calcium_mg: 31.4
-  magnesium_mg: 36.7
+  calcium_mg: 32.9
+  magnesium_mg: 39.5
   zinc_mg: 0.9
-  potassium_mg: 317
-  folate_ug: 43.9
+  potassium_mg: 327
+  folate_ug: 46.2
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 11.6
-  omega3_mg: 17.0
+  omega3_mg: 18.5
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre

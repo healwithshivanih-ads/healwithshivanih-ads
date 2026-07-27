@@ -89,6 +89,7 @@ sources:
 - id: shivani-hari-original
   location: Nachni dosa
 version: 1
+kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
