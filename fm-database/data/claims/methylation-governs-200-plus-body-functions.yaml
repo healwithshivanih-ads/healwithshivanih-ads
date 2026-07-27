@@ -13,8 +13,8 @@ caveats:
 - The specific count of '200+' is a narrative simplification; the actual number of
   methylation-dependent reactions is likely much higher.
 linked_to_topics:
-- mthfr-methylation-gene
-- epigenetics-gene-expression-control
+- mthfr-methylation
+- epigenetics-lifestyle-gene-expression
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []

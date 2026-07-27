@@ -5,9 +5,9 @@ aliases:
 - early Alzheimer's
 - Parkinson's
 - post-COVID fatigue
-summary: Progressive deterioration in cognitive function. Low-carb and ketogenic diets enhance ketone supply to the brain,
-  providing an alternative fuel source particularly relevant in early Alzheimer's and Parkinson's. MCT oil is noted as an
-  adjunct.
+summary: Progressive deterioration in cognitive function. Low-carb and ketogenic diets
+  enhance ketone supply to the brain, providing an alternative fuel source particularly
+  relevant in early Alzheimer's and Parkinson's. MCT oil is noted as an adjunct.
 common_symptoms:
 - brain-fog
 - poor-concentration
@@ -15,13 +15,15 @@ common_symptoms:
 related_topics:
 - low-carb-diet
 - metabolic-syndrome
+- kirtan-kriya-meditation
 key_mechanisms:
 - amyloid-as-innate-immune-response
 - microglial-activation
 - mitochondrial-efficiency
 - neuroinflammation
 - ketone-metabolism
-coaching_scope_notes: Food-based support (low-carb, MCT-rich foods). MCT oil dosing is clinician scope.
+coaching_scope_notes: Food-based support (low-carb, MCT-rich foods). MCT oil dosing
+  is clinician scope.
 evidence_tier: plausible_emerging
 red_flags: []
 clinician_scope_notes: ''

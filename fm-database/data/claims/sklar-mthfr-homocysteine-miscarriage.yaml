@@ -7,8 +7,7 @@ statement: Homozygous MTHFR C677T or compound heterozygous MTHFR variants impair
   retested 8-12 weeks after starting.
 evidence_tier: plausible_emerging
 linked_to_topics:
-- methylation-mthfr
-- mthfr-gene-variant
+- mthfr-methylation
 - pre-ivf-root-cause-workup
 linked_to_mechanisms:
 - homocysteine-remethylation

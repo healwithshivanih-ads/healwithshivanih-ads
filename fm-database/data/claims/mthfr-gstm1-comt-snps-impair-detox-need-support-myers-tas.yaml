@@ -9,8 +9,8 @@ rationale: These common variants slow key detox and methylation steps; targeted 
 coaching_translation: Common genetic quirks (MTHFR, GSTM1, COMT) can slow detox —
   the right B-vitamin forms and detox-support nutrients help make up for it.
 linked_to_topics:
-- mthfr-gene-variant
-- comt-val158met
+- mthfr-methylation
+- comt-catechol-clearance
 - methylation-cycle
 linked_to_mechanisms:
 - methylation-cycle

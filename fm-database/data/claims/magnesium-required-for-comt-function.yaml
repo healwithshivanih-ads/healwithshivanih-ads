@@ -16,8 +16,8 @@ caveats:
 - Magnesium supplement form matters for absorption; clinician can advise on form and
   dose
 linked_to_topics:
-- comt-gene-catechol-clearance
-- mthfr-methylation-gene
+- comt-catechol-clearance
+- mthfr-methylation
 linked_to_supplements:
 - magnesium
 out_of_scope_notes: ''

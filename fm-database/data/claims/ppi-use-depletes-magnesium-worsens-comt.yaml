@@ -13,8 +13,8 @@ caveats:
 - PPI discontinuation should only occur under medical supervision
 - The specific COMT-impairment link is mechanistically inferred, not directly demonstrated
 linked_to_topics:
-- comt-gene-catechol-clearance
-- mthfr-methylation-gene
+- comt-catechol-clearance
+- mthfr-methylation
 linked_to_supplements:
 - magnesium
 out_of_scope_notes: ''

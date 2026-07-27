@@ -7,7 +7,7 @@ statement: Homozygous MTHFR variants (especially C677T/C677T) significantly redu
   intervention.
 evidence_tier: plausible_emerging
 linked_to_topics:
-- methylation-mthfr
+- mthfr-methylation
 - recurrent-pregnancy-loss
 - preconception-protocol
 linked_to_mechanisms:
