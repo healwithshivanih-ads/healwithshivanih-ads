@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   loadMessageTemplatesAction,
   saveMessageTemplateAction,
@@ -565,8 +565,14 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
   // WA server degrades badge accuracy, never the ability to send.
   const [liveStatus, setLiveStatus] = useState<TemplateStatusMap>(null);
 
+  // Stale-while-revalidate: only show the spinner on the very first load, so
+  // reopening the panel refreshes silently instead of flashing "Loading…".
+  // A ref, not `templates.length`, so loadTemplates keeps a stable identity
+  // and the open-effect below doesn't re-fire when the list changes.
+  const hasLoadedOnce = useRef(false);
+
   const loadTemplates = useCallback(async () => {
-    setLoading(true);
+    if (!hasLoadedOnce.current) setLoading(true);
     const [ts, cfg, statuses] = await Promise.all([
       loadMessageTemplatesAction(),
       checkWhatsAppConfigAction(),
@@ -580,14 +586,21 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
       setLiveStatus(null);
       if (statuses.error) console.warn("[message-templates] live status unavailable:", statuses.error);
     }
+    hasLoadedOnce.current = true;
     setLoading(false);
   }, []);
 
+  // Refetch on EVERY open, not just the first.
+  //
+  // This used to be `if (open && templates.length === 0)`, which loaded the
+  // list once per page session and never again. So a template added to
+  // message_templates.yaml (or newly approved at Meta) stayed invisible until
+  // a full page reload — closing and reopening the panel showed the same
+  // stale list, which reads exactly like "the template wasn't added".
+  // Cost of refetching is one small YAML read plus a 5-min-cached status call.
   useEffect(() => {
-    if (open && templates.length === 0) {
-      loadTemplates();
-    }
-  }, [open, templates.length, loadTemplates]);
+    if (open) loadTemplates();
+  }, [open, loadTemplates]);
 
   const handleDelete = async (slug: string) => {
     await deleteMessageTemplateAction(slug);
