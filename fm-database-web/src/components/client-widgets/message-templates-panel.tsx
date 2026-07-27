@@ -261,12 +261,17 @@ function ComposeView({
 
   const whatsappApproved = isWhatsappApproved(template, liveStatus);
   const whatsappMarketing = isWhatsappMarketing(template, liveStatus);
-  // When the live list loaded, we can say WHY a template isn't sendable —
-  // "PENDING at Meta" (wait) reads very differently from "never submitted"
-  // (act). Falls back to the vaguer wording when the status call failed.
-  const waMetaStatus = template.whatsapp_template_name
-    ? liveStatus?.get(template.whatsapp_template_name)?.status
-    : undefined;
+  // `liveStatus` is a live read of Meta, so "not approved" is now a fact
+  // rather than a stale local guess — worth saying so in the copy, because
+  // the coach's next move is "wait", not "go fix something".
+  //
+  // We can't distinguish PENDING from never-submitted: the WA server's
+  // /api/templates deliberately drops non-APPROVED rows (normalise() returns
+  // null unless status === 'APPROVED'), so both look identical from here.
+  // The copy below covers both honestly instead of guessing. To split them,
+  // the WA server route would need an opt-in ?status=all — not worth
+  // redeploying the live messaging server for a badge.
+  const liveStatusKnown = liveStatus !== null;
   const filled = fillTemplate(template.body, values);
   // Meta rejects template sends with empty {{N}} placeholders (the WA
   // server bubbles this up as a generic `internal_error`). Disable the
@@ -439,18 +444,12 @@ function ComposeView({
           title={
             whatsappApproved
               ? "Template is Meta-approved + registered on the WhatsApp server. Send will work."
-              : waMetaStatus === "PENDING"
-                ? "Submitted to Meta and awaiting review — usually minutes to 24h. It enables itself here once approved; no code change needed. Email and copy work now."
-                : waMetaStatus
-                  ? `Meta status: ${waMetaStatus}. WhatsApp send is disabled; email and copy still work.`
-                  : "Template isn't Meta-approved yet. Email and copy still work; WhatsApp send is disabled."
+              : liveStatusKnown
+                ? "Meta hasn't approved this template — it may be awaiting review (usually minutes to 24h) or never submitted. This badge is a live read of Meta, so once it clears, WhatsApp send enables itself here. No code change, no rebuild. Email and copy work now."
+                : "Template isn't Meta-approved yet. Email and copy still work; WhatsApp send is disabled."
           }
         >
-          {whatsappApproved
-            ? "✓ WhatsApp approved"
-            : waMetaStatus === "PENDING"
-              ? "⏳ Awaiting Meta review"
-              : "⚠ Not approved"}
+          {whatsappApproved ? "✓ WhatsApp approved" : "⚠ Not approved yet"}
         </span>
         {whatsappMarketing && (
           <span
@@ -523,8 +522,8 @@ function ComposeView({
             className="text-[10px] text-muted-foreground italic"
             title="Template must be Meta-approved + registered on the WhatsApp server first"
           >
-            {waMetaStatus === "PENDING"
-              ? "WhatsApp disabled — awaiting Meta review"
+            {liveStatusKnown
+              ? "WhatsApp disabled — not approved by Meta yet (enables itself once it clears)"
               : "WhatsApp disabled — template not approved"}
           </span>
         )}
