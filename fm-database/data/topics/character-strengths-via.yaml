@@ -1,21 +1,33 @@
 slug: character-strengths-via
-display_name: VIA Character Strengths + Mindfulness
+display_name: VIA Character Strengths
 aliases:
 - via strengths
 - signature strengths
 - mindful strengths
-summary: The VIA classification identifies 24 character strengths grouped in six virtues.
-  Coaches use signature-strength spotting and Mindful Strengths Use to help clients
-  apply what they're already good at to the change they want. Pairs naturally with
-  MI affirmations.
+- 24 character strengths
+summary: The VIA Institute's 24 character strengths (organised under 6 virtues) —
+  a values-based inventory used in coaching to help clients name what's right about
+  them and lean into their signature strengths as a lever for change. Pairs powerfully
+  with mindfulness practice for what Niemiec calls Mindfulness-Based Strengths Practice.
 related_topics:
 - positive-psychology-in-health-coaching
+- positive-psychology-health-coaching
+- motivational-interviewing
 sources:
 - id: fmca-m3-mindfulness-character-strengths-niemiec
   location: Niemiec interview
   quote: Mindfulness plus strengths — the two amplify each other.
+- id: fmca-m3-mindfulness-strengths-niemiec
+  location: Interview with Ryan Niemiec
+  quote: Character strengths — the 24 character strengths and pairing them with mindfulness
+    practice.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+common_symptoms: []
+red_flags: []
+key_mechanisms: []
+coaching_scope_notes: Use the free VIA survey in the foundation session; return to
+  signature strengths when the client feels stuck.

@@ -1,0 +1,36 @@
+slug: smart-smarter-goals
+display_name: SMART & SMARTER Goals in Coaching
+aliases:
+- smart goals
+- goal setting coaching
+summary: SMART goals are Specific, Measurable, Achievable, Relevant, and Time-bound;
+  SMARTER extends this with Evaluate and Reward (or Review and Reward). Used within
+  a client-centred model, the coach helps the client turn a global aspiration ('lose
+  weight', 'feel better') into a short-term, action-oriented weekly experiment linked
+  to their vision and values. Goals fail when they are extrinsically motivated, too
+  big, or disconnected from what actually matters to the client.
+common_symptoms: []
+red_flags: []
+related_topics:
+- motivational-interviewing
+- tiny-habits-behavior-design
+- functional-medicine-coaching
+key_mechanisms: []
+coaching_scope_notes: Co-create the goal with the client — never prescribe it. Test
+  it against their vision and their week.
+notes_for_coach: Use the Decisional Balance worksheet when the client has competing
+  goals.
+evidence_tier: strong
+sources:
+- id: fmca-m3-smarter-goals-part1-heller
+  location: Learning objectives
+  quote: Understand what it is to generate a SMART goal — explain the acronym SMARTER
+    goals as it relates to changing a habit or behavior.
+- id: fmca-m3-cia-smart-goal
+  location: Coaching demo
+  quote: This long-term goal of eating more vegetables over the short term — let's
+    translate it into something specific for this week.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

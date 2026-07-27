@@ -1,0 +1,31 @@
+slug: mi-oars-four-core-skills
+display_name: OARS — The Four Core MI Skills
+aliases:
+- oars
+- open questions affirmations reflections summaries
+summary: 'The four core communication skills used throughout every MI task: Open questions
+  (invite talk, create forward momentum), Affirmations (name a strength the client
+  already has, without praise or cheerleading), Reflections (simple and complex —
+  feed the client''s own words back so they hear themselves), and Summaries (gather
+  what''s been said and hand the thread back). Used differently in each task — reflections
+  dominate in Engaging; open questions and complex reflections drive Evoking.'
+common_symptoms: []
+red_flags: []
+related_topics:
+- motivational-interviewing
+- mi-four-processes
+- mi-affirmations
+- mi-complex-reflections
+key_mechanisms:
+- behavior-change-accountability
+coaching_scope_notes: OARS is the daily bread of coaching — practise it in every session.
+evidence_tier: strong
+sources:
+- id: fmca-m2-mi-oars-lanier
+  location: Definition and application
+  quote: Open questions, Affirmations, Reflections, Summaries, which is OARS. Those
+    are essential in all four of the tasks.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

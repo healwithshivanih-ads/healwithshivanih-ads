@@ -1,0 +1,29 @@
+slug: ukihca-beta-glucan-food-first
+statement: Beta-glucan (from oats, yeast or mushrooms) can be a helpful 'icing on
+  the cake' for immune support and gut microbiome — but it doesn't substitute for
+  the fundamentals. For muscle preservation in older adults, resistance training and
+  adequate protein come first; supplements only add on top of the foundation. Dose,
+  autoimmune interactions, and immunosuppressant timing sit with the client's doctor.
+evidence_tier: plausible_emerging
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: If a client asks about a supplement, first check the fundamentals
+  underneath — sleep, protein, movement, plants — then refer supplement specifics
+  to their clinician.
+out_of_scope_notes: Specific dosing or interactions with autoimmune conditions and
+  immunosuppressants.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ukihca-beta-glucan-dadamo-2026-05
+  location: Reflection notes
+  quote: A supplement like beta-glucan can be helpful icing on the cake, but it won't
+    make up for an unbalanced diet or missing fundamentals.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

@@ -1,0 +1,24 @@
+slug: fmca-m3-core-food-plan-first-step
+statement: The IFM Core Food Plan is the entry point — a first step off the Standard
+  American Diet, suitable for clients of all ages. Its multiple variations (omnivore,
+  vegan-with-soy, vegan-without-soy, vegetarian) make it a plan that respects preference.
+  Therapeutic plans (elimination, cardiometabolic, mito, detox) are only prescribed
+  by a clinician on top of this base.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: For most new clients, translate their clinician's advice into
+  a Core Food Plan first. Therapeutic plans layer on later.
+caveats: []
+linked_to_topics:
+- ifm-core-food-plan
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-core-food-plan-class
+  location: Introduction
+  quote: The Core Food Plan is a food plan for everybody of all ages.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

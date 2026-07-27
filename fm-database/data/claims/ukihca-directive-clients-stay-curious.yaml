@@ -1,18 +1,31 @@
 slug: ukihca-directive-clients-stay-curious
-statement: With clients who want a prescription, stay curious not prescriptive — explore
-  what has worked for them, educate on basics (like the Core Food Plan), refer to
-  a nutritionist for specifics while I help them implement. Ask how they learn and
-  what their barriers are.
-evidence_tier: plausible_emerging
+statement: When a client wants a 'prescription' — a specific diet, plan, supplement
+  — the coach's move is to stay curious rather than prescriptive. Explore what has
+  worked before, educate on the basics (like a core food plan), and refer to a nutritionist
+  or clinician for specific plans while continuing to help the client implement whatever
+  is chosen.
+evidence_tier: strong
 linked_to_topics:
 - coach-scope-and-legal-foundations
 - motivational-interviewing
+- coaching-scope-of-practice
 sources:
 - id: ukihca-csm-directive-clients-2026-02
   location: Reflection notes
   quote: Stay curious rather than prescriptive — educate on basics, refer for specifics.
-rationale: Keep a 3-question default for the 'just tell me what to do' client.
-version: 1
+- id: ukihca-directive-clients-2026-02b
+  location: Reflection notes
+  quote: Stay curious rather than prescriptive — explore what's worked, educate around
+    basics, and refer for a specific plan.
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+coaching_translation: 'A client-facing script: ''I''d love to help you implement a
+  plan — the specific plan is your clinician''s or nutritionist''s call. What has
+  worked for you before?'''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []

@@ -1,0 +1,28 @@
+slug: client-consent-informed-coaching
+display_name: Informed Consent in Health Coaching
+aliases:
+- informed consent coaching
+- client agreement
+summary: The written and verbal agreement between coach and client covering scope
+  of practice, confidentiality, cancellation policy, fees, session cadence, communication
+  norms, and the boundaries of the coaching relationship. Signed at intake and revisited
+  as needed. Distinct from HIPAA — coaches typically aren't HIPAA-covered entities,
+  but professional consent, ethics and confidentiality standards still apply.
+common_symptoms: []
+red_flags: []
+related_topics:
+- coaching-scope-of-practice
+- functional-medicine-coaching
+key_mechanisms: []
+coaching_scope_notes: Every client starts with an explicit written consent form covering
+  scope, confidentiality, fees, and boundaries.
+evidence_tier: strong
+sources:
+- id: fmca-m3-consent-ethics-jordan
+  location: Learning objectives
+  quote: List objectives for the client agreement and identify sources for continued
+    learning about ethical conduct within health coaching.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

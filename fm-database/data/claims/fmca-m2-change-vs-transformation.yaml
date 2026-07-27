@@ -1,0 +1,24 @@
+slug: fmca-m2-change-vs-transformation
+statement: Change and transformation are not the same. Change is behavioural, incremental
+  and always available. Transformation is a shift in identity or perception — it can
+  happen in a moment, without any behavioural change first. Coaching creates space
+  for both.
+evidence_tier: plausible_emerging
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: A single reflection that lands can transform a client — even
+  before any behaviour changes. Notice and honour those moments.
+caveats: []
+linked_to_topics:
+- stages-of-change
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m2-stages-of-change-class
+  location: Opening framing
+  quote: There is a big difference between change and transformation. Change is always
+    happening; transformation can happen in the moment.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

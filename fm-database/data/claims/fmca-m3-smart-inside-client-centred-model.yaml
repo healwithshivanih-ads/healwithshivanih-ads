@@ -1,0 +1,25 @@
+slug: fmca-m3-smart-inside-client-centred-model
+statement: SMART goals only work when generated inside a client-centred model — otherwise
+  they become a coach's prescription. The client-centred model rests on rapport, trust,
+  self-awareness, and the client choosing what to work on; SMART formatting comes
+  after that, not before.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: Never open a session with 'let's SMART-goal this'. The client
+  tells you what matters first; you help them shape it.
+caveats: []
+linked_to_topics:
+- smart-smarter-goals
+- motivational-interviewing
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-smarter-goals-part1-heller
+  location: Introduction
+  quote: Goal setting and behavior change within a client-centered model is all about
+    maintaining rapport, building that connection and trust.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

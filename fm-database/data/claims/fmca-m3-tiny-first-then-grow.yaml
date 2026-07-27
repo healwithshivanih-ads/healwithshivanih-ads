@@ -1,0 +1,22 @@
+slug: fmca-m3-tiny-first-then-grow
+statement: New behaviours must start tiny — small enough that the client can do them
+  on a bad day. Growth comes from repetition, not size. Ambition-first habits set
+  the client up to fail; tininess-first habits compound.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: If the client says '10 minutes of meditation daily', propose
+  one breath after tea. Growth is a bonus, not a target.
+caveats: []
+linked_to_topics:
+- tiny-habits-behavior-design
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-tiny-habits-fogg
+  location: Method
+  quote: Tiny Habits — a method within behavior design.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

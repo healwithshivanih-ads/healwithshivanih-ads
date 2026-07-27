@@ -1,15 +1,21 @@
 slug: mi-four-processes
-display_name: MI Four Processes — Engaging, Focusing, Evoking, Planning
+display_name: The Four Tasks of MI — Engaging, Focusing, Evoking, Planning
 aliases:
 - engaging focusing evoking planning
 - mi processes
-summary: 'MI unfolds through four sequential, recursive processes: Engaging (building
-  the working relationship), Focusing (agreeing on a change target), Evoking (drawing
-  out the client''s own motivation and change talk), Planning (co-creating concrete
-  next steps when the client is ready).'
+- mi tasks
+- four processes of mi
+summary: 'MI unfolds through four sequential-but-overlapping tasks: Engaging (the
+  ''who'' — build the working relationship), Focusing (the ''what'' — agree on where
+  the session is going), Evoking (the ''why'' — the heart of MI, drawing out and strengthening
+  the client''s own change talk), and Planning (the ''how'' — moving from mobilising
+  change talk into concrete steps). Each task uses OARS differently — reflections
+  dominate Engaging; evoking uses complex reflections and open questions strategically.'
 related_topics:
 - motivational-interviewing
 - mi-oars
+- mi-oars-four-core-skills
+- ambivalence-in-coaching
 sources:
 - id: fmca-m2-mi-focusing-lanier
   location: Focusing task transcript
@@ -18,8 +24,17 @@ sources:
 - id: fmca-m2-mi-evoking-lanier
   location: Evoking task transcript
   quote: Evoking is drawing out the client's own arguments for change.
+- id: fmca-m2-mi-planning-lanier
+  location: Planning definition
+  quote: Engaging was about the who, focusing about the what, evoking about the why,
+    and planning about the how.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+common_symptoms: []
+red_flags: []
+key_mechanisms: []
+coaching_scope_notes: Every session moves through some subset of these four tasks
+  — don't leap into planning until the client is ready.

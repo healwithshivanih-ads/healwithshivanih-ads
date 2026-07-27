@@ -1,0 +1,30 @@
+slug: fmca-m3-hipaa-usually-doesnt-apply-to-coaches
+statement: HIPAA is a US federal statute that protects Protected Health Information
+  held by 'covered entities' — healthcare providers, systems, insurers. Because health
+  coaches are typically not licensed healthcare providers or covered entities, HIPAA
+  usually doesn't apply directly to them. Coaches still follow professional confidentiality
+  standards and should document consent explicitly.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: Don't call your work 'HIPAA compliant' just because you're careful.
+  Use 'confidentiality-first' language and get real consent.
+out_of_scope_notes: US-jurisdiction-specific — check local regulations for coaches
+  in other countries.
+caveats:
+- US context. India and UK coaches follow their own data-protection frameworks (DPDPA,
+  GDPR).
+linked_to_topics:
+- client-consent-informed-coaching
+- coaching-scope-of-practice
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-hipaa-fraley
+  location: Definition
+  quote: HIPAA is designed really to protect what they call protected health information
+    by covered entities.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

@@ -1,17 +1,22 @@
 slug: stages-of-change
-display_name: Transtheoretical Stages of Change (Prochaska–DiClemente)
+display_name: Stages of Change (Prochaska Transtheoretical Model)
 aliases:
 - ttm
 - transtheoretical model
 - prochaska
 - pre-contemplation contemplation preparation action maintenance
-summary: Behaviour change moves through pre-contemplation, contemplation, preparation,
-  action, maintenance (and sometimes relapse). Coach interventions are stage-matched
-  — consciousness-raising in early stages, decisional balance in contemplation, action
-  plans in preparation/action, relapse-prevention in maintenance. Movement is non-linear.
+- prochaska stages of change
+- readiness for change
+summary: 'Six stages a person moves through when changing a behaviour: Pre-contemplation,
+  Contemplation, Preparation, Action, Maintenance, and Recycle/Relapse (or Termination).
+  Movement is spiral, not linear — clients loop back, and recycling is normal. Coaches
+  match language and interventions to the client''s current stage: experiential processes
+  (awareness, feelings) in the earlier stages; behavioural processes (commitment,
+  environment, action) in the later stages.'
 related_topics:
 - motivational-interviewing
 - ambivalence-in-coaching
+- functional-medicine-coaching
 sources:
 - id: fmca-m2-stages-of-change-class
   location: Stages of Change class transcript
@@ -21,7 +26,15 @@ sources:
   location: Frates stages of change transcript
   quote: Match readiness to stage-specific activities and behavior-change processes.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+common_symptoms: []
+red_flags: []
+key_mechanisms:
+- behavior-change-accountability
+coaching_scope_notes: Assess the stage each visit — clients often move from maintenance
+  back into preparation. Ask permission before discussing lifestyle or behaviour change.
+notes_for_coach: Don't over-categorise. Use the stage to build rapport and identify
+  blocks, not to label the client.

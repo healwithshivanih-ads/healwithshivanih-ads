@@ -1,0 +1,23 @@
+slug: fmca-m3-fogg-behavior-b-map
+statement: The Fogg Behavior Model states Behavior = Motivation × Ability × Prompt
+  (B=MAP). All three must converge for the behaviour to happen. Since motivation fluctuates,
+  the reliable levers are increasing Ability (make it easier) and installing a clear
+  Prompt (a specific trigger).
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: 'When a client fails to do the habit, don''t lecture on discipline.
+  Ask: is it easy enough? Is the trigger clear?'
+caveats: []
+linked_to_topics:
+- tiny-habits-behavior-design
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-tiny-habits-fogg
+  location: Introduction to behavior design
+  quote: There's a method within behavior design I call Tiny Habits.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

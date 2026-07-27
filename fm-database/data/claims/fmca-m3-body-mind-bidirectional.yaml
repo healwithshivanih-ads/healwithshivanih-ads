@@ -1,0 +1,25 @@
+slug: fmca-m3-body-mind-bidirectional
+statement: The body and mind are integrated, and communication runs both ways. Positive
+  emotions and optimism measurably influence physical health markers; physical states
+  (posture, movement, breathing, illness) measurably influence mood and cognition.
+  Coaching that ignores either direction leaves leverage on the table.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: Coach both. When physical symptoms are unmoving, ask about emotional
+  state. When mood is stuck, ask about sleep, movement, breath.
+caveats: []
+linked_to_topics:
+- positive-psychology-health-coaching
+- functional-medicine-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-positive-psychology-taylor
+  location: Introduction
+  quote: Your body and your mind are inextricably interconnected. Many refer to the
+    body mind as a bi-directional relationship.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

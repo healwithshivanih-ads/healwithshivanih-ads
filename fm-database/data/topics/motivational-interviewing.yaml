@@ -1,16 +1,23 @@
 slug: motivational-interviewing
-display_name: Motivational Interviewing (MI) in Coaching
+display_name: Motivational Interviewing (MI)
 aliases:
 - motivational interviewing
 - mi coaching
 - mi spirit
-summary: MI is a collaborative, goal-oriented style of communication that strengthens
-  a client's own motivation and commitment to change by exploring and resolving ambivalence.
-  In coaching it operates through the spirit (partnership, acceptance, compassion,
-  evocation) and the core skills (OARS).
+- mi
+- mi in coaching
+summary: A collaborative, client-centred conversational style for strengthening a
+  person's own motivation for change. Built on a specific 'spirit' (compassion, acceptance,
+  partnership, empowerment — the coach's CAPE) plus four tasks (Engaging, Focusing,
+  Evoking, Planning) and four core skills (OARS). MI is the foundational framework
+  in FMCA and NBHWC coaching for working with ambivalence without argument or advice-giving.
 related_topics:
 - ambivalence-in-coaching
 - coaching-scope-of-practice
+- mi-oars-four-core-skills
+- mi-four-processes
+- stages-of-change
+- functional-medicine-coaching
 sources:
 - id: fmca-m2-mi-oars-lanier
   location: Module 2 · OARS transcript
@@ -19,7 +26,18 @@ sources:
   location: Module 3 · MI Deep Dive
   quote: MI is a way of being with people, not a set of techniques to apply.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+common_symptoms: []
+red_flags: []
+key_mechanisms:
+- behavior-change-accountability
+coaching_scope_notes: 'MI is squarely coaching territory: use it in every task — build
+  engagement, agree on a focus, evoke and strengthen change talk, plan concrete steps.
+  Keep the CAPE spirit even in Planning.'
+clinician_scope_notes: MI does not replace clinical assessment, diagnosis, or treatment
+  decisions — those remain with the clinician.
+notes_for_coach: Simple, not easy. Miller's own words. Expect years of practice; record
+  and get feedback.

@@ -1,0 +1,28 @@
+slug: ifm-food-categories
+display_name: IFM Food Categories & Serving Sizes
+aliases:
+- ifm serving sizes
+- functional-medicine food categories
+summary: Educating clients in food categories and serving sizes replaces calorie counting
+  with a more sustainable, pattern-based approach. The clinician sets the calorie
+  range; the coach walks the client through the servings-per-category they need to
+  hit — matched to preferences, culture and goals.
+common_symptoms: []
+red_flags: []
+related_topics:
+- ifm-core-food-plan
+- functional-medicine-coaching
+key_mechanisms: []
+coaching_scope_notes: Educate on categories and servings; co-create the plan; evaluate
+  uptake.
+clinician_scope_notes: Calorie prescription and specific therapeutic plan sit with
+  the clinician.
+evidence_tier: plausible_emerging
+sources:
+- id: fmca-m3-ifm-food-categories-class
+  location: Learning objectives
+  quote: Clients understand serving sizes; they don't have to count calories.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

@@ -1,0 +1,23 @@
+slug: fmca-m3-overview-block-purpose
+statement: Module 3 integrates the MI/Stages foundation with functional-nutrition
+  education and the ethical/legal container (consent, HIPAA, liability, scope). By
+  the end the coach has both the communication style and the content scaffolding to
+  run a full FM coaching practice.
+evidence_tier: plausible_emerging
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+caveats: []
+linked_to_topics:
+- motivational-interviewing
+- ifm-core-food-plan
+- coaching-scope-of-practice
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-overview
+  location: Overview
+  quote: The coaching-process, functional-nutrition and ethics block.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

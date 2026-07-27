@@ -1,0 +1,27 @@
+slug: fmca-m3-ordering-labs-is-out-of-scope
+statement: Ordering laboratory tests or interpreting individual results for a client
+  crosses the line into practising medicine without a licence. Coaches educate on
+  patterns and translate a provider's interpretation, but do not order, interpret,
+  or recommend supplements based on a lab.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: If a client asks 'can you look at this lab?', translate it as
+  'let's take this to your clinician together — I'll help you frame the questions.'
+out_of_scope_notes: Interpreting labs, recommending supplements based on labs, or
+  ordering labs directly.
+caveats: []
+linked_to_topics:
+- coaching-scope-of-practice
+- client-consent-informed-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ukihca-legal-essentials-rattigan-2025-12d
+  location: Reflection notes
+  quote: Ordering or interpreting labs is practising medicine without a license and
+    damages trust with doctors.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

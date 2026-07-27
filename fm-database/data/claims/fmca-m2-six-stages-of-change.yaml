@@ -1,0 +1,24 @@
+slug: fmca-m2-six-stages-of-change
+statement: 'Prochaska''s Transtheoretical Model describes six stages: Pre-contemplation,
+  Contemplation, Preparation, Action, Maintenance, and Recycle (or Termination). Clients
+  move through them in a spiral — relapse and recycling are normal and not failure.
+  Assess the client''s stage every visit.'
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: 'Different language for each stage. Pre-contemplation: raise
+  awareness gently. Preparation: co-create the plan. Action: track and celebrate.'
+caveats: []
+linked_to_topics:
+- stages-of-change
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m2-stages-of-change-frates
+  location: Introduction
+  quote: 'We''ll have clients in all of these stages: pre-contemplation, contemplation,
+    preparation, action, maintenance, and then here we use the term recycle.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

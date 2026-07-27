@@ -1,0 +1,26 @@
+slug: fmca-m3-macros-personalise-not-prescribe
+statement: There is no universal macronutrient ratio — the right protein/fat/carb
+  split is personalised. What everyone agrees on is high micronutrient density from
+  produce; the macronutrient composition is tuned to the individual client's biology,
+  activity, goals and clinician's plan.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: Avoid the low-carb / high-fat / plant-based tribalism. Anchor
+  to plants; let the ratio follow the person.
+caveats: []
+linked_to_topics:
+- ifm-core-food-plan
+- ifm-food-categories
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-macronutrients-pfc-class
+  location: Framing
+  quote: The truth of the matter is it's all about personalization. What everybody
+    agrees with is the micronutrient content of fruits and vegetables needs to be
+    high.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

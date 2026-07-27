@@ -1,0 +1,23 @@
+slug: fmca-m3-summary-integration
+statement: The Module 3 summary reinforces that the coaching process is not a checklist
+  — it is a continuous integration of MI communication, functional-nutrition education,
+  and ethical/scope awareness across every session. The coach carries all three at
+  once.
+evidence_tier: plausible_emerging
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+caveats: []
+linked_to_topics:
+- motivational-interviewing
+- ifm-core-food-plan
+- coaching-scope-of-practice
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-summary
+  location: Summary
+  quote: Integrating MI, nutrition education, and ethics into the coaching process.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

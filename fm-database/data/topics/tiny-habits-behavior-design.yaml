@@ -1,23 +1,39 @@
 slug: tiny-habits-behavior-design
-display_name: Tiny Habits and Behavior Design (BJ Fogg)
+display_name: Tiny Habits & Behavior Design (BJ Fogg)
 aliases:
 - tiny habits
 - bj fogg
 - behavior design
 - fogg behavior model
-summary: 'BJ Fogg''s behavior-design framework: behaviour happens when motivation,
-  ability and prompt converge (B=MAP). The Tiny Habits method starts with the smallest
-  possible version of a behaviour, anchors it to an existing routine, and uses immediate
-  positive emotion to wire in the habit. Designed for durability, not willpower.'
+- b=map
+- tiny habits method
+summary: Stanford's BJ Fogg's Behavior Design frames every behaviour as Behavior =
+  Motivation × Ability × Prompt (B=MAP). Since motivation is unreliable, the reliable
+  levers are making the behaviour easier (Ability) and building a clear trigger (Prompt).
+  Tiny Habits attaches a shrunk-down new behaviour to an existing anchor ('After I
+  ___, I will ___') and celebrates immediately to wire in the emotion. Reliability
+  beats ambition — tiny wins compound.
 related_topics:
 - motivational-interviewing
+- smart-smarter-goals
+- functional-medicine-coaching
 sources:
 - id: fmca-m3-tiny-habits-fogg
   location: Tiny Habits Part 1 transcript
   quote: B=MAP — behavior happens when motivation, ability and prompt come together
     at the same moment.
+- id: ukihca-vision-tiny-habits-2025-12c
+  location: Reflection notes
+  quote: Tiny Habits and appreciative inquiry came up as practical tools worth revisiting.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+common_symptoms: []
+red_flags: []
+key_mechanisms: []
+coaching_scope_notes: Use as the default behaviour-installation tool — shrink the
+  ask, name the anchor, plan the celebration.
+notes_for_coach: If a habit is failing, first check whether Ability is too low — make
+  it easier before pushing motivation.

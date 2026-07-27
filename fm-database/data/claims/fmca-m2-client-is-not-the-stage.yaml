@@ -1,0 +1,23 @@
+slug: fmca-m2-client-is-not-the-stage
+statement: The stage of change is a lens, not a label. Clients are in the process
+  of change, not defined by their stage. Over-categorising loses the human in the
+  model — use the stage to build rapport and pick language, not to file the client.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: Never say 'they're a pre-contemplator' as if it's their identity.
+  Say 'right now, in this area, they're pre-contemplating.'
+caveats: []
+linked_to_topics:
+- stages-of-change
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m2-stages-of-change-class
+  location: Framing
+  quote: The patient is not the stage of change. The patient is in process of change,
+    and change is always available to them.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

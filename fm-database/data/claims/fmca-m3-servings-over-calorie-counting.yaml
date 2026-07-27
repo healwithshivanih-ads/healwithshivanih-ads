@@ -1,0 +1,24 @@
+slug: fmca-m3-servings-over-calorie-counting
+statement: Teaching clients food categories and servings is more sustainable than
+  calorie counting. Once the plan is set, the client tracks servings-per-category
+  rather than adding up calories — this preserves the flexibility to enjoy food and
+  reduces the disordered-eating risk of chronic calorie logging.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: Turn the client's clinician-set calorie level into a servings
+  sheet. Track servings, not calories, in check-ins.
+caveats: []
+linked_to_topics:
+- ifm-food-categories
+- ifm-core-food-plan
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-ifm-food-categories-class
+  location: Framing
+  quote: Clients understand serving sizes; they don't have to count calories.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

@@ -1,15 +1,27 @@
 slug: ukihca-marketing-invitation-not-pitch
-statement: 'Choose a niche so you know where your ideal clients are; sort options
-  by impact when overwhelmed; network with the coach hat on — offer value (a free
-  workshop), don''t pitch. Reframe: it''s not a pitch, it''s an invitation to connect.'
+statement: 'Marketing tips for coaches: choose a niche so you know where your ideal
+  clients gather; the antidote to ''too many ideas'' paralysis is sorting options
+  by impact and naming the underlying fear of committing. Networking works best with
+  the coach hat on — asking questions, offering value (like a free workshop) rather
+  than pitching. Reframe: it''s not a pitch, it''s an invitation to connect.'
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- coaching-scope-of-practice
 sources:
 - id: ukihca-marketing-tips-2025-12
   location: Reflection notes
   quote: It's not a pitch, it's an invitation to connect.
-rationale: 'Rewrite every outreach message: is this an invitation, or a pitch?'
-version: 1
+- id: ukihca-marketing-2025-12a
+  location: Reflection notes
+  quote: It's not a pitch, it's an invitation to connect.
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+coaching_translation: If networking feels icky, you're probably still trying to pitch.
+  Ask the person about their work and listen genuinely first.
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []

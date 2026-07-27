@@ -1,0 +1,26 @@
+slug: fmca-m3-therapeutic-plans-are-clinician-prescribed
+statement: The IFM therapeutic food-plan suite (Elimination, Cardiometabolic, Mito,
+  Detox, ReNew, Low-FODMAP, etc.) is prescribed by the clinician for a specific therapeutic
+  reason. The coach's job is to coach the plan the clinician has chosen — translate,
+  personalise, sustain — not to choose which plan a client should be on.
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: If a client asks 'should I be on AIP?', reflect it back to their
+  clinician. You coach whatever plan they land on.
+out_of_scope_notes: Selecting the therapeutic food plan is a clinical decision.
+caveats: []
+linked_to_topics:
+- ifm-food-categories
+- coaching-scope-of-practice
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m3-nutrition-navigating-class
+  location: Learning objectives
+  quote: The clinician is going to prescribe the calorie count, but the coach's job
+    is to be able to...
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani

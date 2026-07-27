@@ -1,0 +1,25 @@
+slug: fmca-m2-ask-permission-before-behavior-change
+statement: 'Asking permission before discussing lifestyle or behaviour change communicates
+  respect, builds autonomy and increases the likelihood of change. Sample phrasing:
+  ''Can we discuss sleep?'' ''Is it OK if I share what I noticed?'' Permission is
+  quick to ask and disproportionately effective.'
+evidence_tier: strong
+rationale: Coach-facing takeaway distilled from the live-call reflection; ready for
+  use in briefings and sessions.
+coaching_translation: Ask permission before EVERY topic shift, not just the sensitive
+  ones. It becomes a habit and the client feels it.
+caveats: []
+linked_to_topics:
+- motivational-interviewing
+- stages-of-change
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-m2-stages-of-change-frates
+  location: Asking permission
+  quote: Asking permission — requesting permission to discuss lifestyle or behavior
+    change communicates respect and builds client autonomy.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
