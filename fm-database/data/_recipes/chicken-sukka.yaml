@@ -75,9 +75,9 @@ steps:
 servings: '2'
 prep_time_min: 20
 cook_time_min: 35
-approx_kcal_per_serving: 260
+approx_kcal_per_serving: 587
 kcal_is_estimate: true
-protein_g: 24
+protein_g: 55.4
 good_for:
 - agni-digestive-fire
 one_line: A dry Mangalorean-style chicken, roasted down with coconut until it clings
@@ -101,9 +101,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 170
+kcal_per_serving: 587
 kcal_total: 340
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 587

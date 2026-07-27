@@ -69,7 +69,7 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 1
-approx_kcal_per_serving: 96
+approx_kcal_per_serving: 119
 kcal_is_estimate: true
 good_for:
 - agni-digestive-fire

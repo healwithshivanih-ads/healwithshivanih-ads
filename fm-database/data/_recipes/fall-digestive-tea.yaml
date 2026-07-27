@@ -49,7 +49,7 @@ steps:
 servings: '2'
 prep_time_min: 5
 cook_time_min: 15
-approx_kcal_per_serving: 10
+approx_kcal_per_serving: 2
 kcal_is_estimate: true
 protein_g: 0
 good_for:
@@ -81,9 +81,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 15
+kcal_per_serving: 2
 kcal_total: 30
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 2.1

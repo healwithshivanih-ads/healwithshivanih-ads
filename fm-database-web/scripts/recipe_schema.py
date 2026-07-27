@@ -72,8 +72,13 @@ MEAT_WORDS = ("chicken", "mutton", "lamb", "fish", "prawn", "shrimp", "crab", "m
 ROOT_WORDS = ("onion", "garlic", "potato", "carrot", "beet", "radish", "ginger",
               "turnip", "yam")
 
+# The trailing `s?` is load-bearing. Without it `\bcashew\b` matched "cashew
+# curd" but not "cashews", so foxtail-millet-pongal shipped with untagged
+# cashews while tofu-tikka was caught — the gate was blind to exactly the
+# spelling an ingredient list actually uses. Plurals were hand-listed for
+# egg/fish/shellfish and forgotten for the other 67 keywords.
 _ALLERGEN_RE = {
-    allergen: re.compile(r"\b(" + "|".join(re.escape(w) for w in words) + r")\b")
+    allergen: re.compile(r"\b(" + "|".join(re.escape(w) for w in words) + r")s?\b")
     for allergen, words in ALLERGEN_KEYWORDS.items()
 }
 
@@ -161,12 +166,18 @@ def check_recipe(d: dict, fname: str) -> tuple[list[str], list[str]]:
             f"{fname}: ingredients suggest {sorted(missed)} but contains_allergens "
             f"is {sorted(declared) or '[]'} — clients with that allergy are not filtered out")
 
-    # unfilled template slot: "mixed salad vegetables / sprouts (as named)"
-    # shipped to clients on 11 salads before anyone noticed
-    for ing in (d.get("ingredients") or []):
-        item = str(ing.get("item", "") if isinstance(ing, dict) else ing)
+    # unfilled template slot: "mixed salad vegetables / sprouts (as named)".
+    # main_ingredients is checked too — the first version of this guard only
+    # looked at `ingredients`, so 9 recipes kept the placeholder in
+    # main_ingredients and the validator reported zero. main_ingredients is
+    # not cosmetic: client-app.ts loads it as `mains` and the dish matcher
+    # searches it.
+    placeholder_sites = [str(i.get("item", "") if isinstance(i, dict) else i)
+                         for i in (d.get("ingredients") or [])]
+    placeholder_sites += [str(m) for m in (d.get("main_ingredients") or [])]
+    for item in placeholder_sites:
         if _PLACEHOLDER_RE.search(item):
-            errs.append(f"{fname}: ingredient {item!r} still holds a template placeholder "
+            errs.append(f"{fname}: {item!r} still holds a template placeholder "
                         f"— substitute the food the title names")
 
     # a name cut mid-parenthesis ("Prawn omelette (75g prawns") is a bad split,

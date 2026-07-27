@@ -71,9 +71,9 @@ steps:
 servings: '2'
 prep_time_min: 15
 cook_time_min: 25
-approx_kcal_per_serving: 90
+approx_kcal_per_serving: 106
 kcal_is_estimate: true
-protein_g: 3
+protein_g: 4.7
 good_for:
 - agni-digestive-fire
 - gut-microbiome
@@ -98,9 +98,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 40
+kcal_per_serving: 106
 kcal_total: 80
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 106

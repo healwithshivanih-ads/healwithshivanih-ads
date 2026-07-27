@@ -54,9 +54,9 @@ steps:
 servings: '1'
 prep_time_min: 5
 cook_time_min: 0
-approx_kcal_per_serving: 150
+approx_kcal_per_serving: 317
 kcal_is_estimate: true
-protein_g: 1
+protein_g: 2.3
 good_for:
 - constipation
 - agni-digestive-fire
@@ -83,9 +83,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 210
+kcal_per_serving: 317
 kcal_total: 210
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 317

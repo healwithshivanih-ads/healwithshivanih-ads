@@ -66,9 +66,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 20
-approx_kcal_per_serving: 180
+approx_kcal_per_serving: 300
 kcal_is_estimate: true
-protein_g: 10
+protein_g: 6.9
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
@@ -92,9 +92,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 225
+kcal_per_serving: 300
 kcal_total: 450
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 300

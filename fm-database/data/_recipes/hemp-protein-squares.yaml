@@ -62,9 +62,9 @@ steps:
 servings: '6'
 prep_time_min: 10
 cook_time_min: 0
-approx_kcal_per_serving: 200
+approx_kcal_per_serving: 165
 kcal_is_estimate: true
-protein_g: 8
+protein_g: 5.4
 good_for:
 - protein-adequacy-vegetarian
 - chronic-fatigue-syndrome
@@ -91,9 +91,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 120
+kcal_per_serving: 165
 kcal_total: 720
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 165

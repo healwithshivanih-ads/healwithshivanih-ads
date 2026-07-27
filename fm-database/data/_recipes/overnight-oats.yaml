@@ -58,8 +58,8 @@ steps:
 servings: '1'
 prep_time_min: 5
 cook_time_min: 0
-approx_kcal_per_serving: 340
-protein_g: 14
+approx_kcal_per_serving: 471
+protein_g: 17.7
 good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
@@ -67,8 +67,8 @@ one_line: No-cook oats soaked overnight with chia, berries and walnuts.
 headnote: Soak it the night before and breakfast is ready. The chia and oats give
   steady, fibre-rich energy; berries and walnuts add antioxidants and good fats.
 kcal_is_estimate: true
-kcal_per_serving: 340
-kcal_basis: estimate
+kcal_per_serving: 471
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

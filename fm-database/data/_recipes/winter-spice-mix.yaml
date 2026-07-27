@@ -57,9 +57,9 @@ steps:
 servings: makes 1/4 cup
 prep_time_min: 5
 cook_time_min: 5
-approx_kcal_per_serving: 10
+approx_kcal_per_serving: 47
 kcal_is_estimate: true
-protein_g: 0
+protein_g: 1.6
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -88,9 +88,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 20
+kcal_per_serving: 47
 kcal_total: 80
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 46.6

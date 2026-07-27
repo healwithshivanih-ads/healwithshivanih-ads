@@ -48,9 +48,9 @@ steps:
 servings: '1'
 prep_time_min: 5
 cook_time_min: 0
-approx_kcal_per_serving: 110
+approx_kcal_per_serving: 132
 kcal_is_estimate: true
-protein_g: 1
+protein_g: 2.1
 good_for:
 - anti-inflammatory-diet
 - constipation
@@ -79,9 +79,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 140
+kcal_per_serving: 132
 kcal_total: 140
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 132

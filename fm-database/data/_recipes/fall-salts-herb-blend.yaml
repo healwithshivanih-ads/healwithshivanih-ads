@@ -51,7 +51,7 @@ prep_time_min: 5
 cook_time_min: 0
 approx_kcal_per_serving: 3
 kcal_is_estimate: true
-protein_g: 0
+protein_g: 0.1
 good_for:
 - agni-digestive-fire
 one_line: A simple herb salt of sage, rosemary, thyme, and pepper — a fresh, non-Indian
@@ -78,9 +78,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 4
+kcal_per_serving: 3
 kcal_total: 45
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 2.6

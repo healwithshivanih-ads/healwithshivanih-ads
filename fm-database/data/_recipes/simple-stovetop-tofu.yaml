@@ -52,9 +52,9 @@ steps:
 servings: '3'
 prep_time_min: 5
 cook_time_min: 15
-approx_kcal_per_serving: 210
+approx_kcal_per_serving: 186
 kcal_is_estimate: true
-protein_g: 16
+protein_g: 12.6
 good_for:
 - protein-adequacy-vegetarian
 - agni-digestive-fire
@@ -82,9 +82,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 127
+kcal_per_serving: 186
 kcal_total: 380
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 186

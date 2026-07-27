@@ -42,19 +42,18 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Soak the rice and the dal-with-methi separately for 5 hours. If using whole ragi,
-  soak that too.
+- 'Soak the rice and the dal-with-methi separately for 5 hours. If using whole ragi,'
 - Grind the dal to a light aerated paste, then the rice and ragi finer.
-- Combine gently with salt and ferment overnight. Ragi batter looks darker and rises
-  less dramatically than white idli batter — that's normal.
+- 'Combine gently with salt and ferment overnight. Ragi batter looks darker and rises less dramatically than white idli batter — that''s normal.'
 - Pour into greased moulds and steam 12–14 minutes.
 - Rest 2 minutes before unmoulding or they tear.
-servings: '2'
+- 'This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. soak that too.'
+servings: '5'
 prep_time_min: 20
 cook_time_min: 18
-approx_kcal_per_serving: 180
+approx_kcal_per_serving: 251
 kcal_is_estimate: true
-protein_g: 10
+protein_g: 9.2
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
@@ -78,35 +77,31 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 190
+kcal_per_serving: 251
 kcal_total: 380
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 627
-  protein_g: 23.0
-  carbs_g: 126
-  fat_g: 2.8
-  fibre_g: 17.5
-  iron_mg: 8.5
-  calcium_mg: 402
-  magnesium_mg: 278
-  zinc_mg: 4.5
-  potassium_mg: 916
-  folate_ug: 144
+  kcal: 251
+  protein_g: 9.2
+  carbs_g: 50.5
+  fat_g: 1.1
+  fibre_g: 7.0
+  iron_mg: 3.4
+  calcium_mg: 161
+  magnesium_mg: 111
+  zinc_mg: 1.8
+  potassium_mg: 366
+  folate_ug: 57.6
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 110
+  omega3_mg: 43.9
 nutrient_coverage_pct: 92.6
 rich_in:
-- protein
 - fibre
 - iron
 - calcium
 - magnesium
-- zinc
-- potassium
-- folate
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'

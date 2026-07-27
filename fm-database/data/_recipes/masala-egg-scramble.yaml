@@ -69,16 +69,16 @@ steps:
 servings: '1'
 prep_time_min: 5
 cook_time_min: 8
-approx_kcal_per_serving: 290
-protein_g: 20
+approx_kcal_per_serving: 306
+protein_g: 21.2
 good_for:
 - digestion-and-nutrient-absorption
 one_line: A protein-packed Indian-style spiced egg scramble with greens.
 headnote: Eggs scrambled soft with onion, tomato and spinach — a fast, high-protein
   breakfast (akin to bhurji, kept creamy not dry).
 kcal_is_estimate: true
-kcal_per_serving: 290
-kcal_basis: estimate
+kcal_per_serving: 306
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

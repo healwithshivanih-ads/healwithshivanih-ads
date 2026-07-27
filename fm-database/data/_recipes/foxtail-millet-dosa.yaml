@@ -42,15 +42,15 @@ steps:
 - Rinse the foxtail millet well — millets carry more surface starch than rice.
 - Soak the millet separately, and the urad dal with methi, for 5 hours.
 - Grind the dal light and fluffy, then the millet slightly coarse. Mix with salt and
-  ferment 8–10 hours.
 - Millet batter ferments faster than rice batter in warm weather, so check it early.
 - Spread thin on a hot tawa, oil the edges, and cook until golden and crisp underneath.
-servings: '2'
+- 'This batter makes about 12 dosas — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. ferment 8–10 hours.'
+servings: '5'
 prep_time_min: 20
 cook_time_min: 22
-approx_kcal_per_serving: 180
+approx_kcal_per_serving: 356
 kcal_is_estimate: true
-protein_g: 10
+protein_g: 14.0
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
@@ -75,26 +75,26 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 250
+kcal_per_serving: 356
 kcal_total: 500
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 891
-  protein_g: 35.1
-  carbs_g: 139
-  fat_g: 22.1
-  fibre_g: 20.7
-  iron_mg: 9.4
-  calcium_mg: 128
-  magnesium_mg: 282
-  zinc_mg: 6.0
-  potassium_mg: 954
-  folate_ug: 136
+  kcal: 356
+  protein_g: 14.0
+  carbs_g: 55.4
+  fat_g: 8.9
+  fibre_g: 8.3
+  iron_mg: 3.8
+  calcium_mg: 51.1
+  magnesium_mg: 113
+  zinc_mg: 2.4
+  potassium_mg: 381
+  folate_ug: 54.4
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 269
+  omega3_mg: 108
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -102,7 +102,5 @@ rich_in:
 - iron
 - magnesium
 - zinc
-- potassium
-- folate
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'

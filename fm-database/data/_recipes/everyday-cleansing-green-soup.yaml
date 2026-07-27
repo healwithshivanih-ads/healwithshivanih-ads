@@ -68,9 +68,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 12
-approx_kcal_per_serving: 115
+approx_kcal_per_serving: 88
 kcal_is_estimate: true
-protein_g: 4
+protein_g: 3.5
 good_for:
 - agni-digestive-fire
 - detoxification-support
@@ -102,9 +102,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 60
+kcal_per_serving: 88
 kcal_total: 120
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 87.8

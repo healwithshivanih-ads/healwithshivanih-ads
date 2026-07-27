@@ -22,8 +22,9 @@ main_ingredients:
 - foxtail millet
 - moong dal
 - black pepper
-- ghee
-contains_allergens: []
+- ghee or coconut oil
+contains_allergens:
+- nuts
 ingredients:
 - item: foxtail millet
   qty: '0.75'
@@ -31,7 +32,7 @@ ingredients:
 - item: split yellow moong dal
   qty: '0.25'
   unit: cup
-- item: ghee
+- item: ghee or coconut oil
   qty: '2'
   unit: tbsp
 - item: cumin seeds
@@ -62,16 +63,16 @@ steps:
 - Dry-roast the moong dal until fragrant, then rinse it with the millet.
 - Pressure-cook the millet and dal with the water and salt for 3 whistles, or simmer
   covered until very soft. Pongal should be soft and loose, not grainy.
-- Heat the ghee in a small pan, fry the cashews, then add the cumin, crushed pepper,
+- Heat the ghee or coconut oil in a small pan, fry the cashews, then add the cumin, crushed pepper,
   ginger, curry leaves and hing.
 - Pour the whole tempering into the cooked pongal and stir it through.
 - Loosen with hot water if it tightens as it sits.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 30
-approx_kcal_per_serving: 260
+approx_kcal_per_serving: 477
 kcal_is_estimate: true
-protein_g: 6
+protein_g: 16.0
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
@@ -96,9 +97,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 290
+kcal_per_serving: 477
 kcal_total: 580
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 477

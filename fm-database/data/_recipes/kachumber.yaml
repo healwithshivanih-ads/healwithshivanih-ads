@@ -19,47 +19,52 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- mixed salad vegetables / sprouts (as named)
-- cucumber, diced
-- lemon juice
-- roasted cumin powder
-- rock salt
-- fresh coriander and mint
-- coconut oil or cold-pressed oil (optional)
+- tomato
+- onion
+- cucumber
+- lemon
+- roasted cumin
 contains_allergens: []
 ingredients:
-- item: tomato and onion, finely diced
-  qty: '2'
-  unit: cups
-- item: cucumber, diced
+- item: tomato, finely diced
+  qty: '1'
+  unit: cup
+- item: onion, finely diced
   qty: '0.5'
   unit: cup
-- item: lemon juice
+- item: cucumber, diced
   qty: '1'
+  unit: cup
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+- item: lemon juice
+  qty: '1.5'
   unit: tbsp
 - item: roasted cumin powder
   qty: '0.5'
   unit: tsp
-- item: rock salt
-  qty: to taste
+- item: black salt (kala namak)
+  qty: 'to taste'
   unit: ''
-- item: fresh coriander and mint
-  qty: '2'
-  unit: tbsp
-- item: coconut oil or cold-pressed oil (optional)
+- item: black pepper
   qty: '1'
-  unit: tsp
+  unit: pinch
 steps:
-- Chop or lightly steam the main vegetables/sprouts as appropriate (sprouts are gentler
-  on digestion lightly steamed).
-- Toss with cucumber, lemon juice, roasted cumin, and rock salt.
-- Fold through fresh herbs and a touch of oil if using. Serve fresh.
+- Dice the tomato, onion and cucumber to roughly the same small size — kachumber is judged on the knife work.
+- Toss them with the green chilli and coriander.
+- Add the lemon juice, roasted cumin, black salt and pepper and mix.
+- Salt LAST and only just before serving — salted early, the cucumber and tomato weep and you get a puddle.
+- Serve straight away, cold or at room temperature.
 servings: '2'
-prep_time_min: 10
-cook_time_min: 15
-approx_kcal_per_serving: 110
+prep_time_min: 12
+cook_time_min: 0
+approx_kcal_per_serving: 56
 kcal_is_estimate: true
-protein_g: 6
+protein_g: 1.7
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -83,9 +88,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 60
+kcal_per_serving: 56
 kcal_total: 120
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 56.0

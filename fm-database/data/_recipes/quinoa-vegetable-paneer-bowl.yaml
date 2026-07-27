@@ -64,16 +64,16 @@ steps:
 servings: '2'
 prep_time_min: 12
 cook_time_min: 12
-approx_kcal_per_serving: 360
-protein_g: 18
+approx_kcal_per_serving: 365
+protein_g: 15.9
 good_for:
 - digestion-and-nutrient-absorption
 one_line: A balanced bowl of quinoa, crisp vegetables and pan-seared paneer.
 headnote: 'A protein-forward bowl: quinoa for complex carbs, paneer for protein and
   crisp-tender vegetables, finished bright with lemon.'
 kcal_is_estimate: true
-kcal_per_serving: 360
-kcal_basis: estimate
+kcal_per_serving: 365
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

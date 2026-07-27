@@ -19,7 +19,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- mixed salad vegetables / sprouts (as named)
+- mixed sprouts
 - cucumber, diced
 - lemon juice
 - roasted cumin powder
@@ -57,9 +57,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 110
+approx_kcal_per_serving: 29
 kcal_is_estimate: true
-protein_g: 6
+protein_g: 0.4
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -83,9 +83,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 60
+kcal_per_serving: 29
 kcal_total: 120
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 29.0

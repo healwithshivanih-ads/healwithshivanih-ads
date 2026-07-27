@@ -43,9 +43,9 @@ steps:
 servings: '4'
 prep_time_min: 3
 cook_time_min: 0
-approx_kcal_per_serving: 125
+approx_kcal_per_serving: 128
 kcal_is_estimate: true
-protein_g: 0
+protein_g: 0.2
 good_for:
 - agni-digestive-fire
 one_line: A sharp lemon-olive oil dressing seasoned with digestive spices — ready
@@ -71,9 +71,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 130
+kcal_per_serving: 128
 kcal_total: 520
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 128

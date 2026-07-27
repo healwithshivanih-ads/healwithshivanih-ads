@@ -39,19 +39,18 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Soak the rice and the dal-with-methi separately for 5–6 hours.
+- 'Soak the rice and the dal-with-methi separately for 5–6 hours.'
 - Grind the dal to a very light, aerated paste and the rice to a fine one. Combine
-  gently — the air you beat in is what makes idlis soft.
 - Add salt and ferment overnight until risen and mildly sour.
-- Grease the idli moulds, pour the batter in to about three-quarters, and steam for
-  10–12 minutes.
+- 'Grease the idli moulds, pour the batter in to about three-quarters, and steam for 10–12 minutes.'
 - A skewer should come out clean. Rest for 2 minutes before unmoulding.
-servings: '2'
+- 'This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. gently — the air you beat in is what makes idlis soft.'
+servings: '5'
 prep_time_min: 20
 cook_time_min: 15
-approx_kcal_per_serving: 180
+approx_kcal_per_serving: 333
 kcal_is_estimate: true
-protein_g: 10
+protein_g: 11.0
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
@@ -76,34 +75,28 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 110
+kcal_per_serving: 333
 kcal_total: 220
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 832
-  protein_g: 27.6
-  carbs_g: 174
-  fat_g: 2.0
-  fibre_g: 11.3
-  iron_mg: 5.4
-  calcium_mg: 87.0
-  magnesium_mg: 181
-  zinc_mg: 3.9
-  potassium_mg: 701
-  folate_ug: 125
+  kcal: 333
+  protein_g: 11.0
+  carbs_g: 69.7
+  fat_g: 0.8
+  fibre_g: 4.5
+  iron_mg: 2.1
+  calcium_mg: 34.8
+  magnesium_mg: 72.5
+  zinc_mg: 1.6
+  potassium_mg: 280
+  folate_ug: 50.0
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 103
+  omega3_mg: 41.4
 nutrient_coverage_pct: 94.0
 rich_in:
-- protein
-- fibre
-- iron
 - magnesium
-- zinc
-- potassium
-- folate
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'

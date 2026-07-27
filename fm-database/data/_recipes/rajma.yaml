@@ -75,16 +75,16 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 30
-approx_kcal_per_serving: 260
-protein_g: 13
+approx_kcal_per_serving: 354
+protein_g: 18.8
 good_for:
 - digestion-and-nutrient-absorption
 one_line: A comforting home-style kidney-bean curry, lightly spiced.
 headnote: Soaked-and-soft rajma in a simple onion-tomato base. High in plant protein
   and fibre; pairs with a small portion of rice.
 kcal_is_estimate: true
-kcal_per_serving: 260
-kcal_basis: estimate
+kcal_per_serving: 354
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

@@ -76,8 +76,8 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 290
-protein_g: 8
+approx_kcal_per_serving: 285
+protein_g: 8.1
 good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
@@ -85,8 +85,8 @@ one_line: A warming pearl-millet upma loaded with vegetables.
 headnote: Bajra rava gives this upma a nutty depth and a low-glycaemic, mineral-rich
   base. A hearty gluten-free breakfast.
 kcal_is_estimate: true
-kcal_per_serving: 290
-kcal_basis: estimate
+kcal_per_serving: 285
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

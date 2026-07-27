@@ -55,9 +55,9 @@ steps:
 servings: '2'
 prep_time_min: 6
 cook_time_min: 7
-approx_kcal_per_serving: 220
+approx_kcal_per_serving: 141
 kcal_is_estimate: true
-protein_g: 14
+protein_g: 9.9
 good_for:
 - agni-digestive-fire
 one_line: Scrambled eggs with onion, green chilli and turmeric — more warming than
@@ -81,9 +81,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 140
+kcal_per_serving: 141
 kcal_total: 280
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 141

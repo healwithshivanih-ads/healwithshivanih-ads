@@ -74,8 +74,8 @@ steps:
 servings: '2'
 prep_time_min: 12
 cook_time_min: 25
-approx_kcal_per_serving: 300
-protein_g: 11
+approx_kcal_per_serving: 449
+protein_g: 18.4
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -83,8 +83,8 @@ one_line: A vegetable-loaded moong kitchari — soft, soupy and gut-friendly.
 headnote: 'The everyday vegetable khichdi: moong dal, a small grain and whatever seasonal
   veg is on hand, cooked soft with a light tempering.'
 kcal_is_estimate: true
-kcal_per_serving: 300
-kcal_basis: estimate
+kcal_per_serving: 449
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

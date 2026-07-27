@@ -72,8 +72,8 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 18
-approx_kcal_per_serving: 300
-protein_g: 10
+approx_kcal_per_serving: 338
+protein_g: 11.3
 good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
@@ -81,8 +81,8 @@ one_line: A protein-rich quinoa upma with a South-Indian tempering.
 headnote: Quinoa stands in for rava here — more protein and a gentler glycaemic load,
   with the familiar mustard-curry-leaf tempering.
 kcal_is_estimate: true
-kcal_per_serving: 300
-kcal_basis: estimate
+kcal_per_serving: 338
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

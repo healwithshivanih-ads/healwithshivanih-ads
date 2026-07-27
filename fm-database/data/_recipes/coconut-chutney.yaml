@@ -61,9 +61,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 70
+approx_kcal_per_serving: 204
 kcal_is_estimate: true
-protein_g: 2
+protein_g: 1.8
 good_for:
 - agni-digestive-fire
 one_line: A fresh, bright coconut chutney to lift any meal — no preservatives, made
@@ -87,9 +87,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 110
+kcal_per_serving: 204
 kcal_total: 220
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 204

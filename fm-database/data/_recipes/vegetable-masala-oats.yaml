@@ -71,8 +71,8 @@ steps:
 servings: '1'
 prep_time_min: 8
 cook_time_min: 10
-approx_kcal_per_serving: 270
-protein_g: 9
+approx_kcal_per_serving: 301
+protein_g: 11.6
 good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
@@ -80,8 +80,8 @@ one_line: A savoury, vegetable-rich masala oats — upma-style.
 headnote: 'Oats cooked like upma: a quick savoury bowl with vegetables and a South-Indian
   tempering. A warm alternative to sweet oats.'
 kcal_is_estimate: true
-kcal_per_serving: 270
-kcal_basis: estimate
+kcal_per_serving: 301
+kcal_basis: ingredient_table_v1
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original

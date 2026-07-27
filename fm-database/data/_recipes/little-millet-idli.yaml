@@ -42,15 +42,15 @@ steps:
 - Rinse the little millet through several changes of water until it runs clear.
 - Soak the millet separately, and the urad dal with methi, for 5 hours.
 - Grind the dal very light, then the millet fine. Fold together with salt and ferment
-  overnight.
 - Pour into greased moulds and steam for 12 minutes.
-- These are slightly denser than rice idlis — don't overfill the moulds.
-servings: '2'
+- 'These are slightly denser than rice idlis — don''t overfill the moulds.'
+- 'This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. overnight.'
+servings: '5'
 prep_time_min: 20
 cook_time_min: 15
-approx_kcal_per_serving: 180
+approx_kcal_per_serving: 372
 kcal_is_estimate: true
-protein_g: 10
+protein_g: 13.9
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
@@ -74,26 +74,26 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 160
+kcal_per_serving: 372
 kcal_total: 320
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 929
-  protein_g: 34.8
-  carbs_g: 176
-  fat_g: 9.3
-  fibre_g: 23.1
-  iron_mg: 10.1
-  calcium_mg: 86.4
-  magnesium_mg: 363
-  zinc_mg: 5.1
-  potassium_mg: 888
-  folate_ug: 278
+  kcal: 372
+  protein_g: 13.9
+  carbs_g: 70.3
+  fat_g: 3.7
+  fibre_g: 9.2
+  iron_mg: 4.0
+  calcium_mg: 34.5
+  magnesium_mg: 145
+  zinc_mg: 2.0
+  potassium_mg: 355
+  folate_ug: 111
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 316
+  omega3_mg: 126
 nutrient_coverage_pct: 94.4
 rich_in:
 - protein
@@ -101,7 +101,6 @@ rich_in:
 - iron
 - magnesium
 - zinc
-- potassium
 - folate
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'

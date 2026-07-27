@@ -41,19 +41,16 @@ ingredients:
 steps:
 - Soak the rice separately, and the urad dal with the methi seeds, for 5–6 hours.
 - Grind the dal first to a light fluffy paste, then the rice to a slightly grainy
-  one. Mix, add salt, and ferment overnight.
-- The batter is ready when it has risen and smells pleasantly sour. Thin it with water
-  to a pouring consistency.
-- Heat a tawa until a drop of water skitters. Pour a ladle at the centre and spread
-  outward in a spiral.
-- Drizzle oil at the edges and cook until the base is golden and lifts away cleanly.
-  Fold and serve.
-servings: '2'
+- The batter is ready when it has risen and smells pleasantly sour. Thin it with water to a pouring consistency.
+- Heat a tawa until a drop of water skitters. Pour a ladle at the centre and spread outward in a spiral.
+- Drizzle oil at the edges and cook until the base is golden and lifts away cleanly. Fold and serve.
+- 'This batter makes about 12 dosas — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. one. Mix, add salt, and ferment overnight.'
+servings: '5'
 prep_time_min: 20
 cook_time_min: 25
-approx_kcal_per_serving: 180
+approx_kcal_per_serving: 381
 kcal_is_estimate: true
-protein_g: 10
+protein_g: 11.1
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
@@ -77,34 +74,28 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 210
+kcal_per_serving: 381
 kcal_total: 420
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 953
-  protein_g: 27.8
-  carbs_g: 175
-  fat_g: 15.5
-  fibre_g: 11.5
-  iron_mg: 5.7
-  calcium_mg: 88.5
-  magnesium_mg: 183
-  zinc_mg: 3.9
-  potassium_mg: 707
-  folate_ug: 126
+  kcal: 381
+  protein_g: 11.1
+  carbs_g: 69.9
+  fat_g: 6.2
+  fibre_g: 4.6
+  iron_mg: 2.3
+  calcium_mg: 35.4
+  magnesium_mg: 73.1
+  zinc_mg: 1.6
+  potassium_mg: 283
+  folate_ug: 50.2
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 207
+  omega3_mg: 82.7
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
-- fibre
-- iron
 - magnesium
-- zinc
-- potassium
-- folate
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'

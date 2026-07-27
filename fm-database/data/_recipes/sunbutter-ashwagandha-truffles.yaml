@@ -79,9 +79,9 @@ steps:
 servings: '12'
 prep_time_min: 20
 cook_time_min: 0
-approx_kcal_per_serving: 160
+approx_kcal_per_serving: 152
 kcal_is_estimate: true
-protein_g: 3
+protein_g: 3.2
 good_for:
 - adrenal-fatigue
 - agni-digestive-fire
@@ -110,9 +110,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 126
+kcal_per_serving: 152
 kcal_total: 1512
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 152

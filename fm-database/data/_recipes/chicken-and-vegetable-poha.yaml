@@ -26,7 +26,7 @@ ingredients:
 - item: thick poha (flattened rice)
   qty: '1.5'
   unit: cup
-- item: cooked chicken, shredded
+- item: cooked chicken, shredded (leftovers, or poach 200 g breast for 12 min)
   qty: '1'
   unit: cup
 - item: coconut oil
@@ -73,9 +73,9 @@ steps:
 servings: '2'
 prep_time_min: 15
 cook_time_min: 15
-approx_kcal_per_serving: 260
+approx_kcal_per_serving: 455
 kcal_is_estimate: true
-protein_g: 24
+protein_g: 23.2
 good_for:
 - agni-digestive-fire
 one_line: Flattened rice tossed with shredded chicken and vegetables — a savoury one-pan
@@ -99,9 +99,9 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 170
+kcal_per_serving: 455
 kcal_total: 340
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 455

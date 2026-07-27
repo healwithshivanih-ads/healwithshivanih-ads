@@ -72,7 +72,7 @@ steps:
 servings: '2'
 prep_time_min: 15
 cook_time_min: 25
-protein_g: 4
+protein_g: 3.0
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption

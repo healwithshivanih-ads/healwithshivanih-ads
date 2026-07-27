@@ -65,9 +65,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 0
-approx_kcal_per_serving: 260
+approx_kcal_per_serving: 395
 kcal_is_estimate: true
-protein_g: 7
+protein_g: 11.1
 good_for:
 - anti-inflammatory-diet
 - phytonutrient-dense-diet
@@ -95,9 +95,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 210
+kcal_per_serving: 395
 kcal_total: 420
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 395

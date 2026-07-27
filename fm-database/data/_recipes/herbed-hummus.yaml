@@ -66,9 +66,9 @@ steps:
 servings: '8'
 prep_time_min: 15
 cook_time_min: 120
-approx_kcal_per_serving: 180
+approx_kcal_per_serving: 297
 kcal_is_estimate: true
-protein_g: 7
+protein_g: 11.7
 good_for:
 - protein-adequacy-vegetarian
 - digestion-and-nutrient-absorption
@@ -97,9 +97,9 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 150
+kcal_per_serving: 297
 kcal_total: 1200
-kcal_basis: ai_haiku
+kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 297
