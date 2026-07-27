@@ -505,7 +505,7 @@ function ComposeView({
 
       {sendResult && (
         <p className={`text-xs rounded border px-3 py-2 ${sendResult.ok ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-red-200 bg-red-50 text-red-700"}`}>
-          {sendResult.ok ? "✓ Message sent via WhatsApp" : `Error: ${sendResult.error}`}
+          {sendResult.ok ? "✓ Message sent via WhatsApp" : `⚠ ${sendResult.error}`}
         </p>
       )}
     </div>
