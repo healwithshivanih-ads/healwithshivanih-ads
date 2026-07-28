@@ -22,9 +22,12 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { FmPanel } from "@/components/fm";
-import { quickEditActivePlanPractice } from "@/lib/server-actions/plan-lifecycle";
+import { quickEditActivePlanPractice, listSomaticPractices, type SomaticOption } from "@/lib/server-actions/plan-lifecycle";
+import { useEffect } from "react";
 
 export interface QuickEditPracticeRow {
+  /** catalogue somatic_practice slug, when the practice is a guided session */
+  somatic_practice?: string;
   name: string;
   cadence: string;
   details?: string;
@@ -231,12 +234,14 @@ function PracticeRow({
   const [name, setName] = useState(row.name);
   const [cadence, setCadence] = useState(row.cadence);
   const [details, setDetails] = useState(row.details ?? "");
+  const [somatic, setSomatic] = useState(row.somatic_practice ?? "");
   const [confirmRemove, setConfirmRemove] = useState(false);
 
   const dirty =
     name.trim() !== row.name ||
     cadence.trim() !== row.cadence ||
-    details.trim() !== (row.details ?? "").trim();
+    details.trim() !== (row.details ?? "").trim() ||
+    somatic !== (row.somatic_practice ?? "");
 
   const onSave = () => {
     if (!dirty || !name.trim()) return;
@@ -247,6 +252,7 @@ function PracticeRow({
         name: name.trim(),
         cadence: cadence.trim(),
         details: details.trim(),
+        somatic_practice: somatic,
       });
       if (!r.ok) return void toast.error(r.error);
       if (!r.changed) return void toast.info("No change to save");
@@ -324,6 +330,7 @@ function PracticeRow({
           placeholder="Full instructions — dose/timing/technique, written directly to the client."
         />
       </div>
+      <SomaticPicker value={somatic} onChange={setSomatic} disabled={pending} />
       <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
         {dirty && (
           <button onClick={onSave} disabled={pending} style={{ ...btn, background: "var(--fm-primary)", color: "#fff", border: 0 }}>
@@ -357,6 +364,55 @@ function PracticeRow({
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+/**
+ * Link a practice to a catalogue somatic practice.
+ *
+ * When linked, the client app resolves it BY SLUG and plays the real timed
+ * steps. Unlinked practices fall back to name pattern-matching, which cannot
+ * tell a specific practice from a generic one — so linking is what turns a
+ * written instruction into a guided session.
+ */
+function SomaticPicker({
+  value, onChange, disabled,
+}: { value: string; onChange: (v: string) => void; disabled?: boolean }) {
+  const [opts, setOpts] = useState<SomaticOption[]>([]);
+  useEffect(() => {
+    let live = true;
+    listSomaticPractices().then((o) => { if (live) setOpts(o); }).catch(() => {});
+    return () => { live = false; };
+  }, []);
+  const sel = opts.find((o) => o.slug === value);
+  return (
+    <div style={{ marginBottom: 8 }}>
+      <label style={labelStyle}>
+        Guided session{" "}
+        <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>
+          — plays the real timed steps in the app instead of just text
+        </span>
+      </label>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        disabled={disabled || opts.length === 0}
+        style={{ ...inputStyle, cursor: "pointer" }}
+      >
+        <option value="">Not guided — instructions only</option>
+        {opts.map((o) => (
+          <option key={o.slug} value={o.slug}>
+            {o.name}{o.seconds ? ` · ${Math.round(o.seconds / 60)} min` : ""}
+          </option>
+        ))}
+      </select>
+      {sel && (
+        <div style={{ fontSize: 11, color: "var(--fm-muted)", marginTop: 4 }}>
+          Plays as <strong>{sel.shape.replace(/_/g, " ")}</strong>
+          {sel.region ? ` · ${sel.region.replace(/_/g, " ")}` : ""}
+        </div>
+      )}
     </div>
   );
 }

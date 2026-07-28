@@ -534,6 +534,12 @@ export interface QuickPracticeEdit {
   name?: string;
   cadence?: string;
   details?: string;
+  /**
+   * Optional catalogue somatic_practice slug. When set, the client app resolves
+   * the practice BY SLUG and renders its real timed steps instead of
+   * pattern-matching the name. Pass "" to unlink.
+   */
+  somatic_practice?: string;
   remove?: boolean;
   reason?: string;
 }
@@ -580,13 +586,15 @@ export async function quickEditActivePlanPractice(
     if (edit.add) {
       const name = (edit.name ?? "").trim();
       if (!name) return { ok: false, error: "A practice name is required." };
+      const linked = (edit.somatic_practice ?? "").trim();
       practices.push({
         name,
         cadence: (edit.cadence ?? "").trim() || "daily",
         details: (edit.details ?? "").trim(),
+        ...(linked ? { somatic_practice: linked } : {}),
       });
       data.lifestyle_practices = practices;
-      summary = `Added practice: ${name}`;
+      summary = `Added practice: ${name}${linked ? ` (guided: ${linked})` : ""}`;
     } else {
       const idx = edit.index ?? -1;
       if (idx < 0 || idx >= practices.length) {
@@ -624,6 +632,16 @@ export async function quickEditActivePlanPractice(
         if (newDetails !== undefined && newDetails !== item.details) {
           changes.push("details edited");
           item.details = newDetails;
+        }
+        // "" unlinks; undefined leaves the existing link alone.
+        if (edit.somatic_practice !== undefined) {
+          const linked = edit.somatic_practice.trim();
+          const prev = (item.somatic_practice as string | undefined) ?? "";
+          if (linked !== prev) {
+            changes.push(linked ? `guided practice → ${linked}` : "guided practice unlinked");
+            if (linked) item.somatic_practice = linked;
+            else delete item.somatic_practice;
+          }
         }
         if (changes.length === 0) return { ok: true, changed: false };
         summary = `Adjusted practice "${item.name}" — ${changes.join("; ")}`;
@@ -1113,3 +1131,56 @@ export async function generateFollowUpPlan(
 // phase letters, staleness, refinement — ~900 lines) was removed. The
 // welcome email (src/lib/server-actions/welcome-email.ts) + the client
 // app are the only client-facing deliverables now.
+
+// ---------------------------------------------------------------------------
+// Somatic practice picker
+// ---------------------------------------------------------------------------
+
+export interface SomaticOption {
+  slug: string;
+  name: string;
+  shape: string;
+  seconds: number | null;
+  category: string;
+  /** Cautions that positively apply to THIS client — see contra_screen.py. */
+  region: string;
+}
+
+/**
+ * List the catalogue's somatic practices for the quick-edit picker.
+ *
+ * Only practices with an assigned motion_shape are offered: an unassigned one
+ * has no player, so linking it would produce a card the app refuses to render.
+ */
+export async function listSomaticPractices(): Promise<SomaticOption[]> {
+  try {
+    const { getCataloguePath } = await import("@/lib/fmdb/paths");
+    const { default: yaml } = await import("js-yaml");
+    const dir = path.join(getCataloguePath(), "somatic_practices");
+    const names = await fs.readdir(dir).catch(() => [] as string[]);
+    const out: SomaticOption[] = [];
+    for (const n of names) {
+      if (!n.endsWith(".yaml") || n.startsWith("_")) continue;
+      try {
+        const d = (yaml.load(await fs.readFile(path.join(dir, n), "utf-8")) ??
+          {}) as Record<string, unknown>;
+        const shape = typeof d.motion_shape === "string" ? d.motion_shape : "";
+        if (!shape) continue; // no player — do not offer it
+        out.push({
+          slug: String(d.slug ?? n.replace(/\.yaml$/, "")),
+          name: String(d.display_name ?? d.slug ?? ""),
+          shape,
+          seconds: typeof d.duration_seconds === "number" ? d.duration_seconds : null,
+          category: String(d.category ?? ""),
+          region: String(d.body_region ?? ""),
+        });
+      } catch {
+        /* skip a malformed record rather than break the picker */
+      }
+    }
+    out.sort((a, b) => a.name.localeCompare(b.name));
+    return out;
+  } catch {
+    return [];
+  }
+}
