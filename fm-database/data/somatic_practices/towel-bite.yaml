@@ -3,28 +3,26 @@ display_name: Towel Bite
 category: discharge
 body_region: jaw
 position: any_position
-summary: Biting and pulling against a rolled towel to give the jaw muscles a complete,
-  deliberate contraction-and-release — providing a physical outlet for suppressed
-  fight-impulse energy stored in the masseter and jaw complex.
-why_it_works: 'Nocturnal bruxism and jaw clenching often reflect an incomplete defensive
-  response: the body prepared to fight but the action was inhibited. Providing a genuine
-  isometric resistance allows the jaw muscles to complete the contraction cycle, discharging
-  the stored motor impulse and reducing the resting muscle tension that drives grinding.'
+summary: Biting and pulling against a rolled towel to give the jaw muscles a complete, deliberate
+  contraction-and-release — providing a physical outlet for suppressed fight-impulse energy stored
+  in the masseter and jaw complex.
+why_it_works: 'Nocturnal bruxism and jaw clenching often reflect an incomplete defensive response:
+  the body prepared to fight but the action was inhibited. Providing a genuine isometric resistance
+  allows the jaw muscles to complete the contraction cycle, discharging the stored motor impulse and
+  reducing the resting muscle tension that drives grinding.'
 steps:
 - label: Prepare towel
-  cue: Roll a small towel or face cloth into a firm cylinder about the thickness of
-    two fingers.
+  cue: Roll a small towel or face cloth into a firm cylinder about the thickness of two fingers.
   action: rest
   secs: 10
 - label: Position
-  cue: Place the towel between your upper and lower back teeth on one side. Hold the
-    other end of the towel firmly in both hands.
+  cue: Place the towel between your upper and lower back teeth on one side. Hold the other end of
+    the towel firmly in both hands.
   action: hold
   secs: 5
 - label: Bite and pull
-  cue: Bite down firmly on the towel while simultaneously pulling it outward with
-    your hands — so you are working against yourself. Let any sound or growl come
-    if it arises naturally.
+  cue: Bite down firmly on the towel while simultaneously pulling it outward with your hands — so
+    you are working against yourself. Let any sound or growl come if it arises naturally.
   action: press
   secs: 10
 - label: Release
@@ -45,11 +43,10 @@ linked_to_symptoms:
 - teeth-grinding
 - jaw-tension
 linked_to_topics: []
-notes_for_coach: Coach should frame this as giving the body a 'finishing move' for
-  an old unfinished fight response. Normalise any vocalisation — it is part of the
-  discharge.
+notes_for_coach: Coach should frame this as giving the body a 'finishing move' for an old unfinished
+  fight response. Normalise any vocalisation — it is part of the discharge.
 aliases: []
-motion_shape: ''
+motion_shape: load_release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:

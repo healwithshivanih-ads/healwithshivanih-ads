@@ -3,42 +3,39 @@ display_name: Laughter Release
 category: discharge
 body_region: abdomen
 position: any_position
-summary: A diaphragmatic laughter exercise that uses repeated 'ha ha ha' sounds to
-  create a pressure release through the belly and chest, serving as a discharge valve
-  for suppressed cardiovascular tension.
-why_it_works: Forced laughter engages the diaphragm in rapid, rhythmic contractions
-  that increase venous return and stimulate vagal afferents. Even simulated laughter
-  triggers neurochemical shifts including reduced cortisol and increased endorphin
-  activity. The physical release of diaphragmatic pressure may also reduce vascular
-  tone.
+summary: A diaphragmatic laughter exercise that uses repeated 'ha ha ha' sounds to create a pressure
+  release through the belly and chest, serving as a discharge valve for suppressed cardiovascular
+  tension.
+why_it_works: Forced laughter engages the diaphragm in rapid, rhythmic contractions that increase
+  venous return and stimulate vagal afferents. Even simulated laughter triggers neurochemical shifts
+  including reduced cortisol and increased endorphin activity. The physical release of diaphragmatic
+  pressure may also reduce vascular tone.
 steps:
 - label: Place hands on belly
   cue: Rest both hands flat on your lower belly, just below the navel.
   action: press
   secs: 5
 - label: Begin forced laughter
-  cue: Start repeating 'ha ha ha' out loud, pushing the sound up from your diaphragm
-    rather than your throat. It will feel odd and artificial — that is expected and
-    fine.
+  cue: Start repeating 'ha ha ha' out loud, pushing the sound up from your diaphragm rather than your
+    throat. It will feel odd and artificial — that is expected and fine.
   action: release
   secs: 30
 - label: Keep going
-  cue: Continue for the full two minutes. If it starts to feel more natural, or if
-    genuine laughter emerges, welcome it. If it stays silly and forced, that is also
-    working.
+  cue: Continue for the full two minutes. If it starts to feel more natural, or if genuine laughter
+    emerges, welcome it. If it stays silly and forced, that is also working.
   action: release
   secs: 90
 - label: Pause and notice
-  cue: Let the laughter stop and take two easy breaths. Notice whether anything in
-    the chest or belly feels different — looser, lighter, or simply less gripped.
+  cue: Let the laughter stop and take two easy breaths. Notice whether anything in the chest or belly
+    feels different — looser, lighter, or simply less gripped.
   action: observe
   secs: 15
 duration_seconds: 140
 timed: true
 bilateral: false
 contraindications:
-- Uncontrolled hypertension — vigorous exertion can transiently raise blood pressure;
-  obtain clearance first
+- Uncontrolled hypertension — vigorous exertion can transiently raise blood pressure; obtain clearance
+  first
 - Active abdominal hernia
 - Recent abdominal surgery
 linked_to_symptoms:
@@ -49,20 +46,19 @@ linked_to_topics:
 - blood-pressure-management
 - stress-management
 - nervous-system-regulation
-notes_for_coach: This practice can feel absurd, which is part of its value — interrupting
-  the seriousness that drives suppressed tension. Suitable for group settings where
-  social laughter can cascade naturally. Clients with significantly elevated BP should
-  have BP checked before beginning.
+notes_for_coach: This practice can feel absurd, which is part of its value — interrupting the seriousness
+  that drives suppressed tension. Suitable for group settings where social laughter can cascade naturally.
+  Clients with significantly elevated BP should have BP checked before beginning.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: load_release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 50. High Blood Pressure — SOMATIC RESET
-  quote: Put your hands on your belly. Begin to fake laugh—'ha ha ha'—from your diaphragm.
-    Keep going even though it feels ridiculous.
+  quote: Put your hands on your belly. Begin to fake laugh—'ha ha ha'—from your diaphragm. Keep going
+    even though it feels ridiculous.
 version: 1
 status: active
 updated_at: '2026-07-28'

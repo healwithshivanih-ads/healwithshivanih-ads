@@ -3,31 +3,30 @@ display_name: Constructive Rest
 category: other
 body_region: whole_body
 position: lying
-summary: A prolonged, completely passive supine rest position designed to dissolve
-  performance pressure by practising purposeful non-doing.
-why_it_works: Lying with knees bent and supported in a neutral, low-effort position
-  reduces postural muscle firing to a minimum and promotes parasympathetic dominance.
-  Deliberately removing any goal or task dissolves anticipatory cortisol and performance-related
-  sympathetic activation, allowing the body's regulatory baseline to reassert itself.
+summary: A prolonged, completely passive supine rest position designed to dissolve performance pressure
+  by practising purposeful non-doing.
+why_it_works: Lying with knees bent and supported in a neutral, low-effort position reduces postural
+  muscle firing to a minimum and promotes parasympathetic dominance. Deliberately removing any goal
+  or task dissolves anticipatory cortisol and performance-related sympathetic activation, allowing
+  the body's regulatory baseline to reassert itself.
 steps:
 - label: Lie down
-  cue: Come to lie on your back on a comfortable surface. Bend your knees and place
-    your feet flat on the floor, roughly hip-width apart.
+  cue: Come to lie on your back on a comfortable surface. Bend your knees and place your feet flat
+    on the floor, roughly hip-width apart.
   action: rest
   secs: 20
 - label: Let knees touch
-  cue: Allow your knees to lean gently toward each other so they rest together. This
-    is not a stretch — just a release.
+  cue: Allow your knees to lean gently toward each other so they rest together. This is not a stretch
+    — just a release.
   action: release
   secs: 10
 - label: Settle the arms
-  cue: Let your arms rest at your sides, palms down or up — whichever feels most at
-    ease.
+  cue: Let your arms rest at your sides, palms down or up — whichever feels most at ease.
   action: rest
   secs: 10
 - label: Do nothing
-  cue: Stay here for 10 to 20 minutes. There is no task, no goal, nothing to achieve.
-    Resist the urge to check your phone, plan, or problem-solve. Just be here.
+  cue: Stay here for 10 to 20 minutes. There is no task, no goal, nothing to achieve. Resist the urge
+    to check your phone, plan, or problem-solve. Just be here.
   action: observe
   secs: 900
 duration_seconds: 940
@@ -36,25 +35,24 @@ equipment:
 - yoga mat or carpeted floor
 contraindications:
 - Uncontrolled GERD — elevate upper body slightly
-- Late pregnancy — avoid supine positions for extended periods; use left side-lying
-  instead
+- Late pregnancy — avoid supine positions for extended periods; use left side-lying instead
 linked_to_topics:
 - stress-management
 - nervous-system-regulation
-notes_for_coach: Source entry is 87. Erectile Dysfunction. The practice itself is
-  broadly applicable to any performance-anxiety or chronic stress presentation.
+notes_for_coach: Source entry is 87. Erectile Dysfunction. The practice itself is broadly applicable
+  to any performance-anxiety or chronic stress presentation.
 aliases: []
 linked_to_symptoms: []
 bilateral: false
-motion_shape: ''
+motion_shape: release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 87. Erectile Dysfunction — SOMATIC RESET
-  quote: Lie on your back with knees bent, feet flat on the floor about hip-width
-    apart. Let your knees lean gently against each other. Arms rest at your sides.
-    Do nothing. Stay 10-20 minutes. Let yourself be completely useless on purpose.
+  quote: Lie on your back with knees bent, feet flat on the floor about hip-width apart. Let your
+    knees lean gently against each other. Arms rest at your sides. Do nothing. Stay 10-20 minutes.
+    Let yourself be completely useless on purpose.
 version: 1
 status: active
 updated_at: '2026-07-28'

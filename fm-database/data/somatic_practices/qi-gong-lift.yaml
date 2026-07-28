@@ -3,27 +3,24 @@ display_name: Qi Gong Lift
 category: movement
 body_region: whole_body
 position: standing
-summary: A slow, flowing bilateral arm-raise coordinated with breath to invite both
-  sides of the body back into balanced dialogue.
-why_it_works: Coordinated bilateral movement with conscious breath engages the motor
-  cortex symmetrically, encourages interhemispheric integration, and shifts the nervous
-  system out of habitual one-sided bracing patterns. The deliberate slow pace down-regulates
-  the sympathetic nervous system.
+summary: A slow, flowing bilateral arm-raise coordinated with breath to invite both sides of the body
+  back into balanced dialogue.
+why_it_works: Coordinated bilateral movement with conscious breath engages the motor cortex symmetrically,
+  encourages interhemispheric integration, and shifts the nervous system out of habitual one-sided
+  bracing patterns. The deliberate slow pace down-regulates the sympathetic nervous system.
 steps:
 - label: Set your stance
-  cue: Stand with your feet shoulder-width apart and let a gentle bend soften your
-    knees.
+  cue: Stand with your feet shoulder-width apart and let a gentle bend soften your knees.
   action: rest
   secs: 10
 - label: Inhale and lift
-  cue: As you inhale, slowly raise both arms out to your sides and then up overhead,
-    turning your palms to face the sky as they rise. Imagine drawing energy upward
-    through your whole body.
+  cue: As you inhale, slowly raise both arms out to your sides and then up overhead, turning your
+    palms to face the sky as they rise. Imagine drawing energy upward through your whole body.
   action: expand
   secs: 6
 - label: Exhale and lower
-  cue: As you exhale, slowly lower your arms back down to your sides, as though you
-    are moving through water — unhurried and fluid.
+  cue: As you exhale, slowly lower your arms back down to your sides, as though you are moving through
+    water — unhurried and fluid.
   action: release
   secs: 6
 reps: 10
@@ -38,19 +35,19 @@ linked_to_symptoms:
 - joint-pain
 linked_to_topics:
 - nervous-system-regulation
-notes_for_coach: Source states 10 repetitions. Total duration estimated at ~2 minutes
-  including setup. Cue client to move as slowly as possible.
+notes_for_coach: Source states 10 repetitions. Total duration estimated at ~2 minutes including setup.
+  Cue client to move as slowly as possible.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: breath_excursion
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 67. One-Sided Hip Pain — SOMATIC RESET
-  quote: Stand with feet shoulder-width apart, knees soft. Slowly raise your arms
-    out to the sides and up overhead, palms facing the sky, as you inhale. Exhale
-    and slowly lower your arms back down. Repeat 10 times, moving like you're underwater.
+  quote: Stand with feet shoulder-width apart, knees soft. Slowly raise your arms out to the sides
+    and up overhead, palms facing the sky, as you inhale. Exhale and slowly lower your arms back down.
+    Repeat 10 times, moving like you're underwater.
 version: 1
 status: active
 updated_at: '2026-07-28'

@@ -3,24 +3,24 @@ display_name: Free Dance
 category: movement
 body_region: whole_body
 position: standing
-summary: Put on music and allow the body to move however it wants, without directing
-  or choreographing. Sensation, not intention, guides the movement.
-why_it_works: Unstructured whole-body movement activates the motor cortex and cerebellum
-  in a way that competes with and interrupts repetitive cognitive loops, dispersing
-  the physiological arousal of chronic worry into physical discharge.
+summary: Put on music and allow the body to move however it wants, without directing or choreographing.
+  Sensation, not intention, guides the movement.
+why_it_works: Unstructured whole-body movement activates the motor cortex and cerebellum in a way
+  that competes with and interrupts repetitive cognitive loops, dispersing the physiological arousal
+  of chronic worry into physical discharge.
 steps:
 - label: Choose music
   cue: Pick any music that feels appealing right now and press play.
   action: observe
   secs: 15
 - label: Stand and arrive
-  cue: Stand with feet about hip-width apart and take a breath. Notice any impulse
-    to move — a sway, a foot tap, a shoulder roll.
+  cue: Stand with feet about hip-width apart and take a breath. Notice any impulse to move — a sway,
+    a foot tap, a shoulder roll.
   action: observe
   secs: 15
 - label: Follow sensation
-  cue: Let your body respond to the music without planning the next movement. If nothing
-    comes, start by shifting your weight slowly from foot to foot.
+  cue: Let your body respond to the music without planning the next movement. If nothing comes, start
+    by shifting your weight slowly from foot to foot.
   action: release
   secs: 0
 timed: false
@@ -35,19 +35,18 @@ linked_to_symptoms:
 linked_to_topics:
 - nervous-system-regulation
 - stress-management
-notes_for_coach: Duration is open-ended; even 2–3 minutes delivers benefit. Clients
-  with strong inner critics may resist 'doing it wrong' — emphasise that there is
-  no wrong.
+notes_for_coach: Duration is open-ended; even 2–3 minutes delivers benefit. Clients with strong inner
+  critics may resist 'doing it wrong' — emphasise that there is no wrong.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: checklist
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 15. Scalp Tightness — SOMATIC RESET
-  quote: Put on music and allow your body to move without planning or controlling
-    it. Let sensation guide you.
+  quote: Put on music and allow your body to move without planning or controlling it. Let sensation
+    guide you.
 version: 1
 status: active
 updated_at: '2026-07-28'

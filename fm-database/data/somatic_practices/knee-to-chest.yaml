@@ -5,9 +5,8 @@ category: touch
 body_region: lower_back_hips
 position: lying
 summary: A gentle held knee-to-chest, one to two minutes each side.
-why_it_works: Drawing a knee in and holding it is self-directed care in its simplest
-  form, and the position releases the lumbar extensors and psoas that brace under
-  sustained threat.
+why_it_works: Drawing a knee in and holding it is self-directed care in its simplest form, and the
+  position releases the lumbar extensors and psoas that brace under sustained threat.
 steps:
 - label: Lie down
   cue: Lie on your back, one leg extended or bent with the foot flat.
@@ -30,7 +29,7 @@ duration_seconds: 255
 bilateral: true
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: sustained_pressure
 contraindications:
 - Hip or knee replacement — check permitted range first
 - Acute back pain with leg symptoms

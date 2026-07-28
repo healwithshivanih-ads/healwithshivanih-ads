@@ -3,34 +3,31 @@ display_name: Movement Discharge
 category: discharge
 body_region: whole_body
 position: standing
-summary: A brief bout of vigorous free movement — walking fast, jogging, dancing,
-  shaking — intended to discharge accumulated anger or agitation from the body, followed
-  by a period of stillness to register the resulting aliveness.
-why_it_works: Sustained aerobic movement converts suppressed sympathetic arousal (fight
-  energy) into metabolic output, lowering circulating adrenaline and cortisol. The
-  active-to-still transition allows the nervous system to experience discharge completion
-  — the hallmark of a complete stress cycle.
+summary: A brief bout of vigorous free movement — walking fast, jogging, dancing, shaking — intended
+  to discharge accumulated anger or agitation from the body, followed by a period of stillness to
+  register the resulting aliveness.
+why_it_works: Sustained aerobic movement converts suppressed sympathetic arousal (fight energy) into
+  metabolic output, lowering circulating adrenaline and cortisol. The active-to-still transition allows
+  the nervous system to experience discharge completion — the hallmark of a complete stress cycle.
 steps:
 - label: Choose your movement
-  cue: 'Pick a form of vigorous movement: fast walking, jogging, energetic dancing,
-    or full-body shaking. There is no correct choice — whatever lets your body move
-    forcefully.'
+  cue: 'Pick a form of vigorous movement: fast walking, jogging, energetic dancing, or full-body shaking.
+    There is no correct choice — whatever lets your body move forcefully.'
   action: rest
   secs: 10
 - label: Move vigorously
-  cue: Move your body with real effort for five to ten minutes. Do not be restrained
-    about it. Let yourself breathe hard and build heat. If feelings arise, let the
-    movement carry them.
+  cue: Move your body with real effort for five to ten minutes. Do not be restrained about it. Let
+    yourself breathe hard and build heat. If feelings arise, let the movement carry them.
   action: release
   secs: 420
 - label: Stop and stand still
-  cue: Come to a complete stop. Stand still with your feet shoulder-width apart. Allow
-    your breathing to settle naturally.
+  cue: Come to a complete stop. Stand still with your feet shoulder-width apart. Allow your breathing
+    to settle naturally.
   action: rest
   secs: 30
 - label: Notice the aliveness
-  cue: With your eyes open or closed, scan your whole body. Notice tingling, warmth,
-    vibration, or any sense of energy moving. Stay with this for a minute or two.
+  cue: With your eyes open or closed, scan your whole body. Notice tingling, warmth, vibration, or
+    any sense of energy moving. Stay with this for a minute or two.
   action: observe
   secs: 90
 timed: true
@@ -42,24 +39,24 @@ linked_to_topics:
 linked_to_symptoms:
 - stress
 - irritability
-notes_for_coach: Clients with cardiovascular contraindications to vigorous exercise
-  should use gentle shaking in place rather than running. Remind clients this is for
-  emotional energy discharge, not fitness — the goal is to feel, not to perform.
+notes_for_coach: Clients with cardiovascular contraindications to vigorous exercise should use gentle
+  shaking in place rather than running. Remind clients this is for emotional energy discharge, not
+  fitness — the goal is to feel, not to perform.
 contraindications:
 - Unstable cardiovascular disease
 - Acute musculoskeletal injury
 - Severe osteoporosis
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 63. Liver Problems — SOMATIC RESET
-  quote: 'Move your body vigorously for 5-10 minutes: walk fast, jog, dance, shake,
-    whatever gets energy moving. Don''t be polite about it. Let yourself huff and
-    puff. Afterward, stand still and notice the aliveness in your body.'
+  quote: 'Move your body vigorously for 5-10 minutes: walk fast, jog, dance, shake, whatever gets
+    energy moving. Don''t be polite about it. Let yourself huff and puff. Afterward, stand still and
+    notice the aliveness in your body.'
 version: 1
 status: active
 updated_at: '2026-07-28'

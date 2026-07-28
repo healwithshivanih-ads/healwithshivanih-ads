@@ -3,16 +3,15 @@ display_name: Grief Sounding
 category: discharge
 body_region: abdomen
 position: any_position
-summary: A vocal release practice using low, spontaneous sound generated from the
-  belly to help move grief and unexpressed emotion through the body.
-why_it_works: Vocalisation activates the vagus nerve and the muscles of the larynx
-  and pharynx, which share autonomic pathways involved in the social engagement system.
-  Low-frequency abdominal sound production also vibrates the visceral fascia, helping
-  to discharge held tension in the body when verbal or tearful expression is insufficient.
+summary: A vocal release practice using low, spontaneous sound generated from the belly to help move
+  grief and unexpressed emotion through the body.
+why_it_works: Vocalisation activates the vagus nerve and the muscles of the larynx and pharynx, which
+  share autonomic pathways involved in the social engagement system. Low-frequency abdominal sound
+  production also vibrates the visceral fascia, helping to discharge held tension in the body when
+  verbal or tearful expression is insufficient.
 steps:
 - label: Find your position
-  cue: Sit comfortably upright or lie down in a position that feels supported and
-    safe.
+  cue: Sit comfortably upright or lie down in a position that feels supported and safe.
   action: rest
   secs: 20
 - label: Place hands on belly
@@ -24,14 +23,13 @@ steps:
   action: expand
   secs: 5
 - label: Sound on exhale
-  cue: As you breathe out, allow a low sound to rise from deep in your belly — not
-    shaped or controlled by your throat. It might emerge as a hum, a moan, or a cry.
-    Let it be whatever it is without editing it.
+  cue: As you breathe out, allow a low sound to rise from deep in your belly — not shaped or controlled
+    by your throat. It might emerge as a hum, a moan, or a cry. Let it be whatever it is without editing
+    it.
   action: release
   secs: 8
 - label: Continue sounding
-  cue: Keep breathing and sounding in this way. Stay with whatever arises. Continue
-    for 3 to 5 minutes.
+  cue: Keep breathing and sounding in this way. Stay with whatever arises. Continue for 3 to 5 minutes.
   action: release
   secs: 237
 duration_seconds: 280
@@ -43,21 +41,20 @@ contraindications:
 - History of dissociation — use with therapist guidance
 linked_to_topics:
 - recurrent-pregnancy-loss
-notes_for_coach: This practice is coach_only territory. Ensure the client has grief
-  support in place. Never introduce in a first session. Watch for dissociation.
+notes_for_coach: This practice is coach_only territory. Ensure the client has grief support in place.
+  Never introduce in a first session. Watch for dissociation.
 aliases: []
 linked_to_symptoms: []
 bilateral: false
-motion_shape: ''
+motion_shape: breath_excursion
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 82. Recurrent Miscarriage — SOMATIC RESET
-  quote: Sit or lie down. Place both hands on your lower belly. Breathe in slowly.
-    On the exhale, let a low sound come from deep in your body. Not from your throat;
-    from your belly. It might sound like a moan, a hum, a cry. Don't shape it. Let
-    it be whatever it is. Continue for 3-5 minutes.
+  quote: Sit or lie down. Place both hands on your lower belly. Breathe in slowly. On the exhale,
+    let a low sound come from deep in your body. Not from your throat; from your belly. It might sound
+    like a moan, a hum, a cry. Don't shape it. Let it be whatever it is. Continue for 3-5 minutes.
 version: 1
 status: active
 updated_at: '2026-07-28'

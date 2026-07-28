@@ -5,18 +5,16 @@ category: movement
 body_region: legs_feet
 position: standing
 summary: A standing awareness practice that releases habitual knee bracing.
-why_it_works: Chronically braced knees hold a background level of effort the person
-  no longer notices. Releasing a fraction of that tone restores normal proprioceptive
-  feedback through the whole leg.
+why_it_works: Chronically braced knees hold a background level of effort the person no longer notices.
+  Releasing a fraction of that tone restores normal proprioceptive feedback through the whole leg.
 steps:
 - label: Stand as you are
-  cue: Stand normally. Change nothing yet — just notice how you are holding your knees.
-    Locked? Braced? Slightly bent?
+  cue: Stand normally. Change nothing yet — just notice how you are holding your knees. Locked? Braced?
+    Slightly bent?
   secs: 40
   action: observe
 - label: Soften a fraction
-  cue: Let the knees release by the smallest amount you can manage — barely visible
-    from outside.
+  cue: Let the knees release by the smallest amount you can manage — barely visible from outside.
   secs: 30
   action: release
 - label: Breathe there
@@ -24,8 +22,7 @@ steps:
   secs: 40
   action: rest
 - label: Walk with it
-  cue: Take a few slow steps holding the same softness. Notice what changes above
-    and below the knee.
+  cue: Take a few slow steps holding the same softness. Notice what changes above and below the knee.
   secs: 70
   action: observe
 reps: null
@@ -33,7 +30,7 @@ duration_seconds: 180
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: release
 contraindications:
 - Hold a support if balance is unreliable
 - Stop with any sharp or locking knee pain

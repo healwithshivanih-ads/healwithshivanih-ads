@@ -3,36 +3,35 @@ display_name: Progressive Psoas Release
 category: movement
 body_region: chest_diaphragm
 position: lying
-summary: A prolonged constructive rest practice in which layers of support are gradually
-  removed from under the head, neck, and upper back, allowing the psoas muscle to
-  slowly release through the progressive shift from supported to unsupported lying.
-why_it_works: The psoas muscle attaches to the lumbar spine and diaphragm and chronically
-  contracts under threat states (fight-flight-freeze). Gradual removal of support
-  gives the nervous system incremental evidence of safety, allowing the psoas to release
-  its braced state without triggering a defence response — directly relieving diaphragm
-  restriction.
+summary: A prolonged constructive rest practice in which layers of support are gradually removed from
+  under the head, neck, and upper back, allowing the psoas muscle to slowly release through the progressive
+  shift from supported to unsupported lying.
+why_it_works: The psoas muscle attaches to the lumbar spine and diaphragm and chronically contracts
+  under threat states (fight-flight-freeze). Gradual removal of support gives the nervous system incremental
+  evidence of safety, allowing the psoas to release its braced state without triggering a defence
+  response — directly relieving diaphragm restriction.
 steps:
 - label: Begin with full support
-  cue: Lie on your back. Place a folded blanket or cushion beneath your head, neck,
-    and upper back so your torso is gently elevated. Let your arms rest at your sides.
-    Close your eyes and breathe slowly.
+  cue: Lie on your back. Place a folded blanket or cushion beneath your head, neck, and upper back
+    so your torso is gently elevated. Let your arms rest at your sides. Close your eyes and breathe
+    slowly.
   action: rest
   secs: 240
 - label: Reduce support slightly
-  cue: Without disrupting your breath, draw your shoulder blades gently down your
-    back and remove some of the folded material from beneath you so your upper back
-    lowers a little. Notice how the floor feels under you. Stay here breathing slowly.
+  cue: Without disrupting your breath, draw your shoulder blades gently down your back and remove
+    some of the folded material from beneath you so your upper back lowers a little. Notice how the
+    floor feels under you. Stay here breathing slowly.
   action: release
   secs: 240
 - label: Continue reducing support
-  cue: Again, lower yourself by removing more support. Keep the movements slow and
-    deliberate. Let your lower back feel heavy and drawn toward the floor.
+  cue: Again, lower yourself by removing more support. Keep the movements slow and deliberate. Let
+    your lower back feel heavy and drawn toward the floor.
   action: release
   secs: 240
 - label: Arrive fully flat
-  cue: When the last of the support is removed and you are completely flat on the
-    floor, rest here. Your lower back should feel grounded and settled rather than
-    arching away from the surface. Stay and breathe for the remaining time.
+  cue: When the last of the support is removed and you are completely flat on the floor, rest here.
+    Your lower back should feel grounded and settled rather than arching away from the surface. Stay
+    and breathe for the remaining time.
   action: rest
   secs: 280
 timed: true
@@ -46,24 +45,22 @@ linked_to_symptoms:
 linked_to_topics:
 - gut-brain-axis
 - nervous-system-regulation
-notes_for_coach: Total time is 15–20 minutes. This is not a stretch and should never
-  feel like one. If a client reports back pain during or after, stop and assess. The
-  diaphragm-lumbar spine connection means clients with low-back issues may find it
-  helpful — but proceed gently.
+notes_for_coach: Total time is 15–20 minutes. This is not a stretch and should never feel like one.
+  If a client reports back pain during or after, stop and assess. The diaphragm-lumbar spine connection
+  means clients with low-back issues may find it helpful — but proceed gently.
 contraindications:
 - Acute low back injury
-- Osteoporosis with vertebral fragility — use a padded surface and minimal removal
-  of support
+- Osteoporosis with vertebral fragility — use a padded surface and minimal removal of support
 aliases: []
-motion_shape: ''
+motion_shape: release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 61. Diaphragm Tightness — SOMATIC RESET
-  quote: Lie on your back with a folded blanket or cushion, elevating your head, neck,
-    and upper back. Stay here for 3-5 minutes, breathing slowly. Then, scoop your
-    shoulders down and remove some of the cushioning, lowering yourself slightly.
+  quote: Lie on your back with a folded blanket or cushion, elevating your head, neck, and upper back.
+    Stay here for 3-5 minutes, breathing slowly. Then, scoop your shoulders down and remove some of
+    the cushioning, lowering yourself slightly.
 version: 1
 status: active
 updated_at: '2026-07-28'

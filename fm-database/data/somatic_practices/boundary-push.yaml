@@ -5,30 +5,29 @@ aliases:
 category: discharge
 body_region: arms_hands
 position: standing
-summary: A standing wall-push exercise that channels unexpressed anger and boundary
-  frustration into a forceful physical act, completing a blocked protective response.
-why_it_works: Isometric pushing activates the same muscular chain used in a fight
-  response. Providing a physical outlet for the defensive impulse helps discharge
-  stored sympathetic activation and restores a felt sense of personal boundary.
+summary: A standing wall-push exercise that channels unexpressed anger and boundary frustration into
+  a forceful physical act, completing a blocked protective response.
+why_it_works: Isometric pushing activates the same muscular chain used in a fight response. Providing
+  a physical outlet for the defensive impulse helps discharge stored sympathetic activation and restores
+  a felt sense of personal boundary.
 steps:
 - label: Face the wall
-  cue: Stand about an arm's length from a wall and place your palms flat on the surface
-    at shoulder height.
+  cue: Stand about an arm's length from a wall and place your palms flat on the surface at shoulder
+    height.
   action: rest
   secs: 5
 - label: Push hard
-  cue: Push your palms firmly into the wall with full effort, as though you are moving
-    something immovable. Let any sound come if it arises naturally.
+  cue: Push your palms firmly into the wall with full effort, as though you are moving something immovable.
+    Let any sound come if it arises naturally.
   action: press
   secs: 10
 - label: Release
-  cue: Drop your arms to your sides and notice the sensation in your hands, arms,
-    and chest.
+  cue: Drop your arms to your sides and notice the sensation in your hands, arms, and chest.
   action: release
   secs: 5
 - label: Repeat
-  cue: Return your palms to the wall and push again with full force. Complete five
-    rounds total in this way.
+  cue: Return your palms to the wall and push again with full force. Complete five rounds total in
+    this way.
   action: press
   secs: 0
 reps: 5
@@ -45,18 +44,18 @@ linked_to_symptoms:
 - urinary-tract-infections
 linked_to_topics:
 - cystitis-and-interstitial-cystitis
-notes_for_coach: Source gives 10-second push x 5 reps. Step secs=0 on the 'Repeat'
-  step because it is structurally a repetition marker, not an additional timed step;
-  total is approximate at 75s for 5 cycles of push+release.
-motion_shape: ''
+notes_for_coach: Source gives 10-second push x 5 reps. Step secs=0 on the 'Repeat' step because it
+  is structurally a repetition marker, not an additional timed step; total is approximate at 75s for
+  5 cycles of push+release.
+motion_shape: load_release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 73. UTIs/Bladder Infections — SOMATIC RESET
-  quote: Stand facing a wall, palms flat at shoulder height. Push hard—against everything
-    you're angry about, everyone who crossed a line, every violation of your territory.
-    Push for 10 seconds. Release. Repeat 5 times.
+  quote: Stand facing a wall, palms flat at shoulder height. Push hard—against everything you're angry
+    about, everyone who crossed a line, every violation of your territory. Push for 10 seconds. Release.
+    Repeat 5 times.
 version: 1
 status: active
 updated_at: '2026-07-28'

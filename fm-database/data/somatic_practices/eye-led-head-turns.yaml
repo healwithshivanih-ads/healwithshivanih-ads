@@ -3,21 +3,18 @@ display_name: Eye-Led Head Turns
 category: movement
 body_region: throat_neck
 position: seated
-summary: The eyes initiate movement first, drawing the head to follow gently, restoring
-  range of motion without forcing or straining the neck.
-why_it_works: Leading movement with the eyes activates the oculomotor reflex, which
-  softens protective muscular bracing in the cervical spine, allowing the head to
-  rotate without triggering the threat response that rigid, forced stretching can
-  provoke.
+summary: The eyes initiate movement first, drawing the head to follow gently, restoring range of motion
+  without forcing or straining the neck.
+why_it_works: Leading movement with the eyes activates the oculomotor reflex, which softens protective
+  muscular bracing in the cervical spine, allowing the head to rotate without triggering the threat
+  response that rigid, forced stretching can provoke.
 steps:
 - label: Eyes Left
-  cue: Keep your head completely still. Move only your eyes as far to the left as
-    is comfortable.
+  cue: Keep your head completely still. Move only your eyes as far to the left as is comfortable.
   action: observe
   secs: 5
 - label: Head Follows
-  cue: Allow your head to slowly follow your gaze to the left, stopping before any
-    point of strain.
+  cue: Allow your head to slowly follow your gaze to the left, stopping before any point of strain.
   action: circle
   secs: 5
 - label: Return to Centre
@@ -33,8 +30,7 @@ steps:
   action: circle
   secs: 5
 - label: Return to Centre
-  cue: Bring your eyes and head back to centre. That is one round. Repeat for a total
-    of 4–5 rounds.
+  cue: Bring your eyes and head back to centre. That is one round. Repeat for a total of 4–5 rounds.
   action: release
   secs: 4
 reps: 5
@@ -49,18 +45,18 @@ linked_to_symptoms:
 - morning-stiffness
 linked_to_topics:
 - thyroid-dysfunction
-notes_for_coach: Instruct client to stay well within their comfortable range. The
-  key principle is that the eyes lead, not the neck. No forcing.
+notes_for_coach: Instruct client to stay well within their comfortable range. The key principle is
+  that the eyes lead, not the neck. No forcing.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: continuous_travel
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 26. Stiff Neck — SOMATIC RESET
-  quote: Keep your head still and move only your eyes to look left. Let your head
-    follow slowly. Return to center and repeat to the right. Do 4–5 rounds.
+  quote: Keep your head still and move only your eyes to look left. Let your head follow slowly. Return
+    to center and repeat to the right. Do 4–5 rounds.
 version: 1
 status: active
 updated_at: '2026-07-28'

@@ -3,33 +3,30 @@ display_name: Chest Stroking with Breath
 category: touch
 body_region: chest_diaphragm
 position: seated
-summary: A slow, rhythmic self-touch practice stroking downward over the chest combined
-  with measured breathing to stimulate vagal pathways involved in milk let-down.
-why_it_works: Downward stroking over the sternum and pectorals activates cutaneous
-  vagal afferents. The parasympathetic activation this promotes supports oxytocin
-  release, which is a prerequisite for milk let-down. The rhythm and direction of
-  the strokes also provide proprioceptive cues that orient the nervous system toward
-  nurturance rather than threat.
+summary: A slow, rhythmic self-touch practice stroking downward over the chest combined with measured
+  breathing to stimulate vagal pathways involved in milk let-down.
+why_it_works: Downward stroking over the sternum and pectorals activates cutaneous vagal afferents.
+  The parasympathetic activation this promotes supports oxytocin release, which is a prerequisite
+  for milk let-down. The rhythm and direction of the strokes also provide proprioceptive cues that
+  orient the nervous system toward nurturance rather than threat.
 steps:
 - label: Settle in
-  cue: Sit comfortably. If possible, have your baby nearby or resting against your
-    skin.
+  cue: Sit comfortably. If possible, have your baby nearby or resting against your skin.
   action: rest
   secs: 20
 - label: Place fingertips
-  cue: Rest the fingertips of both hands lightly at your collarbones, just below your
-    neck.
+  cue: Rest the fingertips of both hands lightly at your collarbones, just below your neck.
   action: rest
   secs: 10
 - label: Begin stroking
-  cue: Draw one hand slowly downward over your chest toward your belly. As that hand
-    nears the bottom, begin the same stroke with the other hand from the collarbone.
-    Keep the movement continuous, like water flowing down a surface.
+  cue: Draw one hand slowly downward over your chest toward your belly. As that hand nears the bottom,
+    begin the same stroke with the other hand from the collarbone. Keep the movement continuous, like
+    water flowing down a surface.
   action: massage
   secs: 15
 - label: Synchronise breath
-  cue: Breathe in slowly as one hand starts its journey, and breathe out as it completes
-    it. Let your breathing and the stroking find a shared, unhurried rhythm.
+  cue: Breathe in slowly as one hand starts its journey, and breathe out as it completes it. Let your
+    breathing and the stroking find a shared, unhurried rhythm.
   action: expand
   secs: 0
 - label: Continue
@@ -44,20 +41,20 @@ contraindications:
 - Post-surgical chest wound
 linked_to_topics:
 - maternal-mental-health-and-fetal-environment
-notes_for_coach: Source entry is 85. Low Milk Supply. No exact topic slug exists for
-  lactation issues; maternal-mental-health-and-fetal-environment is the closest available.
+notes_for_coach: Source entry is 85. Low Milk Supply. No exact topic slug exists for lactation issues;
+  maternal-mental-health-and-fetal-environment is the closest available.
 aliases: []
 linked_to_symptoms: []
 bilateral: false
-motion_shape: ''
+motion_shape: breath_excursion
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 85. Low Milk Supply — SOMATIC RESET
-  quote: Place your fingertips at your collarbones. Stroke slowly downward over your
-    chest, one hand after the other, in a continuous rhythm, like water flowing down.
-    Breathe slowly as you stroke. Continue for 3-5 minutes.
+  quote: Place your fingertips at your collarbones. Stroke slowly downward over your chest, one hand
+    after the other, in a continuous rhythm, like water flowing down. Breathe slowly as you stroke.
+    Continue for 3-5 minutes.
 version: 1
 status: active
 updated_at: '2026-07-28'

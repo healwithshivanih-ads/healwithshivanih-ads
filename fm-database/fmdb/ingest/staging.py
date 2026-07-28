@@ -253,7 +253,7 @@ def _enrich_somatic_practice(raw: dict, source_id: str, updated_by: str) -> dict
         out.setdefault(key, "")
     out.setdefault("bilateral", False)
     out.setdefault("timed", True)
-    out["motion_shape"] = ""            # assigned by the clustering pass, never by the model
+    out["motion_shape"] = None          # assigned by the clustering pass, never by the model
     out.setdefault("sensitivity", "general")
     out.setdefault("evidence_tier", "fm_specific_thin")
     quote = out.pop("source_quote", None)

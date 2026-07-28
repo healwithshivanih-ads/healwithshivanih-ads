@@ -5,17 +5,15 @@ category: movement
 body_region: whole_body
 position: lying
 summary: Small, slow whole-body rocking in a side-lying curl.
-why_it_works: Slow rhythmic rocking is among the most reliable ways to raise parasympathetic
-  tone, and the gentle whole-body movement assists lymphatic flow, which has no pump
-  of its own.
+why_it_works: Slow rhythmic rocking is among the most reliable ways to raise parasympathetic tone,
+  and the gentle whole-body movement assists lymphatic flow, which has no pump of its own.
 steps:
 - label: Curl on your side
   cue: Lie on your side, knees drawn up, however is comfortable.
   secs: 30
   action: rest
 - label: Start the rock
-  cue: Begin rocking your whole body slowly forward and back, like a slow wave. Keep
-    it small.
+  cue: Begin rocking your whole body slowly forward and back, like a slow wave. Keep it small.
   secs: 60
   action: rock
 - label: Find the rhythm
@@ -31,7 +29,7 @@ duration_seconds: 300
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: continuous_travel
 contraindications:
 - Acute back or hip injury
 - Late pregnancy — left side only, with support

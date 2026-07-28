@@ -5,31 +5,30 @@ aliases:
 category: movement
 body_region: whole_body
 position: standing
-summary: A continuous side-to-side weight-shifting sway that invites spontaneous arm
-  and hip movement, encouraging a sense of flow and effortless rhythm.
-why_it_works: Rhythmic bilateral weight shifting stimulates vestibular integration
-  and activates the cerebellum, which can reduce limbic hyperarousal. The non-goal-directed,
-  fluid quality of the movement contrasts with sympathetic urgency and supports parasympathetic
-  tone.
+summary: A continuous side-to-side weight-shifting sway that invites spontaneous arm and hip movement,
+  encouraging a sense of flow and effortless rhythm.
+why_it_works: Rhythmic bilateral weight shifting stimulates vestibular integration and activates the
+  cerebellum, which can reduce limbic hyperarousal. The non-goal-directed, fluid quality of the movement
+  contrasts with sympathetic urgency and supports parasympathetic tone.
 steps:
 - label: Stand and settle
-  cue: Stand with feet hip-width apart and let your arms hang loosely at your sides.
-    Take a moment to notice how your feet feel on the ground.
+  cue: Stand with feet hip-width apart and let your arms hang loosely at your sides. Take a moment
+    to notice how your feet feel on the ground.
   action: rest
   secs: 20
 - label: Begin shifting
-  cue: Slowly shift your weight from one foot to the other in a soft, continuous rhythm.
-    Allow your hips to move naturally with the shift.
+  cue: Slowly shift your weight from one foot to the other in a soft, continuous rhythm. Allow your
+    hips to move naturally with the shift.
   action: circle
   secs: 60
 - label: Let arms swing
-  cue: Allow your arms to swing gently along with the weight shift, following the
-    body's momentum without forcing anything.
+  cue: Allow your arms to swing gently along with the weight shift, following the body's momentum
+    without forcing anything.
   action: expand
   secs: 60
 - label: Stay and notice
-  cue: Continue swaying without any destination in mind. Notice any sensations, images,
-    or feelings that arise, without judging them.
+  cue: Continue swaying without any destination in mind. Notice any sensations, images, or feelings
+    that arise, without judging them.
   action: observe
   secs: 120
 duration_seconds: 260
@@ -44,19 +43,18 @@ linked_to_symptoms:
 - irregular-periods
 linked_to_topics:
 - pcos
-notes_for_coach: Source states 3-5 minutes. Steps apportioned to ~4.3 min. No specific
-  instruction is given for arm movement timing — the sway and arm swing are simultaneous
-  from step 3 onward.
-motion_shape: ''
+notes_for_coach: Source states 3-5 minutes. Steps apportioned to ~4.3 min. No specific instruction
+  is given for arm movement timing — the sway and arm swing are simultaneous from step 3 onward.
+motion_shape: continuous_travel
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 75. PCOS / Ovarian Cysts — SOMATIC RESET
-  quote: Stand with feet hip-width apart, arms relaxed. Shift your weight slowly from
-    one foot to the other in a continuous rhythm. Let your hips move. Let your arms
-    swing. No destination—just side to side, like seaweed in water. Notice your sensations
-    without judgement. Continue for 3-5 minutes.
+  quote: Stand with feet hip-width apart, arms relaxed. Shift your weight slowly from one foot to
+    the other in a continuous rhythm. Let your hips move. Let your arms swing. No destination—just
+    side to side, like seaweed in water. Notice your sensations without judgement. Continue for 3-5
+    minutes.
 version: 1
 status: active
 updated_at: '2026-07-28'

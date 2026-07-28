@@ -5,9 +5,8 @@ category: orientation
 body_region: legs_feet
 position: standing
 summary: Two to three minutes of active standing grounding with root imagery.
-why_it_works: Actively pressing down and registering the ground pushing back rebuilds
-  a felt sense of having a foundation, which is precisely what erodes when external
-  structures fall away.
+why_it_works: Actively pressing down and registering the ground pushing back rebuilds a felt sense
+  of having a foundation, which is precisely what erodes when external structures fall away.
 steps:
 - label: Stand
   cue: Feet hip-width apart, weight even through both feet.
@@ -18,8 +17,7 @@ steps:
   secs: 45
   action: press
 - label: Imagine roots
-  cue: Picture roots growing down from your feet into the earth. Let the image be
-    as vivid as it wants.
+  cue: Picture roots growing down from your feet into the earth. Let the image be as vivid as it wants.
   secs: 60
   action: observe
 - label: Breathe there
@@ -31,7 +29,7 @@ duration_seconds: 180
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: sustained_pressure
 contraindications:
 - Unsteady balance — stand near a wall or chair
 - Dizziness on standing

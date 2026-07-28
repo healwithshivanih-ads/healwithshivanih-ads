@@ -5,17 +5,15 @@ category: imagery
 body_region: whole_body
 position: seated
 summary: A short check-in locating a feeling in the body, without changing it.
-why_it_works: Locating a feeling in the body without trying to alter it rebuilds interoceptive
-  accuracy — the signal-reading that becomes unreliable when someone has spent years
-  overriding their own cues.
+why_it_works: Locating a feeling in the body without trying to alter it rebuilds interoceptive accuracy
+  — the signal-reading that becomes unreliable when someone has spent years overriding their own cues.
 steps:
 - label: Settle
   cue: Sit comfortably and close your eyes.
   secs: 25
   action: rest
 - label: Ask
-  cue: Ask yourself what you are feeling right now — and then find where in your body
-    it lives.
+  cue: Ask yourself what you are feeling right now — and then find where in your body it lives.
   secs: 50
   action: observe
 - label: Stay with it
@@ -31,7 +29,7 @@ duration_seconds: 190
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: still
 contraindications:
 - Where a client dissociates easily, keep eyes open and shorten it
 sensitivity: general

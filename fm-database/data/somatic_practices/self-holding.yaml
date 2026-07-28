@@ -5,17 +5,15 @@ category: touch
 body_region: chest_diaphragm
 position: seated
 summary: A firm crossed-arm self-hold across the chest, held for two to three minutes.
-why_it_works: Firm, sustained self-contact across the chest raises vagal tone and
-  delivers deep-pressure input, which reliably signals containment to a nervous system
-  that feels exposed.
+why_it_works: Firm, sustained self-contact across the chest raises vagal tone and delivers deep-pressure
+  input, which reliably signals containment to a nervous system that feels exposed.
 steps:
 - label: Settle
   cue: Sit or lie somewhere comfortable.
   secs: 20
   action: rest
 - label: Cross your arms
-  cue: Cross your arms and place each hand on the opposite upper arm, just below the
-    shoulder.
+  cue: Cross your arms and place each hand on the opposite upper arm, just below the shoulder.
   secs: 20
   action: touch
 - label: Hold like you mean it
@@ -31,10 +29,9 @@ duration_seconds: 190
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: sustained_pressure
 contraindications:
-- Adapt where a client finds self-touch distressing — offer a cushion held against
-  the chest instead
+- Adapt where a client finds self-touch distressing — offer a cushion held against the chest instead
 sensitivity: general
 linked_to_symptoms: []
 linked_to_topics:

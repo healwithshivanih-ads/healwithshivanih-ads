@@ -3,37 +3,36 @@ display_name: Safe Place Visualization
 category: imagery
 body_region: abdomen
 position: any_position
-summary: A guided internal imagery practice in which the client vividly imagines a
-  place of complete safety, uses sensory detail to inhabit it, and breathes as if
-  physically present there — calming the enteric nervous system via top-down cortical
-  regulation.
-why_it_works: Imagining a safe environment activates the same prefrontal-limbic pathways
-  as actual safety, downregulating the amygdala and HPA axis. Reduced threat signalling
-  lowers sympathetic tone in the gut, easing stomach contraction and blood-flow restriction.
+summary: A guided internal imagery practice in which the client vividly imagines a place of complete
+  safety, uses sensory detail to inhabit it, and breathes as if physically present there — calming
+  the enteric nervous system via top-down cortical regulation.
+why_it_works: Imagining a safe environment activates the same prefrontal-limbic pathways as actual
+  safety, downregulating the amygdala and HPA axis. Reduced threat signalling lowers sympathetic tone
+  in the gut, easing stomach contraction and blood-flow restriction.
 steps:
 - label: Close eyes and arrive
-  cue: Find a comfortable position. Gently close your eyes and take a few natural
-    breaths to let your body begin to settle.
+  cue: Find a comfortable position. Gently close your eyes and take a few natural breaths to let your
+    body begin to settle.
   action: rest
   secs: 20
 - label: Bring the place to mind
-  cue: Call up an image of a place — real or imagined — where you feel completely
-    and deeply safe. It can be indoors or outdoors, alone or with someone you trust.
+  cue: Call up an image of a place — real or imagined — where you feel completely and deeply safe.
+    It can be indoors or outdoors, alone or with someone you trust.
   action: observe
   secs: 30
 - label: Fill in the sensory detail
-  cue: Notice the quality of light there. What colours do you see? What sounds are
-    in the background? Is there a scent? Take your time to make the image vivid.
+  cue: Notice the quality of light there. What colours do you see? What sounds are in the background?
+    Is there a scent? Take your time to make the image vivid.
   action: observe
   secs: 40
 - label: Feel yourself there
-  cue: Allow yourself to feel as though you are actually in that place right now.
-    Let your body take that in.
+  cue: Allow yourself to feel as though you are actually in that place right now. Let your body take
+    that in.
   action: rest
   secs: 30
 - label: Hand on belly and breathe
-  cue: Place a hand on your belly. Breathe slowly, as if the air you are breathing
-    is the air of that safe place. Let your belly soften with each breath.
+  cue: Place a hand on your belly. Breathe slowly, as if the air you are breathing is the air of that
+    safe place. Let your belly soften with each breath.
   action: rest
   secs: 160
 timed: true
@@ -45,23 +44,22 @@ linked_to_symptoms:
 linked_to_topics:
 - gut-brain-axis
 - chronic-stress
-notes_for_coach: If a client struggles to find a safe-place image (history of trauma,
-  no safe environment), offer 'a place in nature you find beautiful' or an imagined
-  peaceful landscape. Do not push past resistance.
+notes_for_coach: If a client struggles to find a safe-place image (history of trauma, no safe environment),
+  offer 'a place in nature you find beautiful' or an imagined peaceful landscape. Do not push past
+  resistance.
 contraindications:
-- Clients with severe dissociation or complex PTSD should only do this with a trained
-  trauma therapist present
+- Clients with severe dissociation or complex PTSD should only do this with a trained trauma therapist
+  present
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: still
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 55. Stomach Knots / Butterflies / 'Pit in Stomach' — SOMATIC RESET
-  quote: 'Close your eyes. Bring to mind a place where you feel completely safe, real
-    or imagined. See it clearly. Notice the details: light, colors, sounds, smells.
-    Feel yourself there.'
+  quote: 'Close your eyes. Bring to mind a place where you feel completely safe, real or imagined.
+    See it clearly. Notice the details: light, colors, sounds, smells. Feel yourself there.'
 version: 1
 status: active
 updated_at: '2026-07-28'

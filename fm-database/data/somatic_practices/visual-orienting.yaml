@@ -3,27 +3,24 @@ display_name: Visual Orienting — Name Five Things
 category: orientation
 body_region: head_face
 position: any_position
-summary: Slowly rotate the head and deliberately name five visible objects in the
-  surrounding environment, giving each one full visual attention before moving to
-  the next.
-why_it_works: Orienting activates the ventral vagal circuit by signalling that the
-  present environment does not contain a threat. Naming objects aloud adds a prefrontal
-  cortex engagement layer (word retrieval) that further interrupts fight-flight-freeze
-  arousal and reduces the experiential experience of cognitive cloudiness.
+summary: Slowly rotate the head and deliberately name five visible objects in the surrounding environment,
+  giving each one full visual attention before moving to the next.
+why_it_works: Orienting activates the ventral vagal circuit by signalling that the present environment
+  does not contain a threat. Naming objects aloud adds a prefrontal cortex engagement layer (word
+  retrieval) that further interrupts fight-flight-freeze arousal and reduces the experiential experience
+  of cognitive cloudiness.
 steps:
 - label: Begin scanning
-  cue: Slowly turn your head and let your gaze fall on one object in the space around
-    you.
+  cue: Slowly turn your head and let your gaze fall on one object in the space around you.
   action: observe
   secs: 10
 - label: Name it
-  cue: Say the name of the object out loud — or in a quiet voice if that is easier.
-    Take a breath.
+  cue: Say the name of the object out loud — or in a quiet voice if that is easier. Take a breath.
   action: observe
   secs: 5
 - label: Find four more
-  cue: Continue rotating your head slowly and repeating — settle on something, name
-    it, breathe — until you have named five things.
+  cue: Continue rotating your head slowly and repeating — settle on something, name it, breathe —
+    until you have named five things.
   action: observe
   secs: 75
 duration_seconds: 90
@@ -40,19 +37,19 @@ linked_to_symptoms:
 linked_to_topics:
 - nervous-system-regulation
 - stress-management
-notes_for_coach: This is distinct from the Auditory Orienting practice — it is vision-led.
-  Both share the orienting mechanism but different sensory channels. Can be done mid-coaching
-  call by asking client to try it with you.
+notes_for_coach: This is distinct from the Auditory Orienting practice — it is vision-led. Both share
+  the orienting mechanism but different sensory channels. Can be done mid-coaching call by asking
+  client to try it with you.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: still
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 25. Brain Fog — SOMATIC RESET
-  quote: Slowly turn your head and name five things you see out loud. Take your time.
-    Let your eyes settle on each one before moving to the next.
+  quote: Slowly turn your head and name five things you see out loud. Take your time. Let your eyes
+    settle on each one before moving to the next.
 version: 1
 status: active
 updated_at: '2026-07-28'

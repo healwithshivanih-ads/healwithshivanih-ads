@@ -3,27 +3,25 @@ display_name: Bilateral Ball Pass
 category: movement
 body_region: arms_hands
 position: any_position
-summary: Hold a small object in one hand and pass it slowly and rhythmically to the
-  other hand, continuing for two to three minutes, allowing the eyes to follow the
-  object if that feels natural.
-why_it_works: Bilateral alternating hand movements engage both cerebral hemispheres
-  and activate the cerebellum, which has a regulatory role in vestibular processing.
-  The slow, predictable rhythm provides a stable sensory anchor for the nervous system,
-  helping to interrupt the chaotic afferent signals that contribute to dizziness.
+summary: Hold a small object in one hand and pass it slowly and rhythmically to the other hand, continuing
+  for two to three minutes, allowing the eyes to follow the object if that feels natural.
+why_it_works: Bilateral alternating hand movements engage both cerebral hemispheres and activate the
+  cerebellum, which has a regulatory role in vestibular processing. The slow, predictable rhythm provides
+  a stable sensory anchor for the nervous system, helping to interrupt the chaotic afferent signals
+  that contribute to dizziness.
 steps:
 - label: Pick up object
-  cue: Find a small, comfortable object — a ball, a smooth stone, or anything that
-    fits in one hand. Hold it in your dominant hand.
+  cue: Find a small, comfortable object — a ball, a smooth stone, or anything that fits in one hand.
+    Hold it in your dominant hand.
   action: hold
   secs: 10
 - label: Begin passing
-  cue: Slowly pass the object from one hand to the other. Let your eyes follow it
-    if that feels comfortable.
+  cue: Slowly pass the object from one hand to the other. Let your eyes follow it if that feels comfortable.
   action: tap
   secs: 10
 - label: Find a rhythm
-  cue: Continue the slow, steady hand-to-hand transfer. Let the pace stay gentle and
-    predictable — not rushed.
+  cue: Continue the slow, steady hand-to-hand transfer. Let the pace stay gentle and predictable —
+    not rushed.
   action: tap
   secs: 130
 duration_seconds: 150
@@ -41,19 +39,17 @@ linked_to_symptoms:
 linked_to_topics:
 - nervous-system-regulation
 - motion-sickness
-notes_for_coach: The eye-tracking component adds an optional EMDR-adjacent element.
-  Source gives 2–3 minutes; 150 seconds used. Always rule out BPPV and medical causes
-  of dizziness first.
+notes_for_coach: The eye-tracking component adds an optional EMDR-adjacent element. Source gives 2–3
+  minutes; 150 seconds used. Always rule out BPPV and medical causes of dizziness first.
 aliases: []
-motion_shape: ''
+motion_shape: continuous_travel
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 24. Dizziness / Vertigo — SOMATIC RESET
-  quote: Hold a small ball (or any small object) in one hand. Pass it to the other
-    hand. Pass it back. Continue this slow, rhythmic transfer from hand to hand for
-    2-3 minutes.
+  quote: Hold a small ball (or any small object) in one hand. Pass it to the other hand. Pass it back.
+    Continue this slow, rhythmic transfer from hand to hand for 2-3 minutes.
 version: 1
 status: active
 updated_at: '2026-07-28'

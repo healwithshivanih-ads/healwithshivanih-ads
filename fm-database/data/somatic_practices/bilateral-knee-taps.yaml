@@ -5,17 +5,15 @@ category: touch
 body_region: legs_feet
 position: seated
 summary: Steady alternating hand-to-knee tapping for two to three minutes.
-why_it_works: Steady alternating left-right input helps an over-reactive alarm system
-  recalibrate what actually warrants a response — the same principle behind bilateral
-  work in trauma practice.
+why_it_works: Steady alternating left-right input helps an over-reactive alarm system recalibrate
+  what actually warrants a response — the same principle behind bilateral work in trauma practice.
 steps:
 - label: Sit comfortably
   cue: Sit with both feet on the floor, hands resting on your thighs.
   secs: 20
   action: rest
 - label: Begin alternating
-  cue: Tap your right knee with your right hand, then the left with the left. Steady
-    rhythm.
+  cue: Tap your right knee with your right hand, then the left with the left. Steady rhythm.
   secs: 60
   action: tap
 - label: Settle into it
@@ -31,7 +29,7 @@ duration_seconds: 200
 bilateral: true
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: continuous_travel
 contraindications:
 - Stop if it raises distress rather than settling it
 sensitivity: general

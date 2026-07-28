@@ -5,17 +5,15 @@ category: movement
 body_region: chest_diaphragm
 position: standing
 summary: Slow alternating standing side bends with an overhead reach.
-why_it_works: Lateral opening frees the intercostals and quadratus lumborum, which
-  restrict when breathing has been guarded — restoring the capacity to take a full
-  breath in, and to push one out.
+why_it_works: Lateral opening frees the intercostals and quadratus lumborum, which restrict when breathing
+  has been guarded — restoring the capacity to take a full breath in, and to push one out.
 steps:
 - label: Stand and settle
   cue: Feet hip-width apart, weight even.
   secs: 20
   action: rest
 - label: Reach and bend
-  cue: Raise one arm overhead and bend slowly to the opposite side. Feel the length
-    along your waist.
+  cue: Raise one arm overhead and bend slowly to the opposite side. Feel the length along your waist.
   secs: 30
   action: release
 - label: Hold, then return
@@ -31,7 +29,7 @@ duration_seconds: 120
 bilateral: true
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: load_release
 contraindications:
 - Acute low back pain or disc symptoms
 - Dizziness on standing — do it seated

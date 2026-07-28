@@ -5,9 +5,8 @@ category: orientation
 body_region: legs_feet
 position: standing
 summary: Five to ten minutes standing barefoot on natural ground.
-why_it_works: Barefoot contact with cool ground provides steady, novel, non-threatening
-  sensory input through the soles, and the outdoor setting itself reliably lowers
-  arousal.
+why_it_works: Barefoot contact with cool ground provides steady, novel, non-threatening sensory input
+  through the soles, and the outdoor setting itself reliably lowers arousal.
 steps:
 - label: Get outside
   cue: Go outside barefoot and stand on grass, soil or sand.
@@ -26,18 +25,18 @@ duration_seconds: 400
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: still
 contraindications:
-- Diabetes or peripheral neuropathy — check the ground for sharps first and inspect
-  the feet after; an insensate foot will not report an injury
+- Diabetes or peripheral neuropathy — check the ground for sharps first and inspect the feet after;
+  an insensate foot will not report an injury
 - Open wounds on the feet
 - Avoid where ground is contaminated
 sensitivity: general
 linked_to_symptoms: []
 linked_to_topics:
 - chronic-inflammation
-notes_for_coach: The neuropathy caution matters. Diabetic clients should do this on
-  a checked, clean surface only.
+notes_for_coach: The neuropathy caution matters. Diabetic clients should do this on a checked, clean
+  surface only.
 sources:
 - id: klein-body-remembers
   location: System 11 — Immune, Sleep & Energy, entries 110-123

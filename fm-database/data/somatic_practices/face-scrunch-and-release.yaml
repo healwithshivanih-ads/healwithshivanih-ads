@@ -3,27 +3,25 @@ display_name: Face Scrunch and Release
 category: discharge
 body_region: head_face
 position: any_position
-summary: Deliberately scrunch every muscle in the face as tightly as possible, then
-  let everything go completely. Repeated contraction and release resets the resting
-  tone of facial muscles that have been held in a chronic mask.
-why_it_works: Voluntary maximal contraction followed by complete release (a form of
-  progressive muscle relaxation) reduces residual motor neuron firing in chronically
-  braced facial muscles, signalling the nervous system that the threat or performance
-  demand is over.
+summary: Deliberately scrunch every muscle in the face as tightly as possible, then let everything
+  go completely. Repeated contraction and release resets the resting tone of facial muscles that have
+  been held in a chronic mask.
+why_it_works: Voluntary maximal contraction followed by complete release (a form of progressive muscle
+  relaxation) reduces residual motor neuron firing in chronically braced facial muscles, signalling
+  the nervous system that the threat or performance demand is over.
 steps:
 - label: Scrunch
-  cue: Squeeze your entire face inward as tightly as you can — eyes, nose, mouth,
-    forehead, cheeks, all at once.
+  cue: Squeeze your entire face inward as tightly as you can — eyes, nose, mouth, forehead, cheeks,
+    all at once.
   action: press
   secs: 5
 - label: Release
-  cue: Let everything go at once. Allow your jaw to drop open, your forehead to soften,
-    and your eyes to be gently closed and still.
+  cue: Let everything go at once. Allow your jaw to drop open, your forehead to soften, and your eyes
+    to be gently closed and still.
   action: release
   secs: 5
 - label: Repeat
-  cue: Repeat the scrunch-and-release cycle four more times, fully letting go each
-    time.
+  cue: Repeat the scrunch-and-release cycle four more times, fully letting go each time.
   action: release
   secs: 50
 reps: 5
@@ -40,18 +38,18 @@ linked_to_symptoms:
 linked_to_topics:
 - nervous-system-regulation
 - stress-management
-notes_for_coach: Simple, discrete practice clients can do anywhere without equipment.
-  Pairs well with breath-based practices after the release phase.
+notes_for_coach: Simple, discrete practice clients can do anywhere without equipment. Pairs well with
+  breath-based practices after the release phase.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: load_release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 14. Facial Tension — SOMATIC RESET
-  quote: Scrunch your entire face tightly for 5 seconds, then release completely.
-    Let your jaw hang loose and your forehead smooth. Repeat 5 times.
+  quote: Scrunch your entire face tightly for 5 seconds, then release completely. Let your jaw hang
+    loose and your forehead smooth. Repeat 5 times.
 version: 1
 status: active
 updated_at: '2026-07-28'

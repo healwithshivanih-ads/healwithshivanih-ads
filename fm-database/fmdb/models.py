@@ -22,6 +22,7 @@ from .enums import (
     ProtocolCategory,
     Rasa,
     SafetyStatus,
+    MotionShape,
     SomaticBodyRegion,
     SomaticCategory,
     SomaticPosition,
@@ -943,7 +944,7 @@ class SomaticPractice(BaseModel):
     bilateral: bool = False                                      # alternates left/right
     timed: bool = True                                           # False = behavioural protocol, not a timed session
     equipment: list[str] = Field(default_factory=list)
-    motion_shape: str = ""                                       # ASSIGNED DOWNSTREAM by the clustering pass
+    motion_shape: Optional[MotionShape] = None                   # ASSIGNED DOWNSTREAM by the clustering pass
     # -----------------------------------------------------------------------
     contraindications: list[str] = Field(default_factory=list)
     sensitivity: SomaticSensitivity = SomaticSensitivity.general

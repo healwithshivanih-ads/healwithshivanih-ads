@@ -3,37 +3,34 @@ display_name: Vagal Breathing (4-4-8)
 category: breath
 body_region: chest_diaphragm
 position: any_position
-summary: A structured breath-hold pattern with an extended exhale designed to activate
-  the vagus nerve and reduce heart rate.
-why_it_works: The long exhale phase (double the inhale) maximises the respiratory
-  sinus arrhythmia window and strongly activates parasympathetic outflow via the vagus
-  nerve, directly slowing the SA node and reducing the perceived urgency of anxiety-driven
-  palpitations.
+summary: A structured breath-hold pattern with an extended exhale designed to activate the vagus nerve
+  and reduce heart rate.
+why_it_works: The long exhale phase (double the inhale) maximises the respiratory sinus arrhythmia
+  window and strongly activates parasympathetic outflow via the vagus nerve, directly slowing the
+  SA node and reducing the perceived urgency of anxiety-driven palpitations.
 steps:
 - label: Settle and orient
-  cue: Find a comfortable position, seated or lying. Close your eyes or soften your
-    gaze downward. Take one ordinary breath to begin.
+  cue: Find a comfortable position, seated or lying. Close your eyes or soften your gaze downward.
+    Take one ordinary breath to begin.
   action: rest
   secs: 15
 - label: Inhale for 4
-  cue: Breathe in slowly through your nose, counting to four in your head. Let the
-    belly expand first, then the lower ribs.
+  cue: Breathe in slowly through your nose, counting to four in your head. Let the belly expand first,
+    then the lower ribs.
   action: expand
   secs: 4
 - label: Hold for 4
-  cue: At the top of the breath, gently hold — no gripping or straining, just a soft
-    pause.
+  cue: At the top of the breath, gently hold — no gripping or straining, just a soft pause.
   action: hold
   secs: 4
 - label: Exhale for 8
-  cue: Breathe out slowly through your nose or slightly parted lips, counting to eight.
-    The exhale should be smooth and steady, not rushed.
+  cue: Breathe out slowly through your nose or slightly parted lips, counting to eight. The exhale
+    should be smooth and steady, not rushed.
   action: release
   secs: 8
 - label: Repeat for 2–3 minutes
-  cue: Continue the 4-4-8 cycle, noticing whether the rhythm in your chest begins
-    to settle. If eight counts feels too long, use six — the exhale simply needs to
-    be longer than the inhale.
+  cue: Continue the 4-4-8 cycle, noticing whether the rhythm in your chest begins to settle. If eight
+    counts feels too long, use six — the exhale simply needs to be longer than the inhale.
   action: expand
   secs: 129
 duration_seconds: 160
@@ -50,20 +47,19 @@ linked_to_topics:
 - vagal-tone
 - nervous-system-regulation
 - heart-arrhythmias
-notes_for_coach: The 4-4-8 ratio is the key mechanism here. Clients who struggle with
-  the hold can drop it and use 4-in / 8-out. This practice can be used acutely during
-  a palpitation episode or prophylactically before known stress triggers.
+notes_for_coach: The 4-4-8 ratio is the key mechanism here. Clients who struggle with the hold can
+  drop it and use 4-in / 8-out. This practice can be used acutely during a palpitation episode or
+  prophylactically before known stress triggers.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: breath_excursion
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 44. Heart Palpitations — SOMATIC RESET
-  quote: Inhale slowly for 4 counts. Hold for 4 counts. Exhale slowly for 8 counts.
-    The long exhale is the key; it activates your vagus nerve and tells your heart
-    it can slow down.
+  quote: Inhale slowly for 4 counts. Hold for 4 counts. Exhale slowly for 8 counts. The long exhale
+    is the key; it activates your vagus nerve and tells your heart it can slow down.
 version: 1
 status: active
 updated_at: '2026-07-28'

@@ -5,17 +5,15 @@ category: movement
 body_region: arms_hands
 position: lying
 summary: Slow arm arcs along the floor with eyes closed.
-why_it_works: Slow, large, closed-eye movement expands tolerated sensory range within
-  a position the body reads as safe — useful where the system has lost the ability
-  to filter ordinary input.
+why_it_works: Slow, large, closed-eye movement expands tolerated sensory range within a position the
+  body reads as safe — useful where the system has lost the ability to filter ordinary input.
 steps:
 - label: Lie down
   cue: Lie on your back, arms by your sides, eyes closed.
   secs: 25
   action: rest
 - label: Slide up
-  cue: Slide your arms slowly along the floor up toward your head. As slow as you
-    can manage.
+  cue: Slide your arms slowly along the floor up toward your head. As slow as you can manage.
   secs: 45
   action: circle
 - label: Slide down
@@ -31,7 +29,7 @@ duration_seconds: 200
 bilateral: true
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: continuous_travel
 contraindications:
 - Shoulder impingement or rotator cuff injury — reduce the arc
 sensitivity: general

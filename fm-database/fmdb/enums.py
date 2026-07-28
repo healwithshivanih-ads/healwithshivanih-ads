@@ -466,3 +466,24 @@ class SomaticTargetKind(str, Enum):
     """
     symptom = "symptom"
     topic = "topic"
+
+
+class MotionShape(str, Enum):
+    """Which player renders a somatic practice in the client app.
+
+    NOT guessed at extraction time. Derived by clustering the whole practice
+    corpus on objective step data (action verbs, holds, bilaterality, whether
+    it is a timed session at all) — a four-shape guess from a 13-entry sample
+    was already wrong at 87 entries and wrong again at 123. Seven is the count
+    the full library actually needs.
+
+    `bilateral` and repeated rounds are MODIFIERS layered on any shape, not
+    shapes of their own.
+    """
+    breath_excursion = "breath_excursion"      # expand / hold / shrink — the existing BreathOverlay
+    continuous_travel = "continuous_travel"    # a point tracing a path: circling, rocking, tracking
+    release = "release"                        # decay only, no effort phase
+    sustained_pressure = "sustained_pressure"  # load held, no release phase
+    load_release = "load_release"              # effort builds, then lets go
+    still = "still"                            # imagery and grounding; nothing moves
+    checklist = "checklist"                    # a protocol applied to an activity — no player

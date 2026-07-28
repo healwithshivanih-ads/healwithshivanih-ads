@@ -3,28 +3,28 @@ display_name: Intentional Shaking
 category: discharge
 body_region: arms_hands
 position: any_position
-summary: A whole-arm discharge practice in which the hands and arms are shaken deliberately
-  and vigorously for two minutes to complete the nervous-system discharge cycle, followed
-  by a sudden stop and stillness to allow the nervous system to reset.
-why_it_works: Voluntary shaking mimics the spontaneous post-threat trembling seen
-  in mammals, facilitating the discharge of residual sympathetic activation (adrenaline
-  and muscle-activation patterns). Stopping suddenly creates a contrast that allows
-  the nervous system to register the shift from high arousal to baseline.
+summary: A whole-arm discharge practice in which the hands and arms are shaken deliberately and vigorously
+  for two minutes to complete the nervous-system discharge cycle, followed by a sudden stop and stillness
+  to allow the nervous system to reset.
+why_it_works: Voluntary shaking mimics the spontaneous post-threat trembling seen in mammals, facilitating
+  the discharge of residual sympathetic activation (adrenaline and muscle-activation patterns). Stopping
+  suddenly creates a contrast that allows the nervous system to register the shift from high arousal
+  to baseline.
 steps:
 - label: Begin shaking
-  cue: Raise both hands in front of you and start shaking them — loose, fast, and
-    a little chaotic. Go harder than any involuntary trembling you've noticed. Let
-    the movement spread up through your wrists and forearms.
+  cue: Raise both hands in front of you and start shaking them — loose, fast, and a little chaotic.
+    Go harder than any involuntary trembling you've noticed. Let the movement spread up through your
+    wrists and forearms.
   action: release
   secs: 30
 - label: Expand the shaking
-  cue: Allow the shaking to travel further up into your upper arms and shoulders if
-    your body wants to go there. Keep breathing normally.
+  cue: Allow the shaking to travel further up into your upper arms and shoulders if your body wants
+    to go there. Keep breathing normally.
   action: release
   secs: 90
 - label: Stop and notice
-  cue: Halt all movement suddenly. Let your hands hang completely still at your sides.
-    Stay with whatever sensation is present — warmth, tingling, quiet.
+  cue: Halt all movement suddenly. Let your hands hang completely still at your sides. Stay with whatever
+    sensation is present — warmth, tingling, quiet.
   action: rest
   secs: 30
 duration_seconds: 150
@@ -43,22 +43,20 @@ linked_to_topics:
 - nervous-system-regulation
 - somatic-body-memory
 - polyvagal-theory
-notes_for_coach: 'This practice draws directly on Peter Levine''s Somatic Experiencing
-  model. The key instruction is that the intentional shaking must be MORE vigorous
-  than any involuntary trembling — this ownership of the movement matters clinically.
-  Source: entry 39, System 4.'
+notes_for_coach: 'This practice draws directly on Peter Levine''s Somatic Experiencing model. The
+  key instruction is that the intentional shaking must be MORE vigorous than any involuntary trembling
+  — this ownership of the movement matters clinically. Source: entry 39, System 4.'
 aliases: []
-motion_shape: ''
+motion_shape: release
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 39. Trembling Hands — Somatic Reset
-  quote: Stand or sit comfortably. Lift your hands in front of you and begin to shake
-    them deliberately—fast, loose, chaotic. Shake harder than your body has been doing
-    on its own. Let the shaking travel up into your wrists, forearms, and even shoulders
-    if it wants to. Continue for 2 minutes. Then, stop suddenly and let your hands
-    hang completely still.
+  quote: Stand or sit comfortably. Lift your hands in front of you and begin to shake them deliberately—fast,
+    loose, chaotic. Shake harder than your body has been doing on its own. Let the shaking travel
+    up into your wrists, forearms, and even shoulders if it wants to. Continue for 2 minutes. Then,
+    stop suddenly and let your hands hang completely still.
 version: 1
 status: active
 updated_at: '2026-07-28'

@@ -5,9 +5,8 @@ category: touch
 body_region: chest_diaphragm
 position: seated
 summary: Slow alternating chest tapping with crossed arms, for two to three minutes.
-why_it_works: Slow alternating bilateral tapping is a well-established self-soothing
-  technique from trauma practice; the rhythm and the crossing of the midline together
-  reduce arousal.
+why_it_works: Slow alternating bilateral tapping is a well-established self-soothing technique from
+  trauma practice; the rhythm and the crossing of the midline together reduce arousal.
 steps:
 - label: Cross your arms
   cue: Cross your arms over your chest, hands resting near your collarbones.
@@ -30,16 +29,16 @@ duration_seconds: 200
 bilateral: true
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: continuous_travel
 contraindications:
-- Stop if tapping raises distress rather than settling it — for some trauma histories
-  bilateral work needs a therapist present
+- Stop if tapping raises distress rather than settling it — for some trauma histories bilateral work
+  needs a therapist present
 sensitivity: general
 linked_to_symptoms: []
 linked_to_topics:
 - acne-vulgaris
-notes_for_coach: Distinct from cross-lateral-hand-taps, which taps thigh to opposite
-  hand; this is chest-based and self-holding.
+notes_for_coach: Distinct from cross-lateral-hand-taps, which taps thigh to opposite hand; this is
+  chest-based and self-holding.
 sources:
 - id: klein-body-remembers
   location: System 10 — Skin, Hair & Senses, entries 95-102

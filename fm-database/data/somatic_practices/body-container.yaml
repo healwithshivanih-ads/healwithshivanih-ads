@@ -3,25 +3,24 @@ display_name: Body Container
 category: touch
 body_region: shoulders_upper_back
 position: any_position
-summary: Cross both arms over the chest and press hands firmly onto the opposite shoulders
-  while breathing slowly, restoring a sense of physical boundary and containment.
-why_it_works: Deep proprioceptive input from firm self-touch activates mechanoreceptors
-  that inhibit sympathetic arousal. The self-embracing posture also stimulates oxytocin
-  pathways and evokes the felt sense of safe, bounded space — counteracting the experience
-  of sensory intrusion.
+summary: Cross both arms over the chest and press hands firmly onto the opposite shoulders while breathing
+  slowly, restoring a sense of physical boundary and containment.
+why_it_works: Deep proprioceptive input from firm self-touch activates mechanoreceptors that inhibit
+  sympathetic arousal. The self-embracing posture also stimulates oxytocin pathways and evokes the
+  felt sense of safe, bounded space — counteracting the experience of sensory intrusion.
 steps:
 - label: Cross arms
   cue: Cross both arms over your chest so that each hand rests on the opposite shoulder.
   action: press
   secs: 10
 - label: Apply pressure
-  cue: Gently but firmly press your hands into your shoulders, as though giving yourself
-    a steady hug.
+  cue: Gently but firmly press your hands into your shoulders, as though giving yourself a steady
+    hug.
   action: press
   secs: 10
 - label: Breathe slowly
-  cue: Take slow, even breaths while maintaining the pressure. Feel the boundary between
-    your body and the outside world.
+  cue: Take slow, even breaths while maintaining the pressure. Feel the boundary between your body
+    and the outside world.
   action: hold
   secs: 130
 duration_seconds: 150
@@ -37,18 +36,18 @@ linked_to_topics:
 - nervous-system-regulation
 - anxiety
 - stress-management
-notes_for_coach: Source gives 2–3 minutes; 150 seconds (2.5 min) used as midpoint.
-  Excellent portable tool for clients in overstimulating environments.
+notes_for_coach: Source gives 2–3 minutes; 150 seconds (2.5 min) used as midpoint. Excellent portable
+  tool for clients in overstimulating environments.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: sustained_pressure
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 17. Ear Pressure / Fullness — SOMATIC RESET
-  quote: Cross your arms and place your hands on opposite shoulders. Apply gentle
-    pressure and breathe slowly for 2–3 minutes.
+  quote: Cross your arms and place your hands on opposite shoulders. Apply gentle pressure and breathe
+    slowly for 2–3 minutes.
 version: 1
 status: active
 updated_at: '2026-07-28'

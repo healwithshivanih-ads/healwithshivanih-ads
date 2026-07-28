@@ -5,9 +5,8 @@ category: behavioural
 body_region: head_face
 position: seated
 summary: 'A slow, attentive first sip: warmth, then steam, then taste.'
-why_it_works: Deliberately slowing the sequence of smell, warmth and first sip rebuilds
-  the link between sensation and attention, which flattens when pleasure has been
-  shut down.
+why_it_works: Deliberately slowing the sequence of smell, warmth and first sip rebuilds the link between
+  sensation and attention, which flattens when pleasure has been shut down.
 steps:
 - label: Hold it
   cue: Hold a warm cup of tea or broth in both hands. Do not drink yet.
@@ -22,8 +21,8 @@ steps:
   secs: 50
   action: observe
 - label: One small sip
-  cue: Take one small sip and hold it in your mouth before swallowing. Notice temperature,
-    texture, and whatever flavour is there — even faint.
+  cue: Take one small sip and hold it in your mouth before swallowing. Notice temperature, texture,
+    and whatever flavour is there — even faint.
   secs: 60
   action: observe
 reps: null
@@ -32,7 +31,7 @@ bilateral: false
 timed: true
 equipment:
 - A warm drink
-motion_shape: ''
+motion_shape: sustained_pressure
 contraindications:
 - Take care with temperature where oral sensation is reduced
 sensitivity: general

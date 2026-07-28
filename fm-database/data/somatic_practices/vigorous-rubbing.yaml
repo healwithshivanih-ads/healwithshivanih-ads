@@ -5,8 +5,8 @@ category: touch
 body_region: whole_body
 position: seated
 summary: Fast whole-body friction rubbing to generate warmth and sensation.
-why_it_works: Fast friction floods the skin with circulation and sensory input, which
-  is a direct counter to the cold, slow, under-perfused state that goes with depletion.
+why_it_works: Fast friction floods the skin with circulation and sensory input, which is a direct
+  counter to the cold, slow, under-perfused state that goes with depletion.
 steps:
 - label: Heat the palms
   cue: Rub your palms together fast until they are hot.
@@ -29,10 +29,9 @@ duration_seconds: 180
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: sustained_pressure
 contraindications:
-- Fragile or thin skin, or anyone on anticoagulants — use light pressure to avoid
-  bruising
+- Fragile or thin skin, or anyone on anticoagulants — use light pressure to avoid bruising
 - Avoid over inflamed or broken skin
 sensitivity: general
 linked_to_symptoms:

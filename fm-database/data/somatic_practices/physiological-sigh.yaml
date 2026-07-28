@@ -3,26 +3,23 @@ display_name: Physiological Sigh
 category: breath
 body_region: chest_diaphragm
 position: any_position
-summary: Inhale through the nose, pause, then add a second short top-up inhale to
-  fully inflate the lungs, before releasing a slow, complete exhale through the mouth.
-  Repeat five times.
-why_it_works: The double inhale re-inflates collapsed alveoli, increasing oxygen-carbon
-  dioxide exchange efficiency. The extended exhale then activates the parasympathetic
-  brake via the baroreflex, rapidly reducing heart rate and clearing circulating stress
-  chemistry.
+summary: Inhale through the nose, pause, then add a second short top-up inhale to fully inflate the
+  lungs, before releasing a slow, complete exhale through the mouth. Repeat five times.
+why_it_works: The double inhale re-inflates collapsed alveoli, increasing oxygen-carbon dioxide exchange
+  efficiency. The extended exhale then activates the parasympathetic brake via the baroreflex, rapidly
+  reducing heart rate and clearing circulating stress chemistry.
 steps:
 - label: First inhale
   cue: Breathe in steadily through your nose until your lungs feel mostly full.
   action: expand
   secs: 3
 - label: Second inhale
-  cue: Without exhaling, take one more short, sharp sniff in through the nose to top
-    the lungs all the way up.
+  cue: Without exhaling, take one more short, sharp sniff in through the nose to top the lungs all
+    the way up.
   action: expand
   secs: 1
 - label: Slow exhale
-  cue: Release a long, slow exhale through your mouth until your lungs feel completely
-    empty.
+  cue: Release a long, slow exhale through your mouth until your lungs feel completely empty.
   action: release
   secs: 6
 - label: Repeat
@@ -34,8 +31,7 @@ duration_seconds: 60
 timed: true
 bilateral: false
 contraindications:
-- Uncontrolled asthma or severe COPD — avoid forced inhalation techniques without
-  clinician guidance
+- Uncontrolled asthma or severe COPD — avoid forced inhalation techniques without clinician guidance
 - Recent pneumothorax
 linked_to_symptoms:
 - anxiety
@@ -44,18 +40,18 @@ linked_to_symptoms:
 linked_to_topics:
 - nervous-system-regulation
 - breathwork-for-health
-notes_for_coach: Well-studied in the Huberman Lab research context as a rapid autonomic
-  downregulator. Simple enough to use mid-conversation with a client.
+notes_for_coach: Well-studied in the Huberman Lab research context as a rapid autonomic downregulator.
+  Simple enough to use mid-conversation with a client.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: breath_excursion
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 22. Bad Breath — SOMATIC RESET
-  quote: Inhale through your nose, pause briefly, then take a second short inhale.
-    Exhale slowly through the mouth. Repeat 5 times.
+  quote: Inhale through your nose, pause briefly, then take a second short inhale. Exhale slowly through
+    the mouth. Repeat 5 times.
 version: 1
 status: active
 updated_at: '2026-07-28'

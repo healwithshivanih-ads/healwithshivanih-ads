@@ -3,21 +3,20 @@ display_name: Lateral Jaw Tracking (Small Range)
 category: movement
 body_region: jaw
 position: any_position
-summary: Tiny, controlled side-to-side jaw glides performed with lips closed to gently
-  restore mobility and neurological safety to a guarded temporomandibular joint.
-why_it_works: TMJ pain frequently involves protective neuromuscular guarding — the
-  masseters and pterygoids brace against anticipated pain. Small-amplitude lateral
-  glides are below the threshold that triggers the guarding reflex, gradually recalibrating
-  the motor map without provoking defence, and restoring proprioceptive input to the
-  joint.
+summary: Tiny, controlled side-to-side jaw glides performed with lips closed to gently restore mobility
+  and neurological safety to a guarded temporomandibular joint.
+why_it_works: TMJ pain frequently involves protective neuromuscular guarding — the masseters and pterygoids
+  brace against anticipated pain. Small-amplitude lateral glides are below the threshold that triggers
+  the guarding reflex, gradually recalibrating the motor map without provoking defence, and restoring
+  proprioceptive input to the joint.
 steps:
 - label: Set lips
   cue: Allow your lips to rest together lightly, teeth just apart — no biting or clenching.
   action: rest
   secs: 5
 - label: Slide left
-  cue: Very gently glide your lower jaw a few millimetres toward the left — think
-    of it as a whisper of a movement, not a stretch.
+  cue: Very gently glide your lower jaw a few millimetres toward the left — think of it as a whisper
+    of a movement, not a stretch.
   action: circle
   secs: 4
 - label: Return to centre
@@ -43,11 +42,11 @@ linked_to_symptoms:
 - jaw-tension
 - teeth-grinding
 linked_to_topics: []
-notes_for_coach: The movement should be barely visible from the outside. Emphasise
-  to client that micro-movement is the goal, not range.
+notes_for_coach: The movement should be barely visible from the outside. Emphasise to client that
+  micro-movement is the goal, not range.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: continuous_travel
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:

@@ -3,38 +3,36 @@ display_name: Pendulation
 category: imagery
 body_region: whole_body
 position: seated
-summary: An internal attention practice in which awareness is gently moved back and
-  forth between a site of discomfort and a neutral or pleasant area of the body, allowing
-  the nervous system to titrate between constriction and ease.
-why_it_works: Derived from Peter Levine's Somatic Experiencing work, pendulation works
-  by preventing the nervous system from becoming overwhelmed by a single focal point
-  of held tension. Alternating between a resource (comfort) and a challenge (constriction)
-  gradually widens the window of tolerance and supports completion of interrupted
-  stress responses.
+summary: An internal attention practice in which awareness is gently moved back and forth between
+  a site of discomfort and a neutral or pleasant area of the body, allowing the nervous system to
+  titrate between constriction and ease.
+why_it_works: Derived from Peter Levine's Somatic Experiencing work, pendulation works by preventing
+  the nervous system from becoming overwhelmed by a single focal point of held tension. Alternating
+  between a resource (comfort) and a challenge (constriction) gradually widens the window of tolerance
+  and supports completion of interrupted stress responses.
 steps:
 - label: Settle in
   cue: Find a comfortable seated position and gently close your eyes.
   secs: 15
   action: rest
 - label: Locate the restriction
-  cue: Bring your attention to your shoulder — notice any area that feels stuck, tight,
-    or frozen. Simply observe without trying to change it.
+  cue: Bring your attention to your shoulder — notice any area that feels stuck, tight, or frozen.
+    Simply observe without trying to change it.
   secs: 30
   action: observe
 - label: Find the resource
-  cue: Now shift your attention to another area of your body that feels neutral or
-    even comfortable — a hand, your feet on the floor, or anywhere that feels okay.
-    Breathe gently into that area.
+  cue: Now shift your attention to another area of your body that feels neutral or even comfortable
+    — a hand, your feet on the floor, or anywhere that feels okay. Breathe gently into that area.
   secs: 30
   action: observe
 - label: Pendulate
-  cue: Slowly move your attention back to the shoulder, then back to the comfortable
-    area. Continue shifting back and forth at your own pace, five to six times.
+  cue: Slowly move your attention back to the shoulder, then back to the comfortable area. Continue
+    shifting back and forth at your own pace, five to six times.
   secs: 120
   action: observe
 - label: Rest and notice
-  cue: Let your attention soften and return to your whole body. Sit quietly and notice
-    anything that has shifted.
+  cue: Let your attention soften and return to your whole body. Sit quietly and notice anything that
+    has shifted.
   secs: 30
   action: rest
 reps: 6
@@ -52,21 +50,20 @@ linked_to_symptoms:
 linked_to_topics:
 - nervous-system-regulation
 - chronic-pain-and-fatigue
-notes_for_coach: Sourced from entry 35 (Frozen Shoulder). This is Peter Levine's pendulation
-  technique from Somatic Experiencing. Keep the pace client-led; never push through
-  a frozen sensation. Ideal as a bridge before movement work.
+notes_for_coach: Sourced from entry 35 (Frozen Shoulder). This is Peter Levine's pendulation technique
+  from Somatic Experiencing. Keep the pace client-led; never push through a frozen sensation. Ideal
+  as a bridge before movement work.
 aliases: []
-motion_shape: ''
+motion_shape: still
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: Entry 35 — Frozen Shoulder, SOMATIC RESET
-  quote: Sit comfortably and close your eyes. Notice where your shoulder feels stuck,
-    tight, or frozen. Stay with that sensation for a few breaths. Then shift your
-    attention to a part of your body that feels okay—neutral or even pleasant. Breathe
-    there. Then, gently shift back to the shoulder. Move your attention back and forth
-    between frozen and okay, 5-6 times.
+  quote: Sit comfortably and close your eyes. Notice where your shoulder feels stuck, tight, or frozen.
+    Stay with that sensation for a few breaths. Then shift your attention to a part of your body that
+    feels okay—neutral or even pleasant. Breathe there. Then, gently shift back to the shoulder. Move
+    your attention back and forth between frozen and okay, 5-6 times.
 version: 1
 status: active
 updated_at: '2026-07-28'

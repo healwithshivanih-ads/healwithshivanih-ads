@@ -5,9 +5,8 @@ category: movement
 body_region: abdomen
 position: lying
 summary: A slow supported supine twist, two minutes each side.
-why_it_works: A gentle spinal twist mobilises the thoracic spine and stimulates vagal
-  afferents, while the counter-rotation of head and knees releases the guarding that
-  accumulates through the trunk.
+why_it_works: A gentle spinal twist mobilises the thoracic spine and stimulates vagal afferents, while
+  the counter-rotation of head and knees releases the guarding that accumulates through the trunk.
 steps:
 - label: Set up
   cue: Lie on your back, knees bent, arms out to the sides.
@@ -30,7 +29,7 @@ duration_seconds: 265
 bilateral: true
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: continuous_travel
 contraindications:
 - Disc injury or acute back pain
 - Recent abdominal surgery

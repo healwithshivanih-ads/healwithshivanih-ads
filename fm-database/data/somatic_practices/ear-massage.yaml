@@ -3,40 +3,35 @@ display_name: Ear Massage
 category: touch
 body_region: head_face
 position: any_position
-summary: A bilateral auricular massage technique in which the entire outer ear is
-  worked with thumb and forefinger pressure, stimulating vagus nerve endings distributed
-  throughout the ear to shift the nervous system toward a parasympathetic, rest-and-digest
-  state.
-why_it_works: The outer ear is densely innervated by the auricular branch of the vagus
-  nerve. Gentle mechanical stimulation of this surface activates afferent vagal signalling,
-  increasing parasympathetic tone and lowering sympathetic drive — signalling to the
-  gut that it is safe to receive nourishment.
+summary: A bilateral auricular massage technique in which the entire outer ear is worked with thumb
+  and forefinger pressure, stimulating vagus nerve endings distributed throughout the ear to shift
+  the nervous system toward a parasympathetic, rest-and-digest state.
+why_it_works: The outer ear is densely innervated by the auricular branch of the vagus nerve. Gentle
+  mechanical stimulation of this surface activates afferent vagal signalling, increasing parasympathetic
+  tone and lowering sympathetic drive — signalling to the gut that it is safe to receive nourishment.
 steps:
 - label: Begin at the earlobe
-  cue: Using the pad of your thumb and the pad of your index finger, take your earlobe
-    between them and apply firm but comfortable pressure. Gently roll and massage
-    the lobe for a moment.
+  cue: Using the pad of your thumb and the pad of your index finger, take your earlobe between them
+    and apply firm but comfortable pressure. Gently roll and massage the lobe for a moment.
   action: massage
   secs: 30
 - label: Work up the outer rim
-  cue: Move slowly up along the outer rim (helix) of your ear, massaging in small
-    circles as you go from the lobe all the way to the top of the ear.
+  cue: Move slowly up along the outer rim (helix) of your ear, massaging in small circles as you go
+    from the lobe all the way to the top of the ear.
   action: massage
   secs: 30
 - label: Massage the inner curves
-  cue: Use your fingertip to trace and press along the ridges and hollows of the inner
-    ear — the antihelix, the concha. Apply gentle but firm pressure wherever you feel
-    tension.
+  cue: Use your fingertip to trace and press along the ridges and hollows of the inner ear — the antihelix,
+    the concha. Apply gentle but firm pressure wherever you feel tension.
   action: massage
   secs: 30
 - label: Breathe slowly throughout
-  cue: Throughout the massage keep your breathing slow and even. Let each exhale be
-    unhurried.
+  cue: Throughout the massage keep your breathing slow and even. Let each exhale be unhurried.
   action: rest
   secs: 30
 - label: Switch to the other ear
-  cue: Repeat the full sequence on your other ear — lobe, outer rim, inner curves
-    — for the same amount of time.
+  cue: Repeat the full sequence on your other ear — lobe, outer rim, inner curves — for the same amount
+    of time.
   action: massage
   secs: 120
 timed: true
@@ -47,20 +42,19 @@ linked_to_symptoms:
 linked_to_topics:
 - vagal-tone
 - gut-brain-axis
-notes_for_coach: This is a gentle, accessible practice. Clients can do it discreetly
-  almost anywhere. Encourage slow, exploratory pressure rather than fast rubbing.
+notes_for_coach: This is a gentle, accessible practice. Clients can do it discreetly almost anywhere.
+  Encourage slow, exploratory pressure rather than fast rubbing.
 aliases: []
 equipment: []
 contraindications: []
-motion_shape: ''
+motion_shape: sustained_pressure
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 56. Loss of Appetite — SOMATIC RESET
-  quote: Using your thumb and forefinger, gently massage your entire outer ear—the
-    lobe, the rim, the inner curves. Spend 2-3 minutes on each ear, using firm but
-    comfortable pressure.
+  quote: Using your thumb and forefinger, gently massage your entire outer ear—the lobe, the rim,
+    the inner curves. Spend 2-3 minutes on each ear, using firm but comfortable pressure.
 version: 1
 status: active
 updated_at: '2026-07-28'

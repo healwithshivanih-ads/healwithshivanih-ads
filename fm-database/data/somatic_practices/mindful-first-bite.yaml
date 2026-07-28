@@ -3,35 +3,33 @@ display_name: Mindful First Bite
 category: behavioural
 body_region: whole_body
 position: seated
-summary: A mindful eating protocol applied at the start of a meal, in which the client
-  pauses before eating, uses all senses to examine the food, then takes a single slow,
-  deliberate bite — checking in with hunger and emotional state before continuing.
-why_it_works: Slowing the initial seconds of eating activates the cephalic phase of
-  digestion (salivary and gastric enzyme secretion), engages the prefrontal cortex
-  to interrupt automatic stress-eating loops, and creates a window for interoceptive
-  awareness between emotional state and the act of eating.
+summary: A mindful eating protocol applied at the start of a meal, in which the client pauses before
+  eating, uses all senses to examine the food, then takes a single slow, deliberate bite — checking
+  in with hunger and emotional state before continuing.
+why_it_works: Slowing the initial seconds of eating activates the cephalic phase of digestion (salivary
+  and gastric enzyme secretion), engages the prefrontal cortex to interrupt automatic stress-eating
+  loops, and creates a window for interoceptive awareness between emotional state and the act of eating.
 timed: false
 steps:
 - label: Pause before eating
-  cue: Before you pick up your fork or take any food, stop. Rest your hands in your
-    lap and look at the meal in front of you.
+  cue: Before you pick up your fork or take any food, stop. Rest your hands in your lap and look at
+    the meal in front of you.
   action: observe
 - label: Engage your senses
-  cue: Look at the colours and textures of the food. Bring it close enough to smell.
-    Notice any sensations that arise — saliva, anticipation, urgency.
+  cue: Look at the colours and textures of the food. Bring it close enough to smell. Notice any sensations
+    that arise — saliva, anticipation, urgency.
   action: observe
 - label: Take one deliberate bite
-  cue: Take a single bite and let it rest in your mouth for a moment without chewing.
-    Notice its texture and temperature.
+  cue: Take a single bite and let it rest in your mouth for a moment without chewing. Notice its texture
+    and temperature.
   action: rest
 - label: Chew slowly
-  cue: Begin chewing slowly — aim for around 20 to 30 chews before you swallow. Put
-    your utensil down while you chew.
+  cue: Begin chewing slowly — aim for around 20 to 30 chews before you swallow. Put your utensil down
+    while you chew.
   action: rest
 - label: Swallow and check in
-  cue: 'After you swallow, pause again. Ask yourself quietly: am I physically hungry
-    right now, or am I trying to manage a feeling? There is no right answer — just
-    honest noticing.'
+  cue: 'After you swallow, pause again. Ask yourself quietly: am I physically hungry right now, or
+    am I trying to manage a feeling? There is no right answer — just honest noticing.'
   action: observe
 bilateral: false
 linked_to_symptoms:
@@ -40,24 +38,21 @@ linked_to_symptoms:
 linked_to_topics:
 - mindful-eating
 - mindful-intuitive-eating
-notes_for_coach: This is a protocol applied to each meal rather than a timed session
-  (timed=false). Clients with a history of disordered eating should use this with
-  care — the check-in question should feel curious, not judgmental. Consult coach-client
-  agreement on whether ED history is present.
+notes_for_coach: This is a protocol applied to each meal rather than a timed session (timed=false).
+  Clients with a history of disordered eating should use this with care — the check-in question should
+  feel curious, not judgmental. Consult coach-client agreement on whether ED history is present.
 contraindications:
-- Clients with active eating disorders — use with supervision of a registered dietitian
-  or therapist
+- Clients with active eating disorders — use with supervision of a registered dietitian or therapist
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: checklist
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 57. Stress Eating / Emotional Eating — SOMATIC RESET
-  quote: Before you eat, pause. Look at the food. Smell it. Take one bite and hold
-    it in your mouth without chewing. Notice the texture, temperature, and taste.
-    Chew slowly.
+  quote: Before you eat, pause. Look at the food. Smell it. Take one bite and hold it in your mouth
+    without chewing. Notice the texture, temperature, and taste. Chew slowly.
 version: 1
 status: active
 updated_at: '2026-07-28'

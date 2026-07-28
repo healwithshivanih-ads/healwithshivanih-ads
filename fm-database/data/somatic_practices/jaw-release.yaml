@@ -5,12 +5,11 @@ aliases:
 category: touch
 body_region: jaw
 position: any_position
-summary: A gentle self-massage of the jaw hinges with slow breathing, used to release
-  tension held in both the jaw and the neurologically linked pelvic floor.
-why_it_works: The jaw and pelvic floor share neurological tone patterns; chronic bracing
-  in one perpetuates tension in the other. Releasing jaw tension via tactile input
-  and slow breathing down-regulates the motor holding pattern in the pelvic floor
-  simultaneously.
+summary: A gentle self-massage of the jaw hinges with slow breathing, used to release tension held
+  in both the jaw and the neurologically linked pelvic floor.
+why_it_works: The jaw and pelvic floor share neurological tone patterns; chronic bracing in one perpetuates
+  tension in the other. Releasing jaw tension via tactile input and slow breathing down-regulates
+  the motor holding pattern in the pelvic floor simultaneously.
 steps:
 - label: Open mouth
   cue: Allow your mouth to fall open naturally, without forcing it.
@@ -21,18 +20,16 @@ steps:
   action: release
   secs: 10
 - label: Massage jaw hinges
-  cue: Place your fingertips on both jaw hinges just in front of your ears. Make small,
-    slow circles with gentle pressure.
+  cue: Place your fingertips on both jaw hinges just in front of your ears. Make small, slow circles
+    with gentle pressure.
   action: massage
   secs: 90
 - label: Let jaw hang heavy
-  cue: Allow your jaw to feel completely loose and heavy, as though it has no effort
-    to hold.
+  cue: Allow your jaw to feel completely loose and heavy, as though it has no effort to hold.
   action: release
   secs: 30
 - label: Slow breathing
-  cue: Breathe slowly in and out through your nose while keeping the jaw soft. Stay
-    with the sensation.
+  cue: Breathe slowly in and out through your nose while keeping the jaw soft. Stay with the sensation.
   action: observe
   secs: 0
 duration_seconds: 150
@@ -40,26 +37,24 @@ timed: true
 bilateral: false
 equipment: []
 contraindications:
-- Recent jaw surgery or TMJ injury — consult a physiotherapist before applying pressure
-  to the joint
+- Recent jaw surgery or TMJ injury — consult a physiotherapist before applying pressure to the joint
 linked_to_symptoms:
 - pelvic-pain
 - jaw-tension
 linked_to_topics:
 - pelvic-floor-dysfunction
-notes_for_coach: Jaw-pelvic floor neurological coupling is well-established in pelvic
-  PT literature. Source states 2-3 minutes; steps are apportioned accordingly, with
-  the open-ended slow-breathing step marked secs=0 (self-paced) to fill remaining
-  time up to ~150s.
-motion_shape: ''
+notes_for_coach: Jaw-pelvic floor neurological coupling is well-established in pelvic PT literature.
+  Source states 2-3 minutes; steps are apportioned accordingly, with the open-ended slow-breathing
+  step marked secs=0 (self-paced) to fill remaining time up to ~150s.
+motion_shape: sustained_pressure
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 71. Pelvic Floor Dysfunction & Pelvic Pain — SOMATIC RESET
-  quote: Let your mouth fall open. Relax your tongue away from the roof of your mouth.
-    Gently massage your jaw hinges with your fingertips, making small circles. Let
-    your jaw hang loose and heavy. Breathe slowly. Stay with this for 2-3 minutes.
+  quote: Let your mouth fall open. Relax your tongue away from the roof of your mouth. Gently massage
+    your jaw hinges with your fingertips, making small circles. Let your jaw hang loose and heavy.
+    Breathe slowly. Stay with this for 2-3 minutes.
 version: 1
 status: active
 updated_at: '2026-07-28'

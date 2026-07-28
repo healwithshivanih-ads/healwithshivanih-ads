@@ -3,28 +3,24 @@ display_name: Gentle Eye Palming
 category: touch
 body_region: head_face
 position: any_position
-summary: Warming the palms and cupping them over closed eyes while breathing slowly,
-  delivering gentle warmth and darkness to restore parasympathetic tone to the ocular
-  region.
-why_it_works: Warmth applied around the eyes stimulates the ophthalmic branch of the
-  trigeminal nerve and the oculomotor parasympathetic pathway, promoting meibomian
-  gland secretion and reducing the sympathetically driven dryness associated with
-  emotional withdrawal or chronic stress. Darkness further reduces sensory load on
-  the superior colliculus.
+summary: Warming the palms and cupping them over closed eyes while breathing slowly, delivering gentle
+  warmth and darkness to restore parasympathetic tone to the ocular region.
+why_it_works: Warmth applied around the eyes stimulates the ophthalmic branch of the trigeminal nerve
+  and the oculomotor parasympathetic pathway, promoting meibomian gland secretion and reducing the
+  sympathetically driven dryness associated with emotional withdrawal or chronic stress. Darkness
+  further reduces sensory load on the superior colliculus.
 steps:
 - label: Warm hands
   cue: Rub your palms vigorously together until you feel warmth building in them.
   action: massage
   secs: 10
 - label: Cup eyes
-  cue: Close your eyes and gently cup your warm palms over them — fingers angled up
-    toward the forehead, heels of hands on cheekbones, no pressure on the eyeballs
-    themselves.
+  cue: Close your eyes and gently cup your warm palms over them — fingers angled up toward the forehead,
+    heels of hands on cheekbones, no pressure on the eyeballs themselves.
   action: rest
   secs: 5
 - label: Breathe and rest
-  cue: Breathe slowly and evenly, letting the warmth and darkness sink in. Stay for
-    the full minute.
+  cue: Breathe slowly and evenly, letting the warmth and darkness sink in. Stay for the full minute.
   action: rest
   secs: 60
 duration_seconds: 75
@@ -36,11 +32,11 @@ linked_to_symptoms:
 - dry-eyes
 linked_to_topics:
 - dry-eye-syndrome
-notes_for_coach: Works well as a midday reset for screen-heavy workers. Can be paired
-  with soft gaze reset for extended effect.
+notes_for_coach: Works well as a midday reset for screen-heavy workers. Can be paired with soft gaze
+  reset for extended effect.
 aliases: []
 equipment: []
-motion_shape: ''
+motion_shape: sustained_pressure
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:

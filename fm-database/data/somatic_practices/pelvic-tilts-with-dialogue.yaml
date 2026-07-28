@@ -3,39 +3,36 @@ display_name: Pelvic Tilts with Dialogue
 category: movement
 body_region: pelvis
 position: any_position
-summary: A rhythmic spinal movement practice in hands-and-knees position combined
-  with verbal communication directed to the baby, intended to open pelvic space and
-  calm the birth-fear nervous system.
-why_it_works: Cat-cow style pelvic tilts mobilise the sacroiliac joint and lumbar-pelvic
-  muscles, creating and releasing space in the pelvic bowl. Concurrent verbalisation
-  activates the social engagement branch of the vagus nerve, which down-regulates
-  pelvic floor guarding driven by fear. Together the movement and voice encourage
-  pelvic softening.
+summary: A rhythmic spinal movement practice in hands-and-knees position combined with verbal communication
+  directed to the baby, intended to open pelvic space and calm the birth-fear nervous system.
+why_it_works: Cat-cow style pelvic tilts mobilise the sacroiliac joint and lumbar-pelvic muscles,
+  creating and releasing space in the pelvic bowl. Concurrent verbalisation activates the social engagement
+  branch of the vagus nerve, which down-regulates pelvic floor guarding driven by fear. Together the
+  movement and voice encourage pelvic softening.
 steps:
 - label: Come to hands and knees
-  cue: Position yourself on all fours with wrists under shoulders and knees under
-    hips. Let your spine be long and neutral.
+  cue: Position yourself on all fours with wrists under shoulders and knees under hips. Let your spine
+    be long and neutral.
   action: rest
   secs: 15
 - label: Arch the back
-  cue: On an inhale, let your belly drop toward the floor and lift your head and tailbone
-    gently upward.
+  cue: On an inhale, let your belly drop toward the floor and lift your head and tailbone gently upward.
   action: expand
   secs: 5
 - label: Round the back
-  cue: On an exhale, draw your navel toward your spine and round your back toward
-    the ceiling, letting your head and tailbone drop.
+  cue: On an exhale, draw your navel toward your spine and round your back toward the ceiling, letting
+    your head and tailbone drop.
   action: shrink
   secs: 5
 - label: Begin the dialogue
-  cue: As you continue moving slowly between these two positions, begin speaking aloud
-    to your baby. Share what you are feeling — fear, readiness, love, uncertainty.
-    Tell them it is safe to move and that you are here.
+  cue: As you continue moving slowly between these two positions, begin speaking aloud to your baby.
+    Share what you are feeling — fear, readiness, love, uncertainty. Tell them it is safe to move
+    and that you are here.
   action: release
   secs: 0
 - label: Continue moving and speaking
-  cue: Keep the gentle rhythm going and the conversation flowing for 5 to 10 minutes.
-    Let the movement and the words happen together.
+  cue: Keep the gentle rhythm going and the conversation flowing for 5 to 10 minutes. Let the movement
+    and the words happen together.
   action: circle
   secs: 575
 duration_seconds: 600
@@ -44,27 +41,27 @@ equipment:
 - yoga mat or soft surface
 contraindications:
 - Placenta praevia
-- Any high-risk pregnancy condition — check with midwife or OB before inverting or
-  doing active pelvic work
+- Any high-risk pregnancy condition — check with midwife or OB before inverting or doing active pelvic
+  work
 - Significant wrist pain — use forearm-to-floor modification
 linked_to_topics:
 - birth-trauma
-notes_for_coach: Belongs under a pregnancy/birth topic. Closest topic slug is birth-trauma.
-  The entry is about breech presentation, a structural obstetric situation. Always
-  stress that this complements — never replaces — obstetric management.
+notes_for_coach: Belongs under a pregnancy/birth topic. Closest topic slug is birth-trauma. The entry
+  is about breech presentation, a structural obstetric situation. Always stress that this complements
+  — never replaces — obstetric management.
 aliases: []
 linked_to_symptoms: []
 bilateral: false
-motion_shape: ''
+motion_shape: continuous_travel
 sensitivity: general
 evidence_tier: fm_specific_thin
 sources:
 - id: klein-body-remembers
   location: 84. Breech Baby — SOMATIC RESET
-  quote: Come to hands and knees. Gently arch your back (cow pose), then round it
-    (cat pose). Move slowly between the two. As you move, talk to your baby out loud.
-    Tell them it's safe to turn. Tell them you're ready. Tell them what you're afraid
-    of. Tell them the truth. Continue for 5-10 minutes.
+  quote: Come to hands and knees. Gently arch your back (cow pose), then round it (cat pose). Move
+    slowly between the two. As you move, talk to your baby out loud. Tell them it's safe to turn.
+    Tell them you're ready. Tell them what you're afraid of. Tell them the truth. Continue for 5-10
+    minutes.
 version: 1
 status: active
 updated_at: '2026-07-28'

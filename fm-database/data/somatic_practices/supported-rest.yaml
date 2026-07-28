@@ -5,13 +5,11 @@ category: imagery
 body_region: whole_body
 position: lying
 summary: Fifteen to twenty minutes of fully supported lying rest, sleep permitted.
-why_it_works: Full physical support removes the low-level postural work the body does
-  even lying flat, which is what allows a depleted system to actually stand down rather
-  than merely pause.
+why_it_works: Full physical support removes the low-level postural work the body does even lying flat,
+  which is what allows a depleted system to actually stand down rather than merely pause.
 steps:
 - label: Set up
-  cue: Lie on your back with a pillow under your knees and a small rolled towel under
-    your neck.
+  cue: Lie on your back with a pillow under your knees and a small rolled towel under your neck.
   secs: 45
   action: rest
 - label: Open the hands
@@ -29,7 +27,7 @@ timed: true
 equipment:
 - A pillow
 - A rolled towel
-motion_shape: ''
+motion_shape: release
 contraindications:
 - Late pregnancy — lie on the left side with support instead
 sensitivity: general

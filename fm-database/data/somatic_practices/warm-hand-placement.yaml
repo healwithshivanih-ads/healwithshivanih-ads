@@ -4,19 +4,16 @@ aliases: []
 category: touch
 body_region: whole_body
 position: seated
-summary: Warming the palms and resting them over the body in turn, skipping painful
-  areas.
-why_it_works: Warmth plus intentional gentle touch changes the relationship between
-  a person and their own skin — from something to be fought or fixed, to something
-  being tended.
+summary: Warming the palms and resting them over the body in turn, skipping painful areas.
+why_it_works: Warmth plus intentional gentle touch changes the relationship between a person and their
+  own skin — from something to be fought or fixed, to something being tended.
 steps:
 - label: Warm your hands
   cue: Rub your palms together briskly until they are genuinely warm.
   secs: 25
   action: rest
 - label: Place them somewhere safe
-  cue: Rest them on a part of you that feels comfortable — belly, chest, back of the
-    neck.
+  cue: Rest them on a part of you that feels comfortable — belly, chest, back of the neck.
   secs: 60
   action: touch
 - label: Stay until the warmth fades
@@ -24,8 +21,7 @@ steps:
   secs: 90
   action: touch
 - label: Warm again and move
-  cue: Rub your hands again and move to another area. Skip anywhere sore — go where
-    you are welcome.
+  cue: Rub your hands again and move to another area. Skip anywhere sore — go where you are welcome.
   secs: 125
   action: touch
 reps: null
@@ -33,15 +29,15 @@ duration_seconds: 300
 bilateral: false
 timed: true
 equipment: []
-motion_shape: ''
+motion_shape: sustained_pressure
 contraindications:
 - Skip any area that is painful, broken or actively inflamed
 sensitivity: general
 linked_to_symptoms: []
 linked_to_topics:
 - psoriasis
-notes_for_coach: '''Go where you are welcome'' is the whole instruction for clients
-  who have been at war with their skin.'
+notes_for_coach: '''Go where you are welcome'' is the whole instruction for clients who have been
+  at war with their skin.'
 sources:
 - id: klein-body-remembers
   location: System 10 — Skin, Hair & Senses, entries 95-102
