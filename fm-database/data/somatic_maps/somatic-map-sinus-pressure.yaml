@@ -1,0 +1,47 @@
+slug: somatic-map-sinus-pressure
+display_name: Sinus Pressure — Somatic Reading
+target_kind: topic
+target_slug: sinusitis
+sensitivity: general
+differential_note: Exclude acute bacterial or viral sinusitis (may require antibiotics
+  or antiviral support), nasal polyps, deviated septum, allergic rhinitis, dental
+  infection, and mould or environmental allergen exposure before considering emotional
+  patterning. ENT or allergy assessment is appropriate for recurrent or chronic sinus
+  symptoms.
+emotional_roots:
+- pattern: Unexpressed sadness and unshed tears
+  note: Sinus pressure is sometimes associated with grief that has been held in rather
+    than released — a kind of internal congestion that mirrors the emotional state.
+- pattern: Suppressed frustration
+  note: Irritation, annoyance, or unresolved conflict with people in close relationships
+    can also show up as a feeling of pressure and blockage in the sinus area.
+reframe: Grief and frustration do not disappear when they go unexpressed — they wait.
+  The sinuses may be holding what the heart has not yet been given space to release.
+inquiry_question: What grief or unsaid truth are you still carrying — and is there
+  someone who needs to hear it?
+somatic_practice: body-rocking
+also_consider:
+  supplements:
+  - stinging-nettle-root
+  home_remedies:
+  - saline-nasal-wash
+  practical:
+  - Acupressure point Large Intestine 4 (webbing between thumb and index finger) —
+    press firmly for 30 seconds each hand
+  cooking_adjustments: []
+pattern_signals:
+- Client reports sinus symptoms worsening after emotionally charged events or family
+  conflict
+- History of difficulty expressing sadness or grief openly
+- Describes themselves as someone who 'doesn't cry'
+notes_for_coach: Nettle leaf tea maps to 'stinging-nettle-root' in the supplement
+  catalogue (closest available). Source is a book (moderate quality).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 11. Sinus Pressure
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

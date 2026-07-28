@@ -1,0 +1,63 @@
+slug: pelvic-rocking
+display_name: Pelvic Rocking
+aliases:
+- supine-pelvic-tilt-breath
+category: movement
+body_region: pelvis
+position: lying
+summary: A slow, breath-linked pelvic tilting movement performed on the back with
+  knees bent, designed to help the pelvis learn to soften and release.
+why_it_works: Coupling pelvic movement with the breath activates the diaphragm–pelvic-floor
+  co-contraction and release cycle. The gentle rhythmic motion reduces sympathetic
+  tone in the lumbar–pelvic region and restores proprioceptive awareness of voluntary
+  release.
+steps:
+- label: Set up
+  cue: Lie on your back on a comfortable surface with your knees bent and feet flat
+    on the floor, hip-width apart.
+  action: rest
+  secs: 20
+- label: Inhale arch
+  cue: Breathe in slowly and let your lower back lift slightly away from the floor,
+    creating a small natural arch.
+  action: expand
+  secs: 4
+- label: Exhale press
+  cue: Breathe out and gently let your lower back soften down toward the floor.
+  action: release
+  secs: 4
+- label: Continue rhythm
+  cue: Keep moving in this slow, rolling rhythm — a gentle wave between arch and flat
+    — for the remaining time. Keep movements small and unhurried.
+  action: circle
+  secs: 256
+duration_seconds: 284
+timed: true
+bilateral: false
+equipment:
+- yoga mat or soft floor surface
+contraindications:
+- Active lumbar disc herniation or acute low-back injury — modify range or avoid
+- Second/third trimester pregnancy — seek guidance on supine position duration
+linked_to_symptoms:
+- pelvic-pain
+- dysmenorrhea
+- pms
+linked_to_topics:
+- premenstrual-syndrome
+- pelvic-floor-dysfunction
+notes_for_coach: Source states 3-5 minutes; steps apportioned to ~4.7 min. The movement
+  is breath-led; keep the pace very slow.
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 72. Menstrual Pain / PMS — SOMATIC RESET
+  quote: 'Lie on your back with knees bent. Slowly rock your pelvis: inhale and let
+    your lower back arch slightly, exhale and let it press gently into the floor.
+    Keep the movement small and slow. Continue for 3-5 minutes.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

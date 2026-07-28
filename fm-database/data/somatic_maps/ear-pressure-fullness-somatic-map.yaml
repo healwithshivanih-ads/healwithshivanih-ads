@@ -1,0 +1,51 @@
+slug: ear-pressure-fullness-somatic-map
+display_name: Ear Pressure / Fullness
+target_kind: symptom
+target_slug: ear-pressure-fullness
+sensitivity: general
+emotional_roots:
+- pattern: Anger at what is being heard
+  note: Ear pressure may be associated with a strong internal resistance to what is
+    coming in from the environment — arguments, criticism, or relentless demands —
+    as though the body is physically closing off the channel.
+- pattern: Chronic exposure to conflict
+  note: Those who grew up in households with frequent arguing or discord may show
+    a residual sensitivity in the auditory system, with ear symptoms appearing under
+    stress even years later.
+- pattern: Stubbornness or boundary rigidity
+  note: The pressure can also reflect an active internal refusal to hear a perspective,
+    truth, or piece of feedback — the body manifesting the 'don't bother me' stance.
+reframe: Not everything that arrives at your ears needs to get inside you. And not
+  everything you are keeping out is without value. The question is whether you are
+  making a discerning choice or simply shutting down.
+inquiry_question: Whose voice are you braced against at the moment?
+somatic_practice: body-container
+also_consider:
+  practical:
+  - 'Acupressure: press firmly in the hollow just behind the earlobe for 30 seconds'
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client reports ear symptoms during or after conflict-heavy periods
+- History of growing up in a high-conflict household
+- Tendency to dismiss feedback or shut down during disagreements
+- Ear symptoms correlate with feeling overwhelmed by others' needs or voices
+differential_note: Exclude Eustachian tube dysfunction, otitis media or externa, Ménière's
+  disease, temporomandibular joint dysfunction causing ear fullness, acoustic neuroma,
+  and altitude or pressure changes. Any new-onset ear fullness, hearing change, or
+  tinnitus should be evaluated by an ENT clinician before emotional framings are explored.
+notes_for_coach: The target slug 'nasal-congestion' is the closest available match
+  for a symptom in the ear/head region; ideal slug would be 'ear-fullness' which does
+  not yet exist in the catalogue. Note this in review.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 17. Ear Pressure / Fullness — EMOTIONAL ROOT
+  quote: Ear pressure often appears when there's too much turmoil around you—arguments,
+    conflict, discord—and you don't want to take it in.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

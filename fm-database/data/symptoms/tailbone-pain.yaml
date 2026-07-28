@@ -1,0 +1,28 @@
+slug: tailbone-pain
+display_name: Tailbone Pain (Coccydynia)
+aliases:
+- coccydynia
+- coccyx pain
+- pain sitting down
+- tailbone hurts
+- sore tailbone
+- pain at the base of my spine
+category: musculoskeletal
+severity: common
+description: Localised pain at the coccyx, characteristically worse on sitting and on rising
+  from sitting. Often follows a fall onto the base of the spine or childbirth; also associated
+  with pelvic floor hypertonicity.
+when_to_refer: Refer where pain follows significant trauma, or where there is rectal bleeding,
+  a palpable mass or unexplained weight loss.
+linked_to_topics:
+- pelvic-floor-dysfunction
+linked_to_mechanisms: []
+notes_for_coach: Frequently accompanies a hypertonic pelvic floor — the two are worth assessing
+  together.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

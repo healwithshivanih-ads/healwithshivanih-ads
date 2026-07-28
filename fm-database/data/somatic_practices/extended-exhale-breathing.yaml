@@ -1,0 +1,64 @@
+slug: extended-exhale-breathing
+display_name: Extended Exhale Breathing
+aliases:
+- 4-8-breath
+- double-exhale-breathing
+- prolonged-exhale
+category: breath
+body_region: chest_diaphragm
+position: any_position
+summary: A paced breathing practice in which the exhale is always twice the length
+  of the inhale, used to activate the parasympathetic nervous system and reduce bladder
+  urgency.
+why_it_works: Prolonging the exhale increases vagal afferent traffic via respiratory
+  sinus arrhythmia, shifting autonomic balance toward parasympathetic dominance. This
+  reduces detrusor overactivity that is amplified by chronic sympathetic arousal.
+steps:
+- label: Find comfort
+  cue: Sit, stand, or lie in a comfortable position. Let your shoulders drop and your
+    belly soften.
+  action: rest
+  secs: 15
+- label: Inhale 4 counts
+  cue: Breathe in slowly through your nose for a count of four.
+  action: expand
+  secs: 4
+- label: Exhale 8 counts
+  cue: Breathe out slowly and completely for a count of eight — twice as long as you
+    breathed in. Let your belly and pelvic floor soften on the way out.
+  action: release
+  secs: 8
+- label: Repeat cycle
+  cue: Continue this 4-in, 8-out rhythm without pausing. Let each exhale signal to
+    your whole body that there is no urgency right now.
+  action: observe
+  secs: 0
+duration_seconds: 240
+timed: true
+bilateral: false
+equipment: []
+contraindications:
+- Severe COPD or breath-holding disorders — modified ratio may be needed; consult
+  clinician
+linked_to_symptoms:
+- urinary-urgency
+- urinary-frequency
+linked_to_topics:
+- cystitis-and-interstitial-cystitis
+notes_for_coach: Source states 3-5 minutes. The repeat cycle step is set to secs=0
+  (self-paced) so the practitioner can time it flexibly. Duration_seconds is set to
+  240s (4 min) as a default render target. One cycle = 12 seconds, so 4 minutes yields
+  approximately 20 cycles.
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 79. Overactive Bladder — SOMATIC RESET
+  quote: 'Inhale for 4 counts. Exhale for 8 counts. Keep this ratio: exhale always
+    twice as long as inhale. Continue for 3-5 minutes. Let each exhale soften your
+    belly and pelvic floor.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

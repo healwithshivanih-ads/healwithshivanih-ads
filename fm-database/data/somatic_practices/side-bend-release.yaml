@@ -1,0 +1,50 @@
+slug: side-bend-release
+display_name: Side Bend Release
+aliases: []
+category: movement
+body_region: chest_diaphragm
+position: standing
+summary: Slow alternating standing side bends with an overhead reach.
+why_it_works: Lateral opening frees the intercostals and quadratus lumborum, which
+  restrict when breathing has been guarded — restoring the capacity to take a full
+  breath in, and to push one out.
+steps:
+- label: Stand and settle
+  cue: Feet hip-width apart, weight even.
+  secs: 20
+  action: rest
+- label: Reach and bend
+  cue: Raise one arm overhead and bend slowly to the opposite side. Feel the length
+    along your waist.
+  secs: 30
+  action: release
+- label: Hold, then return
+  cue: Hold for one breath, then come back slowly.
+  secs: 20
+  action: hold
+- label: Other side, then alternate
+  cue: Repeat to the other side, and keep alternating.
+  secs: 50
+  action: release
+reps: null
+duration_seconds: 120
+bilateral: true
+timed: true
+equipment: []
+motion_shape: ''
+contraindications:
+- Acute low back pain or disc symptoms
+- Dizziness on standing — do it seated
+sensitivity: general
+linked_to_symptoms:
+- chemical-smell-sensitivity
+linked_to_topics: []
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

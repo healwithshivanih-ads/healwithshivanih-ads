@@ -1,0 +1,51 @@
+slug: somatic-map-hypersalivation
+display_name: Hypersalivation — Somatic Reading
+target_kind: symptom
+target_slug: hypersalivation
+sensitivity: general
+differential_note: Exclude medication-induced hypersalivation (clozapine, pilocarpine,
+  lithium, SSRIs, donepezil), neurological causes (Parkinson's, ALS, stroke), GERD
+  and oesophageal dysmotility, dental or oral pathology, and pregnancy-related ptyalism
+  before considering emotional patterns. Medical review is primary for persistent
+  unexplained hypersalivation.
+emotional_roots:
+- pattern: Nervous system flooding from overwhelm
+  note: When too much arrives at once — new demands, information, responsibilities
+    — the body may respond as if preparing to digest what the mind cannot break down,
+    producing excess saliva as part of a generalised autonomic flood response.
+- pattern: Chronic stress dysregulation
+  note: Under sustained pressure the ANS may oscillate between parasympathetic over-activation
+    (excess saliva) and sympathetic activation (dry mouth) as it attempts to find
+    equilibrium.
+- pattern: Nausea at what is being asked of you
+  note: Sometimes excess saliva precedes the body's impulse to reject something —
+    a role, relationship, or demand that feels genuinely impossible to take in and
+    process.
+reframe: Not everything that arrives at your doorstep is yours to take in. You are
+  allowed to have a limit — and naming it is not weakness.
+inquiry_question: What have you been forcing yourself to accept or digest that your
+  body has actually been resisting?
+somatic_practice: protective-arm-sweep
+also_consider:
+  practical:
+  - Gum chewing or sugar-free mints can help manage the acute physical symptom
+  - Rule out medications as a cause — review drug list with prescriber
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes feeling overwhelmed by responsibilities they feel unable to decline
+- Reports symptom worsening before obligations they dread
+- Difficulty saying no or setting limits in relationships or work
+notes_for_coach: The target_slug is 'nausea' as the closest available match — hypersalivation
+  is not in the symptom catalogue. Note mismatch in plan-check. Source is a book (moderate
+  quality).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 06. Too Much Saliva - Hypersalivation
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,58 @@
+slug: somatic-map-utis-bladder-infections
+display_name: Recurrent UTIs & Bladder Infections
+target_kind: symptom
+target_slug: urinary-tract-infections
+sensitivity: sensitive
+emotional_roots:
+- pattern: Anger at boundary violations
+  note: Recurrent UTIs are sometimes associated — in somatic and mind-body traditions
+    — with a pattern of feeling that one's personal space or territory has been repeatedly
+    invaded, and with difficulty asserting limits.
+- pattern: Chronic difficulty saying no
+  note: Some practitioners observe a pattern of people-pleasing and feeling overwhelmed
+    by others' needs in those with recurrent bladder infections. This is an observational
+    association and not a causal claim.
+- pattern: Stress-depleted immunity
+  note: Chronic anxiety and stress are known to impair immune defences, making the
+    bladder — and mucous membranes generally — more susceptible to infection. This
+    is a physiologically plausible pathway.
+reframe: Boundaries are not walls that shut people out — they are information that
+  lets others know how to be with you without causing harm. Learning to name and hold
+  your limits is a form of care for both you and the people around you.
+inquiry_question: In what areas of your life do you find it hardest to say no, and
+  what has that cost you?
+somatic_practice: boundary-push
+also_consider:
+  supplements:
+  - cranberry-extract
+  - d-mannose
+  home_remedies: []
+  cooking_adjustments: []
+  practical: []
+pattern_signals:
+- Client describes chronic difficulty setting limits with others
+- Reports feeling overwhelmed or invaded by demands at work or home
+- History of recurrent UTIs without a clear structural cause
+- Describes resentment or suppressed anger about relational dynamics
+differential_note: 'Recurrent UTIs must be fully investigated medically. Physical
+  and structural causes to exclude include: anatomical abnormalities (short urethra,
+  prolapse, urethral diverticulum), incomplete bladder emptying, kidney or bladder
+  stones, post-menopausal oestrogen deficiency reducing mucosal immunity, diabetes
+  (elevated glucose feeding bacteria), immunosuppression, catheters or foreign bodies,
+  sexual transmission of bacteria, and antibiotic resistance patterns. All recurrent
+  UTIs require urine culture and sensitivity. Emotional associations are never a substitute
+  for antimicrobial management where indicated.'
+notes_for_coach: D-Mannose has reasonable evidence for E. coli UTI prevention. Cranberry
+  extract (PAC-standardised) has moderate evidence for adhesion inhibition. The emotional
+  associations are observational/traditional.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 73. UTIs/Bladder Infections — EMOTIONAL ROOT
+  quote: UTIs often relate to feeling angered by boundary violations. The bladder
+    holds your personal space, your territory.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

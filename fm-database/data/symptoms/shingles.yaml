@@ -1,0 +1,31 @@
+slug: shingles
+display_name: Shingles (Herpes Zoster)
+aliases:
+- herpes zoster
+- zoster
+- shingles rash
+- nerve rash
+- band of blisters
+- post-herpetic neuralgia
+category: skin
+severity: concerning
+description: Reactivation of dormant varicella-zoster virus in a nerve root, producing a painful
+  blistering rash in a single dermatome, usually one-sided and not crossing the midline. Often
+  preceded by days of burning or tingling before anything appears. Reactivation follows drops
+  in cell-mediated immunity — age, illness, sustained stress.
+when_to_refer: URGENT — antivirals work best within 72 hours of rash onset, so refer immediately.
+  Shingles involving the eye or tip of the nose (ophthalmic zoster) threatens sight and needs
+  same-day ophthalmology. Facial palsy with ear vesicles (Ramsay Hunt) is also urgent. Disseminated
+  or recurrent zoster warrants immune workup.
+linked_to_topics: []
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+notes_for_coach: Time-critical. Route to medical care first; the depletion conversation comes
+  after.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

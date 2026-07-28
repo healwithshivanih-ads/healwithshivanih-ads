@@ -1,0 +1,53 @@
+slug: soft-gaze-reset
+display_name: Soft Gaze Reset
+category: orientation
+body_region: head_face
+position: any_position
+summary: A 1–2 minute practice of deliberately de-focusing the eyes and relaxing the
+  facial muscles, shifting the visual system from hypervigilant threat-scanning to
+  a diffuse, restful panoramic mode.
+why_it_works: 'Hypervigilance is maintained partly through sustained oculomotor tension:
+  the eyes lock onto potential threats, activating the sympathetic nervous system
+  via the superior colliculus and locus coeruleus. Voluntarily releasing focal vision
+  and adopting a soft, peripheral gaze activates the ventral vagal system and signals
+  neurologically that no immediate threat exists.'
+steps:
+- label: Relax face
+  cue: Unclench your jaw, soften your forehead, and let your facial muscles go slack.
+  action: release
+  secs: 10
+- label: Defocus gaze
+  cue: Without closing your eyes, stop looking AT anything. Let your gaze go soft
+    and wide, as if you are taking in the whole visual field at once rather than any
+    single point.
+  action: observe
+  secs: 20
+- label: Breathe and hold
+  cue: Maintain the soft, unfocused gaze while breathing slowly. Allow the world to
+    blur slightly. Stay here.
+  action: rest
+  secs: 90
+duration_seconds: 120
+timed: true
+bilateral: false
+contraindications:
+- Should not be used while driving or operating machinery
+linked_to_symptoms:
+- dry-eyes
+- hypervigilance
+linked_to_topics:
+- dry-eye-syndrome
+notes_for_coach: Coach can guide clients into this during sessions to model the felt
+  sense of safety in the body. It is also useful as a transition between topics.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 07. Eye Strain / Tired Eyes — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import yaml
 
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, SomaticMap, SomaticPractice, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
 
 
 def load_supplements(data_dir: Path) -> list[Supplement]:
@@ -348,3 +348,49 @@ def load_source(data_dir: Path, source_id: str) -> Source:
     with path.open() as f:
         raw = yaml.safe_load(f)
     return Source(**raw)
+
+
+def load_somatic_practices(data_dir: Path) -> list[SomaticPractice]:
+    d = data_dir / "somatic_practices"
+    if not d.exists():
+        return []
+    out = []
+    for path in sorted(d.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open() as f:
+            raw = yaml.safe_load(f)
+        out.append(SomaticPractice(**raw))
+    return out
+
+
+def load_somatic_practice(data_dir: Path, slug: str) -> SomaticPractice:
+    path = data_dir / "somatic_practices" / f"{slug}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"somatic_practice not found: {slug}")
+    with path.open() as f:
+        raw = yaml.safe_load(f)
+    return SomaticPractice(**raw)
+
+
+def load_somatic_maps(data_dir: Path) -> list[SomaticMap]:
+    d = data_dir / "somatic_maps"
+    if not d.exists():
+        return []
+    out = []
+    for path in sorted(d.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open() as f:
+            raw = yaml.safe_load(f)
+        out.append(SomaticMap(**raw))
+    return out
+
+
+def load_somatic_map(data_dir: Path, slug: str) -> SomaticMap:
+    path = data_dir / "somatic_maps" / f"{slug}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"somatic_map not found: {slug}")
+    with path.open() as f:
+        raw = yaml.safe_load(f)
+    return SomaticMap(**raw)

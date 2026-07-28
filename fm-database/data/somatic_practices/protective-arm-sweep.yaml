@@ -1,0 +1,50 @@
+slug: protective-arm-sweep
+display_name: Protective Arm Sweep
+category: discharge
+body_region: arms_hands
+position: standing
+summary: A standing, bilateral arm sweep forward and wide, paired with an exhale,
+  that enacts a physical boundary gesture to discharge the nervous system flooding
+  associated with overwhelm.
+why_it_works: When the nervous system is flooded by too many incoming demands, a volitional
+  'clearing' movement allows the motor system to complete a protective impulse that
+  was inhibited (the instinct to push away or create space). The paired exhale activates
+  the vagus nerve, initiating parasympathetic downregulation.
+steps:
+- label: Stand and set
+  cue: Stand with your feet hip-width apart, arms hanging at your sides.
+  action: rest
+  secs: 5
+- label: Sweep out
+  cue: Sweep both arms wide and forward from your sides — like clearing a large table
+    in front of you — while breathing out completely.
+  action: release
+  secs: 4
+- label: Return
+  cue: Let your arms fall back to your sides. Breathe in naturally.
+  action: rest
+  secs: 4
+reps: 6
+duration_seconds: 78
+timed: true
+bilateral: false
+contraindications:
+- Shoulder impingement or rotator cuff injury — modify range or skip
+linked_to_symptoms:
+- stress
+- anxiety
+linked_to_topics: []
+notes_for_coach: Invite the client to let the exhale be audible — even a sigh or an
+  'ahhh'. The embodied 'no' quality of the gesture is the therapeutic element.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 06. Too Much Saliva - Hypersalivation — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

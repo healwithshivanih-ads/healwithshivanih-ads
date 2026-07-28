@@ -1,0 +1,28 @@
+slug: sciatica
+display_name: Sciatica
+aliases:
+- shooting pain down my leg
+- nerve pain in my leg
+- sciatic pain
+- pain down the back of my leg
+- leg pain from my back
+- radiating leg pain
+category: musculoskeletal
+severity: concerning
+description: Pain radiating from the lower back or buttock down the back of the leg, typically
+  below the knee, often with pins and needles or numbness in a dermatomal pattern. Usually lumbar
+  nerve root irritation; sometimes deep gluteal entrapment.
+when_to_refer: EMERGENCY — saddle anaesthesia, urinary retention or incontinence, faecal incontinence,
+  or bilateral leg symptoms indicate cauda equina syndrome and need same-day surgical assessment.
+  Also refer for progressive motor weakness or foot drop.
+linked_to_topics: []
+linked_to_mechanisms: []
+notes_for_coach: Know the cauda equina questions and ask them explicitly — bladder, bowel, saddle
+  numbness. This is the one back presentation where missing it is catastrophic.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

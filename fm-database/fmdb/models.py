@@ -22,6 +22,11 @@ from .enums import (
     ProtocolCategory,
     Rasa,
     SafetyStatus,
+    SomaticBodyRegion,
+    SomaticCategory,
+    SomaticPosition,
+    SomaticSensitivity,
+    SomaticTargetKind,
     SourceQuality,
     SourceType,
     SupplementCategory,
@@ -877,4 +882,153 @@ class Supplement(BaseModel):
         for key in v:
             if key not in valid:
                 raise ValueError(f"unknown supplement form in typical_dose_range: {key!r}")
+        return v
+
+
+class SomaticStep(BaseModel):
+    """One timed step inside a somatic practice.
+
+    `action` is a free-text verb captured verbatim from the source, NOT an
+    enum. The whole point of collecting these is to discover empirically which
+    motion shapes the library actually needs — constraining it to a guessed
+    enum at extraction time would destroy the evidence. Clustering happens
+    downstream and writes SomaticPractice.motion_shape.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    label: str                                    # "Push", "Breathe in", "Let warmth build"
+    cue: str                                      # what the client is told, in their language
+    secs: Optional[int] = None                    # None for untimed / self-paced steps
+    action: str = ""                              # expand | hold | shrink | press | release | tap | circle | rest | observe | …
+
+
+class EmotionalRoot(BaseModel):
+    """One emotional pattern associated with a symptom in the source material.
+
+    This is an ASSOCIATION recorded from a source, never a causal claim. How
+    (and whether) it reaches a client is governed by SomaticMap.sensitivity
+    plus the client's own mind-body depth setting.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    pattern: str                                  # short name — "Swallowed anger"
+    note: str = ""                                # the fuller description, coach-voiced
+
+
+class SomaticPractice(BaseModel):
+    """A reusable somatic reset — a short, bounded body-based exercise.
+
+    One practice serves many symptoms (a neck-shoulder drop is prescribed for
+    tension headache AND trapezius tension AND stiff neck), which is why this
+    is its own entity rather than a field on a symptom.
+
+    Stored at data/somatic_practices/<slug>.yaml.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str
+    aliases: list[str] = Field(default_factory=list)
+    category: SomaticCategory
+    body_region: SomaticBodyRegion = SomaticBodyRegion.whole_body
+    position: SomaticPosition = SomaticPosition.any_position
+    summary: str = ""
+    why_it_works: str = ""                                       # the physiological rationale, coach-facing
+    steps: list[SomaticStep] = Field(default_factory=list)
+    reps: Optional[int] = None                                   # rounds/repetitions, when the source specifies
+    duration_seconds: Optional[int] = None                       # total session length when known
+    # ---- objective facts used to CLUSTER motion shapes downstream ----------
+    # Recorded by the extractor; motion_shape itself is written by the
+    # clustering pass, never guessed at extraction time.
+    bilateral: bool = False                                      # alternates left/right
+    timed: bool = True                                           # False = behavioural protocol, not a timed session
+    equipment: list[str] = Field(default_factory=list)
+    motion_shape: str = ""                                       # ASSIGNED DOWNSTREAM by the clustering pass
+    # -----------------------------------------------------------------------
+    contraindications: list[str] = Field(default_factory=list)
+    sensitivity: SomaticSensitivity = SomaticSensitivity.general
+    linked_to_symptoms: list[str] = Field(default_factory=list)
+    linked_to_topics: list[str] = Field(default_factory=list)
+    notes_for_coach: str = ""
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier = EvidenceTier.fm_specific_thin
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class AlsoConsider(BaseModel):
+    """Practical adjuncts that accompany a somatic map.
+
+    Supplement / home-remedy entries MUST resolve to existing catalogue slugs —
+    this source is not authorised to mint new supplements. Anything that has no
+    catalogue home goes in `practical` as free text.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    supplements: list[str] = Field(default_factory=list)
+    home_remedies: list[str] = Field(default_factory=list)
+    cooking_adjustments: list[str] = Field(default_factory=list)
+    practical: list[str] = Field(default_factory=list)
+
+
+class SomaticMap(BaseModel):
+    """The emotional / somatic reading attached to one symptom or topic.
+
+    Carries the emotional roots, the client-facing reframe, the reflective
+    question, and a pointer to the somatic practice that goes with it.
+
+    SAFETY MODEL — two axes, both must permit before anything reaches a client:
+      * this entity's `sensitivity` (how risky the framing is), and
+      * the client's own mind-body depth setting (how much they can hold).
+    `coach_only_note`, when set, is an absolute bar on auto-surfacing
+    regardless of either axis.
+
+    `differential_note` is mandatory in spirit: these are associations layered
+    ON TOP of a physiological workup, never a replacement for one.
+
+    Stored at data/somatic_maps/<slug>.yaml.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str
+    target_kind: SomaticTargetKind
+    target_slug: str                                             # an existing symptom or topic slug
+    sensitivity: SomaticSensitivity = SomaticSensitivity.general
+    emotional_roots: list[EmotionalRoot] = Field(default_factory=list)
+    reframe: str = ""                                            # client-facing, belief-level
+    inquiry_question: str = ""                                   # the one reflective question
+    somatic_practice: str = ""                                   # somatic_practice slug
+    # "Also consider" resolves to EXISTING catalogue entries wherever possible —
+    # never mint a new supplement from this source.
+    also_consider: AlsoConsider = Field(default_factory=AlsoConsider)
+    pattern_signals: list[str] = Field(default_factory=list)     # what makes this reading plausible in a given client
+    differential_note: str = ""                                  # the physiological drivers that must be excluded first
+    coach_only_note: str = ""                                    # set → never auto-surface, whatever the depth setting
+    notes_for_coach: str = ""
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier = EvidenceTier.fm_specific_thin
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
         return v

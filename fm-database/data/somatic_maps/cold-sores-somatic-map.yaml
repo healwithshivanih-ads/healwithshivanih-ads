@@ -1,0 +1,62 @@
+slug: cold-sores-somatic-map
+display_name: Cold Sores / Herpes Simplex (Oral)
+target_kind: topic
+target_slug: herpes-simplex
+sensitivity: sensitive
+emotional_roots:
+- pattern: Words burning to be spoken
+  note: Cold sore outbreaks may coincide with periods when a person has come close
+    to saying something direct — a confrontation, an honest admission — and then pulled
+    back at the last moment, leaving the tension unresolved.
+- pattern: Suppressed anger manifesting as heat
+  note: In TCM, oral herpes is associated with liver fire — the physiological signature
+    of anger that has been turned inward or suppressed rather than expressed. The
+    blister reflects a literal heat that has had nowhere to go.
+- pattern: Fear of intimacy alongside longing for connection
+  note: An outbreak can sometimes signal an inner conflict between wanting closeness
+    and fearing it — with the visible symptom unconsciously creating distance at the
+    moment when connection might otherwise be possible.
+reframe: Your permission to be honest about your frustration or truth does not depend
+  on whether those around you can handle it. Notice which relationships feel safe
+  enough for your real experience to exist.
+inquiry_question: Is there something true you have been holding back from saying?
+somatic_practice: extended-self-hug-pressure
+also_consider:
+  supplements:
+  - l-lysine
+  practical:
+  - Ice applied at first sign of tingling to minimise outbreak
+  - Stress reduction as a primary prevention strategy
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Outbreaks reliably follow periods of suppressed conflict or unspoken tension
+- Client describes coming close to saying something and pulling back
+- Pattern of outbreaks correlating with relationship tension or intimacy
+- History of expressing anger as 'fine' when not fine
+differential_note: Cold sores are caused by the herpes simplex virus (HSV-1, occasionally
+  HSV-2) and follow the well-understood pattern of viral latency with stress-triggered
+  reactivation. Triggers include UV exposure, physical illness, immune suppression,
+  hormonal changes, and psychological stress. The emotional framing addresses the
+  stress-reactivation pathway only — it does not replace antiviral management. Frequent
+  or severe outbreaks should be assessed by a clinician; antivirals (aciclovir, valaciclovir)
+  are effective. The intimacy framing must be raised very carefully — see coach_only_note.
+coach_only_note: The framing around intimacy avoidance and outbreaks as an 'unconscious
+  excuse' to withdraw is speculative and could feel pathologising or shaming to a
+  client who is managing a stigmatised viral condition. Raise only if the client themselves
+  has introduced that theme and has explicitly asked to explore it.
+notes_for_coach: Sensitivity is 'sensitive' due to the stigma that many clients carry
+  around HSV. Lead with the stress-reactivation science, which is well-evidenced,
+  before any emotional exploration. The intimacy framing is strictly coach-led and
+  client-invited only.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 23. Cold Sores / Herpes Simplex — EMOTIONAL ROOT
+  quote: Cold sores erupt when there's something burning to be said that you're holding
+    back. Angry words, bitter judgments, and harsh truths you wanted to express but
+    swallowed at the last moment fester on the lips where they were stopped.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

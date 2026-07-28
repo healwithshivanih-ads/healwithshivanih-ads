@@ -1,0 +1,58 @@
+slug: somatic-map-tailbone-pain
+display_name: Tailbone Pain (Coccydynia)
+target_kind: symptom
+target_slug: tailbone-pain
+sensitivity: general
+emotional_roots:
+- pattern: Fundamental insecurity
+  note: 'The coccyx sits at the very base of the spine — the lowest point of our structural
+    foundation. Coccyx pain is associated in some somatic frameworks with periods
+    of deep, basic insecurity: housing, finances, livelihood, or any situation in
+    which a person''s core sense of safety is genuinely threatened.'
+- pattern: Sitting on unprocessed pain
+  note: There is a common clinical observation that tailbone pain is linked to old
+    emotional hurt that was never worked through — pain that a person has been, quite
+    literally, carrying at their base and sitting on for years.
+- pattern: Self-blame
+  note: The source notes an association between tailbone pain and a deeply held belief
+    that one is fundamentally at fault — a posture of self-criticism that may have
+    become embodied at the very root of the spine.
+reframe: Periods of instability are a universal part of life — they don't mean you
+  failed. Each time the ground shifts, there is an opportunity to rebuild on something
+  that is actually yours. That is not a small thing.
+inquiry_question: What would it feel like to be truly, deeply grounded — and what
+  would need to change for that to be possible?
+somatic_practice: cat-cow-spinal-rock
+also_consider:
+  practical:
+  - A coccyx (donut) cushion provides immediate pressure relief during sitting
+  - Pelvic floor physical therapy addresses many cases of coccydynia
+  - Manual adjustment by a skilled osteopath or chiropractor can help if the coccyx
+    is misaligned
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Pain onset followed a period of financial crisis, job loss, or housing instability
+- Client minimises or dismisses themselves frequently — strong inner critic pattern
+- Client reports a history of a fall or physical impact that coincided with a major
+  life upheaval
+differential_note: Rule out coccyx fracture or dislocation (especially after a fall),
+  pilonidal cyst, sacrococcygeal tumour, referred pain from the coccygeal nerve, and
+  pelvic floor dysfunction before exploring emotional associations. Any pain with
+  associated bowel changes warrants urgent medical review.
+notes_for_coach: Self-blame is a sensitive pattern — the reframe must be clearly non-blaming.
+  Never suggest the pain is caused by the self-criticism; frame it only as a possible
+  pattern worth noticing.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 70. Tailbone Pain (Coccydynia) — EMOTIONAL ROOT
+  quote: The tailbone is at the very base of the spine and is associated with survival,
+    security, and grounding. Pain here often appears during periods of fundamental
+    insecurity.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

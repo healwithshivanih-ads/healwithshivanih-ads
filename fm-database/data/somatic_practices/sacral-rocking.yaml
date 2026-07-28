@@ -1,0 +1,60 @@
+slug: sacral-rocking
+display_name: Sacral Rocking
+aliases:
+- prone-pelvic-rock
+category: movement
+body_region: lower_back_hips
+position: lying
+summary: A face-down, pillow-supported side-to-side pelvic rocking practice that gently
+  mobilises the sacrum and lower back with minimal effort.
+why_it_works: Prone rocking with passive support allows gravity to assist gentle sacroiliac
+  mobilisation. The small repetitive movements provide rhythmic proprioceptive input
+  to the dorsal horn, which can reduce chronic pain sensitisation, while slow breathing
+  deepens the parasympathetic effect.
+steps:
+- label: Lie face down
+  cue: Place a soft pillow or folded blanket under your hips and lie face down on
+    a comfortable surface. Rest your forehead on the backs of your hands.
+  action: rest
+  secs: 30
+- label: Begin small rocks
+  cue: Gently rock your pelvis from side to side with small, unhurried movements —
+    as though cradling yourself.
+  action: circle
+  secs: 240
+- label: Soften with breath
+  cue: With each rock, invite your lower back and hips to soften a little more. Breathe
+    slowly throughout.
+  action: release
+  secs: 30
+duration_seconds: 300
+timed: true
+bilateral: true
+equipment:
+- soft pillow or folded blanket
+contraindications:
+- Active endometriosis flare with severe pain — proceed gently or avoid prone position
+  if uncomfortable
+- Late pregnancy — prone position contraindicated
+- Recent abdominal surgery
+linked_to_symptoms:
+- pelvic-pain
+- dysmenorrhea
+linked_to_topics:
+- endometriosis
+notes_for_coach: Source states 5 minutes. Steps apportioned accordingly. The pillow
+  is essential to avoid compressive lumbar extension.
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 76. Endometriosis — SOMATIC RESET
+  quote: Lie face down with a soft pillow under your hips. Let your forehead rest
+    on your hands. Begin gently rocking your pelvis side to side. Small movements.
+    Like a cradle. Let your lower back and hips soften with each rock. Continue for
+    5 minutes, breathing slowly.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,53 @@
+slug: relational-connection-practice
+display_name: Relational Connection Practice
+category: behavioural
+body_region: whole_body
+position: any_position
+summary: A deliberate act of human connection — a call, shared silence, or unsent
+  letter — held for at least ten minutes to restore the felt sense of relational support.
+why_it_works: Safe social engagement activates the ventral vagal branch of the autonomic
+  nervous system (Porges' polyvagal theory), down-regulating the threat response.
+  Even brief co-regulation with a trusted person reduces cortisol and activates oxytocin
+  pathways that restore the felt sense of safety.
+steps:
+- label: Choose your form
+  cue: 'Decide how you will connect: call or message someone you trust, sit with a
+    person in companionable silence, or write a heartfelt letter to someone who matters
+    to you (it does not need to be sent).'
+  action: observe
+  secs: 30
+- label: Make contact
+  cue: Enter the connection. If calling, simply be present — no need to problem-solve
+    or explain yourself. If writing, let your honest feelings guide the pen.
+  action: rest
+  secs: 570
+duration_seconds: 600
+timed: true
+bilateral: false
+contraindications:
+- If the person chosen is a source of trauma or conflict, choose someone else or use
+  the letter option instead
+linked_to_symptoms:
+- anxiety
+- stress
+linked_to_topics:
+- nervous-system-regulation
+- chronic-stress
+notes_for_coach: Source specifies at least 10 minutes. Steps apportioned accordingly.
+  The letter option is helpful for clients with limited trusted contacts.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 69. SI Joint Pain — SOMATIC RESET
+  quote: Call someone you trust. Not necessarily to vent or problem-solve, just to
+    connect. Or sit with someone in comfortable silence. Or write a letter to someone
+    who matters, even if you don't send it. Spend at least 10 minutes in relational
+    contact.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

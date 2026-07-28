@@ -1,0 +1,67 @@
+slug: somatic-map-fibroids
+display_name: Uterine Fibroids
+target_kind: topic
+target_slug: uterine-fibroids
+sensitivity: coach_only
+emotional_roots:
+- pattern: Carried relational wounds
+  note: In somatic tradition, fibroids are sometimes associated with unresolved pain
+    from past relationships — betrayal, rejection, or abandonment that has not been
+    fully processed and released. This is an observational association only.
+- pattern: Wound to feminine self-worth
+  note: Some practitioners observe that an experience that made someone feel diminished
+    or devalued as a woman may be associated with physical holding in the reproductive
+    area — though this is metaphorical and not causal.
+- pattern: Stagnation of unexpressed emotion
+  note: The somatic framing suggests that frustration, grief, or worry that had no
+    outlet may over time manifest as physical mass. This is a traditional association,
+    not a physiological mechanism.
+reframe: Something accumulated because it had nowhere to go. The question is not why
+  it happened, but whether anything is ready to be released now — grief, old anger,
+  parts of yourself you put away long ago.
+inquiry_question: Is there a past hurt you are still carrying in your body that you
+  have not yet found a way to release?
+somatic_practice: womb-cradling
+also_consider:
+  supplements:
+  - egcg
+  - iron
+  home_remedies:
+  - castor-oil-pack
+  practical:
+  - 'Reduce exposure to xenoestrogens: avoid plastics for food storage, switch to
+    non-toxic personal care products, choose organic dairy and meat where possible'
+  - Daily movement and abdominal warmth — avoid sedentary stagnation
+  - Monitor for heavy bleeding causing iron-deficiency anaemia and seek medical advice
+  cooking_adjustments: []
+pattern_signals:
+- Client mentions ongoing pain around a past relationship that feels unresolved
+- Describes feeling devalued as a woman at some point in her history
+- Reports carrying resentment, grief, or worry that has had no outlet
+- Heavy periods with confirmed fibroids on imaging
+differential_note: Uterine fibroids are benign smooth muscle tumours diagnosed by
+  ultrasound or MRI. They must be distinguished from uterine polyps, adenomyosis,
+  endometrial hyperplasia, uterine sarcoma (rare but important), ovarian masses, and
+  other causes of abnormal uterine bleeding. Heavy bleeding should prompt FBC to exclude
+  iron-deficiency anaemia. Clinician-led management options (watchful waiting, hormonal
+  therapy, UAE, myomectomy, hysterectomy) should always be offered. EGCG (green tea
+  extract) has small pilot RCT data for fibroid size reduction. Emotional associations
+  are secondary considerations only.
+coach_only_note: Framing fibroids as accumulated relational grief carries a high risk
+  of self-blame, especially if a client has experienced loss, infertility, or trauma.
+  Use only in a carefully held container and never auto-surface. If client is dealing
+  with infertility related to fibroids, escalate sensitivity accordingly.
+notes_for_coach: EGCG has one pilot RCT showing modest fibroid size reduction. Iron
+  supplementation is appropriate when heavy bleeding has caused anaemia — confirm
+  with CBC first. Castor oil packs are traditional with anecdotal support only.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 77. Fibroids — EMOTIONAL ROOT
+  quote: Fibroids are years of emotional stagnation transforming into physical mass.
+    What couldn't move—frustration, grief, worry—accumulated where it had nowhere
+    to go.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

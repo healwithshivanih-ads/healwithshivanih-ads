@@ -1,0 +1,65 @@
+slug: supported-frog-pose
+display_name: Supported Frog Pose
+category: movement
+body_region: pelvis
+position: lying
+summary: A sustained wide-legged floor posture that opens the inner thighs, adductors,
+  and hip flexors to release deep stored tension.
+why_it_works: The psoas and adductors accumulate chronic tension from unresolved threat
+  responses. Sustained passive opening of the inner-hip region — held for several
+  minutes — allows the fascial and muscular layers to progressively release. Slow
+  diaphragmatic breathing during the hold activates the parasympathetic system and
+  supports emotional processing.
+steps:
+- label: Come to all fours
+  cue: Start on your hands and knees with your wrists beneath your shoulders and your
+    knees beneath your hips.
+  action: rest
+  secs: 15
+- label: Widen your knees
+  cue: Slowly slide your knees out to each side as far as is comfortable, keeping
+    your feet flexed and your ankles roughly in line with your knees.
+  action: expand
+  secs: 20
+- label: Lower your torso
+  cue: Ease your forearms down to the floor, or lower all the way so your chest and
+    forehead rest on a pillow or folded blanket.
+  action: release
+  secs: 25
+- label: Stay and breathe
+  cue: Hold the position and breathe slowly and deeply into your lower belly. This
+    will feel intense — stay as long as you comfortably can, up to about five minutes.
+    If emotions rise, let them.
+  action: hold
+  secs: 180
+duration_seconds: 240
+timed: true
+bilateral: false
+equipment:
+- pillow or folded blanket
+contraindications:
+- Hip replacement or acute groin injury — consult physio before attempting
+- Modify range if any sharp groin or knee pain arises
+linked_to_symptoms:
+- muscle-tension
+- joint-pain
+linked_to_topics:
+- nervous-system-regulation
+- chronic-stress
+notes_for_coach: Source says 3–5 minutes; steps are apportioned to 4 minutes. Warn
+  client this pose commonly evokes strong emotion — that is expected and not harmful.
+aliases: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 66. Hip Tightness — SOMATIC RESET
+  quote: Come onto your hands and knees, then widen your knees out to the sides as
+    far as is comfortable, feet flexed, ankles in line with your knees. Lower down
+    onto your forearms or all the way to the floor with a pillow under your chest
+    and forehead. This is intense — stay 3–5 minutes if you can.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

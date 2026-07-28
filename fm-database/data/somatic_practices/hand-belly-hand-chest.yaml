@@ -1,0 +1,49 @@
+slug: hand-belly-hand-chest
+display_name: Hand on Belly, Hand on Chest
+aliases: []
+category: touch
+body_region: chest_diaphragm
+position: any_position
+summary: Hands on belly and chest, breathing unchanged, simply noticing which one
+  moves.
+why_it_works: Changing nothing and only noticing restores interoceptive contact. Where
+  emotion has no words, it often has no felt location either; this is the smallest
+  possible way back in.
+steps:
+- label: Place your hands
+  cue: One hand on your belly, one on your chest.
+  secs: 20
+  action: touch
+- label: Breathe normally
+  cue: Change nothing about your breathing. Just let it be as it is.
+  secs: 40
+  action: rest
+- label: Notice which hand moves
+  cue: Only notice. There is no right answer and nothing to correct.
+  secs: 60
+  action: observe
+- label: Stay
+  cue: Feel the rise and fall for the rest of the time.
+  secs: 60
+  action: rest
+reps: null
+duration_seconds: 180
+bilateral: false
+timed: true
+equipment: []
+motion_shape: ''
+contraindications:
+- None — this is among the gentlest practices in the set
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics: []
+notes_for_coach: Good first practice for clients who find any body-based work uncomfortable;
+  it asks for nothing.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

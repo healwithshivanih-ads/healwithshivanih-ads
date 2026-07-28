@@ -1,0 +1,54 @@
+slug: kidney-tapping
+display_name: Kidney Tapping
+aliases: []
+category: touch
+body_region: lower_back_hips
+position: standing
+summary: Two to three minutes of loose-fisted tapping over the lower back.
+why_it_works: 'A traditional qigong practice: rhythmic percussion over the lower back
+  gives strong proprioceptive input to an area most people never attend to, and the
+  rhythm itself downshifts arousal.'
+steps:
+- label: Make soft fists
+  cue: Make loose fists and reach behind you to the lower back, either side of the
+    spine.
+  secs: 25
+  action: rest
+- label: Begin tapping
+  cue: Tap firmly but comfortably, keeping the wrists loose.
+  secs: 60
+  action: tap
+- label: Find the rhythm
+  cue: Keep a steady rhythm and breathe deeply as you tap.
+  secs: 90
+  action: tap
+- label: Stop and feel
+  cue: Stop, drop your arms, and notice the warmth left behind.
+  secs: 25
+  action: observe
+reps: null
+duration_seconds: 200
+bilateral: true
+timed: true
+equipment: []
+motion_shape: ''
+contraindications:
+- Do NOT use during acute renal colic — tapping over an obstructed kidney is painful
+  and pointless
+- Avoid in known kidney disease without clearance
+- Avoid over recent back injury
+- Avoid in pregnancy
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- kidney-stones
+notes_for_coach: Renal colic is an emergency presentation. This is a between-episodes
+  practice only.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

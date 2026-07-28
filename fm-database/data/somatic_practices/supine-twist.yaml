@@ -1,0 +1,50 @@
+slug: supine-twist
+display_name: Supine Twist
+aliases: []
+category: movement
+body_region: abdomen
+position: lying
+summary: A slow supported supine twist, two minutes each side.
+why_it_works: A gentle spinal twist mobilises the thoracic spine and stimulates vagal
+  afferents, while the counter-rotation of head and knees releases the guarding that
+  accumulates through the trunk.
+steps:
+- label: Set up
+  cue: Lie on your back, knees bent, arms out to the sides.
+  secs: 25
+  action: rest
+- label: Let the knees fall
+  cue: Let both knees drop slowly to one side, turning your head the opposite way.
+  secs: 30
+  action: circle
+- label: Breathe there
+  cue: Stay and breathe. Let gravity do the work.
+  secs: 90
+  action: rest
+- label: Switch
+  cue: Come back through centre and repeat to the other side.
+  secs: 120
+  action: circle
+reps: null
+duration_seconds: 265
+bilateral: true
+timed: true
+equipment: []
+motion_shape: ''
+contraindications:
+- Disc injury or acute back pain
+- Recent abdominal surgery
+- Late pregnancy — keep the twist above the waist only
+sensitivity: general
+linked_to_symptoms:
+- frequent-infections
+linked_to_topics: []
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

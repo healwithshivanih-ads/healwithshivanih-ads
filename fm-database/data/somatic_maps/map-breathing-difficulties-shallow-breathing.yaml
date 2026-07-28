@@ -1,0 +1,59 @@
+slug: map-breathing-difficulties-shallow-breathing
+display_name: Breathing Difficulties / Shallow Breathing
+target_kind: symptom
+target_slug: breathing-irregularity
+sensitivity: sensitive
+emotional_roots:
+- pattern: Fear of taking up space
+  note: Some clients who breathe shallowly may have learned, often very early in life,
+    that being visible or expansive was not safe. The body may have narrowed its breath
+    as a way of staying small and unnoticed.
+- pattern: Trauma-encoded contraction
+  note: Chronic shallow breathing sometimes persists long after a threatening environment
+    has passed. The nervous system may continue operating as though the original threat
+    is still present, keeping the breath tight as a protective reflex.
+- pattern: Unprocessed grief
+  note: There may be an association between difficulty breathing fully and difficulty
+    grieving fully. Clients carrying unacknowledged loss sometimes describe a sense
+    of heaviness or restriction in the chest alongside their breathlessness.
+reframe: At a certain point in your life, staying small and quiet may have been the
+  wisest thing you could do. Your breath adapted to protect you. That protective habit
+  may still be running even though the circumstances have changed — you are allowed
+  to take up space now, simply because you are here.
+inquiry_question: Where did you first learn that taking up space was not safe, and
+  what might it feel like to breathe — and live — fully?
+somatic_practice: yoga-nidra-belly-breath
+also_consider:
+  practical:
+  - Check posture — rounded shoulders physically restrict lung expansion; daily posture
+    awareness practice
+  - Diaphragmatic breathing practice daily
+  - Singing, humming, or yoga to help restore natural breath patterns
+  - 'Note: air hunger is very common in pregnancy due to uterine position and progesterone
+    changes — physiological cause should be confirmed first'
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes taking small, high chest breaths
+- Frequent sighing or reported 'air hunger' with normal oxygen saturation
+- History of environments where emotional expression was unsafe or punished
+- Collapses or rounds the chest/shoulders when discussing certain topics
+differential_note: Shortness of breath and shallow breathing must be medically evaluated
+  to exclude asthma, COPD, pulmonary embolism, anaemia, cardiac dysfunction, anxiety
+  disorder, and pregnancy-related causes before any emotional framing is introduced.
+  A clinician workup is required.
+notes_for_coach: The pregnancy note is a physiological differential — always surface
+  this for clients of reproductive age. The emotional framing is an association to
+  explore collaboratively, never a diagnosis or cause.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 42. Breathing Difficulties / Shallow Breathing
+  quote: Chronic shallow breathing often develops after trauma or in environments
+    where being noticed was dangerous.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

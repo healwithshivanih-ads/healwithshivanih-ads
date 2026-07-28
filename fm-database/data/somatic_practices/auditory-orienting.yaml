@@ -1,0 +1,64 @@
+slug: auditory-orienting
+display_name: Auditory Orienting
+category: orientation
+body_region: head_face
+position: any_position
+summary: Slowly turn the head from side to side, pausing at each position to actively
+  notice and identify sounds from that direction, for one to two minutes.
+why_it_works: Orienting — intentional, curious scanning of the environment — activates
+  the ventral vagal complex and signals the nervous system that the current environment
+  is safe. Directing attention to sound specifically re-engages auditory processing
+  that the nervous system may have partially shut down as a protective response.
+steps:
+- label: Turn left
+  cue: Very slowly turn your head to the left and pause. Notice what sounds reach
+    you from that direction.
+  action: observe
+  secs: 20
+- label: Return to centre
+  cue: Gently bring your head back to centre and rest there for a breath.
+  action: rest
+  secs: 5
+- label: Turn right
+  cue: Slowly turn your head to the right and pause. Notice sounds from this side.
+  action: observe
+  secs: 20
+- label: Return to centre
+  cue: Return your head to centre and rest for a breath.
+  action: rest
+  secs: 5
+- label: Continue cycling
+  cue: Continue this slow left-pause-centre-right-pause-centre rhythm, remaining curious
+    about new sounds each time.
+  action: observe
+  secs: 60
+duration_seconds: 110
+timed: true
+bilateral: true
+contraindications:
+- Acute cervical spine injury or severe neck pain — limit rotation range or skip
+- Active BPPV — head turning may provoke vertigo; clear with clinician first
+linked_to_symptoms:
+- dizziness-motion-sickness
+- hearing-loss
+- anxiety
+linked_to_topics:
+- nervous-system-regulation
+- stress-management
+notes_for_coach: Source gives 1–2 minutes; 110 seconds used. This shares structure
+  with the Orienting practice in Ch.25 but is specifically anchored to sound. Emit
+  once, referenced from both maps.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 18. Hearing Loss — SOMATIC RESET
+  quote: Slowly turn your head left and pause, noticing sounds from that direction.
+    Then turn right and pause. Continue slowly for 1–2 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

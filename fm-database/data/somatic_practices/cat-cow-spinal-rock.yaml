@@ -1,0 +1,65 @@
+slug: cat-cow-spinal-rock
+display_name: Cat-Cow Spinal Rock
+category: movement
+body_region: lower_back_hips
+position: lying
+summary: A gentle rhythmic spinal-flexion-and-extension sequence on hands and knees,
+  coordinated with breathing, to mobilise the tailbone and sacrum and restore a felt
+  sense of groundedness.
+why_it_works: The alternating flexion and extension of the lumbar spine and sacrum
+  mobilises fascial and joint tissue around the coccyx. Coordinating the movement
+  with breath anchors the practice in the parasympathetic system, while the proprioceptive
+  rhythm at the base of the spine can help down-regulate survival-threat activation
+  held in the lowest spinal segments.
+steps:
+- label: Come to table-top
+  cue: Get onto your hands and knees with your wrists directly below your shoulders
+    and your knees directly below your hips.
+  action: rest
+  secs: 15
+- label: Cow — inhale and arch
+  cue: As you breathe in, let your belly drop toward the floor, your tailbone lift
+    toward the ceiling, and your gaze rise gently upward.
+  action: expand
+  secs: 4
+- label: Cat — exhale and round
+  cue: As you breathe out, round your spine upward, tuck your tailbone under, and
+    let your head drop.
+  action: shrink
+  secs: 4
+- label: Continue with breath
+  cue: Keep moving slowly between these two positions, letting your breath set the
+    rhythm — there is no hurry.
+  action: observe
+  secs: 97
+duration_seconds: 120
+timed: true
+bilateral: false
+equipment:
+- yoga mat or soft floor surface
+contraindications:
+- Acute wrist injury — use fists or forearms to offload the wrist
+- Acute disc herniation with neurological symptoms — consult clinician first
+linked_to_symptoms:
+- chronic-pain
+- muscle-tension
+linked_to_topics:
+- nervous-system-regulation
+notes_for_coach: Source says 2–3 minutes; steps apportioned to 2 minutes. Slow pace
+  is essential — cue clients to resist speeding up.
+aliases: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 70. Tailbone Pain (Coccydynia) — SOMATIC RESET
+  quote: Come to hands and knees (table-top position), with wrists under shoulders,
+    and knees under hips. Inhale and arch your back, letting your belly drop and tailbone
+    lift (Cow). Exhale and round your spine, tucking your tailbone and dropping your
+    head (Cat). Move slowly between these two shapes, letting your breath lead. Continue
+    for 2-3 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

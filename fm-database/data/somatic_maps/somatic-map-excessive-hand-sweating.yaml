@@ -1,0 +1,58 @@
+slug: somatic-map-excessive-hand-sweating
+display_name: Excessive Sweating (Hands)
+target_kind: symptom
+target_slug: social-anxiety
+sensitivity: general
+differential_note: Palmar hyperhidrosis has primary (idiopathic, often genetic) and
+  secondary causes. Secondary causes include hyperthyroidism, diabetes, menopause,
+  infection, malignancy, and medication side effects (SSRIs, opioids, some antihypertensives).
+  Generalised hyperhidrosis may indicate systemic illness. These must be excluded
+  before attributing hand sweating primarily to anxiety or emotional patterns.
+emotional_roots:
+- pattern: Fear of uncertainty and loss of control
+  note: Excessive hand sweating often accompanies a state of holding very tightly
+    to a desired outcome — bracing against what might go wrong rather than allowing
+    uncertainty. The body's sweat response reflects the nervous system mobilising
+    for a threat that isn't arriving.
+- pattern: Social threat anticipation
+  note: For many people, palmar sweating intensifies specifically in social situations
+    involving evaluation or performance — being watched, assessed, or required to
+    deliver something. The hands seem to anticipate rejection or failure before it
+    happens.
+reframe: Sweating under pressure is your nervous system doing its job — preparing
+  you for something it read as threatening. The invitation is to let yourself notice
+  that the threat often doesn't arrive, and that staying present with discomfort gradually
+  teaches your system it is safe.
+inquiry_question: What outcome are you holding so tightly that the uncertainty of
+  it keeps your body on high alert?
+somatic_practice: cold-water-hand-reset
+also_consider:
+  supplements:
+  - sage
+  practical:
+  - Reducing or eliminating caffeine and spicy foods, which stimulate the nervous
+    system and can worsen stress-related sweating
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client reports sweating is worst before evaluative events — presentations, interviews,
+  social gatherings
+- Avoidance of handshaking or physical contact due to embarrassment
+- High baseline anxiety or worry about others' perceptions
+- History of being judged harshly, humiliated, or required to perform under pressure
+notes_for_coach: 'Target slug ''social-anxiety'' is the closest match; no ''palmar
+  hyperhidrosis'' or ''excessive hand sweating'' symptom slug exists in the catalogue.
+  Note the differential for generalised or night sweating is different and may require
+  medical investigation. Source: entry 41, System 4.'
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 41. Excessive Sweating (Hands) — Emotional Root
+  quote: Your hands sweat when you can't surrender to uncertainty—gripping the outcome,
+    bracing for what might go wrong, refusing to relax into not knowing. Often shows
+    up as social anxiety. Fear of being watched, judged, or required to perform.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

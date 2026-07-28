@@ -1,0 +1,66 @@
+slug: therapeutic-tremoring
+display_name: Therapeutic Tremoring
+category: discharge
+body_region: shoulders_upper_back
+position: standing
+summary: A whole-body shaking practice that lets the shoulders and arms discharge
+  accumulated muscular tension by progressing from gentle heel-bouncing through full-body
+  tremoring.
+why_it_works: The trapezius and surrounding musculature can hold residual fight-or-flight
+  tone for extended periods after perceived threat passes. Rhythmic vibration and
+  voluntary shaking activate the body's natural tremor mechanism, helping discharge
+  stored neuromuscular tension without requiring cognitive reprocessing.
+steps:
+- label: Set up
+  cue: Stand with your feet roughly shoulder-width apart and soften your knees so
+    they are slightly bent, not locked.
+  secs: 15
+  action: rest
+- label: Heel bounce
+  cue: Begin gently bouncing up and down through your heels, keeping the movement
+    small. Let the vibration travel upward through your legs into your shoulders.
+  secs: 60
+  action: press
+- label: Full-body shake
+  cue: Let the bouncing grow into a full shake. Allow your shoulders, arms, and hands
+    to move freely — do not direct or control the movement, just let it happen.
+  secs: 150
+  action: release
+- label: Stillness
+  cue: Stop moving completely and stand quietly. Notice any sensations in your shoulders,
+    arms, and hands.
+  secs: 30
+  action: observe
+duration_seconds: 255
+timed: true
+bilateral: false
+equipment: []
+contraindications:
+- Recent lower-limb injury or joint instability
+- Uncontrolled hypertension (vigorous shaking phase)
+- Active vertigo or balance disorders
+- Post-surgical shoulder restrictions
+linked_to_symptoms:
+- muscle-tension
+- tension
+linked_to_topics:
+- chronic-stress
+- nervous-system-regulation
+notes_for_coach: Sourced from entry 34 (Shoulder & Trapezius Tension). The shaking
+  phase can be emotionally activating — check in with the client afterwards. Suitable
+  for home practice once introduced.
+aliases: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: Entry 34 — Shoulder & Trapezius Tension, SOMATIC RESET
+  quote: Stand with feet shoulder-width apart, knees slightly bent. Begin to bounce
+    gently on your heels, letting the vibration travel up into your shoulders. After
+    a minute, let the bouncing become shaking—shoulders, arms, hands, everything.
+    Shake for 2-3 minutes. Then, stop and stand still.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

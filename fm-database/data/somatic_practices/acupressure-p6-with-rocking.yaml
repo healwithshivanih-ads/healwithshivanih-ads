@@ -1,0 +1,60 @@
+slug: acupressure-p6-with-rocking
+display_name: Acupressure Point P6 with Rocking
+category: touch
+body_region: arms_hands
+position: seated
+summary: A dual-input practice combining sustained thumb pressure on the P6 (Pericardium
+  6 / Nei Guan) acupressure point on the inner wrist with gentle rhythmic body rocking
+  to activate the parasympathetic nervous system and ease nausea.
+why_it_works: P6 stimulation has demonstrated efficacy for nausea in multiple trial
+  settings. Rhythmic self-generated motion (rocking) additionally engages vestibular
+  pathways and promotes parasympathetic tone, collectively calming gut-brain axis
+  arousal.
+steps:
+- label: Find the point
+  cue: Lay one arm palm-upward. Place three fingers of your other hand just below
+    the crease of your wrist. The P6 point is right there, between the two central
+    tendons. Press firmly with your thumb.
+  action: press
+  secs: 20
+- label: Hold pressure and begin rocking
+  cue: Keeping the thumb pressure steady, begin to rock your body — either swaying
+    gently from side to side while seated, or rocking forward and backward. Keep the
+    motion slow and rhythmic.
+  action: hold
+  secs: 100
+- label: Breathe slowly throughout
+  cue: Continue the rocking and pressure while taking long, slow breaths. Let your
+    exhale be unhurried.
+  action: hold
+  secs: 60
+- label: Switch wrists and continue
+  cue: Repeat the same pressure and rocking on the other wrist for the remaining time.
+  action: press
+  secs: 0
+timed: true
+duration_seconds: 180
+bilateral: true
+linked_to_symptoms:
+- nausea
+linked_to_topics:
+- gut-brain-axis
+- motility
+notes_for_coach: Step 4 (switching wrists) is self-paced (secs=0). Total time is approximately
+  2–3 minutes per side. Acupressure bands (sea-bands) can serve as a take-home tool.
+aliases: []
+equipment: []
+contraindications: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 53. Nausea — SOMATIC RESET
+  quote: Find the point on your inner wrist, about three finger-widths below the base
+    of your palm, between the two tendons. Press firmly with your thumb. While holding
+    this pressure, rock your body gently.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

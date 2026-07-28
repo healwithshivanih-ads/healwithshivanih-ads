@@ -1,0 +1,32 @@
+slug: diaphragm-tightness
+display_name: Diaphragm Tightness
+aliases:
+- tight diaphragm
+- can't take a deep breath
+- band under my ribs
+- restricted breathing
+- tightness under the ribs
+- breath won't go all the way in
+category: musculoskeletal
+severity: concerning
+description: A sensation of restriction beneath the ribs with the feeling that a full breath
+  cannot be completed, in the absence of airway disease. Reflects sustained diaphragmatic
+  and accessory-muscle tension and a shifted breathing pattern toward the upper chest; strongly
+  associated with anxiety and with the habit of breath-holding under stress.
+when_to_refer: Breathlessness with chest pain, exertional limitation, oxygen desaturation,
+  ankle swelling or a history of cardiac or respiratory disease requires medical assessment
+  before being treated as muscular.
+linked_to_topics:
+- anxiety
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Clients describe this as 'I can't get a satisfying breath'. It is the single
+  most common somatic complaint in the anxious cohort and responds well to extended-exhale
+  work — but rule out the cardiorespiratory causes first, especially in anyone over 50.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

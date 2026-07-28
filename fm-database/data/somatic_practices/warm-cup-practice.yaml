@@ -1,0 +1,50 @@
+slug: warm-cup-practice
+display_name: Warm Cup Practice
+aliases: []
+category: behavioural
+body_region: head_face
+position: seated
+summary: 'A slow, attentive first sip: warmth, then steam, then taste.'
+why_it_works: Deliberately slowing the sequence of smell, warmth and first sip rebuilds
+  the link between sensation and attention, which flattens when pleasure has been
+  shut down.
+steps:
+- label: Hold it
+  cue: Hold a warm cup of tea or broth in both hands. Do not drink yet.
+  secs: 40
+  action: touch
+- label: Feel the heat
+  cue: Notice the warmth against your palms.
+  secs: 40
+  action: observe
+- label: Breathe the steam
+  cue: Bring it close to your face and breathe in. Notice what you can smell.
+  secs: 50
+  action: observe
+- label: One small sip
+  cue: Take one small sip and hold it in your mouth before swallowing. Notice temperature,
+    texture, and whatever flavour is there — even faint.
+  secs: 60
+  action: observe
+reps: null
+duration_seconds: 190
+bilateral: false
+timed: true
+equipment:
+- A warm drink
+motion_shape: ''
+contraindications:
+- Take care with temperature where oral sensation is reduced
+sensitivity: general
+linked_to_symptoms:
+- taste-changes
+linked_to_topics: []
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

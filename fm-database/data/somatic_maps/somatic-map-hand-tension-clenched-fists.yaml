@@ -1,0 +1,53 @@
+slug: somatic-map-hand-tension-clenched-fists
+display_name: Hand Tension / Clenched Fists
+target_kind: symptom
+target_slug: hand-tension
+sensitivity: general
+differential_note: Clinician should exclude focal dystonia, occupational overuse injury,
+  rheumatoid arthritis, dupuytren's contracture, peripheral neuropathy, and medication
+  side effects (e.g., extrapyramidal effects from antipsychotics) before attributing
+  persistent hand tension to emotional holding patterns.
+emotional_roots:
+- pattern: Holding on
+  note: Chronically clenched hands may be associated with an underlying need to maintain
+    control — as though relaxing one's grip would allow something important to be
+    lost. This pattern sometimes appears in people navigating high uncertainty or
+    major life transitions.
+- pattern: Suppressed action-readiness
+  note: The hands are the body's primary tools for acting on the world. When an urge
+    to act — including expressing anger or protecting oneself — cannot be carried
+    out, some people notice the resulting energy staying in their hands as tension
+    or clenching.
+reframe: Holding on tightly to outcomes doesn't actually secure them — it just tires
+  your hands. Open hands have room to receive something new, while clenched fists
+  can only keep what they already hold.
+inquiry_question: What are you gripping so tightly that you're afraid to let it go,
+  even a little?
+somatic_practice: tre-hand-release
+also_consider:
+  practical:
+  - Hand massage to release chronic muscular holding
+  - Squeezing and releasing a soft ball to build awareness of the grip-release cycle
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes feeling a constant need to 'stay on top of everything'
+- History of difficulty delegating or asking for help
+- Clenching noticed during sleep (bruxism pattern) or when describing stressful topics
+- 'Language around control: ''keeping it together'', ''not letting things fall apart'''
+notes_for_coach: Target slug 'muscle-tension' is the best available match; no dedicated
+  'hand tension' or 'clenched fists' symptom slug exists in the current catalogue.
+  This entry is from System 4, entry 38.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 38. Hand Tension / Clenched Fists — Emotional Root
+  quote: Clenched hands are trying to hold onto something. Or preparing to fight.
+    Hand tension often relates to control issues. Trying to grip life tightly because
+    loosening your hold feels terrifying.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

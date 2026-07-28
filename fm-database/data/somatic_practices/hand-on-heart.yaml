@@ -1,0 +1,49 @@
+slug: hand-on-heart
+display_name: Hand on Heart
+category: touch
+body_region: chest_diaphragm
+position: any_position
+summary: Placing one hand over the heart and one on the belly, breathing slowly for
+  2–3 minutes, to restore felt safety and open access to suppressed emotion through
+  gentle self-contact.
+why_it_works: Physical self-touch over the sternum and heart area stimulates cutaneous
+  mechanoreceptors that activate the C-tactile afferent fibres, triggering oxytocin
+  release and ventral vagal engagement. This counters the dorsal vagal shutdown or
+  sympathetic activation that blocks emotional processing, making it safe for unexpressed
+  sadness to surface.
+steps:
+- label: Place hands
+  cue: Rest one palm gently over the centre of your chest and your other hand flat
+    on your belly.
+  action: rest
+  secs: 10
+- label: Breathe evenly
+  cue: Breathe slowly in and out, allowing your chest to soften under your hand with
+    each exhale.
+  action: expand
+  secs: 130
+duration_seconds: 150
+timed: true
+bilateral: false
+contraindications:
+- Recent chest surgery or chest-wall injury — hold hands near but not touching the
+  wound site
+linked_to_symptoms:
+- anxiety
+- emotional-numbness
+linked_to_topics:
+- nervous-system-regulation
+notes_for_coach: This is a foundational self-compassion practice. Coach may also place
+  their own hands on their heart simultaneously to model the gesture in session.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 12. Post-Nasal Drip — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

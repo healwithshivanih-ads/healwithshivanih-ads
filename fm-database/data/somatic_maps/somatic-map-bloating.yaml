@@ -1,0 +1,55 @@
+slug: somatic-map-bloating
+display_name: Bloating — Holding On and the Anxious Belly
+target_kind: symptom
+target_slug: bloating
+sensitivity: general
+differential_note: Rule out coeliac disease, SIBO, lactose or fructose intolerance,
+  gastroparesis, ovarian pathology (in women — bloating can be an early sign of ovarian
+  cancer), ascites, functional dyspepsia, and constipation-related gas accumulation
+  before any emotional reading.
+emotional_roots:
+- pattern: Holding on
+  note: Some clients associate their bloating with periods when they are clinging
+    to circumstances, relationships, or resentments they have not been able to release.
+    The body can mirror emotional retention as physical retention of gas, fluid, or
+    stool.
+- pattern: Suppressed expression
+  note: When words or feelings are consistently held back — unspoken needs, unfelt
+    anger — the body sometimes expands with what is not being expressed. The belly
+    fills with what is not being released.
+- pattern: Anxiety and survival-mode digestion
+  note: Bloating is a classic anxiety symptom. When the nervous system perceives threat,
+    digestion slows or pauses, food ferments longer in the gut, and gas accumulates.
+    The gut literally cannot process normally when the body believes it is in danger.
+reframe: Letting go — of control, of old pain, of things that are genuinely finished
+  — is a skill, not a weakness. Your body may be asking you to practise it one breath
+  at a time.
+inquiry_question: Is there something you have been carrying that it might be safe
+  to set down now?
+somatic_practice: pelvic-floor-release
+also_consider:
+  supplements:
+  - digestive-enzymes
+  home_remedies:
+  - fennel-cardamom-tea
+  practical:
+  - Eating slowly and chewing thoroughly
+  - Ginger and fennel tea to help move gas
+  cooking_adjustments: []
+pattern_signals:
+- Bloating consistently worsens in the afternoon after a stressful morning
+- Client describes difficulty letting go of control or past grievances
+- Bloating relieved somewhat by passing stool or gas but returns quickly
+notes_for_coach: Physical causes — especially SIBO and food intolerances — are very
+  common and should be addressed first. Emotional work is a useful adjunct but not
+  a substitute for dietary investigation.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 52. Bloating — EMOTIONAL ROOT
+  quote: Bloating often relates to holding onto things that need to be released.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

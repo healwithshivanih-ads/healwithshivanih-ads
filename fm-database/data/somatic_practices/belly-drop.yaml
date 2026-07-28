@@ -1,0 +1,65 @@
+slug: belly-drop
+display_name: Belly Drop
+category: breath
+body_region: abdomen
+position: lying
+summary: A lying-down breath awareness practice in which the client places hands on
+  the belly, breathes slowly, and on each exhale allows the abdomen to fully soften,
+  noticing gut sensations without attempting to change them.
+why_it_works: Sustained, non-effortful attention to visceral sensation combined with
+  slow diaphragmatic exhales activates the parasympathetic branch of the autonomic
+  nervous system, reducing enteric nervous system arousal and teaching the gut that
+  present-moment experience is safe to feel.
+steps:
+- label: Settle and place hands
+  cue: Lie down in a comfortable position. Rest both hands, one on top of the other,
+    on your belly. Let your body feel supported by the floor or surface beneath you.
+  action: rest
+  secs: 20
+- label: Slow inhale
+  cue: Breathe in slowly and gently through your nose, letting your belly rise beneath
+    your hands.
+  action: expand
+  secs: 5
+- label: Full release exhale
+  cue: As you breathe out, let your belly soften and drop completely — no holding,
+    no controlling. Allow every muscle to let go.
+  action: release
+  secs: 7
+- label: Observe sensation
+  cue: Notice whatever is present in your gut right now — tightness, hollowness, churning,
+    stillness — without trying to change or fix it. Simply acknowledge what is there.
+  action: observe
+  secs: 10
+- label: Continue breathing and noticing
+  cue: Keep breathing at this slow, easy pace, returning your attention to the sensation
+    in your gut with each exhale. Stay here for the remaining time.
+  action: observe
+  secs: 238
+timed: true
+duration_seconds: 280
+bilateral: false
+linked_to_topics:
+- ibs
+- gut-brain-axis
+linked_to_symptoms:
+- irritable-bowel
+- anxiety-with-gut-issues
+notes_for_coach: Encourage clients to approach sensations with curiosity rather than
+  concern. If a client becomes distressed by visceral attention, shorten the session
+  and debrief gently.
+aliases: []
+equipment: []
+contraindications: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 51. IBS (Irritable Bowel Syndrome) — SOMATIC RESET
+  quote: Lie down and place both hands on your belly. Breathe in slowly. On the exhale,
+    let your belly go completely. Notice the sensation in your gut right now.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

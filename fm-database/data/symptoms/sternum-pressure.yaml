@@ -1,0 +1,29 @@
+slug: sternum-pressure
+display_name: Sternum Pressure
+aliases:
+- pressure in my breastbone
+- tightness behind my sternum
+- weight on my chest
+- pressure in the middle of my chest
+- band across my chest
+category: musculoskeletal
+severity: concerning
+description: A sensation of pressure or weight behind the breastbone, without the sharp reproducible
+  quality of chest-wall pain. Frequently accompanies anxiety, grief and sustained upper-chest
+  breathing — but overlaps directly with cardiac presentation.
+when_to_refer: TREAT AS CARDIAC UNTIL EXCLUDED. Central chest pressure, particularly with exertion,
+  breathlessness, sweating, nausea, or radiation to jaw, neck or arm, requires emergency assessment.
+  Women commonly present atypically.
+linked_to_topics:
+- anxiety
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: This is the single riskiest symptom in the somatic set. Never explore an emotional
+  reading of central chest pressure before a cardiac cause has been excluded.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

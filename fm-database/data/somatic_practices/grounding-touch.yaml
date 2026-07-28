@@ -1,0 +1,53 @@
+slug: grounding-touch
+display_name: Grounding Touch
+category: touch
+body_region: chest_diaphragm
+position: any_position
+summary: Placing one hand on the sternum and one on the crown of the head, breathing
+  slowly for 2–3 minutes, to redirect dispersed upward energy downward and reorient
+  the nervous system toward felt presence.
+why_it_works: Dual simultaneous touch at two body poles (crown and heart) creates
+  a proprioceptive circuit that anchors attention in the body. The vertical axis of
+  hand placement may also activate interoceptive awareness along the body midline,
+  helping to counter the dissociative or 'leaking out' quality of nervous system dysregulation
+  associated with feeling unseen or emotionally uncontained.
+steps:
+- label: Place hands
+  cue: Rest one hand firmly but gently over the centre of your chest. Place your other
+    hand flat on top of your head.
+  action: rest
+  secs: 10
+- label: Feel the warmth
+  cue: Notice the warmth of each hand where it meets your body. Let that sensation
+    become your anchor.
+  action: observe
+  secs: 20
+- label: Breathe and hold
+  cue: Breathe slowly and continue to hold both points of contact. Stay with the sensations
+    for the full time.
+  action: rest
+  secs: 130
+duration_seconds: 160
+timed: true
+bilateral: false
+contraindications:
+- Scalp wounds or recent cranial surgery — place hand gently near but not on the area
+linked_to_symptoms:
+- anxiety
+- stress
+linked_to_topics:
+- nosebleed
+notes_for_coach: This practice is particularly useful for clients who report feeling
+  'scattered', 'unreal', or 'like they might float away'. Pair it with slow breath.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 13. Nosebleeds — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

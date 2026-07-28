@@ -1,0 +1,53 @@
+slug: somatic-map-acid-reflux
+display_name: Acid Reflux / GERD — Suppressed Feelings Rising
+target_kind: symptom
+target_slug: acid-reflux-heartburn
+sensitivity: general
+differential_note: Rule out hiatus hernia, H. pylori infection, peptic ulcer disease,
+  eosinophilic oesophagitis, cardiac origin of chest pain, Barrett's oesophagus, and
+  medication-induced reflux (NSAIDs, bisphosphonates, calcium channel blockers) before
+  any emotional reading. Persistent or severe reflux requires endoscopic investigation.
+emotional_roots:
+- pattern: Suppressed anger and swallowed resentment
+  note: Some people with chronic reflux notice a pattern of pushing down feelings
+    — particularly anger or resentment — that repeatedly surface anyway. The emotional
+    'rising up' can find a physical parallel in stomach acid that won't stay contained.
+- pattern: Chronic worry and dread
+  note: Fear and persistent anxiety can drive stomach churning and acid over-production.
+    The stomach responds to anticipated threat as though it were present, creating
+    ongoing gastric agitation.
+- pattern: Stress as a trigger
+  note: Stress reliably worsens reflux through multiple mechanisms — increased stomach
+    acid, slowed gastric emptying, and reduced lower oesophageal sphincter tone. Life
+    circumstances that generate sustained stress are often central to a reflux pattern.
+reframe: Your emotions are not a sign of weakness — they are information. What has
+  been pushed down has a way of rising, and attending to it is part of the healing.
+inquiry_question: What keeps coming back up that you have been pushing down?
+somatic_practice: diaphragm-breathing
+also_consider:
+  supplements:
+  - slippery-elm
+  - apple-cider-vinegar
+  practical:
+  - Elevate the head of the bed for nighttime symptoms
+  - Finish eating at least 3 hours before lying down
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Reflux consistently flares during or after high-stress periods
+- Client describes difficulty expressing anger or setting limits
+- Symptoms worse when lying awake at night worrying
+notes_for_coach: Diaphragmatic breathing has evidence for reducing transient lower
+  oesophageal sphincter relaxations. The lifestyle practices (meal timing, bed elevation)
+  are well-supported first-line approaches.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 54. Acid Reflux / GERD — EMOTIONAL ROOT
+  quote: Reflux can be connected to things you can't 'keep down.' Things that keep
+    coming back up emotionally.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

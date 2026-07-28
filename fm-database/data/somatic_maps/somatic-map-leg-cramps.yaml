@@ -1,0 +1,42 @@
+slug: somatic-map-leg-cramps
+display_name: Leg Cramps — Bracing That Will Not Let Go
+target_kind: symptom
+target_slug: muscle-cramps
+sensitivity: general
+emotional_roots:
+- pattern: Sustained gripping
+  note: The muscle will not release, and often neither will the person — the cramp
+    arrives at night when the day's holding finally shows.
+- pattern: Bracing against something
+  note: A worry, a resentment, or a situation being endured rather than addressed.
+reframe: You are allowed to stop bracing. The day is over, and whatever you are gripping
+  will not be solved by gripping harder.
+inquiry_question: What are you holding on to that you could put down tonight?
+somatic_practice: full-body-tense-release
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  - magnesium-citrate
+  - potassium
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Hydrate through the day rather than loading fluid in the evening
+  - Potassium from food — banana, potato — alongside magnesium
+pattern_signals: []
+differential_note: 'Nocturnal leg cramps have common and correctable physiological
+  drivers: magnesium and potassium status, dehydration, and medication effects — statins,
+  diuretics and beta-agonists in particular. Exclude peripheral arterial disease where
+  cramping is exertional and relieved by rest (claudication), and exclude electrolyte
+  disturbance in anyone on diuretics.'
+coach_only_note: ''
+notes_for_coach: Kamla (cl-021) reports calf cramping that relapses when physio stops;
+  hers is a load and protein issue before it is an emotional one.
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

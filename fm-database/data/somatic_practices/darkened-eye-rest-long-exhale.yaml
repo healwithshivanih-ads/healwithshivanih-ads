@@ -1,0 +1,52 @@
+slug: darkened-eye-rest-long-exhale
+display_name: Darkened Eye Rest with Long Exhale
+category: breath
+body_region: head_face
+position: any_position
+summary: Blocking visual input by covering the eyes with warm palms while using an
+  extended exhale breath to down-regulate brainstem arousal associated with migraine.
+why_it_works: Migraines are partly driven by cortical spreading depression and heightened
+  sensory sensitivity. Removing visual stimulation reduces the load on the trigemino-cervical
+  complex, while a prolonged exhale increases vagal tone and lowers sympathetic arousal,
+  blunting brainstem hyperexcitability.
+steps:
+- label: Cover eyes
+  cue: Gently cup both palms over your closed eyes so no light enters. Rest the heels
+    of your hands on your cheekbones — no pressure on the eyeballs.
+  action: rest
+  secs: 10
+- label: Inhale
+  cue: Breathe in softly through your nose.
+  action: expand
+  secs: 4
+- label: Exhale
+  cue: Let the breath out slowly through a slightly open mouth, making the exhale
+    noticeably longer than the inhale.
+  action: release
+  secs: 6
+reps: 12
+duration_seconds: 120
+timed: true
+bilateral: false
+contraindications:
+- Avoid pressing on eyes if you have glaucoma or recent eye surgery
+linked_to_symptoms:
+- migraine
+- headache-migraine
+- photophobia
+linked_to_topics:
+- migraine-headache
+notes_for_coach: Instruct client to find a darkened, quiet space first. This is a
+  first-aid practice for mid-migraine as well as a preventive reset.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 02. Migraines — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

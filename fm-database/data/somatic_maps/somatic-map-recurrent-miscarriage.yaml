@@ -1,0 +1,64 @@
+slug: somatic-map-recurrent-miscarriage
+display_name: Recurrent Miscarriage — Fear, Grief & Depletion
+target_kind: topic
+target_slug: recurrent-pregnancy-loss
+sensitivity: coach_only
+coach_only_note: Recurrent pregnancy loss is an acute grief situation. This emotional
+  framing must NEVER be shown automatically to a client or introduced without explicit
+  agreement and therapeutic support in place. Risk of inducing guilt or shame in a
+  grieving person is high. Coaches should not initiate this framing; it may be offered
+  only if the client themselves raises the emotional dimension and specifically invites
+  exploration.
+differential_note: 'Recurrent miscarriage (≥2–3 consecutive losses) has well-established
+  medical aetiologies that must be investigated: antiphospholipid antibody syndrome,
+  chromosomal abnormalities (parental karyotype), uterine structural anomalies, thyroid
+  dysfunction, luteal phase defect and progesterone insufficiency, immune implantation
+  dysfunction, coagulation disorders, and male factor chromosomal contribution. Referral
+  to a reproductive medicine specialist and possibly a reproductive immunologist is
+  essential.'
+emotional_roots:
+- pattern: Deep fear that it is not yet safe
+  note: Some individuals who experience repeated pregnancy loss describe a profound,
+    often pre-verbal sense that now is not yet the right time — a body-level signal
+    of unreadiness that may reflect deep nervous system threat-detection rather than
+    conscious wish.
+- pattern: Depletion undermining the body's holding capacity
+  note: Chronic stress, fear, and overwork deplete physiological resources in ways
+    that may compromise the hormonal and immunological conditions needed for a pregnancy
+    to sustain. In TCM this is framed as kidney depletion weakening the grasping energy
+    and spleen weakness reducing holding.
+reframe: None of your losses were your fault. Your body was not betraying you — it
+  was responding to something, whether that is biology, depletion, grief, or something
+  that may never be fully understood. Every single loss was real and deserves to be
+  mourned fully and without apology.
+inquiry_question: What would your body need to feel safe enough to hold?
+somatic_practice: grief-sounding
+also_consider:
+  supplements:
+  - folate
+  - omega-3
+  - vitamin-d3
+  practical:
+  - Progesterone supplementation in early pregnancy — discuss with reproductive endocrinologist
+  - Full thyroid panel (not TSH alone) plus vitamin D testing
+  - Referral to a reproductive immunologist if standard workup is unrevealing
+  - Acupuncture in early pregnancy to support uterine circulation and calm the nervous
+    system
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client has experienced two or more pregnancy losses
+- Describes persistent low-grade anxiety or a felt sense that something is 'not right'
+- Standard medical workup has returned normal results and no clear cause has been
+  found
+notes_for_coach: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 82. Recurrent Miscarriage — EMOTIONAL ROOT
+  quote: Repeated miscarriage often reflects a pattern where the body's holding capacity
+    has been undermined by fear and depletion working together over time.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

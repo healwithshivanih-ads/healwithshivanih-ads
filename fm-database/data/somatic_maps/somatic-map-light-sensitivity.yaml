@@ -1,0 +1,43 @@
+slug: somatic-map-light-sensitivity
+display_name: Light Sensitivity — Not Wanting to Be Seen
+target_kind: symptom
+target_slug: photophobia
+sensitivity: general
+emotional_roots:
+- pattern: Not wanting to see something clearly
+  note: A truth about yourself, a relationship, or a situation that is easier left
+    unexamined.
+- pattern: Feeling exposed
+  note: Light does not only let you see — it makes you visible. Where being seen has
+    felt unsafe, the body withdraws from it.
+- pattern: Filtering failure
+  note: A system that has been in overdrive too long loses its capacity to filter
+    ordinary input.
+reframe: If being seen feels frightening, that makes sense — people avoid repeating
+  what hurt them. When you are ready, being properly seen by someone safe is the way
+  back.
+inquiry_question: What are you avoiding looking at, and is the avoidance actually
+  working?
+somatic_practice: supine-snow-angels
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Fluorescent light is genuinely harsh — warmer, natural light helps
+  - A concussion history can leave lasting light sensitivity
+pattern_signals: []
+differential_note: Exclude migraine, dry eye, uveitis, corneal problems and medication
+  effects. Photophobia with headache, neck stiffness and fever is a medical emergency
+  (meningitis). New photophobia after head injury suggests concussion and needs assessment.
+coach_only_note: ''
+notes_for_coach: Kamla (cl-021) had an acute eye episode in July 2026 — exclude the
+  ocular cause before any of this.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

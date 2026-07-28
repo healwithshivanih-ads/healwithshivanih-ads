@@ -20,28 +20,43 @@ linked_to_topics:
 - premenstrual-syndrome
 - perimenopause-and-menopause
 - menorrhagia
+- testosterone-health
+- testosterone-dht-conversion
 linked_to_claims:
 - dim-and-chasteberry-naturally-support-progesterone-and-lower-estrogen
 - murray-chasteberry-most-important-pms-herb
-notes_for_coach: Chasteberry (Vitex) acts on the pituitary to support LH secretion
-  and may help normalize progesterone production in the luteal phase. Used in cycle
-  syncing protocols. Effects are gradual (may take 3+ cycles). Suitable for long-term
-  use.
-notes_for_client: Chasteberry is an herb traditionally used to support hormonal balance.
-  It may help boost your progesterone levels naturally over time, which can ease symptoms
-  like spotting, PMS, and mood swings.
+- 5ar-inhibition-reduces-bph-hair-loss-acne
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+notes_for_coach: Chasteberry (Vitex) acts on the pituitary to support LH secretion and may help
+  normalize progesterone production in the luteal phase. Used in cycle syncing protocols. Effects
+  are gradual (may take 3+ cycles). Suitable for long-term use.
+notes_for_client: Chasteberry is an herb traditionally used to support hormonal balance. It may
+  help boost your progesterone levels naturally over time, which can ease symptoms like spotting,
+  PMS, and mood swings.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-estrogen-dominance
   location: Q&A
-  quote: What is your take on Chasteberry and DIM? That's also a natural form of increasing
-    the progesterone inside the body and lowering the estrogen. You can definitely
-    go for the same if it's working for the patients.
+  quote: What is your take on Chasteberry and DIM? That's also a natural form of increasing the
+    progesterone inside the body and lowering the estrogen. You can definitely go for the same
+    if it's working for the patients.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 3
+- id: vitaone-sex-hormones-toolkit
+  location: Maintaining Healthy Testosterone Levels — Page 06
+  quote: Chaste Tree Berry (Vitex agnus-castus) [Herbs that Inhibit 5-a Reductase]
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Chaste Tree Berry (Vitex agnus-castus) [listed under Herbs that Inhibit 5-a Reductase]
+version: 4
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: 2026-07-28
+updated_by: Shivani
+aliases:
+- chaste-tree-berry
+- vitex
+- vitex-agnus-castus
+- chaste tree berry
+- chaste berry

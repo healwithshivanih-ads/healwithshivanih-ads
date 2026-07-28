@@ -1,0 +1,62 @@
+slug: brain-fog-somatic-map
+display_name: Brain Fog
+target_kind: symptom
+target_slug: brain-fog
+sensitivity: general
+emotional_roots:
+- pattern: Protective shutdown
+  note: When the nervous system reaches a threshold of overwhelm — or when clear thinking
+    would require confronting something too difficult — cognitive function may be
+    dimmed as a protective measure, much like a circuit breaker.
+- pattern: Emotional stagnation
+  note: Feelings that are not moving — grief not expressed, frustration not discharged,
+    decisions perpetually avoided — may create an internal congestion that shows up
+    as mental congestion.
+- pattern: Physiological depletion from chronic stress
+  note: The brain's resources are not unlimited. When chronic stress is continuously
+    drawing on the body's reserves, cognitive clarity is often one of the first casualties
+    — this is a physiological reality, not a character failing.
+reframe: The fog may be asking you to stop and look at what you have been using so
+  much energy to avoid. Clarity tends to return not through forcing thought, but through
+  releasing what has been accumulated.
+inquiry_question: If everything came into focus tomorrow, what would you then have
+  to look at?
+somatic_practice: visual-orienting
+also_consider:
+  supplements:
+  - vitamin-b12
+  practical:
+  - Eat regular protein-containing meals to stabilise blood sugar
+  - Drink adequate water throughout the day
+  - Address gut health — the gut-brain axis means digestive dysfunction can directly
+    manifest as cognitive cloudiness
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Brain fog intensifies during or after emotionally charged periods
+- Client reports using the fog as a reason to avoid difficult conversations or decisions
+- History of prolonged stress, grief, or unprocessed emotional events preceding onset
+- Fog lifts temporarily when client is engaged in absorbing physical activity
+differential_note: 'Brain fog has many physiological causes that must be investigated:
+  hypothyroidism, anaemia (especially iron or B12/folate deficiency), coeliac disease,
+  SIBO, chronic fatigue syndrome / ME-CFS, long COVID, mould toxicity, sleep apnoea,
+  blood sugar dysregulation, hormonal shifts (perimenopause, low testosterone), ADHD,
+  depression, anxiety, medication side effects, and structural neurological conditions.
+  A thorough functional medicine workup is warranted before attributing brain fog
+  to emotional causes.'
+notes_for_coach: Brain fog is one of the most common presenting complaints in FM coaching
+  contexts. The emotional framing is complementary to, not a replacement for, nutritional
+  and physiological investigation. The visual orienting practice is appropriate for
+  most clients and can be tried immediately in session.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 25. Brain Fog — EMOTIONAL ROOT
+  quote: Brain fog is often a protective response. When the nervous system is overwhelmed,
+    it can dampen cognitive function to reduce input; if clear thinking would require
+    facing something unbearable, the fog steps in first.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,67 @@
+slug: gastrocolic-rhythm
+display_name: Gastrocolic Rhythm
+category: breath
+body_region: abdomen
+position: seated
+summary: A morning-routine breath-and-abdominal-pressure practice that uses slow belly
+  expansion on the inhale and gentle inward hand pressure on the exhale to engage
+  the body's natural post-waking reflex for bowel motility.
+why_it_works: The gastrocolic reflex is strongest in the morning. Abdominal breathing
+  combined with mild manual pressure on the exhale mechanically stimulates colonic
+  peristalsis. The warm water drunk beforehand initiates the reflex and softens intestinal
+  contents.
+steps:
+- label: Morning warm water
+  cue: First thing after waking, drink a full glass of warm water before doing anything
+    else.
+  action: rest
+  secs: 60
+- label: Seat and hand placement
+  cue: Sit comfortably in a chair or on the floor. Place both hands flat on your belly,
+    fingers pointing toward each other.
+  action: rest
+  secs: 15
+- label: Belly inhale
+  cue: Breathe in deeply, letting your abdomen expand fully against your hands. Try
+    to keep your chest relatively still.
+  action: expand
+  secs: 5
+- label: Exhale with gentle pressure
+  cue: As you breathe out, gently press both hands inward — not firmly, just a soft,
+    encouraging nudge.
+  action: press
+  secs: 7
+- label: Continue the rhythm
+  cue: Keep this up — expand on the inhale, gentle pressure on the exhale — in an
+    easy, unhurried rhythm for the full session.
+  action: expand
+  secs: 213
+timed: true
+duration_seconds: 300
+bilateral: false
+equipment:
+- A glass of warm water
+linked_to_symptoms:
+- constipation
+linked_to_topics:
+- constipation
+- motility
+notes_for_coach: Best performed before breakfast and before coffee. Clients can combine
+  with sitting on the toilet afterward to make use of the gastrocolic reflex timing.
+contraindications:
+- Recent abdominal surgery
+- Abdominal hernia — omit the manual pressure step
+aliases: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 58. Constipation — SOMATIC RESET
+  quote: First thing in the morning, drink a glass of warm water. Then sit comfortably
+    and place your hands on your belly. Breathe deeply into your abdomen, letting
+    it expand fully. As you exhale, gently press your hands inward.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

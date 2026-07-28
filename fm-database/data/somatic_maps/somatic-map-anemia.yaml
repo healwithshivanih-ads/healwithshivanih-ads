@@ -1,0 +1,45 @@
+slug: somatic-map-anemia
+display_name: Anaemia — The Life Force Running Low
+target_kind: symptom
+target_slug: anemia
+sensitivity: general
+emotional_roots:
+- pattern: A yes-but stance
+  note: Every possibility met with a reason it will not work, until the body stops
+    investing in the energy to try.
+- pattern: Not feeling deserving
+  note: A quiet, undramatic conviction that full vitality is not meant for you.
+- pattern: Joylessness
+  note: Blood carries life to every cell; in Chinese medicine the heart governs it,
+    and the heart runs on joy.
+reframe: You deserve to reconnect with whatever makes you feel alive. Before you were
+  hurt, you knew what living fully felt like.
+inquiry_question: What do you actually believe about your right to a life you want?
+somatic_practice: vigorous-rubbing
+also_consider:
+  supplements:
+  - iron-bisglycinate
+  - vitamin-c
+  - vitamin-b12
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Take iron with vitamin C for absorption
+  - B12 deficiency mimics iron deficiency — check both
+pattern_signals: []
+differential_note: Anaemia always needs its cause found — it is a finding, not a diagnosis.
+  Check full blood count with indices, ferritin, B12 and folate. Iron deficiency anaemia
+  in a man or a postmenopausal woman requires GI investigation to exclude malignancy
+  until proven otherwise. Investigate heavy menstrual bleeding where relevant.
+coach_only_note: ''
+notes_for_coach: IRON DEFICIENCY IN A MAN OR POSTMENOPAUSAL WOMAN NEEDS GI WORKUP.
+  Do not let a lifestyle conversation substitute. Dhanishta (cl-004), Geetika (cl-006),
+  Niti (cl-014) all have low iron.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

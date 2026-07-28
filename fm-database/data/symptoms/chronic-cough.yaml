@@ -1,0 +1,29 @@
+slug: chronic-cough
+display_name: Chronic Cough
+aliases:
+- persistent cough
+- cough that won't go
+- constant throat clearing cough
+- dry cough for months
+- tickly cough
+category: other
+severity: concerning
+description: A cough persisting beyond eight weeks. The commonest causes in non-smokers are
+  upper airway cough syndrome (post-nasal drip), asthma and reflux — often in combination. Also
+  a well-recognised ACE-inhibitor side effect.
+when_to_refer: Refer for haemoptysis, unexplained weight loss, night sweats, breathlessness,
+  hoarseness beyond three weeks, or any cough in a current or former smoker — chest imaging
+  is required. Review ACE inhibitors as a cause.
+linked_to_topics:
+- gerd
+- histamine-intolerance
+linked_to_mechanisms: []
+notes_for_coach: Ask about ACE inhibitors first — it is the easiest reversible cause and is
+  regularly missed. Hariharan and Kamla are both on antihypertensives.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

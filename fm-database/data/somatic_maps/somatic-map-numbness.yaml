@@ -1,0 +1,43 @@
+slug: somatic-map-numbness
+display_name: Numbness — Checking Out, Made Physical
+target_kind: symptom
+target_slug: numbness-tingling
+sensitivity: sensitive
+emotional_roots:
+- pattern: Going quiet on purpose
+  note: The body turns sensation down when feeling becomes too much, or when wanting
+    to feel has stopped.
+- pattern: A protection that stayed on
+  note: Often develops after prolonged stress or a situation where feeling fully would
+    have been unbearable. Leaving was learned; now it happens automatically.
+- pattern: Location carries meaning
+  note: Hands and arms suggest doing and giving; legs and feet, footing and home;
+    the face, seeing and being seen.
+reframe: You are allowed to come back. Whatever made leaving necessary, returning
+  can be gradual — one small thing felt at a time.
+inquiry_question: What became unbearable to feel, and how long ago?
+somatic_practice: sensation-wake-up
+also_consider:
+  supplements:
+  - vitamin-b12
+  home_remedies: []
+  cooking_adjustments: []
+  practical: []
+pattern_signals: []
+differential_note: CRITICAL — new numbness needs a neurological cause excluded first.
+  Sudden numbness with weakness, facial droop or speech difficulty is a stroke and
+  needs emergency care. Also exclude cervical or lumbar radiculopathy, carpal tunnel,
+  B12 deficiency, diabetic neuropathy, MS and thyroid disease. Saddle numbness with
+  bladder change is cauda equina — emergency.
+coach_only_note: Never explore a dissociation framing for new or progressive numbness.
+  This entry is for established, investigated numbness only — the stroke and cauda
+  equina overlaps are too serious.
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

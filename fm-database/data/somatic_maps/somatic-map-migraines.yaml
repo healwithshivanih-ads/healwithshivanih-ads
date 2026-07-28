@@ -1,0 +1,58 @@
+slug: somatic-map-migraines
+display_name: Migraines — Somatic Reading
+target_kind: symptom
+target_slug: migraine
+sensitivity: sensitive
+differential_note: Exclude hormonal migraine (oestrogen fluctuation), cervicogenic
+  migraine, medication-overuse headache, hypertensive crisis, retinal migraine, and
+  first or worst-ever headache presentations (refer immediately). Neurological workup
+  may be indicated for atypical aura. Riboflavin and magnesium have the best evidence
+  for migraine prevention and should be considered alongside any emotional support.
+emotional_roots:
+- pattern: Perfectionism and self-imposed pressure
+  note: There is a pattern sometimes observed of people who drive themselves very
+    hard and who deeply dislike feeling pushed or controlled by external forces —
+    the internal pressure becomes its own kind of trap.
+- pattern: Suppressed anger
+  note: The kind of anger that gets quietly swallowed rather than expressed — maintaining
+    a calm surface while something much hotter moves underneath.
+- pattern: Fear of intimacy
+  note: Some people with recurrent migraines describe discomfort with emotional closeness,
+    a wariness about being seen fully in vulnerability.
+- pattern: Exhaustion of being the one who holds everything together
+  note: The pattern of accommodating, absorbing, never complaining, always managing
+    — and the migraine as the moment the system forces a shutdown the will would never
+    have chosen.
+reframe: Control has limits — and pushing past them doesn't create safety, it creates
+  exhaustion. The migraine may be the only way your system has found to make you stop.
+  You can practice stopping before it needs to.
+inquiry_question: What might surface if you loosened your grip for a day?
+somatic_practice: darkened-eye-rest-long-exhale
+also_consider:
+  supplements:
+  - vitamin-b2-riboflavin
+  - coq10
+  - feverfew
+  - ginger-root
+  home_remedies: []
+  practical: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes themselves as a high-functioning perfectionist
+- Reports migraines arriving on weekends or after periods of sustained stress resolve
+- Difficulty expressing needs or anger directly
+- History of being the caretaker in family or work systems
+coach_only_note: The fear-of-intimacy pattern requires careful handling — only raise
+  if a strong therapeutic alliance is established and the client has opened this door
+  themselves.
+notes_for_coach: Source is a book (moderate quality). Emotional associations are observational.
+  Migraines have strong physiological drivers (hormonal, vascular, genetic) — emotional
+  support is adjunctive, not primary.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 02. Migraines
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

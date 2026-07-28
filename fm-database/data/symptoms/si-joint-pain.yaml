@@ -1,0 +1,27 @@
+slug: si-joint-pain
+display_name: Sacroiliac Joint Pain
+aliases:
+- si joint pain
+- sacroiliac pain
+- pain in my sacrum
+- pain just above my buttock
+- pelvic girdle pain
+- si joint
+category: musculoskeletal
+severity: common
+description: Pain localised to the dimple at the base of the spine, often one-sided, worse on
+  standing from sitting, single-leg loading and rolling in bed. Common in pregnancy and postpartum
+  from ligamentous laxity.
+when_to_refer: Bilateral SI pain with morning stiffness over 30 minutes and improvement with
+  exercise in someone under 45 suggests axial spondyloarthritis — refer to rheumatology rather
+  than treating as mechanical.
+linked_to_topics: []
+linked_to_mechanisms: []
+notes_for_coach: Clients point to it with one finger. That single-finger sign is characteristic.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

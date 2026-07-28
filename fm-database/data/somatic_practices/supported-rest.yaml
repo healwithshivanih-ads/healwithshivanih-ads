@@ -1,0 +1,47 @@
+slug: supported-rest
+display_name: Supported Rest
+aliases: []
+category: imagery
+body_region: whole_body
+position: lying
+summary: Fifteen to twenty minutes of fully supported lying rest, sleep permitted.
+why_it_works: Full physical support removes the low-level postural work the body does
+  even lying flat, which is what allows a depleted system to actually stand down rather
+  than merely pause.
+steps:
+- label: Set up
+  cue: Lie on your back with a pillow under your knees and a small rolled towel under
+    your neck.
+  secs: 45
+  action: rest
+- label: Open the hands
+  cue: Let your arms rest at your sides, palms turned up. Close your eyes.
+  secs: 30
+  action: release
+- label: Do nothing
+  cue: Nothing to achieve here. If you fall asleep, let yourself.
+  secs: 900
+  action: rest
+reps: null
+duration_seconds: 975
+bilateral: false
+timed: true
+equipment:
+- A pillow
+- A rolled towel
+motion_shape: ''
+contraindications:
+- Late pregnancy — lie on the left side with support instead
+sensitivity: general
+linked_to_symptoms:
+- chronic-fatigue
+linked_to_topics: []
+notes_for_coach: For the caretaker cohort, the permission to fall asleep IS the intervention.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

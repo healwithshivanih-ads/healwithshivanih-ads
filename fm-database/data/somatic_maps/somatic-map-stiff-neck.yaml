@@ -1,0 +1,60 @@
+slug: somatic-map-stiff-neck
+display_name: Stiff Neck
+target_kind: symptom
+target_slug: morning-stiffness
+sensitivity: general
+differential_note: 'Must exclude: cervical spondylosis, disc herniation, cervical
+  osteoarthritis, muscle spasm from acute strain or whiplash, torticollis, meningism
+  (acute neck stiffness with fever is a red flag), rheumatoid arthritis, fibromyalgia.
+  Physiological contributors should be assessed before any emotional reading is introduced.'
+emotional_roots:
+- pattern: Psychological rigidity
+  note: Some people notice that neck stiffness is more pronounced during periods when
+    they feel unable to consider alternative viewpoints or are bracing against a situation
+    they cannot control. This is an association, not a cause.
+- pattern: Held anger and frustration
+  note: Traditional Chinese Medicine associates neck stiffness with anger and frustration
+    that has not been expressed, where energy is said to rise and stagnate. Clients
+    who describe a lot of swallowed frustration may find this resonant.
+- pattern: Fear masquerading as rigidity
+  note: Sometimes what looks like stubbornness is actually fear — the neck locks as
+    a protective response when someone doesn't feel safe about what might happen next
+    or senses a threat they can't see.
+- pattern: Repressed self-expression
+  note: Chronic neck tension may accompany patterns of consistently holding back what
+    one truly thinks or feels. The neck, sitting between the thinking mind and the
+    feeling body, can carry this boundary physically.
+reframe: You can hold your values firmly and still allow yourself to look in more
+  than one direction. Flexibility in perspective is not the same as compromising who
+  you are.
+inquiry_question: Who or what situation is feeling like a pain in your neck right
+  now — and what might shift if you allowed yourself to see it from a different angle?
+somatic_practice: eye-led-head-turns
+also_consider:
+  home_remedies: []
+  practical:
+  - Apply a warm shower stream directed at the neck for 10–15 minutes to reduce acute
+    stiffness
+  - Favour gentle movement over complete rest when symptoms allow
+  supplements: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes being in a standoff or conflict with someone and feeling unable
+  to back down
+- Reports a situation happening 'behind their back' or feeling out of control
+- Long history of difficulty expressing disagreement or changing their mind
+notes_for_coach: Nearest available symptom slug is 'morning-stiffness'; this entry
+  covers broader chronic neck stiffness. The differential must always be discussed
+  first — acute neck stiffness with fever requires immediate referral.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 26. Stiff Neck
+  quote: 'The neck allows us to look in all directions. When it stiffens, it often
+    reflects psychological rigidity: an unwillingness or inability to see other viewpoints,
+    consider alternatives, or change direction.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

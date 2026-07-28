@@ -1,0 +1,33 @@
+slug: word-forgetting
+display_name: Word Forgetting / Word-Finding Difficulty
+aliases:
+- can't find the word
+- word finding difficulty
+- losing my words
+- tip of the tongue
+- forgetting names
+- anomia
+- blanking on words
+category: neurological
+severity: concerning
+description: Difficulty retrieving a known word mid-sentence, with the sense that the word
+  is present but inaccessible. Distinct from memory loss — recognition is intact. Common in
+  perimenopause, thyroid dysfunction, sleep debt, sustained stress and post-viral states.
+when_to_refer: Refer for cognitive assessment where word-finding difficulty is progressive,
+  accompanied by disorientation, loss of recognition, personality change or functional decline,
+  or where onset was abrupt.
+linked_to_topics:
+- perimenopause
+- hypothyroidism
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+notes_for_coach: A major source of unspoken fear in perimenopausal clients, who often privately
+  worry about dementia. Naming it as a recognised and usually reversible perimenopausal feature
+  is itself therapeutic.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

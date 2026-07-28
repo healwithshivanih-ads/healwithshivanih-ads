@@ -1,0 +1,60 @@
+slug: dizziness-vertigo-somatic-map
+display_name: Dizziness / Vertigo
+target_kind: symptom
+target_slug: dizziness-motion-sickness
+sensitivity: general
+emotional_roots:
+- pattern: Scattered, overwhelming thinking
+  note: Dizziness may appear alongside a mind that is trying to process too many things
+    at once — too many threats, transitions, or unresolved questions — with the physical
+    disorientation mirroring the internal one.
+- pattern: Avoidance of a difficult truth
+  note: In some frameworks, vertigo may be associated with not wanting to look squarely
+    at something — a situation, a relationship, a decision — with the spinning sensation
+    making focus literally impossible.
+- pattern: Kidney depletion from chronic fear or overwork
+  note: In TCM, prolonged fear, exhaustion, or running on reserve is associated with
+    a gradual depletion that leaves the brain insufficiently nourished, showing up
+    as dizziness that worsens with fatigue and is often accompanied by tinnitus and
+    memory difficulty.
+reframe: The stillness you are avoiding may be the only path back to your own centre.
+  You do not need to resolve everything — you just need to stop long enough to feel
+  your feet on the ground.
+inquiry_question: What feels unsteady enough in your life that your body has started
+  echoing it?
+somatic_practice: bilateral-ball-pass
+also_consider:
+  practical:
+  - Stay well hydrated and eat regular meals to prevent blood sugar crashes as a trigger
+  - Rule out BPPV (benign paroxysmal positional vertigo) with a clinician — it is
+    highly treatable with specific head repositioning manoeuvres
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Dizziness correlates with periods of major life change or overwhelm
+- Client describes themselves as 'spinning their wheels' or unable to settle
+- Chronic exhaustion, overwork, or extended fear-based living preceding onset
+- Tinnitus and memory difficulty accompanying the dizziness (TCM depletion pattern)
+differential_note: 'Dizziness and vertigo have numerous medical causes that require
+  exclusion before emotional contributors are considered: BPPV (most common, easily
+  treated), Ménière''s disease, vestibular neuritis or labyrinthitis, acoustic neuroma,
+  posterior circulation TIA or stroke (sudden onset is a red flag — refer urgently),
+  cervicogenic dizziness, orthostatic hypotension, hypoglycaemia, anaemia, medications,
+  and cardiac arrhythmia. Any sudden severe vertigo with neurological symptoms (diplopia,
+  dysarthria, dysphagia, ataxia) is a medical emergency.'
+notes_for_coach: Always red-flag sudden-onset severe vertigo and refer urgently. The
+  bilateral ball pass is appropriate only once medical causes have been assessed and
+  the client is not in an acute episode.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 24. Dizziness / Vertigo — EMOTIONAL ROOT
+  quote: TCM links dizziness to Liver Yang rising—caused by frustration, anger, resentment,
+    or prolonged emotional turmoil that hasn't been discharged. The heat rises to
+    the head, creating instability.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,51 @@
+slug: somatic-map-tmj-jaw-pain
+display_name: TMJ / Jaw Pain — Somatic Reading
+target_kind: symptom
+target_slug: jaw-tension
+sensitivity: general
+differential_note: Exclude structural TMJ disc displacement, trigeminal neuralgia,
+  dental malocclusion, masseter hypertrophy (may need botulinum toxin assessment),
+  rheumatoid or psoriatic arthritis involving the TMJ, and referred pain from cervical
+  spine before exploring emotional patterning. Dental and physiotherapy assessment
+  is primary.
+emotional_roots:
+- pattern: Swallowed anger and resentment
+  note: There is a pattern sometimes observed of people who want to speak a truth
+    — to push back, disagree, or set a limit — but have learned that doing so is not
+    safe, so the response gets bitten back.
+- pattern: Trained niceness over honesty
+  note: People who have been socialised to prioritise agreeableness over authenticity
+    may store unspoken frustration in the jaw. Women are statistically more likely
+    to be diagnosed with TMJ, which may reflect this socialisation pattern.
+- pattern: Undigested life experiences
+  note: In traditional Chinese medicine, the jaw is associated with the stomach meridian
+    and the capacity to 'digest' experiences — worry and overthinking that does not
+    resolve may be expressed here.
+reframe: The things you have not said are not gone — they are waiting. You are allowed
+  to have needs and to name them. That is not an imposition; it is honesty.
+inquiry_question: What have you been holding back that still needs to be said, and
+  who needs to hear it?
+somatic_practice: lateral-jaw-tracking-small-range
+also_consider:
+  practical:
+  - Acupuncture targeting the jaw and stomach meridian — refer to a licensed acupuncturist
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes themselves as a 'peacekeeper' or someone who avoids confrontation
+- Reports jaw pain that worsens in situations of suppressed conflict
+- Visible jaw tension or teeth clenching during difficult conversations in session
+- History of being interrupted, dismissed, or penalised for speaking up
+notes_for_coach: The gender disparity in TMJ diagnosis is real and worth acknowledging
+  with clients who may carry shame about 'overreacting'. Source is a book (moderate
+  quality); TCM meridian framing is traditional, not biomedical.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 03. TMJ / Jaw Pain
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

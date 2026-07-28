@@ -1,0 +1,52 @@
+slug: temperature-shift-wrists
+display_name: Temperature Shift
+aliases: []
+category: touch
+body_region: arms_hands
+position: standing
+summary: Alternating cool and warm water over the wrists, ending on whichever soothes.
+why_it_works: Alternating cool and warm water over the wrists gives an over-reactive
+  nervous system a real, bounded, controllable stimulus to respond to — and a clear
+  end point.
+steps:
+- label: Cool water
+  cue: Run cool water over your wrists and inner forearms. Thirty seconds.
+  secs: 30
+  action: touch
+- label: Warm water
+  cue: Switch to comfortably warm water for the same time.
+  secs: 30
+  action: touch
+- label: Alternate
+  cue: Keep alternating — three or four rounds, paying attention to each change.
+  secs: 120
+  action: touch
+- label: Finish where it settles
+  cue: End on whichever temperature feels most soothing.
+  secs: 30
+  action: rest
+reps: 4
+duration_seconds: 210
+bilateral: false
+timed: true
+equipment:
+- A tap
+motion_shape: ''
+contraindications:
+- Raynaud's phenomenon or cold urticaria — cold exposure can provoke a flare; use
+  warm only
+- Peripheral neuropathy — test temperature elsewhere first
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- hives-urticaria
+notes_for_coach: Cold urticaria is a real subtype. If cold brings the hives ON, skip
+  the cool phase entirely.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

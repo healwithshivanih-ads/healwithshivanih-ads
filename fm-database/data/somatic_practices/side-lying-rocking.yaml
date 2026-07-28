@@ -1,0 +1,50 @@
+slug: side-lying-rocking
+display_name: Side-Lying Rocking
+aliases: []
+category: movement
+body_region: whole_body
+position: lying
+summary: Small, slow whole-body rocking in a side-lying curl.
+why_it_works: Slow rhythmic rocking is among the most reliable ways to raise parasympathetic
+  tone, and the gentle whole-body movement assists lymphatic flow, which has no pump
+  of its own.
+steps:
+- label: Curl on your side
+  cue: Lie on your side, knees drawn up, however is comfortable.
+  secs: 30
+  action: rest
+- label: Start the rock
+  cue: Begin rocking your whole body slowly forward and back, like a slow wave. Keep
+    it small.
+  secs: 60
+  action: rock
+- label: Find the rhythm
+  cue: Let the rhythm settle into something you are not having to drive.
+  secs: 120
+  action: rock
+- label: Slow to stillness
+  cue: Gradually let the rocking fade until you are still.
+  secs: 90
+  action: rest
+reps: null
+duration_seconds: 300
+bilateral: false
+timed: true
+equipment: []
+motion_shape: ''
+contraindications:
+- Acute back or hip injury
+- Late pregnancy — left side only, with support
+sensitivity: general
+linked_to_symptoms:
+- edema
+linked_to_topics: []
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

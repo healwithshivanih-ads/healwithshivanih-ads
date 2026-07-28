@@ -1,0 +1,56 @@
+slug: somatic-map-si-joint-pain
+display_name: SI Joint Pain
+target_kind: symptom
+target_slug: si-joint-pain
+sensitivity: sensitive
+emotional_roots:
+- pattern: Relational and identity instability
+  note: The sacroiliac joint is the point where the spine — the axis of individual
+    identity — meets the pelvis — the base that connects us to the ground and to others.
+    Some somatic frameworks observe that SI joint issues frequently arise when the
+    relational or identity foundations of a person's life are shaken.
+- pattern: Loss of foundational support
+  note: SI joint pain is reported more commonly during postpartum recovery, divorce,
+    bereavement, or other events that disrupt the structures a person has been standing
+    on. The body's joint instability can mirror a felt instability in life.
+reframe: The foundation that gave way may not have truly been yours to begin with
+  — built on others' expectations, others' conditions. Finding ground that genuinely
+  belongs to you can be more stabilising than trying to restore what was.
+inquiry_question: What feels unsteady in your life just now, and what would solid
+  ground look like?
+somatic_practice: relational-connection-practice
+also_consider:
+  practical:
+  - SI joint dysfunction responds better to specific stabilisation and motor-control
+    exercises than to general stretching — see a pelvic physiotherapist
+  - An SI belt can provide temporary symptom relief while strength is being built
+  - Avoid asymmetrical loading activities (e.g. carrying a child on one hip) during
+    an acute flare
+  - Core and gluteal strengthening are central to long-term SI joint stability
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Pain onset coincides with a major relational or life-structure disruption (postpartum,
+  divorce, bereavement, relocation)
+- Client describes difficulty trusting or feeling supported by people close to them
+- Client is questioning their identity or sense of self at a foundational level
+differential_note: Rule out sacroiliac joint dysfunction confirmed by provocation
+  tests (FABER, Gaenslen's, etc.), ankylosing spondylitis and other seronegative spondyloarthropathies,
+  lumbar facet referral, and pelvic insufficiency fractures (especially postpartum
+  or in osteopenic women). In postpartum clients, symphysis pubis dysfunction should
+  also be assessed.
+coach_only_note: Postpartum SI joint pain has significant physiological and hormonal
+  drivers (relaxin-mediated ligament laxity). Never lead with an emotional frame in
+  the postpartum period without first confirming structural assessment has been completed.
+notes_for_coach: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 69. SI Joint Pain — EMOTIONAL ROOT
+  quote: SI joint issues often correlate with instability in relationships or identity.
+    Feeling unsupported by partners, family, or community.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

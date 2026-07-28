@@ -1,0 +1,59 @@
+slug: somatic-map-snoring
+display_name: Snoring
+target_kind: symptom
+target_slug: snoring
+sensitivity: sensitive
+differential_note: 'Must exclude: obstructive sleep apnoea (OSA) — this is the most
+  important differential and carries significant cardiovascular risk; nasal septum
+  deviation or turbinate hypertrophy; adenotonsillar hypertrophy; obesity and increased
+  neck circumference; alcohol use; sedative medications; hypothyroidism; allergic
+  rhinitis causing nasal obstruction. All clients with snoring should be screened
+  for OSA before any somatic or lifestyle reading is introduced.'
+emotional_roots:
+- pattern: Holding on to the past
+  note: Snoring is sometimes associated in mind-body frameworks with a pattern of
+    clinging to old circumstances, grievances, or ways of being — a reluctance to
+    move fully into the present.
+- pattern: Distrust and emotional self-protection
+  note: A sense of having been let down or taken advantage of can create a deep wariness
+    that may show up in the body in various ways, including habitual patterns during
+    sleep.
+- pattern: Unexpressed voice finding a nocturnal outlet
+  note: Some mind-body frameworks suggest that people who habitually hold back their
+    voice during the day may produce compensatory noise at night. This is an associative
+    metaphor, not an established mechanism.
+reframe: Releasing a grip on something that has already passed does not mean it didn't
+  matter. It just means you are choosing to make room for what comes next.
+inquiry_question: What are you still holding on to that has already gone — and what
+  might become possible if you let it go?
+somatic_practice: yin-yoga-surrender
+also_consider:
+  practical:
+  - Sleep on your side rather than your back to reduce airway collapse
+  - Avoid alcohol in the 2–3 hours before bed as it relaxes throat muscles
+  - Nasal strips may help if nasal congestion is a contributing factor
+  - Weight loss if applicable and advised by clinician
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes chronic difficulty letting go of a past grievance, relationship,
+  or life chapter
+- Reports feeling 'stuck' in a life situation that hasn't changed for a long time
+- Snoring that worsens notably after stressful life events
+notes_for_coach: Always screen for OSA risk (Epworth Sleepiness Scale, STOP-BANG)
+  before a lifestyle or emotional frame is introduced. OSA is a medical condition
+  requiring investigation and potentially CPAP or surgical intervention — it is not
+  a coaching matter.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 33. Snoring
+  quote: Snoring often appears in people who are chronically stuck, resenting the
+    past while fearing the future. There's a grip on what was that prevents moving
+    into what could be.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

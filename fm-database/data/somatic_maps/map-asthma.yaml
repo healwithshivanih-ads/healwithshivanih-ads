@@ -1,0 +1,67 @@
+slug: map-asthma
+display_name: Asthma
+target_kind: topic
+target_slug: asthma
+sensitivity: sensitive
+emotional_roots:
+- pattern: Suppressed emotional expression in childhood
+  note: Some sources in the somatic tradition note associations between asthma onset
+    and early environments where expressing strong emotions — especially crying or
+    protest — was unsafe or not permitted. This is an association, not a cause, and
+    the physiology of asthma is independent of it.
+- pattern: Feeling smothered in a relationship
+  note: Asthma attacks are sometimes reported to correlate emotionally with situations
+    involving closeness that feels suffocating, enmeshment, or a sense that there
+    is no safe space to breathe freely.
+- pattern: Suppressed grief and the airways
+  note: There is a traditional somatic association between the lungs and unprocessed
+    grief or loss. Restricted airways are sometimes explored as an emotional parallel
+    to feelings of loss or being unable to express sadness.
+reframe: 'You are allowed to ask: is this space actually unsafe right now, or did
+  you learn to stop breathing fully around certain people or situations and simply
+  never started again? Your breath belongs to you.'
+inquiry_question: Around whom does your breath get smaller? When did you learn to
+  take up less room?
+somatic_practice: vocal-toning-ahhh
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  - vitamin-d3
+  - omega-3
+  practical:
+  - The Buteyko breathing method has clinical evidence for asthma management — refer
+    clients to a trained practitioner
+  - Dairy elimination trial may be worth considering as a dietary aggravator
+  - Mouth taping at night (nasal breathing) has practical support for some asthma
+    patterns
+  - Histamine intolerance can mimic or worsen asthma symptoms — explore dietary histamine
+    load
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Asthma that worsens notably during emotional conflict or relational stress
+- History of an early environment where emotional expression was restricted or punished
+- Client describes relationships in which they feel 'suffocated' or unable to be themselves
+- Asthma episodes that do not fully correlate with allergen or environmental triggers
+differential_note: Asthma is a well-defined medical condition involving airway inflammation,
+  bronchospasm, and hyperreactivity. It must be managed medically with appropriate
+  assessment, spirometry, and prescribed therapy including bronchodilators and anti-inflammatory
+  agents. Emotional associations are exploratory adjuncts only. Stress can precipitate
+  attacks via neurogenic airway inflammation and autonomic pathways, but this does
+  not make asthma a psychological condition. Never suggest that emotional work can
+  replace medical management.
+notes_for_coach: Magnesium glycinate for bronchial smooth muscle relaxation and omega-3s
+  / vitamin D for airway inflammation are legitimate nutritional supports to discuss
+  alongside (not instead of) medical treatment. Always confirm the client has and
+  carries their rescue inhaler.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 49. Asthma
+  quote: Asthma often develops in childhood, particularly in environments where emotional
+    expression was suppressed or where love felt suffocating.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

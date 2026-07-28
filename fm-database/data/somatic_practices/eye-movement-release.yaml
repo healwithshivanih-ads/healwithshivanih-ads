@@ -1,0 +1,68 @@
+slug: eye-movement-release
+display_name: Eye Movement Release
+category: movement
+body_region: head_face
+position: seated
+summary: A seated eye-movement exercise in which the head remains still while the
+  eyes move deliberately to the far left, far right, and diagonally, followed by eyes-closed
+  rest — intended to mobilise stuck emotional processing in a manner analogous to
+  eye-movement desensitisation.
+why_it_works: Deliberate, wide-range eye movements activate the superior colliculus
+  and modulate activity in the limbic system via tecto-reticular pathways. The rhythmic
+  bilateral nature of the practice echoes mechanisms proposed in EMDR therapy for
+  emotional reprocessing, potentially reducing the visceral grip of rumination and
+  resentment.
+steps:
+- label: Settle and fix your head
+  cue: Sit comfortably with your spine upright. Keep your head perfectly still throughout
+    — only your eyes will move.
+  action: rest
+  secs: 15
+- label: Side-to-side sweeps
+  cue: Move your eyes slowly and fully to the left as far as they will comfortably
+    go. Hold there for one full breath. Then move slowly to the far right and hold
+    for one breath. Repeat this side-to-side sweep ten times.
+  action: circle
+  secs: 120
+- label: Diagonal sweeps
+  cue: 'Now try diagonal movements: look toward your upper-left corner, then toward
+    your lower-right. Then upper-right to lower-left. Repeat several times slowly.'
+  action: circle
+  secs: 60
+- label: Close and rest
+  cue: Let your eyes return to centre and then gently close. Rest in the darkness
+    behind your eyelids for a moment, noticing any sense of softening.
+  action: rest
+  secs: 30
+timed: true
+duration_seconds: 225
+reps: 10
+bilateral: true
+linked_to_topics:
+- gallstones
+- gut-brain-axis
+linked_to_symptoms:
+- abdominal-pain
+notes_for_coach: This practice is inspired by EMDR principles but is not a substitute
+  for clinical EMDR therapy. Clients with diplopia, nystagmus, or recent eye surgery
+  should omit. If a client reports dizziness, reduce the range of eye movement.
+contraindications:
+- Recent eye surgery
+- Diplopia (double vision)
+- Severe nystagmus
+- Active vertigo
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 62. Gallstones — SOMATIC RESET
+  quote: 'Sit comfortably and keep your head still. Move only your eyes: look far
+    left, hold for a breath, then far right, hold for a breath. Repeat slowly, side
+    to side, 10 times. Then try diagonal movements.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,58 @@
+slug: womb-cradling
+display_name: Womb Cradling
+aliases:
+- lower-belly-hand-hold
+category: touch
+body_region: abdomen
+position: lying
+summary: A supine, eyes-closed practice of placing both hands over the lower abdomen
+  with gentle warmth and slow breathing to communicate safety to the nervous system.
+why_it_works: Slow, gentle hand contact on the body activates C-tactile afferents,
+  which feed directly into the insular cortex to produce a sense of safety and reduce
+  threat appraisal. The warmth from the palms also promotes local vasodilation and
+  muscle relaxation in the lower abdominal wall.
+steps:
+- label: Lie down
+  cue: Lie on your back on a comfortable surface with your knees bent and feet flat.
+    Allow your whole body to settle.
+  action: rest
+  secs: 30
+- label: Place hands
+  cue: Bring both hands to your lower belly, just above the pubic bone. Cup them gently,
+    as if holding something tender and precious.
+  action: rest
+  secs: 20
+- label: Breathe and warm
+  cue: Breathe slowly and notice warmth building beneath your palms. Let each exhale
+    soften the tissue under your hands.
+  action: observe
+  secs: 0
+duration_seconds: 350
+timed: true
+bilateral: false
+equipment:
+- yoga mat or bed
+contraindications:
+- Acute abdominal pain of unknown origin — rule out medical emergency first
+linked_to_symptoms:
+- pelvic-pain
+linked_to_topics:
+- uterine-fibroids
+notes_for_coach: Source states 5-10 minutes. The open-ended breathing step is set
+  to secs=0 (self-paced) so the total session sits between the source's 5-10 minute
+  range. Duration_seconds is set to 350s (approx 5.8 min) as a default render target.
+  The sensitivity is coach_only given the context of fibroids and potential grief
+  around femininity/relationships.
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 77. Fibroids — SOMATIC RESET
+  quote: Lie on your back with knees bent. Place both hands low on your belly, just
+    above the pubic bone, cupping gently as if holding something precious. Breathe
+    slowly. Let warmth build under your palms. Stay for 5-10 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

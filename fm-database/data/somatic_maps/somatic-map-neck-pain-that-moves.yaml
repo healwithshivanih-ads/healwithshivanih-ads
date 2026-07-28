@@ -1,0 +1,52 @@
+slug: somatic-map-neck-pain-that-moves
+display_name: Neck Pain That Moves
+target_kind: symptom
+target_slug: migratory-joint-pain
+sensitivity: general
+differential_note: 'Must exclude: cervical disc herniation with radiculopathy, reactive
+  arthritis, fibromyalgia, referred pain from thoracic spine or shoulder pathology,
+  vascular causes, Lyme disease (migratory joint and muscle pain), rheumatoid arthritis,
+  polymyalgia rheumatica. Migratory pain always warrants thorough musculoskeletal
+  and rheumatological assessment before TMS-framework interpretations are introduced.'
+emotional_roots:
+- pattern: Pain as distraction from emotional content
+  note: In the TMS framework developed by Dr John Sarno, pain that migrates from place
+    to place — moving whenever one area is addressed — is considered a possible sign
+    that the pain is serving to keep attention focused on the body rather than on
+    threatening emotional material. This is a theoretical model, not established fact.
+- pattern: Unexpressed frustration and anger (TCM Liver Qi stagnation)
+  note: In traditional Chinese medicine, wandering or moving pain is associated with
+    Liver Qi stagnation — frustration, anger, and stress that has not found an outlet.
+    Some clients find this metaphor useful.
+reframe: Approaching pain with curiosity rather than frustration sometimes changes
+  the relationship with it. Pain that moves may be asking to be understood rather
+  than fought.
+inquiry_question: What feeling might the pain be drawing your attention away from
+  right now? Try simply noticing what is present emotionally in this moment.
+somatic_practice: slow-neck-exploration
+also_consider:
+  practical:
+  - Expressive journaling about anger and fear as a complement to movement work
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Pain that reliably moves to a new area whenever the previous area is treated or
+  attended to
+- Client can identify significant emotional stress that coincides with onset or worsening
+- History of emotionally demanding circumstances without adequate outlets for expression
+notes_for_coach: TMS is a theoretical framework and not a diagnosis a coach makes.
+  Introduce it gently as a possible lens, not a conclusion. 'Migratory-joint-pain'
+  is used as the closest available slug; the source specifically addresses migratory
+  neck pain.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 31. Neck Pain That Moves
+  quote: Moving pain is a hallmark of tension myositis syndrome (TMS), a mind-body
+    condition described by Dr. John Sarno.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

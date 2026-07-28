@@ -1,0 +1,46 @@
+slug: somatic-map-insomnia
+display_name: Insomnia — A Body That Will Not Stop Watching
+target_kind: symptom
+target_slug: insomnia
+sensitivity: general
+emotional_roots:
+- pattern: Letting go feels unsafe
+  note: Sleep asks for surrender of vigilance. Where safety has depended on staying
+    alert, that is a real risk to the system.
+- pattern: The 3am courtroom
+  note: Replaying what was said and not said. Sleep is impossible while the prosecution
+    continues.
+- pattern: Fear of what surfaces
+  note: Sleep lets the unconscious in — dreams, memories, feeling held off all day.
+reframe: Nothing you are worried about will be solved tonight. It will still be there
+  in the morning, and you will be better equipped to meet it.
+inquiry_question: What are you afraid will happen if you stop keeping watch?
+somatic_practice: legs-up-the-wall
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  - ashwagandha
+  - passionflower
+  - valerian-root
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - No screens for the hour before bed
+  - Write the list down — the brain lets go once it is stored elsewhere
+pattern_signals: []
+differential_note: Exclude sleep apnoea (snoring, witnessed apnoeas, morning headache),
+  restless legs, nocturia driving fragmentation, thyroid disease, pain and medication
+  effects. Where insomnia is chronic, CBT-I is the evidence-based first-line treatment
+  — more effective and more durable than any supplement.
+coach_only_note: ''
+notes_for_coach: Nazneen (cl-022) has maintenance insomnia with nocturia — the nocturia
+  is the lever there, not sleep hygiene. Deepti (cl-011) is STOP-BANG positive; screen
+  for apnoea before anything else.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

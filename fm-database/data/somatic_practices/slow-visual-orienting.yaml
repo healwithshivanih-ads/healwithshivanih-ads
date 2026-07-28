@@ -1,0 +1,49 @@
+slug: slow-visual-orienting
+display_name: Soft-Gaze Scanning
+category: orientation
+body_region: head_face
+position: any_position
+summary: Slowly turning the head and allowing the eyes to gently scan the environment,
+  noticing shapes and light without effortful focus, to re-engage voluntary visual
+  engagement and calm the dorsal vagal withdrawal state.
+why_it_works: The orienting response is a fundamental building block of nervous system
+  regulation in polyvagal theory. Slow, voluntary scanning of the environment with
+  a non-gripping gaze activates the ventral vagal complex, countering the dorsal vagal
+  freeze or withdrawal state that may underlie a loss of hope or engagement with the
+  future.
+steps:
+- label: Begin
+  cue: Sit or stand comfortably. Without moving yet, let your gaze soften.
+  action: rest
+  secs: 10
+- label: Turn and scan
+  cue: Very slowly turn your head from one side toward the other, letting your eyes
+    drift across the room — noticing shapes, textures, patches of light and shadow
+    — without locking onto any single thing.
+  action: observe
+  secs: 90
+duration_seconds: 100
+timed: true
+bilateral: true
+contraindications:
+- Clients with severe vertigo or benign paroxysmal positional vertigo (BPPV) should
+  perform head turns cautiously and consult a physiotherapist
+linked_to_symptoms:
+- blurred-vision
+- hypervigilance
+linked_to_topics:
+- cataracts
+notes_for_coach: This is a polyvagal orienting practice. Use it at the start of a
+  session to help clients drop into their body before deeper emotional work.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 10. Cataracts — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

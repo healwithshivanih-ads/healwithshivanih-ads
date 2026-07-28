@@ -1,0 +1,45 @@
+slug: somatic-map-shingles
+display_name: Shingles — Defences Finally Down
+target_kind: symptom
+target_slug: shingles
+sensitivity: sensitive
+emotional_roots:
+- pattern: Bracing that never stopped
+  note: Background fear and tension running so long it stopped being noticed.
+- pattern: Something old surfacing
+  note: The virus waits in nerve tissue for years. It comes through when there is
+    no longer enough left to keep it contained.
+- pattern: Running on empty
+  note: Pushing past limits and holding everything together until there is nothing
+    left to hold it with.
+reframe: Your body will take what it needs whether you offer it or not. Offering it
+  is the easier version.
+inquiry_question: What finally caught up with you when you ran out of reserve?
+somatic_practice: havening-touch
+also_consider:
+  supplements:
+  - l-lysine
+  - vitamin-b12
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Cool compresses ease the nerve pain topically
+  - Rebuilding reserve is the actual prevention — the reactivation happened because
+    defences dropped
+pattern_signals: []
+differential_note: URGENT — shingles needs antiviral treatment within 72 hours of
+  rash onset, so this is a same-day referral, not a coaching conversation. Ophthalmic
+  involvement (eye, or tip of the nose) threatens sight. Recurrent or disseminated
+  zoster warrants immune workup including HIV testing.
+coach_only_note: Do not raise the depletion framing during the acute episode. Treat
+  first; reflect later, once the pain has settled — post-herpetic neuralgia is miserable
+  and this is not the moment.
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

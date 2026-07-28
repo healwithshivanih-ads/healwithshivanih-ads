@@ -1,0 +1,86 @@
+slug: slow-neck-exploration
+display_name: Slow Neck Exploration
+category: movement
+body_region: throat_neck
+position: seated
+summary: Non-goal-oriented, slow rotation and lateral tilting of the head, with the
+  jaw consciously softened, to signal safety to the nervous system and interrupt a
+  pain-as-distraction cycle.
+why_it_works: Gentle, curiosity-based movement in a pain-free range sends afferent
+  safety signals to the brain, down-regulating the threat-prediction loop that underlies
+  tension myositis syndrome (TMS)-style pain amplification. Jaw softening simultaneously
+  releases the masseter and suboccipital muscles that contribute to cervical tension.
+steps:
+- label: Soften Jaw
+  cue: Before you move, let your teeth part slightly and your jaw hang loose. Keep
+    this softness throughout the exercise.
+  action: release
+  secs: 10
+- label: Slow Turn Left
+  cue: Turn your head to the left as slowly as you possibly can, going only as far
+    as feels entirely comfortable. There is no target.
+  action: circle
+  secs: 15
+- label: Return to Centre
+  cue: Bring your head back to centre at the same unhurried pace.
+  action: release
+  secs: 10
+- label: Slow Turn Right
+  cue: Turn your head to the right just as slowly, again stopping well before any
+    discomfort.
+  action: circle
+  secs: 15
+- label: Return to Centre
+  cue: Come back to centre gently.
+  action: release
+  secs: 10
+- label: Ear to Shoulder Left
+  cue: Tilt your left ear toward your left shoulder slowly, keeping the jaw soft.
+    Stop before strain.
+  action: circle
+  secs: 15
+- label: Return
+  cue: Return your head to upright.
+  action: release
+  secs: 10
+- label: Ear to Shoulder Right
+  cue: Tilt your right ear toward your right shoulder at the same slow, exploratory
+    pace.
+  action: circle
+  secs: 15
+- label: Return and Notice
+  cue: Bring your head back to centre and simply notice any difference in sensation
+    — without judgement.
+  action: observe
+  secs: 10
+duration_seconds: 110
+timed: true
+bilateral: true
+contraindications:
+- Acute cervical disc herniation with radicular symptoms — medical clearance required
+- Rheumatoid arthritis affecting the cervical spine — physiotherapy guidance needed
+- Recent whiplash — proceed only within pain-free range and with clinician approval
+linked_to_symptoms:
+- muscle-tension
+- migratory-joint-pain
+- morning-stiffness
+linked_to_topics:
+- chronic-pain-and-fatigue
+- somatic-body-memory
+notes_for_coach: Emphasise that there is no goal to 'get further' or 'fix' the range
+  of motion. The therapeutic ingredient is the slow, safe, non-effortful quality of
+  attention to movement.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 31. Neck Pain That Moves — SOMATIC RESET
+  quote: Slowly turn your head side to side, then tilt your ear to your shoulder,
+    staying well within comfort, and letting the jaw soften as you move.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

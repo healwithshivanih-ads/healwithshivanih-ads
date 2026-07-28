@@ -1,0 +1,64 @@
+slug: slow-chewing-practice
+display_name: Slow Chewing Practice
+category: behavioural
+body_region: jaw
+position: seated
+summary: A single-meal protocol in which the client chews each bite 20–30 times before
+  swallowing, puts utensils down between bites, and notices any impulse to rush —
+  retraining the nervous system to experience mealtime as a safe, non-threatening
+  activity.
+why_it_works: Thorough mechanical breakdown of food reduces the antigen particle size
+  reaching the intestinal immune system. Slowing the pace of eating allows complete
+  cephalic-phase enzyme secretion, decreases intestinal permeability responses, and
+  breaks the conditioned hurry-eat loop that maintains nervous-system arousal around
+  food.
+timed: false
+steps:
+- label: Begin one meal with intention
+  cue: Choose one meal today to practice with. Sit down at a table rather than eating
+    on the go.
+  action: rest
+- label: Take a bite and put utensil down
+  cue: Take a normal-sized bite, then lay your fork or spoon down on the table before
+    you begin chewing.
+  action: rest
+- label: Chew thoroughly
+  cue: Chew each bite approximately 20 to 30 times, until the food is completely liquid-like
+    in texture. Taste what you are eating.
+  action: rest
+- label: Swallow and pause
+  cue: Swallow, then rest for a moment before picking up your utensil again. Notice
+    if there is any urge to rush forward.
+  action: observe
+- label: Notice the impulse to speed up
+  cue: If you feel the pull to eat faster, that is useful information — not a problem.
+    Simply slow back down and continue.
+  action: observe
+bilateral: false
+linked_to_symptoms:
+- food-sensitivities
+- bloating
+- indigestion
+linked_to_topics:
+- food-sensitivity
+- digestion-and-nutrient-absorption
+- mindful-eating
+notes_for_coach: This protocol is about rhythm and nervous system signalling, not
+  perfectionism about chew count. Clients with dental pain or jaw issues should be
+  referred appropriately.
+contraindications:
+- Active jaw pain (TMJ) — modify chew count downward and refer to dentist/physio
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 60. Food Sensitivities — SOMATIC RESET
+  quote: For one meal, chew each bite 20-30 times before swallowing. Put your fork
+    down between bites. Taste fully. Notice when you want to rush—and slow down anyway.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

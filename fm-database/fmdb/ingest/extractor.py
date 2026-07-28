@@ -17,7 +17,7 @@ import json
 import os
 from typing import Any, Protocol
 
-from .types import ExtractionResult, IngestRequest
+from .types import EXTRACTED_TYPES, ExtractionResult, IngestRequest
 
 
 class Extractor(Protocol):
@@ -150,6 +150,120 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "caveats": {"type": "array", "items": {"type": "string"}},
                     "linked_to_topics": {"type": "array", "items": {"type": "string"}},
                     "linked_to_supplements": {"type": "array", "items": {"type": "string"}},
+                    "source_quote": {"type": "string"},
+                    "source_location": {"type": "string"},
+                },
+            },
+        },
+        "somatic_practices": {
+            "type": "array",
+            "description": (
+                "A short, bounded body-based exercise (a 'somatic reset') that a "
+                "client performs to complete an interrupted stress response. Emit "
+                "one per distinct named exercise. The SAME practice is often "
+                "prescribed for several symptoms — emit it ONCE and let the "
+                "somatic_maps reference it by slug. "
+                "CRITICAL: capture the steps as objective, observable facts. Do "
+                "NOT classify the exercise into a motion 'type' or 'shape' — that "
+                "classification is done downstream once the whole library exists, "
+                "and guessing it here destroys the evidence. "
+                "COPYRIGHT: rewrite every instruction in your own words. Never "
+                "reproduce source phrasing verbatim."
+            ),
+            "items": {
+                "type": "object",
+                "required": ["slug", "display_name", "category", "steps"],
+                "properties": {
+                    "slug": {"type": "string"},
+                    "display_name": {"type": "string", "description": "The exercise's name, e.g. 'Neck-Shoulder Drop Release'."},
+                    "aliases": {"type": "array", "items": {"type": "string"}},
+                    "category": {"type": "string", "description": "breath | discharge | touch | movement | imagery | orientation | behavioural | other"},
+                    "body_region": {"type": "string", "description": "head_face | jaw | throat_neck | shoulders_upper_back | arms_hands | chest_diaphragm | abdomen | pelvis | lower_back_hips | legs_feet | whole_body"},
+                    "position": {"type": "string", "description": "seated | standing | lying | any_position"},
+                    "summary": {"type": "string"},
+                    "why_it_works": {"type": "string", "description": "The physiological rationale, coach-facing."},
+                    "steps": {
+                        "type": "array",
+                        "description": "The exercise broken into ordered steps, in the client's language.",
+                        "items": {
+                            "type": "object",
+                            "required": ["label", "cue"],
+                            "properties": {
+                                "label": {"type": "string", "description": "Short step name — 'Push', 'Breathe in', 'Let warmth build'."},
+                                "cue": {"type": "string", "description": "What the client is actually told to do."},
+                                "secs": {"type": "integer", "description": "Seconds for this step. OMIT if the source gives no duration — do not invent one."},
+                                "action": {"type": "string", "description": "The bare verb of the movement: expand | hold | shrink | press | release | tap | circle | rest | observe | massage. Use the word that fits; this is free text, not a fixed list."},
+                            },
+                        },
+                    },
+                    "reps": {"type": "integer", "description": "Repetitions/rounds, only if the source states one."},
+                    "duration_seconds": {"type": "integer", "description": "Total session length, only if stated or directly derivable."},
+                    "bilateral": {"type": "boolean", "description": "True if the exercise alternates left and right sides."},
+                    "timed": {"type": "boolean", "description": "False when this is a protocol applied to an activity (e.g. how to eat a meal) rather than a timed session."},
+                    "equipment": {"type": "array", "items": {"type": "string"}, "description": "Anything needed — a wall, a towel, a chair."},
+                    "contraindications": {"type": "array", "items": {"type": "string"}, "description": "Who should not do this, or should modify it. Include any that are obvious from the movement even if the source omits them (e.g. isometric holds and uncontrolled hypertension)."},
+                    "linked_to_symptoms": {"type": "array", "items": {"type": "string"}},
+                    "linked_to_topics": {"type": "array", "items": {"type": "string"}},
+                    "notes_for_coach": {"type": "string"},
+                    "source_quote": {"type": "string"},
+                    "source_location": {"type": "string"},
+                },
+            },
+        },
+        "somatic_maps": {
+            "type": "array",
+            "description": (
+                "The emotional/somatic reading attached to ONE symptom or topic: "
+                "its associated emotional patterns, a client-facing reframe, one "
+                "reflective question, and the somatic practice that accompanies it. "
+                "Emit one per chapter/entry. "
+                "SAFETY — this is the highest-risk content in the pipeline. These "
+                "are ASSOCIATIONS observed in a source, never causal claims, and "
+                "must never read as 'your emotions caused this disease'. Always "
+                "populate differential_note with the physiological causes that must "
+                "be excluded first. Set sensitivity to 'sensitive' for anything "
+                "touching relationships, sexuality, body image or reproduction, and "
+                "'coach_only' for pregnancy loss, infertility, cancer, or any entry "
+                "whose framing could read as blaming a grieving person. When in "
+                "doubt choose the MORE restrictive value."
+            ),
+            "items": {
+                "type": "object",
+                "required": ["slug", "display_name", "target_kind", "target_slug", "differential_note"],
+                "properties": {
+                    "slug": {"type": "string"},
+                    "display_name": {"type": "string"},
+                    "target_kind": {"type": "string", "description": "symptom | topic — which catalogue bucket target_slug lives in."},
+                    "target_slug": {"type": "string", "description": "The existing catalogue slug this reading attaches to."},
+                    "sensitivity": {"type": "string", "description": "general | sensitive | coach_only. Default to the more restrictive when unsure."},
+                    "emotional_roots": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["pattern"],
+                            "properties": {
+                                "pattern": {"type": "string", "description": "Short name for the pattern — 'Swallowed anger'."},
+                                "note": {"type": "string", "description": "The fuller description, in warm coach voice, phrased as an association not a cause."},
+                            },
+                        },
+                    },
+                    "reframe": {"type": "string", "description": "Client-facing, belief-level. Never blaming."},
+                    "inquiry_question": {"type": "string", "description": "The single reflective question."},
+                    "somatic_practice": {"type": "string", "description": "Slug of the somatic_practice emitted for this entry."},
+                    "also_consider": {
+                        "type": "object",
+                        "description": "Practical adjuncts. Put supplements/remedies under their catalogue slug if you are confident one exists; otherwise put the whole item in `practical` as free text. Do NOT invent supplement slugs.",
+                        "properties": {
+                            "supplements": {"type": "array", "items": {"type": "string"}},
+                            "home_remedies": {"type": "array", "items": {"type": "string"}},
+                            "cooking_adjustments": {"type": "array", "items": {"type": "string"}},
+                            "practical": {"type": "array", "items": {"type": "string"}},
+                        },
+                    },
+                    "pattern_signals": {"type": "array", "items": {"type": "string"}, "description": "Observable cues that make this reading plausible in a given client — what a coach would look for before raising it."},
+                    "differential_note": {"type": "string", "description": "REQUIRED. The physiological/structural drivers that must be excluded first. This is what stops an association being read as a cause."},
+                    "coach_only_note": {"type": "string", "description": "Set when the framing must never auto-surface to a client, and say why."},
+                    "notes_for_coach": {"type": "string"},
                     "source_quote": {"type": "string"},
                     "source_location": {"type": "string"},
                 },
@@ -541,15 +655,13 @@ class AnthropicExtractor:
         for block in resp.content:
             if getattr(block, "type", None) == "tool_use" and block.name == "extract_entities":
                 payload = block.input or {}
-                return ExtractionResult(
-                    sources=[],  # source is registered separately by the staging layer
-                    topics=list(payload.get("topics", [])),
-                    mechanisms=list(payload.get("mechanisms", [])),
-                    symptoms=list(payload.get("symptoms", [])),
-                    claims=list(payload.get("claims", [])),
-                    supplements=list(payload.get("supplements", [])),
-                    usage=usage,
-                )
+                # Build from EXTRACTED_TYPES so a newly-declared entity type can
+                # never be requested in the tool schema, billed for, and then
+                # silently dropped here (which is exactly what happened to
+                # drug_depletions + lab_tests). sources are registered by the
+                # staging layer from the IngestRequest, not read from payload.
+                buckets = {e: list(payload.get(e, []) or []) for e in EXTRACTED_TYPES}
+                return ExtractionResult(sources=[], usage=usage, **buckets)
         return ExtractionResult(usage=usage)
 
 

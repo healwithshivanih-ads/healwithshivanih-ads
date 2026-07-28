@@ -1,0 +1,44 @@
+slug: somatic-map-sound-sensitivity
+display_name: Sound Sensitivity — The Filter That Broke
+target_kind: symptom
+target_slug: sound-sensitivity
+sensitivity: general
+emotional_roots:
+- pattern: Boundary collapse
+  note: Too much was let in for too long — too many words, too much noise, no ability
+    to shut any of it out.
+- pattern: Anger underneath
+  note: Not only sensitivity but irritation. Everything sounds too loud because everything
+    feels like intrusion.
+- pattern: Being trapped with someone
+  note: Rage at specific sounds often traces back to being unable to get away from
+    a person whose presence was invasive. The sound became the container for what
+    could not be said.
+reframe: You are allowed to need quiet, to leave the room, and to know what is too
+  much without anyone else agreeing.
+inquiry_question: If you could go back, what boundary would you set, and with whom?
+somatic_practice: progressive-psoas-release
+also_consider:
+  supplements:
+  - magnesium
+  - b-complex
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Ear protection used deliberately for known-loud settings, not worn constantly
+    — which worsens hyperacusis
+pattern_signals: []
+differential_note: Exclude hyperacusis as a primary auditory condition, and refer
+  to audiology for sudden, one-sided, or hearing-loss-associated onset. Also consider
+  migraine, post-concussion syndrome and medication ototoxicity.
+coach_only_note: ''
+notes_for_coach: Constant ear-plug use makes hyperacusis worse over time. Worth saying
+  explicitly.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

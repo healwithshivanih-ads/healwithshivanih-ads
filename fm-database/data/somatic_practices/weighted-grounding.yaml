@@ -1,0 +1,60 @@
+slug: weighted-grounding
+display_name: Weighted Grounding
+category: touch
+body_region: abdomen
+position: lying
+summary: A weighted-pressure practice done lying down to activate the body's sense
+  of being held and supported from below.
+why_it_works: Deep pressure stimulation activates the parasympathetic nervous system
+  and reduces cortisol, signalling safety to a nervous system stuck in survival mode.
+  The proprioceptive input from weight on the belly reinforces felt-sense grounding.
+steps:
+- label: Lie down
+  cue: Lie on your back with your knees bent and your feet flat on the floor.
+  action: rest
+  secs: 20
+- label: Apply weight
+  cue: Place something heavy across your lower belly — a weighted blanket, a bag of
+    rice, or a thick folded pillow.
+  action: press
+  secs: 20
+- label: Settle in
+  cue: Let the weight press your body gently into the floor. Feel the floor rising
+    up to meet you from below and the weight anchoring you from above.
+  action: observe
+  secs: 40
+- label: Slow breathing
+  cue: Breathe slowly and evenly. With each exhale, allow your body to sink a little
+    more into the ground.
+  action: expand
+  secs: 520
+duration_seconds: 600
+timed: true
+bilateral: false
+equipment:
+- weighted blanket, bag of rice, or thick pillow
+contraindications:
+- Avoid if pregnant or if abdominal pressure is contraindicated by a medical condition
+linked_to_symptoms:
+- chronic-pain
+- muscle-tension
+linked_to_topics:
+- nervous-system-regulation
+- chronic-stress
+notes_for_coach: 5–10 minute range given; steps apportion to a 10-minute session.
+  Client can also do 5 minutes — just shorten the slow-breathing step.
+aliases: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 65. Lower Back Pain — SOMATIC RESET
+  quote: Lie on your back with knees bent. Place something heavy on your lower belly—a
+    weighted blanket, a bag of rice, a thick pillow. Let the weight press you into
+    the floor. Breathe slowly, feeling yourself supported from below and anchored
+    from above. Stay for 5-10 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,54 @@
+slug: scalp-tightness-somatic-map
+display_name: Scalp Tightness
+target_kind: symptom
+target_slug: scalp-tightness
+sensitivity: general
+emotional_roots:
+- pattern: Control through thinking
+  note: Scalp tension may show up in people who try to manage uncertainty by thinking
+    their way through every possible scenario — planning, pre-empting, running mental
+    simulations — because stopping feels dangerous.
+- pattern: Chronic worry and mental burden-carrying
+  note: In those who habitually take on the mental load for others — at home, at work,
+    in relationships — the mind may run continuously because it believes it cannot
+    afford to rest.
+- pattern: Indecision
+  note: In Traditional Chinese Medicine, the gallbladder meridian travels across the
+    scalp and is associated with decision-making and courage. Tightness in this region
+    may be associated with clients caught in endless loops because they cannot commit
+    to a direction.
+reframe: You are allowed to stop figuring it out. The most creative and helpful answers
+  often arrive in the spaces between efforts, not during them.
+inquiry_question: What do you imagine would happen if your mind went quiet for an
+  hour?
+somatic_practice: free-dance
+also_consider:
+  practical:
+  - Rosemary essential oil applied to scalp to increase circulation and relieve tightness
+  - Gua sha massage on the scalp using a smooth tool to release held muscular tension
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes themselves as a 'worrier' or perfectionist
+- Difficulty switching off mentally at the end of the day
+- Reports that headaches come on during periods of decision-making pressure
+- Takes on the planning and thinking for an entire household or team
+differential_note: Exclude contact dermatitis or scalp conditions causing tightness
+  (psoriasis, seborrhoeic dermatitis, alopecia areata), tension-type headache with
+  scalp tenderness, cervical muscle tightness referring upward, and medication side
+  effects before exploring emotional contributors.
+notes_for_coach: The TCM gallbladder meridian reference is a framework, not a diagnostic
+  claim. Use it only with clients who are receptive to that lens. The core pattern
+  (indecision → tension) translates well without it.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 15. Scalp Tightness — EMOTIONAL ROOT
+  quote: Fear. The scalp often tightens in people who are trying to control everything
+    through thinking—planning, anticipating, running mental scenarios to prevent disaster.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

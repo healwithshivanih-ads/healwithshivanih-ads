@@ -1,0 +1,67 @@
+slug: somatic-map-shoulder-trapezius-tension
+display_name: Shoulder & Trapezius Tension
+target_kind: symptom
+target_slug: trapezius-tension
+sensitivity: general
+emotional_roots:
+- pattern: Carrying the world
+  note: Some people find that chronic shoulder tension shows up most when they feel
+    wholly responsible for everyone around them — when there is no moment of the day
+    that does not belong to someone else's need.
+- pattern: Bracing for the next demand
+  note: The trapezius is a primary fight-or-flight muscle. When life keeps delivering
+    the next expectation before the last one has been met, the shoulders can stay
+    perpetually raised in readiness.
+- pattern: Buried anger at not being helped
+  note: 'Underneath the stoic holding can sit a quiet — or not so quiet — anger about
+    the asymmetry: the sense of carrying more than one''s fair share with no one stepping
+    in to share the load.'
+- pattern: Hopelessness and chronic overload
+  note: Chronic tension in this area can coincide with a belief that relief is not
+    on its way — not just 'I have too much' but 'no one is coming, and I cannot put
+    this down.'
+- pattern: Grief and inherited burdens
+  note: The shoulders can reflect the weight of loss — including burdens that arrived
+    through bereavement or that were handed down by people who can no longer carry
+    them themselves.
+reframe: You are allowed to set the weight down, even briefly. Not everything that
+  found its way to you belongs to you permanently.
+inquiry_question: If you set the load down for an afternoon, what do you think would
+  come up?
+somatic_practice: therapeutic-tremoring
+also_consider:
+  supplements:
+  - b-complex
+  home_remedies: []
+  practical:
+  - Epsom salt baths for transdermal magnesium absorption
+  - Acupressure point Gallbladder 21 (highest point of the shoulder) — firm sustained
+    pressure for 30–60 seconds
+  cooking_adjustments: []
+pattern_signals:
+- Client describes feeling solely responsible for family or team outcomes
+- Shoulders visibly elevated or braced at rest
+- History of long-term caregiving without support
+- Reports hypervigilance or difficulty switching off
+differential_note: Rule out cervical disc pathology (C4–C6 referral patterns), rotator
+  cuff tears, thoracic outlet syndrome, brachial neuritis (Parsonage-Turner syndrome),
+  and referred pain from cardiac or diaphragmatic sources before exploring emotional
+  dimensions. Thyroid disease and vitamin D deficiency can also cause persistent muscle
+  tension.
+notes_for_coach: Source is entry 34 of Klein's body-memory book (llm_synthesis tier
+  — treat as experiential/observational, not clinical evidence). The right/left shoulder
+  distinction in the source (masculine/feminine energy) is a folk-somatic framework
+  not supported by clinical evidence; do not present it as fact.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: Entry 34 — Shoulder & Trapezius Tension, EMOTIONAL ROOT
+  quote: The trapezius is a primary fight-or-flight muscle, pulling your shoulders
+    up to protect your neck when the nervous system perceives threat. It's also one
+    of Sarno's main TMS tender points—a place the body creates tension in to distract
+    from dangerous emotions.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

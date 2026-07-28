@@ -1,0 +1,54 @@
+slug: somatic-map-eye-strain
+display_name: Eye Strain / Tired Eyes — Somatic Reading
+target_kind: symptom
+target_slug: eye-strain
+sensitivity: general
+differential_note: Exclude refractive error (uncorrected prescription), digital eye
+  strain (screen time), dry eye syndrome (meibomian gland dysfunction, Sjögren's),
+  blepharitis, anaemia, thyroid eye disease, and vitamin A deficiency before considering
+  emotional patterning. Optometrist or ophthalmologist review is appropriate for persistent
+  symptoms.
+emotional_roots:
+- pattern: Hypervigilant scanning
+  note: When the nervous system has learned to constantly scan for threats, the eyes
+    are recruited into that surveillance — always gripping, always tracking, never
+    fully resting.
+- pattern: Avoiding seeing something
+  note: When someone is circling a truth they are not ready to face — about a relationship,
+    a situation, or themselves — there may be a pattern of the visual system blurring
+    or tiring as a protective avoidance.
+- pattern: Liver depletion from overwork (TCM)
+  note: In traditional Chinese medicine, the liver meridian opens into the eyes, and
+    its depletion through chronic stress, overwork, or emotional over-giving may manifest
+    as tired, dry, or strained eyes.
+reframe: The tighter the grip on safety, the more exhausted you become. True rest
+  is not irresponsibility — it is what lets you actually be present to your life.
+inquiry_question: What are you afraid to look at clearly — and what is the cost of
+  not seeing it?
+somatic_practice: soft-gaze-reset
+also_consider:
+  supplements:
+  - bilberry-extract
+  - omega-3-fatty-acids-hormone-membrane
+  practical:
+  - '20-20-20 rule: every 20 minutes, rest eyes on something 20 feet away for 20 seconds'
+  - Reduce screen time in the evening
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes themselves as always watchful, rarely able to switch off vigilance
+- Reports eyes feeling gritty or tired after emotionally loaded conversations, not
+  just screen work
+- Difficulty tolerating open, unstructured time — needs to always be 'doing'
+notes_for_coach: TCM liver framing is traditional and not biomedical — share only
+  if client has that framework. Target slug 'dry-eyes' used as the closest available
+  match for the eye strain/tired eyes presentation. Source is a book (moderate quality).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 07. Eye Strain / Tired Eyes
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

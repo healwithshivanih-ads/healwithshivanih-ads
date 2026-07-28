@@ -1,0 +1,71 @@
+slug: heart-hold-with-rocking
+display_name: Heart Hold with Rocking
+category: touch
+body_region: chest_diaphragm
+position: any_position
+summary: A self-soothing practice combining bilateral rocking movement with hand contact
+  over the heart and a spoken acknowledgement of grief, used to process emotional
+  pain following loss.
+why_it_works: Self-touch activates the same oxytocin-mediated soothing pathways as
+  being held by another person. Repetitive bilateral rocking stimulates the vestibular
+  system and has a strong down-regulating effect on the sympathetic nervous system.
+  Verbal acknowledgement externalises and validates the emotion, reducing rumination.
+steps:
+- label: Place hands on heart
+  cue: Sit or stand in a comfortable position. Place both hands, one on top of the
+    other, over the centre of your chest. Close your eyes.
+  action: press
+  secs: 15
+- label: Begin rocking
+  cue: Start to sway gently — side to side or forward and back, whichever feels naturally
+    soothing to you. Let the movement be small and slow.
+  action: circle
+  secs: 30
+- label: Speak the acknowledgement
+  cue: 'As you rock, say silently or aloud: ''My heart hurts because I loved. This
+    pain is proof that I can feel deeply.'' Repeat the words as many times as feels
+    right.'
+  action: rest
+  secs: 60
+- label: Continue and allow
+  cue: Keep rocking. If sound wants to arise — a sigh, a hum, or crying — let it come.
+    You do not need to stop or contain it.
+  action: release
+  secs: 150
+- label: Close gently
+  cue: When you feel ready, let the rocking slow and still. Keep your hands on your
+    heart for a few more breaths before opening your eyes.
+  action: rest
+  secs: 45
+duration_seconds: 300
+timed: true
+bilateral: true
+contraindications:
+- Active cardiac symptoms such as chest pain or arrhythmia — rule out physical cause
+  before using this practice
+- Acute grief in the days following a traumatic bereavement — consider clinical support
+  alongside this practice
+linked_to_symptoms:
+- palpitations
+- breathing-irregularity
+linked_to_topics:
+- emotional-wellbeing
+- nervous-system-regulation
+notes_for_coach: 'This is a gentle, client-led practice well suited to grief processing.
+  Some clients may find it activating rather than soothing — if so, open the eyes,
+  ground feet on the floor, and return to 5-4-3-2-1 grounding first. Sensitivity:
+  coach_only framing around loss/bereavement.'
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 46. Heartache — SOMATIC RESET
+  quote: Place both hands over your heart. Close your eyes. Begin to rock gently—side
+    to side, or front to back, whatever feels soothing.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

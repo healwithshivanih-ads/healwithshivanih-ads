@@ -1,0 +1,50 @@
+slug: settled-legs-imagery
+display_name: Settled Legs Imagery
+aliases: []
+category: imagery
+body_region: legs_feet
+position: lying
+summary: A lying guided-imagery practice that gives restless legs somewhere to settle.
+why_it_works: Giving the mind a vivid place to rest reduces the restless drive to
+  move; attention has somewhere to go, so the legs are no longer the only outlet.
+steps:
+- label: Lie down
+  cue: Lie flat, eyes closed, legs uncrossed and heavy.
+  secs: 30
+  action: rest
+- label: Build the place
+  cue: Picture somewhere you feel completely at ease. Fill in the light, the sounds,
+    the temperature.
+  secs: 90
+  action: observe
+- label: Put your legs in it
+  cue: Now place your legs into that scene — resting on warm sand, sunk into soft
+    ground, stretched out and supported.
+  secs: 90
+  action: observe
+- label: Stay
+  cue: Breathe slowly and let the picture hold them still.
+  secs: 180
+  action: rest
+reps: null
+duration_seconds: 390
+bilateral: false
+timed: true
+equipment: []
+motion_shape: ''
+contraindications:
+- Not a substitute for iron studies where restless legs are new or worsening
+sensitivity: general
+linked_to_symptoms:
+- restless-legs
+linked_to_topics: []
+notes_for_coach: Best done in bed at the point symptoms usually start rather than
+  earlier in the evening.
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

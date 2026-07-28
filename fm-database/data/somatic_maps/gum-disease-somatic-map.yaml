@@ -1,0 +1,58 @@
+slug: gum-disease-somatic-map
+display_name: Gum Disease / Periodontal Problems
+target_kind: symptom
+target_slug: gum-inflammation
+sensitivity: general
+emotional_roots:
+- pattern: Inability to stand behind decisions
+  note: Gum disease may be associated in some frameworks with a pattern of second-guessing,
+    of not standing firm, and of repeatedly revisiting commitments rather than supporting
+    them.
+- pattern: Eroded foundation
+  note: When a person's sense of stability feels gradually worn down — by people,
+    circumstances, or persistent stress — this can manifest as a loss of inner groundedness
+    that sometimes shows up physically.
+- pattern: Swallowed anger
+  note: What has been repeatedly suppressed, held back, or never said may be associated
+    with inflammatory responses in the oral tissues.
+reframe: No one else can make your choices feel solid from the outside. Committing,
+  and even getting things wrong, is how a stable life is actually built — through
+  action, not through waiting for certainty.
+inquiry_question: Where do your foundations feel worn down, and what would shore them
+  up?
+somatic_practice: voo-vocalization
+also_consider:
+  supplements:
+  - vitamin-c
+  - coq10
+  home_remedies:
+  - sesame-oil-pulling-gum-massage
+  - coconut-oil-gum-massage
+  cooking_adjustments: []
+  practical: []
+pattern_signals:
+- Client reports chronic indecision or difficulty committing
+- History of repeatedly abandoning plans or goals mid-way
+- Tendency to absorb others' anger without responding
+- Periodontal symptoms worsen during high-stress periods
+differential_note: 'Periodontal disease has well-established local and systemic causes:
+  poor oral hygiene, bacterial biofilm accumulation, smoking, Type 2 diabetes (bidirectionally
+  linked), nutritional deficiencies (especially vitamin C — scurvy), medications causing
+  gingival hyperplasia (phenytoin, calcium channel blockers, cyclosporine), and genetic
+  susceptibility. A dentist or periodontist should assess and manage all active gum
+  disease. Vitamin C deficiency causing gum disease is a medical issue, not merely
+  a coaching concern.'
+notes_for_coach: The vitamin C → gum disease link is well-established and should be
+  flagged as a nutritional priority alongside any emotional exploration.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 20. Gum Disease / Periodontal Problems — EMOTIONAL ROOT
+  quote: Gum disease often reflects a pattern of not standing firm—second-guessing
+    yourself, being wishy-washy about life. The gums bleed when you're unhappy with
+    what you've committed to.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

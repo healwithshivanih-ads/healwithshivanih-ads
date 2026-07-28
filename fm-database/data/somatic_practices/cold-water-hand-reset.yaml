@@ -1,0 +1,68 @@
+slug: cold-water-hand-reset
+display_name: Cold Water Hand Reset
+category: other
+body_region: arms_hands
+position: standing
+summary: A brief cold-water immersion for the hands that activates the mammalian dive
+  reflex to interrupt the sympathetic nervous system loop underlying anxiety-related
+  hand sweating.
+why_it_works: Cold water on the hands (particularly below approximately 15°C) triggers
+  a mild dive reflex, slowing heart rate via vagal activation and interrupting the
+  sympathetic arousal pattern that drives palmar hyperhidrosis. The slow deliberate
+  breathing during immersion reinforces parasympathetic engagement.
+steps:
+- label: Run cold water
+  cue: Turn on the cold tap and let the water run until it feels genuinely cold —
+    not just cool.
+  action: rest
+  secs: 10
+- label: Submerge hands
+  cue: Place both hands under the cold stream or in a bowl of cold water. Stay with
+    the initial shock rather than pulling away.
+  action: hold
+  secs: 30
+- label: Breathe slowly
+  cue: While your hands are submerged, take slow, deliberate breaths — in for a count
+    of four, out for a count of four. Notice the shock softening.
+  action: hold
+  secs: 0
+- label: Dry mindfully
+  cue: Remove your hands and dry them slowly with a towel, paying attention to any
+    change in sensation in your hands or your nervous system.
+  action: rest
+  secs: 20
+duration_seconds: 60
+timed: true
+bilateral: true
+equipment:
+- sink or bowl
+- towel
+contraindications:
+- Raynaud's phenomenon — cold immersion can trigger vasospasm
+- Peripheral arterial disease
+- Open wounds on hands
+linked_to_symptoms:
+- anxiety
+- social-anxiety
+- hypervigilance
+linked_to_topics:
+- nervous-system-regulation
+- anxiety
+- cold-water-immersion
+notes_for_coach: 'Particularly useful for clients whose sweating is worst in anticipatory
+  situations (presentations, social events). The dive reflex effect is real and rapid
+  — reassure clients this is physiology, not willpower. Source: entry 41, System 4.'
+aliases: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 41. Excessive Sweating (Hands) — Somatic Reset
+  quote: Run cold water and submerge your hands for 30 seconds. As the cold hits,
+    take slow, deep breaths. Feel the shock, then feel it settle. Dry your hands slowly,
+    noticing the shift in your nervous system.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

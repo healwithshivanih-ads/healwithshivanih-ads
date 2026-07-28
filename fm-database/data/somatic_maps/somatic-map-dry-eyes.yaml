@@ -1,0 +1,52 @@
+slug: somatic-map-dry-eyes
+display_name: Dry Eyes — Somatic Reading
+target_kind: symptom
+target_slug: dry-eyes
+sensitivity: general
+differential_note: Exclude Sjögren's syndrome (autoimmune — anti-Ro/La antibodies),
+  meibomian gland dysfunction, blepharitis, medication-induced dry eye (antihistamines,
+  antidepressants, retinoids, diuretics), low omega-3 status, hormonal changes (menopause),
+  and contact lens overwear before considering emotional patterning. Ophthalmology
+  referral for severe or progressive cases.
+emotional_roots:
+- pattern: Hardened gaze — held resentment
+  note: There can be a correlation between chronic dry eyes and a gaze that has become
+    hard — carrying bitterness, grudges, or sustained hostility. Emotional softness
+    and physical moisture may share a common pathway.
+- pattern: Emotional depletion from over-giving
+  note: When the inner well has run dry through sustained overwork and over-giving,
+    the body may mirror this with a literal dryness — including in the eyes.
+- pattern: Suppressed tears
+  note: When crying has been shamed or suppressed over a long period, the lacrimal
+    system may become dysregulated — the eyes losing the easy access to moisture that
+    they once had.
+reframe: Softness is not a vulnerability you can afford to lose — it is how moisture
+  and connection find their way back in. What you have been holding so tightly may
+  be worth gently releasing.
+inquiry_question: Where have you become hard? And what might soften if you allowed
+  it?
+somatic_practice: gentle-eye-palming
+also_consider:
+  supplements:
+  - omega-3-fatty-acids-hormone-membrane
+  practical:
+  - Warm compresses on closed eyes for several minutes to stimulate oil gland secretion
+  - Use a humidifier in dry indoor environments
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a long period of not crying despite significant losses
+- Reports a general sense of emotional flatness or hardening over time
+- History of chronic overwork and self-neglect
+notes_for_coach: Handle the suppressed-tears pattern carefully — it can feel blaming.
+  Frame as a physiological observation, not a moral judgement. Source is a book (moderate
+  quality).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 09. Dry Eyes
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

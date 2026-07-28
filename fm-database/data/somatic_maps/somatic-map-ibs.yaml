@@ -1,0 +1,58 @@
+slug: somatic-map-ibs
+display_name: IBS — Unprocessed Emotions and the Enteric Nervous System
+target_kind: topic
+target_slug: ibs
+sensitivity: general
+differential_note: Rule out coeliac disease, inflammatory bowel disease (Crohn's,
+  ulcerative colitis), SIBO, food intolerances (lactose, fructose, gluten), colorectal
+  cancer (if red-flag symptoms), parasitic infection, and pelvic floor dysfunction
+  before any emotional reading. IBS is a diagnosis of exclusion.
+emotional_roots:
+- pattern: Chronic anxiety
+  note: Some people with IBS notice their symptoms worsen during periods of persistent
+    worry or anticipatory dread. The enteric nervous system responds to anxious states
+    much as the brain does, and the gut may carry anxiety that the mind has not yet
+    fully acknowledged.
+- pattern: Suppressed emotions
+  note: Research observes higher rates of anxiety, depression, and trauma history
+    in people with IBS. When emotional experiences are habitually pushed down rather
+    than expressed, the gut is sometimes where those experiences show up physically.
+- pattern: Undigested experience
+  note: There is a common observation in somatic work that what we cannot process
+    emotionally — a relationship dynamic, a situation we are swallowing our voice
+    in — can show up as literal digestive difficulty.
+reframe: Healing the gut works best as part of a broader picture that includes the
+  life you are living inside it. Supplements and diet adjustments can offer real relief,
+  and they work most powerfully when combined with addressing what your body has been
+  asked to carry.
+inquiry_question: What in your life right now feels hard to digest, and what might
+  it look like to release even a small part of that?
+somatic_practice: belly-drop
+also_consider:
+  supplements:
+  - peppermint-oil-enteric
+  - probiotics
+  practical:
+  - Low-FODMAP diet to identify trigger foods
+  - Dietary changes alone often provide only partial relief if the emotional component
+    is not addressed
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Symptoms consistently worsen around social or occupational stressors
+- Client reports swallowing feelings or keeping the peace at personal cost
+- History of anxiety, depression, or adverse childhood experiences noted in intake
+notes_for_coach: IBS is one of the most evidence-supported stress-related gastrointestinal
+  conditions. The gut-brain axis connection is well established. Somatic work is a
+  complement to — not a replacement for — appropriate medical evaluation and dietary
+  support.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 51. IBS (Irritable Bowel Syndrome) — EMOTIONAL ROOT
+  quote: IBS is one of the most well-documented stress-related conditions in medicine.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

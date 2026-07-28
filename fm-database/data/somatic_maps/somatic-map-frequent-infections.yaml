@@ -1,0 +1,43 @@
+slug: somatic-map-frequent-infections
+display_name: Frequent Infections — Volume, Not One Big Thing
+target_kind: symptom
+target_slug: frequent-infections
+sensitivity: general
+emotional_roots:
+- pattern: Too much at once
+  note: Overwhelmed less by a single event than by the sheer quantity of everything.
+- pattern: Grief
+  note: In Chinese medicine the lungs govern the immune barrier and also hold grief;
+    the two are described together for a reason.
+- pattern: Small hurts accumulating
+  note: Nothing individually large enough to address, and collectively more than the
+    system can carry.
+reframe: You do not need to get ill to deserve a day off. Saying no before your body
+  says it for you is the cheaper option.
+inquiry_question: What would you have to decline in order to stop getting sick?
+somatic_practice: supine-twist
+also_consider:
+  supplements:
+  - vitamin-c
+  - zinc
+  - elderberry
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Sleep is the single most powerful immune support
+  - Fermented foods support immunity via the gut
+pattern_signals: []
+differential_note: Check HbA1c (undiagnosed diabetes commonly presents this way),
+  full blood count, and consider HIV testing where relevant. Refer for immunology
+  assessment where infections are unusually severe, need repeated antibiotics, involve
+  unusual organisms, or come with weight loss and night sweats.
+coach_only_note: ''
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

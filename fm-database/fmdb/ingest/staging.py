@@ -20,8 +20,8 @@ from typing import Any
 import yaml
 from pydantic import BaseModel, ValidationError
 
-from ..models import Claim, DrugDepletion, LabTest, Mechanism, Source, Supplement, Symptom, Topic
-from .types import ENTITY_TYPES, EntityType, ExtractionResult, IngestRequest
+from ..models import Claim, DrugDepletion, LabTest, Mechanism, SomaticMap, SomaticPractice, Source, Supplement, Symptom, Topic
+from .types import ENTITY_TYPES, EXTRACTED_TYPES, EntityType, ExtractionResult, IngestRequest
 
 
 _MODEL_BY_ENTITY: dict[EntityType, type[BaseModel]] = {
@@ -33,6 +33,8 @@ _MODEL_BY_ENTITY: dict[EntityType, type[BaseModel]] = {
     "sources": Source,
     "drug_depletions": DrugDepletion,
     "lab_tests": LabTest,
+    "somatic_practices": SomaticPractice,
+    "somatic_maps": SomaticMap,
 }
 
 
@@ -236,6 +238,76 @@ def _enrich_lab_test(raw: dict, source_id: str, updated_by: str) -> dict:
     return out
 
 
+def _enrich_somatic_practice(raw: dict, source_id: str, updated_by: str) -> dict:
+    """Add lifecycle + source citation for a SomaticPractice.
+
+    `motion_shape` is deliberately NOT defaulted from the extractor — it is
+    assigned by the downstream clustering pass once the whole library exists.
+    Letting the model guess a shape per-entry would destroy the evidence the
+    clustering is meant to weigh.
+    """
+    out = dict(raw)
+    for key in ("aliases", "steps", "equipment", "contraindications", "linked_to_symptoms", "linked_to_topics"):
+        out.setdefault(key, [])
+    for key in ("summary", "why_it_works", "notes_for_coach"):
+        out.setdefault(key, "")
+    out.setdefault("bilateral", False)
+    out.setdefault("timed", True)
+    out["motion_shape"] = ""            # assigned by the clustering pass, never by the model
+    out.setdefault("sensitivity", "general")
+    out.setdefault("evidence_tier", "fm_specific_thin")
+    quote = out.pop("source_quote", None)
+    location = out.pop("source_location", None)
+    citation: dict[str, Any] = {"id": source_id}
+    if location:
+        citation["location"] = location
+    if quote:
+        citation["quote"] = quote
+    out["sources"] = [citation]
+    out.setdefault("version", 1)
+    out.setdefault("status", "active")
+    out["updated_at"] = _today().isoformat()
+    out["updated_by"] = updated_by
+    return out
+
+
+def _enrich_somatic_map(raw: dict, source_id: str, updated_by: str) -> dict:
+    """Add lifecycle + source citation for a SomaticMap.
+
+    Safety defaults are DELIBERATELY conservative: an entry the model didn't
+    classify lands as `sensitive`, not `general`, so an unclassified emotional
+    reading can never auto-surface to a client by omission.
+    """
+    out = dict(raw)
+    for key in ("emotional_roots", "pattern_signals"):
+        out.setdefault(key, [])
+    for key in ("reframe", "inquiry_question", "somatic_practice", "notes_for_coach"):
+        out.setdefault(key, "")
+    out.setdefault("differential_note", "")
+    out.setdefault("coach_only_note", "")
+    ac = out.get("also_consider") or {}
+    if not isinstance(ac, dict):
+        ac = {}
+    for key in ("supplements", "home_remedies", "cooking_adjustments", "practical"):
+        ac.setdefault(key, [])
+    out["also_consider"] = ac
+    out.setdefault("sensitivity", "sensitive")   # fail closed, not open
+    out.setdefault("evidence_tier", "fm_specific_thin")
+    quote = out.pop("source_quote", None)
+    location = out.pop("source_location", None)
+    citation: dict[str, Any] = {"id": source_id}
+    if location:
+        citation["location"] = location
+    if quote:
+        citation["quote"] = quote
+    out["sources"] = [citation]
+    out.setdefault("version", 1)
+    out.setdefault("status", "active")
+    out["updated_at"] = _today().isoformat()
+    out["updated_by"] = updated_by
+    return out
+
+
 _ENRICHERS = {
     "supplements": _enrich_supplement,
     "topics": _enrich_topic,
@@ -244,6 +316,8 @@ _ENRICHERS = {
     "claims": _enrich_claim,
     "drug_depletions": _enrich_drug_depletion,
     "lab_tests": _enrich_lab_test,
+    "somatic_practices": _enrich_somatic_practice,
+    "somatic_maps": _enrich_somatic_map,
 }
 
 
@@ -295,7 +369,7 @@ def stage(
     # Order matters: topics + mechanisms first so that claims/supplements that
     # link to them resolve cleanly when the validator simulates the post-state.
     by_type = result.by_type()
-    for entity in ("topics", "mechanisms", "symptoms", "claims", "supplements", "drug_depletions", "lab_tests"):
+    for entity in EXTRACTED_TYPES:
         for raw in by_type.get(entity, []):
             # Defensive: LLM occasionally emits a string or other non-dict
             # in an entity slot. Don't crash the whole batch — record + skip.
@@ -559,9 +633,7 @@ def approve(
 
     # ---- Pass 2: build simulated post-state and validate
     loaded = load_all(data_dir)
-    overlay_kwargs: dict[str, list] = {
-        "sources": [], "topics": [], "mechanisms": [], "symptoms": [], "claims": [], "supplements": [], "drug_depletions": [], "lab_tests": [],
-    }
+    overlay_kwargs: dict[str, list] = {e: [] for e in ENTITY_TYPES}
     for item in plan:
         overlay_kwargs[item["entity"]].append(item["parsed"])
     simulated = overlay(loaded, **overlay_kwargs)

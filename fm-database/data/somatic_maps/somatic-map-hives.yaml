@@ -1,0 +1,43 @@
+slug: somatic-map-hives
+display_name: Hives — The Alarm Showing
+target_kind: topic
+target_slug: hives-urticaria
+sensitivity: general
+emotional_roots:
+- pattern: Low-grade alarm
+  note: A nervous system reacting to perceived threat as though it were present danger.
+- pattern: Tolerance finally exceeded
+  note: Something has been getting under the skin long enough that it can no longer
+    be contained.
+- pattern: A self-feeding loop
+  note: Stress triggers flares, flares create stress, and the body ends up reacting
+    to its own reaction.
+reframe: You are not too sensitive. You have quite likely been too tolerant — every
+  irritation you talked yourself out of, your body kept a record of.
+inquiry_question: What are you calling fine that plainly is not?
+somatic_practice: temperature-shift-wrists
+also_consider:
+  supplements:
+  - quercetin
+  - vitamin-c
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Keep a diary tracking flares against emotional state as well as food
+pattern_signals: []
+differential_note: Exclude anaphylaxis first — hives with lip or tongue swelling,
+  throat tightness, wheeze or faintness is an emergency. Then exclude drug causes
+  (NSAIDs, opiates, ACE inhibitors), infection, and physical urticarias. Chronic spontaneous
+  urticaria is a recognised diagnosis needing antihistamine management, not an emotional
+  one.
+coach_only_note: ''
+notes_for_coach: Geetika (cl-006) has histamine intolerance with chronic antihistamine
+  use — relevant here.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

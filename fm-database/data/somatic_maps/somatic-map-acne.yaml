@@ -1,0 +1,45 @@
+slug: somatic-map-acne
+display_name: Acne — At War With Yourself
+target_kind: topic
+target_slug: acne-vulgaris
+sensitivity: sensitive
+emotional_roots:
+- pattern: Not accepting yourself
+  note: It appears on the part of you that cannot be hidden — the face you present.
+- pattern: Anger in small bursts
+  note: Frustration that erupts rather than being said.
+- pattern: The cost of self-rejection
+  note: Cortisol drives oil and inflammation, but the exhausting part is often the
+    internal work of rejecting yourself while appearing acceptable.
+reframe: Shame survives in the vague and the dark. Name the thing you think you should
+  have been — then ask whether you are allowed to exist while being human about it.
+inquiry_question: When did you start believing something about you was wrong, and
+  whose voice was that?
+somatic_practice: butterfly-hug
+also_consider:
+  supplements:
+  - zinc
+  - probiotics
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Gut health affects skin directly — probiotics and less sugar
+  - Jawline-pattern acne is usually hormonal; seed cycling and cycle work are worth
+    trying
+pattern_signals: []
+differential_note: Acne has clear physiological drivers — androgens, sebum, follicular
+  keratinisation and C. acnes. Nodulocystic or scarring acne needs dermatology early,
+  because scarring is preventable but not reversible. Sudden severe acne with hirsutism
+  or cycle change warrants PCOS and androgen workup.
+coach_only_note: Body-image content. Do not surface the self-rejection framing to
+  adolescents or to anyone with disordered-eating history without knowing them well.
+notes_for_coach: Geetika (cl-006) has eczema and histamine issues on file; Niti (cl-014)
+  has lean PCOS — jawline acne would be relevant there.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

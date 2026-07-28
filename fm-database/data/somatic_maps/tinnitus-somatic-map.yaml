@@ -1,0 +1,60 @@
+slug: tinnitus-somatic-map
+display_name: Tinnitus (Ringing in Ears)
+target_kind: topic
+target_slug: tinnitus
+sensitivity: general
+emotional_roots:
+- pattern: Ignoring inner knowing
+  note: Tinnitus may appear or intensify when a person has been suppressing their
+    own intuition, dismissing what they know to be true, or drowning out an inner
+    signal that keeps trying to surface.
+- pattern: Depletion from chronic overwork
+  note: In TCM, chronic stress and exhaustion are associated with kidney depletion,
+    which affects the ears. Gradual, bilateral, low-pitched tinnitus may be associated
+    with a system that has been running on empty for an extended period.
+- pattern: Suppressed anger rising
+  note: In TCM, sudden, loud, one-sided, high-pitched tinnitus may be associated with
+    liver heat — the physiological signature of anger or frustration that has not
+    been expressed or discharged.
+reframe: It is safe to open yourself to what you have been drowning out — your own
+  sense of what is true, your body's actual limits. You do not have to solve everything
+  the moment you let it in.
+inquiry_question: Is something asking for your attention that you keep turning the
+  volume down on?
+somatic_practice: low-tone-humming
+also_consider:
+  supplements:
+  - magnesium
+  - zinc
+  - ginkgo-biloba
+  practical:
+  - Reducing caffeine and alcohol intake, which can worsen tinnitus
+  - Protect hearing from loud noise
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a tendency to ignore their own intuitive signals
+- History of pushing through exhaustion for extended periods
+- Irritability or frustration that is rarely expressed directly
+- Tinnitus worsens during or after periods of high emotional stress
+differential_note: 'Tinnitus has many medical causes: noise-induced cochlear damage,
+  Ménière''s disease, otosclerosis, acoustic neuroma, cardiovascular pulsatile causes
+  (pulsatile tinnitus is a red flag for vascular pathology), ototoxic medications
+  (NSAIDs, aminoglycosides, loop diuretics, quinine, platinum-based chemotherapy),
+  earwax impaction, temporomandibular joint dysfunction, and cervical spine dysfunction.
+  Any new or unilateral tinnitus, or tinnitus associated with hearing loss, dizziness,
+  or neurological symptoms, requires urgent medical assessment.'
+notes_for_coach: The TCM depletion vs. fire distinction is a useful clinical differentiator
+  — ask whether tinnitus is gradual and bilateral (points toward stress/burnout exploration)
+  or sudden and one-sided (warrants urgent medical referral).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 19. Tinnitus — ALSO CONSIDER
+  quote: Magnesium and zinc deficiencies have been linked to tinnitus in some studies.
+    Ginkgo biloba helps some people with circulation-related tinnitus.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

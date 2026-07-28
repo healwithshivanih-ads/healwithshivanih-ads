@@ -1,0 +1,54 @@
+slug: somatic-map-one-sided-hip-pain
+display_name: One-Sided Hip Pain
+target_kind: symptom
+target_slug: hip-pain
+sensitivity: sensitive
+emotional_roots:
+- pattern: Left-right energetic imbalance
+  note: Some somatic traditions associate the left side of the body with receptive,
+    inward, and historically 'feminine' qualities — including the capacity to receive
+    help and process the past. The right side is associated with action, forward movement,
+    and outward engagement. One-sided pain may be worth exploring in the context of
+    which aspect of the self feels neglected.
+- pattern: Either/or thinking
+  note: One-sided symptoms can sometimes accompany a stuck either/or mental frame
+    — a sense that two things cannot coexist, or that a person must choose between
+    two parts of themselves or two directions in life.
+reframe: Most of our best moves in life require both sides — giving and receiving,
+  acting and resting, looking back and moving forward. The greatest openings often
+  come from a both/and approach rather than an either/or one.
+inquiry_question: What is this particular side of your body trying to draw your attention
+  to?
+somatic_practice: qi-gong-lift
+also_consider:
+  practical:
+  - One-sided hip pain can indicate leg-length discrepancy or pelvic tilt — a physical
+    therapist or osteopath can assess this
+  - Gait analysis may help identify asymmetrical loading patterns
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Pain is consistently and exclusively on one side with no structural explanation
+  found
+- Client describes a strong sense of being stuck between two options or two identities
+- Client has a history of difficulty receiving support (left) or difficulty taking
+  action (right)
+differential_note: Rule out leg-length discrepancy, pelvic obliquity, hip labral tear,
+  trochanteric bursitis, iliotibial band syndrome, and referred lumbar pain before
+  exploring lateral-side associations. Unilateral hip pain in middle-aged and older
+  adults warrants imaging to exclude avascular necrosis or early osteoarthritis.
+notes_for_coach: The left/right energetic framework is a contemplative rather than
+  evidence-based lens. Present it as an exploratory prompt, not a diagnosis. Many
+  clients find it useful as a metaphor regardless of its literal accuracy.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 67. One-Sided Hip Pain — EMOTIONAL ROOT
+  quote: Left-sided pain is often associated with feminine energy, receiving, and
+    the past. Right-sided pain involves masculine energy, action, and the future.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

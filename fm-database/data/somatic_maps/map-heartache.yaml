@@ -1,0 +1,62 @@
+slug: map-heartache
+display_name: Heartache
+target_kind: topic
+target_slug: emotional-wellbeing
+sensitivity: coach_only
+emotional_roots:
+- pattern: Love without a destination
+  note: Heartache is the physical experience of love or attachment that has nowhere
+    to go — following loss, rejection, or betrayal. Research supports that emotional
+    pain activates overlapping neural pathways with physical pain, making heartache
+    genuinely, not metaphorically, painful.
+- pattern: Physical absence of connection
+  note: Love is a somatic experience — it lives in the body as warmth, expansion,
+    and ease. Its absence or loss can register in the body as a physical ache, constriction,
+    or hollowness, particularly in the chest.
+reframe: Your heart hurts because you loved. That is not weakness — it is the cost
+  of having cared deeply. The heart heals at its own pace, and what it needs most
+  is acknowledgement that what was lost genuinely mattered.
+inquiry_question: What loss are you still carrying that has never really been marked?
+somatic_practice: heart-hold-with-rocking
+also_consider:
+  supplements:
+  - hawthorn-berry
+  practical:
+  - Time is a genuine healer for heartache — practise patience with the process
+  - Social connection and being witnessed by others is strongly soothing; isolation
+    tends to deepen the pain
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a physical aching or heaviness in the chest without cardiac cause
+- Recent or unprocessed significant loss — relational, death of a loved one, or other
+  major transition
+- Withdrawn affect, reduced interest in connection, or over-functional busyness masking
+  grief
+- Mentions the loss only briefly or deflects when it arises
+differential_note: Chest pain or pressure following emotional loss must exclude Takotsubo
+  cardiomyopathy (broken heart syndrome), which is a medically recognised condition
+  involving real changes in cardiac function triggered by acute stress. Any chest
+  pain, dyspnoea, or cardiac symptoms following significant bereavement or acute stress
+  must be evaluated urgently by a clinician before this map is used.
+coach_only_note: This map is coach_only because the framing could read as blaming
+  someone who is in acute grief or bereavement if used without care and relationship.
+  Do not auto-surface to clients. Introduce only when therapeutic rapport is established
+  and organic cardiac causes are confirmed excluded.
+notes_for_coach: Takotsubo cardiomyopathy is explicitly mentioned in the source —
+  always flag this to clients who present with physical chest symptoms after acute
+  emotional events. Hawthorn berry has traditional use for cardiac support during
+  grief; it is a gentle herb generally safe at standard doses but verify with a clinician
+  if the client is on cardiac medications.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 46. Heartache
+  quote: Research confirms that emotional pain activates the same brain regions as
+    physical pain. 'Broken heart syndrome' (Takotsubo cardiomyopathy) is a medically
+    recognized condition where intense emotional stress causes actual changes in heart
+    function.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,61 @@
+slug: somatic-map-breech-baby
+display_name: Breech Baby — Birth Fear & Pelvic Holding
+target_kind: topic
+target_slug: birth-trauma
+sensitivity: coach_only
+coach_only_note: Breech presentation is an obstetric situation with potential safety
+  implications. This map must not be shown to clients without clinical care already
+  in place. The framing that the baby responds to the mother's fear must never be
+  introduced in a way that induces guilt if the baby does not turn. Coaches must make
+  clear this is a complement to obstetric management, not a substitute.
+differential_note: 'Breech presentation has anatomical and obstetric causes that must
+  be assessed first: placenta praevia, uterine anomalies (bicornuate or septate uterus),
+  fibroids, pelvic structural narrowing, polyhydramnios, and fetal anomalies. Assessment
+  and management by a midwife and obstetrician is essential. External cephalic version
+  (ECV) is a medical intervention with established evidence. This emotional reading
+  is supplementary only.'
+emotional_roots:
+- pattern: Fear of birth and what follows
+  note: Anticipatory fear of pain, loss of control, or the radical life change that
+    birth brings can generate sustained pelvic floor tension. When the pelvic floor
+    is held in chronic contraction, the space available for the baby to descend and
+    turn may be reduced.
+- pattern: Inherited or unresolved birth trauma
+  note: If a parent carries unprocessed trauma from their own birth or from a previous
+    birth experience, the nervous system may operate under a template that birth is
+    dangerous. This can perpetuate somatic bracing patterns in the pelvis that are
+    not consciously accessible.
+reframe: Your baby is responding to the cues your body is sending. If there is something
+  that needs to shift — a fear to face, a truth to say aloud — creating that internal
+  spaciousness is something only you can do. You do not need to have it all figured
+  out. Beginning to soften is enough.
+inquiry_question: What are you most afraid of about this birth? And what might your
+  baby need to hear from you?
+somatic_practice: pelvic-tilts-with-dialogue
+also_consider:
+  practical:
+  - Moxibustion at acupuncture point BL67 — evidence-supported for turning; best between
+    weeks 33–36, done with a trained practitioner
+  - Webster Technique (chiropractic pelvic alignment) — some promising research
+  - Spinning Babies positional techniques and inversions — work alongside regular
+    prenatal care
+  - Swimming and water immersion to relax the pelvic floor and give the baby room
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client expresses significant anxiety about the birth process itself, not just the
+  outcome
+- History of difficult or traumatic birth in self or close family member
+- Reports chronic pelvic tightness or holding sensations
+notes_for_coach: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 84. Breech Baby — EMOTIONAL ROOT
+  quote: The baby responds to the mother's nervous system. A body braced with fear
+    tightens at the pelvis. The baby can't descend into a space that's clenching shut.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

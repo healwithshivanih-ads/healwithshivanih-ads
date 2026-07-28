@@ -1,0 +1,68 @@
+slug: upper-body-neurogenic-shaking
+display_name: Upper-Body Neurogenic Shaking
+category: discharge
+body_region: arms_hands
+position: standing
+summary: Standing with soft knees, begin shaking the hands and allow that movement
+  to travel up through the arms and shoulders, keeping the jaw loose and the breath
+  natural, for one to two minutes.
+why_it_works: Voluntary tremoring mimics the neurogenic tremors that mammals use after
+  a threat to discharge residual sympathetic activation. Allowing vibration to spread
+  upward from the periphery toward the core releases stored muscular tension and reduces
+  circulating stress hormones.
+steps:
+- label: Stand and soften
+  cue: Stand with feet about hip-width apart. Let your knees soften slightly so you
+    are not locking them.
+  action: rest
+  secs: 10
+- label: Begin shaking hands
+  cue: Start shaking your hands gently, as though you are flicking water off your
+    fingers.
+  action: release
+  secs: 15
+- label: Let movement travel
+  cue: Allow the shaking to spread naturally up through your forearms, into your upper
+    arms, and then into your shoulders — without directing it. Keep your jaw loose.
+  action: release
+  secs: 75
+- label: Stop and notice
+  cue: Let the shaking stop on its own or when you feel ready, then stand still and
+    notice any warmth, tingling, or sense of release.
+  action: observe
+  secs: 20
+duration_seconds: 120
+timed: true
+bilateral: true
+contraindications:
+- Recent shoulder surgery or instability — limit movement to hands and forearms only
+- Uncontrolled seizure disorder — discuss with clinician before using tremor-based
+  practices
+- Severe osteoporosis — reduce vigour of shaking
+linked_to_symptoms:
+- muscle-tension
+- anxiety
+- canker-sores
+- jaw-tension
+linked_to_topics:
+- nervous-system-regulation
+- stress-management
+- canker-sores
+notes_for_coach: Some clients feel self-conscious about this; offer it as a home practice
+  first. The whole-body version (TRE) exists but this upper-body variant is gentler
+  and appropriate for most clients without TRE training.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 21. Mouth Ulcers / Canker Sores — SOMATIC RESET
+  quote: Stand with your feet hip-width apart. Let your knees soften. Begin gently
+    shaking your hands, then allow the movement to spread up through your arms and
+    shoulders.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

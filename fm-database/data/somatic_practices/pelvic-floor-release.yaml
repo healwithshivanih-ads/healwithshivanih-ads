@@ -1,0 +1,59 @@
+slug: pelvic-floor-release
+display_name: Pelvic Floor Release
+category: breath
+body_region: pelvis
+position: lying
+summary: A supine breath practice that uses the imagery of pelvic floor softening
+  on each breath cycle to release chronic holding patterns in the deep core.
+why_it_works: Voluntary relaxation of the pelvic floor muscles on the inhale, reinforced
+  on the exhale, interrupts the habitual bracing pattern linked to anxiety and sympathetic
+  activation, reducing intra-abdominal pressure and supporting normal gut motility.
+steps:
+- label: Set up position
+  cue: Lie on your back with your knees bent and feet flat on the floor, about hip-width
+    apart. Place one hand gently on your lower belly.
+  action: rest
+  secs: 20
+- label: Inhale and soften
+  cue: As you breathe in, imagine your pelvic floor softening and gently descending
+    — like a hammock loosening. There is no squeezing or gripping.
+  action: release
+  secs: 5
+- label: Exhale and release further
+  cue: As you breathe out, let that softening deepen even more. Allow everything in
+    your lower belly and pelvic basin to simply let go.
+  action: release
+  secs: 7
+- label: Continue rhythmically
+  cue: Maintain this pattern — softening on the inhale, releasing further on the exhale
+    — letting go a little more with each breath cycle for the remaining time.
+  action: release
+  secs: 268
+timed: true
+duration_seconds: 300
+bilateral: false
+linked_to_topics:
+- pelvic-floor-dysfunction
+linked_to_symptoms:
+- bloating
+- abdominal-bloating
+notes_for_coach: This practice is safe for most clients but should be modified for
+  anyone with acute pelvic pain or post-surgical pelvic floor work — refer to pelvic
+  floor physiotherapy first.
+contraindications:
+- Acute pelvic pain
+- Recent pelvic or abdominal surgery — check with treating clinician first
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 52. Bloating — SOMATIC RESET
+  quote: Lie on your back with knees bent, feet flat. Place a hand on your lower belly.
+    As you inhale, imagine your pelvic floor softening and dropping.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

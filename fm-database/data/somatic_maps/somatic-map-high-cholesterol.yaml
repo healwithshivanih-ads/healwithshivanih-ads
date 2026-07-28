@@ -1,0 +1,56 @@
+slug: somatic-map-high-cholesterol
+display_name: High Cholesterol — Blocked Joy and the Fear of Life
+target_kind: symptom
+target_slug: elevated-cholesterol
+sensitivity: sensitive
+differential_note: Elevated cholesterol has well-established metabolic, dietary, genetic
+  (familial hypercholesterolaemia), and hormonal (hypothyroidism, diabetes) causes
+  that must be identified and addressed clinically. Statin therapy or dietary intervention
+  may be medically indicated. Any emotional framing is entirely adjunctive and must
+  not influence medical decision-making.
+emotional_roots:
+- pattern: Blocked channels for joy
+  note: Some somatic frameworks associate elevated cholesterol with a quality of heaviness
+    in daily life — a difficulty accessing lightness, pleasure, or sweetness in experience.
+    When joy feels unavailable or unsafe, the body's chemistry can reflect that heaviness.
+- pattern: Fear of joy and its loss
+  note: Chronic anticipation that good things will not last — pre-grieving happiness
+    before it arrives — is a pattern associated in some traditions with excess cholesterol
+    production, as though the body is insulating itself against life's unpredictability.
+reframe: You were not born bracing against joy. That is something you learned, and
+  learning always leaves room for unlearning.
+inquiry_question: Where in your daily life could you allow just a little more genuine
+  pleasure or beauty to land?
+somatic_practice: awe-practice
+also_consider:
+  supplements:
+  - niacin
+  - red-yeast-rice
+  practical:
+  - Soluble fibre is well-evidenced for modest cholesterol reduction
+  - Regular aerobic movement supports healthy lipid metabolism
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a joyless, driven quality to daily life
+- History of chronic stress and emotional suppression
+- Elevated cholesterol emerged alongside a long period of overwork, grief, or loss
+  of meaning
+notes_for_coach: The emotional dimension here is offered as a reflective complement
+  to well-supported dietary and lifestyle approaches. Niacin at cholesterol-lowering
+  doses is a medical intervention — refer to a clinician. Red yeast rice contains
+  naturally occurring statins and should only be used under clinician guidance.
+coach_only_note: The 'blocked joy' framing should only be introduced if the client
+  themselves raises themes of joylessness or emotional flatness. Do not lead with
+  it as a cholesterol explanation — it can read as reductive for a condition with
+  complex biology.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 64. High Cholesterol — EMOTIONAL ROOT
+  quote: High cholesterol can indicate that the channels for joy, pleasure, and love
+    have become blocked.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

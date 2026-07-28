@@ -1,0 +1,57 @@
+slug: map-chest-tightness-tension
+display_name: Chest Tightness and Tension
+target_kind: symptom
+target_slug: chest-tightness
+sensitivity: sensitive
+emotional_roots:
+- pattern: Emotional armoring after heartbreak
+  note: Following experiences of betrayal, rejection, or significant loss, the chest
+    muscles may remain in a contracted, guarded state — as though bracing to absorb
+    another blow. This can become a chronic holding pattern that the person is no
+    longer consciously aware of.
+- pattern: Vow never to be vulnerable
+  note: Clients who have decided — often at a deep, non-verbal level — that opening
+    the heart is too risky sometimes hold this decision as physical tension in the
+    pectoral and intercostal muscles. The armour protects, but it also constrains.
+- pattern: Chronic anxiety and grief
+  note: Ongoing anxiety, grief, and fear of further hurt may all express themselves
+    as a persistent gripping or squeezing sensation across the chest wall.
+reframe: The muscles across your chest may have learned to stand guard after something
+  painful happened. That guarding made sense then. The same wall that keeps pain at
+  a distance can also keep out the connection, joy, and love you want. You can begin
+  to soften the guard while still feeling safe.
+inquiry_question: What is your guard keeping out that some part of you actually wants
+  in?
+somatic_practice: supported-chest-opening
+also_consider:
+  practical:
+  - Doorway chest stretches to release tight pectoral muscles
+  - Tennis ball massage against a wall for chest trigger points
+  - Upper back strengthening exercises to balance pectoral tightness
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a persistent squeezing or heaviness across the front of the chest
+- Rounded, forward-collapsed posture with internal rotation of the shoulders
+- History of significant relational loss, betrayal, or heartbreak
+- Avoidance of physical or emotional closeness with others
+differential_note: Chest tightness must be medically assessed to exclude cardiac causes
+  (angina, myocardial ischaemia, pericarditis), pulmonary causes (pleurisy, PE, asthma),
+  musculoskeletal causes (costochondritis, muscle strain), and GERD before emotional
+  interpretations are explored. Any new, severe, or exertional chest tightness is
+  a red flag for urgent referral.
+notes_for_coach: Chest tightness is one of the highest-stakes symptoms in coaching
+  — always refer for medical assessment if not already done. This map is only appropriate
+  when organic causes have been excluded.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 43. Chest Tightness and Tension
+  quote: After heartbreak, betrayal, or loss, these muscles can stay contracted, creating
+    a physical shield around your most vulnerable space.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

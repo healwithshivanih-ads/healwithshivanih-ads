@@ -1,0 +1,30 @@
+slug: temperature-dysregulation
+display_name: Temperature Dysregulation
+aliases:
+- always cold
+- always hot
+- can't regulate my temperature
+- cold hands and feet
+- running hot
+- heat intolerance
+- cold intolerance
+category: constitutional
+severity: concerning
+description: Difficulty maintaining a comfortable body temperature — persistently cold, persistently
+  hot, or swinging between the two. Reflects a control system under strain, and is a common
+  thread through thyroid disease, anaemia, perimenopause and autonomic dysfunction.
+when_to_refer: Check thyroid function, full blood count and ferritin as first-line. Refer for
+  fever with rigors, night sweats with weight loss (lymphoma, TB), or new heat intolerance with
+  palpitations and weight loss (thyrotoxicosis).
+linked_to_topics:
+- hypothyroidism
+- perimenopause
+linked_to_mechanisms: []
+notes_for_coach: Thyroid and iron explain most of these. Check before anything else.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

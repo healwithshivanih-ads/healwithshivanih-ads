@@ -1,0 +1,28 @@
+slug: rib-pain
+display_name: Rib Pain
+aliases:
+- pain in my ribs
+- sore ribs
+- rib cage pain
+- costochondritis
+- pain under my ribs
+- hurts to breathe in deeply
+category: musculoskeletal
+severity: concerning
+description: Pain in the chest wall, often sharp and reproducible on movement, deep breathing
+  or direct pressure. Costochondritis and intercostal or costovertebral joint irritation are
+  common causes; chronic upper-chest breathing loads these structures continuously.
+when_to_refer: Chest pain must not be assumed musculoskeletal. Refer urgently for crushing or
+  pressure-like pain, radiation to jaw or arm, breathlessness, sweating, or pain on exertion.
+  Also exclude pulmonary embolism, pneumothorax and rib fracture.
+linked_to_topics: []
+linked_to_mechanisms: []
+notes_for_coach: Reproducible on palpation points toward the chest wall — but that finding does
+  not exclude a cardiac cause, and should never be used to reassure alone.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

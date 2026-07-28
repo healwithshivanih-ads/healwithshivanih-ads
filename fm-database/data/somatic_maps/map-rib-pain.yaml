@@ -1,0 +1,59 @@
+slug: map-rib-pain
+display_name: Rib Pain
+target_kind: symptom
+target_slug: rib-pain
+sensitivity: sensitive
+emotional_roots:
+- pattern: Feeling trapped or constricted in life
+  note: Unexplained pain in the area of the ribs is sometimes associated with a sense
+    of being caged — limited in one's choices, relationships, or circumstances. The
+    ribs enclose the most vital organs, and pain in that structure may reflect an
+    inner experience of constriction.
+- pattern: Internalised guilt
+  note: There may be an association between unexplained rib pain and guilt that has
+    been turned inward rather than expressed or resolved.
+- pattern: Tension myositis pattern
+  note: Unexplained, migratory, or stress-sensitive rib pain may fit a tension myositis
+    syndrome (TMS) pattern, where the brain generates pain in peripheral structures
+    as a way of keeping attention away from difficult emotional content.
+reframe: 'Feeling trapped and being trapped are not always the same thing. Some constraints
+  are real, some are familiar habits, and some were once protective structures you
+  built for good reason. It is worth checking: do you still need all the walls you
+  built?'
+inquiry_question: What part of you feels caged — and how long has it been there?
+somatic_practice: safe-body-scan
+also_consider:
+  practical:
+  - Direct massage or foam rolling of the intercostal muscles (between the ribs) can
+    release held tension
+  - Rule out costochondritis (inflammation of rib cartilage) — a common, often stress-related,
+    and medically treatable condition
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Rib or lateral chest pain that moves or varies, is not reproducibly tender on palpation,
+  and worsens under stress
+- Client describes a pervasive sense of being trapped, constricted, or without options
+- History of significant guilt, chronic self-criticism, or punishing inner dialogue
+- Medical workup has been unrevealing
+differential_note: Rib pain must exclude cardiac causes, pleuritis, pulmonary embolism,
+  pneumonia, costochondritis, rib fracture (including stress fracture), intercostal
+  muscle strain, herpes zoster (shingles, which can precede the rash), and referred
+  pain from thoracic spine or abdominal organs. Full medical evaluation including
+  imaging if indicated is required before emotional associations are explored.
+notes_for_coach: Costochondritis is specifically flagged as a common and often stress-related
+  cause — worth raising with clients who have not had it excluded. TMS framing (John
+  Sarno tradition) may resonate with some clients but should be introduced gently
+  and only after full medical clearance.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 47. Rib Pain
+  quote: Unexplained rib pain can also be tension myositis syndrome (TMS), the brain
+    creating pain to distract from emotional content.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,42 @@
+slug: lutein
+display_name: Lutein (with Zeaxanthin)
+aliases:
+- lutein and zeaxanthin
+- macular carotenoids
+- zeaxanthin
+- lutein zeaxanthin
+category: other
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 10
+    max: 20
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: 'Fat-soluble carotenoid concentrating in the macula and lens, where it filters
+  blue light and acts as an antioxidant. Strongest evidence is the AREDS2 formulation for slowing
+  age-related macular degeneration; cataract evidence is weaker and largely observational. Usually
+  paired with zeaxanthin at roughly 10:2 mg. MUST be taken with a fat-containing meal or absorption
+  is poor. Food first: spinach, methi, drumstick leaves, egg yolk, sweetcorn.'
+notes_for_client: A pigment found in dark leafy greens and egg yolk that gathers in the eye. Take
+  it with a meal containing some fat, otherwise your body cannot absorb it.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cataracts
+linked_to_mechanisms: []
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

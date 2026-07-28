@@ -1,0 +1,53 @@
+slug: somatic-map-trembling-hands
+display_name: Trembling Hands
+target_kind: symptom
+target_slug: tremors
+sensitivity: general
+differential_note: Essential tremor, Parkinson's disease, hyperthyroidism, hypoglycaemia,
+  caffeine toxicity, alcohol withdrawal, medication side effects (lithium, valproate,
+  beta-agonists), and multiple sclerosis must all be excluded by a clinician before
+  framing hand tremors in a somatic or stress-discharge context. A persistent or worsening
+  tremor requires neurological evaluation.
+emotional_roots:
+- pattern: Incomplete stress discharge
+  note: Animals who survive a life-threatening situation often shake vigorously afterwards
+    — a natural mechanism for clearing residual adrenaline and returning the nervous
+    system to baseline. Humans frequently suppress this spontaneous shaking. Some
+    people notice that chronic low-level trembling in the hands may reflect a nervous
+    system still trying to complete that discharge cycle.
+reframe: If your hands shake, your body may be trying to finish something that got
+  interrupted — not a sign that something is wrong with you, but a sign that your
+  nervous system is still working hard to bring you back to safety.
+inquiry_question: What experience feels like it never quite finished — something you
+  went through but never fully settled after?
+somatic_practice: intentional-shaking
+also_consider:
+  supplements:
+  - b-complex
+  practical:
+  - Reducing or eliminating caffeine intake, which significantly amplifies tremor
+  - Eating regular meals containing protein to stabilise blood sugar and prevent shakiness
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes trembling that worsens under stress or in anticipatory situations
+- History of trauma, prolonged threat, or periods of extreme vigilance
+- Trembling seems to ease after physical activity or emotional release
+- Client describes feeling 'wired' or unable to settle
+notes_for_coach: 'Always flag persistent or worsening tremor for medical review —
+  this is a red-flag-level symptom that must be evaluated neurologically before any
+  somatic framing is offered. The somatic reading here applies only once organic causes
+  have been excluded. Source: entry 39, System 4.'
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 39. Trembling Hands — Emotional Root
+  quote: Trembling is often the body trying to discharge excess nervous energy. After
+    animals survive a life-threatening event, they shake to release the adrenaline
+    and return to baseline. Humans suppress this natural response, and the shaking
+    gets stuck.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

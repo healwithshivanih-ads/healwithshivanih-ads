@@ -1,0 +1,67 @@
+slug: map-high-blood-pressure
+display_name: High Blood Pressure
+target_kind: topic
+target_slug: hypertension
+sensitivity: sensitive
+emotional_roots:
+- pattern: Suppressed anger and swallowed frustration
+  note: There is a recognised psychophysiological association between chronically
+    suppressed anger and elevated blood pressure. When frustration, resentment, or
+    unmet needs are consistently not expressed, the resulting tension may be held
+    in the cardiovascular system.
+- pattern: Chronic pressure with no release
+  note: Living under ongoing external pressure — work demands, caregiving roles, relational
+    conflict — without adequate release or recovery may sustain sympathetic nervous
+    system activation that over time contributes to elevated vascular tone.
+- pattern: Unspoken words and unset boundaries
+  note: A pattern sometimes seen in clients with hypertension is a habitual tendency
+    to prioritise others' comfort over expressing their own needs, leading to an accumulation
+    of unexpressed internal pressure.
+reframe: Every boundary you do not set, every need you do not voice, does not disappear
+  — it has to go somewhere. The cost of chronic silence may be higher than the discomfort
+  of expressing what is true for you.
+inquiry_question: What have you been keeping down, and what do you imagine would happen
+  if you said it plainly?
+somatic_practice: laughter-release
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  - potassium
+  practical:
+  - Aerobic exercise provides the cardiovascular system a healthy physiological outlet
+    for pressure
+  - Assertiveness and boundary-setting skills work is a valuable adjunct — consider
+    referral to a therapist if this is a long-standing pattern
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes long-standing difficulty expressing anger, frustration, or unmet
+  needs
+- History of high-pressure roles or environments with few recovery periods
+- Conflict-avoidant interpersonal style — keeps the peace at personal cost
+- Elevated BP readings that worsen under relational or work stress
+differential_note: Hypertension is a medical condition requiring clinical diagnosis,
+  investigation of secondary causes (renal artery stenosis, primary aldosteronism,
+  phaeochromocytoma, sleep apnea, medication effects), and appropriate pharmacological
+  and lifestyle management. Emotional stress is one of many contributing factors.
+  BP management is firmly in the clinician's scope; emotional exploration is a complementary
+  adjunct only. Never suggest that emotional work can substitute for prescribed antihypertensive
+  therapy.
+notes_for_coach: Magnesium and potassium have good evidence for supporting healthy
+  blood pressure and are safe lifestyle recommendations to discuss. Aerobic exercise
+  is first-line lifestyle therapy for hypertension. This emotional map should be introduced
+  carefully — many clients with hypertension are on medications, and any changes to
+  medication or significant BP readings require clinical oversight.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 50. High Blood Pressure
+  quote: High blood pressure is strongly associated with suppressed anger and chronic
+    stress. When you swallow frustration day after day, can't express what's really
+    bothering you, or live under constant pressure without relief, the cardiovascular
+    system holds that tension.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

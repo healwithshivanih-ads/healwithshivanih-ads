@@ -1,0 +1,48 @@
+slug: body-rocking
+display_name: Body Rocking
+category: movement
+body_region: whole_body
+position: any_position
+summary: Gentle, rhythmic rocking of the whole torso — forward and back or side to
+  side — for 2–3 minutes to activate the body's oldest self-soothing and grief-processing
+  rhythm.
+why_it_works: Repetitive rhythmic movement stimulates the cerebellum, the vestibular
+  system, and serotonergic pathways, all of which support emotional regulation and
+  grief processing. It also activates the proprioceptive pathways that distinguish
+  self-generated from externally-generated movement, reinforcing body-self connection
+  when grief or overwhelm has fragmented it.
+steps:
+- label: Find a rhythm
+  cue: Sit or stand. Begin gently rocking your torso in whichever direction feels
+    most natural — forward and back, or side to side.
+  action: circle
+  secs: 10
+- label: Deepen and sustain
+  cue: Let the movement settle into a slow, comfortable rhythm. Don't try to control
+    it beyond keeping it gentle. Continue at whatever pace the body wants.
+  action: rest
+  secs: 140
+duration_seconds: 150
+timed: true
+bilateral: false
+contraindications:
+- Balance impairment — do seated version only; use a chair with armrests if needed
+linked_to_symptoms:
+- nasal-congestion
+- stress
+linked_to_topics:
+- sinusitis
+notes_for_coach: Normalise this practice culturally — rocking occurs across many cultures
+  as a natural grief response. Some clients may cry during or after; that is the intention.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 11. Sinus Pressure — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

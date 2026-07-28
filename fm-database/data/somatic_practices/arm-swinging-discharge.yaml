@@ -1,0 +1,64 @@
+slug: arm-swinging-discharge
+display_name: Arm Swinging Discharge
+category: discharge
+body_region: arms_hands
+position: standing
+summary: A momentum-building bilateral arm swing that rotates the torso, used to discharge
+  blocked frustration and anger held in the upper body and chest.
+why_it_works: Large-amplitude bilateral arm swinging generates proprioceptive input
+  through the shoulders, upper back, and ribcage. The rhythmic bilateral torso rotation
+  stimulates vestibular and cerebellar circuits involved in motor discharge of arousal,
+  allowing the sympathetic charge of suppressed anger to complete through movement
+  rather than accumulating as somatic tension.
+steps:
+- label: Stand and loosen
+  cue: Stand with your feet roughly hip-width apart. Let your arms hang completely
+    loose at your sides.
+  action: rest
+  secs: 10
+- label: Begin swinging
+  cue: Start swinging your arms side to side at a gentle pace. Let your torso rotate
+    naturally with each swing.
+  action: circle
+  secs: 20
+- label: Build momentum
+  cue: Gradually swing harder and faster. Let your arms be heavy and floppy — not
+    controlled. If a sound wants to come out, let it happen.
+  action: release
+  secs: 100
+- label: Slow and stop
+  cue: Let the swinging gradually slow on its own, then come to a complete stop.
+  action: release
+  secs: 20
+- label: Stand still and notice
+  cue: Stand quietly and notice what has shifted in your body. Let the stillness settle.
+  action: observe
+  secs: 30
+duration_seconds: 180
+timed: true
+bilateral: true
+equipment: []
+contraindications:
+- Shoulder impingement or rotator cuff injury — reduce range
+- Dizziness or balance disorders
+- Recent abdominal surgery or open wounds
+linked_to_topics:
+- chronic-stress
+- stress-and-the-sympathetic-nervous-system
+aliases: []
+linked_to_symptoms: []
+notes_for_coach: ''
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 86. Mastitis / Breast Infections — SOMATIC RESET
+  quote: Stand with feet hip-width apart. Let your arms hang loose. Begin swinging
+    them side to side, letting your torso rotate with them. Build momentum. Swing
+    harder. Let your arms be heavy and floppy. If sound wants to come, let it. Swing
+    for 2-3 minutes, then stop and stand still.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

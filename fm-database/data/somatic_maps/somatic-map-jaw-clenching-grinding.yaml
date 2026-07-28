@@ -1,0 +1,53 @@
+slug: somatic-map-jaw-clenching-grinding
+display_name: Jaw Clenching and Teeth Grinding — Somatic Reading
+target_kind: symptom
+target_slug: teeth-grinding
+sensitivity: sensitive
+differential_note: Exclude sleep apnoea (bruxism is associated with OSAS), SSRI-induced
+  bruxism, stimulant use, magnesium deficiency, and structural dental causes. An occlusal
+  splint from a dentist is often needed. Caffeine and alcohol timing are well-evidenced
+  behavioural factors.
+emotional_roots:
+- pattern: Suppressed aggression
+  note: There is sometimes a pattern of a fight impulse that had nowhere to go — a
+    situation where the person needed to push back, defend themselves, or express
+    fury, but the context made that impossible.
+- pattern: Powerlessness and feeling trapped
+  note: When someone feels stuck in a situation they cannot change and cannot leave,
+    the physical body may express the thwarted impulse to escape or fight through
+    nocturnal grinding.
+reframe: Your anger has a legitimate source. What was not safe to express found its
+  way into your jaw. Underneath the fury there is often something tender — hurt, grief,
+  a need that was never met. You don't have to rush to that softer place. The anger
+  is protecting it for good reason.
+inquiry_question: What are you still grinding on — something you have never allowed
+  yourself to be openly furious about?
+somatic_practice: towel-bite
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  - calcium
+  practical:
+  - Avoid caffeine in the evening — both caffeine and alcohol are associated with
+    increased grinding
+  - Dental occlusal splint — refer to dentist
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Waking with sore jaw or headache
+- Dental wear visible on examination or noted by dentist
+- History of being in situations of prolonged powerlessness (difficult relationship,
+  workplace, chronic illness)
+- Difficulty accessing or expressing anger in sessions
+notes_for_coach: Be cautious framing rage for clients with trauma history — the towel
+  bite practice is powerful and should be introduced gently with psychoeducation.
+  Source is a book (moderate quality).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 04. Jaw Clenching and Teeth Grinding
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,45 @@
+slug: somatic-map-bruising-easily
+display_name: Bruising Easily — Nothing Left to Absorb the Impact
+target_kind: symptom
+target_slug: easy-bruising
+sensitivity: sensitive
+emotional_roots:
+- pattern: Feeling easily wounded
+  note: A sense of being fragile, marked by words and situations that others seem
+    to shrug off.
+- pattern: Worry that has run down the reserves
+  note: Chronic strain depletes from the inside; in Chinese medicine, bruising signals
+    that what held things together has been spent.
+- pattern: Long-term high alert
+  note: Sustained stress affects capillary integrity. The infrastructure shows the
+    strain.
+reframe: Whatever happened, and whatever is happening, you are allowed to stop swallowing
+  it and start working out what you actually need.
+inquiry_question: What are you most afraid of — including the fear you have never
+  said out loud?
+somatic_practice: extended-exhale-breathing
+also_consider:
+  supplements:
+  - vitamin-c
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Bioflavonoids alongside vitamin C support capillary strength
+  - Review medications — several common ones cause this
+pattern_signals: []
+differential_note: 'Easy bruising requires a bleeding workup before any other reading:
+  full blood count and platelets, clotting screen, liver function, and a medication
+  review — steroids, anticoagulants, antiplatelets, NSAIDs and fish oil all contribute.
+  Bruising with bleeding gums, nosebleeds or petechiae, or in unusual sites, needs
+  urgent haematology.'
+coach_only_note: Unexplained bruising can indicate abuse. Where the pattern or site
+  does not match the explanation, ask privately and safely before anything else.
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

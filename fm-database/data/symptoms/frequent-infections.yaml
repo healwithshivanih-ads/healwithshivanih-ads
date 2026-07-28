@@ -1,0 +1,29 @@
+slug: frequent-infections
+display_name: Frequent Colds / Infections
+aliases:
+- always getting sick
+- catch everything
+- keep getting colds
+- run down
+- low immunity
+- recurrent infections
+category: constitutional
+severity: concerning
+description: Infections that arrive more often, last longer, or hit harder than expected. Usually
+  reflects cumulative load — sleep debt, undernutrition, sustained stress — rather than a discrete
+  immune defect.
+when_to_refer: Refer for immunology assessment where infections are unusually severe, need repeated
+  antibiotics or hospital care, involve unusual organisms, or come with weight loss and night
+  sweats. Check HbA1c, HIV status where relevant, and full blood count.
+linked_to_topics:
+- type-2-diabetes
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+notes_for_coach: Undiagnosed diabetes presents this way surprisingly often — check HbA1c.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

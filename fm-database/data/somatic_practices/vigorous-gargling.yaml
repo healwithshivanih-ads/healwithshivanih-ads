@@ -1,0 +1,69 @@
+slug: vigorous-gargling
+display_name: Vigorous Gargling
+category: discharge
+body_region: throat_neck
+position: standing
+summary: A two-round gargling exercise using warm water performed with full, unrestrained
+  sound to stimulate the vagus nerve and release muscular tension at the back of the
+  throat.
+why_it_works: Gargling activates the posterior pharyngeal muscles, which are innervated
+  by the vagus nerve. Strong, unrestrained vocalization during gargling provides direct
+  vagal stimulation, which can shift the autonomic nervous system toward a parasympathetic
+  (rest-and-digest) state and release accumulated throat tension.
+steps:
+- label: Prepare
+  cue: Fill a glass with comfortably warm water. Stand at a sink.
+  action: rest
+  secs: 10
+- label: First Gargle
+  cue: Take a generous sip and tip your head slightly back. Gargle with energy, letting
+    the water move deep in the back of your throat. Let any sound emerge fully — there
+    is no need to keep it quiet.
+  action: discharge
+  secs: 30
+- label: Spit and Pause
+  cue: Spit the water out and rest for a moment, breathing normally.
+  action: rest
+  secs: 15
+- label: Second Gargle
+  cue: Take another generous sip and gargle again with the same vigour and openness
+    for 30 seconds.
+  action: discharge
+  secs: 30
+- label: Finish
+  cue: Spit out the water and stand quietly for a few breaths, noticing any shift
+    in sensation at the throat.
+  action: observe
+  secs: 15
+duration_seconds: 100
+timed: true
+bilateral: false
+equipment:
+- glass of warm water
+- sink
+contraindications:
+- Recent throat or oral surgery
+- Severe dysphagia — risk of aspiration
+- Active sore throat with swallowing difficulty
+linked_to_symptoms:
+- muscle-tension
+- hoarseness
+linked_to_topics:
+- vagal-tone
+notes_for_coach: Encourage the client not to suppress the gargling sound. Volume and
+  resonance are part of the mechanism. This can feel awkward at first — normalise
+  that.
+aliases: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 28. Chronic Throat Clearing — SOMATIC RESET
+  quote: Fill a glass with warm water. Take a large sip and gargle vigorously, allowing
+    the water to churn deep in the back of your throat. Let the sound be strong and
+    unrestrained. Continue for 30 seconds, rest briefly, then repeat once more.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

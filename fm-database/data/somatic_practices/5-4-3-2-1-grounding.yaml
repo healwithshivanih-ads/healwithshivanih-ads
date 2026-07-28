@@ -1,0 +1,72 @@
+slug: 5-4-3-2-1-grounding
+display_name: 5-4-3-2-1 Sensory Grounding
+category: orientation
+body_region: whole_body
+position: any_position
+summary: A five-sense orientation exercise that interrupts a panic or dissociative
+  state by anchoring attention to present-moment sensory reality.
+why_it_works: Deliberate engagement of multiple sensory channels activates the prefrontal
+  cortex and reduces amygdala firing. Naming things aloud adds a linguistic layer
+  that further grounds the client in the here-and-now and interrupts the threat-appraisal
+  loop driving panic symptoms.
+steps:
+- label: See — name 5 things
+  cue: Look around and slowly name five things you can see. Take a moment to actually
+    look at each one rather than rushing through the list.
+  action: observe
+  secs: 30
+- label: Touch — name 4 things
+  cue: Notice four things you can physically feel right now — the texture of your
+    clothing, the surface under your feet, the temperature of the air on your skin.
+  action: press
+  secs: 30
+- label: Hear — name 3 things
+  cue: Listen and identify three distinct sounds in your environment. Near sounds,
+    far sounds, subtle sounds.
+  action: observe
+  secs: 20
+- label: Smell — name 2 things
+  cue: Notice two scents you can detect, however faint. If you can't identify two,
+    describe what absence of smell feels like.
+  action: observe
+  secs: 20
+- label: Taste — name 1 thing
+  cue: Notice one taste present in your mouth right now.
+  action: observe
+  secs: 10
+- label: Return and breathe
+  cue: Take two slow breaths and notice whether the intensity of the panic sensation
+    has changed. You are here, in this room, in this moment.
+  action: release
+  secs: 20
+duration_seconds: 130
+timed: true
+bilateral: false
+contraindications:
+- None known — suitable for most clients; if dissociation is severe, use physical
+  touch cues (pressing feet firmly to floor) as a stronger anchor first
+linked_to_symptoms:
+- panic-attacks
+- anxiety-panic
+- anxiety-palpitations-panic
+linked_to_topics:
+- nervous-system-regulation
+- anxiety
+notes_for_coach: Encourage clients to say each item aloud when possible — vocalisation
+  increases grounding effect. This technique is appropriate for coaching use; however,
+  recurring panic attacks warrant referral for clinical evaluation to rule out cardiac
+  or metabolic causes.
+aliases: []
+equipment: []
+motion_shape: ''
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 45. Panic-Like Chest Sensations — SOMATIC RESET
+  quote: Name 5 things you can see. 4 things you can touch. 3 things you can hear.
+    2 things you can smell. 1 thing you can taste.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

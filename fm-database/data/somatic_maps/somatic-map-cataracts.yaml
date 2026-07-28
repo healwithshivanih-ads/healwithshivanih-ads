@@ -1,0 +1,56 @@
+slug: somatic-map-cataracts
+display_name: Cataracts — Somatic Reading
+target_kind: topic
+target_slug: cataracts
+sensitivity: sensitive
+differential_note: Cataracts are primarily caused by oxidative damage to lens proteins,
+  associated with age, UV exposure, smoking, diabetes, corticosteroid use, and genetic
+  factors. These are the primary drivers and must be addressed clinically (surgery,
+  UV protection, antioxidant nutrition) before any emotional framing is introduced.
+  The somatic reading here is adjunctive and speculative.
+coach_only_note: Cataracts often occur in older adults. Framing the condition as linked
+  to 'loss of hope about the future' or 'not wanting to see clearly' must never be
+  auto-surfaced — a client may have worked hard for decades and find such framing
+  deeply offensive or blaming. Use only if the client themselves has opened this metaphorical
+  door and only with explicit consent.
+emotional_roots:
+- pattern: Loss of joy about the future
+  note: Some older adults with cataracts describe a sense that their best experiences
+    are behind them — that the future appears diminished. Whether this affects the
+    body directly is unknown, but the felt experience of 'clouded' future vision can
+    be an entry point for coaching around meaning and purpose.
+- pattern: Preference for softened vision
+  note: Occasionally people describe a comfort with not seeing things too sharply
+    — a desire to keep some things blurred. This can be an invitation to explore what
+    the person is not yet ready to act on.
+reframe: The future is largely unknown — and that is both frightening and full of
+  possibility. You may not be able to control what happens, but you can choose how
+  you want to meet it.
+inquiry_question: When you imagine your life five years from now in its fullest, most
+  alive form — what does that look like, and how might you feel even a trace of it
+  today?
+somatic_practice: slow-visual-orienting
+also_consider:
+  supplements:
+  - vitamin-c
+  - lutein
+  practical:
+  - UV-protective sunglasses — important preventive measure
+  - Antioxidant-rich diet — well-evidenced for cataract prevention
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client uses language of the future being dark, over, or finished
+- Reports having given up on long-held goals or hopes
+- Has opened the metaphor of 'not wanting to see' something themselves
+notes_for_coach: Lutein is listed as a supplement here but its catalogue slug is not
+  in the provided supplement list — placed under practical as free text instead. Source
+  is a book (moderate quality).
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 10. Cataracts
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

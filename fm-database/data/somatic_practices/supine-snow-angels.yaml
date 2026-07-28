@@ -1,0 +1,49 @@
+slug: supine-snow-angels
+display_name: Supine Snow Angels
+aliases: []
+category: movement
+body_region: arms_hands
+position: lying
+summary: Slow arm arcs along the floor with eyes closed.
+why_it_works: Slow, large, closed-eye movement expands tolerated sensory range within
+  a position the body reads as safe — useful where the system has lost the ability
+  to filter ordinary input.
+steps:
+- label: Lie down
+  cue: Lie on your back, arms by your sides, eyes closed.
+  secs: 25
+  action: rest
+- label: Slide up
+  cue: Slide your arms slowly along the floor up toward your head. As slow as you
+    can manage.
+  secs: 45
+  action: circle
+- label: Slide down
+  cue: Bring them slowly back down the same way.
+  secs: 45
+  action: circle
+- label: Continue
+  cue: Keep going, eyes closed, for a couple of minutes.
+  secs: 85
+  action: circle
+reps: null
+duration_seconds: 200
+bilateral: true
+timed: true
+equipment: []
+motion_shape: ''
+contraindications:
+- Shoulder impingement or rotator cuff injury — reduce the arc
+sensitivity: general
+linked_to_symptoms:
+- photophobia
+linked_to_topics: []
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani
