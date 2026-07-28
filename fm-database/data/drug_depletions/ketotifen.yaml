@@ -62,9 +62,9 @@ coach_notes: |
   score — read sleep quality in that context.
 linked_to_topics:
   - histamine-intolerance-mcas
-  - mast-cell-activation
   - chronic-urticaria
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mast-cell-activation
 sources:
   - id: coach-shivani
     location: Coach observation — MCAS protocols

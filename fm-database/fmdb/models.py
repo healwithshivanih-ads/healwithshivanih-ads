@@ -589,6 +589,12 @@ class LabTest(BaseModel):
     typical_cost_inr: Optional[int] = None                       # rough cost for India context
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
+    # Added 2026-07-28: supplements/mechanisms/lab-tests/symptoms were
+    # referencing symptoms with nowhere to put it (e.g. red-clover ->
+    # hot-flashes, magnesium-serum -> muscle-cramps), so the links sat in
+    # linked_to_topics and never resolved. Optional + default-empty, so
+    # every existing file loads unchanged under extra="forbid".
+    linked_to_symptoms: list[str] = Field(default_factory=list)
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     notes_for_coach: str = ""
@@ -668,6 +674,12 @@ class Symptom(BaseModel):
     when_to_refer: str = ""
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
+    # Added 2026-07-28: supplements/mechanisms/lab-tests/symptoms were
+    # referencing symptoms with nowhere to put it (e.g. red-clover ->
+    # hot-flashes, magnesium-serum -> muscle-cramps), so the links sat in
+    # linked_to_topics and never resolved. Optional + default-empty, so
+    # every existing file loads unchanged under extra="forbid".
+    linked_to_symptoms: list[str] = Field(default_factory=list)
     notes_for_coach: str = ""
     sources: list[SourceCitation] = Field(default_factory=list)
     version: int = 1
@@ -697,6 +709,7 @@ class Mechanism(BaseModel):
     downstream_effects: list[str] = Field(default_factory=list)
     related_mechanisms: list[str] = Field(default_factory=list)
     linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_symptoms: list[str] = Field(default_factory=list)
     notes_for_coach: str = ""
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
@@ -843,6 +856,12 @@ class Supplement(BaseModel):
     ayurvedic_actions: list[str] = Field(default_factory=list)   # karma — e.g. diaphoretic, nervine, expectorant
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
+    # Added 2026-07-28: supplements/mechanisms/lab-tests/symptoms were
+    # referencing symptoms with nowhere to put it (e.g. red-clover ->
+    # hot-flashes, magnesium-serum -> muscle-cramps), so the links sat in
+    # linked_to_topics and never resolved. Optional + default-empty, so
+    # every existing file loads unchanged under extra="forbid".
+    linked_to_symptoms: list[str] = Field(default_factory=list)
     linked_to_claims: list[str] = Field(default_factory=list)
     # Combination-product consolidation — slugs of the individual supplement
     # compounds this single entry replaces in one pill. Lets the AI suggester

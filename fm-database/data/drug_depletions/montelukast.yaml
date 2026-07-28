@@ -65,8 +65,8 @@ coach_notes: |
 linked_to_topics:
   - allergic-asthma
   - histamine-intolerance-mcas
-  - mast-cell-activation
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mast-cell-activation
 sources:
   - id: coach-shivani
     location: Coach observation — MCAS + asthma protocols

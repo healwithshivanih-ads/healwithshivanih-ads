@@ -33,9 +33,10 @@ downstream_effects:
 - low bone density
 related_mechanisms:
 - hpa-axis-dysregulation
+linked_to_symptoms:
+- irregular-periods
 linked_to_topics:
 - hypothalamic-amenorrhea
-- irregular-periods
 - low-progesterone
 notes_for_coach: 'The ''energy availability'' framing is more useful in coaching than
   ''body fat percentage'' — even lean athletes can recover periods at low weights

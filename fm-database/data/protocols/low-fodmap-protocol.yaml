@@ -118,7 +118,6 @@ incompatible_with:
 linked_to_topics:
 - sibo
 - ibs
-- bloating
 linked_to_mechanisms:
 - dysbiosis
 linked_to_symptoms:
@@ -126,6 +125,7 @@ linked_to_symptoms:
 - gas
 - loose-stools
 - constipation
+- bloating
 sources:
 - id: vitaone-skill-practice-guide
   location: low-FODMAP elimination

@@ -26,8 +26,8 @@ linked_to_topics:
 - cardiovascular-disease
 - visceral-adiposity
 - non-alcoholic-fatty-liver-disease
-linked_to_mechanisms:
 - visceral-adiposity
+linked_to_mechanisms:
 - insulin-resistance
 sources:
 - id: vitaone-skill-practice-guide

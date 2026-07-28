@@ -115,8 +115,8 @@ linked_to_topics:
   - estrogen-dominance
   - pms
   - pcos
-linked_to_mechanisms:
   - estrogen-dominance
+linked_to_mechanisms: []
 linked_to_symptoms:
   - food-sensitivities
   - fatigue

@@ -110,9 +110,9 @@ linked_to_topics:
   - chronic-fatigue
   - long-covid
   - fibromyalgia
-  - mitochondrial-dysfunction
 linked_to_mechanisms:
   - hpa-axis-dysregulation
+  - mitochondrial-dysfunction
 linked_to_symptoms:
   - fatigue
   - brain-fog

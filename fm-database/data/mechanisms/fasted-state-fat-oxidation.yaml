@@ -30,10 +30,11 @@ downstream_effects:
 related_mechanisms:
 - exercise-mitochondrial-biogenesis
 - insulin-sensitivity
+linked_to_symptoms:
+- weight-gain
 linked_to_topics:
 - circadian-exercise-timing
 - intermittent-fasting
-- weight-gain
 - insulin-resistance
 - metabolic-syndrome
 - cardiovascular-exercise

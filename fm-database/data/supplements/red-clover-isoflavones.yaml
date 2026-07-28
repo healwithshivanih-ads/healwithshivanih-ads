@@ -14,10 +14,11 @@ timing_options:
 - morning
 - evening
 take_with_food: optional
+linked_to_symptoms:
+- hot-flashes
 linked_to_topics:
 - perimenopause-and-menopause
 - menopause
-- hot-flashes
 - estrogen-signaling
 linked_to_mechanisms: []
 linked_to_claims:

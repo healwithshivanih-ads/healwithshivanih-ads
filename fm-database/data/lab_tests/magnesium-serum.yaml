@@ -20,11 +20,12 @@ when_to_order: Most metabolic + neuromuscular + cardiovascular workups. Cheap an
   but serum is normal-low.
 fasting_required: false
 typical_cost_inr: 250
+linked_to_symptoms:
+- muscle-cramps
 linked_to_topics:
 - magnesium-deficiency
 - insulin-resistance
 - migraine
-- muscle-cramps
 - chronic-stress
 linked_to_mechanisms:
 - magnesium-deficiency

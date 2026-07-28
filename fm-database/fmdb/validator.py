@@ -259,6 +259,9 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for mech_slug in sym.linked_to_mechanisms:
             if mech_slug not in valid_mechanism_slugs:
                 warnings.append(Warning_("symptom", sym.slug, "linked_to_mechanisms", "mechanism", mech_slug))
+        for sx_slug in sym.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("symptom", sym.slug, "linked_to_symptoms", "symptom", sx_slug))
         for cite in sym.sources:
             if cite.id not in valid_source_ids:
                 warnings.append(Warning_("symptom", sym.slug, "sources", "source", cite.id))
@@ -303,6 +306,9 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for topic_slug in m.linked_to_topics:
             if topic_slug not in valid_topic_slugs:
                 warnings.append(Warning_("mechanism", m.slug, "linked_to_topics", "topic", topic_slug))
+        for sx_slug in m.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("mechanism", m.slug, "linked_to_symptoms", "symptom", sx_slug))
         for cite in m.sources:
             if cite.id not in valid_source_ids:
                 warnings.append(Warning_("mechanism", m.slug, "sources", "source", cite.id))
@@ -366,6 +372,9 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for mech_slug in s.linked_to_mechanisms:
             if mech_slug not in valid_mechanism_slugs:
                 warnings.append(Warning_("supplement", s.slug, "linked_to_mechanisms", "mechanism", mech_slug))
+        for sx_slug in s.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("supplement", s.slug, "linked_to_symptoms", "symptom", sx_slug))
         # Cross-link to other supplements via interactions.with_supplements
         for inter in s.interactions.with_supplements:
             if inter.slug not in valid_supplement_slugs:
@@ -482,6 +491,9 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for mech_slug in lt.linked_to_mechanisms:
             if mech_slug not in valid_mechanism_slugs:
                 warnings.append(Warning_("lab_test", lt.slug, "linked_to_mechanisms", "mechanism", mech_slug))
+        for sx_slug in lt.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("lab_test", lt.slug, "linked_to_symptoms", "symptom", sx_slug))
 
     # ---- lab_panels ----
     valid_lab_test_slugs = {lt.slug for lt in loaded.lab_tests}

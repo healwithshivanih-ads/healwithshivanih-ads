@@ -35,11 +35,11 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Insufficient safety data in pregnancy and lactation.
 linked_to_topics:
-- mitochondrial-dysfunction
 - long-covid
 - chronic-fatigue-syndrome
 linked_to_mechanisms:
 - nad-sirtuin-signaling
+- mitochondrial-dysfunction
 linked_to_claims: []
 notes_for_coach: NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside)
   are NAD+ precursors used to support mitochondrial energy production and sirtuin

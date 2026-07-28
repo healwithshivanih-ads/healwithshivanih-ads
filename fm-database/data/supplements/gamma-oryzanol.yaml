@@ -13,10 +13,11 @@ timing_options:
 - morning
 - evening
 take_with_food: required
+linked_to_symptoms:
+- hot-flashes
 linked_to_topics:
 - perimenopause-and-menopause
 - menopause
-- hot-flashes
 - menopausal-migraine
 - atherogenic-dyslipidemia
 - dyslipidemia

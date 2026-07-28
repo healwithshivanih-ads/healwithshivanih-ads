@@ -65,9 +65,9 @@ coach_notes: |
   supplement.
 linked_to_topics:
   - histamine-intolerance-mcas
-  - mast-cell-activation
   - chronic-urticaria
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mast-cell-activation
 sources:
   - id: coach-shivani
     location: Coach observation — MCAS protocol design 2026

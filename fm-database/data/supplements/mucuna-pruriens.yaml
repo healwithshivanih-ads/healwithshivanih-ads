@@ -43,10 +43,11 @@ ayurvedic_actions:
 - aphrodisiac
 - nervine
 - astringent
+linked_to_symptoms:
+- low-libido
 linked_to_topics:
 - parkinsons-disease
 - nervous-system-regulation
-- low-libido
 - male-infertility
 - emotional-wellbeing
 notes_for_coach: 'Mucuna seed (Kapikacchu) is a naturally L-DOPA-rich (levodopa) bean —

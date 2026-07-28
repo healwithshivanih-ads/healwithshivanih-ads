@@ -108,12 +108,12 @@ linked_to_topics:
   - adrenal-fatigue
   - hpa-axis-dysfunction
   - chronic-stress
-  - burnout
 linked_to_mechanisms:
   - hpa-axis-dysregulation
 linked_to_symptoms:
   - fatigue
   - brain-fog
+  - burnout
 sources:
   - id: vitaone-skill-practice-guide
     location: adrenal recovery section
