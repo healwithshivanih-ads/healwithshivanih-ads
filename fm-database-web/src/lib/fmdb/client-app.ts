@@ -33,6 +33,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { isInternationalClient } from "@/lib/server-actions/supplement-links-match";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 import { weekNourishment } from "@/lib/fmdb/nourishment";
+import { deriveSomatic, excludeSomaticLinked, type AppSomatic } from "@/lib/fmdb/somatic";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
 import {
   resolveAppTier,
@@ -1085,6 +1086,8 @@ export interface ClientAppData {
   periodCare: AppPeriodCare | null;
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
+  /** Guided somatic reset resolved from the catalogue by slug (null when none prescribed). */
+  somatic: AppSomatic | null;
   /** Guided EFT (tapping) config when the plan prescribes a tapping practice
    *  AND it has been unlocked (mind-body drip — see `mindBody`). */
   eft: AppEft | null;
@@ -2972,6 +2975,7 @@ async function buildDiscoveryAppData(
     seedCycling: null,
     periodCare: null,
     breathwork: null,
+    somatic: null,
     eft: null,
     sleep: null,
     mindBody: null,
@@ -4216,16 +4220,24 @@ export async function loadClientAppData(
   // ---- guided breathwork (paced exactly to the prescribed technique) -------
   // The animation is driven entirely from these numbers, so it can never
   // drift from what the coach prescribed in the plan.
-  const breathwork = deriveBreathwork(practices, practiceRaw);
+  // A practice that names a catalogue somatic_practice is resolved BY SLUG and
+  // rendered from its real steps. It must be withheld from the name-matchers
+  // below: gastrocolic-rhythm contains "breathing", so deriveBreathwork would
+  // otherwise catch it and degrade a specific practice into a generic session.
+  const somatic = deriveSomatic(practices, practiceRaw);
+  const { practices: nameMatchPractices, raw: nameMatchRaw } =
+    excludeSomaticLinked(practices, practiceRaw, somatic);
+
+  const breathwork = deriveBreathwork(nameMatchPractices, nameMatchRaw);
   const eft = deriveEft(
-    practices,
-    practiceRaw,
+    nameMatchPractices,
+    nameMatchRaw,
     `${asStrArr(client.goals).join(" ")} ${concernConditions(client).join(" ")} ${asStr(client.reported_triggers)}`,
     Array.isArray((client as Record<string, unknown>).eft_themes)
       ? ((client as Record<string, unknown>).eft_themes as string[])
       : undefined,
   );
-  const sleep = deriveSleep(practices, practiceRaw);
+  const sleep = deriveSleep(nameMatchPractices, nameMatchRaw);
 
   // ---- mind-body drip: graduated techniques (EFT, sleep wind-down) unlock ONE
   // AT A TIME as the prior one becomes a habit. Breathing (#1) is always open.
@@ -5323,6 +5335,7 @@ export async function loadClientAppData(
     seedCycling,
     periodCare,
     breathwork,
+    somatic,
     eft: eftVisible,
     sleep: sleepVisible,
     mindBody,

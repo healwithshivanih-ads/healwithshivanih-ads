@@ -975,6 +975,13 @@ class PracticeItem(BaseModel):
     cadence: str                         # daily | nightly | weekly | mid-morning | etc.
     details: str = ""
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
+    # Optional link to a catalogue somatic_practice. When set, the client app
+    # resolves the practice BY SLUG and renders its real timed steps, instead of
+    # pattern-matching the free-text name (which silently degrades a specific
+    # practice into a generic one — a gastrocolic-rhythm prescription rendering
+    # as a plain 4-in/6-out breathing session, losing the hand pressure that IS
+    # the practice). Leave None for ordinary freeform practices.
+    somatic_practice: Optional[str] = None
 
 
 class CustomRemedy(BaseModel):
