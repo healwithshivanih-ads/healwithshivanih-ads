@@ -34,6 +34,11 @@ linked_to_topics:
 - metabolic-detoxification
 - mitochondrial-health-nutrients
 - high-blood-pressure
+- detoxification
+- atherosclerosis
+- essential-hypertension
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
 linked_to_claims:
 - coq10-supports-mitochondrial-function-on-statins
 - coq10-carnitine-support-mitochondrial-repair
@@ -43,14 +48,29 @@ linked_to_claims:
 - coq10-nad-support-mitochondria-in-chronic-fatigue
 - coq10-antioxidant-protection-during-detox
 - coq10-supports-mitochondrial-atp-production
-notes_for_coach: CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ubiquinol
+- vitamin-e-coq10-selenium-synergistic-antioxidant
+- coq10-deficient-39-percent-hypertensives
+notes_for_coach: 'CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ubiquinol
   form may have better bioavailability, especially in older adults. Fat-soluble —
   always take with food. Dose should be verified with clinician.
+
+
+  Hypertension: average dose 225 mg/day; protocol uses 100 mg b.i.d.–t.i.d. Effect
+  is not seen until 4–12 weeks of therapy — CoQ10 corrects a metabolic abnormality
+  rather than acting as a direct antihypertensive, so it needs patience. Any drug
+  tapering must be supervised by the prescribing clinician. For hypertension WITH
+  diabetes, 100–200 mg/day; also used in the cardiovascular-complications protocol.
+
+
+  Note on doubling: several product entries in supplement_links.yaml pair CoQ10 with
+  another nutrient (e.g. "CoQ10 + Selenium", 100 mg CoQ10 per capsule). Check the
+  co-prescribed products before adding a standalone CoQ10 — plan-check will warn.'
 notes_for_client: CoQ10 is like fuel for your cell's energy factories (mitochondria).
   It can help reduce fatigue and mental sluggishness. Take it with a meal containing
   some fat for best absorption.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mitochondrial-toxin-disruption
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
@@ -104,9 +124,24 @@ sources:
   location: Organ–Emotion Axis (p.11)
   quote: 'Heart: Grief, lack of joy. Hypertension, palpitations, CAD. CoQ10, meditation,
     heart-rate variability work.'
-version: 8
+- id: minich-detox-basics-fmca-transcript
+  location: Antioxidant nutrients section
+  quote: upregulating endogenous antioxidants like glutathione, cysteine, coenzyme
+    Q10, lipoic acid
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Vitamin E, Coenzyme Q10, and Selenium
+  quote: Vitamin E and CoQ10 work synergistically; each is required for regeneration
+    of the other.
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / CoQ10
+  quote: 'Average dose: 225 mg/day. The antihypertensive effect of CoQ10 is not seen
+    until after 4 to 12 weeks of therapy.'
+- id: pizzorno-cardiometabolic-diabetes
+  location: Additional Supplements / For Hypertension
+  quote: 'Coenzyme Q10: 100 to 200 mg q.d.'
+version: 9
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-07-28'
 updated_by: shivani
 pregnancy_safety: likely_safe
 lactation_safety: likely_safe
@@ -117,3 +152,10 @@ aliases:
 - ubiquinol
 - coq10-ubiquinol
 - coenzyme q10 ubiquinol
+# Merged 2026-07-28: `coenzyme-q10` and `coenzyme-q10-diabetes` were separate
+# entries for the same compound. Merged into this one (68 refs vs 15 vs 0, and
+# the richest record). Both slugs are kept as aliases — NOT removed — so every
+# existing reference still resolves: 15 catalogue files and Hariharan's
+# published plan (cl-005) point at `coenzyme-q10`.
+- coenzyme-q10
+- coenzyme-q10-diabetes
