@@ -1758,7 +1758,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Deficiency is near-universal in India; drives inflammation, immune dysregulation, and osteoporosis",
       },
       {
-        supplement_slug: "coenzyme-q10",
+        supplement_slug: "coq10",
         display_name: "CoQ10",
         dose_display: "100–200 mg",
         timing: "With breakfast",
@@ -1941,7 +1941,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
     presenting_symptoms: ["fatigue", "brain-fog", "poor-exercise-tolerance", "muscle-weakness", "insomnia"],
     supplements: [
       {
-        supplement_slug: "coenzyme-q10",
+        supplement_slug: "coq10",
         display_name: "CoQ10 (Ubiquinol form if over 40)",
         dose_display: "200–400 mg",
         timing: "With breakfast (fat-containing meal for absorption)",

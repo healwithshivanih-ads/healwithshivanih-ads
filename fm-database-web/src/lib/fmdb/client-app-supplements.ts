@@ -22,6 +22,8 @@ export const SUPP_NAME_OVERRIDES: Record<string, string> = {
   "ashwagandha-ksm66": "Ashwagandha (KSM-66)",
   "magnesium-glycinate": "Magnesium glycinate",
   "l-theanine": "L-Theanine",
+  "coq10": "Coenzyme Q10",
+  // retired slug, kept so plans authored before the 2026-07-28 merge still render
   "coenzyme-q10": "Coenzyme Q10",
   "omega-3-fatty-acids": "Omega-3 (EPA + DHA)",
   selenium: "Selenium",
