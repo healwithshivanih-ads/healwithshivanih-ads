@@ -271,12 +271,38 @@ const NON_DISH_WORDS = new Set([
   "grams","slice","slices","handful","pinch","clove","cloves","inch",
 ]);
 
+/**
+ * Words that are a VEHICLE, not a food: they say what FORM something takes, and
+ * need a real food noun beside them before the component names a dish.
+ *
+ * "lime" is already a non-dish word, so "lime juice (1 tsp)" hung entirely on
+ * "juice" to qualify as a dish — and it did, which handed the slot to a pre-meal
+ * shot. Reported 2026-07-28 (nidhi-jain): her lunch cells read "Garlic (1 clove
+ * crushed) + ginger (½ tsp) + lime juice (1 tsp) + Ridge gourd sabzi (¾ cup) +
+ * …". The tempering was skipped correctly, the lime shot was not, so the meal
+ * showed no method and titled itself "Garlic (1 clove crushed)" on her phone.
+ *
+ * Kept to the smallest set that fixes it. "tea" and "water" are deliberately
+ * absent: "Tea with milk (1 cup) + pumpkin seeds + dates" would then retitle
+ * itself after the seeds, which is worse than what it says now. A real drink
+ * always carries its own noun — "ABC juice", "Bottle gourd juice", "Amla juice"
+ * — so those keep naming a dish.
+ */
+const VEHICLE_WORDS = new Set(["juice", "drink", "shot", "extract"]);
+
 /** True when a component names something a client would expect a method for —
- *  i.e. something survives once seasonings, units and prep words are removed. */
-function namesADish(part: string): boolean {
+ *  i.e. something survives once seasonings, units and prep words are removed.
+ *
+ *  `strict` additionally discounts the vehicle words above. primaryDishPart runs
+ *  a strict pass first and a lenient one after, so a component that is ONLY a
+ *  vehicle can still title a slot when nothing else in the cell names a dish
+ *  (a lone "lime juice (1 tsp)" is still that slot's best answer). */
+function namesADish(part: string, strict = false): boolean {
   return recipeLibKey(part)
     .split(" ")
-    .some((t) => t.length >= 3 && !NON_DISH_WORDS.has(t));
+    .some(
+      (t) => t.length >= 3 && !NON_DISH_WORDS.has(t) && !(strict && VEHICLE_WORDS.has(t)),
+    );
 }
 
 /**
@@ -446,9 +472,16 @@ function glossHead(dish: string): string | null {
  */
 export function primaryDishPart(dish: string): string {
   const stages = splitDishStages(dish);
-  for (let i = stages.length - 1; i >= 0; i--) {
-    const hit = splitDishParts(stages[i]).find(namesADish);
-    if (hit) return hit;
+  // STRICT first, then lenient. A pre-meal shot written inline — no connective
+  // to mark it as a preamble — used to win the slot ahead of the meal behind it
+  // because "lime juice" reads as a food. Discounting the vehicle words finds
+  // the sabzi; the lenient pass then keeps the old answer for any cell where
+  // the vehicle really is all there is.
+  for (const strict of [true, false]) {
+    for (let i = stages.length - 1; i >= 0; i--) {
+      const hit = splitDishParts(stages[i]).find((p) => namesADish(p, strict));
+      if (hit) return hit;
+    }
   }
   const parts = splitDishParts(dish);
   if (!parts.length) return (dish ?? "").trim();
