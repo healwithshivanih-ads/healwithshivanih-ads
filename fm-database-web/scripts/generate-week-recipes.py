@@ -111,6 +111,36 @@ def _collect_dishes(payload: dict[str, Any]) -> list[str]:
     return seen
 
 
+def _covered_predicate(payload: dict[str, Any]):
+    """How to decide "the catalogue already answers this dish".
+
+    Prefer the caller's own verdict. recipes.ts resolves each dish with the very
+    matcher the client app uses — bracket-aware component splitting, the "— then:"
+    sequence connective, the consistency gate — against the library GATED to this
+    client. When it sends `covered_dishes`, skip ⊆ resolve holds by construction
+    rather than by approximation.
+
+    That matters because this module's own splitter is a deliberately partial
+    mirror: it takes the literal first component, so a slot written "lime juice
+    (1 tsp) pre-meal shot — then: Turai sabzi (3/4 cup) + …" keys on the lime
+    shot, finds nothing, and pays to rewrite a Turai sabzi the app was already
+    serving from the catalogue. Chasing byte-parity by copying primaryDishPart
+    into Python is the trap the docstring below warns about; letting the side
+    that owns the matcher answer the question is the way out.
+
+    Falls back to the local scan for callers that send nothing (the CLI, tests),
+    where over-generating is the safe direction.
+    """
+    covered = payload.get("covered_dishes")
+    if isinstance(covered, list) and covered:
+        exact = {c for c in covered if isinstance(c, str)}
+        return lambda d: d in exact
+    titles = _catalogue_titles(payload.get("catalogue_titles"))
+    if not titles:
+        return lambda d: False
+    return lambda d: _catalogue_covers(d, titles)
+
+
 def _catalogue_covers(dish: str, titles: list[str]) -> bool:
     """True only when the catalogue answers the dish's HEADLINE component.
 
@@ -146,9 +176,9 @@ def _catalogue_covers(dish: str, titles: list[str]) -> bool:
 _CATALOGUE_TITLES: list[str] | None = None
 
 
-def _catalogue_titles() -> list[str]:
-    """Every dish name the CATALOGUE already answers to — recipe names plus
-    home-remedy display names and aliases.
+def _catalogue_titles(supplied: list[str] | None = None) -> list[str]:
+    """Every dish name the CATALOGUE already answers to FOR THIS CLIENT — recipe
+    names plus home-remedy display names and aliases.
 
     The client app resolves a menu dish catalogue-first (recipe → remedy → this
     generated pack), so any dish the catalogue already covers will NEVER show the
@@ -158,7 +188,21 @@ def _catalogue_titles() -> list[str]:
     Skipping them also serves the standing design rule — prefer curated content,
     minimise AI-generated recipes. Fewer generated recipes is the goal, not a
     side effect.
+
+    `supplied` is that list already GATED to what this client can see, computed
+    by the caller (recipes.ts) with buildClientRecipeGate — the same gate the
+    client app applies. Prefer it whenever it is present.
+
+    Scanning the whole library here instead was a real hole, not a nicety. A Jain
+    client who avoids onion and garlic cannot see a "Foxtail millet pulao" whose
+    tempering names both, but this scan saw the file, called the dish covered,
+    and skipped it — so nothing was written and her lunch reached the app with no
+    method at all (cl-004, reported 2026-07-28). The disk scan below remains the
+    fallback for callers that send no list (the CLI, tests), where
+    over-generating is the safe direction.
     """
+    if supplied:
+        return [t for t in supplied if isinstance(t, str) and t.strip()]
     global _CATALOGUE_TITLES
     if _CATALOGUE_TITLES is not None:
         return _CATALOGUE_TITLES
@@ -238,11 +282,44 @@ _DISH_PORTION_RE = _re.compile(
 _TITLE_STOP = {"with", "and", "the", "for", "style"}
 
 
+def _split_bare(dish: str) -> list[str]:
+    """Split on ' + ' but ONLY outside brackets.
+
+    The TS splitter is bracket-aware; this mirror was not, and a portion
+    annotation that itself contains a plus — "Paneer & spinach sabzi (~80 g
+    paneer + 1 cup spinach)" — was shredded into "Paneer & spinach sabzi (~80 g
+    paneer" and "1 cup spinach)". The head then keyed as
+    `paneer spinach sabzi 80 g paneer`, matched no catalogue title, and the dish
+    was regenerated every week even though the app served it from the catalogue.
+    Measured 2026-07-28: this alone accounted for a large share of the
+    written-but-never-shown recipes.
+    """
+    parts: list[str] = []
+    buf: list[str] = []
+    depth = 0
+    i = 0
+    while i < len(dish or ""):
+        ch = dish[i]
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(0, depth - 1)
+        if depth == 0 and dish[i : i + 3] == " + ":
+            parts.append("".join(buf))
+            buf = []
+            i += 3
+            continue
+        buf.append(ch)
+        i += 1
+    parts.append("".join(buf))
+    return parts
+
+
 def _split_components(dish: str) -> list[str]:
     """Mirror of client-app.ts splitDishComponents: break a cell on ' + ' and
     lift portion-shaped '(…)' out of each component's title."""
     out: list[str] = []
-    for s in _re.split(r"\s\+\s", dish or ""):
+    for s in _split_bare(dish or ""):
         s = s.strip()
         if not s:
             continue
@@ -425,8 +502,8 @@ def main() -> None:
         # a dry run that overstates the ask is worse than none, because it is
         # the number used to sanity-check spend before a real run.
         _all = _collect_dishes(payload)
-        _cat = _catalogue_titles()
-        _todo = [d for d in _all if not _catalogue_covers(d, _cat)] if _cat else _all
+        _is_covered = _covered_predicate(payload)
+        _todo = [d for d in _all if not _is_covered(d)]
         print(json.dumps({
             "ok": True, "path": str(out_path), "count": len(_todo),
             "dishes_on_menu": len(_all), "skipped_already_in_catalogue": len(_all) - len(_todo),
@@ -441,19 +518,17 @@ def main() -> None:
     # overflow the token cap. Accumulate + dedupe across batches, then ONE atomic
     # write at the end (the Fly-synced .md is never seen half-written).
     dishes = _collect_dishes(payload)
-    # Catalogue-first: never pay to write a dish the catalogue already answers.
-    # Reuses _dish_has_recipe, the same matcher the "still uncovered" second pass
-    # uses, so a dish is judged covered here exactly as it is there.
-    _cat = _catalogue_titles()
-    if _cat:
-        _before = len(dishes)
-        dishes = [d for d in dishes if not _catalogue_covers(d, _cat)]
-        _skipped = _before - len(dishes)
-        if _skipped:
-            print(
-                f"[recipes] {_skipped}/{_before} dishes already in the catalogue — not generating those",
-                file=sys.stderr,
-            )
+    # Catalogue-first: never pay to write a dish the catalogue already answers
+    # FOR THIS CLIENT. See _covered_predicate for who decides and why.
+    _is_covered = _covered_predicate(payload)
+    _before = len(dishes)
+    dishes = [d for d in dishes if not _is_covered(d)]
+    _skipped = _before - len(dishes)
+    if _skipped:
+        print(
+            f"[recipes] {_skipped}/{_before} dishes already in the catalogue — not generating those",
+            file=sys.stderr,
+        )
     all_recipes: list[dict[str, Any]] = []
     seen: set[str] = set()
     usage_entry = None

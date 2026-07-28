@@ -19,7 +19,17 @@ import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
-import { loadClientAppData } from "@/lib/fmdb/client-app";
+import {
+  loadClientAppData,
+  loadLibraryRecipes,
+  loadRemedyFallbackLibrary,
+  homeRemedyAsRecipe,
+  buildClientRecipeGate,
+  buildLibraryRecipeResolver,
+  buildHomeRemedyResolver,
+  recipeConsistentWithDish,
+} from "@/lib/fmdb/client-app";
+import { primaryDishPart } from "@/lib/fmdb/dish-components";
 
 export interface RecipeGenResult {
   ok: boolean;
@@ -66,6 +76,55 @@ export async function generateWeekRecipesAction(
     ? client.foods_to_avoid.join(", ")
     : client.foods_to_avoid ?? "";
 
+  // ── The dish names THIS client's catalogue actually answers ────────────────
+  // The generator skips writing a recipe for any dish the catalogue already
+  // covers — the standing rule is prefer curated content, minimise AI recipes.
+  // It used to decide that against the WHOLE library, which is not what the
+  // client's app resolves against: her diet, the Jain screen and her avoid list
+  // remove recipes first.
+  //
+  // Reported 2026-07-28 (cl-004, Jain, avoids onion + garlic): the catalogue has
+  // "Foxtail millet pulao", so the generator skipped it; the app then dropped
+  // that recipe for naming onion, and her lunch reached the phone with no method
+  // from either tier. Every restricted client had a guaranteed hole wherever the
+  // catalogue's only version of a dish uses something they avoid.
+  //
+  // Sending the GATED list closes it: a recipe she cannot see is no longer a
+  // reason not to write her one. Computed with buildClientRecipeGate — the same
+  // gate loadClientAppData applies — so the two answers cannot drift.
+  const clientGate = buildClientRecipeGate(client);
+  const visibleLibrary = (await loadLibraryRecipes()).filter((l) => clientGate(l.recipe));
+  const visibleRemedies = (await loadRemedyFallbackLibrary()).filter((r) =>
+    clientGate({ ...homeRemedyAsRecipe(r), ingredients: [...r.prepSteps, r.dose] }),
+  );
+  const visibleCatalogueTitles = [
+    ...visibleLibrary.flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])]),
+    ...visibleRemedies.flatMap((r) => [r.name, ...r.aliases]),
+  ].filter((t): t is string => typeof t === "string" && t.trim().length > 0);
+
+  // And the verdict itself, decided HERE rather than by the shim's mirror of the
+  // matcher. The shim splits a cell on the literal first component, so a slot
+  // written "lime juice (1 tsp) pre-meal shot — then: Turai sabzi (3/4 cup) + …"
+  // keyed on the lime shot and paid to rewrite a Turai sabzi the app was already
+  // serving from the catalogue. This is the app's own resolver — component
+  // splitting, the sequence connective, the consistency gate — so "would the
+  // client see a catalogue method for this dish?" is answered once, by the code
+  // that actually answers it at render time.
+  const libFor = buildLibraryRecipeResolver(visibleLibrary);
+  const remFor = buildHomeRemedyResolver(visibleRemedies);
+  const coveredDishes = [
+    ...new Set(
+      data.weekMenus
+        .flatMap((w) => w.days.flatMap((d) => d.slots.map((s) => s.dish)))
+        .filter((dish): dish is string => typeof dish === "string" && !!dish.trim())
+        .filter((dish) => {
+          const head = primaryDishPart(dish);
+          const L = libFor(dish);
+          return Boolean((L && recipeConsistentWithDish(head, L)) || remFor(dish));
+        }),
+    ),
+  ];
+
   const out = (await runShim(
     "generate-week-recipes.py",
     {
@@ -74,6 +133,8 @@ export async function generateWeekRecipesAction(
       dietary_preference: client.dietary_preference ?? "",
       foods_to_avoid: foodsToAvoid,
       country: client.country ?? "",
+      catalogue_titles: visibleCatalogueTitles,
+      covered_dishes: coveredDishes,
       weeks: data.weekMenus.map((w) => ({
         week: w.week,
         days: w.days.map((d) => ({

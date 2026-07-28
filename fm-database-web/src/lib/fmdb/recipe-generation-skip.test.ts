@@ -14,6 +14,7 @@ import { describe, it, expect } from "vitest";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import {
+  buildClientRecipeGate,
   buildHomeRemedyResolver,
   buildLibraryRecipeResolver,
   loadLibraryRecipes,
@@ -25,18 +26,26 @@ import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
 const REPO = path.resolve(__dirname, "../../../..");
 const GEN = path.join(REPO, "fm-database-web/scripts/generate-week-recipes.py");
 
-/** Ask the real Python predicate which of these dishes it would skip. */
-function pythonSkips(dishes: string[]): string[] {
+/**
+ * Ask the real Python predicate which of these dishes it would skip.
+ *
+ * `supplied` is the per-client gated title list the caller now sends (see
+ * recipes.ts). Omit it to exercise the disk-scan fallback.
+ */
+function pythonSkips(dishes: string[], supplied?: string[], covered?: string[]): string[] {
   const src = `
 import json, sys, importlib.util
 spec = importlib.util.spec_from_file_location("gwr", ${JSON.stringify(GEN)})
 m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-cat = m._catalogue_titles()
-dishes = json.load(sys.stdin)
-print(json.dumps([d for d in dishes if m._catalogue_covers(d, cat)]))
+payload = json.load(sys.stdin)
+is_covered = m._covered_predicate({
+    "catalogue_titles": payload.get("supplied"),
+    "covered_dishes": payload.get("covered"),
+})
+print(json.dumps([d for d in payload["dishes"] if is_covered(d)]))
 `;
   const out = execFileSync(TEST_PYTHON, ["-c", src], {
-    input: JSON.stringify(dishes),
+    input: JSON.stringify({ dishes, supplied: supplied ?? null, covered: covered ?? null }),
     encoding: "utf-8",
   });
   return JSON.parse(out) as string[];
@@ -83,5 +92,110 @@ describe("generator skip ⊆ app resolve", () => {
     // If this ever returns it as skipped, the matcher has gone loose and the
     // client silently loses methods for genuinely new dishes.
     expect(pythonSkips(["Chicken shawarma (small portion, 1 wrap)"])).toEqual([]);
+  }, PY_TEST_TIMEOUT_MS);
+});
+
+/**
+ * The skip must be judged against what THIS CLIENT can see, not the whole
+ * library. Reported 2026-07-28 (cl-004, Jain, avoids onion + garlic): the
+ * catalogue's only "Foxtail millet pulao" tempers with onion and ginger-garlic
+ * paste, so her app gates it away — but the generator saw the file, called the
+ * dish covered, skipped it, and her lunch arrived with no method from either
+ * tier. The caller now sends the GATED title list.
+ */
+describe("the skip is judged per client", () => {
+  it("writes a recipe for a dish whose only catalogue version this client cannot see", async () => {
+    // Anchored on a dish where the allium is INTRINSIC — it is in the recipe's
+    // own name, so no future de-onioning can quietly make this client able to
+    // see it and turn the assertion vacuous. (The original report used Foxtail
+    // millet pulao; that recipe has since been rewritten onion-free, which is
+    // exactly why the anchor must be a dish that cannot be.)
+    const dish = "3-Egg Omelette (Onion & Cabbage) (1 plate)";
+    const gate = buildClientRecipeGate({
+      dietary_preference: "Vegetarian Jain",
+      foods_to_avoid: "Onion, Garlic",
+    });
+    const lib = await loadLibraryRecipes();
+    const titles = lib.flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])]);
+    const visible = lib
+      .filter((l) => gate(l.recipe))
+      .flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])]);
+
+    // The catalogue does carry it…
+    expect(titles).toContain("3-Egg Omelette (Onion & Cabbage)");
+    // …and the ungated mirror therefore skips it (the old behaviour).
+    expect(pythonSkips([dish])).toEqual([dish]);
+    // …but this client cannot see it, so it must NOT be skipped for her.
+    expect(visible).not.toContain("3-Egg Omelette (Onion & Cabbage)");
+    expect(pythonSkips([dish], visible)).toEqual([]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("the de-onioned staples are now visible to a Jain client", async () => {
+    // The other half of the same fix: rather than leave these clients without a
+    // method, the seven catalogue recipes their menus actually name were
+    // rewritten without onion or garlic (the kachumber precedent). Pins that,
+    // so a later edit reintroducing an allium is caught here rather than by a
+    // client opening a blank meal.
+    const gate = buildClientRecipeGate({
+      dietary_preference: "Vegetarian Jain",
+      foods_to_avoid: "Onion, Garlic",
+    });
+    const lib = await loadLibraryRecipes();
+    for (const slug of [
+      "foxtail-millet-pulao",
+      "foxtail-millet-upma",
+      "sama-rice-poha",
+      "moong-dal-chilla",
+      "paneer-bhurji",
+      "paneer-spinach-sabzi",
+      "paneer-tikka-yoghurt",
+    ]) {
+      const hit = lib.find((l) => l.slug === slug);
+      expect(hit, slug).toBeTruthy();
+      expect(gate(hit!.recipe), slug).toBe(true);
+    }
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("still skips a dish the client CAN see, so the saving is kept", async () => {
+    const dish = "Foxtail millet khichdi (1 bowl)";
+    const gate = buildClientRecipeGate({
+      dietary_preference: "Vegetarian Jain",
+      foods_to_avoid: "Onion, Garlic",
+    });
+    const visible = (await loadLibraryRecipes())
+      .filter((l) => gate(l.recipe))
+      .flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])]);
+    expect(visible).toContain("Foxtail millet khichdi");
+    expect(pythonSkips([dish], visible)).toEqual([dish]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("honours the caller's own verdict over its partial mirror of the matcher", async () => {
+    // The shim splits a cell on the LITERAL first component. This slot leads
+    // with a pre-meal shot and names the real dish after a "— then:", so the
+    // shim keys on the lime juice, matches nothing, and pays to rewrite a Turai
+    // sabzi the app already serves from the catalogue. recipes.ts resolves it
+    // with the app's own matcher and says so.
+    const dish =
+      "Lime juice (1 tsp) pre-meal shot (small cup) — then: Turai sabzi (3/4 cup) + Masoor dal (1/2 cup)";
+    const lib = buildLibraryRecipeResolver(await loadLibraryRecipes());
+    expect(lib(dish)?.title, "the app does resolve this dish").toBeTruthy();
+
+    expect(pythonSkips([dish]), "the mirror alone misses it").toEqual([]);
+    expect(pythonSkips([dish], undefined, [dish]), "the caller's verdict wins").toEqual([dish]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("a caller verdict of 'not covered' is never overridden by the local scan", () => {
+    // The whole point of the gated path: a dish the CLIENT cannot see must be
+    // generated even though the raw catalogue has a file for it.
+    const dish = "Foxtail millet pulao (1 bowl)";
+    expect(pythonSkips([dish]), "ungated mirror would skip it").toEqual([dish]);
+    expect(pythonSkips([dish], undefined, ["Something else entirely"])).toEqual([]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("falls back to the disk scan when the caller sends no list", () => {
+    // The CLI and any older caller must keep working — over-generating is the
+    // safe direction, never under-generating.
+    expect(pythonSkips(["Jeera rice (1 cup)"], undefined)).toEqual(["Jeera rice (1 cup)"]);
+    expect(pythonSkips(["Jeera rice (1 cup)"], [])).toEqual(["Jeera rice (1 cup)"]);
   }, PY_TEST_TIMEOUT_MS);
 });
