@@ -20,7 +20,6 @@ rasa:
 - pungent
 main_ingredients:
 - tomato
-- onion
 - cucumber
 - lemon
 - roasted cumin
@@ -28,9 +27,6 @@ contains_allergens: []
 ingredients:
 - item: tomato, finely diced
   qty: '1'
-  unit: cup
-- item: onion, finely diced
-  qty: '0.5'
   unit: cup
 - item: cucumber, diced
   qty: '1'
@@ -54,7 +50,7 @@ ingredients:
   qty: '1'
   unit: pinch
 steps:
-- Dice the tomato, onion and cucumber to roughly the same small size — kachumber is judged on the knife work.
+- Dice the tomato and cucumber to roughly the same small size — kachumber is judged on the knife work.
 - Toss them with the green chilli and coriander.
 - Add the lemon juice, roasted cumin, black salt and pepper and mix.
 - Salt LAST and only just before serving — salted early, the cucumber and tomato weep and you get a puddle.
