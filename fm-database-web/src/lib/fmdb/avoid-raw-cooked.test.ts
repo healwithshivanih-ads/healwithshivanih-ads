@@ -14,7 +14,8 @@
  * "Onion, Garlic" must keep behaving exactly as it did).
  */
 import { describe, it, expect } from "vitest";
-import { ingredientIsRawIn, loadLibraryRecipes } from "./client-app";
+import { loadLibraryRecipes } from "./client-app";
+import { ingredientIsRawIn } from "./foods-to-avoid";
 
 const KACHUMBER = {
   method: [

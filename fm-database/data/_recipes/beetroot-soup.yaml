@@ -6,8 +6,6 @@ meal_type:
 - lunch
 diet:
 - vegetarian
-- vegan
-- gluten_free
 region: Global
 seasons:
 - all
@@ -28,6 +26,7 @@ main_ingredients:
 - 2 tbsp cream (use soy cream for vegan), optional
 contains_allergens:
 - dairy
+- gluten
 ingredients:
 - item: 2 beetroots (~250 g), grated
   qty: ''

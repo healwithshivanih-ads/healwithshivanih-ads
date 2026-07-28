@@ -9,7 +9,8 @@
  * The diet gate MUST mirror client-app.ts `recipeAllowed` — a client must
  * never be offered a recipe outside their diet (the "eggetarian saw chicken
  * poha" bug). Kept as a faithful copy here; converge into one module if it
- * ever drifts.
+ * ever drifts. The foods-to-avoid gate no longer needs that discipline: it
+ * IS the client app's, imported from foods-to-avoid.ts (2026-07-28).
  */
 
 import path from "path";
@@ -18,6 +19,7 @@ import yaml from "js-yaml";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { runShim } from "@/lib/fmdb/shim";
 import { labNutrientPriorities, recipeLabBoost, matchedPriorityTags } from "@/lib/fmdb/lab-nutrient-priorities";
+import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
 
 const RECIPES_DIR = path.join(process.cwd(), "..", "fm-database", "data", "_recipes");
 
@@ -73,38 +75,18 @@ export async function searchRecipesAction(
     const labPriorities = labNutrientPriorities(client as { lab_markers?: unknown } | null);
     const hasLabPriorities = Object.keys(labPriorities).length > 0;
 
-    // Foods the client avoids — never offer a recipe that uses one. The field
-    // is free-form (a list, a comma string like "Onion, Garlic", or prose), so
-    // split on commas/newlines, take the core food word(s) before any
-    // qualifier, and drop prose/headers. Best-effort; precise for clean lists.
+    // Foods the client avoids — never offer a recipe that uses one. Shares the
+    // CLIENT app's parser (foods-to-avoid.ts) so the two surfaces cannot
+    // disagree about what a client eats. This used to be a second, cruder
+    // parser with no category expansion, and it under-filtered badly: measured
+    // over the live clients on 2026-07-28 it dropped 0 of 457 recipes for
+    // "Milk products and Sugar and refined flour" and 0 for "No red meat".
+    // Switching lost no coverage for any client (strict superset) and closed
+    // those holes. It also means a "raw onion" entry means the same thing here
+    // as it does in the app.
     const avoidRaw = (client as { foods_to_avoid?: unknown } | null)?.foods_to_avoid;
-    const rawTerms: string[] = Array.isArray(avoidRaw)
-      ? avoidRaw.map(String)
-      : avoidRaw
-        ? String(avoidRaw).split(/[,\n;]+/)
-        : [];
-    const PROSE = new Set([
-      "avoid", "list", "until", "weeks", "week", "month", "months", "framework",
-      "frameworks", "reset", "from", "runs", "through", "only", "moderation",
-      "red", "yellow", "consume", "food", "intolerance", "histamine", "sova",
-      "stacked", "exclusion", "primary", "cooking", "shift", "portions", "small",
-      "aged", "leftover", "packaged", "excess", "confirmed", "clinical", "trigger",
-    ]);
-    const avoidList = rawTerms
-      .map((t) =>
-        t
-          .split(/[(—:/]|\s[-–]\s/)[0]
-          .toLowerCase()
-          .replace(/[^a-z\s]/g, " ")
-          .replace(/\s+/g, " ")
-          .trim(),
-      )
-      .filter((t) => {
-        const w = t.split(" ").filter(Boolean);
-        return t.length >= 3 && w.length >= 1 && w.length <= 2 && !w.some((x) => PROSE.has(x));
-      });
-    const avoidRe = [...new Set(avoidList)].map(
-      (a) => new RegExp(`\\b${a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i"),
+    const avoid = buildAvoidFilter(
+      Array.isArray(avoidRaw) ? avoidRaw.map(String).join(", ") : String(avoidRaw ?? ""),
     );
 
     let files: string[] = [];
@@ -146,10 +128,19 @@ export async function searchRecipesAction(
       }
 
       // ── foods-to-avoid gate ──
-      if (avoidRe.length) {
-        const full = `${title} ${mains.join(" ")} ${ingredients.join(" ")}`;
-        if (avoidRe.some((re) => re.test(full))) continue;
-      }
+      // steps + cook time travel with the probe so a preparation-qualified
+      // entry ("raw onion") can tell an uncooked kachumber from a cooked sabzi
+      // here exactly as it does in the client app.
+      if (
+        !avoid.safe({
+          title,
+          mains,
+          ingredients,
+          method: (Array.isArray(r.steps) ? r.steps : []).map(String),
+          cookTimeMin: r.cook_time_min == null ? undefined : Number(r.cook_time_min),
+        })
+      )
+        continue;
 
       // ── query filter (every token must appear in title or mains) ──
       const hay = `${title} ${mains.join(" ")}`.toLowerCase();

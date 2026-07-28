@@ -51,8 +51,10 @@ ALLERGEN_KEYWORDS: dict[str, tuple[str, ...]] = {
     "dairy": ("milk", "paneer", "yogurt", "yoghurt", "curd", "dahi", "cheese", "cream",
               "makhan", "white butter", "salted butter", "unsalted butter",
               "chhena", "khoya", "malai"),
+    # "crouton" is bread by another name and the scan was blind to it —
+    # beetroot-soup shipped croutons while claiming `gluten_free`.
     "gluten": ("wheat", "atta", "maida", "barley", "bulgur", "rye", "semolina", "rava",
-               "sooji", "suji", "dalia", "seitan", "bread", "pasta"),
+               "sooji", "suji", "dalia", "seitan", "bread", "pasta", "crouton"),
     "nuts": ("almond", "cashew", "walnut", "pistachio", "pecan", "hazelnut", "macadamia"),
     "peanut": ("peanut", "groundnut", "moongphali"),
     # dish-form words like "omelette"/"bhurji" are NOT egg keywords — besan
@@ -98,6 +100,14 @@ _MILLET_GRAIN = re.compile(
 
 _SCRUB = {"dairy": _PLANT_DAIRY, "gluten": _MILLET_GRAIN}
 
+# A parenthetical that tells the cook how to VARY the dish names a food the
+# recipe as written does not contain: "2 tbsp cream (use soy cream for vegan)"
+# is a dairy recipe, not a soy one. Stripped before every allergen pass, so the
+# tag describes what is actually in the pot. Only instruction parentheticals
+# match — "(~250 g)" and "(kala namak)" are left alone.
+_SUBSTITUTION_PAREN = re.compile(
+    r"\(\s*(?:use|omit|swap|substitute|replace|skip)\b[^)]*\)", re.I)
+
 # Mustard is excluded from the gap check (not from the vocabulary): tempering
 # seed appears in most Indian savoury cooking, so gap-checking it flags ~86
 # recipes and buries the allergens where a miss actually harms someone. Tag it
@@ -107,7 +117,7 @@ GAP_CHECK_ALLERGENS = ALLERGENS - {"mustard"}
 
 def derive_allergens(ingredient_text: str) -> set[str]:
     """Allergens implied by an ingredient blob. Conservative: keywords only."""
-    text = (ingredient_text or "").lower()
+    text = _SUBSTITUTION_PAREN.sub(" ", (ingredient_text or "").lower())
     return {
         a for a, rx in _ALLERGEN_RE.items()
         if rx.search(_SCRUB[a].sub(" ", text) if a in _SCRUB else text)

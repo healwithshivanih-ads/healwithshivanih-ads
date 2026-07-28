@@ -27,6 +27,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
+import { slugify } from "@/lib/fmdb/deferred-items";
 import { collectMeasurementSnapshots, latestMeasurements } from "@/lib/fmdb/measurements";
 import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/travel-foods";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
@@ -1448,6 +1450,9 @@ export interface LetterRecipe {
   /** recipe diet tags ('vegetarian'|'vegan'|'eggetarian'|'non_vegetarian'…) +
    *  main ingredients — drive the per-client dietary safety filter */
   diet?: string[];
+  /** other names this recipe answers to on a menu (library recipes only) —
+   *  lets one canonical recipe absorb a near-duplicate slug. */
+  aliases?: string[];
   mains?: string[];
   ingredients: string[];
   /** structured ingredients (library recipes only) — drive the cook-for-N
@@ -1461,6 +1466,11 @@ export interface LetterRecipe {
    *  drives the warm per-week "nourishment" note in the client app. */
   richIn?: string[];
   method: string[];
+  /** minutes of actual cooking (library recipes only). `0` = nothing in this
+   *  recipe is cooked, which is how the preparation-aware `foods_to_avoid`
+   *  gate tells a raw kachumber from a cooked sabzi. `undefined` = not
+   *  recorded (letter-pack recipes, remedy probes) → verb-scan fallback. */
+  cookTimeMin?: number;
   tip?: string;
   imageUrl?: string;
   imageCredit?: string;
@@ -1493,6 +1503,13 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
       const prep = Number(r.prep_time_min) || 0;
       const cook = Number(r.cook_time_min) || 0;
       const mins = prep + cook;
+      // Distinct from `cook` above: a recipe that never recorded a cook time
+      // must NOT read as cook_time_min = 0 ("nothing is cooked") — that would
+      // let the avoid gate call a sauteed onion raw.
+      const cookTimeMin =
+        r.cook_time_min == null || Number.isNaN(Number(r.cook_time_min))
+          ? undefined
+          : Number(r.cook_time_min);
       const imgRaw = r.image as Dict | undefined;
       const imgFile = imgRaw ? asStr(imgRaw.file) : "";
       const imgUrl =
@@ -1514,11 +1531,13 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
           kcalPerServing: Number(r.kcal_per_serving) || undefined,
           richIn: asStrArr(r.rich_in),
           diet: asStrArr(r.diet),
+          aliases: asStrArr(r.aliases),
           mains: asStrArr(r.main_ingredients),
           time: mins ? `${mins} min` : undefined,
           ingredients,
           ingredientsStructured: ingStruct.length ? ingStruct : undefined,
           method: (asArr(r.steps) as unknown[]).map((s) => String(s)),
+          cookTimeMin,
           tip: asStr(r.one_line) || asStr(r.headnote) || undefined,
           imageUrl: imgUrl,
           imageCredit: imgCredit,
@@ -1556,49 +1575,6 @@ export function recipeConsistentWithDish(
   );
   const recipeToks = new Set(blob.split(" ").filter((t) => t.length >= 3).map(foldFood));
   return dishToks.some((t) => recipeToks.has(t));
-}
-
-/** Words in a method step that suggest heat was applied. */
-const COOK_VERBS =
-  /\b(saut|fry|fried|frying|cook|boil|simmer|roast|bake|grill|griddle|temper|tadka|heat|steam|braise|caramelis|carameliz|brown|golden|translucent|soften|wilt|toast|pressure)/;
-/** Corroborating evidence that a step is actually a COOKING step. */
-const COOK_CONTEXT =
-  /\b(pan|tawa|kadai|skillet|wok|oven|flame|stove|griddle|pot|heat|hot|oil|ghee|butter|minute|minutes|min|second|seconds|sec|low|medium|high|until|side|lid|cover)\b/;
-/**
- * Heat in this step? Both a verb AND corroboration, because recipe prose is
- * full of cook words used as ingredient labels — "roasted cumin", "fried
- * gram", "boiled egg". Kachumber's "Add the lemon juice, roasted cumin, black
- * salt and pepper and mix" reads as cooking to a verb-only check, which would
- * have declared its raw onion cooked and defeated the whole feature.
- * Erring toward "not heat" errs toward calling the food RAW, which errs toward
- * dropping the recipe — the safe direction for an avoid list.
- */
-const stepHasHeat = (s: string): boolean => COOK_VERBS.test(s) && COOK_CONTEXT.test(s);
-
-/**
- * Is `token` used RAW in this recipe?
- *
- * Powers preparation-qualified avoids ("raw onion"), where a client reacts to
- * a food uncooked but eats it happily in a curry — dropping every recipe that
- * merely NAMES the food would gut their menu for nothing.
- *
- * Rule: find where the food first enters, then look for heat FROM THAT POINT
- * ON. Anything earlier is irrelevant — chicken seared at step 3 says nothing
- * about onion laid on the wrap at step 5. Looking forward rather than at the
- * one step is what keeps batter dishes honest: a cheela mixes onion into besan
- * at step 1 with no verb, then griddles it at step 4, and that onion is cooked.
- *
- * Never named in the method? Then it's raw only if the dish never cooks at all
- * (salad, raita, chutney). Otherwise assume it goes in the pan — an unqualified
- * avoid entry stays available when a client needs the food gone outright.
- */
-export function ingredientIsRawIn(r: { method?: string[] }, token: string): boolean {
-  const steps = (r.method ?? []).filter(Boolean).map((s) => s.toLowerCase());
-  if (!steps.length) return false;
-  const rx = new RegExp(`\\b${token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
-  const first = steps.findIndex((s) => rx.test(s));
-  if (first === -1) return !steps.some(stepHasHeat);
-  return !steps.slice(first).some(stepHasHeat);
 }
 
 /** One thing a dish can resolve to, plus every name it answers to. A library
@@ -1800,7 +1776,15 @@ export function buildLibraryRecipeResolver(
   libraryRecipes: { slug: string; recipe: LetterRecipe }[],
 ): (dish: string) => LetterRecipe | undefined {
   return buildNameResolver(
-    libraryRecipes.map((l) => ({ names: [l.recipe.title], value: l.recipe })),
+    // `aliases` (2026-07-28) lets ONE canonical recipe answer to the other
+    // names a menu writes it as, instead of the library carrying a duplicate
+    // YAML per phrasing ("Kachumber" + "Kachumber salad" were byte-identical).
+    // Aliases are additional exact/near-match names only — they do not loosen
+    // any matching rule, so a recipe with no aliases resolves exactly as before.
+    libraryRecipes.map((l) => ({
+      names: [l.recipe.title, ...(l.recipe.aliases ?? [])].filter(Boolean),
+      value: l.recipe,
+    })),
     containsLoose,
   );
 }
@@ -3164,7 +3148,9 @@ export async function loadClientAppData(
     recipesMd += "\n\n" + ((await readIfExists(path.join(mealPlansDir, n))) ?? "");
   }
 
-  const recipes = parseRecipes(recipesMd);
+  // Filtered to this client's diet + avoid list below (`recipes`), once those
+  // gates are defined — nothing downstream may read the unfiltered pack.
+  const recipesAll = parseRecipes(recipesMd);
   // Structured library = plan-side recipe source (no recipes letter needed).
   // Letter recipes stay the personalised first choice; the library fills
   // gaps via a STRICT name match (the letter pack was authored for these
@@ -3219,71 +3205,18 @@ export async function loadClientAppData(
   // Drop any library recipe whose title/mains/ingredients name an avoided food
   // so the dish falls through to the pack or a clean category card, never a
   // curated recipe that contradicts foods_to_avoid.
-  // foods_to_avoid is messy free text (comma lists, but also multi-line
-  // narratives + parentheticals). Two-pass parse: (1) category triggers scan
-  // the WHOLE string and expand to member ingredients (so "Gluten (wheat/atta…)"
-  // drops every wheat recipe, not just the literal words); (2) short food tokens
-  // (≤3 words) — long narrative fragments are skipped so a rambling avoid note
-  // can't nuke the whole library. Word-boundary match avoids rice→licorice.
-  const AVOID_EXPAND: Record<string, string[]> = {
-    dairy: ["milk", "curd", "dahi", "yogurt", "yoghurt", "paneer", "cheese", "cream", "khoya", "malai", "lassi", "buttermilk"],
-    gluten: ["wheat", "atta", "maida", "suji", "rava", "semolina", "bread", "pasta", "barley", "rye", "dalia", "paratha", "roti", "chapati", "thepla", "poori"],
-    nut: ["almond", "cashew", "walnut", "pistachio", "hazelnut", "pecan"],
-    onion: ["onion", "shallot", "leek"],
-    soy: ["soy", "soya", "tofu", "tempeh", "edamame"],
-  };
-  const AVOID_CATEGORY_TRIGGERS: [RegExp, keyof typeof AVOID_EXPAND][] = [
-    [/\b(dairy|lactose|milk)\b/, "dairy"],
-    [/\b(gluten|wheat|atta|maida)\b/, "gluten"],
-    [/\b(tree ?nut|nuts)\b/, "nut"],
-    [/\bonion\b/, "onion"],
-    [/\b(soy|soya)\b/, "soy"],
-  ];
-  const AVOID_STOP = new Set(["oil", "salt", "water", "ghee"]);
-  // PREPARATION-QUALIFIED AVOIDS (cl-022 Nazneen, 2026-07-28). Raw onion gives
-  // her a dry mouth; cooked onion does not. Written plainly as "onion" the
-  // category trigger below expands to onion/shallot/leek and drops 149/467
-  // library recipes — every sabzi, dal and curry — because nothing here knew
-  // preparation. So "raw <food>" is now parsed as its own weaker avoid: the
-  // food is dropped only from recipes that DON'T cook it.
-  // Unqualified entries are untouched — a Jain "Onion, Garlic" must still drop
-  // every onion recipe, cooked or not — so this is strictly additive.
-  const avoidRawText = asStr(client.foods_to_avoid).toLowerCase();
-  const rawOnlyTokens = new Set<string>();
-  // strip "raw <food>" out before the normal passes so it can't also register
-  // as an unqualified avoid (the bug this whole block exists to prevent)
-  const avoidScanText = avoidRawText.replace(/\braw\s+([a-z][a-z ]{1,20}?)\b/g, (_m, food: string) => {
-    const f = String(food).trim();
-    if (!f || AVOID_STOP.has(f)) return " ";
-    rawOnlyTokens.add(f);
-    // "raw onion" should also cover raw shallot/leek — expand via the same map
-    for (const [rx, cat] of AVOID_CATEGORY_TRIGGERS)
-      if (rx.test(f)) for (const m of AVOID_EXPAND[cat]) rawOnlyTokens.add(m);
-    return " ";
-  });
-  const avoidTokens = new Set<string>();
-  for (const [rx, cat] of AVOID_CATEGORY_TRIGGERS)
-    if (rx.test(avoidScanText)) for (const m of AVOID_EXPAND[cat]) avoidTokens.add(m);
-  for (const t of avoidScanText.split(/[,;/&\n()]|\band\b/)) {
-    const w = t.replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
-    const words = w ? w.split(" ") : [];
-    if (words.length === 0 || words.length > 3) continue; // blank or narrative fragment
-    if (w.length < 3 || w.length > 22 || AVOID_STOP.has(w)) continue;
-    avoidTokens.add(w);
-  }
-  // a token already covered unconditionally needs no raw-only pass
-  for (const t of avoidTokens) rawOnlyTokens.delete(t);
-  const avoidRes = [...avoidTokens].map((t) => new RegExp(`\\b${t}\\b`));
-  const rawOnlyRes = [...rawOnlyTokens].map((t) => ({ t, rx: new RegExp(`\\b${t}\\b`) }));
-  const recipeAvoidsSafe = (r: LetterRecipe): boolean => {
-    if (!avoidRes.length && !rawOnlyRes.length) return true;
-    const blob = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`.toLowerCase();
-    if (avoidRes.some((rx) => rx.test(blob))) return false;
-    return !rawOnlyRes.some(({ t, rx }) => rx.test(blob) && ingredientIsRawIn(r, t));
-  };
+  // Parsing + matching live in foods-to-avoid.ts (unit-tested). An entry may
+  // now carry a PREPARATION qualifier — "raw onion" drops only the recipes
+  // that use onion uncooked, instead of the 149/467 a bare "onion" drops.
+  const recipeAvoidsSafe = buildAvoidFilter(asStr(client.foods_to_avoid)).safe;
   const libraryRecipes = libraryRecipesAll.filter(
     (l) => recipeAllowed(l.recipe) && recipeAvoidsSafe(l.recipe),
   );
+  // The client's own AI recipe pack is re-gated at READ time, not just when it
+  // was written: a pack authored before the coach edited foods_to_avoid /
+  // dietary_preference would otherwise keep serving the old rules for ever,
+  // and the pack is exactly where a dish lands when the library drops out.
+  const recipes = recipesAll.filter((r) => recipeAllowed(r) && recipeAvoidsSafe(r));
   // recipe-name → accurate kcal/serving (drives per-meal calories + swap maths)
   const recipeKcalLookup = buildRecipeKcalLookup(
     libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
@@ -3295,6 +3228,14 @@ export async function loadClientAppData(
   const pinnedSlugs = new Set(
     (asArr((plan.nutrition as Dict | undefined)?.recipes) as unknown[]).map((s) => String(s)),
   );
+  /** Does this library recipe answer to a slug the coach pinned? Alias-aware:
+   *  when a near-duplicate recipe is absorbed (`moong-chilla` → an alias of
+   *  `moong-dal-chilla`), the pins written against the retired slug must keep
+   *  working — the coach pinned a DISH, not a filename. Without this, merging
+   *  a duplicate silently drops the recipe from that client's pack. */
+  const isPinned = (l: { slug: string; recipe: LetterRecipe }): boolean =>
+    pinnedSlugs.has(l.slug) ||
+    (l.recipe.aliases ?? []).some((a) => pinnedSlugs.has(slugify(a)));
   // Dish → library-recipe resolver (exact-identity first, fuzzy fallback).
   // Built from the diet-filtered library so a client never resolves a dish to
   // an out-of-diet recipe. Shared with the dashboard menu-image coverage scan
@@ -3585,7 +3526,7 @@ export async function loadClientAppData(
   // pinned them on the plan OR a dish on the live menu matches them — the
   // plan tab is the source of truth, no recipes letter required.
   const usedLibrary = new Set<LetterRecipe>();
-  for (const l of libraryRecipes) if (pinnedSlugs.has(l.slug)) usedLibrary.add(l.recipe);
+  for (const l of libraryRecipes) if (isPinned(l)) usedLibrary.add(l.recipe);
   for (const w of weekMenus)
     for (const d of w.days)
       for (const s of d.slots)

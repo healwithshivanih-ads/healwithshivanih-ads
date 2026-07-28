@@ -99,7 +99,6 @@ sources:
 - id: shivani-hari-original
   location: Foxtail millet upma
 version: 1
-kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
@@ -134,3 +133,6 @@ rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'
+kitchen_tested: false
+aliases:
+- Foxtail upma

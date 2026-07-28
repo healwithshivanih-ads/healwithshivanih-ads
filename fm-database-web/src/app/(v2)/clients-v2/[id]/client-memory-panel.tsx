@@ -88,8 +88,11 @@ const FIELDS: FieldMeta[] = [
     key: "foods_to_avoid",
     emoji: "🚫",
     label: "Foods to avoid",
-    hint: "Foods the client doesn't / won't eat (preference or intolerance).",
-    placeholder: "e.g. onions, garlic, deep-fried foods",
+    hint:
+      "Foods the client doesn't / won't eat (preference or intolerance). " +
+      "Prefix with \"raw\" when only the uncooked form is a problem — \"raw onion\" " +
+      "keeps the cooked-onion recipes, plain \"onion\" removes them all.",
+    placeholder: "e.g. onions, garlic, raw onion, deep-fried foods",
   },
   {
     key: "non_negotiables",
