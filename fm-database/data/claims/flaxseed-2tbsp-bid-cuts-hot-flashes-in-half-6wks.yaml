@@ -16,9 +16,9 @@ caveats:
 linked_to_topics:
 - perimenopause-and-menopause
 - menopause
-linked_to_mechanisms:
-- estrogen-signaling
 - estrogen-metabolism
+- estrogen-signaling
+linked_to_mechanisms: []
 linked_to_supplements:
 - flaxseed-oil
 out_of_scope_notes: ''

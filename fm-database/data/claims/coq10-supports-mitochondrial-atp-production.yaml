@@ -1,0 +1,38 @@
+slug: coq10-supports-mitochondrial-atp-production
+statement: Coenzyme Q10 is an essential electron carrier in the mitochondrial electron transport
+  chain and is required for cellular ATP production; it also acts as a lipid-soluble antioxidant
+  protecting mitochondrial membranes.
+evidence_tier: strong
+rationale: The biochemical role is textbook and not in dispute — CoQ10 shuttles electrons from
+  complexes I and II to complex III, so ATP synthesis cannot proceed without it. The STRONG tier
+  applies to that biochemical role only. Whether supplementing CoQ10 in a person who is not
+  deficient improves energy, fatigue or exercise capacity is a separate and considerably weaker
+  claim — see the caveats.
+coaching_translation: CoQ10 is part of how your cells actually make energy — it carries electrons
+  along the chain that produces ATP. That is why it comes up in conversations about fatigue and
+  mitochondrial support. It is fat-soluble, so it is absorbed far better taken with a meal that
+  contains some fat.
+out_of_scope_notes: Do not present CoQ10 as a treatment for fatigue, heart failure or any
+  diagnosed condition. Dosing alongside statins or cardiac medication belongs with the
+  prescribing clinician.
+caveats:
+- The strong tier covers the biochemistry, NOT a clinical benefit from supplementation. Trials of
+  CoQ10 for fatigue and exercise performance in non-deficient people are mixed.
+- Endogenous synthesis declines with age and is reduced by statins, so the people most likely to
+  benefit are those with a reason to be depleted rather than the general population.
+- Ubiquinol (reduced form) is often better absorbed than ubiquinone, particularly over 40.
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_supplements:
+- coq10
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Coenzyme Q10 (CoQ10) is a key component in cellular energy production. It has
+    anti-inflammatory and antioxidant properties, helping mitochondria remain efficient and
+    healthy.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: shivani

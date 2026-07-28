@@ -10,8 +10,8 @@ linked_to_topics:
 - migraine-headache
 - food-sensitivities
 - histamine-intolerance
-linked_to_mechanisms:
 - immune-dysregulation
+linked_to_mechanisms: []
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 77 — Migraine Headache, pg 1266-1268

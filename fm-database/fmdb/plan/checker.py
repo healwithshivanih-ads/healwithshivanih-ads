@@ -19,6 +19,7 @@ like coaching-translation accuracy and plan-vs-assessment coherence.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Literal
 
@@ -331,6 +332,169 @@ def _check_dietary_consistency(
                         target=supp.supplement_slug,
                     ))
                     break
+
+
+# ---------------------------------------------------------------------------
+# Combo-product nutrient overlap
+# ---------------------------------------------------------------------------
+# Real-use bug 2026-07-28 (Sudarshan cl-008): the plan carried a standalone
+# `chromium` 200 mcg entry AND `berberine`. But `berberine` resolves — via
+# supplement_links.yaml, which is what the client app actually links to — to
+# VitaOne's "Liposomal Berberine + Cinnamon + Chromium Complex", 330 mcg
+# chromium picolinate per capsule. The client was being sent to buy chromium
+# he was already swallowing. Second occurrence of the pattern; the first was
+# Manju cl-016 (magnesium single + a sleep blend that also contained
+# magnesium), which the coach caught by hand both times.
+#
+# Nothing upstream can catch this: the catalogue models `berberine` as a pure
+# compound, and the blend only exists in the PRODUCT layer
+# (~/fm-plans/supplement_links.yaml), which the AI suggester never reads. So
+# the check has to happen here, at plan-check time, against the product file.
+#
+# WARNING not CRITICAL, deliberately: keeping a standalone alongside a combo
+# is sometimes correct — this same plan intentionally kept full-dose berberine
+# next to an H. pylori combo whose 320 mg berberine is sub-therapeutic, and
+# said so in coach_rationale. The coach decides; the checker only guarantees
+# she is told.
+
+# Ingredient words too generic to bind on — they appear in nearly every
+# blend's ingredient prose and would fire on everything.
+_OVERLAP_STOPWORDS = {
+    "acid", "extract", "complex", "care", "plus", "oil", "powder", "capsule",
+    "blend", "support", "formula", "tablet", "veg", "mg", "mcg", "iu",
+    "vitamin", "mineral", "probiotic", "citrate", "picolinate", "glycinate",
+    "bisglycinate", "carnosine", "hcl", "root", "leaf", "seed", "standardised",
+    "standardized", "liposomal", "chelated", "sustained", "release",
+}
+
+
+def _overlap_tokens(slug: str, display_name: str | None) -> set[str]:
+    """Distinctive words that identify a nutrient inside ingredient prose.
+
+    Drops generic filler so `magnesium-glycinate` binds on "magnesium" (the
+    thing that can be doubled) and not on "glycinate", and so `vitamin-c`
+    binds on "c"-free tokens rather than the useless word "vitamin".
+    """
+    words: set[str] = set()
+    for source in (slug or "", display_name or ""):
+        for w in re.split(r"[^a-z0-9]+", source.lower()):
+            if len(w) >= 3 and w not in _OVERLAP_STOPWORDS:
+                words.add(w)
+    return words
+
+
+def _load_supplement_links() -> dict:
+    """Read the product catalogue the client app links to. Returns {} on any
+    problem — a missing or malformed product file must never break plan-check.
+    """
+    try:
+        from .storage import plans_root
+        path = plans_root() / "supplement_links.yaml"
+        if not path.exists():
+            return {}
+        import yaml
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+# Retailer preference, kept in lockstep with SOURCE_RANK in
+# `fm-database-web/src/lib/server-actions/supplement-links-match.ts`. It matters
+# here because several slugs are covered by MORE than one product — `berberine`
+# is covered by both a plain Thorne capsule (iHerb, international) and VitaOne's
+# berberine+cinnamon+chromium blend. Only the blend creates an overlap, and the
+# blend is what an India client is actually sent to, so the check has to pick
+# the same winner the client app picks or it silently misses the bug.
+_SOURCE_RANK = {
+    "vitaone": 0, "fmnutrition": 1, "amazon": 2, "custom": 3, "other": 4,
+    "iherb": 5,
+}
+
+
+def _resolve_product(slug: str, links: dict) -> dict | None:
+    """Mirror of the deterministic tier in the TS matcher
+    (`supplement-links-match.ts`): a product binds to a plan supplement when
+    the plan's catalogue slug is in its `covers` / `aliases`, or equals its
+    key, with ties broken by retailer rank. Name-fuzzy tiers are deliberately
+    NOT mirrored — a wrong product here would produce a wrong warning, and
+    silence beats a false alarm.
+    """
+    want = re.sub(r"[^a-z0-9]+", "_", (slug or "").lower()).strip("_")
+    if not want:
+        return None
+    matches: list[tuple[int, dict]] = []
+    for key, entry in links.items():
+        if not isinstance(entry, dict):
+            continue
+        candidates = [key, *(entry.get("covers") or []), *(entry.get("aliases") or [])]
+        if any(
+            re.sub(r"[^a-z0-9]+", "_", str(c).lower()).strip("_") == want
+            for c in candidates
+        ):
+            src = entry.get("source") or (
+                "vitaone" if "vitaone" in str(entry.get("url") or "") else "other"
+            )
+            matches.append((_SOURCE_RANK.get(str(src), 9), entry))
+    if not matches:
+        return None
+    return min(matches, key=lambda m: m[0])[1]
+
+
+def _check_combo_nutrient_overlap(
+    plan: Plan, catalogue: Loaded, findings: list[Finding]
+) -> None:
+    """WARNING when supplement A is prescribed standalone but the PRODUCT that
+    supplement B resolves to already contains A."""
+    links = _load_supplement_links()
+    if not links:
+        return
+
+    supp_idx = _resolve_index(catalogue.supplements)
+    supp_by_slug = {s.slug: s for s in catalogue.supplements}
+
+    # slug → the ingredient prose of the product it resolves to
+    product_text: dict[str, tuple[str, str]] = {}
+    for item in plan.supplement_protocol:
+        entry = _resolve_product(item.supplement_slug, links)
+        if not entry:
+            continue
+        blob = " ".join(
+            str(entry.get(f) or "")
+            for f in ("ingredients", "unit_strength", "display_name")
+        ).lower()
+        if blob.strip():
+            product_text[item.supplement_slug] = (
+                blob, str(entry.get("display_name") or item.supplement_slug)
+            )
+
+    for item in plan.supplement_protocol:
+        slug = item.supplement_slug
+        canon = supp_idx.get(slug, slug) if supp_idx else slug
+        supp = supp_by_slug.get(canon)
+        tokens = _overlap_tokens(slug, getattr(supp, "display_name", None))
+        if not tokens:
+            continue
+
+        for other_slug, (blob, product_name) in product_text.items():
+            if other_slug == slug:
+                continue
+            # Every distinctive word of this nutrient must appear in the other
+            # product's ingredient list, as a whole word.
+            if not all(re.search(rf"\b{re.escape(t)}\b", blob) for t in tokens):
+                continue
+            findings.append(Finding(
+                "WARNING", "supplement_protocol", "combo_overlap",
+                (f"{slug!r} is prescribed standalone, but {other_slug!r} "
+                 f"resolves to {product_name!r}, whose ingredients already "
+                 f"list it ({blob[:160]}...). The client would be buying and "
+                 f"taking the same nutrient twice. Drop the standalone — "
+                 f"UNLESS the amount inside the combo is sub-therapeutic, in "
+                 f"which case keep it and say so in coach_rationale so the "
+                 f"next reviewer does not undo the decision."),
+                target=slug,
+            ))
+            break
 
 
 # ---------------------------------------------------------------------------
@@ -840,6 +1004,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Food-first redundancy ----------
     _check_food_first_redundancy(plan, findings)
+
+    # ---------- Combo-product nutrient overlap ----------
+    _check_combo_nutrient_overlap(plan, catalogue, findings)
 
     # ---------- Aggressive-detox / chelation safety ----------
     _check_aggressive_detox(plan, client, findings)

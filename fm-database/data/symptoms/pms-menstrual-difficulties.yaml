@@ -13,9 +13,9 @@ description: Cyclic mood, pain, and physical symptoms in the premenstrual phase.
 linked_to_topics:
 - comt-catechol-clearance
 - mthfr-methylation-gene
+- estrogen-metabolism
 linked_to_mechanisms:
 - catechol-methylation-comt
-- estrogen-metabolism
 - methylation
 when_to_refer: ''
 sources:

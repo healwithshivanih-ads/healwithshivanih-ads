@@ -10,11 +10,11 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - breast-cancer-prevention
 - cervical-dysplasia
+- estrogen-metabolism
 linked_to_supplements:
 - indole-3-carbinol
 - dim
-linked_to_mechanisms:
-- estrogen-metabolism
+linked_to_mechanisms: []
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 28 — Breast Cancer (Prevention), pg 573-574

@@ -1,0 +1,44 @@
+slug: coq10-antioxidant-protection-during-detox
+statement: CoQ10 is used in functional-medicine detoxification protocols as a lipid-soluble
+  antioxidant, typically 100–300 mg/day, on the rationale that mobilising stored toxins raises
+  oxidative load on mitochondrial membranes.
+evidence_tier: fm_specific_thin
+rationale: This is FM practice guidance rather than trial evidence. The supporting sources are a
+  protocol toolkit (dental amalgam removal, pre-procedure) and a teaching transcript listing
+  CoQ10 among endogenous antioxidants to upregulate during detoxification. CoQ10's antioxidant
+  chemistry is well established, but that a detox protocol specifically needs supplemental CoQ10,
+  and at that dose, has not been tested in controlled trials. FM_SPECIFIC_THIN is the honest tier.
+coaching_translation: 'Some detox protocols include CoQ10 to help protect cells while the body
+  clears toxins. Take it with food containing fat. Detoxification programmes belong with the
+  clinician running them — the coaching work is the groundwork underneath, which matters more:
+  regular bowel movements, hydration, sweating, cruciferous vegetables and adequate protein.'
+out_of_scope_notes: A coach does not initiate, direct or dose a detoxification protocol, and does
+  not advise on dental amalgam removal — that is a dental and medical decision. Standing safety
+  rule — never mobilise stored toxins before the gut is healed and elimination pathways are open
+  (plan-check enforces this for chelating agents).
+caveats:
+- Practice guidance, not trial evidence — no controlled trial has tested CoQ10 as part of a detox
+  protocol.
+- The cited dose range (100–300 mg/day) comes from a single pre-procedure protocol and should not
+  be generalised.
+- Amalgam removal itself carries exposure risk and must be done by a dentist trained in a
+  protective protocol.
+linked_to_topics:
+- metabolic-detoxification
+- dental-amalgam-mercury
+linked_to_supplements:
+- coq10
+linked_to_mechanisms:
+- mitochondrial-toxin-disruption
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure
+  quote: 'CoQ-10: 100–300 mg'
+- id: minich-detox-basics-fmca-transcript
+  location: Antioxidant nutrients section
+  quote: upregulating endogenous antioxidants like glutathione, cysteine, coenzyme Q10, lipoic
+    acid
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: shivani

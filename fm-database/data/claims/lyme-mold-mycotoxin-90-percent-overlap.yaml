@@ -12,8 +12,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - chronic-lyme-disease
 - msids-framework
-linked_to_mechanisms:
 - immune-dysregulation
+linked_to_mechanisms:
 - chronic-inflammation
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
