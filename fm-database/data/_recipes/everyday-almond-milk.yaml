@@ -1,5 +1,7 @@
 slug: everyday-almond-milk
 name: Everyday Almond Milk
+aliases:
+- Soaked fresh almond milk
 meal_type:
 - drink
 - side
@@ -74,9 +76,9 @@ image:
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: everyday almond milk
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-07-28'
 updated_by: Shivani
 kcal_per_serving: 139
 kcal_total: 460

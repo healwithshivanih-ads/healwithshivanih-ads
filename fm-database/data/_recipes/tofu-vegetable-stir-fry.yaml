@@ -1,5 +1,7 @@
 slug: tofu-vegetable-stir-fry
 name: Tofu-vegetable stir-fry
+aliases:
+- Tofu and vegetable stir-fry
 meal_type:
 - lunch
 - dinner
@@ -88,10 +90,10 @@ image:
 sources:
 - id: shivani-hari-original
   location: Tofu-vegetable stir-fry
-version: 1
+version: 2
 kitchen_tested: false
 status: active
-updated_at: '2026-06-12'
+updated_at: '2026-07-28'
 updated_by: Shivani
 kcal_per_serving: 199
 kcal_total: 420

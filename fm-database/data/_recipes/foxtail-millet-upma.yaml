@@ -40,9 +40,6 @@ ingredients:
 - item: curry leaves
   qty: '10'
   unit: leaves
-- item: onion, chopped
-  qty: '1'
-  unit: piece
 - item: ginger, grated
   qty: '1'
   unit: tsp
@@ -69,7 +66,7 @@ steps:
   turning to mush.
 - In another pan, splutter the mustard seeds in the ghee, add the urad dal and curry
   leaves.
-- Add the onion, ginger and green chilli, then the vegetables, and cook 3 minutes.
+- Add the ginger and green chilli, then the vegetables, and cook 3 minutes.
 - Pour in the water with the salt and bring to a boil. Stir in the roasted millet.
 - Cover and cook on low 12–15 minutes until the water is absorbed. Rest 5 minutes,
   then fluff with a fork and finish with coriander and lemon.
@@ -84,7 +81,9 @@ good_for:
 - blood-sugar-regulation
 one_line: A savoury foxtail-millet upma with a mustard-and-curry-leaf tempering.
 headnote: Dry-roasting the foxtail before cooking keeps the upma light and fluffy
-  rather than sticky — a warm, grounding breakfast that's gentle on digestion.
+  rather than sticky — a warm, grounding breakfast that's gentle on digestion. Written
+  without onion or garlic, so it suits Jain and allium-free plans as it stands; the
+  mustard-and-curry-leaf tempering is doing the real work anyway.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -98,30 +97,30 @@ image:
 sources:
 - id: shivani-hari-original
   location: Foxtail millet upma
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-12'
+updated_at: '2026-07-28'
 updated_by: Shivani
 kcal_per_serving: 425
 kcal_total: 560
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 425
-  protein_g: 14.0
-  carbs_g: 67.0
-  fat_g: 11.4
-  fibre_g: 10.5
-  iron_mg: 3.5
-  calcium_mg: 76.3
-  magnesium_mg: 102
-  zinc_mg: 2.7
-  potassium_mg: 516
-  folate_ug: 57.9
+  kcal: 403
+  protein_g: 13.4
+  carbs_g: 61.9
+  fat_g: 11.3
+  fibre_g: 9.6
+  iron_mg: 3.3
+  calcium_mg: 63.6
+  magnesium_mg: 96.4
+  zinc_mg: 2.6
+  potassium_mg: 436
+  folate_ug: 47.5
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 23.3
-  omega3_mg: 131
+  vit_c_mg: 19.2
+  omega3_mg: 129
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -129,10 +128,8 @@ rich_in:
 - iron
 - magnesium
 - zinc
-- potassium
-- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-28'
 kitchen_tested: false
 aliases:
 - Foxtail upma

@@ -1,5 +1,7 @@
 slug: scrambled-eggs
 name: Scrambled eggs
+aliases:
+- Soft scrambled eggs
 meal_type:
 - breakfast
 - lunch
@@ -74,10 +76,10 @@ image:
 sources:
 - id: shivani-hari-original
   location: Scrambled eggs
-version: 1
+version: 2
 kitchen_tested: false
 status: active
-updated_at: '2026-06-12'
+updated_at: '2026-07-28'
 updated_by: Shivani
 kcal_per_serving: 133
 kcal_total: 280

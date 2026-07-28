@@ -69,9 +69,9 @@ image:
 sources:
 - id: shivani-hari-original
   location: Jowar roti
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-12'
+updated_at: '2026-07-28'
 updated_by: Shivani
 kcal_per_serving: 421
 kcal_total: 340
@@ -104,4 +104,5 @@ nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'
 kitchen_tested: false
 aliases:
+- Soft jowar roti
 - Jowar rotis

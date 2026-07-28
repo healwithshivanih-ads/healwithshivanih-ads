@@ -20,7 +20,7 @@ main_ingredients:
 - paneer
 - yoghurt
 - capsicum
-- onion
+- spices
 contains_allergens:
 - dairy
 ingredients:
@@ -30,7 +30,7 @@ ingredients:
 - item: thick curd (yoghurt)
   qty: '0.5'
   unit: cup
-- item: ginger-garlic paste
+- item: ginger paste
   qty: '1'
   unit: tsp
 - item: red chilli powder
@@ -48,9 +48,6 @@ ingredients:
 - item: capsicum, cut in squares
   qty: '1'
   unit: piece
-- item: onion, cut in squares
-  qty: '1'
-  unit: piece
 - item: salt
   qty: to taste
   unit: ''
@@ -63,10 +60,9 @@ ingredients:
 steps:
 - Hang the curd in a muslin for a few minutes if it looks thin — a watery marinade
   slides off the paneer.
-- Whisk the curd with the ginger-garlic paste, chilli powder, turmeric, garam masala,
-  roasted besan and salt.
-- Fold in the paneer, capsicum and onion and leave to marinate for 20 minutes at room
-  temperature.
+- Whisk the curd with the ginger paste, chilli powder, turmeric, garam masala, roasted
+  besan and salt.
+- Fold in the paneer and capsicum and leave to marinate for 20 minutes at room temperature.
 - Heat the oil in a heavy pan and cook the pieces in a single layer, turning once,
   until charred at the edges.
 - Squeeze lemon over just before serving.
@@ -78,9 +74,10 @@ kcal_is_estimate: true
 protein_g: 26.0
 good_for:
 - agni-digestive-fire
-one_line: Yoghurt-marinated paneer cubes, charred in a pan with capsicum and onion.
+one_line: Yoghurt-marinated paneer cubes, charred in a pan with capsicum.
 headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
-  doesn't need a heavy gravy to taste good.
+  doesn't need a heavy gravy to taste good. Written without onion or garlic, so it
+  suits Jain and allium-free plans as it stands.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -94,32 +91,32 @@ image:
 sources:
 - id: shivani-hari-original
   location: Paneer tikka (yoghurt
-version: 1
+version: 2
 kitchen_tested: false
 status: active
-updated_at: '2026-06-12'
+updated_at: '2026-07-28'
 updated_by: Shivani
 kcal_per_serving: 427
 kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 427
-  protein_g: 26.0
-  carbs_g: 18.0
+  kcal: 403
+  protein_g: 25.3
+  carbs_g: 12.5
   fat_g: 29.1
-  fibre_g: 3.0
-  iron_mg: 1.8
-  calcium_mg: 627
-  magnesium_mg: 46.3
-  zinc_mg: 3.2
-  potassium_mg: 396
-  folate_ug: 70.9
+  fibre_g: 2.0
+  iron_mg: 1.6
+  calcium_mg: 612
+  magnesium_mg: 40.3
+  zinc_mg: 3.1
+  potassium_mg: 310
+  folate_ug: 60.3
   b12_ug: 1.0
   vit_d_ug: 0.2
-  vit_c_mg: 82.8
-  omega3_mg: 150
-nutrient_coverage_pct: 89.3
+  vit_c_mg: 78.3
+  omega3_mg: 148
+nutrient_coverage_pct: 86.5
 rich_in:
 - protein
 - calcium
@@ -127,4 +124,4 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-28'

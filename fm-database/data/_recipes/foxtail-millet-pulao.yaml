@@ -45,12 +45,12 @@ ingredients:
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
-- item: onion, sliced
-  qty: '1'
-  unit: piece
-- item: ginger-garlic paste
+- item: ginger, grated
   qty: '1'
   unit: tsp
+- item: green chilli, slit
+  qty: '1'
+  unit: piece
 - item: mixed vegetables (carrot, beans, peas, cauliflower)
   qty: '1.5'
   unit: cup
@@ -66,7 +66,7 @@ ingredients:
 steps:
 - Rinse the millet and drain it well.
 - Heat the ghee and fry the whole spices and cumin until they release their scent.
-- Add the onion and brown lightly, then the ginger-garlic paste.
+- Add the ginger and green chilli and let them lose their raw edge, about 30 seconds.
 - Add the vegetables and millet and toss for 2 minutes so every grain gets coated.
 - Pour in the water with the salt and mint, cover, and cook on low 15 minutes. Rest
   5 minutes off the heat before fluffing.
@@ -80,8 +80,10 @@ good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
 one_line: A one-pot foxtail-millet pulao with whole spices and vegetables.
-headnote: Dry-roasting the foxtail before cooking keeps the upma light and fluffy
-  rather than sticky — a warm, grounding breakfast that's gentle on digestion.
+headnote: Written without onion or garlic, so it suits Jain and allium-free plans
+  as it stands. The whole spices carry the flavour — bloom them properly in the ghee
+  and you will not miss the aromatics. Rinsing and draining the millet well keeps
+  the grains separate rather than sticky.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -95,39 +97,38 @@ image:
 sources:
 - id: shivani-hari-original
   location: Foxtail millet pulao
-version: 1
+version: 2
 kitchen_tested: false
 status: active
-updated_at: '2026-06-12'
+updated_at: '2026-07-28'
 updated_by: Shivani
 kcal_per_serving: 433
 kcal_total: 560
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 433
-  protein_g: 14.1
-  carbs_g: 69.8
+  kcal: 410
+  protein_g: 13.5
+  carbs_g: 64.5
   fat_g: 11.2
-  fibre_g: 12.0
-  iron_mg: 4.2
-  calcium_mg: 92.4
-  magnesium_mg: 102
-  zinc_mg: 2.8
-  potassium_mg: 568
-  folate_ug: 62.9
+  fibre_g: 11.0
+  iron_mg: 4.0
+  calcium_mg: 77.9
+  magnesium_mg: 96.8
+  zinc_mg: 2.7
+  potassium_mg: 490
+  folate_ug: 52.9
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 27.4
-  omega3_mg: 140
-nutrient_coverage_pct: 94.3
+  vit_c_mg: 25.7
+  omega3_mg: 138
+nutrient_coverage_pct: 92.8
 rich_in:
 - protein
 - fibre
 - iron
 - magnesium
 - zinc
-- potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-28'

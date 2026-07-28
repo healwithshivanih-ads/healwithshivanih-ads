@@ -1,5 +1,7 @@
 slug: ghee-roasted-makhana-with-pepper
 name: Ghee-Roasted Makhana with Pepper
+aliases:
+- Makhana dry-roasted in ghee
 meal_type:
 - snack
 diet:
@@ -89,9 +91,9 @@ nutrient_coverage_pct: 18.9
 rich_in: []
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-07-27'
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-07'
+updated_at: '2026-07-28'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/ghee-roasted-makhana-with-pepper.jpg
