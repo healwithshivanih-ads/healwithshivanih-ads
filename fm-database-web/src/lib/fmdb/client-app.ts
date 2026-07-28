@@ -1558,6 +1558,49 @@ export function recipeConsistentWithDish(
   return dishToks.some((t) => recipeToks.has(t));
 }
 
+/** Words in a method step that suggest heat was applied. */
+const COOK_VERBS =
+  /\b(saut|fry|fried|frying|cook|boil|simmer|roast|bake|grill|griddle|temper|tadka|heat|steam|braise|caramelis|carameliz|brown|golden|translucent|soften|wilt|toast|pressure)/;
+/** Corroborating evidence that a step is actually a COOKING step. */
+const COOK_CONTEXT =
+  /\b(pan|tawa|kadai|skillet|wok|oven|flame|stove|griddle|pot|heat|hot|oil|ghee|butter|minute|minutes|min|second|seconds|sec|low|medium|high|until|side|lid|cover)\b/;
+/**
+ * Heat in this step? Both a verb AND corroboration, because recipe prose is
+ * full of cook words used as ingredient labels — "roasted cumin", "fried
+ * gram", "boiled egg". Kachumber's "Add the lemon juice, roasted cumin, black
+ * salt and pepper and mix" reads as cooking to a verb-only check, which would
+ * have declared its raw onion cooked and defeated the whole feature.
+ * Erring toward "not heat" errs toward calling the food RAW, which errs toward
+ * dropping the recipe — the safe direction for an avoid list.
+ */
+const stepHasHeat = (s: string): boolean => COOK_VERBS.test(s) && COOK_CONTEXT.test(s);
+
+/**
+ * Is `token` used RAW in this recipe?
+ *
+ * Powers preparation-qualified avoids ("raw onion"), where a client reacts to
+ * a food uncooked but eats it happily in a curry — dropping every recipe that
+ * merely NAMES the food would gut their menu for nothing.
+ *
+ * Rule: find where the food first enters, then look for heat FROM THAT POINT
+ * ON. Anything earlier is irrelevant — chicken seared at step 3 says nothing
+ * about onion laid on the wrap at step 5. Looking forward rather than at the
+ * one step is what keeps batter dishes honest: a cheela mixes onion into besan
+ * at step 1 with no verb, then griddles it at step 4, and that onion is cooked.
+ *
+ * Never named in the method? Then it's raw only if the dish never cooks at all
+ * (salad, raita, chutney). Otherwise assume it goes in the pan — an unqualified
+ * avoid entry stays available when a client needs the food gone outright.
+ */
+export function ingredientIsRawIn(r: { method?: string[] }, token: string): boolean {
+  const steps = (r.method ?? []).filter(Boolean).map((s) => s.toLowerCase());
+  if (!steps.length) return false;
+  const rx = new RegExp(`\\b${token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+  const first = steps.findIndex((s) => rx.test(s));
+  if (first === -1) return !steps.some(stepHasHeat);
+  return !steps.slice(first).some(stepHasHeat);
+}
+
 /** One thing a dish can resolve to, plus every name it answers to. A library
  *  recipe answers to exactly one (its title); a home remedy answers to its
  *  display name, its slug and all its aliases. */
@@ -3197,22 +3240,46 @@ export async function loadClientAppData(
     [/\b(soy|soya)\b/, "soy"],
   ];
   const AVOID_STOP = new Set(["oil", "salt", "water", "ghee"]);
-  const avoidRaw = asStr(client.foods_to_avoid).toLowerCase();
+  // PREPARATION-QUALIFIED AVOIDS (cl-022 Nazneen, 2026-07-28). Raw onion gives
+  // her a dry mouth; cooked onion does not. Written plainly as "onion" the
+  // category trigger below expands to onion/shallot/leek and drops 149/467
+  // library recipes — every sabzi, dal and curry — because nothing here knew
+  // preparation. So "raw <food>" is now parsed as its own weaker avoid: the
+  // food is dropped only from recipes that DON'T cook it.
+  // Unqualified entries are untouched — a Jain "Onion, Garlic" must still drop
+  // every onion recipe, cooked or not — so this is strictly additive.
+  const avoidRawText = asStr(client.foods_to_avoid).toLowerCase();
+  const rawOnlyTokens = new Set<string>();
+  // strip "raw <food>" out before the normal passes so it can't also register
+  // as an unqualified avoid (the bug this whole block exists to prevent)
+  const avoidScanText = avoidRawText.replace(/\braw\s+([a-z][a-z ]{1,20}?)\b/g, (_m, food: string) => {
+    const f = String(food).trim();
+    if (!f || AVOID_STOP.has(f)) return " ";
+    rawOnlyTokens.add(f);
+    // "raw onion" should also cover raw shallot/leek — expand via the same map
+    for (const [rx, cat] of AVOID_CATEGORY_TRIGGERS)
+      if (rx.test(f)) for (const m of AVOID_EXPAND[cat]) rawOnlyTokens.add(m);
+    return " ";
+  });
   const avoidTokens = new Set<string>();
   for (const [rx, cat] of AVOID_CATEGORY_TRIGGERS)
-    if (rx.test(avoidRaw)) for (const m of AVOID_EXPAND[cat]) avoidTokens.add(m);
-  for (const t of avoidRaw.split(/[,;/&\n()]|\band\b/)) {
+    if (rx.test(avoidScanText)) for (const m of AVOID_EXPAND[cat]) avoidTokens.add(m);
+  for (const t of avoidScanText.split(/[,;/&\n()]|\band\b/)) {
     const w = t.replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
     const words = w ? w.split(" ") : [];
     if (words.length === 0 || words.length > 3) continue; // blank or narrative fragment
     if (w.length < 3 || w.length > 22 || AVOID_STOP.has(w)) continue;
     avoidTokens.add(w);
   }
+  // a token already covered unconditionally needs no raw-only pass
+  for (const t of avoidTokens) rawOnlyTokens.delete(t);
   const avoidRes = [...avoidTokens].map((t) => new RegExp(`\\b${t}\\b`));
+  const rawOnlyRes = [...rawOnlyTokens].map((t) => ({ t, rx: new RegExp(`\\b${t}\\b`) }));
   const recipeAvoidsSafe = (r: LetterRecipe): boolean => {
-    if (!avoidRes.length) return true;
+    if (!avoidRes.length && !rawOnlyRes.length) return true;
     const blob = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`.toLowerCase();
-    return !avoidRes.some((rx) => rx.test(blob));
+    if (avoidRes.some((rx) => rx.test(blob))) return false;
+    return !rawOnlyRes.some(({ t, rx }) => rx.test(blob) && ingredientIsRawIn(r, t));
   };
   const libraryRecipes = libraryRecipesAll.filter(
     (l) => recipeAllowed(l.recipe) && recipeAvoidsSafe(l.recipe),
