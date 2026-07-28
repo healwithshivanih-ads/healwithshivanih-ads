@@ -11,6 +11,7 @@ import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlo
 import { BreathLaunchCard } from "./ochre-breath";
 import { EftLaunchCard, MindBodyNudge } from "./ochre-eft";
 import { SleepLaunchCard } from "./ochre-sleep";
+import { SomaticLaunchCard } from "./ochre-somatic";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
@@ -350,6 +351,7 @@ export function TodayScreen({
   openBreath,
   openEft,
   openSleep,
+  openSomatic,
   practices,
   onTogglePractice,
   openGrocery,
@@ -370,6 +372,7 @@ export function TodayScreen({
   openBreath: () => void;
   openEft: () => void;
   openSleep: () => void;
+  openSomatic: () => void;
   practices: { id: string; name: string; when: string; details?: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
@@ -567,6 +570,7 @@ export function TodayScreen({
           {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
           {data.eft && <EftLaunchCard eft={data.eft} onStart={openEft} />}
           {data.sleep && <SleepLaunchCard sleep={data.sleep} onStart={openSleep} />}
+          {data.somatic && <SomaticLaunchCard somatic={data.somatic} onStart={openSomatic} />}
           {data.mindBody?.locked && (
             <MindBodyNudge
               nextUp={data.mindBody.nextUp}
