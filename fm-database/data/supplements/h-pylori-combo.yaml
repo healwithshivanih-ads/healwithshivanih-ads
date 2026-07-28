@@ -1,0 +1,43 @@
+slug: h-pylori-combo
+display_name: H. Pylori Care (FM Nutrition)
+category: other
+aliases:
+- h-pylori-care
+- h. pylori care
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 2
+    max: 2
+    unit: capsules
+timing_options:
+- morning
+- evening
+take_with_food: required
+linked_to_topics:
+- h-pylori-infection
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_claims: []
+notes_for_coach: 'Practitioner-dispensed COMBINATION product, not a single compound —
+  catalogued so plans that prescribe it resolve. Label composition per 2 capsules:
+  mastic gum 1,300 mg + bismuth citrate 140 mg + berberine 320 mg + zinc carnosine
+  8.5 mg. Replaces standalone mastic gum + bismuth in a Phase 1 antimicrobial protocol
+  and disrupts the H. pylori biofilm. IMPORTANT: the berberine and zinc carnosine
+  inside it are SUB-THERAPEUTIC — if either is clinically needed at full dose, keep the
+  standalone alongside and say so in coach_rationale (plan-check will flag the overlap;
+  that note is the answer to the flag). Clinical rationale for each ingredient lives on
+  its own catalogue entry — see [[mastic-gum]], [[berberine]], [[zinc-carnosine]].'
+notes_for_client: A combination capsule that brings together several gut-supportive
+  ingredients in one, so you take fewer separate supplements during the first phase.
+  Take it with food.
+evidence_tier: fm_specific_thin
+sources:
+- id: practitioner-product-pages
+  location: FM Nutrition — H. Pylori Care 90 caps, product page label copy
+  quote: Mastic gum, bismuth citrate, berberine and zinc carnosine combination capsule.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: shivani

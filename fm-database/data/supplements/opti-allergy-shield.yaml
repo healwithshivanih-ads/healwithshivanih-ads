@@ -1,0 +1,43 @@
+slug: opti-allergy-shield
+display_name: Opti-Allergy Shield (VitaOne)
+category: other
+aliases:
+- opti allergy shield
+- opti-allergy-shield-vitaone
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 2
+    max: 2
+    unit: capsules
+timing_options:
+- morning
+- evening
+take_with_food: avoid
+linked_to_topics:
+- histamine-intolerance
+linked_to_mechanisms:
+- mast-cell-degranulation
+linked_to_symptoms: []
+linked_to_claims: []
+notes_for_coach: 'Practitioner-dispensed COMBINATION capsule, not a single compound —
+  catalogued so plans that prescribe it resolve. Label composition: stinging nettle
+  extract, quercetin, rutin, bromelain, broccoli extract, astragalus, grape seed
+  extract. Amounts are NOT stated. Label suggested use is 2 capsules away from food.
+  Used as a natural antihistamine layer; replaces a standalone quercetin script.
+  CAUTION: because no amounts are given you cannot claim a therapeutic quercetin dose —
+  if that is the intent, prescribe [[quercetin]] alongside and record why. Clinical
+  rationale per ingredient lives on its own entry — see [[quercetin]], [[bromelain]].'
+notes_for_client: A plant-based capsule that helps calm histamine reactions. Take it
+  away from food.
+evidence_tier: fm_specific_thin
+sources:
+- id: practitioner-product-pages
+  location: VitaOne — Opti-Allergy Shield, product page ingredient list
+  quote: Stinging nettle extract, quercetin, rutin, bromelain, broccoli extract, astragalus,
+    and grape seed extract.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: shivani

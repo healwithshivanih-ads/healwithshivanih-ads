@@ -1,0 +1,27 @@
+id: practitioner-product-pages
+title: Practitioner-brand product pages — FM Nutrition & VitaOne (vendor label copy)
+source_type: other
+quality: low
+authors:
+- FM Nutrition
+- VitaOne
+publisher: FM Nutrition / VitaOne (India)
+url: https://fmnutrition.in
+notes: 'Vendor product pages for the practitioner-dispensed combination formulas the
+  coach actually prescribes in India (H. Pylori Care, Leaky Gut Care, Opti-Allergy
+  Shield and similar). Ingredient lists and suggested-use text are transcribed from
+  the label copy on those pages into ~/fm-plans/supplement_links.yaml, each row
+  carrying an extracted_on date. EVIDENCE BASE — be honest about what this is: it is
+  MANUFACTURER LABEL COPY, not evidence. It establishes only what is in the bottle and
+  at what dose. It says nothing about whether the formula works, and several of these
+  products do not state per-ingredient amounts at all. Catalogue entries sourced here
+  must stay at evidence_tier fm_specific_thin and must carry the clinical rationale on
+  the INGREDIENT entries (mastic gum, bismuth, zinc carnosine, quercetin, L-glutamine),
+  which have their own better-sourced records. Created 2026-07-28 so that combination
+  products already prescribed on live plans could be represented in the catalogue at
+  all — before this, three of them resolved to nothing and threw CRITICAL findings on a
+  published plan.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: shivani

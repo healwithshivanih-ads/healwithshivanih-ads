@@ -1,0 +1,41 @@
+slug: leaky-gut-care
+display_name: Leaky Gut Care (FM Nutrition)
+category: other
+aliases:
+- leaky gut care
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 1
+    max: 1
+    unit: scoops
+timing_options:
+- morning
+- mid_morning
+take_with_food: avoid
+linked_to_topics:
+- leaky-gut
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_claims: []
+notes_for_coach: 'Practitioner-dispensed COMBINATION powder, not a single compound —
+  catalogued so plans that prescribe it resolve. Label description: L-glutamine + zinc
+  carnosine + mucosal herbs, 80 g powder, 1 scoop daily in water between meals.
+  Consolidates what would otherwise be separate glutamine / zinc carnosine / aloe / DGL
+  repair items into one product — fewer pills, better adherence. CAUTION: per-ingredient
+  amounts are NOT stated on the label, so you cannot assume the L-glutamine reaches a
+  5 g gut-repair dose. If a therapeutic glutamine dose is the goal, prescribe
+  [[l-glutamine]] alongside and record why. Clinical rationale per ingredient lives on
+  its own entry — see [[l-glutamine]], [[zinc-carnosine]].'
+notes_for_client: A gut-soothing powder you stir into water between meals. It brings
+  several lining-repair ingredients together so you are not taking four separate things.
+evidence_tier: fm_specific_thin
+sources:
+- id: practitioner-product-pages
+  location: FM Nutrition — Leaky Gut Care 80 gm powder, product page label copy
+  quote: L-glutamine with zinc carnosine and mucosal herbs, 1 scoop daily in water.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: shivani

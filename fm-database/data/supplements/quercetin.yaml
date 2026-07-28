@@ -1,5 +1,8 @@
 slug: quercetin
 display_name: Quercetin
+aliases:
+# misspelled combo slug used on Krittika's live plan (cl-019); the paired bromelain has its own entry - 2026-07-28
+- quercitin-with-bromelain
 category: herb
 forms_available:
 - capsule
