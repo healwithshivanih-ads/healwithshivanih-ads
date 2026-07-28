@@ -22,8 +22,8 @@ linked_to_topics:
 - hrt
 - menopause
 - perimenopause-and-menopause
-linked_to_mechanisms:
 - estrogen-signaling
+linked_to_mechanisms: []
 linked_to_supplements: []
 out_of_scope_notes: HRT decisions are clinician-driven; coach educates on the WHI
   signal patterns and refers to a menopause specialist.

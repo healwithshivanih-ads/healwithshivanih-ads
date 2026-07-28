@@ -24,9 +24,9 @@ linked_to_topics:
 - insulin-resistance
 - exercise-prescription
 - metabolic-syndrome
-out_of_scope_notes: ''
-linked_to_mechanisms:
 - exercise-mitochondrial-biogenesis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: panda-circadian-code-book

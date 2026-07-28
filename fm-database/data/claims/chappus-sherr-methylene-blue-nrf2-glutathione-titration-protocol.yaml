@@ -11,12 +11,12 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - mitochondrial-health-nutrients
 - chronic-inflammation
+- immune-dysregulation
 linked_to_supplements:
 - glutathione
 - n-acetylcysteine
 linked_to_mechanisms:
 - chronic-inflammation
-- immune-dysregulation
 sources:
 - id: sherr-chappus-94pct-mitochondrial-2026
   location: Podcast — NRF2 pathway + titration protocol segment

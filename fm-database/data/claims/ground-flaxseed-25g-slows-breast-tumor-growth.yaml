@@ -9,10 +9,10 @@ statement: Ground flaxseed provides lignans that bind estrogen receptors and inc
 evidence_tier: plausible_emerging
 linked_to_topics:
 - breast-cancer-prevention
+- estrogen-metabolism
 linked_to_supplements:
 - flaxseed-oil
-linked_to_mechanisms:
-- estrogen-metabolism
+linked_to_mechanisms: []
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 28 — Breast Cancer (Prevention), pg 570-571
