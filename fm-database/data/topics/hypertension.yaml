@@ -2,6 +2,10 @@ slug: hypertension
 display_name: Hypertension
 aliases:
 - high blood pressure
+# Hyphenated slug form. The spaced alias above does NOT resolve a `high-blood-pressure`
+# cross-reference — 15 catalogue files were linking to that slug and silently failing to
+# resolve (added 2026-07-28).
+- high-blood-pressure
 - elevated blood pressure
 - HTN
 summary: Persistently elevated blood pressure, identified as both a non-modifiable risk amplifier and a modifiable CVS risk

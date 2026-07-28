@@ -14,6 +14,10 @@ typical_dose_range:
     min: 100
     max: 300
     unit: mg
+  liquid:
+    min: 100
+    max: 300
+    unit: mg
 timing_options:
 - with_breakfast
 - with_lunch
@@ -33,7 +37,7 @@ linked_to_topics:
 - dental-amalgam-mercury
 - metabolic-detoxification
 - mitochondrial-health-nutrients
-- high-blood-pressure
+- hypertension
 - detoxification
 - atherosclerosis
 - essential-hypertension
