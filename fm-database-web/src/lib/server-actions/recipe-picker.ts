@@ -138,6 +138,9 @@ export async function searchRecipesAction(
           ingredients,
           method: (Array.isArray(r.steps) ? r.steps : []).map(String),
           cookTimeMin: r.cook_time_min == null ? undefined : Number(r.cook_time_min),
+          // a gluten_free jowar roti must not be caught by the gluten
+          // category's "roti" proxy — same rule as the client app
+          diet: (Array.isArray(r.diet) ? r.diet : []).map(String),
         })
       )
         continue;

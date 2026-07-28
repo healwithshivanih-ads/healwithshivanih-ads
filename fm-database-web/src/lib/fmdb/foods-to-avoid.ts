@@ -29,6 +29,9 @@ export interface AvoidableRecipe {
   mains?: string[];
   ingredients: string[];
   method?: string[];
+  /** recipe diet tags. A recipe that DECLARES itself free of a category can't
+   *  be caught out by that category's proxy words — see `EXONERATES`. */
+  diet?: string[];
   /** minutes of actual cooking. `0` means nothing in this recipe is cooked —
    *  the strongest raw signal there is. `undefined` = not recorded (letter-pack
    *  recipes, home-remedy probes), which falls back to a verb scan. */
@@ -43,6 +46,9 @@ const AVOID_EXPAND: Record<string, string[]> = {
   gluten: ["wheat", "atta", "maida", "suji", "rava", "semolina", "bread", "crouton", "pasta", "barley", "rye", "dalia", "paratha", "roti", "chapati", "thepla", "poori"],
   nut: ["almond", "cashew", "walnut", "pistachio", "hazelnut", "pecan"],
   onion: ["onion", "shallot", "leek"],
+  // NOTE: a category's members are PROXIES, and some proxy words name a FORM
+  // rather than an ingredient — "roti", "bread", "pasta" exist in gluten-free
+  // grains too. `EXONERATES` below stops those convicting an innocent recipe.
   soy: ["soy", "soya", "tofu", "tempeh", "edamame"],
   // "No red meat" matched nothing — no recipe writes the phrase, they write
   // mutton and keema. Two live clients had the words on file and were being
@@ -58,6 +64,35 @@ const AVOID_CATEGORY_TRIGGERS: [RegExp, keyof typeof AVOID_EXPAND][] = [
   [/\b(soy|soya)\b/, "soy"],
   [/\bred meats?\b/, "red_meat"],
 ];
+
+/**
+ * Recipe diet tag that clears a category's proxy words.
+ *
+ * The gluten list has to carry FORM words — "roti", "bread", "pasta" — because
+ * a wheat roti rarely spells out "wheat". But those forms exist in gluten-free
+ * grains, so `jowar-roti.yaml` (pure sorghum flour, tagged `gluten_free`) was
+ * being withheld from the two clients who most need it: cl-005, who avoids
+ * wheat, and cl-009, who is strictly gluten-free for Hashimoto's. A jowar roti
+ * is exactly the substitute they should be offered.
+ *
+ * Only CATEGORY-DERIVED tokens are exonerated. If the coach literally typed
+ * "roti", that is taken at face value and no diet tag overrides it.
+ */
+const EXONERATES: Partial<Record<keyof typeof AVOID_EXPAND, string>> = {
+  gluten: "gluten_free",
+  dairy: "vegan", // vegan is a stronger claim than dairy-free
+};
+
+/** Gluten members that name a FORM, not a grain — these exist gluten-free. */
+const GLUTEN_FORMS = new Set(["bread", "pasta", "paratha", "roti", "chapati", "thepla", "poori", "dalia"]);
+/**
+ * Grains that make a form word innocent. The client's own recipe pack is
+ * markdown with no diet tags, so `gluten_free` is unavailable exactly where
+ * cl-009's "Jowar Roti" lives — naming the grain is the signal that survives
+ * both surfaces.
+ */
+const GF_GRAIN =
+  /\b(jowar|sorghum|bajra|pearl millet|ragi|nachni|finger millet|millet|sama|samak|rajgira|amaranth|kuttu|buckwheat|besan|gram flour|chickpea flour|rice flour|almond flour|coconut flour|quinoa)\b/;
 
 /** Too generic to be worth dropping a recipe over. */
 const AVOID_STOP = new Set(["oil", "salt", "water", "ghee"]);
@@ -179,6 +214,45 @@ export function usesIngredientRaw(r: AvoidableRecipe, rx: RegExp, token: string)
   return ingredientIsRawIn(r, token);
 }
 
+const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const NEG_WORD = "(?:no|not|without|omit|omits|omitting|skip|skips|skipping|sans|hold\\s+the|free\\s+(?:of|from)|instead\\s+of)";
+
+/**
+ * True when EVERY mention of `token` in `blob` is a promise to leave it out.
+ *
+ * A personalised recipe names a food precisely because it is avoiding it:
+ * cl-004 is Jain, and the read-time pack gate deleted her
+ * "Paneer Tikka (No-Onion-Garlic Marinade)" — the one recipe authored to
+ * satisfy her restriction — because the title contains "onion". A blob scan
+ * reads compliance as contamination.
+ *
+ * `siblings` are the client's OTHER avoided foods, and they are what makes
+ * this safe. A negator only reaches past words that are themselves avoided:
+ * in "no-onion-garlic" the `no` carries through `onion` to reach `garlic`,
+ * but in "no oil, onion 30 g" the chain breaks at `oil` — not an avoided
+ * food, so the onion is a real ingredient and the recipe is still dropped.
+ *
+ * Deliberately strict beyond that: ONE unqualified mention anywhere and the
+ * food counts as present, so a title claiming "no onion" over an ingredient
+ * list containing onion is still caught.
+ */
+export function onlyNegatedMentions(blob: string, token: string, siblings: string[] = []): boolean {
+  const others = siblings.filter((s) => s !== token).map(esc);
+  // the negator may reach across other avoided foods (and the connectors
+  // between them), but nothing else
+  const link = others.length ? `(?:(?:${others.join("|")})|and|,)[\\s,-]*` : `(?:and|,)[\\s,-]*`;
+  const neg = new RegExp(`\\b${NEG_WORD}[\\s-]*(?:${link}){0,4}$`);
+  const rx = new RegExp(`(.{0,40})\\b${esc(token)}\\b([\\s-]*free\\b)?`, "g");
+  let m: RegExpExecArray | null;
+  let seen = false;
+  while ((m = rx.exec(blob)) !== null) {
+    seen = true;
+    if (!(neg.test(m[1]) || m[2])) return false; // a real, unqualified use
+    if (m.index === rx.lastIndex) rx.lastIndex++; // zero-width guard
+  }
+  return seen;
+}
+
 export interface AvoidFilter {
   /** false ⇒ this recipe names a food the client avoids. */
   safe: (r: AvoidableRecipe) => boolean;
@@ -218,11 +292,19 @@ export function buildAvoidFilter(foodsToAvoid: string): AvoidFilter {
     (isRaw ? rawSegs : blanketSegs).push(seg);
   }
 
+  // Which tokens are only here because a CATEGORY expanded to them, and which
+  // did the coach actually type? A category member is a proxy and can be
+  // wrong; a word the coach wrote is not second-guessed. See `EXONERATES`.
+  const derivedFrom = new Map<string, keyof typeof AVOID_EXPAND>();
   const collect = (segs: string[]): Set<string> => {
     const out = new Set<string>();
     const joined = segs.join(" , ");
     for (const [rx, cat] of AVOID_CATEGORY_TRIGGERS)
-      if (rx.test(joined)) for (const m of AVOID_EXPAND[cat]) out.add(m);
+      if (rx.test(joined))
+        for (const m of AVOID_EXPAND[cat]) {
+          out.add(m);
+          if (!derivedFrom.has(m)) derivedFrom.set(m, cat);
+        }
     for (const seg of segs) {
       const w = clean(seg)
         .split(" ")
@@ -232,6 +314,7 @@ export function buildAvoidFilter(foodsToAvoid: string): AvoidFilter {
       if (words.length === 0 || words.length > 3) continue; // blank or narrative
       if (w.length < 3 || w.length > 22 || AVOID_STOP.has(w)) continue;
       out.add(w);
+      derivedFrom.delete(w); // typed by the coach — take it literally
     }
     return out;
   };
@@ -246,9 +329,32 @@ export function buildAvoidFilter(foodsToAvoid: string): AvoidFilter {
   const safe = (r: AvoidableRecipe): boolean => {
     if (!blanketRes.length && !rawRes.length) return true;
     const blob = `${r.title} ${(r.mains ?? []).join(" ")} ${r.ingredients.join(" ")}`.toLowerCase();
-    if (blanketRes.some((rx) => rx.test(blob))) return false;
+    const named = [...blanket, ...rawOnly];
+    const declares = new Set((r.diet ?? []).map((d) => d.toLowerCase()));
+    /** a category proxy can't convict a recipe that declares itself clean */
+    const exonerated = (t: string): boolean => {
+      const cat = derivedFrom.get(t);
+      if (!cat) return false; // coach typed it — take it literally
+      const tag = EXONERATES[cat];
+      if (tag && declares.has(tag)) return true;
+      // A form word ("roti") is innocent when the recipe names a gluten-free
+      // grain — the signal that still works on the untagged markdown pack.
+      return cat === "gluten" && GLUTEN_FORMS.has(t) && GF_GRAIN.test(blob);
+    };
+    if (
+      blanket.some(
+        (t, i) => blanketRes[i].test(blob) && !exonerated(t) && !onlyNegatedMentions(blob, t, named),
+      )
+    )
+      return false;
     // Preparation-qualified: only unsafe when this recipe uses it UNCOOKED.
-    return !rawRes.some(({ t, rx }) => rx.test(blob) && usesIngredientRaw(r, rx, t));
+    return !rawRes.some(
+      ({ t, rx }) =>
+        rx.test(blob) &&
+        !exonerated(t) &&
+        !onlyNegatedMentions(blob, t, named) &&
+        usesIngredientRaw(r, rx, t),
+    );
   };
 
   return { safe, blanket, rawOnly };
