@@ -1550,6 +1550,86 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
   return out;
 }
 
+// ── Per-client recipe gate (diet + avoid list) ───────────────────────────────
+// Extracted from loadClientAppData 2026-07-28. It had to become reusable when
+// the RECIPE GENERATOR needed to know which catalogue recipes a given client can
+// actually see: the generator skips writing a recipe for any dish "the catalogue
+// already answers", but it was asking the UNGATED library. For a Jain client
+// that skipped Foxtail millet pulao — which the app then gated away for naming
+// onion — so the dish reached her phone with no method from either tier. One
+// exported gate, used by the reader and the writer, is what keeps the two
+// answers to "can this client see this recipe?" from drifting apart.
+
+const MEAT_RE =
+  /\b(chicken|mutton|lamb|beef|pork|fish|prawn|shrimp|crab|seafood|\bmeat\b|keema|kheema|bacon|ham\b|turkey|egg whites?\b)\b/i;
+// `bhurji` is NOT here. It reads as an egg word because anda bhurji is the
+// famous one, but bhurji just means "scramble" — paneer bhurji and tofu bhurji
+// are vegetarian and vegan dishes. Including it classified all four of the
+// library's paneer/tofu scrambles as eggetarian, which hid them from every
+// vegetarian and vegan client (reported 2026-07-28: cl-009's dinner "Paneer
+// bhurji (1 cup) + jowar roti" opened with no method). The egg versions are
+// still caught — they all say "egg" in the title, which `\begg(s|y)?\b` reads.
+const EGG_RE = /\begg(s|y)?\b|omelette|omelet|anda bhurji|shakshuka|frittata/i;
+const JAIN_RE =
+  /\b(onion|garlic|potato|aloo|ginger.?garlic|beetroot|radish|mooli|sweet potato|\byam\b|arbi|colocasia|shallot|spring onion|leek)\b/i;
+const JAIN_NEGATED_RE = /no.?onion|no.?garlic|without (onion|garlic)|onion.?free|garlic.?free/i;
+
+/** The whole text a gate judges a recipe on — title, headline ingredients, and
+ *  the FULL ingredient list. Scanning title+mains only let tempering onion and
+ *  garlic ("2 piece garlic", never a main ingredient) slip past the Jain gate. */
+function recipeGateText(r: LetterRecipe): string {
+  return `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`;
+}
+
+/** 0 vegan · 1 vegetarian · 2 eggetarian · 3 omnivore. */
+function recipeDietLevel(r: LetterRecipe): number {
+  const d = (r.diet ?? []).map((x) => x.toLowerCase());
+  const text = recipeGateText(r);
+  if (d.some((x) => /non.?veg/.test(x)) || MEAT_RE.test(text)) return 3;
+  if (d.includes("eggetarian") || EGG_RE.test(text)) return 2;
+  if (d.includes("vegan")) return 0;
+  return 1; // vegetarian default
+}
+
+/**
+ * Build the one gate that decides whether a client may be shown a recipe.
+ *
+ * DIETARY SAFETY: a client must NEVER see a recipe outside their diet (the
+ * original bug: an eggetarian saw "Chicken and vegetable poha" under "Vegetable
+ * poha"). Jain adds the root-vegetable / allium screen on top.
+ *
+ * AVOID-LIST SAFETY: catalogue recipes are generic, so one can name a food this
+ * client avoids (coach concern 2026-07-13, when catalogue recipes became the
+ * first choice over the personalised pack). Parsing + matching live in
+ * foods-to-avoid.ts, which understands preparation qualifiers — "raw onion"
+ * drops only the recipes that use onion uncooked.
+ */
+export function buildClientRecipeGate(client: {
+  dietary_preference?: unknown;
+  foods_to_avoid?: unknown;
+}): (r: LetterRecipe) => boolean {
+  const pref = asStr(client.dietary_preference).toLowerCase();
+  const clientDietLevel = /vegan/.test(pref)
+    ? 0
+    : /egg/.test(pref) && !/no.?egg|egg.?free/.test(pref)
+      ? 2
+      : /non.?veg|pescat|fish|chicken|\bmeat\b|omnivore/.test(pref)
+        ? 3
+        : /vegetarian|jain|\bveg\b/.test(pref)
+          ? 1
+          : 3; // no/unknown preference → assume omnivore (don't over-filter)
+  const clientIsJain = /jain/.test(pref);
+  const avoidsSafe = buildAvoidFilter(asStr(client.foods_to_avoid)).safe;
+  return (r: LetterRecipe): boolean => {
+    if (recipeDietLevel(r) > clientDietLevel) return false;
+    if (clientIsJain) {
+      const jt = recipeGateText(r);
+      if (JAIN_RE.test(jt) && !JAIN_NEGATED_RE.test(jt)) return false;
+    }
+    return avoidsSafe(r);
+  };
+}
+
 // ── Recipe-consistency gate (the "no recipe beats a wrong recipe" guarantee) ──
 // The LAST seam before a recipe reaches a client. Even if matching or generation
 // drifts, this refuses to show a recipe that (a) is garbled (no ingredients or no
@@ -2013,7 +2093,24 @@ export function matchPackRecipe(
       best = { r, score, misses };
   }
   const packR = best?.r;
-  if (packR && recipeConsistentWithDish(dish, packR)) return packR;
+  if (!packR) return undefined;
+  // THE ASYMMETRY GUARD, mirroring buildNameResolver (2026-07-28). A match that
+  // BOTH misses a title token AND carries an extra dish token is a DIFFERENT
+  // dish, not a portion or descriptor variation: "Foxtail millet pulao" vs the
+  // pack's "Foxtail Millet Upma" (miss `upma`, extra `pulao`) must not match.
+  // The scorer above tolerates one missing token out of three, which is right
+  // for "Mint chutney" ← "Cilantro Mint Chutney" (miss, no extra) but wrong the
+  // moment the dish names a different headline preparation.
+  //
+  // Additive: this can only turn a match into NO match, never change which
+  // recipe wins. That is the safe direction — the client sees a clean dish name
+  // instead of someone else's method.
+  const dishToks = recipeLibToks(dish);
+  const titleToks = recipeLibToks(packR.title);
+  const titleMisses = titleToks.filter((t) => !dishToks.includes(t)).length;
+  const dishExtras = dishToks.filter((t) => !titleToks.includes(t)).length;
+  if (titleMisses > 0 && dishExtras > 0) return undefined;
+  if (recipeConsistentWithDish(dish, packR)) return packR;
   return undefined;
 }
 
@@ -2059,10 +2156,16 @@ export function parseRecipes(md: string): LetterRecipe[] {
     const methodGroups: { qual: string; steps: string[] }[] = [];
     let tip: string | undefined;
     let mode: "none" | "ing" | "meth" = "none";
-    for (const line of body.split("\n")) {
-      const t = line.trim();
+    // Where the ingredient block ended. The prose-method rescue below reads
+    // only from AFTER this line, so a recipe's opening blurb can never be
+    // mistaken for a cooking step.
+    let lastIngIdx = -1;
+    const bodyLines = body.split("\n");
+    let stoppedAt = bodyLines.length;
+    for (let i = 0; i < bodyLines.length; i++) {
+      const t = bodyLines[i].trim();
       const ingM = t.match(/^\*\*Ingredients\s*(?:\(([^)]+)\))?:?\*\*/i);
-      if (ingM) { mode = "ing"; continue; }
+      if (ingM) { mode = "ing"; lastIngIdx = i; continue; }
       const methM = t.match(/^\*\*Method\s*(?:\(([^)]+)\))?:?\*\*/i);
       if (methM) {
         mode = "meth";
@@ -2070,8 +2173,8 @@ export function parseRecipes(md: string): LetterRecipe[] {
         continue;
       }
       if (/^\*\*Tip:?\*\*/i.test(t)) { tip = t.replace(/^\*\*Tip:?\*\*\s*/i, ""); mode = "none"; continue; }
-      if (t.startsWith("## ") || t.startsWith("### ")) break;
-      if (mode === "ing" && t.startsWith("- ")) ingredients.push(t.slice(2).trim());
+      if (t.startsWith("## ") || t.startsWith("### ")) { stoppedAt = i; break; }
+      if (mode === "ing" && t.startsWith("- ")) { ingredients.push(t.slice(2).trim()); lastIngIdx = i; }
       if (mode === "meth" && /^\d+\./.test(t) && methodGroups.length) {
         methodGroups[methodGroups.length - 1].steps.push(t.replace(/^\d+\.\s*/, "").trim());
       }
@@ -2099,6 +2202,26 @@ export function parseRecipes(md: string): LetterRecipe[] {
           continue;
         }
         // prose paragraph → one method step
+        if (t.length > 30) method.push(t.replace(/\*\*/g, ""));
+      }
+    } else if (!method.length && lastIngIdx >= 0) {
+      // PROSE-METHOD RESCUE (2026-07-28). The ⭐-era letters label the
+      // ingredients (`**Ingredients (1 serving):**` + bullets) but write the
+      // method as a bare paragraph — no `**Method:**` header, no numbering. The
+      // structured pass found the ingredients, so the loose fallback above
+      // (guarded on BOTH being empty) never ran and the method was dropped
+      // silently: cl-004's "Foxtail Millet Upma" rendered as an ingredient list
+      // with nothing under "How to make it".
+      //
+      // Read from after the LAST ingredient only. Scanning the whole body would
+      // pull in a recipe's opening blurb ("A cooling, no-cook assembly…") and
+      // present it to the client as step 1.
+      for (const rawLine of bodyLines.slice(lastIngIdx + 1, stoppedAt)) {
+        const t = rawLine.trim();
+        if (!t || t === "---" || t.startsWith("- ") || t.startsWith("• ")) continue;
+        // Bold-only group headers and the **Serves:**/**Tip:** meta lines are
+        // structure, not method — they were consumed above.
+        if (t.startsWith("**")) continue;
         if (t.length > 30) method.push(t.replace(/\*\*/g, ""));
       }
     }
@@ -3157,66 +3280,19 @@ export async function loadClientAppData(
   // exact dishes so loose matching is safe there — the library is 124
   // unrelated recipes, so a loose match would attach wrong methods).
   const libraryRecipesAll = await loadLibraryRecipes();
-  // ── DIETARY SAFETY ────────────────────────────────────────────────────────
-  // A client must NEVER be shown a recipe outside their diet (the bug: an
-  // eggetarian saw "Chicken and vegetable poha" under "Vegetable poha"). Filter
-  // the WHOLE library to what this client can eat BEFORE any matching, recipe
-  // pack, or calorie pricing — one gate, applied everywhere downstream.
-  const dietPrefForRecipes = asStr(client.dietary_preference).toLowerCase();
-  const MEAT_RE = /\b(chicken|mutton|lamb|beef|pork|fish|prawn|shrimp|crab|seafood|\bmeat\b|keema|kheema|bacon|ham\b|turkey|egg whites?\b)\b/i;
-  const EGG_RE = /\begg(s|y)?\b|omelette|omelet|bhurji|shakshuka|frittata/i;
-  const JAIN_RE = /\b(onion|garlic|potato|aloo|ginger.?garlic|beetroot|radish|mooli|sweet potato|\byam\b|arbi|colocasia|shallot|spring onion|leek)\b/i;
-  // client tolerance: 0 vegan · 1 vegetarian · 2 eggetarian · 3 omnivore
-  const clientDietLevel = /vegan/.test(dietPrefForRecipes)
-    ? 0
-    : /egg/.test(dietPrefForRecipes) && !/no.?egg|egg.?free/.test(dietPrefForRecipes)
-      ? 2
-      : /non.?veg|pescat|fish|chicken|\bmeat\b|omnivore/.test(dietPrefForRecipes)
-        ? 3
-        : /vegetarian|jain|\bveg\b/.test(dietPrefForRecipes)
-          ? 1
-          : 3; // no/unknown preference → assume omnivore (don't over-filter)
-  const clientIsJain = /jain/.test(dietPrefForRecipes);
-  const recipeDietLevel = (r: LetterRecipe): number => {
-    const d = (r.diet ?? []).map((x) => x.toLowerCase());
-    const text = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`;
-    if (d.some((x) => /non.?veg/.test(x)) || MEAT_RE.test(text)) return 3;
-    if (d.includes("eggetarian") || EGG_RE.test(text)) return 2;
-    if (d.includes("vegan")) return 0;
-    return 1; // vegetarian default
-  };
-  const recipeAllowed = (r: LetterRecipe): boolean => {
-    if (recipeDietLevel(r) > clientDietLevel) return false;
-    if (clientIsJain) {
-      // Must scan the FULL ingredient list, not just title/mains — garlic and
-      // onion are routinely tempering ingredients (e.g. "2 piece garlic") that
-      // never make it into main_ingredients, so a title+mains-only scan lets
-      // them slip past the Jain gate.
-      const jt = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`;
-      const negated = /no.?onion|no.?garlic|without (onion|garlic)|onion.?free|garlic.?free/i.test(jt);
-      if (JAIN_RE.test(jt) && !negated) return false;
-    }
-    return true;
-  };
-  // ── AVOID-LIST SAFETY ──────────────────────────────────────────────────────
-  // Catalogue recipes are generic, so a library recipe can name a food this
-  // client AVOIDS (the personalised AI pack omitted it — coach concern
-  // 2026-07-13, when catalogue recipes became the first choice over the pack).
-  // Drop any library recipe whose title/mains/ingredients name an avoided food
-  // so the dish falls through to the pack or a clean category card, never a
-  // curated recipe that contradicts foods_to_avoid.
-  // Parsing + matching live in foods-to-avoid.ts (unit-tested). An entry may
-  // now carry a PREPARATION qualifier — "raw onion" drops only the recipes
-  // that use onion uncooked, instead of the 149/467 a bare "onion" drops.
-  const recipeAvoidsSafe = buildAvoidFilter(asStr(client.foods_to_avoid)).safe;
-  const libraryRecipes = libraryRecipesAll.filter(
-    (l) => recipeAllowed(l.recipe) && recipeAvoidsSafe(l.recipe),
-  );
+  // ── DIET + AVOID-LIST SAFETY ──────────────────────────────────────────────
+  // One gate (buildClientRecipeGate, module scope) decides whether this client
+  // may see a recipe at all: diet level, the Jain allium/root screen, and the
+  // avoid list. Applied to the WHOLE library BEFORE any matching, recipe pack,
+  // or calorie pricing — and to the same library the recipe GENERATOR consults,
+  // so it can never skip writing a dish this client's gate will then remove.
+  const clientRecipeGate = buildClientRecipeGate(client);
+  const libraryRecipes = libraryRecipesAll.filter((l) => clientRecipeGate(l.recipe));
   // The client's own AI recipe pack is re-gated at READ time, not just when it
   // was written: a pack authored before the coach edited foods_to_avoid /
   // dietary_preference would otherwise keep serving the old rules for ever,
   // and the pack is exactly where a dish lands when the library drops out.
-  const recipes = recipesAll.filter((r) => recipeAllowed(r) && recipeAvoidsSafe(r));
+  const recipes = recipesAll.filter((r) => clientRecipeGate(r));
   // recipe-name → accurate kcal/serving (drives per-meal calories + swap maths)
   const recipeKcalLookup = buildRecipeKcalLookup(
     libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
@@ -3252,7 +3328,7 @@ export async function loadClientAppData(
         ...homeRemedyAsRecipe(r),
         ingredients: [...r.prepSteps, r.dose],
       };
-      return recipeAllowed(probe) && recipeAvoidsSafe(probe);
+      return clientRecipeGate(probe);
     }),
   );
   // Letter-derived personalisation layers are gone; the payload keeps their
