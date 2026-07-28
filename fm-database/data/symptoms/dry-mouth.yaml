@@ -1,0 +1,49 @@
+slug: dry-mouth
+display_name: Dry Mouth (Symptom)
+aliases:
+- xerostomia
+- mouth-dryness
+- oral-dryness
+- dry-mouth-symptom
+- cotton-mouth
+- sticky-mouth
+- dry-mucous-membranes
+- needing-gum-for-dryness
+category: other
+severity: common
+description: Subjective complaint of oral dryness — sticky or cotton-textured mouth,
+  needing frequent sips or chewing gum, difficulty with dry foods, disturbed sleep
+  from waking thirsty. Common in perimenopausal and menopausal women (falling oestrogen
+  thins and dries mucous membranes), in T2DM, on anticholinergic and diuretic medications,
+  and alongside mouth-breathing or dehydration. When it appears with dry eyes plus
+  joint pain it forms the sicca pattern and warrants an autoimmune workup.
+when_to_refer: Sicca pattern (dry mouth + dry eyes + joint pain) → autoimmune / Sjögren
+  workup. Also refer if accompanied by unexplained thirst and urination (screen for
+  diabetes), difficulty swallowing or speaking, or rapid dental decay — chronic xerostomia
+  raises caries risk and needs dental input.
+notes_for_coach: 'Coaching levers before anything clinical — (a) audit DIURETICS and
+  timing: caffeine, alcohol and diuretic foods/drinks taken late land the fluid load
+  in the sleep window and worsen overnight dryness; (b) audit ORAL IRRITANTS, in particular
+  RAW onion and other raw pungent alliums, raw garlic, chilli and very salty foods
+  — see claim coach-raw-onion-aggravates-dry-mouth; (c) mucosal-coating foods work
+  where plain water does not — soaked sabja (basil) seeds and fresh coconut are both
+  well tolerated in Indian households and reliably reported as helping; (d) front-load
+  total fluids before ~4pm rather than raising the total. Cooked onion is NOT implicated
+  and should not be stripped from a client''s food on this basis.'
+linked_to_topics:
+- perimenopause-and-menopause
+- autoimmune-thyroiditis
+- type-2-diabetes-mellitus
+linked_to_mechanisms:
+- estrogen-decline
+- age-related-progesterone-decline
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-022 Nazneen
+  quote: Dry mouth is a primary presenting complaint with no catalogue symptom slug;
+    its absence meant nothing in the pipeline connected her raw-onion intake to the
+    symptom she was actively tracking.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

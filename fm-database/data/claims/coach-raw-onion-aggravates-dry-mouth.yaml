@@ -1,0 +1,48 @@
+slug: coach-raw-onion-aggravates-dry-mouth
+statement: Raw onion (and other raw pungent alliums) can aggravate dry mouth. The
+  sulfur compounds released when allium tissue is cut — thiosulfinates and allyl sulfides
+  — are volatile oral irritants, and raw onion is additionally astringent; both leave
+  a dry, stripped sensation on the oral mucosa that clients already prone to xerostomia
+  report as a distinct worsening. Cooking degrades these compounds, which is why cooked
+  onion is not implicated and does not need to be removed.
+evidence_tier: fm_specific_thin
+rationale: Recorded from repeat coach clinical observation, not from a controlled
+  literature base — the pungent-allium/oral-irritation mechanism is well described,
+  but "raw onion worsens xerostomia" as a specific finding is thin in the published
+  evidence. Captured because dry mouth is a common perimenopausal complaint and raw
+  onion is near-ubiquitous in Indian side salads (kachumber, salad garnishes, chutneys),
+  so it is a high-frequency, zero-cost thing to remove and an easy one to miss. Surfaced
+  by cl-022, where raw onion sat in 28 menu slots while dry mouth was one of the client's
+  primary tracked symptoms.
+coaching_translation: If a client is troubled by dry mouth, take the RAW onion out
+  of their salads and garnishes before reaching for anything else — it costs nothing
+  and they often notice within days. Leave cooked onion alone; it is not the problem
+  and stripping it would gut an Indian menu for no reason. Pair the removal with the
+  things that actively coat the mucosa — soaked sabja seeds, fresh coconut — rather
+  than simply telling them to drink more water.
+out_of_scope_notes: Persistent dry mouth is not just a food question. Sicca pattern
+  (dry mouth + dry eyes + joint pain) needs an autoimmune workup, and unexplained
+  thirst with frequent urination needs diabetes screening. Removing raw onion is a
+  comfort measure, never a substitute for that referral.
+caveats:
+- Coach clinical observation plus a plausible irritation mechanism — not a controlled
+  trial finding. Do not present it to a client as established science.
+- Applies to RAW pungent alliums only. Cooked onion, and onion cooked into a batter
+  or gravy, are not implicated.
+- Dry mouth is multi-causal — medications (anticholinergics, diuretics), late caffeine
+  and alcohol, mouth-breathing and falling oestrogen are all bigger levers in most
+  clients. Treat raw onion as one cheap contributor to clear, not the cause.
+linked_to_topics:
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- estrogen-decline
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach clinical observation — logged 2026-07-28 via cl-022 Nazneen
+  quote: Raw onions are known to cause dry mouth. We should note this and should have
+    avoided this with Nazneen.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani
