@@ -42,7 +42,6 @@ summary: 'Most common cause of heavy bleeding in the forties. Because ovulation 
 key_mechanisms:
 - anovulatory-cycles
 - low-progesterone
-- estrogen-dominance
 - mast-cell-activation
 - iron-deficiency
 common_symptoms:
@@ -57,6 +56,7 @@ related_topics:
 - estrogen-dominance
 - perimenopause
 - endometriosis
+- estrogen-dominance
 sources:
 - id: briden-hormone-repair-manual-2021
   location: 'Chapter 9 — Estrogen rollercoaster: crazy heavy periods, pg 218–250'

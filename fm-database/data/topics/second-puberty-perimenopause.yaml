@@ -38,7 +38,6 @@ summary: 'Prof Jerilynn Prior''s framing (adopted by Briden) that perimenopause 
 key_mechanisms:
 - anovulatory-cycles
 - low-progesterone
-- estrogen-dominance
 - hpa-axis-dysregulation
 - mast-cell-activation
 common_symptoms:
@@ -57,6 +56,7 @@ related_topics:
 - menopause
 - estrogen-dominance
 - anovulatory-bleeding
+- estrogen-dominance
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 1 — Hormone revolution, pg 19–25; Chapter 4 — The hormonal and

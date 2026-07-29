@@ -4,6 +4,8 @@ aliases:
 - type 1 hypersensitivity
 - immediate food allergy
 - IgE food allergy
+# 1 ref(s) used this name for the same concept (2026-07-29)
+- food-allergy-ige
 # 7 refs; the generic name for this topic (2026-07-29)
 - food-allergy
 summary: IgE-mediated food allergy is a type 1 hypersensitivity reaction characterized

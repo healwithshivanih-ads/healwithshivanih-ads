@@ -4,6 +4,9 @@ aliases:
 - fatty acid ratio
 - AA:EPA ratio
 - polyunsaturated fat balance
+# was wrongly aliased to omega-3-fatty-acids until 2026-07-29;
+# omega-6 is a different, often opposing fat
+- omega-6-fatty-acids
 summary: The ratio of omega-3 to omega-6 fatty acids in cell membranes determines downstream inflammatory potential. High
   omega-6 (especially arachidonic acid from animal protein) provides substrate for pro-inflammatory prostaglandins and cytokines
   via COX and LOX enzymes. High omega-3 competes for the same enzymes, displacing omega-6 and reducing downstream inflammation.

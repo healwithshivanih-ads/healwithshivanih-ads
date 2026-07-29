@@ -3,6 +3,8 @@ display_name: Gut Serotonin Production
 aliases:
 - enteric serotonin synthesis
 - gut-derived serotonin
+# 1 ref(s) used this name for the same concept (2026-07-29)
+- serotonin-production-gut
 category: neurological
 summary: The gut produces approximately 90% of the body's serotonin via enterochromaffin cells. Gut microbiome composition
   influences serotonin synthesis, which directly impacts mood, cognition, and mental well-being via the gut-brain axis.

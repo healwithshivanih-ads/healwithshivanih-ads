@@ -173,7 +173,6 @@ downstream_effects:
 related_mechanisms:
 - hpa-axis-dysregulation
 - chronic-inflammation
-- visceral-adiposity
 - aromatase-activity
 - leaky-gut
 - dysbiosis-gut-microbiome-imbalance
@@ -254,6 +253,7 @@ linked_to_topics:
 - essential-hypertension
 - normal-renin-essential-hypertension
 - prehypertension
+- visceral-adiposity
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 2 Insulin Resistance & Diabetes

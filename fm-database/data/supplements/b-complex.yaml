@@ -1,5 +1,8 @@
 slug: b-complex
 display_name: B-Complex (B-Vitamin Complex)
+aliases:
+# 2 ref(s) used this name for the same concept (2026-07-29)
+- vitamin-b-complex
 category: vitamin
 forms_available:
 - capsule

@@ -13,7 +13,6 @@ summary: Recurrent shallow painful oral ulcers affecting roughly 20% of the U.S.
   complete remission in most cases.
 key_mechanisms:
 - food-allergen-response
-- gluten-sensitivity
 - impaired-mucosal-immunity
 common_symptoms:
 - mouth-ulcer
@@ -24,6 +23,7 @@ related_topics:
 - food-allergies
 - leaky-gut
 - nutrient-deficiency
+- gluten-sensitivity
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 31 — Canker Sores, pg 616-620

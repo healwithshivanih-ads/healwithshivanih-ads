@@ -1,5 +1,8 @@
 slug: chaste-tree-berry
 display_name: Chaste Tree Berry (Vitex agnus-castus)
+aliases:
+# 1 ref(s) used this name for the same concept (2026-07-29)
+- chaste-berry-vitex-agnus-castus
 category: herb
 forms_available:
 - capsule
