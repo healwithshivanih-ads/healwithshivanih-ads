@@ -5,26 +5,35 @@ aliases:
 - reaction after eating
 - pseudo-allergic food response
 - histamine food reaction
+- food intolerances
+- reacting to many foods
+- pseudo-allergy
+- food-reactions-histamine
 category: gi
 severity: common
-description: Symptoms (headache, skin flushing, racing heart, nosebleeds, sweating,
-  runny nose) occurring after consuming histamine-rich foods — aged cheese, wine,
-  fermented foods, leftovers, smoked meats — without positive IgE allergy testing.
-  Characteristic of impaired DAO activity.
-when_to_refer: Anaphylaxis, progressive food restriction impacting nutrition, suspected
-  MCAS.
+description: Symptoms (headache, skin flushing, racing heart, nosebleeds, sweating, runny nose) occurring
+  after consuming histamine-rich foods — aged cheese, wine, fermented foods, leftovers, smoked meats —
+  without positive IgE allergy testing. Characteristic of impaired DAO activity.
+when_to_refer: Anaphylaxis, progressive food restriction impacting nutrition, suspected MCAS.
 linked_to_topics:
 - dao-histamine-metabolism
+- dao-histamine-intolerance
+- leaky-gut
 linked_to_mechanisms:
 - histamine-catabolism-dao
 - gut-barrier-dysfunction
+- histamine-metabolism
+- leaky-gut
 sources:
 - id: dirty-genes-lynch
   location: Chapter 4 — Laundry List 1
-  quote: 'I tend to suffer from one or more of the following symptoms after eating
-    leftovers, citrus, or fish: irritability, sweatiness, nosebleeds, runny nose,
-    and/or headache.'
-version: 1
+  quote: 'I tend to suffer from one or more of the following symptoms after eating leftovers, citrus,
+    or fish: irritability, sweatiness, nosebleeds, runny nose, and/or headache.'
+- id: dirty-genes-lynch
+  location: 'Chapter 7: DAO: Oversensitivity to Foods'
+  quote: One meal I'm good and the next I feel awful. I get headaches. I'm always irritable. If I eat
+    the wrong thing, I get sweaty and my heart races.
+version: 2
 status: active
-updated_at: '2026-07-14'
+updated_at: '2026-07-29'
 updated_by: claude-dirty-genes-ingest

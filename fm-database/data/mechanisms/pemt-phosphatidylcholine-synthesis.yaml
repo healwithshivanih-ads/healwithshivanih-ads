@@ -7,12 +7,14 @@ aliases:
 - PEMT pathway
 - endogenous choline synthesis
 - SAMe-phospholipid synthesis
+- endogenous choline production
+- hepatic phosphatidylcholine
+- phosphatidylcholine-synthesis-pemt
 category: metabolic
-summary: PEMT sequentially methylates phosphatidylethanolamine (PE) to phosphatidylcholine
-  (PC) using three SAMe molecules per reaction. This pathway is the only endogenous
-  route to PC synthesis in the liver and is upregulated by oestrogen. Variants reduce
-  PC production, impairing cell membrane integrity, bile flow, VLDL export, and gut
-  epithelial health.
+summary: PEMT sequentially methylates phosphatidylethanolamine (PE) to phosphatidylcholine (PC) using
+  three SAMe molecules per reaction. This pathway is the only endogenous route to PC synthesis in the
+  liver and is upregulated by oestrogen. Variants reduce PC production, impairing cell membrane integrity,
+  bile flow, VLDL export, and gut epithelial health.
 upstream_drivers:
 - low-same
 - methylation-cycle-disruption
@@ -24,6 +26,11 @@ upstream_drivers:
 - SAMe-deficiency
 - methylation-impairment
 - vegan-vegetarian-diet
+- PEMT V175M variant
+- low-SAM (poor methylation)
+- vegan/vegetarian diet
+- pregnancy
+- low dietary choline
 downstream_effects:
 - cell-membrane-dysfunction
 - fatty-liver-triglyceride-accumulation
@@ -36,6 +43,10 @@ downstream_effects:
 - cell-membrane-fragility
 - gut-barrier-dysfunction
 - pregnancy-complications
+- impaired-cell-membrane-integrity
+- reduced-bile-phosphatidylcholine
+- gallstone-risk
+- SIBO-susceptibility
 related_mechanisms:
 - methylation-cycle-disruption
 - mitochondrial-dysfunction
@@ -49,10 +60,13 @@ evidence_tier: plausible_emerging
 sources:
 - id: dirty-genes-lynch
   location: Chapter 11 — PEMT, Methylfolate, and the Methylation Cycle
-  quote: About 70 percent of your SAMe is used by your PEMT enzyme to support the
-    production of cell membranes, leaving only 30 percent for the other two hundred
-    processes that depend on methylation.
-version: 2
+  quote: About 70 percent of your SAMe is used by your PEMT enzyme to support the production of cell membranes,
+    leaving only 30 percent for the other two hundred processes that depend on methylation.
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: This gene affects your body's ability to produce phosphatidylcholine, an essential compound that
+    you need to maintain cell membranes, bile flow, muscle health, and brain development.
+version: 3
 status: active
-updated_at: '2026-07-14'
+updated_at: '2026-07-29'
 updated_by: claude-dirty-genes-ingest

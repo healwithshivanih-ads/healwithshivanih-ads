@@ -5,26 +5,34 @@ aliases:
 - getting up at night to pee
 - waking to urinate at night
 - 3am bathroom trips
+- getting up to pee at night
+- nighttime-urination
 category: urinary
 severity: common
 description: Waking from sleep to urinate; a key BPH symptom that disrupts sleep.
-when_to_refer: Frequent nocturia disrupting sleep should trigger BPH assessment and
-  clinician referral if score ≥8.
+when_to_refer: Frequent nocturia disrupting sleep should trigger BPH assessment and clinician referral
+  if score ≥8.
 linked_to_topics:
 - benign-prostatic-hyperplasia
+- sleep-apnea-cardiovascular-risk
 linked_to_mechanisms:
 - five-alpha-reductase-conversion
 - 5-alpha-reductase-activity
+- sympathetic-activation-sleep-apnea
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: BPH Symptom Index — Page 05
-  quote: During the last month, how many times did you most typically get up to urinate
-    from the time you went to bed at night until the time you got up in the morning?
+  quote: During the last month, how many times did you most typically get up to urinate from the time
+    you went to bed at night until the time you got up in the morning?
 - id: vitaone-health-coaching-toolkit
   location: BPH Symptom Index
-  quote: During the last month, how many times did you most typically get up to urinate
-    from the time you went to bed at night until the time you got up in the morning?
-version: 2
+  quote: During the last month, how many times did you most typically get up to urinate from the time
+    you went to bed at night until the time you got up in the morning?
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Sleep Apnea Mechanism
+  quote: Frequently they say, I have to go to the bathroom. The reason they're going to the bathroom is
+    it changes in the intrathoracic pressure from the apnea turn on atrial natriuretic factor.
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-07-29'
 updated_by: shivani

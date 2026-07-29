@@ -12,10 +12,16 @@ aliases:
 - sugar cravings
 - carbohydrate cravings
 - craving-sweets
+- carbohydrate addiction
+- starchy food cravings
+- carb cycling
+- carb-sugar-cravings
+- yeast cravings
+- carbohydrate-craving
 category: metabolic
 severity: common
-description: Intense desire for sweet or high-carbohydrate foods, driven by glucose variability, insulin resistance, and impaired
-  metabolic flexibility.
+description: Intense desire for sweet or high-carbohydrate foods, driven by glucose variability, insulin
+  resistance, and impaired metabolic flexibility.
 linked_to_topics:
 - insulin-resistance
 - candida-overgrowth
@@ -25,10 +31,16 @@ linked_to_topics:
 - metabolic-health-lchf
 - modern-diet-systemic-dysfunction
 - insulin-resistance-metabolic-syndrome
+- maoa-neurotransmitter-gene
+- comt-catechol-clearance
+- chronic-candidiasis
 linked_to_mechanisms:
 - insulin-resistance
 - gut-brain-axis-disruption
 - metabolic-flexibility
+- monoamine-oxidase-activity
+- catechol-methylation-comt
+- dysbiosis
 when_to_refer: ''
 sources:
 - id: vitaone-blood-sugar-cheatsheet
@@ -42,8 +54,8 @@ sources:
   quote: Sugar cravings, poor glycemic control
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
-  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the abdomen, intermittent headaches, skin tags/acanthosis
-    nigricans, increased hunger.
+  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the abdomen, intermittent
+    headaches, skin tags/acanthosis nigricans, increased hunger.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: Sugar cravings reduce when metabolic flexibility improves
@@ -56,7 +68,14 @@ sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
   quote: Craving sweets
-version: 5
+- id: dirty-genes-lynch
+  location: Chapter 1 — Meet Your Dirty Genes
+  quote: 'MAOA, the gene that affects mood swings and carb cravings … Weaknesses: mood swings, carb cravings,
+    irritability, headaches, insomnia, addictions.'
+- id: pizzorno-textbook-gi-2
+  location: Chronic Candidiasis — Diagnosis — Typical Patient Profile
+  quote: Craving for foods rich in carbohydrates or yeast
+version: 7
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-07-29'
 updated_by: shivani

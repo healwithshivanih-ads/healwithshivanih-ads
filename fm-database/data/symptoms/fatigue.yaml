@@ -9,28 +9,47 @@ aliases:
 - low energy
 - physical fatigue
 - mental fatigue
+- feeling drained
+- fatigue-diabetes
+- low vitality
+- low-energy-fatigue
 category: constitutional
 severity: common
-description: Persistent physical and mental tiredness associated by Lynch with electrolyte
-  depletion, poor nutrient absorption, high toxin burden, and multiple dirty gene
-  states including MTHFR and GST/GPX.
+description: Persistent physical and mental tiredness associated by Lynch with electrolyte depletion,
+  poor nutrient absorption, high toxin burden, and multiple dirty gene states including MTHFR and GST/GPX.
 linked_to_topics:
 - mthfr-methylation-gene
 - gst-gpx-glutathione-detox
 - clean-genes-protocol
 - mthfr-methylation
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- comt-gene-catechol-clearance
+- dao-histamine-intolerance
 linked_to_mechanisms:
 - methylation
 - glutathione-conjugation
 - hpa-axis-dysregulation
+- insulin-resistance
+- glucotoxicity
+- oxidative-damage
+- methylation-cycle
+- catechol-clearance-comt-maoa
 when_to_refer: ''
 sources:
 - id: dirty-genes-lynch
   location: Chapter 2 — Brain and Muscle Health
-  quote: Methylation also produces creatine, a compound that both your brain and your
-    muscles use as fuel. If you've got muscular aches and pains, feel rundown and
-    fatigued … poor methylation and low creatine might be the reason.
-version: 2
+  quote: Methylation also produces creatine, a compound that both your brain and your muscles use as fuel.
+    If you've got muscular aches and pains, feel rundown and fatigued … poor methylation and low creatine
+    might be the reason.
+- id: pizzorno-cardiometabolic-diabetes
+  location: Diagnostic Summary
+  quote: 'Presenting symptoms: fatigue, blurred vision, poor wound healing, periodontal disease, frequent
+    infections'
+- id: dirty-genes-lynch
+  location: 'Chapter 5: MTHFR: Methylation Master'
+  quote: Your energy level droops. Your mental outlook suffers.
+version: 4
 status: active
-updated_at: '2026-07-14'
+updated_at: '2026-07-29'
 updated_by: claude-dirty-genes-ingest

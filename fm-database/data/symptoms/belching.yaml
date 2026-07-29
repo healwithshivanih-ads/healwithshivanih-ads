@@ -6,26 +6,40 @@ aliases:
 - frequent burps
 - post-meal burping
 - excessive belching
+- gas after eating
+- post-meal belching
+- belching-after-meals
 category: gi
 severity: common
-description: Expulsion of gas from the stomach through the oesophagus. In hypochlorhydria, excessive belching results from
-  microbial fermentation of undigested food producing gas in the stomach.
+description: Expulsion of gas from the stomach through the oesophagus. In hypochlorhydria, excessive belching
+  results from microbial fermentation of undigested food producing gas in the stomach.
 linked_to_topics:
 - gut-dysbiosis
 - hypochlorhydria
+- gut-dysfunction
 linked_to_mechanisms:
 - leaky-gut
 - food-fermentation-reflux
 - sibo-dysbiosis
+- low-stomach-acid
 when_to_refer: ''
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Case History / Symptoms
-  quote: Gut issues were progressive bloating, belching, flatulence, there was mild acidity and occasional constipation.
+  quote: Gut issues were progressive bloating, belching, flatulence, there was mild acidity and occasional
+    constipation.
 - id: coconote-fm-hypochlorhydria
   location: Clinical Presentation of Low Stomach Acid
-  quote: Usually patients with low stomach acid feel a certain amount of belching or fullness as soon as they eat.
-version: 2
+  quote: Usually patients with low stomach acid feel a certain amount of belching or fullness as soon
+    as they eat.
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Bloating, belching, burning, and flatulence immediately after meals
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Bloating, belching, burning, and flatulence immediately after meals [listed as a common symptom
+    of hypochlorhydria].
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-07-29'
 updated_by: shivani

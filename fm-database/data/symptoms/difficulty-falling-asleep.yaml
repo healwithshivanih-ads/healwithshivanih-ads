@@ -8,11 +8,15 @@ aliases:
 - cannot-fall-asleep
 - prolonged-sleep-latency
 - lying-awake
+- can't fall asleep
+- lying awake
+- racing mind at night
+- night owl
+- insomnia-slow-to-sleep
 category: sleep
 severity: common
-description: Prolonged sleep latency driven by anxiety, tension, stimulant use, or
-  serotonin/melatonin deficiency. L-tryptophan, 5-HTP, and valerian are evidence-supported
-  natural interventions.
+description: Prolonged sleep latency driven by anxiety, tension, stimulant use, or serotonin/melatonin
+  deficiency. L-tryptophan, 5-HTP, and valerian are evidence-supported natural interventions.
 when_to_refer: 'Refer if persistent for weeks despite sleep hygiene changes, or
 
   associated with severe anxiety, depression, or suicidal ideation.
@@ -20,19 +24,28 @@ when_to_refer: 'Refer if persistent for weeks despite sleep hygiene changes, or
   '
 linked_to_topics:
 - insomnia
+- comt-slow-catechol-clearance
+- maoa-slow-serotonin-excess
+- histamine-intolerance-dao
 linked_to_mechanisms:
 - blue-light-melatonin-suppression
 - parasympathetic-restoration-failure
 - serotonin-deficiency
+- catechol-methylation
+- monoamine-oxidation
+- histamine-catabolism-dao
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Sleep onset and bedroom hygiene section
-  quote: if you're asleep for 30 minutes and you're not sleeping, get up and sit in
-    a chair and read until you feel tired again
+  quote: if you're asleep for 30 minutes and you're not sleeping, get up and sit in a chair and read until
+    you feel tired again
 - id: pizzorno-textbook-gi
   location: Insomnia — Diagnostic Summary
   quote: Difficulty falling asleep (sleep-onset insomnia).
-version: 4
+- id: dirty-genes-lynch
+  location: Chapter 14 — COMT slow symptom checklist
+  quote: I've struggled with falling asleep since I was a child. I know the ceiling patterns well.
+version: 5
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-07-29'
 updated_by: Shivani

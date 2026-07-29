@@ -4,29 +4,33 @@ aliases:
 - sarcopenia
 - loss of muscle
 - loss of muscle tone
+- muscle loss
+- muscle-wasting
 category: musculoskeletal
 severity: common
-description: Loss of muscle mass associated with low free testosterone from elevated
-  SHBG binding.
+description: Loss of muscle mass associated with low free testosterone from elevated SHBG binding.
 linked_to_topics:
 - sex-hormone-binding-globulin
 - testosterone-health
+- pancreatic-insufficiency
 linked_to_mechanisms:
 - shbg-hormone-binding
-when_to_refer: If accompanied by significant weight loss or weakness; refer for lab
-  evaluation.
+- malabsorption
+- exocrine-pancreatic-enzyme-deficiency
+when_to_refer: If accompanied by significant weight loss or weakness; refer for lab evaluation.
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: This can cause symptoms associated with testosterone deficiency, including
-    fatigue, decreased libido, weight gain, mood changes, decreased muscle mass, and
-    decreased bone mineral density.
+  quote: This can cause symptoms associated with testosterone deficiency, including fatigue, decreased
+    libido, weight gain, mood changes, decreased muscle mass, and decreased bone mineral density.
 - id: vitaone-health-coaching-toolkit
   location: Sex Hormone Binding Globulin (SHBG)
-  quote: This can cause symptoms associated with testosterone deficiency, including
-    fatigue, decreased libido, weight gain, mood changes, decreased muscle mass, and
-    decreased bone mineral density.
-version: 2
+  quote: This can cause symptoms associated with testosterone deficiency, including fatigue, decreased
+    libido, weight gain, mood changes, decreased muscle mass, and decreased bone mineral density.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: Muscle wasting, weight loss, constantly absorbed abdominal pain.
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-07-29'
 updated_by: shivani
