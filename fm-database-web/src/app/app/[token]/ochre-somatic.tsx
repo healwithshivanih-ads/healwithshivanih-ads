@@ -26,7 +26,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { AppSomatic } from "@/lib/fmdb/somatic";
 import { Icon, useOchre } from "./ochre-context";
-import { FALLBACK_RENDERER, SHAPE_RENDERERS } from "./somatic-shapes";
+import { breathCycle, FALLBACK_RENDERER, pacedFrame, SHAPE_RENDERERS } from "./somatic-shapes";
 
 /* ---- overlay ----------------------------------------------------------
    The launch card that used to live here is now SomaticPrescribedLine in
@@ -47,6 +47,10 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
     () => somatic.steps.map((s) => ({ ...s, secs: s.secs && s.secs > 0 ? s.secs : 20 })),
     [somatic.steps],
   );
+
+  // The cycle this practice demonstrates, replayed during its "now continue"
+  // step. Derived from the steps themselves, so it can never contradict them.
+  const cycle = useMemo(() => breathCycle(steps), [steps]);
 
   const [status, setStatus] = useState<Status>("intro");
   const [idx, setIdx] = useState(0);
@@ -91,6 +95,18 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
   /* canvas */
   const cv = useRef<HTMLCanvasElement | null>(null);
   const startedAt = useRef<number>(0);
+  // Seconds into the CURRENT step, accumulated per frame.
+  //
+  // Not `1 - left / total`: `left` is the displayed countdown and only changes
+  // once a second, so the orb was frozen between ticks — a five-second inhale
+  // arrived as five discrete jumps rather than a breath. The number on screen
+  // stays integer; the movement no longer does.
+  const stepElapsed = useRef(0);
+  const lastFrame = useRef(0);
+  useEffect(() => {
+    stepElapsed.current = 0;
+    lastFrame.current = 0;
+  }, [idx, somatic.slug]);
   useEffect(() => {
     if (isChecklist) return;
     const el = cv.current;
@@ -109,19 +125,31 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
         const w = el.width / d, h = el.height / d;
         c.clearRect(0, 0, w, h);
         const total = step?.secs ?? 1;
-        const p = status === "running" ? 1 - left / Math.max(1, total) : 0.5;
+        const dt = lastFrame.current ? (ms - lastFrame.current) / 1000 : 0;
+        lastFrame.current = ms;
+        // A paused session holds its position; a backgrounded tab must not
+        // fast-forward when it comes back, hence the per-frame cap.
+        if (status === "running") stepElapsed.current += Math.min(dt, 0.25);
+        // Only the breath player loops a long step. A sustained_pressure
+        // "hold" that runs for two minutes is MEANT to run for two minutes —
+        // cycling it would undo the one thing that shape is for.
+        const paced =
+          somatic.shape === "breath_excursion"
+            ? pacedFrame(step?.action ?? "", total, stepElapsed.current, cycle)
+            : { action: step?.action ?? "", p: Math.min(stepElapsed.current / Math.max(1, total), 1) };
         draw(c, w, h, {
-          p, t: (ms - startedAt.current) / 1000,
-          action: step?.action ?? "", bilateral: somatic.bilateral,
+          p: status === "running" ? paced.p : 0.5,
+          t: (ms - startedAt.current) / 1000,
+          action: paced.action, bilateral: somatic.bilateral,
         });
       }
       if (!reduce) raf = requestAnimationFrame(render);
     };
     raf = requestAnimationFrame(render);
     return () => cancelAnimationFrame(raf);
-  }, [somatic.shape, somatic.bilateral, step, left, status, reduce, isChecklist]);
+  }, [somatic.shape, somatic.bilateral, step, left, status, reduce, isChecklist, cycle]);
 
-  const restart = () => { setIdx(0); setLeft(steps[0]?.secs ?? 0); setStatus("running"); };
+  const restart = () => { stepElapsed.current = 0; setIdx(0); setLeft(steps[0]?.secs ?? 0); setStatus("running"); };
 
   return (
     <div className="som-wrap" role="dialog" aria-label={somatic.name}>

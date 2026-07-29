@@ -181,8 +181,13 @@ function drawBreath(c: Ctx, w: number, h: number, f: Frame) {
 
   let scale: number;
   let out: number; // ring travel direction
+  // `press` is an exhale too — gastrocolic-rhythm's is "exhale with gentle
+  // pressure", and without it here that practice's whole out-breath fell
+  // through to the ambient wobble and never contracted.
   if (f.action === "expand") { scale = 0.5 + 0.5 * ease(f.p); out = 1; }
-  else if (f.action === "release" || f.action === "shrink") { scale = 1 - 0.5 * ease(f.p); out = -1; }
+  else if (f.action === "release" || f.action === "shrink" || f.action === "press") {
+    scale = 1 - 0.5 * ease(f.p); out = -1;
+  }
   else if (f.action === "hold") { scale = 1 + 0.014 * Math.sin(f.t * 1.6); out = 0; }
   else { scale = 0.76 + 0.08 * Math.sin(f.t * 0.7); out = 0; }
 
@@ -443,3 +448,113 @@ export const SHAPE_RENDERERS: Partial<Record<MotionShape, Renderer>> = {
 };
 
 export const FALLBACK_RENDERER: Renderer = drawStill;
+
+/* ---- pacing a long step ------------------------------------------------ */
+/*
+   Nearly every breathing practice in the catalogue has the same shape: it
+   demonstrates one cycle in short steps, then hands the client a single long
+   step that says "repeat". box-breathing spells it out — 4s inhale, 4s hold,
+   4s exhale, 4s hold, then `Repeat the cycle` for 264 SECONDS.
+
+   Driven from the step's own progress, that last step renders as one
+   four-and-a-half-minute inhalation. The client is told to keep breathing and
+   the orb does nothing they can follow. 20 of the 28 breath practices carry a
+   step of 90s or more.
+
+   The cadence is already in the data, so nothing here is invented: the short
+   paced steps ARE the cycle, and a long step replays them.
+*/
+
+export interface CycleStep {
+  action: string;
+  secs: number;
+}
+
+/** Actions that make a body move in and out; anything else is a pause or a set-up. */
+const OSCILLATING = new Set(["expand", "release", "shrink", "press", "hold"]);
+
+/**
+ * Whether a long step is a movement to keep following, or an instruction to
+ * stop and do something else.
+ *
+ * `rest` is the clearest case: gastrocolic-rhythm opens with 60s of "drink a
+ * full glass of warm water", and pacing a breath under that would be telling
+ * the client to do the wrong thing. `observe` is deliberately left out too —
+ * the catalogue uses it to mean "no prescribed movement", and the player's
+ * ambient drift already suits it.
+ */
+export function isOscillating(action: string): boolean {
+  return OSCILLATING.has(action);
+}
+
+/** The letting-go half of a breath — a cycle needs one of these AND an expand. */
+const OUTWARD = new Set(["release", "shrink", "press"]);
+
+/** A step this long is an instruction to continue, not a movement to follow. */
+export const LONG_STEP_SECS = 45;
+
+/** Longest a single demonstrated beat can be and still read as one breath. */
+const MAX_BEAT_SECS = 30;
+
+/** Used when a practice says "slow breathing" without ever demonstrating it. */
+const DEFAULT_CYCLE: CycleStep[] = [
+  { action: "expand", secs: 5 },
+  { action: "release", secs: 6 },
+];
+
+/**
+ * The cycle a practice demonstrates before telling the client to repeat it.
+ *
+ * Takes the LAST unbroken run of short oscillating steps — the run immediately
+ * before the "now continue" step, which is the one being described.
+ */
+export function breathCycle(steps: { secs: number | null; action: string }[]): CycleStep[] {
+  const runs: CycleStep[][] = [];
+  let cur: CycleStep[] = [];
+  for (const s of steps) {
+    const secs = s.secs ?? 0;
+    if (OSCILLATING.has(s.action) && secs > 0 && secs <= MAX_BEAT_SECS) {
+      cur.push({ action: s.action, secs });
+    } else {
+      if (cur.length) runs.push(cur);
+      cur = [];
+    }
+  }
+  if (cur.length) runs.push(cur);
+  // A cycle needs a way in and a way out. Two beats is not enough on its own:
+  // supported-chest-opening opens with `release` (lower down) then `release`
+  // (open the arms) — two set-up movements in the same direction, which would
+  // have paced its 180s "breathe and soften" as a breath that never inhales.
+  const usable = runs.filter(
+    (r) => r.some((b) => b.action === "expand") && r.some((b) => OUTWARD.has(b.action)),
+  );
+  return usable.length ? usable[usable.length - 1] : DEFAULT_CYCLE;
+}
+
+/**
+ * What the animation should be doing right now.
+ *
+ * Short steps keep their own progress — they ARE the demonstration. A long
+ * oscillating step instead loops the cycle, so "continue the rhythm" has a
+ * rhythm to continue.
+ */
+export function pacedFrame(
+  action: string,
+  stepSecs: number,
+  elapsed: number,
+  cycle: CycleStep[],
+): { action: string; p: number } {
+  const linear = { action, p: stepSecs > 0 ? clamp01(elapsed / stepSecs) : 0 };
+  if (stepSecs < LONG_STEP_SECS || !OSCILLATING.has(action) || cycle.length < 2) return linear;
+
+  const total = cycle.reduce((n, s) => n + s.secs, 0);
+  if (total <= 0) return linear;
+
+  let at = elapsed % total;
+  for (const beat of cycle) {
+    if (at < beat.secs) return { action: beat.action, p: beat.secs > 0 ? at / beat.secs : 0 };
+    at -= beat.secs;
+  }
+  const last = cycle[cycle.length - 1];
+  return { action: last.action, p: 1 };
+}
