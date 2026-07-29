@@ -128,6 +128,56 @@ def _collect_session_selections(root: Path):
         yield (d.get("selected_symptoms") or [], d.get("selected_topics") or [])
 
 
+def cmd_duplicates(args: argparse.Namespace) -> None:
+    """Find near-duplicate catalogue entities before they accumulate.
+
+    Cleanup is unbounded work; prevention is not. One session found five
+    duplicate pairs (CoQ10 x3, mitochondrial, type-2-diabetes) that had sat
+    unnoticed, every one of them with overlapping aliases so that alias lookups
+    silently resolved last-wins by load order.
+    """
+    from .duplicates import find_duplicates
+    from .validator import load_all
+
+    loaded = load_all(DATA_DIR)
+    findings = find_duplicates(loaded, near_threshold=args.threshold)
+    if args.kind:
+        findings = [f for f in findings if f.entity_kind == args.kind]
+    if args.critical:
+        findings = [f for f in findings if f.severity == "CRITICAL"]
+
+    if args.json:
+        import json
+        print(json.dumps([{
+            "check": f.kind, "entity_kind": f.entity_kind, "slugs": f.slugs,
+            "severity": f.severity, "detail": f.detail, "evidence": f.evidence,
+        } for f in findings], indent=2))
+        return
+
+    if not findings:
+        print("No duplicate candidates found.")
+        return
+
+    import collections
+    by_check = collections.Counter(f.kind for f in findings)
+    n_crit = sum(1 for f in findings if f.severity == "CRITICAL")
+    print(f"{len(findings)} duplicate candidate(s), {n_crit} critical")
+    print("  " + "  ".join(f"{k}={v}" for k, v in by_check.most_common()))
+    print()
+    shown = collections.Counter()
+    for f in findings:
+        if not args.verbose and shown[f.kind] >= 15:
+            continue
+        shown[f.kind] += 1
+        print("  " + f.render())
+    if not args.verbose:
+        for k, v in by_check.items():
+            if v > 15:
+                print(f"  ... +{v - 15} more {k} (use -v)")
+    if n_crit:
+        raise SystemExit(1)
+
+
 def cmd_orphans(args: argparse.Namespace) -> None:
     """List catalogue entities the assessment can never reach.
 
@@ -2078,6 +2128,14 @@ def main() -> None:
     val.add_argument("--strict", action="store_true", help="treat warnings as errors (exit 1 on any)")
     val.set_defaults(func=cmd_validate)
     sub.add_parser("pending-refs", help="list unresolved cross-references grouped by target").set_defaults(func=cmd_pending_refs)
+
+    dup = sub.add_parser("duplicates", help="find near-duplicate catalogue entities (shared aliases, same display name, near-identical slugs)")
+    dup.add_argument("--kind", help="filter to one entity dir (topics / mechanisms / supplements / ...)")
+    dup.add_argument("--critical", action="store_true", help="only findings that need a merge or a wrong-alias removal")
+    dup.add_argument("--threshold", type=float, default=0.6, help="token-overlap threshold for the weak NEAR_SLUG check (default 0.6)")
+    dup.add_argument("--json", action="store_true", help="machine-readable output")
+    dup.add_argument("-v", "--verbose", action="store_true", help="show all, not just the first 15 per check")
+    dup.set_defaults(func=cmd_duplicates)
 
     orph = sub.add_parser("orphans", help="list entities the assessment subgraph can never reach (inverse of pending-refs)")
     orph.add_argument("--kind", help="filter to one kind (mechanism / supplement / claim / ...)")
