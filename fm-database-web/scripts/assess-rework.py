@@ -563,7 +563,14 @@ If a change came solely from the triggering event (e.g. new lab finding)
 and no intake observation reinforced it, use an empty list `[]`. Don't
 fabricate citations. Coach corrections in `coach_notes_for_ai` OVERRIDE
 AI inferences from raw fields — if the coach said something contradicts
-the intake form, treat the coach's note as ground truth and cite it."""
+the intake form, treat the coach's note as ground truth and cite it.
+
+STRENGTH TRAINING → CREATINE PAIRING: if a suggested_change adds "Strength /
+resistance training" (or equivalent) as a new lifestyle practice, also
+propose adding creatine-monohydrate (3-5 g/day, anytime, preferably
+post-workout) as a companion supplement change — unless the client has
+chronic kidney disease, elevated creatinine/urea, or a kidney-stone history,
+in which case note the omission in the rationale instead."""
 
 
 def main() -> int:
