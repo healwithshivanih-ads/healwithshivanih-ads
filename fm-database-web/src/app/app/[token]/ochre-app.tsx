@@ -104,7 +104,7 @@ type Overlay =
   | { type: "breath" }
   | { type: "eft" }
   | { type: "sleep" }
-  | { type: "somatic" }
+  | { type: "somatic"; practiceId: string }
   | { type: "grocery" }
   | { type: "msq" }
   | { type: "order" }
@@ -328,12 +328,19 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const openBreath = () => setOverlay({ type: "breath" });
   const openEft = () => setOverlay({ type: "eft" });
   const openSleep = () => setOverlay({ type: "sleep" });
-  const openSomatic = () => setOverlay({ type: "somatic" });
+  const openSomatic = (practiceId: string) => setOverlay({ type: "somatic", practiceId });
   const openGrocery = () => setOverlay({ type: "grocery" });
   const openMsq = () => setOverlay({ type: "msq" });
   const openOrder = () => setOverlay({ type: "order" });
   const openPortions = () => setOverlay({ type: "portions" });
   const closeOverlay = () => setOverlay(null);
+
+  // A plan can prescribe several somatic practices, so the overlay resolves the
+  // one that was actually tapped rather than assuming there is only ever one.
+  const somaticOpen =
+    overlay?.type === "somatic"
+      ? data.somatic.find((s) => s.practiceId === overlay.practiceId) ?? null
+      : null;
 
   const dailyRemedies = data.remedies.filter((r) => r.assigned && r.daily);
   const dailyTotal = data.supplements.length + practices.length + dailyRemedies.length;
@@ -533,6 +540,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         openGrocery={openGrocery}
         openOrder={openOrder}
         openPortions={openPortions}
+        openSomatic={openSomatic}
       />
     );
   } else if (tab === "progress") {
@@ -634,7 +642,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "breath" && data.breathwork && <BreathOverlay bw={data.breathwork} onClose={closeOverlay} />}
               {overlay.type === "eft" && data.eft && <EftOverlay eft={data.eft} onClose={closeOverlay} />}
               {overlay.type === "sleep" && data.sleep && <SleepOverlay sleep={data.sleep} onClose={closeOverlay} />}
-              {overlay.type === "somatic" && data.somatic && <SomaticOverlay somatic={data.somatic} onClose={closeOverlay} />}
+              {overlay.type === "somatic" && somaticOpen && <SomaticOverlay somatic={somaticOpen} onClose={closeOverlay} />}
               {overlay.type === "grocery" && <GroceryOverlay onClose={closeOverlay} />}
               {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}

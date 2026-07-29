@@ -13,7 +13,14 @@
  */
 import { describe, it, expect } from "vitest";
 
-import { deriveSomatic, excludeSomaticLinked, loadSomaticPractice, MOTION_SHAPES } from "./somatic";
+import {
+  deriveMindBodyReads,
+  deriveSomatic,
+  excludeSomaticLinked,
+  loadSomaticPractice,
+  MOTION_SHAPES,
+  type AppSomatic,
+} from "./somatic";
 
 type Dict = Record<string, unknown>;
 
@@ -43,25 +50,25 @@ describe("deriveSomatic", () => {
   it("resolves a prescribed practice from the catalogue", () => {
     const raw: Dict[] = [{ name: "Morning belly rhythm", somatic_practice: "gastrocolic-rhythm" }];
     const out = deriveSomatic(P(raw), raw);
-    expect(out).not.toBeNull();
-    expect(out!.slug).toBe("gastrocolic-rhythm");
-    expect(out!.steps.length).toBeGreaterThan(0);
-    expect(MOTION_SHAPES).toContain(out!.shape);
+    expect(out).toHaveLength(1);
+    expect(out[0].slug).toBe("gastrocolic-rhythm");
+    expect(out[0].steps.length).toBeGreaterThan(0);
+    expect(MOTION_SHAPES).toContain(out[0].shape);
   });
 
-  it("returns null when no practice carries a slug", () => {
+  it("returns nothing when no practice carries a slug", () => {
     const raw: Dict[] = [{ name: "4-7-8 breathing", details: "morning and night" }];
-    expect(deriveSomatic(P(raw), raw)).toBeNull();
+    expect(deriveSomatic(P(raw), raw)).toEqual([]);
   });
 
-  it("returns null rather than a degraded card for an unresolvable slug", () => {
+  it("returns nothing rather than a degraded card for an unresolvable slug", () => {
     const raw: Dict[] = [{ name: "x", somatic_practice: "definitely-not-a-practice" }];
-    expect(deriveSomatic(P(raw), raw)).toBeNull();
+    expect(deriveSomatic(P(raw), raw)).toEqual([]);
   });
 
   it("carries every step cue through — the cues ARE the practice", () => {
     const raw: Dict[] = [{ name: "x", somatic_practice: "gastrocolic-rhythm" }];
-    const out = deriveSomatic(P(raw), raw)!;
+    const out = deriveSomatic(P(raw), raw)[0];
     const rec = loadSomaticPractice("gastrocolic-rhythm")!;
     expect(out.steps.length).toBe((rec.steps as unknown[]).length);
     for (const s of out.steps) expect(s.cue.length).toBeGreaterThan(0);
@@ -69,21 +76,57 @@ describe("deriveSomatic", () => {
 
   it("prefers the plain summary over the clinical why_it_works", () => {
     const raw: Dict[] = [{ name: "x", somatic_practice: "gastrocolic-rhythm" }];
-    const out = deriveSomatic(P(raw), raw)!;
+    const out = deriveSomatic(P(raw), raw)[0];
     const rec = loadSomaticPractice("gastrocolic-rhythm")!;
     if (typeof rec.summary === "string" && rec.summary.trim()) {
       expect(out.why).toBe(rec.summary);
     }
   });
 
-  it("picks the first slug-linked practice and ignores unlinked ones", () => {
+  it("skips unlinked practices and keeps the linked one's identity", () => {
     const raw: Dict[] = [
       { name: "4-7-8 breathing" },
       { name: "belly rhythm", somatic_practice: "gastrocolic-rhythm" },
     ];
-    const out = deriveSomatic(P(raw), raw)!;
-    expect(out.slug).toBe("gastrocolic-rhythm");
-    expect(out.practiceId).toBe("p1");
+    const out = deriveSomatic(P(raw), raw);
+    expect(out).toHaveLength(1);
+    expect(out[0].slug).toBe("gastrocolic-rhythm");
+    expect(out[0].practiceId).toBe("p1");
+    expect(out[0].sourceIndex).toBe(1);
+  });
+
+  /* The bug this whole change exists for: a second linked practice used to be
+     dropped on the floor — prescribed, listed in the checklist, unopenable. */
+  it("returns EVERY linked practice, in plan order", () => {
+    const raw: Dict[] = [
+      { name: "belly rhythm", somatic_practice: "gastrocolic-rhythm" },
+      { name: "4-7-8 breathing" },
+      { name: "wall rest", somatic_practice: "legs-up-the-wall" },
+    ];
+    const out = deriveSomatic(P(raw), raw);
+    expect(out.map((s) => s.slug)).toEqual(["gastrocolic-rhythm", "legs-up-the-wall"]);
+    expect(out.map((s) => s.practiceId)).toEqual(["p0", "p2"]);
+    expect(out.map((s) => s.sourceIndex)).toEqual([0, 2]);
+  });
+
+  it("keeps the resolvable ones when a sibling slug is broken", () => {
+    const raw: Dict[] = [
+      { name: "x", somatic_practice: "definitely-not-a-practice" },
+      { name: "wall rest", somatic_practice: "legs-up-the-wall" },
+    ];
+    const out = deriveSomatic(P(raw), raw);
+    expect(out.map((s) => s.slug)).toEqual(["legs-up-the-wall"]);
+    expect(out[0].sourceIndex).toBe(1);
+  });
+
+  it("carries both when two practices share one slug — morning and night", () => {
+    const raw: Dict[] = [
+      { name: "morning rest", somatic_practice: "constructive-rest", cadence: "Morning" },
+      { name: "night rest", somatic_practice: "constructive-rest", cadence: "Bedtime" },
+    ];
+    const out = deriveSomatic(P(raw), raw);
+    expect(out).toHaveLength(2);
+    expect(out.map((s) => s.sourceIndex)).toEqual([0, 1]);
   });
 });
 
@@ -108,7 +151,7 @@ describe("excludeSomaticLinked — the guard against double-catching", () => {
   ];
 
   it("drops the slug-linked practice so the name-matchers cannot see it", () => {
-    const somatic = deriveSomatic(P(raw), raw)!;
+    const somatic = deriveSomatic(P(raw), raw);
     const { practices, raw: kept } = excludeSomaticLinked(P(raw), raw, somatic);
     expect(kept).toHaveLength(2);
     expect(kept.some((p) => p.somatic_practice === "gastrocolic-rhythm")).toBe(false);
@@ -116,7 +159,7 @@ describe("excludeSomaticLinked — the guard against double-catching", () => {
   });
 
   it("keeps the two arrays positionally aligned — the easy bug", () => {
-    const somatic = deriveSomatic(P(raw), raw)!;
+    const somatic = deriveSomatic(P(raw), raw);
     const { practices, raw: kept } = excludeSomaticLinked(P(raw), raw, somatic);
     // p0 pairs with the breathing record, p2 with the EFT record
     expect(practices.map((p) => p.id)).toEqual(["p0", "p2"]);
@@ -125,15 +168,105 @@ describe("excludeSomaticLinked — the guard against double-catching", () => {
 
   it("is a no-op when nothing is slug-linked", () => {
     const plain: Dict[] = [{ name: "4-7-8 breathing" }];
-    const { practices, raw: kept } = excludeSomaticLinked(P(plain), plain, null);
+    const { practices, raw: kept } = excludeSomaticLinked(P(plain), plain, []);
     expect(kept).toHaveLength(1);
     expect(practices).toHaveLength(1);
   });
 
   it("leaves the breathing practice available to deriveBreathwork", () => {
-    const somatic = deriveSomatic(P(raw), raw)!;
+    const somatic = deriveSomatic(P(raw), raw);
     const { raw: kept } = excludeSomaticLinked(P(raw), raw, somatic);
-    // the real 4-7-8 prescription must survive — we only remove the linked one
+    // the real 4-7-8 prescription must survive — we only remove the linked ones
     expect(kept.some((r) => String(r.name).includes("4-7-8"))).toBe(true);
+  });
+
+  it("drops ALL linked practices, not just the first", () => {
+    const many: Dict[] = [
+      { name: "belly rhythm", somatic_practice: "gastrocolic-rhythm" },
+      { name: "4-7-8 breathing" },
+      { name: "wall rest", somatic_practice: "legs-up-the-wall" },
+      { name: "EFT tapping" },
+    ];
+    const somatic = deriveSomatic(P(many), many);
+    expect(somatic).toHaveLength(2);
+    const { practices, raw: kept } = excludeSomaticLinked(P(many), many, somatic);
+    expect(kept.map((r) => r.name)).toEqual(["4-7-8 breathing", "EFT tapping"]);
+    expect(practices.map((p) => p.id)).toEqual(["p1", "p3"]);
+  });
+
+  /* Exclusion goes by sourceIndex, not by a slug lookup. With a lookup, two
+     practices sharing a slug both resolve to the FIRST index — one of them
+     survives into the name-matchers and gets rendered as the wrong thing. */
+  it("drops both when two practices share one slug", () => {
+    const twice: Dict[] = [
+      { name: "morning rest", somatic_practice: "constructive-rest" },
+      { name: "4-7-8 breathing" },
+      { name: "night rest", somatic_practice: "constructive-rest" },
+    ];
+    const somatic = deriveSomatic(P(twice), twice);
+    expect(somatic).toHaveLength(2);
+    const { practices, raw: kept } = excludeSomaticLinked(P(twice), twice, somatic);
+    expect(kept.map((r) => r.name)).toEqual(["4-7-8 breathing"]);
+    expect(practices.map((p) => p.id)).toEqual(["p1"]);
+  });
+});
+
+/* ── the client-facing read ───────────────────────────────────────────────
+   This is the surface that tells a client their body may be holding
+   something. Every one of these tests is about what must NOT reach them. */
+describe("deriveMindBodyReads — three gates, all failing closed", () => {
+  const CONDS = ["Constipation", "Sleeplessness", "Endometriosis", "Migraine", "Elevated Lp(a)"];
+
+  const prescribed = (): AppSomatic[] => {
+    const raw: Dict[] = [{ name: "belly rhythm", somatic_practice: "gastrocolic-rhythm" }];
+    return deriveSomatic(P(raw), raw);
+  };
+
+  it("shows NOTHING until the coach opens it for this client", () => {
+    for (const depth of ["", "   ", "off", "resets_only", "FULLY", "true", "1"]) {
+      expect(deriveMindBodyReads(depth, CONDS, prescribed()), `depth ${JSON.stringify(depth)} leaked`).toEqual([]);
+    }
+  });
+
+  it("opens at full depth, and only for the client-safe conditions", () => {
+    const out = deriveMindBodyReads("full", CONDS, prescribed());
+    expect(out.length).toBeGreaterThan(0);
+    // endometriosis is coach_only, migraine is gated, Lp(a) has no map at all
+    const titles = out.map((r) => r.title.toLowerCase()).join(" | ");
+    expect(titles).not.toMatch(/endometrio|migraine/);
+  });
+
+  it("accepts the value however the coach's field is cased or padded", () => {
+    expect(deriveMindBodyReads("  Full  ", CONDS, prescribed()).length).toBeGreaterThan(0);
+  });
+
+  it("never emits a card with no reading in it", () => {
+    for (const r of deriveMindBodyReads("full", CONDS, prescribed())) {
+      expect(r.reframe.length).toBeGreaterThan(0);
+      expect(r.title.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("attaches the practice ONLY when the coach actually prescribed it", () => {
+    const withIt = deriveMindBodyReads("full", ["Constipation"], prescribed());
+    expect(withIt[0].practiceSlug).toBe("gastrocolic-rhythm");
+    expect(withIt[0].practice?.slug).toBe("gastrocolic-rhythm");
+
+    // same reading, nothing prescribed — the read still stands, the button doesn't
+    const without = deriveMindBodyReads("full", ["Constipation"], []);
+    expect(without[0].reframe).toBe(withIt[0].reframe);
+    expect(without[0].practice).toBeNull();
+    expect(without[0].practiceSlug).toBe("gastrocolic-rhythm");
+  });
+
+  it("titles the card from the map, never from the coach's raw condition text", () => {
+    const messy = "Constipation — ON TREATMENT (previously unreported) — lactulose 10ml";
+    const [r] = deriveMindBodyReads("full", [messy], []);
+    expect(r.title).not.toContain("lactulose");
+    expect(r.title).not.toMatch(/previously unreported/i);
+  });
+
+  it("is empty for a client whose conditions the book does not cover", () => {
+    expect(deriveMindBodyReads("full", ["Elevated Lp(a)", "Raised ApoB"], [])).toEqual([]);
   });
 });

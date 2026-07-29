@@ -2000,42 +2000,134 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 
 }
 
-/* ── guided somatic reset (all seven players) ─────────────────────────── */
-/* Ochre-forward rather than the sleep card's night-indigo: these run in the
-   day, alongside the sage breathing card, so they need their own identity
-   without competing with it. */
-.som-launch {
-  display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 10px;
-  padding: 14px 15px; text-align: left; cursor: pointer; border: none;
-  border-radius: var(--r-card); font-family: var(--sans);
-  background: linear-gradient(135deg, #6b4a22 0%, #45301a 100%);
+/* ── mind-body entry card (Today) ──────────────────────────────────────
+   One card replaced four stacked launch cards. Light and on-paper: the
+   client picks a state, so it should read as a question, not as a control
+   panel. The prescribed-practice line below it carries the ochre accent —
+   that's the one thing here chosen for this client specifically. */
+.mbe {
+  margin-top: 10px; padding: 14px 15px 15px;
+  background: var(--paper-2); border-radius: var(--r-card);
   box-shadow: var(--shadow-card);
 }
-.som-launch:active { transform: scale(.99); }
-.soml-orb {
-  width: 46px; height: 46px; border-radius: 999px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,.08); position: relative;
+.mbe-kicker {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--ochre);
 }
-.soml-orb span {
-  width: 20px; height: 20px; border-radius: 999px;
-  background: rgba(240,201,138,.85); animation: somPulse 3.4s ease-in-out infinite;
+.mbe-q {
+  font-family: var(--serif); font-weight: 400; font-size: 17px; line-height: 1.25;
+  color: var(--ink); margin: 6px 0 11px;
 }
-@keyframes somPulse { 0%,100% { transform: scale(.72); opacity: .75 } 50% { transform: scale(1); opacity: 1 } }
-.soml-body { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
-.soml-kicker { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); }
-.soml-title { font-size: 15px; font-weight: 600; color: #fdf6ea; }
-.soml-meta { font-size: 12px; color: rgba(255,255,255,.6); }
-.soml-go {
+.mbe-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.mbe-chip {
+  border: 1px solid rgba(74,97,82,0.22); background: var(--paper);
+  color: var(--ink); font-family: var(--sans); font-size: 13px; line-height: 1.2;
+  padding: 8px 13px; border-radius: var(--r-pill); cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.mbe-chip:active { transform: scale(.98); }
+/* Positive states read warm rather than clinical — they aren't a problem to fix. */
+.mbe-chip--settled { border-color: rgba(169,101,31,0.26); color: var(--ochre-deep); }
+.mbe-chip.on { background: var(--forest); border-color: var(--forest); color: #f7f4ee; }
+.mbe-chip--settled.on { background: var(--ochre); border-color: var(--ochre); color: #fdf6ea; }
+
+.mbe-reply {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(38,34,25,0.09);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+}
+.mbe-reply-line {
+  margin: 0; font-family: var(--serif); font-size: 15px; line-height: 1.45; color: var(--ink);
+}
+.mbe-go {
+  display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 14px; font-weight: 600; color: #fdf6ea;
+  background: var(--ochre); padding: 10px 16px; border-radius: var(--r-pill);
+  box-shadow: 0 2px 8px rgba(169,101,31,0.22);
+}
+.mbe-go:active { transform: scale(.99); }
+
+/* ── the mind-body read (Plan tab) ────────────────────────────────────
+   Quieter than the action cards on purpose. This is reflective content
+   about what a body may be carrying, and it should read as an offer
+   rather than an instruction — hence serif, generous line-height, and no
+   filled buttons except the one that starts the practice. */
+.mbr-intro {
+  margin: 0 0 12px; padding: 0 2px;
+  font-size: 12.5px; line-height: 1.6; color: var(--muted);
+}
+.mbr-card {
+  background: var(--paper-2); border-radius: var(--r-card);
+  padding: 15px 16px 14px; margin-bottom: 10px;
+  border-left: 3px solid rgba(169,101,31,0.35);
+}
+.mbr-title {
+  margin: 0 0 8px; font-family: var(--serif); font-weight: 400;
+  font-size: 16.5px; line-height: 1.3; color: var(--ink);
+}
+.mbr-reframe {
+  margin: 0; font-family: var(--serif); font-size: 15px; line-height: 1.62;
+  color: var(--ink);
+}
+.mbr-q {
+  display: flex; gap: 7px; align-items: flex-start;
+  margin: 11px 0 0; padding-top: 11px;
+  border-top: 1px solid rgba(38,34,25,0.08);
+  font-size: 13.5px; line-height: 1.55; font-style: italic; color: var(--muted);
+}
+.mbr-q-mark { flex-shrink: 0; margin-top: 3px; color: var(--ochre); }
+.mbr-go {
+  display: inline-flex; align-items: baseline; gap: 7px; flex-wrap: wrap;
+  margin-top: 13px; border: none; cursor: pointer; text-align: left;
+  font-family: var(--sans); font-size: 13.5px; font-weight: 600; color: #fdf6ea;
+  background: var(--ochre); padding: 9px 14px; border-radius: var(--r-pill);
+}
+.mbr-go:active { transform: scale(.99); }
+.mbr-go-sub { font-size: 11.5px; font-weight: 400; opacity: .8; }
+
+/* ── the coach's specific prescription, on its own line ──────────────── */
+.mbe-rx {
+  display: flex; align-items: center; gap: 12px; width: 100%; margin-top: 9px;
+  padding: 11px 13px; text-align: left; cursor: pointer; font-family: var(--sans);
+  background: var(--paper); border: 1px solid rgba(169,101,31,0.24);
+  border-left: 3px solid var(--ochre);
+  border-radius: var(--r-card); box-shadow: var(--shadow-card);
+}
+.mbe-rx:active { transform: scale(.99); }
+.mbe-rx-dot {
+  width: 9px; height: 9px; border-radius: 999px; flex-shrink: 0;
+  background: var(--ochre); box-shadow: 0 0 0 5px rgba(169,101,31,0.12);
+  animation: mbeRxPulse 3.4s ease-in-out infinite;
+}
+@keyframes mbeRxPulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(169,101,31,0.10); }
+  50%     { box-shadow: 0 0 0 7px rgba(169,101,31,0.16); }
+}
+.mbe-rx-body { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.mbe-rx-kicker {
+  font-size: 10px; font-weight: 600; letter-spacing: 1.1px; text-transform: uppercase;
+  color: var(--ochre);
+}
+.mbe-rx-title { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.mbe-rx-meta { font-size: 12px; color: var(--muted); }
+.mbe-rx-go {
   display: flex; align-items: center; gap: 5px; flex-shrink: 0;
-  font-size: 13px; font-weight: 600; color: #fdf6ea;
-  background: rgba(255,255,255,.12); padding: 7px 12px; border-radius: var(--r-pill);
+  font-size: 12.5px; font-weight: 600; color: var(--ochre-deep);
+  background: rgba(169,101,31,0.10); padding: 7px 11px; border-radius: var(--r-pill);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mbe-rx-dot { animation: none; }
+  .mbe-chip, .mbe-go, .mbe-rx { transition: none; }
 }
 
 .som-wrap {
   position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column;
   align-items: center; justify-content: center; padding: 24px;
-  background: radial-gradient(120% 120% at 50% 30%, #191811 0%, #0f0e0a 100%);
+  /* Ochre-forward, not black. The old #191811 → #0f0e0a read as a dead
+     rectangle next to the app's warm paper — a guided session should still
+     feel like the same product with the lights down. */
+  background: radial-gradient(125% 120% at 50% 34%, #2c2418 0%, #1b160e 52%, #120f09 100%);
   color: #f2ede2;
 }
 .som-x {
@@ -2047,6 +2139,19 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .som-intro, .som-list { max-width: 340px; text-align: center; }
 .som-why { font-size: 15px; line-height: 1.6; color: rgba(242,237,226,.72); margin: 0 0 14px; }
 .som-kit { font-size: 13px; color: rgba(242,237,226,.5); margin: 0 0 16px; }
+/* The mind-body reading — quieter than the practice's own why, and set apart,
+   because it is an invitation to consider rather than an instruction. */
+.som-reading {
+  font-family: var(--serif); font-size: 14.5px; line-height: 1.65;
+  color: rgba(242,237,226,.66); margin: 0 0 16px; padding: 12px 14px;
+  border-radius: 14px; background: rgba(240,201,138,.06);
+  border-left: 2px solid rgba(240,201,138,.34); text-align: left;
+}
+.som-reading-for {
+  display: block; font-family: var(--sans); font-size: 10px; font-weight: 600;
+  letter-spacing: 1.1px; text-transform: uppercase;
+  color: rgba(240,201,138,.72); margin-bottom: 5px;
+}
 .som-cta {
   border: none; background: rgba(240,201,138,.9); color: #2a1e0d; font-weight: 600;
   font-size: 15px; padding: 12px 26px; border-radius: var(--r-pill); cursor: pointer;
@@ -2073,4 +2178,3 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
   margin-top: 18px; border: none; background: rgba(255,255,255,.1); color: #f2ede2;
   font-size: 14px; padding: 9px 22px; border-radius: var(--r-pill); cursor: pointer;
 }
-@media (prefers-reduced-motion: reduce) { .soml-orb span { animation: none } }

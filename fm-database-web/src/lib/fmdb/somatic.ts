@@ -20,6 +20,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 
 import { getCataloguePath } from "./paths";
+import { isClientSafe, readChiefComplaints } from "./somatic-read";
 
 /** The seven players. Mirrors fmdb.enums.MotionShape — keep in lockstep. */
 export type MotionShape =
@@ -51,6 +52,15 @@ export interface SomaticStep {
 
 export interface AppSomatic {
   practiceId: string;          // the plan practice this came from
+  /**
+   * Index into the plan's practice arrays this was resolved from.
+   *
+   * Carried rather than re-found later: two practices can legitimately link
+   * the SAME slug (constructive-rest morning and night), and looking the index
+   * back up by slug would then return the first one twice — dropping one
+   * practice and leaving the other to be caught by the name-matchers.
+   */
+  sourceIndex: number;
   slug: string;                // catalogue slug
   name: string;
   shape: MotionShape;
@@ -91,16 +101,22 @@ export function loadSomaticPractice(slug: string): Dict | null {
 }
 
 /**
- * Derive the guided somatic session for a plan.
+ * Derive EVERY guided somatic session prescribed on a plan, in plan order.
  *
- * Returns null rather than a degraded card when the practice cannot be
- * resolved, or when the catalogue record has no motion_shape yet — an
- * unrenderable practice must not reach the client as a broken one.
+ * Returns a list, not the first hit: a coach can reasonably link two practices
+ * (a morning down-regulator and a bedtime release), and stopping at the first
+ * made the second silently invisible — prescribed, listed in the checklist,
+ * but with no way to actually do it.
+ *
+ * A practice that cannot be resolved, or whose catalogue record has no
+ * motion_shape yet, is skipped rather than degraded — an unrenderable practice
+ * must not reach the client as a broken one.
  */
 export function deriveSomatic(
   practices: { id: string; name: string; when: string }[],
   practiceRaw: Dict[],
-): AppSomatic | null {
+): AppSomatic[] {
+  const out: AppSomatic[] = [];
   for (let i = 0; i < practiceRaw.length; i++) {
     const slug = asStr(practiceRaw[i]?.somatic_practice).trim();
     if (!slug) continue;
@@ -130,8 +146,9 @@ export function deriveSomatic(
     // already errors on this, but the app must not depend on that holding.
     if (timed && steps.length === 0) continue;
 
-    return {
+    out.push({
       practiceId: practices[i]?.id || asStr(practiceRaw[i]?.id) || `somatic-${i}`,
+      sourceIndex: i,
       slug,
       name: asStr(rec.display_name) || slug,
       shape,
@@ -143,9 +160,9 @@ export function deriveSomatic(
       timed,
       totalSeconds: asNum(rec.duration_seconds),
       equipment: (Array.isArray(rec.equipment) ? rec.equipment : []).map(asStr).filter(Boolean),
-    };
+    });
   }
-  return null;
+  return out;
 }
 
 /**
@@ -163,25 +180,87 @@ function clientFacingWhy(rec: Dict): string {
 }
 
 /**
- * Remove the slug-linked practice from the lists handed to the NAME-matching
+/* ---- the client-facing read ------------------------------------------- */
+
+/** One condition, what the book says about it, and the practice for it. */
+export interface AppMindBodyRead {
+  /** the map's own client-facing title, e.g. "Constipation — Holding On and
+   *  Not Letting Go" — NOT the coach's raw condition string, which carries
+   *  clinical shorthand ("ON TREATMENT (previously unreported) — Telma 40") */
+  title: string;
+  /** the belief-level reframe; this is the reading itself */
+  reframe: string;
+  /** the one reflective question, or empty */
+  question: string;
+  /** the practice for THIS condition, when the coach has prescribed it */
+  practice: AppSomatic | null;
+  /** catalogue slug of the practice the map names, prescribed or not */
+  practiceSlug: string;
+}
+
+/**
+ * What the client may be shown of the mind-body layer.
+ *
+ * THREE gates, all of which must permit, and all of which fail closed:
+ *
+ *  1. the client's `mind_body_depth` is `full`. Absent — which is every client
+ *     until the coach says otherwise — shows nothing. This content tells
+ *     someone their body may be holding what they will not put down; absent
+ *     consent is not consent.
+ *  2. the map is `general` AND carries no `coach_only_note`. That withholds 59
+ *     of the 123 on its own — recurrent miscarriage, infertility, fibroids.
+ *  3. the map has a reframe worth reading. An empty one is not a card.
+ *
+ * The practice is attached only when the coach actually prescribed it. The
+ * reading still stands when she has not: the reframe and the question are the
+ * substance, not the button.
+ */
+export function deriveMindBodyReads(
+  depth: string,
+  conditions: string[],
+  prescribed: AppSomatic[],
+): AppMindBodyRead[] {
+  if (depth.trim().toLowerCase() !== "full") return [];
+
+  const bySlug = new Map(prescribed.map((p) => [p.slug, p]));
+  const out: AppMindBodyRead[] = [];
+  for (const r of readChiefComplaints(conditions)) {
+    if (!isClientSafe(r)) continue;
+    const reframe = r.reframe.trim();
+    if (!reframe) continue;
+    out.push({
+      title: r.displayName || r.condition,
+      reframe,
+      question: r.inquiryQuestion.trim(),
+      practice: bySlug.get(r.somaticPractice) ?? null,
+      practiceSlug: r.somaticPractice,
+    });
+  }
+  return out;
+}
+
+/**
+ * Remove EVERY slug-linked practice from the lists handed to the NAME-matching
  * derivations (deriveBreathwork / deriveEft / deriveSleep).
  *
- * This is the core of the fix and it is easy to get wrong: the two arrays are
- * positionally paired, so both must drop the SAME index or every practice after
- * it is silently mismatched with the wrong raw record.
+ * This is the core of the fix and it is easy to get wrong two ways:
+ *
+ *  - the two arrays are positionally paired, so both must drop the SAME
+ *    indices or every practice after them is silently mismatched with the
+ *    wrong raw record;
+ *  - the indices must come from `sourceIndex`, not from a slug lookup — two
+ *    practices may share a slug, and a lookup would return the first twice.
  */
 export function excludeSomaticLinked<T>(
   practices: T[],
   practiceRaw: Dict[],
-  somatic: AppSomatic | null,
+  somatics: AppSomatic[],
 ): { practices: T[]; raw: Dict[] } {
-  if (!somatic) return { practices, raw: practiceRaw };
-  const i = practiceRaw.findIndex(
-    (p) => asStr(p?.somatic_practice).trim() === somatic.slug,
-  );
-  if (i < 0) return { practices, raw: practiceRaw };
+  if (!somatics.length) return { practices, raw: practiceRaw };
+  const drop = new Set(somatics.map((s) => s.sourceIndex));
+  if (!drop.size) return { practices, raw: practiceRaw };
   return {
-    practices: practices.filter((_, k) => k !== i),
-    raw: practiceRaw.filter((_, k) => k !== i),
+    practices: practices.filter((_, k) => !drop.has(k)),
+    raw: practiceRaw.filter((_, k) => !drop.has(k)),
   };
 }

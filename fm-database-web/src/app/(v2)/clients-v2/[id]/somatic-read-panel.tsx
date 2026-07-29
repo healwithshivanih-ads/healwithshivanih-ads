@@ -16,7 +16,13 @@
 
 import { useEffect, useState, useTransition } from "react";
 
-import { loadSomaticRead, type SomaticReadItem } from "@/lib/server-actions/somatic";
+import {
+  loadMindBodyDepth,
+  loadSomaticRead,
+  setMindBodyDepth,
+  type MindBodyDepth,
+  type SomaticReadItem,
+} from "@/lib/server-actions/somatic";
 
 const TONE: Record<string, { bg: string; fg: string; label: string }> = {
   general: { bg: "rgba(74,97,82,.12)", fg: "#3a4d41", label: "safe to share" },
@@ -29,6 +35,23 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
   const [err, setErr] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
+  const [depth, setDepth] = useState<MindBodyDepth | null>(null);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (!open || depth !== null) return;
+    loadMindBodyDepth(clientId).then(setDepth).catch(() => setDepth("off"));
+  }, [open, depth, clientId]);
+
+  function choose(next: MindBodyDepth) {
+    const prev = depth;
+    setDepth(next);           // optimistic — the control must feel immediate
+    setSaving(true);
+    setMindBodyDepth(clientId, next)
+      .then((r) => { if (!r.ok) { setDepth(prev); setErr(r.error); } })
+      .catch(() => setDepth(prev))
+      .finally(() => setSaving(false));
+  }
 
   useEffect(() => {
     if (!open || reads || err) return;
@@ -59,6 +82,49 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
 
       {open && (
         <div style={{ marginTop: 12 }}>
+          {/* The client-app gate. Off by default for everyone; this is the
+              only place it changes. `full` is what lets a reading reach the
+              client with no coach in the room, so it reads as a decision. */}
+          <div
+            style={{
+              border: "1px solid var(--fm-line)", borderRadius: 12,
+              padding: "10px 12px", marginBottom: 12, background: "var(--fm-bg-subtle, #faf9f7)",
+            }}
+          >
+            <div style={{ fontSize: 12.5, fontWeight: 600, marginBottom: 2 }}>
+              Show in their app
+            </div>
+            <div style={{ fontSize: 11.5, color: "var(--fm-muted)", lineHeight: 1.5, marginBottom: 8 }}>
+              Only <strong>safe to share</strong> reads ever appear, and only the ones matching their
+              own conditions. Sensitive and gated entries stay here with you.
+            </div>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {([
+                ["off", "Nothing"],
+                ["resets_only", "Practices only"],
+                ["full", "Practices + reads"],
+              ] as [MindBodyDepth, string][]).map(([v, label]) => {
+                const on = depth === v;
+                return (
+                  <button
+                    key={v}
+                    disabled={saving || depth === null}
+                    onClick={() => choose(v)}
+                    style={{
+                      fontSize: 12, padding: "6px 11px", borderRadius: 999, cursor: "pointer",
+                      border: on ? "1px solid #4a6152" : "1px solid var(--fm-line)",
+                      background: on ? "#4a6152" : "#fff",
+                      color: on ? "#f7f4ee" : "var(--fm-ink, #262219)",
+                      opacity: depth === null ? 0.5 : 1,
+                    }}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {pending && <p style={{ fontSize: 13, color: "var(--fm-muted)" }}>Reading…</p>}
           {err && <p style={{ fontSize: 13, color: "#a32d2d" }}>{err}</p>}
 
