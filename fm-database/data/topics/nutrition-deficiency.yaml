@@ -5,6 +5,8 @@ aliases:
 - mineral deficiency
 - nutrient insufficiency
 - micronutrient deficiency
+# 4 refs; singular/plural variant of the same topic (2026-07-29)
+- nutrient-deficiency
 summary: Patterns of vitamin, mineral, omega-3, and nutrient insufficiency with associated symptoms, food sources, preferred
   supplement forms, and dosing considerations across multiple body systems.
 common_symptoms:

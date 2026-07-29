@@ -1,0 +1,27 @@
+slug: cerebral-perfusion
+display_name: Cerebral Perfusion
+category: structural
+aliases:
+- cerebral blood flow
+- brain perfusion
+summary: Delivery of oxygenated blood to brain tissue. Falls with large- and small-vessel disease,
+  low cardiac output, and impaired autoregulation, and is the limiting factor on how much function
+  returns to tissue around an infarct during recovery.
+upstream_drivers:
+- atherosclerosis
+- microvascular-damage
+downstream_effects:
+- brain-fog
+- poor-concentration
+- dizziness
+linked_to_topics:
+- stroke-recovery
+notes_for_coach: Recovery-phase coaching is aerobic conditioning within tolerance, blood-pressure
+  and glucose control, and sleep — the same vascular levers as prevention. Any sudden change in speech,
+  face or limb strength is emergency referral.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

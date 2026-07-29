@@ -1,0 +1,30 @@
+slug: muscle-relaxation-contraction-balance
+display_name: Muscle Contraction–Relaxation Balance
+category: structural
+aliases:
+- muscle contraction relaxation coupling
+- neuromuscular excitability
+summary: Calcium drives muscle contraction; magnesium is required for it to let go. When magnesium
+  is low relative to calcium, or potassium and sodium are depleted, the relaxation half of the cycle
+  fails — cramp, twitch, restlessness and tension that does not settle with stretching.
+upstream_drivers:
+- calcium-magnesium-imbalance
+- electrolyte-imbalance
+downstream_effects:
+- muscle-cramps
+- muscle-tension
+- restless-legs
+linked_to_topics:
+- magnesium-musculoskeletal-health
+linked_to_symptoms:
+- muscle-cramps
+- muscle-tension
+notes_for_coach: Night cramps and eyelid twitch are the everyday presentation. Food-first magnesium
+  (pumpkin seeds, leafy greens, millets) plus hydration and salt in the heat; glycinate if a supplement
+  is warranted, since oxide mostly loosens the bowel.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

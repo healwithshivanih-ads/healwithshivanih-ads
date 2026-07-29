@@ -3,6 +3,8 @@ display_name: Estrogen Methylation & Clearance
 aliases:
 - estrogen detoxification
 - catechol estrogen clearance
+# 3 refs; COMT methylation IS how catechol oestrogens are cleared (2026-07-29)
+- estrogen-catechol-clearance
 category: endocrine
 summary: Active estrogen metabolites are methylated by COMT (using SAMe) and subsequently
   excreted. When COMT is slow, estrogen accumulates, driving PMS, fibroids, menorrhagia,

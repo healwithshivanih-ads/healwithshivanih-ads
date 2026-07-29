@@ -1,0 +1,30 @@
+slug: insulin-deficiency
+display_name: Insulin Deficiency
+category: endocrine
+aliases:
+- absolute insulin deficiency
+- beta cell insulin loss
+summary: 'Absolute shortfall of insulin because the beta cells producing it have been destroyed or
+  exhausted. Distinct from insulin resistance, where insulin is present but tissues do not respond:
+  here the hormone itself is missing, glucose cannot enter cells, and the body switches to fat for
+  fuel with ketones as the by-product.'
+upstream_drivers:
+- autoimmune-beta-cell-destruction
+- beta-cell-exhaustion
+downstream_effects:
+- polyphagia
+- frequent-urination
+- unintended-weight-loss
+linked_to_topics:
+- type-1-diabetes-mellitus
+linked_to_symptoms:
+- polyphagia
+notes_for_coach: Never coach carbohydrate restriction or fasting into suspected insulin deficiency
+  — this is the presentation where that causes harm. Hunger with weight LOSS, thirst and polyuria
+  is an urgent referral, not a lifestyle conversation.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

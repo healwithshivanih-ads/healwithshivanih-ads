@@ -22,6 +22,8 @@ aliases:
 - free-radical-damage
 - reactive-oxygen-species
 - antioxidant-deficiency
+# 11 refs; 'chronic' is an intensifier, not a distinct mechanism (2026-07-29)
+- chronic-oxidative-stress
 category: metabolic
 summary: Increased oxidative stress and decreased antioxidant defences in mucosal tissue are hallmarks of IBD and ARMD, causing
   protein and DNA oxidative damage. IBD patients show deficiencies in selenium-dependent glutathione peroxidase, Cu-Zn superoxide

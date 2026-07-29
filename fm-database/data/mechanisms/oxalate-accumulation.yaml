@@ -1,0 +1,29 @@
+slug: oxalate-accumulation
+display_name: Oxalate Accumulation
+category: metabolic
+aliases:
+- oxalate burden
+- hyperoxaluria
+summary: Oxalate load exceeds what can be bound in the gut and cleared by the kidney, so calcium oxalate
+  crystallises in the urinary tract and, with sustained excess, deposits in soft tissue. Driven by
+  high dietary oxalate, by fat malabsorption (unabsorbed fat binds the calcium that would otherwise
+  bind oxalate), and by loss of the gut species that degrade it.
+upstream_drivers:
+- fat-malabsorption
+- gut-dysbiosis
+downstream_effects:
+- kidney-stones
+- joint-pain
+linked_to_topics:
+- oxalate-sensitivity
+linked_to_symptoms:
+- kidney-stones
+notes_for_coach: 'Two levers matter more than restriction: calcium WITH the oxalate-containing meal
+  so it binds in the gut rather than the kidney, and hydration. Cutting oxalate abruptly and steeply
+  can provoke dumping symptoms — taper.'
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

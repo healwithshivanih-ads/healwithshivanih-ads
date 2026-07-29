@@ -1,0 +1,30 @@
+slug: bacterial-histamine-production
+display_name: Bacterial Histamine Production
+category: gut
+aliases:
+- microbial histamine production
+- histamine-producing bacteria
+summary: Certain gut species decarboxylate dietary histidine into histamine in the lumen, adding to
+  the histamine load the body must clear. Where DAO activity is already limited, this microbial contribution
+  can be the difference between tolerance and reaction — and is why some probiotics, including several
+  Lactobacillus strains, make histamine symptoms worse rather than better.
+upstream_drivers:
+- gut-dysbiosis
+- sibo
+downstream_effects:
+- hives-itchy-skin
+- headache
+- nasal-congestion
+linked_to_topics:
+- histamine-intolerance
+linked_to_symptoms:
+- probiotic-intolerance
+notes_for_coach: If a client reports getting WORSE on a probiotic, this is the first thing to consider
+  rather than pushing through. Check the strain list before recommending — histamine-producing strains
+  are common in general-purpose blends.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

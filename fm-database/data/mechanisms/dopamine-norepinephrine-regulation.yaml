@@ -1,0 +1,27 @@
+slug: dopamine-norepinephrine-regulation
+display_name: Dopamine & Noradrenaline Regulation
+category: neurological
+aliases:
+- catecholamine regulation
+- dopamine noradrenaline balance
+summary: Balance between synthesis, release, reuptake and COMT-mediated breakdown of the catecholamines.
+  Sets drive, focus, motivation and stress reactivity. Slow COMT clearance sustains catecholamine
+  signalling — sharper focus, but a poorer tolerance for stress; fast clearance does the reverse.
+upstream_drivers:
+- catechol-methylation
+downstream_effects:
+- addictive-tendencies
+- poor-concentration
+- anxiety
+linked_to_topics:
+- comt-fast-dopamine-depletion
+- comt-slow-catechol-clearance
+notes_for_coach: Explains why a slow-COMT client can be undone by caffeine, green tea extract or high-dose
+  methyl donors while a fast-COMT client barely notices them. Coach the load — caffeine timing, stimulation,
+  recovery — rather than the genotype.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

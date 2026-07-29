@@ -1,0 +1,27 @@
+slug: ocular-blood-flow-reduction
+display_name: Reduced Ocular Blood Flow
+category: structural
+aliases:
+- ocular perfusion deficit
+- optic nerve head hypoperfusion
+summary: Perfusion of the optic nerve head falls, either because intraocular pressure rises against
+  it or because vascular dysregulation and vasospasm reduce supply at normal pressure. Explains why
+  optic-nerve damage progresses in some people whose measured pressure is normal.
+upstream_drivers:
+- oxidative-stress-vascular
+- vasoconstriction
+downstream_effects:
+- visual-field-loss
+- blurred-vision
+linked_to_topics:
+- glaucoma
+notes_for_coach: Useful for explaining to a client why lifestyle work still matters when their pressure
+  reads 'normal'. Pressure management and any medication are ophthalmology scope; coaching supports
+  the vascular side — aerobic exercise, magnesium-rich food, not smoking, and sleeping with the head
+  slightly raised.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

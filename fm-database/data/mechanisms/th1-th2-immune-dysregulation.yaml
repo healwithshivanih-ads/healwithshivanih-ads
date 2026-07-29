@@ -1,0 +1,30 @@
+slug: th1-th2-immune-dysregulation
+display_name: Th1/Th2 Immune Dysregulation
+category: immune
+aliases:
+- th1 th2 imbalance
+- T-helper polarisation
+- th1-th2-imbalance
+summary: The T-helper response skews rather than staying balanced. A Th1 skew favours cell-mediated,
+  tissue-damaging autoimmunity; a Th2 skew favours antibody, allergic and atopic responses. Regulatory
+  T-cell capacity — which depends on vitamin D, butyrate and a diverse microbiome — is what normally
+  holds the balance.
+upstream_drivers:
+- gut-dysbiosis
+- leaky-gut
+- vitamin-d-deficiency
+downstream_effects:
+- autoimmune-flares-low-immunity
+- food-sensitivities
+linked_to_topics:
+- autoimmune
+- celiac-disease
+notes_for_coach: Resist the urge to 'boost' one arm. The coaching target is regulatory capacity —
+  vitamin D status, fermentable fibre and butyrate, sleep, and removing the driver (usually gut barrier
+  and a trigger food) rather than stimulating immunity.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

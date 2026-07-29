@@ -31,13 +31,13 @@ linked_to_topics:
 - type-1-diabetes-mellitus
 - type-2-diabetes-mellitus
 - diabetic-neuropathy
+- nutrient-deficiency
 linked_to_mechanisms:
 - stress-induced-immune-suppression
 - hpa-axis-dysregulation
 - oxidative-stress
 - gut-barrier-and-nutrient-absorption
 - microvascular-damage
-- nutrient-deficiency
 - sorbitol-accumulation
 when_to_refer: Any non-healing wound >2 weeks or foot ulcer — refer to wound care
   specialist or podiatrist.

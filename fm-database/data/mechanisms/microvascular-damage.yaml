@@ -1,0 +1,36 @@
+slug: microvascular-damage
+display_name: Microvascular Damage
+category: structural
+aliases:
+- small vessel damage
+- microangiopathy
+- capillary damage
+summary: Sustained hyperglycaemia, oxidative stress and advanced glycation end-products thicken and
+  stiffen capillary basement membranes, so perfusion of the tissues that depend on the smallest vessels
+  fails first — retina, glomerulus, peripheral nerve, and the skin of the feet. The damage is largely
+  silent until function is already lost.
+upstream_drivers:
+- advanced-glycation-end-products
+- oxidative-stress
+- postprandial-glucose-spike
+downstream_effects:
+- blurred-vision
+- poor-wound-healing
+- foot-ulcers
+linked_to_topics:
+- diabetic-retinopathy
+- diabetic-neuropathy
+- diabetic-nephropathy
+linked_to_symptoms:
+- blurred-vision
+- poor-wound-healing
+- foot-ulcers
+notes_for_coach: This is the mechanism that makes post-meal glucose control matter more than a single
+  fasting number. Screening intervals (retinal, renal, foot) are clinician scope — the coaching job
+  is making sure they actually happen, and that any foot wound is seen quickly rather than watched.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

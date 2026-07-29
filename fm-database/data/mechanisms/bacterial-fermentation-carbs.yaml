@@ -1,0 +1,34 @@
+slug: bacterial-fermentation-carbs
+display_name: Bacterial Fermentation of Carbohydrate
+category: gut
+aliases:
+- carbohydrate fermentation
+- bacterial carbohydrate fermentation
+summary: Bacteria ferment carbohydrate that has not been absorbed in the small intestine, producing
+  hydrogen, methane, carbon dioxide and short-chain fatty acids. In the colon this is normal and desirable.
+  Displaced upward into the small intestine — as in SIBO — or fed by more fermentable substrate than
+  the system can handle, the same process produces distension, gas and pain within an hour or two
+  of eating.
+upstream_drivers:
+- sibo
+- impaired-gastric-acid-production
+- slow-motility
+downstream_effects:
+- bloating
+- foul-smelling-gas
+- abdominal-discomfort
+linked_to_topics:
+- sibo
+linked_to_symptoms:
+- bloating
+- foul-smelling-gas
+notes_for_coach: 'Timing is the diagnostic clue worth asking about: fermentation bloat builds through
+  the day and is worst after fermentable carbohydrate, unlike gastric bloat which is immediate. Low-FODMAP
+  is a short diagnostic tool, NOT a destination — prolonged restriction starves the very species you
+  are trying to restore.'
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

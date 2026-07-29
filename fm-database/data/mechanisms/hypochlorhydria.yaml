@@ -3,6 +3,11 @@ display_name: Hypochlorhydria (Insufficient Gastric Acid)
 aliases:
 - achlorhydria
 - gastric-acid-insufficiency
+# Nearly authored as a separate `impaired-gastric-acid-production` mechanism
+# on 2026-07-29 — the validator's alias-collision check caught it. Same
+# concept, so aliased here instead (3 refs).
+- impaired-gastric-acid-production
+- low stomach acid
 category: gut
 summary: Decreased gastric acid secretion impairs protein digestion, mineral disassociation, and the antimicrobial acid barrier,
   predisposing to H. pylori overgrowth, SIBO, and multiple food allergies. H2 blockers and PPIs may perpetuate colonisation

@@ -1,0 +1,27 @@
+slug: hepatic-glucose-production
+display_name: Hepatic Glucose Production
+category: metabolic
+aliases:
+- hepatic gluconeogenesis
+- liver glucose output
+summary: The liver releases glucose from glycogen and makes it anew from non-carbohydrate substrate,
+  normally suppressed by insulin after a meal and overnight. In insulin resistance that suppression
+  fails, so the liver keeps exporting glucose through the night — which is why fasting glucose can
+  be high in someone who ate nothing since dinner.
+upstream_drivers:
+- insulin-resistance
+- cortisol-elevation
+downstream_effects:
+- postprandial-glucose-spike
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+notes_for_coach: The answer to 'I ate nothing after 8pm and my morning sugar was still high'. Levers
+  are evening meal composition, a post-dinner walk, sleep, and stress load — not eating even less
+  at night.
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

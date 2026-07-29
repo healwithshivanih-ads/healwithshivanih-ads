@@ -1,0 +1,34 @@
+slug: estrogen-driven-cell-proliferation
+display_name: Oestrogen-Driven Cell Proliferation
+category: endocrine
+aliases:
+- estrogen driven proliferation
+- oestrogenic proliferation
+- estrogen-driven-cell-proliferation
+summary: Oestrogen binding to receptors in hormone-sensitive tissue — endometrium, breast, myometrium
+  — drives mitosis in that tissue. Where oestrogen is relatively unopposed by progesterone, or where
+  clearance through methylation, glucuronidation and the gut is slow, proliferation outruns the shedding
+  that would normally balance it.
+upstream_drivers:
+- estrogen-dominance
+- estrogen-enterohepatic-recirculation
+- low-progesterone
+downstream_effects:
+- heavy-periods
+- breast-tenderness
+- pelvic-pain
+- spotting
+linked_to_symptoms:
+- heavy-periods
+- breast-tenderness
+- pelvic-pain
+- spotting
+notes_for_coach: 'The coaching levers are on CLEARANCE, not on oestrogen itself: daily bowel movements,
+  cruciferous vegetables, adequate fibre to bind conjugated oestrogens, alcohol moderation. Any new
+  or worsening abnormal bleeding is a referral, not a coaching target.'
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

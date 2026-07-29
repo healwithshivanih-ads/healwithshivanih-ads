@@ -1,0 +1,33 @@
+slug: impaired-erythropoiesis
+display_name: Impaired Erythropoiesis
+category: metabolic
+aliases:
+- reduced red cell production
+- ineffective erythropoiesis
+summary: 'Red-cell production in the marrow falls below the rate of red-cell loss, because a substrate
+  the process depends on is missing (iron, B12, folate), because erythropoietin signalling is blunted
+  (renal disease), or because inflammation sequesters iron away from the marrow. Shows up on a CBC
+  before ferritin drops: rising RDW as the population becomes size-mixed, then falling MCV in iron
+  deficiency or rising MCV when B12/folate are the limiting factor.'
+upstream_drivers:
+- iron-deficiency
+- chronic-inflammation
+- nutrient-malabsorption
+downstream_effects:
+- fatigue
+- pallor-dizziness-breathlessness
+- poor-concentration
+linked_to_symptoms:
+- anemia
+linked_to_topics:
+- iron-deficiency-anemia
+notes_for_coach: 'Read RDW and MCV together before assuming iron: a normal MCV with a high RDW is
+  the mixed-deficiency pattern and is easy to miss. Coaching scope is food-first repletion and the
+  cofactors (vitamin C with iron-rich meals, away from tea/coffee); dosing iron and investigating
+  blood loss are clinician scope.'
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani

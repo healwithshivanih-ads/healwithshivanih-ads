@@ -1,0 +1,29 @@
+slug: serotonin-dopamine-clearance
+display_name: Serotonin & Dopamine Clearance
+category: neurological
+aliases:
+- monoamine clearance
+- monoamine breakdown
+summary: Rate at which monoamine neurotransmitters are broken down after release, chiefly by monoamine
+  oxidase and by COMT. Clearance that runs fast leaves the synapse depleted between signals; clearance
+  that runs slow leaves signalling elevated and slow to switch off. Both directions are symptomatic,
+  which is why the same nutrient can help one person and unsettle another.
+upstream_drivers:
+- monoamine-oxidation
+- catechol-methylation
+downstream_effects:
+- low-mood
+- anxiety
+- addictive-tendencies
+linked_to_topics:
+- maoa-fast-serotonin-depletion
+- maoa-slow-serotonin-excess
+notes_for_coach: 'The practical consequence of a genotype report: direction of travel matters more
+  than the variant name. Go low and slow with anything methyl-donating or precursor-loading in a slow
+  clearer, and watch for agitation rather than assuming benefit.'
+evidence_tier: plausible_emerging
+sources: []
+version: 1
+status: active
+updated_at: '2026-07-29'
+updated_by: shivani
