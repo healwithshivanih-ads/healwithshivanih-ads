@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { resolvePersonDir } from "@/lib/fmdb/paths";
+import { resolvePersonDir } from "@/lib/fmdb/person-dir";
 
 /** Serve a client photo from ~/fm-plans/clients/{id}/photo.{ext}
  *  (or prospects/{id}/ if they've been parked — see resolvePersonDir). */

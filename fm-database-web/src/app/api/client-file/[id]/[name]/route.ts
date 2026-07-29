@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { resolvePersonDir } from "@/lib/fmdb/paths";
+import { resolvePersonDir } from "@/lib/fmdb/person-dir";
 
 /**
  * Serve a client attachment from ~/fm-plans/clients/{id}/files/{name}.

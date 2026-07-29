@@ -2,12 +2,8 @@ import "server-only";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
-import {
-  getCataloguePath,
-  getPlansRoot,
-  getResourcesRoot,
-  resolvePersonDir,
-} from "./paths";
+import { getCataloguePath, getPlansRoot, getResourcesRoot } from "./paths";
+import { resolvePersonDir } from "./person-dir";
 import type { Client, MindMap } from "./types";
 import { withFsRetry } from "./fs-retry";
 
