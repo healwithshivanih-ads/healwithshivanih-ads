@@ -112,4 +112,27 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: almonds
+  g: 107.25
+- i: 1
+  key: walnuts
+  g: 87.75
+- i: 2
+  key: cacao
+  g: 45.0
+- i: 3
+  key: coconut-milk
+  g: 120.0
+- i: 4
+  key: coconut-sugar
+  g: 100.0
+- i: 5
+  key: vanilla
+  g: 4.333333333333333
+- i: 6
+  key: salt
+  g: 0.3
+nutrient_servings: 32.0

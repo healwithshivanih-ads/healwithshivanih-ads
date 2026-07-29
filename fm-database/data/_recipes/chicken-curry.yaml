@@ -126,4 +126,39 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: chicken
+  g: 500.0
+- i: 1
+  key: olive-oil
+  g: 27.0
+- i: 2
+  key: onion
+  g: 220.0
+- i: 3
+  key: ginger-garlic-paste
+  g: 30.0
+- i: 4
+  key: tomato
+  g: 300.0
+- i: 5
+  key: turmeric
+  g: 1.5625
+- i: 6
+  key: chilli-powder
+  g: 2.5
+- i: 7
+  key: coriander-powder
+  g: 5.0
+- i: 8
+  key: garam-masala
+  g: 1.0416666666666667
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: coriander-fresh
+  g: 3.0
+nutrient_servings: 2.0

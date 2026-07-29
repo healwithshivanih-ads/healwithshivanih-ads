@@ -133,4 +133,39 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: coconut-oil
+  g: 9.083333333333334
+- i: 1
+  key: tahini
+  g: 125.0
+- i: 2
+  key: honey
+  g: 21.25
+- i: 3
+  key: vanilla
+  g: 4.333333333333333
+- i: 4
+  key: almond-flour
+  g: 72.0
+- i: 5
+  key: cinnamon
+  g: 1.25
+- i: 6
+  key: ashwagandha
+  g: 4.166666666666667
+- i: 7
+  key: coconut-oil
+  g: 40.875
+- i: 8
+  key: maple-syrup
+  g: 32.8125
+- i: 9
+  key: cacao
+  g: 9.375
+- i: 10
+  key: coconut-fresh
+  g: 1.4
+nutrient_servings: 12.0

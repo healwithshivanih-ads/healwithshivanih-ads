@@ -123,4 +123,36 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: tofu
+  g: 200.0
+- i: 1
+  key: coconut-oil
+  g: 13.625
+- i: 2
+  key: green-beans
+  g: 110.0
+- i: 3
+  key: carrot
+  g: 60.0
+- i: 4
+  key: capsicum
+  g: 120.0
+- i: 5
+  key: garlic
+  g: 9.0
+- i: 6
+  key: ginger-fresh
+  g: 2.0
+- i: 7
+  key: tamari
+  g: 15.9375
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: mixed-vegetables
+  g: 15.0
+nutrient_servings: 2.0

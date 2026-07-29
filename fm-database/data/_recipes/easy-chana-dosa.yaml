@@ -119,4 +119,24 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: besan
+  g: 92.0
+- i: 1
+  key: salt
+  g: 2.84375
+- i: 2
+  key: water
+  g: 0.0
+- i: 3
+  key: zucchini
+  g: 124.0
+- i: 4
+  key: coriander-fresh
+  g: 4.5
+- i: 5
+  key: ghee
+  g: 11.354166666666666
+nutrient_servings: 4.5

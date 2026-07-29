@@ -101,4 +101,21 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: dried-herbs
+  g: 2.5
+- i: 1
+  key: rosemary
+  g: 2.5
+- i: 2
+  key: dried-herbs
+  g: 2.5
+- i: 3
+  key: salt
+  g: 17.0625
+- i: 4
+  key: black-pepper
+  g: 3.125
+nutrient_servings: 12.0

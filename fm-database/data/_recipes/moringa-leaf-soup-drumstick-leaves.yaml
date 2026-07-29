@@ -120,7 +120,7 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -132,3 +132,41 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: moringa-leaves
+  g: 42.0
+- i: 1
+  key: moong-dal
+  g: 50.0
+- i: 2
+  key: tomato
+  g: 100.0
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: garlic
+  g: 12.0
+- i: 5
+  key: green-chilli
+  g: 5.0
+- i: 6
+  key: turmeric
+  g: 0.78125
+- i: 7
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 8
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 9
+  key: salt
+  g: 4.265625
+- i: 10
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 11
+  key: water
+  g: 0.0
+nutrient_servings: 3.5

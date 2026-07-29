@@ -126,4 +126,33 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: water
+  g: 0.0
+- i: 1
+  key: carrot
+  g: 60.0
+- i: 2
+  key: bok-choy
+  g: 80.0
+- i: 3
+  key: daikon
+  g: 300.0
+- i: 4
+  key: ginger-fresh
+  g: 4.0
+- i: 5
+  key: black-pepper
+  g: 0.0
+- i: 6
+  key: tamari
+  g: 15.9375
+- i: 7
+  key: lemon
+  g: 45.5
+- i: 8
+  key: lemon
+  g: 0.0
+nutrient_servings: 2.0

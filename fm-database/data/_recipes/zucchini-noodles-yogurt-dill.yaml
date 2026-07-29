@@ -124,4 +124,30 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: water
+  g: 0.0
+- i: 1
+  key: zucchini
+  g: 400.0
+- i: 2
+  key: dill
+  g: 2.25
+- i: 3
+  key: yogurt
+  g: 245.0
+- i: 4
+  key: lemon-juice
+  g: 15.25
+- i: 5
+  key: turmeric
+  g: 1.5625
+- i: 6
+  key: salt
+  g: 2.84375
+- i: 7
+  key: black-pepper
+  g: 0.0
+nutrient_servings: 2.0

@@ -115,4 +115,36 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: pumpkin
+  g: 300.0
+- i: 1
+  key: garlic
+  g: 19.5
+- i: 2
+  key: onion
+  g: 110.0
+- i: 3
+  key: tomato
+  g: 200.0
+- i: 4
+  key: green-chilli
+  g: 5.0
+- i: 5
+  key: dried-herbs
+  g: 0.8333333333333334
+- i: 6
+  key: rosemary
+  g: 0.8333333333333334
+- i: 7
+  key: mixed-vegetables
+  g: 360.0
+- i: 8
+  key: salt
+  g: 2.0
+- i: 9
+  key: olive-oil
+  g: 54.0
+nutrient_servings: 4.0

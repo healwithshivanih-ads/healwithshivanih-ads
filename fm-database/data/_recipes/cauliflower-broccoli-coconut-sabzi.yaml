@@ -64,7 +64,30 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - winter
 - spring
+nutrient_lines:
+- i: 0
+  key: cauliflower
+  g: 107.0
+- i: 1
+  key: coconut-fresh
+  g: 10.0
+- i: 2
+  key: mustard-seeds
+  g: 1.0416666666666667
+- i: 3
+  key: turmeric
+  g: 0.78125
+- i: 4
+  key: curry-leaves
+  g: 12.0
+- i: 5
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 6
+  key: salt
+  g: 2.0
+nutrient_servings: 2.0

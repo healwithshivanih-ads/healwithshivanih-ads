@@ -113,4 +113,24 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: masoor-cooked
+  g: 200.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: spice-mix-savory
+  g: 2.2916666666666665
+- i: 3
+  key: miso
+  g: 2.8645833333333335
+- i: 4
+  key: olive-oil
+  g: 4.5
+- i: 5
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 4.0

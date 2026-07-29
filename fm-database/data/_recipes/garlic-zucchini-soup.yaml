@@ -119,4 +119,36 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: olive-oil
+  g: 13.5
+- i: 1
+  key: null
+  g: 30.0
+- i: 2
+  key: garlic
+  g: 12.0
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: onion
+  g: 110.0
+- i: 5
+  key: zucchini
+  g: 200.0
+- i: 6
+  key: mixed-vegetables
+  g: 360.0
+- i: 7
+  key: salt
+  g: 2.0
+- i: 8
+  key: black-pepper
+  g: 2.0
+- i: 9
+  key: olive-oil
+  g: 5.0
+nutrient_servings: 2.0

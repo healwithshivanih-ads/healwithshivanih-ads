@@ -138,4 +138,39 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: egg
+  g: 100.0
+- i: 1
+  key: pumpkin
+  g: 58.0
+- i: 2
+  key: maple-syrup
+  g: 78.75
+- i: 3
+  key: coconut-oil
+  g: 27.25
+- i: 4
+  key: almond-flour
+  g: 144.0
+- i: 5
+  key: salt
+  g: 1.421875
+- i: 6
+  key: baking-soda
+  g: 1.1458333333333333
+- i: 7
+  key: baking-soda
+  g: 1.1458333333333333
+- i: 8
+  key: spice-mix-sweet
+  g: 3.75
+- i: 9
+  key: berries
+  g: 35.0
+- i: 10
+  key: coconut-fresh
+  g: 10.0
+nutrient_servings: 6.0

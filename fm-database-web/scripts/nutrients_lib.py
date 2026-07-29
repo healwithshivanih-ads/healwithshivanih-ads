@@ -62,6 +62,26 @@ RICH_IN_THRESHOLDS = {
 
 LOW_COVERAGE = 70.0  # % matched mass below which rich_in is withheld
 
+
+def load_thresholds() -> tuple[dict, float]:
+    """rich_in thresholds + the coverage floor, from the shared table.
+
+    They live in `_ingredient_nutrients.yaml` `_meta` so the TypeScript side can
+    read the SAME numbers when it recomputes a per-client adapted recipe, rather
+    than carrying a hand-copied second set that drifts. The literals above stay
+    as the fallback for a table that predates the block.
+    """
+    try:
+        meta = (yaml.safe_load(TABLE_PATH.read_text(encoding="utf-8")) or {}).get("_meta") or {}
+        t = meta.get("rich_in_thresholds")
+        lc = meta.get("low_coverage_pct")
+        if isinstance(t, dict) and t:
+            parsed = {k: (v["field"], float(v["min"])) for k, v in t.items()}
+            return parsed, float(lc) if lc is not None else LOW_COVERAGE
+    except Exception:
+        pass
+    return RICH_IN_THRESHOLDS, LOW_COVERAGE
+
 # ---------------------------------------------------------------- normalize
 
 _PREP_WORDS = (
@@ -342,6 +362,11 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
     total_mass = 0.0
     unmatched: list[str] = []
     notes: list[str] = []
+    # Per-ingredient-line record. The totals above are a plain linear sum over
+    # these, so anything that REMOVES a line (a per-client adaptation that leaves
+    # the onion out) can re-derive the totals exactly by subtraction — without a
+    # second copy of the matcher in another language. See recipe-nutrients.ts.
+    lines: list[dict] = []
 
     # Steeped-and-strained drinks (jeera water, digestive teas): the seeds and
     # herbs are discarded, only a water-soluble fraction is consumed. Count
@@ -352,7 +377,7 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
 
     servings = parse_servings(recipe.get("servings"))
 
-    for ing in recipe.get("ingredients") or []:
+    for idx, ing in enumerate(recipe.get("ingredients") or []):
         if not isinstance(ing, dict):
             continue
         raw = str(ing.get("item", ""))
@@ -364,10 +389,12 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
             unmatched.append(raw)
             # assume a modest 30g so coverage honestly reflects the gap
             total_mass += 30.0
+            lines.append({"i": idx, "key": None, "g": 30.0})
             continue
         entry = table.entries[key]
         if key in ("water", "broth"):
             # zero-nutrient carriers — keep out of the coverage denominator
+            lines.append({"i": idx, "key": key, "g": 0.0})
             continue
         qty, unit = ing.get("qty"), ing.get("unit")
         if qty in (None, "") and unit in (None, ""):
@@ -379,6 +406,7 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
             notes.append(f"could not size: {raw!r}")
             total_mass += 30.0
             unmatched.append(raw)
+            lines.append({"i": idx, "key": None, "g": 30.0})
             continue
         total_mass += grams
         matched_mass += grams
@@ -399,6 +427,19 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
         per100 = entry.get("per_100g") or {}
         for k in NUTRIENT_KEYS:
             totals[k] += float(per100.get(k) or 0.0) * grams * factor / 100.0
+        # Mass and nutrients use DIFFERENT grams: coverage counts the whole
+        # ingredient, while the strained-drink / cooked-volume rules discount
+        # what is actually absorbed. Both are recorded — `g` is the mass that
+        # goes into coverage, `f` the factor applied to the nutrients — so a
+        # consumer never has to know which rule fired, only how to multiply.
+        # Full precision, deliberately: the consumer re-derives per-serving
+        # figures that are then ROUNDED to 1dp, so a 4th-decimal difference in
+        # the grams is enough to tip a value across a rounding boundary and
+        # make the two sides disagree.
+        line = {"i": idx, "key": key, "g": float(grams)}
+        if factor != 1.0:
+            line["f"] = float(factor)
+        lines.append(line)
 
     per_serving = {}
     for k in NUTRIENT_KEYS:
@@ -409,8 +450,9 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
     coverage = round(coverage, 1)
 
     rich_in = []
-    if coverage >= LOW_COVERAGE:
-        for tag, (field, threshold) in RICH_IN_THRESHOLDS.items():
+    thresholds, low_coverage = load_thresholds()
+    if coverage >= low_coverage:
+        for tag, (field, threshold) in thresholds.items():
             if per_serving.get(field, 0) >= threshold:
                 rich_in.append(tag)
 
@@ -423,6 +465,8 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
         "rich_in": rich_in,
         "unmatched": unmatched,
         "notes": notes,
+        "lines": lines,
+        "servings": servings,
     }
 
 
@@ -433,3 +477,6 @@ def apply_to_recipe(recipe: dict, result: dict) -> None:
     recipe["rich_in"] = result["rich_in"]
     recipe["nutrient_basis"] = "ingredient_table_v1"
     recipe["nutrients_computed_at"] = date.today().isoformat()
+    # The per-line breakdown the per-client adaptation subtracts from.
+    recipe["nutrient_lines"] = result["lines"]
+    recipe["nutrient_servings"] = result["servings"]

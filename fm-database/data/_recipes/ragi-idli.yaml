@@ -42,12 +42,14 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- 'Soak the rice and the dal-with-methi separately for 5 hours. If using whole ragi,'
+- Soak the rice and the dal-with-methi separately for 5 hours. If using whole ragi,
 - Grind the dal to a light aerated paste, then the rice and ragi finer.
-- 'Combine gently with salt and ferment overnight. Ragi batter looks darker and rises less dramatically than white idli batter — that''s normal.'
+- Combine gently with salt and ferment overnight. Ragi batter looks darker and rises
+  less dramatically than white idli batter — that's normal.
 - Pour into greased moulds and steam 12–14 minutes.
 - Rest 2 minutes before unmoulding or they tear.
-- 'This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. soak that too.'
+- This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don't
+  cook and use it within 3 days. soak that too.
 servings: '5'
 prep_time_min: 20
 cook_time_min: 18
@@ -105,4 +107,24 @@ rich_in:
 - calcium
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: ragi
+  g: 180.0
+- i: 1
+  key: white-rice
+  g: 92.5
+- i: 2
+  key: urad-dal
+  g: 100.0
+- i: 3
+  key: fenugreek-seeds
+  g: 1.5625
+- i: 4
+  key: salt
+  g: 0.0
+- i: 5
+  key: null
+  g: 30.0
+nutrient_servings: 5.0

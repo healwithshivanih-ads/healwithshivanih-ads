@@ -109,4 +109,30 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: lauki
+  g: 345.0
+- i: 1
+  key: ghee
+  g: 4.541666666666667
+- i: 2
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 3
+  key: onion
+  g: 55.0
+- i: 4
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 5
+  key: salt
+  g: 0.0
+- i: 6
+  key: water
+  g: 0.0
+- i: 7
+  key: coriander-fresh
+  g: 1.0
+nutrient_servings: 2.0

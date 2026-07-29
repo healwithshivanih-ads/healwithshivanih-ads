@@ -131,4 +131,30 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: quinoa
+  g: 170.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: mixed-vegetables
+  g: 240.0
+- i: 3
+  key: parsley
+  g: 20.0
+- i: 4
+  key: lemon-juice
+  g: 30.0
+- i: 5
+  key: olive-oil
+  g: 40.5
+- i: 6
+  key: salt
+  g: 5.6875
+- i: 7
+  key: spice-mix-sweet
+  g: 2.5
+nutrient_servings: 3.5

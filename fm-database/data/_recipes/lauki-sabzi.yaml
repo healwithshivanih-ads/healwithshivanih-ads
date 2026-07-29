@@ -121,4 +121,39 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: lauki
+  g: 460.0
+- i: 1
+  key: ghee
+  g: 13.625
+- i: 2
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 3
+  key: asafoetida
+  g: 0.3
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: green-chilli
+  g: 5.0
+- i: 6
+  key: tomato
+  g: 100.0
+- i: 7
+  key: turmeric
+  g: 1.5625
+- i: 8
+  key: coriander-powder
+  g: 2.5
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

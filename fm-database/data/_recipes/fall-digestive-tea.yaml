@@ -104,4 +104,24 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: water
+  g: 0.0
+- i: 1
+  key: ginger-fresh
+  g: 1.5
+- i: 2
+  key: fennel-seeds
+  g: 0.9375
+  f: 0.2
+- i: 3
+  key: cinnamon
+  g: 1.25
+  f: 0.2
+- i: 4
+  key: licorice-root
+  g: 2.5
+  f: 0.2
+nutrient_servings: 2.0

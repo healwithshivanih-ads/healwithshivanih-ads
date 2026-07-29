@@ -109,4 +109,27 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: capsicum
+  g: 240.0
+- i: 1
+  key: tomato
+  g: 400.0
+- i: 2
+  key: garlic
+  g: 6.0
+- i: 3
+  key: null
+  g: 30.0
+- i: 4
+  key: null
+  g: 30.0
+- i: 5
+  key: salt
+  g: 2.0
+- i: 6
+  key: null
+  g: 30.0
+nutrient_servings: 2.0

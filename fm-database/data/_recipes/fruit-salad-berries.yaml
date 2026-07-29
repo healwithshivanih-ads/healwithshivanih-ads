@@ -104,4 +104,21 @@ rich_in:
 - fibre
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: berries
+  g: 70.0
+- i: 1
+  key: berries
+  g: 70.0
+- i: 2
+  key: berries
+  g: 70.0
+- i: 3
+  key: dried-cranberries
+  g: 7.5
+- i: 4
+  key: orange-juice
+  g: 31.0
+nutrient_servings: 1.0

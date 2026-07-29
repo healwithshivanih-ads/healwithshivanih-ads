@@ -140,7 +140,7 @@ nutrient_coverage_pct: 72.8
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -152,3 +152,56 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: methi-leaves
+  g: 70.0
+- i: 1
+  key: besan
+  g: 92.0
+- i: 2
+  key: null
+  g: 30.0
+- i: 3
+  key: null
+  g: 30.0
+- i: 4
+  key: green-chilli
+  g: 1.5625
+- i: 5
+  key: turmeric
+  g: 0.78125
+- i: 6
+  key: chilli-powder
+  g: 1.25
+- i: 7
+  key: ajwain
+  g: 1.0416666666666667
+- i: 8
+  key: null
+  g: 30.0
+- i: 9
+  key: lemon-juice
+  g: 15.25
+- i: 10
+  key: salt
+  g: 4.265625
+- i: 11
+  key: olive-oil
+  g: 13.5
+- i: 12
+  key: olive-oil
+  g: 13.5
+- i: 13
+  key: mustard-seeds
+  g: 4.166666666666667
+- i: 14
+  key: sesame-seeds
+  g: 3.0
+- i: 15
+  key: curry-leaves
+  g: 16.0
+- i: 16
+  key: green-chilli
+  g: 5.0
+nutrient_servings: 4.0

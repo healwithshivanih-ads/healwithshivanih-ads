@@ -128,4 +128,42 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 208.0
+- i: 1
+  key: capsicum
+  g: 120.0
+- i: 2
+  key: tomato
+  g: 100.0
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: cucumber
+  g: 200.0
+- i: 5
+  key: green-chilli
+  g: 5.0
+- i: 6
+  key: coriander-fresh
+  g: 3.0
+- i: 7
+  key: null
+  g: 30.0
+- i: 8
+  key: lemon
+  g: 65.0
+- i: 9
+  key: cumin-powder
+  g: 2.5
+- i: 10
+  key: null
+  g: 30.0
+- i: 11
+  key: salt
+  g: 2.0
+nutrient_servings: 2.0

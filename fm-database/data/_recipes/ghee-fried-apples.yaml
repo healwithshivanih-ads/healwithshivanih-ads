@@ -101,4 +101,18 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: ghee
+  g: 9.083333333333334
+- i: 1
+  key: spice-mix-sweet
+  g: 1.25
+- i: 2
+  key: apple
+  g: 180.0
+- i: 3
+  key: raisins
+  g: 9.0625
+nutrient_servings: 1.0

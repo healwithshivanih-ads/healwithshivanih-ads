@@ -97,4 +97,18 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: yogurt
+  g: 61.25
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: saffron
+  g: 0.3
+- i: 3
+  key: maple-syrup
+  g: 6.5625
+nutrient_servings: 2.0

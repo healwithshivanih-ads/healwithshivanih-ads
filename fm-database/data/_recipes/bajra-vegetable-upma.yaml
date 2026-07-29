@@ -128,4 +128,42 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: bajra-flour
+  g: 90.0
+- i: 1
+  key: mixed-vegetables
+  g: 120.0
+- i: 2
+  key: olive-oil
+  g: 13.5
+- i: 3
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 4
+  key: urad-dal
+  g: 4.166666666666667
+- i: 5
+  key: curry-leaves
+  g: 2.4
+- i: 6
+  key: ginger-fresh
+  g: 2.0
+- i: 7
+  key: green-chilli
+  g: 5.0
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: water
+  g: 0.0
+- i: 10
+  key: sesame-seeds
+  g: 9.0
+- i: 11
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 2.0

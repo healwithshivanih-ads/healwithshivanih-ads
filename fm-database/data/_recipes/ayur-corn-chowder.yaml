@@ -121,4 +121,30 @@ rich_in:
 - potassium
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: corn
+  g: 225.0
+- i: 1
+  key: zucchini
+  g: 62.0
+- i: 2
+  key: almond-milk
+  g: 480.0
+- i: 3
+  key: ghee
+  g: 4.541666666666667
+- i: 4
+  key: spice-mix-sweet
+  g: 1.25
+- i: 5
+  key: capsicum
+  g: 5.0
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: coriander-fresh
+  g: 20.0
+nutrient_servings: 2.0

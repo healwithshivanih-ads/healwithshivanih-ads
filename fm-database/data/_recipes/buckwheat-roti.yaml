@@ -102,4 +102,18 @@ rich_in:
 - zinc
 - potassium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: buckwheat-flour
+  g: 180.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: salt
+  g: 0.0
+- i: 3
+  key: ghee
+  g: 4.541666666666667
+nutrient_servings: 2.0

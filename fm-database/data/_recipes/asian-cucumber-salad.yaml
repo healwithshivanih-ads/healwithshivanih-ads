@@ -116,4 +116,36 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: cucumber
+  g: 400.0
+- i: 1
+  key: coriander-fresh
+  g: 7.0
+- i: 2
+  key: sesame-seeds
+  g: 9.0
+- i: 3
+  key: black-pepper
+  g: 2.0
+- i: 4
+  key: vinegar
+  g: 15.0
+- i: 5
+  key: sesame-oil
+  g: 9.083333333333334
+- i: 6
+  key: maple-syrup
+  g: 6.5625
+- i: 7
+  key: tamari
+  g: 10.625
+- i: 8
+  key: garlic
+  g: 6.0
+- i: 9
+  key: salt
+  g: 2.0
+nutrient_servings: 2.0

@@ -122,4 +122,27 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: fennel-bulb
+  g: 230.0
+- i: 1
+  key: ghee
+  g: 4.541666666666667
+- i: 2
+  key: kale
+  g: 140.0
+- i: 3
+  key: water
+  g: 0.0
+- i: 4
+  key: salt
+  g: 5.6875
+- i: 5
+  key: mung-sprouted
+  g: 52.0
+- i: 6
+  key: dill
+  g: 0.5625
+nutrient_servings: 2.0

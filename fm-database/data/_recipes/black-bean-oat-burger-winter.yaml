@@ -118,4 +118,24 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: black-beans
+  g: 172.0
+- i: 1
+  key: spinach
+  g: 20.0
+- i: 2
+  key: capsicum
+  g: 30.0
+- i: 3
+  key: oat-flour
+  g: 30.360000000000003
+- i: 4
+  key: spice-mix-savory
+  g: 2.2916666666666665
+- i: 5
+  key: ghee
+  g: 4.541666666666667
+nutrient_servings: 2.0

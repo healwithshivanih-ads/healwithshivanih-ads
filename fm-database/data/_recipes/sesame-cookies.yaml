@@ -128,4 +128,33 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: tahini
+  g: 250.0
+- i: 1
+  key: almond-flour
+  g: 24.0
+- i: 2
+  key: maple-syrup
+  g: 105.0
+- i: 3
+  key: vanilla
+  g: 2.1666666666666665
+- i: 4
+  key: spice-mix-sweet
+  g: 5.0
+- i: 5
+  key: salt
+  g: 1.421875
+- i: 6
+  key: baking-soda
+  g: 2.2916666666666665
+- i: 7
+  key: egg
+  g: 50.0
+- i: 8
+  key: sesame-seeds
+  g: 6.0
+nutrient_servings: 24.0

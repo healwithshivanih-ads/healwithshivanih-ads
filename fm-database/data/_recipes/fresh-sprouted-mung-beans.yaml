@@ -96,4 +96,12 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: mung-whole
+  g: 100.0
+- i: 1
+  key: water
+  g: 0.0
+nutrient_servings: 4.0

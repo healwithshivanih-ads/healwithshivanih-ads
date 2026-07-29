@@ -157,4 +157,51 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: egg
+  g: 50.0
+- i: 1
+  key: milk
+  g: 122.0
+- i: 2
+  key: sweet-potato
+  g: 66.5
+- i: 3
+  key: maple-syrup
+  g: 19.6875
+- i: 4
+  key: rolled-oats
+  g: 45.0
+- i: 5
+  key: rolled-oats
+  g: 45.0
+- i: 6
+  key: baking-soda
+  g: 1.1458333333333333
+- i: 7
+  key: baking-soda
+  g: 0.5729166666666666
+- i: 8
+  key: cinnamon
+  g: 0.625
+- i: 9
+  key: ginger-powder
+  g: 0.5208333333333334
+- i: 10
+  key: nutmeg
+  g: 0.2864583333333333
+- i: 11
+  key: salt
+  g: 0.3
+- i: 12
+  key: ghee
+  g: 6.8125
+- i: 13
+  key: walnuts
+  g: 58.5
+- i: 14
+  key: dates
+  g: 36.75
+nutrient_servings: 6.0

@@ -143,4 +143,48 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: spinach
+  g: 90.0
+- i: 1
+  key: chickpeas
+  g: 200.0
+- i: 2
+  key: sweet-potato
+  g: 133.0
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: cumin-powder
+  g: 5.0
+- i: 5
+  key: chilli-powder
+  g: 2.5
+- i: 6
+  key: salt
+  g: 2.0
+- i: 7
+  key: black-pepper
+  g: 2.0
+- i: 8
+  key: olive-oil
+  g: 27.0
+- i: 9
+  key: lemon
+  g: 65.0
+- i: 10
+  key: tahini
+  g: 31.25
+- i: 11
+  key: maple-syrup
+  g: 13.125
+- i: 12
+  key: olive-oil
+  g: 9.0
+- i: 13
+  key: water
+  g: 0.0
+nutrient_servings: 4.0

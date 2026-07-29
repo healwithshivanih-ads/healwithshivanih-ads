@@ -117,7 +117,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 82.3
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -129,3 +129,38 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: ginger-fresh
+  g: 9.0
+- i: 2
+  key: garlic
+  g: 9.0
+- i: 3
+  key: onion
+  g: 80.0
+- i: 4
+  key: broth
+  g: 0.0
+- i: 5
+  key: tamari
+  g: 15.9375
+- i: 6
+  key: black-pepper
+  g: 1.0416666666666667
+- i: 7
+  key: salt
+  g: 2.84375
+- i: 8
+  key: olive-oil
+  g: 4.5
+- i: 9
+  key: lemon-juice
+  g: 15.25
+- i: 10
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.5

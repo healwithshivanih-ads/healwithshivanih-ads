@@ -109,4 +109,24 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: apple
+  g: 90.0
+- i: 1
+  key: apple
+  g: 180.0
+- i: 2
+  key: grapes
+  g: 75.5
+- i: 3
+  key: dates
+  g: 40.0
+- i: 4
+  key: orange-juice
+  g: 31.0
+- i: 5
+  key: mint-fresh
+  g: 0.15
+nutrient_servings: 1.0

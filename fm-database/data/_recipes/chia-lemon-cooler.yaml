@@ -92,7 +92,7 @@ rich_in:
 - fibre
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -104,3 +104,23 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: chia-seeds
+  g: 30.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: lemon-juice
+  g: 45.75
+- i: 3
+  key: jaggery
+  g: 6.25
+- i: 4
+  key: salt
+  g: 1.421875
+- i: 5
+  key: mint-fresh
+  g: 16.0
+nutrient_servings: 2.0

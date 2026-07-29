@@ -152,4 +152,45 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: black-beans
+  g: 516.0
+- i: 1
+  key: broth
+  g: 0.0
+- i: 2
+  key: carrot
+  g: 168.0
+- i: 3
+  key: swiss-chard
+  g: 140.0
+- i: 4
+  key: turmeric
+  g: 3.125
+- i: 5
+  key: ghee
+  g: 13.625
+- i: 6
+  key: cumin-seeds
+  g: 3.125
+- i: 7
+  key: coriander-powder
+  g: 2.5
+- i: 8
+  key: salt
+  g: 2.84375
+- i: 9
+  key: avocado
+  g: 140.0
+- i: 10
+  key: coriander-fresh
+  g: 3.0
+- i: 11
+  key: tomato
+  g: 100.0
+- i: 12
+  key: yogurt
+  g: 20.0
+nutrient_servings: 4.0

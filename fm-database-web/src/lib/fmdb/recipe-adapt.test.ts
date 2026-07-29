@@ -13,8 +13,14 @@
  * I did not.
  */
 import { describe, it, expect } from "vitest";
-import { adaptRecipeForAvoids, omittedPhrase, type AdaptableRecipe } from "./recipe-adapt";
-import { loadLibraryRecipes } from "./client-app";
+import {
+  adaptRecipeForAvoids,
+  isAdaptableFood,
+  omittedPhrase,
+  type AdaptableRecipe,
+} from "./recipe-adapt";
+import { loadLibraryRecipes, buildClientRecipeAdapter } from "./client-app";
+import { loadNutrientTable } from "./recipe-nutrients";
 
 const ALLIUM = ["onion", "garlic"];
 
@@ -171,7 +177,10 @@ describe("the whole library, adapted for a Jain client", () => {
   it("emits clean prose or nothing at all", async () => {
     const lib = await loadLibraryRecipes();
     expect(lib.length).toBeGreaterThan(400); // sanity: catalogue actually read
-    const JAIN = ["onion", "garlic", "potato", "beetroot", "radish", "shallot", "leek"];
+    // Only the ADAPTABLE foods are this module's business. A Jain client also
+    // avoids potato and beetroot, but a dish is built ON those — they are left
+    // to the gate, which hides the recipe as it always did.
+    const JAIN = ["onion", "garlic", "shallot", "leek"];
 
     let adapted = 0;
     const bad: string[] = [];
@@ -199,5 +208,66 @@ describe("the whole library, adapted for a Jain client", () => {
 
     expect(adapted, "the sweep must actually adapt recipes, or it proves nothing").toBeGreaterThan(60);
     expect(bad.slice(0, 25).join("\n") || "clean").toBe("clean");
+  });
+});
+
+describe("calories follow the adaptation", () => {
+  const JAIN_CLIENT = { dietary_preference: "Vegetarian Jain", foods_to_avoid: "Onion, Garlic" };
+
+  it("re-derives kcal and rich_in instead of keeping the catalogue's", async () => {
+    const lib = await loadLibraryRecipes();
+    const adapt = buildClientRecipeAdapter(JAIN_CLIENT, await loadNutrientTable());
+    let compared = 0;
+    let dropped = 0;
+    for (const { recipe } of lib) {
+      const shown = adapt(recipe);
+      if (!shown?.omits?.length || !recipe.kcalPerServing || !shown.kcalPerServing) continue;
+      compared++;
+      // never MORE than the original — an adaptation only ever removes food
+      expect(shown.kcalPerServing, recipe.title).toBeLessThanOrEqual(recipe.kcalPerServing);
+      if (shown.kcalPerServing < recipe.kcalPerServing) dropped++;
+    }
+    expect(compared, "the sweep must compare real adaptations").toBeGreaterThan(50);
+    expect(dropped, "removing food must actually reduce the count").toBeGreaterThan(30);
+  });
+
+  it("keeps the catalogue's figures when the table is unavailable", async () => {
+    // The recompute is additive: without a table (or without per-line data) an
+    // adapted recipe reports exactly what it always did.
+    const lib = await loadLibraryRecipes();
+    const adapt = buildClientRecipeAdapter(JAIN_CLIENT, null);
+    const hit = lib.find((l) => adapt(l.recipe)?.omits?.length);
+    expect(hit).toBeTruthy();
+    const shown = adapt(hit!.recipe)!;
+    expect(shown.kcalPerServing).toBe(hit!.recipe.kcalPerServing);
+    expect(shown.richIn).toEqual(hit!.recipe.richIn);
+  });
+
+  it("does not touch a food a dish is built ON", () => {
+    // Rice out of an idli, wheat out of a paratha, potato out of an aloo dish:
+    // the recipe is hidden, exactly as before. Adapting those produced idli at
+    // 26% of its calories.
+    for (const term of ["rice", "wheat", "potato", "paneer", "besan"])
+      expect(isAdaptableFood(term), term).toBe(false);
+    for (const term of ["onion", "garlic", "spring onion", "lemon", "coriander"])
+      expect(isAdaptableFood(term), term).toBe(true);
+  });
+
+  it("refuses when the adaptable food IS most of the dish by weight", async () => {
+    // An onion soup is still an onion soup. The backstop lives in the adapter,
+    // where the per-line weights are available.
+    const lib = await loadLibraryRecipes();
+    const adapt = buildClientRecipeAdapter(JAIN_CLIENT, await loadNutrientTable());
+    const heavy = lib.filter((l) => {
+      const lines = l.recipe.nutrientLines ?? [];
+      if (!lines.length) return false;
+      const a = adaptRecipeForAvoids(l.recipe, ["onion", "garlic"]);
+      if (!a) return false;
+      const total = lines.reduce((s, x) => s + x.g, 0);
+      const gone = lines.filter((x) => a.removedIngredientIndices.includes(x.i)).reduce((s, x) => s + x.g, 0);
+      return total > 0 && gone / total >= 0.5;
+    });
+    expect(heavy.length, "the library should contain some allium-dominant dishes").toBeGreaterThan(0);
+    for (const l of heavy) expect(adapt(l.recipe), l.recipe.title).toBeNull();
   });
 });

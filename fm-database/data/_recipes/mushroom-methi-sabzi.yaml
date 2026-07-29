@@ -126,7 +126,7 @@ rich_in:
 - iron
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -138,3 +138,44 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: methi-leaves
+  g: 70.0
+- i: 2
+  key: onion
+  g: 154.0
+- i: 3
+  key: ginger-fresh
+  g: 2.0
+- i: 4
+  key: garlic
+  g: 9.0
+- i: 5
+  key: tomato
+  g: 100.0
+- i: 6
+  key: olive-oil
+  g: 27.0
+- i: 7
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 8
+  key: turmeric
+  g: 0.78125
+- i: 9
+  key: coriander-powder
+  g: 2.5
+- i: 10
+  key: chilli-powder
+  g: 1.25
+- i: 11
+  key: null
+  g: 30.0
+- i: 12
+  key: salt
+  g: 4.265625
+nutrient_servings: 2.5

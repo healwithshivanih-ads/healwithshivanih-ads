@@ -102,4 +102,18 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: lemon
+  g: 65.0
+- i: 1
+  key: fennel-seeds
+  g: 0.9375
+- i: 2
+  key: salt
+  g: 136.5
+- i: 3
+  key: ginger-powder
+  g: 1.0416666666666667
+nutrient_servings: 40.0

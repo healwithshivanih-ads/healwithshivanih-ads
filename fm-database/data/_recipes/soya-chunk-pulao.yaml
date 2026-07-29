@@ -135,4 +135,48 @@ rich_in:
 - fibre
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: white-rice
+  g: 185.0
+- i: 2
+  key: mixed-vegetables
+  g: 120.0
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: ginger-garlic-paste
+  g: 15.0
+- i: 5
+  key: null
+  g: 30.0
+- i: 6
+  key: null
+  g: 30.0
+- i: 7
+  key: cloves
+  g: 0.30000000000000004
+- i: 8
+  key: cardamom
+  g: 0.6
+- i: 9
+  key: cinnamon
+  g: 3.0
+- i: 10
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 11
+  key: garam-masala
+  g: 1.0416666666666667
+- i: 12
+  key: salt
+  g: 0.0
+- i: 13
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

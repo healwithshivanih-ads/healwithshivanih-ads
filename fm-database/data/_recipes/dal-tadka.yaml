@@ -126,4 +126,39 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: toor-dal
+  g: 200.0
+- i: 1
+  key: turmeric
+  g: 1.5625
+- i: 2
+  key: salt
+  g: 0.0
+- i: 3
+  key: water
+  g: 0.0
+- i: 4
+  key: ghee
+  g: 20.4375
+- i: 5
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 6
+  key: garlic
+  g: 12.0
+- i: 7
+  key: green-chilli
+  g: 10.0
+- i: 8
+  key: asafoetida
+  g: 0.3
+- i: 9
+  key: chilli-powder
+  g: 0.625
+- i: 10
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

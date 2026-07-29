@@ -104,4 +104,18 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: licorice-root
+  g: 2.5
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: ghee
+  g: 4.541666666666667
+- i: 3
+  key: water
+  g: 0.0
+nutrient_servings: 12.0

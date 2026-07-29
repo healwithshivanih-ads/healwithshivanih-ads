@@ -122,4 +122,36 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: tendli
+  g: 220.0
+- i: 1
+  key: ghee
+  g: 13.625
+- i: 2
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 3
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 4
+  key: curry-leaves
+  g: 2.6999999999999997
+- i: 5
+  key: ginger-fresh
+  g: 2.0
+- i: 6
+  key: turmeric
+  g: 0.78125
+- i: 7
+  key: coconut-fresh
+  g: 10.0
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

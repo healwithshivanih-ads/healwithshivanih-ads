@@ -131,4 +131,30 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: broth
+  g: 0.0
+- i: 1
+  key: turmeric
+  g: 3.125
+- i: 2
+  key: ginger-fresh
+  g: 6.0
+- i: 3
+  key: kale
+  g: 48.0
+- i: 4
+  key: swiss-chard
+  g: 172.79999999999998
+- i: 5
+  key: parsley
+  g: 72.0
+- i: 6
+  key: ghee
+  g: 9.083333333333334
+- i: 7
+  key: salt
+  g: 0.3
+nutrient_servings: 2.0

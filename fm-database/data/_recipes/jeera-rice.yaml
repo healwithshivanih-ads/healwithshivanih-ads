@@ -103,4 +103,30 @@ nutrients_per_serving:
 nutrient_coverage_pct: 87.7
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: white-rice
+  g: 185.0
+- i: 1
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 2
+  key: olive-oil
+  g: 20.25
+- i: 3
+  key: null
+  g: 30.0
+- i: 4
+  key: green-chilli
+  g: 5.0
+- i: 5
+  key: water
+  g: 0.0
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: coriander-fresh
+  g: 1.0
+nutrient_servings: 2.0

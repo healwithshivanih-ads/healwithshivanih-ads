@@ -103,4 +103,27 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: egg
+  g: 150.0
+- i: 1
+  key: onion
+  g: 55.0
+- i: 2
+  key: green-chilli
+  g: 5.0
+- i: 3
+  key: coriander-fresh
+  g: 2.0
+- i: 4
+  key: salt
+  g: 0.0
+- i: 5
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 6
+  key: ghee
+  g: 4.541666666666667
+nutrient_servings: 2.0

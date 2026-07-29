@@ -117,7 +117,7 @@ nutrient_coverage_pct: 89.4
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -129,3 +129,38 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: green-chilli
+  g: 25.0
+- i: 2
+  key: garlic
+  g: 18.0
+- i: 3
+  key: coriander-seeds
+  g: 1.875
+- i: 4
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 5
+  key: black-pepper
+  g: 6.0
+- i: 6
+  key: turmeric
+  g: 1.5625
+- i: 7
+  key: orange-juice
+  g: 23.25
+- i: 8
+  key: salt
+  g: 5.6875
+- i: 9
+  key: coconut-oil
+  g: 40.875
+- i: 10
+  key: lemon
+  g: 130.0
+nutrient_servings: 2.5

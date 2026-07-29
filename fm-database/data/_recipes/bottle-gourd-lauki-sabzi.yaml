@@ -65,7 +65,30 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - summer
 - monsoon
+nutrient_lines:
+- i: 0
+  key: lauki
+  g: 115.0
+- i: 1
+  key: cumin-powder
+  g: 0.625
+- i: 2
+  key: turmeric
+  g: 0.78125
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 5
+  key: salt
+  g: 2.0
+- i: 6
+  key: coriander-fresh
+  g: 3.0
+nutrient_servings: 2.0

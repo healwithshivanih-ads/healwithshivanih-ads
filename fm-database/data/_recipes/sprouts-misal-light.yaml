@@ -143,7 +143,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 95.1
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -155,3 +155,62 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 208.0
+- i: 1
+  key: onion
+  g: 110.0
+- i: 2
+  key: tomato
+  g: 200.0
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: garlic
+  g: 9.0
+- i: 6
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 7
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 8
+  key: curry-leaves
+  g: 16.0
+- i: 9
+  key: turmeric
+  g: 0.78125
+- i: 10
+  key: chilli-powder
+  g: 1.25
+- i: 11
+  key: coriander-powder
+  g: 2.5
+- i: 12
+  key: garam-masala
+  g: 0.5208333333333334
+- i: 13
+  key: salt
+  g: 4.265625
+- i: 14
+  key: olive-oil
+  g: 13.5
+- i: 15
+  key: water
+  g: 0.0
+- i: 16
+  key: coriander-fresh
+  g: 2.0
+- i: 17
+  key: null
+  g: 30.0
+- i: 18
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 4.0

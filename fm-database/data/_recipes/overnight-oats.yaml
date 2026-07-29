@@ -115,4 +115,27 @@ rich_in:
 - vitamin-c
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: rolled-oats
+  g: 45.0
+- i: 1
+  key: milk
+  g: 183.0
+- i: 2
+  key: chia-seeds
+  g: 10.0
+- i: 3
+  key: berries
+  g: 70.0
+- i: 4
+  key: walnuts
+  g: 12.5
+- i: 5
+  key: cinnamon
+  g: 0.3
+- i: 6
+  key: honey
+  g: 7.083333333333333
+nutrient_servings: 1.0

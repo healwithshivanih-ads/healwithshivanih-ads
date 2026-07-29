@@ -140,7 +140,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -152,3 +152,47 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: white-rice
+  g: 370.0
+- i: 1
+  key: urad-dal
+  g: 150.0
+- i: 2
+  key: fenugreek-seeds
+  g: 1.5625
+- i: 3
+  key: salt
+  g: 5.6875
+- i: 4
+  key: water
+  g: 0.0
+- i: 5
+  key: olive-oil
+  g: 4.5
+- i: 6
+  key: sesame-seeds
+  g: 27.0
+- i: 7
+  key: chana-dal
+  g: 25.0
+- i: 8
+  key: urad-dal
+  g: 12.5
+- i: 9
+  key: green-chilli
+  g: 20.0
+- i: 10
+  key: curry-leaves
+  g: 20.0
+- i: 11
+  key: asafoetida
+  g: 0.390625
+- i: 12
+  key: salt
+  g: 2.84375
+- i: 13
+  key: null
+  g: 30.0
+nutrient_servings: 4.0

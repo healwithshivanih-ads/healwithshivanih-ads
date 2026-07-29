@@ -104,4 +104,18 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - calcium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: rice-cooked
+  g: 320.0
+- i: 1
+  key: almond-milk
+  g: 240.0
+- i: 2
+  key: dried-fruit-mixed
+  g: 22.65625
+- i: 3
+  key: spice-mix-sweet
+  g: 5.0
+nutrient_servings: 2.0

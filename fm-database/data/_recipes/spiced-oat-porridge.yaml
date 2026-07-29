@@ -107,4 +107,30 @@ rich_in:
 - potassium
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: rolled-oats
+  g: 67.5
+- i: 1
+  key: almond-milk
+  g: 480.0
+- i: 2
+  key: dates
+  g: 60.0
+- i: 3
+  key: cinnamon
+  g: 1.25
+- i: 4
+  key: cardamom
+  g: 0.6
+- i: 5
+  key: ginger-fresh
+  g: 1.0
+- i: 6
+  key: salt
+  g: 0.3
+- i: 7
+  key: ghee
+  g: 2.2708333333333335
+nutrient_servings: 2.0

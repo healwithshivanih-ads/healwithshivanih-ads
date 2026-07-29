@@ -39,12 +39,15 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- 'Soak the rice and the dal-with-methi separately for 5–6 hours.'
+- Soak the rice and the dal-with-methi separately for 5–6 hours.
 - Grind the dal to a very light, aerated paste and the rice to a fine one. Combine
 - Add salt and ferment overnight until risen and mildly sour.
-- 'Grease the idli moulds, pour the batter in to about three-quarters, and steam for 10–12 minutes.'
+- Grease the idli moulds, pour the batter in to about three-quarters, and steam for
+  10–12 minutes.
 - A skewer should come out clean. Rest for 2 minutes before unmoulding.
-- 'This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. gently — the air you beat in is what makes idlis soft.'
+- This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don't
+  cook and use it within 3 days. gently — the air you beat in is what makes idlis
+  soft.
 servings: '5'
 prep_time_min: 20
 cook_time_min: 15
@@ -100,4 +103,21 @@ nutrient_coverage_pct: 94.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: white-rice
+  g: 370.0
+- i: 1
+  key: urad-dal
+  g: 100.0
+- i: 2
+  key: fenugreek-seeds
+  g: 1.5625
+- i: 3
+  key: salt
+  g: 0.0
+- i: 4
+  key: null
+  g: 30.0
+nutrient_servings: 5.0

@@ -124,4 +124,30 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - iron
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: asparagus
+  g: 100.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: olive-oil
+  g: 4.5
+- i: 3
+  key: white-beans
+  g: 89.5
+- i: 4
+  key: spice-mix-savory
+  g: 2.2916666666666665
+- i: 5
+  key: lemon
+  g: 16.25
+- i: 6
+  key: lemon
+  g: 20.0
+- i: 7
+  key: black-pepper
+  g: 0.0
+nutrient_servings: 2.0

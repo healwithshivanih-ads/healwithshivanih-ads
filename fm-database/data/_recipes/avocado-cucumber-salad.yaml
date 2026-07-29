@@ -109,4 +109,21 @@ rich_in:
 - fibre
 - potassium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: cucumber
+  g: 200.0
+- i: 1
+  key: avocado
+  g: 140.0
+- i: 2
+  key: spice-mix-sweet
+  g: 1.25
+- i: 3
+  key: salt
+  g: 0.3
+- i: 4
+  key: lemon
+  g: 16.25
+nutrient_servings: 2.0

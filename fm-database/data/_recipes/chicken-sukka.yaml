@@ -133,4 +133,45 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: chicken
+  g: 500.0
+- i: 1
+  key: coconut-oil
+  g: 27.25
+- i: 2
+  key: coconut-fresh
+  g: 60.0
+- i: 3
+  key: green-chilli
+  g: 25.0
+- i: 4
+  key: coriander-seeds
+  g: 2.8125
+- i: 5
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 6
+  key: black-pepper
+  g: 1.0416666666666667
+- i: 7
+  key: onion
+  g: 110.0
+- i: 8
+  key: ginger-garlic-paste
+  g: 22.5
+- i: 9
+  key: turmeric
+  g: 1.5625
+- i: 10
+  key: tamarind
+  g: 5.208333333333333
+- i: 11
+  key: curry-leaves
+  g: 3.5999999999999996
+- i: 12
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0

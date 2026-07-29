@@ -113,7 +113,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 62.9
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -125,3 +125,41 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: olive-oil
+  g: 20.25
+- i: 2
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: garlic
+  g: 9.0
+- i: 6
+  key: turmeric
+  g: 0.78125
+- i: 7
+  key: coriander-powder
+  g: 1.25
+- i: 8
+  key: salt
+  g: 2.84375
+- i: 9
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 10
+  key: coriander-fresh
+  g: 2.0
+- i: 11
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 2.5

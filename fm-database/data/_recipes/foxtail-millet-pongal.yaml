@@ -63,8 +63,8 @@ steps:
 - Dry-roast the moong dal until fragrant, then rinse it with the millet.
 - Pressure-cook the millet and dal with the water and salt for 3 whistles, or simmer
   covered until very soft. Pongal should be soft and loose, not grainy.
-- Heat the ghee or coconut oil in a small pan, fry the cashews, then add the cumin, crushed pepper,
-  ginger, curry leaves and hing.
+- Heat the ghee or coconut oil in a small pan, fry the cashews, then add the cumin,
+  crushed pepper, ginger, curry leaves and hing.
 - Pour the whole tempering into the cooked pongal and stir it through.
 - Loosen with hot water if it tightens as it sits.
 servings: '2'
@@ -128,4 +128,39 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: millet-foxtail
+  g: 135.0
+- i: 1
+  key: moong-dal
+  g: 50.0
+- i: 2
+  key: ghee
+  g: 27.25
+- i: 3
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 4
+  key: black-pepper
+  g: 2.0833333333333335
+- i: 5
+  key: ginger-fresh
+  g: 6.0
+- i: 6
+  key: curry-leaves
+  g: 3.0
+- i: 7
+  key: asafoetida
+  g: 0.3
+- i: 8
+  key: cashews
+  g: 12.0
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: water
+  g: 0.0
+nutrient_servings: 2.0

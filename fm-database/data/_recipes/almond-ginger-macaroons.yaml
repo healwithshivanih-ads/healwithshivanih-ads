@@ -128,4 +128,36 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: almond-flour
+  g: 72.0
+- i: 1
+  key: coconut-fresh
+  g: 20.0
+- i: 2
+  key: baking-soda
+  g: 1.1458333333333333
+- i: 3
+  key: salt
+  g: 0.7109375
+- i: 4
+  key: jaggery
+  g: 50.0
+- i: 5
+  key: cacao
+  g: 11.25
+- i: 6
+  key: egg
+  g: 50.0
+- i: 7
+  key: coconut-oil
+  g: 20.4375
+- i: 8
+  key: vanilla
+  g: 1.0833333333333333
+- i: 9
+  key: ginger-fresh
+  g: 2.0
+nutrient_servings: 12.0

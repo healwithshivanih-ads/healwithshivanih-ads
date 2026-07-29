@@ -110,4 +110,24 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: green-mango
+  g: 800.0
+- i: 1
+  key: green-chilli
+  g: 10.0
+- i: 2
+  key: ginger-fresh
+  g: 24.0
+- i: 3
+  key: vinegar
+  g: 120.0
+- i: 4
+  key: jaggery
+  g: 150.0
+- i: 5
+  key: cumin-powder
+  g: 2.5
+nutrient_servings: 16.0
