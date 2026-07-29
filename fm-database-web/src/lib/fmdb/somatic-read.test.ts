@@ -91,7 +91,15 @@ describe("the alias trap that ruled out a cheaper index", () => {
      catalogue) sends it to the wrong map. Eleven targets have this shape. */
   it("resolves hypertension the way the full catalogue does, not the way a map-only index would", () => {
     const [hit] = readChiefComplaints(["Hypertension"]);
-    expect(hit.targetSlug).toBe("high-blood-pressure");
+    // Deliberately NOT a hard-coded slug: the catalogue has already renamed
+    // this target once (high-blood-pressure -> elevated-blood-pressure) and a
+    // literal turns a rename into a false failure. What matters is that the
+    // alias resolved AWAY from the map literally targeting `hypertension`,
+    // which is the whole difference between the full and the cheap index.
+    expect(hit.targetSlug).not.toBe("hypertension");
+    expect(hit.targetSlug).toBe(
+      fixture.reads.find((r) => r.condition === "Hypertension")!.targetSlug,
+    );
   });
 
   it("still matches the other clash targets", () => {

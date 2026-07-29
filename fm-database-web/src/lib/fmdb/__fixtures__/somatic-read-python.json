@@ -76,7 +76,7 @@
     },
     {
       "condition": "Hypertension",
-      "targetSlug": "high-blood-pressure",
+      "targetSlug": "elevated-blood-pressure",
       "mapSlug": "map-high-blood-pressure",
       "displayName": "High Blood Pressure",
       "sensitivity": "sensitive",
@@ -123,6 +123,32 @@
         {
           "pattern": "Pride",
           "note": "The knee that will not bend sometimes belongs to someone who will not either."
+        }
+      ]
+    },
+    {
+      "condition": "Type 2 diabetes — HbA1c 6.6% (progressed)",
+      "targetSlug": "type-2-diabetes",
+      "mapSlug": "somatic-map-diabetes",
+      "displayName": "Blood Sugar — Looking for Sweetness",
+      "sensitivity": "sensitive",
+      "gated": false,
+      "reframe": "Reaching for sweetness in the form of sugar makes sense when the real thing is not available. It is worth asking what you are actually hungry for.",
+      "inquiryQuestion": "Where has the real sweetness drained out, and what are you using in its place?",
+      "somaticPractice": "felt-sense-checkin",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Sweetness that went missing",
+          "note": "Something taken away, or never there. The body craves sugar while starving for what sugar cannot supply."
+        },
+        {
+          "pattern": "A great need to control",
+          "note": "Blood sugar is literally regulation. Where life feels uncontrollable, gripping tighter works less and less."
+        },
+        {
+          "pattern": "Difficulty receiving",
+          "note": "Love offered and pushed away; good things distrusted; pleasure treated as undeserved."
         }
       ]
     },
