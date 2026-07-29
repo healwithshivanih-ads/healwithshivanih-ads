@@ -14,9 +14,9 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.77 (current, NOT YET MERGED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
+**v0.77–v0.78 (current, MERGED + DEPLOYED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
 
-⚠️ **All 11 commits live on branch `claude/mind-body-module-design-71adb6`. Main does NOT have them and pm2 serves main — nothing below is live.** Two deploys will be needed, not one: coach UI → localhost pm2 rebuild; client app (`/app/<token>` serves from **Fly**) → `flyctl deploy`. The visual/Today task that was holding the merge has landed — the branch is ready to merge.
+✅ **MERGED AND LIVE (2026-07-29).** Merged to main at `562be5f4`; coach UI rebuilt on localhost pm2, client app deployed to Fly (`theochretree-coach`, machine `81107ef9461078`). Verified in production: the Today entry card and all six feeling chips render at `intake.theochretree.com/app/<token>`, and the mind-body reads are correctly ABSENT because `mind_body_depth` is unset for every client. Two conflicts were resolved by unioning alias lists — see the merge commit; `sleeplessness` on `insomnia` is load-bearing for a real client's read.
 
 **Two new catalogue entities** (`fmdb/models.py`, wired through loader / validator / overlay / CLI / ingest pipeline):
 - **`SomaticPractice`** — a reusable somatic reset with timed steps. One practice serves many symptoms, so it is its own entity. Stored `data/somatic_practices/<slug>.yaml`. **114 records.**
