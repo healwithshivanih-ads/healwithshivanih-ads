@@ -1,0 +1,80 @@
+slug: roasted-chana
+name: Roasted chana
+meal_type:
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- roasted chickpeas (chana)
+- pumpkin seeds
+- sunflower seeds
+- rock salt
+contains_allergens: []
+ingredients:
+- item: roasted chickpeas (chana)
+  qty: '0.25'
+  unit: cup
+- item: pumpkin seeds
+  qty: '1'
+  unit: tbsp
+- item: sunflower seeds
+  qty: '1'
+  unit: tbsp
+- item: rock salt
+  qty: to taste
+  unit: ''
+steps:
+- If using store-bought roasted chickpeas, simply combine with the pumpkin and sunflower
+  seeds in a small bowl.
+- To roast fresh — soak dried chickpeas overnight, drain, and pat dry. Toss with a
+  light coating of ghee and rock salt.
+- Spread on a baking tray in a single layer and roast at 350°F (175°C) for 20-25
+  minutes, stirring halfway, until golden and crisp. Cool completely before storing.
+- Mix roasted chana with the seeds just before eating for a crunchy, protein-rich
+  snack.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 180
+kcal_is_estimate: true
+protein_g: 8
+good_for:
+- blood-sugar-regulation
+- satiety-and-appetite-control
+one_line: A crunchy, protein-forward roasted chickpea snack with pumpkin and sunflower
+  seeds — distinct from Chana Dal or Chana Masala.
+headnote: A ready-to-eat, high-protein snack (not a cooked curry) — roasted chickpeas
+  paired with seeds for staying power between meals.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/roasted-chana.jpg
+  credit: coach-supplied (Pinterest reference)
+  source_url: ''
+  rights_status: web_reference_uncleared
+  note: coach-supplied photo (2026-07-02); replace with licensed or original photo
+    before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Roasted chana
+version: 1
+status: active
+updated_at: '2026-07-02'
+updated_by: Shivani
+kcal_per_serving: 180
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-07-02'
