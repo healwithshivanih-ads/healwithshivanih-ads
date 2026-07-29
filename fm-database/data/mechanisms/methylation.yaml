@@ -12,11 +12,18 @@ aliases:
 - folate-B12 methylation
 - SAMe-dependent methylation
 - folate-methionine cycle
+- MTHFR pathway
+- one-carbon cycle
+- methylation-support
+- methylation cycle
+- SAM-e cycle
+- methylation-impairment
+- methyl-donor pathway
+- methylation-cycle
 category: metabolic
-summary: A network of reactions transferring one-carbon methyl groups via SAMe to
-  DNA, histones, neurotransmitters, phospholipids, and detoxification substrates.
-  Requires activated folate (5-MTHF), methylcobalamin (B12), riboflavin (B2), and
-  methionine. Impaired methylation elevates homocysteine and reduces SAMe availability
+summary: A network of reactions transferring one-carbon methyl groups via SAMe to DNA, histones, neurotransmitters,
+  phospholipids, and detoxification substrates. Requires activated folate (5-MTHF), methylcobalamin (B12),
+  riboflavin (B2), and methionine. Impaired methylation elevates homocysteine and reduces SAMe availability
   throughout the body.
 upstream_drivers:
 - adequate-folate
@@ -41,6 +48,15 @@ upstream_drivers:
 - heavy-metal-burden
 - oxidative-stress
 - infections
+- dietary-folate
+- vitamin-b12-intake
+- mthfr-genotype
+- adequate-methylfolate
+- methylcobalamin-b12
+- riboflavin-b2
+- magnesium
+- choline
+- MTHFR-enzyme-activity
 downstream_effects:
 - dna-methylation
 - neurotransmitter-synthesis
@@ -61,6 +77,15 @@ downstream_effects:
 - neurotransmitter-synthesis-deficit
 - reduced-phosphatidylcholine-production
 - immune-dysregulation
+- homocysteine-levels
+- detoxification-capacity
+- SAMe-production
+- homocysteine-clearance
+- neurotransmitter-methylation
+- estrogen-methylation
+- histamine-methylation
+- glutathione-synthesis
+- melatonin-synthesis
 related_mechanisms:
 - mthfr-enzyme-dysfunction
 - homocysteine-metabolism
@@ -73,6 +98,7 @@ related_mechanisms:
 - homocysteine-remethylation
 - pemt-phosphatidylcholine-synthesis
 - catechol-methylation
+- folate-trap
 linked_to_topics:
 - folate-nutrition
 - vitamin-b12
@@ -86,19 +112,38 @@ linked_to_topics:
 - mthfr-methylation-support
 - comt-slow-catechol-clearance
 - folate-metabolism
+- vitamin-b-complex-deficiency
+- comt-gene-catechol-clearance
+- dao-histamine-intolerance
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Methylcobalamin / SAM section
-  quote: SAM is very necessary for the methylation of various biochemical reactions
-    in the body, including the myelin production. Now it is also necessary for the
-    production of some very important neurotransmitters like dopamine and serotonin.
+  quote: SAM is very necessary for the methylation of various biochemical reactions in the body, including
+    the myelin production. Now it is also necessary for the production of some very important neurotransmitters
+    like dopamine and serotonin.
 - id: dirty-genes-lynch
   location: 'Chapter 2 — Methylation: Your Key to Clean Genes'
-  quote: Methylation controls your genetic expression. It determines whether a particular
-    gene will be turned on—or off. Every gene in every cell is ultimately regulated
-    by methylation.
-version: 4
+  quote: Methylation controls your genetic expression. It determines whether a particular gene will be
+    turned on—or off. Every gene in every cell is ultimately regulated by methylation.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Those who have high homocysteine levels or genetic variants in methylation genes may respond
+    better to 'active' forms of vitamin B12 such as methylcobalamin.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – methylation-support
+  quote: The source describes folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as
+    nutrient supports for methylation.
+- id: coconote-fm-biomarkers-cvs
+  location: Homocysteine and Clotting
+  quote: this whole reaction is is covered by the mthfr gene and you can say methyl tetrahydrofolic enzyme
+    and this enzyme requires four factors vitamin b vitamin b9 and vitamin b12 so typically this is called
+    methylation process
+- id: dirty-genes-lynch
+  location: 'Chapter 5: The Methylation Cycle Part 2'
+  quote: MTHFR gets the process going by passing a methyl group to folate. That methylfolate then interacts
+    with another biochemical—homocysteine, for example—passing the methyl group to it.
+version: 6
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-07-29'
+updated_by: shivani

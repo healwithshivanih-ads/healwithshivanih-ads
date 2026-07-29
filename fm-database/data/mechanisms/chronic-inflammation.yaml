@@ -15,11 +15,18 @@ aliases:
 - chronic-systemic-inflammation
 - systemic inflammatory burden
 - inflammation
+- chronic low-grade inflammation
+- AGE-driven inflammation
+- inflammatory state
+- elevated CRP
+- hs-CRP elevation
+- systemic-inflammation
+- low-grade chronic inflammation
+- systemic-inflammation-cv
 category: immune
-summary: Persistent low-grade inflammation drives all six primary cardiometabolic
-  risk patterns. It is reflected by elevated hsCRP, ESR, ferritin, and IL-6. Sources
-  include gut dysbiosis, gum disease, food sensitivities, heavy metal toxicity, and
-  smoking.
+summary: Persistent low-grade inflammation drives all six primary cardiometabolic risk patterns. It is
+  reflected by elevated hsCRP, ESR, ferritin, and IL-6. Sources include gut dysbiosis, gum disease, food
+  sensitivities, heavy metal toxicity, and smoking.
 upstream_drivers:
 - visceral adiposity
 - leaky gut + LPS translocation
@@ -49,6 +56,19 @@ upstream_drivers:
 - periodontal-disease
 - heavy-metal-toxicity
 - obesity
+- high-carbohydrate-diet
+- refined-sugar
+- omega-3-deficiency
+- hyperglycemia
+- omega-3-omega-6-imbalance
+- poor diet quality
+- excess adiposity
+- nutrient-deficiency
+- environmental-toxins
+- type-a-personality
+- excess-omega-6-vegetable-oils
+- elevated-homocysteine
+- advanced-glycation-end-products
 downstream_effects:
 - elevated hs-CRP, IL-6, TNF-α
 - insulin resistance amplification
@@ -75,6 +95,26 @@ downstream_effects:
 - ldl-oxidation-and-glycation
 - fibrinogen-elevation
 - atherosclerosis
+- autoimmune-conditions
+- cardiovascular-disease
+- joint-disorders
+- joint-pain
+- fatigue
+- hair-loss
+- cognitive-decline
+- mood-disorders
+- heart-disease-progression
+- dementia
+- elevated triglycerides
+- elevated blood pressure
+- impaired blood sugar metabolism
+- chronic-pain
+- acne
+- brain-fog
+- plaque-progression
+- foam-cell-formation
+- elevated-fibrinogen
+- thrombosis-risk
 related_mechanisms:
 - leaky-gut
 - insulin-resistance
@@ -86,6 +126,11 @@ related_mechanisms:
 - endothelial-dysfunction
 - fibrinogen-elevation
 - macrophage-foam-cell-formation
+- neuroinflammation
+- atherosclerosis
+- ldl-oxidation
+- oxidative-stress-vascular
+- methylation-cycle-dysfunction
 linked_to_topics:
 - hyperbaric-oxygen-therapy
 - inflammation
@@ -105,6 +150,19 @@ linked_to_topics:
 - cardiometabolic-disease
 - atherosclerosis
 - endothelial-dysfunction
+- low-carb-diet
+- nafld
+- knee-pain
+- hairfall
+- nutrient-deficiency-depression
+- cardiometabolic-health
+- intermittent-fasting
+- phytonutrient-dense-diet
+- chronic-pain-and-fatigue
+- fibromyalgia
+- autoimmunity-leaky-gut-triad
+- metabolic-syndrome
+- cardiovascular-risk-assessment
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Inflammation section
@@ -118,31 +176,56 @@ sources:
   quote: Inflammatory cytokines → worsen IR & ovarian dysfunction.
 - id: vitaone-adrenal-cheatsheet
   location: The Neuroimmune Mechanism of Loneliness (p.17)
-  quote: 'Cytokine Storm (Low-Grade): ↑ IL-6, TNF-α, CRP → immune cell activation.
-    Clinical Implication: Chronic inflammation, autoimmune triggers.'
+  quote: 'Cytokine Storm (Low-Grade): ↑ IL-6, TNF-α, CRP → immune cell activation. Clinical Implication:
+    Chronic inflammation, autoimmune triggers.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Root Cause Framework
   quote: Low-grade systemic inflammation, elevated hs-CRP, IL-6, TNF-α
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 2
-  quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress,
-    gut dysbiosis.
+  quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress, gut dysbiosis.
 - id: vitaone-health-coaching-toolkit
   location: CVD Risk Analysis — Lab Results
-  quote: C-reactive protein is a marker associated with the production of inflammatory
-    cytokines, which represent a threat to cardiovascular health.
+  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which
+    represent a threat to cardiovascular health.
 - id: coconote-fm-biomarkers-cvs
   location: Immune and Toxic Burden
-  quote: if your immune system is active, immune system has a chronic inflammation
-    in the body, then you can find out chronic inflammation by just taking an HSE
-    or ESR level.
+  quote: if your immune system is active, immune system has a chronic inflammation in the body, then you
+    can find out chronic inflammation by just taking an HSE or ESR level.
 - id: coconote-fm-body-composition-bmi
   location: Case Discussion Section
-  quote: Her pain in her body, her inflammation, her signs of increased intestinal
-    permeability, her uncertainty, her fear, the injury, her poor diet, it's all interconnected
-    and influencing the inflammation in her body.
+  quote: Her pain in her body, her inflammation, her signs of increased intestinal permeability, her uncertainty,
+    her fear, the injury, her poor diet, it's all interconnected and influencing the inflammation in her
+    body.
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Lower carb = reduced AGE and cytokine load (IL-6, TNF-α).
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain – Diet & Lifestyle Guidelines
+  quote: Chronic stress drives inflammation—use yoga nidra, deep breathing.
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which
+    represent a threat to cardiovascular health.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Fasting may be beneficial for insulin resistance, blood sugar, blood pressure, inflammation,
+    short-term weight loss, and brain health.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Inflammation Section
+  quote: I'm sure whenever people come to chronic fatigue and the pain, the first thing comes inflammation,
+    but inflammation is one of the roots out of three.
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Other Risk Factors
+  quote: CRP, an acute-phase reactant reflecting degrees of inflammation, is an independent risk factor
+    for CAD. CRP level is a stronger predictor of cardiovascular events than LDL-C level; screening for
+    both biomarkers is more prognostic.
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which
+    represent a threat to cardiovascular health.
 evidence_tier: strong
-version: 9
+version: 10
 status: active
-updated_at: '2026-06-02'
+updated_at: '2026-07-29'
 updated_by: shivani

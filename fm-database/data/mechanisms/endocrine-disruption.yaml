@@ -4,30 +4,49 @@ aliases:
 - hormone disruption
 - EDC exposure
 - endocrine-disrupting chemicals
+- EDC mechanism
+- endocrine disruptor pathway
+- endocrine-disruption-by-toxicants
 category: endocrine
-summary: Exposure to endocrine-disrupting chemicals (EDCs) such as BPA, phthalates, triclosan, propylene glycol, pesticides,
-  and heavy metals can interfere with hormone synthesis, binding, and signaling, contributing to obesity, metabolic dysfunction,
-  infertility, and thyroid disruption.
+summary: Exposure to endocrine-disrupting chemicals (EDCs) such as BPA, phthalates, triclosan, propylene
+  glycol, pesticides, and heavy metals can interfere with hormone synthesis, binding, and signaling, contributing
+  to obesity, metabolic dysfunction, infertility, and thyroid disruption.
 upstream_drivers:
 - bpa-plasticizer-exposure
 - pesticide-herbicide-exposure
 - triclosan-exposure
+- bpa-exposure
+- heavy-metal-exposure
+- pesticide-exposure
+- plasticizer-exposure
 downstream_effects:
 - hormonal-imbalance
 - insulin-resistance
 - infertility
+- obesity
+- developmental-toxicity
 related_mechanisms:
 - oxidative-stress
+- cyp450-phase-i-activation
+- heavy-metal-toxicity
 linked_to_topics:
 - toxic-body-burden
 - oral-toxin-exposure
+- environmental-toxin-exposure
+- oral-health-toxins
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-liver-detox-toolkit
   location: Avoiding Environmental Toxins
-  quote: Limiting ingestion of genetically modified organisms (GMOs) & heavy metals, all of which have been associated with
-    disruption to the endocrine system resulting in obesity and metabolic disturbances like diabetes, is also recommended.
-version: 1
+  quote: Limiting ingestion of genetically modified organisms (GMOs) & heavy metals, all of which have
+    been associated with disruption to the endocrine system resulting in obesity and metabolic disturbances
+    like diabetes, is also recommended.
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — Avoiding Environmental Toxins
+  quote: Limiting ingestion of genetically modified organisms (GMOs) & heavy metals, all of which have
+    been associated with disruption to the endocrine system resulting in obesity and metabolic disturbances
+    like diabetes, is also recommended.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-07-29'
 updated_by: shivani

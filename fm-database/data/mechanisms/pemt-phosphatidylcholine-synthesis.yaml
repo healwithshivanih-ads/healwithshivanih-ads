@@ -10,6 +10,11 @@ aliases:
 - endogenous choline production
 - hepatic phosphatidylcholine
 - phosphatidylcholine-synthesis-pemt
+- PEMT deficiency
+- phosphatidylethanolamine N-methyltransferase gene variant
+- endogenous choline synthesis pathway
+- choline methylation
+- pemt-gene-choline-demand
 category: metabolic
 summary: PEMT sequentially methylates phosphatidylethanolamine (PE) to phosphatidylcholine (PC) using
   three SAMe molecules per reaction. This pathway is the only endogenous route to PC synthesis in the
@@ -31,6 +36,11 @@ upstream_drivers:
 - vegan/vegetarian diet
 - pregnancy
 - low dietary choline
+- methylation-cycle
+- estrogen-decline
+- methylation-insufficiency
+- low-B12
+- low-folate
 downstream_effects:
 - cell-membrane-dysfunction
 - fatty-liver-triglyceride-accumulation
@@ -47,15 +57,24 @@ downstream_effects:
 - reduced-bile-phosphatidylcholine
 - gallstone-risk
 - SIBO-susceptibility
+- hepatic-fat-accumulation
+- poor-bile-production
+- brain-fog
 related_mechanisms:
 - methylation-cycle-disruption
 - mitochondrial-dysfunction
 - methylation
 - bile-flow-regulation
 - gut-barrier-dysfunction
+- methylation-cycle
+- hepatic-estrogen-metabolism
 linked_to_topics:
 - pemt-choline-cell-membrane
 - mthfr-methylation-support
+- nutrigenomics
+- liver-detoxification
+- pemt-choline-demand
+- clean-genes-protocol
 evidence_tier: plausible_emerging
 sources:
 - id: dirty-genes-lynch
@@ -66,7 +85,21 @@ sources:
   location: Chapter 1 — Meet Your Dirty Genes
   quote: This gene affects your body's ability to produce phosphatidylcholine, an essential compound that
     you need to maintain cell membranes, bile flow, muscle health, and brain development.
-version: 3
+- id: pemt-knockout-choline-steatosis-2003
+  location: Knockout mouse model — hepatic steatosis
+  quote: Mice with homozygous disruption of the PEMT gene are dependent on alternative pathways for phosphatidylcholine
+    synthesis and develop severe liver steatosis when fed a diet deficient in choline.
+- id: pemt-estrogen-induction-hepatocytes-2007
+  location: Estradiol dose-response in hepatocytes
+  quote: PEMT transcription was increased in a dose-dependent manner when primary mouse and human hepatocytes
+    were treated with 17-beta-estradiol.
+- id: dirty-genes-lynch
+  location: Gene Meal Guide — Chapter 13
+  quote: 'Dirty PEMT: Any recipe with eggs, beets, quinoa, or lamb; Any recipe that supports MTHFR.'
+version: 4
 status: active
 updated_at: '2026-07-29'
-updated_by: claude-dirty-genes-ingest
+updated_by: shivani
+notes_for_coach: Vegetarian/vegan clients and perimenopausal/postmenopausal women are the two groups most
+  likely to need deliberate choline attention (eggs, liver, or a choline/phosphatidylcholine supplement)
+  rather than relying on endogenous PEMT synthesis alone.

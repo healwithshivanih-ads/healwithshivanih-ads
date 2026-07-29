@@ -9,12 +9,15 @@ aliases:
 - endothelial NOS pathway
 - eNOS
 - NOS3 uncoupling
+- NO release
+- vascular nitric oxide
+- NO pathway
+- nitric-oxide-production
 category: signaling
-summary: Endothelial nitric oxide synthase (NOS3) converts arginine to nitric oxide
-  (NO), which relaxes vascular smooth muscle, supports memory, and has antimicrobial
-  properties. When uncoupled — due to oxidative stress, BH4 depletion, or high homocysteine
-  — NOS3 produces superoxide instead of NO, driving cardiovascular damage. Exercise
-  and sauna physiologically stimulate NOS3 function.
+summary: Endothelial nitric oxide synthase (NOS3) converts arginine to nitric oxide (NO), which relaxes
+  vascular smooth muscle, supports memory, and has antimicrobial properties. When uncoupled — due to oxidative
+  stress, BH4 depletion, or high homocysteine — NOS3 produces superoxide instead of NO, driving cardiovascular
+  damage. Exercise and sauna physiologically stimulate NOS3 function.
 upstream_drivers:
 - mthfr-enzyme-dysfunction
 - riboflavin-deficiency
@@ -30,6 +33,10 @@ upstream_drivers:
 - BH4-depletion
 - infections-consuming-arginine
 - insulin-resistance
+- high-intensity-exercise
+- dietary-nitrates
+- l-arginine-intake
+- endothelial-health
 downstream_effects:
 - vascular-smooth-muscle-relaxation
 - blood-pressure-reduction
@@ -42,12 +49,16 @@ downstream_effects:
 - atherosclerosis
 - cognitive-decline
 - impaired-immune-defence
+- improved-blood-flow
+- enhanced-tissue-glucose-delivery
 related_mechanisms:
 - mthfr-enzyme-dysfunction
 - homocysteine-remethylation
 - glutathione-conjugation
 - methylation
 - oxidative-stress-antioxidant-defense
+- skeletal-muscle-glucose-uptake
+- renin-angiotensin-system
 linked_to_topics:
 - riboflavin-and-blood-pressure-mthfr
 - mthfr-polymorphisms
@@ -56,13 +67,20 @@ linked_to_topics:
 - nos3-nitric-oxide-cardiovascular
 - mthfr-methylation-support
 - gst-gpx-glutathione-detox
+- blood-pressure-management
 evidence_tier: plausible_emerging
 sources:
 - id: dirty-genes-lynch
   location: Sleep — Soak and Scrub Week 1
-  quote: Snoring and mouth-breathing make for a poor night's sleep and, as we saw,
-    a dirty NOS3.
-version: 3
+  quote: Snoring and mouth-breathing make for a poor night's sleep and, as we saw, a dirty NOS3.
+- id: vitaone-health-coaching-toolkit
+  location: Antigravity Exercises
+  quote: Nitric oxide dump is a short, intense workout that's designed to increase the production of nitric
+    oxide in the body.
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure / Dietary Intervention Section
+  quote: L-arginine as an amino acid can increase nitric oxide and improve blood pressure.
+version: 4
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-07-29'
+updated_by: shivani
