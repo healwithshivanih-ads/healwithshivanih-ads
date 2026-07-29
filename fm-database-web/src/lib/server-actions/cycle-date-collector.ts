@@ -24,6 +24,7 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadAllClients } from "@/lib/fmdb/loader";
+import { isSignedUp } from "@/lib/fmdb/engagement";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
 import { extractDate } from "@/lib/start-date-parser";
@@ -76,6 +77,11 @@ export async function listCycleDateAsksDueAction(): Promise<
     const today = todayIso();
     const flags: CycleAskDueFlag[] = [];
     for (const c of clients) {
+      // Enrolled clients only. This scan has no published-plan gate (unlike
+      // most of the reminder crons), so without this a prospect who happened
+      // to fill in cycle data on the intake form would get WhatsApped a
+      // cycle-date ask before ever signing up.
+      if (!isSignedUp(c)) continue;
       const status = c.cycle_status as string | undefined;
       if (status !== "menstruating" && status !== "perimenopausal") continue;
       const lmpRaw = c.last_menstrual_period as string | undefined;

@@ -76,8 +76,44 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _person_dir(client_id: str) -> Path:
+    """Resolve a person's authoritative directory, wherever they live.
+
+    Mirrors `fmdb.plan.storage.client_dir`: signed-up clients sit in
+    `clients/<id>/`, people who never signed up are parked in `prospects/<id>/`.
+    Intake links and short codes must keep working for parked people, so every
+    authoritative path in this shim resolves through here. Falls back to
+    `clients/` for unknown ids so creation is unaffected.
+    """
+    root = _plans_root()
+    active = root / "clients" / client_id
+    if active.exists():
+        return active
+    parked = root / "prospects" / client_id
+    if parked.exists():
+        return parked
+    return active
+
+
+def _person_dirs() -> "list[Path]":
+    """Every authoritative person directory — active clients AND parked
+    prospects. Scans that must not miss a parked person (token lookup, short
+    code uniqueness) iterate this rather than `clients/` alone.
+    """
+    root = _plans_root()
+    out: list[Path] = []
+    for bucket in ("clients", "prospects"):
+        d = root / bucket
+        if not d.exists():
+            continue
+        for sub in sorted(d.iterdir()):
+            if sub.is_dir():
+                out.append(sub)
+    return out
+
+
 def _client_yaml(client_id: str) -> Path:
-    return _plans_root() / "clients" / client_id / "client.yaml"
+    return _person_dir(client_id) / "client.yaml"
 
 
 def _load_client(client_id: str) -> dict:
@@ -140,7 +176,7 @@ def _write_intake_profile_photo(client_id: str, b64: str) -> bool:
     if not blob or len(blob) > _MAX_PHOTO_BYTES:
         return False
     try:
-        client_dir = _plans_root() / "clients" / client_id
+        client_dir = _person_dir(client_id)
         client_dir.mkdir(parents=True, exist_ok=True)
         dest = client_dir / "photo.jpg"
         from atomic_write import write_bytes_atomic  # type: ignore
@@ -166,10 +202,9 @@ def _all_intake_short_codes() -> set[str]:
     """Collect every intake_short_code in use across all clients."""
     import yaml  # type: ignore
     codes: set[str] = set()
-    clients_dir = _plans_root() / "clients"
-    if not clients_dir.exists():
-        return codes
-    for sub in clients_dir.iterdir():
+    # Must include parked prospects: re-issuing a code still held by a parked
+    # person would collide and hand two people the same intake link.
+    for sub in _person_dirs():
         yml = sub / "client.yaml"
         if not yml.exists():
             continue
@@ -198,12 +233,9 @@ def _generate_short_code_unique(length: int = 7) -> str:
 def _find_client_by_token(token: str) -> tuple[str, dict] | None:
     """Scan all clients/<id>/client.yaml for matching intake_token."""
     import yaml  # type: ignore
-    clients_dir = _plans_root() / "clients"
-    if not clients_dir.exists():
-        return None
-    for sub in clients_dir.iterdir():
-        if not sub.is_dir():
-            continue
+    # Includes parked prospects — a live intake link must keep resolving after
+    # someone is aged out of the active roster.
+    for sub in _person_dirs():
         yml = sub / "client.yaml"
         if not yml.exists():
             continue
@@ -632,7 +664,7 @@ def _last_submitted_payload(client_id: str) -> dict:
     `prefill` makes re-open a faithful round-trip of the whole form.
 
     Returns {} when there is no prior submission."""
-    sessions_dir = _plans_root() / "clients" / client_id / "sessions"
+    sessions_dir = _person_dir(client_id) / "sessions"
     try:
         files = sorted(sessions_dir.glob("*-intake-form.yaml"))
     except Exception:
@@ -1515,7 +1547,7 @@ def _write_quick_note_session(client_id: str, payload: dict) -> str:
     """Append a tagged session capturing the raw intake payload for audit."""
     import yaml  # type: ignore
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    sessions_dir = _plans_root() / "clients" / client_id / "sessions"
+    sessions_dir = _person_dir(client_id) / "sessions"
     sessions_dir.mkdir(parents=True, exist_ok=True)
     # Pick next NNN suffix for today
     existing = sorted(sessions_dir.glob(f"{today}-*.yaml"))

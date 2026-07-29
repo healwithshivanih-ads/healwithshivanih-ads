@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
-import os from "node:os";
+import { resolvePersonDir } from "@/lib/fmdb/paths";
 
 /**
  * Serve a client attachment from ~/fm-plans/clients/{id}/files/{name}.
@@ -42,13 +42,14 @@ export async function GET(
     return new NextResponse("Bad request", { status: 400 });
   }
 
-  const plansRoot = process.env.FMDB_PLANS_DIR
-    ? path.resolve(process.env.FMDB_PLANS_DIR)
-    : path.join(os.homedir(), "fm-plans");
+  // id is already sanitised to [\w-]+ above, so this cannot escape the root.
+  // resolvePersonDir also covers parked prospects, whose uploaded files must
+  // stay downloadable after they're aged out of the active roster.
+  const personDir = resolvePersonDir(id);
 
-  const filePath = path.join(plansRoot, "clients", id, "files", name);
+  const filePath = path.join(personDir, "files", name);
   // Defence-in-depth: ensure the resolved path is still inside files/.
-  const filesDir = path.join(plansRoot, "clients", id, "files");
+  const filesDir = path.join(personDir, "files");
   if (!path.resolve(filePath).startsWith(path.resolve(filesDir) + path.sep)) {
     return new NextResponse("Bad request", { status: 400 });
   }

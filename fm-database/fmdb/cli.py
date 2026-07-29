@@ -23,6 +23,7 @@ from .ingest.extractor import get_extractor
 from .ingest.loaders import ATTACHMENT_EXTENSIONS, load_document, mime_for
 from .ingest.types import IngestRequest
 from .plan import storage as plan_storage
+from .plan import prospects
 from .plan import transitions as plan_transitions
 from .plan import render as plan_render
 from .plan.checker import check_plan
@@ -1596,6 +1597,72 @@ def cmd_client_list(args: argparse.Namespace) -> None:
               f"{c.age_band:6s} {c.sex}  conds: {conds}")
 
 
+def cmd_prospects_sweep(args: argparse.Namespace) -> None:
+    """Park non-signed-up people who have gone quiet.
+
+    Dry-run unless --apply, so the coach always sees the list before anything
+    moves. Parking is a move to prospects/, never a delete — reads by id keep
+    resolving (see storage.client_dir).
+    """
+    root = _plans_root(args)
+    rep = prospects.sweep(root, apply=args.apply, quiet_after_days=args.quiet_days)
+    moving = rep.get("moved" if args.apply else "would_move", [])
+    verb = "Parked" if args.apply else "Would park"
+
+    if not moving:
+        print(f"Nothing to park (quiet threshold: {rep['quiet_after_days']} days).")
+    else:
+        print(f"{verb} {len(moving)} → prospects/  (quiet ≥ {rep['quiet_after_days']}d)")
+        for r in moving:
+            print(f"  {r['client_id']:12s}  {r['display_name']:22s}  "
+                  f"{r['engagement_status']:9s}  quiet {r['quiet_days']}d")
+
+    restored = rep.get("restored" if args.apply else "would_restore") or []
+    if restored:
+        rverb = "Restored" if args.apply else "Would restore"
+        print(f"\n{rverb} {len(restored)} → clients/ (signed up since being parked):")
+        for r in restored:
+            print(f"  {r['client_id']:12s}  {r['display_name']}")
+
+    kept = rep.get("kept") or []
+    if kept:
+        print(f"\nLeft in clients/ ({len(kept)} not signed up but not yet cold):")
+        for r in kept:
+            print(f"  {r['client_id']:12s}  {r['display_name']:22s}  {r['reason']}")
+
+    errors = rep.get("errors") or []
+    if errors:
+        print(f"\n{len(errors)} error(s):", file=sys.stderr)
+        for r in errors:
+            print(f"  {r['client_id']}: {r['error']}", file=sys.stderr)
+
+    if not args.apply and moving:
+        print("\n(dry run — re-run with --apply to move them)")
+
+
+def cmd_prospects_list(args: argparse.Namespace) -> None:
+    root = _plans_root(args)
+    rows = prospects.list_prospects(root)
+    if not rows:
+        print(f"(nobody parked in {root / 'prospects'})")
+        return
+    print(f"{len(rows)} parked in prospects/:")
+    for r in rows:
+        token = "app-token" if r["has_app_token"] else "—"
+        print(f"  {r['client_id']:12s}  {r['display_name']:22s}  "
+              f"{r['engagement_status']:9s}  last touch {r['last_touch'] or '?'}  {token}")
+
+
+def cmd_prospects_restore(args: argparse.Namespace) -> None:
+    root = _plans_root(args)
+    try:
+        dest = prospects.restore(root, args.client_id)
+    except FileNotFoundError as e:
+        print(str(e), file=sys.stderr)
+        raise SystemExit(1)
+    print(f"restored {args.client_id} → {dest}")
+
+
 def cmd_client_edit(args: argparse.Namespace) -> None:
     """Open the client YAML in $EDITOR for direct editing."""
     import subprocess
@@ -2380,6 +2447,31 @@ def main() -> None:
     ce = sub.add_parser("client-edit", help="open client YAML in $EDITOR")
     ce.add_argument("client_id")
     ce.set_defaults(func=cmd_client_edit)
+
+    # ---- prospect commands ----
+    ps = sub.add_parser(
+        "prospects-sweep",
+        help="park non-signed-up people who have gone quiet (dry-run by default)",
+    )
+    ps.add_argument(
+        "--apply", action="store_true",
+        help="actually move directories (default is a dry run)",
+    )
+    ps.add_argument(
+        "--quiet-days", type=int, default=prospects.PROSPECT_QUIET_DAYS,
+        help=f"days of silence before parking (default {prospects.PROSPECT_QUIET_DAYS})",
+    )
+    ps.set_defaults(func=cmd_prospects_sweep)
+
+    sub.add_parser(
+        "prospects-list", help="list everyone currently parked in prospects/"
+    ).set_defaults(func=cmd_prospects_list)
+
+    pr = sub.add_parser(
+        "prospects-restore", help="move a parked person back into clients/ (they signed up)"
+    )
+    pr.add_argument("client_id")
+    pr.set_defaults(func=cmd_prospects_restore)
 
     # ---- plan commands ----
     pn = sub.add_parser("plan-new", help="create a new draft plan")

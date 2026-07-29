@@ -2857,20 +2857,40 @@ async function latestPublishedPlanForClient(
 
 /**
  * Resolve a stable client-level app_token → { plan, clientId }.
- * Scans clients/<id>/client.yaml for app_token === token.
+ * Scans clients/<id>/ AND prospects/<id>/ for app_token === token.
  */
+/**
+ * Every person directory across both buckets, as [id, dirPath] pairs.
+ *
+ * Token lookups MUST span both: someone parked in `prospects/` (never signed
+ * up, gone quiet) can still be holding a live app token — the coach's call is
+ * that parked people keep app access and are excluded from crons instead. A
+ * scan of `clients/` alone would silently 404 their app.
+ */
+async function allPersonDirs(): Promise<Array<[string, string]>> {
+  const root = getPlansRoot();
+  const out: Array<[string, string]> = [];
+  for (const bucket of ["clients", "prospects"] as const) {
+    const dir = path.join(root, bucket);
+    let subdirs: string[];
+    try {
+      subdirs = await fs.readdir(dir);
+    } catch {
+      continue;
+    }
+    for (const id of subdirs) {
+      if (id.startsWith(".")) continue;
+      out.push([id, path.join(dir, id)]);
+    }
+  }
+  return out;
+}
+
 async function resolveClientAppToken(
   token: string,
 ): Promise<{ plan: Dict; clientId: string } | null> {
-  const clientsDir = path.join(getPlansRoot(), "clients");
-  let subdirs: string[];
-  try {
-    subdirs = await fs.readdir(clientsDir);
-  } catch {
-    return null;
-  }
-  for (const id of subdirs) {
-    const yml = path.join(clientsDir, id, "client.yaml");
+  for (const [id, personDir] of await allPersonDirs()) {
+    const yml = path.join(personDir, "client.yaml");
     const d = await readYamlIfExists(yml);
     if (!d || d.app_token !== token) continue;
     const found = await latestPublishedPlanForClient(id);
@@ -2976,15 +2996,10 @@ async function loadLabCatalogue(): Promise<CatalogueLabRange[]> {
 async function resolveDiscoveryClientByToken(
   token: string,
 ): Promise<{ client: Dict; clientId: string } | null> {
-  const clientsDir = path.join(getPlansRoot(), "clients");
-  let subdirs: string[];
-  try {
-    subdirs = await fs.readdir(clientsDir);
-  } catch {
-    return null;
-  }
-  for (const id of subdirs) {
-    const d = await readYamlIfExists(path.join(clientsDir, id, "client.yaml"));
+  // Spans clients/ + prospects/ — this is the resolver parked people actually
+  // hit, since by definition they have no published plan.
+  for (const [id, personDir] of await allPersonDirs()) {
+    const d = await readYamlIfExists(path.join(personDir, "client.yaml"));
     if (!d || d.app_token !== token) continue;
     return { client: d, clientId: id };
   }

@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
-import os from "node:os";
+import { resolvePersonDir } from "@/lib/fmdb/paths";
 
-/** Serve a client photo from ~/fm-plans/clients/{id}/photo.{ext} */
+/** Serve a client photo from ~/fm-plans/clients/{id}/photo.{ext}
+ *  (or prospects/{id}/ if they've been parked — see resolvePersonDir). */
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -15,11 +16,8 @@ export async function GET(
     return new NextResponse("Bad request", { status: 400 });
   }
 
-  const plansRoot = process.env.FMDB_PLANS_DIR
-    ? path.resolve(process.env.FMDB_PLANS_DIR)
-    : path.join(os.homedir(), "fm-plans");
-
-  const dir = path.join(plansRoot, "clients", id);
+  // id is already sanitised to [\w-]+ above, so this cannot escape the root.
+  const dir = resolvePersonDir(id);
 
   const extensions: Array<[string, string]> = [
     ["jpg",  "image/jpeg"],

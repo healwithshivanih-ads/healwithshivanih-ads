@@ -28,7 +28,7 @@ import Link from "next/link";
 import path from "node:path";
 import fs from "node:fs/promises";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
-import { loadClientSessions } from "@/lib/fmdb/loader-extras";
+import { loadClientSessions, loadAllProspects } from "@/lib/fmdb/loader-extras";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
@@ -141,8 +141,14 @@ export default async function ClientsListV2Page({
   ) as FilterId;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [clients, allPlans] = await Promise.all([
+  const [clients, parkedProspects, allPlans] = await Promise.all([
     loadAllClients(),
+    // People parked in prospects/ (never signed up, gone quiet 15+ days).
+    // This page is one of the few that SHOULD still see them — they render in
+    // the collapsed prospects box below, so the coach can always find them.
+    // Everything alert/cron-shaped below deliberately keeps using `clients`
+    // alone, which is the whole point of the split.
+    loadAllProspects(),
     loadAllPlans(),
   ]);
 
@@ -183,7 +189,7 @@ export default async function ClientsListV2Page({
   // Build per-client active plan lookup + most-recent session + photo
   // presence in parallel — load is small (4 clients live, scales fine).
   const rows: ClientRow[] = await Promise.all(
-    clients.map(async (client): Promise<ClientRow> => {
+    [...clients, ...parkedProspects].map(async (client): Promise<ClientRow> => {
       const c = client as unknown as Record<string, unknown>;
       const id = client.client_id as string;
 
@@ -329,10 +335,17 @@ export default async function ClientsListV2Page({
   // committed clients. Only split the unfiltered "all" view — a specific
   // stage chip or a search shows the flat list.
   const splitProspects = filterId === "all" && !qNorm;
+  // Anyone physically parked in prospects/ belongs in the box by definition —
+  // including declined people, who otherwise fall through the checks below and
+  // would lead the roster.
+  const parkedIds = new Set(
+    parkedProspects.map((c) => (c as { client_id?: string }).client_id).filter(Boolean)
+  );
   const isProspect = (r: ClientRow) =>
-    r.stage === "no_plan" &&
-    r.engagement_status !== "signed_up" &&
-    r.engagement_status !== "declined";
+    parkedIds.has(r.client_id) ||
+    (r.stage === "no_plan" &&
+      r.engagement_status !== "signed_up" &&
+      r.engagement_status !== "declined");
   const mainRows = splitProspects ? filtered.filter((r) => !isProspect(r)) : filtered;
   const prospectRows = splitProspects ? filtered.filter(isProspect) : [];
 

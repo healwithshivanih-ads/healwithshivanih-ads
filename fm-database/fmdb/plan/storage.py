@@ -66,7 +66,16 @@ def ensure_layout(root: Path) -> None:
     clients/<id>.yaml to clients/<id>/client.yaml with empty files/ + sessions/
     subdirs. Idempotent: safe to call on every app start.
     """
-    for sub in ("clients", "drafts", "ready", "published", "superseded", "revoked", "graduated"):
+    for sub in (
+        "clients",
+        "prospects",
+        "drafts",
+        "ready",
+        "published",
+        "superseded",
+        "revoked",
+        "graduated",
+    ):
         (root / sub).mkdir(parents=True, exist_ok=True)
     _migrate_flat_clients(root)
 
@@ -116,7 +125,27 @@ def _versioned_filename(slug: str, version: int) -> str:
 
 
 def client_dir(root: Path, client_id: str) -> Path:
-    return root / "clients" / client_id
+    """Resolve a person's directory, wherever they currently live.
+
+    Signed-up clients sit in ``clients/<id>/``. People who never signed up are
+    aged out to ``prospects/<id>/`` by :func:`fmdb.plan.prospects.sweep` so they
+    stop skewing roster counts and burning cron cycles.
+
+    Every other path helper (client_path / files / sessions / photo) derives
+    from this one, so a parked record stays fully readable *by id* — nothing
+    looks deleted, the coach can still open the page, and writes land next to
+    the record rather than resurrecting a half-empty directory under clients/.
+
+    Falls back to ``clients/`` when neither exists, so creating a brand-new
+    client is unaffected.
+    """
+    active = root / "clients" / client_id
+    if active.exists():
+        return active
+    parked = root / "prospects" / client_id
+    if parked.exists():
+        return parked
+    return active
 
 
 def client_path(root: Path, client_id: str) -> Path:

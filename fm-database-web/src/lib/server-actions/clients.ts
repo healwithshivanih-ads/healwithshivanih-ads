@@ -6,7 +6,7 @@ import path from "path";
 import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
 import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
-import { getPlansRoot } from "@/lib/fmdb/paths";
+import { getPlansRoot, resolvePersonDir } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { validateMeasurement } from "@/lib/fmdb/measurements";
@@ -872,15 +872,47 @@ export type UpdateClientProfileResult =
   | { ok: true }
   | { ok: false; error: string };
 
+/**
+ * Move a parked person back into `clients/` — they just signed up.
+ *
+ * Counterpart to `fmdb.plan.prospects.restore`. Best-effort by design: if the
+ * rename fails (cross-device, permissions, a race with the sweep) we swallow it
+ * rather than blocking the profile save. The record is still fully readable
+ * from `prospects/` via `resolvePersonDir`, and the next `prospects-sweep`
+ * reconciles the location — so the worst case is a delay, never lost data.
+ */
+async function restoreProspectIfParked(clientId: string): Promise<void> {
+  const root = getPlansRoot();
+  const parked = path.join(root, "prospects", clientId);
+  const active = path.join(root, "clients", clientId);
+  try {
+    const [parkedStat, activeExists] = await Promise.all([
+      fs.stat(parked).catch(() => null),
+      fs
+        .stat(active)
+        .then(() => true)
+        .catch(() => false),
+    ]);
+    if (!parkedStat?.isDirectory() || activeExists) return;
+    await fs.rename(parked, active);
+  } catch {
+    // Non-fatal — see doc comment.
+  }
+}
+
 export async function updateClientProfile(
   input: UpdateClientProfileInput
 ): Promise<UpdateClientProfileResult> {
-  const clientYaml = path.join(
-    getPlansRoot(),
-    "clients",
-    input.client_id,
-    "client.yaml"
-  );
+  // Signing someone up un-parks them immediately, so the roster reflects the
+  // decision on the very next render rather than waiting for the nightly
+  // sweep. Done BEFORE resolving the path, so the read + write below land in
+  // clients/ and every downstream revalidate sees them there.
+  if (input.engagement_status === "signed_up") {
+    await restoreProspectIfParked(input.client_id);
+  }
+  // resolvePersonDir, not clients/<id>: a parked prospect's profile must stay
+  // editable — otherwise the coach couldn't even flip them to signed_up.
+  const clientYaml = path.join(resolvePersonDir(input.client_id), "client.yaml");
   try {
     const yaml = await import("js-yaml");
     const raw = await fs.readFile(clientYaml, "utf8");
@@ -2146,7 +2178,13 @@ export interface WebhookClientMatch {
 
 export async function findClientByPhoneAction(phone: string): Promise<WebhookClientMatch> {
   try {
-    const clients = await loadAllClients();
+    // Inbound attribution must span parked prospects too. Someone aged out of
+    // the active roster still has a phone and can still message the coach —
+    // matching only `clients/` would dump their reply into the unmatched log
+    // as if they were a stranger.
+    const { loadAllProspects } = await import("@/lib/fmdb/loader-extras");
+    const [active, parked] = await Promise.all([loadAllClients(), loadAllProspects()]);
+    const clients = [...active, ...parked];
     const normalise = (p: string) => p.replace(/\D/g, "").slice(-10);
     const needle = normalise(phone);
     const match = clients.find((c) => {
