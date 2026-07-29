@@ -1137,6 +1137,22 @@ export default async function DashboardV2() {
           Hoisted here 2026-06-30 from the bottom of the page. */}
       <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
 
+      {/* 🧾 Roster-accuracy guardrail — self-loading, hides entirely when
+          clean, so it costs nothing on a healthy roster.
+
+          Mounted at the TOP, deliberately NOT inside the "Outbound + admin"
+          alert group next to FmCatalogueOrphanChip: that group is
+          defaultCollapsed, and a guardrail whose whole job is to surface an
+          otherwise-invisible data problem is worthless behind a collapsed
+          disclosure. Same reasoning that hoisted WeeklyMenuQueuePanel above.
+
+          What it catches: prospects-sweep only inspects records that are NOT
+          signed up, so a wrongly-signed_up record is invisible to it and
+          silently inflates the active count — Anita Pansari (cl-020) sat in
+          the roster for a month on a discovery consult alone. Report-only;
+          the coach judges each one. */}
+      <FmRosterReviewChip />
+
       {/* 📊 Practice overview (MIS) — the headline management layer: vitals,
           who's on track, what the practice is made of, pipeline, and the MSQ
           outcome rollup. Operational triage stays below in the alert groups. */}
@@ -1470,13 +1486,6 @@ export default async function DashboardV2() {
               when every entity is reachable. Surfaces orphans like the
               beta-glucuronidase gap before they strand silently. */}
           <FmCatalogueOrphanChip />
-
-          {/* Roster-accuracy guardrail — self-loading, hides when clean.
-              prospects-sweep only inspects records that are NOT signed up, so a
-              wrongly-signed_up record is invisible to it and inflates the
-              active count (Anita Pansari sat there a month on a discovery
-              consult alone). Report-only: the coach judges each one. */}
-          <FmRosterReviewChip />
 
           {/* VitaOne commission-leak guardrail — self-loading, hides when no
               leaks. Flags VitaOne products with empty `covers` (invisible to
