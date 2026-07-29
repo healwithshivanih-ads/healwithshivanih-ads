@@ -82,4 +82,21 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: milk
+  g: 20.0
+- i: 1
+  key: ashwagandha
+  g: 2.0
+- i: 2
+  key: ghee
+  g: 5.0
+- i: 3
+  key: honey
+  g: 5.0
+- i: 4
+  key: nutmeg
+  g: 2.0
+nutrient_servings: 2.0

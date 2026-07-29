@@ -108,4 +108,27 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: tomato
+  g: 300.0
+- i: 1
+  key: cucumber
+  g: 60.0
+- i: 2
+  key: lemon-juice
+  g: 15.25
+- i: 3
+  key: cumin-powder
+  g: 1.25
+- i: 4
+  key: salt
+  g: 0.0
+- i: 5
+  key: coriander-fresh
+  g: 2.0
+- i: 6
+  key: coconut-oil
+  g: 4.541666666666667
+nutrient_servings: 2.0

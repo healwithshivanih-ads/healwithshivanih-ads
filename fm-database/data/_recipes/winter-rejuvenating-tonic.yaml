@@ -110,4 +110,21 @@ rich_in:
 - calcium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: dates
+  g: 70.0
+- i: 1
+  key: almonds
+  g: 12.0
+- i: 2
+  key: milk
+  g: 244.0
+- i: 3
+  key: spice-mix-sweet
+  g: 1.25
+- i: 4
+  key: ashwagandha
+  g: 2.0833333333333335
+nutrient_servings: 2.0

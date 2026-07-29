@@ -124,4 +124,24 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: white-rice
+  g: 185.0
+- i: 1
+  key: moong-dal
+  g: 200.0
+- i: 2
+  key: water
+  g: 0.0
+- i: 3
+  key: salt
+  g: 2.84375
+- i: 4
+  key: coriander-powder
+  g: 1.25
+- i: 5
+  key: coconut-oil
+  g: 2.2708333333333335
+nutrient_servings: 12.0

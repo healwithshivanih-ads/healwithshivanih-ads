@@ -65,7 +65,33 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - monsoon
 - winter
+nutrient_lines:
+- i: 0
+  key: lauki
+  g: 115.0
+- i: 1
+  key: drumstick
+  g: 120.0
+- i: 2
+  key: ginger-fresh
+  g: 6.0
+- i: 3
+  key: curry-leaves
+  g: 12.0
+- i: 4
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 5
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 6
+  key: salt
+  g: 2.0
+- i: 7
+  key: coriander-fresh
+  g: 3.0
+nutrient_servings: 2.0

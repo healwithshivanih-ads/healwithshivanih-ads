@@ -125,4 +125,30 @@ rich_in:
 - iron
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: pumpkin
+  g: 100.0
+- i: 1
+  key: coconut-milk
+  g: 360.0
+- i: 2
+  key: water
+  g: 0.0
+- i: 3
+  key: cinnamon
+  g: 2.5
+- i: 4
+  key: nutmeg
+  g: 0.5729166666666666
+- i: 5
+  key: salt
+  g: 2.84375
+- i: 6
+  key: pumpkin-seeds
+  g: 65.0
+- i: 7
+  key: vinegar
+  g: 2.5
+nutrient_servings: 4.0

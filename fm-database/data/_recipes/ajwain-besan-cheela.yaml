@@ -120,7 +120,7 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -132,3 +132,41 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: besan
+  g: 92.0
+- i: 1
+  key: ajwain
+  g: 2.0833333333333335
+- i: 2
+  key: onion
+  g: 77.0
+- i: 3
+  key: green-chilli
+  g: 10.0
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: turmeric
+  g: 0.78125
+- i: 6
+  key: chilli-powder
+  g: 0.625
+- i: 7
+  key: cumin-powder
+  g: 1.25
+- i: 8
+  key: salt
+  g: 4.265625
+- i: 9
+  key: water
+  g: 0.0
+- i: 10
+  key: olive-oil
+  g: 9.0
+- i: 11
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 3.0

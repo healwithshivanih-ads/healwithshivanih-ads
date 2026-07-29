@@ -109,4 +109,30 @@ rich_in:
 - calcium
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: spinach
+  g: 60.0
+- i: 1
+  key: sesame-seeds
+  g: 36.0
+- i: 2
+  key: green-chilli
+  g: 10.0
+- i: 3
+  key: garlic
+  g: 6.0
+- i: 4
+  key: lemon-juice
+  g: 5.083333333333333
+- i: 5
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: null
+  g: 30.0
+nutrient_servings: 2.0

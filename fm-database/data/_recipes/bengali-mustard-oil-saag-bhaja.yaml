@@ -109,7 +109,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -121,3 +121,26 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: mixed-vegetables
+  g: 400.0
+- i: 1
+  key: mustard-seeds
+  g: 25.0
+- i: 2
+  key: garlic
+  g: 12.0
+- i: 3
+  key: dried-red-chilli
+  g: 4.0
+- i: 4
+  key: null
+  g: 30.0
+- i: 5
+  key: salt
+  g: 2.84375
+- i: 6
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 2.5

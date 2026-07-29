@@ -104,4 +104,21 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - potassium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: cucumber
+  g: 400.0
+- i: 1
+  key: mint-fresh
+  g: 1.0
+- i: 2
+  key: coconut-water
+  g: 480.0
+- i: 3
+  key: lemon-juice
+  g: 30.0
+- i: 4
+  key: lemon
+  g: 10.0
+nutrient_servings: 3.0

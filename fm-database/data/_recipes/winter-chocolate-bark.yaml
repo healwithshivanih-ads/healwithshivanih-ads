@@ -108,4 +108,21 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: coconut-oil
+  g: 109.0
+- i: 1
+  key: maple-syrup
+  g: 78.75
+- i: 2
+  key: cacao
+  g: 22.5
+- i: 3
+  key: cinnamon
+  g: 2.5
+- i: 4
+  key: dried-cranberries
+  g: 18.0
+nutrient_servings: 10.0

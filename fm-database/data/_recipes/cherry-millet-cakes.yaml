@@ -121,4 +121,30 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: prunes
+  g: 57.42
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: millet-cooked
+  g: 175.0
+- i: 3
+  key: flaxseed
+  g: 10.0
+- i: 4
+  key: ginger-powder
+  g: 1.0416666666666667
+- i: 5
+  key: lemon-juice
+  g: 5.083333333333333
+- i: 6
+  key: dried-cranberries
+  g: 30.0
+- i: 7
+  key: millet-generic
+  g: 12.5
+nutrient_servings: 6.0

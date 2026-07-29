@@ -121,4 +121,39 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: besan
+  g: 69.0
+- i: 1
+  key: onion
+  g: 55.0
+- i: 2
+  key: capsicum
+  g: 30.0
+- i: 3
+  key: tomato
+  g: 37.5
+- i: 4
+  key: salt
+  g: 1.421875
+- i: 5
+  key: turmeric
+  g: 0.78125
+- i: 6
+  key: baking-soda
+  g: 0.3
+- i: 7
+  key: coriander-fresh
+  g: 2.0
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: water
+  g: 0.0
+- i: 10
+  key: null
+  g: 30.0
+nutrient_servings: 2.0

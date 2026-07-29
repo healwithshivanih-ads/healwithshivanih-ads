@@ -46,7 +46,7 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - all
 image:
@@ -56,3 +56,11 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: lemon
+  g: 65.0
+- i: 1
+  key: water
+  g: 0.0
+nutrient_servings: 1.0

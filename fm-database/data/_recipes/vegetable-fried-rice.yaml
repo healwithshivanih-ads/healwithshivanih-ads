@@ -110,4 +110,33 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: white-rice
+  g: 555.0
+- i: 1
+  key: carrot
+  g: 64.0
+- i: 2
+  key: green-beans
+  g: 55.0
+- i: 3
+  key: capsicum
+  g: 60.0
+- i: 4
+  key: onion
+  g: 28.75
+- i: 5
+  key: garlic
+  g: 8.5
+- i: 6
+  key: olive-oil
+  g: 27.0
+- i: 7
+  key: black-pepper
+  g: 1.0416666666666667
+- i: 8
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0

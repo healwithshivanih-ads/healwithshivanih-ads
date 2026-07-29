@@ -60,6 +60,10 @@ export interface Adaptation<T extends AdaptableRecipe> {
   recipe: T;
   /** the avoided foods actually removed, in the client's words ("onion") */
   omitted: string[];
+  /** indices into the ORIGINAL `ingredients` that were removed. The nutrient
+   *  recompute subtracts exactly these lines, so it has to be the same list —
+   *  not a re-derivation of it. */
+  removedIngredientIndices: number[];
   /** true when at least one method step still NAMES an omitted food, because
    *  removing it from that sentence could not be done safely. The client-facing
    *  line must then read as an instruction ("leave the onion out wherever the
@@ -135,6 +139,39 @@ const TERM_ALIASES: Record<string, string[]> = {
   radish: ["mooli", "muli"],
   brinjal: ["baingan", "eggplant", "aubergine"],
 };
+
+/**
+ * The foods this module is willing to take OUT of a recipe.
+ *
+ * Everything else stays hidden, as before. The line is not arbitrary: these are
+ * aromatics and finishing touches — things a dish is cooked WITH. A dish built
+ * ON a food cannot have it removed, and letting the general case through
+ * produced exactly that. Measured over the library, adapting a rice-avoiding
+ * client's recipes yielded idli without its rice (74% of the dish by mass),
+ * dosa, poha, plain paratha without its wheat and a kanji that was 100% the
+ * removed ingredient.
+ *
+ * Numeric guards were tried first and are not enough on their own. A share-of-
+ * calories rule flags "Sautéed methi" at 96% — a leafy dish whose few calories
+ * were the onion, and which is perfectly good without it. A share-of-mass rule
+ * combined with `main_ingredients` refuses 40 adaptations including palak
+ * paneer and karela sabzi, while STILL letting poha-without-rice through,
+ * because poha's main ingredient is listed as "poha" and not as rice. The
+ * category is the honest test; the mass guard below is kept as a backstop.
+ */
+const ADAPTABLE_FOODS = new Set([
+  // the allium family — the case this was built for
+  "onion", "garlic", "shallot", "leek", "spring onion", "green onion", "scallion",
+  "pyaz", "pyaaz", "kanda", "lehsun", "lasan", "lasun",
+  // finishing and garnish
+  "lemon", "lime", "coriander", "cilantro", "mint", "curry leaves", "green chilli",
+  "chilli", "chili", "parsley", "basil", "celery",
+]);
+
+/** True when `term` is a food a recipe can simply be cooked without. */
+export function isAdaptableFood(term: string): boolean {
+  return ADAPTABLE_FOODS.has(term.trim().toLowerCase());
+}
 
 /** Every spelling of a term, the canonical one first. */
 const termWords = (term: string): string[] => [term, ...(TERM_ALIASES[term] ?? [])];
@@ -340,7 +377,9 @@ export function adaptRecipeForAvoids<T extends AdaptableRecipe>(
   recipe: T,
   terms: string[],
 ): Adaptation<T> | null {
-  const uniq = [...new Set(terms.map((t) => t.trim().toLowerCase()).filter(Boolean))];
+  const uniq = [
+    ...new Set(terms.map((t) => t.trim().toLowerCase()).filter(Boolean)),
+  ].filter(isAdaptableFood);
   if (!uniq.length) return null;
 
   // (1) The dish is the thing being avoided. Nothing to do.
@@ -354,8 +393,14 @@ export function adaptRecipeForAvoids<T extends AdaptableRecipe>(
   if (!omitted.length) return null;
   const res = omitted.map(termRegex);
 
-  // (3) Ingredients: drop every line that names one.
-  const ingredients = recipe.ingredients.filter((i) => !mentions(i, res));
+  // (3) Ingredients: drop every line that names one, remembering WHERE — the
+  //     nutrient recompute subtracts those exact lines.
+  const removedIngredientIndices: number[] = [];
+  const ingredients = recipe.ingredients.filter((i, idx) => {
+    if (!mentions(i, res)) return true;
+    removedIngredientIndices.push(idx);
+    return false;
+  });
   if (!ingredients.length) return null; // the recipe WAS the omitted food
 
   // (4) Method. THREE outcomes per step, and never a fourth:
@@ -396,6 +441,7 @@ export function adaptRecipeForAvoids<T extends AdaptableRecipe>(
 
   return {
     stepsStillMention: verbatimMentions,
+    removedIngredientIndices,
     recipe: {
       ...recipe,
       ingredients,

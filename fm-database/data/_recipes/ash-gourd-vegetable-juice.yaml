@@ -112,7 +112,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 89.8
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 image:
   file: images/web/ash-gourd-vegetable-juice.jpg
   credit: generated with ChatGPT image generation
@@ -120,3 +120,33 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: ash-gourd
+  g: 165.0
+- i: 1
+  key: tomato
+  g: 200.0
+- i: 2
+  key: carrot
+  g: 60.0
+- i: 3
+  key: coriander-fresh
+  g: 20.0
+  f: 0.2
+- i: 4
+  key: celery
+  g: 15.0
+- i: 5
+  key: ginger-fresh
+  g: 6.0
+- i: 6
+  key: null
+  g: 30.0
+- i: 7
+  key: lemon-juice
+  g: 60.0
+- i: 8
+  key: null
+  g: 30.0
+nutrient_servings: 4.0

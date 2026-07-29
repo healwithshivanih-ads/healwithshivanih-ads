@@ -132,7 +132,7 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -144,3 +144,41 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: millet-foxtail
+  g: 180.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: salt
+  g: 4.265625
+- i: 3
+  key: null
+  g: 30.0
+- i: 4
+  key: mint-fresh
+  g: 25.0
+- i: 5
+  key: coriander-fresh
+  g: 8.0
+- i: 6
+  key: garlic
+  g: 6.0
+- i: 7
+  key: lemon-juice
+  g: 30.5
+- i: 8
+  key: olive-oil
+  g: 40.5
+- i: 9
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 10
+  key: green-chilli
+  g: 5.0
+- i: 11
+  key: tomato
+  g: 800.0
+nutrient_servings: 2.5

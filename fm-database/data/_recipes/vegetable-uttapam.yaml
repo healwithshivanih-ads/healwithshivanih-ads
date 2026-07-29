@@ -109,4 +109,30 @@ nutrient_coverage_pct: 73.9
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: onion
+  g: 57.5
+- i: 2
+  key: tomato
+  g: 75.0
+- i: 3
+  key: capsicum
+  g: 30.0
+- i: 4
+  key: green-chilli
+  g: 5.0
+- i: 5
+  key: coriander-fresh
+  g: 2.0
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: null
+  g: 30.0
+nutrient_servings: 2.0

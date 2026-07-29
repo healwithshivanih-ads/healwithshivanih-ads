@@ -97,4 +97,27 @@ nutrients_per_serving:
 nutrient_coverage_pct: 80.8
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: cucumber
+  g: 120.0
+- i: 2
+  key: mint-fresh
+  g: 3.125
+- i: 3
+  key: cumin-powder
+  g: 1.875
+- i: 4
+  key: salt
+  g: 0.0
+- i: 5
+  key: black-pepper
+  g: 0.3
+- i: 6
+  key: coriander-fresh
+  g: 1.0
+nutrient_servings: 2.0

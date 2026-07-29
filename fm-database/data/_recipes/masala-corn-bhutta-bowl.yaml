@@ -109,7 +109,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 93.2
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -121,3 +121,35 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: corn
+  g: 360.0
+- i: 1
+  key: olive-oil
+  g: 4.5
+- i: 2
+  key: green-chilli
+  g: 10.0
+- i: 3
+  key: lemon-juice
+  g: 30.5
+- i: 4
+  key: null
+  g: 30.0
+- i: 5
+  key: chilli-powder
+  g: 1.25
+- i: 6
+  key: salt
+  g: 1.421875
+- i: 7
+  key: salt
+  g: 1.421875
+- i: 8
+  key: coriander-fresh
+  g: 2.0
+- i: 9
+  key: ginger-fresh
+  g: 1.0
+nutrient_servings: 4.0

@@ -113,4 +113,24 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: ghee
+  g: 4.541666666666667
+- i: 1
+  key: fenugreek-seeds
+  g: 3.125
+- i: 2
+  key: tomato
+  g: 300.0
+- i: 3
+  key: dates
+  g: 120.0
+- i: 4
+  key: salt
+  g: 5.6875
+- i: 5
+  key: lemon-juice
+  g: 10.166666666666666
+nutrient_servings: 16.0

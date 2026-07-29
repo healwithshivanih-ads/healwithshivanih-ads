@@ -117,4 +117,33 @@ rich_in:
 - vitamin-c
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: mustard-seeds
+  g: 800.0
+- i: 1
+  key: garlic
+  g: 15.0
+- i: 2
+  key: onion
+  g: 110.0
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: null
+  g: 30.0
+- i: 6
+  key: asafoetida
+  g: 0.3
+- i: 7
+  key: null
+  g: 30.0
+- i: 8
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0

@@ -138,4 +138,39 @@ rich_in:
 - fibre
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: spice-mix-sweet
+  g: 1.25
+- i: 1
+  key: maple-syrup
+  g: 39.375
+- i: 2
+  key: almonds
+  g: 143.0
+- i: 3
+  key: salt
+  g: 1.421875
+- i: 4
+  key: coconut-sugar
+  g: 12.5
+- i: 5
+  key: ghee
+  g: 27.25
+- i: 6
+  key: sweet-potato
+  g: 266.0
+- i: 7
+  key: spice-mix-sweet
+  g: 5.0
+- i: 8
+  key: egg
+  g: 50.0
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: potato
+  g: 150.0
+nutrient_servings: 6.0

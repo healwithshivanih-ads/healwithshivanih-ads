@@ -96,7 +96,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -108,3 +108,22 @@ image:
   rights_status: generated_reference
   note: coach-selected generated image; visually reviewed for no people, hands, text,
     or watermark
+nutrient_lines:
+- i: 0
+  key: ginger-fresh
+  g: 6.0
+- i: 1
+  key: coriander-seeds
+  g: 8.4375
+  f: 0.2
+- i: 2
+  key: black-pepper
+  g: 6.0
+  f: 0.2
+- i: 3
+  key: water
+  g: 0.0
+- i: 4
+  key: jaggery
+  g: 4.166666666666667
+nutrient_servings: 2.0

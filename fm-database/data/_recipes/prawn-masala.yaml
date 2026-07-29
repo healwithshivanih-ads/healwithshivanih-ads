@@ -124,4 +124,39 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: prawns
+  g: 300.0
+- i: 1
+  key: coconut-oil
+  g: 20.4375
+- i: 2
+  key: onion
+  g: 220.0
+- i: 3
+  key: ginger-garlic-paste
+  g: 22.5
+- i: 4
+  key: tomato
+  g: 200.0
+- i: 5
+  key: turmeric
+  g: 1.5625
+- i: 6
+  key: chilli-powder
+  g: 2.5
+- i: 7
+  key: coriander-powder
+  g: 3.75
+- i: 8
+  key: garam-masala
+  g: 1.0416666666666667
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

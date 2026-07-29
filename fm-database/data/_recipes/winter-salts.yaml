@@ -100,4 +100,21 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - iron
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: rosemary
+  g: 5.0
+- i: 1
+  key: dried-herbs
+  g: 5.0
+- i: 2
+  key: salt
+  g: 17.0625
+- i: 3
+  key: jaggery
+  g: 12.5
+- i: 4
+  key: black-pepper
+  g: 6.25
+nutrient_servings: 2.0

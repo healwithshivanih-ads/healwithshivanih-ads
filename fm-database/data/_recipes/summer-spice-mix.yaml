@@ -107,4 +107,21 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: coriander-seeds
+  g: 5.625
+- i: 1
+  key: cumin-seeds
+  g: 6.25
+- i: 2
+  key: fennel-seeds
+  g: 5.625
+- i: 3
+  key: turmeric
+  g: 9.375
+- i: 4
+  key: cardamom
+  g: 0.9375
+nutrient_servings: 9.0

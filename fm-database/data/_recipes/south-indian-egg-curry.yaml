@@ -145,7 +145,7 @@ rich_in:
 - potassium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -157,3 +157,59 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: egg
+  g: 300.0
+- i: 1
+  key: coconut-oil
+  g: 27.25
+- i: 2
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 3
+  key: fennel-seeds
+  g: 0.9375
+- i: 4
+  key: curry-leaves
+  g: 24.0
+- i: 5
+  key: onion
+  g: 220.0
+- i: 6
+  key: ginger-fresh
+  g: 3.0
+- i: 7
+  key: garlic
+  g: 15.0
+- i: 8
+  key: tomato
+  g: 200.0
+- i: 9
+  key: coriander-powder
+  g: 3.75
+- i: 10
+  key: cumin-powder
+  g: 1.25
+- i: 11
+  key: black-pepper
+  g: 2.0833333333333335
+- i: 12
+  key: turmeric
+  g: 0.78125
+- i: 13
+  key: chilli-powder
+  g: 1.875
+- i: 14
+  key: coconut-milk
+  g: 360.0
+- i: 15
+  key: coconut-milk
+  g: 120.0
+- i: 16
+  key: salt
+  g: 5.6875
+- i: 17
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 4.0

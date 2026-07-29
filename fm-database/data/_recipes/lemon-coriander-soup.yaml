@@ -117,4 +117,36 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: coriander-fresh
+  g: 16.0
+- i: 1
+  key: ghee
+  g: 4.541666666666667
+- i: 2
+  key: garlic
+  g: 9.0
+- i: 3
+  key: onion
+  g: 55.0
+- i: 4
+  key: carrot
+  g: 32.0
+- i: 5
+  key: cabbage
+  g: 22.25
+- i: 6
+  key: black-pepper
+  g: 1.0416666666666667
+- i: 7
+  key: lemon-juice
+  g: 30.5
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: water
+  g: 0.0
+nutrient_servings: 2.0

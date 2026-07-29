@@ -71,6 +71,38 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - all
+nutrient_lines:
+- i: 0
+  key: chicken
+  g: 150.0
+- i: 1
+  key: coconut-fresh
+  g: 10.0
+- i: 2
+  key: onion
+  g: 110.0
+- i: 3
+  key: ginger-garlic-paste
+  g: 5.0
+- i: 4
+  key: turmeric
+  g: 1.5625
+- i: 5
+  key: chilli-powder
+  g: 1.25
+- i: 6
+  key: coriander-powder
+  g: 2.5
+- i: 7
+  key: curry-leaves
+  g: 12.0
+- i: 8
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 9
+  key: salt
+  g: 2.0
+nutrient_servings: 2.0

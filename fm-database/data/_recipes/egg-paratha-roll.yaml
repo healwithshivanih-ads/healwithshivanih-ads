@@ -124,7 +124,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 86.9
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -136,3 +136,47 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: salt
+  g: 2.84375
+- i: 2
+  key: water
+  g: 0.0
+- i: 3
+  key: olive-oil
+  g: 18.0
+- i: 4
+  key: egg
+  g: 200.0
+- i: 5
+  key: onion
+  g: 77.0
+- i: 6
+  key: green-chilli
+  g: 5.0
+- i: 7
+  key: coriander-fresh
+  g: 3.0
+- i: 8
+  key: chilli-powder
+  g: 0.625
+- i: 9
+  key: null
+  g: 30.0
+- i: 10
+  key: salt
+  g: 1.421875
+- i: 11
+  key: mixed-vegetables
+  g: 30.0
+- i: 12
+  key: onion
+  g: 55.0
+- i: 13
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 4.0

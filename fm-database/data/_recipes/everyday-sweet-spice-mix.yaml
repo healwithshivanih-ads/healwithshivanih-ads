@@ -91,4 +91,15 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: cinnamon
+  g: 15.0
+- i: 1
+  key: ginger-powder
+  g: 12.5
+- i: 2
+  key: cardamom
+  g: 5.625
+nutrient_servings: 15.0

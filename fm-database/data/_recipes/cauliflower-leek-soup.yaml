@@ -109,4 +109,21 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: sunflower-oil
+  g: 9.083333333333334
+- i: 1
+  key: cauliflower
+  g: 100.0
+- i: 2
+  key: leek
+  g: 90.0
+- i: 3
+  key: broth
+  g: 0.0
+- i: 4
+  key: spice-mix-savory
+  g: 2.2916666666666665
+nutrient_servings: 2.0

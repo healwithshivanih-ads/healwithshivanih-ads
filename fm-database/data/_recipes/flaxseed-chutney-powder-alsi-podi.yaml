@@ -113,7 +113,7 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -125,3 +125,32 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: flaxseed
+  g: 80.0
+- i: 1
+  key: chana-dal
+  g: 37.5
+- i: 2
+  key: sesame-seeds
+  g: 18.0
+- i: 3
+  key: green-chilli
+  g: 25.0
+- i: 4
+  key: garlic
+  g: 12.0
+- i: 5
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 6
+  key: asafoetida
+  g: 0.390625
+- i: 7
+  key: salt
+  g: 4.265625
+- i: 8
+  key: jaggery
+  g: 2.0833333333333335
+nutrient_servings: 16.0

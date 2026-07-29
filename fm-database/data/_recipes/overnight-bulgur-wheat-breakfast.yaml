@@ -107,4 +107,21 @@ rich_in:
 - fibre
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: bulgur
+  g: 140.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: spice-mix-sweet
+  g: 5.0
+- i: 3
+  key: raisins
+  g: 36.25
+- i: 4
+  key: salt
+  g: 0.3
+nutrient_servings: 2.0

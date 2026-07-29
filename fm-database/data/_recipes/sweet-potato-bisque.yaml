@@ -123,4 +123,33 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: broth
+  g: 0.0
+- i: 1
+  key: ginger-fresh
+  g: 3.0
+- i: 2
+  key: cream
+  g: 59.5
+- i: 3
+  key: sweet-potato
+  g: 195.0
+- i: 4
+  key: turmeric
+  g: 1.5625
+- i: 5
+  key: nutmeg
+  g: 0.5
+- i: 6
+  key: salt
+  g: 0.5
+- i: 7
+  key: ghee
+  g: 9.083333333333334
+- i: 8
+  key: cream
+  g: 5.0
+nutrient_servings: 2.0

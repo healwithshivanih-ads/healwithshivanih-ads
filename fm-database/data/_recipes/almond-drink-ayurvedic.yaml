@@ -108,4 +108,24 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: almonds
+  g: 12.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: cardamom
+  g: 0.3
+- i: 3
+  key: black-pepper
+  g: 0.3
+- i: 4
+  key: honey
+  g: 7.083333333333333
+- i: 5
+  key: water
+  g: 0.0
+nutrient_servings: 1.0

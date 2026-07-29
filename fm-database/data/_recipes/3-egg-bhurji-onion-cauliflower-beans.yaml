@@ -65,6 +65,32 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - all
+nutrient_lines:
+- i: 0
+  key: egg
+  g: 150.0
+- i: 1
+  key: cauliflower
+  g: 13.375
+- i: 2
+  key: green-beans
+  g: 13.75
+- i: 3
+  key: onion
+  g: 7.1875
+- i: 4
+  key: turmeric
+  g: 0.78125
+- i: 5
+  key: cumin-powder
+  g: 0.625
+- i: 6
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 7
+  key: salt
+  g: 2.0
+nutrient_servings: 2.0

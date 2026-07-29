@@ -119,7 +119,39 @@ rich_in:
 - calcium
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 kitchen_tested: false
 aliases:
 - Nachni dosa
+nutrient_lines:
+- i: 0
+  key: ragi
+  g: 120.0
+- i: 1
+  key: white-rice
+  g: 46.25
+- i: 2
+  key: null
+  g: 30.0
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: green-chilli
+  g: 5.0
+- i: 5
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 6
+  key: coriander-fresh
+  g: 2.0
+- i: 7
+  key: salt
+  g: 0.0
+- i: 8
+  key: null
+  g: 30.0
+- i: 9
+  key: water
+  g: 0.0
+nutrient_servings: 2.0

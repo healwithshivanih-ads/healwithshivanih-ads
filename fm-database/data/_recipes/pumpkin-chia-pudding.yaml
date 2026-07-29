@@ -123,4 +123,30 @@ rich_in:
 - calcium
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: chia-seeds
+  g: 20.0
+- i: 1
+  key: almond-milk
+  g: 120.0
+- i: 2
+  key: pumpkin
+  g: 58.0
+- i: 3
+  key: vanilla
+  g: 2.1666666666666665
+- i: 4
+  key: dates
+  g: 20.0
+- i: 5
+  key: maple-syrup
+  g: 6.5625
+- i: 6
+  key: spice-mix-sweet
+  g: 2.5
+- i: 7
+  key: nutmeg
+  g: 0.5
+nutrient_servings: 2.0

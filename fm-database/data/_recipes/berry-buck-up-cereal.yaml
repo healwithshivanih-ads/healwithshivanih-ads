@@ -117,4 +117,27 @@ rich_in:
 - magnesium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: water
+  g: 0.0
+- i: 1
+  key: buckwheat
+  g: 85.0
+- i: 2
+  key: spice-mix-sweet
+  g: 3.75
+- i: 3
+  key: vanilla
+  g: 2.1666666666666665
+- i: 4
+  key: berries
+  g: 140.0
+- i: 5
+  key: coconut-oil
+  g: 9.083333333333334
+- i: 6
+  key: coconut-fresh
+  g: 20.0
+nutrient_servings: 2.0

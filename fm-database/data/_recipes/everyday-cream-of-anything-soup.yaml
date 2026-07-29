@@ -120,4 +120,27 @@ rich_in:
 - calcium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: water
+  g: 0.0
+- i: 1
+  key: kale
+  g: 160.0
+- i: 2
+  key: spice-mix-savory
+  g: 4.583333333333333
+- i: 3
+  key: turmeric
+  g: 1.5625
+- i: 4
+  key: ginger-fresh
+  g: 6.0
+- i: 5
+  key: ghee
+  g: 9.083333333333334
+- i: 6
+  key: almond-milk
+  g: 240.0
+nutrient_servings: 2.0

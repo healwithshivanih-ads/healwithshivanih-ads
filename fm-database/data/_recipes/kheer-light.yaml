@@ -125,4 +125,33 @@ rich_in:
 - calcium
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: rice-cooked
+  g: 160.0
+- i: 1
+  key: almond-milk
+  g: 420.0
+- i: 2
+  key: vanilla
+  g: 4.333333333333333
+- i: 3
+  key: raisins
+  g: 18.125
+- i: 4
+  key: almonds
+  g: 12.0
+- i: 5
+  key: cardamom
+  g: 0.46875
+- i: 6
+  key: ginger-fresh
+  g: 2.0
+- i: 7
+  key: saffron
+  g: 0.3
+- i: 8
+  key: honey
+  g: 7.083333333333333
+nutrient_servings: 2.0

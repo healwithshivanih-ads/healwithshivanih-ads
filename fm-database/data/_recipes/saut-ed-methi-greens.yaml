@@ -60,6 +60,26 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - winter
+nutrient_lines:
+- i: 0
+  key: methi-leaves
+  g: 50.0
+- i: 1
+  key: garlic
+  g: 2.8333333333333335
+- i: 2
+  key: cumin-powder
+  g: 0.625
+- i: 3
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 4
+  key: salt
+  g: 2.0
+- i: 5
+  key: green-chilli
+  g: 5.0
+nutrient_servings: 2.0

@@ -104,4 +104,30 @@ nutrients_per_serving:
 nutrient_coverage_pct: 52.6
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: null
+  g: 30.0
+- i: 2
+  key: mint-fresh
+  g: 3.0
+- i: 3
+  key: null
+  g: 30.0
+- i: 4
+  key: chia-seeds
+  g: 10.0
+- i: 5
+  key: lemon
+  g: 65.0
+- i: 6
+  key: maple-syrup
+  g: 19.6875
+- i: 7
+  key: salt
+  g: 2.0
+nutrient_servings: 4.0

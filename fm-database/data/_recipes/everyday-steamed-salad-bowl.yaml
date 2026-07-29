@@ -132,4 +132,30 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: kale
+  g: 100.0
+- i: 1
+  key: swiss-chard
+  g: 150.0
+- i: 2
+  key: carrot
+  g: 120.0
+- i: 3
+  key: cabbage
+  g: 44.5
+- i: 4
+  key: mung-sprouted
+  g: 52.0
+- i: 5
+  key: rice-cooked
+  g: 320.0
+- i: 6
+  key: salad-dressing
+  g: 0.0
+- i: 7
+  key: sunflower-seeds
+  g: 30.0
+nutrient_servings: 2.0

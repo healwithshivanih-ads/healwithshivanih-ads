@@ -127,4 +127,45 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: coconut-fresh
+  g: 80.0
+- i: 1
+  key: coriander-fresh
+  g: 12.0
+- i: 2
+  key: chana-dal
+  g: 25.0
+- i: 3
+  key: green-chilli
+  g: 10.0
+- i: 4
+  key: ginger-fresh
+  g: 3.0
+- i: 5
+  key: tamarind
+  g: 1.3020833333333333
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: water
+  g: 0.0
+- i: 8
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 9
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 10
+  key: urad-dal
+  g: 2.0833333333333335
+- i: 11
+  key: green-chilli
+  g: 5.0
+- i: 12
+  key: curry-leaves
+  g: 2.4
+nutrient_servings: 2.0

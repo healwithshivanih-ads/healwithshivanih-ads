@@ -115,4 +115,27 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: berries
+  g: 453.6
+- i: 1
+  key: cloves
+  g: 0.2
+- i: 2
+  key: cinnamon
+  g: 2.5
+- i: 3
+  key: ginger-fresh
+  g: 1.5
+- i: 4
+  key: orange-juice
+  g: 248.0
+- i: 5
+  key: zest
+  g: 6.25
+- i: 6
+  key: jaggery
+  g: 100.0
+nutrient_servings: 16.0

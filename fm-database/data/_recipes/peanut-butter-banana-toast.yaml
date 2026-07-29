@@ -92,4 +92,21 @@ nutrients_per_serving:
 nutrient_coverage_pct: 71.3
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: butter
+  g: 28.375
+- i: 2
+  key: banana
+  g: 120.0
+- i: 3
+  key: cinnamon
+  g: 0.625
+- i: 4
+  key: null
+  g: 30.0
+nutrient_servings: 2.0

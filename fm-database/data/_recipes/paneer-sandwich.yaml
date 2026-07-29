@@ -110,4 +110,33 @@ rich_in:
 - calcium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: paneer
+  g: 130.0
+- i: 2
+  key: onion
+  g: 55.0
+- i: 3
+  key: capsicum
+  g: 60.0
+- i: 4
+  key: tomato
+  g: 100.0
+- i: 5
+  key: green-chilli
+  g: 5.0
+- i: 6
+  key: turmeric
+  g: 0.78125
+- i: 7
+  key: null
+  g: 30.0
+- i: 8
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

@@ -110,4 +110,30 @@ nutrient_coverage_pct: 89.1
 rich_in:
 - calcium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: tofu
+  g: 200.0
+- i: 1
+  key: null
+  g: 30.0
+- i: 2
+  key: coconut-oil
+  g: 13.625
+- i: 3
+  key: garlic
+  g: 12.0
+- i: 4
+  key: tamari
+  g: 15.9375
+- i: 5
+  key: black-pepper
+  g: 1.0416666666666667
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

@@ -121,4 +121,33 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: lemon-juice
+  g: 122.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: coriander-fresh
+  g: 75.0
+- i: 3
+  key: mint-fresh
+  g: 75.0
+- i: 4
+  key: coconut-fresh
+  g: 40.0
+- i: 5
+  key: ginger-fresh
+  g: 24.0
+- i: 6
+  key: honey
+  g: 14.166666666666666
+- i: 7
+  key: salt
+  g: 5.6875
+- i: 8
+  key: black-pepper
+  g: 1.0416666666666667
+nutrient_servings: 16.0

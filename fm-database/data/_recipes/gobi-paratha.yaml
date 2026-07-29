@@ -104,4 +104,30 @@ nutrient_coverage_pct: 89.3
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: cauliflower
+  g: 214.0
+- i: 2
+  key: ginger-fresh
+  g: 2.0
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: coriander-fresh
+  g: 2.0
+- i: 5
+  key: cumin-powder
+  g: 1.25
+- i: 6
+  key: ghee
+  g: 27.25
+- i: 7
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0

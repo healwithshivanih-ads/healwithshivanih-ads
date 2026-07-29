@@ -111,7 +111,27 @@ rich_in:
 - b12
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 kitchen_tested: false
 aliases:
 - Sama millet porridge
+nutrient_lines:
+- i: 0
+  key: millet-sama
+  g: 90.0
+- i: 1
+  key: milk
+  g: 488.0
+- i: 2
+  key: ghee
+  g: 4.541666666666667
+- i: 3
+  key: cardamom
+  g: 0.3
+- i: 4
+  key: dates
+  g: 80.0
+- i: 5
+  key: salt
+  g: 1.0
+nutrient_servings: 2.0

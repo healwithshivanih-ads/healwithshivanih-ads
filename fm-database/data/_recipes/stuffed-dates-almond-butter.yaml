@@ -98,4 +98,18 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: dates
+  g: 80.0
+- i: 1
+  key: almond-butter
+  g: 20.833333333333332
+- i: 2
+  key: almonds
+  g: 4.8
+- i: 3
+  key: spice-mix-sweet
+  g: 0.5
+nutrient_servings: 2.0

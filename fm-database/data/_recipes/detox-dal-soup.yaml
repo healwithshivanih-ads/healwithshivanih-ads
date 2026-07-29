@@ -146,4 +146,42 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: moong-dal
+  g: 200.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: turmeric
+  g: 3.125
+- i: 3
+  key: coriander-powder
+  g: 2.5
+- i: 4
+  key: spice-mix-sweet
+  g: 2.5
+- i: 5
+  key: zucchini
+  g: 400.0
+- i: 6
+  key: salt
+  g: 2.84375
+- i: 7
+  key: coconut-oil
+  g: 9.083333333333334
+- i: 8
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 9
+  key: curry-leaves
+  g: 12.0
+- i: 10
+  key: lemon-juice
+  g: 15.0
+- i: 11
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 5.0

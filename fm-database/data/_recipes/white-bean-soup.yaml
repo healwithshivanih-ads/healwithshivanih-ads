@@ -144,4 +144,54 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: white-beans
+  g: 20.0
+- i: 1
+  key: olive-oil
+  g: 13.5
+- i: 2
+  key: garlic
+  g: 10.5
+- i: 3
+  key: ginger-fresh
+  g: 6.0
+- i: 4
+  key: green-chilli
+  g: 5.0
+- i: 5
+  key: carrot
+  g: 60.0
+- i: 6
+  key: onion
+  g: 110.0
+- i: 7
+  key: capsicum
+  g: 120.0
+- i: 8
+  key: mixed-vegetables
+  g: 360.0
+- i: 9
+  key: tomato
+  g: 18.75
+- i: 10
+  key: salt
+  g: 2.0
+- i: 11
+  key: black-pepper
+  g: 2.0
+- i: 12
+  key: dill
+  g: 0.375
+- i: 13
+  key: parsley
+  g: 2.5
+- i: 14
+  key: lemon
+  g: 65.0
+- i: 15
+  key: dill
+  g: 3.0
+nutrient_servings: 2.0

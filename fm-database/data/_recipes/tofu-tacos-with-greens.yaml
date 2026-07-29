@@ -141,4 +141,39 @@ rich_in:
 - calcium
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: chilli-powder
+  g: 2.5
+- i: 1
+  key: cumin-powder
+  g: 1.25
+- i: 2
+  key: coriander-powder
+  g: 1.25
+- i: 3
+  key: turmeric
+  g: 1.5625
+- i: 4
+  key: black-pepper
+  g: 0.3
+- i: 5
+  key: salt
+  g: 1.421875
+- i: 6
+  key: tofu
+  g: 198.45000000000002
+- i: 7
+  key: sunflower-oil
+  g: 9.083333333333334
+- i: 8
+  key: spinach
+  g: 30.0
+- i: 9
+  key: corn-tortilla
+  g: 100.0
+- i: 10
+  key: lemon
+  g: 32.5
+nutrient_servings: 2.0

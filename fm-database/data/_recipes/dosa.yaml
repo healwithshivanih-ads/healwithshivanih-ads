@@ -41,10 +41,14 @@ ingredients:
 steps:
 - Soak the rice separately, and the urad dal with the methi seeds, for 5–6 hours.
 - Grind the dal first to a light fluffy paste, then the rice to a slightly grainy
-- The batter is ready when it has risen and smells pleasantly sour. Thin it with water to a pouring consistency.
-- Heat a tawa until a drop of water skitters. Pour a ladle at the centre and spread outward in a spiral.
-- Drizzle oil at the edges and cook until the base is golden and lifts away cleanly. Fold and serve.
-- 'This batter makes about 12 dosas — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. one. Mix, add salt, and ferment overnight.'
+- The batter is ready when it has risen and smells pleasantly sour. Thin it with water
+  to a pouring consistency.
+- Heat a tawa until a drop of water skitters. Pour a ladle at the centre and spread
+  outward in a spiral.
+- Drizzle oil at the edges and cook until the base is golden and lifts away cleanly.
+  Fold and serve.
+- This batter makes about 12 dosas — roughly 5 servings. Refrigerate what you don't
+  cook and use it within 3 days. one. Mix, add salt, and ferment overnight.
 servings: '5'
 prep_time_min: 20
 cook_time_min: 25
@@ -99,4 +103,21 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: white-rice
+  g: 370.0
+- i: 1
+  key: urad-dal
+  g: 100.0
+- i: 2
+  key: fenugreek-seeds
+  g: 3.125
+- i: 3
+  key: salt
+  g: 0.0
+- i: 4
+  key: olive-oil
+  g: 27.0
+nutrient_servings: 5.0

@@ -114,4 +114,18 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: artichoke
+  g: 600.0
+- i: 1
+  key: spinach
+  g: 170.10000000000002
+- i: 2
+  key: spice-mix-savory
+  g: 1.1458333333333333
+- i: 3
+  key: goat-cheese
+  g: 28.35
+nutrient_servings: 2.0

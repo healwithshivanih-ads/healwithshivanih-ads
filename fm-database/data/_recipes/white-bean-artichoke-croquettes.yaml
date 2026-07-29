@@ -116,4 +116,24 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: white-beans
+  g: 179.0
+- i: 1
+  key: spinach
+  g: 20.0
+- i: 2
+  key: artichoke
+  g: 240.0
+- i: 3
+  key: flaxseed
+  g: 10.0
+- i: 4
+  key: spice-mix-savory
+  g: 2.2916666666666665
+- i: 5
+  key: zest
+  g: 0.5208333333333334
+nutrient_servings: 6.0

@@ -47,7 +47,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - all
 image:
@@ -57,3 +57,12 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: cumin-seeds
+  g: 2.0833333333333335
+  f: 0.2
+- i: 1
+  key: water
+  g: 0.0
+nutrient_servings: 1.0

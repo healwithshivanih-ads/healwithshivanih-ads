@@ -110,4 +110,21 @@ rich_in:
 - b12
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: milk
+  g: 976.0
+- i: 1
+  key: lemon-juice
+  g: 0.0
+- i: 2
+  key: yogurt
+  g: 15.3125
+- i: 3
+  key: water
+  g: 0.0
+- i: 4
+  key: maple-syrup
+  g: 0.0
+nutrient_servings: 4.0

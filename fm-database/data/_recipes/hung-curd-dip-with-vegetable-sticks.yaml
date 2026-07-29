@@ -110,7 +110,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 84.9
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -122,3 +122,35 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: cucumber
+  g: 200.0
+- i: 2
+  key: carrot
+  g: 120.0
+- i: 3
+  key: mint-fresh
+  g: 3.125
+- i: 4
+  key: coriander-fresh
+  g: 2.0
+- i: 5
+  key: green-chilli
+  g: 5.0
+- i: 6
+  key: cumin-powder
+  g: 1.25
+- i: 7
+  key: null
+  g: 30.0
+- i: 8
+  key: salt
+  g: 1.421875
+- i: 9
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 2.0

@@ -59,6 +59,20 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - all
+nutrient_lines:
+- i: 0
+  key: buckwheat-flour
+  g: 60.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: salt
+  g: 2.0
+- i: 3
+  key: ghee
+  g: 5.0
+nutrient_servings: 2.0

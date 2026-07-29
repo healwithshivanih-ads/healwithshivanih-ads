@@ -115,4 +115,33 @@ rich_in:
 - fibre
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: jowar-flour
+  g: 120.0
+- i: 1
+  key: white-rice
+  g: 23.125
+- i: 2
+  key: null
+  g: 30.0
+- i: 3
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 4
+  key: green-chilli
+  g: 5.0
+- i: 5
+  key: coriander-fresh
+  g: 2.0
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: null
+  g: 30.0
+- i: 8
+  key: water
+  g: 0.0
+nutrient_servings: 2.0

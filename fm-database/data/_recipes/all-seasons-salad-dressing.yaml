@@ -94,4 +94,18 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: lemon-juice
+  g: 122.0
+- i: 1
+  key: olive-oil
+  g: 54.0
+- i: 2
+  key: spice-mix-savory
+  g: 2.2916666666666665
+- i: 3
+  key: black-pepper
+  g: 0.5
+nutrient_servings: 4.0

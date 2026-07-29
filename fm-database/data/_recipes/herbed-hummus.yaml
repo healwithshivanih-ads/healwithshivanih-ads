@@ -123,4 +123,27 @@ rich_in:
 - iron
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: chickpeas
+  g: 400.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: olive-oil
+  g: 54.0
+- i: 3
+  key: lemon-juice
+  g: 61.0
+- i: 4
+  key: tahini
+  g: 62.5
+- i: 5
+  key: salt
+  g: 11.375
+- i: 6
+  key: herbs-fresh
+  g: 12.5
+nutrient_servings: 8.0

@@ -113,6 +113,35 @@ rich_in:
 - magnesium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 aliases:
 - Besan-methi cheela
+nutrient_lines:
+- i: 0
+  key: besan
+  g: 92.0
+- i: 1
+  key: methi-leaves
+  g: 35.0
+- i: 2
+  key: water
+  g: 0.0
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: turmeric
+  g: 0.78125
+- i: 6
+  key: cumin-powder
+  g: 1.25
+- i: 7
+  key: salt
+  g: 0.0
+- i: 8
+  key: null
+  g: 30.0
+nutrient_servings: 2.0

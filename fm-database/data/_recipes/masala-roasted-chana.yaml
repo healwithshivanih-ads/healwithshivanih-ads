@@ -118,7 +118,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -132,3 +132,32 @@ image:
     use
 aliases:
 - Roasted chana
+nutrient_lines:
+- i: 0
+  key: chickpeas
+  g: 300.0
+- i: 1
+  key: olive-oil
+  g: 4.5
+- i: 2
+  key: cumin-powder
+  g: 1.25
+- i: 3
+  key: coriander-powder
+  g: 1.25
+- i: 4
+  key: chilli-powder
+  g: 0.625
+- i: 5
+  key: null
+  g: 30.0
+- i: 6
+  key: null
+  g: 30.0
+- i: 7
+  key: salt
+  g: 1.421875
+- i: 8
+  key: salt
+  g: 1.421875
+nutrient_servings: 4.0

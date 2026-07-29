@@ -125,4 +125,27 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: fennel-bulb
+  g: 230.0
+- i: 1
+  key: romaine
+  g: 400.0
+- i: 2
+  key: olive-oil
+  g: 27.0
+- i: 3
+  key: vinegar
+  g: 30.0
+- i: 4
+  key: goat-cheese
+  g: 37.5
+- i: 5
+  key: almonds
+  g: 35.75
+- i: 6
+  key: dried-cranberries
+  g: 30.0
+nutrient_servings: 2.0

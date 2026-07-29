@@ -139,7 +139,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-12'
@@ -151,3 +151,59 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: jowar-flour
+  g: 120.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: ghee
+  g: 13.625
+- i: 3
+  key: mustard-seeds
+  g: 4.166666666666667
+- i: 4
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 5
+  key: peanuts
+  g: 36.5
+- i: 6
+  key: ginger-fresh
+  g: 2.0
+- i: 7
+  key: green-chilli
+  g: 10.0
+- i: 8
+  key: curry-leaves
+  g: 1.0
+- i: 9
+  key: carrot
+  g: 32.0
+- i: 10
+  key: green-beans
+  g: 27.5
+- i: 11
+  key: mixed-vegetables
+  g: 30.0
+- i: 12
+  key: corn
+  g: 36.25
+- i: 13
+  key: tomato
+  g: 37.5
+- i: 14
+  key: black-pepper
+  g: 1.0416666666666667
+- i: 15
+  key: lemon-juice
+  g: 5.083333333333333
+- i: 16
+  key: salt
+  g: 5.6875
+- i: 17
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

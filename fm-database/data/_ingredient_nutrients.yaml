@@ -18,6 +18,49 @@ _meta:
   - vit_d_ug
   - vit_c_mg
   - omega3_mg
+  # Per-serving thresholds for a rich_in badge (~15-20% of adult daily need).
+  # Lives here, not in code, because BOTH the Python engine
+  # (scripts/nutrients_lib.py) and the TypeScript recompute used for a
+  # per-client adapted recipe (src/lib/fmdb/recipe-nutrients.ts) read them.
+  # One source; recipe-nutrients.test.ts pins the two sides together.
+  low_coverage_pct: 70.0
+  rich_in_thresholds:
+    protein:
+      field: protein_g
+      min: 12
+    fibre:
+      field: fibre_g
+      min: 5
+    iron:
+      field: iron_mg
+      min: 3
+    calcium:
+      field: calcium_mg
+      min: 150
+    magnesium:
+      field: magnesium_mg
+      min: 70
+    zinc:
+      field: zinc_mg
+      min: 2
+    potassium:
+      field: potassium_mg
+      min: 500
+    folate:
+      field: folate_ug
+      min: 80
+    b12:
+      field: b12_ug
+      min: 0.6
+    vitamin-c:
+      field: vit_c_mg
+      min: 20
+    vitamin-d:
+      field: vit_d_ug
+      min: 2
+    omega-3:
+      field: omega3_mg
+      min: 500
   authored: '2026-07-07'
   verified: '2026-07-07'
   verification: 'All 200 ingredients cross-checked vs IFCT 2017 / USDA FDC by an independent skeptical pass (25-agent workflow). 6 corrections applied: ajwain fat/fibre, tendli potassium, methi-leaves iron,

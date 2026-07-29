@@ -29,6 +29,12 @@ import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
 import { adaptRecipeForAvoids } from "@/lib/fmdb/recipe-adapt";
+import {
+  loadNutrientTable,
+  recomputeWithoutSync,
+  type LoadedTable,
+  type NutrientLine,
+} from "@/lib/fmdb/recipe-nutrients";
 import { slugify } from "@/lib/fmdb/deferred-items";
 import { collectMeasurementSnapshots, latestMeasurements } from "@/lib/fmdb/measurements";
 import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/travel-foods";
@@ -1482,6 +1488,10 @@ export interface LetterRecipe {
   tip?: string;
   imageUrl?: string;
   imageCredit?: string;
+  /** per-ingredient-line nutrient record, so a per-client adaptation can
+   *  re-derive the figures by subtraction (see recipe-nutrients.ts). */
+  nutrientLines?: NutrientLine[];
+  nutrientServings?: number;
   /** foods taken OUT of this recipe for this client (see recipe-adapt.ts).
    *  Empty/absent means the recipe is the catalogue's own. */
   omits?: string[];
@@ -1544,6 +1554,10 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
           servingsNum: Number(r.servings) || undefined,
           kcalPerServing: Number(r.kcal_per_serving) || undefined,
           richIn: asStrArr(r.rich_in),
+          nutrientLines: Array.isArray(r.nutrient_lines)
+            ? (r.nutrient_lines as NutrientLine[])
+            : undefined,
+          nutrientServings: Number(r.nutrient_servings) || undefined,
           diet: asStrArr(r.diet),
           aliases: asStrArr(r.aliases),
           mains: asStrArr(r.main_ingredients),
@@ -1655,10 +1669,16 @@ export function buildClientRecipeGate(client: {
  * Returns the recipe to show, or null to hide it — so every caller keeps the
  * same shape it had when this was a plain filter.
  */
-export function buildClientRecipeAdapter(client: {
-  dietary_preference?: unknown;
-  foods_to_avoid?: unknown;
-}): (r: LetterRecipe) => LetterRecipe | null {
+export function buildClientRecipeAdapter(
+  client: {
+    dietary_preference?: unknown;
+    foods_to_avoid?: unknown;
+  },
+  /** the ingredient table, when the caller has it — enables the nutrient
+   *  recompute. Without it an adapted recipe keeps the catalogue's figures,
+   *  which is what it did before recipe-nutrients.ts existed. */
+  nutrientTable?: LoadedTable | null,
+): (r: LetterRecipe) => LetterRecipe | null {
   const gate = buildClientRecipeGate(client);
   const pref = asStr(client.dietary_preference).toLowerCase();
   // The words that can cause a rejection AND are safe to simply leave out.
@@ -1678,7 +1698,33 @@ export function buildClientRecipeAdapter(client: {
     // The adapted recipe must clear the very gate that rejected the original.
     // Without this re-check an incomplete rewrite would ship as a pass.
     if (!gate(a.recipe)) return null;
-    return { ...a.recipe, omits: a.omitted, omitsInSteps: a.stepsStillMention };
+    // Its calories are the catalogue's until they are re-derived: an aloo sabzi
+    // shown without its potato was still reporting the potato. Subtracting the
+    // removed lines is exact (recipe-nutrients.ts).
+    // BACKSTOP. Even an adaptable food can BE the dish — an onion soup, a
+    // salad that is mostly spring onion. When what is being removed is most of
+    // the recipe by weight, what is left is not the dish any more, so it stays
+    // hidden rather than being served as a shadow of itself.
+    const lines = r.nutrientLines ?? [];
+    if (lines.length) {
+      const total = lines.reduce((sum, l) => sum + l.g, 0);
+      const gone = lines
+        .filter((l) => a.removedIngredientIndices.includes(l.i))
+        .reduce((sum, l) => sum + l.g, 0);
+      if (total > 0 && gone / total >= 0.5) return null;
+    }
+    const n = recomputeWithoutSync(
+      nutrientTable ?? null,
+      r.nutrientLines,
+      r.nutrientServings,
+      a.removedIngredientIndices,
+    );
+    return {
+      ...a.recipe,
+      omits: a.omitted,
+      omitsInSteps: a.stepsStillMention,
+      ...(n ? { kcalPerServing: n.perServing.kcal, richIn: n.richIn } : {}),
+    };
   };
 }
 
@@ -3341,7 +3387,7 @@ export async function loadClientAppData(
   const clientRecipeGate = buildClientRecipeGate(client);
   // Gate → adapt → re-gate. A recipe whose only problem is a tempering onion is
   // now shown WITHOUT the onion rather than withheld (recipe-adapt.ts).
-  const adaptForClient = buildClientRecipeAdapter(client);
+  const adaptForClient = buildClientRecipeAdapter(client, await loadNutrientTable());
   const libraryRecipes = libraryRecipesAll.flatMap((l) => {
     const shown = adaptForClient(l.recipe);
     return shown ? [{ ...l, recipe: shown }] : [];

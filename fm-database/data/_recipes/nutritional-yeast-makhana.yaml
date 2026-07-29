@@ -98,7 +98,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 57.3
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -110,3 +110,26 @@ image:
   rights_status: original_generated
   note: original generated image; visually reviewed for no people, hands, text, or
     watermark
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: ghee
+  g: 20.4375
+- i: 2
+  key: nutritional-yeast
+  g: 15.0
+- i: 3
+  key: black-pepper
+  g: 1.0416666666666667
+- i: 4
+  key: salt
+  g: 2.84375
+- i: 5
+  key: chilli-powder
+  g: 0.625
+- i: 6
+  key: turmeric
+  g: 0.390625
+nutrient_servings: 2.0

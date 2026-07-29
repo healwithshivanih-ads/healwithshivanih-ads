@@ -43,8 +43,9 @@ steps:
 - Soak the millet separately, and the urad dal with methi, for 5 hours.
 - Grind the dal very light, then the millet fine. Fold together with salt and ferment
 - Pour into greased moulds and steam for 12 minutes.
-- 'These are slightly denser than rice idlis — don''t overfill the moulds.'
-- 'This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don''t cook and use it within 3 days. overnight.'
+- These are slightly denser than rice idlis — don't overfill the moulds.
+- This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don't
+  cook and use it within 3 days. overnight.
 servings: '5'
 prep_time_min: 20
 cook_time_min: 15
@@ -104,4 +105,21 @@ rich_in:
 - zinc
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: millet-generic
+  g: 400.0
+- i: 1
+  key: urad-dal
+  g: 100.0
+- i: 2
+  key: fenugreek-seeds
+  g: 1.5625
+- i: 3
+  key: salt
+  g: 0.0
+- i: 4
+  key: null
+  g: 30.0
+nutrient_servings: 5.0

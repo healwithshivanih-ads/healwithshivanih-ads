@@ -44,16 +44,18 @@ ingredients:
   qty: '0.5'
   unit: tsp
 - item: black salt (kala namak)
-  qty: 'to taste'
+  qty: to taste
   unit: ''
 - item: black pepper
   qty: '1'
   unit: pinch
 steps:
-- Dice the tomato and cucumber to roughly the same small size — kachumber is judged on the knife work.
+- Dice the tomato and cucumber to roughly the same small size — kachumber is judged
+  on the knife work.
 - Toss them with the green chilli and coriander.
 - Add the lemon juice, roasted cumin, black salt and pepper and mix.
-- Salt LAST and only just before serving — salted early, the cucumber and tomato weep and you get a puddle.
+- Salt LAST and only just before serving — salted early, the cucumber and tomato weep
+  and you get a puddle.
 - Serve straight away, cold or at room temperature.
 servings: '2'
 prep_time_min: 12
@@ -90,25 +92,50 @@ kcal_total: 120
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 56.0
-  protein_g: 1.7
-  carbs_g: 7.8
-  fat_g: 2.7
-  fibre_g: 2.1
-  iron_mg: 1.0
-  calcium_mg: 26.7
-  magnesium_mg: 23.4
-  zinc_mg: 0.4
-  potassium_mg: 424
-  folate_ug: 26.8
+  kcal: 29.0
+  protein_g: 1.3
+  carbs_g: 6.5
+  fat_g: 0.4
+  fibre_g: 1.4
+  iron_mg: 0.9
+  calcium_mg: 25.4
+  magnesium_mg: 20.2
+  zinc_mg: 0.3
+  potassium_mg: 305
+  folate_ug: 19.0
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 25.1
-  omega3_mg: 7.6
+  vit_c_mg: 19.7
+  omega3_mg: 7.3
 nutrient_coverage_pct: 100.0
-rich_in:
-- vitamin-c
+rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 aliases:
 - Kachumber
+nutrient_lines:
+- i: 0
+  key: tomato
+  g: 150.0
+- i: 1
+  key: cucumber
+  g: 120.0
+- i: 2
+  key: green-chilli
+  g: 5.0
+- i: 3
+  key: coriander-fresh
+  g: 2.0
+- i: 4
+  key: lemon-juice
+  g: 22.875
+- i: 5
+  key: cumin-powder
+  g: 1.25
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: black-pepper
+  g: 0.3
+nutrient_servings: 2.0

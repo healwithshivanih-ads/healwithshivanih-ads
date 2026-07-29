@@ -108,7 +108,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -120,3 +120,32 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: walnuts
+  g: 29.25
+- i: 1
+  key: coriander-fresh
+  g: 24.0
+- i: 2
+  key: green-chilli
+  g: 5.0
+- i: 3
+  key: garlic
+  g: 6.0
+- i: 4
+  key: ginger-fresh
+  g: 1.0
+- i: 5
+  key: cumin-seeds
+  g: 0.5208333333333334
+- i: 6
+  key: lemon-juice
+  g: 22.875
+- i: 7
+  key: salt
+  g: 2.84375
+- i: 8
+  key: water
+  g: 0.0
+nutrient_servings: 6.0

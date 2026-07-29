@@ -116,7 +116,7 @@ nutrients_per_serving:
 nutrient_coverage_pct: 66.9
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -128,3 +128,35 @@ image:
   rights_status: web_reference_uncleared
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: mustard-seeds
+  g: 37.5
+- i: 2
+  key: mustard-seeds
+  g: 12.5
+- i: 3
+  key: null
+  g: 30.0
+- i: 4
+  key: green-chilli
+  g: 20.0
+- i: 5
+  key: turmeric
+  g: 3.125
+- i: 6
+  key: salt
+  g: 8.53125
+- i: 7
+  key: mustard-seeds
+  g: 37.5
+- i: 8
+  key: water
+  g: 0.0
+- i: 9
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 3.5

@@ -99,4 +99,27 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: apple
+  g: 540.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: cinnamon
+  g: 1.25
+- i: 3
+  key: cloves
+  g: 0.2
+- i: 4
+  key: raisins
+  g: 18.125
+- i: 5
+  key: ghee
+  g: 2.2708333333333335
+- i: 6
+  key: cardamom
+  g: 0.3
+nutrient_servings: 2.0

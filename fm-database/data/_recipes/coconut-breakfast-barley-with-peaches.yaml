@@ -119,4 +119,27 @@ rich_in:
 - fibre
 - iron
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: barley
+  g: 100.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: peach
+  g: 150.0
+- i: 3
+  key: coconut-oil
+  g: 9.083333333333334
+- i: 4
+  key: cardamom
+  g: 0.44999999999999996
+- i: 5
+  key: coconut-milk
+  g: 120.0
+- i: 6
+  key: coconut-sugar
+  g: 12.5
+nutrient_servings: 2.0

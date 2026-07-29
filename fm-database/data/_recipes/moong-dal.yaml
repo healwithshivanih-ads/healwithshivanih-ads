@@ -128,4 +128,36 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: moong-dal
+  g: 150.0
+- i: 1
+  key: turmeric
+  g: 1.5625
+- i: 2
+  key: ghee
+  g: 13.625
+- i: 3
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: curry-leaves
+  g: 2.6999999999999997
+- i: 6
+  key: asafoetida
+  g: 1.0
+- i: 7
+  key: salt
+  g: 0.0
+- i: 8
+  key: lemon-juice
+  g: 5.083333333333333
+- i: 9
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0

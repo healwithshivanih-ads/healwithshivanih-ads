@@ -108,4 +108,33 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
+nutrient_lines:
+- i: 0
+  key: null
+  g: 30.0
+- i: 1
+  key: cucumber
+  g: 200.0
+- i: 2
+  key: tomato
+  g: 100.0
+- i: 3
+  key: onion
+  g: 55.0
+- i: 4
+  key: capsicum
+  g: 60.0
+- i: 5
+  key: potato
+  g: 150.0
+- i: 6
+  key: coriander-fresh
+  g: 3.0
+- i: 7
+  key: null
+  g: 30.0
+- i: 8
+  key: black-pepper
+  g: 0.0
+nutrient_servings: 2.0

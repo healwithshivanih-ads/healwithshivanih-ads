@@ -65,7 +65,30 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-27'
+nutrients_computed_at: '2026-07-29'
 seasons:
 - summer
 - monsoon
+nutrient_lines:
+- i: 0
+  key: karela
+  g: 100.0
+- i: 1
+  key: onion
+  g: 110.0
+- i: 2
+  key: turmeric
+  g: 0.78125
+- i: 3
+  key: green-chilli
+  g: 0.390625
+- i: 4
+  key: coriander-powder
+  g: 1.25
+- i: 5
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 6
+  key: salt
+  g: 2.0
+nutrient_servings: 2.0
