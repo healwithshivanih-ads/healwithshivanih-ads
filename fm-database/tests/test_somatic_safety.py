@@ -90,7 +90,8 @@ def test_practice_enricher_never_guesses_motion_shape():
     from fmdb.ingest.staging import _ENRICHERS
     out = _ENRICHERS["somatic_practices"](
         {"slug": "x", "display_name": "x", "motion_shape": "hold-release"}, "src", "test")
-    assert out["motion_shape"] == "", "extractor must not be able to set motion_shape"
+    # None, not "": motion_shape is a typed enum now, and "" is not a valid value.
+    assert out["motion_shape"] is None, "extractor must not be able to set motion_shape"
 
 
 if __name__ == "__main__":
