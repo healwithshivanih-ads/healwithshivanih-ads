@@ -19,6 +19,7 @@ rasa:
 main_ingredients:
 - paneer
 - spinach
+- garlic
 - cumin
 contains_allergens:
 - dairy
@@ -35,9 +36,9 @@ ingredients:
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
-- item: hing (asafoetida)
-  qty: '1'
-  unit: pinch
+- item: garlic, sliced
+  qty: '3'
+  unit: clove
 - item: green chilli, slit
   qty: '1'
   unit: piece
@@ -51,8 +52,7 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Heat the ghee and crackle the cumin seeds, then add the green chilli and a pinch
-  of hing.
+- Heat the ghee and crackle the cumin seeds, then add the garlic and green chilli.
 - Add the spinach and cook uncovered until it wilts and the water dries off — this
   keeps the sabzi dry rather than soupy.
 - Stir in the turmeric and salt.
@@ -68,9 +68,7 @@ good_for:
 - agni-digestive-fire
 one_line: Paneer cubes folded into a dry palak sabzi — greens and protein in one pan.
 headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
-  doesn't need a heavy gravy to taste good. Written without onion or garlic, so it
-  suits Jain and allium-free plans as it stands. A pinch of hing in the tempering
-  does the savoury work the garlic used to; leave it out if you avoid it.
+  doesn't need a heavy gravy to taste good.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -84,31 +82,31 @@ image:
 sources:
 - id: shivani-hari-original
   location: Paneer & spinach sabzi
-version: 2
+version: 1
 kitchen_tested: false
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-06-12'
 updated_by: Shivani
 kcal_per_serving: 363
 kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 356
-  protein_g: 20.6
-  carbs_g: 7.5
-  fat_g: 27.8
-  fibre_g: 1.6
+  kcal: 363
+  protein_g: 20.8
+  carbs_g: 8.9
+  fat_g: 27.9
+  fibre_g: 1.7
   iron_mg: 3.0
-  calcium_mg: 536
-  magnesium_mg: 68.0
+  calcium_mg: 543
+  magnesium_mg: 69.0
   zinc_mg: 2.5
-  potassium_mg: 406
+  potassium_mg: 423
   folate_ug: 100
   b12_ug: 0.8
   vit_d_ug: 0.2
-  vit_c_mg: 21.8
-  omega3_mg: 224
+  vit_c_mg: 23.2
+  omega3_mg: 225
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -119,4 +117,4 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-28'
+nutrients_computed_at: '2026-07-27'

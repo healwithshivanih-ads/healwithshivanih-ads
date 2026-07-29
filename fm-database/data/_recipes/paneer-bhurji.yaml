@@ -18,8 +18,8 @@ rasa:
 - pungent
 main_ingredients:
 - paneer
+- onion
 - tomato
-- capsicum
 - coriander
 contains_allergens:
 - dairy
@@ -30,7 +30,7 @@ ingredients:
 - item: ghee or oil
   qty: '2'
   unit: tsp
-- item: capsicum, finely chopped
+- item: onion, finely chopped
   qty: '1'
   unit: piece
 - item: tomato, finely chopped
@@ -59,8 +59,7 @@ ingredients:
   unit: tbsp
 steps:
 - Crumble the paneer by hand — a grater makes it pasty.
-- Heat the ghee, soften the capsicum for 2 minutes, then add the ginger and green
-  chilli.
+- Heat the ghee, fry the onion until golden, then add the ginger and green chilli.
 - Add the tomato and cook until it collapses and the oil separates.
 - Stir in the turmeric, chilli powder and salt, then fold in the paneer.
 - Cook just 2–3 minutes — paneer turns rubbery if you keep going. Finish with garam
@@ -73,12 +72,10 @@ kcal_is_estimate: true
 protein_g: 20.4
 good_for:
 - agni-digestive-fire
-one_line: Crumbled paneer cooked down with capsicum, tomato and masala — a quick,
-  high-protein scramble.
+one_line: Crumbled paneer cooked down with onion, tomato and masala — the vegetarian
+  answer to egg bhurji.
 headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
-  doesn't need a heavy gravy to taste good. Written without onion or garlic, so it
-  suits Jain and allium-free plans as it stands. Capsicum stands in for the onion
-  and gives the same sweetness once it softens.
+  doesn't need a heavy gravy to taste good.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -92,37 +89,36 @@ image:
 sources:
 - id: shivani-hari-original
   location: Paneer bhurji
-version: 2
+version: 1
 kitchen_tested: false
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-06-12'
 updated_by: Shivani
 kcal_per_serving: 373
 kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 367
+  kcal: 373
   protein_g: 20.4
-  carbs_g: 11.4
-  fat_g: 27.7
-  fibre_g: 2.2
-  iron_mg: 1.4
-  calcium_mg: 495
-  magnesium_mg: 35.8
+  carbs_g: 12.9
+  fat_g: 27.6
+  fibre_g: 1.9
+  iron_mg: 1.3
+  calcium_mg: 501
+  magnesium_mg: 34.1
   zinc_mg: 2.5
-  potassium_mg: 381
-  folate_ug: 51.8
+  potassium_mg: 334
+  folate_ug: 34.7
   b12_ug: 0.8
   vit_d_ug: 0.2
-  vit_c_mg: 87.1
-  omega3_mg: 157
+  vit_c_mg: 14.4
+  omega3_mg: 144
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - calcium
 - zinc
 - b12
-- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-28'
+nutrients_computed_at: '2026-07-27'

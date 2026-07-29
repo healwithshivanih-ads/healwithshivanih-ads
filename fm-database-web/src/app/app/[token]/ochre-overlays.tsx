@@ -159,6 +159,8 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
 
         {meal.note && <div className="meal-note">{meal.note}</div>}
 
+        <OmitsNote omits={ex?.omits} inSteps={ex?.omitsInSteps} />
+
         {ex && ex.ingredients.length > 0 && (
           <>
             <div className="eyebrow" style={{ marginTop: 22 }}>
@@ -385,6 +387,42 @@ function fmtQty(n: number): string {
   return String(Math.round(n * 100) / 100);
 }
 
+/**
+ * "Made without onion and garlic" — the one line that tells a client why this
+ * recipe reads differently from the version a friend might cook. Warm and
+ * food-first, no clinical framing (see recipe-adapt.ts for what was changed).
+ *
+ * When a step still names the food — because taking the word out of that
+ * sentence could not be done safely — the line becomes an instruction rather
+ * than a note, so the client is never left following a step that contradicts
+ * their own plan.
+ */
+function OmitsNote({ omits, inSteps }: { omits?: string[]; inSteps?: boolean }) {
+  if (!omits?.length) return null;
+  const phrase =
+    omits.length === 1 ? omits[0] : `${omits.slice(0, -1).join(", ")} and ${omits[omits.length - 1]}`;
+  return (
+    <div
+      className="card-quiet"
+      style={{ marginTop: 14, display: "flex", gap: 8, alignItems: "flex-start" }}
+    >
+      <Icon name="leaf" size={16} style={{ color: "var(--ochre)", flexShrink: 0, marginTop: 1 }} />
+      <span style={{ fontSize: 13.5, lineHeight: 1.5 }}>
+        {inSteps ? (
+          <>
+            Made without <strong>{phrase}</strong> for you — leave it out wherever the steps below
+            mention it.
+          </>
+        ) : (
+          <>
+            Made without <strong>{phrase}</strong> for you.
+          </>
+        )}
+      </span>
+    </div>
+  );
+}
+
 function RecipeDetailBody({ r }: { r: AppRecipe }) {
   const baseServes = r.servingsNum && r.servingsNum > 0 ? r.servingsNum : parseInt(r.serves ?? "", 10) || 2;
   const [serves, setServes] = useState(baseServes);
@@ -439,6 +477,8 @@ function RecipeDetailBody({ r }: { r: AppRecipe }) {
           <span style={{ fontSize: 12.5, color: "var(--muted)" }}>{serves === 1 ? "person" : "people"}</span>
         </div>
       )}
+
+      <OmitsNote omits={r.omits} inSteps={r.omitsInSteps} />
 
       {canScale ? (
         <>

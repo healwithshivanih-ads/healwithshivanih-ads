@@ -28,6 +28,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
+import { adaptRecipeForAvoids } from "@/lib/fmdb/recipe-adapt";
 import { slugify } from "@/lib/fmdb/deferred-items";
 import { collectMeasurementSnapshots, latestMeasurements } from "@/lib/fmdb/measurements";
 import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/travel-foods";
@@ -190,6 +191,10 @@ export interface AppRecipe {
   tip?: string;
   ayurveda?: boolean;
   imageUrl?: string;
+  /** foods left out of this recipe for this client, and whether the steps
+   *  still name them (see recipe-adapt.ts). Drives one warm line in the app. */
+  omits?: string[];
+  omitsInSteps?: boolean;
   /** tiny source credit shown under the recipe when the photo came from a
    *  forwarded reel / web recipe (e.g. "@creator" or "site.com"). */
   imageCredit?: string;
@@ -230,6 +235,9 @@ export interface AppMealExtra {
   ingredients: string[];
   recipe: string[];
   swaps: { name: string; note: string; kcal?: number }[];
+  /** foods left out of this method for this client (see recipe-adapt.ts). */
+  omits?: string[];
+  omitsInSteps?: boolean;
 }
 
 export interface AppSupplement {
@@ -1474,6 +1482,12 @@ export interface LetterRecipe {
   tip?: string;
   imageUrl?: string;
   imageCredit?: string;
+  /** foods taken OUT of this recipe for this client (see recipe-adapt.ts).
+   *  Empty/absent means the recipe is the catalogue's own. */
+  omits?: string[];
+  /** true when a method step still names an omitted food, so the client-facing
+   *  line has to be an instruction rather than a note. */
+  omitsInSteps?: boolean;
 }
 
 /** The structured recipe library (fm-database/data/_recipes/) — the plan-side
@@ -1627,6 +1641,44 @@ export function buildClientRecipeGate(client: {
       if (JAIN_RE.test(jt) && !JAIN_NEGATED_RE.test(jt)) return false;
     }
     return avoidsSafe(r);
+  };
+}
+
+/**
+ * Gate, then ADAPT, then gate again.
+ *
+ * A recipe the client may not see is not automatically a recipe they must go
+ * without: for an allium-avoiding or Jain client the offending ingredient is
+ * usually a tempering aromatic, and taking it out leaves the dish intact. See
+ * recipe-adapt.ts for what it will and will not rewrite.
+ *
+ * Returns the recipe to show, or null to hide it — so every caller keeps the
+ * same shape it had when this was a plain filter.
+ */
+export function buildClientRecipeAdapter(client: {
+  dietary_preference?: unknown;
+  foods_to_avoid?: unknown;
+}): (r: LetterRecipe) => LetterRecipe | null {
+  const gate = buildClientRecipeGate(client);
+  const pref = asStr(client.dietary_preference).toLowerCase();
+  // The words that can cause a rejection AND are safe to simply leave out.
+  // Preparation-qualified entries ("raw onion") are deliberately excluded: the
+  // gate already allows the cooked use, so there is nothing to remove.
+  const terms = [
+    ...buildAvoidFilter(asStr(client.foods_to_avoid)).blanket,
+    ...(/jain/.test(pref)
+      ? ["onion", "garlic", "potato", "beetroot", "radish", "shallot", "leek", "spring onion"]
+      : []),
+  ];
+  return (r: LetterRecipe): LetterRecipe | null => {
+    if (gate(r)) return r;
+    if (!terms.length) return null;
+    const a = adaptRecipeForAvoids(r, terms);
+    if (!a) return null;
+    // The adapted recipe must clear the very gate that rejected the original.
+    // Without this re-check an incomplete rewrite would ship as a pass.
+    if (!gate(a.recipe)) return null;
+    return { ...a.recipe, omits: a.omitted, omitsInSteps: a.stepsStillMention };
   };
 }
 
@@ -3287,12 +3339,18 @@ export async function loadClientAppData(
   // or calorie pricing — and to the same library the recipe GENERATOR consults,
   // so it can never skip writing a dish this client's gate will then remove.
   const clientRecipeGate = buildClientRecipeGate(client);
-  const libraryRecipes = libraryRecipesAll.filter((l) => clientRecipeGate(l.recipe));
+  // Gate → adapt → re-gate. A recipe whose only problem is a tempering onion is
+  // now shown WITHOUT the onion rather than withheld (recipe-adapt.ts).
+  const adaptForClient = buildClientRecipeAdapter(client);
+  const libraryRecipes = libraryRecipesAll.flatMap((l) => {
+    const shown = adaptForClient(l.recipe);
+    return shown ? [{ ...l, recipe: shown }] : [];
+  });
   // The client's own AI recipe pack is re-gated at READ time, not just when it
   // was written: a pack authored before the coach edited foods_to_avoid /
   // dietary_preference would otherwise keep serving the old rules for ever,
   // and the pack is exactly where a dish lands when the library drops out.
-  const recipes = recipesAll.filter((r) => clientRecipeGate(r));
+  const recipes = recipesAll.map(adaptForClient).filter((r): r is LetterRecipe => r !== null);
   // recipe-name → accurate kcal/serving (drives per-meal calories + swap maths)
   const recipeKcalLookup = buildRecipeKcalLookup(
     libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
@@ -3536,6 +3594,8 @@ export async function loadClientAppData(
         serves: rec?.serves,
         ingredients: rec?.ingredients ?? [],
         recipe: rec?.method ?? [],
+        omits: rec?.omits,
+        omitsInSteps: rec?.omitsInSteps,
         swaps,
       };
     }
@@ -3633,6 +3693,8 @@ export async function loadClientAppData(
       tip: r.tip,
       imageUrl: r.imageUrl ?? lib?.imageUrl, // was dropped here → recipe cards never showed a photo
       imageCredit: r.imageCredit ?? lib?.imageCredit,
+      omits: r.omits,
+      omitsInSteps: r.omitsInSteps,
       ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
     };
   });

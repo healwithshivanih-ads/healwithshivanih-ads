@@ -14,6 +14,7 @@ import { describe, it, expect } from "vitest";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import {
+  buildClientRecipeAdapter,
   buildClientRecipeGate,
   buildHomeRemedyResolver,
   buildLibraryRecipeResolver,
@@ -106,10 +107,10 @@ describe("generator skip ⊆ app resolve", () => {
 describe("the skip is judged per client", () => {
   it("writes a recipe for a dish whose only catalogue version this client cannot see", async () => {
     // Anchored on a dish where the allium is INTRINSIC — it is in the recipe's
-    // own name, so no future de-onioning can quietly make this client able to
-    // see it and turn the assertion vacuous. (The original report used Foxtail
-    // millet pulao; that recipe has since been rewritten onion-free, which is
-    // exactly why the anchor must be a dish that cannot be.)
+    // own NAME, so it can never be adapted away and this assertion can never go
+    // vacuous. (The original report used Foxtail millet pulao, which per-client
+    // adaptation now rewrites for her; an anchor that adaptation can rescue
+    // would stop testing the thing this describes.)
     const dish = "3-Egg Omelette (Onion & Cabbage) (1 plate)";
     const gate = buildClientRecipeGate({
       dietary_preference: "Vegetarian Jain",
@@ -130,17 +131,17 @@ describe("the skip is judged per client", () => {
     expect(pythonSkips([dish], visible)).toEqual([]);
   }, PY_TEST_TIMEOUT_MS);
 
-  it("the de-onioned staples are now visible to a Jain client", async () => {
-    // The other half of the same fix: rather than leave these clients without a
-    // method, the seven catalogue recipes their menus actually name were
-    // rewritten without onion or garlic (the kachumber precedent). Pins that,
-    // so a later edit reintroducing an allium is caught here rather than by a
-    // client opening a blank meal.
-    const gate = buildClientRecipeGate({
-      dietary_preference: "Vegetarian Jain",
-      foods_to_avoid: "Onion, Garlic",
-    });
+  it("the staples reach a Jain client — adapted, not edited for everyone", async () => {
+    // These seven were briefly rewritten onion-free IN THE CATALOGUE, which
+    // changed the dish for the twenty clients who do eat onion. They are back to
+    // their authentic form, and the Jain client gets them via per-client
+    // adaptation instead (recipe-adapt.ts). Both halves are pinned here: the
+    // catalogue still HAS the allium, and she still gets a method.
+    const client = { dietary_preference: "Vegetarian Jain", foods_to_avoid: "Onion, Garlic" };
+    const gate = buildClientRecipeGate(client);
+    const adapt = buildClientRecipeAdapter(client);
     const lib = await loadLibraryRecipes();
+    let withAllium = 0;
     for (const slug of [
       "foxtail-millet-pulao",
       "foxtail-millet-upma",
@@ -152,8 +153,13 @@ describe("the skip is judged per client", () => {
     ]) {
       const hit = lib.find((l) => l.slug === slug);
       expect(hit, slug).toBeTruthy();
-      expect(gate(hit!.recipe), slug).toBe(true);
+      if (!gate(hit!.recipe)) withAllium++;
+      const shown = adapt(hit!.recipe);
+      expect(shown, `${slug} must reach her one way or the other`).not.toBeNull();
+      // whichever path it took, nothing she avoids may be in the ingredients
+      for (const i of shown!.ingredients) expect(i.toLowerCase(), slug).not.toMatch(/onion|garlic/);
     }
+    expect(withAllium, "the catalogue keeps the authentic recipes").toBeGreaterThan(0);
   }, PY_TEST_TIMEOUT_MS);
 
   it("still skips a dish the client CAN see, so the saving is kept", async () => {
