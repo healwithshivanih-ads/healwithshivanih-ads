@@ -15,6 +15,7 @@ import {
   isDeclined,
   onlySignedUp,
   confirmationNameMatches,
+  findUnevidencedSignups,
 } from "./engagement";
 
 describe("isSignedUp", () => {
@@ -50,6 +51,98 @@ describe("isDeclined", () => {
     expect(isDeclined({ engagement_status: "declined" })).toBe(true);
     expect(isDeclined({ engagement_status: "pending" })).toBe(false);
     expect(isDeclined({})).toBe(false);
+  });
+});
+
+describe("findUnevidencedSignups", () => {
+  const TODAY = "2026-07-29";
+  const plans = (...ids: string[]) => new Set(ids);
+
+  it("flags the Anita case: signed up, no intake, no plan, gone quiet", () => {
+    const rows = findUnevidencedSignups(
+      [
+        {
+          client_id: "cl-020",
+          display_name: "Anita Pansari",
+          engagement_status: "signed_up",
+          intake_submitted_at: null,
+          last_touch: "2026-07-05",
+        },
+      ],
+      plans(),
+      TODAY
+    );
+    expect(rows).toHaveLength(1);
+    expect(rows[0].client_id).toBe("cl-020");
+    expect(rows[0].quiet_days).toBe(24);
+  });
+
+  it("accepts EITHER a submitted intake or a plan as evidence", () => {
+    const people = [
+      {
+        client_id: "intake-only",
+        engagement_status: "signed_up",
+        intake_submitted_at: "2026-05-02T00:00:00Z",
+        last_touch: "2026-05-01",
+      },
+      {
+        client_id: "plan-only",
+        engagement_status: "signed_up",
+        intake_submitted_at: null,
+        last_touch: "2026-05-01",
+      },
+    ];
+    expect(findUnevidencedSignups(people, plans("plan-only"), TODAY)).toEqual([]);
+  });
+
+  it("leaves a fresh signup alone — onboarding legitimately has neither yet", () => {
+    // cl-023 Siddharth: signed up 7 days ago, no intake, no plan. Normal.
+    const rows = findUnevidencedSignups(
+      [
+        {
+          client_id: "cl-023",
+          engagement_status: "signed_up",
+          intake_submitted_at: null,
+          last_touch: "2026-07-23",
+        },
+      ],
+      plans(),
+      TODAY
+    );
+    expect(rows).toEqual([]);
+  });
+
+  it("ignores anyone not signed up — that's the sweep's job, not this", () => {
+    const people = [
+      { client_id: "p", engagement_status: "pending", last_touch: "2026-01-01" },
+      { client_id: "d", engagement_status: "declined", last_touch: "2026-01-01" },
+      { client_id: "m", last_touch: "2026-01-01" }, // field missing
+    ];
+    expect(findUnevidencedSignups(people, plans(), TODAY)).toEqual([]);
+  });
+
+  it("flags a record with no dateable activity at all", () => {
+    const rows = findUnevidencedSignups(
+      [{ client_id: "x", engagement_status: "signed_up", last_touch: null }],
+      plans(),
+      TODAY
+    );
+    expect(rows).toHaveLength(1);
+    expect(rows[0].quiet_days).toBeNull();
+    expect(rows[0].reason).toContain("no dateable activity");
+  });
+
+  it("sorts the longest-quiet first, with undateable records at the top", () => {
+    const people = [
+      { client_id: "recent", engagement_status: "signed_up", last_touch: "2026-07-01" },
+      { client_id: "ancient", engagement_status: "signed_up", last_touch: "2026-01-01" },
+      { client_id: "unknown", engagement_status: "signed_up", last_touch: null },
+    ];
+    expect(findUnevidencedSignups(people, plans(), TODAY).map((r) => r.client_id)).toEqual([
+      "unknown",
+      "ancient",
+      "recent",
+    ]);
   });
 });
 

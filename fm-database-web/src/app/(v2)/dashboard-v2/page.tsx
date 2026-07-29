@@ -55,6 +55,7 @@ import {
   FmChip,
   FmCatalogueCommitBanner,
   FmCatalogueOrphanChip,
+  FmRosterReviewChip,
   FmVitaoneCoverageChip,
   FmRecipeImageChip,
   FmInboundMessagesBanner,
@@ -1469,6 +1470,13 @@ export default async function DashboardV2() {
               when every entity is reachable. Surfaces orphans like the
               beta-glucuronidase gap before they strand silently. */}
           <FmCatalogueOrphanChip />
+
+          {/* Roster-accuracy guardrail — self-loading, hides when clean.
+              prospects-sweep only inspects records that are NOT signed up, so a
+              wrongly-signed_up record is invisible to it and inflates the
+              active count (Anita Pansari sat there a month on a discovery
+              consult alone). Report-only: the coach judges each one. */}
+          <FmRosterReviewChip />
 
           {/* VitaOne commission-leak guardrail — self-loading, hides when no
               leaks. Flags VitaOne products with empty `covers` (invisible to

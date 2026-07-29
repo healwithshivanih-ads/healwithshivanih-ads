@@ -1653,6 +1653,24 @@ def cmd_prospects_list(args: argparse.Namespace) -> None:
               f"{r['engagement_status']:9s}  last touch {r['last_touch'] or '?'}  {token}")
 
 
+def cmd_roster_review(args: argparse.Namespace) -> None:
+    """List signed_up records with no evidence of actually being a client.
+
+    Report only — never moves anyone. See prospects.unevidenced_signups.
+    """
+    root = _plans_root(args)
+    rows = prospects.unevidenced_signups(root, quiet_after_days=args.quiet_days)
+    if not rows:
+        print("Roster looks clean — every signed-up client has an intake or a plan.")
+        return
+    print(f"{len(rows)} marked signed up with nothing to show for it:")
+    for r in rows:
+        quiet = "no dateable activity" if r["quiet_days"] is None else f"quiet {r['quiet_days']}d"
+        print(f"  {r['client_id']:12s}  {r['display_name']:22s}  {quiet}")
+    print("\nNo intake submitted and no plan in any bucket. Confirm each, or set")
+    print("engagement_status to pending/declined — the next sweep parks them.")
+
+
 def cmd_prospects_restore(args: argparse.Namespace) -> None:
     root = _plans_root(args)
     try:
@@ -2466,6 +2484,16 @@ def main() -> None:
     sub.add_parser(
         "prospects-list", help="list everyone currently parked in prospects/"
     ).set_defaults(func=cmd_prospects_list)
+
+    rr = sub.add_parser(
+        "roster-review",
+        help="list signed_up records with no intake and no plan (report only)",
+    )
+    rr.add_argument(
+        "--quiet-days", type=int, default=prospects.PROSPECT_QUIET_DAYS,
+        help=f"ignore records touched within N days (default {prospects.PROSPECT_QUIET_DAYS})",
+    )
+    rr.set_defaults(func=cmd_roster_review)
 
     pr = sub.add_parser(
         "prospects-restore", help="move a parked person back into clients/ (they signed up)"

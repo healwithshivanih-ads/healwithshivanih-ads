@@ -21,6 +21,7 @@ import { describe, it, expect } from "vitest";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
+import { findUnevidencedSignups } from "./engagement";
 
 const FMDB = path.resolve(__dirname, "../../../../fm-database");
 
@@ -33,7 +34,7 @@ from fmdb.plan import prospects, storage
 tmp = pathlib.Path(tempfile.mkdtemp())
 TODAY = datetime.date(2026, 7, 29)
 
-def mk(cid, status, day, sessions=1, files=0):
+def mk(cid, status, day, sessions=1, files=0, submitted=None, plan=False):
     d = tmp / "clients" / cid
     (d / "sessions").mkdir(parents=True)
     (d / "files").mkdir(exist_ok=True)
@@ -46,14 +47,22 @@ def mk(cid, status, day, sessions=1, files=0):
     }
     if status is not None:
         rec["engagement_status"] = status
+    if submitted is not None:
+        rec["intake_submitted_at"] = submitted
     (d / "client.yaml").write_text(yaml.safe_dump(rec))
     for i in range(sessions):
         (d / "sessions" / f"{cid}-{day}-00{i+1}.yaml").write_text("date: " + day)
     for i in range(files):
         (d / "files" / f"note{i}.txt").write_text("x")
+    if plan:
+        (tmp / "published").mkdir(exist_ok=True)
+        (tmp / "published" / f"{cid}-plan.yaml").write_text(yaml.safe_dump({"client_id": cid}))
 
 def sweep(**kw):
     return prospects.sweep(tmp, today=TODAY, apply=True, **kw)
+
+def review(**kw):
+    return prospects.unevidenced_signups(tmp, today=TODAY, **kw)
 
 def bucket(cid):
     return storage.client_dir(tmp, cid).parent.name
@@ -170,6 +179,68 @@ out["bucket"] = bucket("cold")
       // it rather than leaving a paying client outside the roster.
       expect(out.restored).toEqual(["cold"]);
       expect(out.bucket).toBe("clients");
+    },
+    PY_TEST_TIMEOUT_MS
+  );
+
+  it(
+    "never parks a signed-up record, however unevidenced — that's report-only",
+    () => {
+      // The bug this prevents: auto-correcting an over-generous signed_up would
+      // exile a genuinely paying client over a missing intake field. Far worse
+      // than a roster that reads one too high.
+      const out = runScenario(`
+mk("anita_like", "signed_up", "2026-07-05")
+flagged = review()
+out["flagged"] = sorted(r["client_id"] for r in flagged)
+out["quiet"] = flagged[0]["quiet_days"] if flagged else None
+rep = sweep()
+out["parked"] = ids(rep, "moved")
+out["bucket"] = bucket("anita_like")
+`);
+      expect(out.flagged).toEqual(["anita_like"]);
+      expect(out.quiet).toBe(24);
+      // Flagged for review, but NOT moved.
+      expect(out.parked).toEqual([]);
+      expect(out.bucket).toBe("clients");
+    },
+    PY_TEST_TIMEOUT_MS
+  );
+
+  it(
+    "the roster review agrees with the TypeScript implementation",
+    () => {
+      // The rule is written twice (Python CLI + TS dashboard chip) because the
+      // dashboard cannot shell out per render. Pin that they agree, or they
+      // drift and the chip starts disagreeing with the terminal.
+      const out = runScenario(`
+mk("unevidenced",  "signed_up", "2026-07-05")
+mk("has_intake",   "signed_up", "2026-05-01", submitted="2026-05-02T00:00:00Z")
+mk("has_plan",     "signed_up", "2026-05-01", plan=True)
+mk("fresh_signup", "signed_up", "2026-07-25")
+mk("a_prospect",   "pending",   "2026-05-01")
+out["py"] = sorted(r["client_id"] for r in review())
+`);
+
+      const ts = findUnevidencedSignups(
+        [
+          { client_id: "unevidenced", engagement_status: "signed_up", last_touch: "2026-07-05" },
+          {
+            client_id: "has_intake",
+            engagement_status: "signed_up",
+            intake_submitted_at: "2026-05-02T00:00:00Z",
+            last_touch: "2026-05-01",
+          },
+          { client_id: "has_plan", engagement_status: "signed_up", last_touch: "2026-05-01" },
+          { client_id: "fresh_signup", engagement_status: "signed_up", last_touch: "2026-07-25" },
+          { client_id: "a_prospect", engagement_status: "pending", last_touch: "2026-05-01" },
+        ],
+        new Set(["has_plan"]),
+        "2026-07-29"
+      ).map((r) => r.client_id);
+
+      expect(out.py).toEqual(["unevidenced"]);
+      expect(ts).toEqual(out.py);
     },
     PY_TEST_TIMEOUT_MS
   );

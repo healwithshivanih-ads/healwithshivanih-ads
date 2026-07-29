@@ -74,6 +74,7 @@ export type { FmBodyCompGridProps, BodyCompMetric } from "./FmBodyCompGrid";
 export { FmCatalogueCommitBanner } from "./FmCatalogueCommitBanner";
 export type { FmCatalogueCommitBannerProps } from "./FmCatalogueCommitBanner";
 export { FmCatalogueOrphanChip } from "./FmCatalogueOrphanChip";
+export { FmRosterReviewChip } from "./FmRosterReviewChip";
 export { FmVitaoneCoverageChip } from "./FmVitaoneCoverageChip";
 export { FmRecipeImageChip } from "./FmRecipeImageChip";
 

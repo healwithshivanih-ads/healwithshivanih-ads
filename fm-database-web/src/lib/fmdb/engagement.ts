@@ -64,6 +64,87 @@ export function onlySignedUp<T extends MaybeClient>(clients: readonly T[]): T[] 
   return clients.filter((c) => isSignedUp(c));
 }
 
+/** One person the roster review is unsure about. */
+export interface UnevidencedSignup {
+  client_id: string;
+  display_name: string;
+  /** Days since the last human touch, or null when nothing is dateable. */
+  quiet_days: number | null;
+  /** Plain-English reason, for the coach to judge against. */
+  reason: string;
+}
+
+export interface RosterCandidate {
+  client_id: string;
+  display_name?: string | null;
+  engagement_status?: unknown;
+  intake_submitted_at?: unknown;
+  /** Newest human touch as YYYY-MM-DD — caller decides how to derive it. */
+  last_touch?: string | null;
+}
+
+/** Whole days from `fromYmd` to `toYmd`, or null if either is unusable. */
+function daysBetweenYmd(fromYmd: string, toYmd: string): number | null {
+  const a = Date.parse(`${fromYmd}T00:00:00Z`);
+  const b = Date.parse(`${toYmd}T00:00:00Z`);
+  if (Number.isNaN(a) || Number.isNaN(b)) return null;
+  return Math.round((b - a) / 86_400_000);
+}
+
+/**
+ * Records marked `signed_up` that show no evidence of actually being a client.
+ *
+ * The inverse of the problem `prospects-sweep` solves. The sweep only looks at
+ * people who are NOT signed_up, so a record wrongly marked signed_up is
+ * invisible to it and quietly inflates the roster — which is exactly what
+ * happened to Anita Pansari (cl-020): discovery consult, intake never
+ * submitted, no plan, 24 days quiet, yet counted as an active client.
+ *
+ * Evidence of being a real client = a submitted intake OR a plan. Either alone
+ * is enough; Kamla and Nazneen have both, Anita had neither.
+ *
+ * REPORT ONLY. Nothing here moves or edits anyone. Auto-parking a signed_up
+ * record risks exiling a genuinely paying client over a data gap, which is far
+ * worse than the roster being one too high. The coach judges each one.
+ *
+ * A brand-new signup mid-onboarding legitimately has neither yet, so the quiet
+ * window keeps them off the list (cl-023 Siddharth, 7 days in, is not flagged).
+ */
+export function findUnevidencedSignups(
+  clients: readonly RosterCandidate[],
+  clientIdsWithAnyPlan: ReadonlySet<string>,
+  todayYmd: string,
+  quietAfterDays: number = PROSPECT_QUIET_DAYS
+): UnevidencedSignup[] {
+  const out: UnevidencedSignup[] = [];
+  for (const c of clients) {
+    if (!isSignedUp(c)) continue;
+    if (clientIdsWithAnyPlan.has(c.client_id)) continue;
+    const submitted =
+      typeof c.intake_submitted_at === "string" && c.intake_submitted_at.trim().length > 0;
+    if (submitted) continue;
+
+    const quiet =
+      typeof c.last_touch === "string" && c.last_touch
+        ? daysBetweenYmd(c.last_touch.slice(0, 10), todayYmd)
+        : null;
+    // Still inside the grace window — normal fresh onboarding, not a flag.
+    if (quiet !== null && quiet < quietAfterDays) continue;
+
+    out.push({
+      client_id: c.client_id,
+      display_name: (c.display_name || c.client_id).trim(),
+      quiet_days: quiet,
+      reason:
+        quiet === null
+          ? "marked signed up, but no intake submitted, no plan, and no dateable activity"
+          : `marked signed up, but no intake submitted, no plan, and quiet ${quiet} days`,
+    });
+  }
+  out.sort((a, b) => (b.quiet_days ?? 1e9) - (a.quiet_days ?? 1e9));
+  return out;
+}
+
 /**
  * Does the name the coach typed match the client's actual display name?
  *

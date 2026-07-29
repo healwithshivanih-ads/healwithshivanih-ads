@@ -39,6 +39,7 @@ __all__ = [
     "sweep",
     "restore",
     "list_prospects",
+    "unevidenced_signups",
 ]
 
 #: Days of silence after which a non-signed-up person is parked.
@@ -266,6 +267,89 @@ def restore(root: Path, client_id: str) -> Path:
     active.parent.mkdir(parents=True, exist_ok=True)
     shutil.move(str(parked), str(active))
     return active
+
+
+def _client_ids_with_any_plan(root: Path) -> set[str]:
+    """Every client_id referenced by a plan in ANY bucket.
+
+    A revoked or superseded plan still proves this person was once a real
+    client, so all buckets count as evidence.
+    """
+    out: set[str] = set()
+    for bucket in ("drafts", "ready", "published", "superseded", "revoked", "graduated"):
+        d = root / bucket
+        if not d.is_dir():
+            continue
+        for f in d.glob("*.yaml"):
+            try:
+                data = yaml.safe_load(f.read_text()) or {}
+            except Exception:
+                continue
+            cid = data.get("client_id")
+            if isinstance(cid, str) and cid:
+                out.add(cid)
+    return out
+
+
+def unevidenced_signups(
+    root: Path,
+    today: Optional[date] = None,
+    quiet_after_days: int = PROSPECT_QUIET_DAYS,
+) -> list[dict]:
+    """Records marked signed_up that show no sign of actually being a client.
+
+    The inverse of what :func:`sweep` catches. The sweep only inspects people
+    who are NOT signed up, so a record wrongly marked signed_up is invisible to
+    it and quietly inflates the roster — which is what happened to Anita
+    Pansari (cl-020): a discovery consult, intake never submitted, no plan, 24
+    days quiet, still counted as an active client.
+
+    Evidence of being a real client = a submitted intake OR a plan. Either is
+    enough on its own.
+
+    REPORT ONLY — this never moves or edits anyone, and `sweep` deliberately
+    does not consume it. Auto-parking a signed_up record risks exiling a
+    genuinely paying client over a data gap, which is far worse than a roster
+    that reads one too high. Mirrors `findUnevidencedSignups` in
+    `lib/fmdb/engagement.ts`; keep the two in lockstep.
+    """
+    today = today or date.today()
+    clients_root = root / "clients"
+    if not clients_root.is_dir():
+        return []
+    with_plan = _client_ids_with_any_plan(root)
+    out: list[dict] = []
+
+    for person_dir in sorted(clients_root.iterdir()):
+        if not person_dir.is_dir():
+            continue
+        data = _read_client_yaml(person_dir)
+        if data is None or _engagement(data) != SIGNED_UP:
+            continue
+        cid = person_dir.name
+        if cid in with_plan:
+            continue
+        submitted = data.get("intake_submitted_at")
+        if isinstance(submitted, str) and submitted.strip():
+            continue
+        # A brand-new signup legitimately has neither yet — the grace window
+        # keeps normal onboarding off the list.
+        qd = quiet_days(person_dir, data, today)
+        if qd is not None and qd < quiet_after_days:
+            continue
+        out.append(
+            {
+                "client_id": cid,
+                "display_name": str(data.get("display_name") or cid),
+                "quiet_days": qd,
+                "reason": (
+                    "marked signed up, but no intake submitted, no plan, and "
+                    + ("no dateable activity" if qd is None else f"quiet {qd} days")
+                ),
+            }
+        )
+    out.sort(key=lambda r: (r["quiet_days"] is None, -(r["quiet_days"] or 0)))
+    return out
 
 
 def list_prospects(root: Path) -> list[dict]:
