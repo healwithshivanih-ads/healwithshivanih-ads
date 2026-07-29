@@ -13,6 +13,7 @@ import { AppAvatar } from "./ochre-ui";
 import { BodySection } from "./ochre-body";
 import { MeasureList, MEASURE_INTRO } from "./ochre-measures";
 import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
+import { swapDeltaLabel } from "@/lib/fmdb/swap-ranking";
 
 /** Downscale a chosen image to a small JPEG and return base64 (no data-URL
  *  prefix), or null on failure. Mirrors the intake form's helper — kept local
@@ -228,7 +229,12 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
             <div className={"swap-body" + (swapOpen ? " open" : "")}>
               <div>
                 <div className="swap-inner">
-                  <div className="swap-hint">Approved alternatives from your own plan — same slot, same shape of plate:</div>
+                  <div className="swap-hint">
+                    Approved alternatives from your own plan — same slot, same shape of plate.
+                    {ex.swaps.some((s) => s.heavier)
+                      ? " The closest matches come first."
+                      : ""}
+                  </div>
                   {ex.swaps.map((s, i) => (
                     <button key={i} className={"swap-opt" + (chosen === i ? " on" : "")} onClick={() => void pickSwap(i)}>
                       <span className="check-sq2">{chosen === i && <Icon name="checkBold" size={13} style={{ color: "#fff" }} />}</span>
@@ -237,7 +243,17 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
                           {s.name}
                           {s.kcal ? <span style={{ color: "var(--muted)", fontWeight: 400 }}> · ~{s.kcal} kcal</span> : null}
                         </span>
-                        <span className="so-note">{s.note}</span>
+                        <span className="so-note">
+                          {s.note}
+                          {swapDeltaLabel(s.kcalDelta) ? (
+                            <>
+                              {" · "}
+                              <span style={{ color: s.heavier ? "var(--ochre)" : "inherit" }}>
+                                {swapDeltaLabel(s.kcalDelta)}
+                              </span>
+                            </>
+                          ) : null}
+                        </span>
                       </span>
                     </button>
                   ))}

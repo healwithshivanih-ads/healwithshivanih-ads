@@ -29,6 +29,7 @@ import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
 import { adaptRecipeForAvoids } from "@/lib/fmdb/recipe-adapt";
+import { rankSwaps, type RankedSwap } from "@/lib/fmdb/swap-ranking";
 import {
   loadNutrientTable,
   recomputeWithoutSync,
@@ -240,7 +241,10 @@ export interface AppMealExtra {
   serves?: string;
   ingredients: string[];
   recipe: string[];
-  swaps: { name: string; note: string; kcal?: number }[];
+  /** coach-approved alternatives for this slot, ordered like-for-like first
+   *  and — for a client eating to a calorie target — never leading with one
+   *  that costs them (see swap-ranking.ts). */
+  swaps: RankedSwap[];
   /** foods left out of this method for this client (see recipe-adapt.ts). */
   omits?: string[];
   omitsInSteps?: boolean;
@@ -3403,7 +3407,11 @@ export async function loadClientAppData(
   );
   const dishKcal = (dish: string): number | undefined => {
     const k = estimateDishKcal(dish, recipeKcalLookup);
-    return k > 0 ? k : undefined;
+    // Whole numbers only. A per-serving figure can now carry a decimal (an
+    // adapted recipe's calories are re-derived, not read off the YAML), and a
+    // client should never be shown "691.4000000000001 kcal" — nor a swap
+    // difference of "-41.30000000000001".
+    return k > 0 ? Math.round(k) : undefined;
   };
   const pinnedSlugs = new Set(
     (asArr((plan.nutrition as Dict | undefined)?.recipes) as unknown[]).map((s) => String(s)),
@@ -3617,18 +3625,23 @@ export async function loadClientAppData(
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
         dishTitle: rec?.title || pills[0],
       });
-      const swaps: { name: string; note: string; kcal?: number }[] = [];
+      // coach-approved swaps = the other dishes this plan serves in the SAME
+      // slot. Collect them ALL, then rank — taking the first three in table
+      // order meant the headline alternative to a 350 kcal lunch could be a
+      // 700 kcal one, which for a client eating to a target spends the day's
+      // deficit with nothing on screen saying so.
+      const candidates: { name: string; note: string; kcal?: number }[] = [];
       const seen = new Set<string>([cell]);
-      // coach-approved swaps = the other dishes this plan serves in the SAME slot
       for (const wt of weekTables) {
         const r2 = wt.rows.find((r) => r.slot.toLowerCase() === slotL);
         if (!r2) continue;
         for (const c of r2.cells) {
-          if (!c || seen.has(c) || swaps.length >= 3) continue;
+          if (!c || seen.has(c)) continue;
           seen.add(c);
-          swaps.push({ name: c, note: `On your plan — week ${wt.week} rotation`, kcal: dishKcal(c) });
+          candidates.push({ name: c, note: `On your plan — week ${wt.week} rotation`, kcal: dishKcal(c) });
         }
       }
+      const swaps = rankSwaps(candidates, dishKcal(cell), weightLossEnabled);
       mealExtra[slotName] = {
         grad: SLOT_GRAD[slotL] ?? "linear-gradient(140deg,#e3cf9a,#9a8a4f)",
         // Letter recipes (personalised) win the method match but carry no
