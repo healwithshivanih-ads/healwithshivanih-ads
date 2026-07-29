@@ -457,6 +457,12 @@ export function FullAssessmentForm({
   // left behind. Own state, rendered outside that gate.
   const [blockedGate, setBlockedGate] = useState<AssessResult["gate"] | null>(null);
   const [draftSignupWarning, setDraftSignupWarning] = useState<string | null>(null);
+  /** Exact display_name the coach must retype to build a plan pre-signup. */
+  const [draftExpectedName, setDraftExpectedName] = useState<string | null>(null);
+  const [draftConfirmName, setDraftConfirmName] = useState("");
+  const draftNameConfirmed =
+    !!draftExpectedName &&
+    draftConfirmName.trim().toLowerCase() === draftExpectedName.trim().toLowerCase();
   // Freshness guard: set true when the coach clicks Generate-draft while the
   // on-screen synthesis is a REHYDRATED old run (loaded on mount, never
   // re-analysed this session). Nidhi 2026-07-07: a plan was generated off a
@@ -686,7 +692,7 @@ export function FullAssessmentForm({
     });
   };
 
-  const onGenerateDraft = (opts?: { force?: boolean; confirmStale?: boolean }) => {
+  const onGenerateDraft = (opts?: { confirmName?: string; confirmStale?: boolean }) => {
     if (!result?.session_id) return;
     // Freshness guard — the synthesis on screen was rehydrated from a saved
     // run on a PRIOR day and has NOT been re-analysed today. Building a plan
@@ -714,12 +720,13 @@ export function FullAssessmentForm({
           )
             ? planBrief
             : undefined,
-          force: opts?.force,
+          confirm_client_name: opts?.confirmName,
         });
         if (!res.ok) {
           toast.error(res.error || "Draft generation failed");
           if (res.needs_confirmation) {
             setDraftSignupWarning(res.error || "This client hasn't signed up yet.");
+            setDraftExpectedName(res.expected_client_name ?? null);
           }
         } else if (res.slug) {
           toast.success(`Draft plan created at ${res.slug}`);
@@ -1603,19 +1610,49 @@ export function FullAssessmentForm({
               }}
             >
               <div style={{ fontSize: 12, color: "#92400e" }}>{draftSignupWarning}</div>
+              {/* Typed name, not a second click. A one-click override is how a
+                  plan ends up built for someone who never signed up — the
+                  click becomes momentum rather than a decision. */}
+              <input
+                type="text"
+                value={draftConfirmName}
+                onChange={(e) => setDraftConfirmName(e.target.value)}
+                placeholder={draftExpectedName ? `Type: ${draftExpectedName}` : "Type the client's name"}
+                aria-label="Type the client's name to confirm building a plan before signup"
+                style={{
+                  padding: "8px 10px",
+                  fontSize: 12,
+                  border: "1px solid rgba(217,119,6,0.4)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  fontFamily: "inherit",
+                  maxWidth: 320,
+                }}
+              />
               <button
                 type="button"
-                onClick={() => onGenerateDraft({ force: true })}
-                disabled={draftPending}
+                onClick={() => onGenerateDraft({ confirmName: draftConfirmName })}
+                disabled={draftPending || !draftNameConfirmed}
+                title={
+                  draftNameConfirmed
+                    ? undefined
+                    : "Type the client's name exactly to enable this"
+                }
                 style={{
                   background: "#fff",
-                  color: "var(--fm-text-primary)",
+                  color: draftNameConfirmed
+                    ? "var(--fm-text-primary)"
+                    : "var(--fm-text-muted, #9ca3af)",
                   border: "1px solid var(--fm-border)",
                   padding: "8px 14px",
                   fontSize: 12,
                   fontWeight: 700,
                   borderRadius: "var(--fm-radius-sm)",
-                  cursor: draftPending ? "wait" : "pointer",
+                  cursor: draftPending
+                    ? "wait"
+                    : draftNameConfirmed
+                      ? "pointer"
+                      : "not-allowed",
+                  opacity: draftNameConfirmed ? 1 : 0.6,
                   fontFamily: "inherit",
                   alignSelf: "flex-start",
                 }}

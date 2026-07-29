@@ -50,6 +50,29 @@ def _plans_root() -> Path:
     return Path.home() / "fm-plans"
 
 
+def _auth_person(auth: Path, client_id: str) -> Path:
+    """Resolve a person's directory in the AUTHORITATIVE tree.
+
+    Mirrors `fmdb.plan.storage.client_dir`: signed-up clients live in
+    `clients/<id>/`, people who never signed up are parked in `prospects/<id>/`.
+
+    This matters for the reverse-mirror in `_refresh`: a parked person can still
+    hold a live app token, and their app check-ins / MSQ submissions / push
+    subscriptions must land back in the authoritative store. Resolving only
+    `clients/` would make those writes silently vanish.
+
+    Falls back to `clients/` for unknown ids so staging a new client is
+    unaffected.
+    """
+    active = auth / "clients" / client_id
+    if active.exists():
+        return active
+    parked = auth / "prospects" / client_id
+    if parked.exists():
+        return parked
+    return active
+
+
 def _staging_root() -> "Path | None":
     env = os.environ.get("FMDB_STAGING_DIR")
     if not env:
@@ -234,7 +257,7 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
                 p.unlink(missing_ok=True)
 
     # 2. client.yaml — app keys merged over any existing staging stub
-    auth_client = auth / "clients" / client_id / "client.yaml"
+    auth_client = _auth_person(auth, client_id) / "client.yaml"
     if not auth_client.exists():
         return {"ok": False, "error": f"client not found: {client_id}", **counts}
     adata = yaml.safe_load(auth_client.read_text()) or {}
@@ -313,7 +336,7 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     # letters recorded in _send_log.yaml, and sent letters sometimes carry a
     # successor plan slug — so stage the log plus every file matching the
     # published slug OR any slug that appears in the log.
-    auth_mp = auth / "clients" / client_id / "meal-plans"
+    auth_mp = _auth_person(auth, client_id) / "meal-plans"
     # discovery clients have no plan_slug → an empty prefix would match EVERY
     # file; skip letters entirely for them (they have no plan/letters anyway).
     if not discovery and auth_mp.exists():
@@ -336,7 +359,7 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
                 counts["letters"] += 1
 
     # 4. app-relevant sessions (wellbeing trend), copy-if-missing
-    auth_sess = auth / "clients" / client_id / "sessions"
+    auth_sess = _auth_person(auth, client_id) / "sessions"
     if auth_sess.exists():
         ssess = sdir / "sessions"
         ssess.mkdir(parents=True, exist_ok=True)
@@ -359,7 +382,7 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
 
     # 5b. coach app-overrides (hidden remedy suggestions) — the app loader
     # filters from this, so Fly must carry it (added 2026-06-12)
-    ov = auth / "clients" / client_id / "app-overrides.yaml"
+    ov = _auth_person(auth, client_id) / "app-overrides.yaml"
     if ov.exists():
         shutil.copy2(ov, sdir / "app-overrides.yaml")
 
@@ -368,7 +391,7 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     # in _refresh). Forward-stage newest-wins: a coach edit propagates, but a Fly
     # `paid` status (already mirrored to auth before this runs in _refresh) is
     # preserved rather than clobbered back to `recommended`.
-    auth_orders = auth / "clients" / client_id / "orders"
+    auth_orders = _auth_person(auth, client_id) / "orders"
     if auth_orders.exists():
         sord = sdir / "orders"
         sord.mkdir(parents=True, exist_ok=True)
@@ -384,7 +407,7 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     # Created on Fly at pay/charge time; _refresh reverse-mirrors them to auth
     # before this runs. Forward-stage newest-wins keeps the staging copy consistent
     # (and propagates a coach-side comp) without clobbering a fresher Fly status.
-    auth_maint = auth / "clients" / client_id / "maintenance"
+    auth_maint = _auth_person(auth, client_id) / "maintenance"
     if auth_maint.exists():
         smnt = sdir / "maintenance"
         smnt.mkdir(parents=True, exist_ok=True)
@@ -425,8 +448,8 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         # reverse-mirror: app check-ins + MSQ submissions written on Fly →
         # authoritative store
         ssess = sdir / "sessions"
-        auth_sess = auth / "clients" / client_id / "sessions"
-        if ssess.exists() and (auth / "clients" / client_id).exists():
+        auth_sess = _auth_person(auth, client_id) / "sessions"
+        if ssess.exists() and (_auth_person(auth, client_id)).exists():
             auth_sess.mkdir(parents=True, exist_ok=True)
             for pattern in ("*-app-checkin.yaml", "*-app-msq.yaml", "*-app-travel.yaml"):
                 for f in sorted(ssess.glob(pattern)):
@@ -440,8 +463,8 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         # so a Fly status advance comes back. Runs BEFORE _stage_one re-stages, so
         # the Mac is current before it gets forward-staged again.
         sord = sdir / "orders"
-        auth_ord = auth / "clients" / client_id / "orders"
-        if sord.exists() and (auth / "clients" / client_id).exists():
+        auth_ord = _auth_person(auth, client_id) / "orders"
+        if sord.exists() and (_auth_person(auth, client_id)).exists():
             auth_ord.mkdir(parents=True, exist_ok=True)
             for f in sorted(sord.glob("*.yaml")):
                 dest = auth_ord / f.name
@@ -461,8 +484,8 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         # a record's paid_through is non-null ⟺ a real payment landed, so we fold
         # in any record carrying a paid_through (pending/created records have null).
         smaint = sdir / "maintenance"
-        auth_maint = auth / "clients" / client_id / "maintenance"
-        auth_cdir = auth / "clients" / client_id
+        auth_maint = _auth_person(auth, client_id) / "maintenance"
+        auth_cdir = _auth_person(auth, client_id)
         if smaint.exists() and auth_cdir.exists():
             auth_maint.mkdir(parents=True, exist_ok=True)
             best_paid_through = None
@@ -506,8 +529,8 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         # merge, never overwrite: Fly appends new opens between cron runs
         # while the authoritative copy holds the full history.
         s_opens = sdir / "_app_opens.yaml"
-        a_opens = auth / "clients" / client_id / "_app_opens.yaml"
-        if s_opens.exists() and (auth / "clients" / client_id).exists():
+        a_opens = _auth_person(auth, client_id) / "_app_opens.yaml"
+        if s_opens.exists() and (_auth_person(auth, client_id)).exists():
             try:
                 fly_list = (yaml.safe_load(s_opens.read_text()) or {}).get("opens") or []
                 auth_list = []
@@ -523,8 +546,8 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         # toggles notifications on/off in settings) → authoritative store.
         # Fly is the sole writer; newest wins.
         s_push = sdir / "_push_subscription.yaml"
-        a_push = auth / "clients" / client_id / "_push_subscription.yaml"
-        if s_push.exists() and (auth / "clients" / client_id).exists():
+        a_push = _auth_person(auth, client_id) / "_push_subscription.yaml"
+        if s_push.exists() and (_auth_person(auth, client_id)).exists():
             try:
                 if (not a_push.exists()) or s_push.stat().st_mtime > a_push.stat().st_mtime:
                     shutil.copy2(s_push, a_push)
@@ -539,8 +562,8 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         # deliberately NOT synced here — keeping fired-state off Fly prevents a
         # preference edit from clobbering it and causing a double-fire.
         s_rem = sdir / "_reminders.yaml"
-        a_rem = auth / "clients" / client_id / "_reminders.yaml"
-        if s_rem.exists() and (auth / "clients" / client_id).exists():
+        a_rem = _auth_person(auth, client_id) / "_reminders.yaml"
+        if s_rem.exists() and (_auth_person(auth, client_id)).exists():
             try:
                 if (not a_rem.exists()) or s_rem.stat().st_mtime > a_rem.stat().st_mtime:
                     shutil.copy2(s_rem, a_rem)
@@ -553,8 +576,8 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         # sole writer (it preserves first_installed_at across confirmations);
         # newest wins, same as push.
         s_inst = sdir / "_app_installed.yaml"
-        a_inst = auth / "clients" / client_id / "_app_installed.yaml"
-        if s_inst.exists() and (auth / "clients" / client_id).exists():
+        a_inst = _auth_person(auth, client_id) / "_app_installed.yaml"
+        if s_inst.exists() and (_auth_person(auth, client_id)).exists():
             try:
                 if (not a_inst.exists()) or s_inst.stat().st_mtime > a_inst.stat().st_mtime:
                     shutil.copy2(s_inst, a_inst)

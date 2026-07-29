@@ -3133,6 +3133,12 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [error, setError] = useState<string | null>(null);
   const [preflightBlocked, setPreflightBlocked] = useState(false);
   const [needsSignupConfirmation, setNeedsSignupConfirmation] = useState(false);
+  /** Exact display_name the coach must retype to build a plan pre-signup. */
+  const [signupExpectedName, setSignupExpectedName] = useState<string | null>(null);
+  const [signupConfirmName, setSignupConfirmName] = useState("");
+  const signupNameConfirmed =
+    !!signupExpectedName &&
+    signupConfirmName.trim().toLowerCase() === signupExpectedName.trim().toLowerCase();
   const [pending, startTransition] = useTransition();
   const [draftPending, startDraft] = useTransition();
   const [uploadPending, startUpload] = useTransition();
@@ -3606,7 +3612,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     });
   };
 
-  const onGenerateDraft = (opts?: { force?: boolean }) => {
+  const onGenerateDraft = (opts?: { confirmName?: string }) => {
     if (!result?.session_id || !clientId) return;
     setError(null);
     setNeedsSignupConfirmation(false);
@@ -3619,12 +3625,13 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           plan_brief: Object.keys(planBrief).some((k) => !!(planBrief as Record<string, unknown>)[k])
             ? planBrief
             : undefined,
-          force: opts?.force,
+          confirm_client_name: opts?.confirmName,
         });
         if (!res.ok) {
           const msg = res.error || "Draft generation failed";
           setError(msg);
           setNeedsSignupConfirmation(!!res.needs_confirmation);
+          if (res.needs_confirmation) setSignupExpectedName(res.expected_client_name ?? null);
           toast.error(msg);
         } else if (res.slug) {
           toast.success(`Draft plan created at ${res.slug}`);
@@ -3878,11 +3885,29 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           {needsSignupConfirmation && (
             <div className="text-sm bg-amber-50 border border-amber-200 rounded p-2 space-y-2">
               <p className="text-amber-800">{error}</p>
+              {/* Typed name, not a second click — see generateDraftAction. */}
+              <input
+                type="text"
+                value={signupConfirmName}
+                onChange={(e) => setSignupConfirmName(e.target.value)}
+                placeholder={
+                  signupExpectedName
+                    ? `Type: ${signupExpectedName}`
+                    : "Type the client's name"
+                }
+                aria-label="Type the client's name to confirm building a plan before signup"
+                className="w-full rounded border border-amber-300 px-2 py-1 text-sm"
+              />
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => onGenerateDraft({ force: true })}
-                disabled={draftPending}
+                onClick={() => onGenerateDraft({ confirmName: signupConfirmName })}
+                disabled={draftPending || !signupNameConfirmed}
+                title={
+                  signupNameConfirmed
+                    ? undefined
+                    : "Type the client's name exactly to enable this"
+                }
                 className="w-full bg-white"
               >
                 Generate the full plan anyway

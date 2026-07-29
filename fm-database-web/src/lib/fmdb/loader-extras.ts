@@ -2,7 +2,12 @@ import "server-only";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
-import { getCataloguePath, getPlansRoot, getResourcesRoot } from "./paths";
+import {
+  getCataloguePath,
+  getPlansRoot,
+  getResourcesRoot,
+  resolvePersonDir,
+} from "./paths";
 import type { Client, MindMap } from "./types";
 import { withFsRetry } from "./fs-retry";
 
@@ -85,11 +90,47 @@ export interface ClientWithMeta extends Client {
 
 export async function loadClientById(id: string): Promise<ClientWithMeta | null> {
   const root = getPlansRoot();
-  const dirPath = path.join(root, "clients", id, "client.yaml");
+  // resolvePersonDir handles the parked-prospect case: someone who never
+  // signed up and went quiet is moved to prospects/<id>, but is NOT deleted —
+  // reads by id must still resolve or their page 404s and the record looks lost.
+  const dirPath = path.join(resolvePersonDir(id), "client.yaml");
   const data = await readYaml<ClientWithMeta>(dirPath);
   if (data) return data;
   // legacy flat
   return readYaml<ClientWithMeta>(path.join(root, "clients", `${id}.yaml`));
+}
+
+/**
+ * Everyone currently parked in `prospects/` — people who never signed up and
+ * went quiet for {@link PROSPECT_QUIET_DAYS} days.
+ *
+ * Deliberately NOT merged into {@link loadAllClients}: the whole point of the
+ * split is that roster counts, dashboards and crons see only real clients.
+ * Surfaces that genuinely want prospects (the clients list, triage) call this
+ * and render them in their own section.
+ */
+export async function loadAllProspects(): Promise<ClientWithMeta[]> {
+  const dir = path.join(getPlansRoot(), "prospects");
+  let entries: string[];
+  try {
+    entries = await withFsRetry(() => fs.readdir(dir));
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw err;
+  }
+  const out: ClientWithMeta[] = [];
+  for (const id of entries) {
+    if (id.startsWith(".")) continue;
+    try {
+      const data = await readYaml<ClientWithMeta>(
+        path.join(dir, id, "client.yaml")
+      );
+      if (data) out.push(data);
+    } catch {
+      // A single malformed record must not take down the whole listing.
+    }
+  }
+  return out;
 }
 
 export interface ClientSession {
@@ -1155,8 +1196,9 @@ export async function getClientUnreadCounts(
 }
 
 export async function loadClientSessions(id: string): Promise<ClientSession[]> {
-  const root = getPlansRoot();
-  const dir = path.join(root, "clients", id, "sessions");
+  // resolvePersonDir, not clients/<id> — a parked prospect's session history
+  // must still render on their page.
+  const dir = path.join(resolvePersonDir(id), "sessions");
   const files = await listYamlFiles(dir);
   const out: ClientSession[] = [];
   for (const f of files) {

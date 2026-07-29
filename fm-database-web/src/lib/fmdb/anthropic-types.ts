@@ -302,11 +302,16 @@ export interface GenerateDraftInput {
   /** Optional coach brief — applied on top of AI suggestions */
   plan_brief?: PlanBrief;
   /**
-   * Bypasses the engagement-status guardrail (see generateDraftAction) —
-   * set when the coach has already seen the "not signed up yet" warning
-   * and explicitly chosen to build the full plan anyway.
+   * Overrides the engagement-status guardrail (see generateDraftAction) by
+   * echoing back the client's display name, typed by the coach.
+   *
+   * Deliberately NOT a boolean. A one-click "generate anyway" is exactly how
+   * a plan gets built for someone who never signed up — the click becomes
+   * momentum, not a decision. Typing the name forces the coach to look at who
+   * this actually is. The server compares it against the real display_name, so
+   * a stale or hand-rolled caller can't skip the check by passing `true`.
    */
-  force?: boolean;
+  confirm_client_name?: string;
 }
 
 export interface GenerateDraftResult {
@@ -316,13 +321,16 @@ export interface GenerateDraftResult {
   error?: string | null;
   /**
    * true when refused because the client's engagement_status isn't
-   * "signed_up" and `force` wasn't set — no plan was generated. The UI
-   * should show `error` alongside a "Generate anyway" action that retries
-   * with `force: true`.
+   * "signed_up" — no plan was generated. The UI should show `error`
+   * alongside a text input, and retry with `confirm_client_name` set to
+   * the name the coach typed (see `expected_client_name`).
    */
   needs_confirmation?: boolean;
   /** The client's actual engagement_status at refusal time, for display. */
   engagement_status?: string;
+  /** The exact name the coach must type to override. Sent so the UI can
+   *  show it and match locally before bothering the server. */
+  expected_client_name?: string;
 }
 
 // ---------------------------------------------------------------------------
