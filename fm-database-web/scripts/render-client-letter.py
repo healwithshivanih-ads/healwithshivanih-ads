@@ -1998,6 +1998,18 @@ def vitaone_url_for_supplement(supplement_name_or_slug: str) -> str | None:
 
 
 # ── Supplement timing slots ──────────────────────────────────────────────────
+# CROSS-LANGUAGE MIRROR. On the TypeScript side this used to be copied into five
+# separate keyword lists; they are now ONE parser — timingSlot() in
+# src/lib/fmdb/client-app-format.ts, which is unit-tested and returns these same
+# 0–6 indices. This table is the only remaining copy, and it exists only because
+# Python cannot import the TS. Change one, change the other.
+# Two known differences, both places where the TS is the better behaviour:
+#   · clock times — the list below names one keyword per hour it thought of, so
+#     the hours it missed (8 pm, 11 pm) silently default to With Breakfast. The
+#     TS derives the slot from the parsed hour and agrees on every hour named.
+#   · multi-dose timings — "with dinner and before bed" buckets here at the FIRST
+#     keyword hit; the TS anchors at the EARLIEST dose. _routine_slots() below
+#     already gets this right and is what the Daily Routine strip uses.
 _TIMING_SLOTS: list[tuple[int, str, str, list[str]]] = [
     # (sort_index, label, emoji, keywords_in_timing_field)
     # "waking" and "first thing" are spelled out because slot 6 now recognises

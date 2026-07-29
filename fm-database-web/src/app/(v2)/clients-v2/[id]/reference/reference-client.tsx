@@ -24,6 +24,7 @@ import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import type { LetterSections } from "./extract-letter-sections";
 import { stripBrand, supplementDisplayName } from "@/lib/fmdb/supplement-display";
+import { timingSlot, type DaySlot } from "@/lib/fmdb/client-app-format";
 
 interface SupplementItem {
   supplement_slug: string;
@@ -184,17 +185,28 @@ const TIMING_SLOTS: { key: string; label: string; emoji: string }[] = [
   { key: "unspecified",   label: "Timing not set",    emoji: "❓" },
 ];
 
+// Keys above are the 7 shared DaySlots plus an "unspecified" bucket for timings
+// that name no time at all. Classification is timingSlot() — the local regex
+// this replaced tested bare "morning" before "mid-morning" and put a plain
+// "evening" dose under Bedtime while "with dinner" went to With dinner, so the
+// same evening could land in two different buckets.
+const KEY_BY_DAY_SLOT: Record<DaySlot, string> = {
+  0: "early_morning",
+  1: "breakfast",
+  2: "mid_morning",
+  3: "lunch",
+  4: "afternoon",
+  5: "dinner",
+  6: "bedtime",
+};
+
 function classifyTiming(raw: string | undefined): string {
   if (!raw) return "unspecified";
-  const t = raw.toLowerCase();
-  if (/(early\s*morning|first thing|wake|empty stomach)/.test(t)) return "early_morning";
-  if (/with dinner|at dinner|dinner/.test(t)) return "dinner";
-  if (/(bedtime|before bed|at night|evening)/.test(t)) return "bedtime";
-  if (/(breakfast|morning meal)/.test(t)) return "breakfast";
-  if (/(mid[- ]?morning|11 ?am|10 ?am)/.test(t)) return "mid_morning";
-  if (/(lunch|midday|1 ?pm|2 ?pm)/.test(t)) return "lunch";
-  if (/(afternoon|3 ?pm|4 ?pm|tea time|teatime)/.test(t)) return "afternoon";
-  return "unspecified";
+  // namesTime, not matched — same reason as the plan editor's Anytime bucket:
+  // "with a meal" names no time, so it stays under "Timing not set" (where it
+  // has always been) instead of claiming breakfast.
+  const { slot, namesTime } = timingSlot(raw);
+  return namesTime ? KEY_BY_DAY_SLOT[slot] : "unspecified";
 }
 
 function FallbackSchedule({

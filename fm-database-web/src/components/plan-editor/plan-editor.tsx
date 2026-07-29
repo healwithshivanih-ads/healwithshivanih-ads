@@ -14,6 +14,7 @@ import { resolveSupplementProducts } from "@/lib/server-actions/supplement-links
 import type { SupplementSourcesMap, SupplementInteraction, DrugCaution } from "@/lib/server-actions/plans";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
+import { timingSlot, type DaySlot } from "@/lib/fmdb/client-app-format";
 // ProtocolTemplatePicker removed — superseded by the unified AttachedProtocolsPanel
 // on the plan edit page, which handles both protocol selection and content seeding.
 import { PlanChatPanel } from "./plan-chat-panel";
@@ -2646,13 +2647,26 @@ export function PlanEditor(props: PlanEditorProps) {
 
 type TimingSlot = "morning" | "midday" | "evening" | "bedtime" | "anytime";
 
+// This card shows 5 coarse buckets, so it folds the 7 shared DaySlots down.
+// Classification itself is timingSlot() — the local regex it replaced tested a
+// bare /bed/ (so "bedside table" read as a bedtime dose) and had no dinner
+// keyword at all, which filed every "with dinner" supplement under Anytime.
+const SLOT_BY_DAY_SLOT: Record<DaySlot, TimingSlot> = {
+  0: "morning",
+  1: "morning",
+  2: "morning",
+  3: "midday",
+  4: "evening",
+  5: "evening",
+  6: "bedtime",
+};
+
 function classifyTiming(timing: string | undefined): TimingSlot {
-  const t = (timing ?? "").toLowerCase();
-  if (/bed|night|sleep/.test(t)) return "bedtime";
-  if (/evening|pm\b|afternoon/.test(t)) return "evening";
-  if (/midday|lunch|noon/.test(t)) return "midday";
-  if (/morning|am\b|wake|fasted|breakfast/.test(t)) return "morning";
-  return "anytime";
+  // namesTime, not matched: "with a fat-containing meal" / "with food" tell the
+  // client HOW to take the dose, not when, so they belong in Anytime rather than
+  // being filed under a breakfast the coach never named.
+  const { slot, namesTime } = timingSlot(timing);
+  return namesTime ? SLOT_BY_DAY_SLOT[slot] : "anytime";
 }
 
 const SLOT_META: Record<TimingSlot, { label: string; icon: string; bg: string }> = {

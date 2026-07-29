@@ -7,11 +7,12 @@
  *
  * Capped at 3 reminders: morning supplements, evening supplements, weekly
  * check-in — whichever the plan actually warrants. Supplement timings are
- * bucketed AM/PM via the SAME slot logic the client letters use
- * (_timing_slot in render-client-letter.py), kept in sync by hand.
+ * bucketed AM/PM from the shared timingSlot() parser, so a reminder can never
+ * fire at a different time than the app shows the dose at.
  */
 
 import { isGrowingTreeEnabled } from "@/app/app/[token]/growing-tree-flag";
+import { timingSlot, type DaySlot } from "@/lib/fmdb/client-app-format";
 
 export interface DerivedReminder {
   id: string;
@@ -39,20 +40,7 @@ export interface EffectiveReminder extends DerivedReminder {
   timeCustom: boolean;
 }
 
-// Mirror of _TIMING_SLOTS in render-client-letter.py (keep in sync).
-// [slotIndex, keywords]. Single-word keywords match on word boundaries;
-// multi-word / hyphenated keywords match as substrings.
-const TIMING_SLOTS: Array<[number, string[]]> = [
-  [0, ["early morning", "empty stomach", "fasting", "before breakfast", "wake"]],
-  [1, ["breakfast", "morning", "with food", "am", "8 am", "7 am", "9 am"]],
-  [2, ["mid-morning", "mid morning", "10 am", "between meals", "snack"]],
-  [3, ["lunch", "midday", "noon", "1 pm", "12 pm"]],
-  [4, ["afternoon", "2 pm", "3 pm", "4 pm"]],
-  [5, ["dinner", "evening meal", "supper", "6 pm", "7 pm", "5 pm", "with evening"]],
-  [6, ["bedtime", "before bed", "night", "sleep", "9 pm", "10 pm", "before sleep"]],
-];
-
-/** Default IST clock time per slot index. */
+/** Default IST clock time per DaySlot index. */
 const SLOT_TIME = ["06:30", "08:00", "10:30", "13:00", "15:30", "19:00", "21:30"];
 
 /** No reminder is ever scheduled before this (coach rule 2026-06-16). */
@@ -63,32 +51,12 @@ function floorTime(t: string): string {
   return t < EARLIEST_TIME ? EARLIEST_TIME : t;
 }
 
-function matchSlot(text: string): number | null {
-  const tl = text.toLowerCase();
-  for (const [idx, keywords] of TIMING_SLOTS) {
-    for (const kw of keywords) {
-      if (kw.includes(" ") || kw.includes("-")) {
-        if (tl.includes(kw)) return idx;
-      } else {
-        const re = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
-        if (re.test(tl)) return idx;
-      }
-    }
-  }
-  return null;
-}
-
-function timingToSlot(timing: string): number {
-  // The PRIMARY timing is the first clause. Everything after a caveat delimiter
-  // (em/en dash, period, semicolon, open paren) is usually a SEPARATION rule —
-  // "Evening with dinner — at least 4 h after your MORNING dose", "… keep clear
-  // of the MORNING levothyroxine" — whose own time words must NOT decide the
-  // bucket (else an evening supplement is mis-slotted to AM and loses its
-  // reminder). Slot on the primary clause; fall back to the full string only
-  // when the primary carries no time cue at all.
-  const full = (timing || "").toLowerCase();
-  const primary = full.split(/\s[—–-]\s|[.;(]/)[0];
-  return matchSlot(primary) ?? matchSlot(full) ?? 1; // default: with breakfast
+function timingToSlot(timing: string): DaySlot {
+  // Classification (including the primary-clause rule this file used to own —
+  // "Evening with dinner — at least 4 h after your MORNING dose" must not be
+  // slotted to AM) now lives in timingSlot(), the one shared parser. Its default
+  // for an unparseable timing is slot 1, which is what this returned too.
+  return timingSlot(timing).slot;
 }
 
 function asStr(v: unknown): string {

@@ -12,14 +12,15 @@
  *   2. Detail list — one row per supplement with name + dose + timing slot
  *      chip + coach rationale + form. Click a row to expand the rationale.
  *
- * Slot classification mirrors render-client-letter.py's _TIMING_SLOTS —
- * same regex keywords on the supplement's `timing` string so the letter
- * and the coach view bucket each supplement identically.
+ * Slot classification is NOT done here — it comes from timingSlot() in
+ * client-app-format.ts, the single tested parser every timing surface shares.
+ * Only the labels/emoji below are local.
  *
  * Design source: FM Backlog Explorations · Group D4.
  */
 import { useMemo, useState } from "react";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
+import { timingSlot, type DaySlot } from "@/lib/fmdb/client-app-format";
 
 export interface FmSupplementGridItem {
   /** Catalogue slug — used as the primary identifier + display fallback. */
@@ -41,79 +42,35 @@ export interface FmSupplementGridProps {
 }
 
 interface SlotDef {
-  idx: number;
+  idx: DaySlot;
   label: string;
   short: string;
   emoji: string;
-  keywords: string[];
 }
 
-// Mirrors render-client-letter.py::_TIMING_SLOTS. Keep in sync — both
-// surfaces classify the same `timing` string the same way.
+// PRESENTATION ONLY — indexed by DaySlot. The keyword lists that used to live
+// here are gone: classification is timingSlot() in client-app-format.ts, the one
+// tested copy. This list had drifted into two live mis-classifications, both
+// because it matched by bare substring: "Afternoon" landed in With Lunch
+// ("afternoon" contains "noon", and slot 3 was tested before slot 4) and
+// "5 g amla powder" landed in With Breakfast (" amla" contains " am"). The
+// Python parser fixed exactly these with word boundaries in 2026-05-29; this
+// copy never got it (2026-07-26).
 const SLOTS: SlotDef[] = [
-  {
-    idx: 0,
-    label: "Early Morning",
-    short: "Early AM",
-    emoji: "🌅",
-    keywords: ["early morning", "empty stomach", "fasting", "before breakfast", "wake"],
-  },
-  {
-    idx: 1,
-    label: "With Breakfast",
-    short: "Breakfast",
-    emoji: "☀️",
-    keywords: ["breakfast", "morning", "with food", "8 am", "7 am", "9 am", " am"],
-  },
-  {
-    idx: 2,
-    label: "Mid-Morning",
-    short: "Mid-AM",
-    emoji: "🕙",
-    keywords: ["mid-morning", "mid morning", "10 am", "between meals", "snack"],
-  },
-  {
-    idx: 3,
-    label: "With Lunch",
-    short: "Lunch",
-    emoji: "🥗",
-    keywords: ["lunch", "midday", "noon", "1 pm", "12 pm"],
-  },
-  {
-    idx: 4,
-    label: "Afternoon",
-    short: "PM",
-    emoji: "🌤",
-    keywords: ["afternoon", "2 pm", "3 pm", "4 pm"],
-  },
-  {
-    idx: 5,
-    label: "With Dinner",
-    short: "Dinner",
-    emoji: "🌆",
-    keywords: ["dinner", "evening meal", "supper", "6 pm", "7 pm", "5 pm", "with evening"],
-  },
-  {
-    idx: 6,
-    label: "Before Bed",
-    short: "Bedtime",
-    emoji: "🌙",
-    // Mirrors the Before Bed keywords in render-client-letter.py's _TIMING_SLOTS,
-    // which gained these so a supplement timed "on retiring" / "pre-bed" stops
-    // defaulting to With Breakfast. Spelled out rather than using a bare "bed"
-    // like the Python list does: classifySlot below matches by substring, so
-    // "bed" would also swallow "bedside" and "bedroom".
-    keywords: ["bedtime", "before bed", "pre-bed", "retiring", "night", "sleep", "9 pm", "10 pm", "before sleep"],
-  },
+  { idx: 0, label: "Early Morning", short: "Early AM", emoji: "🌅" },
+  { idx: 1, label: "With Breakfast", short: "Breakfast", emoji: "☀️" },
+  { idx: 2, label: "Mid-Morning", short: "Mid-AM", emoji: "🕙" },
+  { idx: 3, label: "With Lunch", short: "Lunch", emoji: "🥗" },
+  { idx: 4, label: "Afternoon", short: "PM", emoji: "🌤" },
+  { idx: 5, label: "With Dinner", short: "Dinner", emoji: "🌆" },
+  { idx: 6, label: "Before Bed", short: "Bedtime", emoji: "🌙" },
 ];
 
 function classifySlot(timing: string | undefined): SlotDef {
-  const t = (timing ?? "").toLowerCase();
-  for (const s of SLOTS) {
-    if (s.keywords.some((kw) => t.includes(kw))) return s;
-  }
-  // Default → With Breakfast (matches Python helper).
-  return SLOTS[1];
+  // Unparseable timings keep landing on With Breakfast, as they always have
+  // here — this grid has no "not set" bubble to put them in.
+  const { slot, matched } = timingSlot(timing);
+  return SLOTS[matched ? slot : 1];
 }
 
 function prettySlug(slug: string): string {
