@@ -40,6 +40,38 @@ export interface PrefillResult {
   provenance: PrefillProvenance[];
 }
 
+/** Short pathway labels for at-a-glance surfaces (Overview card). */
+export const PATHWAY_LABEL: Record<string, string> = {
+  mthfr: "Methylation (MTHFR)",
+  comt: "Catechols (COMT)",
+  dao: "Histamine (DAO)",
+  maoa: "Monoamines (MAOA)",
+  gst_gpx: "Detox (GST/GPX)",
+  nos3: "Circulation (NOS3)",
+  pemt: "Choline (PEMT)",
+};
+
+/** Whether the client's record trips the screen at all — drives the Overview
+ *  card's self-hide (mirrors tier1-advisory: show only when something fires). */
+export function prefillHasSignal(p: PrefillResult): boolean {
+  return p.labFlags.length > 0 || p.autoChecked.length > 0;
+}
+
+/** Unique pathway ids that the record flags (lab or condition/diet), most
+ *  objective (lab) first — for the Overview card chips. */
+export function prefillFlaggedPathways(p: PrefillResult): Array<{ pathwayId: string; label: string; source: "lab" | "condition" | "diet" }> {
+  const seen = new Set<string>();
+  const out: Array<{ pathwayId: string; label: string; source: "lab" | "condition" | "diet" }> = [];
+  const push = (pid: string, source: "lab" | "condition" | "diet") => {
+    if (seen.has(pid)) return;
+    seen.add(pid);
+    out.push({ pathwayId: pid, label: PATHWAY_LABEL[pid] ?? pid, source });
+  };
+  for (const f of p.labFlags) push(f.pathwayId, "lab");
+  for (const pr of p.provenance) if (pr.source !== "lab") push(pr.pathwayId, pr.source);
+  return out;
+}
+
 // ---- LAB signals: marker substrings + threshold → pathway escalation --------
 
 interface LabRule {
@@ -98,6 +130,36 @@ const COND_RULES: CondRule[] = [
 
 function passes(v: number, op: ">" | "<", t: number): boolean {
   return op === ">" ? v > t : v < t;
+}
+
+/** Extract PrefillInput from a raw client dict (health_snapshots + structured
+ *  fields). Pure — shared by the screen page and the Overview card so they can
+ *  never disagree on what the record says. */
+export function extractPrefillInput(client: Record<string, unknown>): PrefillInput {
+  const labValues: Record<string, number> = {};
+  const snaps = (client.health_snapshots as Array<Record<string, unknown>>) ?? [];
+  for (const snap of snaps) {
+    for (const lv of (snap.lab_values as Array<Record<string, unknown>>) ?? []) {
+      const name = String(lv.test_name ?? "").trim().toLowerCase();
+      const num = typeof lv.value === "number" ? lv.value : parseFloat(String(lv.value ?? ""));
+      if (name && !Number.isNaN(num)) labValues[name] = num; // later snapshot wins
+    }
+  }
+  const toText = (v: unknown): string =>
+    typeof v === "string" ? v : Array.isArray(v) ? v.filter((x) => typeof x === "string").join(" · ") : "";
+  const conditionsText = [
+    toText(client.active_conditions),
+    toText(client.reported_triggers),
+    toText(client.foods_to_avoid),
+    toText(client.medical_history),
+  ]
+    .join(" · ")
+    .toLowerCase();
+  return {
+    labValues,
+    conditionsText,
+    dietaryPreference: String(client.dietary_preference ?? "").toLowerCase(),
+  };
 }
 
 export function computePrefill(input: PrefillInput): PrefillResult {
