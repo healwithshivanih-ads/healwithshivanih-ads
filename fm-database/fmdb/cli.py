@@ -136,11 +136,35 @@ def cmd_duplicates(args: argparse.Namespace) -> None:
     unnoticed, every one of them with overlapping aliases so that alias lookups
     silently resolved last-wins by load order.
     """
-    from .duplicates import find_duplicates
+    from .duplicates import (find_duplicates, fingerprint, load_baseline,
+                             write_baseline)
     from .validator import load_all
 
     loaded = load_all(DATA_DIR)
     findings = find_duplicates(loaded, near_threshold=args.threshold)
+
+    if getattr(args, "write_baseline", False):
+        n = write_baseline(DATA_DIR, findings)
+        print(f"Baseline written: {n} accepted finding(s).")
+        print("`fmdb duplicates --check-new` now fails only on findings NOT in it.")
+        return
+
+    if getattr(args, "check_new", False):
+        # The ratchet. A hard gate on the total is useless when adoption starts
+        # at 111 criticals — it just teaches everyone to pass --no-verify. Fail
+        # on what is NEW; let the known backlog through and shrink it over time.
+        base = load_baseline(DATA_DIR)
+        fresh = [f for f in findings if fingerprint(f) not in base]
+        if not fresh:
+            print(f"No NEW duplicates ({len(findings)} known, all in baseline).")
+            return
+        print(f"{len(fresh)} NEW duplicate candidate(s) not in the baseline:\n")
+        for f in fresh:
+            print("  " + f.render())
+        print("\nIf these are genuine, merge them (keeping the retired slug as an")
+        print("alias). If a finding is a false positive, and ONLY then, re-run")
+        print("`fmdb duplicates --write-baseline` to accept it.")
+        raise SystemExit(1)
     if args.kind:
         findings = [f for f in findings if f.entity_kind == args.kind]
     if args.critical:
@@ -2133,6 +2157,8 @@ def main() -> None:
     dup.add_argument("--kind", help="filter to one entity dir (topics / mechanisms / supplements / ...)")
     dup.add_argument("--critical", action="store_true", help="only findings that need a merge or a wrong-alias removal")
     dup.add_argument("--threshold", type=float, default=0.6, help="token-overlap threshold for the weak NEAR_SLUG check (default 0.6)")
+    dup.add_argument("--check-new", action="store_true", help="ratchet: exit 1 only on findings NOT in the accepted baseline (for a pre-commit hook)")
+    dup.add_argument("--write-baseline", action="store_true", help="accept the CURRENT findings as the baseline for --check-new")
     dup.add_argument("--json", action="store_true", help="machine-readable output")
     dup.add_argument("-v", "--verbose", action="store_true", help="show all, not just the first 15 per check")
     dup.set_defaults(func=cmd_duplicates)

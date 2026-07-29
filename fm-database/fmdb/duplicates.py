@@ -209,3 +209,52 @@ def find_duplicates(loaded: Loaded, near_threshold: float = 0.6
     order = {"SHARED_ALIAS": 0, "ALIAS_IS_SLUG": 1, "SAME_DISPLAY": 2, "NEAR_SLUG": 3}
     out.sort(key=lambda f: (order[f.kind], -len(f.evidence), f.entity_kind, f.slugs))
     return out
+
+# ---------------------------------------------------------------------------
+# Baseline / ratchet
+# ---------------------------------------------------------------------------
+# A hard gate on the total count is useless here: adopting the check found 111
+# criticals on day one, and a hook that fails every commit from the outset just
+# teaches everyone to pass --no-verify. So gate on what is NEW instead. The
+# baseline records the duplicates that already exist and are accepted or
+# pending; the ratchet fails only when a finding appears that is not in it.
+# Cleaning the backlog then shrinks the baseline over time, and nothing new
+# gets in meanwhile.
+
+BASELINE_PATH = "_duplicates_baseline.yaml"
+
+
+def fingerprint(f: "DuplicateFinding") -> str:
+    """Stable identity for a finding, independent of wording or evidence order.
+
+    Deliberately excludes `detail` (prose, may be reworded) and severity (may be
+    re-graded), so improving the message does not invalidate a whole baseline.
+    """
+    return f"{f.kind}:{f.entity_kind}:{'+'.join(sorted(f.slugs))}"
+
+
+def load_baseline(data_dir) -> set[str]:
+    import yaml
+    from pathlib import Path
+    p = Path(data_dir) / BASELINE_PATH
+    if not p.exists():
+        return set()
+    doc = yaml.safe_load(p.read_text()) or {}
+    return set(doc.get("accepted") or [])
+
+
+def write_baseline(data_dir, findings: list["DuplicateFinding"]) -> int:
+    import yaml
+    from pathlib import Path
+    p = Path(data_dir) / BASELINE_PATH
+    fps = sorted({fingerprint(f) for f in findings})
+    p.write_text(yaml.safe_dump({
+        "_comment": (
+            "Duplicate findings that already existed when the ratchet was "
+            "adopted. `fmdb duplicates --check-new` fails only on findings NOT "
+            "listed here, so new duplicates are blocked while the backlog is "
+            "worked down. Remove an entry once the underlying duplicate is "
+            "merged — never add one to silence a NEW finding."),
+        "accepted": fps,
+    }, sort_keys=False, allow_unicode=True, width=100))
+    return len(fps)

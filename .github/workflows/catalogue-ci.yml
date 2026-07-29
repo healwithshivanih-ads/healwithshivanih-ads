@@ -1,0 +1,65 @@
+name: catalogue-ci
+
+# Gate for the FM catalogue (fm-database/data + the fmdb package).
+#
+# Until now nothing checked the catalogue on push — web-ci only watches
+# fm-database-web/**. That is how five duplicate entity pairs (CoQ10 x3,
+# mitochondrial-health x2, type-2-diabetes x2) accumulated unnoticed, each with
+# overlapping aliases so that lookups resolved last-wins by load order.
+#
+# Two gates:
+#   validate            0 errors. Warnings are non-blocking BY DESIGN — the
+#                       catalogue deliberately carries forward-references and
+#                       "dose unknown" markers, and failing on those would push
+#                       people to invent data to silence them.
+#   duplicates          RATCHET, not a hard gate. Adoption started at 111
+#     --check-new       criticals; a gate on the total would fail every commit
+#                       and simply teach everyone to bypass it. This fails only
+#                       on findings absent from _duplicates_baseline.yaml, so
+#                       new duplicates are blocked while the backlog shrinks.
+#
+# Running in CI rather than a local pre-commit hook is deliberate: .git/hooks is
+# untracked and per-machine, and `--no-verify` bypasses it. To get the same
+# check locally before pushing:
+#     cd fm-database && .venv/bin/python -m fmdb.cli duplicates --check-new
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "fm-database/data/**"
+      - "fm-database/fmdb/**"
+      - ".github/workflows/catalogue-ci.yml"
+  pull_request:
+    paths:
+      - "fm-database/data/**"
+      - "fm-database/fmdb/**"
+      - ".github/workflows/catalogue-ci.yml"
+
+defaults:
+  run:
+    working-directory: fm-database
+
+jobs:
+  catalogue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Validate catalogue (blocking — 0 errors required)
+        run: python -m fmdb.cli validate
+
+      - name: No NEW duplicate entities (ratchet)
+        run: python -m fmdb.cli duplicates --check-new
+
+      # Advisory: the size of the known backlog, so it is visible in the log
+      # and its direction of travel is obvious over time.
+      - name: Duplicate backlog size (advisory)
+        run: python -m fmdb.cli duplicates || true
