@@ -3,17 +3,21 @@ display_name: Hepatic Gluconeogenesis (Excess)
 aliases:
 - liver glucose production
 - hepatic glucose output
+- hepatic-glucose-production
+- liver glucose output
 category: metabolic
-summary: Adipokines secreted by hypertrophied visceral adipocytes (free fatty acids,
-  TNF, leptin) promote liver gluconeogenesis, elevating fasting glucose independent
-  of dietary intake. Abdominal adiposity is the primary driver.
+summary: Adipokines secreted by hypertrophied visceral adipocytes (free fatty acids, TNF, leptin)
+  promote liver gluconeogenesis, elevating fasting glucose independent of dietary intake. Abdominal
+  adiposity is the primary driver.
 upstream_drivers:
 - visceral-adiposity-endocrine-dysfunction
 - insulin-resistance
 - lipotoxicity
+- cortisol-elevation
 downstream_effects:
 - fasting-hyperglycaemia
 - dyslipidaemia
+- postprandial-glucose-spike
 related_mechanisms:
 - insulin-resistance
 - lipotoxicity
@@ -21,14 +25,19 @@ related_mechanisms:
 linked_to_topics:
 - type-2-diabetes-mellitus
 - prediabetes-metabolic-syndrome
+- insulin-resistance
+- blood-sugar-dysfunction
 evidence_tier: strong
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Risk Factors for Type 2 Diabetes Mellitus
-  quote: Abdominal adipocytes, engorged with fat, secrete resistin, leptin, tumor
-    necrosis factor, and free fatty acids that dampen the effect of insulin, impair
-    glucose use in skeletal muscle, promote liver gluconeogenesis.
-version: 1
+  quote: Abdominal adipocytes, engorged with fat, secrete resistin, leptin, tumor necrosis factor,
+    and free fatty acids that dampen the effect of insulin, impair glucose use in skeletal muscle,
+    promote liver gluconeogenesis.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-07-29'
 updated_by: Shivani
+notes_for_coach: 'The answer to "I ate nothing after 8pm and my morning sugar was still high": the
+  liver keeps exporting glucose overnight when insulin fails to suppress it. Levers are the evening
+  meal composition, a post-dinner walk, sleep and stress load — not eating even less at night.'
