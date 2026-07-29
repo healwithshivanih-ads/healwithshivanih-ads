@@ -474,17 +474,23 @@ export interface CycleStep {
 const OSCILLATING = new Set(["expand", "release", "shrink", "press", "hold"]);
 
 /**
- * Whether a long step is a movement to keep following, or an instruction to
- * stop and do something else.
+ * Actions whose LONG step should keep breathing underneath it.
  *
- * `rest` is the clearest case: gastrocolic-rhythm opens with 60s of "drink a
- * full glass of warm water", and pacing a breath under that would be telling
- * the client to do the wrong thing. `observe` is deliberately left out too —
- * the catalogue uses it to mean "no prescribed movement", and the player's
- * ambient drift already suits it.
+ * Wider than the beat set on purpose, and the difference is the whole point.
+ * `observe` never forms a BEAT — belly-drop's 10s "Observe sensation" is a
+ * pause, and treating it as one would invent a cadence the practice never
+ * asked for. But belly-drop's 238s "Continue breathing and noticing" plainly
+ * wants breath under it, as do cat-cow's "Continue with breath" and
+ * safe-body-scan's two 80s passes. Six long steps across the library.
+ *
+ * `rest` stays out, and that is not fussiness: gastrocolic-rhythm opens with
+ * 60s of "drink a full glass of warm water". Pacing a breath under that tells
+ * the client to do the wrong thing. `massage` stays out for the same reason.
  */
-export function isOscillating(action: string): boolean {
-  return OSCILLATING.has(action);
+const PACEABLE = new Set([...OSCILLATING, "observe"]);
+
+export function isPaceable(action: string): boolean {
+  return PACEABLE.has(action);
 }
 
 /** The letting-go half of a breath — a cycle needs one of these AND an expand. */
@@ -545,7 +551,7 @@ export function pacedFrame(
   cycle: CycleStep[],
 ): { action: string; p: number } {
   const linear = { action, p: stepSecs > 0 ? clamp01(elapsed / stepSecs) : 0 };
-  if (stepSecs < LONG_STEP_SECS || !OSCILLATING.has(action) || cycle.length < 2) return linear;
+  if (stepSecs < LONG_STEP_SECS || !PACEABLE.has(action) || cycle.length < 2) return linear;
 
   const total = cycle.reduce((n, s) => n + s.secs, 0);
   if (total <= 0) return linear;

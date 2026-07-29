@@ -17,7 +17,7 @@ import { describe, it, expect } from "vitest";
 import yaml from "js-yaml";
 
 import { getCataloguePath } from "@/lib/fmdb/paths";
-import { breathCycle, isOscillating, LONG_STEP_SECS, pacedFrame } from "./somatic-shapes";
+import { breathCycle, isPaceable, LONG_STEP_SECS, pacedFrame } from "./somatic-shapes";
 
 type Step = { secs: number | null; action: string };
 
@@ -64,6 +64,27 @@ describe("breathCycle — the cadence is taken from the practice, never invented
     expect(c.length).toBeGreaterThanOrEqual(2);
     expect(c.some((b) => b.action === "expand")).toBe(true);
     expect(c.some((b) => b.action === "release" || b.action === "shrink")).toBe(true);
+  });
+
+  /* `observe` is paceable but is NOT a beat. belly-drop's 10s "Observe
+     sensation" must not become part of the cadence, or the practice would be
+     paced to a rhythm it never described. */
+  it("never lets a pause become a beat of the cycle", () => {
+    for (const slug of ["belly-drop", "safe-body-scan", "awe-practice"]) {
+      for (const beat of breathCycle(practice(slug).steps)) {
+        expect(beat.action, `${slug} took an observe step as a beat`).not.toBe("observe");
+        expect(beat.action).not.toBe("rest");
+      }
+    }
+  });
+
+  it("breathes under a long observe step, which is where the client is told to keep breathing", () => {
+    const cyc = breathCycle(practice("belly-drop").steps);
+    // 238s "Continue breathing and noticing"
+    const a = pacedFrame("observe", 238, 0, cyc);
+    const b = pacedFrame("observe", 238, 6, cyc);
+    expect(a.action).not.toBe("observe");   // it is breathing now
+    expect([a.action, b.action]).not.toEqual([a.action, a.action]);
   });
 
   it("never returns a lone beat — one inhale with no exhale is not a cycle", () => {
@@ -127,7 +148,7 @@ describe("the practices this was broken for", () => {
       const d = (yaml.load(fs.readFileSync(path.join(dir, f), "utf8")) ?? {}) as Record<string, unknown>;
       if (d.motion_shape !== "breath_excursion" || d.timed === false) continue;
       const steps = (d.steps as Step[]) ?? [];
-      const long = steps.find((s) => (s.secs ?? 0) >= LONG_STEP_SECS && isOscillating(s.action));
+      const long = steps.find((s) => (s.secs ?? 0) >= LONG_STEP_SECS && isPaceable(s.action));
       if (!long) continue;
       checked++;
       const cyc = breathCycle(steps);
@@ -156,8 +177,8 @@ describe("the practices this was broken for", () => {
      not have a breath paced underneath it. */
   it("leaves long non-movement steps alone", () => {
     const cyc = breathCycle(practice("gastrocolic-rhythm").steps);
-    for (const action of ["rest", "observe", "massage"]) {
-      expect(isOscillating(action)).toBe(false);
+    for (const action of ["rest", "massage"]) {
+      expect(isPaceable(action)).toBe(false);
       const r = pacedFrame(action, 200, 100, cyc);
       expect(r.action, `${action} was paced`).toBe(action);
       expect(r.p).toBeCloseTo(0.5, 5);
