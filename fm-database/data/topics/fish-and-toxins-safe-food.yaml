@@ -4,27 +4,38 @@ aliases:
 - mercury in fish
 - safe fish consumption
 - PCBs in fish
-summary: Fish is a nutrient-dense protein source rich in omega-3s, vitamin D, and minerals. However, some species bioaccumulate
-  mercury, dioxins, and PCBs. Choosing low-mercury, omega-3-rich species and following EPA/AHA consumption guidelines optimizes
-  benefit while minimizing toxin exposure.
+- safe seafood
+- fish consumption guidelines
+- fish-toxins-safe-food
+summary: Fish is a nutrient-dense protein source rich in omega-3s, vitamin D, and minerals. However, some
+  species bioaccumulate mercury, dioxins, and PCBs. Choosing low-mercury, omega-3-rich species and following
+  EPA/AHA consumption guidelines optimizes benefit while minimizing toxin exposure.
 common_symptoms: []
 red_flags:
-- high mercury exposure — neurological, digestive, immune toxicity; particularly harmful in pregnancy, children, elderly
+- high mercury exposure — neurological, digestive, immune toxicity; particularly harmful in pregnancy,
+  children, elderly
+- mercury-toxicity-symptoms
+- neurological-symptoms-in-children-from-mercury-exposure
 related_topics:
 - essential-fatty-acids
 - vitamin-d3
 key_mechanisms:
 - heavy-metal-toxicity
+- omega-3-anti-inflammatory-pathway
 coaching_scope_notes: Coaches can help clients choose safe fish species and follow AHA/EPA frequency recommendations.
-clinician_scope_notes: Children, pregnant/nursing individuals, and the elderly should be counseled specifically on EPA fish
-  consumption guidelines.
+clinician_scope_notes: Children, pregnant/nursing individuals, and the elderly should be counseled specifically
+  on EPA fish consumption guidelines.
 evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Fish and Toxins: Safe Food Guidelines'
-  quote: Some fish also contain higher levels of heavy metals such as mercury, which can be toxic to the nervous, digestive,
-    and immune systems.
-version: 1
+  quote: Some fish also contain higher levels of heavy metals such as mercury, which can be toxic to the
+    nervous, digestive, and immune systems.
+- id: vitaone-health-coaching-toolkit
+  location: 'Fish and Toxins: Safe Food Guidelines'
+  quote: Some fish also contain higher levels of heavy metals such as mercury, which can be toxic to the
+    nervous, digestive, and immune systems.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-07-29'
 updated_by: shivani

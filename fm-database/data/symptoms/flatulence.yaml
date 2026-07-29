@@ -16,10 +16,12 @@ aliases:
 - burping
 - flatulence (excessive)
 - passing-gas
+- gassiness
+- abdominal-gas
 category: gi
 severity: common
-description: Excessive passage of intestinal gas from FODMAP fermentation, SIBO, dysbiosis,
-  or low gastric acid. Common in IBS, IBD, and maldigestion.
+description: Excessive passage of intestinal gas from FODMAP fermentation, SIBO, dysbiosis, or low gastric
+  acid. Common in IBS, IBD, and maldigestion.
 linked_to_topics:
 - low-fodmap-diet
 - elimination-diet
@@ -28,6 +30,8 @@ linked_to_topics:
 - digestive-enzyme-insufficiency
 - irritable-bowel-syndrome
 - maldigestion
+- ibs
+- sibo
 linked_to_mechanisms:
 - colonic-fermentation
 - leaky-gut
@@ -35,7 +39,8 @@ linked_to_mechanisms:
 - food-fermentation-reflux
 - fodmap-fermentation
 - dysbiosis
-when_to_refer: ''
+- polyol-fermentation-motility
+when_to_refer: Refer if accompanied by bloody stool, significant weight loss, or nocturnal symptoms.
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 1
@@ -45,20 +50,22 @@ sources:
   quote: Gut issues were progressive bloating, belching, flatulence.
 - id: coconote-fm-hypochlorhydria
   location: Clinical Presentation of Low Stomach Acid
-  quote: Because of the accumulation of food in the stomach, there could be a long-term
-    effect that there is a bacterial or microbial growth which is present, eventually
-    producing more gas and that is why the patient feels painful or having more of
-    flatulence also in that case.
+  quote: Because of the accumulation of food in the stomach, there could be a long-term effect that there
+    is a bacterial or microbial growth which is present, eventually producing more gas and that is why
+    the patient feels painful or having more of flatulence also in that case.
 - id: vitaone-health-coaching-toolkit
   location: Testing for Low Stomach Acidity
-  quote: Bloating, belching, burning, and flatulence immediately after meals [listed
-    as a common symptom of hypochlorhydria].
+  quote: Bloating, belching, burning, and flatulence immediately after meals [listed as a common symptom
+    of hypochlorhydria].
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 6
 - id: pizzorno-textbook-gi
   location: Diagnostic Summary — Irritable Bowel Syndrome
   quote: Dyspeptic symptoms (flatulence, nausea, anorexia).
-version: 4
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms
+  quote: Poorly digested; fermented by bacteria → gas, bloating.
+version: 5
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-07-29'
+updated_by: shivani

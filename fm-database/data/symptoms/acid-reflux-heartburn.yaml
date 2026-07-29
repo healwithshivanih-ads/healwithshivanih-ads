@@ -22,55 +22,57 @@ aliases:
 - pyrosis
 - rebound acid reflux
 - chest burning after meals
+- stomach burning
+- heartburn-acid-reflux
 category: gi
 severity: concerning
-description: Burning sensation in the chest or throat caused by stomach acid rising
-  into the oesophagus due to a weakened cardiac sphincter. Often worsened by large
-  evening meals, lying down after eating, and drinking large amounts of fluid with
-  meals.
-when_to_refer: Refer if oesophageal ulceration is suspected, if symptoms are unresponsive
-  to dietary/lifestyle change, or if long-term PPI use is in place.
+description: Burning sensation in the chest or throat caused by stomach acid rising into the oesophagus
+  due to a weakened cardiac sphincter. Often worsened by large evening meals, lying down after eating,
+  and drinking large amounts of fluid with meals.
+when_to_refer: Refer if oesophageal ulceration is suspected, if symptoms are unresponsive to dietary/lifestyle
+  change, or if long-term PPI use is in place.
 linked_to_topics:
 - acid-reflux-and-cardiac-sphincter-weakness
 - gastrointestinal-tract-overview
+- dao-histamine-intolerance
 linked_to_mechanisms:
 - cardiac-sphincter-weakness
 - hcl-and-pepsin-protein-digestion
+- histamine-metabolism
 sources:
 - id: barbara-oneil-gi-tract
   location: Stomach & Acid Section
-  quote: There are some people who are suffering from something called reflux heartburn
-    where the acid is coming up into the esophagus.
+  quote: There are some people who are suffering from something called reflux heartburn where the acid
+    is coming up into the esophagus.
 - id: vitaone-elimination-diet-cheatsheet
   location: LOW FODMAP FRUITS — Practitioner Insight
-  quote: High-fructose fruits worsen fructose malabsorption with SIBO, causing bloating
-    & acid reflux.
+  quote: High-fructose fruits worsen fructose malabsorption with SIBO, causing bloating & acid reflux.
 - id: coconote-fm-chronic-pain-fatigue
   location: Case Study
-  quote: she has a very severe acid reflux. So this is after creating the time line...
-    she's taking like six or seven or eight and acid every single day. So if she's
-    constipated, not assuming anything, she's taking acid, that's a clear sign of
-    low stomach acid.
+  quote: she has a very severe acid reflux. So this is after creating the time line... she's taking like
+    six or seven or eight and acid every single day. So if she's constipated, not assuming anything, she's
+    taking acid, that's a clear sign of low stomach acid.
 - id: coconote-fm-hypochlorhydria
   location: Clinical Presentation of Low Stomach Acid
-  quote: The undigested food tends to regurgitate out from the lower sphincter of
-    your esophagus and it goes up into the esophagus giving a feeling of reflux, giving
-    a feeling of burning sensation.
+  quote: The undigested food tends to regurgitate out from the lower sphincter of your esophagus and it
+    goes up into the esophagus giving a feeling of reflux, giving a feeling of burning sensation.
 - id: vitaone-health-coaching-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 1
   quote: Heartburn / reflux
 - id: vitaone-gut-cheatsheet
   location: 100 Gut Symptoms — Reflux & Belching
-  quote: 'Heartburn — GERD — LES dysfunction — Lifestyle: elevate bed, avoid late
-    meals'
+  quote: 'Heartburn — GERD — LES dysfunction — Lifestyle: elevate bed, avoid late meals'
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Patients'
-  quote: It is common to experience some reflux symptoms while tapering. This is known
-    as rebound acid reflux, which is a reversible and short term effect.
+  quote: It is common to experience some reflux symptoms while tapering. This is known as rebound acid
+    reflux, which is a reversible and short term effect.
 - id: vitaone-elimination-diet-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 1
   quote: Heartburn / reflux
-version: 1
+- id: dirty-genes-lynch
+  location: 'Chapter 7: The Antacid Connection'
+  quote: 'Here''s another problem with too much histamine in your gut: it causes acid reflux and heartburn.'
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-07-29'
 updated_by: shivani

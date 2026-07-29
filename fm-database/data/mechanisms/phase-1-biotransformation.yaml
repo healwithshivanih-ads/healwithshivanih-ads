@@ -4,6 +4,19 @@ aliases:
 - Phase I detoxification
 - cytochrome P450 oxidation
 - functionalization phase
+- cytochrome P450 activation
+- toxin bioactivation
+- phase I detoxification
+- cyp450-phase1-bioactivation
+- phase 1 detox
+- cytochrome-p450-phase1
+- CYP450 enzymes
+- phase 1 liver detox
+- hepatic oxidation
+- phase-i-cytochrome-p450
+- Phase I liver enzymes
+- oxidative biotransformation
+- cyp450-phase-i-activation
 category: metabolic
 summary: 'Phase 1 is the first step of biotransformation, primarily carried out
 
@@ -29,27 +42,48 @@ summary: 'Phase 1 is the first step of biotransformation, primarily carried out
 upstream_drivers:
 - toxicant-exposure
 - cyp450-genetic-polymorphism
+- toxin-exposure
+- alcohol-intake
 downstream_effects:
 - reactive-intermediate-formation
 - oxidative-stress-from-toxicants
 - phase-2-conjugation
+- oxidative-stress
 related_mechanisms:
 - phase-2-conjugation
 - balanced-detoxification
 - oxidative-stress-from-toxicants
+- oxidative-stress
 linked_to_topics:
 - detoxification
 - toxin-load
+- liver-detoxification
 evidence_tier: strong
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Phase 1 and Phase 2 section
-  quote: Phase 1 reaction will introduce or expose a functional group on the parent
-    compound, which makes it more hydrophilic
+  quote: Phase 1 reaction will introduce or expose a functional group on the parent compound, which makes
+    it more hydrophilic
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Phase I (Cytochrome P450 Enzymes) panel — Reactions and Nutrients Used
   quote: 'Reactions: Oxidation, Reduction, Hydrolysis, Hydration, Dehalogenation'
-version: 4
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: 'Phase I – Activation: Converts toxins → reactive intermediates via CYP450.'
+- id: coconote-fm-liver-detox-part1
+  location: Phase 1 Detoxification Explanation
+  quote: So the active intermediate form again finally convert to a water-soluble compound and this water-soluble
+    compound will go out of body... these P450 enzymes, they do oxidation, reduction, or hydrolysis in
+    that parent compound.
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: Enzymes involved in detoxification (phase I, phase II) within the liver are well recognized.
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: 'PHASE I (Cytochrome P450 Enzymes) — Reactions: Oxidation, Reduction, Hydrolysis, Hydration,
+    Dehalogenation; Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid,
+    Vitamin B12, Glutathione, Branched-chain amino acids, Flavonoids, Phospholipids'
+version: 5
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-07-29'
 updated_by: shivani

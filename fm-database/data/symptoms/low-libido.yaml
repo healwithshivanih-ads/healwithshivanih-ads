@@ -14,12 +14,14 @@ aliases:
 - reduced sexual desire
 - reduced libido
 - decreased-libido
+- decreased libido
+- loss-of-libido
 category: hormonal
 severity: common
-description: Decreased sexual desire associated with declining estrogen, progesterone, and testosterone levels during perimenopause
-  and menopause.
-when_to_refer: Refer if associated with significant hormonal pathology (hypogonadism, hypothyroidism) or relationship distress
-  requiring specialist support.
+description: Decreased sexual desire associated with declining estrogen, progesterone, and testosterone
+  levels during perimenopause and menopause.
+when_to_refer: Refer if associated with significant hormonal pathology (hypogonadism, hypothyroidism)
+  or relationship distress requiring specialist support.
 linked_to_topics:
 - hpa-axis-dysregulation
 - perimenopause
@@ -29,6 +31,7 @@ linked_to_topics:
 - estrogen-dominance
 - pcos
 - menopause
+- metabolic-overtraining
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - dhea-depletion
@@ -56,9 +59,12 @@ sources:
   quote: loss of interest in sex, mood changes, sleep disturbances, forgetfulness, headache, backache
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: This can cause symptoms associated with testosterone deficiency, including fatigue, decreased libido, weight gain,
-    mood changes, decreased muscle mass.
-version: 6
+  quote: This can cause symptoms associated with testosterone deficiency, including fatigue, decreased
+    libido, weight gain, mood changes, decreased muscle mass.
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 7: Signs of metabolic overtraining'
+  quote: Signs of metabolic overtraining include loss of libido and loss of muscle strength.
+version: 7
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-07-29'
 updated_by: shivani
