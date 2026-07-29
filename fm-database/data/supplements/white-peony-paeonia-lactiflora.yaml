@@ -46,9 +46,10 @@ lactation_safety: unknown
 linked_to_topics:
   - pcos-fertility
   - hirsutism-and-androgen-excess
-linked_to_mechanisms:
   - androgen-excess
+linked_to_symptoms:
   - anovulation
+linked_to_mechanisms: []
 linked_to_claims:
   - white-peony-licorice-pcos-androgens-tj68
 notes_for_coach: "White peony root (Bai Shao in Chinese medicine) is the primary

@@ -24,11 +24,11 @@ downstream_effects:
 - metabolic-syndrome
 related_mechanisms:
 - insulin-resistance
-- environmental-toxin-load
 - thyroid-toxicant-sensitivity
 linked_to_topics:
 - type-2-diabetes-mellitus
 - prediabetes-metabolic-syndrome
+- environmental-toxin-load
 - environmental-toxin-load
 evidence_tier: plausible_emerging
 sources:

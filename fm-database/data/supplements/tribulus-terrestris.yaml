@@ -45,9 +45,10 @@ lactation_safety: unknown
 linked_to_topics:
   - pcos-fertility
   - fertility-and-ovulation
-linked_to_mechanisms:
   - androgen-excess
+linked_to_symptoms:
   - anovulation
+linked_to_mechanisms: []
 linked_to_claims:
   - tribulus-pcos-menstrual-regularity
 notes_for_coach: "CRITICAL geographic and standardisation note: only Bulgarian-grown

@@ -31,11 +31,11 @@ downstream_effects:
 - leptin-ghrelin-dysregulation
 - weight-loss-resistance
 related_mechanisms:
-- sleep-deprivation
 - cortisol-melatonin-rhythm-coupling
 linked_to_topics:
 - sleep-deprivation
 - insulin-resistance
+- sleep-deprivation
 evidence_tier: strong
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript

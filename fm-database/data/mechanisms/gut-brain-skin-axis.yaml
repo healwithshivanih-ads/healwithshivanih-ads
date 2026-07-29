@@ -31,12 +31,12 @@ downstream_effects:
 related_mechanisms:
 - leaky-gut
 - chronic-inflammation
-- gut-estrogen-axis
 linked_to_topics:
 - acne-vulgaris
 - chronic-candidiasis
 - atopic-dermatitis
 - gut-brain-axis-dysfunction
+- gut-estrogen-axis
 evidence_tier: plausible_emerging
 sources:
 - id: pizzorno-acne

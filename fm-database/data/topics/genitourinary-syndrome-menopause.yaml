@@ -43,9 +43,7 @@ summary: 'Umbrella term (replacing the older "vulvovaginal atrophy") for the ent
   douches, wipes, high-osmolality lubricants and mineral-oil-based products (BV promoters).
 
   '
-key_mechanisms:
-- estrogen-signaling
-- vaginal-microbiome-dysbiosis
+key_mechanisms: []
 common_symptoms:
 - vaginal dryness
 - painful intercourse
@@ -58,6 +56,8 @@ related_topics:
 - menopausal-hormone-therapy
 - urinary-tract-infection
 - vaginal-microbiome
+- estrogen-signaling
+- vaginal-microbiome-dysbiosis
 sources:
 - id: briden-hormone-repair-manual-2021
   location: 'Chapter 10 — What comes after: Genitourinary syndrome of menopause, pg

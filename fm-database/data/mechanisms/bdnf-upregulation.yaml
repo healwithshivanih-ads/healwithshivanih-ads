@@ -33,10 +33,11 @@ downstream_effects:
 related_mechanisms:
 - exercise-induced-neurogenesis
 - mitochondrial-biogenesis
+linked_to_symptoms:
+- depression
 linked_to_topics:
 - exercise-mitochondrial-biogenesis
 - cognitive-decline
-- depression
 evidence_tier: strong
 sources:
 - id: fmca-exercise-mitochondrial-health-class

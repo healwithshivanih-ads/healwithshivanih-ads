@@ -16,6 +16,8 @@ timing_options:
 - with_breakfast
 - with_dinner
 take_with_food: optional
+linked_to_symptoms:
+- depression-mood-disorder
 linked_to_topics:
 - major-depressive-disorder
 - seasonal-affective-disorder
@@ -23,7 +25,6 @@ linked_to_topics:
 - perimenopause-and-menopause
 - menopause
 - premenstrual-syndrome
-- depression-mood-disorder
 linked_to_mechanisms:
 - serotonin-melatonin-sleep-axis
 - tryptophan-kynurenine-shunt

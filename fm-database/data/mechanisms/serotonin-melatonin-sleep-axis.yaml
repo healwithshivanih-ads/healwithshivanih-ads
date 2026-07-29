@@ -25,12 +25,12 @@ downstream_effects:
 - circadian-misalignment
 - insomnia
 related_mechanisms:
-- circadian-rhythm-disruption
 - hpa-axis-dysregulation
 linked_to_topics:
 - insomnia
 - sleep
 - sleep-quality
+- circadian-rhythm-disruption
 evidence_tier: strong
 sources:
 - id: pizzorno-sleep-hpa

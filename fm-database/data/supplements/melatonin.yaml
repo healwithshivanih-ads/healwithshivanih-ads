@@ -32,6 +32,8 @@ timing_options:
 - evening
 - bedtime
 take_with_food: optional
+linked_to_symptoms:
+- jet-lag
 linked_to_topics:
 - insomnia
 - hpa-axis-dysregulation
@@ -41,7 +43,6 @@ linked_to_topics:
 - chronic-inflammation
 - immune-support-covid-19
 - circadian-rhythm-disruption
-- jet-lag
 - peptic-ulcer-disease
 - sleep-quality
 - sleep-optimisation

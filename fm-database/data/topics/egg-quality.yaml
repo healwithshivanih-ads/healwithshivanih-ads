@@ -19,6 +19,7 @@ key_mechanisms:
 - aneuploidy-meiotic-spindle-error
 - endocrine-disruptor-oocyte-damage
 - mitochondrial-dysfunction
+- mitochondrial-dysfunction
 common_symptoms:
 - infertility
 - recurrent miscarriage
@@ -27,7 +28,6 @@ related_topics:
 - female-infertility
 - pcos-fertility
 - perimenopause
-- mitochondrial-dysfunction
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 1 — Understanding Egg Quality, pg 20-29

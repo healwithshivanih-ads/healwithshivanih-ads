@@ -68,7 +68,6 @@ related_mechanisms:
 - homocysteine-accumulation
 - folate-receptor-blockade-folic-acid
 - glutathione-conjugation
-- folate-metabolism
 - histamine-metabolism
 - catechol-clearance-comt-maoa
 - homocysteine-remethylation
@@ -86,6 +85,7 @@ linked_to_topics:
 - clean-genes-protocol
 - mthfr-methylation-support
 - comt-slow-catechol-clearance
+- folate-metabolism
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr

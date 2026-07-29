@@ -15,7 +15,6 @@ summary: Cataracts are clouding of the crystalline lens of the eye caused by oxi
 key_mechanisms:
 - oxidative-stress
 - glutathione-depletion
-- selenium-deficiency
 common_symptoms:
 - blurred vision
 - glare sensitivity
@@ -23,6 +22,7 @@ common_symptoms:
 related_topics:
 - macular-degeneration
 - diabetes
+- selenium-deficiency
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 33 — Cataracts, pg 627-635

@@ -16,7 +16,6 @@ summary: Intra-erythrocytic protozoan parasite transmitted by the same Ixodes ti
   antimicrobial regimen — atovaquone + azithromycin (or proguanil combinations) —
   typically pulsed.
 key_mechanisms:
-- immune-dysregulation
 - chronic-inflammation
 common_symptoms:
 - night-sweats
@@ -27,6 +26,7 @@ related_topics:
 - chronic-lyme-disease
 - msids-framework
 - chronic-fatigue-syndrome
+- immune-dysregulation
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — Babesia case study segment

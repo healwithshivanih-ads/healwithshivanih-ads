@@ -8,12 +8,12 @@ statement: Selenium is required by lens glutathione peroxidase, the enzyme that 
 evidence_tier: plausible_emerging
 linked_to_topics:
 - cataracts
+- selenium-deficiency
 linked_to_supplements:
 - selenium
 - vitamin-e-mixed-tocopherols
 linked_to_mechanisms:
 - oxidative-stress
-- selenium-deficiency
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 33 — Cataracts, pg 630-631

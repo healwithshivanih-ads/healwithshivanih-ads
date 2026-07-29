@@ -17,7 +17,6 @@ summary: A practical taxonomy for organising client toxin-reduction work into ag
   konjac fibre binds all mycotoxin strains), binders (modified citrus pectin, charcoal,
   zeolites), sauna, hyperbaric oxygen.
 key_mechanisms:
-- environmental-toxin-load
 - liver-detoxification
 common_symptoms: []
 related_topics:
@@ -25,6 +24,7 @@ related_topics:
 - environmental-toxin-exposure
 - detoxification
 - metabolic-detoxification
+- environmental-toxin-load
 sources:
 - id: trubow-energy-blueprint-podcast-2026
   location: Podcast — Five categories of toxin reduction

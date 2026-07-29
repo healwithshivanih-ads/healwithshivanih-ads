@@ -13,8 +13,7 @@ summary: Over 90% of sore throats are viral and self-limiting. The 10-25% caused
   and recovery rates are similar with vs without antibiotics in uncomplicated strep.
   Functional medicine focus is immune support, mucosal defence, and rebuilding the
   gut microbiome whenever antibiotics are used.
-key_mechanisms:
-- immune-dysregulation
+key_mechanisms: []
 common_symptoms:
 - sore-throat
 - fever
@@ -23,6 +22,7 @@ related_topics:
 - common-cold
 - immune-system-support
 - leaky-gut
+- immune-dysregulation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 95 — Strep Throat (Streptococcal Pharyngitis), pg 1518-1524

@@ -47,12 +47,13 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Avoid in pregnancy and lactation — inadequate human safety
   data and bleeding-risk concern.
+linked_to_symptoms:
+- depression-mood-disorder
 linked_to_topics:
 - atherosclerosis
 - adhd
 - premenstrual-syndrome
 - major-depressive-disorder
-- depression-mood-disorder
 linked_to_claims:
 - ginkgo-biloba-stroke-recovery
 - ginkgo-biloba-enhances-stroke-recovery

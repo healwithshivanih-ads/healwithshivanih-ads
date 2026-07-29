@@ -69,7 +69,6 @@ related_topics:
 - homocysteine-cardiovascular-risk
 - comt-gene-catechol-clearance
 - dao-histamine-intolerance
-- histamine-metabolism
 - histamine-intolerance-dao
 - comt-slow-catechol-clearance
 - nos3-nitric-oxide-cardiovascular
@@ -79,9 +78,9 @@ related_topics:
 - methylation-mthfr
 - riboflavin-and-blood-pressure
 - vitamin-b-complex-deficiency
+- folate-metabolism
 key_mechanisms:
 - methylation
-- folate-metabolism
 - methylation-cycle-dysfunction
 - elevated-homocysteine
 - glutathione-depletion
@@ -94,6 +93,7 @@ key_mechanisms:
 - folate-activation
 - methyl-trap
 - impaired-folate-to-5-mthf-conversion
+- histamine-metabolism
 coaching_scope_notes: Support with methylfolate-containing multivitamin, leafy greens,
   legumes. Avoid synthetic folic acid in processed foods.
 clinician_scope_notes: MTHFR C677T/A1298C SNPs have modest individual effect sizes;

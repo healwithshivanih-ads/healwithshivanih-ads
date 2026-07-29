@@ -24,13 +24,13 @@ common_symptoms:
 key_mechanisms:
 - scn-light-entrainment
 - fasted-state-fat-oxidation
-- exercise-mitochondrial-biogenesis
 related_topics:
 - circadian-rhythm-disruption
 - exercise-prescription
 - cardiovascular-exercise
 - strength-training
 - intermittent-fasting
+- exercise-mitochondrial-biogenesis
 evidence_tier: plausible_emerging
 sources:
 - id: panda-circadian-code-book

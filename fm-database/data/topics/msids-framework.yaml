@@ -24,10 +24,10 @@ summary: Dr Richard Horowitz's 16-point clinical framework for diagnosing and tr
   then layer mitochondrial + hormonal + limbic.
 key_mechanisms:
 - chronic-inflammation
-- immune-dysregulation
 - mitochondrial-dysfunction
 - hpa-axis-dysregulation
 - leaky-gut
+- mitochondrial-dysfunction
 common_symptoms:
 - fatigue
 - brain-fog
@@ -39,7 +39,7 @@ related_topics:
 - fibromyalgia
 - mold-toxicity
 - long-covid
-- mitochondrial-dysfunction
+- immune-dysregulation
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — MSIDS model overview segment

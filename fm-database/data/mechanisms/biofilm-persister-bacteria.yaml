@@ -25,10 +25,10 @@ downstream_effects:
 - recurrent-relapse-after-treatment
 related_mechanisms:
 - chronic-inflammation
-- immune-dysregulation
 linked_to_topics:
 - chronic-lyme-disease
 - bartonellosis
+- immune-dysregulation
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — biofilm persister discovery segment

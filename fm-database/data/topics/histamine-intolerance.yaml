@@ -65,7 +65,6 @@ related_topics:
 - clean-genes-protocol
 - leaky-gut
 - mthfr-methylation-gene
-- histamine-metabolism
 - microbiome-dysbiosis
 - mthfr-methylation-support
 - comt-slow-catechol-clearance
@@ -79,6 +78,7 @@ key_mechanisms:
 - gut-barrier-dysfunction
 - histamine-accumulation
 - bacterial-histamine-production
+- histamine-metabolism
 coaching_scope_notes: 'Guide low-histamine food choices: freshly prepared foods only,
   no leftovers, avoid fermented foods, aged cheese, wine, tomatoes, spinach. Molybdenum
   and digestive enzymes may support.'

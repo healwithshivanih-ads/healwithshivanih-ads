@@ -22,9 +22,10 @@ timing_options:
 - with_breakfast
 - morning
 take_with_food: avoid
+linked_to_symptoms:
+- depression-mood-disorder
 linked_to_topics:
 - major-depressive-disorder
-- depression-mood-disorder
 - osteoarthritis
 - gallstones
 - mthfr-methylation-gene

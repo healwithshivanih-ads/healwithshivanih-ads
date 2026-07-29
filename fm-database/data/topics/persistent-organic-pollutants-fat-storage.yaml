@@ -15,7 +15,6 @@ summary: Persistent organic pollutants (POPs) — including PFAS (per- and polyf
   pathways (binders, fibre, sweating, hydration) yields more durable results than
   rapid restriction.
 key_mechanisms:
-- environmental-toxin-load
 - mitochondrial-toxin-disruption
 common_symptoms:
 - weight-gain
@@ -25,6 +24,7 @@ related_topics:
 - environmental-toxin-exposure
 - detoxification
 - endocrine-disruption-and-detox
+- environmental-toxin-load
 sources:
 - id: trubow-energy-blueprint-podcast-2026
   location: Podcast — POPs and weight regain

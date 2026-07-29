@@ -17,10 +17,11 @@ timing_options:
 - with_breakfast
 - bedtime
 take_with_food: optional
+linked_to_symptoms:
+- depression-mood-disorder
 linked_to_topics:
 - anxiety
 - major-depressive-disorder
-- depression-mood-disorder
 - sleep-quality
 linked_to_mechanisms: []
 notes_for_coach: 'Silexan is the patented oral lavender oil preparation with RCT evidence

@@ -27,8 +27,8 @@ linked_to_topics:
 - insulin-resistance
 - migraine
 - chronic-stress
-linked_to_mechanisms:
 - magnesium-deficiency
+linked_to_mechanisms: []
 sources:
 - id: vitaone-skill-practice-guide
   location: Lab interpretation — serum magnesium

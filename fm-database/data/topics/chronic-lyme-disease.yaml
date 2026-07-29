@@ -23,7 +23,6 @@ summary: 'Tick-borne spirochetal infection (Borrelia burgdorferi) that persists 
   DDS-CT) hits all three forms — cell wall, intracellular, and cystic/persister.'
 key_mechanisms:
 - biofilm-persister-bacteria
-- immune-dysregulation
 - chronic-inflammation
 - mitochondrial-dysfunction
 - bystander-activation-cryptic-antigen
@@ -41,6 +40,7 @@ related_topics:
 - multiple-sclerosis
 - mold-toxicity
 - long-covid
+- immune-dysregulation
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast interview, opening + Lyme overview segment

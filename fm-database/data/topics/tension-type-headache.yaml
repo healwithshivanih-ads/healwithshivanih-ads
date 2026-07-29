@@ -14,7 +14,6 @@ summary: Gradual-onset mild-to-moderate steady headache with vise-like or pressu
 key_mechanisms:
 - muscle-tension
 - analgesic-rebound
-- magnesium-insufficiency
 - food-allergen-response
 common_symptoms:
 - headache
@@ -23,6 +22,7 @@ common_symptoms:
 related_topics:
 - migraine-headache
 - chronic-pain
+- magnesium-insufficiency
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1009-1014

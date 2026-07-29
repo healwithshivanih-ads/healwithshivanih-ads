@@ -16,7 +16,6 @@ summary: 'Breast cancer risk is dominantly modifiable through diet, lifestyle, a
   risk reduction), breastfeeding, green tea, vitamin D, and calcium-D-glucarate (inhibits
   intestinal beta-glucuronidase, reducing estrogen reabsorption).'
 key_mechanisms:
-- estrogen-metabolism
 - estrobolome
 - inflammation
 - insulin-resistance
@@ -28,6 +27,7 @@ related_topics:
 - estrogen-dominance
 - cervical-dysplasia
 - fibrocystic-breast-disease
+- estrogen-metabolism
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 28 — Breast Cancer (Prevention), pg 562-578

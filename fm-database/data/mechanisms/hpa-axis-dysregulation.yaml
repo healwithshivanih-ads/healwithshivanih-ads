@@ -177,7 +177,6 @@ related_mechanisms:
 - vagal-nerve-dysregulation
 - dysbiosis-gut-microbiome-imbalance
 - dhea-cortisol-ratio-imbalance
-- circadian-rhythm-disruption
 - gabaergic-modulation
 - gut-microbiome-hpa-axis-pathway
 - melatonin-secretion
@@ -229,6 +228,7 @@ linked_to_topics:
 - clean-genes-protocol
 - comt-catechol-clearance
 - maoa-neurotransmitter-balance
+- circadian-rhythm-disruption
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Nervous System & HPA section

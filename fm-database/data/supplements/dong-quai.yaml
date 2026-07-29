@@ -54,9 +54,10 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Strong uterine stimulant — explicitly contraindicated in pregnancy.
 interactions: {}
+linked_to_symptoms:
+- menstrual-irregularity
 linked_to_topics:
 - perimenopause
-- menstrual-irregularity
 - pms
 linked_to_mechanisms:
 - estrogen-receptor-modulation

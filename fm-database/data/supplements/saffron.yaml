@@ -20,10 +20,11 @@ timing_options:
 - with_breakfast
 - with_lunch
 take_with_food: optional
+linked_to_symptoms:
+- depression-mood-disorder
 linked_to_topics:
 - premenstrual-syndrome
 - perimenopause-and-menopause
-- depression-mood-disorder
 - anxiety
 linked_to_mechanisms: []
 notes_for_coach: "Active compounds — crocin, crocetin, safranal, picrocrocin. Mechanism:\

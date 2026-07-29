@@ -28,7 +28,6 @@ downstream_effects:
 - improved insulin sensitivity
 - progressive fat loss
 related_mechanisms:
-- exercise-mitochondrial-biogenesis
 - insulin-sensitivity
 linked_to_symptoms:
 - weight-gain
@@ -38,6 +37,7 @@ linked_to_topics:
 - insulin-resistance
 - metabolic-syndrome
 - cardiovascular-exercise
+- exercise-mitochondrial-biogenesis
 evidence_tier: plausible_emerging
 sources:
 - id: panda-circadian-code-book

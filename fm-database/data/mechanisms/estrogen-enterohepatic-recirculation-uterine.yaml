@@ -25,12 +25,12 @@ downstream_effects:
 - fibrocystic-breast-disease
 related_mechanisms:
 - estrogen-enterohepatic-recirculation
-- gut-estrogen-axis
-- estrogen-metabolism
 linked_to_topics:
 - endometriosis
 - uterine-fibroids
 - estrogen-dominance
+- gut-estrogen-axis
+- estrogen-metabolism
 evidence_tier: strong
 sources:
 - id: pizzorno-reproductive

@@ -43,7 +43,6 @@ summary: 'Modern replacement of the old term HRT. Umbrella for body-identical es
 
   '
 key_mechanisms:
-- estrogen-signaling
 - hpa-axis-dysregulation
 - insulin-resistance
 common_symptoms:
@@ -59,6 +58,7 @@ related_topics:
 - menopause
 - hormone-therapy-safety
 - osteoporosis
+- estrogen-signaling
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 6 — Menopausal hormone therapy (MHT), pg 138–158

@@ -141,7 +141,6 @@ incompatible_with:
 linked_to_topics:
 - liver-detoxification
 - estrogen-dominance
-- skin-issues
 - fibromyalgia
 linked_to_mechanisms:
 - chronic-inflammation
@@ -149,6 +148,7 @@ linked_to_symptoms:
 - fatigue
 - skin-rash
 - brain-fog
+- skin-issues
 sources:
 - id: vitaone-skill-practice-guide
   location: liver detox section

@@ -23,10 +23,10 @@ downstream_effects:
 - mood-and-focus-phenotype
 related_mechanisms:
 - methylation
-- estrogen-metabolism
 linked_to_topics:
 - comt-catechol-clearance
 - maoa-neurotransmitter-gene
+- estrogen-metabolism
 evidence_tier: strong
 sources:
 - id: dirty-genes-lynch

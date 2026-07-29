@@ -16,7 +16,6 @@ summary: Intracellular biofilm-forming bacterial co-infection frequently transmi
   physicians screen only for B. henselae and miss the broader species spectrum.
 key_mechanisms:
 - biofilm-persister-bacteria
-- immune-dysregulation
 - chronic-inflammation
 common_symptoms:
 - joint-pain
@@ -29,6 +28,7 @@ related_topics:
 - msids-framework
 - long-covid
 - rheumatoid-arthritis
+- immune-dysregulation
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — Bartonella aphasia case + endothelial dysfunction segment
