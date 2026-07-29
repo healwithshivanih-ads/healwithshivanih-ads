@@ -33,6 +33,9 @@ ingredients:
 - item: green chilli
   qty: '1'
   unit: piece
+- item: onion, finely chopped
+  qty: '0.5'
+  unit: piece
 - item: fresh coriander, chopped
   qty: '3'
   unit: tbsp
@@ -48,8 +51,8 @@ ingredients:
 steps:
 - Drain the soaked dal and grind it with the ginger, green chilli and just enough
   water to a smooth, pourable batter.
-- Stir in the coriander, cumin powder and salt. Don't rest it long — moong batter
-  thickens quickly.
+- Stir in the onion, coriander, cumin powder and salt. Don't rest it long — moong
+  batter thickens quickly.
 - Heat a tawa on medium. Pour a ladleful and spread gently into a round.
 - Drizzle ghee at the edges and cook 2–3 minutes until the base is golden and lifts
   freely.
@@ -63,10 +66,9 @@ protein_g: 25.0
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury pancake of ground soaked moong dal with ginger and coriander.
+one_line: A savoury pancake of ground soaked moong dal with onion, ginger and coriander.
 headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
   high in protein and easy to digest — a far better breakfast than refined flour.
-  Written without onion or garlic, so it suits Jain and allium-free plans as it stands.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -80,30 +82,30 @@ image:
 sources:
 - id: shivani-hari-original
   location: Moong dal chilla
-version: 2
+version: 1
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-06-12'
 updated_by: Shivani
 kcal_per_serving: 486
 kcal_total: 520
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 475
-  protein_g: 24.7
-  carbs_g: 60.6
+  kcal: 486
+  protein_g: 25.0
+  carbs_g: 63.2
   fat_g: 15.0
-  fibre_g: 8.4
-  iron_mg: 4.4
-  calcium_mg: 82.4
-  magnesium_mg: 131
-  zinc_mg: 2.7
-  potassium_mg: 1182
-  folate_ug: 551
+  fibre_g: 8.8
+  iron_mg: 4.5
+  calcium_mg: 88.8
+  magnesium_mg: 133
+  zinc_mg: 2.8
+  potassium_mg: 1222
+  folate_ug: 556
   b12_ug: 0.0
   vit_d_ug: 0.1
-  vit_c_mg: 5.3
-  omega3_mg: 137
+  vit_c_mg: 7.3
+  omega3_mg: 138
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -114,7 +116,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-28'
+nutrients_computed_at: '2026-07-27'
 kitchen_tested: false
 aliases:
 - Moong chilla
