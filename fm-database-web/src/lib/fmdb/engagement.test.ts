@@ -10,7 +10,12 @@
  * So the rule is: absence is NOT enrolment. Prove it, don't assume it.
  */
 import { describe, it, expect } from "vitest";
-import { isSignedUp, isDeclined, onlySignedUp } from "./engagement";
+import {
+  isSignedUp,
+  isDeclined,
+  onlySignedUp,
+  confirmationNameMatches,
+} from "./engagement";
 
 describe("isSignedUp", () => {
   it("accepts only an explicit signed_up", () => {
@@ -45,6 +50,38 @@ describe("isDeclined", () => {
     expect(isDeclined({ engagement_status: "declined" })).toBe(true);
     expect(isDeclined({ engagement_status: "pending" })).toBe(false);
     expect(isDeclined({})).toBe(false);
+  });
+});
+
+describe("confirmationNameMatches", () => {
+  // Gates the only override that can build a plan before signup. Meghana's
+  // plan (2026-07-04) was created a day before any gate existed; the gate that
+  // followed was one click, which is barely a gate at all.
+  it("accepts the exact name, tolerating case and surrounding space", () => {
+    expect(confirmationNameMatches("Meghana Dighe", "Meghana Dighe")).toBe(true);
+    expect(confirmationNameMatches("meghana dighe", "Meghana Dighe")).toBe(true);
+    expect(confirmationNameMatches("  Meghana Dighe  ", "Meghana Dighe")).toBe(true);
+  });
+
+  it("rejects a partial name — no first-name shortcut", () => {
+    expect(confirmationNameMatches("Meghana", "Meghana Dighe")).toBe(false);
+    expect(confirmationNameMatches("Dighe", "Meghana Dighe")).toBe(false);
+    expect(confirmationNameMatches("Meghana Dighe extra", "Meghana Dighe")).toBe(false);
+  });
+
+  it("never lets blank or absent input through", () => {
+    expect(confirmationNameMatches("", "Meghana Dighe")).toBe(false);
+    expect(confirmationNameMatches("   ", "Meghana Dighe")).toBe(false);
+    expect(confirmationNameMatches(undefined, "Meghana Dighe")).toBe(false);
+    expect(confirmationNameMatches(null, "Meghana Dighe")).toBe(false);
+  });
+
+  it("cannot be satisfied by an empty expected name", () => {
+    // Otherwise a client whose display_name was never set would have NO gate:
+    // "" === "" would pass and the override would be free.
+    expect(confirmationNameMatches("", "")).toBe(false);
+    expect(confirmationNameMatches("anything", "")).toBe(false);
+    expect(confirmationNameMatches("anything", undefined)).toBe(false);
   });
 });
 

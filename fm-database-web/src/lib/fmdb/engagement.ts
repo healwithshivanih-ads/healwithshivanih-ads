@@ -63,3 +63,27 @@ export function isDeclined(client: MaybeClient): boolean {
 export function onlySignedUp<T extends MaybeClient>(clients: readonly T[]): T[] {
   return clients.filter((c) => isSignedUp(c));
 }
+
+/**
+ * Does the name the coach typed match the client's actual display name?
+ *
+ * Gates the one override that can build a plan before signup (see
+ * `generateDraftAction`). A one-click "generate anyway" is how a plan ends up
+ * built for someone who never signed up — the click becomes momentum rather
+ * than a decision. Retyping the name forces a look at who this actually is.
+ *
+ * Forgiving about case and surrounding whitespace — the coach is retyping what
+ * is on screen, not entering a password — but nothing else. Blank, partial and
+ * non-string values never pass.
+ *
+ * Lives here rather than beside its caller because that file is `"use server"`,
+ * which only permits async exports, so a pure helper there is untestable.
+ */
+export function confirmationNameMatches(
+  typed: string | null | undefined,
+  actual: string | null | undefined
+): boolean {
+  const a = typeof typed === "string" ? typed.trim().toLowerCase() : "";
+  const b = typeof actual === "string" ? actual.trim().toLowerCase() : "";
+  return a.length > 0 && b.length > 0 && a === b;
+}

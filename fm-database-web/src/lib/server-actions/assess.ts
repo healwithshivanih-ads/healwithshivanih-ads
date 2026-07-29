@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
+import { confirmationNameMatches } from "@/lib/fmdb/engagement";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { loadClientSessions, loadClientById, type ClientSession } from "@/lib/fmdb/loader-extras";
@@ -220,7 +221,9 @@ export async function runAssessAction(
 /**
  * Guardrail: refuse to build a full draft plan for a client who hasn't
  * signed up for the paid programme yet (e.g. foundation-call / discovery-only
- * clients) unless the coach explicitly confirms. `engagement_status` is the
+ * clients). An assessment before signup is fine and expected — a plan is not.
+ * Overriding requires retyping the client's name, not a second click.
+ * `engagement_status` is the
  * real signal — see `loadClientJourney`'s "Sign-up" step and
  * `discovery-tier.ts`'s `resolveAppTier()`, both of which already key off it.
  * `lifecycle_state` is NOT used here — it defaults to "programme_active" for
@@ -242,20 +245,25 @@ async function checkEngagementGuardrail(
 export async function generateDraftAction(
   input: GenerateDraftInput
 ): Promise<GenerateDraftResult> {
-  if (!input.force) {
+  // Runs unconditionally — the override is proved by what the caller sends,
+  // not by a flag that skips the lookup. A boolean `force` meant a stale or
+  // hand-rolled caller could pass `true` and never load the client at all.
+  {
     const { blocked, engagementStatus, displayName } = await checkEngagementGuardrail(
       input.client_id
     );
-    if (blocked) {
+    if (blocked && !confirmationNameMatches(input.confirm_client_name, displayName)) {
       return {
         ok: false,
         needs_confirmation: true,
         engagement_status: engagementStatus,
+        expected_client_name: displayName,
         error:
           `${displayName} hasn't signed up for the programme yet ` +
           `(engagement status: ${engagementStatus}) — this looks like a ` +
-          `foundation-call / discovery-only client. Generate the full draft ` +
-          `plan anyway?`,
+          `foundation-call / discovery-only client. Assessments are fine ` +
+          `before signup; a plan is not. To build one anyway, type the ` +
+          `client's name exactly: ${displayName}`,
       };
     }
   }
