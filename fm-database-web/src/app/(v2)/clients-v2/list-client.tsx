@@ -12,9 +12,20 @@
  */
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
+import { toast } from "sonner";
 import type { ClientRow } from "./page";
 import { UnreadBadge } from "@/components/fm/UnreadBadge";
+import { unarchiveClient } from "@/lib/server-actions/clients";
+
+type FilterId =
+  | "all"
+  | "active"
+  | "draft"
+  | "no_plan"
+  | "recheck"
+  | "alumni"
+  | "archived";
 
 const STAGE_META: Record<
   ClientRow["stage"],
@@ -85,7 +96,7 @@ export function ClientFilters({
   counts,
   q,
 }: {
-  active: "all" | "active" | "draft" | "no_plan" | "recheck" | "alumni";
+  active: FilterId;
   counts: Record<string, number>;
   q: string;
 }) {
@@ -113,13 +124,18 @@ export function ClientFilters({
     router.replace(`/clients-v2?${next.toString()}`);
   }
 
-  const chips: { id: typeof active; label: string }[] = [
+  const chips: { id: FilterId; label: string }[] = [
     { id: "all", label: "All" },
     { id: "recheck", label: "🔁 Recheck due" },
     { id: "active", label: "✅ Active plan" },
     { id: "draft", label: "📋 Draft" },
     { id: "no_plan", label: "🔍 No plan yet" },
     { id: "alumni", label: "🎓 Alumni" },
+    // Archived chip only appears once there's something archived (or while
+    // viewing the archived filter) — keeps the bar clean otherwise.
+    ...(counts.archived > 0 || active === "archived"
+      ? [{ id: "archived" as FilterId, label: "🗄 Archived" }]
+      : []),
   ];
 
   return (
@@ -331,7 +347,36 @@ export function ClientCard({
         {row.city && <span>📍 {row.city}</span>}
       </div>
 
-      {/* Stage tag */}
+      {/* Stage tag (+ archived badge / unarchive) */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          flexWrap: "wrap",
+        }}
+      >
+      {row.archived && (
+        <>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 4,
+              padding: "3px 9px",
+              background: "rgba(120, 120, 128, 0.12)",
+              color: "#5b6472",
+              border: "1px solid rgba(120, 120, 128, 0.4)",
+              borderRadius: "var(--fm-radius-pill)",
+              fontSize: 11,
+              fontWeight: 700,
+            }}
+          >
+            🗄 Archived
+          </span>
+          <UnarchiveButton clientId={row.client_id} name={row.display_name} />
+        </>
+      )}
       <div
         style={{
           display: "inline-flex",
@@ -365,6 +410,7 @@ export function ClientCard({
           </span>
         )}
       </div>
+      </div>
 
       {/* Last session + next contact */}
       <div
@@ -394,6 +440,53 @@ export function ClientCard({
         )}
       </div>
     </Link>
+  );
+}
+
+// Small inline unarchive control on an archived card. The card itself is a
+// <Link>, so we preventDefault/stopPropagation to keep the click from
+// navigating into the client while restoring them to the active roster.
+function UnarchiveButton({
+  clientId,
+  name,
+}: {
+  clientId: string;
+  name: string;
+}) {
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+  return (
+    <button
+      type="button"
+      disabled={pending}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        startTransition(async () => {
+          const res = await unarchiveClient(clientId);
+          if (res.ok) {
+            toast.success(`Restored ${name}`);
+            router.refresh();
+          } else {
+            toast.error(res.error || "Failed to unarchive");
+          }
+        });
+      }}
+      style={{
+        padding: "3px 9px",
+        background: "var(--fm-surface)",
+        color: "#1E8449",
+        border: "1px solid rgba(46, 204, 113, 0.4)",
+        borderRadius: "var(--fm-radius-pill)",
+        fontSize: 11,
+        fontWeight: 700,
+        cursor: pending ? "wait" : "pointer",
+        fontFamily: "inherit",
+        opacity: pending ? 0.6 : 1,
+      }}
+    >
+      ↩ Unarchive
+    </button>
   );
 }
 

@@ -418,6 +418,17 @@ class Client(BaseModel):
     collection_address: Optional[str] = None
     collection_pincode: Optional[str] = None
 
+    # ── Archive (declutter inactive records) ──────────────────────────────────
+    # Coach-triggered soft-archive for clients who didn't sign up / renew (e.g.
+    # a prospect who never converted, or a declined discovery). Archived clients
+    # drop off the dashboard triage AND the default /clients-v2 roster; they
+    # remain fully intact on disk and reappear under the "🗄 Archived" filter,
+    # from where the coach can unarchive them at any time. Never auto-set —
+    # the dashboard only SUGGESTS candidates; the coach confirms each archive.
+    archived: bool = False
+    archived_at: Optional[str] = None      # ISO timestamp when archived
+    archived_reason: Optional[str] = None  # e.g. "declined" | "no sign-up (21d)" | free text
+
     # ── Maintenance / plan end-game (graduation → paid maintenance tier) ──────
     # After the 12-week protocol, a client can move to a hands-free paid
     # maintenance tier (₹2,000/mo, prepaid 6-month blocks). These four fields
