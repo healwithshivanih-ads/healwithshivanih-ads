@@ -1,0 +1,66 @@
+slug: awe-practice
+display_name: Awe Practice
+category: imagery
+body_region: whole_body
+position: standing
+summary: A brief outdoor orientation practice in which the client deliberately focuses on something
+  vast in the natural world, takes slow breaths, and allows a felt sense of smallness and beauty to
+  arise — used as an antidote to fear-based contraction.
+why_it_works: Experiences of awe have been shown to reduce pro-inflammatory cytokines, lower self-focused
+  rumination, and shift attention from threat to expansiveness. The combination of slow breathing
+  and sustained visual attention to a large natural scene engages the parasympathetic system and activates
+  the default mode network in a restorative, outward-focused mode.
+steps:
+- label: Go outside
+  cue: Step outdoors and find somewhere you can see something large — open sky, a tree canopy, a distant
+    horizon, a wide body of water.
+  action: rest
+  secs: 30
+- label: Look at something vast
+  cue: Direct your gaze at the large thing you chose. Let your eyes soften — do not analyse or name
+    what you see, just look.
+  action: observe
+  secs: 30
+- label: Five slow breaths
+  cue: Take five slow, full breaths while keeping your gaze on the vast scene. Let each exhale be
+    completely unhurried.
+  action: expand
+  secs: 60
+- label: Allow smallness
+  cue: Let yourself feel your own smallness in relation to what you are seeing — not in a frightening
+    way, but in a relieving way. You are part of something much larger.
+  action: observe
+  secs: 60
+- label: Notice beauty without acting
+  cue: Simply be present with the beauty of what is in front of you. You do not need to photograph
+    it, describe it, or share it. Just let it arrive.
+  action: observe
+  secs: 120
+timed: true
+duration_seconds: 300
+bilateral: false
+linked_to_topics:
+- gut-brain-axis
+- stress-management
+linked_to_symptoms:
+- stress
+- low-mood
+notes_for_coach: For clients who cannot go outside easily, a large indoor plant, a window with a view,
+  or a photograph of a vast landscape can substitute, though outdoor natural settings have stronger
+  evidence for awe induction.
+aliases: []
+equipment: []
+contraindications: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 64. High Cholesterol — SOMATIC RESET
+  quote: Go outside. Look at something vast—the sky, trees, a horizon. Take 5 slow breaths while you
+    look. Let yourself feel small in the best way. Notice beauty without needing to do anything about
+    it. Stay for 3-5 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

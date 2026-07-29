@@ -1,0 +1,55 @@
+slug: somatic-map-overactive-bladder
+display_name: Overactive Bladder & Urinary Urgency
+target_kind: symptom
+target_slug: urinary-urgency
+sensitivity: general
+emotional_roots:
+- pattern: Chronic anxiety and hypervigilance
+  note: The bladder is highly responsive to autonomic nervous system state. When someone
+    is chronically anxious or in a persistent state of threat-scanning, the detrusor
+    muscle may mirror that urgency — unable to hold comfortably because the whole
+    system is on alert.
+- pattern: Life treated as a constant emergency
+  note: Some practitioners observe that overactive bladder is associated with a pattern
+    of urgency across all domains of life — always rushing, always responding, never
+    able to wait. The bladder may be expressing what the nervous system is living.
+reframe: The urgency is a learned pattern in the nervous system, not an immovable
+  fact. With practice, you can teach your body that most things can wait — that not
+  every signal is a crisis requiring immediate action.
+inquiry_question: What would change in your life if you stopped responding to every
+  internal signal as though it were an emergency?
+somatic_practice: extended-exhale-breathing
+also_consider:
+  practical:
+  - Bladder training exercises (progressive urge deferral) to retrain urgency response
+  - Limit caffeine, alcohol, and diuretic herbs, which irritate the detrusor
+  - Pelvic floor physical therapy for both muscle function and nervous system regulation
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes living in a state of chronic urgency across multiple life domains
+- Anxiety or hypervigilance features prominently in their history
+- Describes difficulty waiting for anything — urgency as a habitual pattern
+- Symptoms worsen during periods of high stress
+differential_note: 'Overactive bladder / urinary urgency requires clinical evaluation
+  to exclude: urinary tract infection (most common reversible cause), interstitial
+  cystitis, bladder stones, bladder tumour (haematuria is a red flag), neurological
+  causes (MS, Parkinson''s, spinal cord lesion, diabetic neuropathy), pelvic organ
+  prolapse, benign prostatic hyperplasia (in males), medication side effects, and
+  post-menopausal urogenital atrophy. Urinalysis and urine culture are the first investigations.
+  Persistent symptoms warrant urological or gynaecological referral.'
+notes_for_coach: Extended exhale breathing has strong mechanistic rationale for parasympathetic
+  activation and detrusor relaxation. Bladder training has good RCT evidence. Caffeine
+  avoidance has consistent evidence for symptom reduction.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 79. Overactive Bladder — EMOTIONAL ROOT
+  quote: Overactive bladder often reflects chronic anxiety and hypervigilance. The
+    bladder responds to the nervous system's state of alert.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

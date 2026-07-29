@@ -1,0 +1,49 @@
+slug: knee-softening
+display_name: Knee Softening
+aliases: []
+category: movement
+body_region: legs_feet
+position: standing
+summary: A standing awareness practice that releases habitual knee bracing.
+why_it_works: Chronically braced knees hold a background level of effort the person no longer notices.
+  Releasing a fraction of that tone restores normal proprioceptive feedback through the whole leg.
+steps:
+- label: Stand as you are
+  cue: Stand normally. Change nothing yet — just notice how you are holding your knees. Locked? Braced?
+    Slightly bent?
+  secs: 40
+  action: observe
+- label: Soften a fraction
+  cue: Let the knees release by the smallest amount you can manage — barely visible from outside.
+  secs: 30
+  action: release
+- label: Breathe there
+  cue: Keep that softness and take a few easy breaths.
+  secs: 40
+  action: rest
+- label: Walk with it
+  cue: Take a few slow steps holding the same softness. Notice what changes above and below the knee.
+  secs: 70
+  action: observe
+reps: null
+duration_seconds: 180
+bilateral: false
+timed: true
+equipment: []
+motion_shape: release
+contraindications:
+- Hold a support if balance is unreliable
+- Stop with any sharp or locking knee pain
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- knee-pain
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

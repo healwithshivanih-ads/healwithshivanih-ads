@@ -1,0 +1,59 @@
+slug: diaphragm-breathing
+display_name: Diaphragm Breathing
+category: breath
+body_region: chest_diaphragm
+position: seated
+summary: A seated or standing belly-breathing practice with an extended exhale, designed to strengthen
+  diaphragmatic excursion and activate the parasympathetic nervous system, supporting the lower esophageal
+  sphincter.
+why_it_works: Extended exhalation increases vagal tone and reduces sympathetic arousal. Diaphragmatic
+  descent during inhale massages the lower esophageal junction and reduces transient lower esophageal
+  sphincter relaxations, key drivers of reflux.
+steps:
+- label: Hand placement
+  cue: Sit upright or stand tall. Place one hand flat against your chest and the other on your belly
+    just below your ribcage.
+  action: rest
+  secs: 15
+- label: Belly inhale
+  cue: Breathe in deeply so that your belly hand moves outward while your chest hand stays as still
+    as possible. Fill from the bottom up.
+  action: expand
+  secs: 4
+- label: Long, slow exhale
+  cue: Breathe out slowly and completely, aiming for your exhale to last about twice as long as your
+    inhale. Let all the air go before beginning again.
+  action: release
+  secs: 8
+- label: Continue the cycle
+  cue: Maintain this pattern — belly-led inhale and long exhale — for the full duration, keeping the
+    rhythm steady and unhurried.
+  action: expand
+  secs: 253
+timed: true
+duration_seconds: 280
+bilateral: false
+linked_to_symptoms:
+- acid-reflux-heartburn
+- heartburn-acid-reflux
+linked_to_topics:
+- gerd
+- gut-brain-axis
+notes_for_coach: The 2:1 exhale-to-inhale ratio is the key mechanism. Clients prone to dizziness from
+  extended exhale should start with a 1.5:1 ratio.
+aliases: []
+equipment: []
+contraindications: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 54. Acid Reflux / GERD — SOMATIC RESET
+  quote: Sit upright or stand. Place one hand on your chest, and one on your belly. Breathe deeply
+    into your belly, letting it push your hand out while your chest stays still. Exhale slowly and
+    completely.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

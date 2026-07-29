@@ -1,0 +1,61 @@
+slug: somatic-map-low-milk-supply
+display_name: Low Milk Supply — Depletion, Survival Mode & Guarded Release
+target_kind: symptom
+target_slug: low-milk-supply
+sensitivity: sensitive
+differential_note: 'Low milk supply has mechanical and physiological causes that must
+  be excluded first: poor latch and positioning (the most common cause), insufficient
+  feeding frequency, tongue tie in the infant, retained placental fragments, thyroid
+  dysfunction, insufficient glandular tissue, previous breast surgery, certain medications
+  (pseudoephedrine, combined oral contraceptives), and postpartum haemorrhage. A lactation
+  consultant assessment should precede any emotional exploration.'
+emotional_roots:
+- pattern: Chronic self-neglect while over-caring for others
+  note: People who consistently prioritise everyone else's needs above their own sometimes
+    find that their body literally has little left to give. When the nervous system
+    is perpetually in outflow without adequate inflow — rest, nourishment, support
+    — physiological resources including milk production may diminish.
+- pattern: Nervous system in survival mode suppressing oxytocin
+  note: Milk let-down depends on oxytocin, and oxytocin requires a felt sense of safety
+    to be released. Chronic stress, anxiety, and sleep deprivation activate sympathetic
+    dominance, which suppresses oxytocin secretion. The body effectively prioritises
+    survival functions over lactation.
+- pattern: Guarded release — difficulty surrendering
+  note: For some people, the let-down reflex — an involuntary release — requires the
+    same quality of nervous system openness as other vulnerable releases. If the body
+    has learned to stay guarded and hold everything in, it may resist this particular
+    form of letting go.
+reframe: You are not producing less because something is wrong with you. You may be
+  a person who has been giving a great deal while receiving very little. Before troubleshooting
+  your milk supply, it may be worth asking who is feeding and holding you right now.
+  Supply often follows support.
+inquiry_question: Who is looking after you while you look after your baby?
+somatic_practice: chest-stroking-with-breath
+also_consider:
+  supplements:
+  - fenugreek
+  practical:
+  - Blessed thistle and moringa to support milk supply
+  - Oats and brewer's yeast (lactation cookies, oatmeal) to support prolactin
+  - Significantly increase water intake while nursing
+  - Skin-to-skin contact directly stimulates oxytocin and milk production
+  - Lactation consultant assessment for latch and positioning
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes exhaustion and a sense of having nothing left
+- Reports poor social support or a partner/family who is not actively helping
+- History of difficulty accepting care or receiving help from others
+notes_for_coach: ''
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 85. Low Milk Supply — EMOTIONAL ROOT
+  quote: Milk production requires oxytocin. Oxytocin requires safety. Stress, anxiety,
+    and fear suppress it. When your nervous system reads the environment as threatening,
+    it diverts resources away from nurturing functions.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

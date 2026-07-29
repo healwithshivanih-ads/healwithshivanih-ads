@@ -1,0 +1,51 @@
+slug: somatic-map-lower-back-pain
+display_name: Lower Back Pain
+target_kind: symptom
+target_slug: lower-back-pain
+sensitivity: general
+emotional_roots:
+- pattern: Financial survival fear
+  note: For some people, the lower back area seems to carry chronic worry about money,
+    job security, and whether fundamental needs will be met. When life feels financially
+    precarious or unsupported, this region may respond with tension and pain.
+- pattern: Suppressed rage
+  note: Some researchers and clinicians — including John Sarno — have observed that
+    lower back pain can arise when unexpressed anger toward one's circumstances, obligations,
+    or relationships has nowhere to go. The physical discomfort may serve as a distraction
+    from the emotion.
+reframe: Your back isn't failing you — it has been carrying an enormous load, often
+  for a very long time. Some of that load is circumstantial and can shift. Some is
+  old, conditioned fear running in the background. And some may be unexpressed feeling
+  waiting for space. The tension often begins to soften when you stop pushing down
+  what's really there.
+inquiry_question: Where are you holding things up on your own, and when did that start?
+somatic_practice: weighted-grounding
+also_consider:
+  practical:
+  - Walking is often more effective for lower back pain than bed rest
+  - Core strengthening exercises reduce the load on the lumbar spine
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes ongoing financial stress or job insecurity alongside pain onset
+- Pain intensifies during periods of feeling overwhelmed or under-resourced
+- Client downplays or intellectualises anger while presenting with chronic back tension
+differential_note: Rule out disc herniation, spinal stenosis, facet joint arthritis,
+  spondylolisthesis, sacroiliac dysfunction, kidney pathology, and inflammatory arthropathies
+  (e.g. ankylosing spondylitis) before exploring emotional associations. Imaging findings
+  — or the absence of them — do not confirm or exclude a psychosomatic contribution.
+notes_for_coach: The source references Sarno's Tension Myositis Syndrome (TMS) framework.
+  This is a contested but clinically discussed model. Present as one possible lens,
+  not a causal explanation. Never imply the client is 'creating' their pain.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 65. Lower Back Pain — EMOTIONAL ROOT
+  quote: Research consistently shows that lower back pain correlates more strongly
+    with psychological factors than with structural findings on imaging.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

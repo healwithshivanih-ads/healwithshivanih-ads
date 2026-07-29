@@ -1,0 +1,57 @@
+slug: somatic-map-carpal-tunnel
+display_name: Carpal Tunnel Syndrome
+target_kind: topic
+target_slug: carpal-tunnel-syndrome
+sensitivity: general
+differential_note: 'Carpal tunnel syndrome has well-established structural and occupational
+  causes: repetitive wrist flexion, pregnancy-related fluid retention, hypothyroidism,
+  diabetes, obesity, rheumatoid arthritis, and direct nerve compression. These must
+  be assessed and addressed first. Nerve conduction studies may be required. Ergonomic
+  and physical causes take clinical priority over emotional associations.'
+emotional_roots:
+- pattern: Chronic sense of unfairness
+  note: Some people with persistent wrist pain describe a background feeling that
+    they are contributing far more than they are receiving — in work, relationships,
+    or life more broadly. The compression can feel like a physical echo of feeling
+    squeezed by circumstances that seem unjust.
+- pattern: Suppressed frustration
+  note: Sustained effort in the face of perceived injustice, without an outlet for
+    the frustration this creates, may be associated with chronic tension in the hands
+    and forearms — the body parts most associated with the work being done.
+reframe: The unfairness you feel may be pointing to something worth examining — not
+  just in the world around you, but in what you allow yourself to receive. Where might
+  you be under-meeting your own needs in the very deal you're frustrated by?
+inquiry_question: Where in your life does the effort you put in feel like it's not
+  being returned fairly?
+somatic_practice: boundary-arm-extension
+also_consider:
+  supplements:
+  - vitamin-b6
+  practical:
+  - Wrist brace worn at night to keep the wrist in a neutral position
+  - Ergonomic workstation assessment — keyboard, mouse, tool handle positioning
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client uses language like 'it's not fair', 'I'm always the one who…', 'nobody sees
+  how hard I work'
+- History of over-giving in relationships or work roles without reciprocity
+- Symptoms worse at times of high workload with low recognition
+- Client finds it difficult to ask for help or to say no
+notes_for_coach: 'The emotional association offered here is speculative and must only
+  be raised once structural, occupational, and metabolic causes have been properly
+  addressed. Frame as a possible additional layer, never as the cause. Source: entry
+  40, System 4.'
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 40. Carpal Tunnel — Emotional Root
+  quote: Anger and frustration at life's seeming injustices. You're doing the work,
+    putting in the effort, showing up day after day. And it doesn't feel fair. The
+    hands that labor feel the squeeze when you believe you're giving more than you're
+    getting back.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

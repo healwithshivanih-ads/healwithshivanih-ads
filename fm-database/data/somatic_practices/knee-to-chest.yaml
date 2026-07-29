@@ -1,0 +1,48 @@
+slug: knee-to-chest
+display_name: Knee to Chest
+aliases: []
+category: touch
+body_region: lower_back_hips
+position: lying
+summary: A gentle held knee-to-chest, one to two minutes each side.
+why_it_works: Drawing a knee in and holding it is self-directed care in its simplest form, and the
+  position releases the lumbar extensors and psoas that brace under sustained threat.
+steps:
+- label: Lie down
+  cue: Lie on your back, one leg extended or bent with the foot flat.
+  secs: 25
+  action: rest
+- label: Draw one knee in
+  cue: Bring the other knee toward your chest and hold it gently with both hands.
+  secs: 25
+  action: press
+- label: Breathe and hold
+  cue: Stay for a minute or two. Let the hold be gentle, not a stretch you are forcing.
+  secs: 90
+  action: hold
+- label: Switch sides
+  cue: Release slowly and repeat on the other side.
+  secs: 115
+  action: hold
+reps: null
+duration_seconds: 255
+bilateral: true
+timed: true
+equipment: []
+motion_shape: sustained_pressure
+contraindications:
+- Hip or knee replacement — check permitted range first
+- Acute back pain with leg symptoms
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- autoimmune
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

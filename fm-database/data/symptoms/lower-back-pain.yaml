@@ -1,0 +1,31 @@
+slug: lower-back-pain
+display_name: Lower Back Pain
+aliases:
+- low back pain
+- lower back ache
+- my back's gone
+- lumbar pain
+- pain in my lower back
+- back pain
+category: musculoskeletal
+severity: concerning
+description: Pain across the lumbar region, with or without stiffness. The large majority is
+  non-specific and mechanical, improving over weeks; a minority reflects specific pathology.
+  Strongly modulated by stress, sleep and fear of movement.
+when_to_refer: 'RED FLAGS requiring urgent assessment: saddle anaesthesia, bladder or bowel
+  dysfunction, or bilateral leg weakness (cauda equina — emergency); unexplained weight loss,
+  fever, night pain, history of cancer; new severe back pain over 50 or under 20; trauma in
+  osteoporosis or steroid use.'
+linked_to_topics:
+- osteoporosis
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Fear of movement predicts chronicity better than imaging does. Encouraging
+  graded normal activity matters more than any specific exercise.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

@@ -1,0 +1,52 @@
+slug: somatic-map-chronic-cough
+display_name: Chronic Cough
+target_kind: symptom
+target_slug: chronic-cough
+sensitivity: sensitive
+differential_note: 'Must exclude: post-nasal drip, GERD/LPR (together these account
+  for the majority of chronic cough), asthma and cough-variant asthma, ACE inhibitor-induced
+  cough, chronic bronchitis, eosinophilic airway disease, environmental irritants
+  (dust, mould, fragrances, VOCs), pertussis, pulmonary malignancy (red flag if accompanied
+  by haemoptysis, unexplained weight loss, or smoking history). A chronic cough persisting
+  beyond 8 weeks must be evaluated medically.'
+emotional_roots:
+- pattern: Something needing to be said
+  note: A persistent cough is sometimes associated with feeling that there is something
+    pressing to communicate that hasn't found its way out. The body keeps trying to
+    push it through.
+- pattern: Unprocessed grief and loss
+  note: In TCM, the lungs are considered the organ of grief. A chronic cough is sometimes
+    seen in people carrying sadness or loss that has not been fully expressed or released.
+reframe: What has been held inside long enough tends to find another way out. Letting
+  something move — even gently, even just in writing — can be a way of releasing pressure
+  before the body has to.
+inquiry_question: What is sitting inside you right now that wants to come out but
+  feels stuck or blocked?
+somatic_practice: prone-breathing
+also_consider:
+  practical:
+  - Honey and ginger tea for throat soothing
+  - Check living and working environment for dust, mould, and chemical fragrances
+    that may be contributing
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Cough worsens in emotionally charged situations or around particular people
+- Client describes a significant unresolved loss or grief in their history
+- Reports feeling like they have 'something to say' but don't know how
+notes_for_coach: Chronic cough has no perfect symptom slug match; 'breathing-irregularity'
+  is used as the nearest available. Medical evaluation is non-negotiable for any cough
+  persisting beyond 8 weeks. The grief/TCM framing should only be introduced once
+  physical causes have been adequately explored.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 32. Chronic Cough
+  quote: In TCM, the lungs hold grief. A chronic cough often signals unprocessed sadness
+    or loss that hasn't found its way out.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

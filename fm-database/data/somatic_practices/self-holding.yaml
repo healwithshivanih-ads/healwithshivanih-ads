@@ -1,0 +1,47 @@
+slug: self-holding
+display_name: Self-Holding
+aliases: []
+category: touch
+body_region: chest_diaphragm
+position: seated
+summary: A firm crossed-arm self-hold across the chest, held for two to three minutes.
+why_it_works: Firm, sustained self-contact across the chest raises vagal tone and delivers deep-pressure
+  input, which reliably signals containment to a nervous system that feels exposed.
+steps:
+- label: Settle
+  cue: Sit or lie somewhere comfortable.
+  secs: 20
+  action: rest
+- label: Cross your arms
+  cue: Cross your arms and place each hand on the opposite upper arm, just below the shoulder.
+  secs: 20
+  action: touch
+- label: Hold like you mean it
+  cue: Hold gently but firmly — a hug with actual pressure in it, not a token one.
+  secs: 60
+  action: touch
+- label: Breathe and stay
+  cue: Slow breathing. Stay held for a couple of minutes.
+  secs: 90
+  action: rest
+reps: null
+duration_seconds: 190
+bilateral: false
+timed: true
+equipment: []
+motion_shape: sustained_pressure
+contraindications:
+- Adapt where a client finds self-touch distressing — offer a cushion held against the chest instead
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- atopic-dermatitis
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

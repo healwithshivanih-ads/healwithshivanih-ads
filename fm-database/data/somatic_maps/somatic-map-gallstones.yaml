@@ -1,0 +1,58 @@
+slug: somatic-map-gallstones
+display_name: Gallstones — Crystallised Bitterness and Resentment
+target_kind: topic
+target_slug: gallstones
+sensitivity: sensitive
+differential_note: Gallstones are a structural medical condition diagnosed by imaging
+  (ultrasound). They require medical management. Rule out other causes of right upper
+  quadrant pain (hepatitis, biliary stricture, pancreatitis, peptic ulcer, right-sided
+  pneumonia) before any emotional framing. Acute biliary colic or cholecystitis is
+  a medical emergency.
+emotional_roots:
+- pattern: Crystallised resentment
+  note: Traditional and somatic medicine systems have long associated the gallbladder
+    with the processing of bitterness. Some people with gallstones describe long histories
+    of holding onto perceived wrongs without finding a way to process or release them.
+    This is an observed association, not a proven cause.
+- pattern: Unprocessed anger
+  note: When anger that feels justified is never given expression — when it is swallowed
+    repeatedly over years — it can contribute to the kind of chronic stress that affects
+    bile composition and flow. Gallbladder attacks are noted to occur more frequently
+    during periods of high stress.
+- pattern: Rigid judgement
+  note: A pattern of harsh judgement of others, rigid moral positions, and an inability
+    to forgive is associated in somatic frameworks with tension and contraction in
+    the gallbladder region.
+reframe: Letting go of old resentment is not the same as excusing what happened. It
+  is choosing to stop carrying the weight of it in your body.
+inquiry_question: What old bitterness might still be living in your system, and what
+  would it mean to put it down?
+somatic_practice: eye-movement-release
+also_consider:
+  supplements:
+  - milk-thistle
+  - apple-cider-vinegar
+  home_remedies: []
+  practical:
+  - A low-fat diet to reduce gallbladder stress
+  - Lecithin may support gallbladder function
+  cooking_adjustments: []
+pattern_signals:
+- Symptoms worsen after emotionally charged episodes involving perceived injustice
+- Client describes long-standing unresolved interpersonal conflict or grievance
+- Strong righteous anger or moral rigidity noted in intake conversations
+notes_for_coach: Gallstones require medical management and this map must never be
+  used to suggest emotional work is sufficient treatment. The emotional dimension
+  is a complement for overall wellbeing, not an alternative to clinical care.
+coach_only_note: The 'crystallised bitterness' framing must be introduced only after
+  the client has themselves raised themes of resentment. Do not lead with it — it
+  can read as blaming for a serious physical condition.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 62. Gallstones — EMOTIONAL ROOT
+  quote: Gallstones are crystallized bitterness and resentment.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

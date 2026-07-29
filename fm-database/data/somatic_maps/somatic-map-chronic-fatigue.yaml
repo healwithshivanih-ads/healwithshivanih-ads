@@ -1,0 +1,45 @@
+slug: somatic-map-chronic-fatigue
+display_name: Chronic Fatigue — The Body's Only Boundary
+target_kind: symptom
+target_slug: chronic-fatigue
+sensitivity: general
+emotional_roots:
+- pattern: A life that does not feel like yours
+  note: Energy withdraws from what the whole system has already resigned from.
+- pattern: Rest treated as something to earn
+  note: Where worth is tied to output, the things that actually replenish get cut
+    first.
+- pattern: Caretaker collapse
+  note: Common in people who push through and take care of everyone else — who cannot
+    rest until they physically cannot move.
+reframe: 'Energy works like an account: there are deposits and withdrawals. Fatigue
+  is the balance alert, not a character flaw.'
+inquiry_question: What would you stop doing tomorrow if you accepted you were allowed
+  to?
+somatic_practice: supported-rest
+also_consider:
+  supplements:
+  - ashwagandha
+  - rhodiola
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Check ferritin, not just haemoglobin
+  - Protein and fat at every meal to steady the crashes
+  - Movement can create energy — start with ten minutes
+pattern_signals: []
+differential_note: 'Fatigue needs a workup before any interpretation: full blood count,
+  ferritin, thyroid, HbA1c, B12, vitamin D, coeliac screen, and renal and liver function.
+  Exclude sleep apnoea, depression, and medication effects. Where post-exertional
+  malaise is present, treat as ME/CFS and do NOT prescribe graded exercise.'
+coach_only_note: ''
+notes_for_coach: The post-exertional malaise question is essential. Pushing an ME/CFS
+  client to exercise causes harm.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

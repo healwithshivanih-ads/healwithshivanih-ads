@@ -1,0 +1,63 @@
+slug: somatic-map-menstrual-pain-pms
+display_name: Menstrual Pain & PMS
+target_kind: topic
+target_slug: premenstrual-syndrome
+sensitivity: sensitive
+emotional_roots:
+- pattern: Suppressed anger blocking flow
+  note: In traditional Chinese medicine, the liver is considered to govern menstrual
+    flow; when frustration and anger are held unexpressed, flow is said to become
+    obstructed or painful. Some practitioners observe that women with severe cramping
+    are carrying emotion they haven't felt safe expressing — this is an association,
+    not a proven mechanism.
+- pattern: Shame or disgust about the body
+  note: Early messages that menstruation is unclean, something to hide rather than
+    understand, may over time be associated with increased pain and distress around
+    the cycle.
+- pattern: Cycle amplifying suppressed emotion
+  note: The premenstrual phase may surface emotions that have been pushed down throughout
+    the month. What intensifies before a period can serve as a signal about what has
+    been unaddressed.
+- pattern: Difficulty with surrender and release
+  note: The menstrual cycle is biologically a process of building and releasing. Pain
+    may be more frequent for people who find it hard to let go in any domain of life.
+reframe: Your cycle is not punishing you — it is reflecting you. What surfaces before
+  your period is asking for attention, not suppression. The pain and the emotion are
+  messengers worth listening to throughout the whole month.
+inquiry_question: What does the pattern of your emotions across your cycle reveal
+  about what you have been carrying or pushing away?
+somatic_practice: pelvic-rocking
+also_consider:
+  supplements:
+  - magnesium
+  - omega-3
+  home_remedies:
+  - seed-cycling
+  cooking_adjustments: []
+  practical: []
+pattern_signals:
+- Client reports emotions dramatically worsen in the week before menstruation
+- Describes severe cramping alongside difficulty expressing anger or frustration
+- History of early messages about menstruation being dirty or shameful
+- Reports difficulty 'letting go' in multiple life contexts
+differential_note: 'Dysmenorrhea and PMS have well-characterised physiological causes
+  that must be assessed first: prostaglandin excess, endometriosis, uterine fibroids,
+  adenomyosis, polycystic ovary syndrome, pelvic inflammatory disease, cervical stenosis,
+  thyroid dysfunction, and nutritional deficiencies (magnesium, B6, omega-3s). Premenstrual
+  dysphoric disorder (PMDD) requires clinical diagnosis and may need psychiatric or
+  pharmacological management. Emotional associations are secondary considerations
+  only.'
+notes_for_coach: Source is a somatic-health book (moderate quality). The TCM liver-menstrual
+  flow link is traditional, not peer-reviewed. Magnesium and omega-3 for dysmenorrhea
+  have reasonable evidence. Seed cycling has very limited peer-reviewed evidence.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 72. Menstrual Pain / PMS — EMOTIONAL ROOT
+  quote: Suppressed anger. In TCM, the liver governs menstrual flow. When anger and
+    frustration are blocked, flow is blocked or painful.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

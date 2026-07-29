@@ -1,0 +1,59 @@
+slug: voo-vocalization
+display_name: Voo Vocalization
+category: breath
+body_region: abdomen
+position: any_position
+summary: Draw a full breath in, then exhale slowly on a deep, resonant 'voo' sound held as long as
+  possible. Repeat for five to ten rounds.
+why_it_works: The 'voo' sound is known in somatic therapies to vibrate the vagus nerve via the thoracic
+  and abdominal cavities. The long, low exhale activates the parasympathetic system, while the vibration
+  helps discharge held tension in tissues that may encode suppressed emotional states.
+steps:
+- label: Inhale
+  cue: Take a full, slow breath in through your nose, letting your belly expand.
+  action: expand
+  secs: 4
+- label: Voo exhale
+  cue: On the exhale, make a deep, steady 'vooooo' sound — as low in pitch as you can — and let it
+    last for the entire out-breath.
+  action: release
+  secs: 8
+- label: Rest
+  cue: Pause briefly at the bottom of the exhale, noticing any vibration or warmth in your chest and
+    belly.
+  action: rest
+  secs: 3
+- label: Repeat
+  cue: Breathe in again and repeat for a total of five to ten rounds.
+  action: hold
+  secs: 105
+reps: 10
+duration_seconds: 120
+timed: true
+bilateral: false
+contraindications:
+- Vocal cord injury — rest voice instead
+- Severe abdominal pain — consult clinician before using breath-pressure techniques
+linked_to_symptoms:
+- gum-inflammation
+- jaw-tension
+- muscle-tension
+- anxiety
+linked_to_topics:
+- nervous-system-regulation
+- periodontal-disease
+notes_for_coach: Derived from Peter Levine's SE work. Clients should be gently warned they may feel
+  a wave of emotion after the first few rounds — this is normal and not a sign of harm.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 20. Gum Disease / Periodontal Problems — SOMATIC RESET
+  quote: Take a deep breath and exhale with a deep "voo" sound, long and steady. Repeat 5–10 times.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

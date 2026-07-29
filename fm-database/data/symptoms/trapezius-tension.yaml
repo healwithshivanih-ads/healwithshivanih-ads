@@ -1,0 +1,29 @@
+slug: trapezius-tension
+display_name: Shoulder & Trapezius Tension
+aliases:
+- tight shoulders
+- trapezius tension
+- knots in my shoulders
+- shoulders up by my ears
+- tension across my shoulders
+- carrying it in my shoulders
+category: musculoskeletal
+severity: common
+description: Sustained tension across the upper trapezius and shoulder girdle, often with palpable
+  tight bands and referred pain into the neck and head. Strongly linked to desk posture, screen
+  height, bag carrying and habitual bracing under stress.
+when_to_refer: Refer where tension is accompanied by arm weakness, numbness or radiating pain
+  (cervical radiculopathy), or where there is unexplained weight loss or night pain.
+linked_to_topics:
+- tension-type-headache
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Among the most common presentations in desk-working clients and a frequent
+  driver of tension headache.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

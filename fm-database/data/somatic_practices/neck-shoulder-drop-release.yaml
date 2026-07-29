@@ -1,0 +1,50 @@
+slug: neck-shoulder-drop-release
+display_name: Neck–Shoulder Drop Release
+category: discharge
+body_region: shoulders_upper_back
+position: any_position
+summary: A repeated shrug-and-drop movement that releases accumulated tension held in the neck and
+  shoulder muscles, completing the stress cycle stored there.
+why_it_works: Sustained psychosocial stress causes chronic isometric contraction of the upper trapezius
+  and cervical paraspinals. Deliberately exaggerating the contraction and then releasing it activates
+  the muscle spindle's relaxation reflex, discharging residual tension and signalling the nervous
+  system that the threat has passed.
+steps:
+- label: Lift
+  cue: Raise both shoulders up toward your ears as high as they will comfortably go.
+  action: press
+  secs: 3
+- label: Drop
+  cue: Let the shoulders fall completely — do not guide them down, just release.
+  action: release
+  secs: 3
+- label: Pause
+  cue: Stay still for a moment and notice the sensation of release before the next round.
+  action: rest
+  secs: 4
+reps: 5
+duration_seconds: 50
+timed: true
+bilateral: false
+contraindications:
+- Acute cervical injury or recent shoulder surgery — get clearance first
+linked_to_symptoms:
+- tension-headache
+- headache
+- muscle-tension
+linked_to_topics:
+- tension-type-headache
+notes_for_coach: Coach can demonstrate synchronised with client. The 'pause' step is where the nervous
+  system registers the downshift — don't rush through it.
+aliases: []
+equipment: []
+motion_shape: load_release
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 01. Tension Headaches — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

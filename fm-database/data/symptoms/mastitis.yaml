@@ -1,0 +1,29 @@
+slug: mastitis
+display_name: Mastitis / Breast Inflammation
+aliases:
+- blocked duct
+- breast infection
+- inflamed breast
+- sore lump in my breast
+- red painful breast
+- engorgement with fever
+category: womens_health
+severity: concerning
+description: Painful inflammation of breast tissue, typically with a wedge-shaped red, hot,
+  tender area, often with fever and flu-like symptoms. Usually follows ineffective milk drainage;
+  may become bacterial.
+when_to_refer: Refer urgently where fever persists beyond 24 hours of effective drainage, where
+  there is a fluctuant mass (abscess), or where the mother is systemically unwell — mastitis
+  can progress to sepsis. Non-lactational or non-resolving breast inflammation requires assessment
+  to exclude inflammatory breast cancer.
+linked_to_topics: []
+linked_to_mechanisms: []
+notes_for_coach: Time-critical. Any emotional layer waits until it is treated — this is one
+  to route to medical care immediately, not to coach around.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

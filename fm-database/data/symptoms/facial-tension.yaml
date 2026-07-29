@@ -1,0 +1,29 @@
+slug: facial-tension
+display_name: Facial Tension
+aliases:
+- tight face
+- facial tightness
+- clenched face
+- tension in my cheeks
+- frowning all the time
+- face feels stiff
+category: musculoskeletal
+severity: common
+description: Sustained involuntary contraction of facial musculature — brow, cheeks, around
+  the eyes and mouth. Often unconscious until pointed out, and closely linked to concentration
+  posture, suppressed emotional expression and jaw clenching.
+when_to_refer: Refer where tension is unilateral, involves drooping or weakness, or is accompanied
+  by numbness — these suggest a neurological cause rather than muscular holding.
+linked_to_topics:
+- tension-type-headache
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: 'Distinguish from the temporomandibular picture: facial tension is the broader
+  mask-like holding, TMJ is joint-localised.'
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

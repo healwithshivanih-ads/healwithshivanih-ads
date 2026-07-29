@@ -1,0 +1,47 @@
+slug: felt-sense-checkin
+display_name: Felt Sense Check-In
+aliases: []
+category: imagery
+body_region: whole_body
+position: seated
+summary: A short check-in locating a feeling in the body, without changing it.
+why_it_works: Locating a feeling in the body without trying to alter it rebuilds interoceptive accuracy
+  — the signal-reading that becomes unreliable when someone has spent years overriding their own cues.
+steps:
+- label: Settle
+  cue: Sit comfortably and close your eyes.
+  secs: 25
+  action: rest
+- label: Ask
+  cue: Ask yourself what you are feeling right now — and then find where in your body it lives.
+  secs: 50
+  action: observe
+- label: Stay with it
+  cue: Do not try to change it or explain it. Just keep it company.
+  secs: 90
+  action: observe
+- label: Come back
+  cue: Open your eyes slowly. Nothing had to be fixed.
+  secs: 25
+  action: rest
+reps: null
+duration_seconds: 190
+bilateral: false
+timed: true
+equipment: []
+motion_shape: still
+contraindications:
+- Where a client dissociates easily, keep eyes open and shorten it
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- type-2-diabetes
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

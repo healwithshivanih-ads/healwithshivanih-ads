@@ -1,0 +1,57 @@
+slug: silent-yawning
+display_name: Silent Yawning
+category: movement
+body_region: jaw
+position: any_position
+summary: Deliberately opening the mouth into a wide yawn shape, without making any sound, allowing
+  the jaw and throat to widen and decompress — repeated six times.
+why_it_works: Yawning is a natural nervous-system reset that stretches the pharyngeal and jaw muscles,
+  increases pharyngeal airway volume, and is associated with a brief elevation in vagal tone. Performing
+  it silently removes any performance pressure and allows the throat to open at its own natural extent.
+steps:
+- label: Open Wide
+  cue: Let your mouth open slowly into the widest, most relaxed yawn shape you can make — jaw dropping,
+    throat widening — without making any sound.
+  action: expand
+  secs: 6
+- label: Hold Open
+  cue: Stay at the widest point for a moment, feeling the stretch across the jaw and deep in the throat.
+  action: hold
+  secs: 3
+- label: Close Gently
+  cue: Allow your mouth to close softly, without clenching.
+  action: release
+  secs: 3
+- label: Repeat
+  cue: Repeat the open–hold–close sequence for a total of six times, moving slowly each time.
+  action: rest
+  secs: 48
+reps: 6
+duration_seconds: 60
+timed: true
+bilateral: false
+contraindications:
+- Temporomandibular joint (TMJ) disorder with limited opening — stay within comfortable range only
+- Recent jaw surgery
+linked_to_symptoms:
+- hoarseness
+- jaw-tension
+- muscle-tension
+linked_to_topics:
+- vagal-tone
+notes_for_coach: If a real yawn is triggered, that is a positive sign — let it happen. Instruct clients
+  that 'silent' simply means no forced vocalisation, not that the jaw must be tense.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 29. Hoarseness / Voice Loss — SOMATIC RESET
+  quote: Open your mouth into a gentle yawn shape, without sound. Let the jaw and throat widen. Repeat
+    6 times.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

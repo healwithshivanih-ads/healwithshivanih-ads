@@ -1,0 +1,43 @@
+slug: somatic-map-taste-changes
+display_name: Taste Changes — Nothing Worth Savouring
+target_kind: symptom
+target_slug: taste-changes
+sensitivity: sensitive
+emotional_roots:
+- pattern: Grief and low mood
+  note: When life loses meaning, food loses flavour. The mouth reports what is currently
+    true.
+- pattern: Something that used to nourish has turned
+  note: A relationship, a job, a way of living that fed you once and now leaves a
+    bad taste.
+- pattern: Pleasure shut down
+  note: Taste is a route to pleasure. Where joy has come to feel unsafe or undeserved,
+    the whole channel flattens.
+reframe: Enjoyment is a natural state, not a reward. If you cannot taste it, something
+  is in the way — and that is worth finding rather than accepting.
+inquiry_question: What has lost its flavour for you?
+somatic_practice: warm-cup-practice
+also_consider:
+  supplements:
+  - zinc
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Several common medications dull taste receptors — review before concluding anything
+    else
+pattern_signals: []
+differential_note: Check zinc and B12, review medications (many blunt taste), and
+  exclude oral and dental disease, reflux, and post-viral change. Sudden one-sided
+  taste loss with facial weakness or numbness is neurological and needs assessment.
+  An oral lesion lasting beyond three weeks needs review to exclude cancer.
+coach_only_note: Loss of taste frequently accompanies depression. Screen for mood
+  and risk before exploring the meaning-and-pleasure framing.
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

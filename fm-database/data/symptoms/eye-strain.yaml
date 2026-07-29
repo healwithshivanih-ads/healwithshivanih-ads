@@ -1,0 +1,30 @@
+slug: eye-strain
+display_name: Eye Strain / Tired Eyes
+aliases:
+- tired eyes
+- eye fatigue
+- sore eyes
+- asthenopia
+- eyes ache
+- heavy eyes
+- eyes feel strained
+category: neurological
+severity: common
+description: Aching, heaviness or fatigue in and around the eyes after sustained visual work,
+  often with associated brow tension and headache. Driven by prolonged near-focus, reduced
+  blink rate at screens, uncorrected refractive error and poor lighting.
+when_to_refer: Refer for ophthalmic assessment where there is eye pain rather than ache, visual
+  loss, halos, a red eye, or sudden onset — and where symptoms persist despite correction
+  and screen hygiene.
+linked_to_topics:
+- tension-type-headache
+linked_to_mechanisms: []
+notes_for_coach: Nearly universal in desk-working clients and usually under-reported. Pairs
+  with dry eyes — reduced blink rate drives both.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

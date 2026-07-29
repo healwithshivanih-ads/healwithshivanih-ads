@@ -1,0 +1,50 @@
+slug: somatic-map-post-nasal-drip
+display_name: Post-Nasal Drip — Somatic Reading
+target_kind: symptom
+target_slug: post-nasal-drip
+sensitivity: general
+differential_note: Exclude allergic rhinitis, non-allergic rhinitis, dairy-triggered
+  mucus hypersecretion, GERD-related laryngopharyngeal reflux, medication side effects
+  (ACE inhibitors, decongestant rebound), and structural causes (polyps, deviated
+  septum) before considering emotional patterning. ENT or allergy assessment for persistent
+  cases.
+emotional_roots:
+- pattern: Inner crying — sadness with nowhere to go
+  note: Post-nasal drip is sometimes described as tears that flow backward rather
+    than out — a bodily expression of sadness that has learned it will not be heard
+    or will not change anything.
+- pattern: Powerlessness
+  note: There can be a pattern of helplessness — the sense that life is happening
+    to you rather than through you, and that your voice or tears would not make a
+    difference.
+reframe: The part of you that stopped believing your feelings would matter learned
+  that somewhere — it was probably true once. It does not need to remain true now.
+  Your voice and your tears carry meaning.
+inquiry_question: What old emotional pattern or unfinished story might still be waiting
+  for completion?
+somatic_practice: hand-on-heart
+also_consider:
+  supplements:
+  - stinging-nettle-root
+  home_remedies:
+  - saline-nasal-wash
+  practical:
+  - Reduce or eliminate dairy for a trial period — dairy increases mucus production
+    in many people
+  cooking_adjustments: []
+pattern_signals:
+- Client has a marked difficulty accessing or expressing sadness
+- History of having emotions dismissed or invalidated
+- Describes a pervasive sense of powerlessness in key life areas
+notes_for_coach: Handle powerlessness framing carefully — avoid any suggestion of
+  blame. The reframe is about capacity, not responsibility. Source is a book (moderate
+  quality).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 12. Post-Nasal Drip
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

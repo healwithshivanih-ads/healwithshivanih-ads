@@ -1,0 +1,48 @@
+slug: intentional-exaggeration
+display_name: Intentional Exaggeration
+aliases: []
+category: discharge
+body_region: whole_body
+position: any_position
+summary: Deliberately performing a tic larger, then stopping — completing the impulse.
+why_it_works: A tic is often an impulse that keeps starting and never finishes. Performing it deliberately
+  and larger completes the motor circuit, which paradoxically reduces the involuntary urge.
+steps:
+- label: Notice it
+  cue: When you notice the tic or twitch, do not fight it.
+  secs: 15
+  action: observe
+- label: Do it bigger
+  cue: Make the same movement deliberately and larger. Five to ten times, on purpose.
+  secs: 60
+  action: release
+- label: Stop
+  cue: Stop deliberately.
+  secs: 15
+  action: rest
+- label: Breathe
+  cue: Take a few slow breaths and notice what the urge is doing now.
+  secs: 45
+  action: rest
+reps: null
+duration_seconds: 135
+bilateral: false
+timed: true
+equipment: []
+motion_shape: release
+contraindications:
+- Not for tics causing pain or injury
+- Not appropriate for tic disorders under specialist care without discussing it first
+sensitivity: general
+linked_to_symptoms:
+- tics-twitches
+linked_to_topics: []
+notes_for_coach: Related to habit-reversal work. If it increases distress or frequency, stop and refer.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

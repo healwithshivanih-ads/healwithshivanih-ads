@@ -1,0 +1,63 @@
+slug: moving-sphinx-pose
+display_name: Moving Sphinx Pose
+category: movement
+body_region: throat_neck
+position: lying
+summary: A gentle prone head-turning exercise done from a supported forearm position, designed to
+  engage cranial nerve pathways and regulate the nervous system.
+why_it_works: The prone forearm position with active head turning mimics early developmental movement
+  patterns that stimulate the vestibulo-ocular reflex and activate cranial nerve pathways, particularly
+  the vagus and accessory nerves, helping to down-regulate a chronically stressed nervous system.
+steps:
+- label: Set up position
+  cue: Lie face down. Bring your forearms flat on the floor with elbows directly beneath your shoulders.
+    Your body is long and supported.
+  action: rest
+  secs: 15
+- label: Lift your head
+  cue: Gently lift your head off the floor so you are looking straight ahead.
+  action: expand
+  secs: 10
+- label: Turn left
+  cue: Slowly turn your gaze and head to the left, letting your eyes lead the movement. Pause briefly.
+  action: circle
+  secs: 8
+- label: Turn right
+  cue: Slowly turn your gaze and head to the right, again letting your eyes lead. Pause briefly.
+  action: circle
+  secs: 8
+- label: Return to center
+  cue: Bring your head back to face forward.
+  action: rest
+  secs: 4
+- label: Repeat
+  cue: Continue this left-right-center sequence at a slow, unhurried pace for 5 to 10 full rounds.
+  action: circle
+  secs: 195
+reps: 10
+duration_seconds: 240
+timed: true
+bilateral: true
+equipment: []
+contraindications:
+- Cervical spine instability or recent neck injury
+- Severe GERD or acid reflux in prone position
+- Late pregnancy
+linked_to_topics:
+- female-infertility
+- nervous-system-regulation
+aliases: []
+linked_to_symptoms: []
+notes_for_coach: ''
+motion_shape: continuous_travel
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 81. Infertility — SOMATIC RESET
+  quote: Lie face down with forearms flat on the floor, elbows under shoulders. Slowly lift your head
+    and look left, then right, then center. Let your gaze lead the movement. Repeat 5-10 times.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

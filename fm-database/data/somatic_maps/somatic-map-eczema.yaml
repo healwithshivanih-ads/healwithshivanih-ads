@@ -1,0 +1,42 @@
+slug: somatic-map-eczema
+display_name: Eczema — The Skin as Outlet
+target_kind: topic
+target_slug: atopic-dermatitis
+sensitivity: general
+emotional_roots:
+- pattern: Feelings that had nowhere to go
+  note: Often begins in childhood, particularly where a child could not express what
+    they felt or grew up in a tense house.
+- pattern: The skin speaking instead
+  note: Where words were unavailable, the skin became the outlet.
+- pattern: Overwhelm
+  note: Flares track anxiety, frustration and the sense of having too much to hold.
+reframe: You learned somewhere that your feelings were too much — too messy, too loud,
+  too inconvenient — and your skin took the job on. You are allowed to take it back.
+inquiry_question: What did your family do with big feelings when you were small?
+somatic_practice: self-holding
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Evening primrose or borage oil for GLA, which is often low
+  - Colloidal oatmeal baths soothe inflamed skin
+  - A bedroom humidifier helps more than people expect
+pattern_signals: []
+differential_note: Atopic dermatitis is a genuine barrier and immune disorder with
+  filaggrin genetics behind much of it. Standard care — emollients, topical anti-inflammatories,
+  trigger avoidance, infection control — comes first. Sudden worsening with weeping,
+  crusting or pain suggests bacterial or eczema herpeticum infection and needs same-day
+  care.
+coach_only_note: ''
+notes_for_coach: Dhanishta (cl-004) has autoimmune dermatitis on file — the childhood-expression
+  angle may land, but lead with the barrier work.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

@@ -1,0 +1,41 @@
+slug: somatic-map-skin-rashes
+display_name: Skin Rashes — Boundary Breached
+target_kind: symptom
+target_slug: skin-rash
+sensitivity: general
+emotional_roots:
+- pattern: Feeling under threat
+  note: Skin is the boundary between self and world. Where that boundary feels breached,
+    it can react.
+- pattern: Something getting under your skin
+  note: An irritation that will not be ignored, or a line being crossed repeatedly.
+- pattern: Old material surfacing
+  note: Rashes sometimes coincide with buried feeling finally reaching the surface.
+reframe: Sensitive skin is honest skin. It reports accurately on what you can and
+  cannot tolerate — that is information, not a defect.
+inquiry_question: What is getting under your skin at the moment?
+somatic_practice: dry-brushing
+also_consider:
+  supplements:
+  - probiotics
+  - omega-3
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Start with the gut — most chronic skin problems begin there
+  - Reduce the common inflammatory triggers before adding anything
+pattern_signals: []
+differential_note: Rashes need a diagnosis before any emotional reading. Exclude contact
+  and allergic dermatitis, fungal infection, scabies, drug eruption and — where a
+  rash is non-blanching, or comes with fever or systemic illness — meningococcal disease,
+  which is an emergency.
+coach_only_note: ''
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

@@ -14,7 +14,62 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.76 (current)** — Nutrient system deepened: table hardened, drafter balances, coverage mapped, client sees warm nourishment notes.
+**v0.77 (current, NOT YET MERGED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
+
+⚠️ **All 11 commits live on branch `claude/mind-body-module-design-71adb6`. Main does NOT have them and pm2 serves main — nothing below is live.** Two deploys will be needed, not one: coach UI → localhost pm2 rebuild; client app (`/app/<token>` serves from **Fly**) → `flyctl deploy`. The visual/Today task that was holding the merge has landed — the branch is ready to merge.
+
+**Two new catalogue entities** (`fmdb/models.py`, wired through loader / validator / overlay / CLI / ingest pipeline):
+- **`SomaticPractice`** — a reusable somatic reset with timed steps. One practice serves many symptoms, so it is its own entity. Stored `data/somatic_practices/<slug>.yaml`. **114 records.**
+- **`SomaticMap`** — the emotional reading for ONE symptom **or** topic (the book's entries land across both, so it points via `target_kind` + `target_slug`, the same pattern `EducationModule` uses). Carries emotional roots, a client-facing reframe, one inquiry question, and a pointer to its practice. Stored `data/somatic_maps/<slug>.yaml`. **123 records — the whole book.**
+
+**Safety model — the single failure mode is an ASSOCIATION being read as a CAUSE** ("my grief gave me fibroids"). Three validator rules guard it, each with a failing-if-broken test in `tests/test_somatic_safety.py`:
+- `differential_note` is REQUIRED on every map (what a clinician must exclude first)
+- a `timed` practice must have steps, else it cannot be rendered
+- `coach_only_note` alongside `sensitivity: general` is a contradiction and **errors**
+
+The staging enricher **fails closed**: an unclassified map defaults to `sensitive`, never `general`. Final spread across 123: **64 general / 47 sensitive / 12 coach-only, 34 hard-gated.** Recurrent miscarriage, infertility, hyperemesis, breech, endometriosis, fibroids and pelvic-floor dysfunction are all coach-only — the extractor gated every entry flagged as dangerous, unprompted.
+
+**Two gating axes, both must permit:** the entry's `sensitivity` AND the client's own depth (`full` / `resets_only` / `coach_only`, suggested from health-anxiety and benzo/SSRI signals, coach-overridable). `coach_only_note` is an absolute bar regardless of either.
+
+**`motion_shape`** — a typed enum (`fmdb/enums.py`) with **7 values**, DERIVED by clustering the whole corpus (`fmdb/assess/motion_shape.py`), never guessed per-entry. A four-shape guess from 13 entries was wrong at 87 and wrong again at 123. Distribution: breath_excursion 28 (the existing `BreathOverlay` already handles it), continuous_travel 23, sustained_pressure 20, release 18, still 11, load_release 10, checklist 4. `bilateral` and `reps` are MODIFIERS, not shapes.
+
+**The app resolves practices BY SLUG, not by name.** `PracticeItem.somatic_practice` → `lib/fmdb/somatic.ts` `deriveSomatic` → `ochre-somatic.tsx`. The older derivations (`deriveEft`, `deriveBreathwork`, `deriveSleep`) pattern-match the practice NAME, which breaks at 114: gastrocolic-rhythm contains "breathing", so deriveBreathwork would catch it and render a generic 4-in/6-out session, dropping the hand pressure that IS the practice. `excludeSomaticLinked()` withholds slug-linked practices from the name-matchers — by each practice's carried `sourceIndex`, NOT by a slug lookup, because two practices may share a slug (constructive-rest morning and night) and a lookup returns the first one twice. `deriveSomatic` returns a LIST; it used to return one, which made a second linked practice prescribed, listed in the checklist, and unopenable.
+
+**THE DIAGNOSTIC — read this before building on it.** Two routes, very different yields:
+- **Chief-complaint read** (`fmdb/assess/somatic_read.py`) — what the book says about the conditions the client actually came in for. One map, no statistics. **11 of 14 signed-up clients get a read; 20 reads, 11 client-safe.** This is the one that works. Surfaced coach-side via `scripts/somatic-read.py` → `SomaticReadPanel` on the client overview.
+- **Convergence** (`fmdb/assess/somatic_themes.py`) — "what do these symptoms share?", over 14 themes tagging 350/353 roots. **Fires for about 1 client in 3.** Verified against a null model: fear appears in 58% of all maps, anger 54%, holding-on 49%, so those can never show lift — 200 random 8-map draws put fear top 41% of the time. Scored as lift vs corpus baseline with `MIN_LIFT = 2.9` (the p95 of 400 random draws; 6% false positives). Of 3 real clients only Nazneen cleared it. **The most clinically obvious patterns are the ones this test is blindest to.**
+
+**Coverage limit, by design:** the book maps symptoms and syndromes, NOT lab abnormalities. Geetika's 12 conditions (lipids, homocysteine, Lp(a)) yield zero reads and always will. The empty state says so rather than reading as a gap.
+
+**Contraindication screening** (`fmdb/plan/contra_screen.py`) sorts a practice's cautions three ways against the client record: `live` (record positively shows it), `cleared` (field was ASKED and came back negative), `unknown` (no field would carry it). **`cleared` vs `unknown` is the whole point** — collapsing them once turned a standing glaucoma screen into a doubt about a client whose intake had already answered `eye_signs: []`.
+
+**Fixed a pre-existing pipeline bug while here:** `drug_depletions` and `lab_tests` were declared in `ENTITY_TYPES` and requested in the extractor's tool schema, but absent from `ExtractionResult.by_type()` — so since v0.74 the model produced them, they were billed for, and staging discarded every one. `by_type()`/`is_empty()` now derive from `ENTITY_TYPES`; 9 tests in `tests/test_ingest_entity_wiring.py` fail if the structures drift again. Same class of bug fixed in `validator.overlay()`, which silently dropped `mindmaps` from approve pre-flight.
+
+**Catalogue additions:** 31 new symptoms (the catalogue had **no musculoskeletal-region entries at all** — no back, shoulder, hip, sciatica, rib, cough — which was collapsing 17 entries onto 6 generic proxies). Also `lutein`, and `chaste-tree-berry` merged into `chasteberry` with `vitex` as an alias. Collisions now 0.
+
+**Ingest was chat-authored, not API.** The first 87 entries went through `fmdb ingest` until the API hit its usage cap; the remaining 36 were authored directly in chat at $0 and scored BETTER (0 words of verbatim overlap vs up to 11, and it could reuse 5 existing practices the blind API batches duplicated). This is now a standing rule — see the memory note.
+
+**Key invariants (v0.77):**
+- `motion_shape` is assigned by the clustering pass over the whole corpus. The ingest enricher forces it to `None`; the extractor must never set it, and a test asserts that.
+- `deriveSomatic` fails CLOSED — unresolvable slug, unassigned shape, or a timed practice with no steps all yield `null` rather than a degraded card. The slug reaches a filesystem path and is regex-guarded against traversal.
+- Published plans are frozen. The everyday path for adding a practice is **Client → Plan tab → Quick edit practices**, which mutates the published YAML in place and appends a `status_history` line. `updatePlan` and `updatePlanForChat` both refuse published plans.
+- `why_it_works` is COACH-facing ("transient lower esophageal sphincter relaxations"); the client card shows the plainer `summary`.
+- The 32 inquiry questions that ran closest to the source were reworded — source overlap went from 32 questions at ≥8 verbatim words to **0**.
+
+**v0.78 — the client-facing read + the Today collapse.** The book's reading now reaches the CLIENT, not just the coach.
+
+- **Plan tab → "Understanding your body".** Per condition: the map's `reframe`, its `inquiry_question`, and the practice for that same condition with a Start button. The framing line ("invitations to notice — never an explanation for why something happened") is load-bearing, not decoration: the single failure mode of this whole layer is an association being read as a cause. Do not soften it into a claim.
+- **Matched by CONDITION, never by practice.** `src/lib/fmdb/somatic-read.ts` mirrors `fmdb/assess/somatic_read.py` (the client app cannot shell out — `client-app.ts` reads the catalogue off disk). Pinned by `somatic-read.test.ts` against `__fixtures__/somatic-read-python.json`, captured from the real Python over the real catalogue; **regenerate that fixture by hand whenever the matcher legitimately changes.** The earlier by-practice lookup put "ROSACEA — WHAT YOU CANNOT HIDE" in front of a constipation client and has been deleted.
+- **Do NOT "optimise" the index to only the slugs maps target.** Eleven targets (`hypertension`, `migraine`, `asthma`, `palpitations`, …) are ALSO aliases of another entity, so a reduced index resolves them to the wrong map. Full index = 42ms/process, memoised.
+- **Three gates, all fail closed:** `Client.mind_body_depth` (`None`/off → nothing; `resets_only` → practices but no reading; `full` → both) AND the map being `general` + ungated AND a non-empty reframe. Coach sets depth from the Mind-body read panel (`setMindBodyDepth`, the only writer).
+- **Today is one card, not four.** `MindBodyEntryCard` asks "How are you feeling right now?" and routes six first-person chips (two positive) to breathing / sleep / somatic / EFT. Routing is pure and tested in `mind-body-routing.ts`; every chip falls back rather than dead-ending, which is why the reply copy never names a technique.
+- **The seven players are drawn additively** (`somatic-shapes.ts`, split out of `ochre-somatic.tsx`). Source-over turned warm translucent light into mud. Fixed while there: the overlay close button was an empty SVG (`x` was missing from the icon registry), the ground was near-black rather than ochre, the canvas ground wash left a visible square seam, and load_release's ripples flew off-canvas within a second of the snap that IS the practice.
+
+**Pending (v0.78):** trigger-vs-symptom logging (the only route that helps the metabolic cohort, and what makes any read testable rather than asserted) · question drip · thread constellation on Progress · graduation keepsake · prospects-vs-clients separation (in flight) · the practice button still shows the catalogue's clinical `display_name` ("Gastrocolic Rhythm") to the client.
+
+---
+
+**v0.76** — Nutrient system deepened: table hardened, drafter balances, coverage mapped, client sees warm nourishment notes.
 
 Four follow-ons to v0.75's nutrient engine, all shipped (main + pm2 + Fly):
 - **Phase A — hardened the ingredient table.** A 25-agent skeptical workflow cross-checked all 200 ingredients in `_ingredient_nutrients.yaml` vs IFCT 2017 / USDA FDC. 6 corrections applied (ajwain fat/fibre, tendli potassium, methi iron, vanilla + cacao kcal); rest confirmed in tolerance. `_meta.verified` stamped; all 316 recipes recomputed.

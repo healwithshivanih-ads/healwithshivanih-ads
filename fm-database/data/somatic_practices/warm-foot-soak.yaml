@@ -1,0 +1,53 @@
+slug: warm-foot-soak
+display_name: Warm Foot Soak
+aliases: []
+category: touch
+body_region: legs_feet
+position: seated
+summary: A ten-minute warm soak with attention on releasing the arches.
+why_it_works: Warmth reduces fascial tone and nociceptive input through the sole, and the enforced
+  stillness of a soak is often the only unhurried moment in the person's day.
+steps:
+- label: Fill and settle
+  cue: Fill a basin with comfortably warm water and lower both feet in.
+  secs: 60
+  action: rest
+- label: Let the arches go
+  cue: Breathe slowly. Let the arches spread and the toes uncurl — no effort.
+  secs: 240
+  action: release
+- label: Move a little
+  cue: Wiggle the toes gently, then let them be still again.
+  secs: 90
+  action: release
+- label: Rest
+  cue: Stay with the warmth for the last few minutes.
+  secs: 300
+  action: rest
+reps: null
+duration_seconds: 690
+bilateral: false
+timed: true
+equipment:
+- A basin
+- Warm water
+motion_shape: release
+contraindications:
+- Diabetes or any peripheral neuropathy — test the water temperature by hand, never by foot, and keep
+  it under 37C to avoid scalding an insensate foot
+- Open wounds or ulceration on the feet
+- Peripheral arterial disease
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- plantar-fasciitis
+notes_for_coach: The neuropathy caution is essential in the diabetic cohort — an insensate foot cannot
+  report a burn.
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

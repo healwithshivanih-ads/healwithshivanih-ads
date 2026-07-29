@@ -1,0 +1,55 @@
+slug: somatic-map-diarrhea
+display_name: Diarrhea — Jettisoning Everything to Flee
+target_kind: symptom
+target_slug: diarrhea
+sensitivity: general
+differential_note: Rule out infectious gastroenteritis, coeliac disease, IBD, SIBO,
+  microscopic colitis, bile acid malabsorption, food intolerances, medication side
+  effects (antibiotics, metformin, SSRIs, laxative overuse), and hyperthyroidism before
+  any emotional reading. Bloody diarrhoea, fever, or significant weight loss requires
+  urgent medical assessment.
+emotional_roots:
+- pattern: Fight-or-flight emptying
+  note: In a genuine survival response, the gut empties rapidly to reduce body weight
+    and redirect energy to the limbs. Chronic stress-induced diarrhoea may reflect
+    a nervous system that has never received the all-clear signal and keeps triggering
+    this response.
+- pattern: Constant threat perception
+  note: When the nervous system is perpetually scanning for danger — particularly
+    in people whose early environments were unpredictable — the gut may never settle
+    into the rest-and-digest state needed for normal motility.
+- pattern: Rejection
+  note: Some somatic frameworks observe that diarrhoea can reflect the body actively
+    refusing to absorb something — an experience, a situation, a reality — that it
+    will not accept. This is an association, not a cause.
+reframe: Your gut has been on high alert, doing its best to protect you from something
+  it read as dangerous. The question is whether the danger it is responding to is
+  current, and whether it can be given the signal that things are different now.
+inquiry_question: What are you trying to escape or avoid right now?
+somatic_practice: box-breathing
+also_consider:
+  supplements:
+  - psyllium-husk
+  - probiotics
+  practical:
+  - Avoid caffeine before stressful events — it stimulates gut motility further
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Diarrhoea reliably occurs before exams, presentations, or difficult conversations
+- Client reports a history of early-life unpredictability or insecurity
+- Symptoms absent on relaxed days, present on high-demand days
+notes_for_coach: Box breathing is well-evidenced for reducing autonomic arousal and
+  is a practical immediate tool. Persistent diarrhoea always warrants medical evaluation
+  regardless of apparent stress connection.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 59. Diarrhea — EMOTIONAL ROOT
+  quote: Chronic stress-induced diarrhea indicates a nervous system that's constantly
+    perceiving threat.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

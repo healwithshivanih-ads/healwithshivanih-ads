@@ -1,0 +1,60 @@
+slug: glute-trigger-point-release
+display_name: Glute Trigger Point Release
+category: touch
+body_region: pelvis
+position: seated
+summary: Using a firm ball to apply sustained pressure to tender spots in the gluteal muscles, releasing
+  chronic pelvic holding patterns.
+why_it_works: Sustained mechanical pressure on myofascial trigger points in the gluteal muscles interrupts
+  the pain-spasm cycle and reduces chronic pelvic floor tension, indirectly relieving pressure on
+  the anorectal venous plexus.
+steps:
+- label: Position the ball
+  cue: Place a tennis ball or firm massage ball on the floor. Lower yourself onto it so the ball is
+    under one buttock — not directly beneath the tailbone or anus, but under the fleshy part of the
+    glute muscle.
+  action: rest
+  secs: 15
+- label: Shift and explore
+  cue: Slowly rock and shift your weight across the ball, searching for spots that feel tender or
+    tight.
+  action: press
+  secs: 20
+- label: Hold on tender spots
+  cue: When you find a sore spot, pause there. Breathe slowly and evenly and stay on that point until
+    you feel the tension begin to soften — roughly 30 to 60 seconds.
+  action: hold
+  secs: 45
+- label: Switch sides
+  cue: Carefully shift the ball to the opposite buttock and repeat the same slow exploration and holding
+    process.
+  action: press
+  secs: 80
+duration_seconds: 160
+timed: true
+equipment:
+- tennis ball or firm massage ball
+contraindications:
+- Active hemorrhoidal flare with severe pain — modify pressure
+- Recent perineal or rectal surgery
+- Coccyx fracture or tailbone injury
+linked_to_topics:
+- hemorrhoids
+- pelvic-floor-dysfunction
+aliases: []
+linked_to_symptoms: []
+notes_for_coach: ''
+bilateral: false
+motion_shape: sustained_pressure
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 80. Hemorrhoids — SOMATIC RESET
+  quote: Sit on a tennis ball or firm massage ball, positioning it under one glute at a time—not directly
+    on the anus, but on the surrounding muscles. Shift your weight slowly, finding tender spots. When
+    you find one, breathe and stay for 30-60 seconds until it softens. Move to the other side.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

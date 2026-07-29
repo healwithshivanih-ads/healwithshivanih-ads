@@ -1,0 +1,57 @@
+slug: somatic-map-chronic-throat-clearing
+display_name: Chronic Throat Clearing
+target_kind: symptom
+target_slug: hoarseness
+sensitivity: general
+differential_note: 'Must exclude: laryngopharyngeal reflux (LPR) and GERD, post-nasal
+  drip from rhinitis or sinusitis, vocal cord dysfunction, medication side effects
+  (especially ACE inhibitors), allergic pharyngitis, chronic sinusitis, or habit/tic
+  disorder. LPR is extremely common and should be assessed before any emotional pattern
+  is introduced.'
+emotional_roots:
+- pattern: Blocked desire to speak
+  note: Chronic throat clearing is often observed in people who feel they don't have
+    permission to fully use their voice — whether due to early experiences of being
+    talked over, silenced, or told their opinions didn't matter.
+- pattern: Minimised needs and unspoken anger
+  note: A pattern of consistently deprioritising one's own needs or suppressing irritation
+    can show up in the throat as a persistent need to 'clear the way' that never fully
+    resolves.
+- pattern: Anxiety-driven muscular tension cycle
+  note: Stress and anxiety tighten the throat muscles, creating a sensation that something
+    needs clearing, which prompts clearing, which can paradoxically maintain the tension
+    in a reinforcing loop.
+reframe: Your voice and what you have to say are worth hearing. You do not need to
+  earn space in a conversation or ask permission before you speak.
+inquiry_question: What would you say right now, in this moment, if you knew with certainty
+  that your words mattered and you had full permission?
+somatic_practice: vigorous-gargling
+also_consider:
+  supplements:
+  - apple-cider-vinegar
+  practical:
+  - Assess for and address acid reflux as a physiological contributor
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Throat clearing increases during conversations, presentations, or interactions with
+  authority figures
+- Client describes frequently starting to say something and then stopping
+- History of childhood environment where the client was frequently ignored, interrupted,
+  or silenced
+notes_for_coach: The nearest available symptom slug is 'hoarseness'; chronic throat
+  clearing is a closely related pharyngeal symptom. Ensure LPR is excluded — it is
+  the most common physical driver. Apple cider vinegar maps to the 'apple-cider-vinegar'
+  supplement slug.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 28. Chronic Throat Clearing
+  quote: Often reflects a desire to speak that feels blocked. Common in people who
+    don't feel safe or permitted to use their voice; often rooted in childhood experiences
+    of being silenced or ignored.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

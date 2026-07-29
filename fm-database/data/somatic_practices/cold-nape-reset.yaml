@@ -1,0 +1,53 @@
+slug: cold-nape-reset
+display_name: Cold Nape Reset
+category: touch
+body_region: throat_neck
+position: any_position
+summary: Applying a cold damp cloth to the base of the skull at the nape of the neck to interrupt
+  the nausea reflex via vagal cooling.
+why_it_works: The suboccipital region is richly innervated with vagus nerve afferents. Cold applied
+  to this area activates the diving reflex and vagal tone, shifting the nervous system away from the
+  sympathetic nausea-generating state toward parasympathetic calm.
+steps:
+- label: Prepare the cloth
+  cue: Soak a small towel or face cloth in cold water. Wring it out thoroughly so it is cold and damp
+    but not dripping.
+  action: rest
+  secs: 20
+- label: Apply to the nape
+  cue: Place the cold cloth on the back of your neck at the base of your skull. Hold it in position.
+  action: press
+  secs: 10
+- label: Breathe through the nose
+  cue: Close your mouth and breathe slowly and evenly through your nose. Keep your focus on the cool
+    sensation at your neck.
+  action: hold
+  secs: 130
+duration_seconds: 160
+timed: true
+equipment:
+- small towel or face cloth
+- cold water
+contraindications:
+- Raynaud's phenomenon or cold hypersensitivity
+- Cervical spine injury or instability
+- Preeclampsia — seek medical care first
+linked_to_topics:
+- pregnancy-first-trimester
+aliases: []
+linked_to_symptoms: []
+notes_for_coach: ''
+bilateral: false
+motion_shape: sustained_pressure
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 83. Hyperemesis Gravidarum — SOMATIC RESET
+  quote: Soak a small towel or cloth in cold water. Wring it out and place it on the back of your
+    neck, right at the base of your skull. Hold it there. Breathe slowly through your nose. Stay for
+    2-3 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

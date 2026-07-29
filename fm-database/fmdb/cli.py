@@ -54,6 +54,10 @@ from .loader import (
     load_titration_protocols,
     load_tissue_salt,
     load_tissue_salts,
+    load_somatic_map,
+    load_somatic_maps,
+    load_somatic_practice,
+    load_somatic_practices,
     load_mechanism,
     load_mechanisms,
     load_source,
@@ -1017,6 +1021,83 @@ def cmd_show_home_remedy(args: argparse.Namespace) -> None:
             print(f"    - {s.id}{loc}{quote}")
     print(f"  Updated: {hr.updated_at} by {hr.updated_by}")
 
+
+
+def cmd_somatic_practices(args: argparse.Namespace) -> None:
+    items = load_somatic_practices(DATA_DIR)
+    if not items:
+        print("(no somatic practices)")
+        return
+    for sp in items:
+        shape = sp.motion_shape or "-"
+        secs = f"{sp.duration_seconds}s" if sp.duration_seconds else "—"
+        print(f"  {sp.slug:34s}  {sp.category.value:12s}  {shape:16s}  {secs:>6s}  {len(sp.steps)} steps  {sp.display_name}")
+
+
+def cmd_show_somatic_practice(args: argparse.Namespace) -> None:
+    sp = load_somatic_practice(DATA_DIR, args.slug)
+    print(f"{sp.display_name}  ({sp.slug})  v{sp.version}  [{sp.status.value}]")
+    print(f"  Category:     {sp.category.value}   Region: {sp.body_region.value}   Position: {sp.position.value}")
+    print(f"  Motion shape: {sp.motion_shape or '(unassigned — set by the clustering pass)'}")
+    print(f"  Bilateral: {sp.bilateral}   Timed: {sp.timed}   Reps: {sp.reps or '—'}   Total: {sp.duration_seconds or '—'}s")
+    if sp.summary:
+        print(f"  Summary:      {sp.summary.strip()}")
+    if sp.why_it_works:
+        print(f"  Why it works: {sp.why_it_works.strip()}")
+    if sp.steps:
+        print("  Steps:")
+        for i, st in enumerate(sp.steps, 1):
+            secs = f" ({st.secs}s)" if st.secs else ""
+            act = f" [{st.action}]" if st.action else ""
+            print(f"    {i}. {st.label}{secs}{act} — {st.cue}")
+    for label, vals in (("Equipment", sp.equipment), ("Contraindications", sp.contraindications),
+                        ("Symptoms", sp.linked_to_symptoms), ("Topics", sp.linked_to_topics)):
+        if vals:
+            print(f"  {label}:")
+            for v in vals:
+                print(f"    - {v}")
+    print(f"  Updated: {sp.updated_at} by {sp.updated_by}")
+
+
+def cmd_somatic_maps(args: argparse.Namespace) -> None:
+    items = load_somatic_maps(DATA_DIR)
+    if not items:
+        print("(no somatic maps)")
+        return
+    for sm in items:
+        gate = "GATED" if sm.coach_only_note else ""
+        print(f"  {sm.slug:34s}  {sm.target_kind.value:8s}  {sm.sensitivity.value:11s}  {len(sm.emotional_roots)} roots  {gate:5s}  {sm.display_name}")
+
+
+def cmd_show_somatic_map(args: argparse.Namespace) -> None:
+    sm = load_somatic_map(DATA_DIR, args.slug)
+    print(f"{sm.display_name}  ({sm.slug})  v{sm.version}  [{sm.status.value}]")
+    print(f"  Target:      {sm.target_kind.value} / {sm.target_slug}")
+    print(f"  Sensitivity: {sm.sensitivity.value}")
+    if sm.coach_only_note:
+        print(f"  !! NEVER AUTO-SURFACE: {sm.coach_only_note.strip()}")
+    if sm.emotional_roots:
+        print("  Emotional roots:")
+        for r in sm.emotional_roots:
+            print(f"    - {r.pattern}: {r.note.strip()}" if r.note else f"    - {r.pattern}")
+    if sm.reframe:
+        print(f"  Reframe:     {sm.reframe.strip()}")
+    if sm.inquiry_question:
+        print(f"  Inquiry:     {sm.inquiry_question.strip()}")
+    if sm.somatic_practice:
+        print(f"  Practice:    {sm.somatic_practice}")
+    ac = sm.also_consider
+    for label, vals in (("supplements", ac.supplements), ("home remedies", ac.home_remedies),
+                        ("cooking", ac.cooking_adjustments), ("practical", ac.practical)):
+        if vals:
+            print(f"  Also consider ({label}): " + ", ".join(vals))
+    if sm.pattern_signals:
+        print("  Pattern signals:")
+        for v in sm.pattern_signals:
+            print(f"    - {v}")
+    if sm.differential_note:
+        print(f"  Differential: {sm.differential_note.strip()}")
+    print(f"  Updated: {sm.updated_at} by {sm.updated_by}")
 
 def cmd_tissue_salts(args: argparse.Namespace) -> None:
     items = load_tissue_salts(DATA_DIR)
@@ -2362,6 +2443,15 @@ def main() -> None:
     show_ts = sub.add_parser("show-tissue-salt", help="show one tissue salt")
     show_ts.add_argument("slug")
     show_ts.set_defaults(func=cmd_show_tissue_salt)
+
+    sub.add_parser("somatic-practices", help="list all somatic practices (resets)").set_defaults(func=cmd_somatic_practices)
+    sub.add_parser("somatic-maps", help="list all somatic maps (emotional readings)").set_defaults(func=cmd_somatic_maps)
+    show_sp = sub.add_parser("show-somatic-practice", help="show one somatic practice")
+    show_sp.add_argument("slug")
+    show_sp.set_defaults(func=cmd_show_somatic_practice)
+    show_sm = sub.add_parser("show-somatic-map", help="show one somatic map")
+    show_sm.add_argument("slug")
+    show_sm.set_defaults(func=cmd_show_somatic_map)
 
     sub.add_parser("protocols", help="list all FM protocols").set_defaults(func=cmd_protocols)
     show_pr = sub.add_parser("show-protocol", help="show one protocol")

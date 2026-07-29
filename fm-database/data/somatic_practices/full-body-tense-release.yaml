@@ -1,0 +1,51 @@
+slug: full-body-tense-release
+display_name: Full-Body Tense and Release
+aliases: []
+category: discharge
+body_region: whole_body
+position: lying
+summary: Three rounds of whole-body contraction followed by complete release.
+why_it_works: A brief maximal contraction followed by complete release gives the nervous system a
+  clear contrast between held and unheld, which chronically braced muscle has usually lost.
+steps:
+- label: Lie down
+  cue: Lie on your back, arms by your sides.
+  secs: 20
+  action: rest
+- label: Tense everything
+  cue: Tighten your whole body at once — legs, arms, face, fists. As tight as is comfortable.
+  secs: 5
+  action: hold
+- label: Let go completely
+  cue: Release all at once and go entirely limp. Notice the difference.
+  secs: 25
+  action: release
+- label: Repeat
+  cue: Two more rounds, then stay still on the last release and let the softness spread.
+  secs: 120
+  action: release
+reps: 3
+duration_seconds: 170
+bilateral: false
+timed: true
+equipment: []
+motion_shape: load_release
+contraindications:
+- Uncontrolled hypertension — maximal contraction transiently raises blood pressure; use a gentle
+  contraction instead
+- Acute muscle injury or recent surgery
+- Cramp-prone clients should reduce the tensing effort
+sensitivity: general
+linked_to_symptoms:
+- muscle-cramps
+linked_to_topics: []
+notes_for_coach: If tensing triggers a cramp, drop to about half effort — the release is the active
+  ingredient, not the squeeze.
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

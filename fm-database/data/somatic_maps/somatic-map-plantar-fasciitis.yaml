@@ -1,0 +1,43 @@
+slug: somatic-map-plantar-fasciitis
+display_name: Plantar Fasciitis — Bracing Against the Path Ahead
+target_kind: topic
+target_slug: plantar-fasciitis
+sensitivity: general
+emotional_roots:
+- pattern: Fear of what is coming
+  note: The feet take us forward. Pain in the sole can accompany real reluctance about
+    the direction life is heading.
+- pattern: Carrying too much with too little under you
+  note: The fascia complains when load outstrips support — often literally true of
+    the person's week as well as their arch.
+reframe: You do not need to see the whole route to take the next step. The future
+  is not one enormous thing to face at once; it is the next step, and then the one
+  after.
+inquiry_question: What about what is coming frightens you, and what would make the
+  next step feel smaller?
+somatic_practice: warm-foot-soak
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Proper arch support is the single highest-yield change
+  - Night splints hold the fascia stretched through sleep
+  - Rolling the sole over a frozen bottle eases inflammation
+pattern_signals:
+- Onset coincided with a major life decision rather than a change in activity
+differential_note: Plantar fasciitis is a mechanical overload condition. Address footwear,
+  arch support, calf and Achilles tightness, training load and body weight first.
+  Exclude calcaneal stress fracture, tarsal tunnel syndrome, fat-pad atrophy, and
+  — where heel pain is bilateral and inflammatory in character — seronegative spondyloarthropathy.
+coach_only_note: ''
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

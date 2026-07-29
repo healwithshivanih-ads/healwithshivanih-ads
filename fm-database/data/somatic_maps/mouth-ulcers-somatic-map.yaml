@@ -1,0 +1,55 @@
+slug: mouth-ulcers-somatic-map
+display_name: Mouth Ulcers / Canker Sores
+target_kind: symptom
+target_slug: canker-sores
+sensitivity: general
+emotional_roots:
+- pattern: Words held back
+  note: Canker sores may appear at times when a person has been holding back something
+    they wanted to say — swallowing criticism, grievance, or truth at the last moment
+    — leaving an unspoken charge in the tissue of the mouth.
+- pattern: Self-blame and absorbed blame
+  note: Taking on others' criticism or blame, or turning a harsh inner voice on oneself,
+    may be associated with a corrosive inner environment that occasionally surfaces
+    visibly.
+- pattern: Stress and emotional pressure
+  note: Ulcers often coincide with periods of heightened stress or emotional suppression,
+    consistent with the known relationship between immune function and emotional regulation.
+reframe: What you hold in doesn't disappear — the blame you absorbed, the truths you
+  swallowed, the way you speak to yourself when no one is watching. You are allowed
+  to choose a kinder internal voice.
+inquiry_question: Whose words are you still chewing over?
+somatic_practice: upper-body-neurogenic-shaking
+also_consider:
+  supplements:
+  - l-lysine
+  - vitamin-b12
+  - folate
+  practical:
+  - Avoid spicy or acidic foods during active outbreaks
+  home_remedies:
+  - turmeric-honey-canker-sore
+  cooking_adjustments: []
+pattern_signals:
+- Ulcers reliably appear during or after high-conflict or high-stress periods
+- Client reports a tendency toward self-critical inner dialogue
+- History of not speaking up or suppressing responses in relationships
+- Recurrent rather than isolated ulcer episodes
+differential_note: 'Recurrent aphthous ulcers have several established triggers and
+  causes: B12 or folate deficiency, iron deficiency anaemia, coeliac disease, Crohn''s
+  disease or other IBD (oral manifestations), Behçet''s syndrome, SLE, and viral causes.
+  Persistent, large (>1 cm), or non-healing oral ulcers require urgent medical assessment
+  to exclude malignancy. Frequent recurrences warrant coeliac and nutritional screening.'
+notes_for_coach: L-lysine and B12/folate deficiency are well-supported contributors
+  — address nutritional workup before assuming emotional causality.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 21. Mouth Ulcers / Canker Sores — EMOTIONAL ROOT
+  quote: Festering words held back by the lips. Things you wanted to say but didn't,
+    now rotting inside the mouth where they were stopped.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

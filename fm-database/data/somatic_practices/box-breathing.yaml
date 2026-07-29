@@ -1,0 +1,64 @@
+slug: box-breathing
+display_name: Box Breathing
+category: breath
+body_region: chest_diaphragm
+position: any_position
+summary: A regulated breath pattern using equal counts of inhale, hold, exhale, and hold — tracing
+  a square rhythm — to communicate safety to a nervous system locked in a threat state and slow gut
+  motility.
+why_it_works: Equal-phase breathing at slow cadence directly activates the baroreflex and increases
+  heart-rate variability, indicating parasympathetic upregulation. The hold phases after both inhale
+  and exhale activate CO₂-sensitive chemoreceptors, collectively braking sympathetic overdrive in
+  the gut.
+steps:
+- label: Inhale
+  cue: Breathe in slowly and steadily through your nose, counting silently to four.
+  action: expand
+  secs: 4
+- label: Hold after inhale
+  cue: Hold your breath at the top — lungs comfortably full — for a count of four.
+  action: hold
+  secs: 4
+- label: Exhale
+  cue: Release your breath slowly and evenly through the mouth or nose for a count of four.
+  action: release
+  secs: 4
+- label: Hold after exhale
+  cue: Pause at the bottom — lungs gently empty — for a count of four before the next breath.
+  action: hold
+  secs: 4
+- label: Repeat the cycle
+  cue: Continue tracing this same square pattern, keeping each side equal, for the full duration.
+  action: expand
+  secs: 264
+timed: true
+duration_seconds: 280
+bilateral: false
+linked_to_symptoms:
+- diarrhea
+- gi-symptoms-under-stress
+- anxiety
+linked_to_topics:
+- gut-brain-axis
+- chronic-stress
+- nervous-system-regulation
+notes_for_coach: This practice is widely validated for autonomic regulation and is very accessible.
+  Clients prone to breath-holding anxiety may initially prefer a 3-count to ease in. Used regularly
+  before meals, it can reduce stress-triggered gut hypermotility.
+contraindications:
+- Uncontrolled breath-holding may raise intrathoracic pressure — use with caution in uncontrolled
+  hypertension
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 59. Diarrhea — SOMATIC RESET
+  quote: Inhale for 4 counts. Hold for 4 counts. Exhale for 4 counts. Hold for 4 counts. Repeat this
+    square pattern for 3-5 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

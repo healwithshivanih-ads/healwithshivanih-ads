@@ -405,3 +405,85 @@ class SourceQuality(str, Enum):
     high = "high"
     moderate = "moderate"
     low = "low"
+
+
+class SomaticCategory(str, Enum):
+    """What kind of thing a somatic practice actually is.
+
+    Deliberately describes the MODALITY, not the motion shape — the motion
+    shapes are derived empirically from the step data (see SomaticPractice
+    .motion_shape), not assumed up front.
+    """
+    breath = "breath"                # paced / diaphragmatic / extended-exhale work
+    discharge = "discharge"          # completing an interrupted defensive response
+    touch = "touch"                  # self-contact, pressure, massage
+    movement = "movement"            # deliberate ranged movement
+    imagery = "imagery"              # visualisation, safe-place, internal attention
+    orientation = "orientation"      # looking around, grounding to the room
+    behavioural = "behavioural"      # a protocol applied to an activity (e.g. eating)
+    other = "other"
+
+
+class SomaticBodyRegion(str, Enum):
+    head_face = "head_face"
+    jaw = "jaw"
+    throat_neck = "throat_neck"
+    shoulders_upper_back = "shoulders_upper_back"
+    arms_hands = "arms_hands"
+    chest_diaphragm = "chest_diaphragm"
+    abdomen = "abdomen"
+    pelvis = "pelvis"
+    lower_back_hips = "lower_back_hips"
+    legs_feet = "legs_feet"
+    whole_body = "whole_body"
+
+
+class SomaticPosition(str, Enum):
+    seated = "seated"
+    standing = "standing"
+    lying = "lying"
+    any_position = "any_position"
+
+
+class SomaticSensitivity(str, Enum):
+    """How safely an emotional-root reading can be surfaced to a client.
+
+    general    — safe to show in the app to any client on `full` depth.
+    sensitive  — coach judgement needed; the framing can land as blame.
+    coach_only — never auto-surface; session material only.
+    """
+    general = "general"
+    sensitive = "sensitive"
+    coach_only = "coach_only"
+
+
+class SomaticTargetKind(str, Enum):
+    """What catalogue entity a SomaticMap hangs off.
+
+    The book's 123 chapters land across BOTH symptoms and topics in this
+    catalogue (acid reflux is a symptom; uterine fibroids is a topic), so the
+    map points at either rather than living on one entity.
+    """
+    symptom = "symptom"
+    topic = "topic"
+
+
+class MotionShape(str, Enum):
+    """Which player renders a somatic practice in the client app.
+
+    NOT guessed at extraction time. Derived by clustering the whole practice
+    corpus on objective step data (action verbs, holds, bilaterality, whether
+    it is a timed session at all) — a four-shape guess from a 13-entry sample
+    was already wrong at 87 entries and wrong again at 123. Seven is the count
+    the full library actually needs.
+
+    `bilateral` and repeated rounds are MODIFIERS layered on any shape, not
+    shapes of their own.
+    """
+    breath_excursion = "breath_excursion"      # expand / hold / shrink — the existing BreathOverlay
+    continuous_travel = "continuous_travel"    # a point tracing a path: circling, rocking, tracking
+    release = "release"                        # decay only, no effort phase
+    sustained_pressure = "sustained_pressure"  # load held, no release phase
+    load_release = "load_release"              # effort builds, then lets go
+    still = "still"                            # imagery and grounding; nothing moves
+    checklist = "checklist"                    # a protocol applied to an activity — no player

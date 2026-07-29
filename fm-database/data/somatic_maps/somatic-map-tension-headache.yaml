@@ -1,0 +1,53 @@
+slug: somatic-map-tension-headache
+display_name: Tension Headaches — Somatic Reading
+target_kind: symptom
+target_slug: tension-headache
+sensitivity: general
+differential_note: Exclude hypertensive headache (check BP), cervicogenic headache
+  (cervical spine dysfunction), medication-overuse headache, vision changes requiring
+  ophthalmology review, and red-flag headaches (sudden onset, worst-ever, associated
+  neurological signs) before any emotional-pattern work.
+emotional_roots:
+- pattern: Self-criticism
+  note: Some people who carry persistent tension headaches report a relentless inner
+    voice saying they are not doing enough or not good enough — a kind of chronic
+    mental efforting that never fully rests.
+- pattern: Fear of getting it wrong
+  note: There can be a pattern of holding very tightly to control — as if relaxing
+    vigilance for a moment will result in consequences, disappointment, or mistakes
+    that cannot be undone.
+- pattern: Overthinking
+  note: When problems get worked and reworked in the mind rather than allowed to move
+    through the body, the unresolved tension accumulates in the neck and shoulder
+    girdle.
+reframe: You don't have to solve everything before you rest. Unsolved problems are
+  a permanent feature of a full human life — they are not evidence that you are failing.
+  Your value doesn't depend on how much you can carry.
+inquiry_question: What feelings might come up for you if you gave yourself permission
+  to slow down before your body forced you to?
+somatic_practice: neck-shoulder-drop-release
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  home_remedies: []
+  practical:
+  - Peppermint essential oil applied to the temples — diluted in a carrier oil
+  cooking_adjustments: []
+pattern_signals:
+- Client describes themselves as a perfectionist or high-achiever who rarely rests
+- Reports that headaches appear after long periods of concentration or when a project
+  finally finishes
+- Difficulty delegating or tolerating unfinished tasks
+- Shoulders visibly raised during conversation
+notes_for_coach: Source is a book (moderate quality); emotional associations are observational,
+  not clinically validated. Always screen for red-flag headache features and encourage
+  GP review for frequent or severe presentations.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 01. Tension Headaches
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -339,6 +339,21 @@ class Client(BaseModel):
     age_band: str = ""                  # legacy / derived from DOB; kept for backward compat
     sex: str                            # F | M | other
     active_conditions: list[str] = Field(default_factory=list)
+    # How much of the mind-body layer this client can be shown UNSUPERVISED.
+    #
+    # The second of the two gating axes described on SomaticMap. The first is
+    # the entry's own `sensitivity`; this one is the person. Both must permit,
+    # and `coach_only_note` overrides both.
+    #
+    # Deliberately defaults to None, and None means NOTHING is shown: a client
+    # reads "your body may be holding what you won't put down" without a coach
+    # in the room only because Shivani decided they could. Absent consent is
+    # not consent.
+    #
+    #   None / "off"   — no mind-body content in the app (default)
+    #   "resets_only"  — the guided practices, but never the emotional reading
+    #   "full"         — practices plus the client-safe reads
+    mind_body_depth: Optional[str] = None
     medical_history: list[str] = Field(default_factory=list)  # past diagnoses, in-remission conditions, surgeries, prior dx with current status
     current_medications: list[str] = Field(default_factory=list)
     # v2.4 — supplements split from medications so the AI doesn't confuse
@@ -975,6 +990,13 @@ class PracticeItem(BaseModel):
     cadence: str                         # daily | nightly | weekly | mid-morning | etc.
     details: str = ""
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
+    # Optional link to a catalogue somatic_practice. When set, the client app
+    # resolves the practice BY SLUG and renders its real timed steps, instead of
+    # pattern-matching the free-text name (which silently degrades a specific
+    # practice into a generic one — a gastrocolic-rhythm prescription rendering
+    # as a plain 4-in/6-out breathing session, losing the hand pressure that IS
+    # the practice). Leave None for ordinary freeform practices.
+    somatic_practice: Optional[str] = None
 
 
 class CustomRemedy(BaseModel):

@@ -1,0 +1,55 @@
+slug: cluster-headaches-somatic-map
+display_name: Cluster Headaches
+target_kind: symptom
+target_slug: headache
+sensitivity: general
+emotional_roots:
+- pattern: Suppressed frustration and self-imposed pressure
+  note: Cluster headaches may appear more often in people who hold themselves to extremely
+    high standards and accumulate frustration and anger without any outlet, until
+    the body produces an intense, erupting release.
+- pattern: Refusal to rest
+  note: The driven, never-stop pattern — where rest is experienced as failure or weakness
+    — may create an ongoing physiological debt that eventually forces a stop.
+reframe: Much of the pressure you are under may have been self-generated. Your body
+  is not failing you — it is asking, forcefully, for a different relationship with
+  effort and rest.
+inquiry_question: What would come up if you achieved nothing for a day? Which of your
+  needs get called selfish?
+somatic_practice: supported-childs-pose-receiving
+also_consider:
+  supplements:
+  - melatonin
+  practical:
+  - High-dose oxygen therapy is a well-established acute treatment — refer to clinician
+  - Capsaicin applied carefully inside the affected nostril — use only under clinician
+    guidance
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes themselves as driven, high-achieving, or self-critical
+- History of difficulty resting without guilt
+- Anger or frustration that rarely gets expressed
+- Cluster attacks correlate with periods of peak work or performance pressure
+differential_note: Cluster headaches are a specific, diagnosable neurological condition
+  with well-established clinical features (circadian cyclicity, ipsilateral autonomic
+  features, extreme severity). A neurological assessment is essential before any coaching-level
+  intervention. Other differentials include trigeminal neuralgia, secondary headache
+  from intracranial pathology, and paroxysmal hemicrania. High-dose oxygen and triptans
+  are first-line medical treatments.
+notes_for_coach: Cluster headache is a red-flag-adjacent condition. Always confirm
+  diagnosis and ensure the client has a clinician managing the acute treatment before
+  working on lifestyle or somatic contributors. The emotional framing is exploratory,
+  not diagnostic.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 16. Cluster Headaches — EMOTIONAL ROOT
+  quote: Cluster headaches tend to affect driven, self-critical people who create
+    immense internal pressure—to perform, to hold it together, to never need rest.
+    Frustration and anger accumulate without release.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

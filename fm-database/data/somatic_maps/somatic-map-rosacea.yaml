@@ -1,0 +1,47 @@
+slug: somatic-map-rosacea
+display_name: Rosacea — What You Cannot Hide
+target_kind: topic
+target_slug: rosacea
+sensitivity: general
+emotional_roots:
+- pattern: Feeling that shows anyway
+  note: Shame, embarrassment and anger you have tried to contain, arriving on your
+    face regardless.
+- pattern: A nervous system at baseline alarm
+  note: Facial vessels become hyper-reactive not because the skin is faulty but because
+    the alarm never switched off.
+- pattern: The loop
+  note: Flushing causes embarrassment, embarrassment causes flushing, and avoiding
+    situations tightens the whole thing.
+reframe: What if you simply let people see that you have feelings? Something opens
+  between people when you stop hiding it — and the right ones move toward it.
+inquiry_question: What feeling keeps arriving on your face before you have decided
+  to show it?
+somatic_practice: constructive-rest
+also_consider:
+  supplements:
+  - niacinamide
+  - quercetin
+  - dao-enzyme
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Strong link with SIBO — treating the gut often clears the skin
+  - 'Identify triggers: alcohol, spice, temperature extremes, caffeine'
+  - Wine, aged cheese and fermented foods are common provocateurs
+pattern_signals: []
+differential_note: Rosacea is a chronic inflammatory skin condition needing dermatological
+  management. Exclude lupus (malar rash), carcinoid, mastocytosis and menopausal flushing.
+  Ocular rosacea affects a substantial minority and needs ophthalmology — ask about
+  gritty, dry or inflamed eyes.
+coach_only_note: ''
+notes_for_coach: Nazneen (cl-022) is perimenopausal with hot flushes — distinguish
+  flushing from rosacea before either label sticks.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

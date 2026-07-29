@@ -1,0 +1,55 @@
+slug: somatic-map-rounded-shoulders
+display_name: Rounded Shoulders
+target_kind: symptom
+target_slug: tension
+sensitivity: sensitive
+emotional_roots:
+- pattern: Helplessness and hopelessness
+  note: A rounded, collapsed posture can accompany a sense that relief is no longer
+    expected — the body's way of expressing that it has stopped waiting to be helped.
+- pattern: Protective self-shielding
+  note: Curling the chest inward is a natural protective gesture. For people who learned
+    that being visible or prominent invites criticism, this posture can become a default
+    rather than a momentary response.
+- pattern: Body shame and the wish to disappear
+  note: Rounded shoulders are sometimes associated with a desire to minimize physical
+    presence — to take up less space and avoid scrutiny.
+reframe: You can be aware of the pull to stay small without allowing it to make the
+  decisions. Staying small has a cost — it is worth noticing what that cost has been
+  for you.
+inquiry_question: Describe in as much detail as you can what you would be like if
+  you were not afraid of rejection.
+somatic_practice: heart-expansion
+also_consider:
+  supplements: []
+  home_remedies: []
+  practical:
+  - Upper back strengthening exercises (rows, reverse flyes, face pulls) to counterbalance
+    anterior muscle tightness
+  cooking_adjustments: []
+pattern_signals:
+- Visibly forward-rounded shoulder posture at rest
+- Client describes wanting to hide or blend in
+- History of being criticized or humiliated for standing out
+- Body shame or discomfort with physical visibility
+differential_note: Rounded shoulders can reflect structural causes including thoracic
+  kyphosis (postural or Scheuermann's), anterior chest muscle contracture, scoliosis,
+  or osteoporosis-related vertebral compression fractures. These must be assessed
+  by a physiotherapist or physician before attributing posture to emotional patterns.
+  Screen for osteoporosis risk factors, particularly in peri- and post-menopausal
+  clients.
+notes_for_coach: Source is entry 37 of Klein's body-memory book. Body shame can be
+  a sensitive topic — follow the client's lead and do not introduce the body-shame
+  framing unless the client has already indicated this resonates. Sensitivity is set
+  to 'sensitive' because the entry touches on body image.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: Entry 37 — Rounded Shoulders, EMOTIONAL ROOT
+  quote: Rounded shoulders often reflect burdens carried too long. Helpless and hopeless—the
+    posture of someone who's stopped believing relief is coming.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

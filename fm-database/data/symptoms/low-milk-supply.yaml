@@ -1,0 +1,29 @@
+slug: low-milk-supply
+display_name: Low Milk Supply
+aliases:
+- not enough milk
+- milk supply dropping
+- baby not getting enough
+- supply issues
+- insufficient milk
+category: womens_health
+severity: concerning
+description: Perceived or actual insufficient breast milk production. True low supply is less
+  common than perceived low supply; genuine causes include infrequent or ineffective milk removal,
+  retained placenta, thyroid dysfunction, PCOS, insufficient glandular tissue and some medications.
+when_to_refer: Refer to an IBCLC lactation consultant as first line, and to the paediatric team
+  where infant weight gain is inadequate or nappy output is low. Check thyroid and consider
+  retained placenta where supply never established.
+linked_to_topics:
+- hypothyroidism
+- pcos
+linked_to_mechanisms: []
+notes_for_coach: Handle with real care — this is a common site of maternal guilt. Practical
+  lactation support helps far more than any emotional framing, and should come first.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

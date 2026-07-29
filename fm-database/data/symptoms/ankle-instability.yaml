@@ -1,0 +1,28 @@
+slug: ankle-instability
+display_name: Ankle Instability / Recurrent Sprains
+aliases:
+- weak ankle
+- ankle gives way
+- keep spraining my ankle
+- wobbly ankle
+- ankle rolls over
+- unstable ankle
+category: musculoskeletal
+severity: common
+description: A sense of the ankle giving way, with repeated sprains on uneven ground. Usually
+  follows an initial sprain that was never fully rehabilitated, leaving both ligamentous laxity
+  and impaired proprioception.
+when_to_refer: Refer where there is persistent swelling, locking, or inability to weight-bear
+  after injury — exclude fracture and osteochondral lesion. Persistent instability warrants
+  physiotherapy; balance retraining is the highest-yield intervention.
+linked_to_topics: []
+linked_to_mechanisms: []
+notes_for_coach: Proprioceptive retraining prevents re-injury far more reliably than strengthening
+  alone.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

@@ -1,0 +1,30 @@
+slug: frozen-shoulder
+display_name: Frozen Shoulder (Adhesive Capsulitis)
+aliases:
+- adhesive capsulitis
+- stiff shoulder
+- shoulder won't lift
+- can't raise my arm
+- shoulder seized up
+category: musculoskeletal
+severity: concerning
+description: Progressive loss of shoulder movement with pain, characterised by restriction in
+  BOTH active and passive range — the shoulder cannot be moved even by someone else. Runs a
+  freezing, frozen and thawing course over months to years. Markedly more common in diabetes
+  and thyroid disease.
+when_to_refer: Refer for physiotherapy and imaging to distinguish from rotator cuff tear, impingement
+  and glenohumeral arthritis. Loss of PASSIVE range is the distinguishing sign. Screen for undiagnosed
+  diabetes and thyroid disease in anyone presenting with it.
+linked_to_topics:
+- hypothyroidism
+- type-2-diabetes
+linked_to_mechanisms: []
+notes_for_coach: Strongly associated with diabetes and thyroid disease — its appearance is a
+  reason to check both. Recovery is slow; managing expectations is much of the work.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

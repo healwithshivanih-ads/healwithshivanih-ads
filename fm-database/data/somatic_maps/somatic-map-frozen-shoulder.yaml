@@ -1,0 +1,61 @@
+slug: somatic-map-frozen-shoulder
+display_name: Frozen Shoulder
+target_kind: symptom
+target_slug: frozen-shoulder
+sensitivity: sensitive
+emotional_roots:
+- pattern: Life feeling frozen
+  note: Frozen shoulder sometimes accompanies periods when a person feels genuinely
+    stuck — a situation they cannot change, a transition they did not choose, or a
+    loss they have not yet found a way through.
+- pattern: Unprocessed grief
+  note: The shoulder capsule can, in a person's experience, seem to hold what the
+    heart has not yet been able to release — the weight of a relationship ended, a
+    person lost, or a future that did not arrive.
+- pattern: Delayed trauma response
+  note: Sometimes the physical locking down appears months after the event that overwhelmed
+    the nervous system — a body-level completion of something that could not be processed
+    in real time.
+reframe: If it is still affecting you now, it is not the past — it is present experience.
+  That deserves care, not dismissal.
+inquiry_question: What would you need from yourself or from others in order to soften
+  just a little — even if that feels out of reach right now?
+somatic_practice: pendulation
+also_consider:
+  supplements: []
+  home_remedies:
+  - castor-oil-pack
+  practical:
+  - Gentle range-of-motion movement daily, even if only small degrees, to prevent
+    further capsular restriction
+  - Investigate blood sugar regulation and thyroid function — frozen shoulder has
+    established associations with diabetes and hypothyroidism
+  cooking_adjustments: []
+pattern_signals:
+- Onset coincided with a significant loss, upheaval, or period of overwhelm
+- Client describes feeling 'stuck' in multiple life areas simultaneously
+- History of unprocessed bereavement or prolonged unresolved transition
+- Symptom onset occurred months after a stressful period rather than during it
+differential_note: Frozen shoulder (adhesive capsulitis) is a well-defined orthopaedic
+  condition with established associations with type 2 diabetes, hypothyroidism, and
+  Dupuytren's contracture. Full orthopaedic and metabolic workup is required — including
+  fasting glucose, HbA1c, and thyroid panel — before any emotional framing is introduced.
+  Rotator cuff tears, glenohumeral osteoarthritis, and cervical radiculopathy must
+  also be excluded.
+coach_only_note: The framing of grief and loss as connected to frozen shoulder must
+  be held very carefully if the client has experienced recent bereavement, pregnancy
+  loss, or infertility. Do not introduce this reading unsolicited.
+notes_for_coach: Source is entry 35 of Klein's body-memory book. The 'periarthritic
+  personality' literature referenced is historically contested and should not be repeated
+  to clients. The clinical associations with diabetes and thyroid disease are well-supported
+  — always flag these for medical review.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: Entry 35 — Frozen Shoulder, EMOTIONAL ROOT
+  quote: Frozen shoulder often appears when life itself feels frozen. Stuck in a situation
+    you can't change, a transition you didn't choose, a loss you haven't processed.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

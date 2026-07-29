@@ -1,0 +1,53 @@
+slug: legs-up-the-wall
+display_name: Legs Up The Wall
+aliases: []
+category: movement
+body_region: legs_feet
+position: lying
+summary: A restorative inversion with the legs supported against a wall.
+why_it_works: Inverting the legs assists venous and lymphatic return from the lower limbs and shifts
+  the body out of the sustained standing or sitting posture that let fluid pool.
+steps:
+- label: Get into position
+  cue: Sit sideways beside a wall, then swing your legs up so they rest against it with your back
+    on the floor.
+  secs: 45
+  action: rest
+- label: Open the arms
+  cue: Let your arms fall open at your sides. Shoulders soft.
+  secs: 30
+  action: release
+- label: Breathe and stay
+  cue: Slow breathing. Let the legs be completely passive — the wall is doing the work.
+  secs: 600
+  action: rest
+- label: Come down slowly
+  cue: Bend the knees to the chest, roll to one side, and come up unhurried.
+  secs: 45
+  action: rest
+reps: null
+duration_seconds: 720
+bilateral: false
+timed: true
+equipment:
+- A clear stretch of wall
+motion_shape: release
+contraindications:
+- Glaucoma or raised intraocular pressure
+- Uncontrolled hypertension
+- Late pregnancy — use a side-lying position instead
+- Any acute leg swelling with pain, redness or warmth — exclude DVT before elevating
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- varicose-veins
+notes_for_coach: 'The DVT caution matters: a hot, painful, unilaterally swollen calf is a medical
+  emergency, not a posture problem.'
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

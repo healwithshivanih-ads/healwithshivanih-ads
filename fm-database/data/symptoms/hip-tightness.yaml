@@ -1,0 +1,28 @@
+slug: hip-tightness
+display_name: Hip Tightness
+aliases:
+- tight hips
+- tight hip flexors
+- stiff hips
+- hips feel locked
+- can't open my hips
+- psoas tightness
+category: musculoskeletal
+severity: common
+description: A sensation of restriction through the hip flexors and deep hip rotators, with
+  reduced comfortable range. Driven by prolonged sitting, and the psoas in particular shortens
+  both with posture and with sustained protective bracing.
+when_to_refer: Refer where restriction is accompanied by groin pain, night pain or progressive
+  loss of rotation — exclude hip joint pathology and femoroacetabular impingement.
+linked_to_topics: []
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: The psoas is both a hip flexor and a postural responder to threat — it tightens
+  with sitting and with fear.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

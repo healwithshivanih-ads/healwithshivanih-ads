@@ -1,0 +1,68 @@
+slug: somatic-map-endometriosis
+display_name: Endometriosis
+target_kind: topic
+target_slug: endometriosis
+sensitivity: coach_only
+emotional_roots:
+- pattern: Internalised self-attack
+  note: Some somatic frameworks associate endometriosis with frustration that has
+    turned inward — when difficulty directing anger outward leads to a kind of physiological
+    self-criticism. This is an association offered in the somatic tradition, never
+    a causal claim.
+- pattern: Deep sense of unworthiness
+  note: Practitioners sometimes observe patterns of feeling fundamentally 'not enough'
+    or needing to constantly prove worth in people with endometriosis. These are associated
+    patterns, not causes.
+- pattern: Self-neglect while caring for others
+  note: A pattern of filling emotional voids with external comforts while neglecting
+    one's own needs may accompany the physical condition, though direction of causality
+    is unknown.
+reframe: No external validation can fully convince you of your own worth — that knowing
+  has to come from within. Allowing yourself love and acceptance, even imperfectly,
+  is not indulgence; it is medicine.
+inquiry_question: What unprocessed disappointment or frustration are you still carrying,
+  and how might your body be asking you to acknowledge it?
+somatic_practice: sacral-rocking
+also_consider:
+  supplements:
+  - omega-3
+  home_remedies:
+  - castor-oil-pack
+  practical:
+  - 'Anti-inflammatory elimination diet: reduce dairy, gluten, red meat, sugar, alcohol'
+  - Apply a heating pad to the lower belly daily, especially around menstruation
+  - Pelvic floor physical therapy to address years of pain-related muscle tension
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a persistent sense of being fundamentally flawed or not enough
+- Reports tending to everyone else's needs while neglecting her own
+- History of unexpressed frustration or suppressed anger
+- Describes body disappointment or shame alongside physical symptoms
+differential_note: Endometriosis is a well-characterised gynaecological condition
+  (ectopic endometrial tissue causing inflammation, scarring, and pain) that requires
+  clinical diagnosis, typically via laparoscopy. It must be distinguished from adenomyosis,
+  fibroids, pelvic inflammatory disease, ovarian cysts, IBS, interstitial cystitis,
+  and other causes of pelvic pain. Medical and surgical management options exist and
+  should always be offered. The somatic emotional associations are secondary and must
+  never be framed as causal or as an alternative to treatment. Given the potential
+  for client distress and self-blame around a chronic pain condition, this map is
+  coach_only.
+coach_only_note: Endometriosis causes significant chronic pain and may be associated
+  with infertility. Any framing that implies the client's internal emotional state
+  caused the disease risks profound harm and self-blame. This map must only be used
+  in a carefully held coaching relationship, never auto-surfaced, and always positioned
+  as one lens among many.
+notes_for_coach: Anti-inflammatory diet has emerging evidence for symptom reduction.
+  Omega-3 supplementation has some evidence for prostaglandin modulation. Castor oil
+  packs are traditional; evidence is anecdotal. The emotional associations are observational/somatic
+  tradition.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 76. Endometriosis — EMOTIONAL ROOT
+  quote: Blame. Blaming others, blaming circumstances, blaming the body. When frustration
+    can't be directed outward productively, it turns inward and attacks.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

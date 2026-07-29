@@ -1,0 +1,29 @@
+slug: hip-pain
+display_name: Hip Pain
+aliases:
+- sore hip
+- pain in my hip
+- one-sided hip pain
+- hip hurts
+- lateral hip pain
+- pain on the side of my hip
+category: musculoskeletal
+severity: common
+description: Pain in or around the hip. True hip-joint pain is felt in the groin and may refer
+  to the knee; pain over the outer hip is usually gluteal tendinopathy or trochanteric bursitis
+  rather than the joint itself.
+when_to_refer: Refer for inability to weight-bear, pain following a fall (fracture, especially
+  in osteoporosis), night pain, fever, or progressive groin pain with restricted internal rotation.
+  Groin pain referring to the knee is hip-joint pathology until proven otherwise.
+linked_to_topics:
+- osteoporosis
+linked_to_mechanisms: []
+notes_for_coach: Ask where exactly — groin means joint, outer means tendon. It changes everything
+  about what helps. Kamla (cl-021) has confirmed gluteal tendinopathy.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

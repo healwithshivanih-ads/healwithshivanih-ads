@@ -1,0 +1,55 @@
+slug: somatic-map-constipation
+display_name: Constipation — Holding On and Not Letting Go
+target_kind: symptom
+target_slug: constipation
+sensitivity: general
+differential_note: Rule out hypothyroidism, hypercalcaemia, medications (opioids,
+  iron supplements, calcium channel blockers, anticholinergics), dehydration, inadequate
+  dietary fibre, pelvic floor dyssynergia, colorectal obstruction, and neurological
+  causes (Parkinson's, MS) before any emotional reading. New-onset constipation in
+  adults over 50 warrants investigation.
+emotional_roots:
+- pattern: Holding on and not releasing
+  note: There is a frequently observed association between constipation and a psychological
+    tendency to hold on — to control, to past grievances, to circumstances long resolved.
+    The body can mirror what the mind will not release.
+- pattern: Anxiety and nervous system activation
+  note: When the nervous system is in a state of activation, digestion is deprioritised.
+    The gut slows because the body believes it is in danger and has no bandwidth for
+    the rest-and-digest functions.
+- pattern: Withholding energy and generosity
+  note: Some somatic traditions associate constipation with a withholding quality
+    that extends beyond the gut — a difficulty giving freely of energy, time, or resources.
+    This is an association to explore, not a cause to assert.
+reframe: Letting go of what is finished — what has already moved through its purpose
+  in your life — is not a loss. It is a natural and healthy part of moving forward.
+inquiry_question: What are you holding tightly at the moment, and what makes loosening
+  it feel risky?
+somatic_practice: gastrocolic-rhythm
+also_consider:
+  supplements:
+  - magnesium-citrate
+  - psyllium-husk
+  practical:
+  - Adequate water intake is essential
+  - Regular movement stimulates gut motility
+  - Prunes and ground flaxseeds for fibre and natural laxative compounds
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Constipation worsens during travel, change, or periods of heightened control-seeking
+- Client describes difficulty delegating or letting go of situations
+- Pattern of holding breath or shallow breathing noted in sessions
+notes_for_coach: Physical causes are extremely common and must be addressed first.
+  The morning warm water and movement practices have solid physiological rationale
+  alongside the somatic dimension.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 58. Constipation — EMOTIONAL ROOT
+  quote: Constipation is often about holding on and not letting go.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,64 @@
+slug: bilateral-shoulder-swing
+display_name: Bilateral Shoulder Swing
+category: discharge
+body_region: shoulders_upper_back
+position: standing
+summary: A rhythmic, unguided arm-swinging practice that uses bilateral momentum to release held tension
+  in the upper back and shoulder blades.
+why_it_works: Rhythmic bilateral movement activates alternating proprioceptive input across the midline,
+  helping to release chronically contracted muscles that have been holding suppressed action impulses
+  (reaching out, pushing away). The self-organizing quality of the swing — rather than directed movement
+  — allows the body to find its own release pattern.
+steps:
+- label: Let arms hang
+  cue: Stand comfortably and allow both arms to hang completely loose at your sides. Let go of any
+    gripping in the shoulders or hands.
+  secs: 15
+  action: release
+- label: Begin swinging
+  cue: Start swinging both arms forward and back together in a gentle, easy rhythm. Let the movement
+    begin small.
+  secs: 30
+  action: release
+- label: Build momentum
+  cue: Gradually allow the swing to grow larger and more energetic. Do not steer it — let the momentum
+    lead and your whole upper body follow.
+  secs: 120
+  action: release
+- label: Sustain
+  cue: Continue swinging freely for the remaining time. If the movement changes direction or character
+    on its own, let it.
+  secs: 0
+  action: release
+duration_seconds: 180
+timed: true
+bilateral: true
+equipment: []
+contraindications:
+- Acute shoulder injury or recent rotator cuff repair
+- Severe frozen shoulder with hard end-range restriction — modify to smaller range
+- Uncontrolled hypertension
+linked_to_symptoms:
+- muscle-tension
+- tension
+- joint-pain
+linked_to_topics:
+- chronic-stress
+- nervous-system-regulation
+notes_for_coach: Sourced from entry 36 (Upper Back & Shoulder Blade Pain). Duration is 2–3 minutes;
+  step 4 is open-ended within that window. Encourage clients not to think during the exercise — the
+  non-directed quality is the point.
+aliases: []
+motion_shape: release
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: Entry 36 — Upper Back & Shoulder Blade Pain, SOMATIC RESET
+  quote: Stand and let your arms hang completely loose. Start swinging them forward and back, gently
+    at first, then with more momentum. Let the movement take over. Don't steer it. Stay here for 2–3
+    minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

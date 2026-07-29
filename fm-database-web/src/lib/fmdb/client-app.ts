@@ -43,6 +43,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { isInternationalClient } from "@/lib/server-actions/supplement-links-match";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 import { weekNourishment } from "@/lib/fmdb/nourishment";
+import { deriveMindBodyReads, deriveSomatic, excludeSomaticLinked, type AppMindBodyRead, type AppSomatic } from "@/lib/fmdb/somatic";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
 import {
   resolveAppTier,
@@ -1105,6 +1106,9 @@ export interface ClientAppData {
   periodCare: AppPeriodCare | null;
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
+  /** Every guided somatic reset the plan prescribes, resolved from the
+   *  catalogue by slug, in plan order. Empty when none are prescribed. */
+  somatic: AppSomatic[];
   /** Guided EFT (tapping) config when the plan prescribes a tapping practice
    *  AND it has been unlocked (mind-body drip — see `mindBody`). */
   eft: AppEft | null;
@@ -1115,6 +1119,10 @@ export interface ClientAppData {
    *  "keep practising to unlock" hint (priorLabel = what to keep doing,
    *  doneCount/needed = progress). null when nothing's waiting. */
   mindBody: { nextUp: string; priorLabel: string; doneCount: number; needed: number; locked: boolean } | null;
+  /** What the book says about the conditions this client came in for, and the
+   *  practice for each. Empty unless the coach has opened it for them — see
+   *  `deriveMindBodyReads`. */
+  mindBodyReads: AppMindBodyRead[];
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
   /** client-facing lab vault — results vs FM-optimal + standard ranges (Phase 2 of LAB_VAULT_SPEC) */
@@ -3239,9 +3247,11 @@ async function buildDiscoveryAppData(
     seedCycling: null,
     periodCare: null,
     breathwork: null,
+    somatic: [],
     eft: null,
     sleep: null,
     mindBody: null,
+    mindBodyReads: [],
     principles: [],
     labs: [],
     labVault,
@@ -4436,16 +4446,33 @@ export async function loadClientAppData(
   // ---- guided breathwork (paced exactly to the prescribed technique) -------
   // The animation is driven entirely from these numbers, so it can never
   // drift from what the coach prescribed in the plan.
-  const breathwork = deriveBreathwork(practices, practiceRaw);
+  // Practices that name a catalogue somatic_practice are resolved BY SLUG and
+  // rendered from their real steps. They must be withheld from the name-matchers
+  // below: gastrocolic-rhythm contains "breathing", so deriveBreathwork would
+  // otherwise catch it and degrade a specific practice into a generic session.
+  const somatic = deriveSomatic(practices, practiceRaw);
+  const { practices: nameMatchPractices, raw: nameMatchRaw } =
+    excludeSomaticLinked(practices, practiceRaw, somatic);
+
+  // What the book says about the conditions this client actually came in for.
+  // Resolved from THEIR conditions, never from the practice — and shown only
+  // when the coach has opened the mind-body layer for this person.
+  const mindBodyReads = deriveMindBodyReads(
+    asStr((client as Record<string, unknown>).mind_body_depth),
+    concernConditions(client),
+    somatic,
+  );
+
+  const breathwork = deriveBreathwork(nameMatchPractices, nameMatchRaw);
   const eft = deriveEft(
-    practices,
-    practiceRaw,
+    nameMatchPractices,
+    nameMatchRaw,
     `${asStrArr(client.goals).join(" ")} ${concernConditions(client).join(" ")} ${asStr(client.reported_triggers)}`,
     Array.isArray((client as Record<string, unknown>).eft_themes)
       ? ((client as Record<string, unknown>).eft_themes as string[])
       : undefined,
   );
-  const sleep = deriveSleep(practices, practiceRaw);
+  const sleep = deriveSleep(nameMatchPractices, nameMatchRaw);
 
   // ---- mind-body drip: graduated techniques (EFT, sleep wind-down) unlock ONE
   // AT A TIME as the prior one becomes a habit. Breathing (#1) is always open.
@@ -5543,6 +5570,8 @@ export async function loadClientAppData(
     seedCycling,
     periodCare,
     breathwork,
+    somatic,
+    mindBodyReads,
     eft: eftVisible,
     sleep: sleepVisible,
     mindBody,

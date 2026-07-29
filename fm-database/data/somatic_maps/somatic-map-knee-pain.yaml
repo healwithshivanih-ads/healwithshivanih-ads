@@ -1,0 +1,45 @@
+slug: somatic-map-knee-pain
+display_name: Knee Pain — Refusing to Bend
+target_kind: topic
+target_slug: knee-pain
+sensitivity: general
+emotional_roots:
+- pattern: Rigidity
+  note: The knee's job is to yield. Pain here often accompanies a period of refusing
+    to bend — to a person, a situation, or a change of direction.
+- pattern: Fear of the next step
+  note: Knee trouble frequently appears when moving forward would mean a change in
+    status, identity or role.
+- pattern: Pride
+  note: The knee that will not bend sometimes belongs to someone who will not either.
+reframe: Changing your mind is not a failure of character. Holding a position past
+  the point it serves you costs more than yielding would.
+inquiry_question: Where are you refusing to bend, and what would it cost you to soften?
+somatic_practice: knee-softening
+also_consider:
+  supplements:
+  - glucosamine
+  - chondroitin
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Strengthen quadriceps and hamstrings — support around the joint reduces load through
+    it
+  - Where weight loss is relevant it reduces knee load substantially
+pattern_signals:
+- Pain flares around decisions rather than around activity
+- Imaging does not explain the severity
+differential_note: Knee pain is overwhelmingly mechanical. Exclude osteoarthritis,
+  meniscal and ligament injury, referred hip pathology, gout and inflammatory arthritis
+  before considering any emotional layer. Acute hot, swollen, red knee needs same-day
+  assessment for septic arthritis or crystal arthropathy.
+coach_only_note: ''
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

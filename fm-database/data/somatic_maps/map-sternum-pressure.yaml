@@ -1,0 +1,62 @@
+slug: map-sternum-pressure
+display_name: Sternum Pressure
+target_kind: symptom
+target_slug: sternum-pressure
+sensitivity: coach_only
+emotional_roots:
+- pattern: Grief held at the centre
+  note: A heaviness or pressure at the sternum is sometimes associated with deep,
+    unprocessed grief or loss. This is the region where many people instinctively
+    place a hand when they are sad or when they have lost someone.
+- pattern: Longing for unavailable connection
+  note: The sternal area may carry the ache of longing — wanting closeness or love
+    that cannot currently be received or expressed. This might relate to a lost relationship,
+    an estranged person, or a love that never found its way home.
+- pattern: Blocked giving or receiving of love
+  note: Pressure here can sometimes be associated with a sense of having closed off
+    — either unable to let love out or unable to let it in — often as a protective
+    response to earlier hurt.
+reframe: The weight at your sternum is not an emptiness — it means something deeply
+  mattered to you. The ache is proof that you have not completely closed off, even
+  if it feels that way. Hearts that have truly given up stop hurting.
+inquiry_question: What has your heart never been given permission to say?
+somatic_practice: om-chanting-sternum
+also_consider:
+  practical:
+  - Gentle chest-opening stretches to release physical holding around the heart
+  - A warm compress placed on the sternum can soften local tension and bring circulation
+    to the area
+  - If grief is specific and unprocessed, consider seeking support from a counsellor
+    or therapist who can witness what you have been carrying alone
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client places a hand over the sternum spontaneously when speaking about loss or
+  longing
+- Describes a heaviness or weight rather than a sharp pain
+- Unprocessed bereavement, relational estrangement, or prolonged grief
+- Affect is flattened or subdued — not distress but a deep, quiet sadness
+differential_note: Sternal pressure must exclude cardiac causes (angina, myocardial
+  infarction, pericarditis), aortic dissection, pulmonary embolism, GERD and oesophageal
+  spasm, mediastinal pathology, and musculoskeletal causes (costochondritis, sternal
+  stress). Any sternal pressure that is new, severe, radiates, or is associated with
+  exertion or other cardiac symptoms is a medical emergency. Full clinical evaluation
+  is required before emotional framing.
+coach_only_note: This map is coach_only because grief and longing framings can cause
+  significant harm if surfaced prematurely to someone in active bereavement or when
+  organic cardiac disease has not been excluded. Use only in established coaching
+  relationships after full clinical clearance.
+notes_for_coach: Reich's characterological map linking the sternum to grief is referenced
+  in the source. This is a speculative body-mind association from the somatic psychotherapy
+  tradition — present it as a possibility to explore, never a statement of fact.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 48. Sternum Pressure
+  quote: Reich identified the sternum as the place where heartbreak and deep loss
+    get held.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,58 @@
+slug: somatic-map-erectile-dysfunction
+display_name: Erectile Dysfunction — Performance Pressure & Shame
+target_kind: symptom
+target_slug: erectile-dysfunction
+sensitivity: sensitive
+differential_note: 'ED has a high prevalence of vascular and metabolic aetiology:
+  cardiovascular disease, hypertension, dyslipidaemia, and type 2 diabetes are major
+  causes and must be excluded before psychological framing is pursued. Hormonal causes
+  (low testosterone, elevated prolactin, thyroid dysfunction) require testing. Medication
+  side effects (antidepressants, antihypertensives, antiandrogens) are common and
+  reversible causes. A full medical and endocrine workup is the essential first step.'
+emotional_roots:
+- pattern: Performance anxiety and fear of inadequacy
+  note: For some men, the experience of ED is closely tied to a broader sense of not
+    measuring up — at work, in relationships, or in their own self-assessment. The
+    sexual response system is sensitive to this ambient pressure. When confidence
+    and safety are absent, the body reflects that state.
+- pattern: Shame about sexuality or past behaviour
+  note: Unexpressed or unresolved shame — about past sexual experiences, desires,
+    or choices — can create a somatic guardedness that interferes with arousal. The
+    body may respond to shame the same way it responds to threat.
+- pattern: Carried resentment from previous relationships
+  note: Unprocessed hurt or anger from a past relationship can sometimes manifest
+    as physical difficulty with a new partner. The body may be holding a boundary
+    the mind has intellectually moved past.
+reframe: Nothing is broken. Your body is giving you honest information about the level
+  of pressure you are carrying. When there is nothing to prove and no performance
+  to deliver, the body tends to remember what it knows. The question worth sitting
+  with is what safety and genuine confidence actually feel like for you.
+inquiry_question: Where in your life are you feeling measured lately, and what would
+  help you feel steady again?
+somatic_practice: constructive-rest
+also_consider:
+  supplements:
+  - l-arginine
+  practical:
+  - Rule out cardiovascular disease, diabetes, and hormonal causes with a clinician
+  - Reduce chronic stress load and prioritise sleep quality
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes pervasive high-achievement pressure or fear of failure in other
+  life domains
+- Reports the onset of ED coinciding with a period of significant stress, conflict,
+  or life change
+- Describes shame or embarrassment about the symptom beyond typical concern
+notes_for_coach: ''
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 87. Erectile Dysfunction — EMOTIONAL ROOT
+  quote: Erectile dysfunction often relates to performance anxiety and fears about
+    masculine adequacy. Erection depends on feeling confident, relaxed, and powerful.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

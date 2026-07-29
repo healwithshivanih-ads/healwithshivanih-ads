@@ -1,0 +1,40 @@
+slug: somatic-map-tics-twitches
+display_name: Tics and Twitches — An Impulse That Never Finished
+target_kind: symptom
+target_slug: tics-twitches
+sensitivity: general
+emotional_roots:
+- pattern: Fear of being watched
+  note: A sense of being under scrutiny, real or anticipated. The eye twitches when
+    it does not feel safe under someone else's.
+- pattern: Hypervigilance become wiring
+  note: A system stuck scanning and bracing long after the original threat passed.
+- pattern: Discharge with nowhere else to go
+  note: Tics can act as an involuntary release valve for what has no sanctioned outlet.
+reframe: Trying to eradicate it tends to feed it. Making room for it usually does
+  more than fighting it.
+inquiry_question: Whose eye do you feel on you, and when did that start?
+somatic_practice: intentional-exaggeration
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Caffeine and sleep debt are the two most common reversible drivers
+pattern_signals: []
+differential_note: Benign twitching is common and reassuring. Twitching WITH progressive
+  weakness, wasting, or speech or swallowing difficulty needs urgent neurology. Check
+  magnesium, caffeine intake and sleep debt. Childhood-onset complex or vocal tics
+  suggest a tic disorder needing specialist input.
+coach_only_note: ''
+notes_for_coach: The discriminator is weakness. Twitching alone is benign; twitching
+  plus weakness is not.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

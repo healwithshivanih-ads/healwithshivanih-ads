@@ -1,0 +1,30 @@
+slug: ear-pressure-fullness
+display_name: Ear Pressure / Fullness
+aliases:
+- blocked ear
+- ear fullness
+- pressure in my ears
+- ears feel full
+- muffled hearing
+- ears need to pop
+- aural fullness
+category: other
+severity: concerning
+description: A sensation of blockage, pressure or fullness in one or both ears without infection,
+  often with muffled hearing and a need to 'pop' the ears. Commonly reflects eustachian tube
+  dysfunction, jaw and pterygoid tension, allergic rhinitis or barometric sensitivity.
+when_to_refer: Refer where fullness is unilateral and persistent, accompanied by hearing loss,
+  vertigo, tinnitus or discharge — unilateral aural fullness warrants ENT assessment to exclude
+  middle-ear and, rarely, nasopharyngeal disease.
+linked_to_topics:
+- histamine-intolerance
+linked_to_mechanisms: []
+notes_for_coach: Strongly linked to jaw clenching via the pterygoid muscles — clients with
+  TMJ symptoms frequently report it. Persistent one-sided fullness is the one to take seriously.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

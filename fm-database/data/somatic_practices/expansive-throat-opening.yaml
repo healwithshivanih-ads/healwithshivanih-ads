@@ -1,0 +1,50 @@
+slug: expansive-throat-opening
+display_name: Expansive Throat Opening
+aliases: []
+category: discharge
+body_region: throat_neck
+position: standing
+summary: Wide-stance breathing with a loud open-jawed exhale, five to six rounds.
+why_it_works: A wide stance with a loud, open-jawed exhale recruits the full breathing apparatus and
+  gives the voice an unrestricted outlet — the opposite of the habitual compression the airway learns.
+steps:
+- label: Take up room
+  cue: Stand with feet wider than hip-width. Spread your arms out wide.
+  secs: 25
+  action: rest
+- label: Fill completely
+  cue: Inhale deeply through your nose, filling chest and belly.
+  secs: 20
+  action: expand
+- label: Let it out loud
+  cue: Exhale through your mouth with a wide-open jaw and an audible HAAA. Not polite. Let it fill
+    the room.
+  secs: 25
+  action: release
+- label: Repeat
+  cue: Five or six rounds, staying wide throughout.
+  secs: 130
+  action: release
+reps: 6
+duration_seconds: 200
+bilateral: false
+timed: true
+equipment: []
+motion_shape: breath_excursion
+contraindications:
+- Recent throat, jaw or neck surgery
+- Acute laryngitis or vocal strain
+- Do it where being loud is genuinely possible — a whispered version defeats the point
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- sleep-apnea
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

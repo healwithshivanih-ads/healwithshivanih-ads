@@ -1,0 +1,77 @@
+slug: somatic-map-pelvic-floor-dysfunction
+display_name: Pelvic Floor Dysfunction & Pelvic Pain
+target_kind: topic
+target_slug: pelvic-floor-dysfunction
+sensitivity: coach_only
+emotional_roots:
+- pattern: Freeze held in tissue
+  note: When a fight-or-flight response was not possible, some people's bodies responded
+    by shutting down in the pelvic region. The muscles may have locked at that time
+    and never fully returned to baseline. This is an association, not a cause — many
+    people with pelvic floor dysfunction have no trauma history at all.
+- pattern: Unspoken protective 'no'
+  note: Pelvic floor tension can sometimes be associated with experiences where this
+    area of the body felt unsafe or outside one's control — including difficult childbirth
+    or boundary violations — as though the muscles were holding the 'no' that couldn't
+    be voiced.
+- pattern: Primal anger held deep
+  note: Practitioners in the somatic tradition observe that the pelvic segment is
+    sometimes described as the deepest layer of physical holding, where unexpressed
+    anger or rage — rather than just fear — may be stored.
+- pattern: Chronic inability to let go
+  note: This pattern is sometimes noted in people who describe never fully relaxing,
+    even in private — holding themselves tightly together across all areas of life.
+- pattern: Early unsafety in the body
+  note: Early experiences in which this part of the body felt unsafe — with caregivers,
+    authority figures, or partners — may create a guarding response that persists
+    long after the original situation has resolved.
+reframe: Your body learned to brace here because it needed to. That protective response
+  made sense at the time. Now, in moments of genuine safety, you are allowed to let
+  that guard down — not all at once, but gradually, on your own terms.
+inquiry_question: When did you first learn that vulnerability in your body was something
+  to protect against, and what would it mean now to genuinely let that guard soften?
+somatic_practice: jaw-release
+also_consider:
+  practical:
+  - Pelvic floor physical therapy with a trauma-informed specialist — many use external
+    techniques first
+  - Avoid Kegel exercises if the pelvic floor is hypertonic (too tight); reverse Kegels
+    or down-training may be more appropriate
+  - Warm baths to reduce pelvic guarding
+  - Diaphragmatic breathing practice
+  - Hip stretches to release surrounding musculature
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes never fully relaxing, even at home
+- History of difficult or traumatic birth
+- Reports of chronic pelvic pain without clear structural finding
+- Describes holding themselves tightly together across multiple life domains
+differential_note: 'Pelvic floor dysfunction and chronic pelvic pain have extensive
+  physiological and structural causes that must be excluded before any emotional reading
+  is explored. These include: pelvic inflammatory disease, endometriosis, interstitial
+  cystitis, vulvodynia, vaginismus, pelvic organ prolapse, musculoskeletal causes
+  (e.g. sacroiliac dysfunction, hip labral tears), pudendal neuralgia, ovarian cysts,
+  bowel conditions (IBS, IBD, diverticulitis), urinary tract infection, nerve entrapment,
+  and post-surgical adhesions. Clinician assessment and imaging are often necessary.
+  Trauma history should be explored only in an appropriate therapeutic setting, never
+  in a coaching context alone.'
+coach_only_note: This entry directly addresses sexual trauma and boundary violations.
+  It must never be auto-surfaced to a client. Raise only when the therapeutic container
+  is appropriate and ideally with a trauma-informed therapist involved. Somatic practices
+  should be introduced gently, not as homework assigned without context.
+notes_for_coach: Source is a somatic-health book (moderate quality). Jaw-pelvic floor
+  neurological coupling is biologically credible; the emotional associations are observational/traditional,
+  not evidence-based claims.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 71. Pelvic Floor Dysfunction & Pelvic Pain — EMOTIONAL ROOT
+  quote: Pelvic floor tension often develops after sexual trauma, boundary violations,
+    difficult childbirth, or any experience where this part of the body felt unsafe
+    or out of one's control.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

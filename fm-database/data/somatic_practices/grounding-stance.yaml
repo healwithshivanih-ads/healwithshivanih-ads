@@ -1,0 +1,48 @@
+slug: grounding-stance
+display_name: Grounding Stance
+aliases: []
+category: orientation
+body_region: legs_feet
+position: standing
+summary: Two to three minutes of active standing grounding with root imagery.
+why_it_works: Actively pressing down and registering the ground pushing back rebuilds a felt sense
+  of having a foundation, which is precisely what erodes when external structures fall away.
+steps:
+- label: Stand
+  cue: Feet hip-width apart, weight even through both feet.
+  secs: 25
+  action: rest
+- label: Press down
+  cue: Press down through your feet and feel the ground pushing back up into you.
+  secs: 45
+  action: press
+- label: Imagine roots
+  cue: Picture roots growing down from your feet into the earth. Let the image be as vivid as it wants.
+  secs: 60
+  action: observe
+- label: Breathe there
+  cue: Stay with it, breathing slowly.
+  secs: 50
+  action: rest
+reps: null
+duration_seconds: 180
+bilateral: false
+timed: true
+equipment: []
+motion_shape: sustained_pressure
+contraindications:
+- Unsteady balance — stand near a wall or chair
+- Dizziness on standing
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- osteoporosis
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

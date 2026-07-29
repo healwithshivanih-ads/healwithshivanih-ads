@@ -1,0 +1,61 @@
+slug: yoga-nidra-belly-breath
+display_name: Yoga Nidra Belly Breath
+category: breath
+body_region: chest_diaphragm
+position: lying
+summary: A supine diaphragmatic breathing practice that trains the body to breathe low and slow, encouraging
+  the nervous system to feel safe enough to expand.
+why_it_works: Shifting from chest to belly breathing activates the parasympathetic nervous system
+  by stimulating the diaphragm and increasing vagal tone. Prolonged exhalation further down-regulates
+  sympathetic arousal, signalling safety to the brainstem.
+steps:
+- label: Settle into position
+  cue: Lie on your back with knees bent and feet flat on the floor. Place one hand on your chest and
+    the other on your belly.
+  action: rest
+  secs: 30
+- label: Establish belly-only breath
+  cue: Breathe in slowly so that only the belly-hand rises. Keep the chest-hand still. If your chest
+    lifts, soften it and redirect the breath downward.
+  action: expand
+  secs: 60
+- label: Lengthen the exhale
+  cue: With each breath out, let the exhale be noticeably longer than the inhale. Allow your body
+    to feel heavier against the floor as you exhale.
+  action: release
+  secs: 180
+- label: Settle and notice
+  cue: Continue for the remaining time, letting each breath cycle become softer. Simply notice any
+    shift in how the body feels.
+  action: observe
+  secs: 30
+duration_seconds: 300
+timed: true
+bilateral: false
+contraindications:
+- Third-trimester pregnancy (lying flat may compress vena cava — use left-side lying instead)
+- Severe COPD or acute respiratory distress — consult clinician first
+linked_to_symptoms:
+- breathing-irregularity
+- shortness-of-breath
+- hyperventilation
+linked_to_topics:
+- breathwork-for-health
+- nervous-system-regulation
+notes_for_coach: Diaphragmatic breathing is a foundational nervous-system reset. Clients with trauma
+  histories may feel vulnerable lying flat — offer a slightly reclined position as an alternative.
+  Reinforce that air hunger is physiological and not a sign of danger.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 42. Breathing Difficulties / Shallow Breathing — SOMATIC RESET
+  quote: Lie on your back with your knees bent. Place one hand on your chest, and one on your belly.
+    Breathe so that only the belly hand rises; the chest stays still.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

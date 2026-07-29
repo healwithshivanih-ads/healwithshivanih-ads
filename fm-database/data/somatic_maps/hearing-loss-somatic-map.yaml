@@ -1,0 +1,56 @@
+slug: hearing-loss-somatic-map
+display_name: Hearing Loss
+target_kind: symptom
+target_slug: hearing-loss
+sensitivity: sensitive
+emotional_roots:
+- pattern: Rejection and withdrawal
+  note: Gradual withdrawal from what feels like too much coming in — constant criticism,
+    others' demands, emotional overwhelm — may, over time, be associated with reduced
+    sensory engagement, including auditory attention and presence.
+- pattern: Stubbornness hardened
+  note: The 'don't bother me' stance, sustained over many years, may manifest somatically
+    as a reduced opening toward sound and the external world.
+- pattern: Emotional isolation
+  note: When a person has already internally withdrawn from close connection, the
+    body may follow by reducing the most intimate channel for others' voices to reach
+    them.
+reframe: There is a difference between protecting yourself and disappearing. You are
+  allowed to return. You are allowed to choose what you let in and from whom.
+inquiry_question: If you could turn one voice down, whose would it be? And what might
+  you hear underneath?
+somatic_practice: auditory-orienting
+also_consider:
+  practical:
+  - Protect remaining hearing from loud noise exposure
+  - Hearing aids where appropriate — refer to audiologist
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- History of prolonged exposure to harsh criticism or chaotic home environment
+- Client describes having 'tuned out' emotionally from relationships or environments
+- Gradual rather than sudden onset of hearing difficulty
+- Social withdrawal preceding or accompanying hearing changes
+differential_note: 'Hearing loss has numerous structural, medical, and age-related
+  causes that must be excluded before any emotional association is explored: noise-induced
+  hearing loss, presbycusis, otosclerosis, cholesteatoma, acoustic neuroma, Ménière''s
+  disease, ototoxic medications, and sudden sensorineural hearing loss (a medical
+  emergency). All clients with new or worsening hearing loss must be assessed by an
+  audiologist and/or ENT clinician.'
+coach_only_note: The framing that hearing loss can reflect emotional withdrawal must
+  never be presented as an explanation to a client who has received a confirmed medical
+  diagnosis. Present only as a complementary reflective lens, not a cause.
+notes_for_coach: Target slug 'emotional-numbness' chosen as the closest available
+  match for the withdrawal/shutdown pattern described; ideal slug would be specific
+  to hearing loss. Flag for catalogue expansion.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 18. Hearing Loss — EMOTIONAL ROOT
+  quote: Hearing loss can reflect a long pattern of pushing away what you don't want
+    to hear, until the ears stop letting sound in altogether.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

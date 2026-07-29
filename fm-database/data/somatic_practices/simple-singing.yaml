@@ -1,0 +1,55 @@
+slug: simple-singing
+display_name: Simple Singing
+category: discharge
+body_region: throat_neck
+position: any_position
+summary: Singing a single line from any familiar song at any volume, without correcting or judging
+  the voice, as a direct vagal stimulation exercise.
+why_it_works: Vocalization engages the laryngeal muscles innervated by the vagus nerve's recurrent
+  laryngeal branch. Sustained vocal production activates the ventral vagal pathway, supporting social
+  engagement, parasympathetic regulation, and a reduction in the physiological suppression that can
+  accompany chronic self-silencing.
+steps:
+- label: Choose a Line
+  cue: Think of one line from any song you know — a lullaby, a pop song, a hymn, anything. It does
+    not matter what.
+  action: observe
+  secs: 10
+- label: Sing It
+  cue: Sing that line out loud at whatever volume feels natural. Let your voice carry the sound fully
+    without straining toward perfection or pulling back from imperfection.
+  action: discharge
+  secs: 20
+- label: Notice
+  cue: After you finish, sit quietly for a moment and notice any change in sensation at the throat,
+    chest, or in your overall state.
+  action: observe
+  secs: 10
+duration_seconds: 40
+timed: true
+bilateral: false
+contraindications:
+- Acute laryngitis or vocal fold nodules — rest the voice; do not push through pain
+linked_to_symptoms:
+- hoarse-voice
+- hoarseness
+linked_to_topics:
+- thyroid-dysfunction
+- vagal-tone
+notes_for_coach: Many clients feel self-conscious. Reassure them the song choice is irrelevant and
+  they are alone. The exercise is the act of using the voice, not performing it well. Even humming
+  counts if singing feels too exposing.
+aliases: []
+equipment: []
+motion_shape: release
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 30. Thyroid Dysfunction — SOMATIC RESET
+  quote: Sing one line of any song you know, at any volume. Let your voice carry the sound without
+    forcing or correcting it.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

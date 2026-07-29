@@ -1,0 +1,54 @@
+slug: somatic-map-stomach-knots
+display_name: Stomach Knots / Butterflies / Pit in Stomach — Fear in the Body
+target_kind: symptom
+target_slug: gi-symptoms-under-stress
+sensitivity: general
+differential_note: Rule out hypoglycaemia, cardiac arrhythmia, hyperthyroidism, adrenal
+  insufficiency, gastric ulcer, and any gastrointestinal pathology before attributing
+  stomach discomfort to an emotional state. A persistent or new 'pit in the stomach'
+  sensation that does not resolve with stress reduction warrants investigation.
+emotional_roots:
+- pattern: Ongoing low-grade fear
+  note: Chronic stomach contraction is a frequent companion to sustained, low-level
+    fear that has not been attended to. The body stays physically braced for something
+    bad to happen, maintaining a persistent tight or fluttery feeling in the abdomen.
+- pattern: Difficulty processing new situations
+  note: Stomach sensations sometimes arise when a person is faced with change or new
+    experience that feels like too much to take in at once — an adaptive alarm, not
+    pathology.
+- pattern: Dread and anticipated loss
+  note: A heavier sinking sensation in the stomach often surfaces when someone knows
+    something is wrong but is not yet ready to acknowledge it — the body registering
+    what the mind is still avoiding.
+reframe: Your gut is passing you a message. Some of those messages are old alarms
+  that no longer match your current situation. Others are pointing at something that
+  genuinely needs your attention. Both are worth listening to.
+inquiry_question: What are you bracing for, and is that threat actually present right
+  now?
+somatic_practice: safe-place-visualization
+also_consider:
+  supplements:
+  - chamomile
+  practical:
+  - Slow, deep breathing directly calms stomach contractions
+  - Vagal toning practices (cold water splash on face, humming, gargling)
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Stomach sensations consistently precede specific events or relationships
+- Client reports gut feelings or intuitions that later prove accurate — body intelligence
+  is active
+- Symptoms absent on days off, present on workdays — clear stress correlation
+notes_for_coach: The 'pit' sensation with dread and grief can be associated with psychological
+  conditions requiring therapeutic support. Be prepared to refer to a therapist when
+  the emotional component is prominent.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 55. Stomach Knots / Butterflies / 'Pit in Stomach' — EMOTIONAL ROOT
+  quote: The stomach is where we feel fear and anxiety most directly.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

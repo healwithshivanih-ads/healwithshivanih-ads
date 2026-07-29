@@ -1,0 +1,56 @@
+slug: extended-self-hug-pressure
+display_name: Extended Self-Hug with Pressure
+category: touch
+body_region: chest_diaphragm
+position: any_position
+summary: Wrap both arms firmly around the upper torso and apply steady, even pressure while breathing
+  slowly for one to two minutes.
+why_it_works: Deep sustained pressure stimulates cutaneous mechanoreceptors that activate the vagal
+  pathway and promote oxytocin release, reducing the amygdala's threat-monitoring activity and calming
+  the autonomic stress response.
+steps:
+- label: Wrap arms
+  cue: Bring both arms across your chest and reach as far around your torso as comfortable, holding
+    your own upper arms or sides.
+  action: press
+  secs: 10
+- label: Apply steady pressure
+  cue: Firm up the hug so you feel a consistent, gentle-to-moderate squeeze across your chest and
+    ribcage.
+  action: press
+  secs: 10
+- label: Breathe and hold
+  cue: Keep the pressure even as you breathe slowly. Let each inhale gently push against your arms,
+    and each exhale let the hug feel a little warmer.
+  action: hold
+  secs: 80
+duration_seconds: 100
+timed: true
+bilateral: false
+contraindications:
+- Recent rib fracture or chest surgery — do not apply pressure
+- Severe anxiety triggered by restraint sensations — offer body-container or self-touch alternatives
+linked_to_symptoms:
+- anxiety
+- anxiety-panic
+- stress
+- mouth-ulcers
+linked_to_topics:
+- nervous-system-regulation
+- herpes-simplex
+notes_for_coach: Source gives 1–2 minutes; 100 seconds used. Clients who avoid physical closeness
+  may feel this practice surface vulnerability — normalise this and offer it gently.
+aliases: []
+equipment: []
+motion_shape: sustained_pressure
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 23. Cold Sores / Herpes Simplex — SOMATIC RESET
+  quote: Wrap your arms firmly around your upper torso and apply steady pressure. Breathe slowly and
+    stay for 1–2 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,55 @@
+slug: somatic-map-nosebleeds
+display_name: Nosebleeds — Somatic Reading
+target_kind: topic
+target_slug: nosebleed
+sensitivity: sensitive
+differential_note: Exclude hypertension (urgent if BP is high), clotting disorders
+  (thrombocytopenia, haemophilia, von Willebrand), anticoagulant or antiplatelet medication,
+  nasal trauma, dry air desiccation of nasal mucosa, vitamin K deficiency, and posterior
+  epistaxis (requires ENT). Frequent or heavy nosebleeds always need medical investigation
+  before emotional framing.
+emotional_roots:
+- pattern: Need for recognition going unmet
+  note: There is a traditional association between nosebleeds and a deep longing to
+    be seen and acknowledged — a sense that one's presence and effort go unnoticed.
+- pattern: Internal heat from suppressed frustration (TCM)
+  note: In traditional Chinese medicine, liver fire from suppressed emotion and stomach
+    heat from chronic worry are associated with blood moving recklessly upward and
+    outward.
+- pattern: Joylessness and vitality depletion
+  note: The symbolic reading of life force literally leaving the body may point to
+    a deeper question about what a person is currently living for and whether they
+    feel their life has meaning and is witnessed.
+reframe: 'You deserve to be noticed — not because you bled for it, but because you
+  are here. Begin by noticing yourself: what do you need right now that you have been
+  treating as background noise?'
+inquiry_question: Where do you go unnoticed, and what would being properly seen feel
+  like?
+somatic_practice: grounding-touch
+also_consider:
+  supplements:
+  - vitamin-k
+  - vitamin-c
+  practical:
+  - Use a humidifier if the air is dry — prevents desiccation of nasal mucosa
+  - If nosebleeds are frequent or heavy, rule out clotting disorders or hypertension
+    with a clinician
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes persistent feelings of being overlooked or unappreciated
+- Reports living largely for others with little sense of being received or seen
+- Language of going through the motions or life having lost colour
+notes_for_coach: The TCM framing is traditional and should only be offered to clients
+  who have that framework. The 'joy leaving the body' framing must be handled with
+  great care — never imply causation. Source is a book (moderate quality). Bioflavonoids
+  recommended in source mapped to vitamin-c as closest available catalogue entry.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 13. Nosebleeds
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

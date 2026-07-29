@@ -1,0 +1,57 @@
+slug: hip-circles
+display_name: Hip Circles
+aliases:
+- pelvic-circles-standing
+category: movement
+body_region: pelvis
+position: standing
+summary: Standing pelvic circles performed in both directions to restore a felt sense of ownership
+  and mobility in the hip-pelvis region.
+why_it_works: Slow, deliberate circular hip movement stimulates proprioceptive awareness in the pelvis
+  and sacroiliac region, counteracting the protective bracing pattern. The intentional, owned quality
+  of the movement engages the ventral vagal state through gentle interoception.
+steps:
+- label: Ground yourself
+  cue: Stand with feet hip-width apart, knees very slightly bent, and hands resting on your hips.
+  action: rest
+  secs: 10
+- label: Circle one direction
+  cue: Begin moving your pelvis in a wide, slow circle — forward, to one side, back, to the other
+    side. Keep it smooth and deliberate, as though you own every inch of the movement.
+  action: circle
+  secs: 60
+- label: Reverse direction
+  cue: Gradually reverse the direction of the circle and continue for another full minute.
+  action: circle
+  secs: 60
+- label: Stillness
+  cue: Come to a standstill and notice how your pelvis feels now compared to when you started.
+  action: observe
+  secs: 10
+duration_seconds: 140
+timed: true
+bilateral: false
+equipment: []
+contraindications:
+- Acute hip or sacroiliac joint pain — reduce range of motion
+- Severe dizziness or balance issues — perform near a wall or chair for support
+linked_to_symptoms:
+- vaginal-itching
+- chronic-candida-infections
+linked_to_topics:
+- candida-overgrowth
+- yeast-overgrowth
+notes_for_coach: Source states one minute each direction plus transition. Total apportioned to ~2.3
+  min.
+motion_shape: continuous_travel
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 74. Yeast Infections / Candida — SOMATIC RESET
+  quote: Stand with feet hip-width apart, knees soft, hands on hips. Make slow, deliberate circles
+    with your pelvis—forward, side, back, side. Circle in one direction for one minute, then reverse.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

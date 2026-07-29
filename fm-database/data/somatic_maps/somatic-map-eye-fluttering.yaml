@@ -1,0 +1,53 @@
+slug: somatic-map-eye-fluttering
+display_name: Eye Fluttering / Myokymia — Somatic Reading
+target_kind: symptom
+target_slug: stress
+sensitivity: general
+differential_note: Exclude magnesium deficiency (very common and correctable cause),
+  caffeine excess, sleep deprivation, dry eye irritation, blepharospasm (neurological),
+  hemifacial spasm (compressive lesion — refer urgently if spasm spreads to cheek/mouth),
+  and stimulant medications before attributing to stress-emotional patterning. Most
+  benign myokymia resolves with magnesium and sleep.
+emotional_roots:
+- pattern: Nervous system running on fumes
+  note: Eye twitching often appears not during a single acute crisis but during sustained,
+    low-grade pressure that goes on without adequate recovery — the body sending a
+    small, hard-to-ignore signal.
+- pattern: Emotional over-extension
+  note: Doing more than one's capacity allows, sleeping less than needed, and using
+    caffeine to bridge the gap — all of which degrade the nervous system's threshold
+    for involuntary firing.
+- pattern: Pushing through exhaustion
+  note: People who pride themselves on persisting regardless of body signals may encounter
+    eye twitching as one of the first signals that crosses the threshold of their
+    usual suppression.
+reframe: Small signals deserve the same attention as big ones. You don't need to be
+  in crisis to deserve rest. Your body is asking now — before it needs to ask louder.
+inquiry_question: What signal from your body have you been overriding, and what might
+  it be trying to tell you?
+somatic_practice: extended-exhale-breathing
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  practical:
+  - Prioritise sleep — most benign myokymia resolves with sleep restoration
+  - Reduce caffeine intake, especially in the afternoon and evening
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client reports the twitch arriving during high-demand periods
+- Pattern of overriding tiredness to keep going
+- High caffeine use as a performance-maintenance strategy
+- Difficulty justifying rest unless completely incapacitated
+notes_for_coach: Magnesium deficiency is the most correctable physical cause and should
+  be addressed first. Source is a book (moderate quality). 'Stress' used as closest
+  available symptom slug for systemic nervous-system overload presentation.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 08. Eye Fluttering / Myokymia
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,62 @@
+slug: prone-breathing
+display_name: Prone Breathing
+category: breath
+body_region: chest_diaphragm
+position: lying
+summary: Lying face-down with arms relaxed and breathing slowly so the chest presses gently into the
+  floor on each exhale, allowing the ground to physically support the weight of the body for 3–5 minutes.
+why_it_works: The prone position provides proprioceptive grounding through the ventral body surface,
+  which is rich in interoceptive nerve endings. The gentle pressure of the floor against the chest
+  on each exhale provides physical containment, which can support the processing of collapse-associated
+  emotions such as grief. Diaphragmatic excursion is slightly increased in prone.
+steps:
+- label: Position
+  cue: Lie face-down on a mat or soft surface. Let your arms rest at your sides or fold them and rest
+    your forehead on your hands — whichever is comfortable.
+  action: rest
+  secs: 15
+- label: Close Your Eyes
+  cue: Allow your eyes to close and let your whole body become heavy.
+  action: rest
+  secs: 10
+- label: Breathe and Feel
+  cue: Breathe slowly and naturally. On each exhale, notice your chest pressing gently into the floor
+    beneath you. Let the floor take the weight — you do not have to hold anything up.
+  action: expand
+  secs: 180
+- label: Exit
+  cue: When you are ready, press gently through your palms and slowly push yourself up to a seated
+    position. Pause before standing.
+  action: release
+  secs: 15
+duration_seconds: 220
+timed: true
+bilateral: false
+contraindications:
+- Late pregnancy — do not lie prone
+- Recent abdominal surgery
+- Severe GERD or hiatal hernia — prone position may worsen reflux
+- Breathing difficulties that worsen face-down
+linked_to_symptoms:
+- chest-tightness
+- breathing-irregularity
+linked_to_topics:
+- anxiety
+- chronic-stress
+notes_for_coach: The 3–5 minute range is used; central value of 3 minutes (180 s) used for the timed
+  step. Coach can extend to 5 min (add ~120 s to the breathe step) based on client preference.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 32. Chronic Cough — SOMATIC RESET
+  quote: Lie face down. Arms are relaxed at your sides or folded under your forehead. Close your eyes.
+    Breathe slowly, feel your chest press into the floor on each exhale, and let the ground hold the
+    weight of it. Stay for 3–5 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

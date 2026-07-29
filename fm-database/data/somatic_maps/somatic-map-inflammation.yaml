@@ -1,0 +1,43 @@
+slug: somatic-map-inflammation
+display_name: Inflammation — What Does Not Move, Burns
+target_kind: topic
+target_slug: chronic-inflammation
+sensitivity: general
+emotional_roots:
+- pattern: Inflamed thinking
+  note: Not anger alone but obsessive, repetitive thought — replaying conversations,
+    rehearsing arguments, grinding on a grievance.
+- pattern: Anger never resolved
+  note: A fight still running internally long after the situation ended.
+- pattern: Immunity kept mobilised
+  note: The body still defending against a threat that may be over, because nothing
+    told the nervous system it was.
+reframe: You are allowed to stop fighting. The person, the situation, the version
+  of yourself you cannot forgive — your body is waiting for permission to stop burning.
+inquiry_question: What are you still fighting that your body will not let you put
+  down?
+somatic_practice: earthing
+also_consider:
+  supplements:
+  - omega-3
+  - turmeric
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - An anti-inflammatory pattern of eating makes a measurable difference within weeks
+  - Sleep is when repair happens — poor sleep keeps markers elevated
+pattern_signals: []
+differential_note: Raised inflammatory markers require a cause. Exclude infection,
+  autoimmune disease, malignancy and inflammatory bowel disease. Persistently raised
+  CRP or ESR with weight loss, night sweats or fever needs investigation, not lifestyle
+  work.
+coach_only_note: ''
+notes_for_coach: Geetika (cl-006) and Kamla (cl-021) both have raised hsCRP on file.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

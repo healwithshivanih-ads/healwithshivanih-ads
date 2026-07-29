@@ -1,0 +1,44 @@
+slug: somatic-map-sleep-apnea
+display_name: Sleep Apnoea — Making Yourself Smaller
+target_kind: topic
+target_slug: sleep-apnea
+sensitivity: sensitive
+emotional_roots:
+- pattern: Not feeling entitled to take up space
+  note: A life where needs, voice and presence have been steadily compressed — and
+    now the breath does it too.
+- pattern: Something held back
+  note: The throat carries expression. Chronic suppression and a constricting airway
+    sit close together.
+- pattern: Never fully letting go
+  note: Interrupting your own breathing keeps you partly alert — never entirely unconscious,
+    never entirely vulnerable.
+reframe: You are allowed to take up room, and to breathe fully without apologising
+  for the air.
+inquiry_question: Who taught you that your needs were too much?
+somatic_practice: expansive-throat-opening
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - A sleep study and CPAP evaluation come first
+  - Weight, airway structure and nasal patency are all genuinely relevant
+pattern_signals: []
+differential_note: CRITICAL — sleep apnoea is a structural and physiological disorder
+  with serious cardiovascular and accident risk. It requires a sleep study and, where
+  indicated, CPAP. Untreated apnoea raises the risk of hypertension, arrhythmia, stroke
+  and daytime-driving accidents. This layer is strictly adjunctive.
+coach_only_note: Never let an emotional framing delay a sleep study. Untreated apnoea
+  kills people on roads. Confirm the client is in the diagnostic pathway before any
+  of this is discussed.
+notes_for_coach: Deepti (cl-011) is STOP-BANG positive and undiagnosed — she needs
+  the study, not this map.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

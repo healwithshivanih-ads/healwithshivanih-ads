@@ -26,7 +26,7 @@ import yaml
 from pydantic import ValidationError as PydanticValidationError
 
 from .enums import InteractionType, SourceType
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, SomaticMap, SomaticPractice, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
 
 
 @dataclass
@@ -73,6 +73,8 @@ class Loaded:
     lab_tests: list[LabTest] = field(default_factory=list)
     lab_panels: list[LabPanel] = field(default_factory=list)
     mindmaps: list[MindMap] = field(default_factory=list)
+    somatic_practices: list[SomaticPractice] = field(default_factory=list)
+    somatic_maps: list[SomaticMap] = field(default_factory=list)
     parse_errors: list[str] = field(default_factory=list)
 
 
@@ -135,6 +137,8 @@ def load_all(data_dir: Path) -> Loaded:
         lab_tests=_load_dir(data_dir, "lab_tests", LabTest, parse_errors),
         lab_panels=_load_dir(data_dir, "lab_panels", LabPanel, parse_errors),
         mindmaps=_load_dir(data_dir, "mindmaps", MindMap, parse_errors),
+        somatic_practices=_load_dir(data_dir, "somatic_practices", SomaticPractice, parse_errors),
+        somatic_maps=_load_dir(data_dir, "somatic_maps", SomaticMap, parse_errors),
         parse_errors=parse_errors,
     )
 
@@ -146,6 +150,7 @@ def overlay(
     mechanisms=(), symptoms=(), cooking_adjustments=(), home_remedies=(),
     protocols=(), drug_depletions=(), titration_protocols=(),
     lab_tests=(), lab_panels=(), tissue_salts=(),
+    mindmaps=(), somatic_practices=(), somatic_maps=(),
 ) -> Loaded:
     """Return a new Loaded where given entities replace any same-slug entries.
 
@@ -172,6 +177,9 @@ def overlay(
         titration_protocols=_merge(loaded.titration_protocols, titration_protocols, "slug"),
         lab_tests=_merge(loaded.lab_tests, lab_tests, "slug"),
         lab_panels=_merge(loaded.lab_panels, lab_panels, "slug"),
+        mindmaps=_merge(loaded.mindmaps, mindmaps, "slug"),
+        somatic_practices=_merge(loaded.somatic_practices, somatic_practices, "slug"),
+        somatic_maps=_merge(loaded.somatic_maps, somatic_maps, "slug"),
         parse_errors=list(loaded.parse_errors),
     )
 
@@ -435,6 +443,60 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for ref in ts.component_salts:
             if ref not in valid_tissue_salt_slugs:
                 warnings.append(Warning_("tissue_salt", ts.slug, "component_salts", "tissue_salt", ref))
+
+    # ---- somatic practices + maps ----
+    # Emotional-root readings layered on top of symptoms/topics. Cross-refs are
+    # warnings (consistent with the rest of the catalogue); the ERRORS here are
+    # the two that would make a map unsafe or unusable downstream.
+    valid_home_remedy_slugs = set(_resolve_index(loaded.home_remedies))
+    valid_somatic_practice_slugs = set(_resolve_index(loaded.somatic_practices))
+
+    for sp in loaded.somatic_practices:
+        for cite in sp.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("somatic_practice", sp.slug, "sources", "source", cite.id))
+        for sx_slug in sp.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("somatic_practice", sp.slug, "linked_to_symptoms", "symptom", sx_slug))
+        for topic_slug in sp.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("somatic_practice", sp.slug, "linked_to_topics", "topic", topic_slug))
+        # A timed practice with no steps can't be rendered by the app at all.
+        if sp.timed and not sp.steps:
+            errors.append(f"somatic_practice/{sp.slug}: timed practice has no steps")
+
+    for sm in loaded.somatic_maps:
+        for cite in sm.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("somatic_map", sm.slug, "sources", "source", cite.id))
+        # target_slug must resolve in the bucket named by target_kind
+        tk = sm.target_kind.value if hasattr(sm.target_kind, "value") else str(sm.target_kind)
+        if tk == "symptom" and sm.target_slug not in valid_symptom_slugs:
+            warnings.append(Warning_("somatic_map", sm.slug, "target_slug", "symptom", sm.target_slug))
+        elif tk == "topic" and sm.target_slug not in valid_topic_slugs:
+            warnings.append(Warning_("somatic_map", sm.slug, "target_slug", "topic", sm.target_slug))
+        if sm.somatic_practice and sm.somatic_practice not in valid_somatic_practice_slugs:
+            warnings.append(Warning_("somatic_map", sm.slug, "somatic_practice", "somatic_practice", sm.somatic_practice))
+        for supp in sm.also_consider.supplements:
+            if supp not in valid_supplement_slugs:
+                warnings.append(Warning_("somatic_map", sm.slug, "also_consider_supplements", "supplement", supp))
+        for hr in sm.also_consider.home_remedies:
+            if hr not in valid_home_remedy_slugs:
+                warnings.append(Warning_("somatic_map", sm.slug, "also_consider_home_remedies", "home_remedy", hr))
+        # A map with no differential note invites reading an association as a
+        # cause — that is the single failure mode this whole layer must avoid.
+        if not sm.differential_note.strip():
+            errors.append(f"somatic_map/{sm.slug}: differential_note is required (what must be excluded physiologically first)")
+        # A coach_only_note is an absolute bar on auto-surfacing. Leaving
+        # sensitivity at `general` alongside one is a contradictory safety
+        # signal — the gate would read as open on one axis and shut on the
+        # other. Force the author to say which they mean.
+        sens = sm.sensitivity.value if hasattr(sm.sensitivity, "value") else str(sm.sensitivity)
+        if sm.coach_only_note.strip() and sens == "general":
+            errors.append(
+                f"somatic_map/{sm.slug}: coach_only_note is set but sensitivity is 'general' — "
+                f"raise sensitivity to 'sensitive' or 'coach_only', or clear the note"
+            )
 
     # ---- protocols ----
     for pr in loaded.protocols:

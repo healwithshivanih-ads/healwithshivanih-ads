@@ -1,0 +1,40 @@
+slug: somatic-map-ankle-problems
+display_name: Ankle Instability — Difficulty Changing Direction
+target_kind: symptom
+target_slug: ankle-instability
+sensitivity: general
+emotional_roots:
+- pattern: Rigidity about changing course
+  note: Ankles let us pivot. Recurrent trouble here can accompany a period of finding
+    it hard to change direction or give yourself permission to.
+- pattern: Conflict about pleasure
+  note: The ankle turns us toward things. Instability sometimes accompanies guilt
+    about moving toward what you actually want.
+reframe: You are allowed to change direction without building a case for it. Staying
+  on a path that stopped working is a habit, not wisdom.
+inquiry_question: What would you turn toward if guilt were not in the way?
+somatic_practice: ankle-circles
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Heel raises and single-leg balance work build genuine stability
+  - Proprioception training after repeated sprains prevents re-injury
+  - Rule out ligament damage where instability persists
+pattern_signals: []
+differential_note: Recurrent ankle instability is usually a proprioceptive and ligamentous
+  problem following incompletely rehabilitated sprains. Exclude ligament laxity, osteochondral
+  injury and inflammatory arthritis. Persistent instability warrants physiotherapy
+  assessment and balance retraining, which is the highest-yield intervention by a
+  wide margin.
+coach_only_note: ''
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

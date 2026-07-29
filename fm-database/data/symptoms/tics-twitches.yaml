@@ -1,0 +1,32 @@
+slug: tics-twitches
+display_name: Tics / Twitches
+aliases:
+- muscle twitching
+- eye twitch
+- facial tic
+- fasciculations
+- involuntary movements
+- eyelid twitching
+- myokymia
+category: neurological
+severity: common
+description: Involuntary brief movements — eyelid flutter, facial twitches, small muscle fasciculations.
+  Overwhelmingly benign and associated with fatigue, caffeine, magnesium status and sustained
+  stress.
+when_to_refer: Refer where twitching is accompanied by progressive weakness, wasting, or difficulty
+  with speech or swallowing — persistent widespread fasciculation with weakness needs neurological
+  assessment. Complex or vocal tics from childhood suggest a tic disorder rather than stress
+  twitching.
+linked_to_topics:
+- anxiety
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Twitching WITHOUT weakness is reassuring. Twitching WITH weakness is not —
+  that is the discriminator.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

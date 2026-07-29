@@ -1,0 +1,56 @@
+slug: somatic-map-diaphragm-tightness
+display_name: Diaphragm Tightness — The Emotional Gatekeeper
+target_kind: symptom
+target_slug: diaphragm-tightness
+sensitivity: general
+differential_note: Rule out diaphragmatic hernia, hiatus hernia, pleuritis, pericarditis,
+  musculoskeletal injury to the ribcage or spine, referred pain from liver or stomach
+  pathology, and respiratory conditions (asthma, COPD) before any emotional reading.
+  Chest or upper abdominal tightness with cardiac or respiratory symptoms requires
+  urgent assessment.
+emotional_roots:
+- pattern: Suppressed emotions stuck at the gatekeeper
+  note: The diaphragm sits at the physical boundary between the chest and the abdomen
+    — between what we feel and what we express. When emotions are consistently held
+    back, some somatic traditions observe the diaphragm contracting as if to stop
+    those feelings from moving through the body.
+- pattern: Freeze response
+  note: Diaphragm tightness and shallow, restricted breathing are hallmarks of the
+    freeze state in trauma responses. The body literally holds its breath as a protective
+    mechanism.
+- pattern: Powerlessness or over-control
+  note: Tension in the solar plexus region is associated in somatic work with experiences
+    of powerlessness, or conversely with extreme attempts to grip and control circumstances
+    that feel out of control.
+reframe: Your breath knows things about your inner state. The diaphragm can begin
+  to soften when you allow yourself what you actually need — a pause, an expression,
+  a reaching out.
+inquiry_question: What would need to feel different in your life for you to be able
+  to breathe fully and freely?
+somatic_practice: progressive-psoas-release
+also_consider:
+  practical:
+  - Somatic therapy or breathwork with a trained practitioner for deeper release
+  - Releasing lower back tension (diaphragm attaches to lumbar spine) can help the
+    diaphragm simultaneously
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Shallow, chest-only breathing observed during the session
+- Client reports holding breath when stressed or concentrating
+- History of trauma or significant chronic stress
+notes_for_coach: Diaphragm and psoas release work can surface strong emotion unexpectedly.
+  Be prepared to slow down and debrief if a client becomes tearful or disoriented
+  during or after the practice. For trauma histories, refer to a trained somatic therapist.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 61. Diaphragm Tightness — EMOTIONAL ROOT
+  quote: The diaphragm is the emotional gatekeeper between your upper and lower body.
+    When emotions are suppressed, they often get stuck at the diaphragm.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

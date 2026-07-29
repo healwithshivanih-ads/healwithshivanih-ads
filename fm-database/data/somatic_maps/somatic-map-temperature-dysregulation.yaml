@@ -1,0 +1,41 @@
+slug: somatic-map-temperature-dysregulation
+display_name: Temperature Dysregulation — Lost Reference Point
+target_kind: symptom
+target_slug: temperature-dysregulation
+sensitivity: general
+emotional_roots:
+- pattern: Running hot
+  note: Anger and intensity with no outlet generate real heat when they have nowhere
+    to go.
+- pattern: Running cold
+  note: Withdrawal and shutdown. Reserves burned through by sustained fear or exhaustion.
+- pattern: A system past calibrating
+  note: Temperature is among the most basic things the body regulates. Losing it signals
+    dysregulation rather than simple stress.
+reframe: Something is pulling your system away from steady. It is worth finding out
+  what, rather than adapting around it.
+inquiry_question: What would help your whole system feel more settled?
+somatic_practice: vigorous-gargling
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Thyroid levels first
+  - Iron deficiency commonly presents as feeling cold
+  - Perimenopause and menopause genuinely change thermoregulation
+pattern_signals: []
+differential_note: Check thyroid function, full blood count and ferritin first — hypo-
+  and hyperthyroidism, anaemia and perimenopause account for most presentations. Refer
+  for night sweats with weight loss, or fever with rigors.
+coach_only_note: ''
+notes_for_coach: Nazneen (cl-022) has hot flushes and Hashimoto's — both threads live
+  here.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

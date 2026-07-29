@@ -1,0 +1,63 @@
+slug: somatic-map-sciatica
+display_name: Sciatica
+target_kind: symptom
+target_slug: sciatica
+sensitivity: general
+emotional_roots:
+- pattern: Fear of moving forward
+  note: The sciatic nerve runs from the base of the spine all the way down each leg
+    — it is the anatomical pathway of forward movement. When this nerve is irritated,
+    some somatic frameworks suggest it is worth asking what forward movement in one's
+    life feels frightening or blocked.
+- pattern: Living out of alignment
+  note: Sciatica is sometimes associated with a gap between a person's values and
+    their day-to-day behaviour — saying one thing and doing another, or staying in
+    a life that no longer fits who they are.
+- pattern: Suppressed rage
+  note: 'John Sarno identified sciatica as a classic TMS presentation: pain generated
+    by the nervous system as a way of keeping dangerous emotions — particularly anger
+    — out of conscious awareness.'
+- pattern: Survival fear
+  note: As with lower back pain, sciatica can carry financial anxiety and uncertainty
+    about the future, especially during major life transitions.
+reframe: 'The sensation running down your leg travels the same pathway your body uses
+  to take a step. Sometimes the question worth sitting with is: what next step are
+  you afraid to take — or already know you need to take?'
+inquiry_question: What step forward are you avoiding, or what step do you already
+  know you need to take but have been refusing?
+somatic_practice: walking-meditation
+also_consider:
+  practical:
+  - Piriformis syndrome — compression of the sciatic nerve by the piriformis muscle
+    — is a common structural cause and responds well to targeted stretching and soft-tissue
+    release
+  - Tennis ball or foam roller self-massage on the glutes can relieve piriformis tension
+  - Walking typically feels better than prolonged sitting — movement keeps the nerve
+    mobile
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Symptoms appear or worsen during major life decisions, transitions, or stalemates
+- Client describes a strong sense of being pushed in a direction they don't want to
+  go
+- Client identifies a gap between their stated values and how they are currently living
+differential_note: Rule out lumbar disc herniation with nerve root compression (L4–S1),
+  spinal stenosis, piriformis syndrome, sacroiliac joint dysfunction, and — critically
+  — cauda equina syndrome (bowel/bladder changes require immediate referral). Vascular
+  claudication and diabetic peripheral neuropathy should also be excluded.
+notes_for_coach: Cauda equina is a medical emergency. Any client reporting new bowel
+  or bladder dysfunction alongside back and leg pain must be referred immediately.
+  Sarno's TMS model should be offered as a complementary framework, not a substitute
+  for structural investigation.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 68. Sciatica — EMOTIONAL ROOT
+  quote: 'Sarno identified sciatica as a classic TMS condition: pain the brain creates
+    to distract from emotions it considers dangerous, particularly anger.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

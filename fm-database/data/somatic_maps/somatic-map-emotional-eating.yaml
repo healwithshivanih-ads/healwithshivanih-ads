@@ -1,0 +1,57 @@
+slug: somatic-map-emotional-eating
+display_name: Stress Eating / Emotional Eating — Using Food to Manage Feelings
+target_kind: symptom
+target_slug: emotional-eating
+sensitivity: sensitive
+differential_note: Rule out blood sugar dysregulation (reactive hypoglycaemia), insulin
+  resistance, binge-eating disorder, bulimia nervosa, and ADHD-associated impulsivity
+  before any emotional reading. A clinician or registered dietitian should be involved
+  if disordered eating patterns are present.
+emotional_roots:
+- pattern: Emotions too large to hold
+  note: When feelings feel overwhelming or there is no other available way to manage
+    them, eating can offer immediate sensory distraction and a brief neurochemical
+    lift. The act of chewing and swallowing creates a physical experience that temporarily
+    displaces emotional pain.
+- pattern: Childhood emotional unavailability
+  note: 'Emotional eating often has its roots in early environments where food was
+    the most reliable source of comfort, or where emotions were not welcomed and had
+    nowhere to go. The pattern becomes deeply automatic: feel something difficult,
+    eat.'
+- pattern: Protection through body
+  note: Some people find that eating to build physical mass feels like protection
+    — weight as armour against a world that has felt unsafe or intrusive. This pattern
+    deserves deep respect and careful, non-judgmental exploration.
+reframe: The eating made sense — your body found a way to manage what it was carrying
+  when nothing else was available. The question is not how to stop eating, but what
+  you are genuinely hungry for that food was trying to provide.
+inquiry_question: When you reach for food and you are not hungry, what tends to happen
+  just before?
+somatic_practice: mindful-first-bite
+also_consider:
+  practical:
+  - Blood sugar stability reduces cravings — prioritise protein and fat at every meal
+  - Regular movement supports blood sugar regulation
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Eating episodes follow specific emotional triggers rather than physical hunger
+- Client reports eating quickly, distracted, or after a difficult interaction
+- Relief is immediate but brief, followed by guilt or regret
+notes_for_coach: This is a sensitive area involving body image and relationship with
+  food. Never use language that implies the client lacks willpower. Refer to a therapist
+  or eating-disorder specialist if binge-purge patterns, extreme restriction, or significant
+  distress around food are present.
+coach_only_note: The 'protection through body' pattern (eating for physical armour)
+  must only be raised by a coach when strong rapport exists and the client has themselves
+  raised the connection. Raising it prematurely can feel shaming.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 57. Stress Eating / Emotional Eating — EMOTIONAL ROOT
+  quote: Food becomes a way to stuff down emotions we don't want to feel.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

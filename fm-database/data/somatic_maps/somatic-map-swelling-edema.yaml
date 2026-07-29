@@ -1,0 +1,44 @@
+slug: somatic-map-swelling-edema
+display_name: Swelling — Holding What Should Flow Through
+target_kind: symptom
+target_slug: edema
+sensitivity: sensitive
+emotional_roots:
+- pattern: Emotion that has not moved
+  note: Grief, anger and sadness that find no outlet can accumulate much as fluid
+    does where circulation has stalled.
+- pattern: Thinking that loops
+  note: Ideas that circle without resolution and never drain.
+- pattern: Absorbing what is not yours
+  note: Taking on other people's problems, and retaining what was never yours to hold.
+reframe: Some things are meant to pass through you rather than take up residence.
+  You have been collecting what should have been moving on.
+inquiry_question: What are you carrying that is ready to move out of your system?
+somatic_practice: side-lying-rocking
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Reduce sodium, which drives fluid retention
+  - Compression garments help chronic swelling
+  - Movement and elevation — the lymphatic system has no pump and depends on muscle
+    action
+pattern_signals: []
+differential_note: CRITICAL — new, sudden, severe, or unilateral swelling requires
+  medical assessment before anything else. Exclude heart failure, renal and hepatic
+  disease, hypothyroidism, DVT, venous insufficiency, lymphoedema and drug causes
+  (calcium-channel blockers, NSAIDs, steroids, gabapentinoids). Bilateral pitting
+  oedema with breathlessness is an emergency.
+coach_only_note: Do not surface any emotional framing for oedema until a cardiac,
+  renal and hepatic cause has been excluded. Reading heart failure as unshed grief
+  would be a serious harm.
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

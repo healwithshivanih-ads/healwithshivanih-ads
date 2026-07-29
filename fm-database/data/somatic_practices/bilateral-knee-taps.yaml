@@ -1,0 +1,47 @@
+slug: bilateral-knee-taps
+display_name: Bilateral Knee Taps
+aliases: []
+category: touch
+body_region: legs_feet
+position: seated
+summary: Steady alternating hand-to-knee tapping for two to three minutes.
+why_it_works: Steady alternating left-right input helps an over-reactive alarm system recalibrate
+  what actually warrants a response — the same principle behind bilateral work in trauma practice.
+steps:
+- label: Sit comfortably
+  cue: Sit with both feet on the floor, hands resting on your thighs.
+  secs: 20
+  action: rest
+- label: Begin alternating
+  cue: Tap your right knee with your right hand, then the left with the left. Steady rhythm.
+  secs: 60
+  action: tap
+- label: Settle into it
+  cue: Keep the pace even and unhurried. Breathe normally.
+  secs: 90
+  action: tap
+- label: Slow and stop
+  cue: Let the tapping slow, then rest your hands and notice.
+  secs: 30
+  action: rest
+reps: null
+duration_seconds: 200
+bilateral: true
+timed: true
+equipment: []
+motion_shape: continuous_travel
+contraindications:
+- Stop if it raises distress rather than settling it
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics:
+- hay-fever
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

@@ -1,0 +1,56 @@
+slug: somatic-map-yeast-infections-candida
+display_name: Yeast Infections & Candida Overgrowth
+target_kind: topic
+target_slug: candida-overgrowth
+sensitivity: sensitive
+emotional_roots:
+- pattern: Self-abandonment and self-neglect
+  note: Somatic practitioners sometimes observe that recurrent yeast overgrowth is
+    associated with a pattern of consistently deprioritising one's own needs — tending
+    to others at the expense of one's own health and nourishment.
+- pattern: Feeling invaded in personal or sexual space
+  note: Candida infections in the reproductive area are sometimes associated — in
+    somatic tradition — with a sense that the body's boundaries or personal territory
+    have been compromised by another's agenda.
+reframe: Your body's natural balance is asking to be restored — and that begins with
+  restoring care for yourself. Reclaiming your space, your rhythms, and your limits
+  is not selfish; it is the foundation of health.
+inquiry_question: Where in your life have you been giving so much that there is nothing
+  left for you, and what is one small act of genuine self-tending you could offer
+  yourself today?
+somatic_practice: hip-circles
+also_consider:
+  supplements:
+  - probiotics
+  practical:
+  - Reduce dietary sugar and refined carbohydrates, which feed yeast
+  - Cranberries and garlic have traditional antifungal associations (not equivalent
+    to medical antifungal treatment)
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client consistently places others' needs above their own
+- Reports feeling 'invaded' by others' expectations or demands
+- History of recurrent vaginal or oral candida without immune explanation
+- Describes forgetting or dismissing personal needs as unimportant
+differential_note: 'Candida overgrowth must be medically assessed. Physical causes
+  include: antibiotic use (disrupts competitive microbiome), high-sugar diet, diabetes
+  and insulin resistance (elevated glucose feeds yeast), immunosuppression (HIV, corticosteroids,
+  chemotherapy), hormonal contraceptives, pregnancy, thyroid dysfunction, and gut
+  dysbiosis. Oral or systemic candidiasis in an immunocompetent adult warrants investigation
+  for underlying immunodeficiency. Emotional associations are never a substitute for
+  identifying and treating the physiological drivers.'
+notes_for_coach: Probiotics have reasonable evidence for restoration of vaginal lactobacillus
+  flora and reduction of candida recurrence. Dietary sugar reduction is well-supported
+  mechanistically. The emotional associations are observational.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 74. Yeast Infections / Candida — EMOTIONAL ROOT
+  quote: 'Yeast overgrows when you''ve stopped tending your own body: putting everyone
+    else first, neglecting self-care, abandoning yourself.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

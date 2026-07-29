@@ -1,0 +1,54 @@
+slug: somatic-map-nausea
+display_name: Nausea — The Body Refusing to Swallow
+target_kind: symptom
+target_slug: nausea
+sensitivity: sensitive
+differential_note: Rule out pregnancy, medication side effects, vestibular dysfunction
+  (BPPV, labyrinthitis), gastroparesis, food poisoning, peptic ulcer, migraine, raised
+  intracranial pressure, and chemotherapy-induced nausea before any emotional reading.
+  Persistent unexplained nausea requires medical investigation.
+emotional_roots:
+- pattern: Fear and bracing
+  note: Nausea sometimes arises when the body is bracing against something it perceives
+    as threatening — a difficult conversation, a confrontation, a truth that feels
+    impossible to face. It can be the body's way of registering that something feels
+    unbearable.
+- pattern: Rejection and refusal
+  note: Some people notice nausea as a physical signal that they are being asked to
+    accept something that feels deeply wrong or intolerable to them — a situation,
+    a decision, or a reality they cannot bring themselves to take in.
+- pattern: Anxiety response
+  note: The gut-brain connection is immediate. Emotional distress — even in the absence
+    of physical illness — can produce genuine nausea. The feeling is real, even when
+    no pathology is present.
+reframe: Your body has its own kind of intelligence. Nausea can be a signal worth
+  listening to — not fighting — before deciding how to respond.
+inquiry_question: What is your body trying to reject right now?
+somatic_practice: acupressure-p6-with-rocking
+also_consider:
+  supplements:
+  - ginger
+  practical:
+  - Fresh ginger tea, ginger chews, or ginger capsules
+  - Peppermint tea
+  - Avoid lying down immediately after eating
+  - Small, frequent meals rather than large ones
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Nausea reliably appears before specific social situations or conversations
+- Client uses language like 'I can't stomach this' or 'I feel sick about it'
+- No food-related pattern — nausea occurs independent of what was eaten
+notes_for_coach: Always exclude pregnancy and medication effects first. Persistent
+  or severe nausea warrants medical referral.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 53. Nausea — EMOTIONAL ROOT
+  quote: Nausea is also closely tied to anxiety. The gut-brain connection is so strong
+    that emotional distress immediately affects digestive function.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

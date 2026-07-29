@@ -1,0 +1,48 @@
+slug: somatic-map-autoimmune-flares
+display_name: Autoimmune Flares — The Fight Turned Inward
+target_kind: topic
+target_slug: autoimmune
+sensitivity: coach_only
+emotional_roots:
+- pattern: Anger with nowhere outward to go
+  note: Absorbing every injustice and staying agreeable at your own expense; the fight
+    that should go out finds the only target left.
+- pattern: Self-abandonment
+  note: Not defending your own boundaries until there is little left that feels worth
+    protecting.
+- pattern: After a long override
+  note: Autoimmune conditions frequently follow prolonged periods of having to override
+    your own needs to get through.
+reframe: You get to decide that your own care is not conditional, however you were
+  taught otherwise.
+inquiry_question: Where have you been treating your own needs as the thing to sacrifice
+  first?
+somatic_practice: knee-to-chest
+also_consider:
+  supplements:
+  - vitamin-d3
+  - omega-3
+  - probiotics
+  home_remedies: []
+  cooking_adjustments: []
+  practical: []
+pattern_signals: []
+differential_note: Autoimmune disease requires specialist diagnosis and management.
+  Flares can be organ-threatening — lupus nephritis, vasculitis and serositis are
+  medical emergencies. Never let this framing delay rheumatology input or interrupt
+  immunosuppression. Check vitamin D and screen for infection, which commonly triggers
+  flares.
+coach_only_note: NEVER auto-surface. Telling someone their immune system attacks them
+  because they abandoned themselves is among the most harmful messages in this book.
+  Session material only, and only where the client raises it first.
+notes_for_coach: Dhanishta (cl-004), Niti (cl-014), Shruti (cl-013), Archana (cl-007)
+  and Nazneen (cl-022) all have Hashimoto's. This map must stay coach-only for all
+  of them.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

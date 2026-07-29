@@ -1,0 +1,60 @@
+slug: tre-hand-release
+display_name: TRE Hand Release
+category: discharge
+body_region: arms_hands
+position: any_position
+summary: A tension-discharge practice in which the hands are repeatedly clenched into fists and then
+  spread wide, pairing the release with an exhale to encourage letting go of held tension and suppressed
+  anger.
+why_it_works: Isometric contraction followed by full extension activates and then releases the intrinsic
+  hand muscles, allowing the neuromuscular system to complete an interrupted action-readiness response.
+  The paired exhale engages parasympathetic tone, reinforcing the physiological shift from bracing
+  to release.
+steps:
+- label: Form fists
+  cue: Close both hands into the tightest fists you can manage. Hold that squeeze and, if it helps,
+    bring to mind whatever you feel you are trying to control or hold together.
+  action: hold
+  secs: 5
+- label: Release and spread
+  cue: Suddenly open your hands as wide as possible, spreading every finger apart. At the same moment,
+    breathe out fully, as if you are releasing whatever you were gripping.
+  action: release
+  secs: 5
+- label: Repeat
+  cue: Close into fists again and repeat the cycle. With each opening, let the release feel a little
+    more complete than the last.
+  action: release
+  secs: 90
+reps: 10
+duration_seconds: 100
+timed: true
+bilateral: true
+equipment: []
+contraindications:
+- Acute hand or wrist injury
+- Inflammatory arthritis flare — avoid strong grip
+linked_to_symptoms:
+- muscle-tension
+- tension
+linked_to_topics:
+- nervous-system-regulation
+- somatic-body-memory
+notes_for_coach: 'Encourage clients to notice what arises during the hold phase — this is where suppressed
+  action-readiness surfaces. The full finger spread at the end is as important as the fist. Source:
+  entry 38, System 4.'
+aliases: []
+motion_shape: load_release
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 38. Hand Tension / Clenched Fists — Somatic Reset
+  quote: Make tight fists, as tight as you can. Hold for 5 seconds while imagining all the things
+    you're trying to control or the anger you're holding. Then, open your hands wide, spreading your
+    fingers as far as they'll go. As you open, exhale, and imagine releasing what you've been gripping.
+    Repeat 10 times, making each release more complete.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

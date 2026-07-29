@@ -1,0 +1,59 @@
+slug: bad-breath-somatic-map
+display_name: Bad Breath (Halitosis)
+target_kind: topic
+target_slug: oral-health-toxins
+sensitivity: sensitive
+emotional_roots:
+- pattern: Unprocessed resentment
+  note: Unresolved grudges, bitterness, and anger that have not been worked through
+    may be associated with an internal 'fermentation' that occasionally expresses
+    itself through the breath.
+- pattern: Corrosive speech habits
+  note: Habitual criticism, gossip, or negative commentary spoken aloud may be associated
+    with an oral environment that mirrors the quality of what passes through it.
+- pattern: Shame about anger
+  note: Many people feel ashamed of recognising how angry they are. The source suggests
+    that this shame — the layer over the anger — can itself become part of the stored
+    charge.
+reframe: 'Anger is often a secondary emotion covering a more painful primary one:
+  hurt, fear, or grief. When you can find what is underneath, the secondary flame
+  often loses its fuel.'
+inquiry_question: What are you still carrying that's ready to go?
+somatic_practice: physiological-sigh
+also_consider:
+  supplements:
+  - zinc
+  - chlorella
+  practical:
+  - Address poor digestion, which is a common physiological contributor to halitosis
+  - Reduce caffeine and alcohol
+  home_remedies:
+  - tongue-scraping-morning-ritual
+  - sesame-oil-pulling-gum-massage
+  cooking_adjustments: []
+pattern_signals:
+- Client describes ruminating on past hurts or carrying long-standing grievances
+- Tendency toward critical or negative self-talk about others
+- Halitosis worsens during periods of interpersonal conflict or stress
+- Client reports shame around the symptom itself, not just discomfort
+differential_note: 'Halitosis is most commonly caused by oral factors: poor hygiene,
+  periodontal disease, dry mouth, food residue, or tongue coating. Systemic causes
+  include GERD, H. pylori infection, SIBO, liver dysfunction, diabetic ketoacidosis
+  (acetone breath), kidney failure (uraemic fetor), and respiratory infections. A
+  dental assessment and gut evaluation should precede any emotional exploration.'
+notes_for_coach: Sensitivity is set to 'sensitive' because the framing could feel
+  shaming to clients who are already self-conscious about the symptom. Lead with the
+  physiological before the emotional, and frame the emotional as a possible co-contributor,
+  not a cause.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 22. Bad Breath — EMOTIONAL ROOT
+  quote: Bad breath often reflects what's rotting in your thinking. When anger, revenge
+    fantasies, or bitter thoughts toward people who've hurt you fester unprocessed,
+    the mouth can literally smell like something died inside.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

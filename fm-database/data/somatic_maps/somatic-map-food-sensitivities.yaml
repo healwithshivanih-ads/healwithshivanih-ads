@@ -1,0 +1,60 @@
+slug: somatic-map-food-sensitivities
+display_name: Food Sensitivities — The Reactive Gut of an Overwhelmed System
+target_kind: symptom
+target_slug: food-sensitivities
+sensitivity: general
+differential_note: Rule out coeliac disease (anti-tTG IgA, biopsy), IgE-mediated food
+  allergy (skin prick test, specific IgE), SIBO, IBD, mast cell activation syndrome,
+  enzyme deficiencies (lactase, DAO), MCAS, and eosinophilic gastrointestinal conditions
+  before any emotional reading. New or expanding food sensitivities warrant thorough
+  investigation.
+emotional_roots:
+- pattern: Chronic stress increasing gut permeability
+  note: Prolonged stress and anxiety are associated with increased intestinal permeability.
+    When the barrier function of the gut is compromised, food particles that would
+    not normally trigger a response cross into the bloodstream and activate immune
+    reactions. The food may be acting as a proxy for the real issue — a system that
+    is overwhelmed.
+- pattern: System maxed out
+  note: Food sensitivities that develop suddenly or keep expanding over time can reflect
+    a total load that has exceeded the body's capacity to manage. The gut loses its
+    ability to discriminate safely.
+- pattern: Rejection and intolerance
+  note: There is a parallel sometimes drawn between what the body refuses to tolerate
+    physically and what a person is refusing to tolerate in their life — circumstances,
+    relationships, or demands they keep accepting but cannot truly digest. This is
+    a reflective frame, not a causal claim.
+reframe: Your sensitivity is a signal, not a life sentence. Addressing the environment
+  — external and internal — that is keeping your system in a state of alarm is as
+  important as managing what you eat.
+inquiry_question: What is your gut rejecting, and what in your life might your body
+  be trying to tell you it cannot keep absorbing?
+somatic_practice: slow-chewing-practice
+also_consider:
+  supplements:
+  - l-glutamine
+  - digestive-enzymes
+  home_remedies:
+  - bone-broth
+  practical:
+  - Consider whether the stress of restriction itself is causing more harm than the
+    foods
+  cooking_adjustments: []
+pattern_signals:
+- Sensitivities developed or expanded during a period of high life stress
+- Reactions are inconsistent — same food tolerated some days, not others
+- Client describes feeling like they react to everything and cannot find a safe diet
+notes_for_coach: Expanding food sensitivities with no clear pattern are a clinical
+  flag for MCAS or SIBO and should prompt referral. The stress-permeability connection
+  is evidence-based but does not explain all cases.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 60. Food Sensitivities — EMOTIONAL ROOT
+  quote: Chronic stress and anxiety increase intestinal permeability—particles that
+    shouldn't cross the gut lining do, triggering immune responses.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

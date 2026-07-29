@@ -1,0 +1,70 @@
+slug: yin-yoga-surrender
+display_name: Yin Yoga Surrender
+category: movement
+body_region: pelvis
+position: lying
+summary: A passive supine hip-opening posture (reclined butterfly / supta baddha konasana) held for
+  5 minutes with supported knees, practising the somatic act of letting go.
+why_it_works: Sustained passive holds in yin yoga stimulate the parasympathetic nervous system through
+  slow, deep proprioceptive input to the hip-pelvic region, where the psoas and pelvic floor carry
+  significant autonomic tension. The long hold allows myofascial tissue to gradually release and invites
+  the nervous system into a receptive, down-regulated state.
+steps:
+- label: Set Up Props
+  cue: Place two pillows or folded blankets on your mat where your knees will fall once they open
+    outward.
+  action: rest
+  secs: 20
+- label: Lie Down
+  cue: Lie on your back and bring the soles of your feet together, allowing both knees to fall open
+    to the sides. Rest each knee on its support so there is no muscle effort required to hold the
+    position.
+  action: rest
+  secs: 15
+- label: Arms at Rest
+  cue: Let your arms settle wherever they feel natural — at your sides, on your belly, or open out
+    to the sides. There is no correct position.
+  action: release
+  secs: 5
+- label: Breathe and Soften
+  cue: Close your eyes and breathe slowly. With each exhale, let your body sink a little heavier into
+    the floor. There is nothing to do, nowhere to go, nothing to fix.
+  action: release
+  secs: 270
+- label: Exit Gently
+  cue: When 5 minutes have passed, bring your knees together slowly, roll to one side, and rest there
+    for a moment before sitting up.
+  action: rest
+  secs: 10
+duration_seconds: 320
+timed: true
+bilateral: false
+equipment:
+- two pillows or folded blankets
+contraindications:
+- Hip replacement — check with surgeon before opening knees wide
+- Severe groin or inner-thigh injury
+- Second or third trimester pregnancy — use a semi-reclined position instead
+linked_to_symptoms:
+- insomnia
+- muscle-tension
+- snoring
+linked_to_topics:
+- sleep
+- chronic-stress
+notes_for_coach: The supported knee position is essential — unsupported the hip flexors stay active
+  and the letting-go effect is lost. Emphasise that this is a doing-nothing practice.
+aliases: []
+motion_shape: release
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 33. Snoring — SOMATIC RESET
+  quote: Lie on your back and let your knees fall open to the sides, soles of feet together. Place
+    a pillow under each knee for support. Let your arms rest wherever they feel natural. Stay here
+    for 5 minutes, breathing slowly, letting your body soften with each exhale.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

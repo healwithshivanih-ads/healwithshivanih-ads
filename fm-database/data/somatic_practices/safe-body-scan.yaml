@@ -1,0 +1,73 @@
+slug: safe-body-scan
+display_name: Safe Body Scan
+category: imagery
+body_region: whole_body
+position: lying
+summary: A slow, non-directive body scan that invites the client to notice areas of felt safety and
+  areas of tension without trying to change anything, rebuilding interoceptive trust.
+why_it_works: Non-judgmental interoceptive awareness cultivates prefrontal regulation of bottom-up
+  sensory signals. By framing each body region as 'safe or unsafe' rather than 'painful or not', the
+  practice interrupts catastrophising and gradually widens the window of tolerance for body sensation.
+steps:
+- label: Settle
+  cue: Lie on your back with knees bent and feet flat. Close your eyes and take two easy breaths to
+    arrive.
+  action: rest
+  secs: 20
+- label: Begin at the feet
+  cue: 'Bring your attention to your feet. Silently ask: ''Do my feet feel safe or unsafe right now?''
+    Simply notice. Don''t try to change the answer.'
+  action: observe
+  secs: 20
+- label: Move upward through the body
+  cue: 'Slowly travel your attention up through your calves, knees, thighs, hips, belly, and lower
+    back, pausing at each area to ask the same question: ''Safe or unsafe?'' Just notice.'
+  action: observe
+  secs: 80
+- label: Breathe gently into the ribs
+  cue: When your attention reaches your ribcage, send a gentle breath into that area — not forcing
+    expansion, just a soft offering of air. Notice any response.
+  action: expand
+  secs: 30
+- label: Continue to the head
+  cue: Continue upward through the chest, shoulders, throat, jaw, and scalp, asking the same question
+    at each stop. No fixing — just a slow, curious inventory.
+  action: observe
+  secs: 80
+- label: Complete the scan
+  cue: Arrive at the top of your head. Take a full breath and let it go. When you're ready, open your
+    eyes slowly.
+  action: rest
+  secs: 20
+duration_seconds: 250
+timed: true
+bilateral: false
+contraindications:
+- Severe dissociation — a fully eyes-closed, inward-focused scan may increase destabilisation; keep
+  eyes open and add grounding cues
+- Acute trauma response — use only with appropriate clinical support
+linked_to_symptoms:
+- chest-tightness
+- muscle-tension
+- breathing-irregularity
+linked_to_topics:
+- nervous-system-regulation
+- somatic-body-memory
+notes_for_coach: The 'safe or unsafe' framing is deliberately neutral and avoids amplifying pain catastrophising.
+  Clients with a history of trauma may find body scanning activating — introduce with eyes open and
+  shorter passes first.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 47. Rib Pain — SOMATIC RESET
+  quote: 'Lie on your back with knees bent. Close your eyes. Starting at your feet, slowly move your
+    attention upward through your body. At each area, silently ask: ''Does this part feel safe or
+    unsafe right now?'''
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

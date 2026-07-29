@@ -1,0 +1,57 @@
+slug: map-heart-palpitations
+display_name: Heart Palpitations
+target_kind: symptom
+target_slug: palpitations
+sensitivity: sensitive
+emotional_roots:
+- pattern: Chronic vigilance replacing joy
+  note: Some clients with recurrent palpitations may have been living in a sustained
+    state of alertness for so long that their resting heart rhythm has calibrated
+    to that baseline. The heart may have, in effect, forgotten what settled safety
+    feels like.
+- pattern: Suppressed emotion seeking expression
+  note: Palpitations sometimes accompany moments when a strong feeling is present
+    but not being allowed expression — as though the feeling that cannot come out
+    as words or tears comes out instead as an irregular rhythm.
+reframe: Your heart is not malfunctioning — it is responding to an alarm signal that
+  may no longer reflect a real threat. Learning to send the body an all-clear signal
+  is a skill that can be practised and built over time.
+inquiry_question: What real or perceived emergency might your heart be responding
+  to right now, and is there something you have been avoiding that needs your attention?
+somatic_practice: vagal-breathing-4-4-8
+also_consider:
+  supplements:
+  - magnesium-glycinate
+  - electrolyte-supplement
+  practical:
+  - Reduce or eliminate caffeine and alcohol, both of which can trigger palpitations
+  - Assess electrolyte status — low potassium or magnesium is a common and correctable
+    cause
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a racing, fluttering, or skipping sensation in the chest
+- Symptoms arise during or after emotional suppression, not only during exertion
+- Long history of high-pressure environments with little rest or pleasure
+- Difficulty identifying or naming emotions (alexithymia pattern)
+differential_note: Palpitations require clinical evaluation to exclude arrhythmia
+  (AF, SVT, ectopics), thyroid dysfunction (hyperthyroidism), anaemia, electrolyte
+  imbalance (low magnesium or potassium), stimulant use, medication side effects,
+  and structural cardiac disease. A 12-lead ECG, Holter monitor, TFTs, and electrolyte
+  panel are standard first-line investigations. Refer any palpitations accompanied
+  by syncope, chest pain, or breathlessness urgently.
+notes_for_coach: Never frame palpitations as 'just anxiety' before organic causes
+  are excluded. Magnesium glycinate and electrolyte adequacy are legitimate first-line
+  nutritional considerations to discuss. Caffeine and alcohol reduction is safe lifestyle
+  advice.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 44. Heart Palpitations
+  quote: Magnesium deficiency is a common and overlooked cause of palpitations. Magnesium
+    glycinate is well-absorbed and calming.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

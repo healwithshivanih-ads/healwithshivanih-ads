@@ -1,0 +1,68 @@
+slug: om-chanting-sternum
+display_name: OM Chanting for Sternum
+category: discharge
+body_region: chest_diaphragm
+position: seated
+summary: A guided vocal resonance practice using the OM sound to create physical vibration through
+  the chest and sternum, intended to mobilise stagnant grief or longing held in the chest wall.
+why_it_works: Vocalising creates vibration throughout the ribcage and sternum via bone conduction.
+  Low-frequency resonance activates mechanoreceptors in the chest wall and may stimulate the vagus
+  nerve directly through its thoracic branches. The act of sustained exhale also promotes parasympathetic
+  tone.
+steps:
+- label: Settle into a seated position
+  cue: Sit comfortably with your spine upright but not rigid. Rest your hands in your lap. Close your
+    eyes.
+  action: rest
+  secs: 15
+- label: Take a full breath in
+  cue: Breathe in slowly and deeply through your nose, letting your chest and belly fill.
+  action: expand
+  secs: 5
+- label: Chant OM on the exhale
+  cue: On the exhale, open your mouth and sound the 'O' — feel it open and vibrate through your chest.
+    Then let the lips close and allow the 'M' to hum through your sternum. Let the sound last the
+    full length of your exhale.
+  action: release
+  secs: 10
+- label: Repeat, slowing each round
+  cue: After a natural pause, breathe in again. With each new round of OM, let the sound become a
+    little slower and deeper than the one before. Complete 5 to 7 rounds.
+  action: release
+  secs: 120
+- label: Rest in silence
+  cue: After the final OM, sit quietly for a few breaths. Notice any sensation of vibration, warmth,
+    or release in your chest.
+  action: observe
+  secs: 30
+duration_seconds: 180
+timed: true
+bilateral: false
+reps: 7
+contraindications:
+- Laryngeal or vocal cord pathology — modify to a gentle hum if full chanting is painful
+- Settings where vocalising is not possible — a silent internal hum can substitute
+linked_to_symptoms:
+- chest-tightness
+- breathing-irregularity
+linked_to_topics:
+- vagal-tone
+- nervous-system-regulation
+- emotional-wellbeing
+notes_for_coach: Some clients feel self-conscious vocalising. Normalise it as a physiological tool.
+  Grief-related sessions may prompt emotional release — have tissue available and allow space for
+  it.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 48. Sternum Pressure — SOMATIC RESET
+  quote: Sit comfortably. Take a deep breath in. On the exhale, chant 'OM' slowly—letting the sound
+    vibrate through your chest.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

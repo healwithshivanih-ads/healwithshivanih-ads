@@ -1,0 +1,43 @@
+slug: somatic-map-smell-sensitivity
+display_name: Smell Sensitivity — The Gatekeeper
+target_kind: symptom
+target_slug: chemical-smell-sensitivity
+sensitivity: general
+emotional_roots:
+- pattern: Refusing something entry
+  note: The nose decides what comes in. Heightened sensitivity often marks something
+    in the environment registering as wrong.
+- pattern: Faster than thought
+  note: Smell bypasses reasoning and speaks straight to the survival brain — sometimes
+    recognising a person or place before the mind has caught up.
+- pattern: Association
+  note: Strong reactions to particular smells often attach to memory that is not consciously
+    available.
+reframe: Your nose may well be right. If something smells wrong to you, it is allowed
+  to be wrong, and you are allowed to act on that.
+inquiry_question: What is your nose registering that you have not let yourself conclude?
+somatic_practice: side-bend-release
+also_consider:
+  supplements:
+  - quercetin
+  - vitamin-c
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Where the trigger is a real exposure, removing it beats tolerating it
+pattern_signals: []
+differential_note: Exclude mast cell activation, histamine intolerance, migraine with
+  osmophobia, chronic rhinosinusitis and genuine chemical exposure. New distorted
+  smell (phantosmia or parosmia) after viral illness or head injury, or with neurological
+  signs, needs assessment.
+coach_only_note: ''
+notes_for_coach: Nazneen (cl-022) and Geetika (cl-006) both have histamine threads
+  — check that first here.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

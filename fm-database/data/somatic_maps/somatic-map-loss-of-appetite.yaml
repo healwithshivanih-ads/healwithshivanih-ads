@@ -1,0 +1,58 @@
+slug: somatic-map-loss-of-appetite
+display_name: Loss of Appetite — The Nervous System Refusing Nourishment
+target_kind: symptom
+target_slug: loss-of-appetite
+sensitivity: sensitive
+differential_note: Rule out active infection or inflammation, medication side effects
+  (SSRIs, GLP-1 agonists, antibiotics, chemotherapy), hypothyroidism, hypercalcaemia,
+  renal failure, malignancy, depression, eating disorders, and post-viral fatigue
+  syndrome before any emotional reading. Significant unintentional weight loss always
+  requires medical evaluation.
+emotional_roots:
+- pattern: Stress-response shutdown
+  note: When the nervous system is locked in a sustained stress or survival state,
+    appetite is one of the first things to be deprioritised. The body redirects its
+    energy away from rest-and-digest functions. Loss of appetite can be a physical
+    readout of chronic threat activation.
+- pattern: Grief and emotional overwhelm
+  note: Appetite often diminishes during grief, depression, or periods of emotional
+    flooding. When the life force itself feels reduced, the desire to take in nourishment
+    can fade with it.
+- pattern: Refusal to receive
+  note: For some people, appetite loss reflects something deeper — a pattern of not
+    allowing themselves to be nourished, of protecting themselves by needing as little
+    as possible. This can be worth exploring gently in a coaching context.
+reframe: Allowing yourself to be nourished — to take in what is good, to receive care
+  — is not a luxury. It is part of how your body recovers, especially during hard
+  times.
+inquiry_question: What threat does your body think it is responding to right now?
+somatic_practice: ear-massage
+also_consider:
+  supplements:
+  - gentian
+  practical:
+  - Small, frequent snacks rather than full meals
+  - Smoothies and soups require less effort to consume
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Appetite loss developed alongside a significant stressor or loss
+- Client reports feeling like they do not deserve care or comfort
+- Eating feels like effort rather than pleasure
+notes_for_coach: Loss of appetite with weight loss must be medically evaluated. In
+  the context of grief, the emotional reading requires care and sensitivity — do not
+  frame in a way that implies the client's emotional state caused a physical problem.
+coach_only_note: When appetite loss is linked to grief or depression, especially with
+  weight loss, this map must not be auto-surfaced to clients. Use only in a guided
+  coaching conversation where rapport is established and medical causes have been
+  excluded.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 56. Loss of Appetite — EMOTIONAL ROOT
+  quote: Loss of appetite is a classic sign that your nervous system is stuck in a
+    stress response.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

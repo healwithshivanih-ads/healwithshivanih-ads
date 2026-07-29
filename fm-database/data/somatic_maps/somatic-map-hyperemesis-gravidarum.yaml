@@ -1,0 +1,65 @@
+slug: somatic-map-hyperemesis-gravidarum
+display_name: Hyperemesis Gravidarum — Conflict, Boundary & Unvoiced Feeling
+target_kind: topic
+target_slug: pregnancy-first-trimester
+sensitivity: coach_only
+coach_only_note: HG is a serious, potentially life-threatening medical condition requiring
+  obstetric management. This emotional framing must never be introduced unsolicited
+  and must never be used in a way that implies the client's feelings caused their
+  condition. It is offered here only as a complement to medical care for clients who
+  themselves wish to explore emotional dimensions. Coaches must not delay or substitute
+  for medical referral.
+differential_note: Hyperemesis gravidarum is a distinct clinical condition characterised
+  by intractable nausea and vomiting, dehydration, electrolyte disturbance, and weight
+  loss in pregnancy. Contributing biological factors include elevated hCG, oestrogen,
+  and GDF15 levels; helicobacter pylori co-infection; thyroid hormone dysregulation;
+  and vestibular sensitivity. Medical management including antiemetics, IV hydration,
+  and nutritional support may be needed. Always refer to the obstetric team first.
+emotional_roots:
+- pattern: Ambivalence about the pregnancy circumstances
+  note: Some people with severe pregnancy nausea describe feeling caught between wanting
+    the pregnancy and finding parts of it — the timing, the relationship context,
+    the loss of bodily autonomy — genuinely difficult to accept. The nervous system
+    may amplify nausea when in a state of unresolved internal conflict.
+- pattern: Fear of being consumed
+  note: Pregnancy involves surrendering significant bodily autonomy. For people with
+    a history of having their boundaries ignored or their needs dismissed, this surrender
+    can feel unsafe at a deep somatic level. The vomiting may represent an unconscious
+    attempt to maintain some bodily boundary.
+- pattern: Reactivated past trauma
+  note: Pregnancy can surface previously stored trauma — including prior birth trauma,
+    experiences of powerlessness, or relational trauma. The body may respond to old
+    memories as if they are present, amplifying the physiological stress response
+    and worsening symptoms.
+reframe: You are allowed to love your baby and find this experience genuinely awful
+  at the same time — both things are completely true. The feelings you have been swallowing
+  alongside your food deserve some room to exist. That acknowledgement will not harm
+  your baby. Keeping those feelings locked down may, however, be adding to your burden.
+inquiry_question: What part of this pregnancy feels hardest to take in right now?
+somatic_practice: cold-nape-reset
+also_consider:
+  supplements:
+  - vitamin-b6
+  - ginger
+  practical:
+  - Small, frequent meals to prevent the empty stomach that worsens nausea
+  - Acupressure at P6 (inner wrist, pericardium point)
+  - Sip fluids constantly; try ice chips if liquids will not stay down
+  - This is a serious medical condition — work closely with your obstetric provider
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes the pregnancy as wanted but the circumstances as complicated or
+  stressful
+- History of trauma or boundary violation
+- Reports feeling as though her body is no longer her own
+notes_for_coach: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 83. Hyperemesis Gravidarum — EMOTIONAL ROOT
+  quote: HG can be the body rejecting what the mind can't accept about this pregnancy.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

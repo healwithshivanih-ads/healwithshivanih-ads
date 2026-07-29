@@ -1,0 +1,43 @@
+slug: somatic-map-kidney-stones
+display_name: Kidney Stones — What Hardened Because It Never Moved
+target_kind: topic
+target_slug: kidney-stones
+sensitivity: general
+emotional_roots:
+- pattern: Accumulated, unprocessed feeling
+  note: The mind-body literature describes the stone as something that hardened because
+    it was never softened or released.
+- pattern: Fear and survival
+  note: In Chinese medicine the kidneys carry fear; the question underneath is whether
+    you are safe.
+- pattern: Holding everything together
+  note: Common in people who feel responsible for keeping it all up, and who suppress
+    rather than express.
+reframe: Having heavy things inside does not make you a bad person. Fear, grief and
+  anger can be frightening — the work is finding somewhere safe to let them exist.
+inquiry_question: What have you swallowed that has gone hard inside you?
+somatic_practice: kidney-tapping
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Water is the simplest and most effective intervention — most stone formers are
+    chronically underhydrated
+  - Reduce oxalate-rich foods if the stones are calcium oxalate
+  - Chanca piedra is a traditional remedy used for stone passage
+pattern_signals: []
+differential_note: Renal colic is a medical emergency — severe loin-to-groin pain,
+  often with vomiting and haematuria, needs urgent assessment. Stones with fever indicate
+  infection above an obstruction and are life-threatening. Metabolic workup identifies
+  stone type and prevents recurrence; hydration is the single most effective preventive.
+coach_only_note: ''
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

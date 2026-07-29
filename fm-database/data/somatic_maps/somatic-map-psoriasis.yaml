@@ -1,0 +1,44 @@
+slug: somatic-map-psoriasis
+display_name: Psoriasis — Building a Thicker Skin
+target_kind: topic
+target_slug: psoriasis
+sensitivity: sensitive
+emotional_roots:
+- pattern: Fear of being hurt
+  note: The skin overproduces, layer on layer, as though trying to build a barrier
+    that was not there when it was needed.
+- pattern: Numbing
+  note: Shutting out pain for long enough dulls everything else too.
+- pattern: Self-rejection
+  note: A persistent discomfort with who one is — the body making new cells as if
+    trying to become someone else.
+reframe: You are allowed to stop punishing yourself for feelings you were never given
+  permission to have.
+inquiry_question: What are you still punishing yourself for, and whose voice is it
+  in?
+somatic_practice: warm-hand-placement
+also_consider:
+  supplements:
+  - vitamin-d3
+  - fish-oil-epa-dha
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Careful sun exposure helps many people
+  - Stress reduction has consistent evidence here
+pattern_signals: []
+differential_note: Psoriasis is a systemic immune-mediated disease, not a skin complaint.
+  It carries real cardiometabolic risk and up to a third develop psoriatic arthritis
+  — ask about joint pain and refer early. Dermatology care and, where indicated, systemic
+  therapy are the baseline; this layer sits alongside.
+coach_only_note: The self-rejection framing can land as blame in someone already ashamed
+  of visible skin. Raise only where the client opens the door.
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

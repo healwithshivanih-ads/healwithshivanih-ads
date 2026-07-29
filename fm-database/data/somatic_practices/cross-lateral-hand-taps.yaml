@@ -1,0 +1,48 @@
+slug: cross-lateral-hand-taps
+display_name: Cross-Lateral Hand Taps
+category: movement
+body_region: whole_body
+position: seated
+summary: Alternating hand-to-opposite-thigh taps that stimulate cross-hemisphere neural communication
+  to restore access to the prefrontal cortex's language and executive functions under stress.
+why_it_works: Acute stress narrows prefrontal cortex activity via noradrenergic and cortisol pathways.
+  Cross-lateral movements require simultaneous co-ordination of both cerebral hemispheres via the
+  corpus callosum, increasing bilateral neural integration and counteracting the stress-induced narrowing
+  that blocks word retrieval and complex thinking.
+steps:
+- label: Settle
+  cue: Sit comfortably with both feet on the floor. Rest your hands on your thighs.
+  action: rest
+  secs: 5
+- label: Tap right-to-left
+  cue: Lift your right hand and tap it onto your left thigh — a gentle, deliberate pat.
+  action: tap
+  secs: 2
+- label: Tap left-to-right
+  cue: Return right hand, then lift your left hand and tap it onto your right thigh.
+  action: tap
+  secs: 2
+reps: 22
+duration_seconds: 90
+timed: true
+bilateral: true
+contraindications:
+- Shoulder injury limiting arm reach — adapt by tapping the opposite knee instead
+linked_to_symptoms:
+- brain-fog
+- poor-concentration
+linked_to_topics: []
+notes_for_coach: Rhythm should be slow and deliberate, not rushed. About one tap per side every two
+  seconds is ideal. Use with clients who blank out under pressure or freeze during conversations.
+aliases: []
+equipment: []
+motion_shape: continuous_travel
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 05. Word Forgetting — Somatic Reset
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

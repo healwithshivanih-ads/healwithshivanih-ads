@@ -1,0 +1,64 @@
+slug: walking-meditation
+display_name: Walking Meditation
+category: movement
+body_region: legs_feet
+position: standing
+summary: An intentionally slow, step-by-step mindful walk designed to reconnect the body with forward
+  movement without any goal of arriving.
+why_it_works: Deliberate slow walking activates proprioceptive awareness and keeps the sciatic nerve
+  mobilised. By directing attention to each micro-phase of the gait cycle, the practice interrupts
+  rumination and threat-anticipation loops and grounds the client in sensory present-moment experience.
+steps:
+- label: Set your pace
+  cue: Begin walking far more slowly than your normal pace — think half-speed or slower.
+  action: observe
+  secs: 10
+- label: Feel each heel strike
+  cue: Notice the moment your heel makes contact with the ground.
+  action: observe
+  secs: 0
+- label: Roll through the foot
+  cue: Follow the sensation as your weight rolls from heel to the ball of your foot, then through
+    to your toes.
+  action: observe
+  secs: 0
+- label: Notice the weight shift
+  cue: Feel your weight transfer from one leg to the other with each step.
+  action: observe
+  secs: 0
+- label: Follow the swing
+  cue: Notice the sensation of your leg swinging forward to take the next step.
+  action: observe
+  secs: 0
+- label: Complete 20–30 steps
+  cue: Continue in this way for 20–30 steps. You are not trying to get anywhere — just moving.
+  action: observe
+  secs: 0
+timed: false
+bilateral: true
+contraindications:
+- Acute sciatica with severe leg weakness — consult clinician before walking practice
+- Modify on uneven ground if balance is impaired
+linked_to_symptoms:
+- chronic-pain
+- muscle-tension
+linked_to_topics:
+- nervous-system-regulation
+- chronic-stress
+notes_for_coach: Source gives step count (20–30 steps) rather than time. Set timed=false; the practice
+  is self-paced by step count. Preferably done outdoors.
+aliases: []
+equipment: []
+motion_shape: checklist
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 68. Sciatica — SOMATIC RESET
+  quote: Walk slowly—much slower than normal. Feel your heel touch the ground, then the ball of your
+    foot, then your toes. Notice the weight shift. Notice the leg swing forward. Take 20-30 steps
+    this way, preferably outside. Don't try to get anywhere.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

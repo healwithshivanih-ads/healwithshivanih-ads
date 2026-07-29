@@ -1,0 +1,66 @@
+slug: heart-expansion
+display_name: Heart Expansion
+category: movement
+body_region: chest_diaphragm
+position: standing
+summary: A brief chest-opening posture that counteracts the protective rounding of the shoulders by
+  actively retracting the shoulder blades, lifting the sternum, and breathing into the opened chest.
+why_it_works: Chronic anterior shoulder rounding shortens the pectoral muscles and inhibits deep thoracic
+  breathing. Actively squeezing the scapulae together while raising the arms behind the body stretches
+  the anterior chest wall, momentarily resets the proprioceptive baseline for upright posture, and
+  provides a direct physical experience of occupying more space.
+steps:
+- label: Stand and ground
+  cue: Stand with your feet about hip-width apart and feel your weight evenly distributed.
+  secs: 10
+  action: rest
+- label: Clasp hands behind
+  cue: Bring both hands behind your lower back and interlace your fingers.
+  secs: 5
+  action: press
+- label: Lift and open
+  cue: Straighten your arms and gently raise them away from your body, simultaneously drawing your
+    shoulder blades toward each other. Lift your chin slightly.
+  secs: 5
+  action: expand
+- label: Breathe and hold
+  cue: Take a full, slow breath into your chest. Hold the position and the breath for 30 seconds.
+  secs: 30
+  action: hold
+- label: Release and notice
+  cue: Gently release your hands, lower your arms, and stand naturally. Take a moment to feel how
+    it is to stand with your chest open.
+  secs: 15
+  action: release
+duration_seconds: 65
+timed: true
+bilateral: false
+equipment: []
+contraindications:
+- Shoulder impingement or rotator cuff injury (modify range)
+- Recent chest or cardiac surgery
+- Severe kyphosis — keep range comfortable
+linked_to_symptoms:
+- muscle-tension
+- tension
+- breathing-irregularity
+linked_to_topics:
+- chronic-stress
+- nervous-system-regulation
+notes_for_coach: Sourced from entry 37 (Rounded Shoulders). Clients with body shame or a strong habit
+  of shrinking may find this position surprisingly emotional — normalise that response.
+aliases: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: Entry 37 — Rounded Shoulders, SOMATIC RESET
+  quote: Stand with your feet hip-width apart. Interlace your fingers behind your back. Straighten
+    your arms and gently lift them away from your body while squeezing your shoulder blades together.
+    Lift your chin slightly and breathe into your now-open chest. Hold for 30 seconds. Release and
+    notice how it feels to take up more space.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

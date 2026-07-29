@@ -1,0 +1,64 @@
+slug: somatic-map-incontinence
+display_name: Urinary Incontinence
+target_kind: symptom
+target_slug: incontinence
+sensitivity: sensitive
+emotional_roots:
+- pattern: Loss of control mirrored in the body
+  note: Some somatic practitioners associate incontinence with a felt sense that things
+    in life are slipping away — relationships, health, autonomy, identity — and observe
+    that the body sometimes mirrors this through loss of bladder control. This is
+    an association, not a cause.
+- pattern: Life transitions shaking the sense of ground
+  note: Incontinence can develop or worsen during major transitions — menopause, ageing,
+    bereavement, career change — when the felt sense of control is fundamentally challenged.
+- pattern: Decades of emotional containment
+  note: The somatic tradition sometimes frames incontinence as a body that has spent
+    years holding everything in finally reaching capacity. The 'dam breaking' image
+    is metaphorical and should be offered gently.
+- pattern: Shame and withdrawal from life
+  note: Fear of an accident can cause progressive social withdrawal, mirroring how
+    emotional shame can lead to self-concealment and reduced engagement with life.
+reframe: You do not have to hold everything together all the time. Not every situation
+  needs to be managed, contained, or controlled. Some things are allowed to be released.
+  That is not failure — it is being human.
+inquiry_question: Where does control feel like it is slipping, and who could take
+  some of the weight?
+somatic_practice: progressive-muscle-relaxation
+also_consider:
+  practical:
+  - Pelvic floor physical therapy — highly effective for stress and urge incontinence
+  - Kegel exercises for pelvic floor strengthening (stress incontinence), or reverse
+    Kegels / down-training if muscles are hypertonic
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes a pervasive sense of things being out of control
+- Going through a major life transition (menopause, bereavement, retirement)
+- History of being the person who 'holds everything together' for others
+- Social withdrawal or life restriction due to fear of accidents
+differential_note: 'Urinary incontinence has multiple well-defined physiological types
+  requiring clinical assessment: stress incontinence (pelvic floor weakness, often
+  post-partum or post-menopausal), urge incontinence (detrusor overactivity), mixed,
+  overflow incontinence (bladder outlet obstruction or underactive detrusor), and
+  functional/neurogenic incontinence. Causes include pelvic organ prolapse, menopause-related
+  urogenital atrophy, UTI, neurological conditions (MS, Parkinson''s, spinal cord
+  injury), medication side effects (diuretics, ACE inhibitors, alpha blockers), and
+  structural abnormalities. Clinician assessment is essential before any self-management
+  programme.'
+notes_for_coach: PMR (progressive muscle relaxation) has evidence for general nervous
+  system regulation and some evidence in pelvic floor rehabilitation as a down-training
+  tool. Pelvic floor PT is first-line evidence-based treatment for most types of incontinence.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 78. Incontinence — EMOTIONAL ROOT
+  quote: Incontinence often relates to loss of control in other areas of life. When
+    you feel like everything is slipping away—relationships, health, independence,
+    identity—the body can mirror this by losing control of basic functions.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

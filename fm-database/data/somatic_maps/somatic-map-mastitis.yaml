@@ -1,0 +1,58 @@
+slug: somatic-map-mastitis
+display_name: Mastitis — Suppressed Frustration & Depletion
+target_kind: symptom
+target_slug: mastitis
+sensitivity: sensitive
+differential_note: Mastitis is a bacterial breast infection (most commonly Staphylococcus
+  aureus) arising from milk stasis and compromised skin barrier, often due to engorgement,
+  missed feeds, or poor latch. It requires medical assessment; antibiotic treatment
+  is often necessary. Abscess formation is a complication requiring surgical drainage.
+  Emotional framing is secondary — medical management must come first.
+emotional_roots:
+- pattern: Over-giving with unexpressed resentment
+  note: Mastitis frequently coincides with periods of intense depletion — caring for
+    everyone while one's own needs go unmet and the frustration about this goes unexpressed.
+    The body's inflammatory response may intensify when emotional charge has nowhere
+    to go.
+- pattern: Blocked flow from suppressed frustration
+  note: In TCM framing, mastitis maps to liver qi stagnation generating heat — unexpressed
+    frustration blocking smooth flow, with the stasis generating inflammation. When
+    emotional flow is inhibited, physical flow (of milk) may also become obstructed.
+- pattern: Immune depletion from exhaustion
+  note: Chronic sleep deprivation and unrelenting stress lower immune defences, making
+    infection more likely when milk stasis occurs. The emotional and physical depletion
+    operate together.
+reframe: Motherhood can be enraging — the invisible labour, the sleep theft, the way
+  your own needs keep getting deferred. That anger is completely valid. The longer
+  it stays swallowed, the more it builds pressure somewhere in your body. You can
+  be fully devoted to your baby and also furious about the conditions you are doing
+  it in.
+inquiry_question: What is building up inside you that you have not yet let yourself
+  say out loud?
+somatic_practice: arm-swinging-discharge
+also_consider:
+  supplements:
+  - probiotics
+  practical:
+  - Continue nursing or pumping through mastitis — stopping worsens milk stasis
+  - Sunflower lecithin to thin milk and prevent plugged ducts
+  - Warm compresses before feeding, cold compresses after
+  - Genuine rest — not rest combined with chores
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes sustained exhaustion with inadequate support
+- Reports difficulty expressing frustration or asking for help
+- Second or subsequent episode of mastitis in same nursing relationship
+notes_for_coach: ''
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 86. Mastitis / Breast Infections — EMOTIONAL ROOT
+  quote: Mastitis often arrives when you've been running on empty, giving everything,
+    and receiving little.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

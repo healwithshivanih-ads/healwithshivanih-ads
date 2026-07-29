@@ -1,0 +1,43 @@
+slug: somatic-map-allergies
+display_name: Allergies — Rejecting What You Will Not Remove
+target_kind: topic
+target_slug: hay-fever
+sensitivity: general
+emotional_roots:
+- pattern: Not filtering
+  note: Where you stop distinguishing what is yours from what is someone else's, the
+    immune system mirrors the confusion and starts fighting everything.
+- pattern: Tolerating the irritant
+  note: Staying in rooms you want to leave and absorbing what you should be deflecting
+    — so the body does the rejecting instead.
+- pattern: Emotional congestion
+  note: Feelings, obligations and swallowed resentments, all backed up.
+reframe: Say no to the actual irritant — the one with a name. Declining what drains
+  you is not selfishness; it frees room for what fits.
+inquiry_question: Who or what is your body trying to reject on your behalf?
+somatic_practice: bilateral-knee-taps
+also_consider:
+  supplements:
+  - quercetin
+  - probiotics
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Local honey helps some people with seasonal symptoms
+  - Nasal irrigation clears allergens directly
+pattern_signals: []
+differential_note: Allergic rhinitis is IgE-mediated and responds to identification
+  and avoidance, antihistamines, and intranasal steroids. Exclude non-allergic rhinitis,
+  chronic rhinosinusitis and drug causes. Any allergy with lip or tongue swelling,
+  throat tightness or wheeze is anaphylaxis risk and needs urgent assessment plus
+  adrenaline provision.
+coach_only_note: ''
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

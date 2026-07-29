@@ -1,0 +1,47 @@
+slug: ankle-circles
+display_name: Ankle Circles
+aliases: []
+category: movement
+body_region: legs_feet
+position: seated
+summary: Slow full-range ankle circles, both directions, both feet.
+why_it_works: Slow full-range circling restores mobility at a joint that stiffens quickly, and the
+  slow pace makes restricted arcs noticeable rather than avoided.
+steps:
+- label: Lift one foot
+  cue: Sit comfortably and lift one foot clear of the floor.
+  secs: 15
+  action: rest
+- label: Circle one way
+  cue: Circle the ankle slowly, making the largest circle you can without strain. Ten circles.
+  secs: 45
+  action: circle
+- label: Reverse
+  cue: Circle the other way, same size, same slow pace. Ten circles.
+  secs: 45
+  action: circle
+- label: Change feet
+  cue: Swap feet and repeat both directions.
+  secs: 90
+  action: circle
+reps: 10
+duration_seconds: 195
+bilateral: true
+timed: true
+equipment: []
+motion_shape: continuous_travel
+contraindications:
+- Recent ankle fracture or sprain — clear with a physiotherapist first
+- Stop at sharp pain rather than working through it
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics: []
+notes_for_coach: Ask where the circle goes flat — the restricted arc usually points at the old injury.
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

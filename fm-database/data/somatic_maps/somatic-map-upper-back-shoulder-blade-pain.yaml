@@ -1,0 +1,61 @@
+slug: somatic-map-upper-back-shoulder-blade-pain
+display_name: Upper Back & Shoulder Blade Pain
+target_kind: symptom
+target_slug: body-pain
+sensitivity: sensitive
+emotional_roots:
+- pattern: Storing what we don't want to face
+  note: The upper back is literally behind us — outside our field of vision. People
+    sometimes find that emotions and memories they have pushed out of awareness seem
+    to collect in exactly this location.
+- pattern: Repressed anger with no outlet
+  note: The shoulder blades and the muscles between them can stay contracted when
+    impulses to push back, reach out, or fight have been repeatedly suppressed. Over
+    time the muscles learn to hold the blocked action.
+- pattern: Feeling unsupported or betrayed
+  note: Pain between and beneath the shoulder blades sometimes appears in people who
+    have experienced betrayal by those they trusted to 'have their back' — an attack,
+    figuratively speaking, that came from behind.
+- pattern: Carrying burdens alone
+  note: Grief and resentment with no relational outlet, and the experience of holding
+    emotional weight without being supported, can be associated with chronic tension
+    in this region.
+reframe: What happened to you was real, and you are entitled to feel all of it — including
+  the anger and the grief of being let down. That feeling does not have to be rushed
+  past.
+inquiry_question: Was there a time you needed someone behind you and they were not
+  there? What did you decide about yourself then?
+somatic_practice: bilateral-shoulder-swing
+also_consider:
+  supplements: []
+  home_remedies: []
+  practical:
+  - 'Tennis ball against a wall: place between shoulder blade and wall, lean back
+    and move slowly across tender areas, holding tender spots for 20–30 seconds'
+  - Foam roller for upper thoracic release
+  cooking_adjustments: []
+pattern_signals:
+- Client reports a history of betrayal by a trusted person or institution
+- Describes holding emotions in without outlet, particularly anger
+- Feels emotionally unsupported in current relationships
+- Chronically stoic presentation; deflects care from others
+differential_note: Upper back and interscapular pain requires exclusion of thoracic
+  disc disease, facet joint dysfunction, rib dysfunction, referred visceral pain (gallbladder,
+  oesophagus, cardiac), and thoracic outlet syndrome before any psychosomatic framing.
+  If pain is unilateral, sharp, or associated with breathing, urgent medical evaluation
+  is needed.
+notes_for_coach: Source is entry 36 of Klein's body-memory book. If a client's betrayal
+  history involves abuse, this entry should only be explored with explicit coaching
+  boundaries and appropriate referral pathways in place.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: Entry 36 — Upper Back & Shoulder Blade Pain, EMOTIONAL ROOT
+  quote: The shoulder blades are your shield. Repressed anger collects here—under
+    and between the blades—when you can't express it directly. The muscles engage
+    when we suppress the urge to reach out, push away, or fight back.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

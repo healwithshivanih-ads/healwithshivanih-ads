@@ -495,6 +495,7 @@ export default async function PlanTabPage({
       name: (it.name as string | undefined) ?? "",
       cadence: (it.cadence as string | undefined) ?? "",
       details: (it.details as string | undefined) ?? "",
+      somatic_practice: (it.somatic_practice as string | undefined) ?? "",
     }))
     .filter((it) => it.name);
 

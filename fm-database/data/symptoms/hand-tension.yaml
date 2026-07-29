@@ -1,0 +1,29 @@
+slug: hand-tension
+display_name: Hand Tension / Clenched Fists
+aliases:
+- clenched fists
+- tight hands
+- clenching my hands
+- gripping hands
+- hands won't relax
+- white knuckles
+category: musculoskeletal
+severity: common
+description: Habitual gripping or clenching of the hands, frequently unconscious and often noticed
+  first during sleep or driving. Associated with sustained vigilance and with suppressed impulse
+  to act.
+when_to_refer: Refer where there is true involuntary spasm, tremor, progressive weakness or
+  loss of dexterity — these point to a neurological cause rather than habitual holding.
+linked_to_topics:
+- anxiety
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Often surfaces when a client is asked to notice their hands mid-session — they
+  had no idea.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

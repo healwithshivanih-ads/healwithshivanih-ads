@@ -1,0 +1,46 @@
+slug: somatic-map-diabetes
+display_name: Blood Sugar — Looking for Sweetness
+target_kind: topic
+target_slug: type-2-diabetes
+sensitivity: sensitive
+emotional_roots:
+- pattern: Sweetness that went missing
+  note: Something taken away, or never there. The body craves sugar while starving
+    for what sugar cannot supply.
+- pattern: A great need to control
+  note: Blood sugar is literally regulation. Where life feels uncontrollable, gripping
+    tighter works less and less.
+- pattern: Difficulty receiving
+  note: Love offered and pushed away; good things distrusted; pleasure treated as
+    undeserved.
+reframe: Reaching for sweetness in the form of sugar makes sense when the real thing
+  is not available. It is worth asking what you are actually hungry for.
+inquiry_question: Where has the real sweetness drained out, and what are you using
+  in its place?
+somatic_practice: felt-sense-checkin
+also_consider:
+  supplements:
+  - chromium
+  - cinnamon
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - A lower-glycaemic pattern steadies the swings
+  - Regular movement improves insulin sensitivity directly
+pattern_signals: []
+differential_note: Type 2 diabetes is a medical diagnosis needing monitoring of HbA1c,
+  blood pressure, lipids, renal function, retinal screening and feet. Hypoglycaemia
+  in anyone on insulin or sulfonylureas is an emergency. Never frame glycaemic control
+  as an emotional matter with someone on medication.
+coach_only_note: ''
+notes_for_coach: Sudarshan (cl-008) and Nidhi (nidhi-jain) both have T2D; Kamla's
+  prediabetes was largely defused. Lead with the metabolic work — the sweetness framing
+  is a session conversation, not a plan line.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

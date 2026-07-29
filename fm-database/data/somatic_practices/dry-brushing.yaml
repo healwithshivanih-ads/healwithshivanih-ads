@@ -1,0 +1,54 @@
+slug: dry-brushing
+display_name: Dry Brushing
+aliases: []
+category: touch
+body_region: whole_body
+position: standing
+summary: Long upward strokes with a dry brush, toward the heart, over the whole body.
+why_it_works: Brushing gives the skin a large, organised dose of sensory input, which re-establishes
+  a clear felt sense of where the body ends — often blurred in people whose boundaries have been repeatedly
+  crossed.
+steps:
+- label: Start at the feet
+  cue: With a dry brush, stroke upward from your feet toward your heart. Four or five strokes over
+    each area.
+  secs: 60
+  action: stroke
+- label: Work up the legs
+  cue: Continue up the calves and thighs, always brushing toward the heart.
+  secs: 90
+  action: stroke
+- label: Arms and torso
+  cue: Brush from the hands up the arms, then the torso — again, always toward the heart.
+  secs: 120
+  action: stroke
+- label: Notice as you go
+  cue: Notice where you feel sensitive, numb or braced. You are re-learning the edges of yourself.
+  secs: 60
+  action: observe
+reps: null
+duration_seconds: 330
+bilateral: false
+timed: true
+equipment:
+- A natural-bristle dry brush
+motion_shape: sustained_pressure
+contraindications:
+- Never brush over broken, inflamed, infected or actively flaring skin
+- Avoid in active eczema or psoriasis plaques
+- Avoid over varicose veins
+- Use very light pressure on thin or steroid-treated skin
+sensitivity: general
+linked_to_symptoms:
+- skin-rash
+linked_to_topics: []
+notes_for_coach: 'Say plainly: brush around a flare, never over it. Clients often assume more vigorous
+  is better.'
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

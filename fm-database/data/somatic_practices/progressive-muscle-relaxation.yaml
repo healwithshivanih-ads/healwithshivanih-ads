@@ -1,0 +1,89 @@
+slug: progressive-muscle-relaxation
+display_name: Progressive Muscle Relaxation
+aliases:
+- pmr
+- progressive-relaxation
+- systematic-tense-release
+category: discharge
+body_region: whole_body
+position: lying
+summary: A full-body sequence of deliberate muscle tensing followed by complete release, moving from
+  feet to face to re-educate the body in voluntary holding and letting go.
+why_it_works: Deliberately tensing a muscle to near-maximal effort and then releasing it produces
+  a rebound inhibition that lowers resting muscle tone below baseline (the Jacobson relaxation effect).
+  Working systematically from distal to proximal also directs conscious attention through the body,
+  improving interoceptive awareness.
+steps:
+- label: Settle
+  cue: Lie down somewhere comfortable. Close your eyes and take three slow breaths to arrive in your
+    body.
+  action: rest
+  secs: 30
+- label: Feet and calves
+  cue: Curl your toes and tighten your calf muscles firmly. Hold the tension, then let it go completely.
+  action: hold
+  secs: 10
+- label: Thighs
+  cue: Squeeze your thighs together firmly. Hold, then release everything at once.
+  action: hold
+  secs: 10
+- label: Glutes
+  cue: Tighten your buttocks and hold, then let them drop heavy into the surface.
+  action: hold
+  secs: 10
+- label: Belly
+  cue: Draw your abdomen in firmly and hold the contraction, then release.
+  action: hold
+  secs: 10
+- label: Chest
+  cue: Take a breath in and hold your chest tight for a moment, then exhale and let it fall open.
+  action: hold
+  secs: 10
+- label: Hands and arms
+  cue: Make tight fists and tense your whole arms from fingertips to shoulders. Hold, then release
+    completely.
+  action: hold
+  secs: 10
+- label: Shoulders
+  cue: Draw your shoulders up toward your ears and hold, then drop them as far down as they will go.
+  action: hold
+  secs: 10
+- label: Face
+  cue: Scrunch your face — eyes, nose, jaw — into a tight squeeze. Hold, then let it all go slack.
+  action: hold
+  secs: 10
+- label: Full body rest
+  cue: Scan your body from feet to face. Notice the contrast between tension and release. Rest here
+    until ready to slowly open your eyes.
+  action: observe
+  secs: 120
+duration_seconds: 230
+timed: true
+bilateral: false
+equipment:
+- yoga mat or bed
+contraindications:
+- Uncontrolled hypertension — isometric holds transiently raise blood pressure; consult clinician
+- Fibromyalgia or severe pain — gentle micro-tensions only
+- Muscle tears or acute strains
+linked_to_symptoms:
+- incontinence
+- pelvic-pain
+linked_to_topics:
+- pelvic-floor-dysfunction
+notes_for_coach: Source states 10-15 minutes. Steps apportioned to ~3.8 min as a structured minimum;
+  the final rest step (120s) can be extended. Encourage clients to go slowly and add breath pauses
+  between steps if needed.
+motion_shape: sustained_pressure
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 78. Incontinence — SOMATIC RESET
+  quote: Lie down in a comfortable position. Starting at your feet, deliberately tense each muscle
+    group for 5 seconds, then release completely. Move up through calves, thighs, glutes, belly, chest,
+    hands, arms, shoulders, and face. Take 10-15 minutes for the whole sequence.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

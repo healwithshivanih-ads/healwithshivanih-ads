@@ -1,0 +1,31 @@
+slug: sound-sensitivity
+display_name: Sound Sensitivity
+aliases:
+- noise sensitivity
+- hyperacusis
+- misophonia
+- everything sounds too loud
+- can't stand chewing sounds
+- sensitive to noise
+category: neurological
+severity: common
+description: Everyday sounds experienced as intolerably loud, intrusive or enraging. Covers
+  hyperacusis (genuine loudness intolerance), misophonia (rage or disgust at specific sounds
+  such as chewing or breathing) and phonophobia. Common in migraine, autism, sustained stress
+  and post-concussion states.
+when_to_refer: Refer to audiology for formal assessment where onset is sudden, one-sided, or
+  accompanied by hearing loss, tinnitus or vertigo. Also refer where it follows head injury
+  or where it is disabling enough to cause social withdrawal.
+linked_to_topics:
+- anxiety
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Misophonia is specific and often traces to being trapped with someone. Ask
+  which sounds, and whose — the answer is usually informative.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

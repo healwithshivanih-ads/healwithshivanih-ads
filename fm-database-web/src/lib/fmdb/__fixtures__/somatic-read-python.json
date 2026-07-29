@@ -1,0 +1,312 @@
+{
+  "conditions": [
+    "Constipation",
+    "Sleeplessness",
+    "Hypertension",
+    "Hypertension — ON TREATMENT (previously unreported) — Telma 40 twice daily",
+    "Knee Injury / weak tendons",
+    "Chronic mild anxiety",
+    "Underactive thyroid (subclinical, non-autoimmune)",
+    "Type 2 diabetes — HbA1c 6.6% (progressed)",
+    "Elevated Lp(a)",
+    "Migraine",
+    "Asthma",
+    "Palpitations",
+    "IBS",
+    "PC",
+    "",
+    "Recurrent miscarriage",
+    "Endometriosis",
+    "Eczema",
+    "Fibroids",
+    "Back pain"
+  ],
+  "reads": [
+    {
+      "condition": "Constipation",
+      "targetSlug": "constipation",
+      "mapSlug": "somatic-map-constipation",
+      "displayName": "Constipation — Holding On and Not Letting Go",
+      "sensitivity": "general",
+      "gated": false,
+      "reframe": "Letting go of what is finished — what has already moved through its purpose in your life — is not a loss. It is a natural and healthy part of moving forward.",
+      "inquiryQuestion": "What are you holding tightly at the moment, and what makes loosening it feel risky?",
+      "somaticPractice": "gastrocolic-rhythm",
+      "clientSafe": true,
+      "roots": [
+        {
+          "pattern": "Holding on and not releasing",
+          "note": "There is a frequently observed association between constipation and a psychological tendency to hold on — to control, to past grievances, to circumstances long resolved. The body can mirror what the mind will not release."
+        },
+        {
+          "pattern": "Anxiety and nervous system activation",
+          "note": "When the nervous system is in a state of activation, digestion is deprioritised. The gut slows because the body believes it is in danger and has no bandwidth for the rest-and-digest functions."
+        },
+        {
+          "pattern": "Withholding energy and generosity",
+          "note": "Some somatic traditions associate constipation with a withholding quality that extends beyond the gut — a difficulty giving freely of energy, time, or resources. This is an association to explore, not a cause to assert."
+        }
+      ]
+    },
+    {
+      "condition": "Sleeplessness",
+      "targetSlug": "insomnia",
+      "mapSlug": "somatic-map-insomnia",
+      "displayName": "Insomnia — A Body That Will Not Stop Watching",
+      "sensitivity": "general",
+      "gated": false,
+      "reframe": "Nothing you are worried about will be solved tonight. It will still be there in the morning, and you will be better equipped to meet it.",
+      "inquiryQuestion": "What are you afraid will happen if you stop keeping watch?",
+      "somaticPractice": "legs-up-the-wall",
+      "clientSafe": true,
+      "roots": [
+        {
+          "pattern": "Letting go feels unsafe",
+          "note": "Sleep asks for surrender of vigilance. Where safety has depended on staying alert, that is a real risk to the system."
+        },
+        {
+          "pattern": "The 3am courtroom",
+          "note": "Replaying what was said and not said. Sleep is impossible while the prosecution continues."
+        },
+        {
+          "pattern": "Fear of what surfaces",
+          "note": "Sleep lets the unconscious in — dreams, memories, feeling held off all day."
+        }
+      ]
+    },
+    {
+      "condition": "Hypertension",
+      "targetSlug": "high-blood-pressure",
+      "mapSlug": "map-high-blood-pressure",
+      "displayName": "High Blood Pressure",
+      "sensitivity": "sensitive",
+      "gated": false,
+      "reframe": "Every boundary you do not set, every need you do not voice, does not disappear — it has to go somewhere. The cost of chronic silence may be higher than the discomfort of expressing what is true for you.",
+      "inquiryQuestion": "What have you been keeping down, and what do you imagine would happen if you said it plainly?",
+      "somaticPractice": "laughter-release",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Suppressed anger and swallowed frustration",
+          "note": "There is a recognised psychophysiological association between chronically suppressed anger and elevated blood pressure. When frustration, resentment, or unmet needs are consistently not expressed, the resulting tension may be held in the cardiovascular system."
+        },
+        {
+          "pattern": "Chronic pressure with no release",
+          "note": "Living under ongoing external pressure — work demands, caregiving roles, relational conflict — without adequate release or recovery may sustain sympathetic nervous system activation that over time contributes to elevated vascular tone."
+        },
+        {
+          "pattern": "Unspoken words and unset boundaries",
+          "note": "A pattern sometimes seen in clients with hypertension is a habitual tendency to prioritise others' comfort over expressing their own needs, leading to an accumulation of unexpressed internal pressure."
+        }
+      ]
+    },
+    {
+      "condition": "Knee Injury / weak tendons",
+      "targetSlug": "knee-pain",
+      "mapSlug": "somatic-map-knee-pain",
+      "displayName": "Knee Pain — Refusing to Bend",
+      "sensitivity": "general",
+      "gated": false,
+      "reframe": "Changing your mind is not a failure of character. Holding a position past the point it serves you costs more than yielding would.",
+      "inquiryQuestion": "Where are you refusing to bend, and what would it cost you to soften?",
+      "somaticPractice": "knee-softening",
+      "clientSafe": true,
+      "roots": [
+        {
+          "pattern": "Rigidity",
+          "note": "The knee's job is to yield. Pain here often accompanies a period of refusing to bend — to a person, a situation, or a change of direction."
+        },
+        {
+          "pattern": "Fear of the next step",
+          "note": "Knee trouble frequently appears when moving forward would mean a change in status, identity or role."
+        },
+        {
+          "pattern": "Pride",
+          "note": "The knee that will not bend sometimes belongs to someone who will not either."
+        }
+      ]
+    },
+    {
+      "condition": "Migraine",
+      "targetSlug": "migraine",
+      "mapSlug": "somatic-map-migraines",
+      "displayName": "Migraines — Somatic Reading",
+      "sensitivity": "sensitive",
+      "gated": true,
+      "reframe": "Control has limits — and pushing past them doesn't create safety, it creates exhaustion. The migraine may be the only way your system has found to make you stop. You can practice stopping before it needs to.",
+      "inquiryQuestion": "What might surface if you loosened your grip for a day?",
+      "somaticPractice": "darkened-eye-rest-long-exhale",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Perfectionism and self-imposed pressure",
+          "note": "There is a pattern sometimes observed of people who drive themselves very hard and who deeply dislike feeling pushed or controlled by external forces — the internal pressure becomes its own kind of trap."
+        },
+        {
+          "pattern": "Suppressed anger",
+          "note": "The kind of anger that gets quietly swallowed rather than expressed — maintaining a calm surface while something much hotter moves underneath."
+        },
+        {
+          "pattern": "Fear of intimacy",
+          "note": "Some people with recurrent migraines describe discomfort with emotional closeness, a wariness about being seen fully in vulnerability."
+        },
+        {
+          "pattern": "Exhaustion of being the one who holds everything together",
+          "note": "The pattern of accommodating, absorbing, never complaining, always managing — and the migraine as the moment the system forces a shutdown the will would never have chosen."
+        }
+      ]
+    },
+    {
+      "condition": "Asthma",
+      "targetSlug": "airway-inflammation-asthma",
+      "mapSlug": "map-asthma",
+      "displayName": "Asthma",
+      "sensitivity": "sensitive",
+      "gated": false,
+      "reframe": "You are allowed to ask: is this space actually unsafe right now, or did you learn to stop breathing fully around certain people or situations and simply never started again? Your breath belongs to you.",
+      "inquiryQuestion": "Around whom does your breath get smaller? When did you learn to take up less room?",
+      "somaticPractice": "vocal-toning-ahhh",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Suppressed emotional expression in childhood",
+          "note": "Some sources in the somatic tradition note associations between asthma onset and early environments where expressing strong emotions — especially crying or protest — was unsafe or not permitted. This is an association, not a cause, and the physiology of asthma is independent of it."
+        },
+        {
+          "pattern": "Feeling smothered in a relationship",
+          "note": "Asthma attacks are sometimes reported to correlate emotionally with situations involving closeness that feels suffocating, enmeshment, or a sense that there is no safe space to breathe freely."
+        },
+        {
+          "pattern": "Suppressed grief and the airways",
+          "note": "There is a traditional somatic association between the lungs and unprocessed grief or loss. Restricted airways are sometimes explored as an emotional parallel to feelings of loss or being unable to express sadness."
+        }
+      ]
+    },
+    {
+      "condition": "Palpitations",
+      "targetSlug": "palpitations",
+      "mapSlug": "map-heart-palpitations",
+      "displayName": "Heart Palpitations",
+      "sensitivity": "sensitive",
+      "gated": false,
+      "reframe": "Your heart is not malfunctioning — it is responding to an alarm signal that may no longer reflect a real threat. Learning to send the body an all-clear signal is a skill that can be practised and built over time.",
+      "inquiryQuestion": "What real or perceived emergency might your heart be responding to right now, and is there something you have been avoiding that needs your attention?",
+      "somaticPractice": "vagal-breathing-4-4-8",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Chronic vigilance replacing joy",
+          "note": "Some clients with recurrent palpitations may have been living in a sustained state of alertness for so long that their resting heart rhythm has calibrated to that baseline. The heart may have, in effect, forgotten what settled safety feels like."
+        },
+        {
+          "pattern": "Suppressed emotion seeking expression",
+          "note": "Palpitations sometimes accompany moments when a strong feeling is present but not being allowed expression — as though the feeling that cannot come out as words or tears comes out instead as an irregular rhythm."
+        }
+      ]
+    },
+    {
+      "condition": "IBS",
+      "targetSlug": "ibs",
+      "mapSlug": "somatic-map-ibs",
+      "displayName": "IBS — Unprocessed Emotions and the Enteric Nervous System",
+      "sensitivity": "general",
+      "gated": false,
+      "reframe": "Healing the gut works best as part of a broader picture that includes the life you are living inside it. Supplements and diet adjustments can offer real relief, and they work most powerfully when combined with addressing what your body has been asked to carry.",
+      "inquiryQuestion": "What in your life right now feels hard to digest, and what might it look like to release even a small part of that?",
+      "somaticPractice": "belly-drop",
+      "clientSafe": true,
+      "roots": [
+        {
+          "pattern": "Chronic anxiety",
+          "note": "Some people with IBS notice their symptoms worsen during periods of persistent worry or anticipatory dread. The enteric nervous system responds to anxious states much as the brain does, and the gut may carry anxiety that the mind has not yet fully acknowledged."
+        },
+        {
+          "pattern": "Suppressed emotions",
+          "note": "Research observes higher rates of anxiety, depression, and trauma history in people with IBS. When emotional experiences are habitually pushed down rather than expressed, the gut is sometimes where those experiences show up physically."
+        },
+        {
+          "pattern": "Undigested experience",
+          "note": "There is a common observation in somatic work that what we cannot process emotionally — a relationship dynamic, a situation we are swallowing our voice in — can show up as literal digestive difficulty."
+        }
+      ]
+    },
+    {
+      "condition": "Endometriosis",
+      "targetSlug": "endometriosis",
+      "mapSlug": "somatic-map-endometriosis",
+      "displayName": "Endometriosis",
+      "sensitivity": "coach_only",
+      "gated": true,
+      "reframe": "No external validation can fully convince you of your own worth — that knowing has to come from within. Allowing yourself love and acceptance, even imperfectly, is not indulgence; it is medicine.",
+      "inquiryQuestion": "What unprocessed disappointment or frustration are you still carrying, and how might your body be asking you to acknowledge it?",
+      "somaticPractice": "sacral-rocking",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Internalised self-attack",
+          "note": "Some somatic frameworks associate endometriosis with frustration that has turned inward — when difficulty directing anger outward leads to a kind of physiological self-criticism. This is an association offered in the somatic tradition, never a causal claim."
+        },
+        {
+          "pattern": "Deep sense of unworthiness",
+          "note": "Practitioners sometimes observe patterns of feeling fundamentally 'not enough' or needing to constantly prove worth in people with endometriosis. These are associated patterns, not causes."
+        },
+        {
+          "pattern": "Self-neglect while caring for others",
+          "note": "A pattern of filling emotional voids with external comforts while neglecting one's own needs may accompany the physical condition, though direction of causality is unknown."
+        }
+      ]
+    },
+    {
+      "condition": "Eczema",
+      "targetSlug": "skin-rash",
+      "mapSlug": "somatic-map-skin-rashes",
+      "displayName": "Skin Rashes — Boundary Breached",
+      "sensitivity": "general",
+      "gated": false,
+      "reframe": "Sensitive skin is honest skin. It reports accurately on what you can and cannot tolerate — that is information, not a defect.",
+      "inquiryQuestion": "What is getting under your skin at the moment?",
+      "somaticPractice": "dry-brushing",
+      "clientSafe": true,
+      "roots": [
+        {
+          "pattern": "Feeling under threat",
+          "note": "Skin is the boundary between self and world. Where that boundary feels breached, it can react."
+        },
+        {
+          "pattern": "Something getting under your skin",
+          "note": "An irritation that will not be ignored, or a line being crossed repeatedly."
+        },
+        {
+          "pattern": "Old material surfacing",
+          "note": "Rashes sometimes coincide with buried feeling finally reaching the surface."
+        }
+      ]
+    },
+    {
+      "condition": "Fibroids",
+      "targetSlug": "uterine-fibroids",
+      "mapSlug": "somatic-map-fibroids",
+      "displayName": "Uterine Fibroids",
+      "sensitivity": "coach_only",
+      "gated": true,
+      "reframe": "Something accumulated because it had nowhere to go. The question is not why it happened, but whether anything is ready to be released now — grief, old anger, parts of yourself you put away long ago.",
+      "inquiryQuestion": "Is there a past hurt you are still carrying in your body that you have not yet found a way to release?",
+      "somaticPractice": "womb-cradling",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Carried relational wounds",
+          "note": "In somatic tradition, fibroids are sometimes associated with unresolved pain from past relationships — betrayal, rejection, or abandonment that has not been fully processed and released. This is an observational association only."
+        },
+        {
+          "pattern": "Wound to feminine self-worth",
+          "note": "Some practitioners observe that an experience that made someone feel diminished or devalued as a woman may be associated with physical holding in the reproductive area — though this is metaphorical and not causal."
+        },
+        {
+          "pattern": "Stagnation of unexpressed emotion",
+          "note": "The somatic framing suggests that frustration, grief, or worry that had no outlet may over time manifest as physical mass. This is a traditional association, not a physiological mechanism."
+        }
+      ]
+    }
+  ]
+}

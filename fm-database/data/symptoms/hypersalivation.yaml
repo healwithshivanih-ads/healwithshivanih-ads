@@ -1,0 +1,28 @@
+slug: hypersalivation
+display_name: Hypersalivation (Excess Saliva)
+aliases:
+- too much saliva
+- excess saliva
+- watery mouth
+- drooling
+- sialorrhea
+- mouth keeps watering
+category: gi
+severity: common
+description: Production of more saliva than is comfortably managed, or the sensation of the
+  mouth constantly watering. May reflect genuine overproduction or impaired clearance. Associated
+  with reflux (water brash), nausea, anxiety, ill-fitting dental work and certain medications.
+when_to_refer: Refer where hypersalivation is new and accompanied by swallowing difficulty,
+  slurred speech, facial weakness or tremor — these suggest a neurological cause.
+linked_to_topics:
+- gerd
+linked_to_mechanisms: []
+notes_for_coach: Water brash — a sudden flood of saliva with a sour taste — is a reflux sign,
+  not a salivary one. Ask what it tastes like.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

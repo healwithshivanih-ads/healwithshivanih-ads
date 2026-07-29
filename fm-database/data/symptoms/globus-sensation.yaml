@@ -1,0 +1,35 @@
+slug: globus-sensation
+display_name: Globus Sensation (Lump in Throat)
+aliases:
+- lump in throat
+- globus
+- globus pharyngeus
+- something stuck in my throat
+- tightness in throat
+- feeling of a lump when swallowing
+- throat closing up
+category: other
+severity: concerning
+description: A persistent sensation of a lump, tightness or obstruction in the throat when
+  nothing is physically there. Characteristically eases when actually eating or drinking and
+  worsens with dry swallowing and with stress. Strongly associated with anxiety, reflux (including
+  silent/laryngopharyngeal reflux), upper-oesophageal-sphincter tension and thyroid enlargement.
+when_to_refer: Refer for ENT/endoscopic assessment where there is true dysphagia (food genuinely
+  sticking), pain on swallowing, hoarseness beyond three weeks, weight loss, a palpable neck
+  lump, or any unilateral or progressive symptom — globus is a diagnosis of exclusion.
+linked_to_topics:
+- hypothyroidism
+- gerd
+- anxiety
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Very common in the anxious and thyroid cohorts and easily dismissed by clients
+  as 'nothing'. Ask about it directly — many won't volunteer it. Check thyroid on palpation
+  history and screen for silent reflux before treating it as purely stress-driven.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

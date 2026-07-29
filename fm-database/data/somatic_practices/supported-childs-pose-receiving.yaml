@@ -1,0 +1,69 @@
+slug: supported-childs-pose-receiving
+display_name: Supported Child's Pose with Receiving Practice
+category: movement
+body_region: whole_body
+position: lying
+summary: A fully bolstered child's pose held for several minutes with palms facing upward, teaching
+  the nervous system that total rest and receiving support is safe.
+why_it_works: Full passive support activates the parasympathetic nervous system and reduces the threat-monitoring
+  load of the dorsal vagal complex. Palms-up position is an open, non-defensive posture that signals
+  safety to the nervous system. Extended holds allow the release of chronic postural bracing.
+steps:
+- label: Prepare support
+  cue: Gather one or two firm pillows or a bolster and place them on the floor in front of you.
+  action: rest
+  secs: 20
+- label: Kneel and position
+  cue: Kneel on the floor, bring your big toes together and let your knees open to about hip-width
+    apart.
+  action: rest
+  secs: 15
+- label: Fold forward
+  cue: Slowly lower your torso forward onto the pillows or bolster so that your entire front body
+    is supported. Rest your head to one side.
+  action: rest
+  secs: 15
+- label: Open hands
+  cue: Let your arms rest alongside your body with palms facing upward. Allow your shoulders to soften
+    completely.
+  action: release
+  secs: 10
+- label: Stay and receive
+  cue: Remain in this position, breathing naturally. Each time you exhale, allow the support beneath
+    you to hold a little more of your weight.
+  action: rest
+  secs: 420
+duration_seconds: 480
+timed: true
+bilateral: false
+equipment:
+- firm pillow or bolster
+contraindications:
+- Knee injury — place folded blanket under knees or choose an alternative restorative pose
+- Advanced pregnancy — use side-lying restorative position instead
+- Severe acid reflux — do not use if lying face-down worsens symptoms
+linked_to_symptoms:
+- headache
+- headaches
+- burnout
+- muscle-tension
+- fatigue
+linked_to_topics:
+- nervous-system-regulation
+- stress-management
+- tension-type-headache
+notes_for_coach: Source suggests 5–10 minutes; 480 seconds (8 min) used as midpoint. Clients who struggle
+  to receive support may find this unexpectedly emotional — allow space for that.
+aliases: []
+motion_shape: release
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 16. Cluster Headaches — SOMATIC RESET
+  quote: Fold into child's pose… with pillows or a bolster fully supporting your torso. Arms relaxed,
+    palms facing up. Stay for 5–10 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

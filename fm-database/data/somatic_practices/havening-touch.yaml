@@ -1,0 +1,48 @@
+slug: havening-touch
+display_name: Havening Touch
+aliases: []
+category: touch
+body_region: arms_hands
+position: seated
+summary: Slow alternating downward strokes from shoulder to elbow.
+why_it_works: Slow repetitive stroking of the upper arms produces the kind of steady, predictable
+  touch input that reliably lowers arousal — the same signal a person receives from being soothed
+  by someone else.
+steps:
+- label: Cross your arms
+  cue: Cross your arms and rest each hand on the opposite upper arm, just below the shoulder.
+  secs: 20
+  action: touch
+- label: Stroke down one side
+  cue: Stroke slowly downward from shoulder to elbow. Unhurried.
+  secs: 45
+  action: stroke
+- label: Then the other
+  cue: Do the same on the other side, keeping a steady rhythm.
+  secs: 45
+  action: stroke
+- label: Keep the rhythm
+  cue: Continue alternating for a couple of minutes, letting the pace stay slow.
+  secs: 70
+  action: stroke
+reps: null
+duration_seconds: 180
+bilateral: true
+timed: true
+equipment: []
+motion_shape: sustained_pressure
+contraindications:
+- Avoid stroking over an active shingles rash or any area of allodynia — touch may be exquisitely
+  painful
+sensitivity: general
+linked_to_symptoms: []
+linked_to_topics: []
+notes_for_coach: For shingles, do this on an unaffected area. Never over the dermatome that is flaring.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

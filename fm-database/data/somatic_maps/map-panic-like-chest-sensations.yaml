@@ -1,0 +1,60 @@
+slug: map-panic-like-chest-sensations
+display_name: Panic-Like Chest Sensations
+target_kind: symptom
+target_slug: anxiety-palpitations-panic
+sensitivity: sensitive
+emotional_roots:
+- pattern: Alarm system without an active threat
+  note: Panic sensations in the chest can arise when the nervous system has learned
+    to fire the full threat-response cascade in the absence of immediate danger —
+    often after a period in which real danger was prolonged or overwhelming.
+- pattern: Suppressed emotion reaching a threshold
+  note: Panic may sometimes be the body's way of finally surfacing an emotion that
+    has been overridden for a long time. The eruption is not the problem — it may
+    be what was being held down before the episode that needs attention.
+reframe: You did not lose your grip on reality. The alarm in your body got louder
+  than your ability to contain it. The panic is not proof that something is terribly
+  wrong with you — it may be your body finally insisting that something important
+  needs acknowledgement. You survived what created this. You will survive the feeling
+  of it too.
+inquiry_question: What feeling may have grown too large to stay buried?
+somatic_practice: 5-4-3-2-1-grounding
+also_consider:
+  practical:
+  - During hyperventilation-driven panic, breathing into cupped hands can help restore
+    CO2 balance — use with care and only briefly
+  - After panic episodes settle, explore with curiosity what emotions or memories
+    may have been surfacing
+  - Recurring panic attacks warrant clinical assessment and psychological support
+    — refer appropriately
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Sudden episodes of intense chest sensations, racing heart, breathlessness, and fear
+  of dying that resolve within minutes
+- Episodes occurring without clear external trigger
+- History of prolonged stress, trauma, or significant emotional suppression
+- Client describes 'keeping it all together' for others over a long period
+differential_note: Panic-like chest sensations must be differentiated from acute coronary
+  syndrome, cardiac arrhythmia, pulmonary embolism, pneumothorax, hypoglycaemia, hyperthyroidism,
+  phaeochromocytoma, and stimulant toxicity. First presentation of any panic-like
+  chest symptoms requires urgent medical evaluation. Only after organic causes are
+  excluded should emotional framing be introduced. Refer for formal panic disorder
+  assessment if episodes are recurring.
+notes_for_coach: This is one of the most important differential scenarios in coaching.
+  Never reassure a client that chest symptoms are 'just panic' — that determination
+  belongs to a clinician. Once medically cleared, the emotional reading is a powerful
+  and compassionate frame to explore together.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 45. Panic-Like Chest Sensations
+  quote: Panic often develops after periods of prolonged stress, suppressed emotion,
+    or trauma. The body holds everything together until it can't, and then it erupts
+    in alarm.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

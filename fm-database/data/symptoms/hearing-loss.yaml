@@ -1,0 +1,32 @@
+slug: hearing-loss
+display_name: Hearing Loss
+aliases:
+- hard of hearing
+- muffled hearing
+- reduced hearing
+- deafness
+- hearing difficulty
+- can't hear properly
+- hearing changes
+category: neurological
+severity: concerning
+description: Reduced hearing acuity, gradual or sudden, one or both ears. Age-related and noise-induced
+  loss are commonest; conductive causes include wax, effusion and otosclerosis. Frequently accompanied
+  by tinnitus, and a significant driver of social withdrawal and low mood.
+when_to_refer: SUDDEN hearing loss in one ear is a medical emergency — sudden sensorineural
+  hearing loss needs steroid treatment within days to preserve hearing, so refer same-day. Also
+  refer for unilateral loss, loss with vertigo or facial weakness, or any loss with discharge
+  or pain.
+linked_to_topics:
+- tinnitus
+linked_to_mechanisms: []
+notes_for_coach: Sudden one-sided loss is the emergency — most people and many clinicians under-react
+  to it. Untreated hearing loss is also a modifiable dementia risk factor, which is worth saying
+  to reluctant clients.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

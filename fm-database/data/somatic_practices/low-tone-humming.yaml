@@ -1,0 +1,57 @@
+slug: low-tone-humming
+display_name: Low-Tone Humming
+category: breath
+body_region: throat_neck
+position: any_position
+summary: Inhale fully, then exhale on a sustained low-pitched hum, allowing the vibration to resonate
+  through the jaw and skull. Repeat for two to three minutes.
+why_it_works: Vagal afferents in the laryngopharynx are stimulated by vibration, activating the ventral
+  vagal pathway and shifting the autonomic nervous system toward a calmer state. The low frequency
+  of the hum may also produce mechanical stimulation of the inner ear, offering a soothing counterpoint
+  to tinnitus.
+steps:
+- label: Inhale
+  cue: Draw a slow, deep breath in through your nose.
+  action: expand
+  secs: 4
+- label: Hum on exhale
+  cue: As you breathe out, make a long, low, steady humming sound — as deep in pitch as feels comfortable.
+    Feel the vibration spreading through your jaw and the base of your skull.
+  action: release
+  secs: 8
+- label: Rest
+  cue: Pause naturally at the end of the exhale, then breathe in again.
+  action: rest
+  secs: 3
+- label: Continue
+  cue: Repeat this inhale-hum-rest cycle for about two to three minutes.
+  action: hold
+  secs: 135
+duration_seconds: 150
+timed: true
+bilateral: false
+contraindications:
+- Vocal cord injury or laryngitis — rest the voice instead
+- Severe tinnitus that worsens with vibration — discontinue if symptoms increase
+linked_to_symptoms:
+- jaw-tension
+- anxiety
+linked_to_topics:
+- tinnitus
+- nervous-system-regulation
+notes_for_coach: Source gives 2–3 minutes; 150 seconds used. The practice overlaps with humming-based
+  vagal stimulation protocols. Ensure client is comfortable with any sound from their own voice.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 19. Tinnitus (Ringing in Ears) — SOMATIC RESET
+  quote: Inhale deeply, then exhale while making a long, low humming sound. Feel vibration through
+    your jaw and skull. Repeat for 2–3 minutes.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

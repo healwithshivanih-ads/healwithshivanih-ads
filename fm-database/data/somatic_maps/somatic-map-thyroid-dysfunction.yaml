@@ -1,0 +1,65 @@
+slug: somatic-map-thyroid-dysfunction
+display_name: Thyroid Dysfunction
+target_kind: topic
+target_slug: thyroid-dysfunction
+sensitivity: coach_only
+differential_note: 'Must exclude and investigate physiologically first: Hashimoto''s
+  thyroiditis (anti-TPO, anti-Tg), Graves'' disease, iodine deficiency or excess,
+  selenium deficiency, subclinical hypothyroidism, thyroid nodules, pituitary dysfunction
+  affecting TSH. Full thyroid panel (TSH, fT3, fT4, rT3, anti-TPO, anti-Tg) is required.
+  This is a medical condition requiring clinician management. The emotional reading
+  is supplementary, never primary.'
+emotional_roots:
+- pattern: Humiliation and being made small
+  note: Some people with thyroid conditions describe a background pattern of having
+    been dismissed, put down, or told they were too much or not enough. This is an
+    observed association, not a causal claim.
+- pattern: Emotional hibernation (hypothyroid pattern)
+  note: Hypothyroidism is sometimes associated with a sense of having gradually given
+    up on getting one's needs met — a kind of progressive withdrawal from self-expression
+    and vitality.
+- pattern: Chronic exclusion and rage (hyperthyroid pattern)
+  note: 'Hyperthyroidism is sometimes associated with a different charge: a sense
+    of having been chronically left out or overlooked, with the system responding
+    by revving up. This is an association, not a cause.'
+- pattern: Silencing of intuition and perception
+  note: People with thyroid issues are sometimes described as highly perceptive but
+    having learned to suppress what they notice in order to maintain harmony or gain
+    approval.
+reframe: There is an expressive, vibrant version of you that has not disappeared —
+  it has been waiting. You do not need to reclaim it all at once. Small steps toward
+  authentic expression are enough.
+inquiry_question: Who are you when no one is watching — and what might open up if
+  you allowed even a small part of that person to be visible?
+somatic_practice: simple-singing
+also_consider:
+  supplements:
+  - selenium
+  - ashwagandha
+  home_remedies: []
+  cooking_adjustments: []
+  practical: []
+pattern_signals:
+- Client describes a long history of not being able to say what they really think
+- Has been in environments — family, work, relationship — where their authentic self
+  was not welcome
+- Describes feeling metabolically slow, flat, or 'like a dimmer switch has been turned
+  down'
+coach_only_note: Thyroid dysfunction is a medical condition. The emotional reading
+  must never be introduced in a way that suggests the client caused their own thyroid
+  disease. Share only after thorough medical workup is underway and within a strong
+  coaching relationship. Do not auto-surface to a client.
+notes_for_coach: Selenium maps to 'selenium' supplement slug; ashwagandha maps to
+  'ashwagandha'. Ensure client has a clinician managing the thyroid condition. Coach
+  role is adjunctive — supporting stress reduction, lifestyle, and self-expression
+  — not diagnostic or prescriptive.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 30. Thyroid Dysfunction
+  quote: Thyroid dysfunction often carries a core wound of humiliation. Being put
+    down, dismissed, or made small.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

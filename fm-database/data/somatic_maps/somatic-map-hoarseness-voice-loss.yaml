@@ -1,0 +1,58 @@
+slug: somatic-map-hoarseness-voice-loss
+display_name: Hoarseness / Voice Loss
+target_kind: symptom
+target_slug: hoarse-voice
+sensitivity: sensitive
+differential_note: 'Must exclude: acute laryngitis (viral or bacterial), vocal cord
+  nodules or polyps, vocal cord paralysis, laryngeal papillomatosis, GERD/LPR, hypothyroidism,
+  allergic laryngitis, neuromuscular conditions affecting the larynx (e.g. motor neurone
+  disease), or laryngeal malignancy (red flag if hoarseness persists beyond 3 weeks
+  without clear cause — refer to ENT). Psychogenic dysphonia is a recognised clinical
+  entity but is a diagnosis of exclusion.'
+emotional_roots:
+- pattern: Nothing worth saying / too dangerous to speak
+  note: Voice loss is sometimes associated with a deep sense that what one has to
+    say is not valuable, or that speaking carries real or perceived danger. Both patterns
+    can lead the voice to withdraw.
+- pattern: Compressed fury
+  note: Voice loss is not always about fear or smallness — for some people it arrives
+    at the peak of suppressed rage. When anger has nowhere to go over a long period,
+    the instrument of expression can simply stop participating.
+- pattern: Exhaustion from constant self-justification
+  note: The voice can withdraw as an act of self-protection when a person is chronically
+    exhausted from explaining, performing, or defending themselves to others. The
+    body enforces a rest the person could not choose consciously.
+reframe: You do not need to earn the right to have a voice. You do not need to have
+  the perfect words ready. Your voice belongs to you simply because you are here.
+inquiry_question: When did your voice start getting smaller, and whose permission
+  are you still waiting for?
+somatic_practice: silent-yawning
+also_consider:
+  practical:
+  - Warm water with honey to soothe vocal cords
+  - Steam inhalation for vocal cord hydration
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Voice loss or hoarseness that appears during or after periods of significant emotional
+  stress
+- Client who describes feeling they have 'said everything and nothing changed'
+- History of being systematically unheard in a close relationship or workplace
+coach_only_note: If the voice loss is linked to trauma, abuse, or a context where
+  speaking was genuinely unsafe, do not introduce the emotional reframe without a
+  trauma-informed frame. This entry should be coach_only in those contexts.
+notes_for_coach: Hoarseness persisting more than 3 weeks without an identified cause
+  must be referred to ENT for laryngoscopy. Psychogenic voice loss is real but is
+  only appropriate to explore after structural pathology has been excluded.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 29. Hoarseness / Voice Loss
+  quote: Psychogenic voice loss is well-documented in medical literature. It often
+    occurs after emotional shock, during periods of extreme stress, or in people who
+    have systematically silenced themselves over time.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

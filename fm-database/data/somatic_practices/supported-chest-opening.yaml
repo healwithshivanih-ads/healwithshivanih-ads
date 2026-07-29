@@ -1,0 +1,66 @@
+slug: supported-chest-opening
+display_name: Supported Chest Opening
+category: movement
+body_region: chest_diaphragm
+position: lying
+summary: A passive backbend over a rolled towel or pillow that lets gravity gently open the chest
+  and pectorals without any muscular effort.
+why_it_works: Passive chest opening creates a prolonged low-grade stretch across the pectoralis major
+  and anterior fascia. This reduces the chronic shortening associated with protective posturing, and
+  the supported, effortless nature signals the nervous system that softening is safe.
+steps:
+- label: Prepare the prop
+  cue: Roll a bath towel or use a small firm pillow and place it lengthwise on the floor so it will
+    run along your spine from mid-back to the back of your head.
+  action: rest
+  secs: 20
+- label: Lower down
+  cue: Sit in front of the prop, then slowly recline so your spine rests along it. Let your head be
+    fully supported. Your knees can be bent or legs extended — whichever is more comfortable.
+  action: release
+  secs: 20
+- label: Open the arms
+  cue: Allow both arms to drift out to the sides at about shoulder height, palms turned upward. Let
+    the weight of the arms do the opening — do not force anything.
+  action: release
+  secs: 20
+- label: Breathe and soften
+  cue: Breathe slowly and let each exhale invite a little more softening across the front of the chest.
+    Stay here and let gravity do the work.
+  action: expand
+  secs: 180
+- label: Come out slowly
+  cue: Roll gently off the prop to one side before pressing up to seated. Pause a moment before standing.
+  action: release
+  secs: 20
+duration_seconds: 260
+timed: true
+bilateral: false
+equipment:
+- rolled bath towel or small firm pillow
+contraindications:
+- Acute thoracic or cervical spine injury
+- Recent chest surgery or sternal wound
+- Significant osteoporosis with vertebral fragility — use only a very low prop
+linked_to_symptoms:
+- chest-tightness
+- muscle-tension
+linked_to_topics:
+- nervous-system-regulation
+- breathwork-for-health
+notes_for_coach: This is a purely passive practice — suitable for clients who resist 'trying'. The
+  prop height can be reduced for those with tight pectorals or kyphosis. Pair with diaphragmatic breathing
+  for enhanced effect.
+aliases: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 43. Chest Tightness and Tension — SOMATIC RESET
+  quote: Lie on your back with a rolled towel or small pillow placed lengthwise along your spine,
+    from mid-back to head. Let your arms fall open to the sides, palms up.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: taste-changes
+display_name: Taste Changes
+aliases:
+- loss of taste
+- food tastes bland
+- metallic taste
+- bitter taste
+- nothing tastes of anything
+- dysgeusia
+- ageusia
+category: gi
+severity: concerning
+description: Reduced, absent or distorted taste. Includes blandness, and metallic or bitter
+  tastes with no external cause. Common causes are zinc deficiency, medication effects, post-viral
+  change, oral and dental disease, reflux, and depression.
+when_to_refer: Refer where taste change is sudden and unilateral, accompanied by facial weakness,
+  numbness or hearing change (neurological), or where there is an oral lesion persisting beyond
+  three weeks — which needs assessment to exclude oral cancer. Review medications and check
+  zinc and B12.
+linked_to_topics:
+- gerd
+linked_to_mechanisms: []
+notes_for_coach: Zinc and medication review clear most of these before any other framing is
+  needed.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

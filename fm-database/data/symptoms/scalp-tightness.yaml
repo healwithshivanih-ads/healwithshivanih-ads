@@ -1,0 +1,30 @@
+slug: scalp-tightness
+display_name: Scalp Tightness
+aliases:
+- tight scalp
+- scalp tension
+- band around my head
+- head feels tight
+- tightness on top of head
+- scalp feels too small
+category: musculoskeletal
+severity: common
+description: A sensation of constriction or tightness across the scalp, often described as
+  a band or cap. Reflects sustained tension in the epicranial aponeurosis and occipitofrontalis,
+  and commonly accompanies tension headache, jaw clenching and prolonged screen posture.
+when_to_refer: New, severe or sudden-onset scalp pain in anyone over 50 — particularly with
+  scalp tenderness to touch, jaw claudication or visual change — needs same-day assessment
+  for giant cell arteritis.
+linked_to_topics:
+- tension-type-headache
+linked_to_mechanisms:
+- sympathetic-dominance
+notes_for_coach: Often reported alongside hair shedding and mistaken for a hair problem. Frequently
+  travels with bruxism — ask about morning jaw ache.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

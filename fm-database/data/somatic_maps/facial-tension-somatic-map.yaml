@@ -1,0 +1,56 @@
+slug: facial-tension-somatic-map
+display_name: Facial Tension
+target_kind: symptom
+target_slug: facial-tension
+sensitivity: general
+emotional_roots:
+- pattern: Emotional masking
+  note: When someone grew up having to manage the feelings of the people around them
+    — reading moods, adjusting their expression, performing calm — the face may have
+    become a tool of survival rather than expression. Over years, that learned performance
+    can become a default resting state.
+- pattern: Swallowed anger
+  note: Anger or fear that was never safe to show may be held in the jaw, forehead,
+    and muscles around the eyes as a chronic brace, ready to suppress any feeling
+    that might surface uninvited.
+- pattern: Chronic people-pleasing
+  note: Those who learned early that showing true feelings was not welcome or safe
+    may carry that lesson in the muscles of the face, holding a presentation ready
+    for an audience even when alone.
+reframe: The expression underneath the mask is allowed to exist. If you learned to
+  hide your feelings early, that was an adaptation to the people around you — not
+  evidence that your feelings were too much.
+inquiry_question: Which feeling do you keep off your face, and who taught you to?
+somatic_practice: face-scrunch-and-release
+also_consider:
+  home_remedies:
+  - sesame-oil-head-massage
+  practical:
+  - Rosemary essential oil applied topically to increase circulation to the face
+  - Facial self-massage to release held muscular patterns
+  supplements: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes always having to 'keep it together' emotionally
+- History of growing up in a household where emotional expression was discouraged
+  or punished
+- Client reports jaw soreness, forehead tension, or frowning without awareness
+differential_note: Exclude trigeminal neuralgia, temporomandibular joint disorder
+  (TMJ/TMD), bruxism with dental consequences, Bell's palsy or other cranial nerve
+  pathology, tension-type headache with referred facial pain, and sinusitis or dental
+  abscess causing facial pressure before exploring emotional contributors.
+notes_for_coach: Facial tension is near-universal; this reading is appropriate to
+  raise gently with most clients once physical causes are excluded. Focus on the mask
+  metaphor — many clients recognise it immediately.
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 14. Facial Tension — EMOTIONAL ROOT
+  quote: Chronic facial tension often shows up in people who learned early that showing
+    their true feelings wasn't safe—or wasn't welcome. The face holds what you couldn't
+    say.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

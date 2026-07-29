@@ -1,0 +1,55 @@
+slug: somatic-map-word-forgetting
+display_name: Word Forgetting — Somatic Reading
+target_kind: symptom
+target_slug: word-forgetting
+sensitivity: general
+differential_note: Exclude thyroid dysfunction, B12/folate deficiency, early cognitive
+  decline, perimenopause-related brain fog, medication side effects (benzodiazepines,
+  antihistamines, beta-blockers), sleep deprivation, dehydration, anaemia, and depression
+  before attributing word retrieval difficulties to emotional patterning. Neurological
+  referral indicated for progressive or sudden onset.
+emotional_roots:
+- pattern: Being silenced
+  note: When speaking has historically been dismissed, interrupted, or punished, the
+    nervous system may learn to make words harder to access — a protective adaptation
+    that keeps a person from reaching for something that felt dangerous.
+- pattern: Stress-induced prefrontal shutdown
+  note: Emotional flooding narrows prefrontal cortex activity, which hosts language
+    processing. Under acute or chronic stress, words may genuinely become inaccessible
+    — this is physiological, not a sign of cognitive decline.
+- pattern: Identity loss
+  note: During major life transitions, after trauma, or in depression, people sometimes
+    describe losing the thread of who they are. When the self that would speak is
+    unclear, the words may go quiet too.
+reframe: Your mind is not broken. It may have learned that words were risky, so it
+  made them harder to reach. As felt safety grows — in relationships, in your own
+  body — the pathway rebuilds.
+inquiry_question: What would help you feel more like yourself and more at home in
+  your own voice?
+somatic_practice: cross-lateral-hand-taps
+also_consider:
+  supplements:
+  - b-complex
+  practical:
+  - Ensure adequate hydration throughout the day — dehydration measurably impairs
+    cognitive function
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client trails off mid-sentence especially when emotionally triggered
+- Reports words 'disappearing' in high-stakes conversations
+- History of being silenced, ridiculed when speaking, or growing up in a home where
+  their voice was dismissed
+- Blank, frozen quality when asked difficult questions in session
+notes_for_coach: Distinguish this carefully from progressive cognitive decline. The
+  pattern described here is stress-reactive and contextual. Source is a book (moderate
+  quality).
+coach_only_note: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 05. Word Forgetting
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

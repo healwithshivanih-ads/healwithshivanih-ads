@@ -92,6 +92,9 @@ const PATHS: Record<string, IconPart[]> = {
   ],
   arrowLeft: [P("M19 12H6M11 6l-6 6 6 6")],
   plus: [P("M12 5v14M5 12h14")],
+  // The somatic overlay asks for this by name; without it the only way out of
+  // a full-screen guided session was an empty circle.
+  x: [P("M6.5 6.5l11 11M17.5 6.5l-11 11")],
   swap: [P("M7 8h11l-2.5-2.5M17 16H6l2.5 2.5")],
   heart: [P("M12 19s-6.5-4.2-6.5-8.5A3.5 3.5 0 0 1 12 8a3.5 3.5 0 0 1 6.5 2.5C18.5 14.8 12 19 12 19z")],
   send: [P("M5 12l14-6-6 14-2.5-5.5z"), P("M10.5 13.5L19 6")],

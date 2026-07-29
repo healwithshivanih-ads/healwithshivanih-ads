@@ -1,0 +1,57 @@
+slug: somatic-map-globus-sensation
+display_name: Lump in Throat (Globus Sensation)
+target_kind: symptom
+target_slug: globus-sensation
+sensitivity: sensitive
+differential_note: 'Must exclude: GERD and laryngopharyngeal reflux (most common physiological
+  cause), pharyngeal muscular dysmotility, thyroid enlargement or nodules, post-nasal
+  drip, oesophageal dysmotility, pharyngeal foreign body, malignancy of the throat
+  or oesophagus (red flag if dysphagia is progressive or there is unintentional weight
+  loss). Refer for ENT or gastroenterology evaluation before attributing to emotional
+  cause.'
+emotional_roots:
+- pattern: Unexpressed grief or anger
+  note: The globus sensation is often described by people who are carrying something
+    they feel is too painful or unsafe to put into words. The feeling of a lump can
+    arise precisely when something is being held back.
+- pattern: Deeper mistrust or fear of truth-telling
+  note: Beneath the specific fear of speaking may be a more fundamental sense that
+    being honest is unsafe — that the world, or the relationship, won't hold if the
+    truth comes out.
+- pattern: Inability to accept an overwhelming reality
+  note: The sensation can also arise when a person is faced with something they cannot
+    yet integrate — a situation or truth that is, in the most literal sense, hard
+    to swallow.
+reframe: The things we are most afraid to say lose some of their power when we name
+  them precisely, even just to ourselves. Vague fear tends to be larger than the named
+  thing.
+inquiry_question: What is sitting in your throat right now, just on the edge of coming
+  out?
+somatic_practice: supported-chest-opening
+also_consider:
+  supplements:
+  - licorice-root
+  practical:
+  - Check for and address GERD as a physical contributor
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client frequently starts sentences and then trails off or changes subject
+- History of being in relationships or environments where honest speech was not safe
+- Describing a situation they 'just can't accept' or feel they have to 'swallow'
+coach_only_note: If a client's throat sensation is linked to grief, bereavement, or
+  a deeply overwhelming life event, keep this framing coach_only until a therapeutic
+  relationship is established. Do not surface the emotional pattern unsolicited.
+notes_for_coach: Globus pharyngeus has no perfect symptom slug match; 'muscle-tension'
+  is used as the nearest available. Always ensure physiological causes — especially
+  LPR/GERD and thyroid pathology — have been investigated.
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 27. Lump in Throat (Globus Sensation)
+  quote: 'Strongly linked to unexpressed emotions: grief, anger, truth that couldn''t
+    be spoken. The lump appears when something feels too painful or unsafe to say.'
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

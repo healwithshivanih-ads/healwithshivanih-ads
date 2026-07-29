@@ -8,9 +8,8 @@ import { useState } from "react";
 import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
 import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
-import { BreathLaunchCard } from "./ochre-breath";
-import { EftLaunchCard, MindBodyNudge } from "./ochre-eft";
-import { SleepLaunchCard } from "./ochre-sleep";
+import { MindBodyNudge } from "./ochre-eft";
+import { MindBodyEntryCard, MindBodyReadsSection, SomaticPrescribedLine } from "./ochre-mind-body";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
@@ -350,6 +349,7 @@ export function TodayScreen({
   openBreath,
   openEft,
   openSleep,
+  openSomatic,
   practices,
   onTogglePractice,
   openGrocery,
@@ -370,6 +370,8 @@ export function TodayScreen({
   openBreath: () => void;
   openEft: () => void;
   openSleep: () => void;
+  /** Opens one specific prescribed practice — a plan can carry several. */
+  openSomatic: (practiceId: string) => void;
   practices: { id: string; name: string; when: string; details?: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
@@ -564,9 +566,31 @@ export function TodayScreen({
               );
             })}
           </div>
-          {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
-          {data.eft && <EftLaunchCard eft={data.eft} onStart={openEft} />}
-          {data.sleep && <SleepLaunchCard sleep={data.sleep} onStart={openSleep} />}
+          {/* ONE entry point, not four launch cards. The client picks how she
+              feels; the routing picks the technique. Anything the coach linked
+              specifically keeps its own line below so it isn't buried. */}
+          <MindBodyEntryCard
+            have={{
+              breath: data.breathwork ? { name: data.breathwork.name } : null,
+              eft: data.eft ? { name: "EFT tapping" } : null,
+              sleep: data.sleep ? { name: "Wind down for sleep" } : null,
+              somatic: data.somatic,
+            }}
+            onOpen={(route) => {
+              if (route.kind === "breath") openBreath();
+              else if (route.kind === "eft") openEft();
+              else if (route.kind === "sleep") openSleep();
+              else if (route.somatic) openSomatic(route.somatic.practiceId);
+            }}
+          />
+          {data.somatic.map((s, i) => (
+            <SomaticPrescribedLine
+              key={s.practiceId}
+              somatic={s}
+              showKicker={i === 0}
+              onStart={() => openSomatic(s.practiceId)}
+            />
+          ))}
           {data.mindBody?.locked && (
             <MindBodyNudge
               nextUp={data.mindBody.nextUp}
@@ -977,12 +1001,14 @@ export function PlanScreen({
   openGrocery,
   openOrder,
   openPortions,
+  openSomatic,
 }: {
   openDoc: (doc: { kind: string; id: string }) => void;
   openRemedy: (r: AppRemedy) => void;
   openGrocery: () => void;
   openOrder: () => void;
   openPortions: () => void;
+  openSomatic: (practiceId: string) => void;
 }) {
   const data = useOchre();
   const pr = data.planRef;
@@ -1174,6 +1200,12 @@ export function PlanScreen({
           </span>
         </div>
       </Section>
+
+      {data.mindBodyReads.length > 0 && (
+        <Section title="Understanding your body">
+          <MindBodyReadsSection reads={data.mindBodyReads} onStart={openSomatic} />
+        </Section>
+      )}
 
       {data.lessons.length > 0 && (
         <Section title="Learn">

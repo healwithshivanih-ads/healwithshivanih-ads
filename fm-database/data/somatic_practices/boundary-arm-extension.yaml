@@ -1,0 +1,57 @@
+slug: boundary-arm-extension
+display_name: Boundary Arm Extension
+category: movement
+body_region: arms_hands
+position: any_position
+summary: A short practice in which both arms are extended forward with palms facing outward, pressing
+  gently into space to allow the body to express a boundary that may feel blocked in ordinary life.
+why_it_works: Extending the arms into a 'stop' configuration engages the shoulder girdle and activates
+  proprioceptive awareness of personal space. The gentle sustained push provides mild isometric activation
+  that can help discharge frustration held in the upper limbs while reinforcing a felt sense of boundary-setting.
+steps:
+- label: Extend arms
+  cue: Stretch both arms out in front of you at shoulder height with your palms facing forward, as
+    if signalling 'stop' to something.
+  action: expand
+  secs: 5
+- label: Press and breathe
+  cue: Push your palms gently into the air ahead of you. Hold that gentle pressure and take one full,
+    slow breath in and out.
+  action: press
+  secs: 5
+- label: Lower and reset
+  cue: Lower your arms, shake them out briefly, then raise them and repeat.
+  action: release
+  secs: 5
+reps: 4
+duration_seconds: 60
+timed: true
+bilateral: true
+equipment: []
+contraindications:
+- Rotator cuff injury — avoid full extension
+- Thoracic outlet syndrome — modify range of motion
+linked_to_symptoms:
+- muscle-tension
+- tension
+- chronic-pain
+linked_to_topics:
+- nervous-system-regulation
+- somatic-body-memory
+- carpal-tunnel-syndrome
+notes_for_coach: 'The somatic frame here is that the arms are completing a defensive or boundary-asserting
+  gesture the client''s life situation has not permitted. Pair with a conversation about where the
+  client feels they are ''giving more than they receive''. Source: entry 40, System 4.'
+aliases: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 40. Carpal Tunnel — Somatic Reset
+  quote: Extend both arms in front of you, palms facing out in a "stop" gesture. Push gently into
+    the space ahead. Hold for 5 seconds, breathing. Repeat 3-4 times.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

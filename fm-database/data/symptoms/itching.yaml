@@ -1,0 +1,31 @@
+slug: itching
+display_name: Itching (Pruritus)
+aliases:
+- pruritus
+- itchy skin
+- constant itch
+- itching all over
+- itch without a rash
+- scratching
+category: skin
+severity: concerning
+description: 'Persistent urge to scratch, with or without visible skin change. Itch WITHOUT
+  a rash is the clinically important presentation: it points to a systemic cause rather than
+  a skin one.'
+when_to_refer: Generalised itch with no rash requires bloods before anything else — iron studies,
+  thyroid, renal and liver function including bile salts, glucose, and full blood count. Persistent
+  unexplained itch with night sweats, weight loss or lymphadenopathy needs urgent assessment
+  for lymphoma. Itch in pregnancy affecting palms and soles suggests obstetric cholestasis —
+  same-day referral.
+linked_to_topics:
+- histamine-intolerance
+linked_to_mechanisms: []
+notes_for_coach: Distinct from skin-rash, which it was previously collapsing into. The no-rash
+  presentation is the one to take seriously.
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

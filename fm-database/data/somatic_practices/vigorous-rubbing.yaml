@@ -1,0 +1,48 @@
+slug: vigorous-rubbing
+display_name: Vigorous Rubbing
+aliases: []
+category: touch
+body_region: whole_body
+position: seated
+summary: Fast whole-body friction rubbing to generate warmth and sensation.
+why_it_works: Fast friction floods the skin with circulation and sensory input, which is a direct
+  counter to the cold, slow, under-perfused state that goes with depletion.
+steps:
+- label: Heat the palms
+  cue: Rub your palms together fast until they are hot.
+  secs: 20
+  action: press
+- label: Eyes first
+  cue: Press them over your closed eyes and hold until the warmth fades.
+  secs: 25
+  action: touch
+- label: Work outward
+  cue: Rub again and press to your cheeks, then neck, then chest.
+  secs: 60
+  action: press
+- label: Cover what you can reach
+  cue: Keep going — arms, belly, thighs. Move quickly and generate heat everywhere.
+  secs: 75
+  action: press
+reps: null
+duration_seconds: 180
+bilateral: false
+timed: true
+equipment: []
+motion_shape: sustained_pressure
+contraindications:
+- Fragile or thin skin, or anyone on anticoagulants — use light pressure to avoid bruising
+- Avoid over inflamed or broken skin
+sensitivity: general
+linked_to_symptoms:
+- anemia
+linked_to_topics: []
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

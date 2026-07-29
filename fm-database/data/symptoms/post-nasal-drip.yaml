@@ -1,0 +1,30 @@
+slug: post-nasal-drip
+display_name: Post-Nasal Drip
+aliases:
+- mucus down my throat
+- postnasal drip
+- dripping at the back of my throat
+- constant throat clearing
+- catarrh
+- phlegm in throat
+category: other
+severity: common
+description: The sensation of mucus running from the back of the nose into the throat, producing
+  frequent throat clearing, cough and a raw throat — often worse on waking. Associated with
+  allergic and non-allergic rhinitis, sinus inflammation, reflux and dairy or histamine sensitivity
+  in some clients.
+when_to_refer: Refer where drainage is unilateral, blood-stained or foul-smelling, or accompanied
+  by facial pain, fever or persistent nasal obstruction.
+linked_to_topics:
+- histamine-intolerance
+- gerd
+linked_to_mechanisms: []
+notes_for_coach: Chronic throat clearing is often blamed on infection when it is drip or silent
+  reflux. Ask whether it is worse on waking (drip) or after meals and lying down (reflux).
+sources:
+- id: klein-body-remembers
+  location: surfaced as a catalogue gap during the somatic-map ingest
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

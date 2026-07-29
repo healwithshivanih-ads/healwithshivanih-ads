@@ -1,0 +1,57 @@
+slug: somatic-map-hip-tightness
+display_name: Hip Tightness
+target_kind: symptom
+target_slug: hip-tightness
+sensitivity: sensitive
+emotional_roots:
+- pattern: Stored survival energy
+  note: In somatic therapy, the hips and psoas are understood as primary sites where
+    incomplete fight-or-flight responses are held. Fear, grief, and rage that never
+    found full expression may remain as chronic tension in the hip flexors and rotators.
+- pattern: Blocked impulse to flee or fight
+  note: Hip tightness is particularly associated with situations in which a person
+    needed to run, kick, or push back but was unable to. The energy of that suppressed
+    movement may remain stored in the musculature.
+- pattern: Hesitation about moving forward
+  note: The hips are the primary engine of forward locomotion. Persistent tightness
+    here can sometimes reflect deep ambivalence about moving toward a new chapter,
+    decision, or direction.
+reframe: 'Your hips aren''t malfunctioning — they''ve been doing exactly what they
+  were designed to do: protect you. If your baseline is elevated because of what you''ve
+  carried, that makes sense. You don''t need anyone''s permission to let some of it
+  go.'
+inquiry_question: What emotions might still be stored in your hips, waiting to move?
+somatic_practice: supported-frog-pose
+also_consider:
+  practical:
+  - Yin yoga — holding hip-focused stretches for 3–5 minutes allows deep fascial release;
+    emotions often surface during these holds
+  - Nervous system regulation practices (e.g. breathwork, vagal toning) can help release
+    chronic psoas holding
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client reports chronic hip or groin tightness despite regular stretching
+- History of developmental trauma, adverse childhood experiences, or experiences where
+  fight or flight was suppressed
+- Client becomes emotional or uncomfortable during yoga or movement practices focused
+  on the hips
+differential_note: Rule out hip osteoarthritis, labral tear, femoroacetabular impingement
+  (FAI), iliopsoas bursitis, hip flexor strain, and referred lumbar radiculopathy
+  before exploring emotional associations. In younger women, also consider endometriosis
+  contributing to pelvic and hip discomfort.
+coach_only_note: The source mentions sexual trauma as a potential root. This must
+  never be raised unsolicited by a coach. If a client brings it, refer to a trauma-trained
+  therapist.
+notes_for_coach: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 66. Hip Tightness — EMOTIONAL ROOT
+  quote: The hips are the body's junk drawer for unexpressed emotion. In somatic therapy,
+    the hips are understood as the body's primary vault for unprocessed survival energy.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

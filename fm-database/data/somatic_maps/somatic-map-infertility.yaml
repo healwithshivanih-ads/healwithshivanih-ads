@@ -1,0 +1,70 @@
+slug: somatic-map-infertility
+display_name: Female Infertility — Fear, Depletion & Flow
+target_kind: topic
+target_slug: female-infertility
+sensitivity: coach_only
+coach_only_note: Infertility is a medically complex and emotionally charged presentation.
+  This framing must never be shown automatically to a client — it could read as implying
+  their emotions caused their infertility, which is both inaccurate and harmful. Use
+  only in a trusting, established coaching relationship, and only after clinician
+  workup is underway.
+differential_note: 'Infertility has numerous biological causes that must be assessed
+  before any emotional lens is applied: ovulatory dysfunction (PCOS, hypothalamic
+  amenorrhoea, POI), tubal factor (prior infection, endometriosis, surgical adhesions),
+  uterine abnormalities (fibroids, polyps, septum), male factor (sperm count, motility,
+  morphology), thyroid dysfunction, immune implantation failure, and chromosomal causes.
+  Full fertility workup by a reproductive endocrinologist is the necessary first step.'
+emotional_roots:
+- pattern: Fear of the unknown in becoming
+  note: For some individuals, the anticipation of parenthood activates deep anxiety
+    — not about wanting a child, but about losing control, repeating childhood patterns,
+    or stepping into a fundamentally unknown version of themselves. When the nervous
+    system is in a sustained state of guardedness, the body's resources may be diverted
+    away from reproductive function.
+- pattern: Chronic depletion from overwork and stress
+  note: Prolonged stress and overwork are associated with disrupted hormonal rhythms
+    and HPA-axis dysregulation that can interfere with ovulation and implantation.
+    In TCM framing, chronic fear and overwork are said to deplete the kidney essence
+    that conception depends on.
+- pattern: Emotional stagnation blocking flow
+  note: Unexpressed frustration and emotional stagnation, in TCM terms attributed
+    to liver qi stagnation, are associated with disrupted hormonal cycling. When emotional
+    flow is blocked, physical cycles may also become irregular.
+reframe: Your body is not failing you. It may be asking for something before it can
+  fully open — more safety, more rest, more space for your own feelings. You do not
+  need to have everything resolved before becoming a parent. Beginning to listen to
+  what your body needs right now is itself a meaningful step.
+inquiry_question: Is there anything still unfinished that would like your attention
+  first?
+somatic_practice: moving-sphinx-pose
+also_consider:
+  supplements:
+  - coq10
+  - vitex
+  - vitamin-d3
+  practical:
+  - Acupuncture — strong research support especially alongside IVF
+  - 'Blood sugar balance: protein, fat, and fiber at every meal; limit caffeine, sugar,
+    and processed foods'
+  - Prioritise deep sleep and consistent sleep-wake timing to support reproductive
+    hormone regulation
+  - 'Warm abdominal practices: warm foods, avoiding iced drinks (TCM cold-uterus principle)'
+  home_remedies: []
+  cooking_adjustments: []
+pattern_signals:
+- Client describes high-achieving, constantly busy lifestyle with little genuine rest
+- Expresses fear or ambivalence about parenthood underneath the stated desire
+- History of significant childhood adverse experiences or family patterns they dread
+  repeating
+notes_for_coach: ''
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 81. Infertility — EMOTIONAL ROOT
+  quote: Fear and resistance to the process of life. Not resistance to wanting a baby,
+    but resistance to the unknown, the loss of control, the vulnerability of becoming,
+    repeating patterns from your own childhood.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

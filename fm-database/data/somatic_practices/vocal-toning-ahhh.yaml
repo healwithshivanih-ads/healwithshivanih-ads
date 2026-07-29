@@ -1,0 +1,67 @@
+slug: vocal-toning-ahhh
+display_name: Vocal Toning (Ahhh)
+category: discharge
+body_region: throat_neck
+position: any_position
+summary: An open-voiced toning practice in which the client releases a sustained 'ahhh' sound to reclaim
+  the exhale and restore a sense of ownership over the breath.
+why_it_works: Sustained vocalisation requires active engagement of the respiratory musculature and
+  extends the exhale, activating vagal braking. The open 'ahhh' sound reduces laryngeal constriction
+  and provides an auditory feedback loop that the body is allowed to make sound and take up space.
+steps:
+- label: Open the mouth
+  cue: Let your jaw relax and your mouth fall naturally open. There is no required shape — just an
+    open, relaxed jaw.
+  action: release
+  secs: 5
+- label: Breathe in
+  cue: Take a comfortable breath in through the open mouth or nose.
+  action: expand
+  secs: 4
+- label: Release the 'ahhh'
+  cue: On the exhale, let the sound 'ahhh' ride out on your breath at whatever pitch feels natural
+    in this moment. No forcing of volume — just let the air carry the sound out.
+  action: release
+  secs: 8
+- label: Experiment with pitch
+  cue: With each new breath, try a slightly different pitch — higher, lower, or somewhere unexpected.
+    Let your body choose rather than your mind.
+  action: release
+  secs: 8
+- label: Complete 5 to 7 rounds
+  cue: Continue breathing in and releasing 'ahhh' for a total of five to seven full breath cycles,
+    each one as unhurried as the last.
+  action: release
+  secs: 90
+duration_seconds: 115
+timed: true
+bilateral: false
+reps: 7
+contraindications:
+- Active asthma attack — do not attempt during acute bronchospasm; use rescue inhaler first
+- Significant vocal cord pathology
+linked_to_symptoms:
+- breathing-irregularity
+- shortness-of-breath
+- airway-inflammation-asthma
+linked_to_topics:
+- breathwork-for-health
+- asthma
+- nervous-system-regulation
+notes_for_coach: Toning is culturally unfamiliar for many clients. Frame it as a physiological breath
+  tool rather than a spiritual practice if needed. Clients with asthma should have reliever medication
+  nearby.
+aliases: []
+equipment: []
+motion_shape: breath_excursion
+sensitivity: general
+evidence_tier: fm_specific_thin
+sources:
+- id: klein-body-remembers
+  location: 49. Asthma — SOMATIC RESET
+  quote: Open your mouth and let a long 'ahhh' sound come out at whatever pitch feels natural. Don't
+    force volume—just let the sound ride your exhale.
+version: 1
+status: active
+updated_at: '2026-07-28'
+updated_by: Shivani

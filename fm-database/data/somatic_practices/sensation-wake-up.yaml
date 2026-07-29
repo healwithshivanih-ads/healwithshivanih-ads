@@ -1,0 +1,50 @@
+slug: sensation-wake-up
+display_name: Sensation Wake-Up
+aliases: []
+category: touch
+body_region: whole_body
+position: seated
+summary: Pressure, then tapping, then squeezing, over an area that has gone numb.
+why_it_works: Graded mechanical input — pressure, then tapping, then squeezing — recruits progressively
+  more receptor types, which is how attention is coaxed back into an area that has gone quiet.
+steps:
+- label: Firm pressure
+  cue: Run your hands slowly over the numb area with firm, steady pressure.
+  secs: 50
+  action: press
+- label: Brisk taps
+  cue: Tap briskly over the same area to wake the skin up.
+  secs: 45
+  action: tap
+- label: Squeeze in sections
+  cue: Work along the area squeezing gently, section by section.
+  secs: 50
+  action: press
+- label: Notice what returned
+  cue: Rest your hands there and notice whatever sensation has come back, however small.
+  secs: 35
+  action: observe
+reps: null
+duration_seconds: 180
+bilateral: false
+timed: true
+equipment: []
+motion_shape: continuous_travel
+contraindications:
+- Do NOT use over an area of new or progressive numbness before a cause has been established
+- Avoid in peripheral neuropathy with reduced protective sensation — vigorous input risks injury
+- Avoid over any area with poor circulation
+sensitivity: general
+linked_to_symptoms:
+- numbness-tingling
+linked_to_topics: []
+notes_for_coach: This is a re-inhabiting practice for established numbness, not a workup substitute
+  for new numbness.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 103-109
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

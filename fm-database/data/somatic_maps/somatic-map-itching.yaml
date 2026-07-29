@@ -1,0 +1,42 @@
+slug: somatic-map-itching
+display_name: Itching — Wanting What You Will Not Let Yourself Have
+target_kind: symptom
+target_slug: itching
+sensitivity: general
+emotional_roots:
+- pattern: Desire running against the grain
+  note: Wanting something you will not permit yourself, or wanting out of something
+    you are staying in.
+- pattern: An irritation not being confronted
+  note: Scratching the surface of something rather than going into what is actually
+    the matter.
+- pattern: Something unresolved
+  note: A nagging that returns because the feeling underneath it returns.
+reframe: Something is asking for your attention. You get to choose when you listen
+  — but it will keep asking.
+inquiry_question: What keeps asking for your attention that you keep brushing off?
+somatic_practice: hand-belly-hand-chest
+also_consider:
+  supplements: []
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Antihistamines sometimes help itch with no visible reaction, suggesting a histamine
+    component
+  - Simple oil-based moisturising reduces background irritation
+pattern_signals: []
+differential_note: Itch without a rash is a red flag, not a somatic finding. Exclude
+  iron deficiency, thyroid disease, renal and hepatic disease (including cholestasis),
+  diabetes, lymphoma and drug causes. Generalised persistent itch with no skin signs
+  warrants bloods before anything else.
+coach_only_note: ''
+notes_for_coach: ITCH WITHOUT RASH NEEDS BLOODS. This is the entry where an emotional
+  reading could most easily mask lymphoma or cholestasis.
+sources:
+- id: klein-body-remembers
+  location: System 10 — Skin, Hair & Senses, entries 95-102
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

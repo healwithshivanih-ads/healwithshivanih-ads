@@ -1,0 +1,50 @@
+slug: somatic-map-restless-legs
+display_name: Restless Legs — Blocked Forward Movement
+target_kind: symptom
+target_slug: restless-legs
+sensitivity: general
+emotional_roots:
+- pattern: Stuck where movement is wanted
+  note: The legs carry the impulse to go. Where life feels stalled or trapped, that
+    impulse can surface at night as an urge the person cannot argue with.
+- pattern: Low-grade chronic unease
+  note: Persistent background anxiety keeps the nervous system switched on; the body
+    cannot settle while the mind is still scanning.
+- pattern: An escape that never finished
+  note: Movement mobilised during an old threat that could not be fled may still be
+    looking for its ending.
+reframe: Your legs are not misbehaving. They are carrying an impulse to move that
+  has not found anywhere to go — and that is worth listening to rather than suppressing.
+inquiry_question: Where in your life do you most want to move, and what is in the
+  way?
+somatic_practice: settled-legs-imagery
+also_consider:
+  supplements:
+  - iron-bisglycinate
+  - magnesium-glycinate
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Cut caffeine and alcohol, both of which clearly worsen symptoms
+  - Compression socks or a weighted blanket help some people
+pattern_signals:
+- Symptoms track periods of feeling stuck or trapped rather than iron status
+- Worse on evenings after a frustrating day
+- Ferritin already replete and symptoms persist
+differential_note: Restless legs have a strong and well-evidenced physiological basis.
+  Iron deficiency is the single most important reversible cause — check ferritin and
+  treat below 75 ng/mL even when haemoglobin is normal. Also exclude renal impairment,
+  pregnancy, peripheral neuropathy, and the many drugs that provoke it (antihistamines,
+  SSRIs, antidopaminergics, antiemetics). Emotional work is an adjunct here, never
+  a substitute for the iron workup.
+coach_only_note: ''
+notes_for_coach: Deepti (cl-011) has restless legs flagged as likely ferritin-linked
+  — check her iron before raising any of this.
+sources:
+- id: klein-body-remembers
+  location: System 9 — Legs & Feet, entries 88-94
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

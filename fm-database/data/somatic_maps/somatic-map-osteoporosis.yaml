@@ -1,0 +1,46 @@
+slug: somatic-map-osteoporosis
+display_name: Osteoporosis — When the Structure Went
+target_kind: topic
+target_slug: osteoporosis
+sensitivity: general
+emotional_roots:
+- pattern: Support that fell away
+  note: Bones are the deepest structure. Thinning often coincides with a life where
+    what held things up has gone — a marriage, a role, a purpose.
+- pattern: Deferring your own framework
+  note: Letting others decide for so long that your own inner structure weakened from
+    disuse.
+- pattern: Discouragement
+  note: The sense that holding yourself up is no longer worth the effort.
+reframe: You are allowed to build new structures as many times as it takes. Losing
+  your ground is a test of resourcefulness, not a verdict on you.
+inquiry_question: What structure that used to hold you has gone, and what would you
+  like to build instead?
+somatic_practice: grounding-stance
+also_consider:
+  supplements:
+  - vitamin-d3
+  - vitamin-k2
+  - magnesium
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Weight-bearing exercise is the single most important intervention — walking counts
+  - Resistance training signals bone to rebuild
+  - Balance work prevents the falls that make it dangerous
+pattern_signals: []
+differential_note: 'Osteoporosis is diagnosed on DEXA and managed medically — calcium,
+  vitamin D, and bisphosphonates or equivalent where indicated. Fracture risk is the
+  whole point: a fragility fracture, especially of hip or spine, is a major event.
+  Falls prevention matters as much as bone density.'
+coach_only_note: ''
+notes_for_coach: Pranati (cl-009) has osteoporosis; Manju (cl-016) is 80-85 and postmenopausal.
+  Falls prevention for both.
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani

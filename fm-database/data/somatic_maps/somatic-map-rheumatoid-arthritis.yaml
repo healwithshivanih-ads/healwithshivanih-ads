@@ -1,0 +1,44 @@
+slug: somatic-map-rheumatoid-arthritis
+display_name: Rheumatoid Arthritis — Resentment With No Route Out
+target_kind: topic
+target_slug: rheumatoid-arthritis
+sensitivity: sensitive
+emotional_roots:
+- pattern: Unspoken criticism of authority
+  note: Someone or something with power over your life that is resented but never
+    confronted.
+- pattern: Perfectionism
+  note: An impossible standard, and the constant low-grade resentment of failing to
+    meet it.
+- pattern: The caretaker who never complains
+  note: Suppressing your own needs, unable to say no, serving others at your own cost.
+reframe: Anger and frustration are signals worth leaning into rather than managing
+  away.
+inquiry_question: Where are you swallowing something instead of saying it, and to
+  whom?
+somatic_practice: intentional-shaking
+also_consider:
+  supplements:
+  - turmeric
+  - omega-3
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - Gentle movement beats rest — joints need to know they may still move
+  - Heat for morning stiffness, cold for active flares
+pattern_signals: []
+differential_note: RA is a progressive inflammatory arthritis where early DMARD treatment
+  prevents irreversible joint destruction. Any suspicion — persistent symmetrical
+  small-joint swelling with morning stiffness over an hour — is an urgent rheumatology
+  referral. This layer never substitutes for or delays that.
+coach_only_note: Do not raise the perfectionism or caretaker framing during an active
+  flare, when the client is in pain and least able to hear it.
+notes_for_coach: ''
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-07-28
+updated_by: Shivani
