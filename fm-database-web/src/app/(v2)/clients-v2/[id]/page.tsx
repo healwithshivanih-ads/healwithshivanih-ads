@@ -58,6 +58,7 @@ import { ClientMemoryPanel } from "./client-memory-panel";
 import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
 import { PendingExtractionsBanner } from "@/components/client-widgets/pending-extractions-banner";
 import { MindbodyDripPanel } from "./mindbody-drip-panel";
+import { SomaticReadPanel } from "./somatic-read-panel";
 import { loadMindbodyDrip } from "@/lib/fmdb/mindbody-status";
 import { EftThemesPanel } from "./eft-themes-panel";
 import { EFT_THEME_KEYS, EFT_THEME_LABELS, autoDetectEftThemes } from "@/lib/fmdb/client-app";
@@ -1641,6 +1642,7 @@ export default async function ClientV2Page({
           {mindbodySteps.length > 0 && (
             <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — practice journey">
               <MindbodyDripPanel clientId={client.client_id} steps={mindbodySteps} />
+              <SomaticReadPanel clientId={client.client_id} />
             </FmGroupedPanel>
           )}
 
