@@ -66,8 +66,21 @@ export const RECIPE_LIB_STOP = new Set([
 export const recipeLibKey = (s: string) =>
   s.toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
 
-export const recipeLibToks = (s: string) =>
-  recipeLibKey(s).split(" ").filter((t) => t.length > 3 && !RECIPE_LIB_STOP.has(t));
+export const recipeLibToks = (s: string) => {
+  const words = recipeLibKey(s).split(" ").filter((t) => !RECIPE_LIB_STOP.has(t));
+  const strong = words.filter((t) => t.length > 3);
+  if (strong.length >= 2) return strong;
+  // A name must keep at least two tokens to be matchable — the near-equality
+  // and whole-title-containment rules both need them. The >3 filter alone
+  // deleted "dal" and "egg" and collapsed 22 catalogue titles ("Toor dal",
+  // "Egg bhurji", "Moong dal", …) to a single token, so every drafter-
+  // embellished cell ("Toor dal with turmeric and black pepper") fell through
+  // to a paid AI recipe (2026-07-30, cl-005). Widening to 3-letter words ONLY
+  // when the strict pass comes up short leaves every name that already had two
+  // strong tokens — and therefore every existing match — untouched.
+  const wide = words.filter((t) => t.length >= 3);
+  return wide.length > strong.length ? wide : strong;
+};
 
 // Words that are dish-types / preparations / aromatics / units — NOT the
 // distinctive "headline" food a dish is named after. Dropped before comparing.

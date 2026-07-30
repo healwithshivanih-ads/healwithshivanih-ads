@@ -93,3 +93,39 @@ describe("against the real recipe library", () => {
     }
   });
 });
+
+/**
+ * Short food words are load-bearing. "dal" and "egg" are 3 letters, and the
+ * token filter's old >3 cutoff deleted them — collapsing 22 catalogue titles
+ * ("Toor dal", "Egg bhurji", "Moong dal", …) to a single token, below the
+ * 2-token floor every fuzzy rule needs. Reported 2026-07-30 (cl-005): every
+ * drafter-embellished dal/egg cell ("Toor dal with turmeric and black
+ * pepper") fell through to a paid AI recipe the catalogue already answered.
+ * The fix widens to 3-letter words ONLY when a name would otherwise fall
+ * below two tokens, so names with two strong tokens keep their old
+ * tokenisation bit-for-bit (corpus diff over all live menus: 9 heads gained
+ * a recipe, none moved).
+ */
+describe("short-word titles (dal, egg) stay matchable", () => {
+  it("serves '<recipe> with <spices>' for a two-word title with a 3-letter word", async () => {
+    const lib = await loadLibraryRecipes();
+    const resolve = buildLibraryRecipeResolver(lib);
+    // The reported cells, verbatim from cl-005's published menu.
+    expect(resolve("Toor dal with turmeric and black pepper (1 bowl)")?.title).toBe("Toor dal");
+    expect(
+      resolve(
+        "Egg bhurji with onion, cauliflower and beans (2 eggs, vegetables 1 small bowl)",
+      )?.title,
+    ).toMatch(/egg bhurji/i);
+  });
+
+  it("a different dal is still a different dish", () => {
+    const resolve = buildLibraryRecipeResolver([
+      r("Toor dal", ["1 cup toor dal", "turmeric"], ["toor dal"]),
+      r("Palak dal", ["1 cup toor dal", "palak"], ["palak"]),
+    ]);
+    // "Moong dal khichdi" names neither recipe — matching either would serve
+    // the wrong method. The 2-token floor must not loosen the identity rules.
+    expect(resolve("Moong dal khichdi (1 bowl)")?.title).toBeUndefined();
+  });
+});
