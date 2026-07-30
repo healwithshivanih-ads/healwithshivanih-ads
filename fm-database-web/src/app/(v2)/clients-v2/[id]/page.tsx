@@ -59,6 +59,7 @@ import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel
 import { PendingExtractionsBanner } from "@/components/client-widgets/pending-extractions-banner";
 import { MindbodyDripPanel } from "./mindbody-drip-panel";
 import { SomaticReadPanel } from "./somatic-read-panel";
+import { ConditionStatusChips } from "@/components/client-widgets/condition-status-chips";
 import { loadMindbodyDrip } from "@/lib/fmdb/mindbody-status";
 import { EftThemesPanel } from "./eft-themes-panel";
 import { EFT_THEME_KEYS, EFT_THEME_LABELS, autoDetectEftThemes } from "@/lib/fmdb/client-app";
@@ -1643,6 +1644,15 @@ export default async function ClientV2Page({
             <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — practice journey">
               <MindbodyDripPanel clientId={client.client_id} steps={mindbodySteps} />
               <SomaticReadPanel clientId={client.client_id} />
+              {/* Sits with the reads on purpose: the reads ARE the conditions,
+                  so the moment one looks stale ("he had constipation for a
+                  fortnight in April") the control to retire it is right here
+                  rather than three screens away in the profile editor. */}
+              <ConditionStatusChips
+                clientId={client.client_id}
+                active={(client.active_conditions as string[] | undefined) ?? []}
+                history={(client.medical_history as string[] | undefined) ?? []}
+              />
             </FmGroupedPanel>
           )}
 
