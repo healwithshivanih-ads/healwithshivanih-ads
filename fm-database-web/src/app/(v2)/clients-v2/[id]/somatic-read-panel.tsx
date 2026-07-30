@@ -18,7 +18,9 @@ import { useEffect, useState, useTransition } from "react";
 
 import {
   loadMindBodyDepth,
+  loadSharedMaps,
   loadSomaticRead,
+  setMapShared,
   setMindBodyDepth,
   type MindBodyDepth,
   type SomaticReadItem,
@@ -37,6 +39,20 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
   const [pending, start] = useTransition();
   const [depth, setDepth] = useState<MindBodyDepth | null>(null);
   const [saving, setSaving] = useState(false);
+  const [shared, setShared] = useState<string[] | null>(null);
+
+  useEffect(() => {
+    if (!open || shared !== null) return;
+    loadSharedMaps(clientId).then(setShared).catch(() => setShared([]));
+  }, [open, shared, clientId]);
+
+  function toggleShare(mapSlug: string, next: boolean) {
+    const prev = shared ?? [];
+    setShared(next ? [...prev, mapSlug] : prev.filter((s) => s !== mapSlug));
+    setMapShared(clientId, mapSlug, next)
+      .then((r) => { if (!r.ok) { setShared(prev); setErr(r.error); } })
+      .catch(() => setShared(prev));
+  }
 
   useEffect(() => {
     if (!open || depth !== null) return;
@@ -95,14 +111,19 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
               Show in their app
             </div>
             <div style={{ fontSize: 11.5, color: "var(--fm-muted)", lineHeight: 1.5, marginBottom: 8 }}>
-              Only <strong>safe to share</strong> reads ever appear, and only the ones matching their
-              own conditions. Sensitive and gated entries stay here with you.
+              <strong>+ gentle reads</strong> shows only the source&apos;s <em>general</em> entries —
+              which in practice means sleep, digestion and aches, because it marks nearly every named
+              diagnosis sensitive. <strong>+ all chronic reads</strong> adds those (blood pressure,
+              thyroid pattern, PCOS, diabetes) as food for thought. Neither opens the twelve
+              <em> never surface</em> entries — grief, pregnancy loss, infertility, sexual trauma;
+              those you share one at a time below, for this client.
             </div>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {([
                 ["off", "Nothing"],
                 ["resets_only", "Practices only"],
-                ["full", "Practices + reads"],
+                ["full", "+ gentle reads"],
+                ["deep", "+ all chronic reads"],
               ] as [MindBodyDepth, string][]).map(([v, label]) => {
                 const on = depth === v;
                 return (
@@ -154,6 +175,36 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
                   }}>
                     {r.gated ? "never surface" : tone.label}
                   </span>
+
+                  {/* The per-client override. Shown on every read so the state
+                      is always legible, but it is the ONLY route past
+                      coach_only — which is why it names the client and asks
+                      for a deliberate tap rather than inheriting a setting. */}
+                  {shared !== null && (() => {
+                    const on = shared.includes(r.map_slug);
+                    const heavy = r.sensitivity === "coach_only" || r.gated;
+                    return (
+                      <button
+                        onClick={() => toggleShare(r.map_slug, !on)}
+                        title={
+                          on
+                            ? "Showing in their app — tap to stop"
+                            : heavy
+                              ? "Share this one with THIS client only — the source marks it never-surface, so this is your call"
+                              : "Share this one in their app"
+                        }
+                        style={{
+                          marginLeft: "auto", fontSize: 11, padding: "3px 9px", borderRadius: 999,
+                          cursor: "pointer",
+                          border: on ? "1px solid #4a6152" : `1px ${heavy ? "dashed" : "solid"} var(--fm-line)`,
+                          background: on ? "#4a6152" : "#fff",
+                          color: on ? "#f7f4ee" : heavy ? "#8c5318" : "var(--fm-muted)",
+                        }}
+                      >
+                        {on ? "✓ in their app" : heavy ? "share anyway" : "share"}
+                      </button>
+                    );
+                  })()}
                 </div>
 
                 {r.themes.length > 0 && (

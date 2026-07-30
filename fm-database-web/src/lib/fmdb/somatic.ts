@@ -210,24 +210,32 @@ export interface AppMindBodyRead {
 /**
  * What the client may be shown of the mind-body layer.
  *
- * THREE gates, all of which must permit, and all of which fail closed:
+ * THE GATE IS THE COACH'S, NOT THE BOOK'S. The source marks 59 of its 123
+ * entries `sensitive` or `coach_only`, and read literally that hid exactly the
+ * conditions clients most want understood: 55% of matched reads were withheld
+ * and every one was a named DIAGNOSIS — blood pressure, thyroid, diabetes,
+ * PCOS, autoimmune — leaving only sleep, knees and digestion. A client with
+ * hypertension saw a card about constipation.
  *
- *  1. the client's `mind_body_depth` is `full`. Absent — which is every client
- *     until the coach says otherwise — shows nothing. This content tells
- *     someone their body may be holding what they will not put down; absent
- *     consent is not consent.
- *  2. the map is `general` AND carries no `coach_only_note`. That withholds 59
- *     of the 123 on its own — recurrent miscarriage, infertility, fibroids.
- *  3. the map has a reframe worth reading. An empty one is not a card.
+ * That is the book being cautious about being read as a DIAGNOSIS. This app
+ * does not present it as one: the section says so before anything else is
+ * read. So the coach sets the depth, per client:
  *
- * The practice is resolved from the CATALOGUE, not from the plan. A third gate
- * on "did the coach also prescribe this one" added friction without adding
- * safety: the map has already passed the sensitivity gate, the client has
- * already passed the depth gate, and the practices themselves are gentle. It
- * made the card a tease — here is your knee, here is the thing that helps it,
- * now go ask someone — which is not what a client at 11pm with a sore knee
- * needs. If the reading is safe to show, the practice that answers it is safe
- * to do.
+ *   off / absent  — nothing (still the default; absent consent is not consent)
+ *   resets_only   — the guided practices, never the reading
+ *   full          — `general` entries only (the cautious setting)
+ *   deep          — `general` + `sensitive`: the chronic diagnoses, as food
+ *                   for thought. This is the setting that stops the book's
+ *                   caution becoming ours.
+ *
+ * `coach_only` NEVER opens by depth, at any level, and that is deliberate
+ * rather than timid. Those twelve are not the same kind of caution: alongside
+ * "don't imply they caused their thyroid disease" sit recurrent pregnancy
+ * loss, infertility, birth trauma and pelvic-floor dysfunction — the last of
+ * which "directly addresses sexual trauma". Nobody should meet that in an app
+ * at 11pm because a depth flag was set weeks earlier. They open one at a time,
+ * for one client, by name, through `shared` — a deliberate act with a person
+ * in mind.
  */
 export interface MindBodyReadSet {
   reads: AppMindBodyRead[];
@@ -254,14 +262,25 @@ export function deriveMindBodyReads(
   depth: string,
   conditions: string[],
   prescribed: AppSomatic[],
+  /** map slugs the coach has opened for THIS client, by name */
+  shared: string[] = [],
 ): MindBodyReadSet {
-  if (depth.trim().toLowerCase() !== "full") return { reads: [], withheldCount: 0 };
+  const level = depth.trim().toLowerCase();
+  if (level !== "full" && level !== "deep") return { reads: [], withheldCount: 0 };
+  const openly = new Set(shared.map((x) => x.trim()).filter(Boolean));
 
   const bySlug = new Map(prescribed.map((p) => [p.slug, p]));
   const out: AppMindBodyRead[] = [];
   let withheld = 0;
   for (const r of readChiefComplaints(conditions)) {
-    if (!isClientSafe(r)) { withheld++; continue; }
+    // Named for this client — the only route past coach_only, and past the
+    // gate flag with it. `shared` is per-client, so it cannot leak sideways.
+    const namedForThem = openly.has(r.mapSlug);
+    const byDepth =
+      r.sensitivity === "general" ? !r.gated
+      : r.sensitivity === "sensitive" ? level === "deep" && !r.gated
+      : false;
+    if (!namedForThem && !byDepth) { withheld++; continue; }
     const reframe = r.reframe.trim();
     if (!reframe) continue;
     // Prefer the prescribed instance — it carries the coach's own cadence

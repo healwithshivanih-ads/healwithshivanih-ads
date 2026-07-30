@@ -320,3 +320,66 @@ describe("withheldCount — what the client is not being shown", () => {
     expect(out.withheldCount).toBe(0);
   });
 });
+
+/* The coach's gate, not the book's. Read literally, the source hid every named
+   diagnosis and left only sleep/knees/digestion — so `deep` opens the chronic
+   ones as food for thought, while the twelve coach_only entries (recurrent
+   pregnancy loss, infertility, pelvic-floor/sexual trauma) still need naming
+   one at a time, for one person. */
+describe("depth levels and per-client sharing", () => {
+  const CONDS = ["Hypertension", "Constipation", "Endometriosis"];
+
+  it("full keeps the cautious setting — general only", () => {
+    const out = deriveMindBodyReads("full", CONDS, []);
+    expect(out.reads.map((r) => r.title.toLowerCase()).join(" ")).toContain("constipation");
+    expect(out.reads.some((r) => /blood pressure|hypertension/i.test(r.title))).toBe(false);
+    expect(out.withheldCount).toBe(2);
+  });
+
+  it("deep adds the chronic diagnoses the client actually wants understood", () => {
+    const out = deriveMindBodyReads("deep", CONDS, []);
+    expect(out.reads.some((r) => /blood pressure|hypertension/i.test(r.title))).toBe(true);
+    expect(out.reads.some((r) => /constipation/i.test(r.title))).toBe(true);
+  });
+
+  it("deep still does NOT open coach_only — that is not the same caution", () => {
+    const out = deriveMindBodyReads("deep", CONDS, []);
+    expect(out.reads.some((r) => /endometrio/i.test(r.title))).toBe(false);
+    expect(out.withheldCount).toBe(1);
+  });
+
+  it("no depth level whatsoever opens the trauma entries", () => {
+    const heavy = ["Recurrent miscarriage", "Endometriosis", "Fibroids"];
+    for (const lvl of ["full", "deep", "DEEP", "  deep  "]) {
+      const out = deriveMindBodyReads(lvl, heavy, []);
+      expect(out.reads, `depth ${lvl} leaked a coach-only entry`).toEqual([]);
+    }
+  });
+
+  it("a coach_only entry opens only when named for that client", () => {
+    const shut = deriveMindBodyReads("full", ["Endometriosis"], []);
+    expect(shut.reads).toEqual([]);
+
+    const named = deriveMindBodyReads("full", ["Endometriosis"], [], ["somatic-map-endometriosis"]);
+    expect(named.reads).toHaveLength(1);
+    expect(named.reads[0].title.toLowerCase()).toContain("endometrio");
+    expect(named.withheldCount).toBe(0);
+  });
+
+  it("sharing is by exact map slug — a near miss opens nothing", () => {
+    const out = deriveMindBodyReads("full", ["Endometriosis"], [], ["endometriosis", "somatic-map-endo"]);
+    expect(out.reads).toEqual([]);
+  });
+
+  it("sharing cannot revive a client who was never opened up at all", () => {
+    const out = deriveMindBodyReads("off", ["Endometriosis"], [], ["somatic-map-endometriosis"]);
+    expect(out.reads).toEqual([]);
+    expect(out.withheldCount).toBe(0);
+  });
+
+  it("an unknown depth string is treated as shut, not as deep", () => {
+    for (const lvl of ["", "  ", "true", "1", "all", "deeper", "full_plus"]) {
+      expect(deriveMindBodyReads(lvl, CONDS, []).reads, lvl).toEqual([]);
+    }
+  });
+});

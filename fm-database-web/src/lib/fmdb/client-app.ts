@@ -4471,6 +4471,7 @@ export async function loadClientAppData(
     asStr((client as Record<string, unknown>).mind_body_depth),
     concernConditions(client),
     somatic,
+    asStrArr((client as Record<string, unknown>).mind_body_shared),
   );
   const mindBodyReads = mindBodySet.reads;
   const mindBodyWithheld = mindBodySet.withheldCount;

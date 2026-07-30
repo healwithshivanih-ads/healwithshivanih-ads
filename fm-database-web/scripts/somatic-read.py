@@ -63,6 +63,7 @@ def main() -> None:
                 {
                     "condition": r.condition,
                     "target_slug": r.target_slug,
+                    "map_slug": r.map_slug,
                     "display_name": r.display_name,
                     "sensitivity": r.sensitivity,
                     "gated": r.gated,

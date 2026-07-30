@@ -354,6 +354,10 @@ class Client(BaseModel):
     #   "resets_only"  — the guided practices, but never the emotional reading
     #   "full"         — practices plus the client-safe reads
     mind_body_depth: Optional[str] = None
+    #: Map slugs opened for THIS client by name. The only route past
+    #: `coach_only` — deliberately per-client, so a decision made for one
+    #: person cannot leak to another.
+    mind_body_shared: list[str] = Field(default_factory=list)
     medical_history: list[str] = Field(default_factory=list)  # past diagnoses, in-remission conditions, surgeries, prior dx with current status
     current_medications: list[str] = Field(default_factory=list)
     # v2.4 — supplements split from medications so the AI doesn't confuse

@@ -118,8 +118,9 @@ export function MindBodyReadsSection({
   return (
     <div className="mbr">
       <p className="mbr-intro">
-        The body often carries what the mind is still working through. These are
-        invitations to notice — never an explanation for why something happened.
+        The body often carries what the mind is still working through. This is
+        <strong> food for thought, not a diagnosis</strong>{" "}— take what lands,
+        leave what doesn&apos;t, and bring anything it stirs up to {coachFirst}.
       </p>
       <RootsMotif />
       {withheldCount > 0 && (
