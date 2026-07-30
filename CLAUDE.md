@@ -65,6 +65,12 @@ The staging enricher **fails closed**: an unclassified map defaults to `sensitiv
 - **Today is one card, not four.** `MindBodyEntryCard` asks "How are you feeling right now?" and routes six first-person chips (two positive) to breathing / sleep / somatic / EFT. Routing is pure and tested in `mind-body-routing.ts`; every chip falls back rather than dead-ending, which is why the reply copy never names a technique.
 - **The seven players are drawn additively** (`somatic-shapes.ts`, split out of `ochre-somatic.tsx`). Source-over turned warm translucent light into mud. Fixed while there: the overlay close button was an empty SVG (`x` was missing from the icon registry), the ground was near-black rather than ochre, the canvas ground wash left a visible square seam, and load_release's ripples flew off-canvas within a second of the snap that IS the practice.
 
+- **Task steps vs rhythm steps.** `rest` steps (128 across the library — "drink warm water", "lie down") are self-paced: instruction + Done button, duration kept only as a silent auto-advance. The animation runs only where the client follows the screen. Long paced steps display m:ss.
+- **The read is the full arc, as a reveal:** condition title → emotional roots ("what your body may be saying") → reframe → question → practice ("a doable way through"). Unprescribed practice → "ask Shivani" line. Section = "The mind-body connection" on the Plan tab.
+- **⚠ THE STAGING ALLOWLIST TRAP.** The Fly client app reads `/data/fm-plans-staging`, populated by `scripts/app-staging-action.py` from an explicit `_APP_CLIENT_KEYS` allowlist — a new client.yaml field is INVISIBLE on Fly until added there. `mind_body_depth` hit this: the coach opened a client on the Mac and the live app silently stayed off. Any future client-app-read field must be allowlisted + `{"action":"refresh"}` run (needs `FMDB_STAGING_DIR`).
+- Hariharan (cl-005) is opened at `mind_body_depth: full`; all other clients remain off.
+- **Benched (coach decision):** connector recommending sessions (hypnotherapy, massage) from the reads — next stage, do not build yet. The book is the first knowledgebase; more sources will deepen it.
+
 **Pending (v0.78):** trigger-vs-symptom logging (the only route that helps the metabolic cohort, and what makes any read testable rather than asserted) · question drip · thread constellation on Progress · graduation keepsake · prospects-vs-clients separation (in flight) · the practice button still shows the catalogue's clinical `display_name` ("Gastrocolic Rhythm") to the client.
 
 ---

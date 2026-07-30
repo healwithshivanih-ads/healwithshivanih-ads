@@ -98,6 +98,10 @@ _APP_CLIENT_KEYS = (
     "intake_date",
     "next_contact_date",
     "active_conditions",
+    # The mind-body gate. Without it the Fly copy silently falls back to
+    # "off", so the coach opens a client on the Mac and the app never shows
+    # the reads — the exact allowlist trap intake fields fall into.
+    "mind_body_depth",
     "goals",
     "dietary_preference",
     "foods_to_avoid",
