@@ -1035,9 +1035,13 @@ export function PlanScreen({
 
       <PhaseRibbon />
 
-      {data.mindBodyReads.length > 0 && (
+      {(data.mindBodyReads.length > 0 || data.mindBodyWithheld > 0) && (
         <Section title="The mind-body connection">
-          <MindBodyReadsSection reads={data.mindBodyReads} onStart={openSomatic} />
+          <MindBodyReadsSection
+            reads={data.mindBodyReads}
+            withheldCount={data.mindBodyWithheld}
+            onStart={openSomatic}
+          />
         </Section>
       )}
 

@@ -1124,6 +1124,8 @@ export interface ClientAppData {
    *  practice for each. Empty unless the coach has opened it for them — see
    *  `deriveMindBodyReads`. */
   mindBodyReads: AppMindBodyRead[];
+  /** matched reads held back as sensitive/coach-only — see MindBodyReadSet */
+  mindBodyWithheld: number;
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
   /** client-facing lab vault — results vs FM-optimal + standard ranges (Phase 2 of LAB_VAULT_SPEC) */
@@ -3259,6 +3261,7 @@ async function buildDiscoveryAppData(
     sleep: null,
     mindBody: null,
     mindBodyReads: [],
+    mindBodyWithheld: 0,
     principles: [],
     labs: [],
     labVault,
@@ -4464,11 +4467,13 @@ export async function loadClientAppData(
   // What the book says about the conditions this client actually came in for.
   // Resolved from THEIR conditions, never from the practice — and shown only
   // when the coach has opened the mind-body layer for this person.
-  const mindBodyReads = deriveMindBodyReads(
+  const mindBodySet = deriveMindBodyReads(
     asStr((client as Record<string, unknown>).mind_body_depth),
     concernConditions(client),
     somatic,
   );
+  const mindBodyReads = mindBodySet.reads;
+  const mindBodyWithheld = mindBodySet.withheldCount;
 
   const breathwork = deriveBreathwork(nameMatchPractices, nameMatchRaw);
   const eft = deriveEft(
@@ -5583,6 +5588,7 @@ export async function loadClientAppData(
     breathwork,
     somatic,
     mindBodyReads,
+    mindBodyWithheld,
     eft: eftVisible,
     sleep: sleepVisible,
     mindBody,

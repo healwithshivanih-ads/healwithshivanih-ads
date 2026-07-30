@@ -127,6 +127,36 @@
       ]
     },
     {
+      "condition": "Underactive thyroid (subclinical, non-autoimmune)",
+      "targetSlug": "thyroid-dysfunction",
+      "mapSlug": "somatic-map-thyroid-dysfunction",
+      "displayName": "Thyroid Dysfunction",
+      "sensitivity": "coach_only",
+      "gated": true,
+      "reframe": "There is an expressive, vibrant version of you that has not disappeared — it has been waiting. You do not need to reclaim it all at once. Small steps toward authentic expression are enough.",
+      "inquiryQuestion": "Who are you when no one is watching — and what might open up if you allowed even a small part of that person to be visible?",
+      "somaticPractice": "simple-singing",
+      "clientSafe": false,
+      "roots": [
+        {
+          "pattern": "Humiliation and being made small",
+          "note": "Some people with thyroid conditions describe a background pattern of having been dismissed, put down, or told they were too much or not enough. This is an observed association, not a causal claim."
+        },
+        {
+          "pattern": "Emotional hibernation (hypothyroid pattern)",
+          "note": "Hypothyroidism is sometimes associated with a sense of having gradually given up on getting one's needs met — a kind of progressive withdrawal from self-expression and vitality."
+        },
+        {
+          "pattern": "Chronic exclusion and rage (hyperthyroid pattern)",
+          "note": "Hyperthyroidism is sometimes associated with a different charge: a sense of having been chronically left out or overlooked, with the system responding by revving up. This is an association, not a cause."
+        },
+        {
+          "pattern": "Silencing of intuition and perception",
+          "note": "People with thyroid issues are sometimes described as highly perceptive but having learned to suppress what they notice in order to maintain harmony or gain approval."
+        }
+      ]
+    },
+    {
       "condition": "Type 2 diabetes — HbA1c 6.6% (progressed)",
       "targetSlug": "type-2-diabetes",
       "mapSlug": "somatic-map-diabetes",
@@ -331,6 +361,28 @@
         {
           "pattern": "Stagnation of unexpressed emotion",
           "note": "The somatic framing suggests that frustration, grief, or worry that had no outlet may over time manifest as physical mass. This is a traditional association, not a physiological mechanism."
+        }
+      ]
+    },
+    {
+      "condition": "Back pain",
+      "targetSlug": "lower-back-pain",
+      "mapSlug": "somatic-map-lower-back-pain",
+      "displayName": "Lower Back Pain",
+      "sensitivity": "general",
+      "gated": false,
+      "reframe": "Your back isn't failing you — it has been carrying an enormous load, often for a very long time. Some of that load is circumstantial and can shift. Some is old, conditioned fear running in the background. And some may be unexpressed feeling waiting for space. The tension often begins to soften when you stop pushing down what's really there.",
+      "inquiryQuestion": "Where are you holding things up on your own, and when did that start?",
+      "somaticPractice": "weighted-grounding",
+      "clientSafe": true,
+      "roots": [
+        {
+          "pattern": "Financial survival fear",
+          "note": "For some people, the lower back area seems to carry chronic worry about money, job security, and whether fundamental needs will be met. When life feels financially precarious or unsupported, this region may respond with tension and pain."
+        },
+        {
+          "pattern": "Suppressed rage",
+          "note": "Some researchers and clinicians — including John Sarno — have observed that lower back pain can arise when unexpressed anger toward one's circumstances, obligations, or relationships has nowhere to go. The physical discomfort may serve as a distraction from the emotion."
         }
       ]
     }

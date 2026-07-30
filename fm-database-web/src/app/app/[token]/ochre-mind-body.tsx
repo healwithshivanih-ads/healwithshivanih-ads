@@ -102,18 +102,18 @@ export function MindBodyEntryCard({
  */
 export function MindBodyReadsSection({
   reads,
+  withheldCount,
   onStart,
 }: {
   reads: AppMindBodyRead[];
+  /** matched conditions held back as sensitive/coach-only */
+  withheldCount: number;
   onStart: (practiceId: string) => void;
 }) {
   const coachFirst = useOchre().coach.name.split(" ")[0];
   // the first read is the client's first-listed condition — open the door
   const [openTitle, setOpenTitle] = useState<string | null>(reads[0]?.title ?? null);
   if (!reads.length) return null;
-
-  const pretty = (slug: string) =>
-    slug.replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase());
 
   return (
     <div className="mbr">
@@ -122,6 +122,21 @@ export function MindBodyReadsSection({
         invitations to notice — never an explanation for why something happened.
       </p>
       <RootsMotif />
+      {withheldCount > 0 && (
+        /* Without this the section reads as the whole picture when it is the
+           part that is safe to read alone. The withheld ones are the named
+           diagnoses, so staying silent would quietly imply the opposite of
+           the truth — and the right channel for them is a conversation. */
+        <p className="mbr-held">
+          <Icon name="message" size={13} />
+          <span>
+            {withheldCount === 1
+              ? "There's one more that's better talked through together — "
+              : `There are ${withheldCount} more that are better talked through together — `}
+            {coachFirst} has these for your next session.
+          </span>
+        </p>
+      )}
       {reads.map((r) => {
         const open = openTitle === r.title;
         return (
@@ -161,7 +176,7 @@ export function MindBodyReadsSection({
                   </p>
                 )}
 
-                {r.practice ? (
+                {r.practice && (
                   <>
                     <span className="mbr-sub">A doable way through</span>
                     <button
@@ -171,16 +186,11 @@ export function MindBodyReadsSection({
                     >
                       <Icon name="play" size={13} />
                       {r.practice.name}
-                      <span className="mbr-go-sub">a few minutes, guided</span>
+                      <span className="mbr-go-sub">
+                        {r.prescribed ? "on your plan · guided" : "try it whenever · guided"}
+                      </span>
                     </button>
                   </>
-                ) : (
-                  r.practiceSlug && (
-                    <p className="mbr-ask">
-                      There&apos;s a practice for this — <strong>{pretty(r.practiceSlug)}</strong>.
-                      Ask {coachFirst} about adding it to your plan.
-                    </p>
-                  )
                 )}
               </div>
             )}

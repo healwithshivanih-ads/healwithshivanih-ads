@@ -50,10 +50,19 @@ def _phrases(condition: str) -> list[str]:
     words = [w for w in re.findall(r"[a-z0-9']+", head) if w not in _NOISE]
     out: list[str] = []
     if words:
-        out.append("-".join(words))                      # full head
+        # BOTH joins, every time. Catalogue aliases are written the way a
+        # clinician types them — "underactive thyroid", with a space — while
+        # slugs are hyphenated. Emitting only the hyphenated form made 3,130
+        # multi-word aliases unreachable, so "Underactive thyroid (subclinical)"
+        # matched nothing even though `thyroid-dysfunction` carries exactly that
+        # alias. Cheap to ask for both; the resolver ignores what it lacks.
+        def _both(ws: list[str]) -> list[str]:
+            return ["-".join(ws), " ".join(ws)] if len(ws) > 1 else ["-".join(ws)]
+
+        out.extend(_both(words))                         # full head
         for n in (3, 2):                                 # leading n-grams
             if len(words) > n:
-                out.append("-".join(words[:n]))
+                out.extend(_both(words[:n]))
         if len(words) > 1:
             out.append(words[-1])                        # trailing noun
         out.append(words[0])

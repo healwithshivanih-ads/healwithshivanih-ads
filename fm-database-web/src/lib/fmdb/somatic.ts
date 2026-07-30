@@ -203,6 +203,8 @@ export interface AppMindBodyRead {
   practice: AppSomatic | null;
   /** catalogue slug of the practice the map names, prescribed or not */
   practiceSlug: string;
+  /** true when this practice is on their plan — drives the label, not access */
+  prescribed: boolean;
 }
 
 /**
@@ -218,33 +220,105 @@ export interface AppMindBodyRead {
  *     of the 123 on its own — recurrent miscarriage, infertility, fibroids.
  *  3. the map has a reframe worth reading. An empty one is not a card.
  *
- * The practice is attached only when the coach actually prescribed it. The
- * reading still stands when she has not: the reframe and the question are the
- * substance, not the button.
+ * The practice is resolved from the CATALOGUE, not from the plan. A third gate
+ * on "did the coach also prescribe this one" added friction without adding
+ * safety: the map has already passed the sensitivity gate, the client has
+ * already passed the depth gate, and the practices themselves are gentle. It
+ * made the card a tease — here is your knee, here is the thing that helps it,
+ * now go ask someone — which is not what a client at 11pm with a sore knee
+ * needs. If the reading is safe to show, the practice that answers it is safe
+ * to do.
  */
+export interface MindBodyReadSet {
+  reads: AppMindBodyRead[];
+  /**
+   * How many of this client's matched conditions were withheld as sensitive
+   * or coach-only.
+   *
+   * This number is why the surface needs it. Across the roster 57% of matched
+   * reads are withheld, and they are not a random 57% — they are the named
+   * DIAGNOSES (blood pressure, diabetes, thyroid, PCOS, autoimmune), because
+   * those are exactly the ones an emotional reading could harm unsupervised.
+   * What survives is the symptom-level stuff: sleep, knees, digestion.
+   *
+   * So a client with hypertension and a resolved bout of constipation sees a
+   * card about constipation and nothing about blood pressure, and the section
+   * silently reads as "this is what your body is carrying" when it is the
+   * leftovers. Saying that something is held for the coach is the difference
+   * between a filtered view and a misleading one.
+   */
+  withheldCount: number;
+}
+
 export function deriveMindBodyReads(
   depth: string,
   conditions: string[],
   prescribed: AppSomatic[],
-): AppMindBodyRead[] {
-  if (depth.trim().toLowerCase() !== "full") return [];
+): MindBodyReadSet {
+  if (depth.trim().toLowerCase() !== "full") return { reads: [], withheldCount: 0 };
 
   const bySlug = new Map(prescribed.map((p) => [p.slug, p]));
   const out: AppMindBodyRead[] = [];
+  let withheld = 0;
   for (const r of readChiefComplaints(conditions)) {
-    if (!isClientSafe(r)) continue;
+    if (!isClientSafe(r)) { withheld++; continue; }
     const reframe = r.reframe.trim();
     if (!reframe) continue;
+    // Prefer the prescribed instance — it carries the coach's own cadence
+    // ("Morning belly rhythm") and the practiceId the compliance log keys on.
+    // Otherwise resolve the same practice straight from the catalogue.
+    const prescribedOne = bySlug.get(r.somaticPractice) ?? null;
+    const practice = prescribedOne ?? readOnlyPractice(r.somaticPractice);
     out.push({
       title: r.displayName || r.condition,
       roots: r.roots.filter((x) => x.pattern.trim()).slice(0, 3),
       reframe,
       question: r.inquiryQuestion.trim(),
-      practice: bySlug.get(r.somaticPractice) ?? null,
+      practice,
       practiceSlug: r.somaticPractice,
+      prescribed: prescribedOne !== null,
     });
   }
-  return out;
+  return { reads: out, withheldCount: withheld };
+}
+
+/**
+ * A catalogue practice the client can do even though it is not on their plan.
+ *
+ * Same renderability bar as `deriveSomatic` — unresolvable slug, unassigned
+ * shape, or a timed practice with no steps all yield null rather than a broken
+ * session. The practiceId is namespaced so a compliance record from here is
+ * never mistaken for a prescribed practice being ticked off.
+ */
+function readOnlyPractice(slug: string): AppSomatic | null {
+  if (!slug) return null;
+  const rec = loadSomaticPractice(slug);
+  if (!rec) return null;
+  const shape = rec.motion_shape;
+  if (!isMotionShape(shape)) return null;
+  const steps: SomaticStep[] = (Array.isArray(rec.steps) ? rec.steps : [])
+    .map((x): SomaticStep => {
+      const d = (x ?? {}) as Dict;
+      return { label: asStr(d.label), cue: asStr(d.cue), secs: asNum(d.secs), action: asStr(d.action) };
+    })
+    .filter((x) => x.label || x.cue);
+  const timed = rec.timed !== false;
+  if (timed && steps.length === 0) return null;
+  return {
+    practiceId: `read-${slug}`,
+    sourceIndex: -1,
+    slug,
+    name: asStr(rec.display_name) || slug,
+    shape,
+    when: "Whenever it would help",
+    why: clientFacingWhy(rec),
+    steps,
+    reps: asNum(rec.reps),
+    bilateral: rec.bilateral === true,
+    timed,
+    totalSeconds: asNum(rec.duration_seconds),
+    equipment: (Array.isArray(rec.equipment) ? rec.equipment : []).map(asStr).filter(Boolean),
+  };
 }
 
 /**

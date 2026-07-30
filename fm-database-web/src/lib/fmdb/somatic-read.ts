@@ -55,10 +55,15 @@ export function conditionPhrases(condition: string): string[] {
   if (!head) return [];
   const words = (head.match(/[a-z0-9']+/g) ?? []).filter((w) => !NOISE.has(w));
   const out: string[] = [];
+  // BOTH joins, every time — see the Python twin. Catalogue aliases are written
+  // the way a clinician types them ("underactive thyroid", spaced) while slugs
+  // are hyphenated, and emitting only the hyphenated form left 3,130 multi-word
+  // aliases unreachable.
+  const both = (ws: string[]) => (ws.length > 1 ? [ws.join("-"), ws.join(" ")] : [ws.join("-")]);
   if (words.length) {
-    out.push(words.join("-"));                       // full head
+    out.push(...both(words));                        // full head
     for (const n of [3, 2]) {                        // leading n-grams
-      if (words.length > n) out.push(words.slice(0, n).join("-"));
+      if (words.length > n) out.push(...both(words.slice(0, n)));
     }
     if (words.length > 1) out.push(words[words.length - 1]);  // trailing noun
     out.push(words[0]);

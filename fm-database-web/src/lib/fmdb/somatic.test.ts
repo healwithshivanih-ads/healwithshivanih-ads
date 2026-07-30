@@ -224,12 +224,12 @@ describe("deriveMindBodyReads — three gates, all failing closed", () => {
 
   it("shows NOTHING until the coach opens it for this client", () => {
     for (const depth of ["", "   ", "off", "resets_only", "FULLY", "true", "1"]) {
-      expect(deriveMindBodyReads(depth, CONDS, prescribed()), `depth ${JSON.stringify(depth)} leaked`).toEqual([]);
+      expect(deriveMindBodyReads(depth, CONDS, prescribed()).reads, `depth ${JSON.stringify(depth)} leaked`).toEqual([]);
     }
   });
 
   it("opens at full depth, and only for the client-safe conditions", () => {
-    const out = deriveMindBodyReads("full", CONDS, prescribed());
+    const out = deriveMindBodyReads("full", CONDS, prescribed()).reads;
     expect(out.length).toBeGreaterThan(0);
     // endometriosis is coach_only, migraine is gated, Lp(a) has no map at all
     const titles = out.map((r) => r.title.toLowerCase()).join(" | ");
@@ -237,18 +237,18 @@ describe("deriveMindBodyReads — three gates, all failing closed", () => {
   });
 
   it("accepts the value however the coach's field is cased or padded", () => {
-    expect(deriveMindBodyReads("  Full  ", CONDS, prescribed()).length).toBeGreaterThan(0);
+    expect(deriveMindBodyReads("  Full  ", CONDS, prescribed()).reads.length).toBeGreaterThan(0);
   });
 
   it("never emits a card with no reading in it", () => {
-    for (const r of deriveMindBodyReads("full", CONDS, prescribed())) {
+    for (const r of deriveMindBodyReads("full", CONDS, prescribed()).reads) {
       expect(r.reframe.length).toBeGreaterThan(0);
       expect(r.title.length).toBeGreaterThan(0);
     }
   });
 
   it("carries the emotional roots — the connect is the point, not just the comfort", () => {
-    const [r] = deriveMindBodyReads("full", ["Constipation"], prescribed());
+    const [r] = deriveMindBodyReads("full", ["Constipation"], prescribed()).reads;
     expect(r.roots.length).toBeGreaterThan(0);
     expect(r.roots.length).toBeLessThanOrEqual(3);
     for (const root of r.roots) {
@@ -258,25 +258,65 @@ describe("deriveMindBodyReads — three gates, all failing closed", () => {
   });
 
   it("attaches the practice ONLY when the coach actually prescribed it", () => {
-    const withIt = deriveMindBodyReads("full", ["Constipation"], prescribed());
+    const withIt = deriveMindBodyReads("full", ["Constipation"], prescribed()).reads;
     expect(withIt[0].practiceSlug).toBe("gastrocolic-rhythm");
     expect(withIt[0].practice?.slug).toBe("gastrocolic-rhythm");
 
-    // same reading, nothing prescribed — the read still stands, the button doesn't
-    const without = deriveMindBodyReads("full", ["Constipation"], []);
+    // Not prescribed — the client can STILL do it. The map already passed the
+    // sensitivity gate and the client passed the depth gate; a third gate made
+    // the card a tease. `prescribed` now drives the label, not access.
+    const without = deriveMindBodyReads("full", ["Constipation"], []).reads;
     expect(without[0].reframe).toBe(withIt[0].reframe);
-    expect(without[0].practice).toBeNull();
-    expect(without[0].practiceSlug).toBe("gastrocolic-rhythm");
+    expect(without[0].practice).not.toBeNull();
+    expect(without[0].practice!.slug).toBe("gastrocolic-rhythm");
+    expect(without[0].prescribed).toBe(false);
+    expect(withIt[0].prescribed).toBe(true);
+    // a read-only run must never masquerade as a prescribed practice in the log
+    expect(without[0].practice!.practiceId).toMatch(/^read-/);
   });
 
   it("titles the card from the map, never from the coach's raw condition text", () => {
     const messy = "Constipation — ON TREATMENT (previously unreported) — lactulose 10ml";
-    const [r] = deriveMindBodyReads("full", [messy], []);
+    const [r] = deriveMindBodyReads("full", [messy], []).reads;
     expect(r.title).not.toContain("lactulose");
     expect(r.title).not.toMatch(/previously unreported/i);
   });
 
   it("is empty for a client whose conditions the book does not cover", () => {
-    expect(deriveMindBodyReads("full", ["Elevated Lp(a)", "Raised ApoB"], [])).toEqual([]);
+    expect(deriveMindBodyReads("full", ["Elevated Lp(a)", "Raised ApoB"], []).reads).toEqual([]);
+  });
+});
+
+/* The number that makes the section honest. 57% of matched reads across the
+   roster are withheld, and they are the named diagnoses — so what a client
+   sees is the symptom-level remainder. Saying nothing about that turns a
+   filtered view into a misleading one. */
+describe("withheldCount — what the client is not being shown", () => {
+  const prescribed = (): AppSomatic[] => {
+    const raw: Dict[] = [{ name: "belly rhythm", somatic_practice: "gastrocolic-rhythm" }];
+    return deriveSomatic(P(raw), raw);
+  };
+
+  it("counts a sensitive diagnosis that matched but cannot be shown", () => {
+    const out = deriveMindBodyReads("full", ["Hypertension", "Constipation"], prescribed());
+    expect(out.reads.map((r) => r.title.toLowerCase()).join(" ")).toContain("constipation");
+    expect(out.reads.some((r) => /blood pressure|hypertension/i.test(r.title))).toBe(false);
+    expect(out.withheldCount).toBeGreaterThan(0);
+  });
+
+  it("counts coach-only entries too", () => {
+    const out = deriveMindBodyReads("full", ["Endometriosis", "Fibroids"], []);
+    expect(out.reads).toEqual([]);
+    expect(out.withheldCount).toBe(2);
+  });
+
+  it("is zero when nothing was held back", () => {
+    expect(deriveMindBodyReads("full", ["Constipation"], []).withheldCount).toBe(0);
+  });
+
+  it("is zero — not a leak — when the gate is shut entirely", () => {
+    const out = deriveMindBodyReads("off", ["Hypertension", "Endometriosis"], []);
+    expect(out.reads).toEqual([]);
+    expect(out.withheldCount).toBe(0);
   });
 });
