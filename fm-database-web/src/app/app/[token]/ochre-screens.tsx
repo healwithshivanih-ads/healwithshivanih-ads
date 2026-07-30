@@ -9,7 +9,7 @@ import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/clie
 import { Icon, useOchre } from "./ochre-context";
 import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { MindBodyNudge } from "./ochre-eft";
-import { MindBodyEntryCard, MindBodyReadsSection, SomaticPrescribedLine } from "./ochre-mind-body";
+import { MindBodyEntryCard, MindBodyReadsSection } from "./ochre-mind-body";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
@@ -518,7 +518,12 @@ export function TodayScreen({
             {practices.map((p) => {
               const on = !!p.done;
               const isBreath = data.breathwork?.practiceId === p.id;
-              const hasDetails = !!p.details && !isBreath;
+              // A somatic-linked practice launches from ITS OWN row — the same
+              // pattern as breathing. It used to also render a separate
+              // "Chosen for you" card below, so every guided practice appeared
+              // TWICE on Today: once to tick, once to start. One row does both.
+              const somaticHere = data.somatic.find((sm) => sm.practiceId === p.id);
+              const hasDetails = !!p.details && !isBreath && !somaticHere;
               const expanded = openPractice.has(p.id);
               return (
                 <div key={p.id} className="practice-item">
@@ -541,6 +546,17 @@ export function TodayScreen({
                         }}
                       >
                         <Icon name="breath" size={13} /> Guide
+                      </span>
+                    ) : somaticHere ? (
+                      <span
+                        className="p-guide"
+                        role="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openSomatic(p.id);
+                        }}
+                      >
+                        <Icon name="sprout" size={13} /> Guide
                       </span>
                     ) : (
                       <span className="p-trailing">
@@ -583,14 +599,6 @@ export function TodayScreen({
               else if (route.somatic) openSomatic(route.somatic.practiceId);
             }}
           />
-          {data.somatic.map((s, i) => (
-            <SomaticPrescribedLine
-              key={s.practiceId}
-              somatic={s}
-              showKicker={i === 0}
-              onStart={() => openSomatic(s.practiceId)}
-            />
-          ))}
           {data.mindBody?.locked && (
             <MindBodyNudge
               nextUp={data.mindBody.nextUp}
@@ -1027,51 +1035,14 @@ export function PlanScreen({
 
       <PhaseRibbon />
 
-      {/* ---- do-this-daily actions first; learning lives further down ---- */}
-
-      <Section title="Your supplements">
-        <PlanSupplements />
-        <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-          Reorder links go to recommended brands. Tap any supplement for the why. Logging your daily doses lives on the Today tab.
-        </div>
-      </Section>
-
-      {data.coachPicks.length > 0 && (
-        <Section title="Shivani's picks for you">
-          <div className="card" style={{ overflow: "hidden" }}>
-            {data.coachPicks.map((p, i) => (
-              <div
-                key={`${p.title}-${i}`}
-                style={{
-                  padding: "11px 14px",
-                  borderBottom: i < data.coachPicks.length - 1 ? "1px solid var(--line, #ece7df)" : "none",
-                }}
-              >
-                <div style={{ fontWeight: 700, fontSize: 14 }}>
-                  {p.title}
-                  {p.forWhat && (
-                    <span style={{ fontWeight: 500, opacity: 0.7 }}> · for {p.forWhat}</span>
-                  )}
-                </div>
-                {p.note && <div style={{ fontSize: 12.5, opacity: 0.8, marginTop: 3 }}>{p.note}</div>}
-                {p.buyUrl && (
-                  <a
-                    href={p.buyUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 5, color: "var(--accent, #b8722c)", fontWeight: 600 }}
-                  >
-                    <Icon name="bag" size={13} /> Where to get it
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
-            A few extras Shivani picked for you — optional, not part of your daily routine.
-          </div>
+      {data.mindBodyReads.length > 0 && (
+        <Section title="The mind-body connection">
+          <MindBodyReadsSection reads={data.mindBodyReads} onStart={openSomatic} />
         </Section>
       )}
+
+
+      {/* ---- do-this-daily actions first; learning lives further down ---- */}
 
       {/* Daily practices + guided breathing now live on the Today tab only
           (2026-06-13) — they're a daily do, not plan reference, so showing
@@ -1082,9 +1053,23 @@ export function PlanScreen({
           carry ONE illustrative week → "Sample menu" (coach rule
           2026-06-11: week-by-week framing confuses hybrid clients). */}
       {data.weekMenus.length > 0 && (
-        <Section title={data.menuIsSample ? "Sample menu" : "This week's menu"}>
-          <WeekMenuSection openGrocery={openGrocery} openPortions={openPortions} />
-        </Section>
+        <details className="plan-collapse">
+          <summary>
+            <span className="pc-ico">
+              <Icon name="forkKnife" size={16} />
+            </span>
+            <span className="pc-body">
+              <span className="pc-title">{data.menuIsSample ? "Sample menu" : "This week's menu"}</span>
+              <span className="pc-sub">Every day&apos;s meals + the grocery list — tap to browse</span>
+            </span>
+            <span className="pc-chev">
+              <Icon name="chev" size={18} />
+            </span>
+          </summary>
+          <div className="plan-collapse-body">
+            <WeekMenuSection openGrocery={openGrocery} openPortions={openPortions} />
+          </div>
+        </details>
       )}
 
       {/* decode the household portions ("1 bowl", "½ cup", "1 katori") that
@@ -1201,12 +1186,6 @@ export function PlanScreen({
         </div>
       </Section>
 
-      {data.mindBodyReads.length > 0 && (
-        <Section title="The mind-body connection">
-          <MindBodyReadsSection reads={data.mindBodyReads} onStart={openSomatic} />
-        </Section>
-      )}
-
       {data.lessons.length > 0 && (
         <Section title="Learn">
           <div className="stack" style={{ gap: 10 }}>
@@ -1252,6 +1231,63 @@ export function PlanScreen({
           </div>
         </Section>
       )}
+
+      {data.coachPicks.length > 0 && (
+        <Section title="Shivani's picks for you">
+          <div className="card" style={{ overflow: "hidden" }}>
+            {data.coachPicks.map((p, i) => (
+              <div
+                key={`${p.title}-${i}`}
+                style={{
+                  padding: "11px 14px",
+                  borderBottom: i < data.coachPicks.length - 1 ? "1px solid var(--line, #ece7df)" : "none",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: 14 }}>
+                  {p.title}
+                  {p.forWhat && (
+                    <span style={{ fontWeight: 500, opacity: 0.7 }}> · for {p.forWhat}</span>
+                  )}
+                </div>
+                {p.note && <div style={{ fontSize: 12.5, opacity: 0.8, marginTop: 3 }}>{p.note}</div>}
+                {p.buyUrl && (
+                  <a
+                    href={p.buyUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 5, color: "var(--accent, #b8722c)", fontWeight: 600 }}
+                  >
+                    <Icon name="bag" size={13} /> Where to get it
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
+            A few extras Shivani picked for you — optional, not part of your daily routine.
+          </div>
+        </Section>
+      )}
+
+      {/* 💊 doses are logged on Today; this is the why + the reorder links —
+          an occasional read, so it lives with the other occasional tasks. */}
+      <details className="plan-collapse">
+        <summary>
+          <span className="pc-ico">
+            <Icon name="pill" size={16} />
+          </span>
+          <span className="pc-body">
+            <span className="pc-title">Your supplements</span>
+            <span className="pc-sub">What each one is for + reorder links — daily logging lives on Today</span>
+          </span>
+          <span className="pc-chev">
+            <Icon name="chev" size={18} />
+          </span>
+        </summary>
+        <div className="plan-collapse-body">
+          <PlanSupplements />
+        </div>
+      </details>
 
       {/* 🛒 one-sitting ordering checklist — moved to the bottom and
           collapsed (2026-06-13): reordering is an occasional task, not

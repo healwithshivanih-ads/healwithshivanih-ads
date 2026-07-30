@@ -83,43 +83,6 @@ export function MindBodyEntryCard({
   );
 }
 
-/* ---- the coach's specific prescription, on its own line ---------------- */
-
-/**
- * Deliberately lighter than the old dark launch card. It now sits under a
- * light entry card rather than beside a sage breathing card, so it no longer
- * needs a dark ground to hold its own — and Today is shorter for it.
- */
-export function SomaticPrescribedLine({
-  somatic,
-  onStart,
-  showKicker = true,
-}: {
-  somatic: AppSomatic;
-  onStart: () => void;
-  /** Only the first line is labelled — three repeats of the same kicker is
-   *  the kind of bulk that made Today too long in the first place. */
-  showKicker?: boolean;
-}) {
-  const mins = somatic.totalSeconds ? Math.max(1, Math.round(somatic.totalSeconds / 60)) : null;
-  const meta = [somatic.when, mins ? `about ${mins} min` : "", somatic.bilateral ? "both sides" : ""]
-    .filter(Boolean)
-    .join(" · ");
-  return (
-    <button type="button" className="mbe-rx" onClick={onStart}>
-      <span className="mbe-rx-dot" aria-hidden="true" />
-      <span className="mbe-rx-body">
-        {showKicker && <span className="mbe-rx-kicker">Chosen for you</span>}
-        <span className="mbe-rx-title">{somatic.name}</span>
-        <span className="mbe-rx-meta">{meta}</span>
-      </span>
-      <span className="mbe-rx-go">
-        <Icon name="play" size={13} /> Start
-      </span>
-    </button>
-  );
-}
-
 /* ---- the mind-body connection ------------------------------------------ */
 
 /**

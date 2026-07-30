@@ -25,7 +25,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { AppSomatic } from "@/lib/fmdb/somatic";
+import { BreathAudio } from "./ochre-breath-audio";
 import { Icon, useOchre } from "./ochre-context";
+import { SomaticFigure } from "./somatic-figures";
 import { breathCycle, FALLBACK_RENDERER, pacedFrame, SHAPE_RENDERERS, stepMode } from "./somatic-shapes";
 
 /* ---- overlay ----------------------------------------------------------
@@ -58,6 +60,30 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
 
   const step = steps[idx];
   const isChecklist = somatic.shape === "checklist" || !somatic.timed;
+  // Breath practices are done with the eyes closed, so the screen alone
+  // cannot pace them — the same synthesized drone + ocean-wave + bells as the
+  // 4-7-8 session carries the rhythm. One sound preference across the app:
+  // this reads and writes the SAME key as the breathing overlay.
+  const hasSound = somatic.shape === "breath_excursion";
+  const [soundOn, setSoundOn] = useState(() => {
+    try { return localStorage.getItem("ochre.breathSound") !== "0"; } catch { return true; }
+  });
+  const audioRef = useRef<BreathAudio | null>(null);
+  const lastAction = useRef("");
+  const audio = () => {
+    if (!audioRef.current) {
+      audioRef.current = new BreathAudio();
+      audioRef.current.setEnabled(soundOn);
+    }
+    return audioRef.current;
+  };
+  const toggleSound = () => {
+    const next = !soundOn;
+    setSoundOn(next);
+    audioRef.current?.setEnabled(next);
+    try { localStorage.setItem("ochre.breathSound", next ? "1" : "0"); } catch { /* private mode */ }
+  };
+  useEffect(() => () => { audioRef.current?.dispose(); audioRef.current = null; }, []);
   // A `rest` step is a task ("drink a full glass of warm water"), not a rhythm
   // — the client does it and taps Done. The countdown keeps running underneath
   // as a silent fallback so a phone set down never stalls the session.
@@ -65,7 +91,7 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
 
   const advance = () => {
     setIdx((i) => {
-      if (i + 1 >= steps.length) { setStatus("done"); return i; }
+      if (i + 1 >= steps.length) { setStatus("done"); audioRef.current?.finishChime(); return i; }
       setLeft(steps[i + 1].secs);
       return i + 1;
     });
@@ -81,7 +107,7 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
       setLeft((v) => {
         if (v > 1) return v - 1;
         setIdx((i) => {
-          if (i + 1 >= steps.length) { setStatus("done"); return i; }
+          if (i + 1 >= steps.length) { setStatus("done"); audioRef.current?.finishChime(); return i; }
           setLeft(steps[i + 1].secs);
           return i + 1;
         });
@@ -152,6 +178,21 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
           somatic.shape === "breath_excursion"
             ? pacedFrame(step?.action ?? "", total, stepElapsed.current, cycle)
             : { action: step?.action ?? "", p: Math.min(stepElapsed.current / Math.max(1, total), 1) };
+        if (hasSound && status === "running") {
+          // lungs-fullness mirror of drawBreath's scale, normalised 0..1
+          const a = paced.action;
+          const f =
+            a === "expand" ? paced.p
+            : a === "release" || a === "shrink" || a === "press" ? 1 - paced.p
+            : a === "hold" ? 1
+            : 0.5;
+          audioRef.current?.tick(f);
+          if (a !== lastAction.current) {
+            lastAction.current = a;
+            const bell = a === "expand" ? "expand" : a === "hold" ? "hold" : "shrink";
+            audioRef.current?.chime(bell);
+          }
+        }
         draw(c, w, h, {
           p: status === "running" ? paced.p : 0.5,
           t: (ms - startedAt.current) / 1000,
@@ -171,10 +212,21 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
       <button className="som-x" onClick={onClose} aria-label="Close">
         <Icon name="x" size={18} />
       </button>
+      {hasSound && status !== "intro" && status !== "done" && (
+        <button
+          className={"som-sound" + (soundOn ? "" : " off")}
+          onClick={toggleSound}
+          aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+          aria-pressed={soundOn}
+        >
+          <Icon name={soundOn ? "bell" : "bellOff"} size={17} />
+        </button>
+      )}
 
       {status === "intro" && (
         <div className="som-intro">
           <h2 className="som-h">{somatic.name}</h2>
+          <SomaticFigure slug={somatic.slug} />
           <p className="som-why">{somatic.why}</p>
           {/* The mind-body reading is deliberately NOT here. It belongs to a
               CONDITION, not to a practice: looking it up by practice sent
@@ -185,7 +237,13 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
           {somatic.equipment.length > 0 && (
             <p className="som-kit">You&apos;ll need: {somatic.equipment.join(", ")}</p>
           )}
-          <button className="som-cta" onClick={() => setStatus("running")}>
+          <button
+            className="som-cta"
+            onClick={() => {
+              if (hasSound) audio().start(); // iOS unlocks audio on this tap
+              setStatus("running");
+            }}
+          >
             {isChecklist ? "Show me the steps" : "Begin"}
           </button>
         </div>
@@ -230,7 +288,15 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
           <div className="som-dots" aria-hidden="true">
             {steps.map((_, i) => <span key={i} className={i <= idx ? "on" : ""} />)}
           </div>
-          <button className="som-pause" onClick={() => setStatus(status === "paused" ? "running" : "paused")}>
+          <button
+            className="som-pause"
+            onClick={() => {
+              const next = status === "paused" ? "running" : "paused";
+              if (next === "paused") audioRef.current?.suspend();
+              else audioRef.current?.resume();
+              setStatus(next);
+            }}
+          >
             {status === "paused" ? "Resume" : "Pause"}
           </button>
         </div>
