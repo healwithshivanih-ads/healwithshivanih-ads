@@ -1,0 +1,93 @@
+slug: cooked-apple-with-nutmeg-and-ghee
+name: Cooked Apple With Nutmeg And Ghee
+meal_type:
+- snack
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- apple, medium 1 (150 g), peeled, cored, cut into small pieces
+- ghee 1 tsp
+- nutmeg powder 1/8 tsp
+- water 2 tbsp
+contains_allergens: []
+ingredients:
+- item: apple, medium 1 (150 g), peeled, cored, cut into small pieces
+  qty: ''
+  unit: ''
+- item: ghee 1 tsp
+  qty: ''
+  unit: ''
+- item: nutmeg powder 1/8 tsp
+  qty: ''
+  unit: ''
+- item: water 2 tbsp
+  qty: ''
+  unit: ''
+steps:
+- Heat ghee in a small pan over low heat.
+- Add apple pieces and water.
+- Cover and cook for 4-5 min, stirring occasionally, until apple is soft and begins
+  to break down.
+- Sprinkle nutmeg powder and stir gently.
+- Cook uncovered for 1 more minute if needed to reduce any excess liquid.
+- Serve warm.
+servings: '2'
+one_line: Cooked Apple With Nutmeg And Ghee — a simple, home-style Indian recipe.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/cooked-apple-with-nutmeg-and-ghee.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: promoted from an AI-generated recipe — source a licensed/original photo before
+    external use
+sources:
+- id: shivani-hari-original
+  location: Cooked Apple With Nutmeg And Ghee
+version: 1
+status: active
+updated_at: '2026-07-30'
+updated_by: Shivani
+provenance: promoted_from_ai_pack
+nutrients_per_serving:
+  kcal: 74.5
+  protein_g: 0.3
+  carbs_g: 13.1
+  fat_g: 3.0
+  fibre_g: 2.4
+  iron_mg: 0.1
+  calcium_mg: 7.2
+  magnesium_mg: 6.3
+  zinc_mg: 0.1
+  potassium_mg: 99.8
+  folate_ug: 3.5
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 4.2
+  omega3_mg: 29.7
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-30'
+nutrient_lines:
+- i: 0
+  key: apple
+  g: 180.0
+- i: 1
+  key: ghee
+  g: 5.0
+- i: 2
+  key: nutmeg
+  g: 2.0
+- i: 3
+  key: water
+  g: 0.0
+nutrient_servings: 2.0

@@ -1,0 +1,93 @@
+slug: kodo-millet-cooked-soft
+name: Kodo Millet Cooked Soft
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- Kodo millet, 100 g
+- Water, 2 cups (480 ml)
+- Salt, to taste
+- Ghee, 1/2 tsp (optional)
+contains_allergens: []
+ingredients:
+- item: Kodo millet, 100 g
+  qty: ''
+  unit: ''
+- item: Water, 2 cups (480 ml)
+  qty: ''
+  unit: ''
+- item: Salt, to taste
+  qty: ''
+  unit: ''
+- item: Ghee, 1/2 tsp (optional)
+  qty: ''
+  unit: ''
+steps:
+- Rinse kodo millet thoroughly under running water.
+- In a pot, bring water to a boil with salt.
+- Add rinsed kodo millet.
+- Stir once, reduce heat to low, and cover.
+- Cook for 20-25 minutes until millet is completely soft and fully cooked.
+- Fluff with a fork, drizzle with ghee if using, and serve warm.
+servings: '2'
+one_line: Kodo Millet Cooked Soft — a simple, home-style Indian recipe.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/kodo-millet-cooked-soft.jpg
+  credit: web reference (auto-sourced)
+  source_url: ''
+  rights_status: none
+  note: promoted from an AI-generated recipe — source a licensed/original photo before
+    external use
+sources:
+- id: shivani-hari-original
+  location: Kodo Millet Cooked Soft
+version: 1
+status: active
+updated_at: '2026-07-30'
+updated_by: Shivani
+provenance: promoted_from_ai_pack
+nutrients_per_serving:
+  kcal: 55.6
+  protein_g: 0.9
+  carbs_g: 6.6
+  fat_g: 2.8
+  fibre_g: 0.6
+  iron_mg: 0.2
+  calcium_mg: 1.8
+  magnesium_mg: 12.2
+  zinc_mg: 0.2
+  potassium_mg: 14.4
+  folate_ug: 3.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 24.0
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-07-30'
+nutrient_lines:
+- i: 0
+  key: millet-kodo
+  g: 20.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: salt
+  g: 2.0
+- i: 3
+  key: ghee
+  g: 5.0
+nutrient_servings: 2.0
