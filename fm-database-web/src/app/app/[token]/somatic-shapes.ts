@@ -564,3 +564,25 @@ export function pacedFrame(
   const last = cycle[cycle.length - 1];
   return { action: last.action, p: 1 };
 }
+
+/* ---- which steps the client paces, and which pace the client ----------- */
+/*
+   "Drink a full glass of warm water" ran as a 60-second countdown with an
+   ambient animation — as if the client should sip while staring at the
+   screen. A step like that is a TASK: the app's job is to say it clearly and
+   wait. The animation earns its place only when the screen is pacing a
+   movement the client follows WHILE watching.
+
+   `rest` is the task action throughout the library (128 steps: "Lie down",
+   "Prepare the prop", "Lift one foot", "Morning warm water"), so those become
+   self-paced with a Done button. The step's duration is kept as a silent
+   auto-advance fallback — a phone put down mid-task must not stall the
+   session, and rest steps that mean "repeat on your own" (physiological-sigh)
+   still move on unaided.
+*/
+
+export type StepMode = "self_paced" | "guided";
+
+export function stepMode(action: string): StepMode {
+  return action === "rest" ? "self_paced" : "guided";
+}

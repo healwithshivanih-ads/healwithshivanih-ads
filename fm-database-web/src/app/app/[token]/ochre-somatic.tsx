@@ -26,7 +26,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { AppSomatic } from "@/lib/fmdb/somatic";
 import { Icon, useOchre } from "./ochre-context";
-import { breathCycle, FALLBACK_RENDERER, pacedFrame, SHAPE_RENDERERS } from "./somatic-shapes";
+import { breathCycle, FALLBACK_RENDERER, pacedFrame, SHAPE_RENDERERS, stepMode } from "./somatic-shapes";
 
 /* ---- overlay ----------------------------------------------------------
    The launch card that used to live here is now SomaticPrescribedLine in
@@ -58,6 +58,21 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
 
   const step = steps[idx];
   const isChecklist = somatic.shape === "checklist" || !somatic.timed;
+  // A `rest` step is a task ("drink a full glass of warm water"), not a rhythm
+  // — the client does it and taps Done. The countdown keeps running underneath
+  // as a silent fallback so a phone set down never stalls the session.
+  const selfPaced = !isChecklist && stepMode(step?.action ?? "") === "self_paced";
+
+  const advance = () => {
+    setIdx((i) => {
+      if (i + 1 >= steps.length) { setStatus("done"); return i; }
+      setLeft(steps[i + 1].secs);
+      return i + 1;
+    });
+  };
+
+  // Long paced steps show minutes, not a raw 213.
+  const fmt = (v: number) => (v >= 60 ? `${Math.floor(v / 60)}:${String(v % 60).padStart(2, "0")}` : String(v));
 
   /* countdown */
   useEffect(() => {
@@ -108,7 +123,7 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
     lastFrame.current = 0;
   }, [idx, somatic.slug]);
   useEffect(() => {
-    if (isChecklist) return;
+    if (isChecklist || selfPaced) return;
     const el = cv.current;
     if (!el) return;
     const draw = SHAPE_RENDERERS[somatic.shape] ?? FALLBACK_RENDERER;
@@ -147,7 +162,7 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
     };
     raf = requestAnimationFrame(render);
     return () => cancelAnimationFrame(raf);
-  }, [somatic.shape, somatic.bilateral, step, left, status, reduce, isChecklist, cycle]);
+  }, [somatic.shape, somatic.bilateral, step, left, status, reduce, isChecklist, selfPaced, cycle]);
 
   const restart = () => { stepElapsed.current = 0; setIdx(0); setLeft(steps[0]?.secs ?? 0); setStatus("running"); };
 
@@ -188,13 +203,29 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
         </div>
       )}
 
-      {status !== "intro" && status !== "done" && !isChecklist && (
+      {status !== "intro" && status !== "done" && !isChecklist && selfPaced && (
+        <div className="som-stage">
+          <div className="som-instr">
+            <span className="som-label">{step?.label}</span>
+            <p className="som-instr-text">{step?.cue}</p>
+          </div>
+          <button className="som-cta" onClick={advance}>
+            Done — {idx + 1 >= steps.length ? "finish" : "continue"}
+          </button>
+          <span className="som-auto">or it moves on by itself in {fmt(left)}</span>
+          <div className="som-dots" aria-hidden="true">
+            {steps.map((_, i) => <span key={i} className={i <= idx ? "on" : ""} />)}
+          </div>
+        </div>
+      )}
+
+      {status !== "intro" && status !== "done" && !isChecklist && !selfPaced && (
         <div className="som-stage">
           <canvas ref={cv} className="som-canvas" />
           <div className="som-cue">
             <span className="som-label">{step?.label}</span>
             <span className="som-text">{step?.cue}</span>
-            <span className="som-count">{left}</span>
+            <span className="som-count">{fmt(left)}</span>
           </div>
           <div className="som-dots" aria-hidden="true">
             {steps.map((_, i) => <span key={i} className={i <= idx ? "on" : ""} />)}

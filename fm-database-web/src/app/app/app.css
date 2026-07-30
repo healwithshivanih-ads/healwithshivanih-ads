@@ -2059,11 +2059,36 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 }
 .mbr-card {
   background: var(--paper-2); border-radius: var(--r-card);
-  padding: 15px 16px 14px; margin-bottom: 10px;
+  padding: 0; margin-bottom: 10px; overflow: hidden;
   border-left: 3px solid rgba(169,101,31,0.35);
 }
+.mbr-head {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 14px 16px; border: none; background: none; cursor: pointer;
+  text-align: left; font: inherit;
+}
+.mbr-card.open .mbr-head { padding-bottom: 4px; }
+.mbr-chev {
+  margin-left: auto; flex-shrink: 0; width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 999px; background: rgba(169,101,31,0.12);
+  color: var(--ochre-deep); font-size: 16px; font-weight: 600;
+}
+.mbr-body { padding: 0 16px 15px; }
+.mbr-sub {
+  display: block; margin: 13px 0 5px;
+  font-size: 10px; font-weight: 600; letter-spacing: 1.1px; text-transform: uppercase;
+  color: var(--ochre);
+}
+.mbr-root { margin: 0 0 8px; font-size: 13.5px; line-height: 1.6; color: var(--ink); }
+.mbr-root strong { font-weight: 600; }
+.mbr-ask {
+  margin: 12px 0 0; font-size: 13px; line-height: 1.55; color: var(--muted);
+  padding: 10px 12px; border-radius: 12px; background: var(--paper);
+  border: 1px dashed rgba(169,101,31,0.3);
+}
 .mbr-title {
-  margin: 0 0 8px; font-family: var(--serif); font-weight: 400;
+  margin: 0; font-family: var(--serif); font-weight: 400;
   font-size: 16.5px; line-height: 1.3; color: var(--ink);
 }
 .mbr-reframe {
@@ -2166,6 +2191,13 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .som-list li span { color: rgba(242,237,226,.65); }
 
 .som-stage { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 360px; }
+/* a task step: say it clearly and wait — no countdown to stare at */
+.som-instr { text-align: center; margin-bottom: 26px; }
+.som-instr-text {
+  font-family: var(--serif); font-size: 19px; line-height: 1.55;
+  color: #f2ede2; margin: 10px 0 0; max-width: 300px;
+}
+.som-auto { font-size: 12px; color: rgba(242,237,226,.42); margin-top: 12px; }
 .som-canvas { width: 260px; height: 260px; display: block; }
 .som-cue { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 6px; text-align: center; }
 .som-label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(242,237,226,.5); }

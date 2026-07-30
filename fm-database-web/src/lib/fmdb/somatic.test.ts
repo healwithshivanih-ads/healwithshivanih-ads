@@ -247,6 +247,16 @@ describe("deriveMindBodyReads — three gates, all failing closed", () => {
     }
   });
 
+  it("carries the emotional roots — the connect is the point, not just the comfort", () => {
+    const [r] = deriveMindBodyReads("full", ["Constipation"], prescribed());
+    expect(r.roots.length).toBeGreaterThan(0);
+    expect(r.roots.length).toBeLessThanOrEqual(3);
+    for (const root of r.roots) {
+      expect(root.pattern.length).toBeGreaterThan(0);
+      expect(root.note.length).toBeGreaterThan(0);
+    }
+  });
+
   it("attaches the practice ONLY when the coach actually prescribed it", () => {
     const withIt = deriveMindBodyReads("full", ["Constipation"], prescribed());
     expect(withIt[0].practiceSlug).toBe("gastrocolic-rhythm");

@@ -19,7 +19,7 @@
 import { useState } from "react";
 
 import type { AppMindBodyRead, AppSomatic } from "@/lib/fmdb/somatic";
-import { Icon } from "./ochre-context";
+import { Icon, useOchre } from "./ochre-context";
 import { routableFeelings, type Available, type FeelingKey, type Route } from "./mind-body-routing";
 
 const ICON_FOR: Record<Route["kind"], string> = {
@@ -120,19 +120,21 @@ export function SomaticPrescribedLine({
   );
 }
 
-/* ---- what the book says about the client's own conditions -------------- */
+/* ---- the mind-body connection ------------------------------------------ */
 
 /**
- * The mind-body read.
+ * The aha moment: for the condition the client actually lives with, the
+ * emotional pattern the book associates with it, a kinder way to hold it, one
+ * question to sit with — and then a DOABLE way through, their practice.
  *
- * The single failure mode this whole layer guards against is an ASSOCIATION
- * being read as a CAUSE — "my grief gave me fibroids". The framing line is
- * therefore not decoration: it says, before anything else is read, that these
- * are invitations to notice and not explanations for why something happened.
- * Do not soften it into a claim.
+ * Structured as a reveal, not a wall: collapsed cards showing only the
+ * condition's evocative title; tapping one unfolds the reading. The unfold IS
+ * the moment, so nothing inside it competes — one insight per screen.
  *
- * Content reaches here only after three gates in `deriveMindBodyReads`, so
- * this component renders whatever it is handed.
+ * The single failure mode this layer guards against is an ASSOCIATION being
+ * read as a CAUSE ("my grief gave me fibroids"). The framing line is therefore
+ * not decoration, and the roots shown are only ever from `general` maps, whose
+ * source notes are themselves hedged. Do not sharpen either into a claim.
  */
 export function MindBodyReadsSection({
   reads,
@@ -141,38 +143,85 @@ export function MindBodyReadsSection({
   reads: AppMindBodyRead[];
   onStart: (practiceId: string) => void;
 }) {
+  const coachFirst = useOchre().coach.name.split(" ")[0];
+  // the first read is the client's first-listed condition — open the door
+  const [openTitle, setOpenTitle] = useState<string | null>(reads[0]?.title ?? null);
   if (!reads.length) return null;
+
+  const pretty = (slug: string) =>
+    slug.replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase());
+
   return (
     <div className="mbr">
       <p className="mbr-intro">
-        A gentle way of looking at what your body might be holding. These are
+        The body often carries what the mind is still working through. These are
         invitations to notice — never an explanation for why something happened.
       </p>
-      {reads.map((r) => (
-        <div key={r.title} className="mbr-card">
-          <h4 className="mbr-title">{r.title}</h4>
-          <p className="mbr-reframe">{r.reframe}</p>
-          {r.question && (
-            <p className="mbr-q">
-              <span className="mbr-q-mark" aria-hidden="true">
-                <Icon name="sparkle" size={12} />
-              </span>
-              {r.question}
-            </p>
-          )}
-          {r.practice && (
+      {reads.map((r) => {
+        const open = openTitle === r.title;
+        return (
+          <div key={r.title} className={"mbr-card" + (open ? " open" : "")}>
             <button
               type="button"
-              className="mbr-go"
-              onClick={() => onStart(r.practice!.practiceId)}
+              className="mbr-head"
+              aria-expanded={open}
+              onClick={() => setOpenTitle(open ? null : r.title)}
             >
-              <Icon name="play" size={13} />
-              {r.practice.name}
-              <span className="mbr-go-sub">a few minutes, guided</span>
+              <h4 className="mbr-title">{r.title}</h4>
+              <span className="mbr-chev" aria-hidden="true">{open ? "−" : "+"}</span>
             </button>
-          )}
-        </div>
-      ))}
+
+            {open && (
+              <div className="mbr-body">
+                {r.roots.length > 0 && (
+                  <>
+                    <span className="mbr-sub">What your body may be saying</span>
+                    {r.roots.map((root) => (
+                      <p key={root.pattern} className="mbr-root">
+                        <strong>{root.pattern}.</strong> {root.note}
+                      </p>
+                    ))}
+                  </>
+                )}
+
+                <span className="mbr-sub">A kinder way to hold it</span>
+                <p className="mbr-reframe">{r.reframe}</p>
+
+                {r.question && (
+                  <p className="mbr-q">
+                    <span className="mbr-q-mark" aria-hidden="true">
+                      <Icon name="sparkle" size={12} />
+                    </span>
+                    {r.question}
+                  </p>
+                )}
+
+                {r.practice ? (
+                  <>
+                    <span className="mbr-sub">A doable way through</span>
+                    <button
+                      type="button"
+                      className="mbr-go"
+                      onClick={() => onStart(r.practice!.practiceId)}
+                    >
+                      <Icon name="play" size={13} />
+                      {r.practice.name}
+                      <span className="mbr-go-sub">a few minutes, guided</span>
+                    </button>
+                  </>
+                ) : (
+                  r.practiceSlug && (
+                    <p className="mbr-ask">
+                      There&apos;s a practice for this — <strong>{pretty(r.practiceSlug)}</strong>.
+                      Ask {coachFirst} about adding it to your plan.
+                    </p>
+                  )
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

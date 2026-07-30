@@ -1202,7 +1202,7 @@ export function PlanScreen({
       </Section>
 
       {data.mindBodyReads.length > 0 && (
-        <Section title="Understanding your body">
+        <Section title="The mind-body connection">
           <MindBodyReadsSection reads={data.mindBodyReads} onStart={openSomatic} />
         </Section>
       )}

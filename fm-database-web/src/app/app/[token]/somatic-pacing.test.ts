@@ -17,7 +17,7 @@ import { describe, it, expect } from "vitest";
 import yaml from "js-yaml";
 
 import { getCataloguePath } from "@/lib/fmdb/paths";
-import { breathCycle, isPaceable, LONG_STEP_SECS, pacedFrame } from "./somatic-shapes";
+import { breathCycle, isPaceable, LONG_STEP_SECS, pacedFrame, stepMode } from "./somatic-shapes";
 
 type Step = { secs: number | null; action: string };
 
@@ -183,5 +183,22 @@ describe("the practices this was broken for", () => {
       expect(r.action, `${action} was paced`).toBe(action);
       expect(r.p).toBeCloseTo(0.5, 5);
     }
+  });
+});
+
+describe("stepMode — tasks are tapped through, rhythms are followed", () => {
+  it("makes rest steps self-paced — 'drink warm water' is a task, not a countdown", () => {
+    expect(stepMode("rest")).toBe("self_paced");
+  });
+
+  it("keeps every movement guided", () => {
+    for (const a of ["expand", "release", "press", "hold", "circle", "tap", "observe", "massage"]) {
+      expect(stepMode(a), `${a} should stay guided`).toBe("guided");
+    }
+  });
+
+  it("gastrocolic-rhythm opens with two tasks, then three guided steps", () => {
+    const modes = practice("gastrocolic-rhythm").steps.map((s) => stepMode(s.action));
+    expect(modes).toEqual(["self_paced", "self_paced", "guided", "guided", "guided"]);
   });
 });

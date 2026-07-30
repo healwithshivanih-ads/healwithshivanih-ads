@@ -188,7 +188,14 @@ export interface AppMindBodyRead {
    *  Not Letting Go" — NOT the coach's raw condition string, which carries
    *  clinical shorthand ("ON TREATMENT (previously unreported) — Telma 40") */
   title: string;
-  /** the belief-level reframe; this is the reading itself */
+  /**
+   * The emotional patterns the book associates with this condition — the
+   * connect itself. Every note in a `general` map is hedged in the source
+   * ("frequently observed association", "an association to explore, not a
+   * cause to assert"); that hedging is why they are showable at all.
+   */
+  roots: { pattern: string; note: string }[];
+  /** the belief-level reframe; the kinder way to hold it */
   reframe: string;
   /** the one reflective question, or empty */
   question: string;
@@ -230,6 +237,7 @@ export function deriveMindBodyReads(
     if (!reframe) continue;
     out.push({
       title: r.displayName || r.condition,
+      roots: r.roots.filter((x) => x.pattern.trim()).slice(0, 3),
       reframe,
       question: r.inquiryQuestion.trim(),
       practice: bySlug.get(r.somaticPractice) ?? null,
