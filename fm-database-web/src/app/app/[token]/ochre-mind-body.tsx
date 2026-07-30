@@ -20,6 +20,7 @@ import { useState } from "react";
 
 import type { AppMindBodyRead, AppSomatic } from "@/lib/fmdb/somatic";
 import { Icon, useOchre } from "./ochre-context";
+import { RootsMotif } from "./mind-body-motif";
 import { routableFeelings, type Available, type FeelingKey, type Route } from "./mind-body-routing";
 
 const ICON_FOR: Record<Route["kind"], string> = {
@@ -120,6 +121,7 @@ export function MindBodyReadsSection({
         The body often carries what the mind is still working through. These are
         invitations to notice — never an explanation for why something happened.
       </p>
+      <RootsMotif />
       {reads.map((r) => {
         const open = openTitle === r.title;
         return (

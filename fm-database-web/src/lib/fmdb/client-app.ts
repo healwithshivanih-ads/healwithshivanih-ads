@@ -233,6 +233,7 @@ import {
   displayTiming,
 } from "./client-app-format";
 import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
+import { clientNounToPronoun } from "./client-app-third-person";
 import { stripEvidenceHedging } from "./client-app-evidence-hedge";
 
 export interface AppMealExtra {
@@ -2561,6 +2562,12 @@ function appMenuToWeekTables(menu: Dict): WeekTable[] {
  *  about herself there), so the conversion is unambiguous. */
 function toSecondPerson(input: string): string {
   let t = input || "";
+  // "This client's anxiety…" is the coach talking ABOUT someone to herself,
+  // and it reached a real client's screen on the tissue-salt card. Normalise
+  // the noun to a pronoun FIRST so every rule below — verb agreement,
+  // possessives, re-capitalisation — applies to it unchanged, rather than
+  // bolting on a second half-tested path.
+  t = clientNounToPronoun(t);
   // contractions first
   t = t
     .replace(/\b(?:she|he)['’]s\b/gi, "you're")
@@ -5444,7 +5451,11 @@ export async function loadClientAppData(
           )}&rcode=WNB6015`;
           return {
             name: cat?.name ?? humanize(slug),
-            reason: asStr(it.reason).trim(),
+            // Coach-written rationale — same leak class as supplement
+            // coach_rationale, so it goes through the same scrub. It was
+            // rendered raw, which put "This client's anxiety, chronic
+            // sleeplessness…" on a client's own plan screen.
+            reason: clientifyWhy(asStr(it.reason).trim()),
             how: asStr(it.typical_use).trim() || (cat?.how ?? ""),
             buyUrl: international ? intlBuyUrl : (cat?.buyUrl ?? ""),
           };

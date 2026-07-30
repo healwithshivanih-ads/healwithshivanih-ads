@@ -61,6 +61,13 @@
   --forest-tint: rgba(74, 97, 82, 0.10);
   --forest-tint-2: rgba(74, 97, 82, 0.16);
   --ochre-tint:  rgba(169, 101, 31, 0.10);
+  /* The mind-body layer's own hue — a muted loam-plum. Chosen to sit BELOW
+     forest and ochre rather than beside them: this section is the "what's
+     underneath" of the app, and a third bright accent would have read as
+     patchwork. Low saturation keeps it a ground, never a highlight. */
+  --inner:       #5c4658;
+  --inner-tint:  rgba(92, 70, 88, 0.09);
+  --inner-line:  rgba(92, 70, 88, 0.22);
   --line:        rgba(38, 34, 25, 0.09);
   --line-soft:   rgba(38, 34, 25, 0.055);
 
@@ -2054,14 +2061,31 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
    rather than an instruction — hence serif, generous line-height, and no
    filled buttons except the one that starts the practice. */
 .mbr-intro {
-  margin: 0 0 12px; padding: 0 2px;
+  margin: 0 0 2px; padding: 0 2px;
   font-size: 12.5px; line-height: 1.6; color: var(--muted);
 }
-.mbr-card {
-  background: var(--paper-2); border-radius: var(--r-card);
-  padding: 0; margin-bottom: 10px; overflow: hidden;
-  border-left: 3px solid rgba(169,101,31,0.35);
+
+/* the roots motif — the section's signature, drawn not loaded */
+.mbr-motif { display: block; margin: 4px auto 12px; overflow: visible; }
+.mbr-motif-soil {
+  stroke: var(--inner-line); stroke-width: 1; fill: none;
+  stroke-dasharray: 2 5; opacity: .75;
 }
+.mbr-motif-root {
+  fill: none; stroke: var(--inner); stroke-opacity: .34;
+  stroke-width: 1.3; stroke-linecap: round;
+}
+.mbr-motif-root--main { stroke-width: 2; stroke-opacity: .46; }
+.mbr-motif-root--fine { stroke-width: .9; stroke-opacity: .22; }
+.mbr-motif-tip { fill: var(--inner); fill-opacity: .38; }
+.mbr-card {
+  background: linear-gradient(180deg, var(--paper-2) 0%, var(--inner-tint) 100%);
+  border-radius: var(--r-card);
+  padding: 0; margin-bottom: 10px; overflow: hidden;
+  border-left: 3px solid var(--inner-line);
+  transition: border-color .18s ease;
+}
+.mbr-card.open { border-left-color: var(--inner); }
 .mbr-head {
   display: flex; align-items: center; gap: 10px; width: 100%;
   padding: 14px 16px; border: none; background: none; cursor: pointer;
@@ -2071,21 +2095,21 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .mbr-chev {
   margin-left: auto; flex-shrink: 0; width: 26px; height: 26px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: 999px; background: rgba(169,101,31,0.12);
-  color: var(--ochre-deep); font-size: 16px; font-weight: 600;
+  border-radius: 999px; background: var(--inner-tint);
+  color: var(--inner); font-size: 16px; font-weight: 600;
 }
 .mbr-body { padding: 0 16px 15px; }
 .mbr-sub {
   display: block; margin: 13px 0 5px;
   font-size: 10px; font-weight: 600; letter-spacing: 1.1px; text-transform: uppercase;
-  color: var(--ochre);
+  color: var(--inner);
 }
 .mbr-root { margin: 0 0 8px; font-size: 13.5px; line-height: 1.6; color: var(--ink); }
 .mbr-root strong { font-weight: 600; }
 .mbr-ask {
   margin: 12px 0 0; font-size: 13px; line-height: 1.55; color: var(--muted);
   padding: 10px 12px; border-radius: 12px; background: var(--paper);
-  border: 1px dashed rgba(169,101,31,0.3);
+  border: 1px dashed var(--inner-line);
 }
 .mbr-title {
   margin: 0; font-family: var(--serif); font-weight: 400;
@@ -2098,10 +2122,10 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .mbr-q {
   display: flex; gap: 7px; align-items: flex-start;
   margin: 11px 0 0; padding-top: 11px;
-  border-top: 1px solid rgba(38,34,25,0.08);
+  border-top: 1px solid var(--inner-line);
   font-size: 13.5px; line-height: 1.55; font-style: italic; color: var(--muted);
 }
-.mbr-q-mark { flex-shrink: 0; margin-top: 3px; color: var(--ochre); }
+.mbr-q-mark { flex-shrink: 0; margin-top: 3px; color: var(--inner); }
 .mbr-go {
   display: inline-flex; align-items: baseline; gap: 7px; flex-wrap: wrap;
   margin-top: 13px; border: none; cursor: pointer; text-align: left;
