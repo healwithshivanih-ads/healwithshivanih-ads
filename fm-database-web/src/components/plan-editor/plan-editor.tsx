@@ -16,6 +16,7 @@ import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 // ProtocolTemplatePicker removed — superseded by the unified AttachedProtocolsPanel
 // on the plan edit page, which handles both protocol selection and content seeding.
+import { PracticeLoadNote } from "./practice-load-note";
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
 import { RecipeSuggestionsCard } from "./recipe-suggestions-card";
@@ -2157,6 +2158,10 @@ export function PlanEditor(props: PlanEditorProps) {
                 )}
               </summary>
               <div className="pt-3 space-y-3 px-1">
+                {/* What this plan actually asks of the client's day. A
+                    14-practice plan shipped because every row looked the same
+                    size on screen. */}
+                <PracticeLoadNote practices={lifestyle} />
                 {lifestyle.map((p, i) => (
                   <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
                     <div className="flex gap-2">
