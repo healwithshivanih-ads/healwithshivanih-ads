@@ -330,6 +330,11 @@ export interface AppRemedy {
   suppTiming?: string;
   when?: string;
   why?: string;
+  /** Coach's per-client handling for THIS remedy (plan.nutrition.home_remedy_notes),
+   *  e.g. "serve warm with cardamom to counter its dry-light quality". The
+   *  catalogue record is shared by every client, so anything true of this one
+   *  person lives on the plan and is shown beneath the standard preparation. */
+  coachNote?: string;
   /** True when the remedy should appear BEFORE the first meal (empty-stomach drinks like methi water). */
   beforeBreakfast?: boolean;
 }
@@ -4027,6 +4032,12 @@ export async function loadClientAppData(
   const ayur = (plan.ayurveda as Dict) ?? {};
   const ayurRemedySlugs = asStrArr(ayur.remedies);
   const assignedSlugs = [...new Set([...dailyRemedySlugs, ...ayurRemedySlugs])];
+  // Coach's per-client handling for an assigned remedy, keyed by slug. The
+  // catalogue record is shared by everyone, so client-specific instructions
+  // ("serve warm with cardamom", "add ashwagandha from week 5") live on the
+  // plan. Before this field they were written as a separate freeform practice,
+  // which prescribed the same drink a second time.
+  const remedyNotes = (nutrition.home_remedy_notes ?? {}) as Record<string, unknown>;
   // Letter remedy blurbs retired — catalogue copy (preparation/timing/benefit
   // on the remedy record) is the client-facing text.
   const blurbFor = (_r: AppRemedy): LetterRemedyBlurb | undefined => undefined;
@@ -4048,6 +4059,9 @@ export async function loadClientAppData(
       suppTiming: bedtime ? "Before bed" : "Morning",
       when: bedtime ? "Bedtime" : /between meals|through the day/i.test(`${base.timing} ${blurb?.how ?? ""}`) ? "Between meals" : /morning/i.test(base.timing) ? "Morning" : "Daily",
       why: blurb?.what || firstSentence(base.summary),
+      ...(asStr(remedyNotes[slug]).trim()
+        ? { coachNote: clientifyPracticeDetail(asStr(remedyNotes[slug]).trim()) }
+        : {}),
       ...(beforeBreakfast ? { beforeBreakfast: true } : {}),
     });
   }

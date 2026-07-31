@@ -587,6 +587,16 @@ export function RecipeAccordion({ recipes }: { recipes: AppRecipe[] }) {
 
 // ── remedy detail ────────────────────────────────────────────────────────────
 
+/** Render **bold** in a coach-written note. She uses it for the part that
+ *  matters most ("**Serve WARM (not cold or iced)**" — the Vata mitigation
+ *  that makes a cooling tea safe for a Vata-aggravated client), so the markers
+ *  must not reach the client as literal asterisks. */
+function withEmphasis(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : <span key={i}>{part}</span>,
+  );
+}
+
 export function RemedyOverlay({ remedy, onClose }: { remedy: AppRemedy; onClose: () => void }) {
   const data = useOchre();
   const r = remedy;
@@ -697,6 +707,17 @@ export function RemedyOverlay({ remedy, onClose }: { remedy: AppRemedy; onClose:
                 </li>
               ))}
             </ol>
+            {/* The coach's handling for THIS client, under the standard method —
+                the catalogue steps are the same for everyone, this part is not. */}
+            {r.coachNote && (
+              <div className="rmd-why" style={{ marginTop: 10 }}>
+                <Icon name="leaf" size={14} />{" "}
+                <span>
+                  <strong>{firstName}&rsquo;s note for you.</strong>{" "}
+                  {withEmphasis(r.coachNote)}
+                </span>
+              </div>
+            )}
             <div className="rmd-meta">
               {r.dose && (
                 <div className="rmd-meta-row">

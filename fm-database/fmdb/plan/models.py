@@ -1025,6 +1025,19 @@ class NutritionPlan(BaseModel):
     meal_timing: str = ""
     cooking_adjustments: list[str] = Field(default_factory=list)  # CookingAdjustment slugs
     home_remedies: list[str] = Field(default_factory=list)        # HomeRemedy slugs
+    # Per-client handling for an assigned remedy, keyed by its slug. The
+    # catalogue record is shared across every client, so anything true of THIS
+    # client only lives here: "serve warm with cardamom and a little ghee to
+    # counter its dry-light quality" (Vata-vikruti), "add 1/4 tsp ashwagandha
+    # from week 5". Rendered on the client's remedy card beneath the catalogue
+    # preparation.
+    #
+    # This field exists because that detail used to be written as a SEPARATE
+    # freeform lifestyle_practice, which prescribed the same drink twice and
+    # buried the app's swap-option framing (cl-005, 2026-07). Keys may name a
+    # slug from home_remedies OR from ayurveda.remedies — one map serves both,
+    # since the app unions those lists anyway.
+    home_remedy_notes: dict[str, str] = Field(default_factory=dict)
     custom_remedies: list[CustomRemedy] = Field(default_factory=list)  # bespoke per-client
     # Coach-pinned recipes for THIS client's plan (slugs from data/_recipes/).
     # The meal-plan letter surfaces these FIRST as "coach-selected", then fills
