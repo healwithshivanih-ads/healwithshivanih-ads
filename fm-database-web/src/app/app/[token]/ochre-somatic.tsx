@@ -60,11 +60,16 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
 
   const step = steps[idx];
   const isChecklist = somatic.shape === "checklist" || !somatic.timed;
-  // Breath practices are done with the eyes closed, so the screen alone
-  // cannot pace them — the same synthesized drone + ocean-wave + bells as the
-  // 4-7-8 session carries the rhythm. One sound preference across the app:
+  // EVERY guided practice gets sound, not just breathing. A client doing knee
+  // softening with their eyes closed had no idea when the step changed, so the
+  // screen had to be watched — which defeats the practice. The drone holds the
+  // space, a bell marks each step boundary, and a three-note rise says it is
+  // over. Only the ocean-wave is breath-specific: it follows lungs-fullness,
+  // which is meaningless for a shape that is not a breath, so it simply never
+  // gets ticked and stays silent. One sound preference across the whole app —
   // this reads and writes the SAME key as the breathing overlay.
-  const hasSound = somatic.shape === "breath_excursion";
+  const hasSound = !isChecklist && somatic.timed;
+  const breathPaced = somatic.shape === "breath_excursion";
   const [soundOn, setSoundOn] = useState(() => {
     try { return localStorage.getItem("ochre.breathSound") !== "0"; } catch { return true; }
   });
@@ -148,6 +153,15 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
     stepElapsed.current = 0;
     lastFrame.current = 0;
   }, [idx, somatic.slug]);
+
+  // The step-boundary bell — the cue that lets the eyes stay shut. Breathing
+  // additionally chimes each phase WITHIN a step, above.
+  const chimedStep = useRef(-1);
+  useEffect(() => {
+    if (!hasSound || status !== "running" || chimedStep.current === idx) return;
+    chimedStep.current = idx;
+    if (idx > 0) audioRef.current?.chime(steps[idx]?.action ?? "hold");
+  }, [idx, status, hasSound, steps]);
   useEffect(() => {
     if (isChecklist || selfPaced) return;
     const el = cv.current;
@@ -178,7 +192,7 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
           somatic.shape === "breath_excursion"
             ? pacedFrame(step?.action ?? "", total, stepElapsed.current, cycle)
             : { action: step?.action ?? "", p: Math.min(stepElapsed.current / Math.max(1, total), 1) };
-        if (hasSound && status === "running") {
+        if (breathPaced && hasSound && status === "running") {
           // lungs-fullness mirror of drawBreath's scale, normalised 0..1
           const a = paced.action;
           const f =
@@ -288,17 +302,27 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
           <div className="som-dots" aria-hidden="true">
             {steps.map((_, i) => <span key={i} className={i <= idx ? "on" : ""} />)}
           </div>
-          <button
-            className="som-pause"
-            onClick={() => {
-              const next = status === "paused" ? "running" : "paused";
-              if (next === "paused") audioRef.current?.suspend();
-              else audioRef.current?.resume();
-              setStatus(next);
-            }}
-          >
-            {status === "paused" ? "Resume" : "Pause"}
-          </button>
+          {/* Pause AND next. 48% of guided steps run 30s or longer, and a
+              client who has finished "notice how you are holding your knees"
+              in five seconds should not be made to watch a timer for
+              thirty-five. The countdown still auto-advances; this just lets
+              her go when she is ready. */}
+          <div className="som-controls">
+            <button
+              className="som-pause"
+              onClick={() => {
+                const next = status === "paused" ? "running" : "paused";
+                if (next === "paused") audioRef.current?.suspend();
+                else audioRef.current?.resume();
+                setStatus(next);
+              }}
+            >
+              {status === "paused" ? "Resume" : "Pause"}
+            </button>
+            <button className="som-next" onClick={advance}>
+              {idx + 1 >= steps.length ? "Finish" : "Next"} <Icon name="arrowRight" size={14} />
+            </button>
+          </div>
         </div>
       )}
 

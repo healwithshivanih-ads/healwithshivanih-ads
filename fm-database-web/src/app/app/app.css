@@ -2244,7 +2244,14 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .som-dots { display: flex; gap: 6px; margin-top: 14px; }
 .som-dots span { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,.18); }
 .som-dots span.on { background: rgba(240,201,138,.8); }
+.som-controls { display: flex; gap: 10px; align-items: center; margin-top: 18px; }
 .som-pause {
-  margin-top: 18px; border: none; background: rgba(255,255,255,.1); color: #f2ede2;
+  border: none; background: rgba(255,255,255,.1); color: #f2ede2;
   font-size: 14px; padding: 9px 22px; border-radius: var(--r-pill); cursor: pointer;
 }
+.som-next {
+  display: inline-flex; align-items: center; gap: 6px; border: none; cursor: pointer;
+  background: rgba(240,201,138,.9); color: #2a1e0d;
+  font-size: 14px; font-weight: 600; padding: 9px 20px; border-radius: var(--r-pill);
+}
+.som-next:active, .som-pause:active { transform: scale(.99); }
