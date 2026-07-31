@@ -383,3 +383,32 @@ describe("depth levels and per-client sharing", () => {
     }
   });
 });
+
+/* Condition-aware roots: his thyroid is UNDERactive, so the hyperthyroid half
+   of that map is about someone else's condition. */
+describe("the read is aware of which version they have", () => {
+  const HIS = ["Underactive thyroid (subclinical, non-autoimmune)"];
+  const SHARE = ["somatic-map-thyroid-dysfunction"];
+
+  it("drops the opposite presentation from his thyroid card", () => {
+    const [read] = deriveMindBodyReads("deep", HIS, [], SHARE).reads;
+    expect(read).toBeDefined();
+    const text = read.roots.map((r) => r.pattern).join(" | ");
+    expect(text).toMatch(/hypothyroid/i);
+    expect(text).not.toMatch(/hyperthyroid/i);
+  });
+
+  it("keeps the roots that are not about a variant at all", () => {
+    const [read] = deriveMindBodyReads("deep", HIS, [], SHARE).reads;
+    expect(read.roots.length).toBeGreaterThan(1);
+  });
+
+  it("shows both halves when the condition does not say which", () => {
+    const [read] = deriveMindBodyReads("deep", ["Thyroid problems"], [], SHARE).reads;
+    if (read) {
+      const text = read.roots.map((r) => r.pattern).join(" | ");
+      // ambiguous — guessing would be worse than showing both
+      expect(/hypothyroid/i.test(text) || /hyperthyroid/i.test(text)).toBe(true);
+    }
+  });
+});

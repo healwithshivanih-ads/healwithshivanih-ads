@@ -337,9 +337,18 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
   // A plan can prescribe several somatic practices, so the overlay resolves the
   // one that was actually tapped rather than assuming there is only ever one.
+  //
+  // It must search the READS too, not just the plan. A practice opened from a
+  // mind-body card that the coach has not also prescribed carries a `read-`
+  // id and lives only on that read — searching `data.somatic` alone found
+  // nothing and rendered nothing, so the button did visibly nothing at all.
+  // Caught on "simple singing"; the earlier check confirmed the button
+  // APPEARED and never that it opened.
   const somaticOpen =
     overlay?.type === "somatic"
-      ? data.somatic.find((s) => s.practiceId === overlay.practiceId) ?? null
+      ? data.somatic.find((s) => s.practiceId === overlay.practiceId) ??
+        data.mindBodyReads.find((r) => r.practice?.practiceId === overlay.practiceId)?.practice ??
+        null
       : null;
 
   const dailyRemedies = data.remedies.filter((r) => r.assigned && r.daily);

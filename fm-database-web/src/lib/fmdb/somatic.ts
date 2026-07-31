@@ -21,6 +21,7 @@ import yaml from "js-yaml";
 
 import { getCataloguePath } from "./paths";
 import { isClientSafe, readChiefComplaints } from "./somatic-read";
+import { rootAppliesTo } from "./somatic-variants";
 
 /** The seven players. Mirrors fmdb.enums.MotionShape — keep in lockstep. */
 export type MotionShape =
@@ -290,7 +291,12 @@ export function deriveMindBodyReads(
     const practice = prescribedOne ?? readOnlyPractice(r.somaticPractice);
     out.push({
       title: r.displayName || r.condition,
-      roots: r.roots.filter((x) => x.pattern.trim()).slice(0, 3),
+      // Condition-aware: a map covering opposite presentations tags its roots
+      // ("(hypothyroid pattern)" / "(hyperthyroid pattern)"), and showing the
+      // half that is not theirs reads as padding on a card about their body.
+      roots: r.roots
+        .filter((x) => x.pattern.trim() && rootAppliesTo(x.pattern, conditions))
+        .slice(0, 3),
       reframe,
       question: r.inquiryQuestion.trim(),
       practice,
