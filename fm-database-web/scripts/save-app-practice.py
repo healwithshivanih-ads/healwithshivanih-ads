@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
-"""Log a completed in-app practice round (EFT tapping or guided breathing).
+"""Log an in-app practice session — finished OR abandoned part-way.
 
-This is the compliance + effectiveness dataset. Every completed round appends
-ONE JSON line to ~/fm-plans/clients/<id>/_practice_log.jsonl — append-only,
+This is the compliance + effectiveness dataset, and it is what the mind-body
+drip gates on — so what it does NOT record matters as much as what it does.
+
+Two things were being lost. `somatic` was rejected outright, so every guided
+somatic session anyone ever finished was dropped (the app POSTed it, got a
+400, and swallowed the error). And only FINISHED sessions were recorded, so a
+client who breathed for two minutes and closed the app had done the practice
+while the log said she had not — which is exactly the client the drip is
+supposed to notice.
+
+Every session now appends ONE JSON line to ~/fm-plans/clients/<id>/_practice_log.jsonl — append-only,
 easy to aggregate later (adherence over time, EFT SUDS deltas, breathing
 frequency). No AI, no Pydantic round-trip; a plain JSONL write that syncs back
 to the Mac via Mutagen like every other client-app write-back.
@@ -10,7 +19,9 @@ to the Mac via Mutagen like every other client-app write-back.
 Reads JSON from stdin:
 {
   "client_id":  str,
-  "kind":       "eft" | "breath",
+  "kind":       "eft" | "breath" | "sleep" | "somatic",
+  "completed":  bool,         # ran to the end, vs closed part-way
+  "slug":       str | null,   # catalogue slug for somatic practices
   "practice_id": str,
   "name":       str,          # theme label / breathing pattern name
   "theme":      str | null,   # eft theme key
@@ -61,7 +72,7 @@ def main() -> int:
         return 2
 
     kind = (payload.get("kind") or "").strip().lower()
-    if kind not in ("eft", "breath", "sleep"):
+    if kind not in ("eft", "breath", "sleep", "somatic"):
         json.dump({"ok": False, "error": f"bad kind: {kind!r}"}, sys.stdout)
         return 2
 
@@ -87,6 +98,10 @@ def main() -> int:
         "suds_delta": delta,
         "rounds": _opt_int(payload.get("rounds"), 0, 200),
         "seconds": _opt_int(payload.get("seconds"), 0, 36000),
+        # False = she opened it and gave it real time but did not reach the
+        # end. Still doing the practice; the drip decides what counts.
+        "completed": bool(payload.get("completed", True)),
+        "slug": (payload.get("slug") or None),
         "source": "client_app",
     }
 

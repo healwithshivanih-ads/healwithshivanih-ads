@@ -27,6 +27,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { AppSomatic } from "@/lib/fmdb/somatic";
 import { BreathAudio } from "./ochre-breath-audio";
 import { Icon, useOchre } from "./ochre-context";
+import { logPractice } from "./practice-log";
 import { SomaticFigure } from "./somatic-figures";
 import { breathCycle, FALLBACK_RENDERER, pacedFrame, SHAPE_RENDERERS, stepMode } from "./somatic-shapes";
 
@@ -122,21 +123,44 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
     return () => clearInterval(id);
   }, [status, steps, isChecklist]);
 
-  /* one compliance record per completed session */
+  /* One record per session — finished, or closed after real time.
+     `logged` guards against double-recording when a client reaches the end
+     and THEN closes; `ranFor` is the elapsed clock the partial path reports. */
+  const logged = useRef(false);
+  const ranFor = useRef(0);
+  const startedRunning = useRef<number | null>(null);
   useEffect(() => {
-    if (status !== "done" || !token) return;
-    try {
-      fetch("/api/app-practice", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        keepalive: true,
-        body: JSON.stringify({
-          token, kind: "somatic", practice_id: somatic.practiceId,
-          name: somatic.name, seconds: somatic.totalSeconds ?? null, slug: somatic.slug,
-        }),
-      }).catch(() => {});
-    } catch { /* offline — skip */ }
-  }, [status, token, somatic]);
+    if (status === "running" && startedRunning.current === null) {
+      startedRunning.current = Date.now();
+    }
+    if (status !== "running" && startedRunning.current !== null) {
+      ranFor.current += Math.round((Date.now() - startedRunning.current) / 1000);
+      startedRunning.current = null;
+    }
+  }, [status]);
+
+  const record = (completed: boolean) => {
+    if (logged.current) return;
+    logged.current = true;
+    const live = startedRunning.current
+      ? ranFor.current + Math.round((Date.now() - startedRunning.current) / 1000)
+      : ranFor.current;
+    logPractice({
+      token, kind: "somatic", practiceId: somatic.practiceId, name: somatic.name,
+      slug: somatic.slug, seconds: live || somatic.totalSeconds || null, completed,
+    });
+  };
+
+  useEffect(() => {
+    if (status === "done") record(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+
+  // Closed part-way — still practice, and the drip needs to know.
+  useEffect(() => {
+    return () => { if (!logged.current) record(false); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* canvas */
   const cv = useRef<HTMLCanvasElement | null>(null);

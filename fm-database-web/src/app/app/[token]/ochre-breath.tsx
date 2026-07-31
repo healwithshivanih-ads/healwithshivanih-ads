@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import type { AppBreathwork } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
 import { BreathAudio } from "./ochre-breath-audio";
+import { logPractice } from "./practice-log";
 
 const SOUND_PREF_KEY = "ochre.breathSound"; // "0" = muted; default is on
 
@@ -39,21 +40,30 @@ export function BreathOverlay({ bw, onClose }: { bw: AppBreathwork; onClose: () 
   const rounds = bw.rounds;
   const token = useOchre().token;
 
-  // Compliance logging — one record per completed session (no SUDS for breath).
-  const logSession = () => {
-    if (!token) return;
-    const seconds = rounds * phases.reduce((s, p) => s + p.secs, 0);
-    try {
-      fetch("/api/app-practice", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        keepalive: true,
-        body: JSON.stringify({ token, kind: "breath", practice_id: bw.practiceId, name: bw.name, rounds, seconds }),
-      }).catch(() => {});
-    } catch {
-      /* offline — skip */
-    }
+  // Compliance logging — one record per session, finished OR closed part-way.
+  // Seconds are now MEASURED rather than assumed: this used to report
+  // `rounds * phase length`, i.e. the full planned session, even for someone
+  // who stopped after one round. An adherence dataset that rounds everything
+  // up is worse than none.
+  const loggedRef = useRef(false);
+  const roundsDoneRef = useRef(0);
+  const startedAtRef = useRef<number | null>(null);
+  const logSession = (completed: boolean) => {
+    if (loggedRef.current || !token) return;
+    loggedRef.current = true;
+    const seconds = startedAtRef.current
+      ? Math.round((Date.now() - startedAtRef.current) / 1000)
+      : 0;
+    logPractice({
+      token, kind: "breath", practiceId: bw.practiceId, name: bw.name,
+      rounds: completed ? rounds : roundsDoneRef.current,
+      seconds: seconds || null, completed,
+    });
   };
+  // Closed mid-session — still practice, and the drip has to see it.
+  useEffect(() => () => { if (!loggedRef.current) logSession(false); },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []);
 
   const [status, setStatus] = useState<Status>("intro");
   const [phaseIdx, setPhaseIdx] = useState(0);
@@ -119,7 +129,7 @@ export function BreathOverlay({ bw, onClose }: { bw: AppBreathwork; onClose: () 
     stopLoop();
     paint("hold", 1);
     audioRef.current?.finishChime();
-    logSession();
+    logSession(true);
     setStatus("done");
   };
 
@@ -135,6 +145,7 @@ export function BreathOverlay({ bw, onClose }: { bw: AppBreathwork; onClose: () 
       return false;
     }
     setPhaseIdx(phRef.current);
+    roundsDoneRef.current = Math.max(roundsDoneRef.current, rdRef.current - 1);
     setRound(rdRef.current);
     setCount(phases[phRef.current].secs);
     audioRef.current?.chime(phases[phRef.current].action);
@@ -177,6 +188,8 @@ export function BreathOverlay({ bw, onClose }: { bw: AppBreathwork; onClose: () 
     setPhaseIdx(0);
     setRound(1);
     setCount(phases[0].secs);
+    startedAtRef.current = Date.now();   // measured session length starts here
+    roundsDoneRef.current = 0;
     setStatus("running");
     // the Begin tap is the user gesture that unlocks audio on iOS
     const au = audio();

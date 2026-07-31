@@ -1,10 +1,11 @@
 /**
- * POST /api/app-practice — log a completed in-app practice round.
+ * POST /api/app-practice — log an in-app practice session.
  *
- * Fires when a client finishes an EFT tapping round or a guided-breathing
- * session in the companion app. The record (SUDS before/after for EFT,
- * rounds/seconds for breathing) lands in the client's _practice_log.jsonl —
- * the compliance + effectiveness dataset.
+ * Fires when a client finishes a guided session, AND when she closes one
+ * part-way after giving it real time. Both matter: this log is what the
+ * mind-body drip gates on, and recording only perfect sessions made the gate
+ * read zero for everyone. `somatic` was rejected here outright, so every
+ * somatic session ever finished was dropped with a 400 the app swallowed.
  *
  * Auth: body.token must resolve to a published plan's letter_token (the same
  * token that opened the app). The client is derived server-side — never
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
   if (!token || token.length < 16) {
     return NextResponse.json({ ok: false, error: "invalid token" }, { status: 401 });
   }
-  if (!(await allowDaily("app-practice", token, 40)).ok) {
+  if (!(await allowDaily("app-practice", token, 60)).ok) {
     return NextResponse.json({ ok: false, error: "too many logs today" }, { status: 429 });
   }
   const lookup = await resolveAppToken(token);
@@ -36,7 +37,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }
 
-  const kind = body.kind === "eft" || body.kind === "breath" || body.kind === "sleep" ? body.kind : "";
+  const KINDS = ["eft", "breath", "sleep", "somatic"] as const;
+  const kind = KINDS.find((k) => k === body.kind) ?? "";
   if (!kind) {
     return NextResponse.json({ ok: false, error: "bad kind" }, { status: 400 });
   }
@@ -54,6 +56,8 @@ export async function POST(req: NextRequest) {
       suds_after: num(body.suds_after),
       rounds: num(body.rounds),
       seconds: num(body.seconds),
+      completed: body.completed !== false,
+      slug: typeof body.slug === "string" ? body.slug.slice(0, 120) : null,
     })) as { ok?: boolean; error?: string };
     if (!out.ok) {
       return NextResponse.json({ ok: false, error: out.error ?? "log failed" }, { status: 500 });

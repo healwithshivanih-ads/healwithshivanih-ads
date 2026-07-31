@@ -13,6 +13,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { AppEft, AppEftTheme } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
+import { logPractice } from "./practice-log";
 
 // Per-step dwell time. The karate-chop setup needs longer (say the full setup
 // sentence ×3); each reminder point is one short phrase + ~7 taps; the closing
@@ -223,32 +224,27 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
   sudsAfterRef.current = sudsAfter;
   activeRef.current = active;
   doneRef.current = status === "done";
-  const logRound = () => {
+  const startedAtRef = useRef<number | null>(null);
+  const logRound = (completed = true) => {
     if (loggedRef.current || !token) return;
     loggedRef.current = true;
-    try {
-      fetch("/api/app-practice", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        keepalive: true,
-        body: JSON.stringify({
-          token,
-          kind: "eft",
-          practice_id: eft.practiceId,
-          name: activeRef.current.themeLabel,
-          theme: activeRef.current.theme,
-          suds_before: sudsBeforeRef.current,
-          suds_after: sudsAfterRef.current,
-        }),
-      }).catch(() => {});
-    } catch {
-      /* offline — skip */
-    }
+    const seconds = startedAtRef.current
+      ? Math.round((Date.now() - startedAtRef.current) / 1000)
+      : null;
+    logPractice({
+      token, kind: "eft", practiceId: eft.practiceId,
+      name: activeRef.current.themeLabel, theme: activeRef.current.theme,
+      sudsBefore: sudsBeforeRef.current, sudsAfter: sudsAfterRef.current,
+      seconds, completed,
+    });
   };
-  // log on unmount if the round was completed but not yet logged (e.g. app closed)
+  // Log on unmount whether or not the round finished. It used to require
+  // `doneRef`, so a client who tapped through six points and closed the app
+  // recorded nothing — and the drip, which gates on this log, saw a client
+  // who had never practised.
   useEffect(
     () => () => {
-      if (doneRef.current) logRound();
+      logRound(doneRef.current);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -296,6 +292,7 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
     countRef.current = SETUP_SECS;
     completedRef.current = false;
     loggedRef.current = false;
+    startedAtRef.current = Date.now();   // measured session length starts here
     setSudsAfter(null);
     setStatus("running");
   };
@@ -456,15 +453,15 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
             </>
           )}
           <div style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap", justifyContent: "center" }}>
-            <button onClick={() => { logRound(); begin(); }} style={{ padding: "12px 22px", borderRadius: 999, background: OCHRE, color: "#fff", border: "none", fontSize: 14, fontWeight: 500, cursor: "pointer" }}>
+            <button onClick={() => { logRound(true); begin(); }} style={{ padding: "12px 22px", borderRadius: 999, background: OCHRE, color: "#fff", border: "none", fontSize: 14, fontWeight: 500, cursor: "pointer" }}>
               Again
             </button>
             {multi && (
-              <button onClick={() => { logRound(); goPick(); }} style={{ padding: "12px 22px", borderRadius: 999, background: "transparent", color: "#8a4f50", border: "1px solid #e3c8c5", fontSize: 14, cursor: "pointer" }}>
+              <button onClick={() => { logRound(true); goPick(); }} style={{ padding: "12px 22px", borderRadius: 999, background: "transparent", color: "#8a4f50", border: "1px solid #e3c8c5", fontSize: 14, cursor: "pointer" }}>
                 Tap on something else
               </button>
             )}
-            <button onClick={() => { logRound(); onClose(); }} style={{ padding: "12px 22px", borderRadius: 999, background: "transparent", color: "#52463a", border: "1px solid #d7cdba", fontSize: 14, cursor: "pointer" }}>
+            <button onClick={() => { logRound(true); onClose(); }} style={{ padding: "12px 22px", borderRadius: 999, background: "transparent", color: "#52463a", border: "1px solid #d7cdba", fontSize: 14, cursor: "pointer" }}>
               Done
             </button>
           </div>
