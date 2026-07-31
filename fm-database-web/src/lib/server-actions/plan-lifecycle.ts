@@ -586,6 +586,36 @@ export async function quickEditActivePlanPractice(
     if (edit.add) {
       const name = (edit.name ?? "").trim();
       if (!name) return { ok: false, error: "A practice name is required." };
+
+      // Quick-edit writes a PUBLISHED plan in place and never re-runs
+      // plan-check, so this is the only place the "one remedy, one channel"
+      // rule can be enforced on this path. A remedy assigned by slug already
+      // carries prep, dose and timing, and the client app uses the slug to
+      // offer two remedies sharing a slot as swap options — adding a practice
+      // that restates one prescribes the same drink twice and buries that
+      // framing behind a mandatory checkbox. Matching runs in Python so it
+      // cannot drift from the checker. A shim failure never blocks the edit.
+      const dup = await runShim<{
+        ok: boolean;
+        restates?: string | null;
+        remedy_name?: string | null;
+      }>("plan-check.py", {
+        action: "practice_restates_remedy",
+        slug: planSlug,
+        name,
+      });
+      if (dup?.ok && dup.restates) {
+        return {
+          ok: false,
+          error:
+            `"${name}" is already prescribed as the remedy ` +
+            `${dup.remedy_name ?? dup.restates}. Adding it here too would show ` +
+            `it twice — as a daily practice AND a remedy card — and hide the ` +
+            `swap-option framing when two remedies share a slot. Edit the ` +
+            `remedy instead, or rename this if it's genuinely something else.`,
+        };
+      }
+
       const linked = (edit.somatic_practice ?? "").trim();
       practices.push({
         name,
