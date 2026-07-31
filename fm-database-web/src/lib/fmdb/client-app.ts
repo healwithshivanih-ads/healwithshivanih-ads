@@ -1746,28 +1746,41 @@ export function buildClientRecipeAdapter(
 // ── Recipe-consistency gate (the "no recipe beats a wrong recipe" guarantee) ──
 // The LAST seam before a recipe reaches a client. Even if matching or generation
 // drifts, this refuses to show a recipe that (a) is garbled (no ingredients or no
-// method), or (b) does not actually contain the dish's headline ingredient. A
-// failing recipe renders as the clean dish name + portion, never as nonsense —
-// which is what erodes trust and compliance. Kept deliberately CONSERVATIVE: it
-// only kills clear nonsense, so it doesn't hide good recipes.
+// method), or (b) does not actually contain EVERY headline ingredient the dish
+// names. A failing recipe renders as the clean dish name + portion, never as
+// nonsense — which is what erodes trust and compliance. Kept deliberately
+// CONSERVATIVE: it only kills clear nonsense, so it doesn't hide good recipes.
+//
+// (b) used to accept a recipe that covered ANY ONE headline food, on the
+// assumption a dish names a single distinctive ingredient. That let the "<recipe>
+// with <extras>" resolver rule (buildNameResolver) attach a plain base recipe to
+// a dish that adds a second, real ingredient the base doesn't have: "Soft
+// scrambled eggs with spinach and ghee" matched the catalogue's plain "Scrambled
+// eggs" — no spinach — because "eggs" alone satisfied the gate, so "spinach"
+// silently vanished from a client's actual breakfast (reported 2026-07-31,
+// cl-005). Requiring every headline food closes that: a base recipe missing one
+// of the dish's named ingredients now fails the gate and the resolver falls
+// through to the client's own AI-authored recipe (which does have it), or to no
+// recipe at all — never a recipe quietly short one ingredient.
 
 /** True when `recipe` is safe to show for `dish`: it has real content and it
- *  actually contains the dish's headline ingredient. Exported so the coach's
- *  menu pre-flight flags the same dishes the client app would silently drop. */
+ *  actually contains every headline ingredient the dish names. Exported so the
+ *  coach's menu pre-flight flags the same dishes the client app would silently
+ *  drop. */
 export function recipeConsistentWithDish(
   dish: string,
   r: { title?: string; ingredients?: string[]; method?: string[]; mains?: string[] },
 ): boolean {
   // (a) garble guard — a recipe with no ingredients or no method is nonsense.
   if (!r.ingredients?.length || !r.method?.length) return false;
-  // (b) headline-ingredient presence.
+  // (b) headline-ingredient presence — ALL of them, not just one.
   const dishToks = dishHeadlineFoods(dish);
   if (!dishToks.length) return true; // dish has no distinctive food (e.g. "Kitchari") — trust the match
   const blob = recipeLibKey(
     [r.title ?? "", ...(r.mains ?? []), ...(r.ingredients ?? [])].join(" "),
   );
   const recipeToks = new Set(blob.split(" ").filter((t) => t.length >= 3).map(foldFood));
-  return dishToks.some((t) => recipeToks.has(t));
+  return dishToks.every((t) => recipeToks.has(t));
 }
 
 /** One thing a dish can resolve to, plus every name it answers to. A library

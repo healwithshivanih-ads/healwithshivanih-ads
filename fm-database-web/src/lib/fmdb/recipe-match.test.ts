@@ -11,6 +11,7 @@
  */
 import { describe, it, expect } from "vitest";
 import {
+  buildDishRecipeResolver,
   buildLibraryRecipeResolver,
   loadLibraryRecipes,
   matchPackRecipe,
@@ -46,8 +47,15 @@ describe("a trailing side never supplies the slot's recipe", () => {
     // primary component — otherwise it re-introduces the same hijack.
     const pack = LIB_NO_SABJA.map((l) => l.recipe);
     expect(matchPackRecipe(primaryDishPart(NAZNEEN), pack)?.title).toBeUndefined();
-    // …whereas the whole cell is exactly what used to leak the chana through.
-    expect(matchPackRecipe(NAZNEEN, pack)?.title).toBe("Masala Roasted Chana");
+    // The whole cell used to leak the chana through here too (its title-token
+    // score alone picked "Masala Roasted Chana", and the old any-one-food gate
+    // didn't stop it because "chana" is a real food in the cell — just not the
+    // PRIMARY one). The now-stricter every-headline-food gate closes that leak
+    // as a second line of defense — the chana recipe has no "sabja"/"seeds"/
+    // "drink" either — but the primary component is still what production code
+    // must always pass; this call only stays safe by accident of what the two
+    // dishes happen to share.
+    expect(matchPackRecipe(NAZNEEN, pack)?.title).toBeUndefined();
   });
 
   it("serves the drink once its recipe exists under the name the coach used", () => {
@@ -66,10 +74,17 @@ describe("a trailing side never supplies the slot's recipe", () => {
   });
 
   it("gates the recipe against the PRIMARY component, not the whole cell", () => {
-    // Against the whole cell any component's food satisfies the gate, so a
-    // wrong recipe sails through; against the primary it is caught.
+    // The gate requires every headline food it is asked about, so scanning the
+    // untouched whole cell no longer even coincidentally passes here — "chana"
+    // is covered but "sabja"/"seeds"/"drink" are not, so both calls are caught.
+    // Production code still must pass the PRIMARY component, never the whole
+    // cell: the gate answers "does this recipe cover what it's asked about",
+    // not "which component is the dish's own identity" — that half of the
+    // Nazneen fix lives in primaryDishPart/buildNameResolver, pinned end to end
+    // by the resolver tests above (a sabja-led slot never opens the chana
+    // method, with or without a recipe on file for sabja).
     const chana = LIB_NO_SABJA[0].recipe;
-    expect(recipeConsistentWithDish(NAZNEEN, chana)).toBe(true);
+    expect(recipeConsistentWithDish(NAZNEEN, chana)).toBe(false);
     expect(recipeConsistentWithDish(primaryDishPart(NAZNEEN), chana)).toBe(false);
   });
 });
@@ -127,5 +142,48 @@ describe("short-word titles (dal, egg) stay matchable", () => {
     // "Moong dal khichdi" names neither recipe — matching either would serve
     // the wrong method. The 2-token floor must not loosen the identity rules.
     expect(resolve("Moong dal khichdi (1 bowl)")?.title).toBeUndefined();
+  });
+});
+
+/**
+ * A recipe that is missing one of the dish's named ingredients is not a match,
+ * even when the "<recipe> with <extras>" rule (buildNameResolver) happily
+ * names it. Reported 2026-07-31 (cl-005, breakfast): the menu read "Soft
+ * scrambled eggs with spinach and ghee" and the app opened the catalogue's
+ * plain "Scrambled eggs" — no spinach anywhere — because the old gate only
+ * required ONE of the dish's headline foods to be present, and "eggs" alone
+ * was enough; "spinach" was never checked. The client's own AI-authored recipe
+ * for this exact dish, which does have spinach, never got a look-in.
+ */
+describe("a recipe missing a named ingredient is not a match", () => {
+  const dish = "Soft scrambled eggs with spinach and ghee (2 eggs)";
+  const plainEggs = r("Scrambled eggs", ["3 eggs, beaten", "1 tsp ghee", "salt", "pepper"]);
+  const withSpinach = r("Scrambled Eggs with Spinach and Ghee", [
+    "2 eggs",
+    "Spinach (palak), chopped: 75g",
+    "Ghee: 1 tsp",
+    "Salt to taste",
+  ]).recipe;
+
+  it("the library resolver still finds the plain recipe by name", () => {
+    const resolve = buildLibraryRecipeResolver([plainEggs]);
+    expect(resolve(dish)?.title).toBe("Scrambled eggs");
+  });
+
+  it("but the consistency gate refuses it — it has no spinach", () => {
+    expect(recipeConsistentWithDish(primaryDishPart(dish), plainEggs.recipe)).toBe(false);
+  });
+
+  it("the pack recipe that actually has spinach passes the gate", () => {
+    expect(recipeConsistentWithDish(primaryDishPart(dish), withSpinach)).toBe(true);
+  });
+
+  it("end to end: the resolver falls through to the client's own recipe", () => {
+    const resolve = buildDishRecipeResolver({
+      fromLibrary: buildLibraryRecipeResolver([plainEggs]),
+      packRecipes: [withSpinach],
+      fromRemedy: () => undefined,
+    });
+    expect(resolve(dish)?.title).toBe("Scrambled Eggs with Spinach and Ghee");
   });
 });

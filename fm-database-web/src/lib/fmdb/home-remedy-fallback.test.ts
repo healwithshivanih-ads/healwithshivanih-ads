@@ -229,8 +229,17 @@ describe("a one-word name counts only when it identifies exactly one remedy", ()
     // "Golden latte" wins the dish on its name, even though the cooler's
     // one-word `chaas` would otherwise cover it. A last-resort rule that
     // outranked a real name match could re-point slots that already work.
+    // (prepSteps mentions "chaas" — a dairy-free golden latte really is made
+    // on a buttermilk base — so the consistency gate, which now requires every
+    // headline food the dish names, has something to find it under; a name
+    // match that can't account for one of the dish's own words is exactly the
+    // Hariharan-spinach failure mode, not a case this test means to pin.)
     const both = [
-      remedy({ slug: "golden-latte", name: "Golden latte" }),
+      remedy({
+        slug: "golden-latte",
+        name: "Golden latte",
+        prepSteps: ["Warm chaas gently.", "Stir in turmeric and a pinch of pepper."],
+      }),
       remedy({ slug: "buttermilk-cooler", name: "Buttermilk Cooler", aliases: ["chaas", "golden", "latte"] }),
     ];
     expect(buildHomeRemedyResolver(both)("Golden chaas latte (1 glass)")?.title).toBe("Golden latte");

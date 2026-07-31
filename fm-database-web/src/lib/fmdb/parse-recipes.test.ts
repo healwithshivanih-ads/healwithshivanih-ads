@@ -142,12 +142,19 @@ Warm the milk gently with the turmeric and a crack of black pepper. Do not boil.
     expect(matchPackRecipe("Mint chutney (2 tbsp)", pack)?.title).toBe("Cilantro Mint Chutney");
   });
 
-  it("still matches '<recipe> + <sides>' where nothing in the title is missing", () => {
+  it("still matches '<recipe> with <side>' where nothing in the title is missing and the side is really in it", () => {
+    // Genuinely benign: "peanuts" reads as an extra dish token against the bare
+    // title, but the recipe's own ingredient list actually has it — the
+    // consistency gate (every headline food covered, not just the title-token
+    // score) is what tells this apart from Hariharan's spinach, where the
+    // "extra" was NOT in the base recipe. See recipe-match.test.ts for the
+    // two-different-dishes-glued-by-"+" case (Sabja drink + Masala Roasted
+    // Chana), which the gate now correctly refuses instead of leaking through.
     const pack: LetterRecipe[] = [
-      { title: "Masala Roasted Chana", ingredients: ["chana"], method: ["Roast."] },
+      { title: "Masala Roasted Chana", ingredients: ["chana", "peanuts", "chaat masala"], method: ["Roast."] },
     ];
     expect(
-      matchPackRecipe("Sabja seeds drink (1 glass) + Masala Roasted Chana (2 tbsp)", pack)?.title,
+      matchPackRecipe("Masala Roasted Chana with peanuts (2 tbsp)", pack)?.title,
     ).toBe("Masala Roasted Chana");
   });
 
