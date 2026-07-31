@@ -4422,6 +4422,16 @@ export async function loadClientAppData(
   const practiceRaw: Dict[] = []; // index-aligned with practices[]
   // Collect first so we can stable-sort by time of day before assigning ids.
   const collected: { name: string; when: string; rank: number; raw: Dict }[] = [];
+  // Any remedy drink already assigned via nutrition.home_remedies (or the
+  // ayurveda block) has its correct, single home in the Remedies shelf above
+  // — swap-option handling, buy links, "why" framing all live there. When a
+  // coach/AI rework ALSO writes it up as a freeform lifestyle_practices entry
+  // (narrative dosing detail, e.g. hibiscus tea + brahmi tea for Hariharan
+  // 2026-07-27), it must not additionally render as a hard "Daily practice"
+  // card — that duplicates the same drink and hides the swap-option framing
+  // behind a second, seemingly-mandatory card. Match by slug-derived phrase
+  // so any newly-assigned remedy is covered, not just the two hardcoded below.
+  const assignedRemedyPhrases = assignedSlugs.map((s) => s.replace(/-/g, " ").toLowerCase());
   // Seed cycling gets its OWN computed section under the menu (which seeds
   // today), so it's pulled out of the flat practices list here.
   let seedCyclingPrescribed = false;
@@ -4432,6 +4442,7 @@ export async function loadClientAppData(
     const name = asStr(p.name);
     if (!name) continue;
     if (/ccf tea|golden milk|haldi doodh/i.test(name)) continue;
+    if (assignedRemedyPhrases.some((phrase) => name.toLowerCase().includes(phrase))) continue;
     if (/seed.?cycl/i.test(name)) { seedCyclingPrescribed = true; continue; }
     if (/ginger/i.test(name) && /cramp|period|menstru/i.test(name)) { gingerCrampPrescribed = true; continue; }
     const cadence = asStr(p.cadence);

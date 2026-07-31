@@ -172,6 +172,21 @@ You CANNOT invent slugs. Coach hits Submit → red error wall → bad UX.
    in our catalogue yet — add it via Coach Knowledge or I can stage a
    stub for you."
 
+5. **One channel per remedy — never both `nutrition.home_remedies` AND
+   `lifestyle_practices`.** A HomeRemedy slug is the COMPLETE prescription:
+   it already carries preparation, dose, timing and cautions from the
+   catalogue, and the client app uses it to present two remedies sharing a
+   slot as swap options ("use this OR that, never both"). Writing the same
+   drink into `lifestyle_practices` as well prescribes it twice through two
+   unrelated fields — the client gets a mandatory daily practice card AND a
+   remedy card for one tea, and the swap-option framing silently disappears.
+   Before adding a practice, check `nutrition.home_remedies` for a slug that
+   names the same thing (watch for abbreviations — "CCF tea" is
+   `cumin-coriander-fennel-tea`). If the remedy needs client-specific
+   handling the catalogue can't express (serve it warm, sweeten it, pair it
+   with cardamom), say so in your reply to the coach — do not encode it as a
+   separate practice. The plan checker flags this at publish time (WARNING).
+
 RULES:
 - Always include the COMPLETE updated array when changing a list field (not just the new item)
 - Keep existing entries unless the coach explicitly asks to remove them
@@ -283,7 +298,7 @@ CLIENT PROFILE:
                             "items": {
                                 "type": "object",
                                 "properties": {
-                                    "name": {"type": "string"},
+                                    "name": {"type": "string", "description": "Freeform practice name. NOT for a drink/remedy already listed in nutrition.home_remedies — that slug already prescribes it."},
                                     "cadence": {"type": "string"},
                                     "details": {"type": "string"}
                                 },
@@ -296,7 +311,7 @@ CLIENT PROFILE:
                                 "pattern": {"type": "string"},
                                 "meal_timing": {"type": "string"},
                                 "cooking_adjustments": {"type": "array", "items": {"type": "string"}},
-                                "home_remedies": {"type": "array", "items": {"type": "string"}},
+                                "home_remedies": {"type": "array", "items": {"type": "string"}, "description": "HomeRemedy slugs. A slug here is the COMPLETE prescription for that remedy — do not also add it to lifestyle_practices."},
                                 "add": {"type": "array", "items": {"type": "string"}},
                                 "reduce": {"type": "array", "items": {"type": "string"}}
                             }

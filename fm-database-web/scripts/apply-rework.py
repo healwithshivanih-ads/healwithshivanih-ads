@@ -146,6 +146,53 @@ def _practice_tokens(name: str) -> set:
     return {t for t in s.split() if len(t) > 1 and t not in _PRACTICE_FILLERS}
 
 
+def _drop_practices_covered_by_remedies(plan):
+    """Drop AI-suggested practices that merely restate a remedy the plan already
+    assigns by catalogue slug. Returns (kept, dropped).
+
+    A HomeRemedy slug is the complete prescription — it carries preparation,
+    dose, timing and cautions, and the client app uses it to offer two remedies
+    sharing a slot as swap options. A practice restating one prescribes it a
+    second time through an unrelated field, so the client sees a mandatory
+    daily practice AND a remedy card for the same tea, and the swap framing
+    disappears. Matching is shared with the plan checker so the applier can
+    never write what the checker would flag.
+    """
+    remedy_slugs = list(plan.nutrition.home_remedies)
+    if getattr(plan, "ayurveda", None):
+        remedy_slugs += list(plan.ayurveda.remedies)
+    if not remedy_slugs or not plan.lifestyle_practices:
+        return list(plan.lifestyle_practices), []
+
+    try:
+        from fmdb.plan.checker import practice_restates_remedy
+        from fmdb.validator import load_all, _resolve_index
+        cat = load_all(FMDB_ROOT / "data")
+        hr_idx = _resolve_index(cat.home_remedies)
+        hr_by_slug = {h.slug: h for h in cat.home_remedies}
+    except Exception as e:
+        # Catalogue unavailable — never fail a rework over a cosmetic dedup.
+        print(f"[apply-rework] remedy-dedup skipped ({type(e).__name__}: {e})",
+              file=sys.stderr)
+        return list(plan.lifestyle_practices), []
+
+    kept, dropped = [], []
+    for prac in plan.lifestyle_practices:
+        name = getattr(prac, "name", "") or ""
+        hit = None
+        for slug in remedy_slugs:
+            canonical = hr_idx.get(slug)
+            remedy = hr_by_slug.get(canonical) if canonical else None
+            if practice_restates_remedy(name, slug, remedy):
+                hit = slug
+                break
+        if hit:
+            dropped.append((prac, hit))
+        else:
+            kept.append(prac)
+    return kept, dropped
+
+
 def _dedupe_practices(practices):
     """Remove practices that re-state another (subset of another's meaningful
     tokens, or exact token match). Keeps the more specific one. Conservative:
@@ -587,6 +634,16 @@ def main() -> int:
     if _dropped_practices:
         print(f"[apply-rework] dropped {len(_dropped_practices)} duplicate practice(s): "
               f"{[getattr(p, 'name', '') for p in _dropped_practices]}", file=sys.stderr)
+
+    # And drop practices that restate a remedy already assigned by slug — the
+    # slug is the complete prescription, so keeping both shows the client the
+    # same drink twice and hides the app's swap-option framing.
+    plan.lifestyle_practices, _dropped_remedy_dupes = _drop_practices_covered_by_remedies(plan)
+    if _dropped_remedy_dupes:
+        print(f"[apply-rework] dropped {len(_dropped_remedy_dupes)} practice(s) already "
+              f"assigned as home remedies: "
+              f"{[(getattr(p, 'name', ''), s) for p, s in _dropped_remedy_dupes]}",
+              file=sys.stderr)
 
     try:
         plan_storage.write_plan(root, plan)

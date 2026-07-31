@@ -535,6 +535,162 @@ def _check_food_first_redundancy(plan: Plan, findings: list[Finding]) -> None:
             ))
 
 
+# ---------------------------------------------------------------------------
+# The same remedy authored twice: as a catalogue slug AND as freeform prose
+# ---------------------------------------------------------------------------
+# Real-use bug 2026-07-31 (Hariharan cl-005): hibiscus and brahmi tea were each
+# written into `nutrition.home_remedies` (catalogue slug) AND into
+# `lifestyle_practices` (freeform PracticeItem with its own prep narrative).
+# The client app renders those two fields through unrelated pipelines, so both
+# teas appeared as separate mandatory "Daily practice" checkboxes on Today while
+# the Plan tab correctly showed one as a "Swap option" — the swap framing was
+# real but invisible, and the client was told to drink both. `render.py`'s
+# markdown/HTML export double-lists them unconditionally too.
+#
+# Nothing upstream prevents this: `suggester.py`, `plan-chat.py` and a manual
+# quick-edit each reach these two fields independently, and none cross-checks
+# the other. This is the single gate all of them pass through before publish.
+#
+# The slug is the richer representation — it carries prep steps, dosha
+# energetics, buy links and the app's one-drink-per-slot swap logic. So the
+# freeform practice is the redundant copy and the fix is to drop it.
+#
+# WARNING not CRITICAL: it degrades the client's read rather than endangering
+# them, and the coach may have a reason to keep prose the app can't express.
+
+# Words too generic to identify a remedy on their own — they appear in most
+# remedy names and would match unrelated practices ("warm water on waking").
+_REMEDY_GENERIC_WORDS = {
+    "tea", "water", "milk", "drink", "juice", "powder", "churan", "churna",
+    "oil", "infusion", "decoction", "remedy", "daily", "warm", "hot", "cold",
+    "kashayam", "kadha", "paste", "pack", "rinse", "wash", "soak", "soaked",
+    "fresh", "morning", "night", "evening", "bedtime", "the", "and", "with",
+}
+
+
+def _normalise_remedy_phrase(source: str) -> str:
+    """Lowercase, drop parenthetical glosses, collapse to single-spaced words.
+
+    The glosses go because "Hibiscus Tea (Gudhal / Jaswand)" should match on
+    "hibiscus tea", not on the whole bracketed string.
+    """
+    cleaned = re.sub(r"\([^)]*\)", " ", (source or "").lower())
+    return " ".join(re.split(r"[^a-z0-9]+", cleaned)).strip()
+
+
+def _is_distinctive_phrase(phrase: str) -> bool:
+    """Is this phrase specific enough to bind a practice to a remedy?
+
+    Guards against matching on filler alone: an alias that is literally
+    "herbal tea", or a practice named just "Warm water".
+    """
+    tokens = phrase.split()
+    distinctive = [t for t in tokens if t not in _REMEDY_GENERIC_WORDS]
+    if not distinctive:
+        return False
+    # Multi-word phrases need one distinctive word; a lone word must be long
+    # enough to stand alone ("triphala" yes, "amla" no — too collision-prone).
+    return len(tokens) >= 2 or len(distinctive[0]) >= 5
+
+
+def _remedy_name_forms(slug: str, remedy) -> list[str]:
+    """Every name this remedy answers to (slug, display_name, aliases),
+    normalised and filtered down to the forms distinctive enough to match on.
+
+    Alias coverage is what makes this work in practice: the coach types
+    "CCF tea" but the slug is `cumin-coriander-fennel-tea`, and only the
+    catalogue's `ccf-tea` alias connects the two.
+    """
+    raw = [slug or ""]
+    if remedy is not None:
+        raw.append(getattr(remedy, "display_name", "") or "")
+        raw.extend(str(a) for a in (getattr(remedy, "aliases", None) or []))
+
+    forms: list[str] = []
+    for source in raw:
+        phrase = _normalise_remedy_phrase(source)
+        if phrase and _is_distinctive_phrase(phrase):
+            forms.append(phrase)
+    return forms
+
+
+def practice_restates_remedy(practice_name: str, slug: str, remedy) -> bool:
+    """Does this freeform practice name prescribe the same thing as this
+    HomeRemedy slug?
+
+    Public because `apply-rework.py` applies AI-suggested practices and must
+    make the identical call before appending one — matching logic that drifts
+    between the two would let the checker flag what the applier just wrote.
+    """
+    forms = _remedy_name_forms(slug, remedy)
+    if not forms:
+        return False
+    haystack = _normalise_remedy_phrase(practice_name)
+    if not haystack:
+        return False
+    # Match both directions. Forward catches the common case — the remedy's
+    # name sits inside a longer practice line ("Brahmi tea — evening, before
+    # dinner"). Reverse catches the practice that is a trimmed restatement of
+    # a longer catalogue name ("Warm ghee-milk at bedtime" vs "Warm Ghee-Milk
+    # at Bedtime for Constipation"), which forward matching alone misses.
+    if any(re.search(rf"\b{re.escape(f)}\b", haystack) for f in forms):
+        return True
+    return _is_distinctive_phrase(haystack) and any(
+        re.search(rf"\b{re.escape(haystack)}\b", f) for f in forms
+    )
+
+
+def _check_remedy_practice_duplication(
+    plan: Plan, catalogue: Loaded, findings: list[Finding]
+) -> None:
+    """WARNING when a remedy assigned by catalogue slug is ALSO written out as
+    a freeform practice — the client sees the same drink prescribed twice."""
+    remedy_slugs = list(plan.nutrition.home_remedies)
+    if plan.ayurveda:
+        remedy_slugs += list(plan.ayurveda.remedies)
+    if not remedy_slugs:
+        return
+
+    hr_idx = _resolve_index(catalogue.home_remedies)
+    hr_by_slug = {h.slug: h for h in catalogue.home_remedies}
+
+    # Both freeform-practice surfaces, each tagged with where it lives so the
+    # finding tells the coach which list to edit.
+    practices: list[tuple[str, str]] = [
+        ("lifestyle_practices", p.name) for p in plan.lifestyle_practices
+    ]
+    if plan.ayurveda:
+        practices += [
+            ("ayurveda.dinacharya", p.name) for p in plan.ayurveda.dinacharya
+        ]
+    if not practices:
+        return
+
+    seen: set[str] = set()
+    for slug in remedy_slugs:
+        if slug in seen:
+            continue
+        seen.add(slug)
+        canonical = hr_idx.get(slug)
+        remedy = hr_by_slug.get(canonical) if canonical else None
+
+        for section, practice_name in practices:
+            if not practice_restates_remedy(practice_name, slug, remedy):
+                continue
+            findings.append(Finding(
+                "WARNING", section, "name",
+                (f"{practice_name!r} restates {slug!r}, which is already "
+                 f"assigned as a home remedy — the client is shown the same "
+                 f"thing twice (a mandatory daily practice AND a remedy card, "
+                 f"which also hides the app's swap-option framing when two "
+                 f"remedies share a slot). Keep the {slug!r} slug and delete "
+                 f"this practice entry; move any prep detail worth keeping "
+                 f"into the remedy's own notes."),
+                target=slug,
+            ))
+            break
+
+
 # Heavy-metal chelation / mobilising agents. Per The Autoimmune Solution
 # (Appendix B) and standard FM practice, mobilising stored metals before the
 # gut is healed and detox/elimination pathways are open risks reabsorption —
@@ -1007,6 +1163,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Combo-product nutrient overlap ----------
     _check_combo_nutrient_overlap(plan, catalogue, findings)
+
+    # ---------- Same remedy assigned by slug AND written as a practice ----------
+    _check_remedy_practice_duplication(plan, catalogue, findings)
 
     # ---------- Aggressive-detox / chelation safety ----------
     _check_aggressive_detox(plan, client, findings)

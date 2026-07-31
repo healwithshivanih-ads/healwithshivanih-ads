@@ -248,7 +248,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "required": ["name", "cadence", "rationale"],
                 "properties": {
-                    "name": {"type": "string", "description": "Freeform practice name (e.g. 'morning sunlight')."},
+                    "name": {"type": "string", "description": "Freeform practice name (e.g. 'morning sunlight'). NOT for a drink/remedy you are also putting in nutrition_suggestions.home_remedy_slugs — that slug already prescribes it."},
                     "cadence": {"type": "string", "description": "daily | nightly | weekly | etc."},
                     "details": {"type": "string"},
                     "rationale": {"type": "string", "description": "WHY this practice for THIS client — reference a specific symptom, lab, medication, or life event from client_context. Avoid generic 'good for stress' / 'helps sleep'. If you can't tie it to a specific signal in this client's data, drop the suggestion."},
@@ -269,7 +269,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 "reduce": {"type": "array", "items": {"type": "string"}},
                 "meal_timing": {"type": "string"},
                 "cooking_adjustment_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be slugs from the catalogue subgraph."},
-                "home_remedy_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be slugs from the catalogue subgraph."},
+                "home_remedy_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be slugs from the catalogue subgraph. A slug here is the COMPLETE prescription for that remedy — do not also describe it in lifestyle_suggestions."},
                 "rationale": {"type": "string"},
             },
         },
@@ -808,6 +808,16 @@ HARD RULES (violating these breaks the downstream system):
       `nutrition_suggestions.home_remedy_slugs`. Prefer 0-2 well-matched ones —
       they render as the client's daily "drinks & digestives". Only use slugs
       present in the subgraph; never invent them.
+      ONE CHANNEL PER REMEDY: the slug IS the whole prescription — it already
+      carries preparation, dose, timing and cautions from the catalogue, and
+      the client app uses it to offer two remedies sharing a slot as swap
+      options ("use this OR that, never both"). So do NOT also write that same
+      drink into `lifestyle_suggestions`. Doing so prescribes it twice through
+      two unrelated fields: the client gets a mandatory daily practice AND a
+      remedy card for one tea, and the swap-option framing silently disappears.
+      If the remedy needs client-specific handling the catalogue can't express
+      (serve it warm, sweeten it, pair it with cardamom), put that in the
+      surrounding `rationale`, never as a separate practice.
 
 11. ASSUME INDIAN CONTEXT unless client_context says otherwise — vegetarian
     options should always be offered; ragi / sesame / dals / leafy greens
