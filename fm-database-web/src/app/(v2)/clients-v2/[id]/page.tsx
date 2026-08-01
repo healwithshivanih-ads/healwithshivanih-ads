@@ -57,6 +57,8 @@ import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
 import { PendingExtractionsBanner } from "@/components/client-widgets/pending-extractions-banner";
+import { DailyLogPanel } from "./daily-log-panel";
+import { loadDailyTicks } from "@/lib/fmdb/daily-ticks";
 import { MindbodyDripPanel } from "./mindbody-drip-panel";
 import { SomaticReadPanel } from "./somatic-read-panel";
 import { ConditionStatusChips } from "@/components/client-widgets/condition-status-chips";
@@ -769,6 +771,10 @@ export default async function ClientV2Page({
   )?.lifestyle_practices?.some((p) =>
     /\bbreath|pranayam|breathing/i.test(`${p?.name ?? ""} ${p?.details ?? ""}`),
   );
+  // What she actually ticked off in the app over the last fortnight. Read
+  // unconditionally — it's a small file read, and an empty result renders as
+  // an honest "the list is unused" rather than a gap in the page.
+  const dailyTicks = await loadDailyTicks(id, 14);
   const mindbodySteps =
     eftPrescribed || sleepPrescribed
       ? await loadMindbodyDrip(id, {
@@ -1639,6 +1645,17 @@ export default async function ClientV2Page({
               planModules={(client as unknown as { plan_modules?: string[] }).plan_modules}
             />
           </FmGroupedPanel>
+
+          {/* ✅ What she actually ticked off in the app. Sits above the
+              mind-body journey because the drip's own gate reads the same kind
+              of signal — if this panel is empty, nothing downstream of it can
+              be trusted either. Plan clients only: a discovery client has no
+              daily list to tick. */}
+          {publishedPlan && (
+            <FmGroupedPanel id="overview.daily-log" icon="✅" title="Daily log — last 14 days">
+              <DailyLogPanel summary={dailyTicks} />
+            </FmGroupedPanel>
+          )}
 
           {mindbodySteps.length > 0 && (
             <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — practice journey">

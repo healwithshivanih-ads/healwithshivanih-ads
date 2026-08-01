@@ -10,6 +10,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isGrowingTreeEnabled } from "./growing-tree-flag";
+import { queueTicks, type TickItem } from "./daily-ticks";
 import type { AppRemedy, ClientAppData } from "@/lib/fmdb/client-app";
 import { Icon, Mark, OchreContext } from "./ochre-context";
 import { BottomNav, Header } from "./ochre-ui";
@@ -351,9 +352,72 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         null
       : null;
 
-  const dailyRemedies = data.remedies.filter((r) => r.assigned && r.daily);
+  const dailyRemedies = useMemo(
+    () => data.remedies.filter((r) => r.assigned && r.daily),
+    [data.remedies],
+  );
   const dailyTotal = data.supplements.length + practices.length + dailyRemedies.length;
   const dailyDone = Object.keys(logged).length + practices.filter((p) => p.done).length;
+
+  // Send today's checklist to the coach. These ticks are the richest adherence
+  // signal the app has — per supplement, per practice, every day — and they
+  // used to live in localStorage and die there, so the coach could not tell
+  // whether a client was actually taking what was prescribed.
+  //
+  // The whole checklist goes each time, ticked AND unticked, with the names as
+  // she saw them: plans change and practice ids are positional, so a row read
+  // three weeks later has to carry its own denominator. Server upserts by date.
+  const ticksBaselineRef = useRef(false);
+  useEffect(() => {
+    if (!hydrated) return;
+    const items: TickItem[] = [
+      ...data.supplements.map((s) => ({
+        kind: "supplement" as const,
+        id: s.id,
+        name: s.name,
+        done: !!logged[s.id],
+        at: logged[s.id] ?? null,
+      })),
+      ...dailyRemedies.map((r) => ({
+        kind: "remedy" as const,
+        id: "rx-" + r.slug,
+        name: r.name,
+        done: !!logged["rx-" + r.slug],
+        at: logged["rx-" + r.slug] ?? null,
+      })),
+      ...data.practices.map((p) => ({
+        kind: "practice" as const,
+        id: p.id,
+        name: p.name,
+        done: !!practicesDone[p.id],
+      })),
+    ];
+    // First pass after hydration is the state restored from this phone. Send it
+    // only if something is already ticked — that's a day whose ticks may never
+    // have reached the server (she ticked, then closed the app before the
+    // debounce fired). An untouched restore has nothing to say.
+    if (!ticksBaselineRef.current) {
+      ticksBaselineRef.current = true;
+      if (!items.some((i) => i.done)) return;
+    }
+    queueTicks({
+      token: data.token,
+      date: todayIso(),
+      planSlug: data.planSlug,
+      week: data.client.week,
+      items,
+    });
+  }, [
+    hydrated,
+    logged,
+    practicesDone,
+    dailyRemedies,
+    data.supplements,
+    data.practices,
+    data.token,
+    data.planSlug,
+    data.client.week,
+  ]);
 
   // Record today as a "logged day" once anything is logged today. This rolling
   // history survives the midnight reset (unlike `logged`), so the streak persists.

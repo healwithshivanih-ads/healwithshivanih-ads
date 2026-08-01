@@ -434,6 +434,75 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     return {"ok": True, **counts}
 
 
+def _merge_jsonl(src: Path, dest: Path, key: "str | None") -> int:
+    """Fold a JSONL log written on Fly into the authoritative copy on the Mac.
+
+    Returns 1 if `dest` changed, else 0.
+
+    Two merge modes, because the two logs the app writes differ in shape:
+
+      key=None  — append-only (practice sessions). Union by identical line;
+                  each record carries a microsecond timestamp, so two distinct
+                  sessions can never collide.
+      key="..." — upserted (daily ticks, one row per date). Union by that
+                  field, newest `ts` wins, so a fuller end-of-day row replaces
+                  the morning's rather than sitting beside it.
+
+    Existing local rows are always preserved: Fly only holds what was written
+    since the last re-stage, so this must never truncate the Mac's history.
+    Malformed lines are kept rather than dropped — a parse failure is not a
+    licence to delete somebody's record.
+    """
+
+    def read(p: Path) -> list:
+        try:
+            return [ln for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()]
+        except OSError:
+            return []
+
+    fly = read(src)
+    if not fly:
+        return 0
+    local = read(dest)
+
+    if key is None:
+        seen = set(local)
+        merged = list(local)
+        for ln in fly:
+            if ln not in seen:
+                seen.add(ln)
+                merged.append(ln)
+    else:
+        by_key: dict = {}
+        order: list = []
+        for ln in local + fly:  # Fly second so it can win on an equal ts
+            try:
+                rec = json.loads(ln)
+                k = rec.get(key)
+                ts = str(rec.get("ts") or "")
+            except (json.JSONDecodeError, AttributeError):
+                order.append(ln)  # unparseable — carried through as-is
+                continue
+            if k is None:
+                order.append(ln)
+                continue
+            prev = by_key.get(k)
+            if prev is None:
+                by_key[k] = (ts, ln)
+                order.append(("key", k))
+            elif ts >= prev[0]:
+                by_key[k] = (ts, ln)
+        merged = [by_key[o[1]][1] if isinstance(o, tuple) else o for o in order]
+
+    if merged == local:
+        return 0
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    tmp = dest.with_suffix(dest.suffix + f".tmp-{os.getpid()}")
+    tmp.write_text("\n".join(merged) + "\n", encoding="utf-8")
+    tmp.replace(dest)
+    return 1
+
+
 def _refresh(yaml, auth: Path, stag: Path) -> dict:
     out = {"refreshed": 0, "checkins_mirrored": 0, "purged": 0, "errors": []}
     clients_dir = stag / "clients"
@@ -589,6 +658,39 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                     out["checkins_mirrored"] += 1
             except Exception as e:
                 out["errors"].append(f"{client_id} installed-mirror: {e}")
+
+        # reverse-mirror: the two adherence logs the client app writes on Fly —
+        # her daily checklist ticks and her guided-practice sessions.
+        #
+        # These were stranded. Every coach-side reader (the mind-body drip
+        # panel, the daily-log panel, anything phasing built on top) resolves
+        # ~/fm-plans on the Mac, while the app writes to the Fly staging tree —
+        # so four clients had real practice sessions on Fly and the Mac showed
+        # zero for all of them. Same trap as the client.yaml allowlist, in the
+        # opposite direction: a file the APP writes is invisible to the coach
+        # until it is mirrored here.
+        #
+        # Merge, never copy: the Mac holds the full history while Fly holds only
+        # what was written since the last purge/re-stage, so a straight copy
+        # would truncate the record.
+        auth_person = _auth_person(auth, client_id)
+        if auth_person.exists():
+            # Daily ticks: ONE row per day, upserted on Fly as she ticks — so
+            # merge by date and let the newest ts win.
+            try:
+                out["checkins_mirrored"] += _merge_jsonl(
+                    sdir / "_daily_ticks.jsonl", auth_person / "_daily_ticks.jsonl", key="date"
+                )
+            except Exception as e:
+                out["errors"].append(f"{client_id} ticks-mirror: {e}")
+            # Practice sessions: append-only, many rows per day — union by
+            # identical line (each carries a microsecond timestamp).
+            try:
+                out["checkins_mirrored"] += _merge_jsonl(
+                    sdir / "_practice_log.jsonl", auth_person / "_practice_log.jsonl", key=None
+                )
+            except Exception as e:
+                out["errors"].append(f"{client_id} practice-mirror: {e}")
 
         # plan revoked / superseded → purge the app artifacts from Fly
         if plan_slug and not _published_files(auth, plan_slug):
