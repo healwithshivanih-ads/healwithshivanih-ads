@@ -4477,7 +4477,6 @@ export async function loadClientAppData(
     if (/evening|sunset|journal|after work/.test(t)) return 60;
     return 50; // anytime / weekly / no cue — stays mid, original order preserved
   };
-  let pIdx = 0;
   const practiceRaw: Dict[] = []; // index-aligned with practices[]
   // Collect first so we can stable-sort by time of day before assigning ids.
   const collected: { name: string; when: string; rank: number; raw: Dict }[] = [];
@@ -4536,7 +4535,14 @@ export async function loadClientAppData(
       dormantDays: DORMANT_DAYS,
     }),
   });
-  const staged = splitByPhase(collected, (c) => c.raw.phase, phaseGate.openPhase);
+  // Ids are the position in the WHOLE list, assigned before the split — NOT
+  // the position among what happens to be released. The client's daily ticks
+  // and the check-in adherence report are keyed by id, so numbering the
+  // released set would renumber every practice after a newly-opened one on the
+  // morning a phase lands, and yesterday's ticks would reappear against the
+  // wrong rows.
+  const withIds = collected.map((c, i) => ({ ...c, id: `p${i}` }));
+  const staged = splitByPhase(withIds, (c) => c.raw.phase, phaseGate.openPhase);
   const practicesComingLater = staged.later.length;
 
   for (const c of staged.open) {
@@ -4546,7 +4552,7 @@ export async function loadClientAppData(
     const rawDetails = asStr(c.raw.details);
     const details = rawDetails ? clientifyPracticeDetail(rawDetails) : "";
     practices.push({
-      id: `p${pIdx++}`,
+      id: c.id,
       name: c.name,
       when: c.when,
       ...(details ? { details } : {}),
