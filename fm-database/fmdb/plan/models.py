@@ -1001,6 +1001,20 @@ class PracticeItem(BaseModel):
     # as a plain 4-in/6-out breathing session, losing the hand pressure that IS
     # the practice). Leave None for ordinary freeform practices.
     somatic_practice: Optional[str] = None
+    # Which layer of the plan this practice belongs to. 1 (or None) is the
+    # foundation the client starts with; higher numbers open later in the plan,
+    # roughly every three weeks. The plan stays whole either way — this only
+    # controls WHEN a practice appears in the client app.
+    #
+    # WHY: a plan with fourteen practices, seven of them needing a stopped
+    # moment in the day, arrived all at once on day one. Nobody has seven spare
+    # stopped moments; a client does one and feels behind on six. Staging keeps
+    # the whole protocol and makes it survivable.
+    #
+    # None means phase 1, so every plan written before this existed behaves
+    # exactly as it did. Coach sets it in the plan editor; the seeding is only
+    # a suggestion. See fm-database-web/src/lib/fmdb/practice-phasing.ts.
+    phase: Optional[int] = None
 
 
 class CustomRemedy(BaseModel):

@@ -12,6 +12,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
+import { DORMANT_DAYS, daysSinceLastAppOpen } from "@/lib/fmdb/app-engagement";
 import { getCataloguePath, getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
@@ -76,36 +77,10 @@ async function mealPlanStyle(clientId: string): Promise<"detailed" | "principles
   }
 }
 
-/** Days since the client last opened the Ochre Tree app, from
- *  ~/fm-plans/clients/<id>/_app_opens.yaml. Returns null when the file is
- *  missing or empty — a client who has NEVER opened the app is deliberately
- *  NOT treated as dormant, because a brand-new client hasn't had the chance
- *  yet and we'd pause their very first menu. */
-async function daysSinceLastAppOpen(clientId: string): Promise<number | null> {
-  try {
-    const f = path.join(getPlansRoot(), "clients", clientId, "_app_opens.yaml");
-    const doc = (yaml.load(await fs.readFile(f, "utf-8")) as { opens?: unknown[] }) ?? {};
-    const opens = (doc.opens ?? []).map(String).filter(Boolean);
-    if (!opens.length) return null;
-    const last = Date.parse(opens.reduce((a, b) => (a > b ? a : b)));
-    if (!Number.isFinite(last)) return null;
-    return Math.floor((Date.now() - last) / 86_400_000);
-  } catch {
-    return null;
-  }
-}
-
-/** Dormancy cut-off, in days since last app open, past which we stop
- *  auto-drafting weekly menus (and the grocery/recipe packs that follow).
- *
- *  WHY: menu + grocery + recipe generation costs roughly $0.09/client/week in
- *  Haiku calls, and it was running every week for clients who had not opened
- *  the app in nearly three weeks (cl-007 and cl-008 were both 19 days dormant).
- *  Nobody was reading the output. Coach set the threshold at 14 days on
- *  2026-07-24 — two missed weeks is a clear signal, and it reverses itself the
- *  moment the client opens the app again, so nothing needs un-pausing by hand.
- *  Override with FM_MENU_DORMANT_DAYS (0 disables the pause entirely). */
-const DORMANT_DAYS = Number(process.env.FM_MENU_DORMANT_DAYS ?? 14);
+/* daysSinceLastAppOpen + DORMANT_DAYS moved to lib/fmdb/app-engagement.ts —
+   the practice drip needs the same dormancy read, and a second copy of it
+   would have drifted. Behaviour here is unchanged; see that module for why
+   the client app cannot use this same absent-side reading. */
 
 /** The client's current plan week (1-based), from the same Day-1 anchor the
  *  app uses. Returns 1 when no anchor exists yet. */

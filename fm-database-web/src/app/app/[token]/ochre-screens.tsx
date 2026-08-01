@@ -582,6 +582,16 @@ export function TodayScreen({
               );
             })}
           </div>
+          {/* The plan arrives in layers, and this is the only place the client
+              hears about it. Deliberately NOT a count: "3 more locked" turns
+              staging — which exists to protect them from a fourteen-item day —
+              into a list of what they are not doing yet. No number, no lock
+              icon, no progress bar to complete. Just: this is the start. */}
+          {data.practicesComingLater > 0 && (
+            <p className="muted" style={{ margin: "10px 2px 0", fontSize: 13 }}>
+              These come first. A few more open up later in your plan.
+            </p>
+          )}
           {/* ONE entry point, not four launch cards. The client picks how she
               feels; the routing picks the technique. Anything the coach linked
               specifically keeps its own line below so it isn't buried. */}

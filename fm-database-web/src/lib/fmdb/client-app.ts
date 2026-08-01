@@ -45,6 +45,15 @@ import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLoo
 import { weekNourishment } from "@/lib/fmdb/nourishment";
 import { deriveMindBodyReads, deriveSomatic, excludeSomaticLinked, type AppMindBodyRead, type AppSomatic } from "@/lib/fmdb/somatic";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
+import { DORMANT_DAYS, readAppOpens } from "@/lib/fmdb/app-engagement";
+import { BREATH_RE, EFT_RE, SLEEP_RE } from "@/lib/fmdb/app-guided";
+import {
+  gatePhases,
+  maxPhaseOf,
+  splitByPhase,
+  stateAtDueFrom,
+  type PollScore,
+} from "@/lib/fmdb/practice-phasing";
 import {
   resolveAppTier,
   resolveDiscoveryStage,
@@ -638,7 +647,7 @@ export function deriveEft(
   for (let i = 0; i < practiceRaw.length; i++) {
     const p = practiceRaw[i] || {};
     const text = `${asStr(p.name)} ${asStr(p.details)}`.toLowerCase();
-    if (/\beft\b|tapping|emotional freedom/.test(text)) {
+    if (EFT_RE.test(text)) {
       pid = practices[i]?.id || asStr(p.id) || `eft-${i}`;
       when = practices[i]?.when || asStr(p.when);
       practiceText = text;
@@ -710,7 +719,7 @@ export function deriveSleep(
     // Match the practice NAME only — "wind down" appears casually in other
     // practices' DETAILS (e.g. "4-7-8 breathing … to wind down before bed").
     const text = asStr(p.name).toLowerCase();
-    if (/wind.?down|body scan|sleep relaxation|relaxation for sleep|yoga nidra|progressive relaxation|sleep meditation|bedtime relaxation/.test(text)) {
+    if (SLEEP_RE.test(text)) {
       pid = practices[i]?.id || asStr(p.id) || `sleep-${i}`;
       when = practices[i]?.when || asStr(p.when);
       break;
@@ -745,12 +754,12 @@ function deriveBreathwork(
     const name = practices[i].name;
     const details = asStr(practiceRaw[i]?.details);
     const text = `${name} ${details}`;
-    if (!/breath|pranayam/i.test(text)) continue;
+    if (!BREATH_RE.test(text)) continue;
     // not a paced session — taping / posture references only
     if (/mouth.?tap|nasal breathing|nose breathing|mouth breathing/i.test(text) && !/\d\s*[-–]\s*\d\s*[-–]\s*\d/.test(text))
       continue;
     // name must reference the practice itself unless details prescribe a count
-    if (!/breath|pranayam/i.test(name) && !/\d\s*[-–]\s*\d\s*[-–]\s*\d|breathwork|slow .{0,12}breath/i.test(details))
+    if (!BREATH_RE.test(name) && !/\d\s*[-–]\s*\d\s*[-–]\s*\d|breathwork|slow .{0,12}breath/i.test(details))
       continue;
 
     // ---- phases ----
@@ -1104,6 +1113,10 @@ export interface ClientAppData {
   allSupplements: AppSupplement[];
   slotOrder: string[];
   practices: { id: string; name: string; when: string; details?: string }[];
+  /** Practices on the plan that have not opened yet. The client sees a
+   *  single warm line, never a count of what they are "missing" — the
+   *  staging exists to protect them, and must not read as withholding. */
+  practicesComingLater: number;
   /** Computed seed-cycling section (which seeds today) — its own section
    *  under the menu. null when the plan doesn't prescribe seed cycling. */
   seedCycling: AppSeedCycling | null;
@@ -1371,6 +1384,37 @@ function resolveAppTz(client: Dict, deviceTz?: string | null): string {
 function tzNow(tz: string): Date {
   const s = new Date().toLocaleString("en-US", { timeZone: tz });
   return new Date(s);
+}
+
+/**
+ * Weekly-poll replies, oldest first, for the practice-phasing brake.
+ *
+ * Read separately from the journey's own sessions sweep further down, which
+ * happens AFTER practices are assembled — the gate needs this before it can
+ * decide what to show, and reordering two hundred lines of journey assembly to
+ * share one pass would risk far more than a second read of a small directory
+ * costs.
+ */
+async function readPollHistory(
+  clientDir: string,
+): Promise<{ date: string; score: PollScore }[]> {
+  const out: { date: string; score: PollScore }[] = [];
+  try {
+    const dir = path.join(clientDir, "sessions");
+    for (const n of (await fs.readdir(dir)).filter((f) => f.endsWith(".yaml"))) {
+      const s = await readYamlIfExists(path.join(dir, n));
+      const poll = s?.poll_response as Dict | undefined;
+      const date = asStr(s?.date);
+      const score = asStr(poll?.score);
+      if (!poll || !date) continue;
+      if (score === "good" || score === "partial" || score === "struggling") {
+        out.push({ date, score });
+      }
+    }
+  } catch {
+    // No sessions directory is normal for a new client — no polls, no brake.
+  }
+  return out.sort((a, b) => a.date.localeCompare(b.date));
 }
 
 async function readYamlIfExists(p: string): Promise<Dict | null> {
@@ -3271,6 +3315,7 @@ async function buildDiscoveryAppData(
     allSupplements: [],
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: [],
+    practicesComingLater: 0,
     seedCycling: null,
     periodCare: null,
     breathwork: null,
@@ -4470,7 +4515,31 @@ export async function loadClientAppData(
   // Array.prototype.sort is stable (ES2019+), so equal-rank practices keep
   // their authored order — only the clearly time-anchored ones move.
   collected.sort((a, b) => a.rank - b.rank);
-  for (const c of collected) {
+
+  // ---- staged release: the plan arrives a layer at a time ------------------
+  // A plan can prescribe fourteen practices, seven of them needing their own
+  // stopped moment in the day. All fourteen used to land on day one, and a
+  // client with seven stopped moments does one and feels behind on six.
+  //
+  // The plan is unchanged; only WHEN each practice appears is gated. Anything
+  // without a phase is phase 1, so plans written before this behave exactly as
+  // they did. The gate is monotone — a practice, once shown, is never taken
+  // away — and time-driven, so a quiet client can never stall on phase 1.
+  const phaseGate = gatePhases({
+    week,
+    totalWeeks,
+    maxPhase: maxPhaseOf(collected, (c) => c.raw.phase),
+    stateAtDue: stateAtDueFrom({
+      startMs: startDate ? startDate.getTime() : null,
+      opens: await readAppOpens(clientId),
+      polls: await readPollHistory(clientDir),
+      dormantDays: DORMANT_DAYS,
+    }),
+  });
+  const staged = splitByPhase(collected, (c) => c.raw.phase, phaseGate.openPhase);
+  const practicesComingLater = staged.later.length;
+
+  for (const c of staged.open) {
     // Surface the coach's instructions to the client (e.g. seed-cycling's
     // follicular-vs-luteal steps) — the card shows name + cadence, tap "How"
     // to read the full details. Light-scrubbed; omitted when empty.
@@ -5622,6 +5691,7 @@ export async function loadClientAppData(
     allSupplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: practicesVisible,
+    practicesComingLater,
     seedCycling,
     periodCare,
     breathwork,

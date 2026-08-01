@@ -16,7 +16,9 @@
  * It never blocks publishing. It is a second pair of eyes, not a gate.
  */
 
-import { practiceLoad } from "@/lib/fmdb/practice-load";
+import { looksAppGuided } from "@/lib/fmdb/app-guided";
+import { classifyPractice, practiceLoad } from "@/lib/fmdb/practice-load";
+import { normalisePhase, phaseOpensAtWeek, seedPhases } from "@/lib/fmdb/practice-phasing";
 
 const TONE = {
   comfortable: { bg: "rgba(74,97,82,.08)", line: "rgba(74,97,82,.28)", fg: "#3a4d41", icon: "🌱" },
@@ -26,14 +28,34 @@ const TONE = {
 
 export function PracticeLoadNote({
   practices,
+  totalWeeks = 12,
+  onStage,
+  locked = false,
 }: {
-  practices: { name?: string; somatic_practice?: string | null }[];
+  practices: { name?: string; details?: string; somatic_practice?: string | null; phase?: number | null }[];
+  /** plan_period_weeks — decides which week each phase lands on */
+  totalWeeks?: number;
+  /** apply a suggested phase to every practice, in order. Omit to hide the offer. */
+  onStage?: (phases: number[]) => void;
+  locked?: boolean;
 }) {
+  const rows = practices ?? [];
   const load = practiceLoad(
-    (practices ?? []).map((p) => ({ name: p.name ?? "", guided: !!p.somatic_practice })),
+    rows.map((p) => ({ name: p.name ?? "", guided: looksAppGuided(p.name ?? "", p.details ?? "", p.somatic_practice) })),
   );
   if (load.total === 0) return null;
   const tone = TONE[load.verdict];
+
+  // What the client actually meets on day one, once staging is taken into
+  // account — which is the number that matters and was previously invisible.
+  const phases = rows.map((p) => normalisePhase(p.phase));
+  const maxPhase = phases.reduce((m, n) => Math.max(m, n), 1);
+  const staged = maxPhase > 1;
+  const dayOne = practiceLoad(
+    rows
+      .filter((_, i) => phases[i] === 1)
+      .map((p) => ({ name: p.name ?? "", guided: looksAppGuided(p.name ?? "", p.details ?? "", p.somatic_practice) })),
+  );
 
   return (
     <div
@@ -70,12 +92,47 @@ export function PracticeLoadNote({
         </div>
       )}
 
-      {load.verdict !== "comfortable" && (
+      {/* Once phases exist, the headline above describes the WHOLE plan while
+          the client only meets phase 1 — so say what day one is, or the note
+          keeps warning about a load nobody is actually being handed. */}
+      {staged && (
+        <div style={{ marginTop: 8, fontSize: 11.5, color: tone.fg }}>
+          Staged over {maxPhase} phases — the client starts with {dayOne.total}{" "}
+          {dayOne.total === 1 ? "practice" : "practices"}, {dayOne.dedicated.length}{" "}
+          needing their own moment. The rest open on{" "}
+          {Array.from({ length: maxPhase - 1 }, (_, k) =>
+            `week ${phaseOpensAtWeek(k + 2, totalWeeks)}`,
+          ).join(", ")}
+          .
+        </div>
+      )}
+
+      {load.verdict !== "comfortable" && !staged && (
         <div style={{ marginTop: 8, fontSize: 11.5, color: "var(--fm-muted)" }}>
           The cheap ones — teas, meal timing, a bedtime anchor — cost almost nothing;
-          it is the stopped moments that compete. Moving one to the next phase usually
-          buys more adherence than leaving all of them in.
+          it is the stopped moments that compete. Staging the extra stopped moments
+          usually buys more adherence than leaving all of them in.
         </div>
+      )}
+
+      {/* Offered, never applied automatically. The heuristic can be wrong
+          about which practice matters most, and the coach's ordering is the
+          only thing that knows. */}
+      {onStage && !locked && !staged && load.verdict !== "comfortable" && (
+        <button
+          type="button"
+          onClick={() => onStage(seedPhases(
+            rows.map((p) => ({ name: p.name ?? "", guided: looksAppGuided(p.name ?? "", p.details ?? "", p.somatic_practice) })),
+            classifyPractice,
+          ))}
+          style={{
+            marginTop: 10, fontSize: 11.5, padding: "5px 10px", borderRadius: 8,
+            border: `1px solid ${tone.line}`, background: "#fff", color: tone.fg,
+            cursor: "pointer", fontWeight: 600,
+          }}
+        >
+          Stage this plan — keep the first 3 stopped moments, open the rest later
+        </button>
       )}
     </div>
   );

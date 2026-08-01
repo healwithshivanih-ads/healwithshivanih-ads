@@ -17,6 +17,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 // ProtocolTemplatePicker removed — superseded by the unified AttachedProtocolsPanel
 // on the plan edit page, which handles both protocol selection and content seeding.
 import { PracticeLoadNote } from "./practice-load-note";
+import { phaseOpensAtWeek } from "@/lib/fmdb/practice-phasing";
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
 import { RecipeSuggestionsCard } from "./recipe-suggestions-card";
@@ -75,6 +76,10 @@ interface PracticeItem {
   cadence: string;
   details?: string;
   intake_evidence?: string[];   // v0.72 — see SupplementItem
+  somatic_practice?: string | null;
+  /** Which layer of the plan this belongs to; null/1 = from day one. The plan
+   *  is whole either way — this only decides when the client meets it. */
+  phase?: number | null;
 }
 
 interface EducationModuleItem {
@@ -2161,7 +2166,17 @@ export function PlanEditor(props: PlanEditorProps) {
                 {/* What this plan actually asks of the client's day. A
                     14-practice plan shipped because every row looked the same
                     size on screen. */}
-                <PracticeLoadNote practices={lifestyle} />
+                <PracticeLoadNote
+                  practices={lifestyle}
+                  totalWeeks={Number(plan.plan_period_weeks) || 12}
+                  locked={locked}
+                  onStage={(phases) =>
+                    patch(
+                      "lifestyle_practices",
+                      lifestyle.map((p, i) => ({ ...p, phase: phases[i] ?? 1 })),
+                    )
+                  }
+                />
                 {lifestyle.map((p, i) => (
                   <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
                     <div className="flex gap-2">
@@ -2183,6 +2198,29 @@ export function PlanEditor(props: PlanEditorProps) {
                           patch("lifestyle_practices", next);
                         }}
                       />
+                      {/* WHEN this practice reaches the client. The plan is
+                          whole either way — a later phase is not a smaller
+                          prescription, just a later one. */}
+                      <select
+                        value={String(p.phase ?? 1)}
+                        disabled={locked}
+                        title="Which layer of the plan this practice belongs to"
+                        onChange={(e) => {
+                          const next = [...lifestyle];
+                          const v = Number(e.target.value);
+                          next[i] = { ...next[i], phase: v > 1 ? v : null };
+                          patch("lifestyle_practices", next);
+                        }}
+                        className="text-xs border rounded-md px-2 bg-background shrink-0"
+                      >
+                        {[1, 2, 3, 4].map((n) => (
+                          <option key={n} value={n}>
+                            {n === 1
+                              ? "From day 1"
+                              : `Week ${phaseOpensAtWeek(n, Number(plan.plan_period_weeks) || 12)}`}
+                          </option>
+                        ))}
+                      </select>
                       <Button
                         type="button"
                         variant="outline"
