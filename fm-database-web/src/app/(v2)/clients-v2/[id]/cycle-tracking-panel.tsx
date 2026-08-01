@@ -80,6 +80,24 @@ export function CycleTrackingPanel(p: Props) {
     p.cycleStatus === "menstruating" || p.cycleStatus === "perimenopausal";
   const postmenopausal = p.cycleStatus === "postmenopausal";
 
+  // Rules of Hooks: every hook must run on each render in the same order, so
+  // they sit above the three early returns below (postmenopausal / no-status /
+  // non-cycling). These are only *used* on the editable-form path, but must be
+  // *declared* unconditionally — otherwise the postmenopausal render omits them
+  // and React throws "rendered fewer hooks than expected."
+  const router = useRouter();
+  const [editing, setEditing] = useState(false);
+  const [start, setStart] = useState(p.lastMenstrualPeriod ?? "");
+  const [end, setEnd] = useState(p.lastPeriodEndDate ?? "");
+  const [len, setLen] = useState(
+    p.cycleLengthDays ? String(p.cycleLengthDays) : ""
+  );
+  const [reg, setReg] = useState(p.cycleRegularity ?? "");
+  const [saving, setSaving] = useState(false);
+  const [err, setErr] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendMsg, setSendMsg] = useState("");
+
   // Postmenopausal: cycle tracking doesn't apply. Render a compact
   // status tile instead of the LMP / cycle-length / next-period form
   // (which is meaningless when she hasn't menstruated in 12+ months).
@@ -117,19 +135,6 @@ export function CycleTrackingPanel(p: Props) {
       </FmPanel>
     );
   }
-
-  const router = useRouter();
-  const [editing, setEditing] = useState(false);
-  const [start, setStart] = useState(p.lastMenstrualPeriod ?? "");
-  const [end, setEnd] = useState(p.lastPeriodEndDate ?? "");
-  const [len, setLen] = useState(
-    p.cycleLengthDays ? String(p.cycleLengthDays) : ""
-  );
-  const [reg, setReg] = useState(p.cycleRegularity ?? "");
-  const [saving, setSaving] = useState(false);
-  const [err, setErr] = useState("");
-  const [sending, setSending] = useState(false);
-  const [sendMsg, setSendMsg] = useState("");
 
   // B8 — when cycle_status is not set on a female client of any age,
   // surface a prompt rather than silently hiding the panel. Helps coach
