@@ -33,17 +33,18 @@ jobs:
           cache: npm
           cache-dependency-path: fm-database-web/package-lock.json
 
-      # Two suites (menu-hygiene, recipe-generation-skip) drive the real Python
-      # modules. Locally that is the repo venv, which is untracked and so does
-      # not exist here — the tests fall back to python3 on PATH, which CI must
-      # therefore provide along with the one dependency they read (pyyaml, for
-      # the recipe + home-remedy catalogue).
+      # Several suites (menu-hygiene, recipe-generation-skip, prospects-sweep)
+      # drive the real Python modules. Locally that is the repo venv, which is
+      # untracked and so does not exist here — the tests fall back to python3 on
+      # PATH, which CI must therefore provide along with the deps those modules
+      # import: pyyaml (recipe + home-remedy catalogue) and pydantic
+      # (fmdb.plan.models, pulled in transitively by prospects + storage).
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Python deps for the Python-backed tests
-        run: pip install pyyaml
+        run: pip install pyyaml pydantic
 
       # --include=dev is required: Tailwind v4's postcss plugin lives in
       # devDependencies and is needed even for a production build.
