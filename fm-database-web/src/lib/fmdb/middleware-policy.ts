@@ -64,6 +64,11 @@ export const PUBLIC_PATH_PREFIXES = [
   // progressive-unlock drip engine. (Was missing → 404'd on Fly under
   // FLY_INTAKE_ONLY, silently breaking practice logging for every client.)
   "/api/app-practice",
+  // Daily checklist ticks (supplements / remedies / practices). Token-scoped,
+  // client derived server-side. This is the adherence dataset the coach's
+  // daily-log panel reads — off the allowlist it 404s on Fly and every tick is
+  // dropped, which is the same silent loss it exists to end.
+  "/api/app-ticks",
   // Client reminder preferences (AM/PM supplements, weekly check-in). Token-
   // scoped. (Same missing-from-allowlist bug as app-practice.)
   "/api/app-reminders",
