@@ -1015,6 +1015,22 @@ class PracticeItem(BaseModel):
     # exactly as it did. Coach sets it in the plan editor; the seeding is only
     # a suggestion. See fm-database-web/src/lib/fmdb/practice-phasing.ts.
     phase: Optional[int] = None
+    # Which of THIS plan's drivers or topics this practice is here to work on —
+    # mechanism slugs from hypothesized_drivers, or topic slugs from
+    # primary/contributing_topics. Free-text practices are deliberately not
+    # catalogue entities, so without this there is nothing joining "Abhyanga —
+    # warm sesame oil self-massage" to `hpa-axis-dysregulation`, and staging has
+    # to fall back to the order the coach happened to type them in.
+    #
+    # Drives WHICH practices make the plan's first phase: the foundation should
+    # be the ones serving the top-ranked driver, not the ones written first.
+    # On Hariharan's plan the gastrocolic-rhythm practice serves driver 4 of 4
+    # (altered-gi-motility) while the HPA-axis cluster serves driver 1 — an
+    # ordering nothing in the plan could previously see.
+    #
+    # Empty means untagged, which is safe: staging falls back to coach order,
+    # exactly as it behaved before this field existed.
+    addresses: list[str] = Field(default_factory=list)
 
 
 class CustomRemedy(BaseModel):

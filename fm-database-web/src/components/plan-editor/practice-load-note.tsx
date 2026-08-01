@@ -18,7 +18,7 @@
 
 import { looksAppGuided } from "@/lib/fmdb/app-guided";
 import { classifyPractice, practiceLoad } from "@/lib/fmdb/practice-load";
-import { normalisePhase, phaseOpensAtWeek, seedPhases } from "@/lib/fmdb/practice-phasing";
+import { normalisePhase, phaseOpensAtWeek, priorityRank, seedPhases, UNRANKED, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
 
 const TONE = {
   comfortable: { bg: "rgba(74,97,82,.08)", line: "rgba(74,97,82,.28)", fg: "#3a4d41", icon: "🌱" },
@@ -29,12 +29,15 @@ const TONE = {
 export function PracticeLoadNote({
   practices,
   totalWeeks = 12,
+  priorities,
   onStage,
   locked = false,
 }: {
-  practices: { name?: string; details?: string; somatic_practice?: string | null; phase?: number | null }[];
+  practices: { name?: string; details?: string; somatic_practice?: string | null; phase?: number | null; addresses?: string[] }[];
   /** plan_period_weeks — decides which week each phase lands on */
   totalWeeks?: number;
+  /** the plan's ranked drivers + topics — what the foundation is chosen by */
+  priorities?: PlanPriorities;
   /** apply a suggested phase to every practice, in order. Omit to hide the offer. */
   onStage?: (phases: number[]) => void;
   locked?: boolean;
@@ -51,6 +54,13 @@ export function PracticeLoadNote({
   const phases = rows.map((p) => normalisePhase(p.phase));
   const maxPhase = phases.reduce((m, n) => Math.max(m, n), 1);
   const staged = maxPhase > 1;
+  // Does the plan actually rank these practices, or is staging still falling
+  // back to the order they were typed in? Drives both the warning below and
+  // what the button honestly promises.
+  const untagged = priorities
+    ? rows.filter((p) => priorityRank(p.addresses, priorities) === UNRANKED).length
+    : rows.length;
+  const byRootCause = untagged < rows.length;
   const dayOne = practiceLoad(
     rows
       .filter((_, i) => phases[i] === 1)
@@ -115,6 +125,17 @@ export function PracticeLoadNote({
         </div>
       )}
 
+      {/* Partial tagging is the state worth naming. Untagged practices sort
+          AFTER every tagged one, so a plan where two rows are tagged and nine
+          are not will stage almost entirely on those two — which looks like a
+          bug unless you know it isn't. */}
+      {untagged > 0 && untagged < load.total && (
+        <div style={{ marginTop: 8, fontSize: 11.5, color: "#8c5318" }}>
+          {untagged} of {load.total} practices have no driver set. Staging puts those
+          last — tag them, or clear the rest, so the whole plan is ordered the same way.
+        </div>
+      )}
+
       {/* Offered, never applied automatically. The heuristic can be wrong
           about which practice matters most, and the coach's ordering is the
           only thing that knows. */}
@@ -122,8 +143,15 @@ export function PracticeLoadNote({
         <button
           type="button"
           onClick={() => onStage(seedPhases(
-            rows.map((p) => ({ name: p.name ?? "", guided: looksAppGuided(p.name ?? "", p.details ?? "", p.somatic_practice) })),
+            rows.map((p) => ({
+              name: p.name ?? "",
+              guided: looksAppGuided(p.name ?? "", p.details ?? "", p.somatic_practice),
+              addresses: p.addresses,
+            })),
             classifyPractice,
+            3,
+            2,
+            priorities,
           ))}
           style={{
             marginTop: 10, fontSize: 11.5, padding: "5px 10px", borderRadius: 8,
@@ -131,7 +159,9 @@ export function PracticeLoadNote({
             cursor: "pointer", fontWeight: 600,
           }}
         >
-          Stage this plan — keep the first 3 stopped moments, open the rest later
+          {byRootCause
+            ? "Stage this plan — day one built from the top-ranked driver"
+            : "Stage this plan — keep the first 3 stopped moments, open the rest later"}
         </button>
       )}
     </div>

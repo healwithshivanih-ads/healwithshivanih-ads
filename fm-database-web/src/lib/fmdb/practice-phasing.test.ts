@@ -11,6 +11,7 @@
  */
 import { describe, expect, it } from "vitest";
 
+import { priorityOptions } from "@/components/plan-editor/practice-addresses";
 import { classifyPractice } from "./practice-load";
 import {
   gatePhases,
@@ -20,7 +21,10 @@ import {
   seedPhases,
   splitByPhase,
   stateAtDueFrom,
+  priorityRank,
+  UNRANKED,
   type PhaseGateInput,
+  type PlanPriorities,
   type PollScore,
 } from "./practice-phasing";
 
@@ -288,35 +292,99 @@ describe("seeding phases from the load check", () => {
     expect(seedPhases(four, classifyPractice)).toEqual([1, 1, 1, 2]);
   });
 
-  it("rescues the app-guided work when her order would strand all of it", () => {
-    // Hariharan's actual miss: written last, so plan order alone sent both
-    // guided practices to week 7 — including the EFT round for the anxiety he
-    // came in with. Only the LAST foundation slot is taken, so her top two
-    // choices are untouched.
-    const withGuided = [
-      { name: "Morning sunlight, 10 minutes" },
-      { name: "Yoga" }, // NOT "walk after lunch" — that rides a meal and is never a stopped moment
+  /* Hariharan's real plan, which is where the rule came from. His drivers rank
+     HPA-axis first and altered-gi-motility LAST, so the gastrocolic-rhythm
+     practice belongs in a later phase however app-guided it is — and the
+     breathing/abhyanga cluster belongs on day one however late it was typed. */
+  const HARI: PlanPriorities = {
+    drivers: [
+      "hpa-axis-dysregulation",
+      "methylation-cycle-dysfunction",
+      "thyroid-conversion-impairment",
+      "altered-gi-motility",
+    ],
+    primaryTopics: ["hashimotos-hypothyroidism", "hypertension"],
+    contributingTopics: ["constipation"],
+  };
+
+  it("puts the leading driver's practices first, whatever the typing order", () => {
+    const items = [
+      { name: "Belly rhythm", guided: true, addresses: ["altered-gi-motility"] },
+      { name: "Daily walk, brisk", addresses: ["hypertension"] },
+      { name: "Gratitude journal", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Yoga", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Morning sunlight", addresses: ["thyroid-conversion-impairment"] },
+    ];
+    const seeded = seedPhases(items, classifyPractice, 3, 2, HARI);
+    expect(seeded[2]).toBe(1); // HPA — driver 1
+    expect(seeded[3]).toBe(1); // HPA — driver 1
+    expect(seeded[4]).toBe(1); // thyroid conversion — driver 3
+    expect(seeded[0]).toBeGreaterThan(1); // gi-motility is driver 4: it waits
+    expect(seeded[1]).toBeGreaterThan(1); // hypertension is a topic, below drivers
+  });
+
+  it("does not let app-guided beat clinical priority", () => {
+    // The over-correction this replaced: guided practices were promoted into
+    // the foundation regardless of the driver they served.
+    const items = [
+      { name: "Yoga", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Meditation", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Stretching", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Belly rhythm", guided: true, addresses: ["altered-gi-motility"] },
+    ];
+    expect(seedPhases(items, classifyPractice, 3, 2, HARI)).toEqual([1, 1, 1, 2]);
+  });
+
+  it("uses app-guided as a tiebreaker within one driver", () => {
+    const items = [
+      { name: "Yoga", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Meditation", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Stretching", addresses: ["hpa-axis-dysregulation"] },
+      { name: "EFT tapping", guided: true, addresses: ["hpa-axis-dysregulation"] },
+    ];
+    // All four serve driver 1, so the one the app coaches takes a slot and the
+    // last-written non-guided practice gives it up.
+    const seeded = seedPhases(items, classifyPractice, 3, 2, HARI);
+    expect(seeded[3]).toBe(1);
+    expect(seeded[2]).toBe(2);
+  });
+
+  it("takes the BEST rank when a practice serves more than one thing", () => {
+    expect(priorityRank(["constipation", "hpa-axis-dysregulation"], HARI)).toBe(0);
+    expect(priorityRank(["altered-gi-motility"], HARI)).toBe(3);
+    expect(priorityRank(["hashimotos-hypothyroidism"], HARI)).toBe(4); // first topic, after 4 drivers
+    expect(priorityRank(["constipation"], HARI)).toBe(6);
+    expect(priorityRank(["nothing-the-plan-names"], HARI)).toBe(UNRANKED);
+    expect(priorityRank([], HARI)).toBe(UNRANKED);
+    expect(priorityRank(undefined, HARI)).toBe(UNRANKED);
+  });
+
+  it("falls back to coach order when the plan tags nothing", () => {
+    // The whole existing roster. Sorting on an all-equal rank would collapse to
+    // "guided first" and displace her leading practice — so it must not sort.
+    const items = [
+      { name: "Morning sunlight" },
+      { name: "Yoga" },
       { name: "Gratitude journal" },
       { name: "Belly rhythm", guided: true },
       { name: "EFT tapping", guided: true },
     ];
-    const seeded = seedPhases(withGuided, classifyPractice);
-    expect(seeded[0]).toBe(1); // her first choice, untouched
-    expect(seeded[1]).toBe(1); // her second, untouched
-    expect(seeded[3]).toBe(1); // earliest guided one promoted into slot 3
-    expect(seeded[2]).toBeGreaterThan(1); // gratitude journal gives up the slot
+    expect(seedPhases(items, classifyPractice, 3, 2, HARI)).toEqual([1, 1, 1, 2, 2]);
+    expect(seedPhases(items, classifyPractice)).toEqual([1, 1, 1, 2, 2]);
   });
 
-  it("does not promote anything when a guided practice already made the cut", () => {
-    // Her order already includes one; nothing needs rescuing, so nothing moves.
+  it("sorts untagged practices after tagged ones on a half-tagged plan", () => {
     const items = [
-      { name: "Morning sunlight" },
-      { name: "4-7-8 breathing", guided: true },
-      { name: "Morning walk" },
-      { name: "Gratitude journal" },
-      { name: "Belly rhythm", guided: true },
+      { name: "Yoga" },                                                  // untagged
+      { name: "Meditation", addresses: ["hpa-axis-dysregulation"] },
+      { name: "Stretching" },                                            // untagged
+      { name: "Body scan", addresses: ["hpa-axis-dysregulation"] },
     ];
-    expect(seedPhases(items, classifyPractice)).toEqual([1, 1, 1, 2, 2]);
+    const seeded = seedPhases(items, classifyPractice, 2, 2, HARI);
+    expect(seeded[1]).toBe(1);
+    expect(seeded[3]).toBe(1);
+    expect(seeded[0]).toBeGreaterThan(1);
+    expect(seeded[2]).toBeGreaterThan(1);
   });
 
   it("keeps the first three stopped moments and stages the rest", () => {
@@ -340,5 +408,25 @@ describe("seeding phases from the load check", () => {
   it("leaves a small plan entirely alone", () => {
     const small = [{ name: "Morning walk" }, { name: "Chamomile tea at night" }];
     expect(seedPhases(small, classifyPractice)).toEqual([1, 1]);
+  });
+});
+
+describe("the plan's own ranking, as the editor offers it", () => {
+  /* Hariharan's plan names hpa-axis-dysregulation as BOTH driver 1 and a
+     primary topic. Offering it twice would show the same thing at two
+     different apparent priorities. */
+  it("offers each slug once, at its best rank", () => {
+    const opts = priorityOptions({
+      drivers: ["hpa-axis-dysregulation", "altered-gi-motility"],
+      primaryTopics: ["hpa-axis-dysregulation", "hypertension"],
+      contributingTopics: ["constipation"],
+    });
+    expect(opts.map((o) => o.slug)).toEqual([
+      "hpa-axis-dysregulation",
+      "altered-gi-motility",
+      "hypertension",
+      "constipation",
+    ]);
+    expect(opts[0].band).toBe("driver 1");
   });
 });

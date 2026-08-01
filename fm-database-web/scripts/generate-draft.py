@@ -384,6 +384,16 @@ def main() -> int:
                 name=ls.get("name", ""),
                 cadence=ls.get("cadence", "daily"),
                 details=ls.get("details", ""),
+                # What this practice is FOR. The AI has always returned
+                # addresses_mechanism and it was thrown away here, which left
+                # staging with nothing but the order the practices happened to
+                # come back in. Keeping it means the client's first phase can be
+                # built from the leading driver rather than from typing order.
+                addresses=[
+                    str(m).strip()
+                    for m in (ls.get("addresses_mechanism") or [])
+                    if str(m).strip()
+                ],
             ))
 
     # Same degraded-shape guard as the ayurveda / tissue_salts blocks below:

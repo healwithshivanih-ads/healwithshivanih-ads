@@ -252,7 +252,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "cadence": {"type": "string", "description": "daily | nightly | weekly | etc."},
                     "details": {"type": "string"},
                     "rationale": {"type": "string", "description": "WHY this practice for THIS client — reference a specific symptom, lab, medication, or life event from client_context. Avoid generic 'good for stress' / 'helps sleep'. If you can't tie it to a specific signal in this client's data, drop the suggestion."},
-                    "addresses_mechanism": {"type": "array", "items": {"type": "string"}, "description": "mechanism slugs this targets"},
+                    "addresses_mechanism": {"type": "array", "items": {"type": "string"}, "description": "Which of THIS assessment's likely_drivers (mechanism slugs) or topics_in_play this practice is here to work on. Populate it for EVERY practice — it decides which practices the client meets on day one and which are staged for later weeks, so a practice left blank sinks below every tagged one. Use the driver slug when the practice targets the mechanism, the topic slug when it targets the condition. Multiple is fine; list the most direct first."},
                     "intake_evidence": {
                         "type": "array",
                         "items": {"type": "string"},

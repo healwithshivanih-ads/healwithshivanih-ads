@@ -17,7 +17,8 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 // ProtocolTemplatePicker removed — superseded by the unified AttachedProtocolsPanel
 // on the plan edit page, which handles both protocol selection and content seeding.
 import { PracticeLoadNote } from "./practice-load-note";
-import { phaseOpensAtWeek } from "@/lib/fmdb/practice-phasing";
+import { phaseOpensAtWeek, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
+import { PracticeAddresses } from "./practice-addresses";
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
 import { RecipeSuggestionsCard } from "./recipe-suggestions-card";
@@ -80,6 +81,9 @@ interface PracticeItem {
   /** Which layer of the plan this belongs to; null/1 = from day one. The plan
    *  is whole either way — this only decides when the client meets it. */
   phase?: number | null;
+  /** Driver/topic slugs this practice is here to work on — what decides
+   *  whether it belongs in the foundation. See practice-addresses.tsx. */
+  addresses?: string[];
 }
 
 interface EducationModuleItem {
@@ -1099,6 +1103,15 @@ export function PlanEditor(props: PlanEditorProps) {
   const nutrition = (plan.nutrition as Record<string, unknown>) ?? {};
   const lifestyle: PracticeItem[] =
     (plan.lifestyle_practices as PracticeItem[]) ?? [];
+  // The plan's own ranking, best first — what staging sorts the foundation by.
+  // Drivers outrank topics because the plan hypothesised them as the cause.
+  const practicePriorities: PlanPriorities = {
+    drivers: ((plan.hypothesized_drivers as HypothesizedDriver[]) ?? [])
+      .map((d) => d.mechanism)
+      .filter(Boolean),
+    primaryTopics: (plan.primary_topics as string[]) ?? [],
+    contributingTopics: (plan.contributing_topics as string[]) ?? [],
+  };
   const education: EducationModuleItem[] =
     (plan.education as EducationModuleItem[]) ?? [];
   const labOrders: LabOrderItem[] = (plan.lab_orders as LabOrderItem[]) ?? [];
@@ -2169,6 +2182,7 @@ export function PlanEditor(props: PlanEditorProps) {
                 <PracticeLoadNote
                   practices={lifestyle}
                   totalWeeks={Number(plan.plan_period_weeks) || 12}
+                  priorities={practicePriorities}
                   locked={locked}
                   onStage={(phases) =>
                     patch(
@@ -2249,6 +2263,18 @@ export function PlanEditor(props: PlanEditorProps) {
                       onChange={(next_ev) => {
                         const next = [...lifestyle];
                         next[i] = { ...next[i], intake_evidence: next_ev };
+                        patch("lifestyle_practices", next);
+                      }}
+                    />
+                    {/* What this practice is FOR — decides whether it belongs
+                        in the client's first phase. */}
+                    <PracticeAddresses
+                      value={p.addresses}
+                      priorities={practicePriorities}
+                      locked={locked}
+                      onChange={(next_ad) => {
+                        const next = [...lifestyle];
+                        next[i] = { ...next[i], addresses: next_ad };
                         patch("lifestyle_practices", next);
                       }}
                     />

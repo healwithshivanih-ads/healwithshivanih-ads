@@ -245,43 +245,91 @@ export function maxPhaseOf<T>(items: T[], phaseOf: (item: T) => unknown): number
  * what get staged; the cheap ones (a tea with breakfast, a swap at dinner)
  * cost the client nothing extra and all start on day one.
  *
- * ORDER IS THE COACH'S. She writes the practice that matters most first, and
- * that judgement is clinical — nothing here is entitled to outrank it. An
- * earlier version sorted app-guided practices to the front and promptly
- * displaced the first practice she had written on Hariharan's plan, which is a
- * worse error than the one it fixed.
+ * WHAT GOES FIRST IS THE ROOT CAUSE, when the plan says what that is.
  *
- * The one exception is a guarantee, not a preference: if her order would leave
- * EVERY app-guided practice outside the foundation, the last foundation slot
- * goes to the earliest guided one. Those are the practices the app actually
- * walks the client through, so a plan whose day one contains none of them has
- * staged away the part most likely to happen. On Hariharan's plan that rescued
- * the EFT round he uses for the anxiety he came in with, which plan order alone
- * had pushed to week 7.
+ * A practice tagged with `addresses` names the driver or topic it is there to
+ * work on, and the plan already ranks those: `hypothesized_drivers` in order,
+ * then primary topics, then contributing ones. The foundation is then the
+ * practices serving the top-ranked driver — which is the actual clinical
+ * question, and not one that plan order answers. On Hariharan's plan the
+ * gastrocolic-rhythm practice serves driver 4 of 4 while the HPA-axis cluster
+ * serves driver 1; nothing in the plan could see that before.
  *
- * A suggestion only, either way. The coach sets the real number per row in the
- * plan editor and hers wins.
+ * Among practices serving the SAME driver, the app-guided one goes first. It
+ * is the one the app actually walks the client through, so it is the one most
+ * likely to happen — but that is a tiebreaker, never a promotion over clinical
+ * priority. An earlier version let it override, and duly staged a driver-4
+ * practice into day one.
+ *
+ * UNTAGGED FALLS BACK TO COACH ORDER, unchanged. She writes what matters most
+ * first, and on a plan where nothing is tagged that is the only signal there
+ * is; sorting by anything else would displace her judgement with a guess.
+ * Untagged practices on a partly-tagged plan sort after the tagged ones —
+ * which is why the editor says how many are untagged.
+ *
+ * A suggestion either way. The coach sets the real phase per row and hers wins.
  */
+
+/** The plan's own ranking, best first. Anything absent is unranked. */
+export interface PlanPriorities {
+  /** hypothesized_drivers, in plan order — index 0 is the leading driver */
+  drivers: string[];
+  primaryTopics: string[];
+  contributingTopics: string[];
+}
+
+/** Sorts after everything the plan ranks. Not Infinity — it still has to sort. */
+export const UNRANKED = 9_999;
+
+/**
+ * How central to this plan is the practice?
+ *
+ * The BEST rank across everything it addresses: a practice serving both the
+ * leading driver and a minor topic is a leading-driver practice.
+ */
+export function priorityRank(
+  addresses: string[] | undefined,
+  p: PlanPriorities,
+): number {
+  if (!addresses?.length) return UNRANKED;
+  const bands = [p.drivers, p.primaryTopics, p.contributingTopics];
+  let best = UNRANKED;
+  for (const slug of addresses) {
+    let offset = 0;
+    for (const band of bands) {
+      const at = band.indexOf(slug);
+      if (at >= 0) best = Math.min(best, offset + at);
+      offset += band.length;
+    }
+  }
+  return best;
+}
+
 export function seedPhases(
-  practices: { name: string; guided?: boolean }[],
+  practices: { name: string; guided?: boolean; addresses?: string[] }[],
   classify: (name: string, guided?: boolean) => { cost: string },
   keepDedicated = 3,
   perPhase = 2,
+  priorities?: PlanPriorities,
 ): number[] {
   const out = practices.map(() => 1);
   const dedicated = practices
-    .map((p, i) => ({ i, guided: !!p.guided }))
+    .map((p, i) => ({ i, guided: !!p.guided, addresses: p.addresses }))
     .filter(({ i }) => classify(practices[i].name, practices[i].guided).cost === "dedicated");
 
-  const order = dedicated.map((d) => d.i);
-  const foundation = order.slice(0, keepDedicated);
-  const guided = dedicated.filter((d) => d.guided);
-  if (guided.length > 0 && !foundation.some((i) => guided.some((g) => g.i === i))) {
-    // Swap the LAST foundation slot, so her top choices are untouched.
-    const promoted = guided[0].i;
-    order.splice(order.indexOf(promoted), 1);
-    order.splice(keepDedicated - 1, 0, promoted);
-  }
+  const ranked = priorities
+    ? dedicated.map((d) => ({ ...d, rank: priorityRank(d.addresses, priorities) }))
+    : dedicated.map((d) => ({ ...d, rank: UNRANKED }));
+
+  // Only re-order when the plan actually discriminates. With nothing tagged
+  // every rank is equal, and sorting would collapse to "guided first" — the
+  // over-correction that displaced the coach's own leading practice.
+  const discriminates = ranked.some((d) => d.rank !== UNRANKED);
+  const order = discriminates
+    ? [...ranked]
+        .sort((a, b) => a.rank - b.rank || Number(b.guided) - Number(a.guided) || a.i - b.i)
+        .map((d) => d.i)
+    : ranked.map((d) => d.i);
 
   order.forEach((i, rank) => {
     out[i] = rank < keepDedicated ? 1 : 2 + Math.floor((rank - keepDedicated) / perPhase);
