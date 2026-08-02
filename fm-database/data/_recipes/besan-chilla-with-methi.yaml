@@ -1,0 +1,146 @@
+slug: besan-chilla-with-methi
+name: Besan chilla with methi
+aliases:
+- Methi besan chilla
+- Besan methi chilla
+- Methi chilla
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- bitter
+- pungent
+main_ingredients:
+- besan
+- methi leaves
+- onion
+- ajwain
+contains_allergens: []
+ingredients:
+- item: besan (gram flour)
+  qty: '1'
+  unit: cup
+- item: methi leaves, washed and finely chopped
+  qty: '1'
+  unit: cup
+- item: onion, finely chopped
+  qty: '0.5'
+  unit: piece
+- item: green chilli, minced
+  qty: '1'
+  unit: piece
+- item: ajwain (carom seeds)
+  qty: '0.25'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '1'
+  unit: cup
+- item: ghee or oil for cooking
+  qty: '2'
+  unit: tbsp
+steps:
+- Chop the methi leaves fine and toss them with a pinch of salt. Leave them 5 minutes,
+  then squeeze gently — this draws out the water that would otherwise thin the batter,
+  and takes the sharpest edge off the bitterness.
+- Whisk the besan with the water gradually — adding it all at once guarantees lumps.
+- Stir in the methi, onion, chilli, ajwain, turmeric and salt. The batter should coat
+  a spoon but pour easily; methi releases a little more water as it sits, so keep
+  it a touch thick.
+- Heat a tawa on medium, pour a ladleful and spread thin.
+- Drizzle ghee around the edge, cook 2 minutes until it lifts, flip and finish.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 15
+approx_kcal_per_serving: 315
+kcal_is_estimate: true
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+one_line: The everyday besan chilla with a bunch of methi folded through — faintly
+  bitter, iron-rich, and steadier on blood sugar than the plain version.
+headnote: Fresh methi turns a plain chilla into something with a bitter edge that
+  Indian kitchens have always paired with a heavy breakfast. Fenugreek leaves carry
+  iron and fibre, and the bitter rasa is the one most missing from a modern plate
+  — useful when blood sugar is the thing being worked on. Squeeze the chopped leaves
+  before they go in or the batter turns watery.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Besan chilla with methi
+version: 1
+kitchen_tested: false
+status: active
+updated_at: '2026-08-02'
+updated_by: Shivani
+nutrients_per_serving:
+  kcal: 321
+  protein_g: 11.4
+  carbs_g: 30.5
+  fat_g: 17.0
+  fibre_g: 6.5
+  iron_mg: 3.8
+  calcium_mg: 80.1
+  magnesium_mg: 91.6
+  zinc_mg: 1.5
+  potassium_mg: 508
+  folate_ug: 218
+  b12_ug: 0.0
+  vit_d_ug: 0.1
+  vit_c_mg: 13.1
+  omega3_mg: 179
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-08-02'
+nutrient_lines:
+- i: 0
+  key: besan
+  g: 92.0
+- i: 1
+  key: methi-leaves
+  g: 35.0
+- i: 2
+  key: onion
+  g: 55.0
+- i: 3
+  key: green-chilli
+  g: 5.0
+- i: 4
+  key: ajwain
+  g: 0.5208333333333334
+- i: 5
+  key: turmeric
+  g: 0.78125
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: water
+  g: 0.0
+- i: 8
+  key: ghee
+  g: 27.25
+nutrient_servings: 2.0

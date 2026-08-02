@@ -128,6 +128,52 @@ def strip_supplement_doses(dish: str) -> tuple[str, list[str]]:
     return " + ".join(kept), removed
 
 
+def snap_menu_days(days: list[dict]) -> list[str]:
+    """Rewrite decorated dish names to their catalogue titles, IN PLACE.
+
+    A menu cell is `"Dish (portion) + Side (portion)"`; each component is
+    snapped independently so a decorated primary doesn't drag a fine side with
+    it. Portions are preserved exactly — only the NAME changes.
+
+    See catalogue_dishes.snap_dish_to_catalogue for the (narrow) rule. Returns
+    one note per rewrite for the log; empty list means the model named
+    everything correctly, which is the common case.
+    """
+    from catalogue_dishes import snap_dish_to_catalogue
+
+    notes: list[str] = []
+    for day_no, day in enumerate(days or [], 1):
+        if not isinstance(day, dict):
+            continue
+        for slot in day.get("slots") or []:
+            if not isinstance(slot, dict):
+                continue
+            cell = str(slot.get("dish") or "")
+            if not cell.strip():
+                continue
+            out_parts: list[str] = []
+            changed = False
+            for part in cell.split("+"):
+                part = part.strip()
+                if not part:
+                    continue
+                m = re.match(r"^(.*?)(\s*\([^)]*\))?$", part)
+                name = (m.group(1) if m else part).strip()
+                portion = (m.group(2) if m and m.group(2) else "")
+                hit = snap_dish_to_catalogue(name)
+                if hit:
+                    notes.append(
+                        f"day {day_no} {slot.get('slot') or '?'}: {name!r} → {hit!r}"
+                    )
+                    out_parts.append(f"{hit}{portion}")
+                    changed = True
+                else:
+                    out_parts.append(part)
+            if changed:
+                slot["dish"] = " + ".join(out_parts)
+    return notes
+
+
 def scrub_menu_days(days: list[dict]) -> list[str]:
     """Strip supplement doses across a week's days, IN PLACE.
 
