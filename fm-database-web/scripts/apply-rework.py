@@ -46,6 +46,9 @@ from pathlib import Path
 
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from model_output import usable_dicts  # noqa: E402
 
 
 def _emit(payload: dict) -> int:
@@ -283,7 +286,11 @@ def main() -> int:
                 return marker
         return None
 
-    changes = rework.get("suggested_changes") or []
+    # assess-rework.py now filters these before persisting, but this reads a
+    # record off disk that may have been written by an earlier build (or hand
+    # edited), so guard the read too — `c.get("op")` below raises on a bare
+    # string and would abort a rework the coach has already approved.
+    changes = usable_dicts(rework.get("suggested_changes"), "rework", "suggested change")
     rationale = rework.get("rationale") or ""
     benefit_pct = rework.get("benefit_pct") or 0
     confidence = rework.get("confidence") or "medium"

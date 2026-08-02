@@ -57,6 +57,10 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from model_output import usable_dicts  # noqa: E402
+
 
 def _load_env() -> None:
     if os.environ.get("ANTHROPIC_API_KEY"):
@@ -114,6 +118,41 @@ def _hash_group(kind: str, canonical: str, members: list[str]) -> str:
     for m in sorted(members):
         h.update(m.encode())
     return h.hexdigest()[:12]
+
+
+def _enriched_groups(raw_groups) -> list[dict]:
+    """Turn the model's `groups` into the plan's group records, dropping junk.
+
+    The member-level `isinstance(m, str)` filter below has always been here, but
+    the GROUP object holding it was taken on faith — `g.get("kind")` on a bare
+    string raises AttributeError and costs the entire cleanup plan, the same
+    shape that lost cl-006's recipe pack on 2026-08-02. `usable_dicts` guards
+    the enclosing layer; the member filter stays for the inner one.
+
+    Skip-and-continue is clearly right here: every group is reviewed by the
+    coach in /catalogue/cleanup before anything is applied, so a dropped group
+    is one fewer suggestion to review, not a silently wrong artifact. Losing the
+    other 40 to it would be the real damage.
+    """
+    enriched: list[dict] = []
+    for g in usable_dicts(raw_groups, "cleanup", "group"):
+        g_kind = g.get("kind")
+        canonical = (g.get("canonical") or "").strip()
+        members = g.get("members") or []
+        if not g_kind or not isinstance(members, list) or not members:
+            continue
+        # Defensive de-dup of members
+        members = list(dict.fromkeys(m for m in members if isinstance(m, str) and m))
+        if not members:
+            continue
+        enriched.append({
+            "id": _hash_group(g_kind, canonical, members),
+            "kind": g_kind,
+            "canonical": canonical,
+            "members": members,
+            "reason": g.get("reason", ""),
+        })
+    return enriched
 
 
 _TOOL_SCHEMA_TOPIC = {
@@ -509,25 +548,7 @@ def main() -> int:
         json.dump({"ok": False, "error": f"model did not return tool_use block (stop_reason={stop_reason})"}, sys.stdout)
         return 1
 
-    raw_groups = tool_input.get("groups") or []
-    enriched: list[dict] = []
-    for g in raw_groups:
-        g_kind = g.get("kind")
-        canonical = (g.get("canonical") or "").strip()
-        members = g.get("members") or []
-        if not g_kind or not isinstance(members, list) or not members:
-            continue
-        # Defensive de-dup of members
-        members = list(dict.fromkeys(m for m in members if isinstance(m, str) and m))
-        if not members:
-            continue
-        enriched.append({
-            "id": _hash_group(g_kind, canonical, members),
-            "kind": g_kind,
-            "canonical": canonical,
-            "members": members,
-            "reason": g.get("reason", ""),
-        })
+    enriched = _enriched_groups(tool_input.get("groups"))
 
     plan = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
