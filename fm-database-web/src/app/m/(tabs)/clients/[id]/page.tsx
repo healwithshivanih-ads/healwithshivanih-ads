@@ -6,6 +6,7 @@
  * we* — what you need in the ten seconds before a call. Session detail sits
  * below, one scroll down.
  */
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { clientAppUrl, loadCoachCard } from "@/lib/fmdb/coach-mobile";
 import {
@@ -128,18 +129,13 @@ export default async function ClientCard({
       {appUrl ? (
         <>
           <Eyebrow>What they see</Eyebrow>
-          <a
-            className="fm-btn block"
-            href={appUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link className="fm-btn block" href={`/m/clients/${card.id}/app`}>
             <Icon name="phoneApp" size="sm" />
             Open their app
-          </a>
+          </Link>
           <p className="m-subtle" style={{ margin: "8px 2px 0" }}>
-            Opens the live app at their own address, not a preview — so
-            what loads is exactly what they’re looking at.
+            Opens in here, with a way back — the live app at their own address,
+            not a preview.
           </p>
         </>
       ) : null}

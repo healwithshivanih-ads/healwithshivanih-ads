@@ -89,15 +89,13 @@ function Row({ row }: { row: CoachIndexRow }) {
           </a>
         ) : null}
         {appUrl ? (
-          <a
+          <Link
             className="m-iconbtn"
-            href={appUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/m/clients/${row.id}/app`}
             aria-label={`Open ${row.name}'s app`}
           >
             <Icon name="phoneApp" />
-          </a>
+          </Link>
         ) : null}
       </div>
     </div>
