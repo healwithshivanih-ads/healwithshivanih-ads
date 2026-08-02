@@ -654,7 +654,7 @@ export async function loadWhatsAppThreadAction(
         // Media attachment: `[attachment: files/<name>]` (written by the
         // webhook). Capture before stripping; leave any "[attachment not
         // synced: …]" note as visible text (no file to render).
-        const attMatch = seg.match(/\[attachment:\s*files\/([\w.\-]+)\]/i);
+        const attMatch = seg.match(/\[attachment:\s*files\/([\w.-]+)\]/i);
         const attachment = attMatch
           ? { name: attMatch[1], kind: attachmentKind(attMatch[1]) }
           : undefined;
@@ -668,7 +668,7 @@ export async function loadWhatsAppThreadAction(
           .replace(/\[plan:[^\]]+\]/gi, "")
           .replace(/\[window:[^\]]+\]/gi, "")
           .replace(/\[sent_at:[^\]]+\]/gi, "")
-          .replace(/\[attachment:\s*files\/[\w.\-]+\]/gi, "")
+          .replace(/\[attachment:\s*files\/[\w.-]+\]/gi, "")
           .trim();
 
         // ── Inbound: strip the webhook's metadata header ──────────────

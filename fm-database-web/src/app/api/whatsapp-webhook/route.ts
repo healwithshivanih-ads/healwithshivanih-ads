@@ -244,7 +244,7 @@ const MIME_EXT: Record<string, string> = {
 };
 
 function sanitizeFilename(name: string): string {
-  return name.replace(/[^\w.\-]+/g, "_").replace(/_+/g, "_").slice(0, 80);
+  return name.replace(/[^\w.-]+/g, "_").replace(/_+/g, "_").slice(0, 80);
 }
 
 async function saveMediaAttachment(

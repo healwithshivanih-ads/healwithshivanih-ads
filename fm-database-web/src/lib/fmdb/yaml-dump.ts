@@ -67,7 +67,7 @@ function quoteRiskyScalars(text: string): string {
     // `key: value` (optionally a `- ` list-of-maps prefix), or `- value`.
     let prefix: string | undefined;
     let value: string | undefined;
-    let m = line.match(/^(\s*(?:- )?[A-Za-z0-9_.\-]+: )(\S.*)$/);
+    let m = line.match(/^(\s*(?:- )?[A-Za-z0-9_.-]+: )(\S.*)$/);
     if (m) {
       prefix = m[1];
       value = m[2];

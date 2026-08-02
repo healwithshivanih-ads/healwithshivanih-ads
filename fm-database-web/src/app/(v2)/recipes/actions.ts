@@ -54,7 +54,9 @@ export async function listRecipeImageStatuses(): Promise<RecipeImageStatus[]> {
         oneLine: (raw.one_line as string) || null,
         mainIngredients,
       });
-    } catch {}
+    } catch {
+      /* skip a malformed recipe-image entry, keep parsing the rest */
+    }
   }
   return results.sort((a, b) => a.name.localeCompare(b.name));
 }

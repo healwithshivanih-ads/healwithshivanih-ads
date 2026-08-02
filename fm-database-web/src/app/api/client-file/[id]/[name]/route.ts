@@ -38,7 +38,7 @@ export async function GET(
   if (!/^[\w-]+$/.test(id)) {
     return new NextResponse("Bad request", { status: 400 });
   }
-  if (!/^[\w.\-]+$/.test(name) || name.includes("..")) {
+  if (!/^[\w.-]+$/.test(name) || name.includes("..")) {
     return new NextResponse("Bad request", { status: 400 });
   }
 

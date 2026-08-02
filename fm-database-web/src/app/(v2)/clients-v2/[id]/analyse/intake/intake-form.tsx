@@ -576,7 +576,7 @@ export function IntakeForm({
       // explicitly scored (scores empty or all at floor 1), auto-compute
       // from conditions + lab markers before saving so the session record
       // always has meaningful scores rather than the default placeholder.
-      let scoreSnapshot = { ...ifmScores };
+      const scoreSnapshot = { ...ifmScores };
       const allDefault = IFM_NODES.every(
         (n) => !scoreSnapshot[n.id] || scoreSnapshot[n.id] === 1,
       );

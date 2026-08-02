@@ -81,7 +81,7 @@ describe("buildOrder — coach-approved, server-derived amount", () => {
 
   // ── hardening (adversarial review 2026-06-25) ──
   it("rejects Infinity / NaN / over-ceiling add-on prices (no corrupt amount)", () => {
-    for (const bad of [Infinity, -Infinity, NaN, 1e309, 200001]) {
+    for (const bad of [Infinity, -Infinity, NaN, 1e308, 200001]) {
       expect(buildOrder(provider, { ...REC, profileId: 1, addons: [{ slug: "c-peptide", inr: bad }] }).ok).toBe(false);
     }
     // exactly the ceiling is allowed

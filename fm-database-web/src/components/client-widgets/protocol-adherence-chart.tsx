@@ -52,7 +52,7 @@ function parseAdherenceText(text: string): { supplements: AdherenceEntry[]; prac
     if (line.startsWith("## ") || line.startsWith("**Coach")) { inSupplements = false; inPractices = false; continue; }
 
     // Match lines like: ✅ magnesium glycinate (400mg, bedtime)
-    const match = line.match(/^([✅🔄⚠️❌—])\s+(.+?)(?:\s*\(.*)?(?::\s*.+)?$/u);
+    const match = line.match(/^(✅|🔄|⚠️|❌|—)\s+(.+?)(?:\s*\(.*)?(?::\s*.+)?$/u);
     if (!match) continue;
 
     const emoji = match[1];

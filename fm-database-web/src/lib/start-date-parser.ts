@@ -116,7 +116,7 @@ export function extractDate(text: string): string | null {
 
 // ── Intent recognisers ──────────────────────────────────────────────────────
 
-const START_PREFIX = /^\s*(?:✅|📅)?\s*start(?:ing)?\s*[:\-]?\s*/i;
+const START_PREFIX = /^\s*(?:✅|📅)?\s*start(?:ing)?\s*[:-]?\s*/i;
 const START_VERB_PHRASE = /\b(?:i(?:'|')?ll\s+start(?:\s+on)?|starting(?:\s+on)?|start(?:\s+on)?)\b/i;
 
 const SUPPLEMENTS_ARRIVED = /\b(?:supp(?:lement)?s?\s+(?:have\s+)?arrived|got\s+(?:my\s+)?supp(?:lement)?s?|supp(?:lement)?s?\s+(?:are\s+)?here|received\s+(?:my\s+)?supp(?:lement)?s?)\b/i;

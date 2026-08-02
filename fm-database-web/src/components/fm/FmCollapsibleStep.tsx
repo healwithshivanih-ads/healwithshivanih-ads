@@ -76,7 +76,7 @@ export function FmCollapsibleStep({
 
   const setOpenPersist = (v: boolean) => {
     setOpen(v);
-    try { localStorage.setItem(storageKey, v ? "1" : "0"); } catch {}
+    try { localStorage.setItem(storageKey, v ? "1" : "0"); } catch { /* localStorage unavailable (private mode / quota) — best-effort persist */ }
   };
 
   if (!open) {

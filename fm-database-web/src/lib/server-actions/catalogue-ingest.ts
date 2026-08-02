@@ -101,7 +101,9 @@ function _empty(over: Partial<IngestFromPasteResult>): IngestFromPasteResult {
 // The script prints human-readable sections. We strip ANSI, then grep
 // each section for the bits the UI cares about. Keeps the script
 // debuggable from the terminal AND machine-readable here.
-const ANSI_RE = /\x1b\[[0-9;]*m/g;
+// Matches ANSI SGR colour codes (ESC = U+001B). Built via fromCharCode so the
+// literal control character never appears in a regex literal.
+const ANSI_RE = new RegExp(String.fromCharCode(27) + "\\[[0-9;]*m", "g");
 
 function _parse(raw: string, processOk: boolean): IngestFromPasteResult {
   const clean = raw.replace(ANSI_RE, "");

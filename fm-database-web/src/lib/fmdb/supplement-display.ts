@@ -17,7 +17,7 @@
  */
 
 const BRAND_PREFIX_RE =
-  /^\s*(vita[\s\-]*one|vitaone|himalaya|organic\s*india|nature[\s\-]*made|now\s*foods|jarrow|thorne|garden\s*of\s*life|kerala\s*ayurveda|upakarma\s*ayurveda|charak\s*pharma)\s+/i;
+  /^\s*(vita[\s-]*one|vitaone|himalaya|organic\s*india|nature[\s-]*made|now\s*foods|jarrow|thorne|garden\s*of\s*life|kerala\s*ayurveda|upakarma\s*ayurveda|charak\s*pharma)\s+/i;
 
 /** Strip a leading brand prefix from a display name. Idempotent.
  *  "Vitaone Ashwagandha" → "Ashwagandha".

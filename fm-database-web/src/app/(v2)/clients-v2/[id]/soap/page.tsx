@@ -79,7 +79,9 @@ function computeAge(dob?: string | null, ageBand?: string | null): string {
         if (m < 0 || (m === 0 && t.getDate() < d.getDate())) a--;
         return `${a}y`;
       }
-    } catch {}
+    } catch {
+      /* unparseable DOB — fall back to the age band below */
+    }
   }
   return ageBand ?? "—";
 }

@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
 
     // Save to the client's files dir, date-prefixed + dedup. Sanitise filename.
     const safeBase = (file.name || "upload")
-      .replace(/[^\w.\-]+/g, "_")
+      .replace(/[^\w.-]+/g, "_")
       .replace(/^_+/, "")
       .slice(0, 80) || "upload";
     const today = new Date().toISOString().slice(0, 10);
