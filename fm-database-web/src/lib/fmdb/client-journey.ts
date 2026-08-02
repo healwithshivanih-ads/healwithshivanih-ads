@@ -2,7 +2,13 @@ import "server-only";
 import { loadClientSessions } from "./loader-extras";
 import { loadAllPlans } from "./loader";
 import { parseSessionType } from "./session-utils";
-import { effectiveMealPlanStart, effectiveRecheckDate } from "./plan-timing";
+import {
+  effectiveMealPlanStart,
+  effectiveRecheckDate,
+  travelExtensionDays,
+  type TravelOverrideLike,
+  type RecheckOpts,
+} from "./plan-timing";
 
 /**
  * ClientJourney — the workflow-stage snapshot rendered as the
@@ -166,15 +172,39 @@ export async function loadClientJourney(
   const planStart = effectiveMealPlanStart(planLike);
   const planWeeks = planLike.plan_period_weeks ?? null;
   let currentWeek: number | null = null;
+  // Travel/illness pause — the SAME inputs the client app feeds the resolver
+  // (client-app.ts). Without them this strip ran the plan on an unpaused clock:
+  // Nidhi's 5-day Manali pause put the coach strip a week and a date ahead of
+  // what her app showed (strip "Week 12 of 12 · completion 6 Aug" vs app
+  // "Week 11 · recheck 12 Aug"). week_overrides lives under weight_loss because
+  // the panel is generic — non-weight-loss clients still get travel rows there.
+  const wlForTravel = (client as unknown as {
+    weight_loss?: { enabled?: boolean; week_overrides?: TravelOverrideLike[] };
+  })?.weight_loss;
+  const travelOverrides = wlForTravel?.week_overrides ?? undefined;
+  const recheckOpts: RecheckOpts = {
+    overrides: travelOverrides,
+    weightLossEnabled: wlForTravel?.enabled === true,
+  };
   const recheckDateIso: string | null =
-    effectiveRecheckDate(planLike) ?? planLike.plan_period_recheck_date ?? null;
+    effectiveRecheckDate(planLike, recheckOpts) ??
+    planLike.plan_period_recheck_date ??
+    null;
   if (planStart && planWeeks) {
     const start = new Date(`${planStart}T00:00:00Z`);
     const today = new Date(`${todayIso}T00:00:00Z`);
     const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+    // Paused days already elapsed are subtracted so the counter freezes over a
+    // trip and resumes at the same week on return — mirrors client-app.ts.
+    const paused = travelExtensionDays(travelOverrides, planStart, todayIso);
     currentWeek = Math.max(
       1,
-      Math.min(planWeeks, Math.floor((today.getTime() - start.getTime()) / msPerWeek) + 1),
+      Math.min(
+        planWeeks,
+        Math.floor(
+          (today.getTime() - start.getTime() - paused * 24 * 60 * 60 * 1000) / msPerWeek,
+        ) + 1,
+      ),
     );
   }
 
@@ -208,15 +238,12 @@ export async function loadClientJourney(
     }
   }
 
-  // Plan completion date — end of the protocol window.
-  let planEndIso: string | null = null;
-  if (publishedPlan && planStart && planWeeks) {
-    const start = new Date(`${planStart}T00:00:00`);
-    start.setDate(start.getDate() + planWeeks * 7);
-    planEndIso = start.toISOString().slice(0, 10);
-  } else if (recheckDateIso) {
-    planEndIso = recheckDateIso;
-  }
+  // Plan completion date — end of the protocol window. This IS the effective
+  // recheck, so read it off the one helper rather than recomputing: the old
+  // local arithmetic here both ignored the travel pause AND parsed at local
+  // midnight before slicing a UTC string, which in IST shifted the answer a
+  // day EARLIER (15 May + 84d printed as 6 Aug, not 7 Aug).
+  const planEndIso: string | null = recheckDateIso;
 
   const todayMs = new Date(`${todayIso}T00:00:00`).getTime();
 

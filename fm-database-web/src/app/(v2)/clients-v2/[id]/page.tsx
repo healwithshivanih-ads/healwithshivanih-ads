@@ -23,6 +23,11 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import { loadClientJourney } from "@/lib/fmdb/client-journey";
 import {
+  effectiveRecheckDate,
+  type RecheckOpts,
+  type TravelOverrideLike,
+} from "@/lib/fmdb/plan-timing";
+import {
   loadClientSessions,
   type ClientWithMeta,
   type ClientSession,
@@ -605,6 +610,9 @@ function deriveStage(
     hasDiscoverySession: boolean;
     hasIntakeSession: boolean;
     engagement?: "pending" | "signed_up" | "declined";
+    /** Travel/illness pause + weight-loss buffer, so this stage agrees with the
+     *  journey strip and the client app instead of running an unpaused clock. */
+    recheckOpts?: RecheckOpts;
   },
 ): {
   stage: FmWorkflowStage;
@@ -662,12 +670,15 @@ function deriveStage(
 
   if (published) {
     // Overdue → recheck. On-time → active.
-    let recheckDate: string | undefined = published.plan_period_recheck_date;
-    if (!recheckDate && published.plan_period_start && published.plan_period_weeks) {
-      const d = new Date(published.plan_period_start + "T00:00:00");
-      d.setDate(d.getDate() + published.plan_period_weeks * 7);
-      recheckDate = d.toISOString().slice(0, 10);
-    }
+    // The EFFECTIVE recheck, not the stored one. `plan_period_recheck_date` is
+    // frozen at authoring time: it ignores a corrected start date and any
+    // travel pause, so preferring it here both showed the wrong date and could
+    // flip a client to "Re-check due" while she was still mid-protocol (Nidhi:
+    // stored 6 Aug vs effective 12 Aug). Stored value is the display-only
+    // fallback for plans too incomplete to compute from.
+    const recheckDate: string | undefined =
+      effectiveRecheckDate(published, ctx?.recheckOpts ?? {}) ??
+      published.plan_period_recheck_date;
     if (recheckDate && recheckDate < todayStr) {
       return {
         stage: "recheck",
@@ -903,10 +914,17 @@ export default async function ClientV2Page({
     plansForClient.length > 0;
 
   // Workflow stage
+  const wlForTravel = (client as unknown as {
+    weight_loss?: { enabled?: boolean; week_overrides?: TravelOverrideLike[] };
+  }).weight_loss;
   const stageInfo = deriveStage(plansForClient, todayStr, {
     hasDiscoverySession,
     hasIntakeSession,
     engagement,
+    recheckOpts: {
+      overrides: wlForTravel?.week_overrides ?? undefined,
+      weightLossEnabled: wlForTravel?.enabled === true,
+    },
   });
 
   // Last contact date — the date of the most recent ACTUAL touch point

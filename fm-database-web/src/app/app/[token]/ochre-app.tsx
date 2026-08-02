@@ -516,6 +516,15 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const previewing = onHold && data.client.startsInDays > 0;
   const setupHold = onHold && !previewing;
 
+  // REVIEW opens REVIEW_LEAD_DAYS (14, or 7 for short plans) BEFORE the
+  // effective recheck, so the Continue/Maintain decision gets made before the
+  // protocol lapses. Through that lead-in the client is still mid-protocol —
+  // Today must stay her daily home (supplements, meals, streak); the
+  // EndgameBanner carries the decision prompt instead. The graduation report
+  // takes the Today tab only once the recheck is actually reached, which is
+  // exactly what `endgame.approaching` distinguishes.
+  const graduationTakeover = data.mode === "REVIEW" && !data.endgame?.approaching;
+
   // Consult-tier (no published plan): a read-only Summary + Lab Vault, with
   // Plan/Progress locked and the Coach tab as an upgrade CTA. Resolved upstream
   // in client-app.ts; package clients are never "discovery".
@@ -568,9 +577,11 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         }}
       />
     );
-  } else if (data.mode === "REVIEW" && tab === "today") {
-    // Wrapping up the 12 weeks — the home becomes the graduation report (real
-    // progress deltas + the Continue/Maintain decision). Other tabs stay normal.
+  } else if (graduationTakeover && tab === "today") {
+    // Recheck reached — the home becomes the graduation report (real progress
+    // deltas + the Continue/Maintain decision). Other tabs stay normal. Before
+    // the recheck (the 14-day lead-in) Today stays the protocol home and the
+    // banner does the asking — see `graduationTakeover`.
     screen = <GraduationReport onContinue={() => go("coach")} onMaintain={() => setMaintOpen(true)} />;
   } else if (data.mode === "MAINTENANCE" && tab === "today") {
     // Hands-free maintenance — the home surfaces the month's card + back-on-track;
@@ -697,7 +708,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               live and starts moving on its own that day.
             </div>
           )}
-          {!inCheckin && !((data.mode === "REVIEW" || data.mode === "MAINTENANCE") && tab === "today") && <EndgameBanner goCoach={() => go("coach")} onRenew={() => setMaintOpen(true)} />}
+          {!inCheckin && !((graduationTakeover || data.mode === "MAINTENANCE") && tab === "today") && <EndgameBanner goCoach={() => go("coach")} onRenew={() => setMaintOpen(true)} />}
           <main className="screen-scroll" key={onboarding ? "onboarding" : inCheckin ? "checkin" : tab}>
             {screen}
           </main>
