@@ -496,8 +496,23 @@ export default async function PlanTabPage({
       cadence: (it.cadence as string | undefined) ?? "",
       details: (it.details as string | undefined) ?? "",
       somatic_practice: (it.somatic_practice as string | undefined) ?? "",
+      phase: (it.phase as number | undefined) ?? null,
+      addresses: (it.addresses as string[] | undefined) ?? [],
     }))
     .filter((it) => it.name);
+
+  // The plan's OWN ranking, best first — what staging orders the client's first
+  // phase by. Published plans can't go through the draft editor, so the picker
+  // has to be here or a live client's plan could never be staged.
+  const quickEditPriorities = {
+    drivers: (((activePlan?.hypothesized_drivers as
+      | Array<Record<string, unknown>>
+      | undefined) ?? [])
+      .map((d) => (d?.mechanism as string | undefined) ?? "")
+      .filter(Boolean)),
+    primaryTopics: ((activePlan?.primary_topics as string[] | undefined) ?? []),
+    contributingTopics: ((activePlan?.contributing_topics as string[] | undefined) ?? []),
+  };
 
   // Lab orders split into "new" (order now) and "repeat" (re-check on file).
   // Pre-AI plans didn't have `kind`; default to "new" for backward compat.
@@ -777,6 +792,8 @@ export default async function PlanTabPage({
           <QuickEditPracticesPanel
             planSlug={activePlan.slug as string}
             practices={quickEditPracticeRows}
+            priorities={quickEditPriorities}
+            totalWeeks={Number(activePlan.plan_period_weeks) || 12}
             editable={isPublished}
             embedded
           />
@@ -1506,6 +1523,8 @@ export default async function PlanTabPage({
             <QuickEditPracticesPanel
               planSlug={activePlan.slug as string}
               practices={quickEditPracticeRows}
+              priorities={quickEditPriorities}
+              totalWeeks={Number(activePlan.plan_period_weeks) || 12}
               editable={isPublished}
             />
 

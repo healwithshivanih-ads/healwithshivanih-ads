@@ -540,6 +540,17 @@ export interface QuickPracticeEdit {
    * pattern-matching the name. Pass "" to unlink.
    */
   somatic_practice?: string;
+  /**
+   * Which layer of the plan the client meets this in. 1 (or null) is day one.
+   * Editable HERE and not only in the draft editor because a plan is usually
+   * already published by the time its load is felt — the draft editor refuses
+   * published writes, so without this a staged rollout could never be applied
+   * to a live client.
+   */
+  phase?: number | null;
+  /** Driver/topic slugs this practice works on — what decides whether it
+   *  belongs in the client's first phase. Pass [] to clear. */
+  addresses?: string[];
   remove?: boolean;
   reason?: string;
 }
@@ -617,11 +628,14 @@ export async function quickEditActivePlanPractice(
       }
 
       const linked = (edit.somatic_practice ?? "").trim();
+      const addPhase = edit.phase && edit.phase > 1 ? Math.floor(edit.phase) : null;
       practices.push({
         name,
         cadence: (edit.cadence ?? "").trim() || "daily",
         details: (edit.details ?? "").trim(),
         ...(linked ? { somatic_practice: linked } : {}),
+        ...(addPhase ? { phase: addPhase } : {}),
+        ...(edit.addresses?.length ? { addresses: edit.addresses } : {}),
       });
       data.lifestyle_practices = practices;
       summary = `Added practice: ${name}${linked ? ` (guided: ${linked})` : ""}`;
@@ -671,6 +685,31 @@ export async function quickEditActivePlanPractice(
             changes.push(linked ? `guided practice → ${linked}` : "guided practice unlinked");
             if (linked) item.somatic_practice = linked;
             else delete item.somatic_practice;
+          }
+        }
+        // phase 1 is the default and is stored as ABSENT, not as `phase: 1` —
+        // so a plan that was never staged stays byte-identical to how it was
+        // written, and "unstage this practice" genuinely removes the key.
+        if (edit.phase !== undefined) {
+          const next = edit.phase && edit.phase > 1 ? Math.floor(edit.phase) : null;
+          const prev = (item.phase as number | undefined) ?? null;
+          if (next !== prev) {
+            changes.push(
+              next ? `opens in phase ${next}` : "back to day one",
+            );
+            if (next) item.phase = next;
+            else delete item.phase;
+          }
+        }
+        if (edit.addresses !== undefined) {
+          const next = edit.addresses.filter(Boolean);
+          const prev = (item.addresses as string[] | undefined) ?? [];
+          if (next.join("|") !== prev.join("|")) {
+            changes.push(
+              next.length ? `works on ${next.join(", ")}` : "driver link cleared",
+            );
+            if (next.length) item.addresses = next;
+            else delete item.addresses;
           }
         }
         if (changes.length === 0) return { ok: true, changed: false };

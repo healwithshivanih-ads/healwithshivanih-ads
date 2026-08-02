@@ -23,6 +23,8 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { FmPanel } from "@/components/fm";
 import { quickEditActivePlanPractice, listSomaticPractices, type SomaticOption } from "@/lib/server-actions/plan-lifecycle";
+import { PracticeAddresses } from "@/components/plan-editor/practice-addresses";
+import { phaseOpensAtWeek, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
 import { useEffect } from "react";
 
 export interface QuickEditPracticeRow {
@@ -31,11 +33,19 @@ export interface QuickEditPracticeRow {
   name: string;
   cadence: string;
   details?: string;
+  /** which layer of the plan the client meets this in; null/1 = day one */
+  phase?: number | null;
+  /** driver/topic slugs this practice works on */
+  addresses?: string[];
 }
 
 interface Props {
   planSlug: string;
   practices: QuickEditPracticeRow[];
+  /** the plan's ranked drivers + topics — the options for "works on" */
+  priorities?: PlanPriorities;
+  /** plan_period_weeks — decides which week each phase lands on */
+  totalWeeks?: number;
   /** false on draft/ready plans — show read-only (drafts edit in the full
    *  plan editor; quick-edit only mutates a published plan). Default true. */
   editable?: boolean;
@@ -83,7 +93,7 @@ function duplicateFlags(practices: QuickEditPracticeRow[]): Map<number, string> 
   return flags;
 }
 
-export function QuickEditPracticesPanel({ planSlug, practices, editable = true, embedded }: Props) {
+export function QuickEditPracticesPanel({ planSlug, practices, priorities, totalWeeks = 12, editable = true, embedded }: Props) {
   const [open, setOpen] = useState(false);
   const dupFlags = duplicateFlags(practices);
 
@@ -101,6 +111,8 @@ export function QuickEditPracticesPanel({ planSlug, practices, editable = true, 
           row={p}
           index={i}
           duplicateOf={dupFlags.get(i) ?? null}
+          priorities={priorities}
+          totalWeeks={totalWeeks}
         />
       ))}
       <AddPracticeRow planSlug={planSlug} />
@@ -223,11 +235,15 @@ function PracticeRow({
   row,
   index,
   duplicateOf,
+  priorities,
+  totalWeeks,
 }: {
   planSlug: string;
   row: QuickEditPracticeRow;
   index: number;
   duplicateOf: string | null;
+  priorities?: PlanPriorities;
+  totalWeeks: number;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -235,13 +251,17 @@ function PracticeRow({
   const [cadence, setCadence] = useState(row.cadence);
   const [details, setDetails] = useState(row.details ?? "");
   const [somatic, setSomatic] = useState(row.somatic_practice ?? "");
+  const [phase, setPhase] = useState<number>(row.phase && row.phase > 1 ? row.phase : 1);
+  const [addresses, setAddresses] = useState<string[]>(row.addresses ?? []);
   const [confirmRemove, setConfirmRemove] = useState(false);
 
   const dirty =
     name.trim() !== row.name ||
     cadence.trim() !== row.cadence ||
     details.trim() !== (row.details ?? "").trim() ||
-    somatic !== (row.somatic_practice ?? "");
+    somatic !== (row.somatic_practice ?? "") ||
+    phase !== (row.phase && row.phase > 1 ? row.phase : 1) ||
+    addresses.join("|") !== (row.addresses ?? []).join("|");
 
   const onSave = () => {
     if (!dirty || !name.trim()) return;
@@ -253,6 +273,8 @@ function PracticeRow({
         cadence: cadence.trim(),
         details: details.trim(),
         somatic_practice: somatic,
+        phase,
+        addresses,
       });
       if (!r.ok) return void toast.error(r.error);
       if (!r.changed) return void toast.info("No change to save");
@@ -329,6 +351,38 @@ function PracticeRow({
           style={{ ...inputStyle, resize: "vertical", fontFamily: "inherit", lineHeight: 1.4 }}
           placeholder="Full instructions — dose/timing/technique, written directly to the client."
         />
+      </div>
+
+      {/* WHEN the client meets this, and WHAT it is for. Both live here rather
+          than only in the draft editor because a plan is normally already
+          published by the time its load is felt — and the draft editor refuses
+          published writes, so a live client could otherwise never be staged. */}
+      <div style={{ display: "flex", gap: 14, alignItems: "flex-start", flexWrap: "wrap", marginBottom: 8 }}>
+        <div>
+          <label style={labelStyle}>Client meets this</label>
+          <select
+            value={String(phase)}
+            disabled={pending}
+            onChange={(e) => setPhase(Number(e.target.value))}
+            style={{ ...inputStyle, width: "auto", minWidth: 130 }}
+          >
+            {[1, 2, 3, 4].map((n) => (
+              <option key={n} value={n}>
+                {n === 1 ? "From day 1" : `Week ${phaseOpensAtWeek(n, totalWeeks)}`}
+              </option>
+            ))}
+          </select>
+        </div>
+        {priorities && (
+          <div style={{ flex: "1 1 260px", minWidth: 0 }}>
+            <PracticeAddresses
+              value={addresses}
+              priorities={priorities}
+              locked={pending}
+              onChange={setAddresses}
+            />
+          </div>
+        )}
       </div>
       <SomaticPicker value={somatic} onChange={setSomatic} disabled={pending} />
       <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
