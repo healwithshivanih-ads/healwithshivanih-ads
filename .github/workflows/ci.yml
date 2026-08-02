@@ -13,10 +13,18 @@ on:
     branches: [main]
     paths:
       - "fm-database-web/**"
+      # 10+ web suites shell into the Python catalogue (somatic, menu-hygiene,
+      # prospects-sweep, recipe-*). A catalogue-only change can therefore break
+      # web-ci — so it MUST trigger this workflow, or the breakage lands
+      # silently and gets blamed on the next unrelated web commit.
+      - "fm-database/data/**"
+      - "fm-database/fmdb/**"
       - ".github/workflows/ci.yml"
   pull_request:
     paths:
       - "fm-database-web/**"
+      - "fm-database/data/**"
+      - "fm-database/fmdb/**"
       - ".github/workflows/ci.yml"
 
 defaults:
