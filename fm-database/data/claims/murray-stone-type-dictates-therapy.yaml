@@ -52,6 +52,8 @@ out_of_scope_notes: >
   The coach's scope is to ask whether the type is known, to educate on what each type
   generally implies, and to withhold type-specific dietary advice until a clinician has
   confirmed the type.
+linked_to_symptoms:
+- kidney-stones
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 73 — Kidney Stones, pg 1202

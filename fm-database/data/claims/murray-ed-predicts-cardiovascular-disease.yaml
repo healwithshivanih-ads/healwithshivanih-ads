@@ -53,6 +53,8 @@ out_of_scope_notes: >
   and supporting the lifestyle work once a doctor has assessed him. Clinician scope:
   diagnosing vascular ED, ordering or interpreting lipids, glucose, penile Doppler or
   cardiac testing, and any decision about PDE5 inhibitors or cardiac treatment.
+linked_to_symptoms:
+- erectile-dysfunction
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 49 — Erectile Dysfunction, pg 904

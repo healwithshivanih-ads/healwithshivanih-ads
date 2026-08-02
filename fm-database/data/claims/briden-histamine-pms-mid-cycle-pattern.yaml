@@ -21,6 +21,10 @@ linked_to_mechanisms:
 - mast-cell-activation
 linked_to_supplements: []
 linked_to_symptoms:
+- breast-tenderness
+- joint-pain
+- brain-fog
+- headaches
 - pms
 - nasal-congestion
 - edema

@@ -44,6 +44,8 @@ out_of_scope_notes: >
   scope is education about oestrogen physiology and support for diet, bowel regularity,
   weight and toxin-exposure habits that plausibly influence oestrogen load — always alongside,
   never instead of, the client's gynaecologist.
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 97 — Uterine Fibroids, pg 1539

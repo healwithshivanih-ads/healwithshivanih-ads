@@ -22,6 +22,8 @@ linked_to_mechanisms:
 - statin-mediated-nutrient-depletion
 - oxidative-stress
 out_of_scope_notes: Prescribing CoQ10, choosing a dose, or timing it around surgery is clinician scope — sharply so for clients on warfarin or awaiting a procedure. Coach scope is raising the statin-depletion question for the client to take to their doctor.
+linked_to_symptoms:
+- angina
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 22 — Angina, pg 488

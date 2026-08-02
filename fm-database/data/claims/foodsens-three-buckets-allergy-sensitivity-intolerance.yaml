@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - immune-food-reactivity
 linked_to_supplements: []
 linked_to_symptoms:
+- brain-fog
+- digestive-discomfort
 - food-intolerance-reactions
 - food-sensitivities
 - anaphylaxis

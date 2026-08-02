@@ -51,6 +51,10 @@ out_of_scope_notes: >
   conversation, and coaching sleep, strength training, alcohol and weight. Clinician
   scope: ordering and interpreting testosterone, LH, FSH and prolactin, diagnosing
   hypogonadism, and prescribing or monitoring testosterone or DHEA.
+linked_to_symptoms:
+- erectile-dysfunction
+- abdominal-obesity
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 49 — Erectile Dysfunction, pg 905

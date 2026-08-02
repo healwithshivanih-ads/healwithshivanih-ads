@@ -60,6 +60,8 @@ out_of_scope_notes: >
   setting a protein prescription for anyone with raised uric acid, creatinine or reduced eGFR;
   interpreting a 24-hour urine calcium or sodium; and prescribing sodium restriction in
   cardiac or renal disease.
+linked_to_symptoms:
+- kidney-stones
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 73 — Kidney Stones, pg 1208

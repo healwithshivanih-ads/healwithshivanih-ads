@@ -67,6 +67,9 @@ out_of_scope_notes: >
   pattern (vegan or strict vegetarian diet, long-term antacid use, age, prior gut surgery) as
   something to raise with their doctor, and supporting food habits alongside whatever the
   doctor decides.
+linked_to_symptoms:
+- anemia
+- bloating
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 21 — Anemia, pg 467

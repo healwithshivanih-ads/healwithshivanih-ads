@@ -47,6 +47,8 @@ out_of_scope_notes: >
   client notice and describe her flow and her fatigue accurately, prompting her to raise both
   with her doctor together rather than separately, and supporting the dietary side once a
   cause has been established.
+linked_to_symptoms:
+- iron-deficiency
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 21 — Anemia, pg 466

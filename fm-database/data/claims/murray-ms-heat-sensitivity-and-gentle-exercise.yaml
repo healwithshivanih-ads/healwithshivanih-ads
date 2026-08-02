@@ -71,6 +71,8 @@ out_of_scope_notes: 'Coach scope: this is the strongest coaching surface in the 
   around gentle regular movement, pacing, cooling strategies, and stress-reduction practice. Out of scope:
   prescribing exercise for someone with significant gait, balance or spasticity impairment (physiotherapist),
   and any judgement about whether a new symptom is heat or relapse (neurologist, same day).'
+linked_to_symptoms:
+- stress
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 78 — Multiple Sclerosis, pg 1289

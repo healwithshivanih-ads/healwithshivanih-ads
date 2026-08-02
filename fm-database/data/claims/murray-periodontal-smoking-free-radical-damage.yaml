@@ -50,6 +50,8 @@ out_of_scope_notes: >
   highest-leverage action available here. Prescribing nicotine replacement or
   varenicline is clinician scope. Assessing bruxism, malocclusion or any oral lesion,
   and all periodontal treatment, is dentist scope — refer.
+linked_to_symptoms:
+- snoring
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 84 — Periodontal Disease, pg 1389

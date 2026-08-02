@@ -11,6 +11,7 @@ evidence_tier: strong
 linked_to_topics:
 - celiac-disease
 linked_to_symptoms:
+- migraine
 - dermatitis-herpetiformis
 - gut-inflammation
 - food-sensitivities

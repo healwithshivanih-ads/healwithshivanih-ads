@@ -17,6 +17,8 @@ linked_to_mechanisms:
 - plaque-progression
 - atherosclerosis
 out_of_scope_notes: Assessing, triaging or treating chest pain is entirely clinician scope. The coach's only role in an acute or escalating presentation is to stop coaching and route to emergency care.
+linked_to_symptoms:
+- angina
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 22 — Angina, pg 494

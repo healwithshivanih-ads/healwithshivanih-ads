@@ -50,6 +50,8 @@ out_of_scope_notes: >
   prompt review, and may support nutrition alongside — but must never delay or
   substitute for ophthalmology referral, and must never suggest that nutritional
   support is an alternative to injections in the wet form.
+linked_to_symptoms:
+- diarrhea
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 74 — Macular Degeneration, pg 1220

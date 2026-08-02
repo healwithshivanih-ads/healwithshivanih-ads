@@ -57,6 +57,8 @@ out_of_scope_notes: >
   food panels, or tell a client which antibody class is driving their symptoms —
   that is lab interpretation and diagnosis. Immediate IgE reactions (swelling,
   wheeze, collapse) are an emergency and belong entirely to a clinician.
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 52 — Food Allergy, pg 940

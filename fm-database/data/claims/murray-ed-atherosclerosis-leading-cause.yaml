@@ -50,6 +50,8 @@ out_of_scope_notes: >
   Coach scope: the lifestyle change that reduces cardiovascular risk, and helping the
   client sustain it. Clinician scope: confirming a vascular cause, ordering ultrasound or
   lipid testing, interpreting results, and treating hypertension or dyslipidaemia.
+linked_to_symptoms:
+- elevated-cholesterol
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 49 — Erectile Dysfunction, pg 904

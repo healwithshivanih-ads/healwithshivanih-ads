@@ -53,6 +53,8 @@ out_of_scope_notes: >
   deciding that a reaction is "cyclic" rather than "fixed", and re-challenging any
   food in a client with a history of anaphylaxis or airway involvement — that is
   emergency/clinician territory and requires a supervised setting.
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 52 — Food Allergy, pg 941

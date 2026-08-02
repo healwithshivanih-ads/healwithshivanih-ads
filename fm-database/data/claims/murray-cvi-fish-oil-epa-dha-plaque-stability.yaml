@@ -42,6 +42,8 @@ linked_to_mechanisms:
 - coagulation-anticoagulation-imbalance
 out_of_scope_notes: |
   Coaching omega-3-rich foods and explaining the plaque-stabilisation idea is in scope. Recommending a dose, advising a client on a supplement alongside their anticoagulant, or implying it substitutes for prescribed therapy is clinician scope and must be referred.
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 35 — Cerebral Vascular Insufficiency, pg 647
