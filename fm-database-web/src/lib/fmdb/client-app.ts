@@ -225,7 +225,6 @@ export interface AppMsqEntry {
   band: string; // optimal | mild | moderate | high
   categoryTotals: Record<string, number>;
 }
-// eslint-disable-next-line no-duplicate-imports
 import { swapTermMatches, type AppSwapGroup as SwapGroupT, type SwapMember as SwapMemberT } from "./swaps";
 import { deriveReminders, effectiveReminders } from "./reminders-derive";
 import { readOverrides } from "./reminders-server";

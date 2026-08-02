@@ -989,7 +989,6 @@ export function PlanEditor(props: PlanEditorProps) {
       }
     });
     return () => { cancelled = true; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initial.slug]);
 
   // Per-supplement retailer + fixed per-unit strength (VitaOne etc.). Lets the
@@ -1017,7 +1016,6 @@ export function PlanEditor(props: PlanEditorProps) {
       if (!cancelled) setProductInfo(res);
     });
     return () => { cancelled = true; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [suppNamesKey]);
 
   // ── Timeline state (mirrors plan_period_* fields) ──────────────────────────

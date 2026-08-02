@@ -233,7 +233,6 @@ function MMRadial({
       ro.disconnect();
       window.removeEventListener("resize", recompute);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [branches]);
 
   // Helper for card refs by id.

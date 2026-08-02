@@ -111,7 +111,6 @@ export async function POST(req: NextRequest) {
     let stored = `${today}-intake-${safeBase}`;
     let target = path.join(dir, stored);
     let n = 2;
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       try {
         await fs.access(target);

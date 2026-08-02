@@ -445,7 +445,6 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                     {m.attachment && (
                       <div style={{ marginTop: m.text ? 6 : 0 }}>
                         {m.attachment.kind === "image" ? (
-                          // eslint-disable-next-line @next/next/no-img-element
                           <a
                             href={`/api/client-file/${clientId}/${m.attachment.name}`}
                             target="_blank"

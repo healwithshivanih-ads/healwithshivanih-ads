@@ -1016,7 +1016,6 @@ export async function createSuccessor(
   await fs.mkdir(draftsDir, { recursive: true });
 
   // Clone, strip loader-only fields, reset lifecycle
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { _bucket, _file, ...rest } = old;
   const successor: Record<string, unknown> = {
     ...rest,

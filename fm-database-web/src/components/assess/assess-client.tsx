@@ -3222,7 +3222,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     loadClientSessionsAction(clientId)
       .then(setPriorSessions)
       .catch(() => setPriorSessions([]));
-  }, [clientId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [clientId]);
 
   // Debounced subgraph readiness peek — refreshes as coach picks symptoms /
   // conditions, so they see what the AI will have to work with BEFORE

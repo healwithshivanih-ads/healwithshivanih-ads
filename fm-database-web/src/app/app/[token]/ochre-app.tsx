@@ -425,7 +425,6 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     if (!hydrated || dailyDone <= 0) return;
     const t = todayIso();
     setLoggedDays((prev) => (prev.includes(t) ? prev : [...prev, t].slice(-120)));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hydrated, dailyDone]);
 
   // Consecutive-day logging streak → feeds the growing tree's birds/chicks.
