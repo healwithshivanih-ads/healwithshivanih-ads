@@ -42,20 +42,17 @@ MAX_LINKS_PER_CLAIM = 4
 # checked against its real occurrences in the catalogue before being added.
 BLOCKED_TERMS: dict[str, str] = {
     # ordinary English that happens to be a symptom alias
-    "pressure": "alias of `stress`, but ~all real hits are 'blood pressure'",
     "avoidance": "alias of `avoidance-behaviour`; hits mean avoiding a food/toxin",
-    "depleted": "alias of `burnout`; hits are 'glycogen/nutrients depleted'",
-    "isolation": "alias of `social-isolation`; hits are 'in isolation'",
-    "isolated": "alias of `social-isolation`; hits are 'isolated compound/case'",
-    "stressed": "alias of `low-mood-anxiety`; hits are 'stressed population'",
     "tightness": "alias of `tension`; hits are chest tightness (cardiac/anxiety)",
-    # real clinical words pointing at the WRONG symptom
-    "redness": "alias of `skin-rash`; real hits are joint/vulvar redness",
-    "weakness": "alias of `lethargy`; real hits are neuro/muscle weakness",
-    "hyperactivity": "alias of `anxiety`; real hits are ADHD/autism hyperactivity",
-    "schizophrenia": "alias of `depression-symptoms`; a distinct diagnosis",
-    "dementia risk": "alias of `poor-concentration`; a prognosis, not the symptom",
 }
+# Ten further terms lived here until 2026-08-02 ("pressure", "depleted",
+# "isolation", "isolated", "stressed", "redness", "weakness", "hyperactivity",
+# "schizophrenia", "dementia risk"). Each was a genuinely wrong alias in the
+# catalogue itself, not just wrong for this matcher, so blocking them here only
+# papered over damage that alias-aware matching does everywhere else — intake
+# condition derivation, plan-check, mindmap linking. They were deleted from
+# `data/symptoms/` instead. Prefer that fix: block here only when the alias is
+# CORRECT for the symptom and merely too generic to match prose safely.
 
 
 @dataclass
