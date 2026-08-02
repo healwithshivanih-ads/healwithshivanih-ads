@@ -609,7 +609,14 @@ single-compound supplements in one capsule (e.g. supplement slug
 riboflavin; 'homocysteine-b-complex' adds TMG). When you would otherwise
 add ≥3 individual supplements that a single combo entry covers, suggest
 the ONE combo entry instead and state in the rationale which compounds it
-consolidates. Fewer pills = better adherence."""
+consolidates. Fewer pills = better adherence.
+
+STRENGTH TRAINING → CREATINE PAIRING: if a suggested_change adds "Strength /
+resistance training" (or equivalent) as a new lifestyle practice, also
+propose adding creatine-monohydrate (3-5 g/day, anytime, preferably
+post-workout) as a companion supplement change — unless the client has
+chronic kidney disease, elevated creatinine/urea, or a kidney-stone history,
+in which case note the omission in the rationale instead."""
 
 
 def _build_suggestion(tool_input: dict, triggered_by: str, prior) -> dict:
