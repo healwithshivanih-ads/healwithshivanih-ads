@@ -23,12 +23,24 @@
 
 import { useEffect, useState, useCallback, useMemo } from "react";
 import {
-  loadWhatsAppThreadAction,
   sendWhatsAppTextAction,
   recordOutboundMessageAction,
   type ChatThreadMessage,
 } from "@/app/api/whatsapp/actions";
+import {
+  loadClientChatAction,
+  sendCoachMessageAction,
+} from "@/lib/server-actions/client-chat";
+import type { ThreadView } from "@/lib/fmdb/client-thread";
 import { relativeTimeShort } from "@/lib/fmdb/session-utils";
+
+const ATTACHMENT_KINDS = ["image", "document", "audio", "video", "other"] as const;
+type AttachmentKind = (typeof ATTACHMENT_KINDS)[number];
+function narrowAttachmentKind(kind: string): AttachmentKind {
+  return (ATTACHMENT_KINDS as readonly string[]).includes(kind)
+    ? (kind as AttachmentKind)
+    : "other";
+}
 
 interface Props {
   clientId: string;
@@ -145,7 +157,22 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
   const refresh = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await loadWhatsAppThreadAction(clientId, daysBack);
+      // Merged: in-app messages + WhatsApp history. One conversation, so
+      // the desktop panel and the phone can never show different histories.
+      const merged = await loadClientChatAction(clientId, daysBack);
+      const res = merged.messages.map((m: ThreadView) => ({
+        direction: m.dir,
+        date: m.at,
+        text: m.text,
+        via: m.via,
+        ...(m.template_name ? { template_name: m.template_name } : {}),
+        // ThreadView widens `kind` (it also carries in-app "text"/"voice");
+        // the panel's attachment type is a closed union, so narrow rather
+        // than cast — an unknown kind renders as a generic file, not a crash.
+        ...(m.file
+          ? { attachment: { name: m.file, kind: narrowAttachmentKind(m.kind) } }
+          : {}),
+      }));
       setMessages(res);
       setLoadError(null);
       setLastLoadedAt(new Date().toISOString());
@@ -195,6 +222,29 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
 
   const grouped = groupByDay(messages);
   const firstName = (clientName ?? "").split(" ")[0] || "this client";
+
+  // In-app send: no per-message cost and no 24-hour window. Kept as a
+  // SEPARATE action rather than a mode switch on the existing one, so the
+  // WhatsApp path — with its record-or-shout failure handling — is untouched.
+  const handleAppSend = async () => {
+    const text = replyText.trim();
+    if (!text) return;
+    setSending(true);
+    setReplyStatus(null);
+    try {
+      const res = await sendCoachMessageAction(clientId, text);
+      if (res.ok) {
+        setReplyText("");
+        setReplyStatus({ ok: true });
+        void refresh();
+        setTimeout(() => setReplyStatus(null), 3000);
+      } else {
+        setReplyStatus({ ok: false, error: res.error ?? "Couldn't send in app." });
+      }
+    } finally {
+      setSending(false);
+    }
+  };
 
   const handleReplySend = async () => {
     if (!clientPhone || !replyText.trim()) return;
@@ -568,6 +618,27 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
             }}
           />
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+            {/* In-app first: it costs nothing and has no 24-hour window.
+                WhatsApp stays one click away for clients who have not moved
+                across yet — this is a choice, not a migration. */}
+            <button
+              onClick={handleAppSend}
+              disabled={sending || !replyText.trim()}
+              title="Send in the client's app — free, no 24-hour window"
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                padding: "5px 12px",
+                background:
+                  replyText.trim() && !sending ? "var(--fm-primary)" : "var(--fm-border)",
+                color: replyText.trim() && !sending ? "#fff" : "var(--fm-text-3)",
+                border: "none",
+                borderRadius: "var(--fm-radius-sm)",
+                cursor: replyText.trim() && !sending ? "pointer" : "not-allowed",
+              }}
+            >
+              {sending ? "Sending…" : "Send in app"}
+            </button>
             <button
               onClick={handleReplySend}
               disabled={sending || !replyText.trim()}

@@ -23,6 +23,15 @@
 .m-app {
   min-height: 100%;
   --m-pad: 14px;
+  /* Base rule, not a per-component patch. Client messages and session notes
+     carry raw links (https://intake.theochretree.com/app/<32-char token>) and
+     a token has no break opportunity, so one of them makes the whole app
+     wider than the screen and the shell scrolls sideways. This has now bitten
+     cards and chat bubbles separately; at 375px an unbreakable string is
+     always a bug, so it is handled once, here. `break-word` rather than
+     `anywhere` — it only breaks words that would otherwise overflow, and
+     leaves intrinsic sizing alone. */
+  overflow-wrap: break-word;
 }
 
 /* ---------- Layout ---------- */

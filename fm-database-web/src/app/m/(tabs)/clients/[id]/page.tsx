@@ -126,6 +126,15 @@ export default async function ClientCard({
         </div>
       ) : null}
 
+      <Eyebrow>Messages</Eyebrow>
+      <Link className="fm-btn block" href={`/m/clients/${card.id}/chat`}>
+        <Icon name="chat" size="sm" />
+        Open conversation
+      </Link>
+      <p className="m-subtle" style={{ margin: "8px 2px 0" }}>
+        In-app messages and WhatsApp history, in one thread.
+      </p>
+
       {appUrl ? (
         <>
           <Eyebrow>What they see</Eyebrow>
