@@ -44,6 +44,8 @@ import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
 import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
+import { ArchiveCandidatesPanel } from "@/components/archive-candidates-panel";
+import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
 import {
   FmAlertGroup,
   FmAppShell,
@@ -485,11 +487,22 @@ export default async function DashboardV2() {
   // loader, this can be dropped.
   // apiMtd was fetched here historically; moved to /settings 2026-05-19
   // where the spend counter now lives. The dashboard no longer needs it.
-  const [clients, plans, catalogueStatus] = await Promise.all([
+  const [allClientsLoaded, plans, catalogueStatus] = await Promise.all([
     loadAllClients(),
     loadAllPlans(),
     getCatalogueStatus(),
   ]);
+
+  // Archived clients drop off EVERY dashboard surface — triage, banners,
+  // practice overview, scheduling, app-links. They stay intact on disk and
+  // reappear under the /clients-v2 "🗄 Archived" filter. Splitting here, once,
+  // means this single filter point governs the whole page (all downstream
+  // code consumes `clients`, never the raw load). See
+  // lib/fmdb/archive-candidates.ts for the coach-confirmed archive nudge.
+  const isArchived = (c: unknown) =>
+    (c as { archived?: boolean }).archived === true;
+  const archivedClients = allClientsLoaded.filter(isArchived);
+  const clients = allClientsLoaded.filter((c) => !isArchived(c));
 
   // WhatsApp inbound (last 7 days)
   const clientNameMap = new Map(
@@ -511,6 +524,16 @@ export default async function DashboardV2() {
     if (!plansByClient.has(cid)) plansByClient.set(cid, []);
     plansByClient.get(cid)!.push(p as unknown as PlanRow);
   }
+
+  // 🗄 Archive candidates — inactive prospects / declined discoveries the
+  // coach can one-click archive (nudge only; never auto-archived). Computed
+  // from the already-loaded clients + plans; reads sessions only for the
+  // no-plan / not-signed-up tail. 21-day window (coach decision 2026-07-13).
+  const archiveCandidates = await getArchiveCandidates(
+    clients as unknown as Parameters<typeof getArchiveCandidates>[0],
+    plansByClient as unknown as Parameters<typeof getArchiveCandidates>[1],
+    todayStr,
+  );
 
   // Stranded intake drafts — substantial answers sitting in
   // intake_form_draft, never promoted to a real submit. (Pranati cl-009
@@ -1473,6 +1496,27 @@ export default async function DashboardV2() {
           <FmRecipeImageChip />
         </FmAlertGroup>
       </div>
+
+      {/* 🗄 Archive suggestions — coach-confirmed declutter of inactive
+          prospects / declined discoveries. Self-hides when none. Sits right
+          above the triage list because it prunes the same declined /
+          awaiting-signup clients that show up there. */}
+      <ArchiveCandidatesPanel candidates={archiveCandidates} />
+
+      {archivedClients.length > 0 && (
+        <div style={{ textAlign: "right", marginBottom: 8 }}>
+          <Link
+            href="/clients-v2?filter=archived"
+            style={{
+              fontSize: 12,
+              color: "var(--fm-text-tertiary)",
+              textDecoration: "none",
+            }}
+          >
+            🗄 {archivedClients.length} archived — view
+          </Link>
+        </div>
+      )}
 
       {/* Triage sections — collapsible, zero-count gets faded green badge */}
       {totalClients === 0 ? (

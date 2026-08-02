@@ -1008,6 +1008,78 @@ export async function updateClientProfile(
 }
 
 // ---------------------------------------------------------------------------
+// Archive / unarchive — soft-hide an inactive client (a prospect who never
+// signed up, or a declined discovery) so they stop cluttering the dashboard
+// triage and the default roster. The record stays fully intact on disk;
+// archived clients reappear under the "🗄 Archived" filter on /clients-v2 and
+// can be unarchived with one click. Coach-confirmed only — the dashboard
+// merely SUGGESTS candidates (see lib/fmdb/archive-candidates.ts).
+// ---------------------------------------------------------------------------
+
+export type ArchiveClientResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+function revalidateClientEverywhere(clientId: string): void {
+  revalidatePath(`/clients/${clientId}`);
+  revalidatePath(`/clients-v2/${clientId}`);
+  revalidatePath("/clients-v2");
+  revalidatePath("/dashboard-v2");
+}
+
+async function setClientArchived(
+  clientId: string,
+  archived: boolean,
+  reason?: string,
+): Promise<ArchiveClientResult> {
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = yaml.load(raw) as Record<string, unknown>;
+
+    if (archived) {
+      data.archived = true;
+      data.archived_at = new Date().toISOString();
+      data.archived_reason = (reason ?? "").trim() || undefined;
+    } else {
+      // Clear the trio so the record reads as a normal active client again.
+      data.archived = false;
+      data.archived_at = undefined;
+      data.archived_reason = undefined;
+    }
+    data.updated_at = new Date().toISOString();
+
+    await fs.writeFile(
+      clientYaml,
+      dumpYaml(data, { noRefs: true, sortKeys: false }),
+      "utf8",
+    );
+    revalidateClientEverywhere(clientId);
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return {
+      ok: false,
+      error: e.message ?? `Failed to ${archived ? "archive" : "unarchive"} client`,
+    };
+  }
+}
+
+export async function archiveClient(
+  clientId: string,
+  reason?: string,
+): Promise<ArchiveClientResult> {
+  return setClientArchived(clientId, true, reason);
+}
+
+export async function unarchiveClient(
+  clientId: string,
+): Promise<ArchiveClientResult> {
+  return setClientArchived(clientId, false);
+}
+
+// ---------------------------------------------------------------------------
 // Cycle tracking — coach-owned period dates (Piece B foundation). The intake
 // form seeds these once; thereafter the coach refreshes them from check-ins /
 // WhatsApp / calls via the CycleTrackingPanel on the client overview.

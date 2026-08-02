@@ -52,6 +52,7 @@ import { detectLiverDetoxAdvisory } from "@/lib/fmdb/liver-detox-advisory";
 import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
+import { ClientArchiveControl } from "./client-archive-control";
 import { DiscoveryAppCard } from "./discovery-app-card";
 import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
 import { NasaLeanTestPanel } from "./nasa-lean-test-panel";
@@ -1235,6 +1236,23 @@ export default async function ClientV2Page({
         { label: client.display_name ?? client.client_id },
       ]}
     >
+      {(() => {
+        const c = client as unknown as {
+          archived?: boolean;
+          archived_at?: string;
+          archived_reason?: string;
+        };
+        return (
+          <ClientArchiveControl
+            clientId={client.client_id}
+            displayName={client.display_name ?? client.client_id}
+            archived={c.archived === true}
+            archivedAt={c.archived_at}
+            archivedReason={c.archived_reason}
+          />
+        );
+      })()}
+
       <FmClientJourneyStrip journey={journey} />
 
       <FmClientHeader
