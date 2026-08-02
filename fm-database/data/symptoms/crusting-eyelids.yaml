@@ -1,0 +1,49 @@
+slug: crusting-eyelids
+display_name: Crusting or Sticky Eyelids (Symptom)
+aliases:
+- eyelid-crusting
+- sticky-eyelids
+- eyelids-stuck-on-waking
+- flaking-eyelashes
+- itchy-eyelids
+- red-eyelid-margins
+- greasy-eyelids
+- morning-eye-crust
+category: other
+severity: common
+description: Crusting, flaking or stickiness at the lash line and lid margins,
+  characteristically worst on waking and often described by clients as their eyelids
+  being stuck together or as ordinary "sleep in the eyes". May be accompanied by
+  itching, redness or a greasy feel along the lid margin, and by recurrent styes or
+  chalazia. It is the single most discriminating symptom for lid margin disease
+  (blepharitis and meibomian gland dysfunction) and therefore the most useful
+  question to ask a client whose dry eyes are not responding to lubricant drops.
+when_to_refer: Loss of lashes, a distorted lid margin, or a persistent lump at the
+  same site — needs ophthalmology to exclude malignancy. Also refer for pain,
+  vision change, marked light sensitivity, or rapid onset with lid swelling and
+  redness.
+notes_for_coach: Clients essentially never volunteer this — they file it under
+  normal morning eye crust and do not connect it to their dry eyes. Ask directly
+  whether the lids feel stuck or gritty on waking. A yes shifts the working picture
+  from simple dryness to lid margin disease, which changes the intervention
+  completely — from drops toward daily warm compress and lid hygiene. Emphasise
+  maintenance over courses, since lid disease relapses as soon as hygiene stops.
+linked_to_topics:
+- blepharitis
+- meibomian-gland-dysfunction
+- dry-eye-syndrome
+- rosacea
+linked_to_mechanisms:
+- ocular-surface-inflammation
+- chronic-inflammation
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-021 Kamla Bhutani (dry eye persisting on prescribed
+    ocular anti-inflammatory therapy)
+  quote: The catalogue had no slug for the lid-margin symptom that distinguishes
+    evaporative dry eye from simple dryness, so the one question most likely to
+    change the intervention could not be captured or tracked.
+version: 1
+status: active
+updated_at: '2026-08-01'
+updated_by: Shivani

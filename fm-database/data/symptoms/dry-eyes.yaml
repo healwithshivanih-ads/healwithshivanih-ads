@@ -18,10 +18,14 @@ when_to_refer: Persistent symptoms despite basic lifestyle measures (omega-3, sc
   pain → autoimmune workup.
 linked_to_topics:
 - dry-eye-syndrome
+- meibomian-gland-dysfunction
+- blepharitis
+- sjogrens-syndrome
 - type-2-diabetes-mellitus
 - perimenopause-and-menopause
 - autoimmune-thyroiditis
 linked_to_mechanisms:
+- ocular-surface-inflammation
 - estrogen-decline
 - chronic-inflammation
 sources:
@@ -29,7 +33,7 @@ sources:
   location: Active case — cl-008 Sudarshan
   quote: Dry-eye symptom flagged in T2DM intake; common comorbidity needing distinct
     symptom slug for tracking.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-08-01'
 updated_by: Shivani

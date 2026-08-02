@@ -1,0 +1,95 @@
+slug: sjogrens-syndrome
+display_name: "Sj\xF6gren's Syndrome"
+aliases:
+- sjogrens
+- sjogren-syndrome
+- sjogrens-disease
+- primary-sjogrens
+- secondary-sjogrens
+- autoimmune-exocrinopathy
+summary: "Systemic autoimmune disease in which lymphocytes infiltrate and progressively\
+  \ damage the exocrine glands — principally the lacrimal and salivary glands\
+  \ — producing the sicca picture of dry eyes plus dry mouth. Around nine times\
+  \ more common in women, with peaks in the perimenopausal years and again after 60.\
+  \ Primary Sj\xF6gren's occurs alone; secondary Sj\xF6gren's accompanies another\
+  \ autoimmune disease, most often rheumatoid arthritis, lupus or Hashimoto's\
+  \ thyroiditis. Beyond the glands it is genuinely systemic — fatigue and\
+  \ widespread musculoskeletal pain are among the most disabling features and are\
+  \ frequently the reason a client presents, dryness of all mucous membranes\
+  \ (including vaginal dryness and recurrent lower urinary tract symptoms) is common,\
+  \ and there is a recognised association with interstitial cystitis. It is widely\
+  \ under-diagnosed, with reported delays of several years, because the individual\
+  \ complaints get attributed separately to age, menopause or anxiety."
+common_symptoms:
+- dry-eyes
+- dry-mouth
+- joint-pain
+- fatigue
+- vaginal-dryness
+red_flags:
+- "persistent parotid or submandibular gland swelling — needs prompt assessment;\
+  \ Sj\xF6gren's carries an elevated non-Hodgkin lymphoma risk"
+- breathlessness or persistent dry cough (interstitial lung disease)
+- profound unexplained muscle weakness or persistent low potassium (renal tubular
+  acidosis)
+- new neurological symptoms such as numbness or burning in the feet
+related_topics:
+- dry-eye-syndrome
+- autoimmune-disease
+- autoimmune-thyroiditis
+- rheumatoid-arthritis
+- systemic-lupus-erythematosus
+- perimenopause-and-menopause
+key_mechanisms:
+- ocular-surface-inflammation
+- chronic-inflammation
+- molecular-mimicry
+coaching_scope_notes: "DIAGNOSIS IS ENTIRELY OUT OF SCOPE — never name this\
+  \ condition to a client as a possibility. The coaching contribution is pattern\
+  \ recognition handed to a doctor, plus symptom support afterwards. RECOGNITION:\
+  \ if a client has dry eyes that are not responding to lubricants AND dry mouth,\
+  \ the sicca pair is worth a doctor conversation, and more so alongside joint pain,\
+  \ marked fatigue, vaginal dryness or recurrent urinary symptoms. Ask the dry-mouth\
+  \ question plainly and conversationally — difficulty swallowing dry foods\
+  \ like crackers or roti without water, waking at night needing to sip —\
+  \ because clients almost never volunteer it. Then suggest they mention the\
+  \ combination to their doctor, without naming a disease. SUPPORT (whether or not a\
+  \ diagnosis follows): omega-3, humidification, deliberate sipping and mucosal-\
+  \ coating foods for the mouth, scrupulous dental care because dry mouth accelerates\
+  \ decay, warm compress and lid hygiene for the eyes, sugar-free xylitol gum or\
+  \ lozenges to stimulate saliva, and pacing for the fatigue. Handle framing with\
+  \ real care in health-anxious clients — for someone who avoids testing for\
+  \ fear of a diagnosis, an alarmed delivery can cost you the referral entirely."
+clinician_scope_notes: "Anti-Ro/SSA and anti-La/SSB antibodies, ANA, rheumatoid\
+  \ factor, immunoglobulins, ESR. Schirmer test, ocular surface staining, unstimulated\
+  \ salivary flow, salivary gland ultrasound, and labial minor salivary gland biopsy\
+  \ where needed. Note that roughly a third of patients are seronegative and that\
+  \ inflammatory markers can be entirely normal, so a normal ESR does not exclude it\
+  \ — referral rests on the clinical picture. Management (hydroxychloroquine,\
+  \ pilocarpine or cevimeline, topical ciclosporin or lifitegrast, punctal plugs,\
+  \ immunosuppression, lymphoma surveillance) is rheumatology- and\
+  \ ophthalmology-led."
+notes_for_coach: "The reason this entry exists is that the component complaints are\
+  \ each individually plausible on their own — dry eyes get put down to screens\
+  \ or age, dry mouth to medication, joint and body pain to wear and tear, vaginal\
+  \ dryness to menopause, fatigue to stress. It is only the cluster that means\
+  \ anything, and a catalogue that lacks the cluster can never surface it. Two common\
+  \ confounders to hold in mind before escalating: anticholinergic and other drying\
+  \ medications (antihistamines, tricyclics, some antihypertensives and\
+  \ beta-blockers) reproduce the sicca picture pharmacologically, and postmenopausal\
+  \ oestrogen decline dries all mucous membranes. Neither excludes the diagnosis, but\
+  \ both belong in the conversation so the doctor gets the full picture."
+evidence_tier: strong
+sources:
+- id: coach-active-case-gap-fill
+  location: "Active case — cl-021 Kamla Bhutani (dry eye on anti-inflammatory\
+    \ ocular therapy, alongside vulvodynia, recurrent UTIs and chronic generalised\
+    \ body aches)"
+  quote: "A sicca-shaped symptom cluster in a postmenopausal client had no catalogue\
+    \ entry, so no surface in the pipeline could connect dry eyes, dry mouth,\
+    \ mucosal dryness and widespread pain into a single pattern worth a doctor\
+    \ conversation."
+version: 1
+status: active
+updated_at: '2026-08-01'
+updated_by: Shivani

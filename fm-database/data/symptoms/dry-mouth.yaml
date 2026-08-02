@@ -31,6 +31,7 @@ notes_for_coach: 'Coaching levers before anything clinical — (a) audit DIURETI
   total fluids before ~4pm rather than raising the total. Cooked onion is NOT implicated
   and should not be stripped from a client''s food on this basis.'
 linked_to_topics:
+- sjogrens-syndrome
 - perimenopause-and-menopause
 - autoimmune-thyroiditis
 - type-2-diabetes-mellitus
@@ -43,7 +44,7 @@ sources:
   quote: Dry mouth is a primary presenting complaint with no catalogue symptom slug;
     its absence meant nothing in the pipeline connected her raw-onion intake to the
     symptom she was actively tracking.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-08-01'
 updated_by: Shivani

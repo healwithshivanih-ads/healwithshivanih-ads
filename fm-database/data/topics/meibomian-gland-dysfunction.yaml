@@ -1,0 +1,81 @@
+slug: meibomian-gland-dysfunction
+display_name: Meibomian Gland Dysfunction (MGD)
+aliases:
+- mgd
+- meibomitis
+- meibomian-gland-disease
+- posterior-blepharitis
+- evaporative-dry-eye
+- lipid-deficient-dry-eye
+- oil-gland-dysfunction-eyelid
+summary: Chronic obstruction, thickening or atrophy of the meibomian glands in the
+  eyelid margins, which secrete the lipid (oil) layer that caps the tear film and
+  stops it evaporating. When the oil fails, tears evaporate faster than they are made
+  — evaporative dry eye. MGD is the single most common cause of dry eye disease, and
+  crucially it is the form that does NOT respond to lubricant or saline drops alone,
+  because the deficit is oil, not water. Drivers — ageing, postmenopausal androgen
+  decline (meibomian glands are androgen-dependent, which is why prevalence rises
+  sharply in women after menopause), rosacea and seborrhoeic skin, low blink rate
+  from screen use, low omega-3 status, isotretinoin, and chronic lid-margin
+  inflammation. Often coexists with anterior blepharitis; the two together are lid-margin
+  disease.
+common_symptoms:
+- dry-eyes
+- blurred-vision
+- crusting-eyelids
+- photophobia
+red_flags:
+- persistent unilateral lid lump or recurrent chalazion at the same site — refer to
+  exclude sebaceous gland carcinoma
+- vision loss, severe pain, or corneal involvement
+- sudden onset with marked lid swelling and redness (preseptal cellulitis)
+related_topics:
+- dry-eye-syndrome
+- blepharitis
+- perimenopause-and-menopause
+- rosacea
+key_mechanisms:
+- ocular-surface-inflammation
+- estrogen-decline
+- chronic-inflammation
+coaching_scope_notes: 'This is where coaching has the most leverage in dry eye, because
+  the mainstay treatment is a daily physical habit, not a drug. (a) WARM COMPRESS —
+  a genuinely warm (not hot) compress held on closed lids for 5–10 minutes daily
+  melts the thickened oil so it can express; a microwaveable eye bag holds heat far
+  better than a flannel, which cools within a minute and is the usual reason clients
+  report "it did not work". (b) LID MASSAGE straight after — gentle sweeping pressure
+  from the lid base toward the lashes. (c) LID HYGIENE — wipe the lash line with a
+  clean damp cloth or a dedicated lid wipe. (d) OMEGA-3 at 2–3 g combined EPA+DHA
+  daily; RCT evidence in dry eye is strongest in this range, and it alters meibum
+  quality over 8–12 weeks, not days. (e) BLINK RETRAINING and the 20-20-20 rule for
+  screen users — incomplete blinking leaves the lower glands unexpressed. (f) Keep
+  fans, AC vents and car blowers off the face. Set the expectation clearly: compress
+  and omega-3 both work on a scale of weeks to months.'
+clinician_scope_notes: Meibography, meibomian expression, tear break-up time, lid-margin
+  assessment. Prescribed options include topical or oral azithromycin, low-dose
+  doxycycline, intense pulsed light (IPL), thermal pulsation (LipiFlow), and
+  in-office expression. Topical anti-inflammatories (ciclosporin, lifitegrast) and
+  short pulsed corticosteroid courses target the inflammatory component.
+notes_for_coach: 'THE key distinction to hold in practice — a client who says "I use
+  drops and they do not help" is very often describing MGD. Lubricants top up the
+  water layer of a tear film that is failing at the oil layer, so relief lasts minutes.
+  Ask two questions: does relief fade within 10–20 minutes of a drop, and are the
+  lid margins crusty, red or greasy on waking? Both point to lid disease rather than
+  simple dryness. Also note that a prescribed ophthalmic azithromycin is frequently
+  a lid-disease treatment rather than an infection treatment — do not assume a client
+  on it had conjunctivitis. Postmenopausal women are the highest-prevalence group,
+  and the androgen link means this sits alongside vaginal dryness and dry mouth as
+  a shared mucosal-atrophy story rather than three unrelated complaints.'
+evidence_tier: strong
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-021 Kamla Bhutani (dry eye unresponsive to lubricants,
+    on a prescribed anti-inflammatory ocular regimen)
+  quote: Dry eye persisting on lubricant drops in a 69-year-old postmenopausal woman
+    had no catalogue entry for the evaporative/lid-margin mechanism that most likely
+    explains it, so nothing in the pipeline could reach for warm compress and lid
+    hygiene — the actual first-line lever.
+version: 1
+status: active
+updated_at: '2026-08-01'
+updated_by: Shivani

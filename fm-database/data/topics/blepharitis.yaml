@@ -1,0 +1,68 @@
+slug: blepharitis
+display_name: Blepharitis (Lid Margin Disease)
+aliases:
+- anterior-blepharitis
+- lid-margin-disease
+- eyelid-inflammation
+- eyelid-margin-inflammation
+- demodex-blepharitis
+- seborrhoeic-blepharitis
+- staphylococcal-blepharitis
+summary: Chronic inflammation of the eyelid margins. Anterior blepharitis affects
+  the lash line and is driven by staphylococcal overgrowth, seborrhoeic skin, or
+  Demodex mite infestation of the lash follicles; posterior blepharitis is meibomian
+  gland dysfunction. Most clients have a mixed picture. Presents as crusting or
+  flaking at the lash base worse on waking, red or thickened lid margins, itching
+  and grittiness, and recurrent styes or chalazia. It is a leading cause of chronic
+  dry eye and of dry eye that does not respond to lubricants, because the inflamed
+  lid margin keeps destabilising the tear film. Strongly associated with rosacea and
+  seborrhoeic dermatitis — the eyelid is often the last place a skin condition gets
+  recognised.
+common_symptoms:
+- dry-eyes
+- crusting-eyelids
+- photophobia
+- blurred-vision
+red_flags:
+- loss of lashes, distorted lid margin, or a persistent unilateral lesion — refer to
+  exclude malignancy
+- corneal involvement, marked photophobia or vision change
+- rapid onset with pain and swelling
+related_topics:
+- meibomian-gland-dysfunction
+- dry-eye-syndrome
+- rosacea
+key_mechanisms:
+- ocular-surface-inflammation
+- chronic-inflammation
+coaching_scope_notes: 'Lid hygiene is the mainstay and it is entirely a coaching-scope
+  habit — but it must be framed as ongoing maintenance, not a course, because
+  blepharitis relapses reliably when hygiene stops. Daily routine — warm compress
+  to soften crusts, then wipe along the lash line with a clean damp cloth or a
+  commercial lid wipe, then a gentle lid massage. Support the skin picture alongside
+  it if rosacea or seborrhoeic dermatitis is present, since the lid is downstream of
+  it. Omega-3 helps the coexisting meibomian component. Replace eye make-up regularly
+  and remove it fully; discard old mascara. Avoid recommending undiluted tea tree oil
+  near the eye — Demodex treatment uses specific diluted preparations and belongs
+  with the prescriber.'
+clinician_scope_notes: Slit-lamp lid-margin assessment, lash sampling for Demodex
+  (cylindrical dandruff at the lash base is characteristic). Topical antibiotics,
+  ophthalmic azithromycin, oral tetracyclines for the rosacea-associated form, and
+  in-office Demodex treatments (tea tree derivatives, lotilaner) are clinician-led.
+notes_for_coach: Blepharitis and MGD are usually the same client. If dry eye is not
+  responding to drops, ask specifically about morning crusting and whether the lids
+  feel stuck on waking — clients rarely volunteer it because they file it under
+  "just sleep in my eyes". The single most common reason lid hygiene fails is that
+  it was done for two weeks and stopped; build it into an existing daily anchor so
+  it survives.
+evidence_tier: strong
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-021 Kamla Bhutani (persistent dry eye on prescribed
+    ocular anti-inflammatory therapy)
+  quote: No catalogue entry existed for lid-margin disease, the most common
+    coaching-actionable driver of dry eye that does not respond to lubricant drops.
+version: 1
+status: active
+updated_at: '2026-08-01'
+updated_by: Shivani

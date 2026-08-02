@@ -1,0 +1,58 @@
+slug: ocular-surface-inflammation
+display_name: Ocular Surface Inflammation (Dry Eye Vicious Cycle)
+aliases:
+- dry-eye-vicious-cycle
+- tear-film-instability
+- tear-hyperosmolarity
+- lacrimal-functional-unit-inflammation
+- ocular-surface-immune-activation
+category: immune
+summary: The self-perpetuating inflammatory loop that turns transient dryness into
+  chronic dry eye disease. An unstable or evaporating tear film raises tear
+  osmolarity; hyperosmolar tears stress the surface epithelium, which releases
+  inflammatory cytokines and matrix metalloproteinases; these recruit T cells to the
+  ocular surface and lacrimal gland, damaging goblet cells and reducing both mucin
+  and tear secretion — which destabilises the tear film further. Once the loop is
+  established it sustains itself independently of the original trigger, which is
+  precisely why adding more lubricant stops helping and why treatment shifts to
+  anti-inflammatory agents. It is also why benefit is measured in weeks to months
+  rather than days.
+upstream_drivers:
+- meibomian gland dysfunction and lid margin disease
+- postmenopausal oestrogen and androgen decline
+- autoimmune glandular infiltration (Sjögren's)
+- low omega-3 status and a high omega-6 to omega-3 ratio
+- reduced blink rate from screen use
+- anticholinergic, antihistamine, beta-blocker and diuretic medication
+- preservative (benzalkonium chloride) toxicity from frequent preserved drop use
+- low ambient humidity, air conditioning and direct airflow
+downstream_effects:
+- dry-eyes
+- blurred-vision
+- reflex tearing
+- light sensitivity
+- corneal epithelial damage and punctate staining
+- goblet cell and mucin loss
+- reduced tear secretion
+related_mechanisms:
+- chronic-inflammation
+- estrogen-decline
+- molecular-mimicry
+linked_to_topics:
+- dry-eye-syndrome
+- meibomian-gland-dysfunction
+- blepharitis
+- sjogrens-syndrome
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-021 Kamla Bhutani (prescribed lifitegrast plus a pulsed
+    topical corticosteroid for dry eye)
+  quote: The catalogue had no mechanism explaining why dry eye becomes
+    self-sustaining, why prescribers escalate from lubricants to immunomodulators,
+    or why those agents take six to twelve weeks to show benefit — the fact a client
+    most needs in order to persist with them.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-01'
+updated_by: Shivani
