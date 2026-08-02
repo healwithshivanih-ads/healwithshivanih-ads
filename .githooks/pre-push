@@ -1,0 +1,68 @@
+#!/bin/sh
+# web-ci makes lint (--max-warnings 0), type-check, tests and build BLOCKING.
+# This hook runs the two FAST gates (lint + type-check) locally before a push
+# that touches fm-database-web, so a warning or type error never reaches a red
+# CI. Tests + build stay in CI (too slow to run on every push); CI is still the
+# full backstop.
+#
+# Scoped: only runs when the push actually includes fm-database-web changes.
+# Bias is toward RUNNING when a commit range is ambiguous (fail safe).
+# Bypass once with `git push --no-verify` when you truly need to.
+#
+# Enabled per clone via:  git config core.hooksPath .githooks
+# (matches the existing .githooks/pre-commit recipe validator.)
+
+set -e
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+WEB="$REPO_ROOT/fm-database-web"
+ZERO="0000000000000000000000000000000000000000"
+
+# Read the ref pairs git feeds on stdin and decide whether any pushed commit
+# touches fm-database-web.
+touched=0
+while read -r _local_ref local_sha _remote_ref remote_sha; do
+  [ "$local_sha" = "$ZERO" ] && continue          # branch deletion — nothing to check
+  if [ "$remote_sha" = "$ZERO" ]; then            # new branch: compare to origin/main
+    base=$(git rev-parse origin/main 2>/dev/null || echo "")
+  else
+    base="$remote_sha"
+  fi
+  if [ -n "$base" ]; then
+    files=$(git diff --name-only "$base" "$local_sha" 2>/dev/null || echo "fm-database-web/_ambiguous")
+  else
+    files="fm-database-web/_ambiguous"            # can't resolve a range — check anyway
+  fi
+  if printf '%s\n' "$files" | grep -q '^fm-database-web/'; then
+    touched=1
+  fi
+done
+
+[ "$touched" -eq 0 ] && exit 0
+
+# A missing toolchain must not block a push on a fresh machine — warn and pass.
+if ! command -v npm >/dev/null 2>&1 || [ ! -d "$WEB/node_modules" ]; then
+  echo "pre-push: fm-database-web toolchain not ready (npm / node_modules) — skipping local checks." >&2
+  exit 0
+fi
+
+echo "pre-push: fm-database-web changed — running lint + type-check (matches web-ci)…"
+cd "$WEB"
+
+if ! npm run lint -- --max-warnings 0; then
+  echo "" >&2
+  echo "pre-push: LINT failed — push blocked (web-ci would fail on this)." >&2
+  echo "  • auto-fix the mechanical ones: npm run lint -- --fix" >&2
+  echo "  • a genuine false positive: // eslint-disable-next-line <rule> -- reason" >&2
+  echo "  • bypass this hook once:      git push --no-verify" >&2
+  exit 1
+fi
+
+if ! npm run type-check; then
+  echo "" >&2
+  echo "pre-push: TYPE-CHECK failed — push blocked (web-ci would fail on this)." >&2
+  echo "  Fix the type errors above, or bypass once with: git push --no-verify" >&2
+  exit 1
+fi
+
+echo "pre-push: lint + type-check passed."

@@ -12,6 +12,27 @@ published plans as JSON artifacts.
 **Active branch:** `claude/setup-fm-coach-laptop-7GFhK`
 **Licensing:** Proprietary (all rights reserved, internal-only)
 
+## Web CI — READ BEFORE pushing `fm-database-web`
+
+`.github/workflows/ci.yml` (`web-ci`) runs on any push touching `fm-database-web/**`
+and gates **all four** steps as BLOCKING: type-check, tests, build, and **lint
+(`eslint . --max-warnings 0`)**. The lint backlog was burned to zero (2026-08-02),
+so **any new ESLint warning fails CI** — treat warnings like errors.
+
+**Before pushing web changes, run the fast gate** (seconds; catches most CI failures):
+```bash
+cd fm-database-web && npm run lint -- --max-warnings 0 && npm run type-check
+```
+Auto-fix the mechanical ones with `npm run lint -- --fix`. For a **genuine** false
+positive, silence that one line — never relax the gate — with:
+`// eslint-disable-next-line <rule> -- reason`.
+
+**This is enforced automatically** by `.githooks/pre-push` (runs lint + type-check
+when a push touches `fm-database-web`; `git push --no-verify` bypasses once). A new
+clone must enable the shared hooks path once: `git config core.hooksPath .githooks`
+(also arms the existing `pre-commit` recipe validator). The full test+build gate
+stays in CI as the backstop.
+
 ## Status
 
 **v0.77–v0.78 (current, MERGED + DEPLOYED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
