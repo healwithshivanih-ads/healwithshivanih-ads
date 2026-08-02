@@ -7,10 +7,11 @@
  * (/m), the desktop thread panel, and (from phase 2) the client's own app —
  * so the three can never drift into showing different histories.
  *
- * WHAT THIS DOES NOT DO YET: notify the client. That is phase 2, together
- * with the client-side compose UI. Until then an in-app reply is stored and
- * displayed but the client has no way to see it, which is why phase 1 does
- * not change what the coach should actually send.
+ * A coach reply NOTIFIES the client — push where they have granted it, a
+ * short WhatsApp nudge where they have not. The outcome comes back to the
+ * caller so the UI can say how it was delivered, because "sent" meaning
+ * "written to a file nobody was told about" is the failure mode this whole
+ * feature has to avoid.
  */
 import {
   appendMessage,
@@ -21,6 +22,9 @@ import {
   type ThreadView,
 } from "@/lib/fmdb/client-thread";
 import { loadWhatsAppThreadAction } from "@/app/api/whatsapp/actions";
+import { notifyClientOfCoachReply } from "@/lib/fmdb/chat-notify";
+import { clientAppUrl } from "@/lib/fmdb/coach-mobile";
+import { loadClientById } from "@/lib/fmdb/loader-extras";
 
 const SAFE_ID = /^[a-z0-9][a-z0-9-]{0,63}$/i;
 const MAX_LEN = 4000;
@@ -53,7 +57,11 @@ export async function loadClientChatAction(
 export async function sendCoachMessageAction(
   clientId: string,
   text: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{
+  ok: boolean;
+  error?: string;
+  notified?: { channel: "push" | "whatsapp" | "none"; ok: boolean; error?: string };
+}> {
   if (!SAFE_ID.test(clientId)) return { ok: false, error: "bad client id" };
   const body = (text ?? "").trim();
   if (!body) return { ok: false, error: "Message can't be empty." };
@@ -61,7 +69,26 @@ export async function sendCoachMessageAction(
 
   const stored = appendMessage(clientId, { dir: "outbound", kind: "text", text: body });
   if (!stored) return { ok: false, error: "Couldn't save the message." };
-  return { ok: true };
+
+  // Delivery is best-effort and reported, never fatal: the message IS stored,
+  // and failing the send because a nudge failed would lose the coach's words.
+  let notified: Awaited<ReturnType<typeof notifyClientOfCoachReply>> = {
+    channel: "none",
+    ok: false,
+  };
+  try {
+    const client = (await loadClientById(clientId)) as
+      | { mobile_number?: string; app_token?: string }
+      | null;
+    notified = await notifyClientOfCoachReply(clientId, {
+      appUrl: clientAppUrl(client?.app_token) ?? undefined,
+      phone: client?.mobile_number ?? null,
+    });
+  } catch (err) {
+    console.error("[client-chat] notify failed:", err);
+  }
+
+  return { ok: true, notified };
 }
 
 /**

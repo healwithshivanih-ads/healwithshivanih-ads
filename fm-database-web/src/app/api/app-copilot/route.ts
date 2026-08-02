@@ -11,6 +11,7 @@ import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { runShim } from "@/lib/fmdb/shim";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
+import { isEmergency } from "@/lib/fmdb/triage";
 
 export const dynamic = "force-dynamic";
 
@@ -18,15 +19,6 @@ const DAILY_LIMIT = 15;
 
 // Authoritative gates (the client-side copies in ochre-coach.tsx are a UX
 // optimization only — a direct POST skips them, so these must stand alone).
-const EMERGENCY_HINTS = [
-  "chest pain", "chest tightness", "can't breathe", "cant breathe", "cannot breathe",
-  "trouble breathing", "breathless", "short of breath", "heart attack", "stroke",
-  "seizure", "passing out", "faint", "collapsed", "unconscious", "slurred",
-  "numb on one side", "severe bleeding", "bleeding heavily", "coughing blood",
-  "vomiting blood", "overdose", "suicid", "kill myself", "end my life",
-  "ending my life", "want to die", "harm myself", "hurt myself", "self harm",
-  "self-harm",
-];
 
 const DEFER_HINTS = [
   "dose", "dosage", "how much", "how many", "increase", "reduce", "double",
@@ -51,7 +43,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "token and question required" }, { status: 400 });
   }
   const q = question.toLowerCase();
-  if (EMERGENCY_HINTS.some((h) => q.includes(h))) {
+  if (isEmergency(question)) {
     return NextResponse.json({ ok: true, answer: "EMERGENCY" });
   }
   if (DEFER_HINTS.some((h) => q.includes(h))) {

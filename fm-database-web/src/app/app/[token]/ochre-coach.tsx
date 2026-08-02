@@ -11,6 +11,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Icon, useOchre } from "./ochre-context";
 import { Accordion, Section } from "./ochre-ui";
+import { OchreChat } from "./ochre-chat";
 
 // Acute medical / self-harm cues → an emergency response (call services),
 // NOT a "wait for the coach on WhatsApp" deferral. Checked before everything
@@ -159,8 +160,12 @@ export function CoachScreen({
         </div>
         {coachAlert && <span className="cc-badge">Check-in due</span>}
       </div>
-      <a className="wa-btn" href={waLink} target="_blank" rel="noreferrer" style={{ marginTop: 12 }}>
-        <Icon name="whatsapp" size={20} /> Message {firstName} on WhatsApp
+      {/* In-app messaging is the default now; WhatsApp stays below as a
+          second option so nobody is forced across mid-conversation. */}
+      <OchreChat firstName={firstName} />
+
+      <a className="wa-btn wa-btn--alt" href={waLink} target="_blank" rel="noreferrer" style={{ marginTop: 12 }}>
+        <Icon name="whatsapp" size={20} /> Or message on WhatsApp
       </a>
       {c.nextSession && (
         <div className="next-session" style={{ marginTop: 10 }}>

@@ -77,6 +77,11 @@ export const PUBLIC_PATH_PREFIXES = [
   // Client reminder preferences (AM/PM supplements, weekly check-in). Token-
   // scoped. (Same missing-from-allowlist bug as app-practice.)
   "/api/app-reminders",
+  // The client's side of the in-app chat. Token-scoped and re-verified
+  // server-side, like every other app-* route. Off the allowlist it 404s on
+  // Fly under FLY_INTAKE_ONLY and messages vanish with no error the client
+  // can see — the same silent failure app-practice shipped with.
+  "/api/app-chat",
   "/api/app-push",
   // App reports it's running installed (adoption signal). Token-scoped.
   "/api/app-installed",
