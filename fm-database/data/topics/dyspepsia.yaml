@@ -2,11 +2,10 @@ slug: dyspepsia
 display_name: Dyspepsia & Upper GI Discomfort in Midlife
 aliases:
 - upper GI discomfort
-- reflux
 - nausea
-summary: Dyspepsia — encompassing reflux, nausea, bloating after meals, and general upper GI discomfort — is common in perimenopause
-  and menopause, linked to declining HCL production, digestive enzyme output, bile flow, and microbiome-level fermentation
-  changes.
+summary: Dyspepsia — encompassing reflux, nausea, bloating after meals, and general upper GI discomfort
+  — is common in perimenopause and menopause, linked to declining HCL production, digestive enzyme output,
+  bile flow, and microbiome-level fermentation changes.
 common_symptoms:
 - acid-reflux-heartburn
 - nausea
@@ -26,18 +25,23 @@ related_topics:
 key_mechanisms:
 - hcl-decline
 - bile-flow-reduction
-coaching_scope_notes: Coaches can discuss meal environment, chewing, stress-reduction before meals, and general digestive
-  support supplements. HCL supplementation and bile-acid supplements require clinician involvement.
-clinician_scope_notes: HCL testing, steatocrit on stool testing, gallbladder evaluation, and bile-acid supplement dosing are
-  clinician scope.
+coaching_scope_notes: Coaches can discuss meal environment, chewing, stress-reduction before meals, and
+  general digestive support supplements. HCL supplementation and bile-acid supplements require clinician
+  involvement.
+clinician_scope_notes: HCL testing, steatocrit on stool testing, gallbladder evaluation, and bile-acid
+  supplement dosing are clinician scope.
 evidence_tier: plausible_emerging
 sources:
 - id: thurlow-microbiome-session-6
   location: Session 6 — Main Transcript, Dyspepsia Section
-  quote: The term dyspepsia in traditional allopathic medicine to really talk about you just don't feel great. Like you might
-    have a little bit of reflux, you might have a little bit of nausea, and this can be a direct reflection of what's changing
-    at the microbiome level.
-version: 1
+  quote: The term dyspepsia in traditional allopathic medicine to really talk about you just don't feel
+    great. Like you might have a little bit of reflux, you might have a little bit of nausea, and this
+    can be a direct reflection of what's changing at the microbiome level.
+version: 2
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-08-02'
 updated_by: shivani
+notes_for_coach: '2026-08-02: dropped the alias ''reflux'' — it collided with the `gerd` topic, which
+  absorbed acid-reflux-and-cardiac-sphincter-weakness in the same pass. A shared alias resolves to whichever
+  entity loads first, so the bare word ''reflux'' now belongs to gerd. Dyspepsia still ENCOMPASSES reflux
+  (see summary); it just is not a synonym for it.'
