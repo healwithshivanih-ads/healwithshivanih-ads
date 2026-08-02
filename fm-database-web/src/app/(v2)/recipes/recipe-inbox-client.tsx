@@ -140,7 +140,7 @@ function DraftEditor({
     });
   }
 
-  function usePhotoOnExisting(slug: string) {
+  function applyPhotoToExisting(slug: string) {
     setBusy(true);
     setErr("");
     startTransition(async () => {
@@ -273,7 +273,7 @@ function DraftEditor({
             <button
               key={d.slug}
               type="button"
-              onClick={() => usePhotoOnExisting(d.slug)}
+              onClick={() => applyPhotoToExisting(d.slug)}
               disabled={busy}
               className="text-xs bg-sky-600 text-white rounded px-3 py-1.5 disabled:opacity-50 mr-2"
             >
