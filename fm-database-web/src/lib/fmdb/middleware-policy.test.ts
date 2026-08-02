@@ -17,7 +17,9 @@ import { fileURLToPath } from "node:url";
 import { describe, it, expect } from "vitest";
 import {
   decideGate,
+  isMobilePath,
   isPublicPath,
+  safeMobileNext,
   PUBLIC_PATH_PREFIXES,
   type GateEnv,
 } from "./middleware-policy";
@@ -88,6 +90,9 @@ const PUBLIC_ROUTES = [
   "/api/intake/upload",
   "/handouts/iron.html",
   "/ochre-app/manifest.json",
+  "/coach-app/manifest.webmanifest",
+  "/coach-app/icon-192.png",
+  "/api/m-bridge/ask",
   "/recipe-images/dal.jpg",
 ];
 
@@ -157,7 +162,171 @@ describe("Mode 3: local dev (no env set)", () => {
   });
 });
 
+describe("Mode 4: /m coach mobile app", () => {
+  // Fly host with the mobile surface switched ON — the only config where /m
+  // is reachable from the public internet.
+  const FLY_M: GateEnv = { flyIntakeOnly: "1", coachMobileEnabled: true };
+
+  const MOBILE_ROUTES = [
+    "/m",
+    "/m/",
+    "/m/clients",
+    "/m/clients/cl-005",
+    "/m/today",
+    "/api/m/quick-note",
+  ];
+
+  it.each(MOBILE_ROUTES)("redirects %s to login without a session", (path) => {
+    expect(decideGate(path, FLY_M, null, false)).toBe("login");
+  });
+
+  it.each(MOBILE_ROUTES)("serves %s with a valid session", (path) => {
+    expect(decideGate(path, FLY_M, null, true)).toBe("next");
+  });
+
+  it("defaults to fail-closed when the session flag is omitted entirely", () => {
+    // A caller that forgets the 4th arg must NOT accidentally authorise.
+    expect(decideGate("/m/clients", FLY_M, null)).toBe("login");
+  });
+
+  it("lets the login + logout endpoints through without a session", () => {
+    for (const p of ["/m/login", "/api/m/login", "/api/m/logout"]) {
+      expect(decideGate(p, FLY_M, null, false)).toBe("next");
+    }
+  });
+
+  it("FAILS CLOSED: /m 404s on Fly when /m is not configured on this host", () => {
+    // Enabling the surface must be an explicit act. Without the password the
+    // whole app is simply not there.
+    for (const p of [...MOBILE_ROUTES, "/m/login", "/api/m/login"]) {
+      expect(decideGate(p, FLY, null, false)).toBe("notfound");
+      // ...and a forged session flag cannot conjure it into existence.
+      expect(decideGate(p, FLY, null, true)).toBe("notfound");
+    }
+  });
+
+  it("does not weaken any other coach route when /m is enabled", () => {
+    for (const p of COACH_ROUTES) {
+      expect(decideGate(p, FLY_M, null, true)).toBe("notfound");
+    }
+  });
+
+  it("keeps public routes public when /m is enabled", () => {
+    for (const p of PUBLIC_ROUTES) {
+      expect(decideGate(p, FLY_M, null, false)).toBe("next");
+    }
+  });
+
+  it("uses the cookie gate instead of Basic auth on an auth-gated host", () => {
+    // Basic auth re-prompts badly inside an installed iOS PWA — /m must never
+    // fall through to the 401 wall.
+    const env: GateEnv = { coachAuthPassword: "s3cret", coachMobileEnabled: true };
+    expect(decideGate("/m/clients", env, null, false)).toBe("login");
+    expect(decideGate("/m/clients", env, null, true)).toBe("next");
+    // The rest of the coach UI still uses Basic.
+    expect(decideGate("/clients-v2", env, null, false)).toBe("unauthorised");
+  });
+});
+
+describe("mobile prefix matching (segment-anchored)", () => {
+  // A bare startsWith("/m") would swallow these. /mindmap and /messages are
+  // REAL coach routes: matching them would turn their Fly 404 into a login
+  // redirect, advertising that the route exists.
+  const NOT_MOBILE = [
+    "/mindmap",
+    "/mindmap/thyroid-dysfunction",
+    "/messages",
+    "/api/maintenance/cl-005/pay",
+    "/mobile",
+    "/m-something",
+    "/media",
+    // Shares the "/api/m" stem but is a DIFFERENT surface: the Mac-side AI
+    // bridge, secret-gated at its own route. Must not fall into the /m
+    // session gate, or Fly could never reach it.
+    "/api/m-bridge/ask",
+  ];
+
+  it.each(NOT_MOBILE)("does not treat %s as a mobile path", (path) => {
+    expect(isMobilePath(path)).toBe(false);
+  });
+
+  it.each(["/m", "/m/", "/m/clients", "/api/m/quick-note"])(
+    "treats %s as a mobile path",
+    (path) => {
+      expect(isMobilePath(path)).toBe(true);
+    },
+  );
+
+  it("still 404s /mindmap and /messages on Fly with /m enabled", () => {
+    const env: GateEnv = { flyIntakeOnly: "1", coachMobileEnabled: true };
+    expect(decideGate("/mindmap", env, null, false)).toBe("notfound");
+    expect(decideGate("/messages", env, null, false)).toBe("notfound");
+  });
+});
+
+describe("safeMobileNext — post-login destination clamp", () => {
+  it("keeps a legitimate destination inside /m", () => {
+    expect(safeMobileNext("/m")).toBe("/m");
+    expect(safeMobileNext("/m/clients")).toBe("/m/clients");
+    expect(safeMobileNext("/m/clients/cl-005")).toBe("/m/clients/cl-005");
+    expect(safeMobileNext("/m/clients?q=hari")).toBe("/m/clients?q=hari");
+  });
+
+  it("normalises BEFORE validating — traversal cannot escape /m", () => {
+    // The bug this exists for: "/m/../clients-v2" passes a naive
+    // startsWith("/m/") check, then resolves to /clients-v2. Caught in
+    // runtime testing on 2026-08-02; guarded here so it cannot come back.
+    expect(safeMobileNext("/m/../clients-v2")).toBe("/m");
+    expect(safeMobileNext("/m/../../etc/passwd")).toBe("/m");
+    expect(safeMobileNext("/m/./../plans")).toBe("/m");
+    expect(safeMobileNext("/m/%2e%2e/clients-v2")).toBe("/m");
+  });
+
+  it("rejects absolute and protocol-relative destinations", () => {
+    for (const bad of [
+      "//evil.com",
+      "https://evil.com",
+      "http://evil.com/m/clients",
+      "javascript:alert(1)",
+      "\\\\evil.com",
+    ]) {
+      expect(safeMobileNext(bad)).toBe("/m");
+    }
+  });
+
+  it("rejects other coach routes, including near-misses", () => {
+    for (const bad of ["/clients-v2", "/mindmap", "/messages", "/mobile", "/m-x"]) {
+      expect(safeMobileNext(bad)).toBe("/m");
+    }
+  });
+
+  it("never bounces back to the login page (redirect loop)", () => {
+    expect(safeMobileNext("/m/login")).toBe("/m");
+    expect(safeMobileNext("/m/login?error=1")).toBe("/m");
+  });
+
+  it("falls back to /m on empty or unparseable input", () => {
+    for (const bad of [null, undefined, ""]) {
+      expect(safeMobileNext(bad)).toBe("/m");
+    }
+  });
+});
+
 describe("allowlist hygiene", () => {
+  it("/m is NOT in the public allowlist", () => {
+    // The whole point of Mode 4: "public" means NO auth on Fly. /m lists every
+    // client, so it must never be public — it carries its own cookie gate.
+    expect(isPublicPath("/m")).toBe(false);
+    expect(isPublicPath("/m/clients")).toBe(false);
+    expect(isPublicPath("/m/login")).toBe(false);
+    expect(isPublicPath("/api/m/login")).toBe(false);
+    for (const prefix of PUBLIC_PATH_PREFIXES) {
+      expect(prefix.startsWith("/m"), `${prefix} must not be a public /m prefix`).toBe(
+        false,
+      );
+    }
+  });
+
   it("isPublicPath agrees with the FLY-mode decision for every sample route", () => {
     for (const p of PUBLIC_ROUTES) expect(isPublicPath(p)).toBe(true);
     for (const p of COACH_ROUTES) expect(isPublicPath(p)).toBe(false);
