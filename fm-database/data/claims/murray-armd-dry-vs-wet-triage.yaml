@@ -1,0 +1,79 @@
+slug: murray-armd-dry-vs-wet-triage
+statement: |
+  ARMD splits into two forms that carry completely different urgency. The dry
+  (atrophic) form accounts for 80–85% of cases, progresses slowly, takes only central
+  vision while peripheral vision stays intact, and — per Murray & Pizzorno — has no
+  standard medical treatment, which is why nutritional support aimed at the
+  underlying oxidative damage has become the de facto standard of care. The wet
+  (neovascular) form affects 5–20% of people with ARMD, is driven by abnormal blood
+  vessel growth, and can progress fast enough that the window for laser treatment
+  closes. The chapter's flagged early symptom of wet ARMD is that straight lines
+  appear wavy — which makes that one symptom a same-week referral trigger, not a
+  nutrition conversation.
+evidence_tier: strong
+rationale: >
+  The dry/wet split, the approximate prevalence bands, the drusen/RPE-lipofuscin
+  description and the wavy-line distortion symptom are standard ophthalmology
+  teaching and are consistent across the chapter's cited references (1–3). The
+  "unofficial standard of care" phrasing for nutritional supplementation in dry ARMD
+  is the authors' own characterisation, not a guideline statement — but it is
+  directionally accurate in that no drug is approved for dry ARMD and the AREDS-type
+  formula is what is actually offered. Tiered strong for the clinical distinction;
+  the supplement-as-standard-of-care framing is the softer part of the claim.
+coaching_translation: >
+  There are two kinds of macular degeneration and they behave very differently. The
+  common kind ("dry") is slow — it blurs the centre of what you look at while the
+  edges of your vision stay fine, and there is no drug for it, which is exactly why
+  diet and targeted nutrients matter so much here. The less common kind ("wet")
+  involves leaky new blood vessels and can move fast. The warning sign for the fast
+  kind is that straight lines — a door frame, a window edge, lines of text — start to
+  look bent or wavy. If a client ever describes that, the answer is "please see an
+  eye specialist this week", full stop.
+caveats:
+- Wavy or distorted straight lines, a new dark spot in central vision, or a sudden
+  drop in vision are urgent — refer, do not coach.
+- Only an eye specialist can tell dry from wet; the two look similar to the client.
+- 'The phrase "no standard medical treatment for dry ARMD" is not permission to promise
+  that supplements will restore sight — the best-documented outcome is slowed
+  progression.'
+- Wet ARMD management (anti-VEGF injections such as ranibizumab, bevacizumab or
+  pegaptanib, laser, radiation) is entirely ophthalmologist territory.
+linked_to_topics:
+- macular-degeneration
+linked_to_supplements: []
+linked_to_mechanisms:
+- oxidative-stress
+out_of_scope_notes: >
+  Determining which form a client has, staging it, deciding on or timing anti-VEGF
+  injections or laser therapy, and interpreting an Amsler grid result are clinician
+  scope. A coach may teach a client what the wavy-line symptom means and encourage
+  prompt review, and may support nutrition alongside — but must never delay or
+  substitute for ophthalmology referral, and must never suggest that nutritional
+  support is an alternative to injections in the wet form.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1220
+  quote: >-
+    Between 80 and 85% of people with ARMD have the dry form of the disease. The
+    primary lesions are atrophic changes in the retinal pigmented epithelium (RPE),
+    which composes the innermost layer of the retina.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1220
+  quote: >-
+    The disease progresses slowly, and only central vision is lost; peripheral vision
+    remains intact. It is rare for anyone to become totally blind from dry ARMD.
+    Currently there is no standard medical treatment for this common form of ARMD,
+    though the use of nutritional supplements designed to address the underlying
+    oxidative damage is becoming the “unofﬁcial” standard of care.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1221
+  quote: >-
+    Wet ARMD is also known as the neovascular form or advanced ARMD. It affects 5% to
+    20% of people with ARMD. Wet ARMD is characterized by the growth of abnormal
+    blood vessels. Because the disease can rapidly progress to a point at which laser
+    surgery cannot be used, treatment should be performed as soon as possible. A
+    common early symptom of wet ARMD is that straight lines appear wavy.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

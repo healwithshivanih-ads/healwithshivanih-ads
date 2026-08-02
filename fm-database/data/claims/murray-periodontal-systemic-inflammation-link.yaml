@@ -1,0 +1,59 @@
+slug: murray-periodontal-systemic-inflammation-link
+statement: |
+  Periodontal disease is not a purely local dental problem — it is an inflammatory
+  condition of the gums and tooth-support structures that can be a manifestation of
+  systemic disease, including diabetes, anaemia, vitamin deficiency states, leukaemia
+  and other disorders of white blood cell function. Murray & Pizzorno also report an
+  association with hardening of the arteries, on the grounds that periodontal disease
+  is associated with an elevation in C-reactive protein — an inflammatory marker that
+  is itself an independent risk factor for heart disease. Practically, this means gum
+  disease in a client should prompt curiosity about metabolic and immune status, not
+  just about brushing technique.
+evidence_tier: plausible_emerging
+rationale: >
+  The book states the association plainly but offers only a single citation and no
+  effect sizes, no prospective data, and no evidence that treating gum disease changes
+  cardiovascular outcomes. The mechanistic story — chronic gingival infection raising
+  systemic CRP — is biologically coherent and is now widely discussed, but this text
+  supports association, not causation, and predates the larger trials. The systemic-
+  disease list (diabetes, anaemia, leukaemia) is standard clinical teaching and is
+  better supported than the atherosclerosis link. Tiered plausible_emerging because
+  the direction of causality is unresolved: inflamed gums may be a marker of a poorly
+  regulated immune system rather than the cause of arterial disease.
+coaching_translation: >
+  Bleeding or inflamed gums are worth taking seriously as a whole-body signal, not
+  just a dental nuisance. Gum inflammation often travels with blood-sugar problems,
+  low immunity and general inflammation — so if a client mentions bleeding gums, it is
+  a good moment to look at the wider picture with them and to encourage them to see a
+  dentist. We are not saying gum disease causes heart disease; we are saying inflamed
+  gums and an inflamed body often show up together, and the same habits help both.
+caveats:
+- Association only. This chapter does not show that treating gum disease lowers cardiac risk.
+- Persistent gum bleeding can signal undiagnosed diabetes, anaemia or a white-cell disorder — that is a doctor's assessment, not the coach's.
+- Elevated CRP has many causes; the coach never interprets a CRP result.
+- The book is a 2012 US text; prevalence figures and dietary intakes cited are US-based.
+linked_to_topics:
+- periodontal-disease
+- chronic-inflammation
+- atherosclerosis
+- type-2-diabetes
+- cardiovascular-disease-prevention
+linked_to_supplements: []
+linked_to_mechanisms:
+- chronic-inflammation
+- oral-microbiome-disruption
+out_of_scope_notes: >
+  Diagnosing periodontitis, probing pocket depth, scaling and root planing are dentist
+  or periodontist scope. Ordering or interpreting CRP, HbA1c or a full blood count is
+  clinician scope. The coach's legitimate actions here are: noticing the symptom,
+  educating on the gum-body connection in general terms, and referring to a dentist
+  and, where systemic disease is suspected, to the client's physician.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1386
+  quote: >-
+    It may be a manifestation of a more systemic condition, such as diabetes, anemia, vitamin deﬁciency states, leukemia, or other disorders of white blood cell function.1 An association with hardening of the arteries has also been reported, as periodontal disease is associated with an elevation in C-reactive protein— an important marker for systemic inﬂammation and an independent risk factor for heart disease.2
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

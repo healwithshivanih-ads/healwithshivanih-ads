@@ -1,0 +1,98 @@
+slug: murray-ms-omega-3-supplementation-and-omega-6-restriction
+statement: 'The essential-fatty-acid case in MS rests on membrane biology plus cytokine data. Murray &
+  Pizzorno
+
+  report a study giving 20 MS subjects 6 g/day fish oil (3 g EPA + 1.8 g DHA) for six months, with a
+
+  significant fall in inflammatory cytokines at three and six months - and a return to baseline three
+
+  months after stopping. A much larger double-blind trial (312 patients, 3.1 g EPA + DHA daily for two
+
+  years) showed only a non-significant trend, in a study where BOTH arms were told to eat low animal
+
+  fat. The treatment summary recommends 3,000 mg EPA + DHA per day. On the omega-6 side the authors
+
+  recommend restricting corn, safflower, sunflower and soy oils, cooking with monounsaturated oils
+
+  (olive, macadamia), using flaxseed oil in dressings, and they explicitly do NOT recommend evening
+
+  primrose oil, calling its clinical benefit in MS little if any.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'The mechanism is real and measurable - EPA and DHA incorporate into membrane phospholipids,
+  and the cytokine study shows a reversible biological effect (levels returned to baseline on withdrawal),
+  which is a strong signal that something is actually happening. What is missing is the clinical endpoint:
+  the only large trial reported here (312 patients, two years) did not reach significance, and its own
+  design, with both arms advised to eat low animal fat, plausibly blunted the contrast. The 31-patient
+  low-fat-plus-fish-oil pilot found better physical quality-of-life scores that were likewise not statistically
+  significant, and relapse rates fell in BOTH arms. So: biologically plausible, biomarker-supported, clinically
+  unproven for relapse or disability. The omega-6 restriction advice is the reasoning of the authors from
+  ratio biology, not a trial result - and the chapter concedes linoleic acid has shown benefit in some
+  MS trials, which cuts against a blanket omega-6 rule. Evening primrose being singled out as unhelpful
+  is a useful negative finding.'
+coaching_translation: 'Omega-3 fats from fish oil measurably lower inflammatory markers in people with
+  MS - and those markers go back up when the supplement stops, which tells you the effect is real. What
+  has not been shown is that this translates into fewer relapses or less disability; the biggest trial
+  found only a trend. So it is a reasonable supportive step, not a treatment. The everyday version: more
+  omega-3 sources, less of the high-omega-6 cooking oils (corn, safflower, sunflower, soy), cook with
+  olive oil, use flaxseed oil cold in dressings. Skip evening primrose oil - the book specifically says
+  it does not help in MS. Any supplement dose should be cleared with the doctor of the client, especially
+  alongside their MS medication.'
+caveats:
+- Fish oil at 3 g EPA+DHA/day is a therapeutic dose. Clear it with the treating clinician - bleeding risk
+  rises with antiplatelets and anticoagulants, and it must be paused before surgery.
+- A coach does not prescribe a supplement dose. Educate on food sources and let the clinician set any
+  dose.
+- 'Vegetarian route (essential in this practice): fish oil is unavailable to most Indian vegetarian clients.
+  Algae-derived EPA/DHA is the direct substitute. Flaxseed, chia and walnut supply alpha-linolenic acid,
+  which converts to EPA and DHA only poorly - so ALA-rich foods are not an equivalent swap for the 3 g
+  EPA+DHA described here.'
+- Do not read the restrict-omega-6 advice as absolute - the same chapter notes linoleic acid has shown
+  benefit in some MS trials. It is a reasoned position of the authors, not a trial finding.
+- Evening primrose oil is explicitly not recommended here; check whether the client is already taking
+  it.
+- Indian kitchens often use mustard, groundnut, sesame, coconut and rice-bran oils rather than corn or
+  safflower - assess the actual oils in use before recommending a swap.
+- Omega-3 supplementation does not replace disease-modifying therapy.
+linked_to_topics:
+- multiple-sclerosis
+- essential-fatty-acids
+- omega-3-fatty-acids
+- omega-3-omega-6-balance
+- anti-inflammatory-diet
+linked_to_supplements:
+- fish-oil-epa-dha
+- algae-oil-dha-epa
+- flaxseed-oil
+- omega-3
+linked_to_mechanisms:
+- epa-dha-cell-membrane-incorporation
+- omega-3-omega-6-imbalance
+- cytokine-dysregulation
+- neuroinflammation
+out_of_scope_notes: 'Coach scope: food-first omega-3 education, cooking-oil coaching, flagging evening
+  primrose oil for the clinician to review, and adherence support for a clinician-set supplement. Out
+  of scope: recommending a fish-oil or algae-oil dose, advising on it alongside anticoagulants, or presenting
+  omega-3 as disease-modifying.'
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1285
+  quote: After three and six months of ﬁsh oil supplementation, a signiﬁcant decrease in the levels of
+    inﬂammatory cytokines was noted. Cytokine levels returned to baseline values when ﬁsh oil supplementation
+    was discontinued for three months.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1285
+  quote: Another large double-blind study in which 312 MS patients were given 3.1 g EPA + DHA daily for
+    two years reported a trend in improvement in the omega-3 group compared with controls. Although the
+    results did not achieve statistical signiﬁcance, both groups in the study were advised to follow a
+    diet low in animal fat, and this may have affected the results.36
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1285
+  quote: nonetheless we recommend restricting omega-6 fatty acid intake by eliminating common vegetable
+    oils such as corn, safﬂower, sunﬂower, and soy from the diet and instead focusing on using monounsaturated
+    oils such as olive oil and macadamia nut oil for cooking
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: murray-magnesium-coronary-spasm-and-angina
+statement: Murray & Pizzorno argue magnesium deficiency plays a major role in angina, including Prinzmetal's variant angina — the spasm-driven form that occurs at rest, at odd hours of the day or night, and is more common in women under 50. They cite evidence that magnesium deficiency produces coronary artery spasm, that men dying suddenly of heart attack have significantly lower cardiac magnesium and potassium than matched controls, and that since the mid-1980s eight trials in over 4,000 patients found intravenous magnesium in the first hour of admission for acute heart attack reduced complications and death. Proposed actions include coronary dilation, reduced peripheral vascular resistance, reduced platelet aggregation and improved arrhythmia control.
+evidence_tier: confirm_with_clinician
+rationale: Two very different things are bundled here and must be separated. Magnesium's role in vascular smooth muscle relaxation and in coronary vasospasm is credible physiology with supporting data. The IV-magnesium-in-acute-MI claim is a hospital intervention, and the book's positive framing omits the large ISIS-4 and MAGIC trials, which did not confirm a mortality benefit — this is the most dated evidence in the chapter and should not be repeated as fact. Oral magnesium in someone with normal renal function is comparatively low-risk, but in a cardiac patient the decision still sits with the clinician.
+coaching_translation: 'Magnesium relaxes blood vessel walls, and low magnesium is linked to arteries going into spasm — the mechanism behind one particular kind of angina that strikes at rest rather than on exertion. Food-first is squarely in coaching scope and genuinely useful for Indian clients: dals and whole legumes, nuts and seeds (especially pumpkin seeds and almonds), ragi and other millets, dark leafy greens, whole grains. A magnesium supplement in someone with heart disease is a doctor''s decision, not yours.'
+caveats:
+- Magnesium accumulates dangerously in reduced kidney function. Never suggest supplemental magnesium without kidney function known — and interpreting eGFR/creatinine is not coach scope.
+- Magnesium can add to the blood-pressure-lowering and heart-rate-slowing effects of calcium channel blockers and beta-blockers, causing hypotension or bradycardia in combination.
+- Magnesium reduces absorption of several drugs (including some antibiotics and bisphosphonates) and needs dose separation that a pharmacist or doctor should set.
+- The book's IV magnesium claim for acute heart attack is outdated and hospital-only regardless — do not repeat it to clients.
+- Serum magnesium is a poor marker of body stores; do not let a normal serum result be read as "magnesium is fine", and do not interpret the result at all.
+- Rest angina always needs medical assessment first. "It might just be spasm, try magnesium" is exactly the wrong response.
+linked_to_topics:
+- magnesium-cardiovascular-health
+- magnesium-nutrition
+- heart-arrhythmias
+- cardiovascular-dysfunction
+linked_to_supplements:
+- magnesium
+- magnesium-glycinate
+- magnesium-citrate
+linked_to_mechanisms:
+- vascular-smooth-muscle-relaxation
+- calcium-magnesium-imbalance
+- muscle-relaxation-contraction-balance
+out_of_scope_notes: 'Coach scope: magnesium-rich foods and noticing the dietary pattern. Clinician scope: any supplemental magnesium in cardiac or renal disease, its dose and form, and all lab interpretation. IV magnesium is hospital-only and must never be discussed as an option.'
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 488
+  quote: Magnesium deﬁciency may play a major role in angina, including Prinzmetal’s variant. A magnesium deﬁciency has been shown to produce spasms of the coronary arteries and is thought to be a cause of nonocclusive heart attacks.27 Furthermore, it has been observed that men who die suddenly of heart attacks have signiﬁcantly lower levels of heart magnesium, as well as potassium, than matched controls.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

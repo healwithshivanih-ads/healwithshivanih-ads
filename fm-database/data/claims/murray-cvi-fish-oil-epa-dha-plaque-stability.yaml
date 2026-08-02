@@ -1,0 +1,56 @@
+slug: murray-cvi-fish-oil-epa-dha-plaque-stability
+statement: |
+  The chapter states that low levels of EPA and DHA are found in the atherosclerotic plaque of the carotid arteries of patients with significant carotid blockage, and that EPA + DHA supplementation is associated with reduced inflammation within the plaque - thereby making the plaque less likely to rupture and throw a clot that causes a stroke. The stated preventive dose is 1,000 mg of combined EPA + DHA per day. The mechanism claimed is plaque stabilisation via reduced plaque inflammation, not shrinking of the blockage.
+evidence_tier: plausible_emerging
+rationale: |
+  The plaque-composition finding is real and comes from carotid endarterectomy tissue studies - plaques from patients given omega-3 before surgery show more EPA/DHA incorporation and fewer inflammatory features. That is a genuine mechanistic result. What it does not establish is a stroke-outcome benefit at 1,000 mg/day: large randomised omega-3 trials have been mixed and several found no reduction in stroke, and some high-dose trials signalled a small increase in atrial fibrillation. So the mechanism is well demonstrated, the hard clinical endpoint is not. The 1,000 mg figure is a reasonable general cardiovascular dose, matching wider consensus, and is not extreme. Tiered plausible_emerging - not strong, because the book presents a mechanistic result as though it settled the outcome question.
+coaching_translation: |
+  The idea is that omega-3 fats get built into the plaque itself and calm the inflammation inside it, so the plaque is less likely to crack open and form the clot that causes a stroke. It is about making existing plaque more stable, not dissolving it - an important distinction to set with a client so expectations are honest. Around 1,000 mg of combined EPA and DHA a day is the commonly used preventive amount. For vegetarian and vegan Indian clients, fish oil is not acceptable and flax, chia or walnuts do not reliably convert to EPA and DHA - an algae-derived DHA/EPA oil is the equivalent, and the dose should be confirmed with their doctor.
+caveats:
+- 'STROKE/TIA IS A MEDICAL EMERGENCY. Sudden one-sided weakness or numbness, facial droop, slurred or
+  lost speech, sudden severe headache, sudden vision loss or sudden loss of balance means call emergency
+  services immediately - do not schedule a coaching call, do not ''watch it'', do not suggest a supplement.
+  Symptoms that resolve within minutes or hours are still an emergency: a TIA is a warning of an impending
+  stroke and needs same-day medical assessment.'
+- Dose selection and the decision to supplement at all are clinician scope. A coach may educate about
+  omega-3 in food and may relay that a product exists, but should not instruct a specific dose.
+- Omega-3 at supplemental doses can add to the effect of warfarin, aspirin, clopidogrel and other antiplatelet
+  or anticoagulant drugs - many CVI and post-TIA patients are on exactly these. It must be cleared with
+  the prescriber, and stopped in advance of surgery on the surgeon's instruction.
+- Check the label for actual EPA + DHA content, not total fish oil weight - a '1,000 mg' capsule often
+  contains only about 300 mg of EPA + DHA.
+- Fish oil is not vegetarian, and many Indian clients will decline it on religious or ethical grounds.
+  Offer algal oil rather than pressing the point. Fish allergy is an absolute bar.
+- This does not reduce the degree of blockage and is not an alternative to medical or surgical management
+  of severe carotid stenosis.
+linked_to_topics:
+- omega-3-fatty-acids
+- essential-fatty-acids
+- atherosclerosis
+- cardiovascular-disease-prevention
+- stroke-recovery
+- coagulation-imbalance
+linked_to_supplements:
+- fish-oil-epa-dha
+- omega-3
+- algae-oil-dha-epa
+linked_to_mechanisms:
+- epa-dha-cell-membrane-incorporation
+- inflammatory-cascade
+- plaque-progression
+- omega-3-omega-6-imbalance
+- coagulation-anticoagulation-imbalance
+out_of_scope_notes: |
+  Coaching omega-3-rich foods and explaining the plaque-stabilisation idea is in scope. Recommending a dose, advising a client on a supplement alongside their anticoagulant, or implying it substitutes for prescribed therapy is clinician scope and must be referred.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 35 — Cerebral Vascular Insufficiency, pg 647
+  quote: Low levels of EPA and DHA are found in the atherosclerotic plaque in the carotid arteries of
+    patients with signiﬁcant carotid blockage, while supplementation with EPA + DHA is associated with
+    reducing inﬂammation within the atherosclerotic plaque, thereby reducing the likelihood that the plaque
+    will rupture and lead to blood clots that may cause a stroke.7,8 The recommended dosage for prevention
+    is 1,000 mg EPA + DHA.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

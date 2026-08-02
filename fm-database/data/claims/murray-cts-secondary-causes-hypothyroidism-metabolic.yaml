@@ -1,0 +1,60 @@
+slug: murray-cts-secondary-causes-hypothyroidism-metabolic
+statement: |
+  Carpal tunnel syndrome is frequently secondary to another condition rather than idiopathic.
+  Murray & Pizzorno group the causes as anything that narrows the tunnel or swells its
+  contents: increased canal volume/edema (tendon inflammation, obesity, pregnancy, oral
+  contraceptives), trauma (fracture, repetitive wrist flexion), abnormal anatomy (cysts,
+  fatty tumours, bone spurs), metabolic conditions (diabetes and hypothyroidism), and
+  inflammatory conditions (rheumatoid arthritis, gout, connective tissue disease). CTS is
+  more common in women, peaks between ages 40 and 60, and occurs most often in pregnancy,
+  oral contraceptive use, menopause, and haemodialysis for kidney failure — groups the
+  authors argue share a greater requirement for vitamin B6.
+evidence_tier: strong
+rationale: >
+  The secondary-cause list is standard, well-replicated clinical medicine — hypothyroidism,
+  diabetes, pregnancy, obesity and inflammatory arthropathies are established CTS risk
+  factors across orthopaedic and neurology literature, and the mechanism is simple space
+  occupation: the carpal tunnel is a rigid osseo-ligamentous canal, so myxoedematous tissue
+  deposition in hypothyroidism, fluid retention in pregnancy, and tenosynovial swelling in
+  RA all raise intra-tunnel pressure on the median nerve. That earns a strong tier. The
+  authors' additional inference — that these groups are united by a higher vitamin B6
+  requirement — is a hypothesis of theirs, not an established finding, and it should not be
+  carried forward at the same confidence as the association list itself. The practical
+  consequence of this claim is the important part: new-onset CTS is a reason to ask whether
+  thyroid function and glucose regulation have been assessed, because treating the upstream
+  condition can resolve the wrist.
+coaching_translation: >
+  Carpal tunnel is often a symptom of something else, not a stand-alone wrist problem. It
+  shows up much more often with an underactive thyroid, with diabetes or high blood sugar,
+  in pregnancy, on the contraceptive pill, around menopause, with extra body weight, and with
+  inflammatory arthritis. So when a client mentions new night-time hand numbness and tingling,
+  the useful coaching question is not only 'how are you using your hands?' but 'when did you
+  last have your thyroid and blood sugar checked?' — and then encourage them to raise it with
+  their doctor. If an underlying condition is found and treated, the hand symptoms often
+  settle without anything being done to the wrist itself.
+caveats:
+- "A coach must not diagnose hypothyroidism or diabetes, and must not interpret TSH, free T4, HbA1c or fasting glucose results. The action is to encourage the client to have their clinician assess these — nothing more."
+- "Do not tell a client their CTS is 'caused by' their thyroid. The relationship is an association that a clinician must evaluate in that individual."
+- "Pregnancy-related CTS is common and often self-limiting after delivery; management in pregnancy belongs to the obstetric team."
+- "Red flags needing prompt medical review rather than coaching: constant (not intermittent) numbness, weakness or wasting of the thumb-base muscles, symptoms in both hands with other neurological signs, or symptoms following wrist trauma."
+- "Numbness and tingling in the hands has causes other than CTS — cervical radiculopathy, diabetic polyneuropathy, B12 deficiency, thoracic outlet syndrome — which a clinician must differentiate."
+linked_to_topics: ["carpal-tunnel-syndrome", "hypothyroidism", "type-2-diabetes", "perimenopause-and-menopause"]
+linked_to_supplements: []
+linked_to_mechanisms: ["chronic-inflammation"]
+out_of_scope_notes: >
+  CLINICIAN: diagnosing the underlying metabolic, endocrine or inflammatory condition,
+  ordering and interpreting thyroid and glycaemic labs, and performing nerve conduction
+  studies. COACH: recognising the pattern, prompting the client to seek assessment, and
+  supporting lifestyle work on the modifiable contributors (weight, glycaemic load, movement)
+  once a clinician has taken the lead.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 621
+  quote: "Any factor that causes the carpal tunnel to get smaller or its contents to swell can lead to carpal tunnel syndrome. Common causes include:2 • Increased volume of canal contents/edema (inﬂammation of the carpal tunnel tendons, obesity, pregnancy, oral contraceptives) • Trauma (fracture, repetitive wrist ﬂexion) • Abnormal anatomy (cysts, fatty tumors, bone spurs) • Metabolic conditions (diabetes, hypothyroidism)"
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 621
+  quote: "CTS is more prevalent among women and occurs frequently between the ages of 40 and 60. It occurs most often in pregnant women, women taking oral contraceptives, menopausal women, or patients on hemodialysis due to kidney failure.1 These groups tend to have a greater need for vitamin B6."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

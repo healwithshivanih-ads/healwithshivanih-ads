@@ -1,0 +1,59 @@
+slug: murray-ed-medication-induced
+statement: |
+  A wide range of prescription drugs can interfere with erectile function. The chapter
+  names blood pressure medication (especially beta-blockers), peptic ulcer drugs,
+  sedative-hypnotic sleeping pills, antidepressants and cholesterol-lowering statins, and
+  the fuller list adds antihistamines, anticholinergics, antipsychotics and tranquillisers.
+  This makes a medication review one of the highest-yield early steps when ED appears or
+  worsens — particularly if the onset followed a new prescription or a dose change. The
+  book's own advice is to work with the prescribing physician, and that framing is the
+  only safe one.
+evidence_tier: plausible_emerging
+rationale: >
+  Drug-induced sexual dysfunction is genuinely well documented for several of these
+  classes — SSRIs and SNRIs most strongly, beta-blockers and thiazides moderately,
+  antipsychotics via prolactin. The chapter presents the whole list at equal weight, which
+  overstates the evidence for some entries (statins in particular are contested, with
+  trial data going both ways). The chapter also adds "for most common health conditions
+  there are natural measures that will produce safer and better clinical results than
+  these drugs" — an unsupported blanket assertion that is not carried into this claim.
+  Tiered plausible_emerging: the class effect is real, the uniform framing is not.
+coaching_translation: >
+  If erectile difficulty started or worsened around the time a medication was started or
+  a dose changed, that timing is worth noticing and worth raising with the prescribing
+  doctor. Several common medicines can affect erections — some blood pressure tablets,
+  some antidepressants, some sleeping tablets, acidity medicines. Your job is to help him
+  build the timeline and the question, not to answer it: "I noticed this started around
+  when I began X — could that be related, and is there an alternative?" Be very clear
+  with him that he must not stop or reduce anything on his own. Stopping a blood pressure
+  or antidepressant medication abruptly is genuinely dangerous.
+caveats:
+- Never advise a client to stop, reduce, skip or switch a prescribed medication — this
+  is prescribing, and it is outside coach scope regardless of how the book phrases it.
+- Abrupt beta-blocker withdrawal can cause rebound hypertension, angina and arrhythmia;
+  abrupt antidepressant withdrawal can cause discontinuation syndrome and relapse.
+- The book's implication that natural measures generally outperform these drugs is not
+  supported and should not be passed on to a client.
+- The underlying condition being treated (hypertension, diabetes, depression) is itself a
+  cause of ED, so the drug is not automatically the culprit.
+linked_to_topics:
+- beta-blocker-deprescribing
+- ssri-induced-sexual-dysfunction
+- statin-side-effects
+- medication-nutrient-interactions
+linked_to_supplements: []
+linked_to_mechanisms:
+- autonomic-rebound
+out_of_scope_notes: >
+  Coach scope: helping the client notice and document a timeline, and preparing him to
+  ask the prescriber a clear question. Clinician scope: attributing ED to a drug,
+  changing, substituting or withdrawing any medication.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 905
+  quote: |-
+    A long list of prescription medications and drugs can interfere with sexual function, including medications such as blood pressure medications (especially beta-blockers), peptic ulcer medications, sleeping pills (sedative hypnotic drugs), antidepressants, and statins to lower cholesterol. If you are on a medication that may be linked to ED, work with your physician to get off the medication.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

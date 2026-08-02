@@ -1,0 +1,58 @@
+slug: murray-cvi-ginkgo-biloba-extract-240-320mg
+statement: |
+  Murray & Pizzorno report more than 40 double-blind studies of Ginkgo biloba extract (GBE) in cerebral vascular insufficiency, and state that in well-designed studies GBE produced statistically significant improvement in the major CVI symptoms - short-term memory loss, vertigo, headache, ringing in the ears, lack of vigilance and depression - as well as in impaired mental performance. Their recommended dose is 240 to 320 mg per day of extract standardised to 24% ginkgo flavonglycosides. They draw the wider inference that vascular insufficiency, rather than a true degenerative process, may be the major cause of these so-called age-related cerebral disorders.
+evidence_tier: confirm_with_clinician
+rationale: |
+  The trial base is genuinely large and mostly European, and standardised GBE (EGb 761 in most trials) does show small symptomatic benefit on some cognitive and CVI endpoints. But the honest picture is weaker than the chapter implies: many of the 40+ trials are old, small and methodologically dated, and the largest modern prevention trials (GEM and GuidAge) found no reduction in progression to dementia. The 240-320 mg/day range sits at the top of what was trialled (120-240 mg is more typical). The 'vascular not degenerative' inference is an over-reach - vascular and neurodegenerative contributions to cognitive decline coexist rather than one replacing the other. Most decisively for scope: nearly every client this would be considered for is on aspirin, clopidogrel or warfarin, which makes this a prescriber conversation regardless of efficacy. Tiered confirm_with_clinician.
+coaching_translation: |
+  Ginkgo is the herb with the largest trial history for poor circulation to the brain, and some studies show modest improvement in memory, dizziness, ringing in the ears and concentration. Be honest with clients that the big modern trials were disappointing for preventing dementia, so it is not a memory insurance policy. Critically: ginkgo must never be started on a coach's say-so. Most people with this condition are already on a blood thinner - aspirin, clopidogrel or warfarin - and ginkgo belongs in a conversation with their doctor, not on a supplement shelf. Your role is to explain what it is, note that it interacts, and route them to their physician. Meanwhile the diet, blood pressure and movement work is where the real leverage is.
+caveats:
+- 'STROKE/TIA IS A MEDICAL EMERGENCY. Sudden one-sided weakness or numbness, facial droop, slurred or
+  lost speech, sudden severe headache, sudden vision loss or sudden loss of balance means call emergency
+  services immediately - do not schedule a coaching call, do not ''watch it'', do not suggest a supplement.
+  Symptoms that resolve within minutes or hours are still an emergency: a TIA is a warning of an impending
+  stroke and needs same-day medical assessment.'
+- BLEEDING INTERACTION - FLAG ON EVERY GINKGO CONVERSATION. Ginkgo has antiplatelet activity and is documented
+  to potentiate warfarin, aspirin and clopidogrel, with case reports of spontaneous bleeding including
+  intracranial haemorrhage. This chapter argues the opposite - citing a study showing no change in INR
+  and stating that controlled studies consistently show no significant effect on bleeding time or platelet
+  aggregation. That position is a minority view and must NOT be relayed to a client as reassurance. Treat
+  ginkgo as interacting until the client's prescriber says otherwise.
+- Must be stopped before any surgical or dental procedure on the surgeon's instruction - typically 1-2
+  weeks ahead.
+- Contraindicated or requiring specialist clearance in bleeding disorders, recent haemorrhagic stroke,
+  uncontrolled hypertension, and pregnancy. Also interacts with SSRIs, some anticonvulsants and diabetes
+  medication.
+- Dose, product selection and standardisation (24% flavonglycosides / 6% terpene lactones) are clinician
+  scope. Adulterated and under-dosed ginkgo products are common in the Indian retail market.
+- Ginkgo does not treat carotid stenosis and must not be positioned as an alternative to medical assessment,
+  antiplatelet therapy, or surgery where those are indicated.
+- Attributing memory loss to blood flow can delay diagnosis of treatable causes - B12 deficiency, hypothyroidism,
+  depression, sleep apnoea, medication effects. Insist on a proper cognitive workup first.
+linked_to_topics:
+- cognitive-decline
+- stroke-recovery
+- tinnitus
+- atherosclerosis
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- ginkgo-biloba
+linked_to_mechanisms:
+- cerebral-perfusion
+- endothelial-dysfunction
+- plaque-progression
+- coagulation-anticoagulation-imbalance
+out_of_scope_notes: |
+  Educating a client about what ginkgo is, what the evidence does and does not show, and that it interacts with blood thinners is in scope. Recommending it, choosing a product, setting a dose, or advising on it alongside anticoagulant therapy is prescriber scope - refer every time, without exception.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 35 — Cerebral Vascular Insufficiency, pg 648
+  quote: In well-designed studies, GBE has produced statistically signiﬁcant improvement in the major
+    symptoms of CVI as well as in impaired mental performance. These symptoms included short-term memory
+    loss, vertigo, headache, ringing in the ears, lack of vigilance, and depression. These results suggest
+    that vascular insufﬁciency, not a true degenerative process, may be the major cause of these so-called
+    age-related cerebral disorders.9
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

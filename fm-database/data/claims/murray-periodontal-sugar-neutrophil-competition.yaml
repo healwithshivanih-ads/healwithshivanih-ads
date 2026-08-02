@@ -1,0 +1,64 @@
+slug: murray-periodontal-sugar-neutrophil-competition
+statement: |
+  Sugar harms gums twice over. It significantly increases plaque accumulation, and it
+  simultaneously depresses white blood cell function — Murray & Pizzorno attribute the
+  inhibition of neutrophil function to competition with vitamin C, since vitamin C and
+  glucose compete for the same largely insulin-dependent intracellular transport
+  sites. Neutrophils are described in the same chapter as the first line of defence
+  protecting the periodontium, so blunting them matters. The book's dietary summary is
+  correspondingly blunt: avoiding sugar and refined carbohydrates is extremely
+  important, and a high-fibre diet may be protective by increasing salivary secretion.
+evidence_tier: plausible_emerging
+rationale: >
+  The sugar-to-plaque link is well established and uncontroversial. The specific
+  mechanism offered for immune suppression — glucose outcompeting ascorbate at the
+  GLUT transporters — is real biochemistry (both use GLUT1/GLUT3) and is often cited,
+  but the leap from that to "sugar meaningfully impairs neutrophils in vivo and
+  thereby causes gum disease" rests on two 1970s-era references and is not
+  demonstrated with periodontal endpoints in this chapter. The high-fibre/saliva claim
+  is offered as a possibility ("may have a protective effect") with no citation at
+  all. Tiered plausible_emerging: the advice is safe and almost certainly right, the
+  stated mechanism is more confident than the evidence given.
+coaching_translation: >
+  Sugar hits gums from two directions — it feeds the plaque film on your teeth, and it
+  seems to take the edge off the immune cells that are meant to clear that plaque.
+  There is a neat detail behind it: sugar and vitamin C ride into your cells on the
+  same transporter, so a high-sugar day effectively crowds vitamin C out. The
+  practical version is unglamorous and works: cut sweets, biscuits, sweetened chai and
+  refined-flour snacks, and eat more fibre — whole dals, vegetables, millets — which
+  also gets you chewing more and producing more saliva, and saliva is your mouth's own
+  cleaning system.
+caveats:
+- The chapter's "150 g of sucrose per day" figure is a 2012 US average and should not be quoted at an Indian client as if it were their intake.
+- Sticky sweets and frequent grazing matter as much as total sugar for plaque; frequency is the actionable lever.
+- Bleeding gums in someone with high sugar intake may equally signal undiagnosed diabetes — that needs a doctor, not a diet talk alone.
+- Do not tell a client that sugar "suppresses your immune system" as a settled fact; the honest framing is that it appears to blunt one arm of it.
+linked_to_topics:
+- periodontal-disease
+- refined-carbohydrate-overconsumption
+- blood-sugar-regulation
+- fiber-gap
+linked_to_supplements:
+- vitamin-c
+linked_to_mechanisms:
+- glycemic-load-reduction
+- dietary-fiber-modulation
+- oral-microbiome-disruption
+out_of_scope_notes: >
+  Reducing added sugar and refined carbohydrate and raising fibre is squarely within
+  coaching scope and is the highest-value thing the coach can do here. Diagnosing
+  diabetes from gum symptoms, interpreting an HbA1c, or treating the plaque itself are
+  not — refer to physician and dentist respectively.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1390
+  quote: >-
+    Sugar is known to signiﬁcantly increase plaque accumulation while decreasing white blood cell function.15,16 The inhibition of neutrophil function is due to competition with vitamin C. Vitamin C and glucose are known to compete for intracellular transport sites
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1396
+  quote: >-
+    A diet high in ﬁber may have a protective effect by increasing salivary secretion. Avoiding sugar and reﬁned carbohydrates is extremely important. Follow the general guidelines detailed in the chapter
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

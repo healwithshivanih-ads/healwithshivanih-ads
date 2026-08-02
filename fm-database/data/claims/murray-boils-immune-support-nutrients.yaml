@@ -1,0 +1,70 @@
+slug: murray-boils-immune-support-nutrients
+statement: |
+  For recurrent boils Murray & Pizzorno frame the goal as raising skin levels of
+  vitamin A and zinc and removing dietary immune suppressors, alongside topical
+  antisepsis. Their treatment summary tells the reader to eliminate foods that may
+  suppress immune function — sugar, refined simple carbohydrates, and food allergens
+  — and their nutritional protocol is vitamin C 500-1,000 mg three times per day,
+  vitamin A 5,000 IU per day (capped at 3,000 IU per day in pregnancy or possible
+  pregnancy), and zinc 30-45 mg per day for up to one month, then 20-30 mg per day.
+  The book presents these as adjuncts to medical care, not a substitute for it.
+evidence_tier: fm_specific_thin
+rationale: >
+  Tiered fm_specific_thin. This is the weakest-supported part of a short chapter:
+  the nutrient doses and the diet instruction appear in the summary box with NO
+  citation and no trial in boils, and the mechanism (higher skin vitamin A and zinc,
+  less refined carbohydrate blunting immune function) is inferred from the general
+  nutritional-immunology literature the book cross-references to its own "Immune
+  System Support" chapter rather than demonstrated for furunculosis. The doses
+  themselves are specific and internally consistent with the book's other protocols,
+  which is why they are worth recording verbatim — but they are the authors' clinical
+  protocol, not trial-derived.
+coaching_translation: >
+  If boils keep returning, it is reasonable to look at what is going on around the
+  immune system as well as at the skin. The food side is squarely coaching work:
+  cutting back sugar and refined carbohydrates (biscuits, white bread, sweets, sugary
+  chai and cold drinks) and identifying any food that reliably flares the client.
+  Zinc, vitamin A and vitamin C are all obtainable from food — pumpkin and sesame
+  seeds, chana and rajma, curd, ghee, carrot, amaranth and other dark greens, amla,
+  guava, citrus. The specific supplement doses in the book are a prescribing decision:
+  share them as "this is what one reference recommends" and let the doctor decide.
+caveats:
+- These are the book's doses, not a coach's to prescribe. In India, supplement dosing —
+  especially vitamin A — belongs with the treating doctor.
+- Vitamin A is teratogenic. The book itself caps it at 3,000 IU per day in pregnancy or
+  possible pregnancy. Never suggest high-dose vitamin A to a woman who could be pregnant.
+- Zinc at 30-45 mg per day is a therapeutic, short-term dose that competes with copper
+  absorption; the book time-limits it to about a month for good reason. Long unsupervised
+  use risks copper deficiency.
+- Nutrition support does not treat an established boil. A severe, spreading, or febrile
+  boil, or one on the face, needs a doctor now.
+- Many Indian clients are vegetarian, and zinc from grains and legumes is poorly absorbed
+  because of phytate. Soaking, sprouting and fermenting help — this is a food-preparation
+  conversation, not automatically a supplement one.
+- The phrase food allergens here is the book's loose 2012 usage covering both true allergy
+  and suspected intolerance. A coach must not run or interpret IgG food panels.
+linked_to_topics:
+- immune-support
+- immune-nutrition
+- refined-carbohydrate-overconsumption
+linked_to_supplements:
+- vitamin-c
+- vitamin-a
+- zinc
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Clinician scope - prescribing or approving any of these doses, especially vitamin A
+  in a woman of childbearing age, and supervising a therapeutic zinc course. Coach
+  scope - the food work: reducing sugar and refined carbohydrate load, building
+  zinc/vitamin A/vitamin C rich meals from Indian staples, improving mineral
+  bioavailability by soaking and sprouting, and helping the client notice food-symptom
+  patterns without labelling them allergies.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 27 — Boils, pg 561
+  quote: |-
+    Vitamin C: 500 to 1,000 mg three times per day Vitamin A: 5,000 IU per day (do not use more than 3,000 IU per day of vitamin A if you are pregnant or may become pregnant) Zinc: 30 to 45 mg per day for up to one month, then 20 to 30 mg per day
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

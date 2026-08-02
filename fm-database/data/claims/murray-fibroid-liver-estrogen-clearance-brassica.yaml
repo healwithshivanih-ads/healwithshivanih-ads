@@ -1,0 +1,68 @@
+slug: murray-fibroid-liver-estrogen-clearance-brassica
+statement: |
+  The supplement strategy in this chapter is aimed at the liver, not the fibroid. Naturopathic
+  practice has used lipotropic factors — inositol, choline, betaine, methionine or cysteine,
+  or SAMe — to support hepatic clearance and excretion of oestrogen. Modern lipotropic formulas
+  add brassica-derived phytonutrients: indole-3-carbinol, di-indolylmethane and sulforaphane.
+  The chapter cites research that these compounds help break cancer-promoting forms of
+  oestrogen down to non-toxic forms, which it argues makes them particularly relevant for women
+  with fibroids. Suggested doses given are I3C 300–600 mg/day or DIM 100–200 mg/day, with a
+  lipotropic formula or SAMe 200–400 mg/day.
+evidence_tier: plausible_emerging
+rationale: >
+  This is the best-referenced part of the chapter — the brassica claim carries citations
+  (refs 4–6) and the underlying biology is solid: I3C/DIM shift Phase I hydroxylation of
+  oestrogen toward the 2-hydroxy pathway and away from 16α-hydroxy metabolites, and
+  sulforaphane induces Phase II conjugation. But the demonstrated endpoint is a change in
+  oestrogen metabolite ratio, not a change in fibroid size, bleeding or symptoms. The
+  lipotropic half of the recommendation is historical naturopathic practice with no citation
+  at all. Tiered plausible_emerging on the metabolite evidence, explicitly not on a fibroid
+  outcome.
+coaching_translation: >
+  Oestrogen has to be processed by the liver and then carried out through the gut. Compounds
+  in the cabbage family — cabbage, cauliflower, broccoli, knol khol, mustard greens, radish,
+  rocket, and the mustard and radish already common in Indian cooking — help the liver break
+  oestrogen down along its safer route. Getting these in daily as food is the sensible first
+  step, and it pairs naturally with the fibre and daily bowel movement work: the liver's job
+  is wasted if the gut reabsorbs what it sent out. Concentrated I3C or DIM capsules exist,
+  but those are a decision for your doctor, not something to start on your own.
+caveats:
+- I3C and DIM are supplements that act on hormone metabolism — starting them is prescriptive
+  and belongs to a clinician, especially in a woman on hormonal medication.
+- Cruciferous vegetables in large raw quantities can affect thyroid function in iodine-deficient
+  people; cooked portions are the safer default, and thyroid status is the doctor's to manage.
+- Liver clearance is only half the loop — without regular bowel movements and adequate fibre,
+  conjugated oestrogen is deconjugated and reabsorbed, undoing the work.
+- No study cited here shows any of this changes fibroid size or bleeding.
+linked_to_topics:
+- uterine-fibroids
+- liver-detoxification
+- estrogen-metabolism
+- endocrine-disruption-and-detox
+- estrobolome
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- estrogen-16-hydroxylation
+- estrogen-clearance-liver-gut
+- estrogen-enterohepatic-recirculation
+linked_to_supplements:
+- indole-3-carbinol
+- dim
+- sulforaphane
+- choline
+- sam-e
+out_of_scope_notes: >
+  A coach may teach the liver–gut oestrogen-clearance story and encourage daily cruciferous
+  vegetables as food. Recommending I3C, DIM, SAMe or a lipotropic formula at a dose, or
+  interpreting oestrogen-metabolite testing (DUTCH, 2:16 ratio), is clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 97 — Uterine Fibroids, pg 1542
+  quote: Many now contain anticancer phytonutrients found in vegetables from the brassica
+    family, such as indole-3-carbinol, di-indoylmethane, and sulforaphane. Research has shown
+    that these compounds help to break down cancer-causing forms of estrogens to nontoxic
+    forms, making them especially important for women with uterine ﬁbroids.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

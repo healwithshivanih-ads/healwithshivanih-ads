@@ -1,0 +1,55 @@
+slug: murray-cts-repetitive-strain-and-ergonomics
+statement: |
+  Murray & Pizzorno describe carpal tunnel syndrome occurring both in people doing repetitive
+  strenuous hand work (they name carpenters) and in people doing repetitive light work (typists
+  and keyboard operators), and note it may follow wrist injury — while stating plainly that
+  more frequently there is no history of significant trauma. Repetitive wrist flexion is listed
+  among the causes. Their physical-medicine recommendation is correspondingly upstream:
+  identify and reduce the sources of strain and vibration, and prevent repeated trauma.
+  Symptoms characteristically appear or worsen on flexing the wrist for 60 seconds and ease on
+  extending it, and are typically worst at night.
+evidence_tier: plausible_emerging
+rationale: >
+  The chapter asserts the occupational association descriptively and cites no trial for it —
+  no cohort data, no exposure-response figures, no ergonomic intervention study. That matters,
+  because the causal role of keyboard work in CTS is genuinely contested in the wider
+  literature, with several large studies finding computer use a weak or absent risk factor
+  compared with high-force, high-repetition and vibration exposure. The book itself supplies
+  the counterweight in the same paragraph — 'more frequently, however, there is no history of
+  significant trauma' — which undercuts a simple overuse story. What survives is a plausible,
+  mechanistically sensible and low-risk position: sustained or repeated wrist flexion raises
+  carpal tunnel pressure, vibration exposure is a better-established risk factor than typing,
+  and reducing both is harmless and cheap. That is plausible_emerging, not strong. Tiering it
+  strong on the strength of a two-sentence assertion would overstate what the chapter gives.
+coaching_translation: >
+  Repetitive hand work can contribute to carpal tunnel, but it is rarely the whole story —
+  the book itself points out that most people with it have no history of a real injury. So
+  treat ergonomics as one lever among several, not the answer. Practical coaching: keep the
+  wrist in a neutral, straight line rather than bent up or down while typing, chopping or
+  using tools; take short, frequent breaks rather than one long one; reduce exposure to
+  vibrating tools where possible; and notice whether symptoms track with a specific task.
+  The tell-tale pattern is tingling in the thumb, index and middle fingers that is worst at
+  night and that worsens when the wrist is held bent. If your client's symptoms follow that
+  pattern, that is a reason to see a doctor, not a reason to buy a new keyboard.
+caveats:
+- "Do not promise that changing a workstation will resolve CTS — the evidence for keyboard work as a cause is weak, and framing it as the cure delays proper assessment."
+- "Reproducing symptoms deliberately (holding the wrist flexed for 60 seconds) is a clinical examination manoeuvre, not a coaching self-test — a coach should not perform or teach provocative testing as a way of confirming CTS."
+- "Nerve conduction studies, not history or ergonomics, establish the diagnosis and severity — this is clinician scope."
+- "Ergonomic change should not substitute for evaluating the metabolic and endocrine contributors (thyroid, diabetes, pregnancy) covered in the secondary-causes claim."
+- "Symptoms that become constant, or any weakness/wasting at the base of the thumb, mean the nerve is at risk of permanent damage — escalate to a clinician rather than continuing conservative self-management."
+linked_to_topics: ["carpal-tunnel-syndrome"]
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  CLINICIAN: diagnosis, provocative testing, nerve conduction studies, fitness-for-work
+  decisions and any occupational-health certification. COACH: education about neutral wrist
+  positioning, break frequency, task rotation and vibration exposure, plus habit support for
+  sustaining those changes.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 621
+  quote: "CTS also occurs in people who perform repetitive strenuous work with their hands (e.g., carpenters), and it may occur in people who do repetitive lighter work (e.g., typists and keyboard operators). It may also follow injuries of the wrist. More frequently, however, there is no history of signiﬁcant trauma."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

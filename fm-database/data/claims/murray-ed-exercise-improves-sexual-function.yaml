@@ -1,0 +1,62 @@
+slug: murray-ed-exercise-improves-sexual-function
+statement: |
+  Regular exercise improves sexual function in men, and the improvement tracks fitness
+  gain. In the study the chapter describes, 78 sedentary but healthy men (average age 48)
+  trained in supervised groups for 60 minutes a day, about 3.5 days a week, for nine
+  months at 75-80% of maximum heart rate, against a control group of 17 men who walked at
+  a moderate pace. Diary analysis showed significantly greater improvement in the exercise
+  group across frequency of intimate activity, reliability of function during sex and
+  proportion of satisfying orgasms — and the size of each man's sexual improvement
+  correlated with the size of his individual fitness improvement.
+evidence_tier: plausible_emerging
+rationale: >
+  A single non-randomised controlled trial with self-reported diary outcomes in a small
+  sample of healthy sedentary men — not an ED population. The dose-response relationship
+  between fitness gain and sexual improvement is the most persuasive element, because it
+  argues against pure placebo. The mechanism is coherent (exercise improves endothelial
+  function, nitric oxide availability, insulin sensitivity and body composition, all of
+  which support erectile blood flow) and later randomised work in ED populations has been
+  broadly supportive. Tiered plausible_emerging rather than strong on the strength of this
+  chapter's evidence alone.
+coaching_translation: >
+  Regular aerobic exercise measurably improves sexual function, and the men who improved
+  their fitness most improved their sexual function most — so it is worth training, not
+  just moving. The programme in the study was about an hour, three to four days a week,
+  at a genuinely brisk effort, sustained over nine months. Two honest points to set with
+  a client: the effort level matters (a gentle stroll was the comparison group, and it
+  did less), and the timeframe is months, not weeks. One caution the chapter flags — long
+  hours on a hard bicycle saddle can compress the arteries and nerves involved, so if he
+  cycles a lot, a properly designed seat is worth sorting out.
+caveats:
+- Men with known or suspected cardiovascular disease need medical clearance before
+  starting vigorous exercise — and new ED is itself a reason to suspect it, so clearance
+  first is the right order.
+- The study was in healthy sedentary men, not men diagnosed with ED; do not present the
+  result as a treatment effect in established ED.
+- Outcomes were self-reported diary entries, which are open to expectation bias.
+- Exercise is unlikely to be sufficient alone where the cause is medication, hormonal,
+  neurological or post-surgical.
+linked_to_topics:
+- cardiovascular-exercise
+- exercise-prescription
+- cardiovascular-disease-prevention
+- endothelial-dysfunction
+linked_to_supplements: []
+linked_to_mechanisms:
+- endothelial-dysfunction
+- nitric-oxide-bioavailability
+- exercise-induced-anti-inflammatory-signaling
+out_of_scope_notes: >
+  Coach scope: designing and supporting a progressive aerobic and strength programme
+  within the client's cleared capacity, and habit adherence. Clinician scope: exercise
+  clearance for a man with cardiovascular risk, cardiac stress testing, and any
+  prescription of exercise as therapy for diagnosed ED.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 908
+  quote: |-
+    Like many other studies, this one showed the beneﬁcial effects of regular exercise on ﬁtness and coronary heart disease risk factors. Analysis of diary entries revealed signiﬁcantly greater sexuality enhancements in the exercise group (frequency of various intimate activities, reliability of adequate functioning during sex, percentage of satisfying orgasms, etc.). Moreover, the degree of sexuality enhancement among exercisers was correlated with the degree of their individual improvement in ﬁtness.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

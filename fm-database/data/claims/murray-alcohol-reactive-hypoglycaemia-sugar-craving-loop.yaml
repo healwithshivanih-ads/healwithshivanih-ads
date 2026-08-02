@@ -1,0 +1,55 @@
+slug: murray-alcohol-reactive-hypoglycaemia-sugar-craving-loop
+statement: |
+  Murray and Pizzorno describe alcohol as commonly producing reactive
+  hypoglycaemia - blood glucose rises quickly, then drops - and the drop as
+  generating craving for whatever will raise it fastest, namely sugar and more
+  alcohol. Added sugar then worsens the reactive hypoglycaemia, closing a
+  self-reinforcing loop. They attribute sweating, tremor, anxiety, hunger,
+  dizziness, headache, blurred vision, reduced mental acuity, confusion and low
+  mood to this swing, and make blood-sugar stabilisation the foundation of the
+  chapter's dietary approach: remove added sugars, juice and dried fruit, limit
+  refined carbohydrate, build on whole grains, vegetables and beans.
+evidence_tier: plausible_emerging
+rationale: |
+  Tiered plausible_emerging. Alcohol-induced hypoglycaemia is real and well
+  documented, particularly on an empty stomach and via suppressed
+  gluconeogenesis, and the symptom list is a recognisable adrenergic and
+  neuroglycopenic picture. What is inference rather than demonstrated is the
+  loop as an explanation for craving and relapse - the chapter offers no trial
+  showing that a low-glycaemic diet reduces drinking or relapse rate. It is a
+  physiologically coherent, low-risk framing that also happens to be good
+  general dietary advice, which is why it is worth carrying, but it should not
+  be presented to a client as a proven relapse-prevention strategy.
+coaching_translation: |
+  Alcohol sends blood sugar up fast and then drops it below where it started.
+  That dip is felt as shakiness, sweating, headache, irritability and a strong
+  pull towards something sweet - or another drink, because both lift it fastest.
+  Sugar then sets up the next dip. It helps to know this is chemistry, not
+  weakness. The steadying move is regular meals built on whole grains and
+  millets, dal and beans, plenty of vegetables and some protein at each meal,
+  with sweets, juice and chai with lots of sugar dialled down rather than a
+  special diet. Never skip meals, and never drink on an empty stomach.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Alcohol-related hypoglycaemia can be severe and is genuinely dangerous in someone on insulin or sulfonylureas - that combination needs medical management, not dietary coaching alone.'
+- 'Recurrent hypoglycaemia has other causes a clinician must exclude before it is attributed to drinking; a coach does not make this attribution.'
+- 'Do not use sugar to treat a suspected hypoglycaemic episode in a possibly thiamine-deplete heavy drinker without medical input - glucose before thiamine can precipitate Wernicke encephalopathy.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- hypoglycemia
+- blood-sugar-regulation
+linked_to_supplements: []
+linked_to_mechanisms:
+- nocturnal-hypoglycaemia
+out_of_scope_notes: |
+  Clinician: diagnosing hypoglycaemia, excluding other causes, adjusting
+  diabetes medication. Coach: meal timing and composition, reducing added sugar,
+  and helping the client notice the dip-then-craving pattern without shame.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 425'
+  quote: 'Alcohol consumption often results in reactive hypoglycemia, in which a rapid increase in blood glucose levels is followed by a subsequent drop. The drop in blood glucose produces a craving for food, particularly foods that quickly elevate blood glucose, such as sugar and more alcohol. Increased sugar consumption aggravates the reactive hypoglycemia, particularly in the presence of alcohol.'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

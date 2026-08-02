@@ -1,0 +1,61 @@
+slug: murray-periodontal-hygiene-not-sufficient
+statement: |
+  Bacterial plaque alone does not determine who gets periodontal disease. Murray &
+  Pizzorno argue the condition is best managed by a dentist or periodontist working
+  alongside a nutritionally minded physician, because oral hygiene — while very
+  important — is not sufficient in many cases; the host's immune status and defence
+  mechanisms decide whether disease develops and progresses. The anatomy of the
+  gingival sulcus works against the client: it is sheltered from the cleansing action
+  of saliva and the gingival fluid inside it is a rich nutrient source for
+  microorganisms. The book's own standing instruction is that anyone with periodontal
+  disease sees a dentist at least every six months for evaluation and cleaning.
+evidence_tier: strong
+rationale: >
+  The "plaque alone is not sufficient — host response matters" position is the
+  consensus view in periodontology and is stated by the authors as expert agreement,
+  not as a novel claim. The anatomical description of the sulcus is uncontroversial
+  descriptive anatomy. The six-monthly dental review is conventional standard of care.
+  What is NOT strongly evidenced here is the size of the nutritional contribution
+  relative to mechanical plaque control — the book asserts nutrition matters but this
+  passage does not quantify it. Tiered strong for the core assertion (host defence
+  co-determines outcome; hygiene alone often fails; see a dentist), not for any
+  implied ranking of nutrition above hygiene.
+coaching_translation: >
+  Brushing and flossing matter, but they are only half the story — two people with the
+  same plaque can have very different gums, because how well your immune system and
+  tissues cope makes the difference. That is the part we can work on together: food,
+  smoking, sleep, stress and blood sugar. It is not a replacement for the dentist. If
+  you have gum disease, the standard is a dental check and clean at least every six
+  months, and I will keep asking whether that is booked.
+caveats:
+- This is a reason to add nutrition support, never a reason to delay or skip dental treatment.
+- Loose teeth, pus, pain or visible bone loss on X-ray are urgent dental findings — refer immediately, do not coach around them.
+- Some clients read "hygiene isn't enough" as "brushing doesn't matter". Say the opposite explicitly.
+- Access and cost of six-monthly dental care varies widely in India; agree a realistic plan rather than repeating an unaffordable instruction.
+linked_to_topics:
+- periodontal-disease
+- immune-support
+- oral-health-toxins
+linked_to_supplements: []
+linked_to_mechanisms:
+- oral-microbiome-disruption
+- innate-immune-modulation
+out_of_scope_notes: >
+  Measuring gingival sulcus depth, diagnosing gingivitis versus periodontitis, scaling
+  and root planing are dentist scope — the coach must not attempt or interpret any of
+  these. Referral to a dentist, and following up that the client actually went, is a
+  fully legitimate and expected coach action. The coach owns the nutrition, smoking-
+  cessation and stress side of the plan only.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1386
+  quote: >-
+    This disease is a good example of a condition that is probably best treated with the combined expertise of a dentist or periodontist and a nutritionally minded physician. Although oral hygiene is of great importance in treating and preventing periodontal disease, it is not sufﬁcient in many cases.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1387
+  quote: >-
+    Furthermore, the gingival ﬂuid (the ﬂuid found in the sulcus) provides a rich nutrient source for microorganisms. The clinical determination of the depth of the gingival sulcus is an important part of the diagnosis. Individuals who have periodontal disease should see their dentist no less than once every six months for proper evaluation and cleaning.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

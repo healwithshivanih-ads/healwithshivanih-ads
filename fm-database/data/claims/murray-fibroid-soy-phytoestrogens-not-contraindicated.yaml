@@ -1,0 +1,61 @@
+slug: murray-fibroid-soy-phytoestrogens-not-contraindicated
+statement: |
+  A common fear is that women with fibroids should avoid soy because isoflavones are weakly
+  oestrogenic. Murray & Pizzorno reject this. They argue soy isoflavones are tissue-selective —
+  oestrogenic in some tissues, anti-oestrogenic in others — and that soy phytoestrogens do not
+  appear to exert an oestrogenic effect on the human uterus, occupying oestrogen receptors and
+  thereby competing with the body's own stronger oestrogen. They recommend moderate but not
+  excessive intake, 45 to 90 mg soy isoflavones per day, plus 1 to 2 tbsp of ground flaxseed
+  daily.
+evidence_tier: fm_specific_thin
+rationale: >
+  The receptor-competition mechanism is real and the tissue-selective behaviour of isoflavones
+  is genuine pharmacology. But the specific uterine claim here is hedged twice in the source
+  ("do not appear to", "may in fact help shrink") and carries no citation in this chapter, and
+  the 45–90 mg dose range is presented as a recommendation rather than derived from a fibroid
+  trial. The chapter is essentially rebutting a fear rather than demonstrating a benefit.
+  Tiered fm_specific_thin — the useful, defensible message is "soy need not be feared", not
+  "soy shrinks fibroids".
+coaching_translation: >
+  You do not have to avoid soy because of fibroids. Plant oestrogens in soy and flaxseed are
+  much weaker than your body's own oestrogen, and by sitting on the same receptors they can
+  actually dampen the stronger signal. Moderate is the word — normal food amounts of tofu,
+  tempeh, soy milk or roasted soy nuts, not isolated soy protein powders or handfuls of
+  supplements. Ground flaxseed is the easiest addition: 1 to 2 tablespoons a day, ground fresh
+  and stirred into curd, dal, porridge or a chutney podi. Grind it — whole seeds pass straight
+  through.
+caveats:
+- This applies to soy as food. Concentrated isoflavone supplements are a different exposure and
+  should not be started without the gynaecologist's agreement.
+- Anyone on thyroid medication should keep soy well separated from the levothyroxine dose;
+  thyroid status is the doctor's to manage.
+- Ground flaxseed needs adequate fluid, and should be introduced gradually to avoid bloating.
+- The claim that soy may help shrink fibroids is not established — do not offer it as an
+  expectation.
+- A client already told by her gynaecologist to avoid soy should follow that instruction; the
+  coach raises the question with the doctor rather than overriding it.
+linked_to_topics:
+- uterine-fibroids
+- estrogen-signaling
+- estrogen-dominance
+linked_to_mechanisms:
+- hormone-receptor-binding
+- estrogen-driven-cell-proliferation
+linked_to_supplements:
+- flax-seed
+out_of_scope_notes: >
+  Encouraging normal food-level soy and ground flaxseed sits within nutrition coaching.
+  Prescribing isolated isoflavone supplements at a milligram target, or advising a client to
+  disregard a doctor's instruction about soy, does not.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 97 — Uterine Fibroids, pg 1541
+  quote: Soy isoﬂavones appear to be selective in terms of the tissues in which they have an
+    estrogenic effect and the tissues in which their effect is antiestrogenic. Soy
+    phytoestrogens do not appear to have an estrogenic effect on the human uterus and may in
+    fact help shrink uterine ﬁbroids due to an antiestrogenic effect. We recommend moderate
+    but not excessive soy consumption in the range of 45 to 90 mg soy isoﬂavones per day.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

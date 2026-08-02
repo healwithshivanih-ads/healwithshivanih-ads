@@ -1,0 +1,28 @@
+slug: murray-gout-weight-reduction-controlled
+statement: |
+  Excess weight is associated with an increased incidence of gout, and weight reduction in obese individuals significantly reduces serum uric acid levels. The chapter's post-attack prevention list and its treatment summary both specify 'controlled weight loss in obese individuals' (pg 986, pg 993) — controlled, not maximal — and the dietary guidelines pair achievement of ideal body weight with liberal complex carbohydrate, low fat, moderate protein and liberal fluid intake. Combined with the chapter's statement that a key dietary goal is enhancing insulin sensitivity, weight is presented as probably the most important single factor in gout (pg 986).
+evidence_tier: strong
+rationale: 'The direction of effect is well established and the chapter cites it: losing weight lowers serum urate, and carrying excess weight raises gout incidence. The tier reflects that. What must be stated honestly is what this chapter does NOT say. It uses the word ''controlled'' twice and never explains it — it gives no rate of loss, no warning that rapid weight loss or fasting can precipitate an attack, and no mechanism for such a warning. That caution is real and widely taught (ketone bodies from rapid loss or fasting compete with urate for renal excretion, and mobilising tissue raises purine turnover), but it is NOT supported by this chapter, so it is recorded here as a clinical caution rather than as a sourced claim. Do not cite Murray & Pizzorno for ''lose weight slowly''; cite them for ''weight reduction lowers urate'' and ''controlled weight loss''.'
+coaching_translation: 'Losing excess weight is probably the single most useful thing a client with gout can do — the book is explicit that weight reduction significantly lowers uric acid, and it names excess weight as likely the most important factor. But note the word the book uses twice: controlled. Steady, sustainable loss alongside better food quality, not a crash. Two practical reasons to go steady. Crash dieting and prolonged fasting are widely reported to trigger gout attacks, and a client who flares while dieting will abandon the whole plan. And rapid loss is the kind that comes back. So build it the ordinary way — liquid sugar out, refined carbohydrate down, alcohol out, protein moderate, plenty of fluids, daily movement — and let the weight follow. If the client is fasting, doing keto or on a very-low-calorie plan and also has gout, that is a conversation to have with their doctor before continuing.'
+caveats:
+- The chapter says 'controlled weight loss' but never defines a rate and never states that rapid loss or fasting precipitates attacks. That caution is standard clinical teaching but is NOT evidenced by this source — do not attribute it to the book.
+- Fasting, very-low-calorie diets and ketogenic protocols in a client with gout should be cleared with the clinician; ketosis is a recognised context for flares.
+- A flare during weight loss is not proof the plan is wrong, but it does need medical review of the acute attack.
+- Weight talk carries real risk of shame and of triggering disordered eating. Coach behaviours and food quality; weight is the outcome, not the instruction.
+- In clients on urate-lowering or anti-inflammatory medication, any change in diet pattern should be known to the prescriber.
+linked_to_topics:
+- gout
+- metabolic-syndrome
+- insulin-resistance-metabolic-syndrome
+linked_to_supplements: []
+linked_to_mechanisms:
+- insulin-resistance
+out_of_scope_notes: Coaching sustainable weight change, food quality and movement is core coach scope. Prescribing a very-low-calorie or therapeutic fasting protocol in someone with gout, and managing an acute flare, are clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 55 — Gout, pg 989
+  quote: Excess weight is associated with an increased incidence of gout. Weight reduction in obese individuals signiﬁcantly reduces serum uric acid levels.9 See the chapter “Obesity and Weight Management” for more information.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: murray-unstable-angina-is-an-emergency
+statement: The stable/unstable distinction is the life-or-death call in angina. Murray & Pizzorno define unstable angina as a progressive increase in the frequency and severity of pain, increased sensitivity to precipitating factors, progression over several days, and prolonged coronary pain — and state it requires immediate medical attention. Elsewhere the chapter warns that an acute angina attack can be a medical emergency requiring a physician or emergency room. Stable angina is predictable, exertion-triggered and brief; anything that breaks that pattern is treated as an evolving heart attack until a doctor says otherwise.
+evidence_tier: strong
+rationale: 'This is the one claim in the chapter that is unambiguous and universally agreed: unstable angina sits on the acute coronary syndrome spectrum and carries a real short-term risk of infarction and death. The book itself brackets its entire natural-therapeutics discussion with this warning, which is the honest reading of it. No nutritional or botanical measure has any role in an acute or escalating presentation.'
+coaching_translation: 'Learn this pattern and act on it without hesitation. Stable angina is predictable — same trigger, same short duration, settles with rest. Unstable is the opposite: coming more often, coming with less effort, lasting longer, or coming at rest or in sleep. That change is an emergency. Stop the session, tell the client to call emergency services or go to hospital now, and do not offer any supplement, breathing exercise or food advice as an alternative to that. Agree this rule with every cardiac client in advance, in writing.'
+caveats:
+- Women, people with diabetes, and older adults often present atypically — breathlessness, fatigue, jaw or back discomfort, nausea, or sudden sweating instead of classic chest pain. Absence of crushing chest pain does not make it safe.
+- A client who already has a nitrate spray has a cardiologist-issued action plan; the coach reinforces that plan, never modifies it.
+- Do not attempt to triage severity yourself or use symptom-tracking apps to decide. Escalate on pattern change alone.
+- In India, ambulance access varies by city; helping the client pre-plan their nearest cardiac-capable hospital and transport before an emergency happens IS coach scope and is genuinely useful.
+linked_to_topics:
+- cardiovascular-dysfunction
+- cardiovascular-risk-assessment
+- atherosclerosis
+linked_to_supplements: []
+linked_to_mechanisms:
+- plaque-progression
+- atherosclerosis
+out_of_scope_notes: Assessing, triaging or treating chest pain is entirely clinician scope. The coach's only role in an acute or escalating presentation is to stop coaching and route to emergency care.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 494
+  quote: Individuals with unstable angina pectoris (characterized by a progressive increase in the frequency and severity of pain, increased sensitivity to precipitating factors, progression of symptoms over several days, and prolonged coronary pain) require immediate medical attention.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

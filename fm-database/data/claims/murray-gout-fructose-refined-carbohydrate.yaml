@@ -1,0 +1,29 @@
+slug: murray-gout-fructose-refined-carbohydrate
+statement: |
+  Fructose is named by this chapter as a direct cause of gout, not an incidental one: it appears in the causes list as 'increased breakdown of purines due to: high fructose intake' (pg 984), and the dietary triggers include 'refined carbohydrates, particularly high amounts of fructose' (pg 986). The mechanism given is that refined carbohydrate increases uric acid PRODUCTION while saturated fat increases uric acid RETENTION — two different failure points. The chapter then makes the most useful statement in the whole dietary section: one of the key dietary goals in treating gout is to enhance insulin sensitivity (pg 989). That reframes gout as a metabolic problem rather than purely a purine-intake problem.
+evidence_tier: strong
+rationale: 'The chapter itself gives mechanism and a causes list rather than trial data, so on this source alone the fructose line would be thin. The tier is ''strong'' because the mechanism is genuinely well characterised outside this book: metabolising fructose consumes ATP rapidly and depletes phosphate, which drives purine nucleotide degradation straight to uric acid — the same pathway alcohol uses. That is why fructose raises urate acutely in a way glucose does not, and why sugar-sweetened drinks and fruit juice behave differently from whole fruit (which the chapter lists as low-purine and unrestricted). The insulin-sensitivity sentence is the most clinically leveraged claim here: insulin reduces renal uric acid excretion, so an insulin-resistant client retains urate even before diet is considered. This is what ties gout to the metabolic-syndrome cluster in the next claim rather than leaving it as an isolated joint disease.'
+coaching_translation: 'The biggest dietary driver of gout for most people is not meat — it is sugar, and specifically fructose. Fructose is handled by the liver in a way that burns through cellular energy fast, and the wreckage from that process is broken down into uric acid. So sugary drinks, fruit juice, sweetened tea and coffee, packaged sweets, syrups and honey-heavy preparations push urate up directly. Whole fruit is a different matter and the book leaves it unrestricted — it comes with fibre and water and is eaten slowly. Refined carbohydrate raises production; saturated fat slows clearance. And the underlying goal the book names is improving insulin sensitivity — because when insulin runs high, the kidneys hold on to uric acid. For an Indian vegetarian client this is where the real work is: cut liquid sugar first, then refined flour and white rice load, then look at meal timing, movement after meals and weight. This is often more effective than anything you can do to a dal.'
+caveats:
+- This is the single most useful lever for a vegetarian client, but it needs consistency over weeks — a client will not see a urate change from one week of cutting soft drinks.
+- Do not extend this into 'fruit causes gout'. The chapter lists fruit as a low-purine, unrestricted food; the concern is concentrated and liquid fructose, not whole fruit.
+- Honey, jaggery, fruit juice and 'natural' syrups are fructose sources too — clients routinely believe these are exempt.
+- Improving insulin sensitivity is a lifestyle programme (food quality, weight, movement, sleep), not a supplement. Any medication for insulin resistance or urate is prescriber territory.
+- The chapter offers no dose-response — no threshold of grams of fructose per day is given.
+linked_to_topics:
+- gout
+- refined-carbohydrate-overconsumption
+- insulin-resistance-metabolic-syndrome
+- blood-sugar-regulation
+linked_to_supplements: []
+linked_to_mechanisms:
+- insulin-resistance
+out_of_scope_notes: Coaching sugar and refined-carbohydrate reduction, and supporting insulin-sensitivity habits, is squarely in scope. Interpreting a client's urate, insulin or HbA1c results, and any medication decision, is clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 55 — Gout, pg 989
+  quote: Reﬁned carbohydrates and saturated fats should be kept to a minimum, as the former increase uric acid production while the latter increase uric acid retention. In addition, one of the key dietary goals in the treatment of gout appears to be to enhance insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

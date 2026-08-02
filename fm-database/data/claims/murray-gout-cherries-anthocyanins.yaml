@@ -1,0 +1,35 @@
+slug: murray-gout-cherries-anthocyanins
+statement: |
+  The chapter's headline botanical recommendation is cherries: consuming half a pound (about 225–250 g) of fresh or canned cherries per day has been shown to lower uric acid levels and prevent attacks of gout (pg 990). The supporting study measured 10 healthy women given 280 g of cherries after an overnight fast; five hours later plasma uric acid had fallen by an average of 30 (printed as mmol/L, almost certainly micromol/L), and the fall correlated with increased urinary urate excretion — so cherries appear to promote excretion rather than block production. Plasma C-reactive protein and nitric oxide fell slightly after the 1.5-hour mark. Cherries, hawthorn berries, blueberries and other dark red and blue fruits are named as rich sources of anthocyanidins and proanthocyanidins, flavonoids that protect collagen and inhibit histamine, prostaglandin and leukotriene release. The treatment summary specifies 4–8 oz per day of cherries, blueberries or other anthocyanoside-rich red or blue berries, or as substitutes: cherry fruit extract (10:1) 500–1,000 mg three times per day, grape seed or pine bark extract (>95% procyanidolic oligomers) 100–300 mg per day, or enzymatically modified isoquercitrin (EMIQ) 100 mg twice per day (pg 993–994).
+evidence_tier: plausible_emerging
+rationale: 'The mechanism is coherent and the effect direction is supported elsewhere, but the evidence presented here is thin and should not be oversold. The cited study is small (n = 10), uncontrolled, in HEALTHY women rather than gout patients, measures a single acute dose over five hours, and reports no clinical outcome — no attack rates, no joint measures. The 30 mmol/L figure is a units error in the printed text: plasma urate sits around 200–400 micromol/L in total, so a 30 mmol/L fall is physiologically impossible; read as 30 micromol/L, which is roughly a 0.5 mg/dL drop — real but modest. The half-pound-per-day claim rests on a single older reference. What makes the claim worth keeping is that the direction of effect (increased urinary urate excretion, mildly lowered inflammatory markers) is mechanistically sensible, the intervention is food, and the risk is close to zero. Note that the extract doses in the treatment summary are the authors'' clinical recommendations, not doses tested in the study quoted.'
+coaching_translation: Cherries are the one food this book actively recommends adding for gout, rather than removing. Roughly a large cupful a day — the book says half a pound fresh or canned, or 4–8 oz of cherries, blueberries or other deep red and blue berries — appeared to lower uric acid and reduce attacks. In the small study behind it, the fall in blood uric acid went hand in hand with more uric acid appearing in the urine, so cherries seem to help the body clear it rather than stop it being made. The deep red-blue colour compounds (anthocyanidins) also calm some of the inflammatory signals involved in a gout attack. Two honest notes for an Indian client. The study was small, short and in healthy women, not in people with gout — treat it as a low-risk food worth trying, not a treatment. And fresh cherries are expensive and seasonal here; the book names blueberries and other dark red and blue fruits as the same family of compounds, so jamun, black grapes and other deep-coloured fruit are reasonable everyday stand-ins for the colour compounds — while being clear that only cherries have the uric acid data behind them. Watch the sugar load if the client is drinking them as juice rather than eating them whole.
+caveats:
+- The supporting study is n = 10, uncontrolled, acute (5 hours), in healthy women — NOT in gout patients, and with no clinical endpoint.
+- The printed '30 mmol/l' fall is a units error; read as ~30 micromol/L (about 0.5 mg/dL). Do not quote 30 mmol/L to a client or clinician.
+- The extract doses in the treatment summary (cherry 10:1, grape seed / pine bark PCOs, EMIQ) are the authors' clinical recommendations, not doses tested in the study cited.
+- Cherries are food; extracts are supplements. Recommending a supplement dose is outside coach scope — that is a clinician or the client's own informed choice, and interactions matter (grape seed and pine bark extracts have antiplatelet activity, relevant if the client is on aspirin or an anticoagulant).
+- Cherry juice and canned cherries in syrup carry a fructose and sugar load that works directly against the fructose claim in this same chapter. Whole fruit, unsweetened.
+- Only cherries have the urate data. Extending the claim to jamun, black grapes or pomegranate is an extrapolation from shared pigment chemistry, and should be described to the client as such.
+- 'This chapter also warns AGAINST two supplements in gout: megadose vitamin C (may raise uric acid in a small number of individuals) and niacin above 100 mg per day (competes with uric acid for excretion). Check what a client is already taking.'
+linked_to_topics:
+- gout
+- chronic-inflammation
+linked_to_supplements:
+- anthocyanins
+- anthocyanin-rich-fruits
+- grapeseed-pine-bark-extract
+- pine-bark-extract
+- vitamin-c
+- niacin
+linked_to_mechanisms:
+- eicosanoid-metabolism
+out_of_scope_notes: Suggesting cherries and deep-coloured fruit as food is in scope. Recommending cherry, grape seed, pine bark or EMIQ extract doses is a supplement recommendation and sits with the clinician, as does any decision about a client's existing vitamin C or niacin dose.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 55 — Gout, pg 991
+  quote: One study measured plasma uric acid and antioxidant and inﬂammatory markers in 10 healthy women who consumed 280 g cherries after an overnight fast.19 Blood and urine samples were taken before the cherry dose and at 1.5, 3, and 5 hours afterward. Five hours after cherry consumption, plasma uric acid levels had decreased by an average of 30 mmol/l.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,70 @@
+slug: murray-hiv-nutritional-status-adjunct
+statement: |
+  Antiretroviral therapy (ART) is the treatment for HIV; nutrition is adjunctive and never a
+  substitute for it. Within that frame, micronutrient inadequacy is common in people living with
+  HIV — driven by reduced intake, gut malabsorption, raised metabolic demand and, where present,
+  food insecurity. Murray & Pizzorno argue that people with HIV need "higher levels of virtually
+  all known nutrients" and call for aggressive supplementation. The defensible part of this is
+  nutritional *adequacy*: a whole-food diet with enough energy, protein and micronutrients, with
+  any actual deficiency identified and corrected under medical supervision. The megadose
+  supplementation the 2012 text recommends is not supported and is not a coach's decision.
+evidence_tier: fm_specific_thin
+rationale: >
+  The association between poor nutritional status and worse outcomes in chronic infection is well
+  established, and the book cites observational and supplementation literature for it. But the
+  chapter's framing — that supplementation "delays progression to AIDS" — is an artefact of the
+  pre-ART and early-ART era it was written in, when nutrition was one of very few levers available.
+  Modern HIV care has overtaken this completely: effective ART suppresses the virus, restores CD4
+  counts, and makes HIV a manageable chronic condition, and U=U (undetectable = untransmittable)
+  is established. Nothing in nutrition substitutes for or rivals that. Several specific
+  recommendations in this chapter have also aged badly — notably vitamin A at 15,000–30,000 IU and
+  beta-carotene at 60–120 mg, doses at which later trials in HIV populations produced mixed and in
+  places unfavourable results. Tier is fm_specific_thin because the general principle (nutritional
+  adequacy supports a person living with a chronic infection) is sound while the book's dosing and
+  its causal claims about disease progression are not.
+coaching_translation: >
+  If a client tells you they are living with HIV, the single most useful thing you can do is
+  support them in staying on their antiretroviral treatment and in keeping their clinic
+  appointments. Alongside that — never instead of it — good nutrition genuinely matters. Chronic
+  infection and its treatment can reduce appetite, affect how well the gut absorbs nutrients, and
+  raise the body's energy needs, so it is easy to run short on the basics. Coach the fundamentals:
+  regular meals, enough energy and protein, a wide range of whole foods, and practical help with
+  cost and access if food security is a barrier. Leave decisions about testing for deficiencies
+  and about any supplement doses to their HIV clinician. Do not encourage high-dose supplement
+  regimens on your own initiative.
+caveats:
+- Antiretroviral therapy is the treatment for HIV. Nothing in this claim should be presented as an
+  alternative, a way to delay starting treatment, or a reason to reduce adherence.
+- The source predates current standards of care (published 2012, describing practice from the
+  1990s and 2000s) and its stance that ART is only clearly indicated below a CD4 count of 500 is
+  obsolete — treatment is now recommended for everyone with HIV regardless of CD4 count.
+- The specific high doses in this chapter (especially vitamin A and beta-carotene) are not
+  endorsed here and must not be relayed to clients.
+- Testing for and correcting nutrient deficiencies is clinician work, not coach work.
+linked_to_topics:
+- immune-nutrition
+- immune-support
+- phytonutrient-density
+linked_to_supplements: []
+linked_to_mechanisms:
+- nutrient-malabsorption
+- malabsorption
+out_of_scope_notes: >
+  Coach scope: education about food quality and adequacy, meal planning, cooking skills, budgeting
+  and food access, appetite and routine, and supporting the client's own adherence goals.
+  Clinician scope only: HIV testing, diagnosis and staging, all antiretroviral decisions,
+  interpreting CD4 counts or viral load, ordering or interpreting nutrient labs, and setting
+  supplement doses. A coach must never do or say anything that could reduce a client's adherence
+  to antiretroviral therapy — if a client raises doubts about their medication, the response is to
+  refer them back to their HIV clinician, not to explore alternatives.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 406
+  quote: >-
+    It is vitally important to supply optimal levels of all nutrients. There is considerable
+    debate over what is optimal for the general population, but there is a growing consensus that
+    HIV/AIDS patients require higher levels of virtually all known nutrients.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

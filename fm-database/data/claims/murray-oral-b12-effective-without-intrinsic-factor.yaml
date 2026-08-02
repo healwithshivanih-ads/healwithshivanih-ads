@@ -1,0 +1,79 @@
+slug: murray-oral-b12-effective-without-intrinsic-factor
+statement: |
+  High-dose oral B12 works even when intrinsic factor is absent, because roughly 1.2% of an
+  oral dose is absorbed by passive diffusion regardless of intrinsic factor — an average
+  absorption rate the book reports holds across a wide range of dosages in patients with
+  pernicious anemia. This is why the early low-dose trials (100–250 mcg/day, giving only
+  1.2–3 mcg absorbed) looked unreliable, and why adequate dosing changes the picture: the
+  chapter cites a 1978 study of 64 Swedish patients given 1,000 mcg oral cyanocobalamin daily
+  in whom serum levels, liver stores and clinical remission all normalised over three years.
+  The book's recommendation is 2,000 mcg/day for at least one month, then 1,000 mcg/day, and
+  it prefers methylcobalamin — an immediately active form — over cyanocobalamin, which must be
+  converted in the body.
+evidence_tier: strong
+rationale: >
+  The passive-diffusion route for cobalamin absorption is established physiology, and the
+  clinical equivalence of adequately dosed oral B12 to intramuscular injection in pernicious
+  anemia has since been confirmed by randomised trials and Cochrane review — this has moved
+  from a contrarian position in 2012 to mainstream practice. The book cites references 6 and
+  7, names the 1978 Swedish cohort with its size and follow-up, and gives the specific 1.2%
+  absorption figure. The weaker parts are rhetorical rather than evidential: the flat claim
+  that oral therapy is "fully (100%) effective" overstates a cited source, and the preference
+  for methylcobalamin over cyanocobalamin is a mechanistic argument, not an outcome
+  comparison — head-to-head clinical superiority is not demonstrated here.
+coaching_translation: >
+  If a client has been told they must have B12 injections for life, it is worth them knowing
+  that high-dose tablets have been shown to work too — including for people whose stomach
+  cannot absorb B12 the normal way, because a small fixed percentage gets through by simple
+  diffusion at high doses. The dose has to be high enough; small doses are what made oral B12
+  look unreliable in the past. This is a genuinely useful thing for clients who dislike
+  injections, live far from a clinic, or find the repeat visits costly — but it is a
+  conversation for them to have with their doctor, not a switch to make on their own.
+caveats:
+- Switching from injectable to oral B12 is a prescribing decision and must be made and
+  monitored by the client's doctor, with follow-up bloods. A coach raising it as a question
+  is appropriate; a coach suggesting the change is not.
+- Doses of 1,000–2,000 mcg/day are therapeutic doses, not maintenance nutrition. Do not quote
+  them to a client as a general recommendation.
+- Sublingual and plain oral tablets perform similarly; the advantage is dose, not route of
+  the tablet.
+- The cost argument in the chapter is US-specific (US$20–100 per injection administration) and
+  does not transfer to Indian pricing, where injections are comparatively inexpensive. The
+  convenience and adherence arguments do transfer.
+- In neurological B12 deficiency, initial parenteral treatment is often still preferred
+  clinically. The chapter does not make this distinction.
+linked_to_topics:
+- vitamin-b12
+- b12-folate-anemia
+linked_to_supplements:
+- vitamin-b12
+- methylcobalamin
+- hydroxocobalamin
+linked_to_mechanisms:
+- intrinsic-factor-dependent-b12-absorption
+- intrinsic-factor-deficiency
+out_of_scope_notes: >
+  Choosing between oral and injectable B12, setting the dose, selecting the form and
+  monitoring the response are entirely clinician scope — this claim is dose-bearing and must
+  never be delivered to a client as a recommendation. Coach scope: knowing that an
+  evidence-supported oral option exists so that a client struggling with injections can be
+  encouraged to ask their doctor about it, and supporting adherence to whatever regimen the
+  doctor sets.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 474
+  quote: >-
+    It has been established that the average absorption rate of oral cyanocobalamin by
+    patients with pernicious anemia is 1.2% across a wide range of dosages. Thus an oral
+    dosage of 100 to 250 mcg per day results in a average absorption of 1.2 to 3 mcg,
+    respectively—a dosage that is sufﬁcient for many, but not all, patients.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 475
+  quote: >-
+    For oral vitamin B12, the recommended dosage is 2,000 mcg per day (14,000 mcg weekly) for
+    at least one month, followed by a daily intake of 1,000 mcg. Methylcobalamin, the active
+    form of B12, is preferred over cyanocobalamin.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

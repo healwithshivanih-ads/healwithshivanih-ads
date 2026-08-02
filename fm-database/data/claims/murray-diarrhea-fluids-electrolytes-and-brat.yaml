@@ -1,0 +1,38 @@
+slug: murray-diarrhea-fluids-electrolytes-and-brat
+statement: |
+  The chapter's first-line general support for any diarrhoea is fluid and electrolyte
+  replacement: diarrhoea loses a great deal of water along with potassium, sodium and
+  chloride, and these should be replaced through herbal teas, vegetable broths, fruit juices
+  or electrolyte replacement drinks. It recommends keeping electrolyte replacement drinks on
+  hand as a precaution in households with young children. Alongside this it recommends the
+  BRAT diet during the acute phase - bananas, white rice, apples, plain white toast or bread
+  (it suggests rice flour rather than wheat), and tea - on the grounds that these foods are
+  easy on the digestive system and slow the rhythmic contractions of the intestines.
+evidence_tier: plausible_emerging
+rationale: >
+  The claim is really two claims of different strength. Fluid and electrolyte replacement in diarrhoea is settled and among the highest-impact interventions in medicine, and the specific losses named (water, potassium, sodium, chloride) are correct. The BRAT diet is asserted without citation and has since fallen out of favour in paediatric guidance - it is nutritionally inadequate, and early return to a normal age-appropriate diet alongside oral rehydration solution is now preferred to prolonged restriction. The chapter also does not distinguish a properly formulated oral rehydration solution from sports drinks and fruit juice, which are too sugary and wrongly balanced and can worsen osmotic losses. Tiered to the weaker half.
+coaching_translation: >
+  Fluid replacement is the part that actually matters, and it is the part a coach can help with immediately. Plain water alone is not enough because the client is losing salts as well as water. In India the ready answer is WHO-formula ORS sachets from any pharmacy, made up exactly as the packet says - too concentrated makes things worse. Homely options that fit the same idea: salted rice kanji or the water drained from cooked rice, thin salted buttermilk or chaas, coconut water, moong dal water, clear vegetable broth. Sports drinks and undiluted fruit juice are too sugary and can pull more water into the gut. On food, the modern advice is gentler than the book's: rather than restricting to bananas, rice, apple and toast for days, use those as the easy starting foods and move back to normal simple home food as soon as the client can eat, keeping dairy out until the stools are settled.
+caveats:
+- "ORS must be reconstituted exactly per the sachet; a stronger mix increases the osmotic load and worsens the diarrhoea."
+- "Sports drinks and fruit juice are named favourably in the source but are too high in sugar and too low in sodium to work as rehydration - do not carry that recommendation forward."
+- "Prolonged BRAT restriction is not recommended in children; it is nutritionally poor and delays recovery. Use it as a starting point, not a regimen."
+- "If the client cannot keep fluids down, is passing little urine, or shows sunken eyes or severe dry mouth, this is no longer a coaching situation - urgent medical care."
+- "Fruit juice and excess sorbitol-containing fruit can themselves cause osmotic diarrhoea; watch that the rehydration plan is not feeding the problem."
+linked_to_topics: []
+linked_to_supplements:
+- electrolytes
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Coaching fluid intake, showing a client how to make up ORS, and suggesting easy home foods are in scope. Deciding that a client needs intravenous fluids, and any management of moderate or severe dehydration, is medical.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 870
+  quote: "With diarrhea, a person loses much water and a great deal of electrolytes, such as potassium, sodium, and chloride. It is important to replace these lost items. This replacement can be in the form of herbal teas, vegetable broths, fruit juices, and electrolyte replacement drinks."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 870
+  quote: "During the acute phase of diarrhea, the focus should be on liquids and the BRAT diet. The components of this diet are bananas, white rice, apples, plain white toast or bread (consider bread made with rice ﬂour instead of wheat ﬂour), and tea. These foods are easy on the digestive system and tend to slow down the rhythmic contractions of the intestines."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

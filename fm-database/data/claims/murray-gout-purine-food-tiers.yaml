@@ -1,0 +1,26 @@
+slug: murray-gout-purine-food-tiers
+statement: |
+  Murray & Pizzorno keep a low-purine diet as the mainstay of dietary therapy in gout, tiered rather than absolute. Foods with high purine levels are omitted entirely: organ meats (brain, kidney, liver, sweetbreads), yeast (brewer's and baker's), meat extracts, consommé, roe, anchovies, sardines and other small oily fish such as herring and mackerel. Foods with moderate purine levels are curtailed, not banned: dried legumes and dried peas, spinach, asparagus, larger fish, meat, poultry, shellfish and mushrooms. Low-purine foods are unrestricted: eggs, fruit, grains, milk, pasta, nuts and olives. The chapter pairs this with an alkaline-ash diet, because a more alkaline urine pH increases uric acid solubility — a shift from pH 5.9 to 6.5 raised uric acid excretion from 302 mg to 413 mg per day (pg 988).
+evidence_tier: plausible_emerging
+rationale: 'This is a clinical convention of long standing rather than a trial-backed protocol, and the chapter says so plainly — it notes that many physicians now prefer to lower urate with drugs rather than impose a purine-restricted diet, and keeps the restriction mainly ''to reduce metabolic stress''. The single quantified item is the alkaline-ash excretion figure (302 → 413 mg/day), which is one referenced study. The important limitation for this practice: the list is meat- and seafood-heavy and is built on purine CONTENT, not on observed gout risk. The chapter classifies dried legumes, dried peas, spinach and mushrooms as moderate-purine and says to curtail them. It does NOT make the distinction — well established in later epidemiology — between animal purines, which track with gout risk, and plant purines, which largely do not. I am not asserting that distinction from this source, because this source does not support it. That gap is the single most consequential thing about applying this chapter to an Indian vegetarian client.'
+coaching_translation: 'Not all high-purine foods are equal, and this list is not a ban list. The book''s ''leave out entirely'' group is almost all animal: organ meats, meat extracts and stock cubes, fish roe, and small oily fish like sardines, anchovies, herring and mackerel — plus brewer''s and baker''s yeast (which includes yeast-extract spreads and yeast-based supplements). The ''have less of, don''t eliminate'' group includes dals and dried peas, spinach, mushrooms, larger fish, meat, poultry and shellfish. Eggs, fruit, grains, milk, pasta, nuts and olives are unrestricted. For a largely vegetarian Indian client, this list gives you very little to remove — the real levers are usually elsewhere (sugar and fructose, alcohol, refined carbohydrate, weight). Do not put a vegetarian client on a dal-free diet on the strength of this list: the book classifies dals as moderate-purine on chemistry alone, and modern evidence has not found plant purines to raise gout risk the way animal ones do. If a client wants to test it, one food at a time, tracked, with the doctor in the loop.'
+caveats:
+- This chapter tiers foods by purine CONTENT, not by measured gout risk. It offers no evidence that restricting plant purines (dals, spinach, mushrooms) reduces attacks, and it should not be used to justify stripping legumes out of a vegetarian client's protein intake.
+- Removing dals from an Indian vegetarian diet risks a real protein and micronutrient deficit for a hypothetical urate benefit — a bad trade. Escalate to the clinician before any such restriction.
+- Beer is a double hit here — it carries brewer's yeast purines as well as alcohol — but the alcohol effect is the larger one (see the alcohol claim).
+- The alkaline-ash recommendation changes urine chemistry; in anyone with kidney stones or kidney disease this is a clinician's decision, since stone type determines whether alkalinising helps or harms.
+- Purine restriction lowers urate only modestly — diet is 10–20% of the total. Framing it as the fix sets a client up to feel they failed.
+linked_to_topics:
+- gout
+- kidney-stones
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: A coach may teach which food groups the literature tiers where, and support a client in trialling changes. Prescribing a therapeutic purine-restricted or alkaline-ash diet in someone with kidney disease or stones is clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 55 — Gout, pg 988
+  quote: Foods with high purine levels should be entirely omitted. These include organ meats, yeast (brewer’s and baker’s), and smaller ﬁsh such as sardines, herring, and anchovies. Foods with moderate levels of purine should be curtailed as well. These include dried legumes, spinach, asparagus, ﬁsh, meat, poultry, shellﬁsh, and mushrooms.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

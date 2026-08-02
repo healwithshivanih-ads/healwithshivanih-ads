@@ -1,0 +1,62 @@
+slug: murray-periodontal-zinc-gingival-function
+statement: |
+  Zinc status tracks with periodontal disease severity, and zinc has several distinct
+  jobs in gum tissue: stabilising membranes, antioxidant activity, collagen synthesis,
+  inhibiting plaque growth, inhibiting mast-cell degranulation, and a range of
+  immune-enhancing effects. It also shortens wound healing time and works
+  synergistically with vitamin A. Murray & Pizzorno report that plaque growth can be
+  inhibited by twice-daily use of a mouthwash containing 5% zinc — but are explicit
+  that lower concentrations or less frequent use are not particularly successful.
+  Their oral suggestion is 30 mg/day as zinc picolinate (45 mg/day in other forms).
+evidence_tier: plausible_emerging
+rationale: >
+  The biochemistry is solid — zinc is a genuine cofactor in collagen synthesis, a
+  membrane stabiliser, a mast-cell stabiliser and required for immune cell maturation,
+  and the association between low zinc and periodontal severity is cited. What is thin
+  is the intervention evidence: a single reference supports the 5% zinc mouthwash, and
+  the chapter itself concedes that anything weaker or less frequent fails, which is
+  the signature of a small effect. The oral dose is the authors' clinical
+  recommendation, not a trial result. The Indian angle strengthens the plausibility of
+  the deficiency premise rather than the treatment: phytate in a grain-and-legume-heavy
+  vegetarian diet materially reduces zinc absorption, so marginal zinc status is
+  common here even though the chapter's own deficiency data are US and elderly.
+coaching_translation: >
+  Zinc is one of the quiet nutrients your gums depend on — it helps build the collagen
+  that holds teeth in place, calms the inflammatory cells in the gum, and speeds
+  healing. Low zinc is common on a mostly vegetarian Indian diet, because the phytates
+  in grains and dals bind zinc and reduce how much you absorb. Soaking, sprouting and
+  fermenting dals and grains genuinely helps. Food sources worth building in: pumpkin
+  seeds, sesame, cashews, chana, curd, and eggs if you eat them.
+caveats:
+- Long-term high-dose zinc depletes copper; this is a real risk with 30–45 mg/day taken indefinitely and needs clinician oversight.
+- Zinc on an empty stomach causes nausea in many people; it also interacts with certain antibiotics and with iron.
+- A 5% zinc mouthwash is not a routine retail product and self-compounding a mouth rinse is not something a coach should suggest.
+- Low zinc is a plausible contributor, not a diagnosis — do not attribute a client's gum disease to zinc without a clinician's assessment.
+linked_to_topics:
+- periodontal-disease
+- zinc-nutrition
+- immune-nutrition
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+- vitamin-a
+linked_to_mechanisms:
+- zinc-antioxidant-activity
+- zinc-immune-cell-maturation
+- phytate-zinc-chelation
+- mast-cell-degranulation
+out_of_scope_notes: >
+  Teaching zinc-rich foods, and the soaking/sprouting/fermenting practices that
+  improve zinc bioavailability in an Indian vegetarian diet, is core coach work.
+  Recommending 30–45 mg/day supplemental zinc is prescribing and must come from the
+  clinician, particularly because of the copper-depletion risk. Any medicated mouth
+  rinse is dentist or physician territory.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1391
+  quote: >-
+    The functions of zinc in the gingiva and periodontium include stabilization of membranes, antioxidant activity, collagen synthesis, inhibition of plaque growth, inhibition of mast-cell degranulation, and numerous immune-enhancing activities.17–20 Zinc is also known to signiﬁcantly reduce wound healing time. Plaque growth can be inhibited by the use twice per day of a mouthwash that contains 5% zinc.19
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,87 @@
+slug: murray-armd-modifiable-exposures-smoking-fat
+statement: |
+  Two exposures drive ARMD progression and both are coachable. Smoking a pack a day
+  for any significant period raises ARMD risk two- to three-fold versus never-smokers,
+  and the risk does not return to baseline until 15 years after quitting — so
+  cessation is worth pushing even in an older client who assumes the damage is done.
+  Separately, a cohort of 261 people with early or intermediate ARMD showed a twofold
+  increased risk of progression on a diet high in animal fat and commercial baked goods
+  (sources of sugar and trans-fatty acids), while higher intakes of fish and nuts
+  tracked with lower progression risk; higher long-chain omega-3 intake was inversely
+  associated with progression over 12 years. The chapter also advises avoiding beer,
+  which increased drusen accumulation and exudative disease risk, while allowing
+  moderate red wine.
+evidence_tier: plausible_emerging
+rationale: >
+  The smoking association is large, dose-related, biologically coherent (oxidative
+  load plus reduced ocular perfusion) and consistently replicated outside this book —
+  that part would stand as strong on its own. The dietary-fat evidence is
+  observational: a 261-person cohort and long-term intake associations, so confounding
+  by overall diet quality and socioeconomic status is not excluded, and no
+  randomised dietary trial is cited. The beer-versus-wine distinction rests on a single
+  cited observation each and is the weakest element here — reported, not relied upon.
+  The composite is tiered plausible_emerging because the dietary half cannot carry a
+  strong tier.
+coaching_translation: >
+  Two things a client can actually change move the needle here. First, smoking: a
+  pack a day roughly doubles to triples the risk, and it takes about 15 years off
+  cigarettes before risk drops back to normal — which is an argument for stopping now,
+  not an argument that it is too late. Second, the fat pattern of the diet. In studies,
+  a diet heavy in animal fat and shop-bought baked goods — biscuits, rusks, bakery
+  cake, packaged namkeen fried in reused oil — doubled the odds of the eye disease
+  getting worse, while people eating more fish and nuts did better. Practical Indian
+  version: fewer bakery and deep-fried packaged items, no reused frying oil, a daily
+  handful of walnuts, almonds or flax, and fish a couple of times a week if they eat
+  it. For vegetarians, flaxseed, chia and walnuts carry the omega-3 load. Beer looks
+  actively unhelpful for the eyes; a small amount of red wine does not.
+caveats:
+- The dietary findings are observational — association, not proof, and diet quality
+  travels with income, activity and smoking status.
+- Never introduce alcohol as a health recommendation. The wine finding is context, not
+  advice; it is irrelevant or harmful for anyone with liver disease, a history of
+  dependence, pregnancy, or on medication that interacts with alcohol.
+- Plant omega-3 (ALA from flax, chia, walnut) converts poorly to EPA/DHA; a vegetarian
+  client relying on it is not getting the intake the fish studies measured. Algal DHA
+  is the vegetarian equivalent and is a purchase decision, not a coaching prescription.
+- Smoking cessation may need pharmacological or specialist support; a coach supports
+  behaviour change, not nicotine-replacement dosing.
+linked_to_topics:
+- macular-degeneration
+- essential-fatty-acids
+- omega-3-fatty-acids
+- atherosclerosis
+- oxidative-stress
+linked_to_supplements:
+- fish-oil-epa-dha
+- omega-3
+linked_to_mechanisms:
+- oxidative-stress
+- omega-3-omega-6-imbalance
+- atherosclerosis
+out_of_scope_notes: >
+  This is the heart of coaching scope — smoking cessation support, fat-quality and
+  cooking-oil changes, adding fish or plant omega-3 foods, reducing packaged baked
+  goods. What stays with the clinician: prescribing omega-3 at therapeutic doses
+  (especially alongside anticoagulants or before surgery), advising on alcohol in
+  anyone with liver disease or dependence history, and any statement about how much a
+  given client's ARMD will or will not progress.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1221
+  quote: >-
+    Someone who smokes a pack of cigarettes a day for any signiﬁcant length of time
+    increases the risk of ARMD by two to three times that of someone who has never
+    smoked.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1223
+  quote: >-
+    Just as in atherosclerosis, types of dietary fat appear to play a role in ARMD. A
+    cohort study of 261 individuals with early or intermediate stages of ARMD revealed
+    a twofold increased risk of progression with a diet high in animal fat and
+    commercial baked goods (sources of sugar and trans-fatty acids). In contrast,
+    higher intakes of ﬁsh and nuts are associated with a lower risk of ARMD
+    progression.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

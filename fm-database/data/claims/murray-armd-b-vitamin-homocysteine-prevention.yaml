@@ -1,0 +1,87 @@
+slug: murray-armd-b-vitamin-homocysteine-prevention
+statement: |
+  ARMD prevention is not only an antioxidant story — methylation status appears to
+  matter too. In a randomised, double-blind, placebo-controlled trial of 5,442 female
+  health professionals aged 40+ with existing cardiovascular disease or three or more
+  CVD risk factors, a combination of folic acid 2.5 mg, vitamin B6 50 mg and vitamin
+  B12 1 mg daily produced 55 cases of ARMD versus 82 on placebo over an average 7.3
+  years, and 26 versus 44 cases of more severe ARMD — a 34% and 41% relative risk
+  reduction respectively. The implied mechanism is homocysteine lowering and therefore
+  better small-vessel/endothelial function in the retina, which fits the chapter's own
+  claim that reduced blood and oxygen supply is the key driver of ARMD.
+evidence_tier: plausible_emerging
+rationale: >
+  This is a large, long, properly randomised, placebo-controlled trial with a clear
+  effect size, which is much better evidence than most of this chapter carries. Three
+  things hold it back from a strong tier. It is a secondary outcome in a
+  cardiovascular-prevention trial, not a trial designed to answer the ARMD question.
+  The population is entirely women aged 40+ at elevated cardiovascular risk, so it
+  does not generalise cleanly to low-risk adults or to men. And the chapter asserts
+  the finding without naming the mechanism — homocysteine lowering is the obvious
+  candidate but the chapter does not demonstrate it. The doses used are also
+  therapeutic, not nutritional.
+coaching_translation: >
+  Alongside the antioxidant work, the B vitamins that control homocysteine — folate,
+  B6 and B12 — showed a real protective effect on the eyes in a large seven-year trial
+  in women at cardiovascular risk: roughly a third fewer cases of macular degeneration
+  and about 40% fewer severe cases. That fits the bigger picture, because high
+  homocysteine damages small blood vessels and the macula lives on very small blood
+  vessels. In food terms for Indian clients that means daily dark leafy greens
+  (palak, methi, chaulai), dals and rajma, beetroot and citrus for folate; and — this
+  is the big one for vegetarians — B12, which simply is not available from plant food
+  and quietly runs low in long-term vegetarian and vegan clients.
+caveats:
+- These are therapeutic doses (folic acid 2.5 mg is roughly six times the RDA), not a
+  food or everyday-multivitamin conversation.
+- 'High-dose synthetic folic acid is itself contested in functional medicine — it can
+  mask B12 deficiency and, in people with reduced MTHFR activity, may accumulate as
+  unmetabolised folic acid. Many practitioners would use methylfolate and
+  methylcobalamin instead; the trial did not test that.'
+- Never give folate without adequate B12, especially in a vegetarian Indian population
+  where B12 deficiency is common — masked deficiency can progress to irreversible
+  neurological damage.
+- 'The chapter''s own treatment summary prints a folic acid dose of "800 to 2,000 mg
+  per day", which is a units error in the source (mcg is meant). Do not repeat that
+  figure.'
+- Findings come from women 40+ with cardiovascular risk; do not extrapolate to a
+  low-risk 30-year-old.
+linked_to_topics:
+- macular-degeneration
+- homocysteine-and-methylation
+- folate-nutrition
+- vitamin-b12
+- functional-b12-excess-umfa
+- hyperhomocysteinemia
+linked_to_supplements:
+- folic-acid
+- methylfolate
+- vitamin-b6
+- vitamin-b12
+- methylcobalamin
+linked_to_mechanisms:
+- elevated-homocysteine
+- homocysteine-remethylation
+- endothelial-dysfunction
+- folate-receptor-blockade-folic-acid
+out_of_scope_notes: >
+  Ordering or interpreting homocysteine, serum B12, MMA or folate results is clinician
+  scope, as is deciding on 2.5 mg folic acid or any therapeutic B-vitamin regimen —
+  and so is the judgement call between folic acid and methylfolate. Coaching scope is
+  food-level: building folate-rich meals, flagging long-term vegetarian or vegan diet
+  as a B12 risk worth testing, and raising the question with the client's doctor. A
+  coach must not start a client on high-dose folate, and must never reassure a client
+  that a normal serum B12 rules out deficiency.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1225
+  quote: >-
+    randomly received a combination of folic acid (2.5 mg per day), vitamin B6 (50 mg
+    per day), and vitamin B12 (1 mg per day) or a placebo. After an average of 7.3
+    years of treatment and follow-up, there were 55 cases of ARMD in the combination
+    treatment group and 82 in the placebo group. There were 26 cases of more severe
+    ARMD in the combination treatment group and 44 in the placebo group. These results
+    indicate a 34% and 41% reduced relative risk, respectively.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

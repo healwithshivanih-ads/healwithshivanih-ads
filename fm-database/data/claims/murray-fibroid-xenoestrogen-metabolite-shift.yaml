@@ -1,0 +1,56 @@
+slug: murray-fibroid-xenoestrogen-metabolite-shift
+statement: |
+  Beyond the body's own oestrogen production, Murray & Pizzorno argue that xenoestrogens —
+  endocrine-disrupting compounds such as phthalates from plastics, pesticides, tobacco-smoke
+  by-products and solvents — contribute to fibroid development. They act by two routes: they
+  bind oestrogen receptors and so enhance or block oestrogen's effect, and they shift
+  oestrogen breakdown away from benign metabolites toward carcinogenic ones. Reducing
+  avoidable exposure is therefore framed as part of the fibroid picture, not just a general
+  wellness measure.
+evidence_tier: fm_specific_thin
+rationale: >
+  The chapter offers no citation for the xenoestrogen–fibroid link and hedges it as "a strong
+  case can be made" — that is argument, not evidence. The underlying receptor-binding and
+  metabolite-shift biology is real and reasonably well characterised for individual compounds,
+  but the leap from "these compounds are oestrogenic" to "they cause fibroids" is unsupported
+  in this text. Tiered fm_specific_thin: mechanistically coherent, functionally popular,
+  clinically unproven for this endpoint.
+coaching_translation: >
+  Some everyday chemicals — the softeners in soft plastics, pesticide residues, cigarette
+  smoke, strong solvents — behave a bit like oestrogen in the body, and can also nudge how
+  the body breaks oestrogen down. Cutting avoidable exposure is a sensible, low-cost habit:
+  store and reheat food in steel or glass instead of plastic, wash produce well, choose loose
+  or minimally packaged food, and keep the kitchen well ventilated. This is a background
+  reduction measure, not a treatment.
+caveats:
+- The chapter presents this as reasoning, not as trial evidence — present it to a client as a
+  plausible precaution, never as a cause of her fibroid.
+- Avoid anxiety-driven over-restriction; a client who becomes fearful of all packaged food has
+  been badly served.
+- Testing for "toxic load" or interpreting environmental-chemical panels is outside coaching
+  scope.
+linked_to_topics:
+- uterine-fibroids
+- endocrine-disruption
+- xenobiotic-exposure
+- estrogen-metabolism
+linked_to_mechanisms:
+- endocrine-disruption
+- hormone-receptor-binding
+- estrogen-16-hydroxylation
+linked_to_supplements: []
+out_of_scope_notes: >
+  A coach may educate on reducing avoidable exposure and support the habit change. Attributing
+  a client's fibroid to a specific exposure, ordering or reading toxicant testing, or
+  recommending a "detox" protocol is out of scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 97 — Uterine Fibroids, pg 1540
+  quote: Examples of xenoestrogens include phthalates (used in plastics), pesticides, tobacco
+    smoke by-products, and various solvents. Xenoestrogens enhance or block the effects of
+    estrogen in the body by binding to estrogen receptors. They also promote a shift from
+    healthy estrogen breakdown products to cancer-causing estrogen metabolites.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

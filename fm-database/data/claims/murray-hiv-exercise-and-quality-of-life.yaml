@@ -1,0 +1,77 @@
+slug: murray-hiv-exercise-and-quality-of-life
+statement: |
+  Antiretroviral therapy is the treatment for HIV; movement is adjunctive lifestyle support.
+  Murray & Pizzorno report that regular exercise benefits people with immunodeficiency conditions
+  particularly through stress relief and improved mood, that aerobic exercise transiently raises
+  CD4, CD8 and natural killer cell counts, and that people living with HIV who practised tai chi
+  reported better overall perception of health and measurable improvements in physical function
+  compared with controls. The durable finding is the quality-of-life and physical-function one:
+  regular moderate movement — walking, tai chi, yoga, stretching, resistance work — supports
+  strength, mood, sleep, cardiometabolic health and a sense of agency. The transient immune-cell
+  changes are not a meaningful outcome and should not be presented to a client as one.
+evidence_tier: plausible_emerging
+rationale: >
+  Exercise improving mood, physical function and quality of life in people living with a chronic
+  condition is robust and general, and the tai chi finding the book cites is consistent with a
+  wider body of work on movement in chronic illness. The mechanism is unremarkable and does not
+  depend on anything HIV-specific: better conditioning, better sleep, reduced stress reactivity.
+  Where the 2012 text has been overtaken: it presents post-exercise rises in CD4, CD8 and NK cells
+  as if they were evidence of slowed disease progression. They are not — such shifts are largely
+  a transient redistribution of circulating lymphocytes, and in modern care CD4 recovery is
+  achieved by effective ART, not by exercise. Reading that passage as "exercise strengthens my
+  immunity against HIV" is exactly the misreading to avoid. Modern practice also adds a concern
+  the book does not: cardiometabolic risk and body-composition changes associated with long-term
+  HIV and some antiretroviral regimens, for which regular activity including resistance training
+  is genuinely valuable. Tier is plausible_emerging — solid for wellbeing and function, not for
+  disease course.
+coaching_translation: >
+  Movement is one of the most useful things you can coach here, and it is squarely within your
+  scope. Frame it honestly: regular activity helps with energy, mood, sleep, strength, and heart
+  and metabolic health — it is not a way to fight the virus, and it does not change what their
+  medication is doing. Start from what the client already enjoys and can sustain. Walking most
+  days, yoga, tai chi, stretching and gentle strength work all fit well; resistance work is
+  particularly worth including because it supports muscle and bone. Build gradually and respect
+  fatigue — pushing into exhaustion is counterproductive. If they are unwell, newly diagnosed,
+  recovering from an infection, or have any cardiac or joint concern, have them clear the plan
+  with their doctor first.
+caveats:
+- Antiretroviral therapy is the treatment for HIV. Exercise does not slow HIV and must never be
+  offered as a reason to feel less dependent on treatment.
+- The source predates current standards of care. Its reporting of post-exercise CD4/CD8/NK
+  increases should not be relayed to clients as evidence that exercise improves immune status
+  against HIV.
+- Medical clearance before starting or increasing exercise, particularly if the client is
+  unwell, has low CD4, has cardiac or bone concerns, or is recovering from an infection.
+- Fatigue and neuropathic pain are common; intensity must be set by how the client actually
+  feels, not by a prescribed target.
+linked_to_topics:
+- exercise-prescription-fm
+- cardiovascular-exercise
+- mind-body-yoga
+- relaxation-response
+linked_to_supplements: []
+linked_to_mechanisms:
+- exercise-induced-anti-inflammatory-signaling
+- stress-induced-immune-suppression
+out_of_scope_notes: >
+  Coach scope: designing and progressing a movement routine within the client's tolerance,
+  behaviour change around consistency, and mind-body practices such as yoga, tai chi and
+  breathing. Clinician scope: exercise clearance, assessing cardiac or bone safety, managing
+  peripheral neuropathy or fatigue of unclear cause, and any interpretation of CD4 or viral load.
+  Never use immune-marker language to motivate a client here.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 416
+  quote: >-
+    Regular exercise has been demonstrated to provide beneﬁt to individuals with immunodeﬁciency
+    diseases, particularly through stress alleviation and mood enhancement.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 416
+  quote: >-
+    HIV-positive individuals practicing tai chi demonstrated greater overall perception of health
+    and signiﬁcant improvements in several measures of physical function when compared with
+    controls.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

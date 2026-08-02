@@ -1,0 +1,30 @@
+slug: murray-hawthorn-coronary-dilation-angina
+statement: Hawthorn (Crataegus species) berry and flowering-top extracts are widely used in Europe for cardiovascular indications. Murray & Pizzorno report that hawthorn's ability to dilate coronary blood vessels has been repeatedly demonstrated experimentally, and that hawthorn extracts improve cardiac energy metabolism in human and experimental studies — a combination they argue yields improved myocardial function with more efficient oxygen use. They also cite studies of reduced angina attacks, lower blood pressure and lower serum cholesterol, attributing part of the effect to hawthorn flavonoids interacting with enzymes governing contractility.
+evidence_tier: confirm_with_clinician
+rationale: 'Hawthorn has the best-developed European evidence base of any botanical in this chapter, but that evidence is strongest in mild congestive heart failure, not angina — the angina claims here rest largely on experimental and older clinical work. More importantly, hawthorn is pharmacologically active on the same targets as the client''s cardiac drugs: it is positively inotropic, mildly hypotensive, and potentiates digoxin. A botanical that acts like a cardiac drug must be handled like one.'
+coaching_translation: Hawthorn is a traditional European heart herb that appears to widen the heart's own arteries and help the heart muscle use oxygen more efficiently. It is genuinely active — which is exactly why it is not a casual addition. If a client asks, the answer is that it can interact with digoxin and with blood pressure medication and must be cleared by their cardiologist first. Do not suggest it, do not name a dose, and do record it if the client is already taking it so their doctor sees it.
+caveats:
+- Hawthorn potentiates cardiac glycosides — a client on digoxin risks toxicity. This is an absolute clinician-decision point.
+- Additive hypotension and bradycardia with antihypertensives, beta-blockers, nitrates and calcium channel blockers.
+- Evidence quality is strongest for mild heart failure; the angina-specific evidence in this chapter is largely experimental and older.
+- The chapter also promotes khella (Ammi visnaga) for angina on 1940s-50s evidence with documented side effects at higher doses — too dated and too drug-like to carry forward as a coaching-adjacent claim.
+- Hawthorn products in India vary widely in standardisation; product quality is a real and unaddressed variable.
+linked_to_topics:
+- cardiovascular-dysfunction
+- congestive-heart-failure
+- blood-pressure-management
+linked_to_supplements:
+- hawthorn-extract
+- hawthorn-berry
+linked_to_mechanisms:
+- vascular-smooth-muscle-relaxation
+- mitochondrial-energy-production
+out_of_scope_notes: Recommending, dosing or standardising hawthorn in a cardiac patient is prescriber scope. Coach scope is limited to documenting what the client already takes and routing the question to their cardiologist.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 490
+  quote: Hawthorn’s ability to dilate coronary blood vessels has been repeatedly demonstrated in experimental studies. In addition, hawthorn extracts have been shown to improve cardiac energy metabolism in human and experimental studies. This combined effect is extremely important in the treatment of angina, as it results in improved myocardial function with more efﬁcient use of oxygen.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

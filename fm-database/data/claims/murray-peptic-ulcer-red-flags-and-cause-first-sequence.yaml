@@ -1,0 +1,61 @@
+slug: murray-peptic-ulcer-red-flags-and-cause-first-sequence
+statement: |
+  Peptic ulcer is a medically supervised condition. Murray & Pizzorno are explicit
+  that haemorrhage, perforation and obstruction are medical emergencies requiring
+  immediate hospitalisation, and that anyone with ulcer symptoms needs competent
+  medical care. Their treatment sequence is cause-first: identify and eliminate the
+  implicated factors — H. pylori, food allergy, cigarette smoking, stress, and
+  drugs (especially aspirin and other NSAIDs) — and only then work on healing the
+  lesion, damping exacerbating factors, and building tissue resistance, with diet
+  and lifestyle change last to prevent recurrence. Symptom relief that skips step
+  one leaves the ulcer's cause fully intact.
+evidence_tier: strong
+rationale: >
+  This is safety guidance and treatment sequencing rather than a mechanistic
+  assertion, and it is uncontroversial: the three named complications are standard
+  surgical emergencies, and cause-first ordering matches guideline practice
+  (test-and-treat H. pylori, review NSAIDs) rather than departing from it. Tiered
+  strong because getting it wrong is the highest-consequence failure mode in this
+  whole chapter — a coach who works on cabbage juice while a client is quietly
+  bleeding has caused harm.
+coaching_translation: >
+  Anything to do with an ulcer needs a doctor alongside whatever we do together.
+  Some signs mean go now, not next week: vomiting blood or something that looks
+  like coffee grounds, black tarry stools, sudden severe stomach pain, fainting or
+  going very pale, or persistent vomiting where nothing stays down. Those are
+  emergency-room signs. Beyond that, the order matters — first find and remove what
+  is causing it (the bacterium, the painkillers, the cigarettes, the food triggers,
+  the pressure you are under), and only then work on healing and preventing it
+  coming back. Settling the symptom without finding the cause just hides it.
+caveats:
+- |-
+  Haematemesis, coffee-ground vomit, melaena (black tarry stool), sudden severe abdominal pain, syncope or pallor, and persistent vomiting are emergency referrals — stop coaching and route to emergency care
+- |-
+  Unintentional weight loss, difficulty swallowing, persistent vomiting, anaemia, or new ulcer-type symptoms after age 50 warrant urgent endoscopy to exclude gastric cancer — H. pylori is itself a gastric cancer risk factor
+- |-
+  Clients on aspirin, NSAIDs, steroids or anticoagulants can bleed without prior pain — absence of pain is not reassurance
+- |-
+  Never delay or substitute for medical evaluation while a dietary or botanical trial runs
+linked_to_topics: [peptic-ulcer-disease, h-pylori-infection, gastrointestinal-tract-overview, elimination-diet, stress-management]
+linked_to_supplements: []
+linked_to_mechanisms: [gastric-mucosal-barrier-disruption, h-pylori-mucosal-defense-breakdown, smoking-induced-bile-salt-reflux]
+out_of_scope_notes: >
+  Diagnosis, endoscopy, H. pylori eradication, and management of bleeding or
+  perforation are entirely clinician scope. The coach's job is threefold: recognise
+  and escalate red flags without hesitation, make sure the client actually has a
+  doctor working the cause and not only the symptom, and own the lifestyle limbs —
+  smoking cessation support, food triggers, stress and recovery, and a complete
+  medication/OTC inventory the doctor can act on.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1379
+  quote: |-
+    obstruction represent medical emergencies that require immediate hospitalization. Obviously, the best treatment of a peptic ulcer involves identiﬁcation of the causative factor and its appropriate elimination.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1384
+  quote: |-
+    The ﬁrst step is to identify and eliminate or reduce all factors implicated in peptic ulcers: H. pylori, food allergy, cigarette smoking, stress, and drugs (especially aspirin and other NSAIDs).
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

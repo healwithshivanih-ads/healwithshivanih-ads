@@ -1,0 +1,67 @@
+slug: murray-fibroid-high-fibre-low-fat-lowers-circulating-estrogen
+statement: |
+  The chapter's central dietary lever for fibroids is a high-fibre, lower-fat diet: eat plenty
+  of fibre and plant oestrogens while cutting saturated fat, sugar and caffeine. It cites one
+  dietary-switch study in which women moved from a typical American pattern (40% of calories
+  from fat, only 12 g fibre per day) to 25% of calories from fat and 40 g fibre, and blood
+  oestrogen fell 36% within 8 to 10 weeks. The chapter also notes that vegetarians carry lower
+  circulating oestrogen than omnivorous women.
+evidence_tier: plausible_emerging
+rationale: >
+  The 36% figure is a real cited dietary-intervention result and the mechanism is well
+  established — dietary fibre binds conjugated oestrogens in the gut and reduces their
+  deconjugation and reabsorption through enterohepatic recirculation, while lower fat intake
+  reduces the substrate side. What is NOT shown is that this shrinks fibroids or reduces
+  fibroid symptoms; that endpoint rests on the authors' clinical experience, which they
+  themselves concede. So: strong evidence for the intermediate marker (circulating oestrogen),
+  thin evidence for the clinical outcome. Tiered plausible_emerging on that split.
+coaching_translation: >
+  What you eat changes how much oestrogen stays in circulation. In one study, women who moved
+  to a lower-fat, high-fibre diet — around 40 g of fibre a day, up from 12 — dropped their
+  blood oestrogen by about a third within two months. Fibre works partly by carrying used
+  oestrogen out with the stool instead of letting it be reabsorbed, which is also why regular
+  daily bowel movements matter here. For most Indian vegetarian households this is
+  reinforcement, not restriction: dals, rajma, chana, whole millets and brown rice, plenty of
+  vegetables and fruit already do the fibre work. The changes to make are usually trimming
+  saturated fat (ghee, coconut, fried snacks, full-fat dairy in quantity), cutting sugar, and
+  easing back on coffee and strong tea.
+caveats:
+- The oestrogen drop is a blood marker, not a demonstrated reduction in fibroid size — say so
+  plainly to the client.
+- Increase fibre gradually with adequate fluid; a jump to 40 g overnight causes bloating and
+  gas, which a fibroid client may misread as worsening symptoms.
+- If bowel movements are not daily, fibre alone may not help — constipation prolongs
+  reabsorption of oestrogen and needs addressing alongside.
+- Very-low-fat eating can compromise fat-soluble vitamin absorption; moderate fat, don't
+  eliminate it.
+- The study population and the "standard American diet" comparator are US-based and dated;
+  the fibre gap is smaller in a typical Indian vegetarian diet, so the same 36% shift should
+  not be promised.
+linked_to_topics:
+- uterine-fibroids
+- estrogen-and-fiber-transit-time
+- estrogen-dominance
+- estrobolome
+- fiber-gap
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation
+- estrogen-enterohepatic-recirculation-uterine
+- estrogen-clearance-liver-gut
+- dietary-fiber-modulation
+linked_to_supplements: []
+out_of_scope_notes: >
+  Diet and bowel-regularity coaching is squarely within coach scope. Ordering or interpreting
+  serum oestradiol, or claiming a diet will shrink a fibroid, is not — the size of a fibroid
+  is tracked by the gynaecologist on imaging.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 97 — Uterine Fibroids, pg 1540
+  quote: These simple changes can dramatically reduce circulating estrogen levels and reduce
+    estrogen’s inﬂuence on the ﬁbroid. One study looked at what happened when women switched
+    from the standard American diet (40% of calories from fat; only 12 g ﬁber per day) to a
+    healthier diet (25% of calories from fat; 40 g ﬁber). Results showed a 36% reduction in
+    blood estrogen levels within 8 to 10 weeks.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,65 @@
+slug: murray-periodontal-smoking-free-radical-damage
+statement: |
+  Tobacco smoking is associated with increased susceptibility to severe periodontal
+  disease and tooth loss, and Murray & Pizzorno attribute much of that harm to free
+  radical damage — compounded by the fact that smoking greatly reduces vitamin C
+  levels, intensifying the damage. Smoking sits alongside a list of local aggravating
+  factors the authors name: food residue, unreplaced missing teeth, malocclusion,
+  tongue thrusting, bruxism, toothbrush trauma and mouth breathing. The chapter's
+  treatment summary leads with smoking cessation, on the grounds that continued
+  smoking greatly decreases the success of any therapy for periodontal disease.
+evidence_tier: strong
+rationale: >
+  Smoking as a major risk factor for periodontitis and tooth loss is one of the
+  best-replicated findings in periodontology and is cited here with three references;
+  it is not in serious dispute, and the observation that smoking undermines
+  periodontal treatment response is standard dental teaching. The free-radical
+  explanation is a plausible partial mechanism rather than a complete one — smoking
+  also causes gingival vasoconstriction, impairs neutrophil function and alters the
+  subgingival flora, none of which this chapter mentions. The vitamin C depletion
+  point is well established. Tiered strong because the actionable claim (stop smoking;
+  it changes both risk and treatment success) is robust regardless of which mechanism
+  dominates. Note that in India smokeless tobacco, gutka, paan masala and areca nut
+  are at least as relevant as cigarettes, and the chapter does not address them.
+coaching_translation: >
+  If you use tobacco in any form, stopping is the single biggest thing you can do for
+  your gums — bigger than any supplement in this chapter. Tobacco makes gum disease
+  more severe, makes tooth loss more likely, and makes dental treatment work less
+  well, so quitting is what lets everything else pay off. It also burns through your
+  vitamin C, which is exactly the nutrient your gums need to rebuild their collagen.
+  This applies to chewed tobacco, gutka and paan masala too, not only to cigarettes.
+  Habits like grinding your teeth, brushing too hard, and breathing through your mouth
+  at night also add to the load and are worth mentioning to your dentist.
+caveats:
+- The chapter addresses smoked tobacco only; smokeless tobacco and areca nut are major Indian exposures it does not cover, and areca nut carries its own oral submucous fibrosis and cancer risk.
+- Any non-healing white patch, red patch or ulcer in a tobacco user needs urgent dental or medical assessment for oral cancer — never coach around it.
+- Bruxism and malocclusion are named as contributors but are dentist-managed; the coach can raise stress and sleep, not adjust the bite.
+- Vitamin C repletion does not offset continued smoking.
+linked_to_topics:
+- periodontal-disease
+- oxidative-stress
+- oral-health-toxins
+- leukoplakia
+linked_to_supplements:
+- vitamin-c
+linked_to_mechanisms:
+- oxidative-stress
+- oxidative-stress-from-toxicants
+out_of_scope_notes: >
+  Smoking and tobacco cessation coaching is core NBHWC-track coach work and is the
+  highest-leverage action available here. Prescribing nicotine replacement or
+  varenicline is clinician scope. Assessing bruxism, malocclusion or any oral lesion,
+  and all periodontal treatment, is dentist scope — refer.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1389
+  quote: >-
+    Numerous local factors favor the progression of periodontal disease. These include food residue, unreplaced missing teeth, malocclusion, tongue thrusting, bruxism (grinding of the teeth), toothbrush trauma, mouth breathing, and tobacco smoking. Tobacco smoking is associated with increased susceptibility to severe periodontal disease and tooth loss.1,7,8 Many of the harmful effects of smoking are a result of free radical damage.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1395
+  quote: >-
+    Since there are as yet no clear guidelines for determining which factors are most important for any given person, a general approach is recommended here. If you are a smoker, we strongly encourage you to stop, as continued smoking greatly decreases the success of any therapy for periodontal disease.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,49 @@
+slug: murray-chronic-diarrhea-find-the-cause-first
+statement: |
+  The chapter defines diarrhoea as an increase in frequency, fluidity and volume of bowel
+  movements, and insists that therapy for any chronic diarrhoea requires identifying the
+  underlying cause and restoring normal bowel function rather than suppressing the symptom.
+  The common chronic causes it names are lactose intolerance, food allergies, coeliac
+  disease and inflammatory bowel disease, and it identifies chronic diarrhoea as one of the
+  most common symptoms of irritable bowel syndrome - a functional disorder that can include
+  chronic loose stools - and of food allergy, where ingestion of an allergenic food releases
+  histamine and other allergic-reaction compounds that produce a powerful laxative effect.
+  Its wider causes table adds parasitic infection, antibiotic therapy, inadequate bile
+  secretion, pancreatic insufficiency, hyperthyroidism, diabetic neuropathy, laxative abuse
+  and heavy metal poisoning.
+evidence_tier: strong
+rationale: >
+  The differential list is mainstream and the histamine mechanism for food-allergy diarrhoea is real - mast cell mediators do increase secretion and motility. The chapter asserts rather than cites, and it conflates true IgE-mediated food allergy with non-immune food intolerance in places, which is worth correcting when translating. Tiered strong on the central instruction, which is negative and safe: do not treat chronic diarrhoea without knowing what is causing it. The definition itself carries practical weight, because it makes clear that increased frequency alone is not diarrhoea.
+coaching_translation: >
+  Chronic loose stools are a symptom with a long list of possible causes - lactose, food reactions, coeliac disease, IBD, parasites, thyroid overactivity, bile or pancreatic problems, a past antibiotic course. The coaching job is to help the client get the cause identified and then support it, not to start subtracting foods on a hunch. One distinction is worth making carefully with clients: the book's own definition requires an increase in frequency AND fluidity AND volume. A client who has to pass stool soon after every meal but passes a formed, normal-volume stool has an exaggerated post-meal gut reflex, not diarrhoea - the gut is being told to empty on schedule rather than failing to absorb water. That distinction changes the whole approach: meal size, meal spacing, fat and caffeine load, and stress regulation are the levers for the reflex pattern, whereas true watery diarrhoea points at absorption, infection or inflammation. Say it as a description of the pattern, not as a label.
+caveats:
+- "Coeliac testing must happen while the client is still eating gluten. Removing gluten before testing makes the diagnosis much harder - never start a gluten-free trial in a client with chronic diarrhoea before a clinician has decided about testing."
+- "Formed stools after every meal is a functional pattern, not diarrhoea, but it still needs a clinician to exclude IBD, coeliac disease and bile-acid malabsorption before anyone treats it as functional. IBS is a diagnosis of exclusion and the coach does not make it."
+- "Hyperthyroidism, pancreatic insufficiency and bile-acid problems on the causes list all present as chronic loose stools and none of them respond to elimination diets."
+- "Elimination diets in an Indian vegetarian client can quickly become nutritionally inadequate; never run one open-endedly or without a reintroduction plan."
+- "Nocturnal diarrhoea, blood, fever and weight loss argue against a purely functional cause and mean referral, whatever the pattern looks like otherwise."
+linked_to_topics:
+- ibs
+- ibd
+- celiac-disease
+- food-allergy-ige-mediated
+- gluten-sensitivity
+linked_to_supplements: []
+linked_to_mechanisms:
+- altered-gi-motility
+- immune-food-reactivity
+- malabsorption
+- mast-cell-degranulation-histamine-release
+out_of_scope_notes: >
+  Symptom and food-timing tracking, supporting an elimination and reintroduction protocol a clinician has agreed to, and coaching meal structure and stress regulation are in scope. Naming the cause, ordering or interpreting coeliac serology, stool studies or thyroid labs, and diagnosing IBS are clinician-only.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 868
+  quote: "Chronic diarrhea is also one of the most common symptoms of irritable bowel syndrome, a functional disorder of the intestines that can include chronic loose stools (see the chapter “Irritable Bowel Syndrome”), and food allergies, as ingestion of an allergenic food can result in the release of histamine and other allergic-reaction compounds that can produce a powerful laxative effect (see the chapter “Food Allergy”)."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 866
+  quote: "• Increase in frequency, ﬂuidity, and volume of bowel movements Diarrhea is a common symptom that usually indicates a mild, temporary event. However, it may also be the ﬁrst suggestion of a serious underlying disease or infection."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,69 @@
+slug: murray-calcium-restriction-paradox
+statement: |
+  Restricting dietary calcium to prevent calcium stones is counterproductive. Murray &
+  Pizzorno state that the conventional instinct - calcium stones are common, so cut calcium -
+  is wrong, because calcium in the gut binds dietary oxalate and carries it out in stool. Take
+  the calcium away and more free oxalate is absorbed and excreted in urine, which is what
+  actually drives calcium oxalate stone formation. They cite studies in which calcium
+  supplementation at 300 mg per day (as carbonate, citrate or malate) REDUCED oxalate
+  absorption and excretion, and suggest 300 to 1,000 mg calcium per day as a preventive
+  strategy. The companion trial data (see the low-animal-protein claim) showed men on a normal
+  1,200 mg/day calcium diet did better than men on a restricted 400 mg/day calcium diet.
+evidence_tier: strong
+rationale: >
+  The mechanism is straightforward gut chemistry - calcium and oxalate bind in the intestinal
+  lumen, so dietary calcium is an oxalate sequestrant - and the direction of effect has been
+  reproduced in supplementation studies and in the normal-calcium versus low-calcium dietary
+  trial the chapter cites. The clinically important nuance the book does not spell out is
+  TIMING: calcium reduces oxalate absorption only when it is in the gut at the same time as
+  the oxalate, i.e. taken WITH meals. Calcium taken away from food does not bind meal oxalate
+  and is where concern about supplemental calcium and stone risk legitimately sits.
+coaching_translation: >
+  If a client with calcium stones has been told to stop dairy and cut calcium, that advice is
+  outdated and can make things worse. Calcium eaten WITH a meal grabs onto oxalate in the gut
+  so it leaves in the stool instead of reaching the kidneys. Keep normal calcium in the diet -
+  curd, paneer, ragi, milk, til (sesame) in moderation - and make sure it lands at the same
+  meal as any higher-oxalate food. For a vegetarian Indian plate, that means having dahi or a
+  ragi roti alongside the palak, not hours apart. Whether to add a calcium SUPPLEMENT is a
+  doctor's call, not a coaching one.
+caveats:
+- The binding effect depends on calcium being present with the oxalate-containing meal.
+  Calcium supplements taken between meals do not have the same protective effect and are the
+  form most associated with stone concern.
+- Dose figures (300 mg, and 300-1,000 mg/day) are supplement doses. Recommending or adjusting
+  a calcium supplement is prescribing and is outside coaching scope - refer.
+- Does not apply to clients with hypercalcaemia, primary hyperparathyroidism, sarcoidosis or
+  high-dose vitamin D intake - the chapter lists all of these as causes of excessive calcium
+  excretion, and calcium loading there is a clinician decision.
+- This is preventive logic for calcium/calcium-oxalate stones. It is not advice for uric acid,
+  struvite or cystine stones.
+linked_to_topics:
+- kidney-stones
+- calcium-metabolism
+- oxalate-sensitivity
+linked_to_supplements:
+- calcium
+- calcium-citrate
+- calcium-supplementation
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+- oxalate-accumulation
+- pth-calcium-regulation
+out_of_scope_notes: >
+  Coach scope: educating that food calcium is protective, and coaching the habit of pairing
+  calcium-containing foods with higher-oxalate meals. Clinician scope: prescribing calcium
+  supplements, deciding dose or form, and any client with abnormal serum calcium, PTH or a
+  named metabolic cause. The coach must not tell a client to start or stop a supplement their
+  doctor set.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1207
+  quote: Most conventional doctors tell their patients with kidney stones to avoid calcium
+    supplements; the thinking is that because calcium-containing stones are so common,
+    restricting the amount of calcium in the diet will help reduce the formation of stones.
+    However, studies show that calcium supplementation (300 mg per day of calcium, given as
+    calcium carbonate, citrate, or malate) actually reduced oxalate absorption and excretion,
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

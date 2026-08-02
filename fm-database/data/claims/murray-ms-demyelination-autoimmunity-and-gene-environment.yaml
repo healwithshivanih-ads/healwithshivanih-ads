@@ -1,0 +1,70 @@
+slug: murray-ms-demyelination-autoimmunity-and-gene-environment
+statement: |
+  MS is a syndrome of progressive nerve disturbance caused by gradual loss of the myelin sheath
+  surrounding the nerve cell - demyelination. Because the key function of the myelin sheath is to
+  facilitate nerve-impulse transmission, symptoms map onto whichever nerves have lost it, which is why
+  the same disease can present as blurred vision, leg weakness, bladder urgency, imbalance or cognitive
+  slowing. Murray & Pizzorno conclude the antibody pattern in cerebrospinal fluid is more likely the
+  result of an autoimmune reaction than of a common virus, while allowing that a virus (measles and
+  Epstein-Barr are the leading suspects) may be the trigger. Genetics loads the dice but does not
+  determine the outcome: concordance is 1-2% in fraternal twins versus about 25% in identical twins -
+  so 75% of identical twins of an affected person do NOT develop MS.
+evidence_tier: strong
+rationale: >-
+  The demyelination description is textbook neurology and the twin-concordance figures are
+  well-replicated descriptive epidemiology, which is why this is tiered strong - but note carefully
+  what is and is not strong. Strong: myelin loss causes the symptoms; MS behaves as an autoimmune
+  process; identical-twin concordance is roughly 25%, far above the 1-2% fraternal rate yet far below
+  100%. Not strong, and the chapter says so: WHAT triggers the autoimmune process is unresolved. The
+  authors list herpes simplex, scrapie, parainfluenza, measles, Epstein-Barr and coronavirus as viruses
+  isolated in MS material, then explicitly warn all of these may be bystanders rather than causes. The
+  gene-environment inference the chapter draws from twin data - that dietary, environmental and
+  lifestyle factors are required for the disease to manifest - is a valid reading of incomplete
+  concordance, but it identifies no specific factor.
+coaching_translation: >-
+  MS damages the insulating layer around nerves, called myelin. That layer is what lets a nerve signal
+  travel properly, so the symptoms someone gets depend entirely on which nerves lost their insulation -
+  that is why MS looks so different from person to person, and why the experience of one client tells
+  you nothing about another. It behaves like an autoimmune condition, where the immune system attacks
+  the tissue of the body itself. Genes matter but do not decide: if one identical twin has MS, the
+  other develops it only about a quarter of the time. That 75% is the honest, useful message -
+  something beyond genes is involved. It is emphatically NOT a promise that lifestyle can prevent or
+  reverse MS, and it must never become a reason for a client to feel their choices caused this.
+caveats:
+- Diagnosing MS, and distinguishing it from B12 deficiency, thyroid disease, Lyme, migraine or functional neurological disorder, is neurology scope. A coach never suggests the diagnosis and never questions it.
+- The genes-are-not-destiny framing is easily heard as blame. Deliver it as hope about what can still be supported, never as an implication that the client caused their illness or could have avoided it.
+- The chapter warns the viruses found in MS material may be bystanders. Do not tell a client that EBV or measles caused their MS - that link is unproven.
+- Incomplete twin concordance does NOT mean diet or lifestyle can reverse established demyelination. Nothing in this chapter supports that claim.
+- New, worsening or unfamiliar neurological symptoms are a same-day medical matter, not a coaching conversation. Relapse recognition and management belong to the neurologist.
+- Because symptoms track lesion location, symptom-based reasoning across clients is invalid - never generalise the MS pattern of one client to another.
+linked_to_topics:
+- multiple-sclerosis
+- autoimmune-disease
+- autoimmune-spectrum
+- cognitive-decline
+linked_to_supplements: []
+linked_to_mechanisms:
+- demyelination
+- neuroinflammation
+- neuroimmune-inflammation-loop
+- molecular-mimicry
+- ebv-reactivation
+- cytokine-dysregulation
+out_of_scope_notes: >-
+  Coach scope: explaining in plain language what demyelination is and why symptoms vary, so the client
+  understands their own care plan and can ask better questions of their neurologist. Out of scope:
+  diagnosis, differential diagnosis, attributing cause, interpreting MRI or CSF findings, and any
+  assessment of relapse - all neurology.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: "Chapter 78 — Multiple Sclerosis, pg 1278"
+  quote: |-
+    It is caused by gradual loss of the myelin sheath that surrounds the nerve cell. This process is called demyelination. One of the key functions of this myelin sheath is to facilitate the transmission of the nerve impulse. Without the myelin sheath, nerve function is lost. Symptoms correspond to the nerves that have lost their myelin sheath.
+- id: murray-pizzorno-2012-encyclopedia
+  location: "Chapter 78 — Multiple Sclerosis, pg 1280"
+  quote: |-
+    However, the fact that only 25% of identical twins develop MS if their twin develops it clearly shows that dietary, environmental, and lifestyle factors are required for the disease to manifest itself in most cases. In other words, genetics alone does not inevitably lead to MS.11
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

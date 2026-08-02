@@ -1,0 +1,36 @@
+slug: murray-angina-diet-lifestyle-foundation
+statement: 'Murray & Pizzorno place a Mediterranean-type dietary pattern and basic lifestyle change at the base of angina care, because angina is usually secondary to atherosclerosis and prevention is the primary therapy. The diet guidance is to increase soluble fibre (flaxseed, oat bran, pectin), onions and garlic, vegetables and fish, while reducing saturated fat, cholesterol, sugar and animal protein and avoiding fried foods. The lifestyle guidance is unequivocal: no smoking, no alcohol, no coffee; stress reduced through progressive relaxation, meditation or guided imagery; and a carefully graded, progressive aerobic programme of 30 minutes three times a week, starting with walking. Elsewhere the chapter names eliminating cigarette smoking among the simple changes that would greatly reduce the number of bypass operations performed.'
+evidence_tier: strong
+rationale: This is the part of the chapter that has aged best and has since been reinforced by trial evidence the 2012 text predates — notably PREDIMED for the Mediterranean pattern in cardiovascular prevention. Smoking cessation is the single highest-yield modifiable action in coronary disease, with risk falling within the first year. Supervised graded exercise (cardiac rehabilitation) has both mortality and symptom evidence behind it. The weakest elements are the blanket coffee ban and the reduce-animal-protein framing, which are the authors' position rather than settled evidence.
+coaching_translation: 'This is the heart of the coach''s job in angina, and it is the part with the best evidence. Smoking cessation first, always — nothing else the client does comes close. Then a Mediterranean-style, plant-forward pattern, which translates well into an Indian kitchen: more dals and whole legumes, millets and whole grains, plenty of vegetables, nuts and seeds, cold-pressed oils, less deep-fried food, less sugar, less refined flour. Then a walking programme that only ever progresses with the cardiologist''s clearance, and a daily stress practice. These are safe, evidence-backed and entirely within your scope.'
+caveats:
+- Exercise in angina must be cleared and graded by the treating cardiologist — ideally via a formal cardiac rehab programme. Never set or escalate an exercise load yourself, and stop immediately on any chest symptom.
+- Fish oil and high fish intake affect bleeding time and matter in clients on antiplatelets or anticoagulants; raise it with the doctor rather than recommending it.
+- Garlic supplementation is specifically flagged in this chapter as something to stop before surgery because of bleeding risk — relevant for any client awaiting a procedure.
+- The "no coffee" instruction is the authors’ position and is not supported by current cardiovascular evidence; do not present it as established.
+- Western dietary-risk framing under-calls risk for South Asian clients, who develop coronary disease earlier and at lower BMI and waist thresholds; use South Asian cut-offs and expect risk to be higher than a Western chart implies.
+- Most Indian clients here are vegetarian, so the fish recommendation often does not apply — work with dals, nuts and seeds, and route any omega-3 supplement question to their doctor rather than assuming.
+linked_to_topics:
+- mediterranean-diet-cvd
+- cardiovascular-disease-prevention
+- cardiovascular-exercise
+- stress-management
+- fiber-gap
+- atherosclerosis
+linked_to_supplements:
+- fish-oil-epa-dha
+- omega-3
+linked_to_mechanisms:
+- atherosclerosis
+- plaque-progression
+- inflammatory-cascade
+- dietary-fiber-modulation
+out_of_scope_notes: Diet pattern, smoking-cessation support, stress practice and habit change are core coach scope. Exercise prescription in diagnosed coronary disease is not — it is set by the cardiologist or cardiac rehab team, and the coach supports adherence to that prescription. Supplement decisions, including fish oil alongside antiplatelets, remain with the prescriber.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 495
+  quote: A Mediterranean-type diet is recommended. Lifestyle The individual with angina should not smoke or drink alcohol or coffee. Stress should be decreased by the use of stress management techniques such as progressive relaxation, meditation, and guided imagery. A carefully graded, progressive aerobic exercise program (30 minutes three times per week) is a necessity.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

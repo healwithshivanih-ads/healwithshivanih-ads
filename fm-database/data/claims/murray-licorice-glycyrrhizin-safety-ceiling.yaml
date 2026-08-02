@@ -1,0 +1,80 @@
+slug: murray-licorice-glycyrrhizin-safety-ceiling
+statement: |
+  Murray & Pizzorno recommend licorice (Glycyrrhiza glabra) in HIV but flag its own dose ceiling:
+  more than 3 g per day of licorice root, or more than 100 mg per day of glycyrrhizin, taken for
+  longer than six weeks may cause sodium and water retention leading to raised blood pressure,
+  and they advise monitoring blood pressure and increasing dietary potassium. This claim is
+  carried forward for the safety signal only, not as a reason to use licorice in HIV. It
+  generalises: glycyrrhizin-containing licorice — including mulethi taken habitually as tea or as
+  a churan — can drive pseudoaldosteronism with sodium retention, potassium loss and hypertension.
+  Deglycyrrhizinated licorice (DGL) does not carry this effect. In anyone taking antiretroviral
+  therapy, no herb should be added without the HIV clinician reviewing it for interactions.
+evidence_tier: strong
+rationale: >
+  The glycyrrhizin safety effect is one of the best-characterised herb-safety findings in the
+  literature and has not been overtaken by anything: glycyrrhetinic acid inhibits 11-beta
+  hydroxysteroid dehydrogenase type 2, allowing cortisol to act on the mineralocorticoid receptor,
+  producing sodium and water retention, potassium loss and hypertension. The book states the
+  threshold and duration explicitly, which is why it earns a strong tier — as a caution. Where the
+  2012 text has been overtaken, comprehensively: its actual recommendation, that glycyrrhizin
+  improves immune function and prevents progression to AIDS on the strength of small studies in
+  haemophiliac patients from the pre-ART era, is obsolete and is expressly not authored here.
+  Effective antiretroviral therapy is what prevents progression; nothing in this chapter's
+  botanical section is an alternative to it. The wider and more urgent modern point the book does
+  not make is that herb–antiretroviral interactions are a real hazard — St John's wort in
+  particular is contraindicated with several antiretroviral classes because it induces drug
+  metabolism and can cause treatment failure and resistance. Any herbal product taken alongside
+  ART needs clinician review.
+coaching_translation: >
+  If a client is on antiretroviral therapy, the rule to hold is simple: no herbal supplement gets
+  added without their HIV doctor or pharmacist checking it first. Some herbs speed up how the body
+  clears these medicines and can make treatment stop working — St John's wort is the best-known
+  example and is not to be combined with HIV medication at all. Licorice is the one this chapter
+  names, and it has a separate problem of its own: taken regularly in any meaningful amount, it
+  can push blood pressure up, make the body hold on to salt and water, and drop potassium.
+  Mulethi tea and licorice churans count. Occasional culinary use is a different matter from a
+  daily habit or a supplement. If a client is already taking licorice regularly, ask about it
+  openly, encourage them to tell their clinician, and watch for swelling, headaches or a rising
+  blood-pressure reading. DGL, the deglycyrrhizinated form, does not carry this risk.
+caveats:
+- The source predates current standards of care. Its recommendation of licorice/glycyrrhizin as a
+  treatment in HIV is obsolete and is deliberately not authored; only its safety warning is.
+- Antiretroviral therapy is the treatment for HIV. No herb substitutes for it, and adding herbs
+  can actively undermine it through drug interactions.
+- St John's wort is contraindicated with several antiretroviral classes and must never be
+  suggested to a client on HIV treatment. (This interaction is not named in the chapter; it is
+  added here because the chapter's herbal enthusiasm is unsafe without it.)
+- Risk from licorice is higher in existing hypertension, heart failure, kidney disease, low
+  potassium, pregnancy, or with diuretics or corticosteroids.
+- Recommending, dosing or discontinuing any herb is outside coach scope.
+linked_to_topics:
+- medication-nutrient-interactions
+- blood-pressure-management
+- hypertension
+linked_to_supplements:
+- licorice-root
+- dgl-licorice
+- potassium
+- st-johns-wort
+linked_to_mechanisms:
+- medication-related-nutrient-depletion
+out_of_scope_notes: >
+  Coach scope: asking what supplements and home remedies a client is already taking, educating
+  that herbs can interact with prescribed medication, and encouraging the client to disclose
+  everything they take to their HIV clinician or pharmacist. Clinician scope: deciding whether
+  any herb is safe alongside a specific antiretroviral regimen, all dosing, blood-pressure and
+  potassium monitoring, and managing hypertension. A coach must never recommend, dose or
+  discontinue a herbal product for someone on antiretroviral therapy, and must never let a herbal
+  conversation become a reason for the client to question their medication.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 416
+  quote: >-
+    The big concern is that licorice root at a dosage of more than 3 g per day or glycyrrhizin at
+    more than 100 mg per day for more than six weeks may cause sodium and water retention, leading
+    to high blood pressure. Monitoring of blood pressure and increasing dietary potassium intake
+    are suggested.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

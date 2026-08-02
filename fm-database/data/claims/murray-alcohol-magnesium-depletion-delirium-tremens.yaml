@@ -1,0 +1,57 @@
+slug: murray-alcohol-magnesium-depletion-delirium-tremens
+statement: |
+  Murray and Pizzorno report magnesium deficiency in as many as 60% of people
+  with alcohol dependence in one study, with a strong link to delirium tremens,
+  and propose it as the major reason for the raised cardiovascular disease rate
+  in this group. The mechanism they give is twofold: reduced dietary magnesium
+  intake plus alcohol-induced renal magnesium wasting that continues through
+  withdrawal even while serum magnesium is already low. They further suggest
+  that alcoholic cardiomyopathy, usually attributed to thiamine deficiency, may
+  instead be magnesium-driven.
+evidence_tier: plausible_emerging
+rationale: |
+  Split tier, called at plausible_emerging for the claim as a whole. The
+  depletion itself and the ongoing renal wasting are well supported and
+  mechanistically specific. The two causal attributions are not: 'the major
+  reason' for excess cardiovascular disease in heavy drinkers, and the reframing
+  of alcoholic cardiomyopathy from thiamine to magnesium, are the authors'
+  inference rather than trial evidence, and alcohol damages the heart through
+  several independent routes. The delirium-tremens association is real but
+  correlational in the source - low magnesium travels with severe dependence,
+  which is itself what drives DTs.
+coaching_translation: |
+  Heavy drinking drains magnesium from two directions - less coming in from
+  food, and more going out through the kidneys - and that continues even after
+  someone stops. Low magnesium shows up as muscle cramps, palpitations, poor
+  sleep, anxiety and tremor, and it is one reason the days after stopping can
+  feel so rough. This is a doctor's territory during any withdrawal, because
+  levels can drop dangerously and are corrected medically. Where you can help
+  long-term is food: green leafy vegetables, whole grains and millets, rajma and
+  chana, til and pumpkin seeds, and a little unsweetened dark chocolate.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Magnesium repletion during withdrawal is a medical intervention and can be given intravenously - never a coach-initiated supplement in that window.'
+- 'Magnesium supplements are contraindicated or need dose adjustment in kidney impairment, which is not uncommon in long-term heavy drinking. Requires medical clearance.'
+- 'Serum magnesium is a poor marker of total body stores; a normal result does not exclude depletion. Interpretation is clinician scope.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- magnesium-nutrition
+- magnesium-cardiovascular-health
+- magnesium-neurological-mental-health
+linked_to_supplements:
+- magnesium-citrate
+- magnesium-aspartate-citrate
+linked_to_mechanisms:
+- calcium-magnesium-imbalance
+out_of_scope_notes: |
+  Clinician: magnesium status, repletion during and after withdrawal, cardiac
+  and renal assessment. Coach: magnesium-rich everyday foods, sleep and stress
+  routines, and noticing cramps, palpitations or tremor as a reason to refer.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 431'
+  quote: 'In fact, one study found deﬁciency in as many as 60% of alcoholics and a strong link to delirium tremens (a state of confusion and trembling during alcohol withdrawal).39 It is thought to be the major reason for the increased cardiovascular disease noted in alcoholics. This deﬁciency is due primarily to a reduced magnesium intake coupled with alcohol-induced excessive excretion of magnesium by the kidneys, which continues during withdrawal despite low serum magnesium levels.'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,7 +1,27 @@
 source_id: murray-pizzorno-2012-encyclopedia
 pdf_path: /Users/shivani/Downloads/The Encyclopedia O fNatural Medicine.pdf
-extracted_text: /tmp/murray-extract/full.txt
-last_updated: '2026-05-30'
+extracted_text: /tmp/murray-extract/full.txt   # EPHEMERAL — /tmp is cleared; regenerate, see below
+last_updated: '2026-08-02'
+
+# The book has 99 chapters. 12 ingested, 87 remaining — this queue was never
+# "finished", it was just emptied of its first batch.
+#
+# REGENERATING extracted_text (it lives in /tmp and will be gone):
+#   pdftotext -layout "<pdf_path>" /tmp/murray-extract/raw.txt
+#   then prefix each form-feed-separated page with "=== PG <n> ===" (1-based).
+# body_pg_start/end are 1-BASED PDF PAGE INDICES, not printed page numbers, and
+# they match those markers. Verified: ch68→1126, ch81→1326, ch88→1451 all land
+# exactly on the chapter's first page.
+#
+# Chapter numbers + page ranges below come from the PDF's own bookmark outline
+# (pypdf `reader.outline` → `get_destination_page_number`), NOT from guessing at
+# the text — an earlier queue entry had a hand-derived page that was wrong
+# (see the ch45 note). End page = next chapter's start − 1.
+#
+# NOTE for anyone working from the source-expansion shortlist: this book has NO
+# "Low Back Pain" and NO "Prostatitis" chapter. Those gaps need a different
+# source. Men's health here is ch49 Erectile Dysfunction + ch86 Prostate Cancer
+# (Prevention) + ch87 Prostate Enlargement (BPH), and that is the whole of it.
 
 # Priority queue — chapters ordered by active-client impact.
 # Status: pending | in_progress | ingested
@@ -103,6 +123,220 @@ chapters:
     serves: [universal women's health + aging — postmenopausal bone loss + osteopenia]
     status: ingested
     batch_id: 20260530T220000-murray-ch81-osteoporosis-chat
+
+  # ── added 2026-08-02, CORRECTED same day ────────────────────────────────
+  # The first version of this block was built on the queue's own premise that
+  # only the 12 chapters listed above had been ingested. THAT PREMISE IS WRONG.
+  # A page/title-resolved sweep of all 584 Murray citations in the catalogue
+  # shows 76 of the book's 99 chapters already carry >=3 entries. The queue was
+  # only ever tracking the chapters done through this chat-batch workflow; many
+  # more were ingested by other routes and never recorded here.
+  #
+  # Six rows in the first version of this block were chapters that are ALREADY
+  # COVERED and have been removed: ch63 High Blood Pressure (9 entries),
+  # ch44 Depression (10), ch41 Constipation (6), ch43 Cystitis (5),
+  # ch87 Prostate Enlargement/BPH (4). Do not re-add them without re-checking.
+  #
+  # ⚠ DO NOT KEY COVERAGE OFF CHAPTER NUMBERS. Existing citations use a different
+  # numbering from this PDF's bookmark outline in the upper range — Varicose Veins
+  # is outline ch99 but is cited as "Chapter 102". Resolve by TITLE, or by page
+  # number AFTER stripping any "Chapter NN" prefix (a 3-digit chapter number
+  # otherwise parses as a page and lands inside ch5's range).
+  #
+  # `covered` below = entries already citing that chapter. 0-2 = real gap.
+  # Priority is demand-led: every client.yaml active_conditions + medical_history
+  # was scanned against the 23 gap chapters, so `serves` is measured, not assumed.
+  - ch: 21
+    title: Anemia
+    body_pg_start: 464
+    body_pg_end: 477
+    priority: 13
+    serves: [cl-004, cl-006, cl-011, cl-014, cl-021]
+    covered: 2
+    status: ingested
+    batch_id: 20260802-murray-ch21-chat
+    claims_added: 8
+    note: "Highest demand of any gap — 5 clients. cl-004's restless legs is flagged ferritin-linked."
+  - ch: 74
+    title: Macular Degeneration
+    body_pg_start: 1219
+    body_pg_end: 1229
+    priority: 14
+    serves: [cl-008, cl-021, cl-022]
+    covered: 2
+    status: ingested
+    batch_id: 20260802-murray-ch74-chat
+    claims_added: 7
+    note: "cl-021 is under specialist care for inflammatory dry eye — adjacent, not the same thing. Read scope carefully."
+  - ch: 83
+    title: Peptic Ulcer
+    body_pg_start: 1375
+    body_pg_end: 1385
+    priority: 15
+    serves: [cl-008, cl-021]
+    covered: 1
+    status: ingested
+    batch_id: 20260802-murray-ch83-chat
+    claims_added: 8
+    note: "Directly adjacent to the acidity/GERD work: cl-021 is on pantoprazole. Pairs with the gerd topic."
+  - ch: 84
+    title: Periodontal Disease
+    body_pg_start: 1386
+    body_pg_end: 1397
+    priority: 16
+    serves: [cl-006, cl-021]
+    covered: 1
+    status: ingested
+    batch_id: 20260802-murray-ch84-chat
+    claims_added: 8
+  - ch: 52
+    title: Food Allergy
+    body_pg_start: 935
+    body_pg_end: 955
+    priority: 17
+    serves: [cl-006]
+    covered: 2
+    status: ingested
+    batch_id: 20260802-murray-ch52-chat
+    claims_added: 8
+  - ch: 97
+    title: Uterine Fibroids
+    body_pg_start: 1539
+    body_pg_end: 1544
+    priority: 18
+    serves: [cl-022]
+    covered: 1
+    status: ingested
+    batch_id: 20260802-murray-ch97-chat
+    claims_added: 6
+  - ch: 46
+    title: Diarrhea
+    body_pg_start: 866
+    body_pg_end: 879
+    priority: 19
+    serves: [cl-021]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch46-chat
+    claims_added: 8
+  - ch: 32
+    title: Carpal Tunnel Syndrome
+    body_pg_start: 621
+    body_pg_end: 626
+    priority: 20
+    serves: [cl-009]
+    covered: 2
+    status: ingested
+    batch_id: 20260802-murray-ch32-chat
+    claims_added: 5
+  - ch: 73
+    title: Kidney Stones
+    body_pg_start: 1201
+    body_pg_end: 1218
+    priority: 21
+    serves: [gap-fill — renal is 4 topics; kidney-stones is a stub]
+    covered: 2
+    status: ingested
+    batch_id: 20260802-murray-ch73-chat
+    claims_added: 8
+    note: "Also what would put evidence under _protein_suppressed() in generate-week-menu.py."
+  - ch: 55
+    title: Gout
+    body_pg_start: 982
+    body_pg_end: 994
+    priority: 22
+    serves: [gap-fill — urate]
+    covered: 2
+    status: ingested
+    batch_id: 20260802-murray-ch55-chat
+    claims_added: 8
+    note: "Same protein-suppression rule: it keys on high uric acid."
+  - ch: 49
+    title: Erectile Dysfunction
+    body_pg_start: 900
+    body_pg_end: 919
+    priority: 23
+    serves: [gap-fill — men's health is 6 topics total]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch49-chat
+    claims_added: 8
+  - ch: 22
+    title: Angina
+    body_pg_start: 478
+    body_pg_end: 496
+    priority: 24
+    serves: [gap-fill — cardiovascular]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch22-chat
+    claims_added: 8
+  - ch: 78
+    title: Multiple Sclerosis
+    body_pg_start: 1278
+    body_pg_end: 1292
+    priority: 25
+    serves: [gap-fill — autoimmune/neuro]
+    covered: 2
+    status: ingested
+    batch_id: 20260802-murray-ch78-chat
+    claims_added: 8
+  - ch: 19
+    title: Alcohol Dependence
+    body_pg_start: 421
+    body_pg_end: 438
+    priority: 26
+    serves: [gap-fill]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch19-chat
+    claims_added: 8
+  - ch: 35
+    title: Cerebral Vascular Insufficiency
+    body_pg_start: 645
+    body_pg_end: 649
+    priority: 27
+    serves: [gap-fill]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch35-chat
+    claims_added: 5
+  - ch: 91
+    title: Seborrheic Dermatitis
+    body_pg_start: 1500
+    body_pg_end: 1503
+    priority: 28
+    serves: [gap-fill — dermatology]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch91-chat
+    claims_added: 4
+  - ch: 27
+    title: Boils
+    body_pg_start: 558
+    body_pg_end: 561
+    priority: 29
+    serves: [gap-fill]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch27-chat
+    claims_added: 4
+  - ch: 18
+    title: Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection
+    body_pg_start: 402
+    body_pg_end: 420
+    priority: 30
+    serves: [gap-fill — lowest relevance to this practice]
+    covered: 0
+    status: ingested
+    batch_id: 20260802-murray-ch18-chat
+    claims_added: 6
+
+# Section I-II framework chapters (ch1-5) also have zero coverage, but they are
+# philosophy/foundations, not condition chapters — no symptoms, no protocols.
+# Only ch5 "A Health-Promoting Diet" (pg 88-118) is likely worth ingesting, and
+# it would land as topics/claims about dietary pattern, not as a condition.
+# Deliberately NOT queued as pending; decide before spending a session on them.
 
 # How to resume:
 # 1. Open /tmp/murray-extract/full.txt

@@ -1,0 +1,25 @@
+slug: murray-gout-uric-acid-source-split
+statement: |
+  Gout is hyperuricaemia made visible: monosodium urate crystals depositing in joints, tendons, kidneys and other tissue, where they drive inflammation and damage. Murray & Pizzorno split primary gout (about 90% of all cases) three ways — increased synthesis of uric acid in the majority, reduced ability to excrete uric acid in about 30%, and both together in a small minority. Diet supplies only 10–20% of blood uric acid, so food is a modifier of the total rather than the whole story, though dietary purines still add to crystal formation in tissue. Serum is saturated with uric acid at 6.4–7.0 mg/100 mL, and the chance of an acute attack is greater than 90% once the level is above 9 mg/100 mL (pg 985).
+evidence_tier: plausible_emerging
+rationale: 'The underlying biochemistry is not in dispute: uric acid is the end product of purine metabolism, it is poorly soluble, and it crystallises out of a saturated serum — which is also why deposits favour cooler tissue such as the top of the ear, and why urine below pH 6.0 favours urate stones. What is softer is the proportional split. The chapter states the overproduction/underexcretion percentages as fact without citing primary data in this passage, and later rheumatology literature puts considerably more weight on renal underexcretion as the dominant mechanism. The tier reflects the split being dated framing, not the physiology being shaky. The 10–20% dietary contribution figure is the practically important number here and it is consistent with why diet-only approaches move urate modestly rather than dramatically.'
+coaching_translation: 'Uric acid is what is left when the body breaks down purines — building blocks found in the body''s own cells and in some foods. If it builds up past what the blood can hold in solution, it forms sharp crystals that settle in joints, most classically the base of the big toe. Two things can raise it: the body making more, or the kidneys clearing less. Food accounts for only about 10–20% of the total, which is why diet alone rarely fixes gout on its own — but it is a real, controllable slice, and it is the slice a coach can help with. Set expectations honestly with a client: diet, alcohol, weight and drinks are levers, not switches.'
+caveats:
+- An acute hot swollen joint can be septic arthritis (joint infection), gout, pseudogout or another arthritis — a coach must not assume which; urgent medical assessment is required.
+- Serum urate can be normal DURING an acute attack; a normal reading does not exclude gout and a raised reading does not by itself diagnose it. Only a clinician interprets this.
+- Some 90% of people with gout have some degree of kidney dysfunction and a higher risk of kidney stones — kidney function must be a clinician's call before any fluid, protein or supplement change.
+- Secondary gout (about 10% of cases) is driven by another disorder — cell turnover, kidney disease, diuretic therapy, low-dose aspirin — which needs a doctor, not a diet plan.
+linked_to_topics:
+- gout
+- kidney-stones
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Diagnosis, urate testing and its interpretation, and management of an acute attack are clinician scope. The coach's scope is education about purine metabolism and the diet/alcohol/weight levers, and supporting the client to act on them. A single acutely hot, red, swollen joint may be septic arthritis, not gout — that is a same-day emergency referral, not a coaching conversation. Never assume 'it's just gout'.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 55 — Gout, pg 985
+  quote: The dietary contribution to the level of uric acid in the blood is usually only 10 to 20% of the total, but purines and uric acid obtained through the diet can increase crystal formation in tissues nonetheless.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

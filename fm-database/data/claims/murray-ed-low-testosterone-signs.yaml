@@ -1,0 +1,62 @@
+slug: murray-ed-low-testosterone-signs
+statement: |
+  Low testosterone is listed as a relatively common endocrine cause of ED, and the
+  chapter is explicit that diagnosing it requires a blood test rather than symptom
+  pattern alone. The described picture is a cluster, not ED in isolation: reduced sexual
+  desire and erectile dysfunction, mood change with fatigue, depression and irritability,
+  reduced memory and spatial ability, plus loss of lean mass and muscle strength, rising
+  abdominal fat, thinning facial and chest hair, and sometimes smaller or softer
+  testicles. Treatment named in the book is prescription testosterone (transdermal gel,
+  injection or patch), with DHEA mentioned as possibly helpful under physician
+  supervision.
+evidence_tier: confirm_with_clinician
+rationale: >
+  The symptom cluster is a fair description of clinical hypogonadism and the insistence
+  on a blood test is the right instinct. But testosterone symptoms overlap almost
+  completely with poor sleep, obesity, depression, chronic stress, thyroid disease and
+  simple deconditioning, so the cluster has poor specificity on its own. Testosterone
+  replacement and DHEA are prescription and physician-supervised decisions with real
+  risks (erythrocytosis, fertility suppression, prostate monitoring). Tiered
+  confirm_with_clinician because every actionable part of this claim sits outside coach
+  scope.
+coaching_translation: >
+  Low testosterone is one possible cause of erectile difficulty, but it almost never
+  shows up alone — it usually comes with low drive, low mood, tiredness, losing muscle
+  and gaining weight around the middle. Those same symptoms are also what poor sleep,
+  untreated stress, weight gain, depression and thyroid problems look like, which is
+  exactly why it has to be a blood test and not a guess. So the coaching move is: notice
+  the pattern, name it neutrally, and encourage him to ask his doctor about it. Do not
+  suggest testosterone or DHEA — those are prescription decisions that need monitoring.
+  Meanwhile, sleep, strength training, alcohol reduction and weight management are the
+  levers that are genuinely yours to work on.
+caveats:
+- Never interpret a testosterone result or suggest a dose, brand or route — this is
+  strictly clinician scope.
+- DHEA is a hormone precursor, not a benign supplement; the book itself says it needs
+  physician monitoring, and it is not appropriate for a coach to recommend.
+- Testosterone therapy suppresses fertility — relevant if the client is trying to
+  conceive, and a reason to raise it with the doctor before starting.
+- Obstructive sleep apnoea, obesity, alcohol and opioid use all lower testosterone and
+  should be assessed before assuming a primary hormone problem.
+- Symptom checklists found online overdiagnose low testosterone; do not use one as a
+  screening tool with a client.
+linked_to_topics:
+- testosterone-health
+- hypothyroidism
+linked_to_supplements:
+- dhea
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Coach scope: recognising the symptom cluster well enough to encourage a medical
+  conversation, and coaching sleep, strength training, alcohol and weight. Clinician
+  scope: ordering and interpreting testosterone, LH, FSH and prolactin, diagnosing
+  hypogonadism, and prescribing or monitoring testosterone or DHEA.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 905
+  quote: |-
+    The diagnosis of low testosterone requires a blood test. Symptoms of low testosterone include decreased sexual desire and erectile dysfunction, changes in mood associated with fatigue, depression and anger, and decreases in memory and spatial orientation ability.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

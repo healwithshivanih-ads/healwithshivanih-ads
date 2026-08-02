@@ -1,0 +1,54 @@
+slug: murray-no-aspirin-dose-is-free-of-ulcer-risk
+statement: |
+  Aspirin and other NSAIDs are, alongside H. pylori, the most significant cause of
+  peptic ulceration — and no dose is safe. A five-hospital English study cited by
+  Murray & Pizzorno tested aspirin at 300, 150 and 75 mg/day (the doses used for
+  cardiovascular prophylaxis, not for pain) and found increased GI bleeding at
+  EVERY dose level. 75 mg/day bled 40% less than 300 mg and 30% less than 150 mg,
+  but the authors' conclusion was that no conventionally used prophylactic aspirin
+  regimen appears free of peptic ulcer risk. The chapter adds that combining NSAID
+  use with smoking is particularly harmful.
+evidence_tier: strong
+rationale: >
+  Cited (ref 3), multi-centre, and dose-stratified, with a clear dose-response
+  gradient rather than a single-point finding. The result is consistent with the
+  wider NSAID literature and with the known mechanism — COX inhibition suppresses
+  the prostaglandins that maintain gastric mucus and bicarbonate secretion — which
+  is why the injury occurs systemically and is not avoided by enteric coating.
+  Strong.
+coaching_translation: >
+  Painkillers like aspirin, ibuprofen, diclofenac and the ones in most combination
+  "body pain" and headache powders sold over the counter can cause stomach ulcers —
+  including the small daily aspirin some people take for the heart. There is no
+  dose low enough to be risk-free, though lower doses do bleed less. Two practical
+  things: bring every tablet you take, including the ones you buy yourself, to your
+  next doctor's visit; and if you smoke, that combination is especially rough on
+  the stomach lining.
+caveats:
+- |-
+  NEVER advise a client to stop cardioprotective aspirin — stopping it after a cardiac event or stent carries its own serious risk. The conversation is "tell your doctor", not "stop"
+- |-
+  Over-the-counter combination analgesics are widely sold in India without a prescription; clients often do not think of them as medicines and will not report them unless asked directly by name
+- |-
+  Enteric coating does not remove the risk — the injury is systemic via prostaglandin suppression, not just local contact
+- |-
+  Concurrent corticosteroids, SSRIs, or anticoagulants multiply the bleeding risk; this needs a clinician review, not a coach adjustment
+linked_to_topics: [peptic-ulcer-disease, gerd, drug-induced-nutrient-depletion, osteoarthritis]
+linked_to_supplements: []
+linked_to_mechanisms: [gastric-mucosal-barrier-disruption, arachidonic-acid-cascade, smoking-induced-bile-salt-reflux]
+out_of_scope_notes: >
+  Deciding whether a client can stop, reduce, or substitute an NSAID or
+  cardioprotective aspirin is prescriber scope — as is deciding whether gastro-
+  protection is needed alongside it. The coach's contribution is a complete,
+  honest medication and OTC inventory (which is often the piece the doctor never
+  sees), plus lifestyle work on the pain that drives the NSAID use in the first
+  place.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1377
+  quote: |-
+    The study was conducted at ﬁve test hospitals in England and found an increased risk of gastrointestinal bleeding due to peptic ulcer at all dosage levels. However, the dosage of 75 mg per day was associated with 40% less bleeding than 300 mg per day and 30% less bleeding than 150 mg per day. The researchers concluded: “No conventionally used prophylactic aspirin regimen seems free of the risk of peptic ulcer complications.”
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

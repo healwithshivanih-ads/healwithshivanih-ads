@@ -1,0 +1,75 @@
+slug: murray-magnesium-b6-oxalate-stones
+statement: |
+  Magnesium and vitamin B6 act on the two halves of a calcium oxalate stone. Murray & Pizzorno
+  report that adequate magnesium increases the solubility of calcium oxalate and inhibits
+  formation of both calcium phosphate and calcium oxalate stones, that a low urinary
+  magnesium-to-calcium ratio is an independent risk factor, and that supplemental magnesium
+  alone reduced recurrences - with a greater effect when combined with B6. On the oxalate
+  side, many patients with recurrent oxalate stones show laboratory signs of B6 deficiency,
+  and supplemental B6 reduces production and urinary excretion of oxalate (B6 is the cofactor
+  that shunts glyoxylate toward glycine rather than oxalate). The chapter's calcium-stone
+  protocol lists vitamin B6 25-50 mg/day and magnesium bound to aspartate, citrate, fumarate,
+  malate or succinate at 150-200 mg three times daily; magnesium citrate is singled out as the
+  citrate form of greatest benefit.
+evidence_tier: plausible_emerging
+rationale: >
+  The mechanism for both is coherent - magnesium competes with calcium as an oxalate-binding
+  cation and keeps calcium oxalate in solution; B6 is the pyridoxal-5-phosphate-dependent
+  cofactor for alanine-glyoxylate aminotransferase, and its deficiency raises endogenous
+  oxalate production. But the supporting evidence the chapter cites is thin by modern
+  standards: the strongest magnesium statement is a rat depletion model, and the human
+  recurrence trials are small, old and mostly uncontrolled. Later randomised work has not
+  cleanly reproduced a magnesium-alone benefit. This is a plausible, low-cost adjunct with a
+  real mechanism, not a proven therapy - and much of the magnesium benefit in practice comes
+  from the citrate it is paired with rather than the magnesium itself.
+coaching_translation: >
+  Magnesium and vitamin B6 are the two nutrients this chapter puts behind calcium oxalate
+  stone prevention - magnesium keeps calcium and oxalate dissolved so they cannot crystallise,
+  and B6 helps the body make less oxalate in the first place. As food, magnesium-rich choices
+  the book names include bran, barley, corn, buckwheat, rye, oats, brown rice, avocado,
+  banana, cashew, coconut, peanut, sesame and potato - several of which are also high oxalate,
+  so favour the low-oxalate ones (banana, coconut, brown rice, avocado, white rice) for a
+  client restricting oxalate. B6 comes from banana, potato, chana, sunflower seeds and, for
+  non-vegetarians, fish and poultry. Any supplement, and especially any dose, is a doctor's
+  decision - do not set one.
+caveats:
+- Doses (B6 25-50 mg/day; magnesium 150-200 mg three times daily) are prescribing figures.
+  A coach may state what the book says but must not recommend or adjust a dose.
+- High-dose or long-term vitamin B6 can cause a sensory peripheral neuropathy. Any tingling or
+  numbness on B6 needs immediate clinician review.
+- Magnesium supplementation is contraindicated or needs dose reduction in impaired kidney
+  function - exactly the population at risk here. Clinician must check renal function first.
+- Magnesium can cause loose stools and can interact with certain antibiotics and thyroid
+  medication (spacing required).
+- Applies to calcium oxalate/calcium phosphate stones. Magnesium citrate is separately used to
+  alkalinise urine in cystine stones, which is a different indication entirely.
+linked_to_topics:
+- kidney-stones
+- magnesium-nutrition
+- oxalate-sensitivity
+linked_to_supplements:
+- magnesium
+- magnesium-citrate
+- magnesium-aspartate-citrate
+- vitamin-b6
+- pyridoxal-5-phosphate
+linked_to_mechanisms:
+- oxalate-accumulation
+- calcium-oxalate-crystal-formation
+out_of_scope_notes: >
+  Coach scope: educating on magnesium- and B6-rich foods and building them into meals within
+  the client's oxalate constraints. Clinician scope: prescribing magnesium or B6, choosing
+  form and dose, checking renal function before magnesium, and monitoring for B6 neuropathy.
+  A coach must not interpret a serum or RBC magnesium result.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1207
+  quote: Many patients with recurrent oxalate stones show laboratory signs of vitamin B6
+    deficiency. As with magnesium, vitamin B6 deficiency also results in kidney stones.
+    Supplemental vitamin B6 is known to reduce the production and urinary excretion of
+    oxalates.25,26 Supplementing the diet with additional vitamin B6 is very important in
+    preventing recurrent kidney stones.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

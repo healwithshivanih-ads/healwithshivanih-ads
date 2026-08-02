@@ -1,0 +1,75 @@
+slug: murray-armd-zinc-retinal-metabolism
+statement: |
+  Zinc is essential to retinal metabolism and the elderly are a high-risk group for
+  zinc deficiency, which makes zinc status a plausible modifiable input in ARMD rather
+  than a generic antioxidant add-on. A two-year randomised, double-blind,
+  placebo-controlled trial in 151 people with dry ARMD found that 200 mg/day zinc
+  sulfate (about 80 mg elemental zinc) produced significantly less visual loss than
+  placebo. A second, smaller trial used zinc-monocysteine 25 mg twice daily for six
+  months in 40 subjects and reported improved visual acuity, contrast sensitivity and
+  macular light-flash recovery time, with gastrointestinal irritation under 2%. Murray
+  & Pizzorno's own everyday recommendation is far lower — zinc 30–45 mg/day.
+evidence_tier: confirm_with_clinician
+rationale: >
+  Two randomised placebo-controlled trials are reported, one of them two years long,
+  which is reasonable evidence for effect. The tier is confirm_with_clinician because
+  of dose, not because of doubt: 80 mg elemental zinc daily is a pharmacological dose
+  with predictable copper depletion, and neither trial as described in the chapter
+  reports paired copper. The zinc-monocysteine study is 40 people over six months —
+  interesting, underpowered, and the form is not widely available in India. Note also
+  that the chapter's own treatment summary quietly drops to 30–45 mg/day, i.e. the
+  authors do not actually recommend the trial dose for ongoing use.
+coaching_translation: >
+  Zinc does real work in the retina, and older adults are commonly short of it —
+  partly because absorption falls with age, partly because vegetarian diets high in
+  grains and legumes bind zinc. In studies, higher-dose zinc slowed vision loss in the
+  slow (dry) form. But the study doses are medicine-level, not food-level, and taking
+  that much zinc for months without copper alongside causes its own problems. What a
+  coach can do is shore up food zinc — pumpkin seeds, sesame and til, cashews, chana
+  and rajma, curd and paneer, whole grains — and improve absorption by soaking,
+  sprouting and fermenting pulses and grains, which cuts the phytate that blocks zinc.
+  Anything above a routine everyday dose is a doctor conversation.
+caveats:
+- 80 mg/day elemental zinc long-term causes copper deficiency (anaemia, neutropenia,
+  myeloneuropathy) unless copper is co-prescribed — the trials described do not mention it.
+- Zinc reduces absorption of copper, iron and some antibiotics (tetracyclines,
+  quinolones); separate by at least two hours.
+- Zinc on an empty stomach commonly causes nausea; take with food.
+- Vegetarian Indian diets are high in phytate, so measured intake overstates absorbed
+  zinc — soaking, sprouting and fermenting materially improve availability.
+- Zinc-monocysteine is not readily available in India; do not build a plan around it.
+linked_to_topics:
+- macular-degeneration
+- zinc-nutrition
+- oxidative-stress
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+- copper
+linked_to_mechanisms:
+- zinc-antioxidant-activity
+- phytate-zinc-chelation
+out_of_scope_notes: >
+  Dietary zinc optimisation and phytate-reducing food preparation are coaching scope.
+  Supplemental zinc at therapeutic doses, the decision to pair it with copper, and any
+  interpretation of a serum or RBC zinc result are clinician scope. A coach must not
+  set a zinc dose for a client with ARMD, and must not tell a client already on an
+  AREDS-type eye formula to add more zinc on top — that is how copper deficiency gets
+  built by accident.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1225
+  quote: >-
+    Zinc plays an essential role in the metabolism of the retina, and the elderly are
+    at high risk for zinc deﬁciency. In addition to the studies with a combination of
+    nutrients, a two-year, prospective, randomized, double-
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1225
+  quote: >-
+    blind, placebo-controlled trial involving 151 subjects with dry ARMD demonstrated
+    that the group taking 200 mg per day of zinc sulfate (approximately 80 mg
+    elemental zinc) had signiﬁcantly less visual loss than the placebo group.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

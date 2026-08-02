@@ -1,0 +1,29 @@
+slug: murray-angina-is-atherosclerotic-ischaemia
+statement: Angina pectoris is chest pain caused by an insufficient oxygen supply to the heart muscle, and it is almost always the result of atherosclerosis — cholesterol-containing plaque progressively narrowing the coronary arteries. Because exertion, emotional tension, cold weather and large meals all raise myocardial oxygen demand, they are the classic triggers; pain typically lasts 1 to 20 minutes and may radiate to the left shoulder blade, left arm or jaw. Murray & Pizzorno also note hypoglycaemia as a possible precipitant. The clinical meaning is a supply/demand mismatch in a diseased artery — angina is a warning sign of established coronary disease, and the book states plainly that angina usually precedes a heart attack.
+evidence_tier: strong
+rationale: 'This is uncontested cardiology, not an alternative-medicine claim: the book restates the standard pathophysiology of stable angina (fixed atherosclerotic stenosis plus increased myocardial oxygen demand equals ischaemic pain). It matters to a coach because it explains WHY exertion, cold and big meals provoke symptoms, and why the lifestyle work is really atherosclerosis work. The hypoglycaemia link rests on a single citation in the book and is weaker than the atherosclerosis mechanism.'
+coaching_translation: 'Angina means the heart muscle is briefly not getting enough oxygen, usually because the arteries feeding it have narrowed over years. That is why it shows up when the heart is asked to work harder — climbing stairs, a stressful call, cold air, a heavy meal. It is a warning signal from the body, not a muscle strain, and it means the client is already under cardiology care or needs to be. Your work is the long game: the food, movement, sleep and stress patterns that shape artery health.'
+caveats:
+- A coach must never conclude "this is angina" — chest pain has many causes (reflux, musculoskeletal, anxiety, aortic and pulmonary causes) and the diagnosis belongs to a physician.
+- Any chest pain that is new, at rest, escalating, or accompanied by breathlessness, sweating, nausea, or radiation to jaw/arm is a medical emergency — call emergency services, do not schedule a session.
+- The book's claim that hypoglycaemia can cause angina rests on a single reference; do not present it to a client as an established cause.
+- South Asian clients develop significant coronary atherosclerosis at younger ages and lower BMI than Western reference populations, so the Western risk framing in this book under-calls risk for Indian clients.
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+- cardiovascular-risk-assessment
+- hypoglycemia
+linked_to_supplements: []
+linked_to_mechanisms:
+- atherosclerosis
+- plaque-progression
+- endothelial-dysfunction
+out_of_scope_notes: 'Diagnosis, ECG/stress-test interpretation, and any decision about nitrates, antiplatelets, statins, angiography or revascularisation are cardiologist scope. Coach scope: educating the client on what their diagnosed condition means, and supporting the lifestyle change their cardiologist has asked for.'
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 478
+  quote: Angina is almost always due to atherosclerosis, the buildup of cholesterol-containing plaque that progressively narrows and ultimately blocks the blood vessels supplying the heart (the coronary arteries). This blockage results in a decreased supply of blood and oxygen to the heart tissue.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

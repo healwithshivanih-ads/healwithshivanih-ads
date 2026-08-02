@@ -1,0 +1,82 @@
+slug: murray-b12-deficiency-is-an-absorption-problem
+statement: |
+  B12 deficiency is most often a defect in absorption, not a dietary shortfall. To absorb B12
+  from food the body must liberate it with hydrochloric acid, bind it to intrinsic factor
+  (secreted by the same gastric parietal cells that make hydrochloric acid), act on the
+  complex with the pancreatic enzyme trypsin, and absorb it across a healthy, intact ileum.
+  Any break in that four-step chain produces deficiency regardless of intake. Because
+  intrinsic factor secretion parallels acid secretion, low stomach acid tends to impair both
+  B12 and iron absorption at once — which is why the chapter notes pernicious anemia is
+  frequently associated with iron deficiency as well.
+evidence_tier: strong
+rationale: >
+  This is textbook gastrointestinal physiology and is not a functional-medicine-specific
+  position — the parietal-cell origin of both HCl and intrinsic factor, the trypsin step, and
+  ileal absorption of the B12–intrinsic factor complex are all established. The book states
+  it without inline citation because it is background physiology rather than a study finding.
+  The practical inference the chapter draws — that low stomach acid is a common upstream
+  cause of both B12 and iron deficiency, especially in older adults — follows directly from
+  the shared parietal-cell mechanism and is consistent with the known effect of atrophic
+  gastritis and acid-suppressing drugs.
+coaching_translation: >
+  Low B12 usually is not about eating too little B12 — it is about the body not being able to
+  extract it. Getting B12 out of food needs decent stomach acid, a stomach protein called
+  intrinsic factor, working pancreatic enzymes and a healthy last stretch of small intestine.
+  Break any link and B12 falls even on a good diet. This is why B12 problems cluster in older
+  adults, in people on long-term antacids or acid-blockers, and after stomach or bowel
+  surgery. It is also why low B12 and low iron so often show up together — the same stomach
+  cells are involved in both. Note the separate case: someone on a strict vegan diet can be
+  genuinely low on intake, and that is a different problem with a different answer.
+caveats:
+- Pernicious anemia is an autoimmune condition and needs medical diagnosis and lifelong
+  management; it is not a diet or lifestyle problem and must never be coached around.
+- Long-term PPI, H2-blocker or metformin use is a common contributor. Adjusting or stopping
+  any of these is a prescriber decision.
+- The chapter recommends hydrochloric acid supplements with meals for people who do not
+  secrete enough acid. Betaine HCl is contraindicated with active ulcers, gastritis, H.
+  pylori and NSAID use, and is not something a coach initiates or dose-guides.
+- Indian vegetarian and Jain clients face both routes at once — genuinely low dietary intake
+  plus, often, poor absorption — so a "just eat more curd and paneer" answer is inadequate.
+  Dairy contributes some B12 but rarely enough to correct a deficiency.
+- Symptoms may not appear for five to six years because B12 is stored in the liver, so a
+  recent diet change tells you little about current status.
+linked_to_topics:
+- vitamin-b12
+- b12-folate-anemia
+- hypochlorhydria
+- low-stomach-acid
+- celiac-disease
+- ibd
+linked_to_supplements:
+- vitamin-b12
+- methylcobalamin
+- betaine-hcl
+- digestive-enzymes
+linked_to_mechanisms:
+- intrinsic-factor-dependent-b12-absorption
+- intrinsic-factor-deficiency
+- hypochlorhydria
+- hcl-and-pepsin-protein-digestion
+- b12-absorption-impairment
+- nutrient-malabsorption
+out_of_scope_notes: >
+  Diagnosing pernicious anemia, testing B12 or intrinsic-factor antibodies, interpreting
+  those results, prescribing B12 or hydrochloric acid supplements, and reviewing
+  acid-suppressing medication are all clinician scope. Coach scope: educating the client that
+  B12 status is an absorption question as well as an intake question, flagging the risk
+  pattern (vegan or strict vegetarian diet, long-term antacid use, age, prior gut surgery) as
+  something to raise with their doctor, and supporting food habits alongside whatever the
+  doctor decides.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 467
+  quote: >-
+    Vitamin B12 deﬁciency is most often due to a defect in absorption, not a dietary lack. In
+    order for vitamin B12 to be absorbed from food, it must be liberated from food by
+    hydrochloric acid and bound to a substance known as intrinsic factor within the small
+    intestine. Intrinsic factor is secreted by the parietal cells of the stomach. These same
+    cells are responsible for the secretion of hydrochloric acid.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

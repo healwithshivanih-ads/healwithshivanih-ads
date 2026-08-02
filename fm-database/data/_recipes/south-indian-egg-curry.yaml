@@ -26,7 +26,6 @@ main_ingredients:
 - tomato
 - onion
 contains_allergens:
-- dairy
 - egg
 ingredients:
 - item: eggs

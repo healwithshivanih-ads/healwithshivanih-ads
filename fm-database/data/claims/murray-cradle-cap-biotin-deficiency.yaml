@@ -1,0 +1,72 @@
+slug: murray-cradle-cap-biotin-deficiency
+statement: |
+  Murray & Pizzorno hold that the underlying factor in infantile seborrheic dermatitis
+  ("cradle cap", usually appearing between 2 and 12 weeks of age) appears to be biotin
+  deficiency. Their proposed mechanism is that a large portion of the human biotin supply
+  is made by intestinal bacteria, and a newborn starts with a sterile gastrointestinal
+  tract — so absent normal flora, the infant can run short. The supporting animal model is
+  rats fed a diet high in raw egg white, which is rich in avidin, a protein that binds
+  biotin and blocks its absorption; these rats develop a clinically similar syndrome. The
+  book reports that a number of studies successfully treated the condition with biotin given
+  to the nursing mother and to the infant, and its treatment summary specifies biotin 3 mg
+  twice per day for infants alongside control of food allergies (including the nursing
+  mother's food allergies).
+evidence_tier: fm_specific_thin
+rationale: >
+  Tiered low deliberately. The chapter is roughly 900 words and this whole story rests on two
+  reference markers, an animal deficiency model (avidin/raw egg white), and an unquantified
+  statement that "a number of studies have demonstrated successful treatment" — no trial size,
+  no control group, no response rate is given anywhere in the chapter. The book's own wording
+  is hedged ("appears to be"). The mechanism is internally coherent — biotin is genuinely
+  synthesised by colonic bacteria, avidin genuinely binds biotin — but coherence is not
+  outcome evidence. The chapter also never engages with Malassezia, which is the organism
+  mainstream dermatology now implicates in cradle cap, so this claim should be held as one
+  plausible contributing model rather than the settled cause.
+coaching_translation: >
+  Cradle cap is the flaky, sometimes greasy yellowish crust on a baby's scalp, usually
+  showing up in the first few months. One older functional-medicine idea is that it partly
+  reflects low biotin — a B vitamin that our own gut bacteria help make, and newborns are
+  born with a nearly germ-free gut, so they may be short of it early on. It is an idea with a
+  sensible mechanism behind it, not a proven cause, and cradle cap very often clears on its
+  own. Your role is to educate, to support the mother's own diet and gut health, and to send
+  the family to their paediatrician for anything more than mild scalp scale. Do not put a
+  baby on a supplement, and do not suggest a mother start one, on your say-so.
+caveats:
+- Dosing an infant is prescribing. The 3 mg twice-daily figure is the book's, not a coaching
+  instruction — a paediatrician decides whether any infant supplement is given.
+- The chapter offers no controlled-trial data for biotin in cradle cap; treat the claim as a
+  hypothesis, and never tell a parent that biotin "fixes" cradle cap.
+- Mainstream dermatology attributes cradle cap substantially to Malassezia yeast and residual
+  maternal sebum; this chapter does not discuss that, so the biotin model is incomplete.
+- Most cradle cap is self-limiting. Weeping, bleeding, spreading beyond the scalp, fever, or a
+  failing-to-thrive baby are paediatric referrals the same day.
+- Biotin supplementation can distort several immunoassay lab results (thyroid and troponin
+  among them). If anyone in the family is on high-dose biotin, that belongs in the clinician's
+  notes before bloods are drawn.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- gut-microbiome
+linked_to_supplements:
+- biotin-b7
+- biotin
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+out_of_scope_notes: >
+  Coach scope: explaining what cradle cap is, normalising it for an anxious parent, supporting
+  the mother's own nutrition and gut health, and gentle non-medicated scalp care habits.
+  Clinician scope: diagnosing the rash, prescribing or dosing any infant supplement, and all
+  topical antifungals and steroids. Referral boundary that this chapter does not state and
+  should not be attributed to it: seborrheic dermatitis of sudden, severe or explosive onset
+  in an ADULT can flag underlying illness — including HIV and Parkinson's disease — and is a
+  medical referral, not a coaching case. The chapter does note the AIDS association separately.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 91 — Seborrheic Dermatitis, pg 1501
+  quote: "Since a large portion of the human biotin supply is provided by intestinal bacteria and since newborns have a sterile gastrointestinal tract, it has been postulated that the absence of normal intestinal ﬂora may be responsible for biotin deﬁciency in infants.2 A number of studies have demonstrated successful treatment of seborrheic dermatitis with biotin in both the nursing mother and the infant."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 91 — Seborrheic Dermatitis, pg 1501
+  quote: "A syndrome clinically similar to seborrheic dermatitis has been produced by feeding rats a diet high in raw egg white, which is high in avidin, a protein that binds biotin and makes it unavailable for absorption."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

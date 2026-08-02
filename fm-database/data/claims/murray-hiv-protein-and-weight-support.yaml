@@ -1,0 +1,79 @@
+slug: murray-hiv-protein-and-weight-support
+statement: |
+  Antiretroviral therapy is the treatment for HIV; nutritional support is adjunctive. Murray &
+  Pizzorno set protein needs in HIV/AIDS at a minimum of 1.5 g per kg body weight against a
+  general-population figure of 0.8 g/kg, and describe wasting syndrome — progressive loss of
+  weight and strength, often alongside fever and diarrhoea — as multifactorial, driven by low
+  protein intake, malabsorption, raised metabolism and inflammatory cytokines that break down fat
+  and muscle. They suggest whey protein, high in glutamine, as a practical way to raise intake.
+  Severe wasting is now uncommon in people established on effective ART, but unintentional weight
+  loss in a person living with HIV is always a clinical signal, not a nutrition project.
+evidence_tier: plausible_emerging
+rationale: >
+  The mechanism the book describes is real and still recognised: inflammatory cytokines drive
+  catabolism of muscle and fat, and that catabolism is not reversed by calories alone, which is
+  why raised protein intake is the standard nutritional response to inflammatory weight loss
+  across many conditions. Raised protein targets in chronic inflammatory illness are mainstream
+  practice, though the precise 1.5 g/kg figure is a consensus-style number rather than a trial
+  result, and whey is one convenient high-biological-value protein among several rather than a
+  therapy in its own right. Where the 2012 text has been overtaken: HIV-associated wasting
+  syndrome was a defining feature of untreated and poorly treated HIV and has become much rarer
+  since effective combination ART, so the whole chapter reads as though wasting is an expected
+  trajectory when today it is a red flag that treatment is not working or that another problem
+  (opportunistic infection, malignancy, depression, food insecurity, drug side effects) is
+  present. Tier is plausible_emerging: the protein principle transfers, the disease framing does not.
+coaching_translation: >
+  Unintentional weight loss in a client living with HIV is something to notice and escalate, not
+  something to solve with a meal plan. Encourage them to tell their HIV clinician promptly — it
+  can be a sign their treatment needs reviewing. Alongside medical review, your work is to make
+  eating easier and more effective: regular meals rather than a big meal once a day, protein at
+  every meal, and energy-dense options that do not require a large appetite. In an Indian kitchen
+  that can look like dal and rajma, paneer or curd, eggs, fish or chicken if they eat them, nuts
+  and seeds, and milk-based drinks. A protein powder — whey or a plant blend — is a reasonable
+  convenience food if they are struggling to eat enough, and is best discussed with their clinical
+  team. Track weight gently and consistently, and treat any downward trend as a reason to check in
+  with the doctor.
+caveats:
+- Antiretroviral therapy is the treatment for HIV. Improving nutrition does not reduce the need
+  for treatment or for adherence to it.
+- The source predates current standards of care; the wasting picture it describes reflects the
+  pre-ART and early-ART era. Today, weight loss in a person on ART needs urgent medical review.
+- The 1.5 g/kg target is not a coach's prescription. Protein targets should be set with the
+  client's clinician, particularly if kidney or liver function is affected.
+- Do not use nutrition to explain away weight loss, fever or diarrhoea — these need a doctor.
+linked_to_topics:
+- protein-adequacy-vegetarian
+- immune-nutrition
+linked_to_supplements:
+- whey-protein
+- protein-whey-isolate
+- plant-based-protein-powder
+linked_to_mechanisms:
+- sarcopenia
+- malabsorption
+- nutrient-malabsorption
+- cytokine-dysregulation
+out_of_scope_notes: >
+  Coach scope: helping a client eat enough, spreading protein across the day, practical
+  food-first strategies for a poor appetite, and monitoring weight as a shared tracking habit.
+  Clinician scope: diagnosing the cause of weight loss, deciding whether ART is working,
+  investigating opportunistic infection or malignancy, prescribing medical nutrition therapy or
+  appetite stimulants, and setting protein targets where organ function is impaired. Escalate,
+  do not manage, unexplained weight loss.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 407
+  quote: >-
+    In addition to these basic recommendations, the person with HIV/AIDS has higher protein
+    requirements. While the typical person does quite well with 0.8 g protein per kg of body
+    weight, the individual with HIV/AIDS requires at least 1.5 g per kg.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 407
+  quote: >-
+    Wasting syndrome (severe breakdown of body tissues) is a common complication of HIV infection
+    and is marked by progressive weight loss and weakness, often associated with fever and
+    diarrhea.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

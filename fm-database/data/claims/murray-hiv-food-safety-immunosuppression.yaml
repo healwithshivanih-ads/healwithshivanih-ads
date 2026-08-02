@@ -1,0 +1,65 @@
+slug: murray-hiv-food-safety-immunosuppression
+statement: |
+  Antiretroviral therapy is the treatment for HIV; food safety is ordinary adjunctive
+  self-care. Murray & Pizzorno advise people living with HIV to avoid raw eggs, unpasteurised
+  milk, undercooked meat or fish, and any potentially contaminated food (alongside high-sodium
+  foods, high-fructose corn syrup, alcohol, caffeine and fried foods). The food-hygiene half of
+  that list remains sound and is the most durable practical advice in the whole chapter: someone
+  whose immune function is reduced is more vulnerable to foodborne organisms, and the exposures
+  named are the classic high-risk ones. The relevance scales with immune status — it matters most
+  when CD4 counts are low or a person is newly diagnosed or not yet virally suppressed, and much
+  less for someone stable on effective treatment.
+evidence_tier: strong
+rationale: >
+  Food-safety precautions for immunocompromised people are standard public-health guidance,
+  independent of this book and unchanged since it was written — avoiding raw or undercooked eggs,
+  meat and fish, unpasteurised dairy, and food of uncertain provenance reduces exposure to
+  Salmonella, Listeria, Campylobacter, Toxoplasma and Cryptosporidium. This is one of the few
+  parts of the chapter that has not been overtaken by modern HIV care; if anything, modern care
+  refines it by tying the level of caution to actual immune status rather than to the diagnosis
+  itself. The other half of the book's list (high-sodium foods, high-fructose corn syrup, fried
+  food, alcohol, caffeine) is generic health-promoting-diet advice, reasonable but not specific to
+  HIV and not the basis of this tier. Tier is strong for the food-hygiene component only.
+coaching_translation: >
+  Food hygiene is genuinely useful, entirely within coaching scope, and easy to act on. With a
+  client whose immune system is under strain, cover the basics: cook eggs, meat and fish through;
+  use pasteurised or properly boiled milk rather than raw milk; wash fruit and vegetables well and
+  peel where practical; keep raw and cooked foods separate; reheat leftovers thoroughly and do not
+  keep them long. In an Indian context the practical conversations are usually about street food,
+  cut fruit sold in the open, raw chutneys and salads eaten out, water source, and lassi or paneer
+  from unregulated sources — home-set curd from boiled milk and freshly cooked food are the safer
+  defaults. Ask how important the caution is for them right now, and let their doctor set the
+  level: someone stable on treatment does not need to live restrictively.
+caveats:
+- Antiretroviral therapy is the treatment for HIV. Food safety is basic hygiene, not treatment,
+  and must never be presented as protective in a way that could make treatment seem optional.
+- The source predates current standards of care and applies its advice to everyone with HIV. How
+  strictly it applies today depends on the person's immune status, which only their clinician can
+  assess.
+- Deliver this without alarm or stigma. The aim is one practical habit, not a restricted diet or
+  a message that the client is fragile.
+- Frame it as advice that helps anyone with a lowered immune system, so it does not single the
+  client out.
+linked_to_topics:
+- immune-support
+- immune-nutrition
+linked_to_supplements: []
+linked_to_mechanisms:
+- mucosal-immune-dysfunction
+out_of_scope_notes: >
+  Coach scope: teaching food hygiene, safe cooking and storage, water safety, and how to eat out
+  more safely — all standard health education. Clinician scope: assessing the client's degree of
+  immunosuppression, deciding how strict the precautions need to be, prophylaxis against
+  opportunistic infections, and diagnosing or treating any foodborne illness. If a client
+  develops fever or gastrointestinal illness, refer rather than advise.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 407
+  quote: >-
+    HIV-positive patients should avoid high-sodium foods, high-fructose corn syrup in processed
+    foods, alcohol, caffeine, and fried foods as well as raw eggs, unpasteurized milk, undercooked
+    meat or ﬁsh, and any potentially contaminated food.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

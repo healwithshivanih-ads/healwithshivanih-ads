@@ -1,0 +1,46 @@
+slug: murray-cvi-carotid-atherosclerosis-silent-until-90-percent
+statement: |
+  Murray & Pizzorno hold that cerebral vascular insufficiency (CVI) - reduced blood supply to the brain - is usually a consequence of atherosclerosis, most often of the carotid artery, and that the lesion typically forms at the carotid bifurcation where the artery divides into the internal (brain) and external (face and scalp) branches. They state that in most cases significant symptoms only begin to appear once the artery is about 90% blocked. The practical implication is that the disease is largely silent through its whole build-up phase, so absence of symptoms is not evidence of a healthy carotid.
+evidence_tier: plausible_emerging
+rationale: |
+  The general claim - that CVI is downstream of carotid atherosclerosis and that plaque preferentially forms at branch points where flow is disturbed - is mainstream vascular biology and well supported outside this book. The specific '90% blockage' figure is asserted in the text without a citation attached to it (the chapter's reference numbers sit on the surgical and dietary statements, not this one), and real-world stenosis thresholds for symptom onset vary widely and depend on collateral circulation. So the mechanism is strong, the number is the authors' clinical generalisation. Tiered plausible_emerging on that basis rather than strong.
+coaching_translation: |
+  Reduced blood flow to the brain is usually the same disease process as heart disease - plaque building up in an artery, in this case the main artery in the neck that feeds the brain. It builds where the artery splits, the way silt collects where a stream forks. The important part for a client: this can be very far along before it causes any symptom at all. So 'I feel fine' is not a reason to skip cardiovascular risk screening, and it is not a reason to stop the diet, movement and blood-pressure work. Frame it as: the work you do now is for the artery you cannot feel.
+caveats:
+- 'STROKE/TIA IS A MEDICAL EMERGENCY. Sudden one-sided weakness or numbness, facial droop, slurred or
+  lost speech, sudden severe headache, sudden vision loss or sudden loss of balance means call emergency
+  services immediately - do not schedule a coaching call, do not ''watch it'', do not suggest a supplement.
+  Symptoms that resolve within minutes or hours are still an emergency: a TIA is a warning of an impending
+  stroke and needs same-day medical assessment.'
+- A coach must never estimate, imply or discuss a client's degree of arterial blockage. Carotid imaging
+  (ultrasound) and its interpretation are physician scope.
+- Short-term memory loss, dizziness, headache, ringing in the ears, blurred vision and low mood have many
+  causes other than blood flow - anaemia, B12 deficiency, thyroid disease, medication side effects, inner-ear
+  disorders, depression. Do not assume vascular cause; refer for evaluation.
+- Anyone with these symptoms should be evaluated by a physician before any lifestyle programme is built
+  around them.
+linked_to_topics:
+- atherosclerosis
+- atherosclerosis-pathogenesis
+- cardiovascular-risk-assessment
+- stroke-recovery
+linked_to_supplements: []
+linked_to_mechanisms:
+- atherosclerosis
+- plaque-progression
+- cerebral-perfusion
+- endothelial-dysfunction
+out_of_scope_notes: |
+  Diagnosing CVI, ordering or reading carotid ultrasound, and deciding on endarterectomy, stenting or antiplatelet therapy are entirely clinician scope. The coach's scope is education about the shared risk factors and supporting the diet, movement, sleep, stress and smoking-cessation work the physician has cleared.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 35 — Cerebral Vascular Insufficiency, pg 645
+  quote: Typically, the problem develops at the carotid bifurcation—the splitting of the carotid artery
+    into the internal branch (supplying the brain) and the external branch (supplying the face and scalp).
+    This bifurcation is similar to a stream splitting into two branches. At the bifurcation, just as at
+    the splitting of the stream, debris and sediment accumulate. Signiﬁcant symptoms begin to appear in
+    most cases only when the blockage of the artery has reached 90%.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

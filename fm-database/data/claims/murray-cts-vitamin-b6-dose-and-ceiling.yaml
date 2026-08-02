@@ -1,0 +1,61 @@
+slug: murray-cts-vitamin-b6-dose-and-ceiling
+statement: |
+  Murray & Pizzorno report several clinical studies in which vitamin B6 (pyridoxine)
+  supplementation improved carpal tunnel syndrome, using an initial dose of 50 mg/day
+  escalated to 200–300 mg/day, with a greater effect when B6 was combined with riboflavin
+  (B2) — riboflavin-dependent enzymes convert pyridoxine to its active form pyridoxal-5-
+  phosphate (P5P). They also acknowledge two studies in which B6 was no better than placebo.
+  On safety grounds the authors explicitly cap their own recommendation at no more than
+  100 mg/day, and suggest trying P5P at 10 mg/day if 100 mg B6 produces no result within a
+  few weeks. The trial doses of 200–300 mg/day sit inside the range associated with
+  pyridoxine-induced sensory peripheral neuropathy and should not be self-administered.
+evidence_tier: plausible_emerging
+rationale: >
+  The chapter's own evidence is mixed and the authors say so: 'several clinical studies'
+  positive, two negative against placebo, and the endorsement is hedged ('given the safety
+  profile and possible effectiveness ... it is definitely worth trying'). That is a
+  plausible-emerging signal, not a strong one — the positive trials are small and old, and
+  the book gives no effect sizes, no sample sizes and no meta-analysis. The proposed
+  mechanism is coherent: the chapter argues CTS incidence rose alongside exposure to
+  compounds that block B6 action (hydrazine dyes, isoniazid, hydralazine, dopamine,
+  penicillamine, oral contraceptives, excessive protein), and B6 deficiency produces a
+  sensory neuropathy that would lower the threshold for symptoms from median nerve
+  compression. Note the internal inconsistency in the source text — the sentence endorsing
+  the trial reads 'possible effectiveness of B12' where the context is plainly B6; that is
+  a typo in the book, not a B12 claim, and it is one more reason to tier this cautiously.
+  Tiering down rather than up is the honest call.
+coaching_translation: >
+  Vitamin B6 is worth discussing with a client's doctor for carpal tunnel symptoms — some
+  studies show it helps, others show no better than dummy pills, and the book that
+  recommends it says so plainly. If it is used, the book's own ceiling is 100 mg a day, not
+  the 200–300 mg used in the older trials. B6 works better alongside riboflavin (B2), because
+  B2 is what turns B6 into its active form. If 100 mg does nothing after a few weeks, the
+  book suggests the pre-activated form, P5P, at 10 mg a day instead of pushing the dose up.
+  Food-first framing suits Indian vegetarian clients well — B6 is in bananas, chana and other
+  pulses, peanuts, potatoes, and fortified cereals; riboflavin in milk, curd, and greens.
+caveats:
+- "TOXICITY CEILING — the trial doses named in this chapter (200–300 mg/day) exceed the safe long-term range. Pyridoxine at sustained doses above roughly 200 mg/day causes a dose- and duration-dependent sensory peripheral neuropathy whose first symptoms (numbness, tingling, burning in the hands) are indistinguishable from the CTS being treated. A coach must never suggest escalating a B6 dose because symptoms persist. The book's own cap of 100 mg/day is the number to carry forward."
+- "Neuropathy from high-dose B6 has been reported below 200 mg/day with long-term use; there is no coach-safe 'push it higher' path."
+- "P5P is not automatically safer at high dose — the 10 mg/day figure is the book's, and dose selection belongs to a clinician."
+- "Prescribing or recommending a specific supplement dose is outside FMCA/NBHWC coaching scope in India. Refer to the client's physician."
+- "A client on isoniazid, hydralazine, penicillamine, levodopa/dopamine agonists or oral contraceptives may have altered B6 status — this needs clinician review, not coach adjustment."
+- "B6 does not decompress a mechanically compressed nerve. Persisting or worsening numbness, thumb-base muscle wasting, or dropping objects needs urgent medical assessment regardless of supplementation."
+linked_to_topics: ["carpal-tunnel-syndrome"]
+linked_to_supplements: ["vitamin-b6", "pyridoxal-5-phosphate", "vitamin-b2-riboflavin"]
+linked_to_mechanisms: ["b6-deficiency-neuropathy"]
+out_of_scope_notes: >
+  CLINICIAN: deciding whether to trial B6, choosing the dose, monitoring for pyridoxine
+  neuropathy, ordering nerve conduction studies. COACH: explaining what the evidence does and
+  does not show, supporting B6- and B2-rich food intake, tracking symptoms in a client log,
+  and flagging any new or spreading numbness to the clinician immediately.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 623
+  quote: "Several clinical studies demonstrated the efﬁcacy of vitamin B6 supplementation for CTS; the initial dose was 50 mg initially, increased to 200 to 300 mg."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 623
+  quote: "While two studies failed to show that B6 was better than a placebo,12,13 given the safety proﬁle and possible effectiveness of B12 it is deﬁnitely worth trying in the treatment of CTS. We recommend dosages no greater than 100 mg per day, however. If B6 does not produce results within a few weeks, P5P should be tried at 10 mg per day."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

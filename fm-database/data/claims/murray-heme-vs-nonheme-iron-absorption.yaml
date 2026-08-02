@@ -1,0 +1,64 @@
+slug: murray-heme-vs-nonheme-iron-absorption
+statement: |
+  Dietary iron comes in two forms that absorb very differently. Heme iron — found only in
+  animal foods (meat, poultry, fish, and especially liver) — is absorbed at rates as high as
+  35%. Non-heme iron, the form in all plant foods and in common supplements such as ferrous
+  sulfate and ferrous fumarate, absorbs at roughly 2.9% on an empty stomach and 0.9% with
+  food. The book also states that heme iron does not carry the nausea, flatulence,
+  constipation and diarrhoea that commonly accompany non-heme iron salts, and notes the
+  practical offset: because non-heme iron can be dosed much higher, roughly 3 mg of heme iron
+  and 50 mg of non-heme iron deliver about the same net absorbed amount.
+evidence_tier: strong
+rationale: >
+  The heme/non-heme absorption differential is long-established nutrition science and the
+  book cites reference 4 for the tolerability comparison. The direction and rough magnitude
+  (heme several-fold better absorbed, and far less affected by meal context) is not
+  controversial. The specific figures 35% / 2.9% / 0.9% are single-source point estimates
+  presented without a range, and real absorption varies widely with the individual's iron
+  status — a depleted person up-regulates absorption substantially. Tiered strong for the
+  differential itself; treat the exact percentages as illustrative.
+coaching_translation: >
+  Iron from meat and fish is absorbed several times more easily than iron from plants,
+  beans, greens and most supplements. That is not a reason to write off plant iron — it is a
+  reason to be deliberate about it. If a client eats little or no meat, the same iron intake
+  on paper delivers much less iron into the body, so plant sources need to be both larger and
+  paired with things that help absorption. It also explains why a vegetarian client can be
+  eating "plenty of iron-rich food" and still run low.
+caveats:
+- Most of this coach's clients are Indian and largely vegetarian, so the book's headline
+  advice (red meat, calf liver) is not usable as written. The vegetarian-Indian adaptation is
+  to build around the non-heme sources the chapter itself lists — beans and dals, dark green
+  leafy vegetables, dried fruit, molasses/gur, whole grains — and to work the absorption
+  levers (vitamin C at the meal, no chai/coffee with the meal, soaking/sprouting/fermenting
+  to lower phytate) rather than to push meat.
+- Plant iron absorption is further reduced by phytate in grains, legumes and bran, which the
+  chapter does not discuss.
+- Absorption is not fixed — an iron-depleted person absorbs considerably more than a
+  replete one, so these percentages should not be used to compute a client's intake target.
+linked_to_topics:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+- protein-adequacy-vegetarian
+linked_to_supplements: []
+linked_to_mechanisms:
+- heme-vs-nonheme-iron-absorption
+out_of_scope_notes: >
+  Coach scope: teaching the difference between animal-source and plant-source iron, and
+  helping the client build meals that make plant iron more available. Clinician scope:
+  deciding whether a client needs iron at all, which salt, at what dose, and monitoring the
+  response. The coach must not translate "plant iron absorbs poorly" into a supplement
+  recommendation.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 470
+  quote: >-
+    The absorption rate of non-heme iron, which is the kind found in plant food and in
+    supplements such as ferrous sulfate and ferrous fumarate, is 2.9% on an empty stomach and
+    0.9% with food, much less than the absorption rate of heme iron, which is as high as 35%.
+    In addition, heme iron is without the side effects associated with non-heme sources of
+    iron, such as nausea, ﬂatulence, constipation, and diarrhea.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

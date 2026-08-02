@@ -1,0 +1,89 @@
+slug: murray-ms-heat-sensitivity-and-gentle-exercise
+statement: 'Heat sensitivity is a genuine feature of MS - the chapter lists it as a symptom caused by
+  the
+
+  sensitivity of demyelinated nerve to elevations in body temperature. Historically this was used to
+
+  tell MS patients NOT to exercise, on the reasoning that raised body temperature and nerve-fibre
+
+  fatigue would cause transient worsening for no lasting gain. Murray & Pizzorno report that research
+
+  overturned this: regular exercise improves fatigue, quality of life, well-being and walking ability,
+
+  and it need not be strenuous - yoga, tai chi, swimming and light exercise all show significant
+
+  benefit. The treatment summary specifies mild-to-moderate exercise for at least 30 minutes three
+
+  times per week: walking, stretching, cycling, stationary cycling, low-impact aerobics, swimming or
+
+  water aerobics, yoga and tai chi. Perceived stress is separately described as definitely associated
+
+  with MS flare-ups, with meditation and breathing practices recommended.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'The direction here is well-supported and clinically consequential - the old do-not-exercise
+  advice was wrong, and the chapter cites multiple exercise trials (references 59-66) showing improvement
+  in fatigue, quality of life and walking. What the evidence supports is symptomatic and functional benefit,
+  not disease modification: nothing here shows exercise slows demyelination or reduces relapse rate. The
+  heat-sensitivity mechanism (Uhthoff-type transient worsening with raised core temperature) is physiologically
+  well-established and explains why exercise FEELS harmful without being harmful. The stress-flare association
+  is drawn from a literature review and is observational - perceived stress and flares are hard to disentangle,
+  since a developing relapse itself raises stress. Tiered plausible_emerging: the recommendation is sound
+  and low-risk, the evidence is real but modest, and the mechanism claim outruns the outcome data.'
+coaching_translation: 'If exercise makes MS symptoms flare up temporarily, that is heat - a warmed-up
+  body slows signals in nerves that have lost their insulation. It settles when you cool down and it is
+  not damage. That is why people with MS used to be told not to exercise, and that advice turned out to
+  be wrong. Gentle, regular movement improves fatigue, walking, well-being and quality of life. Aim for
+  mild to moderate activity, about 30 minutes three times a week - walking, stretching, cycling, swimming
+  or water aerobics, yoga, tai chi. Swimming is especially useful because the water keeps you cool. Practical
+  cooling: exercise in the cooler part of the day, use a fan, cold drinks, a cool towel, and stop and
+  cool down if symptoms appear. Stress is also linked to flare-ups, so breathing practice and meditation
+  earn their place.'
+caveats:
+- Get clearance from the neurologist or physiotherapist before starting, especially where there is balance
+  impairment, spasticity, foot drop or a fall history - falls are the main real risk here.
+- Transient heat-related worsening (blurred vision, weakness) resolves on cooling. New symptoms that do
+  NOT resolve on cooling, or last more than 24 hours, need same-day medical review - that is possible
+  relapse, not overheating, and a coach must not adjudicate the difference.
+- 'India angle: ambient heat and humidity are the limiting factor for much of the year. Default to early-morning
+  or late-evening sessions, air-conditioned or indoor settings, and pool-based work; a generic Northern-Hemisphere
+  exercise prescription will not transfer.'
+- Watch hydration and heat stress in Indian summer, and be aware some MS medications and anticholinergics
+  for bladder symptoms impair sweating.
+- Fatigue in MS is a disease feature, not deconditioning. Pace rather than push; do not apply a standard
+  progressive-overload model.
+- Hot yoga, saunas and steam are contraindicated by this mechanism - choose cool-room yoga.
+- The stress-flare link is observational. Do not tell a client that stress caused their relapse.
+linked_to_topics:
+- multiple-sclerosis
+- exercise-prescription-fm
+- exercise-prescription
+- mind-body-yoga
+- stress-management
+- activities-of-daily-living
+linked_to_supplements: []
+linked_to_mechanisms:
+- demyelination
+- exercise-induced-anti-inflammatory-signaling
+- neuroinflammation
+out_of_scope_notes: 'Coach scope: this is the strongest coaching surface in the chapter - behaviour change
+  around gentle regular movement, pacing, cooling strategies, and stress-reduction practice. Out of scope:
+  prescribing exercise for someone with significant gait, balance or spasticity impairment (physiotherapist),
+  and any judgement about whether a new symptom is heat or relapse (neurologist, same day).'
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1289
+  quote: In the past MS patients were often advised not to exercise because increased body temperature
+    and nerve ﬁber fatigue resulting from exercise were thought to induce transient symptomatic worsening
+    and provide no long-term beneﬁt.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1289
+  quote: 'However, research has since shown that regular exercise is beneﬁcial for people with MS, as
+    it leads to an improvement in feelings of fatigue, quality of life, well-being, and walking ability.59–62
+    The exercise need not be strenuous: yoga, tai chi, swimming, and light exercise have shown signiﬁcant
+    beneﬁt.63–66'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

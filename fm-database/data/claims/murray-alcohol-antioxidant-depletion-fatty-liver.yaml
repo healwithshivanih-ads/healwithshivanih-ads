@@ -1,0 +1,65 @@
+slug: murray-alcohol-antioxidant-depletion-fatty-liver
+statement: |
+  Alcohol increases lipid peroxide formation in both liver and blood, and Murray
+  and Pizzorno note that people with alcohol dependence are typically already
+  low in the antioxidants that limit it - vitamin E, selenium and vitamin C -
+  with serum lipid peroxide levels tracking liver damage as measured by SGOT.
+  Antioxidant administration before or alongside alcohol inhibits lipoperoxide
+  formation and prevents fatty infiltration of the liver; the effective set they
+  list is vitamins C and E, zinc, selenium and cysteine as N-acetylcysteine or
+  whey protein. Free-radical damage from alcohol metabolism is also one of the
+  five listed causes of fatty liver, which the chapter says all active heavy
+  drinkers display.
+evidence_tier: plausible_emerging
+rationale: |
+  Tiered plausible_emerging and no higher. Two limbs differ in strength. That
+  heavy drinking depletes antioxidants and generates lipid peroxidation, and
+  that this tracks liver injury, is well supported. The intervention limb is
+  not: the prevention-of-fatty-infiltration finding cited is from experimental
+  models, the phrasing 'before or simultaneously with alcohol intake' describes
+  a protocol nobody should replicate as a strategy, and human antioxidant
+  supplementation trials in alcohol-related liver disease have generally been
+  disappointing. Read as a nutrient-repletion rationale, not as protection that
+  makes drinking safer.
+coaching_translation: |
+  Breaking alcohol down generates a lot of free radicals, and the nutrients that
+  mop them up - vitamins C and E, selenium, zinc - are exactly the ones that run
+  low in someone drinking heavily. That combination is part of how a fatty liver
+  develops. The honest framing for a client is that eating well supports repair;
+  it does not make drinking safe, and no supplement offsets a drink.
+  Practically: colourful vegetables and fruit, amla and citrus, nuts and seeds
+  for vitamin E, and adequate protein - dal, curd, paneer, eggs, fish - since
+  the body builds its main antioxidant, glutathione, out of amino acids.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Never frame antioxidants as protective cover for continued drinking - the source''s ''before or with alcohol'' evidence is experimental and must not be translated into client advice.'
+- 'N-acetylcysteine and high-dose vitamin E are clinician decisions here; vitamin E can increase bleeding risk, relevant where liver disease has affected clotting.'
+- 'Raised liver enzymes require medical assessment - a coach does not interpret SGOT/AST or any liver panel.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- oxidative-stress
+- liver-detoxification
+linked_to_supplements:
+- vitamin-c
+- vitamin-e
+- selenium
+- zinc
+- n-acetyl-cysteine
+- whey-protein
+linked_to_mechanisms:
+- oxidative-stress
+- glutathione-conjugation
+- hepatic-lipogenesis
+out_of_scope_notes: |
+  Clinician: liver enzyme interpretation, imaging, antioxidant or NAC
+  prescribing, staging of liver disease. Coach: antioxidant-rich everyday foods,
+  adequate protein, and never presenting nutrition as a licence to keep
+  drinking.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 428'
+  quote: 'Antioxidant administration, either before or simultaneously with alcohol intake, inhibits lipoperoxide formation and prevents fatty inﬁltration of the liver.20 Effective antioxidants include vitamins C and E, zinc, selenium, and cysteine (in the form of N-acetylcysteine or whey protein powder).'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

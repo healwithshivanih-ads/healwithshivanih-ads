@@ -1,0 +1,36 @@
+slug: murray-diarrhea-red-flags-refer-immediately
+statement: |
+  Murray and Pizzorno name four situations in which diarrhoea must be handed to a
+  physician rather than self-managed: diarrhoea in a child under six years of age, severe
+  or bloody diarrhoea, diarrhoea lasting more than three days, and significant signs of
+  dehydration (they give sunken eyes, severe dry mouth and strong body odour as examples).
+  Everything else in the chapter is framed as general support for a self-limiting event;
+  these four override that framing. The chapter also states that any chronic diarrhoea
+  needs its underlying cause identified with a physician before treatment is chosen.
+evidence_tier: strong
+rationale: >
+  The chapter asserts these thresholds without citing a trial, so they are expert opinion rather than trial evidence - but they are the same thresholds carried by mainstream paediatric and gastroenterology guidance, and they are referral triggers rather than treatment claims, so the cost of acting on them is near zero and the cost of ignoring them is high. Tiered strong on consensus and asymmetry of harm, not on the book's own evidence.
+coaching_translation: >
+  Any of these four means stop coaching and get the client to a doctor today, not at the next session: a child under six, blood in the stool, diarrhoea running past three days, or signs of dehydration. In India add the obvious ones the book does not list - fever, night-time diarrhoea that wakes the client, unexplained weight loss, recent travel or antibiotics, and any diarrhoea in a frail elderly person. Dehydration kills the very young and the very old fastest, so age at both ends lowers the threshold.
+caveats:
+- "The elderly are not named in the book's red-flag list but dehydrate faster and decompensate sooner than healthy adults - treat age over roughly 65 the same way as age under six."
+- "Nocturnal diarrhoea, fever, and unexplained weight loss are organic-disease signals not mentioned in this list; they warrant referral regardless of duration."
+- "A coach must not attempt to work out the cause. Naming a likely cause to a client is diagnosis and outside scope even when the pattern seems obvious."
+- "Do not let a supplement or diet plan delay a referral - the general measures in this chapter are compatible with medical care, not a substitute for it."
+linked_to_topics:
+- food-poisoning
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Recognising and escalating red flags is squarely within coach scope and is arguably the coach's single most important contribution here. Determining the cause, ordering or reading stool studies, and prescribing antimicrobials or antimotility drugs are clinician-only.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 878
+  quote: "• Diarrhea in a child under six years of age • Severe or bloody diarrhea • Diarrhea that lasts more than three days • Signiﬁcant signs of dehydration (sunken eyes, severe dry mouth, strong body odor, etc.) After identiﬁcation of the cause of chronic diarrhea, appropriate treatment can be determined with the help of a physician."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 868
+  quote: "Since most causes of acute diarrhea, such as mild infections due to food poisoning or viral gastroenteritis, are self-limiting and will resolve on their own, only some general recommendations may be needed. If the diarrhea is severe or bloody, or if it involves a child under the age of six years, contact a physician immediately. A physician should also be consulted if any diarrhea lasts for more than three days."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

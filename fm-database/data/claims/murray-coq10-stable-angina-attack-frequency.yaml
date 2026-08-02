@@ -1,0 +1,32 @@
+slug: murray-coq10-stable-angina-attack-frequency
+statement: Coenzyme Q10 sits in the mitochondrial electron transport chain, and Murray & Pizzorno report that heart tissue biopsies show CoQ10 deficiency in 50-75% of cases of various heart diseases. They cite a small double-blind crossover trial in 12 patients with stable angina in which CoQ10 150 mg/day for four weeks cut angina attack frequency by 53% versus placebo and increased treadmill time to chest pain and to ECG change. The chapter separately notes that statin drugs block CoQ10 formation, and recommends CoQ10 around bypass surgery or angioplasty to limit reperfusion-related oxidative damage.
+evidence_tier: confirm_with_clinician
+rationale: 'The statin-CoQ10 depletion mechanism is well established — statins inhibit HMG-CoA reductase upstream of both cholesterol and ubiquinone synthesis. The angina trial the book leans on is 12 patients: a genuine signal, but far too small to call strong, with endpoints of symptom frequency and exercise time rather than events. Because virtually every angina patient is on a statin and many are on warfarin, and because CoQ10 antagonises warfarin, this can never be a coach-initiated recommendation.'
+coaching_translation: CoQ10 is a nutrient the mitochondria need to make energy, and statins lower the body's own production of it. A small study in people with stable angina found fewer episodes on CoQ10. This is a good question for a client to bring to their cardiologist — especially a client on a statin who reports muscle aches — and a poor thing for a coach to hand out. The interaction with blood thinners is the reason.
+caveats:
+- CoQ10 is structurally similar to vitamin K and can reduce the effect of warfarin, destabilising INR. Any client on warfarin or another anticoagulant must have this decided and monitored by their prescriber.
+- The angina evidence is one 12-patient crossover trial — describe it honestly as preliminary, never as proof.
+- The peri-surgical protocol in the book (300 mg/day before and after bypass) is a clinician instruction, not a coaching suggestion; the same passage warns that garlic and high-dose vitamin E should be stopped before surgery because of bleeding risk.
+- CoQ10 may modestly lower blood pressure, which matters in a client already on antihypertensives.
+- Statin-related muscle symptoms must be reported to the doctor, not self-managed with CoQ10.
+linked_to_topics:
+- statin-side-effects
+- cardiovascular-dysfunction
+- mitochondrial-health-nutrients
+- oxidative-stress
+linked_to_supplements:
+- coq10
+linked_to_mechanisms:
+- coq10-depletion
+- mitochondrial-energy-production
+- statin-mediated-nutrient-depletion
+- oxidative-stress
+out_of_scope_notes: Prescribing CoQ10, choosing a dose, or timing it around surgery is clinician scope — sharply so for clients on warfarin or awaiting a procedure. Coach scope is raising the statin-depletion question for the client to take to their doctor.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 488
+  quote: Accordingly, CoQ10 has shown great promise in the treatment of angina. In one study 12 patients with stable angina pectoris were treated with CoQ10 (150 mg per day for four weeks) in a double- blind crossover trial.26 Compared with placebo, CoQ10 reduced the frequency of angina attacks by 53%.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

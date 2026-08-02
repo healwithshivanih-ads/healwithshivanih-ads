@@ -1,0 +1,66 @@
+slug: murray-recurrent-boils-underlying-immune-disease
+statement: |
+  Murray & Pizzorno state that a single boil usually has no particular cause and
+  that most lesions resolve within one to two weeks. What changes the picture is
+  RECURRENCE: recurrent boils are listed as a possible marker of a highly infective
+  strain of bacteria, poor hygiene, industrial chemical exposure, or depression of
+  the immune system — and boils may occasionally indicate an underlying disease
+  associated with poor immune function, naming diabetes, AIDS, and cancer. In an
+  Indian coaching population where undiagnosed type 2 diabetes is common, a client
+  with repeated crops of boils is a person who needs a doctor-ordered blood-sugar
+  check, not a better home remedy.
+evidence_tier: confirm_with_clinician
+rationale: >
+  Tiered confirm_with_clinician on purpose. The book gives this as clinical
+  observation in a very short chapter with no citation attached to the causes
+  paragraph — it is a differential-diagnosis prompt, not an evidence claim, and
+  every item on its list (diabetes, HIV, malignancy, virulent Staph carriage) is a
+  diagnosis only a physician can make or exclude. The direction of the association
+  is also unproven here: the book says boils may INDICATE these conditions, not
+  that they are caused by them in any given client. Its practical value is high
+  precisely because acting on it means referring, not treating.
+coaching_translation: >
+  One boil that clears up in a week or two is usually just a boil. Boils that keep
+  coming back, or several at once, are worth a doctor's visit rather than another
+  round of home treatment — repeated skin infections can be the first sign that
+  blood sugar is running high or that immunity is low, and a simple fasting glucose
+  and HbA1c will settle it. Say plainly: "This is a pattern I want your doctor to
+  look at, and I'd ask them specifically to check your blood sugar." Meanwhile you
+  can support the everyday things around it — sleep, food, washing, not sharing
+  towels or razors — without waiting for the appointment.
+caveats:
+- A coach must never diagnose diabetes, immunodeficiency, or malignancy, and must never
+  interpret a glucose or HbA1c result. Name the pattern, hand the decision to the doctor.
+- A boil in a person already known to be diabetic is a same-day medical problem, not a
+  watch-and-wait one — diabetic skin infections spread fast and can go deep.
+- Urgent referral overrides everything here - spreading redness, red streaking, fever,
+  rapidly increasing pain, a boil on the face (cavernous sinus risk), or any boil in an
+  immunocompromised client goes to a doctor now.
+- Recurrent boils also travel in families and households through shared towels, razors,
+  bedding and gym equipment — a hygiene explanation does not rule out the medical one,
+  and vice versa.
+- The book's list is from 2012 and reflects a US clinical context; it is a prompt for the
+  clinician's differential, not a checklist for the coach to work through.
+linked_to_topics:
+- immune-support
+- immune-dysregulation
+- type-2-diabetes
+- prediabetes
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Clinician scope - diagnosing the underlying condition, ordering and interpreting
+  fasting glucose / HbA1c / HIV or immune workup, culturing the lesion, deciding on
+  incision and drainage or antibiotics. Coach scope - noticing and naming the
+  recurrence pattern, making the referral explicit and specific, and supporting
+  lifestyle factors (sleep, refined-carbohydrate load, household hygiene) while the
+  client waits to be seen.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 27 — Boils, pg 558
+  quote: |-
+    There is no particular cause of boils, although occasionally they may indicate an underlying disease that is associated with poor immune function, such as diabetes, AIDS, or cancer. Most lesions will resolve within one to two weeks. Recurrent boils can indicate a highly infective form of bacteria, poor hygiene, industrial exposure to chemicals, or depression of the immune system.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,67 @@
+slug: murray-purine-load-uric-acid-stones
+statement: |
+  For uric acid stones the lever is purine load, not oxalate and not calcium. Murray &
+  Pizzorno state that dietary purine consumption is directly related to the rate of urinary
+  uric acid excretion, and that elevated urinary uric acid is a causative factor in recurrent
+  uric acid stones. They tell people with uric acid stones to entirely avoid high-purine foods
+  - organ meats, other red meats, shellfish, brewer's and baker's yeast, herring, sardines,
+  mackerel and anchovies - and to watch moderate-purine foods including dried legumes,
+  spinach, asparagus, other fish, poultry and mushrooms. The chapter's uric acid stone
+  protocol is short: decrease purines, alkalinise the urine with citrate, and follow the Gout
+  chapter for supplements. Uric acid stones are 5-8% of US stones.
+evidence_tier: strong
+rationale: >
+  The purine-to-urinary-urate link is direct biochemistry - dietary purines are catabolised to
+  uric acid and cleared renally - and uric acid stones form when urine is supersaturated with
+  undissociated uric acid, which is overwhelmingly a function of urine pH and urine volume
+  with urate load as the third variable. In fact the pH lever is the stronger one clinically:
+  uric acid is poorly soluble below pH 5.5 and dissolves readily above it, which is why
+  alkalinisation can dissolve existing uric acid stones in a way no dietary change does for
+  calcium stones. The book's dietary lists are conventional purine tables and are reliable at
+  the level of ranking, not of precise mg values.
+coaching_translation: >
+  If the stone was uric acid, oxalate advice is irrelevant - do not put a uric acid client on
+  a low-oxalate diet. The relevant load here is purines: organ meats, red meat, shellfish,
+  sardines, mackerel, herring, anchovy and yeast extracts are the heavy hitters, with dried
+  dals, spinach, asparagus, mushrooms, fish and chicken as moderate. For an Indian vegetarian
+  client this is usually gentler than it sounds - the main things to moderate are large daily
+  dal portions, palak and mushrooms, plus alcohol (especially beer, which is both purine and
+  yeast). Alkalinising the urine is the other half and is a doctor's call. Water still applies:
+  dilute urine helps every stone type.
+caveats:
+- Requires a clinician-confirmed uric acid stone. Applying purine restriction to a calcium
+  oxalate former achieves nothing and needlessly removes protein foods.
+- Purine restriction alone is usually insufficient - urinary pH is the dominant variable, and
+  alkalinisation is a clinician decision.
+- Uric acid stones overlap with gout, metabolic syndrome and insulin resistance; the client
+  may need workup, not just diet.
+- Critical for meal planning - a client with raised uric acid, raised creatinine or reduced
+  eGFR must have protein targets kept moderate and set by a clinician. Do not push a
+  high-protein plan into this picture.
+- Cutting dals hard in an Indian vegetarian client risks protein inadequacy. Moderate portions
+  and rotate rather than eliminate, and protect total protein from other sources.
+linked_to_topics:
+- kidney-stones
+- gout
+- ph-balance
+- protein-adequacy-vegetarian
+- insulin-resistance
+linked_to_supplements:
+- potassium-citrate
+linked_to_mechanisms:
+- renal-ph-buffering
+out_of_scope_notes: >
+  Coach scope: educating on purine-dense foods, moderating portions, alcohol reduction, and
+  the hydration habit. Clinician scope: confirming the stone is uric acid, interpreting serum
+  or urinary uric acid, prescribing urinary alkalinisation or urate-lowering medication, and
+  setting protein targets for anyone with abnormal renal markers.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1208
+  quote: The level of dietary purine consumption is directly related to the rate of urinary
+    uric acid excretion.34 This fact is important, since elevations in the uric acid content
+    of urine are a causative factor in recurrent uric acid stones.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

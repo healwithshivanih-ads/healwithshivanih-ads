@@ -1,0 +1,59 @@
+slug: murray-ed-alcohol-and-tobacco
+statement: |
+  Long-term alcohol and tobacco use are described as major contributors to erectile
+  dysfunction, acting both by increasing atherosclerosis risk and by direct effects on
+  sexual function. Alcohol can produce acute episodes of ED and, with sustained heavy
+  use, more persistent dysfunction via testicular shrinkage. For tobacco the chapter
+  reports that smoking as few as two cigarettes has been shown to inhibit an erection —
+  an immediate vasoconstrictive effect, distinct from the slower accumulation of arterial
+  plaque.
+evidence_tier: plausible_emerging
+rationale: >
+  The direction and the mechanisms are well supported: nicotine causes acute
+  vasoconstriction and impairs endothelial nitric oxide signalling, and chronic heavy
+  alcohol use causes testicular atrophy and lowers testosterone. The specific
+  "two cigarettes" finding is reported from a single cited source without dose, timing or
+  effect size, so it is best treated as a vivid illustration of an acute effect rather
+  than a precise threshold. The book also gives no intake threshold for alcohol, which
+  matters because light drinking and heavy drinking behave very differently here.
+coaching_translation: >
+  Smoking and heavy drinking both work against erections, and they do it in two ways —
+  slowly, by furring up arteries, and immediately, by narrowing blood vessels. This is
+  often one of the more motivating reasons a man will actually engage with quitting,
+  because the effect is personal and near-term rather than a statistic about his heart in
+  twenty years. Practically: stopping smoking is the single highest-value change, and
+  cutting back alcohol — especially the daily evening drinking pattern — usually helps
+  both erections and sleep within weeks. Say it matter-of-factly, without moralising; shame
+  reduces the chance he acts on it.
+caveats:
+- Heavy or dependent drinking needs medical support to stop safely — abrupt withdrawal
+  from significant alcohol dependence can be dangerous and is a medical referral.
+- Improvement is not guaranteed — if atherosclerosis or neuropathy is already established,
+  quitting slows progression but may not restore function on its own.
+- Do not promise a timeline for recovery; the book gives none.
+- Nicotine replacement, varenicline and other cessation pharmacotherapy are clinician
+  decisions.
+linked_to_topics:
+- atherosclerosis
+- endothelial-dysfunction
+- cardiovascular-disease-prevention
+linked_to_supplements: []
+linked_to_mechanisms:
+- endothelial-dysfunction
+- nitric-oxide-deficiency
+- atherosclerosis
+- oxidative-stress-vascular
+out_of_scope_notes: >
+  Coach scope: behaviour-change support for smoking cessation and alcohol reduction,
+  including motivation, triggers, substitution and relapse planning. Clinician scope:
+  managing alcohol withdrawal, prescribing cessation pharmacotherapy, and assessing
+  liver or testicular damage.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 905
+  quote: |-
+    Long-term alcohol consumption or tobacco use is often a big contributor to ED. In addition to increasing the risk for atherosclerosis, both of these agents negatively affect sexual function. Alcohol use can produce acute episodes of ED as well as more permanent ED due to testicular shrinkage. Smoking just two cigarettes has been shown to inhibit an erection.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

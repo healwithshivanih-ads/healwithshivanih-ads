@@ -1,0 +1,58 @@
+slug: murray-ulcer-is-defence-failure-not-acid-excess
+statement: |
+  Excess stomach acid is rarely the cause of a gastric ulcer. Murray & Pizzorno
+  state that gastric ulcer patients tend to secrete normal or even REDUCED acid,
+  and that only about half of duodenal ulcer patients show raised acid output
+  (attributed to roughly twice the normal number of parietal cells). The ulcer
+  forms when the protective side of the equation fails — the mucin layer, cell
+  renewal, and local bicarbonate — not because acid rose. This reframes chronic
+  acid suppression as treating one variable of the equation while leaving the
+  defence deficit, and the H. pylori infection behind it, untouched.
+evidence_tier: plausible_emerging
+rationale: >
+  The descriptive physiology (normal-to-low acid in gastric ulcer; parietal cell
+  mass in duodenal ulcer) is standard and uncontroversial, but this paragraph in
+  the chapter is asserted without a citation. The therapeutic inference — that acid
+  suppression is therefore misdirected — is the authors' framing, not a trial
+  result, and it sits against a large evidence base showing PPIs genuinely heal
+  ulcers and prevent NSAID injury. Tiered plausible_emerging rather than strong
+  because the mechanism is sound but the clinical conclusion is over-reached, and
+  because low stomach acid is itself a documented predisposer to H. pylori (which
+  is where this claim's real practical value sits).
+coaching_translation: >
+  "Acidity" and "too much acid" are not the same thing. Most stomach ulcers form
+  because the stomach's protective lining fails, not because acid went up — in fact
+  many people with gastric ulcers make LESS acid than average. That matters,
+  because acid also does useful jobs: it breaks down protein, releases B12 and
+  iron, and kills organisms in food. So the goal is to rebuild protection — treat
+  the infection if there is one, take the pressure off with food and stress work —
+  rather than assuming acid is the villain. Keep taking your prescribed medicine
+  exactly as written while you and your doctor work on the underlying cause.
+caveats:
+- |-
+  This must NEVER be relayed as a reason to stop, skip, or reduce a prescribed PPI or H2 blocker. Rebound acid hypersecretion on abrupt withdrawal is real and can be severe
+- |-
+  PPIs are genuinely protective in NSAID users and in confirmed bleeding ulcers — the critique applies to indefinite, unreviewed use, not to appropriate use
+- |-
+  Long-term acid suppression is associated with reduced B12, iron, magnesium and calcium absorption; those are worth monitoring but the monitoring is the doctor's
+- |-
+  The chapter asserts this physiology without citation — present it as a reframe, not as proven fact
+linked_to_topics: [peptic-ulcer-disease, gerd, gerd-ppi-tapering, low-stomach-acid]
+linked_to_supplements: []
+linked_to_mechanisms: [gastric-mucosal-barrier-disruption, hypochlorhydria, hypochlorhydria-from-ppi, histamine-mediated-gastric-acid-hypersecretion, low-stomach-acid-antigen-load]
+out_of_scope_notes: >
+  Any decision to taper, switch, or stop a PPI such as pantoprazole belongs to the
+  prescribing doctor. A coach may educate on what acid does, support meal-pattern
+  and stress changes, and encourage the client to book a medication review — but
+  must not set a taper schedule, suggest a dose reduction, or imply the medicine is
+  unnecessary. Interpreting B12/iron/magnesium results from long-term use is also
+  clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1376
+  quote: |-
+    Contrary to popular opinion, excessive secretion of gastric acid output is rarely a factor in the development of gastric ulcers. In fact, patients who have gastric ulcers tend to secrete normal or even reduced levels of gastric acid. In duodenal ulcer patients, however, almost half have increased gastric acid output. This increase may be due to an increased number of acid-producing cells, known as parietal cells.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

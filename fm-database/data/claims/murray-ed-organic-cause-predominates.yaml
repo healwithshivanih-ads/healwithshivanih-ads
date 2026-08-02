@@ -1,0 +1,55 @@
+slug: murray-ed-organic-cause-predominates
+statement: |
+  In men over 50, the chapter states that organic (physiological) causes account for more
+  than 90% of erectile dysfunction, with psychological factors responsible in roughly 10%
+  overall. It also corrects an old clinical shortcut: the presence of night-time or early
+  morning erections used to be taken as proof the problem was psychogenic, but is now
+  recognised as an unreliable indicator. Assessment therefore rests on history and
+  physical examination, supported where needed by bloods, hormone levels, night-time
+  penile monitoring and vascular or neurological examination, best supervised by a
+  urologist.
+evidence_tier: plausible_emerging
+rationale: >
+  The organic-versus-psychogenic split is a real and clinically important correction to
+  the lay assumption that ED is "in the head", and the point about morning erections
+  being unreliable is genuinely useful. The 90/10 proportions are stated as a single
+  sourced figure and vary a great deal with age — in younger men psychogenic and
+  medication-related causes are proportionally far more common than this split suggests.
+  Tiered plausible_emerging because the direction is right but the numbers are
+  age-specific and presented without a range.
+coaching_translation: >
+  Erectile difficulty in an older man is usually a physical problem, not a confidence
+  problem — most often blood flow, blood sugar, hormones or a medication. That matters
+  because "just relax and don't overthink it" is bad advice if the cause is physical, and
+  it delays the man getting checked. Also worth knowing: still having morning erections
+  does not prove the problem is only psychological. The useful move is always the same —
+  encourage a proper medical assessment first, then support whatever the doctor finds.
+  Anxiety about performance is real and often builds on top of a physical cause, so you
+  can coach the stress side without pretending it is the whole story.
+caveats:
+- Only a clinician can distinguish organic from psychogenic ED; a coach must not assign
+  a cause, in either direction.
+- The 90% figure applies to men over 50 — do not apply it to a man in his twenties or
+  thirties, where medication, alcohol, sleep loss and anxiety weigh more heavily.
+- Depression and antidepressant use are common and can both cause ED and be worsened by
+  it; if low mood is present, that needs clinical assessment too.
+- Coaches should not recommend or interpret night-time penile monitoring or hormone
+  panels.
+linked_to_topics:
+- autonomic-nervous-system-dysregulation
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Coach scope: normalising the conversation, encouraging assessment, and working on
+  stress, sleep and relationship context alongside medical care. Clinician scope: the
+  entire diagnostic workup — history, examination, bloods, hormone levels, penile
+  monitoring, vascular and neurological assessment.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 902
+  quote: |-
+    In fact, in men over the age of 50, organic causes are responsible for erectile dysfunction in more than 90% of cases.3 In the past, a man with ED who was able to have nighttime or early morning erections was thought to have psychogenic impotence. However, it is now recognized that this is not a reliable indicator.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

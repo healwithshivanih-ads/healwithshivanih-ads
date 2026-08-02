@@ -1,0 +1,82 @@
+slug: murray-elimination-diet-food-challenge
+statement: |
+  Murray & Pizzorno treat oral food challenge — an elimination (oligoantigenic)
+  diet followed by systematic reintroduction — as the best available way to
+  identify food sensitivities. The protocol: strip the diet back to a small set of
+  low-allergen foods for at least one week and up to one month. If symptoms are
+  food-driven they typically clear by the fifth or sixth day; if they do not, a
+  food still in the elimination diet may itself be the problem and the diet must
+  be narrowed further. Foods are then reintroduced one at a time, commonly every
+  two days, with a careful written record of what was reintroduced and what
+  symptoms appeared. After the clearing period, reactions on reintroduction are
+  often more obvious than they were before.
+evidence_tier: strong
+rationale: >
+  Elimination-and-rechallenge is the one diagnostic approach for non-IgE food
+  reactions that both this book and mainstream allergology agree on; double-blind
+  placebo-controlled food challenge remains the reference standard, and open
+  elimination/reintroduction is its practical clinical form. The mechanism is
+  simply removal and controlled re-exposure of the suspected antigen, so it does
+  not depend on any contested immunological model the way antibody panels do. It
+  is tiered strong for the principle. The specific numbers — one week to one
+  month, symptom clearance by day five or six, two-day reintroduction spacing —
+  are clinical convention rather than trial-derived, and open (unblinded) challenge
+  is subjective and vulnerable to expectation, stress, and concurrent exposures,
+  which the authors themselves flag.
+coaching_translation: >
+  The most reliable way to find out which food is bothering you is not a blood
+  test — it is taking foods out and putting them back in a planned way, and
+  writing down what happens. We simplify your diet to a short list for one to four
+  weeks. If food is the driver, you usually feel the difference by about day five
+  or six. Then we add foods back one at a time, roughly every two days, and keep a
+  written log. Reactions are often clearer coming back in than they ever were
+  before, because your system has had a rest. This takes discipline more than it
+  takes money, and the log is the whole point — memory is not good enough.
+caveats:
+- Never run a food challenge in someone with a history of airway constriction or
+  severe allergic reactions — the book states this as an explicit warning, and
+  re-exposure in that population can be fatal.
+- Screen for celiac disease BEFORE removing gluten; going gluten-free first
+  invalidates celiac serology and biopsy.
+- Not appropriate as-written in pregnancy, in children, in anyone underweight or
+  with a history of disordered eating, or alongside an active eating disorder — a
+  restrictive diet has its own risks.
+- Open (unblinded) challenge is subjective; stress, sleep loss, illness and
+  environmental exposures can all mimic or mask a food reaction.
+- The book's standard elimination list (lamb, chicken, potato, rice, banana,
+  apple, brassicas) is not workable for an Indian vegetarian client. A practical
+  Indian version has to be built around rice, moong dal, seasonal vegetables and
+  suitable fruit, with a clinician or dietitian checking protein adequacy.
+linked_to_topics:
+- elimination-diet
+- food-sensitivities
+- food-sensitivity-igg-iga-mediated
+- celiac-disease
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Supervising the practical side of an elimination diet — meal planning, shopping,
+  the symptom log, adherence, keeping the client nourished — is coach-adjacent and
+  within scope with a client who has been medically cleared. Deciding that a
+  client should undertake one, interpreting the result as a diagnosis, and
+  supervising any re-challenge in a client with a history of anaphylaxis or airway
+  involvement are clinician-only. Anaphylaxis is an emergency: if a client has ever
+  had lip/tongue/throat swelling, wheeze, or collapse after a food, that food is
+  never re-challenged by a coach, in any setting.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 942
+  quote: |-
+    The individual stays on this limited diet for at least one week, and up to one month. If the symptoms are related to food sensitivity, they will typically disappear by the fifth or sixth day of the diet. If the symptoms do not disappear, it is possible that a reaction to a food in the elimination diet is responsible.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 942
+  quote: |-
+    WARNING: Food challenge testing should not be used by people who have potentially life-threatening symptoms such as airway constriction or severe allergic reactions. In the elimination diet method, the patient is put on a limited diet.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 942
+  quote: |-
+    After the elimination diet period, individual foods are reintroduced every two days. Methods range from reintroducing a single food every two days to reintroducing a food every one or two meals. Usually, after the “cleansing” period, the patient will develop an increased sensitivity to offending foods.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

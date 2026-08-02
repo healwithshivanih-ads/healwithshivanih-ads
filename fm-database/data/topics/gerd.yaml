@@ -1,20 +1,33 @@
 slug: gerd
 display_name: Gastroesophageal Reflux Disease (GERD)
 aliases:
-- gastroesophageal reflux disease
 - acid reflux
+- gastroesophageal reflux disease
+- GERD
 - LPR
 - silent reflux
-- GERD
-summary: A chronic condition where stomach acid flows back into the esophagus, causing heartburn. Affects ~20% of US adults
-  weekly. Associated with significant healthcare costs (~$15–20B/year in the US). Managed with PPIs, lifestyle changes, and
-  natural supplements during tapering.
+- acid-reflux-and-cardiac-sphincter-weakness
+- reflux
+- gastro-oesophageal reflux
+- acidity
+- hyperacidity
+- amlapitta
+summary: A chronic condition where stomach acid flows back into the esophagus, causing
+  heartburn. Affects ~20% of US adults weekly. Associated with significant healthcare
+  costs (~$15–20B/year in the US). Managed with PPIs, lifestyle changes, and natural
+  supplements during tapering. The functional framing is that the problem is often
+  not excess acid but a weakened cardiac sphincter (lower oesophageal sphincter) —
+  driven by large evening meals, lying down soon after eating, and drinking large
+  volumes of fluid with meals — which is why meal timing and meal size are first-line
+  coaching levers.
 common_symptoms:
 - acid-reflux-heartburn
 - sour-taste
 - belching
 - hoarseness
 - chronic-cough
+- oesophageal-ulceration
+- incomplete-digestion
 red_flags:
 - persistent dysphagia
 - unintended weight loss
@@ -24,31 +37,46 @@ red_flags:
 - Hiatal hernia > 3 cm
 - Gastroparesis
 - Gastrin >300 pg/mL
+- oesophageal-ulceration-severe
 related_topics:
 - hypochlorhydria
 - sibo
 - h-pylori-infection
 - ibs
 - gut-dysfunction
+- gastrointestinal-tract-overview
+- meal-timing-and-digestive-rest
 key_mechanisms:
 - les-dysfunction
 - impaired-gastric-acid-production
 - low-stomach-acid
-coaching_scope_notes: Coaches can support dietary trigger avoidance and lifestyle modifications. PPI tapering and supplement
-  dosing require clinician supervision.
-clinician_scope_notes: PPI tapering protocol, H2 blocker transitions, and high-risk factor assessment (Barrett's, hiatal hernia,
-  gastrin levels) are clinician-scope.
+- cardiac-sphincter-weakness
+- hcl-and-pepsin-protein-digestion
+coaching_scope_notes: Coaches can support dietary trigger avoidance and lifestyle
+  modifications — in particular meal timing (a light evening meal, not lying down
+  after eating) and fluid timing (not drinking large volumes with meals), plus stress.
+  PPI tapering and supplement dosing require clinician supervision.
+clinician_scope_notes: PPI tapering protocol, H2 blocker transitions, and high-risk
+  factor assessment (Barrett's, hiatal hernia, gastrin levels) are clinician-scope.
 evidence_tier: strong
 sources:
 - id: vitaone-gut-cheatsheet
   location: Acid Reflux Cheatsheet — Supplement Stack
-  quote: Always personalize supplement choice based on root cause (SIBO, hypochlorhydria, stress, structural, or diet-related).
-    Avoid chronic antacid use - support natural acid balance and gut healing instead.
+  quote: Always personalize supplement choice based on root cause (SIBO, hypochlorhydria,
+    stress, structural, or diet-related). Avoid chronic antacid use - support natural
+    acid balance and gut healing instead.
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
-  quote: Gastroesophageal Reflux Disease (GERD) is a significant contributor to healthcare costs in the US, and the prevalence
-    of GERD is steadily increasing.
-version: 2
+  quote: Gastroesophageal Reflux Disease (GERD) is a significant contributor to healthcare
+    costs in the US, and the prevalence of GERD is steadily increasing.
+- id: barbara-oneil-gi-tract
+  location: Stomach & Acid Section
+  quote: There are some people who are suffering from something called reflux heartburn
+    where the acid is coming up into the esophagus... it's because it's weak, well
+    why is it weak because the person's eating breakfast like a pauper and lunch like
+    a pauper and tea is the king and the queen together and when they lie down to
+    sleep at night gravity hits that cardiac sphincter, weakening it.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-08-02'
 updated_by: shivani

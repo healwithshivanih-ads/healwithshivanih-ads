@@ -1,0 +1,66 @@
+slug: murray-stone-type-dictates-therapy
+statement: |
+  Kidney stones are not one condition. Murray & Pizzorno report that in the United States
+  75-85% of stones are calcium salts, 5-8% are uric acid stones, and 10-15% are magnesium
+  ammonium phosphate (struvite) stones, with cystine stones arising from hereditary
+  cystinuria. The book's own treatment summary prescribes opposite actions by type: calcium
+  oxalate stones call for reduced dietary oxalate plus magnesium, B6 and citrate; uric acid
+  stones call for reduced purines and ALKALINISED urine; struvite stones call for eradicating
+  the infection and ACIDIFYING urine with ammonium chloride; cystine stones call for avoiding
+  methionine-rich foods and alkalinising to a urine pH of 7.5-8.0. Because acidifying and
+  alkalinising are directly opposed, an intervention that is correct for one stone type can
+  worsen another. Only increasing urine volume is recommended for all types.
+evidence_tier: strong
+rationale: >
+  This is the book's own framing and matches standard urology practice: therapy follows stone
+  composition, established either by chemical analysis of a passed stone or by inference from
+  diet, urinalysis, urine culture and blood calcium, uric acid, creatinine and electrolytes.
+  The specific percentages are US epidemiology as of the 3rd edition (2012) and the chapter
+  itself notes prevalence "varies geographically, reflecting differences in environmental
+  factors, diet, and drinking water" - so the split in India may differ. What is not
+  epidemiology-dependent is the logic: the same urinary pH manoeuvre helps one stone type and
+  promotes another, so type must be known before any pH-directed advice is given.
+coaching_translation: >
+  Before changing anything for a client with stones, find out what kind of stone it was. Ask
+  whether the stone was sent for analysis, or whether their doctor named a type. Calcium
+  oxalate is the most common by far, but uric acid, struvite (infection-related) and cystine
+  stones exist and are handled differently - some need urine made more alkaline, others more
+  acidic. If nobody knows the type, the only thing safe to coach is drinking more water and
+  general whole-food eating; hold everything else until the doctor answers. Saying "I don't
+  know your stone type, so let's not guess" is good coaching, not a failure.
+caveats:
+- Acute renal colic is a medical emergency - excruciating intermittent flank pain, nausea,
+  vomiting, fever or chills means the client goes to a doctor now, not to a coaching call.
+- Stone type is determined by clinician analysis or clinician inference from labs. A coach
+  must not infer it from symptoms or from a lab report.
+- The chapter explicitly says a doctor must first rule out metabolic causes such as
+  hyperparathyroidism, cystinuria, Cushing's syndrome and sarcoidosis.
+- Percentages are US data from 2012; Indian stone-type distribution may differ and the
+  chapter itself says prevalence varies geographically.
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+- gout
+- ph-balance
+linked_to_supplements: []
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+- renal-ph-buffering
+out_of_scope_notes: >
+  Diagnosing the stone, ordering or interpreting stone analysis, urinalysis or serum
+  chemistry, and prescribing urinary alkalinisation or acidification are all clinician scope.
+  The coach's scope is to ask whether the type is known, to educate on what each type
+  generally implies, and to withhold type-specific dietary advice until a clinician has
+  confirmed the type.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1202
+  quote: Diagnosing the type of stone is critical to determining the appropriate therapy.
+    Careful evaluation of a number of criteria (diet; underlying metabolic or disease factors;
+    urinalysis; urine culture; and blood levels of calcium, uric acid, creatinine, and
+    electrolytes) will usually allow a physician to determine the composition of the stone if
+    one is not available for chemical analysis.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

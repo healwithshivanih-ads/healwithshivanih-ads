@@ -1,0 +1,53 @@
+slug: murray-ulcer-stress-is-about-response-not-load
+statement: |
+  Stress does not cause ulcers in the simple way folk belief assumes, and Murray &
+  Pizzorno are unusually honest about this: several studies found NO difference in
+  the number of stressful life events between ulcer patients and matched
+  ulcer-free controls. What differed was the individual's RESPONSE to stress. The
+  authors note that as a group, ulcer patients have been characterised as tending
+  to repress emotions, and that psychological factors matter in some people with
+  ulcers and not in others. The clinical implication is that counting stressors is
+  useless; building expression, regulation and recovery capacity is the lever.
+evidence_tier: fm_specific_thin
+rationale: >
+  The chapter explicitly says the stress-ulcer link "is not well established in the
+  medical literature" and that the studies testing it were poorly designed — that
+  honesty is why this is tiered down rather than up. The null finding on stressful
+  life events is cited (ref 4) and the response-not-amount reframe is cited (ref
+  5), but the "ulcer patients repress emotions" characterisation is an uncited
+  clinical impression from an older psychosomatic literature and should be held
+  loosely. It is a useful coaching frame, not a diagnostic profile.
+coaching_translation: >
+  The old idea that "stress burns a hole in your stomach" turns out to be too
+  simple. When researchers counted stressful events, people with ulcers had no more
+  of them than people without. What differed was how they handled stress — and one
+  pattern that shows up is people who hold things in rather than let them out. So
+  the useful work is not "have less stress", which is rarely possible. It is
+  finding a real outlet — talking, writing, movement, prayer, something that lets
+  the pressure leave the body — and building genuine recovery into the day.
+caveats:
+- |-
+  Do not tell a client their ulcer is caused by their emotions. That is both unsupported and harmful, and it can delay H. pylori testing or NSAID review
+- |-
+  The "represses emotions" characterisation is an uncited older clinical impression, not a validated psychological profile — never use it as a label
+- |-
+  Stress work is an adjunct to, never a replacement for, medical evaluation of an ulcer
+- |-
+  If emotional repression is tied to trauma, that is a licensed mental-health referral, not coaching
+linked_to_topics: [peptic-ulcer-disease, chronic-stress, stress-management, gut-brain-axis, emotional-wellbeing]
+linked_to_supplements: []
+linked_to_mechanisms: [gut-brain-axis-dysregulation, hpa-axis-dysregulation, sympathetic-suppression-of-gastric-acid, parasympathetic-inhibition]
+out_of_scope_notes: >
+  Coaching stress-management skills, emotional expression practices, sleep and
+  recovery is squarely in scope. Diagnosing or treating anxiety, depression, or
+  trauma is not — refer to a psychologist or psychiatrist. Do not attribute an
+  ulcer to a psychological cause; that is a diagnostic statement.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1377
+  quote: |-
+    The data suggest that the signiﬁcant factor is not simply the amount of stress but rather an individual’s response to it.5 Psychological factors are probably important in some people with peptic ulcer disease, but not in others. As a group, ulcer patients have been characterized as tending to repress emotions.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

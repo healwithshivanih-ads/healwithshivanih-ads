@@ -1,0 +1,53 @@
+slug: murray-cvi-diet-pattern-and-risk-factor-control
+statement: |
+  Murray & Pizzorno report that stroke patients - particularly those with significant carotid blockage - tend to show an unfavourable dietary pattern: high intake of saturated fatty acids together with low intake of fruits, vegetables and omega-3 fatty acids, and they argue this pattern may have been a key contributor to the stroke. They direct that the primary approach to CVI is the same as for cardiovascular disease generally - improve the arteries - and that other underlying drivers, specifically high cholesterol and high blood pressure, must also be addressed rather than treated as separate problems.
+evidence_tier: plausible_emerging
+rationale: |
+  The chapter cites one reference for the dietary-pattern observation, and that reference is observational - it describes what stroke patients ate, which cannot by itself establish that the pattern caused the stroke. The direction of travel is however consistent with much larger and stronger bodies of evidence (Mediterranean-pattern trials, blood-pressure lowering trials, fruit-and-vegetable intake and stroke risk), so the recommendation is sound even though this specific citation is thin. Blood-pressure control in particular has far stronger evidence for stroke prevention than anything else in this chapter, and the book under-weights it. Tiered plausible_emerging for the causal claim as stated here; the underlying advice is safe and mainstream.
+coaching_translation: |
+  The single most useful message: this is not a separate 'brain' problem needing a special brain protocol. It is the same artery health work as for the heart. Practically, for an Indian largely vegetarian client that means building the plate around vegetables and fruit at every meal, using whole dals and legumes, cutting back on deep-fried and reheated-oil foods, with ghee and coconut used with a measured hand rather than freely, and getting a real omega-3 source in - flax, chia, walnuts daily, and discussing an algal DHA/EPA supplement with the doctor for strict vegetarians. Alongside food: get the blood pressure measured and treated properly, keep taking prescribed statins or BP medication, stop tobacco, and move most days. Blood pressure is the biggest lever - do not let supplement talk crowd it out.
+caveats:
+- 'STROKE/TIA IS A MEDICAL EMERGENCY. Sudden one-sided weakness or numbness, facial droop, slurred or
+  lost speech, sudden severe headache, sudden vision loss or sudden loss of balance means call emergency
+  services immediately - do not schedule a coaching call, do not ''watch it'', do not suggest a supplement.
+  Symptoms that resolve within minutes or hours are still an emergency: a TIA is a warning of an impending
+  stroke and needs same-day medical assessment.'
+- A coach must not interpret a lipid panel, tell a client their cholesterol is 'fine', or suggest reducing
+  or stopping antihypertensive or lipid-lowering medication. Medication decisions are prescriber scope.
+- '''High saturated fat'' should not be translated into a fat-phobic or very-low-fat diet, which in an
+  Indian vegetarian context often shifts intake toward refined carbohydrate and worsens triglycerides
+  and HDL.'
+- Grapefruit, and sudden large increases in vitamin-K-rich greens, interact with statins and warfarin
+  respectively. If the client is anticoagulated, any large dietary change should be flagged to the prescriber
+  so INR can be monitored.
+- This is prevention and risk-factor coaching, not treatment of an established stenosis. It does not replace
+  medical management or reverse existing plaque on any known timeline.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- mediterranean-diet-cvd
+- anti-inflammatory-diet
+- blood-pressure-management
+- atherosclerosis
+- omega-3-fatty-acids
+- stroke-recovery
+linked_to_supplements: []
+linked_to_mechanisms:
+- atherosclerosis
+- endothelial-dysfunction
+- inflammatory-cascade
+- omega-3-omega-6-imbalance
+- inflammatory-diet-pattern
+out_of_scope_notes: |
+  Coaching the dietary pattern, movement, tobacco cessation and adherence to prescribed cardiovascular medication is in scope. Diagnosing hypertension or dyslipidaemia, setting lipid or BP targets, interpreting labs, and starting or changing drugs are clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 35 — Cerebral Vascular Insufficiency, pg 646
+  quote: Diet is particularly important, as stroke patients, especially those with signiﬁcant blockage
+    of the carotid arteries, tend to have an unfavorable dietary pattern (high intake of saturated fatty
+    acids; low intake of fruits, vegetables, and omega- 3 fatty acids) that may have been a key factor
+    leading to their stroke.1 It is also important to address any other underlying factors, such as high
+    cholesterol levels or high blood pressure.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

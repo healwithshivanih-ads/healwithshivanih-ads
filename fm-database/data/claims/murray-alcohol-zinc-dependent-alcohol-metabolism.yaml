@@ -1,0 +1,56 @@
+slug: murray-alcohol-zinc-dependent-alcohol-metabolism
+statement: |
+  Both enzymes that clear alcohol - alcohol dehydrogenase (ADH) and aldehyde
+  dehydrogenase (ALDH) - are zinc-dependent, and Murray and Pizzorno note ALDH
+  is the more sensitive to zinc deficiency. Acute and chronic alcohol intake
+  both produce zinc deficiency, via reduced dietary intake, reduced absorption
+  and increased urinary loss. Because ALDH is the step that clears acetaldehyde,
+  the authors link low zinc to impaired alcohol metabolism, predisposition to
+  cirrhosis and impaired testicular function; vitamin A deficiency is described
+  as working synergistically with it.
+evidence_tier: strong
+rationale: |
+  Tiered strong: the zinc-dependence of ADH and ALDH is settled biochemistry,
+  and the three-route depletion picture (intake, absorption, urinary loss) is
+  standard. What is weaker and is deliberately phrased as association rather
+  than proof is the clinical arc - the book's supporting evidence that zinc
+  repletion improves alcohol detoxification and survival is a rat study, and no
+  human trial is offered showing supplemental zinc changes liver outcomes in
+  people. The vitamin A synergy is a hypothesised mechanism in the source,
+  presented as such.
+coaching_translation: |
+  The two enzymes that break alcohol down both need zinc to work, and alcohol
+  itself lowers zinc - less absorbed, more lost in urine. Low zinc also shows up
+  as poor taste and appetite, slow wound healing, frequent infections and skin
+  problems, so it can be part of why someone feels generally unwell. Zinc-rich
+  Indian foods are worth building in: pumpkin and sesame seeds, chana and rajma,
+  cashews and peanuts, curd, and eggs, chicken or seafood if they eat them.
+  Soaking and sprouting dals improves how much zinc is actually absorbed.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Vitamin A must not be pushed in someone with alcohol-related liver damage - the same chapter warns the damaged liver loses its ability to store it and toxicity risk rises above roughly 5,000 IU/day. Any vitamin A decision is clinician-only here.'
+- 'Long-term zinc supplementation induces copper deficiency; dose and duration are clinician decisions, not open-ended coach suggestions.'
+- 'Plasma zinc falls during any acute-phase inflammatory response and can misread as deficiency - interpretation is clinician scope.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- zinc-nutrition
+- liver-detoxification
+- metabolic-detoxification
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+- vitamin-a
+linked_to_mechanisms: []
+out_of_scope_notes: |
+  Clinician: zinc and vitamin A status, supplementation decisions in liver
+  disease, liver function assessment. Coach: zinc-rich foods, soaking and
+  sprouting to improve absorption, and appetite and taste changes as things to
+  report.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 426'
+  quote: 'One of the key nutrients involved in the metabolic detoxiﬁcation of alcohol is zinc, as both ADH and ALDH are zinc-dependent enzymes, with the latter being more sensitive to deﬁciency.11 Both acute and chronic alcohol consumption result in zinc deﬁciency.11,12'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

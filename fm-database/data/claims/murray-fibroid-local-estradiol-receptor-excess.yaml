@@ -1,0 +1,56 @@
+slug: murray-fibroid-local-estradiol-receptor-excess
+statement: |
+  Uterine fibroids are benign bundles of smooth muscle and connective tissue, and roughly
+  30% of women over age 30 carry at least one. Their development and growth are attributed
+  to raised local oestradiol concentration inside the fibroid itself, alongside a higher
+  density of oestrogen receptors in fibroid tissue than in the surrounding myometrium — so
+  the same circulating oestrogen exerts a disproportionate proliferative signal on the
+  fibroid. This is why fibroids tend to shrink on their own after menopause, when systemic
+  oestrogen falls.
+evidence_tier: plausible_emerging
+rationale: >
+  The oestrogen-dependence of fibroid growth is well accepted in gynaecology and is
+  consistent with the clinical observation of post-menopausal regression, which the chapter
+  states directly. However, Murray & Pizzorno assert the local-oestradiol and
+  receptor-density point without attaching a citation in this chapter — it is stated as
+  established background, not evidenced here. Tiered plausible_emerging rather than strong
+  because the assertion is uncited in this text and because "local oestradiol drives growth"
+  does not by itself establish that lowering systemic oestrogen shrinks an existing fibroid.
+coaching_translation: >
+  Fibroids are non-cancerous growths of muscle and fibrous tissue in the wall of the womb —
+  common enough that about one in three women over 30 has one. They grow in response to
+  oestrogen, and the fibroid tissue itself is unusually sensitive to it, which is why they
+  often quieten down after menopause when oestrogen naturally drops. Knowing this is why
+  the lifestyle work focuses on how the body clears oestrogen rather than on the fibroid
+  itself.
+caveats:
+- A fibroid diagnosis, its size, its location, and any decision about monitoring or treatment
+  belong to a gynaecologist — a coach must not infer fibroids from symptoms.
+- Rapid growth of a fibroid, or new growth after menopause, is a red flag requiring prompt
+  gynaecology review and must never be watched with lifestyle measures alone.
+- Oestrogen-dependence does not mean lifestyle can reliably shrink an established fibroid; the
+  chapter's own claim of shrinkage rests on clinical experience, not trial data.
+linked_to_topics:
+- uterine-fibroids
+- estrogen-dominance
+- estrogen-signaling
+linked_to_mechanisms:
+- estrogen-driven-cell-proliferation
+- hormone-receptor-binding
+- estrogen-decline
+linked_to_supplements: []
+out_of_scope_notes: >
+  Diagnosis, sizing, imaging, and management of fibroids are gynaecology scope. The coach's
+  scope is education about oestrogen physiology and support for diet, bowel regularity,
+  weight and toxin-exposure habits that plausibly influence oestrogen load — always alongside,
+  never instead of, the client's gynaecologist.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 97 — Uterine Fibroids, pg 1539
+  quote: Increases in local estrogen (speciﬁcally estradiol) concentration within the ﬁbroid
+    itself are thought to play a role in the development and growth of ﬁbroids. Concentrations
+    of estrogen receptors are higher in ﬁbroid tissue than in the surrounding tissue.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

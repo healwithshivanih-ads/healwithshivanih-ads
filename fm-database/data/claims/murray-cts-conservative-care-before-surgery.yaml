@@ -1,0 +1,64 @@
+slug: murray-cts-conservative-care-before-surgery
+statement: |
+  Murray & Pizzorno set an explicitly conservative-first sequence for carpal tunnel syndrome.
+  Their recommended initial treatment is four weeks in a neutral wrist splint worn full-time,
+  and they note splinting works best when started within three months of symptom onset and
+  that specialised splints have not been shown to beat a good-quality, well-fitted
+  over-the-counter one. They state surgery should not be considered before six months of
+  conservative treatment, and should be reserved for cases that are persistent (not resolving
+  after one year) or deteriorating (worsening clinically together with deteriorating nerve
+  conduction studies). Against that they set a hard upper bound: to prevent permanent nerve
+  damage, surgery should not be delayed beyond three years from first onset of symptoms.
+evidence_tier: confirm_with_clinician
+rationale: >
+  The core position — try splinting and conservative care before operating — is mainstream
+  hand-surgery practice, and the splinting recommendation carries citations in the chapter.
+  The claim is tiered confirm_with_clinician not because the content is weak but because
+  every decision inside it is a clinical one: whether to splint, whether nerve conduction
+  studies show deterioration, and when the risk of irreversible axonal loss outweighs the
+  risk of surgery. Two honesty notes about the source. First, the specific thresholds — six
+  months, one year, three years — are presented as the authors' clinical rule of thumb with
+  no trial cited for those cut-offs; they should be treated as a framing device, not a
+  validated protocol. Second, the three-year ceiling exists because prolonged median nerve
+  compression causes demyelination and then axonal loss that does not fully recover after
+  release, so 'keep trying conservative care' is not a risk-free default. The chapter also
+  reports that open release is cheaper than endoscopic with no long-term difference in
+  outcome (endoscopic gives less pain for the first two weeks), and that early mobilisation
+  after surgery beat immobilisation.
+coaching_translation: >
+  The usual first step for carpal tunnel is a wrist splint that holds the wrist straight,
+  worn full-time for about four weeks — and the sooner it is started after symptoms begin,
+  the better it works. An ordinary well-fitting splint from a pharmacy is as good as an
+  expensive specialised one. Surgery is generally not on the table until several months of
+  this kind of conservative care has been tried. But the flip side matters just as much: this
+  is not something to put up with indefinitely. If symptoms are not improving after months,
+  or are getting worse, that needs to go back to the doctor — leaving a compressed nerve too
+  long can cause damage that surgery cannot fully undo. A coach's job here is to help a client
+  stick with the conservative plan their doctor set, and to make sure they go back rather than
+  quietly enduring it.
+caveats:
+- "A coach must not advise for or against surgery, nor interpret nerve conduction study results — that is entirely clinician scope."
+- "The six-month / one-year / three-year thresholds are the authors' clinical framing, not validated trial cut-offs. Do not present them to a client as fixed rules."
+- "Do not fit, adjust or recommend a specific splint or wearing schedule; a poorly positioned splint can worsen symptoms. Refer to the treating clinician or hand therapist."
+- "'Wait and see' is unsafe once there is weakness, muscle wasting at the thumb base, or constant numbness — those signal nerve damage in progress and need prompt review."
+- "Pregnancy-related CTS and CTS secondary to hypothyroidism, diabetes or inflammatory arthritis may need the underlying condition addressed first; the conservative timeline above does not override that."
+linked_to_topics: ["carpal-tunnel-syndrome"]
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  CLINICIAN: diagnosis, splint prescription and fitting, nerve conduction studies, and the
+  decision on timing and type of surgical release. COACH: adherence support for the clinician's
+  conservative plan, symptom tracking so change over time is visible, and — importantly —
+  prompting the client to return for review rather than tolerating unresolved symptoms past
+  the point where the nerve is at risk.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 622
+  quote: "Surgery for CTS should deﬁnitely not be considered before more conservative treatment has been tried for six months, and should be reserved for cases that are persistent (not resolving after one year) or deteriorating (worsening clinically, along with nerve conduction studies showing deterioration). To prevent permanent nerve damage, however, surgery should not be delayed beyond three years after ﬁrst onset of symptoms."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 623
+  quote: "The most recommended initial treatment is four weeks in a neutral wrist splint worn full-time. Splinting is most effective when started within three months of onset of CTS. Specialized splints have not been proven more effective than a good-quality, well-ﬁtted over-the-counter splint."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

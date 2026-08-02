@@ -1,0 +1,30 @@
+slug: murray-angina-energy-metabolism-and-blood-supply
+statement: 'Murray & Pizzorno frame the natural approach to angina around two interrelated goals: improving energy metabolism within the heart and improving blood supply to the heart. The mechanistic basis is that the heart uses fatty acids as its major metabolic fuel, and impaired fatty acid utilisation lets fatty acids accumulate in the myocardium, which the authors argue makes heart muscle more susceptible to cellular damage. This is the rationale for the chapter''s three metabolic nutrients — carnitine, pantethine and coenzyme Q10 — all of which act in mitochondrial fat and energy handling.'
+evidence_tier: plausible_emerging
+rationale: 'The underlying physiology is real: the healthy heart derives roughly 60-70% of its ATP from fatty acid oxidation, and ischaemia does shift and impair that metabolism. What the book presents as a therapeutic framework is mechanistic reasoning plus small clinical trials, not outcome data — no mortality or infarction endpoints are cited for this framework. It is a plausible organising idea for why these nutrients were studied, not proof that supplementing them changes the course of coronary disease.'
+coaching_translation: 'There are two separate levers here: how well blood reaches the heart muscle, and how well the heart muscle makes energy from what does reach it. Most of what a coach can influence — food quality, movement, sleep, stress, not smoking — works on both. It is a useful frame for explaining to a client why their doctor''s medication and your lifestyle work are doing different jobs rather than competing.'
+caveats:
+- This is a mechanistic model, not evidence that fixing "energy metabolism" reduces heart attacks. Do not present it to a client as a substitute for prescribed therapy.
+- The three nutrients this frame motivates (carnitine, pantethine, CoQ10) are all clinician-scope decisions in someone on cardiac medication.
+- '"Improving blood supply" is not something a coach can claim to deliver; vasodilation and revascularisation are medical territory.'
+linked_to_topics:
+- mitochondrial-health-nutrients
+- cardiovascular-dysfunction
+- essential-fatty-acids
+linked_to_supplements:
+- l-carnitine
+- coq10
+- pantethine
+linked_to_mechanisms:
+- mitochondrial-energy-production
+- mitochondrial-efficiency
+- oxidative-stress
+out_of_scope_notes: Coaches may explain this model as education. Deciding whether a given client should take carnitine, pantethine or CoQ10, at what dose, and alongside which cardiac drugs, is prescriber scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 484
+  quote: 'From a natural perspective, there are two primary therapeutic goals in the treatment of angina: improving energy metabolism within the heart and improving blood supply to the heart. These goals are interrelated, as an increased blood ﬂow means improved energy metabolism and vice versa. The heart uses fats as its major metabolic fuel.'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,56 @@
+slug: murray-cts-contrast-hydrotherapy
+statement: |
+  For the inflammation and swelling present in many carpal tunnel cases, Murray & Pizzorno
+  recommend contrast hydrotherapy: immerse the hand past the wrist in hot water for three
+  minutes, then in cold water for 30 seconds, repeating three to five times. Their stated
+  rationale is that alternating vasodilation and vasoconstriction increases local circulation,
+  which increases inflow of nutrients, increases removal of waste products, and decreases
+  pain. Their treatment summary gives this as a per-day protocol alongside splinting and
+  strain reduction.
+evidence_tier: fm_specific_thin
+rationale: >
+  This is the weakest-evidenced item in the chapter and is tiered accordingly. Murray &
+  Pizzorno attach no citation at all to the hydrotherapy section — no trial, no cohort, not
+  even a case series — where they do cite the splinting, surgical and acupuncture material on
+  neighbouring pages. The proposed mechanism (alternating vasodilation and vasoconstriction
+  producing a local circulatory pump that clears interstitial oedema) is physiologically
+  plausible and is long-standing naturopathic practice, but plausibility is not evidence, and
+  reduced oedema has not been shown to translate into measurable improvement in median nerve
+  conduction. It is included here because the risk-to-cost ratio is unusually favourable —
+  tap water, no equipment, self-administered, symptom-relief-oriented — and because it sits
+  squarely inside coaching scope in a chapter where most of the content does not. Note also
+  an internal inconsistency in the source: the body text says 'repeated three to five times'
+  per session while the treatment summary says 'three to five times per day'; treat the
+  per-session count as the intended protocol.
+coaching_translation: >
+  A simple thing a client can do at home for a swollen, achy carpal tunnel: fill two bowls,
+  one comfortably hot, one cold. Put the hand in past the wrist in the hot water for three
+  minutes, then straight into the cold for 30 seconds. Repeat that three to five times, always
+  ending on cold. The idea is that the vessels open and close alternately, which acts like a
+  pump to move fluid out of the swollen area and can ease pain. It is not a cure and it does
+  not take pressure off the nerve — think of it as comfort care alongside whatever the doctor
+  has advised. Evidence for it is thin; it is offered because it is safe, free, and some people
+  find it settles the ache enough to sleep.
+caveats:
+- "No clinical evidence is cited for this in the source. Present it to clients as comfort care with a plausible rationale, never as a treatment that resolves CTS."
+- "It must not delay medical assessment or substitute for splinting and evaluation of underlying causes."
+- "Contraindicated or requiring clinician clearance where sensation is impaired — diabetic peripheral neuropathy, advanced CTS with numbness, Raynaud's, cold urticaria, cryoglobulinaemia, or peripheral vascular disease. A hand that cannot feel temperature can be scalded or cold-injured without the client noticing."
+- "Hot water must be comfortably hot, not scalding. This is a real burn risk in a client with reduced hand sensation."
+- "Stop and refer if it increases pain, or if numbness becomes constant or thumb-base weakness appears."
+linked_to_topics: ["carpal-tunnel-syndrome"]
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  COACH: this one is genuinely inside coaching scope — teaching and supporting a
+  self-administered comfort measure — provided sensation is intact and a clinician is already
+  involved in the case. CLINICIAN: confirming the diagnosis, ruling out sensory impairment or
+  vascular contraindications that make hot/cold immersion unsafe, and directing definitive
+  management.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 623
+  quote: "Alternating hot and cold water treatment (contrast hydrotherapy) provides a simple, efﬁcient way to increase circulation to the area and reduce swelling. Immersion of the hand past the wrist in hot water for three minutes, followed by immersion in cold water for 30 seconds, repeated three to ﬁve times, will increase local circulation, thereby increasing local inﬂow of nutrients, increasing elimination of waste products, and decreasing pain."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

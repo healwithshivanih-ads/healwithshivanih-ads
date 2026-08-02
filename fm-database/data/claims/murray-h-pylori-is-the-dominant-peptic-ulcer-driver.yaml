@@ -1,0 +1,54 @@
+slug: murray-h-pylori-is-the-dominant-peptic-ulcer-driver
+statement: |
+  Helicobacter pylori infection is the single most common driver of peptic ulcer
+  disease. Murray & Pizzorno report that 90-100% of duodenal ulcer patients, 70% of
+  gastric ulcer patients, and roughly 50% of people over age 50 test positive. They
+  name H. pylori and NSAIDs as "by far the most significant" of the factors that
+  break down mucosal defence. Critically, the predisposing conditions for
+  colonisation are LOW gastric acid output and low antioxidant status in the gut
+  lining — H. pylori then raises gastric pH further, creating a self-reinforcing
+  loop the authors call a vicious circle.
+evidence_tier: strong
+rationale: >
+  The prevalence figures are cited (ref 1) and match the mainstream
+  gastroenterology consensus that emerged after Marshall and Warren; this is not a
+  fringe FM position. The mechanism is well characterised: urease-driven ammonia
+  production neutralises local acid and degrades the mucin layer. The low-acid-
+  predisposes-to-colonisation direction is the FM-distinctive part and is cited
+  (ref 2) but is a smaller literature than the eradication data. Tiered strong for
+  the causal association; the low-acid-as-antecedent framing is the weaker limb.
+coaching_translation: >
+  Ulcers are far more often an infection problem than a "too much acid" problem.
+  A bacterium called H. pylori is found in almost everyone with a duodenal ulcer.
+  It is very common in India and it spreads through shared food, water and
+  households. If you have ongoing burning or gnawing stomach pain, the useful
+  question for your doctor is not "what will settle the acid" but "have we actually
+  tested for H. pylori" — and if a family member has tested positive, it is worth
+  asking whether you should be tested too.
+caveats:
+- |-
+  H. pylori positivity is not the same as active ulcer disease — carriage is common and asymptomatic in a large share of adults over 50
+- |-
+  Serology stays positive after successful eradication; stool antigen or urea breath testing is needed to confirm clearance. This is a clinician call, not a coach call
+- |-
+  Acid-suppressing drugs and recent antibiotics cause false-negative breath and stool tests — the doctor decides the washout
+- |-
+  Prevalence figures are US-derived; Indian community prevalence is generally reported higher, so do not quote these percentages as local numbers
+linked_to_topics: [peptic-ulcer-disease, h-pylori-infection, low-stomach-acid, gastrointestinal-tract-overview]
+linked_to_supplements: []
+linked_to_mechanisms: [h-pylori-mucosal-defense-breakdown, h-pylori-urease-ammonia-production, gastric-mucin-degradation, hypochlorhydria]
+out_of_scope_notes: >
+  Diagnosing H. pylori, ordering or interpreting breath/stool/serology tests, and
+  prescribing or sequencing eradication therapy (triple/quadruple regimens) are
+  strictly clinician scope. The coach's role is to normalise testing, support
+  adherence to the doctor's regimen, and rebuild diet and lifestyle around it —
+  never to suggest herbal protocols as a substitute for eradication.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1376
+  quote: |-
+    It has been shown that 90 to 100% of patients with duodenal ulcers, 70% with gastric ulcers, and about 50% of people over the age of 50 test positive for this bacterium.1 Physicians can determine if it is present by measuring the level of antibodies to H. pylori in the blood or saliva, or by culturing material collected during an endoscopy.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

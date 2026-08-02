@@ -1,0 +1,74 @@
+slug: murray-citrate-inhibits-calcium-stones
+statement: |
+  Citrate is the body's own stone inhibitor. Murray & Pizzorno state that citric acid reduces
+  the concentration of calcium oxalate and calcium phosphate in urine, retarding stone
+  formation and growth, and that potassium or sodium citrate is quite effective in recurrent
+  calcium oxalate stone formers - nearly 90% show improvement. They cite a trial in which
+  potassium citrate cut stone formation from 0.7 to 0.13 stones per year, and a three-year
+  study in 57 people with calcium stones and LOW urinary citrate where the potassium citrate
+  group formed fewer stones while the placebo group's rate did not change. They add that
+  magnesium citrate appears to offer the greatest benefit of the citrate salts. A second
+  mechanism is given: citrates reverse the acidifying effect of a Western diet, and
+  alkalinising the diet lowers urinary calcium excretion - implying less calcium is being
+  pulled from bone to buffer blood acid.
+evidence_tier: strong
+rationale: >
+  Citrate has two independent actions that both point the same way - it chelates calcium in
+  urine so less is available to bind oxalate or phosphate, and it raises urinary pH and
+  urinary citrate, which directly inhibits crystal nucleation and aggregation. The trial
+  effect sizes quoted are large and the low-urinary-citrate subgroup is exactly the group in
+  whom the mechanism predicts benefit. Potassium citrate is standard clinical practice for
+  hypocitraturic calcium stone disease, so the book is aligned with mainstream urology here,
+  not ahead of it. The book's preference for magnesium citrate over potassium citrate is
+  stated without supporting citation and should be treated as the authors' opinion.
+coaching_translation: >
+  Citrate is the natural anti-stone substance in urine, and people who form calcium stones
+  often run low on it. The food route is citrus: lemon and lime are the richest practical
+  sources, so nimbu paani through the day - unsweetened, or with a pinch of salt only if salt
+  intake overall is low - is the everyday version of this. Fresh lemon in water is genuinely
+  useful here, unlike most "alkaline water" claims. Prescription citrate salts (potassium
+  citrate, magnesium citrate) are a doctor's decision, not a coach's - do not suggest them.
+  And note that plain cranberry works the OTHER way: the book says cranberry juice acidifies
+  urine, which suits some stone types and not others.
+caveats:
+- Potassium citrate and sodium citrate are prescription-level interventions. Potassium loading
+  is dangerous in renal impairment or with ACE inhibitors, ARBs or potassium-sparing
+  diuretics; sodium citrate adds a sodium load, which the same chapter says raises urinary
+  calcium.
+- Urinary alkalinisation is CORRECT for calcium oxalate, uric acid and cystine stones but
+  WRONG for struvite (magnesium ammonium phosphate) stones, where the chapter calls for
+  acidifying urine instead. Stone type must be known first.
+- Benefit is clearest in people with documented low urinary citrate - a lab finding a coach
+  cannot establish.
+- The chapter's preference for magnesium citrate over potassium citrate is asserted without a
+  cited trial.
+- Lemon water is a food-level source of citrate; it is not equivalent in dose to prescription
+  potassium citrate and should not be presented as a substitute for it.
+linked_to_topics:
+- kidney-stones
+- acid-alkaline-balance
+- ph-balance
+linked_to_supplements:
+- potassium-citrate
+- magnesium-citrate
+- calcium-citrate
+linked_to_mechanisms:
+- renal-ph-buffering
+- calcium-oxalate-crystal-formation
+out_of_scope_notes: >
+  Coach scope: lemon/lime water as a daily habit, and reducing the acid-forming load of the
+  diet by shifting toward fruit and vegetables. Clinician scope: prescribing citrate salts,
+  measuring 24-hour urinary citrate and urine pH, and any potassium-containing product for a
+  client with kidney disease or on potassium-affecting medication.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1207
+  quote: Citric acid (citrate) has the ability to reduce the concentration of calcium oxalate
+    and calcium phosphate in the urine, thus retarding the formation and growth of stones.
+    Potassium or sodium citrate has been shown to be quite effective in the treatment of
+    patients with recurrent calcium oxalate stones, with nearly 90% of patients showing
+    improvement.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,119 @@
+slug: ash-gourd-petha-juice
+name: Plain Ash Gourd (Petha) Juice
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+- jain
+- gluten_free
+- dairy_free
+- nut_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+good_for:
+- gerd
+- agni-digestive-fire
+main_ingredients:
+- Ash gourd (petha / safed kaddu / kushmanda), peeled and deseeded — 1.5 cups
+- Fresh mint or coriander leaves — 4-5 leaves (optional)
+- Roasted jeera (cumin) powder — a pinch (optional)
+contains_allergens: []
+ingredients:
+- item: Ash gourd (petha), peeled, deseeded and cubed
+  qty: '1.5'
+  unit: cup
+- item: Water, only as much as the blender needs
+  qty: '0.25'
+  unit: cup
+- item: Fresh mint leaves (or coriander leaves)
+  qty: '5'
+  unit: whole
+- item: Roasted jeera (cumin) powder
+  qty: '1'
+  unit: pinch
+steps:
+- Choose a mature ash gourd — the flesh should be white and firm, never spongy or
+  yellowing. Peel off the green skin, scoop out the seeds and the soft central pith,
+  and cube the white flesh.
+- Blend the cubes with just enough water to move the blades. Do not add salt, lime,
+  amla, tomato or ginger — the whole point of this version is that nothing sour or
+  sharp goes in.
+- Strain through a fine sieve, pressing the pulp down firmly.
+- Stir in the mint leaves (crushed between the palms first) and the pinch of roasted
+  jeera if using. Drink immediately — it separates and turns bitter within the hour.
+servings: 1
+one_line: Plain white ash gourd juice, taken on an empty stomach — cooling, nothing
+  sour in it.
+headnote: Ash gourd (kushmanda) is the classical Ayurvedic drink for amlapitta — burning,
+  sour eructation, that hot feeling under the breastbone. It works because it is sweet
+  and cooling with almost nothing sour about it, so this version deliberately leaves
+  out the lime, amla and tomato that make a mixed vegetable juice taste better but
+  make it wrong for a burning stomach.
+kitchen_tested: false
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Plain Ash Gourd (Petha) Juice
+notes_for_coach: 'The plain counterpart to `ash-gourd-vegetable-juice`. That one is
+  the everyday hydrating juice; this one is the therapeutic one for acidity, and the
+  difference is what is ABSENT — no tomato, no lime, no amla, no ginger, no salt.
+  Do not "improve" it by adding them back. TIMING IS CLINICAL, NOT PREFERENCE: ash
+  gourd is a diuretic, so this must be taken BEFORE 3pm — a client drinking the mixed
+  version at 6-6.30pm was waking repeatedly to urinate and losing sleep, and confirmed
+  the link herself by skipping it for one night (cl-022, 23/7/2026). For acidity,
+  give it first thing on an empty stomach, 20-30 min before breakfast. JAIN-safe as
+  written (ash gourd is a fruit-vegetable, not a root, and there is no ginger, onion
+  or garlic) — this is why it carries the `jain` tag and the mixed version does not.
+  One glass is a serving; make it fresh each time rather than storing.'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: Shivani
+provenance: coach_original
+nutrients_per_serving:
+  kcal: 22.3
+  protein_g: 0.7
+  carbs_g: 5.1
+  fat_g: 0.3
+  fibre_g: 4.9
+  iron_mg: 0.9
+  calcium_mg: 35.3
+  magnesium_mg: 17.8
+  zinc_mg: 1.0
+  potassium_mg: 19.1
+  folate_ug: 10.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 21.7
+  omega3_mg: 9.9
+nutrient_coverage_pct: 85.4
+rich_in:
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-08-02'
+nutrient_lines:
+- i: 0
+  key: ash-gourd
+  g: 165.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: mint-fresh
+  g: 10.0
+  f: 0.2
+- i: 3
+  key: null
+  g: 30.0
+nutrient_servings: 1.0

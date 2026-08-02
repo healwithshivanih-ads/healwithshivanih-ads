@@ -1,0 +1,56 @@
+slug: murray-alcohol-b6-folate-functional-depletion
+statement: |
+  In alcohol dependence, vitamin B6 deficiency is typically functional rather
+  than dietary: Murray and Pizzorno attribute it to impaired conversion of
+  pyridoxine to its active coenzyme pyridoxal-5-phosphate plus accelerated
+  degradation, so intake can look adequate while activity is low. Alcohol
+  separately reduces intestinal absorption and hepatic utilisation of B vitamins
+  and increases their urinary excretion, with folic acid singled out as the most
+  affected. Folate loss is compounded by the small-intestinal malabsorption the
+  same chapter describes.
+evidence_tier: strong
+rationale: |
+  Tiered strong because the activation-and-excretion mechanism for B6 and the
+  renal folate loss are well described in mainstream nutrition and hepatology,
+  and the book names the specific active form (P5P) rather than gesturing at 'B
+  vitamins'. It is a mechanistic and epidemiological claim, not an intervention
+  claim - the chapter does not present a controlled trial showing that B6 or
+  folate repletion changes drinking behaviour or outcomes, and this claim should
+  not be read as implying that.
+coaching_translation: |
+  Alcohol interferes with the B vitamins twice over - it blocks the step that
+  turns vitamin B6 into the form the body can actually use, and it makes the
+  kidneys flush folate out faster. So a person can be eating reasonably and
+  still run low. This matters because low B6 and folate show up as low mood,
+  poor sleep and low energy, which are the very things that make drinking harder
+  to step away from. Food-first: dals and rajma, green leafy vegetables,
+  bananas, sesame and sunflower seeds, eggs or fish if they eat them. Any
+  supplement decision belongs with their doctor.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Folate supplementation can mask B12 deficiency while nerve damage progresses - and the same chapter notes alcohol-related B12 malabsorption, so B12 must be assessed by a clinician before folate is pushed.'
+- 'Interpreting B6 or folate blood levels, and prescribing repletion doses, is clinician scope. Serum B6 does not reliably reflect the active P5P pool.'
+- 'High-dose pyridoxine over time can itself cause peripheral neuropathy - not a self-directed supplement.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- folate-nutrition
+- nutritional-deficiency-screening
+linked_to_supplements:
+- pyridoxal-5-phosphate
+- vitamin-b6
+- methylfolate
+linked_to_mechanisms:
+- b6-deficiency-neuropathy
+- nutrient-malabsorption
+out_of_scope_notes: |
+  Clinician: ordering and interpreting B6/folate/B12 status, deciding repletion
+  route and dose. Coach: food sources, cooking patterns that preserve folate,
+  and flagging low mood or neuropathic symptoms for medical review.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 430'
+  quote: 'A functional vitamin B6 (pyridoxine) deﬁciency is also common in alcoholics, due not so much to inadequate intake as to impaired conversion to its active form, pyridoxal-5-phosphate, and enhanced degradation.37 In addition to inhibiting conversion to more active forms, alcohol decreases the absorption and utilization by the liver and increases the urinary excretion of many B vitamins, especially folic acid.38'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani
