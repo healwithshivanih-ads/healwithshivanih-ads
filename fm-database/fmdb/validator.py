@@ -337,6 +337,9 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for mech_slug in c.linked_to_mechanisms:
             if mech_slug not in valid_mechanism_slugs:
                 warnings.append(Warning_("claim", c.slug, "linked_to_mechanisms", "mechanism", mech_slug))
+        for sx_slug in c.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("claim", c.slug, "linked_to_symptoms", "symptom", sx_slug))
 
     # ---- supplements ----
     for s in loaded.supplements:
@@ -699,7 +702,9 @@ def find_orphans(
     - supplement / cooking / remedy / protocol: reachable iff it carries at
       least one outbound link (topics / mechanisms / claims / symptoms) that
       resolves to an existing entity — otherwise scope can never pull it in.
-    - claim: reachable iff linked_to_topics OR linked_to_mechanisms resolves.
+    - claim: reachable iff linked_to_topics, linked_to_mechanisms, or
+      linked_to_symptoms resolves (build_subgraph walks the symptom edge —
+      a symptom-only claim surfaces when that symptom is selected).
     - symptom: always selectable, so never "unreachable" — but a symptom with
       no resolving topic/mechanism link is a DEAD END (adds nothing to the
       subgraph when picked). Flagged separately, non-blocking.
@@ -757,14 +762,17 @@ def find_orphans(
                 blocking=True,
             ))
 
+    sym_idx = _resolve_index(loaded.symptoms)
     for c in loaded.claims:
         if not (
             _resolves_any(c.linked_to_topics, topic_idx)
             or _resolves_any(c.linked_to_mechanisms, mech_idx)
+            or _resolves_any(c.linked_to_symptoms, sym_idx)
         ):
             orphans.append(Orphan(
                 "claim", c.slug, (c.statement or "")[:60],
-                "no resolving linked_to_topics / linked_to_mechanisms — never surfaces as evidence",
+                "no resolving linked_to_topics / linked_to_mechanisms / linked_to_symptoms "
+                "— never surfaces as evidence",
                 blocking=False,
             ))
 

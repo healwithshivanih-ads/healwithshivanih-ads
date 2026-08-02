@@ -149,6 +149,17 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "out_of_scope_notes": {"type": "string"},
                     "caveats": {"type": "array", "items": {"type": "string"}},
                     "linked_to_topics": {"type": "array", "items": {"type": "string"}},
+                    "linked_to_mechanisms": {"type": "array", "items": {"type": "string"}},
+                    "linked_to_symptoms": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": (
+                            "Symptom slugs this claim speaks to directly (e.g. a "
+                            "carpal-tunnel claim belongs on hand-numbness). Use when "
+                            "the claim is about a felt experience, not only a "
+                            "clinical area."
+                        ),
+                    },
                     "linked_to_supplements": {"type": "array", "items": {"type": "string"}},
                     "source_quote": {"type": "string"},
                     "source_location": {"type": "string"},

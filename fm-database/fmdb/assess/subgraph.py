@@ -218,15 +218,39 @@ def build_subgraph(
     topic_by_slug = {t.slug: t for t in cat.topics}
     mech_by_slug = {m.slug: m for m in cat.mechanisms}
 
-    # Claims that link to selected topics OR mechanisms
+    # Symptom alias→canonical, so a claim linked via an alias still matches a
+    # selection made with the canonical slug (and vice versa).
+    sym_alias_to_canonical: dict[str, str] = {}
+    for s in cat.symptoms:
+        sym_alias_to_canonical[s.slug] = s.slug
+        for a in s.aliases:
+            sym_alias_to_canonical.setdefault(a, s.slug)
+    canonical_sym_set = {sym_alias_to_canonical.get(x, x) for x in sym_set}
+
+    def _claim_symptom_hit(c) -> bool:
+        return bool(
+            {sym_alias_to_canonical.get(x, x) for x in c.linked_to_symptoms}
+            & canonical_sym_set
+        )
+
+    # Claims that link to selected topics OR mechanisms OR the selected symptoms
+    # themselves. The symptom edge matters because symptoms are what the coach
+    # actually picks — a claim authored onto `hand-numbness` should surface when
+    # that symptom is selected, not only via whatever topic it happens to carry.
     relevant_claims = []
     for c in cat.claims:
-        if (set(c.linked_to_topics) & topic_set) or (set(c.linked_to_mechanisms) & mech_set):
+        if ((set(c.linked_to_topics) & topic_set)
+                or (set(c.linked_to_mechanisms) & mech_set)
+                or _claim_symptom_hit(c)):
             relevant_claims.append(c)
-    # Rank core-first (touches a selected/symptom-linked topic or mechanism),
-    # then by evidence tier, then slug for determinism; cap to MAX_CLAIMS.
+    # Rank core-first (touches a selected/symptom-linked topic or mechanism, or
+    # a selected symptom directly — sym_set is the coach's explicit pick, so it
+    # is core by definition), then by evidence tier, then slug for determinism;
+    # cap to MAX_CLAIMS.
     relevant_claims.sort(key=lambda c: (
-        0 if (set(c.linked_to_topics) & core_topic_set or set(c.linked_to_mechanisms) & core_mech_set) else 1,
+        0 if (set(c.linked_to_topics) & core_topic_set
+              or set(c.linked_to_mechanisms) & core_mech_set
+              or _claim_symptom_hit(c)) else 1,
         _tier_rank(c.evidence_tier),
         c.slug,
     ))
@@ -395,6 +419,7 @@ def build_subgraph(
             "coaching_translation": c.coaching_translation[:300],
             "out_of_scope_notes": c.out_of_scope_notes[:200],
             "linked_to_topics": c.linked_to_topics,
+            "linked_to_symptoms": c.linked_to_symptoms,
             "linked_to_supplements": c.linked_to_supplements,
         }
 

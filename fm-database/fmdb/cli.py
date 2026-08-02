@@ -855,6 +855,8 @@ def cmd_show_claim(args: argparse.Namespace) -> None:
         print(f"  Topics:       {', '.join(c.linked_to_topics)}")
     if c.linked_to_mechanisms:
         print(f"  Mechanisms:   {', '.join(c.linked_to_mechanisms)}")
+    if c.linked_to_symptoms:
+        print(f"  Symptoms:     {', '.join(c.linked_to_symptoms)}")
     if c.linked_to_supplements:
         print(f"  Supplements:  {', '.join(c.linked_to_supplements)}")
     if c.sources:

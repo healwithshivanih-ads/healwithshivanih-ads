@@ -503,6 +503,9 @@ function ClaimDetail({ claim }: { claim: Claim }) {
             kind="mechanisms"
           />
         </Section>
+        <Section title="Linked symptoms">
+          <LinkedChipList items={claim.linked_to_symptoms} kind="symptoms" />
+        </Section>
         <Section title="Linked supplements">
           <LinkedChipList
             items={claim.linked_to_supplements}

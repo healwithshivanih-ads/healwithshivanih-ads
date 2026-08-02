@@ -119,7 +119,8 @@ def _enrich_claim(c: dict[str, Any], source_id: str, updated_by: str) -> dict[st
     out = dict(c)
     out.setdefault("coaching_translation", "")
     out.setdefault("out_of_scope_notes", "")
-    for key in ("caveats", "linked_to_topics", "linked_to_mechanisms", "linked_to_supplements"):
+    for key in ("caveats", "linked_to_topics", "linked_to_mechanisms",
+                "linked_to_symptoms", "linked_to_supplements"):
         out.setdefault(key, [])
     quote = out.pop("source_quote", None)
     location = out.pop("source_location", None)

@@ -746,6 +746,10 @@ class Claim(BaseModel):
     caveats: list[str] = Field(default_factory=list)
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
+    # Symptoms this claim speaks to directly (e.g. a carpal-tunnel claim that
+    # belongs on hand-numbness). Symptoms are the coach's primary selection
+    # surface, so this is a real retrieval edge — build_subgraph walks it.
+    linked_to_symptoms: list[str] = Field(default_factory=list)
     linked_to_supplements: list[str] = Field(default_factory=list)
     sources: list[SourceCitation] = Field(default_factory=list)
     version: int = 1

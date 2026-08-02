@@ -69,6 +69,7 @@ export interface Claim extends BaseEntity {
   caveats?: string[];
   linked_to_topics?: string[];
   linked_to_mechanisms?: string[];
+  linked_to_symptoms?: string[];
   linked_to_supplements?: string[];
   out_of_scope_notes?: string;
 }
