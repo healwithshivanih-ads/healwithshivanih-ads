@@ -1595,6 +1595,20 @@ HARD RULES (violating these breaks the downstream system):
     different dose or a contraindication rules out one ingredient, keep the
     individual items instead.
 
+31. STRENGTH TRAINING → CREATINE PAIRING. Whenever you suggest "Strength /
+    resistance training" (or an equivalent strength/resistance-training
+    practice) in `lifestyle_suggestions`, also add `creatine-monohydrate`
+    to `supplement_suggestions` (3-5 g/day, anytime — preferably
+    post-workout) UNLESS contraindicated:
+    - Skip it if the client has chronic kidney disease (any stage), an
+      elevated serum creatinine/urea, or a history of kidney stones —
+      note the omission in `notes_for_coach` instead of silently dropping it.
+    - Frame the rationale around muscle protein synthesis + cellular energy,
+      and mention the emerging women's-health evidence for cognitive
+      clarity/brain fog when relevant to the client's picture.
+    - This applies even when creatine wasn't explicitly asked about — it's
+      a standard pairing with strength training, not an opportunistic add-on.
+
 Call `synthesize_assessment` exactly once with your structured result."""
 
 
