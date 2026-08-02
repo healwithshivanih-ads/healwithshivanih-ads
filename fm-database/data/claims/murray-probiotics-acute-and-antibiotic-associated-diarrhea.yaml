@@ -1,0 +1,52 @@
+slug: murray-probiotics-acute-and-antibiotic-associated-diarrhea
+statement: |
+  The chapter states that probiotic supplementation shortens the duration of acute
+  infectious diarrhoea and reduces stool frequency, and that this is especially important in
+  children susceptible to infectious diarrhoea, naming Lactobacillus acidophilus and
+  Bifidobacterium bifidum as the most important organisms and rotavirus, C. difficile and
+  traveller's diarrhoea as responsive settings. For antibiotic-associated diarrhoea it cites
+  a double-blind study of 740 cataract-surgery patients on ampicillin plus cloxacillin in
+  which diarrhoea occurred in 13.3% on antibiotic alone versus 0% on antibiotic plus
+  probiotic, and it explicitly rejects the common belief that acidophilus should not be
+  taken during antibiotic therapy. Dosing given is at least 15 to 20 billion organisms during
+  antibiotic therapy, spaced as far as possible from the antibiotic dose; for
+  pseudomembranous enterocolitis it adds Saccharomyces boulardii, 500 mg twice daily for at
+  least four weeks, alone or alongside vancomycin.
+evidence_tier: strong
+rationale: >
+  This is the best-evidenced intervention in the chapter and the one place it cites multiple clinical studies rather than asserting. The direction is supported by later meta-analyses: probiotics modestly shorten acute infectious diarrhoea, and they reduce the incidence of antibiotic-associated diarrhoea, with S. boulardii the best-supported agent for C. difficile-associated disease. Two honest deductions. First, the chapter's phrase that there is absolutely no question overstates it - several large paediatric emergency-department trials published after this edition found no benefit in acute gastroenteritis, so the effect is strain- and setting-dependent rather than universal. Second, effects are strain-specific and the chapter's genus-level advice does not transfer to any product bearing that genus name. Tiered strong for antibiotic-associated diarrhoea prevention, which is where the evidence is firmest.
+coaching_translation: >
+  The strongest use is preventive: if a client is starting a course of antibiotics, a probiotic taken through the course and continued for a week or two afterwards substantially cuts the chance of antibiotic-related diarrhoea. Take it as far apart from the antibiotic dose as the day allows. The old idea that a probiotic is pointless while on antibiotics is not supported. For an ordinary acute bout of diarrhoea, a probiotic may shorten it by roughly a day - worth doing, not a cure, and never instead of fluids. Indian clients often already have a food route in daily home-set curd, which is a reasonable everyday habit even though it is not a substitute for a therapeutic dose in an antibiotic course.
+caveats:
+- "The chapter itself warns that Saccharomyces boulardii should not be used in people with impaired immune function - AIDS, chemotherapy, immune-suppressing drugs - because of case reports of fungaemia. Extend that caution to central venous lines and critical illness."
+- "S. boulardii dosing for C. difficile alongside vancomycin is a treatment decision for a physician, not a coaching suggestion."
+- "Benefits are strain-specific; a product labelled only by genus tells you very little. Match the strain to the indication or do not claim the indication."
+- "Later large paediatric trials in acute gastroenteritis were negative, so set expectations modestly - a probiotic is an adjunct to rehydration, never a replacement."
+- "Probiotics do not remove the need to identify the cause of chronic diarrhoea, and can mask a deteriorating picture if used as a reason to wait."
+- "Some clients flare on probiotics, particularly with suspected SIBO or histamine intolerance - stop if symptoms worsen."
+linked_to_topics:
+- probiotic-and-prebiotic-support
+- gut-dysbiosis
+linked_to_supplements:
+- probiotics
+- probiotic-lactobacillus-acidophilus-bifidus
+- saccharomyces-boulardii
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- antimicrobial-resistance
+out_of_scope_notes: >
+  Educating a client that a probiotic alongside a prescribed antibiotic course reduces diarrhoea risk, and helping them build the habit, is in coach scope. Selecting a strain and dose to treat an active C. difficile infection, or advising anything in an immunocompromised client, is clinician-only.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 872
+  quote: "There is absolutely no question that probiotic supplementation shortens the duration of acute infectious diarrhea and reduces stool frequency, as numerous clinical studies now document this beneﬁt. Probiotic supplementation is especially important in helping children susceptible to infectious diarrhea."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 872
+  quote: "For example, in one double-blind study of 740 patients undergoing cataract surgery, the patients were given an antibiotic containing ampicillin (250 mg) and cloxacillin (250 mg) and either a placebo or a probiotic supplement. The incidence of diarrhea in patients receiving the antibiotic alone was 13.3% compared with 0% in patients receiving the antibiotic with the probiotic."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 874
+  quote: "We recommend a dosage of at least 15 billion to 20 billion organisms during antibiotic therapy; leave as much time as possible between the dose of antibiotic and the probiotic supplement. If pseudomembranous enterocolitis develops, in addition to Lactobacillus and Biﬁdobacter species we also recommend supplementing with Saccharomyces boulardi (also known as S. cerevisiae), a nonpathogenic probiotic yeast"
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

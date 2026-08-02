@@ -1,0 +1,56 @@
+slug: murray-urine-volume-48-oz-water
+statement: |
+  Increasing urine volume is the one intervention Murray & Pizzorno apply to every stone type.
+  They report that numerous clinical trials found intake of more than about 48 fl oz of water
+  per day (~1.4 L, roughly 6 glasses) lowers long-term risk of stone recurrence by
+  approximately 60%. The mechanism is dilution: stone constituents stay in solution when urine
+  volume is high, and the chapter lists reduced urine volume (dehydration) as the first of the
+  conditions that raise the concentration of stone-forming substances. The treatment summary
+  repeats "For all types of stones, increasing urine flow to dilute the urine is vital."
+evidence_tier: strong
+rationale: >
+  This is the best-supported recommendation in the chapter - multiple clinical trials, a large
+  effect size (~60% recurrence reduction), a simple mechanism (dilution below the
+  supersaturation threshold), and it is type-agnostic so it carries no risk of being right for
+  one stone type and wrong for another. Note that 48 fl oz is stated as an INTAKE floor, not a
+  urine-output target; urology guidance generally aims for a urine output of roughly 2-2.5 L
+  per day, which in a hot climate needs considerably more than 48 fl oz of intake.
+coaching_translation: >
+  Water is the single highest-value habit for anyone who has passed a stone, whatever type it
+  was. The book's floor is at least 48 fl oz (about 1.4 litres, six glasses) a day, and in
+  Indian summer heat or for anyone who sweats a lot at work or in exercise, that floor needs
+  to go up - what matters is that urine stays pale, not that a number is hit. Practical
+  anchors: a filled bottle on the desk, a glass with every meal and every chai, and one extra
+  glass before bed if they wake to pass urine. Note that sugary drinks do not count - the
+  chapter singles out sports drinks as especially bad because they combine sugar and salt.
+caveats:
+- Fluid targets must be individualised by a clinician for anyone with heart failure, kidney
+  disease with fluid restriction, or on diuretics - "drink more water" is not universally safe.
+- 48 fl oz is a daily intake floor from US trials, not a ceiling and not a urine-output
+  target. Hot-climate and high-sweat clients need more.
+- Coconut water, buttermilk and nimbu paani count toward fluid, but sweetened drinks, sports
+  drinks and heavy tea intake do not help - the chapter lists soft drinks as a stone risk
+  factor and black/green tea as a high-oxalate item.
+- Increasing water does not remove the need to know the stone type for any other change.
+linked_to_topics:
+- kidney-stones
+linked_to_supplements: []
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+out_of_scope_notes: >
+  Fully within coaching scope - hydration is a lifestyle behaviour. The coach may set and
+  track a fluid habit. The coach may not set fluid targets for a client with kidney disease,
+  heart failure or on diuretics, and may not present hydration as treatment for an existing
+  stone (a lodged stone is a clinical problem).
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1206
+  quote: Drinking more water has long been recognized as one of the main approaches to
+    preventing kidney stones. Increasing the urine volume results in a decrease in stone
+    prevalence. Numerous clinical trials have found that consumption of more than about 48 fl
+    oz of water per day lowers the long-term risk of kidney stone recurrence by approximately
+    60%.13
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

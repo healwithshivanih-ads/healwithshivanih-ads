@@ -1,0 +1,61 @@
+slug: murray-ed-atherosclerosis-leading-cause
+statement: |
+  Atherosclerosis of the penile artery is described as the primary cause of ED in nearly
+  half of men over 50 who have it. The chapter identifies vascular insufficiency as the
+  chief organic cause overall and lists the modifiable drivers to address when a vascular
+  cause is present: elevated cholesterol and triglycerides, high blood pressure, obesity,
+  lack of exercise, and smoking. Because plaque narrows arteries throughout the body,
+  the same diet, weight, activity and smoking changes that reduce cardiovascular risk are
+  the ones that address the underlying cause of vascular ED.
+evidence_tier: plausible_emerging
+rationale: >
+  The "nearly half of men over 50" figure is the book's summary of the cited literature
+  rather than a pooled estimate, and prevalence varies with the population studied and
+  how vascular cause is confirmed. The mechanism (plaque narrowing reduces inflow to
+  erectile tissue) and the modifiable-risk-factor list are both solidly established. Not
+  tiered strong because the specific fraction is a single sourced assertion and the
+  chapter's associated diagnostic heuristic (total cholesterol above 200 mg/dl as an
+  indicator) is a dated and crude threshold that a modern lipid workup would not rely on.
+coaching_translation: >
+  In men over 50, the commonest reason for erectile difficulty is simply reduced blood
+  flow from narrowed arteries — the same process that affects the heart. That means the
+  work is not exotic: not smoking, moving daily, getting weight and blood pressure into a
+  healthier range, and eating in a way that supports blood vessels. For Indian
+  vegetarian clients this looks like more whole grains, dals, vegetables and nuts, less
+  refined flour, sugar and deep-fried food, and attention to portion size — plus a real
+  exercise habit. Frame it as improving circulation, which is honest and also happens to
+  be the thing that helps.
+caveats:
+- Lipids, blood pressure and blood sugar must be measured and interpreted by a doctor;
+  a coach never reads a lipid panel or names a cholesterol target.
+- The chapter's "total cholesterol above 200 mg/dl" rule of thumb is outdated — modern
+  risk assessment uses ApoB, LDL particle number, triglyceride:HDL ratio and overall
+  risk scoring. Do not repeat the 200 mg/dl line to a client.
+- Vascular ED that involves venous leakage responds poorly to lifestyle change and may
+  need surgical assessment — persistent ED despite good adherence needs re-referral.
+- Post-surgical, post-traumatic and neurological causes look similar to the client and
+  are not lifestyle-responsive.
+linked_to_topics:
+- atherosclerosis
+- atherosclerosis-pathogenesis
+- cardiovascular-disease-prevention
+- cardiovascular-lipid-pattern-recognition
+linked_to_supplements: []
+linked_to_mechanisms:
+- atherosclerosis
+- plaque-progression
+- endothelial-dysfunction
+- vascular-smooth-muscle-dysregulation
+out_of_scope_notes: >
+  Coach scope: the lifestyle change that reduces cardiovascular risk, and helping the
+  client sustain it. Clinician scope: confirming a vascular cause, ordering ultrasound or
+  lipid testing, interpreting results, and treating hypertension or dyslipidaemia.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 904
+  quote: |-
+    Atherosclerosis of the penile artery is the primary cause of impotence in nearly half the men over the age of 50 who have erectile dysfunction.1,2 Atherosclerosis refers to a process of hardening of the artery walls due to a buildup of plaque containing cholesterol, fatty material, and cellular debris.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

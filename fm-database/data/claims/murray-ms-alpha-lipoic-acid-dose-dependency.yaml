@@ -1,0 +1,68 @@
+slug: murray-ms-alpha-lipoic-acid-dose-dependency
+statement: |
+  Alpha-lipoic acid is an antioxidant active in both lipid and aqueous cell compartments that
+  regenerates glutathione, vitamin C and vitamin E, scavenges reactive oxygen species and chelates
+  metals involved in oxidative injury. In the animal model of MS it suppresses disease development by
+  preventing inflammatory immune cells entering the central nervous system - the same mechanism the
+  chapter attributes to vitamin D - and modulates the immune system. The one human study reported is a
+  double-blind trial in 37 MS patients across four arms (placebo; 600 mg twice daily; 1,200 mg once
+  daily; 1,200 mg twice daily). Its finding is a dosing finding: 600 mg twice daily was barely
+  measurable in serum, while 1,200 mg produced significantly higher serum levels, and higher serum
+  levels were associated with lower inflammatory mediator levels. The treatment summary lists 600-1,200
+  mg once daily with meals.
+evidence_tier: fm_specific_thin
+rationale: >-
+  Be precise about what this 37-patient study actually delivered: pharmacokinetics and a biomarker
+  association, in four arms of roughly nine people each, with no clinical endpoint - no relapse rate,
+  no disability measure, no MRI. It tells you 600 mg twice daily may be too low to reach serum, which
+  is genuinely useful negative information, and that serum alpha-lipoic acid tracked inversely with
+  inflammatory mediators, which is a correlation within a tiny sample. The supporting evidence is
+  otherwise animal EAE model work. The antioxidant and glutathione-regenerating mechanism is real
+  biochemistry but does not by itself predict clinical benefit in MS - many antioxidants with clean
+  mechanisms have failed at outcome. Note too the internal inconsistency the reader must navigate: the
+  study found 1,200 mg was needed to reach serum levels, yet the treatment summary gives a 600-1,200 mg
+  range. fm_specific_thin is the honest tier.
+coaching_translation: >-
+  Alpha-lipoic acid is an antioxidant that is being investigated in MS. It works in both the watery and
+  fatty parts of cells and helps recycle other antioxidants like glutathione, vitamin C and vitamin E.
+  In animal studies it stopped inflammatory immune cells getting into the brain and spinal cord. The
+  one human study was small - 37 people - and it measured blood levels and inflammation markers, not
+  whether anyone actually did better. So this is early, interesting, and unproven. If a client is
+  considering it, the conversation belongs with their neurologist, particularly because of a real
+  interaction with blood-sugar medication.
+caveats:
+- Only 37 patients, four arms, biomarker and pharmacokinetic endpoints only - no relapse, disability or MRI outcome. Do not present alpha-lipoic acid as an MS treatment.
+- NAME COLLISION - a real clinical hazard in this chapter. ALA means alpha-lipoic acid here, but alpha-LINOLENIC acid (the omega-3 in flaxseed) is also abbreviated ALA and appears in the same chapter. They are unrelated compounds. Always write the name out in full in client materials.
+- Alpha-lipoic acid can lower blood glucose. In a client on metformin, a sulfonylurea, insulin or a GLP-1, this risks hypoglycaemia and is a clinician decision.
+- It chelates metals and may affect thyroid hormone levels and biotin status; caution in thiamine deficiency and with heavy alcohol use.
+- Recommending a specific supplement dose is outside coaching scope entirely. This claim is education, not a protocol.
+- Antioxidants may theoretically interact with immunomodulatory MS therapy - this needs the view of the neurologist, not reassurance from a coach.
+linked_to_topics:
+- multiple-sclerosis
+- autoimmune-disease
+- flavonoids-and-nrf2
+linked_to_supplements:
+- alpha-lipoic-acid
+linked_to_mechanisms:
+- oxidative-stress
+- glutathione-depletion
+- neuroinflammation
+- immunomodulation-via-vitamin-d
+out_of_scope_notes: >-
+  Coach scope: explaining what alpha-lipoic acid is, being clear the evidence in MS is early, and
+  flagging any supplement the client already takes so the clinician can review it. Out of scope:
+  recommending it, naming a dose, or advising on it in a client on diabetes medication - dose,
+  interaction and appropriateness are all prescriber decisions.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: "Chapter 78 — Multiple Sclerosis, pg 1286"
+  quote: |-
+    In studies using an animal model of MS, ALA has been shown to suppress the development of disease by preventing inﬂammatory immune cells from entering the central nervous system (this is similar to the way vitamin D acts).52,53 ALA has also been shown to modulate the immune system in a manner very beneﬁcial in MS.54
+- id: murray-pizzorno-2012-encyclopedia
+  location: "Chapter 78 — Multiple Sclerosis, pg 1287"
+  quote: |-
+    The study found that ALA given at 600 mg twice a day was barely measurable in serum, while ALA given at dose of 1,200 mg showed signiﬁcantly higher serum levels. The study also found an association between higher ALA serum levels and lower inﬂammatory mediator levels.55
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

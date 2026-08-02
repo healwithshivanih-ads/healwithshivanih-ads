@@ -1,0 +1,77 @@
+slug: murray-iron-absorption-helpers-and-blockers
+statement: |
+  Whether iron actually gets absorbed depends heavily on what it is taken with. Vitamin C
+  enhances iron absorption. Working against it: high intakes of calcium, magnesium and zinc
+  compete with iron, so iron is taken away from other mineral supplements; and tea, coffee,
+  wheat bran and egg yolk all contain substances that inhibit iron absorption, as do antacids
+  and overused calcium supplements. On form, the book calls ferrous sulfate the most popular
+  but least ideal salt because it commonly causes constipation and GI upset, and names
+  ferrous succinate, glycinate, fumarate and pyrophosphate as the better non-heme forms —
+  preferring micronized, microencapsulated ferrous pyrophosphate for its stability, absence
+  of GI side effects and sustained release.
+evidence_tier: strong
+rationale: >
+  The vitamin C enhancement and the tea/coffee (polyphenol) and calcium inhibition effects
+  are well replicated in absorption studies and are standard nutrition teaching; the book
+  cites reference 1 for the inhibitor list. The mineral-competition mechanism (shared
+  divalent-metal transport at the enterocyte) is sound. The claim that ferrous sulfate is
+  more poorly tolerated than the chelated forms is supported by comparative tolerability
+  data. The specific preference for micronized microencapsulated ferrous pyrophosphate rests
+  on a single cited reference (5) and reads as a product-form preference rather than a
+  consensus position — tiered down within this claim's caveats rather than asserted as
+  established.
+coaching_translation: >
+  Iron is fussy about company. A source of vitamin C at the same meal — lemon squeezed over
+  the dal, amla, guava, tomato, capsicum, coriander — meaningfully increases how much iron
+  the body takes up from plant foods. Tea and coffee do the opposite, and this is the single
+  biggest practical lever for Indian clients: chai taken with or straight after a meal
+  significantly blocks the iron in that meal. Moving chai to at least an hour either side of
+  meals is a small, doable change with real effect. Calcium supplements, milk-heavy meals and
+  antacids also compete, so those are best spaced away from iron-rich meals rather than taken
+  alongside.
+caveats:
+- The book does not quantify the spacing gap. A commonly used practical figure is about an
+  hour either side of the meal, but that is not from this chapter.
+- Anyone on regular antacids or acid-blocking drugs is likely to have impaired iron
+  absorption for that reason too; stopping or changing those drugs is a prescriber decision,
+  never a coaching one.
+- Preference for a particular iron salt or delivery form is a supplement-selection decision
+  and belongs to the clinician. Naming ferrous sulfate as poorly tolerated should never be
+  used to tell a client to stop or switch what their doctor prescribed.
+- Removing chai entirely is neither necessary nor culturally realistic; timing, not
+  elimination, is the intervention.
+linked_to_topics:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+linked_to_supplements:
+- vitamin-c
+- calcium
+linked_to_mechanisms:
+- heme-vs-nonheme-iron-absorption
+- phytate-mineral-binding
+out_of_scope_notes: >
+  Coach scope: meal-timing and food-pairing habits (vitamin C at meals, chai and coffee away
+  from meals, spacing calcium-rich or supplement-heavy moments away from iron-rich meals).
+  Clinician scope: prescribing iron, choosing the salt or dose, advising on antacid or
+  acid-blocker use, and deciding whether a supplement is needed at all.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 471
+  quote: >-
+    For iron deﬁciency, the usual recommendation for any non-heme source is generally up to
+    60 mg per day in divided doses. High intakes of other minerals, particularly calcium,
+    magnesium, and zinc, can interfere with iron absorption, so in treating iron deﬁciency it
+    is recommended to take iron away from other mineral supplements. In contrast, vitamin C
+    enhances iron absorption.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 472
+  quote: >-
+    Several foods and beverages contain substances that inhibit iron absorption, including
+    tea, coffee, wheat bran, and egg yolk. Antacids and overuse of calcium supplements also
+    decrease iron absorption. These items should be restricted by individuals who have iron
+    deﬁciency.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

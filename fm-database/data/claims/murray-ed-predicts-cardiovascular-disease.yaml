@@ -1,0 +1,64 @@
+slug: murray-ed-predicts-cardiovascular-disease
+statement: |
+  Erectile dysfunction arising from vascular insufficiency is an early warning sign of
+  systemic atherosclerosis, not a purely local or purely sexual problem. Murray and
+  Pizzorno state that atherosclerosis-related ED has been shown to be a risk factor for
+  heart attack and stroke, because atherosclerosis progresses systemically rather than
+  only in the coronary or penile arteries, and that men with diseased coronary arteries
+  are far more likely to have ED than men without coronary disease. The penile arteries
+  are narrower than the coronary arteries, so flow-limiting plaque tends to become
+  symptomatic there first — which is why new-onset ED should trigger cardiovascular and
+  metabolic screening by a doctor.
+evidence_tier: strong
+rationale: >
+  The book asserts the association and the shared-pathology mechanism but cites it
+  narratively rather than quantifying lead time. The underlying idea — endothelial
+  dysfunction and atherosclerosis expressing earlier in small-calibre penile arteries
+  than in coronaries — is well established in mainstream cardiology and urology, and the
+  chapter's own framing ("ED is now thought to be a major risk factor for cardiovascular
+  disease", pg 900) matches that consensus. Tiered strong on the association and the
+  referral implication, not on any specific predictive interval, which the book does not
+  give.
+coaching_translation: >
+  If a male client mentions new or worsening erectile difficulty, treat it as a
+  circulation signal, not just a sexual one. The arteries in the penis are much narrower
+  than the ones feeding the heart, so they tend to show reduced blood flow earlier. The
+  single most useful thing you can do is say plainly: "This is worth getting checked with
+  your doctor — a heart and blood-sugar check, not just a sexual-health check," and
+  support him to actually book it. Frame it as information about his blood vessels, which
+  is usually easier to hear and easier to act on than framing it as a sexual failure.
+caveats:
+- A doctor must exclude and assess cardiovascular disease, diabetes, hypertension and
+  dyslipidaemia before anything is attributed to stress or ageing.
+- The association does not make ED a diagnostic test for heart disease — a coach must
+  never say or imply "this means you have heart disease". The correct message is "this
+  is a reason to be screened".
+- ED can be entirely non-vascular (medication, thyroid, neurological, post-surgical,
+  psychological); coaching that assumes a vascular cause can delay the real diagnosis.
+- Chest pain, breathlessness on exertion, or exertional fatigue alongside new ED is an
+  urgent same-week medical referral, not a coaching conversation.
+linked_to_topics:
+- atherosclerosis
+- endothelial-dysfunction
+- cardiovascular-risk-assessment
+- cardiovascular-disease-prevention
+linked_to_supplements: []
+linked_to_mechanisms:
+- atherosclerosis
+- endothelial-dysfunction
+- atheromatous-vascular-disease
+- plaque-progression
+out_of_scope_notes: >
+  Coach scope: naming ED as a reason to seek cardiovascular and diabetes screening,
+  and supporting the lifestyle work once a doctor has assessed him. Clinician scope:
+  diagnosing vascular ED, ordering or interpreting lipids, glucose, penile Doppler or
+  cardiac testing, and any decision about PDE5 inhibitors or cardiac treatment.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 904
+  quote: |-
+    Atherosclerosis-related erectile dysfunction has been shown to be a risk factor for a heart attack or stroke.3 The process of atherosclerosis occurs systemically throughout the body, not just in the arteries supplying the heart or penis. Patients with diseased coronary arteries are much more likely to have erectile dysfunction than individuals without coronary disease.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

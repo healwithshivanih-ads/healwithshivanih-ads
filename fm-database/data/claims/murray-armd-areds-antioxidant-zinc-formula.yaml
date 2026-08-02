@@ -1,0 +1,86 @@
+slug: murray-armd-areds-antioxidant-zinc-formula
+statement: |
+  The Age-Related Eye Disease Study (AREDS) tested a combination rather than a single
+  nutrient, on the reasoning that no one antioxidant explains the impaired antioxidant
+  status seen in ARMD — the deficit is spread across several nutrients at once. The
+  amounts used were 500 mg vitamin C, 400 IU vitamin E, 15 mg beta-carotene (labelled
+  as equivalent to 25,000 IU vitamin A), 80 mg zinc as zinc oxide, and 2 mg copper as
+  cupric oxide. The copper is not optional decoration: at 80 mg/day zinc will induce
+  copper deficiency, which is why it is in the formula. Murray & Pizzorno's own
+  clinical recommendation sits well below the trial doses (zinc 30–45 mg/day, vitamin
+  E 100–200 IU, vitamin C 500–1,000 mg) inside a broader multi.
+evidence_tier: confirm_with_clinician
+rationale: >
+  AREDS is a large randomised trial and the dose figures are reported directly in the
+  chapter, so the numbers themselves are solid. The tier is set to
+  confirm_with_clinician because these are therapeutic, not nutritional, doses: 80 mg
+  elemental zinc daily is roughly eight times the RDA and is not a self-directed
+  intake, 400 IU vitamin E has its own signal in some cardiovascular and prostate
+  literature, and 15 mg beta-carotene is the exact intervention that increased lung
+  cancer incidence in smokers in the ATBC and CARET trials — a group that overlaps
+  heavily with the ARMD population, since smoking is a leading ARMD risk factor. The
+  chapter does not flag the smoker/beta-carotene conflict; that is a real omission and
+  is the reason this claim must not be actioned by a coach alone.
+coaching_translation: >
+  The big eye study did not test one vitamin — it tested a bundle, because people with
+  macular degeneration tend to be low across several antioxidants at once, not just
+  one. The bundle used high-dose vitamin C and E, beta-carotene, a large dose of zinc,
+  and a small amount of copper to stop the zinc from pushing copper down. These are
+  treatment-level doses, not everyday nutrition, so they belong in a conversation with
+  the client's eye doctor or physician — especially for anyone who smokes or used to.
+  What a coach can do meanwhile is build the food version: a wide, colourful plant
+  intake plus a sensible everyday multivitamin.
+caveats:
+- Beta-carotene at these doses is contraindicated in current and former smokers
+  (increased lung cancer incidence in ATBC and CARET) — a group over-represented in ARMD.
+  The chapter does not mention this.
+- 80 mg/day elemental zinc is a therapeutic dose; sustained use without the paired
+  copper causes copper-deficiency anaemia and myeloneuropathy, and can suppress immunity.
+- High-dose vitamin E interacts with warfarin and other anticoagulants.
+- Doses this size are prescriptive and outside coaching scope regardless of the client's
+  enthusiasm.
+- AREDS was conducted in a Western population; nothing in the chapter addresses whether
+  the same doses are appropriate for Indian clients with different baseline intakes.
+linked_to_topics:
+- macular-degeneration
+- oxidative-stress
+- zinc-nutrition
+- selenium-status
+linked_to_supplements:
+- vitamin-c
+- vitamin-e
+- zinc
+- copper
+- selenium
+linked_to_mechanisms:
+- oxidative-stress
+- zinc-antioxidant-activity
+out_of_scope_notes: >
+  Recommending, dosing or supervising an AREDS-type formula is clinician scope — it is
+  a therapeutic-dose regimen with a real interaction profile (zinc–copper, vitamin E–
+  anticoagulants, beta-carotene–smoking history). The coach may explain what the study
+  found, ask whether the client's ophthalmologist has discussed an eye formula, and
+  support the food-first version. The coach must not select a product, set a dose, or
+  tell a client to add zinc at 80 mg.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1224
+  quote: >-
+    conﬁrm that a combination of these nutrients will be likely to produce better
+    results than any single nutrient alone, because other studies have demonstrated
+    that none of these antioxidants alone accounts for the impaired antioxidant status
+    in ARMD.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1224
+  quote: >-
+    The speciﬁc amounts of antioxidants and zinc used in the study were 500 mg vitamin
+    C, 400 IU vitamin E, 15 mg beta-
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1224
+  quote: >-
+    carotene (often labeled as equivalent to 25,000 IU vitamin A), 80 mg zinc (as zinc
+    oxide), and 2 mg copper (as cupric oxide).
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

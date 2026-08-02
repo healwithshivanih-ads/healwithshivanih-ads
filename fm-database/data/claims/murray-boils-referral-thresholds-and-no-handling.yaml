@@ -1,0 +1,65 @@
+slug: murray-boils-referral-thresholds-and-no-handling
+statement: |
+  Murray & Pizzorno set an explicit escalation threshold for boils: if the boil is
+  severe, or has not resolved within two to three days, consult a physician — because
+  the infection can spread under the skin and cause cellulitis, or into the
+  bloodstream and cause bacteraemia. Their local instructions are equally explicit:
+  cleanliness is to be rigorously maintained, and the infected area is to be
+  immobilised and NOT handled except when a dressing or poultice must be changed.
+  Nowhere does the chapter endorse squeezing, pressing, or lancing a boil at home.
+evidence_tier: plausible_emerging
+rationale: >
+  Tiered plausible_emerging rather than strong because the chapter states the
+  two-to-three-day rule and the no-handling rule as clinical instruction with no
+  citation or trial behind them. The underlying facts are not in doubt — a furuncle
+  is a Staphylococcus aureus abscess, and cellulitis and bacteraemia are its
+  recognised complications — but the specific 48-72 hour threshold is the authors'
+  judgement call, and it is deliberately conservative. Handling and squeezing spread
+  a staph abscess through surrounding tissue and can force organisms into the
+  bloodstream; not touching it is the mechanism. This is the single most useful line
+  in the chapter for a health coach because it is the one that says when to stop
+  coaching.
+coaching_translation: >
+  Never squeeze, press, pick, or try to open a boil, and tell your client the same
+  in plain words — squeezing pushes the infection sideways into the skin or into the
+  blood. Keep the area clean, keep it covered, keep hands off it, and change any
+  dressing with washed hands. If it is severe, or has not started clearing within
+  two to three days, that is a doctor's visit, not a stronger home remedy. Go sooner
+  — same day — if there is spreading redness or red streaking, fever, fast-worsening
+  pain, a boil on the face or spine, or if the client is diabetic, pregnant, or on
+  medication that lowers immunity. Draining a boil and deciding about antibiotics is
+  a doctor's job, always.
+caveats:
+- This is the referral line, not a treatment claim. When it is crossed, the coach's job
+  is to get the client to a doctor, not to add another remedy.
+- Facial boils, especially around the nose and upper lip, carry cavernous sinus thrombosis
+  risk and should never be managed at home at all.
+- A boil in a diabetic client, a pregnant client, or anyone immunosuppressed goes to a
+  doctor immediately regardless of the two-to-three-day rule.
+- Incision and drainage and any antibiotic decision are clinician work. A coach must not
+  advise on antibiotics, including leftovers from a previous course, which are common in
+  Indian households.
+- India-specific everyday context - heat, humidity, sweat and friction under waistbands,
+  bra straps, helmets and collars all favour boils, and shared towels, razors and gym
+  benches spread Staphylococcus aureus within a household. Separate towels and hot-washed
+  linen are coach-scope advice; decolonisation protocols are not.
+- Household spread means an actively draining boil should be kept covered and hands washed
+  after every dressing change.
+linked_to_topics: []
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Clinician scope - assessing severity, incision and drainage, culture and sensitivity,
+  antibiotic prescription, and diagnosing cellulitis or bacteraemia. Coach scope -
+  teaching hands-off local care and hygiene, watching the clock against the
+  two-to-three-day threshold, naming the red flags out loud, and making the referral
+  happen.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 27 — Boils, pg 560
+  quote: |-
+    If the boil is severe or does not resolve within two to three days, consult a physician, since the infection can spread under the skin, causing cellulitis (inﬂammation of the connective tissue), or into the bloodstream, causing bacteremia (bacteria in the blood). Cleanliness should be rigorously maintained. The infected area should be immobilized and not handled, except when necessary to change the poultice.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

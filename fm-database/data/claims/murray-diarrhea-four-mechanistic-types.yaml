@@ -1,0 +1,44 @@
+slug: murray-diarrhea-four-mechanistic-types
+statement: |
+  The chapter divides diarrhoea into four mechanistic types, and the type points at the
+  cause. Osmotic diarrhoea is driven by an excess of water-soluble molecules held in the
+  stool - the listed triggers are magnesium, phosphate or sulfate laxatives, magnesium-
+  containing antacids, carbohydrate malabsorption such as lactose intolerance, polyols such
+  as sorbitol, and excess vitamin C or magnesium intake. Secretory diarrhoea comes from
+  excessive secretion of ions into the bowel and is listed as arising from toxin-producing
+  bacteria, hormone-producing tumours, fat malabsorption from poor bile output, laxative
+  abuse, and small-bowel resection. Exudative diarrhoea is inflammatory - inflammatory bowel
+  disease, C. difficile pseudomembranous colitis, invasive bacteria - and produces loss of
+  serum proteins, blood, mucus and pus. Inadequate-contact diarrhoea follows loss of
+  absorbing surface, as in bowel resection or short bowel syndrome.
+evidence_tier: strong
+rationale: >
+  This is the standard physiological taxonomy taught in gastroenterology and it is consistent across textbooks; the chapter presents it without citation but nothing in it is contested. Its practical value is real: the osmotic causes are almost entirely things a person swallowed, so they stop when the intake stops, whereas the secretory and exudative causes do not respond to fasting and need a clinician. Tiered strong on consensus, with the caveat that the book gives no diagnostic algorithm for telling them apart.
+coaching_translation: >
+  Not all loose stools are the same thing. Some are simply water pulled into the gut by something swallowed - a magnesium supplement or magnesium antacid, high-dose vitamin C, sugar-free mints and diet products containing sorbitol or other polyols, or lactose in a client who cannot digest it. That kind settles when the trigger is removed and typically eases if the client stops eating for a few hours. The other kinds - driven by bacterial toxins, inflammation, or a shortened bowel - do not settle when eating stops, and blood, mucus or pus in the stool puts it firmly in clinician territory. So the useful coaching question is: does it stop when they stop eating, and is there ever blood or mucus?
+caveats:
+- "The fasting test is a rough orientation, not a diagnostic; a clinician must exclude infection, IBD, coeliac disease and thyroid disease before any pattern is treated as benign."
+- "High-dose magnesium and vitamin C are common in FM protocols and are a frequent, easily missed cause of osmotic diarrhoea - review the client's own supplement stack before looking any further."
+- "Blood, mucus or pus points to the exudative group and is an immediate referral, never a coaching target."
+- "Hormone-producing tumours are on the secretory list; persistent watery diarrhoea with no dietary trigger must be worked up medically rather than managed with diet."
+linked_to_topics:
+- ibd
+linked_to_supplements: []
+linked_to_mechanisms:
+- lactase-deficiency-osmotic-load
+- malabsorption
+- gut-barrier-dysfunction
+- fodmap-fermentation
+out_of_scope_notes: >
+  A coach may take a careful intake history including every supplement, sweetener and over-the-counter antacid, and may notice the osmotic pattern and raise it. Assigning the diarrhoea to a type, and any work-up for tumours, IBD or infection, is clinician work.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 867
+  quote: "Diarrhea is divided into four major types: osmotic, secretory, exudative, and inadequate-contact. Osmotic diarrhea is caused by an excess of water-soluble molecules in the stool, which results in increased ﬂuid retention. Secretory diarrhea results from excessive secretion of ions into the bowel, with the same result of excessive water retention in the stools."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 867
+  quote: "Exudative diarrhea is usually due to infections and inﬂammatory bowel diseases, resulting in abnormal intestinal permeability and intestinal loss of serum proteins, blood, mucus, and pus."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

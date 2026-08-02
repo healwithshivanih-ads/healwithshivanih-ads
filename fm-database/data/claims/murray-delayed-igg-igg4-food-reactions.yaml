@@ -1,0 +1,72 @@
+slug: murray-delayed-igg-igg4-food-reactions
+statement: |
+  Murray & Pizzorno separate immediate from delayed food reactions by antibody
+  class. IgE drives the classic immediate (type I) reaction; IgG, IgG4, IgM and
+  IgA are held to drive delayed reactions, including the cyclical pattern that
+  comes and goes. Type III immune-complex reactions are described as occurring more
+  than two hours — and sometimes days — after exposure, and the authors estimate
+  that 80% of food allergy reactions involve IgG and IgG4. They further argue that
+  IgG4, once thought to be a protective blocking antibody, is itself involved in
+  producing allergic symptoms. This delayed timeframe is the practical reason food
+  reactions are so often missed: the client does not connect Tuesday's bloating to
+  Sunday's meal.
+evidence_tier: fm_specific_thin
+rationale: >
+  The delayed-reaction concept is genuinely useful clinically, and non-IgE-mediated
+  food reactions unquestionably exist. But the specific claims here are contested
+  and should not be presented to a client as settled. The 80% figure is given
+  without a citation in this chapter. More importantly, the book's reading of IgG4
+  runs directly against the mainstream immunological position, which treats
+  food-specific IgG and IgG4 as markers of normal exposure and developing oral
+  tolerance rather than of pathology — the major allergy societies (EAACI, AAAAI)
+  advise against IgG/IgG4 food panels for diagnosing food sensitivity for exactly
+  this reason. The chapter cites older asthma work to argue the opposite. Tiered
+  fm_specific_thin: the pattern is worth knowing, the antibody attribution is not
+  safe to assert.
+coaching_translation: >
+  Not every food reaction happens straight away. The obvious kind — hives within
+  minutes of eating peanut — is only a small slice. Far more often the reaction is
+  delayed, showing up hours or even a day or two later as bloating, headache,
+  joint ache, brain fog or a skin flare. That delay is exactly why people cannot
+  spot their own trigger: the timing does not line up in their head. It is also
+  why a symptom-and-food diary over two to three weeks tells us more than any
+  guess. Be careful with the blood panels that claim to measure this — see the
+  separate note on testing.
+caveats:
+- Do not tell a client that a positive IgG or IgG4 food panel proves a food is
+  harming them. Elevated food IgG frequently just reflects that they eat that
+  food, and allergy societies advise against these panels for diagnosis.
+- Delayed symptoms have many non-food causes — infection, stress, sleep loss,
+  medication, hormonal cycling — so a diary shows association, never causation.
+- The book's own preferred route to confirmation is elimination and rechallenge,
+  not antibody measurement; keep the diagnostic weight there.
+- Coeliac disease and IgE allergy must be excluded by a clinician before a
+  reaction is filed under "delayed sensitivity".
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- food-sensitivities
+- food-allergy-ige-mediated
+- autoimmune-conditions-igg-food-triggers
+linked_to_supplements: []
+linked_to_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+- mast-cell-degranulation-histamine-release
+out_of_scope_notes: >
+  A coach may explain that reactions can be delayed and may help a client keep a
+  food-and-symptom diary. A coach may NOT order, interpret, or act on IgG/IgG4
+  food panels, or tell a client which antibody class is driving their symptoms —
+  that is lab interpretation and diagnosis. Immediate IgE reactions (swelling,
+  wheeze, collapse) are an emergency and belong entirely to a clinician.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 940
+  quote: |-
+    These responses are of the delayed type, often occurring more than two hours or even days after exposure. This type of allergy has been shown to involve IgG and IgG4 immune complexes. It is estimated that 80% of food allergy reactions involve IgG and IgG4.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 943
+  quote: |-
+    One of the key advantages of the ELISA over other laboratory methods is its ability to measure IgG4 antibodies. This subclass of antibody was initially thought to act as a blocking antibody, thereby exerting protective effects against allergy. However, it is now established that IgG4 antibodies are actually involved in producing allergic symptoms.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

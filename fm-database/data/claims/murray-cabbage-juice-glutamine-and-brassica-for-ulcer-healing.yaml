@@ -1,0 +1,70 @@
+slug: murray-cabbage-juice-glutamine-and-brassica-for-ulcer-healing
+statement: |
+  Raw cabbage juice is the chapter's flagship food intervention for peptic ulcer:
+  documented since 1949, one litre per day of fresh juice in divided doses produced
+  total ulcer healing in an average of 10 days. The active principle is thought to
+  be glutamine, which feeds mucin synthesis and so rebuilds the protective layer
+  rather than blocking acid. A double-blind study of 57 patients using 1.6 g/day
+  glutamine beat conventional therapy (antacids, antispasmodics, milk, bland diet):
+  half healed within two weeks and 22 of 24 within four. Separately, sulforaphane
+  from brassicas is active against H. pylori — broccoli sprouts at 70 g/day for
+  eight weeks lowered H. pylori and gastric inflammation markers, though values
+  returned to baseline two months after stopping.
+evidence_tier: plausible_emerging
+rationale: >
+  Three different quality levels are stacked here and should not be flattened. The
+  1949 cabbage-juice work (refs 15, 16) is uncontrolled, pre-endoscopy, and used
+  radiographic healing — remarkable but not modern evidence. The glutamine trial
+  (ref 17) is double-blind with a plausible mucin-synthesis mechanism but small and
+  old, and the authors admit the mechanism is unproven. The broccoli-sprout study
+  (ref 18) is the strongest limb: randomised, double-blind, with an active-looking
+  placebo (alfalfa sprouts), though it reduced MARKERS and did not eradicate the
+  organism, and the effect washed out after stopping. Tiered plausible_emerging —
+  genuinely promising, food-based, low-risk, but nowhere near eradication-grade.
+coaching_translation: >
+  The kitchen has real tools here. Fresh raw cabbage juice is the oldest and
+  best-documented one — the original work used about a litre a day split across the
+  day, which is a lot, so most people start much smaller and build. What makes it
+  work seems to be an amino acid called glutamine that helps your stomach rebuild
+  its protective lining, which is a very different idea from just blocking acid.
+  Broccoli sprouts help too, in a different way: they contain a compound that
+  suppresses the H. pylori bacterium — but only while you keep eating them, so it
+  is a habit, not a course. Cabbage, broccoli, cauliflower and mustard greens all
+  belong to the same family and all fit an Indian vegetarian plate easily.
+caveats:
+- |-
+  A litre a day of raw cabbage juice causes significant gas and bloating in most people and is impractical long-term — start at a small glass and build, and stop if it aggravates
+- |-
+  Raw cabbage is goitrogenic in quantity; in a client with thyroid disease this needs the doctor's awareness, especially at juice-level volumes
+- |-
+  Broccoli sprouts must be grown and rinsed hygienically — sprouts are a recognised food-safety risk, which matters more in a warm Indian climate
+- |-
+  The sulforaphane effect reversed within two months of stopping — it suppresses, it does not eradicate, and it is not a substitute for prescribed eradication therapy
+- |-
+  Supplemental glutamine is a separate decision from cabbage juice and should be cleared with the doctor in anyone with liver or kidney disease
+linked_to_topics: [peptic-ulcer-disease, h-pylori-infection, gastrointestinal-tract-overview]
+linked_to_supplements: [l-glutamine, sulforaphane-broccoli-sprouts, sulforaphane]
+linked_to_mechanisms: [gastric-mucin-degradation, gastric-mucosal-barrier-disruption, h-pylori-mucosal-defense-breakdown]
+out_of_scope_notes: >
+  Recommending cabbage juice, broccoli sprouts and brassica-rich meals is food
+  coaching and in scope. Recommending a specific therapeutic dose of supplemental
+  L-glutamine is a supplement recommendation and should be routed through the
+  client's doctor, particularly alongside prescribed therapy. Never position any of
+  this as a replacement for H. pylori eradication.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1379
+  quote: |-
+    Raw cabbage juice was ﬁrst documented as having remarkable success in treating peptic ulcers in 1949.15,16 One liter per day of the fresh juice, taken in divided doses, resulted in total ulcer healing in an average of only 10 days. Further research has shown that the high glutamine content of the juice is probably responsible for its efﬁcacy in treating ulcers.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1379
+  quote: |-
+    In a double-blind clinical study of 57 patients, 24 using 1.6 g per day of glutamine and the rest using conventional therapy (antacids, antispasmodics, milk, and a bland diet), glutamine proved to be the more effective treatment. Half of the patients using glutamine showed complete healing (according to radiographic analysis) within two weeks, and 22 of the 24 showed complete relief and healing within four weeks.17
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1380
+  quote: |-
+    48 H. pylori–infected patients were randomly assigned to consume broccoli sprouts (70 g per day for eight weeks), which contain sulforaphane, or to consume an equal amount of alfalfa sprouts, which do not contain sulforaphane, as a placebo. Broccoli sprouts decreased markers for both H. pylori and gastric inﬂammation. Values returned to their original levels two months after treatment was discontinued.18
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

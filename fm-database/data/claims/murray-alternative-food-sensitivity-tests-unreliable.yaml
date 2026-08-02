@@ -1,0 +1,67 @@
+slug: murray-alternative-food-sensitivity-tests-unreliable
+statement: |
+  Even a book sympathetic to functional testing draws a hard line here. Murray &
+  Pizzorno state that energetic food-sensitivity testing methods —
+  electroacupuncture according to Voll, Vega testing, Carroll testing, applied
+  kinesiology, electrodermal screening, bioresonance — along with cytotoxic food
+  allergy testing and NAET, have either never been studied for clinical relevance
+  or have been shown to be unreliable and clinically questionable. Meanwhile the
+  lab tests they do endorse are convenient but expensive, ranging from about $130
+  to $1,200 in 2012 US pricing, and report only on the specific antibodies they
+  measure — so a panel that looks comprehensive is still a narrow window.
+evidence_tier: strong
+rationale: >
+  This is a negative claim and it is well supported. Applied kinesiology, Vega/EAV
+  electrodermal screening, bioresonance, cytotoxic testing and NAET have all been
+  tested in controlled and blinded conditions and have failed to reproduce their
+  own results or to distinguish allergic from non-allergic subjects; the same
+  conclusion is reached independently by conventional allergy bodies. The authors
+  cite eight references (17-24) for it. The mechanism claim behind these devices
+  (measuring a food's "energetic signature" through skin resistance or muscle
+  strength) has no plausible physiological basis. Tiered strong. The cost figures
+  are 2012 US dollars and are quoted as an illustration of the cost gradient, not
+  as current pricing.
+coaching_translation: >
+  If someone offers to find your food triggers by holding vials against your skin,
+  testing your muscle strength, or running a machine over your hand, that is not a
+  test — it has been checked properly and it does not work. It costs money, it
+  hands you a long list of foods to fear, and it can send you down months of
+  unnecessary restriction. Even blood panels only tell you about the specific
+  antibodies they measured, and they are expensive. The unglamorous route — take
+  the food out, put it back, write down what happened — is still the one that
+  actually answers the question.
+caveats:
+- The dollar figures are 2012 US pricing and are not a guide to Indian lab costs;
+  quote them only as a relative point, never as a current price.
+- A client may arrive already holding a list from one of these methods, sometimes
+  naming twenty or thirty foods. Do not validate the list and do not implement it
+  — but do not shame the client either; redirect to a clinician-supervised
+  elimination trial.
+- 'The mainstream position is stricter than the book''s: food-specific IgG/IgG4
+  panels are also advised against for diagnosis by the major allergy societies, so
+  even the tests this chapter endorses should be discussed cautiously.'
+linked_to_topics:
+- food-sensitivities
+- food-sensitivity-igg-iga-mediated
+- elimination-diet
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  A coach may explain, factually and without disparaging a named practitioner,
+  that these methods lack evidence, and may decline to build a plan on their
+  output. A coach may not order tests, interpret lab results, or tell a client
+  their existing diagnosis is wrong. If a client wants testing, the referral is to
+  a physician or allergist.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 944
+  quote: |-
+    Energetic methods of food sensitivity testing (electroacupuncture according to Voll, Vega testing, Carroll testing, applied kinesiology, electrodermal screening, and bioresonance therapy), cytotoxic food allergy testing, and Nambudripad’s allergy elimination techniques (NAET) are some of the ways alternative medicine practitioners test for food sensitivities or intolerances, but scientific studies either have not been done to verify the clinical relevance of these methods or have shown these methods to be unreliable and clinically questionable.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 943
+  quote: |-
+    Most nutritionally oriented physicians now employ blood tests to diagnose food allergies. These tests are convenient, but they can range in cost from a modest $130 to an extravagant $1,200.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

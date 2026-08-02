@@ -1,0 +1,26 @@
+slug: murray-gout-protein-intake-urate
+statement: |
+  Murray & Pizzorno put an explicit ceiling on protein in gout: intake should not be excessive, defined as more than 0.8 g per kg of body weight per day, because uric acid synthesis has been shown to be accelerated by high protein intake in both normal subjects and gout patients. The treatment summary repeats it as 'optimize protein intake (under 0.8 g/kg per day)' (pg 993). This is the specific evidential basis for holding a client's protein target DOWN — rather than up to the usual functional-medicine 1.2 g/kg — when uric acid is raised. It sits alongside the same section's instruction to keep refined carbohydrate and saturated fat to a minimum and raise complex carbohydrate.
+evidence_tier: plausible_emerging
+rationale: This is a single referenced assertion in the chapter, not a body of trial evidence, and it deserves an honest tier for three reasons. First, 0.8 g/kg is simply the general adult RDA rather than a gout-specific threshold derived from urate data — the book adopts a familiar number rather than deriving one. Second, the chapter does not distinguish protein SOURCE at all, yet the purine load of 100 g of paneer, 100 g of dal and 100 g of liver are wildly different, and the chapter's own food tiering already says as much. Third, capping protein has real costs — sarcopenia risk, satiety loss, and a harder time achieving the weight loss the same chapter calls for — so it is a trade, not a free win. The claim is retained and tiered honestly because it is a genuine, sourced instruction from a standard text, and because it is the specific statement that justifies suppressing a protein floor when a client shows raised urate. It should be treated as a reason to moderate and monitor, not as a hard rule.
+coaching_translation: 'When uric acid is high, more protein is not automatically better. Uric acid is made from purines, and purines come largely from protein-rich tissue — so a very high protein intake gives the body more raw material to turn into uric acid. The book''s guidance is to keep protein at or under about 0.8 g per kilogram of body weight per day, which for a 60 kg person is roughly 48 g a day — noticeably lower than the higher-protein targets often used for weight loss or muscle. Two honest caveats to hold with the client. The source matters and the book does not address it: eggs, milk and paneer sit in its unrestricted or low-purine group, while organ meat and small oily fish do not. And going too low has its own costs — muscle loss, poor satiety, and harder weight management. So this is ''moderate and watch'', decided with the doctor who ordered the uric acid test, not a licence to strip protein out of the diet.'
+caveats:
+- 0.8 g/kg is the general adult RDA, not a gout-specific derived threshold; the chapter adopts the number without deriving it from urate data.
+- The chapter does not distinguish animal from plant or dairy protein, although its own purine tiering implies the source matters a great deal. Do not apply a flat cap across all sources without thought.
+- Restricting protein conflicts with the same chapter's call for weight loss and with sarcopenia prevention, especially in older clients. Flag the trade-off to the clinician rather than resolving it alone.
+- In anyone with kidney disease, protein targets are a clinician's decision entirely — do not set one.
+- Only a clinician may decide that a client's uric acid is raised. A coach applies this in response to a clinician-confirmed finding, never to a self-interpreted lab.
+linked_to_topics:
+- gout
+- kidney-stones
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Coaching protein moderation and food-source choices is in scope. Setting a therapeutic protein prescription, interpreting serum urate or renal function, and managing protein in kidney disease are clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 55 — Gout, pg 989
+  quote: Protein intake should not be excessive (i.e., more than 0.8 g/kg per day), as it has been shown that uric acid synthesis may be accelerated in both normal and gouty patients by a high protein intake.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

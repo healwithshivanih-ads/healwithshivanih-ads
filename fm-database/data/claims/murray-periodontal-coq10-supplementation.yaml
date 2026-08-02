@@ -1,0 +1,55 @@
+slug: murray-periodontal-coq10-supplementation
+statement: |
+  CoQ10 is the single supplement in this chapter with named clinical outcome data.
+  Murray & Pizzorno cite a review of seven studies in which 70% of 332 patients
+  responded favourably to CoQ10 supplementation, and a double-blind study of 56
+  subjects in which the supplemented group responded significantly while the placebo
+  group showed very little change in periodontal pocket depth and tooth mobility.
+  CoQ10 is presented as both an energy-production cofactor and an effective
+  antioxidant, and the book notes it is widely used in Japan for periodontal disease.
+  The dose given in the treatment summary is 50 to 100 mg three times per day.
+evidence_tier: plausible_emerging
+rationale: >
+  This is the strongest supplement signal in the chapter, and it is still modest.
+  Pocket depth and tooth mobility are hard clinical endpoints rather than surrogate
+  markers, and at least one study was double-blind, which is more than any other
+  nutrient here offers. But n=56 is small, the seven-study review is not described
+  (design, blinding, whether "responded favourably" was investigator-assessed), the
+  work is decades old and largely from one research tradition, and 70% response with
+  no stated placebo response rate is uninterpretable on its own. The proposed
+  150–300 mg/day is a high dose by any standard. Genuinely promising, not established.
+coaching_translation: >
+  Of everything in this chapter, CoQ10 has the most actual trial evidence behind it
+  for gum health — in one blinded study, people taking it had measurable improvement
+  in gum pocket depth and tooth looseness while the placebo group barely changed. It
+  is thought to work by supporting energy production and acting as an antioxidant in
+  the gum tissue. This is a conversation to have with your dentist or doctor, not
+  something to start on your own, especially if you are on medication.
+caveats:
+- CoQ10 can reduce the effect of warfarin — a hard interaction that must be cleared by the prescriber.
+- Statins deplete CoQ10 via the mevalonate pathway, so a statin-taking client with gum disease is a reasonable case to raise with their doctor — but the coach raises it, never initiates it.
+- 150–300 mg/day is expensive and well above typical supplemental intake; ubiquinol versus ubiquinone form and fat co-ingestion affect absorption.
+- Evidence is old and mostly Japanese; no data here on whether CoQ10 adds anything on top of proper dental treatment.
+- Never positioned as an alternative to scaling and root planing.
+linked_to_topics:
+- periodontal-disease
+- oxidative-stress
+linked_to_supplements:
+- coq10
+linked_to_mechanisms:
+- coq10-depletion
+- oxidative-stress
+out_of_scope_notes: >
+  Suggesting a specific CoQ10 dose is prescribing and sits with the physician,
+  especially given the warfarin interaction. The coach may educate that CoQ10 has
+  trial evidence in gum disease, may flag statin-related CoQ10 depletion for the
+  doctor's attention, and must refer the periodontal treatment itself to a dentist.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1392
+  quote: >-
+    Coenzyme Q10 is widely used in Japan to treat many conditions, including periodontal disease. A review of seven studies found that 70% of the 332 patients involved responded favorably to CoQ10 supplementation.22 A double-blind study comprising 56 subjects found that the supplemented group responded signiﬁcantly, while the placebo group displayed very little change in periodontal pocket depth and tooth mobility.23
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

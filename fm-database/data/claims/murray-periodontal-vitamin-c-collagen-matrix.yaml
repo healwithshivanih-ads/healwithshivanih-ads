@@ -1,0 +1,64 @@
+slug: murray-periodontal-vitamin-c-collagen-matrix
+statement: |
+  Vitamin C status is one of the load-bearing nutritional factors in periodontal
+  disease. The collagen matrix of the periodontal membrane anchors the tooth to the
+  alveolar bone and absorbs chewing pressure, and because periodontal collagen is
+  constantly being renewed it is unusually vulnerable when the cofactors for collagen
+  synthesis — protein, zinc, copper, and vitamins C, B6 and A — are deficient. Murray
+  & Pizzorno point to gingivitis as the classical sign of scurvy to illustrate vitamin
+  C's role in maintaining periodontal membrane and collagen integrity, and argue that
+  even subclinical deficiency contributes through impaired collagen, impaired
+  neutrophil function and delayed wound healing. Their suggested intake in the
+  treatment summary is 500 to 1,000 mg three times per day.
+evidence_tier: plausible_emerging
+rationale: >
+  Two different strengths are bundled here and should not be conflated. That frank
+  vitamin C deficiency causes gingival breakdown is beyond dispute — scurvy is the
+  proof, and the collagen-synthesis biochemistry (vitamin C as cofactor for prolyl and
+  lysyl hydroxylase) is textbook. That SUBCLINICAL deficiency meaningfully drives
+  periodontal disease in a well-fed person, and that supplementing 1.5–3 g/day
+  improves gum outcomes, is the weaker claim: the chapter cites experimental studies
+  in aggregate without giving trial designs or effect sizes. The dose recommended is
+  well above dietary adequacy and is the authors' clinical practice, not a trial-
+  validated dose. Tiered plausible_emerging on that basis.
+coaching_translation: >
+  Your gums are held onto your teeth by collagen, and that collagen is rebuilt
+  constantly — so it needs raw materials every day, not occasionally. Vitamin C is the
+  headline one; the classic sign of severe vitamin C deficiency is bleeding, inflamed
+  gums. Protein, zinc and vitamin A matter too. In practice this is amla, guava,
+  citrus, capsicum, lemon in your daily food, plus enough dal, paneer or eggs to keep
+  protein up. Smokers burn through vitamin C faster, which is one more reason quitting
+  helps gums.
+caveats:
+- Doses of 500–1,000 mg three times daily are the authors' therapeutic suggestion, not an established requirement; high-dose vitamin C can cause loose stools and is a caution in oxalate kidney stones and in haemochromatosis.
+- Vitamin C supplements raise non-haem iron absorption — relevant either way for Indian vegetarian clients with low ferritin or with iron overload.
+- Recommending a specific therapeutic dose is prescribing; a coach can discuss food sources freely and should leave dosing to the clinician.
+- Poor wound healing plus bleeding gums can indicate diabetes or a bleeding disorder — refer rather than assume a vitamin gap.
+linked_to_topics:
+- periodontal-disease
+- immune-nutrition
+linked_to_supplements:
+- vitamin-c
+- vitamin-a
+- zinc
+- collagen-peptides
+linked_to_mechanisms:
+- oxidative-stress
+out_of_scope_notes: >
+  The coach may teach vitamin-C-rich and protein-adequate eating and may notice signs
+  worth a referral. Diagnosing a deficiency, ordering or reading a serum ascorbate or
+  ferritin result, and prescribing gram-level vitamin C are clinician scope. Treating
+  the gum disease itself remains dentist scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1390
+  quote: >-
+    The classical symptom of gingivitis seen in scurvy (severe vitamin C deﬁciency) illustrates the vital function vitamin C plays in maintaining the integrity of the periodontal membrane and collagen matrix.1 The effects of deﬁciency on the bone include osteoporosis and retardation or cessation of bone formation. Subclinical vitamin C deﬁciency plays a signiﬁcant role in periodontal disease through these effects and through its role in delaying wound healing.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1389
+  quote: >-
+    Because periodontal collagen is constantly being renewed, it is extremely vulnerable when the necessary cofactors for collagen synthesis (protein, zinc, copper, vitamins C, B6, and A, etc.) are absent or deﬁcient.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

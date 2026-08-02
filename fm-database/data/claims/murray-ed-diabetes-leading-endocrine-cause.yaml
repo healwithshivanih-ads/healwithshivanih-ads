@@ -1,0 +1,61 @@
+slug: murray-ed-diabetes-leading-endocrine-cause
+statement: |
+  Diabetes is named as the most common endocrine cause of erectile dysfunction. It causes
+  ED by two routes at once — accelerated atherosclerosis reducing blood inflow, and nerve
+  damage impairing the signal that triggers and sustains an erection. Hypothyroidism and
+  low testosterone are listed as the other relatively common endocrine contributors. In
+  practice this means new-onset ED is a reason to check blood glucose and HbA1c, not only
+  to look at the vascular picture, and that glycaemic control is a direct part of
+  addressing the cause rather than a general health aside.
+evidence_tier: strong
+rationale: >
+  The dual mechanism — diabetic macrovascular disease plus autonomic and peripheral
+  neuropathy — is standard, well-replicated physiology and matches mainstream diabetology
+  and urology. The book states it plainly and consistently with the wider evidence base.
+  Tiered strong on the causal link and the dual mechanism; the book gives no prevalence
+  figure or effect size for glycaemic improvement on erectile function, so no claim is
+  made about how much control reverses.
+coaching_translation: >
+  Long-standing or poorly controlled diabetes is one of the commonest reasons for
+  erectile difficulty, and it does damage two ways — it narrows the blood vessels and it
+  damages the nerves. For a client with type 2 diabetes or prediabetes, this is one more
+  concrete, personal reason that blood sugar control matters now rather than later, and
+  many men find it more motivating than an abstract HbA1c number. If a man has ED and has
+  never been screened for diabetes, that screening is the first thing to encourage. Nerve
+  damage is slower to recover than circulation, so set expectations honestly: better
+  control helps, but it is not an overnight switch.
+caveats:
+- Diagnosis of diabetes or prediabetes and any interpretation of glucose or HbA1c is
+  clinician scope.
+- Several diabetes and blood pressure medications can themselves contribute to ED — a
+  coach must never suggest stopping or adjusting one.
+- Established diabetic neuropathy may not reverse with glycaemic control; do not promise
+  that it will.
+- Hypothyroidism and low testosterone also sit in this bucket and need blood tests, not
+  symptom-guessing.
+linked_to_topics:
+- type-2-diabetes
+- prediabetes
+- insulin-resistance
+- diabetic-neuropathy
+- hypothyroidism
+linked_to_supplements: []
+linked_to_mechanisms:
+- atherosclerosis
+- microvascular-damage
+- insulin-resistance
+- endothelial-dysfunction
+out_of_scope_notes: >
+  Coach scope: supporting the eating pattern, activity, sleep and weight work that
+  improves glycaemic control, and encouraging screening. Clinician scope: diagnosing
+  diabetes, interpreting glucose and HbA1c, managing medication, and diagnosing
+  neuropathy.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 49 — Erectile Dysfunction, pg 905
+  quote: |-
+    There are various endocrine and hormonal disorders that can lead to erectile dysfunction. The most common of these disorders is diabetes. Individuals with diabetes are at higher risk for atherosclerosis and nerve damage, both of which can cause ED.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

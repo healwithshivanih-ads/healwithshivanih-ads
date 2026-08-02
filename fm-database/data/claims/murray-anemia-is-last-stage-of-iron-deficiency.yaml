@@ -1,0 +1,65 @@
+slug: murray-anemia-is-last-stage-of-iron-deficiency
+statement: |
+  Anemia is the LAST stage of iron deficiency, not its first sign. Iron-dependent enzymes
+  involved in energy production and metabolism are impaired long before haemoglobin falls,
+  so a person can have normal haemoglobin and still be functionally iron-depleted — with
+  reduced physical work capacity, poorer immune function and low energy. Murray & Pizzorno
+  name serum ferritin as the best laboratory test for body iron stores, and report some
+  degree of iron deficiency in 35–58% of young, healthy women, with evidence of deficiency
+  in 30–50% of the highest-risk groups (infants under two, teenage girls, pregnant women,
+  the elderly).
+evidence_tier: strong
+rationale: >
+  The staging of iron deficiency (storage depletion → iron-deficient erythropoiesis → frank
+  anemia) is standard haematology and is not a functional-medicine-only position; the book
+  cites reference 1 for both the ferritin statement and the work-capacity finding, and states
+  the work-capacity effect has been "clearly demonstrated". The mechanism is coherent:
+  ferritin is the storage protein, so stores fall first, while haemoglobin is defended until
+  stores are exhausted. Tiered strong for the staging and the role of ferritin. The specific
+  prevalence percentages are US figures from a 2012 edition and should be treated as
+  illustrative rather than current or India-specific.
+coaching_translation: >
+  "Feeling wiped out" can come from low iron long before a haemoglobin test looks abnormal.
+  Iron isn't only for carrying oxygen — it also runs the enzymes that make energy inside your
+  cells, and those run short first. So a "normal haemoglobin" report does not by itself rule
+  out low iron. If your energy, exercise tolerance or stamina has dropped, it is worth asking
+  your doctor whether a fuller iron picture — not just haemoglobin — has been looked at. This
+  matters especially for teenage girls, women who are menstruating, women who are pregnant or
+  breastfeeding, and older adults.
+caveats:
+- Anemia always needs a medical workup first — it can be caused by blood loss from an ulcer,
+  hemorrhoids or a bowel lesion, or by red-cell destruction, none of which are fixed by iron.
+- Ferritin is an acute-phase reactant and rises with inflammation, infection and liver
+  disease, which can mask depleted stores. A "normal" ferritin alongside a high CRP does not
+  clear the picture. The chapter does not mention this limitation.
+- Prevalence figures quoted are US data circa 2012. Indian prevalence of iron deficiency,
+  particularly among women and adolescent girls, is substantially higher; use national data,
+  not these numbers, in any client conversation.
+- Do not encourage iron supplementation on the basis of symptoms alone — iron overload and
+  haemochromatosis exist, and unneeded iron is harmful.
+linked_to_topics:
+- iron-deficiency-anemia
+- iron-deficiency
+- iron-nutrition
+linked_to_supplements: []
+linked_to_mechanisms:
+- ferritin-storage-depletion
+out_of_scope_notes: >
+  Ordering ferritin, iron studies or a CBC, and interpreting any of those results, is clinician
+  scope — the coach may not read a lab or say a client "is iron deficient". The coach's scope
+  is educating the client that fatigue has an iron-status question worth raising with their
+  doctor, supporting them to actually go and ask it, and coaching the dietary and absorption
+  habits around whatever the doctor finds.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 466
+  quote: >-
+    some degree of iron deﬁciency occurs in 35 to 58% of young, healthy women. During
+    pregnancy, the number is even higher. However, it must be pointed out that anemia is the
+    last stage of iron deﬁciency. Iron-dependent enzymes involved in energy production and
+    metabolism are the ﬁrst to be affected by low iron levels. Serum ferritin is the best
+    laboratory test for determining body iron stores.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

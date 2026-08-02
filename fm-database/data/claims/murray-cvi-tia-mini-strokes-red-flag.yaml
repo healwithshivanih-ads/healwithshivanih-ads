@@ -1,0 +1,44 @@
+slug: murray-cvi-tia-mini-strokes-red-flag
+statement: |
+  The chapter defines a stroke as loss of nerve function for at least 24 hours due to lack of oxygen, and a transient ischaemic attack (TIA, 'mini-stroke') as the same loss of function lasting an hour or more but under 24 hours. TIAs can present as dizziness, ringing in the ears, blurred vision or confusion that then clears. Murray & Pizzorno stress that repeated TIAs cause substantial progressive damage to brain function, and that the absence of a single dramatic event is exactly what allows the problem to go unrecognised until too late.
+evidence_tier: strong
+rationale: |
+  This is standard, well-established neurology and matches current stroke-medicine consensus: TIA is a warning event carrying high short-term stroke risk, and repeated small ischaemic events accumulate into vascular cognitive impairment. The only dated element is the 24-hour time-based definition - current practice increasingly defines TIA tissue-based (no infarction on imaging) rather than by duration - but that refinement does not change the action, which is urgent assessment either way. Tiered strong.
+coaching_translation: |
+  Some episodes clear up on their own and that is exactly why they get ignored. If a client mentions that they had an episode of sudden confusion, sudden blurred or lost vision, sudden dizziness, weakness on one side, a droop on one side of the face, or speech that came out wrong - even if it lasted ten minutes and they feel completely normal now - that is a red flag, not a coaching topic. Stop the session agenda, tell them plainly that this needs a doctor today, and help them make the call. Repeated small episodes are what quietly erode memory and thinking over years.
+caveats:
+- 'STROKE/TIA IS A MEDICAL EMERGENCY. Sudden one-sided weakness or numbness, facial droop, slurred or
+  lost speech, sudden severe headache, sudden vision loss or sudden loss of balance means call emergency
+  services immediately - do not schedule a coaching call, do not ''watch it'', do not suggest a supplement.
+  Symptoms that resolve within minutes or hours are still an emergency: a TIA is a warning of an impending
+  stroke and needs same-day medical assessment.'
+- Never reassure a client that a resolved episode was 'probably nothing' or attribute it to low blood
+  sugar, dehydration, stress or a migraine. Distinguishing those from a TIA is a medical diagnosis and
+  requires imaging.
+- Do not add or adjust any supplement, fasting protocol, breath-hold practice, sauna, inversion or intense
+  exercise for a client reporting these episodes until a physician has assessed them.
+- Document what the client said in their own words and the date, and confirm they made contact with a
+  clinician. This protects the client and the coach.
+linked_to_topics:
+- stroke-recovery
+- cognitive-decline
+- coagulation-imbalance
+- tinnitus
+linked_to_supplements: []
+linked_to_mechanisms:
+- cerebral-perfusion
+- plaque-progression
+- microclot-formation
+out_of_scope_notes: |
+  Recognising and escalating red flags is squarely inside coaching scope - and is arguably the most important thing a coach does here. Diagnosing TIA vs stroke vs mimic, imaging, and starting antiplatelet or anticoagulant therapy are clinician scope only.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 35 — Cerebral Vascular Insufficiency, pg 646
+  quote: 'TIAs may produce transient symptoms of CVI: dizziness, ringing in the ears, blurred vision,
+    confusion, and so on. Repeated TIAs are serious, as over time they can result in substantial, progressive
+    damage to brain function. What makes this so insidious is that the lack of a sudden event can mask
+    the problem, so it is not recognized until too late.'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -5,15 +5,24 @@ forms_available:
 - capsule
 - tablet
 evidence_tier: strong
-notes_for_coach: Clinical trial used 5 mg/kg body weight — this is a prescription-level
-  dose and must be clinician-supervised. Also lowers homocysteine synergistically
-  with folate. Long-term high-dose B6 risk of peripheral neuropathy.
-notes_for_client: B6 may help lower blood pressure by calming the nervous system and
-  reducing stress hormones. Discuss dosing with your healthcare provider.
+notes_for_coach: 'Clinical trial used 5 mg/kg body weight — this is a prescription-level dose and must
+  be clinician-supervised. Also lowers homocysteine synergistically with folate. Long-term high-dose B6
+  risk of peripheral neuropathy.
+
+
+  MERGED 2026-08-02: vitamin-b6-pyridoxine, pyridoxine-b6 and vitamin-b6-b12 were duplicate entries for
+  this same compound and have been merged in; all three survive as aliases so existing plan and catalogue
+  references still resolve. Pyridoxal-5-phosphate (P5P) is deliberately kept as a SEPARATE entry — it
+  is the active coenzyme form, the same reasoning that keeps folate and methylfolate separate. SAFETY:
+  pyridoxine neuropathy is dose-dependent and presents as hand numbness/tingling that can be mistaken
+  for the very symptom being treated; do not escalate above the stated range.'
+notes_for_client: B6 may help lower blood pressure by calming the nervous system and reducing stress hormones.
+  Discuss dosing with your healthcare provider.
 timing_options:
 - with_breakfast
 - with_lunch
 - morning
+- mid_afternoon
 take_with_food: optional
 linked_to_topics:
 - drug-induced-nutrient-depletion
@@ -31,15 +40,22 @@ linked_to_topics:
 - type-2-diabetes-mellitus
 - essential-hypertension
 - premenstrual-syndrome
+- chronic-inflammation
+- mthfr-gene-variant
+- homocysteine-and-methylation
+- methylation
+- carpal-tunnel-syndrome
+- cervical-dysplasia
+- drug-induced-nutrient-depletion-cardiovascular
 linked_to_mechanisms:
 - elevated-homocysteine
 typical_dose_range:
   capsule:
-    min: 50
+    min: 25
     max: 200
     unit: mg
   tablet:
-    min: 50
+    min: 25
     max: 200
     unit: mg
 linked_to_claims:
@@ -50,35 +66,52 @@ linked_to_claims:
 - vitamin-b6-protects-against-diabetic-neuropathy
 - b6-reduces-systolic-diastolic-and-norepinephrine
 - murray-b6-magnesium-pms-foundation
+- b-vitamins-anti-inflammatory-b3-b6
+- b6-b2-support-folate-cycle-and-homocysteine
+- cts-b6-b2-combined-benefit
+- elevated-homocysteine-triples-heart-attack-risk
+- metformin-depletes-b12-folate-coq10
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Vitamin B6, B12
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Vitamin B6 & Folate: Support serotonin, GABA synthesis. PMS, mood swings,
-    chronic anxiety.'
+  quote: 'Vitamin B6 & Folate: Support serotonin, GABA synthesis. PMS, mood swings, chronic anxiety.'
 - id: vitaone-health-coaching-cheatsheet
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS,
-    mood swings, chronic anxiety.'
+  quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS, mood swings, chronic
+    anxiety.'
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Platelet Aggregation
-  quote: A significant inverse graded relationship exists between serum pyridoxal-5-phosphate
-    (P5P) and both CRP and fibrinogen.
+  quote: A significant inverse graded relationship exists between serum pyridoxal-5-phosphate (P5P) and
+    both CRP and fibrinogen.
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Vitamin B6
-  quote: Vitamin B6 supplements protect against diabetic neuropathy. Vitamin B6 inhibits
-    glycosylation of proteins. Dose in general is up to 150 mg q.d.
+  quote: Vitamin B6 supplements protect against diabetic neuropathy. Vitamin B6 inhibits glycosylation
+    of proteins. Dose in general is up to 150 mg q.d.
 - id: pizzorno-cardiometabolic-hypertension
   location: Therapeutic Considerations / Folic acid and vitamin B6
-  quote: B6 alone lowers BP. B6 oral dosage of 5 mg/kg body weight for 4 weeks reduced
-    systolic and diastolic BP and serum norepinephrine.
+  quote: B6 alone lowers BP. B6 oral dosage of 5 mg/kg body weight for 4 weeks reduced systolic and diastolic
+    BP and serum norepinephrine.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 8
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Anti-Inflammatory Vitamins
+  quote: Vitamin C is anti-inflammatory, vitamin B3 is anti-inflammatory, and vitamin B6 is anti-inflammatory.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Cofactors / Supplementation section
+  quote: For the sulfation pathway to actually carry out, vitamin B6 is an important cofactor.
+- id: pizzorno-textbook-gi-2
+  location: Carpal Tunnel Syndrome — Supplements
+  quote: 'Pyridoxine: 50 to 200 mg q.d. in divided doses of 25 to 50 mg b.i.d. to q.i.d. If no response
+    to pyridoxine, try P5P: 10 mg b.i.d. to q.i.d.'
+version: 9
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-02'
 updated_by: Shivani
-aliases: []
+aliases:
+- pyridoxine-b6
+- vitamin-b6-b12
+- vitamin-b6-pyridoxine

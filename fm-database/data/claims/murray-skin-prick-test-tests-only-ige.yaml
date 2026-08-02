@@ -1,0 +1,64 @@
+slug: murray-skin-prick-test-tests-only-ige
+statement: |
+  The skin-prick (skin-scratch) test detects only IgE-mediated allergy. Since
+  Murray & Pizzorno put IgE-mediated type I reactions at just 10 to 15% of all
+  food allergies, they argue the test is of little value for diagnosing most food
+  reactions — though it does give good information when the reaction genuinely is
+  IgE-mediated. A negative skin-prick test therefore does not rule out a food
+  problem; it rules out one mechanism. This is the single most common source of
+  the client sentence "my allergy test was normal, so it can't be food."
+evidence_tier: plausible_emerging
+rationale: >
+  The core assertion — that skin-prick testing measures IgE sensitisation only,
+  and so cannot detect non-IgE food reactions — is uncontroversial and mainstream.
+  Conventional allergology also acknowledges that skin-prick tests have modest
+  positive predictive value in isolation (sensitisation is not the same as
+  clinical allergy) and are interpreted alongside history and challenge. What is
+  book-specific is the 10-15% denominator: that figure depends on counting
+  non-IgE "food allergy" the way this chapter counts it, which the mainstream
+  literature does not. Tiered plausible_emerging because the mechanistic point is
+  solid but the quantification is the authors' own.
+coaching_translation: >
+  A normal skin-prick test at the allergist does not mean food is not part of your
+  picture. That test looks for one specific kind of immediate allergic reaction —
+  the fast, dramatic sort. It is very good at what it does and it is exactly the
+  right test for that, but it does not pick up the slower reactions that show up
+  hours later as bloating, headache, joint ache or a skin flare. So "my allergy
+  test was clear" and "food isn't a factor for me" are two different statements. If
+  a food pattern is suspected, the way to find it is a supervised trial of taking
+  it out and putting it back.
+caveats:
+- Do not invert this into "the test is useless" — a positive skin-prick test in
+  the right clinical context is meaningful, and IgE allergy is the kind that can
+  kill.
+- Sensitisation on a skin test without a matching history is not a diagnosis of
+  allergy; only a clinician can make that call.
+- Antihistamines taken in the days before testing can suppress the result — a
+  clinician-managed detail, but worth knowing if a client reports a "normal" test.
+- Using this claim to talk a client out of trusting their allergist is out of
+  bounds; the point is that the two mechanisms are different, not that the doctor
+  was wrong.
+linked_to_topics:
+- food-allergy-ige-mediated
+- food-sensitivities
+- food-sensitivity-igg-iga-mediated
+- elimination-diet
+linked_to_supplements: []
+linked_to_mechanisms:
+- mast-cell-degranulation-histamine-release
+out_of_scope_notes: >
+  A coach may explain in plain English what a skin-prick test does and does not
+  cover, so a client understands why their normal result does not close the
+  question. A coach may not order the test, interpret a client's result, contradict
+  an allergist's interpretation, or advise a client to disregard a positive result.
+  IgE-mediated allergy carries anaphylaxis risk and is clinician territory
+  end to end.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 943
+  quote: |-
+    The skin-prick test or skin-scratch test is commonly employed by many allergists but tests only for IgE-mediated allergies. Since just 10 to 15% of all food allergies are mediated by IgE, this test is of little value in diagnosing most food allergies. Nevertheless, skin tests are often performed and can provide good information if the food allergy is mediated by IgE.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,64 @@
+slug: murray-alcohol-gut-permeability-endotoxin-malabsorption
+statement: |
+  Murray and Pizzorno describe the intestinal microflora as severely deranged in
+  alcohol dependence, with endotoxin-producing bacteria colonising the small
+  intestine and causing malabsorption of fat, carbohydrate, protein, folic acid
+  and vitamin B12 - which they propose as the reason for the small-bowel
+  abnormalities commonly found in these patients. Separately, alcohol ingestion
+  increases intestinal permeability to endotoxin and large particles capable of
+  adversely activating the immune system. The chapter elsewhere notes that women
+  may develop alcohol-related disease at lower intakes partly because of
+  increased gut permeability to endotoxin.
+evidence_tier: plausible_emerging
+rationale: |
+  Tiered plausible_emerging, and the tier is generous rather than cautious in
+  one direction and conservative in the other. Alcohol-induced intestinal
+  permeability and portal endotoxaemia driving liver injury via the gut-liver
+  axis is now well supported and has moved on considerably since this 2012 text;
+  the malabsorption picture is likewise standard. What keeps it below strong
+  here is that the chapter itself offers mechanism and association rather than
+  intervention data - no trial is presented showing that repairing the barrier
+  or reseeding the microbiome changes drinking, nutrient status or liver
+  outcomes. The sex-difference explanation is explicitly speculative in the
+  source.
+coaching_translation: |
+  Alcohol irritates the gut lining and shifts the bacteria living there. Two
+  things follow. First, absorption suffers - so nutrients like folate and B12 go
+  missing even when someone is eating. Second, the lining gets leakier, and
+  bacterial fragments cross into the bloodstream, where the immune system reacts
+  to them; this is part of how the liver takes damage. This gives a client
+  something practical and non-blaming to work on while their medical treatment
+  continues: regular meals, plenty of fibre from vegetables, dals and whole
+  grains, fermented foods like curd, idli and dosa batter and kanji, and enough
+  water. Rebuilding the gut is slow and steady, not a cleanse.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Ongoing drinking keeps the barrier open - gut-repair nutrition will not outrun continued alcohol intake, and should never be sold to a client as making drinking safer.'
+- 'B12 and folate deficiency arising from malabsorption need clinician assessment; oral repletion may be inadequate if absorption is the problem.'
+- 'Probiotics and glutamine are commonly suggested for barrier repair but the chapter provides no trial data in alcohol dependence, and probiotics need caution in anyone immunocompromised or with advanced liver disease.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- leaky-gut
+- gut-dysbiosis
+- metabolic-endotoxemia-lps
+linked_to_supplements:
+- probiotics
+- l-glutamine
+linked_to_mechanisms:
+- leaky-gut
+- lps-endotoxemia
+- gut-liver-axis
+- nutrient-malabsorption
+out_of_scope_notes: |
+  Clinician: diagnosing malabsorption, assessing and treating B12/folate
+  deficiency, liver assessment, deciding on any supplement in advanced liver
+  disease. Coach: fibre, fermented foods, meal regularity, hydration, and
+  referring when weight loss or fatty stools appear.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 433'
+  quote: 'The intestinal microﬂora is severely deranged in alcoholics.47 Colonization of the small intestine by bacteria that produce endotoxins may lead to malabsorption of fats, carbohydrates, protein, folic acid, and vitamin B12. This mechanism is probably the cause of the abnormalities of the small intestine commonly found in alcoholics. Alcohol ingestion also increases intestinal permeability to endotoxins and large particles that can activate the immune system adversely.48'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

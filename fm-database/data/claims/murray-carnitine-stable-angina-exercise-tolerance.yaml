@@ -1,0 +1,28 @@
+slug: murray-carnitine-stable-angina-exercise-tolerance
+statement: Carnitine is required to transport long-chain fatty acids into mitochondria, and myocardial carnitine becomes depleted when oxygen supply is poor — the exact situation in angina. Murray & Pizzorno cite several small clinical trials in which carnitine improved angina, including one in stable angina where 900 mg oral carnitine increased mean exercise time to stress-test abnormality from 6.4 minutes on placebo to 8.8 minutes. They also cite early carnitine at 40 mg/kg/day in acute myocardial infarction reducing heart damage. Their further conclusion — that carnitine may be an alternative to beta-blockers, calcium channel blockers and nitrates — goes well beyond what the data support and must not be repeated.
+evidence_tier: confirm_with_clinician
+rationale: 'The mechanism is sound and the exercise-tolerance signal is real but small: a roughly 2.4-minute difference in one small trial, in surrogate endpoints (exercise time, ECG changes), not in infarction or death. The book''s framing of carnitine as an effective alternative to antianginal drugs is the most dangerous sentence in this chapter. Anyone with angina is on antianginal therapy for a reason, and substituting a supplement for a nitrate or beta-blocker can be lethal. Hence confirm_with_clinician rather than plausible_emerging.'
+coaching_translation: 'Carnitine is a nutrient that helps heart cells burn fat for fuel, and small studies suggest it may let people with stable angina walk a little further before symptoms start. That is worth taking to a client''s cardiologist — it is never a reason to reduce or skip prescribed heart medication. If a client is curious, your line is: take that question to your cardiologist, and tell them exactly what you are considering.'
+caveats:
+- NEVER let a client interpret this as permission to reduce or stop nitrates, beta-blockers, calcium channel blockers, antiplatelets or statins. That decision belongs to the cardiologist alone.
+- Evidence is surrogate-endpoint only (exercise time, ECG) in small trials; no mortality benefit is shown.
+- L-carnitine is converted by gut bacteria to TMAO, which has itself been associated with cardiovascular risk — an unresolved question this 2012 text predates. Flag the uncertainty rather than ignoring it.
+- Carnitine may lower seizure threshold in susceptible people and interacts with thyroid hormone action, which matters for clients on levothyroxine.
+- Largely vegetarian Indian clients have lower dietary carnitine intake but also synthesise it endogenously — low intake alone is not a deficiency, and deficiency is not a coach’s call to make.
+linked_to_topics:
+- cardiovascular-dysfunction
+- mitochondrial-health-nutrients
+linked_to_supplements:
+- l-carnitine
+linked_to_mechanisms:
+- mitochondrial-energy-production
+- mitochondrial-efficiency
+out_of_scope_notes: Dosing, initiation and monitoring belong to the prescribing clinician. A coach may surface the question and the interaction concerns for the client to raise at their cardiology appointment; a coach may not recommend a dose or imply equivalence to prescribed antianginals.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 22 — Angina, pg 486
+  quote: In one study of patients with stable angina, oral administration of 900 mg carnitine increased average exercise time and the time necessary for abnormalities to occur on a stress test (6.4 minutes in the placebo group compared with 8.8 minutes in the carnitine-treated group).
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

@@ -1,0 +1,90 @@
+slug: murray-armd-macular-pigment-carotenoids
+statement: |
+  The macula — and especially the fovea, the pinpoint responsible for fine detail —
+  is yellow because it concentrates lutein and zeaxanthin. That pigment is not
+  incidental colour: it absorbs blue light and quenches oxidative damage in exactly
+  the tissue that ARMD destroys. Murray & Pizzorno argue these carotenoids, plus
+  lycopene and dietary flavonoids, matter more for ARMD protection than the classical
+  antioxidants (vitamin C, vitamin E, zinc, selenium). In a 12-month randomised study
+  of 27 people with ARMD, the treated group took vitamin C 180 mg, vitamin E 30 mg,
+  zinc 22.5 mg, copper 1 mg, lutein 10 mg, zeaxanthin 1 mg and astaxanthin 4 mg daily
+  and showed positive visual-acuity change in early-stage disease. The chapter's own
+  standing recommendation is lutein 10–20 mg, zeaxanthin 1–2 mg and astaxanthin 4–6 mg
+  per day.
+evidence_tier: plausible_emerging
+rationale: >
+  The macular-pigment mechanism is well established and not controversial — lutein and
+  zeaxanthin are physically deposited in the macula, which is a strong biological
+  rationale. The clinical evidence in the chapter is thinner than the mechanism: the
+  carotenoid trial cited here is 27 people, only 15 of them treated, unblinded as
+  described, and 12 months long. The chapter also cites the LAST trial (lutein 10 mg,
+  12 months, double-blind) showing improved visual function. So: mechanism strong,
+  trials small. The comparative assertion that carotenoids outrank vitamin C, E, zinc
+  and selenium is the authors' interpretation and is not backed by a head-to-head
+  study in the chapter. Tiered plausible_emerging on that basis.
+coaching_translation: >
+  The exact patch of the eye that macular degeneration attacks is yellow, and it is
+  yellow because it stores two plant pigments — lutein and zeaxanthin. Your body
+  cannot make them; they come from food. So eating for eye pigment is a real,
+  physical thing, not a wellness slogan. In Indian kitchens the strongest everyday
+  sources are dark leafy greens (palak, methi leaves, amaranth/chaulai, drumstick
+  leaves/moringa), sweet corn and makai, capsicum, mango, papaya, egg yolk if the
+  client eats eggs, and tomatoes and watermelon for lycopene. Cook greens with a
+  little ghee or oil — these pigments are fat-soluble and a dry preparation wastes
+  most of them.
+caveats:
+- The supporting trials are small; expect slowed progression or modest functional gain,
+  not restored vision. Do not promise improvement.
+- Astaxanthin and high-dose carotenoid supplements are a purchase decision the client
+  should run past their eye doctor, particularly if they are already on an AREDS-type
+  formula, to avoid stacking zinc and copper twice.
+- Carotenoid absorption needs dietary fat and is reduced in fat-malabsorption states
+  and on very low-fat diets.
+- The book's food-source table is Western-produce-focused (corn, kiwi, grapes); the
+  Indian green-leafy sources above are substantially richer and cheaper and should be
+  the first line for Indian clients.
+linked_to_topics:
+- macular-degeneration
+- oxidative-stress
+linked_to_supplements:
+- lutein
+- lycopene
+- astaxanthin
+- vitamin-c
+- vitamin-e
+- zinc
+- copper
+linked_to_mechanisms:
+- oxidative-stress
+out_of_scope_notes: >
+  Food-first carotenoid intake is squarely coaching scope — a coach can teach, plan
+  meals around, and track leafy-green and coloured-vegetable intake without any
+  clinician involvement. Selecting a specific lutein/zeaxanthin/astaxanthin product
+  and dose for someone with diagnosed ARMD is not: that sits with the ophthalmologist
+  or physician, especially where an eye formula is already prescribed. A coach must
+  never present carotenoids as treatment for wet ARMD or as a reason to defer review.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1222
+  quote: >-
+    However, various nonessential food components such as ﬂavonoids and the carotenes
+    lutein, zeaxanthin, and lycopene are proving to be even more signiﬁcant in
+    protecting against ARMD than traditional nutritional antioxidants such as vitamin
+    C and E, zinc, and selenium. The macula, especially its central portion, the
+    fovea, owes its yellow color to its high concentration of lutein and zeaxanthin.
+    These yellow carotenoids function in preventing oxidative damage to the area of
+    the retina responsible for ﬁne vision and have a central role in protecting
+    against the development of macular degeneration.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1225
+  quote: >-
+    In another study, 27 patients with ARMD were randomly divided into two groups: 15
+    patients took vitamin C (180 mg), vitamin E (30 mg), zinc (22.5 mg), copper (1
+    mg), lutein (10 mg), zeaxanthin (1 mg), and astaxanthin (4 mg) every day for 12
+    months, while 12 patients served as controls. Visual acuity assessments indicated
+    quite clearly that early-stage ARMD can respond positively to supplementation with
+    carotenoids and antioxidants.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

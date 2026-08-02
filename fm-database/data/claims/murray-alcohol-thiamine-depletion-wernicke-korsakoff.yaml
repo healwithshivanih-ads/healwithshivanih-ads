@@ -1,0 +1,61 @@
+slug: murray-alcohol-thiamine-depletion-wernicke-korsakoff
+statement: |
+  Thiamine (vitamin B1) deficiency is described by Murray and Pizzorno as both
+  the most common B-vitamin deficiency in alcohol dependence - 55% in one study
+  they cite - and the most serious, because depletion produces beriberi and
+  Wernicke-Korsakoff syndrome. Alcohol reduces thiamine absorption in the
+  intestine, reduces hepatic thiamine storage and impairs conversion to the
+  active coenzyme form, so a functional deficiency can exist despite apparently
+  adequate intake. The authors also cite evidence that thiamine deficiency
+  itself increases alcohol intake, making it a possible predisposing factor
+  rather than only a consequence. Once Wernicke-Korsakoff syndrome is present,
+  oral thiamine is inadequate and repeated intravenous replacement is required.
+evidence_tier: strong
+rationale: |
+  Tiered strong for the depletion mechanism and the clinical consequence, which
+  are long-established, textbook-level nutritional medicine rather than
+  functional-medicine extrapolation: thiamine-responsive Wernicke encephalopathy
+  is standard clinical teaching and the multi-step mechanism (absorption,
+  storage, activation) is specific and named. The book cites a single prevalence
+  study (55%) rather than a pooled estimate, so treat that number as
+  illustrative. The claim that thiamine deficiency predisposes to greater
+  alcohol intake rests on animal and preliminary work and is the weakest limb
+  here - it is flagged in the statement as evidence-indicates rather than
+  established.
+coaching_translation: |
+  Alcohol makes it hard for the body to absorb, store and switch on vitamin B1
+  (thiamine), and B1 is what the brain and nerves run on. That is why B1 is one
+  of the first things a doctor checks in someone who has been drinking heavily.
+  If a client of yours drinks daily or is cutting down, thiamine is not a
+  supplement to experiment with at home - it belongs with their doctor, because
+  severe deficiency needs it given by drip, not by tablet. Your part is the food
+  side: regular meals, whole grains, dals and pulses, nuts and seeds, and asking
+  gently and without judgement how much and how often they drink, since many
+  people under-report.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Confusion, unsteady walking or eye-movement problems in a heavy drinker are a suspected Wernicke emergency - refer same day, do not coach. Oral thiamine will not rescue it.'
+- 'Glucose given before thiamine can precipitate Wernicke encephalopathy - one reason a coach must never suggest a sugary drink to ''steady'' a withdrawing drinker.'
+- 'The 55% figure is from one study cited in a 2012 textbook and is not an Indian population estimate.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- nutritional-deficiency-screening
+linked_to_supplements:
+- thiamin-b1
+- benfotiamine
+linked_to_mechanisms:
+- nutrient-malabsorption
+- malabsorption
+out_of_scope_notes: |
+  Clinician: diagnosing or excluding Wernicke-Korsakoff, ordering thiamine
+  status, prescribing parenteral thiamine, managing withdrawal. Coach:
+  food-first B1 sources, meal regularity, non-judgemental intake history, and
+  prompt referral when neurological signs appear.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 430'
+  quote: 'A thiamine deﬁciency is both the most common (55% in one study)30 and the most serious of the B vitamin deﬁciencies, since a deﬁciency causes the clinical conditions beriberi and Wernicke-Korsakoff syndrome. In addition, evidence indicates that a thiamine deﬁciency results in greater intake of alcohol, suggesting that thiamine deﬁciency is a predisposing factor for alcohol dependence.35'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

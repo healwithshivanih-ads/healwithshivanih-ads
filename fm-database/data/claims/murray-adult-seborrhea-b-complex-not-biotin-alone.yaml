@@ -1,0 +1,80 @@
+slug: murray-adult-seborrhea-b-complex-not-biotin-alone
+statement: |
+  Murray & Pizzorno draw a sharp line between the infant and the adult presentation: in adults,
+  biotin on its own is usually of no value for seborrheic dermatitis, and must be used together
+  with the other B vitamins (they name pyridoxine, pantothenic acid, niacin and thiamine) that
+  the skin needs for normal metabolism. Their supporting evidence for B6 specifically is an
+  animal model — rats given the B6 antagonist 4-deoxypyridoxine on a B6-deficient diet develop
+  skin lesions indistinguishable from seborrheic dermatitis — plus a report that B6 helps
+  seborrhea sicca, the dry scalp/brow/nasolabial-fold/beard-area form better known as dandruff.
+  For folate they say oral folic acid has been only moderately successful, that the best results
+  come from tetrahydrofolate, and that it should be combined with vitamin B12; injected B12 is
+  described as very effective in many cases, which they attribute to B12's role as the cofactor
+  converting folic acid to its active tetrahydrofolate form. Their adult treatment summary is
+  therefore a high-potency multivitamin carrying large doses of B complex, not a single nutrient.
+evidence_tier: confirm_with_clinician
+rationale: >
+  Tiered to clinician confirmation for two reasons. First, the evidence is thin: a rat
+  deficiency model, an unquantified statement that B6 "has been shown to be effective", and no
+  trial numbers at all for the B-complex combination the chapter actually recommends — the
+  claim being made (combination works where biotin alone fails) is precisely the claim not
+  tested in anything the chapter cites. Second, the most emphatic adult intervention here —
+  injected B12, and pharmacologic "large doses" of B complex — is prescribing, not coaching.
+  The mechanistic core is honest and worth carrying: B12 is genuinely required to regenerate
+  active folate, so a B12-deficient person will not respond to folate alone. That is a real
+  reason to think about B vitamins as a group rather than one at a time. It is not a reason
+  to promise a skin outcome.
+coaching_translation: >
+  For adults with seborrheic dermatitis or persistent dandruff, the book's point is that the
+  B vitamins work as a team — biotin by itself generally does nothing in an adult, whereas the
+  full B group (B6, B5, B3, B1, B12, folate) supports normal skin turnover. This is a useful
+  frame for an Indian, largely vegetarian client base, where low B12 is common and where folate
+  intake from dal and greens can look fine while B12 stays low — folate cannot do its job
+  without B12. Coach the food side confidently: dairy and curd, eggs if eaten, fortified foods,
+  and a conversation with their doctor about checking B12 status. Any high-dose B complex, any
+  B12 injection, and any decision about which form of folate belongs to the clinician.
+caveats:
+- B12 injections and high-dose B-complex are prescribing decisions; a coach may raise the
+  question with the client but must not initiate, dose, or select a form.
+- Purely vegetarian and vegan Indian clients are at real risk of low B12 from diet alone —
+  but confirming that requires testing and interpretation, which is clinician scope.
+- The chapter's B6 evidence is a rat deficiency model plus an unquantified clinical statement.
+  High-dose B6 taken long-term can itself cause peripheral neuropathy, so "more is better" is
+  actively wrong here.
+- Folic acid, folinic acid and methylfolate are not interchangeable, and an MTHFR-aware client
+  may have already been told something different. Route form questions to the clinician.
+- Dandruff and seborrheic dermatitis overlapping with a scaly, well-demarcated rash elsewhere
+  may be psoriasis instead — a different condition needing a dermatologist.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- vitamin-b12
+- folate-nutrition
+linked_to_supplements:
+- b-complex-vitamins
+- vitamin-b6-pyridoxine
+- pantothenic-acid-b5
+- niacin
+- thiamin-b1
+- vitamin-b12
+- biotin-b7
+linked_to_mechanisms:
+- impaired-folate-to-5-mthf-conversion
+out_of_scope_notes: >
+  Coach scope: explaining why B vitamins act as a group, food-first sources for an Indian
+  vegetarian diet, adherence support if a doctor has already started a supplement, and
+  prompting the client to ask their doctor about B12 status. Clinician scope: ordering and
+  interpreting B12/folate labs, prescribing injections, and setting doses. Referral boundary
+  not stated in this chapter and not to be attributed to it: adult seborrheic dermatitis of
+  sudden, severe or explosive onset can be a marker of underlying illness including HIV and
+  Parkinson's disease, and must go to a doctor rather than be coached.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 91 — Seborrheic Dermatitis, pg 1501
+  quote: "In adults, treatment with biotin alone is usually of no value. It must be used in combination with other B vitamins (pyridoxine, pantothenic acid, niacin, thiamine, etc.) that are vital for proper skin metabolism."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 91 — Seborrheic Dermatitis, pg 1501
+  quote: "Taking a drug that causes vitamin B6 deﬁciency (4-deoxypyridoxine) and placing rats on a vitamin B6–deﬁcient diet cause skin lesions indistinguishable from seborrheic dermatitis.4 Vitamin B6 has been shown to be effective in a form of seborrhea (seborrhea sicca) that involves only the scalp (dandruff), brow, nasolabial folds, and beard area"
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

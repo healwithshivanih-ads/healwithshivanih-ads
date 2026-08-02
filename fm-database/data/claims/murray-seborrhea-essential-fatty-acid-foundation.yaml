@@ -1,0 +1,81 @@
+slug: murray-seborrhea-essential-fatty-acid-foundation
+statement: |
+  Beyond the B vitamins, Murray & Pizzorno's treatment summary for seborrheic dermatitis rests
+  on a nutritional foundation rather than on a single agent: optimal intake of essential fatty
+  acids using both flaxseed oil and fish oils, on top of ruling out food allergies (for a
+  nursing infant, the mother's food allergies are the ones to consider). Their stated amounts
+  are fish oils supplying 1,000 mg EPA + DHA per day and flaxseed oil 1 tbsp per day, alongside
+  a high-potency multivitamin-mineral, a flavonoid-rich antioxidant (grape seed or pine bark
+  extract standardised to >95% procyanidolic oligomers, 100–300 mg per day, or an equivalent
+  providing an ORAC of 3,000–6,000 units or more), and a Lactobacillus/Bifidobacterium
+  probiotic at a minimum of 5–10 billion CFU. The allergy angle is not incidental: the chapter
+  reports that 67% of people with seborrheic dermatitis develop some form of allergy by 10
+  years of age, though it stresses this is not primarily an allergic disease.
+evidence_tier: fm_specific_thin
+rationale: >
+  This is the authors' clinical protocol, not a claim backed by evidence they present. The
+  entire essential-fatty-acid recommendation — flaxseed oil plus fish oil — appears only in the
+  treatment summary with no cited trial, no mechanism paragraph, and no reference marker
+  anywhere in the chapter body; the same is true of the flavonoid extract and the probiotic
+  doses. The probiotic is at least internally consistent with the chapter's own biotin story,
+  since the book argues gut bacteria supply much of our biotin, but that consistency is
+  reasoning, not outcome data. The one real number here is the 67% allergy-by-age-10 figure,
+  which is a single referenced observation and, being an association in a cohort, cannot
+  establish that removing foods improves the rash. Tiered low and honestly: this is
+  sensible general anti-inflammatory nutrition applied to a skin condition, and should be
+  offered to clients as such, not as a treatment shown to clear seborrheic dermatitis.
+coaching_translation: >
+  The book's everyday foundation for this condition is unglamorous and mostly food-shaped:
+  enough of the right fats, a broad multivitamin, some colourful antioxidant-rich plants, a
+  probiotic, and attention to foods that consistently flare the client. Their figures are about
+  1 tbsp of flaxseed oil daily and 1,000 mg of combined EPA + DHA. For a vegetarian Indian
+  client, flaxseed (alsi) is already familiar — ground fresh, stirred into curd or chutney —
+  and if they will not take fish oil, an algae-derived EPA/DHA is the vegetarian equivalent to
+  raise with their doctor. Curd, kanji and other fermented foods are the food-first version of
+  the probiotic. Frame all of this as general skin-supportive nutrition, not as a cure.
+caveats:
+- No trial evidence for the fatty-acid, flavonoid or probiotic recommendations is presented in
+  this chapter — they are the authors' clinical opinion. Say so to the client.
+- Flaxseed oil oxidises quickly. Buy small, refrigerate, never cook with it; whole flaxseed
+  should be ground just before use.
+- Fish oil is not vegetarian and most Indian clients here will decline it. Algae-derived
+  EPA/DHA is the substitute, but that is a swap the coach suggests and the doctor approves,
+  and it is not something this chapter says.
+- Higher-dose omega-3 can affect bleeding; anyone on warfarin, other anticoagulants or
+  antiplatelets, or heading for surgery, needs clinician clearance first.
+- The chapter's instruction to rule out food allergies is an investigation, not a coaching
+  instruction. A coach may
+  support a clinician-supervised elimination trial and food-symptom journalling; unsupervised
+  broad elimination in a child, or in an already-restricted vegetarian diet, risks
+  malnutrition.
+- The 67% allergy figure describes an association over childhood, not a demonstration that
+  removing foods clears the rash.
+linked_to_topics:
+- essential-fatty-acids
+- omega-3-fatty-acids
+- probiotic-and-prebiotic-support
+- food-sensitivities
+- elimination-diet
+linked_to_supplements:
+- flaxseed-oil
+- fish-oil-epa-dha
+- algae-oil-dha-epa
+- probiotics-lactobacillus-bifidobacterium
+linked_to_mechanisms:
+- omega-3-omega-6-imbalance
+out_of_scope_notes: >
+  Coach scope: food-first fats, cooking and storage habits, fermented foods, food-symptom
+  journalling, and supporting adherence to a clinician-supervised elimination trial.
+  Clinician scope: allergy testing and interpretation, deciding on and supervising elimination
+  diets (especially in infants and children), and clearing omega-3 dosing for anyone on
+  anticoagulants. Referral boundary not attributable to this chapter: adult seborrheic
+  dermatitis of sudden, severe or explosive onset can mark underlying illness including HIV
+  and Parkinson's disease and must be seen by a doctor.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 91 — Seborrheic Dermatitis, pg 1502
+  quote: "For infants, biotin supplementation (3 mg twice per day) and control of food allergies are the keys. For adults, supplementing with large doses of vitamin B complex within a high-potency multiple vitamin is the key therapy. We also recommend optimal intake of essential fatty acids, using both ﬂaxseed oil and ﬁsh oils."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

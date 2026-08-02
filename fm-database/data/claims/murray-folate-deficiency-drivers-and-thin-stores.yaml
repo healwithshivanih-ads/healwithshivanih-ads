@@ -1,0 +1,84 @@
+slug: murray-folate-deficiency-drivers-and-thin-stores
+statement: |
+  Folic acid deficiency is described as the most common vitamin deficiency in the world, and
+  it appears quickly because the body stores only one to two months' worth — unlike B12, which
+  is stored for years. It produces the same macrocytic (enlarged red cell) anemia as B12
+  deficiency, plus diarrhoea, depression and a swollen red tongue. The chapter names four
+  recurring drivers: alcohol (which impairs absorption, disrupts metabolism and increases
+  excretion), pregnancy (fetal demand, with neural tube defects the consequence of shortfall),
+  drugs including anticancer agents, anti-epileptics and oral contraceptives, and chronic
+  diarrhoea or malabsorption states such as celiac disease, Crohn's disease and tropical
+  sprue — where folate deficiency itself causes diarrhoea and malabsorption, creating a
+  vicious circle.
+evidence_tier: strong
+rationale: >
+  The short storage window, the macrocytic presentation, the folate–neural-tube-defect link
+  and the drug and alcohol interactions are all established and uncontroversial. The
+  self-reinforcing loop between folate deficiency and malabsorption is mechanistically sound
+  — folate is required for the rapid turnover of enterocytes, so deficiency degrades the very
+  surface that absorbs it. The book asserts these without inline citation in this passage
+  because they are standard nutrition teaching rather than novel findings. Tiered strong. The
+  chapter's separate assertion that folinic acid is 5-methyltetrahydrofolate is a factual
+  error and is flagged in caveats rather than carried into this statement.
+coaching_translation: >
+  Folate runs out fast. The body keeps only about one to two months' supply, so it can drop
+  within weeks of a poor diet, a spell of heavy drinking, or a stretch of diarrhoea — quite
+  unlike B12, which the body hoards for years. Because folate lives in fresh green
+  vegetables, beans, whole grains and sprouts, and is destroyed by heat and light, how food
+  is cooked matters as much as what is bought: long-boiled or reheated sabzi loses much of
+  it, while lightly cooked greens, fresh salads, sprouted moong and fresh coriander keep it.
+  Alcohol, some long-term medications and any ongoing gut trouble all drain it faster. This is
+  one area where Indian vegetarian eating is a genuine advantage — dals, greens and sprouts
+  are naturally folate-rich, if they are not cooked to death.
+caveats:
+- The chapter equates folinic acid with 5-methyltetrahydrofolate. This is wrong — folinic acid
+  is 5-formyl-THF; 5-MTHF is methylfolate. Do not repeat the book's wording on folate forms.
+- Never treat suspected folate deficiency with folate alone. See the companion claim on
+  folate masking B12 deficiency; B12 must be considered alongside.
+- Pregnancy folate needs are managed medically. The coach should support food quality and
+  adherence, not advise on preconception or antenatal supplementation.
+- Chronic diarrhoea, unintentional weight loss or long-standing malabsorption symptoms are
+  red flags for celiac disease, IBD and other pathology and need medical workup, not a
+  nutrition plan.
+- Alcohol use is a sensitive coaching topic; approach with a motivational-interviewing stance
+  rather than an instruction, and refer if dependence is suspected.
+linked_to_topics:
+- folate-nutrition
+- b12-folate-anemia
+- celiac-disease
+- ibd
+- homocysteine-and-methylation
+linked_to_supplements:
+- folate
+- folic-acid
+- methylfolate
+linked_to_mechanisms:
+- impaired-folate-to-5-mthf-conversion
+- malabsorption
+- nutrient-malabsorption
+out_of_scope_notes: >
+  Diagnosing folate deficiency, ordering or interpreting serum or RBC folate, prescribing
+  folate at any dose, and evaluating the underlying malabsorption are all clinician scope.
+  Coach scope: education on folate-rich foods, cooking methods that preserve folate, alcohol
+  as a modifiable driver, and referral when chronic diarrhoea or malabsorption symptoms are
+  described.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 468
+  quote: >-
+    Folic acid deﬁciency is the most common vitamin deﬁciency in the world. The body does not
+    store a large surplus of folic acid (unlike vitamin B12); it stores only enough to sustain
+    itself for one to two months. Folic acid deﬁciency will result in the same type of anemia
+    as that caused by a vitamin B12 deﬁciency: an anemia characterized by enlarged RBCs
+    (macrocytic anemia).
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 469
+  quote: >-
+    Folic acid deﬁciency is quite common among patients who have chronic diarrhea or
+    malabsorption states such as celiac disease, Crohn’s disease, or tropical sprue. Since a
+    deﬁciency of folic acid will result in diarrhea and malabsorption, often a vicious circle
+    ensues.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

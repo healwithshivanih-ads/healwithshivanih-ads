@@ -1,0 +1,81 @@
+slug: murray-hiv-diarrhoea-nutritional-consequences
+statement: |
+  Antiretroviral therapy is the treatment for HIV; the following is adjunctive symptom support
+  only. Murray & Pizzorno describe diarrhoea as a common and quality-of-life-limiting problem in
+  HIV, note that the cause must guide the response, and observe that lactose intolerance often
+  develops secondary to chronic diarrhoea so that lactose-containing milk and dairy may need to be
+  removed. They point to probiotics as part of the response. The nutritional consequence is the
+  part that matters most in a coaching context: persistent diarrhoea drives fluid loss,
+  malabsorption of energy and micronutrients, and weight loss. It is also a symptom with many
+  possible causes — including medication side effects and treatable gut infections — so it must be
+  assessed by the client's HIV clinician before any dietary strategy is layered on.
+evidence_tier: plausible_emerging
+rationale: >
+  Secondary lactase deficiency after mucosal injury from chronic diarrhoea is a well-understood
+  mechanism, and temporary reduction of lactose while the gut recovers is standard, low-risk
+  practice. Probiotic use in diarrhoea has reasonable general support, though the book's citation
+  is thin for this specific population. Where the 2012 text has been overtaken: it presents
+  diarrhoea as a near-inevitable feature of HIV, which reflects an era of untreated infection,
+  frequent opportunistic gut infections, and older antiretrovirals with heavy gastrointestinal
+  side effects. On modern regimens, persistent diarrhoea is much less common and is investigated
+  rather than assumed. The chapter's blanket recommendation to eliminate all gluten from any
+  HIV-positive person with diarrhoea is not well supported and is deliberately not carried into
+  this claim — removing gluten pre-emptively can mask coeliac disease and narrows the diet of
+  someone who may already be struggling to eat enough. Tier is plausible_emerging for the lactose
+  and rehydration/nutrient-loss elements; the rest is not carried forward.
+coaching_translation: >
+  If a client living with HIV has ongoing loose stools, the first step is always a conversation
+  with their HIV doctor — it can be a side effect of medication or an infection that needs
+  treating, and it is not something to work around quietly. Once they have been seen, you can
+  help with the everyday consequences. Fluids matter: sipping through the day, and using an oral
+  rehydration solution or salted lemon water and buttermilk when losses are heavy. Meals are
+  easier tolerated small and frequent. Many people find milk sits badly for a while after a bout
+  of diarrhoea, and switching temporarily to curd, buttermilk or a lactose-free option is worth
+  trying — this is usually temporary and dairy can often be reintroduced. Familiar, gentle foods
+  such as khichdi, curd rice and cooked vegetables are a reasonable base. Do not remove whole food
+  groups such as gluten on your own initiative; that is a decision for the clinical team.
+caveats:
+- Antiretroviral therapy is the treatment for HIV. Nothing here substitutes for it, and diarrhoea
+  is never a reason for a client to stop or skip their medication on their own — that decision
+  belongs to their clinician.
+- Diarrhoea in a person living with HIV must be medically assessed first. It may indicate an
+  opportunistic gut infection, a drug side effect, or another treatable condition.
+- The source predates current standards of care; the gastrointestinal burden it describes largely
+  reflects untreated HIV and older antiretroviral regimens.
+- The chapter's advice to eliminate all gluten in any HIV-positive person with diarrhoea is not
+  carried forward here and should not be given to clients.
+- Blood in stool, fever, signs of dehydration, severe abdominal pain or rapid weight loss are red
+  flags requiring same-day medical attention.
+linked_to_topics:
+- probiotic-and-prebiotic-support
+linked_to_supplements:
+- probiotics
+linked_to_mechanisms:
+- lactase-deficiency-osmotic-load
+- malabsorption
+- nutrient-malabsorption
+- mucosal-immune-dysfunction
+out_of_scope_notes: >
+  Coach scope: hydration habits, meal size and timing, tolerance-led food choices, a temporary
+  trial of reducing lactose, and supporting the client to report symptoms to their doctor.
+  Clinician scope: identifying the cause of diarrhoea, stool testing, treating opportunistic
+  infections, changing or managing antiretroviral side effects, diagnosing coeliac disease, and
+  prescribing anti-diarrhoeal or rehydration therapy. A coach must never suggest that a
+  medication side effect is a reason to stop the medication.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 407
+  quote: >-
+    Diarrhea is a common complaint and an issue that can greatly affect quality of life. There are
+    many reasons an HIV-positive person might develop diarrhea, and the speciﬁc cause guides the
+    choice of treatment.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 407
+  quote: >-
+    Lactose intolerance often develops in cases of chronic diarrhea, and so all milk and dairy
+    products containing lactose should also be eliminated. The recommendations given in the
+    chapter “Diarrhea” are appropriate in most cases, especially the use of probiotics.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

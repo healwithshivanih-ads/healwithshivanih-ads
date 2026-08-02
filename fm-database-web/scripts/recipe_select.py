@@ -24,7 +24,7 @@ Public API:
 - append_candidates(markdown, client_id, plan_slug) -> int
 """
 from __future__ import annotations
-import os, re, glob, datetime
+import os, re, glob, math, datetime
 try:
     import yaml
 except Exception:                       # pragma: no cover
@@ -32,6 +32,23 @@ except Exception:                       # pragma: no cover
 
 DOSHAS = {"vata", "pitta", "kapha"}
 MEAL_TYPES = ("breakfast", "lunch", "dinner", "snack", "side", "drink")
+
+# ── good_for weighting ─────────────────────────────────────────────────────
+# `good_for` holds catalogue topic slugs, but the vocabulary is wildly skewed:
+# `agni-digestive-fire` sits on ~93% of the library (a backfill heuristic that
+# "never returns an empty list" fell back to it), while the tags that actually
+# discriminate — reflux, IBS, kidney-stones — sit on a handful of recipes each.
+# A flat per-match score therefore rewards the tags that carry NO information.
+# So weight each match by inverse document frequency: a tag on nearly every
+# recipe scores ~0, a tag on ≤1% of the library earns full weight. Self-tuning —
+# as the coach tags more recipes for a condition, that tag's weight decays on
+# its own and nobody has to maintain a stop-list.
+GOOD_FOR_MAX_WEIGHT = 3.0        # per-tag ceiling, on par with a dosha match
+GOOD_FOR_MAX_TOTAL = 4.0         # per-recipe ceiling — blunts tag-stuffing
+GOOD_FOR_FULL_WEIGHT_FREQ = 0.01 # a tag on ≤1% of the library earns the ceiling
+
+SEASON_MATCH = 2.0               # dish is specifically in season
+SEASON_YEAR_ROUND = 1.0          # dish is tagged `all` — fine now, but not a match
 
 # ── locate the recipe store ────────────────────────────────────────────────
 def _recipes_dir() -> str:
@@ -170,19 +187,113 @@ def is_safe(recipe: dict, allergies: list, avoid_tokens: set[str]) -> bool:
             return False
     return True
 
+# ── free-text conditions → topic slugs ─────────────────────────────────────
+# `good_for` holds slugs, but `client.active_conditions` is rich clinical prose
+# ("Stress-reactive acidity — flares after arguments … on a PPI"). Across the
+# live roster NOT ONE of 90 conditions is slug-shaped, so lowercasing them into
+# the topic set — which is what we used to do — could never match a good_for
+# tag. Every good_for match was coming from the plan's focus_topics alone.
+# Bridge it the way the catalogue already bridges everything else: alias-aware
+# resolution. Only the ~40 slugs the recipe library actually uses are indexed,
+# so this is ~40 small file reads, cached per process.
+_TOPIC_INDEX_CACHE: dict[tuple, dict[str, str]] = {}
+
+def _catalogue_dir() -> str:
+    return os.path.dirname(_recipes_dir())          # …/data (recipes live in …/data/_recipes)
+
+def condition_topic_index(vocab) -> dict[str, str]:
+    """{match phrase → slug} for the given slugs, from slug words + display_name
+    + aliases. Phrases under 4 chars are dropped and matching is word-bounded —
+    an unbounded short alias once made "IF" match inside "modifications"."""
+    key = tuple(sorted(vocab))
+    if key in _TOPIC_INDEX_CACHE:
+        return _TOPIC_INDEX_CACHE[key]
+    index: dict[str, str] = {}
+    if yaml:
+        base = _catalogue_dir()
+        for slug in vocab:
+            phrases = {slug.replace("-", " ")}
+            for kind in ("topics", "symptoms"):
+                fp = os.path.join(base, kind, f"{slug}.yaml")
+                if not os.path.isfile(fp):
+                    continue
+                try:
+                    d = yaml.safe_load(open(fp, encoding="utf-8")) or {}
+                except Exception:
+                    continue
+                phrases.add(str(d.get("display_name") or ""))
+                phrases |= {str(a) for a in (d.get("aliases") or [])}
+                break
+            for p in phrases:
+                p = p.strip().lower()
+                if len(p) >= 4:
+                    index.setdefault(p, slug)
+    _TOPIC_INDEX_CACHE[key] = index
+    return index
+
+def resolve_condition_topics(free_texts, index: dict[str, str]) -> set[str]:
+    """Slugs whose display name / alias appears as a whole phrase in the prose."""
+    if not index:
+        return set()
+    blob = " ".join(str(t) for t in (free_texts or [])).lower()
+    if not blob:
+        return set()
+    return {slug for phrase, slug in index.items()
+            if re.search(r"\b" + re.escape(phrase) + r"\b", blob)}
+
+def good_for_weights(recipes: list[dict]) -> dict[str, float]:
+    """Inverse-frequency weight per `good_for` tag across the given library.
+
+    weight = MAX * min(1, ln(N/df) / ln(1/FULL_WEIGHT_FREQ))
+
+    Over the current 459-recipe library that gives roughly:
+      agni-digestive-fire (425 recipes) → 0.05   ← was 2.0, and meaningless
+      digestion-and-nutrient-absorption (290) → 0.30
+      blood-sugar-regulation (105) → 0.96
+      constipation (60) → 1.32
+      acid-reflux-and-... (5) → 2.94
+    """
+    n = len(recipes)
+    if n < 2:
+        return {}
+    df: dict[str, int] = {}
+    for r in recipes:
+        for t in {str(g).lower() for g in (r.get("good_for") or [])}:
+            df[t] = df.get(t, 0) + 1
+    ceiling = math.log(1.0 / GOOD_FOR_FULL_WEIGHT_FREQ)
+    return {
+        t: GOOD_FOR_MAX_WEIGHT * min(1.0, math.log(n / c) / ceiling)
+        for t, c in df.items() if c > 0
+    }
+
 def score_recipe(recipe: dict, doshas: set[str], season: str | None,
                  topics: set[str], region: str, weight_loss: bool,
-                 lab_priorities: dict | None = None) -> float:
+                 lab_priorities: dict | None = None,
+                 gf_weights: dict | None = None) -> float:
     s = 0.0
     bal = set(d.lower() for d in (recipe.get("balances_dosha") or []))
     agg = set(d.lower() for d in (recipe.get("aggravates_dosha") or []))
     if doshas:
         s += 3.0 * len(bal & doshas)
         s -= 2.0 * len(agg & doshas)          # DOWN-RANK aggravating dishes (not excluded)
-    if season and season in [x.lower() for x in (recipe.get("seasons") or [])]:
-        s += 2.0
+    # `seasons: [all]` is the documented year-round convention (see recipe_schema
+    # SEASONS) but an exact-membership test never matched it — so 323 of 460
+    # recipes silently forfeited this bonus while the 137 season-specific ones
+    # collected it, a standing 2.0 penalty against 70% of the library. A dish
+    # that is genuinely in season still outranks a year-round one; a year-round
+    # one is no longer treated as out of season.
+    rec_seasons = [x.lower() for x in (recipe.get("seasons") or [])]
+    if season and season in rec_seasons:
+        s += SEASON_MATCH
+    elif "all" in rec_seasons:
+        s += SEASON_YEAR_ROUND
     if topics:
-        s += 2.0 * len(set(g.lower() for g in (recipe.get("good_for") or [])) & topics)
+        matched = set(g.lower() for g in (recipe.get("good_for") or [])) & topics
+        if gf_weights is None:
+            s += 2.0 * len(matched)                    # legacy flat weighting
+        elif matched:
+            s += min(GOOD_FOR_MAX_TOTAL,
+                     sum(gf_weights.get(t, GOOD_FOR_MAX_WEIGHT) for t in matched))
     if region and str(recipe.get("region") or "").lower() == region.lower():
         s += 1.0
     if weight_loss:
@@ -206,7 +317,11 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
     nut = (plan or {}).get("nutrition") or {}
     avoid |= _tokens(nut.get("foods_to_remove"))
     topics = set(str(t).lower() for t in ((plan or {}).get("assessment", {}) or {}).get("focus_topics", []))
-    topics |= set(str(c).lower() for c in (client.get("active_conditions") or []))
+    conditions = list(client.get("active_conditions") or [])
+    topics |= set(str(c).lower() for c in conditions)      # already-slug conditions
+    gf_weights = good_for_weights(recipes)
+    # …and the prose ones, resolved alias-aware against the good_for vocabulary
+    topics |= resolve_condition_topics(conditions, condition_topic_index(gf_weights.keys()))
     region = (client.get("region") or "").lower()
     try:
         from lab_nutrient_priorities import lab_nutrient_priorities
@@ -220,7 +335,8 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
             continue
         if not is_safe(r, allergies, avoid):
             continue
-        eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss, lab_priorities), r))
+        eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss,
+                                      lab_priorities, gf_weights), r))
     eligible.sort(key=lambda x: x[0], reverse=True)
 
     # coverage: take up to `per_meal` per meal_type, then global cap

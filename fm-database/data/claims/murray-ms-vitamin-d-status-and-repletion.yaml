@@ -1,0 +1,85 @@
+slug: murray-ms-vitamin-d-status-and-repletion
+statement: 'Vitamin D deficiency is near-ubiquitous in established MS: Murray & Pizzorno cite a study
+  of 199
+
+  people with MS in which 84% were deficient. Alongside the population data, animal-model work shows
+
+  vitamin D decreasing immune-cell-mediated inflammation and preventing MS-like lesions, apparently by
+
+  limiting inflammatory white blood cells entering the central nervous system; human data associate
+
+  higher vitamin D with lower incidence (in women) and lower inflammatory cytokine levels. On that
+
+  basis the treatment summary recommends vitamin D3 2,000-4,000 IU per day and - this is the
+
+  load-bearing part - says to rely on blood levels, targeting 50-80 ng/mL 25-hydroxyvitamin D. The
+
+  chapter describes supplementation trials in MS only as showing encouraging results, not as
+
+  established treatment.
+
+  '
+evidence_tier: confirm_with_clinician
+rationale: The association between low 25(OH)D and MS is consistent and mechanistically coherent (vitamin
+  D receptor signalling on T cells; the animal EAE model), and the deficiency prevalence figure is striking.
+  But the chapter is explicit that supplementation trials in MS were early and encouraging, not conclusive
+  - association plus animal model does not establish that repleting vitamin D changes relapse rate or
+  disability. Separately, the recommended target of 50-80 ng/mL sits well above conventional sufficiency
+  thresholds, and the dose is a treatment dose in a diagnosed disease monitored on serum levels. That
+  combination - supraconventional target, active neurological disease, hypercalcaemia risk, and interaction
+  with the neurologist's plan - puts this firmly at confirm_with_clinician regardless of how good the
+  association looks.
+coaching_translation: Vitamin D comes up in almost every conversation about MS, and low levels are extremely
+  common in people who have it. There is good reason to know your level. What a coach can do is encourage
+  the client to have 25-hydroxyvitamin D tested and reviewed by their doctor or neurologist, support safe
+  daily outdoor time, and support food sources. What a coach must NOT do is name a dose, name a target
+  number, or read the result. Higher-dose vitamin D in MS is a monitored medical decision - blood levels
+  and calcium need watching - so this belongs with the treating clinician.
+caveats:
+- Vitamin D dosing above routine supplemental levels requires clinician oversight - hypercalcaemia, hypercalciuria
+  and kidney-stone risk rise with sustained high intake, and the 50-80 ng/mL target quoted here is above
+  conventional sufficiency.
+- A coach may not interpret a 25(OH)D result. Testing and target-setting belong to the treating clinician.
+- 'Exclude first (clinician): sarcoidosis, primary hyperparathyroidism, granulomatous disease and significant
+  renal impairment - vitamin D can be actively harmful in these.'
+- 'Check interactions: thiazide diuretics (calcium retention), digoxin, and reduced absorption on long-term
+  steroids or in fat-malabsorption states - all plausible in an MS caseload.'
+- 'India angle: deficiency is common here despite strong sunlight (pigmented skin, sun avoidance, indoor
+  work, covering clothing, pollution), so do not assume adequacy from geography - but equally, do not
+  assume the Northern-Hemisphere dosing in this chapter transfers without testing.'
+- Vitamin D is an adjunct only. It does not replace disease-modifying therapy and must never be presented
+  as doing so.
+- K2 co-factor questions and any high-dose protocol are clinician territory, not coach territory.
+linked_to_topics:
+- multiple-sclerosis
+- vitamin-d3
+- vitamin-d3-k2-synergy
+- daily-sun-exposure
+- autoimmune-disease
+linked_to_supplements:
+- vitamin-d3
+- vitamin-d3-k2
+linked_to_mechanisms:
+- immunomodulation-via-vitamin-d
+- vitamin-d-hydroxylation
+- neuroinflammation
+- cytokine-dysregulation
+out_of_scope_notes: 'Coach scope: education on why vitamin D status is discussed in MS, encouraging the
+  client to raise testing with their clinician, safe sun habits, food sources, and adherence support once
+  a doctor has set a dose. Out of scope: recommending or adjusting a dose, naming a target range to the
+  client, interpreting the lab result, or implying vitamin D can substitute for disease-modifying therapy.'
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1286
+  quote: A recent study looked at the serum vitamin D levels in 199 people with MS and found 84% of them
+    to be deﬁcient.42 In addition to this circumstantial evidence, studies involving the animal model
+    of MS have shown that vitamin D has the ability to decrease immune-cell-mediated inﬂammation and prevent
+    MS-like lesions.43,44
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1291
+  quote: 'Vitamin D3: 2,000 to 4,000 IU per day (we strongly recommend relying on blood levels in the
+    treatment of MS, with an ideal range of 50 to 80 ng/ml 25-hydroxyvitamin D)'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

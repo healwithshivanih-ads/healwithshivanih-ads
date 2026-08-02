@@ -1,0 +1,43 @@
+slug: murray-soluble-fiber-carob-pectin-slows-acute-diarrhea
+statement: |
+  Fibre in this chapter is used to slow diarrhoea, not to relieve constipation. The
+  chapter reports that brewed teas of roasted carob powder have been described since the
+  early 1950s as effective and side-effect-free in acute-onset diarrhoea, attributing the
+  effect to carob's dietary fibre and polyphenols. The trial it cites randomised 41 infants
+  aged 3 to 21 months with acute diarrhoea of bacterial and viral origin, all treated with
+  oral rehydration fluid, to carob powder 1.5 g/kg per day or placebo for up to six days;
+  diarrhoea lasted 2 days in the carob group versus 3.75 days on placebo, with faster
+  normalisation of defecation, temperature, weight and cessation of vomiting and no reported
+  side effects. It offers pectin - the fibre in citrus fruits, apples and many other fruits
+  and vegetables - as an alternative approach.
+evidence_tier: plausible_emerging
+rationale: >
+  One small randomised trial in 41 infants plus older uncontrolled reports is thin, and the mechanism is stated as a supposition rather than demonstrated. But the mechanism is coherent and consistent with better-evidenced neighbours: soluble, gel-forming, non-fermentable or slowly fermented fibre absorbs water, thickens luminal contents and slows transit, which is the same rationale behind green-banana and pectin studies in paediatric diarrhoea and behind psyllium in loose stools. Note also that carob was given on top of oral rehydration, not instead of it. Tiered plausible_emerging - promising and low-risk, not established.
+coaching_translation: >
+  This is the point clients find counter-intuitive: the same fibres that help constipation can also help diarrhoea, because soluble fibre works by absorbing water and forming a gel, which firms up loose stools as readily as it softens hard ones. Insoluble roughage - bran, raw salads, whole nuts - does the opposite and should come back last. Practical Indian versions of the same idea: cooked apple, ripe banana, guava and other pectin-rich fruit cooked rather than raw, rice kanji, and a little isabgol (psyllium) in curd once the acute phase is passing. All of this sits on top of fluids and salts, never instead of them.
+caveats:
+- "The evidence is one small infant trial; do not present carob or pectin to a client as a treatment, and do not use paediatric dosing from that trial as guidance."
+- "Fibre and rehydration are not interchangeable - carob was given alongside oral rehydration fluid in the trial, and fluids remain the priority."
+- "Adding fibre before an underlying cause is known can mask a worsening picture in IBD, coeliac disease or infection - the red flags still apply."
+- "Psyllium and other bulking fibres need adequate fluid alongside them, and can worsen bloating in FODMAP-sensitive or SIBO-suspected clients."
+- "Insoluble bran and raw fibre are not equivalent to soluble gel-forming fibre here and can aggravate an inflamed gut."
+linked_to_topics: []
+linked_to_supplements:
+- pectin
+- dietary-fiber-psyllium
+linked_to_mechanisms:
+- soluble-fiber-gel-formation
+- dietary-fiber-modulation
+out_of_scope_notes: >
+  Coaching food-first soluble fibre - cooked fruit, kanji, banana, a modest amount of psyllium - is in scope. Dosing a supplement to an infant or a child, or using fibre as the response to a diarrhoea that has not been medically evaluated, is not.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 871
+  quote: "One study involved 41 infants from 3 to 21 months of age, with acute diarrhea of bacterial and viral origin. The infants were treated in a hospital setting with oral rehydration ﬂuid (e.g., Pedialyte) and randomly received either carob powder (a daily dose of 1.5 g/kg) or an equivalent placebo for up to six days."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 871
+  quote: "The duration of diarrhea in the carob group was 2 days, compared with 3.75 days in the placebo group. Normalizations in defecation, body temperature, and weight, plus cessation of vomiting, were also reached more quickly in the carob group. No side effects from carob were reported."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

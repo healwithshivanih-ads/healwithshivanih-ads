@@ -1,0 +1,37 @@
+slug: murray-acute-infectious-diarrhea-mostly-viral
+statement: |
+  The chapter states that viruses cause at least 75% of infectious diarrhoea, and gives a
+  pattern that suggests a viral cause: prominent vomiting, an incubation period longer than
+  14 hours, and the whole illness over within 72 hours, with no bacterial warning signs and
+  no epidemiological clues. The bacterial warning signs it names are high fever, bloody
+  diarrhoea, severe abdominal pain, or more than six stools in 24 hours; the epidemiological
+  clues are recent travel, sexual contact, and antibiotic use. Rotavirus is named as a
+  leading cause in children and is estimated to cause more than 800,000 annual deaths among
+  young children in developing countries.
+evidence_tier: plausible_emerging
+rationale: >
+  The 75% figure and the timing rules are asserted without citation in this chapter, and the book predates widespread rotavirus vaccination - India introduced rotavirus vaccine into the universal immunisation programme after this edition, and the global child death estimate has fallen substantially since. The direction of the claim (most acute diarrhoea is viral and self-limiting) is well supported elsewhere; the specific numbers are dated. Tiered plausible_emerging on the strength of the citation, not the plausibility of the idea.
+coaching_translation: >
+  Most short bouts of diarrhoea are viral, settle by themselves within about three days, and need fluids rather than treatment. What argues against a simple viral bug is high fever, blood in the stool, severe abdominal pain, more than six stools in a day, or a history of recent travel or a recent course of antibiotics - any of those, the client sees a doctor. Vomiting that starts before the diarrhoea and an illness that is over within three days both point the ordinary, self-limiting way.
+caveats:
+- "Numbers here are pre-2012 and pre-rotavirus-vaccine; do not quote the 800,000 deaths figure to clients as current."
+- "This is a pattern description, not a test. A coach must never tell a client their illness is viral - that is a diagnosis."
+- "In India, water- and food-borne bacterial and parasitic causes are proportionally more common than in the US population the book is written for; a travel or contaminated-water history should lower the threshold for referral rather than reassure."
+- "Dehydration is the thing that harms people in a self-limiting viral illness - the illness being benign does not make the fluid loss benign."
+linked_to_topics:
+- food-poisoning
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Coaching the client on fluids, rest and when to escalate is in scope. Deciding whether an episode is viral, bacterial or parasitic, ordering stool cultures, and prescribing antibiotics are clinician-only.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 867
+  quote: "Viruses are the most common cause of infectious diarrhea, accounting for at least 75% of cases. Viruses are suspected when vomiting is prominent, the incubation period is longer than 14 hours, and the entire illness is over in less than 72 hours."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 867
+  quote: "A virus is likely to be the cause if there are no warning signs of bacterial infection (such as high fever, bloody diarrhea, severe abdominal pain, or more than six stools in 24 hours) and there are no epidemiological clues from the history (i.e., travel, sexual contact, antibiotic use)."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

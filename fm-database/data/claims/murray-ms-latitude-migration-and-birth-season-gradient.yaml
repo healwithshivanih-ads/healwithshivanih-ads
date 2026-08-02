@@ -1,0 +1,85 @@
+slug: murray-ms-latitude-migration-and-birth-season-gradient
+statement: 'Multiple sclerosis prevalence rises with distance from the equator in BOTH hemispheres - the
+
+  high-risk belt includes the northern United States, Canada, Great Britain, Scandinavia, northern
+
+  Europe, New Zealand and Tasmania. Murray & Pizzorno report the migration finding that anchors the
+
+  whole latitude argument: people who move from a low-risk to a high-risk area BEFORE age 15 acquire
+
+  the higher risk, while those who move after 15 keep their low risk - placing the initiating exposure
+
+  in the first two decades of life. Several European population studies add a birth-season effect
+
+  (lower MS risk for births after October, higher for births after May), which the authors attribute
+
+  to maternal vitamin D status in the third trimester. Critically, the chapter also cites a study
+
+  suggesting sun exposure itself is protective INDEPENDENT of raising vitamin D levels - so the
+
+  gradient is not simply a serum-25(OH)D story.
+
+  '
+evidence_tier: plausible_emerging
+rationale: This is ecological, migration and birth-cohort epidemiology, not a trial, and the book presents
+  it as such. The migration-before-15 pattern is the strongest single piece because it partially separates
+  environment from ancestry - but latitude co-varies with UVB, ancestry (the chapter says MS is most common
+  in Caucasians of northern European descent), diet, and childhood infection timing, so it cannot isolate
+  a mechanism. The authors themselves undercut a naive vitamin-D-only reading by citing evidence that
+  sun exposure protects independently of 25(OH)D. Plausible and directionally consistent across many datasets;
+  not causal.
+coaching_translation: Where someone grew up - and how much time they spent outdoors as a child - appears
+  to matter for MS risk more than where they live as an adult. Populations far from the equator have far
+  more MS, and people who moved to a high-latitude country as young children picked up the higher risk
+  while those who moved as teenagers or adults did not. Sunlight and vitamin D are both part of the story,
+  and they may not be the same part. For an adult client this is background context that helps them make
+  sense of their diagnosis - it is not something they can now change, and it is not a reason for guilt
+  about past sun habits.
+caveats:
+- Latitude epidemiology describes POPULATIONS, never an individual. It cannot tell a client why they developed
+  MS, and must never be used that way.
+- The evidence base is high-latitude Northern-Hemisphere and largely Caucasian. The chapter itself says
+  typical MS is rare among Asians - absolute risk in an Indian client is low, so do not import this framing
+  into unexplained neurological symptoms.
+- 'India angle: the "sunny country therefore protected" inference does NOT hold. Vitamin D deficiency
+  is very common in India despite abundant UVB - pigmented skin needs far longer exposure, plus sun avoidance
+  for fairness, indoor/office work, covering clothing, and urban air pollution attenuating UVB. Low latitude
+  does not mean replete.'
+- Because sun exposure may protect independently of vitamin D, a supplement is not a proven substitute
+  for daylight, and daylight advice must still respect skin-cancer and photosensitising-medication limits.
+- A coach must never suggest that a person could have prevented their MS with more sun.
+linked_to_topics:
+- multiple-sclerosis
+- daily-sun-exposure
+- vitamin-d3
+- autoimmune-disease
+linked_to_supplements: []
+linked_to_mechanisms:
+- immunomodulation-via-vitamin-d
+- demyelination
+- serotonin-synthesis-via-sunlight
+out_of_scope_notes: 'Coach scope: explaining published epidemiology as general education, and supporting
+  safe daily outdoor time. Out of scope: attributing an individual case of MS to any exposure, estimating
+  anyone''s personal risk, or advising on childhood risk for a client''s children - that is a neurologist''s
+  or physician''s conversation.'
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1279
+  quote: It appears that the initial event in the development of MS may occur in early life. This statement
+    is based on the observation that people who move from a low-risk area to a high-risk area before age
+    15 have a higher risk of developing MS, whereas those who make the same move after age 15 retain their
+    low risk.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1281
+  quote: These studies observe that there is a lower risk of MS for births occurring after October and
+    a higher risk for MS for births occurring after May. The authors reporting these ﬁndings suggest that
+    maternal levels of vitamin D levels during the third trimester of pregnancy may inﬂuence risk of MS
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1282
+  quote: Of particular interest is a recent study showing that the MS protection afforded by being closer
+    to the equator may not be due simply to increased vitamin D production.16 Apparently sun exposure
+    itself is protective against MS, independent of increasing vitamin D levels.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

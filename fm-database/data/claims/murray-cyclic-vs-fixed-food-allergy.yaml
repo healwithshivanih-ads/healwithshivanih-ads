@@ -1,0 +1,64 @@
+slug: murray-cyclic-vs-fixed-food-allergy
+statement: |
+  Murray & Pizzorno divide adverse food reactions into two clinically distinct
+  patterns. Cyclical (cyclic) allergies build up slowly through repeated eating of
+  the same food; if that food is avoided for a period — typically more than four
+  months — it can often be reintroduced and tolerated, provided it is not eaten too
+  frequently again. Fixed allergies react every single time the food is eaten,
+  regardless of how long the gap between exposures, and the person stays reactive
+  for life. The book puts cyclic reactions at 80 to 90% of all food allergies,
+  which is why most people who react to a food are not permanently barred from it.
+evidence_tier: fm_specific_thin
+rationale: >
+  The cyclic/fixed distinction is a naturopathic and nutrition-medicine clinical
+  framework, described by the authors as what "naturopathic and other
+  nutrition-oriented physicians recognize" rather than as a validated
+  immunological taxonomy. The 80-90% figure is presented without a supporting
+  citation in this chapter. Mechanistically it is at least coherent — true
+  IgE-mediated allergy (roughly 10-15% of food reactions per the same chapter) is
+  the population that behaves like a "fixed" allergy, while dose- and
+  frequency-dependent non-IgE reactions plausibly wax and wane. But the specific
+  four-month avoidance window and the 80-90% split are clinical convention, not
+  trial-derived numbers, so this is tiered fm_specific_thin.
+coaching_translation: >
+  Most food reactions are not a life sentence. There are two patterns. The common
+  one builds up because you have been eating the same thing very often — take it
+  out for several months, then bring it back occasionally, and many people are
+  fine. The less common one reacts every single time no matter how long you leave
+  it, and that food usually has to stay out for good. This matters for how we
+  plan: I do not want you cutting out roti or curd forever if we do not have to.
+  Which pattern you have is something we watch over months, not something we
+  decide in one session.
+caveats:
+- A clinician must first exclude celiac disease, IgE food allergy, and other
+  organic GI disease before anything is labelled a "cyclic" reaction and
+  re-challenged.
+- If a food has ever caused lip/throat swelling, wheeze, or collapse, treat it as
+  fixed and never re-challenge it outside medical supervision — the cyclic/fixed
+  frame does not apply to anaphylaxis.
+- The four-month figure is a clinical rule of thumb, not a tested interval.
+- In an Indian vegetarian diet the "eaten too frequently" trap is structural —
+  wheat, curd and dal appear at nearly every meal — so the cyclic pattern may be
+  commoner and harder to unwind here than the book's Western picture suggests.
+linked_to_topics:
+- food-sensitivities
+- food-sensitivity-igg-iga-mediated
+- food-allergy-ige-mediated
+- elimination-diet
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Coach scope: educating a client on why a food was removed and why it may return
+  later; supporting the practical side of a planned reintroduction. Out of scope:
+  deciding that a reaction is "cyclic" rather than "fixed", and re-challenging any
+  food in a client with a history of anaphylaxis or airway involvement — that is
+  emergency/clinician territory and requires a supervised setting.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 941
+  quote: |-
+    Cyclical allergies develop slowly through repeated eating of a food. If the allergenic food is avoided for a period of time (typically more than four months), it may be reintroduced and tolerated unless it is again eaten too frequently. Cyclic allergies account for 80 to 90% of food allergies. Fixed allergies occur whenever a food is eaten, no matter what the time span is between episodes of ingestion.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

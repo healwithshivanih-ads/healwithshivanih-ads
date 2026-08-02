@@ -1,0 +1,73 @@
+slug: murray-avoidance-hidden-foods-and-food-families
+statement: |
+  Once an offending food is identified, avoidance is the simplest and most
+  effective treatment. Symptoms begin to settle only after the body has cleared
+  the antigen-antibody complexes and the gut has emptied the remaining food —
+  usually three to five days, which sets the realistic expectation for how fast a
+  removal "works". Avoidance has to cover the hidden form of the food, not just
+  the obvious one (egg in an omelette versus egg in bread), and for severe
+  reactions it may need to extend to botanically related foods that share
+  antigenic components, e.g. rice and millet in someone with severe wheat allergy.
+  In practice this is hard: wheat, corn and soy are components of many processed
+  foods, and ingredients are unknowable when eating out.
+evidence_tier: strong
+rationale: >
+  Avoidance of a confirmed trigger is the uncontested first-line management of
+  food allergy and food intolerance in both conventional and functional practice —
+  no mechanism is needed beyond removing the antigen. The three-to-five-day
+  clearance window and the cross-reactive food-family extension are clinical
+  observations rather than trial endpoints, but the underlying immunology
+  (structurally similar proteins within a botanical family being bound by the same
+  antibodies) is well established, e.g. the recognised grass/cereal and
+  birch-pollen cross-reactivity clusters. Tiered strong for the core claim;
+  the specific rice-and-millet pairing is illustrative, not a rule.
+coaching_translation: >
+  Taking the food out is the treatment. Give it three to five days before you
+  judge whether it helped — your gut has to finish clearing what is already in
+  there. The catch is that the food is usually hiding somewhere you have not
+  thought of: wheat is not just roti, it is the atta in the mix, the rusk, the
+  biscuit, the sauce, the "suji" upma, the hing packet. Read labels, and when you
+  eat out, assume you do not know what is in the dish. If the reaction has been a
+  strong one, close cousins of that food may need to go too — grains within the
+  same family, for instance. This is the part clients underestimate, so we plan
+  substitutes before we remove anything.
+caveats:
+- Cross-reactivity within a food family is real but variable; extending avoidance
+  to a whole botanical family narrows the diet substantially and needs a
+  clinician's or dietitian's sign-off, especially in a vegetarian.
+- Removing wheat without first testing for celiac disease makes later diagnosis
+  much harder.
+- The book's headline offenders (wheat, corn, soy, egg, dairy) are drawn from a
+  Western processed-food diet. In an Indian vegetarian household wheat and dairy
+  are staples and also major protein sources, so removal is nutritionally riskier
+  and needs a planned replacement (dal, moong, paneer alternatives, millets where
+  wheat is the issue) rather than simple subtraction.
+- Long, open-ended avoidance lists carry social and psychological cost and can
+  slide into food fear; keep the list as short as the evidence justifies.
+linked_to_topics:
+- food-sensitivities
+- elimination-diet
+- gluten-sensitivity
+- celiac-disease
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Coach scope: label reading, meal planning, restaurant strategy, finding
+  culturally appropriate substitutes, and keeping the diet nutritionally adequate.
+  Out of scope: deciding which foods must be avoided, extending avoidance to a
+  whole food family, or managing a client with a true IgE allergy — that client
+  needs an allergist, a written emergency plan and, where indicated, adrenaline
+  on hand. A coach does not manage anaphylaxis risk.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 944
+  quote: |-
+    Elimination of offending antigens from the diet will begin to alleviate associated symptoms after the body has cleared itself of the antigen/antibody complexes and after the intestinal tract has eliminated any remaining food (usually three to five days). Avoidance means avoiding the food not only in its most identifiable state (e.g., eggs in an omelet), but also in its hidden state (e.g., eggs in bread).
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 944
+  quote: |-
+    For severe reactions, it may also be necessary to eliminate closely related foods with similar antigenic components (e.g., rice and millet, for patients with severe wheat allergy).
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

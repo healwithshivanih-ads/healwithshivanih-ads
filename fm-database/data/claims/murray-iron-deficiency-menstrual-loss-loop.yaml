@@ -1,0 +1,62 @@
+slug: murray-iron-deficiency-menstrual-loss-loop
+statement: |
+  In women of childbearing age, blood loss is the most common cause of iron deficiency, and
+  that loss is most often excessive menstrual bleeding. Murray & Pizzorno add the less
+  obvious half of the loop: iron deficiency is itself a common cause of excessive menstrual
+  blood loss. Heavy periods and low iron can therefore drive each other, and correcting only
+  one side may leave the cycle running. The chapter also lists bleeding peptic ulcers,
+  hemorrhoids and frequent blood donation as commonly missed sources of chronic loss.
+evidence_tier: plausible_emerging
+rationale: >
+  That heavy menstrual bleeding causes iron deficiency is uncontroversial and well
+  established. The reverse direction — iron deficiency worsening menstrual blood loss — is
+  the less secure half; the book cites two references (2, 3) but does not describe the study
+  designs, sizes or the proposed mechanism, and it is not a mainstream clinical teaching
+  point. Tiered plausible_emerging on the strength of the bidirectional claim, which is the
+  novel part of this claim. The rest of the claim (blood loss as the leading cause in
+  menstruating women; ulcer, hemorrhoid and donation as missed sources) is strong.
+coaching_translation: >
+  If a woman has heavy periods and low iron, the two can feed each other — heavy bleeding
+  drains iron, and being low on iron may in turn make bleeding heavier. That means it is
+  worth treating the flow and the iron status as one conversation with her doctor rather than
+  two separate ones. It is also worth asking gently about other steady, easily-missed losses:
+  bleeding from piles, a history of ulcers or long-term painkiller use, or regular blood
+  donation. Clients often do not mention these because they do not connect them to feeling
+  tired.
+caveats:
+- Heavy menstrual bleeding always needs medical evaluation. Fibroids, adenomyosis, polyps,
+  thyroid disease, a bleeding disorder and endometrial pathology all present this way and are
+  not iron problems.
+- Any unexplained iron deficiency in a man, or in a woman who is not menstruating, must be
+  investigated for gastrointestinal blood loss — this is a red flag, not a nutrition issue.
+- The coach must not tell a client that iron will fix her heavy periods; the bidirectional
+  claim is not strong enough to carry a promise, and it is prescriptive territory regardless.
+- What counts as a heavy period is subjective and clients routinely under-report it.
+  Describing what they actually experience to their doctor is more useful than the coach
+  forming a judgement.
+linked_to_topics:
+- iron-deficiency-anemia
+- iron-deficiency
+- menorrhagia
+- healthy-menstrual-cycle-baseline
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Evaluating heavy menstrual bleeding, investigating a source of GI blood loss, and deciding
+  whether iron repletion is indicated are all clinician scope. Coach scope: helping the
+  client notice and describe her flow and her fatigue accurately, prompting her to raise both
+  with her doctor together rather than separately, and supporting the dietary side once a
+  cause has been established.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 21 — Anemia, pg 466
+  quote: >-
+    Blood loss is the most common cause of iron deﬁciency in women of childbearing age. This
+    blood loss is most often due to excessive menstrual bleeding. Interestingly enough, iron
+    deﬁciency is a common cause of excessive menstrual blood loss.2,3 Other frequently seen
+    causes of blood loss include bleeding from peptic ulcers, bleeding from hemorrhoids, and
+    donating blood.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

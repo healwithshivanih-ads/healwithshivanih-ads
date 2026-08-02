@@ -1,0 +1,54 @@
+slug: murray-milk-and-food-allergens-aggravate-peptic-ulcer
+statement: |
+  Murray & Pizzorno treat food allergy as a primary factor in many peptic ulcer
+  cases and report that an allergen-elimination diet has been used successfully to
+  treat and prevent recurrent ulcers. They single out milk: it is the food ulcer
+  patients most commonly use to soothe the stomach, it is highly allergenic, and
+  population data link higher milk intake to greater ulcer likelihood — probably
+  because milk significantly increases stomach acid production. The soothing effect
+  is real but short-lived; the acid rebound that follows is the problem.
+evidence_tier: plausible_emerging
+rationale: >
+  The mechanistic half is solid and independently well established: milk's calcium
+  and protein stimulate gastrin and rebound acid secretion, which is exactly why
+  the old "milk drip" ulcer regimens were abandoned in mainstream practice. The
+  food-allergy half rests on refs 7-10, which are mid-20th-century observational
+  and radiographic studies (98% of ulcer patients with respiratory allergy; 25 of
+  43 allergic children with ulcers on X-ray) — uncontrolled, dated, and using
+  diagnostic standards no longer accepted. Tiered plausible_emerging: act on the
+  milk-rebound point with confidence, hold the broader food-allergy claim lightly.
+coaching_translation: >
+  Milk feels wonderful on a burning stomach for about twenty minutes — and then it
+  makes things worse, because milk actually pushes the stomach to make MORE acid
+  afterwards. This is one of the most common pieces of well-meant advice in Indian
+  homes and it works against you. If reaching for a glass of milk is your go-to
+  when the burning starts, that is worth changing. Beyond milk, it is worth
+  noticing whether particular foods reliably set you off — a two-week food and
+  symptom diary usually makes the pattern obvious without any testing.
+caveats:
+- |-
+  Do not generalise this to all dairy or to fermented dairy without evidence — the chapter's claim concerns milk, and curd/dahi behaves differently in most people
+- |-
+  Removing milk from an Indian largely-vegetarian diet can meaningfully cut protein, calcium and B12 — replace deliberately (dals, paneer alternatives, ragi, sesame, fortified foods) rather than just subtracting
+- |-
+  The food-allergy studies here are mid-20th-century and uncontrolled; do not present them as modern evidence
+- |-
+  A structured elimination-and-reintroduction is a short diagnostic trial, not a permanent diet. Long-term unsupervised restriction is its own harm
+linked_to_topics: [peptic-ulcer-disease, elimination-diet, food-sensitivity, food-allergy-ige-mediated, gerd]
+linked_to_supplements: []
+linked_to_mechanisms: [histamine-mediated-gastric-acid-hypersecretion, gastric-mucosal-barrier-disruption, igg-antigen-immune-complex-complement-activation]
+out_of_scope_notes: >
+  A coach may run a structured, time-limited elimination and reintroduction and
+  teach food-symptom journalling. Ordering or interpreting IgE/IgG food panels,
+  diagnosing food allergy, and managing anaphylaxis risk are clinician scope. If a
+  client reports true allergic symptoms (swelling, breathing difficulty), refer
+  immediately and do not run a food challenge.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1378
+  quote: |-
+    A diet that eliminates food allergens has been used with great success in treating and preventing recurrent ulcers.8,9 It is ironic that many people with peptic ulcers soothe their stomachs by consuming milk, a highly allergenic food. Milk should be avoided on this basis alone. However, population studies offer additional evidence that increased milk consumption leads to a greater likelihood of ulcer. The reason is probably that milk signiﬁcantly increases stomach acid production.11
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

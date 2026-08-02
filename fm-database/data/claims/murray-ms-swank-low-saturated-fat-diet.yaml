@@ -1,0 +1,85 @@
+slug: murray-ms-swank-low-saturated-fat-diet
+statement: 'Roy Swank''s low-saturated-fat diet, begun in 1948 and followed over decades, is the longest-running
+
+  dietary observation in MS. Murray & Pizzorno report that a diet low in saturated fat, maintained over
+
+  a long period, tended to retard the disease process, reduce the number of attacks, and decrease
+
+  mortality. The operational targets in the treatment summary are: saturated fat 15 g/day or less;
+
+  unsaturated fat 20-50 g/day; no red meat in the first year (including dark poultry meat), then only
+
+  about 3 oz weekly; white poultry, fish and shellfish permitted if low in saturated fat; and
+
+  elimination of dairy products at 1% fat or more. Crucially, the same chapter reports that the large
+
+  prospective Nurses Health Study cohorts found NO evidence linking saturated fat intake to MS risk -
+
+  so the dietary evidence is genuinely mixed.
+
+  '
+evidence_tier: fm_specific_thin
+rationale: 'This must be tiered on what it actually is. The Swank data are uncontrolled, unblinded, long-term
+  observational follow-up of self-selected adherers, with no randomisation and no contemporaneous control
+  arm - adherence itself selects for healthier, better-supported, less disabled patients, which alone
+  can produce the mortality and attack-rate differences reported. The book is honest enough to print the
+  contradicting evidence beside it: the Nurses Health Study cohorts found no saturated-fat association
+  with MS RISK. Two small pilot studies (an open-label low-saturated-fat plus fish oil, B complex and
+  vitamin C study, and a 31-patient randomised low-fat-plus-fish-oil versus moderate-fat-plus-olive-oil
+  comparison) showed reduced relapse rates in both arms and mostly non-significant between-group differences.
+  That is hypothesis-generating, not proof. The plausible mechanism - anti-inflammatory effect and nerve-cell-membrane
+  stabilisation from a diet richer in long-chain omega-3 and lower in saturated fat - is reasonable but
+  not demonstrated to be operative.'
+coaching_translation: 'There is a long-standing dietary pattern for MS - the Swank diet - built around
+  keeping saturated fat low, cutting red meat and full-fat dairy right back, and getting fats mainly from
+  fish and unsaturated oils. People have followed it for decades and the observations are encouraging,
+  but they come from watching people who chose to follow it rather than from a proper trial, and one very
+  large study found no link between saturated fat and MS risk at all. So: this is a reasonable, generally
+  health-promoting way to eat that a client with MS may want to try alongside their medical treatment
+  - not a proven therapy, and never a reason to change or stop medication. Frame it as worth trying and
+  good for you anyway, not as something that will slow the disease.'
+caveats:
+- The Swank evidence is uncontrolled observational follow-up of self-selected adherers, not a randomised
+  trial. Do not describe it to a client as proof that diet slows MS.
+- The chapter itself reports the Nurses Health Study cohorts finding NO saturated-fat association with
+  MS risk. Present both sides.
+- This is a genuinely restrictive pattern (15 g saturated fat/day, near-elimination of red meat and full-fat
+  dairy). Screen for undereating, weight loss, disordered-eating history, and the added burden of restriction
+  on someone already managing fatigue and disability.
+- 'India / vegetarian angle: the fish-and-shellfish half of the Swank pattern is unavailable to most Indian
+  vegetarian clients, and ghee, paneer, full-fat curd and whole milk carry much of the saturated fat in
+  a typical Indian vegetarian diet. Cutting these without a deliberate replacement plan risks shortfalls
+  in protein, calcium, B12 and total energy - refer to a dietitian rather than improvising.'
+- Fatigue, hand function and heat intolerance can make cooking-intensive diets unrealistic. Match the
+  ask to the actual capacity of the client.
+- Never position a dietary change as a reason to reduce or delay disease-modifying therapy.
+linked_to_topics:
+- multiple-sclerosis
+- anti-inflammatory-diet
+- essential-fatty-acids
+- protein-adequacy-vegetarian
+- autoimmune-disease
+linked_to_supplements: []
+linked_to_mechanisms:
+- omega-3-omega-6-imbalance
+- epa-dha-cell-membrane-incorporation
+- neuroinflammation
+out_of_scope_notes: 'Coach scope: coaching a lower-saturated-fat, more omega-3-oriented eating pattern
+  as general health behaviour, plus habit design, shopping and cooking support, and honest framing of
+  the evidence. Out of scope: presenting the Swank diet as MS treatment, prescribing it as a therapeutic
+  protocol, or supervising a restrictive diet in someone with progressive disability or nutritional risk
+  - that needs a dietitian and the neurology team.'
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1283
+  quote: Roy Swank, M.D., former professor of neurology at the University of Oregon Medical School, provided
+    strong evidence over a lifetime of research that a diet low in saturated fats, maintained over a long
+    period of time, tends to retard the disease process, reduce the number of attacks, and decrease mortality.29–31
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 78 — Multiple Sclerosis, pg 1282
+  quote: However, a large prospective cohort study using data from the Nurses Health Study and Nurses
+    Health Study II found no evidence linking risk of MS with intake of saturated fats.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

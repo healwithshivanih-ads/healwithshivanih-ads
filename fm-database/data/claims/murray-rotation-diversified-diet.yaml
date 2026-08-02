@@ -1,0 +1,72 @@
+slug: murray-rotation-diversified-diet
+statement: |
+  The rotation diversified diet, developed by Herbert J. Rinkel in 1934, is the
+  book's answer to the fact that food allergy is driven partly by repetition.
+  Tolerated foods are eaten at regularly spaced intervals of four to seven days —
+  wheat on Monday means no wheat again until Friday — on the principle that
+  infrequent consumption of a tolerated food is unlikely to induce a new allergy
+  or aggravate a mild one, even in a highly sensitised person. Botanical and animal
+  food FAMILIES must be rotated too, because allergenic foods cross-react with
+  relatives in the same family: a person allergic to wheat makes antibodies that
+  can react with other grasses. The usual recommendation is not to eat members of
+  the same food family two days running. Foods eliminated for a cyclic allergy can
+  later be folded back into the rotation; foods involved in fixed allergies never
+  return.
+evidence_tier: fm_specific_thin
+rationale: >
+  Rotation diets are a long-standing clinical-ecology practice with almost no
+  controlled-trial support; the primary citation here is Rinkel 1934. The
+  underlying observation that frequent repeated exposure to a limited set of foods
+  is associated with sensitisation is echoed elsewhere in this chapter and is at
+  least plausible, and within-family protein cross-reactivity is genuinely well
+  established immunologically (grass/cereal, legume, and pollen-food clusters).
+  But the specific four-to-seven-day interval and the two-days-apart family rule
+  are convention, not measured thresholds, and no trial shows a rotation diet
+  prevents new allergies. Tiered fm_specific_thin.
+coaching_translation: >
+  Part of why a food starts bothering you is that you eat it every single day. A
+  rotation approach spreads your safe foods out — you eat something, then leave a
+  four-to-seven-day gap before it comes round again — and you rotate whole
+  families, not just single items, because close relatives can trigger the same
+  reaction. Practically that means variety is the goal, not restriction: more
+  different grains, more different dals, more different vegetables across the
+  week, instead of the same three things on repeat. Even done loosely, widening
+  the variety of what you eat is worth doing on its own merits.
+caveats:
+- There is no trial evidence that a rotation diet prevents new food allergies;
+  present it as a structured way to increase variety, not as proven prevention.
+- Strict rotation is demanding and can tip into food preoccupation or inadequate
+  intake — inappropriate for anyone with a history of disordered eating.
+- 'Rotating food FAMILIES is where it becomes hard for an Indian vegetarian: dal
+  and other legumes are one family and are the main protein source, so a strict
+  four-day legume gap can leave real protein holes. Widen within-family variety
+  (moong, masoor, chana, rajma, cowpea) rather than dropping the family, and get
+  protein adequacy checked.'
+- Wheat and dairy appear at nearly every meal in most Indian households; a
+  realistic first step is displacing them at some meals with millets, rice or
+  alternatives, not a textbook four-day grid.
+linked_to_topics:
+- food-sensitivities
+- elimination-diet
+- food-sensitivity-igg-iga-mediated
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Building variety into a client's week, planning rotation-friendly menus, and
+  helping them shop and cook for it are squarely coach work. Prescribing a strict
+  rotation protocol as treatment for a diagnosed allergy, or deciding which food
+  families a client must space out, is clinician/dietitian work — particularly
+  where protein or micronutrient adequacy is at stake in a vegetarian client.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 945
+  quote: |-
+    Tolerated foods are eaten at regularly spaced intervals of four to seven days. For example, a person who has wheat on Monday will have to wait until Friday to have anything with wheat in it again. This approach is based on the principle that infrequent consumption of tolerated foods is not likely to induce new allergies or exacerbate mild allergies, even in highly sensitized and immune-compromised individuals.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 945
+  quote: |-
+    The reason it is important to rotate food families is that allergenic foods can cross-react with other foods from the same family. In other words, people who are allergic to wheat produce antibodies that can react with other grains in the wheat family.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

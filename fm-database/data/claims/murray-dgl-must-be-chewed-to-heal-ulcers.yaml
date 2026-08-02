@@ -1,0 +1,68 @@
+slug: murray-dgl-must-be-chewed-to-heal-ulcers
+statement: |
+  Deglycyrrhizinated licorice (DGL) is licorice with the glycyrrhizinic acid
+  removed — the fraction responsible for sodium and water retention and raised
+  blood pressure — leaving an antiulcer agent the authors describe as having no
+  known side effects. Murray & Pizzorno report clinical studies showing DGL as
+  effective as cimetidine at preventing ulcer recurrence, and that its flavonoids
+  inhibit H. pylori while also augmenting the body's own defence factors, with the
+  most potent flavonoid comparable to bismuth subcitrate. Form is decisive: DGL
+  must mix with saliva to work, capsules have NOT been shown effective, the dose is
+  two to four 380 mg chewable tablets 20 minutes before meals or between meals, and
+  taking it after meals gives poor results.
+evidence_tier: plausible_emerging
+rationale: >
+  DGL is one of the better-supported botanicals in this chapter — the cimetidine
+  head-to-head comparisons are cited (refs 28-31) and the mechanism (stimulating
+  mucin secretion, i.e. rebuilding defence rather than suppressing acid) is
+  coherent and fits the chapter's overall model. It is tiered plausible_emerging
+  rather than strong because the trials are small, from the 1970s-80s, and compared
+  against an H2 blocker rather than modern PPI therapy, and because "no known side
+  effects" is an authorial assertion rather than a safety-trial finding. The
+  chew-vs-capsule and before-vs-after-meals detail is asserted mechanistically
+  without a citation, but it is the single most common reason DGL fails in
+  practice, so it is worth carrying.
+coaching_translation: >
+  Licorice — mulethi — has been used for stomach ulcers for a very long time, but
+  ordinary licorice can push up blood pressure and cause fluid retention. DGL is
+  licorice with that troublesome part taken out. It works by helping the stomach
+  rebuild its protective mucus lining rather than by blocking acid. Two things
+  decide whether it works at all: it has to be CHEWED, because it needs to mix with
+  saliva (capsules have not been shown to work), and it has to be taken about 20
+  minutes BEFORE food or between meals — taken after meals it does poorly. People
+  usually stay on it for a good while after symptoms settle, not just a few days.
+caveats:
+- |-
+  DGL is not plain licorice/mulethi. Ordinary licorice root and mulethi tea contain glycyrrhizin and can raise blood pressure, drop potassium and cause fluid retention — a real risk in hypertensive clients and dangerous alongside diuretics or digoxin
+- |-
+  "No known side effects" is the authors' assertion, not a safety-trial conclusion — treat it as low-risk, not zero-risk
+- |-
+  Chewable form and pre-meal timing are essential; capsules are documented as ineffective, so a client on capsules is effectively untreated
+- |-
+  The comparator in these studies was cimetidine (an H2 blocker), not a modern PPI — do not extrapolate to "as good as pantoprazole"
+- |-
+  DGL suppresses and supports; it does not eradicate H. pylori and is not a substitute for prescribed eradication
+linked_to_topics: [peptic-ulcer-disease, h-pylori-infection, gerd]
+linked_to_supplements: [dgl-deglycyrrhizinated-licorice, licorice-root, bismuth-subcitrate, mastic-gum]
+linked_to_mechanisms: [gastric-mucin-degradation, gastric-mucosal-barrier-disruption, h-pylori-mucosal-defense-breakdown]
+out_of_scope_notes: >
+  Recommending a specific DGL product and dose is a supplement recommendation and
+  sits outside coaching scope in the NBHWC/FMCA framing — surface it as an option
+  for the client to raise with their doctor, and be the one who explains WHY the
+  chewable form and pre-meal timing matter if the doctor agrees to it. Never
+  suggest DGL as a swap for a prescribed acid-suppressant, and always flag the
+  plain-licorice/blood-pressure distinction, which clients routinely miss because
+  mulethi is sold everywhere.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1382
+  quote: |-
+    Clinical studies have demonstrated that DGL is as effective as cimetidine in preventing recurrence of ulcers.28 DGL contains several ﬂavonoids that have been shown to inhibit H. pylori.32 In addition, unlike antibiotics, the ﬂavonoids were also shown to augment natural defense factors that prevent ulcer formation. The activity of the most potent ﬂavonoid was shown to be similar to that of bismuth subcitrate.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 83 — Peptic Ulcer, pg 1383
+  quote: |-
+    It appears that in order to be effective in healing peptic ulcers, DGL must mix with saliva. DGL may promote the release of salivary compounds that stimulate the growth and regeneration of stomach and intestinal cells. DGL in capsule form has not been shown to be effective. The standard dosage for DGL is two to four 380-mg chewable tablets between meals or 20 minutes before meals. Taking DGL after meals is associated with poor results.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

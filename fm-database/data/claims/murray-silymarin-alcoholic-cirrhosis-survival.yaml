@@ -1,0 +1,59 @@
+slug: murray-silymarin-alcoholic-cirrhosis-survival
+statement: |
+  Murray and Pizzorno cite a controlled trial in which 87 cirrhotic patients (46
+  with alcoholic cirrhosis) received silymarin, the flavonoid complex of milk
+  thistle (Silybum marianum), against 83 controls (45 alcoholic), followed for
+  an average of 41 months. Deaths were 24 (18 liver-related) on silymarin versus
+  37 (31 liver-related) on placebo, giving a four-year survival of 58% versus
+  39%. They also report improved immune function in cirrhotic patients on
+  silymarin. The dosing given in the chapter's treatment summary is milk thistle
+  extract standardised to 70-80% silymarin at 70-210 mg three times daily, or
+  silymarin phytosome 120 mg two to three times daily between meals.
+evidence_tier: confirm_with_clinician
+rationale: |
+  Tiered confirm_with_clinician, deliberately, despite an eye-catching survival
+  difference. This is a single trial from the 1980s in an era of different
+  cirrhosis management, the alcoholic subgroup is roughly half of a modest
+  total, and the chapter reports it without the confidence intervals or
+  randomisation detail needed to judge it. Later and larger reviews of silymarin
+  in alcoholic liver disease have not reproduced a clear mortality benefit. More
+  importantly, the population is people with cirrhosis - by definition under
+  specialist care, frequently on multiple medications, with altered drug
+  handling. It is a reasonable thing for a clinician to consider and an
+  unreasonable thing for a coach to suggest.
+coaching_translation: |
+  Milk thistle (silymarin) is the herb most often raised when liver damage is in
+  the picture, and there is a well-known older study suggesting better survival
+  in people with cirrhosis who took it. It is not something to start on your
+  own. Anyone with liver disease is usually on other medicines, and the liver is
+  exactly where those medicines are handled, so this is a conversation with
+  their doctor or hepatologist - and it is worth having, because most doctors
+  will engage with it. If a client is already taking it, the useful thing you
+  can do is make sure their doctor knows, along with everything else they take.
+caveats:
+- 'Unsupervised withdrawal in a dependent drinker can be fatal - delirium tremens and withdrawal seizures are medical emergencies. A coach never advises stopping or cutting down alcohol; medically supervised detoxification and addiction-specialist care are required, and nutritional work sits alongside that care, never instead of it.'
+- 'Cirrhosis is specialist-managed disease. A coach does not recommend, dose or endorse silymarin - the role is to surface it for the treating clinician and to document what the client is already taking.'
+- 'Silymarin can affect cytochrome P450 and glucuronidation pathways, so interaction with existing medication must be checked by a clinician or pharmacist.'
+- 'Milk thistle is in the Asteraceae family - caution with ragweed and related allergies.'
+- 'The trial is decades old and its mortality finding has not been consistently reproduced; it must not be presented to a client as proven life extension.'
+- 'Indian context: alcohol use carries heavy family and social stigma, so intake is routinely under-reported and a client may be drinking considerably more than they say. Keep the framing curious rather than confrontational, use person-first language (a person with alcohol dependence, never ''an alcoholic''), and be careful about who is in the room - disclosure in front of family can cost the client more than the information is worth.'
+linked_to_topics:
+- liver-detoxification
+linked_to_supplements:
+- milk-thistle
+- silymarin
+linked_to_mechanisms:
+- gut-liver-axis
+out_of_scope_notes: |
+  Clinician: all prescribing, interaction checking and monitoring in liver
+  disease; staging and management of cirrhosis. Coach: recording current
+  supplement use, encouraging full disclosure to the treating doctor, and
+  declining to advise on dose.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: 'Chapter 19 — Alcohol Dependence, pg 434'
+  quote: 'In one study 87 cirrhotics (46 with alcoholic cirrhosis) received silymarin, while 83 cirrhotics (45 with alcoholic cirrhosis) received a placebo.54 The average observation period was 41 months. In the silymarin group, there were 24 deaths with 18 related to liver disease, while in the control group there were 37 deaths with 31 related to liver disease. The four-year survival rate was 58% in the silymarin group, compared with 39% in the controls.'
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

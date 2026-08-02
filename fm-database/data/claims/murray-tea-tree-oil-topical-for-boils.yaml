@@ -1,0 +1,63 @@
+slug: murray-tea-tree-oil-topical-for-boils
+statement: |
+  Murray & Pizzorno name topical tea tree oil (Melaleuca alternifolia) as the best
+  herbal treatment for boils. They cite a clinical trial in patients with boils in
+  which tea tree oil produced more rapid healing without scarring compared with
+  matched controls, and attribute the effect to the oil's antibacterial activity
+  against Staphylococcus aureus — the organism cultured from the abscess. The
+  application method described is to clean the site, then paint the surface of the
+  boil freely with the oil two or three times a day; for boils and most skin
+  infections they favour full-strength undiluted oil, diluting only if irritation
+  occurs.
+evidence_tier: plausible_emerging
+rationale: >
+  Tiered plausible_emerging. There is a real in-vitro basis — tea tree oil inhibits
+  Staphylococcus aureus among a listed range of organisms, penetrates skin well and
+  is described as non-irritating — and the book cites one small controlled clinical
+  trial in boils showing faster healing without scarring. But it is a single dated
+  reference, the comparator is only "matched controls", and no dose, concentration,
+  or duration is reported. It is enough to say the topical is reasonable adjunctive
+  care; it is not enough to say it replaces drainage or antibiotics in an infection
+  that is spreading. The book's own instruction to consult a physician if the boil
+  is severe or unresolved in two to three days sits on the same pages and governs.
+coaching_translation: >
+  Tea tree oil is the one topical this book actually backs for boils. The method is
+  simple: clean the area, then paint the oil over the surface of the boil two or
+  three times a day, and cover it. Do not squeeze while applying — the point is to
+  disinfect the surface, not to open it. The book uses it neat and says to dilute
+  only if the skin gets irritated, but skin reactions to undiluted essential oils are
+  common, so patch-test on the inner forearm first and dilute in a carrier oil if
+  there is any stinging or redness. It is an adjunct while the boil settles, not a
+  reason to delay seeing a doctor.
+caveats:
+- Topical use only, never swallowed. Tea tree oil is toxic if ingested — a real risk
+  in homes with young children; store it out of reach.
+- Undiluted tea tree oil causes contact dermatitis in a meaningful minority of people.
+  Patch-test first, and stop at once if the surrounding skin becomes red, itchy or blistered.
+- Do not apply to broken, weeping or already-drained skin, to the face, or to genital skin
+  without a clinician's guidance.
+- Oxidised tea tree oil is far more sensitising than fresh. Buy small bottles, keep them
+  dark and closed, and discard old stock.
+- Avoid in pregnancy, in infants and young children, and in anyone with known essential-oil
+  sensitivity, unless a clinician approves.
+- This does not replace medical care. If the boil is severe, spreading, febrile, on the face,
+  or unresolved in two to three days, the client sees a doctor — antisepsis is not drainage.
+linked_to_topics: []
+linked_to_supplements:
+- tea-tree-oil-topical
+linked_to_mechanisms: []
+out_of_scope_notes: >
+  Clinician scope - deciding whether a boil needs drainage or systemic antibiotics,
+  and approving any topical on broken, facial or genital skin or in pregnancy. Coach
+  scope - explaining what the book reports, teaching clean hands-off application and
+  patch-testing, and reinforcing that the topical runs alongside the referral clock
+  rather than instead of it.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 27 — Boils, pg 559
+  quote: |-
+    A clinical trial involving patients with boils demonstrated that tea tree oil encouraged more rapid healing without scarring, compared with matched controls.2 Presumably the positive clinical effects were due to the oil’s antibiotic activity against Staphylococcus aureus. The method of application included cleaning the site, followed by painting the surface of the boil freely with tea tree oil two or three times a day.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

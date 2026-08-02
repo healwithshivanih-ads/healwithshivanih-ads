@@ -1,0 +1,69 @@
+slug: murray-periodontal-flavonoids-green-tea
+statement: |
+  Flavonoids are presented as an essential component of any periodontal treatment
+  programme, acting on the gum's collagen rather than only on its bacteria: they
+  decrease membrane permeability (reducing the load of inflammatory mediators and
+  bacterial products reaching the tissue), prevent free radical damage, inhibit
+  collagen destruction, inhibit mast cell degranulation, and cross-link directly with
+  collagen fibres to increase their strength. Grape seed and pine bark extract
+  (proanthocyanidins) are named as the most useful sources, at 100–300 mg/day. Green
+  tea flavonoids act against gingival bacteria and are anti-inflammatory, and
+  population studies show green tea intake protects against periodontal disease and
+  tooth loss; a double-blind trial of green tea chews significantly reduced plaque and
+  gingival inflammation.
+evidence_tier: plausible_emerging
+rationale: >
+  The mechanisms listed are real and well characterised for proanthocyanidins and
+  catechins in vitro. The clinical evidence is mixed in quality: the green tea
+  population data are observational and confounded (green tea drinkers differ in
+  smoking, income and diet), while the interventional studies cited are small and
+  focus on LOCAL delivery — chewable candy, catechin-impregnated strips, chewing gum
+  with procyanidolic oligomers — not on swallowed capsules. That distinction matters
+  and the chapter partly blurs it: evidence that a green tea chew reduces plaque does
+  not establish that a 300 mg grape seed capsule improves pocket depth. Tiered
+  plausible_emerging with that caveat carried forward explicitly.
+coaching_translation: >
+  Plant polyphenols — the compounds that make grape seed, pine bark and green tea
+  bitter and astringent — seem to strengthen the collagen scaffolding of the gums as
+  well as calming inflammation there. Green tea is the easy one to build into daily
+  life, and studies in whole populations show tea drinkers have less gum disease and
+  lose fewer teeth. Interestingly, most of the trial evidence involves the tea being
+  in contact with the mouth — chews, gum and strips — so sipping tea slowly rather
+  than gulping it may be part of why it helps.
+caveats:
+- Population studies on green tea cannot separate the tea from the lifestyle around it.
+- The trials cited used local mouth-contact delivery; do not promise capsule extracts will do the same.
+- Green tea extract capsules in high doses have documented liver toxicity case reports — a real reason not to freelance on dose.
+- Tannins in tea reduce non-haem iron absorption, which matters for Indian vegetarian clients with low ferritin; separate tea from meals.
+- Grape seed and pine bark extracts have mild antiplatelet activity — relevant with anticoagulants and before dental surgery.
+linked_to_topics:
+- periodontal-disease
+- flavonoids-and-nrf2
+- chronic-inflammation
+linked_to_supplements:
+- green-tea
+- grapeseed-pine-bark-extract
+- pine-bark-extract
+- catechin-flavonoids
+linked_to_mechanisms:
+- anti-inflammatory-signaling
+- mast-cell-degranulation
+- oxidative-stress
+out_of_scope_notes: >
+  Suggesting green tea as a daily drink is coach scope. Recommending 100–300 mg
+  standardised grape seed, pine bark or green tea extract is prescribing, and the
+  antiplatelet and hepatotoxicity signals make clinician sign-off necessary — more so
+  before any dental surgery. The periodontal treatment itself stays with the dentist.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1392
+  quote: >-
+    Flavonoids affect collagen structure by decreasing membrane permeability, thereby decreasing the load of inﬂammatory mediators and bacterial products; preventing free radical damage; inhibiting destruction of collagen; inhibiting mast cell degranulation; and cross-linking with collagen ﬁbers directly to increase their stability and strength.24–26
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 84 — Periodontal Disease, pg 1393
+  quote: >-
+    The ﬂavonoid components of green tea (Camellia sinensis) are also useful, as they have demonstrated activity against gingival bacteria and direct anti-inﬂammatory effects as well. Population-based studies have shown that green tea intake protects against periodontal disease and tooth loss.29
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

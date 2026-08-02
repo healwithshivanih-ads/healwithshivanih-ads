@@ -1,0 +1,42 @@
+slug: murray-lactase-deficiency-primary-and-post-infectious
+statement: |
+  Lactose intolerance follows from deficiency of lactase, the enzyme that digests the
+  lactose in dairy, and the chapter puts the prevalence at 70 to 90% of adults of Asian,
+  black, American Indian and Mediterranean ancestry, against 10 to 15% of adults of northern
+  and western European descent. Almost all infants digest milk, but many children lose the
+  enzyme between three and seven years of age. Unabsorbed lactose passes into the colon and
+  produces anything from mild bloating to severe diarrhoea in response to even small
+  amounts. Separately, acute viral or bacterial gut infections injure the cells lining the
+  small intestine and cause a temporary lactase deficiency - which is why the chapter says
+  to avoid dairy during any diarrhoea, with the possible exception of yogurt with live
+  cultures.
+evidence_tier: strong
+rationale: >
+  Primary adult lactase non-persistence is one of the best-characterised nutritional genetics findings there is, and the 70 to 90% figure for Asian ancestry is consistent with the wider literature even though this chapter gives no citation for it. Post-infectious secondary lactase deficiency from enterocyte damage is likewise standard and mechanistically clean - the brush-border enzyme sits on the cells the infection destroys. Tiered strong. Note the book's ancestry categories are dated US census language, not a genetic classification.
+coaching_translation: >
+  For Indian clients this is close to a default rather than an exception - most Indian adults make little lactase, so milk can produce bloating, gas and loose stools even in small amounts. Two separate things are going on. Some clients have never digested lactose well since childhood. Others digest it fine normally, but lose the ability for a few weeks after a gut infection because the infection strips the lining that carries the enzyme - which is why milk taken during or just after a stomach bug often makes things worse. During any bout of diarrhoea, drop dairy. Curd and yogurt with live cultures are usually the easiest to bring back first because the bacteria have already digested some of the lactose; ghee is essentially lactose-free. Reintroduce milk last.
+caveats:
+- "Lactose intolerance and dairy protein allergy are different problems with different management - a coach should not assume which one is in play."
+- "Coeliac disease often presents with what looks like lactose intolerance because the same brush border is damaged; persistent symptoms after removing dairy need a clinician, and coeliac testing must be done before gluten is removed, not after."
+- "Removing dairy from an Indian vegetarian client removes a major protein and calcium source - plan the replacement (curd if tolerated, dals, sesame, ragi, greens) rather than just subtracting."
+- "Prevalence figures describe populations, not the individual in front of you; the ancestry labels used in the source are dated and should not be repeated to clients."
+linked_to_topics:
+- digestive-enzyme-insufficiency
+linked_to_supplements: []
+linked_to_mechanisms:
+- lactase-deficiency-osmotic-load
+- malabsorption
+- nutrient-malabsorption
+out_of_scope_notes: >
+  Trialling dairy removal and structured reintroduction, and coaching replacement of the lost nutrients, are in scope. Diagnosing lactose intolerance, ordering or interpreting hydrogen breath tests, and excluding coeliac disease are clinician work.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 868
+  quote: "Lactose intolerance is due to a deﬁciency in the enzyme lactase, responsible for digesting the lactose found in dairy products; it is common worldwide. It has been estimated that 70 to 90% of adults of Asian, black, American Indian, and Mediterranean ancestry lack this enzyme. The frequency of deﬁciency is 10 to 15% among adults of northern and western European descent."
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 46 — Diarrhea, pg 871
+  quote: "Acute intestinal illnesses, such as viral or bacterial intestinal infections, will frequently injure the cells that line the small intestine. This results in a temporary deﬁciency of lactase, the enzyme responsible for digesting milk sugar (lactose) from dairy products. Avoid dairy products (with the possible exception of yogurt with live cultures) while experiencing diarrhea."
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

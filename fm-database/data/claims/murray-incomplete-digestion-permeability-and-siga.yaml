@@ -1,0 +1,83 @@
+slug: murray-incomplete-digestion-permeability-and-siga
+statement: |
+  Murray & Pizzorno place the upstream cause of food allergy in the gut, not in
+  the food. When protein is properly chewed and digested, about 90% is broken down
+  and absorbed as amino acids and small peptides. Partially digested proteins are
+  large enough to cross the intestinal barrier intact, enter the bloodstream and
+  provoke an immune response — at the gut wall, at distant sites, or systemically.
+  Two things make this worse: inadequate digestion (low hydrochloric acid,
+  insufficient pancreatic proteases) and a leaky barrier. Stress compounds it by
+  lowering secretory IgA, the antibody that lines the intestinal mucosa and acts as
+  a barricade against food antigens entering the body; the authors note that people
+  with food allergies typically run unusually low IgA, and that even short-term IgA
+  deficiency predisposes to developing food allergy.
+evidence_tier: plausible_emerging
+rationale: >
+  Each link in this chain has independent support. Intact and partially digested
+  food proteins do cross the epithelium and are sampled by the mucosal immune
+  system; secretory IgA is the principal mucosal exclusion mechanism and does fall
+  with psychological stress; and impaired gastric acid or pancreatic protease
+  output demonstrably increases the load of intact protein reaching the small
+  intestine — acid-suppression studies show new sensitisation to dietary proteins.
+  What is not established is the strength and direction of the whole causal
+  sequence in an individual patient: leaky gut is measurable but is as often a
+  consequence of inflammation as its cause, and "fix digestion to fix the allergy"
+  has not been shown in trials. Tiered plausible_emerging — good mechanism,
+  incomplete outcome evidence.
+coaching_translation: >
+  The food is only half the story; how well you break it down is the other half.
+  Protein that is properly chewed and digested arrives as tiny building blocks the
+  body recognises. Protein that arrives half-digested is big enough for the immune
+  system to treat as a stranger — and that is where reactions start. Two things
+  make that likelier: rushed, under-chewed, low-acid digestion, and a gut lining
+  that is not holding its barrier well. Stress feeds straight into this, because
+  it lowers the protective antibody layer coating your gut. So slowing down at
+  meals, chewing properly, not eating in a rush or in front of a screen, and
+  getting a handle on stress are not soft extras here — they are working on the
+  same problem as the elimination diet, from the other end.
+caveats:
+- This is a mechanistic model, not a treatment claim. Do not tell a client that
+  fixing digestion will resolve their food allergy.
+- Low stomach acid, pancreatic insufficiency and intestinal permeability are
+  clinical assessments. A coach does not diagnose them and does not recommend
+  betaine HCl or pancreatic enzymes — HCl is contraindicated with ulcers, gastritis
+  and NSAID or steroid use, and can cause harm.
+- Stress-lowered secretory IgA is well described but is not measured routinely and
+  should not be presented to a client as their explanation.
+- True IgE allergy is not caused by poor digestion and will not be improved by
+  addressing it — do not blur the two.
+linked_to_topics:
+- leaky-gut
+- food-sensitivities
+- hypochlorhydria
+- pancreatic-insufficiency
+- chronic-stress
+linked_to_supplements: []
+linked_to_mechanisms:
+- leaky-gut
+- low-stomach-acid-antigen-load
+- hcl-and-pepsin-protein-digestion
+- digestive-enzyme-deficiency
+- mucosal-immune-dysfunction
+- stress-induced-immune-suppression
+out_of_scope_notes: >
+  Coach scope: everything behavioural on this pathway — chewing, meal pace, eating
+  environment, meal spacing, sleep, and stress-management practice, plus educating
+  the client on why those matter for food reactions. Out of scope: diagnosing low
+  stomach acid, pancreatic insufficiency or intestinal permeability; ordering or
+  interpreting permeability or stool testing; and recommending betaine HCl,
+  pancreatic enzymes or any gut-repair supplement — all of that is clinician
+  territory and some of it can cause harm if self-prescribed.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 938
+  quote: |-
+    When properly chewed and digested, 90% of ingested proteins are completely broken down and then absorbed as amino acids and small peptides. However, partially digested dietary proteins can cross the intestinal barrier and be absorbed into the bloodstream. These larger molecules can cause an allergic response that can occur either directly at the intestinal barrier, at distant sites, or throughout the body.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 52 — Food Allergy, pg 938
+  quote: |-
+    During stressful times, food allergies tend to develop or become worse. This situation probably results from a stress-induced decrease in secretory IgA levels. IgA plays an important role in the lining of the mucosal membrane of the intestinal tract, where it helps protect against the entrance of foreign substances into the body.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

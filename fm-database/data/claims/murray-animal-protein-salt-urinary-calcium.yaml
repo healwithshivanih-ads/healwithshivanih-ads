@@ -1,0 +1,80 @@
+slug: murray-animal-protein-salt-urinary-calcium
+statement: |
+  Animal protein load and salt load both raise urinary calcium, and the chapter's central
+  dietary trial changes all three variables at once. Men with recurrent calcium oxalate stones
+  who ate NORMAL calcium (1,200 mg/day) with LOW animal protein and LOW salt had significantly
+  less oxalate excretion and fewer recurrences than men on a restricted 400 mg/day calcium
+  diet. On sodium specifically, the book gives a hard number: urinary calcium excretion rises
+  by approximately 40 mg for every 2,300 mg increase in dietary sodium in normal adults, and
+  stone formers show an even bigger rise for the same salt. Large amounts of animal protein
+  are listed among the dietary patterns directly associated with calcium-containing stones,
+  alongside low fibre, refined carbohydrate, alcohol, high fat, soft drinks and an excessively
+  acid-forming diet. The recommended combination is more water plus less sodium.
+evidence_tier: strong
+rationale: >
+  The salt-calciuria relationship is quantified and dose-dependent, and the sensitivity of
+  stone formers to it is stated explicitly. The animal-protein signal is supported both by the
+  intervention trial (low animal protein was part of the winning arm) and by the observational
+  finding that vegetarians as a group have lower stone risk. Note the trial is a package: it
+  cannot separate how much of the benefit came from protein, from salt, or from keeping
+  calcium normal. Two mechanisms are plausible and are consistent with the chapter - an
+  acid-forming (high animal protein) diet drives calcium out of bone and into urine, and
+  purine-rich animal protein raises urate excretion, which matters separately for uric acid
+  stones.
+coaching_translation: >
+  Two everyday levers raise the calcium in urine that stones are built from: salt and heavy
+  animal protein. The salt one is measurable - roughly one extra teaspoon of salt a day pushes
+  meaningfully more calcium into urine, and people who form stones react more strongly than
+  people who do not. In Indian kitchens the big salt sources are usually pickles, papad,
+  namkeen, packaged masalas, biscuits and restaurant/tiffin food rather than the salt shaker.
+  On protein: this is about not overloading on meat, fish, poultry and organ meats, NOT about
+  cutting protein to nothing - a vegetarian client already eating dal, curd and paneer usually
+  needs their protein protected, not reduced. Keep calcium normal, keep salt down, keep water
+  up.
+caveats:
+- The trial changed calcium, animal protein and salt together - do not present any single one
+  as the proven active ingredient.
+- Low animal protein is not the same as low protein. Cutting total protein in an Indian
+  vegetarian client risks under-nutrition and sarcopenia; the target is moderating
+  animal-protein load, not protein adequacy.
+- If a client shows raised uric acid, raised creatinine or reduced eGFR, protein targets must
+  be set conservatively and by a clinician - a coach must not push a high-protein plan into
+  that picture.
+- The 40 mg per 2,300 mg sodium figure is for normal adults; stone formers respond more
+  strongly, so the number understates their risk.
+- Sodium reduction must be individualised for clients on diuretics, with low blood pressure,
+  or with salt-losing conditions.
+linked_to_topics:
+- kidney-stones
+- protein-adequacy-vegetarian
+- acid-alkaline-balance
+- refined-carbohydrate-overconsumption
+linked_to_supplements: []
+linked_to_mechanisms:
+- sodium-volume-retention
+- calcium-oxalate-crystal-formation
+- renal-ph-buffering
+out_of_scope_notes: >
+  Coach scope: reducing processed-salt sources, moderating animal-protein portions, protecting
+  protein adequacy in vegetarians, and coaching the water habit alongside. Clinician scope:
+  setting a protein prescription for anyone with raised uric acid, creatinine or reduced eGFR;
+  interpreting a 24-hour urine calcium or sodium; and prescribing sodium restriction in
+  cardiac or renal disease.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1208
+  quote: In one clinical trial, men with recurrent calcium oxalate stones who ate a diet that
+    had normal amounts of calcium (1,200 mg per day), low amounts of animal protein, and low
+    amounts of salt showed a significant reduction in oxalate excretion and a lower incidence
+    of recurrent stones compared
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1206
+  quote: Another dietary recommendation is to decrease salt consumption. Urinary calcium
+    excretion increases approximately 40 mg for each 2,300 mg increase in dietary sodium in
+    normal adults; those who form kidney stones have an even greater increase in urinary
+    calcium with an increase in salt intake. The best approach is to combine increased water
+    intake with decreased sodium intake.14
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani

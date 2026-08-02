@@ -1,0 +1,69 @@
+slug: murray-dietary-oxalate-load-and-sources
+statement: |
+  For calcium oxalate stone formers specifically, dietary oxalate may account for as much as
+  80% of urinary oxalate, and such people appear to absorb dietary oxalate more readily than
+  non-formers. Murray & Pizzorno define a low-oxalate diet as under 50 mg oxalate per day and
+  list the very-high foods (>50 mg per serving) as beets (greens or root), okra, spinach,
+  Swiss chard, dried figs, rhubarb, buckwheat, almonds, peanuts, peanut butter and sesame
+  seeds. Their high-oxalate tier (>10 mg per serving) adds potatoes, sweet potatoes, brinjal,
+  green beans, parsley, kale/collards, chickpeas, lentils, soy and all soy products, whole
+  wheat bread and flour, wheat bran, wheat germ, cocoa/chocolate, and black or green tea.
+  Almost every one of these is everyday Indian vegetarian food.
+evidence_tier: plausible_emerging
+rationale: >
+  The direction is well supported - oxalate restriction lowers urinary oxalate in people who
+  are hyper-absorbers - but the 80% figure is qualified as "in some people", and oxalate is
+  only ONE of the two components of a calcium oxalate stone, which is why the chapter pairs
+  restriction with keeping dietary calcium normal rather than treating oxalate avoidance as
+  the whole answer. The food list itself deserves scepticism: published oxalate values vary
+  widely between laboratories and between cultivars, cooking method changes them (boiling and
+  discarding the water lowers oxalate substantially), and the serving sizes behind these
+  tiers are mostly unstated. There is also an internal tension in the chapter - it recommends
+  adding bran and switching to whole wheat bread to lower urinary calcium, yet lists wheat
+  bran and whole wheat bread as high-oxalate.
+coaching_translation: >
+  Oxalate only matters if the client's stones were calcium OXALATE - it is irrelevant, and
+  cutting these foods is needless deprivation, for uric acid or struvite stones. If oxalate is
+  relevant, the biggest everyday Indian sources are palak and other greens like chaulai and
+  bathua, chukandar (beet), bhindi, til (sesame) and til-based sweets, groundnut/peanut and
+  peanut chutney, badam, kuttu atta (used in vrat food), soy, chana and rajma-style pulses,
+  chocolate, and strong tea drunk many times a day. Two practical moves that keep meals normal
+  instead of joyless: pair these foods with a calcium food at the same meal (dahi, paneer,
+  ragi) so the oxalate binds in the gut, and boil greens and discard the water instead of
+  cooking them dry. Reducing frequency and portion usually beats a blanket ban.
+caveats:
+- Applies ONLY to confirmed calcium oxalate stones. Do not apply an oxalate restriction to a
+  client whose stone type is unknown or is uric acid, struvite or cystine.
+- Oxalate restriction alone is incomplete and can backfire if the client also cuts calcium -
+  the two must move together (normal calcium, lower oxalate).
+- Published oxalate values differ by source, cultivar and cooking method; the book's list is
+  US foods and gives no serving sizes for most items. Treat it as a ranking, not a lab value.
+- Cutting greens, dals, nuts and seeds wholesale from an Indian vegetarian diet threatens
+  protein, iron, calcium and fibre adequacy. Reduce and rotate rather than eliminate.
+- The chapter simultaneously recommends bran and whole wheat (to lower urinary calcium) and
+  lists them as high-oxalate. Flag this to the client rather than pretending it is settled.
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+- protein-adequacy-vegetarian
+linked_to_supplements: []
+linked_to_mechanisms:
+- oxalate-accumulation
+- calcium-oxalate-crystal-formation
+out_of_scope_notes: >
+  Coach scope: teaching where oxalate sits in everyday food, coaching pairing and cooking
+  changes, and protecting nutrient adequacy while oxalate is reduced. Clinician scope:
+  confirming the stone is calcium oxalate, ordering or interpreting a 24-hour urinary oxalate,
+  identifying enteric hyperoxaluria (the chapter lists ileal disease, resection, bypass and
+  steatorrhoea as causes), and prescribing a formal low-oxalate diet.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 73 — Kidney Stones, pg 1209
+  quote: It appears that people with recurrent kidney stones have a tendency to absorb higher
+    levels of dietary oxalates compared with normal subjects not prone to kidney stones. A
+    low-oxalate diet is usually defined as one containing less than 50 mg oxalate per day, so
+    foods that have high or moderate levels of oxalate should be avoided.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani
