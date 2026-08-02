@@ -33,6 +33,18 @@ clone must enable the shared hooks path once: `git config core.hooksPath .githoo
 (also arms the existing `pre-commit` recipe validator). The full test+build gate
 stays in CI as the backstop.
 
+**Assistant-owned — the coach does NOT hand-edit code.** So YOU (the assistant)
+own the green push end-to-end. After any `fm-database-web` change: run
+`lint --max-warnings 0` + `type-check` (and the relevant tests) yourself, fix
+anything you introduced, and push only once clean. If the pre-push hook OR
+`web-ci` blocks/reddens, that failure is YOURS to read, fix, and re-push to green
+— never leave `main` red and never hand a blocked push back to the coach.
+`git push --no-verify` is **not** an escape hatch here: fix the failure instead.
+Reach for `// eslint-disable-next-line <rule> -- reason` only for a verified false
+positive, never to dodge a real one. If the coach says "the push is blocked" or
+"CI is red," read the hook/CI output, fix it, and confirm green — no manual step
+is expected from them.
+
 ## Status
 
 **v0.77–v0.78 (current, MERGED + DEPLOYED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
