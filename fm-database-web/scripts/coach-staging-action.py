@@ -91,7 +91,17 @@ _FORBIDDEN_KEYS = frozenset(
 
 _MAX_SESSIONS = 12  # newest N; the phone never scrolls further back
 _MAX_WA_MESSAGES = 40
-_TAG_RE = re.compile(r"\[(?:source|session_type):\s*([a-z_]+)\]")
+# The KIND tag tells us what a session is.
+_KIND_RE = re.compile(r"\[(?:source|session_type):\s*([a-z_]+)\]")
+# Every OTHER bracketed tag is routing metadata written by the send pipeline
+# ([plan: ...], [window: ...], [template: ...], [sent_at: ...], [supplement_order]).
+# On a phone card that is a wall of machine text with the actual sentence
+# buried in it, so it is stripped before the text is ever projected.
+_META_RE = re.compile(r"\[[a-z_]+(?::[^\]]*)?\]\s*")
+# Outbound sends are logged as quick notes. They are worth keeping — "what did
+# I last send her" — but they are messages, not sessions, so they get their
+# own kind rather than masquerading as clinical contact.
+_OUTBOUND_HINT = re.compile(r"\btemplate:\s*fm_", re.I)
 
 
 def _coach_dir() -> Path | None:
@@ -165,15 +175,23 @@ def _sessions(person_dir: Path) -> list[dict]:
     rows = []
     for f in sorted(sdir.glob("*.yaml"), reverse=True)[:_MAX_SESSIONS]:
         s = _read_yaml(f)
-        complaints = (s.get("presenting_complaints") or "").strip()
-        tag = _TAG_RE.search(complaints)
+        raw = (s.get("presenting_complaints") or "").strip()
+        tag = _KIND_RE.search(raw)
+        kind = tag.group(1) if tag else "session"
+        if _OUTBOUND_HINT.search(raw):
+            kind = "message sent"
+        # Strip the kind tag, then every remaining routing tag, then collapse
+        # the blank lines those left behind.
+        text = _META_RE.sub("", _KIND_RE.sub("", raw)).strip()
+        text = re.sub(r"\n{3,}", "\n\n", text)
+        if not text:
+            continue  # nothing left once the machine text went — not worth a card
         rows.append(
             {
                 "id": s.get("session_id") or f.stem,
                 "date": _jsonable(s.get("date")),
-                "kind": tag.group(1) if tag else "session",
-                # Tag stripped: it's routing metadata, not something to read.
-                "complaints": _TAG_RE.sub("", complaints).strip(),
+                "kind": kind,
+                "complaints": text,
                 "coach_notes": (s.get("coach_notes") or "").strip(),
                 "symptoms": s.get("selected_symptoms") or [],
                 "requested_labs": s.get("requested_labs") or [],
