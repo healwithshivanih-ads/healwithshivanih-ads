@@ -1,138 +1,129 @@
 /**
- * Shared visual tokens + small primitives for the coach mobile app.
+ * Primitives for the coach mobile app, built on coach.css — a phone-scale
+ * port of "Deep Mind — Shivani Design System".
  *
- * Plain inline styles rather than Tailwind: /m renders inside a fixed overlay
- * that sits on top of the root layout, and keeping its styling self-contained
- * means a future change to the coach-UI design system can't reflow the phone
- * app underneath the coach.
+ * The system is explicit that icons are Lucide at 1.5px stroke in
+ * currentColor, and that emoji are not used ("no emoji. no checkmark bullets,
+ * no arrow ornaments"). Paths below are Lucide's, inlined rather than pulled
+ * from a package: seven icons do not justify a dependency, and inlining keeps
+ * them tintable by currentColor with no runtime.
  */
 import Link from "next/link";
 
-export const C = {
-  ink: "#2B2D42",
-  body: "#4A4540",
-  muted: "#8A857F",
-  line: "#E4DFD6",
-  card: "#FFFFFF",
-  bg: "#F7F4EF",
-  ochre: "#B85C3E",
-  good: "#2E6B45",
-  goodBg: "#E8F3EC",
-  warn: "#8A6B2F",
-  warnBg: "#FBF3E2",
-  bad: "#8A2F2F",
-  badBg: "#FDECEC",
-} as const;
+/* ── Icons ──────────────────────────────────────────────────────────── */
 
-export const serif = "var(--font-libre-baskerville), Georgia, serif";
+const PATHS: Record<string, React.ReactNode> = {
+  // message-circle — personal WhatsApp (opens the app)
+  message: <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />,
+  // send — business number, via our own server
+  send: <><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4 20-7z" /></>,
+  mail: <><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 5L2 7" /></>,
+  phone: <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z" />,
+  activity: <path d="M22 12h-4l-3 9L9 3l-3 9H2" />,
+  list: <><path d="M8 6h13M8 12h13M8 18h13" /><path d="M3 6h.01M3 12h.01M3 18h.01" /></>,
+  back: <path d="m15 18-6-6 6-6" />,
+  search: <><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></>,
+  alert: <><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z" /><path d="M12 9v4" /><path d="M12 17h.01" /></>,
+  logout: <><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><path d="m16 17 5-5-5-5" /><path d="M21 12H9" /></>,
+  key: <><circle cx="7.5" cy="15.5" r="4.5" /><path d="m21 2-9.6 9.6" /><path d="m15.5 7.5 3 3L22 7l-3-3" /></>,
+  note: <><path d="M15 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9z" /><path d="M15 3v6h6" /></>,
+};
 
-export function Panel({
-  children,
-  style,
+export function Icon({
+  name,
+  size = "md",
+  className = "",
 }: {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
+  name: keyof typeof PATHS | string;
+  size?: "sm" | "md" | "lg";
+  className?: string;
 }) {
+  const cls = `m-ico${size === "sm" ? " m-ico--sm" : size === "lg" ? " m-ico--lg" : ""} ${className}`;
   return (
-    <div
-      style={{
-        background: C.card,
-        border: `1px solid ${C.line}`,
-        borderRadius: 14,
-        padding: 14,
-        marginBottom: 12,
-        ...style,
-      }}
-    >
-      {children}
-    </div>
+    <svg viewBox="0 0 24 24" className={cls} aria-hidden="true" focusable="false">
+      {PATHS[name] ?? null}
+    </svg>
   );
 }
 
-export function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      style={{
-        fontSize: 12,
-        letterSpacing: 0.6,
-        textTransform: "uppercase",
-        color: C.muted,
-        margin: "20px 2px 8px",
-        fontWeight: 600,
-      }}
-    >
-      {children}
-    </h2>
-  );
+/* ── Primitives ─────────────────────────────────────────────────────── */
+
+export function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <div className="m-eyebrow">{children}</div>;
+}
+
+export function Card({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return <div className={`m-card ${className}`}>{children}</div>;
 }
 
 export function Chip({
   children,
-  tone = "neutral",
+  tone,
 }: {
   children: React.ReactNode;
-  tone?: "neutral" | "good" | "warn" | "bad";
+  tone?: "sage" | "rose";
 }) {
-  const map = {
-    neutral: { bg: "#F1EEE8", fg: C.body },
-    good: { bg: C.goodBg, fg: C.good },
-    warn: { bg: C.warnBg, fg: C.warn },
-    bad: { bg: C.badBg, fg: C.bad },
-  }[tone];
   return (
-    <span
-      style={{
-        background: map.bg,
-        color: map.fg,
-        borderRadius: 999,
-        padding: "3px 9px",
-        fontSize: 12,
-        fontWeight: 500,
-        // NOT nowrap. Real condition names run long ("Anxiety + Depression (on
-        // long-term SSRI + benzo, 20 yrs)") and nowrap pushed them past the
-        // viewport edge, silently clipping the text on a 375px screen.
-        maxWidth: "100%",
-        overflowWrap: "anywhere",
-      }}
-    >
-      {children}
+    <span className={`m-chip${tone ? ` m-chip--${tone}` : ""}`}>{children}</span>
+  );
+}
+
+/** Initials, not a photo. The system is typographic, and projecting client
+ *  photos would push image data onto the public box for no clinical gain. */
+export function Avatar({ name, prospect }: { name: string; prospect?: boolean }) {
+  const initials = name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
+  return (
+    <span className={`m-avatar${prospect ? " m-avatar--prospect" : ""}`} aria-hidden="true">
+      {initials || "?"}
     </span>
   );
 }
 
-/** Empty states say WHY, never just "nothing here" — an empty client list on a
- *  misconfigured host would otherwise read as "you have no clients". */
+/** Empty states say WHY. An empty client list on a misconfigured host would
+ *  otherwise read as "you have no clients". */
 export function Empty({ title, detail }: { title: string; detail?: string }) {
   return (
-    <Panel style={{ textAlign: "center", padding: 24 }}>
-      <div style={{ color: C.body, fontSize: 15, marginBottom: detail ? 6 : 0 }}>{title}</div>
+    <Card>
+      <div style={{ fontSize: "var(--fs-body)" }}>{title}</div>
       {detail ? (
-        <div style={{ color: C.muted, fontSize: 13, lineHeight: 1.5 }}>{detail}</div>
+        <p className="m-subtle" style={{ margin: "6px 0 0", lineHeight: 1.55 }}>
+          {detail}
+        </p>
       ) : null}
-    </Panel>
+    </Card>
   );
 }
 
-/** 44px minimum touch target — Apple's HIG floor; smaller is a mis-tap. */
-export const actionBtn: React.CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minWidth: 44,
-  minHeight: 44,
-  borderRadius: 11,
-  border: `1px solid ${C.line}`,
-  background: "#fff",
-  color: C.body,
-  fontSize: 18,
-  textDecoration: "none",
-  flex: 1,
-};
+export function Note({
+  children,
+  tone,
+}: {
+  children: React.ReactNode;
+  tone?: "sage" | "rose";
+}) {
+  return <div className={`m-note${tone ? ` m-note--${tone}` : ""}`}>{children}</div>;
+}
 
 export function BackLink({ href, label }: { href: string; label: string }) {
   return (
-    <Link href={href} style={{ fontSize: 15, color: C.muted, textDecoration: "none" }}>
-      ← {label}
+    <Link
+      href={href}
+      className="m-subtle"
+      style={{ display: "inline-flex", alignItems: "center", gap: 4 }}
+    >
+      <Icon name="back" size="sm" />
+      {label}
     </Link>
   );
 }
@@ -149,4 +140,13 @@ export function ago(iso?: string | null): string | null {
   if (days < 31) return `${days}d ago`;
   const months = Math.floor(days / 30);
   return months < 12 ? `${months}mo ago` : `${Math.floor(months / 12)}y ago`;
+}
+
+/** Meta wants E.164 without punctuation; Indian mobiles are stored various
+ *  ways, so normalise a bare 10-digit number to +91. */
+export function waNumber(raw?: string | null): string | null {
+  if (!raw) return null;
+  const d = raw.replace(/\D/g, "");
+  if (d.length === 10) return `91${d}`;
+  return d.length >= 11 && d.length <= 15 ? d : null;
 }

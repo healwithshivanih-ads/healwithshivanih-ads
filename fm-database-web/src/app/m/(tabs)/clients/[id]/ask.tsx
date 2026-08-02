@@ -4,12 +4,12 @@
  * "Ask about this client" — the per-client AI chat, on the phone.
  *
  * Talks to /api/m/ask, which answers locally when the authoritative store is
- * on this host (the Mac) and otherwise bridges to the Mac. When neither is
- * available it returns a REASON, which is rendered as-is: a silent empty box
- * would leave the coach retyping a question that can never be answered.
+ * on this host (the Mac) and otherwise bridges to it. When neither is
+ * available it returns a REASON, rendered as-is: a silent empty box would
+ * leave the coach retyping a question that can never be answered.
  */
 import { useState } from "react";
-import { C } from "../../../ui";
+import { Icon } from "../../../ui";
 
 type Turn = { role: "user" | "assistant"; content: string };
 
@@ -35,11 +35,8 @@ export function AskPanel({ clientId, clientName }: { clientId: string; clientNam
         body: JSON.stringify({ client_id: clientId, question: q, history }),
       });
       const json = await res.json();
-      if (json.ok) {
-        setTurns((t) => [...t, { role: "assistant", content: json.reply }]);
-      } else {
-        setNotice(json.error ?? "Couldn't get an answer.");
-      }
+      if (json.ok) setTurns((t) => [...t, { role: "assistant", content: json.reply }]);
+      else setNotice(json.error ?? "Couldn't get an answer.");
     } catch {
       setNotice("Network error — the answer didn't come back.");
     } finally {
@@ -49,76 +46,43 @@ export function AskPanel({ clientId, clientName }: { clientId: string; clientNam
 
   return (
     <div>
-      {turns.map((t, i) => (
-        <div
-          key={i}
-          style={{
-            background: t.role === "user" ? "#F1EEE8" : "#fff",
-            border: `1px solid ${C.line}`,
-            borderRadius: 12,
-            padding: "10px 12px",
-            marginBottom: 8,
-            fontSize: 15,
-            lineHeight: 1.5,
-            color: t.role === "user" ? C.body : C.ink,
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {t.content}
+      {turns.length ? (
+        <div className="m-stack" style={{ marginBottom: 12 }}>
+          {turns.map((t, i) => (
+            <div key={i} className={`m-bubble m-bubble--${t.role === "user" ? "you" : "ai"}`}>
+              {t.content}
+            </div>
+          ))}
         </div>
-      ))}
+      ) : null}
 
       {busy ? (
-        <div style={{ fontSize: 14, color: C.muted, padding: "6px 2px 10px" }}>Thinking…</div>
+        <div className="m-subtle" style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+          <span className="m-pulse m-pulse--ringed" />
+          Thinking
+        </div>
       ) : null}
 
       {notice ? (
-        <div
-          role="status"
-          style={{
-            background: C.warnBg,
-            border: `1px solid #E8D9B0`,
-            color: C.warn,
-            borderRadius: 11,
-            padding: "10px 12px",
-            fontSize: 14,
-            marginBottom: 10,
-            lineHeight: 1.5,
-          }}
-        >
-          {notice}
-        </div>
+        <div className="m-note m-note--rose" style={{ marginBottom: 12 }}>{notice}</div>
       ) : null}
 
-      <form onSubmit={ask} style={{ display: "flex", gap: 8 }}>
+      <form onSubmit={ask} style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <input
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
-          placeholder={`Ask about ${clientName.split(" ")[0]}…`}
+          className="m-field"
+          placeholder={`Ask about ${clientName.split(" ")[0]}`}
           aria-label="Ask about this client"
-          style={{
-            flex: 1,
-            fontSize: 16,
-            padding: "11px 13px",
-            borderRadius: 11,
-            border: `1px solid ${C.line}`,
-            background: "#fff",
-          }}
         />
         <button
           type="submit"
+          className="m-btn m-btn--primary"
           disabled={busy || !draft.trim()}
-          style={{
-            minWidth: 60,
-            borderRadius: 11,
-            border: "none",
-            background: busy || !draft.trim() ? "#BFBAB2" : C.ink,
-            color: "#fff",
-            fontSize: 15,
-            fontWeight: 600,
-          }}
+          aria-label="Ask"
+          style={{ padding: "0 14px" }}
         >
-          Ask
+          <Icon name="send" size="sm" />
         </button>
       </form>
     </div>

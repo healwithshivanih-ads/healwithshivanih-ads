@@ -1,100 +1,89 @@
 /**
- * /m/clients — the contacts list. This is the screen the whole app was asked
- * for: every client, one tap from WhatsApp / email / phone.
+ * /m/clients — the contacts list. This is the screen the app was asked for:
+ * every client, one tap from WhatsApp / email / phone.
  *
- * Reads ONLY the projection (coach-staging-action.py), never ~/fm-plans — see
- * coach-mobile.ts for why.
+ * Reads ONLY the projection (coach-staging-action.py), never ~/fm-plans —
+ * see coach-mobile.ts for why.
  */
 import Link from "next/link";
-import { loadCoachIndex, coachProjectionReady, type CoachIndexRow } from "@/lib/fmdb/coach-mobile";
-import { C, Chip, Empty, actionBtn, ago, serif } from "../../ui";
+import {
+  loadCoachIndex,
+  coachProjectionReady,
+  type CoachIndexRow,
+} from "@/lib/fmdb/coach-mobile";
+import { Avatar, Chip, Empty, Icon, ago, waNumber } from "../../ui";
 
 export const dynamic = "force-dynamic";
 
-/** Meta wants E.164 without punctuation; Indian mobiles are stored various
- *  ways, so normalise to +91 when a bare 10-digit number appears. */
-function waNumber(raw?: string | null): string | null {
-  if (!raw) return null;
-  const digits = raw.replace(/\D/g, "");
-  if (digits.length === 10) return `91${digits}`;
-  if (digits.length >= 11 && digits.length <= 15) return digits;
-  return null;
-}
-
 function matches(row: CoachIndexRow, q: string): boolean {
   if (!q) return true;
-  const hay = [row.name, row.id, row.mobile ?? "", row.email ?? "", ...(row.conditions ?? [])]
+  return [row.name, row.id, row.mobile ?? "", row.email ?? "", ...(row.conditions ?? [])]
     .join(" ")
-    .toLowerCase();
-  return hay.includes(q.toLowerCase());
+    .toLowerCase()
+    .includes(q.toLowerCase());
 }
 
 function Row({ row }: { row: CoachIndexRow }) {
   const wa = waNumber(row.mobile);
   const tel = row.mobile?.replace(/[^\d+]/g, "");
+  const seen = ago(row.last_session);
+
   return (
-    <div
-      style={{
-        background: C.card,
-        border: `1px solid ${C.line}`,
-        borderRadius: 14,
-        padding: "12px 12px 10px",
-        marginBottom: 10,
-      }}
-    >
-      <Link
-        href={`/m/clients/${row.id}`}
-        style={{ textDecoration: "none", color: "inherit", display: "block" }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-          <div style={{ fontSize: 17, color: C.ink, fontWeight: 600 }}>{row.name}</div>
-          {row.recent_whatsapp ? <Chip tone="good">{row.recent_whatsapp} msg</Chip> : null}
+    <div className="m-card m-card--link" style={{ marginBottom: 8 }}>
+      <Link href={`/m/clients/${row.id}`} style={{ display: "block" }}>
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          <Avatar name={row.name} prospect={row.kind === "prospect"} />
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <h3 style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {row.name}
+              </h3>
+              {row.recent_whatsapp ? <span className="m-pulse m-pulse--rose" /> : null}
+            </div>
+            <div className="m-subtle" style={{ marginTop: 2 }}>
+              {[
+                row.kind === "prospect" ? "Prospect" : row.plan_status,
+                seen ? `seen ${seen}` : null,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </div>
+          </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            gap: 6,
-            flexWrap: "wrap",
-            margin: "7px 0 10px",
-            alignItems: "center",
-          }}
-        >
-          {row.kind === "prospect" ? <Chip tone="warn">prospect</Chip> : null}
-          {row.plan_status ? <Chip>{row.plan_status}</Chip> : null}
-          {(row.conditions ?? []).slice(0, 2).map((c) => (
-            <Chip key={c}>{c}</Chip>
-          ))}
-          {ago(row.last_session) ? (
-            <span style={{ fontSize: 12, color: C.muted }}>· seen {ago(row.last_session)}</span>
-          ) : null}
-        </div>
+
+        {(row.conditions ?? []).length ? (
+          <div className="m-chips" style={{ marginTop: 10 }}>
+            {(row.conditions ?? []).slice(0, 2).map((c) => (
+              <Chip key={c}>{c}</Chip>
+            ))}
+          </div>
+        ) : null}
       </Link>
 
-      {/* The four actions. Rendered even when a channel is missing? No — a
-          dead button is worse than an absent one, so each is conditional. */}
-      <div style={{ display: "flex", gap: 8 }}>
+      {/* Each action is conditional — a dead button is worse than an absent one. */}
+      <div className="m-row" style={{ marginTop: 12 }}>
         {wa ? (
-          <a style={actionBtn} href={`https://wa.me/${wa}`} aria-label={`WhatsApp ${row.name}`}>
-            💬
+          <a className="m-iconbtn" href={`https://wa.me/${wa}`} aria-label={`WhatsApp ${row.name}`}>
+            <Icon name="message" />
           </a>
         ) : null}
         {wa ? (
           <Link
-            style={actionBtn}
+            className="m-iconbtn"
             href={`/m/clients/${row.id}#send`}
-            aria-label={`Send from business WhatsApp to ${row.name}`}
+            aria-label={`Message ${row.name} from the business number`}
           >
-            📲
+            <Icon name="send" />
           </Link>
         ) : null}
         {row.email ? (
-          <a style={actionBtn} href={`mailto:${row.email}`} aria-label={`Email ${row.name}`}>
-            ✉️
+          <a className="m-iconbtn" href={`mailto:${row.email}`} aria-label={`Email ${row.name}`}>
+            <Icon name="mail" />
           </a>
         ) : null}
         {tel ? (
-          <a style={actionBtn} href={`tel:${tel}`} aria-label={`Call ${row.name}`}>
-            📞
+          <a className="m-iconbtn" href={`tel:${tel}`} aria-label={`Call ${row.name}`}>
+            <Icon name="phone" />
           </a>
         ) : null}
       </div>
@@ -111,10 +100,9 @@ export default async function ClientsTab({
 
   if (!coachProjectionReady()) {
     return (
-      <main style={{ padding: 16 }}>
-        <h1 style={{ fontFamily: serif, fontSize: 24, color: C.ink, margin: "4px 0 14px" }}>
-          Clients
-        </h1>
+      <main className="m-page">
+        <h1>Clients</h1>
+        <hr className="m-divider" />
         <Empty
           title="Client list not synced yet"
           detail="FMDB_COACH_DIR isn't set on this host, so the projection hasn't been written. This is a setup step, not an empty roster."
@@ -127,31 +115,27 @@ export default async function ClientsTab({
   const rows = all.filter((r) => matches(r, q));
 
   return (
-    <main style={{ padding: 16 }}>
-      <h1 style={{ fontFamily: serif, fontSize: 24, color: C.ink, margin: "4px 0 12px" }}>
-        Clients <span style={{ fontSize: 15, color: C.muted }}>{all.length}</span>
-      </h1>
+    <main className="m-page">
+      <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+        <h1>Clients</h1>
+        <span className="m-subtle">{all.length}</span>
+      </div>
+      <hr className="m-divider" />
 
-      {/* GET form: no JS needed, and the search survives a reload / share. */}
-      <form method="GET" style={{ marginBottom: 14 }}>
+      {/* GET form: works without JS, and the search survives a reload. */}
+      <form method="GET" style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
+        <Icon name="search" className="m-subtle" />
         <input
           name="q"
           defaultValue={q}
-          placeholder="Search name, condition, number…"
+          className="m-field"
+          placeholder="Search name, condition, number"
           aria-label="Search clients"
-          style={{
-            width: "100%",
-            fontSize: 16, // 16px min or Safari zooms on focus
-            padding: "11px 13px",
-            borderRadius: 11,
-            border: `1px solid ${C.line}`,
-            background: "#fff",
-          }}
         />
       </form>
 
       {rows.length === 0 ? (
-        <Empty title={`No one matches “${q}”`} detail="Try a first name or a condition." />
+        <Empty title={`Nobody matches “${q}”`} detail="Try a first name or a condition." />
       ) : (
         rows.map((r) => <Row key={r.id} row={r} />)
       )}

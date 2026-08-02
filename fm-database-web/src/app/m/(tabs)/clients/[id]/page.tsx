@@ -2,32 +2,34 @@
  * /m/clients/[id] — the client card.
  *
  * "Basic info easily available", per the original ask. A SOAP note answers
- * *what happened in that session*; this answers *who is this and where are we*
- * — which is what you need in the ten seconds before a call. Session detail
- * sits below, one scroll down.
+ * *what happened in that session*; this answers *who is this and where are
+ * we* — what you need in the ten seconds before a call. Session detail sits
+ * below, one scroll down.
  */
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadCoachCard } from "@/lib/fmdb/coach-mobile";
-import { C, Chip, Panel, SectionTitle, ago, serif, BackLink } from "../../../ui";
+import {
+  Avatar,
+  BackLink,
+  Card,
+  Chip,
+  Eyebrow,
+  Icon,
+  Note,
+  ago,
+  waNumber,
+} from "../../../ui";
 import { AskPanel } from "./ask";
 
 export const dynamic = "force-dynamic";
 
-function waNumber(raw?: string | null): string | null {
-  if (!raw) return null;
-  const d = raw.replace(/\D/g, "");
-  if (d.length === 10) return `91${d}`;
-  return d.length >= 11 && d.length <= 15 ? d : null;
-}
-
-function List({ label, items }: { label: string; items?: unknown }) {
+function Facts({ label, items }: { label: string; items?: unknown }) {
   const arr = Array.isArray(items) ? items.filter(Boolean).map(String) : [];
   if (!arr.length) return null;
   return (
-    <div style={{ marginBottom: 10 }}>
-      <div style={{ fontSize: 12, color: C.muted, marginBottom: 4 }}>{label}</div>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+    <div style={{ marginBottom: 14 }}>
+      <div className="m-label">{label}</div>
+      <div className="m-chips">
         {arr.map((v, i) => (
           <Chip key={`${v}-${i}`}>{v}</Chip>
         ))}
@@ -54,122 +56,111 @@ export default async function ClientCard({
   const email = g.email ? String(g.email) : null;
   const wa = waNumber(mobile);
   const tel = mobile?.replace(/[^\d+]/g, "");
-
-  // Flags first — allergies and meds are the things that change what you say.
   const allergies = (g.known_allergies as string[]) ?? [];
-  const meds = (g.current_medications as string[]) ?? [];
 
   return (
-    <main style={{ padding: 16 }}>
+    <main className="m-page">
       <BackLink href="/m/clients" label="Clients" />
 
-      <h1 style={{ fontFamily: serif, fontSize: 25, color: C.ink, margin: "14px 0 4px" }}>
-        {name}
-      </h1>
-      <div style={{ fontSize: 13, color: C.muted, marginBottom: 12 }}>
-        {[g.sex, g.age_band, g.city].filter(Boolean).join(" · ") || card.kind}
-        {card.staged_at ? ` · synced ${ago(card.staged_at) ?? ""}` : ""}
+      <div style={{ display: "flex", gap: 12, alignItems: "center", margin: "16px 0 0" }}>
+        <Avatar name={name} prospect={card.kind === "prospect"} />
+        <div style={{ minWidth: 0 }}>
+          <h1 style={{ fontSize: "var(--fs-h2)" }}>{name}</h1>
+          <div className="m-subtle">
+            {[g.sex, g.age_band, g.city].filter(Boolean).join(" · ") || card.kind}
+          </div>
+        </div>
       </div>
 
-      {sp.noted ? (
-        <Panel style={{ background: C.goodBg, borderColor: "#B4D6C1" }}>
-          <span style={{ color: C.good, fontSize: 14 }}>
-            Note saved. It reaches the full record on the next sync.
-          </span>
-        </Panel>
-      ) : null}
-      {sp.sent ? (
-        <Panel style={{ background: C.goodBg, borderColor: "#B4D6C1" }}>
-          <span style={{ color: C.good, fontSize: 14 }}>WhatsApp sent.</span>
-        </Panel>
-      ) : null}
-      {sp.error ? (
-        <Panel style={{ background: C.badBg, borderColor: "#E9B8B8" }}>
-          <span style={{ color: C.bad, fontSize: 14 }}>{decodeURIComponent(sp.error)}</span>
-        </Panel>
-      ) : null}
-
-      {/* Contact row — the reason this app exists. */}
-      <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
+      <div className="m-row" style={{ marginTop: 16 }}>
         {wa ? (
-          <a
-            href={`https://wa.me/${wa}`}
-            style={{ ...btn, background: "#25D366", color: "#fff", border: "none" }}
-          >
-            💬 WhatsApp
+          <a className="m-iconbtn" href={`https://wa.me/${wa}`} aria-label="WhatsApp">
+            <Icon name="message" />
           </a>
         ) : null}
         {tel ? (
-          <a href={`tel:${tel}`} style={btn}>
-            📞 Call
+          <a className="m-iconbtn" href={`tel:${tel}`} aria-label="Call">
+            <Icon name="phone" />
           </a>
         ) : null}
         {email ? (
-          <a href={`mailto:${email}`} style={btn}>
-            ✉️ Email
+          <a className="m-iconbtn" href={`mailto:${email}`} aria-label="Email">
+            <Icon name="mail" />
+          </a>
+        ) : null}
+        {wa ? (
+          <a className="m-iconbtn" href="#send" aria-label="Send from business number">
+            <Icon name="send" />
           </a>
         ) : null}
       </div>
 
-      {/* ── Glance ─────────────────────────────────────────────── */}
-      <Panel>
-        {allergies.length ? (
-          <div
-            style={{
-              background: C.badBg,
-              border: `1px solid #E9B8B8`,
-              borderRadius: 10,
-              padding: "8px 10px",
-              marginBottom: 10,
-            }}
-          >
-            <span style={{ color: C.bad, fontSize: 13, fontWeight: 600 }}>
-              ⚠ Allergies: {allergies.join(", ")}
-            </span>
-          </div>
-        ) : null}
-        <List label="Conditions" items={g.active_conditions} />
-        <List label="Medications" items={meds} />
-        <List label="Goals" items={g.goals} />
-        <List label="Past / history" items={g.medical_history} />
-        <List label="Won't give up" items={g.non_negotiables} />
-        <List label="Avoids" items={g.foods_to_avoid} />
-        {g.dietary_preference ? (
-          <div style={{ fontSize: 13, color: C.body }}>
-            Diet: {String(g.dietary_preference)}
-          </div>
-        ) : null}
-      </Panel>
+      {sp.noted ? (
+        <div style={{ marginTop: 16 }}>
+          <Note tone="sage">Note saved. It reaches the full record on the next sync.</Note>
+        </div>
+      ) : null}
+      {sp.sent ? (
+        <div style={{ marginTop: 16 }}>
+          <Note tone="sage">WhatsApp sent.</Note>
+        </div>
+      ) : null}
+      {sp.error ? (
+        <div style={{ marginTop: 16 }}>
+          <Note tone="rose">{decodeURIComponent(sp.error)}</Note>
+        </div>
+      ) : null}
 
-      {/* ── Plan ───────────────────────────────────────────────── */}
+      {/* Allergies lead: they're the thing that changes what you say. */}
+      {allergies.length ? (
+        <div style={{ marginTop: 16, display: "flex", gap: 8, alignItems: "flex-start", color: "var(--rose)" }}>
+          <Icon name="alert" size="sm" />
+          <div style={{ fontSize: "var(--fs-small)", color: "var(--fg-1)" }}>
+            <span className="m-em">Allergies</span> — {allergies.join(", ")}
+          </div>
+        </div>
+      ) : null}
+
+      <Eyebrow>At a glance</Eyebrow>
+      <Card>
+        <Facts label="Conditions" items={g.active_conditions} />
+        <Facts label="Medications" items={g.current_medications} />
+        <Facts label="Goals" items={g.goals} />
+        <Facts label="History" items={g.medical_history} />
+        <Facts label="Won't give up" items={g.non_negotiables} />
+        <Facts label="Avoids" items={g.foods_to_avoid} />
+        {g.dietary_preference ? (
+          <div className="m-subtle">Diet — {String(g.dietary_preference)}</div>
+        ) : null}
+      </Card>
+
+      <Eyebrow>Plan</Eyebrow>
       {card.plan ? (
-        <Panel>
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-            <Chip tone={card.plan.status === "published" ? "good" : "warn"}>
+        <Card>
+          <div className="m-chips">
+            <Chip tone={card.plan.status === "published" ? "sage" : undefined}>
               {card.plan.status}
             </Chip>
-            {card.plan.period_weeks ? <Chip>{card.plan.period_weeks} wks</Chip> : null}
+            {card.plan.period_weeks ? <Chip>{card.plan.period_weeks} weeks</Chip> : null}
             <Chip>{card.plan.supplement_count ?? 0} supplements</Chip>
             <Chip>{card.plan.practice_count ?? 0} practices</Chip>
           </div>
           {card.plan.meal_plan_started_on ? (
-            <div style={{ fontSize: 13, color: C.muted, marginTop: 8 }}>
-              Day 1 was {card.plan.meal_plan_started_on} ({ago(card.plan.meal_plan_started_on)})
+            <div className="m-subtle" style={{ marginTop: 10 }}>
+              Day 1 was {card.plan.meal_plan_started_on} · {ago(card.plan.meal_plan_started_on)}
             </div>
           ) : null}
-        </Panel>
+        </Card>
       ) : (
-        <Panel>
-          <span style={{ fontSize: 14, color: C.muted }}>No plan yet.</span>
-        </Panel>
+        <Card>
+          <span className="m-subtle">No plan yet.</span>
+        </Card>
       )}
 
-      {/* ── Ask AI ─────────────────────────────────────────────── */}
-      <SectionTitle>Ask about {name.split(" ")[0]}</SectionTitle>
+      <Eyebrow>Ask about {name.split(" ")[0]}</Eyebrow>
       <AskPanel clientId={card.id} clientName={name} />
 
-      {/* ── Quick note ─────────────────────────────────────────── */}
-      <SectionTitle>Quick note</SectionTitle>
+      <Eyebrow>Quick note</Eyebrow>
       <form method="POST" action="/api/m/note">
         <input type="hidden" name="client_id" value={card.id} />
         <input type="hidden" name="next" value={`/m/clients/${card.id}`} />
@@ -177,29 +168,21 @@ export default async function ClientCard({
           name="text"
           rows={3}
           required
-          placeholder="What just happened — dictate it if easier."
-          style={{
-            width: "100%",
-            fontSize: 16,
-            padding: "11px 13px",
-            borderRadius: 11,
-            border: `1px solid ${C.line}`,
-            background: "#fff",
-            marginBottom: 8,
-            fontFamily: "inherit",
-          }}
+          className="m-field"
+          placeholder="What just happened — dictate it if easier"
+          style={{ marginBottom: 12 }}
         />
-        <button type="submit" style={{ ...btn, background: C.ink, color: "#fff", border: "none" }}>
+        <button type="submit" className="m-btn m-btn--primary m-btn--block">
+          <Icon name="note" size="sm" />
           Save note
         </button>
       </form>
 
-      {/* ── Business WhatsApp ──────────────────────────────────── */}
       {wa ? (
         <>
-          <SectionTitle>
-            <span id="send">Send from business WhatsApp</span>
-          </SectionTitle>
+          <Eyebrow>
+            <span id="send">Business WhatsApp</span>
+          </Eyebrow>
           <form method="POST" action="/api/m/wa">
             <input type="hidden" name="client_id" value={card.id} />
             <input type="hidden" name="phone" value={wa} />
@@ -207,92 +190,60 @@ export default async function ClientCard({
               name="text"
               rows={3}
               required
-              placeholder="Message…"
-              style={{
-                width: "100%",
-                fontSize: 16,
-                padding: "11px 13px",
-                borderRadius: 11,
-                border: `1px solid ${C.line}`,
-                background: "#fff",
-                marginBottom: 8,
-                fontFamily: "inherit",
-              }}
+              className="m-field"
+              placeholder="Message"
+              style={{ marginBottom: 12 }}
             />
-            <button type="submit" style={btn}>
-              Send via business number
+            <button type="submit" className="m-btn m-btn--block">
+              <Icon name="send" size="sm" />
+              Send from business number
             </button>
-            <div style={{ fontSize: 12, color: C.muted, marginTop: 8, lineHeight: 1.5 }}>
-              Goes from your business number and is logged. Only works inside 24h
-              of her last message — otherwise use an approved template from the
-              desktop app.
-            </div>
+            <p className="m-subtle" style={{ marginTop: 10 }}>
+              Sent from your business number and logged. Works only within 24
+              hours of her last message — otherwise use an approved template
+              from the desktop app.
+            </p>
           </form>
         </>
       ) : null}
 
-      {/* ── Recent activity ────────────────────────────────────── */}
       {card.whatsapp.messages.length ? (
         <>
-          <SectionTitle>Recent messages from her</SectionTitle>
+          <Eyebrow>Recent messages from her</Eyebrow>
           {card.whatsapp.messages.slice(0, 8).map((m, i) => (
-            <Panel key={i} style={{ padding: "10px 12px", marginBottom: 8 }}>
-              <div style={{ fontSize: 11, color: C.muted, marginBottom: 3 }}>{m.at}</div>
-              <div style={{ fontSize: 14, color: C.body, lineHeight: 1.5 }}>{m.text}</div>
-            </Panel>
+            <Card key={i} className="m-stack" >
+              <div className="m-subtle" style={{ fontSize: 11 }}>{m.at}</div>
+              <div style={{ fontSize: "var(--fs-small)" }}>{m.text}</div>
+            </Card>
           ))}
         </>
       ) : null}
 
-      <SectionTitle>Sessions</SectionTitle>
+      <Eyebrow>Sessions</Eyebrow>
       {card.sessions.length === 0 ? (
-        <Panel>
-          <span style={{ fontSize: 14, color: C.muted }}>No sessions recorded.</span>
-        </Panel>
+        <Card>
+          <span className="m-subtle">No sessions recorded.</span>
+        </Card>
       ) : (
         card.sessions.slice(0, 8).map((s) => (
-          <Panel key={s.id} style={{ padding: "10px 12px", marginBottom: 8 }}>
+          <Card key={s.id} className="m-stack" >
             <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-              <span style={{ fontSize: 13, color: C.ink, fontWeight: 600 }}>
+              <span className="m-em" style={{ fontSize: "var(--fs-small)" }}>
                 {s.kind.replace(/_/g, " ")}
               </span>
-              <span style={{ fontSize: 12, color: C.muted }}>{s.date}</span>
+              <span className="m-subtle" style={{ fontSize: 11 }}>{s.date}</span>
             </div>
             {s.complaints ? (
-              <div style={{ fontSize: 14, color: C.body, marginTop: 5, lineHeight: 1.5 }}>
-                {s.complaints.slice(0, 400)}
-              </div>
+              <div style={{ fontSize: "var(--fs-small)" }}>{s.complaints.slice(0, 400)}</div>
             ) : null}
             {s.coach_notes ? (
-              <div style={{ fontSize: 13, color: C.muted, marginTop: 5, lineHeight: 1.5 }}>
+              <div className="m-subtle" style={{ fontSize: "var(--fs-small)" }}>
                 {s.coach_notes.slice(0, 300)}
               </div>
             ) : null}
-          </Panel>
+          </Card>
         ))
       )}
-
-      <div style={{ marginTop: 18 }}>
-        <Link href="/m/clients" style={{ fontSize: 14, color: C.muted }}>
-          ← Back to clients
-        </Link>
-      </div>
     </main>
   );
 }
-
-const btn: React.CSSProperties = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minHeight: 44,
-  padding: "0 16px",
-  borderRadius: 11,
-  border: `1px solid ${C.line}`,
-  background: "#fff",
-  color: C.body,
-  fontSize: 15,
-  fontWeight: 500,
-  textDecoration: "none",
-  flex: 1,
-};

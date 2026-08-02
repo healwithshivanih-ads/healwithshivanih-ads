@@ -1,16 +1,21 @@
 /**
  * /m/today — what needs you today.
  *
- * An A–Z list is the wrong home screen for a phone: it makes you scan 21 names
- * to work out who needs attention. This surfaces only the rows with a reason,
- * and says nothing when there is nothing — "all clear" is a real answer.
+ * An A–Z list is the wrong home screen for a phone: it makes you scan 21
+ * names to work out who needs attention. This surfaces only rows with a
+ * reason, and says nothing when there is nothing — "all clear" is a real
+ * answer, not an empty state.
  *
- * Signals are derived from the projection alone (no live computation), so this
- * screen keeps working with the Mac asleep.
+ * Signals derive from the projection alone, so this screen keeps working
+ * with the Mac asleep.
  */
 import Link from "next/link";
-import { loadCoachIndex, coachProjectionReady, type CoachIndexRow } from "@/lib/fmdb/coach-mobile";
-import { C, Chip, Empty, Panel, SectionTitle, ago, serif } from "../../ui";
+import {
+  loadCoachIndex,
+  coachProjectionReady,
+  type CoachIndexRow,
+} from "@/lib/fmdb/coach-mobile";
+import { Avatar, Empty, Eyebrow, Icon, ago } from "../../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -19,24 +24,36 @@ const DAY = 86_400_000;
 function daysUntil(iso?: string | null): number | null {
   if (!iso) return null;
   const t = new Date(iso).getTime();
-  if (Number.isNaN(t)) return null;
-  return Math.round((t - Date.now()) / DAY);
+  return Number.isNaN(t) ? null : Math.round((t - Date.now()) / DAY);
 }
-
-function daysSince(iso?: string | null): number | null {
+const daysSince = (iso?: string | null) => {
   const d = daysUntil(iso);
   return d === null ? null : -d;
-}
+};
 
-function Row({ row, why, tone }: { row: CoachIndexRow; why: string; tone: "bad" | "warn" | "neutral" }) {
+function Row({
+  row,
+  why,
+  tone,
+}: {
+  row: CoachIndexRow;
+  why: string;
+  tone?: "rose" | "sage";
+}) {
   return (
-    <Link href={`/m/clients/${row.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-      <Panel style={{ padding: "11px 12px", marginBottom: 8 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
-          <span style={{ fontSize: 16, color: C.ink, fontWeight: 600 }}>{row.name}</span>
-          <Chip tone={tone}>{why}</Chip>
+    <Link href={`/m/clients/${row.id}`} className="m-card m-card--link" style={{ display: "block", marginBottom: 8 }}>
+      <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+        <Avatar name={row.name} prospect={row.kind === "prospect"} />
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <h3 style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {row.name}
+          </h3>
+          <div className="m-subtle" style={{ marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}>
+            <span className={`m-pulse${tone ? ` m-pulse--${tone}` : ""}`} />
+            {why}
+          </div>
         </div>
-      </Panel>
+      </div>
     </Link>
   );
 }
@@ -44,10 +61,9 @@ function Row({ row, why, tone }: { row: CoachIndexRow; why: string; tone: "bad" 
 export default async function TodayTab() {
   if (!coachProjectionReady()) {
     return (
-      <main style={{ padding: 16 }}>
-        <h1 style={{ fontFamily: serif, fontSize: 24, color: C.ink, margin: "4px 0 14px" }}>
-          Today
-        </h1>
+      <main className="m-page">
+        <h1>Today</h1>
+        <hr className="m-divider" />
         <Empty
           title="Not synced yet"
           detail="FMDB_COACH_DIR isn't set on this host, so there's nothing to read. This is a setup step."
@@ -69,8 +85,8 @@ export default async function TodayTab() {
 
   const messaged = rows.filter((r) => (r.recent_whatsapp ?? 0) > 0);
 
-  // Signed up but nothing recorded in a long while — the quiet drop-off that
-  // is easy to miss when you only ever look at people who contact you.
+  // Signed up but nothing recorded in a long while — the quiet drop-off
+  // that's easy to miss when you only look at people who contact you.
   const quiet = rows.filter(
     (r) =>
       r.kind === "client" &&
@@ -78,15 +94,31 @@ export default async function TodayTab() {
       (daysSince(r.last_session) ?? 0) > 45,
   );
 
-  const nothing =
-    !overdue.length && !dueSoon.length && !messaged.length && !quiet.length;
+  const nothing = !overdue.length && !dueSoon.length && !messaged.length && !quiet.length;
 
   return (
-    <main style={{ padding: 16 }}>
-      <h1 style={{ fontFamily: serif, fontSize: 24, color: C.ink, margin: "4px 0 4px" }}>Today</h1>
-      <div style={{ fontSize: 13, color: C.muted, marginBottom: 6 }}>
-        {rows.length} people on your list
+    <main className="m-page">
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
+        <div>
+          <h1>Today</h1>
+          <p className="m-subtle" style={{ margin: "4px 0 0" }}>
+            {rows.length} people on your list
+          </p>
+        </div>
+        {/* Account actions live here rather than in the tab bar — two tabs is
+            the right amount of navigation; these are rare. */}
+        <div style={{ display: "flex", gap: 4, marginTop: 4 }}>
+          <Link href="/m/settings" className="m-iconbtn" style={{ flex: "none", border: 0 }} aria-label="Change password">
+            <Icon name="key" size="sm" />
+          </Link>
+          <form method="POST" action="/api/m/logout">
+            <button type="submit" className="m-iconbtn" style={{ flex: "none", border: 0 }} aria-label="Log out">
+              <Icon name="logout" size="sm" />
+            </button>
+          </form>
+        </div>
       </div>
+      <hr className="m-divider" />
 
       {nothing ? (
         <Empty
@@ -95,33 +127,35 @@ export default async function TodayTab() {
         />
       ) : null}
 
+      {/* rose is the single accent in this composition — reserved for the
+          most urgent bucket, per the system's one-rose rule. */}
       {overdue.length ? (
         <>
-          <SectionTitle>Follow-up overdue</SectionTitle>
+          <Eyebrow>Follow-up overdue</Eyebrow>
           {overdue.map((r) => (
-            <Row key={r.id} row={r} tone="bad" why={`${daysSince(r.next_contact_date)}d late`} />
+            <Row key={r.id} row={r} tone="rose" why={`${daysSince(r.next_contact_date)} days late`} />
           ))}
         </>
       ) : null}
 
       {messaged.length ? (
         <>
-          <SectionTitle>They messaged you</SectionTitle>
+          <Eyebrow>They messaged you</Eyebrow>
           {messaged.map((r) => (
-            <Row key={r.id} row={r} tone="warn" why={`${r.recent_whatsapp} recent`} />
+            <Row key={r.id} row={r} why={`${r.recent_whatsapp} recent`} />
           ))}
         </>
       ) : null}
 
       {dueSoon.length ? (
         <>
-          <SectionTitle>Coming up this week</SectionTitle>
+          <Eyebrow>Coming up this week</Eyebrow>
           {dueSoon.map((r) => (
             <Row
               key={r.id}
               row={r}
-              tone="neutral"
-              why={daysUntil(r.next_contact_date) === 0 ? "today" : `in ${daysUntil(r.next_contact_date)}d`}
+              tone="sage"
+              why={daysUntil(r.next_contact_date) === 0 ? "today" : `in ${daysUntil(r.next_contact_date)} days`}
             />
           ))}
         </>
@@ -129,9 +163,9 @@ export default async function TodayTab() {
 
       {quiet.length ? (
         <>
-          <SectionTitle>Gone quiet</SectionTitle>
+          <Eyebrow>Gone quiet</Eyebrow>
           {quiet.map((r) => (
-            <Row key={r.id} row={r} tone="neutral" why={`seen ${ago(r.last_session)}`} />
+            <Row key={r.id} row={r} why={`seen ${ago(r.last_session)}`} />
           ))}
         </>
       ) : null}
