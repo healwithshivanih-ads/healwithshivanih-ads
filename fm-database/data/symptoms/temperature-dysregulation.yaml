@@ -1,13 +1,10 @@
 slug: temperature-dysregulation
 display_name: Temperature Dysregulation
 aliases:
-- always cold
 - always hot
 - can't regulate my temperature
-- cold hands and feet
 - running hot
 - heat intolerance
-- cold intolerance
 category: constitutional
 severity: concerning
 description: Difficulty maintaining a comfortable body temperature — persistently cold, persistently

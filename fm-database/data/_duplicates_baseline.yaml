@@ -86,10 +86,17 @@ accepted:
 - NEAR_SLUG:supplements:vitamin-e+vitamin-e-mixed-tocopherols
 - NEAR_SLUG:supplements:vitamin-k+vitamin-k2
 - NEAR_SLUG:symptoms:carb-cravings+premenstrual-sugar-cravings
+# deferred merge (2026-08-01): itching/skin-itching are likely the same concept,
+# but `itching` has ~91 inbound references (incl. client plans) — the canonical
+# choice + reference re-point is a clinical call for Shivani, not an auto-fix.
+- NEAR_SLUG:symptoms:itching+skin-itching
 - NEAR_SLUG:symptoms:joint-muscle-pain+muscle-aches-joint-pain
 - NEAR_SLUG:symptoms:low-mood+low-mood-anxiety
 - NEAR_SLUG:symptoms:macrocytic-anemia+megaloblastic-anemia
 - NEAR_SLUG:symptoms:mood-changes-and-anxiety+premenstrual-mood-changes
+# deferred merge (2026-08-01): phonophobia == sound-sensitivity clinically, but
+# which slug is canonical (and re-pointing phonophobia's refs) is Shivani's call.
+- NEAR_SLUG:symptoms:phonophobia+sound-sensitivity
 - NEAR_SLUG:symptoms:urinary-frequency+urinary-urgency
 - NEAR_SLUG:topics:acid-alkaline-balance+ph-balance
 - NEAR_SLUG:topics:cold-water-immersion-cardiovascular+cold-water-immersion-mental-health
