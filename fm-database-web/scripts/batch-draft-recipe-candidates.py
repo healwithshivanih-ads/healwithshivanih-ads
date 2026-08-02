@@ -42,6 +42,7 @@ MODEL = "claude-sonnet-4-6"
 sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
+from model_output import usable_dicts  # noqa: E402
 from recipe_schema import ALLERGENS  # noqa: E402
 
 # Tool-use can serialise an array field as a JSON string; coerce every
@@ -223,14 +224,7 @@ def main() -> int:
         # object belongs. Drop those once, here, so neither the by_name build
         # nor the pop(0) fallback below can crash the batch — the affected
         # dishes fall through to `failed` and get reported like any other miss.
-        _malformed = [d for d in drafts if not isinstance(d, dict)]
-        if _malformed:
-            print(
-                f"[batch-draft] dropped {len(_malformed)} malformed draft(s): "
-                + "; ".join(f"{type(d).__name__} {str(d)[:80]}" for d in _malformed),
-                file=sys.stderr,
-            )
-            drafts = [d for d in drafts if isinstance(d, dict)]
+        drafts = usable_dicts(drafts, "batch-draft", "draft")
 
         for d in drafts:
             _normalize_lists(d)

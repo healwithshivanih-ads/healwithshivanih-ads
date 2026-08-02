@@ -36,6 +36,7 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 
 from atomic_write import write_text_atomic  # noqa: E402
 from locale_profile import locale_directive  # noqa: E402
+from model_output import usable_dicts  # noqa: E402
 
 
 def _load_dotenv() -> None:
@@ -474,25 +475,15 @@ def _merge_recipes(all_recipes, seen, new_recipes):
     Defensive, same posture as fmdb.ingest.staging: the model occasionally emits
     a bare string or null where a recipe object belongs. One bad element must
     never abort the batch — cl-006 lost its whole recipe pack on 2026-08-02 to a
-    single non-dict here. Record it on stderr (so the cron log shows what the
-    model actually produced) and skip it; everything well-formed still lands.
+    single non-dict here. `usable_dicts` skips it and says so on stderr (so the
+    cron log shows what the model actually produced); everything well-formed
+    still lands. A partial pack beats no pack: the client sees one dish fewer.
+
+    The titleless check below stays local — it is about THIS merge (two entries
+    with no title would collide on "" and shadow each other), not about shape.
     """
     added = 0
-    if not isinstance(new_recipes, list):
-        print(
-            f"[recipes] model returned {type(new_recipes).__name__} for 'recipes' "
-            f"(expected list) — skipped: {str(new_recipes)[:120]}",
-            file=sys.stderr,
-        )
-        return 0
-    for r in new_recipes:
-        if not isinstance(r, dict):
-            print(
-                f"[recipes] skipping malformed entry: model emitted "
-                f"{type(r).__name__} (expected object) — {str(r)[:120]}",
-                file=sys.stderr,
-            )
-            continue
+    for r in usable_dicts(new_recipes, "recipes", "recipe"):
         key = (r.get("title") or "").strip().lower()
         if not key:
             print(

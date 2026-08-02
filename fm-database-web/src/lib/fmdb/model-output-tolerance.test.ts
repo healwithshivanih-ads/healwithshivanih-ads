@@ -13,6 +13,13 @@
  * These tests pin the same posture across the shims that consume model output:
  * skip the bad element, keep the rest, and say on stderr what the model
  * actually produced.
+ *
+ * The shape check itself now lives once, in scripts/model_output.py — every
+ * site below routes through it. What is NOT shared is what to do when nothing
+ * survives, because that depends on what the client experiences if the artifact
+ * is quietly incomplete: a recipe pack drops the dish, a grocery list bails
+ * (the client shops from it), a recipe coerces a bare-string ingredient rather
+ * than write an ingredient-less recipe to the catalogue.
  */
 import { describe, it, expect } from "vitest";
 import { spawnSync } from "node:child_process";
@@ -72,6 +79,63 @@ function pythonWeeks(raw: unknown, wkNo = 3): { weeks: Record<string, unknown>[]
 
 const GOOD_A = { title: "Jeera Rice", ingredients: ["rice"], method: ["cook"] };
 const GOOD_B = { title: "Palak Sabzi", ingredients: ["spinach"], method: ["cook"] };
+
+/**
+ * The shared guard every site below now routes through. Tested directly as
+ * well as through its callers, because a subtle change here (dropping the
+ * warning, say) would weaken all of them at once.
+ */
+describe("usable_dicts — the shared shape guard", () => {
+  function usableDicts(raw: unknown, label = "test", field = "entry") {
+    const { stdout, stderr } = runAgainstShim(
+      "model_output.py",
+      `sys.stdout.write(json.dumps(m.usable_dicts(payload["raw"], payload["label"], payload["field"])))`,
+      { raw, label, field },
+    );
+    return { kept: JSON.parse(stdout) as unknown[], stderr };
+  }
+
+  it("keeps the dicts and drops everything else", () => {
+    const { kept } = usableDicts([{ a: 1 }, "str", null, 42, ["nested"], { b: 2 }]);
+    expect(kept).toEqual([{ a: 1 }, { b: 2 }]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("never skips silently — names the type and shows the sample", () => {
+    const { stderr } = usableDicts([{ a: 1 }, "add magnesium 400mg"], "rework", "suggested change");
+    expect(stderr).toMatch(/malformed suggested change/i);
+    expect(stderr).toContain("[rework]");
+    expect(stderr).toContain("str");
+    expect(stderr).toContain("add magnesium 400mg");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("refuses to iterate a bare string element-by-element", () => {
+    // The failure this exists to prevent: a string is iterable, so walking it
+    // yields one junk entry PER CHARACTER — quieter than the crash, and worse.
+    const { kept, stderr } = usableDicts("Jeera Rice");
+    expect(kept).toEqual([]);
+    expect(stderr).toMatch(/expected list/i);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("treats an absent list as an ordinary empty, with no warning noise", () => {
+    // `x.get("items")` returning None is normal, not a malformation — warning
+    // on it would train the coach to ignore the warnings that matter.
+    const { kept, stderr } = usableDicts(null);
+    expect(kept).toEqual([]);
+    expect(stderr.trim()).toBe("");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("truncates a huge sample instead of dumping it into the cron log", () => {
+    const { stderr } = usableDicts([{ ok: 1 }, "x".repeat(5000)]);
+    expect(stderr.length).toBeLessThan(400);
+    expect(stderr).toContain("…");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("leaves an all-good list exactly as it found it", () => {
+    const { kept, stderr } = usableDicts([GOOD_A, GOOD_B]);
+    expect(kept).toEqual([GOOD_A, GOOD_B]);
+    expect(stderr.trim()).toBe("");
+  }, PY_TEST_TIMEOUT_MS);
+});
 
 describe("_merge_recipes tolerates malformed model output", () => {
   it("keeps the good recipes when a bare string is mixed in (the cl-006 crash)", () => {
@@ -168,5 +232,210 @@ describe("_usable_weeks tolerates malformed model output", () => {
     const { weeks, stderr } = pythonWeeks("Vegetables: bottle gourd");
     expect(weeks).toEqual([]);
     expect(stderr).toMatch(/expected list/i);
+  }, PY_TEST_TIMEOUT_MS);
+});
+
+/**
+ * The cleanup analyser had the enclosing-layer version of this bug: it filtered
+ * `members` by isinstance(str) but took the GROUP object holding them on faith,
+ * so `g.get("kind")` on a bare string raised AttributeError and cost the whole
+ * plan — 40-odd reviewed suggestions lost to one.
+ *
+ * Skip-and-continue is clearly right: every group is reviewed in
+ * /catalogue/cleanup before anything is applied, so a dropped group is one
+ * fewer suggestion, not a wrong artifact.
+ */
+describe("_enriched_groups tolerates malformed model output", () => {
+  const GROUP = {
+    kind: "duplicate_topics",
+    canonical: "hypothyroidism",
+    members: ["low-thyroid", "underactive-thyroid"],
+    reason: "same condition, three slugs",
+  };
+
+  function pythonGroups(raw: unknown): { groups: Record<string, unknown>[]; stderr: string } {
+    const { stdout, stderr } = runAgainstShim(
+      "analyze-catalogue-duplicates.py",
+      `sys.stdout.write(json.dumps(m._enriched_groups(payload["raw"])))`,
+      { raw },
+    );
+    return { groups: JSON.parse(stdout), stderr };
+  }
+
+  it("keeps the good groups when a bare string is mixed in", () => {
+    const other = { ...GROUP, canonical: "pcos", members: ["pcod"] };
+    const { groups } = pythonGroups([GROUP, "merge the thyroid ones", other]);
+    expect(groups.map((g) => g.canonical)).toEqual(["hypothyroidism", "pcos"]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("says on stderr what the model actually produced", () => {
+    const { stderr } = pythonGroups([GROUP, "merge the thyroid ones"]);
+    expect(stderr).toMatch(/malformed group/i);
+    expect(stderr).toContain("str");
+    expect(stderr).toContain("merge the thyroid ones");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("still drops non-string members inside a group it kept", () => {
+    // The inner filter that was already here must survive the outer one.
+    const { groups } = pythonGroups([{ ...GROUP, members: ["low-thyroid", 7, null, ""] }]);
+    expect(groups[0].members).toEqual(["low-thyroid"]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("returns nothing instead of iterating a string when 'groups' is not a list", () => {
+    const { groups, stderr } = pythonGroups("merge the thyroid ones");
+    expect(groups).toEqual([]);
+    expect(stderr).toMatch(/expected list/i);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("leaves a well-formed plan untouched, id included", () => {
+    const { groups, stderr } = pythonGroups([GROUP]);
+    expect(groups).toHaveLength(1);
+    expect(groups[0]).toMatchObject({ kind: GROUP.kind, members: GROUP.members, reason: GROUP.reason });
+    expect(groups[0].id).toEqual(expect.any(String));
+    expect(stderr.trim()).toBe("");
+  }, PY_TEST_TIMEOUT_MS);
+});
+
+/**
+ * The rework suggestion is the one case where the crash would land in a
+ * DIFFERENT script on a DIFFERENT day: this list is persisted to
+ * client.yaml#rework_suggestion, and apply-rework.py later does
+ * `for c in changes: c.get("op")` on it. Filtering on the way in means the
+ * record on disk is well-formed; apply-rework guards its read as well, for
+ * records written before this landed.
+ */
+describe("_build_suggestion tolerates malformed model output", () => {
+  const CHANGE = {
+    op: "add",
+    target_kind: "supplement",
+    target_slug: "magnesium-glycinate",
+    description: "Add magnesium glycinate 400 mg at bedtime",
+  };
+
+  function pythonSuggestion(
+    toolInput: Record<string, unknown>,
+    prior: unknown = null,
+  ): { suggestion: Record<string, unknown>; stderr: string } {
+    const { stdout, stderr } = runAgainstShim(
+      "assess-rework.py",
+      `sys.stdout.write(json.dumps(m._build_suggestion(payload["tool"], "quick_note", payload["prior"])))`,
+      { tool: toolInput, prior },
+    );
+    return { suggestion: JSON.parse(stdout), stderr };
+  }
+
+  it("persists only the well-formed changes when a bare string is mixed in", () => {
+    const { suggestion } = pythonSuggestion({
+      benefit_pct: 40,
+      suggested_changes: [CHANGE, "add magnesium 400mg at night", { ...CHANGE, op: "remove" }],
+    });
+    expect(suggestion.suggested_changes).toHaveLength(2);
+    expect((suggestion.suggested_changes as Record<string, unknown>[]).map((c) => c.op)).toEqual([
+      "add",
+      "remove",
+    ]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("says on stderr what the model actually produced", () => {
+    const { stderr } = pythonSuggestion({
+      benefit_pct: 40,
+      suggested_changes: [CHANGE, "add magnesium 400mg at night"],
+    });
+    expect(stderr).toMatch(/malformed suggested change/i);
+    expect(stderr).toContain("str");
+    expect(stderr).toContain("add magnesium 400mg at night");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("writes an empty list rather than a poisoned one when every change is malformed", () => {
+    // apply-rework then reports applied_count: 0, the same as it already does
+    // for a change whose op it doesn't recognise. No new failure mode.
+    const { suggestion } = pythonSuggestion({ benefit_pct: 5, suggested_changes: ["a", null] });
+    expect(suggestion.suggested_changes).toEqual([]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("still carries a prior dismissal forward when the benefit hasn't jumped", () => {
+    // The guard must not disturb the surrounding record-building.
+    const { suggestion } = pythonSuggestion(
+      { benefit_pct: 30, suggested_changes: [CHANGE] },
+      { benefit_pct: 25, dismissed_at: "2026-07-01T00:00:00Z" },
+    );
+    expect(suggestion.dismissed_at).toBe("2026-07-01T00:00:00Z");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("drops a prior dismissal when the benefit has jumped", () => {
+    const { suggestion } = pythonSuggestion(
+      { benefit_pct: 80, suggested_changes: [CHANGE] },
+      { benefit_pct: 25, dismissed_at: "2026-07-01T00:00:00Z" },
+    );
+    expect(suggestion.dismissed_at).toBeUndefined();
+  }, PY_TEST_TIMEOUT_MS);
+});
+
+/**
+ * Intake insights already degraded rather than crashed — the try/except turned
+ * the TypeError into ok:false. But that traded ONE bad hypothesis for the whole
+ * block: patterns, red flags and verify-in-session too. It is expensive here
+ * because insights auto-fire exactly once, on first submit, and never
+ * regenerate on their own, so the coach silently walks into the first session
+ * with nothing unless they notice and hit 🔄 Refresh.
+ */
+describe("_build_insights tolerates malformed model output", () => {
+  const HYP = { driver: "post-antibiotic dysbiosis", confidence: 0.7, reasoning: "3 courses in 18mo" };
+  const TOOL = {
+    patterns: ["bloating after every meal", "wakes at 3am"],
+    red_flags: ["unexplained weight loss"],
+    verify_in_session: ["confirm antibiotic dates"],
+    top_hypotheses: [HYP],
+  };
+
+  function pythonInsights(toolInput: Record<string, unknown>): {
+    insights: Record<string, unknown>;
+    stderr: string;
+  } {
+    const { stdout, stderr } = runAgainstShim(
+      "generate-intake-insights.py",
+      `ins = m._build_insights(payload["tool"], "claude-haiku-4-5", "coach notes")
+sys.stdout.write(ins.model_dump_json())`,
+      { tool: toolInput },
+    );
+    return { insights: JSON.parse(stdout), stderr };
+  }
+
+  it("keeps the rest of the block when one hypothesis is a bare string", () => {
+    const { insights } = pythonInsights({
+      ...TOOL,
+      top_hypotheses: [HYP, "adrenal involvement"],
+    });
+    expect(insights.top_hypotheses).toHaveLength(1);
+    // The point of the fix: these three used to be lost along with it.
+    expect(insights.patterns).toEqual(TOOL.patterns);
+    expect(insights.red_flags).toEqual(TOOL.red_flags);
+    expect(insights.verify_in_session).toEqual(TOOL.verify_in_session);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("says on stderr what the model actually produced", () => {
+    const { stderr } = pythonInsights({ ...TOOL, top_hypotheses: [HYP, "adrenal involvement"] });
+    expect(stderr).toMatch(/malformed hypothesis/i);
+    expect(stderr).toContain("str");
+    expect(stderr).toContain("adrenal involvement");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("still raises on a dict with the wrong fields, so nothing half-understood is written", () => {
+    // A fumbled ITEM is tolerable; a misunderstood SCHEMA is not, and the
+    // caller's try/except still turns this into ok:false.
+    expect(() =>
+      pythonInsights({ ...TOOL, top_hypotheses: [{ hypothesis: "not the field name" }] }),
+    ).toThrow();
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("leaves a well-formed block untouched", () => {
+    const { insights, stderr } = pythonInsights(TOOL);
+    expect(insights.top_hypotheses).toHaveLength(1);
+    expect((insights.top_hypotheses as Record<string, unknown>[])[0]).toMatchObject({
+      driver: HYP.driver,
+      confidence: HYP.confidence,
+    });
+    expect(insights.coach_notes_for_ai).toBe("coach notes");
+    expect(stderr.trim()).toBe("");
   }, PY_TEST_TIMEOUT_MS);
 });

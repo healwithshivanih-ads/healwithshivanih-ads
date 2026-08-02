@@ -41,6 +41,7 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 
 from atomic_write import write_text_atomic  # noqa: E402
 from locale_profile import locale_directive  # noqa: E402
+from model_output import usable_dicts  # noqa: E402
 
 
 def _load_dotenv() -> None:
@@ -156,23 +157,13 @@ def _usable_weeks(raw: Any, wk_no: int) -> list[dict[str, Any]]:
     element (`gw["week"] = wk_no`), so one such entry raised TypeError and cost
     the entire grocery list — the same failure that lost cl-006's recipe pack
     on 2026-08-02, one cron over. Record it on stderr and skip it instead.
+
+    Unlike the recipe pack, main() still BAILS if a week yields nothing usable:
+    a grocery list silently missing a week is worse than no list, because the
+    client shops from it.
     """
-    if not isinstance(raw, list):
-        print(
-            f"[grocery] week {wk_no}: model returned {type(raw).__name__} for 'weeks' "
-            f"(expected list) — skipped: {str(raw)[:120]}",
-            file=sys.stderr,
-        )
-        return []
     out: list[dict[str, Any]] = []
-    for gw in raw:
-        if not isinstance(gw, dict):
-            print(
-                f"[grocery] week {wk_no}: skipping malformed entry — model emitted "
-                f"{type(gw).__name__} (expected object): {str(gw)[:120]}",
-                file=sys.stderr,
-            )
-            continue
+    for gw in usable_dicts(raw, f"grocery week {wk_no}", "week"):
         gw["week"] = wk_no  # force the source week number (model may echo 1)
         out.append(gw)
     return out

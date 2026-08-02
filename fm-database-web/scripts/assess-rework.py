@@ -50,6 +50,10 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from model_output import usable_dicts  # noqa: E402
+
 
 def _load_env() -> None:
     """Source ANTHROPIC_API_KEY from fm-database/.env if not in environment."""
@@ -608,6 +612,43 @@ the ONE combo entry instead and state in the rationale which compounds it
 consolidates. Fewer pills = better adherence."""
 
 
+def _build_suggestion(tool_input: dict, triggered_by: str, prior) -> dict:
+    """Assemble the record that gets persisted to client.yaml#rework_suggestion.
+
+    Malformed changes are filtered HERE, at the point they ENTER the record,
+    rather than where they are eventually used. This list is read back later by
+    apply-rework.py, whose `for c in changes: c.get("op")` raises on a bare
+    string — so an unfiltered write turns one bad element into a crash in a
+    different script, on a different day, with the model output long gone from
+    any log. (apply-rework guards its read too, for records written before this.)
+
+    Skip-and-continue is right here: the coach reviews the suggestion before
+    applying anything, and a rework proposing four changes instead of five is
+    still worth reading.
+    """
+    suggestion = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "triggered_by": triggered_by,
+        "benefit_pct": int(tool_input.get("benefit_pct", 0)),
+        "confidence": tool_input.get("confidence", "low"),
+        "rationale": tool_input.get("rationale", ""),
+        "suggested_changes": usable_dicts(
+            tool_input.get("suggested_changes"), "rework", "suggested change"
+        ),
+    }
+
+    # Preserve dismissed_at / snoozed_until from prior suggestion ONLY if the
+    # new benefit_pct is similar or lower (don't carry over dismissals across
+    # bigger changes).
+    prior = prior or {}
+    prior_pct = prior.get("benefit_pct", 0)
+    if prior.get("dismissed_at") and suggestion["benefit_pct"] <= prior_pct + 10:
+        suggestion["dismissed_at"] = prior["dismissed_at"]
+    if prior.get("snoozed_until") and suggestion["benefit_pct"] <= prior_pct + 10:
+        suggestion["snoozed_until"] = prior["snoozed_until"]
+    return suggestion
+
+
 def main() -> int:
     _load_env()
 
@@ -687,25 +728,7 @@ def main() -> int:
         json.dump({"ok": False, "error": "model did not return tool_use block"}, sys.stdout)
         return 1
 
-    suggestion = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "triggered_by": triggered_by,
-        "benefit_pct": int(tool_input.get("benefit_pct", 0)),
-        "confidence": tool_input.get("confidence", "low"),
-        "rationale": tool_input.get("rationale", ""),
-        "suggested_changes": tool_input.get("suggested_changes") or [],
-    }
-
-    # Preserve dismissed_at / snoozed_until from prior suggestion ONLY if the
-    # new benefit_pct is similar or lower (don't carry over dismissals across
-    # bigger changes).
-    prior = client.get("rework_suggestion") or {}
-    prior_pct = prior.get("benefit_pct", 0)
-    if prior.get("dismissed_at") and suggestion["benefit_pct"] <= prior_pct + 10:
-        suggestion["dismissed_at"] = prior["dismissed_at"]
-    if prior.get("snoozed_until") and suggestion["benefit_pct"] <= prior_pct + 10:
-        suggestion["snoozed_until"] = prior["snoozed_until"]
-
+    suggestion = _build_suggestion(tool_input, triggered_by, client.get("rework_suggestion"))
     client["rework_suggestion"] = suggestion
     _save_client(client_id, client)
 

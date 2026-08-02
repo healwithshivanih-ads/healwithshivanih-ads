@@ -37,6 +37,9 @@ from typing import Any
 
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from model_output import usable_dicts  # noqa: E402
 
 
 def _load_dotenv() -> None:
@@ -797,6 +800,42 @@ def _mock_insights() -> dict[str, Any]:
     }
 
 
+def _build_insights(tool_input: dict[str, Any], model_id: str, existing_notes):
+    """Coerce the model's tool output into an IntakeInsights. Raises on a
+    genuine validation failure — the caller turns that into ok:false.
+
+    `IntakeInsightHypothesis(**h)` raises TypeError on a bare string, so before
+    this guard ONE malformed hypothesis also cost the patterns, the red flags
+    and the verify-in-session list. That is expensive out of proportion here:
+    insights auto-fire exactly once, on first submit, and never regenerate on
+    their own (see the auto-fire gate in intake-token-action.py) — so the coach
+    silently gets nothing before the first session unless they happen to notice
+    and hit 🔄 Refresh.
+
+    So the malformed ELEMENT is dropped and the rest of the block survives. A
+    dict with the wrong FIELDS is a different problem and still raises: that is
+    the model misunderstanding the schema, not fumbling one item, and a
+    half-understood insights block should not be written silently.
+    """
+    from fmdb.plan.models import IntakeInsights, IntakeInsightHypothesis
+
+    hypotheses = [
+        IntakeInsightHypothesis(**h)
+        for h in usable_dicts(
+            tool_input.get("top_hypotheses"), "intake-insights", "hypothesis"
+        )
+    ]
+    return IntakeInsights(
+        generated_at=datetime.now(timezone.utc),
+        model=model_id,
+        patterns=list(tool_input.get("patterns") or []),
+        red_flags=list(tool_input.get("red_flags") or []),
+        top_hypotheses=hypotheses,
+        verify_in_session=list(tool_input.get("verify_in_session") or []),
+        coach_notes_for_ai=existing_notes,
+    )
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -813,8 +852,9 @@ def main() -> int:
         return 2
 
     try:
+        # The models themselves are imported by _build_insights; this import
+        # is still the early guard that fmdb.plan is loadable at all.
         from fmdb.plan.storage import plans_root, load_client, write_client
-        from fmdb.plan.models import IntakeInsights, IntakeInsightHypothesis
     except Exception as e:
         json.dump({"ok": False, "error": f"import failed: {e}"}, sys.stdout)
         return 1
@@ -949,20 +989,10 @@ def main() -> int:
 
     tool_input = tool_use.input or {}
 
-    # Coerce into Pydantic to validate, then write back.
+    # Coerce into Pydantic to validate, then write back. Genuine validation
+    # failures still abort loudly here rather than half-writing the record.
     try:
-        hypotheses = [
-            IntakeInsightHypothesis(**h) for h in (tool_input.get("top_hypotheses") or [])
-        ]
-        insights = IntakeInsights(
-            generated_at=datetime.now(timezone.utc),
-            model=model_id,
-            patterns=list(tool_input.get("patterns") or []),
-            red_flags=list(tool_input.get("red_flags") or []),
-            top_hypotheses=hypotheses,
-            verify_in_session=list(tool_input.get("verify_in_session") or []),
-            coach_notes_for_ai=existing_notes,
-        )
+        insights = _build_insights(tool_input, model_id, existing_notes)
     except Exception as e:
         json.dump({"ok": False, "error": f"validation of tool output failed: {e}"}, sys.stdout)
         return 1
