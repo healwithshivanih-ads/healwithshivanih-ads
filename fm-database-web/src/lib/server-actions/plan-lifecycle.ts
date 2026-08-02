@@ -131,7 +131,16 @@ export async function publishPlan(
           `[publish-followups] non-fatal failure for ${slug}: ${(e as Error).message}`,
         );
       }
-      // Welcome email (static, no-API) — once, on FIRST publish only.
+      // Welcome email (static, no-API) — once per CLIENT, on their first plan.
+      //
+      // `version === 1` alone is not "first plan": a successor gets a new slug,
+      // so its version resets to 1 too. Nidhi Jain was re-onboarded on
+      // 2026-08-02 when her phase-3 plan published — a 12-week client sent
+      // "welcome to the app", screenshots and all. Two guards now:
+      //   1. plan.supersedes set  → this continues a prior plan, never a welcome
+      //   2. a "welcome" already in the client's send log → already onboarded
+      // The second is what the audit trail was always meant to be for, and it
+      // also covers pre-supersedes history and manual re-publishes.
       try {
         const dir = path.join(getPlansRoot(), "published");
         const names = await fs.readdir(dir).catch(() => [] as string[]);
@@ -139,9 +148,16 @@ export async function publishPlan(
         if (match) {
           const { default: yaml } = await import("js-yaml");
           const data = (yaml.load(await fs.readFile(path.join(dir, match), "utf-8")) as Record<string, unknown>) ?? {};
-          if (Number(data.version) === 1 && data.client_id) {
-            const { sendWelcomeEmailAction } = await import("./welcome-email");
-            await sendWelcomeEmailAction(String(data.client_id), slug);
+          const clientId = data.client_id ? String(data.client_id) : "";
+          const continuesPriorPlan = Boolean(
+            typeof data.supersedes === "string" && data.supersedes.trim(),
+          );
+          if (Number(data.version) === 1 && clientId && !continuesPriorPlan) {
+            const { hasBeenWelcomed } = await import("./welcome-email");
+            if (!(await hasBeenWelcomed(clientId))) {
+              const { sendWelcomeEmailAction } = await import("./welcome-email");
+              await sendWelcomeEmailAction(clientId, slug);
+            }
           }
         }
       } catch (e) {

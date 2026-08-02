@@ -5012,15 +5012,29 @@ export async function loadClientAppData(
   }
 
   // ---- phases ribbon: standard three arcs over the plan length --------------
+  // A CONTINUING plan (`supersedes` set) must NOT restart at "Foundation" —
+  // that client already did the foundation. Nidhi Jain hit this on day 1 of
+  // her phase 3: "Week 1 — you're in the Foundation phase now. Calming the
+  // system and building a steady daily rhythm", said to someone twelve weeks
+  // in who had already halved her HbA1c. Same three arcs, worded as the
+  // continuation it is. Names are chosen to read naturally in `coachLine`
+  // ("you're in the X phase now").
+  const continuedPlan = Boolean(asStr(plan.supersedes).trim());
   let ribbon: { name: string; weeks: string; note: string }[] = [];
   {
     const tw = Math.max(totalWeeks || 12, 3);
     const a = Math.ceil(tw / 3);
-    ribbon = [
-      { name: "Foundation", weeks: `Weeks 1–${a}`, note: "Calming the system and building a steady daily rhythm." },
-      { name: "Rebalance", weeks: `Weeks ${a + 1}–${a * 2}`, note: "Settling blood sugar and stress hormones." },
-      { name: "Sustain", weeks: `Weeks ${a * 2 + 1}–${tw}`, note: "Anchoring it all as a way of living." },
-    ];
+    ribbon = continuedPlan
+      ? [
+          { name: "Momentum", weeks: `Weeks 1–${a}`, note: "Carrying on from where the last phase left you — nothing starts over." },
+          { name: "Deepening", weeks: `Weeks ${a + 1}–${a * 2}`, note: "Pressing on what moved, holding what has steadied." },
+          { name: "Sustain", weeks: `Weeks ${a * 2 + 1}–${tw}`, note: "Anchoring it all as a way of living." },
+        ]
+      : [
+          { name: "Foundation", weeks: `Weeks 1–${a}`, note: "Calming the system and building a steady daily rhythm." },
+          { name: "Rebalance", weeks: `Weeks ${a + 1}–${a * 2}`, note: "Settling blood sugar and stress hormones." },
+          { name: "Sustain", weeks: `Weeks ${a * 2 + 1}–${tw}`, note: "Anchoring it all as a way of living." },
+        ];
   }
   const ribbonIdx = ribbon.findIndex((r) => {
     const m = r.weeks.match(/(\d+)–(\d+)/);

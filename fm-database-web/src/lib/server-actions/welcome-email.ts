@@ -11,13 +11,28 @@ import fs from "fs/promises";
 import path from "path";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { ensureLetterToken } from "./letter-token";
-import { sendClientEmailAction, recordLetterSendAction } from "@/app/api/email/actions";
+import {
+  sendClientEmailAction,
+  recordLetterSendAction,
+  loadLetterSendLogAction,
+} from "@/app/api/email/actions";
 import {
   buildWelcomeEmailHtml,
   welcomeEmailSubject,
   WELCOME_SHOTS,
   type WelcomeVariant,
 } from "@/lib/welcome-email";
+
+/** Has this client already been onboarded? Reads the send log the welcome
+ *  itself writes. The auto-fire on publish checks this so a returning client
+ *  — new plan slug, version back to 1 — is never welcomed a second time.
+ *  Manual re-sends from the Communicate tab are unaffected: this is only a
+ *  guard on the automatic path. */
+export async function hasBeenWelcomed(clientId: string): Promise<boolean> {
+  if (!clientId) return false;
+  const log = await loadLetterSendLogAction(clientId);
+  return log.some((e) => (e.letter_types ?? []).includes("welcome"));
+}
 
 export async function sendWelcomeEmailAction(
   clientId: string,

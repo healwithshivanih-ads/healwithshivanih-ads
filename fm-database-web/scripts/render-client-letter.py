@@ -4741,6 +4741,51 @@ maintenance. Calorie discipline matters either way.
 
 # Generic-tip banlist — same wording across all 4 builders so behaviour is
 # consistent. Insert near the writing rules in each prompt.
+def _continuation_block(plan: dict) -> str:
+    """Tell the letter AI when the client is CONTINUING, not starting.
+
+    Without this every letter type except `meal_plan_phase` writes as though
+    the client had never had a plan before — first-time framing, basics
+    re-explained, "your journey begins". A client on phase 2 or 3 has already
+    done twelve weeks and reads that as the coach forgetting who she is.
+
+    Continuation is detected the same two ways `_plan_changes_block` does:
+    `plan.supersedes`, else the `<stem>-plan-N-` slug-pattern fallback for
+    plans authored before that field was wired.
+
+    Returns "" for a genuinely first plan, so first-time letters are unchanged.
+    """
+    supersedes = (plan.get("supersedes") or "").strip()
+    prior: dict | None = _load_plan(supersedes) if supersedes else None
+    if not isinstance(prior, dict):
+        prior = _find_predecessor_by_slug_pattern(plan)
+    if not isinstance(prior, dict):
+        return ""
+
+    # Phase number from the slug when it carries one (…-plan-3-…), else "next".
+    import re as _re
+    m = _re.match(r"^(.+?)-plan-(\d+)-(.+)$", str(plan.get("slug") or ""))
+    phase_label = f"phase {m.group(2)}" if m else "the next phase"
+
+    prior_weeks = prior.get("plan_period_weeks")
+    weeks_done = f"{prior_weeks}-week " if isinstance(prior_weeks, int) and prior_weeks else ""
+
+    return f"""
+⟶ THIS CLIENT IS CONTINUING — THIS IS {phase_label.upper()}, NOT THEIR FIRST PLAN.
+She has just completed a {weeks_done}protocol with the same coach and chose to carry on.
+HARD RULES for the whole letter:
+- Do NOT welcome her, congratulate her on starting, or introduce the coach / the
+  approach / the app. She has been doing this for months.
+- Do NOT re-explain fundamentals she has already lived (food sequencing, why
+  post-meal walks matter, what the supplements are for) unless something CHANGED.
+- Open by acknowledging the phase behind her and what it moved, then say what
+  this phase does differently. Anything carried over is "continuing", not "starting".
+- "Day 1" language means day 1 of THIS phase — never day 1 of her journey.
+- Where a supplement or practice is unchanged, say so plainly rather than
+  presenting it as new advice.
+"""
+
+
 def _start_when_block(plan: dict, scope: str) -> str:
     """Frame the start-of-protocol timing for the client.
 
@@ -5215,6 +5260,7 @@ MOVEMENT & WELLNESS:
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "meal")
+    continuation = _continuation_block(plan)
     # Between-session client/coach voice — pulled live from the last 14
     # days of session files. When the client has been WhatsApping the
     # coach about adherence problems, food triggers, travel, etc., this
@@ -5232,6 +5278,7 @@ The coach ({coach_name}) has prepared a structured plan. Turn the nutrition data
 {cycle}
 {attached_protocol}
 {start_when}
+{continuation}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
 {dosha_food_rules}
@@ -5363,6 +5410,7 @@ def _build_prompt_supplement_plan(plan: dict, client: dict, coach_notes: str) ->
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "supplement")
+    continuation = _continuation_block(plan)
     # Pull recent check-ins / coach observations / inbound client voice so
     # supplement letters reflect the latest clinical state (dose drops,
     # tolerance issues, travel windows). See _recent_client_voice_block
@@ -5376,6 +5424,7 @@ def _build_prompt_supplement_plan(plan: dict, client: dict, coach_notes: str) ->
 {attached_protocol}
 {recent_voice}
 {start_when}
+{continuation}
 {_BANNED_GENERIC_RULE}
 
 
@@ -5475,6 +5524,7 @@ def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) ->
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "both")
+    continuation = _continuation_block(plan)
     # Pull recent check-ins / coach notes / inbound client voice so the
     # lifestyle guide reflects the latest clinical state.
     recent_voice = _recent_client_voice_block(client.get("client_id") or "")
@@ -5489,6 +5539,7 @@ The coach ({coach_name}) has prepared the structured data below.
 {attached_protocol}
 {recent_voice}
 {start_when}
+{continuation}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -6769,6 +6820,7 @@ MOVEMENT & WELLNESS:
     # (or honest continuity language when standing / none).
     healing_arc = _consolidated_healing_arc_block(plan, plan_weeks)
     start_when = _start_when_block(plan, "both")
+    continuation = _continuation_block(plan)
     # Between-session voice (last 14 days of WhatsApp inbound + coach
     # quick notes). Lets a consolidated regenerate pick up "low veg
     # intake, constipation" without needing a full reassessment first.
@@ -6943,6 +6995,7 @@ Your job is to turn the coach's structured data into a beautiful, easy-to-read d
 {cycle}
 {attached_protocol}
 {start_when}
+{continuation}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
 {dosha_food_rules}
