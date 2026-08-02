@@ -44,6 +44,11 @@
   transition: border-color var(--fm-dur-1) var(--fm-ease-out);
 }
 .m-app a.m-card { display: block; }
+/* Session text carries raw URLs from sent messages
+   (https://intake.theochretree.com/intake/<32-char token>). With no break
+   opportunity one of those made the whole app 515px wide inside a 375px
+   viewport — the entire shell scrolled sideways. Measured, not guessed. */
+.m-app .m-card { overflow-wrap: anywhere; }
 .m-app .m-card--link:active { border-color: var(--fm-primary); }
 
 /* ---------- Section label — mirrors .fm-panel-title ---------- */
