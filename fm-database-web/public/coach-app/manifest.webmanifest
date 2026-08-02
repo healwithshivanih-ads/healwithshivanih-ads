@@ -1,0 +1,14 @@
+{
+  "name": "Ochre Coach",
+  "short_name": "Coach",
+  "description": "Client list, contacts and notes.",
+  "start_url": "/m/today",
+  "scope": "/m",
+  "display": "standalone",
+  "background_color": "#F7F4EF",
+  "theme_color": "#2B2D42",
+  "icons": [
+    { "src": "/coach-app/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/coach-app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

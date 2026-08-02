@@ -8,13 +8,18 @@
  *   (b) the policy survives a future middleware→proxy migration unchanged
  *       — only the adapter that calls it would move.
  *
- * THREE OPERATING MODES — selected by env vars (see decideGate):
+ * FOUR OPERATING MODES — selected by env vars (see decideGate):
  *   1. INTAKE-ONLY (Fly): FLY_INTAKE_ONLY=1 → every non-public path 404s.
  *   2. COACH AUTH:        COACH_AUTH_PASSWORD set → Basic auth wall.
  *   3. LOCAL DEV:         neither set → no-op (everything reachable).
+ *   4. COACH MOBILE:      /m configured → /m only, signed session
+ *                         cookie instead of Basic auth. Unset → /m is just
+ *                         another coach route and 404s on Fly (fails closed).
  *
- * Uses the Web-standard global atob() (available in both the Edge runtime
- * and Node), so no Buffer / Node-only APIs leak in.
+ * Uses the Web-standard globals atob() and URL (available in both the Edge
+ * runtime and Node), so no Buffer / Node-only APIs leak in. Cookie signing
+ * needs node:crypto and therefore lives in coach-session.ts, called by the
+ * adapter — decideGate takes the verified result as a boolean.
  */
 
 // Routes that must remain public regardless of mode. NOTE: "public" here
@@ -96,6 +101,10 @@ export const PUBLIC_PATH_PREFIXES = [
   "/api/invoice/",
   // Static PWA assets (manifest + home-screen icons). No data.
   "/ochre-app/",
+  // Same, for the COACH app (/m). Manifest + icons only — iOS fetches the
+  // manifest without credentials, so it must resolve before the session gate.
+  // Contains no client data; the app itself stays behind the cookie gate.
+  "/coach-app/",
   // Recipe photos for the client app's recipe cards. Generic food images.
   "/recipe-images/",
   // Public client handouts — static branded 1-page guides. No client data.
@@ -116,11 +125,91 @@ export const PUBLIC_PATH_PREFIXES = [
   // (x-handover-signature + HANDOVER_SECRET). /api/handover/test uses
   // x-cron-secret (coach-only smoke test).
   "/api/handover/",
+  // Coach-app AI bridge: the Fly copy of /m asks the MAC to answer a client
+  // question, because the answer needs the full record that deliberately does
+  // not leave the Mac. Same posture as /api/cron/ — public prefix so it is
+  // reachable, mandatory `x-coach-bridge` secret enforced at the route, and
+  // 404 while COACH_BRIDGE_SECRET is unset.
+  "/api/m-bridge/",
   // Cal.com booking webhook — HMAC-verified via CAL_COM_SIGNING_SECRET.
   "/api/cal-com-webhook",
   // Zoom Cloud Recording webhook — HMAC-verified via ZOOM_WEBHOOK_SECRET_TOKEN.
   "/api/zoom-webhook",
 ];
+
+/**
+ * The coach mobile app ("/m") — a phone-shaped surface over the coach's own
+ * view of client records.
+ *
+ * DELIBERATELY NOT in PUBLIC_PATH_PREFIXES. "Public" in that list means "no
+ * auth at all on the Fly host" — that is how /intake/<token> works, and it is
+ * correct there because the token IS the credential. /m has no such token: it
+ * lists every client. So it gets its OWN gate (a signed session cookie) and
+ * FAILS CLOSED — with COACH_MOBILE_PASSWORD unset it behaves exactly like any
+ * other coach route (404 on Fly). Enabling the surface is an explicit act.
+ */
+export const COACH_MOBILE_PREFIX = "/m";
+export const COACH_MOBILE_API_PREFIX = "/api/m/";
+
+/**
+ * Exact-segment match, NOT a bare startsWith("/m").
+ *
+ * `"/mindmap".startsWith("/m")` is true — so a bare prefix test would pull
+ * /mindmap and /messages (both real coach routes) into the mobile gate and
+ * turn their Fly 404 into a login redirect. Anchor on the segment boundary.
+ */
+export function isMobilePath(path: string): boolean {
+  if (path === COACH_MOBILE_PREFIX) return true;
+  if (path.startsWith(COACH_MOBILE_PREFIX + "/")) return true;
+  return path.startsWith(COACH_MOBILE_API_PREFIX);
+}
+
+/**
+ * The only paths inside /m reachable WITHOUT a session — otherwise you could
+ * never log in. Kept to an exact list (not a prefix) so it cannot widen by
+ * accident. Logout is here too: clearing a cookie you don't have is harmless.
+ */
+const MOBILE_AUTH_PATHS = ["/m/login", "/api/m/login", "/api/m/logout"];
+
+export function isMobileAuthPath(path: string): boolean {
+  return MOBILE_AUTH_PATHS.includes(path);
+}
+
+/**
+ * Clamp a post-login `?next=` destination to somewhere inside /m.
+ *
+ * NORMALISE FIRST, THEN VALIDATE. A plain `raw.startsWith("/m/")` test looks
+ * right and is wrong: "/m/../clients-v2" passes it, and the browser (or
+ * `new URL()`) then resolves the ".." away and navigates to /clients-v2. Same
+ * bug shape as validating a file path before resolving it.
+ *
+ * Parsing against a sentinel origin collapses "..", and any absolute or
+ * protocol-relative input ("https://evil.com", "//evil.com") changes the
+ * hostname — so one check catches traversal and off-site redirects together.
+ * Anything that isn't plainly inside /m falls back to /m.
+ */
+export function safeMobileNext(raw: string | null | undefined): string {
+  if (!raw) return COACH_MOBILE_PREFIX;
+
+  const SENTINEL = "internal.invalid";
+  let url: URL;
+  try {
+    url = new URL(raw, `http://${SENTINEL}`);
+  } catch {
+    return COACH_MOBILE_PREFIX;
+  }
+
+  // Absolute or protocol-relative input escaped the sentinel origin.
+  if (url.hostname !== SENTINEL) return COACH_MOBILE_PREFIX;
+
+  const dest = url.pathname + url.search;
+  if (url.pathname !== COACH_MOBILE_PREFIX && !url.pathname.startsWith(COACH_MOBILE_PREFIX + "/")) {
+    return COACH_MOBILE_PREFIX;
+  }
+  // Never bounce back to the login page itself — that's a redirect loop.
+  if (url.pathname === "/m/login") return COACH_MOBILE_PREFIX;
+  return dest;
+}
 
 export function isPublicPath(path: string): boolean {
   if (path === "/favicon.ico" || path === "/robots.txt") return true;
@@ -158,31 +247,52 @@ export type GateEnv = {
   flyIntakeOnly?: string;
   coachAuthPassword?: string;
   coachAuthUsername?: string;
+  /** True when /m is configured on this host (an auth record exists, or
+   *  COACH_MOBILE_PASSWORD is set to bootstrap one). False → /m is just
+   *  another coach route and 404s on Fly. The adapter computes this; the
+   *  credential itself never reaches the policy module. */
+  coachMobileEnabled?: boolean;
 };
 
 /** What the adapter should do with a request. */
-export type GateDecision = "next" | "notfound" | "unauthorised";
+export type GateDecision = "next" | "notfound" | "unauthorised" | "login";
 
 /**
- * The whole boundary, as a pure function. Mirrors src/middleware.ts exactly:
- *   - FLY_INTAKE_ONLY: public → next, everything else → notfound (404)
- *   - public path: next (skips the auth wall)
+ * The whole boundary, as a pure function. Mirrors src/proxy.ts exactly:
+ *   - public path: next (skips every wall, in every mode)
+ *   - /m + COACH_MOBILE_PASSWORD set: valid session → next, else login
+ *   - FLY_INTAKE_ONLY: everything else → notfound (404)
  *   - no COACH_AUTH_PASSWORD: next (local dev no-op)
  *   - COACH_AUTH_PASSWORD set: valid Basic auth → next, else unauthorised (401)
+ *
+ * `mobileSessionValid` is computed by the adapter, not here: verifying the
+ * signed cookie needs node:crypto (see coach-session.ts) and this module is
+ * deliberately runtime-agnostic. Defaults to false so a caller that forgets
+ * to pass it fails CLOSED.
  */
 export function decideGate(
   path: string,
   env: GateEnv,
   authHeader: string | null,
+  mobileSessionValid: boolean = false,
 ): GateDecision {
-  // Mode 1: INTAKE-ONLY (Fly production). Only public paths exist; any
-  // coach route returns 404 — it doesn't appear to be there at all.
-  if (env.flyIntakeOnly === "1") {
-    return isPublicPath(path) ? "next" : "notfound";
+  // Public paths always skip every wall. Checked first in ALL modes so the
+  // token-gated client surface behaves identically on Fly and on the Mac.
+  // (Behaviour-identical to the old Fly-first ordering: a public path
+  // returned "next" under Fly too.)
+  if (isPublicPath(path)) return "next";
+
+  // Mode 4: COACH MOBILE (/m). Only exists when COACH_MOBILE_PASSWORD is set;
+  // otherwise fall through and /m is treated as any other coach route — which
+  // means 404 on Fly. That fall-through is the fail-closed property.
+  if (isMobilePath(path) && env.coachMobileEnabled) {
+    if (isMobileAuthPath(path)) return "next";
+    return mobileSessionValid ? "next" : "login";
   }
 
-  // Public paths always skip auth.
-  if (isPublicPath(path)) return "next";
+  // Mode 1: INTAKE-ONLY (Fly production). Any coach route returns 404 — it
+  // doesn't appear to be there at all.
+  if (env.flyIntakeOnly === "1") return "notfound";
 
   // Mode 3: LOCAL DEV — no password set, no-op.
   const password = env.coachAuthPassword;

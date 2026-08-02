@@ -50,5 +50,24 @@ export async function POST(req: NextRequest) {
       appStaging = { ok: false };
     }
   }
-  return NextResponse.json({ ...res, app_staging: appStaging });
+  // Coach mobile projection (see coach-staging-action.py): rebuilds the read
+  // model /m serves, so the coach app keeps working while the Mac is asleep.
+  // Separate script and separate output tree from app-staging above — that one
+  // strips coach-private material, this one is made of it. No-op when
+  // FMDB_COACH_DIR is unset. Best-effort, same as app-staging.
+  let coachStaging: unknown = { skipped: true };
+  if (process.env.FMDB_COACH_DIR) {
+    try {
+      coachStaging = await runShim("coach-staging-action.py", { action: "refresh" });
+    } catch (err) {
+      console.error("[intake-reconcile] coach-staging refresh failed:", err);
+      coachStaging = { ok: false };
+    }
+  }
+
+  return NextResponse.json({
+    ...res,
+    app_staging: appStaging,
+    coach_staging: coachStaging,
+  });
 }
