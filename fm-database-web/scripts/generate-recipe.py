@@ -197,11 +197,33 @@ def main() -> None:
 
     title = str(rec["name"]).strip()
     slug = _unique_slug(_slugify(title))
-    ingredients = [
-        {"item": str(i.get("item", "")).strip(), "qty": str(i.get("qty", "")).strip(), "unit": str(i.get("unit", "")).strip()}
-        for i in (rec.get("ingredients") or [])
-        if i.get("item")
-    ]
+    # Same defensive posture as _merge_recipes in generate-week-recipes.py: the
+    # model sometimes emits a plain string where an ingredient object belongs.
+    # A bare string IS the item name, so coerce it rather than dropping it —
+    # silently writing an ingredient-less recipe to the catalogue is worse than
+    # either crashing or keeping it.
+    _raw_ings = rec.get("ingredients") or []
+    ingredients = []
+    for i in _raw_ings:
+        if isinstance(i, str):
+            i = {"item": i}
+        elif not isinstance(i, dict):
+            print(
+                f"[recipe] skipping malformed ingredient: {type(i).__name__} {str(i)[:80]}",
+                file=sys.stderr,
+            )
+            continue
+        item = str(i.get("item", "")).strip()
+        if not item:
+            continue
+        ingredients.append({
+            "item": item,
+            "qty": str(i.get("qty", "")).strip(),
+            "unit": str(i.get("unit", "")).strip(),
+        })
+    if _raw_ings and not ingredients:
+        print(json.dumps({"ok": False, "error": "model returned no usable ingredients"}))
+        return
     # nobody reviews this write, so clamp a passive soak out of prep rather
     # than shipping a "500 min" chip to the client's card
     prep_min, prep_warning = normalise_prep_min(rec.get("prep_time_min"))

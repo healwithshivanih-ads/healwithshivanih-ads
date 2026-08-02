@@ -469,11 +469,39 @@ def _recipes_for(client, payload, dishes, system=SYSTEM, build_user=_build_user)
 
 
 def _merge_recipes(all_recipes, seen, new_recipes):
-    """Dedupe-merge by normalised title. Returns count actually added."""
+    """Dedupe-merge by normalised title. Returns count actually added.
+
+    Defensive, same posture as fmdb.ingest.staging: the model occasionally emits
+    a bare string or null where a recipe object belongs. One bad element must
+    never abort the batch — cl-006 lost its whole recipe pack on 2026-08-02 to a
+    single non-dict here. Record it on stderr (so the cron log shows what the
+    model actually produced) and skip it; everything well-formed still lands.
+    """
     added = 0
+    if not isinstance(new_recipes, list):
+        print(
+            f"[recipes] model returned {type(new_recipes).__name__} for 'recipes' "
+            f"(expected list) — skipped: {str(new_recipes)[:120]}",
+            file=sys.stderr,
+        )
+        return 0
     for r in new_recipes:
+        if not isinstance(r, dict):
+            print(
+                f"[recipes] skipping malformed entry: model emitted "
+                f"{type(r).__name__} (expected object) — {str(r)[:120]}",
+                file=sys.stderr,
+            )
+            continue
         key = (r.get("title") or "").strip().lower()
-        if key and key not in seen:
+        if not key:
+            print(
+                f"[recipes] skipping entry with no title — keys: "
+                f"{sorted(r)[:8]}",
+                file=sys.stderr,
+            )
+            continue
+        if key not in seen:
             seen.add(key)
             all_recipes.append(r)
             added += 1

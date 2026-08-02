@@ -219,9 +219,21 @@ def main() -> int:
                 print(f"batch failed: {e}", file=sys.stderr)
                 continue
 
+        # The model occasionally emits a bare string or null where a recipe
+        # object belongs. Drop those once, here, so neither the by_name build
+        # nor the pop(0) fallback below can crash the batch — the affected
+        # dishes fall through to `failed` and get reported like any other miss.
+        _malformed = [d for d in drafts if not isinstance(d, dict)]
+        if _malformed:
+            print(
+                f"[batch-draft] dropped {len(_malformed)} malformed draft(s): "
+                + "; ".join(f"{type(d).__name__} {str(d)[:80]}" for d in _malformed),
+                file=sys.stderr,
+            )
+            drafts = [d for d in drafts if isinstance(d, dict)]
+
         for d in drafts:
-            if isinstance(d, dict):
-                _normalize_lists(d)
+            _normalize_lists(d)
         by_name = { (d.get("name") or "").strip().lower(): d for d in drafts }
         for spec in batch:
             draft = by_name.get(spec["name"].strip().lower()) or (drafts.pop(0) if drafts else None)
