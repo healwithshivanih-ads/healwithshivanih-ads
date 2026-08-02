@@ -57,11 +57,11 @@ attribution:
   page: 52
 image:
   file: images/web/everyday-ghee.jpg
-  credit: web reference (coach-selected)
-  source_url: https://images.101cookbooks.com/how_to_make_ghee.jpg?auto=compress&auto=format&w=1200
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://everyday-ghee
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text,
+    or watermark
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: everyday ghee

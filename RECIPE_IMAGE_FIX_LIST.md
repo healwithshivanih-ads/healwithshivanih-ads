@@ -1,52 +1,58 @@
-# Recipe images to regenerate
+# Recipe images — audit and status
 
-Save each new image (landscape, ~800px wide, appetising, no text/watermark/collage,
-finished plated food) to:
+Audit run 2026-07-29 over the recipe library's images, looking for what a CLIENT
+sees on a meal card: a photo that is blank, or shows something other than the dish.
 
-    fm-database-web/public/recipe-images/images/web/<slug>.jpg
+## ✅ Done — 17 regenerated 2026-08-02
 
-Overwrite the existing file at that path (same filename). No YAML change needed —
-each recipe already points at its `<slug>.jpg`.
+All 17 were regenerated with ChatGPT image generation, visually reviewed one by
+one (right dish, no text/watermark/collage, no hands or people), centre-cropped to
+the library's 3:2 landscape and saved at 1200×800 over the existing
+`images/web/<slug>.jpg`. Each recipe's `image` block was moved off
+`web_reference_uncleared` — the old `credit`/`source_url` pointed at Wikimedia and
+Pinterest pages that are no longer where the picture came from, so leaving them
+would have misattributed a generated image to a photographer.
 
-Style: real-looking Indian home-food photography, natural light, single hero dish,
-no hands/people, no text overlays.
+**Was broken / blank (3):** `everyday-digestive-lassi`, `everyday-ghee`,
+`ginger-lime-lassi`
 
----
+**Was the wrong subject (5)** — each showed a raw ingredient or a graphic instead
+of the dish: `amla-water` (amla on a tree), `almond-drink-ayurvedic` (raw almonds),
+`rajma` (dry uncooked beans), `lemon-water` (lemons on stones), `lemon-ginger-soup`
+(a text-overlay graphic)
 
-## 🔴 Broken / blank (3) — must fix
+**Was off-subject or the wrong colour (9):** `cherry-millet-cakes`,
+`chicken-and-vegetable-poha`, `asparagus-white-bean-soup`, `cauliflower-leek-soup`,
+`sol-kadhi-with-steamed-rice` (was white, should be pink), `walnut-coriander-chutney`
+(was white coconut chutney, should be green), `white-bean-artichoke-croquettes`
+(was a burger), `mushroom-methi-sabzi`, `snake-gourd-sabzi`
 
-| slug | dish | depict |
-|---|---|---|
-| `everyday-digestive-lassi` | Everyday Digestive Lassi | thin churned yogurt drink, pale yellow (turmeric-tinted), in a glass — buttermilk/lassi look |
-| `everyday-ghee` | Everyday Ghee | golden clarified ghee in a small glass jar with a spoon |
-| `ginger-lime-lassi` | Ginger Lime Lassi | pale thin yogurt lassi in a glass with a lime wedge |
+## ⬜ Still open — cosmetic only (5)
 
-## 🟠 Clearly wrong subject (5)
+These show the **right dish** but carry a small watermark. Left alone deliberately;
+regenerate only if you want them perfect.
 
-| slug | dish | currently shows → should show |
-|---|---|---|
-| `amla-water` | Amla Water | raw amla on a tree → amla drink (cloudy pale-green water) in a glass |
-| `almond-drink-ayurvedic` | Almond Drink | raw almonds + cinnamon sticks → creamy almond milk drink in a glass |
-| `rajma` | Rajma | dry raw kidney beans → cooked home-style rajma curry in a bowl |
-| `lemon-water` | Lemon Water | raw lemons on stones → warm lemon water in a glass |
-| `lemon-ginger-soup` | Lemon Ginger Soup | text-overlay graphic → clear light lemon-ginger vegetable soup in a bowl |
-
-## 🟡 Borderline — off-subject or wrong colour (9)
-
-| slug | dish | issue → should show |
-|---|---|---|
-| `cherry-millet-cakes` | Cherry Millet Cakes | bread + peach → small baked millet-cherry snack cakes |
-| `chicken-and-vegetable-poha` | Chicken & Vegetable Poha | dark fritters → light flattened-rice poha with chicken + veg |
-| `asparagus-white-bean-soup` | Asparagus & White Bean Soup | brown soup → green blended asparagus-white-bean soup |
-| `cauliflower-leek-soup` | Cauliflower Leek Soup | bright green → pale/cream cauliflower-leek soup |
-| `sol-kadhi-with-steamed-rice` | Sol Kadhi with Steamed Rice | white → PINK kokum-coconut kadhi + a side of steamed rice |
-| `walnut-coriander-chutney` | Walnut Coriander Chutney | plain white coconut chutney → green coriander-walnut chutney |
-| `white-bean-artichoke-croquettes` | White Bean & Artichoke Croquettes | a burger → baked bean-artichoke patties/croquettes |
-| `mushroom-methi-sabzi` | Mushroom Methi Sabzi | mushroom gravy (dup) → dry mushroom + fenugreek-greens sabzi |
-| `snake-gourd-sabzi` | Snake Gourd Sabzi | looks like dal → dry South-Indian snake-gourd sabzi with tempering |
+`capsicum-sabzi` · `cardamom-limeade` · `ragi-idli` · `green-moong-sabzi` ·
+`vegetable-millet-pulao`
 
 ---
 
-### Cosmetic only (leave unless you want them perfect)
-Small watermarks but correct dish: `capsicum-sabzi`, `cardamom-limeade`, `ragi-idli`,
-`green-moong-sabzi`, `vegetable-millet-pulao`.
+### If you regenerate more
+
+Save to `fm-database-web/public/recipe-images/images/web/<slug>.jpg`, overwriting in
+place — no YAML change is needed for the path, each recipe already points at its own
+`<slug>.jpg`. Landscape 3:2, ~1200×800. Then set the recipe's `image` block to the
+generated-image convention the library already uses on 157 recipes:
+
+```yaml
+image:
+  file: images/web/<slug>.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://<slug>
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text,
+    or watermark
+```
+
+Style that worked: realistic food photography, natural daylight, single hero dish,
+plain ceramic or steel and a neutral surface, no text, no hands, no collage.

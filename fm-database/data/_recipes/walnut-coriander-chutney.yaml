@@ -115,11 +115,11 @@ updated_at: '2026-07-07'
 updated_by: Shivani (recipe inbox)
 image:
   file: images/web/walnut-coriander-chutney.jpg
-  credit: web reference (coach-selected)
-  source_url: https://www.indianveggiedelight.com/wp-content/uploads/2018/10/walnut_chutney-final.jpg
-  rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo before any external/commercial
-    use
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://walnut-coriander-chutney
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text,
+    or watermark
 nutrient_lines:
 - i: 0
   key: walnuts
