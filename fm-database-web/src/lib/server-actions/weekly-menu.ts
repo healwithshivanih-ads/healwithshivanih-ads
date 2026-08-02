@@ -17,6 +17,7 @@ import { getCataloguePath, getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
 import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
+import { weeksAfterApproval } from "@/lib/fmdb/menu-weeks";
 import { generateGroceryListAction } from "./grocery";
 
 export interface PendingWeekMenu {
@@ -355,9 +356,22 @@ export async function approveWeekMenuAction(
     const weeks = (menu.weeks ?? []).filter((w) => Number(w.week) !== pending.week);
     weeks.push({ week: pending.week, day_dates: null, days: pending.days } as never);
     weeks.sort((a, b) => Number(a.week) - Number(b.week));
-    // keep the trailing TWO weeks — current + next is all the app shows,
-    // and it keeps the grocery "next week unlocks early" window working
-    menu.weeks = weeks.slice(-2);
+    // Keep the approved week and the one before it — "current + next" is all
+    // the app shows, and it keeps the grocery "next week unlocks early"
+    // window working.
+    //
+    // This was `slice(-2)`, the two numerically HIGHEST weeks, which assumes
+    // week numbers only ever climb within one plan. A continuing client breaks
+    // that: her phase-3 plan carries the predecessor's weeks 11 and 12 (so the
+    // app is never menu-less mid-transition), so approving week 1 of the new
+    // phase sorted to [1, 11, 12] and sliced the newly approved week straight
+    // back off. The coach approved a menu on 2026-08-02, the amendment logged
+    // "approved and live", and the menu was silently discarded.
+    //
+    // Anchoring on the approved week instead also self-cleans: the moment a new
+    // phase's week 1 is approved, the previous phase's carried weeks drop out.
+    // Rule lives in menu-weeks.ts so it can be tested without a plan file.
+    menu.weeks = weeksAfterApproval(weeks, pending.week);
     menu.is_sample = false;
     doc.app_menu = menu;
     doc.app_menu_pending = null;
