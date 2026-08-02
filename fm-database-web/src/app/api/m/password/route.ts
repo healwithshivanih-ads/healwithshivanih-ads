@@ -19,6 +19,7 @@
  * session she just used.
  */
 import { NextRequest, NextResponse } from "next/server";
+import { relativeRedirect } from "@/lib/fmdb/http-redirect";
 import {
   COACH_MOBILE_COOKIE,
   COACH_MOBILE_TTL_MS,
@@ -47,19 +48,16 @@ export async function POST(req: NextRequest) {
   const confirm = String(form.get("confirm_password") ?? "");
 
   if (next !== confirm) {
-    return NextResponse.redirect(
-      new URL(`/m/settings?error=${MESSAGES.mismatch}`, req.url),
-      303,
-    );
+    return relativeRedirect(`/m/settings?error=${MESSAGES.mismatch}`, 303);
   }
 
   const result = changePassword(current, next);
   if (!result.ok) {
     const code = MESSAGES[result.error] ?? "unknown";
-    return NextResponse.redirect(new URL(`/m/settings?error=${code}`, req.url), 303);
+    return relativeRedirect(`/m/settings?error=${code}`, 303);
   }
 
-  const res = NextResponse.redirect(new URL("/m/settings?changed=1", req.url), 303);
+  const res = relativeRedirect("/m/settings?changed=1", 303);
   // Re-issue against the ROTATED secret — the cookie this request arrived with
   // is now invalid, and without this the coach would be logged out by her own
   // password change.

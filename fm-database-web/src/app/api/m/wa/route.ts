@@ -13,6 +13,7 @@
  * Behind the session gate (any /api/m/* that isn't login/logout).
  */
 import { NextRequest, NextResponse } from "next/server";
+import { relativeRedirect } from "@/lib/fmdb/http-redirect";
 import { sendWhatsAppTextAction } from "@/app/api/whatsapp/actions";
 import { loadAuth } from "@/lib/fmdb/coach-auth";
 
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
   const text = String(form.get("text") ?? "").trim();
 
   const back = (qs: string) =>
-    NextResponse.redirect(new URL(`/m/clients/${encodeURIComponent(clientId)}?${qs}`, req.url), 303);
+    relativeRedirect(`/m/clients/${encodeURIComponent(clientId)}?${qs}`, 303);
 
   if (!/^[a-z0-9][a-z0-9-]{0,63}$/i.test(clientId)) {
     return NextResponse.json({ ok: false, error: "bad client_id" }, { status: 400 });

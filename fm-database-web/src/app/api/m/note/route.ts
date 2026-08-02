@@ -14,6 +14,7 @@
  * is only deleted after the session YAML exists on disk.
  */
 import { NextRequest, NextResponse } from "next/server";
+import { relativeRedirect } from "@/lib/fmdb/http-redirect";
 import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
@@ -65,7 +66,7 @@ export async function POST(req: NextRequest) {
 
   const back = form.get("next");
   if (typeof back === "string" && back.startsWith("/m/") && !back.startsWith("//")) {
-    return NextResponse.redirect(new URL(`${back}?noted=1`, req.url), 303);
+    return relativeRedirect(`${back}?noted=1`, 303);
   }
   return NextResponse.json({ ok: true, queued: true });
 }
