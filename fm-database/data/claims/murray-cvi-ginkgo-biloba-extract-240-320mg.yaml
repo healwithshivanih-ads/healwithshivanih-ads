@@ -44,6 +44,11 @@ linked_to_mechanisms:
 - coagulation-anticoagulation-imbalance
 out_of_scope_notes: |
   Educating a client about what ginkgo is, what the evidence does and does not show, and that it interacts with blood thinners is in scope. Recommending it, choosing a product, setting a dose, or advising on it alongside anticoagulant therapy is prescriber scope - refer every time, without exception.
+linked_to_symptoms:
+- poor-concentration
+- low-mood
+- headache
+- dizziness-motion-sickness
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 35 — Cerebral Vascular Insufficiency, pg 648

@@ -31,6 +31,8 @@ linked_to_mechanisms:
 - microclot-formation
 out_of_scope_notes: |
   Recognising and escalating red flags is squarely inside coaching scope - and is arguably the most important thing a coach does here. Diagnosing TIA vs stroke vs mimic, imaging, and starting antiplatelet or anticoagulant therapy are clinician scope only.
+linked_to_symptoms:
+- blurred-vision
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 35 — Cerebral Vascular Insufficiency, pg 646

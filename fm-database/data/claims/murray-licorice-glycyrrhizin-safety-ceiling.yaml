@@ -66,6 +66,9 @@ out_of_scope_notes: >
   potassium monitoring, and managing hypertension. A coach must never recommend, dose or
   discontinue a herbal product for someone on antiretroviral therapy, and must never let a herbal
   conversation become a reason for the client to question their medication.
+linked_to_symptoms:
+- elevated-blood-pressure
+- edema
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 18 — Acquired Immunodeficiency Syndrome (AIDS) and HIV Infection, pg 416

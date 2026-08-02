@@ -51,6 +51,8 @@ out_of_scope_notes: >
   L-glutamine is a supplement recommendation and should be routed through the
   client's doctor, particularly alongside prescribed therapy. Never position any of
   this as a replacement for H. pylori eradication.
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 83 — Peptic Ulcer, pg 1379

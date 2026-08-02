@@ -48,6 +48,8 @@ out_of_scope_notes: >
   neuropathy, ordering nerve conduction studies. COACH: explaining what the evidence does and
   does not show, supporting B6- and B2-rich food intake, tracking symptoms in a client log,
   and flagging any new or spreading numbness to the clinician immediately.
+linked_to_symptoms:
+- numbness-tingling
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 32 — Carpal Tunnel Syndrome, pg 623

@@ -47,6 +47,9 @@ out_of_scope_notes: >
   studies. COACH: recognising the pattern, prompting the client to seek assessment, and
   supporting lifestyle work on the modifiable contributors (weight, glycaemic load, movement)
   once a clinician has taken the lead.
+linked_to_symptoms:
+- inflammation
+- joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 32 — Carpal Tunnel Syndrome, pg 621

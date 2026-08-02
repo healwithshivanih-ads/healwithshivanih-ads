@@ -19,6 +19,8 @@ linked_to_supplements: []
 linked_to_mechanisms:
 - insulin-resistance
 out_of_scope_notes: Coaching the shared lifestyle programme (food, movement, sleep, weight, alcohol) is in scope. Diagnosing metabolic syndrome or diabetes, interpreting labs, and every medication decision is clinician scope. A single acutely hot, red, swollen joint may be septic arthritis, not gout — that is a same-day emergency referral, not a coaching conversation. Never assume 'it's just gout'.
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 55 — Gout, pg 986

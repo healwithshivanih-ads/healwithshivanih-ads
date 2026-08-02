@@ -55,6 +55,9 @@ out_of_scope_notes: >-
   understands their own care plan and can ask better questions of their neurologist. Out of scope:
   diagnosis, differential diagnosis, attributing cause, interpreting MRI or CSF findings, and any
   assessment of relapse - all neurology.
+linked_to_symptoms:
+- urinary-urgency
+- blurred-vision
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: "Chapter 78 — Multiple Sclerosis, pg 1278"

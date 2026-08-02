@@ -30,6 +30,8 @@ linked_to_mechanisms:
 - dietary-fiber-modulation
 out_of_scope_notes: >
   Coaching food-first soluble fibre - cooked fruit, kanji, banana, a modest amount of psyllium - is in scope. Dosing a supplement to an infant or a child, or using fibre as the response to a diarrhoea that has not been medically evaluated, is not.
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 46 — Diarrhea, pg 871

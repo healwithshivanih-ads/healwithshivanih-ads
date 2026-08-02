@@ -46,6 +46,8 @@ out_of_scope_notes: >
   involved in the case. CLINICIAN: confirming the diagnosis, ruling out sensory impairment or
   vascular contraindications that make hot/cold immersion unsafe, and directing definitive
   management.
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 32 — Carpal Tunnel Syndrome, pg 623

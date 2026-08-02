@@ -55,6 +55,9 @@ out_of_scope_notes: >
   from meals, spacing calcium-rich or supplement-heavy moments away from iron-rich meals).
   Clinician scope: prescribing iron, choosing the salt or dose, advising on antacid or
   acid-blocker use, and deciding whether a supplement is needed at all.
+linked_to_symptoms:
+- constipation
+- digestive-discomfort
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 21 — Anemia, pg 471

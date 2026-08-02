@@ -36,6 +36,10 @@ linked_to_mechanisms:
 - mast-cell-degranulation-histamine-release
 out_of_scope_notes: >
   Symptom and food-timing tracking, supporting an elimination and reintroduction protocol a clinician has agreed to, and coaching meal structure and stress regulation are in scope. Naming the cause, ordering or interpreting coeliac serology, stool studies or thyroid labs, and diagnosing IBS are clinician-only.
+linked_to_symptoms:
+- irritable-bowel
+- food-sensitivities
+- numbness-tingling
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 46 — Diarrhea, pg 868

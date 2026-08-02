@@ -127,9 +127,14 @@ def propose_links(cat: Any) -> LinkReport:
             continue
         # Most specific (longest matched term) first, then slug for determinism.
         ranked = sorted(hits.items(), key=lambda kv: (-len(kv[1]), kv[0]))
-        if len(ranked) > MAX_LINKS_PER_CLAIM:
-            report.dropped_over_cap += len(ranked) - MAX_LINKS_PER_CLAIM
-            ranked = ranked[:MAX_LINKS_PER_CLAIM]
+        # Budget against links the claim ALREADY carries, so repeated runs
+        # can't ratchet one claim past the cap a few links at a time.
+        budget = max(0, MAX_LINKS_PER_CLAIM - len(already))
+        if len(ranked) > budget:
+            report.dropped_over_cap += len(ranked) - budget
+            ranked = ranked[:budget]
+        if not ranked:
+            continue
         report.claims_matched += 1
         for slug, term in ranked:
             report.proposals.append(LinkProposal(claim.slug, slug, term))
@@ -159,14 +164,36 @@ def apply_links(data_dir: Path, report: LinkReport) -> tuple[int, list[str]]:
             errors.append(f"{claim_slug}: file not found at {path}")
             continue
         text = path.read_text()
-        if re.search(r"^linked_to_symptoms:", text, re.M):
-            errors.append(f"{claim_slug}: already has linked_to_symptoms — skipped")
+        new_slugs = [p.symptom_slug for p in props]
+
+        existing = re.search(r"^linked_to_symptoms:(.*)$", text, re.M)
+        if existing:
+            # Re-run over a claim that already carries links: MERGE into the
+            # existing block rather than skipping it, otherwise a genuinely
+            # new link discovered on a later run could never land.
+            rest = existing.group(1).strip()
+            lines = text.splitlines(keepends=True)
+            start = text[: existing.start()].count("\n")
+            if rest in ("", "[]"):
+                lines[start] = _render_block(new_slugs)
+            else:
+                end = start + 1
+                while end < len(lines) and lines[end].lstrip().startswith("- "):
+                    end += 1
+                have = {ln.lstrip()[2:].strip() for ln in lines[start + 1:end]}
+                add = [s for s in new_slugs if s not in have]
+                if not add:
+                    continue
+                lines[start:end] = lines[start:end] + [f"- {s}\n" for s in add]
+            path.write_text("".join(lines))
+            written += 1
             continue
+
         anchor = re.search(r"^sources:", text, re.M)
         if not anchor:
             errors.append(f"{claim_slug}: no top-level 'sources:' anchor — skipped")
             continue
-        block = _render_block([p.symptom_slug for p in props])
+        block = _render_block(new_slugs)
         path.write_text(text[: anchor.start()] + block + text[anchor.start():])
         written += 1
     return written, errors

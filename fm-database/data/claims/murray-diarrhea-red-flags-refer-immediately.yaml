@@ -23,6 +23,8 @@ linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: >
   Recognising and escalating red flags is squarely within coach scope and is arguably the coach's single most important contribution here. Determining the cause, ordering or reading stool studies, and prescribing antimicrobials or antimotility drugs are clinician-only.
+linked_to_symptoms:
+- rectal-bleeding
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 46 — Diarrhea, pg 878
