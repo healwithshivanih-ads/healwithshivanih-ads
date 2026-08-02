@@ -1,0 +1,55 @@
+slug: hyperactivity
+display_name: Hyperactivity
+aliases:
+- hyperactive
+- hyperactive behaviour
+- excess motor activity
+- motor restlessness
+- fidgeting
+- fidgety
+- impulsivity
+- impulsiveness
+- hyperkinesis
+category: neurological
+severity: common
+description: Observable excess of motor activity and impulsivity — constant movement,
+  fidgeting, difficulty staying seated, acting before thinking. Most often presenting
+  in children with ADHD or autism spectrum disorder, where it is the symptom cluster
+  most responsive to dietary intervention. Functional substrates commonly implicated
+  are artificial colours/flavours/preservatives and salicylate load against deficient
+  sulfation capacity, gluten and casein exorphin peptides crossing a permeable gut,
+  glycemic volatility, and low omega-3 status. Distinct from `restlessness`, which
+  is the felt inability to settle; hyperactivity is the outward behaviour a parent
+  or teacher reports.
+when_to_refer: Refer to a paediatrician or developmental clinician for formal
+  assessment when hyperactivity impairs schooling, relationships, or safety, or when
+  a parent raises ADHD or autism — diagnosis is out of coaching scope. Coaching
+  supports the dietary and lifestyle layer alongside, never instead of, that
+  assessment.
+linked_to_topics:
+- adhd
+- autism-spectrum-disorder
+- pediatric-neurodevelopmental-nutrition
+linked_to_mechanisms:
+- gluten-casein-opioid-peptides
+- dopaminergic-dysfunction
+- neuroinflammation
+- transsulfuration-pathway
+linked_to_symptoms:
+- restlessness
+- irritability
+- poor-concentration
+notes_for_coach: Created 2026-08-02 as its own entry. "hyperactivity" had been an
+  alias of `anxiety`, which mis-filed every real occurrence — the corpus hits are
+  ADHD/autism hyperactivity, a different thing from anxious arousal. Keep the aliases
+  here disjoint from `restlessness` so alias-aware matching stays unambiguous.
+sources:
+- id: matthews-energy-blueprint-podcast-2026
+  location: Podcast — Feingold diet segment
+  quote: 45 percent of the individuals that did that diet improved in hyperactivity.
+    You'd be hard-pressed to find any out there that improves almost half of the people
+    when they do it.
+version: 1
+status: active
+updated_at: '2026-08-02'
+updated_by: shivani
