@@ -7,6 +7,7 @@
  */
 import Link from "next/link";
 import {
+  clientAppUrl,
   loadCoachIndex,
   coachProjectionReady,
   type CoachIndexRow,
@@ -27,6 +28,7 @@ function Row({ row }: { row: CoachIndexRow }) {
   const wa = waNumber(row.mobile);
   const tel = row.mobile?.replace(/[^\d+]/g, "");
   const seen = ago(row.last_session);
+  const appUrl = clientAppUrl(row.app_token);
 
   return (
     <div className="m-card m-card--link" style={{ marginBottom: 8 }}>
@@ -84,6 +86,17 @@ function Row({ row }: { row: CoachIndexRow }) {
         {tel ? (
           <a className="m-iconbtn" href={`tel:${tel}`} aria-label={`Call ${row.name}`}>
             <Icon name="phone" />
+          </a>
+        ) : null}
+        {appUrl ? (
+          <a
+            className="m-iconbtn"
+            href={appUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${row.name}'s app`}
+          >
+            <Icon name="phoneApp" />
           </a>
         ) : null}
       </div>

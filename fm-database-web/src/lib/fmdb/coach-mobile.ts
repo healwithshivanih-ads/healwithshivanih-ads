@@ -30,6 +30,8 @@ export type CoachIndexRow = {
   conditions?: string[];
   /** Count of recent inbound WhatsApp messages — NOT an unread count. */
   recent_whatsapp?: number;
+  /** Token for /app/<token> — the client's own companion app. */
+  app_token?: string | null;
 };
 
 export type CoachSession = {
@@ -55,6 +57,7 @@ export type CoachCard = {
     meal_plan_started_on?: string | null;
     supplement_count?: number;
     practice_count?: number;
+    letter_token?: string | null;
   } | null;
   sessions: CoachSession[];
   whatsapp: { count: number; messages: { at?: string | null; text: string }[] };
@@ -115,4 +118,23 @@ export function coachProjectionStagedAt(): string | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * Absolute URL of the client's OWN app — what they see on their phone.
+ *
+ * Absolute, and built from NEXT_PUBLIC_APP_URL rather than the current
+ * request, on purpose: opening the Mac's copy would show a different render of
+ * the data than the client actually has in front of them, which defeats the
+ * point of looking. Returns null when there is no token or no configured
+ * origin, so the caller can omit the control rather than render a dead one.
+ */
+export function clientAppUrl(token?: string | null): string | null {
+  if (!token) return null;
+  const origin = (process.env.NEXT_PUBLIC_APP_URL || process.env.APP_ORIGIN || "")
+    .trim()
+    .replace(/\/$/, "");
+  if (!origin) return null;
+  if (!/^[A-Za-z0-9_-]{8,128}$/.test(token)) return null;
+  return `${origin}/app/${token}`;
 }
