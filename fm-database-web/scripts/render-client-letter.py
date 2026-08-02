@@ -5350,7 +5350,16 @@ DOCUMENT STRUCTURE:
 
 6. **Home Remedies & Daily Teas** — `## 🌿 Home Remedies & Daily Teas`
 
-7. **Recipe Appendix** — `## ✦ Recipe Appendix` — full recipes for every ✦ dish
+7. **Recipe Appendix** — `## ✦ Recipe Appendix` — full recipes ONLY for ✦ dishes
+   that are NOT in the CATALOGUE DISHES list above.
+
+   Any dish whose name is on that list ALREADY has a curated, photographed
+   recipe in her app, and the app always prefers it over anything written
+   here. Writing it again produces a duplicate that reaches nobody and lands
+   in the coach's review queue as "an AI recipe to promote" — a near-copy of
+   a recipe she already owns. A recent letter wrote 41 appendix recipes where
+   3 were needed. Skip the catalogue ones silently; do not mention the
+   omission, do not leave a placeholder.
 
 8. **Sign-off** — TWO LINES ONLY: "**With warmth,**" / "**{coach_name}** 🌿".
    Do NOT add another "A note from your coach" section — the entire

@@ -36,7 +36,7 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 from atomic_write import write_text_atomic  # noqa: E402
 from catalogue_dishes import catalogue_dish_names  # noqa: E402
 from meal_foods import relevant_meal_foods  # noqa: E402
-from menu_hygiene import scrub_menu_days  # noqa: E402
+from menu_hygiene import scrub_menu_days, snap_menu_days  # noqa: E402
 
 try:
     from lab_nutrient_priorities import lab_nutrient_priorities  # noqa: E402
@@ -554,6 +554,19 @@ def main() -> None:
     dropped_supplements = scrub_menu_days(tool_input["days"])
     if dropped_supplements:
         print(f"[week-menu] supplement doses removed: {dropped_supplements}", file=sys.stderr)
+
+    # Snap embellished dish names back onto their catalogue titles. The prompt
+    # hands the model the catalogue's own titles and tells it to reuse them
+    # exactly (rule 13); it obeys for most dishes and decorates the rest —
+    # "Clear vegetable broth" for the library's "Everyday Vegetable Broth".
+    # Every decorated name is a dish that opens with no method for the client
+    # AND an AI recipe the coach is later asked to promote, a near-duplicate of
+    # a recipe she already owns. Deterministic, after the model, before disk —
+    # and narrow: a name that adds an INGREDIENT ("Besan chilla with methi")
+    # is left alone, because that is a different dish, not a decorated one.
+    snapped = snap_menu_days(tool_input["days"])
+    if snapped:
+        print(f"[week-menu] dish names snapped to catalogue titles: {snapped}", file=sys.stderr)
     if not any(isinstance(d, dict) and (d.get("slots") or []) for d in tool_input["days"]):
         print(json.dumps({"ok": False, "error": "menu had no food left after hygiene pass"}))
         return
