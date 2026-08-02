@@ -258,3 +258,69 @@ def write_baseline(data_dir, findings: list["DuplicateFinding"]) -> int:
         "accepted": fps,
     }, sort_keys=False, allow_unicode=True, width=100))
     return len(fps)
+
+
+# ── de-collision: strip aliases that shadow another entity's canonical slug ───
+#
+# ALIAS_IS_SLUG is the one duplicate class that is always mechanical to fix: an
+# alias equal to another canonical slug (same kind) can only ever mis-resolve,
+# so the canonical entity keeps its identity and the shadowing alias is dropped.
+# This is exactly what commit 67231276 ("clear all 24 ALIAS_IS_SLUG findings")
+# did by hand. Wired as `fmdb duplicates --fix-aliases` so authors (and the
+# pre-push hook) can clear the most common AI-ingest collision at the source,
+# before it ever trips the ratchet. SHARED_ALIAS / NEAR_SLUG are left alone —
+# they need a human's judgement (which owner, or whether to merge).
+
+def _strip_alias_lines(path, canon_targets: set[str]) -> set[str]:
+    """Remove `- <alias>` lines from the `aliases:` block of a YAML file when
+    the alias canonicalises to one of canon_targets. Line-based so all other
+    formatting is preserved byte-for-byte. Returns the set of canons removed."""
+    from pathlib import Path
+    p = Path(path)
+    lines = p.read_text().splitlines(keepends=True)
+    out, in_aliases, removed = [], False, set()
+    for ln in lines:
+        stripped = ln.strip()
+        if stripped == "aliases:":
+            in_aliases = True
+            out.append(ln)
+            continue
+        if in_aliases:
+            if stripped.startswith("- "):
+                val = stripped[2:].strip().strip("'\"")
+                if _canon(val) in canon_targets:
+                    removed.add(_canon(val))
+                    continue  # drop this alias line
+            elif not ln.startswith((" ", "\t")) and stripped != "":
+                in_aliases = False  # left the block
+        out.append(ln)
+    if removed:
+        p.write_text("".join(out))
+    return removed
+
+
+def fix_shadow_aliases(loaded, data_dir) -> list[dict]:
+    """Strip every alias that IS another same-kind entity's canonical slug.
+    Returns [{entity_kind, owner, removed_alias, shadowed_slug}] for each fix."""
+    from pathlib import Path
+    changes: list[dict] = []
+    for kind in _KINDS:
+        ents = _entities(loaded, kind)
+        slugset = {getattr(e, "slug", None) for e in ents}
+        slugset.discard(None)
+        for e in ents:
+            owner = getattr(e, "slug", None)
+            aliases = getattr(e, "aliases", None) or []
+            offenders = {(_canon(a), a) for a in aliases
+                         if _canon(a) in slugset and _canon(a) != owner}
+            if not offenders:
+                continue
+            fpath = Path(data_dir) / kind / f"{owner}.yaml"
+            if not fpath.exists():
+                continue
+            removed = _strip_alias_lines(fpath, {c for c, _ in offenders})
+            for ca, a in offenders:
+                if ca in removed:
+                    changes.append({"entity_kind": kind, "owner": owner,
+                                    "removed_alias": a, "shadowed_slug": ca})
+    return changes

@@ -1,26 +1,33 @@
 #!/bin/sh
-# web-ci makes lint (--max-warnings 0), type-check, tests and build BLOCKING.
-# This hook runs the two FAST gates (lint + type-check) locally before a push
-# that touches fm-database-web, so a warning or type error never reaches a red
-# CI. Tests + build stay in CI (too slow to run on every push); CI is still the
-# full backstop.
+# Local gate mirroring CI, so a push never lands red on main.
 #
-# Scoped: only runs when the push actually includes fm-database-web changes.
-# Bias is toward RUNNING when a commit range is ambiguous (fail safe).
-# Bypass once with `git push --no-verify` when you truly need to.
+#   web-ci        → lint (--max-warnings 0) + type-check  [fast, run here]
+#                   tests + build stay in CI (too slow per push; web changes
+#                   always trigger web-ci, so CI reliably backstops them).
+#   catalogue-ci  → fmdb validate + fmdb duplicates --check-new  [run here]
+#                   PLUS npm test — 10+ web suites read the Python catalogue
+#                   (somatic, menu-hygiene, prospects-sweep), so a catalogue
+#                   edit can break web-ci. Running the suite here stops that
+#                   from ever reaching a red CI (a 2026-08-02 thyroid-alias
+#                   edit did exactly this and blamed the next web commit).
+#
+# Scoped: each gate runs only when its area actually changed. Bias is toward
+# RUNNING when a range is ambiguous (fail safe). Missing toolchain warns + passes
+# so a fresh machine can still push. Bypass once with `git push --no-verify`.
 #
 # Enabled per clone via:  git config core.hooksPath .githooks
-# (matches the existing .githooks/pre-commit recipe validator.)
 
 set -e
 
 REPO_ROOT=$(git rev-parse --show-toplevel)
 WEB="$REPO_ROOT/fm-database-web"
+FMDB="$REPO_ROOT/fm-database"
+PYTHON="$FMDB/.venv/bin/python"
 ZERO="0000000000000000000000000000000000000000"
 
-# Read the ref pairs git feeds on stdin and decide whether any pushed commit
-# touches fm-database-web.
-touched=0
+# Read the ref pairs git feeds on stdin; decide which areas the push touches.
+touched=0       # fm-database-web changed
+cat_touched=0   # fm-database/data or fm-database/fmdb changed
 while read -r _local_ref local_sha _remote_ref remote_sha; do
   [ "$local_sha" = "$ZERO" ] && continue          # branch deletion — nothing to check
   if [ "$remote_sha" = "$ZERO" ]; then            # new branch: compare to origin/main
@@ -29,40 +36,78 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
     base="$remote_sha"
   fi
   if [ -n "$base" ]; then
-    files=$(git diff --name-only "$base" "$local_sha" 2>/dev/null || echo "fm-database-web/_ambiguous")
+    files=$(git diff --name-only "$base" "$local_sha" 2>/dev/null || echo "fm-database-web/_ambiguous fm-database/data/_ambiguous")
   else
-    files="fm-database-web/_ambiguous"            # can't resolve a range — check anyway
+    files="fm-database-web/_ambiguous fm-database/data/_ambiguous"   # can't resolve — check both
   fi
-  if printf '%s\n' "$files" | grep -q '^fm-database-web/'; then
-    touched=1
-  fi
+  printf '%s\n' "$files" | grep -q  '^fm-database-web/'          && touched=1
+  printf '%s\n' "$files" | grep -qE '^fm-database/(data|fmdb)/'  && cat_touched=1
 done
 
-[ "$touched" -eq 0 ] && exit 0
+[ "$touched" -eq 0 ] && [ "$cat_touched" -eq 0 ] && exit 0
 
-# A missing toolchain must not block a push on a fresh machine — warn and pass.
-if ! command -v npm >/dev/null 2>&1 || [ ! -d "$WEB/node_modules" ]; then
-  echo "pre-push: fm-database-web toolchain not ready (npm / node_modules) — skipping local checks." >&2
-  exit 0
+# ── catalogue gate ──────────────────────────────────────────────────────────
+if [ "$cat_touched" -eq 1 ]; then
+  if [ ! -x "$PYTHON" ]; then
+    echo "pre-push: catalogue venv unavailable ($PYTHON) — skipping catalogue checks." >&2
+  else
+    echo "pre-push: catalogue changed — validate + duplicate ratchet (matches catalogue-ci)…"
+    if ! ( cd "$FMDB" && "$PYTHON" -m fmdb.cli validate ); then
+      echo "" >&2
+      echo "pre-push: VALIDATE failed — push blocked (catalogue-ci would fail)." >&2
+      echo "  Fix the errors above, or bypass once with: git push --no-verify" >&2
+      exit 1
+    fi
+    if ! ( cd "$FMDB" && "$PYTHON" -m fmdb.cli duplicates --check-new ); then
+      echo "" >&2
+      echo "pre-push: NEW DUPLICATES — push blocked (catalogue-ci ratchet)." >&2
+      echo "  • auto-clear the mechanical alias collisions:" >&2
+      echo "      cd fm-database && $PYTHON -m fmdb.cli duplicates --fix-aliases" >&2
+      echo "  • a real merge (which owner / merge two): resolve it by hand" >&2
+      echo "  • bypass this hook once:  git push --no-verify" >&2
+      exit 1
+    fi
+  fi
 fi
 
-echo "pre-push: fm-database-web changed — running lint + type-check (matches web-ci)…"
-cd "$WEB"
-
-if ! npm run lint -- --max-warnings 0; then
-  echo "" >&2
-  echo "pre-push: LINT failed — push blocked (web-ci would fail on this)." >&2
-  echo "  • auto-fix the mechanical ones: npm run lint -- --fix" >&2
-  echo "  • a genuine false positive: // eslint-disable-next-line <rule> -- reason" >&2
-  echo "  • bypass this hook once:      git push --no-verify" >&2
-  exit 1
+# ── web toolchain readiness (shared by web + catalogue-drives-web gates) ─────
+web_ready=1
+if [ "$touched" -eq 1 ] || [ "$cat_touched" -eq 1 ]; then
+  if ! command -v npm >/dev/null 2>&1 || [ ! -d "$WEB/node_modules" ]; then
+    echo "pre-push: fm-database-web toolchain not ready (npm / node_modules) — skipping web checks." >&2
+    web_ready=0
+  fi
 fi
 
-if ! npm run type-check; then
-  echo "" >&2
-  echo "pre-push: TYPE-CHECK failed — push blocked (web-ci would fail on this)." >&2
-  echo "  Fix the type errors above, or bypass once with: git push --no-verify" >&2
-  exit 1
+# ── web tests when the catalogue changed (catches the cross-dependency) ──────
+if [ "$cat_touched" -eq 1 ] && [ "$web_ready" -eq 1 ]; then
+  echo "pre-push: catalogue changed — running web test suite (reads the catalogue)…"
+  if ! ( cd "$WEB" && npm test --silent ); then
+    echo "" >&2
+    echo "pre-push: WEB TESTS failed on a catalogue change — push blocked." >&2
+    echo "  A catalogue edit broke a web suite (e.g. somatic / menu-hygiene)." >&2
+    echo "  Fix it, or bypass once with: git push --no-verify" >&2
+    exit 1
+  fi
 fi
 
-echo "pre-push: lint + type-check passed."
+# ── fast web gates when web source changed ──────────────────────────────────
+if [ "$touched" -eq 1 ] && [ "$web_ready" -eq 1 ]; then
+  echo "pre-push: fm-database-web changed — lint + type-check (matches web-ci)…"
+  if ! ( cd "$WEB" && npm run lint -- --max-warnings 0 ); then
+    echo "" >&2
+    echo "pre-push: LINT failed — push blocked (web-ci would fail on this)." >&2
+    echo "  • auto-fix the mechanical ones: npm run lint -- --fix" >&2
+    echo "  • a genuine false positive: // eslint-disable-next-line <rule> -- reason" >&2
+    echo "  • bypass this hook once:      git push --no-verify" >&2
+    exit 1
+  fi
+  if ! ( cd "$WEB" && npm run type-check ); then
+    echo "" >&2
+    echo "pre-push: TYPE-CHECK failed — push blocked (web-ci would fail on this)." >&2
+    echo "  Fix the type errors above, or bypass once with: git push --no-verify" >&2
+    exit 1
+  fi
+fi
+
+echo "pre-push: all local checks passed ✓"

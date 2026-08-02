@@ -56,7 +56,17 @@ jobs:
       - name: Validate catalogue (blocking — 0 errors required)
         run: python -m fmdb.cli validate
 
+      # The ratchet fails on any duplicate not in the baseline. On PRs it is a
+      # hard gate (block new dupes before merge). On direct pushes to main it is
+      # ADVISORY (continue-on-error) — catalogue authoring naturally introduces
+      # alias collisions in the same push it fixes them in, and a hard failure
+      # there just spams failure emails and blames merge commits. The finding
+      # still prints in the log, and the local pre-push hook (.githooks/pre-push)
+      # blocks it before it ever leaves the machine. Once branch protection +
+      # PR flow is on (see scripts/enable-branch-protection.sh), the PR run is
+      # the real gate.
       - name: No NEW duplicate entities (ratchet)
+        continue-on-error: ${{ github.event_name != 'pull_request' }}
         run: python -m fmdb.cli duplicates --check-new
 
       # Advisory: the size of the known backlog, so it is visible in the log

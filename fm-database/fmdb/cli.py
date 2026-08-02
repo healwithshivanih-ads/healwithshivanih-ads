@@ -142,11 +142,23 @@ def cmd_duplicates(args: argparse.Namespace) -> None:
     silently resolved last-wins by load order.
     """
     from .duplicates import (find_duplicates, fingerprint, load_baseline,
-                             write_baseline)
+                             write_baseline, fix_shadow_aliases)
     from .validator import load_all
 
     loaded = load_all(DATA_DIR)
     findings = find_duplicates(loaded, near_threshold=args.threshold)
+
+    if getattr(args, "fix_aliases", False):
+        changes = fix_shadow_aliases(loaded, DATA_DIR)
+        if not changes:
+            print("No shadow aliases to fix (0 ALIAS_IS_SLUG findings).")
+            return
+        print(f"Stripped {len(changes)} alias(es) that shadowed a canonical slug:\n")
+        for c in changes:
+            print(f"  {c['entity_kind']}/{c['owner']}: removed alias "
+                  f"{c['removed_alias']!r} (it is the slug of {c['shadowed_slug']!r})")
+        print("\nRe-run `fmdb validate` and `fmdb duplicates --check-new` to confirm.")
+        return
 
     if getattr(args, "write_baseline", False):
         n = write_baseline(DATA_DIR, findings)
@@ -2364,6 +2376,7 @@ def main() -> None:
     dup.add_argument("--kind", help="filter to one entity dir (topics / mechanisms / supplements / ...)")
     dup.add_argument("--critical", action="store_true", help="only findings that need a merge or a wrong-alias removal")
     dup.add_argument("--threshold", type=float, default=0.6, help="token-overlap threshold for the weak NEAR_SLUG check (default 0.6)")
+    dup.add_argument("--fix-aliases", action="store_true", help="mechanically strip aliases that shadow another entity's canonical slug (ALIAS_IS_SLUG); safe, always-correct")
     dup.add_argument("--check-new", action="store_true", help="ratchet: exit 1 only on findings NOT in the accepted baseline (for a pre-commit hook)")
     dup.add_argument("--write-baseline", action="store_true", help="accept the CURRENT findings as the baseline for --check-new")
     dup.add_argument("--json", action="store_true", help="machine-readable output")
