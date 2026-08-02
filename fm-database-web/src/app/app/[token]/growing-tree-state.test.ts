@@ -1,9 +1,36 @@
 import { describe, it, expect } from "vitest";
 import { deriveTreeState, stageForWeek, STAGE_LABEL, type TreeInput } from "./growing-tree-state";
+import { seasonForWeek } from "./growing-tree-engine";
 
 function input(over: Partial<TreeInput> = {}): TreeInput {
   return { week: 0, totalWeeks: 12, dailyDone: 0, dailyTotal: 0, night: false, ...over };
 }
+
+describe("structure accrues, season cycles — the continuing client's tree", () => {
+  it("keeps a returning client's growth while giving her a new spring", () => {
+    // Day 1 of phase 3: tenure 13 weeks, phase week 1.
+    const s = deriveTreeState(input({ week: 13, phaseWeek: 1, totalWeeks: 24 }));
+    // Structure is tenure — she does not go back to being a sapling.
+    expect(s.week).toBe(13);
+    expect(s.stage).toBe("fruiting");
+    // Season is the phase — a new phase is new growth, not a permanent autumn.
+    expect(s.phaseWeek).toBe(1);
+    expect(seasonForWeek(s.phaseWeek).key).toBe("spring");
+    expect(seasonForWeek(s.week).key).toBe("autumn"); // what she'd have been stuck in
+  });
+
+  it("leaves a first-time client identical — phaseWeek defaults to week", () => {
+    const s = deriveTreeState(input({ week: 6, totalWeeks: 12 }));
+    expect(s.phaseWeek).toBe(6);
+    expect(seasonForWeek(s.phaseWeek).key).toBe(seasonForWeek(s.week).key);
+  });
+
+  it("clamps a nonsense phase week rather than trusting it", () => {
+    expect(deriveTreeState(input({ week: 5, phaseWeek: 99, totalWeeks: 12 })).phaseWeek).toBe(12);
+    expect(deriveTreeState(input({ week: 5, phaseWeek: -3, totalWeeks: 12 })).phaseWeek).toBe(0);
+    expect(deriveTreeState(input({ week: 5, phaseWeek: NaN, totalWeeks: 12 })).phaseWeek).toBe(0);
+  });
+});
 
 describe("stageForWeek — week → stage boundaries", () => {
   it("maps each stage band correctly (sapling 0-1 · young 2-4 · mature 5-8 · flowering 9-11 · fruiting 12+)", () => {

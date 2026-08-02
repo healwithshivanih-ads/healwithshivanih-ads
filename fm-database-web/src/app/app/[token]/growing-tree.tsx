@@ -18,6 +18,7 @@ import { mountGrowingTree, type GrowingTreeHandle } from "./growing-tree-engine"
 
 export function GrowingTree({
   week,
+  phaseWeek,
   totalWeeks,
   dailyDone,
   dailyTotal,
@@ -26,7 +27,11 @@ export function GrowingTree({
   bonusFruit = 0,
   size = 480,
 }: {
+  /** Tenure — weeks with the coach across every phase. Drives all structure. */
   week: number;
+  /** Week within the current phase. Drives the season only; omit for a
+   *  first-time client, where the two are the same thing. */
+  phaseWeek?: number;
   totalWeeks: number;
   dailyDone: number;
   dailyTotal: number;
@@ -44,7 +49,7 @@ export function GrowingTree({
 
   // Night after 6pm local — derived from the client's own clock at render time.
   const night = typeof Date !== "undefined" ? new Date().getHours() >= 18 : false;
-  const state = deriveTreeState({ week, totalWeeks, dailyDone, dailyTotal, streak, blossoms: bonusBlossoms, fruit: bonusFruit, night });
+  const state = deriveTreeState({ week, phaseWeek, totalWeeks, dailyDone, dailyTotal, streak, blossoms: bonusBlossoms, fruit: bonusFruit, night });
 
   // Mount once; tear down on unmount.
   useEffect(() => {

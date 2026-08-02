@@ -482,6 +482,7 @@ export function ProgressScreen({
         <div className="rn-tree-hero" style={{ marginTop: 6, marginBottom: 2 }}>
           <GrowingTree
             week={data.client.tenureWeek}
+            phaseWeek={data.client.week}
             totalWeeks={data.client.tenureTotalWeeks}
             dailyDone={dailyDone}
             dailyTotal={dailyTotal}

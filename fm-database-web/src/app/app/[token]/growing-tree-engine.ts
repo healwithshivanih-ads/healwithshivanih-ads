@@ -255,7 +255,10 @@ interface Season {
   cls: string;
   gold: number;
 }
-function seasonForWeek(week: number): Season {
+/** Exported for test: the season is the one thing that must run off the PHASE
+ *  week, not tenure — otherwise a continuing client's tree stands in a
+ *  permanent autumn from the day her second phase begins. */
+export function seasonForWeek(week: number): Season {
   if (week <= 4) return { key: "spring", cls: "ot-season-spring", gold: 0.0 };
   if (week <= 8) return { key: "summer", cls: "ot-season-summer", gold: 0.04 };
   const t = Math.min(1, (week - 9) / 4);
@@ -314,6 +317,11 @@ export function mountGrowingTree(root: HTMLElement, initial: TreeState): Growing
   // Local render state (only what the tree render actually reads).
   const state = {
     week: 0,
+    // Season only. Structure (stage, trunk, rings, roots) runs off `week`, which
+    // is tenure and never resets; the season runs off the current phase so an
+    // established tree greens up again each phase instead of standing in a
+    // permanent autumn. Equal to `week` for a first-time client.
+    phaseWeek: 0,
     extraLeaves: 0,
     blossoms: 0,
     fruit: 0,
@@ -587,7 +595,11 @@ export function mountGrowingTree(root: HTMLElement, initial: TreeState): Growing
       }),
     );
 
-    const rings = Math.min(week, 12);
+    // Growth rings are the one place a tree older than a single phase can show
+    // it — the trunk itself saturates at week 13 (buildTrunk). Cap raised from
+    // 12 so a second/third phase reads as an older trunk; the loop below still
+    // stops when it runs out of trunk, so this can never overflow the bark.
+    const rings = Math.min(week, 20);
     for (let r = 0; r < rings; r++) {
       const ry = baseY - 8 - r * 4.4;
       if (ry < topY + 24) break;
@@ -1626,7 +1638,7 @@ export function mountGrowingTree(root: HTMLElement, initial: TreeState): Growing
     clear(gNest);
     clear(gFlitters);
 
-    const season = seasonForWeek(week);
+    const season = seasonForWeek(state.phaseWeek || week);
 
     drawSky();
 
@@ -1814,6 +1826,7 @@ export function mountGrowingTree(root: HTMLElement, initial: TreeState): Growing
   // Map the (immutable) TreeState onto the local render state, then render.
   function applyState(s: TreeState) {
     state.week = Math.max(0, s.week);
+    state.phaseWeek = Math.max(0, s.phaseWeek ?? s.week);
     state.night = !!s.night;
     state.streak = Math.max(0, s.streak);
     state.extraLeaves = Math.max(0, s.extraLeaves);

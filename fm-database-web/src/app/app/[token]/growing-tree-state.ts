@@ -26,8 +26,20 @@ export const STAGE_LABEL: Record<TreeStage, string> = {
 
 /** The complete, deterministic input the renderer needs to draw one tree. */
 export interface TreeState {
-  /** Weeks on plan (0..totalWeeks), clamped ≥ 0. Drives trunk height + stage. */
+  /**
+   * How grown this tree is: weeks WITH THE COACH across every phase, clamped
+   * to totalWeeks. Drives everything structural — stage, trunk, rings, roots.
+   * Never resets when a new phase starts; that reset is what turned a fruiting
+   * tree into a sapling overnight.
+   */
   week: number;
+  /**
+   * Where she is in the CURRENT phase, which drives the SEASON only.
+   * Structure accumulates, season cycles: an established tree greens up again
+   * each phase instead of standing in a permanent autumn. Defaults to `week`,
+   * so a first-time client (phase week === tenure week) renders exactly as before.
+   */
+  phaseWeek: number;
   /** Plan length in weeks (≥ 1). Used for progress framing. */
   totalWeeks: number;
   /** The growth stage derived from `week`. */
@@ -59,6 +71,9 @@ export interface TreeState {
 /** Raw app data → tree. Everything the app already has on hand. */
 export interface TreeInput {
   week: number;
+  /** Week within the current phase. Omit for a first-time client — it then
+   *  equals `week` and the season behaves exactly as it always has. */
+  phaseWeek?: number;
   totalWeeks: number;
   dailyDone: number;
   dailyTotal: number;
@@ -110,6 +125,12 @@ export function deriveTreeState(input: TreeInput): TreeState {
 
   const streak = nonNegInt(input.streak ?? 0);
   const stage = stageForWeek(week);
+  // Season runs off the CURRENT phase, structure off tenure. Absent a phase
+  // week (first-time client) the two are the same and nothing changes.
+  const phaseWeek = Math.min(
+    totalWeeks,
+    input.phaseWeek == null ? week : nonNegInt(input.phaseWeek),
+  );
 
   // A completed day earns a small, bounded canopy bonus. Never negative, capped so
   // it can never dominate the stage-driven leaf budget.
@@ -123,6 +144,7 @@ export function deriveTreeState(input: TreeInput): TreeState {
 
   return {
     week,
+    phaseWeek,
     totalWeeks,
     stage,
     stageLabel: STAGE_LABEL[stage],

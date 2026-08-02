@@ -432,6 +432,7 @@ export function TodayScreen({
             >
               <GrowingTree
                 week={data.client.tenureWeek}
+                phaseWeek={data.client.week}
                 totalWeeks={data.client.tenureTotalWeeks}
                 dailyDone={dailyDone}
                 dailyTotal={dailyTotal}

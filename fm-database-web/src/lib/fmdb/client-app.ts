@@ -68,7 +68,6 @@ import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
 import {
   effectiveRecheckDate,
   effectiveMealPlanStart,
-  travelExtensionDays,
   type TravelOverrideLike,
   type RecheckOpts,
 } from "@/lib/fmdb/plan-timing";
@@ -3597,30 +3596,20 @@ export async function loadClientAppData(
   // line, and the "X-week reset" labels. Day 1 is immutable once set.
   const pw = Number(plan.plan_period_weeks);
   const totalWeeks = Number.isFinite(pw) && pw >= 1 && pw <= 52 ? Math.round(pw) : 12;
-  let week = 1;
-  if (startDate) {
-    const days = Math.floor((refUTC.getTime() - startDate.getTime()) / 86_400_000);
-    // Travel/illness freezes the counter: subtract paused days already elapsed
-    // (start → today, capped 14) so she doesn't tick through her trip — she
-    // resumes at the same week on return. Mirrors the recheck extension.
-    const paused = travelExtensionDays(
-      travelOverrides,
-      startDate.toISOString().slice(0, 10),
-      refUTC.toISOString().slice(0, 10),
-    );
-    week = Math.min(Math.max(Math.floor((days - paused) / 7) + 1, 1), totalWeeks);
-  }
 
-  // Tenure — weeks with the coach across EVERY phase, not just this plan.
-  // `week` above resets to 1 whenever a successor publishes; anything that
-  // represents accrued progress (the growing tree) must read tenure instead,
-  // or twelve weeks of growth vanish overnight. See programme-tenure.ts.
+  // Tenure — weeks with the coach across EVERY phase, plus the week within the
+  // current one. `weekOfPhase` used to be computed inline here and again in
+  // client-journey.ts; all three now come from programme-tenure.ts, so the app
+  // and the coach's strip cannot drift the way the recheck date once did.
+  // (Travel/illness pauses freeze the counter — she resumes at the same week on
+  // return — which the helper handles the same way it extends the recheck.)
   const tenure = buildTenure(
     plan as unknown as TenurePlanLike,
     [plan as unknown as TenurePlanLike, ...(await priorPlansForClient(clientId))],
     refUTC.toISOString().slice(0, 10),
     { overrides: travelOverrides, weightLossEnabled },
   );
+  const week = startDate ? tenure.weekOfPhase : 1;
 
   // week strip: Sunday-start calendar week around today
   const dows = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

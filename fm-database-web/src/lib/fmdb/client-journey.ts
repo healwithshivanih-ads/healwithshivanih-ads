@@ -5,10 +5,10 @@ import { parseSessionType } from "./session-utils";
 import {
   effectiveMealPlanStart,
   effectiveRecheckDate,
-  travelExtensionDays,
   type TravelOverrideLike,
   type RecheckOpts,
 } from "./plan-timing";
+import { buildTenure, type TenurePlanLike } from "./programme-tenure";
 
 /**
  * ClientJourney — the workflow-stage snapshot rendered as the
@@ -191,21 +191,15 @@ export async function loadClientJourney(
     planLike.plan_period_recheck_date ??
     null;
   if (planStart && planWeeks) {
-    const start = new Date(`${planStart}T00:00:00Z`);
-    const today = new Date(`${todayIso}T00:00:00Z`);
-    const msPerWeek = 7 * 24 * 60 * 60 * 1000;
-    // Paused days already elapsed are subtracted so the counter freezes over a
-    // trip and resumes at the same week on return — mirrors client-app.ts.
-    const paused = travelExtensionDays(travelOverrides, planStart, todayIso);
-    currentWeek = Math.max(
-      1,
-      Math.min(
-        planWeeks,
-        Math.floor(
-          (today.getTime() - start.getTime() - paused * 24 * 60 * 60 * 1000) / msPerWeek,
-        ) + 1,
-      ),
-    );
+    // One source for "which week is she in", shared with the client app —
+    // this file used to carry its own copy, which is how the strip could say
+    // week 12 while her app said week 11. Pauses are handled inside.
+    currentWeek = buildTenure(
+      publishedPlan as TenurePlanLike,
+      plans as TenurePlanLike[],
+      todayIso,
+      recheckOpts,
+    ).weekOfPhase;
   }
 
   // ── Compute next-phase-letter window (mid-cycle communication).
