@@ -439,3 +439,245 @@ sys.stdout.write(ins.model_dump_json())`,
     expect(stderr.trim()).toBe("");
   }, PY_TEST_TIMEOUT_MS);
 });
+
+/**
+ * The assess history bundle is the most expensive shape of this bug, because
+ * `ai_analysis` is model output PERSISTED into the session YAML and replayed as
+ * context for every LATER assessment. One malformed element written once would
+ * abort that client's assess today, tomorrow and every time after, with nothing
+ * in the failure pointing back at the session that wrote it.
+ *
+ * Fails soft at every layer: a partial history is worth far more than a failed
+ * assessment, since the AI reads this to orient against what was already tried.
+ */
+describe("_history_ai_summary tolerates malformed persisted analysis", () => {
+  function pythonHistory(aiAnalysis: unknown): {
+    summary: Record<string, unknown>;
+    stderr: string;
+  } {
+    const { stdout, stderr } = runAgainstShim(
+      "assess.py",
+      `sys.stdout.write(json.dumps(m._history_ai_summary(payload["ai"])))`,
+      { ai: aiAnalysis },
+    );
+    return { summary: JSON.parse(stdout), stderr };
+  }
+
+  const AI = {
+    synthesis_notes: "prior take",
+    likely_drivers: [{ mechanism_slug: "leaky-gut" }, { mechanism_slug: "insulin-resistance" }],
+    supplement_suggestions: [{ supplement_slug: "magnesium-glycinate", dose: "400mg" }],
+  };
+
+  it("keeps the good drivers when a bare string is mixed in", () => {
+    const { summary } = pythonHistory({
+      ...AI,
+      likely_drivers: [AI.likely_drivers[0], "HPA axis dysregulation", AI.likely_drivers[1]],
+    });
+    expect(summary.drivers).toEqual(["leaky-gut", "insulin-resistance"]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("keeps the good supplements when a bare string is mixed in", () => {
+    const { summary } = pythonHistory({
+      ...AI,
+      supplement_suggestions: [...AI.supplement_suggestions, "vitamin D 2000IU"],
+    });
+    expect(summary.supplements).toEqual([{ slug: "magnesium-glycinate", dose: "400mg" }]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("survives ai_analysis not being an object at all", () => {
+    // A whole session's analysis stored as prose. `ai.get(...)` would raise on
+    // the very first line, before any of the per-element guards were reached.
+    const { summary } = pythonHistory("the whole analysis as one string");
+    expect(summary).toEqual({ synthesis_notes: "", drivers: [], supplements: [] });
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("says on stderr what the stored analysis actually contained", () => {
+    const { stderr } = pythonHistory({ ...AI, likely_drivers: ["HPA axis dysregulation"] });
+    expect(stderr).toMatch(/malformed driver/i);
+    expect(stderr).toContain("assess-history");
+    expect(stderr).toContain("HPA axis dysregulation");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("leaves a well-formed analysis untouched", () => {
+    const { summary, stderr } = pythonHistory(AI);
+    expect(summary).toEqual({
+      synthesis_notes: "prior take",
+      drivers: ["leaky-gut", "insulin-resistance"],
+      supplements: [{ slug: "magnesium-glycinate", dose: "400mg" }],
+    });
+    expect(stderr.trim()).toBe("");
+  }, PY_TEST_TIMEOUT_MS);
+});
+
+/**
+ * The app menu is the one place the posture goes the OTHER way, and its own
+ * existing code sets the precedent: it already hard-fails a week that doesn't
+ * return exactly 7 days. The client EATS from this, so a week or a day going
+ * missing unnoticed is worse than no menu — those stay fatal and named.
+ *
+ * Slots are the exception, because the surrounding code already treats them as
+ * droppable (it filters any slot with a blank dish).
+ */
+describe("_normalised_weeks is strict about weeks and days, lenient about slots", () => {
+  const DAY = {
+    slots: [
+      { slot: "Breakfast", dish: "Poha" },
+      { slot: "Lunch", dish: "Dal rice" },
+    ],
+  };
+  const WEEK = { week: 2, days: Array.from({ length: 7 }, () => DAY) };
+
+  function pythonWeeksMenu(raw: unknown): {
+    ok: boolean;
+    weeks?: Record<string, unknown>[];
+    error?: string;
+    stderr: string;
+  } {
+    const { stdout, stderr } = runAgainstShim(
+      "generate-app-menu.py",
+      `try:
+    sys.stdout.write(json.dumps({"ok": True, "weeks": m._normalised_weeks(payload["raw"])}))
+except ValueError as e:
+    sys.stdout.write(json.dumps({"ok": False, "error": str(e)}))`,
+      { raw },
+    );
+    return { ...JSON.parse(stdout), stderr };
+  }
+
+  it("refuses the whole menu when a week is a bare string", () => {
+    const res = pythonWeeksMenu([WEEK, "week 3: repeat week 2"]);
+    expect(res.ok).toBe(false);
+    expect(res.error).toMatch(/where a week object belongs/i);
+    expect(res.error).toContain("str");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("refuses the whole menu when a day is a bare string", () => {
+    const res = pythonWeeksMenu([{ ...WEEK, days: [...WEEK.days.slice(0, 6), "Sunday: leftovers"] }]);
+    expect(res.ok).toBe(false);
+    expect(res.error).toMatch(/where a day object belongs/i);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("refuses a bare 7-character string for 'days' instead of walking it letter by letter", () => {
+    // len("Mon-Sun") == 7, so the pre-existing day-count check passes it
+    // through. The element check is what actually catches this.
+    const res = pythonWeeksMenu([{ week: 1, days: "Mon-Sun" }]);
+    expect(res.ok).toBe(false);
+    expect(res.error).toMatch(/where a day object belongs/i);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("refuses a non-list 'weeks'", () => {
+    const res = pythonWeeksMenu("here is the menu");
+    expect(res.ok).toBe(false);
+    expect(res.error).toMatch(/expected list/i);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("still hard-fails the pre-existing wrong-day-count case", () => {
+    const res = pythonWeeksMenu([{ week: 1, days: [DAY, DAY] }]);
+    expect(res.ok).toBe(false);
+    expect(res.error).toMatch(/need 7/);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("DROPS a malformed slot and keeps the menu, unlike a malformed day", () => {
+    const day = { slots: [DAY.slots[0], "Lunch: dal rice", DAY.slots[1]] };
+    const res = pythonWeeksMenu([{ week: 2, days: Array.from({ length: 7 }, () => day) }]);
+    expect(res.ok).toBe(true);
+    expect((res.weeks![0].days as { slots: unknown[] }[])[0].slots).toEqual(DAY.slots);
+    expect(res.stderr).toMatch(/malformed slot/i);
+    expect(res.stderr).toContain("Lunch: dal rice");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("leaves a well-formed menu untouched", () => {
+    const res = pythonWeeksMenu([WEEK]);
+    expect(res.ok).toBe(true);
+    expect(res.weeks).toHaveLength(1);
+    expect(res.weeks![0].week).toBe(2);
+    expect(res.weeks![0].days).toHaveLength(7);
+  }, PY_TEST_TIMEOUT_MS);
+});
+
+/**
+ * extract-symptoms is the only consumer parsing FREE-FORM JSON rather than a
+ * tool call, so its shape guarantee is the weakest in the pipeline. It is also
+ * the one where a crash costs money: the call is ~$0.10 on a 40-page panel, and
+ * failing on one junk mention would discard every lab the model got right.
+ */
+describe("_sanitise_extraction tolerates malformed model output", () => {
+  function pythonExtract(extracted: unknown, valid: string[] = ["bloating", "fatigue"]) {
+    const { stdout, stderr } = runAgainstShim(
+      "extract-symptoms.py",
+      `matched, mentions, data = m._sanitise_extraction(payload["extracted"], set(payload["valid"]))
+sys.stdout.write(json.dumps({"matched": matched, "mentions": mentions, "data": data}))`,
+      { extracted, valid },
+    );
+    return { ...JSON.parse(stdout), stderr } as {
+      matched: string[];
+      mentions: Record<string, unknown>[];
+      data: Record<string, never>;
+      stderr: string;
+    };
+  }
+
+  it("keeps the good mentions and lab values when bare strings are mixed in", () => {
+    const res = pythonExtract({
+      matched_slugs: ["bloating", "fatigue"],
+      mentions: [
+        { slug: "bloating", quote: "very bloated after meals" },
+        "client also mentioned fatigue",
+        { slug: "fatigue", quote: "tired by 3pm" },
+      ],
+      extracted_data: {
+        lab_values: [
+          { test_name: "TSH", value: 4.2, unit: "mIU/L" },
+          "Ferritin 30 ng/mL",
+        ],
+      },
+    });
+    expect(res.mentions.map((m) => m.slug)).toEqual(["bloating", "fatigue"]);
+    expect(res.data.lab_values).toEqual([
+      { test_name: "TSH", value: "4.2", unit: "mIU/L", date_drawn: null },
+    ]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("says on stderr what the model actually produced", () => {
+    const res = pythonExtract({ mentions: ["client also mentioned fatigue"] });
+    expect(res.stderr).toMatch(/malformed mention/i);
+    expect(res.stderr).toContain("client also mentioned fatigue");
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("survives extracted_data and measurements not being objects", () => {
+    // Nested CONTAINERS are model-supplied too — `.get()` on a bare string
+    // raises exactly like the element case, one level up.
+    const res = pythonExtract({ extracted_data: "weight 68kg, TSH 4.2" });
+    expect(res.data.lab_values).toEqual([]);
+    const res2 = pythonExtract({ extracted_data: { measurements: "weight 68kg" } });
+    expect(res2.data.measurements).toEqual({
+      height_cm: null,
+      weight_kg: null,
+      bp_systolic: null,
+      bp_diastolic: null,
+      hr_bpm: null,
+      waist_cm: null,
+    });
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("drops a non-string matched slug instead of testing it against the catalogue", () => {
+    const res = pythonExtract({ matched_slugs: ["bloating", 42, { slug: "fatigue" }] });
+    expect(res.matched).toEqual(["bloating"]);
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("leaves a well-formed extraction untouched", () => {
+    const res = pythonExtract({
+      matched_slugs: ["bloating"],
+      mentions: [{ slug: "bloating", quote: "q" }],
+      extracted_data: {
+        lab_values: [{ test_name: "TSH", value: 4.2, unit: "mIU/L" }],
+        medications: ["levothyroxine"],
+        conditions: ["hypothyroidism"],
+      },
+    });
+    expect(res.matched).toEqual(["bloating"]);
+    expect(res.data.medications).toEqual(["levothyroxine"]);
+    expect(res.stderr.trim()).toBe("");
+  }, PY_TEST_TIMEOUT_MS);
+});

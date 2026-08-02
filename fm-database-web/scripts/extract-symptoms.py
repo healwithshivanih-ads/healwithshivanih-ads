@@ -46,6 +46,9 @@ from pathlib import Path
 
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # scripts dir
+
+from model_output import usable_dicts  # noqa: E402
 
 
 def _load_dotenv() -> None:
@@ -104,6 +107,61 @@ def _fetch_url(url: str) -> tuple:
             return raw.decode(enc, errors="replace"), None, ""
     except Exception as e:
         return None, None, str(e)
+
+
+def _sanitise_extraction(extracted: dict, valid_slugs: set) -> tuple:
+    """Validate the model's extraction against the catalogue and coerce shape.
+
+    Returns (matched_slugs, mentions, extracted_data).
+
+    Element-level malformation is SKIPPED rather than fatal, and here that is
+    about money as much as data: this call costs real spend (~$0.10 on a 40-page
+    panel), so crashing on one junk mention would throw away every lab the model
+    got RIGHT along with what was paid for them — the same "spend can never be
+    thrown away" concern the durability sidecar in main() exists for.
+
+    Every nested container is checked, not just the leaves: `extracted_data` and
+    `measurements` are model-supplied objects too, and `.get()` on a bare string
+    raises exactly like the element case does.
+    """
+    matched = [
+        sl for sl in (extracted.get("matched_slugs") or [])
+        if isinstance(sl, str) and sl in valid_slugs
+    ]
+    mentions = [
+        m for m in usable_dicts(extracted.get("mentions"), "extract-symptoms", "mention")
+        if m.get("slug") in valid_slugs
+    ]
+
+    # Sanitise extracted_data — ensure expected shape even if model omits keys
+    raw_data = extracted.get("extracted_data")
+    raw_data = raw_data if isinstance(raw_data, dict) else {}
+    raw_meas = raw_data.get("measurements")
+    raw_meas = raw_meas if isinstance(raw_meas, dict) else {}
+
+    extracted_data = {
+        "lab_values": [
+            {
+                "test_name": lv.get("test_name", ""),
+                "value": str(lv.get("value", "")),
+                "unit": lv.get("unit") or "",
+                "date_drawn": lv.get("date_drawn"),
+            }
+            for lv in usable_dicts(raw_data.get("lab_values"), "extract-symptoms", "lab value")
+            if lv.get("test_name") and lv.get("value") is not None
+        ],
+        "measurements": {
+            "height_cm": raw_meas.get("height_cm"),
+            "weight_kg": raw_meas.get("weight_kg"),
+            "bp_systolic": raw_meas.get("bp_systolic"),
+            "bp_diastolic": raw_meas.get("bp_diastolic"),
+            "hr_bpm": raw_meas.get("hr_bpm"),
+            "waist_cm": raw_meas.get("waist_cm"),
+        },
+        "medications": [m for m in (raw_data.get("medications") or []) if isinstance(m, str) and m.strip()],
+        "conditions": [c for c in (raw_data.get("conditions") or []) if isinstance(c, str) and c.strip()],
+    }
+    return matched, mentions, extracted_data
 
 
 def main() -> int:
@@ -348,37 +406,15 @@ def main() -> int:
         json.dump({"ok": False, "error": f"model returned non-JSON: {e}\n{raw_text[:300]}"}, sys.stdout)
         return 1
 
-    # Validate matched slugs against catalogue
+    # This is a FREE-FORM json.loads, not a tool-use call, so the shape is less
+    # constrained than anywhere else in the pipeline — the model could hand back
+    # a list or a bare string as easily as an object.
+    if not isinstance(extracted, dict):
+        json.dump({"ok": False, "error": f"model returned {type(extracted).__name__}, expected an object: {str(extracted)[:200]}"}, sys.stdout)
+        return 1
+
     valid_slugs = {s["slug"] for s in symptom_catalogue}
-    matched = [sl for sl in (extracted.get("matched_slugs") or []) if sl in valid_slugs]
-    mentions = [m for m in (extracted.get("mentions") or []) if m.get("slug") in valid_slugs]
-
-    # Sanitise extracted_data — ensure expected shape even if model omits keys
-    raw_data = extracted.get("extracted_data") or {}
-    raw_meas = raw_data.get("measurements") or {}
-
-    extracted_data = {
-        "lab_values": [
-            {
-                "test_name": lv.get("test_name", ""),
-                "value": str(lv.get("value", "")),
-                "unit": lv.get("unit") or "",
-                "date_drawn": lv.get("date_drawn"),
-            }
-            for lv in (raw_data.get("lab_values") or [])
-            if lv.get("test_name") and lv.get("value") is not None
-        ],
-        "measurements": {
-            "height_cm": raw_meas.get("height_cm"),
-            "weight_kg": raw_meas.get("weight_kg"),
-            "bp_systolic": raw_meas.get("bp_systolic"),
-            "bp_diastolic": raw_meas.get("bp_diastolic"),
-            "hr_bpm": raw_meas.get("hr_bpm"),
-            "waist_cm": raw_meas.get("waist_cm"),
-        },
-        "medications": [m for m in (raw_data.get("medications") or []) if isinstance(m, str) and m.strip()],
-        "conditions": [c for c in (raw_data.get("conditions") or []) if isinstance(c, str) and c.strip()],
-    }
+    matched, mentions, extracted_data = _sanitise_extraction(extracted, valid_slugs)
 
     # ── Persist the extraction so the spend can never be thrown away ──────
     # This call costs real money (~$0.10 on a 40-page panel) but historically

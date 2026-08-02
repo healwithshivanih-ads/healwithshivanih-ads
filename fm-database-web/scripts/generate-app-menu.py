@@ -49,6 +49,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))  # scripts dir
 
 from meal_foods import relevant_meal_foods  # noqa: E402
 from menu_hygiene import scrub_menu_days  # noqa: E402
+from model_output import usable_dicts  # noqa: E402
 from morning_rituals import ensure_morning_rituals  # noqa: E402
 
 SLOTS = ["Breakfast", "Mid-morning", "Lunch", "Evening snack", "Dinner"]
@@ -160,6 +161,68 @@ dish text. Vary dishes across the days and between the two weeks.
 """
 
 
+def _normalised_weeks(menu_weeks) -> list[dict]:
+    """Validate + normalise the model's `weeks` into app_menu week records.
+
+    Raises ValueError with a coach-readable message; main() turns that into the
+    ok:false payload.
+
+    The posture here is STRICTER than the recipe pack, and it is the existing
+    `len(days) != 7` bail that sets it: the client EATS from this menu, so a
+    week or a day going missing without anyone noticing is worse than no menu.
+    A malformed week or day is therefore FATAL and named — not skipped —
+    because skipping one would ship a menu that looks complete and isn't.
+
+    Slots are the one exception, and only because the surrounding code already
+    treats them as droppable (it filters out any slot with a blank dish). A junk
+    slot costs one meal from a day the client can still read, so it is skipped
+    and reported like every other malformed element.
+
+    Note `days` is length-checked before the element check on purpose — a bare
+    7-character string would otherwise pass `len(days) == 7` and fall into the
+    comprehension one character at a time.
+    """
+    if not isinstance(menu_weeks, list):
+        raise ValueError(
+            f"model returned {type(menu_weeks).__name__} for 'weeks' (expected list): "
+            f"{str(menu_weeks)[:120]}"
+        )
+    norm_weeks = []
+    for w in menu_weeks:
+        if not isinstance(w, dict):
+            raise ValueError(
+                f"model returned {type(w).__name__} where a week object belongs: {str(w)[:120]}"
+            )
+        days = w.get("days") or []
+        if len(days) != 7:
+            raise ValueError(f"week {w.get('week')} returned {len(days)} days (need 7)")
+        bad_day = next((d for d in days if not isinstance(d, dict)), None)
+        if bad_day is not None:
+            raise ValueError(
+                f"week {w.get('week')}: model returned {type(bad_day).__name__} where a day "
+                f"object belongs: {str(bad_day)[:120]}"
+            )
+        norm_days = [
+            {"slots": [
+                {"slot": s.get("slot", ""), "dish": str(s.get("dish", "")).strip()}
+                for s in usable_dicts(d.get("slots"), f"app-menu week {w.get('week')}", "slot")
+                if str(s.get("dish", "")).strip()
+            ]}
+            for d in days
+        ]
+        # A capsule is not a meal — it is already on the supplement schedule,
+        # and counting it as a dish double-tells the client and skews the
+        # menu's nutrient tally. See scripts/menu_hygiene.py.
+        for note in scrub_menu_days(norm_days):
+            print(f"[app-menu] week {w.get('week')}: supplement dose removed — {note}", file=sys.stderr)
+        norm_weeks.append({
+            "week": int(w.get("week") or 0),
+            "day_dates": None,
+            "days": norm_days,
+        })
+    return norm_weeks
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -253,26 +316,11 @@ def main() -> int:
             pass
 
     # validate + normalise
-    norm_weeks = []
-    for w in menu_weeks:
-        days = w.get("days") or []
-        if len(days) != 7:
-            json.dump({"ok": False, "error": f"week {w.get('week')} returned {len(days)} days (need 7)"}, sys.stdout)
-            return 1
-        norm_days = [
-            {"slots": [{"slot": s.get("slot", ""), "dish": str(s.get("dish", "")).strip()} for s in (d.get("slots") or []) if str(s.get("dish", "")).strip()]}
-            for d in days
-        ]
-        # A capsule is not a meal — it is already on the supplement schedule,
-        # and counting it as a dish double-tells the client and skews the
-        # menu's nutrient tally. See scripts/menu_hygiene.py.
-        for note in scrub_menu_days(norm_days):
-            print(f"[app-menu] week {w.get('week')}: supplement dose removed — {note}", file=sys.stderr)
-        norm_weeks.append({
-            "week": int(w.get("week") or 0),
-            "day_dates": None,
-            "days": norm_days,
-        })
+    try:
+        norm_weeks = _normalised_weeks(menu_weeks)
+    except ValueError as e:
+        json.dump({"ok": False, "error": str(e)}, sys.stdout)
+        return 1
     if not norm_weeks:
         json.dump({"ok": False, "error": "no weeks in model output"}, sys.stdout)
         return 1

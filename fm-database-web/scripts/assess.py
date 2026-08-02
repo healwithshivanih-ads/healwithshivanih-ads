@@ -64,6 +64,9 @@ from pathlib import Path
 # Wire imports to the Python engine.
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # scripts dir
+
+from model_output import usable_dicts  # noqa: E402
 
 # VitaOne inventory JSON (refreshed by scripts/vitaone-scrape.py). Loaded
 # once and passed into the suggester so the model has visibility into
@@ -731,6 +734,35 @@ def _save_assess_cache(key: str, payload: dict) -> None:
         pass
 
 
+def _history_ai_summary(ai_analysis) -> dict:
+    """The ai_analysis-derived slice of ONE prior session's history bundle.
+
+    `ai_analysis` is model output PERSISTED into the session YAML and replayed
+    as context for every LATER assessment, which makes a malformed element here
+    unusually expensive: written once, it would abort this client's assess run
+    today, tomorrow, and every time after — long after the run that wrote it,
+    and with nothing in the failure pointing at the session that did.
+
+    So this fails soft at every layer. A partial history is worth far more than
+    a failed assessment: the AI reads this bundle to orient itself against what
+    was tried before, not to compute anything exact.
+    """
+    ai = ai_analysis if isinstance(ai_analysis, dict) else {}
+    return {
+        "synthesis_notes": ai.get("synthesis_notes", "") or "",
+        "drivers": [
+            d.get("mechanism_slug")
+            for d in usable_dicts(ai.get("likely_drivers"), "assess-history", "driver")
+        ],
+        "supplements": [
+            {"slug": sp.get("supplement_slug"), "dose": sp.get("dose")}
+            for sp in usable_dicts(
+                ai.get("supplement_suggestions"), "assess-history", "supplement"
+            )
+        ],
+    }
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -1156,8 +1188,8 @@ def main() -> int:
     prior = plan_storage.list_sessions(root, client.client_id)
     history_bundle = []
     for s in prior:
-        ai = s.ai_analysis or {}
-        notes = ai.get("synthesis_notes", "") or ""
+        ai_summary = _history_ai_summary(s.ai_analysis)
+        notes = ai_summary["synthesis_notes"]
         if len(notes) > _SYNTH_TRIM:
             notes = notes[:_SYNTH_TRIM].rstrip() + " …[truncated]"
         # Coach's own observations for this session — chief complaint, HPI,
@@ -1196,11 +1228,8 @@ def main() -> int:
             "generated_plan_slug": s.generated_plan_slug,
             "selected_symptoms": s.selected_symptoms,
             "selected_topics": s.selected_topics,
-            "drivers": [d.get("mechanism_slug") for d in (ai.get("likely_drivers") or [])],
-            "supplements": [
-                {"slug": sp.get("supplement_slug"), "dose": sp.get("dose")}
-                for sp in (ai.get("supplement_suggestions") or [])
-            ],
+            "drivers": ai_summary["drivers"],
+            "supplements": ai_summary["supplements"],
             "synthesis_notes": notes,
             "coach_notes": coach_notes,
             "client_message": client_message,
