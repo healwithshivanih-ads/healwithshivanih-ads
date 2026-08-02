@@ -23,6 +23,8 @@
  */
 import { describe, it, expect } from "vitest";
 import { spawnSync } from "node:child_process";
+import { mkdtempSync, mkdirSync, rmSync, writeFileSync, readFileSync, readdirSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
 
@@ -679,5 +681,105 @@ sys.stdout.write(json.dumps({"matched": matched, "mentions": mentions, "data": d
     expect(res.matched).toEqual(["bloating"]);
     expect(res.data.medications).toEqual(["levothyroxine"]);
     expect(res.stderr.trim()).toBe("");
+  }, PY_TEST_TIMEOUT_MS);
+});
+
+/**
+ * apply-rework reads its changes back off DISK, from a record assess-rework
+ * wrote on an earlier day. assess-rework filters on the way in now, but records
+ * already on the roster predate that — and this is the script that MUTATES plan
+ * data, so it gets the guard as well.
+ *
+ * This one drives the whole shim rather than an extracted helper: it is the
+ * end-to-end path that matters, and a temp FMDB_PLANS_DIR makes it cheap (the
+ * Client model needs six scalar fields and no catalogue read).
+ */
+describe("apply-rework survives a malformed change already on disk", () => {
+  const GOOD_SUPP = {
+    op: "add",
+    target_kind: "supplement",
+    target_slug: "magnesium-glycinate",
+    description: "Add magnesium glycinate 400 mg at bedtime",
+    reason: "sleep onset",
+  };
+  const GOOD_PRACTICE = {
+    op: "add",
+    target_kind: "practice",
+    description: "10-minute walk after dinner",
+    reason: "post-prandial glucose",
+  };
+
+  /** Write a throwaway plans root holding one client + one rework suggestion. */
+  function withPlansRoot(suggestedChanges: unknown[]): string {
+    const root = mkdtempSync(path.join(tmpdir(), "fmdb-rework-"));
+    mkdirSync(path.join(root, "clients", "cl-test"), { recursive: true });
+    writeFileSync(
+      path.join(root, "clients", "cl-test", "client.yaml"),
+      JSON.stringify(
+        {
+          client_id: "cl-test",
+          intake_date: "2026-01-05",
+          sex: "F",
+          created_at: "2026-01-05T00:00:00+00:00",
+          updated_at: "2026-01-05T00:00:00+00:00",
+          updated_by: "test",
+          rework_suggestion: {
+            generated_at: "2026-08-02T00:00:00+00:00",
+            triggered_by: "quick_note",
+            benefit_pct: 40,
+            confidence: "medium",
+            rationale: "test",
+            suggested_changes: suggestedChanges,
+          },
+        },
+        null,
+        2,
+      ), // JSON is valid YAML, so this needs no YAML writer
+    );
+    return root;
+  }
+
+  function runApplyRework(root: string) {
+    const res = spawnSync(TEST_PYTHON, [path.join(SCRIPTS, "apply-rework.py")], {
+      input: JSON.stringify({ client_id: "cl-test" }),
+      encoding: "utf-8",
+      env: { ...process.env, FMDB_PLANS_DIR: root },
+    });
+    return { ...res, parsed: res.stdout.trim() ? JSON.parse(res.stdout) : null };
+  }
+
+  it("applies the well-formed changes and skips the bare string", () => {
+    const root = withPlansRoot([GOOD_SUPP, "add vitamin D 2000 IU", GOOD_PRACTICE]);
+    try {
+      const res = runApplyRework(root);
+      expect(res.status, `python exited ${res.status}: ${res.stderr}`).toBe(0);
+      expect(res.parsed.ok).toBe(true);
+      expect(res.parsed.applied_count).toBe(2);
+      expect(res.stderr).toMatch(/malformed suggested change/i);
+      expect(res.stderr).toContain("add vitamin D 2000 IU");
+
+      // Counted is not the same as written — prove the good change reached the
+      // draft on disk, which is the artifact the coach actually opens.
+      const drafts = readdirSync(path.join(root, "drafts"));
+      expect(drafts).toHaveLength(1);
+      const draft = readFileSync(path.join(root, "drafts", drafts[0]), "utf-8");
+      expect(draft).toContain("magnesium-glycinate");
+      expect(draft).toContain("10-minute walk after dinner");
+      expect(draft).not.toContain("vitamin D 2000 IU");
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }, PY_TEST_TIMEOUT_MS);
+
+  it("leaves an all-good suggestion completely untouched", () => {
+    const root = withPlansRoot([GOOD_SUPP, GOOD_PRACTICE]);
+    try {
+      const res = runApplyRework(root);
+      expect(res.status).toBe(0);
+      expect(res.parsed.applied_count).toBe(2);
+      expect(res.stderr).not.toMatch(/malformed/i);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   }, PY_TEST_TIMEOUT_MS);
 });
