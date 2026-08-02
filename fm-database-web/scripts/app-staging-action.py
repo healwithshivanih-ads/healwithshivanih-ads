@@ -424,6 +424,22 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
             except Exception:
                 pass
 
+    # 5b. in-app chat written on the MAC → staging, so the client's app and
+    # the coach app on Fly can both see her replies. Only the Mac's own file
+    # moves in this direction; Fly's comes back the other way in _refresh.
+    # Sending the whole thread would be wrong in the other direction too —
+    # each host is the sole author of its own file, and that is what makes
+    # the pair conflict-free.
+    aperson = _auth_person(auth, client_id)
+    mac_thread = aperson / "_thread.mac.jsonl"
+    if mac_thread.exists():
+        dest = sdir / mac_thread.name
+        try:
+            if (not dest.exists()) or mac_thread.stat().st_size > dest.stat().st_size:
+                shutil.copy2(mac_thread, dest)
+        except Exception:
+            pass
+
     # 6. marker
     (sdir / "_app_staged.yaml").write_text(
         yaml.safe_dump(
@@ -616,6 +632,40 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
             except Exception as e:
                 out["errors"].append(f"{client_id} opens-merge: {e}")
 
+        # reverse-mirror: in-app chat written on Fly → authoritative store.
+        # The thread is split one file PER WRITING HOST (_thread.fly.jsonl,
+        # _thread.mac.jsonl) precisely so this copy can never conflict: Fly
+        # owns its file, the Mac owns its own, and neither is ever the
+        # destination of the other. Append-only, so a straight copy of the
+        # newer file is always correct — no merge, nothing to lose.
+        auth_person = _auth_person(auth, client_id)
+        if auth_person.exists():
+            for tf in sorted(sdir.glob("_thread.*.jsonl")):
+                if tf.name == "_thread.mac.jsonl":
+                    continue  # the Mac owns that one; never copy it backwards
+                dest = auth_person / tf.name
+                try:
+                    if (not dest.exists()) or tf.stat().st_size > dest.stat().st_size:
+                        shutil.copy2(tf, dest)
+                        out["checkins_mirrored"] += 1
+                except Exception as e:
+                    out["errors"].append(f"{client_id} thread-mirror: {e}")
+
+            # forward: the Mac's own thread file → staging, so the client app
+            # and the coach app on Fly see her replies. Done HERE rather than
+            # only in _stage_one because that path is gated on a published
+            # plan, and a conversation must not depend on whether someone has
+            # a plan yet.
+            mac_thread = auth_person / "_thread.mac.jsonl"
+            if mac_thread.exists():
+                dest = sdir / mac_thread.name
+                try:
+                    if (not dest.exists()) or mac_thread.stat().st_size > dest.stat().st_size:
+                        shutil.copy2(mac_thread, dest)
+                        out["checkins_mirrored"] += 1
+                except Exception as e:
+                    out["errors"].append(f"{client_id} thread-stage: {e}")
+
         # reverse-mirror: push subscription (written on Fly when the client
         # toggles notifications on/off in settings) → authoritative store.
         # Fly is the sole writer; newest wins.
@@ -697,7 +747,17 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
             for p in (stag / "published").glob(f"{plan_slug}-v*.yaml"):
                 p.unlink(missing_ok=True)
             shutil.rmtree(sdir / "meal-plans", ignore_errors=True)
-            marker.unlink(missing_ok=True)
+            # A live conversation OUTLIVES the plan. Dropping the marker here
+            # would stop this client syncing altogether, and the first thing
+            # they would notice is that messages to their coach stopped
+            # arriving — the moment a plan is superseded is exactly when
+            # someone is most likely to be asking about it. Plan artifacts go;
+            # the thread and the marker that keeps it flowing stay.
+            has_thread = any(sdir.glob("_thread.*.jsonl")) or any(
+                _auth_person(auth, client_id).glob("_thread.*.jsonl")
+            )
+            if not has_thread:
+                marker.unlink(missing_ok=True)
             out["purged"] += 1
             continue
 
