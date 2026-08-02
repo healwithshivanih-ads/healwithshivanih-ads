@@ -11,6 +11,8 @@ statement: In a published 800-family survey study (Matthews et al. 2024) compari
 evidence_tier: plausible_emerging
 linked_to_topics:
 - pediatric-neurodevelopmental-nutrition
+linked_to_symptoms:
+- poor-focus-adhd-pattern
 sources:
 - id: matthews-energy-blueprint-podcast-2026
   location: Podcast — research summary
