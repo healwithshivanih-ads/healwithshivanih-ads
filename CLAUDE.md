@@ -33,6 +33,22 @@ clone must enable the shared hooks path once: `git config core.hooksPath .githoo
 (also arms the existing `pre-commit` recipe validator). The full test+build gate
 stays in CI as the backstop.
 
+**Running the tests from a git WORKTREE — set `FMDB_PYTHON`.** Several suites
+(`menu-hygiene`, `recipe-generation-skip`, `prospects-sweep`,
+`model-output-tolerance`) drive the real Python. They resolve `fm-database/.venv`,
+which is untracked and therefore ABSENT in a worktree, and fall back to `python3`
+on PATH — which on this Mac has no pyyaml. CI provides those deps on PATH so it
+passes, and locally the suites fail; worse, some fail as wrong-answer
+`AssertionError`s rather than import errors, so it reads like a code regression
+and costs a debugging session. Point them at the real interpreter instead:
+```bash
+FMDB_PYTHON=/Users/shivani/code/healwithshivanih-ads/fm-database/.venv/bin/python npm test
+```
+`FMDB_PYTHON` is honoured by both `src/lib/fmdb/test-python.ts` (tests) and
+`src/lib/fmdb/shim.ts` (every shim the app spawns). Don't symlink the venv into
+the worktree instead: `.gitignore`'s `.venv/` is directory-only, so the symlink
+shows up as untracked and gets committed by accident.
+
 ## Status
 
 **v0.77–v0.78 (current, MERGED + DEPLOYED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
