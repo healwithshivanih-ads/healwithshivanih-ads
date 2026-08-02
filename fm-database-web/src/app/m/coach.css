@@ -1,0 +1,350 @@
+/* =========================================================
+   Coach mobile app (/m) — a phone-scale port of
+   "Deep Mind — Shivani Design System" (colors_and_type.css).
+
+   Everything is scoped under .m-app so it cannot leak into the
+   desktop coach UI, which /m renders on top of.
+
+   WHAT CHANGED FROM THE SOURCE SYSTEM, AND WHY:
+   - Type scale is stepped down. The web system starts at 48px h1 for
+     a 1200px container; on a 375px screen that is a headline with no
+     room for content. Ratios and tracking are preserved, sizes are not.
+   - Body stays >= 16px on inputs. Below that iOS zooms the page on
+     focus, which breaks a fixed app shell.
+   - Touch targets are 44px minimum (Apple HIG), so buttons are taller
+     than the web system's 14px padding would give.
+   Radii (2px), the near-absence of shadow, underline fields, Lucide
+   icons and the uppercase-for-eyebrow-only rule are kept exactly.
+   ========================================================= */
+
+.m-app {
+  /* ---------- Raw palette ---------- */
+  --bone: #f7f4f3;
+  --ink: #0d0d0d;
+  --indigo: #2b2d42;
+  --lavender: #8d99ae;
+  --rose: #d6a2a2;
+  --sage: #a4b5a0;
+
+  --bone-warm: #efeae8;
+  --indigo-soft: #4a4d6b;
+  --lavender-30: rgba(141, 153, 174, 0.3);
+  --lavender-15: rgba(141, 153, 174, 0.15);
+  --ink-04: rgba(13, 13, 13, 0.04);
+  --indigo-06: rgba(43, 45, 66, 0.06);
+  --indigo-12: rgba(43, 45, 66, 0.12);
+
+  /* ---------- Semantic ---------- */
+  --bg: var(--bone);
+  --bg-soft: var(--bone-warm);
+  --fg-1: var(--ink);
+  --fg-2: var(--indigo-soft);
+  --fg-3: var(--lavender);
+  --fg-inverse: var(--bone);
+  --border: var(--lavender-30);
+
+  /* ---------- Type ---------- */
+  --font-display: var(--font-libre-baskerville), Georgia, serif;
+  --font-body: var(--font-inter), Inter, system-ui, -apple-system, sans-serif;
+
+  /* Phone scale. Ratios from the web system, sizes reduced. */
+  --fs-h1: 27px;
+  --fs-h2: 21px;
+  --fs-h3: 17px;
+  --fs-body: 15px;
+  --fs-small: 13px;
+  --fs-eyebrow: 11px;
+  --tr-eyebrow: 0.14em;
+
+  /* ---------- Space / radius / motion ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --radius-1: 2px;
+  --radius-pill: 999px;
+  --shadow-1: 0 1px 2px var(--ink-04), 0 8px 24px var(--indigo-06);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-1: 200ms;
+
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Base ---------- */
+.m-app h1,
+.m-app h2,
+.m-app h3 {
+  font-family: var(--font-display);
+  font-weight: 400; /* Libre Baskerville's own weight; never bolded */
+  margin: 0;
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+.m-app h1 { font-size: var(--fs-h1); line-height: 1.14; }
+.m-app h2 { font-size: var(--fs-h2); line-height: 1.2; }
+.m-app h3 { font-size: var(--fs-h3); line-height: 1.3; }
+
+.m-app a { color: inherit; text-decoration: none; }
+
+/* Eyebrow — the ONLY sanctioned uppercase in the system. */
+.m-eyebrow {
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-2); /* see the contrast note above */
+  font-weight: 500;
+  margin: var(--space-5) 0 var(--space-2);
+}
+.m-eyebrow:first-child { margin-top: 0; }
+
+/* DIVERGENCE FROM THE SOURCE SYSTEM, on purpose.
+   The web system maps tertiary/metadata to lavender. Measured on this
+   background that is 2.63:1 — below the 4.5:1 WCAG AA floor for text, and
+   this is not decoration: it is "published · seen 1mo ago" under every name,
+   at 13px, read one-handed in daylight. Metadata therefore uses fg-2
+   (indigo-soft, 7.48:1). Lavender is kept for borders, pulse rings and the
+   divider, where it carries no reading load. */
+.m-app .m-muted { color: var(--fg-2); }
+.m-app .m-subtle { color: var(--fg-2); font-size: var(--fs-small); }
+
+/* Italic emphasis is preferred over bold, per the system's voice. */
+.m-em { font-style: italic; }
+
+/* The signature divider — short by default, never full width. */
+.m-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--indigo);
+  border: 0;
+  margin: var(--space-4) 0;
+}
+
+/* The pulse marker — "when in doubt, use the pulse marker dot". */
+.m-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--indigo);
+  flex: none;
+}
+.m-pulse--rose { background: var(--rose); }
+.m-pulse--sage { background: var(--sage); }
+.m-pulse--ringed { position: relative; }
+.m-pulse--ringed::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--lavender);
+  border-radius: 50%;
+}
+
+/* ---------- Layout ---------- */
+.m-page { padding: var(--space-4) var(--space-3) var(--space-3); }
+.m-stack > * + * { margin-top: var(--space-2); }
+
+/* ---------- Card ---------- */
+.m-card {
+  background: var(--bone);
+  border: 1px solid var(--lavender-30);
+  border-radius: var(--radius-1);
+  padding: var(--space-3);
+  transition: border-color var(--dur-1) var(--ease),
+    box-shadow var(--dur-1) var(--ease);
+}
+.m-card--link:active {
+  border-color: var(--lavender);
+  box-shadow: var(--shadow-1);
+}
+.m-card--inverse {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: var(--fg-inverse);
+}
+
+/* ---------- Icons: Lucide, 1.5px, currentColor ---------- */
+.m-ico {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+.m-ico--sm { width: 16px; height: 16px; }
+.m-ico--lg { width: 22px; height: 22px; }
+
+/* ---------- Buttons ---------- */
+.m-app .m-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px; /* HIG floor — a smaller target is a mis-tap */
+  padding: 0 var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-1);
+  border: 1px solid var(--lavender);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease),
+    border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.m-app .m-btn:active { transform: translateY(1px); }
+.m-app .m-btn--primary {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: var(--bone);
+}
+.m-app .m-btn--primary:active { background: var(--ink); border-color: var(--ink); }
+.m-btn--block { width: 100%; }
+.m-btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+/* Icon-only action, used in the contact row. */
+.m-app .m-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--lavender-30);
+  border-radius: var(--radius-1);
+  background: transparent;
+  color: var(--indigo);
+  transition: border-color var(--dur-1) var(--ease),
+    background var(--dur-1) var(--ease);
+}
+.m-app .m-iconbtn:active { background: var(--bone-warm); border-color: var(--lavender); }
+.m-row { display: flex; gap: var(--space-2); }
+
+/* ---------- Fields: underline only ---------- */
+.m-field {
+  display: block;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 16px; /* < 16px makes iOS zoom the page on focus */
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--lavender);
+  border-radius: 0; /* iOS rounds inputs by default */
+  padding: 10px 0;
+  outline: none;
+  -webkit-appearance: none;
+  transition: border-color var(--dur-1) var(--ease);
+}
+.m-field::placeholder { color: var(--fg-2); opacity: 0.75; }
+.m-field:focus { border-color: var(--indigo); }
+textarea.m-field { resize: vertical; line-height: 1.55; }
+
+.m-label {
+  display: block;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-2);
+  margin-bottom: var(--space-1);
+  font-weight: 500;
+}
+
+/* ---------- Chips ---------- */
+.m-app .m-chip {
+  display: inline-block;
+  font-size: var(--fs-small);
+  color: var(--fg-2);
+  background: var(--lavender-15);
+  border-radius: var(--radius-1);
+  padding: 3px 8px;
+  max-width: 100%;
+  overflow-wrap: anywhere; /* long condition names must wrap, not clip */
+}
+.m-app .m-chip--sage { background: rgba(164, 181, 160, 0.22); color: #3f5540; }
+.m-app .m-chip--rose { background: rgba(214, 162, 162, 0.22); color: #7c3b3b; }
+.m-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+/* ---------- Avatar: initials, not a photo ---------- */
+.m-app .m-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background: var(--indigo);
+  color: var(--bone);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  flex: none;
+}
+.m-app .m-avatar--prospect { background: transparent; color: var(--indigo); border: 1px solid var(--lavender); }
+
+/* ---------- Notices ---------- */
+.m-note {
+  border-left: 2px solid var(--indigo);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-small);
+  color: var(--fg-2);
+  background: var(--bone-warm);
+}
+.m-note--sage { border-left-color: var(--sage); }
+.m-note--rose { border-left-color: var(--rose); }
+
+/* ---------- Tab bar ---------- */
+.m-tabs {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  background: rgba(247, 244, 243, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--lavender-30);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+.m-app .m-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 9px 0 11px;
+  color: var(--fg-2);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+/* Active tab is marked by weight and a rule, not by colour alone — colour
+   alone fails for anyone who cannot distinguish these two blues. */
+.m-app .m-tab--on {
+  color: var(--indigo);
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 var(--indigo);
+}
+
+/* ---------- Chat bubbles ---------- */
+.m-bubble {
+  border-radius: var(--radius-1);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+.m-bubble--you { background: var(--bone-warm); color: var(--fg-2); }
+.m-bubble--ai { background: transparent; border: 1px solid var(--lavender-30); color: var(--fg-1); }
