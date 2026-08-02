@@ -65,7 +65,7 @@ export default async function ClientCard({
       <div style={{ display: "flex", gap: 12, alignItems: "center", margin: "16px 0 0" }}>
         <Avatar name={name} prospect={card.kind === "prospect"} />
         <div style={{ minWidth: 0 }}>
-          <h1 style={{ fontSize: "var(--fs-h2)" }}>{name}</h1>
+          <h1 style={{ fontSize: "var(--fm-text-xl)" }}>{name}</h1>
           <div className="m-subtle">
             {[g.sex, g.age_band, g.city].filter(Boolean).join(" · ") || card.kind}
           </div>
@@ -97,25 +97,25 @@ export default async function ClientCard({
 
       {sp.noted ? (
         <div style={{ marginTop: 16 }}>
-          <Note tone="sage">Note saved. It reaches the full record on the next sync.</Note>
+          <Note tone="success">Note saved. It reaches the full record on the next sync.</Note>
         </div>
       ) : null}
       {sp.sent ? (
         <div style={{ marginTop: 16 }}>
-          <Note tone="sage">WhatsApp sent.</Note>
+          <Note tone="success">WhatsApp sent.</Note>
         </div>
       ) : null}
       {sp.error ? (
         <div style={{ marginTop: 16 }}>
-          <Note tone="rose">{decodeURIComponent(sp.error)}</Note>
+          <Note tone="danger">{decodeURIComponent(sp.error)}</Note>
         </div>
       ) : null}
 
       {/* Allergies lead: they're the thing that changes what you say. */}
       {allergies.length ? (
-        <div style={{ marginTop: 16, display: "flex", gap: 8, alignItems: "flex-start", color: "var(--rose)" }}>
+        <div style={{ marginTop: 16, display: "flex", gap: 8, alignItems: "flex-start", color: "var(--fm-danger)" }}>
           <Icon name="alert" size="sm" />
-          <div style={{ fontSize: "var(--fs-small)", color: "var(--fg-1)" }}>
+          <div style={{ fontSize: "var(--fm-text-base)", color: "var(--fm-text-primary)" }}>
             <span className="m-em">Allergies</span> — {allergies.join(", ")}
           </div>
         </div>
@@ -138,7 +138,7 @@ export default async function ClientCard({
       {card.plan ? (
         <Card>
           <div className="m-chips">
-            <Chip tone={card.plan.status === "published" ? "sage" : undefined}>
+            <Chip tone={card.plan.status === "published" ? "success" : undefined}>
               {card.plan.status}
             </Chip>
             {card.plan.period_weeks ? <Chip>{card.plan.period_weeks} weeks</Chip> : null}
@@ -172,7 +172,7 @@ export default async function ClientCard({
           placeholder="What just happened — dictate it if easier"
           style={{ marginBottom: 12 }}
         />
-        <button type="submit" className="m-btn m-btn--primary m-btn--block">
+        <button type="submit" className="fm-btn primary block">
           <Icon name="note" size="sm" />
           Save note
         </button>
@@ -194,7 +194,7 @@ export default async function ClientCard({
               placeholder="Message"
               style={{ marginBottom: 12 }}
             />
-            <button type="submit" className="m-btn m-btn--block">
+            <button type="submit" className="fm-btn block">
               <Icon name="send" size="sm" />
               Send from business number
             </button>
@@ -213,7 +213,7 @@ export default async function ClientCard({
           {card.whatsapp.messages.slice(0, 8).map((m, i) => (
             <Card key={i} className="m-stack" >
               <div className="m-subtle" style={{ fontSize: 11 }}>{m.at}</div>
-              <div style={{ fontSize: "var(--fs-small)" }}>{m.text}</div>
+              <div style={{ fontSize: "var(--fm-text-base)" }}>{m.text}</div>
             </Card>
           ))}
         </>
@@ -228,16 +228,16 @@ export default async function ClientCard({
         card.sessions.slice(0, 8).map((s) => (
           <Card key={s.id} className="m-stack" >
             <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-              <span className="m-em" style={{ fontSize: "var(--fs-small)" }}>
+              <span className="m-em" style={{ fontSize: "var(--fm-text-base)" }}>
                 {s.kind.replace(/_/g, " ")}
               </span>
               <span className="m-subtle" style={{ fontSize: 11 }}>{s.date}</span>
             </div>
             {s.complaints ? (
-              <div style={{ fontSize: "var(--fs-small)" }}>{s.complaints.slice(0, 400)}</div>
+              <div style={{ fontSize: "var(--fm-text-base)" }}>{s.complaints.slice(0, 400)}</div>
             ) : null}
             {s.coach_notes ? (
-              <div className="m-subtle" style={{ fontSize: "var(--fs-small)" }}>
+              <div className="m-subtle" style={{ fontSize: "var(--fm-text-base)" }}>
                 {s.coach_notes.slice(0, 300)}
               </div>
             ) : null}

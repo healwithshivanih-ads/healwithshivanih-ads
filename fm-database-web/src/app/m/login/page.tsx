@@ -36,15 +36,14 @@ export default async function CoachMobileLoginPage({
       style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center" }}
     >
       <div style={{ maxWidth: 340, width: "100%", margin: "0 auto" }}>
-        <h1>The Ochre Tree</h1>
-        <p className="m-subtle" style={{ margin: "6px 0 0" }}>
-          Coach companion
-        </p>
-        <hr className="m-divider" />
-
+        <div className="m-pagehead">
+          <h1>The Ochre Tree</h1>
+          <p className="m-subtle">Coach companion</p>
+        </div>
+  
         {message ? (
           <div style={{ marginBottom: 20 }}>
-            <Note tone="rose">{message}</Note>
+            <Note tone="danger">{message}</Note>
           </div>
         ) : null}
 
@@ -63,7 +62,7 @@ export default async function CoachMobileLoginPage({
             className="m-field"
             style={{ marginBottom: 24 }}
           />
-          <button type="submit" className="m-btn m-btn--primary m-btn--block">
+          <button type="submit" className="fm-btn primary block">
             Sign in
           </button>
         </form>

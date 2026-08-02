@@ -38,7 +38,7 @@ function Row({
 }: {
   row: CoachIndexRow;
   why: string;
-  tone?: "rose" | "sage";
+  tone?: "primary" | "success" | "warning" | "danger";
 }) {
   return (
     <Link href={`/m/clients/${row.id}`} className="m-card m-card--link" style={{ display: "block", marginBottom: 8 }}>
@@ -49,7 +49,7 @@ function Row({
             {row.name}
           </h3>
           <div className="m-subtle" style={{ marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}>
-            <span className={`m-pulse${tone ? ` m-pulse--${tone}` : ""}`} />
+            <span className={`m-dot${tone ? ` m-dot--${tone}` : ""}`} />
             {why}
           </div>
         </div>
@@ -63,8 +63,7 @@ export default async function TodayTab() {
     return (
       <main className="m-page">
         <h1>Today</h1>
-        <hr className="m-divider" />
-        <Empty
+          <Empty
           title="Not synced yet"
           detail="FMDB_COACH_DIR isn't set on this host, so there's nothing to read. This is a setup step."
         />
@@ -98,12 +97,10 @@ export default async function TodayTab() {
 
   return (
     <main className="m-page">
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
+      <div className="m-pagehead" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
         <div>
           <h1>Today</h1>
-          <p className="m-subtle" style={{ margin: "4px 0 0" }}>
-            {rows.length} people on your list
-          </p>
+          <p className="m-subtle">{rows.length} people on your list</p>
         </div>
         {/* Account actions live here rather than in the tab bar — two tabs is
             the right amount of navigation; these are rare. */}
@@ -118,7 +115,6 @@ export default async function TodayTab() {
           </form>
         </div>
       </div>
-      <hr className="m-divider" />
 
       {nothing ? (
         <Empty
@@ -133,7 +129,7 @@ export default async function TodayTab() {
         <>
           <Eyebrow>Follow-up overdue</Eyebrow>
           {overdue.map((r) => (
-            <Row key={r.id} row={r} tone="rose" why={`${daysSince(r.next_contact_date)} days late`} />
+            <Row key={r.id} row={r} tone="danger" why={`${daysSince(r.next_contact_date)} days late`} />
           ))}
         </>
       ) : null}
@@ -154,7 +150,7 @@ export default async function TodayTab() {
             <Row
               key={r.id}
               row={r}
-              tone="sage"
+              tone="success"
               why={daysUntil(r.next_contact_date) === 0 ? "today" : `in ${daysUntil(r.next_contact_date)} days`}
             />
           ))}

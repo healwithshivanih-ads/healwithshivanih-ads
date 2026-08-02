@@ -1,12 +1,11 @@
 /**
- * Primitives for the coach mobile app, built on coach.css — a phone-scale
- * port of "Deep Mind — Shivani Design System".
+ * Primitives for the coach mobile app, built on the COACH DASHBOARD design
+ * system (src/styles/fm-v2.css) via coach.css — same palette, type scale and
+ * chip tones the coach already reads all day, at phone density.
  *
- * The system is explicit that icons are Lucide at 1.5px stroke in
- * currentColor, and that emoji are not used ("no emoji. no checkmark bullets,
- * no arrow ornaments"). Paths below are Lucide's, inlined rather than pulled
- * from a package: seven icons do not justify a dependency, and inlining keeps
- * them tintable by currentColor with no runtime.
+ * Icons are Lucide paths at 1.5px stroke in currentColor, inlined rather than
+ * pulled from a package: a dozen icons do not justify a dependency, and
+ * inlining keeps them tintable with no runtime.
  */
 import Link from "next/link";
 
@@ -62,20 +61,22 @@ export function Card({
   return <div className={`m-card ${className}`}>{children}</div>;
 }
 
+export type Tone = "primary" | "success" | "warning" | "danger";
+
 export function Chip({
   children,
   tone,
 }: {
   children: React.ReactNode;
-  tone?: "sage" | "rose";
+  tone?: Tone;
 }) {
   return (
     <span className={`m-chip${tone ? ` m-chip--${tone}` : ""}`}>{children}</span>
   );
 }
 
-/** Initials, not a photo. The system is typographic, and projecting client
- *  photos would push image data onto the public box for no clinical gain. */
+/** Initials, not a photo — projecting client photos would push image data
+ *  onto the public box for no clinical gain. */
 export function Avatar({ name, prospect }: { name: string; prospect?: boolean }) {
   const initials = name
     .trim()
@@ -95,7 +96,7 @@ export function Avatar({ name, prospect }: { name: string; prospect?: boolean })
 export function Empty({ title, detail }: { title: string; detail?: string }) {
   return (
     <Card>
-      <div style={{ fontSize: "var(--fs-body)" }}>{title}</div>
+      <div style={{ fontSize: "var(--fm-text-md)" }}>{title}</div>
       {detail ? (
         <p className="m-subtle" style={{ margin: "6px 0 0", lineHeight: 1.55 }}>
           {detail}
@@ -110,7 +111,7 @@ export function Note({
   tone,
 }: {
   children: React.ReactNode;
-  tone?: "sage" | "rose";
+  tone?: Tone;
 }) {
   return <div className={`m-note${tone ? ` m-note--${tone}` : ""}`}>{children}</div>;
 }

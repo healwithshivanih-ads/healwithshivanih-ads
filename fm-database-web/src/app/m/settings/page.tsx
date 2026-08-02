@@ -30,17 +30,16 @@ export default async function CoachMobileSettingsPage({
   return (
     <main className="m-page" style={{ maxWidth: 400, margin: "0 auto" }}>
       <BackLink href="/m/today" label="Back" />
-      <h1 style={{ fontSize: "var(--fs-h2)", marginTop: 16 }}>Change password</h1>
-      <hr className="m-divider" />
+      <h1 className="m-pagehead" style={{ fontSize: "var(--fm-text-xl)", marginTop: 16 }}>Change password</h1>
 
       {sp.changed ? (
         <div style={{ marginBottom: 20 }}>
-          <Note tone="sage">Password changed. Any other signed-in device has been logged out.</Note>
+          <Note tone="success">Password changed. Any other signed-in device has been logged out.</Note>
         </div>
       ) : null}
       {error ? (
         <div style={{ marginBottom: 20 }}>
-          <Note tone="rose">{error}</Note>
+          <Note tone="danger">{error}</Note>
         </div>
       ) : null}
 
@@ -57,7 +56,7 @@ export default async function CoachMobileSettingsPage({
         <input id="confirm_password" name="confirm_password" type="password" required minLength={8}
           autoComplete="new-password" className="m-field" style={{ marginBottom: 24 }} />
 
-        <button type="submit" className="m-btn m-btn--primary m-btn--block">Change password</button>
+        <button type="submit" className="fm-btn primary block">Change password</button>
       </form>
 
       <p className="m-subtle" style={{ marginTop: 24 }}>
