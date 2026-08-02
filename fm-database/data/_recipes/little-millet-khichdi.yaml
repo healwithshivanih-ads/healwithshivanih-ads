@@ -18,7 +18,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- little
+- little millet
 - split yellow moong dal
 - ghee
 - cumin seeds
@@ -29,7 +29,7 @@ main_ingredients:
 - salt
 contains_allergens: []
 ingredients:
-- item: little
+- item: little millet
   qty: '0.5'
   unit: cup
 - item: split yellow moong dal
@@ -57,26 +57,26 @@ ingredients:
   qty: to taste
   unit: ''
 steps:
-- Rinse the little and moong dal together until the water runs clear.
+- Rinse the little millet and moong dal together until the water runs clear.
 - Heat ghee in a pressure cooker. Add cumin seeds, ginger, and hing; sauté 20 seconds.
 - Add the diced vegetables and turmeric; stir 1 minute.
-- Add the drained little-dal, salt, and 3 cups water. Pressure-cook 3-4 whistles (or
+- Add the drained millet-dal, salt, and 3 cups water. Pressure-cook 3-4 whistles (or
   simmer covered 25 minutes) until soft and porridge-like.
 - Rest 5 minutes, fluff gently, and serve warm with a little extra ghee.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 181
+approx_kcal_per_serving: 370
 kcal_is_estimate: true
-protein_g: 7.7
+protein_g: 13.2
 good_for:
 - agni-digestive-fire
 - gut-microbiome
 - digestion-and-nutrient-absorption
-one_line: A soft, one-pot little khichdi with moong dal and vegetables — the classic
-  gut-rest meal.
-headnote: 'Khichdi is Ayurveda''s most healing everyday meal: little and moong dal
-  cooked soft together are easy to digest and gently nourishing.'
+one_line: A soft, one-pot little millet khichdi with moong dal and vegetables — the
+  classic gut-rest meal.
+headnote: 'Khichdi is Ayurveda''s most healing everyday meal: little millet and moong
+  dal cooked soft together are easy to digest and gently nourishing.'
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -94,35 +94,40 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 181
-kcal_total: 440
+kcal_per_serving: 370
+kcal_total: 740
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 181
-  protein_g: 7.7
-  carbs_g: 21.4
-  fat_g: 7.4
-  fibre_g: 4.0
-  iron_mg: 2.2
-  calcium_mg: 44.1
-  magnesium_mg: 47.3
-  zinc_mg: 1.0
-  potassium_mg: 463
-  folate_ug: 162
+  kcal: 370
+  protein_g: 13.2
+  carbs_g: 57.8
+  fat_g: 9.5
+  fibre_g: 8.3
+  iron_mg: 3.7
+  calcium_mg: 48.1
+  magnesium_mg: 104
+  zinc_mg: 1.9
+  potassium_mg: 560
+  folate_ug: 205
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 15.6
-  omega3_mg: 85.5
+  omega3_mg: 145
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
-  key: water
-  g: 0.0
+  key: millet-generic
+  g: 100.0
 - i: 1
   key: moong-dal
   g: 50.0

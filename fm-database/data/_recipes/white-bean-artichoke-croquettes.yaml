@@ -26,6 +26,7 @@ main_ingredients:
 - ground flaxseed
 - spring salts
 - lemon zest (optional)
+- ghee, for pan-frying (optional — see step 6)
 contains_allergens: []
 ingredients:
 - item: cooked white cannellini beans
@@ -46,6 +47,9 @@ ingredients:
   unit: tsp
 - item: lemon zest (optional)
   qty: '0.25'
+  unit: tsp
+- item: ghee, for pan-frying (optional — see step 6)
+  qty: '1'
   unit: tsp
 steps:
 - Preheat the oven to 350°F and line a baking sheet with parchment paper.

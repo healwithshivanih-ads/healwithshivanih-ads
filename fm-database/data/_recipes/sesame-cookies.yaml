@@ -3,8 +3,8 @@ name: Sesame Cookies
 meal_type:
 - snack
 diet:
-- vegetarian
 - gluten_free
+- eggetarian
 region: ''
 seasons:
 - autumn
@@ -26,6 +26,7 @@ main_ingredients:
 - baking soda
 - egg, whisked (or 1 flax egg)
 - sesame seeds, plus extra for topping
+- ghee or coconut oil, for greasing (or use parchment paper)
 contains_allergens:
 - sesame
 - nuts
@@ -57,6 +58,9 @@ ingredients:
   unit: ''
 - item: sesame seeds, plus extra for topping
   qty: '2'
+  unit: tsp
+- item: ghee or coconut oil, for greasing (or use parchment paper)
+  qty: '1'
   unit: tsp
 steps:
 - Preheat oven to 350°F. Grease 2 baking sheets with ghee or coconut oil, or line

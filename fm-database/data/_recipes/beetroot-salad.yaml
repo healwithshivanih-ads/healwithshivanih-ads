@@ -50,8 +50,8 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Chop or lightly steam the main vegetables/sprouts as appropriate (sprouts are gentler
-  on digestion lightly steamed).
+- Grate the beetroot raw, or steam it lightly if cooked vegetables sit easier with
+  you.
 - Toss with cucumber, lemon juice, roasted cumin, and rock salt.
 - Fold through fresh herbs and a touch of oil if using. Serve fresh.
 servings: '2'
@@ -108,7 +108,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: beetroot

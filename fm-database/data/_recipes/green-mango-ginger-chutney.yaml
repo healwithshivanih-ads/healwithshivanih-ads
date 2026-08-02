@@ -30,9 +30,9 @@ ingredients:
 - item: green mangoes
   qty: '4'
   unit: whole
-- item: small green chilies or cayenne pepper (optional heat)
+- item: small green chilies (or ¼ tsp cayenne pepper), optional heat
   qty: '2'
-  unit: chilies (or 1/4 tsp cayenne)
+  unit: ''
 - item: fresh gingerroot
   qty: '4'
   unit: inch piece

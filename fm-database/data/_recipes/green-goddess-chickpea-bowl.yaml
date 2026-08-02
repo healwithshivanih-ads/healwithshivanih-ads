@@ -48,10 +48,10 @@ ingredients:
 - item: garlic clove, minced
   qty: '1'
   unit: medium
-- item: salt
+- item: salt, for the dressing
   qty: 1/4
   unit: tsp
-- item: salt
+- item: salt, to finish the bowls
   qty: 1/8
   unit: tsp
 - item: cooked white quinoa
@@ -135,7 +135,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 version: 1
 status: active
 updated_at: '2026-07-07'

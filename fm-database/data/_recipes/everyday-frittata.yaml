@@ -4,8 +4,8 @@ meal_type:
 - breakfast
 - lunch
 diet:
-- vegetarian
 - gluten_free
+- eggetarian
 region: Ayurvedic
 seasons:
 - all
@@ -120,7 +120,7 @@ rich_in:
 - b12
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: mixed-vegetables

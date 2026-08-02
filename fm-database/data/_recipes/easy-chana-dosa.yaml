@@ -7,7 +7,6 @@ meal_type:
 - snack
 diet:
 - vegetarian
-- vegan
 - gluten_free
 - dairy_free
 region: India
@@ -119,7 +118,7 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: besan

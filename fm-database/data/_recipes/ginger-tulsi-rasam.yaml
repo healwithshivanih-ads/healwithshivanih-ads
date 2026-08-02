@@ -34,18 +34,18 @@ ingredients:
 - item: water (warm, for soaking)
   qty: '1.5'
   unit: cup
-- item: tomato
+- item: tomato, roughly chopped
   qty: '2'
-  unit: medium, roughly chopped
-- item: fresh ginger
+  unit: medium
+- item: fresh ginger, grated or pounded
   qty: '2'
-  unit: inch piece, grated or pounded
+  unit: inch piece
 - item: fresh tulsi (holy basil) leaves
   qty: '20'
   unit: whole leaves
-- item: black pepper
+- item: black pepper, coarsely cracked
   qty: '1.5'
-  unit: tsp, coarsely cracked
+  unit: tsp
 - item: cumin seeds
   qty: '1'
   unit: tsp
@@ -64,15 +64,15 @@ ingredients:
 - item: cold-pressed coconut oil
   qty: '1'
   unit: tsp
-- item: salt
+- item: salt, or to taste
   qty: '1'
-  unit: tsp, or to taste
+  unit: tsp
 - item: water (for rasam)
   qty: '3'
   unit: cup
-- item: coriander leaves
+- item: coriander leaves, chopped
   qty: '2'
-  unit: tbsp, chopped
+  unit: tbsp
 steps:
 - Soak the tamarind in 1.5 cups warm water for 10 minutes, then squeeze and strain
   to extract the pulp; discard the fibre.

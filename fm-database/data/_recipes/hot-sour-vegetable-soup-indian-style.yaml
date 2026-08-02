@@ -29,30 +29,30 @@ contains_allergens:
 - sesame
 - soy
 ingredients:
-- item: fresh ginger
+- item: fresh ginger, finely grated
   qty: '2'
-  unit: inch piece, finely grated
-- item: garlic
+  unit: inch piece
+- item: garlic, minced
   qty: '6'
-  unit: cloves, minced
-- item: green chilli
+  unit: cloves
+- item: green chilli, slit
   qty: '2'
-  unit: whole, slit
-- item: carrot
+  unit: whole
+- item: carrot, julienned
   qty: '1'
-  unit: medium, julienned
-- item: French beans
+  unit: medium
+- item: French beans, finely sliced on the diagonal
   qty: '8'
-  unit: whole, finely sliced on the diagonal
-- item: cabbage
+  unit: whole
+- item: cabbage, thinly shredded
   qty: '1'
-  unit: cup, thinly shredded
-- item: tomato
+  unit: cup
+- item: tomato, finely chopped
   qty: '2'
-  unit: medium, finely chopped
-- item: spring onion greens
+  unit: medium
+- item: spring onion greens, sliced
   qty: '3'
-  unit: tbsp, sliced
+  unit: tbsp
 - item: apple cider vinegar or white vinegar
   qty: '2'
   unit: tbsp
@@ -71,15 +71,15 @@ ingredients:
 - item: water or light vegetable stock
   qty: '5'
   unit: cup
-- item: salt
+- item: salt, or to taste
   qty: '1'
-  unit: tsp, or to taste
-- item: cornflour (corn starch)
+  unit: tsp
+- item: cornflour (corn starch), for very light body)
   qty: '1'
-  unit: tbsp (optional, for very light body)
-- item: coriander leaves
+  unit: tbsp (optional
+- item: coriander leaves, chopped
   qty: '2'
-  unit: tbsp, chopped
+  unit: tbsp
 steps:
 - Heat sesame oil in a deep pot over medium-high flame. Add ginger, garlic, and green
   chillies; sauté for 1–2 minutes until fragrant but not browned.

@@ -40,15 +40,15 @@ ingredients:
 - item: water (warm, for soaking)
   qty: '1'
   unit: cup
-- item: tomato
+- item: tomato, roughly chopped
   qty: '2'
-  unit: medium, roughly chopped
-- item: fresh ginger
+  unit: medium
+- item: fresh ginger, grated
   qty: '1'
-  unit: inch piece, grated
-- item: black pepper
+  unit: inch piece
+- item: black pepper, coarsely cracked
   qty: '2'
-  unit: tsp, coarsely cracked
+  unit: tsp
 - item: whole black peppercorns
   qty: '0.5'
   unit: tsp
@@ -73,15 +73,15 @@ ingredients:
 - item: cold-pressed sesame oil
   qty: '1.5'
   unit: tsp
-- item: salt
+- item: salt, or to taste
   qty: '1'
-  unit: tsp, or to taste
+  unit: tsp
 - item: water (for rasam)
   qty: '3.5'
   unit: cup
-- item: coriander leaves
+- item: coriander leaves, chopped
   qty: '2'
-  unit: tbsp, chopped
+  unit: tbsp
 steps:
 - Pressure-cook the moong dal with 1 cup water for 2 whistles until soft but not mushy;
   set aside. Alternatively, boil in an open pot for 15 minutes.

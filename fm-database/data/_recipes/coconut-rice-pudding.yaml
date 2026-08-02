@@ -46,9 +46,9 @@ ingredients:
 - item: cardamom powder
   qty: '0.25'
   unit: tsp
-- item: fresh mint leaves for garnish
-  qty: '1'
-  unit: few leaves
+- item: a few leaves fresh mint leaves for garnish
+  qty: ''
+  unit: ''
 steps:
 - Combine the cooked rice and coconut milk in a medium saucepan and heat over medium-high,
   stirring, until the mixture comes to a boil.
@@ -97,25 +97,25 @@ kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 391
   protein_g: 5.8
-  carbs_g: 47.1
+  carbs_g: 47.2
   fat_g: 21.9
-  fibre_g: 3.7
-  iron_mg: 3.6
-  calcium_mg: 56.3
-  magnesium_mg: 74.4
+  fibre_g: 3.8
+  iron_mg: 3.7
+  calcium_mg: 59.2
+  magnesium_mg: 75.3
   zinc_mg: 1.4
-  potassium_mg: 456
-  folate_ug: 20.1
+  potassium_mg: 463
+  folate_ug: 21.6
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 1.3
-  omega3_mg: 5.3
+  vit_c_mg: 1.4
+  omega3_mg: 10.0
 nutrient_coverage_pct: 100.0
 rich_in:
 - iron
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: rice-cooked
@@ -137,5 +137,5 @@ nutrient_lines:
   g: 0.46875
 - i: 6
   key: mint-fresh
-  g: 0.15
+  g: 3.0
 nutrient_servings: 2.0

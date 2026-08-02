@@ -42,10 +42,11 @@ steps:
 - Rinse the foxtail millet well — millets carry more surface starch than rice.
 - Soak the millet separately, and the urad dal with methi, for 5 hours.
 - Grind the dal light and fluffy, then the millet slightly coarse. Mix with salt and
+  ferment 8–10 hours.
 - Millet batter ferments faster than rice batter in warm weather, so check it early.
 - Spread thin on a hot tawa, oil the edges, and cook until golden and crisp underneath.
 - This batter makes about 12 dosas — roughly 5 servings. Refrigerate what you don't
-  cook and use it within 3 days. ferment 8–10 hours.
+  cook and use it within 3 days.
 servings: '5'
 prep_time_min: 20
 cook_time_min: 22
@@ -105,7 +106,7 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: millet-foxtail

@@ -4,9 +4,8 @@ meal_type:
 - soup
 - dinner
 diet:
-- vegetarian
-- vegan
 - gluten_free
+- non_vegetarian
 region: Indian
 seasons:
 - all

@@ -34,11 +34,24 @@ ALLERGENS = {"dairy", "gluten", "nuts", "peanut", "soy", "egg", "fish", "shellfi
 
 REQUIRED = ("slug", "name", "meal_type", "one_line")
 
-# template slots that were meant to be substituted before the recipe shipped
-_PLACEHOLDER_RE = re.compile(r"\(as named\)|\bas named\b|\(as appropriate\)|<[a-z_]+>|\{\{", re.I)
+# template slots that were meant to be substituted before the recipe shipped.
+# `as appropriate` is matched bare, not only in parentheses: the seven salads
+# that shipped "steam the main vegetables/sprouts as appropriate" wrote it
+# unbracketed, so the parenthesised form alone reported nothing.
+_PLACEHOLDER_RE = re.compile(
+    r"\(as named\)|\bas named\b|\bas appropriate\b|<[a-z_]+>|\{\{", re.I)
 
 IMAGE_RIGHTS = (None, "", "none", "book_reference_uncleared", "web_reference_uncleared",
                 "licensed", "original", "original_generated", "generated_reference")
+
+# words that describe a food but never name one — see the ingredient check in
+# check_recipe(). Deliberately excludes real one-word foods the library uses as
+# shorthand (chana, moong, toor, masoor, palak, ragi, til, coconut, mint…).
+_MODIFIER_ONLY = {"little", "large", "small", "medium", "green", "red", "white",
+                  "black", "mixed", "vegetable", "vegetables", "fresh", "whole",
+                  "raw", "plain", "sweet", "hot", "quick", "easy", "assorted"}
+_MILLET_STEMS = {"foxtail", "kodo", "sama", "samak", "barnyard", "proso",
+                 "browntop", "kutki", "kangni"}
 
 # ingredient keyword -> allergen. Ghee is deliberately NOT dairy (library
 # convention). Word-boundary matched, so "til " needs no trailing-space hack
@@ -189,6 +202,28 @@ def check_recipe(d: dict, fname: str) -> tuple[list[str], list[str]]:
         if _PLACEHOLDER_RE.search(item):
             errs.append(f"{fname}: {item!r} still holds a template placeholder "
                         f"— substitute the food the title names")
+
+    # …and in the STEPS. The guard above only ever read the two ingredient
+    # lists, so seven salads shipped step 1 as "Chop or lightly steam the main
+    # vegetables/sprouts as appropriate" — a beetroot salad telling the client
+    # to steam sprouts it does not contain. The client reads the method.
+    for n, s in enumerate(d.get("steps") or [], 1):
+        if _PLACEHOLDER_RE.search(str(s)):
+            errs.append(f"{fname}: step {n} still holds a template placeholder "
+                        f"— write the step for the food this recipe actually uses")
+
+    # A one-word ingredient that is only a MODIFIER names no food: the recipe
+    # generator substituted the first slug token into the item and stopped, so
+    # the client's card read "½ cup little" (little-millet-khichdi), "1 cup
+    # green" (green-chutney), "1 cup vegetable" (vegetable-millet-pulao).
+    # Bare millet varieties are the same bug one step later — "foxtail" and
+    # "sama" are not foods until the word `millet` follows them.
+    for i in (d.get("ingredients") or []):
+        item = str(i.get("item", "") if isinstance(i, dict) else i).strip()
+        w = item.lower()
+        if w in _MODIFIER_ONLY or (w in _MILLET_STEMS and "millet" not in w):
+            errs.append(f"{fname}: ingredient {item!r} names no food — it is the "
+                        f"slug's first word, not the ingredient")
 
     # a name cut mid-parenthesis ("Prawn omelette (75g prawns") is a bad split,
     # and the client sees the raw title

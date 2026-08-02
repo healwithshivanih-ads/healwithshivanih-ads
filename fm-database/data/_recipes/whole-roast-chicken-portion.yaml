@@ -14,7 +14,7 @@ diet:
 - dairy_free
 region: Indian
 main_ingredients:
-- 1 leg/thigh portion
+- 1 chicken leg/thigh portion
 - 1 tsp ginger-garlic paste
 - 1/2 tsp turmeric
 - 1/2 tsp pepper
@@ -23,7 +23,7 @@ main_ingredients:
 - few curry leaves
 contains_allergens: []
 ingredients:
-- item: 1 leg/thigh portion
+- item: 1 chicken leg/thigh portion
 - item: 1 tsp ginger-garlic paste
 - item: 1/2 tsp turmeric
 - item: 1/2 tsp pepper
