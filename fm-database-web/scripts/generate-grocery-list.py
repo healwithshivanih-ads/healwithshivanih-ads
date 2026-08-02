@@ -147,6 +147,37 @@ def _build_user(payload: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def _usable_weeks(raw: Any, wk_no: int) -> list[dict[str, Any]]:
+    """Keep the well-formed week objects, stamped with the source week number.
+
+    Defensive, same posture as _merge_recipes in generate-week-recipes.py and
+    fmdb.ingest.staging: the model occasionally emits a bare string or null
+    where an object belongs. The caller used to assign straight into each
+    element (`gw["week"] = wk_no`), so one such entry raised TypeError and cost
+    the entire grocery list — the same failure that lost cl-006's recipe pack
+    on 2026-08-02, one cron over. Record it on stderr and skip it instead.
+    """
+    if not isinstance(raw, list):
+        print(
+            f"[grocery] week {wk_no}: model returned {type(raw).__name__} for 'weeks' "
+            f"(expected list) — skipped: {str(raw)[:120]}",
+            file=sys.stderr,
+        )
+        return []
+    out: list[dict[str, Any]] = []
+    for gw in raw:
+        if not isinstance(gw, dict):
+            print(
+                f"[grocery] week {wk_no}: skipping malformed entry — model emitted "
+                f"{type(gw).__name__} (expected object): {str(gw)[:120]}",
+                file=sys.stderr,
+            )
+            continue
+        gw["week"] = wk_no  # force the source week number (model may echo 1)
+        out.append(gw)
+    return out
+
+
 def main() -> None:
     _load_dotenv()
     payload = json.loads(sys.stdin.read() or "{}")
@@ -209,9 +240,14 @@ def main() -> None:
             print(json.dumps({"ok": False, "error": f"model returned no grocery data (week {wk_no})", "path": None, "weeks": [], "usage": None}))
             return
 
-        for gw in tool_input["weeks"]:
-            gw["week"] = wk_no  # force the source week number (model may echo 1)
-            all_weeks.append(gw)
+        good_weeks = _usable_weeks(tool_input["weeks"], wk_no)
+        if not good_weeks:
+            # Every entry for this week was malformed. Same bail as the
+            # no-weeks case above: a grocery list silently missing a week is
+            # worse than none, because the client shops from it.
+            print(json.dumps({"ok": False, "error": f"model returned no usable grocery data (week {wk_no})", "path": None, "weeks": [], "usage": None}))
+            return
+        all_weeks.extend(good_weeks)
 
         try:
             from fmdb.usage import log_usage  # noqa: E402
