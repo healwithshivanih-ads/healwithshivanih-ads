@@ -25,6 +25,13 @@ linked_to_topics:
 linked_to_mechanisms:
 - immune-food-reactivity
 linked_to_supplements: []
+linked_to_symptoms:
+- brain-fog
+- digestive-discomfort
+- food-intolerance-reactions
+- food-sensitivities
+- anaphylaxis
+- joint-pain
 sources:
 - id: fmca-m11-food-sensitivity
   location: Defining food reactions — three buckets

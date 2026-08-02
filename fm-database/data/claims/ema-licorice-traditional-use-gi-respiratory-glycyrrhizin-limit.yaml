@@ -35,6 +35,9 @@ linked_to_mechanisms:
 linked_to_supplements:
 - licorice-root
 - dgl-licorice
+linked_to_symptoms:
+- heartburn
+- post-nasal-drip
 sources:
 - id: ema-hmpc-herbal-monographs
   location: EMA/HMPC Community Herbal Monograph on Glycyrrhiza glabra L. and/or Glycyrrhiza inflata Bat.

@@ -12,6 +12,8 @@ linked_to_topics: []
 linked_to_mechanisms:
 - leaky-gut
 linked_to_supplements: []
+linked_to_symptoms:
+- chronic-pain
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: NSAIDs reduce lactobacilli, impair mucus and cause leaky gut/mucosal injury.

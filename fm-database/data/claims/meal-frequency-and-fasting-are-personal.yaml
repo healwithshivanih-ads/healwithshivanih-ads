@@ -13,6 +13,8 @@ linked_to_topics:
 - irritable-bowel-syndrome
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- unexplained-weight-gain
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Eat every 3-5 h if hypoglycaemic, but fasting/2-meals can rest and help the

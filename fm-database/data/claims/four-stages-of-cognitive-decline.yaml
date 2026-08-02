@@ -10,6 +10,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - cognitive-decline
 - recode-protocol
+linked_to_symptoms:
+- poor-concentration
 sources:
 - id: bredesen-energy-blueprint-podcast-2026
   location: Podcast — four stages segment

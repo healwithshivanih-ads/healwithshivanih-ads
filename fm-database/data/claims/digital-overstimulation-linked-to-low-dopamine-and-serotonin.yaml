@@ -20,6 +20,10 @@ linked_to_supplements:
 - omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-motivation
+- low-mood
+- anxiety
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 17

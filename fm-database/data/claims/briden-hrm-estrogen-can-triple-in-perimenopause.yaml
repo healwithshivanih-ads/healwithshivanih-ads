@@ -8,6 +8,10 @@ evidence_tier: strong
 linked_to_topics:
 - second-puberty-perimenopause
 - estrogen-dominance
+linked_to_symptoms:
+- perimenopause-symptoms
+- night-sweats
+- breast-tenderness
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 4 — High and fluctuating estrogen, pg 78

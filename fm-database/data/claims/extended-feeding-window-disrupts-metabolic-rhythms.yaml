@@ -30,6 +30,10 @@ linked_to_topics:
 linked_to_mechanisms:
 - peripheral-clock-feeding-window-coupling
 - scn-light-entrainment
+linked_to_symptoms:
+- fatty-liver
+- elevated-fasting-insulin
+- inflammation
 sources:
 - id: hatori-2012-time-restricted-feeding-mice
   location: Discussion

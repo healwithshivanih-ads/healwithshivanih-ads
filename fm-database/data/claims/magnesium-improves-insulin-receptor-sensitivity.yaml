@@ -14,6 +14,8 @@ linked_to_supplements:
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Diabetes / insulin resistance section

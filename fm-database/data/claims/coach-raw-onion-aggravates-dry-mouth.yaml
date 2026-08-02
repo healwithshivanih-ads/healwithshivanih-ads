@@ -37,6 +37,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - estrogen-decline
 linked_to_supplements: []
+linked_to_symptoms:
+- dry-mouth
 sources:
 - id: coach-shivani
   location: Coach clinical observation — logged 2026-07-28 via cl-022 Nazneen

@@ -24,6 +24,8 @@ caveats:
 linked_to_topics:
 - essential-hypertension
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 63 — High Blood Pressure, Treatment Summary pg 1070

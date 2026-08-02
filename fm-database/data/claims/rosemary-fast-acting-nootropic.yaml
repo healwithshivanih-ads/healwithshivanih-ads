@@ -9,6 +9,8 @@ statement: Rosemary acts as a fast-acting nootropic — cognitive improvement is
 evidence_tier: plausible_emerging
 linked_to_topics:
 - iodine-excess-and-autoimmune-thyroid
+linked_to_symptoms:
+- brain-fog
 sources:
 - id: christianson-energy-blueprint-podcast-2026
   location: Podcast — rosemary segment

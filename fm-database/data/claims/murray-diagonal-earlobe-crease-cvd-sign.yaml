@@ -25,6 +25,8 @@ linked_to_topics:
 - atherosclerosis
 - atherogenic-dyslipidemia
 linked_to_supplements: []
+linked_to_symptoms:
+- diagonal-earlobe-crease
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 11 — Heart and Cardiovascular Health, Quick Review pg 272

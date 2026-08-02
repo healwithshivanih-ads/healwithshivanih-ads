@@ -26,6 +26,10 @@ linked_to_mechanisms:
 - histamine-catabolism-dao
 out_of_scope_notes: ''
 linked_to_supplements: []
+linked_to_symptoms:
+- nasal-congestion
+- flushing
+- headache
 sources:
 - id: dirty-genes-lynch
   location: Chapter 1 — The Clean Genes Protocol

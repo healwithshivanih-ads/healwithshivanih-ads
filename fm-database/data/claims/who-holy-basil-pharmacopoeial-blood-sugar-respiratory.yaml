@@ -31,6 +31,8 @@ linked_to_mechanisms:
 - insulin-resistance
 linked_to_supplements:
 - holy-basil
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Folium Ocimi Sancti, WHO Monographs on Selected Medicinal Plants, Volume 2, pp. 206–215 (https://apps.who.int/iris/handle/10665/42052)

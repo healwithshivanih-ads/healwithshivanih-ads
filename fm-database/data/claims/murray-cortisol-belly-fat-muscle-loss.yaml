@@ -28,6 +28,10 @@ linked_to_topics:
 - hpa-axis-cortisol-regulation
 - insulin-resistance
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
+- stress
+- abdominal-obesity
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 15 — Stress Management, Quick Review pg 351

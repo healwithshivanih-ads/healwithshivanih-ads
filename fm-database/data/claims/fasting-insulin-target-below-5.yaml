@@ -18,6 +18,10 @@ linked_to_topics:
 - dyslipidemia
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-fasting-insulin
+- insulin-resistance
+- dyslipidemia
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 3

@@ -8,6 +8,8 @@ linked_to_topics:
 - migraine-headache
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- migraine
 sources:
 - id: mayoclinic-migraine-2026
   location: Mayo Clinic page — Treatment, Pain-relieving medicines

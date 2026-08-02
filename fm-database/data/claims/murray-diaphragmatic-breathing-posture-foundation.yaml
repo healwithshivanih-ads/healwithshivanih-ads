@@ -28,6 +28,8 @@ linked_to_topics:
 - chronic-stress
 - hpa-axis-cortisol-regulation
 linked_to_supplements: []
+linked_to_symptoms:
+- lower-back-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 6 — Supplementary Measures, Quick Review pg 142

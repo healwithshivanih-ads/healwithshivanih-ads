@@ -5,6 +5,8 @@ statement: When a client brings low mood or body-image concerns, don't bypass ou
 evidence_tier: plausible_emerging
 linked_to_topics:
 - coach-scope-and-legal-foundations
+linked_to_symptoms:
+- low-mood
 sources:
 - id: ukihca-csm-young-adult-scope-2026-01
   location: Reflection notes

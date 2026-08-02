@@ -17,6 +17,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - insulin-resistance
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: PCOD Cheatsheet — Functional Medicine Clinical Wisdom

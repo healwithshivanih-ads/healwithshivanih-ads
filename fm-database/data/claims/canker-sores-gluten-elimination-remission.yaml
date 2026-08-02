@@ -6,6 +6,8 @@ evidence_tier: strong
 linked_to_topics:
 - canker-sores
 - celiac-disease
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 31 — Canker Sores, pg 617-618

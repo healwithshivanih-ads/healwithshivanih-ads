@@ -22,6 +22,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - ovulation-suppression-pseudo-hormone-replacement
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: welch-balance-your-hormones-2011
   location: 'Chapter 11 — Birth Control: Risks Associated with Synthetic Hormonal Contraceptive Methods'

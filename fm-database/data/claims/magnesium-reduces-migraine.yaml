@@ -20,6 +20,8 @@ linked_to_supplements:
 - magnesium-glycinate
 - magnesium-citrate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- headaches
 sources:
 - id: vitaone-health-coaching-toolkit
   location: MIGRAINE / HEADACHE — 3. Magnesium Citrate / Glycinate

@@ -8,6 +8,8 @@ evidence_tier: strong
 linked_to_topics:
 - perimenopause
 - genitourinary-syndrome-menopause
+linked_to_symptoms:
+- dysmenorrhea
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 5 — Zinc, pg 133; Ch 10 — Zinc for GSM, pg 260

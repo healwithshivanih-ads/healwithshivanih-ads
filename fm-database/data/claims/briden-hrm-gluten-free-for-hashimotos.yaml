@@ -8,6 +8,10 @@ statement: Gluten-free diet significantly improves Hashimoto's — up to 15% of 
 evidence_tier: strong
 linked_to_topics:
 - hypothyroidism
+linked_to_symptoms:
+- food-sensitivities
+- brain-fog
+- eczema-psoriasis-skin
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 8 — Avoid gluten, pg 208

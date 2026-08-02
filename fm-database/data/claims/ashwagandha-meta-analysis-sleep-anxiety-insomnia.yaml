@@ -24,6 +24,8 @@ linked_to_mechanisms:
 - gaba-receptor-modulation
 linked_to_supplements:
 - ashwagandha
+linked_to_symptoms:
+- anxiety
 sources:
 - id: pubmed-39083548
   location: 'Safety and efficacy of Withania somnifera for anxiety and insomnia: Systematic review and

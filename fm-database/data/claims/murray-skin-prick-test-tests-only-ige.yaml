@@ -53,6 +53,8 @@ out_of_scope_notes: >
   an allergist's interpretation, or advise a client to disregard a positive result.
   IgE-mediated allergy carries anaphylaxis risk and is clinician territory
   end to end.
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 52 — Food Allergy, pg 943

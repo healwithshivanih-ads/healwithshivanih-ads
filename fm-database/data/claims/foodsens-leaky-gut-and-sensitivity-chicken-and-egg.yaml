@@ -22,6 +22,9 @@ linked_to_mechanisms:
 - tight-junction-dysfunction
 - immune-food-reactivity
 linked_to_supplements: []
+linked_to_symptoms:
+- food-intolerance-reactions
+- food-sensitivities
 sources:
 - id: fmca-m11-food-sensitivity
   location: Chicken-and-egg — gut and food

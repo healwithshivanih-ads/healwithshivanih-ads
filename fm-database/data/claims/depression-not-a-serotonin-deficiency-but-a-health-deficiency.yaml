@@ -18,6 +18,10 @@ linked_to_topics:
 coaching_translation: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
+- inflammation
+- low-mood
 sources:
 - id: dirty-genes-lynch
   location: 'Chapter 8 — MAO Inhibitors: Mere Band-Aids'

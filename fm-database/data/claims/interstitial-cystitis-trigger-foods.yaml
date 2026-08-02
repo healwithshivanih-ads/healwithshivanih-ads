@@ -10,6 +10,8 @@ linked_to_topics:
 - cystitis-and-interstitial-cystitis
 linked_to_supplements:
 - hyaluronic-acid
+linked_to_symptoms:
+- urinary-tract-infections
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 43 — Cystitis, pg 747-748

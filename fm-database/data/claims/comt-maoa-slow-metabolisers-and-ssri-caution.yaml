@@ -17,6 +17,8 @@ linked_to_mechanisms:
 - catechol-clearance-comt-maoa
 - neurotransmitter-synthesis-impairment
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: fmca-m11-genetics-epigenetics-joffe
   location: Mary case — mood & behaviour

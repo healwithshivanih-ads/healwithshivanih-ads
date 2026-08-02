@@ -44,6 +44,8 @@ out_of_scope_notes: >
   stress, sleep and relationship context alongside medical care. Clinician scope: the
   entire diagnostic workup — history, examination, bloods, hormone levels, penile
   monitoring, vascular and neurological assessment.
+linked_to_symptoms:
+- erectile-dysfunction
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 49 — Erectile Dysfunction, pg 902

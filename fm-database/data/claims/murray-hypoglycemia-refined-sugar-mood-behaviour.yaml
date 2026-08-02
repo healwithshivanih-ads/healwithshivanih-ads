@@ -11,6 +11,13 @@ linked_to_topics:
 - hypoglycemia
 - depression-like-symptoms
 - nutrient-deficiency-depression
+linked_to_symptoms:
+- migraine
+- anxiety
+- hypoglycemia-symptoms
+- palpitations
+- low-mood
+- headache
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 67 — Hypoglycemia, pg 1116-1119

@@ -30,6 +30,8 @@ linked_to_supplements:
 - bromelain
 - n-acetylcysteine
 - nac
+linked_to_symptoms:
+- nasal-congestion
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 92 — Sinus Infections, Treatment Summary pg 1509–1510

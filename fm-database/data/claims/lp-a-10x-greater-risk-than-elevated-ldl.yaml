@@ -18,6 +18,8 @@ linked_to_supplements:
 - vitamin-c
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- dyslipidemia
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Further Refinement of Determining Risk

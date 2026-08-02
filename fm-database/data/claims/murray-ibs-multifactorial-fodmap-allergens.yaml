@@ -28,6 +28,8 @@ linked_to_topics:
 - ibs-ibd-differentiation
 - sibo
 linked_to_supplements: []
+linked_to_symptoms:
+- irritable-bowel
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 72 — Irritable Bowel Syndrome, Treatment Summary pg 1199–1200

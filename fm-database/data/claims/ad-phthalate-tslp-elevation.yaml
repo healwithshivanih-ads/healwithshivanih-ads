@@ -18,6 +18,8 @@ linked_to_mechanisms:
 - tslp-driven-th2-polarization
 out_of_scope_notes: ''
 linked_to_supplements: []
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: pizzorno-textbook-gi-2
   location: Atopic Dermatitis — Immune Dysregulation, Thymic Stromal Lymphopoietin,

@@ -15,6 +15,9 @@ evidence_tier: strong
 linked_to_topics:
 - lifestyle-epigenetic-mismatch-paradigm
 - sarcopenia-skeletal-muscle-loss
+linked_to_symptoms:
+- insulin-resistance
+- low-mood
 sources:
 - id: chestnut-energy-blueprint-podcast-2026
   location: Podcast — movement as nutrient segment

@@ -36,6 +36,8 @@ linked_to_mechanisms: []
 out_of_scope_notes: Kava use overlapping with SSRI/SNRI medication is a clinician
   decision and generally avoided. Coach role — surface the option for clients NOT
   on SSRIs and ensure liver monitoring is set up.
+linked_to_symptoms:
+- anxiety
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety, pg 502–506

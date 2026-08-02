@@ -20,6 +20,8 @@ linked_to_topics:
 linked_to_supplements:
 - slippery-elm
 linked_to_mechanisms: []
+linked_to_symptoms:
+- rectal-bleeding
 sources:
 - id: barbara-oneil-gi-tract
   location: IBD Case Study Section

@@ -9,6 +9,8 @@ linked_to_topics:
 - menorrhagia
 linked_to_supplements:
 - fish-oil-epa-dha
+linked_to_symptoms:
+- prolonged-bleeding
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 76 — Menorrhagia, pg 1254-1257

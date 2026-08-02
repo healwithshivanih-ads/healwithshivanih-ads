@@ -11,6 +11,10 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - leptin-insulin-cortisol-energy-gate
 - insulin-resistance-metabolic-syndrome
+linked_to_symptoms:
+- stress
+- excess-body-weight
+- unexplained-weight-gain
 sources:
 - id: masterjohn-energy-blueprint-podcast-2026
   location: Podcast — body composition fertility segment

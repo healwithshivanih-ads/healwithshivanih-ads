@@ -25,6 +25,9 @@ linked_to_mechanisms:
 - leaky-gut
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- intestinal-dysbiosis-symptoms
+- food-sensitivities
 sources:
 - id: pizzorno-gi-trio
   location: Irritable Bowel Syndrome — Additional Considerations (pp 582)

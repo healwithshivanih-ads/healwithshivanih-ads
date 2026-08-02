@@ -27,6 +27,8 @@ linked_to_topics:
 linked_to_supplements:
 - vitamin-d
 - vitamin-d3
+linked_to_symptoms:
+- stress
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 13 — Longevity, Quick Review pg 317

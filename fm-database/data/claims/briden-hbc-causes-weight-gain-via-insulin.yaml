@@ -25,6 +25,9 @@ out_of_scope_notes: ''
 linked_to_mechanisms:
 - ovulation-suppression-pseudo-hormone-replacement
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
+- sugar-cravings
 sources:
 - id: briden-period-repair-manual-2018
   location: Chapter 2 — Weight Gain, pg 34

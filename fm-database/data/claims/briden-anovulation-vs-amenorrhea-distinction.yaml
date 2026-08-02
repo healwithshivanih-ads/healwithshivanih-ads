@@ -21,6 +21,8 @@ linked_to_topics:
 - healthy-menstrual-cycle-baseline
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- irregular-periods
 sources:
 - id: briden-blog-irregular-periods-pcos-vs-hypothalamic
   location: Blog post — Refresher section

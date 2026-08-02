@@ -34,6 +34,9 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - red-clover-isoflavones
+linked_to_symptoms:
+- anxiety
+- low-mood
 sources:
 - id: herbalgram-121-botanicals-womens-health-2019
   location: Research Reviews — Systematic Review of Herbal Medicines for Depression

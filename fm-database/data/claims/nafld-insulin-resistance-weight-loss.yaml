@@ -13,6 +13,8 @@ linked_to_topics:
 - metabolic-syndrome
 linked_to_mechanisms:
 - insulin-resistance
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 80 — NAFLD/NASH, pg 1293-1295

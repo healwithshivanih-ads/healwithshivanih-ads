@@ -22,6 +22,8 @@ linked_to_supplements:
 - fish-oil-epa-dha
 - fish-oil-omega-3
 out_of_scope_notes: ''
+linked_to_symptoms:
+- muscle-aches-joint-pain
 sources:
 - id: pizzorno-autoimmune-ra
   location: Rheumatoid Arthritis — Omega-3 Fatty Acids (pp 885)

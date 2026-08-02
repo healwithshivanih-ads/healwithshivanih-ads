@@ -33,6 +33,12 @@ linked_to_supplements:
 - st-johns-wort
 out_of_scope_notes: SSRI tapering is clinician scope. Coach role — patient education
   + supportive nutrient + lifestyle work alongside clinician's taper plan.
+linked_to_symptoms:
+- anxiety
+- numbness-tingling
+- blurred-vision
+- vivid-dreams
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression, Treatment Summary pg 792–793

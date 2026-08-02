@@ -10,6 +10,8 @@ linked_to_topics:
 - depression-like-symptoms
 - depression-lifestyle
 - major-depressive-disorder
+linked_to_symptoms:
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression, pg 768-769

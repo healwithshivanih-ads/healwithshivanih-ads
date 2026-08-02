@@ -30,6 +30,8 @@ linked_to_supplements:
 - pyridoxine-b6
 - pyridoxal-5-phosphate
 out_of_scope_notes: ''
+linked_to_symptoms:
+- low-mood
 sources:
 - id: pizzorno-womens-trio
   location: Premenstrual Syndrome — Vitamin B6 (pp 836-837)

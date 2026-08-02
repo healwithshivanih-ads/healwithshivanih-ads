@@ -19,6 +19,8 @@ linked_to_topics:
 linked_to_supplements:
 - probiotic-lactobacillus-acidophilus-bifidus
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: barbara-oneil-gi-tract
   location: Gut Flora Disruptors Section

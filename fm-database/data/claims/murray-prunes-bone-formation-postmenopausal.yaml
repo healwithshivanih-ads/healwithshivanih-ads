@@ -35,6 +35,8 @@ linked_to_topics:
 linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis, pg 1347–1348

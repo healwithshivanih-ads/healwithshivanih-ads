@@ -20,6 +20,8 @@ linked_to_supplements:
 - iron-supplement
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- bloating
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Low Stomach Acid Section

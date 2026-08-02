@@ -59,6 +59,8 @@ out_of_scope_notes: >
   evidence-supported oral option exists so that a client struggling with injections can be
   encouraged to ask their doctor about it, and supporting adherence to whatever regimen the
   doctor sets.
+linked_to_symptoms:
+- anemia
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 21 — Anemia, pg 474

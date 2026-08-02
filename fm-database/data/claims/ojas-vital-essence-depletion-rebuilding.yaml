@@ -25,6 +25,8 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 - cortisol-elevation
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: 'Chapter 1: Ayurveda Basics — Ojas'

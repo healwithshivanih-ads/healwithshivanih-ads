@@ -11,6 +11,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - hurt-model-trauma-resolution
 - adverse-childhood-experiences-aces
+linked_to_symptoms:
+- low-mood
 sources:
 - id: ewers-energy-blueprint-podcast-2026
   location: Podcast — Adversity in child development

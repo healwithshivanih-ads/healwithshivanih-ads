@@ -7,6 +7,8 @@ statement: Approximately 80% of food allergy reactions are delayed-type IgG and 
 evidence_tier: plausible_emerging
 linked_to_topics:
 - food-allergy-ige-mediated
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Food Allergy chapter, p 940

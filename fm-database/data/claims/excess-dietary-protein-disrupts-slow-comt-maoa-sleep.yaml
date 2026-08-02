@@ -21,6 +21,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - catechol-clearance-comt-maoa
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: dirty-genes-lynch
   location: Gene Meal Guide — Chapter 13

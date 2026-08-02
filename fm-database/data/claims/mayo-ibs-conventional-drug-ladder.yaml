@@ -24,6 +24,9 @@ out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements:
 - psyllium-husk
+linked_to_symptoms:
+- constipation
+- low-mood
 sources:
 - id: mayoclinic-irritable-bowel-syndrome-2026
   location: Treatment (medicines)

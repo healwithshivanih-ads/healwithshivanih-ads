@@ -16,6 +16,8 @@ linked_to_supplements:
 - omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 6

@@ -16,6 +16,8 @@ linked_to_mechanisms:
 caveats:
 - Source is FM synthesis.
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Chapter 6 — Understanding Laboratory Reports

@@ -7,6 +7,8 @@ linked_to_topics:
 - sinusitis
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- nasal-congestion
 sources:
 - id: mayoclinic-chronic-sinusitis-2026
   location: Mayo Clinic page — Treatment

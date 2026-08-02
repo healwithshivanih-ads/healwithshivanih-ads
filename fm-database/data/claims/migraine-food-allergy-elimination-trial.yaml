@@ -12,6 +12,8 @@ linked_to_topics:
 - histamine-intolerance
 - immune-dysregulation
 linked_to_mechanisms: []
+linked_to_symptoms:
+- migraine
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 77 — Migraine Headache, pg 1266-1268

@@ -27,6 +27,8 @@ linked_to_topics:
 - osteoarthritis
 linked_to_supplements:
 - sam-e
+linked_to_symptoms:
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression, Treatment Summary pg 794

@@ -8,6 +8,8 @@ linked_to_topics:
 - sleep-quality
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- insomnia
 sources:
 - id: mayoclinic-jet-lag-disorder-2026
   location: Mayo Clinic page — Lifestyle and home remedies

@@ -19,6 +19,8 @@ linked_to_topics:
 linked_to_supplements:
 - vitamin-d3
 linked_to_mechanisms: []
+linked_to_symptoms:
+- upper-respiratory-infections
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'

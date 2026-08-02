@@ -12,6 +12,11 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - perimenopause-window-of-vulnerability
 - perimenopause
+linked_to_symptoms:
+- irregular-periods
+- insomnia
+- perimenopause-symptoms
+- mood-swings
 sources:
 - id: snyder-energy-blueprint-podcast-2026
   location: Podcast — late reproductive stage segment

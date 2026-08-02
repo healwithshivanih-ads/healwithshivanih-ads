@@ -23,6 +23,13 @@ linked_to_topics:
 linked_to_mechanisms:
 - estrogen-decline
 linked_to_supplements: []
+linked_to_symptoms:
+- hot-flashes
+- low-mood
+- edema
+- perimenopause-symptoms
+- night-sweats
+- breast-tenderness
 sources:
 - id: briden-blog-estrogen-perimenopause-progesterone-help
   location: Blog post — Estrogen goes on a rollercoaster section

@@ -17,6 +17,9 @@ caveats:
 - Source is FM synthesis. Cut-off of ≤1.0 is FM-specific and stricter than some published
   thresholds.
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
+- elevated-cholesterol
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 6.2 — Secondary Markers to Check

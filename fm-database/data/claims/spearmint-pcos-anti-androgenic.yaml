@@ -34,6 +34,8 @@ linked_to_mechanisms:
 - insulin-resistance
 linked_to_supplements:
 - spearmint-tea
+linked_to_symptoms:
+- facial-hair
 sources:
 - id: romm-pcos-herbs-supplements-website
   location: Spearmint Tea section

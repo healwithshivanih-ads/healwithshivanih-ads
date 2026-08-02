@@ -8,6 +8,9 @@ linked_to_topics:
 - hives-urticaria
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- anaphylaxis
+- hoarse-voice
 sources:
 - id: mayoclinic-chronic-hives-2026
   location: Mayo Clinic page — When to see a doctor

@@ -7,6 +7,8 @@ statement: Antiphospholipid antibodies (anti-cardiolipin, beta-2-glycoprotein, a
 evidence_tier: strong
 linked_to_topics:
 - pre-ivf-root-cause-workup
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: sklar-fertility-expert-5-ivf-root-cause-tests
   location: Episode body — methylation and clotting section

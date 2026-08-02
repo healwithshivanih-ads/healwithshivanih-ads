@@ -15,6 +15,9 @@ linked_to_supplements:
 - fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
+- joint-pain
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: 100 Anti-Inflammatory Foods — Page 09

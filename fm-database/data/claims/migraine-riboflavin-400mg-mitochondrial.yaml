@@ -13,6 +13,9 @@ linked_to_mechanisms:
 - mitochondrial-dysfunction
 linked_to_supplements:
 - riboflavin-b2
+linked_to_symptoms:
+- diarrhea
+- migraine
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 77 — Migraine Headache, pg 1270

@@ -19,6 +19,8 @@ linked_to_supplements:
 - vitamin-d3
 out_of_scope_notes: Blood level monitoring and dosage adjustment are clinician scope.
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity

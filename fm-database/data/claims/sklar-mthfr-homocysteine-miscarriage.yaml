@@ -15,6 +15,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - methylfolate-b9
 - l-methylfolate
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: sklar-fertility-expert-5-ivf-root-cause-tests
   location: Episode body — methylation section

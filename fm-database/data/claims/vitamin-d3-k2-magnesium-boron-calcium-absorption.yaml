@@ -22,6 +22,8 @@ linked_to_supplements:
 - vitamin-k2
 - magnesium-glycinate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- vascular-calcification
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section

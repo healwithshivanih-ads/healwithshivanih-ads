@@ -20,6 +20,8 @@ linked_to_supplements:
 - digestive-enzymes
 out_of_scope_notes: Diagnosing pancreatic enzyme insufficiency and prescribing PERT is clinician-scope.
 linked_to_mechanisms: []
+linked_to_symptoms:
+- gut-inflammation
 sources:
 - id: coconote-fm-hypochlorhydria
   location: Treatment / Supports for Gastric Acid

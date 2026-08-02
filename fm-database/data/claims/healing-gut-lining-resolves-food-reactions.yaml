@@ -18,6 +18,10 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- bloating
+- food-intolerance-reactions
+- inflammation
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: Treatment Section

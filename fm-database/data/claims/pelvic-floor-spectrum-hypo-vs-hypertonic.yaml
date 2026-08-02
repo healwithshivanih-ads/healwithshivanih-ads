@@ -12,6 +12,12 @@ statement: Pelvic floor dysfunction lives on a tone spectrum rather than only th
 evidence_tier: plausible_emerging
 linked_to_topics:
 - pelvic-floor-dysfunction
+linked_to_symptoms:
+- pelvic-pain
+- erectile-dysfunction
+- incontinence
+- lower-back-pain
+- constipation
 sources:
 - id: danielson-energy-blueprint-podcast-2026
   location: Podcast — spectrum segment

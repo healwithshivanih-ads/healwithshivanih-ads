@@ -10,6 +10,9 @@ linked_to_topics:
 - chronic-stress
 - hpa-axis-dysregulation
 - egg-quality
+linked_to_symptoms:
+- insulin-resistance
+- inflammation
 sources:
 - id: sklar-fertility-expert-egg-quality-over-40
   location: Episode body — exercise balance section

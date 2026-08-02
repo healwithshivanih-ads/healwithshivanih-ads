@@ -45,6 +45,11 @@ linked_to_supplements:
 - magnesium-glycinate
 out_of_scope_notes: 'Coach scope: lifestyle, supplements, breathwork, basic CBT skills.
   Out of scope: panic disorder diagnosis, prescription medication, trauma therapy.'
+linked_to_symptoms:
+- stress
+- perimenopause-symptoms
+- low-mood
+- anxiety
 sources:
 - id: pizzorno-affective-disorders
   location: Affective Disorders — Kava kava + Ginkgo for anxiety component (pp 9)

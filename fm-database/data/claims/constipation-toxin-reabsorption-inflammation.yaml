@@ -15,6 +15,10 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- constipation
+- chronic-pain
+- inflammation
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Constipation Section

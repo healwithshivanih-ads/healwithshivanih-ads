@@ -21,6 +21,8 @@ linked_to_supplements:
 out_of_scope_notes: Choosing the right form and dose of magnesium supplement is clinician
   scope, especially given laxative effects of some forms.
 linked_to_mechanisms: []
+linked_to_symptoms:
+- bone-loss
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity

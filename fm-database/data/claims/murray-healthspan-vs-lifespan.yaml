@@ -27,6 +27,8 @@ linked_to_topics:
 - sleep-deprivation
 - bone-health
 linked_to_supplements: []
+linked_to_symptoms:
+- poor-concentration
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 13 — Longevity and Life Extension, Quick Review pg 316

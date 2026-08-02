@@ -18,6 +18,8 @@ linked_to_supplements:
 - phosphatidylcholine
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- poor-concentration
 sources:
 - id: dirty-genes-lynch
   location: Chapter 11 — Who Is Most at Risk for Choline Deficiency?

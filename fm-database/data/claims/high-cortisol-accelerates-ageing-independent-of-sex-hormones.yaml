@@ -22,6 +22,11 @@ linked_to_mechanisms:
 - cortisol-bone-suppression
 - insulin-resistance
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-cholesterol
+- stress
+- bone-loss
+- poor-concentration
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 4 - Stress Hormones

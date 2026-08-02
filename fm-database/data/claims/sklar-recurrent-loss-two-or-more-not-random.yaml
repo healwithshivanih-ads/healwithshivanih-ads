@@ -6,6 +6,8 @@ statement: Sklar's clinical position is that two or more miscarriages should nev
 evidence_tier: plausible_emerging
 linked_to_topics:
 - recurrent-pregnancy-loss
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: sklar-fertility-expert-recurrent-miscarriage-causes
   location: Episode body — opening

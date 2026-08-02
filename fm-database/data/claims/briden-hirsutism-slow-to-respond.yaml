@@ -17,6 +17,8 @@ linked_to_topics:
 - pcos
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- facial-hair
 sources:
 - id: briden-blog-natural-anti-androgens-hirsutism
   location: Blog post — Hirsutism can take a long time section

@@ -68,6 +68,8 @@ out_of_scope_notes: >
   interpreting permeability or stool testing; and recommending betaine HCl,
   pancreatic enzymes or any gut-repair supplement — all of that is clinician
   territory and some of it can cause harm if self-prescribed.
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 52 — Food Allergy, pg 938

@@ -11,6 +11,8 @@ evidence_tier: confirm_with_clinician
 linked_to_topics:
 - autoimmune-thyroiditis
 - hypothyroidism
+linked_to_symptoms:
+- low-motivation
 sources:
 - id: hornaman-energy-blueprint-podcast-2026
   location: Podcast — testosterone segment

@@ -21,6 +21,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - calcium
 - vitamin-d3
+linked_to_symptoms:
+- bone-loss
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 23 - What Not to Eat (Alcohol section)

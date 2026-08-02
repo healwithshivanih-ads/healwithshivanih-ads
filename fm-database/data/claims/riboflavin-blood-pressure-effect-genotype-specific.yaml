@@ -19,6 +19,8 @@ linked_to_supplements:
 - riboflavin-vitamin-b2
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: notebooklm-synthesis
   location: '[auto-restored after Step 2 strip]'

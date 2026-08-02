@@ -15,6 +15,8 @@ linked_to_topics:
 - leptin-insulin-cortisol-energy-gate
 linked_to_mechanisms:
 - mitochondrial-dysfunction
+linked_to_symptoms:
+- hypoglycemia-symptoms
 sources:
 - id: masterjohn-energy-blueprint-podcast-2026
   location: Podcast — low blood sugar segment

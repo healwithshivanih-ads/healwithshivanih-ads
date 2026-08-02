@@ -23,6 +23,12 @@ linked_to_topics:
 - constipation
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
+- constipation
+- inflammation
+- acid-reflux-heartburn
+- skin-rash
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: 'Chapter 1: Ayurveda Basics — Nature''s System of Checks and Balances'

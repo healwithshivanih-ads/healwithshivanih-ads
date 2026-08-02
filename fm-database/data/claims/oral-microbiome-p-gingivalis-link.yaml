@@ -13,6 +13,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - chronic-inflammation
 - neuroinflammation
+linked_to_symptoms:
+- poor-concentration
 sources:
 - id: bredesen-energy-blueprint-podcast-2026
   location: Podcast — precision sub-protocol segment

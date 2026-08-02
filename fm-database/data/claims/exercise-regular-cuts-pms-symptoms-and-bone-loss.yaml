@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- bone-loss
 sources:
 - id: pizzorno-womens-trio
   location: Premenstrual Syndrome — Exercise (pp 836) AND Osteoporosis — Physical

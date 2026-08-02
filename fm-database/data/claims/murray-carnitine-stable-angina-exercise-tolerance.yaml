@@ -18,6 +18,8 @@ linked_to_mechanisms:
 - mitochondrial-energy-production
 - mitochondrial-efficiency
 out_of_scope_notes: Dosing, initiation and monitoring belong to the prescribing clinician. A coach may surface the question and the interaction concerns for the client to raise at their cardiology appointment; a coach may not recommend a dose or imply equivalence to prescribed antianginals.
+linked_to_symptoms:
+- angina
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 22 — Angina, pg 486

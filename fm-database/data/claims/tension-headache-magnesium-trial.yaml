@@ -10,6 +10,8 @@ linked_to_topics:
 linked_to_supplements:
 - magnesium-citrate
 - magnesium-glycinate
+linked_to_symptoms:
+- headache
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1012-1013

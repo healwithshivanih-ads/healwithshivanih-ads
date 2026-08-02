@@ -39,6 +39,8 @@ linked_to_mechanisms:
 - inflammatory-diet-pattern
 out_of_scope_notes: |
   Coaching the dietary pattern, movement, tobacco cessation and adherence to prescribed cardiovascular medication is in scope. Diagnosing hypertension or dyslipidaemia, setting lipid or BP targets, interpreting labs, and starting or changing drugs are clinician scope.
+linked_to_symptoms:
+- dyslipidemia
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 35 — Cerebral Vascular Insufficiency, pg 646

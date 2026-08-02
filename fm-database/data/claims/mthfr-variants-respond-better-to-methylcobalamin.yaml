@@ -17,6 +17,8 @@ linked_to_supplements:
 - vitamin-b12
 - folate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Vitamin B12'

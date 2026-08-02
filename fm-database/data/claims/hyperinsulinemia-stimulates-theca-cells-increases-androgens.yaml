@@ -14,6 +14,8 @@ linked_to_mechanisms:
 out_of_scope_notes: ''
 caveats: []
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-fasting-insulin
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: PCOD Cheatsheet — Key Mediators

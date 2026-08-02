@@ -16,6 +16,8 @@ linked_to_topics:
 - ayurvedic-elemental-design-doshas
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: lad-ayurvedic-institute-food-chart
   location: Food Guidelines for Basic Constitutional Types

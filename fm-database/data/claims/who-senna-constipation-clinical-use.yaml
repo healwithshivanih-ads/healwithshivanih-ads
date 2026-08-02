@@ -28,6 +28,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - senna
+linked_to_symptoms:
+- constipation
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Folium Sennae, WHO Monographs on Selected Medicinal Plants, Volume 1 (1999), pp. 234–245 (https://apps.who.int/iris/handle/10665/42052)

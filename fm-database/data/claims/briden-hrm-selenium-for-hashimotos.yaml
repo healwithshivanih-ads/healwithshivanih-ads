@@ -7,6 +7,8 @@ statement: Selenium 100–150 mcg/day significantly reduces thyroid antibodies i
 evidence_tier: strong
 linked_to_topics:
 - hypothyroidism
+linked_to_symptoms:
+- inflammation
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 8 — Selenium, pg 209–210

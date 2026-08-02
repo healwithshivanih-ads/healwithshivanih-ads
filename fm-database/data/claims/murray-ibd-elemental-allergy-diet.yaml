@@ -12,6 +12,8 @@ linked_to_topics:
 - ibd
 - elimination-diet
 - food-intolerance
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 42 — Crohn's Disease and Ulcerative Colitis, pg 724-725

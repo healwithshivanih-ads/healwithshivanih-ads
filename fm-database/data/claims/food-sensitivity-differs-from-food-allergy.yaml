@@ -19,6 +19,8 @@ linked_to_topics:
 - food-sensitivities
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: thurlow-microbiome-session-2
   location: Food sensitivity vs allergy differentiation

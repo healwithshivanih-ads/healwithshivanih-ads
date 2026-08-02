@@ -6,6 +6,8 @@ evidence_tier: strong
 linked_to_topics:
 - sunburn
 
+linked_to_symptoms:
+- headache
 sources:
 - id: nhs-sunburn-2026
   location: NHS page — Urgent advice section

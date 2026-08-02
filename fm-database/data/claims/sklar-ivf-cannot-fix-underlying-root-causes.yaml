@@ -10,6 +10,9 @@ linked_to_topics:
 - recurrent-pregnancy-loss
 - silent-endometriosis
 - antiphospholipid-syndrome-fertility
+linked_to_symptoms:
+- elevated-homocysteine
+- recurrent-miscarriage
 sources:
 - id: sklar-fertility-expert-estrogen-dominance-endo-ivf
   location: Episode body — opening

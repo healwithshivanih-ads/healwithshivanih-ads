@@ -26,6 +26,8 @@ linked_to_supplements:
 - niacin
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- dyslipidemia
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1074, 1082

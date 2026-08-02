@@ -10,6 +10,9 @@ linked_to_topics:
 - second-puberty-perimenopause
 - cognitive-decline
 - insulin-resistance
+linked_to_symptoms:
+- insulin-resistance
+- poor-concentration
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 7 — Rewiring the brain, pg 156–158

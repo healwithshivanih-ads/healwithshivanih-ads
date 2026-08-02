@@ -14,6 +14,8 @@ statement: Multiple systematic reviews show no evidence that hyperbaric oxygen t
 evidence_tier: plausible_emerging
 linked_to_topics:
 - hyperbaric-oxygen-therapy
+linked_to_symptoms:
+- urinary-tract-infections
 sources:
 - id: sherr-energy-blueprint-podcast-2026-hbot
   location: Podcast — cancer segment

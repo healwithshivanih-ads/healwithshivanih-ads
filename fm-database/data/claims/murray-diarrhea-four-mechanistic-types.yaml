@@ -31,6 +31,8 @@ linked_to_mechanisms:
 - fodmap-fermentation
 out_of_scope_notes: >
   A coach may take a careful intake history including every supplement, sweetener and over-the-counter antacid, and may notice the osmotic pattern and raise it. Assigning the diarrhoea to a type, and any work-up for tumours, IBD or infection, is clinician work.
+linked_to_symptoms:
+- fat-malabsorption
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 46 — Diarrhea, pg 867

@@ -10,6 +10,8 @@ linked_to_topics:
 - autoimmune-thyroiditis
 - celiac-disease
 - food-sensitivities
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 66 — Hyperthyroidism, pg 1108

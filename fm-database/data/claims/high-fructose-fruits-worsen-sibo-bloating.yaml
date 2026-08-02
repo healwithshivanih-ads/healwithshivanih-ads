@@ -18,6 +18,8 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- acid-reflux-heartburn
 sources:
 - id: vitaone-elimination-diet-cheatsheet
   location: LOW FODMAP FRUITS — Practitioner Insight

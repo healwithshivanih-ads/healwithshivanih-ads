@@ -8,6 +8,11 @@ statement: Vitamin B12 deficiency is most often a problem of absorption, not int
 evidence_tier: strong
 linked_to_topics:
 - b12-folate-anemia
+linked_to_symptoms:
+- anemia
+- bloating
+- low-mood
+- numbness-tingling
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Anemia chapter, p 467-468

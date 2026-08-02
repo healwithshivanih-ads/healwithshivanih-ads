@@ -21,6 +21,8 @@ linked_to_mechanisms:
 - leaky-gut
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
 sources:
 - id: pizzorno-autoimmune-ra
   location: Rheumatoid Arthritis — Diet / The Mediterranean Diet (pp 884)

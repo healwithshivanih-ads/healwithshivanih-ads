@@ -14,6 +14,9 @@ statement: In the US, hyperbaric oxygen therapy is FDA-approved AND Medicare/com
 evidence_tier: strong
 linked_to_topics:
 - hyperbaric-oxygen-therapy
+linked_to_symptoms:
+- hearing-loss
+- urinary-tract-infections
 sources:
 - id: sherr-energy-blueprint-podcast-2026-hbot
   location: Podcast — covered indications segment

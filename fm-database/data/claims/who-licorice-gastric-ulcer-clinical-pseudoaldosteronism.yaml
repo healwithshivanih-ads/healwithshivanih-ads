@@ -36,6 +36,8 @@ linked_to_supplements:
 - licorice-root
 - dgl-licorice
 - dgl-deglycyrrhizinated-licorice
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Radix Glycyrrhizae, WHO Monographs on Selected Medicinal Plants, Volume 1 (1999), pp. 183–194

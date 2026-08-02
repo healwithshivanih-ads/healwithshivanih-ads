@@ -16,6 +16,9 @@ caveats:
 - Risk varies by individual genetics and resilience factors
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
+- low-mood
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Effects of Chronic Stress

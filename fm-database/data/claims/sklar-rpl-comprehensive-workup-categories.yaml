@@ -11,6 +11,8 @@ linked_to_topics:
 - pre-ivf-root-cause-workup
 - mthfr-methylation
 - uterine-microbiome-infection-fertility
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: sklar-fertility-expert-recurrent-miscarriage-causes
   location: Episode body — "the testing gap"

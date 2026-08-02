@@ -20,6 +20,8 @@ linked_to_supplements:
 - magnesium
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- bone-loss
 sources:
 - id: coconote-fm-sex-hormones
   location: Hormone Actions on Bone

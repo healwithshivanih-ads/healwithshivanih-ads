@@ -42,6 +42,8 @@ linked_to_mechanisms:
 - inflammatory-cytokine-elevation
 linked_to_supplements:
 - boswellia
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: Shallaki, Ayurvedic Pharmacopoeia of India, Part I, Volume IV, Ministry of AYUSH, Government

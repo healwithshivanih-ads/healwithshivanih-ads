@@ -20,6 +20,9 @@ linked_to_topics:
 - pcos
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- acne-hormonal
+- facial-hair
 sources:
 - id: briden-blog-pcos-4-types-flowchart
   location: Blog post — What is PCOS section

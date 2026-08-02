@@ -18,6 +18,9 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- insulin-resistance
+- anxiety
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DYUcS5ijCrS/

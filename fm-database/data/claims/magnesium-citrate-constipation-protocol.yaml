@@ -19,6 +19,8 @@ linked_to_supplements:
 - chia-seeds
 - flax-seed
 linked_to_mechanisms: []
+linked_to_symptoms:
+- constipation
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Constipation Protocol / Case Study

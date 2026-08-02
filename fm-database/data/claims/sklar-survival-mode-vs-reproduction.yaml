@@ -9,6 +9,9 @@ linked_to_topics:
 - hpa-axis-dysregulation
 - female-infertility
 - gut-dysbiosis
+linked_to_symptoms:
+- gut-inflammation
+- infertility
 sources:
 - id: sklar-fertility-expert-90-day-egg-quality
   location: Episode body — gut health section

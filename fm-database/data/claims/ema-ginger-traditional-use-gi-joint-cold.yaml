@@ -23,6 +23,9 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - ginger
+linked_to_symptoms:
+- loss-of-appetite
+- joint-pain
 sources:
 - id: ema-hmpc-herbal-monographs
   location: European Union herbal monograph on Zingiber officinale Roscoe, rhizoma — EMA/HMPC/577856/2009

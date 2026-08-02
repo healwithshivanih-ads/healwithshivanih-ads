@@ -18,6 +18,8 @@ linked_to_supplements:
 linked_to_mechanisms:
 - dna-methylation-adaptogen-rebalancing
 - chronic-inflammation
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fitzgerald-younger-you-2022
   location: Ch 8 — epigenome-friendly supplements nearly everyone needs

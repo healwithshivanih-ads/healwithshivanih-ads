@@ -62,6 +62,8 @@ out_of_scope_notes: >
   Coach scope: education on folate-rich foods, cooking methods that preserve folate, alcohol
   as a modifiable driver, and referral when chronic diarrhoea or malabsorption symptoms are
   described.
+linked_to_symptoms:
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 21 — Anemia, pg 468

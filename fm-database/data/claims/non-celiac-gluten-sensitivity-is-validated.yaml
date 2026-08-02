@@ -14,6 +14,8 @@ linked_to_topics:
 - celiac-disease
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Placebo-controlled RCTs confirm non-celiac gluten sensitivity; FODMAP-free

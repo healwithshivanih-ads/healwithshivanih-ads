@@ -11,6 +11,8 @@ statement: DEXA bone density scans predict fewer than 30% of future fractures �
 evidence_tier: plausible_emerging
 linked_to_topics:
 - osteoporosis
+linked_to_symptoms:
+- bone-loss
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 10 — Bone mineral density testing, pg 269–274

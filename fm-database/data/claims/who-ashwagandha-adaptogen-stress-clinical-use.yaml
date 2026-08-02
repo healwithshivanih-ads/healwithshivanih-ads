@@ -28,6 +28,8 @@ linked_to_mechanisms:
 - cortisol-elevation
 linked_to_supplements:
 - ashwagandha
+linked_to_symptoms:
+- anxiety
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Radix Withaniae, WHO Monographs on Selected Medicinal Plants Vol 4 (2009), pp. 373-391 (https://www.who.int/publications/i/item/9789241547178)

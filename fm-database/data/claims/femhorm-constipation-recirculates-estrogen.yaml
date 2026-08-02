@@ -32,6 +32,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - dietary-fiber-psyllium
 - flax-seed
+linked_to_symptoms:
+- constipation
 sources:
 - id: fmca-m11-female-hormone-testing-class
   location: Constipation and estrogen recirculation

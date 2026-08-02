@@ -16,6 +16,11 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-homocysteine
+- elevated-blood-glucose
+- elevated-blood-pressure
+- inflammation
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Atherosclerosis Mechanism

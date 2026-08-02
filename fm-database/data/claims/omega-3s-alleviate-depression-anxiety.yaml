@@ -13,6 +13,9 @@ linked_to_supplements:
 coaching_translation: ''
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
+- anxiety
 sources:
 - id: vitaone-gut-toolkit
   location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Omega-3 Fatty Acids'

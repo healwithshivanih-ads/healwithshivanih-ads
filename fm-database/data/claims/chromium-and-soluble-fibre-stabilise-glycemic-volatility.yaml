@@ -28,6 +28,8 @@ linked_to_supplements:
 - chromium
 - chromium-picolinate
 out_of_scope_notes: ''
+linked_to_symptoms:
+- hypoglycemia-symptoms
 sources:
 - id: pizzorno-energy-cluster
   location: Hypoglycemia — Therapeutic Approach (pp 449 box)

@@ -27,6 +27,8 @@ linked_to_mechanisms:
 - leaky-gut
 - dysbiosis
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fmca-m11-gut-stool-biomarkers-hanaway
   location: A Functional Medicine Approach to the Gut — the DIGIN model

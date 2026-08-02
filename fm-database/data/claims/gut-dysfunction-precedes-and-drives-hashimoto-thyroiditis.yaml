@@ -21,6 +21,8 @@ linked_to_topics:
 - gut-brain-axis-dysfunction
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: coconote-fm-sibo-sifo
   location: Case Study / Comorbidities Section

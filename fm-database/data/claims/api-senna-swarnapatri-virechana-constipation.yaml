@@ -24,6 +24,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - senna
+linked_to_symptoms:
+- constipation
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: Swarnapatri, Ayurvedic Pharmacopoeia of India, Part I, Volume III, Ministry of AYUSH, Government

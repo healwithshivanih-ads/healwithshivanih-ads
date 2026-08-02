@@ -22,6 +22,9 @@ linked_to_mechanisms:
 - chronic-inflammation
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- joint-pain
+- muscle-aches-joint-pain
 sources:
 - id: pizzorno-autoimmune-ra
   location: Rheumatoid Arthritis — Therapeutic Fasting (pp 883-884)

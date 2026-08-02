@@ -10,6 +10,9 @@ linked_to_topics:
 - sperm-quality
 - male-infertility-oxidative-stress
 - preconception-protocol
+linked_to_symptoms:
+- infertility
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 12 — Sperm Quality, pg 165-167

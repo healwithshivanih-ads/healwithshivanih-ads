@@ -18,6 +18,9 @@ linked_to_supplements:
 - probiotics
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
+- anxiety
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'

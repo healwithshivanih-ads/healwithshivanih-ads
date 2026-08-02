@@ -9,6 +9,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - acne-vulgaris
 - leaky-gut
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 17 — Acne, pg 392

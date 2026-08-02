@@ -9,6 +9,8 @@ statement: The Horowitz-Borrascano Lyme symptom questionnaire (HMQ), validated i
 evidence_tier: plausible_emerging
 linked_to_topics:
 - chronic-lyme-disease
+linked_to_symptoms:
+- migratory-joint-pain
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — HMQ validation segment

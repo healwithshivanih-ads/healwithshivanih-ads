@@ -45,6 +45,10 @@ out_of_scope_notes: |
   Clinician: diagnosing hypoglycaemia, excluding other causes, adjusting
   diabetes medication. Coach: meal timing and composition, reducing added sugar,
   and helping the client notice the dip-then-craving pattern without shame.
+linked_to_symptoms:
+- blurred-vision
+- headache
+- anxiety
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: 'Chapter 19 — Alcohol Dependence, pg 425'

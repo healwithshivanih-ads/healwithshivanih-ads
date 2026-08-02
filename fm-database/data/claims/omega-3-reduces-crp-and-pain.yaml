@@ -16,6 +16,8 @@ linked_to_supplements:
 - fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-hscrp
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Personal Case Study

@@ -17,6 +17,9 @@ linked_to_topics:
 linked_to_supplements:
 - l-methylfolate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- headaches
+- anxiety
 sources:
 - id: notebooklm-synthesis
   location: '[auto-restored after Step 2 strip]'

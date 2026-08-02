@@ -68,6 +68,8 @@ out_of_scope_notes: 'Coach scope: education on why vitamin D status is discussed
   client to raise testing with their clinician, safe sun habits, food sources, and adherence support once
   a doctor has set a dose. Out of scope: recommending or adjusting a dose, naming a target range to the
   client, interpreting the lab result, or implying vitamin D can substitute for disease-modifying therapy.'
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 78 — Multiple Sclerosis, pg 1286

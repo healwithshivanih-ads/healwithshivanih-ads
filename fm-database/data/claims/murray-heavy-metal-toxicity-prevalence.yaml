@@ -31,6 +31,9 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: Heavy metal chelation requires medical supervision. Coach role
   is exposure reduction + supportive detox nutrient repletion.
+linked_to_symptoms:
+- poor-concentration
+- numbness-tingling
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 9 — Detoxification, Quick Review pg 211

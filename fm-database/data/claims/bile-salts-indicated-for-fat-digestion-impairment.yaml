@@ -17,6 +17,8 @@ linked_to_supplements:
 - bile-salts
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- fat-malabsorption
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Replace Section

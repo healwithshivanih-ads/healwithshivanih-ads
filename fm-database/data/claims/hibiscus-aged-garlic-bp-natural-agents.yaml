@@ -9,6 +9,8 @@ evidence_tier: strong
 linked_to_topics:
 - blood-pressure-management
 - essential-hypertension
+linked_to_symptoms:
+- inflammation
 sources:
 - id: pickard-energy-blueprint-podcast-2026
   location: Podcast — Natural agents for BP

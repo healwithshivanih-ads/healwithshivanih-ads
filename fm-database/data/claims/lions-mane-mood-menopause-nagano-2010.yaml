@@ -25,6 +25,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - lions-mane
 out_of_scope_notes: ''
+linked_to_symptoms:
+- low-mood
 sources:
 - id: nagano-2010-hericium-mood-menopause
   location: results

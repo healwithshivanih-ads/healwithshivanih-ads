@@ -62,6 +62,9 @@ out_of_scope_notes: >
   in the same conversation, spotting when a client is self-supplementing folate without B12,
   and referring promptly if neurological symptoms are described. The coach must never
   reassure a client that a normal blood count rules out low B12.
+linked_to_symptoms:
+- numbness-tingling
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 21 — Anemia, pg 470

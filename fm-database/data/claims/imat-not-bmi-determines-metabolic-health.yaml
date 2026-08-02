@@ -9,6 +9,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - sarcopenia-skeletal-muscle-loss
 - insulin-resistance
+linked_to_symptoms:
+- infertility
 sources:
 - id: lyon-energy-blueprint-podcast-2026
   location: Podcast — PCOS and IMAT story

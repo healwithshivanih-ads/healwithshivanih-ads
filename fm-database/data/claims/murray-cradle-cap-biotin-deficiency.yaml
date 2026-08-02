@@ -59,6 +59,8 @@ out_of_scope_notes: >
   should not be attributed to it: seborrheic dermatitis of sudden, severe or explosive onset
   in an ADULT can flag underlying illness — including HIV and Parkinson's disease — and is a
   medical referral, not a coaching case. The chapter does note the AIDS association separately.
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 91 — Seborrheic Dermatitis, pg 1501

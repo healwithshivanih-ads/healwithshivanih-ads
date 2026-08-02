@@ -7,6 +7,8 @@ linked_to_topics:
 - dry-eye-syndrome
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: mayoclinic-dry-eyes-2026
   location: Mayo Clinic page — Lifestyle and home remedies

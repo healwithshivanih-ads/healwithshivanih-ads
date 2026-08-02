@@ -24,6 +24,9 @@ linked_to_mechanisms:
 - cortisol-elevation
 linked_to_supplements:
 - ashwagandha
+linked_to_symptoms:
+- stress
+- anxiety
 sources:
 - id: pubmed-39348746
   location: 'Effects of Ashwagandha (Withania Somnifera) on stress and anxiety: A systematic review and

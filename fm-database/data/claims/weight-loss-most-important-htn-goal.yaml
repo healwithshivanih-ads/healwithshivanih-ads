@@ -14,6 +14,8 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: pizzorno-cardiometabolic-hypertension
   location: Lifestyle and Dietary Factors / Diet

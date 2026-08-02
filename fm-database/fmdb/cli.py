@@ -2257,6 +2257,45 @@ def cmd_mindmap_link(args: argparse.Namespace) -> None:
         print("\n(dry-run — pass --apply to write changes back to data/mindmaps/*.yaml)")
 
 
+def cmd_claim_symptom_link(args: argparse.Namespace) -> None:
+    """Propose Claim.linked_to_symptoms by reading claim statements."""
+    from collections import Counter
+
+    from .claim_symptom_link import BLOCKED_TERMS, apply_links, propose_links
+    from .validator import load_all
+
+    cat = load_all(DATA_DIR)
+    report = propose_links(cat)
+
+    print(f"  symptom terms used:  {report.terms_used} "
+          f"(+{report.terms_ambiguous} ambiguous skipped, "
+          f"{len(BLOCKED_TERMS)} blocked)")
+    print(f"  claims scanned:      {report.claims_total}")
+    print(f"  claims matched:      {report.claims_matched}")
+    print(f"  links proposed:      {len(report.proposals)}")
+    if report.dropped_over_cap:
+        print(f"  links dropped (cap): {report.dropped_over_cap}")
+
+    top = Counter(p.symptom_slug for p in report.proposals)
+    print(f"\n  most-linked symptoms: {top.most_common(10)}")
+
+    by_claim = report.by_claim()
+    limit = 20 if not args.verbose else len(by_claim)
+    print(f"\n  sample ({min(limit, len(by_claim))} of {len(by_claim)} claims):")
+    for claim_slug in sorted(by_claim)[:limit]:
+        pairs = ", ".join(f"{p.symptom_slug} [{p.matched_term}]" for p in by_claim[claim_slug])
+        print(f"    {claim_slug}\n      -> {pairs}")
+
+    if args.apply:
+        written, errors = apply_links(DATA_DIR, report)
+        print(f"\n  wrote {written} claim file(s)")
+        for e in errors:
+            print(f"    ! {e}")
+        print("  re-run `fmdb validate` to confirm the catalogue is still clean")
+    else:
+        print("\n(dry-run — pass --apply to write changes back to data/claims/*.yaml)")
+
+
 def cmd_mindmap_mine(args: argparse.Namespace) -> None:
     """Mine unlinked MindMap nodes for catalogue backlog candidates."""
     from collections import Counter
@@ -2720,6 +2759,16 @@ def main() -> None:
     mml.add_argument("--dry-run", action="store_true",
                      help="explicit dry-run flag (default behavior; ignored if --apply set)")
     mml.set_defaults(func=cmd_mindmap_link)
+
+    csl = sub.add_parser(
+        "claim-symptom-link",
+        help="propose Claim.linked_to_symptoms from claim statement text",
+    )
+    csl.add_argument("--apply", action="store_true",
+                     help="write updated YAML back to disk (default is dry-run)")
+    csl.add_argument("-v", "--verbose", action="store_true",
+                     help="print every proposed claim, not just a sample of 20")
+    csl.set_defaults(func=cmd_claim_symptom_link)
 
     mmm = sub.add_parser(
         "mindmap-mine",

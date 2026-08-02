@@ -7,6 +7,8 @@ linked_to_topics:
 - herpes-simplex
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- numbness-tingling
 sources:
 - id: mayoclinic-shingles-2026
   location: Mayo Clinic page — Symptoms

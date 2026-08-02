@@ -8,6 +8,8 @@ linked_to_topics:
 - egg-quality
 linked_to_mechanisms:
 - endocrine-disruptor-oocyte-damage
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 2 — The Dangers of BPA, pg 38-39

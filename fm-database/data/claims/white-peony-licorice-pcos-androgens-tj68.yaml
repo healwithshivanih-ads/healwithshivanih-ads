@@ -40,6 +40,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - white-peony-paeonia-lactiflora
 - licorice-root
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: romm-botanical-medicine-womens-health-2010
   location: Chapter 5 — Menstrual Wellness and Menstrual Problems, PCOS section, pp.

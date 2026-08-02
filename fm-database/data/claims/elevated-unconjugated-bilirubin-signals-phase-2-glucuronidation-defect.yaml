@@ -18,6 +18,8 @@ linked_to_topics:
 - gilbert-syndrome
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-unconjugated-bilirubin
 sources:
 - id: coconote-fm-liver-detox-part2
   location: Bilirubin & Phase 2 Explanation

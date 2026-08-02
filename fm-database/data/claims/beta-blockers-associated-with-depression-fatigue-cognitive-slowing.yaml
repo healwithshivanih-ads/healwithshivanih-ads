@@ -17,6 +17,11 @@ linked_to_topics:
 - beta-blocker-deprescribing
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- erectile-dysfunction
+- poor-concentration
+- constipation
+- low-mood
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'

@@ -19,6 +19,9 @@ linked_to_supplements:
 - magnesium-glycinate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
+- elevated-fasting-insulin
 sources:
 - id: coconote-fm-estrogen-dominance
   location: How Does Inflammation Relate to Estrogen?

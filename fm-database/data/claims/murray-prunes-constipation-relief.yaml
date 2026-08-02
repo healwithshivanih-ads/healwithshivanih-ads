@@ -26,6 +26,9 @@ linked_to_topics:
 - bone-health
 - osteoporosis
 linked_to_supplements: []
+linked_to_symptoms:
+- bone-loss
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 41 — Constipation, pg 717

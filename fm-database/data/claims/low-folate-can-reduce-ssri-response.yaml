@@ -18,6 +18,8 @@ linked_to_supplements:
 - l-5-mthf
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 23

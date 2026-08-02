@@ -20,6 +20,8 @@ linked_to_supplements:
 - saccharomyces-boulardii
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- chronic-candida-infections
 sources:
 - id: coconote-fm-approach-inflammation
   location: Probiotics – Types and Protocol

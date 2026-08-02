@@ -19,6 +19,8 @@ linked_to_supplements:
 - betaine-hcl
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- bloating
 sources:
 - id: vitaone-gut-cheatsheet
   location: Gut Dysbiosis vs SIBO vs SIFO vs Hypochlorhydria

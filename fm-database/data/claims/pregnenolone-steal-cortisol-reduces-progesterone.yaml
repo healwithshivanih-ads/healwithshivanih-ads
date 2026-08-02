@@ -21,6 +21,9 @@ linked_to_mechanisms:
 - low-progesterone
 out_of_scope_notes: ''
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
+- anxiety
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Common Triggers for Low Progesterone

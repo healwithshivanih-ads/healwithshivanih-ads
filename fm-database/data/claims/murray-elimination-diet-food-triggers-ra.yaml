@@ -38,6 +38,10 @@ linked_to_topics:
 linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- food-sensitivities
+- inflammation
+- joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis, pg 1471–1472, 1488

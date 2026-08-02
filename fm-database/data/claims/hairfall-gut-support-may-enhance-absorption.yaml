@@ -21,6 +21,9 @@ linked_to_supplements:
 - zinc-carnosine
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
+- hair-loss
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Pages 25 and 28

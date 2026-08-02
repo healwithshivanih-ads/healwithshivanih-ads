@@ -15,6 +15,9 @@ linked_to_topics:
 - cardiovascular-disease-prevention
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-cholesterol
+- dyslipidemia
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Metabolic and Endocrine Risk Factors

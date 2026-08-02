@@ -17,6 +17,8 @@ linked_to_topics:
 - stages-of-change
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- resistance-to-change
 sources:
 - id: ukihca-one-session-sustain-talk-2025-12b
   location: Reflection notes

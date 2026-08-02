@@ -13,6 +13,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - dietary-fiber-psyllium
+linked_to_symptoms:
+- constipation
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Cereal-grain fibre increases stool bulk and frequency and relieves constipation.

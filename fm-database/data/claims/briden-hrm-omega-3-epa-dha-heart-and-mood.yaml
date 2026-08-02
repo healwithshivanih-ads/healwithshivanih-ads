@@ -8,6 +8,9 @@ evidence_tier: strong
 linked_to_topics:
 - cardiovascular-disease-prevention
 - second-puberty-perimenopause
+linked_to_symptoms:
+- inflammation
+- low-mood
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 7 — Fish oil + Ch 10 — Fish oil, pg 187, 285–286

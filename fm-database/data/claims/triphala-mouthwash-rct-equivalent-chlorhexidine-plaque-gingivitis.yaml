@@ -19,6 +19,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - triphala
+linked_to_symptoms:
+- gum-inflammation
 sources:
 - id: pubmed-34898918
   location: Effect of 0.4% Triphala and 0.12% chlorhexidine mouthwash on dental plaque, gingival inflammation,

@@ -9,6 +9,9 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - tension-type-headache
 - chronic-stress
+linked_to_symptoms:
+- tension-headache
+- headache
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1011-1012

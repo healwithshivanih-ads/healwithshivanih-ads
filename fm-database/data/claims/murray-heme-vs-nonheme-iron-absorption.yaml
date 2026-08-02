@@ -49,6 +49,8 @@ out_of_scope_notes: >
   deciding whether a client needs iron at all, which salt, at what dose, and monitoring the
   response. The coach must not translate "plant iron absorbs poorly" into a supplement
   recommendation.
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 21 — Anemia, pg 470

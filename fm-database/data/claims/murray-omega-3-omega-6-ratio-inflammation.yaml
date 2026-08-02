@@ -30,6 +30,8 @@ linked_to_supplements:
 - fish-oil
 - fish-oil-epa-dha
 - fish-oil-omega-3
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 14 — Silent Inflammation, Quick Review pg 326

@@ -19,6 +19,9 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - fenugreek
+linked_to_symptoms:
+- anaphylaxis
+- urticaria
 sources:
 - id: ema-hmpc-herbal-monographs
   location: European Union herbal monograph on Trigonella foenum-graecum L., semen — EMA/HMPC assessment

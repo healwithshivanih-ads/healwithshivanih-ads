@@ -9,6 +9,8 @@ evidence_tier: strong
 linked_to_topics:
 - protein-adequacy-vegetarian
 - sarcopenia-skeletal-muscle-loss
+linked_to_symptoms:
+- elevated-blood-glucose
 sources:
 - id: lyon-energy-blueprint-podcast-2026
   location: Podcast — kidney myth segment

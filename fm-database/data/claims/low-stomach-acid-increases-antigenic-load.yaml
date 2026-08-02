@@ -18,6 +18,8 @@ linked_to_mechanisms:
 - tight-junction-dysfunction
 - galt-immune-activation
 linked_to_supplements: []
+linked_to_symptoms:
+- bloating
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Triggers and Mediators

@@ -32,6 +32,12 @@ linked_to_topics:
 - prediabetes-metabolic-syndrome
 - prediabetes
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
+- insulin-resistance
+- blurred-vision
+- hypoglycemia-symptoms
+- headache
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 67 — Hypoglycemia, Treatment Summary pg 1124

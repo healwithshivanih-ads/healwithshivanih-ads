@@ -25,6 +25,8 @@ linked_to_mechanisms:
 - low-progesterone
 - dhea-cortisol-ratio-imbalance
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 5 - Understanding How Yin and Yang Hormones Interact

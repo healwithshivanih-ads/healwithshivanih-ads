@@ -31,6 +31,8 @@ linked_to_mechanisms:
 - igf-1-dairy-driven-androgen-amplification
 linked_to_supplements:
 - cinnamon
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: pubmed-34970669
   location: Nutritional Supplements and Complementary Therapies in Polycystic Ovary Syndrome

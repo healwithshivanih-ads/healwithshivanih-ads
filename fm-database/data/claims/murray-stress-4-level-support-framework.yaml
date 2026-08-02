@@ -29,6 +29,8 @@ linked_to_topics:
 linked_to_supplements:
 - ashwagandha
 - rhodiola
+linked_to_symptoms:
+- anxiety
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 15 — Stress Management, Treatment Summary pg 352–353

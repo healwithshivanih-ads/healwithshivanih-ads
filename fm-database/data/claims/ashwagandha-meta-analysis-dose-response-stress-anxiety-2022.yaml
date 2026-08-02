@@ -25,6 +25,8 @@ linked_to_mechanisms:
 - epigenetic-stress-response
 linked_to_supplements:
 - ashwagandha
+linked_to_symptoms:
+- anxiety
 sources:
 - id: pubmed-36017529
   location: Does Ashwagandha supplementation have a beneficial effect on the management of anxiety and

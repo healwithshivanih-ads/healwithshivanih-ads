@@ -25,6 +25,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - saw-palmetto
 out_of_scope_notes: ''
+linked_to_symptoms:
+- hair-loss
 sources:
 - id: pizzorno-womens-trio
   location: Hair Loss in Women — Saw palmetto (pp 358)

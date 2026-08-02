@@ -13,6 +13,8 @@ linked_to_topics:
 - low-amh-natural-conception
 - female-infertility
 - preconception-protocol
+linked_to_symptoms:
+- inflammation
 sources:
 - id: sklar-fertility-expert-42-low-amh
   location: Episode body — natural vs IVF section

@@ -26,6 +26,8 @@ linked_to_topics:
 - sibo
 linked_to_supplements:
 - peppermint-oil-enteric
+linked_to_symptoms:
+- abdominal-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 72 — IBS, Treatment Summary pg 1200

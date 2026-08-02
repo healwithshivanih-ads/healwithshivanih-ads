@@ -27,6 +27,9 @@ linked_to_mechanisms:
 - chronic-inflammation
 linked_to_supplements:
 - guggul
+linked_to_symptoms:
+- elevated-cholesterol
+- joint-pain
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: Guggulu, API Part I, Vol I, Ayurvedic Pharmacopoeia of India, Govt of India (https://www.ayurveda.hu/api/API-Vol-1.pdf)

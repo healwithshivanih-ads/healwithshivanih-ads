@@ -13,6 +13,9 @@ linked_to_mechanisms:
 - chronic-inflammation
 - mitochondrial-dysfunction
 - amyloid-as-innate-immune-response
+linked_to_symptoms:
+- poor-concentration
+- inflammation
 sources:
 - id: bredesen-energy-blueprint-podcast-2026
   location: Podcast — network framing segment

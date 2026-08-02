@@ -16,6 +16,8 @@ linked_to_mechanisms:
 - altered-gi-motility
 out_of_scope_notes: ''
 linked_to_supplements: []
+linked_to_symptoms:
+- gut-inflammation
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Constipation

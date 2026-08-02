@@ -61,6 +61,8 @@ out_of_scope_notes: >
   the client's oxalate constraints. Clinician scope: prescribing magnesium or B6, choosing
   form and dose, checking renal function before magnesium, and monitoring for B6 neuropathy.
   A coach must not interpret a serum or RBC magnesium result.
+linked_to_symptoms:
+- kidney-stones
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 73 — Kidney Stones, pg 1207

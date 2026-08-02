@@ -32,6 +32,9 @@ linked_to_supplements:
 - pantothenic-acid-b5
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- joint-pain
+- muscle-aches-joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis, pg 1481

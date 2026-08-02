@@ -19,6 +19,8 @@ linked_to_supplements:
 - homocysteine-support-b-complex
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Matrix Discussion / Estrogen Detoxification

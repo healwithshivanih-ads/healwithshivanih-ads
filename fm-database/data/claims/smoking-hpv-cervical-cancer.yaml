@@ -8,6 +8,8 @@ statement: Smoking raises cervical cancer/dysplasia risk approximately 3-fold ov
 evidence_tier: strong
 linked_to_topics:
 - cervical-dysplasia
+linked_to_symptoms:
+- autoimmune-flares-low-immunity
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 36 — Cervical Dysplasia, pg 653

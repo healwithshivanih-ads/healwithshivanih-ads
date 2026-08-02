@@ -17,6 +17,9 @@ linked_to_supplements:
 caveats:
 - Source is FM synthesis. Lab testing and B-vitamin dosing is clinician scope.
 out_of_scope_notes: ''
+linked_to_symptoms:
+- elevated-homocysteine
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.0.2 — Mechanistic Contributors

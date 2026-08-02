@@ -45,6 +45,10 @@ linked_to_mechanisms:
 linked_to_supplements:
 - vitamin-c
 - quercetin
+linked_to_symptoms:
+- histamine-intolerance
+- itching
+- nasal-congestion
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 8

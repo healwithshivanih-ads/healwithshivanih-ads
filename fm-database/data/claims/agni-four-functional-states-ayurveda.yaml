@@ -41,6 +41,11 @@ linked_to_topics:
   - digestion-and-nutrient-absorption
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- constipation
+- polyphagia
+- heartburn
+- acid-reflux-heartburn
 sources:
   - id: lad-ayurvedic-cooking-self-healing-1997
     location: "Chapter 3: Taste and Digestion — The Varieties of Agni (pp.41-42)"

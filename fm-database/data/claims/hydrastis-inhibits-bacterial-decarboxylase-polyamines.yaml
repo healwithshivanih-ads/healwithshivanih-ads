@@ -29,6 +29,8 @@ linked_to_supplements:
 - goldenseal-hydrastis
 - berberine
 out_of_scope_notes: ''
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: pizzorno-skin-trio
   location: Psoriasis — Incomplete Protein Digestion (pp 868)

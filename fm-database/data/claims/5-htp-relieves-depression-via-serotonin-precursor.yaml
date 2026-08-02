@@ -26,6 +26,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - 5-htp
 out_of_scope_notes: ''
+linked_to_symptoms:
+- low-mood
 sources:
 - id: pizzorno-affective-disorders
   location: Affective Disorders — Therapeutic Approach (pp 22)

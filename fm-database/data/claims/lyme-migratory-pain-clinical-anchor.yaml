@@ -12,6 +12,9 @@ linked_to_topics:
 - chronic-lyme-disease
 - chronic-fatigue-syndrome
 - fibromyalgia
+linked_to_symptoms:
+- joint-pain
+- numbness-tingling
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — clinical diagnosis segment

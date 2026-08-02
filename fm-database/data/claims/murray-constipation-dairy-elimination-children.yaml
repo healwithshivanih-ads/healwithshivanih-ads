@@ -10,6 +10,8 @@ linked_to_topics:
 - constipation
 - elimination-diet
 - food-intolerance
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 41 — Constipation, pg 715-716

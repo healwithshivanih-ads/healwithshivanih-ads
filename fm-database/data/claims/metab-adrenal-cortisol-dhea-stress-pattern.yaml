@@ -29,6 +29,8 @@ linked_to_mechanisms:
 - dhea-cortisol-ratio-imbalance
 - hpa-axis-dysregulation
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
 sources:
 - id: fmca-m11-metabolic-health-labs-saxena
   location: Adrenal panel — cortisol and DHEA-S

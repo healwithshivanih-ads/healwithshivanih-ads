@@ -55,6 +55,8 @@ out_of_scope_notes: >
   recurrence pattern, making the referral explicit and specific, and supporting
   lifestyle factors (sleep, refined-carbohydrate load, household hygiene) while the
   client waits to be seen.
+linked_to_symptoms:
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 27 — Boils, pg 558

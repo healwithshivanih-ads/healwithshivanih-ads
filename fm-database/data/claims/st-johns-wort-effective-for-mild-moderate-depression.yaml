@@ -25,6 +25,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - st-johns-wort
 out_of_scope_notes: Many drug interactions — always coordinate with prescriber.
+linked_to_symptoms:
+- low-mood
 sources:
 - id: pizzorno-affective-disorders
   location: Affective Disorders — Botanical medicines (pp 22-23)

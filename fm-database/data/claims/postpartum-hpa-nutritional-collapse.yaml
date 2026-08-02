@@ -33,6 +33,9 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 - thyroid-autoimmunity
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
+- recurrent-miscarriage
 sources:
 - id: coach-shivani
   location: Postpartum HPA + nutritional collapse pattern (clinical synthesis, 2026-06)

@@ -20,6 +20,8 @@ linked_to_topics:
 linked_to_supplements:
 - molybdenum
 linked_to_mechanisms: []
+linked_to_symptoms:
+- sulfur-odor
 sources:
 - id: dirty-genes-lynch
   location: Supplements — Soak and Scrub Week 2

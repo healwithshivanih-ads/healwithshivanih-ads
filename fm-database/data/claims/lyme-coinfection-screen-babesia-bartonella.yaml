@@ -13,6 +13,9 @@ linked_to_topics:
 - babesiosis
 - bartonellosis
 - msids-framework
+linked_to_symptoms:
+- night-sweats
+- joint-pain
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — co-infection epidemiology segment

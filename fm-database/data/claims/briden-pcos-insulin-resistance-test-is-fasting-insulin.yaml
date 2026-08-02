@@ -20,6 +20,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - insulin-resistance
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: briden-blog-pcos-4-types-flowchart
   location: Blog post — Step 2 Do you have insulin resistance section

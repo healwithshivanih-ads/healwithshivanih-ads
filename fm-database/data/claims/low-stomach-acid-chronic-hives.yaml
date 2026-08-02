@@ -10,6 +10,9 @@ linked_to_topics:
 - histamine-intolerance
 linked_to_mechanisms:
 - leaky-gut
+linked_to_symptoms:
+- urticaria
+- acid-reflux-heartburn
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 65 — Hives, pg 1095

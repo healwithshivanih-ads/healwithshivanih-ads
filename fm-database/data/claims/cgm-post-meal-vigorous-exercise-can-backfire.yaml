@@ -10,6 +10,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - heart-rate-variability-interpretation
 - circadian-rhythm-disruption
+linked_to_symptoms:
+- elevated-blood-glucose
 sources:
 - id: koppelman-polyvagal-energy-blueprint-podcast-2026
   location: Podcast — CGM-driven post-meal exercise as a hack

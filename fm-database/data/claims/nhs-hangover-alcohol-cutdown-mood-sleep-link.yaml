@@ -5,6 +5,10 @@ statement: Heavy drinking is strongly linked to depression, anxiety and disrupte
 evidence_tier: strong
 linked_to_topics:
 - liver-detoxification
+linked_to_symptoms:
+- insomnia
+- low-mood
+- anxiety
 sources:
 - id: nhs-hangover-alcohol-cutdown-2026
   location: NHS page — Mood + Sleep sections

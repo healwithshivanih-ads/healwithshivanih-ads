@@ -21,6 +21,8 @@ linked_to_mechanisms: []
 linked_to_supplements:
 - lions-mane
 out_of_scope_notes: ''
+linked_to_symptoms:
+- bloating
 sources:
 - id: livertox-lions-mane
   location: hepatotoxicity profile

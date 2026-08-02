@@ -11,6 +11,8 @@ statement: Approximately 5-10 percent of melatonin users experience a paradoxica
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - extrapineal-melatonin-and-mitochondria
+linked_to_symptoms:
+- insomnia
 sources:
 - id: lurance-energy-blueprint-podcast-2026
   location: Podcast — paradoxical reaction segment

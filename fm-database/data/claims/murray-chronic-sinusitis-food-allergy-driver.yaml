@@ -31,6 +31,9 @@ linked_to_topics:
 - food-allergy-ige-mediated
 - immune-support
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- nasal-congestion
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 92 — Sinus Infections, Quick Review pg 1508

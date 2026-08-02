@@ -31,6 +31,8 @@ out_of_scope_notes: Depression diagnosis and antidepressant management are clini
 linked_to_mechanisms:
 - ovulation-suppression-pseudo-hormone-replacement
 linked_to_supplements: []
+linked_to_symptoms:
+- low-mood
 sources:
 - id: briden-period-repair-manual-2018
   location: Chapter 2 — Depression, pp 29-31 (citing JAMA Psychiatry 2016)

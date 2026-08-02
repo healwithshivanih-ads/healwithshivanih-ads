@@ -21,6 +21,9 @@ linked_to_topics:
 - endometriosis-microbiome
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
+- inflammation
 sources:
 - id: briden-blog-endometriosis-microbiome-story
   location: Blog post — Bacterial contamination hypothesis update

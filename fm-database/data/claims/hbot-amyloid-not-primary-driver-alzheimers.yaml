@@ -10,6 +10,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - hyperbaric-oxygen-therapy
 - cognitive-decline
+linked_to_symptoms:
+- inflammation
 sources:
 - id: efrati-perlmutter-empowering-neurologist-2024
   location: Podcast — Alzheimer's mechanism discussion

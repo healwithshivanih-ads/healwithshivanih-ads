@@ -11,6 +11,9 @@ linked_to_topics:
 - gaba-deficiency-sympathetic-dominance
 linked_to_mechanisms:
 - gaba-glutamate-balance
+linked_to_symptoms:
+- insomnia
+- anxiety
 sources:
 - id: sherr-energy-blueprint-podcast-2026-methylene-blue
   location: Podcast — gut-brain GABA signalling segment

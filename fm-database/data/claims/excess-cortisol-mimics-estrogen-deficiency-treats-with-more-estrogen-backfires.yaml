@@ -24,6 +24,10 @@ linked_to_mechanisms:
 - cortisol-elevation
 - estrogen-dominance-thyroid-blunting
 linked_to_supplements: []
+linked_to_symptoms:
+- edema
+- hot-flashes
+- mood-swings
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 14 - Perimenopause and Menopause

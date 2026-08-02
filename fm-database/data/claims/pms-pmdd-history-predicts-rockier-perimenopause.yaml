@@ -21,6 +21,8 @@ out_of_scope_notes: Management of PMDD or severe perimenopausal mood disorders (
   HRT) is clinician scope.
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: thurlow-microbiome-session-5
   location: Perimenopause and Mood section

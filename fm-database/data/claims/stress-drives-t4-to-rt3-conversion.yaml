@@ -13,6 +13,8 @@ linked_to_supplements: []
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Factors that Affect Thyroid Function

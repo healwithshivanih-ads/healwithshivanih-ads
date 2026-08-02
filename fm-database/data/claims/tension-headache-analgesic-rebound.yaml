@@ -7,6 +7,8 @@ evidence_tier: strong
 linked_to_topics:
 - tension-type-headache
 - migraine-headache
+linked_to_symptoms:
+- headache
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1010

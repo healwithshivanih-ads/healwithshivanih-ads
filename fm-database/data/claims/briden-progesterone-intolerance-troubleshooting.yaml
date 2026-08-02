@@ -20,6 +20,10 @@ linked_to_topics:
 - perimenopause
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- intestinal-dysbiosis-symptoms
+- palpitations
 sources:
 - id: briden-blog-troubleshooting-progesterone
   location: Blog post — Negative mood symptoms section

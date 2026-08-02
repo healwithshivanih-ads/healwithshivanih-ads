@@ -21,6 +21,8 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- infertility
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — page 05

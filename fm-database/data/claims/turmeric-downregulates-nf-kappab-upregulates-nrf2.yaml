@@ -20,6 +20,8 @@ linked_to_supplements:
 - turmeric-curcumin
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Nutraceuticals — Turmeric

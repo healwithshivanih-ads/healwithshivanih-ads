@@ -10,6 +10,10 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - cardiovascular-disease-prevention
 - hypothyroidism
+linked_to_symptoms:
+- insulin-resistance
+- dyslipidemia
+- poor-concentration
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 10 — Statins special topic + Ruth patient story, pg 282–283
