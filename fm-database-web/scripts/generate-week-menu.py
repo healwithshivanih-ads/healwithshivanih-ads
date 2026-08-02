@@ -266,6 +266,45 @@ _TOOL = {
     },
 }
 
+def _tenure_lines(plan: dict, target_week: int) -> list:
+    """Continuation context for the drafter.
+
+    `target_week` restarts at 1 whenever a successor plan publishes, so without
+    this the model drafts week 1 for a client who has been eating this way for
+    months — reintroducing dishes as though they were new and writing a
+    change_note that reads like a fresh start. Detected from `supersedes` plus
+    the `…-plan-N-…` slug, the same two signals render-client-letter.py uses.
+
+    Returns [] for a first plan, so those prompts are byte-identical to before.
+    """
+    import re as _re
+
+    # `supersedes` is the ONLY evidence of continuation. The slug's plan-N is
+    # the coach's naming and cannot be trusted for this: Nidhi's FIRST plan is
+    # `nidhi-plan-2-…` (there was never a plan-1), so a slug test alone would
+    # have told the drafter her opening week was a continuation. Slug is used
+    # for the label only.
+    supersedes = str(plan.get("supersedes") or "").strip()
+    if not supersedes:
+        return []
+    m = _re.match(r"^(.+?)-plan-(\d+)-(.+)$", str(plan.get("slug") or ""))
+    phase_n = int(m.group(2)) if m else None
+
+    phase_label = f"phase {phase_n}" if phase_n else "a later phase"
+    return [
+        "",
+        f"⟶ CONTINUING CLIENT — this is WEEK {target_week} OF {phase_label.upper()}, not week "
+        f"{target_week} of her life with this plan.",
+        "She has already eaten months of menus in this framework. So:",
+        "- Vary harder than usual. A dish she has had many times is not a fresh idea just "
+        "because it is absent from the CURRENT MENU above.",
+        "- The change_note must NOT read like a beginning ('welcome', 'to start with', "
+        "'we're introducing'). She is carrying on; write it that way.",
+        "- Her established therapeutic staples stay — those are the point — but rotate the "
+        "everyday sabzis, millets and dals more aggressively than a first-phase week.",
+    ]
+
+
 SYSTEM = """You are drafting NEXT WEEK's menu for a functional-medicine client in India, as their coach Shivani would.
 
 HARD RULES:
@@ -472,6 +511,7 @@ def main() -> None:
             *(feedback or ["none recorded"]),
             "",
             f"Draft WEEK {target_week}.",
+            *_tenure_lines(plan, target_week),
         ]
     )
 

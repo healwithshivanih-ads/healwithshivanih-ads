@@ -472,7 +472,7 @@ export function ProgressScreen({
         <div className="muted" style={{ fontSize: 13.5, marginTop: 2 }}>
           {data.client.notStarted
             ? data.client.startsInDays > 0
-              ? `Your journey begins in ${data.client.startsInDays} day${data.client.startsInDays === 1 ? "" : "s"} — this is a preview.`
+              ? `${data.client.continued ? "Your next phase begins" : "Your journey begins"} in ${data.client.startsInDays} day${data.client.startsInDays === 1 ? "" : "s"} — this is a preview.`
               : "Your journey is being set up — progress starts tracking once week 1 begins."
             : `Week ${data.client.week} of ${data.client.totalWeeks} — here’s how it’s going.`}
         </div>
@@ -481,8 +481,8 @@ export function ProgressScreen({
       {isGrowingTreeEnabled(data.clientId) && (
         <div className="rn-tree-hero" style={{ marginTop: 6, marginBottom: 2 }}>
           <GrowingTree
-            week={data.client.week}
-            totalWeeks={data.client.totalWeeks}
+            week={data.client.tenureWeek}
+            totalWeeks={data.client.tenureTotalWeeks}
             dailyDone={dailyDone}
             dailyTotal={dailyTotal}
             streak={streak}

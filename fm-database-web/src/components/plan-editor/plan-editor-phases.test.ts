@@ -36,6 +36,17 @@ describe("getBestDurationHint", () => {
 });
 
 describe("computePhases", () => {
+  it("never restarts a continuing client at Foundation", () => {
+    // The coach timeline used to say "Foundation" on day 1 of phase 3, which
+    // is what the client app was saying too. Both now read phase-arcs.ts.
+    const p = computePhases(12, "2026-08-13", true);
+    expect(p.map((x) => x.name)).toEqual(["Momentum", "Deepening", "Sustain"]);
+    // Boundaries are untouched by the naming — same maths, same weeks.
+    const plain = computePhases(12, "2026-08-13");
+    expect(p.map((x) => [x.startWeek, x.endWeek])).toEqual(
+      plain.map((x) => [x.startWeek, x.endWeek]),
+    );
+  });
   it("splits short plans into 2 contiguous phases", () => {
     const p = computePhases(4, "2026-01-01");
     expect(p.map((x) => x.name)).toEqual(["Foundation", "Build"]);

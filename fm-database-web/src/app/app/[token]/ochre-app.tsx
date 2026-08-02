@@ -489,8 +489,12 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // ── Getting-Started tour ────────────────────────────────────────────
   // Auto-opens ONCE for new users (first two weeks, plan mode only — not
   // discovery/onboarding/setup-hold/endgame). The seen flag is per-client
-  // localStorage so a re-install shows it again (harmless). Re-watchable
-  // any time from the Coach tab ("Watch the tour again").
+  // localStorage so a re-install shows it again — harmless for a new client,
+  // NOT harmless for a returning one: the gate below also requires
+  // `!client.continued`, because week 1 of phase 3 is still "week ≤ 2" and a
+  // twelve-week client who reinstalls the app was being greeted with
+  // "Welcome, Nidhi — everything we've mapped out lives here". Caught in the
+  // sandbox on a fresh browser profile, which is exactly what a reinstall is.
   const TOUR_KEY = `ochre.tour.seen.${data.clientId}`;
   const [tourOpen, setTourOpen] = useState(false);
   const tourAutoRef = useRef(false);
@@ -544,7 +548,14 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       return; // storage unavailable — never auto-loop the tour
     }
     const normalMode = data.mode !== "REVIEW" && data.mode !== "MAINTENANCE" && data.mode !== "LIBRARY";
-    if (!discovery && !onboarding && !setupHold && normalMode && data.client.week <= 2) {
+    if (
+      !discovery &&
+      !onboarding &&
+      !setupHold &&
+      normalMode &&
+      !data.client.continued &&
+      data.client.week <= 2
+    ) {
       setTourOpen(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

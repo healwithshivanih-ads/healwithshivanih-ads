@@ -72,6 +72,11 @@ export async function POST(req: NextRequest) {
     if (!data) return NextResponse.json({ ok: true, answer: "DEFER" });
     const context =
       `Client: ${data.client.firstName}, week ${data.client.week} of ${data.client.totalWeeks}, ${data.client.program}. ` +
+      // Continuation matters to the copilot as much as to a letter: without it
+      // it answers a client of many months as though she were in week one.
+      (data.client.continued
+        ? `She is CONTINUING — this is phase ${data.client.phaseNumber}, and she has been on a protocol with this coach for about ${data.client.tenureWeek} weeks. Do not explain basics as though they were new; she has lived them. `
+        : "") +
       `Today's meals — ${data.meals.map((m) => `${m.slot}: ${m.pills.join(", ")}`).join("; ")}. ` +
       `Supplements — ${data.supplements.map((s) => `${s.name} ${s.dose} (${s.slot}, ${s.timing})`).join("; ")}. ` +
       `Daily practices — ${data.practices.map((p) => p.name).join("; ")}. ` +

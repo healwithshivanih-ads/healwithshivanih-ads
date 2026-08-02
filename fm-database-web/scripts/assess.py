@@ -318,6 +318,65 @@ def _build_intake_extras(client) -> dict:
     return bundle
 
 
+def _programme_tenure(plans_root: Path, client_id: str) -> dict | None:
+    """Continuation snapshot for the suggester (rule 12z), or None first time.
+
+    A client whose current published plan SUPERSEDES an earlier one has already
+    completed a protocol; without this the synthesiser proposes her existing
+    supplements back to her as fresh ideas. Evidence is `supersedes` only —
+    never the slug's plan-N, because a first plan can be named `…-plan-2-…`
+    (Nidhi's is exactly that).
+    """
+    import re as _re
+    import yaml  # local import — matches the convention in this file
+
+    pub = plans_root / "published"
+    if not pub.exists():
+        return None
+    current = None
+    for f in sorted(pub.glob("*.yaml")):
+        try:
+            d = yaml.safe_load(f.read_text()) or {}
+        except Exception:
+            continue
+        if d.get("client_id") != client_id:
+            continue
+        if current is None or str(d.get("updated_at") or "") > str(current.get("updated_at") or ""):
+            current = d
+    if not isinstance(current, dict):
+        return None
+    supersedes = str(current.get("supersedes") or "").strip()
+    if not supersedes:
+        return None
+
+    prior = None
+    for bucket in ("superseded", "revoked", "published"):
+        for f in (plans_root / bucket).glob(f"{supersedes}*.yaml") if (plans_root / bucket).exists() else []:
+            try:
+                prior = yaml.safe_load(f.read_text()) or {}
+            except Exception:
+                prior = None
+            if prior:
+                break
+        if prior:
+            break
+
+    m = _re.match(r"^(.+?)-plan-(\d+)-(.+)$", str(current.get("slug") or ""))
+    supps = [
+        str((s or {}).get("supplement_slug") or "").strip()
+        for s in (current.get("supplement_protocol") or [])
+        if isinstance(s, dict) and (s or {}).get("supplement_slug")
+    ]
+    return {
+        "phase_label": f"phase {m.group(2)}" if m else "a later phase",
+        "current_plan_slug": current.get("slug"),
+        "supersedes": supersedes,
+        "prior_plan_weeks": (prior or {}).get("plan_period_weeks"),
+        "prior_plan_start": str((prior or {}).get("plan_period_start") or "") or None,
+        "prior_supplements": supps,
+    }
+
+
 def _load_external_reports(plans_root: Path, client_id: str) -> list[dict]:
     """Walk clients/<id>/reports/*.yaml — these are the genetic /
     food-sensitivity / OAT / imaging / dexa reports the coach uploads
@@ -834,6 +893,9 @@ def main() -> int:
     age = client.estimated_age()
     bmr = m.bmr_mifflin_st_jeor(age, client.sex) if age else None
     client_ctx = {
+        # Continuation context (suggester rule 12z). None for a first-time
+        # client, which is the majority case and leaves the prompt unchanged.
+        "programme_tenure": _programme_tenure(root, client.client_id),
         "client_id": client.client_id,
         "age_band": client.age_band,
         "estimated_age": age,

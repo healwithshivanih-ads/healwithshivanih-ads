@@ -7,6 +7,8 @@
  * in plan-editor-phases.test.ts.
  */
 
+import { CONTINUING_ARCS } from "@/lib/fmdb/phase-arcs";
+
 export const DURATION_OPTIONS = [
   { weeks: 4,  tag: "Quick reset",   desc: "Short check-in, monitoring reset" },
   { weeks: 6,  tag: "Starter",       desc: "Initial foundation phase" },
@@ -61,8 +63,13 @@ export function todayISO(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-/** Compute phase boundaries from total weeks. Returns 2 or 3 phases. */
-export function computePhases(totalWeeks: number, startDate: string): {
+/** Compute phase boundaries from total weeks. Returns 2 or 3 phases.
+ *
+ *  `continued` (from programme-tenure) swaps the arc NAMES for the
+ *  continuation set, so the coach's timeline and the client's ribbon can never
+ *  disagree about what phase she is in — both read phase-arcs.ts. Default
+ *  false keeps every existing caller's output identical. */
+export function computePhases(totalWeeks: number, startDate: string, continued = false): {
   name: string;
   color: string;
   textColor: string;
@@ -72,21 +79,28 @@ export function computePhases(totalWeeks: number, startDate: string): {
   endDate: string;
   pct: number;
 }[] {
+  // First-plan names are the coach's existing internal ones — deliberately NOT
+  // changed to the client-facing set, because nobody asked for that churn. Only
+  // the continuation case is unified, and it reads from phase-arcs.ts so the
+  // coach's timeline and the client's ribbon name the same phase identically.
+  const names = continued
+    ? CONTINUING_ARCS.map((a) => a.name)
+    : ["Foundation", "Build", "Maintenance"];
   if (totalWeeks <= 6) {
-    // 2 phases: Foundation + Build
+    // 2 phases: the opening arc + the middle one
     const split = Math.ceil(totalWeeks / 2);
     return [
-      { name: "Foundation", color: "#E8E4EF", textColor: "#2B2D42", startWeek: 1, endWeek: split,       startDate, endDate: addWeeks(startDate, split), pct: split / totalWeeks },
-      { name: "Build",       color: "#2B2D42", textColor: "#ffffff",  startWeek: split + 1, endWeek: totalWeeks, startDate: addWeeks(startDate, split), endDate: addWeeks(startDate, totalWeeks), pct: (totalWeeks - split) / totalWeeks },
+      { name: names[0], color: "#E8E4EF", textColor: "#2B2D42", startWeek: 1, endWeek: split,       startDate, endDate: addWeeks(startDate, split), pct: split / totalWeeks },
+      { name: names[1],  color: "#2B2D42", textColor: "#ffffff",  startWeek: split + 1, endWeek: totalWeeks, startDate: addWeeks(startDate, split), endDate: addWeeks(startDate, totalWeeks), pct: (totalWeeks - split) / totalWeeks },
     ];
   }
-  // 3 phases: Foundation / Build / Maintenance
-  const f = Math.round(totalWeeks * 0.38); // ~38% Foundation
-  const b = Math.round(totalWeeks * 0.38); // ~38% Build
-  const m = totalWeeks - f - b;            // remainder Maintenance
+  // 3 phases across the plan
+  const f = Math.round(totalWeeks * 0.38); // ~38% opening arc
+  const b = Math.round(totalWeeks * 0.38); // ~38% middle arc
+  const m = totalWeeks - f - b;            // remainder closing arc
   return [
-    { name: "Foundation",  color: "#E8E4EF", textColor: "#2B2D42", startWeek: 1,   endWeek: f,          startDate,                          endDate: addWeeks(startDate, f),          pct: f / totalWeeks },
-    { name: "Build",       color: "#2B2D42", textColor: "#ffffff",  startWeek: f+1, endWeek: f+b,        startDate: addWeeks(startDate, f),   endDate: addWeeks(startDate, f+b),       pct: b / totalWeeks },
-    { name: "Maintenance", color: "#8D99AE", textColor: "#ffffff",  startWeek: f+b+1, endWeek: totalWeeks, startDate: addWeeks(startDate, f+b), endDate: addWeeks(startDate, totalWeeks), pct: m / totalWeeks },
+    { name: names[0],  color: "#E8E4EF", textColor: "#2B2D42", startWeek: 1,   endWeek: f,          startDate,                          endDate: addWeeks(startDate, f),          pct: f / totalWeeks },
+    { name: names[1],       color: "#2B2D42", textColor: "#ffffff",  startWeek: f+1, endWeek: f+b,        startDate: addWeeks(startDate, f),   endDate: addWeeks(startDate, f+b),       pct: b / totalWeeks },
+    { name: names[2], color: "#8D99AE", textColor: "#ffffff",  startWeek: f+b+1, endWeek: totalWeeks, startDate: addWeeks(startDate, f+b), endDate: addWeeks(startDate, totalWeeks), pct: m / totalWeeks },
   ];
 }

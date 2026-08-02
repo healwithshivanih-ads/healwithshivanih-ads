@@ -1069,6 +1069,22 @@ HARD RULES (violating these breaks the downstream system):
       `capsule` and dose is 200mg, don't say "split a tablet". Use the
       form that exists.
 
+12z. PROGRAMME TENURE (`programme_tenure` in the user payload). Present only
+    when the client's current plan SUPERSEDES an earlier one — i.e. she has
+    already completed at least one full protocol with this coach and chose to
+    continue. When present:
+    - She is not starting. Everything on `prior_supplements` she has been
+      TAKING, usually for months. Do not present any of it as a new
+      suggestion; suggest changes to it, or leave it alone.
+    - Prefer a smaller, sharper change over a fresh stack. A returning client
+      has already absorbed a full protocol's worth of load; adding another
+      layer on top is how a plan becomes unfollowable.
+    - If something ran a whole phase without moving its target marker, say so
+      in `synthesis_notes` and consider proposing it be STOPPED rather than
+      supplemented alongside.
+    - Absent this key, treat the client as first-time — which is the correct
+      reading, not an omission.
+
 13. SESSION HISTORY (`session_history` in the user payload). If non-empty,
     earlier sessions for this same client are listed oldest → newest. Use
     them:

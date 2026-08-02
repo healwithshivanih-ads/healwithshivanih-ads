@@ -431,8 +431,8 @@ export function TodayScreen({
               aria-label="See your tree grow in Progress"
             >
               <GrowingTree
-                week={data.client.week}
-                totalWeeks={data.client.totalWeeks}
+                week={data.client.tenureWeek}
+                totalWeeks={data.client.tenureTotalWeeks}
                 dailyDone={dailyDone}
                 dailyTotal={dailyTotal}
                 streak={streak}

@@ -242,6 +242,38 @@ def _weight_progress_summary(client: dict) -> str | None:
         return None
 
 
+def _continuation_lines(plan: dict | None) -> list:
+    """Tell the rework AI it is looking at a LATER phase, not a first protocol.
+
+    Without it the model re-proposes what she has been taking for months and
+    reads the current plan as an opening move. Continuation is evidenced by
+    `supersedes` only — never the slug, because a client's first plan can be
+    named `…-plan-2-…` (Nidhi's is). The slug supplies the label alone.
+
+    Returns [] for a first plan, so those prompts are unchanged.
+    """
+    if not isinstance(plan, dict):
+        return []
+    supersedes = str(plan.get("supersedes") or "").strip()
+    if not supersedes:
+        return []
+    import re as _re
+    m = _re.match(r"^(.+?)-plan-(\d+)-(.+)$", str(plan.get("slug") or ""))
+    phase = f"phase {m.group(2)}" if m else "a later phase"
+    return [
+        f"# CONTINUING CLIENT — THIS IS {phase.upper()}",
+        f"The plan below supersedes `{supersedes}`. She has already completed at least one "
+        "full protocol with this coach.",
+        "- The supplements and practices on this plan are things she has been DOING, often "
+        "for months — not proposals. Do not re-suggest them as new; propose changes to them.",
+        "- Weigh what the previous phase already moved before adding load. A returning client "
+        "is usually better served by a smaller, sharper change than a fresh stack.",
+        "- If something has been running for two phases without moving its target marker, "
+        "say so and propose stopping it rather than adding alongside it.",
+        "",
+    ]
+
+
 def _build_context(client: dict, plan: dict | None, sessions: list[dict],
                    event_summary: str, triggered_by: str) -> str:
     """Build the prompt context for Haiku — keep it compact (~3-5K tokens)."""
@@ -336,6 +368,7 @@ def _build_context(client: dict, plan: dict | None, sessions: list[dict],
             value = (lv or {}).get("value")
             unit = (lv or {}).get("unit") or ""
             on_file.setdefault(name, []).append((date, str(value) if value is not None else "?", unit))
+    lines.extend(_continuation_lines(plan))
     if on_file:
         lines.append(f"# LABS ALREADY ON FILE ({len(on_file)} markers)")
         lines.append(

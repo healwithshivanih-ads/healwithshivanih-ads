@@ -345,6 +345,9 @@ interface PlanTimelineCardProps {
   startDate: string;
   weeks: number;
   primaryTopics: string[];
+  /** This plan continues a prior one — names the arcs as a continuation
+   *  instead of restarting the client at "Foundation". */
+  continued?: boolean;
   locked: boolean;
   onStartDateChange: (d: string) => void;
   onWeeksChange: (w: number) => void;
@@ -354,13 +357,14 @@ function PlanTimelineCard({
   startDate,
   weeks,
   primaryTopics,
+  continued = false,
   locked,
   onStartDateChange,
   onWeeksChange,
 }: PlanTimelineCardProps) {
   const hint = getBestDurationHint(primaryTopics);
   const endDate = startDate ? addWeeks(startDate, weeks) : null;
-  const phases = startDate ? computePhases(weeks, startDate) : [];
+  const phases = startDate ? computePhases(weeks, startDate, continued) : [];
 
   function fmt(d: string) {
     return new Date(d + "T00:00:00").toLocaleDateString("en-GB", {
@@ -1255,6 +1259,7 @@ export function PlanEditor(props: PlanEditorProps) {
         startDate={timelineStart}
         weeks={timelineWeeks}
         primaryTopics={(plan.primary_topics as string[]) ?? []}
+        continued={Boolean(String(plan.supersedes ?? "").trim())}
         locked={effectiveLocked}
         onStartDateChange={(d) => {
           setTimelineStart(d);

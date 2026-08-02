@@ -72,6 +72,8 @@ import {
   type TravelOverrideLike,
   type RecheckOpts,
 } from "@/lib/fmdb/plan-timing";
+import { buildTenure, type TenurePlanLike } from "@/lib/fmdb/programme-tenure";
+import { phaseArcs, programmeLabel } from "@/lib/fmdb/phase-arcs";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
 import { loadLabProvider } from "@/lib/fmdb/lab-providers";
@@ -1044,8 +1046,18 @@ export interface ClientAppData {
   client: {
     firstName: string;
     program: string;
+    /** Week within the CURRENT plan — what every "Week 3 of 12" label means. */
     week: number;
     totalWeeks: number;
+    /** Cumulative weeks on a protocol across every phase, and the summed
+     *  ceiling. Anything that represents ACCRUED PROGRESS reads these, not
+     *  `week` — a continuing client's growth must not reset when a successor
+     *  plan publishes. See programme-tenure.ts. */
+    tenureWeek: number;
+    tenureTotalWeeks: number;
+    /** Coach's phase number (1 for a first plan) + the flag most callers want. */
+    phaseNumber: number;
+    continued: boolean;
     startDateLabel: string;
     /** true when the coach has set a meal-plan start date in the future —
      *  the plan is "on hold" and the app shows a pre-start screen until then */
@@ -2896,6 +2908,32 @@ function isNewerPublishedPlan(a: Dict, b: Dict): boolean {
   return va > vb;
 }
 
+/**
+ * Every EARLIER plan on this client's record — the supersede chain's ancestors.
+ * They live in `superseded/` (and `revoked/`, for a phase that was pulled), so
+ * the published-only scan above cannot see them. Small dirs, read once per app
+ * request, and a failure to read simply yields no ancestors: tenure then
+ * degrades to "this plan only", which is the pre-tenure behaviour.
+ */
+async function priorPlansForClient(clientId: string): Promise<Dict[]> {
+  const out: Dict[] = [];
+  for (const bucket of ["superseded", "revoked"]) {
+    const dir = path.join(getPlansRoot(), bucket);
+    let entries: string[];
+    try {
+      entries = await fs.readdir(dir);
+    } catch {
+      continue;
+    }
+    for (const name of entries) {
+      if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+      const d = await readYamlIfExists(path.join(dir, name));
+      if (d && d.client_id === clientId) out.push(d);
+    }
+  }
+  return out;
+}
+
 async function latestPublishedPlanForClient(
   clientId: string,
 ): Promise<{ plan: Dict } | null> {
@@ -3266,6 +3304,12 @@ async function buildDiscoveryAppData(
       program: "Discovery consult",
       week: 0,
       totalWeeks: 0,
+      // No plan yet, so no tenure — a consult-tier client is by definition at
+      // the start. Mirrors week/totalWeeks being 0 here.
+      tenureWeek: 0,
+      tenureTotalWeeks: 0,
+      phaseNumber: 1,
+      continued: false,
       startDateLabel: "",
       notStarted: false,
       startsInDays: 0,
@@ -3566,6 +3610,17 @@ export async function loadClientAppData(
     );
     week = Math.min(Math.max(Math.floor((days - paused) / 7) + 1, 1), totalWeeks);
   }
+
+  // Tenure — weeks with the coach across EVERY phase, not just this plan.
+  // `week` above resets to 1 whenever a successor publishes; anything that
+  // represents accrued progress (the growing tree) must read tenure instead,
+  // or twelve weeks of growth vanish overnight. See programme-tenure.ts.
+  const tenure = buildTenure(
+    plan as unknown as TenurePlanLike,
+    [plan as unknown as TenurePlanLike, ...(await priorPlansForClient(clientId))],
+    refUTC.toISOString().slice(0, 10),
+    { overrides: travelOverrides, weightLossEnabled },
+  );
 
   // week strip: Sunday-start calendar week around today
   const dows = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -5001,22 +5056,13 @@ export async function loadClientAppData(
   // in who had already halved her HbA1c. Same three arcs, worded as the
   // continuation it is. Names are chosen to read naturally in `coachLine`
   // ("you're in the X phase now").
-  const continuedPlan = Boolean(asStr(plan.supersedes).trim());
+  const continuedPlan = tenure.continued;
   let ribbon: { name: string; weeks: string; note: string }[] = [];
   {
     const tw = Math.max(totalWeeks || 12, 3);
     const a = Math.ceil(tw / 3);
-    ribbon = continuedPlan
-      ? [
-          { name: "Momentum", weeks: `Weeks 1–${a}`, note: "Carrying on from where the last phase left you — nothing starts over." },
-          { name: "Deepening", weeks: `Weeks ${a + 1}–${a * 2}`, note: "Pressing on what moved, holding what has steadied." },
-          { name: "Sustain", weeks: `Weeks ${a * 2 + 1}–${tw}`, note: "Anchoring it all as a way of living." },
-        ]
-      : [
-          { name: "Foundation", weeks: `Weeks 1–${a}`, note: "Calming the system and building a steady daily rhythm." },
-          { name: "Rebalance", weeks: `Weeks ${a + 1}–${a * 2}`, note: "Settling blood sugar and stress hormones." },
-          { name: "Sustain", weeks: `Weeks ${a * 2 + 1}–${tw}`, note: "Anchoring it all as a way of living." },
-        ];
+    const spans = [`Weeks 1–${a}`, `Weeks ${a + 1}–${a * 2}`, `Weeks ${a * 2 + 1}–${tw}`];
+    ribbon = phaseArcs(continuedPlan).map((arc, i) => ({ ...arc, weeks: spans[i] }));
   }
   const ribbonIdx = ribbon.findIndex((r) => {
     const m = r.weeks.match(/(\d+)–(\d+)/);
@@ -5143,12 +5189,21 @@ export async function loadClientAppData(
   // Oxford-style join: 1 → "Calm reset"; 2 → "Calm & sleep reset";
   // 3 → "Calm, sleep & energy reset". (Old slice(1,-1) form emitted a stray
   // ", " on exactly-2 goals → "Calm,  & sleep reset".)
-  const program =
+  // A later phase is not a "reset" — calling it one erases the work behind
+  // her. programmeLabel() keeps the goal-derived wording for a first plan and
+  // switches to "Phase N · your next 12 weeks" once she is continuing.
+  const goalsLabel =
     programBits.length === 0
-      ? `Your ${totalWeeks}-week reset`
+      ? undefined
       : programBits.length === 1
-        ? `${programBits[0]} reset`
-        : `${programBits.slice(0, -1).join(", ")} & ${programBits[programBits.length - 1]} reset`;
+        ? programBits[0]
+        : `${programBits.slice(0, -1).join(", ")} & ${programBits[programBits.length - 1]}`;
+  const program = programmeLabel(
+    totalWeeks,
+    tenure.phaseNumber,
+    tenure.continued,
+    goalsLabel,
+  );
 
   const arcNow = ribbonIdx >= 0 ? ribbon[ribbonIdx] : undefined;
   const coachLine = arcNow
@@ -5657,6 +5712,10 @@ export async function loadClientAppData(
       program,
       week,
       totalWeeks,
+      tenureWeek: tenure.weeksWithCoach,
+      tenureTotalWeeks: tenure.totalWeeksWithCoach,
+      phaseNumber: tenure.phaseNumber,
+      continued: tenure.continued,
       startDateLabel: startLabel,
       notStarted,
       startsInDays,
