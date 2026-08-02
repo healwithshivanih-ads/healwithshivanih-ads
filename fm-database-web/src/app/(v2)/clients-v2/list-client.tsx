@@ -409,6 +409,7 @@ function AvatarBlock({
   const [photoOk, setPhotoOk] = useState(hasPhoto);
   if (photoOk) {
     return (
+      // eslint-disable-next-line @next/next/no-img-element -- same-origin /api avatar with onError→initials fallback; next/image adds an optimizer round-trip for a 44px image
       <img
         src={`/api/client-photo/${clientId}`}
         alt=""

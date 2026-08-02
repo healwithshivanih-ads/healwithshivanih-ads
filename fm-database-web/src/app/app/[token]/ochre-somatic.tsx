@@ -241,7 +241,7 @@ export function SomaticOverlay({ somatic, onClose }: { somatic: AppSomatic; onCl
     };
     raf = requestAnimationFrame(render);
     return () => cancelAnimationFrame(raf);
-  }, [somatic.shape, somatic.bilateral, step, left, status, reduce, isChecklist, selfPaced, cycle]);
+  }, [somatic.shape, somatic.bilateral, step, left, status, reduce, isChecklist, selfPaced, cycle, breathPaced, hasSound]);
 
   const restart = () => { stepElapsed.current = 0; setIdx(0); setLeft(steps[0]?.secs ?? 0); setStatus("running"); };
 

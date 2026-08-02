@@ -319,8 +319,8 @@ function AttachForm({
     setSearch("");
   }
 
-  const options = catalogue[targetKind] ?? [];
   const filtered = useMemo(() => {
+    const options = catalogue[targetKind] ?? [];
     const q = search.toLowerCase().trim();
     if (!q) return options.slice(0, 50);
     return options
@@ -331,7 +331,7 @@ function AttachForm({
           o.aliases.some((a) => a.toLowerCase().includes(q))
       )
       .slice(0, 50);
-  }, [options, search]);
+  }, [catalogue, targetKind, search]);
 
   const modeIsValid =
     (mode === "alias" && KINDS_WITH_ALIASES.has(targetKind)) ||

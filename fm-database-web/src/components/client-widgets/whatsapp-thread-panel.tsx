@@ -450,6 +450,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                             target="_blank"
                             rel="noopener noreferrer"
                           >
+                            {/* eslint-disable-next-line @next/next/no-img-element -- user-uploaded attachment of unknown intrinsic size */}
                             <img
                               src={`/api/client-file/${clientId}/${m.attachment.name}`}
                               alt={m.attachment.name}

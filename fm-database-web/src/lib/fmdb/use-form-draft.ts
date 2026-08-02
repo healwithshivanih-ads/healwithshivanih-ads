@@ -153,7 +153,7 @@ export function useFormDraft<F extends Record<string, unknown>>(
     } catch {
       /* quota / privacy mode — silent */
     }
-  });
+  }, [key, fields, hasSavedDraft]);
 
   // ── Clear ──────────────────────────────────────────────────────────
   const clearDraft = () => {

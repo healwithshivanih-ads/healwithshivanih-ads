@@ -105,6 +105,7 @@ export function ClientAvatar({
         }}
       >
         {hasPhoto ? (
+          // eslint-disable-next-line @next/next/no-img-element -- dynamic API-served avatar with onError→initials fallback
           <img
             src={photoUrl as string}
             alt={displayName ?? clientId}

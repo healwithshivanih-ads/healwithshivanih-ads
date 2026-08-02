@@ -882,6 +882,7 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
       <div className="why">{supp.why}</div>
       <div className="supp-foot">
         {supp.imageUrl && (
+          // eslint-disable-next-line @next/next/no-img-element -- arbitrary external supplement-label URL (VitaOne/iHerb); next/image would need per-domain remotePatterns
           <img
             className="supp-thumb"
             src={supp.imageUrl}

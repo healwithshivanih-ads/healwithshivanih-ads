@@ -3762,6 +3762,7 @@ export function IntakeForm({
         >
           <div style={{ marginBottom: 12 }}>
             {/* CC0 — Hypermobility Beighton Score by Rollcloud, Wikimedia Commons */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- static responsive illustration (height:auto); intrinsic dimensions not declared */}
             <img
               src="/intake-illustrations/beighton-composite.png"
               alt="Joint flexibility tests — Beighton score illustration showing pinky bend, thumb to forearm, elbow hyperextension, knee hyperextension, and palms flat on floor"
