@@ -20,7 +20,6 @@ import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import {
   loadClientSessions,
   getRecentInboundMessages,
-  getRecentIntakeActivity,
   getStrandedIntakeDrafts,
   getClientHealthSignals,
 } from "@/lib/fmdb/loader-extras";
@@ -59,7 +58,6 @@ import {
   FmVitaoneCoverageChip,
   FmRecipeImageChip,
   FmInboundMessagesBanner,
-  FmIntakeActivityBanner,
   FmStrandedIntakeBanner,
   FmScheduleDuePanel,
   FmUpcomingBookingsPanel,
@@ -514,29 +512,6 @@ export default async function DashboardV2() {
     plansByClient.get(cid)!.push(p as unknown as PlanRow);
   }
 
-  // Latest plan-update timestamp per client (any status). When this is
-  // newer than a client's intake_submitted_at, the coach has clearly
-  // actioned the intake — the banner drops them.
-  const latestPlanUpdateByClient = new Map<string, string>();
-  for (const [cid, rows] of plansByClient.entries()) {
-    let latest = "";
-    for (const r of rows) {
-      const ts = (r as unknown as Record<string, unknown>).updated_at;
-      if (typeof ts === "string" && ts > latest) latest = ts;
-    }
-    if (latest) latestPlanUpdateByClient.set(cid, latest);
-  }
-
-  // Intake-form activity (submitted in last 7d / started or opened in last 24h).
-  // Reads off client.yaml fields — no extra fs walks. Sits next to the
-  // WhatsApp inbound banner so coach has a single "what's new" strip
-  // at the top of the dashboard.
-  const intakeActivity = await getRecentIntakeActivity(
-    clients as Array<Record<string, unknown>>,
-    7,
-    latestPlanUpdateByClient,
-  );
-
   // Stranded intake drafts — substantial answers sitting in
   // intake_form_draft, never promoted to a real submit. (Pranati cl-009
   // hit this 2026-05-23, 63 fields lost in plain sight.) Banner appears
@@ -792,7 +767,6 @@ export default async function DashboardV2() {
   }
 
   const totalClients = clients.length;
-  const monthLabel = new Date().toLocaleDateString("en-GB", { month: "short" });
   // "Needs attention" = everything in the 🔴 Needs action + 🟡 Pipeline
   // tiers (active / returning / new_lead / declined are steady or cold,
   // not attention-now). Mirrors the tier split in triage-sections.tsx.

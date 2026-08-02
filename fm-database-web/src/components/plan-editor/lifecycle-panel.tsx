@@ -21,7 +21,6 @@ import {
 import {
   revokePlan,
   graduatePlan,
-  supersedePlan,
   comparePlanVersions,
   renderPlan,
   renderLabOrders,
@@ -149,15 +148,6 @@ export function LifecyclePanel({
     });
   }
 
-  function handleSupersede() {
-    startTransition(async () => {
-      if (!successorSlug.trim()) { notify(false, "Enter the successor slug."); return; }
-      const r = await supersedePlan(successorSlug, reason);
-      notify(r.ok, r.ok ? `Superseded by ${successorSlug}.` : r.error ?? "Supersede failed.");
-      if (r.ok) { setSuccessorSlug(""); refreshAfterMutate(); }
-    });
-  }
-
   function handleCreateSuccessor() {
     startTransition(async () => {
       if (!successorSlug.trim()) { notify(false, "Enter a slug for the successor draft."); return; }
@@ -232,7 +222,6 @@ export function LifecyclePanel({
 
   const sha = catalogueSnapshot?.git_sha ?? null;
   const snapDate = catalogueSnapshot?.snapshot_date ?? null;
-  const otherSlugs = allPlanSlugs.filter((s) => s !== slug);
 
   return (
     <Card>

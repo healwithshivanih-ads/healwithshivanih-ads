@@ -67,7 +67,7 @@ export function InfoPackGeneratorForm() {
   const [audience, setAudience] = useState<"patient" | "coach">("patient");
   const [maxPapers, setMaxPapers] = useState(12);
   const [slug, setSlug] = useState("");
-  const [preview, setPreview] = useState<null | { papers_used: number; pmids: string[] }>(null);
+  const [, setPreview] = useState<null | { papers_used: number; pmids: string[] }>(null);
 
   const { clearDraft, hasSavedDraft } = useFormDraft(
     DRAFT_KEY,

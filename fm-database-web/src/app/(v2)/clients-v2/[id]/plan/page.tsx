@@ -68,7 +68,6 @@ import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
 import { PlanConflictPanel } from "./plan-conflict-panel";
 import { AppPreviewPanel } from "../app-preview-panel";
-import { SendAppLinkButton } from "../send-app-link-button";
 import { StatusStrip, StatusStripLink } from "./status-strip";
 import { PlanStudio, type StudioSection } from "./plan-studio";
 

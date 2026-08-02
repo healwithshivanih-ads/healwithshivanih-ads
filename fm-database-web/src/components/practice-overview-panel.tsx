@@ -11,7 +11,6 @@ import type { PracticeOverview, StatusEntry } from "@/lib/fmdb/practice-overview
 const C_GREEN = "var(--fm-success)";
 const C_AMBER = "var(--fm-primary)";
 const C_RED = "#e0544f";
-const C_NEUTRAL = "var(--fm-border-strong)";
 const C_SEV = "#8d99ae";
 
 function Dot({ color }: { color: string }) {

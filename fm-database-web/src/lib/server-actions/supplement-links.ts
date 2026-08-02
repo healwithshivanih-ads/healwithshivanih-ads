@@ -59,7 +59,7 @@ async function readLinks(): Promise<LinksFile> {
   return cache;
 }
 
-function vitaoneSearchUrl(name: string): string {
+function vitaoneSearchUrl(_name: string): string {
   // VitaOne site doesn't expose a documented search query param, so we
   // build a "browse" URL that lands the client on the catalog with the
   // referral cookie set. They'll see related products to pick from.

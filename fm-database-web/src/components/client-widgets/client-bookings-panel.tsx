@@ -7,7 +7,6 @@
  *
  * Read from ~/fm-plans/_calcom_bookings.yaml via loadClientBookings().
  */
-import Link from "next/link";
 import type { UpcomingBooking } from "@/lib/fmdb/loader-extras";
 
 function fmtWhen(iso: string): string {

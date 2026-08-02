@@ -120,7 +120,6 @@ function PillarBar({
   prevValue?: number;
 }) {
   const pct = (value / max) * 100;
-  const effectiveScore = inverted ? max + 1 - value : value; // for display purposes
   const delta = prevValue != null ? value - prevValue : null;
   const improved = inverted ? (delta != null && delta < 0) : (delta != null && delta > 0);
   const worsened = inverted ? (delta != null && delta > 0) : (delta != null && delta < 0);

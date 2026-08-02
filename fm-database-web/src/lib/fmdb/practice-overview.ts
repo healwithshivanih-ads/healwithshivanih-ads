@@ -60,13 +60,6 @@ interface OverviewInput {
 const EXCEPTION_CAP = 8;
 const COMPOSITION_CAP = 6;
 
-const AMBER_BUCKETS = new Set([
-  "protocol_complete", // recheck overdue
-  "plan_review_due",
-  "follow_up_due",
-  "labs_pending",
-]);
-
 const PROSPECT_BUCKETS = new Set(["new_lead", "returning", "awaiting_signup", "booking_link_pending"]);
 const ONBOARDING_BUCKETS = new Set(["intake_to_do", "plan_to_build"]);
 const ACTIVE_BUCKETS = new Set([

@@ -25,7 +25,6 @@ import { RecipeSuggestionsCard } from "./recipe-suggestions-card";
 import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
 import {
   DURATION_OPTIONS,
-  TOPIC_DURATION_HINTS,
   getBestDurationHint,
   addWeeks,
   todayISO,

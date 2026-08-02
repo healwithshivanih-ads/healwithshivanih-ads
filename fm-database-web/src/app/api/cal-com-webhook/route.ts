@@ -310,17 +310,6 @@ async function sendNoShowNudge(opts: {
 }): Promise<void> {
   const { sendAndRecordOutboundAction } = await import("@/app/api/whatsapp/actions");
   const firstName = opts.name.split(/\s+/)[0] || "there";
-  const startDate = opts.startTime ? new Date(opts.startTime) : new Date();
-  const dateStr = startDate.toLocaleDateString("en-IN", {
-    day: "numeric", month: "short", year: "numeric", timeZone: IST_TZ,
-  });
-  const timeStr =
-    startDate.toLocaleTimeString("en-IN", {
-      hour: "numeric", minute: "2-digit", hour12: true, timeZone: IST_TZ,
-    }) + " IST";
-  const joinLine = opts.joinUrl
-    ? `Here's the link to join now: ${opts.joinUrl}`
-    : "Check your email for the Zoom link.";
   const sessionType = cleanSessionLabel(opts.eventTitle);
   const renderedBody =
     `Hi ${firstName}, just checking in — I haven't seen you on Zoom yet for our ` +

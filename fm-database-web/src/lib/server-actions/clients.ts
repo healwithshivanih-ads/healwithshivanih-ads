@@ -713,13 +713,6 @@ export async function parseTranscriptForClient(
     transcript_path = tmp_path;
   }
 
-  const payload = JSON.stringify({
-    transcript_path: transcript_path ?? undefined,
-    transcript_url: url?.trim() || undefined,
-    mime_type,
-    dry_run: false,
-  });
-
   try {
     const result = await runScript(
       "extract-client-from-transcript.py",
@@ -1390,7 +1383,6 @@ export async function uploadReportAction(input: UploadReportInput): Promise<Uplo
     await fs.mkdir(reportsDir, { recursive: true });
 
     // Save file to disk
-    const ext = path.extname(input.fileName) || ".pdf";
     const datestamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     const safeName = input.fileName.replace(/[^a-zA-Z0-9._-]/g, "_");
     const diskName = `${datestamp}-${input.reportType}-${safeName}`;

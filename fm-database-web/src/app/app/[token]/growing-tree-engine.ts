@@ -296,7 +296,6 @@ export function mountGrowingTree(root: HTMLElement, initial: TreeState): Growing
     gRoots = $("ot-roots"),
     gTrunk = $("ot-trunk"),
     gRings = $("ot-rings"),
-    gCanopy = $("ot-canopy"),
     gBranches = $("ot-branches"),
     gCanopyFill = $("ot-canopyfill"),
     gCanopyShade = $("ot-canopyshade"),
@@ -992,11 +991,9 @@ export function mountGrowingTree(root: HTMLElement, initial: TreeState): Growing
     let miX = 1e9,
       maX = -1e9,
       miY = 1e9,
-      sx = 0,
       sy = 0;
     for (let i = 0; i < lpts.length; i++) {
       const p = lpts[i];
-      sx += p.x;
       sy += p.y;
       if (p.x < miX) miX = p.x;
       if (p.x > maX) maX = p.x;
@@ -1500,7 +1497,7 @@ export function mountGrowingTree(root: HTMLElement, initial: TreeState): Growing
     }
   }
 
-  function drawNest(G: CrownGeom | null, trunk: Trunk, week: number, stage: Stage) {
+  function drawNest(G: CrownGeom | null, trunk: Trunk, week: number, _stage: Stage) {
     clear(gNest);
     if (!G) return;
     const showNest = week >= 6;

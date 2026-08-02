@@ -57,7 +57,7 @@ export interface ProcessZoomRecordingInput {
 export async function processZoomRecording(
   input: ProcessZoomRecordingInput,
 ): Promise<void> {
-  const { event, meeting, download_token } = input;
+  const { meeting, download_token } = input;
   const uuid = meeting.uuid;
   if (!uuid) {
     console.warn("[zoom-recording] event missing meeting.uuid — skipping");
@@ -281,8 +281,6 @@ async function runExtractionPipeline(
   // Both already exist for the assess / health-input flows; we point them
   // at the transcript text and merge into client.yaml the same way.
   const { execFile } = await import("child_process");
-  const { promisify } = await import("util");
-  const exec = promisify(execFile);
   const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
   const PYTHON = path.resolve(process.cwd(), "../fm-database/.venv/bin/python");
 

@@ -20,7 +20,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 
 import { getCataloguePath } from "./paths";
-import { isClientSafe, readChiefComplaints } from "./somatic-read";
+import { readChiefComplaints } from "./somatic-read";
 import { rootAppliesTo } from "./somatic-variants";
 
 /** The seven players. Mirrors fmdb.enums.MotionShape — keep in lockstep. */

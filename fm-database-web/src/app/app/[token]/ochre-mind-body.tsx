@@ -18,7 +18,7 @@
 
 import { useState } from "react";
 
-import type { AppMindBodyRead, AppSomatic } from "@/lib/fmdb/somatic";
+import type { AppMindBodyRead } from "@/lib/fmdb/somatic";
 import { Icon, useOchre } from "./ochre-context";
 import { RootsMotif } from "./mind-body-motif";
 import { routableFeelings, type Available, type FeelingKey, type Route } from "./mind-body-routing";

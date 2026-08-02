@@ -313,7 +313,6 @@ function statusTone(status: string | null): { bg: string; fg: string; label: str
 
 export function ReferenceClient({
   clientId,
-  displayName,
   firstName,
   activePlanSlug,
   activePlanStatus,

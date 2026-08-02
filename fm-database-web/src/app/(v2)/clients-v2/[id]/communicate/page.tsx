@@ -21,7 +21,7 @@ import { FmPageHeader } from "@/components/fm";
 import { CommunicatePageShell } from "./communicate-page-shell";
 import { CommunicateClient } from "./communicate-client";
 import { PlanStartDateBanner } from "./plan-start-date-banner";
-import type { Client, WeightLossGoal } from "@/lib/fmdb/types";
+import type { WeightLossGoal } from "@/lib/fmdb/types";
 import { TravelOverridesPanel } from "@/components/client-widgets/travel-overrides-panel";
 import { WelcomeEmailCard } from "./welcome-email-card";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
@@ -38,7 +38,6 @@ const ACTIVE_STATUSES = new Set(["draft", "ready_to_publish", "published"]);
 
 export default async function CommunicateTabPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ id: string }>;
   searchParams?: Promise<Record<string, string | string[] | undefined>>;

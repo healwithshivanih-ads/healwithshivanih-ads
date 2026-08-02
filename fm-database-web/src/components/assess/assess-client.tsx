@@ -824,17 +824,6 @@ export function SuggestionsView({
     return { priorDate: priorSession.date, newSyms, resolved, carryover };
   })();
 
-  const oneSentence = (() => {
-    if (!synthesisNotes) return null;
-    // Match first sentence ending in `.`, `!`, or `?` followed by a
-    // space or end-of-string. Trim leading "Primary picture: " etc.
-    const m = synthesisNotes.match(/^.*?[.!?](?=\s|$)/);
-    if (!m) {
-      return synthesisNotes.slice(0, 180);
-    }
-    return m[0];
-  })();
-
   // ── Differential — top 3 drivers by rank with confidence bars ──────
   // Confidence is derived from rank (rank 1 = 95% / rank 2 = 75% /
   // rank 3 = 55%) since the LikelyDriver shape doesn't expose a
@@ -3166,8 +3155,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [transcriptUrl, setTranscriptUrl] = useState("");
   const [healthDataSource, setHealthDataSource] = useState<string>("");
   const [transcriptError, setTranscriptError] = useState<string | null>(null);
-  const [transcriptHealthData, setTranscriptHealthData] = useState<ExtractedHealthData | null>(null);
-  const [applyDataPending, startApplyData] = useTransition();
+  const [, setTranscriptHealthData] = useState<ExtractedHealthData | null>(null);
   // Manual text entry state
   const [manualText, setManualText] = useState("");
   const [manualParsePending, startManualParse] = useTransition();

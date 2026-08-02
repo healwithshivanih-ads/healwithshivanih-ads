@@ -237,7 +237,6 @@ import {
   shortDose,
   timingRank,
   slotFromRank,
-  shortTiming,
   displayTiming,
 } from "./client-app-format";
 import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
@@ -1468,16 +1467,10 @@ interface WeekTable {
   dayDates?: (string | null)[];
 }
 
-const DOW_SHORT = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 /** Normalise a meal cell: drop recipe markers (✦/✨/⭐) + bold, and blank
  *  out filler cells ("Same", "Same as Week 1", "—") so they never render
  *  as dishes. */
-function cleanDishCell(raw: string): string {
-  const c = raw.replace(/[✦✨⭐]/g, "").replace(/\*\*/g, "").trim();
-  if (/^same\b/i.test(c) || /^[-–—]+$/.test(c)) return "";
-  return c;
-}
 
 
 /** Format-B letters spell out the eating pattern as labelled food groups
@@ -1501,10 +1494,6 @@ export interface LetterFoods {
 // to emphasise", "### What to add — your \"yes\" list"). Items vary too:
 // labelled groups ("**Protein, every meal:** dal, rajma, …"), bold-lead
 // bullets ("**Amla 1–2 daily** — why…"), or 2-column tables (| Food | Why |).
-const ENJOY_HEAD_RE =
-  /^(?:#{2,4}\s+)?[^\w\n]{0,6}\s*\**((?:Foods to (?:enjoy|emphasise|emphasize)|What to add)[^*\n]*)\**\s*$/im;
-const EASY_HEAD_RE =
-  /^(?:#{2,4}\s+)?[^\w\n]{0,6}\s*\**((?:Foods to (?:go easy on|limit|reduce|avoid)|What to (?:reduce|avoid|go easy on))[^*\n]*)\**\s*$/im;
 
 
 // ── send-log gating ──────────────────────────────────────────────────────────
@@ -2420,12 +2409,6 @@ interface LetterRemedyBlurb {
 
 
 
-interface LetterPhase {
-  name: string;
-  weekFrom: number;
-  weekTo: number;
-  note: string;
-}
 
 
 
@@ -3618,7 +3601,6 @@ export async function loadClientAppData(
       ? appMenuToWeekTables(planMenuRaw)
       : [];
 
-  const mealLetterFoods: LetterFoods | null = null;
   const sampleWeekNote = "";
 
   // Pick today's column: REAL DATE match first (format-B tables carry dates

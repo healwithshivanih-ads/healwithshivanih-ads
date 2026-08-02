@@ -164,13 +164,6 @@ function classifyValue(
   return "outside";
 }
 
-function statusColor(s: Status): string {
-  if (s === "optimal") return "var(--fm-success)";
-  if (s === "watch") return "var(--fm-warning)";
-  if (s === "outside") return "var(--fm-danger)";
-  return "var(--fm-text-tertiary)";
-}
-
 function statusDot(s: Status): string | null {
   if (s === "optimal") return "🟢";
   if (s === "watch") return "🟡";

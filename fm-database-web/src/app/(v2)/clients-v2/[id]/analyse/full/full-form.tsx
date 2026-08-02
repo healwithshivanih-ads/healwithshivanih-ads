@@ -369,7 +369,6 @@ interface UploadedFile {
 
 export function FullAssessmentForm({
   clientId,
-  displayName,
   intake,
   prefilledSymptoms,
   prefilledTopics,

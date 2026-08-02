@@ -1,7 +1,6 @@
 "use server";
 
 import fs from "node:fs/promises";
-import os from "node:os";
 import path from "node:path";
 import { execFile } from "node:child_process";
 import { revalidatePath } from "next/cache";
@@ -11,7 +10,7 @@ import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { confirmationNameMatches } from "@/lib/fmdb/engagement";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
-import { loadClientSessions, loadClientById, type ClientSession } from "@/lib/fmdb/loader-extras";
+import { loadClientSessions, loadClientById } from "@/lib/fmdb/loader-extras";
 import {
   runAssess,
   generateDraftFromSuggestions,

@@ -118,7 +118,6 @@ export function SendIntakeFormButton({
     expiresAt && Date.parse(expiresAt) < Date.now(),
   );
   const hasUsableToken = Boolean(token) && !isExpired;
-  const isEditableAfterSubmit = hasSubmittedRecord && !isFinalised && hasUsableToken;
 
   /**
    * B9 — undo a finalise. Coach asked 2026-05-23 (Deepti cl-011): how

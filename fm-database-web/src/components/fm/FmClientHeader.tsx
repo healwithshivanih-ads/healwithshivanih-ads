@@ -13,7 +13,6 @@
  */
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { toast } from "sonner";
 import { uploadClientPhotoAction } from "@/lib/server-actions/clients";
 import { formatLongDate } from "@/lib/fmdb/format-date";

@@ -43,7 +43,6 @@ import { toast } from "sonner";
 import {
   updateClientWeightLossGoal,
   addWeightLossOverride,
-  removeWeightLossOverride,
   pauseWeightLossGoal,
   type WeightLossGoalPayload,
   type WeightLossWeekOverridePayload,
@@ -179,7 +178,6 @@ function WeightLossCardInner({
   measurementsLog,
   caloriePhases,
   onEdit,
-  onAddOverride,
 }: {
   clientId: string;
   goal: WeightLossGoal;
@@ -206,10 +204,6 @@ function WeightLossCardInner({
   }, [measurementsLog, goal.starting_weight_kg, goal.starting_date]);
 
   const kgLost = +(goal.starting_weight_kg - currentReading.kg).toFixed(1);
-  const totalKg = +(goal.starting_weight_kg - goal.goal_kg < 0
-    ? 0
-    : goal.starting_weight_kg - (goal.starting_weight_kg - goal.goal_kg)
-  ).toFixed(1);
   // Coach inputs goal_kg as TOTAL to lose (e.g. 6) — derive goal weight.
   const goalWeight = +(goal.starting_weight_kg - goal.goal_kg).toFixed(1);
   const totalToLose = goal.goal_kg;
@@ -258,18 +252,6 @@ function WeightLossCardInner({
     } as const;
     return m[goal.activity_level] ?? "Moderate";
   }, [goal.activity_level]);
-
-  const onRemoveOverride = (idx: number) => {
-    startTransition(async () => {
-      const res = await removeWeightLossOverride(clientId, idx);
-      if (res.ok) {
-        toast.success("Override removed");
-        router.refresh();
-      } else {
-        toast.error(res.error ?? "Couldn't remove override");
-      }
-    });
-  };
 
   const onPauseToggle = () => {
     startTransition(async () => {

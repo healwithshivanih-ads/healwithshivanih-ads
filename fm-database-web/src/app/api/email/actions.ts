@@ -9,13 +9,6 @@ import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 
-/** Calendar date (YYYY-MM-DD) of an ISO timestamp in IST (Asia/Kolkata, +05:30). */
-function istDateOnly(iso: string): string {
-  const d = new Date(iso);
-  if (isNaN(d.getTime())) return iso.slice(0, 10);
-  return new Date(d.getTime() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
-}
-
 // Send log re-restored 2026-05-19 — the new V2 Communicate panel needs
 // to distinguish Drafted (file on disk) from Sent (email actually went
 // out). File lives at ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml
@@ -254,15 +247,6 @@ export async function sendClientEmailAction(
   } catch (err) {
     return { ok: false, error: String(err) };
   }
-}
-
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }
 
 // ── Send a saved phase meal-plan letter to the client ────────────────────────

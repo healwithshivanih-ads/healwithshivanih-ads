@@ -30,7 +30,6 @@ import {
 import {
   loadClientSessions,
   type ClientWithMeta,
-  type ClientSession,
 } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
@@ -85,7 +84,6 @@ import {
   FmContactPanel,
   FmGroupedPanel,
   FmDepletionBanner,
-  FmMarkerPanel,
   FmBodyCompGrid,
   FmPanel,
   FmInfoRow,

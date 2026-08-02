@@ -21,10 +21,6 @@ function parseNum(v: string | number | null | undefined): number | null {
   return isNaN(n) ? null : n;
 }
 
-function fmtSnap(snap: Snapshot): string {
-  return snap.date + (snap.source ? ` · ${snap.source.slice(0, 30)}` : "");
-}
-
 interface MarkerRow {
   name: string;
   unit: string;

@@ -117,7 +117,7 @@ function n(v: unknown, fallback = 5): number {
   return fallback;
 }
 
-export function PreDiscoveryForm({ token, clientId, displayName, coachName = "Shivani", prefill, draft }: Props) {
+export function PreDiscoveryForm({ token, displayName, coachName = "Shivani", prefill, draft }: Props) {
   const initial: FormState = useMemo(() => {
     // Drafts override prefill so a partial save returns the client to
     // exactly where they left off.

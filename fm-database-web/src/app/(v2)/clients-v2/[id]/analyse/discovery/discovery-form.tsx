@@ -66,7 +66,6 @@ export function DiscoveryForm({
   clientId,
   displayName,
   clientSex,
-  clientEmail = null,
   prefillChiefConcern = "",
   prefillExtraPanels = [],
   prefillDetectionLabel = "",

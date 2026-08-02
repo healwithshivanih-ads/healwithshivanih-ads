@@ -52,7 +52,7 @@ function Sparkline({
       {/* Last value dot */}
       <circle cx={last[0]} cy={last[1]} r={3} fill={color} />
       {/* Tooltip-style label at each point */}
-      {pts.map(([x, y], i) => (
+      {pts.map((_, i) => (
         <title key={i}>{`${values[i]}`}</title>
       ))}
     </svg>

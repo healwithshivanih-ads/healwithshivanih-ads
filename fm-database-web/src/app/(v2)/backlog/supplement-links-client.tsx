@@ -325,7 +325,7 @@ export function SupplementLinksClient({
 }: {
   initialLinks: SupplementLink[];
 }) {
-  const [links, setLinks] = useState(initialLinks);
+  const [links] = useState(initialLinks);
   const [query, setQuery] = useState("");
   const [filterCat, setFilterCat] = useState<ProductCategory | "">("");
   const [filterSource, setFilterSource] = useState<SupplementLink["source"] | "">("");

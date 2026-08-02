@@ -35,7 +35,7 @@ async function runScript(
   }
   try {
     return JSON.parse(stdout);
-  } catch (e) {
+  } catch {
     throw new Error(`intake-token-action returned invalid JSON: ${stdout.slice(0, 400)}`);
   }
 }

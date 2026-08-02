@@ -444,7 +444,7 @@ function StagingApproveCta({
 }) {
   const [pending, startTransition] = useTransition();
   const [done, setDone] = useState<"approved" | "rejected" | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   const onApprove = () => {
     if (!validateOk) {

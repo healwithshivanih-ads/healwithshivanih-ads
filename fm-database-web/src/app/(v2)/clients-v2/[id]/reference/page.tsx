@@ -32,7 +32,6 @@ import { HeaderAvatar } from "../analyse/header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
 import { ReferenceClient } from "./reference-client";
 import {
-  extractLetterSections,
   computeCurrentWeek,
   type LetterSections,
 } from "./extract-letter-sections";
