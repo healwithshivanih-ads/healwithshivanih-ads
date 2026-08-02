@@ -69,6 +69,11 @@ _COACH_CLIENT_KEYS = (
     # (drug/supplement interactions), the client's own app never shows it.
     "current_medications",
     "goals",
+    # The /app/<token> credential. Already projected to Fly by the CLIENT-app
+    # staging, so this adds no new exposure class — it lets the coach open the
+    # exact app her client is looking at. /m is session-gated; the token is not
+    # rendered, only used to build the link.
+    "app_token",
     "dietary_preference",
     "foods_to_avoid",
     "non_negotiables",
@@ -223,6 +228,9 @@ def _plan_for(person_id: str, plans: list[dict]) -> dict | None:
     return {
         "slug": p.get("slug"),
         "status": p.get("status"),
+        # Fallback when the person has no stable app_token: a published plan's
+        # letter_token resolves to /app too (see app-invite.ts).
+        "letter_token": p.get("letter_token"),
         "period_start": _jsonable(p.get("plan_period_start")),
         "period_weeks": p.get("plan_period_weeks"),
         "meal_plan_started_on": _jsonable(p.get("meal_plan_started_on")),
@@ -277,6 +285,9 @@ def _index_row(card: dict) -> dict:
         "last_session": latest,
         "plan_status": (card["plan"] or {}).get("status"),
         "conditions": (g.get("active_conditions") or [])[:3],
+        # app_token first, plan letter_token second — same precedence the coach
+        # UI's send-app-link button uses.
+        "app_token": g.get("app_token") or (card["plan"] or {}).get("letter_token"),
         # NOT an unread count — real read-state lives in
         # _whatsapp_inbox_state.yaml and is wired in a later step.
         "recent_whatsapp": card["whatsapp"]["count"],

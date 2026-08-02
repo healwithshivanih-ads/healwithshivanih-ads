@@ -7,7 +7,7 @@
  * below, one scroll down.
  */
 import { notFound } from "next/navigation";
-import { loadCoachCard } from "@/lib/fmdb/coach-mobile";
+import { clientAppUrl, loadCoachCard } from "@/lib/fmdb/coach-mobile";
 import {
   Avatar,
   BackLink,
@@ -57,6 +57,10 @@ export default async function ClientCard({
   const wa = waNumber(mobile);
   const tel = mobile?.replace(/[^\d+]/g, "");
   const allergies = (g.known_allergies as string[]) ?? [];
+  // Her own app, on the production host — see clientAppUrl for why absolute.
+  const appUrl = clientAppUrl(
+    (g.app_token as string | undefined) ?? card.plan?.letter_token,
+  );
 
   return (
     <main className="m-page">
@@ -119,6 +123,25 @@ export default async function ClientCard({
             <span className="m-em">Allergies</span> — {allergies.join(", ")}
           </div>
         </div>
+      ) : null}
+
+      {appUrl ? (
+        <>
+          <Eyebrow>What they see</Eyebrow>
+          <a
+            className="fm-btn block"
+            href={appUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="phoneApp" size="sm" />
+            Open their app
+          </a>
+          <p className="m-subtle" style={{ margin: "8px 2px 0" }}>
+            Opens the live app at their own address, not a preview — so
+            what loads is exactly what they’re looking at.
+          </p>
+        </>
       ) : null}
 
       <Eyebrow>At a glance</Eyebrow>
@@ -200,7 +223,7 @@ export default async function ClientCard({
             </button>
             <p className="m-subtle" style={{ marginTop: 10 }}>
               Sent from your business number and logged. Works only within 24
-              hours of her last message — otherwise use an approved template
+              hours of their last message — otherwise use an approved template
               from the desktop app.
             </p>
           </form>
@@ -209,7 +232,7 @@ export default async function ClientCard({
 
       {card.whatsapp.messages.length ? (
         <>
-          <Eyebrow>Recent messages from her</Eyebrow>
+          <Eyebrow>Recent messages</Eyebrow>
           {card.whatsapp.messages.slice(0, 8).map((m, i) => (
             <Card key={i} className="m-stack" >
               <div className="m-subtle" style={{ fontSize: 11 }}>{m.at}</div>
