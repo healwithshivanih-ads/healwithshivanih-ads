@@ -45,9 +45,9 @@ ingredients:
 - item: sesame tahini
   qty: '1'
   unit: tbsp
-- item: fresh lemon juice
-  qty: '1'
-  unit: juice of half lemon
+- item: juice of half a lemon
+  qty: ''
+  unit: ''
 - item: red miso dissolved in 1 tbsp hot water
   qty: '1.5'
   unit: tbsp
@@ -76,9 +76,9 @@ steps:
 servings: '4'
 prep_time_min: 15
 cook_time_min: 35
-approx_kcal_per_serving: 201
+approx_kcal_per_serving: 204
 kcal_is_estimate: true
-protein_g: 10.2
+protein_g: 10.4
 good_for:
 - agni-digestive-fire
 - gut-microbiome
@@ -109,26 +109,26 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 201
-kcal_total: 420
+kcal_per_serving: 204
+kcal_total: 816
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 201
-  protein_g: 10.2
-  carbs_g: 34.8
+  kcal: 204
+  protein_g: 10.4
+  carbs_g: 35.7
   fat_g: 3.3
-  fibre_g: 6.4
+  fibre_g: 6.8
   iron_mg: 2.7
-  calcium_mg: 162
-  magnesium_mg: 41.3
+  calcium_mg: 166
+  magnesium_mg: 42.1
   zinc_mg: 1.5
-  potassium_mg: 385
+  potassium_mg: 400
   folate_ug: 189
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 22.5
-  omega3_mg: 119
+  vit_c_mg: 28.3
+  omega3_mg: 123
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -136,7 +136,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: masoor-dal
@@ -151,8 +151,8 @@ nutrient_lines:
   key: tahini
   g: 15.625
 - i: 4
-  key: lemon-juice
-  g: 30.0
+  key: lemon
+  g: 65.0
 - i: 5
   key: miso
   g: 25.78125

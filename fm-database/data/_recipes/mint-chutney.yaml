@@ -18,7 +18,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- mint
+- fresh mint leaves
 - grated coconut
 - ginger
 - green chilli (optional)
@@ -28,7 +28,7 @@ main_ingredients:
 - 'for tempering: coconut oil, mustard seeds, curry leaves'
 contains_allergens: []
 ingredients:
-- item: mint
+- item: fresh mint leaves
   qty: '1'
   unit: cup
 - item: grated coconut
@@ -53,7 +53,7 @@ ingredients:
   qty: 1 set
   unit: ''
 steps:
-- Blend mint, coconut, ginger, chilli, lemon juice, and salt with a little water into
+- Blend the mint, coconut, ginger, chilli, lemon juice, and salt with a little water into
   a smooth chutney.
 - Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the
   chutney.

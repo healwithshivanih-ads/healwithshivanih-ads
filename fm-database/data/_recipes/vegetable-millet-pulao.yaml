@@ -19,7 +19,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- vegetable
+- mixed millet (foxtail, kodo or little millet)
 - ghee or coconut oil
 - mustard seeds
 - urad dal
@@ -31,7 +31,7 @@ main_ingredients:
 - fresh coriander
 contains_allergens: []
 ingredients:
-- item: vegetable
+- item: mixed millet (foxtail, kodo or little millet)
   qty: '1'
   unit: cup
 - item: ghee or coconut oil
@@ -62,25 +62,25 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Dry-roast the vegetable in a pan 2-3 minutes until nutty. Set aside.
+- Dry-roast the millet in a pan 2-3 minutes until nutty. Set aside.
 - Heat ghee, add mustard seeds and urad dal; once they pop add curry leaves, ginger,
   and onion. Sauté until soft.
 - Add diced vegetables; stir-fry 2 minutes.
-- Add 2.5 cups water and salt; bring to a boil. Stir in the roasted vegetable.
+- Add 2.5 cups water and salt; bring to a boil. Stir in the roasted millet.
 - Cover and cook on low 12-15 minutes until the water is absorbed and the grain is
   fluffy. Rest 5 minutes, garnish with coriander, and serve warm.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 134
+approx_kcal_per_serving: 485
 kcal_is_estimate: true
-protein_g: 3.6
+protein_g: 13.3
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, fluffy vegetable upma tempered with mustard and curry leaves
-  and studded with vegetables.
-headnote: Dry-roasting the vegetable before cooking keeps the upma light and fluffy
+one_line: A savoury, fluffy millet pulao tempered with mustard and curry leaves and
+  studded with vegetables.
+headnote: Dry-roasting the millet before cooking keeps the pulao light and fluffy
   rather than sticky — a warm, grounding breakfast that's gentle on digestion.
 attribution:
   author: Shivani Hari
@@ -99,35 +99,40 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 134
-kcal_total: 420
+kcal_per_serving: 485
+kcal_total: 970
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 134
-  protein_g: 3.6
-  carbs_g: 14.0
-  fat_g: 7.6
-  fibre_g: 4.1
-  iron_mg: 1.2
-  calcium_mg: 52.4
-  magnesium_mg: 34.5
-  zinc_mg: 0.7
-  potassium_mg: 351
-  folate_ug: 56.4
+  kcal: 485
+  protein_g: 13.3
+  carbs_g: 81.5
+  fat_g: 11.6
+  fibre_g: 10.8
+  iron_mg: 3.8
+  calcium_mg: 44.2
+  magnesium_mg: 136
+  zinc_mg: 2.1
+  potassium_mg: 396
+  folate_ug: 117
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 28.7
-  omega3_mg: 100
+  vit_c_mg: 13.7
+  omega3_mg: 199
 nutrient_coverage_pct: 100.0
 rich_in:
-- vitamin-c
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
-  key: mixed-vegetables
-  g: 120.0
+  key: millet-generic
+  g: 200.0
 - i: 1
   key: ghee
   g: 13.625

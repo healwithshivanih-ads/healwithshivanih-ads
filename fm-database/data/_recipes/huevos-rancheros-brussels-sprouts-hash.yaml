@@ -4,8 +4,8 @@ meal_type:
 - breakfast
 - lunch
 diet:
-- vegetarian
 - gluten_free
+- eggetarian
 region: Mexican-Ayurvedic
 seasons:
 - winter
@@ -93,9 +93,9 @@ ingredients:
 - item: salt (for hash)
   qty: '1'
   unit: dash
-- item: eggs or cooked black beans
+- item: eggs (or 1 cup cooked black beans)
   qty: '4'
-  unit: eggs or 1 cup beans
+  unit: ''
 - item: ghee (for eggs)
   qty: '1'
   unit: tsp

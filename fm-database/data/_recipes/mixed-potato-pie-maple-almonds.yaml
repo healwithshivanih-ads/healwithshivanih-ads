@@ -4,8 +4,8 @@ meal_type:
 - lunch
 - dinner
 diet:
-- vegetarian
 - gluten_free
+- eggetarian
 region: ''
 seasons:
 - winter

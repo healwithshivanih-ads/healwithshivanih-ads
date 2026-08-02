@@ -4,8 +4,8 @@ meal_type:
 - breakfast
 - snack
 diet:
-- vegetarian
 - gluten_free
+- eggetarian
 region: ''
 seasons:
 - autumn
@@ -138,7 +138,7 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: egg

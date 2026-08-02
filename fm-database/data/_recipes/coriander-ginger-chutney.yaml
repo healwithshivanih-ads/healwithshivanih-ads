@@ -18,7 +18,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- ginger
+- fresh coriander leaves
 - grated coconut
 - ginger
 - green chilli (optional)
@@ -28,7 +28,7 @@ main_ingredients:
 - 'for tempering: coconut oil, mustard seeds, curry leaves'
 contains_allergens: []
 ingredients:
-- item: ginger
+- item: fresh coriander leaves
   qty: '1'
   unit: cup
 - item: grated coconut
@@ -53,17 +53,17 @@ ingredients:
   qty: 1 set
   unit: ''
 steps:
-- Blend ginger, coconut, ginger, chilli, lemon juice, and salt with a little water
-  into a smooth chutney.
+- Blend the coriander, coconut, ginger, chilli, lemon juice, and salt with a little
+  water into a smooth chutney.
 - Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the
   chutney.
 - Serve fresh alongside chilla, dosa, idli, or rice.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 101
+approx_kcal_per_serving: 65
 kcal_is_estimate: true
-protein_g: 1.3
+protein_g: 0.6
 good_for:
 - agni-digestive-fire
 one_line: A fresh, bright coriander-ginger chutney to lift any meal — no preservatives,
@@ -87,34 +87,34 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 101
-kcal_total: 180
+kcal_per_serving: 65
+kcal_total: 129
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 101
-  protein_g: 1.3
-  carbs_g: 11.5
-  fat_g: 6.3
-  fibre_g: 2.0
-  iron_mg: 0.6
-  calcium_mg: 10.5
-  magnesium_mg: 26.2
-  zinc_mg: 0.3
-  potassium_mg: 264
-  folate_ug: 10.3
+  kcal: 64.6
+  protein_g: 0.6
+  carbs_g: 3.1
+  fat_g: 5.9
+  fibre_g: 1.2
+  iron_mg: 0.4
+  calcium_mg: 8.1
+  magnesium_mg: 7.7
+  zinc_mg: 0.2
+  potassium_mg: 106
+  folate_ug: 10.0
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 8.6
-  omega3_mg: 15.6
+  vit_c_mg: 8.4
+  omega3_mg: 1.1
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
-  key: ginger-fresh
-  g: 96.0
+  key: coriander-fresh
+  g: 16.0
 - i: 1
   key: coconut-fresh
   g: 20.0

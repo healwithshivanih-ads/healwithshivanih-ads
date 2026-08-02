@@ -243,6 +243,7 @@ import {
 import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
 import { clientNounToPronoun } from "./client-app-third-person";
 import { stripEvidenceHedging } from "./client-app-evidence-hedge";
+import { formatIngredientChip } from "./ingredient-chip";
 
 export interface AppMealExtra {
   grad: string;
@@ -1586,7 +1587,9 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
       const ingStruct = (asArr(r.ingredients) as Dict[])
         .map((i) => ({ qty: asStr(i.qty), unit: asStr(i.unit), item: asStr(i.item) }))
         .filter((i) => i.item);
-      const ingredients = ingStruct.map((i) => [i.qty, i.unit, i.item].filter(Boolean).join(" ").trim()).filter(Boolean);
+      const ingredients = ingStruct
+        .map((i) => formatIngredientChip(i.qty, i.unit, i.item))
+        .filter(Boolean);
       const prep = Number(r.prep_time_min) || 0;
       const cook = Number(r.cook_time_min) || 0;
       const mins = prep + cook;

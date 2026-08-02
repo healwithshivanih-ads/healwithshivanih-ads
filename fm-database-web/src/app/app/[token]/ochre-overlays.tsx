@@ -14,6 +14,7 @@ import { BodySection } from "./ochre-body";
 import { MeasureList, MEASURE_INTRO } from "./ochre-measures";
 import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
 import { swapDeltaLabel } from "@/lib/fmdb/swap-ranking";
+import { formatIngredientChip } from "@/lib/fmdb/ingredient-chip";
 
 /** Downscale a chosen image to a small JPEG and return base64 (no data-URL
  *  prefix), or null on failure. Mirrors the intake form's helper — kept local
@@ -514,10 +515,10 @@ function RecipeDetailBody({ r }: { r: AppRecipe }) {
           </div>
           {r.ingredientsStructured!.map((ing, i) => {
             const q = parseFloat(ing.qty);
-            const scaled = isFinite(q) && q > 0 ? `${fmtQty(q * ratio)} ${ing.unit}`.trim() : ing.qty;
+            const scaledQty = isFinite(q) && q > 0 ? fmtQty(q * ratio) : ing.qty;
             return (
               <div key={i} className="doc-li">
-                {[scaled, ing.item].filter(Boolean).join(" ")}
+                {formatIngredientChip(scaledQty, ing.unit, ing.item)}
               </div>
             );
           })}

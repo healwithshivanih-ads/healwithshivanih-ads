@@ -9,7 +9,6 @@ meal_type:
 - side
 diet:
 - vegetarian
-- vegan
 - gluten_free
 - dairy_free
 region: Indian
@@ -59,7 +58,7 @@ nutrient_coverage_pct: 100.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 seasons:
 - all
 nutrient_lines:

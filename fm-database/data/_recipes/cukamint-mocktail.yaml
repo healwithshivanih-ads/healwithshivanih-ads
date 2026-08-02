@@ -29,18 +29,18 @@ ingredients:
 - item: cucumbers, peeled, halved lengthwise, and deseeded
   qty: '2'
   unit: whole
-- item: fresh mint sprigs
-  qty: '1'
-  unit: few sprigs
+- item: a few fresh mint sprigs
+  qty: ''
+  unit: ''
 - item: coconut water
   qty: '2'
   unit: cups
 - item: lime juice (from 1 lime)
   qty: '1'
   unit: lime
-- item: lime wedges for garnish
-  qty: '1'
-  unit: few wedges
+- item: a few lime wedges for garnish
+  qty: ''
+  unit: ''
 steps:
 - Place the cucumber pieces and mint sprigs in a blender with 1 cup of the coconut
   water; blend on high for 1 minute until completely liquefied.
@@ -51,9 +51,9 @@ steps:
 servings: 2-4
 prep_time_min: 5
 cook_time_min: 0
-approx_kcal_per_serving: 54
+approx_kcal_per_serving: 59
 kcal_is_estimate: true
-protein_g: 2.1
+protein_g: 2.4
 good_for:
 - agni-digestive-fire
 - hydration-and-brain-function
@@ -80,38 +80,39 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 54
-kcal_total: 80
+kcal_per_serving: 59
+kcal_total: 178
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 53.7
-  protein_g: 2.1
-  carbs_g: 11.7
+  kcal: 59.3
+  protein_g: 2.4
+  carbs_g: 13.5
   fat_g: 0.5
-  fibre_g: 2.6
-  iron_mg: 0.9
-  calcium_mg: 61.9
-  magnesium_mg: 58.4
-  zinc_mg: 0.4
-  potassium_mg: 612
-  folate_ug: 16.9
+  fibre_g: 3.1
+  iron_mg: 1.1
+  calcium_mg: 68.0
+  magnesium_mg: 60.3
+  zinc_mg: 0.5
+  potassium_mg: 641
+  folate_ug: 19.6
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 13.3
-  omega3_mg: 8.6
+  vit_c_mg: 23.1
+  omega3_mg: 15.6
 nutrient_coverage_pct: 100.0
 rich_in:
 - potassium
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: cucumber
   g: 400.0
 - i: 1
   key: mint-fresh
-  g: 1.0
+  g: 3.0
 - i: 2
   key: coconut-water
   g: 480.0
@@ -120,5 +121,5 @@ nutrient_lines:
   g: 30.0
 - i: 4
   key: lemon
-  g: 10.0
+  g: 65.0
 nutrient_servings: 3.0

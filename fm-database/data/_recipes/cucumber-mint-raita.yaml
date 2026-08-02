@@ -40,9 +40,9 @@ ingredients:
 - item: coriander, fennel, or cumin powder (optional)
   qty: '0.25'
   unit: tsp
-- item: fresh mint sprigs for garnish (optional)
-  qty: '1'
-  unit: few sprigs
+- item: a few sprigs fresh mint sprigs for garnish (optional)
+  qty: ''
+  unit: ''
 steps:
 - Peel the cucumber with a peeler, leaving a few strips of green skin for colour.
 - Halve lengthwise, scrape out the seeds with a spoon, then grate the flesh on the
@@ -90,25 +90,25 @@ kcal_total: 280
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 45.7
+  kcal: 46.0
   protein_g: 2.5
-  carbs_g: 4.8
+  carbs_g: 4.9
   fat_g: 2.1
-  fibre_g: 0.3
+  fibre_g: 0.4
   iron_mg: 0.3
-  calcium_mg: 84.1
-  magnesium_mg: 14.6
+  calcium_mg: 85.1
+  magnesium_mg: 14.9
   zinc_mg: 0.5
-  potassium_mg: 173
-  folate_ug: 8.1
+  potassium_mg: 175
+  folate_ug: 8.6
   b12_ug: 0.2
   vit_d_ug: 0.1
   vit_c_mg: 1.8
-  omega3_mg: 15.8
+  omega3_mg: 17.5
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: cucumber
@@ -127,5 +127,5 @@ nutrient_lines:
   g: 0.46875
 - i: 5
   key: mint-fresh
-  g: 1.0
+  g: 3.0
 nutrient_servings: 4.0

@@ -17,7 +17,7 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- sama
+- sama millet
 - water or thin milk
 - ghee
 - cardamom powder
@@ -26,7 +26,7 @@ main_ingredients:
 contains_allergens:
 - dairy
 ingredients:
-- item: sama
+- item: sama millet
   qty: '0.5'
   unit: cup
 - item: water or thin milk
@@ -45,8 +45,8 @@ ingredients:
   qty: 1 pinch
   unit: ''
 steps:
-- Rinse the sama well.
-- Combine sama with water (or thin milk), a pinch of salt, and chopped dates in a
+- Rinse the sama millet well.
+- Combine the millet with water (or thin milk), a pinch of salt, and chopped dates in a
   pot.
 - Cook covered on low 15-20 minutes, stirring occasionally, until soft and creamy.
   Add more liquid if needed.
@@ -60,9 +60,9 @@ protein_g: 11.3
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A creamy, lightly sweet sama porridge — a warm, easy-to-digest start to
+one_line: A creamy, lightly sweet sama millet porridge — a warm, easy-to-digest start to
   the day.
-headnote: Slow-cooked sama porridge is grounding and soothing, naturally sweetened
+headnote: Slow-cooked sama millet porridge is grounding and soothing, naturally sweetened
   with dates and warmed with cardamom.
 attribution:
   author: Shivani Hari

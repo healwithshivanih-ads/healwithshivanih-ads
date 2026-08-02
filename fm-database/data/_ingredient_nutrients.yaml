@@ -1632,6 +1632,8 @@ coriander-fresh:
   aliases:
   - fresh coriander
   - coriander
+  - fresh coriander and mint leaves
+  - fresh coriander leaves
   - fresh cilantro
   - fresh cilantro leaves
   - cilantro
@@ -3295,6 +3297,9 @@ millet-generic:
   aliases:
   - uncooked millet grains
   - millet
+  - little millet
+  - mixed millet
+  - mixed millet (foxtail, kodo or little millet)
   per_100g:
     kcal: 378
     protein_g: 11.0

@@ -5,7 +5,6 @@ meal_type:
 - side
 diet:
 - vegetarian
-- vegan
 - gluten_free
 region: Ayurvedic
 seasons:
@@ -118,7 +117,7 @@ rich_in:
 - fibre
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-02'
 nutrient_lines:
 - i: 0
   key: mixed-vegetables

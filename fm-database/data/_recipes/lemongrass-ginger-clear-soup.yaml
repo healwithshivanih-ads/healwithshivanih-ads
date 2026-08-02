@@ -27,48 +27,48 @@ main_ingredients:
 contains_allergens:
 - sesame
 ingredients:
-- item: lemongrass stalks
+- item: lemongrass stalks, bruised and cut into 2-inch pieces
   qty: '3'
-  unit: whole, bruised and cut into 2-inch pieces
-- item: fresh ginger
+  unit: whole
+- item: fresh ginger, sliced into coins
   qty: '2'
-  unit: inch piece, sliced into coins
-- item: garlic
+  unit: inch piece
+- item: garlic, lightly smashed
   qty: '4'
-  unit: cloves, lightly smashed
-- item: green chilli
+  unit: cloves
+- item: green chilli, slit
   qty: '1'
-  unit: whole, slit
-- item: carrot
+  unit: whole
+- item: carrot, diced small (for stock body)
   qty: '1'
-  unit: medium, diced small (for stock body)
-- item: celery stalk
+  unit: medium
+- item: celery stalk, roughly chopped
   qty: '1'
-  unit: whole, roughly chopped
-- item: spring onion
+  unit: whole
+- item: spring onion, roughly chopped
   qty: '2'
-  unit: whole stalks, roughly chopped
-- item: black pepper
+  unit: whole stalks
+- item: black pepper, coarsely cracked
   qty: '0.75'
-  unit: tsp, coarsely cracked
+  unit: tsp
 - item: water
   qty: '5'
   unit: cup
 - item: lime juice
   qty: '1.5'
   unit: tbsp
-- item: salt
+- item: salt, or to taste
   qty: '0.75'
-  unit: tsp, or to taste
+  unit: tsp
 - item: cold-pressed sesame oil
   qty: '0.5'
   unit: tsp
-- item: fresh coriander
+- item: fresh coriander, leaves only, for finishing
   qty: '2'
-  unit: tbsp, leaves only, for finishing
-- item: thin rice noodles (optional)
+  unit: tbsp
+- item: thin rice noodles (optional), soaked and drained
   qty: '40'
-  unit: g, soaked and drained
+  unit: g
 steps:
 - Bruise the lemongrass stalks firmly with the flat of a knife to release their oils.
   Combine lemongrass, ginger coins, smashed garlic, green chilli, carrot, celery,

@@ -19,13 +19,13 @@ rasa:
 - sweet
 - pungent
 main_ingredients:
-- foxtail flour
+- foxtail millet flour
 - warm water
 - salt
 - ghee or oil
 contains_allergens: []
 ingredients:
-- item: foxtail flour
+- item: foxtail millet flour
   qty: '1.5'
   unit: cups
 - item: warm water
@@ -38,7 +38,7 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Mix foxtail flour with salt. Add warm water a little at a time, kneading into a
+- Mix foxtail millet flour with salt. Add warm water a little at a time, kneading into a
   soft, pliable dough. Rest 10 minutes.
 - Divide into balls. Pat or roll each into a round flatbread on a floured surface
   (gluten-free flours roll best between two sheets of parchment).
@@ -53,7 +53,7 @@ protein_g: 11.1
 good_for:
 - blood-sugar-regulation
 - agni-digestive-fire
-one_line: A wholesome foxtail flatbread — naturally gluten-free and far steadier on
+one_line: A wholesome foxtail millet flatbread — naturally gluten-free and far steadier on
   blood sugar than wheat.
 headnote: 'Foxtail rotis are a traditional millet/whole-grain bread: more fibre, more
   minerals, and a gentler glucose response than refined wheat.'

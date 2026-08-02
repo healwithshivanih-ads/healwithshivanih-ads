@@ -4,7 +4,6 @@ meal_type:
 - side
 diet:
 - vegetarian
-- vegan
 - gluten_free
 region: Indian
 seasons:
