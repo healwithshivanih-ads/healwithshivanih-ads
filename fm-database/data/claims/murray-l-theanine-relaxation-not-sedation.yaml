@@ -34,6 +34,7 @@ linked_to_supplements:
 linked_to_mechanisms: []
 out_of_scope_notes: ''
 linked_to_symptoms:
+- poor-focus-adhd-pattern
 - anxiety
 sources:
 - id: murray-pizzorno-2012-encyclopedia

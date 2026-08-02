@@ -11,6 +11,9 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - pediatric-neurodevelopmental-nutrition
 - adhd
+linked_to_symptoms:
+- hyperactivity
+- poor-focus-adhd-pattern
 sources:
 - id: matthews-energy-blueprint-podcast-2026
   location: Podcast — Feingold diet segment

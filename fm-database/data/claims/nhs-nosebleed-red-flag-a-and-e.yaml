@@ -6,6 +6,8 @@ evidence_tier: strong
 linked_to_topics:
 - nosebleed
 
+linked_to_symptoms:
+- muscle-weakness
 sources:
 - id: nhs-nosebleed-2026
   location: 'NHS page — Immediate action required: Go to A&E'

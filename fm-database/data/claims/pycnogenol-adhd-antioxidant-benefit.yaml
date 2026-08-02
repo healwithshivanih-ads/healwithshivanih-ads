@@ -15,6 +15,9 @@ linked_to_supplements:
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- hyperactivity
+- poor-focus-adhd-pattern
 sources:
 - id: pizzorno-textbook-gi-2
   location: Attention Deficit Hyperactivity Disorder — Botanical Medicines — Procyanidolic
