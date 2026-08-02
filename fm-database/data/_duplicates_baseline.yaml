@@ -387,3 +387,11 @@ accepted:
 - SHARED_ALIAS:topics:total-toxic-load+toxic-body-burden+toxin-load
 - SHARED_ALIAS:topics:toxic-body-burden+toxin-load
 - SHARED_ALIAS:topics:toxic-body-burden+xenobiotic-exposure
+# deferred (2026-08-01): 'overactive-thyroid'/'underactive-thyroid' are shared by
+# the specific (hyper/hypo) and general (thyroid-dysfunction) topics. The somatic
+# reader (somatic-read.ts + its Python twin) resolves "overactive/underactive
+# thyroid" TO thyroid-dysfunction, which owns the combined hypo/hyper emotional-
+# roots card — so the alias must stay on thyroid-dysfunction. Which specific topic
+# also keeps it (or a merge) is Shivani's call; moving it broke 6 somatic tests.
+- SHARED_ALIAS:topics:hyperthyroidism+thyroid-dysfunction
+- SHARED_ALIAS:topics:hypothyroidism+thyroid-dysfunction
