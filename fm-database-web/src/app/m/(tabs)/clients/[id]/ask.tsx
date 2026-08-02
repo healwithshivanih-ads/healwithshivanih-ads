@@ -58,13 +58,13 @@ export function AskPanel({ clientId, clientName }: { clientId: string; clientNam
 
       {busy ? (
         <div className="m-subtle" style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-          <span className="m-pulse m-pulse--ringed" />
+          <span className="m-dot m-dot--primary" />
           Thinking
         </div>
       ) : null}
 
       {notice ? (
-        <div className="m-note m-note--rose" style={{ marginBottom: 12 }}>{notice}</div>
+        <div className="m-note m-note--danger" style={{ marginBottom: 12 }}>{notice}</div>
       ) : null}
 
       <form onSubmit={ask} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -77,7 +77,7 @@ export function AskPanel({ clientId, clientName }: { clientId: string; clientNam
         />
         <button
           type="submit"
-          className="m-btn m-btn--primary"
+          className="fm-btn primary"
           disabled={busy || !draft.trim()}
           aria-label="Ask"
           style={{ padding: "0 14px" }}

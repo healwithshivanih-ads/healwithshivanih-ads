@@ -1,18 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+// The coach dashboard's own design system. Importing it (rather than copying
+// its tokens) is what keeps the phone app from drifting: change a token there
+// and it changes here.
+import "@/styles/fm-v2.css";
 import "./coach.css";
-
-/**
- * Inter is the design system's body face (Libre Baskerville is already loaded
- * by the root layout for display). Scoped to /m via next/font so the desktop
- * coach UI keeps its own stack.
- */
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Coach · The Ochre Tree",
@@ -35,13 +26,15 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#f7f4f3",
+  themeColor: "#FF6B35",
 };
 
 /**
  * Covers the root layout's desktop sidebar with a fixed full-screen overlay —
  * the same approach the public intake form uses, because a nested layout
  * renders INSIDE the root one rather than replacing it.
+ *
+ * `fm-v2` carries the dashboard tokens; `m-app` carries the phone layer.
  *
  * Auth is NOT enforced here. The gate lives in src/proxy.ts so an
  * unauthenticated request never reaches React at all; a layout-level check
@@ -54,7 +47,7 @@ export default function CoachMobileLayout({
 }) {
   return (
     <div
-      className={`m-app ${inter.variable}`}
+      className="fm-v2 m-app"
       style={{
         position: "fixed",
         inset: 0,

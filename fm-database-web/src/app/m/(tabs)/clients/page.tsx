@@ -38,7 +38,7 @@ function Row({ row }: { row: CoachIndexRow }) {
               <h3 style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                 {row.name}
               </h3>
-              {row.recent_whatsapp ? <span className="m-pulse m-pulse--rose" /> : null}
+              {row.recent_whatsapp ? <span className="m-dot m-dot--danger" /> : null}
             </div>
             <div className="m-subtle" style={{ marginTop: 2 }}>
               {[
@@ -102,8 +102,7 @@ export default async function ClientsTab({
     return (
       <main className="m-page">
         <h1>Clients</h1>
-        <hr className="m-divider" />
-        <Empty
+          <Empty
           title="Client list not synced yet"
           detail="FMDB_COACH_DIR isn't set on this host, so the projection hasn't been written. This is a setup step, not an empty roster."
         />
@@ -116,11 +115,10 @@ export default async function ClientsTab({
 
   return (
     <main className="m-page">
-      <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+      <div className="m-pagehead" style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
         <h1>Clients</h1>
         <span className="m-subtle">{all.length}</span>
       </div>
-      <hr className="m-divider" />
 
       {/* GET form: works without JS, and the search survives a reload. */}
       <form method="GET" style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
