@@ -38,7 +38,14 @@ import { ClientCard, ClientFilters } from "./list-client";
 
 export const dynamic = "force-dynamic";
 
-type FilterId = "all" | "active" | "draft" | "no_plan" | "recheck" | "alumni";
+type FilterId =
+  | "all"
+  | "active"
+  | "draft"
+  | "no_plan"
+  | "recheck"
+  | "alumni"
+  | "archived";
 
 const ACTIVE_BUCKETS = new Set(["draft", "ready_to_publish", "published"]);
 const STATUS_RANK: Record<string, number> = {
@@ -76,6 +83,9 @@ export interface ClientRow {
   /** Sign-up state from client.yaml: "signed_up" | "declined" | "pending". */
   engagement_status?: string;
   next_contact_date?: string;
+  /** Coach-archived (inactive/never-converted). Hidden from every view
+   *  except the "🗄 Archived" filter, where it can be unarchived. */
+  archived?: boolean;
 }
 
 function deriveStage(
@@ -135,7 +145,9 @@ export default async function ClientsListV2Page({
 }) {
   const { q = "", filter = "all" } = await searchParams;
   const filterId = (
-    ["all", "active", "draft", "no_plan", "recheck", "alumni"].includes(filter)
+    ["all", "active", "draft", "no_plan", "recheck", "alumni", "archived"].includes(
+      filter,
+    )
       ? filter
       : "all"
   ) as FilterId;
@@ -287,6 +299,7 @@ export default async function ClientsListV2Page({
         engagement_status: (c.engagement_status as string | undefined) ?? undefined,
         next_contact_date:
           (c.next_contact_date as string | undefined) ?? undefined,
+        archived: c.archived === true,
       };
     }),
   );
@@ -299,6 +312,10 @@ export default async function ClientsListV2Page({
         const hay = `${r.display_name} ${r.client_id}`.toLowerCase();
         if (!hay.includes(qNorm)) return false;
       }
+      // Archived clients only ever show under the explicit Archived filter —
+      // every other view (including "all" + search) hides them.
+      if (filterId === "archived") return r.archived === true;
+      if (r.archived) return false;
       if (filterId === "active") return r.stage === "active";
       if (filterId === "draft") return r.stage === "draft";
       if (filterId === "no_plan") return r.stage === "no_plan";
@@ -321,13 +338,17 @@ export default async function ClientsListV2Page({
 
   // Counts for the filter chips. `all` excludes alumni so the main
   // roster view stays focused; alumni get their own chip + count.
+  // Every non-archived count excludes archived rows so the chip totals match
+  // what each filtered view actually shows.
+  const live = rows.filter((r) => !r.archived);
   const counts: Record<FilterId, number> = {
-    all: rows.filter((r) => r.stage !== "alumni").length,
-    active: rows.filter((r) => r.stage === "active").length,
-    draft: rows.filter((r) => r.stage === "draft").length,
-    no_plan: rows.filter((r) => r.stage === "no_plan").length,
-    recheck: rows.filter((r) => r.stage === "recheck").length,
-    alumni: rows.filter((r) => r.stage === "alumni").length,
+    all: live.filter((r) => r.stage !== "alumni").length,
+    active: live.filter((r) => r.stage === "active").length,
+    draft: live.filter((r) => r.stage === "draft").length,
+    no_plan: live.filter((r) => r.stage === "no_plan").length,
+    recheck: live.filter((r) => r.stage === "recheck").length,
+    alumni: live.filter((r) => r.stage === "alumni").length,
+    archived: rows.filter((r) => r.archived).length,
   };
 
   // Tuck not-yet-signed-up prospects (no plan + engagement not "signed_up"
