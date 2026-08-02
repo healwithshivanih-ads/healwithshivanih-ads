@@ -441,6 +441,46 @@ def _resolve_product(slug: str, links: dict) -> dict | None:
     return min(matches, key=lambda m: m[0])[1]
 
 
+def _check_orderable(plan: Plan, findings: list[Finding]) -> None:
+    """WARNING when a prescribed supplement has no route to buy it.
+
+    The client app's Reorder button resolves a product from
+    ~/fm-plans/supplement_links.yaml; `buy_link` on the plan entry is only an
+    override for pinning a specific product. When neither exists the button
+    simply does not render — silently. Nothing told anyone: a coach can
+    prescribe something for twelve weeks that the client has no link for, and
+    the first sign is her asking where to get it.
+
+    Nothing upstream can catch this either. The catalogue models the compound;
+    whether a PRODUCT exists lives only in the links file, which neither the
+    AI suggester nor a chat-authored plan reads.
+
+    Calibration, measured before this shipped: across all 150 prescribed
+    supplement entries on the live roster exactly ONE fires (`cbd-oil`, which
+    is genuinely in neither product table). A check that cries wolf gets
+    ignored; this one does not.
+
+    WARNING, not CRITICAL, deliberately — the coach may be sourcing something
+    herself, or handing it over in person. She decides; the checker only
+    guarantees she is told.
+    """
+    links = _load_supplement_links()
+    if not links:
+        return  # file missing → say nothing rather than warn on everything
+    for item in plan.supplement_protocol:
+        if str(getattr(item, "buy_link", "") or "").strip():
+            continue
+        if _resolve_product(item.supplement_slug, links):
+            continue
+        findings.append(Finding(
+            "WARNING", "supplement_protocol", item.supplement_slug,
+            f"no order link — '{item.supplement_slug}' matches no product in "
+            "supplement_links.yaml and the plan sets no buy_link, so the "
+            "client's Reorder button will not appear for it. Add a product to "
+            "the links file, or pin one on this entry with buy_link.",
+        ))
+
+
 def _check_combo_nutrient_overlap(
     plan: Plan, catalogue: Loaded, findings: list[Finding]
 ) -> None:
@@ -1163,6 +1203,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Combo-product nutrient overlap ----------
     _check_combo_nutrient_overlap(plan, catalogue, findings)
+
+    # ---------- Can the client actually buy it? ----------
+    _check_orderable(plan, findings)
 
     # ---------- Same remedy assigned by slug AND written as a practice ----------
     _check_remedy_practice_duplication(plan, catalogue, findings)

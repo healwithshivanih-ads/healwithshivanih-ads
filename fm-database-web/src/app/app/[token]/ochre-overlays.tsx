@@ -150,7 +150,18 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
           </div>
         )}
 
-        <div className="pill-list" style={{ marginTop: 14 }}>
+        {/* Everything on the plate for this SLOT — the pre-meal shot, the
+            sides, the roti — not the titled dish's ingredients. Those two
+            lists sat unlabelled one above the other under a single dish
+            title, so a lunch of "garlic · ginger · lime · green moong sabzi"
+            opened as "Green moong sabzi", showed a Garlic chip, and then an
+            ingredient list with no garlic in it. The recipe was right both
+            times; the card just never said which list was which. */}
+        <div className="eyebrow" style={{ marginTop: 18 }}>
+          On your plate {meal.slot ? `— ${meal.slot.toLowerCase()}` : ""}
+        </div>
+        <div className="divider-ochre" />
+        <div className="pill-list" style={{ marginTop: 10 }}>
           {meal.pills.map((p, i) => (
             <span className="food-pill" key={i}>
               {p}
@@ -165,7 +176,7 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
         {ex && ex.ingredients.length > 0 && (
           <>
             <div className="eyebrow" style={{ marginTop: 22 }}>
-              Ingredients
+              {meal.dishTitle ? `Ingredients — ${meal.dishTitle}` : "Ingredients"}
             </div>
             <div className="divider-ochre" />
             <div className="pill-list">
