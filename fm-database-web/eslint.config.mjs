@@ -40,7 +40,18 @@ export default tseslint.config(
       "no-unused-vars": "off",
       // High-noise on existing code → warnings (the backlog to burn down).
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
+      // Honor the `_`-prefix convention already used across the codebase
+      // (`_ok`, `_err`, `_plan`, `_programmeSlug`, …) as the standard marker
+      // for a deliberately-unused binding, arg, caught error, or array slot.
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+        },
+      ],
       "@typescript-eslint/no-empty-object-type": "warn",
       "@typescript-eslint/no-require-imports": "warn",
       "@typescript-eslint/ban-ts-comment": "warn",
