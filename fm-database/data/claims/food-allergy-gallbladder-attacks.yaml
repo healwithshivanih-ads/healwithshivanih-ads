@@ -8,6 +8,8 @@ statement: Food allergies are a major trigger for gallbladder attacks via bile d
 evidence_tier: plausible_emerging
 linked_to_topics:
 - gallstones
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 53 — Gallstones, pg 962-963

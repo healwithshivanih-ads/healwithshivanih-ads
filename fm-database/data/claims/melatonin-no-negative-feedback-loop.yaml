@@ -11,6 +11,8 @@ statement: Unlike testosterone, cortisol, thyroid hormone, or estrogen, exogenou
 evidence_tier: plausible_emerging
 linked_to_topics:
 - extrapineal-melatonin-and-mitochondria
+linked_to_symptoms:
+- insomnia
 sources:
 - id: lurance-energy-blueprint-podcast-2026
   location: Podcast — negative feedback segment

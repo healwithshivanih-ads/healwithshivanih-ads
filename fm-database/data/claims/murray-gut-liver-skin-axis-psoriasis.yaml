@@ -38,6 +38,8 @@ linked_to_topics:
 linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis, pg 1452–1455

@@ -12,6 +12,8 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity

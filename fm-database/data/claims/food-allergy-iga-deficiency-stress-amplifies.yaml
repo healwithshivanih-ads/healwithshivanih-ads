@@ -8,6 +8,8 @@ linked_to_topics:
 - food-allergy-ige-mediated
 linked_to_mechanisms:
 - leaky-gut
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Food Allergy chapter, p 938

@@ -22,6 +22,8 @@ linked_to_supplements:
 - dim
 - licorice-root
 - spearmint-tea
+linked_to_symptoms:
+- facial-hair
 sources:
 - id: briden-blog-natural-anti-androgens-hirsutism
   location: Blog post — Overall section

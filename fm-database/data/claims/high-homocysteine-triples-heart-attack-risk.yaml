@@ -13,6 +13,8 @@ linked_to_mechanisms:
 - elevated-homocysteine
 caveats: []
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Lab Results

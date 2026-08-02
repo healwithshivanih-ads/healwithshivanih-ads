@@ -8,6 +8,9 @@ evidence_tier: strong
 linked_to_topics:
 - perimenopause-and-menopause
 - menopausal-hormone-therapy
+linked_to_symptoms:
+- breast-tenderness
+- mood-swings
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 1 — Rita patient story, pg 25–27

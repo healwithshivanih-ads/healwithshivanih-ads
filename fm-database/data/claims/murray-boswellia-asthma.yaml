@@ -22,6 +22,8 @@ linked_to_topics:
 - autoimmune
 linked_to_supplements:
 - boswellia
+linked_to_symptoms:
+- shortness-of-breath
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 24 — Asthma, pg 533

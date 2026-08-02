@@ -34,6 +34,10 @@ linked_to_supplements:
 - rhodiola
 - panax-ginseng
 - ginseng
+linked_to_symptoms:
+- stress
+- low-mood
+- anxiety
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 15 — Stress Management, Quick Review pg 351

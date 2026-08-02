@@ -19,6 +19,8 @@ caveats:
   with primary literature.
 out_of_scope_notes: ''
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 7.3.2 — Sleep Hygiene

@@ -19,6 +19,8 @@ linked_to_supplements:
 - electrolytes
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- keto-flu
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: The Science of Low-Carb Diets — Adaptation Phase (Week 3–4)

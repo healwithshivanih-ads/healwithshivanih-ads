@@ -13,6 +13,9 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- dyslipidemia
+- elevated-blood-pressure
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Association of Risk Factors with the Incidence of Atherosclerosis

@@ -38,6 +38,8 @@ linked_to_mechanisms:
 - chronic-inflammation
 - mitohormesis
 linked_to_supplements: []
+linked_to_symptoms:
+- daytime-fatigue
 sources:
 - id: coach-shivani
   location: HBOT early-protocol fatigue + confounders (clinical synthesis, 2026-06)

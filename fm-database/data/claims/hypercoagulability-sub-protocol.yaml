@@ -10,6 +10,9 @@ evidence_tier: confirm_with_clinician
 linked_to_topics:
 - recode-protocol
 - cognitive-decline
+linked_to_symptoms:
+- elevated-homocysteine
+- poor-concentration
 sources:
 - id: bredesen-energy-blueprint-podcast-2026
   location: Podcast — hypercoagulability segment

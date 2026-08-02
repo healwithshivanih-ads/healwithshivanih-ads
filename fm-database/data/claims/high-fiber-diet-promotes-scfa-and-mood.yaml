@@ -14,6 +14,9 @@ linked_to_supplements:
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
+- low-mood
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'

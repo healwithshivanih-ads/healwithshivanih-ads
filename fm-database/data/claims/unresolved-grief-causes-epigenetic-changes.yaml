@@ -18,6 +18,8 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- irregular-periods
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases

@@ -19,6 +19,8 @@ linked_to_topics:
 - iron-deficiency-dysregulation
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/

@@ -22,6 +22,9 @@ linked_to_topics:
 - low-progesterone
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
+- hot-flashes
 sources:
 - id: briden-blog-body-identical-hrt
   location: Blog post — Estrogen versus progesterone therapy section

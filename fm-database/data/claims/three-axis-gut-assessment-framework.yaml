@@ -12,6 +12,8 @@ linked_to_topics:
 - microbiome
 - gut-microbiome
 - metabolic-endotoxemia-lps
+linked_to_symptoms:
+- brain-fog
 sources:
 - id: hawrelak-energy-blueprint-podcast-2026
   location: Podcast — three axis framework segment

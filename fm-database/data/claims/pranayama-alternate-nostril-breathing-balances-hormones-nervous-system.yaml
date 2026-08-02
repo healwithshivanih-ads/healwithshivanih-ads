@@ -25,6 +25,9 @@ linked_to_mechanisms:
 - vagal-tone-enhancement
 - cortisol-elevation
 linked_to_supplements: []
+linked_to_symptoms:
+- menopause-symptoms
+- hot-flashes
 sources:
 - id: welch-balance-your-hormones-2011
   location: 'Chapter 26 — Stress Management: Pranayama and Alternate-Nostril Breathing'

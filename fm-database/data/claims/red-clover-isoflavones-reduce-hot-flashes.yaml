@@ -21,6 +21,8 @@ linked_to_mechanisms: []
 linked_to_supplements:
 - red-clover-isoflavones
 out_of_scope_notes: ''
+linked_to_symptoms:
+- hot-flashes
 sources:
 - id: pizzorno-womens-health
   location: Menopause — Natural Hormones / supplements section (pp 632)

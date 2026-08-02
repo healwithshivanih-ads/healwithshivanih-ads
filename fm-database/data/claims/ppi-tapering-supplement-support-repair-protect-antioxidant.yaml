@@ -33,6 +33,8 @@ linked_to_supplements:
 - ginger
 - probiotics
 linked_to_mechanisms: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'

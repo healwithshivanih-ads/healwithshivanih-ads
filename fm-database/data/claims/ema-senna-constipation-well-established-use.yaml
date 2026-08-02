@@ -30,6 +30,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - senna
+linked_to_symptoms:
+- constipation
 sources:
 - id: ema-hmpc-herbal-monographs
   location: EMA/HMPC Community Herbal Monograph on Cassia senna L. and Cassia angustifolia Vahl, folium

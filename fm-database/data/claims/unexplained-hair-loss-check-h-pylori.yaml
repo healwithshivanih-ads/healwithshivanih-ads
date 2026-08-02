@@ -19,6 +19,8 @@ linked_to_topics:
 - h-pylori-infection
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- hair-loss
 sources:
 - id: coach-shivani
   location: Coach Observation

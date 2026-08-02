@@ -23,6 +23,9 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - holy-basil
+linked_to_symptoms:
+- joint-pain
+- loss-of-appetite
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: TULASI (Whole Plant), API Part I, Volume II, monograph no. 72, pp. 169–170 (http://ayurveda.hu/api/API-Vol-2.pdf)

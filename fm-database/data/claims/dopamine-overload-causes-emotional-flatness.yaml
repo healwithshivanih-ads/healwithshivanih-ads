@@ -18,6 +18,8 @@ linked_to_supplements:
 - tyrosine
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 16

@@ -26,6 +26,9 @@ linked_to_topics:
 - hypothyroidism
 - celiac-disease
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
+- hair-loss
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 56 — Hair Loss in Women, pg 1000–1001

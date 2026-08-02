@@ -28,6 +28,9 @@ linked_to_topics:
 - celiac-disease
 - autoimmune
 linked_to_supplements: []
+linked_to_symptoms:
+- gut-inflammation
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 34 — Celiac Disease, pg 636–637

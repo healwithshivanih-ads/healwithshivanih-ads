@@ -26,6 +26,8 @@ linked_to_supplements:
 - fish-oil-omega-3
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1088

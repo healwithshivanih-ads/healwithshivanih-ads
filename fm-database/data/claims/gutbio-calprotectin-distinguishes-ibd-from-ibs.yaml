@@ -27,6 +27,9 @@ linked_to_mechanisms:
 - mucosal-inflammation
 - gut-immune-dysregulation
 linked_to_supplements: []
+linked_to_symptoms:
+- irritable-bowel
+- inflammation
 sources:
 - id: fmca-m11-gut-stool-biomarkers-hanaway
   location: Immune and inflammatory markers — calprotectin

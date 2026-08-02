@@ -30,6 +30,11 @@ linked_to_topics:
 - sibo
 linked_to_supplements:
 - betaine-hcl
+linked_to_symptoms:
+- bloating
+- stress
+- indigestion
+- heartburn
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 10 — Digestion and Elimination, Quick Review pg 236

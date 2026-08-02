@@ -28,6 +28,8 @@ linked_to_supplements:
 - vitamin-k
 - vitamin-d3-k2-combination-supplement
 out_of_scope_notes: ''
+linked_to_symptoms:
+- vascular-calcification
 sources:
 - id: pizzorno-womens-trio
   location: Osteoporosis — Vitamin K2 deficiency (pp 724)

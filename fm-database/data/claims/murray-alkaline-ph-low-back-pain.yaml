@@ -27,6 +27,9 @@ linked_to_topics:
 - tendinopathy
 linked_to_supplements:
 - magnesium-citrate
+linked_to_symptoms:
+- chronic-pain
+- lower-back-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 7 — A Cellular Approach, pg 155–156

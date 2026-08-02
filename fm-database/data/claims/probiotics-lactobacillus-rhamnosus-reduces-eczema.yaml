@@ -24,6 +24,8 @@ linked_to_mechanisms:
 - leaky-gut
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: pizzorno-skin-trio
   location: Atopic Dermatitis — Probiotics (pp 117)

@@ -28,6 +28,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - guggul
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Gummi Gugguli — Adverse Reactions and Interactions, WHO Monographs Vol 3, p. 169 (https://apps.who.int/iris/bitstream/handle/10665/42052/9789241547024_eng.pdf)

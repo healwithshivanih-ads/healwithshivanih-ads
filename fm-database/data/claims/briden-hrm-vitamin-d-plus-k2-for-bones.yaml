@@ -10,6 +10,8 @@ evidence_tier: strong
 linked_to_topics:
 - osteoporosis
 - cardiovascular-disease-prevention
+linked_to_symptoms:
+- vascular-calcification
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 10 — Vitamins D3 and K2, pg 275–276, 284

@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation-uterine
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: pizzorno-womens-trio
   location: Premenstrual Syndrome — Vegetarian Diet and Estrogen Metabolism (pp 834)

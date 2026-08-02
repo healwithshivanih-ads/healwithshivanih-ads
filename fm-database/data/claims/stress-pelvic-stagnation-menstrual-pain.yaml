@@ -23,6 +23,9 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 - low-progesterone
 linked_to_supplements: []
+linked_to_symptoms:
+- irregular-periods
+- stress
 sources:
 - id: welch-balance-your-hormones-2011
   location: 'Chapter 10 — Menstrual Difficulties: Heavy or Painful Periods'

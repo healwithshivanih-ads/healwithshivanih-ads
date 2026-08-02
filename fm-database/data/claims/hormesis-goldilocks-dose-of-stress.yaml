@@ -19,6 +19,8 @@ linked_to_mechanisms:
 - mitohormesis
 - hpa-axis-hormesis
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fmca-m11-genetics-epigenetics-joffe
   location: Q&A — exercise, hormesis

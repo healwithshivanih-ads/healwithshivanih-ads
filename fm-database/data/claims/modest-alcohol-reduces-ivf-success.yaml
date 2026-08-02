@@ -8,6 +8,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - preconception-protocol
 - egg-quality
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 11 — The Egg Quality Diet, pg 162

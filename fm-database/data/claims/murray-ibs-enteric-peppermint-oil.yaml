@@ -10,6 +10,10 @@ linked_to_topics:
 - irritable-bowel-syndrome
 linked_to_supplements:
 - peppermint-oil-enteric
+linked_to_symptoms:
+- abdominal-pain
+- bloating
+- heartburn
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 72 — Irritable Bowel Syndrome, pg 1197-1198

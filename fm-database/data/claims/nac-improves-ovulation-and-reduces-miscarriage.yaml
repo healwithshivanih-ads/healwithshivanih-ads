@@ -12,6 +12,8 @@ linked_to_mechanisms:
 - chronic-oxidative-stress
 linked_to_supplements:
 - n-acetylcysteine
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 7 — Melatonin and Other Antioxidants, pg 110-112

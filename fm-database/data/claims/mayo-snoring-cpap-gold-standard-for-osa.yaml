@@ -9,6 +9,8 @@ linked_to_topics:
 - sleep-apnea-cardiovascular-risk
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- daytime-sleepiness
 sources:
 - id: mayoclinic-snoring-2026
   location: Mayo Clinic page — Treatment

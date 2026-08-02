@@ -14,6 +14,9 @@ linked_to_supplements:
 - selenium
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- weak-peeling-nails
+- hair-loss
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 12

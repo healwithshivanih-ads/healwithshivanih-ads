@@ -28,6 +28,8 @@ linked_to_mechanisms:
 - systemic-inflammation
 - molecular-mimicry
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fmca-m11-metabolic-health-labs-saxena
   location: Inflammation and autoimmunity panel

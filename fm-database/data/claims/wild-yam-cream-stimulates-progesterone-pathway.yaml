@@ -22,6 +22,8 @@ linked_to_topics:
 linked_to_supplements:
 - wild-yam-cream
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
 sources:
 - id: barbara-oneil-healing-mind
   location: Hormonal Depression Section

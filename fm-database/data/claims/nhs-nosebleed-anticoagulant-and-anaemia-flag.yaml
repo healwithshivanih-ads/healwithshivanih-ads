@@ -6,6 +6,9 @@ evidence_tier: strong
 linked_to_topics:
 - nosebleed
 
+linked_to_symptoms:
+- shortness-of-breath
+- palpitations
 sources:
 - id: nhs-nosebleed-2026
   location: 'NHS page — Non-urgent advice: See a GP if'

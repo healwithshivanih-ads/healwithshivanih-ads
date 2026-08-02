@@ -21,6 +21,8 @@ linked_to_topics:
 - neuroplasticity
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
 sources:
 - id: barbara-oneil-healing-mind
   location: Emotional Health / Forgiveness Section

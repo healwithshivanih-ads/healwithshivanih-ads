@@ -10,6 +10,10 @@ linked_to_topics:
 - preconception-protocol
 - hypothyroidism
 - female-infertility
+linked_to_symptoms:
+- primary-infertility
+- infertility
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 4 — Unexpected Obstacles to Fertility, pg 68-71

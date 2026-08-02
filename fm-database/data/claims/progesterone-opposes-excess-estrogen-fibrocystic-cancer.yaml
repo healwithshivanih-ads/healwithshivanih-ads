@@ -24,6 +24,8 @@ linked_to_mechanisms:
 - low-progesterone
 - progesterone-deficiency
 linked_to_supplements: []
+linked_to_symptoms:
+- fibrocystic-breasts
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 3 - Sex Hormones

@@ -17,6 +17,9 @@ linked_to_supplements:
 - omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
+- anxiety
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression

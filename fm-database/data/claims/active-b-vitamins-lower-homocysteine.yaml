@@ -21,6 +21,8 @@ linked_to_supplements:
 - methylcobalamin
 - pyridoxal-5-phosphate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting

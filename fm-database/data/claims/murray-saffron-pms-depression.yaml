@@ -31,6 +31,8 @@ linked_to_supplements:
 - saffron
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome, pg 1415

@@ -13,6 +13,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - oocyte-mitochondrial-dysfunction
+linked_to_symptoms:
+- stress
 sources:
 - id: sklar-fertility-expert-stress-egg-quality-2025
   location: Episode body — HPA-axis section

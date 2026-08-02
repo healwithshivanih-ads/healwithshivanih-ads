@@ -9,6 +9,8 @@ evidence_tier: strong
 linked_to_topics:
 - menopausal-hormone-therapy
 - genitourinary-syndrome-menopause
+linked_to_symptoms:
+- urinary-tract-infections
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 6 — Vaginal estrogen, pg 140–141; Ch 10 — Conventional treatment

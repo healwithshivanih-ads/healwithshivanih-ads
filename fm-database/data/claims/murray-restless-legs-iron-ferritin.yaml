@@ -37,6 +37,9 @@ linked_to_mechanisms: []
 out_of_scope_notes: Iron prescribing in pregnancy + paediatrics + suspected haemochromatosis
   is clinician scope. Coach role — recommend ferritin testing + bisglycinate within
   over-the-counter dose range.
+linked_to_symptoms:
+- restless-legs
+- iron-deficiency
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia, pg 1184–1185

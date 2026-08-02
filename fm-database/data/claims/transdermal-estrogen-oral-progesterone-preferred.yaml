@@ -12,6 +12,8 @@ linked_to_topics:
 - hrt
 - bhrt
 - perimenopause-window-of-vulnerability
+linked_to_symptoms:
+- anxiety
 sources:
 - id: snyder-energy-blueprint-podcast-2026
   location: Podcast — modern HRT regimen segment

@@ -53,6 +53,8 @@ linked_to_mechanisms:
 - balanced-detoxification
 - oxidative-stress-from-toxicants
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Balanced detoxification section

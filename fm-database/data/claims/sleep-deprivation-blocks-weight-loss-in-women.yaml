@@ -48,6 +48,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - sleep-as-hormone-disruptor
 linked_to_supplements: []
+linked_to_symptoms:
+- hormonal-disruption
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Sleep deprivation and hormone disruption section

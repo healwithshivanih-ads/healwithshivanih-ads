@@ -28,6 +28,8 @@ linked_to_topics:
 - common-cold
 - chronic-inflammation
 linked_to_supplements: []
+linked_to_symptoms:
+- frequent-infections
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 12 — Immune System Support, Quick Review pg 294

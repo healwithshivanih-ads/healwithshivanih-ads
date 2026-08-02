@@ -21,6 +21,8 @@ linked_to_mechanisms:
 - insulin-resistance
 - infradian-rhythm
 linked_to_supplements: []
+linked_to_symptoms:
+- infertility
 sources:
 - id: welch-balance-your-hormones-2011
   location: 'Chapter 12 — Fertility and Conception: The Egg'

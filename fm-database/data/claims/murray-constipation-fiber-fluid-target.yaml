@@ -8,6 +8,8 @@ statement: The first-line constipation protocol is 25 to 35 g dietary fiber per 
 evidence_tier: strong
 linked_to_topics:
 - constipation
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 41 — Constipation, pg 713-715

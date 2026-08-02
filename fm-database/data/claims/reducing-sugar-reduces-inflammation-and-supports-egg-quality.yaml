@@ -12,6 +12,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - insulin-resistance
 - chronic-oxidative-stress
+linked_to_symptoms:
+- inflammation
 sources:
 - id: sklar-fertility-tv-2019
   location: minute 3:00 — sugar reduction for egg quality

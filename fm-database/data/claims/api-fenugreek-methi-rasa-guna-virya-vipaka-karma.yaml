@@ -27,6 +27,8 @@ linked_to_mechanisms:
 - gut-microbiome-glucose-regulation
 linked_to_supplements:
 - fenugreek
+linked_to_symptoms:
+- loss-of-appetite
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: Ayurvedic Pharmacopoeia of India, Part I Vol 4, Methi (Trigonella foenum-graecum L.) (https://www.ayurveda.hu/api/API-Vol-4.pdf)

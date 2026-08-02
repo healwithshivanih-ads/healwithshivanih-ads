@@ -18,6 +18,8 @@ linked_to_supplements:
 - curcumin
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: 100 Anti-Inflammatory Foods — Page 06

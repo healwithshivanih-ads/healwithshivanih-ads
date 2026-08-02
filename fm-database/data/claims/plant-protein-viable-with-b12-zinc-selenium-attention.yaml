@@ -12,6 +12,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - protein-adequacy-vegetarian
 - sarcopenia-skeletal-muscle-loss
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: lyon-energy-blueprint-podcast-2026
   location: Podcast — protein quality segment

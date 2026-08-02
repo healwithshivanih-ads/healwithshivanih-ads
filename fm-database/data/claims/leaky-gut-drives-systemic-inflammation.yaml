@@ -18,6 +18,8 @@ linked_to_supplements:
 - zinc-carnosine
 - omega-3
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-gut-cheatsheet
   location: Leaky Gut & Inflammation — The Missing Link

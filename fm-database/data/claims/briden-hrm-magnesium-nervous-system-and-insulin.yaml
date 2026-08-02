@@ -11,6 +11,9 @@ linked_to_topics:
 - perimenopause
 - insulin-resistance
 - sleep
+linked_to_symptoms:
+- insulin-resistance
+- perimenopause-symptoms
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 5 — Magnesium to the rescue + Ch 8 — Magnesium, pg 132–133, 199

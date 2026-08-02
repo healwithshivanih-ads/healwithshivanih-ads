@@ -9,6 +9,9 @@ evidence_tier: strong
 linked_to_topics:
 - anovulatory-bleeding
 - iron-deficiency
+linked_to_symptoms:
+- constipation
+- heavy-periods
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 9 — Iron supplementation, pg 226–227

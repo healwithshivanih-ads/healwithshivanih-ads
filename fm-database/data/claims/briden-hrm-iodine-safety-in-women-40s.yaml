@@ -11,6 +11,8 @@ evidence_tier: confirm_with_clinician
 linked_to_topics:
 - perimenopause
 - menopausal-hormone-therapy
+linked_to_symptoms:
+- breast-tenderness
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 5 — Iodine, pg 134–136; Ch 9 — Iodine for breast pain, pg 252

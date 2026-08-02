@@ -25,6 +25,8 @@ linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation-uterine
 - progesterone-deficiency
 linked_to_supplements: []
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: welch-balance-your-hormones-2011
   location: 'Chapter 10 — Menstrual Difficulties: Uterine Fibroids'

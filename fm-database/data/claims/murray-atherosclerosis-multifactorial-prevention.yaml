@@ -28,6 +28,11 @@ linked_to_topics:
 - hypertension
 - chronic-inflammation
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-hscrp
+- insulin-resistance
+- dyslipidemia
+- elevated-blood-pressure
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 11 — Heart and Cardiovascular Health, Quick Review pg 271–272

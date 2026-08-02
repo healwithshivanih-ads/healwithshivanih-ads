@@ -17,6 +17,8 @@ linked_to_supplements:
 - taurine
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 8

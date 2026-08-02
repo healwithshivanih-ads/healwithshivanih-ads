@@ -19,6 +19,8 @@ linked_to_topics:
 - cardiometabolic-diet
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — Who Should not Fast or Fast with Caution?

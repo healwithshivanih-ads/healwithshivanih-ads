@@ -28,6 +28,11 @@ linked_to_mechanisms:
 - nocturnal-glycemic-variability
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- pms
+- hypoglycemia-symptoms
+- low-mood
+- headaches
 sources:
 - id: pizzorno-energy-cluster
   location: Hypoglycemia — Health Impact (pp 451-452)

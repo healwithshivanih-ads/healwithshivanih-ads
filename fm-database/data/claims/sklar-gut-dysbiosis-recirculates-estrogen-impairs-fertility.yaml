@@ -12,6 +12,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - dysbiosis-gut-microbiome-imbalance
+linked_to_symptoms:
+- inflammation
 sources:
 - id: sklar-fertility-expert-5-hidden-reasons
   location: Episode body — hidden reason 1

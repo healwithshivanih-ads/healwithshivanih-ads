@@ -16,6 +16,8 @@ linked_to_supplements:
 - zinc
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- cold-intolerance
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 4

@@ -8,6 +8,8 @@ evidence_tier: strong
 linked_to_topics:
 - fibrocystic-breast-disease
 - premenstrual-syndrome
+linked_to_symptoms:
+- breast-tenderness
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 51 — Fibrocystic Breast Disease, pg 932-934

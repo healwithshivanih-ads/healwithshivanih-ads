@@ -19,6 +19,9 @@ linked_to_supplements:
 - boswellia
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- joint-pain
+- muscle-aches-joint-pain
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Knee Pain – Supplement Stack

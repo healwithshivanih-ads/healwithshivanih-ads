@@ -23,6 +23,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - 5-htp
 out_of_scope_notes: ''
+linked_to_symptoms:
+- migraine
 sources:
 - id: pizzorno-migraine-ibd-candida
   location: Migraine Headache — Platelets and serotonin (pp 662-663)

@@ -22,6 +22,11 @@ linked_to_mechanisms:
 linked_to_supplements:
 - magnesium
 - magnesium-glycinate
+linked_to_symptoms:
+- perimenopause-symptoms
+- night-sweats
+- hot-flashes
+- brain-fog
 sources:
 - id: briden-blog-magnesium-perimenopause
   location: Blog post — Magnesium calms the nervous system section

@@ -25,6 +25,9 @@ linked_to_topics:
 - cholesterol-and-hormone-synthesis
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- palpitations
+- low-mood
 sources:
 - id: coconote-fm-reality-of-statins
   location: Low Cholesterol Associations Section

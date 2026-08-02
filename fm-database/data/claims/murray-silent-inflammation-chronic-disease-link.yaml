@@ -30,6 +30,11 @@ linked_to_topics:
 - insulin-resistance
 - autoimmune
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- abdominal-obesity
+- stress
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 14 — Silent Inflammation, Quick Review pg 325

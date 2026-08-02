@@ -25,6 +25,8 @@ linked_to_topics:
 linked_to_supplements:
 - vitamin-d3-k2
 linked_to_mechanisms: []
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Key Supplements Discussion

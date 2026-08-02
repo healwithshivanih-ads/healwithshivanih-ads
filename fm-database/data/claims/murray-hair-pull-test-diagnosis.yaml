@@ -21,6 +21,8 @@ linked_to_topics:
 - hair-loss-women
 - hair-loss
 linked_to_supplements: []
+linked_to_symptoms:
+- hair-loss
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 56 — Hair Loss in Women, pg 995

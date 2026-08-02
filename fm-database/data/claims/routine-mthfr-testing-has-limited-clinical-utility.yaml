@@ -23,6 +23,8 @@ linked_to_topics:
 - mthfr-methylation
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: notebooklm-synthesis
   location: '[auto-restored after Step 2 strip]'

@@ -25,6 +25,8 @@ linked_to_mechanisms:
   - histamine-metabolism
 linked_to_supplements:
   - diamine-oxidase-enzyme
+linked_to_symptoms:
+- migraine
 sources:
   - id: vinmec
     location: 'Migraines and Headaches'

@@ -19,6 +19,8 @@ linked_to_topics:
 - insulin-resistance-early-detection
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: coconote-fm-gtir
   location: GTIR Graph Interpretation

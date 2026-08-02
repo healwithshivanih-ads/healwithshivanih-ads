@@ -23,6 +23,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - melatonin
 out_of_scope_notes: ''
+linked_to_symptoms:
+- insomnia
 sources:
 - id: pizzorno-sleep-hpa
   location: Insomnia — Melatonin (pp 571)

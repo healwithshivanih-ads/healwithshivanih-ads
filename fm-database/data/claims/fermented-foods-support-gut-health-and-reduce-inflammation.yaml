@@ -18,6 +18,8 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Anti Inflammatory Diet — Foods to Eat

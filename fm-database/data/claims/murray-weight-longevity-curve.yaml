@@ -24,6 +24,8 @@ linked_to_topics:
 - cognitive-decline
 - sleep-deprivation
 linked_to_supplements: []
+linked_to_symptoms:
+- excess-body-weight
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 13 — Longevity, Quick Review pg 316–317

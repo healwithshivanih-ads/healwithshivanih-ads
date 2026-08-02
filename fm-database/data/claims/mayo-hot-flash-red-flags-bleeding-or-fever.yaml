@@ -8,6 +8,9 @@ linked_to_topics:
 - menopause
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- night-sweats
+- hot-flashes
 sources:
 - id: mayoclinic-hot-flashes-2026
   location: Mayo Clinic page — When to see a doctor

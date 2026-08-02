@@ -9,6 +9,8 @@ statement: Resting heart rate is an "index" or output marker — a downstream su
 evidence_tier: plausible_emerging
 linked_to_topics:
 - heart-rate-variability-interpretation
+linked_to_symptoms:
+- inflammation
 sources:
 - id: koppelman-polyvagal-energy-blueprint-podcast-2026
   location: Podcast — Treating HRV and resting HR as index markers

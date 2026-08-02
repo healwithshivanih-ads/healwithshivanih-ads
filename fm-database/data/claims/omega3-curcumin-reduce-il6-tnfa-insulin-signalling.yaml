@@ -22,6 +22,8 @@ linked_to_mechanisms:
 - chronic-inflammation
 - insulin-resistance
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Chronic Inflammation

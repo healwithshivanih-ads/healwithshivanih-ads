@@ -39,6 +39,10 @@ linked_to_supplements:
 - turmeric-root
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
+- joint-pain
+- muscle-aches-joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis, pg 1484

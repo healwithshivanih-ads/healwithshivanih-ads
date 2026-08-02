@@ -23,6 +23,10 @@ linked_to_topics:
 - hypothalamic-amenorrhea
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- irregular-periods
+- acne-hormonal
+- facial-hair
 sources:
 - id: briden-blog-irregular-periods-pcos-vs-hypothalamic
   location: Blog post — Compare and contrast section

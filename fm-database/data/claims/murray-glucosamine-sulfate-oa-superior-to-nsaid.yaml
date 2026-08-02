@@ -29,6 +29,8 @@ linked_to_topics:
 linked_to_supplements:
 - glucosamine
 - glucosamine-chondroitin
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 80 — Osteoarthritis, Treatment Summary pg 1321, 1324

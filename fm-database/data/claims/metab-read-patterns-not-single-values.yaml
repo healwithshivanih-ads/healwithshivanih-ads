@@ -24,6 +24,8 @@ linked_to_mechanisms:
 - biomarker-data-fluency
 - patient-centered-care-model
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fmca-m11-metabolic-health-labs-saxena
   location: Closing — look for patterns, not one value

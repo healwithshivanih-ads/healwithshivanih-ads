@@ -27,6 +27,8 @@ linked_to_mechanisms:
 - sorbitol-accumulation
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- numbness-tingling
 sources:
 - id: pizzorno-diabetes
   location: Diabetes Mellitus — Long-Term Complications / Poor glucose control (pp

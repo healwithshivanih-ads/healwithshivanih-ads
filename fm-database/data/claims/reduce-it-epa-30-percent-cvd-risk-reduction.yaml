@@ -16,6 +16,8 @@ linked_to_topics:
 linked_to_supplements:
 - fish-oil-omega-3
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-triglycerides
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Cardiovascular Benefits of Omega-3 Studies Slide

@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - estrogen-dominance-thyroid-blunting
 linked_to_supplements:
 - shatavari
+linked_to_symptoms:
+- stress
 sources:
 - id: pubmed-41816216
   location: 'Efficacy and safety of Shatavari root extract in women with Polycystic Ovarian Syndrome:

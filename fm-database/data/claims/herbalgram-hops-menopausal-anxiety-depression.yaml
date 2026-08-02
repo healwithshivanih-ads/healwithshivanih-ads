@@ -33,6 +33,9 @@ linked_to_mechanisms:
 - gabaergic-modulation
 linked_to_supplements:
 - hops-humulus-lupulus
+linked_to_symptoms:
+- low-mood
+- anxiety
 sources:
 - id: herbalgram-121-botanicals-womens-health-2019
   location: Research Reviews — Systematic Review of Herbal Medicines for Depression

@@ -18,6 +18,9 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
+- elevated-blood-pressure
 sources:
 - id: coconote-fm-approach-inflammation
   location: Introduction – Chronic Inflammation Overview

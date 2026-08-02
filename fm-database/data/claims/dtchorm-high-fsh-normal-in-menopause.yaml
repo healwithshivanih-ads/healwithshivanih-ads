@@ -25,6 +25,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - fsh-elevation-aging-cascade
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: fmca-m11-dtc-female-hormone-testing-warner
   location: FSH nuance — menopause and perimenopause

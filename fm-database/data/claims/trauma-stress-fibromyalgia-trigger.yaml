@@ -18,6 +18,10 @@ linked_to_topics:
 - chronic-pain-and-fatigue
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
+- chronic-pain
+- anxiety
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Stress / Trauma Section

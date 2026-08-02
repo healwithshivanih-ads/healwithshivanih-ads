@@ -9,6 +9,9 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - cognitive-decline
 - recode-protocol
+linked_to_symptoms:
+- poor-concentration
+- anxiety
 sources:
 - id: sandison-energy-blueprint-podcast-2026
   location: Podcast — sleep tips

@@ -9,6 +9,10 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - second-puberty-perimenopause
 - fibromyalgia
+linked_to_symptoms:
+- insulin-resistance
+- insomnia
+- chronic-pain
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 1 — Fibromyalgia special topic + Ch 8 — Fibromyalgia, pg 21–22,

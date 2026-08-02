@@ -7,6 +7,8 @@ statement: In chronic idiopathic hives, screen for anti-thyroid antibodies — a
 evidence_tier: plausible_emerging
 linked_to_topics:
 - hives-urticaria
+linked_to_symptoms:
+- urticaria
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 65 — Hives, pg 1102

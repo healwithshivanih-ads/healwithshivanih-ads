@@ -14,6 +14,10 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - lifestyle-epigenetic-mismatch-paradigm
 - chronic-stress
+linked_to_symptoms:
+- poor-concentration
+- elevated-hscrp
+- social-isolation
 sources:
 - id: chestnut-energy-blueprint-podcast-2026
   location: Podcast — social mammals segment

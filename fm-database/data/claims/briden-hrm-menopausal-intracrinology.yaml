@@ -8,6 +8,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - menopause
 - menopausal-hormone-therapy
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 4 — Losing estrogen, pg 80–81

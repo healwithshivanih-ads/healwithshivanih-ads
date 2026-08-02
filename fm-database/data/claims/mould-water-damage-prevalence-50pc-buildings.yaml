@@ -13,6 +13,10 @@ linked_to_topics:
 - sixteen-nails-fatigue-framework
 - chronic-fatigue-syndrome
 - cell-danger-response
+linked_to_symptoms:
+- lethargy
+- chronic-fatigue
+- brain-fog
 sources:
 - id: hirsch-energy-blueprint-podcast-2026
   location: Podcast — mould prevalence segment

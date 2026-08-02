@@ -27,6 +27,9 @@ linked_to_mechanisms:
 - mitochondrial-dysfunction
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- chemical-sensitivities
+- chronic-fatigue
 sources:
 - id: pizzorno-energy-cluster
   location: Chronic Fatigue Syndrome — FM and MCSs (pp 215)

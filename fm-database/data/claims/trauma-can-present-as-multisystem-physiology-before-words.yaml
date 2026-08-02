@@ -21,6 +21,10 @@ linked_to_mechanisms:
 linked_to_supplements: []
 out_of_scope_notes: Trauma assessment and treatment are for appropriately trained professionals;
   the coach notices patterns and refers.
+linked_to_symptoms:
+- insomnia
+- hypervigilance
+- intestinal-dysbiosis-symptoms
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DZUz11mjCQk/

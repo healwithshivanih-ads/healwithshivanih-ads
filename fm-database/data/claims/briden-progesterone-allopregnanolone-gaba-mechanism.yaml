@@ -21,6 +21,9 @@ linked_to_mechanisms:
 - allopregnanolone-deficiency
 - gaba-receptor-modulation
 linked_to_supplements: []
+linked_to_symptoms:
+- migraine
+- anxiety
 sources:
 - id: briden-blog-troubleshooting-progesterone
   location: Blog post — Which form is best section

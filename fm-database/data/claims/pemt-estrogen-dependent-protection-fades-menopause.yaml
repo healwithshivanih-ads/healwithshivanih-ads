@@ -26,6 +26,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - phosphatidylcholine
 - cdp-choline
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: pemt-estrogen-induction-hepatocytes-2007
   location: Estradiol dose-response

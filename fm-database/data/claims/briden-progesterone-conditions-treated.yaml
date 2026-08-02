@@ -23,6 +23,11 @@ linked_to_topics:
 - premenstrual-syndrome
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- dysmenorrhea
+- perimenopause-symptoms
+- night-sweats
+- migraine
 sources:
 - id: briden-blog-guide-progesterone-womens-health
   location: Blog post — Conditions that benefit section

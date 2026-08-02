@@ -24,6 +24,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - phosphatidylcholine
 - cdp-choline
+linked_to_symptoms:
+- fatty-liver
 sources:
 - id: pemt-knockout-choline-steatosis-2003
   location: Knockout mouse hepatic steatosis findings

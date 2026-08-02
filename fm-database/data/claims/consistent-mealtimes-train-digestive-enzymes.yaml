@@ -19,6 +19,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - migrating-motor-complex
 linked_to_supplements: []
+linked_to_symptoms:
+- mood-swings
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: 'Chapter 2: The Principles of Ayurvedic Eating — The Flow of Food: Establishing a Rhythm'

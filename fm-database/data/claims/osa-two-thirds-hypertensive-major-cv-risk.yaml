@@ -27,6 +27,9 @@ out_of_scope_notes: ''
 linked_to_mechanisms:
 - sympathetic-activation-sleep-apnea
 linked_to_supplements: []
+linked_to_symptoms:
+- insomnia
+- elevated-blood-pressure
 sources:
 - id: panda-circadian-code-book
   location: pp. 116-117

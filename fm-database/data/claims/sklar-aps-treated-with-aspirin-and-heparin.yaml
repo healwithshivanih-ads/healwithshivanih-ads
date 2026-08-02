@@ -9,6 +9,8 @@ evidence_tier: confirm_with_clinician
 linked_to_topics:
 - antiphospholipid-syndrome-fertility
 - recurrent-pregnancy-loss
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: sklar-fertility-expert-recurrent-miscarriage-causes
   location: Episode body — area 2 case story

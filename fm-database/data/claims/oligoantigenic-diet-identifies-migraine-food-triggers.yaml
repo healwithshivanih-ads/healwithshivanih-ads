@@ -22,6 +22,8 @@ linked_to_mechanisms:
 - serotonin-melatonin-sleep-axis
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- migraine
 sources:
 - id: pizzorno-migraine-ibd-candida
   location: Migraine Headache — Oligoantigenic diet (pp 659)

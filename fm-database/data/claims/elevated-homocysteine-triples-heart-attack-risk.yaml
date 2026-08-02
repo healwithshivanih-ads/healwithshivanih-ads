@@ -18,6 +18,8 @@ linked_to_topics:
 linked_to_supplements:
 - vitamin-b6-b12
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: vitaone-health-coaching-toolkit
   location: CVD Risk Analysis — Lab Results

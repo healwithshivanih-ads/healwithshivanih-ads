@@ -8,6 +8,8 @@ evidence_tier: strong
 linked_to_topics:
 - female-infertility
 - preconception-protocol
+linked_to_symptoms:
+- primary-infertility
 sources:
 - id: hendrickson-jack-less-stressed-2024
   location: minute 41 — endometriosis red flags

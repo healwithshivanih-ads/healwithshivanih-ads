@@ -19,6 +19,9 @@ linked_to_supplements:
 - vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-serum-calcium
+- bloating
 sources:
 - id: coconote-fm-calcium-deficiency
   location: Causes of Low Serum Calcium

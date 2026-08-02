@@ -21,6 +21,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - methylated-b-complex
 - b-complex
+linked_to_symptoms:
+- anxiety
 sources:
 - id: fmca-m11-genetics-epigenetics-joffe
   location: Q&A — methylated B vitamins

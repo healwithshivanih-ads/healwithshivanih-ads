@@ -8,6 +8,9 @@ linked_to_topics:
 - insulin-resistance-early-detection
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-cholesterol
+- elevated-blood-pressure
 sources:
 - id: mayoclinic-gout-2026
   location: Mayo Clinic page — Risk factors

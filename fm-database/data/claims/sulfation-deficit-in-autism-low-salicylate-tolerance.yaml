@@ -12,6 +12,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - pediatric-neurodevelopmental-nutrition
 - autism-spectrum-disorder
+linked_to_symptoms:
+- insomnia
 sources:
 - id: matthews-energy-blueprint-podcast-2026
   location: Podcast — sulfation segment

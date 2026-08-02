@@ -13,6 +13,8 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- acid-reflux-heartburn
 sources:
 - id: amy-myers-autoimmune-solution
   location: Chapter 8

@@ -8,6 +8,9 @@ statement: 'Dr Heidi Roth (UNC neurologist) protocol: melatonin works best when 
 evidence_tier: plausible_emerging
 linked_to_topics:
 - sleep
+linked_to_symptoms:
+- bone-loss
+- migraine
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 7 — Melatonin, pg 167–168

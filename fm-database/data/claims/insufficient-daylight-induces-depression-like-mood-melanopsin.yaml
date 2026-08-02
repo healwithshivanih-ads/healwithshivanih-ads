@@ -28,6 +28,8 @@ linked_to_mechanisms:
 - melanopsin-mood-light-axis
 - scn-light-entrainment
 linked_to_supplements: []
+linked_to_symptoms:
+- low-mood
 sources:
 - id: panda-circadian-code-book
   location: p. 159

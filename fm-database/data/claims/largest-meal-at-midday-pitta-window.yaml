@@ -9,6 +9,8 @@ linked_to_topics:
 - ayurvedic-circadian-clock
 - agni-digestive-fire
 - circadian-rhythm-disruption
+linked_to_symptoms:
+- inflammation
 sources:
 - id: gupta-energy-blueprint-podcast-2026
   location: Podcast — Meal timing and the circadian clock

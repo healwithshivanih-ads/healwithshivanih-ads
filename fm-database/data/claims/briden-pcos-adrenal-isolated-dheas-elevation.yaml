@@ -20,6 +20,9 @@ linked_to_topics:
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
+- inflammation
 sources:
 - id: briden-blog-pcos-4-types-flowchart
   location: Blog post — Step 5 Adrenal PCOS section

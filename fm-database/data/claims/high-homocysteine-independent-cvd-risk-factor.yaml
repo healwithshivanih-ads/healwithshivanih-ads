@@ -21,6 +21,8 @@ linked_to_supplements:
 - pyridoxal-5-phosphate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting

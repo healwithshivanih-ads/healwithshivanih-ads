@@ -22,6 +22,8 @@ linked_to_mechanisms:
 - histamine-receptor-signaling
 linked_to_supplements:
 - zinc
+linked_to_symptoms:
+- inflammation
 sources:
 - id: briden-blog-zinc-rescues-hormones
   location: Blog post — Premenstrual mood section

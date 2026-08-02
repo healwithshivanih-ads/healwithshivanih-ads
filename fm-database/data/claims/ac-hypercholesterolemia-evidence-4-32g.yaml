@@ -28,6 +28,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - activated-charcoal
 out_of_scope_notes: ''
+linked_to_symptoms:
+- constipation
 sources:
 - id: notebooklm-activated-charcoal-2026
   location: Section 3 — Hypercholesterolaemia subsection

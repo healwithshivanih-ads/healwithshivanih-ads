@@ -10,6 +10,8 @@ evidence_tier: strong
 linked_to_topics:
 - perimenopause
 - breast-cancer-prevention
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 5 — Alcohol, pg 119–121

@@ -22,6 +22,8 @@ linked_to_mechanisms:
 - leaky-gut
 - immune-food-reactivity
 linked_to_supplements: []
+linked_to_symptoms:
+- food-intolerance-reactions
 sources:
 - id: fmca-m11-food-sensitivity
   location: Coaching takeaways — not forever

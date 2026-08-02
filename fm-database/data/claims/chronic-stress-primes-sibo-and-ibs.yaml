@@ -16,6 +16,8 @@ linked_to_mechanisms:
 - low-stomach-acid
 - altered-gi-motility
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Chronic stress causes leaky gut, low acid, slowed motility and reduced gut

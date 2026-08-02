@@ -10,6 +10,8 @@ linked_to_topics:
 linked_to_supplements:
 - magnesium-citrate
 - vitamin-b6
+linked_to_symptoms:
+- kidney-stones
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Kidney Stones chapter, p 1206-1207

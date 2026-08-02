@@ -32,6 +32,9 @@ linked_to_mechanisms:
 - antioxidant-protection
 linked_to_supplements:
 - haritaki
+linked_to_symptoms:
+- constipation
+- loss-of-appetite
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: Haritaki (Terminalia chebula), API Part I, Vol I, Ayurvedic Pharmacopoeia of India, Govt of

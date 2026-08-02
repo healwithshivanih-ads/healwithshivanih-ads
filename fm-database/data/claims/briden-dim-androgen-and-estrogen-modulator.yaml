@@ -20,6 +20,8 @@ linked_to_mechanisms:
 - 5-alpha-reductase-dht-conversion
 linked_to_supplements:
 - dim
+linked_to_symptoms:
+- facial-hair
 sources:
 - id: briden-blog-natural-anti-androgens-hirsutism
   location: Blog post — DIM section

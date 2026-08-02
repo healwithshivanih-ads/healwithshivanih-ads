@@ -16,6 +16,8 @@ linked_to_mechanisms:
 - systemic-inflammation
 caveats: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Lab Results

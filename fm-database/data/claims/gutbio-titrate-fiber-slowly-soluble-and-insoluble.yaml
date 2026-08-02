@@ -31,6 +31,8 @@ linked_to_supplements:
 - psyllium
 - partially-hydrolyzed-guar-gum
 - chia-seeds
+linked_to_symptoms:
+- constipation
 sources:
 - id: fmca-m11-gut-stool-biomarkers-hanaway
   location: Fibre and fermented foods discussion

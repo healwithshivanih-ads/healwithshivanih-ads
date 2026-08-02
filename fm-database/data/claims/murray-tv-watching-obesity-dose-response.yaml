@@ -27,6 +27,8 @@ linked_to_topics:
 - insulin-resistance
 - sleep-quality
 linked_to_supplements: []
+linked_to_symptoms:
+- emotional-eating
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 16 — Obesity and Weight Management, Quick Review pg 385

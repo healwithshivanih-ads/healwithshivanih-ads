@@ -14,6 +14,8 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: ask-expert-cycle-syncing
   location: Post-menopause Q&A

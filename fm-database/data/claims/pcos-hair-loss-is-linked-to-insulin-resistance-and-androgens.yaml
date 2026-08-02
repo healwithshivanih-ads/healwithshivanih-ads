@@ -20,6 +20,9 @@ linked_to_supplements:
 - magnesium
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
+- hair-loss
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 24

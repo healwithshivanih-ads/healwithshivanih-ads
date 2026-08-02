@@ -14,6 +14,9 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_topics: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
+- inflammation
 sources:
 - id: amy-myers-autoimmune-solution
   location: Chapter 3

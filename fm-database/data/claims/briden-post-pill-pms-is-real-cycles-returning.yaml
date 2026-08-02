@@ -29,6 +29,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - magnesium-glycinate
 - vitamin-b6
+linked_to_symptoms:
+- pms
 sources:
 - id: briden-period-repair-manual-2018
   location: Chapter 2 — Post-Pill PMS, pg 36

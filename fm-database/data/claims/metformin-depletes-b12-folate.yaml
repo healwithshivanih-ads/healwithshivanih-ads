@@ -21,6 +21,8 @@ linked_to_supplements:
 - l-methylfolate
 - active-b-vitamins
 linked_to_mechanisms: []
+linked_to_symptoms:
+- numbness-tingling
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Medicine-Nutrient Interactions Cheatsheet

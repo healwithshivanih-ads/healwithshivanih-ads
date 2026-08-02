@@ -6,6 +6,9 @@ statement: Call 999 or go to A&E for vomiting blood or coffee-ground vomit, gree
 evidence_tier: strong
 linked_to_topics:
 - microbiome
+linked_to_symptoms:
+- pale-skin
+- headache
 sources:
 - id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
   location: 'NHS page — Immediate action required: Call 999 or go to A&E'

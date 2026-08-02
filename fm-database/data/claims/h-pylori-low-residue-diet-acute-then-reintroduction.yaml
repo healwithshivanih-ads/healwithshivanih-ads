@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - h-pylori-mucosal-defense-breakdown
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
 sources:
 - id: notebooklm-h-pylori-2026
   location: Dietary Protocols — Acute and Recovery Phases

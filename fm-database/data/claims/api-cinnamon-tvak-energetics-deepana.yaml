@@ -23,6 +23,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - cinnamon
+linked_to_symptoms:
+- dysmenorrhea
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: Tvak, Ayurvedic Pharmacopoeia of India, Part I, Volume II (2nd edition), Ministry of AYUSH,

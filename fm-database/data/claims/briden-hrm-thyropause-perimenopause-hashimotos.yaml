@@ -10,6 +10,10 @@ evidence_tier: strong
 linked_to_topics:
 - hypothyroidism
 - second-puberty-perimenopause
+linked_to_symptoms:
+- perimenopause-symptoms
+- brain-fog
+- hair-loss
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 8 — Autoimmune thyroid disease + Bernadette patient story, pg

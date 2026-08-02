@@ -16,6 +16,8 @@ linked_to_supplements:
 - phosphatidylserine
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: Functional Medicine Interventions — Digital Overstimulation (p.16)

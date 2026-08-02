@@ -42,6 +42,11 @@ linked_to_supplements:
 linked_to_mechanisms: []
 out_of_scope_notes: Hypochlorhydria diagnosis + HCl prescribing in active ulcer disease
   is clinician scope.
+linked_to_symptoms:
+- stress
+- inflammation
+- joint-pain
+- acid-reflux-heartburn
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis, pg 1482–1483

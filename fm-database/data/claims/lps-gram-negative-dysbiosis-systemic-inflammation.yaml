@@ -17,6 +17,8 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- intestinal-dysbiosis-symptoms
 sources:
 - id: coconote-fm-approach-inflammation
   location: Gut Dysbiosis – Gram-Negative Bacteria and LPS

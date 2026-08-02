@@ -11,6 +11,8 @@ caveats: []
 linked_to_topics: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Once improving, shift focus back to life; enjoyment aids healing and prevents

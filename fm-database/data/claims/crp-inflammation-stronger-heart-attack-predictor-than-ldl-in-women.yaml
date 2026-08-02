@@ -24,6 +24,9 @@ linked_to_mechanisms:
 linked_to_supplements:
 - omega-3
 - fish-oil-omega-3
+linked_to_symptoms:
+- inflammation
+- elevated-hscrp
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 15 - Heart Health

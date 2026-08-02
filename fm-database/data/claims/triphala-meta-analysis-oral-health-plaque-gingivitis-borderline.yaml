@@ -22,6 +22,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - triphala
+linked_to_symptoms:
+- gum-inflammation
 sources:
 - id: pubmed-38144032
   location: 'Ayurvedic and herbal plaque control agents in gingivitis: A systematic review and meta-analysis

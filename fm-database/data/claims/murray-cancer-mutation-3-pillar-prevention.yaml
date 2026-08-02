@@ -27,6 +27,9 @@ linked_to_topics:
 - immune-support
 - chronic-inflammation
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- stress
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 8 — Cancer Prevention, Quick Review pg 176

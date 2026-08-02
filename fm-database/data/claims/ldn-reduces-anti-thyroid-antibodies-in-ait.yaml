@@ -20,6 +20,8 @@ linked_to_topics:
 - autoimmune-thyroiditis
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-ldn-article
   location: LDN and Autoimmune Thyroiditis (AIT)

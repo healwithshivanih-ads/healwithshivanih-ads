@@ -13,6 +13,9 @@ linked_to_supplements:
 - vitamin-c
 - vitamin-e
 - zinc
+linked_to_symptoms:
+- macular-degeneration
+- elevated-blood-pressure
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 74 — Macular Degeneration, pg 1223-1224

@@ -15,6 +15,9 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
+- bone-loss
 sources:
 - id: pizzorno-textbook-gi-2
   location: Celiac Disease — General Considerations — Associated Conditions

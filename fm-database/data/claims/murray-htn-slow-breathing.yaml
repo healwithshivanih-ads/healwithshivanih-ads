@@ -8,6 +8,8 @@ linked_to_topics:
 - hypertension
 - essential-hypertension
 - blood-pressure-management
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 63 — High Blood Pressure, pg 1053-1054

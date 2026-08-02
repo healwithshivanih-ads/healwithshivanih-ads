@@ -23,6 +23,9 @@ linked_to_mechanisms:
 - 5-alpha-reductase-dht-conversion
 linked_to_supplements:
 - zinc
+linked_to_symptoms:
+- facial-hair
+- vaginal-dryness
 sources:
 - id: briden-blog-zinc-rescues-hormones
   location: Blog post — PCOS bullet section

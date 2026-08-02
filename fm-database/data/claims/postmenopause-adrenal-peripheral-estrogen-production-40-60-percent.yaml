@@ -23,6 +23,8 @@ linked_to_mechanisms:
 - age-related-progesterone-decline
 - estrogen-decline
 linked_to_supplements: []
+linked_to_symptoms:
+- stress
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 14 - Perimenopause and Menopause

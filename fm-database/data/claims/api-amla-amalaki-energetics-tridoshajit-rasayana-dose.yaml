@@ -31,6 +31,8 @@ linked_to_mechanisms:
 - oxidative-stress-pancreatic-damage
 linked_to_supplements:
 - amla
+linked_to_symptoms:
+- numbness-tingling
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: AMALAKI (Fresh Fruit), API Part I, Volume I, monograph nos. 3–4; AMALAKI (Dried), same volume

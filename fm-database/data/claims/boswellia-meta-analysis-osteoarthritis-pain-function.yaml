@@ -27,6 +27,8 @@ linked_to_mechanisms:
 - arachidonic-acid-cascade
 linked_to_supplements:
 - boswellia
+linked_to_symptoms:
+- muscle-aches-joint-pain
 sources:
 - id: pubmed-32680575
   location: 'Effectiveness of Boswellia and Boswellia extract for osteoarthritis patients: a systematic

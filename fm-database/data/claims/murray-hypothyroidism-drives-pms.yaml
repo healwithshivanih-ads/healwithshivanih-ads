@@ -33,6 +33,10 @@ linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: Thyroid hormone replacement is clinician scope. Coach role — ensure
   full thyroid panel done before assuming PMS is the primary diagnosis.
+linked_to_symptoms:
+- pms
+- constipation
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome, pg 1405–1406

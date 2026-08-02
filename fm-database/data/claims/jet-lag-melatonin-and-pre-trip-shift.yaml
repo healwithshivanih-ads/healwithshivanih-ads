@@ -48,6 +48,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - melatonin
 - magnesium
+linked_to_symptoms:
+- insomnia
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Jet lag section

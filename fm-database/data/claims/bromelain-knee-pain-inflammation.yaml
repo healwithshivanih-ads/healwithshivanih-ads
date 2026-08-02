@@ -19,6 +19,9 @@ linked_to_mechanisms:
 linked_to_supplements:
 - bromelain
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
+- joint-pain
 sources:
 - id: examine-com
   location: Bromelain — Examine Database, Acute Nonspecific Knee Pain (Inflammation)

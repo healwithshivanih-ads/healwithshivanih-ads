@@ -19,6 +19,8 @@ linked_to_supplements:
 - lactobacillus-crispatus-probiotic
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Crispatus and pregnancy outcomes discussion

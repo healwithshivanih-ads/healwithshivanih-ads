@@ -16,6 +16,8 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- numbness-tingling
 sources:
 - id: coconote-fm-reality-of-statins
   location: Side Effects of Statins Section

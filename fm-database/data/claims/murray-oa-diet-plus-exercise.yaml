@@ -11,6 +11,9 @@ linked_to_topics:
 - osteoarthritis
 - joint-pain
 - insulin-resistance
+linked_to_symptoms:
+- insulin-resistance
+- joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 80 — Osteoarthritis, pg 1303

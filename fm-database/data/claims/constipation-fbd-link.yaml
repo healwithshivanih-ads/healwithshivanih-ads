@@ -9,6 +9,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - fibrocystic-breast-disease
 - constipation
+linked_to_symptoms:
+- fibrocystic-breasts
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 51 — Fibrocystic Breast Disease, pg 928-929

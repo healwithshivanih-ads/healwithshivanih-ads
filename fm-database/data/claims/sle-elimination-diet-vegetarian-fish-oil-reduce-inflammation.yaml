@@ -8,6 +8,8 @@ statement: The naturopathic approach to SLE mirrors rheumatoid arthritis — sta
 evidence_tier: strong
 linked_to_topics:
 - systemic-lupus-erythematosus
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: SLE chapter, p 1534

@@ -23,6 +23,8 @@ linked_to_mechanisms:
 linked_to_supplements: []
 out_of_scope_notes: Trauma assessment and treatment belong to appropriately trained mental-health
   professionals; the coach educates and refers.
+linked_to_symptoms:
+- chronic-pain
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DZhqvq7DPdo/

@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - mast-cell-activation
 linked_to_supplements:
 - dim
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: briden-blog-high-histamine-perimenopause
   location: Blog post — Natural antihistamine strategies section

@@ -16,6 +16,8 @@ caveats:
 - Therapeutic dosing (5,000 IU) requires clinician supervision and periodic 25-OH-D monitoring.
 - Drug interaction with statins noted in references (Schwartz JB 2009).
 linked_to_mechanisms: []
+linked_to_symptoms:
+- upper-respiratory-infections
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'

@@ -9,6 +9,8 @@ evidence_tier: strong
 linked_to_topics:
 - vaginitis
 - chronic-candidiasis
+linked_to_symptoms:
+- pelvic-inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 98 — Vaginitis, pg 1546-1547

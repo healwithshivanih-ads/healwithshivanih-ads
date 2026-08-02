@@ -13,6 +13,8 @@ linked_to_topics:
 - cognitive-decline
 - recode-protocol
 - insulin-resistance
+linked_to_symptoms:
+- poor-concentration
 sources:
 - id: sandison-energy-blueprint-podcast-2026
   location: Podcast — diet closing tips

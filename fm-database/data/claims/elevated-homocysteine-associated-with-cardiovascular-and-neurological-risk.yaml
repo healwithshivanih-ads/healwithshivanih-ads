@@ -21,6 +21,8 @@ linked_to_supplements:
 - l-methylfolate
 - methylcobalamin
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Homocysteine section

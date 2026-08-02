@@ -16,6 +16,8 @@ caveats:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: amy-myers-autoimmune-solution
   location: Chapter 7

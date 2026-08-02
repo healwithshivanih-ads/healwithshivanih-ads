@@ -12,6 +12,9 @@ linked_to_topics:
 - menopause
 - hrt
 - perimenopause-window-of-vulnerability
+linked_to_symptoms:
+- vaginal-dryness
+- urinary-tract-infections
 sources:
 - id: snyder-energy-blueprint-podcast-2026
   location: Podcast — vaginal estrogen segment

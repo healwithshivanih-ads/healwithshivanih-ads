@@ -27,6 +27,9 @@ linked_to_topics:
 - type-2-diabetes
 - atherogenic-dyslipidemia
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 14 — Silent Inflammation, Quick Review pg 325, Treatment Summary

@@ -40,6 +40,8 @@ linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: PPI tapering is clinician scope. Coach role — patient education
   on risk + supporting root-cause work + gut healing.
+linked_to_symptoms:
+- bone-loss
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis, pg 1359

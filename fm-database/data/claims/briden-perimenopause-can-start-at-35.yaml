@@ -29,6 +29,8 @@ linked_to_mechanisms:
 - age-related-progesterone-decline
 - estrogen-decline
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: briden-period-repair-manual-2018
   location: Chapter 1 — Getting Ready for the End of Periods, pg 15

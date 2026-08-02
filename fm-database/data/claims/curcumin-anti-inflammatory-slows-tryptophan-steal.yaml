@@ -22,6 +22,8 @@ linked_to_supplements:
 - liposomal-curcumin
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: dirty-genes-lynch
   location: Chapter 15 — Supplements for Your Fast MAOA

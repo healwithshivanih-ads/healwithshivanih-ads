@@ -19,6 +19,10 @@ linked_to_topics:
 - cardiovascular-dysfunction
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- insomnia
+- shortness-of-breath
+- indigestion
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 15 - Heart Health

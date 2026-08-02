@@ -14,6 +14,8 @@ linked_to_supplements:
 - vitamin-b12
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- anemia
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 6

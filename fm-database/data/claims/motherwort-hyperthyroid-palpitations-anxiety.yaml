@@ -28,6 +28,10 @@ linked_to_mechanisms:
   - tsh-receptor-stimulating-antibodies
 linked_to_supplements:
   - motherwort-leonurus-cardiaca
+linked_to_symptoms:
+- palpitations
+- anxiety
+- tachycardia
 sources:
   - id: romm-botanical-medicine-womens-health-2010
     location: "Chapter 6 — Endocrine Disorders, Table 6-3 Botanical Treatments for\

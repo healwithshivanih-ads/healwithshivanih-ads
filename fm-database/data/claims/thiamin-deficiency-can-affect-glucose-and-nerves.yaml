@@ -17,6 +17,9 @@ linked_to_supplements:
 - thiamin-b1
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- sugar-cravings
+- numbness-tingling
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 3

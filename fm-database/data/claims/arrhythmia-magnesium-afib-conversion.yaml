@@ -9,6 +9,8 @@ linked_to_topics:
 - heart-arrhythmias
 linked_to_supplements:
 - magnesium-citrate
+linked_to_symptoms:
+- palpitations
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 59 — Heart Arrhythmias, pg 1018-1019

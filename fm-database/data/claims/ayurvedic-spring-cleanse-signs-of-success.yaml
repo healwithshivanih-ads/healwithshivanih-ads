@@ -24,6 +24,8 @@ linked_to_mechanisms:
 - dysbiosis-gut-microbiome-imbalance
 - lps-endotoxemia
 linked_to_supplements: []
+linked_to_symptoms:
+- white-tongue-coating
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: 'Appendix 2: Seasonal Cleansing — Simple Spring Cleanse'

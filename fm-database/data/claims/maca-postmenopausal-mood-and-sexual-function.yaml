@@ -10,6 +10,9 @@ linked_to_topics:
 - menopause
 linked_to_supplements:
 - maca
+linked_to_symptoms:
+- low-mood
+- anxiety
 sources:
 - id: brooks-2008-maca-postmenopausal-psychological-sexual
   location: Results and Conclusion

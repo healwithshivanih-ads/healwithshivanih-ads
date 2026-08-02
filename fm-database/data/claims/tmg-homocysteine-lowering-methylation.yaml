@@ -20,6 +20,8 @@ linked_to_supplements:
 - methylcobalamin
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR

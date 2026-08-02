@@ -19,6 +19,9 @@ linked_to_topics:
 linked_to_mechanisms:
 - insulin-resistance
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- infertility
 sources:
 - id: welch-balance-your-hormones-2011
   location: 'Chapter 12 — Fertility and Conception: The Egg'

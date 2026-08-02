@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - chronic-inflammation
 linked_to_supplements:
 - gotu-kola
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Herba Centellae, WHO Monographs on Selected Medicinal Plants Vol 1 (https://apps.who.int/iris/bitstream/handle/10665/42052/9241545178.pdf)

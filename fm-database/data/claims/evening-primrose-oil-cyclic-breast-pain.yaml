@@ -7,6 +7,8 @@ statement: Evening primrose oil 3,000 mg/day for 3 to 6 months relieves cyclic A
 evidence_tier: plausible_emerging
 linked_to_topics:
 - fibrocystic-breast-disease
+linked_to_symptoms:
+- breast-tenderness
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 51 — Fibrocystic Breast Disease, pg 930

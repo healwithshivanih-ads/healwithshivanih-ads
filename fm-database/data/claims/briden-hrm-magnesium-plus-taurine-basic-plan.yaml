@@ -9,6 +9,9 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - second-puberty-perimenopause
 - sleep
+linked_to_symptoms:
+- insulin-resistance
+- perimenopause-symptoms
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 7 — Basic action plan + Hot flushes + Sleep, pg 158–170

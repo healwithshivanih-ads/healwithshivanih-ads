@@ -50,6 +50,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - parasympathetic-restoration-failure
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Restorative sleep section

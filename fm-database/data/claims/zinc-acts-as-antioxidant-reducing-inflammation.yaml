@@ -12,6 +12,8 @@ linked_to_supplements:
 - zinc
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Role of Zinc

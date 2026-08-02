@@ -16,6 +16,8 @@ linked_to_topics:
 - liver-detoxification
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-homocysteine
 sources:
 - id: coconote-fm-liver-detox-part2
   location: Homocysteine & Methylation Section

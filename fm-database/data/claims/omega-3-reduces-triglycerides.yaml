@@ -18,6 +18,8 @@ linked_to_topics:
 linked_to_supplements:
 - omega-3
 linked_to_mechanisms: []
+linked_to_symptoms:
+- dyslipidemia
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5

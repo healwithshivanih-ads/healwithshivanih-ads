@@ -13,6 +13,8 @@ linked_to_supplements:
 - vitamin-c
 linked_to_mechanisms:
 - collagen-integrity-disruption
+linked_to_symptoms:
+- bloating
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 54 — Glaucoma, pg 975-976

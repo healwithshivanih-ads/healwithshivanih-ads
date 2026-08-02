@@ -8,6 +8,8 @@ linked_to_topics:
 - hives-urticaria
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- urticaria
 sources:
 - id: mayoclinic-chronic-hives-2026
   location: Mayo Clinic page — Symptoms

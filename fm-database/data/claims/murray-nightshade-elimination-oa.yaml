@@ -26,6 +26,8 @@ linked_to_topics:
 - osteoarthritis
 - chronic-inflammation
 linked_to_supplements: []
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 80 — Osteoarthritis, Treatment Summary pg 1321, 1323

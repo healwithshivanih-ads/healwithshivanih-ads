@@ -22,6 +22,9 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 - hippocampal-neuroplasticity
 linked_to_supplements: []
+linked_to_symptoms:
+- poor-concentration
+- stress
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 17 - Alzheimer's Disease and Dementia

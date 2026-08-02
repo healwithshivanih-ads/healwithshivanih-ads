@@ -16,6 +16,8 @@ linked_to_supplements:
 - magnesium-glycinate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
 sources:
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet — Balance Stress Response

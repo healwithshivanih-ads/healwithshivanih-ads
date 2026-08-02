@@ -7,6 +7,8 @@ evidence_tier: strong
 linked_to_topics:
 - major-depressive-disorder
 - depression-lifestyle
+linked_to_symptoms:
+- low-mood
 sources:
 - id: nhs-clinical-depression-2026
   location: NHS page — St John's wort section

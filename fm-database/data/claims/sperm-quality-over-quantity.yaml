@@ -8,6 +8,8 @@ statement: Sperm QUALITY matters more than count — 52% of couples with male sp
 evidence_tier: strong
 linked_to_topics:
 - male-infertility-oxidative-stress
+linked_to_symptoms:
+- infertility
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 70 — Male Infertility, pg 1152-1154

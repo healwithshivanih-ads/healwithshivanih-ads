@@ -14,6 +14,8 @@ linked_to_topics:
 - major-depressive-disorder
 linked_to_supplements:
 - st-johns-wort
+linked_to_symptoms:
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression, pg 787-788

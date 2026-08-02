@@ -34,6 +34,8 @@ linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: Medical phototherapy + Dead Sea climatotherapy referral are clinician
   scope. Sun exposure education is appropriate coaching scope.
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis, pg 1458–1459

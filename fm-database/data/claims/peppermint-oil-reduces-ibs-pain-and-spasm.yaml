@@ -24,6 +24,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - peppermint-oil-enteric
 out_of_scope_notes: ''
+linked_to_symptoms:
+- abdominal-pain
 sources:
 - id: pizzorno-gi-trio
   location: Irritable Bowel Syndrome — Therapeutic Considerations (pp 581-582)

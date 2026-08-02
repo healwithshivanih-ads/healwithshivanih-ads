@@ -35,6 +35,8 @@ linked_to_mechanisms:
 - chronic-inflammation
 linked_to_supplements:
 - neem
+linked_to_symptoms:
+- jaundice
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Folium Azadirachti, WHO Monographs on Selected Medicinal Plants, Volume 3, pp. 88–101 (https://apps.who.int/iris/handle/10665/43689)

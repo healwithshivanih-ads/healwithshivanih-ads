@@ -26,6 +26,9 @@ linked_to_topics:
 - atherogenic-dyslipidemia
 - insulin-resistance
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- estrogen-dominance-symptoms
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 8 — Cancer Prevention, Quick Review pg 177

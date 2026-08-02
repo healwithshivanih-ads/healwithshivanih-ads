@@ -18,6 +18,8 @@ linked_to_mechanisms:
 - hcl-and-pepsin-protein-digestion
 linked_to_supplements:
 - betaine-hcl
+linked_to_symptoms:
+- numbness-tingling
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Don't titrate betaine HCl to burning; reserve for autoimmunity/anaemia/age>65/low

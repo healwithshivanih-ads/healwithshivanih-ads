@@ -8,6 +8,8 @@ linked_to_topics:
 - egg-quality
 - female-infertility
 - preconception-protocol
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: hendrickson-jack-less-stressed-2024
   location: minute 39 — luteal phase as progesterone indicator

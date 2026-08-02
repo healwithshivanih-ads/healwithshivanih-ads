@@ -34,6 +34,8 @@ linked_to_mechanisms:
 - insulin-resistance
 linked_to_supplements:
 - cinnamon
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: herbalgram-121-botanicals-womens-health-2019
   location: Research Reviews section — Cinnamon for Polycystic Ovary Syndrome, pp

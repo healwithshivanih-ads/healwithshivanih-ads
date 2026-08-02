@@ -11,6 +11,8 @@ evidence_tier: strong
 linked_to_topics:
 - menopausal-hormone-therapy
 - bhrt
+linked_to_symptoms:
+- hair-loss
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 6 — Progesterone, pg 141–144

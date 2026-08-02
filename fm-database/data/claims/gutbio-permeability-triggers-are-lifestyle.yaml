@@ -29,6 +29,9 @@ linked_to_mechanisms:
 - blood-brain-barrier-permeability
 - galt-immune-activation
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
+- inflammation
 sources:
 - id: fmca-m11-gut-stool-biomarkers-hanaway
   location: Triggers and effects of increased intestinal permeability

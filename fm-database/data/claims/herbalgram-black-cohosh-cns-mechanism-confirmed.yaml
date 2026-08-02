@@ -35,6 +35,9 @@ linked_to_mechanisms:
 - serotonin-signaling
 linked_to_supplements:
 - black-cohosh
+linked_to_symptoms:
+- hot-flashes
+- elevated-liver-enzymes
 sources:
 - id: herbalgram-121-botanicals-womens-health-2019
   location: Herb Profile — Black Cohosh (Actaea racemosa), pp 5–29 (extended profile)

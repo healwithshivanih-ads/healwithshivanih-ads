@@ -21,6 +21,8 @@ linked_to_topics:
 - food-allergy-ige-mediated
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: IgE Testing Section

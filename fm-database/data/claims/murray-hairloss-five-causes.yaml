@@ -12,6 +12,9 @@ linked_to_topics:
 - hair-loss-women
 - hair-loss
 - hairfall
+linked_to_symptoms:
+- insulin-resistance
+- hair-loss
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 56 — Hair Loss in Women, pg 997-1001

@@ -24,6 +24,8 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 linked_to_supplements:
 - holy-basil
+linked_to_symptoms:
+- anxiety
 sources:
 - id: pubmed-26571987
   location: 'Holy basil (Ocimum sanctum Linn.) leaf extract enhances specific cognitive parameters in
