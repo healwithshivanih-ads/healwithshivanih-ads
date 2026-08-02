@@ -18,6 +18,7 @@
  * with no JavaScript and lets iOS offer to save the password to Keychain).
  */
 import { NextRequest, NextResponse } from "next/server";
+import { relativeRedirect } from "@/lib/fmdb/http-redirect";
 import {
   COACH_MOBILE_COOKIE,
   COACH_MOBILE_TTL_MS,
@@ -70,7 +71,7 @@ export async function POST(req: NextRequest) {
     "unknown";
 
   if (rateLimited(ip, now)) {
-    return NextResponse.redirect(new URL("/m/login?error=throttled", req.url), 303);
+    return relativeRedirect("/m/login?error=throttled", 303);
   }
 
   const form = await req.formData();
@@ -78,12 +79,12 @@ export async function POST(req: NextRequest) {
   const next = safeMobileNext(String(form.get("next") ?? "") || null);
 
   if (!verifyPassword(supplied)) {
-    return NextResponse.redirect(new URL("/m/login?error=1", req.url), 303);
+    return relativeRedirect("/m/login?error=1", 303);
   }
 
   // 303 so the browser re-issues as GET — a plain 302 after a form POST can
   // re-POST on refresh.
-  const res = NextResponse.redirect(new URL(next, req.url), 303);
+  const res = relativeRedirect(next, 303);
   res.cookies.set({
     name: COACH_MOBILE_COOKIE,
     value: createSessionToken(auth.signingSecret, now),

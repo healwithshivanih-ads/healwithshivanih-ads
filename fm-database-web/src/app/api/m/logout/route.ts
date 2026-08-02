@@ -7,14 +7,14 @@
  *
  * POST-only on purpose — a GET logout can be triggered by any <img> tag.
  */
-import { NextRequest, NextResponse } from "next/server";
+import { relativeRedirect } from "@/lib/fmdb/http-redirect";
 import { COACH_MOBILE_COOKIE } from "@/lib/fmdb/coach-session";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-export async function POST(req: NextRequest) {
-  const res = NextResponse.redirect(new URL("/m/login", req.url), 303);
+export async function POST() {
+  const res = relativeRedirect("/m/login", 303);
   res.cookies.set({
     name: COACH_MOBILE_COOKIE,
     value: "",
