@@ -19,6 +19,8 @@ linked_to_topics:
 - inflammation
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: thurlow-microbiome-session-2
   location: Why midlife changes food tolerance

@@ -25,6 +25,8 @@ linked_to_mechanisms:
 - histamine-metabolism
 linked_to_supplements:
 - dao-enzyme
+linked_to_symptoms:
+- histamine-intolerance
 sources:
 - id: dao-gene-variants-histamine-intolerance-pilot-2024
   location: Genetic DAO Score results

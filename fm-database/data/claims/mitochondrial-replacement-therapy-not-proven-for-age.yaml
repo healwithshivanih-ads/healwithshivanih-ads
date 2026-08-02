@@ -10,6 +10,8 @@ linked_to_topics:
 - egg-quality
 linked_to_mechanisms:
 - oocyte-mitochondrial-dysfunction
+linked_to_symptoms:
+- infertility
 sources:
 - id: eyvazzadeh-palter-egg-whisperer-2024
   location: minute 10:00 — Palter on MRT for age

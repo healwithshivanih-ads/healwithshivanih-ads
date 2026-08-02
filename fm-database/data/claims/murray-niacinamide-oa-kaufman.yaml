@@ -27,6 +27,8 @@ linked_to_supplements:
 - niacinamide
 out_of_scope_notes: 1g tid niacinamide requires physician oversight + LFT monitoring.
   Coach role — education + ensure prescriber is involved.
+linked_to_symptoms:
+- elevated-liver-enzymes
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 80 — Osteoarthritis, Treatment Summary pg 1324

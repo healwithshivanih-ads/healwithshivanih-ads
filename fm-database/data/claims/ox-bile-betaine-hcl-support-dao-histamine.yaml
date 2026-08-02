@@ -17,6 +17,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - ox-bile
 - betaine-hcl
+linked_to_symptoms:
+- bloating
 sources:
 - id: dirty-genes-lynch
   location: 'Chapter 15: Spot Cleaning Your DAO'

@@ -28,6 +28,8 @@ linked_to_mechanisms:
 - bdnf-upregulation
 linked_to_supplements:
 - turmeric
+linked_to_symptoms:
+- low-mood
 sources:
 - id: pubmed-26610378
   location: 'The Role of Curcumin Administration in Patients with Major Depressive Disorder: Mini Meta-Analysis

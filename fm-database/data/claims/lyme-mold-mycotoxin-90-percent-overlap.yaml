@@ -15,6 +15,11 @@ linked_to_topics:
 - immune-dysregulation
 linked_to_mechanisms:
 - chronic-inflammation
+linked_to_symptoms:
+- poor-concentration
+- autoimmune-flares-low-immunity
+- joint-pain
+- brain-fog
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — mold + Lyme overlap segment

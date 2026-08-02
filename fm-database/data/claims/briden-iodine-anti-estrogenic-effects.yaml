@@ -20,6 +20,9 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - iodine
+linked_to_symptoms:
+- fibrocystic-breasts
+- breast-tenderness
 sources:
 - id: briden-blog-iodine-breast-pain-ovarian-cysts-pms
   location: Blog post — Iodine for women's health section

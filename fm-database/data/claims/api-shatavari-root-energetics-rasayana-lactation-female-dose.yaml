@@ -35,6 +35,10 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 linked_to_supplements:
 - shatavari
+linked_to_symptoms:
+- rectal-bleeding
+- hematuria
+- hoarse-voice
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: SHATAVARI (Root), API Part I, Volume IV, monograph no. 50, p. 122–123 (https://naturalingredient.org/wp/wp-content/uploads/API-Vol-4.pdf)

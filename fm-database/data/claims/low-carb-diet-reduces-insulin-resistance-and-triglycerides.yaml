@@ -19,6 +19,8 @@ caveats:
   be personalised; clinician input recommended for patients on diabetes medications.
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-cvs-risk-assessment
   location: Low Carbohydrate Diet (Slide 20)

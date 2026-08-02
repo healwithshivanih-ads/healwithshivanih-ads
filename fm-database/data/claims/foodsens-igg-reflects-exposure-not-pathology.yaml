@@ -22,6 +22,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - immune-food-reactivity
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fmca-m11-food-sensitivity
   location: Types of testing — IgG antibody

@@ -21,6 +21,10 @@ linked_to_supplements:
 - probiotics
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
+- low-mood
+- anxiety
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: The Anti-Stress Hormones (p.22)

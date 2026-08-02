@@ -10,6 +10,11 @@ linked_to_topics:
 - insulin-resistance
 - pcos
 - egg-quality
+linked_to_symptoms:
+- insulin-resistance
+- energy-crashes
+- sugar-cravings
+- inflammation
 sources:
 - id: sklar-fertility-expert-90-day-egg-quality
   location: Episode body — pillar one

@@ -9,6 +9,8 @@ evidence_tier: fm_specific_thin
 linked_to_topics:
 - candida-overgrowth
 - preconception-protocol
+linked_to_symptoms:
+- intestinal-dysbiosis-symptoms
 sources:
 - id: sklar-fertility-expert-42-low-amh
   location: Episode body — Candida protocol timing

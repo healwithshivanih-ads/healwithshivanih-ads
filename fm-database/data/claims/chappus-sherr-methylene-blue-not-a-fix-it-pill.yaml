@@ -10,6 +10,8 @@ statement: Methylene blue is mitochondrial SUPPORT, not a permanent fix. If clie
 evidence_tier: plausible_emerging
 linked_to_topics:
 - mitochondrial-health-nutrients
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: sherr-chappus-94pct-mitochondrial-2026
   location: Podcast — dependence + framework segment

@@ -16,6 +16,9 @@ linked_to_topics:
 - autoimmunity-leaky-gut-triad
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- irritable-bowel
+- gut-inflammation
 sources:
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Calprotectin

@@ -28,6 +28,8 @@ linked_to_mechanisms:
 - cholinergic-anti-inflammatory-pathway
 linked_to_supplements:
 - bacopa-monnieri
+linked_to_symptoms:
+- anxiety
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: Brahmi (Bacopa monnieri), API Part I, Vol IV, Ayurvedic Pharmacopoeia of India, Govt of India

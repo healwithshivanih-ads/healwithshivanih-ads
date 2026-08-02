@@ -27,6 +27,11 @@ linked_to_topics:
 - low-stomach-acid
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- bloating
+- acid-reflux-heartburn
+- headaches
+- indigestion
 sources:
 - id: coach-shivani
   location: Acidity-triggered headaches pattern (clinical synthesis, 2026-06)

@@ -31,6 +31,8 @@ linked_to_supplements:
 linked_to_mechanisms: []
 out_of_scope_notes: Liver enzyme monitoring is clinician scope. Coach role — educate
   about the titration protocol and ensure client has a prescriber overseeing labs.
+linked_to_symptoms:
+- elevated-liver-enzymes
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1085–1086

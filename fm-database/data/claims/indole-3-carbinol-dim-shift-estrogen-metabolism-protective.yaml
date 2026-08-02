@@ -30,6 +30,8 @@ linked_to_supplements:
 - indole-3-carbinol
 - dim
 out_of_scope_notes: ''
+linked_to_symptoms:
+- fibrocystic-breasts
 sources:
 - id: pizzorno-reproductive
   location: Uterine Fibroids — I3C/DIM/Brassica (pp 940)

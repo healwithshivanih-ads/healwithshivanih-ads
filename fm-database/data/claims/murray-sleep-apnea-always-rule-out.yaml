@@ -40,6 +40,9 @@ linked_to_mechanisms: []
 out_of_scope_notes: Sleep study referral + CPAP titration + surgical consideration
   are clinician scope. Coach role — screening, referral, weight-loss support, avoid
   sedating supplements until ruled out.
+linked_to_symptoms:
+- daytime-sleepiness
+- poor-concentration
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia, pg 1178–1179

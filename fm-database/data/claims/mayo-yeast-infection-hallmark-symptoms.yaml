@@ -9,6 +9,8 @@ linked_to_topics:
 - chronic-candidiasis
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- vaginal-itching
 sources:
 - id: mayoclinic-yeast-infection-2026
   location: Mayo Clinic page — Symptoms

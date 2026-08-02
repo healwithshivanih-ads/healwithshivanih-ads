@@ -29,6 +29,8 @@ linked_to_supplements:
 - psyllium
 - psyllium-husk
 - probiotics
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 10 — Digestion, Quick Review pg 237

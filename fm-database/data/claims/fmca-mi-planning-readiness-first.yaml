@@ -5,6 +5,8 @@ statement: Planning is co-created only when the client shows commitment language
 evidence_tier: strong
 linked_to_topics:
 - mi-four-processes
+linked_to_symptoms:
+- resistance-to-change
 sources:
 - id: fmca-m2-mi-planning-lanier
   location: Planning transcript

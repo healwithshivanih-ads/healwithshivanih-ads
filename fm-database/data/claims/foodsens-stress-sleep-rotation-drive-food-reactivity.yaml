@@ -24,6 +24,8 @@ linked_to_mechanisms:
 - leaky-gut
 - tight-junction-dysfunction
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: fmca-m11-food-sensitivity
   location: Root causes and rotation

@@ -16,6 +16,9 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- low-mood
 sources:
 - id: vitaone-gut-toolkit
   location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Fiber-Rich Foods'

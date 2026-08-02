@@ -16,6 +16,8 @@ linked_to_topics:
 - hypertension
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'

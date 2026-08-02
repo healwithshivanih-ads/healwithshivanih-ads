@@ -22,6 +22,8 @@ linked_to_topics:
 linked_to_supplements:
 - curcumin
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'

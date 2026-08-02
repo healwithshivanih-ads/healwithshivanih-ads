@@ -21,6 +21,9 @@ linked_to_mechanisms:
 - parasympathetic-activation
 - sympathetic-dominance
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
+- hot-flashes
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 26 - Stress Management Techniques (opening case + pranayama section)

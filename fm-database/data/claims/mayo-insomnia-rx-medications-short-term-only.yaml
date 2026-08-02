@@ -8,6 +8,8 @@ linked_to_topics:
 - insomnia
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- sleep-medication-dependence
 sources:
 - id: mayoclinic-insomnia-2026
   location: Mayo Clinic page — Prescription sleeping pills

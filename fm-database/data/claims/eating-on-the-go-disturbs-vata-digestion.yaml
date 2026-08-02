@@ -22,6 +22,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - parasympathetic-activation
 linked_to_supplements: []
+linked_to_symptoms:
+- constipation
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: Fall Recipes — Eating on the Go

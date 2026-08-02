@@ -8,6 +8,8 @@ evidence_tier: strong
 linked_to_topics:
 - insulin-resistance
 - midlife-weight-gain
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 5 — Testing for insulin resistance, pg 103–104

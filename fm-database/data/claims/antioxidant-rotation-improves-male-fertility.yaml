@@ -26,6 +26,8 @@ linked_to_supplements:
 - vitamin-c
 - zinc
 linked_to_mechanisms: []
+linked_to_symptoms:
+- infertility-male
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXoqNqijE3d/

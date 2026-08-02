@@ -25,6 +25,8 @@ linked_to_supplements:
 - activated-charcoal
 out_of_scope_notes: Coaching scope = refer to ER / Poison Control. Never coach acute
   poisoning management.
+linked_to_symptoms:
+- constipation
 sources:
 - id: notebooklm-activated-charcoal-2026
   location: Section 2 — Time Window

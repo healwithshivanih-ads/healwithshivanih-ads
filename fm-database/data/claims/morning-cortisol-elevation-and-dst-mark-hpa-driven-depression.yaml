@@ -23,6 +23,8 @@ linked_to_mechanisms:
 - tryptophan-kynurenine-shunt
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- low-mood
 sources:
 - id: pizzorno-affective-disorders
   location: Affective Disorders — Stress and Adrenal Function (pp 14-15)

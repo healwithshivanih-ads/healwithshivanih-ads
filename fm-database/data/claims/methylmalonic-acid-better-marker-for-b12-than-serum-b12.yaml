@@ -17,6 +17,8 @@ linked_to_topics:
 - nutritional-deficiency-screening
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-mcv
 sources:
 - id: coconote-fm-body-composition-bmi
   location: Nutritional Deficiency / Biomarkers Section

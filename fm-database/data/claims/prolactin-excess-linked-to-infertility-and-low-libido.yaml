@@ -13,6 +13,8 @@ linked_to_supplements:
 - vitamin-b6
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- infertility
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 5

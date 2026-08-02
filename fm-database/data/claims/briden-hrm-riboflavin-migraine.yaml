@@ -6,6 +6,8 @@ statement: Vitamin B2 (riboflavin) 200 mg twice daily reduces migraine frequency
 evidence_tier: strong
 linked_to_topics:
 - migraine-headache
+linked_to_symptoms:
+- migraine
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 7 — Vitamin B2, pg 173

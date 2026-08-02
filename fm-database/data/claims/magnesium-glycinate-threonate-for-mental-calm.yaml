@@ -18,6 +18,9 @@ linked_to_supplements:
 - magnesium-glycinate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- constipation
+- anxiety
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Magnesium – The Calming Mineral

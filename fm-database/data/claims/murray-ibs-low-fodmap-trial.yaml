@@ -8,6 +8,8 @@ evidence_tier: strong
 linked_to_topics:
 - ibs
 - irritable-bowel-syndrome
+linked_to_symptoms:
+- abdominal-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 72 — Irritable Bowel Syndrome, pg 1195-1196

@@ -9,6 +9,9 @@ statement: 'Testosterone therapy in women helps ~50% for libido / clitoral sensi
 evidence_tier: confirm_with_clinician
 linked_to_topics:
 - menopausal-hormone-therapy
+linked_to_symptoms:
+- insulin-resistance
+- hair-loss
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 6 — Testosterone, pg 142–143

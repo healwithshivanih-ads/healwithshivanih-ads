@@ -21,6 +21,10 @@ linked_to_topics:
 - pcos-inflammatory
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- joint-pain
+- eczema-psoriasis-skin
 sources:
 - id: briden-blog-pcos-4-types-flowchart
   location: Blog post — Step 4 Inflammatory PCOS section

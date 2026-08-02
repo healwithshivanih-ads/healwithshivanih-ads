@@ -31,6 +31,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - omega-3-fatty-acids-hormone-membrane
 - fish-oil-omega-3
+linked_to_symptoms:
+- facial-hair
 sources:
 - id: romm-pcos-herbs-supplements-website
   location: Omega-3 Fatty Acids section

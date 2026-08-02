@@ -13,6 +13,9 @@ linked_to_mechanisms:
 - insulin-resistance
 linked_to_supplements:
 - myo-inositol
+linked_to_symptoms:
+- insulin-resistance
+- inflammation
 sources:
 - id: eyvazzadeh-palter-egg-whisperer-2024
   location: minute 25:00 — Palter on Heather (46-egg PCOS case)

@@ -31,6 +31,8 @@ linked_to_mechanisms:
 - sibo-dysbiosis
 - nutrient-malabsorption
 linked_to_supplements: []
+linked_to_symptoms:
+- bloating
 sources:
 - id: fmca-m11-gut-stool-biomarkers-hanaway
   location: Products of protein breakdown / putrefactive SCFAs

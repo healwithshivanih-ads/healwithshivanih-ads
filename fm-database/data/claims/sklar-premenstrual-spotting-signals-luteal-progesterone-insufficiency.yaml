@@ -9,6 +9,8 @@ linked_to_topics:
 - low-progesterone
 - luteal-phase-defect
 - female-infertility
+linked_to_symptoms:
+- short-luteal-phase
 sources:
 - id: sklar-fertility-expert-5-hidden-reasons
   location: Episode body — hidden reason 5

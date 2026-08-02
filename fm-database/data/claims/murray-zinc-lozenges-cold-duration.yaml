@@ -27,6 +27,8 @@ linked_to_topics:
 - immune-support
 linked_to_supplements:
 - zinc
+linked_to_symptoms:
+- upper-respiratory-symptoms
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 39 — Common Cold, Treatment Summary pg 697

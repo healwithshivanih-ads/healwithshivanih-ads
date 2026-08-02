@@ -22,6 +22,9 @@ linked_to_mechanisms:
 - gag-layer-arterial-endothelium-damage
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- dyslipidemia
+- elevated-blood-pressure
 sources:
 - id: pizzorno-atherosclerosis
   location: Atherosclerosis — Association of Risk Factors with Incidence (pp 85)

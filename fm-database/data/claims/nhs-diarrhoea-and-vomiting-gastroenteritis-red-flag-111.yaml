@@ -6,6 +6,8 @@ statement: Call NHS 111 for any worry about a baby under 12 months, a baby who s
 evidence_tier: strong
 linked_to_topics:
 - microbiome
+linked_to_symptoms:
+- rectal-bleeding
 sources:
 - id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
   location: 'NHS page — Urgent advice: Call 111 now section'

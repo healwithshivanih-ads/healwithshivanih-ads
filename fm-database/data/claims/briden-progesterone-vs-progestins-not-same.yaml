@@ -21,6 +21,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - natural-progesterone-cream
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: briden-blog-troubleshooting-progesterone
   location: Blog post — How is progesterone different from progestins section

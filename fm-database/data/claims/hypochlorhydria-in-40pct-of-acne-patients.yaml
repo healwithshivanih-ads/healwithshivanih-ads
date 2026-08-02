@@ -27,6 +27,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - betaine-hcl
 out_of_scope_notes: ''
+linked_to_symptoms:
+- bloating
 sources:
 - id: pizzorno-acne
   location: Acne Vulgaris — Other Considerations (pp 5-6)

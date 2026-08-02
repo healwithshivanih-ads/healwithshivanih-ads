@@ -13,6 +13,8 @@ linked_to_topics:
 - irritable-bowel-syndrome
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- gut-inflammation
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Inflamed guts may worsen on high fibre; start low (~10 g/day in IBD flare)

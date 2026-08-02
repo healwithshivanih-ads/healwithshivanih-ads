@@ -6,6 +6,9 @@ statement: 'Therapeutic food plan selection is driver-based: Core = general, Car
 evidence_tier: plausible_emerging
 linked_to_topics:
 - ifm-core-food-plan
+linked_to_symptoms:
+- insulin-resistance
+- elevated-cholesterol
 sources:
 - id: fmca-m3-navigating-therapeutic-food-plans-class
   location: Navigating Food Plans transcript

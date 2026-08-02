@@ -17,6 +17,10 @@ linked_to_supplements:
 - vitamin-c
 - phosphatidylserine
 linked_to_mechanisms: []
+linked_to_symptoms:
+- autoimmune-flares-low-immunity
+- low-mood
+- burnout
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: Functional Medicine Integration Tips (p.23)

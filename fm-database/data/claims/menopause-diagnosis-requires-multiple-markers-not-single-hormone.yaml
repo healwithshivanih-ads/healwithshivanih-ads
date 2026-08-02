@@ -19,6 +19,8 @@ linked_to_topics:
 - perimenopause
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: coconote-fm-sex-hormones
   location: Diagnosis of Menopause

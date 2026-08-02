@@ -7,6 +7,8 @@ linked_to_topics:
 - hemorrhoids
 - constipation
 - fiber-gap
+linked_to_symptoms:
+- rectal-bleeding
 sources:
 - id: nhs-haemorrhoids-piles-2026
   location: NHS page — Urgent advice + Immediate action sections

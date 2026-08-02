@@ -23,6 +23,9 @@ linked_to_mechanisms:
 - chronic-inflammation
 linked_to_supplements:
 - guggul
+linked_to_symptoms:
+- elevated-cholesterol
+- elevated-triglycerides
 sources:
 - id: who-monographs-selected-medicinal-plants
   location: Gummi Gugguli, WHO Monographs on Selected Medicinal Plants Vol 3, p. 169 (https://apps.who.int/iris/bitstream/handle/10665/42052/9789241547024_eng.pdf)

@@ -17,6 +17,9 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- migraine
+- anxiety
 sources:
 - id: vitaone-health-coaching-toolkit
   location: MIGRAINE / HEADACHE — 9. Extended Exhale Breathing

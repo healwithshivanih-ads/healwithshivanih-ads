@@ -18,6 +18,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - chasteberry
+linked_to_symptoms:
+- breast-tenderness
 sources:
 - id: briden-blog-vitex-for-period-problems
   location: Blog post — How does vitex work section

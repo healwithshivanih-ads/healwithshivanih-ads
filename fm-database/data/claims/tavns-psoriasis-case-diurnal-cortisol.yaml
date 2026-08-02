@@ -10,6 +10,8 @@ linked_to_topics:
 - hpa-axis-dysregulation
 linked_to_mechanisms:
 - nts-to-pvn-cortisol-suppression
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: cuberos-2025-tavns-cortisol
   location: case report section

@@ -14,6 +14,9 @@ linked_to_topics:
 - chronic-fatigue-syndrome
 linked_to_mechanisms:
 - chronic-inflammation
+linked_to_symptoms:
+- inflammation
+- chronic-pain
 sources:
 - id: murray-energy-blueprint-podcast-2026
   location: Podcast — NSAIDs and resolvins segment

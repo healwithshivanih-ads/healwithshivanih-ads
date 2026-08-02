@@ -9,6 +9,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - pre-ivf-root-cause-workup
 - chronic-inflammation
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: sklar-fertility-expert-5-ivf-root-cause-tests
   location: Episode body — immune panel section

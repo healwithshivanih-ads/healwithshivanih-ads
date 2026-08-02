@@ -17,6 +17,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - fish-oil-epa-dha
 - omega-3
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fmca-m11-genetics-epigenetics-joffe
   location: Q&A — omega-3 epigenetics

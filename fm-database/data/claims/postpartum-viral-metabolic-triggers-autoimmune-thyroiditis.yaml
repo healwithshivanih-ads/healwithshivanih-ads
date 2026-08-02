@@ -28,6 +28,10 @@ linked_to_mechanisms:
 - thyroid-autoimmunity
 - molecular-mimicry
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
+- inflammation
+- recurrent-miscarriage
 sources:
 - id: coach-shivani
   location: Triggers/unmaskers of autoimmune thyroiditis (clinical synthesis, 2026-06)

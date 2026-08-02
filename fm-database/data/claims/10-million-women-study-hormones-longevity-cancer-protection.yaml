@@ -24,6 +24,8 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- poor-concentration
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: 10 Million Women NIH Study

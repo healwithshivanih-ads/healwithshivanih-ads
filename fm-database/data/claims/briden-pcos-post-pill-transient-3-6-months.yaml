@@ -21,6 +21,8 @@ linked_to_topics:
 - hormonal-birth-control-withdrawal
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: briden-blog-pcos-4-types-flowchart
   location: Blog post — Step 3 Post-pill PCOS section

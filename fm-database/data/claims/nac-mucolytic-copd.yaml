@@ -7,6 +7,8 @@ statement: N-acetylcysteine (NAC) 200 mg three times daily is a clinically prove
 evidence_tier: strong
 linked_to_topics:
 - copd
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 38 — COPD, pg 682-686

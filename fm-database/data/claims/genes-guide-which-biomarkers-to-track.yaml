@@ -16,6 +16,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - methylation-cycle
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: fmca-m11-genetics-epigenetics-joffe
   location: Mary case — precision testing

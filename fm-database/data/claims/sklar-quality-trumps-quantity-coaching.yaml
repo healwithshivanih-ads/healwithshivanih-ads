@@ -10,6 +10,8 @@ linked_to_topics:
 - egg-quality
 - low-amh-natural-conception
 - diminished-ovarian-reserve
+linked_to_symptoms:
+- inflammation
 sources:
 - id: sklar-fertility-expert-egg-quality-over-40
   location: Episode body — quality vs quantity section

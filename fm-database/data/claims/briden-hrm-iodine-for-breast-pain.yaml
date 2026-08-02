@@ -9,6 +9,9 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - genitourinary-syndrome-menopause
 - menopausal-hormone-therapy
+linked_to_symptoms:
+- fibrocystic-breasts
+- breast-tenderness
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 9 — Iodine for breast pain + Sasha & Mia stories, pg 252, 136,

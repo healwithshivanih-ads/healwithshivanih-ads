@@ -13,6 +13,8 @@ linked_to_topics:
 - sleep
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- abdominal-pain
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Rotating shift work is associated with IBS and abdominal pain independent

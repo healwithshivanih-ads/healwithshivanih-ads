@@ -11,6 +11,9 @@ linked_to_topics:
 - iodine-excess-and-autoimmune-thyroid
 linked_to_mechanisms:
 - mitochondrial-dysfunction
+linked_to_symptoms:
+- chronic-fatigue
+- brain-fog
 sources:
 - id: christianson-energy-blueprint-podcast-2026
   location: Podcast — oats segment

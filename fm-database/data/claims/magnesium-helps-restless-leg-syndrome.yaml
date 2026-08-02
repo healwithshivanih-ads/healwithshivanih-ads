@@ -17,6 +17,8 @@ linked_to_supplements:
 - magnesium-citrate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- muscle-cramps
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Musculoskeletal system

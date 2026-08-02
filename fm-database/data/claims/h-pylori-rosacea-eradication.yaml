@@ -9,6 +9,8 @@ evidence_tier: strong
 linked_to_topics:
 - rosacea
 - h-pylori-infection
+linked_to_symptoms:
+- flushing
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 90 — Rosacea, pg 1493-1495

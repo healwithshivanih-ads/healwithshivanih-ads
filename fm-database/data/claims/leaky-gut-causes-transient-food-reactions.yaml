@@ -13,6 +13,9 @@ linked_to_topics:
 linked_to_mechanisms:
 - leaky-gut
 linked_to_supplements: []
+linked_to_symptoms:
+- gut-inflammation
+- food-sensitivities
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Leaky gut produces multiple transient food reactions that resolve after the

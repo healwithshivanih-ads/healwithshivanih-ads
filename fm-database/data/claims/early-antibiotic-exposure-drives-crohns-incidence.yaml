@@ -23,6 +23,8 @@ linked_to_mechanisms:
 - leaky-gut
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
 sources:
 - id: pizzorno-migraine-ibd-candida
   location: Inflammatory Bowel Disease — Antibiotic exposure (pp 550)

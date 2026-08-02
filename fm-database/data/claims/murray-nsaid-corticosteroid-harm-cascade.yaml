@@ -42,6 +42,9 @@ linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: All medication tapering is clinician scope. Coach role — patient
   education on long-term risks + FM strategies to reduce drug requirement over time.
+linked_to_symptoms:
+- bone-loss
+- joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis, pg 1473–1475

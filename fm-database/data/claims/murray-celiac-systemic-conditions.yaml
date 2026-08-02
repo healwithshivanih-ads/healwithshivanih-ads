@@ -10,6 +10,11 @@ statement: Celiac disease and gluten sensitivity are linked to 55 distinct condi
 evidence_tier: strong
 linked_to_topics:
 - celiac-disease
+linked_to_symptoms:
+- dermatitis-herpetiformis
+- gut-inflammation
+- food-sensitivities
+- bone-loss
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 34 — Celiac Disease, pg 637-638

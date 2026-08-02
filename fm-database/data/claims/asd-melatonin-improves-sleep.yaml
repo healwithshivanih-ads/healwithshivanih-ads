@@ -9,6 +9,8 @@ linked_to_topics:
 - autism-spectrum-disorder
 linked_to_supplements:
 - melatonin
+linked_to_symptoms:
+- insomnia
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 26 — Autism Spectrum Disorder, pg 555-556

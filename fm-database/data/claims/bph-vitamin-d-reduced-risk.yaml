@@ -16,6 +16,9 @@ linked_to_supplements:
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
+- decreased-sexual-function
 sources:
 - id: pizzorno-textbook-gi-2
   location: Benign Prostatic Hyperplasia — Vitamin D

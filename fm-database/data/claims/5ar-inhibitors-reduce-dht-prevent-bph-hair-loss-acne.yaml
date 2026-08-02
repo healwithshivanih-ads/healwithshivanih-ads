@@ -22,6 +22,8 @@ linked_to_supplements:
 - fish-oil-omega-3
 - beta-sitosterol
 linked_to_mechanisms: []
+linked_to_symptoms:
+- facial-hair
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'

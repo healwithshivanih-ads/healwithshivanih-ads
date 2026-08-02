@@ -33,6 +33,9 @@ linked_to_supplements:
 linked_to_mechanisms: []
 out_of_scope_notes: Drug-interaction screening is clinician scope. Coach role — refer
   for full medication review before any St John's Wort recommendation.
+linked_to_symptoms:
+- low-mood
+- headaches
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome, pg 1414–1415

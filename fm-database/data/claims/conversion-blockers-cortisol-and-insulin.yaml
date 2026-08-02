@@ -16,6 +16,9 @@ linked_to_topics:
 linked_to_mechanisms:
 - cortisol-elevation
 - insulin-resistance
+linked_to_symptoms:
+- insulin-resistance
+- stress
 sources:
 - id: hornaman-energy-blueprint-podcast-2026
   location: Podcast — T4 conversion segment

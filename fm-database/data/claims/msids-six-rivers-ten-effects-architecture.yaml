@@ -23,6 +23,10 @@ linked_to_mechanisms:
 - mitochondrial-dysfunction
 - hpa-axis-dysregulation
 - leaky-gut
+linked_to_symptoms:
+- hormonal-disruption
+- chronic-fatigue
+- inflammation
 sources:
 - id: horowitz-energy-blueprint-podcast-2026
   location: Podcast — MSIDS model overview

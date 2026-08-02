@@ -26,6 +26,8 @@ linked_to_topics:
 - pcos-insulin-resistant
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: coconote-fm-estrogen-dominance
   location: Luteal Phase Defect

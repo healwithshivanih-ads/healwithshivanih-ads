@@ -18,6 +18,8 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- low-serum-calcium
 sources:
 - id: coconote-fm-calcium-deficiency
   location: Causes of Low Serum Calcium

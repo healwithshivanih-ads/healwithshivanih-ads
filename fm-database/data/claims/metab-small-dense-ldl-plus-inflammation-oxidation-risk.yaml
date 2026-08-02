@@ -27,6 +27,9 @@ linked_to_mechanisms:
 - ldl-oxidation
 - systemic-inflammation-cv
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- elevated-hscrp
 sources:
 - id: fmca-m11-metabolic-health-labs-saxena
   location: Cardiovascular labs — small-dense LDL and hsCRP

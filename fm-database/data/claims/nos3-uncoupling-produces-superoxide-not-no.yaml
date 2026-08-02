@@ -18,6 +18,9 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- elevated-homocysteine
 sources:
 - id: dirty-genes-lynch
   location: Chapter 10 — The Arginine Steal

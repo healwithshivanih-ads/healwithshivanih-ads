@@ -10,6 +10,8 @@ linked_to_topics:
 - irritable-bowel-syndrome
 - food-intolerance
 - elimination-diet
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 72 — Irritable Bowel Syndrome, pg 1194-1195

@@ -22,6 +22,8 @@ linked_to_mechanisms:
 - molecular-mimicry
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- hair-loss
 sources:
 - id: pizzorno-womens-trio
   location: Hair Loss in Women — Antigliadin Antibodies (pp 360)

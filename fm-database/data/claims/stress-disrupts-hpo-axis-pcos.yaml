@@ -17,6 +17,8 @@ linked_to_supplements:
 - pyridoxal-5-phosphate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- infertility
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: Stress & Chronic Diseases Link (p.9)

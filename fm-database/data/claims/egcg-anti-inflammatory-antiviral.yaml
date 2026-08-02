@@ -18,6 +18,8 @@ caveats:
 - COVID-19 replication targeting is primarily in silico evidence.
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'

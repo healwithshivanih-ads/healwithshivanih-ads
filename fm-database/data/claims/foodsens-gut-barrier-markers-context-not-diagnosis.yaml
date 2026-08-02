@@ -26,6 +26,9 @@ linked_to_mechanisms:
 - dysbiosis
 - leaky-gut
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
+- inflammation
 sources:
 - id: fmca-m11-food-sensitivity
   location: Gut-barrier panel markers

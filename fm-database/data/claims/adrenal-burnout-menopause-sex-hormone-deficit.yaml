@@ -23,6 +23,11 @@ linked_to_mechanisms:
 - cortisol-elevation
 - age-related-progesterone-decline
 linked_to_supplements: []
+linked_to_symptoms:
+- menopause-symptoms
+- stress
+- bone-loss
+- burnout
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 5 - Understanding How Yin and Yang Hormones Interact

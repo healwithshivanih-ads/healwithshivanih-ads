@@ -25,6 +25,8 @@ linked_to_mechanisms:
 - anti-inflammatory-signaling
 linked_to_supplements:
 - guggul
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: pubmed-38284718
   location: 'Exploring the Promising Role of Guggulipid in Rheumatoid Arthritis Management: An Evidence-Based

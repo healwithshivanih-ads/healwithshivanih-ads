@@ -8,6 +8,8 @@ evidence_tier: strong
 linked_to_topics:
 - preconception-protocol
 - egg-quality
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 5 — Prenatal Multivitamins, pg 83-84; Chapter 11, pg 156-157

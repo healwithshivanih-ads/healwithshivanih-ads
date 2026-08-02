@@ -8,6 +8,9 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - female-infertility
 - pre-ivf-root-cause-workup
+linked_to_symptoms:
+- primary-infertility
+- inflammation
 sources:
 - id: sklar-fertility-expert-5-hidden-reasons
   location: Episode body — opening framing

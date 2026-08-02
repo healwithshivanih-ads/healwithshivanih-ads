@@ -12,6 +12,11 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - sixteen-nails-fatigue-framework
 - chronic-fatigue-syndrome
+linked_to_symptoms:
+- shortness-of-breath
+- low-mood
+- brain-fog
+- headaches
 sources:
 - id: hirsch-energy-blueprint-podcast-2026
   location: Podcast — symptom fingerprints segment

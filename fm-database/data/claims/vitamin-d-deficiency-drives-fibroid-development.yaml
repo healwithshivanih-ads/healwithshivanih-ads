@@ -20,6 +20,8 @@ linked_to_supplements:
 - vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: coconote-fm-estrogen-dominance
   location: Management of Estrogen Dominance

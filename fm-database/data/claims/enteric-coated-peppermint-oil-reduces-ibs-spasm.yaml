@@ -19,6 +19,9 @@ linked_to_supplements:
 - peppermint-oil
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- abdominal-pain
+- bloating
 sources:
 - id: pizzorno-textbook-gi
   location: IBS — Botanical Medicines — Enteric-Coated Volatile Oils

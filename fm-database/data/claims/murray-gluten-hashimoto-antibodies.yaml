@@ -25,6 +25,8 @@ linked_to_topics:
 linked_to_supplements: []
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 68 — Hypothyroidism, Treatment Summary pg 1136

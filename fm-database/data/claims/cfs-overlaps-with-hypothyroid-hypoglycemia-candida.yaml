@@ -27,6 +27,11 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- chronic-fatigue
+- food-sensitivities
+- hypoglycemia-symptoms
+- low-mood
 sources:
 - id: pizzorno-energy-cluster
   location: Chronic Fatigue Syndrome — Causes (pp 215-216)

@@ -11,6 +11,8 @@ evidence_tier: confirm_with_clinician
 linked_to_topics:
 - sarcopenia-skeletal-muscle-loss
 - strength-training
+linked_to_symptoms:
+- bone-loss
 sources:
 - id: lyon-energy-blueprint-podcast-2026
   location: Podcast — GLP-1 segment

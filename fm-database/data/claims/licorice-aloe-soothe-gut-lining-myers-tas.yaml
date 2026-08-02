@@ -12,6 +12,8 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_topics: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: amy-myers-autoimmune-solution
   location: Chapter 4

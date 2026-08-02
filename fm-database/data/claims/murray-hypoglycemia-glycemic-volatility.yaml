@@ -11,6 +11,11 @@ linked_to_topics:
 - hypoglycemia
 - insulin-resistance
 - metabolic-syndrome
+linked_to_symptoms:
+- hypoglycemia-symptoms
+- insulin-resistance
+- palpitations
+- mood-swings
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 67 — Hypoglycemia, pg 1113-1115

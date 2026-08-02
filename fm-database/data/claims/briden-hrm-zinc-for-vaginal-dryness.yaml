@@ -8,6 +8,9 @@ statement: Oral zinc 30 mg with food can significantly improve vaginal dryness i
 evidence_tier: plausible_emerging
 linked_to_topics:
 - genitourinary-syndrome-menopause
+linked_to_symptoms:
+- vaginal-dryness
+- urinary-tract-infections
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 10 — Zinc + Vaginal probiotic + D-mannose, pg 260–261

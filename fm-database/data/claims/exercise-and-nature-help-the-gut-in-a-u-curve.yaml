@@ -12,6 +12,8 @@ linked_to_topics:
 - gut-microbiome
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- autoimmune-flares-low-immunity
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: Exercise and nature improve microbial diversity and immunity, but overtraining

@@ -19,6 +19,9 @@ linked_to_supplements:
 - ashwagandha
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- elevated-blood-pressure
+- anxiety
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 4

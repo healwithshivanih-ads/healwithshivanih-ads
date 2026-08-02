@@ -19,6 +19,9 @@ linked_to_topics:
 - endometriosis
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- pelvic-pain
+- urinary-tract-infections
 sources:
 - id: briden-blog-endometriosis-microbiome-story
   location: Blog post — Hidden causes section

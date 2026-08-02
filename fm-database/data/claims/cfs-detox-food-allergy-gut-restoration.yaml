@@ -15,6 +15,9 @@ linked_to_topics:
 - immune-dysregulation
 linked_to_mechanisms:
 - leaky-gut
+linked_to_symptoms:
+- chronic-fatigue
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 37 — Chronic Fatigue Syndrome, pg 667-678

@@ -27,6 +27,10 @@ linked_to_topics:
 - autoimmunity-leaky-gut-connection
 - gallstones
 linked_to_supplements: []
+linked_to_symptoms:
+- undigested-food-in-stool
+- abdominal-bloating
+- indigestion
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 10 — Digestion, Quick Review pg 237

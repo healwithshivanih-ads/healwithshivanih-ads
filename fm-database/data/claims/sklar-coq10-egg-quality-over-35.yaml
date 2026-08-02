@@ -16,6 +16,8 @@ linked_to_mechanisms:
 - mitochondrial-dysfunction
 linked_to_supplements:
 - coq10
+linked_to_symptoms:
+- inflammation
 sources:
 - id: sklar-fertility-expert-90-day-egg-quality
   location: Episode body — pillar five

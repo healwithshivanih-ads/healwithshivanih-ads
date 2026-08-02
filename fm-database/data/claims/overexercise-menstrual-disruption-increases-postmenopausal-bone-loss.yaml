@@ -21,6 +21,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - bone-resorption-formation-imbalance
 linked_to_supplements: []
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: welch-balance-your-hormones-2011
   location: 'Chapter 16 - Osteoporosis: Calcium, Diet, and Exercise'

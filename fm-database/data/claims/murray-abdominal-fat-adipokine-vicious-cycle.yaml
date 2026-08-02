@@ -31,6 +31,10 @@ linked_to_topics:
 - chronic-inflammation
 - atherogenic-dyslipidemia
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- insulin-resistance
+- abdominal-obesity
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 16 — Obesity and Weight Management, Quick Review pg 385

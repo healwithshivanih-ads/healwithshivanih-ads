@@ -8,6 +8,8 @@ linked_to_topics:
 
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: mayoclinic-plantar-fasciitis-2026
   location: Mayo Clinic page — Treatment

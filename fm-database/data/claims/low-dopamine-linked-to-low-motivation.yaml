@@ -14,6 +14,8 @@ linked_to_supplements:
 - tyrosine
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-motivation
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 5

@@ -11,6 +11,8 @@ linked_to_topics:
 - joint-pain
 linked_to_supplements:
 - boswellia
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 80 — Osteoarthritis, pg 1316-1317

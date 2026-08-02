@@ -24,6 +24,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - licorice-root
 out_of_scope_notes: ''
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: pizzorno-skin-trio
   location: Atopic Dermatitis — Licorice topical (pp 117-118)

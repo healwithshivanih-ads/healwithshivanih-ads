@@ -18,6 +18,8 @@ linked_to_mechanisms:
 - catechol-clearance-comt-maoa
 - polygenic-scoring
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: comt-genotype-neuropsychiatric-review-2021
   location: Val158Met kinetics

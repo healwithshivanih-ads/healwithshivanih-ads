@@ -27,6 +27,10 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
+- inflammation
+- eczema-psoriasis-skin
 sources:
 - id: briden-period-repair-manual-2018
   location: Chapter 1 — Meagan case study, pp 5-7

@@ -25,6 +25,8 @@ linked_to_mechanisms:
 - chronic-inflammation
 linked_to_supplements:
 - neem
+linked_to_symptoms:
+- gut-inflammation
 sources:
 - id: ayurvedic-pharmacopoeia-of-india
   location: NIMBA (Leaf), API Part I, Volume II, monograph no. 56 (http://ayurveda.hu/api/API-Vol-2.pdf)

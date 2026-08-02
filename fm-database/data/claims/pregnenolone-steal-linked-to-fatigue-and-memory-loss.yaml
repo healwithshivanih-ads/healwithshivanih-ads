@@ -15,6 +15,9 @@ linked_to_supplements:
 - pregnenolone
 coaching_translation: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
+- poor-concentration
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 24

@@ -9,6 +9,11 @@ linked_to_topics:
 - emotional-wellbeing
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- shortness-of-breath
+- chest-tightness
+- panic-attacks
+- low-mood
 sources:
 - id: mayoclinic-anxiety-2026
   location: Mayo Clinic page — When to see a doctor

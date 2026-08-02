@@ -19,6 +19,8 @@ linked_to_supplements:
 - zinc-carnosine
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- chronic-diarrhea
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 10

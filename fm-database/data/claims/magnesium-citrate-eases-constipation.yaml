@@ -13,6 +13,8 @@ linked_to_supplements:
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- constipation
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Q&A — Supplement Rationale

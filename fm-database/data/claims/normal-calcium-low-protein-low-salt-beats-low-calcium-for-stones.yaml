@@ -22,6 +22,8 @@ linked_to_mechanisms:
 - calcium-oxalate-crystal-formation
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- kidney-stones
 sources:
 - id: pizzorno-oxalate-stones
   location: Kidney Stones — Oxalates (pp 593)

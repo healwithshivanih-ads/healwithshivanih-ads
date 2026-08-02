@@ -17,6 +17,8 @@ linked_to_topics:
 linked_to_supplements:
 - fish-oil-omega-3
 linked_to_mechanisms: []
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Rheumatoid Arthritis Study Slide

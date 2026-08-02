@@ -20,6 +20,8 @@ linked_to_topics:
 linked_to_supplements:
 - tudca
 linked_to_mechanisms: []
+linked_to_symptoms:
+- bloating
 sources:
 - id: thurlow-microbiome-session-6
   location: Session 6 — Main Transcript, Bile Section

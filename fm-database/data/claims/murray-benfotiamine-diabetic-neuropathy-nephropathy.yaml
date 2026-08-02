@@ -32,6 +32,9 @@ linked_to_supplements:
 - benfotiamine
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- elevated-blood-glucose
+- numbness-tingling
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes, Treatment Summary pg 865

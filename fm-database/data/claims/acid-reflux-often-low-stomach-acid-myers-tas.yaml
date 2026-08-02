@@ -17,6 +17,8 @@ caveats:
   need medical evaluation, not self-managed acid support.
 out_of_scope_notes: ''
 linked_to_supplements: []
+linked_to_symptoms:
+- acid-reflux-heartburn
 sources:
 - id: amy-myers-autoimmune-solution
   location: Chapter 4

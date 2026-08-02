@@ -18,6 +18,8 @@ linked_to_supplements:
 - ferrous-sulfate
 - ferrous-fumarate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- constipation
 sources:
 - id: coconote-fm-iron-deficiency-anemia
   location: Supplements / Management section

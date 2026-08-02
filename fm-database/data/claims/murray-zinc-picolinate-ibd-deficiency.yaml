@@ -29,6 +29,8 @@ linked_to_topics:
 linked_to_supplements:
 - zinc
 - zinc-bisglycinate
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 42 — IBD, Treatment Summary pg 742–743

@@ -24,6 +24,11 @@ linked_to_topics:
 linked_to_supplements:
 - cbd-oil
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insomnia
+- chronic-pain
+- inflammation
+- anxiety
 sources:
 - id: coconote-fm-approach-inflammation
   location: Anti-Inflammatory Supplements – CBD Oil

@@ -27,6 +27,8 @@ linked_to_mechanisms:
 - oxidative-stress
 linked_to_supplements:
 - turmeric
+linked_to_symptoms:
+- joint-pain
 sources:
 - id: pubmed-33511486
   location: 'Efficacy and Safety of Turmeric Extracts for the Treatment of Knee Osteoarthritis: a Systematic

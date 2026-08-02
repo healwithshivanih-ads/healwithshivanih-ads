@@ -52,6 +52,8 @@ linked_to_mechanisms:
 - parasympathetic-restoration-failure
 linked_to_supplements:
 - magnesium
+linked_to_symptoms:
+- insomnia
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Magnesium and sleep section

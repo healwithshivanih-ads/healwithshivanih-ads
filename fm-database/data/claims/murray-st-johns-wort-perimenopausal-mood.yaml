@@ -27,6 +27,8 @@ linked_to_supplements:
 linked_to_mechanisms: []
 out_of_scope_notes: Drug-interaction screening is clinician scope. Coach role — refer
   for medication review before recommending.
+linked_to_symptoms:
+- menopause-symptoms
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause, pg 1248–1249

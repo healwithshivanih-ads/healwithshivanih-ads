@@ -29,6 +29,9 @@ linked_to_supplements:
 - ginkgo-biloba
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- edema
+- breast-tenderness
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome, pg 1414

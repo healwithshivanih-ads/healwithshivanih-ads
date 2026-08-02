@@ -15,6 +15,11 @@ linked_to_topics:
 - bhrt
 linked_to_mechanisms:
 - chronic-inflammation
+linked_to_symptoms:
+- edema
+- perimenopause-symptoms
+- stress
+- anxiety
 sources:
 - id: snyder-energy-blueprint-podcast-2026
   location: Podcast — progesterone neurosteroid segment

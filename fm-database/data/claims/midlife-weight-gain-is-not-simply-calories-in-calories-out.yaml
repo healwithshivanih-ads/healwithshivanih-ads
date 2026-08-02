@@ -24,6 +24,9 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- unexplained-weight-gain
+- inflammation
 sources:
 - id: thurlow-microbiome-session-4
   location: 'Session 4 — Q&A: Hysterectomy and Weight Resistance'

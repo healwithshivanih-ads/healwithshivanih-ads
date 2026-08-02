@@ -24,6 +24,8 @@ linked_to_topics:
 - microbiome
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- perimenopause-symptoms
 sources:
 - id: thurlow-microbiome-session-3
   location: Q&A — Autoimmune Conditions in Perimenopause

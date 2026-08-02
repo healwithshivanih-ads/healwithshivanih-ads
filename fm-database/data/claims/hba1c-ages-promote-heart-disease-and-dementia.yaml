@@ -17,6 +17,8 @@ linked_to_topics:
 - cardiovascular-dysfunction
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-health-coaching-toolkit
   location: CVD Risk Analysis — Lab Results

@@ -38,6 +38,8 @@ linked_to_mechanisms:
 - insulin-resistance
 - small-dense-ldl-atherogenesis
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-skill-practice-guide
   location: evidence_tiers.md, Topic 2 Insulin Resistance, claim 4

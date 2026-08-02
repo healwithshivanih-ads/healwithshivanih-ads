@@ -9,6 +9,8 @@ linked_to_topics:
 - cardiovascular-disease-prevention
 - midlife-weight-gain
 - osteoporosis
+linked_to_symptoms:
+- hot-flashes
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 5 — Strengthen your body + Ch 10, pg 136, 284

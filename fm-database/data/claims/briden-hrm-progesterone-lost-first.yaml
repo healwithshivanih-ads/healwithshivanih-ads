@@ -8,6 +8,11 @@ linked_to_topics:
 - second-puberty-perimenopause
 - low-progesterone
 - anovulatory-bleeding
+linked_to_symptoms:
+- irregular-periods
+- perimenopause-symptoms
+- breast-tenderness
+- mood-swings
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 4 — Losing progesterone, pg 73–75

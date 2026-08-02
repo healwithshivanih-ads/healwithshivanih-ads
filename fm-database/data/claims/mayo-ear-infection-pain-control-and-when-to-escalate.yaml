@@ -8,6 +8,8 @@ linked_to_topics:
 - otitis-media
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- dizziness-motion-sickness
 sources:
 - id: mayoclinic-ear-infections-2026
   location: Mayo Clinic page — Treatment

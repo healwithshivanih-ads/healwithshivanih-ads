@@ -12,6 +12,8 @@ linked_to_topics:
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- dyslipidemia
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Understanding Hashimoto's Hypothyroidism — Why is it Important to Address Hashimoto's?

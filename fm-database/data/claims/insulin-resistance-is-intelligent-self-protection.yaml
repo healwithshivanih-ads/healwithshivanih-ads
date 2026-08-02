@@ -13,6 +13,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - structural-cause-of-insulin-resistance
 - insulin-resistance
+linked_to_symptoms:
+- inflammation
 sources:
 - id: leaf-energy-blueprint-podcast-2026
   location: Podcast — intelligent protection segment

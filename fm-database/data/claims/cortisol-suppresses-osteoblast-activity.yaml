@@ -12,6 +12,9 @@ linked_to_topics:
 linked_to_mechanisms:
 - cortisol-bone-suppression
 - cortisol-elevation
+linked_to_symptoms:
+- stress
+- bone-loss
 sources:
 - id: bissinger-energy-blueprint-podcast-2026
   location: Podcast — Cortisol and bone

@@ -8,6 +8,9 @@ linked_to_topics:
 - male-infertility-oxidative-stress
 linked_to_supplements:
 - maca
+linked_to_symptoms:
+- low-mood
+- anxiety
 sources:
 - id: gonzales-2002-maca-sexual-desire-men
   location: Results and Conclusion

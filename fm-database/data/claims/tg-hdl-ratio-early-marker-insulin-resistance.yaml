@@ -21,6 +21,8 @@ linked_to_topics:
 - insulin-resistance-metabolic-syndrome
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX6sbxqDFJ5/

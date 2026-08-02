@@ -17,6 +17,8 @@ linked_to_supplements:
 - chia-seeds
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- constipation
 sources:
 - id: thurlow-microbiome-session-7
   location: Flax and chia recommendation [00:18:57]

@@ -21,6 +21,9 @@ linked_to_topics:
 linked_to_mechanisms:
 - immune-food-reactivity
 linked_to_supplements: []
+linked_to_symptoms:
+- anaphylaxis
+- brain-fog
 sources:
 - id: fmca-m11-food-sensitivity
   location: Case — IgG paired with IgE

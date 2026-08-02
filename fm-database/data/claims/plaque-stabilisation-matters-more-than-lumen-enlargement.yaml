@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - ldl-oxidation
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- inflammation
 sources:
 - id: pizzorno-atherosclerosis
   location: Atherosclerosis — Process of Atherosclerosis (pp 84)

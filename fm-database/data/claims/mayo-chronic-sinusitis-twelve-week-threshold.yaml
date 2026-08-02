@@ -9,6 +9,9 @@ linked_to_topics:
 - bacterial-sinusitis
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- loss-of-taste-and-smell
+- nasal-congestion
 sources:
 - id: mayoclinic-chronic-sinusitis-2026
   location: Mayo Clinic page — Symptoms

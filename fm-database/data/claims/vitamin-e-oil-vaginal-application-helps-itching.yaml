@@ -18,6 +18,8 @@ caveats:
   recommended for ongoing or severe symptoms.
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- vaginal-itching
 sources:
 - id: coach-shivani
   location: Coach Observation

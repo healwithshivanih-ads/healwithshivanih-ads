@@ -14,6 +14,8 @@ linked_to_supplements:
 - fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism — Page 02

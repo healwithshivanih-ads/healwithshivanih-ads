@@ -30,6 +30,10 @@ linked_to_supplements:
 - maca
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- anxiety
+- hot-flashes
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause, pg 1246–1247

@@ -19,6 +19,9 @@ linked_to_topics:
 - perimenopause-window-of-vulnerability
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- irregular-periods
+- perimenopause-symptoms
 sources:
 - id: briden-blog-estrogen-perimenopause-progesterone-help
   location: Blog post — Progesterone quietly exits section

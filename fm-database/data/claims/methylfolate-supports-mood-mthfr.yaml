@@ -22,6 +22,8 @@ linked_to_topics:
 linked_to_supplements:
 - methylfolate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
 sources:
 - id: dirty-genes-lynch
   location: Chapter 1 — Success Stories

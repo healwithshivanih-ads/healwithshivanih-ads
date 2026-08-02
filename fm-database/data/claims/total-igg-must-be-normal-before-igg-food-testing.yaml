@@ -19,6 +19,8 @@ linked_to_topics:
 - food-sensitivity-igg-iga-mediated
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-intolerance-reactions
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: IgG Testing Considerations Section

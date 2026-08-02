@@ -20,6 +20,8 @@ linked_to_topics:
 - cold-water-immersion
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: espeland-2022-cold-water-immersion
   location: Mental Health

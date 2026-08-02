@@ -12,6 +12,8 @@ linked_to_topics:
 linked_to_supplements:
 - lactobacillus-probiotic
 - bifidobacterium-probiotic
+linked_to_symptoms:
+- bloating
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 72 — Irritable Bowel Syndrome, pg 1196-1197

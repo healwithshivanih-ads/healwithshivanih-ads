@@ -8,6 +8,8 @@ linked_to_topics:
 - anxiety
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- anxiety
 sources:
 - id: mayoclinic-anxiety-2026
   location: Mayo Clinic page — Medications

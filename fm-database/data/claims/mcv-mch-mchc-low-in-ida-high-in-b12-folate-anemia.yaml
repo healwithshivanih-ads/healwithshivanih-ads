@@ -19,6 +19,8 @@ linked_to_topics:
 - b12-folate-anemia
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- macrocytic-anemia
 sources:
 - id: coconote-fm-iron-deficiency-anemia
   location: Secondary Biomarkers / MCV-MCH-MCHC section

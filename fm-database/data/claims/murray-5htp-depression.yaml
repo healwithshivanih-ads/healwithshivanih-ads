@@ -28,6 +28,8 @@ linked_to_topics:
 - anxiety
 linked_to_supplements:
 - 5-htp
+linked_to_symptoms:
+- low-mood
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression, Treatment Summary pg 794

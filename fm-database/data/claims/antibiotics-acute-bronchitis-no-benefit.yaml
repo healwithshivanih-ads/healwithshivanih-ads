@@ -8,6 +8,8 @@ statement: Antibiotics provide NO benefit in acute bronchitis (90% of which is v
 evidence_tier: strong
 linked_to_topics:
 - bronchitis-and-pneumonia
+linked_to_symptoms:
+- intestinal-dysbiosis-symptoms
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 29 — Bronchitis and Pneumonia, pg 583

@@ -26,6 +26,10 @@ linked_to_topics:
 - chronic-candidiasis
 - candida-overgrowth
 linked_to_supplements: []
+linked_to_symptoms:
+- brain-fog
+- digestive-discomfort
+- headache
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 30 — Candidiasis Chronic, pg 610–611

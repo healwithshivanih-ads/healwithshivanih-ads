@@ -9,6 +9,8 @@ statement: 'Nurses Health Study II identified diet and lifestyle patterns that e
 evidence_tier: strong
 linked_to_topics:
 - female-infertility
+linked_to_symptoms:
+- infertility
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 69 — Female Infertility, pg 1142-1143

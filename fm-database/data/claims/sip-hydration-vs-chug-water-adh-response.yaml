@@ -10,6 +10,8 @@ statement: Rapid water consumption (chugging) triggers acute volume-driven suppr
 evidence_tier: plausible_emerging
 linked_to_topics:
 - pelvic-floor-dysfunction
+linked_to_symptoms:
+- incontinence
 sources:
 - id: danielson-energy-blueprint-podcast-2026
   location: Podcast — hydration tip close

@@ -13,6 +13,8 @@ linked_to_mechanisms:
 - oocyte-mitochondrial-dysfunction
 linked_to_supplements:
 - dhea
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 9 — DHEA for Diminished Ovarian Reserve, pg 120-134

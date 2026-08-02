@@ -8,6 +8,8 @@ evidence_tier: strong
 linked_to_topics:
 - sperm-quality
 - preconception-protocol
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 12 — Sperm Quality, pg 167-168

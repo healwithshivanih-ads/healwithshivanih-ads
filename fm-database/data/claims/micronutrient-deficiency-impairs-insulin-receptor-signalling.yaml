@@ -20,6 +20,8 @@ linked_to_supplements:
 caveats:
 - Source is FM synthesis; effect size and dose-response require clinician review.
 out_of_scope_notes: ''
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.0.2 — Mechanistic Contributors

@@ -14,6 +14,8 @@ linked_to_topics:
 linked_to_supplements:
 - vitamin-b12
 linked_to_mechanisms: []
+linked_to_symptoms:
+- bloating
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Vitamin B12'

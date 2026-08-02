@@ -13,6 +13,8 @@ linked_to_topics:
 linked_to_supplements:
 - bromelain
 - nattokinase
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 102 — Varicose Veins, pg 1562-1564

@@ -11,6 +11,11 @@ linked_to_topics:
 - adrenal-transformation-protocol
 - hpa-axis-cortisol-regulation
 - perimenopause
+linked_to_symptoms:
+- agitated-depression
+- daytime-fatigue
+- brain-fog
+- anxiety
 sources:
 - id: wentz-energy-blueprint-podcast-2026
   location: Podcast — symptom cluster segment

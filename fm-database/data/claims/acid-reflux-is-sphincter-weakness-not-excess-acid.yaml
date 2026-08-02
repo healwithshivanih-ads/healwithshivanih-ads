@@ -21,6 +21,9 @@ linked_to_topics:
 - meal-timing-and-digestive-rest
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- acid-reflux-heartburn
+- heartburn
 sources:
 - id: barbara-oneil-gi-tract
   location: Stomach & Acid Section

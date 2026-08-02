@@ -14,6 +14,8 @@ out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: pizzorno-textbook-gi-2
   location: Atopic Dermatitis — Food Allergy, Gut Permeability, and Candidal Overgrowth

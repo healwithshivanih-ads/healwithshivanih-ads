@@ -28,6 +28,8 @@ linked_to_supplements:
 - psyllium
 - psyllium-husk
 - dietary-fiber-psyllium
+linked_to_symptoms:
+- constipation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 41 — Constipation, pg 716–719

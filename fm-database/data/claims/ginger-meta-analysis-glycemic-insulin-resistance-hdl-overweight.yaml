@@ -28,6 +28,8 @@ linked_to_mechanisms:
 - oxidative-stress
 linked_to_supplements:
 - ginger
+linked_to_symptoms:
+- excess-body-weight
 sources:
 - id: pubmed-29393665
   location: 'The effects of ginger intake on weight loss and metabolic profiles among overweight and obese

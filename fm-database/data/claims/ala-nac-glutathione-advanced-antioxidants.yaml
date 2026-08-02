@@ -22,6 +22,8 @@ linked_to_supplements:
 - n-acetylcysteine
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: coconote-fm-approach-inflammation
   location: Oxidative Stress – Advanced Antioxidants

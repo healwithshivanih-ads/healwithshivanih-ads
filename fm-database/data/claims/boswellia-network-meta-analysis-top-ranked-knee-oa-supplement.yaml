@@ -26,6 +26,8 @@ linked_to_mechanisms:
 - arachidonic-acid-cascade
 linked_to_supplements:
 - boswellia
+linked_to_symptoms:
+- muscle-aches-joint-pain
 sources:
 - id: pubmed-40806131
   location: 'Comparative Effectiveness of Nutritional Supplements in the Treatment of Knee Osteoarthritis:

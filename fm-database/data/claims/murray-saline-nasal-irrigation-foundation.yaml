@@ -29,6 +29,9 @@ linked_to_topics:
 - immune-support
 - common-cold
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- nasal-congestion
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 92 — Sinus Infections, pg 1508, Treatment Summary pg 1510

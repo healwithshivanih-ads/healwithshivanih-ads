@@ -25,6 +25,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - reverse-cholesterol-transport
 linked_to_supplements: []
+linked_to_symptoms:
+- elevated-cholesterol
 sources:
 - id: fmca-m11-metabolic-health-labs-saxena
   location: Cardiovascular labs — total cholesterol and subfractions

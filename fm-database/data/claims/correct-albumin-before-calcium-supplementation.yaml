@@ -17,6 +17,8 @@ linked_to_supplements:
 - calcium-supplementation
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-serum-calcium
 sources:
 - id: coconote-fm-calcium-deficiency
   location: Albumin and Calcium Correction

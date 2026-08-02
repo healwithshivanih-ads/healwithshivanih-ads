@@ -30,6 +30,8 @@ linked_to_mechanisms:
 - cortisol-awakening-response
 - hpa-axis-dysregulation
 linked_to_supplements: []
+linked_to_symptoms:
+- burnout
 sources:
 - id: fmca-m11-female-hormone-testing-class
   location: Cortisol awakening response

@@ -19,6 +19,9 @@ linked_to_supplements:
 - magnesium-citrate
 - magnesium-glycinate
 linked_to_mechanisms: []
+linked_to_symptoms:
+- headaches
+- migraine
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Migraine/Headache

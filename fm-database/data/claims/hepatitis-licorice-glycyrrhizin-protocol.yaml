@@ -12,6 +12,9 @@ linked_to_topics:
 - hepatitis
 linked_to_supplements:
 - licorice-root
+linked_to_symptoms:
+- edema
+- elevated-blood-pressure
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 61 — Hepatitis, pg 1036-1037, 1041

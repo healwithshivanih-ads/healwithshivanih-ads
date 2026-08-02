@@ -33,6 +33,8 @@ linked_to_supplements:
 - l-theanine
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- anxiety
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia, Treatment Summary pg 1190

@@ -17,6 +17,8 @@ linked_to_mechanisms:
 out_of_scope_notes: ''
 caveats: []
 linked_to_supplements: []
+linked_to_symptoms:
+- migraine
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Migraine/Headache

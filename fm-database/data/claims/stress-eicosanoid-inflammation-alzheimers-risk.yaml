@@ -24,6 +24,9 @@ linked_to_mechanisms:
 - chronic-inflammation
 - sympathetic-dominance
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- stress
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 17 - Alzheimer's Disease and Dementia

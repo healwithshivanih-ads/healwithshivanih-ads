@@ -22,6 +22,8 @@ linked_to_mechanisms:
 linked_to_supplements:
 - creatine-monohydrate
 out_of_scope_notes: ''
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DaDQ2r0DJqH/

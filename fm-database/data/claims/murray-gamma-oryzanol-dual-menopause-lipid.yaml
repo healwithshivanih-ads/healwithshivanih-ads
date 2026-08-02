@@ -30,6 +30,9 @@ linked_to_supplements:
 - gamma-oryzanol
 linked_to_mechanisms: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- menopause-symptoms
+- dyslipidemia
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause, pg 1243

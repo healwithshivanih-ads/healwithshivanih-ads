@@ -22,6 +22,9 @@ linked_to_mechanisms:
 linked_to_supplements: []
 out_of_scope_notes: Medical evaluation to exclude organic causes is a clinician responsibility,
   not a coaching task.
+linked_to_symptoms:
+- chronic-pain
+- palpitations
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DZfHt3ejOq2/

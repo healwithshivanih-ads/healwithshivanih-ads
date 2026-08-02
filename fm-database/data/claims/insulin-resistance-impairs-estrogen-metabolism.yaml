@@ -17,6 +17,8 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism — Page 03

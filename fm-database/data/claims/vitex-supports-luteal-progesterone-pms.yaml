@@ -21,6 +21,8 @@ linked_to_topics:
 - pcos
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- irregular-periods
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Cautions — Practitioner Protocol Guidelines

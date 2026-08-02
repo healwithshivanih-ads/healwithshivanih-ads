@@ -17,6 +17,8 @@ linked_to_supplements:
 - ashwagandha
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
 sources:
 - id: coach-shivani
   location: Coach Observation — Plant-Derived Adaptogens and Herbs

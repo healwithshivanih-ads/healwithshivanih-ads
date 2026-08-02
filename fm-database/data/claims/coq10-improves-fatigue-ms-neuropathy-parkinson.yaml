@@ -20,6 +20,9 @@ linked_to_topics:
 linked_to_supplements:
 - coenzyme-q10
 linked_to_mechanisms: []
+linked_to_symptoms:
+- low-mood
+- numbness-tingling
 sources:
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health

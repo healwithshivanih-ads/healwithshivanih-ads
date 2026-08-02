@@ -17,6 +17,9 @@ linked_to_topics:
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- insulin-resistance
+- dyslipidemia
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: 'Case discussion: dietary intervention for dyslipidemia'

@@ -14,6 +14,8 @@ linked_to_topics:
 - hpa-axis-cortisol-regulation
 linked_to_mechanisms:
 - hpa-axis-dysregulation
+linked_to_symptoms:
+- stress
 sources:
 - id: wentz-energy-blueprint-podcast-2026
   location: Podcast — Addisonian vs adaptive segment

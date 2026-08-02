@@ -13,6 +13,9 @@ linked_to_topics:
 coaching_translation: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- edema
+- elevated-blood-pressure
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 6

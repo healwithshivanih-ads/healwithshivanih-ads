@@ -31,6 +31,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - black-cohosh
+linked_to_symptoms:
+- hot-flashes
 sources:
 - id: herbalgram-121-botanicals-womens-health-2019
   location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68

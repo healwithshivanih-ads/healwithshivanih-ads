@@ -9,6 +9,8 @@ linked_to_topics:
 - anxiety
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- hot-flashes
 sources:
 - id: mayoclinic-hot-flashes-2026
   location: Mayo Clinic page — Mind and body practices

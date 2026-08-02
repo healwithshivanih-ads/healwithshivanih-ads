@@ -19,6 +19,8 @@ linked_to_topics:
 linked_to_supplements:
 - methylcobalamin
 linked_to_mechanisms: []
+linked_to_symptoms:
+- axonal-neuropathy
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Methylcobalamin / MMCM section

@@ -19,6 +19,8 @@ caveats:
   preferred.
 - Source mixes well-studied mechanisms with emerging COVID-19 claims.
 linked_to_mechanisms: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'

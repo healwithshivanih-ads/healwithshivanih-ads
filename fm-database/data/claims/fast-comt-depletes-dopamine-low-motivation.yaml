@@ -21,6 +21,10 @@ linked_to_supplements:
 - tyrosine
 out_of_scope_notes: ''
 linked_to_mechanisms: []
+linked_to_symptoms:
+- stress
+- low-motivation
+- low-mood
 sources:
 - id: dirty-genes-lynch
   location: 'Chapter 6: Ritalin and Adderall'

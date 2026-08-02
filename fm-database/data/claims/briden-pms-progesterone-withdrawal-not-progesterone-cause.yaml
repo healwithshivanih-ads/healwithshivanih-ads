@@ -23,6 +23,9 @@ linked_to_mechanisms:
 - allopregnanolone-deficiency
 - gaba-receptor-modulation
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
+- anxiety
 sources:
 - id: briden-blog-top-6-pms-mood-treatments
   location: Blog post — Withdrawal theory section

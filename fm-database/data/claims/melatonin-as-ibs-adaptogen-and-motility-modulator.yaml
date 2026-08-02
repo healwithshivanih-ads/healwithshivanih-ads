@@ -26,6 +26,9 @@ linked_to_mechanisms:
 linked_to_supplements:
 - melatonin
 out_of_scope_notes: ''
+linked_to_symptoms:
+- migraine
+- anxiety
 sources:
 - id: pizzorno-gi-trio
   location: Irritable Bowel Syndrome — Additional Considerations (pp 582)

@@ -20,6 +20,8 @@ linked_to_mechanisms:
 - cortisol-elevation
 - hpa-axis-dysregulation
 linked_to_supplements: []
+linked_to_symptoms:
+- cold-intolerance
 sources:
 - id: welch-balance-your-hormones-2011
   location: Chapter 4 - Stress Hormones

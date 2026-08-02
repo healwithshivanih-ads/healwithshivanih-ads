@@ -20,6 +20,8 @@ caveats:
 - Source is FM synthesis. Kraft GTIR has thin peer-reviewed validation; not widely
   used in conventional practice. Clinician scope.
 linked_to_supplements: []
+linked_to_symptoms:
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Chapter 6 — Understanding Laboratory Reports

@@ -22,6 +22,8 @@ linked_to_topics:
 - candida-overgrowth
 - fungal-overgrowth
 linked_to_supplements: []
+linked_to_symptoms:
+- food-sensitivities
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 30 — Candidiasis Chronic, pg 614

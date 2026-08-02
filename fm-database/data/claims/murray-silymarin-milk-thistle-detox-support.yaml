@@ -30,6 +30,8 @@ linked_to_supplements:
 - milk-thistle
 - silymarin
 - silymarin-milk-thistle
+linked_to_symptoms:
+- inflammation
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 9 — Detoxification, Quick Review pg 212

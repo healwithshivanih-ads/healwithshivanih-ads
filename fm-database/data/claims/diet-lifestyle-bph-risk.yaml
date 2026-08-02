@@ -8,6 +8,9 @@ statement: BPH risk factors that the coach can modify — high saturated fat and
 evidence_tier: plausible_emerging
 linked_to_topics:
 - benign-prostatic-hyperplasia
+linked_to_symptoms:
+- abdominal-obesity
+- decreased-sexual-function
 sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 87 — BPH, pg 1441-1443

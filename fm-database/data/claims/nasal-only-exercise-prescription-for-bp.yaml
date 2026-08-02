@@ -10,6 +10,8 @@ linked_to_topics:
 - nasal-breathing-blood-pressure
 - blood-pressure-management
 - essential-hypertension
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: pickard-energy-blueprint-podcast-2026
   location: Podcast — Exercise prescription for hypertension

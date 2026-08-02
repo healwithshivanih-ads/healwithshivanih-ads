@@ -22,6 +22,9 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements: []
 out_of_scope_notes: ''
+linked_to_symptoms:
+- bone-loss
+- hot-flashes
 sources:
 - id: pizzorno-womens-health
   location: Menopause — Menopause as Social Construct (pp 626)

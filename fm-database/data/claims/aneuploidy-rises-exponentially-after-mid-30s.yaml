@@ -9,6 +9,8 @@ linked_to_topics:
 - diminished-ovarian-reserve
 linked_to_mechanisms:
 - aneuploidy-meiotic-spindle-error
+linked_to_symptoms:
+- recurrent-miscarriage
 sources:
 - id: fett-it-starts-with-the-egg-2019
   location: Chapter 1 — Understanding Egg Quality, pg 22

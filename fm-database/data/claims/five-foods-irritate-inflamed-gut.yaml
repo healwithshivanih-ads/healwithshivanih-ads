@@ -18,6 +18,8 @@ linked_to_topics:
 - autoimmunity-leaky-gut-triad
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- inflammation
 sources:
 - id: barbara-oneil-gi-tract
   location: Inflammatory Foods Section

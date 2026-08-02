@@ -5,6 +5,9 @@ statement: See a dentist urgently for very swollen gums, loose or falling teeth,
 evidence_tier: strong
 linked_to_topics:
 - periodontal-disease
+linked_to_symptoms:
+- mouth-ulcers
+- psoriasis-skin-patches
 sources:
 - id: nhs-gum-disease-2026
   location: NHS page — Urgent advice section

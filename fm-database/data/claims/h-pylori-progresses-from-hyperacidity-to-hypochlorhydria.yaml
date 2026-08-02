@@ -20,6 +20,8 @@ linked_to_topics:
 - hypochlorhydria
 linked_to_supplements: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- bloating
 sources:
 - id: coconote-fm-hypochlorhydria
   location: Risk Factors for Low Stomach Acid

@@ -21,6 +21,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - licorice-root
+linked_to_symptoms:
+- elevated-blood-pressure
 sources:
 - id: briden-blog-natural-anti-androgens-hirsutism
   location: Blog post — Peony and licorice section

@@ -17,6 +17,9 @@ linked_to_mechanisms:
 - methylation
 linked_to_supplements:
 - methylfolate
+linked_to_symptoms:
+- joint-pain
+- anxiety
 sources:
 - id: dirty-genes-lynch
   location: 'Chapter 15: Spot Cleaning Your MTHFR'

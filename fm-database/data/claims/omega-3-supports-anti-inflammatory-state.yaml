@@ -16,6 +16,8 @@ linked_to_supplements:
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
+linked_to_symptoms:
+- eczema-psoriasis-skin
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Key Supplements Discussion

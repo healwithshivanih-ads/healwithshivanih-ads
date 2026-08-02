@@ -20,6 +20,8 @@ linked_to_topics:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
+linked_to_symptoms:
+- food-intolerance-reactions
 sources:
 - id: thurlow-microbiome-session-2
   location: Most common triggers in midlife

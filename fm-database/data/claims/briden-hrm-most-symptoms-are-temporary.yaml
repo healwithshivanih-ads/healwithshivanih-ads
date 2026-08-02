@@ -8,6 +8,11 @@ evidence_tier: strong
 linked_to_topics:
 - second-puberty-perimenopause
 - perimenopause
+linked_to_symptoms:
+- perimenopause-symptoms
+- night-sweats
+- pelvic-pain
+- low-mood
 sources:
 - id: briden-hormone-repair-manual-2021
   location: Chapter 1 — Hormone revolution, pg 21–22

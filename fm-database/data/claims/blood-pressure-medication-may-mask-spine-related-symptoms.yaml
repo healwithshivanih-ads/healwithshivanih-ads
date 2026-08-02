@@ -10,6 +10,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - essential-hypertension
 - blood-pressure-management
+linked_to_symptoms:
+- lower-back-pain
 sources:
 - id: pickard-energy-blueprint-podcast-2026
   location: Podcast — Blood-chemistry analysis case

@@ -17,6 +17,8 @@ linked_to_topics:
 linked_to_mechanisms: []
 linked_to_supplements:
 - zinc
+linked_to_symptoms:
+- dysmenorrhea
 sources:
 - id: briden-blog-zinc-rescues-hormones
   location: Blog post — Period pain bullet section
