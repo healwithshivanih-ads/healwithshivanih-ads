@@ -2,9 +2,11 @@ name: web-ci
 
 # Gate for the coach/client web app (fm-database-web). Runs the checks that
 # were previously only run by hand — and that the build used to skip
-# (typescript.ignoreBuildErrors was `true`). type-check + tests + build are
-# BLOCKING; lint is advisory for now (no ESLint baseline existed historically,
-# so it reports without failing the gate until the backlog is burned down).
+# (typescript.ignoreBuildErrors was `true`). type-check + tests + build +
+# lint are all BLOCKING. The historical warning backlog was burned down to
+# zero, so lint now runs with --max-warnings 0 to keep it there: any new
+# warning fails the gate. Silence a genuine false positive at the source
+# with `// eslint-disable-next-line <rule> -- reason`, not by relaxing this.
 
 on:
   push:
@@ -60,6 +62,5 @@ jobs:
       - name: Build (blocking — type errors now fail here too)
         run: npm run build
 
-      - name: Lint (advisory)
-        run: npm run lint
-        continue-on-error: true
+      - name: Lint (blocking — warnings fail CI)
+        run: npm run lint -- --max-warnings 0
