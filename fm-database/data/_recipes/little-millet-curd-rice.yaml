@@ -1,0 +1,162 @@
+slug: little-millet-curd-rice
+name: Little millet curd rice
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- summer
+- all
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sour
+- sweet
+main_ingredients:
+- little millet
+- curd
+- ginger
+- curry leaves
+contains_allergens:
+- dairy
+ingredients:
+- item: little millet
+  qty: '0.5'
+  unit: cup
+- item: curd (yoghurt), whisked
+  qty: '0.75'
+  unit: cup
+- item: milk
+  qty: '0.25'
+  unit: cup
+- item: carrot, grated
+  qty: '3'
+  unit: tbsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: green chilli, finely chopped
+  qty: '1'
+  unit: piece
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tsp
+- item: coconut oil
+  qty: '1'
+  unit: tsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: urad dal
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '2'
+  unit: cup
+steps:
+- Cook the little millet in the water until very soft — softer than you would for
+  a pulao. Mash it lightly while still warm.
+- Let it cool to just-warm before adding the curd, or the curd will split. Stir in
+  the milk to loosen.
+- Fold through the carrot, ginger, chilli, coriander and salt.
+- Heat the coconut oil, splutter the mustard seeds, add the urad dal and curry leaves,
+  and pour over.
+- Serve at room temperature or lightly chilled.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+good_for:
+- agni-digestive-fire
+- gut-microbiome-diversity
+one_line: A cooling little-millet curd rice, lightly mashed and tempered with mustard,
+  ginger and curry leaf.
+headnote: Letting the millet cool before the curd goes in is what keeps the dish creamy
+  rather than split — and mashing it slightly gives the curd something to cling to,
+  which millet grains otherwise resist.
+attribution:
+  author: Shivani Hari
+  source_id: uas-bengaluru-2017-millet-daily-lifestyle
+sources:
+- id: uas-bengaluru-2017-millet-daily-lifestyle
+  location: Little Millet Curd Rice
+version: 1
+kitchen_tested: false
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani
+nutrients_per_serving:
+  kcal: 301
+  protein_g: 10.5
+  carbs_g: 44.9
+  fat_g: 8.8
+  fibre_g: 5.0
+  iron_mg: 1.9
+  calcium_mg: 169
+  magnesium_mg: 80.8
+  zinc_mg: 1.7
+  potassium_mg: 361
+  folate_ug: 58.7
+  b12_ug: 0.5
+  vit_d_ug: 0.4
+  vit_c_mg: 4.2
+  omega3_mg: 91.4
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- calcium
+- magnesium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-08-03'
+nutrient_lines:
+- i: 0
+  key: millet-generic
+  g: 100.0
+- i: 1
+  key: yogurt
+  g: 183.75
+- i: 2
+  key: milk
+  g: 61.0
+- i: 3
+  key: carrot
+  g: 24.0
+- i: 4
+  key: ginger-fresh
+  g: 2.0
+- i: 5
+  key: green-chilli
+  g: 5.0
+- i: 6
+  key: coriander-fresh
+  g: 0.6666666666666666
+- i: 7
+  key: coconut-oil
+  g: 4.541666666666667
+- i: 8
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 9
+  key: urad-dal
+  g: 2.0833333333333335
+- i: 10
+  key: curry-leaves
+  g: 2.4
+- i: 11
+  key: salt
+  g: 0.0
+- i: 12
+  key: water
+  g: 0.0
+nutrient_servings: 2.0

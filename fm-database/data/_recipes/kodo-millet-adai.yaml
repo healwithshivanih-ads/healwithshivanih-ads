@@ -1,0 +1,160 @@
+slug: kodo-millet-adai
+name: Kodo millet adai
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- astringent
+main_ingredients:
+- kodo millet
+- toor dal
+- chana dal
+- moong dal
+contains_allergens:
+- sesame
+ingredients:
+- item: kodo millet
+  qty: '1'
+  unit: cup
+- item: toor dal (split pigeon pea)
+  qty: '0.25'
+  unit: cup
+- item: chana dal
+  qty: '0.25'
+  unit: cup
+- item: moong dal
+  qty: '2'
+  unit: tbsp
+- item: urad dal
+  qty: '2'
+  unit: tbsp
+- item: dried red chillies
+  qty: '3'
+  unit: piece
+- item: fennel seeds
+  qty: '1'
+  unit: tsp
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: curry leaves, torn
+  qty: '10'
+  unit: leaves
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: sesame oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Rinse the kodo millet and all four dals together and soak 4–6 hours, then drain.
+- Grind with the red chillies and fennel seeds to a coarse batter — adai should stay
+  slightly grainy, looser than idli batter but thicker than dosa.
+- Stir in the onion, curry leaves, coriander and salt. Rest 20 minutes; no ferment
+  needed.
+- Heat a tawa, spread a ladleful into a thick round and ring the edge with sesame
+  oil. Make a hole in the centre so the middle cooks through.
+- Cook until crisp and golden, flip once, and serve hot with chutney or jaggery-free
+  avial.
+servings: '4'
+prep_time_min: 20
+cook_time_min: 20
+good_for:
+- blood-sugar-regulation
+- satiety-and-weight
+one_line: A thick, protein-heavy kodo millet adai carrying four dals, crisp at the
+  edges and coarse in the middle.
+headnote: The four-dal base is what makes adai worth choosing over dosa — it lands
+  far more protein per plate, so the meal holds without a mid-morning dip. Buy kodo
+  from a supplier with good turnover and store it airtight and dry.
+attribution:
+  author: Shivani Hari
+  source_id: uas-bengaluru-2017-millet-daily-lifestyle
+sources:
+- id: uas-bengaluru-2017-millet-daily-lifestyle
+  location: Kodo Millet Adai
+version: 1
+kitchen_tested: false
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani
+nutrients_per_serving:
+  kcal: 357
+  protein_g: 13.1
+  carbs_g: 55.7
+  fat_g: 9.2
+  fibre_g: 7.7
+  iron_mg: 3.1
+  calcium_mg: 55.4
+  magnesium_mg: 113
+  zinc_mg: 1.9
+  potassium_mg: 513
+  folate_ug: 114
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 3.5
+  omega3_mg: 77.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-08-03'
+nutrient_lines:
+- i: 0
+  key: millet-kodo
+  g: 180.0
+- i: 1
+  key: toor-dal
+  g: 50.0
+- i: 2
+  key: chana-dal
+  g: 50.0
+- i: 3
+  key: moong-dal
+  g: 25.0
+- i: 4
+  key: urad-dal
+  g: 25.0
+- i: 5
+  key: dried-red-chilli
+  g: 6.0
+- i: 6
+  key: fennel-seeds
+  g: 1.875
+- i: 7
+  key: onion
+  g: 110.0
+- i: 8
+  key: curry-leaves
+  g: 3.0
+- i: 9
+  key: coriander-fresh
+  g: 2.0
+- i: 10
+  key: sesame-oil
+  g: 27.25
+- i: 11
+  key: salt
+  g: 0.0
+nutrient_servings: 4.0

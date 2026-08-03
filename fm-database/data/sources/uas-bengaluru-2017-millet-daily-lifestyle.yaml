@@ -1,0 +1,40 @@
+id: uas-bengaluru-2017-millet-daily-lifestyle
+title: Millet in Daily Lifestyle (University of Agricultural Sciences, Bengaluru)
+source_type: book
+quality: moderate
+authors:
+- H. B. Shivaleela
+- K. Geetha
+- Usha Ravindra
+- S. Subramanya
+- T. Sheshadri
+year: 2017
+publisher: University of Agricultural Sciences, Bengaluru
+notes: 'Millet recipe compendium from a state agricultural university, covering
+  the eight Indian millets across traditional South Indian preparations. The copy
+  ingested here is a reprint distributed as a promotional booklet by Dr. Harish Foundation
+  / The Golden Family (TGF), which added its own branding and a one-page health-claims
+  spread.
+
+  SCOPE OF THIS SOURCE — recipes and vernacular nomenclature ONLY. The added
+  "Miracle Grains or Wonder Grains" page (p.2) is marketing copy, not university
+  content, and was rejected wholesale at ingest: it asserts that millet "reduces the
+  effects of migraines and heart attacks", that millet "decreases triglycerides and
+  C-reactive protein - prevent cardiovascular disease", and that millet is
+  "non-allergenic". The first two are causal claims no recipe booklet can support;
+  the third is factually wrong (millet allergy is documented). Nothing from that page
+  was admitted as a Claim. Do not re-ingest it.
+
+  The genuinely valuable content is p.15, a table of vernacular millet names across
+  nine Indian languages (English/Hindi/Telugu/Kannada/Tamil/Bengali/Marathi/Gujarati/
+  Oriya). Those names were promoted into the ingredient alias index so client-facing
+  and coach-entered recipes written in local naming resolve for nutrient computation.
+
+  Note also that this source is silent on cautions — it lists only benefits. The
+  millet cautions in the catalogue (bajra goitrogens, kodo mycotoxin risk, phytate
+  mineral binding) are coach knowledge cited to their own sources and are deliberately
+  NOT attributed here.'
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani

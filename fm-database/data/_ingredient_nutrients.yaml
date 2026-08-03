@@ -444,6 +444,13 @@ bajra-flour:
   - bajra flour
   - bajra rava
   - bajra
+  - pearl millet
+  - pearl millet flour
+  - sajja
+  - sajje
+  - kanbu
+  - bajri
+  - bajraz
   per_100g:
     kcal: 348
     protein_g: 11.0
@@ -2811,6 +2818,14 @@ jowar-flour:
   aliases:
   - jowar flour
   - jowar
+  - sorghum
+  - sorghum flour
+  - jonna
+  - jola
+  - cholam
+  - jowari
+  - jawari
+  - juara
   per_100g:
     kcal: 334
     protein_g: 10.0
@@ -3270,6 +3285,14 @@ millet-foxtail:
   aliases:
   - foxtail
   - foxtail millet
+  - kakum
+  - korra
+  - navane
+  - navanesoji
+  - tenai
+  - kaon
+  - kang
+  - kanghu
   per_100g:
     kcal: 331
     protein_g: 12.3
@@ -3299,6 +3322,17 @@ millet-generic:
   - little millet
   - mixed millet
   - mixed millet (foxtail, kodo or little millet)
+  - multi millet
+  - multi millet flour
+  - millet rice
+  - millet rawa
+  - kutki
+  - samalu
+  - samai
+  - sava
+  - gajro
+  - suan
+  - same millet
   per_100g:
     kcal: 378
     protein_g: 11.0
@@ -3325,6 +3359,12 @@ millet-kodo:
   aliases:
   - kodo millet
   - kodo
+  - kodon
+  - arikelu
+  - haarka
+  - varagu
+  - kodra
+  - kodua
   per_100g:
     kcal: 331
     protein_g: 8.9
@@ -3345,6 +3385,40 @@ millet-kodo:
     g_per_cup: 180
     g_per_piece: null
     g_per_leaf: null
+millet-proso:
+  category: grain
+  basis: dry
+  aliases:
+  - proso
+  - proso millet
+  - chena millet
+  - variga
+  - baragu
+  - pani varagu
+  - cheena
+  - vari millet
+  - cheno
+  - bachari bagmu
+  per_100g:
+    kcal: 341
+    protein_g: 12.5
+    carbs_g: 70.4
+    fat_g: 1.1
+    fibre_g: 8.5
+    iron_mg: 0.8
+    calcium_mg: 14
+    magnesium_mg: 153
+    zinc_mg: 1.4
+    potassium_mg: 195
+    folate_ug: 9
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 30
+  density:
+    g_per_cup: 180
+    g_per_piece: null
+    g_per_leaf: null
 millet-sama:
   category: grain
   basis: dry
@@ -3352,6 +3426,13 @@ millet-sama:
   - sama
   - sama millet
   - barnyard millet
+  - sanwa
+  - samvat
+  - udhalu
+  - oodhalu
+  - kuthiraivally
+  - shyama
+  - khira millet
   per_100g:
     kcal: 307
     protein_g: 6.2
@@ -4186,6 +4267,11 @@ ragi:
   - ragi
   - ragi flour
   - finger millet
+  - finger millet flour
+  - keppai
+  - marwa
+  - nagli
+  - mandia
   per_100g:
     kcal: 321
     protein_g: 7.2

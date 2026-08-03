@@ -1,0 +1,149 @@
+slug: millet-paddu
+name: Millet paddu
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+main_ingredients:
+- mixed millet
+- urad dal
+- fenugreek seeds
+- onion
+contains_allergens: []
+ingredients:
+- item: mixed millet (foxtail, kodo or little millet)
+  qty: '1.5'
+  unit: cup
+- item: urad dal
+  qty: '0.5'
+  unit: cup
+- item: fenugreek seeds
+  qty: '1'
+  unit: tsp
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: carrot, grated
+  qty: '0.5'
+  unit: cup
+- item: green chilli, finely chopped
+  qty: '2'
+  unit: piece
+- item: curry leaves, chopped
+  qty: '10'
+  unit: leaves
+- item: coriander leaves, chopped
+  qty: '2'
+  unit: tbsp
+- item: coconut oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Rinse the millet, urad dal and fenugreek seeds, then soak them together in plenty
+  of water for at least 6 hours or overnight. Discard the soaking water — this is
+  what brings the phytate down.
+- Grind to a smooth, thick batter with just enough fresh water, add salt, and leave
+  to ferment 8–10 hours until risen and faintly sour.
+- Stir in the onion, carrot, green chilli, curry leaves and coriander. The batter
+  should drop thickly from a spoon.
+- Heat a paddu (appe) pan, brush each well with coconut oil and fill three-quarters
+  full.
+- Cover and cook 2–3 minutes until the edges set, then flip each one and cook until
+  golden. Serve hot with chutney.
+servings: '4'
+prep_time_min: 20
+cook_time_min: 20
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+one_line: Fermented millet-and-urad paddu, cooked in a dimpled pan so they crisp outside
+  and stay soft within.
+headnote: The overnight soak and the ferment are doing real work here beyond flavour
+  — both cut the phytate that otherwise binds iron and zinc, which matters once millets
+  become an everyday grain rather than an occasional one.
+attribution:
+  author: Shivani Hari
+  source_id: uas-bengaluru-2017-millet-daily-lifestyle
+sources:
+- id: uas-bengaluru-2017-millet-daily-lifestyle
+  location: Millet Paddu
+version: 1
+kitchen_tested: false
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani
+nutrients_per_serving:
+  kcal: 452
+  protein_g: 15.3
+  carbs_g: 74.4
+  fat_g: 10.4
+  fibre_g: 10.5
+  iron_mg: 4.6
+  calcium_mg: 60.5
+  magnesium_mg: 159
+  zinc_mg: 2.2
+  potassium_mg: 507
+  folate_ug: 128
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.9
+  omega3_mg: 131
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-08-03'
+nutrient_lines:
+- i: 0
+  key: millet-generic
+  g: 300.0
+- i: 1
+  key: urad-dal
+  g: 100.0
+- i: 2
+  key: fenugreek-seeds
+  g: 3.125
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: carrot
+  g: 64.0
+- i: 5
+  key: green-chilli
+  g: 10.0
+- i: 6
+  key: curry-leaves
+  g: 3.0
+- i: 7
+  key: coriander-fresh
+  g: 2.0
+- i: 8
+  key: coconut-oil
+  g: 27.25
+- i: 9
+  key: salt
+  g: 0.0
+nutrient_servings: 4.0

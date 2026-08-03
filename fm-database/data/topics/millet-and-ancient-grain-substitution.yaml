@@ -3,14 +3,37 @@ display_name: Millet & Ancient Grain Substitution
 aliases:
 - gluten-free grain swap
 - millets for rice/wheat
+- millets
+- siridhanya
+- nutri cereals
+- shree anna
 summary: Replacement of refined grains (white rice, wheat) with millets (foxtail,
   barnyard, kodo, little, jowar) and quinoa across meals — biryanis, khichdis, rotis,
   upma — to reduce glycaemic load and increase micronutrient density.
 key_mechanisms:
 - glycemic-load-reduction
 - dietary-fiber-modulation
-coaching_scope_notes: Millets should be rinsed 2–3 times and soaked 10–15 min before
-  cooking to remove phytic acid. Many recipes serve millet as a direct rice substitute.
+coaching_scope_notes: 'Millets should be rinsed 2–3 times and soaked before cooking
+  to reduce phytic acid — prefer an overnight soak with the water discarded where
+  millets are a daily staple, not a 10–15 minute rinse-soak. Many recipes serve millet
+  as a direct rice substitute.
+
+  THREE CAUTIONS TO CARRY WITH ANY MILLET-FORWARD PLAN — all three are absent from
+  popular millet advocacy, which is uniformly promotional:
+
+  1. Pearl millet (bajra) carries heat-stable C-glycosylflavone goitrogens. The usual
+  "cook your goitrogens" rule does NOT apply to bajra. Rotate rather than making it
+  the daily roti in thyroid clients — see pearl-millet-goitrogens-heat-stable-unlike-brassica.
+
+  2. Kodo millet has a documented Aspergillus / cyclopiazonic-acid contamination risk
+  tied to damp harvest and storage. Attach sourcing and storage guidance to every kodo
+  recommendation — see kodo-millet-mycotoxin-contamination-risk.
+
+  3. Phytate binds non-haem iron and zinc. Matters once millets go daily, especially
+  in menstruating women and vegetarians — see millet-phytate-mineral-binding-soak-and-ferment.
+
+  Rotation across millets is the practical answer to all three: no single millet
+  becomes the everyday grain.'
 evidence_tier: plausible_emerging
 common_symptoms: []
 red_flags: []
@@ -21,7 +44,10 @@ sources:
   location: Millet-Lobia Pulao / Chicken Curry
   quote: ¼ cup millet (foxtail millet, little millet, or barnyard millet) … Serve
     hot with cooked millet or millet paratha
-version: 1
+- id: uas-bengaluru-2017-millet-daily-lifestyle
+  location: p.15 — millets in vernacular (nine-language name table)
+  quote: 'Barnyard/Sanwa/Udhalu/Oodhalu/Kuthiraivally/Shyama/…/Khira · Foxtail/Kakum/Korra/Navane/Tenai/Kaon/Kang/Kang/Kanghu'
+version: 2
 status: active
 updated_at: '2026-05-04'
 updated_by: shivani
