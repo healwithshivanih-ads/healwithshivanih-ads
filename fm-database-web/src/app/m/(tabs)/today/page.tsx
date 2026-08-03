@@ -11,7 +11,7 @@
  */
 import Link from "next/link";
 import {
-  loadCoachIndex,
+  loadClients,
   coachProjectionReady,
   type CoachIndexRow,
 } from "@/lib/fmdb/coach-mobile";
@@ -71,7 +71,7 @@ export default async function TodayTab() {
     );
   }
 
-  const rows = loadCoachIndex();
+  const rows = loadClients();
 
   const overdue = rows
     .filter((r) => (daysSince(r.next_contact_date) ?? -1) > 0)

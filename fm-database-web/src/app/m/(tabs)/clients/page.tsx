@@ -16,7 +16,7 @@
 import Link from "next/link";
 import {
   clientAppUrl,
-  loadCoachIndex,
+  loadEveryone,
   coachProjectionReady,
   type CoachIndexRow,
 } from "@/lib/fmdb/coach-mobile";
@@ -131,9 +131,9 @@ export default async function ClientsTab({
     );
   }
 
-  const all = loadCoachIndex();
-  const clientRows = all.filter((r) => r.kind === "client");
-  const prospectRows = all.filter((r) => r.kind === "prospect");
+  // This screen is the one place that genuinely wants both — and now has to
+  // ask for both explicitly rather than receiving them by accident.
+  const { clients: clientRows, prospects: prospectRows } = loadEveryone();
   const rows = (showProspects ? prospectRows : clientRows).filter((r) => matches(r, q));
 
   return (
