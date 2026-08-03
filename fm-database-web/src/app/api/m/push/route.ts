@@ -14,6 +14,7 @@ import {
   listCoachSubscriptions,
   removeCoachSubscription,
   saveCoachSubscription,
+  sendPushToCoach,
 } from "@/lib/fmdb/coach-push";
 
 export const dynamic = "force-dynamic";
@@ -39,6 +40,33 @@ export async function POST(req: NextRequest) {
       body.label,
     );
     return NextResponse.json({ ok, devices: listCoachSubscriptions().length });
+  }
+
+  // Prove the whole chain — subscription, VAPID keys, Apple's push service,
+  // the service worker — without needing a client to message first. Before
+  // this the only way to know it worked was to ask someone to write to you.
+  if (body.action === "test") {
+    const { sent, pruned } = await sendPushToCoach({
+      title: "Ochre Coach",
+      body: "Notifications are working. This is the only test you'll get.",
+      url: "/m/settings",
+      tag: "coach-test",
+    });
+    return NextResponse.json({
+      ok: sent > 0,
+      sent,
+      pruned,
+      // Say WHICH failure it is. "Didn't work" sends someone hunting in the
+      // wrong place; these three have completely different fixes.
+      error:
+        sent > 0
+          ? undefined
+          : listCoachSubscriptions().length === 0
+            ? "No device registered — turn notifications on first."
+            : pruned > 0
+              ? "This device's registration had expired. Turn it off and on again."
+              : "Registered, but the push service refused it. Check VAPID keys on the server.",
+    });
   }
 
   if (body.action === "unsubscribe") {
