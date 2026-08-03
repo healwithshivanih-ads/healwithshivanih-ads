@@ -150,6 +150,25 @@ describe("data integrity — _food_cautions.yaml", () => {
     expect(bajra.claims).toContain("pearl-millet-goitrogens-heat-stable-unlike-brassica");
   });
 
+  it("the phytate caution covers EVERY millet in the ingredient table", async () => {
+    // Drift guard. Phytate is a family-wide property, so this caution claims
+    // to cover all millets — but a key that is simply absent produces no
+    // error, no warning and no hit, and looks identical to a caution that
+    // found nothing. `millet-little` and `millet-proso` were added to the
+    // table by two PRs merging alongside this work and fell straight out of
+    // coverage exactly that way. The next new millet fails here instead.
+    const table = yaml.load(
+      await fs.readFile(path.join(CATALOGUE, "_ingredient_nutrients.yaml"), "utf-8"),
+    ) as Record<string, unknown>;
+    const millets = Object.keys(table).filter(
+      (k) =>
+        !k.startsWith("_") &&
+        (k.includes("millet") || ["ragi", "bajra-flour", "jowar-flour"].includes(k)),
+    );
+    const phytate = (await loadFoodCautions()).find((c) => c.id === "phytate-iron-zinc")!;
+    expect(millets.filter((m) => !phytate.foods.includes(m))).toEqual([]);
+  });
+
   it("the phytate caution covers ALL millets and barely down-ranks them", async () => {
     // The entry that proves severity is not "how bad is this food". Millets are
     // themselves iron-rich, so down-ranking them for an iron-deficient client
