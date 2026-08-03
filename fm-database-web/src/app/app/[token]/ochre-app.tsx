@@ -344,7 +344,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       clearInterval(id);
       document.removeEventListener("visibilitychange", onShow);
     };
-  }, [data.token]);
+  }, [data.token, data.tier]);
 
   // Opening the Coach tab IS reading them — the chat marks them read server
   // side, so clear immediately rather than leaving a stale count for a minute.

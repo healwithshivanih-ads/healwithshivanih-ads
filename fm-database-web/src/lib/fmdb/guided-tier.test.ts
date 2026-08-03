@@ -509,7 +509,6 @@ describe("menus are complete meals — coach review round 2 (3 Aug)", () => {
   it("lunch and dinner are complete meals — never a bare side, plain grain or lone salad", () => {
     // one-pots and composed plates pass; sides must be compounded with "+"
     const COMPLETE = /\+|khichdi|kitchari|kichari|pulao|pongal|upma|bowl|biryani|curry|masala|stew|soup|rasam|sambar|dal\b.*\+|misal|kadhi|paniyaram|thayir|poha/i;
-    const BARE_SIDE = /(sabzi|salad|slaw|raita|dip|chutney)$|^(sautéed|steamed|grilled [a-z]+$)|^steamed quinoa$|^everyday basmati rice$|^jeera rice$/i;
     const bad: string[] = [];
     for (const p of GUIDED_PROTOCOLS)
       for (const w of p.sampleWeeks ?? [])
