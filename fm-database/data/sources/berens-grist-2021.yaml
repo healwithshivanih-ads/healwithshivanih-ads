@@ -1,0 +1,57 @@
+id: berens-grist-2021
+title: "Grist: A Practical Guide to Cooking Grains, Beans, Seeds, and Legumes"
+source_type: book
+quality: moderate
+authors:
+  - Abra Berens
+publisher: Chronicle Books
+year: 2021
+notes: >-
+  Abra Berens is a chef and farmer (Granor Farm, Three Oaks, Michigan) and a
+  Ballymaloe-trained cook; Grist is the companion to her vegetable reference
+  Ruffage (2019). The book is ingredient-led rather than menu-led: each bean,
+  grain, seed and legume gets a foundational cooking method followed by a long
+  run of variations, so the reusable unit is TECHNIQUE, not a fixed dish.
+
+  WHY THIS SOURCE. The recipe library is 463 recipes and strongly Indian; its
+  legume and whole-grain cookery is dal- and khichdi-shaped. The catalogue's
+  25 cooking_adjustments already carry the Ayurvedic grain/legume handling
+  (soak-and-sprout-legumes, rinse-and-soak-grains-before-cooking,
+  quick-soak-legumes-boil-and-rest, pressure-cook-grains-legumes,
+  add-kombu-to-bean-cooking-water). Grist covers the same physical problems —
+  digestibility, salting, soaking, doneness, storage, batch-cooking — from a
+  Western culinary-technique angle, which is where the coach currently has to
+  improvise.
+
+  WHAT GETS EXTRACTED WHERE (decided at ingest planning, 2026-08-03):
+    - grain / legume / seed handling technique and swaps  -> CookingAdjustment
+    - dishes                                              -> data/_recipes/<slug>.yaml
+    - eating principles worth citing                      -> Claim (conservative tiers)
+  Full multi-component composed plates are NOT ingested wholesale; the value is
+  the base method plus the variations that fit the coach's clients.
+
+  ⚠ EVIDENCE-TIER CAUTION — READ BEFORE WRITING ANY CLAIM FROM THIS BOOK.
+  This is a chef's cookbook, not a clinical text. Berens holds no clinical or
+  nutrition credential and the book does not cite literature. Culinary technique
+  from it is reliable and can be stated plainly. Any HEALTH assertion sourced
+  here is fm_specific_thin at best, and a health claim that this book is the
+  ONLY source for should not be written as a Claim at all — find a real source
+  or leave it out. Do not let cookbook prose become clinical evidence.
+
+  ⚠ COPYRIGHT. Per data/_recipes/_README.md: ingredient lists are facts and are
+  captured faithfully; method steps, headnotes and one-liners are written in our
+  own words and credited via attribution{author, book, source_id, page}. Recipe
+  photographs from the book are NOT committed (images/ is gitignored); any image
+  reference carries rights_status: book_reference_uncleared and is excluded from
+  the client app.
+
+  INGEST PLAN. Chat-ingest, section by section, no API — the standing rule since
+  v0.77 (chat-authored batches scored better on verbatim overlap than the blind
+  API batches and reused existing slugs instead of duplicating them). Plan and
+  progress live in fm-database/data/_grist_ingest_queue.yaml. New entries cite
+  this source as `id: berens-grist-2021` with `location: <section> — <dish or
+  technique>, pg N`.
+version: 1
+status: active
+updated_at: 2026-08-03
+updated_by: Shivani
