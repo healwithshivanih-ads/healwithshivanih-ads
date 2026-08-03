@@ -15,6 +15,7 @@ import {
   sendCoachMessageAction,
 } from "@/lib/server-actions/client-chat";
 import type { ThreadView } from "@/lib/fmdb/client-thread";
+import { serverIsReachable, reloadPreserving, takePreserved } from "@/app/m/stale-build";
 
 function when(iso: string): string {
   const d = new Date(iso);
@@ -44,12 +45,24 @@ export function ChatPanel({
   // told about" is the failure this whole feature exists to avoid, so it is
   // shown rather than assumed.
   const [delivery, setDelivery] = useState<string | null>(null);
+  const draftKey = `m-chat-draft-${clientId}`;
   const endRef = useRef<HTMLDivElement>(null);
 
   // Opening the conversation IS reading it.
   useEffect(() => {
     void markChatReadAction(clientId);
   }, [clientId]);
+
+  useEffect(() => {
+    const saved = takePreserved(draftKey);
+    if (saved) {
+      setDraft(saved);
+      setError("The app had updated — your message is back, send it again.");
+    }
+    // Once, on mount: draftKey is derived from a prop that cannot change
+    // within a mounted panel.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ block: "end" });
@@ -93,6 +106,13 @@ export function ChatPanel({
     } catch {
       setMsgs((m) => m.filter((x) => x.id !== pending.id));
       setDraft(text);
+      // A reachable server means the network is fine and this PAGE is stale
+      // — reload onto the current build rather than blame her connection.
+      if (await serverIsReachable()) {
+        setError("The app updated in the background — reloading…");
+        reloadPreserving(draftKey, text);
+        return;
+      }
       setError("Couldn't send — check your connection.");
     } finally {
       setBusy(false);
