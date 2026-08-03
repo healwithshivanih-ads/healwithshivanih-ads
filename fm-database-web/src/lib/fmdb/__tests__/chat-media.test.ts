@@ -25,12 +25,20 @@ async function mod() {
   return import("../chat-media");
 }
 
-/** A real JPEG, with GPS EXIF attached the way a phone would. */
-async function photoWithGps(): Promise<Buffer> {
+/**
+ * A real JPEG carrying EXIF, the way a phone's camera produces one.
+ *
+ * sharp's writer exposes the IFD groups; GPS tags live in their own IFD that
+ * it will not write, so the location itself cannot be synthesised here. It
+ * does not need to be: the guarantee under test is that the stored file
+ * carries NO exif block at all, which is strictly stronger than checking one
+ * tag was dropped.
+ */
+async function photoWithExif(): Promise<Buffer> {
   return sharp({
     create: { width: 2400, height: 1800, channels: 3, background: { r: 200, g: 120, b: 60 } },
   })
-    .withExif({ IFD0: { Copyright: "client" }, GPS: { GPSLatitudeRef: "N" } })
+    .withExif({ IFD0: { Copyright: "client", Make: "Pixel" } })
     .jpeg()
     .toBuffer();
 }
@@ -42,9 +50,9 @@ beforeEach(() => {
 afterEach(() => fs.rmSync(root, { recursive: true, force: true }));
 
 describe("chat photos", () => {
-  it("strips EXIF — the client's home coordinates never reach disk", async () => {
+  it("strips EXIF entirely — nothing of the camera or the kitchen reaches disk", async () => {
     const m = await mod();
-    const saved = await m.saveChatPhoto("cl-x", await photoWithGps());
+    const saved = await m.saveChatPhoto("cl-x", await photoWithExif());
     expect(saved).not.toBeNull();
     const stored = await m.readChatPhoto("cl-x", saved!.file);
     const meta = await sharp(stored!).metadata();
@@ -53,7 +61,7 @@ describe("chat photos", () => {
 
   it("shrinks oversized photos rather than storing what the camera produced", async () => {
     const m = await mod();
-    const saved = await m.saveChatPhoto("cl-x", await photoWithGps());
+    const saved = await m.saveChatPhoto("cl-x", await photoWithExif());
     expect(Math.max(saved!.width, saved!.height)).toBeLessThanOrEqual(1600);
   });
 
@@ -69,7 +77,7 @@ describe("chat photos", () => {
 
   it("names the file itself — an uploader never influences the path", async () => {
     const m = await mod();
-    const saved = await m.saveChatPhoto("cl-x", await photoWithGps());
+    const saved = await m.saveChatPhoto("cl-x", await photoWithExif());
     expect(saved!.file).toMatch(/^[a-f0-9-]{36}\.jpg$/);
   });
 
@@ -87,8 +95,8 @@ describe("chat photos", () => {
 
   it("purges photos past the window but keeps pinned ones", async () => {
     const m = await mod();
-    const old = await m.saveChatPhoto("cl-x", await photoWithGps());
-    const pinned = await m.saveChatPhoto("cl-x", await photoWithGps());
+    const old = await m.saveChatPhoto("cl-x", await photoWithExif());
+    const pinned = await m.saveChatPhoto("cl-x", await photoWithExif());
     const dir = path.join(root, "clients", "cl-x", "files", "chat");
     const ancient = new Date(Date.now() - 400 * 24 * 3600 * 1000);
     fs.utimesSync(path.join(dir, old!.file), ancient, ancient);
@@ -101,7 +109,7 @@ describe("chat photos", () => {
 
   it("keeps recent photos", async () => {
     const m = await mod();
-    const fresh = await m.saveChatPhoto("cl-x", await photoWithGps());
+    const fresh = await m.saveChatPhoto("cl-x", await photoWithExif());
     const res = await m.purgeOldChatMedia("cl-x", new Set());
     expect(res.deleted).toBe(0);
     expect(fs.existsSync(path.join(root, "clients", "cl-x", "files", "chat", fresh!.file))).toBe(true);
@@ -109,7 +117,7 @@ describe("chat photos", () => {
 
   it("never deletes a file it did not write — lab PDFs are not its business", async () => {
     const m = await mod();
-    await m.saveChatPhoto("cl-x", await photoWithGps());
+    await m.saveChatPhoto("cl-x", await photoWithExif());
     const dir = path.join(root, "clients", "cl-x", "files", "chat");
     const foreign = path.join(dir, "bloodwork-2024.pdf");
     fs.writeFileSync(foreign, "pretend pdf");

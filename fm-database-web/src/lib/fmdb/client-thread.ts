@@ -57,6 +57,32 @@ export type ThreadMessage = {
    * battery setting. Those have completely different fixes.
    */
   delivered_at?: string | null;
+  /**
+   * Meal-photo review (docs/MEAL_PHOTO_CHECK_SPEC.md).
+   *
+   * `meal_outcome` is what the checker proposed; `coach_verdict` is whether
+   * she agreed. Both live on the message rather than in a side table so the
+   * judgement travels with the thing judged — a review queue that can drift
+   * out of sync with its photos is worse than no queue.
+   *
+   * In shadow mode nothing writes `meal_outcome` yet; the coach reviews the
+   * photo itself. The field exists now so enabling the checker adds a
+   * writer, not a migration.
+   */
+  meal_outcome?: "affirm" | "quiet" | "review" | "safety" | null;
+  coach_verdict?: "agree" | "disagree" | null;
+  /** Pinned to the record — exempt from the 365-day media sweep. */
+  pinned_at?: string | null;
+  /**
+   * When the review fields above were last written.
+   *
+   * Needed because they are REVOCABLE, unlike read_at and delivered_at. The
+   * merge below prefers any non-null value, which is exactly right for a
+   * stamp that only moves forward and exactly wrong for a verdict the coach
+   * clears or a pin she removes — without this, un-doing either is silently
+   * impossible, because the old non-null value keeps winning the merge.
+   */
+  reviewed_at?: string | null;
 };
 
 /** Origin-scoped filename. Anything that writes must go through this. */
@@ -132,6 +158,11 @@ export function readThread(clientId: string): ThreadMessage[] {
 
 /** Stable order + id-dedup. Ids are unique per message, so a file copied
  *  twice by a sync hiccup cannot double a message in the view. */
+/** Which copy carries the more recent review write. */
+function newerReview(a: ThreadMessage, b: ThreadMessage): boolean {
+  return (a.reviewed_at ?? "") >= (b.reviewed_at ?? "");
+}
+
 export function dedupeSort(msgs: ThreadMessage[]): ThreadMessage[] {
   const seen = new Map<string, ThreadMessage>();
   for (const m of msgs) {
@@ -147,6 +178,21 @@ export function dedupeSort(msgs: ThreadMessage[]): ThreadMessage[] {
         ...m,
         read_at: m.read_at ?? prev.read_at ?? null,
         delivered_at: m.delivered_at ?? prev.delivered_at ?? null,
+        meal_outcome: m.meal_outcome ?? prev.meal_outcome ?? null,
+        // Revocable fields take the LATEST write wholesale, nulls included —
+        // see reviewed_at. Falling back to a non-null older value here would
+        // make clearing a verdict or unpinning impossible.
+        ...(newerReview(m, prev)
+          ? {
+              coach_verdict: m.coach_verdict ?? null,
+              pinned_at: m.pinned_at ?? null,
+              reviewed_at: m.reviewed_at ?? null,
+            }
+          : {
+              coach_verdict: prev.coach_verdict ?? null,
+              pinned_at: prev.pinned_at ?? null,
+              reviewed_at: prev.reviewed_at ?? null,
+            }),
       });
     }
   }
@@ -177,6 +223,10 @@ export function appendMessage(
     ...(msg.file ? { file: msg.file } : {}),
     read_at: msg.read_at ?? null,
     delivered_at: msg.delivered_at ?? null,
+    meal_outcome: msg.meal_outcome ?? null,
+    coach_verdict: msg.coach_verdict ?? null,
+    pinned_at: msg.pinned_at ?? null,
+    reviewed_at: msg.reviewed_at ?? null,
   };
   try {
     fs.appendFileSync(
@@ -220,6 +270,37 @@ export function markDelivered(clientId: string, messageId: string): boolean {
   const msg = readThread(clientId).find((m) => m.id === messageId);
   if (!msg || msg.delivered_at) return false;
   return !!appendMessage(clientId, { ...msg, delivered_at: new Date().toISOString() });
+}
+
+/**
+ * Record the coach's judgement on a photo, and optionally pin it.
+ *
+ * Append-only like everything else here: a new line supersedes the old on
+ * read. She can change her mind — the last verdict wins — because a review
+ * queue you cannot correct is one people stop trusting.
+ */
+export function reviewPhoto(
+  clientId: string,
+  messageId: string,
+  patch: { coach_verdict?: "agree" | "disagree" | null; pinned?: boolean },
+): boolean {
+  const msg = readThread(clientId).find((m) => m.id === messageId);
+  if (!msg) return false;
+  const next = { ...msg, reviewed_at: new Date().toISOString() };
+  if (patch.coach_verdict !== undefined) next.coach_verdict = patch.coach_verdict;
+  if (patch.pinned !== undefined) {
+    next.pinned_at = patch.pinned ? (msg.pinned_at ?? new Date().toISOString()) : null;
+  }
+  return !!appendMessage(clientId, next);
+}
+
+/** Every filename the coach has pinned — the retention sweep's keep-list. */
+export function pinnedFiles(clientId: string): Set<string> {
+  return new Set(
+    readThread(clientId)
+      .filter((m) => m.pinned_at && m.file)
+      .map((m) => m.file as string),
+  );
 }
 
 export function unreadCount(clientId: string, dir: ThreadDirection): number {

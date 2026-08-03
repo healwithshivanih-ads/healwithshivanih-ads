@@ -12,6 +12,7 @@ import { Icon } from "../ui";
 const TABS = [
   { href: "/m/today", label: "Today", icon: "activity" },
   { href: "/m/clients", label: "Clients", icon: "list" },
+  { href: "/m/meals", label: "Meals", icon: "meal" },
 ];
 
 export function TabBar() {
