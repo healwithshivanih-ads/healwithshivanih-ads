@@ -150,8 +150,9 @@ export async function buildGuidedAppData(
 
     // Per-diet dish pick: non-veg and Jain get their authored overrides;
     // veg + veg-egg run the default (eggs/fish arrive via the swap framework).
-    const pickDish = (s: { dish: string; nonveg?: string; jain?: string }): string => {
+    const pickDish = (s: { dish: string; nonveg?: string; egg?: string; jain?: string }): string => {
       if (sub.dietary_preference === "non_vegetarian" && s.nonveg) return s.nonveg;
+      if (sub.dietary_preference === "vegetarian_egg" && s.egg) return s.egg;
       if (sub.dietary_preference === "jain" && s.jain) return s.jain;
       return s.dish;
     };
@@ -212,6 +213,7 @@ export async function buildGuidedAppData(
         for (const s of d.slots) {
           used.add(normTitle(s.dish));
           if (s.nonveg) used.add(normTitle(s.nonveg));
+          if (s.egg) used.add(normTitle(s.egg));
           if (s.jain) used.add(normTitle(s.jain));
         }
     recipePack = [...used]

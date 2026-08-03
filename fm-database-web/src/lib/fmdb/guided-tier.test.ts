@@ -300,7 +300,7 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     for (const w of gut.sampleWeeks ?? [])
       for (const d of w.days)
         for (const s of d.slots)
-          for (const dish of [s.dish, s.nonveg, s.jain])
+          for (const dish of [s.dish, s.nonveg, s.egg, s.jain])
             if (dish && !titles.has(norm(dish))) missing.push(`${w.phase}/${d.dow}/${s.slot}: ${dish}`);
     expect(missing).toEqual([]);
   });
@@ -334,7 +334,7 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     const bad: string[] = [];
     for (const d of remove.days)
       for (const s of d.slots)
-        for (const dish of [s.dish, s.nonveg, s.jain]) {
+        for (const dish of [s.dish, s.nonveg, s.egg, s.jain]) {
           if (!dish) continue;
           const ing = ingByTitle.get(norm(dish)) ?? "";
           // sama/barnyard "rice" is a millet — match rice as its own ingredient word
@@ -347,7 +347,7 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
   it("no ragi porridge anywhere; at most one porridge per week", () => {
     const gut = getGuidedProtocol("gut-reset")!;
     for (const w of gut.sampleWeeks ?? []) {
-      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.jain].filter(Boolean)));
+      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter(Boolean)));
       expect(dishes.some((x) => /ragi porridge/i.test(x!))).toBe(false);
       expect(dishes.filter((x) => /porridge/i.test(x!)).length).toBeLessThanOrEqual(1);
     }
@@ -357,7 +357,7 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     const gut = getGuidedProtocol("gut-reset")!;
     const DAIRY = /curd|raita|lassi|yogurt|paneer|buttermilk/i;
     for (const w of gut.sampleWeeks ?? []) {
-      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.jain].filter(Boolean)));
+      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter(Boolean)));
       const hasDairy = dishes.some((x) => DAIRY.test(x!));
       expect(hasDairy).toBe(w.phase === "Rebalance");
     }
@@ -389,5 +389,8 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     expect(nv.meals[0].pills[0]).toBe("Masala scrambled eggs");
     const jn = (await buildGuidedAppData(mk("jain"), "Asia/Kolkata", new Date("2026-08-03T04:00:00Z")))!;
     expect(jn.meals[0].pills[0]).toBe("Foxtail millet pongal");
+    const ve = (await buildGuidedAppData({ ...mk("jain"), dietary_preference: "vegetarian_egg" as const }, "Asia/Kolkata", new Date("2026-08-03T04:00:00Z")))!;
+    expect(ve.meals[0].pills[0]).toBe("Masala scrambled eggs"); // egg breakfast…
+    expect(ve.meals[3].pills[0]).toBe("Masoor dal khichdi"); // …vegetarian dinner
   });
 });
