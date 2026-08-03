@@ -175,12 +175,18 @@ export async function sendPushToClient(
   if (!devices.length) return false;
 
   const body = JSON.stringify(payload);
+  // Android holds normal-priority pushes while the phone is dozing and
+  // delivers them in a later batch — which reads as "notifications don't
+  // work". A message from your coach is worth waking the radio for. TTL
+  // caps how long the push service will retry: a day-old "Shivani replied"
+  // is noise, since by then they have either seen it or she has followed up.
+  const options = { urgency: "high" as const, TTL: 12 * 60 * 60 };
   const dead: string[] = [];
   let sent = 0;
   await Promise.all(
     devices.map(async (device) => {
       try {
-        await webpush.sendNotification(device as webpush.PushSubscription, body);
+        await webpush.sendNotification(device as webpush.PushSubscription, body, options);
         sent += 1;
       } catch (e) {
         const status = (e as { statusCode?: number }).statusCode;

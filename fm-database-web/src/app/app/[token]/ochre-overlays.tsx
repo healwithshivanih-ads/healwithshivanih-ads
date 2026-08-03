@@ -863,6 +863,9 @@ function PushToggleSection() {
         return;
       }
       setOn(true);
+      // Whether the phone SHOWS it is the only thing that matters, and it is
+      // the one thing "subscribed successfully" does not tell you.
+      setNote(j.verified ? "Sent you a test notification just now — it should be on your screen. If nothing appeared, your phone is holding it back: open Settings → Apps → Chrome → Notifications and allow them, then check Battery isn't set to Restricted for Chrome." : "Turned on — but the test notification didn't go through. Try again in a moment.");
     } catch {
       setNote("Couldn't turn on notifications on this device.");
     }

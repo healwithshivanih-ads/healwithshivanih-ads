@@ -46,6 +46,7 @@ export function OchreChat({ firstName }: { firstName: string }) {
   const [error, setError] = useState<string | null>(null);
   const [emergency, setEmergency] = useState(false);
   const [pushState, setPushState] = useState<"unknown" | "on" | "off" | "asking" | "blocked">("unknown");
+  const [pushNote, setPushNote] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
   const load = useCallback(async () => {
@@ -95,7 +96,11 @@ export function OchreChat({ firstName }: { firstName: string }) {
         body: JSON.stringify({ token: c.token, action: "subscribe", subscription: sub.toJSON() }),
       });
       const j = await res.json().catch(() => ({}));
-      setPushState(res.ok && j.ok ? "on" : "off");
+      const ok = res.ok && j.ok;
+      setPushState(ok ? "on" : "off");
+      // A test lands on this device now, so "it doesn't work" is answered
+      // here rather than days later by a missed reply.
+      if (ok) setPushNote(j.verified ? "Sent you a test notification just now — it should be on your screen. If nothing appeared, your phone is holding it back: open Settings → Apps → Chrome → Notifications and allow them, then check Battery isn't set to Restricted for Chrome." : "Turned on — but the test notification didn't go through. Try again in a moment.");
     } catch {
       setPushState("off");
     }
@@ -207,6 +212,7 @@ export function OchreChat({ firstName }: { firstName: string }) {
           </button>
         </div>
       )}
+      {pushNote && <p className="chat-note">{pushNote}</p>}
       {pushState === "asking" && <p className="chat-note">Asking your phone…</p>}
       {pushState === "blocked" && sentSomething && (
         <p className="chat-note">

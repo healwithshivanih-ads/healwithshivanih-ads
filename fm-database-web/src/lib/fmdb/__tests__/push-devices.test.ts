@@ -87,3 +87,25 @@ describe("client push devices", () => {
     expect(await m.pushStatus("cl-y")).toEqual({ enabled: false, devices: 0 });
   });
 });
+
+describe("delivery options", () => {
+  it("sends at high urgency with a TTL — a dozing Android must not batch a coach reply", async () => {
+    const sent: unknown[] = [];
+    vi.doMock("web-push", () => ({
+      default: {
+        setVapidDetails: () => {},
+        sendNotification: (...a: unknown[]) => {
+          sent.push(a[2]);
+          return Promise.resolve({ statusCode: 201 });
+        },
+      },
+    }));
+    process.env.VAPID_PRIVATE_KEY = "test-key";
+    const m = await mod();
+    await m.saveSubscription("cl-x", device("phone"));
+    await m.sendPushToClient("cl-x", { title: "t", body: "b" });
+    expect(sent[0]).toMatchObject({ urgency: "high" });
+    expect((sent[0] as { TTL: number }).TTL).toBeGreaterThan(0);
+    vi.doUnmock("web-push");
+  });
+});

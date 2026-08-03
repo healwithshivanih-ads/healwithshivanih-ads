@@ -140,7 +140,13 @@ export async function sendPushToCoach(payload: {
   await Promise.all(
     subs.map(async (s) => {
       try {
-        await webpush.sendNotification(s.subscription, JSON.stringify(payload));
+        await webpush.sendNotification(s.subscription, JSON.stringify(payload), {
+          // See push-server.ts: normal priority gets deferred by a dozing
+          // phone, and a client message she sees four hours late is a client
+          // who waited four hours.
+          urgency: "high",
+          TTL: 12 * 60 * 60,
+        });
         sent += 1;
       } catch (e) {
         const status = (e as { statusCode?: number }).statusCode;

@@ -16,6 +16,7 @@ import {
   saveSubscription,
   removeSubscription,
   pushStatus,
+  sendPushToClient,
   type WebPushSubscription,
 } from "@/lib/fmdb/push-server";
 
@@ -50,7 +51,18 @@ export async function POST(req: NextRequest) {
         endpoint: sub.endpoint,
         keys: { p256dh: sub.keys.p256dh, auth: sub.keys.auth },
       });
-      return NextResponse.json({ ok: true, ...(await pushStatus(clientId)) });
+      // Prove it immediately, on the device that just asked. "Saved your
+      // subscription" and "your phone will actually show this" are different
+      // claims, and only the second one is what they wanted. A client who
+      // sees nothing now knows in five seconds instead of finding out days
+      // later by missing a reply — and the coach is out of the loop.
+      const verified = await sendPushToClient(clientId, {
+        title: "The Ochre Tree",
+        body: "Notifications are on — this is how a message from Shivani will look.",
+        url: "/",
+        tag: "push-check",
+      });
+      return NextResponse.json({ ok: true, verified, ...(await pushStatus(clientId)) });
     }
     if (action === "unsubscribe") {
       // With an endpoint only THIS device stops. A client turning
