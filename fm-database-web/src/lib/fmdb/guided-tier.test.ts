@@ -162,8 +162,8 @@ describe("buildGuidedAppData", () => {
     version: 1,
   };
 
-  it("week 1: guided tier, Remove headline, practices gated, no coach surfaces", () => {
-    const d = buildGuidedAppData(base, IST, new Date("2026-08-12T04:00:00Z"))!; // Wed of week 1
+  it("week 1: guided tier, Remove headline, practices gated, no coach surfaces", async () => {
+    const d = (await buildGuidedAppData(base, IST, new Date("2026-08-12T04:00:00Z")))!; // Wed of week 1
     expect(d.tier).toBe("guided");
     expect(d.client.week).toBe(1);
     expect(d.client.totalWeeks).toBe(12);
@@ -171,14 +171,17 @@ describe("buildGuidedAppData", () => {
     expect(d.guidedWeekly?.alsoActive).toContain("Replace");
     expect(d.guidedWeekly?.standardNote).toMatch(/standard programme/);
     // Week 1 of gut-reset: only the first practice is open (others start wk 3/5).
-    expect(d.practices.length).toBe(1);
+    expect(d.practices.length).toBe(1); // the DAILY list stays gated by week
     expect(d.practicesComingLater).toBe(2);
-    expect(d.somatic.length).toBe(1);
+    // …but the playable library rides along from day one (exemplar, issue 14)
+    expect(d.somatic.length).toBeGreaterThanOrEqual(8);
     // The ₹85k boundary: no WhatsApp, no supplements, no labs, no menus.
     expect(d.coach.whatsappNumber).toBe("");
     expect(d.supplements.length).toBe(0);
     expect(d.labVault).toBeNull();
-    expect(d.weekMenus.length).toBe(0);
+    // the sample menu now fills the food layer (exemplar, issue 13)
+    expect(d.weekMenus.length).toBe(1);
+    expect(d.menuIsSample).toBe(true);
     // Ribbon carries the REAL five phases.
     expect(d.planRef.phase.list.map((p) => p.name)).toEqual([
       "Remove",
@@ -192,23 +195,332 @@ describe("buildGuidedAppData", () => {
     expect(d.planRef.avoidWhy).toMatch(/allergic or intolerant/);
   });
 
-  it("before the start date it renders week zero, not week 1 actions", () => {
-    const d = buildGuidedAppData(base, IST, new Date("2026-08-08T04:00:00Z"))!;
+  it("before the start date it renders week zero, not week 1 actions", async () => {
+    const d = (await buildGuidedAppData(base, IST, new Date("2026-08-08T04:00:00Z")))!;
     expect(d.client.notStarted).toBe(true);
     expect(d.guidedWeekly?.title).toMatch(/^Week zero/);
     expect(d.guidedWeekly?.alsoActive).toEqual([]);
   });
 
-  it("week 6 opens all three practices; week 40 clamps to the final phase", () => {
-    const wk6 = buildGuidedAppData(base, IST, new Date("2026-09-16T04:00:00Z"))!;
+  it("week 6 opens all three practices; week 40 clamps to the final phase", async () => {
+    const wk6 = (await buildGuidedAppData(base, IST, new Date("2026-09-16T04:00:00Z")))!;
     expect(wk6.client.week).toBe(6);
     expect(wk6.practices.length).toBe(3);
-    const late = buildGuidedAppData(base, IST, new Date("2027-06-01T04:00:00Z"))!;
+    const late = (await buildGuidedAppData(base, IST, new Date("2027-06-01T04:00:00Z")))!;
     expect(late.client.week).toBe(12); // clamped
     expect(late.guidedWeekly?.title).toMatch(/^Rebalance/);
   });
 
-  it("returns null for an unknown protocol", () => {
-    expect(buildGuidedAppData({ ...base, protocol_slug: "nope" }, IST)).toBeNull();
+  it("returns null for an unknown protocol", async () => {
+    expect(await buildGuidedAppData({ ...base, protocol_slug: "nope" }, IST)).toBeNull();
+  });
+});
+
+describe("gut-reset exemplar — menus, library, about", () => {
+  const IST2 = "Asia/Kolkata";
+  const base2 = {
+    subscriber_id: "gd-test000002",
+    display_name: "Meera Test",
+    email: "m@example.com",
+    phone: "",
+    app_token: "b".repeat(32),
+    protocol_slug: "gut-reset",
+    dietary_preference: "" as const,
+    extra_protocols: [],
+    start_date: "2026-08-03",
+    payment_id: "pay_Y",
+    amount_paisa: 699900,
+    source: "web" as const,
+    status: "active" as const,
+    timezone: IST2,
+    purchased_at: "2026-08-03T03:30:00.000Z",
+    created_at: "2026-08-03T03:30:00.000Z",
+    updated_at: "2026-08-03T03:30:00.000Z",
+    version: 1,
+  };
+
+  it("every sample-week dish is an EXACT catalogue recipe (no AI-authored food)", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+    const titles = new Set(lib.map((l) => norm(l.recipe.title)));
+    const gut = getGuidedProtocol("gut-reset")!;
+    const missing: string[] = [];
+    for (const w of gut.sampleWeeks ?? [])
+      for (const d of w.days)
+        for (const s of d.slots)
+          for (const part of s.dish.split(" + "))
+            if (!titles.has(norm(part))) missing.push(`${w.phase}/${d.dow}: ${part}`);
+    expect(missing).toEqual([]);
+    // one sample week per menu era, 7 days each, 4 slots a day
+    expect((gut.sampleWeeks ?? []).map((w) => w.phase)).toEqual(["Remove", "Reinoculate", "Repair", "Rebalance"]);
+    for (const w of gut.sampleWeeks ?? []) {
+      expect(w.days.length).toBe(7);
+      for (const d of w.days) expect(d.slots.length).toBe(4);
+    }
+  });
+
+  it("week 1 renders the Remove sample menu, today's meals and openable recipes", async () => {
+    const d = (await buildGuidedAppData(base2, IST2, new Date("2026-08-05T04:00:00Z")))!; // Wed wk1
+    expect(d.menuIsSample).toBe(true);
+    expect(d.weekMenus.length).toBe(1);
+    expect(d.weekMenus[0].days.length).toBe(7);
+    expect(d.meals.length).toBe(4); // Breakfast/Lunch/Evening/Dinner
+    // Wednesday of the Remove week
+    expect(d.meals[0].pills[0]).toBe("Tofu bhurji with capsicum and tomato");
+    // meal overlay has the real method for today's dishes
+    expect((d.mealExtra["Lunch"]?.recipe ?? []).length).toBeGreaterThan(0);
+    // the pack carries every dish used across the four sample weeks
+    expect(d.recipePack.length).toBeGreaterThanOrEqual(35);
+  });
+
+  it("repair weeks switch the menu; the practice library is playable and client-voiced", async () => {
+    const d = (await buildGuidedAppData(base2, IST2, new Date("2026-09-09T04:00:00Z")))!; // wk 6 → Repair
+    expect(d.guidedWeekly?.title).toMatch(/^Repair/);
+    expect(d.weekMenus[0].nourishment).toMatch(/lining rebuilds/);
+    // library: ≥8 catalogue practices survive the motion-shape gate…
+    expect(d.somatic.length).toBeGreaterThanOrEqual(8);
+    // …the clinical why is replaced everywhere the library covers a slug
+    const bladder = d.somatic.find((s) => /bladder/i.test(s.why));
+    expect(bladder).toBeUndefined();
+    // about block present with library ids that resolve to somatic entries
+    expect(d.guidedAbout?.notice.length).toBeGreaterThan(2);
+    for (const id of d.guidedAbout?.practiceLibraryIds ?? [])
+      expect(d.somatic.some((s) => s.practiceId === id)).toBe(true);
+  });
+});
+
+describe("dietary variants — coach review round 1 (3 Aug)", () => {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+
+  it("every dish AND every override is an exact catalogue recipe", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const titles = new Set(lib.map((l) => norm(l.recipe.title)));
+    const gut = getGuidedProtocol("gut-reset")!;
+    const missing: string[] = [];
+    for (const w of gut.sampleWeeks ?? [])
+      for (const d of w.days)
+        for (const s of d.slots)
+          for (const dish of [s.dish, s.nonveg, s.egg, s.jain])
+            if (dish)
+              for (const part of dish.split(" + "))
+                if (!titles.has(norm(part))) missing.push(`${w.phase}/${d.dow}/${s.slot}: ${part}`);
+    expect(missing).toEqual([]);
+  });
+
+  it("what a Jain member SEES (override or fallback) never contains onion or garlic", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const ingByTitle = new Map(
+      lib.map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]),
+    );
+    const gut = getGuidedProtocol("gut-reset")!;
+    const violations: string[] = [];
+    for (const w of gut.sampleWeeks ?? [])
+      for (const d of w.days)
+        for (const s of d.slots) {
+          for (const part of (s.jain ?? s.dish).split(" + ")) {
+            const ing = ingByTitle.get(norm(part)) ?? "";
+            if (/\bonion|garlic\b/.test(ing)) violations.push(`${w.phase}/${d.dow}/${s.slot}: ${part}`);
+          }
+        }
+    expect(violations).toEqual([]);
+  });
+
+  it("the Remove week carries no rice, no dairy, and no wheat for ANY diet", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const ingByTitle = new Map(
+      lib.map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]),
+    );
+    const gut = getGuidedProtocol("gut-reset")!;
+    const remove = (gut.sampleWeeks ?? []).find((w) => w.phase === "Remove")!;
+    const bad: string[] = [];
+    for (const d of remove.days)
+      for (const s of d.slots)
+        for (const dish of [s.dish, s.nonveg, s.egg, s.jain]) {
+          if (!dish) continue;
+          const ing = ingByTitle.get(norm(dish)) ?? "";
+          // sama/barnyard "rice" is a millet — match rice as its own ingredient word
+          if (/\b(basmati|white rice|cooked rice|rice flour|poha|curd|yogurt|paneer|milk\b|wheat|maida|suji)\b/.test(ing) || /\brice\b(?! flour)/.test(ing.replace(/sama rice|barnyard rice/g, "")))
+            bad.push(`${d.dow}/${s.slot}: ${dish}`);
+        }
+    expect(bad).toEqual([]);
+  });
+
+  it("no ragi porridge anywhere; at most one porridge per week", () => {
+    const gut = getGuidedProtocol("gut-reset")!;
+    for (const w of gut.sampleWeeks ?? []) {
+      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter(Boolean)));
+      expect(dishes.some((x) => /ragi porridge/i.test(x!))).toBe(false);
+      expect(dishes.filter((x) => /porridge/i.test(x!)).length).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("dairy appears only in the Rebalance week", () => {
+    const gut = getGuidedProtocol("gut-reset")!;
+    const DAIRY = /curd|raita|lassi|yogurt|paneer|buttermilk/i;
+    for (const w of gut.sampleWeeks ?? []) {
+      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter(Boolean)));
+      const hasDairy = dishes.some((x) => DAIRY.test(x!));
+      expect(hasDairy).toBe(w.phase === "Rebalance");
+    }
+  });
+
+  it("non-veg subscribers get their variant; Jain get theirs", async () => {
+    const mk = (diet: "non_vegetarian" | "jain") => ({
+      subscriber_id: "gd-test000003",
+      display_name: "T",
+      email: "t@example.com",
+      phone: "",
+      app_token: "c".repeat(32),
+      protocol_slug: "gut-reset",
+      dietary_preference: diet,
+      extra_protocols: [],
+      start_date: "2026-08-03",
+      payment_id: "pay_Z",
+      amount_paisa: 699900,
+      source: "web" as const,
+      status: "active" as const,
+      timezone: "Asia/Kolkata",
+      purchased_at: "2026-08-03T03:30:00.000Z",
+      created_at: "2026-08-03T03:30:00.000Z",
+      updated_at: "2026-08-03T03:30:00.000Z",
+      version: 1,
+    });
+    // Monday of week 1 (Remove): nonveg breakfast override is the egg dish
+    const nv = (await buildGuidedAppData(mk("non_vegetarian"), "Asia/Kolkata", new Date("2026-08-03T04:00:00Z")))!;
+    expect(nv.meals[0].pills[0]).toBe("Masala scrambled eggs");
+    const jn = (await buildGuidedAppData(mk("jain"), "Asia/Kolkata", new Date("2026-08-03T04:00:00Z")))!;
+    expect(jn.meals[0].pills[0]).toBe("Foxtail millet pongal");
+    const ve = (await buildGuidedAppData({ ...mk("jain"), dietary_preference: "vegetarian_egg" as const }, "Asia/Kolkata", new Date("2026-08-03T04:00:00Z")))!;
+    expect(ve.meals[0].pills[0]).toBe("Masala scrambled eggs"); // egg breakfast…
+    expect(ve.meals[3].pills[0]).toBe("Masoor dal khichdi"); // …vegetarian dinner
+  });
+});
+
+describe("all four protocols — generalised menu enforcement", () => {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+  const allDishes = (w: NonNullable<ReturnType<typeof getGuidedProtocol>>["sampleWeeks"]) =>
+    (w ?? []).flatMap((wk) => wk.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter((x): x is string => !!x))));
+
+  it("every protocol ships one sample week per headline phase", () => {
+    for (const p of GUIDED_PROTOCOLS) {
+      expect((p.sampleWeeks ?? []).map((w) => w.phase), p.slug).toEqual(p.phases.map((ph) => ph.name).filter((n, i, a) => a.indexOf(n) === i && (p.slug !== "gut-reset" || n !== "Replace")));
+    }
+  });
+
+  it("every dish and override across ALL protocols is an exact catalogue recipe", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const titles = new Set((await loadLibraryRecipes()).map((l) => norm(l.recipe.title)));
+    const missing: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const s of d.slots)
+            for (const dish of [s.dish, s.nonveg, s.egg, s.jain])
+              if (dish)
+                for (const part of dish.split(" + "))
+                  if (!titles.has(norm(part))) missing.push(`${p.slug}/${w.phase}/${d.dow}: ${part}`);
+    expect(missing).toEqual([]);
+  });
+
+  it("what a Jain member sees is onion/garlic-free in EVERY protocol", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const bad: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const s of d.slots)
+            for (const part of (s.jain ?? s.dish).split(" + "))
+              if (/\bonion|garlic\b/.test(ing.get(norm(part)) ?? "")) bad.push(`${p.slug}/${w.phase}/${d.dow}/${s.slot}: ${part}`);
+    expect(bad).toEqual([]);
+  });
+
+  it("blood sugar: NO added-sugar ingredients and NO white-rice dishes, any week, any variant", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const bs = getGuidedProtocol("blood-sugar-balance")!;
+    const bad: string[] = [];
+    for (const cell of allDishes(bs.sampleWeeks)) for (const dish of cell.split(" + ")) {
+      const i = ing.get(norm(dish)) ?? "";
+      if (/\b(sugar|jaggery|honey|maple)\b/.test(i)) bad.push(`sweet: ${dish}`);
+      if (/\b(basmati|white rice)\b/.test(i) || (/\brice\b/.test(i.replace(/sama rice|barnyard rice|rice flour/g, "")) && !/millet/.test(i))) bad.push(`rice: ${dish}`);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it("anti-inflammatory Remove week: no wheat, no added sugar, any variant", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const ai = getGuidedProtocol("anti-inflammatory-reset")!;
+    const remove = (ai.sampleWeeks ?? []).find((w) => w.phase === "Remove")!;
+    const bad: string[] = [];
+    for (const d of remove.days)
+      for (const s of d.slots)
+        for (const cell of [s.dish, s.nonveg, s.egg, s.jain]) {
+          if (!cell) continue;
+          for (const dish of cell.split(" + ")) {
+            const i = ing.get(norm(dish)) ?? "";
+            if (/\b(wheat|maida|suji|sugar|jaggery|honey)\b/.test(i)) bad.push(`${d.dow}/${s.slot}: ${dish}`);
+          }
+        }
+    expect(bad).toEqual([]);
+  });
+
+  it("no ragi porridge and ≤1 porridge/week holds across every protocol", () => {
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? []) {
+        const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter(Boolean)));
+        expect(dishes.some((x) => /ragi porridge/i.test(x!)), `${p.slug}/${w.phase}`).toBe(false);
+        expect(dishes.filter((x) => /porridge/i.test(x!)).length, `${p.slug}/${w.phase}`).toBeLessThanOrEqual(1);
+      }
+  });
+
+  it("every protocol now carries about + practice library", () => {
+    for (const p of GUIDED_PROTOCOLS) {
+      expect(p.about?.notice.length, p.slug).toBeGreaterThan(2);
+      expect((p.practiceLibrary ?? []).length, p.slug).toBeGreaterThanOrEqual(8);
+      expect(p.heroMidday, p.slug).toBeTruthy();
+    }
+  });
+});
+
+
+describe("menus are complete meals — coach review round 2 (3 Aug)", () => {
+  it("no dish repeats within the same day for any diet", () => {
+    const bad: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const diet of ["dish", "nonveg", "egg", "jain"] as const) {
+            const dayDishes = d.slots.map((s) => (diet === "dish" ? s.dish : (s[diet] ?? s.dish)));
+            const seen = new Set<string>();
+            for (const cell of dayDishes) {
+              if (seen.has(cell)) bad.push(`${p.slug}/${w.phase}/${d.dow} (${diet}): ${cell}`);
+              seen.add(cell);
+            }
+          }
+    expect(bad).toEqual([]);
+  });
+
+  it("lunch and dinner are complete meals — never a bare side, plain grain or lone salad", () => {
+    // one-pots and composed plates pass; sides must be compounded with "+"
+    const COMPLETE = /\+|khichdi|kitchari|kichari|pulao|pongal|upma|bowl|biryani|curry|masala|stew|soup|rasam|sambar|dal\b.*\+|misal|kadhi|paniyaram|thayir|poha/i;
+    const bad: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const s of d.slots) {
+            if (s.slot !== "Lunch" && s.slot !== "Dinner") continue;
+            for (const cell of [s.dish, s.nonveg, s.egg, s.jain]) {
+              if (!cell) continue;
+              const complete = COMPLETE.test(cell) || cell.includes(" + ");
+              if (!complete) bad.push(`${p.slug}/${w.phase}/${d.dow}/${s.slot}: ${cell}`);
+            }
+          }
+    expect(bad).toEqual([]);
   });
 });

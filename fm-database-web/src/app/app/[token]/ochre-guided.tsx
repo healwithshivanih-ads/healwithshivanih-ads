@@ -13,7 +13,7 @@
  * channels or "cheaper elsewhere" — it links out, neutrally.
  */
 
-import { Section } from "./ochre-ui";
+import { Accordion, Section } from "./ochre-ui";
 import { Icon, useOchre } from "./ochre-context";
 
 /** Where "Book an assessment" goes. Env-configurable so web + (later) Play
@@ -122,6 +122,12 @@ export function GuidedCoachScreen() {
           </span>
         </div>
       </Section>
+
+      {data.faq.length > 0 && (
+        <Section title="Common questions">
+          <Accordion items={data.faq} />
+        </Section>
+      )}
 
       {data.guidedWeekly && (
         <div className="card-quiet soon" style={{ marginTop: 14 }}>
