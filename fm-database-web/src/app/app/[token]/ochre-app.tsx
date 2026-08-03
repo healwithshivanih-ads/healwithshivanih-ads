@@ -193,7 +193,16 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const [welcomeBack, setWelcomeBack] = useState<{ toWeek: number } | null>(null);
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(STORE);
+      let raw = localStorage.getItem(STORE);
+      // Guided→1:1 upgrade: same token, new record id — carry the tree over.
+      // One-time: only when THIS id has no history yet and the old one does.
+      if (!raw && data.priorLocalStoreId) {
+        const prior = localStorage.getItem(`ochre.app.${data.priorLocalStoreId}`);
+        if (prior) {
+          localStorage.setItem(STORE, prior);
+          raw = prior;
+        }
+      }
       const s: Stored = raw ? JSON.parse(raw) : {};
       const day = todayIso();
       if (s.day === day) {

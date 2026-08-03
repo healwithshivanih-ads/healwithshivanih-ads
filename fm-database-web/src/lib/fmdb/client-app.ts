@@ -1293,6 +1293,9 @@ export interface ClientAppData {
   planUpdatedAt: string | null;
   /** Coach note to the client about what changed in this plan update. */
   clientUpdateNote: string | null;
+  /** Guided→1:1 upgrade: the old gd-* record id whose on-device history
+   *  (streak, tree, feel log) the app migrates one-time on first open. */
+  priorLocalStoreId?: string | null;
   /** Guided tier only — "what am I doing this week": the current phase's
    *  actions plus the standard-version disclosure. Absent/null for package
    *  and discovery, so existing builders need no change. */

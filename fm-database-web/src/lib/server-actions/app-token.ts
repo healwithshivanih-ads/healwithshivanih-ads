@@ -17,6 +17,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
+import { findActiveGuidedByEmail, markGuidedUpgraded } from "@/lib/fmdb/guided-tier";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { stageClientAppArtifacts, stageDiscoveryClientArtifacts } from "./letter-token";
@@ -65,7 +66,28 @@ export async function ensureClientAppToken(
   if (typeof data.app_token === "string" && data.app_token.length >= 16) {
     return { ok: true, token: data.app_token };
   }
-  const token = newAppToken();
+  // Guided → 1:1 upgrade: if this client's email belongs to an ACTIVE guided
+  // subscriber, ADOPT their token instead of minting a fresh one. Their
+  // installed app icon and link keep working and simply become the 1:1 app
+  // (client resolution runs before the guided branch). The guided record is
+  // marked upgraded so it stops resolving — one identity, no seam.
+  let token = "";
+  const email = typeof data.email === "string" ? data.email : "";
+  if (email) {
+    try {
+      const sub = await findActiveGuidedByEmail(email);
+      if (sub) {
+        token = sub.app_token;
+        // lets the app migrate on-device history (streak, tree) one-time
+        data.guided_prior_id = sub.subscriber_id;
+        await markGuidedUpgraded(sub.subscriber_id, clientId);
+      }
+    } catch {
+      /* adoption is best-effort — a broken guided record must never block
+         sharing the client app */
+    }
+  }
+  if (!token) token = newAppToken();
   data.app_token = token;
   data.app_token_created_at = new Date().toISOString();
   await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }), "utf-8");

@@ -47,7 +47,9 @@ export interface GuidedSubscriber {
   payment_id: string;
   amount_paisa: number;
   source: "web" | "play";
-  status: "active" | "refunded";
+  status: "active" | "refunded" | "upgraded";
+  /** Set when status === "upgraded": the client id whose app_token this became. */
+  upgraded_to?: string;
   timezone: string;
   purchased_at: string;
   created_at: string;
@@ -152,7 +154,8 @@ function coerce(d: Record<string, unknown>): GuidedSubscriber | null {
     payment_id: s(d.payment_id),
     amount_paisa: typeof d.amount_paisa === "number" ? d.amount_paisa : 0,
     source: d.source === "play" ? "play" : "web",
-    status: d.status === "refunded" ? "refunded" : "active",
+    status: d.status === "refunded" ? "refunded" : d.status === "upgraded" ? "upgraded" : "active",
+    ...(typeof d.upgraded_to === "string" && d.upgraded_to ? { upgraded_to: d.upgraded_to } : {}),
     timezone: s(d.timezone) || "Asia/Kolkata",
     purchased_at: s(d.purchased_at),
     created_at: s(d.created_at),
@@ -230,4 +233,32 @@ export async function createGuidedSubscriber(
   await withFsRetry(() => fs.mkdir(dir, { recursive: true }));
   await withFsRetry(() => fs.writeFile(subscriberFile(sub.subscriber_id), dumpYaml(sub), "utf8"));
   return { subscriber: sub, created: true };
+}
+
+/** Active subscriber with this email, if any (adoption lookup at client
+ *  onboarding — the guided→1:1 upgrade path). */
+export async function findActiveGuidedByEmail(email: string): Promise<GuidedSubscriber | null> {
+  const needle = email.trim().toLowerCase();
+  if (!needle) return null;
+  for (const id of await subscriberDirs()) {
+    const d = await readYamlFile(subscriberFile(id));
+    if (!d) continue;
+    const s = coerce(d);
+    if (s && s.status === "active" && s.email === needle) return s;
+  }
+  return null;
+}
+
+/** Mark a subscriber upgraded to a client. Their token now lives on the
+ *  client record (client resolution runs first), and the guided branch stops
+ *  resolving it (status filter) — one identity, no seam. */
+export async function markGuidedUpgraded(subscriberId: string, clientId: string): Promise<void> {
+  const f = subscriberFile(subscriberId);
+  const d = await readYamlFile(f);
+  if (!d) throw new Error(`guided subscriber not found: ${subscriberId}`);
+  d.status = "upgraded";
+  d.upgraded_to = clientId;
+  d.updated_at = new Date().toISOString();
+  d.version = (typeof d.version === "number" ? d.version : 1) + 1;
+  await withFsRetry(() => fs.writeFile(f, dumpYaml(d), "utf8"));
 }

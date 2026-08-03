@@ -8,6 +8,7 @@ import {
   createGuidedSubscriber,
   resolveGuidedSubscriberByToken,
   findGuidedByPaymentId,
+  markGuidedUpgraded,
 } from "./guided-tier";
 import { GUIDED_PROTOCOLS, getGuidedProtocol, phaseForWeek, alsoActivePhases } from "./guided-protocols";
 import { buildGuidedAppData } from "./guided-app";
@@ -522,5 +523,90 @@ describe("menus are complete meals — coach review round 2 (3 Aug)", () => {
             }
           }
     expect(bad).toEqual([]);
+  });
+});
+
+describe("guided → 1:1 upgrade — token adoption at first app share", () => {
+  let tmp: string;
+  const OLD = process.env.FMDB_PLANS_DIR;
+  beforeEach(async () => {
+    tmp = await fs.mkdtemp(path.join(os.tmpdir(), "guided-upgrade-"));
+    process.env.FMDB_PLANS_DIR = tmp;
+  });
+  afterEach(async () => {
+    process.env.FMDB_PLANS_DIR = OLD;
+    await fs.rm(tmp, { recursive: true, force: true });
+  });
+
+  const subInput = {
+    display_name: "Meera Upgrade",
+    email: "upgrade@example.com",
+    phone: "+911111111111",
+    protocol_slug: "gut-reset",
+    payment_id: "pay_UP1",
+    amount_paisa: 699900,
+    source: "web" as const,
+  };
+
+  async function writeClient(id: string, extra: Record<string, unknown> = {}) {
+    const dir = path.join(tmp, "clients", id);
+    await fs.mkdir(dir, { recursive: true });
+    const yaml = (await import("js-yaml")).default;
+    await fs.writeFile(
+      path.join(dir, "client.yaml"),
+      yaml.dump({ client_id: id, display_name: "Meera Upgrade", email: "upgrade@example.com", ...extra }),
+      "utf8",
+    );
+  }
+  async function readClient(id: string): Promise<Record<string, unknown>> {
+    const yaml = (await import("js-yaml")).default;
+    return yaml.load(await fs.readFile(path.join(tmp, "clients", id, "client.yaml"), "utf8")) as Record<string, unknown>;
+  }
+
+  it("adopts the active subscriber's token, records the prior id, and retires the guided record", async () => {
+    const { subscriber } = await createGuidedSubscriber(subInput);
+    await writeClient("cl-900");
+    const { ensureClientAppToken } = await import("../server-actions/app-token");
+    const res = await ensureClientAppToken("cl-900");
+    expect(res.ok).toBe(true);
+    if (!res.ok) return;
+    expect(res.token).toBe(subscriber.app_token); // same link keeps working
+    const c = await readClient("cl-900");
+    expect(c.app_token).toBe(subscriber.app_token);
+    expect(c.guided_prior_id).toBe(subscriber.subscriber_id); // tree migration key
+    // guided record retired → the guided branch stops resolving it
+    const after = await resolveGuidedSubscriberByToken(subscriber.app_token);
+    expect(after?.status).toBe("upgraded");
+    expect(after?.upgraded_to).toBe("cl-900");
+    // idempotent: second call returns the same token, changes nothing
+    const again = await ensureClientAppToken("cl-900");
+    expect(again.ok && again.token).toBe(subscriber.app_token);
+  });
+
+  it("a different email mints a fresh token and touches no guided record", async () => {
+    const { subscriber } = await createGuidedSubscriber(subInput);
+    await writeClient("cl-901", { email: "someoneelse@example.com" });
+    const { ensureClientAppToken } = await import("../server-actions/app-token");
+    const res = await ensureClientAppToken("cl-901");
+    expect(res.ok && res.token).not.toBe(subscriber.app_token);
+    const still = await resolveGuidedSubscriberByToken(subscriber.app_token);
+    expect(still?.status).toBe("active");
+  });
+
+  it("never clobbers an existing client token, even when a subscriber matches", async () => {
+    await createGuidedSubscriber(subInput);
+    await writeClient("cl-902", { app_token: "existingtoken1234567890abcd" });
+    const { ensureClientAppToken } = await import("../server-actions/app-token");
+    const res = await ensureClientAppToken("cl-902");
+    expect(res.ok && res.token).toBe("existingtoken1234567890abcd");
+  });
+
+  it("an upgraded or refunded subscriber is never adopted twice", async () => {
+    const { subscriber } = await createGuidedSubscriber(subInput);
+    await markGuidedUpgraded(subscriber.subscriber_id, "cl-old");
+    await writeClient("cl-903");
+    const { ensureClientAppToken } = await import("../server-actions/app-token");
+    const res = await ensureClientAppToken("cl-903");
+    expect(res.ok && res.token).not.toBe(subscriber.app_token); // fresh mint
   });
 });
