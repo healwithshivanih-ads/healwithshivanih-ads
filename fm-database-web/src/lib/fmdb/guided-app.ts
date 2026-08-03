@@ -12,11 +12,19 @@
  * stays deliberately empty. That emptiness is the ₹85,000 boundary, not a gap.
  */
 
-import type { ClientAppData } from "./client-app";
+import type { AppMeal, AppRecipe, AppWeekMenu, ClientAppData } from "./client-app";
+import { loadLibraryRecipes, splitDishComponents } from "./client-app";
 import { deriveSomatic } from "./somatic";
 import type { GuidedSubscriber } from "./guided-tier";
 import { guidedWeek } from "./guided-tier";
-import { getGuidedProtocol, phaseForWeek, alsoActivePhases, ALLERGY_OVERRIDE_LINE, type GuidedProtocol } from "./guided-protocols";
+import {
+  getGuidedProtocol,
+  phaseForWeek,
+  alsoActivePhases,
+  ALLERGY_OVERRIDE_LINE,
+  type GuidedProtocol,
+  type GuidedSampleWeek,
+} from "./guided-protocols";
 
 const DIET_CHIP: Record<string, { label: string; detail: string }> = {
   vegetarian: {
@@ -69,11 +77,24 @@ function weeksSpanLabel(startWeek: number, endWeek: number): string {
   return startWeek === endWeek ? `Wk ${startWeek}` : `Wk ${startWeek}–${endWeek}`;
 }
 
-export function buildGuidedAppData(
+const SLOT_META: Record<string, { timeHint: string; glyph: string }> = {
+  Breakfast: { timeHint: "8:00 – 9:00 am", glyph: "sun" },
+  Lunch: { timeHint: "12:30 – 1:30 pm", glyph: "bowl" },
+  Evening: { timeHint: "4:30 – 5:30 pm", glyph: "leaf" },
+  Dinner: { timeHint: "7:00 – 7:45 pm", glyph: "moon" },
+};
+
+const MEAL_GRAD = "linear-gradient(135deg, #4a6152, #31423a)";
+
+function normTitle(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+export async function buildGuidedAppData(
   sub: GuidedSubscriber,
   tz: string,
   now: Date = new Date(),
-): ClientAppData | null {
+): Promise<ClientAppData | null> {
   const protocol: GuidedProtocol | null = getGuidedProtocol(sub.protocol_slug);
   if (!protocol) return null;
 
@@ -110,6 +131,115 @@ export function buildGuidedAppData(
       .map((w) => w[0]?.toUpperCase() ?? "")
       .join("")
       .slice(0, 2) || "·";
+
+  // ── The food layer — the sample week for the CURRENT headline phase ──────
+  // Every dish is an exact catalogue recipe title (guided-protocols.ts rule);
+  // the library recipe renders verbatim. No menu for a phase → the principle
+  // framework carries the tab, exactly as before.
+  const sampleWeek: GuidedSampleWeek | null =
+    (protocol.sampleWeeks ?? []).find((w) => w.phase === phase.name) ?? null;
+
+  let weekMenus: AppWeekMenu[] = [];
+  let meals: AppMeal[] = [];
+  const mealExtra: ClientAppData["mealExtra"] = {};
+  let recipePack: AppRecipe[] = [];
+
+  if (sampleWeek) {
+    const library = await loadLibraryRecipes();
+    const byTitle = new Map(library.map((l) => [normTitle(l.recipe.title), l.recipe]));
+
+    const DOW_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const todayShort = DOW_SHORT[(t.dowIdx + 6) % 7];
+
+    weekMenus = [
+      {
+        week: 1,
+        current: true,
+        nourishment: sampleWeek.nourishment,
+        days: sampleWeek.days.map((d) => ({
+          dow: d.dow,
+          today: d.dow === todayShort || undefined,
+          slots: d.slots.map((s) => ({
+            slot: s.slot,
+            dish: s.dish,
+            components: splitDishComponents(s.dish),
+          })),
+        })),
+      },
+    ];
+
+    // Today's meals — the current day's column of the sample week.
+    const todayCol = sampleWeek.days.find((d) => d.dow === todayShort) ?? sampleWeek.days[0];
+    meals = todayCol.slots.map((s) => {
+      const lib = byTitle.get(normTitle(s.dish));
+      const meta = SLOT_META[s.slot] ?? { timeHint: "", glyph: "bowl" };
+      return {
+        slot: s.slot,
+        timeHint: meta.timeHint,
+        glyph: meta.glyph,
+        pills: [s.dish],
+        components: splitDishComponents(s.dish),
+        kcal: lib?.kcalPerServing,
+      };
+    });
+    for (const s of todayCol.slots) {
+      const lib = byTitle.get(normTitle(s.dish));
+      if (!lib) continue;
+      mealExtra[s.slot] = {
+        grad: MEAL_GRAD,
+        imageUrl: lib.imageUrl,
+        mins: lib.time,
+        serves: lib.serves ?? (lib.servingsNum ? String(lib.servingsNum) : undefined),
+        ingredients: lib.ingredients ?? [],
+        recipe: lib.method ?? [],
+        swaps: [],
+      };
+    }
+
+    // The pack: every dish used across ALL of this protocol's sample weeks.
+    const used = new Set<string>();
+    for (const w of protocol.sampleWeeks ?? [])
+      for (const d of w.days) for (const s of d.slots) used.add(normTitle(s.dish));
+    recipePack = [...used]
+      .map((k) => byTitle.get(k))
+      .filter((r): r is NonNullable<typeof r> => !!r)
+      .map((r) => ({
+        title: r.title,
+        serves: r.serves ?? (r.servingsNum ? String(r.servingsNum) : undefined),
+        servingsNum: r.servingsNum,
+        kcalPerServing: r.kcalPerServing,
+        time: r.time,
+        ingredients: r.ingredients ?? [],
+        ingredientsStructured: r.ingredientsStructured,
+        method: r.method ?? [],
+        tip: r.tip,
+        imageUrl: r.imageUrl,
+      }))
+      .sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  // ── The practice library — curated catalogue practices, all playable ─────
+  // Same deriver as the daily prescriptions (players need motion shapes);
+  // client-voiced `line` replaces the catalogue's clinical why on BOTH the
+  // library entries and any daily practice that appears in the library.
+  const libDefs = (protocol.practiceLibrary ?? []).filter(
+    (l) => !openDefs.some((d) => d.somatic_practice === l.slug),
+  );
+  const libPractices = libDefs.map((l, i) => ({
+    id: `gp-lib-${i}`,
+    name: l.slug.replace(/-/g, " "),
+    when: "Anytime",
+  }));
+  const libRaw: Dict[] = libDefs.map((l) => ({ somatic_practice: l.slug, cadence: "Anytime" }));
+  const librarySomatic = deriveSomatic(libPractices, libRaw).map((s) => {
+    const def = libDefs.find((l) => l.slug === s.slug);
+    return def ? { ...s, why: def.line } : s;
+  });
+  const dailySomatic = somatic.map((s) => {
+    const def = (protocol.practiceLibrary ?? []).find((l) => l.slug === s.slug);
+    return def ? { ...s, why: def.line } : s;
+  });
+  const allSomatic = [...dailySomatic, ...librarySomatic];
 
   const startLabel = new Intl.DateTimeFormat("en-GB", {
     timeZone: tz,
@@ -156,15 +286,15 @@ export function buildGuidedAppData(
     },
     today: { dow: t.dowLong, dateLabel: `${t.dom} ${t.monthShort}`, idx: t.dowIdx },
     weekStrip: buildWeekStrip(now, tz),
-    meals: [],
-    weekMenus: [],
-    menuIsSample: false,
-    recipePack: [],
+    meals,
+    weekMenus,
+    menuIsSample: weekMenus.length > 0,
+    recipePack,
     grocery: null,
     swapGroups: [],
     msqEntries: [],
     travel: null,
-    mealExtra: {},
+    mealExtra,
     supplements: [],
     upcomingSupplements: [],
     allSupplements: [],
@@ -174,7 +304,7 @@ export function buildGuidedAppData(
     seedCycling: null,
     periodCare: null,
     breathwork: null,
-    somatic,
+    somatic: allSomatic,
     eft: null,
     sleep: null,
     mindBody: null,
@@ -251,9 +381,16 @@ export function buildGuidedAppData(
       note: phase.note,
       items: phase.actions,
       alsoActive: notStarted ? [] : alsoActivePhases(protocol, week, phaseIdx),
+      middayLine: protocol.heroMidday ?? null,
       /** The standard-version disclosure — rendered on every guided surface. */
       standardNote:
         "This is the standard programme. It is not adapted to your labs, history or medications.",
     },
+    guidedAbout: protocol.about
+      ? {
+          ...protocol.about,
+          practiceLibraryIds: librarySomatic.map((s) => s.practiceId),
+        }
+      : null,
   };
 }

@@ -162,8 +162,8 @@ describe("buildGuidedAppData", () => {
     version: 1,
   };
 
-  it("week 1: guided tier, Remove headline, practices gated, no coach surfaces", () => {
-    const d = buildGuidedAppData(base, IST, new Date("2026-08-12T04:00:00Z"))!; // Wed of week 1
+  it("week 1: guided tier, Remove headline, practices gated, no coach surfaces", async () => {
+    const d = (await buildGuidedAppData(base, IST, new Date("2026-08-12T04:00:00Z")))!; // Wed of week 1
     expect(d.tier).toBe("guided");
     expect(d.client.week).toBe(1);
     expect(d.client.totalWeeks).toBe(12);
@@ -171,14 +171,17 @@ describe("buildGuidedAppData", () => {
     expect(d.guidedWeekly?.alsoActive).toContain("Replace");
     expect(d.guidedWeekly?.standardNote).toMatch(/standard programme/);
     // Week 1 of gut-reset: only the first practice is open (others start wk 3/5).
-    expect(d.practices.length).toBe(1);
+    expect(d.practices.length).toBe(1); // the DAILY list stays gated by week
     expect(d.practicesComingLater).toBe(2);
-    expect(d.somatic.length).toBe(1);
+    // …but the playable library rides along from day one (exemplar, issue 14)
+    expect(d.somatic.length).toBeGreaterThanOrEqual(8);
     // The ₹85k boundary: no WhatsApp, no supplements, no labs, no menus.
     expect(d.coach.whatsappNumber).toBe("");
     expect(d.supplements.length).toBe(0);
     expect(d.labVault).toBeNull();
-    expect(d.weekMenus.length).toBe(0);
+    // the sample menu now fills the food layer (exemplar, issue 13)
+    expect(d.weekMenus.length).toBe(1);
+    expect(d.menuIsSample).toBe(true);
     // Ribbon carries the REAL five phases.
     expect(d.planRef.phase.list.map((p) => p.name)).toEqual([
       "Remove",
@@ -192,23 +195,95 @@ describe("buildGuidedAppData", () => {
     expect(d.planRef.avoidWhy).toMatch(/allergic or intolerant/);
   });
 
-  it("before the start date it renders week zero, not week 1 actions", () => {
-    const d = buildGuidedAppData(base, IST, new Date("2026-08-08T04:00:00Z"))!;
+  it("before the start date it renders week zero, not week 1 actions", async () => {
+    const d = (await buildGuidedAppData(base, IST, new Date("2026-08-08T04:00:00Z")))!;
     expect(d.client.notStarted).toBe(true);
     expect(d.guidedWeekly?.title).toMatch(/^Week zero/);
     expect(d.guidedWeekly?.alsoActive).toEqual([]);
   });
 
-  it("week 6 opens all three practices; week 40 clamps to the final phase", () => {
-    const wk6 = buildGuidedAppData(base, IST, new Date("2026-09-16T04:00:00Z"))!;
+  it("week 6 opens all three practices; week 40 clamps to the final phase", async () => {
+    const wk6 = (await buildGuidedAppData(base, IST, new Date("2026-09-16T04:00:00Z")))!;
     expect(wk6.client.week).toBe(6);
     expect(wk6.practices.length).toBe(3);
-    const late = buildGuidedAppData(base, IST, new Date("2027-06-01T04:00:00Z"))!;
+    const late = (await buildGuidedAppData(base, IST, new Date("2027-06-01T04:00:00Z")))!;
     expect(late.client.week).toBe(12); // clamped
     expect(late.guidedWeekly?.title).toMatch(/^Rebalance/);
   });
 
-  it("returns null for an unknown protocol", () => {
-    expect(buildGuidedAppData({ ...base, protocol_slug: "nope" }, IST)).toBeNull();
+  it("returns null for an unknown protocol", async () => {
+    expect(await buildGuidedAppData({ ...base, protocol_slug: "nope" }, IST)).toBeNull();
+  });
+});
+
+describe("gut-reset exemplar — menus, library, about", () => {
+  const IST2 = "Asia/Kolkata";
+  const base2 = {
+    subscriber_id: "gd-test000002",
+    display_name: "Meera Test",
+    email: "m@example.com",
+    phone: "",
+    app_token: "b".repeat(32),
+    protocol_slug: "gut-reset",
+    dietary_preference: "" as const,
+    extra_protocols: [],
+    start_date: "2026-08-03",
+    payment_id: "pay_Y",
+    amount_paisa: 699900,
+    source: "web" as const,
+    status: "active" as const,
+    timezone: IST2,
+    purchased_at: "2026-08-03T03:30:00.000Z",
+    created_at: "2026-08-03T03:30:00.000Z",
+    updated_at: "2026-08-03T03:30:00.000Z",
+    version: 1,
+  };
+
+  it("every sample-week dish is an EXACT catalogue recipe (no AI-authored food)", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+    const titles = new Set(lib.map((l) => norm(l.recipe.title)));
+    const gut = getGuidedProtocol("gut-reset")!;
+    const missing: string[] = [];
+    for (const w of gut.sampleWeeks ?? [])
+      for (const d of w.days)
+        for (const s of d.slots) if (!titles.has(norm(s.dish))) missing.push(`${w.phase}/${d.dow}: ${s.dish}`);
+    expect(missing).toEqual([]);
+    // one sample week per menu era, 7 days each, 4 slots a day
+    expect((gut.sampleWeeks ?? []).map((w) => w.phase)).toEqual(["Remove", "Reinoculate", "Repair", "Rebalance"]);
+    for (const w of gut.sampleWeeks ?? []) {
+      expect(w.days.length).toBe(7);
+      for (const d of w.days) expect(d.slots.length).toBe(4);
+    }
+  });
+
+  it("week 1 renders the Remove sample menu, today's meals and openable recipes", async () => {
+    const d = (await buildGuidedAppData(base2, IST2, new Date("2026-08-05T04:00:00Z")))!; // Wed wk1
+    expect(d.menuIsSample).toBe(true);
+    expect(d.weekMenus.length).toBe(1);
+    expect(d.weekMenus[0].days.length).toBe(7);
+    expect(d.meals.length).toBe(4); // Breakfast/Lunch/Evening/Dinner
+    // Wednesday of the Remove week
+    expect(d.meals[0].pills[0]).toBe("Vegetable poha");
+    // meal overlay has the real method for today's dishes
+    expect((d.mealExtra["Lunch"]?.recipe ?? []).length).toBeGreaterThan(0);
+    // the pack carries every dish used across the four sample weeks
+    expect(d.recipePack.length).toBeGreaterThanOrEqual(35);
+  });
+
+  it("repair weeks switch the menu; the practice library is playable and client-voiced", async () => {
+    const d = (await buildGuidedAppData(base2, IST2, new Date("2026-09-09T04:00:00Z")))!; // wk 6 → Repair
+    expect(d.guidedWeekly?.title).toMatch(/^Repair/);
+    expect(d.weekMenus[0].nourishment).toMatch(/lining rebuilds/);
+    // library: ≥8 catalogue practices survive the motion-shape gate…
+    expect(d.somatic.length).toBeGreaterThanOrEqual(8);
+    // …the clinical why is replaced everywhere the library covers a slug
+    const bladder = d.somatic.find((s) => /bladder/i.test(s.why));
+    expect(bladder).toBeUndefined();
+    // about block present with library ids that resolve to somatic entries
+    expect(d.guidedAbout?.notice.length).toBeGreaterThan(2);
+    for (const id of d.guidedAbout?.practiceLibraryIds ?? [])
+      expect(d.somatic.some((s) => s.practiceId === id)).toBe(true);
   });
 });

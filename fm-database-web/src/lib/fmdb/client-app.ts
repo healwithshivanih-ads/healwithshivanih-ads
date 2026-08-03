@@ -1302,7 +1302,19 @@ export interface ClientAppData {
     items: string[];
     /** Other phases still running this week (5R's overlaps), by name. */
     alsoActive: string[];
+    /** Protocol-appropriate midday hero line (Today). */
+    middayLine?: string | null;
     standardNote: string;
+  } | null;
+  /** Guided tier only — the programme's introduction (Plan tab + week zero),
+   *  plus the practice-library players' ids for the Plan-tab library section. */
+  guidedAbout?: {
+    what: string;
+    arc: string;
+    notice: string[];
+    rightFor: string[];
+    assessFirst: string[];
+    practiceLibraryIds: string[];
   } | null;
 }
 
@@ -3458,7 +3470,7 @@ export async function loadClientAppData(
       //    only reached where we'd have returned null.
       const sub = await resolveGuidedSubscriberByToken(token);
       if (sub && sub.status === "active") {
-        const guidedData = buildGuidedAppData(sub, validTz(opts?.deviceTz) ?? sub.timezone);
+        const guidedData = await buildGuidedAppData(sub, validTz(opts?.deviceTz) ?? sub.timezone);
         if (guidedData) return guidedData;
       }
       return null;

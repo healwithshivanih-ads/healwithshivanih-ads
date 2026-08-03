@@ -52,7 +52,7 @@ function usePhaseNow(hour: number): PhaseNow {
       return {
         eyebrow: "Right now · Midday",
         title: "Lunch — make it the day's biggest meal",
-        sub: "Vegetables first, protein next, unhurried. The food framework is in your Plan.",
+        sub: guidedWeekly.middayLine || "Unhurried, and sitting down. The food framework is in your Plan.",
         cta: "See the food framework",
         target: "tab:plan",
         glyph: "bowl",
@@ -1167,7 +1167,11 @@ export function PlanScreen({
             </span>
             <span className="pc-body">
               <span className="pc-title">{data.menuIsSample ? "Sample menu" : "This week's menu"}</span>
-              <span className="pc-sub">Every day&apos;s meals + the grocery list — tap to browse</span>
+              <span className="pc-sub">
+                {data.grocery
+                  ? "Every day's meals + the grocery list — tap to browse"
+                  : "Every day's meals for this phase — tap to browse"}
+              </span>
             </span>
             <span className="pc-chev">
               <Icon name="chev" size={18} />
@@ -1182,6 +1186,55 @@ export function PlanScreen({
       {/* decode the household portions ("1 bowl", "½ cup", "1 katori") that
           appear on every dish above — a reference, reachable from its home
           on the Plan tab as well as inline under the menu. */}
+      {data.guidedAbout && (
+        <Section title="About this programme">
+          <div className="card" style={{ padding: "14px 16px" }}>
+            <div style={{ fontSize: 14.2, lineHeight: 1.62 }}>{data.guidedAbout.what}</div>
+            <div style={{ fontSize: 13.4, lineHeight: 1.6, color: "var(--muted)", marginTop: 10 }}>
+              {data.guidedAbout.arc}
+            </div>
+          </div>
+          <div className="card" style={{ padding: "14px 16px", marginTop: 10 }}>
+            <div className="eyebrow" style={{ marginBottom: 8 }}>What members commonly notice</div>
+            <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 6 }}>
+              {data.guidedAbout.notice.map((n, i) => (
+                <li key={i} style={{ fontSize: 13.8, lineHeight: 1.55 }}>{n}</li>
+              ))}
+            </ul>
+          </div>
+          <div style={{ marginTop: 10 }}>
+            <Accordion
+              items={[
+                { t: "Who this suits", b: data.guidedAbout.rightFor.join(" · ") },
+                { t: "When the assessment is the better start", b: data.guidedAbout.assessFirst.join(" · ") },
+              ]}
+            />
+          </div>
+        </Section>
+      )}
+
+      {data.guidedAbout && data.guidedAbout.practiceLibraryIds.length > 0 && (
+        <Section title="Practice library">
+          <div className="stack" style={{ gap: 8 }}>
+            {data.somatic
+              .filter((s) => data.guidedAbout!.practiceLibraryIds.includes(s.practiceId))
+              .map((s) => (
+                <Tile
+                  key={s.practiceId}
+                  icon="breath"
+                  t1={s.name}
+                  t2={s.why}
+                  onClick={() => openSomatic(s.practiceId)}
+                />
+              ))}
+          </div>
+          <div className="card-quiet soon" style={{ marginTop: 8 }}>
+            <Icon name="dot" size={10} style={{ color: "var(--muted)", flexShrink: 0 }} />
+            <span>All guided, two to five minutes. Your daily practice stays on Today — this shelf is for whenever you want more.</span>
+          </div>
+        </Section>
+      )}
+
       <button className="gro-launch" onClick={openPortions} style={{ marginTop: 4, marginBottom: 14 }}>
         <span className="gro-launch-ico" aria-hidden="true">
           <Icon name="bowl" size={18} />
