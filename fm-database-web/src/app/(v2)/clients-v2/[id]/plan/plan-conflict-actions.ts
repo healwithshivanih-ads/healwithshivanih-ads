@@ -13,6 +13,7 @@ import {
   type ConflictFix,
   type PlanConflict,
 } from "@/lib/fmdb/plan-conflicts";
+import { resolveFoodCautionFindings } from "@/lib/fmdb/food-cautions";
 
 /**
  * Run the rules-based conflict detector for a client + their active plan.
@@ -29,6 +30,10 @@ export async function runConflictCheckAction(
     const conflicts = detectPlanConflicts(
       client as unknown as Parameters<typeof detectPlanConflicts>[0],
       (plan as unknown as Record<string, unknown>) ?? null,
+      await resolveFoodCautionFindings(
+        client as unknown as Parameters<typeof resolveFoodCautionFindings>[0],
+        plan as unknown as Parameters<typeof resolveFoodCautionFindings>[1],
+      ),
     );
     return { ok: true, conflicts };
   } catch (err) {

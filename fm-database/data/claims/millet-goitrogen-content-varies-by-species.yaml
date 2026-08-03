@@ -1,0 +1,39 @@
+slug: millet-goitrogen-content-varies-by-species
+statement: Goitrogen content differs by roughly an order of magnitude ACROSS millet
+  species, so "millet" is too coarse a unit for a thyroid caution. Reported combined
+  thiocyanate and C-glycosyl flavone concentrations are 31-43 mg/kg in finger millet
+  (ragi), 15-541 mg/kg in pearl millet (bajra) — highly cultivar-dependent — and up
+  to 350 mg/kg in fonio. Foxtail and little millet are reported to carry negligible
+  amounts. Sorghum (jowar) carries tannins and polyphenols, a different compound class.
+evidence_tier: plausible_emerging
+rationale: Analytical concentrations reported consistently across a 2026 review and
+  the underlying cultivar-variability literature. Tiered plausible_emerging rather
+  than strong because the wide pearl-millet range reflects genuine cultivar variation
+  rather than measurement precision, and because this was captured at review level
+  rather than from primary methods.
+coaching_translation: Don't treat millets as one thing for a thyroid client. Bajra
+  is the one to keep occasional. Ragi sits at the low end and is fine cooked and a
+  few times a week. Foxtail and little millet are the easiest millets to rotate in.
+  This corrects the common shorthand that "millet is goitrogenic" — it is bajra that
+  drives that reputation.
+caveats:
+- The pearl-millet range is enormous (15-541 mg/kg) and cultivar-driven, so a given
+  batch cannot be assumed to sit at either end
+- Kodo and barnyard (sama) millet are not separately characterised in this source
+- Captured from a review abstract and search summaries, not from primary methods
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: goitrogens-in-millets-review-2026
+  location: Occurrence section
+  quote: The concentration of thiocyanate and C-glycosyl flavones in finger millet
+    ranged from 31 to 43 mg/kg, and from 15 to 541 and up to 350 mg/kg in pearl millet
+    and fonio contain, respectively.
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: Shivani

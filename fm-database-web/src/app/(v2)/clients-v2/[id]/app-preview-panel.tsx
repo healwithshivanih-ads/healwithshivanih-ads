@@ -41,6 +41,7 @@ import {
   type WeeklyMenuStatus,
 } from "@/lib/server-actions/weekly-menu";
 import type { MenuNutrition } from "@/lib/fmdb/menu-nutrients";
+import type { MenuStapleFlag } from "@/lib/fmdb/food-cautions";
 
 const btn: React.CSSProperties = {
   padding: "5px 12px",
@@ -58,6 +59,53 @@ const btn: React.CSSProperties = {
  * (recipe `nutrients_per_serving` name-matched to menu dishes) — surfaced so
  * the coach can spot a thin week before it goes live, not a hard gate.
  */
+/**
+ * Cautioned foods that have become the week's DEFAULT rather than an occasional.
+ *
+ * The half of a food caution that no per-dish check can see: a cooked ragi roti
+ * is fine for a hypothyroid client, and ragi in most meals of the week is the
+ * thing that is actually counter-advised — while every individual dish in that
+ * week looks innocent. Rule 15 asks the drafter to keep these occasional; this
+ * is where the coach sees whether it did.
+ *
+ * Advisory, like the nutrient strip beside it. Never blocks approval — the
+ * coach may have a reason, and a review gate that overrules her judgement on
+ * guidance (not safety) is the wrong shape.
+ */
+function MenuCautionStrip({ flags }: { flags: MenuStapleFlag[] }) {
+  return (
+    <div style={{ margin: "2px 0 10px", display: "flex", flexDirection: "column", gap: 6 }}>
+      {flags.map((f) => (
+        <div
+          key={f.cautionId}
+          title={`${f.coachNote}\n\nCounted in: ${f.dishes.join(" · ")}`}
+          style={{
+            display: "flex",
+            gap: 8,
+            alignItems: "baseline",
+            flexWrap: "wrap",
+            padding: "6px 10px",
+            borderRadius: 8,
+            fontSize: 11.5,
+            lineHeight: 1.45,
+            background: "rgba(214,162,58,0.10)",
+            border: "1px solid rgba(214,162,58,0.28)",
+            color: "var(--fm-text-secondary)",
+          }}
+        >
+          <span style={{ fontWeight: 700, color: "#8a6414" }}>
+            ⚠ {f.foodCounts.map((fc) => `${fc.food} ×${fc.count}`).join(", ")}
+          </span>
+          <span>
+            in {f.total} meals this week — that reads as a staple, not an occasional.{" "}
+            <span style={{ opacity: 0.85 }}>{f.label}.</span>
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function MenuNutrientStrip({ n }: { n: MenuNutrition }) {
   const nd = n.days.length || 1;
   const avgProtein = Math.round(n.days.reduce((a, d) => a + d.protein_g, 0) / nd);
@@ -476,6 +524,9 @@ export function AppPreviewPanel({
                 </div>
                 {weekly.pendingNutrition && (
                   <MenuNutrientStrip n={weekly.pendingNutrition} />
+                )}
+                {weekly.pendingCautionFlags.length > 0 && (
+                  <MenuCautionStrip flags={weekly.pendingCautionFlags} />
                 )}
                 <div style={{ display: "grid", gap: 3, fontSize: 12, marginBottom: 10 }}>
                   {weekly.pending.days.map((d, di) => {

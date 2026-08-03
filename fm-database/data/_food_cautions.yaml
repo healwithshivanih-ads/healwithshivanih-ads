@@ -1,0 +1,364 @@
+# ============================================================================
+# Condition ↔ food cautions — the NEGATIVE half of a recipe's `good_for`.
+#
+# WHY THIS FILE EXISTS
+# --------------------
+# Every food surface in the catalogue was positive-only or coach-typed:
+#
+#   _recipes/*.yaml        `good_for: [topic-slug]`, `contains_allergens`,
+#                          `aggravates_dosha`     — nothing says "careful here"
+#   _ingredient_nutrients  nutrition only, no safety axis
+#   home_remedies/*.yaml   HAS structured `contraindications` (read by
+#                          scripts/food_cautions.py since 2026-08-03; before
+#                          that meal_foods.py selected them without looking)
+#   supplements/*.yaml     structured Contraindications — but a grain is not a
+#                          supplement
+#   client.foods_to_avoid  hard-enforced, but nothing tells the coach what to type
+#
+# So `meal_foods.py::relevant_meal_foods()` could find foods that HELP a
+# condition and nothing could find foods that HARM one. Concretely: ragi
+# reached a hypothyroid client's weekly menu because generate-week-menu rule 11
+# actively rotates millets, ragi-roti is `good_for: [blood-sugar-regulation]`
+# so it scored well, and the three hard filters (diet / allergens /
+# foods_to_avoid) had no reason to stop it — while the knowledge that millet is
+# goitrogenic sat in claims/murray-goitrogens-cooked-vs-raw.yaml as prose that
+# gated nothing.
+#
+# FIVE RULES THIS FILE FOLLOWS
+# ---------------------------
+# 1. FOODS ARE KEYED BY `_ingredient_nutrients.yaml` KEY. That table's alias
+#    index already resolves all ~729 ingredient spellings in the recipe
+#    library. Adding a spelling means adding an alias THERE, never forking a
+#    second matching surface here. (Standing invariant — see CLAUDE.md v0.75.)
+#
+# 2. THIS DOWN-RANKS AND SURFACES. IT NEVER HARD-FILTERS. recipe_select.py's
+#    contract is "HARD filters are SAFETY only: dietary preference, allergens,
+#    foods-to-avoid". A goitrogen is not an allergen, and ragi is genuinely
+#    good for the same client's blood sugar and calcium. The coach stays the
+#    only one who can promote a caution into `foods_to_avoid`, which IS a hard
+#    filter. The one-way door stays hers.
+#
+# 3. `preparation_clears` IS LOAD-BEARING, NOT `severity`. The truth about ragi
+#    is not "banned" — it is "cook it, don't make it the daily staple". A blunt
+#    ban repeats the exact failure foods-to-avoid.ts was written to fix: when
+#    recording a nuance costs a client 149 recipes, the coach records it
+#    nowhere, and nowhere is the unsafe option.
+#
+#    `preparation_clears` means ONE thing: this preparation INACTIVATES the
+#    mechanism, so a dish prepared that way is demoted to `monitor`. It is
+#    `cooked` or it is null. It is NOT the place for "helps a bit" guidance —
+#    that goes in `preparation_note`, which changes no severity.
+#
+#    The distinction is the sources' own. Murray on goitrogens: "Cooking
+#    usually INACTIVATES goitrogens." Murray on oxalate: soaking and cooking
+#    "may help DECREASE oxalate levels". Inactivated earns a demotion;
+#    decreased does not. An earlier draft treated them alike and a word-scan
+#    for "soak" hit the paneer soaking in palak-paneer, quietly downgrading a
+#    real oxalate caution on a spinach dish. Do not re-merge these.
+#
+# 4. `claims` BACK-REFERENCE, THEY DO NOT RESTATE. The evidence lives once, in
+#    claims/. This file points at it so evidence-tier surfacing is free and
+#    there is no second copy to drift. Every active caution MUST cite at least
+#    one claim slug that exists — tested in food-cautions.test.ts.
+#
+# 5. DRUG-FOOD TIMING IS NOT DUPLICATED HERE. levothyroxine's "separate from
+#    calcium, soy and high-fibre meals by 4h" already lives in
+#    drug_depletions/levothyroxine.yaml and already reaches the coach through
+#    the plan-check drug_cautions path. `drugs:` cross-references it so the
+#    coach note can mention it; the authoritative rule stays in the drug entry.
+#
+# STATUS: reference asset. Underscore-prefixed, so `fmdb validate` skips it —
+# same footing as _ingredient_nutrients.yaml, _food_guidelines/ and
+# swap_groups.yaml. No Pydantic model, no loader change. Read by
+# scripts/food_cautions.py (Python) and src/lib/fmdb/food-cautions.ts (TS);
+# food-cautions.test.ts pins the two sides together.
+#
+# HOW TO ADD ONE: find or author the claim first. A caution with no claim is an
+# opinion, and this catalogue does not ship opinions as data. If the knowledge
+# is real but unsourced, add the entry with `status: needs_review` — it loads
+# for the coach's review queue and is ignored by every gate.
+# ============================================================================
+meta:
+  version: 1
+  description: >-
+    Condition-relevant food cautions, keyed by _ingredient_nutrients.yaml
+    ingredient key. Down-ranks recipes and surfaces a coach note; never a hard
+    filter. Authored from claims already in the catalogue — see rule 4 above.
+  severities:
+    avoid: >-
+      Genuinely contraindicated for this condition. Coach note is emphatic;
+      down-rank is heavy. Still not a hard filter — the coach promotes it into
+      foods_to_avoid if she agrees.
+    moderate: >-
+      Fine occasionally and in the right preparation; wrong as a daily staple.
+      This is where most real food cautions land.
+    monitor: >-
+      Worth the coach knowing, no change needed unless the client reacts.
+  mechanisms:
+    goitrogen: Blocks iodine uptake at the sodium-iodide symporter.
+    tpo_binding: Binds thyroid peroxidase directly — cooking does not clear it.
+    oxalate: Raises urinary oxalate; relevant to calcium-oxalate stones only.
+    purine: Raises urinary uric acid; relevant to uric-acid stones and gout.
+  # Only `cooked` and null. See header rule 3 — this field means "inactivates",
+  # not "reduces". Anything softer belongs in `preparation_note`.
+  preparation_values: [cooked]
+  statuses:
+    active: Loaded by every gate.
+    needs_review: >-
+      Loaded ONLY into the coach's review queue. Never down-ranks, never
+      appears in a menu prompt. Use for real-but-unsourced knowledge.
+
+cautions:
+  # ── thyroid ──────────────────────────────────────────────────────────────
+  # ── "millet is goitrogenic" is too coarse — three entries, not one ───────
+  #
+  # Murray Ch.68 names millet as a CLASS and says cooking inactivates
+  # goitrogens. The primary literature refines that in two ways that change
+  # what the coach should do, so the original single entry was split
+  # (2026-08-03):
+  #
+  #   1. CONTENT VARIES ~10x ACROSS SPECIES. Finger millet (ragi) 31-43 mg/kg
+  #      vs pearl millet (bajra) 15-541 mg/kg; foxtail and little millet
+  #      negligible. Bajra drives millet's goitrogenic reputation — ragi does
+  #      not, which inverts the usual shorthand.
+  #   2. BAJRA'S MECHANISM IS TPO INHIBITION, NOT THIOCYANATE. Gaitan et al.
+  #      identified C-glycosylflavones (vitexin, glycosylvitexin,
+  #      glycosylorientin) inhibiting thyroid peroxidase up to 85%; the
+  #      thiocyanate hypothesis was tested and discarded. That is soy's
+  #      mechanism, not cabbage's — so cooking does NOT clear it, and bajra
+  #      must not sit in the same `preparation_clears: cooked` bucket as the
+  #      brassicas.
+  #
+  # Do not re-merge these into one "millet" caution. The merge is what made
+  # the tool warn hardest about ragi, which is the mildest of them.
+  - id: goitrogen-brassica-thyroid
+    label: Raw brassicas and peanuts in hypothyroidism
+    status: active
+    severity: moderate
+    mechanism: goitrogen
+    # The classic cooking-clears case: glucosinolates need myrosinase, and heat
+    # denatures it. This is what Murray's "cooking usually inactivates
+    # goitrogens" is actually about.
+    preparation_clears: cooked
+    foods:
+      - cabbage
+      - kale
+      - broccoli
+      - cauliflower
+      - radish
+      - mustard-seeds
+      - dijon-mustard
+      - peanuts
+    condition_terms:
+      - hypothyroid
+      - hashimoto
+      - thyroiditis
+      - goitre
+      - goiter
+      - underactive thyroid
+      - subclinical hypothyroid
+    coach_note: >-
+      These block iodine uptake when RAW — cooking largely inactivates them, so
+      cooked brassicas are fine and actively useful (the sulforaphane supports
+      autoimmune detox). The real clinical concern is the daily raw green
+      smoothie or a large raw salad every day, not a cooked sabzi. Do not ban
+      the cruciferous family from a Hashimoto's plan.
+    claims:
+      - murray-goitrogens-cooked-vs-raw
+      - raw-cruciferous-vegetables-interfere-with-thyroid
+
+  - id: goitrogen-pearl-millet-thyroid
+    label: Bajra (pearl millet) in hypothyroidism
+    status: active
+    severity: moderate
+    # Same mechanism class as soy — see soy-thyroid below. Not `goitrogen`.
+    mechanism: tpo_binding
+    # Deliberately null. Cooking reduces total goitrogenic activity but does
+    # not inactivate a TPO-inhibiting flavone the way it inactivates a
+    # glucosinolate. Frequency is the lever here, not preparation.
+    preparation_clears: null
+    preparation_note: >-
+      Sustained dry heat (roasting) degrades the C-glycosylflavones more than a
+      brief boil does, so a roasted bajra preparation is preferable to a quick
+      one — but neither clears it. Rotation is the real lever.
+    foods:
+      - bajra-flour
+    condition_terms:
+      - hypothyroid
+      - hashimoto
+      - thyroiditis
+      - goitre
+      - goiter
+      - underactive thyroid
+      - subclinical hypothyroid
+    coach_note: >-
+      Bajra carries up to roughly ten times the goitrogen load of ragi
+      (15-541 mg/kg vs 31-43), and its active compound inhibits thyroid
+      peroxidase the way soy's does — so unlike the brassicas, cooking does not
+      switch it off. The human evidence is about millet as THE staple in a
+      marginally iodine-replete population, not about a bajra roti twice a
+      week: keep it a rotation grain and it is a non-issue. Worth knowing the
+      client's iodine status (iodised salt, mixed diet) before restricting
+      anything — the caution is much weaker in someone iodine-replete.
+    claims:
+      - pearl-millet-c-glycosylflavones-inhibit-tpo
+      - millet-goitrogen-content-varies-by-species
+      - pearl-millet-staple-intake-endemic-goitre
+    drugs:
+      - levothyroxine
+
+  - id: goitrogen-millet-other-thyroid
+    label: Ragi and other millets in hypothyroidism
+    status: active
+    severity: moderate
+    mechanism: goitrogen
+    preparation_clears: cooked
+    # `millet-foxtail` is deliberately ABSENT — foxtail and little millet are
+    # reported to carry negligible goitrogens, and cautioning them would cost
+    # a thyroid client the easiest millets to rotate in for nothing.
+    # `millet-generic` stays because unqualified "millet" is ambiguous.
+    foods:
+      - ragi
+      - millet-generic
+      - millet-cooked
+      - millet-kodo
+      - millet-sama
+      - jowar-flour
+    condition_terms:
+      - hypothyroid
+      - hashimoto
+      - thyroiditis
+      - goitre
+      - goiter
+      - underactive thyroid
+      - subclinical hypothyroid
+    coach_note: >-
+      Ragi sits at the LOW end of the millet range (31-43 mg/kg) and cooking
+      largely inactivates what is there, so a cooked ragi roti a few times a
+      week is fine — and ragi is genuinely good for this client's blood sugar
+      and calcium. What is not fine is ragi as the everyday flour: the human
+      evidence for millet and goitre is about staple-level intake. Rotate it
+      with wheat, rice and foxtail millet rather than restricting it.
+    claims:
+      - murray-goitrogens-cooked-vs-raw
+      - millet-goitrogen-content-varies-by-species
+      - pearl-millet-staple-intake-endemic-goitre
+    drugs:
+      # Timing rule lives in the drug entry — see header rule 5. Ragi is both
+      # calcium-rich (328 mg/serving in ragi-roti) and high-fibre (10.1 g),
+      # which is two of the three things that block levothyroxine absorption.
+      - levothyroxine
+
+  - id: soy-thyroid
+    label: Soy in autoimmune thyroid disease
+    status: active
+    severity: moderate
+    mechanism: tpo_binding
+    # Deliberately NO preparation_clears. The goitrogen entry above clears with
+    # cooking; soy does not, because isoflavones bind thyroid peroxidase by a
+    # different mechanism. Splitting these two apart is the reason this schema
+    # carries a preparation axis at all.
+    preparation_clears: null
+    foods:
+      - tofu
+    condition_terms:
+      - hypothyroid
+      - hashimoto
+      - thyroiditis
+      - underactive thyroid
+      - subclinical hypothyroid
+    coach_note: >-
+      Soy isoflavones bind thyroid peroxidase, so unlike the other goitrogens
+      cooking does NOT clear this one — moderation is the lever regardless of
+      preparation. Also separate soy from the levothyroxine dose by 4 hours.
+    claims:
+      - murray-goitrogens-cooked-vs-raw
+    drugs:
+      - levothyroxine
+
+  # ── kidney stones ────────────────────────────────────────────────────────
+  # Stone type dictates therapy and the therapies are OPPOSITE (see
+  # murray-stone-type-dictates-therapy): oxalate stones want oxalate down,
+  # uric-acid stones want purines down and urine alkalinised. Two entries, two
+  # condition_terms sets, on purpose — a single "kidney stones" caution would
+  # give half of stone formers the wrong advice.
+  - id: oxalate-calcium-stones
+    label: High-oxalate foods in calcium-oxalate stones
+    status: active
+    severity: moderate
+    mechanism: oxalate
+    # NOT `cooked` — see header rule 3. Soaking and boiling REDUCE oxalate,
+    # they do not inactivate it, so a cooked spinach dish stays a full caution.
+    preparation_clears: null
+    preparation_note: >-
+      Soaking then boiling and discarding the water reduces the oxalate load —
+      worth doing, but it does not make a high-oxalate food a low-oxalate one.
+    # Murray's >50 mg/serving tier plus the >10 mg tier, intersected with the
+    # ingredient keys that actually exist in _ingredient_nutrients.yaml.
+    foods:
+      - spinach
+      - swiss-chard
+      - beetroot
+      - bhindi
+      - dried-figs
+      - buckwheat
+      - buckwheat-flour
+      - almonds
+      - almond-flour
+      - almond-butter
+      - peanuts
+      - sesame-seeds
+      - potato
+      - sweet-potato
+      - baingan
+      - chickpeas
+      - chickpeas-cooked
+    condition_terms:
+      - calcium oxalate
+      - oxalate stone
+      - kidney stone
+      - renal stone
+      - nephrolithiasis
+    coach_note: >-
+      For a calcium-oxalate stone former, dietary oxalate can be up to 80% of
+      urinary oxalate and they absorb it more readily than most. Soaking then
+      cooking reduces the load. Do NOT restrict dietary calcium to compensate —
+      that is the classic counterproductive move and raises oxalate absorption.
+    claims:
+      - murray-dietary-oxalate-load-and-sources
+      - spinach-oxalates-block-calcium
+      - soaking-cooking-reduces-oxalates
+      - murray-calcium-restriction-paradox
+
+  - id: purine-uric-acid
+    label: High-purine foods in uric-acid stones and gout
+    status: active
+    severity: moderate
+    mechanism: purine
+    preparation_clears: null
+    foods:
+      - lamb
+      - fish
+      - prawns
+      - chicken
+      - spinach
+      - asparagus
+      - chana-dal
+      - toor-dal
+      - urad-dal
+      - masoor-dal
+      - kidney-beans
+    condition_terms:
+      - gout
+      - uric acid
+      - hyperuricaemia
+      - hyperuricemia
+    coach_note: >-
+      For uric-acid stones and gout the lever is purine load — not oxalate and
+      not calcium. Organ meats, red meat, shellfish and oily fish out entirely;
+      dried legumes, spinach, asparagus, poultry and mushrooms in moderation.
+      Note this client already has a protein-floor suppression in the menu
+      drafter for a raised urate marker — the two work together.
+    claims:
+      - murray-purine-load-uric-acid-stones
+      - murray-stone-type-dictates-therapy

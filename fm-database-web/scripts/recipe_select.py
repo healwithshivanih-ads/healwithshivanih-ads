@@ -62,6 +62,33 @@ GOOD_FOR_FULL_WEIGHT_FREQ = 0.01 # a tag on ≤1% of the library earns the ceili
 SEASON_MATCH = 2.0               # dish is specifically in season
 SEASON_YEAR_ROUND = 1.0          # dish is tagged `all` — fine now, but not a match
 
+
+# ── condition ↔ food cautions (scripts/food_cautions.py) ───────────────────
+# Optional by construction: if the module or its data file is absent every
+# helper returns empty and scoring is byte-identical to before it existed.
+def _live_food_cautions(client: dict, plan: dict | None) -> list:
+    try:
+        import food_cautions
+        return food_cautions.live_cautions(client or {}, plan or {})
+    except Exception:
+        return []
+
+
+def _food_caution_penalty(recipe: dict, live: list) -> float:
+    try:
+        import food_cautions
+        return food_cautions.score_penalty(food_cautions.screen_recipe(recipe, live))
+    except Exception:
+        return 0.0
+
+
+def _food_caution_notes(recipe: dict, live: list) -> list[str]:
+    try:
+        import food_cautions
+        return [h.line() for h in food_cautions.screen_recipe(recipe, live)]
+    except Exception:
+        return []
+
 # ── locate the recipe store ────────────────────────────────────────────────
 def _recipes_dir() -> str:
     env = os.environ.get("FMDB_RECIPES_DIR")
@@ -281,7 +308,8 @@ def good_for_weights(recipes: list[dict]) -> dict[str, float]:
 def score_recipe(recipe: dict, doshas: set[str], season: str | None,
                  topics: set[str], region: str, weight_loss: bool,
                  lab_priorities: dict | None = None,
-                 gf_weights: dict | None = None) -> float:
+                 gf_weights: dict | None = None,
+                 food_cautions_live: list | None = None) -> float:
     s = 0.0
     bal = set(d.lower() for d in (recipe.get("balances_dosha") or []))
     agg = set(d.lower() for d in (recipe.get("aggravates_dosha") or []))
@@ -316,6 +344,13 @@ def score_recipe(recipe: dict, doshas: set[str], season: str | None,
     if lab_priorities:
         rich = {str(t).lower() for t in (recipe.get("rich_in") or [])}
         s += sum(w for tag, w in lab_priorities.items() if tag in rich)
+    # condition ↔ food cautions: DOWN-RANK, never exclude — same treatment as an
+    # aggravating dosha above, and for the same reason. Ragi is goitrogenic AND
+    # genuinely good for a hypothyroid client's blood sugar and calcium; the
+    # honest answer is "rank it lower", not "pretend it doesn't exist". Only
+    # `foods_to_avoid` removes a dish, and only the coach writes that.
+    if food_cautions_live:
+        s += _food_caution_penalty(recipe, food_cautions_live)
     return s
 
 # ── selection ──────────────────────────────────────────────────────────────
@@ -340,6 +375,7 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
         lab_priorities = lab_nutrient_priorities(client)
     except Exception:
         lab_priorities = {}
+    cautions_live = _live_food_cautions(client, plan)
 
     eligible = []
     for r in recipes:
@@ -348,7 +384,7 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
         if not is_safe(r, allergies, avoid):
             continue
         eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss,
-                                      lab_priorities, gf_weights), r))
+                                      lab_priorities, gf_weights, cautions_live), r))
     eligible.sort(key=lambda x: x[0], reverse=True)
 
     # coverage: take up to `per_meal` per meal_type, then global cap
@@ -379,27 +415,37 @@ def _fmt_rows(recipes, weight_loss=False) -> str:
         out.append(f"  • [{mt}] {r.get('name')} — {one}{kcal_s}")
     return "\n".join(out)
 
-def pinned_safety_warnings(client: dict, pinned: list) -> list:
-    """Flag coach-pinned recipes that conflict with the client's diet/allergens."""
+def pinned_safety_warnings(client: dict, pinned: list, plan: dict | None = None) -> list:
+    """Flag coach-pinned recipes that conflict with the client's diet/allergens.
+
+    Also surfaces condition ↔ food cautions. A pinned recipe is one the coach
+    chose deliberately, so this NEVER unpins anything — it just makes sure she
+    sees that the dish she pinned carries a caution for this client's
+    conditions, which is the whole point of pinning being a decision.
+    """
     dp = client.get("dietary_preference") or ""
     _, allergies = resolve_allergies(client)   # real allergens only; "None" is not one
     avoid = _tokens(client.get("foods_to_avoid"), client.get("reported_triggers"))
+    cautions_live = _live_food_cautions(client, plan)
     warns = []
     for r in pinned:
         if not diet_ok(r, dp):
             warns.append(f"{r.get('name')}: may not fit the '{dp}' diet")
         elif not is_safe(r, allergies, avoid):
             warns.append(f"{r.get('name')}: contains an allergen or avoided ingredient")
+        for note in _food_caution_notes(r, cautions_live):
+            warns.append(f"{r.get('name')}: {note}")
     return warns
 
-def build_block(pinned: list, fill: list, weight_loss=False, client=None) -> str:
+def build_block(pinned: list, fill: list, weight_loss=False, client=None,
+                plan=None) -> str:
     """pinned + fill are lists of recipe dicts. The block frames the library as a
     PREFERRED PALETTE — the AI is explicitly free to compose other dishes too."""
     if not pinned and not fill:
         return ""
     sections = []
     if pinned:
-        warns = pinned_safety_warnings(client or {}, pinned)
+        warns = pinned_safety_warnings(client or {}, pinned, plan)
         wtxt = ("\n  ⚠ COACH-PIN SAFETY CHECK: " + "; ".join(warns)) if warns else ""
         sections.append("COACH-SELECTED RECIPES (the coach chose these specifically for this "
                         "client — use them where they fit a meal):\n" + _fmt_rows(pinned, weight_loss) + wtxt)
@@ -444,7 +490,7 @@ def recipe_shortlist_for_letter(plan: dict, client: dict, weight_loss=None) -> s
     else:
         # No curated set on the plan → auto-suggest the best matches in the letter.
         fill = [r for _sc, r in select_recipes(recipes, client, plan, season=season, weight_loss=wl)]
-    return build_block(pinned, fill, weight_loss=wl, client=client)
+    return build_block(pinned, fill, weight_loss=wl, client=client, plan=plan)
 
 # ── auto-suggestion (coach prunes, never hand-picks) ───────────────────────
 def suggest_recipes_for_plan(client: dict, plan: dict, n: int = 16) -> list:

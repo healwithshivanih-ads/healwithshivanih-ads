@@ -66,6 +66,7 @@ import { SendEducationPackButton } from "@/components/client-widgets/send-educat
 // banner it served is gone; the coach regenerates from the letter editor.
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
+import { resolveFoodCautionFindings } from "@/lib/fmdb/food-cautions";
 import { PlanConflictPanel } from "./plan-conflict-panel";
 import { AppPreviewPanel } from "../app-preview-panel";
 import { StatusStrip, StatusStripLink } from "./status-strip";
@@ -364,6 +365,13 @@ export default async function PlanTabPage({
     ? detectPlanConflicts(
         client as unknown as Parameters<typeof detectPlanConflicts>[0],
         activePlan as unknown as Record<string, unknown>,
+        // Condition ↔ food cautions (rule 6) — catalogue knowledge the coach
+        // may not have to hand while editing, e.g. ragi being goitrogenic for
+        // a hypothyroid client. Resolved async because it reads the catalogue.
+        await resolveFoodCautionFindings(
+          client as unknown as Parameters<typeof resolveFoodCautionFindings>[0],
+          activePlan as unknown as Parameters<typeof resolveFoodCautionFindings>[1],
+        ),
       )
     : [];
 

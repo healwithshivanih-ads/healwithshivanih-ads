@@ -113,6 +113,17 @@ def _diet_excludes(client: dict) -> list[str]:
     return pats
 
 
+def _contraindicated_for(remedy: dict, client: dict) -> bool:
+    """True when this remedy's own `contraindications` name something on the
+    client's record. Delegates to food_cautions so the matching lives in one
+    place; degrades to False (current behaviour) if that module is absent."""
+    try:
+        from food_cautions import remedy_contraindication_hits
+        return bool(remedy_contraindication_hits(remedy, client))
+    except Exception:
+        return False
+
+
 def relevant_meal_foods(
     plan: dict, client: dict, max_n: int = 5, catalogue_root: Path | None = None
 ) -> list[dict]:
@@ -156,6 +167,14 @@ def relevant_meal_foods(
             continue
         matched = [n[0] for n in needs if any(k in ind_text or k in summ for k in n[2])]
         if not matched:
+            continue
+        # All 224 home_remedies carry a `contraindications` list and this
+        # selector read none of them until 2026-08-03 — golden-milk lists
+        # "active gallbladder disease" and "oxalate-restricted diets" and was
+        # woven into menus regardless. A remedy whose own contraindications
+        # name something on this client's record is not a therapeutic food for
+        # THIS client, whatever its indications say.
+        if _contraindicated_for(r, client):
             continue
         bal = [str(x).lower() for x in (r.get("balances_dosha") or [])]
         bal_hit = len([x for x in bal if x in doshas]) if doshas else 0
