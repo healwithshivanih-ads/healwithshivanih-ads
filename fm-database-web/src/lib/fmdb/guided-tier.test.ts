@@ -394,3 +394,88 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     expect(ve.meals[3].pills[0]).toBe("Masoor dal khichdi"); // …vegetarian dinner
   });
 });
+
+describe("all four protocols — generalised menu enforcement", () => {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+  const allDishes = (w: NonNullable<ReturnType<typeof getGuidedProtocol>>["sampleWeeks"]) =>
+    (w ?? []).flatMap((wk) => wk.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter((x): x is string => !!x))));
+
+  it("every protocol ships one sample week per headline phase", () => {
+    for (const p of GUIDED_PROTOCOLS) {
+      expect((p.sampleWeeks ?? []).map((w) => w.phase), p.slug).toEqual(p.phases.map((ph) => ph.name).filter((n, i, a) => a.indexOf(n) === i && (p.slug !== "gut-reset" || n !== "Replace")));
+    }
+  });
+
+  it("every dish and override across ALL protocols is an exact catalogue recipe", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const titles = new Set((await loadLibraryRecipes()).map((l) => norm(l.recipe.title)));
+    const missing: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const s of d.slots)
+            for (const dish of [s.dish, s.nonveg, s.egg, s.jain])
+              if (dish && !titles.has(norm(dish))) missing.push(`${p.slug}/${w.phase}/${d.dow}: ${dish}`);
+    expect(missing).toEqual([]);
+  });
+
+  it("what a Jain member sees is onion/garlic-free in EVERY protocol", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const bad: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const s of d.slots) {
+            const seen = s.jain ?? s.dish;
+            if (/\bonion|garlic\b/.test(ing.get(norm(seen)) ?? "")) bad.push(`${p.slug}/${w.phase}/${d.dow}/${s.slot}: ${seen}`);
+          }
+    expect(bad).toEqual([]);
+  });
+
+  it("blood sugar: NO added-sugar ingredients and NO white-rice dishes, any week, any variant", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const bs = getGuidedProtocol("blood-sugar-balance")!;
+    const bad: string[] = [];
+    for (const dish of allDishes(bs.sampleWeeks)) {
+      const i = ing.get(norm(dish)) ?? "";
+      if (/\b(sugar|jaggery|honey|maple)\b/.test(i)) bad.push(`sweet: ${dish}`);
+      if (/\b(basmati|white rice)\b/.test(i) || (/\brice\b/.test(i.replace(/sama rice|barnyard rice|rice flour/g, "")) && !/millet/.test(i))) bad.push(`rice: ${dish}`);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it("anti-inflammatory Remove week: no wheat, no added sugar, any variant", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const ai = getGuidedProtocol("anti-inflammatory-reset")!;
+    const remove = (ai.sampleWeeks ?? []).find((w) => w.phase === "Remove")!;
+    const bad: string[] = [];
+    for (const d of remove.days)
+      for (const s of d.slots)
+        for (const dish of [s.dish, s.nonveg, s.egg, s.jain]) {
+          if (!dish) continue;
+          const i = ing.get(norm(dish)) ?? "";
+          if (/\b(wheat|maida|suji|sugar|jaggery|honey)\b/.test(i)) bad.push(`${d.dow}/${s.slot}: ${dish}`);
+        }
+    expect(bad).toEqual([]);
+  });
+
+  it("no ragi porridge and ≤1 porridge/week holds across every protocol", () => {
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? []) {
+        const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.egg, s.jain].filter(Boolean)));
+        expect(dishes.some((x) => /ragi porridge/i.test(x!)), `${p.slug}/${w.phase}`).toBe(false);
+        expect(dishes.filter((x) => /porridge/i.test(x!)).length, `${p.slug}/${w.phase}`).toBeLessThanOrEqual(1);
+      }
+  });
+
+  it("every protocol now carries about + practice library", () => {
+    for (const p of GUIDED_PROTOCOLS) {
+      expect(p.about?.notice.length, p.slug).toBeGreaterThan(2);
+      expect((p.practiceLibrary ?? []).length, p.slug).toBeGreaterThanOrEqual(8);
+      expect(p.heroMidday, p.slug).toBeTruthy();
+    }
+  });
+});
