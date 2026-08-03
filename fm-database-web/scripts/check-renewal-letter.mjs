@@ -47,7 +47,11 @@ const briefNumbers = new Set(
   [...briefText.matchAll(/\d+(?:\.\d+)?/g)].map((m) => m[0]),
 );
 const sourced = (n) => briefNumbers.has(String(n).replace(/,/g, "")) || briefNumbers.has(String(n));
-const numbers = [...letter.matchAll(/(?<![\w₹])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)(?![\w])/g)]
+// The lookbehind must exclude a comma and a full stop as well as word
+// characters, or the scanner restarts INSIDE a formatted number: "₹85,000"
+// yielded a phantom "000" that matched no price and no briefing entry, and
+// refused a perfectly good letter. A gate that cries wolf gets switched off.
+const numbers = [...letter.matchAll(/(?<![\w₹,.])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)(?![\w,.]\d)/g)]
   .map((m) => m[1])
   .filter((n) => !/^(1|2|3|4|5|6|7|8|9|10|11|12|20|30)$/.test(n)); // small counts read as prose
 for (const n of new Set(numbers)) {
@@ -57,6 +61,14 @@ for (const n of new Set(numbers)) {
   if (!sourced(bare) && !sourced(n)) {
     refuse.push(`"${n}" appears in the letter but nowhere in the briefing — source it or cut it`);
   }
+}
+
+// ── an unfilled template must never reach a client ──────────────────────────
+// The price placeholder passed every other check, because it contains no
+// digits to source and no malformed number to reject. This is the one thing
+// that would have gone out looking obviously automated.
+for (const m of letter.matchAll(/<<[^>]*>>|\{\{[^}]*\}\}|\bTBC\b|\bTODO\b|\bXXX+\b|\[insert[^\]]*\]/gi)) {
+  refuse.push(`unfilled placeholder "${m[0]}" — fill it or cut it`);
 }
 
 // ── prices must be deliberate ───────────────────────────────────────────────
