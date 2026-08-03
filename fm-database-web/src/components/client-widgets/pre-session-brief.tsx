@@ -5,6 +5,7 @@ import { loadActivePlanItemsAction, type PlanSupplementItem, type PlanPracticeIt
 import { saveSessionAction } from "@/lib/server-actions/assess";
 import type { SessionSummary } from "@/lib/server-actions/assess";
 import type { Client } from "@/lib/fmdb/types";
+import { resolveAllergies } from "@/lib/fmdb/allergies";
 
 interface Props {
   client: Client;
@@ -67,7 +68,8 @@ function BriefContent({
   const name = (c.display_name as string | undefined) ?? (c.client_id as string);
   const conditions = (c.active_conditions as string[] | undefined) ?? [];
   const meds = (c.current_medications as string[] | undefined) ?? (c.medications as string[] | undefined) ?? [];
-  const allergies = (c.allergies as string[] | undefined) ?? (c.known_allergies as string[] | undefined) ?? [];
+  const allergy = resolveAllergies(c);
+  const allergies = allergy.items;
   const goals = (c.goals as string[] | undefined) ?? [];
   const ageBand = (c.age_band as string | undefined);
 
@@ -113,10 +115,18 @@ function BriefContent({
         {allergies.length > 0 && (
           <p className="text-xs"><strong>Allergies / intolerances:</strong> {allergies.join(", ")}</p>
         )}
+        {allergy.status === "none" && (
+          <p className="text-xs"><strong>Allergies:</strong> none — asked and confirmed.</p>
+        )}
+        {/* The brief exists to prime the coach for the room, so an unasked
+            allergy question belongs here as a prompt, not as a blank. */}
+        {allergy.status === "unknown" && (
+          <p className="text-xs text-amber-700"><strong>Allergies:</strong> never asked — worth confirming this session.</p>
+        )}
         {goals.length > 0 && (
           <p className="text-xs"><strong>Goals:</strong> {goals.join(", ")}</p>
         )}
-        {conditions.length === 0 && meds.length === 0 && allergies.length === 0 && (
+        {conditions.length === 0 && meds.length === 0 && allergies.length === 0 && goals.length === 0 && (
           <p className="text-xs text-muted-foreground italic">No clinical data on file.</p>
         )}
       </Section>

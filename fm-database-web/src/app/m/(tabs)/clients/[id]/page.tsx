@@ -9,6 +9,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { clientAppUrl, loadCoachCard } from "@/lib/fmdb/coach-mobile";
+import { resolveAllergies } from "@/lib/fmdb/allergies";
 import {
   Avatar,
   BackLink,
@@ -57,7 +58,8 @@ export default async function ClientCard({
   const email = g.email ? String(g.email) : null;
   const wa = waNumber(mobile);
   const tel = mobile?.replace(/[^\d+]/g, "");
-  const allergies = (g.known_allergies as string[]) ?? [];
+  const allergyState = resolveAllergies(g);
+  const allergies = allergyState.items;
   // Her own app, on the production host — see clientAppUrl for why absolute.
   const appUrl = clientAppUrl(
     (g.app_token as string | undefined) ?? card.plan?.letter_token,
@@ -116,13 +118,19 @@ export default async function ClientCard({
         </div>
       ) : null}
 
-      {/* Allergies lead: they're the thing that changes what you say. */}
+      {/* Allergies lead: they're the thing that changes what you say. And if
+          nobody has asked, THAT leads instead — an omitted row on the card you
+          check before phoning someone reads as "no allergies". */}
       {allergies.length ? (
         <div style={{ marginTop: 16, display: "flex", gap: 8, alignItems: "flex-start", color: "var(--fm-danger)" }}>
           <Icon name="alert" size="sm" />
           <div style={{ fontSize: "var(--fm-text-base)", color: "var(--fm-text-primary)" }}>
             <span className="m-em">Allergies</span> — {allergies.join(", ")}
           </div>
+        </div>
+      ) : allergyState.status === "unknown" ? (
+        <div style={{ marginTop: 16, fontSize: "var(--fm-text-sm)", color: "var(--fm-text-secondary)" }}>
+          Allergies not screened — never asked.
         </div>
       ) : null}
 

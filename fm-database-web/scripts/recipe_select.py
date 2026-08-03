@@ -24,11 +24,23 @@ Public API:
 - append_candidates(markdown, client_id, plan_slug) -> int
 """
 from __future__ import annotations
-import os, re, glob, math, datetime
+import os, re, glob, math, datetime, sys
 try:
     import yaml
 except Exception:                       # pragma: no cover
     yaml = None
+
+# Shared allergy tri-state (fm-database/fmdb/plan/allergies.py). This module is
+# imported by callers with differing sys.path setups, so put the engine root on
+# the path the same way _recipes_dir() locates the catalogue.
+sys.path.insert(
+    0,
+    os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        "fm-database",
+    ),
+)
+from fmdb.plan.allergies import resolve_allergies  # noqa: E402
 
 DOSHAS = {"vata", "pitta", "kapha"}
 MEAL_TYPES = ("breakfast", "lunch", "dinner", "snack", "side", "drink")
@@ -311,7 +323,7 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
                    per_meal=6, total=22):
     doshas = client_doshas(client)
     dp = client.get("dietary_preference") or ""
-    allergies = client.get("known_allergies") or client.get("allergies") or []
+    _, allergies = resolve_allergies(client)   # real allergens only; "None" is not one
     avoid = _tokens(client.get("foods_to_avoid"), client.get("reported_triggers"))
     # plan-level binding exclusions, if the caller routed them onto the plan
     nut = (plan or {}).get("nutrition") or {}
@@ -370,7 +382,7 @@ def _fmt_rows(recipes, weight_loss=False) -> str:
 def pinned_safety_warnings(client: dict, pinned: list) -> list:
     """Flag coach-pinned recipes that conflict with the client's diet/allergens."""
     dp = client.get("dietary_preference") or ""
-    allergies = client.get("known_allergies") or client.get("allergies") or []
+    _, allergies = resolve_allergies(client)   # real allergens only; "None" is not one
     avoid = _tokens(client.get("foods_to_avoid"), client.get("reported_triggers"))
     warns = []
     for r in pinned:

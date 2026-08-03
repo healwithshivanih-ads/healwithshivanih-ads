@@ -23,6 +23,7 @@ import { FmAppShell } from "@/components/fm";
 import { supplementDisplayName } from "@/lib/fmdb/supplement-display";
 import { clientQuickActions } from "../client-quick-actions";
 import { HeaderAvatar } from "../analyse/header-avatar";
+import { allergyEmptyLabel, resolveAllergies } from "@/lib/fmdb/allergies";
 
 export const dynamic = "force-dynamic";
 
@@ -192,10 +193,10 @@ export default async function SoapNotePage({
     asStrArr(c.current_medications).length > 0
       ? asStrArr(c.current_medications)
       : asStrArr(c.medications);
-  const allergies =
-    asStrArr(c.known_allergies).length > 0
-      ? asStrArr(c.known_allergies)
-      : asStrArr(c.allergies);
+  // Tri-state — a SOAP note is a clinical record; "none reported" must mean
+  // the client said none, not that nobody asked. See lib/fmdb/allergies.ts.
+  const allergy = resolveAllergies(c);
+  const allergies = allergy.items;
   const goals = asStrArr(c.goals);
   const dietaryPref = (c.dietary_preference as string | undefined) ?? "";
   const familyHistory = (c.family_history as string | undefined) ?? "";
@@ -435,7 +436,7 @@ export default async function SoapNotePage({
           </div>
           <div>
             <strong style={{ color: "#6b7280" }}>Allergies:</strong>{" "}
-            {allergies.length > 0 ? allergies.join(", ") : <span style={{ color: "#9ca3af", fontStyle: "italic" }}>none reported</span>}
+            {allergies.length > 0 ? allergies.join(", ") : <span style={{ color: "#9ca3af", fontStyle: "italic" }}>{allergyEmptyLabel(allergy.status).replace(/\.$/, "").toLowerCase()}</span>}
           </div>
           <div>
             <strong style={{ color: "#6b7280" }}>Diet:</strong>{" "}

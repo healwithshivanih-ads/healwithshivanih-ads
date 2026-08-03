@@ -35,6 +35,7 @@ import { FormChrome } from "./form-chrome";
 import { BristolStoolIcon } from "./bristol-stool-icon";
 import { PainBodyMap } from "./pain-body-map";
 import { DOSHA_QUIZ } from "@/lib/fmdb/dosha-quiz";
+import { NO_KNOWN_ALLERGIES, resolveAllergies } from "@/lib/fmdb/allergies";
 import {
   BRISTOL_TYPES,
   BOWEL_PATTERN,
@@ -2793,17 +2794,42 @@ export function IntakeForm({
             placeholder="e.g. Hypothyroidism"
           />
         </FG>
-        <FG
-          label="Known allergies"
-          optional="optional"
-          hint="Foods, medications, environment."
-        >
-          <ChipInput
-            value={state.known_allergies}
-            onChange={(v) => set("known_allergies", v)}
-            placeholder="e.g. Peanuts"
-          />
-        </FG>
+        {/* Allergies are answerable two ways, and that is the point. Left as
+            a bare optional chip box, 6 of the 7 clients who reached this
+            question skipped it — and downstream every consumer read the empty
+            list as "no allergies known", a negative nobody had established.
+            The tick box makes "none" a recordable ANSWER, so a blank field
+            can mean the one thing it should: not asked yet.
+            See lib/fmdb/allergies.ts. */}
+        {(() => {
+          const noneTicked =
+            resolveAllergies({ known_allergies: state.known_allergies }).status === "none";
+          return (
+            <FG
+              label="Known allergies"
+              hint="Foods, medications, environment. If you have none, tick the box — leaving this blank tells us nothing either way."
+            >
+              <ChipInput
+                value={noneTicked ? [] : state.known_allergies}
+                onChange={(v) => set("known_allergies", v)}
+                placeholder="e.g. Peanuts"
+              />
+              <label className={"fm-consent" + (noneTicked ? " fm-consent--on" : "")}>
+                <input
+                  type="checkbox"
+                  checked={noneTicked}
+                  onChange={(e) =>
+                    set("known_allergies", e.target.checked ? [NO_KNOWN_ALLERGIES] : [])
+                  }
+                />
+                <span className="fm-consent__box" aria-hidden="true" />
+                <span className="fm-consent__text">
+                  I have no known allergies.
+                </span>
+              </label>
+            </FG>
+          );
+        })()}
         <FG
           label="Current medications"
           optional="optional"

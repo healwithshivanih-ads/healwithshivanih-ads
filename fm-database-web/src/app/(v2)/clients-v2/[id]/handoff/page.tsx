@@ -18,6 +18,7 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { latestMeasurements } from "@/lib/fmdb/measurements";
 import { loadClientSessionsAction } from "@/lib/server-actions/assess";
+import { allergyEmptyLabel, resolveAllergies } from "@/lib/fmdb/allergies";
 import { HandoffActions, HandoffNote } from "./handoff-print";
 
 export const dynamic = "force-dynamic";
@@ -112,10 +113,10 @@ export default async function HandoffPage({
     asStrArr(c.current_medications).length > 0
       ? asStrArr(c.current_medications)
       : asStrArr(c.medications);
-  const allergies =
-    asStrArr(c.known_allergies).length > 0
-      ? asStrArr(c.known_allergies)
-      : asStrArr(c.allergies);
+  // Tri-state: a handoff sheet read by another clinician must not print
+  // "None reported." over a question nobody asked. See lib/fmdb/allergies.ts.
+  const allergy = resolveAllergies(c);
+  const allergies = allergy.items;
   const medicalHistory = asStrArr(c.medical_history);
   const familyHistory = (c.family_history as string | undefined) ?? "";
   const goals = asStrArr(c.goals);
@@ -302,7 +303,7 @@ export default async function HandoffPage({
 
           <SectionH>4 · Allergies</SectionH>
           {allergies.length === 0 ? (
-            <Empty>None reported.</Empty>
+            <Empty>{allergyEmptyLabel(allergy.status)}</Empty>
           ) : (
             <ul style={listStyle}>
               {allergies.map((a, i) => (
