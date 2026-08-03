@@ -18,14 +18,14 @@ rasa:
 - sweet
 - astringent
 main_ingredients:
-- sama (barnyard millet)
+- sama (little millet)
 - split mung dal
 - ghee
 - cumin seeds
 - ginger
 contains_allergens: []
 ingredients:
-- item: sama (barnyard millet)
+- item: sama (little millet)
   qty: '0.5'
   unit: cup
 - item: split mung dal (yellow moong)
@@ -81,7 +81,7 @@ good_for:
 - blood-sugar-regulation
 - anti-inflammatory-diet
 one_line: A light, tridoshic kitchari of split mung dal and quick-cooking sama millet.
-headnote: Sama (barnyard millet) stands in for rice here, giving a lighter grain that
+headnote: Sama (little millet) stands in for rice here, giving a lighter grain that
   still cooks down soft and soupy. A classic agni-reset meal that suits fasting days
   and gentle resets alike.
 attribution:
@@ -102,17 +102,17 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 234
-  protein_g: 4.5
+  kcal: 250
+  protein_g: 5.6
   carbs_g: 36.2
-  fat_g: 8.3
-  fibre_g: 6.6
-  iron_mg: 3.9
-  calcium_mg: 38.1
-  magnesium_mg: 55.1
-  zinc_mg: 1.7
-  potassium_mg: 308
-  folate_ug: 41.3
+  fat_g: 9.6
+  fibre_g: 5.6
+  iron_mg: 2.3
+  calcium_mg: 36.7
+  magnesium_mg: 59.2
+  zinc_mg: 1.2
+  potassium_mg: 253
+  folate_ug: 41.8
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 15.4
@@ -120,12 +120,11 @@ nutrients_per_serving:
 nutrient_coverage_pct: 88.5
 rich_in:
 - fibre
-- iron
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
-  key: millet-sama
+  key: millet-little
   g: 90.0
 - i: 1
   key: null

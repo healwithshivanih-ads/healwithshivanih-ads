@@ -24,7 +24,7 @@ main_ingredients:
 - ghee
 contains_allergens: []
 ingredients:
-- item: sama (barnyard millet)
+- item: sama (little millet)
   qty: '0.75'
   unit: cup
 - item: split yellow moong dal
@@ -68,7 +68,7 @@ steps:
 servings: '2'
 prep_time_min: 12
 cook_time_min: 25
-approx_kcal_per_serving: 390
+approx_kcal_per_serving: 413
 kcal_is_estimate: true
 protein_g: 12.0
 good_for:
@@ -96,22 +96,22 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 390
+kcal_per_serving: 413
 kcal_total: 520
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 390
-  protein_g: 12.0
+  kcal: 413
+  protein_g: 13.7
   carbs_g: 65.9
-  fat_g: 9.0
-  fibre_g: 10.8
-  iron_mg: 6.0
-  calcium_mg: 61.3
-  magnesium_mg: 105
-  zinc_mg: 3.1
-  potassium_mg: 652
-  folate_ug: 186
+  fat_g: 11.1
+  fibre_g: 9.3
+  iron_mg: 3.5
+  calcium_mg: 59.3
+  magnesium_mg: 111
+  zinc_mg: 2.3
+  potassium_mg: 570
+  folate_ug: 187
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 15.9
@@ -126,14 +126,14 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 kitchen_tested: false
 aliases:
 - Sama millet khichdi
 - Sama rice khichdi
 nutrient_lines:
 - i: 0
-  key: millet-sama
+  key: millet-little
   g: 135.0
 - i: 1
   key: moong-dal

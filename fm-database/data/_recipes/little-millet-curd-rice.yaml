@@ -97,32 +97,30 @@ status: active
 updated_at: '2026-08-03'
 updated_by: shivani
 nutrients_per_serving:
-  kcal: 301
-  protein_g: 10.5
-  carbs_g: 44.9
-  fat_g: 8.8
-  fibre_g: 5.0
-  iron_mg: 1.9
-  calcium_mg: 169
-  magnesium_mg: 80.8
-  zinc_mg: 1.7
-  potassium_mg: 361
-  folate_ug: 58.7
+  kcal: 265
+  protein_g: 8.9
+  carbs_g: 38.0
+  fat_g: 9.1
+  fibre_g: 4.1
+  iron_mg: 1.0
+  calcium_mg: 172
+  magnesium_mg: 64.8
+  zinc_mg: 1.6
+  potassium_mg: 321
+  folate_ug: 32.4
   b12_ug: 0.5
   vit_d_ug: 0.4
   vit_c_mg: 4.2
-  omega3_mg: 91.4
+  omega3_mg: 49.4
 nutrient_coverage_pct: 100.0
 rich_in:
-- fibre
 - calcium
-- magnesium
 nutrient_basis: ingredient_table_v1
 nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
-  key: millet-generic
-  g: 100.0
+  key: millet-little
+  g: 90.0
 - i: 1
   key: yogurt
   g: 183.75

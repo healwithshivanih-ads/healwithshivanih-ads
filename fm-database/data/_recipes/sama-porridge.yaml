@@ -46,22 +46,22 @@ ingredients:
   unit: ''
 steps:
 - Rinse the sama millet well.
-- Combine the millet with water (or thin milk), a pinch of salt, and chopped dates in a
-  pot.
+- Combine the millet with water (or thin milk), a pinch of salt, and chopped dates
+  in a pot.
 - Cook covered on low 15-20 minutes, stirring occasionally, until soft and creamy.
   Add more liquid if needed.
 - Stir in ghee and cardamom. Serve warm.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 419
+approx_kcal_per_serving: 434
 kcal_is_estimate: true
 protein_g: 11.3
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A creamy, lightly sweet sama millet porridge — a warm, easy-to-digest start to
-  the day.
+one_line: A creamy, lightly sweet sama millet porridge — a warm, easy-to-digest start
+  to the day.
 headnote: Slow-cooked sama millet porridge is grounding and soothing, naturally sweetened
   with dates and warmed with cardamom.
 attribution:
@@ -81,28 +81,29 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 419
+kcal_per_serving: 434
 kcal_total: 380
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 419
-  protein_g: 11.3
+  kcal: 434
+  protein_g: 12.5
   carbs_g: 71.3
-  fat_g: 11.4
-  fibre_g: 7.1
-  iron_mg: 2.9
-  calcium_mg: 311
-  magnesium_mg: 83.2
-  zinc_mg: 2.5
-  potassium_mg: 715
-  folate_ug: 34.0
+  fat_g: 12.8
+  fibre_g: 6.1
+  iron_mg: 1.2
+  calcium_mg: 310
+  magnesium_mg: 87.3
+  zinc_mg: 2.0
+  potassium_mg: 660
+  folate_ug: 34.4
   b12_ug: 1.2
   vit_d_ug: 2.5
   vit_c_mg: 0.0
   omega3_mg: 86.2
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
 - fibre
 - calcium
 - magnesium
@@ -111,13 +112,13 @@ rich_in:
 - b12
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 kitchen_tested: false
 aliases:
 - Sama millet porridge
 nutrient_lines:
 - i: 0
-  key: millet-sama
+  key: millet-little
   g: 90.0
 - i: 1
   key: milk
