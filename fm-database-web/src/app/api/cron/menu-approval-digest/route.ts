@@ -23,6 +23,7 @@ import yaml from "js-yaml";
 import nodemailer from "nodemailer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
+import { openRenewals } from "@/lib/fmdb/renewal-queue";
 
 export const dynamic = "force-dynamic";
 
@@ -53,7 +54,14 @@ export async function POST(req: NextRequest) {
   // deliberately stopped drafting for them, so nagging her to approve their
   // menu would undo the point of the pause.
   const actionable = queue.filter((r) => !r.onTravel && !r.dormantDays);
-  if (actionable.length === 0) {
+
+  // ── plans ending ────────────────────────────────────────────────────────
+  // Computed BEFORE the quiet-day return. A week with no menus due is exactly
+  // when a plan quietly runs out, and the guard below would otherwise swallow
+  // the one thing that is time-critical.
+  const renewals = openRenewals();
+
+  if (actionable.length === 0 && renewals.length === 0) {
     return NextResponse.json({ ok: true, sent: 0, reason: "nothing actionable (queue empty or all on travel)" });
   }
 
@@ -104,6 +112,29 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Folded into this email rather than sent as its own: a separate weekly mail
+  // is one more thing to notice, and this is already the message she opens in
+  // order to approve things.
+  const renewalHtml = renewals.length
+    ? `<p style="margin-top:22px;"><strong>📩 Plans ending (${renewals.length})</strong> — approve the letter here and it goes out on the day:</p><ul>${renewals
+        .map((r) => {
+          const when =
+            r.daysLeft < 0
+              ? `<span style="color:#b3402a;">ended ${Math.abs(r.daysLeft)}d ago</span>`
+              : r.daysLeft === 0
+                ? `<span style="color:#b3402a;">ends today</span>`
+                : `in ${r.daysLeft}d`;
+          const stage =
+            r.stage === "offer" ? "renewal letter" : r.stage === "overdue" ? "overdue" : "labs + heads-up";
+          const house = r.household.length
+            ? ` <span style="color:#b3402a;">· also renewing: ${esc(r.household.join(", "))}</span>`
+            : "";
+          return `<li><strong>${esc(r.clientName)}</strong> — ${when} (${r.weeks}wk) · ${stage}${house}</li>`;
+        })
+        .join("")}</ul>
+       <p style="color:#8d99ae;font-size:12px;">Nothing is drafted or sent automatically. Mark anyone who has decided not to continue and they stop appearing.</p>`
+    : "";
+
   const htmlBody = `
     <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.55;color:#2b2d42;">
       <p>Good morning 🌿</p>
@@ -114,6 +145,7 @@ export async function POST(req: NextRequest) {
       }
       <p>${count} client menu${count === 1 ? "" : "s"} need your attention today.</p>
       ${sections.join("")}
+      ${renewalHtml}
       <p style="margin-top:18px;"><a href="${appUrl}/dashboard-v2"
         style="background:#6b8e6b;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;">Open the dashboard →</a></p>
       <p style="color:#8d99ae;font-size:12px;margin-top:20px;">Automated digest from your FM coach app · nothing reaches a client until you approve.</p>
@@ -130,6 +162,15 @@ export async function POST(req: NextRequest) {
     (attention.length
       ? `NEEDS ATTENTION (no draft yet):\n${attention
           .map((r) => `  - ${nameOf.get(r.clientId) || r.clientId} (wk ${r.targetWeek})${r.behind ? " — current week missing" : ""}`)
+          .join("\n")}\n\n`
+      : "") +
+    (renewals.length
+      ? `PLANS ENDING:\n${renewals
+          .map(
+            (r) =>
+              `  - ${r.clientName} — ${r.daysLeft < 0 ? `ended ${Math.abs(r.daysLeft)}d ago` : r.daysLeft === 0 ? "ends today" : `in ${r.daysLeft}d`} (${r.weeks}wk)` +
+              (r.household.length ? ` [also renewing: ${r.household.join(", ")}]` : ""),
+          )
           .join("\n")}\n\n`
       : "") +
     `Dashboard: ${appUrl}/dashboard-v2`;
