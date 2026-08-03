@@ -99,6 +99,10 @@ meta:
     tpo_binding: Binds thyroid peroxidase directly — cooking does not clear it.
     oxalate: Raises urinary oxalate; relevant to calcium-oxalate stones only.
     purine: Raises urinary uric acid; relevant to uric-acid stones and gout.
+    phytate: >-
+      Chelates non-haem iron, zinc and calcium in the same meal. Note this one
+      does NOT argue for eating less of the food — millets are themselves an
+      iron source. The levers are preparation and supplement timing.
   # Only `cooked` and null. See header rule 3 — this field means "inactivates",
   # not "reduces". Anything softer belongs in `preparation_note`.
   preparation_values: [cooked]
@@ -201,6 +205,13 @@ cautions:
       client's iodine status (iodised salt, mixed diet) before restricting
       anything — the caution is much weaker in someone iodine-replete.
     claims:
+      # `pearl-millet-goitrogens-heat-stable-unlike-brassica` arrived
+      # independently, from the UAS Bengaluru millet-book ingest (PR #82),
+      # within minutes of this entry being authored from the primary
+      # literature. Same mechanism, same heat-stability conclusion, different
+      # route. Two independent sources agreeing is why this entry is not
+      # hedged further.
+      - pearl-millet-goitrogens-heat-stable-unlike-brassica
       - pearl-millet-c-glycosylflavones-inhibit-tpo
       - millet-goitrogen-content-varies-by-species
       - pearl-millet-staple-intake-endemic-goitre
@@ -275,6 +286,56 @@ cautions:
       - murray-goitrogens-cooked-vs-raw
     drugs:
       - levothyroxine
+
+  # ── iron / zinc status ───────────────────────────────────────────────────
+  - id: phytate-iron-zinc
+    label: Millet phytate in iron or zinc deficiency
+    status: active
+    # `monitor`, deliberately — and this is the entry that shows why the
+    # severity scale is not a proxy for "how bad is this food". Millets are
+    # themselves iron-rich (ragi-roti carries 4.1 mg/serving and is tagged
+    # rich_in: iron), so down-ranking them for an iron-deficient client would
+    # push away a food that is part of the answer. The whole intervention is
+    # preparation and supplement timing, which is what the note carries.
+    severity: monitor
+    mechanism: phytate
+    # Soaking, sprouting and fermenting REDUCE phytate substantially; they do
+    # not eliminate it, and the source says so. Header rule 3 — reduces is not
+    # inactivates, so this stays null and the guidance goes in the note.
+    preparation_clears: null
+    preparation_note: >-
+      Soak several hours or overnight and discard the soak water — that single
+      step is the highest-yield one. Fermented batters (idli, dosa, paddu,
+      adai) handle phytate better still, and are the traditional preparations
+      for exactly this reason. Add lemon or another vitamin C source to the
+      meal, and keep iron or zinc supplements a couple of hours clear of it.
+    # Unlike the goitrogen entries this covers ALL millets including foxtail —
+    # phytate is a property of the whole family, not a per-species one.
+    foods:
+      - ragi
+      - millet-generic
+      - millet-cooked
+      - millet-foxtail
+      - millet-kodo
+      - millet-sama
+      - bajra-flour
+      - jowar-flour
+    condition_terms:
+      - iron deficien
+      - anaemia
+      - anemia
+      - low ferritin
+      - zinc deficien
+    coach_note: >-
+      Phytate binds non-haem iron and zinc in the same meal, and it matters
+      exactly when millets stop being occasional and become the daily base —
+      which is what a millet-substitution plan does. This is NOT a reason to
+      pull millets from an anaemic client's plan: they are an iron source
+      themselves, and haem iron is largely unaffected. Fix it with preparation
+      and timing instead. Most relevant for menstruating women, vegetarians,
+      and anyone already low on ferritin or zinc.
+    claims:
+      - millet-phytate-mineral-binding-soak-and-ferment
 
   # ── kidney stones ────────────────────────────────────────────────────────
   # Stone type dictates therapy and the therapies are OPPOSITE (see

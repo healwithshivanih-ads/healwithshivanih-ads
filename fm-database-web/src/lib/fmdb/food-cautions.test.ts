@@ -129,12 +129,39 @@ describe("data integrity — _food_cautions.yaml", () => {
     expect(brassica.preparationClears).toBe("cooked");
   });
 
-  it("does not caution foxtail millet — it is the safe rotation grain", async () => {
+  it("does not caution foxtail millet for goitrogens — it is the safe rotation grain", async () => {
     // Reported negligible. Cautioning it would cost a thyroid client the
     // easiest millet to rotate in, for nothing — and rotation is the actual
-    // intervention.
-    const all = (await loadFoodCautions()).flatMap((c) => c.foods);
-    expect(all).not.toContain("millet-foxtail");
+    // intervention. Phytate is a separate, family-wide axis and DOES cover it.
+    const goitrogenFoods = (await loadFoodCautions())
+      .filter((c) => c.mechanism === "goitrogen" || c.mechanism === "tpo_binding")
+      .flatMap((c) => c.foods);
+    expect(goitrogenFoods).not.toContain("millet-foxtail");
+  });
+
+  it("cites the independently-ingested corroborating claim on bajra", async () => {
+    // pearl-millet-goitrogens-heat-stable-unlike-brassica came from the UAS
+    // Bengaluru millet-book ingest, reaching the same heat-stability
+    // conclusion by a different route. If it ever disappears from the
+    // catalogue this entry loses its strongest support and should be re-read.
+    const bajra = (await loadFoodCautions()).find(
+      (c) => c.id === "goitrogen-pearl-millet-thyroid",
+    )!;
+    expect(bajra.claims).toContain("pearl-millet-goitrogens-heat-stable-unlike-brassica");
+  });
+
+  it("the phytate caution covers ALL millets and barely down-ranks them", async () => {
+    // The entry that proves severity is not "how bad is this food". Millets are
+    // themselves iron-rich, so down-ranking them for an iron-deficient client
+    // would push away part of the answer. Preparation and timing are the levers.
+    const phytate = (await loadFoodCautions()).find((c) => c.id === "phytate-iron-zinc")!;
+    expect(phytate.severity).toBe("monitor");
+    expect(phytate.foods).toContain("millet-foxtail");
+    expect(phytate.foods).toContain("ragi");
+    expect(phytate.foods).toContain("bajra-flour");
+    // Reduces, not inactivates — so no clearing preparation, guidance in the note.
+    expect(phytate.preparationClears).toBeNull();
+    expect(phytate.preparationNote).toMatch(/soak/i);
   });
 
   it("the oxalate caution does not claim a clearing preparation", async () => {
@@ -166,6 +193,16 @@ describe("condition matching", () => {
     const gout = liveFoodCautions(GOUT, await load()).map((c) => c.id);
     expect(stones).toEqual(["oxalate-calcium-stones"]);
     expect(gout).toEqual(["purine-uric-acid"]);
+  });
+
+  it("fires only the phytate caution for an iron-deficient client", async () => {
+    // Not the thyroid ones — millets are relevant to both, for different
+    // reasons, and firing the goitrogen note at an anaemic client would be
+    // noise she has to dismiss every time.
+    const anaemic = { active_conditions: ["Iron deficiency anaemia", "Heavy periods"] };
+    expect(liveFoodCautions(anaemic, await load()).map((c) => c.id)).toEqual([
+      "phytate-iron-zinc",
+    ]);
   });
 
   it("fires nothing for an unrelated condition", async () => {
