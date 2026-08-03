@@ -83,6 +83,7 @@ export async function sendCoachMessageAction(
     notified = await notifyClientOfCoachReply(clientId, {
       appUrl: clientAppUrl(client?.app_token) ?? undefined,
       phone: client?.mobile_number ?? null,
+      messageId: stored.id,
     });
   } catch (err) {
     console.error("[client-chat] notify failed:", err);

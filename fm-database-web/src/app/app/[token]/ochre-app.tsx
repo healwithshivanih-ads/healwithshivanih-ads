@@ -136,6 +136,17 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const [booting, setBooting] = useState(true);
   const [fading, setFading] = useState(false);
   const [tab, setTab] = useState("today");
+  /**
+   * Unread messages from the coach.
+   *
+   * Polled rather than pushed on purpose. Push is the right mechanism and we
+   * send it, but at least one client's phone accepts every push and displays
+   * none of them — an Android battery setting we cannot reach from here. A
+   * client who cannot be notified must still be able to SEE that a reply is
+   * waiting, so the app asks while it is open, and the count sits on the
+   * Coach tab where they would go anyway.
+   */
+  const [coachUnread, setCoachUnread] = useState(0);
   const [logged, setLogged] = useState<Record<string, string>>({});
   const [practicesDone, setPracticesDone] = useState<Record<string, boolean>>({});
   const [submittedWeek, setSubmittedWeek] = useState<number>(0);
@@ -255,6 +266,44 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     window.addEventListener("appinstalled", onInstalled);
     return () => window.removeEventListener("appinstalled", onInstalled);
   }, [data.token]);
+
+  useEffect(() => {
+    const token = data.token;
+    if (!token) return;
+    let stop = false;
+    const check = async () => {
+      // Only while the app is actually on screen: polling a backgrounded tab
+      // spends the client's battery to learn something they cannot see.
+      if (typeof document !== "undefined" && document.visibilityState !== "visible") return;
+      try {
+        const res = await fetch("/api/app-chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token, action: "unread" }),
+        });
+        const j = await res.json();
+        if (!stop && j?.ok) setCoachUnread(j.unread ?? 0);
+      } catch {
+        // Offline: keep the last known count rather than clearing it, so a
+        // dropped connection cannot make a waiting message look answered.
+      }
+    };
+    void check();
+    const id = setInterval(check, 60_000);
+    const onShow = () => void check();
+    document.addEventListener("visibilitychange", onShow);
+    return () => {
+      stop = true;
+      clearInterval(id);
+      document.removeEventListener("visibilitychange", onShow);
+    };
+  }, [data.token]);
+
+  // Opening the Coach tab IS reading them — the chat marks them read server
+  // side, so clear immediately rather than leaving a stale count for a minute.
+  useEffect(() => {
+    if (tab === "coach") setCoachUnread(0);
+  }, [tab]);
 
   // Show the banner when the plan changed since the client last saw it —
   // either a new published version (slug changed) OR an in-place edit such as
@@ -723,7 +772,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
             {screen}
           </main>
           {!onboarding && (
-            <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} discovery={discovery} />
+            <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} coachUnread={coachUnread} discovery={discovery} />
           )}
 
           {!booting && <InstallPrompt />}

@@ -82,6 +82,8 @@ export const PUBLIC_PATH_PREFIXES = [
   // Fly under FLY_INTAKE_ONLY and messages vanish with no error the client
   // can see — the same silent failure app-practice shipped with.
   "/api/app-chat",
+  // Posted by the service worker, which has no session and no token.
+  "/api/push-receipt",
   "/api/app-push",
   // App reports it's running installed (adoption signal). Token-scoped.
   "/api/app-installed",

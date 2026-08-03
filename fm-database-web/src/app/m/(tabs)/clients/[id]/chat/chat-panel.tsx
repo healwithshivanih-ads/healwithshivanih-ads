@@ -158,6 +158,17 @@ export function ChatPanel({
                   {when(m.at)}
                   {/* The channel matters: WhatsApp costs money and expires. */}
                   {m.via === "whatsapp" ? " · WhatsApp" : ""}
+                  {/* Receipts on in-app messages only — WhatsApp gives us no
+                      such signal and a tick there would be invented. Read
+                      beats delivered beats sent; each is a strictly stronger
+                      fact than the one before. */}
+                  {m.dir === "outbound" && m.via === "app"
+                    ? m.read_at
+                      ? " · Read"
+                      : m.delivered_at
+                        ? " · Delivered"
+                        : " · Sent"
+                    : ""}
                 </div>
               </div>
             </div>

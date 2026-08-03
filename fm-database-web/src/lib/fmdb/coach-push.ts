@@ -130,6 +130,10 @@ export async function sendPushToCoach(payload: {
   body: string;
   url?: string;
   tag?: string;
+    /** Lets the receiving device confirm it drew this — see
+     *  /api/push-receipt. Omitted for notifications with no message behind
+     *  them, like the subscribe-time check. */
+    receipt?: { client: string; id: string };
 }): Promise<{ sent: number; pruned: number }> {
   if (!configured()) return { sent: 0, pruned: 0 };
   const subs = listCoachSubscriptions();

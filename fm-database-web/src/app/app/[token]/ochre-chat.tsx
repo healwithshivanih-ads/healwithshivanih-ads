@@ -27,7 +27,15 @@ import { Icon, useOchre } from "./ochre-context";
 import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
 import { isEmergency } from "@/lib/fmdb/triage";
 
-type Msg = { id: string; at: string; from: "me" | "coach"; text: string; via: string };
+type Msg = {
+  id: string;
+  at: string;
+  from: "me" | "coach";
+  text: string;
+  via: string;
+  /** Present on the client's own in-app messages: has it reached her phone? */
+  delivered?: boolean;
+};
 
 function when(iso: string): string {
   const d = new Date(iso);
@@ -173,7 +181,14 @@ export function OchreChat({ firstName }: { firstName: string }) {
           msgs.map((m) => (
             <div key={m.id} className={`chat-row ${m.from === "me" ? "mine" : "theirs"}`}>
               <div className="chat-bubble">{m.text}</div>
-              <div className="chat-meta">{when(m.at)}</div>
+              <div className="chat-meta">
+                {when(m.at)}
+                {m.from === "me" && m.via === "app"
+                  ? m.delivered
+                    ? " · Delivered"
+                    : " · Sent"
+                  : ""}
+              </div>
             </div>
           ))
         )}

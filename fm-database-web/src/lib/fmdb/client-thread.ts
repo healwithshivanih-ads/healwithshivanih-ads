@@ -44,6 +44,19 @@ export type ThreadMessage = {
    *  the client read it. One field, because "read" only ever means
    *  "read by whoever it was sent to". */
   read_at?: string | null;
+  /**
+   * When the recipient's DEVICE confirmed it arrived — reported by the
+   * service worker as it draws the notification, not inferred from the push
+   * service returning 201.
+   *
+   * The difference is the whole point. A push service accepting a message
+   * says the message left; it says nothing about whether a phone ever showed
+   * it. Hariharan's phone has been accepting every send with a 201 while
+   * displaying none of them, and without this there is no way to tell a push
+   * that never arrived from one that arrived and was silently swallowed by a
+   * battery setting. Those have completely different fixes.
+   */
+  delivered_at?: string | null;
 };
 
 /** Origin-scoped filename. Anything that writes must go through this. */
@@ -125,7 +138,17 @@ export function dedupeSort(msgs: ThreadMessage[]): ThreadMessage[] {
     // Prefer the copy that carries a read stamp — read state may be written
     // on a different host than the message itself.
     const prev = seen.get(m.id);
-    if (!prev || (!prev.read_at && m.read_at)) seen.set(m.id, m);
+    // Keep the richest copy: a later append adds a stamp, never removes one.
+    if (!prev) {
+      seen.set(m.id, m);
+    } else {
+      seen.set(m.id, {
+        ...prev,
+        ...m,
+        read_at: m.read_at ?? prev.read_at ?? null,
+        delivered_at: m.delivered_at ?? prev.delivered_at ?? null,
+      });
+    }
   }
   return [...seen.values()].sort((a, b) =>
     a.at === b.at ? a.id.localeCompare(b.id) : a.at.localeCompare(b.at),
@@ -153,6 +176,7 @@ export function appendMessage(
     text: msg.text ?? "",
     ...(msg.file ? { file: msg.file } : {}),
     read_at: msg.read_at ?? null,
+    delivered_at: msg.delivered_at ?? null,
   };
   try {
     fs.appendFileSync(
@@ -185,6 +209,19 @@ export function markRead(clientId: string, dir: ThreadDirection): number {
 }
 
 /** Unread count in a direction — inbound is "waiting on the coach". */
+/**
+ * Record that a message reached the recipient's device.
+ *
+ * Idempotent and monotonic: the first confirmation wins, later ones are
+ * ignored, so a notification redrawn after a phone reboot cannot move the
+ * timestamp forward and make delivery look later than it was.
+ */
+export function markDelivered(clientId: string, messageId: string): boolean {
+  const msg = readThread(clientId).find((m) => m.id === messageId);
+  if (!msg || msg.delivered_at) return false;
+  return !!appendMessage(clientId, { ...msg, delivered_at: new Date().toISOString() });
+}
+
 export function unreadCount(clientId: string, dir: ThreadDirection): number {
   return readThread(clientId).filter((m) => m.dir === dir && !m.read_at).length;
 }
@@ -199,6 +236,9 @@ export function unreadCount(clientId: string, dir: ThreadDirection): number {
  * Hiding the channel would hide that.
  */
 export type ThreadView = {
+  /** Device-confirmed arrival. Absent on WhatsApp rows — we have no such
+   *  signal for them and must not imply one. */
+  delivered_at?: string | null;
   id: string;
   at: string;
   dir: ThreadDirection;
@@ -247,6 +287,7 @@ export function mergeForDisplay(
     kind: m.kind,
     ...(m.file ? { file: m.file } : {}),
     read_at: m.read_at ?? null,
+    delivered_at: m.delivered_at ?? null,
   }));
 
   for (const w of whatsapp) {
@@ -263,6 +304,9 @@ export function mergeForDisplay(
       // WhatsApp carries no read state we can see, and inventing one would
       // make "unread" mean two different things in the same list.
       read_at: undefined,
+      // WhatsApp history carries no receipts of ours — showing ticks on it
+      // would be inventing a fact.
+      delivered_at: undefined,
       ...(w.template_name ? { template_name: w.template_name } : {}),
     });
   }

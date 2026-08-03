@@ -44,7 +44,14 @@ function nudgeText(coachName = "Shivani"): string {
  */
 export async function notifyClientOfCoachReply(
   clientId: string,
-  opts: { appUrl?: string; phone?: string | null; coachName?: string } = {},
+  opts: {
+    appUrl?: string;
+    phone?: string | null;
+    coachName?: string;
+    /** The message this notification is for, so the phone can confirm it
+     *  arrived. Without it there is no delivery receipt — only a hope. */
+    messageId?: string;
+  } = {},
 ): Promise<NotifyOutcome> {
   const title = "The Ochre Tree";
   const body = nudgeText(opts.coachName);
@@ -59,6 +66,9 @@ export async function notifyClientOfCoachReply(
         // stacking — three notifications for three sentences is why people
         // turn notifications off.
         tag: `chat-${clientId}`,
+        ...(opts.messageId
+          ? { receipt: { client: clientId, id: opts.messageId } }
+          : {}),
       });
       if (sent) return { channel: "push", ok: true };
     }
@@ -122,7 +132,7 @@ export async function notifyClientOfCoachReply(
  */
 export async function notifyCoachOfClientMessage(
   clientId: string,
-  opts: { clientName?: string; preview?: string } = {},
+  opts: { clientName?: string; preview?: string; messageId?: string } = {},
 ): Promise<NotifyOutcome> {
   // Resolved here rather than at the call site: every caller has a client id
   // and none of them should have to know how a display name is looked up.
@@ -146,6 +156,7 @@ export async function notifyCoachOfClientMessage(
       body: preview.length > 120 ? `${preview.slice(0, 117)}…` : preview || "sent you a message",
       url: `/m/clients/${clientId}/chat`,
       tag: `client-${clientId}`,
+      ...(opts.messageId ? { receipt: { client: clientId, id: opts.messageId } } : {}),
     });
     // No devices registered is not an error — it is the state before she has
     // turned notifications on, and the roster still shows the unread count.

@@ -69,11 +69,17 @@ export function BottomNav({
   active,
   onChange,
   coachAlert,
+  coachUnread = 0,
   discovery,
 }: {
   active: string;
   onChange: (tab: string) => void;
   coachAlert: boolean;
+  /** Unread messages from the coach. Shown as a COUNT, not a dot: a client
+   *  whose phone never shows notifications — which is the situation for at
+   *  least one of them — has nothing else telling him a reply is waiting,
+   *  and "2" answers "is it worth opening?" in a way a dot cannot. */
+  coachUnread?: number;
   /** Consult tier — relabels the "today" slot as "Summary" (the Starting Map). */
   discovery?: boolean;
 }) {
@@ -85,7 +91,13 @@ export function BottomNav({
             <Icon name={t.icon} size={23} />
           </span>
           <span className="tl-label">{discovery && t.id === "today" ? "Summary" : t.label}</span>
-          {t.id === "coach" && coachAlert && <span className="dot-badge" />}
+          {t.id === "coach" && coachUnread > 0 ? (
+            <span className="num-badge" aria-label={`${coachUnread} unread messages`}>
+              {coachUnread > 9 ? "9+" : coachUnread}
+            </span>
+          ) : t.id === "coach" && coachAlert ? (
+            <span className="dot-badge" />
+          ) : null}
         </button>
       ))}
     </nav>

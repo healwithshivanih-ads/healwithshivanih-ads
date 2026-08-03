@@ -706,6 +706,14 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .tab.active .tl-label { font-weight: 600; }
 .tab .dot-badge { position: absolute; top: 5px; right: calc(50% - 16px); width: 7px; height: 7px; border-radius: 999px; background: var(--ochre); }
 
+.tab .num-badge {
+  position: absolute; top: 2px; right: calc(50% - 22px);
+  min-width: 16px; height: 16px; padding: 0 4px;
+  border-radius: 999px; background: var(--ochre); color: #fff;
+  font-size: 10px; font-weight: 700; line-height: 16px; text-align: center;
+  box-shadow: 0 0 0 2px var(--paper);
+}
+
 /* ---- contact sheet --------------------------------------------------- */
 .sheet-scrim {
   position: absolute; inset: 0; z-index: 80;

@@ -165,7 +165,16 @@ export async function pushStatus(
  */
 export async function sendPushToClient(
   clientId: string,
-  payload: { title: string; body: string; url?: string; tag?: string },
+  payload: {
+    title: string;
+    body: string;
+    url?: string;
+    tag?: string;
+    /** Lets the receiving device confirm it drew this — see
+     *  /api/push-receipt. Omitted for notifications with no message behind
+     *  them, like the subscribe-time check. */
+    receipt?: { client: string; id: string };
+  },
 ): Promise<boolean> {
   if (!ensureConfigured()) {
     console.error("[push] VAPID_PRIVATE_KEY not set — cannot notify", clientId);

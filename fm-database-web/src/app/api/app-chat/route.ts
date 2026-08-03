@@ -27,6 +27,7 @@ import {
   markRead,
   mergeForDisplay,
   readThread,
+  unreadCount,
 } from "@/lib/fmdb/client-thread";
 import { loadWhatsAppThreadAction } from "@/app/api/whatsapp/actions";
 import { notifyCoachOfClientMessage } from "@/lib/fmdb/chat-notify";
@@ -56,6 +57,13 @@ export async function POST(req: NextRequest) {
   const clientId = lookup.client_id;
 
   // ── list ────────────────────────────────────────────────────────────────
+  // Asking how many are waiting is not the same as looking at them, so this
+  // sits ABOVE the list branch: no WhatsApp history, no read side effect.
+  // It is polled for the badge and must stay cheap.
+  if (body.action === "unread") {
+    return NextResponse.json({ ok: true, unread: unreadCount(clientId, "outbound") });
+  }
+
   if (body.action !== "send") {
     let wa: Awaited<ReturnType<typeof loadWhatsAppThreadAction>> = [];
     try {
@@ -74,6 +82,15 @@ export async function POST(req: NextRequest) {
         from: m.dir === "inbound" ? "me" : "coach",
         text: m.text,
         via: m.via,
+        // Only on their own messages, and only as far as "delivered".
+        // Whether the coach has READ it is deliberately withheld: a client
+        // watching "read 7am" with no reply until evening is the exact
+        // pressure that makes WhatsApp stressful, and she genuinely does
+        // reply within a day. "Has she got it?" is the real question, and
+        // delivered answers it.
+        ...(m.dir === "inbound" && m.via === "app"
+          ? { delivered: !!m.delivered_at }
+          : {}),
       })),
     });
   }
@@ -100,7 +117,10 @@ export async function POST(req: NextRequest) {
   }
 
   // Best-effort: a failed nudge must not fail the message the client sent.
-  void notifyCoachOfClientMessage(clientId, { preview: text }).catch((e) =>
+  void notifyCoachOfClientMessage(clientId, {
+    preview: text,
+    messageId: stored.id,
+  }).catch((e) =>
     console.error("[app-chat] coach notify failed:", e),
   );
 
