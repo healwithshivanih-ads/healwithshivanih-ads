@@ -4,7 +4,7 @@ import { execFile as execFileCb } from "node:child_process";
 import path from "node:path";
 import fs from "node:fs/promises";
 import nodemailer from "nodemailer";
-import { clientFrom } from "@/lib/fmdb/mail-from";
+import { clientMailer } from "@/lib/fmdb/mail-from";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
@@ -211,15 +211,16 @@ export interface SendEmailInput {
 export async function sendClientEmailAction(
   input: SendEmailInput
 ): Promise<{ ok: true } | { ok: false; error: string }> {
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
-
-  if (!user || !pass) {
+  // Coach's own account where configured, else the ops mailbox — see
+  // mail-from.ts. GMAIL_USER is unchanged either way.
+  const creds = clientMailer();
+  if (!creds) {
     return {
       ok: false,
       error: "Email not configured. Add GMAIL_USER and GMAIL_APP_PASSWORD to .env.local",
     };
   }
+  const { user, pass } = creds;
 
   try {
     const transporter = nodemailer.createTransport({
@@ -236,7 +237,7 @@ export async function sendClientEmailAction(
           }))
         : undefined;
     await transporter.sendMail({
-      from: clientFrom(user),
+      from: creds.from,
       to: input.to,
       cc: input.cc,
       subject: input.subject,
@@ -278,11 +279,13 @@ export async function sendEducationPackAction(
     return { ok: false, error: "Select at least one topic." };
   }
 
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
-  if (!user || !pass) {
+  // Education packs go to the client, so they send from the coach's own
+  // account too — same rule as sendClientEmailAction.
+  const creds = clientMailer();
+  if (!creds) {
     return { ok: false, error: "Email not configured. Add GMAIL_USER and GMAIL_APP_PASSWORD to .env.local" };
   }
+  const { user, pass } = creds;
 
   // Generate briefs for each selected topic (sequentially to avoid rate limits)
   const briefs: Array<{ slug: string; markdown: string }> = [];
@@ -392,7 +395,7 @@ export async function sendEducationPackAction(
       auth: { user, pass },
     });
     await transporter.sendMail({
-      from: clientFrom(user),
+      from: creds.from,
       to: input.clientEmail,
       subject,
       html: htmlBody,
