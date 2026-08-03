@@ -248,7 +248,9 @@ describe("gut-reset exemplar — menus, library, about", () => {
     const missing: string[] = [];
     for (const w of gut.sampleWeeks ?? [])
       for (const d of w.days)
-        for (const s of d.slots) if (!titles.has(norm(s.dish))) missing.push(`${w.phase}/${d.dow}: ${s.dish}`);
+        for (const s of d.slots)
+          for (const part of s.dish.split(" + "))
+            if (!titles.has(norm(part))) missing.push(`${w.phase}/${d.dow}: ${part}`);
     expect(missing).toEqual([]);
     // one sample week per menu era, 7 days each, 4 slots a day
     expect((gut.sampleWeeks ?? []).map((w) => w.phase)).toEqual(["Remove", "Reinoculate", "Repair", "Rebalance"]);
@@ -301,7 +303,9 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
       for (const d of w.days)
         for (const s of d.slots)
           for (const dish of [s.dish, s.nonveg, s.egg, s.jain])
-            if (dish && !titles.has(norm(dish))) missing.push(`${w.phase}/${d.dow}/${s.slot}: ${dish}`);
+            if (dish)
+              for (const part of dish.split(" + "))
+                if (!titles.has(norm(part))) missing.push(`${w.phase}/${d.dow}/${s.slot}: ${part}`);
     expect(missing).toEqual([]);
   });
 
@@ -316,9 +320,10 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     for (const w of gut.sampleWeeks ?? [])
       for (const d of w.days)
         for (const s of d.slots) {
-          const seen = s.jain ?? s.dish;
-          const ing = ingByTitle.get(norm(seen)) ?? "";
-          if (/\bonion|garlic\b/.test(ing)) violations.push(`${w.phase}/${d.dow}/${s.slot}: ${seen}`);
+          for (const part of (s.jain ?? s.dish).split(" + ")) {
+            const ing = ingByTitle.get(norm(part)) ?? "";
+            if (/\bonion|garlic\b/.test(ing)) violations.push(`${w.phase}/${d.dow}/${s.slot}: ${part}`);
+          }
         }
     expect(violations).toEqual([]);
   });
@@ -415,7 +420,9 @@ describe("all four protocols — generalised menu enforcement", () => {
         for (const d of w.days)
           for (const s of d.slots)
             for (const dish of [s.dish, s.nonveg, s.egg, s.jain])
-              if (dish && !titles.has(norm(dish))) missing.push(`${p.slug}/${w.phase}/${d.dow}: ${dish}`);
+              if (dish)
+                for (const part of dish.split(" + "))
+                  if (!titles.has(norm(part))) missing.push(`${p.slug}/${w.phase}/${d.dow}: ${part}`);
     expect(missing).toEqual([]);
   });
 
@@ -426,10 +433,9 @@ describe("all four protocols — generalised menu enforcement", () => {
     for (const p of GUIDED_PROTOCOLS)
       for (const w of p.sampleWeeks ?? [])
         for (const d of w.days)
-          for (const s of d.slots) {
-            const seen = s.jain ?? s.dish;
-            if (/\bonion|garlic\b/.test(ing.get(norm(seen)) ?? "")) bad.push(`${p.slug}/${w.phase}/${d.dow}/${s.slot}: ${seen}`);
-          }
+          for (const s of d.slots)
+            for (const part of (s.jain ?? s.dish).split(" + "))
+              if (/\bonion|garlic\b/.test(ing.get(norm(part)) ?? "")) bad.push(`${p.slug}/${w.phase}/${d.dow}/${s.slot}: ${part}`);
     expect(bad).toEqual([]);
   });
 
@@ -438,7 +444,7 @@ describe("all four protocols — generalised menu enforcement", () => {
     const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
     const bs = getGuidedProtocol("blood-sugar-balance")!;
     const bad: string[] = [];
-    for (const dish of allDishes(bs.sampleWeeks)) {
+    for (const cell of allDishes(bs.sampleWeeks)) for (const dish of cell.split(" + ")) {
       const i = ing.get(norm(dish)) ?? "";
       if (/\b(sugar|jaggery|honey|maple)\b/.test(i)) bad.push(`sweet: ${dish}`);
       if (/\b(basmati|white rice)\b/.test(i) || (/\brice\b/.test(i.replace(/sama rice|barnyard rice|rice flour/g, "")) && !/millet/.test(i))) bad.push(`rice: ${dish}`);
@@ -454,10 +460,12 @@ describe("all four protocols — generalised menu enforcement", () => {
     const bad: string[] = [];
     for (const d of remove.days)
       for (const s of d.slots)
-        for (const dish of [s.dish, s.nonveg, s.egg, s.jain]) {
-          if (!dish) continue;
-          const i = ing.get(norm(dish)) ?? "";
-          if (/\b(wheat|maida|suji|sugar|jaggery|honey)\b/.test(i)) bad.push(`${d.dow}/${s.slot}: ${dish}`);
+        for (const cell of [s.dish, s.nonveg, s.egg, s.jain]) {
+          if (!cell) continue;
+          for (const dish of cell.split(" + ")) {
+            const i = ing.get(norm(dish)) ?? "";
+            if (/\b(wheat|maida|suji|sugar|jaggery|honey)\b/.test(i)) bad.push(`${d.dow}/${s.slot}: ${dish}`);
+          }
         }
     expect(bad).toEqual([]);
   });
@@ -477,5 +485,43 @@ describe("all four protocols — generalised menu enforcement", () => {
       expect((p.practiceLibrary ?? []).length, p.slug).toBeGreaterThanOrEqual(8);
       expect(p.heroMidday, p.slug).toBeTruthy();
     }
+  });
+});
+
+
+describe("menus are complete meals — coach review round 2 (3 Aug)", () => {
+  it("no dish repeats within the same day for any diet", () => {
+    const bad: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const diet of ["dish", "nonveg", "egg", "jain"] as const) {
+            const dayDishes = d.slots.map((s) => (diet === "dish" ? s.dish : (s[diet] ?? s.dish)));
+            const seen = new Set<string>();
+            for (const cell of dayDishes) {
+              if (seen.has(cell)) bad.push(`${p.slug}/${w.phase}/${d.dow} (${diet}): ${cell}`);
+              seen.add(cell);
+            }
+          }
+    expect(bad).toEqual([]);
+  });
+
+  it("lunch and dinner are complete meals — never a bare side, plain grain or lone salad", () => {
+    // one-pots and composed plates pass; sides must be compounded with "+"
+    const COMPLETE = /\+|khichdi|kitchari|kichari|pulao|pongal|upma|bowl|biryani|curry|masala|stew|soup|rasam|sambar|dal\b.*\+|misal|kadhi|paniyaram|thayir|poha/i;
+    const BARE_SIDE = /(sabzi|salad|slaw|raita|dip|chutney)$|^(sautéed|steamed|grilled [a-z]+$)|^steamed quinoa$|^everyday basmati rice$|^jeera rice$/i;
+    const bad: string[] = [];
+    for (const p of GUIDED_PROTOCOLS)
+      for (const w of p.sampleWeeks ?? [])
+        for (const d of w.days)
+          for (const s of d.slots) {
+            if (s.slot !== "Lunch" && s.slot !== "Dinner") continue;
+            for (const cell of [s.dish, s.nonveg, s.egg, s.jain]) {
+              if (!cell) continue;
+              const complete = COMPLETE.test(cell) || cell.includes(" + ");
+              if (!complete) bad.push(`${p.slug}/${w.phase}/${d.dow}/${s.slot}: ${cell}`);
+            }
+          }
+    expect(bad).toEqual([]);
   });
 });

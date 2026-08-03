@@ -181,7 +181,12 @@ export async function buildGuidedAppData(
     const todayCol = sampleWeek.days.find((d) => d.dow === todayShort) ?? sampleWeek.days[0];
     meals = todayCol.slots.map((s) => {
       const dish = pickDish(s);
-      const lib = byTitle.get(normTitle(dish));
+      // Compound cells ("Palak dal + Jowar roti") sum their matched parts.
+      const parts = dish.split(" + ");
+      const kcal = parts.reduce<number | undefined>((acc, part) => {
+        const k = byTitle.get(normTitle(part))?.kcalPerServing;
+        return k ? (acc ?? 0) + k : acc;
+      }, undefined);
       const meta = SLOT_META[s.slot] ?? { timeHint: "", glyph: "bowl" };
       return {
         slot: s.slot,
@@ -189,11 +194,12 @@ export async function buildGuidedAppData(
         glyph: meta.glyph,
         pills: [dish],
         components: splitDishComponents(dish),
-        kcal: lib?.kcalPerServing,
+        kcal,
       };
     });
     for (const s of todayCol.slots) {
-      const lib = byTitle.get(normTitle(pickDish(s)));
+      // the overlay's method comes from the cell's FIRST component (the main)
+      const lib = byTitle.get(normTitle(pickDish(s).split(" + ")[0]));
       if (!lib) continue;
       mealExtra[s.slot] = {
         grad: MEAL_GRAD,
@@ -210,12 +216,9 @@ export async function buildGuidedAppData(
     const used = new Set<string>();
     for (const w of protocol.sampleWeeks ?? [])
       for (const d of w.days)
-        for (const s of d.slots) {
-          used.add(normTitle(s.dish));
-          if (s.nonveg) used.add(normTitle(s.nonveg));
-          if (s.egg) used.add(normTitle(s.egg));
-          if (s.jain) used.add(normTitle(s.jain));
-        }
+        for (const s of d.slots)
+          for (const cell of [s.dish, s.nonveg, s.egg, s.jain])
+            if (cell) for (const part of cell.split(" + ")) used.add(normTitle(part));
     recipePack = [...used]
       .map((k) => byTitle.get(k))
       .filter((r): r is NonNullable<typeof r> => !!r)
