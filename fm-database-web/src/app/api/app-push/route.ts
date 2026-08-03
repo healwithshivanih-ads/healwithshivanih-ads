@@ -7,7 +7,7 @@
  *
  * Actions:
  *   subscribe   { token, subscription }  — store + enable
- *   unsubscribe { token }                — drop the stored subscription
+ *   unsubscribe { token, endpoint? }     — drop one device, or all of them
  *   status      { token }                — { enabled }
  */
 import { NextRequest, NextResponse } from "next/server";
@@ -50,11 +50,14 @@ export async function POST(req: NextRequest) {
         endpoint: sub.endpoint,
         keys: { p256dh: sub.keys.p256dh, auth: sub.keys.auth },
       });
-      return NextResponse.json({ ok: true, enabled: true });
+      return NextResponse.json({ ok: true, ...(await pushStatus(clientId)) });
     }
     if (action === "unsubscribe") {
-      await removeSubscription(clientId);
-      return NextResponse.json({ ok: true, enabled: false });
+      // With an endpoint only THIS device stops. A client turning
+      // notifications off on their laptop must not silence their phone.
+      const ep = typeof body.endpoint === "string" ? body.endpoint : undefined;
+      await removeSubscription(clientId, ep);
+      return NextResponse.json({ ok: true, ...(await pushStatus(clientId)) });
     }
     if (action === "status") {
       return NextResponse.json({ ok: true, ...(await pushStatus(clientId)) });

@@ -7,6 +7,14 @@
  * Subscription lives at clients/<id>/_push_subscription.yaml. On Fly the
  * client writes it (subscribe hits the public app); the staging cron
  * reverse-mirrors it to the Mac so coach-side sends can read it too.
+ *
+ * A CLIENT HAS DEVICES, PLURAL. This stored one subscription and silently
+ * overwrote it, so a client who turned notifications on for their laptop and
+ * then their phone had the laptop quietly stop working — and the reverse:
+ * turning it on somewhere that is not the phone they actually check looks
+ * exactly like push being broken. Nothing reported it, because overwriting
+ * succeeded. Devices are a list now, every one is sent to, and the legacy
+ * single-subscription file is still read so nobody has to re-subscribe.
  */
 import "server-only";
 import fs from "node:fs/promises";
@@ -33,8 +41,14 @@ export interface WebPushSubscription {
   endpoint: string;
   keys: { p256dh: string; auth: string };
 }
+interface StoredDevice extends WebPushSubscription {
+  updated_at?: string;
+}
 interface SubDoc {
-  subscription: WebPushSubscription;
+  /** Current shape. */
+  subscriptions?: StoredDevice[];
+  /** Legacy single-device shape, still read so existing clients keep working. */
+  subscription?: WebPushSubscription;
   enabled: boolean;
   updated_at: string;
 }
@@ -46,11 +60,41 @@ function subFile(clientId: string): string {
 async function readDoc(clientId: string): Promise<SubDoc | null> {
   try {
     const raw = await fs.readFile(subFile(clientId), "utf-8");
-    const d = yaml.load(raw) as SubDoc | null;
-    return d && d.subscription?.endpoint ? d : null;
+    return (yaml.load(raw) as SubDoc | null) ?? null;
   } catch {
     return null;
   }
+}
+
+/**
+ * Every device this client can be reached on, de-duplicated by endpoint.
+ * Reads both the list shape and the legacy single-subscription shape.
+ */
+async function readDevices(clientId: string): Promise<StoredDevice[]> {
+  const d = await readDoc(clientId);
+  if (!d || d.enabled === false) return [];
+  const raw = d.subscriptions?.length
+    ? d.subscriptions
+    : d.subscription
+      ? [d.subscription as StoredDevice]
+      : [];
+  const seen = new Map<string, StoredDevice>();
+  for (const s of raw) {
+    if (s?.endpoint && s.keys?.p256dh && s.keys?.auth) seen.set(s.endpoint, s);
+  }
+  return [...seen.values()];
+}
+
+async function writeDevices(clientId: string, devices: StoredDevice[]): Promise<void> {
+  if (!devices.length) {
+    await removeSubscription(clientId);
+    return;
+  }
+  await writeAtomic(subFile(clientId), {
+    subscriptions: devices,
+    enabled: true,
+    updated_at: new Date().toISOString(),
+  });
 }
 
 async function writeAtomic(file: string, doc: unknown): Promise<void> {
@@ -63,15 +107,37 @@ export async function saveSubscription(
   clientId: string,
   subscription: WebPushSubscription,
 ): Promise<void> {
-  await writeAtomic(subFile(clientId), {
-    subscription,
-    enabled: true,
-    updated_at: new Date().toISOString(),
-  });
+  // Add or refresh THIS device. Other devices are left alone — a second
+  // phone must not evict the first.
+  const others = (await readDevices(clientId)).filter(
+    (d) => d.endpoint !== subscription.endpoint,
+  );
+  await writeDevices(clientId, [
+    ...others,
+    { ...subscription, updated_at: new Date().toISOString() },
+  ]);
 }
 
-/** Toggle-off / unsubscribe: drop the stored subscription entirely. */
-export async function removeSubscription(clientId: string): Promise<void> {
+/**
+ * Toggle-off. With an endpoint, only THAT device stops — turning
+ * notifications off on a laptop must not silence the phone. Without one,
+ * every device stops.
+ */
+export async function removeSubscription(
+  clientId: string,
+  endpoint?: string,
+): Promise<void> {
+  if (endpoint) {
+    const left = (await readDevices(clientId)).filter((d) => d.endpoint !== endpoint);
+    if (left.length) {
+      await writeAtomic(subFile(clientId), {
+        subscriptions: left,
+        enabled: true,
+        updated_at: new Date().toISOString(),
+      });
+      return;
+    }
+  }
   try {
     await fs.unlink(subFile(clientId));
   } catch {
@@ -79,34 +145,60 @@ export async function removeSubscription(clientId: string): Promise<void> {
   }
 }
 
-export async function pushStatus(clientId: string): Promise<{ enabled: boolean }> {
-  const d = await readDoc(clientId);
-  return { enabled: !!d?.enabled };
+export async function pushStatus(
+  clientId: string,
+): Promise<{ enabled: boolean; devices: number }> {
+  const devices = await readDevices(clientId);
+  return { enabled: devices.length > 0, devices: devices.length };
 }
 
 /**
- * Send a notification to a client. Best-effort: returns false (never throws)
- * when push isn't configured, the client hasn't subscribed, or delivery
- * fails. Prunes the subscription on 404/410 (browser unsubscribed / expired).
+ * Send to every device a client has. Best-effort: returns true if AT LEAST
+ * ONE delivery was accepted, never throws. Prunes endpoints the push service
+ * reports as gone (404/410 — browser reinstalled or unsubscribed).
+ *
+ * A failure that is not a dead endpoint is LOGGED with its status code. It
+ * used to be swallowed entirely, which meant "the client says push doesn't
+ * work" could only be answered by guessing: an expired VAPID key, a refused
+ * payload and a client who never subscribed all looked identical from the
+ * outside. Those have completely different fixes.
  */
 export async function sendPushToClient(
   clientId: string,
   payload: { title: string; body: string; url?: string; tag?: string },
 ): Promise<boolean> {
-  if (!ensureConfigured()) return false;
-  const d = await readDoc(clientId);
-  if (!d || !d.enabled) return false;
-  try {
-    await webpush.sendNotification(
-      d.subscription as webpush.PushSubscription,
-      JSON.stringify(payload),
-    );
-    return true;
-  } catch (e) {
-    const status = (e as { statusCode?: number }).statusCode;
-    if (status === 404 || status === 410) {
-      await removeSubscription(clientId); // dead endpoint — clean up
-    }
+  if (!ensureConfigured()) {
+    console.error("[push] VAPID_PRIVATE_KEY not set — cannot notify", clientId);
     return false;
   }
+  const devices = await readDevices(clientId);
+  if (!devices.length) return false;
+
+  const body = JSON.stringify(payload);
+  const dead: string[] = [];
+  let sent = 0;
+  await Promise.all(
+    devices.map(async (device) => {
+      try {
+        await webpush.sendNotification(device as webpush.PushSubscription, body);
+        sent += 1;
+      } catch (e) {
+        const status = (e as { statusCode?: number }).statusCode;
+        if (status === 404 || status === 410) {
+          dead.push(device.endpoint);
+        } else {
+          console.error(
+            `[push] ${clientId} delivery failed (HTTP ${status ?? "?"}) to ` +
+              `${new URL(device.endpoint).host}: ${(e as Error).message}`,
+          );
+        }
+      }
+    }),
+  );
+
+  if (dead.length) {
+    const left = devices.filter((d) => !dead.includes(d.endpoint));
+    await writeDevices(clientId, left);
+  }
+  return sent > 0;
 }

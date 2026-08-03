@@ -40,6 +40,10 @@ export function ChatPanel({
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // How the last reply actually reached them. "Saved to a file nobody was
+  // told about" is the failure this whole feature exists to avoid, so it is
+  // shown rather than assumed.
+  const [delivery, setDelivery] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
   // Opening the conversation IS reading it.
@@ -75,6 +79,14 @@ export function ChatPanel({
         setDraft(text); // don't lose what was typed
         setError(res.error ?? "Couldn't send.");
       } else {
+        const n = res.notified;
+        setDelivery(
+          n?.channel === "push"
+            ? `${firstName} was notified.`
+            : n?.channel === "whatsapp" && n.ok
+              ? `Nudged on WhatsApp — ${firstName} hasn't turned on app notifications.`
+              : `Sent, but ${firstName} won't be notified — they'll only see it when they next open the app.`,
+        );
         const fresh = await loadClientChatAction(clientId);
         if (fresh.ok) setMsgs(fresh.messages);
       }
@@ -137,6 +149,12 @@ export function ChatPanel({
       {error ? (
         <div className="m-note m-note--danger" style={{ marginBottom: 8 }}>
           {error}
+        </div>
+      ) : null}
+
+      {delivery ? (
+        <div className="m-subtle" style={{ marginBottom: 8, fontSize: 12 }}>
+          {delivery}
         </div>
       ) : null}
 

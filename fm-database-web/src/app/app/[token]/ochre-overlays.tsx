@@ -875,11 +875,13 @@ function PushToggleSection() {
     try {
       const reg = await navigator.serviceWorker.getRegistration("/ochre-app/sw.js");
       const sub = await reg?.pushManager.getSubscription();
+      const endpoint = sub?.endpoint;
       if (sub) await sub.unsubscribe().catch(() => {});
+      // Named so only this device stops; their other devices keep working.
       await fetch("/api/app-push", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: data.token, action: "unsubscribe" }),
+        body: JSON.stringify({ token: data.token, action: "unsubscribe", endpoint }),
       }).catch(() => {});
       setOn(false);
     } catch {
