@@ -25,7 +25,7 @@
  *  2026-06-25. */
 export const DISCOVERY_CREDIT_WINDOW_DAYS = 15;
 
-export type AppTier = "discovery" | "package";
+export type AppTier = "discovery" | "package" | "guided";
 
 /** Credit-window state — drives the upgrade CTA in the Summary + Coach tabs. */
 export type DiscoveryCreditState = "credit_live" | "credit_expired";

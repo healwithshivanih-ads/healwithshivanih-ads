@@ -34,7 +34,47 @@ interface PhaseNow {
 }
 
 function usePhaseNow(hour: number): PhaseNow {
-  const { meals, practices, remedies, supplements, planRef, breathwork } = useOchre();
+  const { meals, practices, remedies, supplements, planRef, breathwork, guidedWeekly, somatic } = useOchre();
+  // Guided tier: no meals, no supplements — the hero is phase + practice
+  // centred and must never name a surface this tier doesn't have.
+  if (guidedWeekly) {
+    const firstSomaticId = somatic.length && practices.length ? practices[0].id : null;
+    if (hour < 11)
+      return {
+        eyebrow: "Right now · Morning",
+        title: guidedWeekly.title,
+        sub: guidedWeekly.items[0] ?? guidedWeekly.note,
+        cta: "See this week's actions",
+        target: "guided-week",
+        glyph: "sun",
+      };
+    if (hour < 15)
+      return {
+        eyebrow: "Right now · Midday",
+        title: "Lunch — make it the day's biggest meal",
+        sub: "Vegetables first, protein next, unhurried. The food framework is in your Plan.",
+        cta: "See the food framework",
+        target: "tab:plan",
+        glyph: "bowl",
+      };
+    if (hour < 18)
+      return {
+        eyebrow: "Right now · Afternoon",
+        title: practices.length ? `A few minutes of ${practices[0].name.toLowerCase()}` : "A quiet mid-afternoon pause",
+        sub: "The daily practice is the programme — two to five minutes, guided.",
+        cta: practices.length ? "Start the practice" : "See this week",
+        target: firstSomaticId ? `somatic:${firstSomaticId}` : "guided-week",
+        glyph: "breath",
+      };
+    return {
+      eyebrow: "Right now · Evening",
+      title: "Wind down on time",
+      sub: "Stop eating about three hours before bed, and let sleep do the repair work.",
+      cta: "Tick off today",
+      target: "tab:progress",
+      glyph: "moon",
+    };
+  }
   const teaAfterFood = /tea|chai/i.test(planRef.foods.sometimes.join(" "));
   const lunch = meals.find((m) => /lunch/i.test(m.slot));
   const dinner = meals.find((m) => /dinner/i.test(m.slot));
@@ -394,7 +434,11 @@ export function TodayScreen({
     if (ph.target === "supps") {
       const el = document.getElementById("today-supps");
       if (el) el.scrollIntoView({ block: "start", behavior: "smooth" });
-    } else if (ph.target === "breath") openBreath();
+    } else if (ph.target === "guided-week") {
+      const el = document.getElementById("guided-week");
+      if (el) el.scrollIntoView({ block: "start", behavior: "smooth" });
+    } else if (ph.target.startsWith("somatic:")) openSomatic(ph.target.slice(8));
+    else if (ph.target === "breath") openBreath();
     else if (ph.target.startsWith("meal:")) openMeal(ph.target.slice(5));
     else if (ph.target.startsWith("tab:")) goTab(ph.target.slice(4));
   };
@@ -454,14 +498,45 @@ export function TodayScreen({
         </div>
       </div>
 
-      {/* coach micro-copy */}
-      <div className="coach-line" style={{ marginTop: 14 }}>
-        <Icon name="sparkle" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
-        <div>
-          <div className="q">{data.client.coachLine}</div>
-          <div className="who">— {data.coach.name}</div>
+      {/* This week — guided tier's core card: the phase's actions. */}
+      {data.guidedWeekly && (
+        <div id="guided-week">
+          <Section title={data.guidedWeekly.title}>
+            <div className="card" style={{ padding: "14px 16px" }}>
+              <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginBottom: 10 }}>
+                {data.guidedWeekly.note}
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
+                {data.guidedWeekly.items.map((it, i) => (
+                  <li key={i} style={{ fontSize: 14.2, lineHeight: 1.55 }}>
+                    {it}
+                  </li>
+                ))}
+              </ul>
+              {data.guidedWeekly.alsoActive.length > 0 && (
+                <div style={{ fontSize: 12.6, color: "var(--muted)", marginTop: 10 }}>
+                  Still in flight: {data.guidedWeekly.alsoActive.join(" · ")} — the full picture is in your Plan.
+                </div>
+              )}
+            </div>
+            <div className="card-quiet soon" style={{ marginTop: 8 }}>
+              <Icon name="dot" size={10} style={{ color: "var(--muted)", flexShrink: 0 }} />
+              <span>{data.guidedWeekly.standardNote}</span>
+            </div>
+          </Section>
         </div>
-      </div>
+      )}
+
+      {/* coach micro-copy — only when the coach actually wrote one */}
+      {data.client.coachLine && (
+        <div className="coach-line" style={{ marginTop: 14 }}>
+          <Icon name="sparkle" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
+          <div>
+            <div className="q">{data.client.coachLine}</div>
+            <div className="who">— {data.coach.name}</div>
+          </div>
+        </div>
+      )}
 
       <Section title={data.meals.length ? "Your meals for today" : "How to eat today"}>
         {data.meals.length === 0 && (
@@ -624,17 +699,28 @@ export function TodayScreen({
 
       <Section title="Coming up">
         <div className="stack" style={{ gap: 10 }}>
-          <Tile
-            icon="checkin"
-            accent
-            t1={`Your week ${data.client.week} check-in`}
-            t2={`A few quiet minutes to tell ${data.coach.name.split(" ")[0]} how you're doing`}
-            onClick={goCheckin}
-          />
+          {!data.guidedWeekly && (
+            <Tile
+              icon="checkin"
+              accent
+              t1={`Your week ${data.client.week} check-in`}
+              t2={`A few quiet minutes to tell ${data.coach.name.split(" ")[0]} how you're doing`}
+              onClick={goCheckin}
+            />
+          )}
           {data.grocery && (
             <Tile icon="bag" t1="Shopping list" t2="Tick off what you need before your next shop" onClick={openGrocery} />
           )}
-          <Tile icon="message" t1="Ask your coach" t2={`${data.coach.name.split(" ")[0]}, plus a co-pilot for quick plan questions`} onClick={goCoach} />
+          {data.guidedWeekly ? (
+            <Tile
+              icon="coach"
+              t1="The monthly live session"
+              t2="Bring any question — details in the Coach tab"
+              onClick={goCoach}
+            />
+          ) : (
+            <Tile icon="message" t1="Ask your coach" t2={`${data.coach.name.split(" ")[0]}, plus a co-pilot for quick plan questions`} onClick={goCoach} />
+          )}
         </div>
       </Section>
     </div>

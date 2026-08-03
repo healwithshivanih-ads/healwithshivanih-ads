@@ -92,6 +92,10 @@ export const PUBLIC_PATH_PREFIXES = [
   "/api/app-push",
   // App reports it's running installed (adoption signal). Token-scoped.
   "/api/app-installed",
+  // Guided-tier enrolment: server-to-server from ochre-funnel's payment
+  // webhook. Shared-secret protected inside the handler (fails closed when
+  // the secret is unset) — public here only so Fly can reach it.
+  "/api/guided-enroll",
   // GET serves the client's avatar; POST lets the client set their own.
   // Token-scoped, re-verified server-side. Matches /api/app-photo and
   // /api/app-photo/<token>.

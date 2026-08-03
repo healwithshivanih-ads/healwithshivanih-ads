@@ -111,8 +111,10 @@ interface Props {
   clientId: string;
   /** "discovery" gets the full stage-aware workspace (recommend → map). A
    *  package client with no plan yet ("signed_up" pre-build) gets the lab
-   *  recommend tool only — no discovery framing. */
-  tier: "discovery" | "package";
+   *  recommend tool only — no discovery framing. (Accepts the full AppTier
+   *  union for typing; guided subscribers never reach this coach page —
+   *  resolveAppTier only ever returns discovery/package here.) */
+  tier: "discovery" | "package" | "guided";
   stage: DiscoveryStage;
   intakeSubmitted: boolean;
   callDate: string | null;
