@@ -1126,7 +1126,9 @@ export function PlanScreen({
           Your plan
         </div>
         <div className="muted" style={{ fontSize: 13.5, marginTop: 2 }}>
-          A {data.client.totalWeeks}-week reset, built for you by {pr.authoredBy}.
+          {data.guidedWeekly
+            ? `The standard ${data.client.totalWeeks}-week programme, by ${pr.authoredBy}.`
+            : `A ${data.client.totalWeeks}-week reset, built for you by ${pr.authoredBy}.`}
         </div>
       </div>
 
@@ -1188,6 +1190,7 @@ export function PlanScreen({
         </span>
       </button>
 
+      {pr.plate.length > 0 && (
       <Section title="How to build your plate">
         {data.weightLoss && (
           <div
@@ -1258,13 +1261,19 @@ export function PlanScreen({
           </div>
         )}
       </Section>
+      )}
+      {pr.plate.length === 0 && data.principles.length > 0 && (
+        <Section title="How this programme thinks">
+          <Accordion items={data.principles} />
+        </Section>
+      )}
 
       <Section title="Eat this, go easy on that">
         <FoodTiers />
       </Section>
 
       <Section title="In the kitchen">
-        <OilGuide />
+        {(pr.oils.use.length > 0 || pr.oils.avoid.length > 0) && <OilGuide />}
         {pr.cooking.length > 0 && (
           <div style={{ marginTop: 12 }}>
             <Accordion items={pr.cooking} />

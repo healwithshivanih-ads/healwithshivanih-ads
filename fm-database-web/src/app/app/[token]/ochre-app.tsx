@@ -657,6 +657,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     const normalMode = data.mode !== "REVIEW" && data.mode !== "MAINTENANCE" && data.mode !== "LIBRARY";
     if (
       !discovery &&
+      !guided && // the tour narrates meals + supplements — package copy; guided gets none
       !onboarding &&
       !setupHold &&
       normalMode &&
