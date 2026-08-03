@@ -318,6 +318,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       // spends the client's battery to learn something they cannot see.
       if (typeof document !== "undefined" && document.visibilityState !== "visible") return;
       try {
+      if (data.tier === "guided") return; // no chat on the guided tier — skip the poll
         const res = await fetch("/api/app-chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

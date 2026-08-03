@@ -495,8 +495,11 @@ export function ProgressScreen({
           )}
           <p className="rn-tree-note">
             This is your tree — it grows with you. Every week it gets a little taller, and each
-            supplement, habit, and check-in you log fills it with leaves. Reach a milestone and it
-            blossoms and fruits. Show up a little each day and watch it flourish.
+            {data.guidedWeekly
+              ? " habit you tick and practice you complete fills it with leaves."
+              : " supplement, habit, and check-in you log fills it with leaves."}{" "}
+            Reach a milestone and it blossoms and fruits. Show up a little each day and watch it
+            flourish.
           </p>
           {data.client.startsInDays > 0 ? (
             <div className="rn-tree-nudge">🌱 It wakes up on {data.client.startDateLabel} — that&rsquo;s your Day 1.</div>
@@ -516,6 +519,7 @@ export function ProgressScreen({
         </div>
       )}
 
+      {!data.guidedWeekly && (
       <Section title="Is it working?">
         {/* MSQ — the FM-standard symptom score; baseline → falling trend */}
         <div style={{ marginBottom: 12 }}>
@@ -539,14 +543,17 @@ export function ProgressScreen({
         )}
         <LabCheckpoints />
       </Section>
+      )}
 
       <Section title="How you’re feeling">
         <FeelStrip feel={feel} onLogToday={onLogFeeling} />
       </Section>
 
+      {!data.guidedWeekly && (
       <Section title="Your vitals">
         <VitalsCard onLog={onLogFeeling} />
       </Section>
+      )}
 
       <Section title="Movement">
         <MovementCard sessions={moves} onAdd={onLogMove} />
@@ -558,6 +565,7 @@ export function ProgressScreen({
         </div>
       </Section>
 
+      {!data.guidedWeekly && (
       <Section title="Your journey">
         <div className="tl" style={{ marginTop: 4 }}>
           <JourneyNode
@@ -577,6 +585,7 @@ export function ProgressScreen({
           ))}
         </div>
       </Section>
+      )}
     </div>
   );
 }

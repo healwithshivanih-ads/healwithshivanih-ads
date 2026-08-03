@@ -578,10 +578,12 @@ export function TodayScreen({
         </Section>
       )}
 
+      {!data.guidedWeekly && (
       <Section title="Your supplements">
         <div id="today-supps" />
         <SupplementSlots logged={logged} onToggle={onToggleSupp} onLogAll={onLogAll} onOpenRemedy={openRemedy} />
       </Section>
+      )}
 
       {externalRemedies.length > 0 && (
         <Section title="Ayurvedic remedies">
@@ -1272,6 +1274,7 @@ export function PlanScreen({
         <FoodTiers />
       </Section>
 
+      {(pr.oils.use.length > 0 || pr.oils.avoid.length > 0 || pr.cooking.length > 0) && (
       <Section title="In the kitchen">
         {(pr.oils.use.length > 0 || pr.oils.avoid.length > 0) && <OilGuide />}
         {pr.cooking.length > 0 && (
@@ -1280,7 +1283,9 @@ export function PlanScreen({
           </div>
         )}
       </Section>
+      )}
 
+      {!data.guidedWeekly && (
       <Section title={`Remedies ${pr.authoredBy.split(" ")[0]} picked`}>
         <div className="stack" style={{ gap: 10 }}>
           {data.remedies
@@ -1297,6 +1302,7 @@ export function PlanScreen({
           </span>
         </div>
       </Section>
+      )}
 
       {data.lessons.length > 0 && (
         <Section title="Learn">
@@ -1381,6 +1387,7 @@ export function PlanScreen({
         </Section>
       )}
 
+      {!data.guidedWeekly && (<>
       {/* 💊 doses are logged on Today; this is the why + the reorder links —
           an occasional read, so it lives with the other occasional tasks. */}
       <details className="plan-collapse">
@@ -1421,6 +1428,7 @@ export function PlanScreen({
           <OrderLaunchCard openOrder={openOrder} />
         </div>
       </details>
+      </>)}
 
       {/* Labs intentionally NOT a standalone section — the order list lives
           in Resources and the milestone view in Progress → Lab checkpoints,
