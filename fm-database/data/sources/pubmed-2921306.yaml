@@ -1,0 +1,19 @@
+id: pubmed-2921306
+title: 'Antithyroid and goitrogenic effects of millet: role of C-glycosylflavones'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- E Gaitan et al.
+year: 1989
+publisher: J Clin Endocrinol Metab
+url: https://pubmed.ncbi.nlm.nih.gov/2921306/
+doi: 10.1210/jcem-68-4-707
+notes: 'PubMed PMID 2921306. The paper that identified the ACTIVE goitrogen in pearl
+  millet as C-glycosylflavones (glycosylvitexin, vitexin, glycosylorientin) inhibiting
+  thyroid peroxidase, after the thiocyanate hypothesis was tested and found insufficient
+  to explain the effect. Captured 2026-08-03 from the abstract and a 2026 review —
+  full text was not retrievable, so the figures cited downstream are abstract-level.'
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: Shivani

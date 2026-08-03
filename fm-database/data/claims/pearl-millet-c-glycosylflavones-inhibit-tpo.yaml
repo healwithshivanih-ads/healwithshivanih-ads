@@ -1,0 +1,43 @@
+slug: pearl-millet-c-glycosylflavones-inhibit-tpo
+statement: The goitrogen in pearl millet (bajra) is not thiocyanate but a group of
+  C-glycosylflavones — glycosylvitexin, vitexin and glycosylorientin — which inhibit
+  thyroid peroxidase, the enzyme that iodinates thyroid hormone. Gaitan et al. reported
+  inhibition of up to 85% of TPO activity in the porcine thyroid slice system. The
+  thiocyanate hypothesis was tested first and discarded — measured thiocyanate in pearl
+  millet fractions was insufficient to account for the observed goitrogenic effect.
+evidence_tier: plausible_emerging
+rationale: In vitro and animal mechanism work, well replicated, with a coherent human
+  epidemiological counterpart (see pearl-millet-staple-intake-endemic-goitre). Tiered
+  plausible_emerging rather than strong because the human dose-response in a
+  supplemented, iodine-sufficient population has not been established, and because
+  this entry was captured from abstracts rather than full text.
+coaching_translation: Bajra's goitrogen works the way soy's does — by blocking the
+  enzyme that makes thyroid hormone — not the way cabbage's does. That matters
+  practically — cooking does not switch it off the way it switches off the goitrogens
+  in raw cabbage or broccoli. Sustained dry heat (roasting) degrades it more than a
+  brief boil. For a thyroid client, bajra is a rotation grain a couple of times a
+  week, not the everyday roti flour.
+caveats:
+- Mechanism evidence is in vitro and animal; human dose-response is not established
+- Captured from the abstract and a 2026 review — the full text was not retrievable
+- Applies to pearl millet specifically; finger millet (ragi) carries roughly an order
+  of magnitude less, and foxtail and little millet are reported negligible
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: pubmed-2921306
+  location: J Clin Endocrinol Metab 1989;68(4):707-14
+  quote: Millet diets rich in C-glycosylflavones produce goitrogenic and antithyroid
+    effects similar to those of certain other antithyroid agents.
+- id: goitrogens-in-millets-review-2026
+  location: Mechanism section
+  quote: C-glycosylflavones could inhibit up to 85% of TPO and concluded that they
+    are the active antithyroid agents in pearl millet.
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: Shivani

@@ -103,6 +103,40 @@ describe("data integrity — _food_cautions.yaml", () => {
     }
   });
 
+  it("splits the millets — bajra is not ragi, and neither is a brassica", async () => {
+    // "Millet is goitrogenic" is too coarse. Content varies ~10x across species
+    // (finger millet 31-43 mg/kg vs pearl millet 15-541), and bajra's active
+    // compound inhibits TPO rather than acting as a thiocyanate — so it cannot
+    // sit in the same preparation bucket as raw cabbage. Merging these back
+    // into one entry is what made the tool warn hardest about ragi, the
+    // mildest of them.
+    const byId = new Map((await loadFoodCautions()).map((c) => [c.id, c]));
+    const bajra = byId.get("goitrogen-pearl-millet-thyroid")!;
+    const other = byId.get("goitrogen-millet-other-thyroid")!;
+    const brassica = byId.get("goitrogen-brassica-thyroid")!;
+
+    expect(bajra.foods).toEqual(["bajra-flour"]);
+    expect(other.foods).toContain("ragi");
+    expect(other.foods).not.toContain("bajra-flour");
+    expect(brassica.foods).toContain("cabbage");
+    expect(brassica.foods).not.toContain("ragi");
+
+    // Mechanism drives preparation, and this is the whole reason for the split.
+    expect(bajra.mechanism).toBe("tpo_binding");
+    expect(bajra.preparationClears).toBeNull();
+    expect(bajra.preparationNote).not.toEqual("");
+    expect(other.preparationClears).toBe("cooked");
+    expect(brassica.preparationClears).toBe("cooked");
+  });
+
+  it("does not caution foxtail millet — it is the safe rotation grain", async () => {
+    // Reported negligible. Cautioning it would cost a thyroid client the
+    // easiest millet to rotate in, for nothing — and rotation is the actual
+    // intervention.
+    const all = (await loadFoodCautions()).flatMap((c) => c.foods);
+    expect(all).not.toContain("millet-foxtail");
+  });
+
   it("the oxalate caution does not claim a clearing preparation", async () => {
     const oxalate = (await loadFoodCautions()).find((c) => c.mechanism === "oxalate");
     expect(oxalate).toBeDefined();
@@ -114,9 +148,14 @@ describe("data integrity — _food_cautions.yaml", () => {
 describe("condition matching", () => {
   const load = async (): Promise<FoodCaution[]> => loadFoodCautions();
 
-  it("fires the goitrogen caution for a Hashimoto's client", async () => {
+  it("fires the goitrogen cautions for a Hashimoto's client", async () => {
     const live = liveFoodCautions(HASHIMOTOS, await load());
-    expect(live.map((c) => c.id).sort()).toEqual(["goitrogen-thyroid", "soy-thyroid"]);
+    expect(live.map((c) => c.id).sort()).toEqual([
+      "goitrogen-brassica-thyroid",
+      "goitrogen-millet-other-thyroid",
+      "goitrogen-pearl-millet-thyroid",
+      "soy-thyroid",
+    ]);
     expect(live[0].matchedConditions).toContain("hashimoto");
   });
 
@@ -144,7 +183,7 @@ describe("condition matching", () => {
     const resolved = { active_conditions: [], medical_history: ["Hashimoto's — resolved Jul 2026"] };
     expect(clientConditionText(resolved)).toContain("hashimoto");
     expect(liveFoodCautions(resolved, await load()).map((c) => c.id)).toContain(
-      "goitrogen-thyroid",
+      "goitrogen-millet-other-thyroid",
     );
   });
 });
@@ -152,7 +191,7 @@ describe("condition matching", () => {
 describe("prose scanning", () => {
   it("finds a cautioned food named in coach prose", async () => {
     const cautions = await loadFoodCautions();
-    const goitrogen = cautions.find((c) => c.id === "goitrogen-thyroid")!;
+    const goitrogen = cautions.find((c) => c.id === "goitrogen-millet-other-thyroid")!;
     const terms = await foodDisplayTerms(goitrogen.foods);
     expect(cautionedFoodsInText("millets, seasonal vegetables, ragi", goitrogen, terms)).toContain(
       "ragi",
@@ -164,13 +203,13 @@ describe("prose scanning", () => {
     // The guard the backlog suggestion chips needed after "IF" matched inside
     // "Behavior Modifications".
     const cautions = await loadFoodCautions();
-    const goitrogen = cautions.find((c) => c.id === "goitrogen-thyroid")!;
+    const goitrogen = cautions.find((c) => c.id === "goitrogen-millet-other-thyroid")!;
     const terms = await foodDisplayTerms(goitrogen.foods);
     expect(cautionedFoodsInText("karela and kalonji", goitrogen, terms)).toEqual([]);
   });
 
   it("tolerates empty and missing text", async () => {
-    const goitrogen = (await loadFoodCautions()).find((c) => c.id === "goitrogen-thyroid")!;
+    const goitrogen = (await loadFoodCautions()).find((c) => c.id === "goitrogen-millet-other-thyroid")!;
     const terms = await foodDisplayTerms(goitrogen.foods);
     expect(cautionedFoodsInText("", goitrogen, terms)).toEqual([]);
   });
@@ -235,7 +274,7 @@ describe("menu frequency — the staple check", () => {
   it("flags a cautioned food that has become the week's base", async () => {
     const flags = await screenMenuForClient(HASHIMOTOS, RAGI_WEEK);
     expect(flags).toHaveLength(1);
-    expect(flags[0].cautionId).toBe("goitrogen-thyroid");
+    expect(flags[0].cautionId).toBe("goitrogen-millet-other-thyroid");
     expect(flags[0].total).toBeGreaterThanOrEqual(5);
     expect(flags[0].foodCounts[0].food).toBe("ragi");
   });
@@ -286,7 +325,7 @@ describe("plan-conflict rule 6", () => {
     const plan = { nutrition: { add: ["ragi", "moong dal", "seasonal vegetables"] } };
     const findings = await resolveFoodCautionFindings(HASHIMOTOS, plan);
     const conflicts = detectPlanConflicts(HASHIMOTOS, plan as never, findings);
-    const c = conflicts.find((x) => x.id === "food-caution-goitrogen-thyroid");
+    const c = conflicts.find((x) => x.id === "food-caution-goitrogen-millet-other-thyroid");
     expect(c).toBeDefined();
     expect(c!.severity).toBe("warning");
     expect(c!.summary).toContain("named in this plan");
@@ -299,10 +338,10 @@ describe("plan-conflict rule 6", () => {
     // A detector that keeps firing after it has been acted on trains people to
     // ignore it.
     const client = { ...HASHIMOTOS, foods_to_avoid: "raw cabbage, raw kale" };
-    const plan = { nutrition: { add: ["ragi"] } };
+    const plan = { nutrition: { add: ["cabbage", "kale"] } };
     const findings = await resolveFoodCautionFindings(client, plan);
     const conflicts = detectPlanConflicts(client, plan as never, findings);
-    const c = conflicts.find((x) => x.id === "food-caution-goitrogen-thyroid")!;
+    const c = conflicts.find((x) => x.id === "food-caution-goitrogen-brassica-thyroid")!;
     expect(c.severity).toBe("info");
     expect(c.suggested_fix).toBeUndefined();
   });

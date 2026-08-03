@@ -1,0 +1,43 @@
+slug: pearl-millet-staple-intake-endemic-goitre
+statement: The human signal for millet-related goitre is STAPLE-LEVEL intake, and it
+  is modified by iodine status. Endemic goitre was documented in western Sudan despite
+  iodine sufficiency, with pearl millet consumption implicated as an etiologic factor
+  alongside vitamin A deficiency and protein-energy malnutrition. The consistent
+  pattern across the literature is thyroid disruption where high millet intake and
+  marginal iodine status coincide; in populations using iodised salt and eating a
+  mixed diet, ordinary cooked millet servings are not reported to disturb thyroid
+  function.
+evidence_tier: plausible_emerging
+rationale: Observational epidemiology in a population where millet is the dominant
+  dietary energy source, with a plausible and independently characterised mechanism
+  (see pearl-millet-c-glycosylflavones-inhibit-tpo). Cannot establish causation, and
+  the exposure is far above what an Indian client eating rotated grains would reach.
+coaching_translation: This is the reason frequency matters more than any single meal.
+  The evidence is about millet being THE staple — most of the energy, most days — not
+  about a bajra roti twice a week. For a client on iodised salt eating a varied diet,
+  keeping bajra to a rotation grain is the whole intervention. It also means iodine
+  status is worth knowing before restricting anything — the caution is much weaker in
+  someone iodine-replete.
+caveats:
+- Observational; confounded by vitamin A deficiency and protein-energy malnutrition
+  in the same population
+- Exposure level is staple-diet consumption, far above typical rotated Indian intake
+- Iodine status modifies the effect, and we do not routinely capture iodised-salt use
+  or urinary iodine at intake
+- Captured from the abstract; full text was not retrievable
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Iodine status and any decision to test it are clinician territory
+  — the coaching lever here is grain rotation, not iodine dosing.
+sources:
+- id: pubmed-10617947
+  location: Am J Clin Nutr 2000;71(1):59-66
+  quote: Endemic goiter with iodine sufficiency; a possible role for the consumption
+    of pearl millet in the etiology of endemic goiter.
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: Shivani
