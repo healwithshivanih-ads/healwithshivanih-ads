@@ -224,15 +224,20 @@ cautions:
     severity: moderate
     mechanism: goitrogen
     preparation_clears: cooked
-    # `millet-foxtail` is deliberately ABSENT — foxtail and little millet are
+    # `millet-foxtail` and `millet-little` are deliberately ABSENT — both are
     # reported to carry negligible goitrogens, and cautioning them would cost
-    # a thyroid client the easiest millets to rotate in for nothing.
-    # `millet-generic` stays because unqualified "millet" is ambiguous.
+    # a thyroid client the easiest millets to rotate in for nothing. Rotation
+    # is the intervention, so the substitutes must stay clean.
+    # `millet-generic` stays because unqualified "millet" is ambiguous, and
+    # `millet-proso` / `millet-sama` (barnyard, after the 2026-08-03 split)
+    # stay because neither is separately characterised — Murray's class-level
+    # claim is the only evidence covering them.
     foods:
       - ragi
       - millet-generic
       - millet-cooked
       - millet-kodo
+      - millet-proso
       - millet-sama
       - jowar-flour
     condition_terms:
@@ -311,12 +316,19 @@ cautions:
       meal, and keep iron or zinc supplements a couple of hours clear of it.
     # Unlike the goitrogen entries this covers ALL millets including foxtail —
     # phytate is a property of the whole family, not a per-species one.
+    # `food-cautions.test.ts` enforces that literally: every millet key in
+    # _ingredient_nutrients.yaml must appear here. That test exists because
+    # `millet-little` and `millet-proso` were added to the table by two other
+    # PRs merging alongside this work and silently fell out of coverage — a
+    # missing key looks exactly like a caution that found nothing.
     foods:
       - ragi
       - millet-generic
       - millet-cooked
       - millet-foxtail
       - millet-kodo
+      - millet-little
+      - millet-proso
       - millet-sama
       - bajra-flour
       - jowar-flour
