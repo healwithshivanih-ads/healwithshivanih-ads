@@ -4,6 +4,7 @@ import { execFile as execFileCb } from "node:child_process";
 import path from "node:path";
 import fs from "node:fs/promises";
 import nodemailer from "nodemailer";
+import { clientFrom } from "@/lib/fmdb/mail-from";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
@@ -235,7 +236,7 @@ export async function sendClientEmailAction(
           }))
         : undefined;
     await transporter.sendMail({
-      from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
+      from: clientFrom(user),
       to: input.to,
       cc: input.cc,
       subject: input.subject,
@@ -391,7 +392,7 @@ export async function sendEducationPackAction(
       auth: { user, pass },
     });
     await transporter.sendMail({
-      from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
+      from: clientFrom(user),
       to: input.clientEmail,
       subject,
       html: htmlBody,
