@@ -66,7 +66,7 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 370
+approx_kcal_per_serving: 334
 kcal_is_estimate: true
 protein_g: 13.2
 good_for:
@@ -94,40 +94,38 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 370
+kcal_per_serving: 334
 kcal_total: 740
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 370
-  protein_g: 13.2
-  carbs_g: 57.8
-  fat_g: 9.5
-  fibre_g: 8.3
-  iron_mg: 3.7
-  calcium_mg: 48.1
-  magnesium_mg: 104
-  zinc_mg: 1.9
-  potassium_mg: 560
-  folate_ug: 205
+  kcal: 334
+  protein_g: 11.6
+  carbs_g: 50.9
+  fat_g: 9.8
+  fibre_g: 7.5
+  iron_mg: 2.8
+  calcium_mg: 51.7
+  magnesium_mg: 88.2
+  zinc_mg: 1.8
+  potassium_mg: 521
+  folate_ug: 178
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 15.6
-  omega3_mg: 145
+  omega3_mg: 103
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
 - fibre
-- iron
 - magnesium
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-02'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
-  key: millet-generic
-  g: 100.0
+  key: millet-little
+  g: 90.0
 - i: 1
   key: moong-dal
   g: 50.0

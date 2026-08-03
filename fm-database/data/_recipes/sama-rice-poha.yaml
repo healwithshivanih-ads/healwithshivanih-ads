@@ -24,7 +24,7 @@ main_ingredients:
 - curry leaves
 contains_allergens: []
 ingredients:
-- item: sama (barnyard millet), cooked and cooled
+- item: sama (little millet), cooked and cooled
   qty: '2.5'
   unit: cup
 - item: coconut oil
@@ -67,12 +67,12 @@ steps:
 servings: '2'
 prep_time_min: 12
 cook_time_min: 15
-approx_kcal_per_serving: 830
+approx_kcal_per_serving: 906
 kcal_is_estimate: true
 protein_g: 18.0
 good_for:
 - agni-digestive-fire
-one_line: The same tempering built on cooked sama (barnyard millet) instead of flattened
+one_line: The same tempering built on cooked sama (little millet) instead of flattened
   rice.
 headnote: Poha made with millet or rice flakes and plenty of vegetables is a light,
   quick breakfast — skip the sugar and lean on lemon and curry leaves for flavour.
@@ -94,22 +94,22 @@ kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 830
+kcal_per_serving: 906
 kcal_total: 540
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 830
-  protein_g: 18.0
+  kcal: 906
+  protein_g: 23.7
   carbs_g: 162
-  fat_g: 12.4
-  fibre_g: 26.2
-  iron_mg: 12.9
-  calcium_mg: 89.4
-  magnesium_mg: 215
-  zinc_mg: 7.6
-  potassium_mg: 833
-  folate_ug: 131
+  fat_g: 19.4
+  fibre_g: 21.3
+  iron_mg: 4.6
+  calcium_mg: 82.6
+  magnesium_mg: 236
+  zinc_mg: 4.9
+  potassium_mg: 561
+  folate_ug: 133
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 32.0
@@ -125,10 +125,10 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
-  key: millet-sama
+  key: millet-little
   g: 450.0
 - i: 1
   key: coconut-oil

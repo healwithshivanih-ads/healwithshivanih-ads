@@ -3319,20 +3319,12 @@ millet-generic:
   aliases:
   - uncooked millet grains
   - millet
-  - little millet
   - mixed millet
   - mixed millet (foxtail, kodo or little millet)
   - multi millet
   - multi millet flour
   - millet rice
   - millet rawa
-  - kutki
-  - samalu
-  - samai
-  - sava
-  - gajro
-  - suan
-  - same millet
   per_100g:
     kcal: 378
     protein_g: 11.0
@@ -3385,6 +3377,40 @@ millet-kodo:
     g_per_cup: 180
     g_per_piece: null
     g_per_leaf: null
+millet-little:
+  category: grain
+  basis: dry
+  aliases:
+  - little millet
+  - sama
+  - sama millet
+  - samai
+  - kutki
+  - samalu
+  - sava
+  - gajro
+  - suan
+  - same millet
+  per_100g:
+    kcal: 341
+    protein_g: 8.7
+    carbs_g: 65.5
+    fat_g: 5.3
+    fibre_g: 7.6
+    iron_mg: 1.3
+    calcium_mg: 17
+    magnesium_mg: 91
+    zinc_mg: 1.8
+    potassium_mg: 129
+    folate_ug: 36
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 40
+  density:
+    g_per_cup: 180
+    g_per_piece: null
+    g_per_leaf: null
 millet-proso:
   category: grain
   basis: dry
@@ -3423,8 +3449,6 @@ millet-sama:
   category: grain
   basis: dry
   aliases:
-  - sama
-  - sama millet
   - barnyard millet
   - sanwa
   - samvat

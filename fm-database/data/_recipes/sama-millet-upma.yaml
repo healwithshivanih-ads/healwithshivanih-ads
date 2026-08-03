@@ -72,16 +72,16 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
-approx_kcal_per_serving: 384
+approx_kcal_per_serving: 414
 kcal_is_estimate: true
 protein_g: 7.8
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, fluffy sama millet upma tempered with mustard and curry leaves and studded
-  with vegetables.
-headnote: Dry-roasting the sama millet before cooking keeps the upma light and fluffy rather
-  than sticky — a warm, grounding breakfast that's gentle on digestion.
+one_line: A savoury, fluffy sama millet upma tempered with mustard and curry leaves
+  and studded with vegetables.
+headnote: Dry-roasting the sama millet before cooking keeps the upma light and fluffy
+  rather than sticky — a warm, grounding breakfast that's gentle on digestion.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -99,22 +99,22 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 384
+kcal_per_serving: 414
 kcal_total: 580
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 384
-  protein_g: 7.8
+  kcal: 414
+  protein_g: 10.1
   carbs_g: 67.5
-  fat_g: 9.4
-  fibre_g: 11.1
-  iron_mg: 5.3
-  calcium_mg: 54.2
-  magnesium_mg: 96.3
-  zinc_mg: 3.1
-  potassium_mg: 426
-  folate_ug: 63.3
+  fat_g: 12.2
+  fibre_g: 9.2
+  iron_mg: 1.9
+  calcium_mg: 51.5
+  magnesium_mg: 104
+  zinc_mg: 2.0
+  potassium_mg: 317
+  folate_ug: 64.2
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 13.7
@@ -122,14 +122,13 @@ nutrients_per_serving:
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
-- iron
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
-  key: millet-sama
+  key: millet-little
   g: 180.0
 - i: 1
   key: ghee
