@@ -265,7 +265,7 @@ describe("gut-reset exemplar — menus, library, about", () => {
     expect(d.weekMenus[0].days.length).toBe(7);
     expect(d.meals.length).toBe(4); // Breakfast/Lunch/Evening/Dinner
     // Wednesday of the Remove week
-    expect(d.meals[0].pills[0]).toBe("Vegetable poha");
+    expect(d.meals[0].pills[0]).toBe("Tofu bhurji with capsicum and tomato");
     // meal overlay has the real method for today's dishes
     expect((d.mealExtra["Lunch"]?.recipe ?? []).length).toBeGreaterThan(0);
     // the pack carries every dish used across the four sample weeks
@@ -285,5 +285,109 @@ describe("gut-reset exemplar — menus, library, about", () => {
     expect(d.guidedAbout?.notice.length).toBeGreaterThan(2);
     for (const id of d.guidedAbout?.practiceLibraryIds ?? [])
       expect(d.somatic.some((s) => s.practiceId === id)).toBe(true);
+  });
+});
+
+describe("dietary variants — coach review round 1 (3 Aug)", () => {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+
+  it("every dish AND every override is an exact catalogue recipe", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const titles = new Set(lib.map((l) => norm(l.recipe.title)));
+    const gut = getGuidedProtocol("gut-reset")!;
+    const missing: string[] = [];
+    for (const w of gut.sampleWeeks ?? [])
+      for (const d of w.days)
+        for (const s of d.slots)
+          for (const dish of [s.dish, s.nonveg, s.jain])
+            if (dish && !titles.has(norm(dish))) missing.push(`${w.phase}/${d.dow}/${s.slot}: ${dish}`);
+    expect(missing).toEqual([]);
+  });
+
+  it("what a Jain member SEES (override or fallback) never contains onion or garlic", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const ingByTitle = new Map(
+      lib.map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]),
+    );
+    const gut = getGuidedProtocol("gut-reset")!;
+    const violations: string[] = [];
+    for (const w of gut.sampleWeeks ?? [])
+      for (const d of w.days)
+        for (const s of d.slots) {
+          const seen = s.jain ?? s.dish;
+          const ing = ingByTitle.get(norm(seen)) ?? "";
+          if (/\bonion|garlic\b/.test(ing)) violations.push(`${w.phase}/${d.dow}/${s.slot}: ${seen}`);
+        }
+    expect(violations).toEqual([]);
+  });
+
+  it("the Remove week carries no rice, no dairy, and no wheat for ANY diet", async () => {
+    const { loadLibraryRecipes } = await import("./client-app");
+    const lib = await loadLibraryRecipes();
+    const ingByTitle = new Map(
+      lib.map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]),
+    );
+    const gut = getGuidedProtocol("gut-reset")!;
+    const remove = (gut.sampleWeeks ?? []).find((w) => w.phase === "Remove")!;
+    const bad: string[] = [];
+    for (const d of remove.days)
+      for (const s of d.slots)
+        for (const dish of [s.dish, s.nonveg, s.jain]) {
+          if (!dish) continue;
+          const ing = ingByTitle.get(norm(dish)) ?? "";
+          // sama/barnyard "rice" is a millet — match rice as its own ingredient word
+          if (/\b(basmati|white rice|cooked rice|rice flour|poha|curd|yogurt|paneer|milk\b|wheat|maida|suji)\b/.test(ing) || /\brice\b(?! flour)/.test(ing.replace(/sama rice|barnyard rice/g, "")))
+            bad.push(`${d.dow}/${s.slot}: ${dish}`);
+        }
+    expect(bad).toEqual([]);
+  });
+
+  it("no ragi porridge anywhere; at most one porridge per week", () => {
+    const gut = getGuidedProtocol("gut-reset")!;
+    for (const w of gut.sampleWeeks ?? []) {
+      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.jain].filter(Boolean)));
+      expect(dishes.some((x) => /ragi porridge/i.test(x!))).toBe(false);
+      expect(dishes.filter((x) => /porridge/i.test(x!)).length).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("dairy appears only in the Rebalance week", () => {
+    const gut = getGuidedProtocol("gut-reset")!;
+    const DAIRY = /curd|raita|lassi|yogurt|paneer|buttermilk/i;
+    for (const w of gut.sampleWeeks ?? []) {
+      const dishes = w.days.flatMap((d) => d.slots.flatMap((s) => [s.dish, s.nonveg, s.jain].filter(Boolean)));
+      const hasDairy = dishes.some((x) => DAIRY.test(x!));
+      expect(hasDairy).toBe(w.phase === "Rebalance");
+    }
+  });
+
+  it("non-veg subscribers get their variant; Jain get theirs", async () => {
+    const mk = (diet: "non_vegetarian" | "jain") => ({
+      subscriber_id: "gd-test000003",
+      display_name: "T",
+      email: "t@example.com",
+      phone: "",
+      app_token: "c".repeat(32),
+      protocol_slug: "gut-reset",
+      dietary_preference: diet,
+      extra_protocols: [],
+      start_date: "2026-08-03",
+      payment_id: "pay_Z",
+      amount_paisa: 699900,
+      source: "web" as const,
+      status: "active" as const,
+      timezone: "Asia/Kolkata",
+      purchased_at: "2026-08-03T03:30:00.000Z",
+      created_at: "2026-08-03T03:30:00.000Z",
+      updated_at: "2026-08-03T03:30:00.000Z",
+      version: 1,
+    });
+    // Monday of week 1 (Remove): nonveg breakfast override is the egg dish
+    const nv = (await buildGuidedAppData(mk("non_vegetarian"), "Asia/Kolkata", new Date("2026-08-03T04:00:00Z")))!;
+    expect(nv.meals[0].pills[0]).toBe("Masala scrambled eggs");
+    const jn = (await buildGuidedAppData(mk("jain"), "Asia/Kolkata", new Date("2026-08-03T04:00:00Z")))!;
+    expect(jn.meals[0].pills[0]).toBe("Foxtail millet pongal");
   });
 });

@@ -53,10 +53,14 @@ export interface GuidedPracticeDef {
 export interface GuidedSampleWeek {
   /** Headline phase name this week belongs to (phaseForWeek output). */
   phase: string;
-  /** 7 days × slot→dish. Every dish is an EXACT catalogue recipe title from
-   *  fm-database/data/_recipes/ — enforced by guided-tier.test.ts. NO
-   *  AI-authored recipes: the app renders the library recipe verbatim. */
-  days: { dow: string; slots: { slot: string; dish: string }[] }[];
+  /** 7 days × slot→dish. Every dish (and every override) is an EXACT
+   *  catalogue recipe title from fm-database/data/_recipes/ — enforced by
+   *  guided-tier.test.ts. NO AI-authored recipes: the app renders the library
+   *  recipe verbatim. `nonveg`/`jain` override the default for those dietary
+   *  preferences (veg + veg-egg get the default; eggs arrive via swaps).
+   *  Jain overrides are additionally ingredient-checked: no onion, no garlic
+   *  (also test-enforced). */
+  days: { dow: string; slots: { slot: string; dish: string; nonveg?: string; jain?: string }[] }[];
   /** One warm line about what this week is naturally rich in. */
   nourishment: string;
 }
@@ -150,7 +154,9 @@ export const GUIDED_PROTOCOLS: GuidedProtocol[] = [
         endWeek: 2,
         note: "Taking out the usual irritants and watching what changes.",
         actions: [
-          "Take gluten, dairy, processed sugar and alcohol out for now",
+          "Take gluten, rice, dairy, processed sugar and alcohol out for now",
+          "Protein at breakfast and lunch — besan, moong, sprouts, tofu (eggs and fish if you eat them)",
+          "If mornings feel light, a scoop of plant or fermented-yeast protein in water or a thin smoothie is a good option",
           "Cook with ghee, coconut oil or cold-pressed mustard oil — set the refined seed oils aside",
           "Keep a simple daily note: what you ate, how you felt",
           "Sleep 7–9 hours, at consistent times",
@@ -174,7 +180,7 @@ export const GUIDED_PROTOCOLS: GuidedProtocol[] = [
         endWeek: 8,
         note: "Feeding and repopulating the good bacteria.",
         actions: [
-          "One serving of fermented food daily — homemade curd, kanji, idli or dosa batter ferments",
+          "One non-dairy ferment daily — kanji, idli, dosa; dairy ferments wait for Rebalance",
           "Cooked vegetables at every meal — variety matters more than quantity",
           "Add prebiotic foods through the week: garlic, onion, slightly cooled rice, raw banana — if you avoid onion and garlic, cooled rice, raw banana and sabja seeds do the same job",
           "Keep the daily food-and-feeling note going — patterns show up around now",
@@ -198,7 +204,7 @@ export const GUIDED_PROTOCOLS: GuidedProtocol[] = [
         endWeek: 12,
         note: "The sleep, stress and eating rhythm that holds it — and keeps going.",
         actions: [
-          "Reintroduce one removed food at a time, three days apart, and note what you feel",
+          "Reintroduce one removed food at a time, three days apart — fermented dairy first (curd, lassi), then rice, then others — and note what you feel",
           "Keep the eating rhythm you've built — regular times, real food, no grazing",
           "Protect sleep 7–9 hours as the non-negotiable",
           "Carry your daily practice forward — this phase is yours to keep",
@@ -208,16 +214,19 @@ export const GUIDED_PROTOCOLS: GuidedProtocol[] = [
     foods: {
       eat: [
         "Cooked vegetables, every meal",
-        "Dal, moong and well-soaked legumes",
-        "Fermented foods — curd, kanji, dosa/idli",
+        "Dal, moong, sprouts and well-soaked legumes — protein-forward, especially before evening",
+        "Non-dairy ferments — kanji, idli, dosa (dairy ferments like curd and lassi return in Rebalance)",
+        "Millets — rotated, soaked and well-cooked, not at every meal (thyroid condition? keep them cooked and varied)",
         "Slow-simmered broths — bone, or moong-and-vegetable",
         "Ghee and cold-pressed oils",
         "Stewed fruit",
+        "Plant or fermented-yeast protein powder — optional, when meals feel light",
       ],
-      sometimes: ["Rice and millets", "Well-cooked eggs", "Fish, if you eat it"],
+      sometimes: ["Well-cooked eggs", "Fish, if you eat it"],
       avoid: [
         "Gluten (wheat, maida, suji) — for now",
-        "Dairy other than fermented — for now",
+        "Rice — out for the first two weeks, back from week 3",
+        "Dairy — for now (fermented dairy returns in Rebalance)",
         "Processed sugar",
         "Alcohol",
         "Refined seed oils",
@@ -264,6 +273,8 @@ export const GUIDED_PROTOCOLS: GuidedProtocol[] = [
       "Digestive enzymes",
       "Aloe vera (inner leaf)",
       "Deglycyrrhizinated licorice (DGL)",
+      "Plant-protein blend",
+      "Fermented-yeast protein",
     ],
     faq: [
       {
@@ -324,54 +335,54 @@ export const GUIDED_PROTOCOLS: GuidedProtocol[] = [
     sampleWeeks: [
       {
         phase: "Remove",
-        nourishment: "Millet mornings, one-pot dals and gentle soups — settling food while the irritants rest.",
+        nourishment: "Protein-forward mornings, one-pot dals and rotated millets — no wheat, no rice, no dairy while the system settles.",
         days: [
-          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Besan chilla with methi" }, { slot: "Lunch", dish: "Moong Dal Khichdi" }, { slot: "Evening", dish: "Roasted chana & seed mix" }, { slot: "Dinner", dish: "Lauki ginger soup" } ] },
-          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Ragi dosa" }, { slot: "Lunch", dish: "Jowar Vegetable Khichdi" }, { slot: "Evening", dish: "Ghee-Roasted Makhana with Pepper" }, { slot: "Dinner", dish: "Masoor dal soup" } ] },
-          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Vegetable poha" }, { slot: "Lunch", dish: "Foxtail millet pulao" }, { slot: "Evening", dish: "Sprouted moong chaat" }, { slot: "Dinner", dish: "Vegetable Soup (Lauki, Ash Gourd, Drumstick)" } ] },
-          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Moong dal chilla" }, { slot: "Lunch", dish: "Vegetable millet khichdi" }, { slot: "Evening", dish: "Roasted Chickpeas" }, { slot: "Dinner", dish: "Palak-moong soup" } ] },
-          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Ragi porridge" }, { slot: "Lunch", dish: "Kodo millet pulao with peas and jeera" }, { slot: "Evening", dish: "Steamed Sweet Corn Chaat" }, { slot: "Dinner", dish: "Carrot-coriander soup" } ] },
-          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Foxtail millet upma" }, { slot: "Lunch", dish: "Masoor dal khichdi" }, { slot: "Evening", dish: "Masala Roasted Chana" }, { slot: "Dinner", dish: "Lemon coriander soup" } ] },
-          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Sama rice poha" }, { slot: "Lunch", dish: "Vegetable moong khichdi" }, { slot: "Evening", dish: "Stewed Spiced Apples" }, { slot: "Dinner", dish: "Thin moong dal soup" } ] },
+          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Besan chilla with methi", nonveg: "Masala scrambled eggs", jain: "Foxtail millet pongal" }, { slot: "Lunch", dish: "Foxtail millet khichdi" }, { slot: "Evening", dish: "Roasted chana & seed mix" }, { slot: "Dinner", dish: "Masoor dal khichdi", nonveg: "Chicken soup with ginger, garlic and turmeric" } ] },
+          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Moong dal chilla", nonveg: "Egg bhurji", jain: "Kodo Millet Cooked Soft" }, { slot: "Lunch", dish: "Jowar Vegetable Khichdi", jain: "Masoor dal khichdi" }, { slot: "Evening", dish: "Ghee-Roasted Makhana with Pepper" }, { slot: "Dinner", dish: "Palak moong dal" } ] },
+          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Tofu bhurji with capsicum and tomato", jain: "Simple Stovetop Tofu" }, { slot: "Lunch", dish: "Vegetable millet khichdi", jain: "Masoor dal khichdi" }, { slot: "Evening", dish: "Sprouted moong chaat", jain: "Mixed sprouts chaat" }, { slot: "Dinner", dish: "Vegetable Soup (Lauki, Ash Gourd, Drumstick)", nonveg: "Grilled fish" } ] },
+          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Vegetable besan omelette", nonveg: "Egg spinach omelette", jain: "Foxtail millet pongal" }, { slot: "Lunch", dish: "Palak moong dal" }, { slot: "Evening", dish: "Roasted Chickpeas" }, { slot: "Dinner", dish: "Vegetable bajra khichdi" } ] },
+          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Foxtail millet upma", jain: "Sama khichdi" }, { slot: "Lunch", dish: "Little millet khichdi" }, { slot: "Evening", dish: "Masala Roasted Chana" }, { slot: "Dinner", dish: "Moong dal soup", nonveg: "Pan-Seared Chicken Thigh" } ] },
+          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Besan chilla", nonveg: "Masala eggs", jain: "Kodo Millet Cooked Soft" }, { slot: "Lunch", dish: "Vegetable bajra khichdi" }, { slot: "Evening", dish: "Steamed Sweet Corn Chaat" }, { slot: "Dinner", dish: "Sama khichdi" } ] },
+          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Sama millet upma", jain: "Kodo Millet Cooked Soft" }, { slot: "Lunch", dish: "Mixed-veg moong dal khichdi", jain: "Masoor dal khichdi" }, { slot: "Evening", dish: "Stewed Spiced Apples" }, { slot: "Dinner", dish: "Lauki ginger soup", nonveg: "Grilled Chicken Breast" } ] },
         ],
       },
       {
         phase: "Reinoculate",
-        nourishment: "A ferment every day — idli, kanji, curd and lassi feeding the good bacteria back.",
+        nourishment: "A non-dairy ferment most days — kanji, idli and dosa feeding the good bacteria; dairy waits for Rebalance.",
         days: [
-          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Idli" }, { slot: "Lunch", dish: "Curd Rice (Thayir Sadam)" }, { slot: "Evening", dish: "Kanji" }, { slot: "Dinner", dish: "Moong dal soup" } ] },
-          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Ragi idli" }, { slot: "Lunch", dish: "Jowar Khichdi with Cucumber Raita" }, { slot: "Evening", dish: "Everyday Digestive Lassi" }, { slot: "Dinner", dish: "Lauki soup" } ] },
-          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Foxtail millet dosa" }, { slot: "Lunch", dish: "Vegetable millet khichdi" }, { slot: "Evening", dish: "Buttermilk Lassi" }, { slot: "Dinner", dish: "Bottle gourd ginger soup" } ] },
-          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Little millet idli" }, { slot: "Lunch", dish: "Sprouted Mung Dal with Yogurt" }, { slot: "Evening", dish: "Sabja Seed Water" }, { slot: "Dinner", dish: "Masoor dal soup" } ] },
-          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Jowar dosa" }, { slot: "Lunch", dish: "Vegetable kitchari" }, { slot: "Evening", dish: "Kanji" }, { slot: "Dinner", dish: "Tomato rasam" } ] },
-          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Besan uttapam" }, { slot: "Lunch", dish: "Curd Rice (Thayir Sadam)" }, { slot: "Evening", dish: "Ginger Lime Lassi" }, { slot: "Dinner", dish: "Vegetable soup (lauki)" } ] },
-          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Everyday Dosa" }, { slot: "Lunch", dish: "Foxtail millet khichdi" }, { slot: "Evening", dish: "Cooling Cucumber-Mint Raita" }, { slot: "Dinner", dish: "Rasam" } ] },
+          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Idli" }, { slot: "Lunch", dish: "Foxtail millet khichdi" }, { slot: "Evening", dish: "Kanji" }, { slot: "Dinner", dish: "Moong dal soup", nonveg: "Fish stew" } ] },
+          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Ragi idli" }, { slot: "Lunch", dish: "Vegetable kitchari" }, { slot: "Evening", dish: "Sabja Seed Water" }, { slot: "Dinner", dish: "Palak moong dal" } ] },
+          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Foxtail millet dosa" }, { slot: "Lunch", dish: "Vegetable millet khichdi", jain: "Vegetable moong khichdi" }, { slot: "Evening", dish: "Kanji" }, { slot: "Dinner", dish: "Lauki ginger soup", nonveg: "Chicken soup with ginger, garlic and turmeric" } ] },
+          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Little millet idli" }, { slot: "Lunch", dish: "Sprouted chana curry", jain: "Masoor dal khichdi" }, { slot: "Evening", dish: "Mixed sprouts chaat" }, { slot: "Dinner", dish: "Vegetable Soup (Lauki, Ash Gourd, Drumstick)" } ] },
+          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Jowar dosa" }, { slot: "Lunch", dish: "Moong Dal Khichdi" }, { slot: "Evening", dish: "Roasted chana & seed mix" }, { slot: "Dinner", dish: "Masoor dal soup" } ] },
+          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Besan uttapam", jain: "Ragi idli" }, { slot: "Lunch", dish: "Vegetable bajra khichdi" }, { slot: "Evening", dish: "Kanji" }, { slot: "Dinner", dish: "Sama khichdi" } ] },
+          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Everyday Dosa" }, { slot: "Lunch", dish: "Foxtail millet pongal" }, { slot: "Evening", dish: "Steamed Sweet Corn Chaat" }, { slot: "Dinner", dish: "Vegetable moong khichdi" } ] },
         ],
       },
       {
         phase: "Repair",
-        nourishment: "Warm, soft and slow — porridges, kichari and simmered broths while the lining rebuilds.",
+        nourishment: "Warm, soft and slow — kichari, pongal and simmered broths while the lining rebuilds.",
         days: [
-          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Ragi porridge" }, { slot: "Lunch", dish: "Moong dal kitchari" }, { slot: "Evening", dish: "Everyday Vegetable Broth" }, { slot: "Dinner", dish: "Lauki ginger soup" } ] },
-          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Sama porridge" }, { slot: "Lunch", dish: "Everyday Kichari" }, { slot: "Evening", dish: "Stewed Apples with Dates" }, { slot: "Dinner", dish: "Bottle gourd ginger soup" } ] },
-          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Foxtail millet porridge" }, { slot: "Lunch", dish: "Mixed-veg moong dal khichdi" }, { slot: "Evening", dish: "Everyday Vegetable Broth" }, { slot: "Dinner", dish: "Carrot-coriander soup" } ] },
-          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Kodo Millet Cooked Soft" }, { slot: "Lunch", dish: "Moong Dal Khichdi" }, { slot: "Evening", dish: "Cooked Apple With Nutmeg And Ghee" }, { slot: "Dinner", dish: "Palak-moong soup" } ] },
-          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Ragi porridge" }, { slot: "Lunch", dish: "Foxtail millet pongal" }, { slot: "Evening", dish: "Lemon ginger soup" }, { slot: "Dinner", dish: "Moong dal soup" } ] },
-          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Sama khichdi" }, { slot: "Lunch", dish: "Vegetable moong khichdi" }, { slot: "Evening", dish: "Stewed Spiced Apples" }, { slot: "Dinner", dish: "Lauki soup" } ] },
-          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Foxtail millet porridge" }, { slot: "Lunch", dish: "Masoor dal khichdi" }, { slot: "Evening", dish: "Everyday Vegetable Broth" }, { slot: "Dinner", dish: "Thin dal soup" } ] },
+          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Foxtail millet pongal" }, { slot: "Lunch", dish: "Moong dal kitchari" }, { slot: "Evening", dish: "Everyday Vegetable Broth" }, { slot: "Dinner", dish: "Vegetable moong khichdi" } ] },
+          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Kodo Millet Cooked Soft" }, { slot: "Lunch", dish: "Everyday Kichari" }, { slot: "Evening", dish: "Stewed Apples with Dates" }, { slot: "Dinner", dish: "Lauki ginger soup", nonveg: "Chicken Stew (Kerala-Style)" } ] },
+          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Little millet idli" }, { slot: "Lunch", dish: "Mixed-veg moong dal khichdi", jain: "Masoor dal khichdi" }, { slot: "Evening", dish: "Everyday Vegetable Broth" }, { slot: "Dinner", dish: "Palak moong dal" } ] },
+          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Foxtail millet porridge" }, { slot: "Lunch", dish: "Moong Dal Khichdi" }, { slot: "Evening", dish: "Cooked Apple With Nutmeg And Ghee" }, { slot: "Dinner", dish: "Masoor dal khichdi" } ] },
+          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Ragi idli" }, { slot: "Lunch", dish: "Vegetable kitchari" }, { slot: "Evening", dish: "Lemon ginger soup", jain: "Everyday Vegetable Broth" }, { slot: "Dinner", dish: "Moong dal soup", nonveg: "Fish stew" } ] },
+          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Sama khichdi" }, { slot: "Lunch", dish: "Vegetable moong khichdi" }, { slot: "Evening", dish: "Stewed Spiced Apples" }, { slot: "Dinner", dish: "Vegetable Soup (Lauki, Ash Gourd, Drumstick)" } ] },
+          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Besan chilla with methi", jain: "Foxtail millet pongal" }, { slot: "Lunch", dish: "Masoor dal khichdi" }, { slot: "Evening", dish: "Everyday Vegetable Broth" }, { slot: "Dinner", dish: "Sama khichdi", nonveg: "Grilled fish" } ] },
         ],
       },
       {
         phase: "Rebalance",
-        nourishment: "The settled rhythm — wider variety, ferments staying, reintroductions running alongside.",
+        nourishment: "The settled rhythm — protein-forward mornings, dairy ferments returning, reintroductions running alongside.",
         days: [
-          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Besan chilla with methi" }, { slot: "Lunch", dish: "Vegetable millet pulao" }, { slot: "Evening", dish: "Sprouted moong salad" }, { slot: "Dinner", dish: "Sambar" } ] },
-          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Idli" }, { slot: "Lunch", dish: "Palak moong dal" }, { slot: "Evening", dish: "Roasted chana & seed mix" }, { slot: "Dinner", dish: "Tomato rasam" } ] },
-          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Ragi dosa" }, { slot: "Lunch", dish: "Chana masala" }, { slot: "Evening", dish: "Cucumber Mint Raita" }, { slot: "Dinner", dish: "Vegetable Soup (Lauki, Ash Gourd, Drumstick)" } ] },
-          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Vegetable poha" }, { slot: "Lunch", dish: "Rajma" }, { slot: "Evening", dish: "Mixed sprouts chaat" }, { slot: "Dinner", dish: "Moong dal soup" } ] },
-          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Moong dal chilla" }, { slot: "Lunch", dish: "Vegetable bajra khichdi" }, { slot: "Evening", dish: "Everyday Digestive Lassi" }, { slot: "Dinner", dish: "Rasam" } ] },
-          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Foxtail millet upma" }, { slot: "Lunch", dish: "Sprouted chana curry" }, { slot: "Evening", dish: "Stewed Apples with Dates" }, { slot: "Dinner", dish: "Palak-moong soup" } ] },
-          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Sama rice poha" }, { slot: "Lunch", dish: "Curd Rice (Thayir Sadam)" }, { slot: "Evening", dish: "Kanji" }, { slot: "Dinner", dish: "Lemon coriander soup" } ] },
+          { dow: "Mon", slots: [ { slot: "Breakfast", dish: "Besan chilla with methi", nonveg: "Masala scrambled eggs", jain: "Ragi idli" }, { slot: "Lunch", dish: "Vegetable millet pulao", jain: "Vegetable moong khichdi" }, { slot: "Evening", dish: "Everyday Digestive Lassi" }, { slot: "Dinner", dish: "Sambar" } ] },
+          { dow: "Tue", slots: [ { slot: "Breakfast", dish: "Idli" }, { slot: "Lunch", dish: "Palak moong dal" }, { slot: "Evening", dish: "Roasted chana & seed mix" }, { slot: "Dinner", dish: "Tomato rasam", jain: "Moong dal soup" } ] },
+          { dow: "Wed", slots: [ { slot: "Breakfast", dish: "Moong dal chilla", jain: "Little millet idli" }, { slot: "Lunch", dish: "Chana masala", jain: "Sambar" }, { slot: "Evening", dish: "Cucumber Mint Raita" }, { slot: "Dinner", dish: "Vegetable Soup (Lauki, Ash Gourd, Drumstick)", nonveg: "Pan-seared fish" } ] },
+          { dow: "Thu", slots: [ { slot: "Breakfast", dish: "Tofu bhurji with capsicum and tomato", jain: "Simple Stovetop Tofu" }, { slot: "Lunch", dish: "Rajma", jain: "Masoor dal khichdi" }, { slot: "Evening", dish: "Mixed sprouts chaat" }, { slot: "Dinner", dish: "Moong dal soup" } ] },
+          { dow: "Fri", slots: [ { slot: "Breakfast", dish: "Vegetable besan omelette", nonveg: "Egg omelette", jain: "Kodo Millet Cooked Soft" }, { slot: "Lunch", dish: "Vegetable bajra khichdi" }, { slot: "Evening", dish: "Buttermilk Lassi" }, { slot: "Dinner", dish: "Lemon coriander soup", jain: "Thin moong dal soup" } ] },
+          { dow: "Sat", slots: [ { slot: "Breakfast", dish: "Foxtail millet upma", jain: "Sama khichdi" }, { slot: "Lunch", dish: "Sprouted chana curry", jain: "Palak moong dal" }, { slot: "Evening", dish: "Stewed Apples with Dates" }, { slot: "Dinner", dish: "Curd Rice (Thayir Sadam)" } ] },
+          { dow: "Sun", slots: [ { slot: "Breakfast", dish: "Sama rice poha", jain: "Kodo Millet Cooked Soft" }, { slot: "Lunch", dish: "Jowar Khichdi with Cucumber Raita" }, { slot: "Evening", dish: "Kanji" }, { slot: "Dinner", dish: "Sambar" } ] },
         ],
       },
     ],

@@ -148,6 +148,14 @@ export async function buildGuidedAppData(
     const library = await loadLibraryRecipes();
     const byTitle = new Map(library.map((l) => [normTitle(l.recipe.title), l.recipe]));
 
+    // Per-diet dish pick: non-veg and Jain get their authored overrides;
+    // veg + veg-egg run the default (eggs/fish arrive via the swap framework).
+    const pickDish = (s: { dish: string; nonveg?: string; jain?: string }): string => {
+      if (sub.dietary_preference === "non_vegetarian" && s.nonveg) return s.nonveg;
+      if (sub.dietary_preference === "jain" && s.jain) return s.jain;
+      return s.dish;
+    };
+
     const DOW_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const todayShort = DOW_SHORT[(t.dowIdx + 6) % 7];
 
@@ -161,8 +169,8 @@ export async function buildGuidedAppData(
           today: d.dow === todayShort || undefined,
           slots: d.slots.map((s) => ({
             slot: s.slot,
-            dish: s.dish,
-            components: splitDishComponents(s.dish),
+            dish: pickDish(s),
+            components: splitDishComponents(pickDish(s)),
           })),
         })),
       },
@@ -171,19 +179,20 @@ export async function buildGuidedAppData(
     // Today's meals — the current day's column of the sample week.
     const todayCol = sampleWeek.days.find((d) => d.dow === todayShort) ?? sampleWeek.days[0];
     meals = todayCol.slots.map((s) => {
-      const lib = byTitle.get(normTitle(s.dish));
+      const dish = pickDish(s);
+      const lib = byTitle.get(normTitle(dish));
       const meta = SLOT_META[s.slot] ?? { timeHint: "", glyph: "bowl" };
       return {
         slot: s.slot,
         timeHint: meta.timeHint,
         glyph: meta.glyph,
-        pills: [s.dish],
-        components: splitDishComponents(s.dish),
+        pills: [dish],
+        components: splitDishComponents(dish),
         kcal: lib?.kcalPerServing,
       };
     });
     for (const s of todayCol.slots) {
-      const lib = byTitle.get(normTitle(s.dish));
+      const lib = byTitle.get(normTitle(pickDish(s)));
       if (!lib) continue;
       mealExtra[s.slot] = {
         grad: MEAL_GRAD,
@@ -199,7 +208,12 @@ export async function buildGuidedAppData(
     // The pack: every dish used across ALL of this protocol's sample weeks.
     const used = new Set<string>();
     for (const w of protocol.sampleWeeks ?? [])
-      for (const d of w.days) for (const s of d.slots) used.add(normTitle(s.dish));
+      for (const d of w.days)
+        for (const s of d.slots) {
+          used.add(normTitle(s.dish));
+          if (s.nonveg) used.add(normTitle(s.nonveg));
+          if (s.jain) used.add(normTitle(s.jain));
+        }
     recipePack = [...used]
       .map((k) => byTitle.get(k))
       .filter((r): r is NonNullable<typeof r> => !!r)
