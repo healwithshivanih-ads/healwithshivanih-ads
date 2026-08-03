@@ -17,6 +17,7 @@ import { getCataloguePath, getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
 import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
+import { screenMenuForClient, type MenuStapleFlag } from "@/lib/fmdb/food-cautions";
 import { weeksAfterApproval } from "@/lib/fmdb/menu-weeks";
 import { generateGroceryListAction } from "./grocery";
 
@@ -114,6 +115,12 @@ export interface WeeklyMenuStatus {
    *  that is the last point where fixing it is cheap — once approved it is in
    *  her app. See unresolvedDishesForWeek(). */
   pendingUnresolved: { day: number; slot: string; dish: string; primary: string }[];
+  /** Condition ↔ food cautions where a cautioned food has become the week's
+   *  DEFAULT rather than an occasional — e.g. ragi in most meals for a
+   *  hypothyroid client. Rule 15 tells the drafter to keep these occasional;
+   *  this is the check that the draft actually did. Surfaced at review time
+   *  because that is the last cheap moment to fix it. Never blocks approval. */
+  pendingCautionFlags: MenuStapleFlag[];
 }
 
 async function loadClientDoc(clientId: string): Promise<Record<string, unknown> | null> {
@@ -235,13 +242,26 @@ export async function weeklyMenuStatusAction(
   const cur = currentPlanWeek(plan);
   const pending = plan.app_menu_pending ?? null;
   let pendingNutrition: MenuNutrition | null = null;
+  let pendingCautionFlags: MenuStapleFlag[] = [];
   if (pending?.days?.length) {
+    const clientDoc = await loadClientDoc(clientId);
     try {
-      pendingNutrition = menuNutrition(pending.days, await loadClientDoc(clientId), {
+      pendingNutrition = menuNutrition(pending.days, clientDoc, {
         plan: plan as unknown as Record<string, unknown>,
       });
     } catch {
       pendingNutrition = null; // never block the review over a nutrient calc
+    }
+    try {
+      // Rule 15 asks the drafter to keep a cautioned food occasional; this is
+      // the check that it did. Frequency is invisible per-dish — every meal in
+      // an all-ragi week looks fine on its own.
+      pendingCautionFlags = await screenMenuForClient(
+        (clientDoc ?? {}) as Parameters<typeof screenMenuForClient>[0],
+        pending.days.flatMap((d) => (d.slots ?? []).map((s) => String(s.dish ?? ""))),
+      );
+    } catch {
+      pendingCautionFlags = []; // advisory only — never block the review
     }
   }
   return {
@@ -255,6 +275,7 @@ export async function weeklyMenuStatusAction(
     isSample: !!plan.app_menu?.is_sample,
     pendingNutrition,
     pendingUnresolved: pending ? await unresolvedDishesForWeek(pending) : [],
+    pendingCautionFlags,
   };
 }
 

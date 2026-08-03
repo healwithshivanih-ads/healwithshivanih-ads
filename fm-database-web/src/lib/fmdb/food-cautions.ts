@@ -217,6 +217,100 @@ export function plainFoodNames(keys: string[]): string[] {
   });
 }
 
+/**
+ * A cautioned food that has become the week's default rather than an occasional.
+ *
+ * This is the half of the coach's original point that no per-dish check can
+ * reach. A cooked ragi roti is fine; ragi as THE flour — breakfast, lunch and
+ * dinner, seven days — is what is counter-advised, and every individual dish in
+ * that week looks innocent. Only the count sees it.
+ *
+ * Deliberately preparation-INDEPENDENT: cooked ragi every single day is exactly
+ * the case being flagged, so demoting cooked dishes here would hide it.
+ */
+export interface MenuStapleFlag {
+  cautionId: string;
+  label: string;
+  coachNote: string;
+  /** plain food name → how many dishes it appeared in */
+  foodCounts: { food: string; count: number }[];
+  total: number;
+  /** the dish strings that matched, for the coach to eyeball */
+  dishes: string[];
+}
+
+/** 5+ appearances in a 7-day menu is functionally the daily grain. Not 7 —
+ *  "most days" is already the staple pattern. Mirrors STAPLE_THRESHOLD in
+ *  scripts/food_cautions.py. */
+export const STAPLE_THRESHOLD = 5;
+
+/**
+ * Frequency check across a whole week's dish strings.
+ *
+ * Mirrors `screen_menu` in scripts/food_cautions.py; `food-cautions.test.ts`
+ * asserts the two agree on the same menu.
+ */
+export function screenMenuFrequency(
+  dishes: string[],
+  live: LiveFoodCaution[],
+  terms: Map<string, string[]>,
+  threshold: number = STAPLE_THRESHOLD,
+): MenuStapleFlag[] {
+  if (!live.length) return [];
+  const counts = new Map<string, Map<string, number>>();
+  const seen = new Map<string, string[]>();
+
+  for (const dish of dishes) {
+    for (const caution of live) {
+      const hits = cautionedFoodsInText(dish, caution, terms);
+      if (!hits.length) continue;
+      const per = counts.get(caution.id) ?? new Map<string, number>();
+      for (const key of hits) per.set(key, (per.get(key) ?? 0) + 1);
+      counts.set(caution.id, per);
+      seen.set(caution.id, [...(seen.get(caution.id) ?? []), dish]);
+    }
+  }
+
+  const byId = new Map(live.map((c) => [c.id, c]));
+  const out: MenuStapleFlag[] = [];
+  for (const [id, per] of counts) {
+    const total = [...per.values()].reduce((a, b) => a + b, 0);
+    if (total < threshold) continue;
+    const caution = byId.get(id)!;
+    const keys = [...per.keys()];
+    const plain = plainFoodNames(keys);
+    out.push({
+      cautionId: id,
+      label: caution.label,
+      coachNote: caution.coachNote,
+      foodCounts: keys
+        .map((k, i) => ({ food: plain[i], count: per.get(k)! }))
+        .sort((a, b) => b.count - a.count),
+      total,
+      dishes: seen.get(id) ?? [],
+    });
+  }
+  return out.sort((a, b) => b.total - a.total);
+}
+
+/**
+ * Frequency-screen a pending week menu for one client, end to end.
+ *
+ * Surfaced at REVIEW time because that is the last point where fixing it is
+ * cheap — once approved the menu is in the client's app. Same reasoning as
+ * `unresolvedDishesForWeek`.
+ */
+export async function screenMenuForClient(
+  client: ClientConditionLike,
+  dishes: string[],
+  threshold: number = STAPLE_THRESHOLD,
+): Promise<MenuStapleFlag[]> {
+  const live = liveFoodCautions(client, await loadFoodCautions());
+  if (!live.length || !dishes.length) return [];
+  const terms = await foodDisplayTerms([...new Set(live.flatMap((c) => c.foods))]);
+  return screenMenuFrequency(dishes, live, terms, threshold);
+}
+
 /** One caution, fully resolved against a client + plan for the coach UI. */
 export interface FoodCautionFinding {
   caution: LiveFoodCaution;

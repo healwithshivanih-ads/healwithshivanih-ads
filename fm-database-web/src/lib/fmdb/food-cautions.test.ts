@@ -27,6 +27,7 @@ import {
   cautionedFoodsInText,
   foodDisplayTerms,
   plainFoodNames,
+  screenMenuForClient,
   resolveFoodCautionFindings,
   clientConditionText,
   type FoodCaution,
@@ -206,6 +207,77 @@ describe("food display names", () => {
     // Python de-dupes (a prompt should not repeat "millet"); TS keeps the
     // per-key mapping the UI indexes into. Compare the de-duped forms.
     expect([...new Set(plainFoodNames(keys))]).toEqual(JSON.parse(stdout.trim()));
+  });
+});
+
+describe("menu frequency — the staple check", () => {
+  // Ragi in most meals: every dish looks innocent alone, and the week is the
+  // thing the coach flagged.
+  const RAGI_WEEK = [
+    "Ragi roti (2) + moong dal (1 bowl)",
+    "Ragi dosa (2) + coconut chutney",
+    "Ragi porridge (1 bowl)",
+    "Ragi roti (2) + lauki sabzi (1 bowl)",
+    "Ragi idli (3) + sambar",
+    "Rice (1 cup) + rajma (1 bowl)",
+    "Poha (1 bowl)",
+  ];
+  const MIXED_WEEK = [
+    "Ragi roti (2) + moong dal (1 bowl)",
+    "Wheat roti (2) + palak sabzi",
+    "Rice (1 cup) + sambar",
+    "Poha (1 bowl)",
+    "Idli (3) + chutney",
+    "Jowar roti (2) + dal",
+    "Upma (1 bowl)",
+  ];
+
+  it("flags a cautioned food that has become the week's base", async () => {
+    const flags = await screenMenuForClient(HASHIMOTOS, RAGI_WEEK);
+    expect(flags).toHaveLength(1);
+    expect(flags[0].cautionId).toBe("goitrogen-thyroid");
+    expect(flags[0].total).toBeGreaterThanOrEqual(5);
+    expect(flags[0].foodCounts[0].food).toBe("ragi");
+  });
+
+  it("stays quiet on a properly rotated week", async () => {
+    // Rule 15 asks for 2-3 appearances, not zero — millets rotating through a
+    // varied week is exactly right, and flagging it would train her to ignore
+    // the warning.
+    expect(await screenMenuForClient(HASHIMOTOS, MIXED_WEEK)).toEqual([]);
+  });
+
+  it("counts regardless of preparation — cooked every day is the case", async () => {
+    // Every dish in RAGI_WEEK is cooked. If the count demoted cooked dishes the
+    // way the per-dish severity does, this flag could never fire.
+    const flags = await screenMenuForClient(HASHIMOTOS, RAGI_WEEK);
+    expect(flags[0].total).toBeGreaterThanOrEqual(5);
+  });
+
+  it("stays quiet for a client with no live caution", async () => {
+    expect(await screenMenuForClient(UNRELATED, RAGI_WEEK)).toEqual([]);
+  });
+
+  it("agrees with the Python engine on the same week", async () => {
+    const script = [
+      "import json,sys",
+      "sys.path.insert(0, 'scripts')",
+      "import food_cautions as fc",
+      "client, dishes = json.loads(sys.argv[1]), json.loads(sys.argv[2])",
+      "live = fc.live_cautions(client, {})",
+      "out = [{'id': f.caution.id, 'total': f.total} for f in fc.screen_menu(dishes, live)]",
+      "print(json.dumps(out))",
+    ].join("\n");
+    const { stdout } = await execFileP(
+      PYTHON,
+      ["-c", script, JSON.stringify(HASHIMOTOS), JSON.stringify(RAGI_WEEK)],
+      { cwd: process.cwd() },
+    );
+    const ts = (await screenMenuForClient(HASHIMOTOS, RAGI_WEEK)).map((f) => ({
+      id: f.cautionId,
+      total: f.total,
+    }));
+    expect(ts).toEqual(JSON.parse(stdout.trim()));
   });
 });
 
