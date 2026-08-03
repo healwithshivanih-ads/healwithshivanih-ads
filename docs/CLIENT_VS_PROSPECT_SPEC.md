@@ -164,17 +164,41 @@ consumer branches on the prefix. **Do §3.1 first, and treat this as optional po
 - **Do not gate on payment before the field exists.** It would demote all 16 clients.
 - **Do not add a third population.** "Lapsed" is a value of `engagement_status`, not a
   directory. Two directories are already one more source of truth than the model has.
-- **Do not rely on directory location alone.** `cl-018` sits in `prospects/` with
-  `engagement_status: declined` *and* a live app token — the directory moved, the token did
-  not. Which raises §6.
+- **Do not infer app access from directory.** `cl-018` sits in `prospects/` with
+  `engagement_status: declined` *and* a live app token, and that is correct — the discovery
+  tier is delivered through that token and the Lab Vault never locks. See §6. `prospects/`
+  describes a commercial relationship, not an entitlement.
 
 ---
 
-## 6. Open question, separate from all of the above
+## 6. A parked prospect keeping their app token is BY DESIGN
 
-**`cl-018` (declined, parked in `prospects/`) still holds a valid `app_token` and a staged app
-on Fly.** Someone who declined can still open their client app.
+An earlier draft of this document raised `cl-018` holding a live `app_token` while parked in
+`prospects/` as an open question. **It is not a defect and it needs no decision** — it is the
+discovery tier working as specified, and the record was recorded wrong here rather than in the
+data.
 
-That may be deliberate — a grace period, or simply nobody has needed to revoke it. It is not a
-numbering problem and it is not fixed by anything in §3. Worth a decision: should parking
-someone as a prospect revoke their app access, and if so, immediately or after a window?
+Per the discovery-tier decision of 2026-06-25 (`docs/DISCOVERY_TIER_SPEC.md`, and the coach
+memory on the discovery app):
+
+- The ₹12k discovery tier is **delivered through `/app/<app_token>`**. The token is not a
+  by-product of signing up; it is how a paying consult client receives what they bought — the
+  Lab Vault and their Starting Map. `cl-018` is named in that decision as the worked example.
+- The read-only discovery shell is **also the non-renewal default**. Discovery clients who
+  never signed up and lapsed clients past grace converge on one surface: read-only Lab Vault,
+  book-labs, locked Plan/Progress, re-engage CTA.
+- Two things hold **in every mode**: a client can always see their own labs (the Lab Vault
+  never locks) and can always book labs.
+
+So a parked or declined record keeping a working token is the intended behaviour. Revoking it
+would take away someone's own lab results because they chose not to buy the package — which is
+both wrong and commercially backwards, since that surface exists to win them back.
+
+**The consequence for this document:** directory location is a poor proxy for access, and that
+is deliberate. `prospects/` describes a commercial relationship, not an entitlement. Anything
+built on §3 must not infer "should have no app" from "is in prospects/".
+
+**Method note.** That question was raised without checking the existing spec or the coach's own
+recorded decisions, on a record that turned out to be the canonical example of the feature
+working. An unverified flag is worse than no flag: it manufactures doubt and sends the reader
+chasing something already settled.
