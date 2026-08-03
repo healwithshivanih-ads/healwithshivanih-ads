@@ -21,6 +21,7 @@ import {
   DiscoveryCoachScreen,
   DiscoveryOnboardingScreen,
 } from "./ochre-discovery";
+import { GuidedCoachScreen, GuidedLabsScreen } from "./ochre-guided";
 import { EndgameBanner, LibraryFloorScreen, GraduationReport, MaintenanceHome, MaintenanceCheckout } from "./ochre-endgame";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
@@ -576,6 +577,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
   const submitted = submittedWeek >= data.client.week;
   const goCheckin = () => {
+    if (data.tier === "guided") {
+      // No weekly check-in on the guided tier — nobody would read it. The
+      // Coach tab explains what IS included and where the 1:1 path starts.
+      setTab("coach");
+      scrollTop();
+      return;
+    }
     setInCheckin(true);
     scrollTop();
   };
@@ -626,6 +634,11 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // Plan/Progress locked and the Coach tab as an upgrade CTA. Resolved upstream
   // in client-app.ts; package clients are never "discovery".
   const discovery = data.tier === "discovery";
+  // Guided tier (self-serve subscriber): package rendering for everything
+  // plan-shaped, but NO live-coach surfaces — no chat, no check-in review,
+  // no labs. Coach + Labs tabs swap to guided screens; check-in routes to
+  // the Coach tab, which explains the 1:1 boundary honestly.
+  const guided = data.tier === "guided";
   // Pre-call onboarding: a discovery client whose labs aren't in / call isn't
   // done yet. The whole app is the guided onboarding flow (no tabs) — the
   // Starting Map + upgrade countdown stay hidden until post_call.
@@ -644,6 +657,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     const normalMode = data.mode !== "REVIEW" && data.mode !== "MAINTENANCE" && data.mode !== "LIBRARY";
     if (
       !discovery &&
+      !guided && // the tour narrates meals + supplements — package copy; guided gets none
       !onboarding &&
       !setupHold &&
       normalMode &&
@@ -664,6 +678,10 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     else if (tab === "labs") screen = <LabsScreen />;
     else if (tab === "coach") screen = <DiscoveryCoachScreen />;
     else screen = <DiscoverySummaryScreen />; // the "today" slot → Starting Map
+  } else if (guided && tab === "coach") {
+    screen = <GuidedCoachScreen />;
+  } else if (guided && tab === "labs") {
+    screen = <GuidedLabsScreen />;
   } else if (setupHold && tab !== "coach" && tab !== "labs") {
     screen = <PlanHoldScreen goCoach={() => go("coach")} openOrder={openOrder} />;
   } else if (inCheckin) {
@@ -698,11 +716,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   } else if (tab === "today") {
     screen = (
       <>
-        <ChatAnnounce
-          firstName={data.coach.name.split(" ")[0]}
-          hasChatted={hasChatted}
-          onOpen={() => go("coach")}
-        />
+        {!guided && (
+          <ChatAnnounce
+            firstName={data.coach.name.split(" ")[0]}
+            hasChatted={hasChatted}
+            onOpen={() => go("coach")}
+          />
+        )}
       <TodayScreen
         logged={logged}
         onToggleSupp={toggleSupp}
@@ -830,7 +850,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
             {screen}
           </main>
           {!onboarding && (
-            <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} coachUnread={coachUnread} discovery={discovery} />
+            <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!guided && !submitted && !onHold} coachUnread={guided ? 0 : coachUnread} discovery={discovery} />
           )}
 
           {!booting && <InstallPrompt />}

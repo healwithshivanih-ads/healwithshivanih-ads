@@ -90,10 +90,60 @@ function readJson<T>(file: string): T | null {
   }
 }
 
-export function loadCoachIndex(): CoachIndexRow[] {
+/**
+ * Clients and prospects, as types that cannot be mistaken for each other.
+ *
+ * There used to be one `loadCoachIndex(): CoachIndexRow[]` returning both,
+ * which meant every consumer had to remember to check `kind`. Two screens
+ * written in one week did not: the contacts list showed 16 clients and 5
+ * prospects in a single A–Z run, and the meal queue would have put a photo
+ * from someone who never signed up into a queue about plan adherence.
+ *
+ * Narrowing `kind` in the type is what stops that recurring. A ProspectRow is
+ * not assignable where a ClientRow is expected, so the next surface gets a
+ * compile error instead of shipping the same bug — the id cannot carry this
+ * (see docs/CLIENT_VS_PROSPECT_SPEC.md; ids are embedded in 32 plan filenames
+ * and must stay opaque), so the type does.
+ */
+export type ClientRow = CoachIndexRow & { kind: "client" };
+export type ProspectRow = CoachIndexRow & { kind: "prospect" };
+
+function readIndex(): CoachIndexRow[] {
   const dir = coachDir();
   if (!dir) return [];
   return readJson<CoachIndexRow[]>(path.join(dir, "index.json")) ?? [];
+}
+
+/** Split a mixed index. Pure, so the guarantee is testable without a disk. */
+export function splitByKind(rows: CoachIndexRow[]): {
+  clients: ClientRow[];
+  prospects: ProspectRow[];
+} {
+  const clients: ClientRow[] = [];
+  const prospects: ProspectRow[] = [];
+  for (const r of rows) {
+    // Anything not explicitly a prospect is treated as a client, matching the
+    // projection's own default — but a row must SAY prospect to be one, so a
+    // missing kind can never quietly hide someone from the roster.
+    if (r.kind === "prospect") prospects.push(r as ProspectRow);
+    else clients.push({ ...r, kind: "client" });
+  }
+  return { clients, prospects };
+}
+
+/** People who signed up. The default for anything about care. */
+export function loadClients(): ClientRow[] {
+  return splitByKind(readIndex()).clients;
+}
+
+/** People who have not signed up — still worth calling, never clients. */
+export function loadProspects(): ProspectRow[] {
+  return splitByKind(readIndex()).prospects;
+}
+
+/** Both, when a surface genuinely wants both — and has to say so. */
+export function loadEveryone(): { clients: ClientRow[]; prospects: ProspectRow[] } {
+  return splitByKind(readIndex());
 }
 
 export function loadCoachCard(id: string): CoachCard | null {
@@ -109,7 +159,9 @@ export function loadCoachCard(id: string): CoachCard | null {
 /** When the projection was last rebuilt — surfaced in the app so a stale copy
  *  (Mac asleep) is visible rather than silently out of date. */
 export function coachProjectionStagedAt(): string | null {
-  const rows = loadCoachIndex();
+  // "Is there a projection at all", not "who is in it" — the raw read is
+  // right here; splitting would imply a population this cares about.
+  const rows = readIndex();
   if (!rows.length) return null;
   const dir = coachDir();
   if (!dir) return null;

@@ -27,6 +27,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+import { resolveGuidedSubscriberByToken } from "@/lib/fmdb/guided-tier";
+import { buildGuidedAppData } from "@/lib/fmdb/guided-app";
 import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
 import { adaptRecipeForAvoids } from "@/lib/fmdb/recipe-adapt";
 import { rankSwaps, type RankedSwap } from "@/lib/fmdb/swap-ranking";
@@ -1291,6 +1293,17 @@ export interface ClientAppData {
   planUpdatedAt: string | null;
   /** Coach note to the client about what changed in this plan update. */
   clientUpdateNote: string | null;
+  /** Guided tier only — "what am I doing this week": the current phase's
+   *  actions plus the standard-version disclosure. Absent/null for package
+   *  and discovery, so existing builders need no change. */
+  guidedWeekly?: {
+    title: string;
+    note: string;
+    items: string[];
+    /** Other phases still running this week (5R's overlaps), by name. */
+    alsoActive: string[];
+    standardNote: string;
+  } | null;
 }
 
 // ── small utils ──────────────────────────────────────────────────────────────
@@ -3439,6 +3452,14 @@ export async function loadClientAppData(
           resolveAppTz(disc.client, opts?.deviceTz),
         );
         if (discoveryData) return discoveryData;
+      }
+      // 4. Guided tier: a self-serve subscriber running a standard protocol
+      //    (guided-tier.ts). Additive exactly like the discovery branch —
+      //    only reached where we'd have returned null.
+      const sub = await resolveGuidedSubscriberByToken(token);
+      if (sub && sub.status === "active") {
+        const guidedData = buildGuidedAppData(sub, validTz(opts?.deviceTz) ?? sub.timezone);
+        if (guidedData) return guidedData;
       }
       return null;
     }

@@ -306,6 +306,11 @@ class DiscoverySummary(BaseModel):
     included_supplements: list[DiscoverySummarySupplement] = Field(default_factory=list)
 
 
+#: The values TypeScript writes today. Documentation, not enforcement — see
+#: Client.engagement_status for why this is not an Enum.
+KNOWN_ENGAGEMENT_STATUSES = ("pending", "signed_up", "declined")
+
+
 class Client(BaseModel):
     """Minimal client record. Lives at ~/fm-plans/clients/<client_id>.yaml.
 
@@ -333,6 +338,25 @@ class Client(BaseModel):
 
     client_id: str
     display_name: str = ""              # for coach's reference; can be pseudonym
+
+    # Whether this person has actually signed up. DECLARED HERE ON PURPOSE.
+    #
+    # It was written only by TypeScript and never declared, which is exactly
+    # how it "vanished from a real client's record" under extra="ignore" (see
+    # the note above). extra="allow" stopped the bleeding, but an undeclared
+    # field is invisible to every Python surface: nothing validates it,
+    # nothing defaults it, and no reader can see that it exists. It decides
+    # who is a client, so it belongs in the model.
+    #
+    # A plain str, NOT an Enum, and that is deliberate. The live values are
+    # signed_up (16), pending (4), declined (1) — a stricter type would have
+    # to be exactly right on day one, and a value it did not know would raise
+    # on load and take the client's whole record down with it. TypeScript
+    # owns the vocabulary and is still adding to it. A field that fails
+    # closed on an unrecognised string is worse than one that carries it.
+    # KNOWN_ENGAGEMENT_STATUSES below is documentation and a lint target,
+    # never a gate.
+    engagement_status: str = ""
     assigned_coach: str = ""            # coach name, e.g. "Shivani" — populates client-facing copy dynamically
     intake_date: date
     date_of_birth: Optional[date] = None   # preferred; used to compute exact age

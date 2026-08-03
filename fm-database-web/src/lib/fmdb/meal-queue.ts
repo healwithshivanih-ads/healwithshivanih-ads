@@ -17,7 +17,7 @@ import "server-only";
  * an index would be a second copy of the truth that can drift, and the
  * volume here is seventeen small append-only files.
  */
-import { loadCoachIndex } from "./coach-mobile";
+import { loadClients } from "./coach-mobile";
 import { readThread, type ThreadMessage } from "./client-thread";
 
 export type MealRow = {
@@ -41,7 +41,10 @@ export type MealRow = {
  */
 export function loadMealQueue(limit = 60): MealRow[] {
   const rows: MealRow[] = [];
-  for (const c of loadCoachIndex()) {
+  // loadClients cannot hand back a prospect, so the filter that used to live
+  // here — and that this file originally shipped without — is now the type's
+  // job rather than a comment asking the next reader to remember.
+  for (const c of loadClients()) {
     let thread: ThreadMessage[];
     try {
       thread = readThread(c.id);
