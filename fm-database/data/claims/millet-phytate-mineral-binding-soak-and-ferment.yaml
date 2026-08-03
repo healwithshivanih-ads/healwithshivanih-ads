@@ -1,0 +1,45 @@
+slug: millet-phytate-mineral-binding-soak-and-ferment
+statement: Millets are high in phytic acid, which binds non-haem iron, zinc and calcium
+  in the same meal and reduces their absorption. Soaking, sprouting and fermenting
+  substantially reduce phytate; pairing with vitamin C and separating from iron or
+  zinc supplements recovers most of the loss.
+evidence_tier: strong
+rationale: 'Phytate-mineral chelation is well established, as is the effect of soaking,
+  germination and lactic fermentation in degrading phytate via endogenous and microbial
+  phytases. The practical significance rises exactly when millets move from occasional
+  to staple — which is what a millet-substitution plan does.
+
+  The catalogue''s millet topic already advises rinsing and a 10–15 minute soak for
+  phytic acid, but nothing links that to iron or zinc status, and the traditional
+  preparations that handle phytate best (overnight soak, fermented batters for idli,
+  dosa, paddu and adai) are not framed as the mitigation they are.'
+coaching_translation: If you're moving someone onto millets most days, soak them properly
+  — several hours or overnight, not ten minutes — and lean on the fermented preparations
+  like idli, dosa and paddu batters. Add lemon or another vitamin C source to the meal,
+  and keep iron or zinc supplements a couple of hours away from the millet meal. This
+  matters most for menstruating women, vegetarians and anyone already low in ferritin
+  or zinc.
+caveats:
+- Clinically relevant mainly when millets are a daily staple and iron or zinc status
+  is already marginal — not a reason to avoid millets
+- Phytate also has genuine benefits (antioxidant, possible colorectal-protective),
+  so the goal is reduction and timing, not elimination
+- Haem iron is largely unaffected; the concern is plant-source iron
+- Overnight soaking with the soak water discarded is the single highest-yield step
+linked_to_topics:
+- millet-and-ancient-grain-substitution
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Coach advises preparation method and meal timing. Diagnosing or
+  treating iron/zinc deficiency, and dosing supplements, stays clinician-side.
+sources:
+- id: coach-shivani
+  location: Millet cautions — gap identified during UAS Bengaluru millet recipe-book
+    ingest, 2026-08
+  quote: Millet phytate binds non-haem iron and zinc; overnight soaking and fermented
+    batters are the mitigation, and should be named wherever millets become a daily
+    staple.
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani

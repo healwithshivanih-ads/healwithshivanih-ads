@@ -1,0 +1,142 @@
+slug: millet-talipattu
+name: Millet talipattu
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- astringent
+main_ingredients:
+- mixed millet flour
+- onion
+- curry leaves
+- coriander leaves
+contains_allergens:
+- sesame
+ingredients:
+- item: mixed millet flour
+  qty: '1'
+  unit: cup
+- item: chana dal flour (besan)
+  qty: '0.25'
+  unit: cup
+- item: onion, very finely chopped
+  qty: '1'
+  unit: piece
+- item: coriander leaves, chopped
+  qty: '3'
+  unit: tbsp
+- item: curry leaves, finely chopped
+  qty: '10'
+  unit: leaves
+- item: green chilli, minced
+  qty: '2'
+  unit: piece
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: sesame oil
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '0.5'
+  unit: cup
+steps:
+- Mix the millet flour, besan, onion, herbs, chilli, cumin and salt together dry so
+  the onion moisture starts loosening the flour.
+- Add water a little at a time and knead to a soft, pliable dough. It should feel
+  slightly sticky rather than stiff.
+- Take a lemon-sized ball and pat it out directly on a greased banana leaf or square
+  of parchment with wet fingers, into a thin round.
+- Invert onto a hot tawa, peel the leaf away, and drizzle oil around the edge.
+- Cook until brown spots appear, flip once, and serve hot with chutney.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 15
+good_for:
+- blood-sugar-regulation
+- satiety-and-weight
+one_line: A hand-patted savoury millet flatbread studded with onion and curry leaf,
+  pressed thin on a banana leaf rather than rolled.
+headnote: Patting rather than rolling is the point — millet flour has no gluten to
+  hold a rolled sheet together, so it tears under a pin but behaves perfectly under
+  wet fingers. The besan adds enough binding to make it forgiving.
+attribution:
+  author: Shivani Hari
+  source_id: uas-bengaluru-2017-millet-daily-lifestyle
+sources:
+- id: uas-bengaluru-2017-millet-daily-lifestyle
+  location: Millet Talipattu
+version: 1
+kitchen_tested: false
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani
+nutrients_per_serving:
+  kcal: 293
+  protein_g: 9.2
+  carbs_g: 38.3
+  fat_g: 11.9
+  fibre_g: 5.7
+  iron_mg: 2.6
+  calcium_mg: 46.2
+  magnesium_mg: 60.0
+  zinc_mg: 1.5
+  potassium_mg: 311
+  folate_ug: 48.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 6.9
+  omega3_mg: 66.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-08-03'
+nutrient_lines:
+- i: 0
+  key: foxtail-flour
+  g: 120.0
+- i: 1
+  key: chana-dal
+  g: 50.0
+- i: 2
+  key: onion
+  g: 110.0
+- i: 3
+  key: coriander-fresh
+  g: 3.0
+- i: 4
+  key: curry-leaves
+  g: 3.0
+- i: 5
+  key: green-chilli
+  g: 10.0
+- i: 6
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 7
+  key: sesame-oil
+  g: 27.25
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: water
+  g: 0.0
+nutrient_servings: 3.0

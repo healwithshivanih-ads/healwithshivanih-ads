@@ -1,0 +1,52 @@
+slug: pearl-millet-goitrogens-heat-stable-unlike-brassica
+statement: Pearl millet (bajra) carries C-glycosylflavone goitrogens (vitexin and
+  glucosylvitexin) that inhibit thyroid peroxidase. Unlike the brassica goitrogens,
+  these are largely heat-stable — cooking does NOT reliably inactivate them, so the
+  standard "just cook your goitrogens" advice does not transfer to bajra.
+evidence_tier: plausible_emerging
+rationale: 'Two distinct goitrogen mechanisms are being conflated in most coaching
+  material. Brassica goitrogens are glucosinolates converted by myrosinase to thiocyanates;
+  myrosinase is heat-labile, which is why cooking works. Pearl millet''s goitrogens
+  are C-glycosylflavones, a different chemical class that inhibits thyroid peroxidase
+  directly and survives normal cooking. Endemic goitre has been repeatedly associated
+  with heavy pearl-millet staple diets in populations where iodine intake is also
+  marginal.
+
+  This matters here because the catalogue actively promotes millet substitution
+  (topic millet-and-ancient-grain-substitution) and carries the general Murray claim
+  murray-goitrogens-cooked-vs-raw, which lists millet among goitrogens but then advises
+  cooking as the fix. Applied to bajra specifically that advice is wrong, and the
+  roster includes Hashimoto''s and hypothyroid clients on millet-forward plans.'
+coaching_translation: Bajra is a good grain, but it is the one millet to keep occasional
+  rather than daily if the thyroid is already under strain — and unlike cabbage or
+  broccoli, cooking it doesn't remove the issue. Rotate it with jowar, ragi, foxtail
+  or little millet rather than making bajra the everyday roti, and keep iodine intake
+  adequate. This is about frequency, not a ban.
+caveats:
+- Concern is dose- and iodine-dependent — occasional bajra roti in an iodine-replete
+  diet is not a clinical problem
+- Endemic-goitre evidence comes from populations where pearl millet was the dominant
+  staple AND iodine was deficient; it does not transfer directly to mixed Indian diets
+- Not a reason to avoid millets generally — the other seven millets do not carry this
+  specific flavone profile
+- Fermentation and germination reduce the flavone load somewhat, but less reliably
+  than cooking removes brassica goitrogens
+linked_to_topics:
+- millet-and-ancient-grain-substitution
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Coach educates on grain rotation and frequency. Any change to
+  thyroid medication, or interpretation of TSH/antibody movement, stays with the
+  treating clinician.
+sources:
+- id: coach-shivani
+  location: Millet cautions — gap identified during UAS Bengaluru millet recipe-book
+    ingest, 2026-08
+  quote: Pearl millet goitrogens are C-glycosylflavones and are not inactivated by
+    cooking, so the brassica "cook it" rule must not be extended to bajra.
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani

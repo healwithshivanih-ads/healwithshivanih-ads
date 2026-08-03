@@ -1,0 +1,174 @@
+slug: foxtail-millet-bisi-bele-bath
+name: Foxtail millet bisi bele bath
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- foxtail millet
+- toor dal
+- mixed vegetables
+- tamarind
+contains_allergens: []
+ingredients:
+- item: foxtail millet, soaked 30 min and drained
+  qty: '0.75'
+  unit: cup
+- item: toor dal (split pigeon pea)
+  qty: '0.5'
+  unit: cup
+- item: mixed vegetables (carrot, beans, drumstick, capsicum), diced
+  qty: '2'
+  unit: cup
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: tomato, chopped
+  qty: '1'
+  unit: piece
+- item: tamarind, soaked in warm water
+  qty: '1'
+  unit: tbsp
+- item: sambar powder
+  qty: '2'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '10'
+  unit: leaves
+- item: asafoetida
+  qty: '1'
+  unit: pinch
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: '4'
+  unit: cup
+steps:
+- Pressure-cook the toor dal with turmeric and a third of the water until soft, then
+  whisk it smooth.
+- Cook the soaked millet separately with half the remaining water until tender but
+  still holding its shape — about 12 minutes. Keeping it separate stops it turning
+  pasty.
+- Simmer the vegetables with the tamarind water, sambar powder and salt until just
+  tender.
+- Fold the dal, millet and vegetables together, loosening with hot water to a soft,
+  spoonable consistency.
+- Heat the ghee, splutter the mustard seeds, add curry leaves and asafoetida, and
+  pour the tempering over. Rest five minutes before serving.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 35
+good_for:
+- blood-sugar-regulation
+- agni-digestive-fire
+one_line: A one-pot Karnataka bisi bele bath built on foxtail millet instead of rice,
+  with dal and vegetables carrying the protein and fibre.
+headnote: Cooking the millet apart from the dal is the whole trick — it keeps the
+  grain distinct instead of collapsing into paste, which is what usually goes wrong
+  when rice is swapped for millet in this dish.
+attribution:
+  author: Shivani Hari
+  source_id: uas-bengaluru-2017-millet-daily-lifestyle
+sources:
+- id: uas-bengaluru-2017-millet-daily-lifestyle
+  location: Foxtail Millet Bisi bele baat / Millet Navane-Sajje Bisibele Bath
+version: 1
+kitchen_tested: false
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani
+nutrients_per_serving:
+  kcal: 288
+  protein_g: 12.1
+  carbs_g: 47.8
+  fat_g: 6.1
+  fibre_g: 8.4
+  iron_mg: 3.1
+  calcium_mg: 72.2
+  magnesium_mg: 78.7
+  zinc_mg: 2.0
+  potassium_mg: 666
+  folate_ug: 79.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 21.0
+  omega3_mg: 93.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-08-03'
+nutrient_lines:
+- i: 0
+  key: millet-foxtail
+  g: 135.0
+- i: 1
+  key: toor-dal
+  g: 100.0
+- i: 2
+  key: mixed-vegetables
+  g: 240.0
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: tomato
+  g: 100.0
+- i: 5
+  key: tamarind
+  g: 15.625
+- i: 6
+  key: sambar-powder
+  g: 4.166666666666667
+- i: 7
+  key: turmeric
+  g: 0.78125
+- i: 8
+  key: ghee
+  g: 13.625
+- i: 9
+  key: mustard-seeds
+  g: 4.166666666666667
+- i: 10
+  key: curry-leaves
+  g: 3.0
+- i: 11
+  key: asafoetida
+  g: 0.3
+- i: 12
+  key: salt
+  g: 0.0
+- i: 13
+  key: water
+  g: 0.0
+nutrient_servings: 4.0

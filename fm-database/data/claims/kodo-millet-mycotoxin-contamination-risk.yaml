@@ -1,0 +1,44 @@
+slug: kodo-millet-mycotoxin-contamination-risk
+statement: Kodo millet is uniquely prone to fungal contamination (Aspergillus spp.)
+  producing cyclopiazonic acid, causing an acute syndrome historically called "kodua
+  poisoning" — nausea, vomiting, giddiness, tremor and transient delirium within a
+  few hours of eating affected grain. Risk attaches to grain harvested or stored damp,
+  not to kodo millet as a food per se.
+evidence_tier: plausible_emerging
+rationale: 'Documented in Indian toxicology and agricultural literature as a recurring
+  regional outbreak pattern, classically after rain-damaged or poorly stored harvests.
+  It is specific to kodo (Paspalum scrobiculatum) rather than millets in general.
+
+  Relevant to this catalogue because four kodo recipes are live (kodo-millet-pulao,
+  kodo-millet-roti, kodo-millet-upma, kodo-millet-cooked-soft) with no sourcing or
+  storage guidance attached, and because kodo is one of the millets most heavily
+  promoted for blood-sugar work.'
+coaching_translation: Kodo millet is a good low-GI grain, but buy it from a supplier
+  with decent turnover, keep it dry and airtight, and don't use grain that smells
+  musty or looks discoloured — discard it instead. If a client ever feels nauseous,
+  giddy or shaky within a few hours of a kodo meal, stop the grain and get them seen.
+caveats:
+- Risk is a grain-quality and storage issue, not an inherent property of the food —
+  well-sourced kodo is a normal staple across large parts of India
+- Applies specifically to kodo (Paspalum scrobiculatum); do not generalise to the
+  other seven millets
+- Acute presentation only — there is no established chronic low-dose syndrome to
+  screen for
+- Monsoon-harvested and loose/open-sack grain carry the higher risk
+linked_to_topics:
+- millet-and-ancient-grain-substitution
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Suspected acute poisoning is a medical presentation, not a coaching
+  one — refer immediately rather than managing symptomatically.
+sources:
+- id: coach-shivani
+  location: Millet cautions — gap identified during UAS Bengaluru millet recipe-book
+    ingest, 2026-08
+  quote: Kodo millet carries a documented Aspergillus/cyclopiazonic-acid contamination
+    risk tied to damp harvest and storage; sourcing and storage guidance belongs with
+    every kodo recommendation.
+version: 1
+status: active
+updated_at: '2026-08-03'
+updated_by: shivani
