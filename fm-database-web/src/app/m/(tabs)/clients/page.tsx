@@ -4,6 +4,14 @@
  *
  * Reads ONLY the projection (coach-staging-action.py), never ~/fm-plans —
  * see coach-mobile.ts for why.
+ *
+ * CLIENTS AND PROSPECTS ARE SEPARATE LISTS, not one list with a tint. They
+ * were mixed here — 16 clients and 5 prospects in one A–Z run, distinguished
+ * only by avatar colour and a small label — which quietly undoes the
+ * separation the rest of the system maintains: someone who declined sits
+ * between two people mid-protocol, and every count on the screen is a number
+ * for a group that does not exist. Prospects stay one tap away, because they
+ * still need calling; they just are not clients until they are.
  */
 import Link from "next/link";
 import {
@@ -105,9 +113,11 @@ function Row({ row }: { row: CoachIndexRow }) {
 export default async function ClientsTab({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; kind?: string }>;
 }) {
-  const q = ((await searchParams).q ?? "").trim();
+  const sp = await searchParams;
+  const q = (sp.q ?? "").trim();
+  const showProspects = sp.kind === "prospect";
 
   if (!coachProjectionReady()) {
     return (
@@ -122,13 +132,35 @@ export default async function ClientsTab({
   }
 
   const all = loadCoachIndex();
-  const rows = all.filter((r) => matches(r, q));
+  const clientRows = all.filter((r) => r.kind === "client");
+  const prospectRows = all.filter((r) => r.kind === "prospect");
+  const rows = (showProspects ? prospectRows : clientRows).filter((r) => matches(r, q));
 
   return (
     <main className="m-page">
       <div className="m-pagehead" style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-        <h1>Clients</h1>
-        <span className="m-subtle">{all.length}</span>
+        <h1>{showProspects ? "Prospects" : "Clients"}</h1>
+        <span className="m-subtle">{showProspects ? prospectRows.length : clientRows.length}</span>
+      </div>
+
+      {/* Plain links, so the split survives with JS off — same reasoning as
+          the tab bar. The counts are per group, never a combined total: one
+          number over two populations is how they got conflated. */}
+      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+        <Link
+          href="/m/clients"
+          className={`fm-btn${showProspects ? "" : " primary"}`}
+          aria-current={showProspects ? undefined : "page"}
+        >
+          Clients {clientRows.length}
+        </Link>
+        <Link
+          href="/m/clients?kind=prospect"
+          className={`fm-btn${showProspects ? " primary" : ""}`}
+          aria-current={showProspects ? "page" : undefined}
+        >
+          Prospects {prospectRows.length}
+        </Link>
       </div>
 
       {/* GET form: works without JS, and the search survives a reload. */}

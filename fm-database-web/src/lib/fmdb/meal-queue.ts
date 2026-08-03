@@ -42,6 +42,12 @@ export type MealRow = {
 export function loadMealQueue(limit = 60): MealRow[] {
   const rows: MealRow[] = [];
   for (const c of loadCoachIndex()) {
+    // CLIENTS ONLY. loadCoachIndex returns prospects too, and the roster
+    // keeps them deliberately apart — /m/today filters the same way. A
+    // declined prospect can still hold a live app token, so without this a
+    // photo from someone who never signed up would land in a queue about
+    // plan adherence, against a plan they do not have.
+    if (c.kind !== "client") continue;
     let thread: ThreadMessage[];
     try {
       thread = readThread(c.id);
