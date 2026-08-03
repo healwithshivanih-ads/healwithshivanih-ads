@@ -95,25 +95,25 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 116
-  protein_g: 4.0
-  carbs_g: 21.7
-  fat_g: 1.4
+  kcal: 126
+  protein_g: 4.6
+  carbs_g: 22.4
+  fat_g: 1.9
   fibre_g: 4.2
   iron_mg: 2.8
-  calcium_mg: 71.8
-  magnesium_mg: 56.8
-  zinc_mg: 0.9
-  potassium_mg: 175
-  folate_ug: 24.3
-  b12_ug: 0.0
+  calcium_mg: 90.3
+  magnesium_mg: 58.7
+  zinc_mg: 1.0
+  potassium_mg: 199
+  folate_ug: 25.3
+  b12_ug: 0.1
   vit_d_ug: 0.0
-  vit_c_mg: 9.1
-  omega3_mg: 48.2
-nutrient_coverage_pct: 52.7
+  vit_c_mg: 9.2
+  omega3_mg: 51.2
+nutrient_coverage_pct: 68.6
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: null
@@ -125,8 +125,8 @@ nutrient_lines:
   key: methi-leaves
   g: 35.0
 - i: 3
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 30.625
 - i: 4
   key: turmeric
   g: 0.78125

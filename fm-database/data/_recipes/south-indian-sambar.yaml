@@ -146,25 +146,25 @@ nutrients_per_serving:
   kcal: 180
   protein_g: 8.0
   carbs_g: 24.7
-  fat_g: 6.1
+  fat_g: 6.0
   fibre_g: 5.2
-  iron_mg: 2.4
-  calcium_mg: 58.2
-  magnesium_mg: 56.7
+  iron_mg: 2.3
+  calcium_mg: 58.6
+  magnesium_mg: 57.0
   zinc_mg: 1.1
-  potassium_mg: 616
-  folate_ug: 165
+  potassium_mg: 617
+  folate_ug: 166
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 15.7
-  omega3_mg: 32.2
+  omega3_mg: 31.8
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: water
@@ -206,7 +206,7 @@ nutrient_lines:
   key: coconut-fresh
   g: 20.0
 - i: 13
-  key: garam-masala
+  key: sambar-powder
   g: 3.125
 - i: 14
   key: salt

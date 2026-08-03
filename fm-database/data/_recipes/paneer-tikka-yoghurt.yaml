@@ -73,7 +73,7 @@ steps:
 servings: '2'
 prep_time_min: 15
 cook_time_min: 12
-approx_kcal_per_serving: 427
+approx_kcal_per_serving: 464
 kcal_is_estimate: true
 protein_g: 26.0
 good_for:
@@ -99,27 +99,27 @@ kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 427
+kcal_per_serving: 464
 kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 427
-  protein_g: 26.0
-  carbs_g: 18.0
-  fat_g: 29.1
+  kcal: 464
+  protein_g: 28.2
+  carbs_g: 20.9
+  fat_g: 31.1
   fibre_g: 3.0
-  iron_mg: 1.8
-  calcium_mg: 627
-  magnesium_mg: 46.3
-  zinc_mg: 3.2
-  potassium_mg: 396
-  folate_ug: 70.9
-  b12_ug: 1.0
-  vit_d_ug: 0.2
-  vit_c_mg: 82.8
-  omega3_mg: 150
-nutrient_coverage_pct: 89.3
+  iron_mg: 1.9
+  calcium_mg: 701
+  magnesium_mg: 53.6
+  zinc_mg: 3.6
+  potassium_mg: 491
+  folate_ug: 75.1
+  b12_ug: 1.2
+  vit_d_ug: 0.3
+  vit_c_mg: 83.1
+  omega3_mg: 162
+nutrient_coverage_pct: 95.4
 rich_in:
 - protein
 - calcium
@@ -127,14 +127,14 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: paneer
   g: 250.0
 - i: 1
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 122.5
 - i: 2
   key: ginger-garlic-paste
   g: 5.0

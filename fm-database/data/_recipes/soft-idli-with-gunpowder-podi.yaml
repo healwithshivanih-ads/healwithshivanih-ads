@@ -108,28 +108,28 @@ attribution:
 parse_notes: AI-drafted gap-filler for coach review; nutritional intent around fermented
   idli batter for probiotics and sesame-lentil podi for protein, paired with curd
   for B12.
-approx_kcal_per_serving: 548
+approx_kcal_per_serving: 567
 kcal_is_estimate: true
 protein_g: 20.7
-kcal_per_serving: 548
+kcal_per_serving: 567
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 548
-  protein_g: 20.7
-  carbs_g: 103
-  fat_g: 6.1
+  kcal: 567
+  protein_g: 21.7
+  carbs_g: 104
+  fat_g: 7.1
   fibre_g: 9.3
   iron_mg: 5.3
-  calcium_mg: 178
-  magnesium_mg: 167
-  zinc_mg: 3.2
-  potassium_mg: 639
-  folate_ug: 121
-  b12_ug: 0.0
+  calcium_mg: 215
+  magnesium_mg: 171
+  zinc_mg: 3.4
+  potassium_mg: 686
+  folate_ug: 123
+  b12_ug: 0.1
   vit_d_ug: 0.0
-  vit_c_mg: 5.8
-  omega3_mg: 120
-nutrient_coverage_pct: 95.5
+  vit_c_mg: 6.0
+  omega3_mg: 127
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - fibre
@@ -140,7 +140,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -193,6 +193,6 @@ nutrient_lines:
   key: salt
   g: 2.84375
 - i: 13
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 122.5
 nutrient_servings: 4.0

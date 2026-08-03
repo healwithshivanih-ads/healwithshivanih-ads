@@ -102,19 +102,19 @@ kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 258
   protein_g: 12.8
-  carbs_g: 40.1
+  carbs_g: 40.2
   fat_g: 6.0
   fibre_g: 7.4
-  iron_mg: 3.4
-  calcium_mg: 75.5
-  magnesium_mg: 69.4
+  iron_mg: 3.2
+  calcium_mg: 76.1
+  magnesium_mg: 69.9
   zinc_mg: 1.7
-  potassium_mg: 776
+  potassium_mg: 777
   folate_ug: 103
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 15.6
-  omega3_mg: 68.3
+  vit_c_mg: 15.7
+  omega3_mg: 67.8
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -123,7 +123,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: toor-dal
@@ -135,7 +135,7 @@ nutrient_lines:
   key: tamarind
   g: 15.625
 - i: 3
-  key: garam-masala
+  key: sambar-powder
   g: 3.125
 - i: 4
   key: turmeric

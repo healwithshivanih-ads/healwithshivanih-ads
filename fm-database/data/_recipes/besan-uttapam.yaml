@@ -70,7 +70,7 @@ steps:
 servings: '2'
 prep_time_min: 12
 cook_time_min: 18
-approx_kcal_per_serving: 203
+approx_kcal_per_serving: 213
 kcal_is_estimate: true
 protein_g: 11.3
 good_for:
@@ -98,42 +98,43 @@ kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 203
+kcal_per_serving: 213
 kcal_total: 520
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 203
-  protein_g: 11.3
-  carbs_g: 32.1
-  fat_g: 3.4
+  kcal: 213
+  protein_g: 11.8
+  carbs_g: 32.9
+  fat_g: 3.9
   fibre_g: 6.4
-  iron_mg: 2.9
-  calcium_mg: 38.9
-  magnesium_mg: 88.1
-  zinc_mg: 1.5
-  potassium_mg: 577
-  folate_ug: 221
-  b12_ug: 0.0
+  iron_mg: 3.0
+  calcium_mg: 57.4
+  magnesium_mg: 89.9
+  zinc_mg: 1.6
+  potassium_mg: 601
+  folate_ug: 222
+  b12_ug: 0.1
   vit_d_ug: 0.0
-  vit_c_mg: 29.8
-  omega3_mg: 53.6
-nutrient_coverage_pct: 81.5
+  vit_c_mg: 29.9
+  omega3_mg: 56.6
+nutrient_coverage_pct: 90.7
 rich_in:
 - fibre
+- iron
 - magnesium
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: besan
   g: 92.0
 - i: 1
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 30.625
 - i: 2
   key: onion
   g: 57.5

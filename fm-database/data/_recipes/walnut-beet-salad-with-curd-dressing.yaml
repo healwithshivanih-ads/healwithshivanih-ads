@@ -89,32 +89,32 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler for omega-3 salad/side slot; coach to confirm dressing
   thickness and beetroot variety preference.
-approx_kcal_per_serving: 65
+approx_kcal_per_serving: 94
 kcal_is_estimate: true
 protein_g: 1.7
-kcal_per_serving: 65
+kcal_per_serving: 94
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 64.6
-  protein_g: 1.7
-  carbs_g: 10.9
-  fat_g: 2.1
+  kcal: 94.4
+  protein_g: 3.4
+  carbs_g: 13.2
+  fat_g: 3.7
   fibre_g: 2.8
   iron_mg: 1.2
-  calcium_mg: 22.0
-  magnesium_mg: 24.6
-  zinc_mg: 0.4
-  potassium_mg: 331
-  folate_ug: 106
-  b12_ug: 0.0
+  calcium_mg: 81.3
+  magnesium_mg: 30.5
+  zinc_mg: 0.7
+  potassium_mg: 407
+  folate_ug: 109
+  b12_ug: 0.2
   vit_d_ug: 0.0
-  vit_c_mg: 5.8
-  omega3_mg: 20.1
-nutrient_coverage_pct: 81.2
+  vit_c_mg: 6.0
+  omega3_mg: 29.9
+nutrient_coverage_pct: 92.7
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -134,8 +134,8 @@ nutrient_lines:
   key: null
   g: 30.0
 - i: 2
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 122.5
 - i: 3
   key: olive-oil
   g: 4.5

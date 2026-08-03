@@ -86,31 +86,33 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler for B12/protein snack slot — coach to review quantities
   and seasoning balance.
-approx_kcal_per_serving: 44
+approx_kcal_per_serving: 119
 kcal_is_estimate: true
 protein_g: 1.5
-kcal_per_serving: 44
+kcal_per_serving: 119
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 44.4
-  protein_g: 1.5
-  carbs_g: 10.2
-  fat_g: 0.4
+  kcal: 119
+  protein_g: 5.8
+  carbs_g: 16.0
+  fat_g: 4.4
   fibre_g: 2.4
-  iron_mg: 1.1
-  calcium_mg: 46.2
-  magnesium_mg: 24.5
-  zinc_mg: 0.4
-  potassium_mg: 374
-  folate_ug: 21.8
-  b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 10.6
-  omega3_mg: 13.2
-nutrient_coverage_pct: 84.9
-rich_in: []
+  iron_mg: 1.3
+  calcium_mg: 194
+  magnesium_mg: 39.2
+  zinc_mg: 1.1
+  potassium_mg: 564
+  folate_ug: 30.4
+  b12_ug: 0.5
+  vit_d_ug: 0.1
+  vit_c_mg: 11.2
+  omega3_mg: 37.7
+nutrient_coverage_pct: 95.1
+rich_in:
+- calcium
+- potassium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -124,8 +126,8 @@ image:
     use
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 245.0
 - i: 1
   key: cucumber
   g: 200.0

@@ -101,31 +101,31 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler recipe for monsoon breakfast slot — coach to verify
   fermentation time guidance and regional authenticity of Gujarati Idada before publishing.
-approx_kcal_per_serving: 251
+approx_kcal_per_serving: 259
 kcal_is_estimate: true
 protein_g: 8.2
-kcal_per_serving: 251
+kcal_per_serving: 259
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 251
-  protein_g: 8.2
-  carbs_g: 51.9
-  fat_g: 1.0
+  kcal: 259
+  protein_g: 8.7
+  carbs_g: 52.6
+  fat_g: 1.4
   fibre_g: 3.8
   iron_mg: 1.8
-  calcium_mg: 42.6
-  magnesium_mg: 58.7
-  zinc_mg: 1.3
-  potassium_mg: 278
-  folate_ug: 40.3
-  b12_ug: 0.0
+  calcium_mg: 58.5
+  magnesium_mg: 60.2
+  zinc_mg: 1.4
+  potassium_mg: 299
+  folate_ug: 41.2
+  b12_ug: 0.1
   vit_d_ug: 0.0
-  vit_c_mg: 4.0
-  omega3_mg: 34.5
-nutrient_coverage_pct: 85.5
+  vit_c_mg: 4.1
+  omega3_mg: 37.1
+nutrient_coverage_pct: 93.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -145,8 +145,8 @@ nutrient_lines:
   key: urad-dal
   g: 50.0
 - i: 2
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 45.9375
 - i: 3
   key: lauki
   g: 57.5

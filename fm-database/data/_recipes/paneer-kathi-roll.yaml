@@ -88,28 +88,29 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 285
-  protein_g: 13.5
-  carbs_g: 10.7
-  fat_g: 21.7
+  kcal: 295
+  protein_g: 14.0
+  carbs_g: 11.4
+  fat_g: 22.2
   fibre_g: 1.8
   iron_mg: 0.8
-  calcium_mg: 330
-  magnesium_mg: 23.6
-  zinc_mg: 1.7
-  potassium_mg: 227
-  folate_ug: 37.1
-  b12_ug: 0.5
+  calcium_mg: 348
+  magnesium_mg: 25.4
+  zinc_mg: 1.8
+  potassium_mg: 251
+  folate_ug: 38.1
+  b12_ug: 0.6
   vit_d_ug: 0.1
-  vit_c_mg: 44.3
-  omega3_mg: 129
-nutrient_coverage_pct: 78.5
+  vit_c_mg: 44.4
+  omega3_mg: 132
+nutrient_coverage_pct: 85.7
 rich_in:
 - protein
 - calcium
+- b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: null
@@ -124,8 +125,8 @@ nutrient_lines:
   key: capsicum
   g: 60.0
 - i: 4
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 30.625
 - i: 5
   key: null
   g: 30.0

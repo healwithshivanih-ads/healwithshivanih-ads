@@ -82,31 +82,31 @@ attribution:
   source_url: https://www.instagram.com/reel/DYXC3Igze_9/?igsh=azc3Njh1YTBvczJ2
 parse_notes: Hand-parsed from forwarded Instagram reel caption (no API); steps paraphrased
   for copyright.
-approx_kcal_per_serving: 284
+approx_kcal_per_serving: 286
 kcal_is_estimate: true
 protein_g: 6.6
-kcal_per_serving: 284
+kcal_per_serving: 286
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 284
-  protein_g: 6.6
-  carbs_g: 62.6
-  fat_g: 0.6
+  kcal: 286
+  protein_g: 6.8
+  carbs_g: 62.8
+  fat_g: 0.7
   fibre_g: 2.7
   iron_mg: 1.6
-  calcium_mg: 30.7
-  magnesium_mg: 34.3
+  calcium_mg: 34.8
+  magnesium_mg: 34.7
   zinc_mg: 1.5
-  potassium_mg: 226
-  folate_ug: 13.5
+  potassium_mg: 231
+  folate_ug: 13.8
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 13.4
-  omega3_mg: 13.5
-nutrient_coverage_pct: 89.0
+  omega3_mg: 14.2
+nutrient_coverage_pct: 94.3
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-12'
@@ -126,8 +126,8 @@ nutrient_lines:
   key: poha
   g: 45.0
 - i: 2
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 10.208333333333334
 - i: 3
   key: lauki
   g: 230.0
