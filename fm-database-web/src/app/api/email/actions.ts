@@ -190,6 +190,9 @@ function runShim(scriptName: string, payload: unknown, timeoutMs = 60_000): Prom
 export interface SendEmailInput {
   to: string;
   cc?: string;
+  /** Blind copy — the coach keeping her own record of what went to a client
+   *  without the client seeing an internal address. */
+  bcc?: string;
   subject: string;
   htmlBody: string;
   textBody?: string;
@@ -240,6 +243,7 @@ export async function sendClientEmailAction(
       from: creds.from,
       to: input.to,
       cc: input.cc,
+      bcc: input.bcc,
       subject: input.subject,
       html: input.htmlBody,
       text: input.textBody,

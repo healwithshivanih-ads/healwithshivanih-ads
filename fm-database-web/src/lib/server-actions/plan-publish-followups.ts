@@ -41,7 +41,7 @@ import { cleanSessionLabel } from "@/lib/fmdb/appointment-utils";
  */
 function renderPendingBody(r: PendingSend): string {
   const coach = process.env.COACH_NAME || "Shivani";
-  const [p1 = "", p2 = "", p3 = "", p4 = ""] = r.template_params;
+  const [p1 = "", p2 = "", p3 = "", p4 = ""] = r.template_params ?? [];
   switch (r.template_name) {
     case "appt_noshow_probe_client":
       return (
@@ -62,7 +62,7 @@ function renderPendingBody(r: PendingSend): string {
     case "fm_plan_letter_link_v1":
       return `Hi ${p1}, your plan is ready:\n\n${p2}\n\n— ${coach}`;
     default:
-      return `[${r.kind}] ${r.template_params.join(" · ")}`;
+      return `[${r.kind}] ${(r.template_params ?? []).join(" · ")}`;
   }
 }
 
@@ -74,15 +74,37 @@ interface PendingSend {
   kind: "plan_letter_link" | "supplement_order" | "no_join_check" | "appt_reminder_1h" | string;
   client_id: string;
   plan_slug: string;
-  phone: string;
+  /** WhatsApp rows only — an email row carries none of these. */
+  phone?: string;
   name?: string;
-  template_name: string;
-  template_params: string[];
+  template_name?: string;
+  template_params?: string[];
   /** For templates with a URL CTA button (e.g. appt_reminder_1h_zoom_client),
    *  the dynamic suffix appended to the button's base URL — e.g. the Zoom
    *  meeting ID + password string "85123456789?pwd=abc". */
   button_url_param?: string;
   created_at: string;
+  /**
+   * EMAIL rows. `kind: "email"` dispatches through the client mailer instead
+   * of WhatsApp — same queue, same crash-safety, same failed sidecar.
+   *
+   * The queue always claimed to be generic ("other scheduled sends can use
+   * the same machinery later") while dispatching only WhatsApp. A renewal
+   * letter has to arrive on a date, and the alternative was a second
+   * scheduler doing the same job worse.
+   *
+   * The body lives in a FILE, not in this row: a queue entry carrying a
+   * client letter inline turns a scheduling log into a store of personal
+   * correspondence, and the letter stays editable right up until it sends.
+   */
+  email?: {
+    to: string;
+    cc?: string;
+    bcc?: string;
+    subject: string;
+    /** Absolute path to a UTF-8 text file holding the body. */
+    body_file: string;
+  };
 }
 
 function publicOrigin(): string {
@@ -314,10 +336,52 @@ export async function tickPendingSends(): Promise<{
 
   for (const r of due) {
     try {
+      // ── email rows ────────────────────────────────────────────────────
+      if (r.kind === "email" && r.email) {
+        const { sendClientEmailAction } = await import("@/app/api/email/actions");
+        const fsMod = await import("node:fs/promises");
+        let body: string;
+        try {
+          body = await fsMod.readFile(r.email.body_file, "utf-8");
+        } catch {
+          // The letter was moved or deleted after queueing. Fail loudly into
+          // the sidecar rather than sending an empty email.
+          failed++;
+          errors.push({ id: r.id, kind: r.kind, error: "body_file_missing" });
+          failedRows.push({ ...r, error: "body_file_missing", failed_at: new Date().toISOString() });
+          continue;
+        }
+        const sent = await sendClientEmailAction({
+          to: r.email.to,
+          cc: r.email.cc,
+          bcc: r.email.bcc,
+          subject: r.email.subject,
+          textBody: body,
+          htmlBody: `<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.6;color:#2b2d42;white-space:pre-wrap;">${body
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")}</div>`,
+        });
+        if (sent.ok) {
+          fired++;
+        } else {
+          failed++;
+          errors.push({ id: r.id, kind: r.kind, error: sent.error });
+          failedRows.push({ ...r, error: sent.error, failed_at: new Date().toISOString() });
+        }
+        continue;
+      }
+
+      if (!r.phone || !r.template_name) {
+        failed++;
+        errors.push({ id: r.id, kind: r.kind, error: "row has neither email nor WhatsApp fields" });
+        failedRows.push({ ...r, error: "malformed row", failed_at: new Date().toISOString() });
+        continue;
+      }
       const res = await sendWhatsAppAction(
         r.phone,
         r.template_name,
-        r.template_params,
+        r.template_params ?? [],
         { name: r.name ?? "", buttonUrlParam: r.button_url_param },
       );
       if (res.ok) {

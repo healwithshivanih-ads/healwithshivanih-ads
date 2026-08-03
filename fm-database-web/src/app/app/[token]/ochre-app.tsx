@@ -221,7 +221,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       /* fresh start */
     }
     setHydrated(true);
-  }, [STORE]);
+  }, [STORE, data.priorLocalStoreId]);
 
   useEffect(() => {
     if (!hydrated) return;
