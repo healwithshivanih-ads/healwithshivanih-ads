@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Best-effort: a failed nudge must not fail the message the client sent.
-  void notifyCoachOfClientMessage(clientId).catch((e) =>
+  void notifyCoachOfClientMessage(clientId, { preview: text }).catch((e) =>
     console.error("[app-chat] coach notify failed:", e),
   );
 

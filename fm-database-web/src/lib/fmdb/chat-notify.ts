@@ -17,6 +17,8 @@
  * removes a paid message per exchange.
  */
 import { sendPushToClient } from "./push-server";
+import { sendPushToCoach } from "./coach-push";
+import { loadClientById } from "./loader-extras";
 import { pushStatus } from "./push-server";
 
 export type NotifyOutcome = {
@@ -109,13 +111,49 @@ export async function notifyClientOfCoachReply(
 /**
  * Tell the coach a client wrote.
  *
- * Deliberately a no-op for now. She has no push subscription of her own, and
- * her app already surfaces unread counts on the roster — inventing a second
- * channel before the first one is proven would be noise. The call site exists
- * so this becomes one function to fill in rather than a hunt for every place
- * a client message is stored.
+ * Goes to every device she has registered. The notification carries the
+ * client's name and the opening of the message, because "you have a message"
+ * forces her to open the app to learn whether it can wait — and a
+ * notification that cannot be triaged from the lock screen is one she will
+ * eventually turn off.
+ *
+ * Tagged per client so a client sending three lines replaces one notification
+ * rather than stacking three.
  */
-export async function notifyCoachOfClientMessage(clientId: string): Promise<NotifyOutcome> {
-  void clientId;
-  return { channel: "none", ok: true };
+export async function notifyCoachOfClientMessage(
+  clientId: string,
+  opts: { clientName?: string; preview?: string } = {},
+): Promise<NotifyOutcome> {
+  // Resolved here rather than at the call site: every caller has a client id
+  // and none of them should have to know how a display name is looked up.
+  let who = clientId;
+  if (opts.clientName) {
+    who = opts.clientName;
+  } else {
+    try {
+      const c = (await loadClientById(clientId)) as { display_name?: string } | null;
+      if (c?.display_name) who = c.display_name;
+    } catch {
+      // Fall back to the id — a notification with a client code still beats
+      // no notification.
+    }
+  }
+  who = who.split(" ")[0];
+  const preview = (opts.preview || "").replace(/\s+/g, " ").trim();
+  try {
+    const { sent } = await sendPushToCoach({
+      title: who,
+      body: preview.length > 120 ? `${preview.slice(0, 117)}…` : preview || "sent you a message",
+      url: `/m/clients/${clientId}/chat`,
+      tag: `client-${clientId}`,
+    });
+    // No devices registered is not an error — it is the state before she has
+    // turned notifications on, and the roster still shows the unread count.
+    return sent > 0
+      ? { channel: "push", ok: true }
+      : { channel: "none", ok: false, error: "no coach device registered" };
+  } catch (e) {
+    console.error("[chat-notify] coach push failed:", e);
+    return { channel: "none", ok: false, error: (e as Error).message };
+  }
 }

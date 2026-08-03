@@ -6,6 +6,7 @@
  * offers to update the saved Keychain entry after a change.
  */
 import { BackLink, Note } from "../ui";
+import { NotificationSetting } from "./notifications";
 
 export const dynamic = "force-dynamic";
 
@@ -58,6 +59,8 @@ export default async function CoachMobileSettingsPage({
 
         <button type="submit" className="fm-btn primary block">Change password</button>
       </form>
+
+      <NotificationSetting />
 
       <p className="m-subtle" style={{ marginTop: 24 }}>
         There is no emailed reset link on purpose — it would be a second way
