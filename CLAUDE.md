@@ -63,7 +63,31 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
-**v0.77–v0.78 (current, MERGED + DEPLOYED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
+**v0.79 (in flight, branch `claude/millet-health-warnings-b3ex7c`)** — Condition ↔ food cautions: the negative half of `good_for`.
+
+**The gap:** every food surface in the catalogue was positive-only or coach-typed. `_recipes` carried `good_for` / `contains_allergens` / `aggravates_dosha`; `_ingredient_nutrients.yaml` carried nutrition with no safety axis; `client.foods_to_avoid` was hard-enforced but nothing told the coach what to type. `meal_foods.py::relevant_meal_foods()` could find foods that HELP a condition and **nothing could find foods that HARM one**. So ragi reached a hypothyroid client's weekly menu: week-drafter rule 11 actively rotates millets, `ragi-roti` is `good_for: [blood-sugar-regulation]` so it ranked well, and the three hard filters had no reason to stop it — while `claims/murray-goitrogens-cooked-vs-raw.yaml` (which names millet explicitly) sat there as prose that gated nothing.
+
+**New reference asset `fm-database/data/_food_cautions.yaml`** — underscore-prefixed, so `fmdb validate` skips it; same footing as `_ingredient_nutrients.yaml` / `_food_guidelines/` / `swap_groups.yaml`. No Pydantic model, no loader change. 4 seed cautions (goitrogen-thyroid, soy-thyroid, oxalate-calcium-stones, purine-uric-acid) over 45 food refs. Its header carries the design rules — read it before adding one.
+
+**Key invariants (v0.79):**
+- **Foods are keyed by `_ingredient_nutrients.yaml` key.** That table's alias index resolves all ~729 ingredient spellings. A new spelling goes in as an alias THERE, never as a second matching surface here. Both engines go through it.
+- **It DOWN-RANKS and SURFACES. It never hard-filters.** `recipe_select.py`'s contract is "HARD filters are SAFETY only: dietary preference, allergens, foods-to-avoid" and a goitrogen is not an allergen — ragi is genuinely good for the same client's blood sugar and calcium. Penalties (`avoid` −6.0 / `moderate` −3.0 / `monitor` −0.5) are calibrated against that file's own scale (dosha match +3.0, `good_for` ceiling +4.0). Only the coach writes `foods_to_avoid`; the one-way door stays hers.
+- **`preparation_clears` means INACTIVATES, and is `cooked` or null — never a "helps a bit" value.** The distinction is the sources' own: Murray says cooking *inactivates* goitrogens but soaking only *decreases* oxalate. Only the first earns a demotion to `monitor`. An earlier draft merged them and a word-scan for "soak" hit the **paneer** soaking in `palak-paneer`, quietly downgrading a real spinach caution. Softer guidance goes in `preparation_note`, which changes no severity. Do not re-merge these.
+- **A caution with no claim is an opinion.** Every active entry cites ≥1 claim slug that exists; `food-cautions.test.ts` fails otherwise. Real-but-unsourced knowledge gets `status: needs_review` — loads for the coach's queue, ignored by every gate.
+- **Two stone types, two entries, on purpose.** `murray-stone-type-dictates-therapy`: oxalate stones want oxalate down, uric-acid stones want purines down and urine alkalinised. A single "kidney stones" caution would give half of stone formers the wrong advice.
+- **Display names come from the KEY, not the shortest alias.** Aliases are matching fodder — the shortest alias for `chicken` is "leg", which rendered the purine caution as "lamb, fish, prawns, leg". `_KEY_QUALIFIERS` strips the table's bookkeeping suffixes (`millet-generic` → "millet").
+- **Frequency is a week-level property.** A cooked ragi roti is fine; ragi as THE flour seven days a week is what the coach flagged, and every individual dish in that week looks innocent. `screen_menu()` counts across dish strings (`STAPLE_THRESHOLD = 5`); nothing per-dish can see it.
+- **Drug-food timing is NOT duplicated here.** levothyroxine's "separate from calcium, soy and high-fibre meals by 4h" already lives in `drug_depletions/levothyroxine.yaml` and already reaches the coach via plan-check `drug_cautions`. `drugs:` cross-references it; the authoritative rule stays in the drug entry.
+
+**Wired into four surfaces:** `scripts/food_cautions.py` (engine) → week + app menu drafters (new **rule 15**, phrased as preparation + frequency levers so it composes with rule 11's millet rotation instead of contradicting it) → `recipe_select.py` `score_recipe` down-rank + `pinned_safety_warnings` → `plan-conflicts.ts` **rule 6** (coach UI; suggests `append_client_note`, never a food removal, and drops to `info` once she has recorded it so it stops nagging). TS mirror `src/lib/fmdb/food-cautions.ts`; `food-cautions.test.ts` (24 tests) pins data integrity, the pure rules, and asserts the two engines agree on the same fixtures.
+
+**Pre-existing bug fixed while here:** all 224 `home_remedies` carry a `contraindications` list and `meal_foods.py` read none of them — `golden-milk` lists "active gallbladder disease" and "oxalate-restricted diets" and was woven into menus regardless. Now gated via `remedy_contraindication_hits()`; measured, it drops golden-milk for a gallbladder client and only for them.
+
+**Note on running the suite here:** `prospects-sweep` and `model-output-tolerance` (13 tests) fail in any environment without `fm-database/.venv` — they need `pydantic`. Pre-existing and unrelated; see the `FMDB_PYTHON` note above.
+
+---
+
+**v0.77–v0.78 (MERGED + DEPLOYED)** — Mind-body module: a somatic/emotional layer over the catalogue, ingested from T. Klein's *Your Body Remembers What You're Trying to Forget* (123 entries, 11 body systems).
 
 ✅ **MERGED AND LIVE (2026-07-29).** Merged to main at `562be5f4`; coach UI rebuilt on localhost pm2, client app deployed to Fly (`theochretree-coach`, machine `81107ef9461078`). Verified in production: the Today entry card and all six feeling chips render at `intake.theochretree.com/app/<token>`, and the mind-body reads are correctly ABSENT because `mind_body_depth` is unset for every client. Two conflicts were resolved by unioning alias lists — see the merge commit; `sleeplessness` on `insomnia` is load-bearing for a real client's read.
 

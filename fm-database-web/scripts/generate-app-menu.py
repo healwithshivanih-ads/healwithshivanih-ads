@@ -278,6 +278,31 @@ def main() -> int:
             + "\n".join(f"- {f['name']} — {f['why']}" for f in mfoods)
         )
 
+    # The negative half of the same question. `relevant_meal_foods` above says
+    # what this client's conditions call FOR; this says what they call for care
+    # with — and it is preparation + frequency guidance, never a ban list, so
+    # it composes with the grain-rotation rules instead of overriding them.
+    try:
+        from food_cautions import live_cautions, prompt_block
+        _cautions = prompt_block(live_cautions(client, plan))
+    except Exception:
+        _cautions = ""
+    if _cautions:
+        prompt += (
+            "\n\nFOOD CAUTIONS FOR THIS CLIENT'S CONDITIONS — these foods are NOT "
+            "banned and must NOT be stripped from the menu; most are genuinely "
+            "good for this client in other ways. You have exactly two levers. "
+            "(a) PREPARATION: where a line says \"Always COOKED, never raw\", that "
+            "food may appear only in a cooked dish — never in a raw salad or "
+            "kachumber; use a lightly-steamed version or a different vegetable. "
+            "(b) FREQUENCY: a cautioned food is OCCASIONAL — at most 2-3 times "
+            "across the whole fortnight, and never the default base of the menu. "
+            "If a cautioned grain is used for rotation, other grains must carry "
+            "the rest of the weeks. The client's framework, diet and avoid rules "
+            "still outrank this. NEVER name the condition, the mechanism, or the "
+            "word \"caution\" to the client:\n" + _cautions
+        )
+
     if dry_run:
         menu_weeks = [
             {"week": w, "days": [{"slots": [{"slot": s, "dish": f"[dry-run dish w{w}d{d}]"} for s in SLOTS]} for d in range(7)]}

@@ -19,6 +19,8 @@ import "server-only";
  * a `suggested_fix` describing a YAML patch the coach can apply.
  */
 
+import type { FoodCautionFinding } from "@/lib/fmdb/food-cautions";
+
 export type ConflictSeverity = "info" | "warning" | "critical";
 
 export type ConflictFix =
@@ -149,6 +151,8 @@ interface ClientLike {
   known_allergies?: string[];
   current_medications?: string[];
   medications?: string[];
+  active_conditions?: string[];
+  medical_history?: string[];
 }
 
 type PlanLike = Record<string, unknown>;
@@ -156,6 +160,14 @@ type PlanLike = Record<string, unknown>;
 export function detectPlanConflicts(
   client: ClientLike,
   _plan: PlanLike | null,
+  /**
+   * Condition ↔ food cautions, pre-resolved by
+   * `food-cautions.ts::resolveFoodCautionFindings` (async — it reads the
+   * catalogue). Passed in rather than loaded here so this function stays pure
+   * and synchronously testable, which is the property every other rule relies
+   * on. Omitted → rule 6 simply doesn't fire.
+   */
+  foodCautions: FoodCautionFinding[] = [],
 ): PlanConflict[] {
   const out: PlanConflict[] = [];
 
@@ -306,6 +318,73 @@ export function detectPlanConflicts(
           `from the other before publishing the plan.`,
       });
     }
+  }
+
+  // ── Rule 6: condition ↔ food cautions ─────────────────────────────
+  //
+  // Unlike rules 1-5 this is not a contradiction in what the coach wrote — it
+  // is knowledge from the catalogue she may not have to hand while editing.
+  // Ragi is the case that prompted it: goitrogenic in hypothyroidism, and
+  // nothing in the app said so at the moment she could act.
+  //
+  // It NEVER proposes removing the food. Most cautioned foods are genuinely
+  // good for the same client in other ways, and `foods_to_avoid` — the one
+  // hard filter over food — stays hers to write. The suggestion records the
+  // caution on the client so the decision is captured either way.
+  for (const f of foodCautions) {
+    const { caution } = f;
+    const conditions = caution.matchedConditions.join(", ");
+    const named = f.inPlanFoods.length > 0;
+    const shown = (named
+      ? f.inPlanFoods.map(
+          (k) => f.foodNames[caution.foods.indexOf(k)] ?? k.replace(/-/g, " "),
+        )
+      : f.foodNames
+    ).slice(0, 6);
+    const more = (named ? f.inPlanFoods.length : f.foodNames.length) - shown.length;
+    const foodList = shown.join(", ") + (more > 0 ? ` +${more} more` : "");
+
+    const prep =
+      caution.preparationClears === "cooked"
+        ? `Cooking inactivates it, so these are fine cooked — the concern is raw, ` +
+          `and being the daily staple rather than an occasional food. `
+        : caution.preparationNote
+          ? `${caution.preparationNote} `
+          : `No preparation clears this one, so frequency is the only lever. `;
+
+    out.push({
+      id: `food-caution-${caution.id}`,
+      // Informational once she has recorded a decision — see `alreadyRecorded`.
+      severity: f.alreadyRecorded ? "info" : named ? "warning" : "info",
+      kind: "condition_food_caution",
+      summary:
+        `${caution.label} — ${foodList}` +
+        (named ? " (named in this plan)" : "") +
+        (f.alreadyRecorded ? " · already noted in foods-to-avoid" : ""),
+      details:
+        `Matched on "${conditions}" in this client's record. ${caution.coachNote} ` +
+        prep +
+        `This is guidance, not a restriction: the food is still offered and simply ` +
+        `ranks lower, and the menu drafter is told to keep it occasional and cooked. ` +
+        `To enforce it, add it to foods-to-avoid yourself — writing "raw ${shown[0] ?? "food"}" ` +
+        `rather than the bare food restricts only the raw uses. ` +
+        `Evidence: ${caution.claims.join(", ") || "—"}.`,
+      suggested_fix: f.alreadyRecorded
+        ? undefined
+        : {
+            label: "✓ Note this on the client",
+            rationale:
+              `Records the caution and its guidance on the client's notes so the ` +
+              `decision is visible next session. Changes nothing about the plan or ` +
+              `the menu — the food keeps being offered.`,
+            action: {
+              type: "append_client_note",
+              text:
+                `[food caution] ${caution.label} — ${foodList}. ` +
+                `Matched on: ${conditions}. ${caution.coachNote}`,
+            },
+          },
+    });
   }
 
   return out;

@@ -322,7 +322,11 @@ HARD RULES:
 11. GRAINS — DON'T STRIP WHEAT AND RICE BY DEFAULT. Whole-wheat roti/phulka/chapati and rice are normal Indian staples and the DEFAULT base of the menu. Use millets (jowar, ragi, bajra, foxtail, kodo, sama) for VARIETY and rotation across the week — NOT as a wholesale replacement for wheat and rice. Favour millets / low-GI grains as the primary base ONLY when this client's conditions include a metabolic indication (insulin resistance, prediabetes, diabetes, PCOS, fatty liver) OR active weight-loss — check the NUTRIENT TARGETS / framework for that signal. For a client WITHOUT such an indication, an all-millet, no-wheat, no-white-rice week is WRONG: keep wheat roti and rice as everyday staples with millets sprinkled in for variety. Still rotate grains (rule: never the same grain at both lunch and dinner on one day).
 12. SMALL SALAD WITH BOTH MAIN MEALS — every lunch and every dinner includes a small raw or lightly-steamed salad/kachumber (cucumber, tomato, carrot, beetroot, onion-lemon, sprouts) as a component, always with an explicit portion per rule 8 (e.g. "small kachumber salad (small bowl)"). NEVER add salad to breakfast, mid-morning, or evening/tea slots. Keep it small and simple, and honour the diet/avoid rules (no root veg for Vegetarian Jain). For elderly clients or anyone with weak digestion / functional dyspepsia, prefer a lightly-steamed or warm salad — especially at dinner — over a large bowl of cold raw greens.
 13. CATALOGUE-FIRST (dish names) — a CATALOGUE DISHES list is provided in the user message. Name EVERY cookable main dish (breakfast dish, dal, sabzi, curry, khichdi, cheela, dosa/idli, roti, soup, rasam, pulao, etc.) with an EXACT title copied verbatim from that list, followed by the portion in brackets — so the client's app serves the curated recipe and photo instead of an AI-written one. Do NOT invent a descriptive dish name when a suitable catalogue dish exists (use "Tofu spinach curry" from the list, never "Tofu and spinach curry with capsicum"). Introduce a NEW dish name ONLY when the catalogue genuinely has nothing that fits a slot this client's framework or nutrient targets require — keep such inventions rare and name them short and literal. Trivial no-recipe items (plain fruit, nuts, curd, tea, buttermilk, a small salad, plain rice or roti) are named normally. This never overrides the framework, diet/avoid, protein/fibre, or no-porridge rules.
-14. DISH COMPONENTS ARE DISHES, NOT INGREDIENTS — a "dish" string is a flat "Component (qty) + Component (qty)" list of things the client eats (a sabzi, a dal, a roti, a bowl of rice, a salad). NEVER list a raw tempering/spice ingredient (garlic, ginger, turmeric, cumin, mustard seeds, hing, curry leaves, black pepper, etc.) as its own component — those belong INSIDE the dish's recipe, not spelled out at the meal level. Any pre-meal ritual item (a digestive shot, a glass of warm water) that must appear must be written as its own clean "+"-joined component with a portion, exactly like any other component — never glued onto the next dish with a narrative connector. The string uses ONLY " + " between components; never write "then:", "—", or any other sequencing phrase inside it. The FIRST component is what the client's app shows as the meal's title, so it must always be the actual headline dish (the sabzi/dal/curry the meal is named for), never a garnish or spice."""
+14. DISH COMPONENTS ARE DISHES, NOT INGREDIENTS — a "dish" string is a flat "Component (qty) + Component (qty)" list of things the client eats (a sabzi, a dal, a roti, a bowl of rice, a salad). NEVER list a raw tempering/spice ingredient (garlic, ginger, turmeric, cumin, mustard seeds, hing, curry leaves, black pepper, etc.) as its own component — those belong INSIDE the dish's recipe, not spelled out at the meal level. Any pre-meal ritual item (a digestive shot, a glass of warm water) that must appear must be written as its own clean "+"-joined component with a portion, exactly like any other component — never glued onto the next dish with a narrative connector. The string uses ONLY " + " between components; never write "then:", "—", or any other sequencing phrase inside it. The FIRST component is what the client's app shows as the meal's title, so it must always be the actual headline dish (the sabzi/dal/curry the meal is named for), never a garnish or spice.
+15. FOOD CAUTIONS — PREPARATION AND FREQUENCY, NOT A BAN LIST. A FOOD CAUTIONS block may list foods that warrant care for THIS client's specific conditions (e.g. millets and raw brassicas in hypothyroidism, high-oxalate foods in calcium-oxalate stones). These are NOT banned and must NOT be stripped from the menu — most are genuinely good for this client in other ways, and over-restricting a client's food is its own harm. You have exactly two levers:
+    (a) PREPARATION — where the block says "Always COOKED, never raw", that food may appear only in a cooked dish. It must not appear in the rule-12 raw salad/kachumber; use a lightly-steamed version or pick a different salad vegetable.
+    (b) FREQUENCY — a cautioned food is an OCCASIONAL food, at most 2-3 times across the whole week. It must never be the week's default base. This is a hard limit ON TOP OF rule 11: if a cautioned grain (ragi/millet in a thyroid client, say) is used for rotation, it rotates a couple of times and wheat/rice/other grains carry the rest of the week. An all-ragi or all-millet week for a client with a goitrogen caution is WRONG even when rule 11's metabolic indication is also present — in that case rotate among the NON-cautioned low-GI options instead.
+   Rule 1 (framework), the client's diet/avoid rules and rule 7b still outrank this. NEVER name the condition, the mechanism, or the word "caution" to the client — the change_note stays warm and food-first, exactly as rule 6 requires."""
 
 
 def _plans_root() -> Path:
@@ -478,6 +482,15 @@ def main() -> None:
     # (coach directive 2026-06-15). The menu is where the client receives them.
     mfoods = relevant_meal_foods(plan, client)
     mfood_lines = [f"- {f['name']} — {f['why']}" for f in mfoods]
+
+    # The negative half of the same question (rule 15). `relevant_meal_foods`
+    # above says what this client's conditions call FOR; this says what they
+    # call for care with. Optional import so a stripped checkout is unaffected.
+    try:
+        from food_cautions import live_cautions, prompt_block
+        _caution_lines = prompt_block(live_cautions(client, plan))
+    except Exception:
+        _caution_lines = ""
     cat_names = catalogue_dish_names(client.get("dietary_preference") or "")
 
     user = "\n".join(
@@ -494,6 +507,10 @@ def main() -> None:
             "",
             "CONDITION-APPROPRIATE THERAPEUTIC FOODS (weave these in as real dishes — rule 9):",
             *(mfood_lines or ["none for this client"]),
+            "",
+            "FOOD CAUTIONS FOR THIS CLIENT'S CONDITIONS (rule 15 — preparation and "
+            "frequency levers only, these are NOT banned foods):",
+            _caution_lines or "none for this client",
             "",
             "NUTRIENT TARGETS FOR THIS CLIENT (rule 10 — balance the week to these):",
             *_nutrient_targets_block(client),

@@ -55,6 +55,10 @@ export interface RecomputedNutrients {
 
 interface TableEntry {
   per_100g?: Record<string, number>;
+  /** Spellings this ingredient answers to. The single matching surface for
+   *  ingredient identity across the codebase — food-cautions.ts reads them
+   *  from here rather than keeping a second list. */
+  aliases?: string[];
 }
 interface Threshold {
   field: string;
