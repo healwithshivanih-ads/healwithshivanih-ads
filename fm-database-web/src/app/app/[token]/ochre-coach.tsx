@@ -57,10 +57,15 @@ interface Msg {
 export function CoachScreen({
   coachAlert,
   openTour,
+  pushSilent = false,
 }: {
   coachAlert: boolean;
   /** Re-opens the Getting-Started tour (auto-shown once on first open). */
   openTour?: () => void;
+  /** Notifications are on, we sent, and the phone never confirmed drawing
+   *  it. Worth saying plainly: the alternative is a client who believes
+   *  they will be told and quietly is not. */
+  pushSilent?: boolean;
 }) {
   const data = useOchre();
   const c = data.coach;
@@ -162,6 +167,17 @@ export function CoachScreen({
       </div>
       {/* In-app messaging is the default now; WhatsApp stays below as a
           second option so nobody is forced across mid-conversation. */}
+      {pushSilent && (
+        <div className="chat-emergency" role="status" style={{ marginBottom: 10 }}>
+          <strong>Your phone isn&apos;t showing our notifications</strong>
+          <p>
+            We sent one and your phone never displayed it — so you&apos;ll only
+            see {firstName}&apos;s replies when you open the app. On Android:
+            Settings → Apps → Chrome → Notifications (allow), then Battery (not
+            Restricted). On iPhone: Settings → Notifications → this app.
+          </p>
+        </div>
+      )}
       <OchreChat firstName={firstName} />
 
       <a className="wa-btn wa-btn--alt" href={waLink} target="_blank" rel="noreferrer" style={{ marginTop: 12 }}>

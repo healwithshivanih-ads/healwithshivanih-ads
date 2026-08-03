@@ -31,6 +31,7 @@ import {
 } from "@/lib/fmdb/client-thread";
 import { loadWhatsAppThreadAction } from "@/app/api/whatsapp/actions";
 import { notifyCoachOfClientMessage } from "@/lib/fmdb/chat-notify";
+import { pushStatus } from "@/lib/fmdb/push-server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -61,7 +62,32 @@ export async function POST(req: NextRequest) {
   // sits ABOVE the list branch: no WhatsApp history, no read side effect.
   // It is polled for the badge and must stay cheap.
   if (body.action === "unread") {
-    return NextResponse.json({ ok: true, unread: unreadCount(clientId, "outbound") });
+    const thread = readThread(clientId);
+    // Receipts only started being recorded at this deploy; without a floor
+    // every message that predates them looks undelivered and we would tell
+    // a client their phone is broken when it never had the chance to say
+    // otherwise. The floor retires itself as old messages age out.
+    const RECEIPTS_LIVE_FROM = Date.parse("2026-08-03T05:00:00Z");
+    const settled = Date.now() - 10 * 60 * 1000; // give a phone time to answer
+    const pushOn = (await pushStatus(clientId)).enabled;
+    const pushSilent =
+      pushOn &&
+      thread.some(
+        (m) =>
+          m.dir === "outbound" &&
+          !m.delivered_at &&
+          Date.parse(m.at) > RECEIPTS_LIVE_FROM &&
+          Date.parse(m.at) < settled,
+      );
+    return NextResponse.json({
+      ok: true,
+      unread: unreadCount(clientId, "outbound"),
+      // Nothing to announce to someone already doing it.
+      hasChatted: thread.some((m) => m.dir === "inbound"),
+      // Notifications are on, we sent, and their phone never confirmed
+      // drawing it — which is the one thing a 201 could never tell us.
+      pushSilent,
+    });
   }
 
   if (body.action !== "send") {

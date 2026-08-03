@@ -28,6 +28,7 @@ import { LabsScreen } from "./ochre-labs";
 import { CoachScreen } from "./ochre-coach";
 import { TourOverlay } from "./ochre-tour";
 import InstallPrompt from "./ochre-install";
+import { ChatAnnounce } from "./ochre-chat-announce";
 import { AccountOverlay, DocOverlay, MealOverlay, PortionsOverlay, RemedyOverlay } from "./ochre-overlays";
 import { BreathOverlay } from "./ochre-breath";
 import { EftOverlay } from "./ochre-eft";
@@ -147,6 +148,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
    * Coach tab where they would go anyway.
    */
   const [coachUnread, setCoachUnread] = useState(0);
+  const [hasChatted, setHasChatted] = useState(true); // assume yes until told
+  const [pushSilent, setPushSilent] = useState(false);
   const [logged, setLogged] = useState<Record<string, string>>({});
   const [practicesDone, setPracticesDone] = useState<Record<string, boolean>>({});
   const [submittedWeek, setSubmittedWeek] = useState<number>(0);
@@ -267,6 +270,44 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     return () => window.removeEventListener("appinstalled", onInstalled);
   }, [data.token]);
 
+  /**
+   * Re-register the push subscription on every app open, when permission is
+   * already granted.
+   *
+   * Push endpoints expire. A browser update, a long gap, a reinstall — and
+   * the stored endpoint quietly becomes a corpse that accepts nothing, with
+   * no event to tell us. Two of the three clients with notifications on have
+   * subscriptions from June and July that have never been re-confirmed, and
+   * nobody would learn they are dead until a message failed to arrive.
+   * Re-subscribing is idempotent (the store dedupes by endpoint), costs one
+   * request, and self-heals the whole roster as people open their app.
+   */
+  useEffect(() => {
+    const token = data.token;
+    if (!token || typeof window === "undefined") return;
+    if (typeof Notification === "undefined" || Notification.permission !== "granted") return;
+    if (!("serviceWorker" in navigator)) return;
+    let stop = false;
+    void (async () => {
+      try {
+        const reg = await navigator.serviceWorker.getRegistration("/ochre-app/sw.js");
+        const sub = await reg?.pushManager.getSubscription();
+        if (!sub || stop) return;
+        await fetch("/api/app-push", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token, action: "subscribe", subscription: sub.toJSON() }),
+        });
+      } catch {
+        // Nothing to do and nothing to say — they already have notifications
+        // on, and a failed refresh leaves them exactly where they were.
+      }
+    })();
+    return () => {
+      stop = true;
+    };
+  }, [data.token]);
+
   useEffect(() => {
     const token = data.token;
     if (!token) return;
@@ -282,7 +323,11 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
           body: JSON.stringify({ token, action: "unread" }),
         });
         const j = await res.json();
-        if (!stop && j?.ok) setCoachUnread(j.unread ?? 0);
+        if (!stop && j?.ok) {
+          setCoachUnread(j.unread ?? 0);
+          setHasChatted(!!j.hasChatted);
+          setPushSilent(!!j.pushSilent);
+        }
       } catch {
         // Offline: keep the last known count rather than clearing it, so a
         // dropped connection cannot make a waiting message look answered.
@@ -652,6 +697,12 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     screen = <LibraryFloorScreen goCoach={() => go("coach")} goTab={go} />;
   } else if (tab === "today") {
     screen = (
+      <>
+        <ChatAnnounce
+          firstName={data.coach.name.split(" ")[0]}
+          hasChatted={hasChatted}
+          onOpen={() => go("coach")}
+        />
       <TodayScreen
         logged={logged}
         onToggleSupp={toggleSupp}
@@ -674,6 +725,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         onTogglePractice={togglePractice}
         openGrocery={openGrocery}
       />
+      </>
     );
   } else if (tab === "plan") {
     screen = (
@@ -693,7 +745,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   } else if (tab === "labs") {
     screen = <LabsScreen />;
   } else if (tab === "coach") {
-    screen = <CoachScreen coachAlert={!submitted && !onHold} openTour={() => setTourOpen(true)} />;
+    screen = (
+      <CoachScreen
+        coachAlert={!submitted && !onHold}
+        openTour={() => setTourOpen(true)}
+        pushSilent={pushSilent}
+      />
+    );
   }
 
   return (
