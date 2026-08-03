@@ -71,6 +71,9 @@ export type ThreadMessage = {
    */
   meal_outcome?: "affirm" | "quiet" | "review" | "safety" | null;
   coach_verdict?: "agree" | "disagree" | null;
+  /** Written by the meal checker, not by the coach. Surfaced in her app so
+   *  she is never unsure whether a line in the thread is hers. */
+  automated?: boolean;
   /** Pinned to the record — exempt from the 365-day media sweep. */
   pinned_at?: string | null;
   /**
@@ -223,6 +226,7 @@ export function appendMessage(
     ...(msg.file ? { file: msg.file } : {}),
     read_at: msg.read_at ?? null,
     delivered_at: msg.delivered_at ?? null,
+    ...(msg.automated ? { automated: true } : {}),
     meal_outcome: msg.meal_outcome ?? null,
     coach_verdict: msg.coach_verdict ?? null,
     pinned_at: msg.pinned_at ?? null,
@@ -279,6 +283,18 @@ export function markDelivered(clientId: string, messageId: string): boolean {
  * read. She can change her mind — the last verdict wins — because a review
  * queue you cannot correct is one people stop trusting.
  */
+/** Record what the automated check concluded. Separate from reviewPhoto so
+ *  the checker can never overwrite the coach's own verdict. */
+export function setMealOutcome(
+  clientId: string,
+  messageId: string,
+  outcome: NonNullable<ThreadMessage["meal_outcome"]>,
+): boolean {
+  const msg = readThread(clientId).find((m) => m.id === messageId);
+  if (!msg) return false;
+  return !!appendMessage(clientId, { ...msg, meal_outcome: outcome });
+}
+
 export function reviewPhoto(
   clientId: string,
   messageId: string,

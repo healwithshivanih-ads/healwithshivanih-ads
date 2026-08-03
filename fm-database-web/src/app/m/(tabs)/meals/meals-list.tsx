@@ -35,6 +35,7 @@ const OUTCOME_LABEL: Record<string, string> = {
 export function MealsList({ initial }: { initial: MealRow[] }) {
   const [rows, setRows] = useState(initial);
   const [busy, setBusy] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   async function mark(r: MealRow, verdict: "agree" | "disagree") {
     const next = r.verdict === verdict ? null : verdict; // tapping again undoes it
@@ -80,9 +81,27 @@ export function MealsList({ initial }: { initial: MealRow[] }) {
     );
   }
 
+  // Needs her: flagged for safety, or off-plan and not yet ruled on.
+  const needsYou = rows.filter(
+    (r) => r.outcome === "safety" || (r.outcome === "review" && !r.verdict),
+  );
+  const rest = rows.filter((r) => !needsYou.includes(r));
+  const shown = showAll ? rows : needsYou;
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-      {rows.map((r) => (
+      {!showAll && needsYou.length === 0 ? (
+        <div className="m-card">
+          <div style={{ fontWeight: 600, marginBottom: 4 }}>Nothing needs you</div>
+          <p className="m-subtle" style={{ margin: 0, lineHeight: 1.6 }}>
+            {rows.length} photo{rows.length === 1 ? "" : "s"} checked automatically.
+            Clients were replied to where the plate matched their plan; nothing
+            was flagged.
+          </p>
+        </div>
+      ) : null}
+
+      {shown.map((r) => (
         <div
           key={r.messageId}
           className="m-card"
@@ -119,15 +138,16 @@ export function MealsList({ initial }: { initial: MealRow[] }) {
           ) : null}
 
           {r.outcome ? (
-            <div
-              className="m-subtle"
-              style={{ fontSize: 12, marginTop: 8 }}
-            >
-              Suggested: <strong>{OUTCOME_LABEL[r.outcome] ?? r.outcome}</strong>
+            <div className="m-subtle" style={{ fontSize: 12, marginTop: 8 }}>
+              {r.outcome === "safety" ? "⚠ " : ""}
+              <strong>{OUTCOME_LABEL[r.outcome] ?? r.outcome}</strong>
+              {r.outcome === "affirm" || r.outcome === "review"
+                ? " · client was replied to"
+                : ""}
             </div>
           ) : (
             <div className="m-subtle" style={{ fontSize: 12, marginTop: 8 }}>
-              Not scored yet — your call is what trains it.
+              Checking…
             </div>
           )}
 
@@ -162,6 +182,16 @@ export function MealsList({ initial }: { initial: MealRow[] }) {
           </div>
         </div>
       ))}
+
+      {rest.length > 0 || showAll ? (
+        <button
+          type="button"
+          className="fm-btn block"
+          onClick={() => setShowAll((v) => !v)}
+        >
+          {showAll ? "Show only what needs me" : `Show all ${rows.length} photos`}
+        </button>
+      ) : null}
     </div>
   );
 }

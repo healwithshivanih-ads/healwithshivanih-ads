@@ -18,9 +18,8 @@ export default async function MealsPage() {
       <div className="m-pagehead">
         <h1>Meals</h1>
         <p className="m-subtle">
-          Photos clients have sent. Nothing goes back to them automatically —
-          marking these is what teaches the check before it ever replies on its
-          own.
+          Every photo is checked automatically. This opens on the ones that
+          need you — anything flagged, or a meal that wasn&apos;t on the plan.
         </p>
       </div>
       <MealsList initial={rows} />

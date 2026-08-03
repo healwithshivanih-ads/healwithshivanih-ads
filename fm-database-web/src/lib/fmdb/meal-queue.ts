@@ -3,12 +3,15 @@ import "server-only";
 /**
  * The meal-photo review queue (docs/MEAL_PHOTO_CHECK_SPEC.md, phase 2a).
  *
- * SHADOW MODE. Nothing scores photos yet and nothing replies to clients —
- * this is the surface the coach reviews in, built first so the checker has
- * somewhere honest to land. `meal_outcome` is empty on every row today; when
- * the checker ships it fills that field and this screen starts showing a
- * proposal beside each photo. Her agree/disagree is what calibrates it, and
- * per the spec no client sees an automated affirmation until it has.
+ * THE CHECKER RUNS ON EVERY PHOTO. This screen is the EXCEPTION list, not a
+ * to-do list: reviewing each photo by hand is the work being replaced, not a
+ * step on the way to it. It opens on what needs her — anything flagged for
+ * safety, and anything off-plan — with everything else a tap away for a
+ * spot-check she never has to do.
+ *
+ * Her agree/disagree stays because a checker nobody can correct is one that
+ * cannot improve, and because the first weeks are when a systematic error is
+ * cheapest to catch.
  *
  * Assembled by reading each client's thread rather than a separate index:
  * an index would be a second copy of the truth that can drift, and the

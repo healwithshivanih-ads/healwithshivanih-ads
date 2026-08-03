@@ -20,6 +20,11 @@ import { allowDaily } from "@/lib/fmdb/rate-limit";
 import { appendMessage } from "@/lib/fmdb/client-thread";
 import { notifyCoachOfClientMessage } from "@/lib/fmdb/chat-notify";
 import { saveChatPhoto, MAX_UPLOAD_BYTES } from "@/lib/fmdb/chat-media";
+import { checkMealPhoto } from "@/lib/fmdb/meal-check";
+import { appendMessage as appendReply, setMealOutcome } from "@/lib/fmdb/client-thread";
+import { notifyClientOfCoachReply } from "@/lib/fmdb/chat-notify";
+import { clientAppUrl } from "@/lib/fmdb/coach-mobile";
+import { loadClientById } from "@/lib/fmdb/loader-extras";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -83,6 +88,47 @@ export async function POST(req: NextRequest) {
     preview: caption || "sent a photo",
     messageId: stored.id,
   }).catch((e) => console.error("[chat-photo] coach notify failed:", e));
+
+  // Score the photo AFTER responding — a client's picture must appear the
+  // instant they send it, whatever the checker is doing. Everything below is
+  // best-effort: a failure leaves the photo delivered and the coach notified,
+  // which is exactly where we were before the checker existed.
+  void (async () => {
+    try {
+      const verdict = await checkMealPhoto(clientId, token, saved.file, stored.at);
+      setMealOutcome(clientId, stored.id, verdict.outcome);
+
+      if (verdict.clientLine) {
+        const reply = appendReply(clientId, {
+          dir: "outbound",
+          kind: "text",
+          text: verdict.clientLine,
+          automated: true,
+        });
+        if (reply) {
+          const c = (await loadClientById(clientId)) as
+            | { mobile_number?: string; app_token?: string }
+            | null;
+          await notifyClientOfCoachReply(clientId, {
+            appUrl: clientAppUrl(c?.app_token) ?? undefined,
+            // No WhatsApp fallback for an automated line: a paid message is
+            // for something the coach actually said.
+            phone: null,
+            messageId: reply.id,
+          });
+        }
+      }
+
+      if (verdict.outcome === "safety") {
+        await notifyCoachOfClientMessage(clientId, {
+          preview: `⚠ ${verdict.coachNote}`,
+          messageId: stored.id,
+        });
+      }
+    } catch (e) {
+      console.error("[chat-photo] meal check failed:", e);
+    }
+  })();
 
   return NextResponse.json({
     ok: true,
