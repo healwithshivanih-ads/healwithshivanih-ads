@@ -84,6 +84,11 @@ export const PUBLIC_PATH_PREFIXES = [
   "/api/app-chat",
   // Posted by the service worker, which has no session and no token.
   "/api/push-receipt",
+  // Chat photos: upload and fetch. Token-scoped inside the handlers, exactly
+  // like /api/app-chat. Named chat-photo, NOT app-photo — that one already
+  // exists and serves the client's AVATAR.
+  "/api/chat-photo",
+  "/api/chat-media",
   "/api/app-push",
   // App reports it's running installed (adoption signal). Token-scoped.
   "/api/app-installed",

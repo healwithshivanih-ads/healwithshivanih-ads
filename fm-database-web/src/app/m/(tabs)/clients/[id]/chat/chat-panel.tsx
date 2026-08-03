@@ -141,7 +141,23 @@ export function ChatPanel({
               <div style={{ maxWidth: "84%" }}>
                 <div className={`m-bubble m-bubble--${m.dir === "outbound" ? "you" : "ai"}`}>
                   {m.text}
-                  {m.file ? (
+                  {m.kind === "photo" && m.file && m.via === "app" ? (
+                    /* eslint-disable-next-line @next/next/no-img-element --
+                       served by a session-gated API route, not a static path
+                       the image optimiser can reach. */
+                    <img
+                      src={`/api/m/media?client=${encodeURIComponent(clientId)}&file=${encodeURIComponent(m.file)}`}
+                      alt={m.text || "Photo from the client"}
+                      loading="lazy"
+                      style={{
+                        display: "block",
+                        maxWidth: "100%",
+                        width: 200,
+                        borderRadius: 10,
+                        marginTop: m.text ? 6 : 0,
+                      }}
+                    />
+                  ) : m.file ? (
                     <div className="m-subtle" style={{ marginTop: 4 }}>
                       [{m.kind}] {m.file}
                     </div>

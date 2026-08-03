@@ -666,6 +666,27 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                 except Exception as e:
                     out["errors"].append(f"{client_id} thread-stage: {e}")
 
+            # reverse-mirror: chat PHOTOS written on Fly → authoritative store.
+            # Without this the coach's desktop shows a message that says a
+            # photo arrived and cannot display it, which reads as the app
+            # losing the client's picture.
+            #
+            # Copy-only, never delete: the retention sweep is the only thing
+            # allowed to remove media, and a mirror that mirrored deletions
+            # would let one machine's sweep silently erase the other's copy.
+            s_media = sdir / "files" / "chat"
+            if s_media.is_dir():
+                a_media = auth_person / "files" / "chat"
+                try:
+                    a_media.mkdir(parents=True, exist_ok=True)
+                    for img in s_media.glob("*.jpg"):
+                        dest = a_media / img.name
+                        if not dest.exists():
+                            shutil.copy2(img, dest)
+                            out["checkins_mirrored"] += 1
+                except Exception as e:
+                    out["errors"].append(f"{client_id} media-mirror: {e}")
+
         # reverse-mirror: push subscription (written on Fly when the client
         # toggles notifications on/off in settings) → authoritative store.
         # Fly is the sole writer; newest wins.

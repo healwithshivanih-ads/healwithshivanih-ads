@@ -33,6 +33,8 @@ type Msg = {
   from: "me" | "coach";
   text: string;
   via: string;
+  kind?: string;
+  file?: string;
   /** Present on the client's own in-app messages: has it reached her phone? */
   delivered?: boolean;
 };
@@ -56,6 +58,8 @@ export function OchreChat({ firstName }: { firstName: string }) {
   const [pushState, setPushState] = useState<"unknown" | "on" | "off" | "asking" | "blocked">("unknown");
   const [pushNote, setPushNote] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [photo, setPhoto] = useState<{ blob: Blob; preview: string } | null>(null);
 
   const load = useCallback(async () => {
     try {
@@ -114,8 +118,76 @@ export function OchreChat({ firstName }: { firstName: string }) {
     }
   }
 
+  /**
+   * Shrink on the phone before uploading.
+   *
+   * A modern phone camera produces 3–6 MB per shot. On Indian mobile data
+   * that is a slow upload the client watches fail, and it is the single
+   * biggest lever on what this feature costs to run — roughly ten times.
+   * Canvas re-encoding also drops EXIF, so the GPS coordinates of someone's
+   * kitchen never leave their phone. The server strips it again; neither
+   * side trusts the other to have done it.
+   */
+  async function shrink(file: File): Promise<Blob> {
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+    const w = Math.round(bitmap.width * scale);
+    const h = Math.round(bitmap.height * scale);
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    canvas.getContext("2d")?.drawImage(bitmap, 0, 0, w, h);
+    bitmap.close?.();
+    const blob = await new Promise<Blob | null>((res) =>
+      canvas.toBlob(res, "image/jpeg", 0.8),
+    );
+    // If the browser refuses to encode, send the original rather than
+    // nothing — the server will shrink it anyway.
+    return blob ?? file;
+  }
+
+  async function pick(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // let them re-pick the same photo after cancelling
+    if (!file) return;
+    setError(null);
+    try {
+      const blob = await shrink(file);
+      setPhoto({ blob, preview: URL.createObjectURL(blob) });
+    } catch {
+      setError("Couldn't read that photo — try another one.");
+    }
+  }
+
+  async function sendPhoto() {
+    if (!photo || busy) return;
+    setBusy(true);
+    setError(null);
+    const fd = new FormData();
+    fd.append("token", c.token);
+    fd.append("photo", photo.blob, "photo.jpg");
+    if (draft.trim()) fd.append("text", draft.trim());
+    try {
+      const res = await fetch("/api/chat-photo", { method: "POST", body: fd });
+      const j = await res.json();
+      if (!j.ok) {
+        setError(j.error ?? "Couldn't send that photo.");
+      } else {
+        URL.revokeObjectURL(photo.preview);
+        setPhoto(null);
+        setDraft("");
+        await load();
+      }
+    } catch {
+      setError("Couldn't send — check your connection.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function send(e: React.FormEvent) {
     e.preventDefault();
+    if (photo) return void sendPhoto();
     const text = draft.trim();
     if (!text || busy) return;
     setDraft("");
@@ -180,7 +252,20 @@ export function OchreChat({ firstName }: { firstName: string }) {
         ) : (
           msgs.map((m) => (
             <div key={m.id} className={`chat-row ${m.from === "me" ? "mine" : "theirs"}`}>
-              <div className="chat-bubble">{m.text}</div>
+              <div className="chat-bubble">
+                {m.kind === "photo" && m.file ? (
+                  /* eslint-disable-next-line @next/next/no-img-element -- served
+                     from a token-scoped API route, not a static path the
+                     optimiser can reach. */
+                  <img
+                    className="chat-photo"
+                    src={`/api/chat-media?token=${encodeURIComponent(c.token)}&file=${encodeURIComponent(m.file)}`}
+                    alt={m.text || "Photo you sent"}
+                    loading="lazy"
+                  />
+                ) : null}
+                {m.text ? <span>{m.text}</span> : null}
+              </div>
               <div className="chat-meta">
                 {when(m.at)}
                 {m.from === "me" && m.via === "app"
@@ -197,7 +282,41 @@ export function OchreChat({ firstName }: { firstName: string }) {
 
       {error && <p className="chat-error">{error}</p>}
 
+      {photo && (
+        <div className="chat-attach">
+          {/* eslint-disable-next-line @next/next/no-img-element -- a local
+              object URL; there is nothing for the optimiser to fetch. */}
+          <img src={photo.preview} alt="Photo to send" />
+          <div className="chat-attach-txt">Ready to send — add a note if you like.</div>
+          <button
+            type="button"
+            aria-label="Remove photo"
+            onClick={() => {
+              URL.revokeObjectURL(photo.preview);
+              setPhoto(null);
+            }}
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       <form className="chat-compose" onSubmit={send}>
+        <input
+          ref={fileRef}
+          type="file"
+          accept="image/*"
+          hidden
+          onChange={pick}
+        />
+        <button
+          type="button"
+          className="chat-clip"
+          onClick={() => fileRef.current?.click()}
+          aria-label="Add a photo"
+        >
+          <Icon name="camera" size={19} />
+        </button>
         <textarea
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
@@ -205,7 +324,7 @@ export function OchreChat({ firstName }: { firstName: string }) {
           placeholder={`Message ${firstName}`}
           aria-label={`Message ${firstName}`}
         />
-        <button type="submit" disabled={busy || !draft.trim()} aria-label="Send">
+        <button type="submit" disabled={busy || (!draft.trim() && !photo)} aria-label="Send">
           <Icon name="send" size={18} />
         </button>
       </form>
