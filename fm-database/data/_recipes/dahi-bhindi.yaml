@@ -102,32 +102,35 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler for B12/probiotic lunch-dinner slot — coach to
   review curd quantity and spice levels.
-approx_kcal_per_serving: 141
+approx_kcal_per_serving: 191
 kcal_is_estimate: true
 protein_g: 2.8
-kcal_per_serving: 141
+kcal_per_serving: 191
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 141
-  protein_g: 2.8
-  carbs_g: 13.2
-  fat_g: 9.7
+  kcal: 191
+  protein_g: 5.7
+  carbs_g: 17.0
+  fat_g: 12.4
   fibre_g: 4.6
-  iron_mg: 1.9
-  calcium_mg: 110
-  magnesium_mg: 69.6
-  zinc_mg: 0.8
-  potassium_mg: 412
-  folate_ug: 71.2
-  b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 28.3
-  omega3_mg: 85.5
-nutrient_coverage_pct: 93.9
+  iron_mg: 2.0
+  calcium_mg: 209
+  magnesium_mg: 79.4
+  zinc_mg: 1.3
+  potassium_mg: 538
+  folate_ug: 76.9
+  b12_ug: 0.3
+  vit_d_ug: 0.1
+  vit_c_mg: 28.7
+  omega3_mg: 102
+nutrient_coverage_pct: 100.0
 rich_in:
+- calcium
+- magnesium
+- potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -144,8 +147,8 @@ nutrient_lines:
   key: bhindi
   g: 300.0
 - i: 1
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 245.0
 - i: 2
   key: olive-oil
   g: 27.0

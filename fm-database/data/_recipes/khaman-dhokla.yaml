@@ -117,31 +117,32 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler for fermented B-vitamin breakfast-snack slot —
   coach to review fermentation rest time and eno quantity for desired texture.
-approx_kcal_per_serving: 106
+approx_kcal_per_serving: 134
 kcal_is_estimate: true
 protein_g: 5.9
-kcal_per_serving: 106
+kcal_per_serving: 134
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 106
-  protein_g: 5.9
-  carbs_g: 15.2
-  fat_g: 2.4
+  kcal: 134
+  protein_g: 7.5
+  carbs_g: 17.4
+  fat_g: 3.9
   fibre_g: 3.1
-  iron_mg: 1.5
-  calcium_mg: 55.8
-  magnesium_mg: 47.9
-  zinc_mg: 0.8
-  potassium_mg: 259
-  folate_ug: 108
-  b12_ug: 0.0
+  iron_mg: 1.6
+  calcium_mg: 111
+  magnesium_mg: 53.4
+  zinc_mg: 1.1
+  potassium_mg: 330
+  folate_ug: 112
+  b12_ug: 0.2
   vit_d_ug: 0.0
-  vit_c_mg: 5.1
-  omega3_mg: 34.4
-nutrient_coverage_pct: 56.3
-rich_in: []
+  vit_c_mg: 5.3
+  omega3_mg: 43.6
+nutrient_coverage_pct: 79.0
+rich_in:
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -158,8 +159,8 @@ nutrient_lines:
   key: besan
   g: 92.0
 - i: 1
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 183.75
 - i: 2
   key: water
   g: 0.0

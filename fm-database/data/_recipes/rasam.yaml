@@ -105,25 +105,25 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 60.3
-  protein_g: 1.2
-  carbs_g: 9.3
-  fat_g: 2.6
-  fibre_g: 1.4
-  iron_mg: 1.1
-  calcium_mg: 30.5
-  magnesium_mg: 17.9
-  zinc_mg: 0.2
-  potassium_mg: 218
-  folate_ug: 9.8
+  kcal: 65.5
+  protein_g: 1.4
+  carbs_g: 10.1
+  fat_g: 2.8
+  fibre_g: 1.9
+  iron_mg: 1.4
+  calcium_mg: 39.1
+  magnesium_mg: 21.8
+  zinc_mg: 0.3
+  potassium_mg: 240
+  folate_ug: 10.7
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 9.0
-  omega3_mg: 24.8
-nutrient_coverage_pct: 81.8
+  vit_c_mg: 9.3
+  omega3_mg: 26.4
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: tamarind
@@ -132,8 +132,8 @@ nutrient_lines:
   key: tomato
   g: 100.0
 - i: 2
-  key: null
-  g: 30.0
+  key: sambar-powder
+  g: 3.125
 - i: 3
   key: black-pepper
   g: 1.0416666666666667

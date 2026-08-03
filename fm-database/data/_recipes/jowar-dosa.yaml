@@ -63,7 +63,7 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 20
-approx_kcal_per_serving: 245
+approx_kcal_per_serving: 263
 kcal_is_estimate: true
 protein_g: 7.1
 good_for:
@@ -90,32 +90,32 @@ kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 245
+kcal_per_serving: 263
 kcal_total: 300
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 245
-  protein_g: 7.1
-  carbs_g: 50.1
-  fat_g: 1.2
+  kcal: 263
+  protein_g: 8.2
+  carbs_g: 51.6
+  fat_g: 2.2
   fibre_g: 6.6
   iron_mg: 2.9
-  calcium_mg: 23.8
-  magnesium_mg: 85.5
-  zinc_mg: 1.4
-  potassium_mg: 233
-  folate_ug: 25.7
-  b12_ug: 0.0
+  calcium_mg: 60.9
+  magnesium_mg: 89.2
+  zinc_mg: 1.6
+  potassium_mg: 280
+  folate_ug: 27.8
+  b12_ug: 0.1
   vit_d_ug: 0.0
-  vit_c_mg: 3.1
-  omega3_mg: 42.3
-nutrient_coverage_pct: 71.6
+  vit_c_mg: 3.2
+  omega3_mg: 48.4
+nutrient_coverage_pct: 87.6
 rich_in:
 - fibre
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: jowar-flour
@@ -124,8 +124,8 @@ nutrient_lines:
   key: white-rice
   g: 23.125
 - i: 2
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 61.25
 - i: 3
   key: cumin-seeds
   g: 1.0416666666666667

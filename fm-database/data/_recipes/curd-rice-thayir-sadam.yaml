@@ -97,31 +97,33 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler for coach review; proportions weighted toward curd
   for B12 and probiotic intent.
-approx_kcal_per_serving: 59
+approx_kcal_per_serving: 171
 kcal_is_estimate: true
 protein_g: 2.1
-kcal_per_serving: 59
+kcal_per_serving: 171
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 59.4
-  protein_g: 2.1
-  carbs_g: 4.5
-  fat_g: 3.8
+  kcal: 171
+  protein_g: 8.5
+  carbs_g: 13.1
+  fat_g: 9.9
   fibre_g: 1.1
-  iron_mg: 0.3
-  calcium_mg: 123
-  magnesium_mg: 13.9
-  zinc_mg: 0.2
-  potassium_mg: 165
-  folate_ug: 14.8
-  b12_ug: 0.2
-  vit_d_ug: 0.3
-  vit_c_mg: 4.2
-  omega3_mg: 22.8
-nutrient_coverage_pct: 53.1
-rich_in: []
+  iron_mg: 0.5
+  calcium_mg: 345
+  magnesium_mg: 36.0
+  zinc_mg: 1.3
+  potassium_mg: 450
+  folate_ug: 27.7
+  b12_ug: 0.9
+  vit_d_ug: 0.5
+  vit_c_mg: 5.1
+  omega3_mg: 59.6
+nutrient_coverage_pct: 88.7
+rich_in:
+- calcium
+- b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -138,8 +140,8 @@ nutrient_lines:
   key: null
   g: 30.0
 - i: 1
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 367.5
 - i: 2
   key: milk
   g: 61.0

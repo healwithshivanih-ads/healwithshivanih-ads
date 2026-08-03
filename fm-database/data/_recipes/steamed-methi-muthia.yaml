@@ -115,32 +115,32 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler for monsoon snack set — coach to review curd quantity
   and gluten flag from whole wheat flour.
-approx_kcal_per_serving: 173
+approx_kcal_per_serving: 180
 kcal_is_estimate: true
 protein_g: 6.6
-kcal_per_serving: 173
+kcal_per_serving: 180
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 173
-  protein_g: 6.6
-  carbs_g: 16.0
-  fat_g: 9.4
+  kcal: 180
+  protein_g: 7.1
+  carbs_g: 16.6
+  fat_g: 9.7
   fibre_g: 4.1
   iron_mg: 2.7
-  calcium_mg: 107
-  magnesium_mg: 59.0
-  zinc_mg: 0.9
-  potassium_mg: 320
-  folate_ug: 119
+  calcium_mg: 121
+  magnesium_mg: 60.3
+  zinc_mg: 1.0
+  potassium_mg: 338
+  folate_ug: 120
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 12.0
-  omega3_mg: 108
-nutrient_coverage_pct: 72.8
+  omega3_mg: 110
+nutrient_coverage_pct: 82.7
 rich_in:
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -163,8 +163,8 @@ nutrient_lines:
   key: null
   g: 30.0
 - i: 3
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 45.9375
 - i: 4
   key: green-chilli
   g: 1.5625

@@ -99,28 +99,30 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 538
-  protein_g: 11.2
-  carbs_g: 90.2
-  fat_g: 14.7
+  kcal: 575
+  protein_g: 13.3
+  carbs_g: 93.1
+  fat_g: 16.7
   fibre_g: 7.5
   iron_mg: 2.3
-  calcium_mg: 66.9
-  magnesium_mg: 57.1
-  zinc_mg: 1.9
-  potassium_mg: 527
-  folate_ug: 71.8
-  b12_ug: 0.0
+  calcium_mg: 141
+  magnesium_mg: 64.5
+  zinc_mg: 2.3
+  potassium_mg: 622
+  folate_ug: 76.1
+  b12_ug: 0.2
   vit_d_ug: 0.1
-  vit_c_mg: 35.8
-  omega3_mg: 177
-nutrient_coverage_pct: 86.6
+  vit_c_mg: 36.1
+  omega3_mg: 190
+nutrient_coverage_pct: 92.2
 rich_in:
+- protein
 - fibre
+- zinc
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-08-03'
 nutrient_lines:
 - i: 0
   key: white-rice
@@ -132,8 +134,8 @@ nutrient_lines:
   key: onion
   g: 110.0
 - i: 3
-  key: null
-  g: 30.0
+  key: yogurt
+  g: 122.5
 - i: 4
   key: ginger-garlic-paste
   g: 15.0

@@ -2384,7 +2384,6 @@ garam-masala:
   aliases:
   - garam masala
   - chana masala
-  - sambar powder
   per_100g:
     kcal: 320
     protein_g: 13.0
@@ -4470,6 +4469,34 @@ salsa:
     g_per_cup: 240
     g_per_piece: null
     g_per_leaf: null
+sambar-powder:
+  category: spice
+  basis: dry
+  aliases:
+  - sambar powder
+  - sambhar powder
+  - sambar masala
+  - rasam powder
+  per_100g:
+    kcal: 330
+    protein_g: 14.0
+    carbs_g: 50.0
+    fat_g: 11.0
+    fibre_g: 30.0
+    iron_mg: 15.0
+    calcium_mg: 550
+    magnesium_mg: 250
+    zinc_mg: 3.0
+    potassium_mg: 1400
+    folate_ug: 55
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 20
+    omega3_mg: 100
+  density:
+    g_per_cup: 100
+    g_per_piece: null
+    g_per_leaf: null
 salt:
   category: spice
   basis: dry
@@ -5325,6 +5352,13 @@ yogurt:
   - whole milk yogurt
   - yogurt
   - yogurt culture
+  - yoghurt
+  - plain yoghurt
+  - curd
+  - dahi
+  - thick curd
+  - sour curd
+  - hung curd
   per_100g:
     kcal: 61
     protein_g: 3.5
