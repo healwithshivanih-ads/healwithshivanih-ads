@@ -15,7 +15,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
-import { revalidatePath } from "next/cache";
+import { resolveClientAppToken } from "@/lib/fmdb/app-token";
+import { revalidateQuietly } from "@/lib/fmdb/revalidate-quietly";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
@@ -71,8 +72,15 @@ export async function generateGroceryListAction(
 ): Promise<GroceryGenResult> {
   // Resolve the plan's letter token so we can reuse the app's own loader —
   // guarantees the grocery list is built from EXACTLY the menu the app shows.
-  const token = await readPlanField(planSlug, "letter_token");
-  if (!token) return { ok: false, error: "Plan has no app token yet — share the app first." };
+  // Client-level token FIRST — see app-token.ts. Reading only the plan's
+  // letter_token stopped Kamla's weekly regeneration for weeks while she was
+  // using the app daily.
+  const token = await resolveClientAppToken(
+    clientId,
+    await readPlanField(planSlug, "letter_token"),
+  );
+  if (!token)
+    return { ok: false, error: "The app hasn't been shared with this client yet." };
 
   const data = await loadClientAppData(token);
   if (!data) return { ok: false, error: "Could not load the client app data for this plan." };
@@ -132,6 +140,6 @@ export async function generateGroceryListAction(
 
   if (!out?.ok) return { ok: false, error: out?.error ?? "generate-grocery-list.py failed" };
 
-  revalidatePath(`/clients-v2/${clientId}`);
+  revalidateQuietly(`/clients-v2/${clientId}`);
   return { ok: true, weeks: out.weeks, generatedAt: new Date().toISOString() };
 }

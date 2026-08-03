@@ -16,7 +16,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
-import { revalidatePath } from "next/cache";
+import { resolveClientAppToken } from "@/lib/fmdb/app-token";
+import { revalidateQuietly } from "@/lib/fmdb/revalidate-quietly";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import {
@@ -56,8 +57,15 @@ export async function generateWeekRecipesAction(
   clientId: string,
   planSlug: string,
 ): Promise<RecipeGenResult> {
-  const token = await readPlanField(planSlug, "letter_token");
-  if (!token) return { ok: false, error: "Plan has no app token yet — share the app first." };
+  // Client-level token FIRST — see app-token.ts. Reading only the plan's
+  // letter_token stopped Kamla's weekly regeneration for weeks while she was
+  // using the app daily.
+  const token = await resolveClientAppToken(
+    clientId,
+    await readPlanField(planSlug, "letter_token"),
+  );
+  if (!token)
+    return { ok: false, error: "The app hasn't been shared with this client yet." };
 
   const data = await loadClientAppData(token);
   if (!data) return { ok: false, error: "Could not load the client app data for this plan." };
@@ -154,7 +162,7 @@ export async function generateWeekRecipesAction(
   // doesn't bloat the log.
   await recordRecipesIssued(clientId, planSlug).catch(() => {});
 
-  revalidatePath(`/clients-v2/${clientId}`);
+  revalidateQuietly(`/clients-v2/${clientId}`);
   return { ok: true, count: out.count, generatedAt: new Date().toISOString() };
 }
 
