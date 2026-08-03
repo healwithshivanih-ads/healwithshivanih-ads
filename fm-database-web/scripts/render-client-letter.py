@@ -36,6 +36,11 @@ FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 PLANS_ROOT = Path.home() / "fm-plans"
 sys.path.insert(0, str(FMDB_ROOT))
 
+# Allergy tri-state. Replaces the old `', '.join(allergies) or 'none known'`
+# idiom below, which printed a negative screen ("none known") for every client
+# nobody had ever asked. See fmdb/plan/allergies.py.
+from fmdb.plan.allergies import allergy_prompt_line, resolve_allergies  # noqa: E402
+
 
 # ---------------------------------------------------------------------------
 # VitaOne supplement catalog
@@ -2167,7 +2172,14 @@ def _build_client_avoid_set(client: dict) -> set[str]:
     model, not a substring match). Each value lowercased and stripped.
     """
     out: set[str] = set()
-    for field in ("known_allergies", "foods_to_avoid", "reported_triggers"):
+    # Allergens come from the resolver, not the raw list: reading the field
+    # verbatim put the literal token "none" into the avoid-set for the one
+    # client who answered "None", and `_product_clashes_with` substring-matches
+    # both directions — so a screened-negative client would have had products
+    # rejected for containing "none".
+    _, allergens = resolve_allergies(client)
+    out.update(a.strip().lower() for a in allergens if a.strip())
+    for field in ("foods_to_avoid", "reported_triggers"):
         val = client.get(field) or []
         if isinstance(val, str):
             val = [v.strip() for v in val.split(",") if v.strip()]
@@ -4291,10 +4303,20 @@ def _top_of_mind_block(client: dict, plan: dict) -> str:
     # 🚨 Allergies — promoted from profile-only into TOP-OF-MIND with the same
     # NEVER framing as reported triggers. Anaphylactic risk doesn't get to
     # live in a footer the AI might gloss over.
-    allergies = client.get("known_allergies") or client.get("allergies") or []
-    if isinstance(allergies, list) and allergies:
+    #
+    # The old test was `if allergies:` on the raw list, which made a client
+    # holding the literal string "None" indistinguishable from a real allergen
+    # and emitted "Known ALLERGIES … None". Branch on the resolved status.
+    allergy_status, allergy_items = resolve_allergies(client)
+    if allergy_status == "declared":
         bullets.append(
-            f"- 🚨 Known ALLERGIES (NEVER suggest — anaphylactic / hypersensitivity risk): {', '.join(allergies)}"
+            f"- 🚨 Known ALLERGIES (NEVER suggest — anaphylactic / hypersensitivity risk): {', '.join(allergy_items)}"
+        )
+    elif allergy_status == "unknown":
+        bullets.append(
+            "- ⚠ Allergies NOT RECORDED — this client has never been asked. Do not "
+            "write as though they are allergy-free; prefer common, low-allergen "
+            "staples and flag anything you would want confirmed."
         )
 
     conditions = client.get("active_conditions") or []
@@ -5199,7 +5221,7 @@ def _build_prompt_meal_plan(plan: dict, client: dict, weight_loss: dict | None, 
             pass
     sex = client.get("sex", "")
     conditions = client.get("active_conditions") or []
-    allergies = (client.get("known_allergies") or client.get("allergies") or [])
+    allergy_line = allergy_prompt_line(client)
 
     topics = plan.get("assessment", {}).get("focus_topics", [])
     symptoms = plan.get("assessment", {}).get("presenting_symptoms", [])
@@ -5292,7 +5314,7 @@ CLIENT PROFILE:
 - Foods they will NOT eat: {foods_to_avoid}
 - ⚠ REPORTED TRIGGERS (client experienced reactions — EXCLUDE from ALL meals): {reported_triggers}
 - Non-negotiables (won't give up): {non_negotiables}
-- Allergies: {', '.join(allergies) if allergies else 'none known'}
+- {allergy_line}
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
 {calorie_section}
 {portion_block}
@@ -5479,7 +5501,7 @@ def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) ->
     diet_pref = client.get("dietary_preference") or "Not specified"
     conditions = client.get("active_conditions") or []
     goals = client.get("goals") or []
-    allergies = (client.get("known_allergies") or client.get("allergies") or [])
+    allergy_line = allergy_prompt_line(client)
 
     age = None
     if client.get("date_of_birth"):
@@ -5555,7 +5577,7 @@ CLIENT PROFILE:
 - Name: {client_name} (address as {first_name})
 - Age: {age or 'not specified'}, Sex: {sex}
 - Dietary preference: {diet_pref}
-- Allergies: {', '.join(allergies) if allergies else 'none known'}
+- {allergy_line}
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
 - Goals: {', '.join(goals) if goals else 'not listed'}
 
@@ -6008,7 +6030,7 @@ def _build_prompt_meal_plan_phase(
             pass
     sex = client.get("sex", "")
     conditions = client.get("active_conditions") or []
-    allergies = client.get("known_allergies") or client.get("allergies") or []
+    allergy_line = allergy_prompt_line(client)
     nutrition = plan.get("nutrition") or {}
     nutrition_pattern = nutrition.get("pattern") or ""
     nutrition_add = nutrition.get("add") or []
@@ -6422,7 +6444,7 @@ CLIENT PROFILE:
 - Foods they will NOT eat: {foods_to_avoid}
 - ⚠ REPORTED TRIGGERS (EXCLUDE from ALL meals): {reported_triggers}
 - Non-negotiables: {non_negotiables}
-- Allergies: {', '.join(allergies) if allergies else 'none known'}
+- {allergy_line}
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
 {calorie_block}
 
@@ -6696,7 +6718,7 @@ def _build_prompt_inner(plan: dict, client: dict, weight_loss: dict | None = Non
     sex = client.get("sex", "")
     conditions = client.get("active_conditions") or []
     goals = client.get("goals") or []
-    allergies = (client.get("known_allergies") or client.get("allergies") or [])
+    allergy_line = allergy_prompt_line(client)
 
     # Plan sections
     topics = plan.get("assessment", {}).get("focus_topics", [])
@@ -7018,7 +7040,7 @@ CLIENT PROFILE:
 - Foods they will NOT eat: {foods_to_avoid}
 - ⚠ REPORTED TRIGGERS (client experienced reactions — EXCLUDE from ALL meals): {reported_triggers}
 - Non-negotiables (won't give up): {non_negotiables}
-- Allergies: {', '.join(allergies) if allergies else 'none known'}
+- {allergy_line}
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
 - Goals: {', '.join(goals) if goals else 'not listed'}
 {calorie_section}

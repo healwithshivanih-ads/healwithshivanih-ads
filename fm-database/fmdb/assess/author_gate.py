@@ -111,6 +111,18 @@ _ALLERGY_STOPWORDS = {
     "sensitivity", "sensitive", "reaction", "reactions", "drug", "drugs",
     "food", "foods", "medication", "medications", "mild", "moderate", "severe",
     "seasonal", "history", "reported", "the", "and", "with", "any",
+    # Provenance + symptom words. Real entries carry their evidence with them
+    # ("Brinjal (itchy tongue since childhood)", "Dairy (reported as an
+    # allergy — acne flare)"), and every word in that parenthetical was
+    # becoming an allergen to scan supplement names for. This check raises a
+    # HARD failure that refuses to save the assessment, so a false match is
+    # expensive and the noise words are worth naming.
+    "confirmed", "since", "childhood", "child", "kid", "adult", "slight",
+    "towards", "toward", "flare", "flares", "flared", "acne", "itchy",
+    "itching", "tongue", "skin", "eczema", "rash", "rashes", "hives",
+    "swelling", "bloating", "nausea", "cramps", "diarrhoea", "diarrhea",
+    "constipation", "headache", "migraine", "suspected", "possible",
+    "confirmed", "avoid", "avoids", "only", "small", "large", "amounts",
 }
 
 # 3+ chars so "no" / "to" never become allergens; hyphens kept so "tree-nut"
@@ -141,9 +153,13 @@ def _allergen_tokens(client: dict) -> set:
     register 'nut' as an allergen — the same false-positive class it was
     written for on the dietary side.
     """
+    from fmdb.plan.allergies import resolve_allergies
     from fmdb.plan.checker import _is_negated
 
-    raw = list(client.get("known_allergies") or []) + list(client.get("allergies") or [])
+    # Resolver, not the raw lists: "None" is a screened negative, not an
+    # allergen, and tokenising it produced the junk token "none" to scan
+    # supplement names for.
+    _, raw = resolve_allergies(client)
     tokens: set = set()
     for entry in raw:
         low = _norm(entry)
@@ -499,6 +515,23 @@ def _check_allergies(rep: GateReport, payload: dict, cat: Any, client: Optional[
     supps = payload.get("supplement_suggestions") or []
     if not supps:
         return
+
+    # An empty allergy list used to mean this check returned silently, and the
+    # assessment passed looking screened. On the live roster that was every
+    # client but one, so the HARD block below had never fired and could not.
+    # Say so instead: WARN, not HARD, because a missing screen is the coach's
+    # to close and must not block authoring an otherwise-sound assessment.
+    from fmdb.plan.allergies import resolve_allergies
+
+    status, _items = resolve_allergies(client)
+    if status == "unknown":
+        rep.warnings.append(GateFinding(
+            "WARN", "supplement_suggestions", "allergies_not_screened",
+            f"{len(supps)} supplement(s) suggested, but this client has no allergy "
+            "screen on record — the allergen check below could not run. Ask at the "
+            "next contact and record it (an explicit 'no known allergies' counts).",
+        ))
+
     tokens = _allergen_tokens(client)
     if not tokens:
         return

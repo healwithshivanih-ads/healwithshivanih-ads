@@ -30,6 +30,7 @@ import "server-only";
 import { loadClientAppData, type AppMeal } from "./client-app";
 import { loadClientById } from "./loader-extras";
 import { readChatPhoto } from "./chat-media";
+import { allergyPromptLine } from "./allergies";
 
 export type MealOutcome = "affirm" | "quiet" | "review" | "safety";
 
@@ -147,6 +148,8 @@ function systemPrompt(): string {
     "",
     "SAFETY IS THE PRIORITY. The client's exclusions are written in their coach's own words and may be rules rather than lists ('no red meat', 'gluten-free, Hashimoto's', 'only chicken and prawns at weekends'). Read them carefully. If the plate could contain anything excluded, or breaches their stated diet, set exclusion_risk true — err heavily toward true. A false alarm costs the coach ten seconds; a missed one costs a client a flare.",
     "",
+    "If the allergy line says NOT RECORDED, that means nobody has asked this client — it does NOT mean they have no allergies. Treat a common allergen on the plate (peanut, tree nut, shellfish, fish, egg, dairy, soy, wheat, sesame) as worth flagging in that case, even though no exclusion names it.",
+    "",
     "warm_line is read by the CLIENT. Warm, brief, specific to what you see. Never mention calories, grams, portions or weight. Never criticise, correct, advise or hedge. Never mention the plan being missed. If you have nothing kind and specific to say, leave it empty.",
   ].join("\n");
 }
@@ -245,9 +248,21 @@ export async function checkMealPhoto(
     // Exclusions go in VERBATIM. Summarising them is exactly where the
     // meaning of "only chicken and prawns at weekends" gets lost.
     const avoid = (client?.foods_to_avoid ?? "").trim();
-    const allergies = (client?.known_allergies ?? [])
-      .filter((a) => a && a.toLowerCase() !== "none")
-      .join(", ");
+    // Allergies are a THREE-state answer, not a list-or-nothing. This used to
+    // drop the "none" sentinel on the floor and omit the line entirely when
+    // the list was empty — so a client nobody had asked and a client who had
+    // answered "no allergies" produced byte-identical context, and both read
+    // to the model as cleared. Now the empty case says out loud that it is
+    // empty. See ./allergies.ts.
+    //
+    // An unrecorded allergy list does NOT suppress affirmation the way an
+    // unknown diet does. The check is menu-anchored: affirming says "this
+    // looks like the dish your plan lists today", not "this is safe for you"
+    // — and the plan was authored against `foods_to_avoid`, which is
+    // populated. Blocking here would silence the feature for the whole roster
+    // to buy a guarantee affirmation never made. Safety stays where it
+    // belongs, on exclusion_risk, which is now told the screen is missing.
+    const allergyLine = allergyPromptLine(client);
 
     let planned = "";
     try {
@@ -262,7 +277,7 @@ export async function checkMealPhoto(
     const context = [
       `Client's diet: ${diet === "unknown" ? "NOT RECORDED" : diet}`,
       avoid ? `Foods/rules they must avoid (their coach's own words):\n${avoid}` : "No avoid-list recorded.",
-      allergies ? `Allergies: ${allergies}` : "",
+      allergyLine,
       planned
         ? `Their plan for this meal today: ${planned}`
         : "There is no planned dish on record for this meal today — matches_planned must be false.",

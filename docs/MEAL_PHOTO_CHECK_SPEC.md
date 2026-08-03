@@ -36,6 +36,32 @@ no `app_menu` for that day, there is no affirmation — see §4.
 | `Client.foods_to_avoid` | **17 of 17** | free prose, written for a human |
 | `Client.dietary_preference` | 15 of 17 non-empty | free string, inconsistent |
 
+> **Updated 2026-08-03 — the allergy field is now a tri-state, and it is read.**
+> The audit behind this table stopped one step short. `known_allergies` was not
+> merely unused: every consumer, this checker included, read the empty list as
+> *"no allergies known"* — a negative nobody had established. The field is wired
+> end-to-end (the intake form asks, the submit handler merges); clients simply
+> skipped an optional chip box, and one client's real answer had been stranded
+> in the audit session by the reconcile coach-edit guard.
+>
+> `known_allergies` now resolves to three states via `lib/fmdb/allergies.ts`
+> (Python mirror `fmdb/plan/allergies.py`):
+>
+> | State | Meaning | What this checker sends the model |
+> |---|---|---|
+> | `declared` | real allergens | *"Allergies (ABSOLUTE — never suggest or serve these…)"* |
+> | `none` | asked, answered none | *"the client was asked and reported none"* |
+> | `unknown` | never asked | *"NOT RECORDED … absence here is not clearance"* |
+>
+> The line is **always** emitted. Previously it was omitted when the list was
+> empty, so an unscreened client and a screened-negative one produced
+> byte-identical context and both read as cleared. The intake form now carries
+> an explicit *"I have no known allergies"* tick box, so `none` is recordable
+> and a blank field can mean the one thing it should: not asked yet.
+>
+> An `unknown` screen does **not** suppress affirmation the way an unknown diet
+> does — see §3.3.
+
 Real `foods_to_avoid` values on the roster today:
 
 ```
@@ -149,6 +175,19 @@ client opened. It is never a hedge about the food.
 
 Runs on every photo, independent of the affirm decision, and reads `foods_to_avoid`,
 `dietary_preference` and `known_allergies` as prose alongside the image.
+
+`known_allergies` arrives as the resolved tri-state of §1.2, never as a raw list. When it
+is `unknown` the model is told so explicitly and instructed to flag a common allergen on
+the plate (peanut, tree nut, shellfish, fish, egg, dairy, soy, wheat, sesame) even though
+no exclusion names it — an unasked question is not a clean bill of health.
+
+**Why `unknown` does not block affirmation.** An unknown *diet* does, because affirming
+would assert something unverifiable about the plate itself. Allergies are different: the
+check is menu-anchored, so affirming says *"this looks like the dish your plan lists
+today"*, not *"this is safe for you"* — and that plan was authored against
+`foods_to_avoid`, which **is** populated. Blocking here would silence the feature for the
+entire roster to buy a guarantee affirmation never made. Safety stays on `exclusion_risk`,
+which now knows the screen is missing.
 
 It answers one question: **could this plate contain something this client has been told to
 avoid?** Any answer other than a confident no →

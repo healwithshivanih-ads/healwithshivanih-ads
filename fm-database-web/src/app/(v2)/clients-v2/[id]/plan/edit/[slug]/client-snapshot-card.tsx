@@ -10,6 +10,7 @@
  * room for the editor.
  */
 import { FmPanel } from "@/components/fm";
+import { resolveAllergies } from "@/lib/fmdb/allergies";
 
 interface LabValue {
   test_name?: string;
@@ -263,16 +264,30 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
               </div>
             </div>
           )}
-          {client.known_allergies && client.known_allergies.length > 0 && (
-            <div>
-              <div style={kvLabel()}>Allergies</div>
+          {/* Tri-state. This card is what the coach reads while authoring a
+              protocol, so an unscreened client has to say so — an omitted
+              row here reads as "no allergies" at exactly the wrong moment.
+              See lib/fmdb/allergies.ts. */}
+          {(() => {
+            const a = resolveAllergies(client);
+            if (a.status === "none") return null;
+            return (
               <div>
-                {client.known_allergies.map((c, i) => (
-                  <span key={i} style={chip(c, "warn")}>{c}</span>
-                ))}
+                <div style={kvLabel()}>Allergies</div>
+                <div>
+                  {a.status === "declared" ? (
+                    a.items.map((c, i) => (
+                      <span key={i} style={chip(c, "warn")}>{c}</span>
+                    ))
+                  ) : (
+                    <span style={{ fontStyle: "italic", opacity: 0.7 }}>
+                      not screened — never asked
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
           {client.goals && client.goals.length > 0 && (
             <div>
               <div style={kvLabel()}>Goals</div>

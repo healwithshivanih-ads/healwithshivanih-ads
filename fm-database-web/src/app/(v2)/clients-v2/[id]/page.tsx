@@ -121,6 +121,7 @@ import { loadClientApiSpend } from "@/lib/server-actions/usage";
 import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
 import { CycleTrackingPanel } from "./cycle-tracking-panel";
 import { StageGate } from "./stage-gate";
+import { resolveAllergies } from "@/lib/fmdb/allergies";
 
 export const dynamic = "force-dynamic";
 
@@ -1222,7 +1223,12 @@ export default async function ClientV2Page({
 
   const conditionChips = (client.active_conditions ?? []).slice(0, 8);
   const medList = meds.slice(0, 8);
-  const allergyChips = (client.known_allergies ?? []).slice(0, 8);
+  // Tri-state — see lib/fmdb/allergies.ts. The "Allergies & flags" panel below
+  // used to hide itself whenever this was empty, which on the live roster was
+  // everyone: the absence of the panel read as "nothing to flag" when it
+  // actually meant "never asked".
+  const allergyState = resolveAllergies(client);
+  const allergyChips = allergyState.items.slice(0, 8);
 
   // API spend logged against this client (all-time) — surfaced as a header chip.
   const apiSpend = await loadClientApiSpend(client.client_id);
@@ -2260,7 +2266,11 @@ export default async function ClientV2Page({
                           client.pregnancy_status !== "not_applicable" &&
                           client.pregnancy_status !== "not_pregnant") ||
                         !!client.lactation_started;
-                      if (allergyChips.length === 0 && !showsContext) return null;
+                      // Only a client who was ASKED and said no can hide this
+                      // panel. Unknown gets a chip: the old test bailed on an
+                      // empty list, so "never asked" and "nothing to flag"
+                      // rendered identically — as nothing.
+                      if (allergyState.status === "none" && !showsContext) return null;
                       return (
                         <FmPanel title="Allergies & flags">
                           <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
@@ -2269,6 +2279,9 @@ export default async function ClientV2Page({
                                 {a}
                               </FmChip>
                             ))}
+                            {allergyState.status === "unknown" && (
+                              <FmChip tone="secondary">allergies not screened</FmChip>
+                            )}
                             {mthfrSummary && (
                               <FmChip tone="secondary">MTHFR {mthfrSummary}</FmChip>
                             )}
