@@ -12,6 +12,8 @@ status: blocked_on_source_text
 # access to /Users/..., and the file is not in Google Drive either (checked
 # 2026-08-03, both by title and by author).
 #
+# CHOSEN (coach, 2026-08-03): (a) — upload the PDF to Google Drive.
+#
 # TO UNBLOCK, either:
 #   (a) upload the PDF to Google Drive — the session has a working Drive
 #       connector and can read application/pdf directly. Simplest, no local
@@ -53,6 +55,13 @@ sections: []
 # ─── What this ingest is FOR (decided 2026-08-03, before any text was read) ───
 # Recorded now so the extraction pass has a target and doesn't just hoover up
 # 300 pages of a cookbook into a clinical catalogue.
+#
+# ORDER (coach, 2026-08-03): TECHNIQUE FIRST, then recipes.
+# Pass 1 is cooking_adjustments only — that is the genuine gap beside the five
+# existing Ayurvedic-framed grain/legume entries, and it is small enough for the
+# coach to review and redirect before any large recipe pass is committed to.
+# Pass 2 is a first tranche of recipes under the selection_rule below. Do not
+# start pass 2 until pass 1 has been reviewed.
 targets:
   cooking_adjustments:
     # The gap this book actually fills. Existing grain/legume adjustments are
