@@ -15,17 +15,32 @@ import { useEffect, useState } from "react";
 import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
 import { Icon } from "../ui";
 
-type State = "checking" | "on" | "off" | "asking" | "blocked" | "unsupported";
+type State =
+  | "checking"
+  | "on"
+  | "off"
+  | "asking"
+  | "blocked"
+  | "needs-install"   // Safari tab on iOS — the API does not exist here
+  | "unsupported";    // genuinely no push on this browser/OS
 
 export function NotificationSetting() {
   const [state, setState] = useState<State>("checking");
   const [devices, setDevices] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [note, setNote] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
+      // iOS exposes the Notification API ONLY to a PWA launched from the
+      // Home Screen. In a Safari tab it is simply absent — so "no button"
+      // must not read as "broken", it has to say what to do instead.
+      const standalone =
+        window.matchMedia?.("(display-mode: standalone)")?.matches ||
+        (window.navigator as { standalone?: boolean }).standalone === true;
+      const iOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
       if (typeof Notification === "undefined" || !("serviceWorker" in navigator)) {
-        return setState("unsupported");
+        return setState(iOS && !standalone ? "needs-install" : "unsupported");
       }
       try {
         const res = await fetch("/api/m/push", {
@@ -84,6 +99,27 @@ export function NotificationSetting() {
     }
   }
 
+  async function test() {
+    setError(null);
+    setNote("Sending…");
+    try {
+      const res = await fetch("/api/m/push", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "test" }),
+      });
+      const j = await res.json();
+      // "Sent" here means the push service accepted it, which is not the same
+      // as it appearing on screen — so the wording asks her to look rather
+      // than claiming success she can disprove by glancing at her phone.
+      setNote(j.ok ? "Sent — check your lock screen." : "");
+      if (!j.ok) setError(j.error ?? "Couldn't send.");
+    } catch {
+      setNote("");
+      setError("Couldn't reach the server.");
+    }
+  }
+
   async function disable() {
     try {
       const reg = await navigator.serviceWorker.getRegistration("/coach-app/sw.js");
@@ -107,10 +143,26 @@ export function NotificationSetting() {
         Notifications
       </div>
       <div className="m-card">
-        {state === "unsupported" ? (
+        {state === "needs-install" ? (
+          <>
+            <div style={{ fontSize: "var(--fm-text-md)", marginBottom: 6 }}>
+              Add the app to your Home Screen first
+            </div>
+            <p className="m-subtle" style={{ margin: 0, lineHeight: 1.6 }}>
+              iPhone only allows notifications from an app on the Home Screen —
+              not from a Safari tab, which is why there&apos;s no switch here.
+              <br />
+              <br />
+              Tap <strong>Share</strong> at the bottom of Safari, choose{" "}
+              <strong>Add to Home Screen</strong>, then open{" "}
+              <strong>Coach</strong> from your Home Screen and come back to this
+              page. The switch will be here.
+            </p>
+          </>
+        ) : state === "unsupported" ? (
           <span className="m-subtle">
-            This browser can&apos;t do notifications. Add the app to your home
-            screen and open it from there.
+            This browser doesn&apos;t support notifications. Open the app on
+            your phone instead.
           </span>
         ) : state === "blocked" ? (
           <span className="m-subtle">
@@ -137,9 +189,14 @@ export function NotificationSetting() {
                 : "Get a notification when a client messages you in their app."}
             </p>
             {state === "on" ? (
-              <button type="button" className="fm-btn" onClick={disable}>
-                Turn off on this device
-              </button>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button type="button" className="fm-btn primary" onClick={test}>
+                  Send a test
+                </button>
+                <button type="button" className="fm-btn" onClick={disable}>
+                  Turn off on this device
+                </button>
+              </div>
             ) : (
               <button
                 type="button"
@@ -151,6 +208,9 @@ export function NotificationSetting() {
                 Turn on
               </button>
             )}
+            {note ? (
+              <p className="m-subtle" style={{ marginTop: 8 }}>{note}</p>
+            ) : null}
             {error ? (
               <p className="m-subtle" style={{ marginTop: 8, color: "var(--fm-danger)" }}>
                 {error}
