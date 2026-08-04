@@ -146,6 +146,36 @@ def _pick_start_level(exercise: dict[str, Any], supported: bool) -> tuple[Option
     return str(levels[0].get("level")), "start at the easiest level"
 
 
+def _severity_of(caution: dict[str, Any]) -> str:
+    """The caution's severity as a plain string, whatever shape it arrives in.
+
+    THIS EXISTS BECAUSE THE OBVIOUS VERSION FAILED SILENTLY, IN THE UNSAFE
+    DIRECTION. `str(caution.get("severity"))` is correct for a dict read off
+    disk, where severity is the string "block". It is wrong for
+    `Exercise.model_dump()`, which hands back the ExerciseCautionSeverity ENUM —
+    and `str(ExerciseCautionSeverity.block)` is "ExerciseCautionSeverity.block",
+    which is not "block". The comparison fell through to the else branch and
+    every BLOCK was quietly demoted to a caution.
+
+    Measured when it was found: the entire 17-client roster reported 0 blocked,
+    across 4 clients that should have had blocks. Sudarshan's long-COVID matched
+    the PEM caution correctly and was then shown as "work in a pain-free range" —
+    for the one condition where NICE NG206 withdrew graded exercise therapy
+    because a fixed ladder can provoke a lasting relapse.
+
+    Both suites were green throughout. This one dumps with `mode="json"`, which
+    stringifies enums; the TS mirror only ever sees js-yaml strings. Neither took
+    the path a Python caller naturally writes.
+
+    So the normalisation lives HERE, at the single point severity is read, rather
+    than in a rule every caller has to remember. A safety screen must not depend
+    on the caller picking the right serialisation mode.
+    """
+    sev = caution.get("severity")
+    sev = getattr(sev, "value", sev)          # Enum -> its value; str -> unchanged
+    return str(sev or "caution").strip().lower()
+
+
 def screen_exercise(exercise: dict[str, Any], client: dict[str, Any]) -> ExerciseVerdict:
     """Screen ONE exercise against ONE client record."""
     blob, _asked = _blob(client, _SCREEN_FIELDS)
@@ -161,7 +191,7 @@ def screen_exercise(exercise: dict[str, Any], client: dict[str, Any]) -> Exercis
         terms = [c.get("condition", "")] + list(c.get("condition_aliases") or [])
         if not _any_term_matches(terms, blob):
             continue
-        sev = str(c.get("severity") or "caution")
+        sev = _severity_of(c)
         if sev == "block":
             blocked = True
             notes.append(ScreenNote("block", c.get("condition", ""), c.get("reason", "")))

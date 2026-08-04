@@ -205,6 +205,44 @@ def test_empty_client_record_screens_clean_without_crashing():
     assert all(v.verdict in ("clear", "watch") for v in ordered)
 
 
+# ── the serialisation trap ───────────────────────────────────────────────────
+# Everything above dumps with mode="json", which turns the severity enum into
+# the string "block". A plain .model_dump() does not — it hands back the enum —
+# and the screen used to compare it with str(), producing
+# "ExerciseCautionSeverity.block" != "block" and demoting EVERY block to a
+# caution. The whole roster read 0 blocked; the PEM client was shown a
+# progressive ladder as a caution. Both this suite and the TS parity suite were
+# green throughout, because neither took that path.
+#
+# So the two shapes are asserted to agree, on the case where the difference is
+# dangerous.
+ENUM_EXERCISES = [e.model_dump() for e in load_exercises(DATA)]
+
+
+def test_block_fires_whether_severity_is_an_enum_or_a_string():
+    for exercise in ENUM_EXERCISES:
+        if not any(
+            str(getattr(c.get("severity"), "value", c.get("severity"))) == "block"
+            for c in (exercise.get("cautions") or [])
+        ):
+            continue
+        json_shaped = next(e for e in EXERCISES if e["slug"] == exercise["slug"])
+        assert (
+            screen_exercise(exercise, PEM_CLIENT).verdict
+            == screen_exercise(json_shaped, PEM_CLIENT).verdict
+        ), f"{exercise['slug']} screens differently depending on how it was dumped"
+
+
+def test_pem_client_is_blocked_when_entries_arrive_as_enums():
+    ordered = screen_all(ENUM_EXERCISES, PEM_CLIENT)
+    blocked = [v.slug for v in ordered if v.verdict == "blocked"]
+    assert blocked, (
+        "no entry blocked for the PEM client on the plain model_dump() path — "
+        "this is the exact regression that made the whole roster read 0 blocked"
+    )
+    assert "chair-sit-to-stand" in blocked
+
+
 if __name__ == "__main__":
     passed = failed = 0
     for name, fn in sorted(globals().items()):
