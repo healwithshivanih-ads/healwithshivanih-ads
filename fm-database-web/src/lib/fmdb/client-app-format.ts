@@ -285,7 +285,27 @@ function resolveTiming(timing: string, dose: string, emptyStomach = false): Reso
   // filed under Morning — putting cl-013's iron next to the levothyroxine the note
   // exists to keep it 4 h away from. So try the leading clause first, then the
   // whole timing field, and only then widen to the dose prose.
-  for (const text of [leadingClause(timing), timing, `${timing} ${dose}`]) {
+  const head = headClause(timing);
+  const primary = stripBrackets(head);
+  // FIRST PASS — find a clause that actually NAMES a time of day.
+  //   · `primary` is the dose time proper: leading clause, brackets removed.
+  //   · `head` re-admits those brackets, and is consulted ONLY when nothing
+  //     outside them named a time. A bracket normally qualifies a dose rather
+  //     than stating one — "With dinner (… pair with bedtime magnesium)" names
+  //     ANOTHER bottle's time and must not move this one — but when the coach
+  //     writes "With main meals (lunch + dinner)" the bracket is the only place
+  //     the time appears, and ignoring it files an explicitly-timed dose under
+  //     the day's first meal (Archana's berberine, cl-007).
+  // The caveat tail after an em-dash / full stop / semicolon is never admitted
+  // by either: that is where separation rules name times to stay AWAY from.
+  for (const text of [primary, head]) {
+    if (!text.trim()) continue;
+    const r = resolveClause(text, emptyStomach);
+    if (r.namesTime) return r;
+  }
+  // SECOND PASS — nothing named a time, so accept a how-to-take-it qualifier
+  // ("with food"), and only then widen to the dose prose.
+  for (const text of [primary, timing, `${timing} ${dose}`]) {
     if (!text.trim()) continue;
     const r = resolveClause(text, emptyStomach);
     if (r.matched) return r;
@@ -297,11 +317,15 @@ function resolveTiming(timing: string, dose: string, emptyStomach = false): Reso
  *  full stop or semicolon. The coach's rationale lives after that boundary and
  *  names other times as reference points ("…4 hours after your morning Thyronorm"),
  *  which must not out-vote the dose time itself. */
-function leadingClause(timing: string): string {
-  const head = (timing || "").split(/\s+[—–-]\s+|[.;]/)[0] ?? "";
-  // Drop parentheticals: a bracket qualifies the dose, it never states a second
-  // one. "With dinner (… pair with bedtime magnesium)" is a dinner dose whose
-  // note happens to name another bottle's bedtime.
+function headClause(timing: string): string {
+  return (timing || "").split(/\s+[—–-]\s+|[.;]/)[0] ?? "";
+}
+
+/** …with parentheticals dropped. A bracket normally qualifies the dose rather
+ *  than stating it — "With dinner (… pair with bedtime magnesium)" is a dinner
+ *  dose whose note names another bottle's bedtime — so the bracket-free text is
+ *  what gets first refusal. See resolveTiming for when the brackets do speak. */
+function stripBrackets(head: string): string {
   return head.replace(/\([^)]*\)/g, " ");
 }
 
