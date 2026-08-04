@@ -144,6 +144,13 @@ _APP_CLIENT_KEYS = (
     "known_allergies",
     "medical_history",
     "measurements",
+    # The coach's "+ Log entry" time-series. `measurements` alone is ONE flat
+    # snapshot, so without this the app's Progress chart could only ever plot a
+    # single coach reading — every earlier weigh-in / BP the coach logged was
+    # invisible to the client. Her own self-logged rows arrive via
+    # health_snapshots (already staged), so the chart was showing half the
+    # story. Per-entry `notes` is a COACH note and is stripped below.
+    "measurements_log",
     "ayurveda_enabled",
     "mindbody_eft",  # mind-body drip coach override: auto | unlocked | locked
     "mindbody_sleep",
@@ -318,6 +325,16 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
             merged.pop("health_snapshots", None)
     else:
         merged.pop("health_snapshots", None)
+    # measurements_log: each entry may carry a coach `notes` string written from
+    # the dashboard's "+ Log entry" form ("BP taken after the stairs" etc.).
+    # The numbers are the client's own and belong in her chart; the note is a
+    # coach sticky and must not reach the public Fly box.
+    mlog = merged.get("measurements_log")
+    if isinstance(mlog, list):
+        merged["measurements_log"] = [
+            {k: v for k, v in e.items() if k != "notes"} if isinstance(e, dict) else e
+            for e in mlog
+        ]
     # weight_loss: strip coach-only text before it reaches the public Fly box.
     # notes_for_coach is explicitly "never sent to client"; each week_override's
     # `reason` is a coach sticky note (e.g. "work trip with client lunches").
@@ -448,6 +465,94 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
         )
     )
     return {"ok": True, **counts}
+
+
+"""Body-measurement keys a client can self-log from the app's Progress sheet.
+Snapshots use the canonical short BP keys (see lib/fmdb/measurements.ts)."""
+_SELF_LOG_KEYS = ("weight_kg", "waist_cm", "hip_cm", "bp_systolic", "bp_diastolic", "hr_bpm")
+
+
+def _mirror_self_logged_vitals(yaml, src: Path, dest: Path) -> int:
+    """Fold client-app-logged vitals from the staged client.yaml back into the
+    authoritative one. Returns 1 if `dest` changed, else 0.
+
+    Scope is deliberately narrow: ONLY `health_snapshots` rows carrying body
+    measurements or a mood score. Everything else in the staged file is a
+    projection of the Mac's own data and must not flow backwards — the staged
+    copy is trimmed (it drops `source`, medications, conditions), so a
+    wholesale merge would erode the authoritative record.
+
+    Merge rules, all chosen so this can only ever ADD information:
+      · match by date; a new date appends a fresh snapshot
+      · per key, only fill what the Mac does not already have — a coach
+        correction on the dashboard always outranks the app's copy of it
+      · lab_values are never touched (labs flow Mac → Fly, never back)
+    """
+    # A missing file or a half-written one mid-save is normal here (this runs
+    # every minute); bail quietly and pick it up next pass.
+    try:
+        staged = yaml.safe_load(src.read_text()) or {}
+    except Exception:
+        return 0
+    if not isinstance(staged, dict):
+        return 0
+    incoming = [s for s in (staged.get("health_snapshots") or []) if isinstance(s, dict)]
+    if not incoming:
+        return 0
+    try:
+        local = yaml.safe_load(dest.read_text()) or {}
+    except Exception:
+        return 0
+    if not isinstance(local, dict):
+        return 0
+
+    snaps = local.get("health_snapshots")
+    if not isinstance(snaps, list):
+        snaps = []
+    by_date = {s.get("date"): s for s in snaps if isinstance(s, dict) and s.get("date")}
+    changed = False
+
+    def _num(v):
+        return v if isinstance(v, (int, float)) and not isinstance(v, bool) and v > 0 else None
+
+    for row in incoming:
+        date = row.get("date")
+        if not date:
+            continue
+        rm = row.get("measurements") if isinstance(row.get("measurements"), dict) else {}
+        vitals = {k: _num(rm.get(k)) for k in _SELF_LOG_KEYS}
+        vitals = {k: v for k, v in vitals.items() if v is not None}
+        mood = _num(row.get("mood_score"))
+        if not vitals and mood is None:
+            continue  # a pure lab snapshot — Mac already owns it
+
+        target = by_date.get(date)
+        if target is None:
+            target = {"date": date, "source": "client_app"}
+            snaps.append(target)
+            by_date[date] = target
+            changed = True
+        tm = target.get("measurements")
+        if not isinstance(tm, dict):
+            tm = {}
+        for k, v in vitals.items():
+            if _num(tm.get(k)) is None:   # never overwrite a coach-entered value
+                tm[k] = v
+                changed = True
+        if tm:
+            target["measurements"] = tm
+        if mood is not None and _num(target.get("mood_score")) is None:
+            target["mood_score"] = mood
+            changed = True
+
+    if not changed:
+        return 0
+    snaps.sort(key=lambda s: str(s.get("date") or ""))
+    local["health_snapshots"] = snaps
+    tmp = dest.with_suffix(f".tmp-{os.getpid()}")
+    tmp.write_text(yaml.safe_dump(local, sort_keys=False, allow_unicode=True))
+    tmp.replace(dest)
+    return 1
 
 
 def _merge_jsonl(src: Path, dest: Path, key: "str | None") -> int:
@@ -762,6 +867,28 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                 )
             except Exception as e:
                 out["errors"].append(f"{client_id} practice-mirror: {e}")
+            # Self-logged vitals — weight / waist / hip / BP / mood the CLIENT
+            # taps into the app's Progress quick-log (save-app-body.py).
+            #
+            # These were being DESTROYED, not merely stranded. save-app-body.py
+            # writes them into client.yaml, but on Fly that is the *staged*
+            # client.yaml — and `_stage_one` below rebuilds that file from the
+            # Mac's allowlist on the very next refresh, i.e. within a minute.
+            # So a client logged her BP, saw it accepted, and sixty seconds
+            # later it existed nowhere: never mirrored to the coach, then
+            # overwritten on Fly. cl-009 has four health_snapshots and every
+            # one carries `measurements: None`.
+            #
+            # Runs BEFORE _stage_one in this same pass, which is the only
+            # window where the row still exists. Merge by date and never let a
+            # staged row drop a value the Mac already holds — the Mac stays
+            # authoritative; this rescues what only Fly ever saw.
+            try:
+                out["checkins_mirrored"] += _mirror_self_logged_vitals(
+                    yaml, sdir / "client.yaml", auth_person / "client.yaml"
+                )
+            except Exception as e:
+                out["errors"].append(f"{client_id} vitals-mirror: {e}")
 
         # plan revoked / superseded → purge the app artifacts from Fly
         if plan_slug and not _published_files(auth, plan_slug):
