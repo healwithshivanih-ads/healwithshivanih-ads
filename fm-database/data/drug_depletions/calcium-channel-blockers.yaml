@@ -1,0 +1,175 @@
+slug: calcium-channel-blockers
+drug_name: Calcium channel blockers
+drug_aliases:
+- calcium channel blocker
+- ccb
+- dihydropyridine
+# amlodipine + the Indian brands a client is most likely to name
+- amlodipine
+- amlodipine 5 mg
+- amrodip
+- amlodac
+- amlopres
+- amlong
+- amlovas
+- amcard
+- amtas
+- numlo
+- stamlo
+- asomex
+- s-amlodipine
+- amlokind
+# other dihydropyridines common in India
+- cilnidipine
+- cilacar
+- nifedipine
+- nicardia
+- depin
+- felodipine
+- lercanidipine
+- lerka
+# non-dihydropyridines (rate-limiting — different side-effect profile)
+- diltiazem
+- dilzem
+- angizem
+- verapamil
+- calaptin
+- isoptin
+# fixed-dose combinations
+- telma-am
+- losar-a
+- amlopres-at
+- amlopres-l
+drug_class: calcium_channel_blocker
+summary: >-
+  Block L-type calcium channels in vascular smooth muscle (and, for verapamil /
+  diltiazem, in cardiac conducting tissue) — the most-prescribed first-line
+  antihypertensive class in India. Amlodipine is the one a coach will meet most
+  often. NO established nutrient depletion, which sets this class apart from
+  thiazides, ACE inhibitors and beta-blockers: the coaching work here is about
+  side effects that get MISREAD as diet or lifestyle problems, and about not
+  applying potassium rules that belong to a different drug class.
+depletes: []
+condition_implications:
+- label: Hypertension
+  confidence: high
+  rationale: >-
+    A dihydropyridine calcium channel blocker (amlodipine, cilnidipine,
+    nifedipine) is prescribed for hypertension in the overwhelming majority of
+    cases in Indian practice. Treat the client as a diagnosed hypertensive even
+    if hypertension is absent from their stated condition list.
+  topic_slug: hypertension
+- label: Angina / coronary artery disease
+  confidence: low
+  rationale: >-
+    Also used for stable and vasospastic angina, and (verapamil / diltiazem) for
+    rate control in atrial fibrillation. Only infer this when the rest of the
+    picture supports it — a bare amlodipine is nearly always for blood pressure.
+  topic_slug: cardiovascular-disease
+protocol_cautions:
+- kind: prefer_food
+  item: Potassium-rich foods are SAFE on this class — coconut water, banana, sweet
+    potato, moringa/drumstick leaves, amaranth and other greens, ragi, curd, dals
+  severity: info
+  reason: >-
+    READ THIS BEFORE APPLYING ANY POTASSIUM RULE. Calcium channel blockers
+    neither retain nor waste potassium. The hyperkalaemia caution that governs
+    ACE inhibitors, ARBs and potassium-sparing diuretics does NOT apply here,
+    and the potassium-wasting caution that governs thiazides and loop diuretics
+    does not apply either. A potassium-forward diet is one of the better
+    non-drug levers on blood pressure and can be used freely alongside this
+    class at normal kidney function. Confirm which antihypertensive the client
+    is actually on before importing a rule from another class.
+- kind: monitor
+  item: Ankle and lower-leg swelling (peripheral oedema)
+  severity: warning
+  reason: >-
+    The signature dihydropyridine side effect — dose-dependent, common at 10 mg
+    and seen at 5 mg, caused by precapillary vasodilation rather than fluid
+    overload. It is routinely misread as salt intake, "water retention" or
+    kidney trouble, and chased with salt restriction or a diuretic that will not
+    fix it. If new or worsening ankle swelling appears after a start or a dose
+    increase, name the drug as the likely cause and send the client back to the
+    prescriber — do not treat it as a diet failure.
+- kind: avoid_food
+  item: Grapefruit and grapefruit juice (also pomelo, Seville/bitter orange)
+  severity: warning
+  reason: >-
+    Inhibits intestinal CYP3A4 and raises calcium-channel-blocker levels —
+    strongest for felodipine and nifedipine, smaller but real for amlodipine.
+    The result is exaggerated blood-pressure drop, flushing and light-headedness.
+    Uncommon in a typical Indian diet, so worth an explicit ask rather than an
+    assumption.
+- kind: monitor
+  item: Additive blood-pressure lowering from vasodilating foods and supplements —
+    beetroot / dietary nitrate, hawthorn, garlic, high-dose magnesium, arginine
+  severity: info
+  reason: >-
+    Generally DESIRABLE and not a reason to withhold any of them — the point of
+    the protocol is to lower blood pressure. But the combination can tip into
+    light-headedness, especially on standing. Brief the client that dizziness
+    means call the coach or prescriber, and never that they should stop the
+    medication on their own.
+- kind: monitor
+  item: Constipation
+  severity: info
+  reason: >-
+    Marked with verapamil, milder with diltiazem and amlodipine. Worth knowing
+    before attributing new constipation to a dietary change, an iron supplement
+    or hypothyroidism — all of which compete for the same explanation.
+- kind: monitor
+  item: Gum swelling / overgrowth (gingival hyperplasia)
+  severity: info
+  reason: >-
+    An uncommon but well-described dihydropyridine effect, and easily mistaken
+    for gum disease or a vitamin-C issue. Responds to meticulous oral hygiene;
+    persistent cases need a dental and prescriber review.
+- kind: refer
+  item: Blood pressure still at or above ~140/90 after 2-4 weeks of CONSISTENT dosing
+  severity: warning
+  reason: >-
+    Amlodipine reaches steady state only after roughly 7-8 days of daily dosing,
+    so intermittent use never delivers the drug's real effect and a reading
+    taken during it says nothing about whether the dose is adequate. Once the
+    client is genuinely taking it daily, a blood pressure that stays high is a
+    prescriber decision (uptitration or a second agent), not a coaching one.
+timing_separations: []
+contraindicated_supplements: []
+monitoring_labs:
+- BP sitting AND standing (orthostatic drop, especially alongside vasodilating foods)
+- Ankle / lower-leg oedema check at each contact
+- Renal function + eGFR (context for how hard to push potassium-rich foods)
+coach_notes: >-
+  The single most useful fact about this class is a NEGATIVE one: it has no
+  established nutrient depletion and no potassium rule. Coaches carry a general
+  "blood-pressure drug" heuristic borrowed from ACE inhibitors and thiazides —
+  watch potassium, watch magnesium — and it simply does not apply to
+  amlodipine. Confirm the actual drug before importing a caution.
+
+  Its long half-life (~35-50 h) makes amlodipine forgiving of the odd missed
+  dose, which is exactly why intermittent use goes unnoticed: the client feels
+  no different on the days they skip. That is worth naming with a client who
+  takes it "when the BP feels high" — the drug works by being continuously
+  present, and a reading taken during intermittent use is not a fair test of
+  the dose.
+
+  ⚠ Never suggest stopping or holding an antihypertensive. If a lifestyle
+  programme genuinely lowers blood pressure, that is a conversation for the
+  prescriber, with home readings as evidence.
+
+  Reassurance a client on this class often needs: a calcium SUPPLEMENT does not
+  block a "calcium channel blocker". The drug acts on voltage-gated channels in
+  vascular smooth muscle, not on dietary calcium. Someone on calcium for
+  osteoporosis can keep taking it.
+linked_to_topics:
+- hypertension
+- cardiovascular-disease
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Cardiovascular drug interactions — calcium channel blockers
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-08-04
+updated_by: Shivani

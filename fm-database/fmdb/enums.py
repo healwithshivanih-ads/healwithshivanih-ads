@@ -268,6 +268,7 @@ class DrugClass(str, Enum):
     beta_blocker = "beta_blocker"                 # metoprolol, propranolol, atenolol
     ace_inhibitor = "ace_inhibitor"               # enalapril, lisinopril, ramipril
     arb = "arb"                                   # losartan, telmisartan
+    calcium_channel_blocker = "calcium_channel_blocker"  # amlodipine, nifedipine, diltiazem, verapamil
     thiazide_diuretic = "thiazide_diuretic"       # HCTZ, indapamide
     loop_diuretic = "loop_diuretic"               # furosemide, torsemide
     ssri = "ssri"                                 # fluoxetine, sertraline, escitalopram
