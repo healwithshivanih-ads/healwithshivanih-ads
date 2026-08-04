@@ -85,17 +85,37 @@ export interface DiscoveryStageInput {
   hasRecommendedOrder: boolean;
   /** a lab order paid/booked/sample_collected (in flight, results not in). */
   hasActiveOrder: boolean;
-  /** labs uploaded for the client (health_snapshots / an order at results_in). */
+  /** labs on file for the client (health_snapshots / an order at results_in) —
+   *  from ANY route, including reports they already had done privately before
+   *  they ever opened the app. Only advances the stage once `intakeSubmitted`;
+   *  see resolveDiscoveryStage. */
   hasResults: boolean;
   /** discovery_call_date set — the coach has marked the discovery call done. */
   callDone: boolean;
 }
 
-/** Resolve the onboarding stage. `callDone` wins (post_call); otherwise progress
- *  from results → active order → recommended → intake → nothing. */
+/**
+ * Resolve the onboarding stage. `callDone` wins (post_call); otherwise progress
+ * from results → active order → recommended → intake → nothing.
+ *
+ * THE INTAKE IS A PRECONDITION FOR `awaiting_call`. Labs on file only mean
+ * "ready for the call" once the client's story is in. A client can arrive with
+ * lab reports they had done privately — the coach files those as a
+ * health_snapshot when she creates the record, before the client has ever opened
+ * the app — and those must NOT fast-forward them past the intake ask, which is
+ * the whole reason the app link was shared. Without this gate such a client lands
+ * on "your results are in, your call is next" and is never shown the intake CTA
+ * at all (real case: cl-024, created 2026-08-04 off a panel drawn 2026-07-15).
+ *
+ * Once the intake IS in, labs on file legitimately satisfy the labs step whatever
+ * route they came by — a client who brings recent panels needs no new order to
+ * reach the call. Do not re-derive this by dropping pre-existing snapshots from
+ * `hasResults`: that would strand them at `awaiting_recommendation` with no path
+ * to the map.
+ */
 export function resolveDiscoveryStage(i: DiscoveryStageInput): DiscoveryStage {
   if (i.callDone) return "post_call";
-  if (i.hasResults) return "awaiting_call";
+  if (i.hasResults && i.intakeSubmitted) return "awaiting_call";
   if (i.hasActiveOrder) return "awaiting_results";
   if (i.hasRecommendedOrder) return "book_labs";
   if (i.intakeSubmitted) return "awaiting_recommendation";

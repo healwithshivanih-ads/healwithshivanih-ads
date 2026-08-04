@@ -3301,6 +3301,10 @@ async function buildDiscoveryAppData(
   const hasActiveOrder = discoveryLabOrders.some(
     (o) => o.status === "paid" || o.status === "booked" || o.status === "sample_collected",
   );
+  // Labs on file from ANY route — including reports the client already had done
+  // privately, filed as a health_snapshot at record-creation time. Deliberately
+  // NOT filtered to coach-ordered results: resolveDiscoveryStage gates this on
+  // intakeSubmitted, so pre-existing labs can't skip the intake ask.
   const hasResults =
     snaps.length > 0 || discoveryLabOrders.some((o) => o.status === "results_in");
   const callDone = !!asYmd(client.discovery_call_date);
