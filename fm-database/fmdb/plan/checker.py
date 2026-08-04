@@ -24,6 +24,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from ..validator import Loaded, _resolve_index
+from .exercise_screen import screen_all as _screen_all
 from .models import Client, Plan, HypothesizedDriver
 
 
@@ -969,6 +970,78 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
     for hd in plan.hypothesized_drivers:
         _xref("assessment", "hypothesized_drivers.mechanism",
               hd.mechanism, mech_idx, "mechanism")
+
+    # ---------- Exercise sessions ----------
+    # Three separate failures, and they are not the same severity.
+    #
+    # An unknown slug is CRITICAL: the app resolves the exercise by slug to
+    # render its steps, so an unresolvable one is a blank card where a
+    # prescription should be.
+    #
+    # A level label that is not on the entry's own ladder is CRITICAL too, and
+    # this is the one hand-editing produces: the labels are the source's ("A".."D"
+    # on Otago, "1".."3" elsewhere), so a level copied between entries lands on
+    # a rung that does not exist and the client is shown no dose at all.
+    #
+    # An exercise the screen BLOCKS for this client is CRITICAL and the reason
+    # is spelled out. `gate_prescription` already drops these before the coach
+    # sees them, so reaching here means a hand-edit or a plan written before the
+    # entry gained that caution — which is exactly when nobody is looking.
+    ex_by_slug = {e.slug: e for e in getattr(catalogue, "exercises", []) or []}
+    _has_exercises = any(p.exercises for p in plan.lifestyle_practices)
+    _blocked_slugs: set[str] = set()
+    # Only screen when the plan actually prescribes movement. check_plan runs on
+    # every editor keystroke path; screening 32 entries for the majority of plans
+    # that carry none is pure cost.
+    if _has_exercises and client is not None and ex_by_slug:
+        _client_dict = client.model_dump() if hasattr(client, "model_dump") else dict(client)
+        _ex_dicts = [
+            e.model_dump() if hasattr(e, "model_dump") else dict(e)
+            for e in ex_by_slug.values()
+        ]
+        for _v in _screen_all(_ex_dicts, _client_dict):
+            if _v.verdict == "blocked":
+                _blocked_slugs.add(_v.slug)
+
+    for prac in plan.lifestyle_practices:
+        for pex in prac.exercises:
+            entry = ex_by_slug.get(pex.exercise)
+            if entry is None:
+                findings.append(Finding(
+                    "CRITICAL", "lifestyle_practices", "exercises.exercise",
+                    f"practice {prac.name!r} references unknown exercise {pex.exercise!r}",
+                    target=pex.exercise,
+                ))
+                continue
+
+            if pex.level:
+                labels = [lv.level for lv in (entry.levels or [])]
+                if not labels:
+                    findings.append(Finding(
+                        "CRITICAL", "lifestyle_practices", "exercises.level",
+                        (f"{entry.display_name} has no levels, but {prac.name!r} "
+                         f"prescribes level {pex.level!r}. A pacing entry never has "
+                         "levels by design — progression is the harm it exists to "
+                         "prevent."),
+                        target=pex.exercise,
+                    ))
+                elif pex.level not in labels:
+                    findings.append(Finding(
+                        "CRITICAL", "lifestyle_practices", "exercises.level",
+                        (f"{entry.display_name} has no level {pex.level!r} — its "
+                         f"ladder is {', '.join(labels)}. The client would be shown "
+                         "no dose."),
+                        target=pex.exercise,
+                    ))
+
+            if pex.exercise in _blocked_slugs:
+                findings.append(Finding(
+                    "CRITICAL", "lifestyle_practices", "exercises.exercise",
+                    (f"{entry.display_name} is BLOCKED for this client by the "
+                     f"suitability screen, but {prac.name!r} prescribes it. "
+                     "Remove it, or record why the block does not apply."),
+                    target=pex.exercise,
+                ))
 
     # ---------- Nutrition (CookingAdjustment + HomeRemedy slugs) ----------
     for slug in plan.nutrition.cooking_adjustments:

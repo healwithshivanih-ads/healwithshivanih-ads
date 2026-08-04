@@ -275,3 +275,75 @@ def summarise(verdicts: list[ExerciseVerdict]) -> dict[str, int]:
     for v in verdicts:
         counts[v.verdict] = counts.get(v.verdict, 0) + 1
     return counts
+
+
+@dataclass
+class GateResult:
+    """What survived the gate, and what did not."""
+    kept: list[dict[str, Any]] = field(default_factory=list)
+    dropped: list[tuple[str, str]] = field(default_factory=list)   # (slug, why)
+
+    @property
+    def dropped_slugs(self) -> list[str]:
+        return [s for s, _ in self.dropped]
+
+
+def gate_prescription(
+    proposed: Iterable[dict[str, Any]],
+    exercises: list[dict[str, Any]],
+    client: dict[str, Any],
+) -> GateResult:
+    """Drop anything the screen blocks BEFORE it reaches the coach.
+
+    WHY THIS IS A GATE AND NOT A PROMPT RULE. Supplements have no equivalent:
+    there the coach's `foods_to_avoid` is the one-way door, and the AI is asked
+    to respect it. Here the screen IS the safety surface, and asking a model to
+    respect it is asking it to re-derive the whole matcher from prose. It will
+    mostly succeed, which is the dangerous kind of failure — a PEM client shown
+    a progressive ladder because it read as gentle. So the screen runs after the
+    model, over the model's output, and `blocked` means the coach never sees it.
+
+    Everything softer passes through untouched. A `caution` is authored guidance
+    with a modification attached, and dropping it would throw away the entry the
+    coach most needs to read; a `watch` has no authored guidance at all and is
+    hers to interpret. Only `blocked` is absolute.
+
+    Also fills in `level` where the model left it empty, from the screen's own
+    `start_level` — which already knows that a client who should keep a hand on
+    something starts at the first rung naming support, not at rung one.
+
+    Unknown slugs are dropped too, and counted separately: a hallucinated
+    exercise cannot be screened, so it cannot be shown to be safe.
+    """
+    by_slug = {str(e.get("slug")): e for e in exercises if e.get("slug")}
+    verdicts = {v.slug: v for v in screen_all(exercises, client)}
+
+    out = GateResult()
+    seen: set[str] = set()
+    for item in proposed:
+        slug = str(item.get("exercise") or "").strip()
+        if not slug:
+            continue
+        if slug in seen:                       # the same movement twice is a bug, not a dose
+            out.dropped.append((slug, "listed more than once"))
+            continue
+        seen.add(slug)
+
+        if slug not in by_slug:
+            out.dropped.append((slug, "not in the catalogue"))
+            continue
+
+        verdict = verdicts.get(slug)
+        if verdict is None or verdict.verdict == "blocked":
+            why = "blocked by the screen"
+            if verdict is not None and verdict.notes:
+                why = f"blocked — {verdict.notes[0].detail}"
+            out.dropped.append((slug, why))
+            continue
+
+        kept = dict(item)
+        if not kept.get("level"):
+            kept["level"] = verdict.start_level
+        out.kept.append(kept)
+
+    return out
