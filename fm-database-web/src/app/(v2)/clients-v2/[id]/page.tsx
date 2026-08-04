@@ -66,6 +66,7 @@ import { DailyLogPanel } from "./daily-log-panel";
 import { loadDailyTicks } from "@/lib/fmdb/daily-ticks";
 import { MindbodyDripPanel } from "./mindbody-drip-panel";
 import { SomaticReadPanel } from "./somatic-read-panel";
+import { ExerciseSuitabilityPanel } from "./exercise-suitability-panel";
 import { ConditionStatusChips } from "@/components/client-widgets/condition-status-chips";
 import { loadMindbodyDrip } from "@/lib/fmdb/mindbody-status";
 import { EftThemesPanel } from "./eft-themes-panel";
@@ -1696,6 +1697,10 @@ export default async function ClientV2Page({
               <DailyLogPanel summary={dailyTicks} />
             </FmGroupedPanel>
           )}
+
+          <FmGroupedPanel id="overview.exercise" icon="🏃" title="Movement — what suits this client">
+            <ExerciseSuitabilityPanel client={client as unknown as Record<string, unknown>} />
+          </FmGroupedPanel>
 
           {mindbodySteps.length > 0 && (
             <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — practice journey">

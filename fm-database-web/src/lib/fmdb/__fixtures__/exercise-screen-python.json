@@ -1,0 +1,3290 @@
+{
+  "_note": "Captured from fmdb.plan.exercise_screen. Regenerate by hand; see module docstring.",
+  "exercise_count": 32,
+  "cases": {
+    "pem": [
+      {
+        "slug": "backwards-walking",
+        "display_name": "Backwards Walking",
+        "client_name": "Walking backwards",
+        "modality": "balance",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "chair-sit-to-stand",
+        "display_name": "Sit to Stand",
+        "client_name": "Standing up from a chair",
+        "modality": "balance",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "one-leg-stand",
+        "display_name": "One Leg Stand",
+        "client_name": "Standing on one leg",
+        "modality": "balance",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "sideways-walking",
+        "display_name": "Sideways Walking",
+        "client_name": "Walking sideways",
+        "modality": "balance",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "supported-knee-bends",
+        "display_name": "Knee Bends",
+        "client_name": "Small knee bends",
+        "modality": "balance",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "tandem-stance",
+        "display_name": "Tandem Stance (Heel-Toe Stand)",
+        "client_name": "Standing heel to toe",
+        "modality": "balance",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "walking-intervals",
+        "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
+        "client_name": "Brisk and easy walking",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: a fixed schedule of increasing intervals is precisely that, and pushing into breathlessness is the kind of exertion that provokes a delayed crash.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "walking-plan",
+        "display_name": "Walking Plan",
+        "client_name": "Your walking",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "stair-walking",
+        "display_name": "Stair Walking",
+        "client_name": "Practising the stairs",
+        "modality": "daily_activity",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "abdominal-crunch",
+        "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
+        "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry carries a fixed repetition ladder, which is the progression shape that can provoke a lasting relapse.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "bodyweight-squat",
+        "display_name": "Bodyweight Squat (Free Standing, No Chair)",
+        "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry is a fixed depth-and- repetition ladder, which is the shape of progression that can provoke a lasting relapse.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "floor-bridge",
+        "display_name": "Floor Bridge (Supine Hip Lift)",
+        "client_name": "Lifting your hips off the floor",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry carries a fixed repetition ladder, which is the progression shape that can provoke a lasting relapse \u2014 even though the movement itself is gentle.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "floor-dip",
+        "display_name": "Floor Dip (Reverse Triceps Dip)",
+        "client_name": "Dips from the floor",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: the fixed repetition-and-lever ladder in this entry is the shape of progression that can provoke a lasting relapse.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "forearm-plank",
+        "display_name": "Forearm Plank (Prone Isometric Hold)",
+        "client_name": "Holding a plank",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: the fixed hold-time ladder here is a progression schedule, and a sustained whole-body isometric is a heavy demand even though nothing appears to be moving.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "forward-lunge",
+        "display_name": "Forward Lunge (Split-Stance Step)",
+        "client_name": "Stepping lunges",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry is a fixed repetition ladder, the shape of progression that can provoke a lasting relapse.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "heel-raises",
+        "display_name": "Heel Raises (Ankle Plantarflexors)",
+        "client_name": "Rising onto your toes",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "calf",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "kneeling-press-up",
+        "display_name": "Kneeling Press Up (Box Press Up)",
+        "client_name": "Press-ups from your knees",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: a programme of fixed incremental increases can provoke a lasting relapse, and this entry is built as exactly that ladder.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "prone-back-extension",
+        "display_name": "Prone Back Extension (Dorsal Raise)",
+        "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry carries a fixed repetition ladder, which is the progression shape that can provoke a lasting relapse.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "seated-knee-extension",
+        "display_name": "Seated Knee Extension (Knee Extensor)",
+        "client_name": "Straightening the knee, sitting down",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "standard-press-up",
+        "display_name": "Standard Press Up (Full Prone Push)",
+        "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: fixed incremental progression can provoke a lasting relapse, and this is the hardest rung of exactly such a ladder.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "standing-hip-abduction",
+        "display_name": "Standing Hip Abduction (Hip Abductor)",
+        "client_name": "Lifting the leg out to the side",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "standing-knee-flexion",
+        "display_name": "Standing Knee Flexion (Knee Flexor)",
+        "client_name": "Bending the knee, standing",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "toe-raises",
+        "display_name": "Toe Raises (Ankle Dorsiflexors)",
+        "client_name": "Lifting your toes",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "wall-press-up",
+        "display_name": "Wall Press Up (Standing Incline Push)",
+        "client_name": "Pushing away from the wall",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: a programme of fixed incremental increases can provoke a lasting relapse. The repetition ladder in this entry is exactly that shape, however gentle the movement looks.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "wall-squat-hold",
+        "display_name": "Wall Squat Hold (Isometric Wall Sit)",
+        "client_name": "Sitting against the wall",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: the fixed hold-time ladder here is a progression schedule, and sustained isometric effort is a heavy demand despite looking like nothing is happening.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "neck-mobility",
+        "display_name": "Neck Mobility",
+        "client_name": "Gentle neck movements",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-mobility",
+        "display_name": "Ankle Mobility",
+        "client_name": "Ankle points and pulls",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "cool-down-stretch-sequence",
+        "display_name": "Cool Down and Held Stretch Sequence",
+        "client_name": "Winding down after moving",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "joint-mobilising-sequence",
+        "display_name": "Joint Mobilising and Pulse-Raise Sequence",
+        "client_name": "Warming up",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "standing-back-extension",
+        "display_name": "Standing Back Extension",
+        "client_name": "Gentle backward arch",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-trunk-rotation",
+        "display_name": "Standing Trunk Rotation",
+        "client_name": "Turning side to side",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "energy-envelope-pacing",
+        "display_name": "Energy-Envelope Pacing",
+        "client_name": "Staying inside your energy envelope",
+        "modality": "pacing",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      }
+    ],
+    "bone": [
+      {
+        "slug": "abdominal-crunch",
+        "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
+        "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "osteoporosis",
+            "detail": "Repeated forward bending of the loaded spine is the classic mechanism of vertebral compression fracture in fragile bone. This is not a tolerance question that can be modified around \u2014 it is the movement direction to avoid.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "backwards-walking",
+        "display_name": "Backwards Walking",
+        "client_name": "Walking backwards",
+        "modality": "balance",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "one-leg-stand",
+        "display_name": "One Leg Stand",
+        "client_name": "Standing on one leg",
+        "modality": "balance",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          },
+          {
+            "kind": "caution",
+            "label": "osteoporosis",
+            "detail": "Not the exercise itself but its failure mode: a fall from single-leg stance in someone with fragile bone is the injury the whole programme exists to prevent.",
+            "modification": "Keep a hand on a solid counter at every level, including the 30-second one. The balance benefit survives light fingertip support; a fractured wrist does not."
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "sideways-walking",
+        "display_name": "Sideways Walking",
+        "client_name": "Walking sideways",
+        "modality": "balance",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "supported-knee-bends",
+        "display_name": "Knee Bends",
+        "client_name": "Small knee bends",
+        "modality": "balance",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "tandem-stance",
+        "display_name": "Tandem Stance (Heel-Toe Stand)",
+        "client_name": "Standing heel to toe",
+        "modality": "balance",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "walking-intervals",
+        "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
+        "client_name": "Brisk and easy walking",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Interval work deliberately pushes the heart rate higher than steady walking does, which is the intensity band that needs clearance when there is cardiovascular disease.",
+            "modification": "Confirm medical clearance before the brisk blocks. Keep the brisk effort at \"can still speak in short sentences\" rather than breathless, and stop for chest tightness, unusual breathlessness or light-headedness."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "walking-plan",
+        "display_name": "Walking Plan",
+        "client_name": "Your walking",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "cardiovascular disease",
+            "detail": "The manual's stop rule: dizziness, chest pain or shortness of breath during exercise means stop and contact the doctor.",
+            "modification": "Keep to a pace that allows conversation (talk test); stop on any dizziness, chest pain or breathlessness and review with the doctor."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "stair-walking",
+        "display_name": "Stair Walking",
+        "client_name": "Practising the stairs",
+        "modality": "daily_activity",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "joint-mobilising-sequence",
+        "display_name": "Joint Mobilising and Pulse-Raise Sequence",
+        "client_name": "Warming up",
+        "modality": "flexibility",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoporosis",
+            "detail": "The side bend and the trunk turn take the spine towards its end range in bending and rotation. Unloaded and small they are low risk, but end-range flexion is still the direction to respect in fragile bone.",
+            "modification": "Keep the side bend and the turn small and slow \u2014 a quarter of the available range, not the end of it \u2014 or leave both out and keep the wrist, shoulder, ankle and hip circles, which is most of the warm-up anyway."
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "bodyweight-squat",
+        "display_name": "Bodyweight Squat (Free Standing, No Chair)",
+        "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Large-muscle resistance work raises blood pressure transiently, and rising hard from the bottom invites a held breath.",
+            "modification": "Breathe out on the way up. Stand up smoothly rather than straining, and stop for dizziness or head pressure on standing."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "floor-dip",
+        "display_name": "Floor Dip (Reverse Triceps Dip)",
+        "client_name": "Dips from the floor",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Resistance work raises blood pressure transiently and hard repetitions invite breath holding.",
+            "modification": "Breathe out on the push up and stop the set while it is still comfortable."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "forearm-plank",
+        "display_name": "Forearm Plank (Prone Isometric Hold)",
+        "client_name": "Holding a plank",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "hypertension",
+            "detail": "A whole-body isometric hold drives a pressor response for as long as it lasts, and holding the breath against it raises blood pressure sharply. The same warning that applies to the wall squat applies here.",
+            "modification": "Keep holds to 20 seconds, breathe audibly throughout so the breath cannot be held, and rest fully between them. Do not prescribe while blood pressure is uncontrolled or unmeasured."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "forward-lunge",
+        "display_name": "Forward Lunge (Split-Stance Step)",
+        "client_name": "Stepping lunges",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "The narrow split stance with the weight travelling forwards is the least stable strength movement in this catalogue, and it is done standing.",
+            "modification": "Keep a hand on a solid counter for every repetition until the movement is confident; never use a chair that can slide. Do not prescribe unsupported until standing balance has been confirmed."
+          },
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Large-muscle work raises blood pressure transiently, and repeatedly standing up from a low position can provoke a light head.",
+            "modification": "Breathe out on the way up, come up smoothly, and stop for dizziness rather than pushing through it."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "heel-raises",
+        "display_name": "Heel Raises (Ankle Plantarflexors)",
+        "client_name": "Rising onto your toes",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "C",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "kneeling-press-up",
+        "display_name": "Kneeling Press Up (Box Press Up)",
+        "client_name": "Press-ups from your knees",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Resistance work raises blood pressure transiently, and straining against a hard repetition with a held breath raises it sharply.",
+            "modification": "Breathe out on the push. Stop the set while it is still comfortable rather than grinding out a last repetition, and stop for head pressure or dizziness."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standard-press-up",
+        "display_name": "Standard Press Up (Full Prone Push)",
+        "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Near-maximal repetitions are commonly done with a held breath, which produces a sharp transient rise in blood pressure.",
+            "modification": "Breathe out on every push and stop the set two repetitions before failure. Do not prescribe this until blood pressure is known to be managed."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-hip-abduction",
+        "display_name": "Standing Hip Abduction (Hip Abductor)",
+        "client_name": "Lifting the leg out to the side",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-knee-flexion",
+        "display_name": "Standing Knee Flexion (Knee Flexor)",
+        "client_name": "Bending the knee, standing",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "toe-raises",
+        "display_name": "Toe Raises (Ankle Dorsiflexors)",
+        "client_name": "Lifting your toes",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "history of falls",
+            "detail": "Unsupported balance work is the point of the exercise and also its risk; the manual requires confirming the person can recover balance with lower-limb strategies before prescribing any unsupported level.",
+            "modification": "Stay at the supported level until recovery strategies are confirmed. Work beside a solid bench or kitchen counter, never a chair that slides."
+          }
+        ],
+        "start_level": "C",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "wall-press-up",
+        "display_name": "Wall Press Up (Standing Incline Push)",
+        "client_name": "Pushing away from the wall",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Any resistance work raises blood pressure transiently, and breath-holding against effort raises it sharply.",
+            "modification": "Breathe out on the push and in on the lower; never hold the breath. Stop for head pressure, throbbing or dizziness. Confirm blood pressure is being managed before adding the second set."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "wall-squat-hold",
+        "display_name": "Wall Squat Hold (Isometric Wall Sit)",
+        "client_name": "Sitting against the wall",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "hypertension",
+            "detail": "Sustained isometric contraction drives a pressor response \u2014 blood pressure climbs for as long as the hold lasts, and climbs much higher if the breath is held against it. This book states plainly that isometric exercises should be avoided by anyone with high blood pressure.",
+            "modification": "Keep holds to 15-20 seconds, breathe out audibly throughout so the breath cannot be held, and rest fully between holds. Do not prescribe at all while blood pressure is uncontrolled or unmeasured, or in pregnancy with raised blood pressure \u2014 use bodyweight-squat repetitions instead, which do not sustain the contraction."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "neck-mobility",
+        "display_name": "Neck Mobility",
+        "client_name": "Gentle neck movements",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-trunk-rotation",
+        "display_name": "Standing Trunk Rotation",
+        "client_name": "Turning side to side",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "mid back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "prone-back-extension",
+        "display_name": "Prone Back Extension (Dorsal Raise)",
+        "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-sit-to-stand",
+        "display_name": "Sit to Stand",
+        "client_name": "Standing up from a chair",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-mobility",
+        "display_name": "Ankle Mobility",
+        "client_name": "Ankle points and pulls",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "cool-down-stretch-sequence",
+        "display_name": "Cool Down and Held Stretch Sequence",
+        "client_name": "Winding down after moving",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "standing-back-extension",
+        "display_name": "Standing Back Extension",
+        "client_name": "Gentle backward arch",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "energy-envelope-pacing",
+        "display_name": "Energy-Envelope Pacing",
+        "client_name": "Staying inside your energy envelope",
+        "modality": "pacing",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "floor-bridge",
+        "display_name": "Floor Bridge (Supine Hip Lift)",
+        "client_name": "Lifting your hips off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "seated-knee-extension",
+        "display_name": "Seated Knee Extension (Knee Extensor)",
+        "client_name": "Straightening the knee, sitting down",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      }
+    ],
+    "elder": [
+      {
+        "slug": "backwards-walking",
+        "display_name": "Backwards Walking",
+        "client_name": "Walking backwards",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 3/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "chair-sit-to-stand",
+        "display_name": "Sit to Stand",
+        "client_name": "Standing up from a chair",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "one-leg-stand",
+        "display_name": "One Leg Stand",
+        "client_name": "Standing on one leg",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 3/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "sideways-walking",
+        "display_name": "Sideways Walking",
+        "client_name": "Walking sideways",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "supported-knee-bends",
+        "display_name": "Knee Bends",
+        "client_name": "Small knee bends",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "tandem-stance",
+        "display_name": "Tandem Stance (Heel-Toe Stand)",
+        "client_name": "Standing heel to toe",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 3/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "stair-walking",
+        "display_name": "Stair Walking",
+        "client_name": "Practising the stairs",
+        "modality": "daily_activity",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "neck-mobility",
+        "display_name": "Neck Mobility",
+        "client_name": "Gentle neck movements",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-back-extension",
+        "display_name": "Standing Back Extension",
+        "client_name": "Gentle backward arch",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-trunk-rotation",
+        "display_name": "Standing Trunk Rotation",
+        "client_name": "Turning side to side",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "abdominal-crunch",
+        "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
+        "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back, neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "bodyweight-squat",
+        "display_name": "Bodyweight Squat (Free Standing, No Chair)",
+        "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-bridge",
+        "display_name": "Floor Bridge (Supine Hip Lift)",
+        "client_name": "Lifting your hips off the floor",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forearm-plank",
+        "display_name": "Forearm Plank (Prone Isometric Hold)",
+        "client_name": "Holding a plank",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forward-lunge",
+        "display_name": "Forward Lunge (Split-Stance Step)",
+        "client_name": "Stepping lunges",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "heel-raises",
+        "display_name": "Heel Raises (Ankle Plantarflexors)",
+        "client_name": "Rising onto your toes",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "C",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "prone-back-extension",
+        "display_name": "Prone Back Extension (Dorsal Raise)",
+        "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back, neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-abduction",
+        "display_name": "Standing Hip Abduction (Hip Abductor)",
+        "client_name": "Lifting the leg out to the side",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-knee-flexion",
+        "display_name": "Standing Knee Flexion (Knee Flexor)",
+        "client_name": "Bending the knee, standing",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "toe-raises",
+        "display_name": "Toe Raises (Ankle Dorsiflexors)",
+        "client_name": "Lifting your toes",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "C",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "walking-intervals",
+        "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
+        "client_name": "Brisk and easy walking",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "walking-plan",
+        "display_name": "Walking Plan",
+        "client_name": "Your walking",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-mobility",
+        "display_name": "Ankle Mobility",
+        "client_name": "Ankle points and pulls",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "cool-down-stretch-sequence",
+        "display_name": "Cool Down and Held Stretch Sequence",
+        "client_name": "Winding down after moving",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "joint-mobilising-sequence",
+        "display_name": "Joint Mobilising and Pulse-Raise Sequence",
+        "client_name": "Warming up",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "energy-envelope-pacing",
+        "display_name": "Energy-Envelope Pacing",
+        "client_name": "Staying inside your energy envelope",
+        "modality": "pacing",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "floor-dip",
+        "display_name": "Floor Dip (Reverse Triceps Dip)",
+        "client_name": "Dips from the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "kneeling-press-up",
+        "display_name": "Kneeling Press Up (Box Press Up)",
+        "client_name": "Press-ups from your knees",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "seated-knee-extension",
+        "display_name": "Seated Knee Extension (Knee Extensor)",
+        "client_name": "Straightening the knee, sitting down",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standard-press-up",
+        "display_name": "Standard Press Up (Full Prone Push)",
+        "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-press-up",
+        "display_name": "Wall Press Up (Standing Incline Push)",
+        "client_name": "Pushing away from the wall",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-squat-hold",
+        "display_name": "Wall Squat Hold (Isometric Wall Sit)",
+        "client_name": "Sitting against the wall",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      }
+    ],
+    "pain_heavy": [
+      {
+        "slug": "backwards-walking",
+        "display_name": "Backwards Walking",
+        "client_name": "Walking backwards",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-sit-to-stand",
+        "display_name": "Sit to Stand",
+        "client_name": "Standing up from a chair",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "one-leg-stand",
+        "display_name": "One Leg Stand",
+        "client_name": "Standing on one leg",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sideways-walking",
+        "display_name": "Sideways Walking",
+        "client_name": "Walking sideways",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "supported-knee-bends",
+        "display_name": "Knee Bends",
+        "client_name": "Small knee bends",
+        "modality": "balance",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "walking-intervals",
+        "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
+        "client_name": "Brisk and easy walking",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "walking-plan",
+        "display_name": "Walking Plan",
+        "client_name": "Your walking",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "stair-walking",
+        "display_name": "Stair Walking",
+        "client_name": "Practising the stairs",
+        "modality": "daily_activity",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-back-extension",
+        "display_name": "Standing Back Extension",
+        "client_name": "Gentle backward arch",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-trunk-rotation",
+        "display_name": "Standing Trunk Rotation",
+        "client_name": "Turning side to side",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "abdominal-crunch",
+        "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
+        "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "bodyweight-squat",
+        "display_name": "Bodyweight Squat (Free Standing, No Chair)",
+        "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee, lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-bridge",
+        "display_name": "Floor Bridge (Supine Hip Lift)",
+        "client_name": "Lifting your hips off the floor",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee, lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-dip",
+        "display_name": "Floor Dip (Reverse Triceps Dip)",
+        "client_name": "Dips from the floor",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forearm-plank",
+        "display_name": "Forearm Plank (Prone Isometric Hold)",
+        "client_name": "Holding a plank",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forward-lunge",
+        "display_name": "Forward Lunge (Split-Stance Step)",
+        "client_name": "Stepping lunges",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "kneeling-press-up",
+        "display_name": "Kneeling Press Up (Box Press Up)",
+        "client_name": "Press-ups from your knees",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "prone-back-extension",
+        "display_name": "Prone Back Extension (Dorsal Raise)",
+        "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "seated-knee-extension",
+        "display_name": "Seated Knee Extension (Knee Extensor)",
+        "client_name": "Straightening the knee, sitting down",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standard-press-up",
+        "display_name": "Standard Press Up (Full Prone Push)",
+        "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-abduction",
+        "display_name": "Standing Hip Abduction (Hip Abductor)",
+        "client_name": "Lifting the leg out to the side",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-knee-flexion",
+        "display_name": "Standing Knee Flexion (Knee Flexor)",
+        "client_name": "Bending the knee, standing",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-press-up",
+        "display_name": "Wall Press Up (Standing Incline Push)",
+        "client_name": "Pushing away from the wall",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-squat-hold",
+        "display_name": "Wall Squat Hold (Isometric Wall Sit)",
+        "client_name": "Sitting against the wall",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "tandem-stance",
+        "display_name": "Tandem Stance (Heel-Toe Stand)",
+        "client_name": "Standing heel to toe",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-mobility",
+        "display_name": "Ankle Mobility",
+        "client_name": "Ankle points and pulls",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "cool-down-stretch-sequence",
+        "display_name": "Cool Down and Held Stretch Sequence",
+        "client_name": "Winding down after moving",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "joint-mobilising-sequence",
+        "display_name": "Joint Mobilising and Pulse-Raise Sequence",
+        "client_name": "Warming up",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "neck-mobility",
+        "display_name": "Neck Mobility",
+        "client_name": "Gentle neck movements",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "energy-envelope-pacing",
+        "display_name": "Energy-Envelope Pacing",
+        "client_name": "Staying inside your energy envelope",
+        "modality": "pacing",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "heel-raises",
+        "display_name": "Heel Raises (Ankle Plantarflexors)",
+        "client_name": "Rising onto your toes",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "C",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "toe-raises",
+        "display_name": "Toe Raises (Ankle Dorsiflexors)",
+        "client_name": "Lifting your toes",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "C",
+        "start_reason": "start at the easiest level"
+      }
+    ],
+    "negated": [
+      {
+        "slug": "backwards-walking",
+        "display_name": "Backwards Walking",
+        "client_name": "Walking backwards",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-sit-to-stand",
+        "display_name": "Sit to Stand",
+        "client_name": "Standing up from a chair",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "one-leg-stand",
+        "display_name": "One Leg Stand",
+        "client_name": "Standing on one leg",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sideways-walking",
+        "display_name": "Sideways Walking",
+        "client_name": "Walking sideways",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "supported-knee-bends",
+        "display_name": "Knee Bends",
+        "client_name": "Small knee bends",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "tandem-stance",
+        "display_name": "Tandem Stance (Heel-Toe Stand)",
+        "client_name": "Standing heel to toe",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "walking-intervals",
+        "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
+        "client_name": "Brisk and easy walking",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "walking-plan",
+        "display_name": "Walking Plan",
+        "client_name": "Your walking",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "stair-walking",
+        "display_name": "Stair Walking",
+        "client_name": "Practising the stairs",
+        "modality": "daily_activity",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-mobility",
+        "display_name": "Ankle Mobility",
+        "client_name": "Ankle points and pulls",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "cool-down-stretch-sequence",
+        "display_name": "Cool Down and Held Stretch Sequence",
+        "client_name": "Winding down after moving",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "joint-mobilising-sequence",
+        "display_name": "Joint Mobilising and Pulse-Raise Sequence",
+        "client_name": "Warming up",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "neck-mobility",
+        "display_name": "Neck Mobility",
+        "client_name": "Gentle neck movements",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-back-extension",
+        "display_name": "Standing Back Extension",
+        "client_name": "Gentle backward arch",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-trunk-rotation",
+        "display_name": "Standing Trunk Rotation",
+        "client_name": "Turning side to side",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "energy-envelope-pacing",
+        "display_name": "Energy-Envelope Pacing",
+        "client_name": "Staying inside your energy envelope",
+        "modality": "pacing",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "abdominal-crunch",
+        "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
+        "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "bodyweight-squat",
+        "display_name": "Bodyweight Squat (Free Standing, No Chair)",
+        "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-bridge",
+        "display_name": "Floor Bridge (Supine Hip Lift)",
+        "client_name": "Lifting your hips off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-dip",
+        "display_name": "Floor Dip (Reverse Triceps Dip)",
+        "client_name": "Dips from the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forearm-plank",
+        "display_name": "Forearm Plank (Prone Isometric Hold)",
+        "client_name": "Holding a plank",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forward-lunge",
+        "display_name": "Forward Lunge (Split-Stance Step)",
+        "client_name": "Stepping lunges",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "heel-raises",
+        "display_name": "Heel Raises (Ankle Plantarflexors)",
+        "client_name": "Rising onto your toes",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "C",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "kneeling-press-up",
+        "display_name": "Kneeling Press Up (Box Press Up)",
+        "client_name": "Press-ups from your knees",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "prone-back-extension",
+        "display_name": "Prone Back Extension (Dorsal Raise)",
+        "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "seated-knee-extension",
+        "display_name": "Seated Knee Extension (Knee Extensor)",
+        "client_name": "Straightening the knee, sitting down",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standard-press-up",
+        "display_name": "Standard Press Up (Full Prone Push)",
+        "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-abduction",
+        "display_name": "Standing Hip Abduction (Hip Abductor)",
+        "client_name": "Lifting the leg out to the side",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-knee-flexion",
+        "display_name": "Standing Knee Flexion (Knee Flexor)",
+        "client_name": "Bending the knee, standing",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "toe-raises",
+        "display_name": "Toe Raises (Ankle Dorsiflexors)",
+        "client_name": "Lifting your toes",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "C",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-press-up",
+        "display_name": "Wall Press Up (Standing Incline Push)",
+        "client_name": "Pushing away from the wall",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-squat-hold",
+        "display_name": "Wall Squat Hold (Isometric Wall Sit)",
+        "client_name": "Sitting against the wall",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      }
+    ],
+    "limitation_only_in_weight_loss": [
+      {
+        "slug": "chair-sit-to-stand",
+        "display_name": "Sit to Stand",
+        "client_name": "Standing up from a chair",
+        "modality": "balance",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          },
+          {
+            "kind": "caution",
+            "label": "knee osteoarthritis",
+            "detail": "Repeated loaded knee flexion is the movement most likely to flare an arthritic knee.",
+            "modification": "Raise the seat height (a cushion works) to reduce the depth, and keep within a pain-free range."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "supported-knee-bends",
+        "display_name": "Knee Bends",
+        "client_name": "Small knee bends",
+        "modality": "balance",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "walking-intervals",
+        "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
+        "client_name": "Brisk and easy walking",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Walking faster increases the load through the knee and hip with every step, and the total step count rises with the session length.",
+            "modification": "Lengthen the easy blocks rather than shortening the walk, keep to flat even ground, and check the shoes. Reduce the number of pairs if joints are sore the following day."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "walking-plan",
+        "display_name": "Walking Plan",
+        "client_name": "Your walking",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "stair-walking",
+        "display_name": "Stair Walking",
+        "client_name": "Practising the stairs",
+        "modality": "daily_activity",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          },
+          {
+            "kind": "caution",
+            "label": "knee osteoarthritis",
+            "detail": "Descending stairs loads the knee more than ascending.",
+            "modification": "Descend one step at a time leading with the same leg, holding the rail; reduce flights before reducing frequency."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-trunk-rotation",
+        "display_name": "Standing Trunk Rotation",
+        "client_name": "Turning side to side",
+        "modality": "flexibility",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "bodyweight-squat",
+        "display_name": "Bodyweight Squat (Free Standing, No Chair)",
+        "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Knee compression rises steeply with depth, and the bottom of a deep squat is where patellofemoral pain is usually provoked.",
+            "modification": "Reduce the DEPTH, not the frequency \u2014 stay in the range that is pain-free even if that is only a few centimetres, and build repetitions there before going lower."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "forward-lunge",
+        "display_name": "Forward Lunge (Split-Stance Step)",
+        "client_name": "Stepping lunges",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "A lunge puts most of the body weight through one knee at a bent angle, which is a substantially bigger single-knee load than a two-legged squat.",
+            "modification": "Shorten the depth first and the stride second, and keep the front knee stacked over the heel. If a painful knee cannot do a shallow lunge comfortably, stay on bodyweight-squat \u2014 this movement is not a required rung."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "heel-raises",
+        "display_name": "Heel Raises (Ankle Plantarflexors)",
+        "client_name": "Rising onto your toes",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "C",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "kneeling-press-up",
+        "display_name": "Kneeling Press Up (Box Press Up)",
+        "client_name": "Press-ups from your knees",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "The whole position rests body weight directly on the kneecaps against the floor.",
+            "modification": "Double the mat or kneel on a folded towel. If pressure on the kneecap still hurts, do not modify this \u2014 stay at the wall version, which loads no knee at all."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "seated-knee-extension",
+        "display_name": "Seated Knee Extension (Knee Extensor)",
+        "client_name": "Straightening the knee, sitting down",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-hip-abduction",
+        "display_name": "Standing Hip Abduction (Hip Abductor)",
+        "client_name": "Lifting the leg out to the side",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-knee-flexion",
+        "display_name": "Standing Knee Flexion (Knee Flexor)",
+        "client_name": "Bending the knee, standing",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "toe-raises",
+        "display_name": "Toe Raises (Ankle Dorsiflexors)",
+        "client_name": "Lifting your toes",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoarthritis",
+            "detail": "The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful conditions to work in a pain-free range.",
+            "modification": "Reduce range until the movement is pain-free rather than reducing frequency; stop if muscle pain does not settle afterwards."
+          }
+        ],
+        "start_level": "C",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "wall-squat-hold",
+        "display_name": "Wall Squat Hold (Isometric Wall Sit)",
+        "client_name": "Sitting against the wall",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "A sustained hold keeps the kneecap loaded continuously, which some painful knees tolerate better than repetitions and some tolerate far worse.",
+            "modification": "Hold higher up the wall so the knee bend is shallow. Shallow and pain-free beats deep and sore; depth can come later or not at all."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "backwards-walking",
+        "display_name": "Backwards Walking",
+        "client_name": "Walking backwards",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "one-leg-stand",
+        "display_name": "One Leg Stand",
+        "client_name": "Standing on one leg",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sideways-walking",
+        "display_name": "Sideways Walking",
+        "client_name": "Walking sideways",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "tandem-stance",
+        "display_name": "Tandem Stance (Heel-Toe Stand)",
+        "client_name": "Standing heel to toe",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-mobility",
+        "display_name": "Ankle Mobility",
+        "client_name": "Ankle points and pulls",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "cool-down-stretch-sequence",
+        "display_name": "Cool Down and Held Stretch Sequence",
+        "client_name": "Winding down after moving",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "joint-mobilising-sequence",
+        "display_name": "Joint Mobilising and Pulse-Raise Sequence",
+        "client_name": "Warming up",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "neck-mobility",
+        "display_name": "Neck Mobility",
+        "client_name": "Gentle neck movements",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-back-extension",
+        "display_name": "Standing Back Extension",
+        "client_name": "Gentle backward arch",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "energy-envelope-pacing",
+        "display_name": "Energy-Envelope Pacing",
+        "client_name": "Staying inside your energy envelope",
+        "modality": "pacing",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "abdominal-crunch",
+        "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
+        "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-bridge",
+        "display_name": "Floor Bridge (Supine Hip Lift)",
+        "client_name": "Lifting your hips off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-dip",
+        "display_name": "Floor Dip (Reverse Triceps Dip)",
+        "client_name": "Dips from the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forearm-plank",
+        "display_name": "Forearm Plank (Prone Isometric Hold)",
+        "client_name": "Holding a plank",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "prone-back-extension",
+        "display_name": "Prone Back Extension (Dorsal Raise)",
+        "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standard-press-up",
+        "display_name": "Standard Press Up (Full Prone Push)",
+        "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-press-up",
+        "display_name": "Wall Press Up (Standing Incline Push)",
+        "client_name": "Pushing away from the wall",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      }
+    ],
+    "empty": [
+      {
+        "slug": "backwards-walking",
+        "display_name": "Backwards Walking",
+        "client_name": "Walking backwards",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-sit-to-stand",
+        "display_name": "Sit to Stand",
+        "client_name": "Standing up from a chair",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "one-leg-stand",
+        "display_name": "One Leg Stand",
+        "client_name": "Standing on one leg",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sideways-walking",
+        "display_name": "Sideways Walking",
+        "client_name": "Walking sideways",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "B",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "supported-knee-bends",
+        "display_name": "Knee Bends",
+        "client_name": "Small knee bends",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "tandem-stance",
+        "display_name": "Tandem Stance (Heel-Toe Stand)",
+        "client_name": "Standing heel to toe",
+        "modality": "balance",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "walking-intervals",
+        "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
+        "client_name": "Brisk and easy walking",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "walking-plan",
+        "display_name": "Walking Plan",
+        "client_name": "Your walking",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "stair-walking",
+        "display_name": "Stair Walking",
+        "client_name": "Practising the stairs",
+        "modality": "daily_activity",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-mobility",
+        "display_name": "Ankle Mobility",
+        "client_name": "Ankle points and pulls",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "cool-down-stretch-sequence",
+        "display_name": "Cool Down and Held Stretch Sequence",
+        "client_name": "Winding down after moving",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "joint-mobilising-sequence",
+        "display_name": "Joint Mobilising and Pulse-Raise Sequence",
+        "client_name": "Warming up",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "neck-mobility",
+        "display_name": "Neck Mobility",
+        "client_name": "Gentle neck movements",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-back-extension",
+        "display_name": "Standing Back Extension",
+        "client_name": "Gentle backward arch",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-trunk-rotation",
+        "display_name": "Standing Trunk Rotation",
+        "client_name": "Turning side to side",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "energy-envelope-pacing",
+        "display_name": "Energy-Envelope Pacing",
+        "client_name": "Staying inside your energy envelope",
+        "modality": "pacing",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "abdominal-crunch",
+        "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
+        "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "bodyweight-squat",
+        "display_name": "Bodyweight Squat (Free Standing, No Chair)",
+        "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-bridge",
+        "display_name": "Floor Bridge (Supine Hip Lift)",
+        "client_name": "Lifting your hips off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "floor-dip",
+        "display_name": "Floor Dip (Reverse Triceps Dip)",
+        "client_name": "Dips from the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forearm-plank",
+        "display_name": "Forearm Plank (Prone Isometric Hold)",
+        "client_name": "Holding a plank",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "forward-lunge",
+        "display_name": "Forward Lunge (Split-Stance Step)",
+        "client_name": "Stepping lunges",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "heel-raises",
+        "display_name": "Heel Raises (Ankle Plantarflexors)",
+        "client_name": "Rising onto your toes",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "C",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "kneeling-press-up",
+        "display_name": "Kneeling Press Up (Box Press Up)",
+        "client_name": "Press-ups from your knees",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "prone-back-extension",
+        "display_name": "Prone Back Extension (Dorsal Raise)",
+        "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "seated-knee-extension",
+        "display_name": "Seated Knee Extension (Knee Extensor)",
+        "client_name": "Straightening the knee, sitting down",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standard-press-up",
+        "display_name": "Standard Press Up (Full Prone Push)",
+        "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-abduction",
+        "display_name": "Standing Hip Abduction (Hip Abductor)",
+        "client_name": "Lifting the leg out to the side",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-knee-flexion",
+        "display_name": "Standing Knee Flexion (Knee Flexor)",
+        "client_name": "Bending the knee, standing",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "toe-raises",
+        "display_name": "Toe Raises (Ankle Dorsiflexors)",
+        "client_name": "Lifting your toes",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "C",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-press-up",
+        "display_name": "Wall Press Up (Standing Incline Push)",
+        "client_name": "Pushing away from the wall",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "wall-squat-hold",
+        "display_name": "Wall Squat Hold (Isometric Wall Sit)",
+        "client_name": "Sitting against the wall",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      }
+    ]
+  },
+  "clients": {
+    "pem": {
+      "age_band": "55-60",
+      "active_conditions": [
+        "Long-COVID (fatigue, brain fog)",
+        "Type 2 diabetes",
+        "NAFLD"
+      ],
+      "current_medications": [
+        "Pregabalin 75 mg",
+        "Nortriptyline 10 mg"
+      ],
+      "pain_locations": [
+        "neck_back",
+        "arm_left",
+        "hip_left",
+        "thigh_left",
+        "calf_left"
+      ]
+    },
+    "bone": {
+      "age_band": "60-65",
+      "active_conditions": [
+        "Osteoporosis",
+        "Hypertension",
+        "Insulin Resistance"
+      ],
+      "current_medications": [
+        "Teriparatide 750 mcg daily",
+        "Levothyroxine 50 mcg"
+      ],
+      "pain_locations": [
+        "neck_back",
+        "mid_back",
+        "sacrum",
+        "thigh_left",
+        "thigh_right"
+      ]
+    },
+    "elder": {
+      "age_band": "80-85",
+      "active_conditions": [
+        "Postmenopausal"
+      ],
+      "pain_locations": [
+        "head_back",
+        "pelvis",
+        "lower_back"
+      ]
+    },
+    "pain_heavy": {
+      "age_band": "45-50",
+      "active_conditions": [
+        "Anxiety",
+        "Depression / anxiety (on treatment)"
+      ],
+      "pain_locations": [
+        "head",
+        "face",
+        "upper_back",
+        "lower_back",
+        "scapula_right",
+        "scapula_left",
+        "arm_right",
+        "arm_left",
+        "shoulder_left",
+        "shoulder_right",
+        "hip_left",
+        "hip_right",
+        "buttock_left",
+        "buttock_right",
+        "knee_left",
+        "knee_right"
+      ]
+    },
+    "negated": {
+      "age_band": "45-50",
+      "active_conditions": [
+        "No history of falls",
+        "Denies any history of osteoporosis"
+      ],
+      "pain_locations": []
+    },
+    "limitation_only_in_weight_loss": {
+      "age_band": "45-50",
+      "active_conditions": [
+        "Perimenopause"
+      ],
+      "pain_locations": [],
+      "weight_loss": {
+        "enabled": true,
+        "pace": "moderate",
+        "exercise_current": "walks most days",
+        "exercise_limitations": "knee osteoarthritis, left"
+      }
+    },
+    "empty": {}
+  }
+}

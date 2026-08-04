@@ -168,6 +168,71 @@ export interface TissueSalt extends BaseEntity {
   notes_for_client?: string;
 }
 
+/** One rung of an exercise's own difficulty ladder (Otago-style levels A–D). */
+export interface ExerciseLevel {
+  level: string;
+  prescription: string;
+  reps?: number | null;
+  sets?: number | null;
+  hold_seconds?: number | null;
+  support?: string;
+  note?: string;
+}
+
+/**
+ * One condition-specific restriction on an exercise.
+ *
+ * `severity: "block"` is a hard bar, not a down-rank — unlike food cautions,
+ * which only ever nudge. `condition_aliases` carries the other words a client
+ * record might use for the same thing; matching on the canonical name alone
+ * silently fires for nobody.
+ */
+export interface ExerciseCaution {
+  condition: string;
+  condition_aliases?: string[];
+  severity: "block" | "caution";
+  reason: string;
+  modification?: string;
+}
+
+/**
+ * A capacity-building movement — strength, stamina, balance, bone, mobility.
+ *
+ * Distinct from a somatic practice, which is regulation work. Never render
+ * `display_name` to a client; use `client_name` with a `display_name` fallback.
+ */
+export interface Exercise extends BaseEntity {
+  client_name?: string;
+  modality?: string; // strength | flexibility | balance | cardiovascular | mind_body | daily_activity | pacing
+  intensity_tier?: string; // beginner | intermediate | advanced
+  position?: string;
+  equipment?: string[];
+  summary?: string;
+  why_it_works?: string;
+  setup?: string[];
+  steps?: string[];
+  levels?: ExerciseLevel[];
+  frequency?: string;
+  builds?: string[];
+  easier_variant?: string | null;
+  harder_variant?: string | null;
+  // Objective properties of the movement, so a screen can reason about a client
+  // the author never saw.
+  loads_spine?: boolean;
+  spinal_flexion?: boolean;
+  loaded_spinal_rotation?: boolean;
+  overhead?: boolean;
+  impact?: string; // none | low | moderate | high
+  balance_demand?: number; // 0–3, recorded at the entry's HARDEST level
+  requires_floor_transfer?: boolean;
+  joint_stress?: string[];
+  cautions?: ExerciseCaution[];
+  refer_out?: string[];
+  linked_to_topics?: string[];
+  linked_to_symptoms?: string[];
+  notes_for_coach?: string;
+}
+
 export interface ProtocolPhase {
   name: string;
   weeks?: number | null;
@@ -678,4 +743,5 @@ export type CatalogueKind =
   | "drug_depletions"
   | "titration_protocols"
   | "lab_tests"
-  | "lab_panels";
+  | "lab_panels"
+  | "exercises";
