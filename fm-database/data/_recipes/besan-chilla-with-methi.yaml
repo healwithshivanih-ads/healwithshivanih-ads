@@ -4,8 +4,6 @@ aliases:
 - Methi besan chilla
 - Besan methi chilla
 - Methi chilla
-- Besan cheela with methi
-- Besan-methi cheela
 meal_type:
 - breakfast
 - lunch
@@ -87,10 +85,10 @@ attribution:
 sources:
 - id: shivani-hari-original
   location: Besan chilla with methi
-version: 2
+version: 1
 kitchen_tested: false
 status: active
-updated_at: '2026-08-03'
+updated_at: '2026-08-02'
 updated_by: Shivani
 nutrients_per_serving:
   kcal: 321
