@@ -244,7 +244,11 @@ describe("gut-reset exemplar — menus, library, about", () => {
     const { loadLibraryRecipes } = await import("./client-app");
     const lib = await loadLibraryRecipes();
     const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
-    const titles = new Set(lib.map((l) => norm(l.recipe.title)));
+    // A dish can be written under a recipe's alias, not just its title —
+    // guided-app.ts's own resolver accepts both (see byTitle there), so this
+    // check has to mirror that or it flags an alias-written dish as missing
+    // when it actually resolves fine.
+    const titles = new Set(lib.flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])].map(norm)));
     const gut = getGuidedProtocol("gut-reset")!;
     const missing: string[] = [];
     for (const w of gut.sampleWeeks ?? [])
