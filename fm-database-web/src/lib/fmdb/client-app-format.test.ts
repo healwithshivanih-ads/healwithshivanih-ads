@@ -369,6 +369,39 @@ describe("timingSlot — the ONE parser every timing surface shares", () => {
     expect(slotOf("morning and/or bedtime")).toBe(1);
   });
 
+  it("reads the time out of a bracket when nothing outside one names it", () => {
+    // Archana's berberine (cl-007): "with main meals" says HOW, and the only
+    // statement of WHEN is inside the bracket. Ignoring it filed an explicitly
+    // twice-daily dose under the day's first meal.
+    expect(timingSlot("With main meals (lunch + dinner)")).toEqual({ slot: 3, matched: true, namesTime: true });
+    expect(timingRank("With main meals (lunch + dinner)", "", false, false)).toBe(40);
+    expect(timingSlot("Take with food (at bedtime)").slot).toBe(6);
+    // …and it still reports "no time named" when the bracket names none either.
+    expect(timingSlot("With a meal (any large one)").namesTime).toBe(false);
+  });
+
+  it("…but a bracket never MOVES a dose whose time is already stated", () => {
+    // The rule the bracket-stripping exists for: these brackets name another
+    // bottle's time, or a reason, and must not out-vote the stated dose time.
+    expect(timingRank("With dinner (evening dose to lower cortisol + pair with bedtime magnesium)", "", false, false)).toBe(60);
+    expect(slotOf("With dinner (keep clear of the morning levothyroxine)")).toBe(5);
+    expect(slotOf("Bedtime (with or after dinner)")).toBe(6);
+    expect(slotOf("with breakfast or lunch (with fat)")).toBe(1);
+    expect(slotOf("Once daily, with lunch (your largest fat-containing meal)")).toBe(3);
+    expect(slotOf("With breakfast (morning dosing preferred for cortisol support)")).toBe(1);
+  });
+
+  it("still refuses to read a time out of a separation caveat", () => {
+    // The caveat tail is admitted by neither pass — brackets got a second look,
+    // the post-dash rationale did not. "morning" here is the pill to stay away
+    // from, so this must stay an unnamed-time row, not become a morning one.
+    expect(timingSlot("Take with food — keep 4 h from your morning thyroid pill")).toEqual({
+      slot: 1,
+      matched: true,
+      namesTime: false,
+    });
+  });
+
   it("lets the TIMING field outrank a time word buried in the dose prose", () => {
     // cl-007's magnesium is timed "Bedtime, with a full glass of water" but its
     // dose is a titration instruction that happens to say "each morning". Read
