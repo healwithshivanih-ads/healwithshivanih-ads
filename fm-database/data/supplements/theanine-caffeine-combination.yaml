@@ -1,0 +1,121 @@
+slug: theanine-caffeine-combination
+display_name: L-Theanine + Caffeine (2:1 focus combination)
+category: amino_acid
+aliases:
+- sun-theanine-caffeine
+- theanine-caffeine
+- caffeine-theanine-stack
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 1
+    unit: capsules
+timing_options:
+- morning
+- with_breakfast
+- mid_morning
+take_with_food: optional
+notes_for_coach: >-
+  A FIXED COMBINATION of L-theanine with caffeine, conventionally at a 2:1 ratio
+  (200 mg theanine : 100 mg caffeine). Deliberately kept SEPARATE from the plain
+  `l-theanine` entry, because the two are not interchangeable and must never
+  resolve to the same product. Plain L-theanine is a calming, non-stimulant
+  amino acid used for stress, anxiety and sleep quality. This combination is a
+  STIMULANT nootropic aimed at focus, alertness and mental fatigue — the
+  theanine is there to smooth the caffeine, not the other way round.
+
+  The pairing is genuinely better evidenced than caffeine alone for sustained
+  attention, and theanine does attenuate caffeine's rise in blood pressure — so
+  the combination is gentler on BP than the same caffeine taken by itself. That
+  is an attenuation, not a cancellation: 100 mg of caffeine is still roughly a
+  cup of coffee, and it still lands.
+
+
+  RAISED BLOOD PRESSURE IS THE JUDGEMENT CALL. It is not in the
+  contraindication list — see the comment there — so nothing will stop you.
+  Take a reading first, and if you proceed, take a BASELINE before the first
+  capsule: caffeine confounds any later reading, and without an anchor a flat
+  result cannot be told apart from a drug that is not working. Caffeine-NAIVE
+  clients get a LARGER pressor response, not a smaller one, so "she doesn't
+  drink coffee" is a reason for more care, not less.
+
+  PRESCRIBE THIS BY NAME, never as a substitute for plain L-theanine. If a
+  client needs calm, sleep or anxiety support, use `l-theanine` — handing them
+  a caffeinated product for those indications works directly against the goal.
+
+  Ask about TOTAL daily caffeine before adding it. In an Indian context the
+  client is usually already drinking chai or coffee, and this stacks on top;
+  a morning chai plus one capsule is roughly 130-150 mg for the day, which is
+  moderate, but two coffees plus a capsule is not.
+
+  Caffeine-NAIVE clients get a LARGER blood-pressure response, not a smaller
+  one, so "she doesn't drink coffee" is a reason for more care, not less.
+
+  Take it in the MORNING only. Caffeine's half-life is ~5-6 hours, so an
+  afternoon dose reaches bedtime — and short sleep is often part of the very
+  brain fog being treated.
+# plan-check matches these by EXACT, case-insensitive equality against the
+# client's active_conditions / current_medications (checker.py ~1129) — a
+# descriptive sentence here would read well and gate nothing. Keep every entry a
+# BARE condition name so it actually fires; the reasoning lives in
+# notes_for_coach. A match on `conditions` raises CRITICAL, which blocks a draft
+# from being submitted, so this list is the set where the answer is genuinely
+# "not this product", not merely "take care".
+#
+# Hypertension is deliberately ABSENT. It is a caution, not a bar — 100 mg of
+# caffeine paired 2:1 with theanine is not disqualifying at raised BP, and
+# listing it would raise a permanent CRITICAL on every hypertensive client's
+# plan, which trains the coach to scroll past the one screen that should stop
+# her. It is called out in notes_for_coach and in the client's own
+# coach_rationale instead.
+contraindications:
+  conditions:
+  - insomnia
+  - anxiety
+  - panic disorder
+  - cardiac arrhythmia
+  - palpitations
+  medications:
+  - pseudoephedrine
+  life_stages:
+  - pregnancy
+  - lactation
+interactions:
+  with_medications:
+  - medication: pseudoephedrine
+    type: avoid_together
+    reason: Additive stimulant effect on heart rate and blood pressure.
+  - medication: ciprofloxacin
+    type: avoid_together
+    reason: >-
+      Fluoroquinolones inhibit CYP1A2 and slow caffeine clearance, raising
+      effective exposure from the same dose. Same applies to fluvoxamine.
+  - medication: adenosine
+    type: avoid_together
+    reason: >-
+      Caffeine antagonises adenosine — standard advice is to stop caffeine
+      ~24 h before a cardiac stress test or the test is invalidated.
+  with_foods:
+  - food_slug: iron-rich-foods
+    type: space_by_hours
+    hours: 2
+    reason: >-
+      Caffeine blocks non-haem iron absorption when taken with or near a meal —
+      a real consideration for an iron-deficient client, who should keep it
+      clear of iron-rich meals and any iron supplement.
+linked_to_topics:
+- cognitive-decline
+- hpa-axis-dysregulation
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — nootropic combinations
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-08-04
+updated_by: Shivani
