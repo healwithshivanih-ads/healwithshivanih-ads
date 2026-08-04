@@ -1,0 +1,104 @@
+slug: one-leg-stand
+display_name: One Leg Stand
+client_name: Standing on one leg
+modality: balance
+intensity_tier: intermediate
+position: standing
+summary: Single-leg standing balance, progressing from supported to 30 seconds unsupported.
+why_it_works: Every step spends time on one leg. Single-leg stance time is one of the more informative
+  simple predictors of balance capacity, and the catalogue's existing FM prescription matrix uses
+  20 seconds unsupported as its intermediate benchmark.
+setup:
+- Stand beside a stable counter, one hand resting on it.
+- Look straight ahead.
+steps:
+- Take one foot off the floor, just clear of the ground.
+- Hold, keeping the standing hip level rather than letting it drop.
+- Put the foot down before balance is genuinely lost — end the rep early rather than recovering from
+  a stumble.
+- Repeat on the other leg.
+levels:
+- level: B
+  prescription: Hold 10 seconds, holding support
+  hold_seconds: 10
+  support: one hand
+- level: C
+  prescription: Hold 10 seconds with no support
+  hold_seconds: 10
+  support: none
+- level: D
+  prescription: Hold 30 seconds with no support
+  hold_seconds: 30
+  support: none
+frequency: 3x/week.
+builds:
+- single-leg balance
+- hip stability
+joint_stress:
+- ankle_foot
+- hip
+balance_demand: 3
+impact: none
+easier_variant: tandem-stance
+cautions:
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+- condition: osteoporosis
+  condition_aliases:
+  - osteopenia
+  - low bone density
+  - low bone mass
+  - teriparatide
+  - bisphosphonate
+  - alendronate
+  - denosumab
+  severity: caution
+  reason: 'Not the exercise itself but its failure mode: a fall from single-leg stance in someone
+    with fragile bone is the injury the whole programme exists to prevent.'
+  modification: Keep a hand on a solid counter at every level, including the 30-second one. The balance
+    benefit survives light fingertip support; a fractured wrist does not.
+refer_out:
+- A physiotherapy balance assessment if unsupported single-leg stance is under a few seconds, or
+  if there is a history of unexplained falls.
+notes_for_coach: Highest balance demand in the tranche. For Manju (cl-016, 80-85) this stays at level
+  B indefinitely unless assessment says otherwise — the manual's own rule is to confirm the person
+  can recover balance using lower-limb strategies before removing support.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, balance retraining exercise 7 (one leg stand)
+- id: fm-exercise-prescription-matrix
+  location: Balance, intermediate tier — 20s unsupported benchmark
+- id: cdc-steadi-falls-assessment
+  location: 4-stage balance test, stage 4
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

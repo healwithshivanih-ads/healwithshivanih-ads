@@ -1,0 +1,159 @@
+slug: abdominal-crunch
+display_name: Abdominal Crunch (Loaded Spinal Flexion)
+client_name: Curl-ups
+aliases:
+- crunch
+- crunches
+- sit up
+- sit-ups
+- abdominal curl
+- curl up
+modality: strength
+intensity_tier: beginner
+position: lying_supine
+equipment:
+- a mat or folded blanket
+summary: The familiar curl-up. Trains the front of the abdomen — and is the entry in this catalogue
+  that bends the loaded spine, so it is blocked outright for low bone density.
+why_it_works: The rectus abdominis runs down the front of the abdomen and its job is to bend the
+  spine forwards; a crunch is that muscle doing its own action against gravity. It is here mostly
+  because clients ask for it by name, and a catalogue that stays silent about the commonest
+  abdominal exercise leaves the coach with nothing to point at when explaining why it is being
+  withheld.
+setup:
+- Lie on the back with the knees bent and both feet flat on the floor.
+- Rest the hands lightly beside the neck or crossed over the chest — never laced behind the head and
+  pulling.
+- Let the lower back settle into its natural position rather than flattening or arching it.
+steps:
+- Curl the head and shoulders a short way off the floor, leading with the chest rather than the chin.
+- Keep a gap the size of a fist between the chin and the chest so the neck is not cranked forwards.
+- Lower slowly back down under control.
+- Stop the set when the movement starts being done by the neck and arms instead of the abdomen.
+levels:
+- level: '1'
+  prescription: 8 curls, lifting only the shoulder blades clear
+  reps: 8
+  sets: 1
+  support: small range
+- level: '2'
+  prescription: 12 curls
+  reps: 12
+  sets: 1
+  support: small range
+- level: '3'
+  prescription: 15 curls, rest, then a second set
+  reps: 15
+  sets: 2
+  support: small range
+frequency: The book argues the core can be trained daily. 3-4x/week is enough and leaves room for
+  the rest of the plan.
+builds:
+- front-of-abdomen strength
+easier_variant: null
+harder_variant: null
+loads_spine: false
+spinal_flexion: true
+loaded_spinal_rotation: false
+joint_stress:
+- lower_back
+- neck
+- abdomen
+balance_demand: 0
+impact: none
+requires_floor_transfer: true
+cautions:
+- condition: osteoporosis
+  condition_aliases:
+  - osteopenia
+  - low bone density
+  - low bone mass
+  - vertebral fracture
+  - compression fracture
+  - spinal fracture
+  - fragility fracture
+  - t-score
+  - bone loss
+  severity: block
+  reason: Repeated forward bending of the loaded spine is the classic mechanism of vertebral
+    compression fracture in fragile bone. This is not a tolerance question that can be modified
+    around — it is the movement direction to avoid.
+  modification: ''
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry carries a fixed
+    repetition ladder, which is the progression shape that can provoke a lasting relapse.'
+  modification: ''
+- condition: disc herniation
+  condition_aliases:
+  - slipped disc
+  - prolapsed disc
+  - sciatica
+  - lumbar disc
+  - disc bulge
+  - low back pain
+  - back pain
+  severity: caution
+  reason: Repeated lumbar flexion raises pressure at the front of the disc, which is the direction
+    that provokes most disc-related back pain and sciatica.
+  modification: Use prone-back-extension instead, which trains the trunk in the opposite direction.
+    Stop at once for any pain, tingling or numbness travelling into the leg.
+- condition: pregnancy
+  condition_aliases:
+  - pregnant
+  - postpartum
+  - diastasis recti
+  - abdominal separation
+  - third trimester
+  severity: caution
+  reason: Curl-ups load a separating linea alba directly and are the movement most likely to worsen
+    an abdominal separation; lying flat on the back is also unsuitable later in pregnancy.
+  modification: Do not use during pregnancy or with a known abdominal separation. Refer for a
+    postnatal abdominal check before any curl-up work is restarted.
+- condition: neck pain
+  condition_aliases:
+  - cervical spondylosis
+  - cervical radiculopathy
+  - neck injury
+  - whiplash
+  severity: caution
+  reason: The neck takes over as soon as the abdomen tires, and hands laced behind the head turn the
+    movement into a pull on the cervical spine.
+  modification: Cross the hands over the chest so they cannot pull, keep a fist-width gap under the
+    chin, and stop the set as soon as the neck starts doing the work.
+refer_out: []
+linked_to_topics:
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'THIS ENTRY EXISTS TO BE SCREENED OUT, AND THAT IS THE POINT. It carries
+  `spinal_flexion: true`, which is the vertebral-osteoporosis red line the safety axes were built
+  for, plus an outright block keyed to osteoporosis and its aliases. On a roster of women largely in
+  their forties and fifties, low bone density is common and under-recorded, so expect this to be
+  withheld often.
+
+  `loads_spine` is false and `spinal_flexion` is true — those are different things and the
+  distinction matters. Nothing is being carried, so there is no axial compression; the hazard is the
+  bending direction, not the weight. Do not "fix" this by setting both true.
+
+  WHEN A CLIENT ASKS FOR SIT-UPS, the useful answer is a swap, not a refusal. `forearm-plank` and
+  `floor-bridge` are the direct substitutes — both train the midsection hard with the spine held
+  straight, and both screen CLEAR for the same bone-loss client this entry is blocked for.
+  `prone-back-extension` covers the opposite direction. Offer those three by name rather than
+  saying no.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Core, Crunch
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

@@ -1,0 +1,54 @@
+slug: standing-trunk-rotation
+display_name: Standing Trunk Rotation
+client_name: Turning side to side
+modality: flexibility
+intensity_tier: beginner
+position: standing
+summary: Unloaded rotation of the upper body over fixed hips.
+why_it_works: Maintains the thoracic rotation used for turning, reaching and looking behind — including
+  the over-the-shoulder check that precedes many trips.
+setup:
+- Stand tall with the hands resting on the hips.
+- Keep the hips still throughout.
+steps:
+- Turn the upper body as far to the right as is comfortable.
+- Return through the middle and turn as far to the left.
+- Repeat five times to each side, moving slowly.
+levels:
+- level: A
+  prescription: 5 repetitions to each side
+  reps: 5
+  support: none
+frequency: Before every session, as part of a 5-minute warm-up.
+builds:
+- trunk rotation range
+joint_stress:
+- mid_back
+- lower_back
+balance_demand: 1
+impact: none
+loaded_spinal_rotation: false
+cautions:
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+notes_for_coach: '`loaded_spinal_rotation` is False and that is the whole point: unloaded, self-limited
+  rotation is not the movement that concerns low bone density. Loaded twisting — a weight held out,
+  or a rotation machine — is, and any future entry of that kind must set the flag.'
+sources:
+- id: otago-exercise-programme-2003
+  location: Appendix 3, flexibility exercises — trunk movements
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

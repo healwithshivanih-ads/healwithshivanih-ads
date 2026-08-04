@@ -1,0 +1,99 @@
+slug: chair-sit-to-stand
+display_name: Sit to Stand
+client_name: Standing up from a chair
+modality: balance
+intensity_tier: beginner
+position: seated
+summary: Standing up and sitting down under control — the single most transferable movement in the
+  catalogue, and the one the 30-second chair stand test measures.
+why_it_works: Rising from a chair is the functional expression of leg strength; losing it is what
+  converts weakness into dependence. It doubles as the assessment, so progress is measurable without
+  equipment.
+setup:
+- Sit towards the front of a firm chair that will not slide.
+- Feet flat, drawn back slightly under the knees.
+steps:
+- Lean the chest forward over the feet — this brings the weight over the base, and is what makes
+  standing possible without pulling on the arms.
+- Push down through the feet and stand up tall.
+- 'Reverse it: reach the hips back and lower under control rather than dropping.'
+- Pause seated, then repeat.
+levels:
+- level: A
+  prescription: 5 stands, both hands for support
+  reps: 5
+  support: two hands
+- level: B
+  prescription: 5 stands with one hand, or 10 stands with two hands
+  reps: 5
+  support: one hand
+- level: C
+  prescription: 10 stands with no support, or 10 with one hand, repeated
+  reps: 10
+  support: none
+- level: D
+  prescription: 10 stands with no support, repeated
+  reps: 10
+  sets: 2
+  support: none
+frequency: 3x/week, alongside the rest of the session.
+builds:
+- leg strength
+- functional independence
+- confidence rising from low seats
+joint_stress:
+- knee
+- hip
+balance_demand: 2
+impact: none
+easier_variant: seated-knee-extension
+harder_variant: bodyweight-squat
+cautions:
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+- condition: knee osteoarthritis
+  condition_aliases:
+  - knee pain
+  - knee oa
+  - chondromalacia
+  severity: caution
+  reason: Repeated loaded knee flexion is the movement most likely to flare an arthritic knee.
+  modification: Raise the seat height (a cushion works) to reduce the depth, and keep within a pain-free
+    range.
+notes_for_coach: The forward chest lean is a hip hinge under body weight, not the loaded end-range
+  spinal flexion that concerns low bone density — `spinal_flexion` is deliberately False. Use the
+  STEADI 30-second chair stand as the baseline and re-test at review; it is the cheapest outcome
+  measure available.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, balance retraining exercise 11 (sit to stand)
+- id: cdc-steadi-falls-assessment
+  location: 30-second chair stand
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

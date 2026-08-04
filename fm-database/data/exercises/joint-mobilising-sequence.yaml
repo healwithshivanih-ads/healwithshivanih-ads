@@ -1,0 +1,120 @@
+slug: joint-mobilising-sequence
+display_name: Joint Mobilising and Pulse-Raise Sequence
+client_name: Warming up
+aliases:
+- warm up
+- warm-up
+- mobility sequence
+- joint circles
+- mobilising
+modality: flexibility
+intensity_tier: beginner
+position: standing
+equipment: []
+summary: The three-to-five minute warm-up — every joint taken gently through a circle, with the
+  heart rate raised alongside it.
+why_it_works: Two things happen before exercise and they are separate. Mobilising moves each joint
+  through its range so the synovial fluid that lubricates it is distributed. Raising the pulse
+  redirects blood towards the muscles — at rest they take a small share of the circulation and
+  under load they need most of it — and warm muscle is more pliable than cold. Doing both together
+  takes three to five minutes rather than ten.
+setup:
+- Find a space where the arms can circle freely.
+- Start walking slowly on the spot or around the room, standing tall.
+steps:
+- While walking, circle each wrist six to eight times.
+- Shrug both shoulders up towards the ears and back down, six to eight times, then circle each
+  shoulder the same number.
+- Stop walking. Stand on one leg with a hand on support if needed and circle the raised ankle six to
+  eight times, then swap sides.
+- Hands on hips, circle the hips slowly six to eight times each way.
+- Stand with the feet hip-width apart and the knees soft, then turn the upper body gently to each
+  side four times, keeping the hips facing forward.
+- Bend gently to each side four times, sliding a hand down the outside of the thigh.
+- Flick each heel up behind towards the buttock, alternating, ten times in all.
+- Finish with a minute of something rhythmic — marching on the spot with the knees lifting, or a
+  brisk walk — to raise the pulse.
+frequency: Before every session. Longer in cold weather, and longer again if starting from sitting
+  all day.
+builds:
+- joint range before load
+- raised muscle temperature and blood flow
+- a settled start to a session
+easier_variant: null
+harder_variant: null
+loads_spine: false
+spinal_flexion: true
+loaded_spinal_rotation: false
+joint_stress:
+- whole_body
+balance_demand: 1
+impact: low
+requires_floor_transfer: false
+cautions:
+- condition: osteoporosis
+  condition_aliases:
+  - osteopenia
+  - low bone density
+  - low bone mass
+  - vertebral fracture
+  - compression fracture
+  - spinal fracture
+  - fragility fracture
+  severity: caution
+  reason: The side bend and the trunk turn take the spine towards its end range in bending and
+    rotation. Unloaded and small they are low risk, but end-range flexion is still the direction to
+    respect in fragile bone.
+  modification: Keep the side bend and the turn small and slow — a quarter of the available range,
+    not the end of it — or leave both out and keep the wrist, shoulder, ankle and hip circles, which
+    is most of the warm-up anyway.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - peripheral neuropathy
+  severity: caution
+  reason: The ankle circles and heel flicks are done standing on one leg, and hip circles move the
+    weight in a loop around the base of support.
+  modification: Keep a hand on a solid counter for the single-leg parts, or sit for the ankle
+    circles. Never use a chair that can slide.
+- condition: cervical radiculopathy
+  condition_aliases:
+  - neck pain
+  - cervical spondylosis
+  - neck injury
+  - whiplash
+  severity: caution
+  reason: Shoulder and neck movements can compress an irritated cervical nerve root.
+  modification: Keep shoulder circles small and below shoulder height, and skip any movement that
+    sends symptoms into the arm. Neck circles are deliberately not part of this sequence.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+linked_to_symptoms:
+- joint-pain
+notes_for_coach: 'SINGLE-LEVEL AND UNPROGRESSIVE ON PURPOSE. It carries no repetition ladder, so it
+  is not withheld from a client with post-exertional malaise — gentle range-of-movement inside the
+  energy envelope is not graded exercise therapy, and a PEM client left with literally nothing is a
+  worse outcome than one left with a warm-up. Do not add levels to this entry; that would flip it
+  into the progressive set.
+
+  It is the only warm-up in the catalogue and almost every plan should open with it. Note the
+  practical detail the book is good on: if the session is press-ups, add a few easy press-ups at the
+  end of the warm-up. The warm-up should rehearse the thing about to be done.
+
+  `spinal_flexion` is flagged true for the side bend even though nothing is being carried. That is
+  the truthful reading of the movement, and the caution rather than a block is the right severity
+  for unloaded small-range work — but the flag has to be honest or the screen cannot reason about
+  it.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 3, Pre- and Post-Workout Procedure — "Mobilising Joints" and "How to Mobilise
+    and Pulse Raise"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

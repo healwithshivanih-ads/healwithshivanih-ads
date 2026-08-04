@@ -56,6 +56,8 @@ from .loader import (
     load_tissue_salts,
     load_somatic_map,
     load_somatic_maps,
+    load_exercise,
+    load_exercises,
     load_somatic_practice,
     load_somatic_practices,
     load_mechanism,
@@ -1035,6 +1037,84 @@ def cmd_show_home_remedy(args: argparse.Namespace) -> None:
             print(f"    - {s.id}{loc}{quote}")
     print(f"  Updated: {hr.updated_at} by {hr.updated_by}")
 
+
+
+def cmd_exercises(args: argparse.Namespace) -> None:
+    items = load_exercises(DATA_DIR)
+    if getattr(args, "modality", None):
+        items = [e for e in items if e.modality.value == args.modality]
+    if not items:
+        print("(no exercises)")
+        return
+    for ex in items:
+        blocks = sum(1 for c in ex.cautions if c.severity.value == "block")
+        flags = "".join((
+            "S" if ex.spinal_flexion else "-",      # spinal flexion
+            "L" if ex.loads_spine else "-",         # loads spine
+            "O" if ex.overhead else "-",            # overhead
+            "F" if ex.requires_floor_transfer else "-",  # floor transfer
+        ))
+        print(f"  {ex.slug:32s}  {ex.modality.value:15s}  {ex.intensity_tier.value:12s}  "
+              f"bal{ex.balance_demand}  imp:{ex.impact.value:8s}  {flags}  "
+              f"{len(ex.levels)} lvl  {blocks} block  {ex.display_name}")
+    print(f"\n  {len(items)} exercise(s).  Flags: S=spinal flexion  L=loads spine  "
+          f"O=overhead  F=needs floor transfer")
+
+
+def cmd_show_exercise(args: argparse.Namespace) -> None:
+    ex = load_exercise(DATA_DIR, args.slug)
+    print(f"{ex.display_name}  ({ex.slug})  v{ex.version}  [{ex.status.value}]")
+    print(f"  Client sees:  {ex.name_for_client}")
+    print(f"  Modality:     {ex.modality.value}   Tier: {ex.intensity_tier.value}   Position: {ex.position.value}")
+    print(f"  Impact: {ex.impact.value}   Balance demand: {ex.balance_demand}/3   "
+          f"Floor transfer: {ex.requires_floor_transfer}")
+    print(f"  Spine — loads: {ex.loads_spine}   flexion: {ex.spinal_flexion}   "
+          f"loaded rotation: {ex.loaded_spinal_rotation}   Overhead: {ex.overhead}")
+    if ex.summary:
+        print(f"  Summary:      {ex.summary.strip()}")
+    if ex.why_it_works:
+        print(f"  Why it works: {ex.why_it_works.strip()}")
+    if ex.frequency:
+        print(f"  Frequency:    {ex.frequency}")
+    if ex.easier_variant or ex.harder_variant:
+        print(f"  Ladder:       easier <- {ex.easier_variant or '—'}   |   harder -> {ex.harder_variant or '—'}")
+    if ex.setup:
+        print("  Setup:")
+        for s in ex.setup:
+            print(f"    - {s}")
+    if ex.steps:
+        print("  Steps:")
+        for i, s in enumerate(ex.steps, 1):
+            print(f"    {i}. {s}")
+    if ex.levels:
+        print("  Levels (easiest first):")
+        for lv in ex.levels:
+            sup = f"  [support: {lv.support}]" if lv.support else ""
+            print(f"    {lv.level}: {lv.prescription}{sup}")
+            if lv.note:
+                print(f"       {lv.note}")
+    if ex.cautions:
+        print("  Cautions:")
+        for c in ex.cautions:
+            mark = "BLOCK  " if c.severity.value == "block" else "caution"
+            print(f"    [{mark}] {c.condition} — {c.reason}")
+            if c.modification:
+                print(f"              → {c.modification}")
+    for label, vals in (("Builds", ex.builds), ("Equipment", ex.equipment),
+                        ("Joint stress", [r.value for r in ex.joint_stress]),
+                        ("Refer out", ex.refer_out),
+                        ("Topics", ex.linked_to_topics), ("Symptoms", ex.linked_to_symptoms)):
+        if vals:
+            print(f"  {label}:")
+            for v in vals:
+                print(f"    - {v}")
+    if ex.notes_for_coach:
+        print(f"  Notes: {ex.notes_for_coach.strip()}")
+    if ex.sources:
+        print("  Sources:")
+        for c in ex.sources:
+            print(f"    - {c.id}" + (f" ({c.location})" if c.location else ""))
+    print(f"  Updated: {ex.updated_at} by {ex.updated_by}")
 
 
 def cmd_somatic_practices(args: argparse.Namespace) -> None:
@@ -2497,6 +2577,13 @@ def main() -> None:
     show_ts = sub.add_parser("show-tissue-salt", help="show one tissue salt")
     show_ts.add_argument("slug")
     show_ts.set_defaults(func=cmd_show_tissue_salt)
+
+    ex_list = sub.add_parser("exercises", help="list all exercises (capacity-building movement)")
+    ex_list.add_argument("--modality", help="filter: strength | flexibility | balance | cardiovascular | mind_body | daily_activity | pacing")
+    ex_list.set_defaults(func=cmd_exercises)
+    show_ex = sub.add_parser("show-exercise", help="show one exercise")
+    show_ex.add_argument("slug")
+    show_ex.set_defaults(func=cmd_show_exercise)
 
     sub.add_parser("somatic-practices", help="list all somatic practices (resets)").set_defaults(func=cmd_somatic_practices)
     sub.add_parser("somatic-maps", help="list all somatic maps (emotional readings)").set_defaults(func=cmd_somatic_maps)

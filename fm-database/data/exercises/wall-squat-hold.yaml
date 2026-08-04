@@ -1,0 +1,147 @@
+slug: wall-squat-hold
+display_name: Wall Squat Hold (Isometric Wall Sit)
+client_name: Sitting against the wall
+aliases:
+- wall sit
+- wall squat
+- isometric squat
+- squat hold
+modality: strength
+intensity_tier: beginner
+position: standing
+equipment:
+- a clear stretch of solid wall
+summary: A still, held squat against a wall — leg strength with no movement, no impact and nothing
+  to balance on.
+why_it_works: 'Holding a position under tension builds strength at the joint angle being held, which
+  is the trade-off with isometric work: the gain is real but it is angle-specific rather than
+  spread across a range. What it buys is a leg-strengthening option with no movement at all, which
+  suits a painful knee that objects to repetitions and a client who wants something they can do
+  anywhere without looking like they are exercising.'
+setup:
+- Stand with the back flat against a wall, feet about hip-width apart and a step or so forward of
+  the wall.
+- Slide down the wall until the thighs are heading towards parallel with the floor.
+- Let the arms rest at the sides or fold them across the chest.
+steps:
+- Hold the position still, keeping the whole back in contact with the wall.
+- Keep the knees above the ankles rather than drifting forward over the toes.
+- Breathe steadily and out loud if it helps — the breath must not be held.
+- Stand up smoothly when the hold is done rather than sliding down to the floor.
+levels:
+- level: '1'
+  prescription: hold 15 seconds at a shallow depth, twice
+  hold_seconds: 15
+  sets: 2
+  support: shallow — thighs well above parallel
+- level: '2'
+  prescription: hold 30 seconds, twice
+  hold_seconds: 30
+  sets: 2
+  support: mid depth
+- level: '3'
+  prescription: hold 45-60 seconds, twice
+  hold_seconds: 60
+  sets: 2
+  support: thighs approaching parallel
+frequency: 2-3x/week with a rest day between.
+builds:
+- thigh strength held under tension
+- knee-supporting strength without repetition
+- tolerance for standing tasks
+easier_variant: null
+harder_variant: bodyweight-squat
+joint_stress:
+- knee
+- hip
+balance_demand: 0
+impact: none
+requires_floor_transfer: false
+cautions:
+- condition: hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - htn
+  - hypertensive
+  - uncontrolled hypertension
+  - preeclampsia
+  severity: caution
+  reason: Sustained isometric contraction drives a pressor response — blood pressure climbs for as
+    long as the hold lasts, and climbs much higher if the breath is held against it. This book
+    states plainly that isometric exercises should be avoided by anyone with high blood pressure.
+  modification: Keep holds to 15-20 seconds, breathe out audibly throughout so the breath cannot be
+    held, and rest fully between holds. Do not prescribe at all while blood pressure is uncontrolled
+    or unmeasured, or in pregnancy with raised blood pressure — use bodyweight-squat repetitions
+    instead, which do not sustain the contraction.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: the fixed hold-time ladder here
+    is a progression schedule, and sustained isometric effort is a heavy demand despite looking
+    like nothing is happening.'
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - knee osteoarthritis
+  - arthritis
+  - knee injury
+  - patellofemoral
+  - joint pain
+  severity: caution
+  reason: A sustained hold keeps the kneecap loaded continuously, which some painful knees tolerate
+    better than repetitions and some tolerate far worse.
+  modification: Hold higher up the wall so the knee bend is shallow. Shallow and pain-free beats
+    deep and sore; depth can come later or not at all.
+- condition: varicose veins
+  condition_aliases:
+  - venous insufficiency
+  - deep vein thrombosis
+  - dvt
+  - blood clot
+  severity: caution
+  reason: A sustained held position with the legs still impedes the calf-muscle pump that returns
+    blood from the legs.
+  modification: Keep holds short, walk about for a minute between them, and do not use this entry as
+    the only leg work in a plan.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- hypertension
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+- joint-pain
+notes_for_coach: 'THE ONE SAFETY POINT THIS BOOK ADDS THAT OTAGO DOES NOT. Every other strength
+  entry in this catalogue is repetition work; this is the only sustained isometric, and the book
+  singles isometrics out as the thing to avoid with high blood pressure. That caution is keyed to
+  `hypertension` with aliases rather than to `uncontrolled hypertension` alone, deliberately — a
+  client record on this roster says "Hypertension", not "uncontrolled hypertension", and a caution
+  keyed to vocabulary the records do not use is an absent caution.
+
+  IT IS A `caution`, NOT A `block`, AND THAT IS A CONSIDERED CALL. A hard block would withhold this
+  from every well-controlled hypertensive client, and short supervised isometric work is not the
+  hazard — the hazard is a long strained hold with a held breath while blood pressure is
+  unmanaged. The modification says exactly that, and says to use squat repetitions instead when it
+  is not yet safe. If the practice ever decides to be stricter, change it here, not by adding a
+  second overlapping caution.
+
+  `harder_variant` points at bodyweight-squat because moving is genuinely harder than holding here,
+  and this is the gentler doorway into leg strengthening for a knee that objects to repetitions.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Lower Body, Wall Squat and Squat Hold; isometrics
+    warning in Chapter 2, "Isometrics"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

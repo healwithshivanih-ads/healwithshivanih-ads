@@ -1,0 +1,131 @@
+slug: standard-press-up
+display_name: Standard Press Up (Full Prone Push)
+client_name: A full press-up
+aliases:
+- press up
+- push up
+- full press up
+- standard push up
+modality: strength
+intensity_tier: intermediate
+position: lying_prone
+equipment: []
+summary: The full-lever pressing movement from the toes — the top of the pressing ladder this
+  catalogue prescribes.
+why_it_works: From the toes the arms carry the largest share of body weight the pattern allows,
+  which is what makes it a genuine strength stimulus rather than endurance work. The trunk has to
+  hold a straight line under that load, so it trains the midsection at the same time without any
+  spinal bending.
+setup:
+- Lie face down and place the hands on the floor a little wider than the shoulders, fingers pointing
+  forward.
+- Push up onto the palms and the balls of the feet, feet together or hip-width apart.
+- Set the body in one straight line from the head to the heels.
+steps:
+- Bend the elbows and lower the chest until it is close to the floor.
+- Hold the straight line — the hips should not sag towards the floor or ride up.
+- Straighten the arms and push back to the start.
+- Keep the pace controlled in both directions.
+levels:
+- level: '1'
+  prescription: 5 repetitions, stopping short of the floor
+  reps: 5
+  sets: 1
+  support: toes, partial range
+  note: If five is not yet possible with a straight body, go back to kneeling rather than letting
+    the hips sag — a sagging press-up loads the lower back instead of the chest.
+- level: '2'
+  prescription: 8 repetitions, chest close to the floor
+  reps: 8
+  sets: 1
+  support: toes, full range
+- level: '3'
+  prescription: 10 repetitions, rest, then a second set
+  reps: 10
+  sets: 2
+  support: toes, full range
+frequency: 2-3x/week with a rest day between.
+builds:
+- chest, shoulder and arm strength
+- trunk stiffness under load
+- upper-body pushing power
+easier_variant: kneeling-press-up
+harder_variant: null
+joint_stress:
+- shoulder
+- wrist_hand
+- elbow
+balance_demand: 0
+impact: none
+requires_floor_transfer: true
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: fixed incremental progression can
+    provoke a lasting relapse, and this is the hardest rung of exactly such a ladder.'
+  modification: ''
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: This is the largest shoulder load in the catalogue, taken through a flexed and internally
+    loaded joint with the body's full weight behind it.
+  modification: Drop back to the kneeling version rather than reducing the range here. A painful
+    full press-up is not a full press-up worth keeping.
+- condition: carpal tunnel syndrome
+  condition_aliases:
+  - wrist pain
+  - carpal tunnel
+  - wrist arthritis
+  - de quervain
+  severity: caution
+  reason: Full body weight through a maximally extended wrist is the heaviest wrist position this
+    catalogue prescribes.
+  modification: Press through loose fists with the wrists straight. If that is not comfortable, use
+    the kneeling version, which loads the wrist far less.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  severity: caution
+  reason: Near-maximal repetitions are commonly done with a held breath, which produces a sharp
+    transient rise in blood pressure.
+  modification: Breathe out on every push and stop the set two repetitions before failure. Do not
+    prescribe this until blood pressure is known to be managed.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- bone-health
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'THE LADDER STOPS HERE ON PURPOSE. The book carries on well past this — splayed
+  leg, raised leg, T press-up, one-handed, decline, handstand, and the clapping plyometric versions
+  — and none of those were ingested. They are aimed at a conditioned population, several carry the
+  book''s own beginner warning, and no client on this roster is a candidate. If someone genuinely
+  outgrows two sets of ten full press-ups, that is a good problem and the right answer is a
+  supervised programme, not a catalogue entry.
+
+  `harder_variant` is deliberately null rather than pointing at something unshipped, so a matcher
+  offering "what''s next" returns nothing rather than a movement no one has screened.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Upper Body, Standard Press Up
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

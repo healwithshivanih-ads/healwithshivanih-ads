@@ -1,0 +1,64 @@
+statement: 'How long a stretch is held determines what it achieves. Roughly fifteen to
+
+  twenty seconds maintains existing range and limits soreness; twenty-five to thirty
+
+  seconds, held until the tension eases and then eased further, develops range. The
+
+  six-to-eight second holds commonly used before exercise are too brief to lengthen
+
+  anything, and stretching is better placed after a session, when the muscle is warm.
+
+  '
+slug: stretch-hold-time-determines-whether-range-is-kept-or-gained
+evidence_tier: plausible_emerging
+rationale: 'Lengthening a muscle depends on the stretch reflex settling, which takes time
+
+  under sustained tension — so a hold short enough to end before that happens produces
+
+  sensation without adaptation. Warm tissue is also more extensible, which is why the
+
+  post-session slot is the productive one. There is a further argument against the
+
+  pre-session static stretch: subjecting a cold muscle to static tension immediately
+
+  before hard work may reduce force output without protecting against injury.
+
+  '
+coaching_translation: 'Stretch after you move, not before, and hold longer than feels
+
+  natural. Fifteen to twenty seconds keeps the flexibility you have. If you want to
+
+  actually gain range, stay for twenty-five to thirty seconds — you will feel the pull
+
+  ease part-way through, and that is the point to relax a little further into it. Never
+
+  bounce, and never stretch into pain: a good stretch is mild discomfort, not sharp.
+
+  '
+caveats:
+- The source is a general fitness book and presents the pre-exercise static stretching
+  question as unsettled, which it is. It is recorded here as practice guidance, not as
+  a resolved evidence question.
+- Hold times are conventional figures restated by this source, not measured in it.
+- Range gains are described as accruing in small increments over time. A client stretching
+  hard for a week and seeing nothing has not failed; they have not waited.
+out_of_scope_notes: 'Stretching around a known injury or a recently operated joint needs
+  clinical clearance first — the source says to consult a specialist before stretching an
+  injured joint, and that is the right boundary.
+
+  '
+linked_to_topics:
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 3, "Maintenance Stretches" and "Developmental Stretches"; pre-stretch
+    discussion under "Should You Stretch As Part of the Warm-Up?"
+  quote: Held statically at the 'bite' until the tension eases, at which point the muscle
+    is stretched externally, further developing its length and the range of movement at
+    the joint.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

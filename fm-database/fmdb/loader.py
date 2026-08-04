@@ -2,7 +2,7 @@ from pathlib import Path
 
 import yaml
 
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, SomaticMap, SomaticPractice, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, Exercise, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, SomaticMap, SomaticPractice, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
 
 
 def load_supplements(data_dir: Path) -> list[Supplement]:
@@ -348,6 +348,29 @@ def load_source(data_dir: Path, source_id: str) -> Source:
     with path.open() as f:
         raw = yaml.safe_load(f)
     return Source(**raw)
+
+
+def load_exercises(data_dir: Path) -> list[Exercise]:
+    d = data_dir / "exercises"
+    if not d.exists():
+        return []
+    out = []
+    for path in sorted(d.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open() as f:
+            raw = yaml.safe_load(f)
+        out.append(Exercise(**raw))
+    return out
+
+
+def load_exercise(data_dir: Path, slug: str) -> Exercise:
+    path = data_dir / "exercises" / f"{slug}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"exercise not found: {slug}")
+    with path.open() as f:
+        raw = yaml.safe_load(f)
+    return Exercise(**raw)
 
 
 def load_somatic_practices(data_dir: Path) -> list[SomaticPractice]:

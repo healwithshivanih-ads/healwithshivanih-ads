@@ -1,0 +1,142 @@
+slug: floor-bridge
+display_name: Floor Bridge (Supine Hip Lift)
+client_name: Lifting your hips off the floor
+aliases:
+- glute bridge
+- hip bridge
+- bridge
+- hip raise
+- floor bridging
+modality: strength
+intensity_tier: beginner
+position: lying_supine
+equipment:
+- a mat or folded blanket
+summary: Lying on the back and lifting the hips — buttock and hamstring strength with the spine held
+  straight, and one of the gentlest useful movements in the catalogue.
+why_it_works: The gluteal muscles extend the hip, which is the action behind standing up, climbing
+  stairs and walking uphill, and they are commonly weak in anyone who sits a lot. Lifting the hips
+  from lying trains that action against nothing more than body weight, in a position where balance
+  is irrelevant and the knees take almost no load. The spine moves into extension rather than
+  bending, so it is safe in the direction that matters for fragile bone.
+setup:
+- Lie on the back with the knees bent and the feet flat, hip-width apart and close enough that the
+  fingertips could brush the heels.
+- Rest the arms alongside the body, palms down.
+- Let the head and shoulders stay heavy on the floor throughout.
+steps:
+- Press through the heels and lift the hips until the body makes a straight line from the shoulders
+  to the knees.
+- Squeeze the buttocks at the top and hold for two or three seconds.
+- Lower slowly, stopping just short of the floor rather than resting between repetitions.
+- Keep the ribs down so the lift comes from the hips rather than from arching the lower back.
+levels:
+- level: '1'
+  prescription: 8 lifts, holding two seconds at the top
+  reps: 8
+  sets: 1
+  hold_seconds: 2
+  support: both feet flat
+- level: '2'
+  prescription: 12 lifts, holding three seconds at the top
+  reps: 12
+  sets: 1
+  hold_seconds: 3
+  support: both feet flat
+- level: '3'
+  prescription: 12 lifts, rest, then a second set
+  reps: 12
+  sets: 2
+  hold_seconds: 3
+  support: both feet flat
+frequency: 3-4x/week. It is light enough to sit alongside the leg work rather than replace it.
+builds:
+- buttock and hamstring strength
+- hip extension for standing and stairs
+- lower-back support
+easier_variant: null
+harder_variant: null
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+joint_stress:
+- hip
+- lower_back
+- knee
+balance_demand: 0
+impact: none
+requires_floor_transfer: true
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry carries a fixed
+    repetition ladder, which is the progression shape that can provoke a lasting relapse — even
+    though the movement itself is gentle.'
+  modification: ''
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - spinal stenosis
+  - spondylolisthesis
+  - facet joint
+  severity: caution
+  reason: Lifting too high arches the lower back instead of extending the hip, which loads the facet
+    joints — the commonest way this gentle movement is made uncomfortable.
+  modification: Lift only until the body is straight from shoulders to knees and no further, and
+    keep the ribs down. A lower, well-controlled lift is the correct one.
+- condition: pregnancy
+  condition_aliases:
+  - pregnant
+  - third trimester
+  severity: caution
+  reason: Lying flat on the back is unsuitable beyond the first trimester.
+  modification: Use a standing or seated hip-extension movement instead until after delivery.
+- condition: hamstring cramp
+  condition_aliases:
+  - cramps
+  - muscle cramp
+  - hamstring
+  severity: caution
+  reason: With weak glutes the hamstrings take over and cramp at the top of the lift.
+  modification: Bring the heels closer to the buttocks so the glutes do more of the work, and lower
+    at once if a cramp starts.
+refer_out: []
+linked_to_topics:
+- osteoporosis
+- bone-health
+- sarcopenia
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+- joint-pain
+notes_for_coach: 'THE GENTLEST REAL STRENGTH ENTRY IN THE CATALOGUE, and the one to reach for when
+  almost everything else screens out. No balance demand, no impact, negligible knee load, spine held
+  straight — it clears for the bone-loss client, the falls-risk client and the painful-knee client
+  alike, which very little else does.
+
+  Together with `forearm-plank` this is the spine-neutral half of the core work. Where
+  `abdominal-crunch` bends the loaded spine and is blocked for low bone density, these two train the
+  midsection and hips without ever going in that direction. Prescribe them as the swap rather than
+  simply refusing the crunch.
+
+  Pairs naturally with `prone-back-extension` — one works the back of the hips lying face up, the
+  other the back muscles lying face down, and between them they cover the whole posterior chain
+  without a single forward bend. The book''s single-leg version was not shipped; it roughly doubles
+  the load on one hip and belongs behind a screen this entry is specifically here to avoid needing.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Core, Floor Bridge
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

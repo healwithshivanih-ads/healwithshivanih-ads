@@ -1,0 +1,162 @@
+slug: forearm-plank
+display_name: Forearm Plank (Prone Isometric Hold)
+client_name: Holding a plank
+aliases:
+- plank
+- front plank
+- forearm hold
+- prone hold
+modality: strength
+intensity_tier: beginner
+position: lying_prone
+equipment:
+- a mat or folded blanket
+summary: Holding a straight line on the forearms and toes — core strength trained without bending
+  the spine at all.
+why_it_works: 'The abdominal muscles have two jobs: bending the trunk, and stopping it bending.
+  A plank trains the second. Gravity tries to drop the hips towards the floor and the whole midsection
+  contracts to refuse, so the muscles work hard while the spine stays exactly where it should be.
+  That is why it is the core exercise to reach for when forward bending is contraindicated.'
+setup:
+- Lie face down on a mat and set the elbows directly under the shoulders, forearms flat, hands
+  loosely clasped or flat.
+- Tuck the toes under.
+- Lift the hips until the body makes one straight line from the head to the heels.
+steps:
+- Hold still. Keep the hips level — neither sagging towards the floor nor lifted into a peak.
+- Draw the abdomen in gently to stop the lower back dipping.
+- Look down at the mat so the neck stays in line with the spine.
+- Breathe normally throughout. The hold ends when the straight line goes, not when the timer says
+  so.
+levels:
+- level: '1'
+  prescription: hold 20 seconds, twice, from the knees if needed
+  hold_seconds: 20
+  sets: 2
+  support: knees down if the full position cannot hold its line
+- level: '2'
+  prescription: hold 30 seconds on the toes, twice
+  hold_seconds: 30
+  sets: 2
+  support: none
+- level: '3'
+  prescription: hold 60 seconds, twice
+  hold_seconds: 60
+  sets: 2
+  support: none
+  note: The book allows up to 90 seconds. Past about a minute this is training endurance; if more
+    challenge is wanted, lifting one leg is the book's next step.
+frequency: 3-4x/week.
+builds:
+- deep abdominal and trunk strength
+- the ability to hold a position under load
+- trunk stiffness that protects the lower back
+easier_variant: null
+harder_variant: null
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+joint_stress:
+- shoulder
+- elbow
+- lower_back
+balance_demand: 0
+impact: none
+requires_floor_transfer: true
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: the fixed hold-time ladder here is
+    a progression schedule, and a sustained whole-body isometric is a heavy demand even though
+    nothing appears to be moving.'
+  modification: ''
+- condition: hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - htn
+  - hypertensive
+  - uncontrolled hypertension
+  - preeclampsia
+  severity: caution
+  reason: A whole-body isometric hold drives a pressor response for as long as it lasts, and holding
+    the breath against it raises blood pressure sharply. The same warning that applies to the wall
+    squat applies here.
+  modification: Keep holds to 20 seconds, breathe audibly throughout so the breath cannot be held,
+    and rest fully between them. Do not prescribe while blood pressure is uncontrolled or
+    unmeasured.
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: The shoulders carry the upper body's weight continuously for the whole hold.
+  modification: Drop to the knees to take weight off the shoulders, and shorten the hold. Stop for
+    any pain rather than working through a long hold.
+- condition: pregnancy
+  condition_aliases:
+  - pregnant
+  - postpartum
+  - diastasis recti
+  - abdominal separation
+  - third trimester
+  severity: caution
+  reason: A full plank loads a separating linea alba and the position is unsuitable later in
+    pregnancy.
+  modification: Use an incline with the forearms on a counter or the wall, which reduces the load
+    substantially, and stop if the abdomen domes or cones along the midline. Get a postnatal
+    abdominal check before returning to the floor version.
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - disc herniation
+  - slipped disc
+  - sciatica
+  severity: caution
+  reason: If the abdomen cannot hold the line, the hips sag and the load transfers straight to the
+    lower back — turning a core exercise into a back extension under fatigue.
+  modification: Hold from the knees, or with the forearms raised on a counter, and stop the moment
+    the hips start to drop. A short well-held plank beats a long sagging one.
+refer_out: []
+linked_to_topics:
+- osteoporosis
+- bone-health
+- menopause
+- sarcopenia
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'THE ANSWER TO "WHAT DO I GIVE INSTEAD OF SIT-UPS". This and `floor-bridge` are the
+  two spine-neutral core entries, and both screen CLEAR for a bone-loss client where
+  `abdominal-crunch` is blocked outright. Trained in the direction the abdomen resists rather than
+  the direction it bends, so nothing about it approaches the vertebral-fracture mechanism.
+
+  It is the catalogue''s second sustained isometric, so it inherits the same blood-pressure caution
+  as `wall-squat-hold` — keyed to `hypertension` with aliases, because a client record says
+  "Hypertension" and not "uncontrolled hypertension". Keep those two entries in step: if the
+  practice ever changes its position on isometrics and blood pressure, both need editing.
+
+  A KNEELING PLANK IS THE REAL STARTING POINT for most of this roster, and it is built into level 1
+  as a support option rather than shipped as its own entry. The book also gives raised-leg and side
+  variants; the side planks load one shoulder heavily and the rotator and twist versions add loaded
+  spinal rotation, so none of those were shipped. Side plank is the sensible next step if someone
+  outgrows this, but screen the shoulder first.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Core, Plank (hold times given as 30-90 seconds)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

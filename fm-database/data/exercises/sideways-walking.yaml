@@ -1,0 +1,76 @@
+slug: sideways-walking
+display_name: Sideways Walking
+client_name: Walking sideways
+modality: balance
+intensity_tier: beginner
+position: walking
+summary: Stepping sideways along a counter — lateral stepping, which ordinary walking never trains.
+why_it_works: Sideways stepping loads the hip abductors in the pattern actually used to catch a sideways
+  loss of balance. Lateral falls are the ones that break hips.
+setup:
+- Stand beside a kitchen counter or a long stable surface, hand resting on it.
+steps:
+- Step sideways with one foot, then bring the other to meet it.
+- Keep the toes pointing forwards throughout — the temptation is to turn and walk.
+- Take ten steps in one direction, then ten back.
+levels:
+- level: B
+  prescription: 10 steps, 4 times, using a walking aid or support
+  reps: 10
+  sets: 4
+  support: hand on counter or walking aid
+- level: C
+  prescription: 10 steps, 4 times, with no support
+  reps: 10
+  sets: 4
+  support: none
+frequency: 3x/week.
+builds:
+- lateral stability
+- hip abductor strength
+- hip bone loading
+joint_stress:
+- hip
+- ankle_foot
+balance_demand: 2
+impact: low
+cautions:
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+notes_for_coach: Along a kitchen counter is the practical setup — it gives a long continuous support
+  and needs no equipment.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, balance retraining exercise 4 (sideways walking)
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

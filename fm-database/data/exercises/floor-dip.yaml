@@ -1,0 +1,128 @@
+slug: floor-dip
+display_name: Floor Dip (Reverse Triceps Dip)
+client_name: Dips from the floor
+aliases:
+- floor dips
+- reverse dip
+- triceps dip
+- bench dip
+modality: strength
+intensity_tier: beginner
+position: seated
+equipment: []
+summary: Backs-of-the-arms strength done sitting on the floor with the hands behind — the pulling
+  side's counterpart to the press-up, needing nothing at all.
+why_it_works: The press-up family works the chest and the front of the shoulder; this works the
+  triceps and the back of the shoulder through the opposite motion, so a plan with both is balanced
+  rather than front-loaded. Sitting on the floor keeps the feet in contact throughout, so the load
+  can be dialled by how far the legs are extended.
+setup:
+- Sit on the floor with the knees bent and the feet flat.
+- Place the palms on the floor behind, in line with the shoulders, fingers pointing forwards towards
+  the feet.
+- Straighten the arms to lift the hips slightly clear of the floor.
+steps:
+- Bend the elbows to lower the body until it is almost touching the floor.
+- Keep the elbows tracking backwards rather than flaring out to the sides.
+- Straighten the elbows to press smoothly back up.
+- Keep the movement continuous and controlled rather than dropping and bouncing.
+levels:
+- level: '1'
+  prescription: 8 repetitions with the knees bent and feet flat
+  reps: 8
+  sets: 1
+  support: knees bent, feet flat — the shortest lever
+- level: '2'
+  prescription: 12 repetitions with the knees bent
+  reps: 12
+  sets: 1
+  support: knees bent, feet flat
+- level: '3'
+  prescription: 10 repetitions with both legs straight out in front, resting on the heels
+  reps: 10
+  sets: 2
+  support: legs extended — a longer lever, more weight on the arms
+  note: Extending the legs is the progression. It is the same movement in the same place, so it
+    stays one entry rather than becoming a separate exercise.
+frequency: 2-3x/week with a rest day between.
+builds:
+- triceps strength
+- shoulder stability behind the body
+- arm strength for pushing up out of a chair
+easier_variant: null
+harder_variant: null
+joint_stress:
+- shoulder
+- wrist_hand
+- elbow
+balance_demand: 0
+impact: none
+requires_floor_transfer: true
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: the fixed repetition-and-lever
+    ladder in this entry is the shape of progression that can provoke a lasting relapse.'
+  modification: ''
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: Bearing weight on a hand placed behind the body holds the shoulder in extension and
+    internal rotation, which is a provocative position for the front of the joint.
+  modification: Turn the fingers out to the sides, keep the hips close to the hands, and lower only
+    a few centimetres. Stop entirely if there is pain at the front of the shoulder — this position
+    cannot be made safe by going slower.
+- condition: carpal tunnel syndrome
+  condition_aliases:
+  - wrist pain
+  - carpal tunnel
+  - wrist arthritis
+  - de quervain
+  severity: caution
+  reason: The wrist is held extended and weight-bearing behind the body throughout, which is one of
+    the higher carpal-tunnel pressure positions.
+  modification: Turn the hands out slightly to reduce the extension angle, and keep the sets short.
+    If symptoms recur into the hand afterwards, drop this entry rather than modifying further.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  severity: caution
+  reason: Resistance work raises blood pressure transiently and hard repetitions invite breath
+    holding.
+  modification: Breathe out on the push up and stop the set while it is still comfortable.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'The book also gives an elevated version with the hands on a chair, which is
+  HARDER, not easier — the extra height increases the range and the shoulder extension. It was
+  deliberately not shipped as a separate entry: on this roster the shoulder position is already the
+  limiting factor, and a chair adds range in exactly the direction that provokes it.
+
+  Pair this with a press-up entry rather than prescribing it alone. On its own it trains one side of
+  the shoulder repeatedly in the position that tends to be the sore one.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Upper Body, Floor Dip and Floor Extended Dip
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

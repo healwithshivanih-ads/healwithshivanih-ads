@@ -1,0 +1,147 @@
+slug: bodyweight-squat
+display_name: Bodyweight Squat (Free Standing, No Chair)
+client_name: Standing squats
+aliases:
+- squat
+- squats
+- standard squat
+- air squat
+- free squat
+modality: strength
+intensity_tier: intermediate
+position: standing
+equipment: []
+summary: The free-standing squat — the step up from rising out of a chair, and the most complete
+  leg-strength movement available without equipment.
+why_it_works: Sitting to standing is a squat with the chair setting the depth and catching the
+  weight. Taking the chair away means the legs control the whole descent and there is no point at
+  which the load is handed off, which is what turns a daily movement into a strength stimulus. It
+  uses nearly every muscle in the leg at once and loads the hip through a long range, which is the
+  loading direction that matters for hip bone density.
+setup:
+- Stand with the feet slightly wider than hip-width, toes turned out a little.
+- Keep the back in its normal upright curve, not rounded and not arched.
+- Hold the arms out in front at shoulder height as a counterweight.
+steps:
+- Push the hips back and bend the knees to lower under control.
+- Keep the weight through the middle of the foot; the knees should track over the toes, not collapse
+  inwards or drift out past them.
+- Lower as far as is comfortable and controlled, aiming eventually for the thighs parallel to the
+  floor.
+- Drive back up through the legs to stand tall, without locking the knees hard at the top.
+levels:
+- level: '1'
+  prescription: 8 repetitions to a quarter depth, next to a counter in case a hand is wanted
+  reps: 8
+  sets: 1
+  support: a bench or counter within reach, not held
+  note: Standing beside support is not the same as using it. The point of this level is that the
+    legs do the work and the hand is only insurance.
+- level: '2'
+  prescription: 12 repetitions to roughly half depth, no support
+  reps: 12
+  sets: 1
+  support: none
+- level: '3'
+  prescription: 12 repetitions to thighs parallel, rest, then a second set
+  reps: 12
+  sets: 2
+  support: none
+frequency: 2-3x/week with a rest day between.
+builds:
+- thigh, hip and buttock strength
+- hip and knee loading for bone
+- the strength to stand up without pushing off
+easier_variant: chair-sit-to-stand
+harder_variant: forward-lunge
+joint_stress:
+- knee
+- hip
+- ankle_foot
+- lower_back
+balance_demand: 1
+impact: none
+requires_floor_transfer: false
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry is a fixed depth-and-
+    repetition ladder, which is the shape of progression that can provoke a lasting relapse.'
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - knee osteoarthritis
+  - arthritis
+  - knee injury
+  - patellofemoral
+  - joint pain
+  - chondromalacia
+  severity: caution
+  reason: Knee compression rises steeply with depth, and the bottom of a deep squat is where
+    patellofemoral pain is usually provoked.
+  modification: Reduce the DEPTH, not the frequency — stay in the range that is pain-free even if
+    that is only a few centimetres, and build repetitions there before going lower.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - peripheral neuropathy
+  severity: caution
+  reason: Taking the chair away removes the thing that was catching the client's weight, and the
+    bottom of the movement is the least stable point.
+  modification: Work beside a solid counter or worktop, never a chair that can slide. Stay on
+    chair-sit-to-stand until standing balance is confirmed.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  severity: caution
+  reason: Large-muscle resistance work raises blood pressure transiently, and rising hard from the
+    bottom invites a held breath.
+  modification: Breathe out on the way up. Stand up smoothly rather than straining, and stop for
+    dizziness or head pressure on standing.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- bone-health
+- osteoporosis
+- insulin-resistance
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'THIS IS THE ENTRY THAT COMPLETES AN EXISTING CHAIN. `chair-sit-to-stand` came from
+  the Otago falls manual and had no `harder_variant` — a 45-year-old who could already stand up
+  from a chair twenty times had nowhere to progress to, which is a real gap on a roster whose median
+  client is decades younger than Otago''s trial population. This is that next rung, and it needs no
+  equipment.
+
+  Note the safety axes: this does NOT flex or rotate the loaded spine, so unlike the crunch it is
+  not on the vertebral-osteoporosis red line — it is one of the better things a client with low bone
+  density can do, because it loads the hip. `loads_spine` is left false because bodyweight alone
+  puts no meaningful axial load through the spine; that changes the moment anything is held, and a
+  weighted squat would need its own entry.
+
+  The book''s prisoner and wide variants (hands behind the head, or a doubled stance) were not
+  shipped separately — they are stance changes, not new movements, and adding them would triple the
+  library for no clinical gain.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Lower Body, Standard Squat
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani
