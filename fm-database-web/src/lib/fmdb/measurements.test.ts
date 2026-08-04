@@ -3,6 +3,7 @@ import {
   collectMeasurementSnapshots,
   latestMeasurements,
   validateMeasurement,
+  reconcileFlatMeasurements,
   inchesToCm,
   cmToInches,
   ftInToCm,
@@ -152,5 +153,72 @@ describe("validateMeasurement (the cl-017 waist/hip bug)", () => {
   });
   it("passes through unknown keys unchecked", () => {
     expect(validateMeasurement("something_else", 5)).toEqual({ ok: true, value: 5 });
+  });
+});
+
+// ── reconcileFlatMeasurements ────────────────────────────────────────────────
+// Regression cover for the cl-009 bug (2026-08-04): the coach logged BP
+// 160/100 from the dashboard, but only `weight_kg` was reconciled into the
+// flat `measurements` block — so the block kept the May intake's 160/80, and
+// because Fly staging projects `measurements` (not `measurements_log`) the
+// client app displayed a diastolic that was 20 mmHg below the real reading.
+describe("reconcileFlatMeasurements", () => {
+  it("carries a logged BP into the flat block (cl-009 regression)", () => {
+    const data: Record<string, unknown> = {
+      measurements: {
+        height_cm: 157,
+        weight_kg: 53,
+        blood_pressure_systolic: 160,
+        blood_pressure_diastolic: 80, // stale intake value
+        measured_on: "2026-05-23",
+      },
+      measurements_log: [
+        { date: "2026-08-04", weight_kg: 53, blood_pressure_systolic: 160, blood_pressure_diastolic: 100 },
+      ],
+    };
+    reconcileFlatMeasurements(data);
+    const m = data.measurements as Record<string, unknown>;
+    expect(m.blood_pressure_diastolic).toBe(100);
+    expect(m.blood_pressure_systolic).toBe(160);
+    expect(m.measured_on).toBe("2026-08-04");
+  });
+
+  it("a BP-only log does not disturb weight_now_kg", () => {
+    const data: Record<string, unknown> = {
+      measurements: { weight_kg: 53, measured_on: "2026-07-01" },
+      weight_now_kg: 53,
+      measurements_log: [{ date: "2026-08-04", blood_pressure_systolic: 150, blood_pressure_diastolic: 95 }],
+    };
+    reconcileFlatMeasurements(data);
+    expect(data.weight_now_kg).toBe(53);
+    expect((data.measurements as Record<string, unknown>).blood_pressure_systolic).toBe(150);
+  });
+
+  it("a backdated correction never clobbers a newer reading", () => {
+    const data: Record<string, unknown> = {
+      measurements: { blood_pressure_systolic: 160, blood_pressure_diastolic: 100, measured_on: "2026-08-04" },
+      measurements_log: [
+        { date: "2026-08-04", blood_pressure_systolic: 160, blood_pressure_diastolic: 100 },
+        { date: "2026-06-01", blood_pressure_systolic: 120, blood_pressure_diastolic: 78 },
+      ],
+    };
+    reconcileFlatMeasurements(data);
+    const m = data.measurements as Record<string, unknown>;
+    expect(m.blood_pressure_systolic).toBe(160);
+    expect(m.blood_pressure_diastolic).toBe(100);
+  });
+
+  it("reads snapshot short keys (bp_systolic) from the client app's self-log", () => {
+    const data: Record<string, unknown> = {
+      measurements: { blood_pressure_systolic: 160, blood_pressure_diastolic: 100, measured_on: "2026-08-04" },
+      health_snapshots: [
+        { date: "2026-08-06", source: "client_app", measurements: { bp_systolic: 138, bp_diastolic: 88 } },
+      ],
+    };
+    reconcileFlatMeasurements(data);
+    const m = data.measurements as Record<string, unknown>;
+    expect(m.blood_pressure_systolic).toBe(138);
+    expect(m.blood_pressure_diastolic).toBe(88);
+    expect(m.measured_on).toBe("2026-08-06");
   });
 });

@@ -279,3 +279,98 @@ export function validateMeasurement(key: string, value: number): MeasurementVali
   }
   return { ok: true, value };
 }
+
+/**
+ * After a measurement write, make the flat "current weight" fields reflect the
+ * NEWEST-dated weigh-in across every store (measurements_log, health_snapshots,
+ * flat measurements) — so single-field readers surface the latest, while the
+ * log keeps the full history for comparison.
+ *
+ * WHY this exists: addMeasurementAction only appends to `measurements_log`, but
+ * the protein-floor / menu strip (`clientWeightKg` in menu-nutrients.ts) and the
+ * letter BMR/calorie calc (render-client-letter.py) read only the flat
+ * `measurements.weight_kg` / `weight_now_kg`. Without this reconcile a coach
+ * Log-entry never reached those surfaces (the cl-004 2026-05-18 bug — coach
+ * logged 79 kg, everything else kept using the intake 80 kg). The client-app
+ * self-log (save-app-body.py) already bumps the flat fields; this brings the
+ * coach path to parity.
+ *
+ * Resolution matches the Overview trend + weight-progress detector: newest date
+ * wins; same-date tie → measurements_log > health_snapshots > flat. Backdated
+ * corrections therefore stay as history and never clobber a newer current weight.
+ *
+ * EVERY vital, not just weight (2026-08-04). This reconciled `weight_kg` alone,
+ * so a coach Log-entry of BP 160/100 left `measurements.blood_pressure_*` on the
+ * intake reading — and because the Fly staging projection carries the flat
+ * `measurements` block but NOT `measurements_log`, the client app went on showing
+ * the stale intake BP. cl-009 logged 160/100 and her app kept reading 160/80: not
+ * a missing number but a WRONG one, on the marker her plan is being steered by.
+ * Each metric resolves independently — BP logged without a weigh-in still lands.
+ */
+export function reconcileFlatMeasurements(data: Record<string, unknown>): void {
+  type Cand = { date: string; value: number; prio: number };
+  /** Per-metric sanity floor — >20 guards lb/typo noise on weight; the rest
+   *  only need to be positive (validateMeasurement already range-checked the
+   *  incoming write, and historical stores may hold anything). */
+  const METRICS: Array<{ flat: string; log: string; snap: string; min: number }> = [
+    { flat: "weight_kg", log: "weight_kg", snap: "weight_kg", min: 20 },
+    { flat: "waist_cm", log: "waist_cm", snap: "waist_cm", min: 0 },
+    { flat: "hip_cm", log: "hip_cm", snap: "hip_cm", min: 0 },
+    // health_snapshots use the canonical short keys (bp_*/hr_bpm); the flat
+    // block and measurements_log use the long ones — see measurements.ts.
+    { flat: "blood_pressure_systolic", log: "blood_pressure_systolic", snap: "bp_systolic", min: 0 },
+    { flat: "blood_pressure_diastolic", log: "blood_pressure_diastolic", snap: "bp_diastolic", min: 0 },
+    { flat: "resting_heart_rate", log: "resting_heart_rate", snap: "hr_bpm", min: 0 },
+  ];
+  const flat = (data.measurements as Record<string, unknown> | undefined) ?? {};
+  const flatDate =
+    typeof flat.measured_on === "string" && flat.measured_on ? (flat.measured_on as string) : null;
+  const snapshots = (data.health_snapshots as Array<Record<string, unknown>> | undefined) ?? [];
+  const log = (data.measurements_log as Array<Record<string, unknown>> | undefined) ?? [];
+
+  const winnerFor = (m: (typeof METRICS)[number]): Cand | null => {
+    const num = (v: unknown): number | null => {
+      const n = typeof v === "number" ? v : Number(v);
+      return Number.isFinite(n) && n > m.min ? n : null;
+    };
+    const cands: Cand[] = [];
+    const flatVal = num(flat[m.flat]);
+    if (flatVal && flatDate) cands.push({ date: flatDate, value: flatVal, prio: 0 });
+    for (const s of snapshots) {
+      const d = typeof s?.date === "string" ? s.date : null;
+      const sm = (s?.measurements as Record<string, unknown> | undefined) ?? {};
+      // tolerate either key shape on a snapshot
+      const v = num(sm[m.snap]) ?? num(sm[m.flat]);
+      if (d && v) cands.push({ date: d, value: v, prio: 1 });
+    }
+    for (const e of log) {
+      const d = typeof e?.date === "string" ? e.date : null;
+      const v = num(e?.[m.log]);
+      if (d && v) cands.push({ date: d, value: v, prio: 2 });
+    }
+    if (!cands.length) return null;
+    cands.sort((a, b) => (a.date === b.date ? b.prio - a.prio : b.date.localeCompare(a.date)));
+    return cands[0];
+  };
+
+  const meas: Record<string, unknown> = { ...flat };
+  let newestDate: string | null = null;
+  let weightWinner: Cand | null = null;
+  for (const m of METRICS) {
+    const win = winnerFor(m);
+    if (!win) continue;
+    meas[m.flat] = win.value;
+    if (m.flat === "weight_kg") weightWinner = win;
+    if (!newestDate || win.date.localeCompare(newestDate) > 0) newestDate = win.date;
+  }
+  if (!newestDate) return;
+
+  // measured_on is the date of the most recent reading of ANY vital — it is
+  // what the client app renders under "last measured" and what
+  // collectMeasurementSnapshots() dates the flat entry by.
+  meas.measured_on = newestDate;
+  data.measurements = meas;
+  // weight_now_kg stays tied to the newest WEIGH-IN specifically: the protein
+  // floor and the letter BMR calc read it, and a BP-only log must not disturb it.
+  if (weightWinner) data.weight_now_kg = weightWinner.value;
+}
