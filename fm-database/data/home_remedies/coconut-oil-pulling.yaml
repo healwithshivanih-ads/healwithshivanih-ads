@@ -1,0 +1,111 @@
+slug: coconut-oil-pulling
+display_name: Coconut Oil Pulling (Kavala with Nariyal Tel)
+aliases:
+- coconut-oil-kavala
+- nariyal-tel-oil-pulling
+- coconut-oil-swish
+- oil-pulling-coconut
+category: other
+route: external
+summary: >-
+  Swishing cold-pressed coconut oil around the mouth and between the teeth, then
+  spitting it out. The evidence-preferred oil for oil pulling on current trial
+  data - in a triple-blind randomised trial in periodontitis it reduced red-complex
+  pathogens (Tannerella forsythia, Treponema denticola), RAISED commensals
+  including Streptococcus, Actinomyces and Veillonella, improved the subgingival
+  dysbiosis index versus placebo, and lowered gum-pocket IL-6 and TNF-alpha where
+  chlorhexidine did not. In the one trial that held everything else constant and
+  varied only the oil, coconut outperformed both sesame and sunflower.
+
+  Coconut's edge is biochemical, not textual - lauric acid converts to monolaurin,
+  which sesame does not carry. It is also the only oil with a signal against
+  Streptococcus mutans (the acid-producing caries organism) versus saline.
+
+  IMPORTANT - classical Ayurveda specifies SESAME (tila taila) for kavala, not
+  coconut; coconut is a regional South Indian and pitta-appropriate choice. Argue
+  for coconut from the trial data, never by claiming the texts prescribe it. See
+  sesame-oil-pulling-gum-massage for the classical practice.
+
+  NEVER recommend sunflower oil - it has no traditional basis and is the oil behind
+  both major null results in this literature.
+indications:
+- gingivitis, bleeding or swollen gums
+- periodontal disease (as an adjunct to dental treatment, never instead of it)
+- oral dysbiosis / elevated oral pathogens on stool or oral testing
+- Fusobacterium nucleatum raised on gut microbiome testing (oral-origin organism)
+- plaque control and general oral hygiene
+- substitute for antiseptic or alcohol-based mouthwash, especially in hypertension
+- halitosis from oral bacteria
+- frequent dental caries (alongside fluoride, never replacing it)
+- white tongue coating / suspected oral candida
+- dry mouth (comfort only - see notes, oil is no better than water here)
+contraindications:
+- dysphagia or impaired swallow
+- gastro-oesophageal reflux, hiatus hernia or nocturnal regurgitation
+- dyspepsia, acidity, pantoprazole, omeprazole, rabeprazole, esomeprazole, lansoprazole
+- sedating or anticholinergic drugs - tramadol, nortriptyline, amitriptyline, pregabalin,
+  gabapentin, alprazolam, clonazepam, diazepam, benzo
+- loose teeth, gum abscess or pus
+- coconut allergy - use sesame instead
+- children under five
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+- nourishing
+- unctuous
+prabhava: Lauric acid converts to monolaurin, giving coconut an antimicrobial and
+  antifungal action sesame lacks - the likely reason it outperforms other oils.
+preparation: >-
+  Take 1 tablespoon (about 15 ml) of cold-pressed virgin coconut oil into the mouth
+  on an empty stomach, before eating, drinking or brushing. In cool weather it will
+  be solid - it melts in the mouth within seconds. Swish gently between the teeth
+  and along the gum margins for 10 minutes. Do not gargle and do not tip the head
+  back. The oil thins and turns milky white as it mixes with saliva. Spit it all
+  out into a bin or tissue, never the sink - it solidifies and blocks drains. Rinse
+  with warm water, then brush as usual.
+
+  SHORTER, SAFER VERSION for anyone with reflux, swallowing difficulty, sedating
+  medication, or age over 75 - use 1 teaspoon, swish 5 minutes, sitting fully
+  upright, morning only, and stop immediately at any cough or gag.
+typical_dose: One session daily
+duration: Daily and ongoing. The antibacterial effect is transient - load rebounds
+  within about 24 hours - so daily practice is the point, not occasional use.
+  Gingival improvement reported over 2 to 4 weeks; the periodontitis trial ran one
+  month plus follow-up.
+timing_notes: First thing in the morning on an empty stomach, before food, drink or
+  brushing. Sitting upright. Not at night, and never when drowsy or sedated.
+linked_to_topics:
+- periodontal-disease
+- oral-health-toxins
+- oral-microbiome-systemic-blood-pressure
+- h-pylori-infection
+- inflammation
+linked_to_mechanisms:
+- oral-microbiome-disruption
+- plaque-progression
+- chronic-inflammation
+- anti-inflammatory-signaling
+- nitric-oxide-bioavailability
+sources:
+- id: coconut-oil-periodontal-pathogens-rct-2025
+  location: Triple-blind RCT, stage II-III periodontitis, 16S + GCF cytokines
+- id: three-oil-gingival-health-rct-2025
+  location: Coconut vs sesame vs sunflower, gingival health
+- id: oil-pulling-vs-chlorhexidine-meta-analysis-2024
+  location: Gingival index SMD -1.14 vs non-CHX comparators
+- id: oil-pulling-salivary-ph-buffering-rct-children
+  location: Buffering capacity improved; salivary pH unchanged
+- id: sesame-oil-pulling-lipoid-pneumonia-cases
+  location: Aspiration safety - two case reports
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

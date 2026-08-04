@@ -1,0 +1,41 @@
+slug: sunflower-oil-pulling-shows-no-compositional-shift
+statement: >-
+  A single 15-minute session of SUNFLOWER oil pulling in 3 healthy volunteers
+  reduced total oral microbial burden by 78-92% by colony count, but the microbiota
+  was restored within about 24 hours and composition did not meaningfully change.
+  Removal was indiscriminate across taxa regardless of morphology, cell wall
+  structure or oxygen tolerance; the authors describe the mechanism as an "oral
+  massage" that enwraps epithelial cells carrying bacteria in oil vesicles, with no
+  preference for particular bacteria.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- oral-health-toxins
+- periodontal-disease
+linked_to_mechanisms:
+- oral-microbiome-disruption
+sources:
+- id: oil-pulling-oral-microbiome-16s-pilot-2021
+  location: 16S rDNA next-generation sequencing plus culture, saline control
+caveats:
+- >-
+    READ NARROWLY. n=3, healthy mouths, ONE session, sunflower oil - an industrial
+    seed oil with no traditional basis in oil pulling. This result is valid about
+    sunflower oil and silent about coconut, which produced the opposite finding in
+    diseased mouths over a month (see
+    coconut-oil-pulling-shifts-periodontal-dysbiosis). It is frequently cited as
+    proof that "oil pulling does nothing to the microbiome" - that generalisation is
+    not supported. The transience finding is separately useful and probably does
+    generalise - it is why the practice must be DAILY.
+coaching_translation: >-
+  Rinsing lowers the total bacteria in the mouth sharply but they return within a
+  day - which is why oil pulling is a daily habit, not an occasional one. Sunflower
+  oil in particular showed no useful selectivity and should not be used.
+rationale: >-
+  Recorded deliberately as the counter-evidence so it is not rediscovered later as
+  a refutation. The oil-specificity distinction here is the same failure mode as
+  the millet cautions - a generic entry warned hardest about the mildest species;
+  a generic "oil pulling" entry lets the wrong oil discredit the right one.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

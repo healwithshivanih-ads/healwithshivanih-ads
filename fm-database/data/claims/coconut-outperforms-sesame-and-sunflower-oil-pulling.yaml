@@ -1,0 +1,39 @@
+slug: coconut-outperforms-sesame-and-sunflower-oil-pulling
+statement: >-
+  In a triple-blind randomised trial comparing sesame, coconut and sunflower oil
+  pulling on gingival health under an otherwise identical protocol, all three oils
+  improved gingival health and coconut oil was the most effective. Separately,
+  coconut oil pulling significantly reduced salivary Streptococcus mutans versus
+  saline, whereas sesame oil did not differ significantly from saline.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- periodontal-disease
+- oral-health-toxins
+linked_to_mechanisms:
+- oral-microbiome-disruption
+- plaque-progression
+sources:
+- id: three-oil-gingival-health-rct-2025
+  location: Head-to-head comparison of the three oils, triple blinded
+- id: oil-pulling-vs-chlorhexidine-meta-analysis-2024
+  location: Pooled oil-pulling estimate across oil types
+caveats:
+- >-
+    The head-to-head abstract does not report n, duration or effect magnitudes, so
+    the ranking is DIRECTIONAL only. Other comparisons have found coconut and sesame
+    broadly similar on gingival indices, so the margin is not dramatic. The
+    mechanistic argument for coconut is independent and stronger - lauric acid
+    converts to monolaurin, which sesame does not carry.
+coaching_translation: >-
+  If choosing one oil, choose cold-pressed coconut. Sesame is the classical
+  Ayurvedic choice and remains a reasonable option, particularly for a client with
+  coconut allergy. Do not use sunflower oil.
+rationale: >-
+  This is the trial that isolates oil TYPE while holding session length, mouth
+  health and outcome measure constant - which is what makes the
+  coconut-over-sunflower recommendation evidence-based rather than inferred from
+  comparing dissimilar studies.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

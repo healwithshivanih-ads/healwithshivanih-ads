@@ -1,0 +1,43 @@
+slug: oil-pulling-aspiration-lipoid-pneumonia-risk
+statement: >-
+  Repeated oil pulling can cause exogenous lipoid pneumonia through aspiration. Two
+  published cases involved sesame oil - a 66-year-old man practising nightly nasal
+  oil washing for 8 months who "often aspirated the oil" and presented with dry
+  cough requiring steroid pulse therapy and bronchoalveolar lavage, and a
+  38-year-old woman practising morning mouth washing for 6 months who "would
+  sometimes aspirate" and presented with shortness of breath, resolving on
+  discontinuation alone. Both presented months after symptom onset.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- oral-health-toxins
+- gerd
+sources:
+- id: sesame-oil-pulling-lipoid-pneumonia-cases
+  location: Two case reports; authors advise considering it where the custom is
+    common
+caveats:
+- >-
+    Two case reports - the absolute risk in correctly performed oil pulling is very
+    low, and one case involved nasal rather than oral use. This is not a reason to
+    avoid the practice; it is the reason for the technique rules and for the
+    contraindication list on the remedy entries.
+coaching_translation: >-
+  Oil pulling is safe when done sitting upright and spat out, but oil that goes
+  down the wrong way can inflame the lungs. Sit up, do not tip your head back, do
+  not gargle, stop at once if you cough or gag, and never do it when drowsy. If a
+  cough or breathlessness develops and persists, stop and see a doctor - and tell
+  them you oil pull, because it takes months to show and is easily missed.
+out_of_scope_notes: >-
+  A persistent cough or breathlessness in a client who oil pulls is a REFERRAL,
+  not something to coach through.
+rationale: >-
+  Risk concentrates in clients with reflux, dysphagia, or sedating and
+  anticholinergic medication, and in the elderly. On the current roster that is
+  Sudarshan Karnad (cl-008 - GERD plus tramadol, nortriptyline and pregabalin,
+  the heaviest combination on the roster), Kamla Bhutani (cl-021 - PPI plus
+  alprazolam) and Manju Jain (cl-016 - age 80-85). For these, prescribe the short
+  version - one teaspoon, five minutes, upright, morning only.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

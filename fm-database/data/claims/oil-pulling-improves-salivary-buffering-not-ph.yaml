@@ -1,0 +1,34 @@
+slug: oil-pulling-improves-salivary-buffering-not-ph
+statement: >-
+  In a four-week randomised trial in 80 girls aged 12-14 (coconut oil, sesame oil,
+  chlorhexidine, plain water), oil pulling significantly improved salivary
+  BUFFERING CAPACITY versus control - coconut p=0.0345, sesame p=0.026,
+  chlorhexidine p=0.045 - while salivary pH itself did not differ significantly
+  (p>0.05). Oil pulling matched chlorhexidine on both buffering capacity and total
+  antioxidant capacity.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- oral-health-toxins
+- periodontal-disease
+sources:
+- id: oil-pulling-salivary-ph-buffering-rct-children
+  location: Four-arm randomised study, baseline vs 30 days
+caveats:
+- >-
+    Paediatric female population, four weeks, single centre; numeric tables were not
+    retrievable from the abstract page. Buffering capacity and resting pH are
+    different properties and the distinction is load-bearing here.
+coaching_translation: >-
+  Oil pulling does not make the mouth less acidic at rest. What it appears to
+  improve is saliva's ability to RECOVER after an acid hit - from a meal, a sweet,
+  or reflux - which is what protects enamel over time.
+rationale: >-
+  Corrects the widespread claim that oil pulling "alkalises the mouth". It does
+  not. Use this wording whenever a client or a source makes the pH claim. Relevant
+  to the caries clients on the roster (Manju Jain cl-016, Krittika Krishnan
+  cl-019) and to anyone with reflux, whose saliva is already lower in pH and
+  buffering capacity.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

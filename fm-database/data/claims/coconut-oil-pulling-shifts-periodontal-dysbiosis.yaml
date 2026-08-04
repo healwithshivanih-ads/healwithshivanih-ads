@@ -1,0 +1,45 @@
+slug: coconut-oil-pulling-shifts-periodontal-dysbiosis
+statement: >-
+  In a triple-blind randomised trial in stage II-III periodontitis (n=30; coconut
+  oil vs 0.12% chlorhexidine vs placebo, one month plus non-surgical periodontal
+  therapy), coconut oil pulling produced a directional shift in oral microbial
+  COMPOSITION, not merely a drop in bacterial load. Red-complex pathogens
+  Tannerella forsythia and Treponema denticola fell, along with Treponema
+  socranskii, T. maltophilum, Olsenella uli and the families Spirochaetaceae and
+  Tannerellaceae, while commensal Streptococcus, Actinomyces, Veillonella and
+  Gemella rose. The subgingival microbial dysbiosis index improved significantly
+  versus placebo.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- periodontal-disease
+- oral-health-toxins
+- oral-microbiome-systemic-blood-pressure
+linked_to_mechanisms:
+- oral-microbiome-disruption
+- plaque-progression
+sources:
+- id: coconut-oil-periodontal-pathogens-rct-2025
+  location: 16S V3-V4 sequencing of saliva and gingival crevicular fluid
+caveats:
+- >-
+    n=10 per arm, single centre; the authors flag sample size as the main
+    limitation. Captured from the open-access record rather than full methods.
+    Alpha diversity was relatively stable and beta-diversity treatment effects were
+    minimal - the finding is a shift in specific taxa and in the dysbiosis index,
+    not a wholesale community restructuring. Applies to COCONUT oil in DISEASED
+    mouths over a month; do not extend to other oils (see
+    sunflower-oil-pulling-shows-no-compositional-shift) or to a single session.
+coaching_translation: >-
+  Coconut oil pulling appears to move the mouth's bacterial balance in the right
+  direction - fewer of the organisms that damage gums, more of the helpful ones -
+  rather than simply killing everything indiscriminately. Daily practice, as an
+  addition to brushing and dental care, never a replacement.
+rationale: >-
+  This is the claim that licenses recommending oil pulling for oral dysbiosis
+  rather than only for gum comfort. Note the Veillonella and Actinomyces increase
+  - those are the nitrate-reducing genera chlorhexidine destroys, which is why
+  coconut oil is preferable to an antiseptic rinse in hypertensive clients.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+id: oil-pulling-oral-microbiome-16s-pilot-2021
+title: 'High-resolution taxonomic examination of the oral microbiome after oil pulling
+  with standardized sunflower seed oil and healthy participants: a pilot study'
+source_type: peer_reviewed_paper
+quality: low
+authors: []
+publisher: Clinical Oral Investigations
+year: 2021
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8060239/
+notes: >-
+  The paper most often cited to argue oil pulling "does nothing to the microbiome".
+  Read it narrowly - it tested SUNFLOWER oil, a single 15-minute session, in 3
+  healthy volunteers, with saline as the negative control.
+
+  Burden fell 78-92% by CFU but was restored within ~24 h, and composition did not
+  meaningfully change - removal was indiscriminate across taxa regardless of
+  morphology, cell wall or oxygen tolerance. The authors describe the mechanism as
+  an "oral massage" that enwraps epithelial cells carrying bacteria in oil
+  vesicles.
+
+  Quality marked LOW for n=3 and single-session design. This result is valid ABOUT
+  SUNFLOWER OIL and silent about coconut - see
+  coconut-oil-periodontal-pathogens-rct-2025, which found the opposite in diseased
+  mouths over a month. Do not let a review pool the two.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

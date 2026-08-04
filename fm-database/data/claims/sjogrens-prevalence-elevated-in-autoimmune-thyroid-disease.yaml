@@ -1,0 +1,52 @@
+slug: sjogrens-prevalence-elevated-in-autoimmune-thyroid-disease
+statement: >-
+  Sjogren's syndrome is substantially over-represented in autoimmune thyroid
+  disease. Reported prevalence ranges from 3% to 32%, with 17% in Hashimoto's
+  thyroiditis and 5% in Graves'. Among patients with autoimmune thyroid disease,
+  37% met criteria for xerostomia and 23% for keratoconjunctivitis sicca, and
+  Sjogren's features were present in 24% overall (27% in Hashimoto's). Conversely,
+  autoimmune thyroid disease occurs in primary Sjogren's at nine times the
+  general-population rate. Anti-thyroglobulin antibodies in the two conditions bind
+  an overlapping region of human thyroglobulin, indicating shared pathogenesis
+  rather than coincidence.
+evidence_tier: strong
+linked_to_topics:
+- sjogrens-syndrome
+- autoimmune-thyroiditis
+- hypothyroidism
+- autoimmune
+linked_to_mechanisms:
+- molecular-mimicry
+- chronic-inflammation
+linked_to_symptoms:
+- dry-mouth
+- dry-eyes
+sources:
+- id: sjogren-autoimmune-thyroid-association-review
+  location: Prevalence figures and shared thyroglobulin epitope
+caveats:
+- >-
+    Prevalence estimates vary widely by criteria used and by whether subclinical
+    features or full classification is counted. Association is well established;
+    direction of causation is not.
+coaching_translation: >-
+  Dry mouth and dry eyes are common in autoimmune thyroid conditions and are worth
+  taking seriously rather than living with. There is a simple no-cost measurement
+  we can do in a session, and a blood test that can be arranged directly if it is
+  warranted.
+out_of_scope_notes: >-
+  Diagnosis belongs to a rheumatologist. Our role is to notice the pattern,
+  measure salivary flow objectively, protect the teeth, and make sure the client
+  reaches a clinician WITH evidence rather than a request. With health-anxious
+  clients, do not name the possible diagnosis unprompted.
+rationale: >-
+  SCREENING RULE - autoimmune thyroid disease PLUS dry mouth PLUS dry eyes.
+  On the current roster this fires on Nazneen Irani (cl-022 - Hashimoto's,
+  anti-TPO 128.1, dry mouth AND dry eyes, whose stated goal is that her dry mouth
+  return to normal). Niti Sethi (cl-014) is a partial match - Hashimoto's with dry
+  mouth but no dry eyes, and documented night-time mouth breathing as a competing
+  explanation. At 17% prevalence this is too common to leave to memory.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

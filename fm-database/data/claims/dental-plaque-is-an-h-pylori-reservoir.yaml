@@ -1,0 +1,41 @@
+slug: dental-plaque-is-an-h-pylori-reservoir
+statement: >-
+  Dental plaque is an established extragastric reservoir for Helicobacter pylori
+  and is poorly cleared by standard triple therapy. Adding periodontal treatment
+  to triple therapy raised gastric eradication from 51.1% to 64.7% in a
+  meta-analysis of clinical trials, with the benefit greater where good plaque
+  control was maintained afterwards. Failure to clear H. pylori from dental plaque
+  has been associated with roughly 64-fold higher odds of gastric eradication
+  failure.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- h-pylori-infection
+- periodontal-disease
+- gerd
+- oral-health-toxins
+linked_to_mechanisms:
+- oral-microbiome-disruption
+sources:
+- id: periodontal-therapy-h-pylori-eradication-meta
+  location: Updated meta-analysis of periodontal treatment plus triple therapy
+caveats:
+- >-
+    This concerns professional PERIODONTAL TREATMENT (scaling and plaque control),
+    NOT oil pulling. Extending it to oil pulling is a reasonable but entirely
+    untested inference. Whether H. pylori genuinely colonises the mouth or is
+    transiently present has also been questioned in the literature. Never tell a
+    client that oil pulling treats H. pylori.
+coaching_translation: >-
+  If reflux or gastric symptoms are driven by H. pylori, the mouth can act as a
+  reservoir that re-seeds the stomach after treatment - which is why dental
+  cleaning and daily oral hygiene are worth taking seriously alongside whatever
+  the doctor prescribes.
+rationale: >-
+  The most defensible mechanism linking an oral practice to a GASTRIC outcome, and
+  the best available explanation for coach-observed reflux improvement on oil
+  pulling. Directly relevant to Sudarshan Karnad (cl-008) - possible H. pylori,
+  white tongue coating, long antibiotic history, six months of pantoprazole.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

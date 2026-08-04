@@ -1,0 +1,37 @@
+slug: classical-ayurveda-specifies-sesame-for-kavala
+statement: >-
+  The classical Ayurvedic texts specify SESAME oil (tila taila) for oil pulling,
+  not coconut. Charaka Samhita describes kavala graha; Sushruta Samhita and
+  Vagbhata's Ashtanga Hridaya describe both gandusha (holding) and kavala graha
+  (swishing), the distinction being the quantity held rather than the oil used.
+  Charaka attributes to sesame oil gargling - strength of the jaws, depth of
+  voice, improved taste perception, prevention of throat dryness and cracked lips,
+  prevention of dental caries, and the ability to chew hard foods. Coconut is a
+  regional South Indian and pitta-appropriate choice, not the textual
+  prescription.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- oral-health-toxins
+- agni-digestive-fire
+sources:
+- id: coach-shivani
+  location: Catalogue authoring 2026-08-04 - classical text review
+caveats:
+- >-
+    Captured from secondary summaries of the classical texts rather than from
+    translated primary sources with verse references. Add verse citations if a
+    primary translation is consulted.
+coaching_translation: >-
+  Traditional oil pulling means sesame oil. Coconut is a southern regional variant
+  with better modern trial data behind it.
+rationale: >-
+  Recorded specifically to prevent a credibility error. The strongest argument
+  against the sunflower-oil trials is NOT that "Ayurveda specifies coconut" -
+  because it does not - but that sunflower oil is a twentieth-century industrial
+  seed oil with no traditional basis at all, and that the one head-to-head trial
+  puts coconut ahead of it. Argue for coconut from the trial data; argue against
+  sunflower from both. An Ayurvedic practitioner will correct the first framing.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

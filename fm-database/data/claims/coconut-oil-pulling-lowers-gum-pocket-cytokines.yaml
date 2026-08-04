@@ -1,0 +1,39 @@
+slug: coconut-oil-pulling-lowers-gum-pocket-cytokines
+statement: >-
+  In the same triple-blind periodontitis trial, coconut oil pulling significantly
+  reduced inflammatory cytokines in gingival crevicular fluid - IL-6 fell by 72.4
+  pg/mL (p=0.021) and TNF-alpha fell (p=0.021) from baseline to final measurement.
+  Chlorhexidine produced no significant cytokine reduction. Coconut oil was
+  superior to placebo for IL-6 between months one and three (p=0.027) and for
+  TNF-alpha overall (p=0.045).
+evidence_tier: plausible_emerging
+linked_to_topics:
+- periodontal-disease
+- inflammation
+- oral-health-toxins
+linked_to_mechanisms:
+- chronic-inflammation
+- anti-inflammatory-signaling
+sources:
+- id: coconut-oil-periodontal-pathogens-rct-2025
+  location: IL-6 and TNF-alpha quantified from gingival crevicular fluid
+caveats:
+- >-
+    CRITICAL SCOPE LIMIT - these cytokines were measured in GINGIVAL CREVICULAR
+    FLUID, i.e. locally within the gum pocket, NOT in serum. This demonstrates
+    reduced LOCAL inflammation. It does not by itself demonstrate reduced systemic
+    inflammatory burden, and it must not be used to claim an effect on systemic or
+    autoimmune disease. n=10 per arm.
+coaching_translation: >-
+  Coconut oil pulling calmed inflammation in the gum tissue itself, and did so
+  better than a standard antiseptic mouthwash. Whether that translates into
+  anything measurable elsewhere in the body has not been shown.
+rationale: >-
+  This is the single hard data point people reach for when arguing oil pulling
+  helps systemic or thyroid conditions. Recording the GCF-not-serum distinction
+  explicitly is the point of this entry - it is the exact place the inference
+  overreaches. See coach-observation-oil-pulling-reflux-and-thyroid.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

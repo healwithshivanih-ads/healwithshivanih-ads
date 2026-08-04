@@ -1,0 +1,71 @@
+slug: coach-observation-oil-pulling-reflux-and-thyroid
+statement: >-
+  COACH OBSERVATION (Shivani, 2026-08-04) - people known to the coach report that
+  taking up oil pulling improved their reflux/acidity, and separately report
+  improvement in thyroid-related symptoms. These are uncontrolled personal reports,
+  not measured outcomes, and are recorded here as a hypothesis to be tested rather
+  than as an established effect.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- gerd
+- h-pylori-infection
+- autoimmune-thyroiditis
+- oral-health-toxins
+linked_to_mechanisms:
+- oral-microbiome-disruption
+- chronic-inflammation
+linked_to_symptoms:
+- heartburn
+sources:
+- id: coach-shivani
+  location: Coach clinical observation recorded during catalogue authoring
+    2026-08-04
+caveats:
+- >-
+    Anecdotal, uncontrolled, no denominator, no measurement, and subject to recall
+    and selection bias. Oil pulling is rarely adopted in isolation - it usually
+    arrives inside a bundle of other changes, any of which could account for the
+    improvement. A morning oil-pulling ritual also displaces morning tea or coffee,
+    itself a classic reflux trigger, which is a behavioural confound rather than an
+    oral-microbiome effect.
+
+    For the thyroid observation specifically - if a client has undiagnosed sicca,
+    relief of dry mouth and dry eyes can be EXPERIENCED as "my thyroid is better".
+    See sjogrens-prevalence-elevated-in-autoimmune-thyroid-disease.
+
+    Do NOT put either claim in a client letter.
+coaching_translation: >-
+  Some people find their acidity settles when they start oil pulling. It is worth
+  trying, and worth telling me what you notice - but spit all of it out, because
+  swallowed oil can make reflux worse.
+rationale: >-
+  MECHANISM FOR THE REFLUX OBSERVATION - plausible and non-trivial. Dental plaque
+  is a reservoir for H. pylori and adding plaque control to eradication therapy
+  raises success from 51.1% to 64.7% (see dental-plaque-is-an-h-pylori-reservoir),
+  so reducing oral bacterial load is genuinely upstream of the stomach.
+
+  APPARENT CONTRADICTION RESOLVED - dietary fat relaxes the lower oesophageal
+  sphincter and delays gastric emptying, which predicts oil pulling should WORSEN
+  reflux. That applies only to fat that REACHES THE STOMACH. Clients who spit the
+  oil out entirely never trigger it. The observation and the mechanism are
+  therefore compatible, and the coaching instruction follows directly - spit it
+  all out and it may help; swallow it and it may hurt.
+
+  MECHANISM FOR THE THYROID OBSERVATION - much weaker. The one hard data point is
+  the IL-6 and TNF-alpha reduction in the coconut trial, but those were measured
+  in gingival crevicular fluid, not serum
+  (see coconut-oil-pulling-lowers-gum-pocket-cytokines). Local gum inflammation
+  falling does not establish reduced systemic burden.
+
+  HOW TO TEST IT - the practice already collects what is needed. Record oil
+  pulling as a dated practice, then track the client's own reflux/acidity item on
+  the Progress MSQ before and after, alongside existing symptom tracking. Three or
+  four clients with pre/post symptom scores would move this from anecdote to
+  something citable. Sudarshan Karnad (cl-008) and Archana Padia (cl-007) both
+  have acidity as an explicit goal and are the natural first cases - though
+  cl-008 needs the short, upright, low-volume technique because of his aspiration
+  risk.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

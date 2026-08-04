@@ -1,0 +1,83 @@
+slug: sjogrens-syndrome
+display_name: Sjogren's Syndrome (Sicca Syndrome)
+aliases:
+- sjogren
+- sjogrens
+- sicca syndrome
+- primary sjogren syndrome
+- autoimmune dry mouth and dry eyes
+summary: >-
+  An autoimmune condition attacking the moisture-producing glands, producing dry
+  mouth (xerostomia) and dry eyes (keratoconjunctivitis sicca), often with fatigue
+  and joint pain. It matters enormously in this practice because it travels with
+  autoimmune thyroid disease - Sjogren's runs at 17% in Hashimoto's, 37% of
+  autoimmune-thyroid patients meet xerostomia criteria, 23% meet dry-eye criteria,
+  and 24% carry Sjogren's features overall. Conversely autoimmune thyroid disease
+  in primary Sjogren's runs at nine times the background rate. The overlap is
+  mechanistic, not coincidental - anti-thyroglobulin antibodies in the two
+  conditions bind an overlapping region of human thyroglobulin.
+
+  Practical consequence - dry mouth in a Hashimoto's client is never a throwaway
+  symptom, and dry mouth PLUS dry eyes in that client should trigger objective
+  assessment rather than a saliva-substitute suggestion. Untreated it is not
+  merely uncomfortable - loss of saliva drives rampant caries, candida and
+  swallowing difficulty.
+key_mechanisms:
+- chronic-inflammation
+- molecular-mimicry
+common_symptoms:
+- dry-mouth
+- dry-eyes
+- fatigue
+- joint-pain
+related_topics:
+- autoimmune-thyroiditis
+- autoimmune
+- hypothyroidism
+- oral-health-toxins
+red_flags:
+- unilateral or persistent salivary gland swelling (parotid) - needs urgent
+  clinician review, small lymphoma risk in long-standing Sjogren's
+- rapidly progressive dental decay in an adult with dry mouth
+- dry eyes with pain, photophobia or vision change - ophthalmology, not lubricants
+coaching_scope_notes: >-
+  IN SCOPE - noticing the pattern, measuring unstimulated whole salivary flow rate
+  in a session (see lab test of the same name), asking directly about dry eyes and
+  dry mouth in every autoimmune-thyroid client, protecting the teeth (fluoride,
+  no alcohol mouthwash, sipping water, sugar-free stimulation), and arranging
+  direct-order antibody testing so the client presents to a doctor WITH a result.
+
+  OUT OF SCOPE - diagnosing Sjogren's, interpreting a positive antibody result as
+  diagnosis, or advising on immunosuppressive treatment.
+
+  Indian-practice note - clients are frequently dismissed when they ask a doctor
+  for a specific test. Ordering the ENA/anti-SSA panel directly (available without
+  prescription) and walking in with a positive result changes that conversation
+  entirely. A negative result does NOT exclude Sjogren's - seronegative disease is
+  real - so a client with clearly low salivary flow still warrants review.
+
+  Special caution with health-anxious clients - naming a possible autoimmune
+  diagnosis can do real harm. Frame as comfort and dental protection, and discuss
+  testing only if they raise it.
+clinician_scope_notes: >-
+  Diagnosis is by the 2016 ACR/EULAR classification criteria, integrating
+  anti-SSA/Ro, ocular staining, Schirmer's test, unstimulated whole salivary flow
+  and labial minor salivary gland biopsy. Referral is to rheumatology.
+sources:
+- id: sjogren-autoimmune-thyroid-association-review
+  location: Prevalence of Sjogren's in autoimmune thyroid disease; shared
+    thyroglobulin epitope
+- id: acr-eular-sjogren-classification-criteria-2016
+  location: Classification criteria; UWSFR threshold; seronegative disease
+evidence_tier: strong
+notes_for_coach: >-
+  Screening trigger to apply across the roster - autoimmune thyroid disease PLUS
+  dry mouth PLUS dry eyes. On the current roster that is Nazneen Irani (cl-022),
+  whose stated goal is literally that her dry mouth return to normal. Niti Sethi
+  (cl-014) has Hashimoto's and dry mouth but no dry eyes, and her dry mouth has a
+  competing explanation in documented night-time mouth breathing - lower suspicion,
+  still worth the salivary flow measurement.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani
