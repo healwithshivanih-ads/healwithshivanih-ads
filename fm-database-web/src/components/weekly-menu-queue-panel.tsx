@@ -44,18 +44,26 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
 
   if (!rows || rows.length === 0) return null;
 
-  // Paused rows come FIRST in the filter chain so a dormant client can never
+  // Paused rows come FIRST in the filter chain so a paused client can never
   // also appear in the approve/upcoming groups — the pause is the whole story
   // for them and showing them twice would be misleading.
-  const pausedRows = rows.filter((r) => !!r.dormantDays);
-  const approveRows = rows.filter((r) => r.pending && !r.onTravel && !r.dormantDays);
-  const travelRows = rows.filter((r) => r.pending && r.onTravel && !r.dormantDays);
-  const upcoming = rows.filter((r) => !r.pending && !r.onTravel && !r.dormantDays);
+  //
+  // Two KINDS of paused, kept apart because they need different reactions:
+  // dormancy is a client who vanished (chase her), coach-paused is a standing
+  // decision (do nothing). Lumping them under one heading would turn the
+  // dormancy list — whose whole job is to prompt a chase — into noise.
+  const off = (r: Row) => !!r.dormantDays || !!r.coachPaused;
+  const coachPausedRows = rows.filter((r) => !!r.coachPaused);
+  const pausedRows = rows.filter((r) => !!r.dormantDays && !r.coachPaused);
+  const approveRows = rows.filter((r) => r.pending && !r.onTravel && !off(r));
+  const travelRows = rows.filter((r) => r.pending && r.onTravel && !off(r));
+  const upcoming = rows.filter((r) => !r.pending && !r.onTravel && !off(r));
   if (
     approveRows.length === 0 &&
     travelRows.length === 0 &&
     upcoming.length === 0 &&
-    pausedRows.length === 0
+    pausedRows.length === 0 &&
+    coachPausedRows.length === 0
   )
     return null;
 
@@ -284,6 +292,47 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
                 >
                   Dismiss draft
                 </button>
+              </div>
+            ))}
+          </div>
+        </FmPanel>
+      )}
+
+      {coachPausedRows.length > 0 && (
+        <FmPanel
+          title={`⏸ Weekly generation off — your choice (${coachPausedRows.length})`}
+          subtitle="You've paused weekly generation for these clients. No menu is drafted and no recipes are written; each one stays frozen on the menu she already has, and her app is otherwise unchanged. Turn it back on in Weekly menu + recipes below."
+        >
+          <div style={{ display: "grid", gap: 6 }}>
+            {coachPausedRows.map((r) => (
+              <div
+                key={r.clientId}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  flexWrap: "wrap",
+                  padding: "8px 10px",
+                  border: "1px solid rgba(120,113,108,0.18)",
+                  borderRadius: "var(--fm-radius-md, 10px)",
+                  fontSize: 12.5,
+                  opacity: 0.85,
+                }}
+              >
+                <span style={{ flex: 1, minWidth: 160 }}>
+                  <strong>{names[r.clientId] ?? r.clientId}</strong>
+                  <span style={{ color: "var(--fm-text-tertiary)" }}>
+                    {" "}
+                    · frozen on her current menu
+                    {r.pending ? " · a drafted menu is waiting from before" : ""}
+                  </span>
+                </span>
+                <a
+                  href={`/clients-v2/${r.clientId}/plan`}
+                  style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}
+                >
+                  Open plan
+                </a>
               </div>
             ))}
           </div>

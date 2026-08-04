@@ -31,6 +31,7 @@ import {
   recipeConsistentWithDish,
 } from "@/lib/fmdb/client-app";
 import { primaryDishPart } from "@/lib/fmdb/dish-components";
+import { weeklyGenerationPaused, setWeeklyGenerationPaused } from "@/lib/fmdb/weekly-generation-pause";
 
 export interface RecipeGenResult {
   ok: boolean;
@@ -56,7 +57,21 @@ async function readPlanField(planSlug: string, field: string): Promise<string | 
 export async function generateWeekRecipesAction(
   clientId: string,
   planSlug: string,
+  force = false,
 ): Promise<RecipeGenResult> {
+  // Coach-set pause — the AUTOMATIC paths only (menu approval, the freshness
+  // cron). `force` is the coach pressing generate herself, which always wins:
+  // she may be paused-by-default but want one week's pack for a specific
+  // reason. Checked FIRST so a paused client costs nothing at all — no token
+  // resolve, no app load, no Haiku call.
+  if (!force && (await weeklyGenerationPaused(clientId))) {
+    return {
+      ok: false,
+      error:
+        "Weekly generation is paused for this client. Turn it back on from " +
+        "the dashboard (Weekly menu + recipes) to resume.",
+    };
+  }
   // Client-level token FIRST — see app-token.ts. Reading only the plan's
   // letter_token stopped Kamla's weekly regeneration for weeks while she was
   // using the app daily.
@@ -182,4 +197,79 @@ async function recordRecipesIssued(clientId: string, planSlug: string): Promise<
   const tmp = `${file}.tmp-${process.pid}`;
   await fs.writeFile(tmp, yaml.dump(log, { sortKeys: false, lineWidth: 200 }), "utf-8");
   await fs.rename(tmp, file);
+}
+
+/* ── Coach-set weekly-generation pause ───────────────────────────────────
+   Roster + toggle behind the dashboard's "Weekly menu + recipes" panel. The
+   roster is deliberately the SAME population the weekly-menu cadence covers
+   (a real published plan with a weekly menu), because a client with no menu
+   has nothing to pause in the first place — listing them would be offering a
+   switch that does nothing.
+
+   Lives here rather than in weekly-menu.ts only because the toggle shipped
+   with the recipe half first; the flag itself governs both and is read by
+   generateWeekMenuAction too.                                              */
+
+export interface WeeklyGenerationPauseRow {
+  clientId: string;
+  planSlug: string;
+  paused: boolean;
+}
+
+/** Every weekly-menu client with their current pause state. */
+export async function weeklyGenerationPauseRosterAction(): Promise<WeeklyGenerationPauseRow[]> {
+  const dir = path.join(getPlansRoot(), "published");
+  let names: string[];
+  try {
+    names = await fs.readdir(dir);
+  } catch {
+    return [];
+  }
+  const rows: WeeklyGenerationPauseRow[] = [];
+  const seen = new Set<string>();
+  for (const n of names.sort().reverse()) {
+    if (!n.endsWith(".yaml") && !n.endsWith(".yml")) continue;
+    let p: {
+      client_id?: string;
+      slug?: string;
+      no_weekly_menu?: boolean;
+      app_menu?: { is_sample?: boolean };
+    };
+    try {
+      p = (yaml.load(await fs.readFile(path.join(dir, n), "utf-8")) as typeof p) ?? {};
+    } catch {
+      continue;
+    }
+    const cid = String(p.client_id ?? "");
+    // Newest plan per client wins (names sorted descending) — a client with
+    // several published plans must not appear twice with conflicting rows.
+    if (!cid || seen.has(cid)) continue;
+    seen.add(cid);
+    if (p.app_menu?.is_sample) continue; // hybrid/sample — one fixed week, no cadence
+    if (p.no_weekly_menu) continue; // principle plan — no menu by design
+    rows.push({
+      clientId: cid,
+      planSlug: String(p.slug ?? ""),
+      paused: await weeklyGenerationPaused(cid),
+    });
+  }
+  return rows.sort((a, b) => a.clientId.localeCompare(b.clientId));
+}
+
+/** Is weekly generation paused for ONE client? For the client-overview
+ *  toggle, which has no reason to read the whole roster. */
+export async function isWeeklyGenerationPausedAction(clientId: string): Promise<boolean> {
+  return weeklyGenerationPaused(clientId);
+}
+
+/** Pause or resume weekly generation for one client. */
+export async function setWeeklyGenerationPausedAction(
+  clientId: string,
+  paused: boolean,
+): Promise<{ ok: boolean; error?: string }> {
+  const res = await setWeeklyGenerationPaused(clientId, paused);
+  if (!res.ok) return res;
+  revalidateQuietly(`/clients-v2/${clientId}`);
+  revalidateQuietly("/dashboard-v2");
+  return { ok: true };
 }

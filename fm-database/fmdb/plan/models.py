@@ -413,6 +413,20 @@ class Client(BaseModel):
     #   hybrid     = principles FIRST, then a single sample week table
     # Default "hybrid" — works for most new clients; coach can refine.
     meal_plan_style: str = "hybrid"
+    # Coach-set pause on weekly AI generation for this client — the menu draft
+    # AND the recipe pack that follows it.
+    #
+    # Distinct from the DORMANCY pause (app-engagement.ts), which is automatic,
+    # inferred from app opens, and lifts itself the moment the client returns.
+    # That one asks "has she disappeared?". This one is about a client who is
+    # very much present but does not need fresh content written every week, so
+    # nothing should ever clear it but the coach.
+    #
+    # A paused client keeps everything already on disk: the app falls back to
+    # her last loaded week, so she stays FROZEN on her current menu rather than
+    # seeing an empty one, and recipes already written keep rendering. This
+    # stops NEW ones being generated (and the AI calls that write them).
+    weekly_generation_paused: bool = False
     # Per-client weight loss goal — set once, applies to ALL meal-plan
     # letters automatically (initial, phase letters 3-4 / 5-6 / etc).
     # When enabled, render-client-letter.py reads this to compute calorie
