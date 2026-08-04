@@ -229,6 +229,12 @@ export const CURATED_TIMING_SLOT: Record<string, "Morning" | "With meals" | "Bed
   // it as the coach's stated preference.
   "evening with dinner or at bedtime. bedtime keeps it well clear of the morning thyronorm (minerals must be ≥4 h from levothyroxine)":
     "Bedtime",
+  // The same phrase without the explaining sentence — the form that reaches
+  // cl-004 and cl-006. Held out as ambiguous-by-design until the coach
+  // adjudicated it on 2026-08-04: bedtime, for the reason her own dose text on
+  // cl-004 spells out ("…magnesium glycinate at bedtime"). Hand-written from
+  // that ruling, NOT computed by the parser it is used to check.
+  "evening, with dinner or at bedtime": "Bedtime",
 };
 
 // ─────────────────── ground truth: phrases that state no time ──────────────
@@ -254,15 +260,18 @@ export const TIMING_NO_TIME_STATED: ReadonlySet<string> = new Set([
  *  that is the coach's choice, not a gap in this table. */
 /** Phrases with TWO defensible readings, deliberately left unverified.
  *
- *  "evening, with dinner or at bedtime" (magnesium glycinate, cl-004 + cl-006):
- *  earliest-anchor reads dinner → With meals, which is the documented contract and
- *  what the multi-anchor rule would return. The app reads Bedtime, which is the
- *  clinical point for magnesium glycinate. The client takes it in the evening under
- *  either reading, so NEITHER is a client-visible defect — and encoding either as
- *  ground truth manufactures a false error that trains the coach to ignore the sweep.
- *  Refusing is the honest answer; a wrong ground truth is worse than 2 points of
- *  coverage. Reinstate a reading only if the coach adjudicates the phrase. */
-const TIMING_AMBIGUOUS_BY_DESIGN = new Set(["evening, with dinner or at bedtime"]);
+ *  EMPTY as of 2026-08-04. It held "evening, with dinner or at bedtime"
+ *  (magnesium glycinate, cl-004 + cl-006): earliest-anchor reads dinner → With
+ *  meals, the app reads Bedtime, and the client takes it in the evening under
+ *  either reading — so neither was a client-visible defect and refusing was the
+ *  honest answer until someone could adjudicate. The coach has: bedtime, on the
+ *  same reasoning the longer sibling phrase above already carries. It now has a
+ *  curated entry, so the sweep verifies it like any other phrase.
+ *
+ *  Keep this mechanism: a genuinely two-sided phrase belongs here rather than
+ *  being guessed, because a wrong ground truth trains the coach to ignore the
+ *  sweep — worse than 2 points of coverage. */
+const TIMING_AMBIGUOUS_BY_DESIGN = new Set<string>([]);
 
 export function timingIsAmbiguousByDesign(timing: string): boolean {
   return TIMING_AMBIGUOUS_BY_DESIGN.has(normTiming(timing));

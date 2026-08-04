@@ -24,6 +24,7 @@ import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import type { LetterSections } from "./extract-letter-sections";
 import { stripBrand, supplementDisplayName } from "@/lib/fmdb/supplement-display";
+import { timingSlot } from "@/lib/fmdb/client-app-format";
 
 interface SupplementItem {
   supplement_slug: string;
@@ -173,6 +174,9 @@ function Modal({
 // hasn't been generated), render a stripped-down schedule from the
 // structured plan.supplement_protocol so the coach still has something.
 
+// Presentation only — classification is delegated to the shared `timingSlot()`.
+// Index 0-6 line up with the DaySlot it returns; "unspecified" is this view's
+// own extra bucket for a timing that names no time at all.
 const TIMING_SLOTS: { key: string; label: string; emoji: string }[] = [
   { key: "early_morning", label: "Early morning",     emoji: "🌅" },
   { key: "breakfast",     label: "With breakfast",    emoji: "🍳" },
@@ -180,24 +184,17 @@ const TIMING_SLOTS: { key: string; label: string; emoji: string }[] = [
   { key: "lunch",         label: "With lunch",        emoji: "🍱" },
   { key: "afternoon",     label: "Afternoon",         emoji: "🍵" },
   { key: "dinner",        label: "With dinner",       emoji: "🌆" },
-  { key: "bedtime",       label: "Bedtime / evening", emoji: "🌙" },
+  { key: "bedtime",       label: "Bedtime",           emoji: "🌙" },
   { key: "unspecified",   label: "Timing not set",    emoji: "❓" },
 ];
 
 function classifyTiming(raw: string | undefined): string {
-  if (!raw) return "unspecified";
-  const t = raw.toLowerCase();
-  if (/(early\s*morning|first thing|wake|empty stomach)/.test(t)) return "early_morning";
-  if (/with dinner|at dinner|dinner/.test(t)) return "dinner";
-  // Shares the bedtime cue with BEDTIME_CUE in lib/fmdb/client-app-format.ts,
-  // plus "evening" — this bucket folds evening in. Word boundaries keep
-  // "bedside", "bedroom" and "nightshades" out.
-  if (/bedtime|\bbed\b|\bsleep|\bnight(?:ly|s)?\b|\bretiring\b|evening/.test(t)) return "bedtime";
-  if (/(breakfast|morning meal)/.test(t)) return "breakfast";
-  if (/(mid[- ]?morning|11 ?am|10 ?am)/.test(t)) return "mid_morning";
-  if (/(lunch|midday|1 ?pm|2 ?pm)/.test(t)) return "lunch";
-  if (/(afternoon|3 ?pm|4 ?pm|tea time|teatime)/.test(t)) return "afternoon";
-  return "unspecified";
+  // This view HAS a "Timing not set" bucket, so branch on namesTime: a
+  // with-food qualifier says nothing about WHEN and must not invent a meal.
+  const { slot, namesTime } = timingSlot(raw);
+  // The bedtime bucket used to fold plain "evening" in; it now sits at With
+  // dinner like it does on every other surface, so the label lost "/ evening".
+  return namesTime ? TIMING_SLOTS[slot].key : "unspecified";
 }
 
 function FallbackSchedule({

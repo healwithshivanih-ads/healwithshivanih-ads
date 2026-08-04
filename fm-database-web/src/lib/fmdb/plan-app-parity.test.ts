@@ -386,11 +386,13 @@ describe("PLACEMENT — ground truth is the curated table, not the parser", () =
     expect(expectedSlotFor("morning and/or bedtime")).toBe("Morning");
     expect(expectedSlotFor("mid-morning or with breakfast")).toBe("Morning");
     expect(expectedSlotFor("with lunch or dinner")).toBe("With meals");
-    // "Evening, with dinner or at bedtime" is NOT an example here: it is in
-    // TIMING_AMBIGUOUS_BY_DESIGN (two defensible readings, neither client-visible),
-    // so it must refuse rather than anchor. Asserted below so the exception is
-    // itself covered and cannot be quietly dropped.
-    expect(expectedSlotFor("Evening, with dinner or at bedtime")).toBeNull();
+    // "Evening, with dinner or at bedtime" is the exception to the earlier-option
+    // rule. It sat in TIMING_AMBIGUOUS_BY_DESIGN (two defensible readings,
+    // neither client-visible) until the coach adjudicated it on 2026-08-04:
+    // bedtime, for magnesium glycinate on cl-004 and cl-006. It now has its own
+    // curated entry, so it anchors at the LATER option — asserted here so the
+    // ruling cannot be quietly undone by a parser change.
+    expect(expectedSlotFor("Evening, with dinner or at bedtime")).toBe("Bedtime");
   });
 
   it("resolves each anchor through the curated table, never by cue-word guessing", () => {
@@ -444,19 +446,18 @@ describe("PLACEMENT — ground truth is the curated table, not the parser", () =
    * test goes red until its line is deleted.
    */
   const KNOWN_PRODUCTION_DIVERGENCE: Record<string, "Morning" | "With meals" | "Bedtime"> = {
-    // meal-anchored, no hour named → the parser pins them to the day's first
-    // meal (or its unknown-timing default) instead of the meal group
-    // the parser has no clock-time reading at all, so "3 pm" falls to its
-    // unknown-timing default (bare "afternoon" it does handle, and agrees)
-    // a "morning" anywhere in the prose outranks the stated afternoon dose —
-    // here the morning belongs to her levothyroxine, the thing iron must avoid
-    "early afternoon - at least 4 hours after your morning thyronorm (iron and levothyroxine block each other). pair with a vitamin-c food (amla, lemon, tomato); keep away from tea/coffee":
-      "Morning",
-    // a late cue anywhere in the phrase wins, even when an earlier dose-time is
-    // named ("evening ... or at bedtime"), and even when the late word belongs
-    // to a different supplement ("pair with bedtime magnesium")
-    // …unless the prose ALSO says "morning" (about her levothyroxine), which
-    // cancels the late pin and files an evening mineral under Morning
+    // EMPTY — production agrees with the curated table on every phrase in it.
+    //
+    // The last entry was cl-013's iron: "early afternoon - at least 4 hours
+    // after your morning thyronorm …", which rendered Morning, i.e. beside the
+    // levothyroxine the note exists to keep it 4 h away from. The cause was the
+    // leading-clause split recognising an em-dash but not a plain hyphen, so the
+    // separation caveat was read as part of the dose time; consolidating the
+    // five timing parsers into timingSlot() fixed it (2026-08-04).
+    //
+    // Keep this ledger honest, not empty: a genuine open defect belongs here
+    // with its reason, so the guard below can still assert exact agreement
+    // everywhere else.
   };
 
   it("MUTATION GUARD: production's timing→slot pipeline agrees with the table", () => {

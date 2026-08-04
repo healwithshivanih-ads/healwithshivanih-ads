@@ -18,6 +18,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 // on the plan edit page, which handles both protocol selection and content seeding.
 import { PracticeLoadNote } from "./practice-load-note";
 import { phaseOpensAtWeek, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
+import { timingSlot, type DaySlot } from "@/lib/fmdb/client-app-format";
 import { PracticeAddresses } from "./practice-addresses";
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
@@ -2717,13 +2718,25 @@ export function PlanEditor(props: PlanEditorProps) {
 
 type TimingSlot = "morning" | "midday" | "evening" | "bedtime" | "anytime";
 
+/** The 5 coarse buckets this card shows, mapped from the 7 canonical DaySlots
+ *  that `timingSlot()` returns. Parsing is NOT done here any more: the local
+ *  copy tested a bare /bed/, so "as prescribed" and "bedside table" both filed
+ *  under Bedtime, and /pm\b/ caught any stray "pm" in the coach's prose. */
+const SLOT_BUCKET: Record<DaySlot, TimingSlot> = {
+  0: "morning",
+  1: "morning",
+  2: "morning",
+  3: "midday",
+  4: "evening",
+  5: "evening",
+  6: "bedtime",
+};
+
 function classifyTiming(timing: string | undefined): TimingSlot {
-  const t = (timing ?? "").toLowerCase();
-  if (/bed|night|sleep/.test(t)) return "bedtime";
-  if (/evening|pm\b|afternoon/.test(t)) return "evening";
-  if (/midday|lunch|noon/.test(t)) return "midday";
-  if (/morning|am\b|wake|fasted|breakfast/.test(t)) return "morning";
-  return "anytime";
+  const { slot, namesTime } = timingSlot(timing);
+  // This card HAS an Anytime bucket, so a with-food qualifier that names no
+  // time belongs there rather than inventing a meal the coach never specified.
+  return namesTime ? SLOT_BUCKET[slot] : "anytime";
 }
 
 const SLOT_META: Record<TimingSlot, { label: string; icon: string; bg: string }> = {

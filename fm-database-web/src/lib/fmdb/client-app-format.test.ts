@@ -12,6 +12,7 @@ import {
   firstSentence,
   shortDose,
   timingRank,
+  timingSlot,
   slotFromRank,
   shortTiming,
   displayTiming,
@@ -238,5 +239,167 @@ describe("timingRank anchors at the EARLIEST dose", () => {
     // Was 10 → the app's Morning group, for an explicitly bedtime dose.
     expect(timingRank("before bed, empty stomach", "", false, false)).toBe(70);
     expect(timingRank("empty stomach at bedtime", "", true, false)).toBe(70);
+  });
+});
+
+describe("timingSlot — the ONE parser every timing surface shares", () => {
+  // There used to be five copies of this logic (this file, FmSupplementGrid,
+  // reminders-derive, plan-editor, the reference view). Each had its own
+  // keyword list and its own bugs; a supplement could sit in a different
+  // bucket on every screen it appeared on, and a push reminder could fire at
+  // a time the app never showed. These lock the traps each copy had.
+  const slotOf = (t: string) => timingSlot(t).slot;
+
+  it("classifies the 7 canonical day slots", () => {
+    expect(slotOf("on waking, empty stomach")).toBe(0);
+    expect(slotOf("with breakfast")).toBe(1);
+    expect(slotOf("mid-morning")).toBe(2);
+    expect(slotOf("with lunch")).toBe(3);
+    expect(slotOf("mid-afternoon")).toBe(4);
+    expect(slotOf("with dinner")).toBe(5);
+    expect(slotOf("before bed")).toBe(6);
+  });
+
+  it("reports whether the text named a time at all", () => {
+    // Surfaces with an "Anytime" / "Not set" bucket need this; the ones without
+    // fall back to breakfast, as they always have.
+    expect(timingSlot("with breakfast")).toEqual({ slot: 1, matched: true, namesTime: true });
+    expect(timingSlot("take with plenty of water")).toEqual({ slot: 1, matched: false, namesTime: false });
+    expect(timingSlot("")).toEqual({ slot: 1, matched: false, namesTime: false });
+    expect(timingSlot(undefined)).toEqual({ slot: 1, matched: false, namesTime: false });
+  });
+
+  it("separates 'when to take it' from 'how to take it'", () => {
+    // A with-food qualifier says nothing about WHEN. It still gets a slot (some
+    // surfaces must place every row) but namesTime is false, so the Anytime /
+    // Timing-not-set buckets can decline to invent a meal the coach never named.
+    for (const t of [
+      "with food",
+      "with meals",
+      "With a meal",
+      "With a fat-containing meal",
+      "With the largest meal of the day",
+      "with the two largest meals",
+      "before meals",
+      "Before food",
+    ]) {
+      expect(timingSlot(t).namesTime, t).toBe(false);
+      expect(timingSlot(t).matched, t).toBe(true); // we did understand it
+    }
+    // These DO name a time — a meal, a clock, a fasted window, a between-meals gap.
+    for (const t of [
+      "with breakfast",
+      "with dinner",
+      "3 pm",
+      "on an empty stomach",
+      "between meals",
+      "before bed",
+    ]) {
+      expect(timingSlot(t).namesTime, t).toBe(true);
+    }
+  });
+
+  it("is not fooled by a time word inside another word", () => {
+    // Every one of these was a live mis-classification in at least one copy:
+    // "afternoon" contains "noon" (grid → With Lunch), " amla" contains " am"
+    // (grid → Breakfast), "11 pm" contains "1 pm" (grid AND reminders → Lunch,
+    // i.e. a 13:00 push for a 22:00 dose), "prescribed" contains "bed"
+    // (plan-editor → Bedtime), "mid-morning" contains "morning" (reminders →
+    // Breakfast).
+    expect(slotOf("Afternoon")).toBe(4);
+    expect(slotOf("5 g amla powder in warm water")).toBe(1); // unmatched → default
+    expect(timingSlot("5 g amla powder in warm water").matched).toBe(false);
+    expect(slotOf("10:00 pm, 90 min before target sleep time of 11 pm")).toBe(6);
+    expect(slotOf("as prescribed, with a fat-containing meal")).toBe(1);
+    expect(slotOf("Mid-morning")).toBe(2);
+  });
+
+  it("reads an explicit clock time as its hour's slot", () => {
+    // _TIMING_SLOTS lists one keyword per hour it thought of and silently
+    // defaults the rest; deriving from the hour covers 8 pm and 11 pm too.
+    expect(slotOf("around 6 am")).toBe(0);
+    expect(slotOf("take at 8 am with water")).toBe(1);
+    expect(slotOf("10 am")).toBe(2);
+    expect(slotOf("12 pm")).toBe(3);
+    expect(slotOf("Around 3 pm — see rationale for spacing rules")).toBe(4);
+    expect(slotOf("7 pm")).toBe(5);
+    expect(slotOf("8 pm")).toBe(6);
+    expect(slotOf("~7:45am")).toBe(1);
+  });
+
+  it("slots on the primary clause, not a separation caveat", () => {
+    // Live plan text. The caveat names the dose it must stay AWAY from — if its
+    // time words win, an afternoon iron lands beside the morning levothyroxine
+    // it is being separated from.
+    expect(slotOf("Early afternoon — at least 4 hours after your morning Thyronorm")).toBe(4);
+    expect(slotOf("With dinner (keep clear of the morning levothyroxine)")).toBe(5);
+    expect(slotOf("Bedtime — at least 4 h after your morning dose")).toBe(6);
+  });
+
+  it("reads a raw enum value from the take_with_food picker", () => {
+    // "_" is a word character, so \bbreakfast\b never fired on this.
+    expect(timingSlot("with_breakfast")).toEqual({ slot: 1, matched: true, namesTime: true });
+    expect(timingSlot("with_dinner")).toEqual({ slot: 5, matched: true, namesTime: true });
+  });
+
+  it("puts a twice-daily dose in its EARLIEST slot", () => {
+    expect(slotOf("With breakfast and dinner")).toBe(1);
+    expect(slotOf("After Lunch & Dinner")).toBe(3);
+    expect(slotOf("Morning on empty stomach and at bedtime")).toBe(0);
+    expect(slotOf("with dinner and before bed")).toBe(5);
+  });
+
+  it("sends an 'X or Y' pick-one to the SLEEP-ward slot — when both are the same part of day", () => {
+    // The slot view of the rule pinned on timingRank above. The reference
+    // implementation this refactor is based on took the FIRST-MENTIONED option
+    // instead, which sends cl-004's and cl-006's magnesium glycinate to dinner.
+    expect(slotOf("Evening, with dinner or at bedtime")).toBe(6);
+    expect(slotOf("Bedtime (with or after dinner)")).toBe(6);
+    expect(slotOf("mid-morning or with breakfast")).toBe(2);
+  });
+
+  it("…but keeps a FAR-APART pick-one at the earlier option", () => {
+    // Both live on cl-005. Two times a whole part of the day apart are not one
+    // dose being fine-tuned — the client may well be taking the earlier one, so
+    // that is where the card has to show it. Blanket sleep-ward filed
+    // l-glutamine and CoQ10 under the evening and the parity sweep caught it.
+    expect(slotOf("Morning on empty stomach, or at bedtime")).toBe(0);
+    expect(slotOf("with breakfast or lunch (with fat)")).toBe(1);
+    // "and/or" is a joiner first: two doses, anchored at the earlier.
+    expect(slotOf("morning and/or bedtime")).toBe(1);
+  });
+
+  it("lets the TIMING field outrank a time word buried in the dose prose", () => {
+    // cl-007's magnesium is timed "Bedtime, with a full glass of water" but its
+    // dose is a titration instruction that happens to say "each morning". Read
+    // together, that stray word cancelled the bedtime pin and filed a sleep
+    // supplement under Morning on the client's phone. The dose is only consulted
+    // when the timing field names nothing at all.
+    const dose = "Titrate up to one comfortable Bristol 3-4 stool each morning";
+    expect(timingSlot("Bedtime, with a full glass of water", dose).slot).toBe(6);
+    expect(timingRank("Bedtime, with a full glass of water", dose, false, false)).toBe(70);
+    // …but a silent timing field still defers to the dose prose.
+    expect(timingSlot("", "take 1 capsule with dinner").slot).toBe(5);
+  });
+
+  it("agrees with timingRank — one parse, two views of it", () => {
+    for (const t of [
+      "on waking",
+      "with breakfast",
+      "mid-morning",
+      "with lunch",
+      "afternoon",
+      "with dinner",
+      "bedtime",
+      "with dinner and before bed",
+      "in the evening before bed",
+    ]) {
+      const { slot } = timingSlot(t);
+      const rank = timingRank(t, "", false, false);
+      // Both derive from the same winning cue, so the coarse slot must never
+      // contradict the fine rank's display group.
+      const expected = slot >= 6 ? "Bedtime" : slot >= 3 ? "With meals" : "Morning";
+      expect(slotFromRank(rank), t).toBe(expected);
+    }
   });
 });
