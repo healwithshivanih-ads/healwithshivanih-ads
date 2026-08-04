@@ -42,6 +42,7 @@ import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
 import { ReviewNudgePanel } from "@/components/review-nudge-panel";
 import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
 import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
+import { WeeklyGenerationPausePanel } from "@/components/weekly-generation-pause-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
 import { ArchiveCandidatesPanel } from "@/components/archive-candidates-panel";
@@ -1133,6 +1134,12 @@ export default async function DashboardV2() {
           approves). Loud amber banner; self-hides when nothing is pending.
           Hoisted here 2026-06-30 from the bottom of the page. */}
       <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
+
+      {/* 🍲 Weekly menu + recipes — per-client on/off, sitting right under the
+          menu queue because it is the same population and the same weekly
+          cadence. Unlike the queue it does NOT self-hide when all is well:
+          resuming a paused client has to stay reachable. */}
+      <WeeklyGenerationPausePanel names={Object.fromEntries(clientNameMap)} />
 
       {/* 🧾 Roster-accuracy guardrail — self-loading, hides entirely when
           clean, so it costs nothing on a healthy roster.

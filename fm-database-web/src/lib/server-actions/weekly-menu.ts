@@ -19,6 +19,7 @@ import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
 import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
 import { screenMenuForClient, type MenuStapleFlag } from "@/lib/fmdb/food-cautions";
 import { weeksAfterApproval } from "@/lib/fmdb/menu-weeks";
+import { weeklyGenerationPaused } from "@/lib/fmdb/weekly-generation-pause";
 import { generateGroceryListAction } from "./grocery";
 
 export interface PendingWeekMenu {
@@ -292,6 +293,19 @@ export async function generateWeekMenuAction(
   if (hit.plan.no_weekly_menu || (await mealPlanStyle(clientId)) === "principles") {
     return { ok: false, error: "Principle plan — it shows the eating framework only (no weekly menu)." };
   }
+  // Coach-set pause — checked BEFORE dormancy because it is the stronger
+  // statement: dormancy asks "has she disappeared?", this one says "she is
+  // here, she just does not need a new menu every week." She stays frozen on
+  // her last loaded week (client-app.ts falls back to it), which is the point.
+  if (!force && (await weeklyGenerationPaused(clientId))) {
+    return {
+      ok: false,
+      error:
+        "Weekly generation is paused for this client — she stays on her " +
+        "current menu. Turn it back on from the dashboard (Weekly menu + " +
+        "recipes), or use Draft menu to override just this once.",
+    };
+  }
   // Auto-draft is paused for dormant clients (see DORMANT_DAYS). This is the
   // AUTOMATIC path only — the coach pressing "Draft menu" in the UI passes
   // force and always wins, because she may be prepping for a client she has
@@ -544,6 +558,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
     travelNote?: string;
     changeNote?: string;
     dormantDays?: number; // set when auto-draft is PAUSED (client not opening the app)
+    coachPaused?: boolean; // set when the COACH paused weekly generation for them
   }[]
 > {
   const dir = path.join(getPlansRoot(), "published");
@@ -565,6 +580,27 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
       if ((await mealPlanStyle(cid)) === "principles") continue; // client.meal_plan_style opt-out
+      // Coach-paused → emit and SHORT-CIRCUIT, for exactly the reason spelled
+      // out for dormancy below: "who is paused" is a standing fact about the
+      // client, not a function of what is due this instant, so it must not be
+      // gated on due-ness or it goes invisible on the days nothing is owed.
+      // Checked before dormancy so a client who is both reads as coach-paused,
+      // which is the decision that actually governs.
+      if (await weeklyGenerationPaused(cid)) {
+        const curWeek = currentPlanWeek(p);
+        rows.push({
+          clientId: cid,
+          planSlug: String(p.slug ?? ""),
+          currentWeek: curWeek,
+          targetWeek: curWeek,
+          daysToNextWeek: 0,
+          behind: false,
+          pending: !!p.app_menu_pending,
+          onTravel: false,
+          coachPaused: true,
+        });
+        continue;
+      }
       // Dormant in the app → auto-drafting is off for them. Emit the row here
       // and SHORT-CIRCUIT, deliberately bypassing the due/pending logic below.
       //
