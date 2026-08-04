@@ -1131,10 +1131,15 @@ def _build_drug_index() -> dict:
 
 
 def _match_drug(med_text: str) -> dict | None:
-    """Substring-match a medication free-text string against the catalogue
-    alias index. Longest alias wins to avoid 'metformin' inside 'metformin xr'
-    matching the shorter entry when a more specific one exists.
+    """Match a medication free-text string against the catalogue alias index.
+
+    Matching itself lives in `fmdb.drug_match` so all six callers behave
+    identically: short aliases need a letter boundary ('pan' no longer matches
+    'thyroid panel' or 'Panadol'), longer ones match as substrings. Longest
+    alias wins so 'metformin xr' beats a shorter alias that also matches.
     """
+    from fmdb.drug_match import MIN_MED_TEXT_LEN, alias_matches
+
     idx = _build_drug_index()
     text = (med_text or "").strip().lower()
     # GUARD: too-short med text would falsely match any short alias
@@ -1143,11 +1148,11 @@ def _match_drug(med_text: str) -> dict | None:
     # flag levothyroxine for everyone with that garbage entry). 3-char
     # floor mirrors the TS-side guard in checkMedicationImpactsAction
     # (see Archana cl-007 phantom-match incident 2026-05-23).
-    if len(text) < 3:
+    if len(text) < MIN_MED_TEXT_LEN:
         return None
     best: tuple[int, dict] | None = None
     for alias, drug in idx["aliases"].items():
-        if alias and len(alias) >= 2 and alias in text:
+        if alias and len(alias) >= 2 and alias_matches(alias, text):
             if best is None or len(alias) > best[0]:
                 best = (len(alias), drug)
     return best[1] if best else None

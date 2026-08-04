@@ -11,6 +11,7 @@ import { writePlan } from "@/lib/fmdb/writer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import type { Plan, PlanPatch } from "@/lib/fmdb/types";
 import { runShim } from "@/lib/fmdb/shim";
+import { matchDrug } from "@/lib/fmdb/drug-match";
 
 // ─── Supplement sources ────────────────────────────────────────────────────────
 
@@ -464,28 +465,14 @@ export async function checkSupplementInteractionsAction(
       }
 
       // Longest-alias-wins match (avoid 'metformin' inside 'metformin xr'
-      // picking the shorter alias when a more specific one exists).
-      const matchDrug = (medText: string) => {
-        const lower = medText.toLowerCase();
-        let best: { len: number; drug: (typeof drugs)[number] } | null = null;
-        for (const d of drugs) {
-          const aliases = [d.drug_name, ...(d.drug_aliases ?? [])]
-            .filter(Boolean)
-            .map((a) => String(a).toLowerCase().trim())
-            .filter((a) => a.length > 0);
-          for (const a of aliases) {
-            if (lower.includes(a) && (!best || a.length > best.len)) {
-              best = { len: a.length, drug: d };
-            }
-          }
-        }
-        return best?.drug ?? null;
-      };
-
+      // picking the shorter alias when a more specific one exists), with
+      // short aliases word-boundary guarded so 'pan' (Pan-40) cannot match
+      // 'thyroid panel' / 'Panadol' and bind the PPI entry's protocol
+      // cautions to this plan. See lib/fmdb/drug-match.ts.
       const seen = new Set<string>(); // dedup (drug_slug, item) pairs
       for (const med of medications) {
         if (!med || med.trim().length < 3) continue;
-        const drug = matchDrug(med);
+        const drug = matchDrug(med, drugs)?.drug ?? null;
         if (!drug) continue;
         for (const c of drug.protocol_cautions ?? []) {
           const item = (c.item ?? "").trim();
