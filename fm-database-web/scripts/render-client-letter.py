@@ -956,26 +956,18 @@ def _load_drug_cautions_for_client(client: dict) -> list[dict]:
         if isinstance(d, dict):
             drugs.append(d)
 
-    # Longest alias wins so "metformin xr" picks the more specific entry if any.
-    def match_drug(med_text: str) -> dict | None:
-        text = med_text.lower()
-        best: tuple[int, dict] | None = None
-        for d in drugs:
-            aliases = [d.get("drug_name") or ""] + list(d.get("drug_aliases") or [])
-            for a in aliases:
-                a = (a or "").strip().lower()
-                # Word-boundary match (audit Phase-1b): a plain `a in text`
-                # made short aliases like 'arb' match 'carbamazepine' and 'pan'
-                # match 'panadol', attaching the WRONG drug's binding HARD-RULE
-                # protocol cautions to a client's letter. Longest-alias-wins.
-                if a and _kw_matches(a, text):
-                    if best is None or len(a) > best[0]:
-                        best = (len(a), d)
-        return best[1] if best else None
+    # Word-boundary match (audit Phase-1b): a plain `a in text` made short
+    # aliases like 'arb' match 'carbamazepine' and 'pan' match 'panadol',
+    # attaching the WRONG drug's binding HARD-RULE protocol cautions to a
+    # client's letter. Shared with the other five callers via
+    # `fmdb.drug_match` — its boundary is LETTERS only, where the local
+    # `_kw_matches` used here previously also treated '-' as a word character
+    # and so stopped 'pan' resolving 'Pan-40'. Longest-alias-wins.
+    from fmdb.drug_match import match_drug as _match_drug_shared
 
     seen: set[tuple[str, str]] = set()
     for med in meds:
-        drug = match_drug(med)
+        drug = _match_drug_shared(med, drugs)
         if not drug:
             continue
         for c in drug.get("protocol_cautions") or []:
