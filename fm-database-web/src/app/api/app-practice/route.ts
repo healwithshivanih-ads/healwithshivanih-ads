@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }
 
-  const KINDS = ["eft", "breath", "sleep", "somatic"] as const;
+  const KINDS = ["eft", "breath", "sleep", "somatic", "exercise"] as const;
   const kind = KINDS.find((k) => k === body.kind) ?? "";
   if (!kind) {
     return NextResponse.json({ ok: false, error: "bad kind" }, { status: 400 });

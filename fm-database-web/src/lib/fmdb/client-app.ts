@@ -46,6 +46,11 @@ import { isInternationalClient } from "@/lib/server-actions/supplement-links-mat
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 import { weekNourishment } from "@/lib/fmdb/nourishment";
 import { deriveMindBodyReads, deriveSomatic, excludeSomaticLinked, type AppMindBodyRead, type AppSomatic } from "@/lib/fmdb/somatic";
+import {
+  deriveExerciseSessions,
+  excludeExerciseLinked,
+  type AppExerciseSession,
+} from "@/lib/fmdb/exercise-session";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
 import { DORMANT_DAYS, readAppOpens } from "@/lib/fmdb/app-engagement";
 import { BREATH_RE, EFT_RE, SLEEP_RE } from "@/lib/fmdb/app-guided";
@@ -1140,6 +1145,11 @@ export interface ClientAppData {
   /** Every guided somatic reset the plan prescribes, resolved from the
    *  catalogue by slug, in plan order. Empty when none are prescribed. */
   somatic: AppSomatic[];
+  /** Every exercise session the plan prescribes, resolved from the catalogue by
+   *  slug, in the coach's order (warm-up first, strength last). Empty when none
+   *  are prescribed. A session that resolved to nothing is absent rather than
+   *  empty — an empty player is a broken promise. */
+  exerciseSessions: AppExerciseSession[];
   /** Guided EFT (tapping) config when the plan prescribes a tapping practice
    *  AND it has been unlocked (mind-body drip — see `mindBody`). */
   eft: AppEft | null;
@@ -3376,6 +3386,8 @@ async function buildDiscoveryAppData(
     periodCare: null,
     breathwork: null,
     somatic: [],
+    // Discovery clients have no prescribed plan, so no session.
+    exerciseSessions: [],
     eft: null,
     sleep: null,
     mindBody: null,
@@ -4638,8 +4650,22 @@ export async function loadClientAppData(
   // below: gastrocolic-rhythm contains "breathing", so deriveBreathwork would
   // otherwise catch it and degrade a specific practice into a generic session.
   const somatic = deriveSomatic(practices, practiceRaw);
-  const { practices: nameMatchPractices, raw: nameMatchRaw } =
-    excludeSomaticLinked(practices, practiceRaw, somatic);
+  const somaticFiltered = excludeSomaticLinked(practices, practiceRaw, somatic);
+
+  // A practice row carrying `exercises` is a SESSION — resolved by slug from the
+  // catalogue, same as somatic. Withheld from the name-matchers for the same
+  // reason: "Movement session" would otherwise be caught on wording alone and
+  // rendered as a generic breathing or sleep session, losing the exercises that
+  // ARE the practice.
+  const exerciseSessions = deriveExerciseSessions(
+    somaticFiltered.practices,
+    somaticFiltered.raw,
+  );
+  const { practices: nameMatchPractices, raw: nameMatchRaw } = excludeExerciseLinked(
+    somaticFiltered.practices,
+    somaticFiltered.raw,
+    exerciseSessions,
+  );
 
   // What the book says about the conditions this client actually came in for.
   // Resolved from THEIR conditions, never from the practice — and shown only
@@ -5784,6 +5810,7 @@ export async function loadClientAppData(
     periodCare,
     breathwork,
     somatic,
+    exerciseSessions,
     mindBodyReads,
     mindBodyWithheld,
     eft: eftVisible,

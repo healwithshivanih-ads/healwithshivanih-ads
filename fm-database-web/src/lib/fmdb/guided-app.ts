@@ -272,6 +272,10 @@ export async function buildGuidedAppData(
     token: sub.app_token,
     timezone: tz,
     tier: "guided",
+    // The guided tier prescribes from a fixed protocol library rather than a
+    // per-client plan, and an exercise session has to be screened against a
+    // client record — so there is nothing to resolve here.
+    exerciseSessions: [],
     discoveryCredit: null,
     discoverySummary: null,
     discoveryStage: null,
