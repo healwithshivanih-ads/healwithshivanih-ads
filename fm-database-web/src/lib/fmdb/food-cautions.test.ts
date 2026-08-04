@@ -21,6 +21,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import { TEST_PYTHON as PYTHON } from "./test-python";
 import {
   loadFoodCautions,
   liveFoodCautions,
@@ -36,10 +37,6 @@ import { detectPlanConflicts } from "./plan-conflicts";
 
 const execFileP = promisify(execFile);
 const CATALOGUE = path.join(process.cwd(), "..", "fm-database", "data");
-
-/** Same interpreter contract the other Python-driving suites use: honour
- *  FMDB_PYTHON (a git worktree has no .venv), else fall back to python3. */
-const PYTHON = process.env.FMDB_PYTHON ?? "python3";
 
 const HASHIMOTOS = { active_conditions: ["Hashimoto's thyroiditis", "Vitamin D deficiency"] };
 const STONES = { active_conditions: ["Recurrent calcium oxalate kidney stones"] };

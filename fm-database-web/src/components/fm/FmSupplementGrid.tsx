@@ -12,21 +12,22 @@
  *   2. Detail list — one row per supplement with name + dose + timing slot
  *      chip + coach rationale + form. Click a row to expand the rationale.
  *
- * Slot classification mirrors render-client-letter.py's _TIMING_SLOTS —
- * same regex keywords on the supplement's `timing` string so the letter
- * and the coach view bucket each supplement identically.
+ * Slot classification is delegated to `timingSlot()` in lib/fmdb/client-app-format
+ * — the one shared parser — so this coach view, the client app, the reference
+ * view and the push reminders all bucket a supplement identically.
  *
  * Design source: FM Backlog Explorations · Group D4.
  */
 import { useMemo, useState } from "react";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
+import { timingSlot, type DaySlot } from "@/lib/fmdb/client-app-format";
 
 export interface FmSupplementGridItem {
   /** Catalogue slug — used as the primary identifier + display fallback. */
   supplement_slug: string;
   /** Free-text dose (e.g. "5000 IU", "200 mcg", "400 mg"). */
   dose?: string;
-  /** Free-text timing — classified into one of 7 slots by keyword match. */
+  /** Free-text timing — classified into one of 7 slots by `timingSlot()`. */
   timing?: string;
   /** Form (e.g. "capsule", "powder") — small caption next to dose. */
   form?: string;
@@ -41,79 +42,32 @@ export interface FmSupplementGridProps {
 }
 
 interface SlotDef {
-  idx: number;
+  idx: DaySlot;
   label: string;
   short: string;
   emoji: string;
-  keywords: string[];
 }
 
-// Mirrors render-client-letter.py::_TIMING_SLOTS. Keep in sync — both
-// surfaces classify the same `timing` string the same way.
+// Presentation only — the PARSE lives in timingSlot(). This list used to carry
+// its own keyword table matched by naive substring, which put "Afternoon" under
+// With Lunch ("afternoon" contains "noon"), "5 g amla powder" under With
+// Breakfast (" amla" contains " am") and "11 pm" under With Lunch (it contains
+// "1 pm"). Indices match _TIMING_SLOTS in render-client-letter.py.
 const SLOTS: SlotDef[] = [
-  {
-    idx: 0,
-    label: "Early Morning",
-    short: "Early AM",
-    emoji: "🌅",
-    keywords: ["early morning", "empty stomach", "fasting", "before breakfast", "wake"],
-  },
-  {
-    idx: 1,
-    label: "With Breakfast",
-    short: "Breakfast",
-    emoji: "☀️",
-    keywords: ["breakfast", "morning", "with food", "8 am", "7 am", "9 am", " am"],
-  },
-  {
-    idx: 2,
-    label: "Mid-Morning",
-    short: "Mid-AM",
-    emoji: "🕙",
-    keywords: ["mid-morning", "mid morning", "10 am", "between meals", "snack"],
-  },
-  {
-    idx: 3,
-    label: "With Lunch",
-    short: "Lunch",
-    emoji: "🥗",
-    keywords: ["lunch", "midday", "noon", "1 pm", "12 pm"],
-  },
-  {
-    idx: 4,
-    label: "Afternoon",
-    short: "PM",
-    emoji: "🌤",
-    keywords: ["afternoon", "2 pm", "3 pm", "4 pm"],
-  },
-  {
-    idx: 5,
-    label: "With Dinner",
-    short: "Dinner",
-    emoji: "🌆",
-    keywords: ["dinner", "evening meal", "supper", "6 pm", "7 pm", "5 pm", "with evening"],
-  },
-  {
-    idx: 6,
-    label: "Before Bed",
-    short: "Bedtime",
-    emoji: "🌙",
-    // Mirrors the Before Bed keywords in render-client-letter.py's _TIMING_SLOTS,
-    // which gained these so a supplement timed "on retiring" / "pre-bed" stops
-    // defaulting to With Breakfast. Spelled out rather than using a bare "bed"
-    // like the Python list does: classifySlot below matches by substring, so
-    // "bed" would also swallow "bedside" and "bedroom".
-    keywords: ["bedtime", "before bed", "pre-bed", "retiring", "night", "sleep", "9 pm", "10 pm", "before sleep"],
-  },
+  { idx: 0, label: "Early Morning", short: "Early AM", emoji: "🌅" },
+  { idx: 1, label: "With Breakfast", short: "Breakfast", emoji: "☀️" },
+  { idx: 2, label: "Mid-Morning", short: "Mid-AM", emoji: "🕙" },
+  { idx: 3, label: "With Lunch", short: "Lunch", emoji: "🥗" },
+  { idx: 4, label: "Afternoon", short: "PM", emoji: "🌤" },
+  { idx: 5, label: "With Dinner", short: "Dinner", emoji: "🌆" },
+  { idx: 6, label: "Before Bed", short: "Bedtime", emoji: "🌙" },
 ];
 
+/** This grid has no "not set" bucket — every supplement gets a bubble — so it
+ *  uses `slot` unconditionally and lets an unnamed timing fall to its default
+ *  of With Breakfast, exactly as the old keyword table did. */
 function classifySlot(timing: string | undefined): SlotDef {
-  const t = (timing ?? "").toLowerCase();
-  for (const s of SLOTS) {
-    if (s.keywords.some((kw) => t.includes(kw))) return s;
-  }
-  // Default → With Breakfast (matches Python helper).
-  return SLOTS[1];
+  return SLOTS[timingSlot(timing).slot];
 }
 
 function prettySlug(slug: string): string {
