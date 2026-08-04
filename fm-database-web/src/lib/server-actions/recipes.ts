@@ -256,7 +256,13 @@ export async function weeklyGenerationPauseRosterAction(): Promise<WeeklyGenerat
   return rows.sort((a, b) => a.clientId.localeCompare(b.clientId));
 }
 
-/** Pause or resume the weekly recipe pack for one client. */
+/** Is weekly generation paused for ONE client? For the client-overview
+ *  toggle, which has no reason to read the whole roster. */
+export async function isWeeklyGenerationPausedAction(clientId: string): Promise<boolean> {
+  return weeklyGenerationPaused(clientId);
+}
+
+/** Pause or resume weekly generation for one client. */
 export async function setWeeklyGenerationPausedAction(
   clientId: string,
   paused: boolean,

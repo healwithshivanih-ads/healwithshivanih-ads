@@ -120,6 +120,7 @@ import { HandoutDripPanel } from "./handout-drip-panel";
 import { loadClientApiSpend } from "@/lib/server-actions/usage";
 import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
 import { CycleTrackingPanel } from "./cycle-tracking-panel";
+import { WeeklyGenerationToggle } from "./weekly-generation-toggle";
 import { StageGate } from "./stage-gate";
 import { resolveAllergies } from "@/lib/fmdb/allergies";
 
@@ -1684,6 +1685,14 @@ export default async function ClientV2Page({
               mealPlanStyle={(client as unknown as { meal_plan_style?: "detailed" | "principles" | "hybrid" }).meal_plan_style}
               planModules={(client as unknown as { plan_modules?: string[] }).plan_modules}
             />
+            {/* Sits with meal_plan_style rather than on its own: that decides
+                how structured her meal plan is, this decides whether a fresh
+                one gets written each week. Same kind of standing decision.
+                Principle clients have no weekly menu, so the switch would be
+                a no-op for them — don't offer it. */}
+            {publishedPlan &&
+              (client as unknown as { meal_plan_style?: string }).meal_plan_style !==
+                "principles" && <WeeklyGenerationToggle clientId={client.client_id} />}
           </FmGroupedPanel>
 
           {/* ✅ What she actually ticked off in the app. Sits above the
