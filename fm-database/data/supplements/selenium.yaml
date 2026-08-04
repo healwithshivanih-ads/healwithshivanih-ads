@@ -4,6 +4,14 @@ category: mineral
 forms_available:
 - capsule
 - tablet
+# Brazil nuts are the one genuinely therapeutic FOOD source of selenium — 3 nuts
+# land near 150-250 mcg, i.e. capsule territory, which is why food-first works
+# here and doesn't for most minerals. Content swings widely with soil selenium
+# (roughly 50-90 mcg per nut), so dose by nut count and cap at 3-4/day: the
+# 400 mcg upper limit is reachable with a handful, and the first signs of excess
+# — hair loss, brittle nails, garlicky breath — read exactly like the thyroid
+# symptoms the selenium was given for.
+- whole_food
 evidence_tier: strong
 linked_to_topics:
 - thyroid
