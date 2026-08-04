@@ -11,8 +11,47 @@ import { resolvePersonDir } from "@/lib/fmdb/person-dir";
 import { runShim } from "@/lib/fmdb/shim";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { validateMeasurement, reconcileFlatMeasurements } from "@/lib/fmdb/measurements";
+import { matchDrug, drugAliases, type DrugAliasRecord } from "@/lib/fmdb/drug-match";
 
 const execFileP = promisify(execFile);
+
+/**
+ * Resolve a client medication string to a drug-depletion record for the
+ * medication-impact panels.
+ *
+ * Forward direction ("Eltroxin 50mcg" contains alias "eltroxin") goes through
+ * the shared matcher, so short aliases are word-boundary guarded — 'pan'
+ * (Pan-40) no longer matches "recheck thyroid panel" or "Panadol 500" and
+ * flag the client as a PPI user. These two panels were the most exposed
+ * callers: they take the FIRST alias that matched, so unlike the assess
+ * suggester there was no longest-alias-wins rule to mask the false hit.
+ *
+ * Reverse direction (med text "pantopr" is contained in alias "pantoprazole")
+ * is kept as a fallback only — it is bounded by real alias strings, so it
+ * cannot pull in an unrelated English word the way the forward direction could.
+ */
+function matchDrugForImpactPanel<T extends DrugAliasRecord>(
+  medLower: string,
+  records: readonly T[],
+): { drug: T; alias: string } | null {
+  // The panel displays which alias matched, so hand back the catalogue's own
+  // casing rather than the lowercased form the matcher works in.
+  const original = (rec: T, lower: string) =>
+    [rec.drug_name, ...(rec.drug_aliases ?? [])].find(
+      (c) => String(c ?? "").trim().toLowerCase() === lower,
+    ) ?? lower;
+
+  const forward = matchDrug(medLower, records);
+  if (forward) return { drug: forward.drug, alias: original(forward.drug, forward.alias) };
+  for (const rec of records) {
+    for (const a of drugAliases(rec)) {
+      if (a.length >= 3 && a.includes(medLower)) {
+        return { drug: rec, alias: original(rec, a) };
+      }
+    }
+  }
+  return null;
+}
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
@@ -2676,26 +2715,12 @@ export async function checkMedicationImpactsAction(
         unmatched.push(med);
         continue;
       }
-      let hit: typeof records[number] | null = null;
-      let matchedAlias = "";
-
-      outer: for (const rec of records) {
-        const candidates = [rec.drug_name, ...(rec.drug_aliases ?? [])].filter(Boolean);
-        for (const c of candidates) {
-          const cLower = c.toLowerCase().trim();
-          // Both sides also need to clear the 3-char floor — a 1-char
-          // alias would re-introduce the same bug from the other side.
-          if (cLower.length < 3) continue;
-          // Match if EITHER side is contained in the other (handles
-          // "Eltroxin 50mcg" vs alias "eltroxin"). The 3-char floor
-          // above means a med like "AB" can't trigger this.
-          if (medLower.includes(cLower) || cLower.includes(medLower)) {
-            hit = rec;
-            matchedAlias = c;
-            break outer;
-          }
-        }
-      }
+      // Forward match is word-boundary guarded for short aliases (see
+      // matchDrugForImpactPanel); reverse containment handles "Eltroxin 50mcg"
+      // style entries where the med text is a fragment of a longer alias.
+      const found = matchDrugForImpactPanel(medLower, records);
+      const hit = found?.drug ?? null;
+      const matchedAlias = found?.alias ?? "";
 
       if (hit) {
         matches.push({
@@ -2814,21 +2839,11 @@ export async function checkMedsAgainstCatalogueAction(
         unmatched.push(med);
         continue;
       }
-      let hit: typeof records[number] | null = null;
-      let matchedAlias = "";
-
-      outer: for (const rec of records) {
-        const candidates = [rec.drug_name, ...(rec.drug_aliases ?? [])].filter(Boolean);
-        for (const c of candidates) {
-          const cLower = c.toLowerCase().trim();
-          if (cLower.length < 3) continue;
-          if (medLower.includes(cLower) || cLower.includes(medLower)) {
-            hit = rec;
-            matchedAlias = c;
-            break outer;
-          }
-        }
-      }
+      // Same matcher as checkMedicationImpactsAction — word-boundary guarded
+      // for short aliases, with reverse containment as the fallback.
+      const found = matchDrugForImpactPanel(medLower, records);
+      const hit = found?.drug ?? null;
+      const matchedAlias = found?.alias ?? "";
 
       if (hit) {
         matches.push({

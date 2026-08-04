@@ -18,6 +18,7 @@ import os
 from pathlib import Path
 from typing import Any
 
+from ..drug_match import match_drug as _match_drug_shared
 from .results import AssessResult, AssessUsage, AssessSuggestions, ChatContext, ChatResult, compute_fit_percent
 
 
@@ -111,15 +112,9 @@ def _collect_drug_context(client_ctx: dict[str, Any]) -> dict[str, Any]:
                     meds.append(str(m))
 
     def match_drug(med_text: str) -> dict[str, Any] | None:
-        text = med_text.lower()
-        best: tuple[int, dict[str, Any]] | None = None
-        for d in drugs:
-            aliases = [d.get("drug_name") or ""] + list(d.get("drug_aliases") or [])
-            for a in aliases:
-                a = (a or "").strip().lower()
-                if a and a in text and (best is None or len(a) > best[0]):
-                    best = (len(a), d)
-        return best[1] if best else None
+        # Shared matcher: short aliases are word-boundary guarded, so 'pan'
+        # (Pan-40) no longer matches 'thyroid panel' / 'Panadol' and imply GERD.
+        return _match_drug_shared(med_text, drugs)
 
     matched_out: list[dict[str, Any]] = []
     unmatched: list[str] = []
