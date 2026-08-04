@@ -17,6 +17,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 // ProtocolTemplatePicker removed — superseded by the unified AttachedProtocolsPanel
 // on the plan edit page, which handles both protocol selection and content seeding.
 import { PracticeLoadNote } from "./practice-load-note";
+import { ExerciseSessionEditor } from "./exercise-session-editor";
 import { phaseOpensAtWeek, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
 import { PracticeAddresses } from "./practice-addresses";
 import { PlanChatPanel } from "./plan-chat-panel";
@@ -2290,6 +2291,19 @@ export function PlanEditor(props: PlanEditorProps) {
                       onChange={(next_ad) => {
                         const next = [...lifestyle];
                         next[i] = { ...next[i], addresses: next_ad };
+                        patch("lifestyle_practices", next);
+                      }}
+                    />
+                    {/* When this row carries exercises it IS a session — an
+                        ordered list done together at the cadence above. Every
+                        option is screened against this client first. */}
+                    <ExerciseSessionEditor
+                      clientId={clientId}
+                      value={p.exercises}
+                      locked={locked}
+                      onChange={(next_ex) => {
+                        const next = [...lifestyle];
+                        next[i] = { ...next[i], exercises: next_ex };
                         patch("lifestyle_practices", next);
                       }}
                     />
