@@ -83,6 +83,19 @@ interface PracticeItem {
   /** Driver/topic slugs this practice is here to work on — what decides
    *  whether it belongs in the foundation. See practice-addresses.tsx. */
   addresses?: string[];
+  /** When non-empty this row IS an exercise session — an ordered list of
+   *  catalogue exercises done together. Order is clinical, so nothing sorts it.
+   *  See PracticeItem.exercises in fmdb/plan/models.py for why a session is one
+   *  row rather than one row per exercise. */
+  exercises?: PrescribedExerciseItem[];
+}
+
+interface PrescribedExerciseItem {
+  /** Exercise slug — resolves against the catalogue. */
+  exercise: string;
+  /** A label from that entry's own levels ("A".."D"), never an index. */
+  level?: string | null;
+  note?: string;
 }
 
 interface EducationModuleItem {

@@ -33,7 +33,7 @@ export function PracticeLoadNote({
   onStage,
   locked = false,
 }: {
-  practices: { name?: string; details?: string; somatic_practice?: string | null; phase?: number | null; addresses?: string[] }[];
+  practices: { name?: string; details?: string; somatic_practice?: string | null; phase?: number | null; addresses?: string[]; exercises?: unknown[] }[];
   /** plan_period_weeks — decides which week each phase lands on */
   totalWeeks?: number;
   /** the plan's ranked drivers + topics — what the foundation is chosen by */
@@ -44,7 +44,14 @@ export function PracticeLoadNote({
 }) {
   const rows = practices ?? [];
   const load = practiceLoad(
-    rows.map((p) => ({ name: p.name ?? "", guided: looksAppGuided(p.name ?? "", p.details ?? "", p.somatic_practice) })),
+    rows.map((p) => ({
+      name: p.name ?? "",
+      guided: looksAppGuided(p.name ?? "", p.details ?? "", p.somatic_practice),
+      // An exercise session is a stopped moment by structure, not by wording —
+      // see classifyPractice. Without this the most dedicated row on the plan
+      // counts as free.
+      exercises: p.exercises,
+    })),
   );
   if (load.total === 0) return null;
   const tone = TONE[load.verdict];

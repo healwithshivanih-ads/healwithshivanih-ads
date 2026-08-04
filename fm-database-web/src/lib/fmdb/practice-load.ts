@@ -65,9 +65,22 @@ export interface ClassifiedPractice {
  * and a warning that cries wolf gets ignored — better to under-count and stay
  * believable than to flag every plan.
  */
-export function classifyPractice(name: string, guided = false): ClassifiedPractice {
+export function classifyPractice(
+  name: string,
+  guided = false,
+  isExerciseSession = false,
+): ClassifiedPractice {
   const n = name || "";
   if (guided) return { name, cost: "dedicated", guided: true };
+  // An exercise session is classified STRUCTURALLY, by the fact that it carries
+  // exercises, never by its wording. "Movement session" matches no DEDICATED
+  // pattern, and unmatched text defaults to `attached` — so the single most
+  // dedicated thing on a plan would have counted as free, riding a moment the
+  // client was already having. Nobody does eight Otago exercises during lunch.
+  //
+  // Fixing this with a /session|movement/ regex would work until the coach
+  // renamed the row. The list of exercises is the fact; the name is a label.
+  if (isExerciseSession) return { name, cost: "dedicated", guided: false };
   if (ATTACHED.some((re) => re.test(n))) return { name, cost: "attached", guided: false };
   if (DEDICATED.some((re) => re.test(n))) return { name, cost: "dedicated", guided: false };
   return { name, cost: "attached", guided: false };
@@ -100,9 +113,11 @@ const HEAVY_TOTAL = 11;
 const HEAVY_DEDICATED = 6;
 
 export function practiceLoad(
-  practices: { name: string; guided?: boolean }[],
+  practices: { name: string; guided?: boolean; exercises?: unknown[] }[],
 ): PracticeLoad {
-  const all = practices.map((p) => classifyPractice(p.name, p.guided));
+  const all = practices.map((p) =>
+    classifyPractice(p.name, p.guided, (p.exercises?.length ?? 0) > 0),
+  );
   const dedicated = all.filter((p) => p.cost === "dedicated");
   const total = all.length;
   const d = dedicated.length;
