@@ -79,6 +79,53 @@ describe("resolveDiscoveryStage — recommendations gate on the call (after labs
   });
 });
 
+describe("resolveDiscoveryStage — pre-existing outside labs must not skip the intake", () => {
+  // A client who arrives with lab reports they had done privately. The coach
+  // files those as a health_snapshot when she creates the record, so hasResults
+  // is true before the client has ever opened the app or filled anything in.
+  // Real case: cl-024, created 2026-08-04 off a panel drawn 2026-07-15 — the
+  // coach's intent was "share the app so he fills his intake".
+  const base: DiscoveryStageInput = {
+    intakeSubmitted: false,
+    hasRecommendedOrder: false,
+    hasActiveOrder: false,
+    hasResults: false,
+    callDone: false,
+  };
+  const stage = (over: Partial<DiscoveryStageInput>) => resolveDiscoveryStage({ ...base, ...over });
+
+  it("brand-new client + pre-existing labs + no intake → onboard_intake (asks for the intake)", () => {
+    expect(stage({ hasResults: true })).toBe("onboard_intake");
+  });
+
+  it("intake submitted + pre-existing labs → awaiting_call (no new order needed)", () => {
+    expect(stage({ intakeSubmitted: true, hasResults: true })).toBe("awaiting_call");
+  });
+
+  it("callDone still wins over a missing intake", () => {
+    expect(stage({ hasResults: true, callDone: true })).toBe("post_call");
+  });
+
+  // No-regression: the intake gate applies ONLY to the results-driven stage.
+  // A lab order the coach raised is actionable in-app whether or not the intake
+  // is in, so booking must never be hidden behind the intake CTA.
+  it("no intake + labs recommended → still book_labs", () => {
+    expect(stage({ hasRecommendedOrder: true, hasResults: true })).toBe("book_labs");
+  });
+
+  it("no intake + sample in flight → still awaiting_results", () => {
+    expect(stage({ hasActiveOrder: true })).toBe("awaiting_results");
+  });
+
+  it("no intake + in-app results already in → onboard_intake (chases the intake)", () => {
+    // The labs came through the app, but the discovery call can't be read
+    // without the client's story — so the app keeps asking for the intake.
+    expect(stage({ hasResults: true, hasActiveOrder: false, hasRecommendedOrder: false })).toBe(
+      "onboard_intake",
+    );
+  });
+});
+
 describe("resolveDiscoveryCredit — the 15-day window", () => {
   it("credit_live on the call day, full window remaining", () => {
     const c = resolveDiscoveryCredit(CALL, CALL);
