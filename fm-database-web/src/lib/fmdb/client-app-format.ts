@@ -131,10 +131,28 @@ function rankClockHour(t: string): number {
 
 const UNKNOWN_TIMING_RANK = 25;
 
+/** Two time cues joined by "and" / "then" / "&" / "+" are TWO doses, and the item
+ *  is anchored at the EARLIER one so the earlier dose is not lost off the card.
+ *  A bare comma is NOT a joiner and neither is "or":
+ *    "with dinner and before bed"   → two doses, anchor at dinner
+ *    "in the evening, before bed"   → one dose; "evening" only qualifies "bed"
+ *    "Evening, with dinner or at bedtime" → one dose, a pick-one — the coach
+ *      ruled 2026-08-04 that the sleep-ward option wins (see the test file). */
+const DOSE_JOINER = /\band\b|\bthen\b|&|\+/;
+
 function rankTimingText(t: string, emptyStomach: boolean): number {
-  // an item pinned to ONE late time (and no earlier cue) belongs at that time
-  const earlier = /morning|breakfast|\blunch\b|midday|\bnoon\b|before meal|before breakfast|empty stomach|on waking|upon waking|first thing|mid.?morning/;
-  if (BEDTIME_CUE.test(t) && !earlier.test(t)) return 70;
+  // An item pinned to ONE late time belongs at that time. An earlier cue only
+  // displaces it when the earlier cue is a SEPARATE dose — i.e. there is a
+  // joiner. Without one the earlier word is a qualifier, not a second dose.
+  // The evening-ward words were missing from this guard entirely, so
+  // "with dinner and before bed" answered Bedtime and the dinner dose simply
+  // disappeared from the client's card. Conversely "empty stomach" used to
+  // count unconditionally, which sent an explicit "before bed, empty stomach"
+  // to rank 10 — the app's MORNING group, for a bedtime dose.
+  const earlierWorded =
+    /morning|breakfast|\blunch\b|midday|\bnoon\b|before meal|before breakfast|empty stomach|on waking|upon waking|first thing|mid.?morning|\bdinner\b|\bsupper\b|\bevening\b|\bafternoon\b/;
+  const hasEarlierDose = DOSE_JOINER.test(t) && earlierWorded.test(t);
+  if (BEDTIME_CUE.test(t) && !hasEarlierDose) return 70;
   if (/\bafternoon\b/.test(t) && !/morning|breakfast|before breakfast|empty stomach|on waking|first thing/.test(t)) return 50;
   // first thing / empty stomach on waking → start of the day, UNLESS the dose
   // is explicitly a later between-meal (e.g. "mid-morning, empty stomach")
@@ -143,7 +161,16 @@ function rankTimingText(t: string, emptyStomach: boolean): number {
     if (/\bafternoon\b/.test(t)) return 50;
     return 10;
   }
-  if (/\bbreakfast\b|\bmorning\b/.test(t) && !/mid.?morning/.test(t)) return 20;
+  // "between A and B" bounds ONE window — the earlier meal is not a dose, so
+  // this must be read before the plain breakfast/lunch cues below or
+  // "between breakfast and lunch" files as a breakfast dose. The gap sits at
+  // the END of the window, one band ahead of the later anchor.
+  const window = /between\s+(breakfast|lunch|dinner)\s+and\s+(breakfast|lunch|dinner)\b/.exec(t);
+  if (window) {
+    const band: Record<string, number> = { breakfast: 20, lunch: 40, dinner: 60 };
+    return Math.max(band[window[1]], band[window[2]]) - 10;
+  }
+  if (/\bbreakfast\b|\bmorning\b/.test(t) && !/mid.?morning|between breakfast and lunch/.test(t)) return 20;
   if (/before\s+(?:a|the|each|your|main)?\s*meals?\b|before food|after\s+(?:a|the|your)?\s*meals?\b|with or after\s+(?:a|the)?\s*meal/.test(t)) return 45;
   if (/mid.?morning|between breakfast and lunch|after breakfast|between meals/.test(t)) return 30;
   if (/\blunch\b|midday|\bnoon\b/.test(t)) return 40;

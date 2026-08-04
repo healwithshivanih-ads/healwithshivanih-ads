@@ -146,3 +146,97 @@ describe("bedtime phrasings", () => {
     expect(displayTiming("breakfast and before bed")).toBe("With breakfast & bedtime");
   });
 });
+
+describe("timingRank anchors at the EARLIEST dose", () => {
+  // The docstring has always promised this, but it was enforced by a boolean
+  // "is there an earlier cue?" guard listing only morning/lunch words. Evening
+  // words were missing, so an evening-plus-bedtime pair anchored at BEDTIME and
+  // the app showed the item in the Bedtime group only — the dinner dose simply
+  // disappeared. Verified against _routine_slots() in render-client-letter.py,
+  // which lists both doses for each of these.
+  it("takes the earlier dose when a late dose is paired with it", () => {
+    expect(timingRank("with dinner and before bed", "", false, false)).toBe(60);
+    expect(timingRank("with dinner and at night", "", false, false)).toBe(60);
+    expect(timingRank("morning and before bed", "", false, false)).toBe(20);
+    expect(timingRank("with lunch and before bed", "", false, false)).toBe(40);
+  });
+  it("covers the rest of the evening/afternoon pairings the old guard missed", () => {
+    for (const [t, rank] of [
+      ["after dinner and before bed", 60],
+      ["with dinner, and again before bed", 60],
+      ["with dinner then before bed", 60],
+      ["supper and bedtime", 60],
+      ["evening and before bed", 60],
+      ["afternoon and before bed", 50],
+      ["mid-afternoon and at bedtime", 50],
+    ] as const) {
+      expect(timingRank(t, "", false, false), t).toBe(rank);
+      expect(slotFromRank(timingRank(t, "", false, false)), t).toBe("With meals");
+    }
+  });
+  it("keeps a SINGLE late dose at bedtime — the part-of-day word only qualifies it", () => {
+    // The naive fix (adding dinner/evening/afternoon to the old guard) breaks
+    // exactly these: they would drop to 60/50 and a bedtime supplement would be
+    // shown at dinner. No joiner between the two cues → one dose.
+    for (const t of [
+      "in the evening before bed",
+      "in the evening, before bed",
+      "evening before bed",
+      "night before bed",
+      "late evening before sleep",
+    ]) {
+      expect(timingRank(t, "", false, false), t).toBe(70);
+      expect(slotFromRank(timingRank(t, "", false, false)), t).toBe("Bedtime");
+    }
+  });
+  it("ignores a bed cue that belongs to a DIFFERENT supplement in the note", () => {
+    // Live plan text: the dose is with dinner; "bedtime" names the magnesium it
+    // should be paired with. The old chain read that word as this item's time.
+    expect(
+      timingRank("With dinner (evening dose to lower cortisol + pair with bedtime magnesium)", "", false, false),
+    ).toBe(60);
+  });
+  it("treats 'X or Y' as one dose — the SLEEP-ward option wins when one is offered", () => {
+    // With 'or' / ' / ' the coach is offering a choice, so it is ONE dose, not
+    // two — that much matches _routine_slots(). But which option to show is a
+    // clinical call, and the coach ruled it on 2026-08-04: for
+    // "Evening, with dinner or at bedtime" (magnesium glycinate on cl-004 and
+    // cl-006) the answer is BEDTIME, not the first-mentioned dinner. Her dose
+    // text on cl-004 says so outright — "…magnesium glycinate at bedtime."
+    // So the app's existing behaviour is correct here and it is
+    // _routine_slots()'s "keep the first-mentioned" rule that is wrong; the
+    // printed letter currently sends these two clients to dinner. Fixing the
+    // PYTHON side is tracked separately — this test pins the TS answer.
+    expect(timingRank("Bedtime (with or after dinner)", "", false, false)).toBe(70);
+    expect(timingRank("mid-morning or with breakfast", "", false, false)).toBe(30);
+    expect(timingRank("Evening, with dinner or at bedtime", "", false, false)).toBe(70);
+  });
+  it("treats 'between meals' as a qualifier, not a dose time", () => {
+    expect(timingRank("Mid-afternoon, between meals", "", false, false)).toBe(50);
+    expect(timingRank("between meals", "", false, false)).toBe(30);
+    // …but it DOES promote a bare morning cue to mid-morning: "between meals in
+    // the morning" is the gap after breakfast, not breakfast. Same exception
+    // _parse_routine_pos() carries; this used to answer 20 (breakfast).
+    expect(timingRank("between meals — morning and evening", "", false, false)).toBe(30);
+  });
+  it("collapses a single 'between X and Y' window to its midpoint", () => {
+    // The two meal names bound one window; the earlier one is not a dose.
+    // Midpoints match _routine_slots() in render-client-letter.py.
+    expect(timingRank("between breakfast and lunch", "", false, false)).toBe(30);
+    expect(timingRank("Between breakfast and lunch (mid-morning)", "", false, false)).toBe(30);
+    expect(timingRank("between lunch and dinner", "", false, false)).toBe(50);
+    expect(timingRank("between breakfast and dinner", "", false, false)).toBe(50);
+  });
+  it("lets empty-stomach set the time only when nothing else names one", () => {
+    // It refines the bare morning slot (10 sorts before 20) but must not drag a
+    // named later anchor to the top of the day.
+    expect(timingRank("morning, empty stomach", "", false, false)).toBe(10);
+    expect(timingRank("empty stomach", "", true, false)).toBe(10);
+    expect(timingRank("Between meals, on an empty stomach", "", false, false)).toBe(10);
+    expect(timingRank("mid-morning, empty stomach", "", false, false)).toBe(30);
+    expect(timingRank("afternoon, empty stomach", "", false, false)).toBe(50);
+    // Was 10 → the app's Morning group, for an explicitly bedtime dose.
+    expect(timingRank("before bed, empty stomach", "", false, false)).toBe(70);
+    expect(timingRank("empty stomach at bedtime", "", true, false)).toBe(70);
+  });
+});
