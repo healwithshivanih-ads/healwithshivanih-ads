@@ -244,7 +244,11 @@ describe("gut-reset exemplar — menus, library, about", () => {
     const { loadLibraryRecipes } = await import("./client-app");
     const lib = await loadLibraryRecipes();
     const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
-    const titles = new Set(lib.map((l) => norm(l.recipe.title)));
+    // A dish can be written under a recipe's alias, not just its title —
+    // guided-app.ts's own resolver accepts both (see byTitle there), so this
+    // check has to mirror that or it flags an alias-written dish as missing
+    // when it actually resolves fine.
+    const titles = new Set(lib.flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])].map(norm)));
     const gut = getGuidedProtocol("gut-reset")!;
     const missing: string[] = [];
     for (const w of gut.sampleWeeks ?? [])
@@ -297,7 +301,7 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
   it("every dish AND every override is an exact catalogue recipe", async () => {
     const { loadLibraryRecipes } = await import("./client-app");
     const lib = await loadLibraryRecipes();
-    const titles = new Set(lib.map((l) => norm(l.recipe.title)));
+    const titles = new Set(lib.flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])].map(norm)));
     const gut = getGuidedProtocol("gut-reset")!;
     const missing: string[] = [];
     for (const w of gut.sampleWeeks ?? [])
@@ -314,7 +318,10 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     const { loadLibraryRecipes } = await import("./client-app");
     const lib = await loadLibraryRecipes();
     const ingByTitle = new Map(
-      lib.map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]),
+      lib.flatMap((l) => {
+        const ing = (l.recipe.ingredients ?? []).join(" ").toLowerCase();
+        return [l.recipe.title, ...(l.recipe.aliases ?? [])].map((name) => [norm(name), ing] as const);
+      }),
     );
     const gut = getGuidedProtocol("gut-reset")!;
     const violations: string[] = [];
@@ -333,7 +340,10 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
     const { loadLibraryRecipes } = await import("./client-app");
     const lib = await loadLibraryRecipes();
     const ingByTitle = new Map(
-      lib.map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]),
+      lib.flatMap((l) => {
+        const ing = (l.recipe.ingredients ?? []).join(" ").toLowerCase();
+        return [l.recipe.title, ...(l.recipe.aliases ?? [])].map((name) => [norm(name), ing] as const);
+      }),
     );
     const gut = getGuidedProtocol("gut-reset")!;
     const remove = (gut.sampleWeeks ?? []).find((w) => w.phase === "Remove")!;
@@ -414,7 +424,8 @@ describe("all four protocols — generalised menu enforcement", () => {
 
   it("every dish and override across ALL protocols is an exact catalogue recipe", async () => {
     const { loadLibraryRecipes } = await import("./client-app");
-    const titles = new Set((await loadLibraryRecipes()).map((l) => norm(l.recipe.title)));
+    const library = await loadLibraryRecipes();
+    const titles = new Set(library.flatMap((l) => [l.recipe.title, ...(l.recipe.aliases ?? [])].map(norm)));
     const missing: string[] = [];
     for (const p of GUIDED_PROTOCOLS)
       for (const w of p.sampleWeeks ?? [])
@@ -429,7 +440,12 @@ describe("all four protocols — generalised menu enforcement", () => {
 
   it("what a Jain member sees is onion/garlic-free in EVERY protocol", async () => {
     const { loadLibraryRecipes } = await import("./client-app");
-    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const ing = new Map(
+      (await loadLibraryRecipes()).flatMap((l) => {
+        const i = (l.recipe.ingredients ?? []).join(" ").toLowerCase();
+        return [l.recipe.title, ...(l.recipe.aliases ?? [])].map((name) => [norm(name), i] as const);
+      }),
+    );
     const bad: string[] = [];
     for (const p of GUIDED_PROTOCOLS)
       for (const w of p.sampleWeeks ?? [])
@@ -442,7 +458,12 @@ describe("all four protocols — generalised menu enforcement", () => {
 
   it("blood sugar: NO added-sugar ingredients and NO white-rice dishes, any week, any variant", async () => {
     const { loadLibraryRecipes } = await import("./client-app");
-    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const ing = new Map(
+      (await loadLibraryRecipes()).flatMap((l) => {
+        const i = (l.recipe.ingredients ?? []).join(" ").toLowerCase();
+        return [l.recipe.title, ...(l.recipe.aliases ?? [])].map((name) => [norm(name), i] as const);
+      }),
+    );
     const bs = getGuidedProtocol("blood-sugar-balance")!;
     const bad: string[] = [];
     for (const cell of allDishes(bs.sampleWeeks)) for (const dish of cell.split(" + ")) {
@@ -455,7 +476,12 @@ describe("all four protocols — generalised menu enforcement", () => {
 
   it("anti-inflammatory Remove week: no wheat, no added sugar, any variant", async () => {
     const { loadLibraryRecipes } = await import("./client-app");
-    const ing = new Map((await loadLibraryRecipes()).map((l) => [norm(l.recipe.title), (l.recipe.ingredients ?? []).join(" ").toLowerCase()]));
+    const ing = new Map(
+      (await loadLibraryRecipes()).flatMap((l) => {
+        const i = (l.recipe.ingredients ?? []).join(" ").toLowerCase();
+        return [l.recipe.title, ...(l.recipe.aliases ?? [])].map((name) => [norm(name), i] as const);
+      }),
+    );
     const ai = getGuidedProtocol("anti-inflammatory-reset")!;
     const remove = (ai.sampleWeeks ?? []).find((w) => w.phase === "Remove")!;
     const bad: string[] = [];

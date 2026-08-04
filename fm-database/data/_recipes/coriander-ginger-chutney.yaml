@@ -1,5 +1,7 @@
 slug: coriander-ginger-chutney
 name: Coriander-ginger chutney
+aliases:
+- Coriander-coconut chutney
 meal_type:
 - condiment
 diet:
@@ -83,9 +85,9 @@ image:
 sources:
 - id: shivani-hari-original
   location: Coriander-ginger chutney
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-12'
+updated_at: '2026-08-03'
 updated_by: Shivani
 kcal_per_serving: 65
 kcal_total: 129

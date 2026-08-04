@@ -1,5 +1,7 @@
 slug: everyday-ghee
 name: Everyday Ghee
+aliases:
+- Ghee
 meal_type:
 - side
 diet:
@@ -65,9 +67,9 @@ image:
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: everyday ghee
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-08-03'
 updated_by: Shivani
 kcal_per_serving: 136
 kcal_total: 1630

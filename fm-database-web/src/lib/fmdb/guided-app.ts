@@ -146,7 +146,15 @@ export async function buildGuidedAppData(
 
   if (sampleWeek) {
     const library = await loadLibraryRecipes();
-    const byTitle = new Map(library.map((l) => [normTitle(l.recipe.title), l.recipe]));
+    // Index by title AND by every alias, so a sample-week dish written under
+    // an alias (e.g. a name folded into another recipe during a library
+    // merge) still resolves to the surviving recipe. Aliases only ADD lookup
+    // keys — they never change which recipe a title-match returns.
+    const byTitle = new Map<string, (typeof library)[number]["recipe"]>();
+    for (const l of library) {
+      byTitle.set(normTitle(l.recipe.title), l.recipe);
+      for (const a of l.recipe.aliases ?? []) byTitle.set(normTitle(a), l.recipe);
+    }
 
     // Per-diet dish pick: non-veg and Jain get their authored overrides;
     // veg + veg-egg run the default (eggs/fish arrive via the swap framework).
@@ -213,15 +221,25 @@ export async function buildGuidedAppData(
     }
 
     // The pack: every dish used across ALL of this protocol's sample weeks.
-    const used = new Set<string>();
+    // Resolve each dish key first, then dedupe by the RESOLVED recipe's
+    // title rather than by search key — two dish spellings (a title and an
+    // alias) can now resolve to the same recipe after a library merge, and
+    // the pack must list it once, not once per spelling.
+    const usedKeys = new Set<string>();
     for (const w of protocol.sampleWeeks ?? [])
       for (const d of w.days)
         for (const s of d.slots)
           for (const cell of [s.dish, s.nonveg, s.egg, s.jain])
-            if (cell) for (const part of cell.split(" + ")) used.add(normTitle(part));
-    recipePack = [...used]
-      .map((k) => byTitle.get(k))
-      .filter((r): r is NonNullable<typeof r> => !!r)
+            if (cell) for (const part of cell.split(" + ")) usedKeys.add(normTitle(part));
+    const seenTitles = new Set<string>();
+    const usedRecipes: (typeof library)[number]["recipe"][] = [];
+    for (const k of usedKeys) {
+      const r = byTitle.get(k);
+      if (!r || seenTitles.has(r.title)) continue;
+      seenTitles.add(r.title);
+      usedRecipes.push(r);
+    }
+    recipePack = usedRecipes
       .map((r) => ({
         title: r.title,
         serves: r.serves ?? (r.servingsNum ? String(r.servingsNum) : undefined),

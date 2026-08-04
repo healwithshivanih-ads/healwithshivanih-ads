@@ -1,5 +1,7 @@
 slug: cooling-cucumber-mint-raita
 name: Cooling Cucumber-Mint Raita
+aliases:
+- Cucumber Mint Raita
 meal_type:
 - side
 - snack
@@ -67,10 +69,10 @@ method: '1. Whisk 1/2 cup fresh yogurt smooth; thin with a splash of water.
   3. Serve fresh and cool (best at lunch, the warmest part of the day). Not for late
   dinner.'
 source: odonnell-everyday-ayurveda-cookbook-2015
-version: 1
+version: 2
 kitchen_tested: false
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-08-03'
 updated_by: Shivani
 image:
   file: images/web/cooling-cucumber-mint-raita.jpg
