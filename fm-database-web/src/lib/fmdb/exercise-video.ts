@@ -1,12 +1,22 @@
 /**
  * Demonstration videos for the movements that stills cannot show.
  *
- * WHY ONLY A FEW EXERCISES HAVE ONE. The image model has no 3D body: axial
- * rotation drawn from the front comes back as six near-identical figures, and a
- * neck movement is too small to change a full-body silhouette at all. Those are
- * the cases where a video earns its 14 credits. Everything else is a traced
- * two-pose figure, which is free to re-theme, free to re-time, and does not cost
- * the client bandwidth.
+ * WHY ONLY SOME EXERCISES HAVE ONE. Two separate reasons, and it is worth
+ * keeping them apart:
+ *
+ *   1. The image model has no 3D body. Axial rotation drawn from the front comes
+ *      back as six near-identical figures, and a neck movement is too small to
+ *      change a full-body silhouette at all.
+ *   2. Some movements have too many stages for two poses to carry. The coach
+ *      called these on review (2026-08-05): a burpee is stand, hinge, hands
+ *      down, legs back, and back up — "too many movements to come correctly with
+ *      single images" — and mountain climbers read as one still because both
+ *      poses are the same plank.
+ *
+ * Everything else stays a traced two-pose figure, which is free to re-theme,
+ * free to re-time, and does not cost the client bandwidth. Generated at 480p /
+ * fast / no audio: these are flat two-tone line figures, so resolution buys
+ * nothing and the clip costs 6 credits instead of 22.5.
  *
  * A FILE LIST, NOT A DIRECTORY SCAN. The client app renders on Fly from a read
  * replica, and a missing-file lookup on every session render would be a
@@ -29,6 +39,17 @@ const VIDEO_BY_SLUG: Record<string, string> = {
   // side-bend movement is authored. Attaching it here would show a client a
   // movement their plan does not prescribe.
   "neck-mobility": "neck-retraction.mp4",
+  // Multi-stage movements, per the coach's review (2026-08-05).
+  "burpee": "burpee.mp4",
+  "squat-jumps": "squat-jumps.mp4",
+  "mountain-climbers": "mountain-climbers.mp4",
+  "cool-down-stretch-sequence": "cool-down-stretch-sequence.mp4",
+  // NOT split-jumps. She asked for that one as a video too, and it was tried
+  // twice: given a split-stance keyframe the model produces a RUNNING STRIDE
+  // both times, and the second attempt was no closer than the first. Running
+  // travels across the floor; a scissor skip is done on the spot, so shipping
+  // it would show a client the wrong exercise. It keeps its traced pair, with
+  // motion arrows carrying the foot exchange instead.
 };
 
 export function exerciseVideoSrc(slug: string): string | null {
