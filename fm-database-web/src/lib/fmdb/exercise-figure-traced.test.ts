@@ -29,8 +29,8 @@ describe("tracedFigureSvg", () => {
       const svg = tracedFigureSvg(slug);
       expect(svg, slug).toBeTruthy();
       // two pose groups, cross-faded
-      expect(svg).toContain('class="tfa"');
-      expect(svg).toContain('class="tfb"');
+      expect(svg).toContain('class="tf0"');
+      expect(svg).toContain('class="tf1"');
       // reduced motion resolves to the start pose
       expect(svg).toContain("prefers-reduced-motion");
     }
