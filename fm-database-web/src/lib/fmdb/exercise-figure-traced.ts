@@ -48,6 +48,17 @@ interface TracedArrow {
   x2: number;
   y2: number;
   bow?: number;
+  /**
+   * Which half of the cycle this arrow belongs to.
+   *
+   * A two-pose figure does not just go A→B, it goes A→B→A, and for anything
+   * that travels the return leg is half the exercise: side-hops is over the
+   * towel AND back. `out` draws with the A→B cross-fade, `back` with B→A, so
+   * the pair reads as a round trip rather than one direction repeated.
+   * Defaults to `out`, which is right for arrows describing parts moving at the
+   * same time (the two feet of a scissor skip) rather than a there-and-back.
+   */
+  phase?: "out" | "back";
 }
 
 export interface TracedFigure {
@@ -81,7 +92,8 @@ function isArrow(a: unknown): a is TracedArrow {
   const d = a as Record<string, unknown>;
   return (
     [d.x1, d.y1, d.x2, d.y2].every((v) => typeof v === "number" && Number.isFinite(v)) &&
-    (d.bow === undefined || (typeof d.bow === "number" && Number.isFinite(d.bow)))
+    (d.bow === undefined || (typeof d.bow === "number" && Number.isFinite(d.bow))) &&
+    (d.phase === undefined || d.phase === "out" || d.phase === "back")
   );
 }
 
@@ -211,7 +223,8 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
           // pathLength normalises the curve to 100 units, so the draw-on
           // animation below needs no arc-length maths and is exact for any
           // arrow shape.
-          return `<path class="tfarr" pathLength="100" d="M${a.x1.toFixed(1)},${a.y1.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${a.x2.toFixed(1)},${a.y2.toFixed(1)}" marker-end="url(#tfah${key})"/>`;
+          const cls = a.phase === "back" ? "tfarr tfarrb" : "tfarr";
+          return `<path class="${cls}" pathLength="100" d="M${a.x1.toFixed(1)},${a.y1.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${a.x2.toFixed(1)},${a.y2.toFixed(1)}" marker-end="url(#tfah${key})"/>`;
         })
         .join("")
     : "";
@@ -226,10 +239,18 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
   // at its vertex regardless of dashing, so a fully-offset stroke would still
   // leave the arrowhead sitting there on its own.
   const arrowCss = arrows.length
-    ? `@keyframes tfar${key}{0%,34%{stroke-dashoffset:100;opacity:0}38%{stroke-dashoffset:100;opacity:1}` +
+    ? // out: draws through the A→B cross-fade (38%-50% above), holds while the
+      // end pose is up, clears before the cycle restarts.
+      `@keyframes tfar${key}{0%,34%{stroke-dashoffset:100;opacity:0}38%{stroke-dashoffset:100;opacity:1}` +
       `52%,84%{stroke-dashoffset:0;opacity:1}94%,100%{stroke-dashoffset:0;opacity:0}}` +
+      // back: the return leg, drawn through B→A (88%-100%) and held a moment
+      // into the next cycle so the round trip reads as continuous rather than
+      // snapping off at the loop point.
+      `@keyframes tfarb${key}{0%{stroke-dashoffset:0;opacity:1}8%,84%{stroke-dashoffset:100;opacity:0}` +
+      `88%{stroke-dashoffset:100;opacity:1}100%{stroke-dashoffset:0;opacity:1}}` +
       `.fm-traced-figure .tfarr{stroke-dasharray:100;stroke-dashoffset:100;` +
-      `animation:tfar${key} var(--fm-fig-cyc,4s) ease-in-out infinite}`
+      `animation:tfar${key} var(--fm-fig-cyc,4s) ease-in-out infinite}` +
+      `.fm-traced-figure .tfarrb{animation-name:tfarb${key}}`
     : "";
 
   return `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}" class="fm-traced-figure">

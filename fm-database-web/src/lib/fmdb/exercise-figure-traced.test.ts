@@ -108,6 +108,22 @@ describe("tracedFigureSvg", () => {
       expect(svg).toMatch(/@keyframes tfarsidehops\{0%,34%\{stroke-dashoffset:100;opacity:0\}/);
     });
 
+    it("gives the return leg its own arrow on the other half of the cycle", () => {
+      // Coach: "the jumping needs to be left to right and right to left". The
+      // exercise is over the towel AND back, so one arrow tells half of it.
+      const svg = tracedFigureSvg("side-hops")!;
+      const paths = [...svg.matchAll(/<path class="(tfarr[^"]*)"[^d]*d="M([\d.-]+),[\d.-]+Q[^ ]+ ([\d.-]+),/g)];
+      expect(paths.length).toBe(2);
+      const out = paths.find((m) => m[1] === "tfarr")!;
+      const back = paths.find((m) => m[1] === "tfarr tfarrb")!;
+      // they must actually run opposite ways, not just sit in different classes
+      expect(Number(out[3])).toBeGreaterThan(Number(out[2]));
+      expect(Number(back[3])).toBeLessThan(Number(back[2]));
+      // and animate on different keyframes, so they never draw at once
+      expect(svg).toContain(".fm-traced-figure .tfarrb{animation-name:tfarbsidehops}");
+      expect(svg).toMatch(/@keyframes tfarbsidehops\{0%\{stroke-dashoffset:0;opacity:1\}/);
+    });
+
     it("holds the arrow fully drawn when motion is reduced", () => {
       const svg = tracedFigureSvg("side-hops")!;
       const reduced = svg.match(/@media \(prefers-reduced-motion:reduce\)\{([^@]*)\}/)![1];
