@@ -183,11 +183,14 @@ re-draw of one figure wins over an earlier one without ambiguity:
 | `tier1` / `solo` | 5 | earlier one-off pairs |
 | `sheet6` | 7 | the original 6-frame sheets, reduced to their two extremes |
 
-**Four ship as video** (`public/exercise-videos/`, allow-listed in `middleware-policy.ts` so
+**Eight ship as video** (`public/exercise-videos/`, allow-listed in `middleware-policy.ts` so
 Fly serves them): standing-trunk-rotation, joint-mobilising-sequence, neck-retraction,
-neck-sidebend. `exercise-video.ts` maps slug → file and **video wins over the traced figure**
-where both exist — video is only ever made for movements two stills cannot show, so where
-there is one it carries strictly more of the movement.
+neck-sidebend, plus burpee, squat-jumps, mountain-climbers and cool-down-stretch-sequence,
+added after the coach's review — see §7.3. `exercise-video.ts` maps slug → file and **video
+wins over the traced figure** where both exist — video is only ever made for movements two
+stills cannot show, so where there is one it carries strictly more of the movement.
+
+Two figures carry **motion arrows** (side-hops, split-jumps) — see §7.2.
 
 **Not started:** female variants of every figure — the coach benched these deliberately
 (2026-08-05) rather than deferring them by accident. Revisit when the library is otherwise
@@ -304,6 +307,56 @@ The general rule, which cost a full day to see: **when the image model has a fix
 idea, arguing with it does not work — building the picture yourself does, and how far that
 gets you depends entirely on whether the shape decomposes into rigid pieces.** A foot does.
 An elbow does not. A whole body under a jump does.
+
+### 7.1 Registration is a CORRECTION, not a step
+
+Registration exists because the original sheets held six poses in one image and were split
+apart, so each frame landed in its own arbitrary coordinate space. **Poses generated one
+per call do not have that problem** — measured across the conditioning batch, all 22 images
+were 1200×896 with the ground line within one pixel of row 868. One space. Identity is the
+right answer.
+
+Running the max-overlap search on already-registered frames is **not a no-op, it is silent
+damage** — the output is a valid animation of the wrong movement, and nothing errors:
+
+- **burpee** was shifted **302px sideways**. A standing figure and a plank overlap at IoU
+  0.22, so "best overlap" is meaningless; the figure teleported instead of dropping.
+- **jumping-jacks +144px, alternate-toe-taps +184px, split-jumps +218px** — each slid a
+  figure *down off a ground line it was already standing on*.
+- **ankle-jumps** had its composed 58px lift cancelled outright.
+
+Call `pairreg.iou_at(a, b, 0, 0)` first. A high value means they already agree, and the
+identity is correct. Ask whether the frames are in different spaces before correcting for it.
+
+### 7.2 Motion arrows, for when a correct figure still does not read
+
+Two poses can be perfectly drawn and still fail to say which WAY the movement goes: a
+lateral hop cross-fades between a figure left of a towel and the same figure right of it,
+which reads as a jump-cut. Figures may carry an optional `arrows` array (frame coordinate
+space, `bow` = perpendicular offset of the quadratic control point). They are **arcs, not
+straight lines — the curve is the hop** — and they draw themselves along the path in step
+with the pose they explain.
+
+Three traps, all now covered by tests in `exercise-figure-traced.test.ts`:
+- A `path` CSS rule scoped to the whole SVG also hits the arrowhead inside the marker def,
+  and a stylesheet beats an inline presentation attribute — the head fills solid and reads
+  as a blob. Scope it to `g > path`.
+- Opacity must do the hiding, not the dash offset. **An SVG marker draws at its vertex
+  whatever the dashing**, so a dash-only hide strands the arrowhead on screen.
+- **Never put an angle-bracketed tag name in a CSS comment.** SVG is XML; it parses as
+  markup and the whole image silently fails to render.
+
+### 7.3 When to reach for video instead
+
+Beyond the rotation/neck cases in §2.2, video also earns its cost when a movement has **too
+many stages for two poses** — the coach's words on the burpee were "too many movements to
+come correctly with single images". Generate at **480p / fast / no audio**: these are flat
+two-tone line figures, so resolution buys nothing and the clip costs **6 credits instead of
+22.5**.
+
+It is not a universal escape hatch. `split-jumps` was attempted twice and came back as a
+**running stride** both times — running travels, a scissor skip does not — so it keeps its
+traced pair plus arrows. When the second attempt is no closer than the first, stop.
 
 ---
 
