@@ -1280,12 +1280,30 @@ def main() -> int:
     if payload.get("author_context"):
         _sys_prompt = ""
         _drug_ctx: dict = {}
+        # Everything synthesize() adds to its OWN payload rather than taking from
+        # the shared assembly above. The comment there promises the briefing can
+        # never silently diverge from the real call's inputs — but that promise
+        # only holds for what the shared code builds. `exercise_options` and
+        # `session_formats` are assembled inside synthesize(), so they were absent
+        # here and a chat-authored assessment could not see the screened exercise
+        # list at all: rule 32 says "the ONLY list you may pick from", and the
+        # list was not in the room. Anything added to stable_payload from now on
+        # has to be added here too, or this mode quietly stops being the same
+        # briefing.
+        _exercise_opts: list = []
+        _session_fmts: dict = {}
         try:
             from fmdb.assess.suggester import _SYSTEM_PROMPT, _collect_drug_context
             _sys_prompt = _SYSTEM_PROMPT
             _drug_ctx = _collect_drug_context(client_ctx)
         except Exception as e:  # pragma: no cover
             _sys_prompt = f"<<could not load SYSTEM prompt: {type(e).__name__}: {e}>>"
+        try:
+            from fmdb.assess.suggester import _exercise_options, _session_formats
+            _exercise_opts = _exercise_options(client_ctx)
+            _session_fmts = _session_formats()
+        except Exception:  # pragma: no cover — briefing still useful without them
+            pass
 
         # The whitelist: every slug the author is allowed to reference, by kind.
         _whitelist: dict = {}
@@ -1307,6 +1325,8 @@ def main() -> int:
             "client_ctx": client_ctx,
             "drug_context": _drug_ctx,
             "subgraph": subgraph,
+            "exercise_options": _exercise_opts,
+            "session_formats": _session_fmts,
             "slug_whitelist": _whitelist,
             "selected": {"symptoms": symptoms, "topics": topics},
             "session_history": history_bundle,
@@ -1500,6 +1520,46 @@ def main() -> int:
             return 2
 
         suggestions = AssessSuggestions.model_validate(_raw)
+
+        # The exercise gate — the SAME one synthesize() runs over the paid
+        # model's answer. It lived only inside synthesize(), so this path had
+        # neither half of the belt-and-braces: no screened option list in the
+        # briefing (fixed above) and no gate over the answer. A chat-authored
+        # assessment could name an exercise the screen BLOCKS for this client
+        # and nothing anywhere would stop it.
+        #
+        # It also fills `level` from the screen's start_level, which is why
+        # rule 32 tells the author to leave level empty. Without this the whole
+        # session reaches the plan with no dose at all.
+        if suggestions.exercise_suggestions:
+            try:
+                from fmdb.plan.exercise_screen import gate_prescription
+                from fmdb.assess.suggester import _exercise_dicts
+                _cd = client.model_dump() if hasattr(client, "model_dump") else client
+                _gated = gate_prescription(
+                    [s.model_dump() for s in suggestions.exercise_suggestions],
+                    _exercise_dicts(),
+                    _cd or {},
+                )
+                _kept = {k["exercise"] for k in _gated.kept}
+                _lvl = {k["exercise"]: k.get("level") for k in _gated.kept}
+                _survivors = []
+                for s in suggestions.exercise_suggestions:
+                    if s.exercise not in _kept:
+                        continue
+                    if not s.level and _lvl.get(s.exercise):
+                        s.level = str(_lvl[s.exercise])
+                    _survivors.append(s)
+                suggestions.exercise_suggestions = _survivors
+                suggestions.exercises_withheld = _gated.dropped_slugs
+            except Exception:
+                # Fail closed, exactly as synthesize() does: an unscreened
+                # prescription looks identical to a screened one.
+                suggestions.exercises_withheld = [
+                    s.exercise for s in suggestions.exercise_suggestions
+                ]
+                suggestions.exercise_suggestions = []
+
         gate_report = _report  # surfaced in the response below
         usage = AssessUsage.model_validate({
             "model": "chat_authored (validated, no Anthropic call)",
