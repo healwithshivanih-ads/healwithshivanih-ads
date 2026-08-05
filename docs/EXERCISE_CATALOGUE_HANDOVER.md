@@ -1,9 +1,8 @@
 # Exercise catalogue — handover brief
 
-**Branch:** `claude/client-exercise-catalogue-659740` (worktree)
-**Date:** 2026-08-04
-**Status:** catalogue + screen shipped and green; figure pipeline proven but incomplete;
-plan integration NOT built.
+**Date:** 2026-08-05 (§§4–8 rewritten; §§1–3 still describe the original build)
+**Status:** catalogue, screen, plan integration, client player, selection logic and 33
+figures all shipped and green. What is left is listed in §8 — none of it blocks use.
 
 ---
 
@@ -158,7 +157,7 @@ visible from?" before generating.
 | Video clip (Kling 3.0 Turbo) | 7.5 |
 | Trace, register, animate, loop, mirror, re-theme | **0** |
 
-**Spent this session: ~100 of 496.** Plan grants **600/month and unused credits are WIPED,
+**Spent across sessions: ~180 of 600.** Plan grants **600/month and unused credits are WIPED,
 not carried** (ledger shows `Subscription Credits Reset −552.26`). Spend the allowance.
 
 **To finish the catalogue:** ~12 remaining animatable exercises × 2 = ~24 credits, plus
@@ -168,36 +167,46 @@ not carried** (ledger shows `Subscription Credits Reset −552.26`). Spend the a
 
 ## 4. Current state of the figure library
 
-**Nine animated and shipped** (6 positions each, registered):
-standing-back-extension, neck-flexion, joint-mobilising (unsplit warm-up),
-chair-sit-to-stand, one-leg-stand, tandem-stance (side view), heel-raises,
-standing-hip-abduction, standing-knee-flexion.
+**33 figures ship** in `fm-database/data/_exercise_figures.json` (~1 MB, underscore-prefixed
+so `fmdb validate` skips it — same footing as `_ingredient_nutrients.yaml`). Each carries its
+traced path `d` strings, frame extents and one registration offset; the renderer is
+`src/lib/fmdb/exercise-figure-traced.ts`, which fails closed on anything malformed.
 
-**One as video:** standing-trunk-rotation (10s palindrome loop, 44 dB seam, 330 KB).
+They come from five rounds, and the asset records which in a `source` field so a later
+re-draw of one figure wins over an earlier one without ambiguity:
 
-**Held back, needing a re-run (~8 credits):**
-- `ankle-point-pull` — unclear
-- `floor-bridge` — unclear
-- `prone-back-extension` — will not split evenly
-- `neck-side-bend` — front-view head movement, may need video
+| source | n | what it is |
+|---|---|---|
+| `coach-fix-2026-08-05` | 6 | redrawn after her first review — these beat every earlier version |
+| `tier2-2026-08-05` | 4 | the Tier-2 progression rungs |
+| `conditioning-2026-08-05` | 11 | impact + conditioning (see §6) |
+| `tier1` / `solo` | 5 | earlier one-off pairs |
+| `sheet6` | 7 | the original 6-frame sheets, reduced to their two extremes |
 
-**Untested at time of writing:** 12 positions per exercise instead of 6, and a heel-to-toe
-re-run fixing the back foot (it is not flat on the floor in the current sheet). The
-Higgsfield MCP connection dropped mid-call; retry.
+**Four ship as video** (`public/exercise-videos/`, allow-listed in `middleware-policy.ts` so
+Fly serves them): standing-trunk-rotation, joint-mobilising-sequence, neck-retraction,
+neck-sidebend. `exercise-video.ts` maps slug → file and **video wins over the traced figure**
+where both exist — video is only ever made for movements two stills cannot show, so where
+there is one it carries strictly more of the movement.
 
-**Not started:** female variants of every sheet (the app should serve by client gender —
-doubles the library at 2 credits a sheet).
+**Not started:** female variants of every figure — the coach benched these deliberately
+(2026-08-05) rather than deferring them by accident. Revisit when the library is otherwise
+settled; it doubles at 2 credits a pair.
 
 ### Where the working files are
 
-Scratchpad (NOT in the repo — copy anything worth keeping):
-`/private/tmp/claude-501/…/scratchpad/pairs/`
-- `wholesheet.py` — whole-sheet trace + path-level frame assignment
-- `register.py` — max-overlap frame registration
-- `trace.py` (parent dir) — raster → SVG tracer (numpy masks, BFS components,
-  Moore-neighbour boundary, Douglas-Peucker)
-- `s6-*.png` — the generated sheets
-- `final2.json` — traced + registered frames for the nine shipped
+The reusable primitives now live in the repo at `fm-database/scripts/` (they were
+scratchpad-only for three sessions running, which is why they kept getting rewritten):
+- `trace.py` — raster → SVG tracer (numpy masks, BFS components, Moore-neighbour
+  boundary, Douglas-Peucker)
+- `pairreg.py` — max-ink-overlap registration between two traced frames
+- `twopose.py` — the accept/reject gate and `extremes()`, which defines "the pair" ONCE so
+  the app and the review page never disagree about which two poses those are
+- `facing.py` — which way the figure faces, for catching mirrored generations
+
+The per-batch drivers (which PNG maps to which slug) stay in the scratchpad: they point at
+generated images that are not committed, so a copy in the repo would be a script that
+cannot run.
 
 Repo:
 - `docs/EXERCISE_SOURCE_IDS.md` — the source-id convergence contract with the book-ingest
@@ -217,29 +226,95 @@ purposes.
 
 ---
 
-## 5. What is NOT built — the next conversation
+## 5. How an exercise reaches a client — the sandwich
 
-**Nothing puts an exercise onto a client's plan.** The screen says who can do what; the
-figures show how; the join between them does not exist. That is the whole subject of the
-integration discussion:
+This is built. The join is a **screen → model → gate sandwich**, and the ordering is the
+whole safety argument:
 
-- How does an exercise appear in the plan editor — its own section, or inside Lifestyle?
-- Does the coach pick from a screened list, or does assess suggest exercises the way it
-  suggests supplements?
-- Level selection: `_pick_start_level` exists in the screen — does the coach override it?
-- What does the client see in the Ochre Tree app — the animation, the cue, a rep target,
-  a Done button? Does it log to `_practice_log.jsonl` like the somatic practices?
-- Progression: who moves a client from level A to B, and on what signal?
-- **Published plans are frozen** — exercise edits would go through Quick-edit, as practices do.
-- The **staging allowlist trap**: any new `client.yaml` field the client app reads must be
-  added to `_APP_CLIENT_KEYS` in `scripts/app-staging-action.py` or it is invisible on Fly.
+1. **Screen** (`fmdb/assess/exercise_screen.py`, mirrored in `exercise-screen.ts`) decides
+   from the client record which exercises are permissible at all, and at which rung.
+   Deterministic, no model involved.
+2. **Model** proposes a session from the screened list, shaped by the programme structure
+   in §6.
+3. **`gate_prescription` runs AFTER the model**, re-screening everything it chose. A model
+   that invents an exercise, or picks one the screen excluded, has its choice dropped —
+   not argued with. This is why the gate is downstream and not a prompt instruction.
 
-### Open judgement calls to settle
+TS/Python parity is pinned by `__fixtures__/exercise-screen-python.json`, captured from the
+real Python over the real catalogue. **Regenerate it by hand whenever the screen legitimately
+changes** — the fixture is the only thing stopping the two implementations drifting.
+
+The client sees the session in `ochre-exercise.tsx`: one exercise at a time, in the coach's
+order, self-paced with no countdown. Rep-based work is paced by the body, and nobody props a
+phone up while standing on one leg. It logs to `_practice_log.jsonl` on finish AND on
+unmount, with measured seconds — a session abandoned half way is still practice.
+
+---
+
+## 6. Selection logic — what the model is actually told
+
+**Movement patterns and muscles are first-class.** `MovementPattern` and `MuscleGroup`
+(`fmdb/enums.py`) are populated on all 32 entries. A session is balanced by PATTERN, not by
+counting exercises: three quad-dominant movements are not a lower-body session.
+
+**Programme structure is ingested, not invented.** `data/_exercise_programmes.yaml` holds
+5 session formats and the weekly rules, from Martinoli ch 5–7. The model composes from these
+rather than free-styling a session shape.
+
+**Menopause changes emphasis, never permission.** `menopause_stage()` in `suggester.py`
+derives `perimenopause` / `postmenopause` from `active_conditions` and `medical_history`
+(post wins over peri — records accumulate, and the later state is the true one). It feeds
+rule 32, which asks for loading and impact over steady cardio, short hard efforts, and
+strength before conditioning. It is deliberately **not** part of the screen: safety stays
+where the fixture pins it, and this only reorders what was already permissible.
+
+`test_menopause_stage.py` guards the one inversion that matters — "Premenopausal" must NOT
+read as the transition, and a bare substring match on `menopaus` gets that backwards.
+
+**Progression is measured, not assumed.** `exercise-progression.ts` will only suggest a rung
+change on ≥6 finished sessions inside 28 days. Below that it says nothing, because a
+threshold picked before the log had data in it would be a guess wearing a number.
+
+**The conditioning set is hard-gated.** The 11 impact entries added for weight-loss clients
+exist because the catalogue had nothing above gentle. Every one is screened out for the
+frail-and-falls cohort the rest of the library was built for. Note `burpee` carries a firm
+caution for hypertension rather than a hard block: the catalogue's convention is that
+cautions inform the coach and blocks remove choice, and a blanket block there would have
+been the wrong instrument.
+
+---
+
+## 7. Composing a frame the model refuses to draw
+
+`ankle-jumps` is the worked example, and it generalises. Two attempts at "airborne, feet
+pointed" came back as a **second standing figure** — and the second attempt read as *less*
+movement than the first (3% vs 7%), so iterating the prompt was moving away from the answer.
+
+A hop is a rigid vertical translation of the whole body. That is the one shape that
+decomposes perfectly, so the frame was **composed**: lift the traced figure 58px, leave the
+ground line where it is, and the daylight under the feet IS the movement. 15% change, gate
+passed, and no generation could have been more correct than a translation.
+
+**The trap this creates:** a composed frame is already in register with its source, so the
+max-ink-overlap search must not run on it. It would find its best overlap by sliding the
+lifted body back down onto the standing one — cancelling the lift, and reporting the pair as
+two pictures of the same thing. Hence the `PREREGISTERED` set in the batch driver.
+
+The general rule, which cost a full day to see: **when the image model has a fixed wrong
+idea, arguing with it does not work — building the picture yourself does, and how far that
+gets you depends entirely on whether the shape decomposes into rigid pieces.** A foot does.
+An elbow does not. A whole body under a jump does.
+
+---
+
+## 8. Open judgement calls still to settle
 
 - Age thresholds (≥75, balance demand ≥2) are **my** judgement. Otago's evidence is about
   ≥80 with a prior fall. Confirm or change.
 - 5 Otago balance exercises + 1 warm-up remain unauthored.
-- `muscles_worked` field + a muscle-group enum, distinct from `joint_stress`
-  (what gets stronger vs what might hurt).
 - `body_regions` is empty on all 32 entries — populate it, or drop the detail-plate idea
   that depended on it.
+- Lehman *Recovery Strategies* is identified as worth ingesting and has not been.
+- **Published plans are frozen** — exercise edits go through Quick-edit, as practices do.
+- The **staging allowlist trap**: any new `client.yaml` field the client app reads must be
+  added to `_APP_CLIENT_KEYS` in `scripts/app-staging-action.py` or it is invisible on Fly.

@@ -2490,6 +2490,9 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
   display: block; max-height: 260px; max-width: 100%;
   width: auto; height: auto;
 }
+/* A video sits in the same slot as a traced figure and obeys the same box, so
+   swapping one for the other never changes the card's layout. */
+video.ex-figure { display: block; height: auto; border-radius: 10px; background: rgba(0,0,0,.15); }
 .ex-sub {
   font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
   color: rgba(242,237,226,.42); margin: 4px 0 6px; width: 100%; max-width: 340px;

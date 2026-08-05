@@ -27,6 +27,7 @@ import yaml from "js-yaml";
 
 import { getCataloguePath } from "./paths";
 import { tracedFigureSvg } from "./exercise-figure-traced";
+import { exerciseVideoSrc } from "./exercise-video";
 
 export interface ExerciseStep {
   /** One instruction line. Setup lines come first, then the movement steps. */
@@ -58,6 +59,15 @@ export interface AppExerciseItem {
    * in its place — text instructions are the contract, the figure is a bonus.
    */
   figureSvg?: string | null;
+  /**
+   * Public URL of a demonstration video, when one exists for this slug.
+   *
+   * Video exists only for the movements STILLS CANNOT SHOW — axial rotation and
+   * the neck movements, where two traced poses read as two near-identical
+   * pictures. Where both a video and a traced figure exist the video wins: it
+   * is the same movement with the in-between restored.
+   */
+  videoSrc?: string | null;
 }
 
 export interface AppExerciseSession {
@@ -184,6 +194,7 @@ export function deriveExerciseSessions(
         figureSvg: tracedFigureSvg(slug, {
           title: asStr(entry.client_name).trim() || slug,
         }),
+        videoSrc: exerciseVideoSrc(slug),
       });
     }
 
