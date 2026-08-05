@@ -26,6 +26,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 
 import { getCataloguePath } from "./paths";
+import { tracedFigureSvg } from "./exercise-figure-traced";
 
 export interface ExerciseStep {
   /** One instruction line. Setup lines come first, then the movement steps. */
@@ -51,6 +52,12 @@ export interface AppExerciseItem {
   sets: number | null;
   holdSeconds: number | null;
   support: string;
+  /**
+   * Traced two-pose figure as a self-contained SVG string, when the exercise
+   * has reviewed artwork. Optional and null-safe: the player renders nothing
+   * in its place — text instructions are the contract, the figure is a bonus.
+   */
+  figureSvg?: string | null;
 }
 
 export interface AppExerciseSession {
@@ -174,6 +181,9 @@ export function deriveExerciseSessions(
         sets: lv ? asNum(lv.sets) : null,
         holdSeconds: lv ? asNum(lv.hold_seconds) : null,
         support: lv ? asStr(lv.support).trim() : "",
+        figureSvg: tracedFigureSvg(slug, {
+          title: asStr(entry.client_name).trim() || slug,
+        }),
       });
     }
 
