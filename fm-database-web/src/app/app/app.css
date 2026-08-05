@@ -2454,6 +2454,11 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 }
 .ex-support { font-size: 13px; color: rgba(242,237,226,.6); margin: 0 0 12px; text-align: center; }
 .ex-why { font-size: 14.5px; line-height: 1.6; color: rgba(242,237,226,.72); margin: 0 0 16px; max-width: 340px; text-align: center; }
+/* Traced two-pose figure. The warm greys are picked for this dark ground —
+   the SVG itself only knows the custom properties. */
+.ex-figure { width: 100%; max-width: 300px; margin: 0 auto 14px;
+  --fm-fig: rgba(242,237,226,.58); --fm-figline: rgba(20,19,16,.9); }
+.ex-figure svg { display: block; }
 .ex-sub {
   font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
   color: rgba(242,237,226,.42); margin: 4px 0 6px; width: 100%; max-width: 340px;
