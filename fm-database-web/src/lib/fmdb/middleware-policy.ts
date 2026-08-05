@@ -123,6 +123,9 @@ export const PUBLIC_PATH_PREFIXES = [
   "/coach-app/",
   // Recipe photos for the client app's recipe cards. Generic food images.
   "/recipe-images/",
+  // Exercise demonstration videos for the client app's session player.
+  // Generic anatomy-figure loops — no client data.
+  "/exercise-videos/",
   // Public client handouts — static branded 1-page guides. No client data.
   "/handouts/",
   // Inbound WhatsApp (self-hosted Fly app). HMAC-verified at the route via

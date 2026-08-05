@@ -94,6 +94,7 @@ const PUBLIC_ROUTES = [
   "/coach-app/icon-192.png",
   "/api/m-bridge/ask",
   "/recipe-images/dal.jpg",
+  "/exercise-videos/neck-retraction.mp4",
 ];
 
 const FLY: GateEnv = { flyIntakeOnly: "1" };
