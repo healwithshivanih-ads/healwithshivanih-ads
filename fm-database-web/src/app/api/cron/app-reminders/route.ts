@@ -55,6 +55,25 @@ function todayInTz(tz: string): string {
   return new Date().toLocaleDateString("sv-SE", { timeZone: tz });
 }
 
+/** Newest MSQ submission date, from app-msq session filenames
+ *  ("YYYY-MM-DD-NNN-app-msq.yaml"). Filename scan only — this runs every
+ *  minute across the roster, and parsing every session YAML to catch the
+ *  rare coach-entered MSQ isn't worth the I/O; a coach entry just means the
+ *  nudge stays quiet, never that it fires wrongly early. */
+async function lastMsqDate(clientId: string): Promise<string | null> {
+  try {
+    const names = await fs.readdir(path.join(getPlansRoot(), "clients", clientId, "sessions"));
+    let latest: string | null = null;
+    for (const n of names) {
+      const m = /^(\d{4}-\d{2}-\d{2})-\d+-app-msq\.yaml$/.exec(n);
+      if (m && (!latest || m[1] > latest)) latest = m[1];
+    }
+    return latest;
+  } catch {
+    return null;
+  }
+}
+
 function nowInTz(tz: string): { minutes: number; weekday: number } {
   const parts = new Intl.DateTimeFormat("en-GB", {
     timeZone: tz,
@@ -147,7 +166,10 @@ export async function POST(req: NextRequest) {
     const { minutes: nowMin, weekday: nowWeekday } = nowInTz(tz);
 
     const { token, overrides } = await readOverrides(clientId);
-    const reminders = effectiveReminders(deriveReminders(plan, client), overrides);
+    const reminders = effectiveReminders(
+      deriveReminders(plan, client, { lastMsqDate: await lastMsqDate(clientId), todayIso: clientToday }),
+      overrides,
+    );
     if (reminders.length === 0) continue;
 
     const fired = await readFired(clientId);
