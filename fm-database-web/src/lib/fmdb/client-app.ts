@@ -5414,7 +5414,9 @@ export async function loadClientAppData(
   // check-in cadence), capped at 3, then overlaid with the client's saved
   // on/off + pinned-time overrides. Republishing the plan regenerates them.
   const reminders = effectiveReminders(
-    deriveReminders(plan, client),
+    deriveReminders(plan, client, {
+      lastMsqDate: msqEntries.length ? msqEntries[msqEntries.length - 1].date : null,
+    }),
     (await readOverrides(clientId)).overrides,
   );
 

@@ -115,3 +115,35 @@ describe("a reminder never fires at a time the app does not show", () => {
     }
   });
 });
+
+describe("deriveReminders — MSQ score-check nudge", () => {
+  const msq = (lastMsqDate: string | null, todayIso: string) =>
+    deriveReminders(plan("with breakfast"), CLIENT, { lastMsqDate, todayIso }).find((r) => r.id === "msq");
+
+  it("stays quiet while the retake window is closed", () => {
+    expect(msq("2026-08-01", "2026-08-10")).toBeUndefined(); // day 9
+    expect(msq("2026-08-01", "2026-08-21")).toBeUndefined(); // day 20
+  });
+
+  it("fires for the first 3 days of an open window, then goes quiet", () => {
+    expect(msq("2026-08-01", "2026-08-22")).toBeDefined(); // day 21 — opens
+    expect(msq("2026-08-01", "2026-08-24")).toBeDefined(); // day 23 — last nudge
+    expect(msq("2026-08-01", "2026-08-25")).toBeUndefined(); // day 24 — silent
+  });
+
+  it("never fires without a baseline — the card's CTA owns that ask", () => {
+    expect(msq(null, "2026-08-22")).toBeUndefined();
+  });
+
+  it("rides above the standing-reminder cap instead of displacing one", () => {
+    const all = deriveReminders(plan("with breakfast", "with dinner"), CLIENT, {
+      lastMsqDate: "2026-08-01",
+      todayIso: "2026-08-22",
+    });
+    const ids = all.map((r) => r.id);
+    expect(ids).toContain("supp-am");
+    expect(ids).toContain("supp-pm");
+    expect(ids).toContain("checkin");
+    expect(ids).toContain("msq");
+  });
+});

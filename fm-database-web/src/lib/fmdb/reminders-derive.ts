@@ -57,13 +57,27 @@ function asStr(v: unknown): string {
   return typeof v === "string" ? v : v == null ? "" : String(v);
 }
 
+/** Days between MSQ retakes — mirrors RETAKE_DAYS in ochre-msq.tsx. */
+export const MSQ_RETAKE_DAYS = 21;
+/** How many days the just-opened retake window nudges before going quiet. */
+const MSQ_NUDGE_DAYS = 3;
+
 /**
  * Build the derived (default-ON) reminder set from a published plan + client.
  * Reads plan.supplement_protocol[].timing and client.next_contact_date.
+ *
+ * `opts.lastMsqDate` (ISO date of the newest MSQ submission) turns on the
+ * score-check reminder: the MSQ is the outcome measure of record, and until
+ * now NOTHING told a client her 3-week retake window had opened — the single
+ * biggest reason roster-wide completion sat at 0–2 ever per client
+ * (2026-08-05 audit). The nudge fires only for the first 3 days of an open
+ * window, then goes quiet; retaking closes the window and silences it
+ * immediately. No baseline yet → no nudge (the card's CTA owns that ask).
  */
 export function deriveReminders(
   plan: Record<string, unknown>,
   client: Record<string, unknown>,
+  opts?: { lastMsqDate?: string | null; todayIso?: string },
 ): DerivedReminder[] {
   const protocol = Array.isArray(plan.supplement_protocol)
     ? (plan.supplement_protocol as Array<Record<string, unknown>>)
@@ -104,7 +118,27 @@ export function deriveReminders(
     out.push({ id: "tree", label: "Your tree is waiting to grow today 🌱", time: "09:00", cadence: "daily", defaultOn: false });
   }
 
-  return out.slice(0, treeOn ? 4 : 3);
+  const capped = out.slice(0, treeOn ? 4 : 3);
+
+  // MSQ score-check nudge — transient (3 days per window), so it rides above
+  // the standing-reminder cap rather than displacing a daily one.
+  const lastMsq = opts?.lastMsqDate;
+  if (lastMsq) {
+    const today = opts?.todayIso ?? new Date().toISOString().slice(0, 10);
+    const daysSince = Math.floor(
+      (new Date(`${today}T00:00:00Z`).getTime() - new Date(`${lastMsq}T00:00:00Z`).getTime()) / 86_400_000,
+    );
+    if (daysSince >= MSQ_RETAKE_DAYS && daysSince < MSQ_RETAKE_DAYS + MSQ_NUDGE_DAYS) {
+      capped.push({
+        id: "msq",
+        label: "Your 3-week score check is open — 5 minutes to see if your number dropped",
+        time: "09:30",
+        cadence: "daily",
+      });
+    }
+  }
+
+  return capped;
 }
 
 /** Overlay the client's saved overrides (on/off + pinned time) onto a derived set. */
