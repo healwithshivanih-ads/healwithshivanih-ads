@@ -14,6 +14,7 @@ import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
 import { isGrowingTreeEnabled } from "./growing-tree-flag";
+import { dailySeed } from "./daily-seed";
 
 /** How many meal components the compact "today" row lists before it collapses
  *  the rest into "+N more". The row is two lines on a phone (.ml-dishes), which
@@ -498,6 +499,10 @@ export function TodayScreen({
               <div className="rn-ring-cap">
                 {dailyDone} of {dailyTotal} today
               </div>
+              {/* Streak visible from DAY ONE — days 1-2 are the highest
+                  drop-off window and used to get no continuity feedback at
+                  all (the old badge appeared at day 3, and only on Progress). */}
+              {streak >= 1 && <div className="rn-ring-streak">Day {streak} 🌱</div>}
             </button>
           ) : (
             <>
@@ -507,6 +512,23 @@ export function TodayScreen({
           )}
         </div>
       </div>
+
+      {/* Today's seed — one line, different every day, gone tomorrow. The
+          daily-return hook: asks for nothing, ticks nothing. Personal
+          material (mind-body questions, already depth-gated server-side)
+          surfaces ~1 day in 3 when it exists; evergreen house-voice lines
+          otherwise. */}
+      {(() => {
+        const seed = dailySeed(data.clientId, new Date().toLocaleDateString("en-CA"), data.mindBodyReads);
+        return (
+          <div className="daily-seed">
+            <span className="daily-seed-kicker">
+              <Icon name="sparkle" size={12} /> Today&apos;s seed
+            </span>
+            <p className="daily-seed-line">{seed.text}</p>
+          </div>
+        );
+      })()}
 
       {/* THE daily action — one ten-second tap that grows the tree, keeps the
           streak alive, and gives the coach a mood datapoint. Shown until
