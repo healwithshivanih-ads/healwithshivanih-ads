@@ -368,6 +368,72 @@ function MovementCard({ sessions, onAdd }: { sessions: MoveEntry[]; onAdd: () =>
   );
 }
 
+// ── halfway moment ───────────────────────────────────────────────────────────
+
+/**
+ * "How far you've come", shown mid-plan instead of only at graduation — the
+ * deltas were always computed, but a client saw them for the first time on the
+ * day she left (2026-08-05 audit). Two-week window around the midpoint, then
+ * it steps aside; renders nothing until at least one delta actually exists,
+ * because "Halfway! No data" would land as an accusation.
+ */
+function HalfwayCard() {
+  const data = useOchre();
+  const { week, totalWeeks, notStarted } = data.client;
+  const mid = Math.ceil(totalWeeks / 2);
+  if (notStarted || totalWeeks < 8 || week < mid || week > mid + 1) return null;
+
+  const stats: { label: string; value: string; good: boolean }[] = [];
+  const msq = data.msqEntries;
+  if (msq.length >= 2) {
+    const d = msq[msq.length - 1].total - msq[0].total;
+    if (d !== 0)
+      stats.push({ label: "Symptom score", value: `${d < 0 ? "▼" : "▲"} ${Math.abs(d)}`, good: d < 0 });
+  }
+  const w = data.body.history.filter((h) => h.weightKg != null) as { weightKg: number }[];
+  if (w.length >= 2) {
+    const d = Math.round((w[w.length - 1].weightKg - w[0].weightKg) * 10) / 10;
+    if (d !== 0) stats.push({ label: "Weight", value: `${d > 0 ? "+" : ""}${d} kg`, good: d < 0 });
+  }
+  const pts = data.symptomScore?.points ?? [];
+  if (pts.length >= 2) {
+    const d = pts[pts.length - 1].v - pts[0].v;
+    if (d !== 0)
+      stats.push({ label: "Wellbeing", value: `${d > 0 ? "▲" : "▼"} ${Math.abs(d)}`, good: d > 0 });
+  }
+  if (stats.length === 0) return null;
+
+  return (
+    <div className="card" style={{ padding: "15px 16px", marginTop: 12, borderLeft: "3px solid var(--ochre)" }}>
+      <div className="eyebrow">Halfway there</div>
+      <div style={{ fontFamily: "var(--serif)", fontSize: 17, color: "var(--ink)", margin: "6px 0 10px", lineHeight: 1.35 }}>
+        Week {week} of {totalWeeks} — here&apos;s what has moved.
+      </div>
+      <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+        {stats.map((s) => (
+          <div key={s.label}>
+            <div style={{ fontSize: 11, color: "var(--muted)", textTransform: "uppercase", letterSpacing: 0.4 }}>
+              {s.label}
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--serif)",
+                fontSize: 20,
+                color: s.good ? "var(--forest)" : "var(--ochre-deep)",
+              }}
+            >
+              {s.value}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="muted" style={{ fontSize: 12.5, marginTop: 10, lineHeight: 1.5 }}>
+        The second half builds on exactly this. Keep going.
+      </div>
+    </div>
+  );
+}
+
 // ── journey ──────────────────────────────────────────────────────────────────
 
 function JourneyNode({ item, open, onToggle }: { item: JourneyItem & { future?: boolean }; open: boolean; onToggle: () => void }) {
@@ -495,6 +561,8 @@ export function ProgressScreen({
           <ProgressArc week={data.client.week} total={data.client.totalWeeks} />
         </div>
       )}
+
+      <HalfwayCard />
 
       {!data.guidedWeekly && (
       <Section title="Is it working?">

@@ -111,11 +111,14 @@ export function deriveReminders(
   }
   out.push({ id: "checkin", label: "Weekly check-in", time: "10:00", cadence: "weekly", weekday });
 
-  // Growing-tree clients get an opt-in daily nudge to tend their tree. Off by
-  // default (the client turns it on in Notifications) so it's never pushy.
+  // Growing-tree clients get a daily nudge to tend their tree. ON by default
+  // since 2026-08-05: it shipped opt-in behind a settings screen nobody
+  // opened, which made the one warm daily-return push effectively not exist.
+  // The client can still silence it in Notifications, and it only ever
+  // reaches phones that enabled push at all.
   const treeOn = isGrowingTreeEnabled(asStr(client.client_id));
   if (treeOn) {
-    out.push({ id: "tree", label: "Your tree is waiting to grow today 🌱", time: "09:00", cadence: "daily", defaultOn: false });
+    out.push({ id: "tree", label: "Your tree is waiting to grow today 🌱", time: "09:00", cadence: "daily" });
   }
 
   const capped = out.slice(0, treeOn ? 4 : 3);
