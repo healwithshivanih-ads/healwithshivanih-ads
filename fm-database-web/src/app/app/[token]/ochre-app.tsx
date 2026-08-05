@@ -212,7 +212,15 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         setPracticesDone(s.practicesDone ?? {});
       }
       setSubmittedWeek(s.submittedWeek ?? 0);
-      setFeel(s.feel ?? {});
+      // Energy history: server first, this phone's map on top. The chart used
+      // to read localStorage alone, so a new phone showed an empty trend the
+      // server already had (every tap also POSTs to /api/app-body). Local wins
+      // per-date — today's tap must never be overwritten by a stale sync.
+      const serverFeel: FeelMap = {};
+      for (const h of data.body.history) {
+        if (h.moodScore != null) serverFeel[h.date] = h.moodScore;
+      }
+      setFeel({ ...serverFeel, ...(s.feel ?? {}) });
       setMoves(thisWeeksMoves(s.moves ?? []));
       setLastSeenPlanSlug(s.lastSeenPlanSlug ?? null);
       setLastSeenUpdatedAt(s.lastSeenUpdatedAt ?? null);
@@ -223,7 +231,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       /* fresh start */
     }
     setHydrated(true);
-  }, [STORE, data.priorLocalStoreId]);
+  }, [STORE, data.priorLocalStoreId, data.body.history]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -473,8 +481,14 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     () => data.remedies.filter((r) => r.assigned && r.daily),
     [data.remedies],
   );
-  const dailyTotal = data.supplements.length + practices.length + dailyRemedies.length;
-  const dailyDone = Object.keys(logged).length + practices.filter((p) => p.done).length;
+  // The daily energy tap counts as a leaf like everything else — it is the one
+  // item EVERY client has (a zero-supplement guided client still grows her tree
+  // with a single ten-second tap), and it is what makes "log today" a
+  // one-action habit rather than a checklist-only one.
+  const feelToday = feel[todayIso()] != null;
+  const dailyTotal = data.supplements.length + practices.length + dailyRemedies.length + 1;
+  const dailyDone =
+    Object.keys(logged).length + practices.filter((p) => p.done).length + (feelToday ? 1 : 0);
 
   // Send today's checklist to the coach. These ticks are the richest adherence
   // signal the app has — per supplement, per practice, every day — and they
@@ -767,6 +781,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         practices={practices}
         onTogglePractice={togglePractice}
         openGrocery={openGrocery}
+        feelToday={feelToday}
+        onLogFeeling={() => setFeelSheet(true)}
       />
       </>
     );

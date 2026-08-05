@@ -1100,6 +1100,12 @@ export interface ClientAppData {
   swapGroups: SwapGroupT[];
   /** MSQ submissions, oldest → newest (empty until the first check) */
   msqEntries: AppMsqEntry[];
+  /** Weekly check-in pre-fill derived from the daily tick log (trailing 7
+   *  days) — the app should never make her re-type what it already knows.
+   *  Values index the check-in's adherence segments: 0 = steady, 1 =
+   *  sometimes. An item with no tick signal is simply absent; absence of a
+   *  tick is not evidence of stopping, so "Stopped" is never pre-selected. */
+  checkinPrefill: { supplements: Record<string, 0 | 1>; practices: Record<string, 0 | 1> };
   /** Active travel window flagged by the client (null when home).
    *  Drives the rules-based travel card + pauses the grocery list;
    *  generate-week-menu.py reads the same session as feedback.
@@ -1505,6 +1511,96 @@ async function readIfExists(p: string): Promise<string | null> {
   } catch {
     return null;
   }
+}
+
+// ── weekly check-in pre-fill from the daily tick log ─────────────────────────
+
+export interface TickRowLite {
+  date: string;
+  items: { kind: string; id: string; done: boolean }[];
+}
+
+/**
+ * Turn the trailing week of `_daily_ticks.jsonl` into pre-selected adherence
+ * segments for the weekly check-in, so the client corrects instead of
+ * re-typing what the app already watched her do (2026-08-05 audit: the
+ * check-in asked her to hand-rate every supplement and practice the ticks
+ * had already captured).
+ *
+ * Deliberately conservative, because tick usage varies wildly by client:
+ * - Fewer than 3 active tick days in the window → no pre-fill at all. Two
+ *   days of ticks cannot speak for a week.
+ * - Ratio is per item against the days that item APPEARED (plans change
+ *   mid-week; a supplement added Thursday isn't "sometimes" for missing
+ *   Monday).
+ * - ≥65% of appeared days ticked → 0 (steady) · anything above zero → 1
+ *   (sometimes) · never ticked → absent. An untaken tick is silence, not a
+ *   confession — "Stopped" stays a thing only the client can say.
+ *
+ * The file is append-only with one upserted row per device-local day; the
+ * NEWEST line for a date wins, matching the shim's write semantics.
+ */
+export function deriveCheckinPrefill(
+  rows: TickRowLite[],
+  refIso?: string,
+  days = 7,
+): { supplements: Record<string, 0 | 1>; practices: Record<string, 0 | 1> } {
+  const out: { supplements: Record<string, 0 | 1>; practices: Record<string, 0 | 1> } = {
+    supplements: {},
+    practices: {},
+  };
+  const ref = refIso ?? new Date().toISOString().slice(0, 10);
+  const cutoff = new Date(new Date(`${ref}T00:00:00Z`).getTime() - (days - 1) * 86_400_000)
+    .toISOString()
+    .slice(0, 10);
+  const byDate = new Map<string, TickRowLite>();
+  for (const r of rows) {
+    if (r.date && r.date >= cutoff && r.date <= ref) byDate.set(r.date, r);
+  }
+  const active = [...byDate.values()].filter((r) => r.items.some((i) => i.done));
+  if (active.length < 3) return out;
+
+  const appeared: Record<string, number> = {};
+  const ticked: Record<string, number> = {};
+  for (const r of active) {
+    const seen = new Set<string>();
+    for (const i of r.items) {
+      if (i.kind !== "supplement" && i.kind !== "practice") continue;
+      const k = `${i.kind}:${i.id}`;
+      if (seen.has(k)) continue;
+      seen.add(k);
+      appeared[k] = (appeared[k] ?? 0) + 1;
+      if (i.done) ticked[k] = (ticked[k] ?? 0) + 1;
+    }
+  }
+  for (const k of Object.keys(appeared)) {
+    const n = ticked[k] ?? 0;
+    if (n === 0) continue;
+    const idx = k.indexOf(":");
+    const kind = k.slice(0, idx);
+    const id = k.slice(idx + 1);
+    const bucket = kind === "supplement" ? out.supplements : out.practices;
+    bucket[id] = n / appeared[k] >= 0.65 ? 0 : 1;
+  }
+  return out;
+}
+
+async function loadCheckinPrefill(
+  clientDir: string,
+): Promise<{ supplements: Record<string, 0 | 1>; practices: Record<string, 0 | 1> }> {
+  const raw = await readIfExists(path.join(clientDir, "_daily_ticks.jsonl"));
+  if (!raw) return { supplements: {}, practices: {} };
+  const rows: TickRowLite[] = [];
+  for (const line of raw.split("\n")) {
+    if (!line.trim()) continue;
+    try {
+      const r = JSON.parse(line) as TickRowLite;
+      if (typeof r.date === "string" && Array.isArray(r.items)) rows.push(r);
+    } catch {
+      /* skip a malformed line */
+    }
+  }
+  return deriveCheckinPrefill(rows);
 }
 
 // ── letter (.md) parsing ─────────────────────────────────────────────────────
@@ -3378,6 +3474,7 @@ async function buildDiscoveryAppData(
     grocery: null,
     swapGroups: [],
     msqEntries: [],
+    checkinPrefill: { supplements: {}, practices: {} },
     travel: null,
     mealExtra: {},
     supplements: [],
@@ -4803,8 +4900,13 @@ export async function loadClientAppData(
       note: { who: coachName, text: clean },
     });
   }
-  // weekly check-in / poll replies from sessions (+ MSQ submissions)
-  const sessionPoints: { wk: number; v: number }[] = [];
+  // weekly check-in / poll replies from sessions (+ MSQ submissions).
+  // Polls and in-app check-ins are collected separately and merged one-per-week
+  // below: a client who tapped the WhatsApp poll AND filled the in-app check-in
+  // used to put two points on the wellbeing line for the same week — the
+  // 5-level in-app rating is the richer signal, so it wins.
+  const pollPoints: { wk: number; v: number }[] = [];
+  const checkinPoints: { wk: number; v: number }[] = [];
   const msqEntries: AppMsqEntry[] = [];
   // latest travel flag wins (a later "cancelled" entry clears the window)
   let latestTravel: { from: string; to: string; kind: string; location: string; context: string; cancelled: boolean; at: string; localFoodsRaw: unknown } | null = null;
@@ -4858,7 +4960,7 @@ export async function loadClientAppData(
         const score = asStr(poll.score);
         const raw = asStr(poll.raw_text);
         const v = score === "good" ? 4 : score === "partial" ? 3 : 2;
-        sessionPoints.push({ wk: weekOf(d), v: v * 20 });
+        pollPoints.push({ wk: weekOf(d), v: v * 20 });
         journey.push({
           kind: "checkin",
           week: weekOf(d),
@@ -4868,7 +4970,7 @@ export async function loadClientAppData(
         });
       } else if (checkin) {
         const rating = Number(checkin.rating) || 0;
-        if (rating > 0) sessionPoints.push({ wk: weekOf(d), v: rating * 20 });
+        if (rating > 0) checkinPoints.push({ wk: weekOf(d), v: rating * 20 });
         journey.push({
           kind: "checkin",
           week: weekOf(d),
@@ -4885,6 +4987,10 @@ export async function loadClientAppData(
   msqEntries.sort((a, b) => a.date.localeCompare(b.date));
 
   // ---- symptom score (only from real check-ins; null until ≥2 points) --------
+  // One point per week: the in-app check-in supersedes a poll tap for the same
+  // week rather than sitting next to it as a second dot.
+  const checkinWeeks = new Set(checkinPoints.map((p) => p.wk));
+  const sessionPoints = [...checkinPoints, ...pollPoints.filter((p) => !checkinWeeks.has(p.wk))];
   sessionPoints.sort((a, b) => a.wk - b.wk);
   const symptomScore =
     sessionPoints.length >= 2
@@ -5803,6 +5909,7 @@ export async function loadClientAppData(
     grocery,
     swapGroups,
     msqEntries,
+    checkinPrefill: await loadCheckinPrefill(clientDir),
     travel,
     supplements,
     upcomingSupplements,
