@@ -9,7 +9,7 @@ import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/clie
 import { Icon, useOchre } from "./ochre-context";
 import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { MindBodyNudge } from "./ochre-eft";
-import { MindBodyEntryCard, MindBodyReadsSection } from "./ochre-mind-body";
+import { MindBodyEntryCard } from "./ochre-mind-body";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
@@ -396,6 +396,7 @@ export function TodayScreen({
   openGrocery,
   feelToday,
   onLogFeeling,
+  openLabs,
 }: {
   logged: Record<string, string>;
   onToggleSupp: (id: string) => void;
@@ -422,6 +423,8 @@ export function TodayScreen({
   /** today's 1-5 energy tap is already in — hides the grow-today row */
   feelToday: boolean;
   onLogFeeling: () => void;
+  /** Opens the labs overlay — surfaced here only while an order is recommended. */
+  openLabs: () => void;
 }) {
   const data = useOchre();
   const hour = new Date().getHours();
@@ -760,6 +763,18 @@ export function TodayScreen({
           )}
           {data.grocery && (
             <Tile icon="bag" t1="Shopping list" t2="Tick off what you need before your next shop" onClick={openGrocery} />
+          )}
+          {/* Labs left the tab bar (2026-08-05 audit) — but a recommended
+              order must not lose its moment, so it surfaces here until acted
+              on, exactly like the shopping list does. */}
+          {data.labOrders.some((o) => o.status === "recommended") && (
+            <Tile
+              icon="droplet"
+              accent
+              t1="Book your lab test"
+              t2={`${data.coach.name.split(" ")[0]} has recommended blood work — home collection`}
+              onClick={openLabs}
+            />
           )}
           {data.guidedWeekly ? (
             <Tile
@@ -1166,14 +1181,12 @@ export function PlanScreen({
   openGrocery,
   openOrder,
   openPortions,
-  openSomatic,
 }: {
   openDoc: (doc: { kind: string; id: string }) => void;
   openRemedy: (r: AppRemedy) => void;
   openGrocery: () => void;
   openOrder: () => void;
   openPortions: () => void;
-  openSomatic: (practiceId: string) => void;
 }) {
   const data = useOchre();
   const pr = data.planRef;
@@ -1194,16 +1207,9 @@ export function PlanScreen({
 
       <PhaseRibbon />
 
-      {(data.mindBodyReads.length > 0 || data.mindBodyWithheld > 0) && (
-        <Section title="The mind-body connection">
-          <MindBodyReadsSection
-            reads={data.mindBodyReads}
-            withheldCount={data.mindBodyWithheld}
-            onStart={openSomatic}
-          />
-        </Section>
-      )}
-
+      {/* The mind-body connection moved to the Practices tab (2026-08-05
+          audit) — it was competing with the menu here, and the Practices tab
+          exists to give it room. */}
 
       {/* ---- do-this-daily actions first; learning lives further down ---- */}
 
@@ -1269,27 +1275,8 @@ export function PlanScreen({
         </Section>
       )}
 
-      {data.guidedAbout && data.guidedAbout.practiceLibraryIds.length > 0 && (
-        <Section title="Practice library">
-          <div className="stack" style={{ gap: 8 }}>
-            {data.somatic
-              .filter((s) => data.guidedAbout!.practiceLibraryIds.includes(s.practiceId))
-              .map((s) => (
-                <Tile
-                  key={s.practiceId}
-                  icon="breath"
-                  t1={s.name}
-                  t2={s.why}
-                  onClick={() => openSomatic(s.practiceId)}
-                />
-              ))}
-          </div>
-          <div className="card-quiet soon" style={{ marginTop: 8 }}>
-            <Icon name="dot" size={10} style={{ color: "var(--muted)", flexShrink: 0 }} />
-            <span>All guided, two to five minutes. Your daily practice stays on Today — this shelf is for whenever you want more.</span>
-          </div>
-        </Section>
-      )}
+      {/* Guided practice library moved to the Practices tab with everything
+          else start-anytime (2026-08-05 audit). */}
 
       <button className="gro-launch" onClick={openPortions} style={{ marginTop: 4, marginBottom: 14 }}>
         <span className="gro-launch-ico" aria-hidden="true">

@@ -88,14 +88,15 @@ export function TourOverlay({ onClose }: { onClose: () => void }) {
     },
     {
       key: "labs",
-      eyebrow: "Tab 4 · Labs",
-      title: "Results in plain English",
+      eyebrow: "Tab 4 · Practices",
+      title: "Start anything, any time",
       bullets: [
-        "Every marker against two ranges — standard and functional-optimal.",
-        "Grouped by system, each with its date.",
-        "The ones we're working on, flagged.",
+        "Guided resets — breathing, somatic, tapping — whenever you need one.",
+        "Your movement sessions, one exercise at a time.",
+        "What your body may be saying — the mind-body picture.",
+        "Your labs live under Account — every marker in plain English.",
       ],
-      icon: "flask",
+      icon: "sprout",
     },
     {
       key: "coach",
