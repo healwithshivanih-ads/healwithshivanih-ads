@@ -22,31 +22,33 @@ summary: 'Synthetic T4 hormone replacement for hypothyroidism / Hashimoto''s. Hi
 depletes:
 - nutrient: Selenium
   severity: moderate
-  mechanism: Selenium is the cofactor for deiodinase enzymes converting T4 → active T3. Suboptimal selenium impairs response
-    to LT4.
+  mechanism: Selenium is the cofactor for deiodinase enzymes converting T4 → active T3. Suboptimal
+    selenium impairs response to LT4.
   monitoring_recommendation: Selenium serum or RBC; check at baseline + every 12 months
   typical_supplement_dose: 200 mcg/day selenomethionine OR 2 brazil nuts/day
 - nutrient: Iron (ferritin)
   severity: moderate
-  mechanism: Ferritin > 70 ng/mL is required for adequate T3 receptor function. Low iron impairs LT4 efficacy.
+  mechanism: Ferritin > 70 ng/mL is required for adequate T3 receptor function. Low iron impairs
+    LT4 efficacy.
   monitoring_recommendation: Ferritin every 6 months
   typical_supplement_dose: 18-30 mg iron bisglycinate (only if ferritin < 50)
 condition_implications:
 - label: Hypothyroidism
   confidence: high
-  rationale: Levothyroxine is the standard replacement therapy for hypothyroidism, including Hashimoto's-driven hypothyroidism.
+  rationale: Levothyroxine is the standard replacement therapy for hypothyroidism, including Hashimoto's-driven
+    hypothyroidism.
   topic_slug: hypothyroidism
 - label: Hashimoto's thyroiditis (autoimmune)
   confidence: moderate
-  rationale: Most levothyroxine prescriptions in adult women have Hashimoto's as the underlying cause — coach should ask about
-    TPO / TgAb antibodies.
+  rationale: Most levothyroxine prescriptions in adult women have Hashimoto's as the underlying
+    cause — coach should ask about TPO / TgAb antibodies.
   topic_slug: hashimotos-thyroiditis
 protocol_cautions:
 - kind: timing
   item: Iron supplements
   severity: warning
-  reason: Iron binds levothyroxine and blocks its absorption — take iron at least 4 hours
-    apart from the thyroid tablet (LT4 in the morning on an empty stomach, iron later in the day).
+  reason: Iron binds levothyroxine and blocks its absorption — take iron at least 4 hours apart
+    from the thyroid tablet (LT4 in the morning on an empty stomach, iron later in the day).
 - kind: timing
   item: Calcium, magnesium and multivitamins
   severity: warning
@@ -54,8 +56,17 @@ protocol_cautions:
 - kind: timing
   item: Coffee, tea, soy and high-fibre meals
   severity: warning
-  reason: Take levothyroxine on an empty stomach 30-60 min before food; caffeine, soy
-    and high-fibre meals reduce absorption.
+  reason: Take levothyroxine on an empty stomach 30-60 min before food; caffeine, soy and high-fibre
+    meals reduce absorption.
+- kind: monitor
+  item: Gastric acid suppression — PPIs, H2 blockers, and hypochlorhydria
+  severity: warning
+  reason: 'Levothyroxine dissolution and uptake are ACID-DEPENDENT. Proton-pump inhibitors, H2 blockers,
+    H. pylori gastritis and atrophic gastritis all raise gastric pH and can reduce absorption enough
+    to need a higher dose for the same effect. Clinical consequence: when fT4 is low or TSH is high
+    on a stable dose, rule out ABSORPTION before escalating mg — otherwise the dose is titrated
+    against a gut problem and has to be walked back once the gut is fixed. Ask about acid-suppressing
+    drugs and about reflux treated as hyperacidity that may actually be hypochlorhydria.'
 timing_separations:
 - Take LT4 first thing in morning, 30-60 min BEFORE food + coffee + tea (caffeine reduces absorption).
 - Separate from calcium / iron / magnesium / multivitamin by AT LEAST 4 HOURS.
@@ -83,7 +94,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Thyroid section — supplement-medication interactions
 evidence_tier: strong
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-02'
-updated_by: shivani
+updated_at: '2026-08-05'
+updated_by: Shivani

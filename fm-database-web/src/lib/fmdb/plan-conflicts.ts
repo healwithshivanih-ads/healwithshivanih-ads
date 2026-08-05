@@ -153,7 +153,86 @@ interface ClientLike {
   medications?: string[];
   active_conditions?: string[];
   medical_history?: string[];
+  /** Intake chips, promoted onto client.yaml by the intake submit handler. */
+  oral_signs?: string[];
+  eye_signs?: string[];
 }
+
+// ─────────────────────────────────────────────────────────────────────
+// Rule 7 dictionaries — the sicca (dry mouth + dry eyes) screen in
+// autoimmune thyroid disease. Sjogren's runs at 17% in Hashimoto's and
+// 37% of autoimmune-thyroid patients meet xerostomia criteria, so this
+// pairing is far too common to leave to whoever reads the file.
+// ─────────────────────────────────────────────────────────────────────
+const AUTOIMMUNE_THYROID_TOKENS = [
+  "hashimoto",
+  "autoimmune thyroid",
+  "autoimmune thyroiditis",
+  "anti-tpo",
+  "anti tpo",
+  "tpo antibod",
+  "thyroid peroxidase",
+  "thyroglobulin antibod",
+  "tgab",
+];
+
+const DRY_MOUTH_TOKENS = ["dry mouth", "xerostomia", "mouth is dry", "thirsty all the time"];
+
+const DRY_EYE_TOKENS = [
+  "dry eye",
+  "dry eyes",
+  "dry, gritty",
+  "gritty",
+  "burning eyes",
+  "keratoconjunctivitis sicca",
+  "sicca",
+];
+
+/**
+ * Drugs that cause dry mouth in their own right. Their presence does NOT
+ * cancel the screen — it supplies a competing explanation the coach should
+ * weigh first, which is cheaper to act on than an antibody panel.
+ */
+const DRYING_DRUG_TOKENS = [
+  "amitriptyline",
+  "nortriptyline",
+  "alprazolam",
+  "clonazepam",
+  "diazepam",
+  "benzo",
+  "sertraline",
+  "fluoxetine",
+  "escitalopram",
+  "citalopram",
+  "venlafaxine",
+  "ssri",
+  "snri",
+  "antihistamine",
+  "cetirizine",
+  "levocetirizine",
+  "fexofenadine",
+  "allegra",
+  "oxybutynin",
+  "solifenacin",
+  "tramadol",
+  "opioid",
+  "furosemide",
+  "hydrochlorothiazide",
+  "diuretic",
+];
+
+/**
+ * Naming a possible autoimmune diagnosis to a health-anxious client can do
+ * real harm. Where these appear, rule 7 stays `info`, drops the diagnosis
+ * from all client-facing wording, and says so.
+ */
+const HEALTH_ANXIETY_TOKENS = [
+  "health anxiety",
+  "illness phobia",
+  "illness anxiety",
+  "hypochondria",
+  "fear of being diagnosed",
+];
 
 type PlanLike = Record<string, unknown>;
 
@@ -385,6 +464,113 @@ export function detectPlanConflicts(
             },
           },
     });
+  }
+
+  // ── Rule 7: sicca screen — dry mouth (+ dry eyes) in autoimmune thyroid ──
+  //
+  // Reads BOTH the intake chips AND the free-text condition list, because the
+  // two disagree in practice. cl-022 ticked eye_signs "No concerns" at intake
+  // and had "Dry eyes" added to active_conditions months later when it was
+  // confirmed — a rule reading only the chips would miss exactly the client it
+  // exists for.
+  //
+  // Never suggests a food or plan change. The output is a note plus, where
+  // warranted, a no-cost measurement the coach can take in-session.
+  {
+    const conditionText = [
+      ...(client.active_conditions ?? []),
+      ...(client.medical_history ?? []),
+    ]
+      .join(" | ")
+      .toLowerCase();
+    const oralText = (client.oral_signs ?? []).join(" | ").toLowerCase();
+    const eyeText = (client.eye_signs ?? []).join(" | ").toLowerCase();
+    const medsText = [...(client.current_medications ?? []), ...(client.medications ?? [])]
+      .join(" | ")
+      .toLowerCase();
+
+    const autoimmuneThyroid = tokenMatches(conditionText, AUTOIMMUNE_THYROID_TOKENS);
+    const dryMouth = [
+      ...tokenMatches(oralText, DRY_MOUTH_TOKENS),
+      ...tokenMatches(conditionText, DRY_MOUTH_TOKENS),
+    ];
+    const dryEyes = [
+      ...tokenMatches(eyeText, DRY_EYE_TOKENS),
+      ...tokenMatches(conditionText, DRY_EYE_TOKENS),
+    ];
+
+    if (autoimmuneThyroid.length > 0 && dryMouth.length > 0) {
+      const bothSicca = dryEyes.length > 0;
+      const dryingDrugs = tokenMatches(medsText, DRYING_DRUG_TOKENS);
+      const healthAnxious = tokenMatches(conditionText, HEALTH_ANXIETY_TOKENS).length > 0;
+
+      // Both symptoms = the pairing the prevalence data is about. Dry mouth
+      // alone is worth a measurement but not an antibody panel yet. A
+      // health-anxious client is held at `info` whatever the pattern, because
+      // the harm of naming it outweighs the delay.
+      const severity: ConflictSeverity = healthAnxious ? "info" : bothSicca ? "warning" : "info";
+
+      const competing = dryingDrugs.length > 0 ? ` Note ${dryingDrugs.join(", ")} on the medication list — drug-induced dry mouth is the commonest cause and is cheaper to address first.` : "";
+
+      out.push({
+        id: `sicca-screen-${slug(bothSicca ? "mouth-and-eyes" : "mouth-only")}`,
+        severity,
+        kind: "sicca_screen",
+        summary: healthAnxious
+          ? `Dry mouth${bothSicca ? " and dry eyes" : ""} recorded alongside autoimmune thyroid disease — handle gently (health anxiety on file)`
+          : bothSicca
+            ? `Dry mouth AND dry eyes recorded alongside autoimmune thyroid disease`
+            : `Dry mouth recorded alongside autoimmune thyroid disease`,
+        details: healthAnxious
+          ? `This client has both the symptom pattern and health anxiety on file. ` +
+            `The pattern is worth tracking, but naming a possible autoimmune ` +
+            `diagnosis unprompted risks doing more harm than the delay. Protect ` +
+            `the teeth (dry mouth drives decay), drop any alcohol-based ` +
+            `mouthwash, and only discuss investigation if she raises it.${competing}`
+          : bothSicca
+            ? `Sjogren's syndrome occurs in about 17% of Hashimoto's patients, ` +
+              `37% of autoimmune-thyroid patients meet criteria for dry mouth and ` +
+              `23% for dry eyes, and the two conditions share an overlapping ` +
+              `thyroglobulin epitope — so this pairing is an association, not a ` +
+              `coincidence. Next step is the no-cost one: measure unstimulated ` +
+              `whole salivary flow rate in a session (see the lab_tests entry for ` +
+              `the method). 0.1 mL/min or less is a formal criterion; 0.1-0.2 is ` +
+              `borderline. If low, the ENA/anti-SSA panel is directly orderable in ` +
+              `India without a prescription, so the client can attend a doctor ` +
+              `holding a result rather than asking for a test. A NEGATIVE panel ` +
+              `does not exclude Sjogren's — seronegative disease is real.${competing}`
+            : `Dry mouth in autoimmune thyroid disease is worth objectifying — 37% ` +
+              `of these clients meet xerostomia criteria. Ask directly about dry, ` +
+              `gritty or burning eyes, which is the other half of the pattern and ` +
+              `is often not volunteered. Measuring unstimulated whole salivary ` +
+              `flow rate costs nothing and turns a reported symptom into a number.` +
+              `${competing} Meanwhile protect the teeth — reduced saliva drives ` +
+              `caries hard, so keep fluoride and drop alcohol-based mouthwash.`,
+        suggested_fix: {
+          label: "✓ Note the sicca screen",
+          rationale:
+            `Records the pattern and the next step on the client's notes so it is ` +
+            `visible next session. Changes nothing about the plan, the protocol or ` +
+            `the menu — this is a screening prompt, not a treatment decision.`,
+          action: {
+            type: "append_client_note",
+            text:
+              `[sicca screen] Dry mouth${bothSicca ? " + dry eyes" : ""} recorded with ` +
+              `autoimmune thyroid disease (matched: ${autoimmuneThyroid.join(", ")}). ` +
+              `Next step — measure unstimulated whole salivary flow rate in session ` +
+              `(<=0.1 mL/min is a formal criterion, 0.1-0.2 borderline). If low, ENA/` +
+              `anti-SSA panel is direct-order in India; a negative panel does not ` +
+              `exclude Sjogren's.` +
+              (dryingDrugs.length > 0
+                ? ` Competing cause on the med list: ${dryingDrugs.join(", ")}.`
+                : "") +
+              (healthAnxious
+                ? ` HEALTH ANXIETY ON FILE — do not raise the diagnosis unprompted.`
+                : ""),
+          },
+        },
+      });
+    }
   }
 
   return out;

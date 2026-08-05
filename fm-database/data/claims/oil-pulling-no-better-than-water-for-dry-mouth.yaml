@@ -1,0 +1,45 @@
+slug: oil-pulling-no-better-than-water-for-dry-mouth
+statement: >-
+  In a randomised single-blind crossover trial of cold-pressed sunflower oil
+  pulling versus mineral water for one week each in moderate medication-induced
+  xerostomia, oil pulling relieved the overall xerostomic burden but showed NO
+  difference against water for symptom relief. In a separate crossover trial in 24
+  women with Sjogren's syndrome, a carboxymethylcellulose gel containing aloe vera
+  and coconut oil and a conventional CMC saliva substitute both reduced the
+  xerostomia index from about 7.3 at baseline to about 2.85 at two weeks (p<0.001),
+  with no significant difference between them.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- sjogrens-syndrome
+- oral-health-toxins
+linked_to_symptoms:
+- dry-mouth
+sources:
+- id: oil-pulling-vs-water-xerostomia-rct-2022
+  location: Oil versus mineral water, crossover, medication-induced xerostomia
+caveats:
+- >-
+    The negative trial used SUNFLOWER oil; a coconut arm has never been run in
+    xerostomia, so the null is not necessarily a property of oil pulling in general.
+    The Sjogren's trial tested a GEL that remains in the mouth, not several minutes
+    of vigorous swishing - a different intervention. Salivary flow was not measured
+    in the Sjogren's trial because the authors considered it inappropriate given
+    permanent glandular dysfunction.
+coaching_translation: >-
+  Swishing does help dry mouth - but plain water worked just as well as oil in the
+  one trial that compared them. Never push a dry-mouth client through fifteen
+  minutes of oil they dislike. A coconut-oil-based gel matched an expensive
+  commercial saliva substitute, which is useful in India on cost and availability.
+out_of_scope_notes: >-
+  Relieving dry mouth does not address its cause. Always ask what is driving it -
+  anticholinergic or sedating medication, mouth breathing, dehydration, or
+  autoimmune glandular disease. See sjogrens-syndrome.
+rationale: >-
+  Recorded so we do not oversell oil pulling to the dry-mouth clients on the
+  roster. Deepti Palnitkar (cl-011) is almost exactly this trial's population -
+  twenty years of SSRI plus benzodiazepine, with suspected OSA on top - and the
+  honest advice for her is the cheap one.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

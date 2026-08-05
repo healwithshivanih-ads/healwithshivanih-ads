@@ -1,0 +1,69 @@
+slug: unstimulated-whole-salivary-flow-rate
+display_name: Salivary Flow Rate
+full_name: Unstimulated Whole Salivary Flow Rate (UWSFR / sialometry)
+aliases:
+- uwsfr
+- sialometry
+- salivary flow
+- unstimulated saliva flow
+- spit test
+- whole salivary flow rate
+units: mL/min
+sample_type: saliva
+conventional_low: 0.1
+conventional_high: 1.5
+fm_optimal_low: 0.3
+fm_optimal_high: 1.5
+interpretation_low: >-
+  0.1 mL/min or less is objectively low and is a scoring item in the 2016
+  ACR/EULAR Sjogren's classification criteria. 0.1 to 0.2 mL/min is borderline -
+  a re-analysis argues the 0.1 cutoff is too strict and that 0.2 raises
+  sensitivity by about 19.8% (>=70% sensitivity, >=50% specificity). Treat <=0.1
+  as clearly low and 0.1-0.2 as worth pursuing, not normal. Common non-autoimmune
+  causes to exclude first - anticholinergic and sedating medication (tricyclics,
+  SSRIs, antihistamines, benzodiazepines, opioids, diuretics), mouth breathing,
+  dehydration, and head/neck radiotherapy.
+interpretation_high: Not clinically meaningful; high flow is not a concern.
+when_to_order: >-
+  Any client reporting dry mouth, and ROUTINELY in autoimmune thyroid disease
+  where 37% meet xerostomia criteria. Especially where dry mouth and dry eyes
+  co-occur. Also useful to objectify a symptom before deciding whether antibody
+  testing is worth the cost, and to track response over time.
+fasting_required: false
+typical_cost_inr: 0
+client_visible: true
+linked_to_topics:
+- sjogrens-syndrome
+- autoimmune-thyroiditis
+- oral-health-toxins
+linked_to_symptoms:
+- dry-mouth
+- dry-eyes
+sources:
+- id: acr-eular-sjogren-classification-criteria-2016
+  location: UWSFR <=0.1 mL/min as classification criterion; 0.2 threshold
+    re-analysis
+evidence_tier: strong
+notes_for_coach: >-
+  THE COACH CAN DO THIS - no laboratory, no doctor, no cost. It is the objective
+  measure that turns "she says her mouth is dry" into a number.
+
+  METHOD - client must not eat, drink, smoke or brush for 90 minutes beforehand.
+  Late morning is standard (flow varies through the day, so repeat at the same
+  time). Seated, head slightly forward, eyes open. Ask them to let saliva pool and
+  spit into a pre-weighed or graduated container every 60 seconds for 5 minutes,
+  WITHOUT swallowing and without stimulating the mouth (no chewing, no tongue
+  movement). Divide total mL by 5. 1 gram = 1 mL if weighing.
+
+  WHY THIS MATTERS IN INDIAN PRACTICE - clients are often treated badly for asking
+  a doctor to run a specific test. A measured flow rate of 0.08 mL/min is a
+  finding, not a request, and it changes the consultation. Pair it with a
+  direct-order ENA/anti-SSA panel where indicated.
+
+  Reference points are approximate and method-sensitive - normal unstimulated flow
+  is usually quoted around 0.3-0.5 mL/min. Use the trend within a client as much
+  as the absolute number.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

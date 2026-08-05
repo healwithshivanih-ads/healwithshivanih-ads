@@ -1,0 +1,29 @@
+id: oil-pulling-vs-chlorhexidine-meta-analysis-2024
+title: 'The effect of oil pulling in comparison with chlorhexidine and other mouthwash
+  interventions in promoting oral health: a systematic review and meta-analysis'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Jong et al.
+publisher: International Journal of Dental Hygiene
+year: 2024
+url: https://onlinelibrary.wiley.com/doi/10.1111/idh.12725
+doi: 10.1111/idh.12725
+notes: >-
+  25 trials, 1184 participants; 21 pooled. Oil pulling beat non-chlorhexidine
+  comparators on gingival index (SMD -1.14, 95% CI -1.31 to -0.97 - a large
+  effect). Chlorhexidine beat oil pulling on plaque index (SMD 0.33, 95% CI
+  0.17-0.49). Overall certainty rated VERY LOW; 17 of 25 trials enrolled
+  participants with no reported oral health problem; durations 7-45 days; sesame
+  in roughly half.
+
+  KEY CAVEAT for our use - this pools sesame, coconut and sunflower into one
+  "oil pulling" estimate. Given that coconut and sunflower now demonstrably
+  differ (see coconut-oil-periodontal-pathogens-rct-2025 vs
+  oil-pulling-oral-microbiome-16s-pilot-2021), the pooled figure dilutes a real
+  coconut effect. Cite for the gingival benefit, not as evidence about any
+  specific oil.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

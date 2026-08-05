@@ -1,0 +1,40 @@
+slug: anti-ssb-la-antibodies
+display_name: Anti-SSB / La
+full_name: Anti-Sjogren's Syndrome-related Antigen B (La) Antibodies
+aliases:
+- anti-ssb
+- anti-la
+- ssb
+- ssb/la
+- anti la antibodies
+units: U/mL
+sample_type: blood
+interpretation_low: Negative. Less sensitive than anti-SSA; a negative result
+  carries little weight on its own.
+interpretation_high: >-
+  Positive - more specific for Sjogren's than anti-SSA but less sensitive, and
+  rarely positive in isolation. Usually interpreted alongside anti-SSA/Ro.
+  Referral trigger, not a diagnosis.
+when_to_order: Always alongside anti-SSA/Ro as part of an ENA profile; there is
+  little reason to order it alone.
+fasting_required: false
+typical_cost_inr: 4500
+client_visible: false
+linked_to_topics:
+- sjogrens-syndrome
+- autoimmune-thyroiditis
+- autoimmune
+linked_to_symptoms:
+- dry-mouth
+- dry-eyes
+sources:
+- id: acr-eular-sjogren-classification-criteria-2016
+  location: ENA components within the Sjogren's classification criteria
+evidence_tier: strong
+notes_for_coach: Bundled into the same ENA profile as anti-SSA/Ro - the cost shown
+  is for the profile, not an additional charge. See anti-ssa-ro-antibodies for the
+  direct-ordering note and the Indian pricing caveat.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

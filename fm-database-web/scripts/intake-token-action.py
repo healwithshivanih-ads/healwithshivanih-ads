@@ -1325,6 +1325,27 @@ def _derive_conditions_from_intake(payload: dict) -> list[str]:
     if acid.strip() or any(k in all_meds for k in ("pantoprazole", "omeprazole", "esomeprazole", "rabeprazole", "lansoprazole", " ppi", "ranitidine", "famotidine")):
         add("Acid reflux / GERD")
 
+    # ── Reproductive DIAGNOSES (2026-08-05) ──
+    # `repro_diagnoses` is a list of things the client says she has been
+    # DIAGNOSED with. Until now the only consumer was
+    # _derive_symptoms_from_intake, which mapped "endometriosis diagnosed"
+    # to the SYMPTOM slug `dysmenorrhea` — so a diagnosis silently became a
+    # symptom and never reached active_conditions. cl-013 reported
+    # endometriosis at intake on 2026-06-01; every plan since has reasoned
+    # about it while her record showed only Hypothyroidism.
+    _repro = payload.get("repro_diagnoses") or []
+    _repro_blob = " | ".join(str(x) for x in _repro).lower() if isinstance(_repro, list) else str(_repro).lower()
+    for _needle, _label in (
+        ("endometriosis", "Endometriosis"),
+        ("adenomyosis", "Adenomyosis"),
+        ("fibroid", "Uterine fibroids"),
+        ("pcos", "PCOS"),
+        ("polycystic", "PCOS"),
+        ("premature ovarian", "Premature ovarian insufficiency"),
+    ):
+        if _needle in _repro_blob:
+            add(_label)
+
     # Cycle / menopause status from explicit form field
     cs = (payload.get("cycle_status") or "").lower()
     if cs in ("postmenopausal", "surgical_menopause"):
@@ -1333,6 +1354,83 @@ def _derive_conditions_from_intake(payload: dict) -> list[str]:
         add("Perimenopausal")
 
     return out
+
+
+def _derive_medications_from_intake(payload: dict) -> tuple[list[str], list[str]]:
+    """Consolidate the medication repeaters into (current, past) med strings.
+
+    THE LOOPHOLE THIS CLOSES (2026-08-05). The intake form captures
+    medications in nine CATEGORY repeaters — thyroid_medication,
+    acid_suppressants, glp1_medications, psych_medications, and so on. Those
+    were read only TRANSIENTLY, inside _derive_conditions_from_intake, to
+    infer a diagnosis from the drug, and then discarded. Nothing ever wrote
+    the drug NAMES into `current_medications`, which is the canonical field
+    every downstream gate reads:
+
+        remedy_contraindication_hits()   (home-remedy safety)
+        checkSupplementInteractionsAction (plan editor)
+        _collect_drug_context()          (AI synthesis)
+        MedicationImpactPanel            (depletions)
+        plan-conflicts rule 7            (sicca screen)
+
+    Measured across the roster before the fix: FIVE clients had medications
+    captured at intake that never reached the record. cl-004 was on
+    levothyroxine, Ozempic, pantoprazole and a combined pill with a record
+    reading "Vitamin D, Supradin multivitamin" — every drug gate blind to all
+    four. cl-013 reported Thyronorm and her current_medications was empty.
+
+    `still_taking` is honoured rather than ignored: a stopped drug is real
+    history (a PPI from 2018 is a depletion antecedent) but it is NOT a
+    current medication, and filing it as one would make the safety gates
+    fire on drugs the client no longer takes.
+
+    Everything emitted is marked client-reported, because it is — the coach
+    has not verified spelling or dose, and cl-008 typed "Pantaprazole".
+    """
+    _CATEGORY_LABELS = {
+        "thyroid_medication": "thyroid",
+        "acid_suppressants": "acid suppressant",
+        "glp1_medications": "GLP-1",
+        "psych_medications": "psych",
+        "biologics_immunosuppressants": "biologic/immunosuppressant",
+        "hormonal_contraception_hrt": "contraception/HRT",
+        "statins_bp_diabetes": "statin/BP/diabetes",
+        "nsaids_daily": "NSAID",
+        "antibiotics_last_12mo": "antibiotic (last 12mo)",
+    }
+    current: list[str] = []
+    past: list[str] = []
+    for field, label in _CATEGORY_LABELS.items():
+        rows = payload.get(field) or []
+        if not isinstance(rows, list):
+            continue
+        for row in rows:
+            if isinstance(row, dict):
+                name = str(row.get("name") or "").strip()
+                dose = str(row.get("dose") or "").strip()
+                started = str(row.get("started") or "").strip()
+                still = row.get("still_taking")
+            else:
+                name, dose, started, still = str(row).strip(), "", "", True
+            if not name:
+                continue
+            bits = [name]
+            if dose:
+                bits.append(dose)
+            meta = [label]
+            if started:
+                meta.append(f"since {started}")
+            entry = f"{' '.join(bits)} ({', '.join(meta)}) [client-reported at intake]"
+            # still_taking is tri-state: True, False, or unanswered. Treat
+            # unanswered as CURRENT — under-reporting a live drug is the more
+            # dangerous error than carrying a stopped one for a session.
+            if still is False:
+                past.append(
+                    f"{' '.join(bits)} — STOPPED ({', '.join(meta)}) [client-reported at intake]"
+                )
+            else:
+                current.append(entry)
+    return current, past
 
 
 def _derive_symptoms_from_intake(payload: dict) -> list[str]:
@@ -2052,6 +2150,45 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                 fields_updated.append(f"active_conditions_auto_derived: {derived_conditions}")
     except Exception as e:  # non-fatal — log on stderr, continue
         print(f"[intake-token-action] _derive_conditions_from_intake failed: {e}", file=sys.stderr)
+
+    # ── consolidate the medication repeaters into current_medications ──
+    # See _derive_medications_from_intake for the full note. Short version:
+    # the nine category repeaters were read only to INFER a diagnosis and then
+    # discarded, so a drug the client typed at intake never reached the field
+    # every safety gate reads. cl-013 reported Thyronorm on 2026-06-01 and her
+    # current_medications stayed empty for two months.
+    #
+    # Additive and de-duplicated: the coach's own entries always win, and a
+    # client-reported drug is skipped when its name already appears in what
+    # she has written (cl-008's record already names his PPI in far more
+    # detail than "Pantaprazole").
+    try:
+        derived_current, derived_past = _derive_medications_from_intake(submitted)
+
+        def _merge_meds(key: str, incoming: list[str]) -> None:
+            if not incoming:
+                return
+            existing = [str(x) for x in (data.get(key) or [])]
+            blob = " | ".join(existing).lower()
+            added = []
+            for entry in incoming:
+                # First token of the entry is the drug name — that is what we
+                # dedup on, not the whole formatted string.
+                name = entry.split(" ")[0].strip().lower()
+                if len(name) >= 4 and name in blob:
+                    continue
+                if any(entry.lower() == e.lower() for e in existing):
+                    continue
+                existing.append(entry)
+                added.append(entry)
+            if added:
+                data[key] = existing
+                fields_updated.append(f"{key}_auto_derived: {added}")
+
+        _merge_meds("current_medications", derived_current)
+        _merge_meds("medical_history", derived_past)
+    except Exception as e:  # non-fatal — never block a submit over this
+        print(f"[intake-token-action] _derive_medications_from_intake failed: {e}", file=sys.stderr)
 
     # ── mark submitted (Path A — KEEP token active for re-edits) ──
     now_iso = _now_iso()

@@ -1,0 +1,23 @@
+id: gla-sjogrens-fatigue-rct
+title: Gammalinolenic acid treatment of fatigue associated with primary Sjogren's syndrome
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Theander et al.
+publisher: Scandinavian Journal of Rheumatology
+year: 2002
+url: https://pubmed.ncbi.nlm.nih.gov/12109650/
+notes: >-
+  90 patients with primary Sjogren's syndrome, 6-month double-blind randomised trial of
+  high-dose GLA extracted from evening primrose oil versus corn oil. GLA was INEFFECTIVE
+  for fatigue.
+
+  A clean negative in a reasonably sized trial, and the reason GLA should not be offered
+  to a Sjogren's client for fatigue. Note the scope — this tested FATIGUE, not dry eye,
+  where smaller omega-6 studies have been more favourable (see
+  epo-dry-eye-contact-lens-and-sicca). Do not let the negative and the mixed-positive
+  cancel each other out; they are different endpoints.
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

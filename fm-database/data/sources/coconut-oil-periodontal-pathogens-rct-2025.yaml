@@ -1,0 +1,37 @@
+id: coconut-oil-periodontal-pathogens-rct-2025
+title: 'Anti-inflammatory and antimicrobial efficacy of coconut oil for periodontal
+  pathogens: a triple-blind randomized clinical trial'
+source_type: peer_reviewed_paper
+quality: moderate
+authors: []
+publisher: Clinical Oral Investigations 2025;29(4):182
+year: 2025
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11909057/
+notes: >-
+  The single most important oil-pulling paper in this catalogue, and the one that
+  overturns the older sunflower-oil null result. 30 participants with stage II-III
+  periodontitis randomised to coconut oil, 0.12% chlorhexidine, or placebo
+  (coconut-flavoured water) for one month, then non-surgical periodontal therapy;
+  saliva AND gingival crevicular fluid sampled at baseline, 1 month and 3 months;
+  16S rRNA V3-V4 Illumina MiSeq sequencing plus IL-6 and TNF-alpha from GCF.
+
+  Coconut oil reduced Spirochaetaceae and Tannerellaceae, and at species level
+  Tannerella forsythia and Treponema denticola (both RED COMPLEX), plus Treponema
+  socranskii, T. maltophilum and Olsenella uli. It RAISED Streptococcus,
+  Actinomyces, Veillonella and Gemella. The subgingival microbial dysbiosis index
+  (SMDI) improved significantly versus placebo. IL-6 fell 72.4 pg/mL (p=0.021) and
+  TNF-alpha fell (p=0.021); chlorhexidine produced NO significant cytokine
+  reduction. Coconut matched CHX on bacterial reduction and beat it on
+  inflammation.
+
+  Captured from the open-access PMC record. Authors not transcribed - cite by
+  journal/DOI-equivalent. Authors' own stated limitation is the small sample
+  (n=10 per arm), single centre. Two independent reasons this matters to us -
+  the Veillonella/Actinomyces rise is exactly the nitrate-reducing group that
+  chlorhexidine destroys (see oral-microbiome-systemic-blood-pressure), and the
+  cytokine drop is measured in GCF (local gum pocket), NOT serum, so it does not
+  by itself license a systemic-inflammation claim.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

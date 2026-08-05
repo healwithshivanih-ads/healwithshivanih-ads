@@ -1,0 +1,28 @@
+slug: gla-ineffective-for-sjogrens-fatigue
+statement: >-
+  In a 6-month double-blind randomised trial of 90 patients with primary Sjogren's
+  syndrome, high-dose gamma-linolenic acid extracted from evening primrose oil was
+  INEFFECTIVE for fatigue compared with corn oil.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- sjogrens-syndrome
+- autoimmune
+sources:
+- id: gla-sjogrens-fatigue-rct
+  location: 6-month double-blind randomised trial, GLA vs corn oil
+caveats:
+- >-
+  This tested FATIGUE, not dry eye. Smaller omega-6 studies in dry eye have been more
+  favourable (see epo-dry-eye-contact-lens-and-sicca) — different endpoint, different
+  answer. Do not let the two cancel each other out in either direction.
+coaching_translation: >-
+  Evening primrose oil has been properly tested for the fatigue that comes with
+  Sjogren's and it did not help. If dryness is the main complaint that is a separate
+  question with weaker, more mixed evidence.
+rationale: >-
+  A clean negative in a decent-sized trial. Recorded so that a Sjogren's or sicca client
+  is not offered EPO for fatigue on the strength of its reputation in women's health.
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

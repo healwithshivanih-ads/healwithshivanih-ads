@@ -1,0 +1,60 @@
+slug: anti-ssa-ro-antibodies
+display_name: Anti-SSA / Ro
+full_name: Anti-Sjogren's Syndrome-related Antigen A (Ro52 / Ro60) Antibodies
+aliases:
+- anti-ssa
+- anti-ro
+- ssa
+- ro52
+- ro60
+- anti ro antibodies
+- ssa/ro
+units: U/mL
+sample_type: blood
+interpretation_low: Negative. Does NOT exclude Sjogren's - seronegative disease is
+  well described, and a client with clearly low salivary flow still warrants
+  clinician review.
+interpretation_high: >-
+  Positive - the principal serological marker for Sjogren's syndrome, also seen in
+  lupus. In one cohort serum anti-SSA/Ro reached AUC 0.906 with 100% sensitivity
+  and 81% specificity. A positive result is a REFERRAL TRIGGER to rheumatology,
+  never a diagnosis made by us. Note anti-Ro52 can be positive with a negative
+  ANA, so a normal ANA does not rule it out.
+when_to_order: >-
+  Dry mouth plus dry eyes, particularly in autoimmune thyroid disease (Sjogren's
+  runs at 17% in Hashimoto's). Best ordered as part of an ENA profile, which
+  bundles SSA and SSB with Sm, RNP, Scl-70 and Jo-1 for a similar price. Consider
+  measuring unstimulated whole salivary flow rate FIRST - it costs nothing and
+  tells you whether the antibody spend is justified.
+fasting_required: false
+typical_cost_inr: 4500
+client_visible: false
+linked_to_topics:
+- sjogrens-syndrome
+- autoimmune-thyroiditis
+- autoimmune
+linked_to_symptoms:
+- dry-mouth
+- dry-eyes
+sources:
+- id: acr-eular-sjogren-classification-criteria-2016
+  location: Anti-SSA/Ro within the classification criteria; seronegative disease
+- id: sjogren-autoimmune-thyroid-association-review
+  location: Sjogren's prevalence in autoimmune thyroid disease
+evidence_tier: strong
+notes_for_coach: >-
+  DIRECTLY ORDERABLE IN INDIA WITHOUT A PRESCRIPTION as part of an ENA/ANA profile
+  - Redcliffe, Metropolis, Lupin, Ganesh, HOD and others offer it with home
+  collection. Observed range roughly Rs 3,500-7,800 depending on lab and on
+  qualitative versus quantitative; the Rs 4,500 here is a mid-point, so CONFIRM
+  current pricing with Acumen before quoting a client a figure.
+
+  This is the practical answer to doctors reacting badly when a patient asks for a
+  specific test - order it directly, then the client attends with a result in hand.
+
+  Order the ENA PROFILE rather than SSA alone; it is barely more expensive and
+  covers SSB/La in the same draw.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

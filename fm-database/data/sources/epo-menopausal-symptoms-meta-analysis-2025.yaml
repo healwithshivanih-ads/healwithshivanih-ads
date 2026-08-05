@@ -1,0 +1,27 @@
+id: epo-menopausal-symptoms-meta-analysis-2025
+title: 'The Effect of Evening Primrose Oil on Menopausal Symptoms Management: A Systematic
+  Review and Meta-Analysis'
+source_type: peer_reviewed_paper
+quality: moderate
+authors: []
+year: 2025
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13010577/
+notes: >-
+  6 RCTs, 450 women, trials published 1994-2023, search to Feb 2024.
+
+  The headline oversells it. The two outcomes a woman actually notices both came out
+  NON-significant — hot-flash FREQUENCY (MD -2.13/day, 95% CI -4.26 to 0.001, p=0.05)
+  and INTENSITY (SMD -0.19, p=0.16). What did reach significance was hot-flash DURATION
+  (SMD -0.39, p=0.04) on LOW-quality evidence, and night sweats. GRADE: moderate for
+  frequency and intensity, low for duration.
+
+  Generalisability is limited — 5 of the 6 trials were Iranian, all outcomes
+  self-reported by questionnaire, all short-term, individual samples small, substantial
+  heterogeneity. Authors' own wording is cautious and calls for more rigorous trials.
+
+  Use this to stop EPO being recommended as a hot-flash intervention. Night sweats are
+  the defensible hook.
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani
