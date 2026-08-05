@@ -1,0 +1,140 @@
+slug: squat-jumps
+display_name: Squat Jumps (Jump Squats)
+client_name: Jump squats
+aliases:
+- jump squats
+- squat jump
+modality: strength
+intensity_tier: advanced
+position: standing
+equipment: []
+summary: A full squat that finishes as a vertical jump — leg power and the strongest lower-body
+  bone stimulus in the catalogue. The top rung of the squat ladder.
+why_it_works: Adding a jump to the squat converts strength into power — the capacity that declines
+  fastest with age and the one that catches a trip. The landing is a substantial, brief bone load
+  through hip and spine, which is the stimulus the LIFTMOR programme paired with heavy lifting.
+setup:
+- Stand with the feet slightly wider than hip-width, toes a little out.
+- Hands beside the head or reaching back, ready to swing.
+steps:
+- Squat under control until the thighs approach parallel, backside pushed out.
+- Drive up and jump as high as comfortable, extending fully through the hips.
+- Land softly on the balls of the feet, bending straight into the next squat.
+levels:
+- level: '1'
+  prescription: '2 sets of 5 low jumps — height of a doorstep, full rest between sets'
+  reps: 5
+  sets: 2
+  support: none
+- level: '2'
+  prescription: '2 sets of 8-10 jumps for height, resting 45 seconds between'
+  reps: 10
+  sets: 2
+  support: none
+frequency: 2x/week at most, never on consecutive days — power work needs freshness.
+builds:
+- leg power (speed-strength)
+- bone loading at hip and spine
+- landing control
+easier_variant: bodyweight-squat
+harder_variant: null
+movement_patterns:
+- squat
+- jump
+muscles_worked:
+- quadriceps
+- glutes
+- hamstrings
+- calves
+loads_spine: true
+impact: high
+balance_demand: 2
+joint_stress:
+- knee
+- ankle_foot
+- hip
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: Near-maximal effort work; the NICE NG206 withdrawal of graded exercise applies with
+    extra force at this intensity.
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - knee osteoarthritis
+  - arthritis
+  - joint pain
+  - meniscus
+  - patellofemoral
+  severity: block
+  reason: Repeated maximal landings through a painful knee is a flare generator, and the squat
+    ladder below this rung covers every strength goal without the impact.
+  modification: ''
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - postnatal
+  severity: caution
+  reason: Maximal jumps are the highest intra-abdominal pressure spike in the catalogue.
+  modification: Stay on loaded slow squats (wall-squat-hold, bodyweight-squat with pauses) until
+    pelvic-floor work is established; jumps are optional, strength is not.
+- condition: severe osteoporosis
+  condition_aliases:
+  - fragility fracture
+  - vertebral fracture
+  - t-score below -3
+  severity: caution
+  reason: High-impact loading benefits moderately low bone but risks bone that has already
+    fractured.
+  modification: Keep to level 1 heights only with explicit medical agreement; otherwise the slow
+    squat ladder plus ankle-jumps at low height covers the goal.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - peripheral neuropathy
+  severity: caution
+  reason: A maximal jump-and-land is the most demanding balance event in the catalogue.
+  modification: Do not prescribe until one-leg-stand is confident unsupported; start at doorstep
+    height facing a corner.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - hypertension
+  severity: caution
+  reason: Maximal effort against gravity spikes blood pressure.
+  modification: Sub-maximal heights, long rests, exhale on the drive.
+refer_out: []
+linked_to_topics:
+- bone-health
+- sarcopenia
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'The top of the squat ladder: wall squat → squat → split squat → THIS. It exists
+  for the client who has genuinely outgrown the rest — typically the younger weight-loss cohort —
+  and for the bone agenda, where jump training is the evidence-backed partner to loading. The knee
+  block is deliberate and firmer than the lunge''s caution: there is no modification that makes
+  repeated maximal landings sensible on a painful knee.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Plyometric exercises — Jump Squats; Level 2 Bodyweight Circuit 1
+- id: liftmor-watson-2018
+  location: Impact-loading component of HiRIT
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

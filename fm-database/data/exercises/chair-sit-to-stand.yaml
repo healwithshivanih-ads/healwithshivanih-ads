@@ -45,6 +45,11 @@ joint_stress:
 - knee
 - hip
 balance_demand: 2
+movement_patterns:
+- squat
+muscles_worked:
+- quadriceps
+- glutes
 impact: none
 easier_variant: seated-knee-extension
 harder_variant: bodyweight-squat

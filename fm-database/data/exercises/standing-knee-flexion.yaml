@@ -49,6 +49,10 @@ joint_stress:
 - knee
 - hip
 balance_demand: 2
+movement_patterns:
+- balance
+muscles_worked:
+- hamstrings
 impact: none
 cautions:
 - condition: osteoarthritis

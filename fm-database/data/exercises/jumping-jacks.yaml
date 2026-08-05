@@ -1,0 +1,133 @@
+slug: jumping-jacks
+display_name: Jumping Jacks (Star Jumps)
+client_name: Star jumps
+aliases:
+- star jumps
+- jumping jack
+- side straddle hops
+modality: cardiovascular
+intensity_tier: intermediate
+position: standing
+equipment: []
+summary: The classic arms-and-legs-out jump — a whole-body pulse-raiser that needs no space and no
+  kit, and the standard warm-up opener for conditioning circuits.
+why_it_works: Rhythmic jumping recruits the calves, thighs and shoulders together at low force per
+  jump, which raises heart rate quickly without exhausting any single muscle — the book classes it
+  low-intensity precisely so it can be held for longer intervals. The repeated small ground contacts
+  are also a bone stimulus at the hip, which two-legged low-impact work cannot provide.
+setup:
+- Stand tall, feet hip-width apart, knees soft, hands by the sides.
+- Clear the space around you and check the ceiling.
+- Wear supportive shoes; do this on a firm, non-slip surface.
+steps:
+- Jump and spread the feet to about one-and-a-half shoulder widths while raising the hands above
+  the head.
+- Quickly reverse the movement, landing softly with the knees soft each time.
+- Keep the rhythm continuous and the breathing steady.
+levels:
+- level: '1'
+  prescription: '3 rounds of 20 seconds at an easy rhythm, resting 40 seconds between'
+  sets: 3
+  support: none
+- level: '2'
+  prescription: '4 rounds of 30 seconds brisk, resting 30 seconds between'
+  sets: 4
+  support: none
+- level: '3'
+  prescription: '50 continuous repetitions at a high tempo as a circuit opener'
+  reps: 50
+  sets: 1
+  support: none
+frequency: As a warm-up before conditioning work, or 2-3x/week inside a circuit.
+builds:
+- heart and lung fitness
+- calf and shoulder endurance
+- bone stimulus at the hip through repeated light impact
+easier_variant: walking-intervals
+harder_variant: high-knees
+movement_patterns:
+- jump
+muscles_worked:
+- calves
+- quadriceps
+- shoulders
+overhead: true
+impact: high
+balance_demand: 1
+joint_stress:
+- knee
+- ankle_foot
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'Continuous-effort conditioning is exactly the shape NICE NG206 warns about in ME/CFS:
+    a timed interval pushes through the energy envelope by design.'
+  modification: ''
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - pelvic organ prolapse
+  - postnatal
+  severity: caution
+  reason: Repeated jumping raises intra-abdominal pressure on every landing, the classic provocation
+    for stress leakage and prolapse symptoms.
+  modification: Swap the jump for a step-out version (step the feet wide alternately while raising
+    the arms) until pelvic-floor work has restored confidence; volume comes before height.
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - knee osteoarthritis
+  - arthritis
+  - joint pain
+  - meniscus
+  severity: caution
+  reason: Every landing is a ground-reaction spike through the knees, dozens of times a minute.
+  modification: Use the step-out version, or halve the interval length and land consciously softly.
+- condition: severe osteoporosis
+  condition_aliases:
+  - fragility fracture
+  - vertebral fracture
+  - t-score below -3
+  severity: caution
+  reason: High-impact work is a bone stimulus at moderate bone loss but a fracture risk once
+    fragility fractures have occurred.
+  modification: With established fragility, use the step-out version; the impact decision belongs
+    with the treating doctor.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  severity: caution
+  reason: Sustained overhead arm work with jumping raises blood pressure more than leg work alone.
+  modification: Keep the hands at shoulder height rather than overhead, and keep intervals short.
+refer_out: []
+linked_to_topics:
+- bone-health
+- insulin-resistance
+linked_to_symptoms:
+- fatigue
+- weight-gain
+notes_for_coach: 'The gateway conditioning move for weight-loss clients: it is the book''s standard
+  warm-up and the lowest rung of its interval work, which is why it sits at intermediate rather
+  than advanced. For a deconditioned client the step-out version IS the exercise for the first
+  fortnight. The impact that makes it a knee caution is the same impact that makes it one of the
+  few bone-loading moves in this catalogue — read the client, not just the flag.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4 index (Jumping Jacks) + Level 1-3 warm-ups and Tabata/Little Method workouts
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

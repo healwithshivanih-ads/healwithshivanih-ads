@@ -52,12 +52,16 @@ builds:
 - walking stamina
 - the ability to hurry without getting winded
 easier_variant: walking-plan
-harder_variant: null
+harder_variant: jumping-jacks
 joint_stress:
 - knee
 - hip
 - ankle_foot
 balance_demand: 1
+movement_patterns:
+- gait
+muscles_worked:
+- full_body
 impact: low
 requires_floor_transfer: false
 cautions:

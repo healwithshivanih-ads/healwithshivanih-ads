@@ -1,0 +1,129 @@
+slug: high-knees
+display_name: High Knees (On-the-Spot Knee Drive)
+client_name: High knees on the spot
+aliases:
+- high knee run
+- knee drives
+- high knees plus skip
+modality: cardiovascular
+intensity_tier: intermediate
+position: standing
+equipment: []
+summary: Hopping from foot to foot while driving each knee towards the chest — running on the spot
+  with intent, the step up from star jumps.
+why_it_works: Driving the knee high recruits the hip flexors and calves at a faster cadence than
+  jacks, and the single-leg landings add a balance and bone stimulus the two-footed jump lacks. The
+  book uses it as its longer-interval engine because effort scales smoothly with knee height and
+  tempo.
+setup:
+- Stand tall, feet slightly wider than hip-width, eyes ahead.
+- Rise onto the balls of the feet.
+steps:
+- Lift one knee towards the chest while shifting the weight to the other leg.
+- Rapidly swap — a light hop from foot to foot, knees lifting high, arms driving in rhythm.
+- Keep the trunk tall; do not lean back to lift the knees.
+levels:
+- level: '1'
+  prescription: '3 rounds of 15 seconds at marching pace (no hop), resting 45 seconds'
+  sets: 3
+  support: none
+- level: '2'
+  prescription: '4 rounds of 30 seconds with the hop, resting 30 seconds'
+  sets: 4
+  support: none
+- level: '3'
+  prescription: '60 continuous repetitions at a high tempo, or add a small skip between knee lifts'
+  reps: 60
+  sets: 1
+  support: none
+frequency: 2-3x/week inside conditioning circuits, after a warm-up.
+builds:
+- heart and lung fitness
+- hip flexor and calf power
+- single-leg landing control
+easier_variant: jumping-jacks
+harder_variant: mountain-climbers
+movement_patterns:
+- jump
+- balance
+muscles_worked:
+- quadriceps
+- calves
+- glutes
+- hamstrings
+impact: high
+balance_demand: 2
+joint_stress:
+- knee
+- ankle_foot
+- hip
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: Timed continuous conditioning pushes through the energy envelope by design (NICE NG206).
+  modification: ''
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - pelvic organ prolapse
+  - postnatal
+  severity: caution
+  reason: Single-leg landings at cadence spike intra-abdominal pressure repeatedly.
+  modification: March the knees high without the hop — same movement, no flight phase — until
+    pelvic-floor work has restored confidence.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - peripheral neuropathy
+  severity: caution
+  reason: A fast single-leg hop is a balance demand at speed; a trip here is a fall.
+  modification: Use the marching version beside a counter until single-leg stance is confirmed
+    steady (one-leg-stand level 2).
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - arthritis
+  - joint pain
+  - meniscus
+  severity: caution
+  reason: Repeated single-leg landings load one knee at a time at cadence.
+  modification: March instead of hop; height of the knee matters more than the bounce.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - hypertension
+  severity: caution
+  reason: High-cadence whole-body work raises blood pressure sharply.
+  modification: Shorter intervals at a talking pace; stop for a pounding head or dizziness.
+refer_out: []
+linked_to_topics:
+- insulin-resistance
+- bone-health
+linked_to_symptoms:
+- fatigue
+- weight-gain
+notes_for_coach: 'The marching version (level 1) is a legitimate exercise on its own, not an
+  apology — it is knee-height hip-flexor work with zero flight time, and for most of the current
+  roster it is the correct entry point. The book''s "plus skip" variation is folded in as the
+  level-3 option rather than a separate entry.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Plyometric exercises — High Knees and High Knees Plus Skip; Little Method workouts
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

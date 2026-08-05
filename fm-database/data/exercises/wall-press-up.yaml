@@ -56,6 +56,12 @@ joint_stress:
 - wrist_hand
 - elbow
 balance_demand: 0
+movement_patterns:
+- push
+muscles_worked:
+- chest
+- triceps
+- shoulders
 impact: none
 requires_floor_transfer: false
 cautions:

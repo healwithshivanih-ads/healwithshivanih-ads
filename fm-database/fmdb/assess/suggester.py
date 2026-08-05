@@ -1633,6 +1633,28 @@ HARD RULES (violating these breaks the downstream system):
       work next, strength last, cool-down if you use one. The order is the
       prescription — a warm-up listed after the strength work is a different
       instruction.
+    - BALANCE THE SESSION ACROSS `patterns`. Every option carries its movement
+      patterns (push/pull/squat/hinge/lunge/core_brace/core_flex/rotation/
+      balance/gait/jump/mobility) and the muscles it works. A whole-body session
+      should not repeat a pattern while another is absent: three pushes and no
+      hinge is a badly built session even if each pick is individually good.
+      Cover at least three distinct patterns beyond the warm-up, and never let
+      two picks share both the same pattern AND the same muscles unless one is
+      explicitly the other's warm-up. The catalogue currently has no `pull`
+      option except doorway-row — when it is in the list, a whole-body session
+      should usually include it, because nothing else covers its pattern.
+    - MATCH THE EMPHASIS TO THE CLIENT'S GOAL, visible in their goals/topics:
+      weight loss or metabolic goals → a conditioning circuit shape (a
+      cardiovascular opener, 3-4 strength stations across different patterns,
+      minimal rest — see `session_formats`); bone density or osteoporosis-
+      spectrum goals → loading and impact picks (squats, hinges, and the
+      jump/impact entries the screen has cleared); falls or balance goals → the
+      balance block grows and conditioning shrinks. The screen has already
+      removed what this client must not do — your job is emphasis, not safety.
+    - `session_formats` in the user payload describes the evidence-based session
+      shapes (timed circuit, rep circuit, intervals, ladder) with their
+      work:rest structure and weekly frequency rules. Name the format you are
+      building in the first rationale so the coach sees the intent.
     - Leave `level` empty. `start_level` in the options tells you what the screen
       chose from the client's own record, and it accounts for things you cannot
       see. Override it only with a stated reason in the rationale.
@@ -1667,6 +1689,24 @@ def _exercise_dicts() -> list[dict[str, Any]]:
     data_dir = Path(os.environ.get("FMDB_CATALOGUE_DIR") or
                     (Path(__file__).resolve().parents[2] / "data"))
     return [e.model_dump(mode="json") for e in load_exercises(data_dir)]
+
+
+def _session_formats() -> dict[str, Any]:
+    """Session architecture from data/_exercise_programmes.yaml, fail-closed.
+
+    A data file rather than prompt prose so the coach can read and amend the
+    same reference the model receives. Missing or malformed → empty dict; the
+    prompt's session rules still stand on their own.
+    """
+    import yaml as _yaml
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parents[2] / "data" / "_exercise_programmes.yaml"
+    try:
+        data = _yaml.safe_load(path.read_text())
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
 
 
 def _exercise_options(client_context: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1704,6 +1744,12 @@ def _exercise_options(client_context: dict[str, Any]) -> list[dict[str, Any]]:
             "position": e.get("position"),
             "summary": e.get("summary"),
             "builds": e.get("builds") or [],
+            # The session-balance axes: patterns are what rule 32 balances
+            # across; muscles are what "works different muscles" means. Both
+            # come straight off the entry — never inferred from the summary.
+            "patterns": e.get("movement_patterns") or [],
+            "muscles": e.get("muscles_worked") or [],
+            "impact": e.get("impact"),
             "screen": v.verdict,
             "start_level": v.start_level,
         }
@@ -1843,6 +1889,11 @@ def synthesize(
         # ~0.7K for a heavily-screened one (Sudarshan, 7) — the clients who can do
         # least cost least. Against a ~60K assess input that is roughly 6%.
         "exercise_options": _exercise_options(client_context),
+        # The session SHAPES (timed circuit, rep circuit, intervals, ladder)
+        # with their work:rest structure and weekly frequency rules — the
+        # architecture of the book's programme chapters without its exercises.
+        # Rule 32 asks the model to name which shape it is building.
+        "session_formats": _session_formats(),
     }
     variable_payload = {
         "selected_symptoms": selected_symptom_slugs,

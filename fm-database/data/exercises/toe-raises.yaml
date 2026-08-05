@@ -33,6 +33,10 @@ builds:
 joint_stress:
 - ankle_foot
 balance_demand: 2
+movement_patterns:
+- balance
+muscles_worked:
+- ankles_feet
 impact: none
 cautions:
 - condition: osteoarthritis

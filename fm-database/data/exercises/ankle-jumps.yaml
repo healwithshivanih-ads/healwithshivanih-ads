@@ -1,0 +1,116 @@
+slug: ankle-jumps
+display_name: Ankle Jumps (Pogo Hops)
+client_name: Little pogo hops
+aliases:
+- pogo jumps
+- ankle hops
+- ankle bounces
+modality: strength
+intensity_tier: intermediate
+position: standing
+equipment: []
+summary: Small straight-legged hops driven from the ankles alone — spring work for the calves and
+  the most targeted bone stimulus in the catalogue.
+why_it_works: Keeping the knees nearly straight forces the calf-tendon spring to do the work, which
+  is exactly the brief, novel, moderately loud impact that bone remodelling responds to (the
+  principle behind the LIFTMOR trials' impact component). Low jump height keeps each landing
+  manageable while the elastic stimulus stays high.
+setup:
+- Stand tall, feet under the hips, hands relaxed or on the hips.
+- Pull the core in; look ahead, not down.
+steps:
+- Jump a few centimetres off the floor, pushing only from the ankles — knees stay nearly straight.
+- Land on the balls of the feet and rebound immediately, like a bouncing ball.
+- Keep the ground contacts short and springy rather than high.
+levels:
+- level: '1'
+  prescription: '2 sets of 10 small hops, hand resting on a counter'
+  reps: 10
+  sets: 2
+  support: one hand on a solid counter
+- level: '2'
+  prescription: '2 sets of 15-20 hops, no support'
+  reps: 20
+  sets: 2
+  support: none
+frequency: 2-3x/week, a few minutes apart from other jumping — quality contacts, never to fatigue.
+builds:
+- calf-tendon spring
+- ankle stiffness for push-off and stairs
+- bone stimulus at hip and spine through brief impact
+easier_variant: heel-raises
+harder_variant: null
+movement_patterns:
+- jump
+- balance
+muscles_worked:
+- calves
+- ankles_feet
+loads_spine: true
+impact: high
+balance_demand: 1
+joint_stress:
+- ankle_foot
+- knee
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: A fixed-repetition ladder of effortful work — the progression shape NICE NG206 withdrew
+    for ME/CFS.
+  modification: ''
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - postnatal
+  severity: caution
+  reason: Vertical bouncing is the most direct intra-abdominal pressure pulse of all the jumps.
+  modification: Heel-raises with a sharp heel drop deliver a smaller bone stimulus without the
+    flight phase; progress here only after pelvic-floor confidence.
+- condition: severe osteoporosis
+  condition_aliases:
+  - fragility fracture
+  - vertebral fracture
+  - t-score below -3
+  severity: caution
+  reason: The same impact that stimulates moderately low bone is a risk once fragility fractures
+    exist.
+  modification: Stay on heel-raises; escalate only with the treating doctor's agreement.
+- condition: achilles tendinopathy
+  condition_aliases:
+  - achilles pain
+  - achilles tendonitis
+  - calf tear
+  - plantar fasciitis
+  severity: caution
+  reason: Elastic ankle loading is precisely what an irritated achilles or plantar fascia cannot
+    absorb yet.
+  modification: Slow heavy heel-raises first; hops only once pain-free on single-leg raises.
+refer_out: []
+linked_to_topics:
+- bone-health
+- menopause
+linked_to_symptoms: []
+notes_for_coach: 'Shipped for the bone agenda more than the fitness one: for a post-menopausal
+  client with LOW-NORMAL bone density, ten purposeful pogo hops are closer to the LIFTMOR evidence
+  than any amount of walking. It is the harder variant of heel-raises and should be introduced
+  exactly that way — as the next rung, not as cardio.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Plyometric exercises — Ankle Jumps; Level 1 Plyometric Power-Up Sets
+- id: liftmor-watson-2018
+  location: Impact-loading arm of the HiRIT protocol — the rationale for brief novel impact
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

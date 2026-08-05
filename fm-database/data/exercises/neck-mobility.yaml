@@ -24,6 +24,10 @@ builds:
 joint_stress:
 - neck
 balance_demand: 0
+movement_patterns:
+- mobility
+muscles_worked:
+- neck
 impact: none
 cautions:
 - condition: cervical radiculopathy

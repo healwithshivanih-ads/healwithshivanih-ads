@@ -33,6 +33,12 @@ joint_stress:
 - hip
 - ankle_foot
 balance_demand: 2
+movement_patterns:
+- gait
+- balance
+muscles_worked:
+- hip_abductors
+- glutes
 impact: low
 cautions:
 - condition: history of falls

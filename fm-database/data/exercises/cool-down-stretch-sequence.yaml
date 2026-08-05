@@ -42,6 +42,10 @@ builds:
 - less next-day stiffness
 easier_variant: null
 harder_variant: null
+movement_patterns:
+- mobility
+muscles_worked:
+- full_body
 loads_spine: false
 spinal_flexion: false
 joint_stress:

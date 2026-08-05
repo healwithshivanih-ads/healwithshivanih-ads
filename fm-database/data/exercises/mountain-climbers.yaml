@@ -1,0 +1,117 @@
+slug: mountain-climbers
+display_name: Mountain Climbers
+client_name: Mountain climbers
+aliases:
+- climbers
+- mountain climber
+modality: cardiovascular
+intensity_tier: intermediate
+position: four_point
+equipment: []
+summary: From a press-up position, the legs exchange places in a running action — conditioning that
+  loads the shoulders and trunk as much as the legs.
+why_it_works: Holding the plank line while the legs drive turns a cardio move into whole-body work —
+  the shoulders and trunk stabilise isometrically while the hips produce the movement. That double
+  duty is why the book rates it medium intensity and uses it as a Tabata staple — effort climbs
+  fast without any equipment.
+setup:
+- Take a press-up position, hands under the shoulders, body straight from head to heel.
+- Spread the fingers and grip the floor; soften the elbows a touch.
+steps:
+- Drive one knee up towards the chest, keeping the hips level with the shoulders.
+- Jump or step to exchange the legs, keeping the back straight and the backside down.
+- Continue exchanging at a steady rhythm, breathing throughout.
+levels:
+- level: '1'
+  prescription: 'Slow step-through version — step each knee in and back, 3 rounds of 20 seconds'
+  sets: 3
+  support: none
+- level: '2'
+  prescription: '4 rounds of 20 seconds at a running rhythm, resting 40 seconds'
+  sets: 4
+  support: none
+- level: '3'
+  prescription: '8 rounds of 20 seconds hard with 10 seconds rest (the book''s Tabata form)'
+  sets: 8
+  support: none
+frequency: 2-3x/week inside conditioning circuits; not on consecutive days.
+builds:
+- heart and lung fitness
+- shoulder and trunk endurance under a moving load
+- hip drive
+easier_variant: high-knees
+harder_variant: burpee
+movement_patterns:
+- core_brace
+- jump
+muscles_worked:
+- shoulders
+- abdominals
+- quadriceps
+- calves
+loads_spine: false
+impact: moderate
+balance_demand: 1
+requires_floor_transfer: true
+joint_stress:
+- wrist_hand
+- shoulder
+- hip
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: Interval conditioning against the clock is the NICE NG206 pattern to avoid in ME/CFS.
+  modification: ''
+- condition: wrist pain
+  condition_aliases:
+  - carpal tunnel
+  - wrist injury
+  - de quervain
+  - arthritis of the hands
+  severity: caution
+  reason: The whole movement happens on loaded, extended wrists.
+  modification: Fists on a folded towel, or raise the hands onto a low step to reduce wrist
+    extension; stop for numbness or tingling.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - hypertension
+  severity: caution
+  reason: Head-below-heart positioning plus hard intervals is a double blood-pressure load.
+  modification: Use the slow step-through version with the hands elevated on a step; keep intervals
+    short.
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - impingement
+  - frozen shoulder
+  severity: caution
+  reason: The shoulders carry half of body weight throughout, with impact on each exchange.
+  modification: Elevate the hands on a step or counter — the same movement at a fraction of the
+    shoulder load.
+refer_out: []
+linked_to_topics:
+- insulin-resistance
+linked_to_symptoms:
+- fatigue
+- weight-gain
+notes_for_coach: 'The bridge between the press-up family and the conditioning family: a client who
+  has earned the kneeling press-up has the shoulders for the step-through version. Requires getting
+  to the floor — check floor-get-up first for anyone over 65. For weight-loss clients this plus
+  jumping-jacks plus a squat makes a complete no-kit circuit.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Plyometric exercises — Mountain Climbers; Level 2 Tabata Mini-Workout 1
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

@@ -42,6 +42,10 @@ builds:
 - a settled start to a session
 easier_variant: null
 harder_variant: null
+movement_patterns:
+- mobility
+muscles_worked:
+- full_body
 loads_spine: false
 spinal_flexion: true
 loaded_spinal_rotation: false

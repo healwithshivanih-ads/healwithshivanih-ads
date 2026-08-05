@@ -1,6 +1,6 @@
 {
   "_note": "Captured from fmdb.plan.exercise_screen. Regenerate by hand; see module docstring.",
-  "exercise_count": 32,
+  "exercise_count": 40,
   "cases": {
     "pem": [
       {
@@ -136,6 +136,132 @@
         "start_reason": ""
       },
       {
+        "slug": "alternate-toe-taps",
+        "display_name": "Alternate Toe-Taps (Press-Up Position)",
+        "client_name": "Toe taps in plank",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "Belongs to the timed-circuit family NICE NG206 warns against in ME/CFS.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "burpee",
+        "display_name": "Burpee (Squat-Thrust Ladder)",
+        "client_name": "Burpees",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "The book itself calls this maximal-demand conditioning; it is the last thing NICE NG206 permits in ME/CFS.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "high-knees",
+        "display_name": "High Knees (On-the-Spot Knee Drive)",
+        "client_name": "High knees on the spot",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "Timed continuous conditioning pushes through the energy envelope by design (NICE NG206).",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "jumping-jacks",
+        "display_name": "Jumping Jacks (Star Jumps)",
+        "client_name": "Star jumps",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "Continuous-effort conditioning is exactly the shape NICE NG206 warns about in ME/CFS: a timed interval pushes through the energy envelope by design.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "mountain-climbers",
+        "display_name": "Mountain Climbers",
+        "client_name": "Mountain climbers",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "Interval conditioning against the clock is the NICE NG206 pattern to avoid in ME/CFS.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "split-jumps",
+        "display_name": "Split Jumps (Scissor Skip)",
+        "client_name": "Scissor skips",
+        "modality": "cardiovascular",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "Timed conditioning intervals are the NICE NG206 pattern to avoid in ME/CFS.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "walking-intervals",
         "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
         "client_name": "Brisk and easy walking",
@@ -221,6 +347,23 @@
             "kind": "pain",
             "label": "neck",
             "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "ankle-jumps",
+        "display_name": "Ankle Jumps (Pogo Hops)",
+        "client_name": "Little pogo hops",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "A fixed-repetition ladder of effortful work \u2014 the progression shape NICE NG206 withdrew for ME/CFS.",
             "modification": ""
           }
         ],
@@ -422,6 +565,29 @@
             "kind": "block",
             "label": "post-exertional malaise",
             "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "squat-jumps",
+        "display_name": "Squat Jumps (Jump Squats)",
+        "client_name": "Jump squats",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "Near-maximal effort work; the NICE NG206 withdrawal of graded exercise applies with extra force at this intensity.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
             "modification": ""
           }
         ],
@@ -754,6 +920,91 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "alternate-toe-taps",
+        "display_name": "Alternate Toe-Taps (Press-Up Position)",
+        "client_name": "Toe taps in plank",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "The piked position puts the head below the heart repeatedly.",
+            "modification": "Fewer, slower reaches with the hands elevated."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "burpee",
+        "display_name": "Burpee (Squat-Thrust Ladder)",
+        "client_name": "Burpees",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Rapid repeated changes between standing and head-down floor positions at high effort are a blood-pressure and dizziness double load.",
+            "modification": "Level 1-2 only (no jump levels), a full breath's pause at the crouch before rising, and stop for any light-headedness. With BP that is not well controlled, do not prescribe this entry at all \u2014 the mountain-climber step-through covers the conditioning goal without the posture change."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "high-knees",
+        "display_name": "High Knees (On-the-Spot Knee Drive)",
+        "client_name": "High knees on the spot",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "High-cadence whole-body work raises blood pressure sharply.",
+            "modification": "Shorter intervals at a talking pace; stop for a pounding head or dizziness."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "jumping-jacks",
+        "display_name": "Jumping Jacks (Star Jumps)",
+        "client_name": "Star jumps",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Sustained overhead arm work with jumping raises blood pressure more than leg work alone.",
+            "modification": "Keep the hands at shoulder height rather than overhead, and keep intervals short."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "mountain-climbers",
+        "display_name": "Mountain Climbers",
+        "client_name": "Mountain climbers",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Head-below-heart positioning plus hard intervals is a double blood-pressure load.",
+            "modification": "Use the slow step-through version with the hands elevated on a step; keep intervals short."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "walking-intervals",
         "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
         "client_name": "Brisk and easy walking",
@@ -930,6 +1181,23 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "squat-jumps",
+        "display_name": "Squat Jumps (Jump Squats)",
+        "client_name": "Jump squats",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Maximal effort against gravity spikes blood pressure.",
+            "modification": "Sub-maximal heights, long rests, exhale on the drive."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "standard-press-up",
         "display_name": "Standard Press Up (Full Prone Push)",
         "client_name": "A full press-up",
@@ -1093,6 +1361,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "split-jumps",
+        "display_name": "Split Jumps (Scissor Skip)",
+        "client_name": "Scissor skips",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "ankle-mobility",
         "display_name": "Ankle Mobility",
         "client_name": "Ankle points and pulls",
@@ -1131,6 +1409,16 @@
         "notes": [],
         "start_level": null,
         "start_reason": ""
+      },
+      {
+        "slug": "ankle-jumps",
+        "display_name": "Ankle Jumps (Pogo Hops)",
+        "client_name": "Little pogo hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
       },
       {
         "slug": "floor-bridge",
@@ -1255,6 +1543,57 @@
         ],
         "start_level": "A",
         "start_reason": "start supported"
+      },
+      {
+        "slug": "burpee",
+        "display_name": "Burpee (Squat-Thrust Ladder)",
+        "client_name": "Burpees",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "high-knees",
+        "display_name": "High Knees (On-the-Spot Knee Drive)",
+        "client_name": "High knees on the spot",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-jumps",
+        "display_name": "Split Jumps (Scissor Skip)",
+        "client_name": "Scissor skips",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
       },
       {
         "slug": "stair-walking",
@@ -1444,6 +1783,23 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "squat-jumps",
+        "display_name": "Squat Jumps (Jump Squats)",
+        "client_name": "Jump squats",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "standing-hip-abduction",
         "display_name": "Standing Hip Abduction (Hip Abductor)",
         "client_name": "Lifting the leg out to the side",
@@ -1493,6 +1849,36 @@
         ],
         "start_level": "C",
         "start_reason": "start supported"
+      },
+      {
+        "slug": "alternate-toe-taps",
+        "display_name": "Alternate Toe-Taps (Press-Up Position)",
+        "client_name": "Toe taps in plank",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "jumping-jacks",
+        "display_name": "Jumping Jacks (Star Jumps)",
+        "client_name": "Star jumps",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "mountain-climbers",
+        "display_name": "Mountain Climbers",
+        "client_name": "Mountain climbers",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
       },
       {
         "slug": "walking-intervals",
@@ -1553,6 +1939,16 @@
         "notes": [],
         "start_level": null,
         "start_reason": ""
+      },
+      {
+        "slug": "ankle-jumps",
+        "display_name": "Ankle Jumps (Pogo Hops)",
+        "client_name": "Little pogo hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
       },
       {
         "slug": "floor-dip",
@@ -1702,6 +2098,108 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "alternate-toe-taps",
+        "display_name": "Alternate Toe-Taps (Press-Up Position)",
+        "client_name": "Toe taps in plank",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "burpee",
+        "display_name": "Burpee (Squat-Thrust Ladder)",
+        "client_name": "Burpees",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "high-knees",
+        "display_name": "High Knees (On-the-Spot Knee Drive)",
+        "client_name": "High knees on the spot",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "jumping-jacks",
+        "display_name": "Jumping Jacks (Star Jumps)",
+        "client_name": "Star jumps",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "mountain-climbers",
+        "display_name": "Mountain Climbers",
+        "client_name": "Mountain climbers",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-jumps",
+        "display_name": "Split Jumps (Scissor Skip)",
+        "client_name": "Scissor skips",
+        "modality": "cardiovascular",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "walking-intervals",
         "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
         "client_name": "Brisk and easy walking",
@@ -1796,6 +2294,23 @@
           {
             "kind": "pain",
             "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-jumps",
+        "display_name": "Ankle Jumps (Pogo Hops)",
+        "client_name": "Little pogo hops",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee",
             "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
             "modification": ""
           }
@@ -1937,6 +2452,23 @@
           }
         ],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "squat-jumps",
+        "display_name": "Squat Jumps (Jump Squats)",
+        "client_name": "Jump squats",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {
@@ -2167,6 +2699,66 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "alternate-toe-taps",
+        "display_name": "Alternate Toe-Taps (Press-Up Position)",
+        "client_name": "Toe taps in plank",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "burpee",
+        "display_name": "Burpee (Squat-Thrust Ladder)",
+        "client_name": "Burpees",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "high-knees",
+        "display_name": "High Knees (On-the-Spot Knee Drive)",
+        "client_name": "High knees on the spot",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "jumping-jacks",
+        "display_name": "Jumping Jacks (Star Jumps)",
+        "client_name": "Star jumps",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "mountain-climbers",
+        "display_name": "Mountain Climbers",
+        "client_name": "Mountain climbers",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-jumps",
+        "display_name": "Split Jumps (Scissor Skip)",
+        "client_name": "Scissor skips",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "walking-intervals",
         "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
         "client_name": "Brisk and easy walking",
@@ -2277,6 +2869,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "ankle-jumps",
+        "display_name": "Ankle Jumps (Pogo Hops)",
+        "client_name": "Little pogo hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
@@ -2367,6 +2969,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "squat-jumps",
+        "display_name": "Squat Jumps (Jump Squats)",
+        "client_name": "Jump squats",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "standard-press-up",
         "display_name": "Standard Press Up (Full Prone Push)",
         "client_name": "A full press-up",
@@ -2429,6 +3041,23 @@
     ],
     "limitation_only_in_weight_loss": [
       {
+        "slug": "squat-jumps",
+        "display_name": "Squat Jumps (Jump Squats)",
+        "client_name": "Jump squats",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "knee pain",
+            "detail": "Repeated maximal landings through a painful knee is a flare generator, and the squat ladder below this rung covers every strength goal without the impact.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "chair-sit-to-stand",
         "display_name": "Sit to Stand",
         "client_name": "Standing up from a chair",
@@ -2467,6 +3096,74 @@
         ],
         "start_level": "A",
         "start_reason": "start supported"
+      },
+      {
+        "slug": "burpee",
+        "display_name": "Burpee (Squat-Thrust Ladder)",
+        "client_name": "Burpees",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "The crouch and the jump landings both load bent knees at speed.",
+            "modification": "Level 1 only, stepping in and out; skip the jump levels entirely."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "high-knees",
+        "display_name": "High Knees (On-the-Spot Knee Drive)",
+        "client_name": "High knees on the spot",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Repeated single-leg landings load one knee at a time at cadence.",
+            "modification": "March instead of hop; height of the knee matters more than the bounce."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "jumping-jacks",
+        "display_name": "Jumping Jacks (Star Jumps)",
+        "client_name": "Star jumps",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Every landing is a ground-reaction spike through the knees, dozens of times a minute.",
+            "modification": "Use the step-out version, or halve the interval length and land consciously softly."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-jumps",
+        "display_name": "Split Jumps (Scissor Skip)",
+        "client_name": "Scissor skips",
+        "modality": "cardiovascular",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Every landing loads a split stance through the front knee.",
+            "modification": "Keep the split short and the hop minimal, or use the step-through version."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
       },
       {
         "slug": "walking-intervals",
@@ -2736,6 +3433,26 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "alternate-toe-taps",
+        "display_name": "Alternate Toe-Taps (Press-Up Position)",
+        "client_name": "Toe taps in plank",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "mountain-climbers",
+        "display_name": "Mountain Climbers",
+        "client_name": "Mountain climbers",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "ankle-mobility",
         "display_name": "Ankle Mobility",
         "client_name": "Ankle points and pulls",
@@ -2799,6 +3516,16 @@
         "slug": "abdominal-crunch",
         "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
         "client_name": "Curl-ups",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "ankle-jumps",
+        "display_name": "Ankle Jumps (Pogo Hops)",
+        "client_name": "Little pogo hops",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -2928,6 +3655,66 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "alternate-toe-taps",
+        "display_name": "Alternate Toe-Taps (Press-Up Position)",
+        "client_name": "Toe taps in plank",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "burpee",
+        "display_name": "Burpee (Squat-Thrust Ladder)",
+        "client_name": "Burpees",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "high-knees",
+        "display_name": "High Knees (On-the-Spot Knee Drive)",
+        "client_name": "High knees on the spot",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "jumping-jacks",
+        "display_name": "Jumping Jacks (Star Jumps)",
+        "client_name": "Star jumps",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "mountain-climbers",
+        "display_name": "Mountain Climbers",
+        "client_name": "Mountain climbers",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-jumps",
+        "display_name": "Split Jumps (Scissor Skip)",
+        "client_name": "Scissor skips",
+        "modality": "cardiovascular",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "walking-intervals",
         "display_name": "Walking Intervals (Aerobic Interval Training on Foot)",
         "client_name": "Brisk and easy walking",
@@ -3038,6 +3825,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "ankle-jumps",
+        "display_name": "Ankle Jumps (Pogo Hops)",
+        "client_name": "Little pogo hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
@@ -3125,6 +3922,16 @@
         "verdict": "clear",
         "notes": [],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "squat-jumps",
+        "display_name": "Squat Jumps (Jump Squats)",
+        "client_name": "Jump squats",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {

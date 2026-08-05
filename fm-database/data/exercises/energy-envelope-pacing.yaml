@@ -25,6 +25,8 @@ builds:
 - a stable activity baseline
 - confidence that effort will not be punished
 balance_demand: 0
+movement_patterns: []
+muscles_worked: []
 impact: none
 cautions:
 - condition: post-exertional malaise

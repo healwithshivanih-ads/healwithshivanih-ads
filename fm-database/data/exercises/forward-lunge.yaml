@@ -55,6 +55,12 @@ joint_stress:
 - hip
 - ankle_foot
 balance_demand: 2
+movement_patterns:
+- lunge
+muscles_worked:
+- quadriceps
+- glutes
+- hamstrings
 impact: low
 requires_floor_transfer: false
 cautions:

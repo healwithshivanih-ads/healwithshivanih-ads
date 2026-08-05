@@ -1,0 +1,78 @@
+# Session formats — the STRUCTURE of a movement session, taken from the Level
+# 1-3 programme chapters of `martinoli-5-minute-fitness-2011` (pp 184-243, read
+# in full 2026-08-05). Underscore-prefixed: `fmdb validate` skips it, like
+# _ingredient_nutrients.yaml.
+#
+# WHY FORMATS AND NOT THE BOOK'S LITERAL WORKOUTS. The book's mini-workouts are
+# fixed lists of ITS exercises at ITS intensity, aimed at people it says must be
+# "free of injury ... no underlying medical issues". What transfers to this
+# practice is the ARCHITECTURE: how many stations, what work:rest, how circuits
+# progress, and how often per week. The suggester composes actual sessions from
+# the client's own screened options; these formats say what shape to build.
+#
+# Consumed by fmdb/assess/suggester.py (`session_formats` in the user payload)
+# and readable by the coach as the reference for what each shape means.
+
+formats:
+- id: gpp_timed_circuit
+  name: Timed circuit (GPP)
+  shape: 4 stations x 30s work / 30s rest, 2 circuits (~8 minutes)
+  intent: General conditioning — the default weight-loss session shape.
+  composition: One cardiovascular opener, then 3 stations covering DIFFERENT
+    movement patterns (a squat or hinge, a push or pull, a core or balance).
+  effort: Brisk but sustainable — RPE 6-7 of 10; a rep quality drop means too hard.
+  progressions:
+  - increase the work time
+  - increase the circuits
+  - decrease the rest time
+- id: rep_circuit
+  name: Repetition circuit
+  shape: 4-6 stations by repetitions at a controlled tempo, performed back to
+    back; 45-60s rest between circuits; 2-3 circuits
+  intent: Strength-endurance — the shape for building capacity across the whole
+    body in one session.
+  composition: Stations must span distinct patterns; the book's own circuits
+    pair a squat family move, a press family move, a core move, and one
+    balance/impact move.
+  effort: The last 2 reps of each station should feel like work; form never bends.
+  progressions:
+  - increase the repetitions
+  - increase the circuits
+  - decrease the rest period
+  - select a harder variation of a station
+- id: intervals
+  name: Long intervals (Little Method shape)
+  shape: One movement, 4-8 sets of 60s work / 75s easy recovery
+  intent: Cardiovascular fitness for clients who prefer one simple movement —
+    walking-intervals, jumping-jacks, high-knees, split-jumps all fit.
+  effort: Work sets at RPE 7-8; recovery genuinely easy.
+  caution: The book's Tabata form (8 x 20s maximal / 10s rest) is ADVANCED-tier
+    only and never a first prescription; one such session per week at most.
+  progressions:
+  - raise the intensity inside the work interval, not the set count first
+- id: strength_ladder
+  name: Strength ladder
+  shape: One strength movement, 1-2-3-4-5 reps with matching-count holds, 30s
+    rest, 2-3 circuits
+  intent: Focused strength on one pattern (press-up family, dip family) without
+    a rep target that invites grinding.
+  progressions:
+  - increase the top of the ladder
+  - move to the next rung of the exercise's own levels
+- id: core_finisher
+  name: Core finisher
+  shape: 3-4 core stations by reps, no rest between, 30s between circuits, 2-3
+    circuits; added AFTER any other session, not a session alone
+  composition: Mix core_brace (plank family, bird dog) with at most one
+    core_flex move; spine-neutral options first for anyone the screen flags.
+
+weekly_rules:
+- One session per day at most; alternate session types on consecutive days.
+- Interval or Tabata-shape sessions at most once per week.
+- A core finisher may attach to any session.
+- Every 4-6 weeks, one lighter week — the book's own rest-week rule.
+- Power/jump work (squat-jumps, ankle-jumps) never on consecutive days.
+
+source:
+  id: martinoli-5-minute-fitness-2011
+  location: Chapters 5-7 (Level 1-3 mini-workout programmes), read in full

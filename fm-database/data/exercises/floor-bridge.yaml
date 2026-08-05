@@ -56,6 +56,12 @@ builds:
 - lower-back support
 easier_variant: null
 harder_variant: null
+movement_patterns:
+- hinge
+muscles_worked:
+- glutes
+- hamstrings
+- lower_back
 loads_spine: false
 spinal_flexion: false
 loaded_spinal_rotation: false

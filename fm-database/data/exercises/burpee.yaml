@@ -1,0 +1,153 @@
+slug: burpee
+display_name: Burpee (Squat-Thrust Ladder)
+client_name: Burpees
+aliases:
+- burpees
+- squat thrust
+- squat thrusts
+- burpee press-up
+modality: cardiovascular
+intensity_tier: advanced
+position: standing
+equipment: []
+summary: Stand, crouch, kick back to a press-up line, return and rise — the whole-body conditioning
+  ladder, from a stepped no-jump version to the full press-up form.
+why_it_works: The burpee chains a squat, a plank and (higher up the ladder) a press-up and a jump
+  into one continuous movement, which is why the book calls it the most singularly beneficial
+  bodyweight exercise — it taxes strength, endurance and coordination together and reaches every
+  major muscle group with no kit. The ladder below the classic form keeps the chain while removing
+  its two hardest links.
+setup:
+- Clear floor space; check the ceiling if the jump levels are in play.
+- Wrists warm and ready — some weight lands on the hands every repetition.
+steps:
+- From standing, crouch and place the hands on the floor just wider than the shoulders.
+- Kick or step the legs back into a straight press-up position.
+- Return the feet to the crouch and stand (or jump) to finish.
+- Move continuously but under control; the straight back in the plank line is the technique that
+  matters most.
+levels:
+- level: '1'
+  prescription: 'Step-back version: step one leg back at a time, stand to finish. 2 sets of 5'
+  reps: 5
+  sets: 2
+  support: none
+- level: '2'
+  prescription: 'Non-jump burpee: kick both legs back, stand tall to finish. 2 sets of 6-8'
+  reps: 8
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 'Standard burpee: finish each repetition with a jump. 2 sets of 8-10'
+  reps: 10
+  sets: 2
+  support: none
+- level: '4'
+  prescription: 'Press-up burpee: add a full press-up in the plank phase. 2 sets of 8'
+  reps: 8
+  sets: 2
+  support: none
+frequency: 2x/week inside circuits, with a rest day between; quality collapses before the lungs do.
+builds:
+- whole-body conditioning
+- squat-to-floor transition confidence
+- press-up and plank strength in context
+easier_variant: mountain-climbers
+harder_variant: null
+movement_patterns:
+- squat
+- push
+- jump
+- core_brace
+muscles_worked:
+- full_body
+loads_spine: true
+impact: high
+balance_demand: 2
+requires_floor_transfer: true
+joint_stress:
+- wrist_hand
+- shoulder
+- knee
+- ankle_foot
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: The book itself calls this maximal-demand conditioning; it is the last thing NICE NG206
+    permits in ME/CFS.
+  modification: ''
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - hypertension
+  severity: caution
+  reason: Rapid repeated changes between standing and head-down floor positions at high effort are
+    a blood-pressure and dizziness double load.
+  modification: Level 1-2 only (no jump levels), a full breath's pause at the crouch before rising,
+    and stop for any light-headedness. With BP that is not well controlled, do not prescribe this
+    entry at all — the mountain-climber step-through covers the conditioning goal without the
+    posture change.
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - postnatal
+  severity: caution
+  reason: The jump levels spike intra-abdominal pressure; the kick-back does too.
+  modification: Cap at level 1 (step-back, no jump) until pelvic-floor work is established.
+- condition: wrist pain
+  condition_aliases:
+  - carpal tunnel
+  - wrist injury
+  - arthritis of the hands
+  severity: caution
+  reason: Every repetition drops body weight onto extended wrists.
+  modification: Fewer reps, hands on a low step, stop for numbness.
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - arthritis
+  - joint pain
+  - meniscus
+  severity: caution
+  reason: The crouch and the jump landings both load bent knees at speed.
+  modification: Level 1 only, stepping in and out; skip the jump levels entirely.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - peripheral neuropathy
+  severity: caution
+  reason: Fast floor-to-standing transitions are where orthostatic dizziness bites.
+  modification: Pause one breath at the crouch before rising; level 1-2 only.
+refer_out: []
+linked_to_topics:
+- insulin-resistance
+linked_to_symptoms:
+- weight-gain
+- fatigue
+notes_for_coach: 'One entry, four rungs, ON PURPOSE: "burpee" arrives as one word from clients and
+  the ladder keeps its regressions attached so prescribing level 1 is natural. The step-back
+  version is a legitimate strength-and-mobility exercise for a fit beginner; the press-up version
+  is the hardest thing in this catalogue. The tuck-jump and long-jump book variants remain
+  deliberately excluded — maximal plyometrics with no candidate on any foreseeable roster. Floor
+  get-up confidence is a prerequisite, not a nice-to-have.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Plyometric exercises — Standard Burpee, Burpee (Non-Jump), Burpee (Press Up); Level 2-3
+    GPP workouts and Super Burpee 55
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani
