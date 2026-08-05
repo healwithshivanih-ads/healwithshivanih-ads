@@ -53,6 +53,9 @@ export interface AppExerciseItem {
   sets: number | null;
   holdSeconds: number | null;
   support: string;
+  /** How often THIS one is done, when it differs from the session. Empty means
+   *  it follows the session's own cadence. */
+  cadence: string;
   /**
    * Traced two-pose figure as a self-contained SVG string, when the exercise
    * has reviewed artwork. Optional and null-safe: the player renders nothing
@@ -210,6 +213,7 @@ export function deriveExerciseSessions(
           title: asStr(entry.client_name).trim() || slug,
         }),
         videoSrc: exerciseVideoSrc(slug),
+        cadence: asStr(p.cadence).trim(),
         equipment: asArr(entry.equipment).map((x) => asStr(x).trim()).filter(Boolean),
       });
     }

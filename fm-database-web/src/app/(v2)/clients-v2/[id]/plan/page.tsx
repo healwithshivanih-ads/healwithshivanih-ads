@@ -511,7 +511,7 @@ export default async function PlanTabPage({
       // typo in the practice name.
       exercises:
         ((it.exercises as
-          | Array<{ exercise: string; level?: string | null; note?: string }>
+          | Array<{ exercise: string; level?: string | null; note?: string; cadence?: string }>
           | undefined) ?? []),
     }))
     .filter((it) => it.name);

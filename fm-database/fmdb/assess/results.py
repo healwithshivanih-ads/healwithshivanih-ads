@@ -175,6 +175,7 @@ class ExerciseSuggestion(BaseModel):
     _coerce = model_validator(mode="before")(_coerce_none_strings)
     exercise: str                       # Exercise slug
     level: str = ""                     # usually blank — the screen decides
+    cadence: str = ""                   # only when it differs from the session's
     rationale: str = ""
     addresses_mechanism: list[str] = Field(default_factory=list)
     intake_evidence: list[str] = Field(default_factory=list)

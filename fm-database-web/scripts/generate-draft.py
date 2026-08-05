@@ -423,21 +423,34 @@ def main() -> int:
                 exercise=str(e.get("exercise")).strip(),
                 level=(str(e.get("level")).strip() or None) if e.get("level") else None,
                 note=str(e.get("rationale") or "").strip(),
+                cadence=str(e.get("cadence") or "").strip(),
             ))
             for m in (e.get("addresses_mechanism") or []):
                 m = str(m).strip()
                 if m and m not in _addresses:
                     _addresses.append(m)
+        # The session's own cadence is DERIVED from what is in it, not fixed at
+        # 3x/week. A session carrying a daily walk is a daily commitment even
+        # though its strength work is three days a week, and calling the whole
+        # thing 3x/week quietly cuts the walk to three days — which is exactly
+        # what happened the first time this ran against a real client who
+        # already walked daily.
+        #
+        # The session takes the MOST FREQUENT rhythm in it, because the row is
+        # what the client sees on Today: it should appear on every day they are
+        # meant to do something. The per-exercise cadences then say what to do
+        # on which day.
+        _cadences = [p.cadence.strip().lower() for p in _prescribed if p.cadence.strip()]
+        _session_cadence = "daily" if any("dai" in c or c == "everyday" for c in _cadences) else "3x/week"
         plan.lifestyle_practices.append(PracticeItem(
             name="Movement session",
-            # 3x/week is the Otago cadence and the one every levelled entry in
-            # the catalogue is written against. The coach changes it in the
-            # editor; it is a starting point, not a finding.
-            cadence="3x/week",
+            cadence=_session_cadence,
             details=(
                 "Work through these in order. "
                 + "; ".join(
-                    p.exercise.replace("-", " ") + (f" (level {p.level})" if p.level else "")
+                    p.exercise.replace("-", " ")
+                    + (f" (level {p.level})" if p.level else "")
+                    + (f" — {p.cadence}" if p.cadence else "")
                     for p in _prescribed
                 )
             ),

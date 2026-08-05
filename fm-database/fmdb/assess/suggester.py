@@ -265,6 +265,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 "properties": {
                     "exercise": {"type": "string", "description": "MUST be an Exercise slug from the catalogue exercise list you were given. Never invent one — an unrecognised slug is dropped, so a made-up exercise silently becomes no exercise."},
                     "level": {"type": "string", "description": "LEAVE EMPTY unless you have a specific reason. The screen picks the starting level from the client's own record, and it knows things you do not — a falls signal or an osteoporosis caution means start at the first level that names support, not at the easiest one."},
+                    "cadence": {"type": "string", "description": "How often THIS exercise is done, and ONLY when it differs from the rest of the session — e.g. the walk inside a session is usually daily while the strength work is '3x/week'. Leave empty when it follows the session. Use the entry's own `frequency` as the guide. Plain words: 'daily', '3x/week', 'on the strength days'."},
                     "rationale": {"type": "string", "description": "WHY this movement for THIS client — a specific symptom, lab, medication or limitation from client_context. 'Good for strength' is not a rationale."},
                     "addresses_mechanism": {"type": "array", "items": {"type": "string"}, "description": "Which of THIS assessment's likely_drivers or topics_in_play this exercise works on. Same convention as lifestyle_suggestions."},
                     "intake_evidence": {
@@ -1691,6 +1692,15 @@ HARD RULES (violating these breaks the downstream system):
       malaise, where a graded ladder can cause a lasting relapse. If it is the
       only thing in the list, that is the right answer — do not pad the session
       to look more substantial.
+    - SET `cadence` ON ANY EXERCISE WHOSE RHYTHM DIFFERS FROM THE REST. A session
+      is not one rhythm: Otago strength work is three days a week — the days
+      between are when tendon rebuilds — while a walk in the same session is
+      usually daily. Each option carries the entry's own frequency; use it. Leave
+      `cadence` empty for everything that simply follows the session, which is
+      most of it.
+    - Do NOT write the schedule into `rationale`. "3 days a week" in prose is
+      invisible to everything that counts or renders it; the field is what the
+      client's app reads.
     - Leave `exercise_suggestions` empty when movement is not part of this plan.
       An empty list is a real answer; a token exercise to fill the field is not.
 
@@ -1820,6 +1830,9 @@ def _exercise_options(client_context: dict[str, Any]) -> list[dict[str, Any]]:
             "patterns": e.get("movement_patterns") or [],
             "muscles": e.get("muscles_worked") or [],
             "impact": e.get("impact"),
+            # The entry's own rhythm — what `cadence` should be derived from
+            # rather than invented.
+            "frequency": e.get("frequency"),
             "screen": v.verdict,
             "start_level": v.start_level,
         }

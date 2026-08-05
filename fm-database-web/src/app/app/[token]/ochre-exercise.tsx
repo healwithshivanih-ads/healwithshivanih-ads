@@ -115,6 +115,9 @@ export function ExerciseOverlay({
             <li key={`${it.slug}-${i}`}>
               <strong>{it.name}</strong>
               {it.prescription && <span> — {it.prescription}</span>}
+              {/* Only when it differs from the session, so the common case stays
+                  quiet and the exception is the thing that stands out. */}
+              {it.cadence && <span className="ex-cad"> · {it.cadence}</span>}
             </li>
           ))}
         </ol>
@@ -168,6 +171,7 @@ export function ExerciseOverlay({
       {/* The dose, given the loudest treatment on the card — it is the one
           thing that differs between this client and the next. */}
       {item.prescription && <p className="ex-dose">{item.prescription}</p>}
+      {item.cadence && <p className="ex-cad-line">{item.cadence}</p>}
       {item.support && item.support !== "none" && (
         <p className="ex-support">Support: {item.support}</p>
       )}

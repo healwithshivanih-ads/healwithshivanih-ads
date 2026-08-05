@@ -1054,6 +1054,21 @@ class PrescribedExercise(BaseModel):
     exercise: str                        # Exercise slug — must resolve in the catalogue
     level: Optional[str] = None          # label from Exercise.levels[].level
     note: str = ""                       # coach's per-client modification
+    # How often THIS exercise is done, when it differs from the session's own
+    # cadence. Empty means "same as the session", which is the common case.
+    #
+    # WHY THIS FIELD EXISTS. A session is not one rhythm. The Otago strength work
+    # is three days a week — the days between are when tendon actually rebuilds —
+    # while the walk inside the same session is daily. Without somewhere to put
+    # that, the schedule ends up written as English inside `note` ("3 days a
+    # week"), where nothing validates it, nothing counts it, and the app cannot
+    # tell the client which day is which. That is exactly what happened on the
+    # first real session authored here, within an hour of the feature existing.
+    #
+    # Free text on purpose, like PracticeItem.cadence, which it mirrors: real
+    # cadences are "daily", "3x/week", "on the strength days", "every other day".
+    # An enum would be wrong before there is a season of real ones to look at.
+    cadence: str = ""
 
 
 class PracticeItem(BaseModel):
