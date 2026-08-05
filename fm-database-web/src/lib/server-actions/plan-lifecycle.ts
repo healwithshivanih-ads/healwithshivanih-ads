@@ -567,6 +567,19 @@ export interface QuickPracticeEdit {
   /** Driver/topic slugs this practice works on — what decides whether it
    *  belongs in the client's first phase. Pass [] to clear. */
   addresses?: string[];
+  /**
+   * The exercise session on this row, replaced wholesale. Pass [] to clear it
+   * back to an ordinary practice; omit to leave it untouched.
+   *
+   * Editable HERE and not only in the draft editor for the same reason `phase`
+   * is: by the time a level needs changing the plan is published, and the draft
+   * editor refuses published writes. Without this, moving a client from level B
+   * to level C — the entire point of tracking progression — would mean
+   * createSuccessor → publish → supersede for a one-word change.
+   *
+   * ORDER IS THE PRESCRIPTION and is preserved exactly as given. Nothing sorts.
+   */
+  exercises?: { exercise: string; level?: string | null; note?: string }[];
   remove?: boolean;
   reason?: string;
 }
@@ -652,6 +665,15 @@ export async function quickEditActivePlanPractice(
         ...(linked ? { somatic_practice: linked } : {}),
         ...(addPhase ? { phase: addPhase } : {}),
         ...(edit.addresses?.length ? { addresses: edit.addresses } : {}),
+        ...(edit.exercises?.length
+          ? {
+              exercises: edit.exercises.map((e) => ({
+                exercise: e.exercise,
+                level: e.level ?? null,
+                note: e.note ?? "",
+              })),
+            }
+          : {}),
       });
       data.lifestyle_practices = practices;
       summary = `Added practice: ${name}${linked ? ` (guided: ${linked})` : ""}`;
@@ -726,6 +748,36 @@ export async function quickEditActivePlanPractice(
             );
             if (next.length) item.addresses = next;
             else delete item.addresses;
+          }
+        }
+        // The whole session, replaced. Compared as a serialised list rather than
+        // field by field because a reorder IS a change — the coach moving the
+        // warm-up above the strength work must register as an edit, and a
+        // per-field diff would call it identical.
+        if (edit.exercises !== undefined) {
+          const next = edit.exercises
+            .filter((e) => e && String(e.exercise ?? "").trim())
+            .map((e) => ({
+              exercise: String(e.exercise).trim(),
+              level: e.level ?? null,
+              note: e.note ?? "",
+            }));
+          const prev = (item.exercises as
+            | { exercise?: string; level?: string | null }[]
+            | undefined) ?? [];
+          const key = (
+            xs: { exercise?: string; level?: string | null }[],
+          ) => xs.map((e) => `${e.exercise ?? ""}@${e.level ?? ""}`).join("|");
+          if (key(next) !== key(prev)) {
+            changes.push(
+              next.length
+                ? `session: ${next
+                    .map((e) => e.exercise + (e.level ? ` (${e.level})` : ""))
+                    .join(", ")}`
+                : "exercise session cleared",
+            );
+            if (next.length) item.exercises = next;
+            else delete item.exercises;
           }
         }
         if (changes.length === 0) return { ok: true, changed: false };
