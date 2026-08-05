@@ -1,0 +1,42 @@
+slug: epo-menopause-frequency-and-intensity-null
+statement: >-
+  In a systematic review and meta-analysis of 6 randomised trials (450 women), evening
+  primrose oil did NOT significantly reduce hot-flash frequency (MD -2.13 per day, 95%
+  CI -4.26 to 0.001, p=0.05) or hot-flash intensity (SMD -0.19, p=0.16). Hot-flash
+  DURATION did improve significantly (SMD -0.39, p=0.04) but on low-quality evidence,
+  and night sweats improved significantly. GRADE was moderate for frequency and
+  intensity, low for duration.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- perimenopause
+- menopause
+linked_to_symptoms:
+- hot-flashes
+- night-sweats
+sources:
+- id: epo-menopausal-symptoms-meta-analysis-2025
+  location: Pooled outcomes for hot-flash frequency, duration and intensity
+caveats:
+- >-
+  5 of the 6 trials were Iranian, all outcomes were self-reported by questionnaire,
+  follow-up was short-term, individual samples were small and heterogeneity was
+  substantial. The authors themselves call for more rigorous trials rather than claiming
+  efficacy.
+coaching_translation: >-
+  Evening primrose oil has not been shown to reduce how often hot flashes come or how
+  strong they feel. There is a signal for night sweats and for how long a flash lasts,
+  but the evidence behind those is weaker still.
+out_of_scope_notes: >-
+  Menopausal symptom management including MHT is a clinician decision. Our role is to
+  avoid offering a supplement whose main advertised benefit did not survive
+  meta-analysis.
+rationale: >-
+  Recorded specifically to stop EPO being suggested as a hot-flash intervention, which
+  is the single most common reason it gets offered to perimenopausal women. The
+  defensible hook is NIGHT SWEATS, not hot flashes. For a client already on omega-3
+  EPA/DHA, note that omega-3 carries the better evidence for the dry-eye and
+  inflammatory endpoints and GLA would stack weaker data on stronger.
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani
