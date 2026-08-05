@@ -62,8 +62,65 @@ describe("tracedFigureSvg", () => {
       const svg = tracedFigureSvg(slug);
       expect(svg, slug).toBeTruthy();
       expect(svg!.startsWith("<svg"), slug).toBe(true);
-      // no external fetches of any kind (the xmlns namespace URI is inert)
-      expect(svg, slug).not.toMatch(/url\(|href|<image|src=/);
+      // No external fetches of any kind (the xmlns namespace URI is inert).
+      // `url(#id)` IS allowed: a same-document fragment reference is how an SVG
+      // marker is attached, and it fetches nothing. Only an off-document url()
+      // is a leak, so match the scheme rather than banning the function.
+      expect(svg, slug).not.toMatch(/url\(\s*['"]?(?!#)/);
+      expect(svg, slug).not.toMatch(/href|<image|src=/);
     }
+  });
+
+  describe("motion arrows", () => {
+    it("draws an arrow with a marker head only where the asset defines one", () => {
+      const withArrow = tracedFigureSvg("side-hops")!;
+      expect(withArrow).toContain('class="tfarr"');
+      expect(withArrow).toContain('<marker id="tfahsidehops"');
+      // and stays absent everywhere else, including the CSS rule for it
+      expect(tracedFigureSvg("chair-dip")!).not.toContain("tfarr");
+    });
+
+    it("keeps the whole arc inside the viewBox", () => {
+      // A curve that leaves the viewBox is not an error anywhere — it just
+      // renders as a stub pointing off the edge, which reads as a broken figure.
+      const svg = tracedFigureSvg("side-hops")!;
+      const [vx, vy, vw, vh] = svg.match(/viewBox="([^"]+)"/)![1].split(" ").map(Number);
+      const pts = svg
+        .match(/class="tfarr"[^d]*d="M([\d.-]+),([\d.-]+)Q([\d.-]+),([\d.-]+) ([\d.-]+),([\d.-]+)"/)!
+        .slice(1)
+        .map(Number);
+      for (let i = 0; i < pts.length; i += 2) {
+        expect(pts[i]).toBeGreaterThanOrEqual(vx);
+        expect(pts[i]).toBeLessThanOrEqual(vx + vw);
+        expect(pts[i + 1]).toBeGreaterThanOrEqual(vy);
+        expect(pts[i + 1]).toBeLessThanOrEqual(vy + vh);
+      }
+    });
+
+    it("animates the arrow on the same clock as the poses, and normalises its length", () => {
+      const svg = tracedFigureSvg("side-hops")!;
+      // pathLength=100 is what makes the draw-on exact without arc-length maths
+      expect(svg).toContain('pathLength="100"');
+      expect(svg).toMatch(/stroke-dasharray:100/);
+      expect(svg).toMatch(/animation:tfarsidehops var\(--fm-fig-cyc,4s\)/);
+      // opacity must be part of it: an SVG marker draws at its vertex whatever
+      // the dash offset, so a dash-only hide leaves the arrowhead stranded
+      expect(svg).toMatch(/@keyframes tfarsidehops\{0%,34%\{stroke-dashoffset:100;opacity:0\}/);
+    });
+
+    it("holds the arrow fully drawn when motion is reduced", () => {
+      const svg = tracedFigureSvg("side-hops")!;
+      const reduced = svg.match(/@media \(prefers-reduced-motion:reduce\)\{([^@]*)\}/)![1];
+      expect(reduced).toContain(".tfarr{animation:none!important;stroke-dashoffset:0;opacity:1}");
+    });
+
+    it("renders no angle-bracketed tag name inside the style element", () => {
+      // SVG is XML: a literal tag name in a CSS comment is parsed as markup and
+      // the entire image fails to render. This shipped once.
+      for (const slug of ["side-hops", "split-jumps", "chair-dip"]) {
+        const style = tracedFigureSvg(slug)!.match(/<style>([\s\S]*?)<\/style>/)![1];
+        expect(style, slug).not.toMatch(/<[a-zA-Z/]/);
+      }
+    });
   });
 });

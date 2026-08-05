@@ -29,6 +29,27 @@ interface TracedFrame {
   paths: string[];
 }
 
+/**
+ * A motion arrow drawn over the figure, in the frames' own coordinate space.
+ *
+ * Two poses can be perfectly drawn and still not say which WAY the movement
+ * goes: a sideways hop cross-fades between a figure left of a line and the same
+ * figure right of it, which reads as a jump-cut rather than a hop. The coach
+ * asked for arrows on exactly that one (2026-08-05), and it generalises to any
+ * figure whose direction is not self-evident.
+ *
+ * `bow` curves the arrow: it is the perpendicular offset of the quadratic
+ * control point from the straight line, so a hop arcs the way a hop actually
+ * travels. Zero or absent is a straight arrow.
+ */
+interface TracedArrow {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  bow?: number;
+}
+
 export interface TracedFigure {
   name: string;
   cue: string;
@@ -37,6 +58,8 @@ export interface TracedFigure {
   frames: TracedFrame[];
   /** Translation that sits frame B on frame A (max-ink-overlap registration). */
   reg: [number, number];
+  /** Direction-of-travel arrows, drawn over every frame. */
+  arrows?: TracedArrow[];
 }
 
 let cache: Record<string, TracedFigure> | null | undefined;
@@ -50,6 +73,15 @@ function isFrame(f: unknown): f is TracedFrame {
     Array.isArray(d.paths) &&
     d.paths.length > 0 &&
     d.paths.every((p) => typeof p === "string" && /^[MLZmlz0-9.,\-\s]+$/.test(p))
+  );
+}
+
+function isArrow(a: unknown): a is TracedArrow {
+  if (typeof a !== "object" || a === null) return false;
+  const d = a as Record<string, unknown>;
+  return (
+    [d.x1, d.y1, d.x2, d.y2].every((v) => typeof v === "number" && Number.isFinite(v)) &&
+    (d.bow === undefined || (typeof d.bow === "number" && Number.isFinite(d.bow)))
   );
 }
 
@@ -67,6 +99,9 @@ function load(): Record<string, TracedFigure> {
       if (frames.length < 2) continue;
       if (reg.length !== 2 || !reg.every((n) => typeof n === "number" && Number.isFinite(n))) continue;
       if (frames.length > 12) continue;
+      // Arrows are decoration: a malformed one is dropped on its own rather
+      // than costing the figure it annotates.
+      const arrows = Array.isArray(e.arrows) ? e.arrows.filter(isArrow).slice(0, 6) : [];
       out[slug] = {
         name: typeof e.name === "string" ? e.name : slug,
         cue: typeof e.cue === "string" ? e.cue : "",
@@ -74,6 +109,7 @@ function load(): Record<string, TracedFigure> {
         source: typeof e.source === "string" ? e.source : "",
         frames,
         reg: [reg[0], reg[1]] as [number, number],
+        ...(arrows.length ? { arrows } : {}),
       };
     }
     cache = out;
@@ -114,6 +150,13 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
     x0 = Math.min(x0, f.x0 + dx); x1 = Math.max(x1, f.x1 + dx);
     y0 = Math.min(y0, f.y0 + dy); y1 = Math.max(y1, f.y1 + dy);
   });
+  // An arrow outside the figures' bounds would be silently clipped, which is
+  // worse than no arrow — the reader sees a stub pointing off the edge.
+  for (const a of fig.arrows ?? []) {
+    const [cx, cy] = arrowControl(a);
+    x0 = Math.min(x0, a.x1, a.x2, cx); x1 = Math.max(x1, a.x1, a.x2, cx);
+    y0 = Math.min(y0, a.y1, a.y2, cy); y1 = Math.max(y1, a.y1, a.y2, cy);
+  }
   const pad = 0.03;
   const vb = `${(x0 - (x1 - x0) * pad).toFixed(0)} ${(y0 - (y1 - y0) * pad).toFixed(0)} ${((x1 - x0) * (1 + 2 * pad)).toFixed(0)} ${((y1 - y0) * (1 + 2 * pad)).toFixed(0)}`;
 
@@ -155,15 +198,69 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
     })
     .join("");
 
+  const arrows = fig.arrows ?? [];
+  // Sized off the figure so an arrow reads the same on a tall side-view and a
+  // wide plank; a fixed stroke width would vanish on one and dominate the other.
+  const unit = Math.max(1, Math.hypot(x1 - x0, y1 - y0) / 100);
+  const arrowSvg = arrows.length
+    ? `<defs><marker id="tfah${key}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">` +
+      `<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>` +
+      arrows
+        .map((a) => {
+          const [cx, cy] = arrowControl(a);
+          // pathLength normalises the curve to 100 units, so the draw-on
+          // animation below needs no arc-length maths and is exact for any
+          // arrow shape.
+          return `<path class="tfarr" pathLength="100" d="M${a.x1.toFixed(1)},${a.y1.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${a.x2.toFixed(1)},${a.y2.toFixed(1)}" marker-end="url(#tfah${key})"/>`;
+        })
+        .join("")
+    : "";
+
+  // The arrow DRAWS ITSELF along its path, in step with the pose it explains:
+  // hidden while the start pose holds, drawing through the cross-fade window
+  // (38%-50%, matching tfA/tfB above), holding while the end pose is up, then
+  // clearing before the cycle restarts. A static arrow says which way; a drawn
+  // one says the movement happens now, which is what a hop needs.
+  //
+  // Opacity does the hiding, not the dash offset alone: an SVG marker is drawn
+  // at its vertex regardless of dashing, so a fully-offset stroke would still
+  // leave the arrowhead sitting there on its own.
+  const arrowCss = arrows.length
+    ? `@keyframes tfar${key}{0%,34%{stroke-dashoffset:100;opacity:0}38%{stroke-dashoffset:100;opacity:1}` +
+      `52%,84%{stroke-dashoffset:0;opacity:1}94%,100%{stroke-dashoffset:0;opacity:0}}` +
+      `.fm-traced-figure .tfarr{stroke-dasharray:100;stroke-dashoffset:100;` +
+      `animation:tfar${key} var(--fm-fig-cyc,4s) ease-in-out infinite}`
+    : "";
+
   return `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}" class="fm-traced-figure">
 <style>
 .fm-traced-figure{width:100%;height:auto}
-.fm-traced-figure path{fill:var(--fm-fig,#A9A395);stroke:var(--fm-figline,#4F4D45);stroke-width:1.3;stroke-opacity:.42}
-${css}
-@media (prefers-reduced-motion:reduce){.fm-traced-figure g{animation:none!important;opacity:0}.fm-traced-figure .tf0{opacity:1}}
+/* Scoped to frame paths only. An unscoped path rule also hits the arrowhead in
+   the marker def, and a CSS rule beats that path's inline fill attribute, so the
+   head filled solid grey and read as a blob rather than a chevron.
+   NOTE: no angle-bracketed tag names in this comment. SVG is XML, so a literal
+   tag name inside a style element is parsed as markup and the whole image fails
+   to render — which is exactly how this comment broke it the first time. */
+.fm-traced-figure g > path{fill:var(--fm-fig,#A9A395);stroke:var(--fm-figline,#4F4D45);stroke-width:1.3;stroke-opacity:.42}
+${arrows.length ? `.fm-traced-figure .tfarr{fill:none;stroke:var(--fm-fig-arrow,#C0392B);stroke-width:${(unit * 1.6).toFixed(2)};stroke-opacity:1;stroke-linecap:round}\n${arrowCss}\n` : ""}${css}
+@media (prefers-reduced-motion:reduce){.fm-traced-figure g{animation:none!important;opacity:0}.fm-traced-figure .tf0{opacity:1}${arrows.length ? ".fm-traced-figure .tfarr{animation:none!important;stroke-dashoffset:0;opacity:1}" : ""}}
 </style>
-${gs}
+${gs}${arrowSvg}
 </svg>`;
+}
+
+/** Quadratic control point for an arrow's `bow`, perpendicular to its chord. */
+function arrowControl(a: TracedArrow): [number, number] {
+  const mx = (a.x1 + a.x2) / 2;
+  const my = (a.y1 + a.y2) / 2;
+  const bow = a.bow ?? 0;
+  if (!bow) return [mx, my];
+  const dx = a.x2 - a.x1;
+  const dy = a.y2 - a.y1;
+  const len = Math.hypot(dx, dy) || 1;
+  // Perpendicular, doubled: a quadratic curve reaches only half way to its
+  // control point, so the drawn arc rises by `bow`, not by half of it.
+  return [mx + (-dy / len) * bow * 2, my + (dx / len) * bow * 2];
 }
 
 function escapeAttr(s: string): string {
