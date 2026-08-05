@@ -39,7 +39,7 @@ export interface QuickEditPracticeRow {
   /** driver/topic slugs this practice works on */
   addresses?: string[];
   /** the exercise session on this row, when it carries one */
-  exercises?: { exercise: string; level?: string | null; note?: string }[];
+  exercises?: { exercise: string; level?: string | null; note?: string; cadence?: string }[];
 }
 
 interface Props {
@@ -263,13 +263,13 @@ function PracticeRow({
   const [addresses, setAddresses] = useState<string[]>(row.addresses ?? []);
   const [confirmRemove, setConfirmRemove] = useState(false);
   const [exercises, setExercises] = useState<
-    { exercise: string; level?: string | null; note?: string }[]
+    { exercise: string; level?: string | null; note?: string; cadence?: string }[]
   >(row.exercises ?? []);
 
   // A reorder is a change, so the comparison is order-sensitive.
   const exKey = (
-    xs: { exercise: string; level?: string | null }[],
-  ) => xs.map((e) => `${e.exercise}@${e.level ?? ""}`).join("|");
+    xs: { exercise: string; level?: string | null; cadence?: string }[],
+  ) => xs.map((e) => `${e.exercise}@${e.level ?? ""}@${e.cadence ?? ""}`).join("|");
 
   const dirty =
     name.trim() !== row.name ||

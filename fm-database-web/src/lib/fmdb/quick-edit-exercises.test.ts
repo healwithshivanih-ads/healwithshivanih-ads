@@ -140,6 +140,29 @@ describe("quickEditActivePlanPractice — exercise sessions", () => {
     expect(rows[0].exercise).toBe("chair-sit-to-stand");
   });
 
+  it("saves a per-exercise cadence change — the schedule is data, not prose", async () => {
+    writePlan([{ name: "Movement session", cadence: "3x/week", exercises: SESSION }]);
+
+    // The walk inside a strength session is daily. Before `cadence` existed this
+    // could only be written as English in the note, where nothing reads it.
+    const withCadence = SESSION.map((e) =>
+      e.exercise === "chair-sit-to-stand" ? { ...e, cadence: "daily" } : e,
+    );
+    const r = await edit({
+      index: 0,
+      originalName: "Movement session",
+      name: "Movement session",
+      exercises: withCadence,
+    });
+
+    expect(r.ok).toBe(true);
+    // The change-detection key has to include cadence, or editing only the
+    // cadence reports "no change to save" and silently discards it.
+    if (r.ok) expect(r.changed).toBe(true);
+    const rows = readPractices()[0].exercises as { exercise: string; cadence?: string }[];
+    expect(rows.find((e) => e.exercise === "chair-sit-to-stand")?.cadence).toBe("daily");
+  });
+
   it("clears the session only when explicitly given an empty list", async () => {
     writePlan([{ name: "Movement session", cadence: "3x/week", exercises: SESSION }]);
 

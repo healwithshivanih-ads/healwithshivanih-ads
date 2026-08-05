@@ -579,7 +579,7 @@ export interface QuickPracticeEdit {
    *
    * ORDER IS THE PRESCRIPTION and is preserved exactly as given. Nothing sorts.
    */
-  exercises?: { exercise: string; level?: string | null; note?: string }[];
+  exercises?: { exercise: string; level?: string | null; note?: string; cadence?: string }[];
   remove?: boolean;
   reason?: string;
 }
@@ -671,6 +671,7 @@ export async function quickEditActivePlanPractice(
                 exercise: e.exercise,
                 level: e.level ?? null,
                 note: e.note ?? "",
+                ...(e.cadence ? { cadence: e.cadence } : {}),
               })),
             }
           : {}),
@@ -761,13 +762,17 @@ export async function quickEditActivePlanPractice(
               exercise: String(e.exercise).trim(),
               level: e.level ?? null,
               note: e.note ?? "",
+              ...(e.cadence ? { cadence: e.cadence } : {}),
             }));
           const prev = (item.exercises as
             | { exercise?: string; level?: string | null }[]
             | undefined) ?? [];
           const key = (
-            xs: { exercise?: string; level?: string | null }[],
-          ) => xs.map((e) => `${e.exercise ?? ""}@${e.level ?? ""}`).join("|");
+            xs: { exercise?: string; level?: string | null; cadence?: string }[],
+          ) =>
+            xs
+              .map((e) => `${e.exercise ?? ""}@${e.level ?? ""}@${e.cadence ?? ""}`)
+              .join("|");
           if (key(next) !== key(prev)) {
             changes.push(
               next.length

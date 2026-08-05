@@ -33,6 +33,8 @@ export interface PrescribedExerciseItem {
   exercise: string;
   level?: string | null;
   note?: string;
+  /** Only when this one's rhythm differs from the session's. */
+  cadence?: string;
 }
 
 const VERDICT_META: Record<
@@ -180,6 +182,21 @@ export function ExerciseSessionEditor({
             ) : (
               <span className="text-[10px] text-muted-foreground italic">no levels</span>
             )}
+
+            {/* Blank = follows the session. Typed only for the exception —
+                the walk inside a 3x/week session that is actually daily. */}
+            <input
+              value={it.cadence ?? ""}
+              disabled={locked}
+              placeholder="same as session"
+              title="How often THIS one — leave blank if it follows the session"
+              className="text-[11px] border rounded px-1 py-0.5 bg-background w-28"
+              onChange={(e) => {
+                const next = [...items];
+                next[i] = { ...next[i], cadence: e.target.value };
+                onChange(next);
+              }}
+            />
 
             <div className="ml-auto flex items-center gap-1">
               <Button

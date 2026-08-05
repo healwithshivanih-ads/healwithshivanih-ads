@@ -408,6 +408,7 @@ def main() -> int:
     #
     # These have already passed the suitability gate inside `synthesize()`, so
     # anything blocked for this client is long gone by the time it reaches here.
+    _exercise_why_block = ""
     _ex_sugs = [
         e for e in (suggestions.get("exercise_suggestions") or [])
         if isinstance(e, dict) and str(e.get("exercise") or "").strip()
@@ -422,22 +423,57 @@ def main() -> int:
             _prescribed.append(PrescribedExercise(
                 exercise=str(e.get("exercise")).strip(),
                 level=(str(e.get("level")).strip() or None) if e.get("level") else None,
-                note=str(e.get("rationale") or "").strip(),
+                # NOT the AI's rationale. `note` is rendered TO THE CLIENT in
+                # the session player, and `rationale` is coach-facing prose like
+                # every other rationale in this system — so mapping one to the
+                # other put third-person text in front of the client: "He is
+                # here about a knee and weak tendons", shown to him. Seen live
+                # on the first generated session.
+                #
+                # The reasoning is not lost: it goes into notes_for_coach below,
+                # where it was always addressed. `note` stays empty for the
+                # coach's own client-facing wording.
+                note="",
+                cadence=str(e.get("cadence") or "").strip(),
             ))
             for m in (e.get("addresses_mechanism") or []):
                 m = str(m).strip()
                 if m and m not in _addresses:
                     _addresses.append(m)
+        # The session's own cadence is DERIVED from what is in it, not fixed at
+        # 3x/week. A session carrying a daily walk is a daily commitment even
+        # though its strength work is three days a week, and calling the whole
+        # thing 3x/week quietly cuts the walk to three days — which is exactly
+        # what happened the first time this ran against a real client who
+        # already walked daily.
+        #
+        # The session takes the MOST FREQUENT rhythm in it, because the row is
+        # what the client sees on Today: it should appear on every day they are
+        # meant to do something. The per-exercise cadences then say what to do
+        # on which day.
+        _cadences = [p.cadence.strip().lower() for p in _prescribed if p.cadence.strip()]
+        _session_cadence = "daily" if any("dai" in c or c == "everyday" for c in _cadences) else "3x/week"
+        # The per-exercise reasoning, kept for the coach rather than shown to the
+        # client. She is the one deciding whether the session is right.
+        _ex_why = "\n".join(
+            f"  - {e.get('exercise')}: {str(e.get('rationale') or '').strip()}"
+            for e in _ex_sugs if str(e.get("rationale") or "").strip()
+        )
+        # Stashed, not written: the notes_for_coach assembly near the end of this
+        # script rebuilds the field wholesale, so anything set here is discarded.
+        _exercise_why_block = (
+            "## Why these exercises\n" + _ex_why if _ex_why else ""
+        )
+
         plan.lifestyle_practices.append(PracticeItem(
             name="Movement session",
-            # 3x/week is the Otago cadence and the one every levelled entry in
-            # the catalogue is written against. The coach changes it in the
-            # editor; it is a starting point, not a finding.
-            cadence="3x/week",
+            cadence=_session_cadence,
             details=(
                 "Work through these in order. "
                 + "; ".join(
-                    p.exercise.replace("-", " ") + (f" (level {p.level})" if p.level else "")
+                    p.exercise.replace("-", " ")
+                    + (f" (level {p.level})" if p.level else "")
+                    + (f" — {p.cadence}" if p.cadence else "")
                     for p in _prescribed
                 )
             ),
@@ -950,6 +986,9 @@ def main() -> int:
                 for s, r in _stopped_supplements
             )
         )
+
+    if _exercise_why_block:
+        notes_parts.append(_exercise_why_block)
 
     if notes_parts:
         plan.notes_for_coach = "\n\n".join(notes_parts)
