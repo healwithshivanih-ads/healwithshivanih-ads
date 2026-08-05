@@ -408,6 +408,7 @@ def main() -> int:
     #
     # These have already passed the suitability gate inside `synthesize()`, so
     # anything blocked for this client is long gone by the time it reaches here.
+    _exercise_why_block = ""
     _ex_sugs = [
         e for e in (suggestions.get("exercise_suggestions") or [])
         if isinstance(e, dict) and str(e.get("exercise") or "").strip()
@@ -422,7 +423,17 @@ def main() -> int:
             _prescribed.append(PrescribedExercise(
                 exercise=str(e.get("exercise")).strip(),
                 level=(str(e.get("level")).strip() or None) if e.get("level") else None,
-                note=str(e.get("rationale") or "").strip(),
+                # NOT the AI's rationale. `note` is rendered TO THE CLIENT in
+                # the session player, and `rationale` is coach-facing prose like
+                # every other rationale in this system — so mapping one to the
+                # other put third-person text in front of the client: "He is
+                # here about a knee and weak tendons", shown to him. Seen live
+                # on the first generated session.
+                #
+                # The reasoning is not lost: it goes into notes_for_coach below,
+                # where it was always addressed. `note` stays empty for the
+                # coach's own client-facing wording.
+                note="",
                 cadence=str(e.get("cadence") or "").strip(),
             ))
             for m in (e.get("addresses_mechanism") or []):
@@ -442,6 +453,18 @@ def main() -> int:
         # on which day.
         _cadences = [p.cadence.strip().lower() for p in _prescribed if p.cadence.strip()]
         _session_cadence = "daily" if any("dai" in c or c == "everyday" for c in _cadences) else "3x/week"
+        # The per-exercise reasoning, kept for the coach rather than shown to the
+        # client. She is the one deciding whether the session is right.
+        _ex_why = "\n".join(
+            f"  - {e.get('exercise')}: {str(e.get('rationale') or '').strip()}"
+            for e in _ex_sugs if str(e.get("rationale") or "").strip()
+        )
+        # Stashed, not written: the notes_for_coach assembly near the end of this
+        # script rebuilds the field wholesale, so anything set here is discarded.
+        _exercise_why_block = (
+            "## Why these exercises\n" + _ex_why if _ex_why else ""
+        )
+
         plan.lifestyle_practices.append(PracticeItem(
             name="Movement session",
             cadence=_session_cadence,
@@ -963,6 +986,9 @@ def main() -> int:
                 for s, r in _stopped_supplements
             )
         )
+
+    if _exercise_why_block:
+        notes_parts.append(_exercise_why_block)
 
     if notes_parts:
         plan.notes_for_coach = "\n\n".join(notes_parts)
