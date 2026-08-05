@@ -37,7 +37,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }
 
-  const KINDS = ["eft", "breath", "sleep", "somatic", "exercise"] as const;
+  // "feeling" is a reset-chip tap, not a session — every adherence/drip reader
+  // matches on its own kind strings, so these lines are analysis-only signal.
+  const KINDS = ["eft", "breath", "sleep", "somatic", "exercise", "feeling"] as const;
   const kind = KINDS.find((k) => k === body.kind) ?? "";
   if (!kind) {
     return NextResponse.json({ ok: false, error: "bad kind" }, { status: 400 });

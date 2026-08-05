@@ -72,7 +72,9 @@ def main() -> int:
         return 2
 
     kind = (payload.get("kind") or "").strip().lower()
-    if kind not in ("eft", "breath", "sleep", "somatic", "exercise"):
+    # "feeling" = a reset-chip tap (state named, practice offered) — signal for
+    # the coach and future analysis, never a session. Readers filter by kind.
+    if kind not in ("eft", "breath", "sleep", "somatic", "exercise", "feeling"):
         json.dump({"ok": False, "error": f"bad kind: {kind!r}"}, sys.stdout)
         return 2
 

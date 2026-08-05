@@ -18,7 +18,7 @@ export const MIN_MEANINGFUL_SECONDS = 20;
 
 export interface PracticeLogInput {
   token: string;
-  kind: "breath" | "eft" | "sleep" | "somatic" | "exercise";
+  kind: "breath" | "eft" | "sleep" | "somatic" | "exercise" | "feeling";
   practiceId?: string;
   name?: string;
   slug?: string | null;
@@ -40,6 +40,41 @@ export function logPractice(input: PracticeLogInput): void {
   if (!input.token) return;
   // Do not inflate adherence with sessions that never really started.
   if (!input.completed && (input.seconds ?? 0) < MIN_MEANINGFUL_SECONDS) return;
+  send(input);
+}
+
+/**
+ * A "Find a reset" chip tap — the client named a state ("I'm on edge") and the
+ * router offered a practice. That pairing is clinical signal (what state, what
+ * was offered, at what hour) and used to evaporate in component state. It is
+ * NOT practice: kind "feeling" is filtered out by every adherence/drip reader,
+ * which match on their own kind strings, so this can never count as a session.
+ * The session itself, if she takes the offer, is logged by the player as usual
+ * and sits time-adjacent in the same JSONL.
+ */
+export function logFeeling(input: {
+  token: string;
+  /** stable feeling key, e.g. "on-edge" */
+  feeling: string;
+  /** the chip's human label, e.g. "I'm on edge" */
+  label: string;
+  /** where the router sent her: breath | eft | sleep | somatic */
+  routedKind: string;
+  /** resolved practice id when the route is somatic */
+  routedPracticeId?: string | null;
+}): void {
+  if (!input.token) return;
+  send({
+    token: input.token,
+    kind: "feeling",
+    practiceId: input.routedPracticeId ?? input.routedKind,
+    name: input.label,
+    theme: input.feeling,
+    completed: true,
+  });
+}
+
+function send(input: PracticeLogInput): void {
   try {
     fetch("/api/app-practice", {
       method: "POST",
