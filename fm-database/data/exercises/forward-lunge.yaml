@@ -1,0 +1,145 @@
+slug: forward-lunge
+display_name: Forward Lunge (Split-Stance Step)
+client_name: Stepping lunges
+aliases:
+- lunge
+- lunges
+- forward lunges
+- split squat
+modality: strength
+intensity_tier: intermediate
+position: standing
+equipment: []
+summary: A long step forward and down onto one leg — leg strength and standing balance trained at
+  the same time, one side at a time.
+why_it_works: Two-legged work lets the stronger side quietly carry the weaker one. Splitting the
+  stance forces each leg to hold its own body weight, which exposes and then corrects a side-to-side
+  difference. Because the base of support is narrow and the weight travels, it trains balance as a
+  by-product rather than as a separate exercise.
+setup:
+- Stand tall with the feet hip-width apart, toes forward, hands on the hips.
+- Pick a spot on the floor about a stride ahead to step to.
+- Stand within reach of a counter if balance is at all uncertain.
+steps:
+- Take a long, comfortable stride forward with one leg.
+- Bend both knees to lower straight down, keeping the trunk upright rather than leaning over the
+  front leg.
+- Stop when the front thigh is heading towards parallel with the floor, keeping the front knee above
+  the heel rather than pushing past the toes.
+- Drive off the front foot to step back to standing, then repeat with the other leg.
+levels:
+- level: '1'
+  prescription: 6 steps on each leg, shallow, with a hand on a counter
+  reps: 6
+  sets: 1
+  support: one hand on a solid counter
+- level: '2'
+  prescription: 8 steps on each leg, no support
+  reps: 8
+  sets: 1
+  support: none
+- level: '3'
+  prescription: 10 steps on each leg, rest, then a second set
+  reps: 10
+  sets: 2
+  support: none
+frequency: 2-3x/week with a rest day between.
+builds:
+- single-leg thigh and buttock strength
+- standing balance through a moving weight
+- evenness between the two legs
+easier_variant: bodyweight-squat
+harder_variant: null
+joint_stress:
+- knee
+- hip
+- ankle_foot
+balance_demand: 2
+impact: low
+requires_floor_transfer: false
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry is a fixed repetition
+    ladder, the shape of progression that can provoke a lasting relapse.'
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - knee osteoarthritis
+  - arthritis
+  - knee injury
+  - patellofemoral
+  - joint pain
+  - chondromalacia
+  - meniscus
+  severity: caution
+  reason: A lunge puts most of the body weight through one knee at a bent angle, which is a
+    substantially bigger single-knee load than a two-legged squat.
+  modification: Shorten the depth first and the stride second, and keep the front knee stacked over
+    the heel. If a painful knee cannot do a shallow lunge comfortably, stay on bodyweight-squat —
+    this movement is not a required rung.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - peripheral neuropathy
+  - osteoporosis
+  severity: caution
+  reason: The narrow split stance with the weight travelling forwards is the least stable strength
+    movement in this catalogue, and it is done standing.
+  modification: Keep a hand on a solid counter for every repetition until the movement is confident;
+    never use a chair that can slide. Do not prescribe unsupported until standing balance has been
+    confirmed.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  severity: caution
+  reason: Large-muscle work raises blood pressure transiently, and repeatedly standing up from a low
+    position can provoke a light head.
+  modification: Breathe out on the way up, come up smoothly, and stop for dizziness rather than
+    pushing through it.
+refer_out:
+- A physiotherapy assessment first if there is existing knee pain on stairs or a knee that gives
+  way. Loading one knee at a time is not the place to find out why.
+linked_to_topics:
+- sarcopenia
+- bone-health
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+- joint-pain
+notes_for_coach: 'THE MOST DEMANDING ENTRY IN THE STRENGTH SET, AND THE ONE TO WITHHOLD FIRST. Ten
+  of sixteen clients carry tagged body pain and the knee is the commonest site; a lunge concentrates
+  weight through one bent knee and does it standing on a narrow base. It is here because it is the
+  honest next step after the squat and because single-leg work catches a side-to-side difference
+  nothing else in the catalogue will — not because it belongs in most plans.
+
+  Ask about stairs before prescribing. A client who takes stairs one at a time or holds the rail
+  going down is telling you their single-leg strength is the limiting factor, and that is a reason
+  to build it with supported levels — not a reason to skip straight to level 3.
+
+  The book''s reverse lunge steps backwards instead of forwards and is easier on the front knee. It
+  was not shipped separately because it is the same movement in the opposite direction; use it as
+  the modification when the forward step is the part that hurts.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Lower Body, Lunges and Reverse Lunges
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

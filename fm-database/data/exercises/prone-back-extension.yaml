@@ -1,0 +1,132 @@
+slug: prone-back-extension
+display_name: Prone Back Extension (Dorsal Raise)
+client_name: Lifting your chest off the floor
+aliases:
+- dorsal raise
+- back extension
+- prone extension
+- superman
+modality: strength
+intensity_tier: beginner
+position: lying_prone
+equipment:
+- a mat or folded blanket
+summary: Lying face down and lifting the chest — back-extensor strength trained in the one spinal
+  direction that is safe for fragile bone.
+why_it_works: The muscles running either side of the spine hold the trunk upright all day and are
+  the ones that fatigue into a stoop. Training them face down means they work against gravity while
+  the spine EXTENDS rather than bends forward — the opposite direction to a sit-up, and the
+  direction that is recommended rather than avoided when bone density is low.
+setup:
+- Lie face down on a mat with the legs straight and together.
+- Stretch the arms out in front, or fold them under the forehead if the shoulders object.
+- Let the whole body settle before starting.
+steps:
+- Lift the head, chest and arms a small way off the floor until the lower back tightens.
+- Keep the feet in contact with the floor throughout.
+- Look down at the mat rather than up, so the neck stays in line with the spine.
+- Lower slowly back to the floor. This is a slow, small movement, not a throw.
+levels:
+- level: '1'
+  prescription: 6 lifts, hands under the forehead
+  reps: 6
+  sets: 1
+  support: arms tucked — the shortest lever
+- level: '2'
+  prescription: 10 lifts with the arms stretched forward
+  reps: 10
+  sets: 1
+  support: arms extended
+- level: '3'
+  prescription: 10 lifts with the arms forward, rest, then a second set
+  reps: 10
+  sets: 2
+  support: arms extended
+  note: Lifting the legs at the same time is the book's Superman. It roughly doubles the demand on
+    the lower back and is not needed for the benefit this entry exists to give.
+frequency: 2-3x/week. It can be done more often than the leg work because the load is small.
+builds:
+- back-extensor strength
+- upright posture endurance
+- resistance to the forward stoop
+easier_variant: null
+harder_variant: null
+joint_stress:
+- lower_back
+- neck
+balance_demand: 0
+impact: none
+requires_floor_transfer: true
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: this entry carries a fixed
+    repetition ladder, which is the progression shape that can provoke a lasting relapse.'
+  modification: ''
+- condition: spinal stenosis
+  condition_aliases:
+  - lumbar stenosis
+  - spondylolisthesis
+  - facet joint
+  - spondylosis
+  severity: caution
+  reason: Extending the lumbar spine narrows the space the nerves pass through, which is the
+    direction that provokes symptoms in stenosis — the mirror image of the flexion problem.
+  modification: Lift only a centimetre or two, or press the hips gently into the floor and hold
+    without lifting at all. Stop immediately for any pain, tingling or numbness travelling into the
+    legs.
+- condition: pregnancy
+  condition_aliases:
+  - pregnant
+  - postpartum
+  - third trimester
+  severity: caution
+  reason: Lying face down is unsuitable beyond the first trimester.
+  modification: Use the standing back extension instead, which trains the same direction upright.
+- condition: neck pain
+  condition_aliases:
+  - cervical spondylosis
+  - cervical radiculopathy
+  - neck injury
+  - whiplash
+  severity: caution
+  reason: The neck is easily tipped back into extension when the head comes up, which compresses
+    the cervical joints.
+  modification: Keep the eyes on the mat so the neck stays in line, or leave the forehead resting on
+    the hands and lift only the chest.
+refer_out: []
+linked_to_topics:
+- osteoporosis
+- bone-health
+- menopause
+- sarcopenia
+linked_to_symptoms:
+- joint-pain
+- muscle-weakness
+notes_for_coach: 'THE DELIBERATE COUNTERWEIGHT TO `abdominal-crunch`. Those two entries are the same
+  region trained in opposite directions and they screen in opposite ways: the crunch flexes the
+  loaded spine and is BLOCKED for low bone density, this extends it and is one of the better things
+  such a client can do. If a screen ever offers a client both or neither, something is wrong with
+  the flags, not with the client.
+
+  `standing-back-extension` from the Otago set is the gentler, upright, no-floor-transfer version of
+  the same direction. It is NOT wired as `easier_variant` here on purpose — it sits in the
+  `flexibility` modality as a warm-up movement, and asserting a ladder across modalities would let a
+  matcher walk someone from a mobility drill into strength work as though they were one progression.
+  Use it as the substitute when the floor is the obstacle, and say so in the plan.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Core, Dorsal Raise and Superman
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

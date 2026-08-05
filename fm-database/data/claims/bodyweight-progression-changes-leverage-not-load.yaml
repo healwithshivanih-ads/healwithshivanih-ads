@@ -1,0 +1,65 @@
+slug: bodyweight-progression-changes-leverage-not-load
+statement: 'With bodyweight training the resistance cannot be increased, so strength
+
+  progression comes from changing the body position or angle to make the same
+
+  movement harder — not from adding repetitions. Past roughly 15-25 repetitions a
+
+  set is training muscular endurance rather than strength, and the next strength
+
+  gain requires a harder variation.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'The strength-endurance continuum is defined by load relative to maximum: heavy
+
+  resistance for few repetitions builds strength, light resistance for many builds
+
+  endurance. With equipment the load is dialled directly. With bodyweight the load
+
+  is fixed at the client''s own mass, so the only remaining variable is how much of
+
+  that mass the working muscles carry — which is set by leverage. Moving from a wall
+
+  press-up to kneeling to full is the same movement at three different fractions of
+
+  body weight, which is why it functions as a load ladder without any equipment.
+
+  '
+coaching_translation: 'When an exercise gets easy, the answer is a harder version of it, not
+
+  more repetitions of the easy one. If you are doing twenty-five of something
+
+  comfortably you are building stamina, which is fine if that is the goal — but if
+
+  you want to get stronger, change the movement so that eight to twelve is hard
+
+  again.
+
+  '
+caveats:
+- The repetition bands (roughly 8-12 for strength, 15-25 for endurance) come from resistance-training
+  convention as restated by this source, not from a trial reported in it. Treat them
+  as practical guides, not thresholds.
+- Endurance is not a consolation prize. For an older or deconditioned client, staying
+  in the higher-repetition band at an easy variation may be the right long-term place
+  to be, and the source says as much.
+- Says nothing about how fast to progress. Pair with the recovery guidance rather than
+  reading this as licence to jump a rung whenever a set feels easy.
+out_of_scope_notes: ''
+linked_to_topics:
+- exercise-prescription-fm
+linked_to_mechanisms:
+- sarcopenia
+linked_to_supplements: []
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 2, "Muscular Strength ... Muscular Endurance" — the press-up progression
+    list and the RM discussion
+  quote: As resistance cannot be altered with equipment, adjust the level of difficulty
+    with any given exercise by adjusting your body position/angle and modifying the cadence
+    (speed) at which it is performed.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

@@ -1,0 +1,99 @@
+slug: supported-knee-bends
+display_name: Knee Bends
+client_name: Small knee bends
+modality: balance
+intensity_tier: beginner
+position: standing
+summary: Shallow two-legged knee bends, progressing from supported to three sets unsupported.
+why_it_works: Trains the leg strength and ankle control used in lowering — reaching a low shelf,
+  getting into a car — in a range far shallower than a gym squat.
+setup:
+- Stand tall facing a stable bench or counter, hands resting on it.
+- Feet about hip-width apart.
+steps:
+- Bend the knees a small way, keeping the heels down and the back upright.
+- Go only as deep as stays comfortable — a shallow bend done well beats a deep one.
+- Push through the feet to straighten up.
+- Repeat.
+levels:
+- level: A
+  prescription: 10 repetitions, holding support
+  reps: 10
+  support: both hands
+- level: B
+  prescription: 10 repetitions with no support, or 10 holding support, repeated
+  reps: 10
+  support: one hand or none
+- level: C
+  prescription: 10 repetitions, no support, repeated
+  reps: 10
+  sets: 2
+  support: none
+- level: D
+  prescription: 3 sets of 10, no support
+  reps: 10
+  sets: 3
+  support: none
+frequency: 3x/week.
+builds:
+- leg strength
+- controlled lowering
+- ankle stability
+joint_stress:
+- knee
+- hip
+- ankle_foot
+balance_demand: 2
+impact: none
+cautions:
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+notes_for_coach: Keep the back upright — this is a knee bend, not a hip hinge, and letting it become
+  a forward bend brings in spinal flexion the entry does not intend.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, balance retraining exercise 1 (knee bends)
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

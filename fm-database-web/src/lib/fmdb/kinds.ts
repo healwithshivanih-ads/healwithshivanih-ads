@@ -17,7 +17,8 @@ export type CatalogueKind =
   | "home_remedies"
   | "tissue_salts"
   | "mindmaps"
-  | "drug_depletions";
+  | "drug_depletions"
+  | "exercises";
 
 interface KindLabel {
   /** Plural label shown on tabs / headings (e.g. "Conditions"). */
@@ -120,6 +121,13 @@ export const KIND_LABELS: Record<CatalogueKind, KindLabel> = {
     singular: "Drug-nutrient depletion",
     description: "Medications and the nutrients they deplete (PPIs, statins, OCPs, metformin…)",
     emoji: "⚠️",
+  },
+  exercises: {
+    plural: "Exercises",
+    singular: "Exercise",
+    description:
+      "Strength, balance, mobility and pacing — capacity work clients can do at home, with progression levels and safety flags",
+    emoji: "🏃",
   },
 };
 

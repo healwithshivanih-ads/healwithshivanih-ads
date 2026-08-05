@@ -1,0 +1,151 @@
+slug: walking-intervals
+display_name: Walking Intervals (Aerobic Interval Training on Foot)
+client_name: Brisk and easy walking
+aliases:
+- interval walking
+- brisk walk intervals
+- walk intervals
+- fartlek walking
+modality: cardiovascular
+intensity_tier: intermediate
+position: walking
+equipment:
+- supportive shoes
+- a watch or phone timer
+summary: Alternating brisk and easy walking in timed blocks — more cardiovascular benefit than
+  steady walking, without needing to run.
+why_it_works: A steady walk settles at one intensity the body soon finds easy. Alternating a harder
+  block with an easy one lets the harder block be genuinely harder than anything sustainable for the
+  whole walk, and the easy block is what makes that repeatable. It is the same interval structure
+  used for running, done at walking speeds, so it stays available to someone with knees that will
+  not tolerate impact.
+setup:
+- Choose a flat, even route — a park loop or a quiet stretch of road, not broken pavement.
+- Walk easily for three to five minutes first to warm up.
+- Decide the effort by feel, not by pace. Brisk means breathing noticeably harder but still able to
+  speak in short sentences; easy means able to talk comfortably.
+steps:
+- Walk briskly for three minutes.
+- Drop to an easy, comfortable pace for three minutes.
+- Repeat that pair for the number of rounds prescribed.
+- Finish with three to five minutes of easy walking to bring the pulse down gradually rather than
+  stopping abruptly.
+levels:
+- level: '1'
+  prescription: 3 brisk-and-easy pairs, about 20 minutes including warm-up and cool-down
+  reps: 3
+  sets: 1
+  support: flat route
+- level: '2'
+  prescription: 5 pairs, about 30 minutes in total
+  reps: 5
+  sets: 1
+  support: flat route
+- level: '3'
+  prescription: 8 pairs, about 45 minutes in total
+  reps: 8
+  sets: 1
+  support: flat route, or add a gentle incline to the brisk blocks
+frequency: 2-3x/week, alongside rather than instead of ordinary daily walking.
+builds:
+- heart and lung fitness
+- walking stamina
+- the ability to hurry without getting winded
+easier_variant: walking-plan
+harder_variant: null
+joint_stress:
+- knee
+- hip
+- ankle_foot
+balance_demand: 1
+impact: low
+requires_floor_transfer: false
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: a fixed schedule of increasing
+    intervals is precisely that, and pushing into breathlessness is the kind of exertion that
+    provokes a delayed crash.'
+  modification: ''
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  - angina
+  - heart disease
+  - heart failure
+  - arrhythmia
+  severity: caution
+  reason: Interval work deliberately pushes the heart rate higher than steady walking does, which is
+    the intensity band that needs clearance when there is cardiovascular disease.
+  modification: Confirm medical clearance before the brisk blocks. Keep the brisk effort at "can
+    still speak in short sentences" rather than breathless, and stop for chest tightness,
+    unusual breathlessness or light-headedness.
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - knee osteoarthritis
+  - arthritis
+  - joint pain
+  - hip osteoarthritis
+  - plantar fasciitis
+  severity: caution
+  reason: Walking faster increases the load through the knee and hip with every step, and the total
+    step count rises with the session length.
+  modification: Lengthen the easy blocks rather than shortening the walk, keep to flat even ground,
+    and check the shoes. Reduce the number of pairs if joints are sore the following day.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - peripheral neuropathy
+  severity: caution
+  reason: Walking faster reduces the time available to recover from a trip, and outdoor ground is
+    uneven.
+  modification: Keep the brisk blocks to smooth, familiar, well-lit ground and walk with someone
+    until the pace is confident. Do not prescribe brisk outdoor walking to someone still working on
+    standing balance.
+refer_out: []
+linked_to_topics:
+- insulin-resistance
+- metabolic-syndrome
+- type-2-diabetes
+- hypertension
+- menopause
+linked_to_symptoms:
+- fatigue
+notes_for_coach: 'COMPLETES THE SECOND DEAD-END CHAIN. `walking-plan` came from the Otago manual and
+  had no `harder_variant` — the manual is explicit that walking alone does not reduce falls, so it
+  was never meant to be the whole cardiovascular answer, and there was nothing above it. This is
+  that rung, and it stays on foot, which matters for a roster where walking is the activity clients
+  actually do.
+
+  EFFORT IS PRESCRIBED BY FEEL, NOT BY HEART RATE, on purpose. The book gives age-predicted maximum
+  heart rate and percentage zones, and admits in the same breath that the formula is out by roughly
+  twelve beats either way and is less accurate for women. Nobody on this roster wears a monitor.
+  Perceived effort — the talk test — is the honest instrument here and it costs nothing.
+
+  This is the entry to reach for with the metabolic cohort. Post-meal brisk walking is the single
+  most transferable thing in the catalogue for blood sugar, and the interval structure gives it a
+  progression that a plain walk does not.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 2, CV Training — "Interval Training" and "Example of a Standard Aerobic
+    Interval"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

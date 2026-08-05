@@ -1,0 +1,59 @@
+id: otago-exercise-programme-2003
+title: Otago Exercise Programme to Prevent Falls in Older Adults — a home-based, individually
+  tailored strength and balance retraining programme
+source_type: clinical_guideline
+quality: high
+authors:
+- A John Campbell
+- M Clare Robertson
+year: 2003
+publisher: Otago Medical School, University of Otago / ACC New Zealand
+url: https://www.livestronger.org.nz/assets/Uploads/acc1162-otago-exercise-manual.pdf
+doi: null
+notes: 'The programme manual itself (March 2003; ACC print July 2007, ISBN 0-478-25194-7,
+  ACC1162).
+
+  EXACTLY WHAT WAS READ, because it differs by entry: pp 1-19 in full (research
+  summary, implementation, prescription technique, safety, Tables 1/2/3/3.1/4), and
+  Appendix 3 sheets for the flexibility set and the first two strengthening exercises.
+  The remaining Appendix 3 sheets were NOT read. Entries for those exercises are built
+  from Table 4 — which gives the name, every level, the repetitions and the support
+  condition — with the movement cues written from that plus the prescription-technique
+  section, NOT paraphrased from the participant booklet. Anyone with the full manual
+  should check those cues against the sheets and raise their evidence_tier.
+
+  CONTENT: 5 flexibility warm-up exercises + 5 leg-strengthening exercises + 12 balance-retraining
+  exercises + a walking plan. Strength work uses ankle cuff weights only (start 1-2 kg
+  for the over-80s; trials went to 8 kg); everything else is bodyweight. All strengthening
+  is done STANDING except front-knee (knee extensor), which is seated. Sessions ~30 min,
+  3x/week with a rest day between; walking up to 30 min at least 2x/week, breakable
+  into 3 x 10 min. Progression is by level A-D (Table 4): supported to unsupported for
+  balance, added weight or a second set for strength (2 sets of 10 before moving up).
+
+  EVIDENCE: four controlled trials, 1016 people aged 65-97 in New Zealand; 35% reduction
+  in both falls and fall-related injuries; endorsed in a Cochrane review. Effect was
+  concentrated in the over-80s and those with a fall in the previous year — in the 65-79
+  subgroup the combined analysis showed essentially no benefit (Table 2). Manual states
+  walking alone does not reduce falls.
+
+  SAFETY (verbatim intent): people with rheumatoid arthritis, osteoarthritis or other
+  painful conditions work in a PAIN-FREE RANGE; stop and contact the doctor on dizziness,
+  chest pain, shortness of breath, or muscle pain that does not cease; confirm the person
+  can recover balance with lower-limb strategies before prescribing any unsupported
+  balance exercise; unstable people start with a wider base of support.
+
+  SCOPE CAVEAT: designed for delivery by a physiotherapist or a nurse trained and supervised
+  by one. Catalogue entries derived from it are written as coaching-level movement education,
+  and the manual''s own instructor-training requirement is the reason `refer_out` is set
+  on the higher balance levels.
+
+  Exercise cues in this catalogue are REWRITTEN, not copied from the participant booklet.
+  The four underlying trial papers (Campbell 1997/1999, Robertson 2001 x2) and the
+  Robertson 2002 meta-analysis have NOT been read directly — figures above are as
+  reported in this manual.
+
+  '
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

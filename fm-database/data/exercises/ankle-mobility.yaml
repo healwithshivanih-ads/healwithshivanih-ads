@@ -1,0 +1,38 @@
+slug: ankle-mobility
+display_name: Ankle Mobility
+client_name: Ankle points and pulls
+modality: flexibility
+intensity_tier: beginner
+position: any_position
+summary: Point-and-pull ankle range work; can be done seated or standing.
+why_it_works: Ankle range and the muscles that control it are the first line of balance recovery
+  — the Otago programme singles out the dorsiflexors and plantarflexors as particularly important
+  for regaining balance.
+setup:
+- Sit with the back supported, or stand holding a stable surface.
+steps:
+- Point the foot away from you.
+- Pull the foot back up towards you.
+- Repeat ten times on each foot, slowly and through the full comfortable range.
+levels:
+- level: A
+  prescription: 10 repetitions each foot
+  reps: 10
+  support: seated or holding on
+frequency: Before every session, as part of a 5-minute warm-up.
+builds:
+- ankle range of movement
+joint_stress:
+- ankle_foot
+balance_demand: 0
+impact: none
+notes_for_coach: Safe for essentially everyone on the roster, including seated. A reasonable single
+  starting point for a very deconditioned or very anxious client.
+sources:
+- id: otago-exercise-programme-2003
+  location: Appendix 3, flexibility exercises — ankle movements
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

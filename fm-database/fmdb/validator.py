@@ -25,8 +25,8 @@ from typing import Any
 import yaml
 from pydantic import ValidationError as PydanticValidationError
 
-from .enums import InteractionType, SourceType
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, SomaticMap, SomaticPractice, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
+from .enums import ExerciseCautionSeverity, ExerciseModality, InteractionType, SourceType
+from .models import Claim, CookingAdjustment, DrugDepletion, Exercise, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, SomaticMap, SomaticPractice, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
 
 
 @dataclass
@@ -75,6 +75,7 @@ class Loaded:
     mindmaps: list[MindMap] = field(default_factory=list)
     somatic_practices: list[SomaticPractice] = field(default_factory=list)
     somatic_maps: list[SomaticMap] = field(default_factory=list)
+    exercises: list[Exercise] = field(default_factory=list)
     parse_errors: list[str] = field(default_factory=list)
 
 
@@ -139,6 +140,7 @@ def load_all(data_dir: Path) -> Loaded:
         mindmaps=_load_dir(data_dir, "mindmaps", MindMap, parse_errors),
         somatic_practices=_load_dir(data_dir, "somatic_practices", SomaticPractice, parse_errors),
         somatic_maps=_load_dir(data_dir, "somatic_maps", SomaticMap, parse_errors),
+        exercises=_load_dir(data_dir, "exercises", Exercise, parse_errors),
         parse_errors=parse_errors,
     )
 
@@ -150,7 +152,7 @@ def overlay(
     mechanisms=(), symptoms=(), cooking_adjustments=(), home_remedies=(),
     protocols=(), drug_depletions=(), titration_protocols=(),
     lab_tests=(), lab_panels=(), tissue_salts=(),
-    mindmaps=(), somatic_practices=(), somatic_maps=(),
+    mindmaps=(), somatic_practices=(), somatic_maps=(), exercises=(),
 ) -> Loaded:
     """Return a new Loaded where given entities replace any same-slug entries.
 
@@ -180,6 +182,7 @@ def overlay(
         mindmaps=_merge(loaded.mindmaps, mindmaps, "slug"),
         somatic_practices=_merge(loaded.somatic_practices, somatic_practices, "slug"),
         somatic_maps=_merge(loaded.somatic_maps, somatic_maps, "slug"),
+        exercises=_merge(loaded.exercises, exercises, "slug"),
         parse_errors=list(loaded.parse_errors),
     )
 
@@ -212,6 +215,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
     _check_dupes(loaded.titration_protocols, "slug", "titration_protocol slug")
     _check_dupes(loaded.lab_tests, "slug", "lab_test slug")
     _check_dupes(loaded.lab_panels, "slug", "lab_panel slug")
+    _check_dupes(loaded.exercises, "slug", "exercise slug")
 
     # ---- alias collisions (ERROR) ----
     # An alias must not collide with a different entity's canonical slug.
@@ -224,6 +228,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         (loaded.home_remedies, "home_remedy"),
         (loaded.tissue_salts, "tissue_salt"),
         (loaded.protocols, "protocol"),
+        (loaded.exercises, "exercise"),
     ):
         canonical = {it.slug for it in items}
         for it in items:
@@ -499,6 +504,61 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
             errors.append(
                 f"somatic_map/{sm.slug}: coach_only_note is set but sensitivity is 'general' — "
                 f"raise sensitivity to 'sensitive' or 'coach_only', or clear the note"
+            )
+
+    # ---- exercises ----
+    # Cross-refs are warnings, as everywhere else. The ERRORS here are the four
+    # that would let an unsafe or unusable entry reach a client.
+    valid_exercise_slugs = set(_resolve_index(loaded.exercises))
+
+    for ex in loaded.exercises:
+        for cite in ex.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("exercise", ex.slug, "sources", "source", cite.id))
+        for topic_slug in ex.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("exercise", ex.slug, "linked_to_topics", "topic", topic_slug))
+        for sx_slug in ex.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("exercise", ex.slug, "linked_to_symptoms", "symptom", sx_slug))
+
+        for field_name, target in (("easier_variant", ex.easier_variant),
+                                   ("harder_variant", ex.harder_variant)):
+            if not target:
+                continue
+            if target not in valid_exercise_slugs:
+                warnings.append(Warning_("exercise", ex.slug, field_name, "exercise", target))
+            # A self-referencing variant is an infinite progression ladder — the
+            # coach clicks "harder" and gets the same exercise back.
+            if target == ex.slug:
+                errors.append(f"exercise/{ex.slug}: {field_name} points at itself")
+
+        if ex.easier_variant and ex.easier_variant == ex.harder_variant:
+            errors.append(
+                f"exercise/{ex.slug}: easier_variant and harder_variant are the same "
+                f"slug ({ex.easier_variant!r}) — the ladder has no direction"
+            )
+
+        for c in ex.cautions:
+            if not c.reason.strip():
+                errors.append(f"exercise/{ex.slug}: caution {c.condition!r} has no reason")
+            # "Be careful" is not guidance. A caution the coach cannot act on
+            # gets ignored, and an ignored caution is worse than none because it
+            # trains her to skim the rest.
+            if c.severity == ExerciseCautionSeverity.caution and not c.modification.strip():
+                errors.append(
+                    f"exercise/{ex.slug}: caution {c.condition!r} is severity `caution` "
+                    f"but carries no modification — say what to do instead, or make it a `block`"
+                )
+
+        # Pacing is an energy-envelope protocol, not a difficulty setting. Giving
+        # it levels would let any matcher walk a PEM client UP the ladder, which
+        # is the specific harm nice-ng206-me-cfs-2021 exists to prevent. Enforced
+        # structurally rather than left as advice in notes_for_coach.
+        if ex.modality == ExerciseModality.pacing and ex.levels:
+            errors.append(
+                f"exercise/{ex.slug}: modality `pacing` must not define levels — "
+                f"progression is the harm for post-exertional malaise, not the goal"
             )
 
     # ---- protocols ----

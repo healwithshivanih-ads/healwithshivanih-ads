@@ -1,0 +1,76 @@
+slug: tandem-stance
+display_name: Tandem Stance (Heel-Toe Stand)
+client_name: Standing heel to toe
+modality: balance
+intensity_tier: beginner
+position: standing
+summary: Standing with one foot directly in front of the other — a narrowed base of support, held.
+why_it_works: Narrowing the base forces the ankle and hip strategies that catch a sway. It is also
+  stage three of the STEADI 4-stage balance test, so it doubles as a measure.
+setup:
+- Stand beside a stable counter, one hand resting on it.
+- Place one foot directly in front of the other, heel touching toe.
+steps:
+- Look straight ahead, not down at the feet — vision is doing more of the work than people realise.
+- Hold the position, breathing normally.
+- Step out, rest, then repeat with the other foot in front.
+levels:
+- level: A
+  prescription: Hold 10 seconds, holding support
+  hold_seconds: 10
+  support: one hand
+- level: B
+  prescription: Hold 10 seconds with no support
+  hold_seconds: 10
+  support: none
+frequency: 3x/week.
+builds:
+- standing balance
+- ankle and hip balance strategies
+joint_stress:
+- ankle_foot
+balance_demand: 3
+impact: none
+harder_variant: one-leg-stand
+cautions:
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+notes_for_coach: Passing 10 seconds in tandem stance is a meaningful marker in the STEADI sequence
+  — worth recording rather than just doing.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, balance retraining exercise 5 (tandem stance)
+- id: cdc-steadi-falls-assessment
+  location: 4-stage balance test, stage 3
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

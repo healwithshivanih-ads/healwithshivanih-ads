@@ -1,0 +1,66 @@
+slug: isometric-holds-raise-blood-pressure
+statement: 'Sustained isometric contractions — a wall sit, a plank, a held squat —
+
+  drive blood pressure up for as long as the hold lasts, and much higher again if
+
+  the breath is held against the effort. General fitness instruction therefore
+
+  advises avoiding isometric work where blood pressure is raised or unmanaged.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'A held contraction mechanically compresses the vessels running through the
+
+  working muscle, so perfusion pressure has to rise for blood to get through; the
+
+  longer and harder the hold, the larger the pressor response. Closing the glottis
+
+  against effort adds a Valsalva component on top. This is the reason isometrics
+
+  are singled out from repetition-based resistance work, where the muscle relaxes
+
+  between repetitions and pressure falls back each time.
+
+  '
+coaching_translation: 'Holds are the one kind of strength work to be careful with if blood
+
+  pressure is a concern. Keep them short, breathe out steadily the whole time
+
+  rather than holding your breath, and rest properly between them. If blood
+
+  pressure is not yet under control, use slow squat repetitions instead — the
+
+  moving version does not keep the pressure up the way a hold does.
+
+  '
+caveats:
+- The source is a general-readership fitness book, not a clinical guideline, and states
+  the avoidance advice without citing trial evidence. It is recorded here because it
+  is a real and mechanistically coherent caution that the Otago manual does not cover
+  — not because the source is authoritative.
+- Deliberately NOT the whole story. Short supervised isometric training has been studied
+  as a way to LOWER resting blood pressure over time, so "isometrics are bad for
+  hypertension" would be too strong. The hazard is a long, strained, breath-held effort
+  while blood pressure is uncontrolled or unmeasured.
+- No blood-pressure threshold is given by the source, so none is asserted here. Treat
+  "unmanaged or unmeasured" as the trigger rather than inventing a number.
+out_of_scope_notes: 'Deciding whether a client''s blood pressure is controlled, and clearing
+  them for resistance work, is the prescriber''s call and not the coach''s. The coaching
+  action is the breathing instruction and the hold duration.
+
+  '
+linked_to_topics:
+- hypertension
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 2, "Isometrics" (boxed Important note); applied at Chapter 4, Wall
+    Squat and Squat Hold
+  quote: Useful exercises to include for the mini-workouts, however they should be avoided
+    by anyone with high blood pressure.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

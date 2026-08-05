@@ -1,0 +1,106 @@
+slug: standing-hip-abduction
+display_name: Standing Hip Abduction (Hip Abductor)
+client_name: Lifting the leg out to the side
+modality: strength
+intensity_tier: beginner
+position: standing
+summary: Hip abductor strengthening against an ankle cuff weight.
+why_it_works: The hip abductors control sideways stability of the pelvis in single-leg stance — which
+  is every step of walking. The Otago programme names them among the groups particularly important
+  for functional movement and walking.
+setup:
+- Strap the ankle cuff weight around one ankle.
+- Stand tall side-on or facing a stable bench, hands resting on it.
+steps:
+- Take the straight leg out to the side, keeping the toes pointing forwards.
+- Stay upright — do not lean away from the working leg to gain height.
+- Lower under control. Height matters less than staying vertical.
+- Complete the repetitions, then swap the weight to the other ankle.
+levels:
+- level: A
+  prescription: 10 repetitions each leg
+  reps: 10
+  sets: 1
+  support: both hands
+- level: B
+  prescription: 2 sets of 10 each leg
+  reps: 10
+  sets: 2
+  support: both hands
+- level: C
+  prescription: 2 sets of 10 at a heavier cuff weight
+  reps: 10
+  sets: 2
+  support: one hand
+- level: D
+  prescription: 2 sets of 10 at the heaviest tolerated weight
+  reps: 10
+  sets: 2
+  support: one hand
+frequency: 3x/week with a rest day between.
+equipment:
+- ankle cuff weights
+- a stable bench or counter
+builds:
+- hip abductor strength
+- pelvic stability in walking
+- hip bone loading
+joint_stress:
+- hip
+balance_demand: 2
+impact: none
+cautions:
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+notes_for_coach: Loading through the hip makes this one of the more useful entries for low bone density
+  at the femoral neck. Watch for the client leaning sideways to raise the leg higher — that substitutes
+  trunk side-flexion for hip work.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, strengthening exercise 3; Appendix 3 side hip strengthening
+- id: liftmor-m-harding-2020
+  location: 'Principle: progressive loading in men with low bone mass'
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

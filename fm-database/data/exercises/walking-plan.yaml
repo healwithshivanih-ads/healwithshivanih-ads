@@ -1,0 +1,98 @@
+slug: walking-plan
+display_name: Walking Plan
+client_name: Your walking
+modality: cardiovascular
+intensity_tier: beginner
+position: walking
+summary: Up to 30 minutes of walking at usual pace, at least twice a week, breakable into shorter
+  blocks.
+why_it_works: Walking builds general physical capacity and carries the wider benefits of moderate
+  activity. It is prescribed alongside the strength and balance work, not instead of it.
+setup:
+- Usual footwear and usual walking aid, if one is used.
+- A route that is familiar and well surfaced.
+steps:
+- Walk at your usual pace — this is not meant to be brisk.
+- Build towards 30 minutes; three 10-minute walks across the day counts the same.
+- Aim for at least twice a week, more if it is enjoyable.
+levels:
+- level: A
+  prescription: 3 x 10 minutes across the day, twice a week
+  support: usual walking aid
+- level: B
+  prescription: One 30-minute walk, twice a week
+  support: usual walking aid
+- level: C
+  prescription: 30 minutes on most days
+  support: none
+frequency: At least 2x/week, if safe to walk.
+builds:
+- aerobic capacity
+- general physical capacity
+- mood
+joint_stress:
+- knee
+- hip
+- ankle_foot
+balance_demand: 1
+impact: low
+cautions:
+- condition: cardiovascular disease
+  condition_aliases:
+  - hypertension
+  - high blood pressure
+  - heart disease
+  - angina
+  - coronary
+  - heart failure
+  - arrhythmia
+  - atrial fibrillation
+  severity: caution
+  reason: 'The manual''s stop rule: dizziness, chest pain or shortness of breath during exercise
+    means stop and contact the doctor.'
+  modification: Keep to a pace that allows conversation (talk test); stop on any dizziness, chest
+    pain or breathlessness and review with the doctor.
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+harder_variant: walking-intervals
+notes_for_coach: '⚠ WALKING IS NOT A FALLS INTERVENTION. The Otago manual states plainly that walking
+  will not on its own reduce falls, and it is prescribed only ''if safe''. This matters because walking
+  is the thing everyone reaches for: prescribing it to an unsteady client instead of the balance
+  work substitutes the easy answer for the effective one. It is also the entry most likely to be
+  already happening, so ask before prescribing.'
+linked_to_topics:
+- hypertension
+- insulin-resistance
+sources:
+- id: otago-exercise-programme-2003
+  location: Guide to implementation — the walking plan; Table 3
+- id: fm-exercise-prescription-matrix
+  location: Cardiovascular modality — talk test, 150 min/week
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

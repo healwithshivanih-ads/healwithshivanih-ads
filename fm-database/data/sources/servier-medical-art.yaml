@@ -1,0 +1,49 @@
+id: servier-medical-art
+title: Servier Medical Art — superficial muscles, anterior and posterior views (unlabelled)
+source_type: other
+quality: high
+authors:
+- Servier Medical Art
+year: null
+publisher: Servier (Laboratoires Servier)
+url: https://smart.servier.com/
+doi: null
+notes: 'THE ANATOMY ASSET FOR THE EXERCISE CATALOGUE — and the licence is the reason it
+  was chosen over the alternatives.
+
+  LICENCE: Creative Commons Attribution 4.0 (CC BY 4.0). Commercial use is explicitly
+  permitted; the only obligation is attribution. Critically it is CC BY and NOT CC BY-SA,
+  so a derivative does not have to be released under the same terms — which matters
+  because this catalogue is proprietary. The obvious alternatives on Wikimedia (the
+  OpenStax "1105 Anterior and Posterior Views of Muscles", and the Bouglé anterior/
+  posterior plates) are CC BY-SA 3.0/4.0 and would have carried share-alike into a
+  commercial product. Public-domain Gray''s Anatomy (1918) was legally cleanest but is a
+  Victorian engraving, wrong in register for the client app.
+
+  ATTRIBUTION IS A LICENCE CONDITION, NOT A COURTESY. Any surface that shows these
+  figures to a client must carry the credit, not just this record. Required string:
+  "Servier Medical Art, CC BY 4.0". The two files used:
+    - "Drawing Superficial muscles anterior view - no labels", 896 x 2342 PNG
+    - "Drawing Superficial muscles posterior view - no labels", 908 x 2329 PNG
+  Both retrieved via AnatomyTOOL (Leiden UMC), which redistributes Servier''s CC BY
+  originals. Both have transparent backgrounds.
+
+  WHY IT REPLACES THE GENERATED PLATE. The earlier anatomy plate was AI-generated, and
+  over three attempts the generator could not be made to colour the correct muscle —
+  it drew gluteus maximus when asked repeatedly for gluteus medius, and highlighted
+  both hips when asked for one. Muscle identification on that plate rested on my own
+  inference from symmetry and position. Servier is a standard source in medical
+  publishing, so the anatomy is checkable rather than asserted.
+
+  KNOWN LIMIT FOR TRACING: unlike the flat generated plate, these are illustrated with
+  fibre striation and tonal shading rather than flat regions bounded by a closed outline
+  network. The connected-component tracer written for the generated plate will NOT
+  segment these into one-path-per-muscle. Getting named vector paths needs either
+  Servier''s own vector/PowerPoint download (their site offers vector; the AnatomyTOOL
+  mirror is PNG only) or hand-authored region paths over the PNG.
+
+  '
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

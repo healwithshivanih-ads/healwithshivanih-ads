@@ -1,0 +1,146 @@
+slug: kneeling-press-up
+display_name: Kneeling Press Up (Box Press Up)
+client_name: Press-ups from your knees
+aliases:
+- box press up
+- knee push up
+- modified press up
+- half press up
+modality: strength
+intensity_tier: beginner
+position: four_point
+equipment:
+- a mat or folded blanket for the knees
+summary: The middle rung of the pressing ladder — more load than the wall, far less than a full
+  press-up, taken on the knees.
+why_it_works: Dropping to the knees shortens the lever between the hands and the point the body
+  pivots on, so the arms carry more weight than at a wall but much less than from the toes. It is
+  the step at which pressing starts to build real strength rather than teach the pattern.
+setup:
+- Kneel on a mat and place the hands on the floor a little wider than the shoulders, fingers
+  pointing forward.
+- Walk the hands out until the arms, trunk and thighs make a box shape with the floor.
+- Cross the ankles behind and hold the trunk firm so the back stays flat.
+steps:
+- Bend the elbows and lower the chest towards the floor until the upper arms reach roughly a right
+  angle.
+- Keep the back flat throughout — the hips should neither sag towards the floor nor pike upwards.
+- Straighten the arms to push back to the start.
+- Keep an even rhythm rather than dropping fast and grinding back up.
+levels:
+- level: '1'
+  prescription: 6 repetitions with a short range, stopping well above the floor
+  reps: 6
+  sets: 1
+  support: knees down, partial range
+- level: '2'
+  prescription: 10 repetitions to a right angle at the elbow
+  reps: 10
+  sets: 1
+  support: knees down, full range
+- level: '3'
+  prescription: 12 repetitions, rest, then a second set
+  reps: 12
+  sets: 2
+  support: knees down, full range
+  note: Two comfortable sets of 12 means the strength gain has stalled. Move to the full press-up
+    rather than climbing towards 25 repetitions.
+frequency: 2-3x/week with a rest day between.
+builds:
+- chest, shoulder and arm strength
+- trunk stiffness held against gravity
+- pushing strength for daily tasks
+easier_variant: wall-press-up
+harder_variant: standard-press-up
+joint_stress:
+- shoulder
+- wrist_hand
+- elbow
+- knee
+balance_demand: 0
+impact: none
+requires_floor_transfer: true
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: a programme of fixed incremental
+    increases can provoke a lasting relapse, and this entry is built as exactly that ladder.'
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - knee osteoarthritis
+  - arthritis
+  - knee injury
+  - patellofemoral
+  - joint pain
+  severity: caution
+  reason: The whole position rests body weight directly on the kneecaps against the floor.
+  modification: Double the mat or kneel on a folded towel. If pressure on the kneecap still hurts,
+    do not modify this — stay at the wall version, which loads no knee at all.
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: More body weight through a flexed shoulder than the wall version, in a position where the
+    movement cannot easily be cut short.
+  modification: Keep the hands under the shoulders rather than wide, and stop the descent above the
+    point of any pinch. Return to the wall version if the range has to be very small.
+- condition: carpal tunnel syndrome
+  condition_aliases:
+  - wrist pain
+  - carpal tunnel
+  - wrist arthritis
+  - de quervain
+  severity: caution
+  reason: Body weight through an extended wrist on the floor is a substantially bigger wrist load
+    than the same movement at a wall.
+  modification: Press through a loose fist with the wrist straight, or drop to the forearms. If
+    neither is comfortable, stay at the wall version.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  severity: caution
+  reason: Resistance work raises blood pressure transiently, and straining against a hard repetition
+    with a held breath raises it sharply.
+  modification: Breathe out on the push. Stop the set while it is still comfortable rather than
+    grinding out a last repetition, and stop for head pressure or dizziness.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- bone-health
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'The first entry in the pressing ladder that needs a FLOOR TRANSFER — check the
+  client can get down and back up unaided before prescribing it. That is a real gate on this roster
+  and it is why the wall version exists as a permanent alternative rather than a stepping stone to
+  be discarded.
+
+  The book lists an "extended kneeling" version between this and the full press-up, where the knees
+  move further back. It is not a separate catalogue entry: it is the same movement with a longer
+  lever, and the honest way to use it is as a bridge when level 3 here is easy but the full press-up
+  is not yet possible. Walk the knees back a hand-width at a time.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Upper Body, Kneeling Press Up and Extended Kneeling
+    Press Up
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

@@ -17,12 +17,13 @@ import type {
   LabPanel,
   LabTest,
   TissueSalt,
+  Exercise,
 } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function CataloguePage() {
-  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols, titrations, labPanels, labTests, tissueSalts] =
+  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols, titrations, labPanels, labTests, tissueSalts, exercises] =
     await Promise.all([
       loadAllOfKind<Topic>("topics"),
       loadAllOfKind<Mechanism>("mechanisms"),
@@ -35,6 +36,7 @@ export default async function CataloguePage() {
       loadAllOfKind<LabPanel>("lab_panels"),
       loadAllOfKind<LabTest>("lab_tests"),
       loadAllOfKind<TissueSalt>("tissue_salts"),
+      loadAllOfKind<Exercise>("exercises"),
     ]);
 
   // Source records use `id` (not `slug`) and `title` (not `display_name`) on disk.
@@ -61,6 +63,7 @@ export default async function CataloguePage() {
     tissue_salts: tissueSalts.length,
     mindmaps: 0,
     drug_depletions: 0,
+    exercises: exercises.length,
   };
 
   const tabOrder: CatalogueKind[] = [
@@ -69,6 +72,7 @@ export default async function CataloguePage() {
     "symptoms",
     "supplements",
     "tissue_salts",
+    "exercises",
     "protocols",
     "titration_protocols",
     "lab_panels",
@@ -87,6 +91,7 @@ export default async function CataloguePage() {
     lab_panels: labPanels as unknown as BaseEntity[],
     lab_tests: labTests as unknown as BaseEntity[],
     tissue_salts: tissueSalts as unknown as BaseEntity[],
+    exercises: exercises as unknown as BaseEntity[],
     claims,
     sources: sourcesNormalized,
   };

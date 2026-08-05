@@ -1,0 +1,68 @@
+slug: rpe-borg-cr10-equipment-free-intensity-gauge
+statement: 'Rating of Perceived Exertion on the Borg CR10 scale is a workable substitute
+
+  for heart-rate monitoring when no monitor is available: RPE 3-7 corresponds
+
+  approximately to 50-90 per cent of maximum heart rate. Age-predicted maximum heart
+
+  rate itself is only accurate to about plus or minus twelve beats, and is typically
+
+  less accurate for women.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Perceived exertion tracks the physiological signals that accompany rising
+
+  intensity — breathing rate, muscle sensation, effort — closely enough to band
+
+  intensity into useful zones. Because the age-predicted maximum heart rate formula
+
+  carries a wide error margin of its own, a self-report scale is not obviously the
+
+  cruder instrument; a percentage calculated from an inaccurate maximum inherits that
+
+  inaccuracy while looking precise. For a client with no monitor, RPE is the
+
+  difference between a prescribed intensity and no intensity guidance at all.
+
+  '
+coaching_translation: 'Rate how hard it feels from 0 to 10, where 3 is easy, 5 is breathing
+
+  and working a little hard, and 7 is very challenging with breathing very hard. Most
+
+  useful training sits between 3 and 7. The talk test is the same idea in plainer
+
+  terms: if you can chat easily you are at the low end, if you can manage short
+
+  sentences you are in the middle, and if you cannot speak you have gone past it.
+
+  '
+caveats:
+- Depends on honest self-report and takes practice. A client who habitually understates
+  effort will train too hard on this scale, and one who overstates it will train too
+  easily.
+- The source warns explicitly that perceived effort must not be confused with warning
+  signs — breathlessness out of proportion, chest discomfort or dizziness mean stop,
+  whatever the number.
+- The 3-7 to 50-90 per cent mapping is stated by the source as approximate and attributed
+  to research in general terms. Borg's original 1970 paper is cited by the source but
+  has not been read here.
+out_of_scope_notes: 'Clearing a client for higher-intensity work, and any interpretation
+  of exertional symptoms, sits with the prescriber. RPE is a coaching tool for dosing
+  effort within an already-appropriate range.
+
+  '
+linked_to_topics:
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 2, "Rating of Perceived Exertion (RPE)" and the Borg CR10 table; MHR
+    accuracy noted under "Use Your Heart Rate to find Your Aerobic Training Zones"
+  quote: According to research, numbers 3-7 correlate approximately to 50 to 90 per cent
+    on the MHR chart.
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

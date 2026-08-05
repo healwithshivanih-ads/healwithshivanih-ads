@@ -1,0 +1,58 @@
+slug: energy-envelope-pacing
+display_name: Energy-Envelope Pacing
+client_name: Staying inside your energy envelope
+modality: pacing
+intensity_tier: beginner
+position: any_position
+summary: A protocol for staying within the activity level that does not provoke a crash — the correct
+  first intervention when post-exertional malaise is present.
+why_it_works: In ME/CFS and post-viral fatigue with PEM, exertion beyond an individual threshold
+  produces delayed, disproportionate symptom worsening. Pacing treats that threshold as the thing
+  to respect rather than the thing to push, which is the reversal NICE NG206 made in 2021.
+setup:
+- Nothing to set up. This is a way of spending the day, not a session.
+steps:
+- 'Find the baseline: the level of activity that can be repeated day after day without a crash in
+  the following 24-72 hours. It is usually lower than expected.'
+- Split activity into short blocks with planned rest between, rather than doing as much as possible
+  on a good day.
+- Rest BEFORE tiredness arrives, not after. Rest that follows a crash is recovery, not pacing.
+- Keep a simple log of activity against how the next two days felt — PEM is delayed, so same-day
+  feel is a poor guide.
+- Treat a good day as evidence the baseline is right, not as permission to exceed it.
+frequency: Every day. There is no rest day from pacing.
+builds:
+- a stable activity baseline
+- confidence that effort will not be punished
+balance_demand: 0
+impact: none
+cautions:
+- condition: post-exertional malaise
+  severity: caution
+  reason: This entry is the intervention for PEM, not a risk to it. The caution exists so the coach
+    records that PEM was identified and the capacity ladder is deliberately withheld.
+  modification: Withhold every progressive entry in this catalogue until PEM is settled and re-screened.
+    Do not substitute a 'gentler' progressive programme — the shape is the problem, not the intensity.
+refer_out:
+- A clinician familiar with ME/CFS or long COVID, before any return to progressive exercise. Pacing
+  is a coaching-appropriate holding position, not a treatment plan.
+notes_for_coach: 'THIS ENTRY IS THE OFF-SWITCH FOR THE REST OF THE CATALOGUE. Every other exercise
+  here is built to progress. For a client with PEM, progression is the harm — so `pacing` is modelled
+  as its own modality and the validator refuses to let it carry levels, meaning no matcher can walk
+  a client up from it. On the current roster this is Sudarshan (cl-008): long COVID alongside cervical
+  radiculopathy. Screen for PEM before prescribing any progressive entry; ask about symptoms 24-72
+  hours AFTER exertion, not during.'
+linked_to_topics:
+- long-covid
+- chronic-fatigue-syndrome
+linked_to_symptoms:
+- fatigue
+- post-exertional-malaise
+sources:
+- id: nice-ng206-me-cfs-2021
+  location: Recommendations — physical activity and exercise
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

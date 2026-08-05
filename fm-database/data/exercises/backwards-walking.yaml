@@ -1,0 +1,77 @@
+slug: backwards-walking
+display_name: Backwards Walking
+client_name: Walking backwards
+modality: balance
+intensity_tier: intermediate
+position: walking
+summary: Stepping backwards along a support — a direction almost never practised and often the one
+  people fall in.
+why_it_works: Backwards stepping is how balance is recovered from a backward sway, and it is the
+  movement people are worst at because daily life never rehearses it.
+setup:
+- Stand beside a counter or long stable surface, hand resting on it.
+- Check the floor behind is clear — no rug edges, no pets, no cables.
+steps:
+- Step backwards with one foot, then the other.
+- Keep the head up rather than twisting to look behind.
+- Take ten steps, then walk forwards to the start and repeat.
+levels:
+- level: B
+  prescription: 10 steps, 4 times, holding support
+  reps: 10
+  sets: 4
+  support: hand on counter
+- level: D
+  prescription: 10 steps, 4 times, with no support
+  reps: 10
+  sets: 4
+  support: none
+frequency: 3x/week.
+builds:
+- backward balance recovery
+- confidence stepping without vision
+joint_stress:
+- ankle_foot
+- hip
+balance_demand: 3
+impact: low
+cautions:
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+notes_for_coach: Otago jumps this straight from level B to level D — there is no intermediate. Clearing
+  the floor behind is part of the prescription, not a nicety.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, balance retraining exercise 2 (backwards walking)
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

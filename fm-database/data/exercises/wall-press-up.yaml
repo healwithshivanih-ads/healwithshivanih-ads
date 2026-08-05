@@ -1,0 +1,136 @@
+slug: wall-press-up
+display_name: Wall Press Up (Standing Incline Push)
+client_name: Pushing away from the wall
+aliases:
+- wall push up
+- wall pushup
+- standing press up
+modality: strength
+intensity_tier: beginner
+position: standing
+equipment:
+- a clear stretch of solid wall
+summary: The easiest usable pressing movement — upper-body strength built standing, with no floor
+  transfer and no equipment.
+why_it_works: A press-up is one movement whose difficulty is set by how much of the body weight the
+  arms carry, and that is set by the angle. Standing almost upright against a wall puts the smallest
+  possible share through the arms, so the same pattern that is impossible on the floor becomes
+  achievable — and the load can then be increased by changing position rather than by adding weight.
+setup:
+- Stand facing a solid wall, about an arm's length away, feet hip-width apart.
+- Place both palms flat on the wall a little wider than the shoulders, at roughly shoulder height.
+- Let the body lean in until it forms one straight line from the head to the heels.
+steps:
+- Bend the elbows and lower the chest slowly towards the wall until it is almost touching.
+- Keep the line from head to heels — the hips should not lead or lag.
+- Push back to the leaning start position by straightening the arms.
+- Move at a steady, controlled speed rather than bouncing off the wall.
+levels:
+- level: '1'
+  prescription: 8 repetitions, standing close to the wall
+  reps: 8
+  sets: 1
+  support: standing near-upright, small lean
+  note: Start here if pressing is new. The closer the feet are to the wall, the easier it is.
+- level: '2'
+  prescription: 12 repetitions, feet a step further back
+  reps: 12
+  sets: 1
+  support: standing, moderate lean
+- level: '3'
+  prescription: 15 repetitions, rest, then a second set of 15
+  reps: 15
+  sets: 2
+  support: standing, deeper lean
+  note: When two sets of 15 feel comfortable, the next gain comes from changing the movement, not
+    from adding more repetitions — move to the kneeling version.
+frequency: 2-3x/week with at least a day between sessions.
+builds:
+- chest and shoulder strength
+- arm strength for pushing and carrying
+- the pressing pattern, learned safely
+easier_variant: null
+harder_variant: kneeling-press-up
+joint_stress:
+- shoulder
+- wrist_hand
+- elbow
+balance_demand: 0
+impact: none
+requires_floor_transfer: false
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: a programme of fixed incremental
+    increases can provoke a lasting relapse. The repetition ladder in this entry is exactly that
+    shape, however gentle the movement looks.'
+  modification: ''
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: Loaded shoulder flexion is the position that provokes impingement and rotator-cuff pain.
+  modification: Keep the hands no wider than the shoulders and stop the descent short of any pinch
+    at the front of the shoulder. Work in a pain-free range; if the range is tiny, that is still
+    the right range.
+- condition: carpal tunnel syndrome
+  condition_aliases:
+  - wrist pain
+  - carpal tunnel
+  - wrist arthritis
+  - de quervain
+  severity: caution
+  reason: A flat palm on the wall holds the wrist extended under load, which raises carpal-tunnel
+    pressure and provokes wrist-joint pain.
+  modification: Press through a loose fist with the wrist straight, or place the forearms on the
+    wall instead of the hands.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - hypertension
+  severity: caution
+  reason: Any resistance work raises blood pressure transiently, and breath-holding against effort
+    raises it sharply.
+  modification: Breathe out on the push and in on the lower; never hold the breath. Stop for
+    head pressure, throbbing or dizziness. Confirm blood pressure is being managed before adding
+    the second set.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- bone-health
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'THE ENTRY POINT FOR UPPER-BODY WORK ON THIS ROSTER, and the reason it was worth
+  ingesting a book aimed at fit people. Everything else in this catalogue''s strength set came from
+  the Otago falls manual, which is legs-only — there was no arm or chest work at all, and nothing
+  that could be given to someone who cannot get down to and up off the floor. This one is done
+  standing at a wall, needs no equipment and no floor transfer, and is genuinely the easiest rung
+  of a real ladder rather than a token movement.
+
+  Progression here is by CHANGING THE MOVEMENT, not by piling on repetitions — see the level 3 note.
+  Past about 15-20 comfortable reps a client is training endurance, not strength; the strength gain
+  comes from moving to kneeling. That is the book''s central bodyweight principle and it applies to
+  every pressing entry in this catalogue.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Upper Body, Wall Press Up; progression order given in
+    Chapter 2, "Easy to Difficult"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

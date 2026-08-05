@@ -1,3 +1,4 @@
+import re
 from datetime import date
 from typing import Optional
 
@@ -11,6 +12,12 @@ from .enums import (
     Dosha,
     DoseUnit,
     DrugClass,
+    ExerciseBodyRegion,
+    ExerciseCautionSeverity,
+    ExerciseImpact,
+    ExerciseIntensityTier,
+    ExerciseModality,
+    ExercisePosition,
     ImplicationConfidence,
     EntityStatus,
     EvidenceTier,
@@ -1055,4 +1062,179 @@ class SomaticMap(BaseModel):
             raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
         if v.startswith("-") or v.endswith("-") or "--" in v:
             raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class ExerciseLevel(BaseModel):
+    """One rung of an exercise's own difficulty ladder.
+
+    Modelled on the Otago manual's Table 4, where a single exercise (say "one
+    leg stand") exists at several levels that differ only in support and dose:
+    10 seconds holding a chair, then 10 seconds with no hold, then 30 seconds
+    with no hold. Splitting those into three catalogue entries would triple the
+    library and lose the fact that they are one movement being progressed.
+
+    Ordered easiest-first in `Exercise.levels`. Progression BETWEEN exercises
+    (sit-to-stand → goblet squat) uses `easier_variant` / `harder_variant`
+    instead.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    level: str                                    # the source's own label: "A".."D", "1".."3"
+    prescription: str                             # client-facing dose: "10 repetitions, holding a chair"
+    reps: Optional[int] = None
+    sets: Optional[int] = None
+    hold_seconds: Optional[int] = None
+    support: str = ""                             # "two hands on a bench" | "one hand" | "none" | "walking aid"
+    note: str = ""
+
+
+class ExerciseCaution(BaseModel):
+    """One condition-specific restriction on an exercise.
+
+    Structured rather than a flat string list because severity carries the
+    safety model (see ExerciseCautionSeverity) and because `modification` is
+    what makes a caution actionable. `condition` is matched against the client
+    record by keyword, the same way `fmdb/plan/contra_screen.py` already screens
+    somatic-practice contraindications — so phrase it with the word a client
+    record would actually contain ("osteoporosis", not "fragile bones").
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    condition: str                                # "osteoporosis", "uncontrolled hypertension", "post-exertional malaise"
+    # The other words a client record might carry for the same thing. NOT
+    # decoration — the first screen run against the real roster found the PEM
+    # block firing for nobody, because the one client it exists for has
+    # "Long-COVID" in his conditions and nothing anywhere says "post-exertional
+    # malaise". A safety flag keyed to vocabulary the records do not use is an
+    # absent safety flag. Every alias-aware lookup in this catalogue exists for
+    # the same reason; this is that pattern applied to cautions.
+    condition_aliases: list[str] = Field(default_factory=list)
+    severity: ExerciseCautionSeverity
+    reason: str                                   # why — coach-facing, one sentence
+    modification: str = ""                        # what to do instead. Required when severity is `caution`.
+
+    @staticmethod
+    def _normalise(s: str) -> str:
+        """Lowercase and collapse every non-alphanumeric run to a single space.
+
+        So "Long-COVID", "long covid" and "long_covid" are one term. Without
+        this, an author has to enumerate separator variants by hand, and the
+        first one they forget is a caution that silently stops firing — which is
+        how this went wrong once already.
+        """
+        return re.sub(r"[^a-z0-9]+", " ", (s or "").lower()).strip()
+
+    def matches(self, text: str) -> bool:
+        """Does this caution apply to a client whose record reads `text`?
+
+        Substring match over separator-normalised text, across the condition and
+        its aliases. Crude on purpose: it is the same shape the plan checker and
+        drug matcher use, and over-matching a caution costs a coach one glance
+        while under-matching one costs a client an injury.
+        """
+        hay = self._normalise(text)
+        if not hay:
+            return False
+        return any(term in hay for term in
+                   (self._normalise(t) for t in [self.condition, *self.condition_aliases]) if term)
+
+
+class Exercise(BaseModel):
+    """One capacity-building movement a client can do on their own.
+
+    CAPACITY, not regulation — strength, stamina, balance, bone, mobility. A
+    movement whose goal is nervous-system regulation belongs in
+    SomaticPractice; the two libraries may hold the same movement under
+    different intent.
+
+    NOT A PROGRAMME. An Exercise is one movement with its own progression
+    ladder. Assembling several into a week is the plan's job, so that the same
+    entry can serve an 80-year-old at level A and a 45-year-old at level D.
+
+    SAFETY MODEL. The boolean axes (`spinal_flexion`, `overhead`, …) exist so a
+    screen can reason about a client's body WITHOUT the author having had to
+    anticipate that client. Listing "avoid if osteoporosis" on every relevant
+    entry is the version of this that rots: the day a new bone-loading rule
+    arrives, every entry needs re-reading. A flag saying "this movement flexes
+    the loaded spine" stays true forever, and the rule lives in one place.
+
+    Stored at data/exercises/<slug>.yaml.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str                             # coach-facing, may be clinical
+    # Client-facing name. The catalogue has a recorded defect where the app
+    # showed a client the clinical display_name ("Gastrocolic Rhythm"), so this
+    # exists from the start. Consumers must read `name_for_client`, never
+    # `display_name`, when rendering to a client.
+    client_name: str = ""
+    aliases: list[str] = Field(default_factory=list)
+
+    modality: ExerciseModality
+    intensity_tier: ExerciseIntensityTier = ExerciseIntensityTier.beginner
+    position: ExercisePosition = ExercisePosition.standing
+    equipment: list[str] = Field(default_factory=list)
+
+    summary: str = ""                             # one line, coach-facing
+    why_it_works: str = ""                        # the physiological rationale, coach-facing
+    setup: list[str] = Field(default_factory=list)   # getting into position
+    steps: list[str] = Field(default_factory=list)   # the movement itself, ordered, client-facing
+    levels: list[ExerciseLevel] = Field(default_factory=list)   # easiest first
+    frequency: str = ""                           # "3x/week with a rest day between"
+    builds: list[str] = Field(default_factory=list)  # "leg strength", "bone density", "standing balance"
+
+    # Progression BETWEEN entries. Both are exercise slugs; the validator warns
+    # on an unresolved one, and errors if an entry points at itself.
+    easier_variant: Optional[str] = None
+    harder_variant: Optional[str] = None
+
+    # ---- safety axes: objective properties of the MOVEMENT, not of a client --
+    loads_spine: bool = False                     # axial/compressive load through the spine
+    spinal_flexion: bool = False                  # bending forward — the vertebral-osteoporosis red line
+    loaded_spinal_rotation: bool = False          # twisting under load — the other one
+    overhead: bool = False                        # arms above the head: cervical, shoulder, BP
+    impact: ExerciseImpact = ExerciseImpact.none
+    # 0 none … 3 high (single-leg, unsupported, eyes closed). Recorded at the
+    # entry's HARDEST level, so a screen reading it errs toward caution rather
+    # than clearing someone on the entry-level form and handing them level D.
+    balance_demand: int = 0
+    requires_floor_transfer: bool = False         # must get down to and up off the floor
+    joint_stress: list[ExerciseBodyRegion] = Field(default_factory=list)
+    cautions: list[ExerciseCaution] = Field(default_factory=list)
+    # When this should stop being a coaching prescription and become someone
+    # else's. Free text, coach-facing: "supervised gym programme", "physiotherapy
+    # assessment first". Non-empty does NOT mean never prescribe — it means say so.
+    refer_out: list[str] = Field(default_factory=list)
+
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_symptoms: list[str] = Field(default_factory=list)
+    notes_for_coach: str = ""
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier = EvidenceTier.fm_specific_thin
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @property
+    def name_for_client(self) -> str:
+        """The name to show a client. Never render `display_name` to a client."""
+        return self.client_name.strip() or self.display_name
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+    @field_validator("balance_demand")
+    @classmethod
+    def _balance_demand_range(cls, v: int) -> int:
+        if not 0 <= v <= 3:
+            raise ValueError(f"balance_demand must be 0-3, got {v}")
         return v

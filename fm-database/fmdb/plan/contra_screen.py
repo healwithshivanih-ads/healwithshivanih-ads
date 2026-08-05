@@ -118,8 +118,25 @@ _RULES: dict[str, tuple[tuple[str, ...], tuple[str, ...], str]] = {
 #: not_pregnant`, `mould_exposure: none`. Matching the bare keyword inside them
 #: reads a negative answer as a positive finding, which is the same
 #: absence/evidence confusion this module exists to stop. Strip them first.
+#:
+#: The negation has to reach PAST connective words to the thing being negated.
+#: An earlier version consumed the negation plus one following word, so
+#: "No history of falls" became " of falls" and still matched a falls rule —
+#: a caution shown for a client whose record explicitly denied it. The chain
+#: below swallows an optional run of connectives ("history of", "any signs of")
+#: and then one content word, which covers the phrasings intake and coach notes
+#: actually use without eating the next condition in the list.
+#: The lookahead is `(?=[ _\-])`, NOT `\b`. Structured intake fields store
+#: negatives as underscore-joined values — `pregnancy_status: not_pregnant`,
+#: `mould_exposure: none` — and `_` is a word character, so `\bnot\b` does not
+#: match inside `not_pregnant`. Using `\b` there silently turned a recorded
+#: "not pregnant" back into a live pregnancy finding.
 _NEGATED = re.compile(
-    r"\b(?:not|non|no|never|nil|none|negative|denies|absent|unremarkable)[ _\-]?\w*", re.I
+    r"\b(?:not|non|no|never|nil|none|negative|denies|absent|unremarkable)(?=[ _\-])"
+    r"(?:[ _\-]+(?:a|an|any|the|of|for|h/o|history|hx|sign|signs|symptom|symptoms|"
+    r"evidence|episode|episodes|known|current|prior|past|significant|reported))*"
+    r"[ _\-]+\w+",
+    re.I,
 )
 
 

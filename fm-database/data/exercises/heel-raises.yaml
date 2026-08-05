@@ -1,0 +1,95 @@
+slug: heel-raises
+display_name: Heel Raises (Ankle Plantarflexors)
+client_name: Rising onto your toes
+modality: strength
+intensity_tier: beginner
+position: standing
+summary: Calf strengthening using body weight, progressing from supported to unsupported.
+why_it_works: The plantarflexors push the body forward at every step and are central to recovering
+  balance from a forward sway. Strengthened with body weight alone — no cuff weight is used.
+setup:
+- Stand tall facing a stable bench or counter, hands resting on it.
+- Feet about hip-width apart.
+steps:
+- Rise up onto the toes as high as is comfortable.
+- Hold for a moment at the top.
+- Lower slowly, all the way down.
+- Repeat, then rest briefly and complete a second round.
+levels:
+- level: C
+  prescription: 10 repetitions, holding support; rest, then repeat
+  reps: 10
+  sets: 2
+  support: both hands
+- level: D
+  prescription: 10 repetitions with no support; rest, then repeat
+  reps: 10
+  sets: 2
+  support: none
+frequency: 3x/week with a rest day between.
+builds:
+- calf strength
+- push-off in walking
+- balance recovery
+joint_stress:
+- ankle_foot
+- calf
+balance_demand: 2
+impact: low
+cautions:
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+- condition: achilles tendinopathy
+  severity: caution
+  reason: Repeated plantarflexion loads the Achilles directly.
+  modification: Reduce range and repetitions; keep the movement pain-free and review if morning stiffness
+    increases.
+notes_for_coach: Otago starts this at level C — unlike most entries there is no level A or B, because
+  holding a bench and rising onto the toes is already the easiest usable form.
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, strengthening exercise 4 (calf raises)
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

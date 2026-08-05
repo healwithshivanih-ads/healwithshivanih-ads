@@ -1,0 +1,98 @@
+slug: stair-walking
+display_name: Stair Walking
+client_name: Practising the stairs
+modality: daily_activity
+intensity_tier: beginner
+position: walking
+summary: Deliberate, supported stair practice as prescribed activity rather than incidental movement.
+why_it_works: Stairs combine single-leg strength, balance and controlled lowering in the one task
+  people most fear losing. The Otago programme prescribes it individually ('as instructed') rather
+  than by a fixed count.
+setup:
+- Use a staircase with a secure handrail.
+- Good light; nothing on the steps.
+steps:
+- Go up leading with the stronger leg, holding the rail.
+- Come down leading with the weaker leg, still holding the rail.
+- Move at a pace that stays controlled — descending is where control matters most.
+- Build up the number of flights gradually, as agreed with the coach.
+levels:
+- level: A
+  prescription: As instructed — start with a single flight, holding the rail
+  support: handrail
+- level: D
+  prescription: As instructed, repeated
+  support: handrail
+frequency: As agreed; most people have stairs available daily.
+builds:
+- leg strength
+- confidence on stairs
+- functional independence
+joint_stress:
+- knee
+- hip
+- ankle_foot
+balance_demand: 2
+impact: low
+cautions:
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - osteoporosis
+  - osteopenia
+  - peripheral neuropathy
+  severity: caution
+  reason: Unsupported balance work is the point of the exercise and also its risk; the manual requires
+    confirming the person can recover balance with lower-limb strategies before prescribing any unsupported
+    level.
+  modification: Stay at the supported level until recovery strategies are confirmed. Work beside
+    a solid bench or kitchen counter, never a chair that slides.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+- condition: knee osteoarthritis
+  condition_aliases:
+  - knee pain
+  - knee oa
+  - chondromalacia
+  severity: caution
+  reason: Descending stairs loads the knee more than ascending.
+  modification: Descend one step at a time leading with the same leg, holding the rail; reduce flights
+    before reducing frequency.
+notes_for_coach: '''As instructed'' is the manual''s own wording — this is the entry where the dose
+  genuinely is individual. It is also the clearest example of the daily_activity modality: the movement
+  already exists in the day, and the prescription is to do it deliberately.'
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, balance retraining exercise 12 (stair walking)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

@@ -1,0 +1,115 @@
+slug: cool-down-stretch-sequence
+display_name: Cool Down and Held Stretch Sequence
+client_name: Winding down after moving
+aliases:
+- cool down
+- cooldown
+- post-workout stretch
+- stretching
+- static stretching
+modality: flexibility
+intensity_tier: beginner
+position: any_position
+equipment: []
+summary: The end of a session — a few minutes of easing off, then stretches held long enough to
+  matter, at the point when the muscles are warm.
+why_it_works: Stopping hard exercise abruptly lets blood pool in the legs, which is what produces
+  the light head afterwards, so the pulse is brought down gradually instead. Stretching is put here
+  rather than at the start because warm muscle lengthens more readily and there is reasonable doubt
+  that stretching a cold muscle before hard work helps at all. Hold time is what separates a stretch
+  that maintains range from one that builds it.
+setup:
+- Finish the main session and keep moving gently rather than sitting straight down.
+- Have a wall or counter within reach for the standing leg stretches.
+steps:
+- Walk about, or march on the spot, for three to five minutes, letting the effort taper off until
+  breathing is comfortable.
+- Then take one stretch per body part, moving slowly into each until a mild pull is felt — never
+  pain — and hold it still without bouncing.
+- Back of the upper arm - reach one arm overhead, bend the elbow so the hand drops behind the neck,
+  and ease the elbow back with the other hand.
+- Chest - stand tall, clasp the hands behind the back and lift them gently away.
+- Front of the thigh - stand on one leg holding support, catch the other ankle behind and draw the
+  heel towards the buttock, keeping the knees together.
+- Back of the thigh - step one foot forward with the leg straight and the toes up, then hinge
+  forward from the hip with the back flat.
+- Calf - step one foot well back, heel down, and lean into the front leg.
+- Breathe normally throughout. Holding the breath during a stretch is common and unhelpful.
+frequency: After every session.
+builds:
+- range of movement kept or gained
+- a gradual return to rest rather than an abrupt stop
+- less next-day stiffness
+easier_variant: null
+harder_variant: null
+loads_spine: false
+spinal_flexion: false
+joint_stress:
+- whole_body
+balance_demand: 1
+impact: none
+requires_floor_transfer: false
+cautions:
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - peripheral neuropathy
+  severity: caution
+  reason: The thigh and calf stretches are done standing on one leg or in a long stride, at the end
+    of a session when the legs are already tired.
+  modification: Keep a hand on a solid counter throughout, or take the thigh stretch lying on the
+    side instead. Never balance against a chair that can slide.
+- condition: hypermobility
+  condition_aliases:
+  - joint hypermobility
+  - ehlers-danlos
+  - hypermobile
+  - eds
+  - loose joints
+  severity: caution
+  reason: A hypermobile joint reaches a big range before anything is felt, so stretching to the
+    point of sensation can mean stretching past a safe end range.
+  modification: Stop at the first hint of a stretch rather than chasing the pull, and hold to
+    maintain range rather than to increase it. Strength work matters more than length here.
+- condition: acute injury
+  condition_aliases:
+  - recent injury
+  - muscle tear
+  - sprain
+  - strain
+  - post-surgical
+  severity: caution
+  reason: Stretching into recently injured tissue can pull on healing fibres.
+  modification: Leave the injured area out and stretch everything else, until a clinician has
+    cleared it.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+linked_to_symptoms:
+- joint-pain
+notes_for_coach: 'HOLD TIME IS THE PRESCRIPTION, and it is the bit clients get wrong. Fifteen to
+  twenty seconds MAINTAINS the range that exists. Twenty-five to thirty seconds, held until the
+  tension eases and then eased a little further, is what actually DEVELOPS range. A six-second
+  stretch — which is what most people do — is not long enough to change anything, and the book is
+  candid that it doubts the value of the brief pre-exercise version for that reason.
+
+  The stretch positions here are described from the book''s photographs plus standard practice; the
+  written cues for the individual stretches were not part of what was read, so they are deliberately
+  short and generic. Anyone who wants a fuller stretch library should build it from a source read in
+  full rather than expanding this entry.
+
+  Single-level and unprogressive, like the warm-up, so it is not withheld from a client with
+  post-exertional malaise. Do not add levels.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 3, Post-Workout — "Cool Down", "Maintenance Stretches", "Developmental
+    Stretches"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

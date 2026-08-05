@@ -1,0 +1,43 @@
+slug: neck-mobility
+display_name: Neck Mobility
+client_name: Gentle neck movements
+modality: flexibility
+intensity_tier: beginner
+position: standing
+summary: A gentle neck range-of-movement warm-up; first of the Otago flexibility set.
+why_it_works: Restores cervical range before balance work, which relies on head position for orientation.
+setup:
+- Stand tall, or sit if standing is unsteady.
+- Look straight ahead.
+steps:
+- Draw the chin gently back so the head slides straight backwards over the shoulders.
+- Release and return to the start. Move slowly and stay well inside comfort.
+- Repeat five times.
+levels:
+- level: A
+  prescription: 5 slow repetitions
+  reps: 5
+  support: none
+frequency: Before every session, as part of a 5-minute warm-up.
+builds:
+- neck range of movement
+joint_stress:
+- neck
+balance_demand: 0
+impact: none
+cautions:
+- condition: cervical radiculopathy
+  severity: caution
+  reason: Neck movement can reproduce radicular arm symptoms where a nerve root is already irritated.
+  modification: Do it seated, through a small range, and stop at the first hint of arm pain, tingling
+    or numbness rather than working through it.
+notes_for_coach: Relevant to Sudarshan (cl-008), who has cervical spondylotic radiculopathy — but
+  he should be on pacing first; this is here for when he is not.
+sources:
+- id: otago-exercise-programme-2003
+  location: Appendix 3, flexibility exercises — neck movements
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

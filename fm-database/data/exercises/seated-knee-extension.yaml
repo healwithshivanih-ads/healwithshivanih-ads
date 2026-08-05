@@ -1,0 +1,96 @@
+slug: seated-knee-extension
+display_name: Seated Knee Extension (Knee Extensor)
+client_name: Straightening the knee, sitting down
+modality: strength
+intensity_tier: beginner
+position: seated
+summary: Quadriceps strengthening against an ankle cuff weight — the only Otago strengthening exercise
+  performed sitting.
+why_it_works: The knee extensors are among the muscle groups most strongly tied to functional movement
+  and walking, and they weaken early. Loading them at a weight that fatigues in 8-10 repetitions
+  is what drives adaptation.
+setup:
+- Sit on a chair with the back well supported.
+- Strap the ankle cuff weight around one ankle.
+steps:
+- Straighten the leg out in front, taking two to three seconds to lift.
+- Lower it back down over four to five seconds — the lowering is where much of the work is.
+- Breathe out as you lift; never hold the breath.
+- Complete the repetitions, then move the weight to the other ankle and repeat.
+levels:
+- level: A
+  prescription: 10 repetitions each leg
+  reps: 10
+  sets: 1
+  support: seated, back supported
+  note: Choose the weight that makes 8-10 repetitions genuinely hard. From 80 years, start at 1-2
+    kg.
+- level: B
+  prescription: 2 sets of 10 each leg
+  reps: 10
+  sets: 2
+  support: seated, back supported
+  note: Two sets of 10 is the manual's cue that it is time to add weight.
+- level: C
+  prescription: 2 sets of 10 at a heavier cuff weight
+  reps: 10
+  sets: 2
+  support: seated, back supported
+- level: D
+  prescription: 2 sets of 10 at the heaviest tolerated cuff weight
+  reps: 10
+  sets: 2
+  support: seated, back supported
+  note: Trial participants worked up to 8 kg.
+frequency: 3x/week with a rest day between; 1-2 minutes rest between sets.
+equipment:
+- ankle cuff weights (adjustable, from 1 kg)
+builds:
+- quadriceps strength
+- walking capacity
+- stair confidence
+joint_stress:
+- knee
+balance_demand: 0
+impact: none
+harder_variant: chair-sit-to-stand
+cautions:
+- condition: osteoarthritis
+  condition_aliases:
+  - rheumatoid arthritis
+  - arthritis
+  - joint pain
+  - chronic pain
+  - fibromyalgia
+  severity: caution
+  reason: The Otago manual instructs people with rheumatoid arthritis, osteoarthritis or other painful
+    conditions to work in a pain-free range.
+  modification: Reduce range until the movement is pain-free rather than reducing frequency; stop
+    if muscle pain does not settle afterwards.
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: 'NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental
+    increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.'
+  modification: ''
+notes_for_coach: 'The most accessible strength entry in the catalogue: seated, back supported, no
+  balance demand, no spinal load. Appropriate for Manju (cl-016, 80-85) and for anyone whose knees
+  hurt on standing work. The manual explicitly permits doing it while watching television, which
+  is worth repeating to a client who believes exercise requires a dedicated hour.'
+sources:
+- id: otago-exercise-programme-2003
+  location: Table 4, strengthening exercise 1; Appendix 3 front knee strengthening
+- id: liftmor-watson-2018
+  location: 'Principle: progressive resistance is appropriate in low bone mass'
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

@@ -488,3 +488,119 @@ class MotionShape(str, Enum):
     load_release = "load_release"              # effort builds, then lets go
     still = "still"                            # imagery and grounding; nothing moves
     checklist = "checklist"                    # a protocol applied to an activity — no player
+
+
+# ─────────────────────────── Exercise (capacity) ────────────────────────────
+# Exercise is CAPACITY work — strength, stamina, balance, bone. That is the
+# line against SomaticPractice, which is REGULATION work. Some movements sit in
+# both libraries under different intent (cat-cow as a mobility exercise and as a
+# breath-paced regulation practice); that is deliberate, not a duplicate.
+
+
+class ExerciseModality(str, Enum):
+    """The six modalities of the FM exercise prescription matrix, plus pacing.
+
+    The first six are NOT invented here — they are the columns of the
+    `fm-exercise-prescription-matrix` source already in the catalogue, which
+    also carries the dosing claims (48h recovery between muscle groups, the
+    talk test, 150 min/week moderate, one-leg-20s as the intermediate balance
+    benchmark). Snapping to them means those claims cover this entity instead
+    of being restated.
+
+    `pacing` is the seventh and is NOT a low setting of `cardiovascular`. For a
+    client with post-exertional malaise, progression is the harm — see
+    `nice-ng206-me-cfs-2021`. Modelling it as an intensity would let a matcher
+    "progress" someone off it.
+    """
+    strength = "strength"
+    flexibility = "flexibility"
+    balance = "balance"
+    cardiovascular = "cardiovascular"
+    mind_body = "mind_body"                    # yoga, tai chi, qigong
+    daily_activity = "daily_activity"          # ADLs: housework, gardening, carrying, stairs
+    pacing = "pacing"                          # energy-envelope protocols; deliberately not a tier
+
+
+class ExerciseIntensityTier(str, Enum):
+    """Matches the prescription matrix's three tiers.
+
+    Per that source's own rule, intensity is matched PER MODALITY — someone can
+    be advanced at cardiovascular and beginner at balance. This tier describes
+    the exercise, not the person.
+    """
+    beginner = "beginner"
+    intermediate = "intermediate"
+    advanced = "advanced"
+
+
+class ExerciseImpact(str, Enum):
+    """Ground-reaction impact — a benefit and a cost at the same time.
+
+    Impact is what builds bone (see `liftmor-watson-2018`), and it is also what
+    hurts arthritic knees and provokes stress incontinence. It is recorded as a
+    plain property so a matcher can weigh it per client rather than assuming
+    either direction.
+    """
+    none = "none"
+    low = "low"                                # heel raises, walking
+    moderate = "moderate"                      # stamping, step-downs
+    high = "high"                              # hopping, jumping
+
+
+class ExercisePosition(str, Enum):
+    """Base position. Support (holding a chair vs nothing) is a LEVEL property,
+    not a position — the same exercise moves through supported and unsupported
+    forms as it progresses."""
+    seated = "seated"
+    standing = "standing"
+    lying_supine = "lying_supine"
+    lying_prone = "lying_prone"
+    side_lying = "side_lying"
+    four_point = "four_point"                  # hands and knees
+    walking = "walking"
+    any_position = "any_position"
+
+
+class ExerciseBodyRegion(str, Enum):
+    """Side-AGNOSTIC body regions, for joint-stress matching.
+
+    Deliberately not `SomaticBodyRegion`, which lumps hip, knee and ankle into
+    `legs_feet` — useless for deciding whether a squat is safe for someone who
+    ticked both knees. Deliberately side-agnostic too: an exercise stresses "the
+    knee", and the client record is what knows which knee hurts. The screen maps
+    `knee_left`/`knee_right` from the intake body map onto `knee` here.
+    """
+    neck = "neck"
+    shoulder = "shoulder"
+    elbow = "elbow"
+    wrist_hand = "wrist_hand"
+    upper_back = "upper_back"
+    mid_back = "mid_back"
+    lower_back = "lower_back"
+    sacrum_pelvis = "sacrum_pelvis"
+    hip = "hip"
+    thigh = "thigh"
+    knee = "knee"
+    calf = "calf"
+    ankle_foot = "ankle_foot"
+    chest = "chest"
+    abdomen = "abdomen"
+    whole_body = "whole_body"
+
+
+class ExerciseCautionSeverity(str, Enum):
+    """Two tiers, and the distinction is the whole safety model.
+
+    `_food_cautions.yaml` deliberately has no hard block — it only down-ranks,
+    because ragi is genuinely good for the same client it is cautioned for.
+    Exercise does not work that way. Loaded spinal flexion for someone with
+    vertebral osteoporosis is a fracture risk, not a trade-off, so this entity
+    needs a real block tier that a scorer cannot outvote.
+
+    block   — never surface for a client the condition applies to. Coach may
+              override deliberately; nothing automatic may.
+    caution — surface WITH the modification. A caution without a modification is
+              just "be careful", which is why the validator errors on one.
+    """
+    block = "block"
+    caution = "caution"
