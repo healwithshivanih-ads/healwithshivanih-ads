@@ -394,6 +394,8 @@ export function TodayScreen({
   practices,
   onTogglePractice,
   openGrocery,
+  feelToday,
+  onLogFeeling,
 }: {
   logged: Record<string, string>;
   onToggleSupp: (id: string) => void;
@@ -417,6 +419,9 @@ export function TodayScreen({
   practices: { id: string; name: string; when: string; details?: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
+  /** today's 1-5 energy tap is already in — hides the grow-today row */
+  feelToday: boolean;
+  onLogFeeling: () => void;
 }) {
   const data = useOchre();
   const hour = new Date().getHours();
@@ -499,6 +504,21 @@ export function TodayScreen({
           )}
         </div>
       </div>
+
+      {/* THE daily action — one ten-second tap that grows the tree, keeps the
+          streak alive, and gives the coach a mood datapoint. Shown until
+          today's tap is in, then it simply isn't there. Not dismissible and
+          not a question card: a single door into the existing energy sheet. */}
+      {!feelToday && (
+        <button className="grow-today" onClick={onLogFeeling}>
+          <span className="grow-today-ico" aria-hidden="true">🌱</span>
+          <span className="grow-today-body">
+            <span className="grow-today-title">Log today — your tree grows</span>
+            <span className="grow-today-meta">Ten seconds: how&apos;s your energy?</span>
+          </span>
+          <Icon name="arrowRight" size={16} />
+        </button>
+      )}
 
       {/* This week — guided tier's core card: the phase's actions. */}
       {data.guidedWeekly && (

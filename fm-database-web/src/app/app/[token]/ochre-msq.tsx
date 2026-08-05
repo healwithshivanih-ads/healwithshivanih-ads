@@ -34,9 +34,9 @@ export function MsqCard({ openMsq }: { openMsq: () => void }) {
           <Icon name="checkin" size={20} />
         </span>
         <span className="msq-cta-body">
-          <span className="msq-cta-title">Your symptom baseline</span>
+          <span className="msq-cta-title">Get your baseline score</span>
           <span className="msq-cta-meta">
-            5 minutes, once — then a quick retake every few weeks, so your progress shows up as a falling number.
+            5 minutes, once. Your symptoms become a single number — and the plan&apos;s whole job is to make it fall.
           </span>
         </span>
         <span className="chev">
@@ -88,18 +88,16 @@ export function MsqCard({ openMsq }: { openMsq: () => void }) {
         )}
       </div>
       <div className="msq-note">{band.note}</div>
-      <div className="msq-foot">
-        {canRetake ? (
+      {/* While the retake is locked the card shows nothing to do — the score
+          and its trend ARE the card. A countdown made it read as one more
+          questionnaire waiting to be owed (2026-08-05 audit). */}
+      {canRetake && (
+        <div className="msq-foot">
           <button className="msq-retake" onClick={openMsq}>
-            <Icon name="checkin" size={14} /> Retake your symptom check
+            <Icon name="checkin" size={14} /> See if your score dropped — retake (5 min)
           </button>
-        ) : (
-          <span className="muted" style={{ fontSize: 12 }}>
-            Next check unlocks in {RETAKE_DAYS - daysSince} day{RETAKE_DAYS - daysSince === 1 ? "" : "s"} — scores
-            need a few weeks to move.
-          </span>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

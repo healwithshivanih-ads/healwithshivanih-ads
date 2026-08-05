@@ -294,6 +294,9 @@ export async function buildGuidedAppData(
     // per-client plan, and an exercise session has to be screened against a
     // client record — so there is nothing to resolve here.
     exerciseSessions: [],
+    // Guided tier has no weekly check-in form (goCheckin routes to Coach), so
+    // there is never anything to pre-fill.
+    checkinPrefill: { supplements: {}, practices: {} },
     discoveryCredit: null,
     discoverySummary: null,
     discoveryStage: null,

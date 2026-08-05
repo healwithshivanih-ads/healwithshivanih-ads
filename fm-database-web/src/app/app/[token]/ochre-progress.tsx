@@ -548,19 +548,10 @@ export function ProgressScreen({
 
       {!data.guidedWeekly && (
       <Section title="Your journey">
+        {/* Real history only. A synthetic always-future "your reflection will
+            appear here" node sat at the top forever — one more thing owed,
+            permanently (2026-08-05 audit). The check-in has its own prompts. */}
         <div className="tl" style={{ marginTop: 4 }}>
-          <JourneyNode
-            item={{
-              kind: "checkin",
-              week: data.client.week,
-              title: "This week’s check-in",
-              when: "Open any time",
-              future: true,
-              summary: `Your week ${data.client.week} reflection will appear here once you check in.`,
-            }}
-            open={open === -1}
-            onToggle={() => setOpen(open === -1 ? -2 : -1)}
-          />
           {data.journey.map((it, i) => (
             <JourneyNode key={i} item={it} open={open === i} onToggle={() => setOpen(open === i ? -2 : i)} />
           ))}

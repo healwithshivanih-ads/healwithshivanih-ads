@@ -26,9 +26,17 @@ export function CheckinScreen({
   const data = useOchre();
   const [rating, setRating] = useState(0);
   const [feel, setFeel] = useState("");
-  const [suppAdh, setSuppAdh] = useState<Record<string, number>>({});
-  const [pracAdh, setPracAdh] = useState<Record<string, number>>({});
-  const [concerns, setConcerns] = useState("");
+  // Adherence starts PRE-FILLED from the daily tick log (2026-08-05 audit:
+  // the form asked her to hand-rate every supplement and practice the app
+  // had already watched her tick). She corrects; she doesn't re-enter.
+  const [suppAdh, setSuppAdh] = useState<Record<string, number>>(() => ({
+    ...data.checkinPrefill.supplements,
+  }));
+  const [pracAdh, setPracAdh] = useState<Record<string, number>>(() => ({
+    ...data.checkinPrefill.practices,
+  }));
+  const prefilledCount =
+    Object.keys(data.checkinPrefill.supplements).length + Object.keys(data.checkinPrefill.practices).length;
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
@@ -69,7 +77,10 @@ export function CheckinScreen({
           week: data.client.week,
           rating,
           feel,
-          concerns,
+          // The separate "new symptoms?" box was merged into the single
+          // note above (one question, not two) — field kept for the
+          // session-YAML shape the coach side reads.
+          concerns: "",
           supplements: data.supplements.map((s) => ({ name: s.name, status: ADHERENCE[suppAdh[s.id]] ?? null })),
           practices: data.practices.map((p) => ({ name: p.name, status: ADHERENCE_P[pracAdh[p.id]] ?? null })),
         }),
@@ -118,7 +129,7 @@ export function CheckinScreen({
           className="journal"
           style={{ marginTop: 14 }}
           rows={3}
-          placeholder={`Anything you'd like ${data.coach.name.split(" ")[0]} to know about this week…`}
+          placeholder={`Anything you'd like ${data.coach.name.split(" ")[0]} to know — wins, worries, new symptoms…`}
           value={feel}
           onChange={(e) => setFeel(e.target.value)}
         />
@@ -126,7 +137,11 @@ export function CheckinScreen({
 
       <div className="q-block">
         <div className="q-label">Your supplements</div>
-        <div className="q-hint">How did each one go this week?</div>
+        <div className="q-hint">
+          {prefilledCount > 0
+            ? "Pre-filled from your daily logs — tap any that look wrong."
+            : "How did each one go this week?"}
+        </div>
         <div className="card" style={{ padding: "4px 14px" }}>
           {data.supplements.map((s) => (
             <div className="adh-item" key={s.id}>
@@ -159,17 +174,6 @@ export function CheckinScreen({
             </div>
           ))}
         </div>
-      </div>
-
-      <div className="q-block">
-        <div className="q-label">Any new symptoms or concerns?</div>
-        <textarea
-          className="journal"
-          rows={3}
-          placeholder="Anything new in your body or mood — even small things…"
-          value={concerns}
-          onChange={(e) => setConcerns(e.target.value)}
-        />
       </div>
 
       {error && <div className="checkin-error">{error}</div>}
