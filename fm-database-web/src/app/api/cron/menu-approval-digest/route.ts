@@ -24,6 +24,10 @@ import nodemailer from "nodemailer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
 import { openRenewals } from "@/lib/fmdb/renewal-queue";
+import {
+  scanPlanChangesAction,
+  listPlanChangeDraftsAction,
+} from "@/lib/server-actions/plan-change-notify";
 
 export const dynamic = "force-dynamic";
 
@@ -61,7 +65,14 @@ export async function POST(req: NextRequest) {
   // the one thing that is time-critical.
   const renewals = openRenewals();
 
-  if (actionable.length === 0 && renewals.length === 0) {
+  // Scan for plan edits the client has to act on. Runs BEFORE the quiet-day
+  // guard for the same reason renewals do: a week with no menus due is exactly
+  // when a quick-edit goes unannounced. The scan is idempotent — it advances a
+  // per-plan snapshot, so a change is drafted once and never re-raised.
+  await scanPlanChangesAction();
+  const planChanges = await listPlanChangeDraftsAction();
+
+  if (actionable.length === 0 && renewals.length === 0 && planChanges.length === 0) {
     return NextResponse.json({ ok: true, sent: 0, reason: "nothing actionable (queue empty or all on travel)" });
   }
 
@@ -135,6 +146,43 @@ export async function POST(req: NextRequest) {
        <p style="color:#8d99ae;font-size:12px;">Nothing is drafted or sent automatically. Mark anyone who has decided not to continue and they stop appearing.</p>`
     : "";
 
+  // Plan-change emails awaiting approval. Folded in here for the same reason
+  // renewals are: this is already the message she opens in order to approve
+  // things, and a separate mail is one more thing to notice.
+  //
+  // Nothing here has been sent. Each row is a DRAFT built from a real edit to
+  // a published plan; approving it hands the email to the pending-sends queue.
+  // Rows that stop something are held until she types a line of context.
+  const planChangeHtml = planChanges.length
+    ? `<p style="margin-top:22px;"><strong>✉️ Plan updates to send (${planChanges.length})</strong> — a published plan changed in a way the client has to act on:</p><ul>${planChanges
+        .map((d) => {
+          const what = d.changes
+            .map((c) => {
+              switch (c.kind) {
+                case "supplement_added":
+                  return `+ ${esc(c.label)}`;
+                case "supplement_stopped":
+                  return `− ${esc(c.label)}`;
+                case "supplement_dose_changed":
+                  return `${esc(c.label)} — new amount`;
+                case "supplement_timing_changed":
+                  return `${esc(c.label)} — new timing`;
+                case "practice_added":
+                  return `+ ${esc(c.label)}`;
+                case "practice_stopped":
+                  return `− ${esc(c.label)}`;
+              }
+            })
+            .join(", ");
+          const held = d.needs_reason
+            ? ` <span style="color:#b3402a;">· needs a line of context before it can go</span>`
+            : "";
+          return `<li><strong>${esc(d.client_name)}</strong> — ${what}${held}</li>`;
+        })
+        .join("")}</ul>
+       <p style="color:#8d99ae;font-size:12px;">Nothing is sent automatically. Preview and approve each one; anything that stops a supplement or practice is held until you add a reason.</p>`
+    : "";
+
   const htmlBody = `
     <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.55;color:#2b2d42;">
       <p>Good morning 🌿</p>
@@ -146,6 +194,7 @@ export async function POST(req: NextRequest) {
       <p>${count} client menu${count === 1 ? "" : "s"} need your attention today.</p>
       ${sections.join("")}
       ${renewalHtml}
+      ${planChangeHtml}
       <p style="margin-top:18px;"><a href="${appUrl}/dashboard-v2"
         style="background:#6b8e6b;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;">Open the dashboard →</a></p>
       <p style="color:#8d99ae;font-size:12px;margin-top:20px;">Automated digest from your FM coach app · nothing reaches a client until you approve.</p>
