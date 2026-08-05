@@ -1,0 +1,36 @@
+slug: jumping-builds-hip-bone-density-postmenopause
+statement: Brief daily jumping improves hip bone mineral density in postmenopausal women,
+  with a dose response — 20 jumps twice a day produced greater gains than 10 jumps twice a
+  day over 16 weeks, and both jumping groups improved while non-jumpers lost bone.
+evidence_tier: plausible_emerging
+rationale: Sims cites a 2015 randomised study of 60 women in the American Journal of Health
+  Promotion. The dose-response direction (more jumps, more benefit) and the loss in the
+  control arm are the load-bearing details. Small trial, single site, surrogate endpoint
+  (BMD, not fracture) — hence plausible_emerging rather than strong. The mechanism is the
+  same osteogenic loading principle the LIFTMOR trials tested with heavy lifting plus
+  impact, which is independent corroboration of direction rather than of effect size.
+coaching_translation: Ten to twenty small jumps, twice a day, is enough to start putting
+  bone back into the hips after menopause — and doing none at all is the option that loses
+  bone. It is one of the few things in exercise where a tiny dose genuinely does the job.
+caveats:
+- 60 participants over 16 weeks; BMD is a surrogate for fracture risk, not a substitute.
+- Established osteoporosis with prior fragility fracture is a different question — Sims
+  herself defers to the treating doctor there.
+- Jumping is contraindicated or needs modification for pelvic-floor dysfunction, painful
+  knees and some spinal conditions; the benefit does not override the screen.
+linked_to_topics:
+- bone-health
+- menopause
+- mechanical-loading-bone-density
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms: []
+sources:
+- id: sims-next-level-2022
+  location: Chapter 7, "Create a Strong Skeleton" — citing a 2015 study of 60 women in the
+    American Journal of Health Promotion
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

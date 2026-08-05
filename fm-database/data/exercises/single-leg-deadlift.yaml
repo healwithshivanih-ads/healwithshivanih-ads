@@ -1,0 +1,141 @@
+slug: single-leg-deadlift
+display_name: Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)
+client_name: One-legged hip hinge
+aliases:
+- single leg deadlift
+- one leg deadlift
+- airplane hinge
+- single-leg hinge
+modality: strength
+intensity_tier: intermediate
+position: standing
+equipment: []
+summary: A hip hinge balanced on one leg, the other sweeping straight back — hamstring and
+  glute strength and single-leg balance trained in the same movement.
+why_it_works: The hinge is the pattern that protects the back when lifting anything off the
+  floor, and doing it on one leg exposes the side-to-side difference that a two-legged hinge
+  lets the stronger side hide. Because the base is one foot and the weight travels forward,
+  it trains balance under a moving load rather than balance while standing still — which is
+  what real stumbles involve.
+setup:
+- Stand tall with the feet under the hips, hands on the hips or one hand near a counter.
+- Pick a spot on the floor two metres ahead to keep the eyes on.
+steps:
+- Shift the weight onto the right leg, letting that knee bend softly.
+- Hinge at the hips, tipping the trunk forward while pressing the left leg straight back
+  behind you.
+- Stop when the trunk and the back leg make one line, roughly parallel with the floor, keeping
+  the back flat rather than rounded.
+- Squeeze the right buttock to return to standing. Complete the set, then change legs.
+levels:
+- level: '1'
+  prescription: '6 hinges each leg, both hands on a counter, back foot lightly touching down'
+  reps: 6
+  sets: 1
+  support: two hands on a solid counter
+- level: '2'
+  prescription: '8 hinges each leg, one hand resting on a counter'
+  reps: 8
+  sets: 1
+  support: one hand on a solid counter
+- level: '3'
+  prescription: '8-10 hinges each leg, no support, pausing one breath at the bottom'
+  reps: 10
+  sets: 2
+  support: none
+frequency: 2-3x/week with a rest day between.
+builds:
+- hamstring and buttock strength
+- the hip-hinge pattern that protects the lower back
+- single-leg balance under a moving weight
+- evenness between the two legs
+easier_variant: standing-hip-hinge
+harder_variant: null
+movement_patterns:
+- hinge
+- balance
+muscles_worked:
+- hamstrings
+- glutes
+- lower_back
+- ankles_feet
+loads_spine: false
+spinal_flexion: false
+impact: none
+balance_demand: 2
+joint_stress:
+- hip
+- knee
+- lower_back
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: A fixed repetition ladder is the progression shape NICE NG206 withdrew for ME/CFS.
+  modification: ''
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - peripheral neuropathy
+  severity: caution
+  reason: Single-leg stance with the trunk travelling forward moves the centre of mass well
+    outside the base of support.
+  modification: Keep both hands on a counter and let the back foot brush the floor throughout
+    (level 1). Unsupported only once one-leg-stand is confident.
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - disc
+  - sciatica
+  - lower back pain
+  severity: caution
+  reason: A hinge is the correct pattern for a sore back, but a hinge that rounds into flexion
+    is the provocative one, and fatigue on one leg makes rounding likelier.
+  modification: Reduce the depth so the back stays flat — halfway is a full repetition if flat
+    is what halfway allows. Stop the set when form goes, not when the count ends.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - hypertension
+  severity: caution
+  reason: Repeatedly lowering and raising the head relative to the heart can provoke
+    light-headedness.
+  modification: Move slowly, breathe out on the way up, and keep the trunk above parallel.
+refer_out: []
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- bone-health
+- menopause
+linked_to_symptoms:
+- muscle-weakness
+- back-pain
+notes_for_coach: 'Fills the catalogue''s real hinge gap. Before this, the only hinge patterns
+  were the two-legged standing-hip-hinge and the floor bridge — nothing trained the hinge and
+  balance together, which is the combination that actually happens when someone picks a bag
+  off the floor while stepping.
+
+  It is also the gentlest way to find a side-to-side difference: if one side wobbles and the
+  other does not, that asymmetry was there before you asked, and it is worth knowing about.
+
+  Sims uses it as a loaded barbell variation; here it is unloaded on purpose. The balance
+  demand of the unloaded version is already the hard part for this roster, and adding weight
+  is a referral, not a level.'
+sources:
+- id: sims-next-level-2022
+  location: Chapter 6, deadlift variations — Single Leg Deadlift
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

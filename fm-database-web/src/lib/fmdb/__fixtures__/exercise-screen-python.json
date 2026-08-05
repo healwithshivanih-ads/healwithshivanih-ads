@@ -1,6 +1,6 @@
 {
   "_note": "Captured from fmdb.plan.exercise_screen. Regenerate by hand; see module docstring.",
-  "exercise_count": 40,
+  "exercise_count": 44,
   "cases": {
     "pem": [
       {
@@ -572,6 +572,69 @@
         "start_reason": ""
       },
       {
+        "slug": "side-hops",
+        "display_name": "Side Hops (Lateral Bound over an Object)",
+        "client_name": "Little sideways hops",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "A fixed-repetition jumping ladder is the progression shape NICE NG206 withdrew for ME/CFS.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "single-leg-deadlift",
+        "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
+        "client_name": "One-legged hip hinge",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "A fixed repetition ladder is the progression shape NICE NG206 withdrew for ME/CFS.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "speed-skater",
+        "display_name": "Speed Skater (Lateral Bound with Sweep)",
+        "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "Repetition-laddered power work is the shape NICE NG206 withdrew for ME/CFS.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "squat-jumps",
         "display_name": "Squat Jumps (Jump Squats)",
         "client_name": "Jump squats",
@@ -721,6 +784,23 @@
             "label": "hip",
             "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
             "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "pelvic-floor-canister",
+        "display_name": "Pelvic Floor \"Canister\" Work (Kegels, Elevator Abs, Child's Pose Breathing)",
+        "client_name": "Pelvic floor work",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "post-exertional malaise",
+            "detail": "The exercise itself is tiny, but a daily fixed-repetition target is still a progression ladder, and the floor position for two of the parts costs energy.",
+            "modification": "Do the squeezes only, in whatever position is already being used, with no daily count to hit."
           }
         ],
         "start_level": null,
@@ -1181,6 +1261,23 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "single-leg-deadlift",
+        "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
+        "client_name": "One-legged hip hinge",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "uncontrolled hypertension",
+            "detail": "Repeatedly lowering and raising the head relative to the heart can provoke light-headedness.",
+            "modification": "Move slowly, breathe out on the way up, and keep the trunk above parallel."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "squat-jumps",
         "display_name": "Squat Jumps (Jump Squats)",
         "client_name": "Jump squats",
@@ -1431,6 +1528,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "pelvic-floor-canister",
+        "display_name": "Pelvic Floor \"Canister\" Work (Kegels, Elevator Abs, Child's Pose Breathing)",
+        "client_name": "Pelvic floor work",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "seated-knee-extension",
         "display_name": "Seated Knee Extension (Knee Extensor)",
         "client_name": "Straightening the knee, sitting down",
@@ -1438,6 +1545,26 @@
         "verdict": "clear",
         "notes": [],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-hops",
+        "display_name": "Side Hops (Lateral Bound over an Object)",
+        "client_name": "Little sideways hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "speed-skater",
+        "display_name": "Speed Skater (Lateral Bound with Sweep)",
+        "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       }
     ],
@@ -1783,6 +1910,63 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "side-hops",
+        "display_name": "Side Hops (Lateral Bound over an Object)",
+        "client_name": "Little sideways hops",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "single-leg-deadlift",
+        "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
+        "client_name": "One-legged hip hinge",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          },
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "speed-skater",
+        "display_name": "Speed Skater (Lateral Bound with Sweep)",
+        "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 3/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "squat-jumps",
         "display_name": "Squat Jumps (Jump Squats)",
         "client_name": "Jump squats",
@@ -1969,6 +2153,16 @@
         "notes": [],
         "start_level": "1",
         "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "pelvic-floor-canister",
+        "display_name": "Pelvic Floor \"Canister\" Work (Kegels, Elevator Abs, Child's Pose Breathing)",
+        "client_name": "Pelvic floor work",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
       },
       {
         "slug": "seated-knee-extension",
@@ -2455,6 +2649,57 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "side-hops",
+        "display_name": "Side Hops (Lateral Bound over an Object)",
+        "client_name": "Little sideways hops",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "single-leg-deadlift",
+        "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
+        "client_name": "One-legged hip hinge",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee, lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "speed-skater",
+        "display_name": "Speed Skater (Lateral Bound with Sweep)",
+        "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "squat-jumps",
         "display_name": "Squat Jumps (Jump Squats)",
         "client_name": "Jump squats",
@@ -2625,6 +2870,16 @@
         "notes": [],
         "start_level": "C",
         "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "pelvic-floor-canister",
+        "display_name": "Pelvic Floor \"Canister\" Work (Kegels, Elevator Abs, Child's Pose Breathing)",
+        "client_name": "Pelvic floor work",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
       },
       {
         "slug": "toe-raises",
@@ -2949,6 +3204,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "pelvic-floor-canister",
+        "display_name": "Pelvic Floor \"Canister\" Work (Kegels, Elevator Abs, Child's Pose Breathing)",
+        "client_name": "Pelvic floor work",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "prone-back-extension",
         "display_name": "Prone Back Extension (Dorsal Raise)",
         "client_name": "Lifting your chest off the floor",
@@ -2966,6 +3231,36 @@
         "verdict": "clear",
         "notes": [],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-hops",
+        "display_name": "Side Hops (Lateral Bound over an Object)",
+        "client_name": "Little sideways hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "single-leg-deadlift",
+        "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
+        "client_name": "One-legged hip hinge",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "speed-skater",
+        "display_name": "Speed Skater (Lateral Bound with Sweep)",
+        "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {
@@ -3325,6 +3620,40 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "side-hops",
+        "display_name": "Side Hops (Lateral Bound over an Object)",
+        "client_name": "Little sideways hops",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Sideways landings load the knee across its line rather than through it.",
+            "modification": "Step over instead of hopping, and keep the object low."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "speed-skater",
+        "display_name": "Speed Skater (Lateral Bound with Sweep)",
+        "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "One knee absorbs the whole landing, across its line.",
+            "modification": "Step the pattern instead of bounding, and keep the sweep shallow."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "standing-hip-abduction",
         "display_name": "Standing Hip Abduction (Hip Abductor)",
         "client_name": "Lifting the leg out to the side",
@@ -3563,9 +3892,29 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "pelvic-floor-canister",
+        "display_name": "Pelvic Floor \"Canister\" Work (Kegels, Elevator Abs, Child's Pose Breathing)",
+        "client_name": "Pelvic floor work",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "prone-back-extension",
         "display_name": "Prone Back Extension (Dorsal Raise)",
         "client_name": "Lifting your chest off the floor",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "single-leg-deadlift",
+        "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
+        "client_name": "One-legged hip hinge",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -3905,6 +4254,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "pelvic-floor-canister",
+        "display_name": "Pelvic Floor \"Canister\" Work (Kegels, Elevator Abs, Child's Pose Breathing)",
+        "client_name": "Pelvic floor work",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "prone-back-extension",
         "display_name": "Prone Back Extension (Dorsal Raise)",
         "client_name": "Lifting your chest off the floor",
@@ -3922,6 +4281,36 @@
         "verdict": "clear",
         "notes": [],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-hops",
+        "display_name": "Side Hops (Lateral Bound over an Object)",
+        "client_name": "Little sideways hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "single-leg-deadlift",
+        "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
+        "client_name": "One-legged hip hinge",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "speed-skater",
+        "display_name": "Speed Skater (Lateral Bound with Sweep)",
+        "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {

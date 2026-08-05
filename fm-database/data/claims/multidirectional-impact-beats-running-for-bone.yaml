@@ -1,0 +1,35 @@
+slug: multidirectional-impact-beats-running-for-bone
+statement: Bone adapts to novel, multi-directional loading; running is comparatively poor
+  at building bone because it repeats the one-directional stress the skeleton already meets
+  in walking and daily activity.
+evidence_tier: plausible_emerging
+rationale: Sims argues this from the bone-remodelling literature — the skeleton responds to
+  strain it is not already adapted to, so sideways and rotational impacts add stimulus that
+  more forward running does not. Presented as a research-backed generalisation rather than
+  a single named trial, so it is tiered as plausible rather than strong. It is clinically
+  useful precisely because it contradicts the common assumption that a walking or running
+  habit covers the bone agenda.
+coaching_translation: Your bones get stronger from loading they are not used to. Walking and
+  running push in one direction, so more of them adds fitness but not much bone. Hopping
+  sideways, or any movement that lands from a new angle, is what asks the skeleton to
+  rebuild.
+caveats:
+- A generalisation from bone-adaptation principles, not one trial with an effect size.
+- Non-impact sports (swimming, cycling) are explicitly not a substitute for this stimulus.
+- Multi-directional landing raises the balance and knee demand at the same time; screen for
+  falls risk and joint pain before adding it.
+linked_to_topics:
+- bone-health
+- mechanical-loading-bone-density
+- menopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms: []
+sources:
+- id: sims-next-level-2022
+  location: Chapter 7, "Create a Strong Skeleton"
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

@@ -1,0 +1,144 @@
+slug: side-hops
+display_name: Side Hops (Lateral Bound over an Object)
+client_name: Little sideways hops
+aliases:
+- lateral hops
+- side hop
+- side to side jumps
+- towel hops
+modality: strength
+intensity_tier: intermediate
+position: standing
+equipment:
+- a rolled-up towel or similar low object
+summary: Small hops sideways over a rolled towel and straight back — the sideways landing
+  that vertical jumping never provides.
+why_it_works: Bone rebuilds in response to loading it is not already adapted to, and almost
+  everything a person does in a day — walking, stairs, running — pushes in the same forward
+  line. Hopping sideways lands the hip and shin from a new angle, which is the novel stimulus
+  the bone literature asks for. It also trains the sideways weight-shift that catches a
+  stumble, which is a falls skill nothing else in this catalogue rehearses.
+setup:
+- Put a rolled towel on the floor and stand beside it, feet under the hips.
+- Clear the space; do this on a firm, non-slip floor in supportive shoes.
+- Stand within reach of a wall or counter if the sideways landing feels uncertain.
+steps:
+- Bend the knees, swing the arms back, and hop sideways over the towel.
+- Land soft on both feet with the knees bending to absorb it.
+- Immediately hop back to where you started, keeping a steady rhythm.
+levels:
+- level: '1'
+  prescription: 'Step over and back, no hop — 10 each way, hand on a counter'
+  reps: 10
+  sets: 1
+  support: one hand on a solid counter
+- level: '2'
+  prescription: '2 sets of 10 hops over a low towel, no support'
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: '45 seconds of continuous hops, rest 15 seconds, up to 3 rounds'
+  sets: 3
+  support: none
+frequency: 3x/week, a few minutes is enough — this is a bone stimulus, not a workout.
+builds:
+- bone stimulus from a direction daily life never loads
+- sideways balance and stumble recovery
+- calf and outer-hip spring
+easier_variant: sideways-walking
+harder_variant: speed-skater
+movement_patterns:
+- jump
+- balance
+muscles_worked:
+- calves
+- quadriceps
+- glutes
+- hip_abductors
+- ankles_feet
+loads_spine: true
+impact: high
+balance_demand: 2
+joint_stress:
+- ankle_foot
+- knee
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: A fixed-repetition jumping ladder is the progression shape NICE NG206 withdrew for
+    ME/CFS.
+  modification: ''
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - pelvic organ prolapse
+  - postnatal
+  severity: caution
+  reason: Every landing is an intra-abdominal pressure pulse, and a sideways landing is less
+    controlled than a straight one.
+  modification: Use the step-over version (level 1), and build pelvic-floor-canister first —
+    the hop is worth having, and it is worth waiting for.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - peripheral neuropathy
+  severity: caution
+  reason: Landing sideways on an unfamiliar line is the balance demand this exercise exists
+    to train, which also makes it the one to introduce carefully.
+  modification: Step over rather than hop, beside a counter, until the sideways weight-shift
+    is confident. Lower the object before raising the effort.
+- condition: severe osteoporosis
+  condition_aliases:
+  - fragility fracture
+  - vertebral fracture
+  - t-score below -3
+  severity: caution
+  reason: Impact loading builds bone at moderate loss but carries fracture risk once fragility
+    fractures have occurred.
+  modification: Step-over version only; the impact decision belongs with the treating doctor.
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - arthritis
+  - joint pain
+  - meniscus
+  severity: caution
+  reason: Sideways landings load the knee across its line rather than through it.
+  modification: Step over instead of hopping, and keep the object low.
+refer_out: []
+linked_to_topics:
+- bone-health
+- menopause
+linked_to_symptoms: []
+notes_for_coach: 'THE ONLY MULTI-DIRECTIONAL IMPACT IN THE CATALOGUE, and that is the entire
+  point of shipping it. Sims argues that running and walking are poor bone stimuli precisely
+  because they repeat the forward line the skeleton is already adapted to; sideways landing
+  is novel loading, and novel is what bone answers. For a perimenopausal client with
+  low-normal bone density this earns its place ahead of more walking.
+
+  Keep the object genuinely low — a rolled towel, not a step. The height adds nothing to the
+  bone stimulus and everything to the fall risk.'
+sources:
+- id: sims-next-level-2022
+  location: Chapter 7, beginner plyometric circuit — Side Hops
+- id: liftmor-watson-2018
+  location: Impact-loading rationale
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

@@ -1,0 +1,41 @@
+slug: sprint-intervals-reduce-visceral-fat-postmenopause
+statement: Very short sprint-interval training reduces visceral abdominal fat and improves
+  body composition in postmenopausal women more effectively than an equal or greater volume
+  of moderate-intensity cardio — in one trial, 8-second sprints alternating with 12 seconds
+  easy, twice weekly for 16 weeks, cut visceral abdominal fat by 24 percent with no dietary
+  change, while the moderate-cardio arm did not.
+evidence_tier: plausible_emerging
+rationale: Sims cites two named trials — a 2019 study in Medicine & Science in Sports &
+  Exercise (women 47-59, 8 weeks, fat lost and aerobic fitness up 12 percent) and a second
+  in older postmenopausal women with type 2 diabetes where only the sprint arm lost visceral
+  fat. Consistent direction across two populations with a plausible mechanism (high-intensity
+  work depletes glycogen, shifting resting substrate use toward fat). Tiered plausible — small
+  trials, cycling-specific, and body composition is not a health endpoint by itself.
+coaching_translation: Very short, very hard efforts — eight seconds flat out, twelve seconds
+  easy, repeated for about twenty minutes twice a week — shifted deep belly fat in
+  postmenopausal women when the same time spent at a steady moderate pace did not. It is one
+  of the few times in exercise where less time and more intensity genuinely wins.
+caveats:
+- Trials used stationary cycling; Sims notes cycling reaches the needed intensity with less
+  strain on muscles and connective tissue than running for this population.
+- Going 'as hard as you can' is only safe once a base exists — this is not a first prescription for
+  a deconditioned or unwell client, and never for post-exertional malaise.
+- Dose is deliberately small — one to three sessions a week, with genuine easy days between.
+  More is not better and Sims says so directly.
+linked_to_topics:
+- menopause
+- insulin-resistance
+- bone-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms:
+- weight-gain
+- fatigue
+sources:
+- id: sims-next-level-2022
+  location: Chapter 5, "Why SIT Is the Best Form of HIIT for Menopause"
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

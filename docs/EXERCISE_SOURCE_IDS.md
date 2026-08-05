@@ -19,6 +19,7 @@ parallel record.
 | `nice-ng206-me-cfs-2021` | NICE ME/CFS guideline. Withdrew graded exercise therapy; PEM as cardinal symptom. | NICE overview + recommendations pages |
 | `cdc-steadi-falls-assessment` | CDC STEADI — 30-second chair stand, 4-stage balance test. | STEADI clinical-resources pages |
 | `martinoli-5-minute-fitness-2011` | Zen Martinoli, *5 Minute Fitness* (Metro/John Blake, 2011). Equipment-free bodyweight progressions — the rungs ABOVE Otago. | Chapters 1-3 in full + most of the Ch 4 exercise index, from the PDF |
+| `sims-next-level-2022` | Stacy Sims, *Next Level* (Rodale, 2022). Menopause-specific training: SIT, heavy lifting, plyometrics, bone. | Chapters 5, 6, 7, 16, 19 in full + ch 14 for its exercise list, from the PDF |
 
 Each record's `notes` field states exactly how much was read. If the book chat reads
 a primary document more thoroughly, **update the existing record's notes and
@@ -31,7 +32,7 @@ publisher; leave a field null and say so in `notes` rather than assert it.
 
 | Reserved ID | Book | Why it's wanted |
 |---|---|---|
-| `sims-next-level-2022` | Stacy Sims — *Next Level* | Perimenopause/menopause-specific training. Closest fit to a roster that is mostly women 40–55. |
+
 | `nelson-strong-women-strong-bones` | Miriam Nelson — *Strong Women, Strong Bones* | The accessible companion to the LIFTMOR loading evidence. |
 | `lehman-recovery-strategies` | Greg Lehman — *Recovery Strategies* (free PDF) | Pain-informed movement, for the 10 of 16 clients with tagged body pain. |
 

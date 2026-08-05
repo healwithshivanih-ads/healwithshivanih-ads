@@ -1,0 +1,40 @@
+slug: chronic-moderate-cardio-raises-cortisol-menopause
+statement: Long steady endurance exercise stimulates a cortisol rise that tends to linger,
+  and through the menopause transition — when cortisol is already rising — a training diet of
+  chronic moderate-intensity work can work against the body-composition and metabolic
+  outcomes it is undertaken for.
+evidence_tier: fm_specific_thin
+rationale: Sims supports this with hair-cortisol sampling in endurance athletes correlating
+  with training volume, plus the established observation that visceral fat carries roughly
+  four times the cortisol receptor density of subcutaneous fat. That is a coherent mechanism
+  but the causal chain from training volume to menopausal fat gain is inference, not a trial
+  — hence the thinnest tier. Recorded because the practical instruction it produces (replace
+  some steady sessions with short hard ones and genuinely easy ones, rather than adding
+  volume) is safe and reversible even if the mechanism is later refined.
+coaching_translation: Long, moderately-hard sessions — the "kinda hard, kinda not" zone — raise
+  the stress hormone and keep it raised, at a stage of life when it is already climbing. The
+  fix is not more of them. It is to make the hard days genuinely hard, the easy days genuinely
+  easy, and to stop living in between.
+caveats:
+- An argument about the BALANCE of training, not against endurance exercise, which Sims
+  explicitly keeps in the plan.
+- Mechanistic inference; no trial randomised menopausal women to training distributions and
+  measured fat outcomes.
+- Says nothing about clients whose problem is doing too little — for them, any consistent
+  movement is the win, and this nuance is a distraction.
+linked_to_topics:
+- menopause
+- cortisol-elevation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms:
+- weight-gain
+- fatigue
+sources:
+- id: sims-next-level-2022
+  location: Chapter 5, on cortisol, endurance volume and the SIT alternative
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani
