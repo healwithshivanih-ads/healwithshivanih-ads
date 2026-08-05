@@ -3,17 +3,20 @@
 /* ======================================================================
    The Ochre Tree — one mind-body entry point on Today
 
-   Replaces the stack of four launch cards (breathing, EFT, sleep, somatic)
-   with a single "How are you feeling right now?" card. The client picks a
-   state, not a technique — she shouldn't have to know that tapping is for
-   heaviness and a wind-down is for a racing mind.
+   A single quiet "Find a reset" line, collapsed by default. The earlier
+   version was an always-open "How are you feeling right now?" card — a
+   question the app asked unprompted, every day, whose answer went nowhere
+   (2026-08-05 audit: fourth of five feeling-asks in the app). Now the
+   client opens it when SHE wants a reset; the chips only appear on request.
+   She still picks a state, not a technique — she shouldn't have to know
+   that tapping is for heaviness and a wind-down is for a racing mind.
 
    The routing lives in mind-body-routing.ts and is pure, so it can be tested
    without a browser. This file is presentation only.
 
    A practice the coach linked specifically (a catalogue somatic practice,
-   resolved by slug) keeps its own line below the card — it's the one thing
-   here chosen FOR this client, and folding it into the chips would bury it.
+   resolved by slug) keeps its own line above — it's the one thing here
+   chosen FOR this client, and folding it into the chips would bury it.
    ====================================================================== */
 
 import { useState } from "react";
@@ -37,12 +40,24 @@ export function MindBodyEntryCard({
   have: Available;
   onOpen: (route: Route) => void;
 }) {
+  const [open, setOpen] = useState(false);
   const [picked, setPicked] = useState<FeelingKey | null>(null);
   const options = routableFeelings(have);
 
-  // Nothing prescribed and nothing unlocked — no card at all rather than an
-  // empty question the client can't answer.
+  // Nothing prescribed and nothing unlocked — no line at all rather than a
+  // door that opens onto an empty room.
   if (options.length === 0) return null;
+
+  // Collapsed: one quiet line, no question. The client opts in.
+  if (!open) {
+    return (
+      <button type="button" className="mbe-link" onClick={() => setOpen(true)}>
+        <Icon name="sparkle" size={13} />
+        <span>Rough moment? Find a reset</span>
+        <Icon name="arrowRight" size={14} />
+      </button>
+    );
+  }
 
   const active = options.find((o) => o.feeling.key === picked) ?? null;
 
@@ -51,7 +66,7 @@ export function MindBodyEntryCard({
       <div className="mbe-kicker">
         <Icon name="sparkle" size={13} /> Mind &amp; body
       </div>
-      <h3 className="mbe-q">How are you feeling right now?</h3>
+      <p className="mbe-lead">Tap what&apos;s closest — the right reset finds you.</p>
 
       <div className="mbe-chips">
         {options.map(({ feeling }) => {

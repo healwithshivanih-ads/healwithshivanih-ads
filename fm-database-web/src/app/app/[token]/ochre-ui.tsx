@@ -680,34 +680,11 @@ export function FoodTiers() {
       if (lf.enjoy.some((g) => g.items.some(match) || match(g.label))) hit = "enjoy";
       else if (lf.easy.some(match)) hit = "easy";
     }
-    return (
-      <div>
-        <div className="food-search">
-          <Icon name="search" size={17} style={{ color: "var(--muted)" }} />
-          <input className="journal" placeholder="Is this okay to eat?" value={q} onChange={(e) => setQ(e.target.value)} />
-          {q && (
-            <button className="fs-clear" onClick={() => setQ("")}>
-              ✕
-            </button>
-          )}
-        </div>
-        {query && (
-          <div className={"food-verdict " + (hit === "enjoy" ? "forest" : hit === "easy" ? "ochre" : "none")}>
-            {hit === "enjoy" ? (
-              <span>
-                <Icon name="check" size={15} /> <strong>Yes — build your meals around it.</strong>
-              </span>
-            ) : hit === "easy" ? (
-              <span>
-                <Icon name="moon" size={15} /> <strong>Go easy on this for now.</strong>
-              </span>
-            ) : (
-              <span>
-                <Icon name="sparkle" size={15} /> Not on your list — keep the shape of the plate, or ask the co-pilot.
-              </span>
-            )}
-          </div>
-        )}
+    // The search answers the everyday question; the full lists are reference,
+    // so they stay folded until asked for. A live query shows them directly —
+    // the filtered lists ARE the search results.
+    const lists = (
+      <>
         <div className="tier forest">
           <div className="tier-head">
             <span className="tier-bar" /> {lf.enjoyTitle}
@@ -742,6 +719,49 @@ export function FoodTiers() {
               ))}
             </div>
           </div>
+        )}
+      </>
+    );
+    return (
+      <div>
+        <div className="food-search">
+          <Icon name="search" size={17} style={{ color: "var(--muted)" }} />
+          <input className="journal" placeholder="Is this okay to eat?" value={q} onChange={(e) => setQ(e.target.value)} />
+          {q && (
+            <button className="fs-clear" onClick={() => setQ("")}>
+              ✕
+            </button>
+          )}
+        </div>
+        {query && (
+          <div className={"food-verdict " + (hit === "enjoy" ? "forest" : hit === "easy" ? "ochre" : "none")}>
+            {hit === "enjoy" ? (
+              <span>
+                <Icon name="check" size={15} /> <strong>Yes — build your meals around it.</strong>
+              </span>
+            ) : hit === "easy" ? (
+              <span>
+                <Icon name="moon" size={15} /> <strong>Go easy on this for now.</strong>
+              </span>
+            ) : (
+              <span>
+                <Icon name="sparkle" size={15} /> Not on your list — keep the shape of the plate, or ask the co-pilot.
+              </span>
+            )}
+          </div>
+        )}
+        {query ? (
+          lists
+        ) : (
+          <details className="list-fold">
+            <summary>
+              Browse your full lists
+              <span className="lf-chev">
+                <Icon name="chev" size={15} />
+              </span>
+            </summary>
+            {lists}
+          </details>
         )}
       </div>
     );
@@ -781,26 +801,45 @@ export function FoodTiers() {
           )}
         </div>
       )}
-      {(["eat", "sometimes", "avoid"] as const).map((tier) => {
-        const items = query ? foods[tier].filter(match) : foods[tier];
-        if (query && !items.length) return null;
-        const m = TIER_META[tier];
-        return (
-          <div className={"tier " + m.tone} key={tier}>
-            <div className="tier-head">
-              <span className="tier-bar" /> {m.label}
-            </div>
-            <div className="pill-list">
-              {items.map((f, i) => (
-                <span className={"food-pill tier-pill " + m.tone} key={i}>
-                  {f}
-                </span>
-              ))}
-            </div>
-          </div>
+      {(() => {
+        const lists = (
+          <>
+            {(["eat", "sometimes", "avoid"] as const).map((tier) => {
+              const items = query ? foods[tier].filter(match) : foods[tier];
+              if (query && !items.length) return null;
+              const m = TIER_META[tier];
+              return (
+                <div className={"tier " + m.tone} key={tier}>
+                  <div className="tier-head">
+                    <span className="tier-bar" /> {m.label}
+                  </div>
+                  <div className="pill-list">
+                    {items.map((f, i) => (
+                      <span className={"food-pill tier-pill " + m.tone} key={i}>
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+            <div className="tier-why">{planRef.avoidWhy}</div>
+          </>
         );
-      })}
-      <div className="tier-why">{planRef.avoidWhy}</div>
+        return query ? (
+          lists
+        ) : (
+          <details className="list-fold">
+            <summary>
+              Browse your full lists
+              <span className="lf-chev">
+                <Icon name="chev" size={15} />
+              </span>
+            </summary>
+            {lists}
+          </details>
+        );
+      })()}
     </div>
   );
 }

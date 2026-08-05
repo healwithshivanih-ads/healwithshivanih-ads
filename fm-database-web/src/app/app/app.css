@@ -249,6 +249,18 @@
 .plan-collapse[open] .pc-chev { transform: rotate(90deg); }
 .plan-collapse-body { padding: 0 12px 14px; }
 
+/* light inner fold — for long reference lists inside a section (food lists,
+   focus-card blocks). Same disclosure idea as .plan-collapse, no card chrome. */
+.list-fold { margin-top: 6px; }
+.list-fold > summary {
+  display: flex; align-items: center; gap: 7px; cursor: pointer; list-style: none;
+  user-select: none; padding: 9px 2px; font-size: 13.5px; font-weight: 500;
+  color: var(--forest-deep);
+}
+.list-fold > summary::-webkit-details-marker { display: none; }
+.list-fold .lf-chev { margin-left: auto; color: var(--muted); transition: transform .18s ease; display: inline-flex; }
+.list-fold[open] .lf-chev { transform: rotate(90deg); }
+
 /* ---- supplement tiers on the Plan tab -------------------------------- */
 .supp-group-label {
   display: flex; align-items: center; gap: 6px;
@@ -2065,14 +2077,21 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
   background: var(--paper-2); border-radius: var(--r-card);
   box-shadow: var(--shadow-card);
 }
+/* collapsed entry — a quiet line, not a card that asks */
+.mbe-link {
+  margin-top: 10px; display: inline-flex; align-items: center; gap: 7px;
+  border: none; background: none; cursor: pointer; padding: 6px 2px;
+  font-family: var(--sans); font-size: 13.5px; font-weight: 500;
+  color: var(--forest-deep);
+}
+.mbe-link:active { opacity: .7; }
+.mbe-lead {
+  margin: 6px 0 11px; font-size: 13px; line-height: 1.45; color: var(--muted);
+}
 .mbe-kicker {
   display: flex; align-items: center; gap: 5px;
   font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
   color: var(--ochre);
-}
-.mbe-q {
-  font-family: var(--serif); font-weight: 400; font-size: 17px; line-height: 1.25;
-  color: var(--ink); margin: 6px 0 11px;
 }
 .mbe-chips { display: flex; flex-wrap: wrap; gap: 7px; }
 .mbe-chip {
