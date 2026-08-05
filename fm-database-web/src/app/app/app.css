@@ -2523,3 +2523,8 @@ video.ex-figure { display: block; height: auto; border-radius: 10px; background:
   margin-top: 12px; border: none; background: none; color: rgba(242,237,226,.5);
   font-size: 13px; cursor: pointer; text-decoration: underline;
 }
+
+.ex-kit {
+  font-size: 13px; color: rgba(242,237,226,.55); margin: 0 0 10px;
+  max-width: 340px; text-align: center;
+}

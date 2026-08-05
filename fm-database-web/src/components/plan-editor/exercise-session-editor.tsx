@@ -207,6 +207,11 @@ export function ExerciseSessionEditor({
 
             {/* The caution's own modification — the reason a caution is offered
                 rather than withheld. Worth reading before prescribing. */}
+            {opt && opt.equipment.length > 0 && (
+              <p className="w-full text-[10px] text-amber-800 leading-snug">
+                needs: {opt.equipment.join(" · ")}
+              </p>
+            )}
             {opt?.notes?.some((n) => n.modification) && (
               <p className="w-full text-[10px] text-amber-800 leading-snug">
                 {opt.notes.filter((n) => n.modification).map((n) => n.modification).join(" ")}
@@ -277,6 +282,14 @@ export function ExerciseSessionEditor({
                         {o.modality}
                       </span>
                     </span>
+                    {/* Kit, at the moment of choosing. Three Otago leg exercises
+                        need ankle cuff weights, and without this the first time
+                        anyone finds out is when the client reads step two. */}
+                    {o.equipment.length > 0 && (
+                      <span className="block text-[10px] mt-0.5 text-amber-800">
+                        needs: {o.equipment.join(" · ")}
+                      </span>
+                    )}
                     {/* For a blocked entry the REASON is the whole point of
                         still showing it. */}
                     {blocked && o.notes[0] && (
