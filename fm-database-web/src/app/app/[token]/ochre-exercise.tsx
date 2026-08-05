@@ -118,6 +118,11 @@ export function ExerciseOverlay({
             </li>
           ))}
         </ol>
+        {/* Before Start, never mid-session. Discovering at exercise three that
+            you needed ankle weights is the same as not being able to do it. */}
+        {session.equipment.length > 0 && (
+          <p className="ex-kit">You&rsquo;ll need: {session.equipment.join(" · ")}</p>
+        )}
         <p className="ex-note">
           Work through them in this order. Go at your own pace — stop if anything
           hurts.
@@ -165,6 +170,9 @@ export function ExerciseOverlay({
       {item.prescription && <p className="ex-dose">{item.prescription}</p>}
       {item.support && item.support !== "none" && (
         <p className="ex-support">Support: {item.support}</p>
+      )}
+      {item.equipment.length > 0 && (
+        <p className="ex-support">You&rsquo;ll need: {item.equipment.join(" · ")}</p>
       )}
 
       {item.why && <p className="ex-why">{item.why}</p>}

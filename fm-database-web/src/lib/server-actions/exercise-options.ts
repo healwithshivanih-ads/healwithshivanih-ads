@@ -38,6 +38,10 @@ export interface ExerciseOption {
   startReason: string;
   /** Every level label on the entry, easiest first — what the coach may choose. */
   levels: { level: string; prescription: string; support: string }[];
+  /** What the client must own. The screen does not check this — it screens what
+   *  a body can take, not what is in the house — so it has to be visible at the
+   *  moment of choosing or it is not checked at all. */
+  equipment: string[];
   /** Why it is not simply `clear`: the block reason, or the caution's modification. */
   notes: { kind: string; label: string; detail: string; modification: string }[];
 }
@@ -80,6 +84,7 @@ export async function loadExerciseOptions(
         startLevel: v.start_level ?? null,
         startReason: v.start_reason ?? "",
         levels,
+        equipment: (e?.equipment ?? []).map((x) => String(x).trim()).filter(Boolean),
         notes: (v.notes ?? []).map((n) => ({
           kind: n.kind,
           label: n.label,

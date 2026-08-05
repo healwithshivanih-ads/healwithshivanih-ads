@@ -68,9 +68,24 @@ export interface AppExerciseItem {
    * is the same movement with the in-between restored.
    */
   videoSrc?: string | null;
+  /**
+   * What the client needs to have. Surfaced BEFORE they start, never mid-step.
+   *
+   * This was missing, and it reached a real client: three of the Otago leg
+   * exercises need ankle cuff weights, and the app cheerfully told him to
+   * "strap the ankle cuff weight around one ankle" as step two of a session he
+   * had already begun. Nobody had asked whether he owned any. The safety screen
+   * does not check equipment — it screens what a body can take, not what is in
+   * the house — so nothing else was ever going to catch it.
+   */
+  equipment: string[];
 }
 
 export interface AppExerciseSession {
+  /** Everything the whole session needs, deduped — shown on the intro card so
+   *  the client can fetch it (or tell the coach they have not got it) BEFORE
+   *  they start rather than discovering it at exercise three. */
+  equipment: string[];
   /** The plan practice this came from — the id the app opens it by. */
   practiceId: string;
   /**
@@ -195,13 +210,16 @@ export function deriveExerciseSessions(
           title: asStr(entry.client_name).trim() || slug,
         }),
         videoSrc: exerciseVideoSrc(slug),
+        equipment: asArr(entry.equipment).map((x) => asStr(x).trim()).filter(Boolean),
       });
     }
 
     if (items.length === 0) continue;
 
     const prac = practices[i];
+    const equipment = [...new Set(items.flatMap((it) => it.equipment))];
     out.push({
+      equipment,
       practiceId: prac?.id ?? `p${i}`,
       sourceIndex: i,
       name: prac?.name ?? asStr(raw.name) ?? "Movement session",
