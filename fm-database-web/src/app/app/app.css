@@ -2393,3 +2393,61 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 
 /* Secondary once in-app messaging is the default. */
 .wa-btn--alt { opacity: 0.82; }
+
+/* ── Exercise session player ──────────────────────────────────────────────
+   Same warm-dark treatment as the somatic overlay, so a guided session looks
+   like one product with the lights down. Scrolls, unlike the somatic player:
+   an exercise card carries setup lines, movement steps and the dose, and on a
+   small phone that will not fit a fixed viewport — the content must never be
+   silently cut off, because a truncated instruction is a wrong instruction. */
+.ex-wrap {
+  position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column;
+  align-items: center; padding: 56px 24px 32px; overflow-y: auto;
+  background: radial-gradient(125% 120% at 50% 34%, #2c2418 0%, #1b160e 52%, #120f09 100%);
+  color: #f2ede2;
+}
+.ex-x {
+  position: fixed; top: 14px; right: 14px; border: none; background: rgba(255,255,255,.1);
+  color: #f2ede2; width: 38px; height: 38px; border-radius: 999px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; z-index: 81;
+}
+.ex-h { font-family: var(--serif); font-weight: 400; font-size: 24px; margin: 0 0 6px; text-align: center; }
+.ex-when, .ex-count { font-size: 12px; color: rgba(242,237,226,.5); margin: 0 0 10px; text-align: center; }
+/* The dose is the one line that differs between this client and the next, so
+   it gets the emphasis rather than the exercise name. */
+.ex-dose {
+  font-size: 17px; font-weight: 600; color: #f0c98a; text-align: center;
+  margin: 0 0 6px; max-width: 340px;
+}
+.ex-support { font-size: 13px; color: rgba(242,237,226,.6); margin: 0 0 12px; text-align: center; }
+.ex-why { font-size: 14.5px; line-height: 1.6; color: rgba(242,237,226,.72); margin: 0 0 16px; max-width: 340px; text-align: center; }
+.ex-sub {
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(242,237,226,.42); margin: 4px 0 6px; width: 100%; max-width: 340px;
+}
+.ex-steps { max-width: 340px; width: 100%; padding-left: 18px; margin: 0 0 14px; }
+.ex-steps li { margin-bottom: 9px; font-size: 14.5px; line-height: 1.55; }
+.ex-list { max-width: 340px; width: 100%; padding-left: 18px; margin: 4px 0 16px; }
+.ex-list li { margin-bottom: 10px; font-size: 14.5px; line-height: 1.5; }
+.ex-list li strong { color: #f2ede2; }
+.ex-note { font-size: 14px; line-height: 1.6; color: rgba(242,237,226,.66); margin: 0 0 18px; max-width: 340px; text-align: center; }
+/* The coach's own amendment for this client — set apart so it does not read as
+   part of the catalogue's standard instruction. */
+.ex-coach {
+  font-size: 14px; line-height: 1.6; color: rgba(242,237,226,.8);
+  margin: 0 0 14px; padding: 10px 13px; border-radius: 12px;
+  background: rgba(240,201,138,.07); border-left: 2px solid rgba(240,201,138,.34);
+  max-width: 340px; width: 100%;
+}
+.ex-dots { display: flex; gap: 6px; margin: 6px 0 16px; flex-wrap: wrap; justify-content: center; }
+.ex-dots span { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,.18); }
+.ex-dots span.did { background: rgba(240,201,138,.4); }
+.ex-dots span.on { background: rgba(240,201,138,.85); }
+.ex-cta {
+  border: none; background: rgba(240,201,138,.9); color: #2a1e0d; font-weight: 600;
+  font-size: 15px; padding: 12px 26px; border-radius: var(--r-pill); cursor: pointer;
+}
+.ex-back {
+  margin-top: 12px; border: none; background: none; color: rgba(242,237,226,.5);
+  font-size: 13px; cursor: pointer; text-decoration: underline;
+}

@@ -158,6 +158,29 @@ class LifestyleSuggestion(BaseModel):
     _blank_ev = field_validator("intake_evidence", mode="before")(_blank_to_list)
 
 
+class ExerciseSuggestion(BaseModel):
+    """One catalogue exercise the synthesis wants in the client's session.
+
+    Deliberately thin. The catalogue entry owns the movement and the AI is not
+    asked to restate it — only which entry, and why it is here for this client.
+    `level` is usually left empty: the screen picks the starting rung from the
+    client's own record, and it knows things the prompt does not (a falls signal
+    or an osteoporosis caution means start at the first rung naming support, not
+    at rung one).
+
+    Every one of these passes through `gate_prescription` before it reaches the
+    coach. Anything the screen blocks is dropped, not down-ranked.
+    """
+    model_config = ConfigDict(extra="ignore")
+    _coerce = model_validator(mode="before")(_coerce_none_strings)
+    exercise: str                       # Exercise slug
+    level: str = ""                     # usually blank — the screen decides
+    rationale: str = ""
+    addresses_mechanism: list[str] = Field(default_factory=list)
+    intake_evidence: list[str] = Field(default_factory=list)
+    _blank_ev = field_validator("intake_evidence", mode="before")(_blank_to_list)
+
+
 class NutritionSuggestions(BaseModel):
     model_config = ConfigDict(extra="ignore")
     _coerce = model_validator(mode="before")(_coerce_none_strings)
@@ -363,6 +386,13 @@ class AssessSuggestions(BaseModel):
     topics_in_play: list[TopicInPlay] = Field(default_factory=list)
     additional_symptoms_to_screen: list[AdditionalSymptomToScreen] = Field(default_factory=list)
     lifestyle_suggestions: list[LifestyleSuggestion] = Field(default_factory=list)
+    #: Catalogue exercises for the client's movement session, in the order they
+    #: should be done — warm-up first, strength last. Gated by the suitability
+    #: screen before the coach sees them; see `gate_prescription`.
+    exercise_suggestions: list[ExerciseSuggestion] = Field(default_factory=list)
+    #: Slugs the screen refused, kept so the coach can see the AI wanted them and
+    #: why they were withheld. Never rendered as a suggestion.
+    exercises_withheld: list[str] = Field(default_factory=list)
     nutrition_suggestions: NutritionSuggestions = Field(default_factory=NutritionSuggestions)
     supplement_suggestions: list[SupplementSuggestion] = Field(default_factory=list)
     suggested_protocols: list[ProtocolSuggestion] = Field(default_factory=list)

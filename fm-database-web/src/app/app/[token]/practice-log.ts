@@ -18,7 +18,7 @@ export const MIN_MEANINGFUL_SECONDS = 20;
 
 export interface PracticeLogInput {
   token: string;
-  kind: "breath" | "eft" | "sleep" | "somatic";
+  kind: "breath" | "eft" | "sleep" | "somatic" | "exercise";
   practiceId?: string;
   name?: string;
   slug?: string | null;

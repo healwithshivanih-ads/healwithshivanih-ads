@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { exerciseFigureSvg } from "@/lib/fmdb/exercise-figure";
 import { screenAll, summarise, type ExerciseVerdict, type Verdict } from "@/lib/fmdb/exercise-screen";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
+import { loadExerciseAdherence } from "@/lib/fmdb/exercise-adherence";
 import type { Exercise } from "@/lib/fmdb/types";
 
 const VERDICT_META: Record<Verdict, { label: string; blurb: string; tone: string }> = {
@@ -101,11 +102,17 @@ function VerdictRow({ v, ex }: { v: ExerciseVerdict; ex?: Exercise }) {
 
 export async function ExerciseSuitabilityPanel({
   client,
+  clientId,
 }: {
   client: Record<string, unknown>;
+  clientId?: string;
 }) {
   const exercises = await loadAllOfKind<Exercise>("exercises");
   if (exercises.length === 0) return null;
+
+  // What they have actually DONE, above what they COULD do — a screen is a
+  // prediction and this is the record, and the record should be read first.
+  const adherence = clientId ? await loadExerciseAdherence(clientId) : null;
 
   const verdicts = screenAll(exercises as unknown as Parameters<typeof screenAll>[0], client);
   const counts = summarise(verdicts);
@@ -116,6 +123,24 @@ export async function ExerciseSuitabilityPanel({
 
   return (
     <div className="space-y-4">
+      {adherence && adherence.sessions.length > 0 && (
+        <div className="rounded-md border bg-emerald-50/60 px-3 py-2">
+          <p className="text-xs font-semibold text-emerald-900">
+            Sessions done · {adherence.headline}
+          </p>
+          <p className="mt-1 text-[11px] text-emerald-900/80">
+            Last on {adherence.lastDate}. {adherence.finished} finished
+            {adherence.partial > 0 ? `, ${adherence.partial} stopped part-way` : ""}.
+          </p>
+          {/* Deliberately no "ready to progress" verdict. The threshold that
+              would justify one has to come from real logs, not from a guess
+              made before any existed. */}
+          <p className="mt-1 text-[10px] text-emerald-900/60">
+            Use this alongside what they tell you — it is what the app recorded,
+            not how it felt.
+          </p>
+        </div>
+      )}
       <div className="flex items-center gap-2 flex-wrap text-xs">
         {groups.map((g) =>
           counts[g] > 0 ? (

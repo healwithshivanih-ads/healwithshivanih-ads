@@ -390,6 +390,7 @@ export function TodayScreen({
   openEft,
   openSleep,
   openSomatic,
+  openExercise,
   practices,
   onTogglePractice,
   openGrocery,
@@ -412,6 +413,7 @@ export function TodayScreen({
   openSleep: () => void;
   /** Opens one specific prescribed practice — a plan can carry several. */
   openSomatic: (practiceId: string) => void;
+  openExercise: (practiceId: string) => void;
   practices: { id: string; name: string; when: string; details?: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
@@ -602,7 +604,11 @@ export function TodayScreen({
               // "Chosen for you" card below, so every guided practice appeared
               // TWICE on Today: once to tick, once to start. One row does both.
               const somaticHere = data.somatic.find((sm) => sm.practiceId === p.id);
-              const hasDetails = !!p.details && !isBreath && !somaticHere;
+              // Same one-row-does-both rule as somatic: the session starts from
+              // its own row, and its generated "do these in order" details line
+              // would only restate what the player already shows.
+              const exerciseHere = data.exerciseSessions.find((ex) => ex.practiceId === p.id);
+              const hasDetails = !!p.details && !isBreath && !somaticHere && !exerciseHere;
               const expanded = openPractice.has(p.id);
               return (
                 <div key={p.id} className="practice-item">
@@ -636,6 +642,17 @@ export function TodayScreen({
                         }}
                       >
                         <Icon name="sprout" size={13} /> Guide
+                      </span>
+                    ) : exerciseHere ? (
+                      <span
+                        className="p-guide"
+                        role="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openExercise(p.id);
+                        }}
+                      >
+                        <Icon name="sprout" size={13} /> Start
                       </span>
                     ) : (
                       <span className="p-trailing">

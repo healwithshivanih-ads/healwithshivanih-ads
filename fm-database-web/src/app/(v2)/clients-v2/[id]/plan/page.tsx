@@ -505,6 +505,14 @@ export default async function PlanTabPage({
       somatic_practice: (it.somatic_practice as string | undefined) ?? "",
       phase: (it.phase as number | undefined) ?? null,
       addresses: (it.addresses as string[] | undefined) ?? [],
+      // Carried through deliberately. The panel sends the session back on every
+      // save, so a row built WITHOUT it would post an empty list and delete the
+      // client's whole exercise session the first time the coach corrected a
+      // typo in the practice name.
+      exercises:
+        ((it.exercises as
+          | Array<{ exercise: string; level?: string | null; note?: string }>
+          | undefined) ?? []),
     }))
     .filter((it) => it.name);
 
@@ -798,6 +806,7 @@ export default async function PlanTabPage({
         node: (
           <QuickEditPracticesPanel
             planSlug={activePlan.slug as string}
+            clientId={id}
             practices={quickEditPracticeRows}
             priorities={quickEditPriorities}
             totalWeeks={Number(activePlan.plan_period_weeks) || 12}
@@ -1529,6 +1538,7 @@ export default async function PlanTabPage({
                 plans). Drafts show read-only; they edit in the full editor. */}
             <QuickEditPracticesPanel
               planSlug={activePlan.slug as string}
+              clientId={id}
               practices={quickEditPracticeRows}
               priorities={quickEditPriorities}
               totalWeeks={Number(activePlan.plan_period_weeks) || 12}

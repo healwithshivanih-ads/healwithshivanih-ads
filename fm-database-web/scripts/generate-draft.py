@@ -163,7 +163,7 @@ def main() -> int:
 
     from fmdb.plan import storage as plan_storage
     from fmdb.plan.models import (
-        Plan, HypothesizedDriver, PracticeItem, NutritionPlan, EducationModule,
+        Plan, HypothesizedDriver, PracticeItem, PrescribedExercise, NutritionPlan, EducationModule,
         SupplementItem, LabOrderItem, ReferralItem, CatalogueSnapshot, TrackingHabit,
         AyurvedaSection, TissueSaltsSection, TissueSaltItem,
     )
@@ -395,6 +395,55 @@ def main() -> int:
                     if str(m).strip()
                 ],
             ))
+
+    # ---------- Exercise session ----------
+    # The suggested exercises become ONE practice row, not one row each. The
+    # reasoning is in PracticeItem.exercises: Otago is a session a person sits
+    # down to do, and `practice-load.ts` counts rows — eight exercise rows would
+    # report eight extra dedicated moments and flag every exercise client as
+    # overloaded, when it is one slot three times a week.
+    #
+    # Order is preserved exactly as the synthesis returned it. It is clinical:
+    # warm-up first, strength last. Nothing here sorts.
+    #
+    # These have already passed the suitability gate inside `synthesize()`, so
+    # anything blocked for this client is long gone by the time it reaches here.
+    _ex_sugs = [
+        e for e in (suggestions.get("exercise_suggestions") or [])
+        if isinstance(e, dict) and str(e.get("exercise") or "").strip()
+    ]
+    for _bad in (suggestions.get("exercise_suggestions") or []):
+        if not isinstance(_bad, dict):
+            _degraded("exercise_suggestions", _bad)
+    if _ex_sugs and picks.get("exercise_session", True):
+        _prescribed = []
+        _addresses: list[str] = []
+        for e in _ex_sugs:
+            _prescribed.append(PrescribedExercise(
+                exercise=str(e.get("exercise")).strip(),
+                level=(str(e.get("level")).strip() or None) if e.get("level") else None,
+                note=str(e.get("rationale") or "").strip(),
+            ))
+            for m in (e.get("addresses_mechanism") or []):
+                m = str(m).strip()
+                if m and m not in _addresses:
+                    _addresses.append(m)
+        plan.lifestyle_practices.append(PracticeItem(
+            name="Movement session",
+            # 3x/week is the Otago cadence and the one every levelled entry in
+            # the catalogue is written against. The coach changes it in the
+            # editor; it is a starting point, not a finding.
+            cadence="3x/week",
+            details=(
+                "Work through these in order. "
+                + "; ".join(
+                    p.exercise.replace("-", " ") + (f" (level {p.level})" if p.level else "")
+                    for p in _prescribed
+                )
+            ),
+            addresses=_addresses,
+            exercises=_prescribed,
+        ))
 
     # Same degraded-shape guard as the ayurveda / tissue_salts blocks below:
     # a string here used to survive `or {}` and then blow up on `.get()`.

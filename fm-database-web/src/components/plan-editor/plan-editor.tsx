@@ -17,6 +17,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 // ProtocolTemplatePicker removed — superseded by the unified AttachedProtocolsPanel
 // on the plan edit page, which handles both protocol selection and content seeding.
 import { PracticeLoadNote } from "./practice-load-note";
+import { ExerciseSessionEditor } from "./exercise-session-editor";
 import { phaseOpensAtWeek, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
 import { timingSlot, type DaySlot } from "@/lib/fmdb/client-app-format";
 import { PracticeAddresses } from "./practice-addresses";
@@ -84,6 +85,19 @@ interface PracticeItem {
   /** Driver/topic slugs this practice is here to work on — what decides
    *  whether it belongs in the foundation. See practice-addresses.tsx. */
   addresses?: string[];
+  /** When non-empty this row IS an exercise session — an ordered list of
+   *  catalogue exercises done together. Order is clinical, so nothing sorts it.
+   *  See PracticeItem.exercises in fmdb/plan/models.py for why a session is one
+   *  row rather than one row per exercise. */
+  exercises?: PrescribedExerciseItem[];
+}
+
+interface PrescribedExerciseItem {
+  /** Exercise slug — resolves against the catalogue. */
+  exercise: string;
+  /** A label from that entry's own levels ("A".."D"), never an index. */
+  level?: string | null;
+  note?: string;
 }
 
 interface EducationModuleItem {
@@ -2278,6 +2292,19 @@ export function PlanEditor(props: PlanEditorProps) {
                       onChange={(next_ad) => {
                         const next = [...lifestyle];
                         next[i] = { ...next[i], addresses: next_ad };
+                        patch("lifestyle_practices", next);
+                      }}
+                    />
+                    {/* When this row carries exercises it IS a session — an
+                        ordered list done together at the cadence above. Every
+                        option is screened against this client first. */}
+                    <ExerciseSessionEditor
+                      clientId={clientId}
+                      value={p.exercises}
+                      locked={locked}
+                      onChange={(next_ex) => {
+                        const next = [...lifestyle];
+                        next[i] = { ...next[i], exercises: next_ex };
                         patch("lifestyle_practices", next);
                       }}
                     />

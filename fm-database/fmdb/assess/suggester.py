@@ -256,6 +256,25 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 },
             },
         },
+        "exercise_suggestions": {
+            "type": "array",
+            "description": "The client's movement session: catalogue exercises done together, IN THIS ORDER. Order is clinical — warm-up first, balance work next, strength last, a cool-down if you include one. Keep it to 4-8 entries; this is one session a person actually sits down to do, not a wish-list. Every entry is screened against the client's record AFTER you answer, and anything unsafe is dropped without asking you — so suggest on clinical merit and do not try to pre-guess the screen. Leave empty when movement is not part of this plan.",
+            "items": {
+                "type": "object",
+                "required": ["exercise", "rationale"],
+                "properties": {
+                    "exercise": {"type": "string", "description": "MUST be an Exercise slug from the catalogue exercise list you were given. Never invent one — an unrecognised slug is dropped, so a made-up exercise silently becomes no exercise."},
+                    "level": {"type": "string", "description": "LEAVE EMPTY unless you have a specific reason. The screen picks the starting level from the client's own record, and it knows things you do not — a falls signal or an osteoporosis caution means start at the first level that names support, not at the easiest one."},
+                    "rationale": {"type": "string", "description": "WHY this movement for THIS client — a specific symptom, lab, medication or limitation from client_context. 'Good for strength' is not a rationale."},
+                    "addresses_mechanism": {"type": "array", "items": {"type": "string"}, "description": "Which of THIS assessment's likely_drivers or topics_in_play this exercise works on. Same convention as lifestyle_suggestions."},
+                    "intake_evidence": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Short coach-readable phrases citing the intake observations behind this exercise. Empty list when not intake-driven.",
+                    },
+                },
+            },
+        },
         "nutrition_suggestions": {
             "type": "object",
             "properties": {
@@ -1604,7 +1623,95 @@ HARD RULES (violating these breaks the downstream system):
     - This applies even when creatine wasn't explicitly asked about — it's
       a standard pairing with strength training, not an opportunistic add-on.
 
+32. EXERCISE SESSION (`exercise_suggestions`). The `exercise_options` array in
+    the user payload is the ONLY list you may pick from, and it has already been
+    screened against this client — anything unsafe for them is simply not in it.
+    So do not hedge, do not add your own safety caveats about the movements, and
+    do not decline to suggest movement because the client sounds fragile. That
+    judgement has been made before you saw the list.
+    - Pick 4-8 and ORDER THEM as one session: warm-up or mobility first, balance
+      work next, strength last, cool-down if you use one. The order is the
+      prescription — a warm-up listed after the strength work is a different
+      instruction.
+    - Leave `level` empty. `start_level` in the options tells you what the screen
+      chose from the client's own record, and it accounts for things you cannot
+      see. Override it only with a stated reason in the rationale.
+    - Where an option carries `modifications`, that is authored guidance for THIS
+      client. Reflect it in the rationale rather than picking a different
+      exercise to avoid it.
+    - `energy-envelope-pacing` is NOT a fitness entry and is never a warm-up. It
+      is the correct and often the ONLY movement suggestion for post-exertional
+      malaise, where a graded ladder can cause a lasting relapse. If it is the
+      only thing in the list, that is the right answer — do not pad the session
+      to look more substantial.
+    - Leave `exercise_suggestions` empty when movement is not part of this plan.
+      An empty list is a real answer; a token exercise to fill the field is not.
+
 Call `synthesize_assessment` exactly once with your structured result."""
+
+
+def _exercise_dicts() -> list[dict[str, Any]]:
+    """The exercise catalogue, as plain dicts, for the suitability gate.
+
+    Not taken from the subgraph: the subgraph is built from the symptoms and
+    topics the coach selected, and an exercise's safety does not depend on what
+    she selected. The gate has to see every entry the model could name, or an
+    unscreened slug reads as merely absent.
+
+    `mode="json"` is not decorative — `_severity_of` now tolerates both shapes,
+    but dumping to JSON keeps this module's output plain data, which is what
+    everything downstream of it expects.
+    """
+    from ..loader import load_exercises
+
+    data_dir = Path(os.environ.get("FMDB_CATALOGUE_DIR") or
+                    (Path(__file__).resolve().parents[2] / "data"))
+    return [e.model_dump(mode="json") for e in load_exercises(data_dir)]
+
+
+def _exercise_options(client_context: dict[str, Any]) -> list[dict[str, Any]]:
+    """The exercises this client may safely be offered, compactly.
+
+    Screened here so the model never meets a blocked entry. Each row is trimmed
+    to what a choice actually needs — what the movement is, what it builds, how
+    hard it is, and where to start — because the entry's full steps and cautions
+    are the coach's and the client's to read, not the chooser's, and shipping all
+    32 in full would cost ~10x the tokens for no better pick.
+
+    `caution` entries stay in the list WITH their modification. Dropping them
+    would remove the entries the coach most needs to see: a caution is authored
+    guidance about how to do the movement, not a reason to avoid it. Only
+    `blocked` is absent.
+    """
+    from ..plan.exercise_screen import screen_all
+
+    try:
+        entries = _exercise_dicts()
+    except Exception:
+        return []
+
+    by_slug = {e.get("slug"): e for e in entries}
+    out: list[dict[str, Any]] = []
+    for v in screen_all(entries, client_context or {}):
+        if v.verdict == "blocked":
+            continue
+        e = by_slug.get(v.slug) or {}
+        row = {
+            "slug": v.slug,
+            "name": v.client_name or v.display_name,
+            "modality": v.modality,
+            "tier": e.get("intensity_tier"),
+            "position": e.get("position"),
+            "summary": e.get("summary"),
+            "builds": e.get("builds") or [],
+            "screen": v.verdict,
+            "start_level": v.start_level,
+        }
+        mods = [n.modification for n in v.notes if n.modification]
+        if mods:
+            row["modifications"] = mods
+        out.append(row)
+    return out
 
 
 def synthesize(
@@ -1723,6 +1830,19 @@ def synthesize(
         "vitaone_inventory": vitaone_inventory or [],
         "drug_context": drug_context,
         "catalogue_subgraph": subgraph,
+        # Pre-screened, so the model chooses from what is already safe for THIS
+        # client rather than from the whole library. Blocked entries are absent
+        # entirely — not listed-and-flagged — because a flagged entry in front of
+        # a model is an invitation to reason its way past the flag.
+        #
+        # The gate still runs over the answer. That is deliberate belt-and-braces:
+        # this list makes the right choice easy, the gate makes the wrong one
+        # impossible.
+        #
+        # Measured cost: ~3.9K tokens for an unrestricted client (all 32 entries),
+        # ~0.7K for a heavily-screened one (Sudarshan, 7) — the clients who can do
+        # least cost least. Against a ~60K assess input that is roughly 6%.
+        "exercise_options": _exercise_options(client_context),
     }
     variable_payload = {
         "selected_symptoms": selected_symptom_slugs,
@@ -1827,6 +1947,53 @@ def synthesize(
                 key=lambda p: (p.fit_percent or 0.0), reverse=True
             )
             suggestions.suggested_protocols = suggestions.suggested_protocols[:2]
+
+            # Exercise suggestions go through the suitability screen before
+            # anyone sees them. This is a GATE, not a ranking penalty, and it
+            # runs here — over the model's output — rather than as a rule in the
+            # prompt.
+            #
+            # WHY NOT TRUST THE PROMPT. Supplements have no equivalent: there the
+            # coach's foods_to_avoid is the one-way door and the model is asked
+            # to respect it. Here the screen IS the safety surface, and asking a
+            # model to respect it means asking it to re-derive the whole matcher
+            # from prose. It would mostly succeed — which is the dangerous kind
+            # of failure. A client with post-exertional malaise must not be shown
+            # a progressive ladder because it read as gentle; NICE NG206 withdrew
+            # graded exercise therapy precisely because that shape can provoke a
+            # lasting relapse.
+            #
+            # Withheld slugs are kept rather than discarded, so the coach can see
+            # what was proposed and why it did not survive.
+            if suggestions.exercise_suggestions:
+                try:
+                    from ..plan.exercise_screen import gate_prescription
+                    gated = gate_prescription(
+                        [s.model_dump() for s in suggestions.exercise_suggestions],
+                        _exercise_dicts(),
+                        client_context or {},
+                    )
+                    kept_slugs = {k["exercise"] for k in gated.kept}
+                    levels = {k["exercise"]: k.get("level") for k in gated.kept}
+                    survivors = []
+                    for s in suggestions.exercise_suggestions:
+                        if s.exercise not in kept_slugs:
+                            continue
+                        if not s.level and levels.get(s.exercise):
+                            s.level = str(levels[s.exercise])
+                        survivors.append(s)
+                    suggestions.exercise_suggestions = survivors
+                    suggestions.exercises_withheld = gated.dropped_slugs
+                except Exception:
+                    # The gate is the safety surface; if it cannot run, no
+                    # exercise is offered. Failing open would put an unscreened
+                    # prescription in front of the coach looking exactly like a
+                    # screened one.
+                    suggestions.exercises_withheld = [
+                        s.exercise for s in suggestions.exercise_suggestions
+                    ]
+                    suggestions.exercise_suggestions = []
+
             return AssessResult(suggestions=suggestions, usage=usage_obj)
 
     # No synthesize_assessment tool block in the response — the model didn't

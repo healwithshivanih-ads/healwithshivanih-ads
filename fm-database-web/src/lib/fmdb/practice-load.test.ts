@@ -140,4 +140,40 @@ describe("practiceLoad — the verdict", () => {
     expect(load.total).toBe(0);
     expect(load.verdict).toBe("comfortable");
   });
+
+  /* An exercise session is a stopped moment because it CARRIES EXERCISES, not
+     because of what it is called. "Movement session" matches no DEDICATED
+     pattern, and unmatched wording defaults to `attached` — so before this the
+     single most dedicated row on a plan counted as free, as though eight Otago
+     exercises rode along with lunch. */
+  it("counts an exercise session as a dedicated moment despite its wording", () => {
+    const load = practiceLoad([
+      { name: "Movement session", exercises: [{ exercise: "chair-sit-to-stand" }] },
+    ]);
+    expect(load.dedicated).toHaveLength(1);
+    expect(load.attachedCount).toBe(0);
+  });
+
+  it("counts a whole session as ONE moment, not one per exercise", () => {
+    const eight = Array.from({ length: 8 }, (_, i) => ({ exercise: `ex-${i}` }));
+    const session = practiceLoad([{ name: "Movement session", exercises: eight }]);
+    expect(session.total).toBe(1);
+    expect(session.dedicated).toHaveLength(1);
+    expect(session.verdict).toBe("comfortable");
+
+    // The shape this design exists to avoid: the same eight as separate rows.
+    const split = practiceLoad(
+      eight.map((_, i) => ({ name: `Strength exercise ${i}` })),
+    );
+    expect(split.dedicated.length).toBeGreaterThan(session.dedicated.length);
+    expect(split.verdict).toBe("heavy");
+  });
+
+  it("classifies by the exercise list, not by the row's name", () => {
+    // Renaming the row must not change what it costs.
+    const renamed = practiceLoad([
+      { name: "Tuesdays and Thursdays", exercises: [{ exercise: "heel-raises" }] },
+    ]);
+    expect(renamed.dedicated).toHaveLength(1);
+  });
 });

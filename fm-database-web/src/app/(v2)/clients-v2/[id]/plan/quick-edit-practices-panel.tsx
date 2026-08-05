@@ -24,6 +24,7 @@ import { toast } from "sonner";
 import { FmPanel } from "@/components/fm";
 import { quickEditActivePlanPractice, listSomaticPractices, type SomaticOption } from "@/lib/server-actions/plan-lifecycle";
 import { PracticeAddresses } from "@/components/plan-editor/practice-addresses";
+import { ExerciseSessionEditor } from "@/components/plan-editor/exercise-session-editor";
 import { phaseOpensAtWeek, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
 import { useEffect } from "react";
 
@@ -37,10 +38,14 @@ export interface QuickEditPracticeRow {
   phase?: number | null;
   /** driver/topic slugs this practice works on */
   addresses?: string[];
+  /** the exercise session on this row, when it carries one */
+  exercises?: { exercise: string; level?: string | null; note?: string }[];
 }
 
 interface Props {
   planSlug: string;
+  /** whose record the exercise options are screened against */
+  clientId?: string;
   practices: QuickEditPracticeRow[];
   /** the plan's ranked drivers + topics — the options for "works on" */
   priorities?: PlanPriorities;
@@ -93,7 +98,7 @@ function duplicateFlags(practices: QuickEditPracticeRow[]): Map<number, string> 
   return flags;
 }
 
-export function QuickEditPracticesPanel({ planSlug, practices, priorities, totalWeeks = 12, editable = true, embedded }: Props) {
+export function QuickEditPracticesPanel({ planSlug, clientId, practices, priorities, totalWeeks = 12, editable = true, embedded }: Props) {
   const [open, setOpen] = useState(false);
   const dupFlags = duplicateFlags(practices);
 
@@ -108,6 +113,7 @@ export function QuickEditPracticesPanel({ planSlug, practices, priorities, total
         <PracticeRow
           key={`${i}-${p.name}`}
           planSlug={planSlug}
+          clientId={clientId}
           row={p}
           index={i}
           duplicateOf={dupFlags.get(i) ?? null}
@@ -232,6 +238,7 @@ const labelStyle: React.CSSProperties = {
 
 function PracticeRow({
   planSlug,
+  clientId,
   row,
   index,
   duplicateOf,
@@ -239,6 +246,7 @@ function PracticeRow({
   totalWeeks,
 }: {
   planSlug: string;
+  clientId?: string;
   row: QuickEditPracticeRow;
   index: number;
   duplicateOf: string | null;
@@ -254,6 +262,14 @@ function PracticeRow({
   const [phase, setPhase] = useState<number>(row.phase && row.phase > 1 ? row.phase : 1);
   const [addresses, setAddresses] = useState<string[]>(row.addresses ?? []);
   const [confirmRemove, setConfirmRemove] = useState(false);
+  const [exercises, setExercises] = useState<
+    { exercise: string; level?: string | null; note?: string }[]
+  >(row.exercises ?? []);
+
+  // A reorder is a change, so the comparison is order-sensitive.
+  const exKey = (
+    xs: { exercise: string; level?: string | null }[],
+  ) => xs.map((e) => `${e.exercise}@${e.level ?? ""}`).join("|");
 
   const dirty =
     name.trim() !== row.name ||
@@ -261,7 +277,8 @@ function PracticeRow({
     details.trim() !== (row.details ?? "").trim() ||
     somatic !== (row.somatic_practice ?? "") ||
     phase !== (row.phase && row.phase > 1 ? row.phase : 1) ||
-    addresses.join("|") !== (row.addresses ?? []).join("|");
+    addresses.join("|") !== (row.addresses ?? []).join("|") ||
+    exKey(exercises) !== exKey(row.exercises ?? []);
 
   const onSave = () => {
     if (!dirty || !name.trim()) return;
@@ -275,6 +292,7 @@ function PracticeRow({
         somatic_practice: somatic,
         phase,
         addresses,
+        exercises,
       });
       if (!r.ok) return void toast.error(r.error);
       if (!r.changed) return void toast.info("No change to save");
@@ -385,6 +403,15 @@ function PracticeRow({
         )}
       </div>
       <SomaticPicker value={somatic} onChange={setSomatic} disabled={pending} />
+      {/* The same editor the draft plan editor uses, not a second one — a
+          published plan is exactly where a level needs changing, and two
+          implementations of "pick an exercise" would drift. */}
+      <ExerciseSessionEditor
+        clientId={clientId}
+        value={exercises}
+        locked={pending}
+        onChange={setExercises}
+      />
       <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
         {dirty && (
           <button onClick={onSave} disabled={pending} style={{ ...btn, background: "var(--fm-primary)", color: "#fff", border: 0 }}>

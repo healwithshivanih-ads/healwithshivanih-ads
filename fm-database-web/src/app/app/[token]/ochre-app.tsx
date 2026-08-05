@@ -35,6 +35,7 @@ import { BreathOverlay } from "./ochre-breath";
 import { EftOverlay } from "./ochre-eft";
 import { SleepOverlay } from "./ochre-sleep";
 import { SomaticOverlay } from "./ochre-somatic";
+import { ExerciseOverlay } from "./ochre-exercise";
 import { GroceryOverlay } from "./ochre-week-menu";
 import { MsqOverlay } from "./ochre-msq";
 import { OrderOverlay } from "./ochre-order";
@@ -108,6 +109,7 @@ type Overlay =
   | { type: "eft" }
   | { type: "sleep" }
   | { type: "somatic"; practiceId: string }
+  | { type: "exercise"; practiceId: string }
   | { type: "grocery" }
   | { type: "msq" }
   | { type: "order" }
@@ -435,6 +437,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const openEft = () => setOverlay({ type: "eft" });
   const openSleep = () => setOverlay({ type: "sleep" });
   const openSomatic = (practiceId: string) => setOverlay({ type: "somatic", practiceId });
+  const openExercise = (practiceId: string) =>
+    setOverlay({ type: "exercise", practiceId });
   const openGrocery = () => setOverlay({ type: "grocery" });
   const openMsq = () => setOverlay({ type: "msq" });
   const openOrder = () => setOverlay({ type: "order" });
@@ -455,6 +459,14 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       ? data.somatic.find((s) => s.practiceId === overlay.practiceId) ??
         data.mindBodyReads.find((r) => r.practice?.practiceId === overlay.practiceId)?.practice ??
         null
+      : null;
+
+  // Resolved by practiceId like somatic, and for the same reason: a plan can
+  // carry more than one session (a morning mobility set and an evening strength
+  // set), so the overlay must open the one that was tapped.
+  const exerciseOpen =
+    overlay?.type === "exercise"
+      ? data.exerciseSessions.find((s) => s.practiceId === overlay.practiceId) ?? null
       : null;
 
   const dailyRemedies = useMemo(
@@ -751,6 +763,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         openEft={openEft}
         openSleep={openSleep}
         openSomatic={openSomatic}
+        openExercise={openExercise}
         practices={practices}
         onTogglePractice={togglePractice}
         openGrocery={openGrocery}
@@ -874,6 +887,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "eft" && data.eft && <EftOverlay eft={data.eft} onClose={closeOverlay} />}
               {overlay.type === "sleep" && data.sleep && <SleepOverlay sleep={data.sleep} onClose={closeOverlay} />}
               {overlay.type === "somatic" && somaticOpen && <SomaticOverlay somatic={somaticOpen} onClose={closeOverlay} />}
+              {overlay.type === "exercise" && exerciseOpen && (
+                <ExerciseOverlay session={exerciseOpen} token={data.token} onClose={closeOverlay} />
+              )}
               {overlay.type === "grocery" && <GroceryOverlay onClose={closeOverlay} />}
               {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}

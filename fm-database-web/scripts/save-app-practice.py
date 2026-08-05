@@ -72,7 +72,7 @@ def main() -> int:
         return 2
 
     kind = (payload.get("kind") or "").strip().lower()
-    if kind not in ("eft", "breath", "sleep", "somatic"):
+    if kind not in ("eft", "breath", "sleep", "somatic", "exercise"):
         json.dump({"ok": False, "error": f"bad kind: {kind!r}"}, sys.stdout)
         return 2
 

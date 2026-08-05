@@ -1036,6 +1036,26 @@ class HypothesizedDriver(BaseModel):
     intake_evidence: list[str] = Field(default_factory=list)
 
 
+class PrescribedExercise(BaseModel):
+    """One catalogue exercise as prescribed to ONE client, at ONE level.
+
+    The catalogue entry owns the movement — its steps, its cautions, its whole
+    A-to-D ladder. This owns only what is true of this client today: which rung
+    they are on, and anything the coach wants said about it for them alone.
+
+    `level` is a label from the entry's own `levels` list ("A".."D", "1".."3"),
+    not an index — the source's labels are what the coach and the client both
+    see, and an index silently points at the wrong rung the moment a level is
+    inserted. None means the entry has no ladder (a mobility drill, or a pacing
+    entry, which is forbidden from having levels at all).
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    exercise: str                        # Exercise slug — must resolve in the catalogue
+    level: Optional[str] = None          # label from Exercise.levels[].level
+    note: str = ""                       # coach's per-client modification
+
+
 class PracticeItem(BaseModel):
     """Freeform lifestyle practice (sunlight, breathwork, walks, screen-cutoff)."""
     model_config = ConfigDict(extra="forbid")
@@ -1080,6 +1100,24 @@ class PracticeItem(BaseModel):
     # Empty means untagged, which is safe: staging falls back to coach order,
     # exactly as it behaved before this field existed.
     addresses: list[str] = Field(default_factory=list)
+    # When non-empty, THIS PRACTICE ROW IS AN EXERCISE SESSION: an ordered list
+    # of catalogue exercises done together, in this order, at this cadence.
+    #
+    # WHY A SESSION AND NOT ONE ROW PER EXERCISE. Otago is a programme, not
+    # eight independent habits — a warm-up, then balance work, then strength,
+    # three times a week. Split across eight practice rows it stops being one
+    # thing the client sits down to do. Worse, `practice-load.ts` counts rows:
+    # the roster median is 7 practices and 2 dedicated moments, so eight
+    # exercise rows would read as eight more stopped moments and flag every
+    # exercise client as overloaded — when it is one slot, three times a week.
+    # As a session it costs exactly what it costs: one dedicated moment.
+    #
+    # Order is the coach's, and it is clinical: a warm-up placed after the
+    # strength work is not the same prescription. Nothing sorts this list.
+    #
+    # Empty on every practice written before this existed, so they all behave
+    # exactly as they did.
+    exercises: list[PrescribedExercise] = Field(default_factory=list)
 
 
 class CustomRemedy(BaseModel):
