@@ -1,0 +1,121 @@
+slug: pelvic-floor-canister
+display_name: Pelvic Floor "Canister" Work (Kegels, Elevator Abs, Child's Pose Breathing)
+client_name: Pelvic floor work
+aliases:
+- kegels
+- pelvic floor exercises
+- kegel
+- elevator abs
+- pelvic floor training
+modality: strength
+intensity_tier: beginner
+position: any_position
+equipment: []
+summary: The three-part pelvic-floor set — held and quick squeezes, elevator abs, and
+  child's-pose breathing — trained as one unit with the diaphragm and deep abdominals.
+why_it_works: The pelvic floor does not work alone. It forms a canister with the diaphragm
+  above, the deep abdominal wall in front and the multifidus behind, and the four contract
+  together to manage the pressure that every lift, cough and landing generates. Training the
+  squeeze in isolation is why Kegels alone often disappoint; adding the breath work and the
+  deep-abdominal lift trains the canister as the pressure system it actually is.
+setup:
+- Any position will do for the squeezes — sitting, standing or lying.
+- For the breathing, kneel and sit back on the heels with the knees about hip-width apart.
+- Empty the bladder first; do not practise by stopping the flow mid-stream.
+steps:
+- Held squeezes — draw the pelvic floor up as if stopping yourself passing water, hold for up
+  to 10 seconds, release fully. Repeat up to 10 times.
+- Quick squeezes — 10 short, strong lifts, releasing completely between each.
+- Elevator abs — lying face down, hold the pelvic-floor lift, then draw the lower belly up
+  and in as if a string were lifting it off the floor. Release in reverse order.
+- Child's pose breathing — folded forward over the thighs, breathe in wide into the lower
+  ribs and out slowly, 6 to 10 breaths.
+levels: []
+frequency: 'Every day — unlike the rest of this catalogue, this one has no rest day. Build the
+  dose rather than the difficulty: start with whatever is manageable today (even three long
+  and three short squeezes counts), work toward 10 long squeezes of up to 10 seconds plus 10
+  short ones, and add the elevator abs and the breathing once the squeezes are habit.'
+builds:
+- pelvic floor strength and endurance
+- pressure management for lifting, coughing and landing
+- the diaphragm-to-pelvic-floor coordination that Kegels alone miss
+easier_variant: null
+harder_variant: null
+movement_patterns:
+- core_brace
+muscles_worked:
+- abdominals
+- lower_back
+loads_spine: false
+impact: none
+balance_demand: 0
+requires_floor_transfer: false
+joint_stress: []
+cautions:
+- condition: pelvic pain
+  condition_aliases:
+  - vulvodynia
+  - vaginismus
+  - pelvic floor tension
+  - hypertonic pelvic floor
+  - painful sex
+  - dyspareunia
+  - endometriosis
+  severity: block
+  reason: A painful pelvic floor is often an OVER-tight one, and squeezing an already
+    hypertonic muscle makes the pain worse. Strengthening is the wrong direction until a
+    pelvic-health physiotherapist has established which problem this is.
+  modification: ''
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: caution
+  reason: The exercise itself is tiny, but a daily fixed-repetition target is still a
+    progression ladder, and the floor position for two of the parts costs energy.
+  modification: Do the squeezes only, in whatever position is already being used, with no
+    daily count to hit.
+refer_out:
+- Refer to a pelvic-health physiotherapist for any leaking that is not improving after
+  six to eight weeks, any prolapse sensation (heaviness or bulging), or any pelvic pain. This
+  is a specialist assessment, and an internal examination is what distinguishes a weak floor
+  from a tight one.
+linked_to_topics:
+- menopause
+- genitourinary-syndrome-menopause
+linked_to_symptoms: []
+notes_for_coach: 'SHIPPED BECAUSE THE CATALOGUE WAS REFERRING TO SOMETHING IT DID NOT CONTAIN.
+  Eight entries carry a pelvic-floor caution whose modification says some version of "until
+  pelvic-floor work has restored confidence" — and there was no pelvic-floor entry to point
+  at. This is that entry.
+
+  THE BLOCK ON PELVIC PAIN IS THE IMPORTANT PART. The instinct is that pelvic floor problems
+  mean a weak pelvic floor, so squeeze more. For a hypertonic floor — which is what pain
+  usually indicates — that is precisely wrong and makes symptoms worse. Weakness and tightness
+  present with overlapping symptoms and are told apart by examination, not by history, which
+  is why pain routes to a physiotherapist rather than to a modification.
+
+  DELIBERATELY HAS NO `levels` LADDER, and that is a modelling decision rather than an
+  omission. Every other entry''s levels are a progressive-loading ladder, which is why the
+  screen blocks post-exertional malaise from all of them. This is a daily habit whose dose
+  grows — closer to cleaning your teeth than to a strength progression — so the graduation
+  lives in `frequency` and the PEM caution can stay a caution with a real modification
+  instead of a block that would deny a PEM client continence work she may badly need.
+
+  Sims frames the plank as a self-test worth knowing: if the lower belly domes downward during
+  a forearm plank, the deep abdominal wall is not doing its job and the plank should be
+  regressed (knees down, or hands on a sofa arm) until it stays flat.'
+sources:
+- id: sims-next-level-2022
+  location: Chapter 6, "Why Am I Wetting Myself?" — the canister model, Kegels, elevator abs
+    and child's pose breathing, with Chloë Murdock's plank-doming test
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

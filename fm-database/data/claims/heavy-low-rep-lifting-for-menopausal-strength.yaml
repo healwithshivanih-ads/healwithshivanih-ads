@@ -1,0 +1,43 @@
+slug: heavy-low-rep-lifting-for-menopausal-strength
+statement: Through the menopause transition, heavy low-repetition resistance training (six
+  reps or fewer, on large compound lifts) provides the neuromuscular stimulus that declining
+  oestrogen no longer supplies; light weights for high repetitions build muscular endurance
+  but do not replace it.
+evidence_tier: plausible_emerging
+rationale: Sims's central training argument, reasoned from oestrogen's role in satellite-cell
+  function and maximal force production rather than from one trial of this exact contrast.
+  The build-up she prescribes is explicit and conservative — 2-3 sets of 8-15 reps for four
+  to six weeks, then 5x5, then 4-6 sets of 3-5 — which is what makes it prescribable rather
+  than aspirational. Tiered plausible because the head-to-head rep-range comparison in
+  menopausal women is not the study cited; the closest hard evidence is LIFTMOR, held
+  separately.
+coaching_translation: Light weights for many reps builds stamina in a muscle, but it does not
+  tell the body to build strength. After menopause the hormone that used to send that message
+  is gone, so the message has to come from the load — a weight heavy enough that six good
+  repetitions is genuinely all you have. Build up to it over a couple of months, on big lifts
+  like squats and deadlifts, not on every exercise.
+caveats:
+- Requires competent technique before load; Sims is emphatic about instruction first.
+- Explicitly gated on medical advice for diagnosed osteoporosis or existing bone/joint damage.
+- Needs full rest between sets (2-5 minutes) — it is not circuit training, and running it as
+  a circuit makes it neither heavy nor safe.
+- This catalogue is equipment-free and home-based; the principle informs progression and
+  referral, it does not put barbell work into a plan.
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- menopause
+- bone-health
+out_of_scope_notes: 'Barbell loading and one-rep-max work sit outside a coaching scope and
+  outside this catalogue''s equipment-free remit. Where a client is ready for it, refer to a
+  qualified strength coach rather than prescribing load.'
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms:
+- muscle-weakness
+sources:
+- id: sims-next-level-2022
+  location: Chapter 6, "Why You Need to Lift Heavy" and "How to Lift Heavy Sh*t"
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

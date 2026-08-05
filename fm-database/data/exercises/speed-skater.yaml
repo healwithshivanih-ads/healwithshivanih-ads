@@ -1,0 +1,142 @@
+slug: speed-skater
+display_name: Speed Skater (Lateral Bound with Sweep)
+client_name: Skater jumps
+aliases:
+- skater jumps
+- lateral bound
+- speed skaters
+modality: strength
+intensity_tier: advanced
+position: standing
+equipment: []
+summary: A bound from one leg to the other, sweeping the trailing leg behind — single-leg
+  landing, sideways, which is the most demanding bone and balance stimulus here.
+why_it_works: Landing on one leg from a sideways bound concentrates the load on a single hip
+  and shin at an angle daily life never produces, which is the strongest osteogenic signal
+  available without equipment. It also trains exactly the skill a sideways stumble demands —
+  absorb on one leg and control the trunk over it.
+setup:
+- Stand with the feet shoulder-width, knees soft, in supportive shoes on a firm floor.
+- Give yourself a clear metre either side.
+steps:
+- Shift the weight onto the right leg, bending it about 45 degrees, and sweep the left leg
+  behind you.
+- Push off sideways and land on the left leg, sweeping the right leg behind, bending into a
+  half squat to absorb the landing.
+- Swing the arms across the body as you go, like a skater, and keep alternating.
+levels:
+- level: '1'
+  prescription: 'Step the bound rather than jumping it — 8 each side, hand on a counter'
+  reps: 8
+  sets: 1
+  support: one hand on a solid counter
+- level: '2'
+  prescription: '2 sets of 8 small bounds each side, landing softly'
+  reps: 8
+  sets: 2
+  support: none
+- level: '3'
+  prescription: '45 seconds continuous, rest 15 seconds, up to 3 rounds'
+  sets: 3
+  support: none
+frequency: 2-3x/week, at the end of a strength session; a few minutes only.
+builds:
+- single-leg bone loading from a novel direction
+- sideways balance and single-leg landing control
+- outer-hip and thigh power
+easier_variant: side-hops
+harder_variant: null
+movement_patterns:
+- jump
+- balance
+- lunge
+muscles_worked:
+- glutes
+- quadriceps
+- hip_abductors
+- calves
+- hamstrings
+loads_spine: true
+impact: high
+balance_demand: 3
+joint_stress:
+- knee
+- ankle_foot
+- hip
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: Repetition-laddered power work is the shape NICE NG206 withdrew for ME/CFS.
+  modification: ''
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - syncope
+  - peripheral neuropathy
+  severity: block
+  reason: A single-leg sideways landing is the highest balance demand in this catalogue
+    (balance_demand 3). For someone who already falls, the training value does not justify
+    rehearsing the exact mechanism of a sideways fall unsupervised at home.
+  modification: ''
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - postnatal
+  severity: caution
+  reason: Single-leg landings spike intra-abdominal pressure asymmetrically.
+  modification: Step the bound rather than jumping it, and establish pelvic-floor-canister
+    work first.
+- condition: severe osteoporosis
+  condition_aliases:
+  - fragility fracture
+  - vertebral fracture
+  - t-score below -3
+  severity: caution
+  reason: High single-leg impact is a fracture risk once fragility fractures exist, even
+    though impact is the stimulus low bone needs.
+  modification: Stay on side-hops at step-over level; escalate only with the treating doctor.
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - arthritis
+  - joint pain
+  - meniscus
+  severity: caution
+  reason: One knee absorbs the whole landing, across its line.
+  modification: Step the pattern instead of bounding, and keep the sweep shallow.
+refer_out:
+- A physiotherapy assessment first if a knee has ever given way. Single-leg sideways landing
+  is not where that should be discovered.
+linked_to_topics:
+- bone-health
+- menopause
+linked_to_symptoms: []
+notes_for_coach: 'The top of the impact ladder and the only balance_demand 3 entry — withhold
+  it by default and prescribe it deliberately. It exists for the fitter perimenopausal client
+  whose bone density is the concern and whose balance is genuinely good, where side-hops has
+  stopped being a challenge.
+
+  Blocked outright for a falls history, which is stricter than the other jumps: this movement
+  IS a controlled sideways fall onto one leg, and rehearsing it alone at home is a different
+  proposition from rehearsing it in a clinic.'
+sources:
+- id: sims-next-level-2022
+  location: Chapter 7, advanced plyometric circuit — Speed Skater
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

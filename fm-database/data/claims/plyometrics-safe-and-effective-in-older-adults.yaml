@@ -1,0 +1,37 @@
+slug: plyometrics-safe-and-effective-in-older-adults
+statement: A 2019 systematic review of plyometric (jump) training in adults aged 58 to 79
+  found improvements in muscular strength, bone health, body composition, posture and
+  physical performance, with no included study reporting increased injuries or other
+  adverse events.
+evidence_tier: strong
+rationale: A systematic review across multiple trials in the relevant age band, reporting
+  both benefit and an absence of the adverse-event signal that is the usual objection to
+  jump training in older people. Cited by Sims with its age range and conclusion quoted.
+  The safety finding is the load-bearing part for this catalogue — it is the evidence that
+  makes gated jump entries defensible for an older roster at all.
+coaching_translation: Jump training was reviewed across studies in people aged 58 to 79. It
+  improved strength, bone, body composition and posture — and no study found it caused more
+  injuries. The instinct to tell an older woman not to jump is not supported by evidence.
+caveats:
+- Review-level evidence in supervised trial conditions, in participants who were screened
+  for entry; it does not license unscreened prescription.
+- Says nothing about established osteoporosis with prior fracture, where Sims defers to the
+  treating clinician.
+- Progression still matters — the trials built up to jumping, they did not start there.
+linked_to_topics:
+- bone-health
+- sarcopenia-skeletal-muscle-loss
+- menopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms:
+- muscle-weakness
+sources:
+- id: sims-next-level-2022
+  location: Chapter 7 opening — quoting a 2019 systematic review of plyometrics in adults
+    aged 58-79
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani
