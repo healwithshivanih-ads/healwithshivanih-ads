@@ -1699,7 +1699,10 @@ export default async function ClientV2Page({
           )}
 
           <FmGroupedPanel id="overview.exercise" icon="🏃" title="Movement — what suits this client">
-            <ExerciseSuitabilityPanel client={client as unknown as Record<string, unknown>} />
+            <ExerciseSuitabilityPanel
+              client={client as unknown as Record<string, unknown>}
+              clientId={id}
+            />
           </FmGroupedPanel>
 
           {mindbodySteps.length > 0 && (
