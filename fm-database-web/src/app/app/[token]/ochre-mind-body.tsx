@@ -19,11 +19,12 @@
    chosen FOR this client, and folding it into the chips would bury it.
    ====================================================================== */
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import type { AppMindBodyRead } from "@/lib/fmdb/somatic";
 import { Icon, useOchre } from "./ochre-context";
 import { RootsMotif } from "./mind-body-motif";
+import { logFeeling } from "./practice-log";
 import { routableFeelings, type Available, type FeelingKey, type Route } from "./mind-body-routing";
 
 const ICON_FOR: Record<Route["kind"], string> = {
@@ -40,8 +41,12 @@ export function MindBodyEntryCard({
   have: Available;
   onOpen: (route: Route) => void;
 }) {
+  const { token } = useOchre();
   const [open, setOpen] = useState(false);
   const [picked, setPicked] = useState<FeelingKey | null>(null);
+  // Each state is recorded once per visit to the card — toggling a chip off
+  // and on again is indecision, not a second data point.
+  const logged = useRef<Set<FeelingKey>>(new Set());
   const options = routableFeelings(have);
 
   // Nothing prescribed and nothing unlocked — no line at all rather than a
@@ -77,7 +82,22 @@ export function MindBodyEntryCard({
               type="button"
               className={`mbe-chip mbe-chip--${feeling.tone}${on ? " on" : ""}`}
               aria-pressed={on}
-              onClick={() => setPicked(on ? null : feeling.key)}
+              onClick={() => {
+                setPicked(on ? null : feeling.key);
+                if (!on && !logged.current.has(feeling.key)) {
+                  logged.current.add(feeling.key);
+                  const route = options.find((o) => o.feeling.key === feeling.key)?.route;
+                  if (route) {
+                    logFeeling({
+                      token,
+                      feeling: feeling.key,
+                      label: feeling.label,
+                      routedKind: route.kind,
+                      routedPracticeId: route.somatic?.practiceId ?? null,
+                    });
+                  }
+                }
+              }}
             >
               {feeling.label}
             </button>
