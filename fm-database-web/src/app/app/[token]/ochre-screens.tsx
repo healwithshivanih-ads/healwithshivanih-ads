@@ -593,8 +593,18 @@ export function TodayScreen({
         </Section>
       )}
 
-      {practices.length > 0 && (
-        <Section title="Daily practices">
+      {/* The section used to gate on practices.length alone, which hid the
+          reset link AND the mind-body unlock nudge for any client whose plan
+          had no checkbox practices but did have breath/EFT/sleep/somatic
+          content (2026-08-05 audit). Mind-body availability now opens it too. */}
+      {(practices.length > 0 ||
+        !!data.breathwork ||
+        !!data.eft ||
+        !!data.sleep ||
+        data.somatic.length > 0 ||
+        !!data.mindBody?.locked) && (
+        <Section title={practices.length > 0 ? "Daily practices" : "Mind & body"}>
+          {practices.length > 0 && (
           <div className="card" style={{ overflow: "hidden" }}>
             {practices.map((p) => {
               const on = !!p.done;
@@ -678,19 +688,20 @@ export function TodayScreen({
               );
             })}
           </div>
+          )}
           {/* The plan arrives in layers, and this is the only place the client
               hears about it. Deliberately NOT a count: "3 more locked" turns
               staging — which exists to protect them from a fourteen-item day —
               into a list of what they are not doing yet. No number, no lock
               icon, no progress bar to complete. Just: this is the start. */}
-          {data.practicesComingLater > 0 && (
+          {practices.length > 0 && data.practicesComingLater > 0 && (
             <p className="muted" style={{ margin: "10px 2px 0", fontSize: 13 }}>
               These come first. A few more open up later in your plan.
             </p>
           )}
-          {/* ONE entry point, not four launch cards. The client picks how she
-              feels; the routing picks the technique. Anything the coach linked
-              specifically keeps its own line below so it isn't buried. */}
+          {/* ONE quiet opt-in line, not a question card. The client opens it
+              when she wants a reset; the routing picks the technique. Anything
+              the coach linked specifically keeps its own row above. */}
           <MindBodyEntryCard
             have={{
               breath: data.breathwork ? { name: data.breathwork.name } : null,
@@ -1024,27 +1035,31 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
     <div className="card" style={{ padding: "15px 16px", marginBottom: 14 }}>
       <div className="plan-why">{focus.why}</div>
       {ayurveda && (
-        <div
+        <details
+          className="list-fold"
           style={{
             marginTop: 12,
-            padding: "12px 13px",
+            padding: "4px 13px 8px",
             background: "var(--forest-tint)",
             borderRadius: 14,
             borderLeft: "3px solid var(--forest)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 5 }}>
+          <summary>
             <Icon name="leaf" size={14} style={{ color: "var(--forest)" }} />
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 0.3, textTransform: "uppercase", color: "var(--forest-deep)" }}>
-              Your Ayurvedic assessment
+              Your Ayurvedic assessment · {ayurveda.constitution}
             </span>
-          </div>
+            <span className="lf-chev">
+              <Icon name="chev" size={15} />
+            </span>
+          </summary>
           <div style={{ fontSize: 14, color: "var(--ink)", lineHeight: 1.5 }}>
             Constitution: <strong>{ayurveda.constitution}</strong>
             {ayurveda.imbalance ? <> · {ayurveda.imbalance}</> : null}
           </div>
           <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 5 }}>{ayurveda.how}</div>
-        </div>
+        </details>
       )}
       {flags.length > 0 && (
         <>
@@ -1073,21 +1088,25 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
         </>
       )}
       {tissueSalts && tissueSalts.list.length > 0 && (
-        <div
+        <details
+          className="list-fold"
           style={{
             marginTop: 12,
-            padding: "12px 13px",
+            padding: "4px 13px 8px",
             background: "var(--forest-tint)",
             borderRadius: 14,
             borderLeft: "3px solid var(--forest)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 5 }}>
+          <summary>
             <span style={{ fontSize: 13 }}>🧂</span>
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 0.3, textTransform: "uppercase", color: "var(--forest-deep)" }}>
-              Gentle tissue salts
+              Gentle tissue salts · {tissueSalts.list.length}
             </span>
-          </div>
+            <span className="lf-chev">
+              <Icon name="chev" size={15} />
+            </span>
+          </summary>
           {tissueSalts.overview && (
             <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginBottom: 7 }}>
               {tissueSalts.overview}
@@ -1115,7 +1134,7 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
           <div style={{ fontSize: 11.5, color: "var(--muted)", lineHeight: 1.5, marginTop: 8, opacity: 0.85 }}>
             A gentle traditional adjunct — optional, not a medicine, and not a replacement for your supplements or care.
           </div>
-        </div>
+        </details>
       )}
     </div>
   );
@@ -1265,16 +1284,34 @@ export function PlanScreen({
       {pr.plate.length > 0 && (
       <Section title="How to build your plate">
         {data.weightLoss && (
-          <div
+          <details
+            className="list-fold"
             style={{
               marginBottom: 12,
-              padding: "13px 15px",
+              padding: "4px 15px 9px",
               background: "var(--ochre-tint)",
               borderRadius: 14,
               borderLeft: "3px solid var(--ochre)",
             }}
           >
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+            {/* Collapsed = just the verdict — the one thing to know. The
+                numbers behind it are a tap away, not a wall she scrolls past. */}
+            <summary>
+              <span style={{ fontSize: 13.5, color: "var(--ink)", lineHeight: 1.4 }}>
+                {data.weightLoss.adherence === "high" ? (
+                  <strong style={{ color: "var(--ochre-deep)" }}>A little generous this week</strong>
+                ) : data.weightLoss.estimatedDailyKcal != null && data.weightLoss.estimatedDailyKcal < 1300 ? (
+                  <strong style={{ color: "var(--ochre-deep)" }}>Eat to comfortable fullness</strong>
+                ) : (
+                  <strong style={{ color: "var(--forest)" }}>✓ On track</strong>
+                )}{" "}
+                · your guide is {data.weightLoss.dailyTarget.toLocaleString()} kcal/day
+              </span>
+              <span className="lf-chev">
+                <Icon name="chev" size={15} />
+              </span>
+            </summary>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginTop: 4 }}>
               <span style={{ fontFamily: "var(--serif)", fontSize: 26, color: "var(--ink)", lineHeight: 1 }}>
                 {data.weightLoss.dailyTarget.toLocaleString()}
               </span>
@@ -1321,7 +1358,7 @@ export function PlanScreen({
                 )}
               </div>
             )}
-          </div>
+          </details>
         )}
         <PlateDiagram />
         <div className="muted" style={{ fontSize: 12.5, marginTop: 8, paddingLeft: 2 }}>
@@ -1345,116 +1382,164 @@ export function PlanScreen({
       </Section>
 
       {(pr.oils.use.length > 0 || pr.oils.avoid.length > 0 || pr.cooking.length > 0) && (
-      <Section title="In the kitchen">
-        {(pr.oils.use.length > 0 || pr.oils.avoid.length > 0) && <OilGuide />}
-        {pr.cooking.length > 0 && (
-          <div style={{ marginTop: 12 }}>
-            <Accordion items={pr.cooking} />
-          </div>
-        )}
-      </Section>
-      )}
-
-      {!data.guidedWeekly && (
-      <Section title={`Remedies ${pr.authoredBy.split(" ")[0]} picked`}>
-        <div className="stack" style={{ gap: 10 }}>
-          {data.remedies
-            .filter((r) => r.assigned)
-            .map((r) => (
-              <RemedyCard key={r.slug} remedy={r} onOpen={openRemedy} />
-            ))}
-        </div>
-        <div className="card-quiet soon" style={{ marginTop: 10 }}>
-          <Icon name="leaf" size={16} style={{ color: "var(--ochre)" }} />
-          <span>
-            The daily ones appear on your Today list. A <strong>Swap option</strong> is an either/or — use it instead of its
-            partner remedy if it suits you better, never both.
-          </span>
-        </div>
-      </Section>
-      )}
-
-      {data.lessons.length > 0 && (
-        <Section title="Learn">
-          <div className="stack" style={{ gap: 10 }}>
-            {data.lessons.map((l) => (
-              <button key={l.id} className="learn-card" onClick={() => openDoc({ kind: "lesson", id: l.id })}>
-                <span className="learn-ico">
-                  <Icon name="book" size={18} />
-                </span>
-                <span className="learn-body">
-                  <span className="learn-title">{l.title}</span>
-                  <span className="learn-sum">{l.summary}</span>
-                  <span className="learn-meta">{l.mins}</span>
-                </span>
-                <span className="chev">
-                  <Icon name="chev" size={18} />
-                </span>
-              </button>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {data.resources.length > 0 && (
-        <Section title={`Resources ${pr.authoredBy.split(" ")[0]} picked for you`}>
-          <div className="stack" style={{ gap: 10 }}>
-            {data.resources.map((r) => (
-              <button key={r.id} className="res-card" onClick={() => openDoc({ kind: "resource", id: r.id })}>
-                <span className="res-ico">
-                  <Icon name={r.icon} size={18} />
-                </span>
-                <span className="res-body">
-                  <span className="res-top">
-                    <span className="res-title">{r.title}</span>
-                    <span className="res-kind">{r.kind}</span>
-                  </span>
-                  <span className="res-desc">{r.desc}</span>
-                </span>
-                <span className="chev">
-                  <Icon name="chev" size={18} />
-                </span>
-              </button>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {data.coachPicks.length > 0 && (
-        <Section title="Shivani's picks for you">
-          <div className="card" style={{ overflow: "hidden" }}>
-            {data.coachPicks.map((p, i) => (
-              <div
-                key={`${p.title}-${i}`}
-                style={{
-                  padding: "11px 14px",
-                  borderBottom: i < data.coachPicks.length - 1 ? "1px solid var(--line, #ece7df)" : "none",
-                }}
-              >
-                <div style={{ fontWeight: 700, fontSize: 14 }}>
-                  {p.title}
-                  {p.forWhat && (
-                    <span style={{ fontWeight: 500, opacity: 0.7 }}> · for {p.forWhat}</span>
-                  )}
-                </div>
-                {p.note && <div style={{ fontSize: 12.5, opacity: 0.8, marginTop: 3 }}>{p.note}</div>}
-                {p.buyUrl && (
-                  <a
-                    href={p.buyUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 5, color: "var(--accent, #b8722c)", fontWeight: 600 }}
-                  >
-                    <Icon name="bag" size={13} /> Where to get it
-                  </a>
-                )}
+        <details className="plan-collapse">
+          <summary>
+            <span className="pc-ico">
+              <Icon name="bowl" size={16} />
+            </span>
+            <span className="pc-body">
+              <span className="pc-title">In the kitchen</span>
+              <span className="pc-sub">Oils to cook with + kitchen habits — tap to browse</span>
+            </span>
+            <span className="pc-chev">
+              <Icon name="chev" size={18} />
+            </span>
+          </summary>
+          <div className="plan-collapse-body">
+            {(pr.oils.use.length > 0 || pr.oils.avoid.length > 0) && <OilGuide />}
+            {pr.cooking.length > 0 && (
+              <div style={{ marginTop: 12 }}>
+                <Accordion items={pr.cooking} />
               </div>
-            ))}
+            )}
           </div>
-          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
-            A few extras Shivani picked for you — optional, not part of your daily routine.
+        </details>
+      )}
+
+      {!data.guidedWeekly && data.remedies.some((r) => r.assigned) && (
+        <details className="plan-collapse">
+          <summary>
+            <span className="pc-ico">
+              <Icon name="leaf" size={16} />
+            </span>
+            <span className="pc-body">
+              <span className="pc-title">{`Remedies ${pr.authoredBy.split(" ")[0]} picked`}</span>
+              <span className="pc-sub">What each one is for + how to use it — daily ones appear on Today</span>
+            </span>
+            <span className="pc-chev">
+              <Icon name="chev" size={18} />
+            </span>
+          </summary>
+          <div className="plan-collapse-body">
+            <div className="stack" style={{ gap: 10 }}>
+              {data.remedies
+                .filter((r) => r.assigned)
+                .map((r) => (
+                  <RemedyCard key={r.slug} remedy={r} onOpen={openRemedy} />
+                ))}
+            </div>
+            <div className="card-quiet soon" style={{ marginTop: 10 }}>
+              <Icon name="leaf" size={16} style={{ color: "var(--ochre)" }} />
+              <span>
+                The daily ones appear on your Today list. A <strong>Swap option</strong> is an either/or — use it instead of its
+                partner remedy if it suits you better, never both.
+              </span>
+            </div>
           </div>
-        </Section>
+        </details>
+      )}
+
+      {/* Learn / Resources / Picks were three separate always-open sections —
+          three scroll-lengths of link cards between the client and her
+          supplements (2026-08-05 audit). One folded shelf now holds all three. */}
+      {(data.lessons.length > 0 || data.resources.length > 0 || data.coachPicks.length > 0) && (
+        <details className="plan-collapse">
+          <summary>
+            <span className="pc-ico">
+              <Icon name="book" size={16} />
+            </span>
+            <span className="pc-body">
+              <span className="pc-title">Your library</span>
+              <span className="pc-sub">
+                {`Lessons, guides & extras ${pr.authoredBy.split(" ")[0]} picked for you — tap to browse`}
+              </span>
+            </span>
+            <span className="pc-chev">
+              <Icon name="chev" size={18} />
+            </span>
+          </summary>
+          <div className="plan-collapse-body">
+            {data.lessons.length > 0 && (
+              <div className="stack" style={{ gap: 10 }}>
+                {data.lessons.map((l) => (
+                  <button key={l.id} className="learn-card" onClick={() => openDoc({ kind: "lesson", id: l.id })}>
+                    <span className="learn-ico">
+                      <Icon name="book" size={18} />
+                    </span>
+                    <span className="learn-body">
+                      <span className="learn-title">{l.title}</span>
+                      <span className="learn-sum">{l.summary}</span>
+                      <span className="learn-meta">{l.mins}</span>
+                    </span>
+                    <span className="chev">
+                      <Icon name="chev" size={18} />
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+            {data.resources.length > 0 && (
+              <div className="stack" style={{ gap: 10, marginTop: data.lessons.length > 0 ? 10 : 0 }}>
+                {data.resources.map((r) => (
+                  <button key={r.id} className="res-card" onClick={() => openDoc({ kind: "resource", id: r.id })}>
+                    <span className="res-ico">
+                      <Icon name={r.icon} size={18} />
+                    </span>
+                    <span className="res-body">
+                      <span className="res-top">
+                        <span className="res-title">{r.title}</span>
+                        <span className="res-kind">{r.kind}</span>
+                      </span>
+                      <span className="res-desc">{r.desc}</span>
+                    </span>
+                    <span className="chev">
+                      <Icon name="chev" size={18} />
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+            {data.coachPicks.length > 0 && (
+              <>
+                <div
+                  className="card"
+                  style={{ overflow: "hidden", marginTop: data.lessons.length > 0 || data.resources.length > 0 ? 10 : 0 }}
+                >
+                  {data.coachPicks.map((p, i) => (
+                    <div
+                      key={`${p.title}-${i}`}
+                      style={{
+                        padding: "11px 14px",
+                        borderBottom: i < data.coachPicks.length - 1 ? "1px solid var(--line, #ece7df)" : "none",
+                      }}
+                    >
+                      <div style={{ fontWeight: 700, fontSize: 14 }}>
+                        {p.title}
+                        {p.forWhat && (
+                          <span style={{ fontWeight: 500, opacity: 0.7 }}> · for {p.forWhat}</span>
+                        )}
+                      </div>
+                      {p.note && <div style={{ fontSize: 12.5, opacity: 0.8, marginTop: 3 }}>{p.note}</div>}
+                      {p.buyUrl && (
+                        <a
+                          href={p.buyUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, marginTop: 5, color: "var(--accent, #b8722c)", fontWeight: 600 }}
+                        >
+                          <Icon name="bag" size={13} /> Where to get it
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
+                  A few extras Shivani picked for you — optional, not part of your daily routine.
+                </div>
+              </>
+            )}
+          </div>
+        </details>
       )}
 
       {!data.guidedWeekly && (<>

@@ -1157,7 +1157,7 @@ export function AccountOverlay({
         <div className="card-quiet" style={{ padding: "13px 15px", display: "flex", gap: 10, alignItems: "center", marginTop: 22 }}>
           <Icon name="water" size={16} style={{ color: "var(--forest)" }} />
           <span style={{ fontSize: 12.5, color: "var(--muted)" }}>
-            Your daily ticks are saved on this phone. Your weekly check-in goes to {data.coach.name.split(" ")[0]}.
+            Your daily logs and weekly check-in reach {data.coach.name.split(" ")[0]} quietly, so she can see how the plan is landing.
           </span>
         </div>
 

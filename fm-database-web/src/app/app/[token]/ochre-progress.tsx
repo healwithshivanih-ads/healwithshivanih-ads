@@ -211,7 +211,11 @@ function fmtShort(iso: string): string {
     : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 }
 
-function VitalsCard({ onLog }: { onLog: () => void }) {
+/* Read-only on purpose. This card, the FeelStrip CTA and the energy sheet all
+   fed the same bottom sheet, so Progress showed three buttons for one action
+   (2026-08-05 audit). The single entry is the energy CTA above — its sheet
+   carries the weight/BP fields. Renders nothing until there's a trend to show. */
+function VitalsCard() {
   const { body } = useOchre();
   const hist = body.history;
   const weightPts = hist.filter((h) => h.weightKg != null) as { date: string; weightKg: number }[];
@@ -225,18 +229,7 @@ function VitalsCard({ onLog }: { onLog: () => void }) {
   const weightDelta =
     weightPts.length >= 2 ? Math.round((latestWeight.weightKg - weightPts[0].weightKg) * 10) / 10 : null;
 
-  if (!latestWeight && !latestBp) {
-    return (
-      <div className="card" style={{ padding: 16, display: "flex", flexDirection: "column", gap: 10 }}>
-        <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.5 }}>
-          Log your weight or blood pressure any time — daily, weekly, whatever suits you. It builds a trend here.
-        </div>
-        <button className="feel-cta" onClick={onLog}>
-          <Icon name="plus" size={16} /> Log your vitals
-        </button>
-      </div>
-    );
-  }
+  if (!latestWeight && !latestBp) return null;
 
   const W = 260,
     H = 52,
@@ -295,25 +288,9 @@ function VitalsCard({ onLog }: { onLog: () => void }) {
           <circle cx={xs[xs.length - 1]} cy={y(weightPts[weightPts.length - 1].weightKg)} r={3.4} fill="var(--forest)" />
         </svg>
       )}
-      <button
-        onClick={onLog}
-        style={{
-          alignSelf: "flex-start",
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          padding: "7px 12px",
-          borderRadius: 999,
-          border: "1px solid var(--line)",
-          background: "var(--paper)",
-          color: "var(--forest-deep)",
-          fontSize: 13,
-          fontWeight: 500,
-          cursor: "pointer",
-        }}
-      >
-        <Icon name="plus" size={13} /> Log today
-      </button>
+      <div style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.5 }}>
+        New numbers ride along with your daily energy log above.
+      </div>
     </div>
   );
 }
@@ -549,11 +526,15 @@ export function ProgressScreen({
         <FeelStrip feel={feel} onLogToday={onLogFeeling} />
       </Section>
 
-      {!data.guidedWeekly && (
-      <Section title="Your vitals">
-        <VitalsCard onLog={onLogFeeling} />
-      </Section>
-      )}
+      {/* Section only exists once there's a trend — before that, the energy
+          sheet above is the (single) way in, and an empty card here was just
+          a second button for it. */}
+      {!data.guidedWeekly &&
+        data.body.history.some((h) => h.weightKg != null || (h.bpSystolic != null && h.bpDiastolic != null)) && (
+          <Section title="Your vitals">
+            <VitalsCard />
+          </Section>
+        )}
 
       <Section title="Movement">
         <MovementCard sessions={moves} onAdd={onLogMove} />
