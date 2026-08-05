@@ -88,9 +88,14 @@ export function BottomNav({
       {TABS.map((t) => (
         <button key={t.id} className={"tab" + (active === t.id ? " active" : "")} onClick={() => onChange(t.id)}>
           <span className="ic">
-            <Icon name={t.icon} size={23} />
+            {/* Slot 4 is Practices for everyone except discovery, whose flow IS
+                lab booking (2026-08-05 audit — 4 lab orders ever, roster-wide).
+                The id stays "labs" so routing/state/deep-links are untouched. */}
+            <Icon name={!discovery && t.id === "labs" ? "sprout" : t.icon} size={23} />
           </span>
-          <span className="tl-label">{discovery && t.id === "today" ? "Summary" : t.label}</span>
+          <span className="tl-label">
+            {discovery && t.id === "today" ? "Summary" : !discovery && t.id === "labs" ? "Practices" : t.label}
+          </span>
           {t.id === "coach" && coachUnread > 0 ? (
             <span className="num-badge" aria-label={`${coachUnread} unread messages`}>
               {coachUnread > 9 ? "9+" : coachUnread}

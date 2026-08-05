@@ -21,45 +21,6 @@ import { Icon, useOchre } from "./ochre-context";
 const ASSESSMENT_URL =
   process.env.NEXT_PUBLIC_GUIDED_ASSESSMENT_URL || "https://www.theochretree.com";
 
-/** The Labs tab for guided — labs belong to the assessment and 1:1 tiers.
- *  An honest explainer beats an empty vault. */
-export function GuidedLabsScreen() {
-  return (
-    <div className="screen-pad screen-anim">
-      <div className="greeting">
-        <div className="hi">Labs</div>
-        <div className="date script">Part of the assessment</div>
-      </div>
-      <div className="card" style={{ padding: "14px 16px" }}>
-        <div style={{ fontSize: 14.2, lineHeight: 1.6 }}>
-          Your programme runs on food, practice and rhythm — no lab work needed.
-          When you want your numbers read properly and a version built around
-          them, that&apos;s the assessment: history, medications and labs, together.
-        </div>
-        <a
-          href={ASSESSMENT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "block",
-            textAlign: "center",
-            marginTop: 12,
-            padding: "12px 16px",
-            borderRadius: 999,
-            background: "var(--forest)",
-            color: "#fff",
-            fontSize: 14.5,
-            fontWeight: 600,
-            textDecoration: "none",
-          }}
-        >
-          Book an assessment
-        </a>
-      </div>
-    </div>
-  );
-}
-
 export function GuidedCoachScreen() {
   const data = useOchre();
   return (

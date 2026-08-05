@@ -208,14 +208,20 @@ function CollapsibleSection({
   );
 }
 
-export function LabsScreen() {
+/**
+ * The vault + orders, home-agnostic — rendered by the discovery tier's Labs
+ * tab AND by the labs overlay everyone else reaches from Account (always) or
+ * the Today "Book your lab test" tile (when an order is recommended). The tab
+ * itself became Practices in the 2026-08-05 audit: 4 orders ever roster-wide
+ * didn't justify a permanent fifth of the navigation.
+ */
+export function LabVaultBody() {
   const { labVault, coach } = useOchre();
   const firstName = coach.name.split(" ")[0];
 
   if (!labVault || labVault.summary.total === 0) {
     return (
-      <div className="screen-anim" style={{ padding: "18px 16px 90px" }}>
-        <ScreenHead />
+      <>
         <LabOrdersCard />
         <div className="card" style={{ padding: 20, textAlign: "center", marginTop: 14 }}>
           <Icon name="droplet" size={22} style={{ color: SAGE }} />
@@ -224,7 +230,7 @@ export function LabsScreen() {
             When you share your blood work with {firstName}, your results appear here — each one against its functional-optimal range.
           </p>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -237,8 +243,7 @@ export function LabsScreen() {
     .filter((g) => g.markers.length > 0);
 
   return (
-    <div className="screen-anim" style={{ padding: "18px 16px 90px" }}>
-      <ScreenHead sub={vaultSummaryLine(summary, mode)} />
+    <>
       <LabOrdersCard />
 
       <div style={{ background: SAND, borderRadius: 14, padding: "12px 14px", marginTop: 12 }}>
@@ -286,6 +291,48 @@ export function LabsScreen() {
           </CollapsibleSection>
         );
       })}
+    </>
+  );
+}
+
+/** The labs overlay — how package + guided clients reach the vault + order
+ *  flow now that the tab slot belongs to Practices. Opened from Account
+ *  (always) and the Today "Book your lab test" tile (when an order is
+ *  recommended). */
+export function LabsOverlay({ onClose }: { onClose: () => void }) {
+  const { labVault } = useOchre();
+  const sub =
+    labVault && labVault.summary.total > 0 ? vaultSummaryLine(labVault.summary, labVault.mode) : undefined;
+  return (
+    <div className="overlay-scroll">
+      <button className="back-link" onClick={onClose} style={{ margin: "0 0 4px" }}>
+        <Icon name="arrowLeft" size={18} /> Back
+      </button>
+      <div className="overlay-pad" style={{ paddingTop: 4 }}>
+        <h2 className="h-serif" style={{ fontSize: 24, margin: "0 0 2px" }}>
+          Your labs
+        </h2>
+        {sub && (
+          <div className="muted" style={{ fontSize: 13.5, marginBottom: 10 }}>
+            {sub}
+          </div>
+        )}
+        <LabVaultBody />
+      </div>
+    </div>
+  );
+}
+
+/** Full-screen Labs tab — discovery tier only (lab booking is the core of
+ *  that flow). Package + guided tiers reach the same body via the overlay. */
+export function LabsScreen() {
+  const { labVault } = useOchre();
+  const sub =
+    labVault && labVault.summary.total > 0 ? vaultSummaryLine(labVault.summary, labVault.mode) : undefined;
+  return (
+    <div className="screen-anim" style={{ padding: "18px 16px 90px" }}>
+      <ScreenHead sub={sub} />
+      <LabVaultBody />
     </div>
   );
 }

@@ -936,10 +936,13 @@ export function AccountOverlay({
   onClose,
   textLarge,
   onTextLarge,
+  openLabs,
 }: {
   onClose: () => void;
   textLarge: boolean;
   onTextLarge: (v: boolean) => void;
+  /** Opens the labs overlay (closing Account first — one overlay at a time). */
+  openLabs: () => void;
 }) {
   const data = useOchre();
   const router = useRouter();
@@ -1103,6 +1106,30 @@ export function AccountOverlay({
         </div>
 
         <BodySection />
+
+        {/* Labs live here now — the tab slot became Practices (2026-08-05
+            audit). One row into the same vault + order flow as before. */}
+        <div className="set-group">
+          <div className="set-h">
+            <Icon name="droplet" size={15} /> Labs
+          </div>
+          <div className="card" style={{ overflow: "hidden" }}>
+            <button
+              className="set-row"
+              onClick={() => {
+                onClose();
+                openLabs();
+              }}
+              style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left", cursor: "pointer" }}
+            >
+              <span className="sr-name" style={{ flex: 1 }}>
+                Your labs
+                <span className="sr-meta">Results against optimal ranges + home-collection booking</span>
+              </span>
+              <Icon name="chev" size={17} style={{ color: "var(--muted)" }} />
+            </button>
+          </div>
+        </div>
 
         <div className="set-group">
           <div className="set-h">

@@ -21,11 +21,12 @@ import {
   DiscoveryCoachScreen,
   DiscoveryOnboardingScreen,
 } from "./ochre-discovery";
-import { GuidedCoachScreen, GuidedLabsScreen } from "./ochre-guided";
+import { GuidedCoachScreen } from "./ochre-guided";
+import { PracticesScreen } from "./ochre-practices";
 import { EndgameBanner, LibraryFloorScreen, GraduationReport, MaintenanceHome, MaintenanceCheckout } from "./ochre-endgame";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
-import { LabsScreen } from "./ochre-labs";
+import { LabsScreen, LabsOverlay } from "./ochre-labs";
 import { CoachScreen } from "./ochre-coach";
 import { TourOverlay } from "./ochre-tour";
 import InstallPrompt from "./ochre-install";
@@ -114,7 +115,8 @@ type Overlay =
   | { type: "msq" }
   | { type: "order" }
   | { type: "portions" }
-  | { type: "account" };
+  | { type: "account" }
+  | { type: "labs" };
 
 export default function OchreApp({ data }: { data: ClientAppData }) {
   const STORE = `ochre.app.${data.clientId}`;
@@ -451,6 +453,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const openMsq = () => setOverlay({ type: "msq" });
   const openOrder = () => setOverlay({ type: "order" });
   const openPortions = () => setOverlay({ type: "portions" });
+  const openLabs = () => setOverlay({ type: "labs" });
   const closeOverlay = () => setOverlay(null);
 
   // A plan can prescribe several somatic practices, so the overlay resolves the
@@ -716,8 +719,6 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     else screen = <DiscoverySummaryScreen />; // the "today" slot → Starting Map
   } else if (guided && tab === "coach") {
     screen = <GuidedCoachScreen />;
-  } else if (guided && tab === "labs") {
-    screen = <GuidedLabsScreen />;
   } else if (setupHold && tab !== "coach" && tab !== "labs") {
     screen = <PlanHoldScreen goCoach={() => go("coach")} openOrder={openOrder} />;
   } else if (inCheckin) {
@@ -783,6 +784,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         openGrocery={openGrocery}
         feelToday={feelToday}
         onLogFeeling={() => setFeelSheet(true)}
+        openLabs={openLabs}
       />
       </>
     );
@@ -794,7 +796,6 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         openGrocery={openGrocery}
         openOrder={openOrder}
         openPortions={openPortions}
-        openSomatic={openSomatic}
       />
     );
   } else if (tab === "progress") {
@@ -802,7 +803,18 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       <ProgressScreen goCheckin={goCheckin} feel={feel} onLogFeeling={() => setFeelSheet(true)} moves={moves} onLogMove={() => setMoveSheet(true)} openMsq={openMsq} dailyDone={dailyDone} dailyTotal={dailyTotal} streak={streak} bonusBlossoms={msqWins} bonusFruit={checkinCount} />
     );
   } else if (tab === "labs") {
-    screen = <LabsScreen />;
+    // The slot is Practices for every non-discovery tier (2026-08-05 audit) —
+    // guided included, whose old screen was a "no lab work needed" stub. The
+    // vault + order flow moved to the labs overlay (Account / Today tile).
+    screen = (
+      <PracticesScreen
+        openBreath={openBreath}
+        openEft={openEft}
+        openSleep={openSleep}
+        openSomatic={openSomatic}
+        openExercise={openExercise}
+      />
+    );
   } else if (tab === "coach") {
     screen = (
       <CoachScreen
@@ -911,8 +923,14 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}
               {overlay.type === "portions" && <PortionsOverlay onClose={closeOverlay} />}
               {overlay.type === "account" && (
-                <AccountOverlay onClose={closeOverlay} textLarge={textLarge} onTextLarge={changeTextLarge} />
+                <AccountOverlay
+                  onClose={closeOverlay}
+                  textLarge={textLarge}
+                  onTextLarge={changeTextLarge}
+                  openLabs={openLabs}
+                />
               )}
+              {overlay.type === "labs" && <LabsOverlay onClose={closeOverlay} />}
             </div>
           )}
 
