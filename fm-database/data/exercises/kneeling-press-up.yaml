@@ -58,6 +58,14 @@ joint_stress:
 - elbow
 - knee
 balance_demand: 0
+movement_patterns:
+- push
+- core_brace
+muscles_worked:
+- chest
+- triceps
+- shoulders
+- abdominals
 impact: none
 requires_floor_transfer: true
 cautions:

@@ -13,6 +13,11 @@
  * works through two of six exercises is telling you something specific — most
  * likely that the session is too long or too hard — and a plain "3 sessions this
  * week" would hide it behind a number that looks like success.
+ *
+ * UPDATE 2026-08-05: the coach overrode the wait-for-data stance — see
+ * exercise-progression.ts, which layers an EXPLICITLY PROVISIONAL readiness
+ * rule on top of these counts. This module still only reports; the rule and its
+ * constants live there, marked for revision once real log seasons exist.
  */
 
 import fs from "node:fs/promises";

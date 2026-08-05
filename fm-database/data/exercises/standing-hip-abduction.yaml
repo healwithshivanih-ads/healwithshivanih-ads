@@ -48,6 +48,11 @@ builds:
 joint_stress:
 - hip
 balance_demand: 2
+movement_patterns:
+- balance
+muscles_worked:
+- hip_abductors
+- glutes
 impact: none
 cautions:
 - condition: osteoarthritis

@@ -22,6 +22,7 @@ import { exerciseFigureSvg } from "@/lib/fmdb/exercise-figure";
 import { screenAll, summarise, type ExerciseVerdict, type Verdict } from "@/lib/fmdb/exercise-screen";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { loadExerciseAdherence } from "@/lib/fmdb/exercise-adherence";
+import { loadExerciseProgression, PROGRESSION_MIN_FINISHED } from "@/lib/fmdb/exercise-progression";
 import type { Exercise } from "@/lib/fmdb/types";
 
 const VERDICT_META: Record<Verdict, { label: string; blurb: string; tone: string }> = {
@@ -113,6 +114,7 @@ export async function ExerciseSuitabilityPanel({
   // What they have actually DONE, above what they COULD do — a screen is a
   // prediction and this is the record, and the record should be read first.
   const adherence = clientId ? await loadExerciseAdherence(clientId) : null;
+  const progression = clientId ? await loadExerciseProgression(clientId) : [];
 
   const verdicts = screenAll(exercises as unknown as Parameters<typeof screenAll>[0], client);
   const counts = summarise(verdicts);
@@ -132,15 +134,48 @@ export async function ExerciseSuitabilityPanel({
             Last on {adherence.lastDate}. {adherence.finished} finished
             {adherence.partial > 0 ? `, ${adherence.partial} stopped part-way` : ""}.
           </p>
-          {/* Deliberately no "ready to progress" verdict. The threshold that
-              would justify one has to come from real logs, not from a guess
-              made before any existed. */}
           <p className="mt-1 text-[10px] text-emerald-900/60">
             Use this alongside what they tell you — it is what the app recorded,
             not how it felt.
           </p>
         </div>
       )}
+      {/* Progression suggestions — the coach's 2026-08-05 call to build this
+          before a season of logs exists. The rule is provisional and printed
+          with its own numbers; nothing here changes a plan by itself. */}
+      {progression.map((sp) => (
+        <div
+          key={sp.practiceName}
+          className={`rounded-md border px-3 py-2 ${sp.ready ? "bg-sky-50/60" : "bg-muted/40"}`}
+        >
+          <p className="text-xs font-semibold">
+            {sp.ready ? "↑ Ready to progress" : "Progression"} · {sp.practiceName}
+          </p>
+          {!sp.ready && (
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              Holding: {sp.holdReason}.
+            </p>
+          )}
+          {sp.ready &&
+            sp.suggestions.map((sug) => (
+              <p key={sug.slug} className="mt-1 text-[11px]">
+                <span className="font-medium">{sug.name}</span>
+                {sug.kind === "level" ? (
+                  <> — offer level {sug.nextLevel}: {sug.nextPrescription}</>
+                ) : (
+                  <> — ladder complete; the next rung is <span className="font-medium">{sug.nextPrescription}</span></>
+                )}
+                {sug.confirmFirst && (
+                  <span className="text-amber-700"> · {sug.confirmFirst}</span>
+                )}
+              </p>
+            ))}
+          <p className="mt-1 text-[10px] text-muted-foreground">
+            Provisional rule: {sp.finished} finished sessions in {sp.windowDays} days
+            (needs {PROGRESSION_MIN_FINISHED}) counted for the whole session, not per exercise. Your call, always.
+          </p>
+        </div>
+      ))}
       <div className="flex items-center gap-2 flex-wrap text-xs">
         {groups.map((g) =>
           counts[g] > 0 ? (

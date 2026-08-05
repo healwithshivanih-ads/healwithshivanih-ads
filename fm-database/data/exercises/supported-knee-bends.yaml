@@ -44,6 +44,11 @@ joint_stress:
 - hip
 - ankle_foot
 balance_demand: 2
+movement_patterns:
+- squat
+muscles_worked:
+- quadriceps
+- glutes
 impact: none
 cautions:
 - condition: osteoarthritis

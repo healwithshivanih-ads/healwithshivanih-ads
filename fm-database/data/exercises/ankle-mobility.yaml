@@ -25,6 +25,11 @@ builds:
 joint_stress:
 - ankle_foot
 balance_demand: 0
+movement_patterns:
+- mobility
+muscles_worked:
+- ankles_feet
+- calves
 impact: none
 notes_for_coach: Safe for essentially everyone on the roster, including seated. A reasonable single
   starting point for a very deconditioned or very anxious client.

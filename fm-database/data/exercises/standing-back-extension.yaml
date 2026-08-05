@@ -29,6 +29,10 @@ joint_stress:
 - lower_back
 balance_demand: 1
 impact: none
+movement_patterns:
+- mobility
+muscles_worked:
+- lower_back
 spinal_flexion: false
 cautions:
 - condition: spinal stenosis

@@ -53,6 +53,11 @@ builds:
 - trunk stiffness that protects the lower back
 easier_variant: null
 harder_variant: null
+movement_patterns:
+- core_brace
+muscles_worked:
+- abdominals
+- shoulders
 loads_spine: false
 spinal_flexion: false
 loaded_spinal_rotation: false

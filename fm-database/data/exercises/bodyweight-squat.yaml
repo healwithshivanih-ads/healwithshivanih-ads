@@ -60,6 +60,12 @@ joint_stress:
 - ankle_foot
 - lower_back
 balance_demand: 1
+movement_patterns:
+- squat
+muscles_worked:
+- quadriceps
+- glutes
+- hamstrings
 impact: none
 requires_floor_transfer: false
 cautions:

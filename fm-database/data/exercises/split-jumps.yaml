@@ -1,0 +1,114 @@
+slug: split-jumps
+display_name: Split Jumps (Scissor Skip)
+client_name: Scissor skips
+aliases:
+- split jump
+- scissor jumps
+- skier jumps
+modality: cardiovascular
+intensity_tier: intermediate
+position: standing
+equipment: []
+summary: A light scissor action — the feet exchange front and back with a small hop, like
+  cross-country skiing on the spot. The book's gentlest jump.
+why_it_works: The split stance keeps each hop small and low, so the heart-rate benefit accumulates
+  through cadence rather than height — the book counts it low-intensity plyometric, usable for the
+  long intervals that jumps normally cannot sustain. The alternating stride also rehearses the
+  step-recovery pattern that catches a stumble.
+setup:
+- Stand in a short split stance, one foot ahead of the other, both knees soft.
+- Bend the arms to 90 degrees, opposite arm forward.
+steps:
+- Hop lightly and exchange the feet, front to back, driving with the arms.
+- Land soft with the knees bent, and immediately exchange again in rhythm.
+- Keep the hops small — this is a skip, not a leap.
+levels:
+- level: '1'
+  prescription: 'Step-through version — quick alternating steps, no hop, 3 rounds of 20 seconds'
+  sets: 3
+  support: none
+- level: '2'
+  prescription: '4 rounds of 30 seconds with the hop, resting 30 seconds'
+  sets: 4
+  support: none
+- level: '3'
+  prescription: '60 continuous exchanges at a high tempo'
+  reps: 60
+  sets: 1
+  support: none
+frequency: 2-3x/week inside conditioning circuits.
+builds:
+- heart and lung fitness
+- stride-exchange coordination (the stumble-recovery pattern)
+- calf and thigh spring
+easier_variant: jumping-jacks
+harder_variant: high-knees
+movement_patterns:
+- jump
+- lunge
+muscles_worked:
+- quadriceps
+- glutes
+- calves
+- hamstrings
+impact: high
+balance_demand: 2
+joint_stress:
+- knee
+- ankle_foot
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: Timed conditioning intervals are the NICE NG206 pattern to avoid in ME/CFS.
+  modification: ''
+- condition: pelvic floor dysfunction
+  condition_aliases:
+  - stress incontinence
+  - urinary incontinence
+  - prolapse
+  - postnatal
+  severity: caution
+  reason: Continuous hopping raises intra-abdominal pressure with every landing.
+  modification: The step-through version keeps the cadence without the flight phase.
+- condition: history of falls
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - peripheral neuropathy
+  severity: caution
+  reason: Airborne foot exchange demands sure landings in a narrow stance.
+  modification: Step-through version beside a counter until stride exchange is confident.
+- condition: knee pain
+  condition_aliases:
+  - osteoarthritis
+  - arthritis
+  - joint pain
+  severity: caution
+  reason: Every landing loads a split stance through the front knee.
+  modification: Keep the split short and the hop minimal, or use the step-through version.
+refer_out: []
+linked_to_topics:
+- insulin-resistance
+- bone-health
+linked_to_symptoms:
+- fatigue
+notes_for_coach: 'The conditioning cousin of the split squat — same stance, opposite intent. For a
+  client already on split-squat strength work this is the natural cardio pairing, and its
+  stride-exchange pattern is the same reflex the falls literature wants trained.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Plyometric exercises — Split Jumps; Level 1 GPP workouts, Little Method 3
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

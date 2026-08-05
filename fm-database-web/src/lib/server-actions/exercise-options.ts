@@ -30,6 +30,9 @@ export interface ExerciseOption {
   tier: string;
   summary: string;
   verdict: Verdict;
+  /** Biomechanical shapes + muscles — the axes a balanced session covers. */
+  patterns: string[];
+  muscles: string[];
   /** The rung the screen would start this client on, if the entry has a ladder. */
   startLevel: string | null;
   startReason: string;
@@ -72,6 +75,8 @@ export async function loadExerciseOptions(
         tier: String(e?.intensity_tier ?? ""),
         summary: String(e?.summary ?? ""),
         verdict: v.verdict,
+        patterns: e?.movement_patterns ?? [],
+        muscles: e?.muscles_worked ?? [],
         startLevel: v.start_level ?? null,
         startReason: v.start_reason ?? "",
         levels,

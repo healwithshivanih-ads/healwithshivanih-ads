@@ -52,6 +52,10 @@ builds:
 joint_stress:
 - knee
 balance_demand: 0
+movement_patterns:
+- squat
+muscles_worked:
+- quadriceps
 impact: none
 harder_variant: chair-sit-to-stand
 cautions:

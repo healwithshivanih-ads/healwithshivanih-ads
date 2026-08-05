@@ -30,6 +30,11 @@ builds:
 joint_stress:
 - ankle_foot
 balance_demand: 3
+movement_patterns:
+- balance
+muscles_worked:
+- ankles_feet
+- hip_abductors
 impact: none
 harder_variant: one-leg-stand
 cautions:

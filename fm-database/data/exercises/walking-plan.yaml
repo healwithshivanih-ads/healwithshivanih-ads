@@ -35,6 +35,10 @@ joint_stress:
 - hip
 - ankle_foot
 balance_demand: 1
+movement_patterns:
+- gait
+muscles_worked:
+- full_body
 impact: low
 cautions:
 - condition: cardiovascular disease

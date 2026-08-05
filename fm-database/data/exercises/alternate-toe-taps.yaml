@@ -1,0 +1,95 @@
+slug: alternate-toe-taps
+display_name: Alternate Toe-Taps (Press-Up Position)
+client_name: Toe taps in plank
+aliases:
+- toe taps
+- plank toe touches
+modality: cardiovascular
+intensity_tier: intermediate
+position: four_point
+equipment: []
+summary: In a press-up position, each hand reaches back to the opposite foot in turn — moving
+  plank work that mixes conditioning with shoulder endurance.
+why_it_works: Reaching a hand to the opposite foot pikes the hips and shifts the whole load onto
+  one arm for a beat, so the shoulders and trunk work through movement rather than a static hold.
+  The book classes it low-intensity, which makes it the gentlest of the floor conditioning moves.
+setup:
+- Take a press-up position on the balls of the feet, hands under the shoulders, back straight.
+steps:
+- Push the hips up and back while reaching the right hand to the left foot.
+- Return to the press-up line and immediately reach the left hand to the right foot.
+- Alternate with rhythm, moving briskly without losing the straight back between reaches.
+levels:
+- level: '1'
+  prescription: '3 rounds of 6 slow alternating reaches, resting between rounds'
+  reps: 6
+  sets: 3
+  support: none
+- level: '2'
+  prescription: '3 rounds of 30 seconds at a steady rhythm, resting 30 seconds'
+  sets: 3
+  support: none
+frequency: 2x/week inside circuits, as the floor-based recovery station.
+builds:
+- shoulder endurance
+- trunk control through movement
+- hamstring flexibility under load
+easier_variant: forearm-plank
+harder_variant: mountain-climbers
+movement_patterns:
+- core_brace
+- mobility
+muscles_worked:
+- shoulders
+- abdominals
+- triceps
+- hamstrings
+impact: low
+balance_demand: 1
+requires_floor_transfer: true
+joint_stress:
+- wrist_hand
+- shoulder
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: Belongs to the timed-circuit family NICE NG206 warns against in ME/CFS.
+  modification: ''
+- condition: wrist pain
+  condition_aliases:
+  - carpal tunnel
+  - wrist injury
+  - arthritis of the hands
+  severity: caution
+  reason: Alternating single-arm support doubles the load on the planted wrist.
+  modification: Raise the hands onto a step; shorten the round.
+- condition: uncontrolled hypertension
+  condition_aliases:
+  - high blood pressure
+  - hypertension
+  severity: caution
+  reason: The piked position puts the head below the heart repeatedly.
+  modification: Fewer, slower reaches with the hands elevated.
+refer_out: []
+linked_to_topics: []
+linked_to_symptoms:
+- fatigue
+notes_for_coach: 'Included as the easy rung of the floor-conditioning family — a client not ready
+  for mountain climbers can keep the circuit structure with this instead. It is also quietly a
+  hamstring mobiliser: the pike position is a moving version of the cool-down''s hamstring reach.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Plyometric exercises — Alternate Toe-Taps; Level 1 GPP workouts
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-05'
+updated_by: Shivani

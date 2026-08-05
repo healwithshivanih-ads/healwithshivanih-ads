@@ -38,6 +38,11 @@ joint_stress:
 - ankle_foot
 - hip
 balance_demand: 3
+movement_patterns:
+- balance
+muscles_worked:
+- hip_abductors
+- ankles_feet
 impact: none
 easier_variant: tandem-stance
 cautions:

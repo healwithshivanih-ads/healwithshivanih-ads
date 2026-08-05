@@ -55,6 +55,11 @@ joint_stress:
 - lower_back
 - neck
 balance_demand: 0
+movement_patterns:
+- hinge
+muscles_worked:
+- lower_back
+- glutes
 impact: none
 requires_floor_transfer: true
 cautions:

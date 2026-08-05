@@ -35,6 +35,12 @@ joint_stress:
 - ankle_foot
 - calf
 balance_demand: 2
+harder_variant: ankle-jumps
+movement_patterns:
+- balance
+muscles_worked:
+- calves
+- ankles_feet
 impact: low
 cautions:
 - condition: osteoarthritis

@@ -55,6 +55,11 @@ joint_stress:
 - knee
 - hip
 balance_demand: 0
+movement_patterns:
+- squat
+muscles_worked:
+- quadriceps
+- glutes
 impact: none
 requires_floor_transfer: false
 cautions:

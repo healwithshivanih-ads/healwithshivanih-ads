@@ -19,6 +19,8 @@ from .enums import (
     ExerciseModality,
     ExercisePosition,
     ImplicationConfidence,
+    MovementPattern,
+    MuscleGroup,
     EntityStatus,
     EvidenceTier,
     HomeRemedyCategory,
@@ -1184,6 +1186,14 @@ class Exercise(BaseModel):
     levels: list[ExerciseLevel] = Field(default_factory=list)   # easiest first
     frequency: str = ""                           # "3x/week with a rest day between"
     builds: list[str] = Field(default_factory=list)  # "leg strength", "bone density", "standing balance"
+
+    # The biomechanical shapes this movement expresses (a burpee is
+    # squat + push + jump) and what gets stronger. These are the axes session
+    # BALANCE reasons over — "three pushes and no hinge" is invisible in the
+    # summaries but explicit here. muscles_worked is what strengthens;
+    # joint_stress (below) is what might hurt. Different questions.
+    movement_patterns: list[MovementPattern] = Field(default_factory=list)
+    muscles_worked: list[MuscleGroup] = Field(default_factory=list)
 
     # Progression BETWEEN entries. Both are exercise slugs; the validator warns
     # on an unresolved one, and errors if an entry points at itself.

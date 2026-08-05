@@ -27,6 +27,11 @@ joint_stress:
 - lower_back
 balance_demand: 1
 impact: none
+movement_patterns:
+- rotation
+- mobility
+muscles_worked:
+- obliques
 loaded_spinal_rotation: false
 cautions:
 - condition: osteoarthritis

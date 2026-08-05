@@ -52,6 +52,10 @@ builds:
 - front-of-abdomen strength
 easier_variant: null
 harder_variant: null
+movement_patterns:
+- core_flex
+muscles_worked:
+- abdominals
 loads_spine: false
 spinal_flexion: true
 loaded_spinal_rotation: false

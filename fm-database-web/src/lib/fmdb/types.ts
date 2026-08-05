@@ -214,6 +214,10 @@ export interface Exercise extends BaseEntity {
   levels?: ExerciseLevel[];
   frequency?: string;
   builds?: string[];
+  /** Biomechanical shapes this movement expresses — the session-balance axis. */
+  movement_patterns?: string[]; // push | pull | squat | hinge | lunge | core_brace | core_flex | rotation | balance | gait | jump | mobility
+  /** What gets stronger — distinct from joint_stress, which is what might hurt. */
+  muscles_worked?: string[];
   easier_variant?: string | null;
   harder_variant?: string | null;
   // Objective properties of the movement, so a screen can reason about a client

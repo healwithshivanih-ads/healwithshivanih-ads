@@ -547,6 +547,49 @@ class ExerciseImpact(str, Enum):
     high = "high"                              # hopping, jumping
 
 
+class MovementPattern(str, Enum):
+    """The biomechanical shape of the movement — what a balanced session covers.
+
+    An exercise may express several (a burpee is squat + push + jump). This is
+    the axis SESSION BALANCE reasons over: three pushes and no hinge is a fact
+    the summaries cannot show but the patterns can. Deliberately biomechanical,
+    not goal-flavoured — "conditioning" is an intensity property, not a shape.
+    """
+    push = "push"                              # press-ups, dips
+    pull = "pull"                              # rows
+    squat = "squat"                            # sit-to-stand, squats
+    hinge = "hinge"                            # hip hinge, bridges, deadlift shapes
+    lunge = "lunge"                            # split stance, step patterns
+    core_brace = "core_brace"                  # planks, bird dog — resist movement
+    core_flex = "core_flex"                    # crunch family — produce movement
+    rotation = "rotation"                      # trunk turns
+    balance = "balance"                        # single-leg, tandem work
+    gait = "gait"                              # walking patterns
+    jump = "jump"                              # plyometric expression, any impact
+    mobility = "mobility"                      # range work, stretches
+
+
+class MuscleGroup(str, Enum):
+    """What gets STRONGER — distinct from `joint_stress`, which is what might
+    hurt. Coarse on purpose: the book-level 'Targets' lists resolve here."""
+    chest = "chest"
+    shoulders = "shoulders"
+    triceps = "triceps"
+    biceps = "biceps"
+    upper_back = "upper_back"
+    lower_back = "lower_back"
+    abdominals = "abdominals"
+    obliques = "obliques"
+    glutes = "glutes"
+    quadriceps = "quadriceps"
+    hamstrings = "hamstrings"
+    hip_abductors = "hip_abductors"
+    calves = "calves"
+    ankles_feet = "ankles_feet"
+    neck = "neck"
+    full_body = "full_body"
+
+
 class ExercisePosition(str, Enum):
     """Base position. Support (holding a chair vs nothing) is a LEVEL property,
     not a position — the same exercise moves through supported and unsupported
