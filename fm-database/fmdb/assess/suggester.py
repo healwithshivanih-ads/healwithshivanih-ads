@@ -1655,6 +1655,31 @@ HARD RULES (violating these breaks the downstream system):
       shapes (timed circuit, rep circuit, intervals, ladder) with their
       work:rest structure and weekly frequency rules. Name the format you are
       building in the first rationale so the coach sees the intent.
+    - WHEN `menopause_stage` IS SET (peri- or post-menopause), the emphasis
+      changes, because what declining oestrogen stops doing has to be asked for
+      by the training instead:
+        * PRIORITISE LOADING AND IMPACT over steady moderate cardio. Strength
+          picks and the cleared impact entries (heel raises, ankle jumps, side
+          hops, squat jumps, speed skater) earn their place ahead of another
+          walking prescription. Bone loss runs at up to 2% a year in the first
+          years after menopause, and impact from a NEW DIRECTION is the stimulus
+          it answers — which is why a sideways hop is worth more here than more
+          forward walking.
+        * INCLUDE AT LEAST ONE IMPACT ENTRY when the screen has cleared one and
+          the client's goals mention bone, osteopenia, osteoporosis or
+          menopause. If every impact entry was screened out, say so in the
+          rationale rather than silently shipping a session without one — the
+          coach needs to know the bone agenda went unmet and why.
+        * PREFER SHORT HARD EFFORTS to long moderate ones for the cardio slot:
+          the evidence for visceral-fat and body-composition change in
+          postmenopausal women is in very short intervals, and chronic moderate
+          volume raises cortisol at a stage when it is already rising.
+        * STRENGTH BEFORE CONDITIONING within the session, and never more than
+          the entry's own frequency allows.
+      This is EMPHASIS, not permission. The screen has already removed what this
+      client must not do, and a menopause stage never reinstates a blocked or
+      cautioned entry — if the impact entries are absent from `exercise_options`,
+      they are absent for a reason.
     - Leave `level` empty. `start_level` in the options tells you what the screen
       chose from the client's own record, and it accounts for things you cannot
       see. Override it only with a stated reason in the rationale.
@@ -1689,6 +1714,51 @@ def _exercise_dicts() -> list[dict[str, Any]]:
     data_dir = Path(os.environ.get("FMDB_CATALOGUE_DIR") or
                     (Path(__file__).resolve().parents[2] / "data"))
     return [e.model_dump(mode="json") for e in load_exercises(data_dir)]
+
+
+#: Phrases in a client record that mean the menopause transition. Ordered
+#: post-first because "postmenopausal" contains neither "peri" nor a bare
+#: "menopause" boundary we could rely on, and a record often carries both words.
+_POST_MENOPAUSE_MARKERS = (
+    "postmenopaus", "post-menopaus", "post menopaus", "surgical menopause",
+    "menopause complete", "hysterectomy with oophorectomy",
+)
+_PERI_MENOPAUSE_MARKERS = (
+    "perimenopaus", "peri-menopaus", "peri menopaus", "menopause transition",
+    "menopausal transition",
+)
+
+
+def menopause_stage(client_context: dict[str, Any]) -> Optional[str]:
+    """'postmenopause' | 'perimenopause' | None, from the client's own record.
+
+    WHY THIS IS NOT IN THE SCREEN. The screen decides what is SAFE, and its TS
+    mirror is pinned to a captured fixture — every field it reads is a parity
+    surface someone has to maintain. Menopause stage changes nothing about
+    safety; it changes EMPHASIS, which is the model's job. So it lives here,
+    Python-side only, and the parity surface stays exactly as wide as it was.
+
+    Reads the free-text fields the roster actually populates — `active_conditions`
+    and `medical_history` carry strings like "Postmenopausal" and "Perimenopause
+    onset 2023". There is no structured menopause field to read, and inventing
+    one would mean a migration plus a staging-allowlist entry for a value we can
+    already derive.
+    """
+    blobs: list[str] = []
+    for key in ("active_conditions", "medical_history", "current_conditions"):
+        v = client_context.get(key)
+        if isinstance(v, str):
+            blobs.append(v)
+        elif isinstance(v, (list, tuple)):
+            blobs.extend(str(x) for x in v)
+    text = " | ".join(blobs).lower()
+    if not text:
+        return None
+    if any(m in text for m in _POST_MENOPAUSE_MARKERS):
+        return "postmenopause"
+    if any(m in text for m in _PERI_MENOPAUSE_MARKERS):
+        return "perimenopause"
+    return None
 
 
 def _session_formats() -> dict[str, Any]:
@@ -1894,6 +1964,9 @@ def synthesize(
         # architecture of the book's programme chapters without its exercises.
         # Rule 32 asks the model to name which shape it is building.
         "session_formats": _session_formats(),
+        # 'perimenopause' | 'postmenopause' | None, derived from the client's own
+        # record. Emphasis only — the screen has already decided what is safe.
+        "menopause_stage": menopause_stage(client_context),
     }
     variable_payload = {
         "selected_symptoms": selected_symptom_slugs,
