@@ -45,6 +45,8 @@ builds:
 - hip abductor strength
 - pelvic stability in walking
 - hip bone loading
+easier_variant: side-lying-hip-abduction
+harder_variant: null
 joint_stress:
 - hip
 balance_demand: 2

@@ -1,0 +1,151 @@
+slug: standing-hip-hinge
+display_name: Standing Hip Hinge (Bend-and-Reach Pattern)
+client_name: Bending safely from the hips
+aliases:
+- hip hinge
+- hinge
+- good morning
+- stiff leg hinge
+- bend from the hips
+modality: strength
+intensity_tier: beginner
+position: standing
+equipment:
+- a stick, broom handle or wall to check the back stays flat
+summary: Learning to bend by sending the hips backwards rather than rounding the spine.
+why_it_works: 'Most people bend by rounding the back, which loads the discs and the ligaments. The hinge
+  sends the hips backwards instead, so the movement happens at the hip joint and the spine stays neutral
+  — the back muscles hold their line while the hamstrings and glutes take the load. This is less an exercise
+  than a pattern: it is how a bin should be lifted, how a shoe should be picked up, and how every deadlift-shaped
+  task in daily life ought to be done.'
+setup:
+- Stand with the feet hip width apart and a soft bend in the knees.
+- Hold a stick along the spine, touching the back of the head, the upper back and the tailbone — three
+  points of contact that tell you the back is flat.
+- Rest the hands on the front of the hips if no stick is available.
+steps:
+- Push the hips straight backwards, as if closing a car door with them.
+- Let the chest travel forward as a consequence — do not bend it deliberately.
+- Go only as far as the back stays flat. For most people that is somewhere above the knee, and it is felt
+  as a stretch behind the thighs.
+- Drive the hips forward to stand up, squeezing the buttocks at the top.
+- If the stick loses contact at any of the three points, the back has rounded and the range was too big.
+levels:
+- level: '1'
+  prescription: 8 hinges to a shallow angle with the stick, twice
+  reps: 8
+  sets: 2
+  support: stick along the spine as feedback
+- level: '2'
+  prescription: 10 hinges to a deeper angle without the stick, twice
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 10 hinges holding a light household weight, twice
+  reps: 10
+  sets: 2
+  support: none
+  note: A shopping bag or water bottle in each hand is enough. This is the point at which the pattern
+    becomes strength work.
+frequency: 3-4x/week, and rehearse it whenever something needs picking up.
+builds:
+- hamstring and buttock strength
+- a spine-sparing way to bend and lift
+- the pattern behind safe lifting in daily life
+easier_variant: null
+harder_variant: null
+movement_patterns:
+- hinge
+muscles_worked:
+- hamstrings
+- glutes
+- lower_back
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 1
+requires_floor_transfer: false
+joint_stress:
+- lower_back
+- hip
+- knee
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - disc herniation
+  - slipped disc
+  - sciatica
+  severity: caution
+  reason: Done correctly this is protective and is often exactly what a painful back needs. Done with
+    a rounded spine it is the movement that hurt it in the first place.
+  modification: Use the stick every time until the pattern is automatic, keep the range shallow, and add
+    no load at all. If it cannot be done without rounding, refer for hands-on teaching rather than practising
+    the fault.
+- condition: osteoporosis
+  condition_aliases:
+  - osteopenia
+  - low bone density
+  - low bone mass
+  - vertebral fracture
+  - brittle bones
+  severity: caution
+  reason: Bending forward is the vertebral red line — but ONLY when the spine rounds. A true hinge keeps
+    it neutral, which is why this movement is the safe way for a bone-loss client to reach the floor at
+    all.
+  modification: Teach with the stick and insist on the three contact points. No added load. If the flat
+    back cannot be held, do not use this movement.
+- condition: hamstring injury
+  condition_aliases:
+  - hamstring strain
+  - hamstring tear
+  - pulled hamstring
+  severity: caution
+  reason: The hinge stretches and loads the hamstring at length, which is where a healing strain fails.
+  modification: Stay in a very shallow range with no load and stop at the first pull.
+refer_out:
+- a physiotherapy assessment if the flat back cannot be achieved even with the stick
+linked_to_topics:
+- osteoporosis
+- bone-health
+- musculoskeletal-health
+- sarcopenia
+linked_to_symptoms:
+- back-pain
+- muscle-weakness
+notes_for_coach: 'MORE A PATTERN THAN AN EXERCISE, and the highest-transfer item in the catalogue — it
+  is the movement every client performs a dozen times a day, usually badly.
+
+
+  THE OSTEOPOROSIS CAUTION IS DELIBERATELY NOT A BLOCK, which is unusual for a forward-bending entry and
+  the reasoning should not be reversed casually: the red line is spinal FLEXION, and a true hinge produces
+  none — the spine stays neutral while the hip moves. `spinal_flexion` is therefore false. That is precisely
+  why a bone-loss client needs this taught rather than being told never to bend, which is neither achievable
+  nor safe advice.
+
+
+  The stick is the whole teaching method. Without feedback most people believe their back is flat when
+  it is not.'
+sources: []
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

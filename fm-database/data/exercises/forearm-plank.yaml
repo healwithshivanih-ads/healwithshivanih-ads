@@ -52,7 +52,7 @@ builds:
 - the ability to hold a position under load
 - trunk stiffness that protects the lower back
 easier_variant: null
-harder_variant: null
+harder_variant: side-plank
 movement_patterns:
 - core_brace
 muscles_worked:

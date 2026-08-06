@@ -1,0 +1,142 @@
+slug: single-leg-floor-bridge
+display_name: Single-Leg Floor Bridge
+client_name: One-legged bridge
+aliases:
+- single leg bridge
+- one leg bridge
+- single-leg glute bridge
+- unilateral bridge
+modality: strength
+intensity_tier: intermediate
+position: lying_supine
+equipment:
+- a mat or folded blanket
+summary: A floor bridge lifted and held on one leg, doubling the load on that side without adding any
+  weight.
+why_it_works: 'Taking one foot off the floor roughly doubles what the other hip must produce, and it adds
+  a demand the two-legged bridge does not have: the pelvis now wants to drop on the unsupported side,
+  and the hip muscles have to stop it. That is the same job those muscles do in single-leg stance and
+  in every step taken, so it transfers directly to walking. The spine stays neutral throughout, so it
+  inherits the two-legged version''s safety.'
+setup:
+- Lie on the back with the knees bent and both feet flat, arms resting alongside.
+- Lift the hips into a bridge on both feet first, so the position is set.
+- Straighten one leg, or lift that knee towards the chest.
+steps:
+- Keeping one foot on the floor, lower the hips towards the mat under control.
+- Press through that heel to lift the hips back to a straight line from shoulder to knee.
+- Keep the pelvis LEVEL — the lifted side must not drop. That is the part that matters.
+- Complete the repetitions, lower, and change sides.
+levels:
+- level: '1'
+  prescription: 6 repetitions each side with the lifted foot resting lightly on the standing shin
+  reps: 6
+  sets: 2
+  support: lifted foot touching down lightly for reference
+- level: '2'
+  prescription: 10 repetitions each side, knee lifted
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 10 each side with a 5-second hold at the top
+  reps: 10
+  sets: 2
+  hold_seconds: 5
+  support: none
+frequency: 3x/week.
+builds:
+- single-hip and buttock strength
+- pelvic control during walking
+- hamstring strength
+easier_variant: floor-bridge
+harder_variant: null
+movement_patterns:
+- hinge
+muscles_worked:
+- glutes
+- hamstrings
+- lower_back
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 1
+requires_floor_transfer: true
+joint_stress:
+- hip
+- knee
+- lower_back
+- sacrum_pelvis
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - disc herniation
+  - slipped disc
+  - sciatica
+  severity: caution
+  reason: If the hip cannot produce the lift the lower back arches to finish the movement, which turns
+    a hip exercise into a back extension on one side.
+  modification: Return to the two-legged `floor-bridge` until it is easy, keep the range small, and stop
+    the moment the back takes over.
+- condition: hamstring injury
+  condition_aliases:
+  - hamstring strain
+  - hamstring tear
+  - pulled hamstring
+  - hamstring cramp
+  severity: caution
+  reason: A single-leg bridge loads the hamstring hard and commonly cramps it.
+  modification: Move the foot slightly closer to the buttock so the buttock does more and the hamstring
+    less, and reduce the repetitions.
+- condition: hip pain
+  condition_aliases:
+  - hip osteoarthritis
+  - hip replacement
+  - hip bursitis
+  - trochanteric
+  - hip injury
+  severity: caution
+  reason: The whole load passes through one hip.
+  modification: Use the two-legged version, or keep the lifted foot touching down lightly to share the
+    load.
+refer_out: []
+linked_to_topics:
+- osteoporosis
+- bone-health
+- sarcopenia
+- musculoskeletal-health
+linked_to_symptoms:
+- back-pain
+- muscle-weakness
+notes_for_coach: 'THE RUNG ABOVE `floor-bridge`, wired as its harder variant. Still spine-neutral, so
+  it stays available to the bone-loss group that `abdominal-crunch` is blocked for — the whole spine-neutral
+  core set now runs bridge -> single-leg bridge -> bird dog -> plank -> side plank.
+
+
+  WATCH THE PELVIS, NOT THE HEIGHT. Clients chase how high the hips go; the training effect is in keeping
+  the pelvis level. A lower bridge held square beats a high one that tips.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Core, floor bridge
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

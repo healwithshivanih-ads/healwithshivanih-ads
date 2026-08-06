@@ -1,0 +1,145 @@
+slug: bird-dog
+display_name: Bird Dog (Four-Point Contralateral Reach)
+client_name: Opposite arm and leg reach
+aliases:
+- bird dog
+- birddog
+- quadruped reach
+- opposite arm and leg
+- superman on all fours
+modality: strength
+intensity_tier: beginner
+position: four_point
+equipment:
+- a mat or folded blanket
+summary: On hands and knees, extending one arm and the opposite leg while the back stays perfectly still.
+why_it_works: The work is not in the limbs — it is in refusing to move. Lifting an arm and the opposite
+  leg pulls the trunk towards rotating and arching, and the deep trunk muscles have to cancel both. That
+  is anti-rotation training, and it happens with the spine held neutral throughout, which is what makes
+  it available to people for whom bending and twisting are off the table.
+setup:
+- Kneel on all fours with the hands directly under the shoulders and the knees under the hips.
+- Set the back flat — neither arched nor rounded — and look down at the mat so the neck stays in line.
+- Imagine a glass of water balanced on the lower back that must not spill.
+steps:
+- Slide one arm forward and the opposite leg back, until both are level with the body.
+- Reach long rather than lifting high. The limbs should not go above the line of the back.
+- Hold for a breath or two, keeping the hips square to the floor — do not let the lifted side rise.
+- Return both to the floor with control and change sides.
+levels:
+- level: '1'
+  prescription: lift one arm only, then one leg only, 6 each side
+  reps: 6
+  sets: 1
+  support: one limb at a time until the back stays still
+- level: '2'
+  prescription: 8 opposite arm-and-leg reaches each side
+  reps: 8
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 8 each side holding 5 seconds at the top
+  reps: 8
+  sets: 2
+  support: none
+  hold_seconds: 5
+frequency: 3-4x/week.
+builds:
+- deep trunk control
+- the ability to keep the back still while the limbs move
+- shoulder and hip stability
+easier_variant: null
+harder_variant: side-plank
+movement_patterns:
+- core_brace
+- balance
+muscles_worked:
+- lower_back
+- abdominals
+- glutes
+- shoulders
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 1
+requires_floor_transfer: true
+joint_stress:
+- wrist_hand
+- shoulder
+- knee
+- lower_back
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: wrist pain
+  condition_aliases:
+  - carpal tunnel
+  - wrist injury
+  - hand pain
+  - arthritis hands
+  severity: caution
+  reason: Bodyweight passes through an extended wrist for the whole set.
+  modification: Come down onto the forearms, or make fists so the wrist stays straight.
+- condition: knee pain
+  condition_aliases:
+  - knee osteoarthritis
+  - knee injury
+  - patellofemoral
+  - knee replacement
+  - meniscus
+  severity: caution
+  reason: Kneeling puts direct pressure on the kneecap.
+  modification: Double the mat or put a folded towel under the knees. If kneeling is not possible at all,
+    this exercise is not available — use a standing alternative.
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - disc herniation
+  - slipped disc
+  - sciatica
+  severity: caution
+  reason: Reaching too high arches the lower back, which is the one thing the exercise exists to prevent.
+  modification: Reach long and low, stop well below the line of the back, and drop to one limb at a time.
+    If the back arches, the range is too big.
+refer_out: []
+linked_to_topics:
+- osteoporosis
+- bone-health
+- musculoskeletal-health
+- sarcopenia
+linked_to_symptoms:
+- back-pain
+- muscle-weakness
+notes_for_coach: 'THE THIRD SPINE-NEUTRAL CORE ENTRY, alongside `forearm-plank` and `floor-bridge`. All
+  three screen clear for a bone-loss client where `abdominal-crunch` is blocked, and this one adds the
+  axis the other two do not train: resisting rotation.
+
+
+  It is also the gentlest of the three to start, because level 1 lifts one limb at a time and the load
+  can be reduced to almost nothing. For a deconditioned client this is a better first core exercise than
+  the plank.
+
+
+  REQUIRES KNEELING AND A FLOOR TRANSFER, which rules it out for a good part of an older roster regardless
+  of the back being safe. `requires_floor_transfer` is true for exactly that reason — see `floor-get-up`,
+  which trains the thing this depends on.'
+sources: []
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

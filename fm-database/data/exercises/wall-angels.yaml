@@ -1,0 +1,143 @@
+slug: wall-angels
+display_name: Wall Angels (Scapular Retraction and Overhead Slide)
+client_name: Wall slides
+aliases:
+- wall angels
+- wall slides
+- scapular wall slide
+- shoulder wall slide
+- snow angels against a wall
+modality: flexibility
+intensity_tier: beginner
+position: standing
+equipment:
+- a clear stretch of wall
+summary: Sliding the arms up and down a wall while keeping the back, head and arms in contact with it.
+why_it_works: 'Desk work parks the shoulders forward and the upper back rounded, and the muscles between
+  the shoulder blades stop working because they are never asked to. The wall is the teacher here: it will
+  not let the back arch or the shoulders roll forward, so the only way to move the arms is to use the
+  muscles that draw the shoulder blades down and together. Most people discover they cannot keep the wrists
+  on the wall at all, which is the finding, not a failure.'
+setup:
+- Stand with the back against a wall, feet a few inches out from it.
+- Flatten the lower back towards the wall by tucking the tailbone slightly.
+- Put the back of the head, the upper back, the elbows and the backs of the wrists against the wall, arms
+  bent like a goalpost.
+steps:
+- Slide the arms slowly up the wall, keeping every contact point touching.
+- Go only as high as the wrists stay in contact and the lower back stays flat.
+- Slide back down, drawing the elbows towards the ribs and squeezing the shoulder blades together at the
+  bottom.
+- Move slowly. Where the contact is lost is the restriction, and that is the point worth working at.
+levels:
+- level: '1'
+  prescription: 6 slides through a small range, twice
+  reps: 6
+  sets: 2
+  support: range limited to wherever contact is kept
+- level: '2'
+  prescription: 10 slides through a fuller range, twice
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 10 slow slides with a 3-second hold at the top, twice
+  reps: 10
+  sets: 2
+  hold_seconds: 3
+  support: none
+frequency: Daily if desk-based — it takes under a minute.
+builds:
+- mid-back and shoulder-blade control
+- shoulder range overhead
+- an upright posture that survives a working day
+easier_variant: null
+harder_variant: null
+movement_patterns:
+- mobility
+muscles_worked:
+- shoulders
+- upper_back
+- neck
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: true
+impact: none
+balance_demand: 0
+requires_floor_transfer: false
+joint_stress:
+- shoulder
+- neck
+- upper_back
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: Raising the arm overhead is the classic impingement position, and the wall removes the compensations
+    someone would normally use to avoid it.
+  modification: Work only in the pain-free lower range and do not chase height. If a painful arc appears
+    partway up, stop below it — going through it repeatedly is what irritates the tendon.
+- condition: neck pain
+  condition_aliases:
+  - cervical spondylosis
+  - neck injury
+  - cervical radiculopathy
+  - whiplash
+  severity: caution
+  reason: Holding the back of the head against the wall can crane the neck if the upper back is stiff.
+  modification: Let the head come off the wall rather than forcing it back, and keep the chin gently tucked.
+- condition: hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - htn
+  - hypertensive
+  severity: caution
+  reason: Sustained work with the arms above the head raises blood pressure more than the same effort
+    at waist height.
+  modification: Keep the movement flowing rather than holding at the top, and breathe out on the way up.
+refer_out: []
+linked_to_topics:
+- posture
+- musculoskeletal-health
+- menopause
+linked_to_symptoms:
+- neck-pain
+- shoulder-pain
+- back-pain
+notes_for_coach: 'THE CATALOGUE''S ONLY SHOULDER AND SCAPULAR ENTRY. Before this there was nothing above
+  the trunk except the press-up ladder, which pushes — so the desk-worker presentation that walks in most
+  often had no matching exercise at all.
+
+
+  Filed as `flexibility` rather than `strength` because the intent is range and control, not load, and
+  because that is the modality tier a deconditioned client is most likely to be cleared for.
+
+
+  `overhead: true` is set, which is what makes the screen surface the blood-pressure and shoulder cautions.
+  Pairs naturally with `doorway-row`: this one teaches the position, the row loads it.'
+sources: []
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

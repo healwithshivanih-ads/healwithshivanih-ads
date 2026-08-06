@@ -1,0 +1,171 @@
+slug: floor-get-up
+display_name: Floor Transfer (Get Down and Get Up Again)
+client_name: Getting up from the floor
+aliases:
+- floor transfer
+- get up from the floor
+- floor rise
+- getting off the floor
+- sit to floor
+modality: daily_activity
+intensity_tier: beginner
+position: any_position
+equipment:
+- a mat, and a sturdy chair or wall within reach
+summary: Practising the whole sequence of getting down to the floor and back up, in a controlled order.
+why_it_works: 'The ability to get off the floor unaided is one of the strongest practical markers of independent
+  living, and it is a skill as much as a strength. It is also self-extinguishing: people who find it hard
+  stop doing it, lose the pattern, and then cannot do it at all when it matters — after a fall, or to
+  reach a grandchild. Rehearsing it keeps the sequence available and trains the leg strength and hip range
+  it depends on, together, in the order they are actually used.'
+setup:
+- Clear a space with a mat, and have a sturdy chair or a wall within arm's reach.
+- Do not attempt this alone the first time. Have someone present.
+steps:
+- 'Going down: stand facing the chair, step one foot back and lower onto that back knee, using the chair
+  for support.'
+- Bring the second knee down, then sit onto one hip and down onto the mat.
+- 'Coming up: roll onto your side and push up to sitting.'
+- Turn onto hands and knees, then bring one foot flat on the floor in front — a half-kneeling position.
+- Push through that front foot and up through the chair or wall to stand.
+- Practise both leading legs. Most people have a strong side and only rehearse that one.
+levels:
+- level: '1'
+  prescription: 2 transfers using the chair throughout
+  reps: 2
+  sets: 1
+  support: a chair used at every stage, and someone present
+- level: '2'
+  prescription: 3 transfers using the chair only to stand
+  reps: 3
+  sets: 1
+  support: chair for the final push only
+- level: '3'
+  prescription: 3 transfers with no support, each leading leg
+  reps: 3
+  sets: 1
+  support: none
+  note: Only when the pattern is completely reliable with support and the client is confident.
+frequency: 1-2x/week. It is a skill to keep rather than a workout.
+builds:
+- the ability to get up unaided after a fall
+- leg strength through a large range
+- hip and knee mobility
+- confidence on the floor
+easier_variant: null
+harder_variant: null
+movement_patterns:
+- squat
+- hinge
+- balance
+muscles_worked:
+- full_body
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 2
+requires_floor_transfer: true
+joint_stress:
+- knee
+- hip
+- wrist_hand
+- shoulder
+- lower_back
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - knee osteoarthritis
+  - knee injury
+  - knee replacement
+  - patellofemoral
+  - meniscus
+  severity: caution
+  reason: The sequence passes through kneeling and half-kneeling, which loads the kneecap directly and
+    takes the joint to end range.
+  modification: Pad the knees generously and use the chair throughout. After a knee replacement, check
+    with the surgical team before kneeling at all.
+- condition: hip replacement
+  condition_aliases:
+  - hip arthroplasty
+  - thr
+  - total hip replacement
+  - hip precautions
+  severity: caution
+  reason: Getting onto and off the floor can breach hip precautions on deep flexion and rotation, particularly
+    in the first months.
+  modification: Do not prescribe until the surgical team has cleared floor transfers, and then only in
+    the order they specify.
+- condition: osteoporosis
+  condition_aliases:
+  - osteopenia
+  - low bone density
+  - low bone mass
+  - vertebral fracture
+  - brittle bones
+  severity: caution
+  reason: Weight through the wrist when pushing up is a fracture risk on fragile bone, and the roll to
+    sitting can round the spine.
+  modification: Push through the forearm rather than the flat hand, use the chair to take the load, and
+    keep the back long rather than curling up.
+- condition: dizziness
+  condition_aliases:
+  - vertigo
+  - postural hypotension
+  - orthostatic hypotension
+  - bppv
+  - lightheaded
+  - syncope
+  - fainting
+  severity: caution
+  reason: Moving between the floor and standing is a large positional change and is exactly what provokes
+    a drop in blood pressure or positional vertigo.
+  modification: Pause and sit for a moment at each stage rather than moving straight through, and never
+    practise alone.
+refer_out:
+- a physiotherapy or occupational therapy assessment if the client cannot complete the sequence with support
+linked_to_topics:
+- sarcopenia
+- falls-prevention
+- musculoskeletal-health
+- healthy-ageing
+linked_to_symptoms:
+- muscle-weakness
+- dizziness
+- joint-pain
+notes_for_coach: 'THE HIGHEST-VALUE ENTRY IN THE CATALOGUE FOR ANYONE OVER ABOUT SIXTY, and it was missing
+  entirely. Floor-transfer ability predicts independent living, and the loss is quiet: people stop doing
+  it long before they cannot, so nobody notices until after a fall.
+
+
+  IT IS ALSO THE PREREQUISITE FOR SEVEN OTHER ENTRIES. Everything with `requires_floor_transfer: true`
+  — the planks, the bridge, bird dog, the crunch — silently assumes this skill. A client who cannot get
+  off the floor cannot use any of them, which is worth knowing BEFORE prescribing them rather than after.
+
+
+  MODALITY IS `daily_activity`, not strength, and that is deliberate: it is a skill to be kept rather
+  than a training stimulus, the dose is low and the point is rehearsal. Do not prescribe it as a workout.
+
+
+  NEVER FIRST-TIME IT ALONE. That is in the setup rather than only the cautions, because it applies to
+  everyone and not just to a screened condition.'
+sources: []
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

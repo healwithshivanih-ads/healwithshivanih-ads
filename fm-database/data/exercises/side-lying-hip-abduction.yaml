@@ -1,0 +1,132 @@
+slug: side-lying-hip-abduction
+display_name: Side-Lying Hip Abduction
+client_name: Leg lifts on your side
+aliases:
+- side lying leg raise
+- side leg lift
+- lying hip abduction
+- side-lying abduction
+- clam
+modality: strength
+intensity_tier: beginner
+position: side_lying
+equipment:
+- a mat or a bed
+summary: Lifting the top leg while lying on the side — the same muscle as the standing version, without
+  needing to balance on one leg.
+why_it_works: Standing hip abduction asks the muscle to lift one leg AND hold the body up on the other
+  at the same time, so balance often runs out before the muscle does. Lying down removes the balance demand
+  entirely and lets the target muscle be worked to fatigue on its own. That muscle is the one that stops
+  the pelvis dropping with every step, so weakness there shows up as a waddle, hip pain, or a knee that
+  falls inwards.
+setup:
+- Lie on one side with the hips stacked directly over each other and the body in a straight line.
+- Bend the bottom knee for a stable base and rest the head on the lower arm.
+- Put the top hand on the floor in front for support. Do NOT let the body roll backwards.
+steps:
+- Lift the top leg straight up towards the ceiling, keeping it in line with the body rather than drifting
+  forward.
+- Turn the toes very slightly down rather than up — that keeps the work in the side of the hip.
+- Lift only as high as the pelvis stays stacked. That is usually lower than expected, around 30 to 45
+  degrees.
+- Lower slowly. Do the whole set, then change sides.
+levels:
+- level: '1'
+  prescription: 8 repetitions each side with the top knee bent
+  reps: 8
+  sets: 2
+  support: knee bent to shorten the lever
+- level: '2'
+  prescription: 12 repetitions each side with the leg straight
+  reps: 12
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 12 each side with a 3-second hold at the top
+  reps: 12
+  sets: 2
+  hold_seconds: 3
+  support: none
+frequency: 3-4x/week.
+builds:
+- side-of-hip strength
+- pelvic control during walking
+- the strength that keeps the knee tracking correctly
+easier_variant: null
+harder_variant: standing-hip-abduction
+movement_patterns:
+- balance
+muscles_worked:
+- hip_abductors
+- glutes
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 0
+requires_floor_transfer: true
+joint_stress:
+- hip
+- sacrum_pelvis
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: hip pain
+  condition_aliases:
+  - hip osteoarthritis
+  - hip replacement
+  - hip bursitis
+  - trochanteric
+  - hip injury
+  severity: caution
+  reason: Lying on the affected side presses directly on the greater trochanter, which is exactly where
+    bursitis hurts. The lifting side is usually fine; the down side is the problem.
+  modification: Pad generously under the hip, or work only the upper side and change position rather than
+    lying on the painful one. After hip replacement, check the surgical team's limits on abduction first.
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - disc herniation
+  - slipped disc
+  - sciatica
+  severity: caution
+  reason: Rolling the pelvis backwards to lift the leg higher swaps hip work for lower-back work.
+  modification: Keep the lift low and the hips stacked. If the body rolls back, the leg is going too high.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- musculoskeletal-health
+- falls-prevention
+linked_to_symptoms:
+- hip-pain
+- muscle-weakness
+- joint-pain
+notes_for_coach: 'THE RUNG BELOW `standing-hip-abduction`, not above it — this is one of the few additions
+  that makes the catalogue EASIER rather than harder. It is wired as that entry''s easier variant.
+
+
+  Worth reaching for whenever the standing version fails for balance reasons rather than strength ones,
+  which is common: `balance_demand: 0` here against 1 standing, so the screen treats them differently
+  for a fall-risk client.
+
+
+  REQUIRES A FLOOR TRANSFER, though a bed works and is often the better instruction for an older client.'
+sources: []
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

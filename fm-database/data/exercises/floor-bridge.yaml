@@ -55,7 +55,7 @@ builds:
 - hip extension for standing and stairs
 - lower-back support
 easier_variant: null
-harder_variant: null
+harder_variant: single-leg-floor-bridge
 movement_patterns:
 - hinge
 muscles_worked:

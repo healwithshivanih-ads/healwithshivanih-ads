@@ -1,0 +1,147 @@
+slug: sit-to-stand-no-hands
+display_name: Sit to Stand Without Hands
+client_name: Standing up without using your hands
+aliases:
+- sit to stand no hands
+- hands-free sit to stand
+- unassisted chair rise
+- chair rise no hands
+modality: strength
+intensity_tier: intermediate
+position: seated
+equipment:
+- a stable chair, ideally without arms
+summary: Rising from a chair using the legs alone, with the arms folded across the chest.
+why_it_works: Standing up is the most frequently performed strength task in anyone's day, and the hands
+  quietly do a great deal of the work. Folding the arms removes that assistance and makes the legs produce
+  the whole movement. It is also a recognised functional test — the ability to rise repeatedly without
+  hands tracks leg strength and predicts independence, so it doubles as a measure the coach can re-take.
+setup:
+- Sit towards the front of a stable chair with the feet flat and drawn back slightly behind the knees.
+- Fold the arms across the chest.
+- Have the chair against a wall so it cannot slide.
+steps:
+- Lean the chest forward over the knees — nose over toes. This is the part most people skip, and without
+  it the movement is nearly impossible.
+- Press down through the heels and stand up in one movement.
+- Stand fully upright and squeeze the buttocks at the top.
+- Sit down with CONTROL, taking three seconds. The lowering is where most of the strength is built.
+- Do not drop into the chair.
+levels:
+- level: '1'
+  prescription: 5 repetitions from a higher chair or with a cushion
+  reps: 5
+  sets: 2
+  support: raised seat height, hands ready but unused
+- level: '2'
+  prescription: 10 repetitions from a standard chair
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 10 repetitions from a lower seat, twice
+  reps: 10
+  sets: 2
+  support: none
+  note: Lowering the seat is the progression. A single-leg rise is the next step beyond this and is not
+    yet in the catalogue.
+frequency: 3x/week, or several short sets through the day.
+builds:
+- thigh and buttock strength
+- the strength to get out of a chair, a car and a bath unaided
+- a measure of leg strength that can be re-tested
+easier_variant: chair-sit-to-stand
+harder_variant: null
+movement_patterns:
+- squat
+muscles_worked:
+- quadriceps
+- glutes
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 1
+requires_floor_transfer: false
+joint_stress:
+- knee
+- hip
+- ankle_foot
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - knee osteoarthritis
+  - knee injury
+  - knee replacement
+  - patellofemoral
+  - meniscus
+  - knee arthritis
+  severity: caution
+  reason: Rising without hands puts the whole bodyweight through the knees, and a lower seat increases
+    the angle they must work through.
+  modification: Raise the seat with a firm cushion, which shortens the range considerably, and keep the
+    hands available even if unused.
+- condition: dizziness
+  condition_aliases:
+  - vertigo
+  - postural hypotension
+  - orthostatic hypotension
+  - lightheaded
+  - syncope
+  - fainting
+  - bppv
+  severity: caution
+  reason: Repeated standing up is exactly the provocation for a blood-pressure drop.
+  modification: Rise slowly, pause standing before sitting again, and stop at any lightheadedness. Not
+    to be done alone if this has happened before.
+- condition: balance problems
+  condition_aliases:
+  - falls
+  - unsteady
+  - fall risk
+  - poor balance
+  severity: caution
+  reason: The arms are folded, so there is nothing to catch with if balance goes at the top.
+  modification: Stand within reach of a wall or a second chair, and use `chair-sit-to-stand` with hands
+    until standing is steady.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- falls-prevention
+- musculoskeletal-health
+- healthy-ageing
+linked_to_symptoms:
+- muscle-weakness
+- joint-pain
+notes_for_coach: 'THE RUNG ABOVE `chair-sit-to-stand`, wired as its harder variant. That entry was the
+  top of the seated strength chain and clients outgrew it with nowhere to go — this is the answer, and
+  it needs no equipment.
+
+
+  DOUBLES AS A MEASURE. Counting how many rises are possible in thirty seconds is a recognised functional
+  test, so this entry can be re-taken as an outcome rather than only prescribed. Worth recording the number
+  at the start of a plan.
+
+
+  SEAT HEIGHT IS THE DIAL. A cushion makes it markedly easier and a low sofa markedly harder, which is
+  a finer adjustment than changing the repetitions.'
+sources: []
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

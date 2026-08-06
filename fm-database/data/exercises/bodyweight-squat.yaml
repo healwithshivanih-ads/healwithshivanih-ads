@@ -53,7 +53,7 @@ builds:
 - hip and knee loading for bone
 - the strength to stand up without pushing off
 easier_variant: chair-sit-to-stand
-harder_variant: forward-lunge
+harder_variant: split-squat
 joint_stress:
 - knee
 - hip

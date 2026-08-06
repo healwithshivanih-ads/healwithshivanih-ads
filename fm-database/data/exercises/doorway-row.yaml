@@ -1,0 +1,147 @@
+slug: doorway-row
+display_name: Doorway Row (Bodyweight Horizontal Pull)
+client_name: Doorway pull
+aliases:
+- doorway row
+- towel row
+- bodyweight row
+- inverted row
+- door row
+modality: strength
+intensity_tier: beginner
+position: standing
+equipment:
+- a sturdy door frame, or a towel looped around a fixed post
+summary: Pulling the body towards a fixed handhold — the catalogue's only horizontal pulling movement.
+why_it_works: 'Every other strength entry in this catalogue pushes or works the legs. Pushing alone shortens
+  the front of the chest and leaves the muscles between the shoulder blades untrained, which is exactly
+  the pattern desk work already creates. A row trains the opposite: the mid-back, the rear shoulder and
+  the arm flexors. Leaning further back lengthens the lever and makes it harder, which is how bodyweight
+  work adds resistance without adding weight.'
+setup:
+- Stand facing a door frame and take hold of both sides at about chest height, or loop a towel around
+  a fixed post and hold an end in each hand.
+- Walk the feet forward and lean back with the arms straight, until the body is a straight line tilted
+  away from the hands.
+- The further forward the feet, the harder it becomes. Start nearly upright.
+steps:
+- Pull the chest towards the hands, leading with the elbows and drawing the shoulder blades together.
+- Keep the body one straight line — do not let the hips sag or lead with the head.
+- Pause a moment when the chest is closest.
+- Lower back to straight arms with control. That lowering is half the exercise.
+levels:
+- level: '1'
+  prescription: 8 repetitions, nearly upright, twice
+  reps: 8
+  sets: 2
+  support: feet well back so the lean is shallow
+- level: '2'
+  prescription: 10 repetitions with the feet further forward, twice
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 12 repetitions at a deep lean, three times
+  reps: 12
+  sets: 3
+  support: none
+  note: Once the body is near horizontal this needs a low bar or a sturdy table edge rather than a door
+    frame.
+frequency: 2-3x/week, with a rest day between.
+builds:
+- mid-back and rear shoulder strength
+- pulling strength for daily lifting and carrying
+- the postural muscles that oppose desk work
+easier_variant: null
+harder_variant: null
+movement_patterns:
+- pull
+muscles_worked:
+- upper_back
+- biceps
+- shoulders
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 1
+requires_floor_transfer: false
+joint_stress:
+- shoulder
+- elbow
+- wrist_hand
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: The whole load passes through the shoulder at full stretch when the arms are straight.
+  modification: Stay nearly upright so the load is light, keep the elbows close to the body rather than
+    flared wide, and stop short of the range that pinches.
+- condition: elbow pain
+  condition_aliases:
+  - tennis elbow
+  - golfers elbow
+  - epicondylitis
+  - elbow injury
+  severity: caution
+  reason: Gripping and pulling loads the forearm tendons at their attachment.
+  modification: Use a thicker grip such as a rolled towel, keep the wrists straight, and reduce the lean.
+- condition: wrist pain
+  condition_aliases:
+  - carpal tunnel
+  - wrist injury
+  - hand pain
+  - de quervain
+  severity: caution
+  reason: Bodyweight hangs through the grip for the whole set.
+  modification: Loop a towel and hold that instead of gripping a frame, which lets the hand stay in a
+    neutral fist.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- posture
+- musculoskeletal-health
+linked_to_symptoms:
+- muscle-weakness
+- neck-pain
+- shoulder-pain
+notes_for_coach: 'THE CATALOGUE''S ONLY PULLING MOVEMENT, and it was added because its absence was a structural
+  flaw rather than because a client asked. Before this entry every strength item was a push (the press-up
+  and dip ladders) or a leg, which is the imbalance desk work already produces — so the catalogue was
+  reinforcing it.
+
+
+  NOT FROM THE MARTINOLI BOOK. That book is bodyweight-only and the pages read contain no pulling movement
+  at all, because pulling needs something to pull against. This entry is therefore authored from general
+  practice and carries no citation; `evidence_tier: fm_specific_thin` is accurate, not modest. If a suitable
+  source is ingested later, cite it here rather than inventing one.
+
+
+  EQUIPMENT IS THE REAL BARRIER, not difficulty. A door frame works for the shallow versions; the deep
+  lean genuinely needs a low bar or a solid table edge, and a flimsy table is a hazard. Check what the
+  client actually has before prescribing level 3.'
+sources: []
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

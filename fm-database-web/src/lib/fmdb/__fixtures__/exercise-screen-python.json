@@ -1,6 +1,6 @@
 {
   "_note": "Captured from fmdb.plan.exercise_screen. Regenerate by hand; see module docstring.",
-  "exercise_count": 44,
+  "exercise_count": 56,
   "cases": {
     "pem": [
       {
@@ -308,6 +308,29 @@
         "start_reason": ""
       },
       {
+        "slug": "floor-get-up",
+        "display_name": "Floor Transfer (Get Down and Get Up Again)",
+        "client_name": "Getting up from the floor",
+        "modality": "daily_activity",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "stair-walking",
         "display_name": "Stair Walking",
         "client_name": "Practising the stairs",
@@ -323,6 +346,29 @@
           {
             "kind": "pain",
             "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "wall-angels",
+        "display_name": "Wall Angels (Scapular Retraction and Overhead Slide)",
+        "client_name": "Wall slides",
+        "modality": "flexibility",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "neck, shoulder",
             "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
             "modification": ""
           }
@@ -371,6 +417,29 @@
         "start_reason": ""
       },
       {
+        "slug": "bird-dog",
+        "display_name": "Bird Dog (Four-Point Contralateral Reach)",
+        "client_name": "Opposite arm and leg reach",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
@@ -386,6 +455,75 @@
           {
             "kind": "pain",
             "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "chair-dip",
+        "display_name": "Chair Dip (Elevated Triceps Dip)",
+        "client_name": "Dips off a chair",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "doorway-row",
+        "display_name": "Doorway Row (Bodyweight Horizontal Pull)",
+        "client_name": "Doorway pull",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "extended-kneeling-press-up",
+        "display_name": "Extended Kneeling Press-Up",
+        "client_name": "Kneeling press-up, hands further forward",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "shoulder",
             "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
             "modification": ""
           }
@@ -589,6 +727,52 @@
         "start_reason": ""
       },
       {
+        "slug": "side-lying-hip-abduction",
+        "display_name": "Side-Lying Hip Abduction",
+        "client_name": "Leg lifts on your side",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "side-plank",
+        "display_name": "Side Plank (Lateral Isometric Hold)",
+        "client_name": "Side hold",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "single-leg-deadlift",
         "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
         "client_name": "One-legged hip hinge",
@@ -612,6 +796,52 @@
         "start_reason": ""
       },
       {
+        "slug": "single-leg-floor-bridge",
+        "display_name": "Single-Leg Floor Bridge",
+        "client_name": "One-legged bridge",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "sit-to-stand-no-hands",
+        "display_name": "Sit to Stand Without Hands",
+        "client_name": "Standing up without using your hands",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
         "slug": "speed-skater",
         "display_name": "Speed Skater (Lateral Bound with Sweep)",
         "client_name": "Skater jumps",
@@ -622,6 +852,29 @@
             "kind": "block",
             "label": "post-exertional malaise",
             "detail": "Repetition-laddered power work is the shape NICE NG206 withdrew for ME/CFS.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "split-squat",
+        "display_name": "Split Squat (Static Lunge)",
+        "client_name": "Split squat",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
             "modification": ""
           },
           {
@@ -691,6 +944,29 @@
             "kind": "block",
             "label": "post-exertional malaise",
             "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS: any programme of fixed incremental increases can provoke a lasting relapse. The ladder in this entry is exactly that shape.",
+            "modification": ""
+          },
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": null,
+        "start_reason": ""
+      },
+      {
+        "slug": "standing-hip-hinge",
+        "display_name": "Standing Hip Hinge (Bend-and-Reach Pattern)",
+        "client_name": "Bending safely from the hips",
+        "modality": "strength",
+        "verdict": "blocked",
+        "notes": [
+          {
+            "kind": "block",
+            "label": "post-exertional malaise",
+            "detail": "NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression schedule.",
             "modification": ""
           },
           {
@@ -1119,6 +1395,23 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "floor-get-up",
+        "display_name": "Floor Transfer (Get Down and Get Up Again)",
+        "client_name": "Getting up from the floor",
+        "modality": "daily_activity",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoporosis",
+            "detail": "Weight through the wrist when pushing up is a fracture risk on fragile bone, and the roll to sitting can round the spine.",
+            "modification": "Push through the forearm rather than the flat hand, use the chair to take the load, and keep the back long rather than curling up."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "stair-walking",
         "display_name": "Stair Walking",
         "client_name": "Practising the stairs",
@@ -1151,6 +1444,29 @@
         ],
         "start_level": null,
         "start_reason": ""
+      },
+      {
+        "slug": "wall-angels",
+        "display_name": "Wall Angels (Scapular Retraction and Overhead Slide)",
+        "client_name": "Wall slides",
+        "modality": "flexibility",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "hypertension",
+            "detail": "Sustained work with the arms above the head raises blood pressure more than the same effort at waist height.",
+            "modification": "Keep the movement flowing rather than holding at the top, and breathe out on the way up."
+          },
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
       },
       {
         "slug": "bodyweight-squat",
@@ -1261,6 +1577,23 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "side-plank",
+        "display_name": "Side Plank (Lateral Isometric Hold)",
+        "client_name": "Side hold",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "hypertension",
+            "detail": "A sustained isometric drives a pressor response for as long as it lasts, and holding the breath against it raises blood pressure sharply \u2014 the warning this catalogue carries on every hold.",
+            "modification": "Keep holds to 15 seconds, breathe audibly so the breath cannot be held, and rest fully between sides. Do not prescribe while blood pressure is uncontrolled or unmeasured."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "single-leg-deadlift",
         "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
         "client_name": "One-legged hip hinge",
@@ -1326,6 +1659,23 @@
           }
         ],
         "start_level": "A",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-hip-hinge",
+        "display_name": "Standing Hip Hinge (Bend-and-Reach Pattern)",
+        "client_name": "Bending safely from the hips",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "osteoporosis",
+            "detail": "Bending forward is the vertebral red line \u2014 but ONLY when the spine rounds. A true hinge keeps it neutral, which is why this movement is the safe way for a bone-loss client to reach the floor at all.",
+            "modification": "Teach with the stick and insist on the three contact points. No added load. If the flat back cannot be held, do not use this movement."
+          }
+        ],
+        "start_level": "1",
         "start_reason": "start supported"
       },
       {
@@ -1448,6 +1798,40 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "side-lying-hip-abduction",
+        "display_name": "Side-Lying Hip Abduction",
+        "client_name": "Leg lifts on your side",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "sacrum pelvis",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "single-leg-floor-bridge",
+        "display_name": "Single-Leg Floor Bridge",
+        "client_name": "One-legged bridge",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "sacrum pelvis",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "chair-sit-to-stand",
         "display_name": "Sit to Stand",
         "client_name": "Standing up from a chair",
@@ -1518,6 +1902,46 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "bird-dog",
+        "display_name": "Bird Dog (Four-Point Contralateral Reach)",
+        "client_name": "Opposite arm and leg reach",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-dip",
+        "display_name": "Chair Dip (Elevated Triceps Dip)",
+        "client_name": "Dips off a chair",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "doorway-row",
+        "display_name": "Doorway Row (Bodyweight Horizontal Pull)",
+        "client_name": "Doorway pull",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "extended-kneeling-press-up",
+        "display_name": "Extended Kneeling Press-Up",
+        "client_name": "Kneeling press-up, hands further forward",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "floor-bridge",
         "display_name": "Floor Bridge (Supine Hip Lift)",
         "client_name": "Lifting your hips off the floor",
@@ -1558,9 +1982,29 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "sit-to-stand-no-hands",
+        "display_name": "Sit to Stand Without Hands",
+        "client_name": "Standing up without using your hands",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "speed-skater",
         "display_name": "Speed Skater (Lateral Bound with Sweep)",
         "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-squat",
+        "display_name": "Split Squat (Static Lunge)",
+        "client_name": "Split squat",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -1723,6 +2167,29 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "floor-get-up",
+        "display_name": "Floor Transfer (Get Down and Get Up Again)",
+        "client_name": "Getting up from the floor",
+        "modality": "daily_activity",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          },
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "stair-walking",
         "display_name": "Stair Walking",
         "client_name": "Practising the stairs",
@@ -1791,6 +2258,23 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "wall-angels",
+        "display_name": "Wall Angels (Scapular Retraction and Overhead Slide)",
+        "client_name": "Wall slides",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "neck",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "abdominal-crunch",
         "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
         "client_name": "Curl-ups",
@@ -1808,9 +2292,43 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "bird-dog",
+        "display_name": "Bird Dog (Four-Point Contralateral Reach)",
+        "client_name": "Opposite arm and leg reach",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "extended-kneeling-press-up",
+        "display_name": "Extended Kneeling Press-Up",
+        "client_name": "Kneeling press-up, hands further forward",
         "modality": "strength",
         "verdict": "watch",
         "notes": [
@@ -1927,6 +2445,46 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "side-lying-hip-abduction",
+        "display_name": "Side-Lying Hip Abduction",
+        "client_name": "Leg lifts on your side",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "sacrum pelvis",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-plank",
+        "display_name": "Side Plank (Lateral Isometric Hold)",
+        "client_name": "Side hold",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          },
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "single-leg-deadlift",
         "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
         "client_name": "One-legged hip hinge",
@@ -1950,6 +2508,23 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "single-leg-floor-bridge",
+        "display_name": "Single-Leg Floor Bridge",
+        "client_name": "One-legged bridge",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back, sacrum pelvis",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "speed-skater",
         "display_name": "Speed Skater (Lateral Bound with Sweep)",
         "client_name": "Skater jumps",
@@ -1959,6 +2534,23 @@
           {
             "kind": "age",
             "label": "age ~82, balance demand 3/3",
+            "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "split-squat",
+        "display_name": "Split Squat (Static Lunge)",
+        "client_name": "Split squat",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "age",
+            "label": "age ~82, balance demand 2/3",
             "detail": "The over-75s gain the most from balance work and can least afford a fall. Keep support until recovery strategies are confirmed.",
             "modification": ""
           }
@@ -1999,6 +2591,23 @@
         ],
         "start_level": "A",
         "start_reason": "start supported"
+      },
+      {
+        "slug": "standing-hip-hinge",
+        "display_name": "Standing Hip Hinge (Bend-and-Reach Pattern)",
+        "client_name": "Bending safely from the hips",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
       },
       {
         "slug": "standing-knee-flexion",
@@ -2135,6 +2744,26 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "chair-dip",
+        "display_name": "Chair Dip (Elevated Triceps Dip)",
+        "client_name": "Dips off a chair",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "doorway-row",
+        "display_name": "Doorway Row (Bodyweight Horizontal Pull)",
+        "client_name": "Doorway pull",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "floor-dip",
         "display_name": "Floor Dip (Reverse Triceps Dip)",
         "client_name": "Dips from the floor",
@@ -2172,6 +2801,16 @@
         "verdict": "clear",
         "notes": [],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sit-to-stand-no-hands",
+        "display_name": "Sit to Stand Without Hands",
+        "client_name": "Standing up without using your hands",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {
@@ -2428,6 +3067,23 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "floor-get-up",
+        "display_name": "Floor Transfer (Get Down and Get Up Again)",
+        "client_name": "Getting up from the floor",
+        "modality": "daily_activity",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee, lower back, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "stair-walking",
         "display_name": "Stair Walking",
         "client_name": "Practising the stairs",
@@ -2479,6 +3135,23 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "wall-angels",
+        "display_name": "Wall Angels (Scapular Retraction and Overhead Slide)",
+        "client_name": "Wall slides",
+        "modality": "flexibility",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "shoulder, upper back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "abdominal-crunch",
         "display_name": "Abdominal Crunch (Loaded Spinal Flexion)",
         "client_name": "Curl-ups",
@@ -2513,6 +3186,23 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "bird-dog",
+        "display_name": "Bird Dog (Four-Point Contralateral Reach)",
+        "client_name": "Opposite arm and leg reach",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee, lower back, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
@@ -2522,6 +3212,57 @@
           {
             "kind": "pain",
             "label": "hip, knee, lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-dip",
+        "display_name": "Chair Dip (Elevated Triceps Dip)",
+        "client_name": "Dips off a chair",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "doorway-row",
+        "display_name": "Doorway Row (Bodyweight Horizontal Pull)",
+        "client_name": "Doorway pull",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "extended-kneeling-press-up",
+        "display_name": "Extended Kneeling Press-Up",
+        "client_name": "Kneeling press-up, hands further forward",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "knee, lower back, shoulder",
             "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
             "modification": ""
           }
@@ -2666,6 +3407,40 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "side-lying-hip-abduction",
+        "display_name": "Side-Lying Hip Abduction",
+        "client_name": "Leg lifts on your side",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-plank",
+        "display_name": "Side Plank (Lateral Isometric Hold)",
+        "client_name": "Side hold",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, lower back, shoulder",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "single-leg-deadlift",
         "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
         "client_name": "One-legged hip hinge",
@@ -2683,9 +3458,60 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "single-leg-floor-bridge",
+        "display_name": "Single-Leg Floor Bridge",
+        "client_name": "One-legged bridge",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee, lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sit-to-stand-no-hands",
+        "display_name": "Sit to Stand Without Hands",
+        "client_name": "Standing up without using your hands",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "speed-skater",
         "display_name": "Speed Skater (Lateral Bound with Sweep)",
         "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-squat",
+        "display_name": "Split Squat (Static Lunge)",
+        "client_name": "Split squat",
         "modality": "strength",
         "verdict": "watch",
         "notes": [
@@ -2748,6 +3574,23 @@
           }
         ],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-hinge",
+        "display_name": "Standing Hip Hinge (Bend-and-Reach Pattern)",
+        "client_name": "Bending safely from the hips",
+        "modality": "strength",
+        "verdict": "watch",
+        "notes": [
+          {
+            "kind": "pain",
+            "label": "hip, knee, lower back",
+            "detail": "This client has tagged pain in a region the exercise loads. Confirm it is comfortable before prescribing, and work in a pain-free range.",
+            "modification": ""
+          }
+        ],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {
@@ -3034,6 +3877,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "floor-get-up",
+        "display_name": "Floor Transfer (Get Down and Get Up Again)",
+        "client_name": "Getting up from the floor",
+        "modality": "daily_activity",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "stair-walking",
         "display_name": "Stair Walking",
         "client_name": "Practising the stairs",
@@ -3104,6 +3957,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "wall-angels",
+        "display_name": "Wall Angels (Scapular Retraction and Overhead Slide)",
+        "client_name": "Wall slides",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "energy-envelope-pacing",
         "display_name": "Energy-Envelope Pacing",
         "client_name": "Staying inside your energy envelope",
@@ -3134,9 +3997,49 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "bird-dog",
+        "display_name": "Bird Dog (Four-Point Contralateral Reach)",
+        "client_name": "Opposite arm and leg reach",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-dip",
+        "display_name": "Chair Dip (Elevated Triceps Dip)",
+        "client_name": "Dips off a chair",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "doorway-row",
+        "display_name": "Doorway Row (Bodyweight Horizontal Pull)",
+        "client_name": "Doorway pull",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "extended-kneeling-press-up",
+        "display_name": "Extended Kneeling Press-Up",
+        "client_name": "Kneeling press-up, hands further forward",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -3244,6 +4147,26 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "side-lying-hip-abduction",
+        "display_name": "Side-Lying Hip Abduction",
+        "client_name": "Leg lifts on your side",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-plank",
+        "display_name": "Side Plank (Lateral Isometric Hold)",
+        "client_name": "Side hold",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "single-leg-deadlift",
         "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
         "client_name": "One-legged hip hinge",
@@ -3254,9 +4177,39 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "single-leg-floor-bridge",
+        "display_name": "Single-Leg Floor Bridge",
+        "client_name": "One-legged bridge",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sit-to-stand-no-hands",
+        "display_name": "Sit to Stand Without Hands",
+        "client_name": "Standing up without using your hands",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "speed-skater",
         "display_name": "Speed Skater (Lateral Bound with Sweep)",
         "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-squat",
+        "display_name": "Split Squat (Static Lunge)",
+        "client_name": "Split squat",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -3291,6 +4244,16 @@
         "verdict": "clear",
         "notes": [],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-hinge",
+        "display_name": "Standing Hip Hinge (Bend-and-Reach Pattern)",
+        "client_name": "Bending safely from the hips",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {
@@ -3495,6 +4458,29 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "floor-get-up",
+        "display_name": "Floor Transfer (Get Down and Get Up Again)",
+        "client_name": "Getting up from the floor",
+        "modality": "daily_activity",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "The sequence passes through kneeling and half-kneeling, which loads the kneecap directly and takes the joint to end range.",
+            "modification": "Pad the knees generously and use the chair throughout. After a knee replacement, check with the surgical team before kneeling at all."
+          },
+          {
+            "kind": "caution",
+            "label": "hip replacement",
+            "detail": "Getting onto and off the floor can breach hip precautions on deep flexion and rotation, particularly in the first months.",
+            "modification": "Do not prescribe until the surgical team has cleared floor transfers, and then only in the order they specify."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "stair-walking",
         "display_name": "Stair Walking",
         "client_name": "Practising the stairs",
@@ -3535,6 +4521,23 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "bird-dog",
+        "display_name": "Bird Dog (Four-Point Contralateral Reach)",
+        "client_name": "Opposite arm and leg reach",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Kneeling puts direct pressure on the kneecap.",
+            "modification": "Double the mat or put a folded towel under the knees. If kneeling is not possible at all, this exercise is not available \u2014 use a standing alternative."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
@@ -3546,6 +4549,23 @@
             "label": "knee pain",
             "detail": "Knee compression rises steeply with depth, and the bottom of a deep squat is where patellofemoral pain is usually provoked.",
             "modification": "Reduce the DEPTH, not the frequency \u2014 stay in the range that is pain-free even if that is only a few centimetres, and build repetitions there before going lower."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "extended-kneeling-press-up",
+        "display_name": "Extended Kneeling Press-Up",
+        "client_name": "Kneeling press-up, hands further forward",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "The knees bear weight against the floor throughout.",
+            "modification": "Double the mat or fold a towel under the knees."
           }
         ],
         "start_level": "1",
@@ -3637,6 +4657,23 @@
         "start_reason": "start supported"
       },
       {
+        "slug": "sit-to-stand-no-hands",
+        "display_name": "Sit to Stand Without Hands",
+        "client_name": "Standing up without using your hands",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Rising without hands puts the whole bodyweight through the knees, and a lower seat increases the angle they must work through.",
+            "modification": "Raise the seat with a firm cushion, which shortens the range considerably, and keep the hands available even if unused."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
         "slug": "speed-skater",
         "display_name": "Speed Skater (Lateral Bound with Sweep)",
         "client_name": "Skater jumps",
@@ -3648,6 +4685,29 @@
             "label": "knee pain",
             "detail": "One knee absorbs the whole landing, across its line.",
             "modification": "Step the pattern instead of bounding, and keep the sweep shallow."
+          }
+        ],
+        "start_level": "1",
+        "start_reason": "start supported"
+      },
+      {
+        "slug": "split-squat",
+        "display_name": "Split Squat (Static Lunge)",
+        "client_name": "Split squat",
+        "modality": "strength",
+        "verdict": "caution",
+        "notes": [
+          {
+            "kind": "caution",
+            "label": "knee pain",
+            "detail": "Both knees are loaded through a large range, and the front knee takes most of the bodyweight.",
+            "modification": "Keep the range shallow, make sure the front shin stays close to upright rather than travelling far over the toes, and use the chair. Stop at any pain at the front of the knee."
+          },
+          {
+            "kind": "caution",
+            "label": "hip replacement",
+            "detail": "The deep range can take the hip beyond post-surgical precautions.",
+            "modification": "Keep the range shallow and check the surgical team's limits on hip flexion before going deeper."
           }
         ],
         "start_level": "1",
@@ -3832,6 +4892,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "wall-angels",
+        "display_name": "Wall Angels (Scapular Retraction and Overhead Slide)",
+        "client_name": "Wall slides",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "energy-envelope-pacing",
         "display_name": "Energy-Envelope Pacing",
         "client_name": "Staying inside your energy envelope",
@@ -3855,6 +4925,26 @@
         "slug": "ankle-jumps",
         "display_name": "Ankle Jumps (Pogo Hops)",
         "client_name": "Little pogo hops",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-dip",
+        "display_name": "Chair Dip (Elevated Triceps Dip)",
+        "client_name": "Dips off a chair",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "doorway-row",
+        "display_name": "Doorway Row (Bodyweight Horizontal Pull)",
+        "client_name": "Doorway pull",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -3912,6 +5002,26 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "side-lying-hip-abduction",
+        "display_name": "Side-Lying Hip Abduction",
+        "client_name": "Leg lifts on your side",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-plank",
+        "display_name": "Side Plank (Lateral Isometric Hold)",
+        "client_name": "Side hold",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "single-leg-deadlift",
         "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
         "client_name": "One-legged hip hinge",
@@ -3922,9 +5032,29 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "single-leg-floor-bridge",
+        "display_name": "Single-Leg Floor Bridge",
+        "client_name": "One-legged bridge",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "standard-press-up",
         "display_name": "Standard Press Up (Full Prone Push)",
         "client_name": "A full press-up",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-hinge",
+        "display_name": "Standing Hip Hinge (Bend-and-Reach Pattern)",
+        "client_name": "Bending safely from the hips",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -4084,6 +5214,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "floor-get-up",
+        "display_name": "Floor Transfer (Get Down and Get Up Again)",
+        "client_name": "Getting up from the floor",
+        "modality": "daily_activity",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "stair-walking",
         "display_name": "Stair Walking",
         "client_name": "Practising the stairs",
@@ -4154,6 +5294,16 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "wall-angels",
+        "display_name": "Wall Angels (Scapular Retraction and Overhead Slide)",
+        "client_name": "Wall slides",
+        "modality": "flexibility",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "energy-envelope-pacing",
         "display_name": "Energy-Envelope Pacing",
         "client_name": "Staying inside your energy envelope",
@@ -4184,9 +5334,49 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "bird-dog",
+        "display_name": "Bird Dog (Four-Point Contralateral Reach)",
+        "client_name": "Opposite arm and leg reach",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "bodyweight-squat",
         "display_name": "Bodyweight Squat (Free Standing, No Chair)",
         "client_name": "Standing squats",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "chair-dip",
+        "display_name": "Chair Dip (Elevated Triceps Dip)",
+        "client_name": "Dips off a chair",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "doorway-row",
+        "display_name": "Doorway Row (Bodyweight Horizontal Pull)",
+        "client_name": "Doorway pull",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "extended-kneeling-press-up",
+        "display_name": "Extended Kneeling Press-Up",
+        "client_name": "Kneeling press-up, hands further forward",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -4294,6 +5484,26 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "side-lying-hip-abduction",
+        "display_name": "Side-Lying Hip Abduction",
+        "client_name": "Leg lifts on your side",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "side-plank",
+        "display_name": "Side Plank (Lateral Isometric Hold)",
+        "client_name": "Side hold",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "single-leg-deadlift",
         "display_name": "Single-Leg Deadlift (Unloaded Hip Hinge on One Leg)",
         "client_name": "One-legged hip hinge",
@@ -4304,9 +5514,39 @@
         "start_reason": "start at the easiest level"
       },
       {
+        "slug": "single-leg-floor-bridge",
+        "display_name": "Single-Leg Floor Bridge",
+        "client_name": "One-legged bridge",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "sit-to-stand-no-hands",
+        "display_name": "Sit to Stand Without Hands",
+        "client_name": "Standing up without using your hands",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
         "slug": "speed-skater",
         "display_name": "Speed Skater (Lateral Bound with Sweep)",
         "client_name": "Skater jumps",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "split-squat",
+        "display_name": "Split Squat (Static Lunge)",
+        "client_name": "Split squat",
         "modality": "strength",
         "verdict": "clear",
         "notes": [],
@@ -4341,6 +5581,16 @@
         "verdict": "clear",
         "notes": [],
         "start_level": "A",
+        "start_reason": "start at the easiest level"
+      },
+      {
+        "slug": "standing-hip-hinge",
+        "display_name": "Standing Hip Hinge (Bend-and-Reach Pattern)",
+        "client_name": "Bending safely from the hips",
+        "modality": "strength",
+        "verdict": "clear",
+        "notes": [],
+        "start_level": "1",
         "start_reason": "start at the easiest level"
       },
       {

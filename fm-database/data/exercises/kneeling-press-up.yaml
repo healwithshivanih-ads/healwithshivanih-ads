@@ -51,7 +51,7 @@ builds:
 - trunk stiffness held against gravity
 - pushing strength for daily tasks
 easier_variant: wall-press-up
-harder_variant: standard-press-up
+harder_variant: extended-kneeling-press-up
 joint_stress:
 - shoulder
 - wrist_hand
