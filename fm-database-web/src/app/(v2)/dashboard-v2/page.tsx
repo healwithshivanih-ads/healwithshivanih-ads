@@ -46,6 +46,8 @@ import { WeeklyGenerationPausePanel } from "@/components/weekly-generation-pause
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
 import { ArchiveCandidatesPanel } from "@/components/archive-candidates-panel";
+import { RenewalQueuePanel } from "@/components/renewal-queue-panel";
+import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
 import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
 import {
   FmAlertGroup,
@@ -535,6 +537,12 @@ export default async function DashboardV2() {
     plansByClient as unknown as Parameters<typeof getArchiveCandidates>[1],
     todayStr,
   );
+
+  // 📩 Plans ending — the end of a plan is the most commercially significant
+  // moment in the relationship, and until 3 Aug 2026 nothing watched it. The
+  // queue is deterministic (dates and files, no model) and lists only plans
+  // with no decision recorded against them.
+  const renewalRows = await listOpenRenewalsAction();
 
   // Stranded intake drafts — substantial answers sitting in
   // intake_form_draft, never promoted to a real submit. (Pranati cl-009
@@ -1128,6 +1136,13 @@ export default async function DashboardV2() {
           </div>
         }
       />
+
+      {/* 📩 Plans ending — pinned ABOVE the menu queue: a menu is one week of
+          one client, a plan ending is the whole engagement, and the digest has
+          been asking her to record these decisions since 3 Aug with nowhere to
+          do it. Deliberately does not self-hide — "nobody is ending soon" is a
+          real answer worth seeing. */}
+      <RenewalQueuePanel rows={renewalRows} />
 
       {/* 🗓 Weekly menu approvals — pinned to the TOP so the coach can never
           miss a menu waiting for approval (clients stay frozen until she

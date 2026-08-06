@@ -88,6 +88,30 @@ export function setDecision(planSlug: string, decision: RenewalDecision, note?: 
 }
 
 /**
+ * Undo a recorded decision — the row comes back into the queue.
+ *
+ * Exists because the failure mode of a mis-click is SILENT: the wrong client
+ * stops appearing and stays gone for the rest of the 30-day window, which is
+ * exactly the disappearance this queue was built to prevent. A one-way button
+ * on a row that vanishes when you press it needs a way back.
+ */
+export function clearDecision(planSlug: string): boolean {
+  if (!/^[a-z0-9][a-z0-9-]{0,120}$/i.test(planSlug)) return false;
+  const all = loadDecisions();
+  if (!(planSlug in all)) return true; // already absent — the desired end state
+  delete all[planSlug];
+  try {
+    const f = decisionsFile();
+    const tmp = `${f}.tmp`;
+    fs.writeFileSync(tmp, yaml.dump(all, { sortKeys: true }), { mode: 0o600 });
+    fs.renameSync(tmp, f);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Surname-based household grouping.
  *
  * Crude on purpose. It exists to stop two renewal asks landing on one family

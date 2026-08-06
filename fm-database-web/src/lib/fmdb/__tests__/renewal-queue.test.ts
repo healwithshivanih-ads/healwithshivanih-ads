@@ -98,6 +98,29 @@ describe("plans ending", () => {
     expect(q[0].daysLeft).toBeLessThan(q[1].daysLeft);
   });
 
+  it("undo puts a mis-marked client back in the queue", async () => {
+    // The failure mode of a mis-click is silent — the row vanishes and stays
+    // gone for the rest of the 30-day window, which is the disappearance this
+    // queue exists to prevent. So undo has to actually work.
+    client("cl-004", "Samaa Mahandru");
+    plan("samaa-plan-1", "cl-004", "2026-05-12", 12);
+    const m = await mod();
+    m.setDecision("samaa-plan-1", "not_renewing");
+    expect(m.openRenewals(TODAY)).toHaveLength(0);
+    expect(m.clearDecision("samaa-plan-1")).toBe(true);
+    expect(m.openRenewals(TODAY)).toHaveLength(1);
+  });
+
+  it("undo on a plan that was never decided is a no-op, not a failure", async () => {
+    const m = await mod();
+    expect(m.clearDecision("never-decided-plan")).toBe(true);
+  });
+
+  it("undo refuses a slug that is not a slug", async () => {
+    // The slug reaches a YAML key; the same guard setDecision applies.
+    expect((await mod()).clearDecision("../../etc/passwd")).toBe(false);
+  });
+
   it("one unreadable plan does not empty the queue", async () => {
     client("cl-004", "Dhanishta Shah");
     plan("dhanishta-plan-2", "cl-004", "2026-05-12", 12);
