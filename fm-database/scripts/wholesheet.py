@@ -17,11 +17,17 @@ figures sit on a common floor line instead of drifting.
 """
 import sys
 import importlib.util
+import pathlib
 
 import numpy as np
 from PIL import Image
 
-_sp = importlib.util.spec_from_file_location("tr", "../trace.py")
+# Resolved against THIS FILE, not the working directory. It used to be the literal
+# "../trace.py", which was right only while this script lived one directory below
+# the tracer in a scratchpad — from its committed home beside trace.py it points at
+# fm-database/trace.py, which does not exist, so importing it failed outright.
+_TRACE = pathlib.Path(__file__).resolve().parent / "trace.py"
+_sp = importlib.util.spec_from_file_location("tr", _TRACE)
 tr = importlib.util.module_from_spec(_sp); _sp.loader.exec_module(tr)
 tr.SCALE = 1
 _orig = tr.components

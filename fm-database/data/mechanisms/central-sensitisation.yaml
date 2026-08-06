@@ -1,0 +1,57 @@
+slug: central-sensitisation
+display_name: Central Sensitisation
+aliases:
+- central sensitization
+- centrally sensitised
+- pain sensitisation
+- nervous system sensitisation
+- long term potentiation of pain
+- amplified pain processing
+- sensitised nervous system
+- wind-up
+category: neurological
+summary: The nervous system becomes better at producing pain. The same input from the body
+  is amplified as it is processed through the spinal cord and brain, so a normal amount of
+  nociception yields a much larger amount of pain — and eventually pain arrives with little
+  or no nociception at all. It is the mechanism behind pain that spreads, moves around,
+  flares easily, or is felt where there should only be pressure or touch.
+upstream_drivers:
+- continued tissue irritation and nociception
+- poor sleep
+- psychological stress, worry and catastrophising
+- fear of movement and prolonged avoidance
+downstream_effects:
+- pain out of proportion to tissue findings
+- pain that spreads or moves to other body areas
+- pain felt from light touch or pressure that should not hurt
+- flare-ups triggered more readily, including by exercise that helps others
+- reduced response to exercise-induced pain relief
+related_mechanisms:
+- chronic-inflammation
+linked_to_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+sources:
+- id: lehman-recovery-strategies-2017
+  location: Section I, Pain Principles, pp 14-15 — the Sensitization and Habituation pages
+evidence_tier: plausible_emerging
+notes_for_coach: 'WHY THIS MATTERS FOR PRESCRIBING EXERCISE, and it is the practical half.
+  Lehman notes that people with mild intermittent pain often feel BETTER after aggressive
+  exercise or foam rolling, because that activity triggers the body''s own pain relief. A
+  centrally sensitised client gets a much smaller response from the same approach, or flares
+  up with more pain. So the failure mode is prescribing the intensity that works for
+  everyone else and reading the flare as the client not trying. The instruction is not to
+  stop exercising — it is to do less in one session, progress intensity slowly, and expect
+  that some flare-ups will happen anyway.
+
+  HABITUATION IS THE SAME MACHINERY RUNNING THE OTHER WAY — the same input producing a
+  smaller output over time. That is what graded exposure is trading on, and it is why the
+  answer to a sensitised system is a smaller dose repeated, not avoidance.
+
+  DO NOT USE THIS AS A LABEL IN FRONT OF A CLIENT. "You are centrally sensitised" lands as
+  "the pain is in your head". The workbook''s own framing — the alarm system has got very
+  good at its job and is going off too easily — says the same thing without the insult.'
+version: 1
+status: active
+updated_at: '2026-08-06'
+updated_by: Shivani

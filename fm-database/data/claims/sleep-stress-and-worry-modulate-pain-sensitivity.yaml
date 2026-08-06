@@ -1,0 +1,38 @@
+slug: sleep-stress-and-worry-modulate-pain-sensitivity
+statement: How sensitive a person is to pain fluctuates with sleep, stress, worry and fear
+  as well as with tissue irritation, so pain can worsen with no change in the tissue at all
+  — and can improve by addressing those factors rather than the body part.
+evidence_tier: plausible_emerging
+rationale: The multidimensional model Lehman uses throughout, illustrated as a fluctuating
+  threshold with sleep, worry, fear, tissue damage and stress stacked as contributors. It is
+  the claim that connects this catalogue's existing sleep and stress work to its pain and
+  exercise work, which nothing did before.
+coaching_translation: Pain often tracks the rest of your life. Worse after bad sleep, a
+  stressful week, or when you are anxious — better on the good weeks — with nothing having
+  changed in the painful part itself. That is not you imagining it. It also means sleep and
+  stress are real levers on pain, not just general advice.
+caveats:
+- Presented by the workbook as a model with a diagram rather than from a named trial.
+- Naming these contributors must not slide into implying the client caused their own pain
+  by being stressed.
+- These are contributors, not the whole story — tissue and load still matter.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+- sleep
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- central-sensitisation
+linked_to_supplements: []
+linked_to_symptoms:
+- chronic-pain
+- body-pain
+- insomnia
+sources:
+- id: lehman-recovery-strategies-2017
+  location: Section II, p 20 — "pain is more about sensitivity than damage", the fluctuating
+    sensitivity-contributors chart, and p 21
+version: 1
+status: active
+updated_at: '2026-08-06'
+updated_by: Shivani

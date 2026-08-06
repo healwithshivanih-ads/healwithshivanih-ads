@@ -1,0 +1,43 @@
+slug: graded-exposure-builds-tolerance-in-persistent-pain
+statement: Tolerance to a painful movement is built by returning to it in small, gradually
+  increasing doses rather than by avoiding it — the same input producing a smaller response
+  over time, which is habituation, the reverse of sensitisation.
+evidence_tier: plausible_emerging
+rationale: Habituation is Lehman's stated mechanism for why graded exposure works, and
+  graded exposure is the workbook's central recovery strategy. Presented as an application
+  of the biopsychosocial model rather than from a named trial, so plausible_emerging. It is
+  the claim that makes an exercise plan defensible for a client in persistent pain at all.
+coaching_translation: The way back to a movement that hurts is usually through it, in doses
+  small enough that your body can get used to them. Doing a little, regularly, and building
+  up slowly teaches the alarm that the movement is safe. Complete rest tends to make the
+  alarm more sensitive, not less.
+caveats:
+- Dose is everything. Too much too soon is a real contributor to pain, and the same
+  workbook says so — graded exposure is not permission to push through.
+- A centrally sensitised client responds less well to hard exercise and may flare with the
+  intensity that helps others. Do less in one session and progress more slowly.
+- Some flare-ups will happen and are expected; this needs saying in advance, or the first
+  flare reads to the client as proof that moving was a mistake.
+- Acute injury is the exception — early relative rest is appropriate while tissue heals.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+- joint-pain
+out_of_scope_notes: 'Setting the starting dose for a client with significant pathology is a
+  clinical decision. A coach can graduate an agreed movement; deciding whether it is safe to
+  load an injured structure is not hers to make alone.'
+linked_to_mechanisms:
+- central-sensitisation
+linked_to_supplements: []
+linked_to_symptoms:
+- chronic-pain
+- body-pain
+- joint-pain
+sources:
+- id: lehman-recovery-strategies-2017
+  location: Section I p 16 (Habituation) and Section II p 27 ("you don't need fixing — no
+    movements should be off limits forever")
+version: 1
+status: active
+updated_at: '2026-08-06'
+updated_by: Shivani
