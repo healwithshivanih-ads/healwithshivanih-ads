@@ -266,6 +266,39 @@ export interface AppMealExtra {
   /** foods left out of this method for this client (see recipe-adapt.ts). */
   omits?: string[];
   omitsInSteps?: boolean;
+  /**
+   * A method for EVERY component of a compound dish that has one, each labelled
+   * with the component it belongs to.
+   *
+   * WHY THIS EXISTS. `recipe` above is resolved from the dish's PRIMARY
+   * component only — a deliberate rule, because a compound dish used to resolve
+   * to whichever component matched first and a sabja-seed snack opened the
+   * CHANA method. A wrong recipe is worse than none.
+   *
+   * But 92% of published menu slots carry more than one component, and roughly
+   * 855 non-primary components DO have a catalogue recipe the client could not
+   * reach: "Jowar bhakri + Moong dal + Turai sabzi + Curd + Kachumber salad"
+   * showed the bhakri and hid the other four, including a ridge-gourd sabzi
+   * that has been sitting in the library all along.
+   *
+   * The old constraint was about ATTRIBUTION, not about count. One recipe shown
+   * as if it were the whole dish is a lie; a labelled list of "Turai sabzi —
+   * method" is not. So each component is resolved independently and named.
+   *
+   * Empty for a single-component dish, and for anything whose extra components
+   * are plain foods (curd, kiwi, a spoon of ghee) that need no method.
+   */
+  componentRecipes?: AppComponentRecipe[];
+}
+
+/** One component of a compound dish, with its own method. */
+export interface AppComponentRecipe {
+  /** The component as the coach wrote it, minus the portion annotation. */
+  title: string;
+  ingredients: string[];
+  method: string[];
+  mins?: string;
+  serves?: string;
 }
 
 export interface AppSupplement {
@@ -1344,6 +1377,29 @@ type Dict = Record<string, unknown>;
 function asStr(v: unknown): string {
   return typeof v === "string" ? v : "";
 }
+/**
+ * A YAML date field as an ISO day string, whether YAML gave us a string or a Date.
+ *
+ * `plan_period_start: '2026-08-05'` (quoted) parses as a string; the same value
+ * written UNQUOTED parses as a JS Date, because js-yaml resolves the YAML
+ * timestamp type. `asStr()` returns "" for the Date, and every date-driven gate
+ * downstream then behaves as if the field were absent.
+ *
+ * That is not theoretical and it is not loud. A start date written unquoted by a
+ * Python-side edit (PyYAML emits `date` objects bare) left a published, started
+ * plan reading `notStarted: true` — the client app showed "your plan is getting
+ * ready … finalising your start date" indefinitely, with no error anywhere and
+ * correct-looking data in the file.
+ *
+ * Same family as the underscore-int trap: two YAML parsers, one file, different
+ * types out. Read defensively at the boundary rather than trusting every writer
+ * to quote.
+ */
+function asDayStr(v: unknown): string {
+  if (typeof v === "string") return v.trim();
+  if (v instanceof Date && !Number.isNaN(v.getTime())) return v.toISOString().slice(0, 10);
+  return "";
+}
 function asArr(v: unknown): unknown[] {
   return Array.isArray(v) ? v : [];
 }
@@ -2337,6 +2393,96 @@ export function buildDishRecipeResolver(sources: {
     if (remR) return remR;
     return matchPackRecipe(head, sources.packRecipes);
   };
+}
+
+/**
+ * Every component of a compound dish that has its own method, labelled.
+ *
+ * The primary component's recipe is EXCLUDED — the overlay already shows it in
+ * full above, and repeating it as a list entry reads like two different dishes.
+ *
+ * Plain foods are skipped rather than "resolved": a spoon of ghee, a bowl of
+ * curd and a kiwi are not recipes, and `everyday-ghee` alone would otherwise
+ * attach a method to 68 published slots. The test is the dish's own words, not
+ * whether the library happens to hold a same-named entry.
+ */
+export function componentRecipesFor(
+  dish: string,
+  primary: LetterRecipe | undefined,
+  /** The payload's own dish→method chain. Passed in rather than imported so a
+   *  test can drive this with a stub and so it can never diverge from the
+   *  resolver the rest of the payload uses. */
+  resolve: (d: string) => LetterRecipe | undefined,
+): AppComponentRecipe[] {
+  const parts = splitDishComponents(dish);
+  if (parts.length < 2) return [];
+
+  const out: AppComponentRecipe[] = [];
+  const seen = new Set<string>();
+  if (primary) seen.add(primary.title.toLowerCase().trim());
+
+  for (const part of parts) {
+    const title = (part.title || "").trim();
+    if (!title || isPlainComponent(title)) continue;
+    const r = resolve(title);
+    if (!r) continue;
+    const key = r.title.toLowerCase().trim();
+    if (seen.has(key)) continue;          // the headline, or the same recipe twice
+    seen.add(key);
+    if (!r.method?.length) continue;      // a title with no method helps nobody
+    out.push({
+      title,
+      ingredients: r.ingredients ?? [],
+      method: r.method,
+      mins: r.time,
+      serves: r.serves,
+    });
+  }
+  return out;
+}
+
+/**
+ * Is this component food rather than cooking?
+ *
+ * A PREFIX regex was tried first and was too narrow in exactly the way that
+ * matters: it skipped "Ghee (1 tsp)" but let "warm water" and "sesame seeds"
+ * through, and the library duly attached a five-step method to each. Seen on a
+ * live menu.
+ *
+ * So the test is compositional — strip portions, drop qualifiers and units, and
+ * skip only when EVERY remaining word is itself a plain food. That keeps
+ * "soft jowar roti with ghee" (roti is not plain) and "Kachumber salad", while
+ * dropping "warm water" and "sesame seeds", which differ from the kept ones
+ * only by what their words ARE.
+ */
+const PLAIN_FOODS = new Set([
+  "water", "ghee", "butter", "curd", "dahi", "yogurt", "yoghurt", "milk", "paneer",
+  "buttermilk", "chaas", "honey", "jaggery", "salt", "lemon", "lime",
+  "kiwi", "apple", "banana", "pear", "guava", "papaya", "orange", "mosambi",
+  "pomegranate", "berries", "melon", "grapes", "chikoo", "sapota", "amla", "fruit",
+  "dates", "date", "raisins", "anjeer", "figs", "fig", "prunes", "apricots",
+  "almonds", "almond", "walnuts", "walnut", "cashews", "pistachios", "brazil",
+  "peanuts", "nuts", "nut", "seeds", "seed", "sesame", "til", "pumpkin",
+  "sunflower", "flaxseed", "flax", "chia", "sabja", "melonseeds",
+]);
+/** Words that qualify a food without making it a dish. */
+const PLAIN_QUALIFIERS = new Set([
+  "warm", "hot", "cold", "chilled", "room", "temperature", "plain", "fresh", "raw",
+  "soaked", "roasted", "dry", "toasted", "ground", "powdered", "small", "large",
+  "handful", "glass", "cup", "bowl", "katori", "piece", "pieces", "slice", "slices",
+  "tsp", "tbsp", "ml", "g", "gm", "gms", "grams", "kg", "and", "of", "with", "a", "an", "the",
+]);
+
+export function isPlainComponent(title: string): boolean {
+  const words = title
+    .replace(/\([^)]*\)/g, " ")            // portions
+    .toLowerCase()
+    .replace(/[^a-z\s-]/g, " ")
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .filter((w) => !PLAIN_QUALIFIERS.has(w));
+  if (!words.length) return true;          // nothing but qualifiers/portions
+  return words.every((w) => PLAIN_FOODS.has(w));
 }
 
 // Snack/drink category fallback. Most no-recipe menu slots are simple assemblies
@@ -3931,6 +4077,7 @@ export async function loadClientAppData(
         omits: rec?.omits,
         omitsInSteps: rec?.omitsInSteps,
         swaps,
+        componentRecipes: componentRecipesFor(cell, rec, recipeFor),
       };
     }
   }
@@ -5809,11 +5956,11 @@ export async function loadClientAppData(
   // DEFAULT (they don't show active content until the coach sets a start
   // date or makes the first menu live). plan_period_start is the authoring
   // anchor, NOT a "started" signal — so it is deliberately not a fallback here.
-  const _mealStart = asStr(plan.meal_plan_started_on)
-    ? new Date(`${asStr(plan.meal_plan_started_on)}T00:00:00Z`)
+  const _mealStart = asDayStr(plan.meal_plan_started_on)
+    ? new Date(`${asDayStr(plan.meal_plan_started_on)}T00:00:00Z`)
     : null;
-  const _ppsDate = asStr(plan.plan_period_start)
-    ? new Date(`${asStr(plan.plan_period_start)}T00:00:00Z`)
+  const _ppsDate = asDayStr(plan.plan_period_start)
+    ? new Date(`${asDayStr(plan.plan_period_start)}T00:00:00Z`)
     : null;
   const notStarted = !_mealStart || todayUTC.getTime() < _mealStart.getTime();
   // The future date to count down to on the hold screen: the confirmed meal

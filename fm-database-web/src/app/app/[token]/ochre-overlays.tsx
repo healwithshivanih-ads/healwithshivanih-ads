@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
+import type { AppComponentRecipe, AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
 import { DOSHA_LABEL, Icon, REMEDY_CAT, useOchre } from "./ochre-context";
 import { AppAvatar } from "./ochre-ui";
 import { BodySection } from "./ochre-body";
@@ -204,6 +204,12 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
                 </li>
               ))}
             </ol>
+            {/* The rest of a compound meal. The headline method above is the
+                dish's PRIMARY component only; a lunch of "bhakri + moong dal +
+                turai sabzi + curd + kachumber" used to show the bhakri and hide
+                the other four. Each is named, so nothing is presented as if it
+                were the whole dish. */}
+            <ComponentRecipes items={ex.componentRecipes ?? []} />
           </>
         ) : data.recipePack.length > 0 ? (
           /* no exact match for this dish — open the pack RIGHT HERE
@@ -1193,5 +1199,59 @@ export function AccountOverlay({
         </div>
       </div>
     </div>
+  );
+}
+
+/**
+ * The other components of a compound meal, each with its own method.
+ *
+ * Collapsed by default and one at a time: the client opened this card for the
+ * meal, and five expanded methods is a wall rather than a recipe. The headline
+ * method stays open above — this is the tail, not a replacement for it.
+ */
+function ComponentRecipes({ items }: { items: AppComponentRecipe[] }) {
+  const [open, setOpen] = useState<number | null>(null);
+  if (!items.length) return null;
+  return (
+    <>
+      <div className="eyebrow" style={{ marginTop: 22 }}>
+        Also in this meal
+      </div>
+      <div className="divider-ochre" />
+      {items.map((c, i) => (
+        <div className="cr-item" key={`${c.title}-${i}`}>
+          <button
+            className="cr-head"
+            onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
+          >
+            <span className="cr-title">{c.title}</span>
+            {c.mins && <span className="cr-mins">{c.mins}</span>}
+            <span className="cr-chev">{open === i ? "\u2212" : "+"}</span>
+          </button>
+          {open === i && (
+            <div className="cr-body">
+              {c.ingredients.length > 0 && (
+                <div className="cr-ings">
+                  {c.ingredients.map((ing, k) => (
+                    <span className="food-pill" key={k}>
+                      {ing}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <ol className="recipe">
+                {c.method.map((step, k) => (
+                  <li key={k}>
+                    <span className="rn">{k + 1}</span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+        </div>
+      ))}
+    </>
   );
 }

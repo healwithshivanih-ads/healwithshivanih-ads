@@ -98,6 +98,30 @@ export async function generateGroceryListAction(
     /* fine — the menu alone is enough */
   }
 
+  // The CATALOGUE side of the pack, which the sidecar never carried.
+  //
+  // `-recipes.md` holds only the AI-generated recipes, and those are written
+  // solely for dishes whose HEADLINE component the catalogue could not answer.
+  // So for a lunch of "Jowar bhakri + Moong dal + Turai sabzi + Curd" the model
+  // got no ingredient list at all and had to infer both the ingredients and the
+  // quantities from the dish name. It still bought the turai — the whole dish
+  // string is on the menu it reads — but it sized it by guesswork.
+  //
+  // `data.recipePack` is already resolved PER COMPONENT by the app loader, so
+  // every matched component's real ingredient list is available here for free.
+  const packText = data.recipePack
+    .filter((r) => r.ingredients?.length)
+    .map((r) => {
+      const head = r.serves ? `### ${r.title} (serves ${r.serves})` : `### ${r.title}`;
+      return [head, ...r.ingredients.map((i) => `- ${i}`)].join("\n");
+    })
+    .join("\n\n");
+  if (packText) {
+    recipesText = recipesText
+      ? `${recipesText}\n\n## Catalogue recipes on this menu\n\n${packText}`
+      : `## Catalogue recipes on this menu\n\n${packText}`;
+  }
+
   const { dietaryPreference, foodsToAvoid, country } = await (async () => {
     try {
       const raw = await fs.readFile(

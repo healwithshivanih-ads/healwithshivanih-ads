@@ -2536,3 +2536,19 @@ video.ex-figure { display: block; height: auto; border-radius: 10px; background:
   font-size: 13px; font-weight: 600; color: rgba(240,201,138,.9);
   margin: 0 0 8px; text-align: center;
 }
+
+/* "Also in this meal" — the non-headline components of a compound dish, each
+   with its own method. Collapsed by default: the client came for the meal, and
+   five open methods is a wall. */
+.cr-item { border-bottom: 1px solid rgba(0,0,0,.07); }
+.cr-item:last-child { border-bottom: 0; }
+.cr-head {
+  width: 100%; display: flex; align-items: center; gap: 10px;
+  background: none; border: 0; padding: 13px 2px; cursor: pointer;
+  font: inherit; text-align: left; color: inherit;
+}
+.cr-title { font-weight: 600; font-size: 15px; flex: 1; }
+.cr-mins { font-size: 12px; color: var(--muted, #7a7267); }
+.cr-chev { font-size: 18px; color: var(--ochre); width: 16px; text-align: center; }
+.cr-body { padding: 0 2px 16px; }
+.cr-ings { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
