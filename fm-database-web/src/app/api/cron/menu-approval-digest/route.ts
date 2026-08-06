@@ -24,6 +24,7 @@ import nodemailer from "nodemailer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
 import { openRenewals } from "@/lib/fmdb/renewal-queue";
+import { splitByDraftWindow, draftDayLabel } from "@/lib/fmdb/menu-cadence";
 import {
   scanPlanChangesAction,
   listPlanChangeDraftsAction,
@@ -72,13 +73,33 @@ export async function POST(req: NextRequest) {
   await scanPlanChangesAction();
   const planChanges = await listPlanChangeDraftsAction();
 
-  if (actionable.length === 0 && renewals.length === 0 && planChanges.length === 0) {
-    return NextResponse.json({ ok: true, sent: 0, reason: "nothing actionable (queue empty or all on travel)" });
-  }
-
   const ready = actionable.filter((r) => r.pending);
-  const attention = actionable.filter((r) => !r.pending); // behind / due but not drafted
+  // Rows with no draft are two different things and must not share a heading.
+  // `stalled` is a real failure worth chasing (the drafter ran at 07:00, half
+  // an hour ago, and produced nothing). `scheduled` is simply not due yet —
+  // the digest looks 7 days out, the drafter acts within 3. Calling the second
+  // one a possible API-cap failure is what taught the coach to skim the
+  // section, which is how the first one gets missed.
+  const { stalled, scheduled } = splitByDraftWindow(actionable.filter((r) => !r.pending));
   const count = actionable.length;
+  // What the subject line and opening sentence should count: only the rows
+  // that actually want a decision from her. `scheduled` rows are reported, not
+  // asked about.
+  const needsYou = ready.length + stalled.length;
+
+  // Quiet-day guard, evaluated on `needsYou` rather than on the raw queue: a
+  // morning whose only menu rows are ones the drafter will handle by itself is
+  // a quiet morning, and mailing about it is the nag this whole section exists
+  // to stop. Renewals and plan-changes still force the mail — those are
+  // time-critical and nothing else watches them.
+  if (needsYou === 0 && renewals.length === 0 && planChanges.length === 0) {
+    return NextResponse.json({
+      ok: true,
+      sent: 0,
+      reason: "nothing needs the coach (queue empty, paused, or drafting on its own)",
+      scheduled: scheduled.length,
+    });
+  }
 
   // Monday (IST) is the coach's fixed approval day (2026-07-01) — emphasise it.
   const nowIst = new Date(Date.now() + 5.5 * 60 * 60 * 1000);
@@ -115,10 +136,22 @@ export async function POST(req: NextRequest) {
         .join("")}</ul>`,
     );
   }
-  if (attention.length) {
+  if (stalled.length) {
     sections.push(
-      `<p><strong>⏳ Needs attention (${attention.length})</strong> — due soon but no draft yet (may have failed or hit the API cap):</p><ul>${attention
+      `<p><strong>⚠️ Needs attention (${stalled.length})</strong> — due now but no draft came through (generation failed, or the API cap was hit):</p><ul>${stalled
         .map(row)
+        .join("")}</ul>`,
+    );
+  }
+  if (scheduled.length) {
+    sections.push(
+      `<p style="margin-top:22px;"><strong>🕒 Drafting on their own (${scheduled.length})</strong> — nothing to do; they're just not due yet:</p><ul>${scheduled
+        .map(
+          (r) =>
+            `<li>${esc(nameOf.get(r.clientId) || r.clientId)} — wk ${r.targetWeek} · drafts ${draftDayLabel(
+              r.daysToNextWeek,
+            )}</li>`,
+        )
         .join("")}</ul>`,
     );
   }
@@ -191,7 +224,9 @@ export async function POST(req: NextRequest) {
           ? `<p style="background:#d98324;color:#fff;padding:10px 14px;border-radius:8px;font-weight:600;">🗓 It's your weekly approval day — set aside 5 minutes to review and Approve all.</p>`
           : ""
       }
-      <p>${count} client menu${count === 1 ? "" : "s"} need your attention today.</p>
+      <p>${needsYou} client menu${needsYou === 1 ? "" : "s"} need${needsYou === 1 ? "s" : ""} you today${
+        scheduled.length ? `, and ${scheduled.length} more draft${scheduled.length === 1 ? "s" : ""} on its own this week` : ""
+      }.</p>
       ${sections.join("")}
       ${renewalHtml}
       ${planChangeHtml}
@@ -202,15 +237,23 @@ export async function POST(req: NextRequest) {
 
   const textBody =
     (isApprovalDay ? `🗓 MONDAY APPROVAL DAY — review and Approve all.\n\n` : "") +
-    `${count} client menu(s) need attention.\n\n` +
+    `${needsYou} client menu(s) need you.\n\n` +
     (ready.length
       ? `READY TO APPROVE:\n${ready
           .map((r) => `  - ${nameOf.get(r.clientId) || r.clientId} (wk ${r.targetWeek})`)
           .join("\n")}\n\n`
       : "") +
-    (attention.length
-      ? `NEEDS ATTENTION (no draft yet):\n${attention
+    (stalled.length
+      ? `NEEDS ATTENTION (due now, no draft came through):\n${stalled
           .map((r) => `  - ${nameOf.get(r.clientId) || r.clientId} (wk ${r.targetWeek})${r.behind ? " — current week missing" : ""}`)
+          .join("\n")}\n\n`
+      : "") +
+    (scheduled.length
+      ? `DRAFTING ON THEIR OWN (nothing to do):\n${scheduled
+          .map(
+            (r) =>
+              `  - ${nameOf.get(r.clientId) || r.clientId} (wk ${r.targetWeek}) — drafts ${draftDayLabel(r.daysToNextWeek)}`,
+          )
           .join("\n")}\n\n`
       : "") +
     (renewals.length
@@ -240,8 +283,8 @@ export async function POST(req: NextRequest) {
       from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
       to,
       subject: isApprovalDay
-        ? `🗓 Monday approval day — ${count} menu${count === 1 ? "" : "s"} to approve`
-        : `🗓 ${count} weekly menu${count === 1 ? "" : "s"} awaiting your approval`,
+        ? `🗓 Monday approval day — ${needsYou} menu${needsYou === 1 ? "" : "s"} to approve`
+        : `🗓 ${needsYou} weekly menu${needsYou === 1 ? "" : "s"} awaiting your approval`,
       html: htmlBody,
       text: textBody,
     });
@@ -256,6 +299,7 @@ export async function POST(req: NextRequest) {
     base: appUrl,
     queued: count,
     ready: ready.length,
-    attention: attention.length,
+    attention: stalled.length,
+    scheduled: scheduled.length,
   });
 }

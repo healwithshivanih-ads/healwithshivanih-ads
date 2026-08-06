@@ -18,6 +18,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { runShim } from "@/lib/fmdb/shim";
 import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
+import { DRAFT_WINDOW_DAYS } from "@/lib/fmdb/menu-cadence";
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +33,7 @@ export async function POST(req: NextRequest) {
   // client can't use on holiday.
   // `dormantDays` rows are listed for the dashboard but must never be drafted —
   // that's the whole point of the pause (see DORMANT_DAYS in weekly-menu.ts).
-  const due = (await weeklyMenuQueueAction(3)).filter(
+  const due = (await weeklyMenuQueueAction(DRAFT_WINDOW_DAYS)).filter(
     (r) => !r.pending && !r.onTravel && !r.dormantDays,
   );
   const results: { clientId: string; ok: boolean; error?: string }[] = [];
