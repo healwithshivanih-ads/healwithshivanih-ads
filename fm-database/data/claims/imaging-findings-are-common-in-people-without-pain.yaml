@@ -1,0 +1,44 @@
+slug: imaging-findings-are-common-in-people-without-pain
+statement: Structural findings routinely reported as abnormal on scans are common in people
+  with no pain at all — 96% of athletes under 22 show changes on MRI that get called
+  abnormal; 37% of pain-free 20-year-olds have disc degeneration in the spine; and 57% of
+  pain-free 20 to 50 year olds have cartilage and ligament tears at the hip.
+evidence_tier: strong
+rationale: Three separate imaging cohorts, in different populations and body regions,
+  agreeing on the same finding — that the presence of a structural change on a scan does
+  not distinguish people who hurt from people who do not. Lehman cites them as Rajaswaran
+  2014, Brinjikji 2015 and Tresch 2016. Tiered strong because the finding is replicated
+  across independent cohorts and is not seriously contested, not because of the workbook.
+coaching_translation: If a scan found something, that does not settle why you hurt. More than
+  a third of twenty-year-olds with no pain at all have disc degeneration, and over half of
+  pain-free adults have tears at the hip. These changes are so common in people who feel
+  fine that finding one cannot, on its own, explain your pain. Degeneration is closer to
+  wrinkles on the inside than to damage.
+caveats:
+- The three figures were read in Lehman's one-line summaries with author-year attributions;
+  the primary papers were NOT read. Re-tier and re-quote if anyone reads the originals.
+- This says imaging findings are POORLY DISCRIMINATING, not that they are never relevant.
+  In acute injury, and in specific presentations, a finding can matter a great deal.
+- It is emphatically not a reason to skip investigation. Deciding whether a scan is needed
+  is a clinician's call and sits outside coaching scope.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- osteoarthritis
+- joint-pain
+out_of_scope_notes: 'Interpreting a specific client''s scan report is outside coaching scope.
+  This claim is for reframing a belief the client already holds, never for telling them what
+  their own imaging means.'
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms:
+- chronic-pain
+- lower-back-pain
+- joint-pain
+sources:
+- id: lehman-recovery-strategies-2017
+  location: Section II, Key Messages, p 19 — "pain is poorly related to damage", the three
+    bulleted imaging statistics
+version: 1
+status: active
+updated_at: '2026-08-06'
+updated_by: Shivani

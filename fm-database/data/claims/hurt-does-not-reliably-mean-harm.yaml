@@ -1,0 +1,33 @@
+slug: hurt-does-not-reliably-mean-harm
+statement: Pain is defined as an experience associated with actual OR POTENTIAL tissue
+  damage, so the three combinations all occur — pain with damage, no pain despite
+  substantial damage, and a great deal of pain with minimal damage.
+evidence_tier: strong
+rationale: This is the definitional position, following the widely adopted definition of
+  pain that Lehman quotes, not a contested empirical finding. The consequence — that the
+  intensity of pain is not a readout of the amount of damage — follows directly from the
+  definition and is supported by the imaging evidence in the sibling claim.
+coaching_translation: Hurting and being harmed are not the same thing. People have broken
+  bones and felt almost nothing, and people have had a small strain and been floored by it
+  for days. How much something hurts does not tell you how much damage there is.
+caveats:
+- This is not a licence to ignore pain. New, severe, night-waking or unexplained pain needs
+  a clinician, and the point of the alarm is that it usually should be listened to.
+- It applies most strongly to persistent pain. In fresh injury the relationship between hurt
+  and harm is much closer.
+linked_to_topics:
+- chronic-pain-and-fatigue
+out_of_scope_notes: 'Judging whether a given pain is safe to work through is clinical. A
+  coach can carry the general message without applying it to a specific undiagnosed pain.'
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms:
+- chronic-pain
+- body-pain
+sources:
+- id: lehman-recovery-strategies-2017
+  location: Section I, p 7 — "Pain Defined", and Section II, p 19
+version: 1
+status: active
+updated_at: '2026-08-06'
+updated_by: Shivani

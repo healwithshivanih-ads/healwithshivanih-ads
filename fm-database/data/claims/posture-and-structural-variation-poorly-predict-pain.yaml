@@ -1,0 +1,39 @@
+slug: posture-and-structural-variation-poorly-predict-pain
+statement: The structural and functional faults commonly blamed for pain — posture, weak
+  core, tight muscles, glute weakness, leg-length difference, flat feet, altered movement
+  patterns — all exist in abundance in people who have no pain, and are poor predictors of
+  who hurts.
+evidence_tier: plausible_emerging
+rationale: Lehman's summary position across the Key Messages section — pretty much every
+  assumed dysfunction can be found in pain-free people, and the common biomedical
+  explanations have a poor relationship with pain. Argued as a synthesis rather than from a
+  single named trial, so it is tiered plausible_emerging. It earns its place here because it
+  governs what a coach should NOT tell a client.
+coaching_translation: You have probably been told your posture is bad, your core is weak or
+  your glutes do not fire. Those things are found just as often in people with no pain at
+  all. It is fine to get stronger and to move better, but you do not need to be fixed before
+  you are allowed to start, and there is no perfect way to sit or stand that you are failing
+  to achieve.
+caveats:
+- This does not say strength and movement quality are worthless — it says they are poor
+  EXPLANATIONS for pain. Strength work remains worth doing on its own merits.
+- Some findings matter for some people. The claim is about the population, not about
+  ruling out a specific mechanical problem in one client.
+- Continuing to believe an unchangeable structural feature is causing the pain can itself
+  obstruct recovery, which is the practical reason this claim matters.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- joint-pain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+linked_to_symptoms:
+- chronic-pain
+- lower-back-pain
+sources:
+- id: lehman-recovery-strategies-2017
+  location: Section II, Key Messages, p 26 — "altered function is poorly related to pain"
+version: 1
+status: active
+updated_at: '2026-08-06'
+updated_by: Shivani

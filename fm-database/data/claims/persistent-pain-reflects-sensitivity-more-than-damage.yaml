@@ -1,0 +1,42 @@
+slug: persistent-pain-reflects-sensitivity-more-than-damage
+statement: When pain persists it comes to reflect the sensitivity of the nervous system more
+  than the state of the tissue — the same input is amplified into a larger output, so pain
+  can continue, spread or flare long after the original tissue has healed.
+evidence_tier: plausible_emerging
+rationale: The biopsychosocial model of persistent pain, which Lehman notes has been in
+  clinical use for more than thirty years and which he presents as a synthesis rather than
+  as new work. It is the mainstream account of persistent pain and it changes what a coach
+  should say and prescribe. Tiered plausible_emerging rather than strong because the
+  workbook argues it as a model and this catalogue has not read the primary literature
+  behind it.
+coaching_translation: Pain is an alarm, and alarms can get more sensitive. A smoke alarm does
+  not tell you how big the fire is, and it can keep going off after the fire is out. When
+  pain has been around a long time, it is often telling you the alarm has got very good at
+  its job — not that you are being damaged all over again.
+caveats:
+- Never say this to a client as "the pain is in your head". It is not a psychological
+  diagnosis and it does not mean the pain is imagined; the pain is entirely real.
+- It applies to PERSISTENT pain. In acute injury the alarm is well related to the problem
+  and should be respected.
+- Serious pathology must be excluded first, by a clinician. The workbook itself opens with
+  that warning.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+out_of_scope_notes: 'Coaches educate and reframe. Diagnosing a pain mechanism, and excluding
+  the rare serious causes, belongs to the treating clinician.'
+linked_to_mechanisms:
+- central-sensitisation
+linked_to_supplements: []
+linked_to_symptoms:
+- chronic-pain
+- body-pain
+sources:
+- id: lehman-recovery-strategies-2017
+  location: Section I pp 14-15 (Sensitization) and Section II p 20 ("pain is more about
+    sensitivity than damage") and p 22 ("protection can be overamplified and persist past
+    healing")
+version: 1
+status: active
+updated_at: '2026-08-06'
+updated_by: Shivani
