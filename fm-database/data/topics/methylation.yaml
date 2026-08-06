@@ -1,13 +1,39 @@
 slug: methylation
-display_name: Methylation Support
+display_name: Methylation & MTHFR Support
 aliases:
 - one-carbon metabolism
 - methyl cycle
 - activated methyl cycle
 - MTHFR support
 - MTHFR
-summary: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG are framed as key methylation supports. Disrupted
-  methylation is linked to mood changes, elevated homocysteine, impaired histamine clearance, fatigue, and neurological symptoms.
+- methionine cycle
+- homocysteine methylation
+- A1298C
+- C677T
+- MTHFR SNP
+- MTHFR gene variants
+- MTHFR mutation
+- MTHFR polymorphism
+- MTHFR variant
+- dirty MTHFR
+- folate metabolism
+- methylation cycle dysfunction
+- methylation dysfunction
+- methylation master
+- methylation master gene
+- methylation-mthfr
+- methylenetetrahydrofolate reductase deficiency
+- mthfr-gene-variant
+- mthfr-methylation-gene
+- mthfr-methylation-support
+- mthfr-polymorphisms
+- mthfr-variants
+- folate-metabolism
+- methylation-cycle
+- mthfr-methylation
+summary: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG are
+  framed as key methylation supports. Disrupted methylation is linked to mood changes,
+  elevated homocysteine, impaired histamine clearance, fatigue, and neurological symptoms.
 common_symptoms:
 - lethargy
 - poor-concentration
@@ -17,6 +43,27 @@ common_symptoms:
 - poor-histamine-clearance
 - infertility
 - mood-changes-and-anxiety
+- functional-b12-deficiency-symptoms
+- fatigue
+- headaches
+- anxiety
+- recurrent-miscarriage
+- chemical-sensitivities
+- low-mood
+- depression
+- insomnia
+- irritability
+- cold-hands-feet
+- low-energy
+- chemical-sensitivity
+- poor-sleep
+- shortness-of-breath-on-exertion
+- exercise-induced-asthma
+- mood-swings-irritability-depression
+- alcohol-intolerance
+- fatigue-toxic-feeling
+- difficulty-falling-asleep
+- slow-to-calm-after-irritation
 red_flags:
 - irreversible neurological damage from B12 deficiency masked by high folate
 - severe developmental issues in newborns
@@ -33,24 +80,80 @@ related_topics:
 - thyroid
 - depression-like-symptoms
 - hair-loss
+- mthfr-polymorphisms
+- homocysteine-regulation
+- clean-genes-protocol
+- histamine-intolerance
+- liver-detoxification
+- estrogen-dominance
+- autoimmune-thyroid
+- comt-catechol-clearance
+- dao-histamine-metabolism
+- maoa-neurotransmitter-gene
+- homocysteine-cardiovascular-risk
+- comt-gene-catechol-clearance
+- dao-histamine-intolerance
+- histamine-intolerance-dao
+- comt-slow-catechol-clearance
+- nos3-nitric-oxide-cardiovascular
+- pemt-choline-cell-membrane
+- methylation-mthfr
+- riboflavin-and-blood-pressure
+- vitamin-b-complex-deficiency
+- folate-metabolism
 key_mechanisms:
 - methylation-cycle
 - mthfr-enzyme-dysfunction
-coaching_scope_notes: MTHFR and methylation framing is useful for client education; defer to clinician for MTHFR testing interpretation,
-  high-dose B-vitamin protocols, and pregnancy folate supplementation.
-evidence_tier: plausible_emerging
-clinician_scope_notes: MTHFR variant assessment, high-folate masking B12 deficiency risk, and high-dose niacin methylation
-  balance are clinical scope items.
+- homocysteine-remethylation
+- methyl-trap
+- methylation
+- methylation-cycle-dysfunction
+- elevated-homocysteine
+- glutathione-depletion
+- homocysteine-accumulation
+- folate-receptor-blockade-folic-acid
+- folate-trap
+- folate-activation
+- impaired-folate-to-5-mthf-conversion
+- histamine-metabolism
+coaching_scope_notes: MTHFR and methylation framing is useful for client education;
+  defer to clinician for MTHFR testing interpretation, high-dose B-vitamin protocols,
+  and pregnancy folate supplementation.
+evidence_tier: strong
+clinician_scope_notes: MTHFR variant assessment, high-folate masking B12 deficiency
+  risk, and high-dose niacin methylation balance are clinical scope items.
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Methylcobalamin / SAM section
-  quote: SAM is very necessary for the methylation of various biochemical reactions in the body, including the myelin production.
+  quote: SAM is very necessary for the methylation of various biochemical reactions
+    in the body, including the myelin production.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – methylation-support
-  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient supports for methylation.
+  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient
+    supports for methylation.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — methylation-support
-  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient supports for methylation.
+  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient
+    supports for methylation.
+- id: dirty-genes-lynch
+  location: Supplements — Week 1
+  quote: Just be sure that you're getting one with no folic acid, which—as you know
+    by now—can dirty your genes instead of clean them. Instead, choose a multivitamin
+    with methylfolate and folinic acid, which are the best forms of supplemental folate
+    available.
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: MTHFR (methylenetetrahydrofolate reductase) is a key enzyme in the methylation
+    cycle that converts folate (B9) into its active form, 5-MTHF.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: MTHFR section
+  quote: MTHFR is actually a very common genetic variant that causes this key enzyme
+    in the body to function at a lower than normal rate.
+- id: coach-shivani
+  location: Coach Observation
+  quote: MTHFR variants usually do not block B12 or folate absorption; they can reduce
+    conversion of folate into active 5-MTHF, which may impair B12 function and raise
+    homocysteine.
 version: 3
 status: active
 updated_at: '2026-05-06'
