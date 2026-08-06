@@ -1377,6 +1377,29 @@ type Dict = Record<string, unknown>;
 function asStr(v: unknown): string {
   return typeof v === "string" ? v : "";
 }
+/**
+ * A YAML date field as an ISO day string, whether YAML gave us a string or a Date.
+ *
+ * `plan_period_start: '2026-08-05'` (quoted) parses as a string; the same value
+ * written UNQUOTED parses as a JS Date, because js-yaml resolves the YAML
+ * timestamp type. `asStr()` returns "" for the Date, and every date-driven gate
+ * downstream then behaves as if the field were absent.
+ *
+ * That is not theoretical and it is not loud. A start date written unquoted by a
+ * Python-side edit (PyYAML emits `date` objects bare) left a published, started
+ * plan reading `notStarted: true` — the client app showed "your plan is getting
+ * ready … finalising your start date" indefinitely, with no error anywhere and
+ * correct-looking data in the file.
+ *
+ * Same family as the underscore-int trap: two YAML parsers, one file, different
+ * types out. Read defensively at the boundary rather than trusting every writer
+ * to quote.
+ */
+function asDayStr(v: unknown): string {
+  if (typeof v === "string") return v.trim();
+  if (v instanceof Date && !Number.isNaN(v.getTime())) return v.toISOString().slice(0, 10);
+  return "";
+}
 function asArr(v: unknown): unknown[] {
   return Array.isArray(v) ? v : [];
 }
@@ -5933,11 +5956,11 @@ export async function loadClientAppData(
   // DEFAULT (they don't show active content until the coach sets a start
   // date or makes the first menu live). plan_period_start is the authoring
   // anchor, NOT a "started" signal — so it is deliberately not a fallback here.
-  const _mealStart = asStr(plan.meal_plan_started_on)
-    ? new Date(`${asStr(plan.meal_plan_started_on)}T00:00:00Z`)
+  const _mealStart = asDayStr(plan.meal_plan_started_on)
+    ? new Date(`${asDayStr(plan.meal_plan_started_on)}T00:00:00Z`)
     : null;
-  const _ppsDate = asStr(plan.plan_period_start)
-    ? new Date(`${asStr(plan.plan_period_start)}T00:00:00Z`)
+  const _ppsDate = asDayStr(plan.plan_period_start)
+    ? new Date(`${asDayStr(plan.plan_period_start)}T00:00:00Z`)
     : null;
   const notStarted = !_mealStart || todayUTC.getTime() < _mealStart.getTime();
   // The future date to count down to on the hold screen: the confirmed meal
