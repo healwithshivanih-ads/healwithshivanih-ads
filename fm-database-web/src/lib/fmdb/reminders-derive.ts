@@ -14,6 +14,7 @@
  */
 
 import { timingSlot } from "@/lib/fmdb/client-app-format";
+import { remedySlots, REMEDY_SLOT_LABEL, type RemedySlot } from "@/lib/fmdb/remedy-slots";
 import { isGrowingTreeEnabled } from "@/app/app/[token]/growing-tree-flag";
 
 export interface DerivedReminder {
@@ -74,10 +75,40 @@ const MSQ_NUDGE_DAYS = 3;
  * window, then goes quiet; retaking closes the window and silences it
  * immediately. No baseline yet → no nudge (the card's CTA owns that ask).
  */
+/** Default IST clock time for each remedy slot. Deliberately NOT the meal
+ *  times above: a remedy sits beside a meal, so it fires a little after the
+ *  moment starts rather than competing with it. */
+const REMEDY_SLOT_TIME: Record<RemedySlot, string> = {
+  on_waking: "07:30",
+  mid_morning: "11:00",
+  after_lunch: "14:00",
+  mid_afternoon: "16:30",
+  after_dinner: "20:45",
+  bedtime: "21:45",
+};
+
+/** How many remedy reminders the app will offer at once. A notifications screen
+ *  with a dozen switches is a screen nobody configures; the earliest few are
+ *  the ones most easily forgotten. */
+export const REMEDY_REMINDER_MAX = 4;
+
 export function deriveReminders(
   plan: Record<string, unknown>,
   client: Record<string, unknown>,
-  opts?: { lastMsqDate?: string | null; todayIso?: string },
+  opts?: {
+    lastMsqDate?: string | null;
+    todayIso?: string;
+    /**
+     * The client's prescribed remedies WITH their catalogue timings.
+     *
+     * Passed in rather than read here: the plan stores bare slugs and this
+     * module is pure (it runs in the Fly app for display AND in the cron that
+     * fires the push). Both callers must supply the same list — an app that
+     * shows a reminder the cron cannot fire is worse than no reminder, which is
+     * the divergence this module already exists to prevent for supplements.
+     */
+    remedies?: { slug: string; name?: string; timing?: string }[];
+  },
 ): DerivedReminder[] {
   const protocol = Array.isArray(plan.supplement_protocol)
     ? (plan.supplement_protocol as Array<Record<string, unknown>>)
@@ -122,6 +153,43 @@ export function deriveReminders(
   }
 
   const capped = out.slice(0, treeOn ? 4 : 3);
+
+  // ── Per-remedy reminders ────────────────────────────────────────────────
+  // A remedy is the easiest thing on a plan to forget: it has no packet on the
+  // counter like a supplement and no hunger cue like a meal, and until now
+  // nothing reminded anyone about one. Each gets its own reminder at its own
+  // time, from the SAME parser that places it in the app's day — so a push can
+  // never fire at a time the screen does not show.
+  //
+  // OFF BY DEFAULT, and that is the important part. These are opt-in per
+  // remedy: a client on six remedies who was opted IN would get six extra
+  // pushes a day on top of supplements, and the reliable result of that is a
+  // muted app — which costs them the two reminders that were working.
+  //
+  // Capped as a set, not just individually: past REMEDY_REMINDER_MAX the app
+  // offers the earliest few rather than the whole list, because a notifications
+  // screen with a dozen switches is a screen nobody configures.
+  const remedyReminders: DerivedReminder[] = [];
+  const seenRemedy = new Set<string>();
+  for (const r of opts?.remedies ?? []) {
+    const slug = asStr(r.slug);
+    if (!slug || seenRemedy.has(slug)) continue;
+    seenRemedy.add(slug);
+    const slots = remedySlots(asStr(r.timing));
+    if (!slots.length) continue;           // no placeable time → no reminder
+    // One reminder at the FIRST time of day it is due. A remedy taken twice
+    // does not need two pushes to be remembered.
+    const slot = slots[0];
+    remedyReminders.push({
+      id: `remedy-${slug}-${slot}`,
+      label: `${asStr(r.name) || slug} — ${REMEDY_SLOT_LABEL[slot].toLowerCase()}`,
+      time: floorTime(REMEDY_SLOT_TIME[slot]),
+      cadence: "daily",
+      defaultOn: false,
+    });
+  }
+  remedyReminders.sort((a, b) => a.time.localeCompare(b.time));
+  capped.push(...remedyReminders.slice(0, REMEDY_REMINDER_MAX));
 
   // MSQ score-check nudge — transient (3 days per window), so it rides above
   // the standing-reminder cap rather than displacing a daily one.

@@ -251,6 +251,24 @@ import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
 import { clientNounToPronoun } from "./client-app-third-person";
 import { stripEvidenceHedging } from "./client-app-evidence-hedge";
 import { formatIngredientChip } from "./ingredient-chip";
+import { remedySlots, REMEDY_SLOT_LABEL } from "./remedy-slots";
+import { remediesForReminders } from "./remedy-reminder-source";
+
+/**
+ * The client-facing "when" label for a remedy — derived from the SAME parser
+ * that decides where it sits in the day, so the label and the position can
+ * never contradict each other.
+ *
+ * They did. `/bed|night/i` matched the word inside hibiscus tea's "avoid right
+ * at bedtime due to mild diuretic effect", so the app showed it at mid-morning
+ * (correct) with the subtitle "Bedtime" (the one time the entry names in order
+ * to forbid it). A client reading that has no idea when to drink it.
+ */
+function remedyWhenLabel(timing: string, fallback: string): string {
+  const slots = remedySlots(timing);
+  if (!slots.length) return fallback;
+  return slots.map((s) => REMEDY_SLOT_LABEL[s]).join(" · ");
+}
 
 export interface AppMealExtra {
   grad: string;
@@ -4426,7 +4444,10 @@ export async function loadClientAppData(
       supplementLike: isChuran && daily,
       suppSlot: bedtime ? "Bedtime" : "Morning",
       suppTiming: bedtime ? "Before bed" : "Morning",
-      when: bedtime ? "Bedtime" : /between meals|through the day/i.test(`${base.timing} ${blurb?.how ?? ""}`) ? "Between meals" : /morning/i.test(base.timing) ? "Morning" : "Daily",
+      when: remedyWhenLabel(
+        `${base.timing} ${blurb?.how ?? ""}`,
+        bedtime ? "Bedtime" : /between meals|through the day/i.test(`${base.timing} ${blurb?.how ?? ""}`) ? "Between meals" : /morning/i.test(base.timing) ? "Morning" : "Daily",
+      ),
       why: blurb?.what || firstSentence(base.summary),
       ...(asStr(remedyNotes[slug]).trim()
         ? { coachNote: clientifyPracticeDetail(asStr(remedyNotes[slug]).trim()) }
@@ -4531,7 +4552,10 @@ export async function loadClientAppData(
         avoidIn: [],
         assigned: true,
         daily: true,
-        when: bedtime ? "Bedtime" : /morning|waking/i.test(timing) ? "Morning" : "Daily",
+        when: remedyWhenLabel(
+          timing,
+          bedtime ? "Bedtime" : /morning|waking/i.test(timing) ? "Morning" : "Daily",
+        ),
         why: reason || firstSentence(prep || name),
         ...(beforeBreakfast ? { beforeBreakfast: true } : {}),
       });
@@ -5563,6 +5587,9 @@ export async function loadClientAppData(
   const reminders = effectiveReminders(
     deriveReminders(plan, client, {
       lastMsqDate: msqEntries.length ? msqEntries[msqEntries.length - 1].date : null,
+      // Resolved through the shared source so the app can never offer a switch
+      // for a push the cron does not send.
+      remedies: await remediesForReminders(plan),
     }),
     (await readOverrides(clientId)).overrides,
   );

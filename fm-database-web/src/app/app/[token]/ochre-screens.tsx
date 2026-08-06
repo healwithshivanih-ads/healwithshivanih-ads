@@ -7,6 +7,7 @@
 import { useState } from "react";
 import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
+import { remedySlots, type RemedySlot } from "@/lib/fmdb/remedy-slots";
 import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { MindBodyNudge } from "./ochre-eft";
 import { MindBodyEntryCard } from "./ochre-mind-body";
@@ -82,8 +83,15 @@ function usePhaseNow(hour: number): PhaseNow {
   const breath = practices.find((p) => /breath|4-7-8/i.test(p.name));
   const sun = practices.find((p) => /sunlight/i.test(p.name));
   const bedtimeSupps = supplements.filter((s) => s.slot === "Bedtime").map((s) => s.name.split(" (")[0]);
-  const bedtimeDrinks = remedies.filter((r) => r.assigned && r.daily && /bed/i.test(r.when ?? "")).map((r) => r.name.split(" (")[0]);
-  const betweenMealSips = remedies.filter((r) => r.assigned && r.daily && /between/i.test(r.when ?? "")).map((r) => r.name.split(" (")[0]);
+  // The last two hand-rolled timing tests, now on the shared parser. The old
+  // `/bed/i` matched "bedside" and `/between/i` missed every remedy that names
+  // its times instead of the phrase ("mid-morning, mid-afternoon, evening").
+  const inSlot = (s: RemedySlot) =>
+    remedies
+      .filter((r) => r.assigned && r.daily && remedySlots(r.timing || r.when || "").includes(s))
+      .map((r) => r.name.split(" (")[0]);
+  const bedtimeDrinks = inSlot("bedtime");
+  const betweenMealSips = [...new Set([...inSlot("mid_morning"), ...inSlot("mid_afternoon")])];
 
   if (hour < 11)
     return {
@@ -859,8 +867,50 @@ export function MealList({
 }) {
   const { meals, mealExtra, remedies } = useOchre();
   const drinks = remedies.filter((r) => r.assigned && r.daily && r.route !== "external" && !r.supplementLike);
-  const beforeBreakfastDrinks = drinks.filter((r) => r.beforeBreakfast);
-  const morning = drinks.filter((r) => r.when === "Morning" && !r.beforeBreakfast);
+
+  // THE DAY IN THE ORDER IT IS LIVED. Every remedy is placed at its own time
+  // (remedy-slots.ts, one shared parser) instead of listed separately for the
+  // client to cross-reference against the menu. Two rules keep it to one screen:
+  //
+  //   - a remedy whose slot ALREADY has a meal rides that meal's row, so
+  //     mid-morning tea appears with the mid-morning snack rather than twice;
+  //   - a remedy whose slot has no meal gets its own row, inserted in the right
+  //     place — on waking, after lunch, after dinner, before bed. Those four are
+  //     exactly the moments that had nowhere to live, which is how an
+  //     after-dinner remedy ended up written into the dinner slot as the meal.
+  //
+  // A slot with nothing in it renders nothing at all.
+  // PARSE `timing`, NOT `when`. `when` is a coarse display label — "Bedtime" |
+  // "Between meals" | "Morning" | "Daily" — already lossily derived from the
+  // catalogue text by another regex. Parsing the label loses everything it
+  // threw away: hibiscus tea ("mid-morning or afternoon") flattens to "Daily"
+  // and lands at the end of the day, after dinner, which is exactly where it
+  // should not be. `timing` is the catalogue's own words.
+  const slotsOf = (r: AppRemedy) => remedySlots(r.timing || r.when || "");
+  const bySlot = new Map<RemedySlot, AppRemedy[]>();
+  for (const r of drinks) {
+    for (const s of slotsOf(r)) {
+      const list = bySlot.get(s) ?? [];
+      if (!list.some((x) => x.slug === r.slug)) list.push(r);
+      bySlot.set(s, list);
+    }
+  }
+  // Which meal row (if any) each slot attaches to. Slots absent from this map
+  // stand alone; `after_*` deliberately follow their meal rather than merge.
+  const SLOT_ON_MEAL: Partial<Record<RemedySlot, RegExp>> = {
+    mid_morning: /mid.?morning/i,
+    mid_afternoon: /evening snack|mid.?afternoon|afternoon/i,
+  };
+  const slotsAfterMeal: [RegExp, RemedySlot][] = [
+    [/lunch/i, "after_lunch"],
+    [/dinner/i, "after_dinner"],
+  ];
+  const attachedSlots = new Set(Object.keys(SLOT_ON_MEAL) as RemedySlot[]);
+  const take = (s: RemedySlot) => bySlot.get(s) ?? [];
+  // Anything the parser could not place still has to reach the client — it goes
+  // after the meals rather than being dropped, because a remedy nobody can see
+  // is a remedy nobody takes.
+  const unplaced = drinks.filter((r) => slotsOf(r).length === 0);
   const placed = new Set<string>();
   const drinkRow = (r: AppRemedy) => {
     const id = "rx-" + r.slug;
@@ -895,10 +945,18 @@ export function MealList({
   };
   return (
     <div className="card" style={{ overflow: "hidden" }}>
-      {beforeBreakfastDrinks.map((r) => drinkRow(r))}
+      {/* On waking — before the first meal of the day. */}
+      {take("on_waking").map((r) => drinkRow(r))}
       {meals.map((m, i) => {
         const ex = mealExtra[m.slot];
-        const after = /breakfast/i.test(m.slot) ? morning : [];
+        // Remedies that ride this meal's own moment, and those that follow it.
+        const withMeal = ([...attachedSlots] as RemedySlot[])
+          .filter((s) => SLOT_ON_MEAL[s]?.test(m.slot))
+          .flatMap((s) => take(s));
+        const after = [
+          ...withMeal,
+          ...slotsAfterMeal.filter(([re]) => re.test(m.slot)).flatMap(([, s]) => take(s)),
+        ].filter((r, k, arr) => arr.findIndex((x) => x.slug === r.slug) === k);
         return (
           <div key={i}>
             <button className="meal-lite" onClick={() => openMeal(m.slot)}>
@@ -943,6 +1001,9 @@ export function MealList({
           </div>
         );
       })}
+      {/* Before bed — after everything else in the day. */}
+      {take("bedtime").map((r) => drinkRow(r))}
+      {unplaced.filter((r) => !placed.has(r.slug)).map((r) => drinkRow(r))}
       {drinks.filter((r) => !placed.has(r.slug)).map(drinkRow)}
     </div>
   );
