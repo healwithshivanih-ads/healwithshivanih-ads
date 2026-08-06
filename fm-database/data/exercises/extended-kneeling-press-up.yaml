@@ -1,0 +1,142 @@
+slug: extended-kneeling-press-up
+display_name: Extended Kneeling Press-Up
+client_name: Kneeling press-up, hands further forward
+aliases:
+- extended kneeling press up
+- three-quarter press-up
+- long kneeling press-up
+- box press-up extended
+modality: strength
+intensity_tier: beginner
+position: four_point
+equipment:
+- a mat or folded blanket
+summary: A kneeling press-up with the hands walked further forward, which lengthens the lever and adds
+  load without adding weight.
+why_it_works: With bodyweight you cannot change the resistance, so you change the leverage — the book's
+  own principle and the whole logic of the press-up ladder. Walking the hands forward from the kneeling
+  position moves the body's centre of mass further from the knees, so a greater share of it passes through
+  the arms. It is the missing rung between kneeling and a full press-up, which is otherwise a jump most
+  people cannot make.
+setup:
+- Kneel on a mat and place the hands on the floor slightly wider than the shoulders.
+- Walk the hands forward until the body makes a straight line from the head to the knees, with the hips
+  extended rather than piked.
+- The further forward the hands, the harder it gets. Start just beyond the kneeling position.
+steps:
+- Lower the chest towards the floor by bending the elbows, keeping them at about 45 degrees to the ribs
+  rather than flared wide.
+- Keep the body one straight line — the hips must not sag or pike up.
+- Go as low as control allows, then press back up.
+- Cross the ankles behind if it helps hold the line.
+levels:
+- level: '1'
+  prescription: 6 repetitions, hands just forward of kneeling, twice
+  reps: 6
+  sets: 2
+  support: hands close in
+- level: '2'
+  prescription: 10 repetitions with the hands further forward, twice
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 12 repetitions at near-full extension, three times
+  reps: 12
+  sets: 3
+  support: none
+frequency: 2-3x/week with a rest day between.
+builds:
+- chest, shoulder and triceps strength
+- the strength to reach a full press-up
+- trunk stiffness held under load
+easier_variant: kneeling-press-up
+harder_variant: standard-press-up
+movement_patterns:
+- push
+muscles_worked:
+- chest
+- triceps
+- shoulders
+- abdominals
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 0
+requires_floor_transfer: true
+joint_stress:
+- wrist_hand
+- elbow
+- shoulder
+- knee
+- lower_back
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: More of the body's weight passes through the shoulder than in the kneeling version.
+  modification: Walk the hands back towards the kneeling position, keep the elbows close to the ribs,
+    and stop short of any painful depth.
+- condition: wrist pain
+  condition_aliases:
+  - carpal tunnel
+  - wrist injury
+  - hand pain
+  - arthritis hands
+  severity: caution
+  reason: Load passes through an extended wrist and increases as the hands move forward.
+  modification: Press on fists to keep the wrist straight, or use `wall-press-up` instead, where the wrist
+    angle is far gentler.
+- condition: knee pain
+  condition_aliases:
+  - knee osteoarthritis
+  - knee injury
+  - knee replacement
+  - patellofemoral
+  - meniscus
+  - knee arthritis
+  severity: caution
+  reason: The knees bear weight against the floor throughout.
+  modification: Double the mat or fold a towel under the knees.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- musculoskeletal-health
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'THE MISSING RUNG. The ladder ran wall -> kneeling -> standard, and the gap between kneeling
+  and standard is the one most people stall at for months. This entry fills it and is wired in as `kneeling-press-up`''s
+  harder variant and `standard-press-up`''s easier one.
+
+
+  The adjustment is continuous, not stepped: how far forward the hands go IS the dial. That makes it unusually
+  easy to individualise — move them an inch at a time.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — press-up ladder (extended kneeling variant); leverage principle
+    from Chapter 4 preamble
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

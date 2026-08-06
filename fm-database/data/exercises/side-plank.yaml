@@ -1,0 +1,159 @@
+slug: side-plank
+display_name: Side Plank (Lateral Isometric Hold)
+client_name: Side hold
+aliases:
+- side plank
+- lateral plank
+- side hold
+- side bridge
+modality: strength
+intensity_tier: intermediate
+position: side_lying
+equipment:
+- a mat or folded blanket
+summary: Holding the body in a straight line on one forearm and the side of the feet or knees.
+why_it_works: The muscles down the side of the trunk are the ones that stop you buckling sideways, and
+  nothing else in this catalogue trains them. Gravity tries to drop the hips to the floor and the whole
+  side contracts to refuse. Like the front plank it is an anti-movement exercise, so the spine stays neutral
+  and neither bends nor twists under load.
+setup:
+- Lie on one side with the elbow directly under the shoulder and the forearm flat on the mat.
+- Stack the knees and feet, or bend the knees to 90 degrees for the easier version.
+- Lift the hips until the body is one straight line from head to knees or feet.
+steps:
+- Hold still, with the hips lifted and level — do not let them sag towards the floor or roll forward.
+- Keep the shoulder pulled away from the ear rather than sinking into it.
+- Look straight ahead so the neck stays in line with the spine.
+- Breathe normally. The hold ends when the line goes, not when the timer does. Change sides.
+levels:
+- level: '1'
+  prescription: hold 15 seconds from the knees, each side, twice
+  hold_seconds: 15
+  sets: 2
+  support: knees bent, weight on the knee rather than the foot
+- level: '2'
+  prescription: hold 20 seconds from the feet, each side, twice
+  hold_seconds: 20
+  sets: 2
+  support: none
+- level: '3'
+  prescription: hold 40 seconds each side, twice
+  hold_seconds: 40
+  sets: 2
+  support: none
+frequency: 3x/week.
+builds:
+- lateral trunk strength
+- hip stability
+- trunk stiffness that protects the lower back
+easier_variant: bird-dog
+harder_variant: null
+movement_patterns:
+- core_brace
+muscles_worked:
+- obliques
+- abdominals
+- shoulders
+- hip_abductors
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 2
+requires_floor_transfer: true
+joint_stress:
+- shoulder
+- elbow
+- hip
+- lower_back
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: hypertension
+  condition_aliases:
+  - high blood pressure
+  - raised blood pressure
+  - htn
+  - hypertensive
+  - uncontrolled hypertension
+  - preeclampsia
+  severity: caution
+  reason: A sustained isometric drives a pressor response for as long as it lasts, and holding the breath
+    against it raises blood pressure sharply — the warning this catalogue carries on every hold.
+  modification: Keep holds to 15 seconds, breathe audibly so the breath cannot be held, and rest fully
+    between sides. Do not prescribe while blood pressure is uncontrolled or unmeasured.
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: The entire body weight rests on ONE shoulder for the whole hold — double the load of a front
+    plank, on a single joint.
+  modification: Screen the shoulder before prescribing at all. Hold from the knees to reduce the load,
+    shorten the hold, and work only the unaffected side if one shoulder is the problem.
+- condition: hip pain
+  condition_aliases:
+  - hip osteoarthritis
+  - hip replacement
+  - hip bursitis
+  - trochanteric
+  - hip injury
+  severity: caution
+  reason: The down-side hip carries the load and the greater trochanter presses into the mat, which is
+    exactly where bursitis hurts.
+  modification: Double the mat under the hip, or skip this and use `bird-dog` instead.
+- condition: low back pain
+  condition_aliases:
+  - back pain
+  - lumbar pain
+  - disc herniation
+  - slipped disc
+  - sciatica
+  severity: caution
+  reason: If the side cannot hold the line the hips drop and the load transfers to the lower back.
+  modification: Hold from the knees and stop the moment the hips start to sag. A short well-held position
+    beats a long collapsing one.
+refer_out: []
+linked_to_topics:
+- osteoporosis
+- bone-health
+- musculoskeletal-health
+linked_to_symptoms:
+- back-pain
+- muscle-weakness
+notes_for_coach: 'THE STEP `forearm-plank` ALREADY POINTS AT. That entry''s notes say side plank is the
+  sensible next move but the shoulder must be screened first — this entry exists to be that step, and
+  it carries a deliberately stronger shoulder caution than the front plank because the load goes through
+  one joint rather than two.
+
+
+  The fourth spine-neutral core entry and the only one training the lateral axis. `bird-dog` is set as
+  its easier variant: same spine-neutral principle, far less shoulder load, and no single-sided weight
+  bearing.
+
+
+  The book''s rotating and twisting side-plank variants were NOT taken — they add loaded spinal rotation,
+  which is the other osteoporosis red line.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — Core, plank family (side variants)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

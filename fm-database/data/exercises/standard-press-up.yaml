@@ -49,7 +49,7 @@ builds:
 - chest, shoulder and arm strength
 - trunk stiffness under load
 - upper-body pushing power
-easier_variant: kneeling-press-up
+easier_variant: extended-kneeling-press-up
 harder_variant: null
 joint_stress:
 - shoulder

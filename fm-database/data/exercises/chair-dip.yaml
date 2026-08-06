@@ -1,0 +1,142 @@
+slug: chair-dip
+display_name: Chair Dip (Elevated Triceps Dip)
+client_name: Dips off a chair
+aliases:
+- chair dip
+- bench dip
+- tricep dip
+- seated dip
+- box dip
+modality: strength
+intensity_tier: intermediate
+position: seated
+equipment:
+- a stable chair, low table or step that will not slide
+summary: Lowering and pressing the body up with the hands behind on a raised surface — the rung above
+  a floor dip.
+why_it_works: Raising the hands behind the body puts the triceps and the front of the shoulder in a position
+  they get almost nowhere else, and moving the feet away increases the share of bodyweight the arms must
+  lift. It trains exactly the pattern used to push up out of a chair or a bath, which is why it earns
+  its place beyond the aesthetic.
+setup:
+- Sit on the front edge of a stable chair and grip the edge either side of the hips, fingers pointing
+  forward.
+- Walk the feet out and slide the hips forward off the seat, taking the weight on the hands.
+- CHECK THE CHAIR CANNOT SLIDE. Against a wall is safest.
+steps:
+- Bend the elbows to lower the hips towards the floor, keeping them pointing backwards rather than flaring
+  out.
+- Keep the back close to the chair — drifting forward turns it into a shoulder strain.
+- Lower only as far as comfortable, and no further than the upper arms reaching parallel with the floor.
+- Press back up through the heels of the hands until the arms are straight but not locked.
+levels:
+- level: '1'
+  prescription: 6 shallow dips with the knees bent and feet close, twice
+  reps: 6
+  sets: 2
+  support: knees bent, feet close in, small range
+- level: '2'
+  prescription: 10 dips with the knees bent, twice
+  reps: 10
+  sets: 2
+  support: knees bent
+- level: '3'
+  prescription: 12 dips with the legs straight out, three times
+  reps: 12
+  sets: 3
+  support: none
+frequency: 2-3x/week with a rest day between.
+builds:
+- triceps and front-shoulder strength
+- the strength to push up out of a chair or bath
+- wrist and grip tolerance
+easier_variant: floor-dip
+harder_variant: null
+movement_patterns:
+- push
+muscles_worked:
+- triceps
+- shoulders
+- chest
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 1
+requires_floor_transfer: false
+joint_stress:
+- shoulder
+- elbow
+- wrist_hand
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: shoulder pain
+  condition_aliases:
+  - rotator cuff
+  - frozen shoulder
+  - shoulder impingement
+  - adhesive capsulitis
+  - shoulder injury
+  severity: caution
+  reason: The dip position puts the shoulder into extension under load, which is a common impingement
+    provoker and the reason this movement is often the first to hurt.
+  modification: Keep the range very shallow, stay close to the chair, and stop at the first pinch. If
+    the shoulder is symptomatic at all, use `wall-press-up` instead — this is not the exercise to work
+    through.
+- condition: wrist pain
+  condition_aliases:
+  - carpal tunnel
+  - wrist injury
+  - hand pain
+  - arthritis hands
+  severity: caution
+  reason: The wrist is extended and loaded behind the body, which is a more awkward angle than a press-up.
+  modification: Use parallel handles or the edge of a step so the hand can sit in a more neutral line,
+    and reduce the range.
+- condition: elbow pain
+  condition_aliases:
+  - tennis elbow
+  - golfers elbow
+  - epicondylitis
+  - elbow injury
+  severity: caution
+  reason: The triceps attachment at the elbow takes the whole load at the bottom of the movement.
+  modification: Shorten the range and reduce the repetitions.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- musculoskeletal-health
+linked_to_symptoms:
+- muscle-weakness
+notes_for_coach: 'THE RUNG ABOVE `floor-dip`, and wired as its harder variant. Unlike the floor version
+  it needs no floor transfer, which makes it available to a client who cannot get down to the mat — worth
+  remembering, because it is one of very few upper-body strength options for that group.
+
+
+  THE SHOULDER CAUTION IS THE STRONGEST ON ANY PUSHING ENTRY, and deliberately so. Shoulder extension
+  under load is where this movement bites, and it bites early. Screen before prescribing.
+
+
+  CHAIR STABILITY IS A REAL HAZARD, not a formality — a chair on a hard floor slides. Put it against a
+  wall.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — the dip ladder
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

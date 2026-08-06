@@ -1,0 +1,139 @@
+slug: split-squat
+display_name: Split Squat (Static Lunge)
+client_name: Split squat
+aliases:
+- split squat
+- static lunge
+- stationary lunge
+- stationary split squat
+modality: strength
+intensity_tier: intermediate
+position: standing
+equipment:
+- a chair or wall within reach for balance
+summary: A lunge held in one place — the feet stay put and only the body moves up and down.
+why_it_works: 'A forward lunge asks two things at once: load one leg hard, and control a step. Splitting
+  them apart is the whole point of this entry. With the feet already planted the balance demand drops
+  sharply while the strength demand stays, so a client can build single-leg strength months before they
+  can safely step into a lunge. It is the rung between a two-legged squat and a moving lunge.'
+setup:
+- Take a long stride forward so one foot is well ahead of the other, both pointing forward.
+- Rise onto the ball of the back foot and stand tall.
+- Rest a hand on a chair or wall until the position feels steady.
+steps:
+- Lower straight down by bending both knees, as if dropping between the feet rather than travelling forward.
+- The back knee heads towards the floor; the front shin stays close to upright.
+- Stop before the back knee touches, then press up through the front heel.
+- Complete the repetitions on one side, then change legs. The feet do not move at all.
+levels:
+- level: '1'
+  prescription: 6 shallow repetitions each leg with a hand on a chair, twice
+  reps: 6
+  sets: 2
+  support: one hand on a chair, small range
+- level: '2'
+  prescription: 10 repetitions each leg, no support
+  reps: 10
+  sets: 2
+  support: none
+- level: '3'
+  prescription: 12 repetitions each leg to a deeper range, twice
+  reps: 12
+  sets: 2
+  support: none
+frequency: 2-3x/week with a rest day between.
+builds:
+- single-leg strength
+- hip and thigh strength for stairs and slopes
+- the strength a forward lunge needs before it is safe
+easier_variant: bodyweight-squat
+harder_variant: forward-lunge
+movement_patterns:
+- lunge
+muscles_worked:
+- quadriceps
+- glutes
+- hamstrings
+loads_spine: false
+spinal_flexion: false
+loaded_spinal_rotation: false
+overhead: false
+impact: none
+balance_demand: 2
+requires_floor_transfer: false
+joint_stress:
+- knee
+- hip
+- ankle_foot
+cautions:
+- condition: post-exertional malaise
+  condition_aliases:
+  - long covid
+  - long-covid
+  - me/cfs
+  - chronic fatigue
+  - post-viral fatigue
+  - pem
+  - myalgic encephalomyelitis
+  severity: block
+  reason: NICE NG206 withdrew graded exercise therapy for ME/CFS, and every level ladder here is a progression
+    schedule.
+  modification: ''
+- condition: knee pain
+  condition_aliases:
+  - knee osteoarthritis
+  - knee injury
+  - knee replacement
+  - patellofemoral
+  - meniscus
+  - knee arthritis
+  severity: caution
+  reason: Both knees are loaded through a large range, and the front knee takes most of the bodyweight.
+  modification: Keep the range shallow, make sure the front shin stays close to upright rather than travelling
+    far over the toes, and use the chair. Stop at any pain at the front of the knee.
+- condition: balance problems
+  condition_aliases:
+  - falls
+  - unsteady
+  - dizziness
+  - vertigo
+  - fall risk
+  - poor balance
+  severity: caution
+  reason: A split stance is narrow front-to-back and asks the ankle and hip to hold a line.
+  modification: Keep a hand on a solid chair or the wall throughout, and widen the stance slightly side-to-side
+    for a broader base.
+- condition: hip replacement
+  condition_aliases:
+  - hip arthroplasty
+  - thr
+  - total hip replacement
+  - hip precautions
+  severity: caution
+  reason: The deep range can take the hip beyond post-surgical precautions.
+  modification: Keep the range shallow and check the surgical team's limits on hip flexion before going
+    deeper.
+refer_out: []
+linked_to_topics:
+- sarcopenia
+- musculoskeletal-health
+- falls-prevention
+linked_to_symptoms:
+- muscle-weakness
+- joint-pain
+notes_for_coach: 'THE RUNG BETWEEN THE SQUAT AND THE LUNGE, and wired both ways. `forward-lunge` demands
+  strength AND a controlled step simultaneously, which is why clients fail it — this entry removes the
+  step so the strength can be built first.
+
+
+  `balance_demand: 2` is recorded at the HARDEST level, per the field''s rule, which is the unsupported
+  deep version. Level 1 with a hand on a chair is far less demanding, so do not let the screen''s caution
+  rule out the supported form for someone who could manage it.'
+sources:
+- id: martinoli-5-minute-fitness-2011
+  location: Chapter 4, Index of Exercises — the squat family and lunges
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-08-04'
+updated_by: Shivani

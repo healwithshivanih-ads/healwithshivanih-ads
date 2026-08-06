@@ -50,7 +50,7 @@ builds:
 - shoulder stability behind the body
 - arm strength for pushing up out of a chair
 easier_variant: null
-harder_variant: null
+harder_variant: chair-dip
 joint_stress:
 - shoulder
 - wrist_hand
