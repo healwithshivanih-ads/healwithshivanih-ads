@@ -252,6 +252,7 @@ import { clientNounToPronoun } from "./client-app-third-person";
 import { stripEvidenceHedging } from "./client-app-evidence-hedge";
 import { formatIngredientChip } from "./ingredient-chip";
 import { remedySlots, REMEDY_SLOT_LABEL } from "./remedy-slots";
+import { remediesForReminders } from "./remedy-reminder-source";
 
 /**
  * The client-facing "when" label for a remedy — derived from the SAME parser
@@ -5586,6 +5587,9 @@ export async function loadClientAppData(
   const reminders = effectiveReminders(
     deriveReminders(plan, client, {
       lastMsqDate: msqEntries.length ? msqEntries[msqEntries.length - 1].date : null,
+      // Resolved through the shared source so the app can never offer a switch
+      // for a push the cron does not send.
+      remedies: await remediesForReminders(plan),
     }),
     (await readOverrides(clientId)).overrides,
   );

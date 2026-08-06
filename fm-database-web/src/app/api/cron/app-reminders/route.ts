@@ -27,6 +27,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { deriveReminders, effectiveReminders } from "@/lib/fmdb/reminders-derive";
+import { remediesForReminders } from "@/lib/fmdb/remedy-reminder-source";
 import { readOverrides, readFired, writeFired } from "@/lib/fmdb/reminders-server";
 import { sendPushToClient, pushStatus } from "@/lib/fmdb/push-server";
 
@@ -167,7 +168,12 @@ export async function POST(req: NextRequest) {
 
     const { token, overrides } = await readOverrides(clientId);
     const reminders = effectiveReminders(
-      deriveReminders(plan, client, { lastMsqDate: await lastMsqDate(clientId), todayIso: clientToday }),
+      deriveReminders(plan, client, {
+        lastMsqDate: await lastMsqDate(clientId),
+        todayIso: clientToday,
+        // Same source the app uses — see remedy-reminder-source.ts.
+        remedies: await remediesForReminders(plan),
+      }),
       overrides,
     );
     if (reminders.length === 0) continue;

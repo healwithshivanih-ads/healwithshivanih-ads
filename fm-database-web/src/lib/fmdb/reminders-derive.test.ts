@@ -9,7 +9,7 @@
  * (reminder bucket vs the slot the app renders) is the point of this file.
  */
 import { describe, it, expect } from "vitest";
-import { deriveReminders, effectiveReminders, EARLIEST_TIME } from "./reminders-derive";
+import { deriveReminders, effectiveReminders, EARLIEST_TIME, REMEDY_REMINDER_MAX } from "./reminders-derive";
 import { timingSlot } from "./client-app-format";
 
 const plan = (...timings: string[]) => ({
@@ -147,3 +147,60 @@ describe("deriveReminders — MSQ score-check nudge", () => {
     expect(ids).toContain("msq");
   });
 });
+
+/* ── Per-remedy reminders ────────────────────────────────────────────────────
+   A remedy is the easiest thing on a plan to forget — no packet on the counter,
+   no hunger cue — and nothing reminded anyone about one until now. */
+describe("deriveReminders — remedies", () => {
+  const R = (slug: string, name: string, timing: string) => ({ slug, name, timing });
+
+  it("offers one reminder per remedy, at its own time", () => {
+    const out = deriveReminders(plan("with breakfast"), CLIENT, {
+      remedies: [R("soaked-methi-water", "Methi water", "First thing in the morning, on an empty stomach")],
+    });
+    const r = out.find((x) => x.id.startsWith("remedy-"));
+    expect(r?.label).toContain("Methi water");
+    expect(r?.time).toBe("07:30");
+  });
+
+  it("is OFF by default — six remedies must not become six new pushes", () => {
+    // A client opted IN to everything gets a muted app, which costs them the
+    // reminders that were working.
+    const out = deriveReminders(plan("with breakfast"), CLIENT, {
+      remedies: [R("golden-milk", "Golden Milk", "Bedtime is traditional")],
+    });
+    expect(out.find((x) => x.id.startsWith("remedy-"))?.defaultOn).toBe(false);
+  });
+
+  it("fires ONCE for a remedy taken more than once a day", () => {
+    const out = deriveReminders(plan("with breakfast"), CLIENT, {
+      remedies: [R("ccf", "CCF Tea", "Best between meals (mid-morning, mid-afternoon, evening)")],
+    });
+    expect(out.filter((x) => x.id.startsWith("remedy-"))).toHaveLength(1);
+  });
+
+  it("skips a remedy whose timing names no time", () => {
+    const out = deriveReminders(plan("with breakfast"), CLIENT, {
+      remedies: [R("x", "As-needed thing", "As needed")],
+    });
+    expect(out.filter((x) => x.id.startsWith("remedy-"))).toHaveLength(0);
+  });
+
+  it("caps how many it offers at once", () => {
+    const many = Array.from({ length: 9 }, (_, i) =>
+      R(`r${i}`, `Remedy ${i}`, "Bedtime"),
+    );
+    const out = deriveReminders(plan("with breakfast"), CLIENT, { remedies: many });
+    expect(out.filter((x) => x.id.startsWith("remedy-")).length).toBeLessThanOrEqual(
+      REMEDY_REMINDER_MAX,
+    );
+  });
+
+  it("never schedules before the earliest allowed time", () => {
+    const out = deriveReminders(plan("with breakfast"), CLIENT, {
+      remedies: [R("m", "Methi water", "on an empty stomach on waking")],
+    });
+    for (const r of out) expect(r.time >= EARLIEST_TIME).toBe(true);
+  });
+});
+
