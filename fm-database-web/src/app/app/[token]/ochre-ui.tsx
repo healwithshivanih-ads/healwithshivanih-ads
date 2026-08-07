@@ -65,6 +65,20 @@ const TABS = [
   { id: "coach", label: "Coach", icon: "coach" },
 ];
 
+/**
+ * Practices sits immediately after Today for every non-discovery tier.
+ *
+ * Slot order is what gets used: Today is where a client lands, and the tab
+ * beside it is the one they open next. Practices — movement, breathing, the
+ * somatic resets — is the thing they are meant to DO, and it was sitting in
+ * slot four behind two reference tabs. Plan and Progress are read, not done.
+ *
+ * Discovery keeps the original order because its slot four is genuinely Labs,
+ * and lab booking IS that tier's flow.
+ */
+const TAB_ORDER = ["today", "labs", "plan", "progress", "coach"];
+const NAV_TABS = TAB_ORDER.map((id) => TABS.find((t) => t.id === id)!);
+
 export function BottomNav({
   active,
   onChange,
@@ -85,7 +99,7 @@ export function BottomNav({
 }) {
   return (
     <nav className="bottomnav">
-      {TABS.map((t) => (
+      {(discovery ? TABS : NAV_TABS).map((t) => (
         <button key={t.id} className={"tab" + (active === t.id ? " active" : "")} onClick={() => onChange(t.id)}>
           <span className="ic">
             {/* Slot 4 is Practices for everyone except discovery, whose flow IS

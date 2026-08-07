@@ -258,7 +258,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         },
         "exercise_suggestions": {
             "type": "array",
-            "description": "The client's movement session: catalogue exercises done together, IN THIS ORDER. Order is clinical — warm-up first, balance work next, strength last, a cool-down if you include one. Keep it to 4-8 entries; this is one session a person actually sits down to do, not a wish-list. Every entry is screened against the client's record AFTER you answer, and anything unsafe is dropped without asking you — so suggest on clinical merit and do not try to pre-guess the screen. Leave empty when movement is not part of this plan.",
+            "description": "The client's movement session: catalogue exercises done together, IN THIS ORDER. Order is clinical — warm-up first, balance work next, strength last, a cool-down if you include one — and grouped by `position`, so all the standing work runs together and all the floor work runs together (see rule 32). Keep it to 4-8 entries; this is one session a person actually sits down to do, not a wish-list. Every entry is screened against the client's record AFTER you answer, and anything unsafe is dropped without asking you — so suggest on clinical merit and do not try to pre-guess the screen. Leave empty when movement is not part of this plan.",
             "items": {
                 "type": "object",
                 "required": ["exercise", "rationale"],
@@ -1634,6 +1634,19 @@ HARD RULES (violating these breaks the downstream system):
       work next, strength last, cool-down if you use one. The order is the
       prescription — a warm-up listed after the strength work is a different
       instruction.
+    - KEEP THE SESSION IN ONE POSITION AT A TIME. Every option carries its
+      `position`. Standing and walking entries belong together, seated entries
+      together, and everything on the floor (`lying_supine`, `lying_prone`,
+      `side_lying`, `four_point`) in one unbroken block — normally last, since
+      getting down and back up is the transition worth spending once. A session
+      that runs sit-to-stand → floor bridge → heel raises → bird-dog is four
+      good picks and an unusable half hour: the client is up and down off the
+      mat three times for no clinical reason, and that is the session people
+      quietly stop doing. Order within a block on clinical merit as above
+      (mobility, then balance, then strength); `any_position` entries fit
+      wherever they read best and never force a change of position. This is
+      convenience, never a reason to weaken the session — if the right work is
+      genuinely split across positions, keep the work and group it.
     - BALANCE THE SESSION ACROSS `patterns`. Every option carries its movement
       patterns (push/pull/squat/hinge/lunge/core_brace/core_flex/rotation/
       balance/gait/jump/mobility) and the muscles it works. A whole-body session
@@ -2119,7 +2132,17 @@ def synthesize(
                         if not s.level and levels.get(s.exercise):
                             s.level = str(levels[s.exercise])
                         survivors.append(s)
-                    suggestions.exercise_suggestions = survivors
+                    # Cluster the session by body position AFTER the screen, so
+                    # the client gets down to the floor once instead of four
+                    # times. Deliberately not left to the prompt alone — see the
+                    # module docstring; ordering guidance in prose is followed
+                    # most of the time, and the failure mode of "most of the
+                    # time" is a client who quietly stops doing the session.
+                    # Pure and total: it can reorder, never drop.
+                    from ..plan.exercise_order import group_by_position
+                    suggestions.exercise_suggestions = group_by_position(
+                        survivors, _exercise_dicts()
+                    )
                     suggestions.exercises_withheld = gated.dropped_slugs
                 except Exception:
                     # The gate is the safety surface; if it cannot run, no
