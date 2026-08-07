@@ -29,12 +29,25 @@ import { getCataloguePath } from "./paths";
 import { clientFacingSummary } from "./client-facing-text";
 import { tracedFigureSvg } from "./exercise-figure-traced";
 import { exerciseVideoSrc } from "./exercise-video";
+import { stepFigureSvgs } from "./exercise-step-figures";
 
 export interface ExerciseStep {
   /** One instruction line. Setup lines come first, then the movement steps. */
   text: string;
   /** true for the setup lines — rendered as "before you start". */
   setup: boolean;
+  /**
+   * A figure for THIS step, where the entry is a sequence of different
+   * movements rather than one movement.
+   *
+   * Only the warm-up and cool-down have these. Everything else is one movement
+   * and its single figure sits above the steps, which is right — repeating it
+   * beside every line would add nothing.
+   */
+  figureSvg?: string | null;
+  /** A clip for THIS step, where a still plus an arrow cannot carry it — the
+   *  warm-up's trunk turn is axial rotation, which no drawn figure has managed. */
+  videoSrc?: string | null;
 }
 
 export interface AppExerciseItem {
@@ -151,16 +164,28 @@ function pickLevel(entry: Dict, wanted: string | null): Dict | null {
 }
 
 /** Setup lines then movement steps, flattened into one ordered list. */
-function buildSteps(entry: Dict): ExerciseStep[] {
+function buildSteps(entry: Dict, slug: string): ExerciseStep[] {
   const out: ExerciseStep[] = [];
   for (const s of asArr(entry.setup)) {
     const text = asStr(s).trim();
     if (text) out.push({ text, setup: true });
   }
-  for (const s of asArr(entry.steps)) {
+  // Indexed against the entry's OWN steps list, before empty lines are dropped,
+  // so a blank line in the YAML cannot shift every figure onto the wrong step.
+  const raw = asArr(entry.steps);
+  const figures = stepFigureSvgs(slug, raw.length);
+  raw.forEach((s, i) => {
     const text = asStr(s).trim();
-    if (text) out.push({ text, setup: false });
-  }
+    if (text) {
+      const vis = figures?.[i];
+      out.push({
+        text,
+        setup: false,
+        ...(vis?.svg ? { figureSvg: vis.svg } : {}),
+        ...(vis?.video ? { videoSrc: vis.video } : {}),
+      });
+    }
+  });
   return out;
 }
 
@@ -193,7 +218,7 @@ export function deriveExerciseSessions(
 
       const wanted = asStr(p.level).trim() || null;
       const lv = pickLevel(entry, wanted);
-      const steps = buildSteps(entry);
+      const steps = buildSteps(entry, slug);
       // No steps means nothing to show but a title. The catalogue requires them,
       // but the app must not depend on that holding.
       if (steps.length === 0) continue;
