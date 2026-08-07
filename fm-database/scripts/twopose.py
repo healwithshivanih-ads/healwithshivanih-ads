@@ -31,9 +31,20 @@ def _masks(frames, w=180, h=360):
     """
     off = [(f.get("rx", 0.0), f.get("ry", 0.0)) for f in frames]
     off = [(o[0] - off[0][0], o[1] - off[0][1]) for o in off]
+
+    # BOTH LAYERS FEED THE SILHOUETTE. This rasterises from path bounding boxes,
+    # which approximates a figure well when it is 40 small regions and terribly
+    # when it is one. A two-layer trace has a single body path, so on its own it
+    # rasterises to a filled RECTANGLE — and two rectangles differ by almost
+    # nothing however different the poses are. Measured: a knee bend that plainly
+    # moves scored 10%. The linework restores the internal shape the measure
+    # needs.
+    def _all(f):
+        return list(f["paths"]) + list(f.get("lines", ()))
+
     xs, ys = [], []
     for f, (ox, oy) in zip(frames, off):
-        for p in f["paths"]:
+        for p in _all(f):
             a, b, c, d = p["bbox"]
             xs += [a + ox, c + ox]; ys += [b + oy, d + oy]
     if not xs:
@@ -44,7 +55,7 @@ def _masks(frames, w=180, h=360):
     out = []
     for f, (ox, oy) in zip(frames, off):
         m = np.zeros((h, w), bool)
-        for p in f["paths"]:
+        for p in _all(f):
             a, b, c, d = p["bbox"]
             a, c = a + ox, c + ox
             b, d = b + oy, d + oy
@@ -70,7 +81,8 @@ def extremes(frames):
 # --- acceptance gate ---------------------------------------------------------
 MIN_CHANGE = 0.13      # below this the two poses are the same picture
 MAX_CHANGE = 0.72      # above this they are probably not the same body
-MIN_PATHS = 20         # a frame traced this thin has lost its anatomy
+MIN_PATHS = 20         # a REGION-traced frame this thin has lost its anatomy
+MIN_LINES = 6          # a LINE-ART frame with less detail than this has lost it
 
 
 def accept(slug, frames, single_pose_source=False):
@@ -103,9 +115,26 @@ def accept(slug, frames, single_pose_source=False):
         reasons.append(f"poses differ by only {change:.0%} — movement not visible")
     if change > MAX_CHANGE and not single_pose_source:
         reasons.append(f"poses differ by {change:.0%} — likely not the same body")
-    thin = [k + 1 for k, f in enumerate((frames[i], frames[j])) if len(f["paths"]) < MIN_PATHS]
+    # THE THRESHOLD IS PER TRACE TYPE, because "too thin" means different things.
+    #
+    # A region trace spreads a figure across 35-60 filled paths, so dropping below
+    # MIN_PATHS means anatomy was genuinely lost. A two-layer trace is ONE body
+    # path plus its linework by construction — the body is never lost, and what
+    # would be missing is the detail. Judging it against the region count rejects
+    # perfectly good figures: measured, five line-art sheets scored 9 to 22 and
+    # all five were fine. So each form is held to the count that is meaningful
+    # for it, rather than the guard being loosened for everyone.
+    def _detail(f):
+        return len(f["paths"]) + len(f.get("lines", ()))
+
+    def _too_thin(f):
+        if f.get("lines"):
+            return len(f["lines"]) < MIN_LINES
+        return len(f["paths"]) < MIN_PATHS
+
+    thin = [k + 1 for k, f in enumerate((frames[i], frames[j])) if _too_thin(f)]
     if thin:
-        counts = [len(frames[i]["paths"]), len(frames[j]["paths"])]
+        counts = [_detail(frames[i]), _detail(frames[j])]
         reasons.append(f"chosen frames traced too thin ({counts} paths)")
     # the two chosen frames should be a similar size; a big disparity means the
     # split gave one frame someone else's limb

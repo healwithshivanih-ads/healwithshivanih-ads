@@ -25,24 +25,22 @@ not by stripping the ground line. Stripping was the first attempt and does not
 work: a ground line is wide and thin, but so is a plank, and where feet meet the
 floor the two merge into one thick band that fails any thinness test.
 
-STATUS — WORKS, NOT YET FINISHED. Nothing in the app reads this; it is wired to
-nothing, and no figure it produced has shipped. Proven on five Gamma sheets: it
-replaces 11-24 useless shards per figure with a clean body plus its linework, and
-three of the five come out ready to use (small knee bends, side bend, forearm
-plank). Two still need work, and both faults are known rather than mysterious:
+STATUS — IN USE, WITH ONE KNOWN LIMIT. Two figures from it have shipped
+(stretch-chest, forearm-plank); `lines` is carried through TracedFrame and drawn
+in the outline colour, and twopose's gate counts both layers.
 
-  * A prop drawn as an open frame can still swallow the picture. On the calf
-    sheet the wall, floor and leaning figure enclose a big quadrant of white;
-    `_fill_holes` caps what it fills at 6% of the ink, and that quadrant is
-    larger, so it is still coming out solid. The cap needs to be a shape test,
-    not a size one — scenery is rectangular, an armpit is not.
-  * The chest sheet splits at the right column (measured: cut 1266, gap
-    1030-1517) and still yields two frames whose bounding boxes overlap, so
-    something downstream of the cut is mis-assigning components. Not diagnosed.
+⚠ A PROP THAT TOUCHES THE BODY STILL DEFEATS IT, and the cause is not the hole
+filler — it is that ONE FILLED PATH CANNOT EXPRESS A SHAPE WITH A HOLE IN IT.
+Where a wall meets the hand and the floor, figure, wall and floor trace as a
+single component, and the outer boundary of that component encloses the gap
+between the body and the wall, so filling it fills the gap. Measured: the calf
+stretch came out with a solid quadrant, and the side bend with a solid wedge
+under the lean. Two of five sheets, both the ones with scenery.
 
-Before this is used for real it also needs: the `lines` layer carried through
-TracedFrame and rendered in the outline colour, and twopose's path-count gate
-taught to count both layers — it reads "1 body path" as a broken trace.
+The fix is not another threshold. It is to separate the prop from the body
+before tracing and draw it back as its own path — the same answer the Higgsfield
+wall props needed. Until then, ASK THE GENERATOR FOR FIGURES WITH NO SCENERY:
+the three sheets without a prop came through clean first time.
 """
 import importlib.util
 import pathlib
@@ -58,7 +56,7 @@ tr.SCALE = 1
 
 
 
-def _fill_holes(mask, max_frac=0.06):
+def _fill_holes(mask, max_frac=0.02):
     """Fill enclosed gaps — but only SMALL ones.
 
     Filling everything the background cannot reach is wrong as soon as the
@@ -66,9 +64,16 @@ def _fill_holes(mask, max_frac=0.06):
     and the leaning figure enclose a large quadrant of white, and filling it
     turned the wall into a solid grey block covering a third of the picture.
 
-    A real hole is small: the gap between an arm and the torso, an eye socket,
-    the triangle under a bent knee. Anything above a few percent of the drawing
-    is scenery the artist left open, so it stays open.
+    THE CAP IS SET FROM MEASUREMENT, not taste. Across the two sheets with props,
+    every genuine anatomical hole came to 2 PIXELS or fewer, while the region
+    enclosed by the wall, the floor and the leaning figure came to 58.6% and
+    28.3% of the ink. There is no ambiguity to resolve between those, so a plain
+    size cap does it.
+
+    A shape test was tried first and is wrong: scenery is not reliably
+    rectangular. That quadrant is bounded by a diagonal body, so it scores 0.70
+    and 0.62 on boxiness — wedge-like, exactly what an armpit looks like — and a
+    rule that filled wedges filled the wall.
     """
     h, w = mask.shape
     seen = np.zeros_like(mask)
@@ -95,7 +100,7 @@ def _fill_holes(mask, max_frac=0.06):
     out = mask.copy()
     if holes.any():
         budget = max(1, int(max_frac * mask.sum()))
-        for m, area, _c, _b in tr.components(holes, min_area=1):
+        for m, area, _c, _bbox in tr.components(holes, min_area=1):
             if area <= budget:
                 out |= m
     return out
@@ -172,11 +177,18 @@ def trace_sheet(png, n, line_cut=150, min_line_area=40):
     ink = (lum < 232) | tinted
 
     solid = _fill_holes(ink)
-    # cut the sheet apart so each figure — and the slice of floor beneath it —
-    # is its own component
+    # Cut the sheet apart so each figure — and the slice of floor beneath it —
+    # is its own component. BOTH masks take the same cut: the dark outlines of
+    # the two figures are joined by the dark ground line, so without it the
+    # linework traces as ONE component spanning the whole drawing, gets assigned
+    # to whichever figure holds its centroid, and drags that frame's bounds
+    # across its neighbour.
+    cuts = _split_columns(solid, n)
     bodies_mask = solid.copy()
-    for c in _split_columns(solid, n):
+    line_mask = (lum < line_cut) & solid
+    for c in cuts:
         bodies_mask[:, max(0, c - 1):c + 2] = False
+        line_mask[:, max(0, c - 1):c + 2] = False
 
     h, w = solid.shape
     k = 1000.0 / h
@@ -201,7 +213,20 @@ def trace_sheet(png, n, line_cut=150, min_line_area=40):
     figs = sorted(figs, key=lambda p: p["bbox"][0])   # left to right = the order drawn
 
     # linework belongs to whichever figure encloses its centroid
-    lines = paths_of((lum < line_cut) & solid, min_line_area)
+    lines = paths_of(line_mask, min_line_area)
+
+    # THE FLOOR IS DARK TOO, so it traces as linework — and being one long shape
+    # spanning the whole sheet, its centroid lands inside whichever figure sits
+    # near the middle. On the chest sheet that gave the right-hand figure a piece
+    # of "detail" reaching back across the gap, so its frame claimed the entire
+    # drawing and the two frames overlapped. The silhouette already carries the
+    # floor; anything this wide and this flat is scenery, not anatomy.
+    span = max(f["bbox"][2] for f in figs) - min(f["bbox"][0] for f in figs)
+    lines = [
+        p for p in lines
+        if not ((p["bbox"][2] - p["bbox"][0]) > 0.40 * span
+                and (p["bbox"][3] - p["bbox"][1]) < 0.03 * 1000.0)
+    ]
 
     frames = []
     for i, fig in enumerate(figs):
