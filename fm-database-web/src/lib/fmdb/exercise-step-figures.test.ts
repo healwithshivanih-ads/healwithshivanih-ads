@@ -27,6 +27,27 @@ describe("per-step figures", () => {
     }
   });
 
+  it("KEEPS POSITION when a step has no figure", () => {
+    // Several cool-down steps are instructions rather than movements — "hold it
+    // still without bouncing", "breathe normally" — and legitimately have none.
+    // Dropping those entries instead of holding their place shifted every later
+    // figure up an index, which put the triceps-stretch drawing beside "hold it
+    // still". Position is the meaning here; there is nothing else tying a figure
+    // to its step.
+    const v = stepFigureSvgs("cool-down-stretch-sequence", 8)!;
+    expect(v.length).toBe(8);
+    expect(v.map((x) => Boolean(x))).toEqual([
+      true, // walk / march taper
+      false, // "one stretch per body part" — an instruction
+      true, // back of the upper arm
+      false, // chest — no pose in the library
+      true, // front of the thigh
+      true, // back of the thigh
+      false, // calf — no pose in the library
+      false, // "breathe normally" — an instruction
+    ]);
+  });
+
   it("is absent for ordinary one-movement exercises", () => {
     // Most entries are one movement; a figure beside every line would add
     // nothing, and the caller falls back to the single figure above the steps.

@@ -52,24 +52,35 @@ const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 /** Filename only — this reaches a public URL, so no paths and no traversal. */
 const VIDEO_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*\.mp4$/;
 
-let cache: Record<string, StepFigureSpec[]> | undefined;
+let cache: Record<string, (StepFigureSpec | null)[]> | undefined;
 
-function load(): Record<string, StepFigureSpec[]> {
+function load(): Record<string, (StepFigureSpec | null)[]> {
   if (cache !== undefined) return cache;
   const file = path.join(getCataloguePath(), "_exercise_step_figures.json");
-  const out: Record<string, StepFigureSpec[]> = {};
+  const out: Record<string, (StepFigureSpec | null)[]> = {};
   try {
     const raw = JSON.parse(fs.readFileSync(file, "utf8")) as Record<string, unknown>;
     for (const [slug, v] of Object.entries(raw)) {
       if (slug.startsWith("_") || !Array.isArray(v)) continue;
-      const specs: StepFigureSpec[] = [];
+      const specs: (StepFigureSpec | null)[] = [];
       for (const s of v) {
-        if (typeof s !== "object" || s === null) continue;
+        // POSITION IS THE MEANING — an entry that supplies no visual becomes a
+        // null placeholder, never a gap. Skipping them shifted every later
+        // figure up an index and put the triceps-stretch drawing beside "hold
+        // it still without bouncing". Several cool-down steps are instructions
+        // rather than movements and legitimately have no figure.
+        if (typeof s !== "object" || s === null) {
+          specs.push(null);
+          continue;
+        }
         const d = s as Record<string, unknown>;
         const useOk = typeof d.use === "string" && SLUG_RE.test(d.use);
         const vidOk = typeof d.video === "string" && VIDEO_RE.test(d.video);
         // one or the other, never both and never neither
-        if (useOk === vidOk) continue;
+        if (useOk === vidOk) {
+          specs.push(null);
+          continue;
+        }
         specs.push({
           ...(useOk ? { use: d.use as string } : {}),
           ...(vidOk ? { video: d.video as string } : {}),
@@ -79,7 +90,7 @@ function load(): Record<string, StepFigureSpec[]> {
           ...(Array.isArray(d.arrows) ? { arrows: d.arrows } : {}),
         });
       }
-      if (specs.length) out[slug] = specs;
+      if (specs.some(Boolean)) out[slug] = specs;
     }
   } catch {
     // fall through to the empty map — every step just renders as text

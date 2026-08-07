@@ -112,5 +112,35 @@
       "step": "Finish with a minute of marching",
       "use": "high-knees"
     }
+  ],
+  "cool-down-stretch-sequence": [
+    {
+      "step": "Walk or march until the breathing settles",
+      "use": "high-knees"
+    },
+    {
+      "step": "One stretch per body part, held still \u2014 an instruction, not a movement"
+    },
+    {
+      "step": "Back of the upper arm",
+      "use": "stretch-triceps"
+    },
+    {
+      "step": "Chest \u2014 no pose in the library and an arrow cannot stand in for one"
+    },
+    {
+      "step": "Front of the thigh",
+      "use": "standing-knee-flexion"
+    },
+    {
+      "step": "Back of the thigh",
+      "use": "standing-hip-hinge"
+    },
+    {
+      "step": "Calf \u2014 no pose in the library; the lunge has a bent back knee, which is the wrong shape"
+    },
+    {
+      "step": "Breathe normally \u2014 an instruction, not a movement"
+    }
   ]
 }
