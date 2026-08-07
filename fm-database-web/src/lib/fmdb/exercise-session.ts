@@ -26,6 +26,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 
 import { getCataloguePath } from "./paths";
+import { clientFacingSummary } from "./client-facing-text";
 import { tracedFigureSvg } from "./exercise-figure-traced";
 import { exerciseVideoSrc } from "./exercise-video";
 
@@ -202,7 +203,12 @@ export function deriveExerciseSessions(
         name: asStr(entry.client_name).trim() || asStr(entry.display_name).trim() || slug,
         prescription: lv ? asStr(lv.prescription).trim() : asStr(entry.frequency).trim(),
         level: lv ? asStr(lv.level).trim() || null : null,
-        why: asStr(entry.summary).trim(),
+        // NEVER `summary` unguarded. It is a COACH field and says so: the
+        // sit-to-stand card told a client the movement was "the single most
+        // transferable movement in the catalogue, and the one the 30-second
+        // chair stand test measures". Authored client text wins; a coach
+        // summary is used only if it happens to be clean; otherwise nothing.
+        why: clientFacingSummary(asStr(entry.client_summary), asStr(entry.summary)),
         steps,
         note: asStr(p.note).trim(),
         reps: lv ? asNum(lv.reps) : null,

@@ -1,6 +1,7 @@
 slug: chair-sit-to-stand
 display_name: Sit to Stand
 client_name: Standing up from a chair
+client_summary: "Standing up and sitting down under control. It is the movement you use more than any other, and it gets easier surprisingly fast."
 modality: balance
 intensity_tier: beginner
 position: seated
