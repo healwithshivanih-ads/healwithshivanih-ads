@@ -33,7 +33,20 @@
 /** Exercise slug → file basename under public/exercise-videos/. */
 const VIDEO_BY_SLUG: Record<string, string> = {
   "standing-trunk-rotation": "standing-trunk-rotation.mp4",
-  "joint-mobilising-sequence": "joint-mobilising-sequence.mp4",
+  // joint-mobilising-sequence is DELIBERATELY ABSENT, and the file is still on
+  // disk so this is one line to undo.
+  //
+  // The warm-up is eight named movements — wrist circles, shoulder shrugs and
+  // circles, ankle circles, hip circles, trunk turns, side bends, heel flicks,
+  // then a pulse-raise. The clip covers, at best, part of the last one: it shows
+  // a figure standing with the arms out and a single knee lift. A client reading
+  // "circle each wrist six to eight times" was watching a figure do nothing of
+  // the kind.
+  //
+  // exercise-figure.ts states the principle this follows: a picture overrides the
+  // text beside it, so a plausible-but-wrong figure is worse than none. That is
+  // exactly this case, and it applies to a video far more strongly than to a
+  // still. Text-only until the per-step figures exist.
   // Both neck clips exist and are committed, but neck-mobility is chin
   // retraction ONLY — the side-bend clip has no entry to attach to until a
   // side-bend movement is authored. Attaching it here would show a client a
