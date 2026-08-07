@@ -2499,6 +2499,17 @@ video.ex-figure { display: block; height: auto; border-radius: 10px; background:
 }
 .ex-steps { max-width: 340px; width: 100%; padding-left: 18px; margin: 0 0 14px; }
 .ex-steps li { margin-bottom: 9px; font-size: 14.5px; line-height: 1.55; }
+
+/* Per-step figures, for the sequence entries (the warm-up's eight movements).
+   The figure sits beside its own instruction rather than above the whole list,
+   because the whole point is that each step is a DIFFERENT movement. */
+.ex-steps--fig li { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+.ex-stepfig { flex: 0 0 72px; }
+.ex-stepfig svg,
+video.ex-stepfig { width: 72px; height: 88px; display: block; }
+video.ex-stepfig { object-fit: contain; border-radius: 4px; }
+/* A step with no figure keeps its text aligned with the ones that have one. */
+.ex-steps--fig li > span:only-child { margin-left: 82px; }
 .ex-list { max-width: 340px; width: 100%; padding-left: 18px; margin: 4px 0 16px; }
 .ex-list li { margin-bottom: 10px; font-size: 14.5px; line-height: 1.5; }
 .ex-list li strong { color: #f2ede2; }

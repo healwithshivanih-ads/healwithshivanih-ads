@@ -223,9 +223,39 @@ export function ExerciseOverlay({
       )}
 
       <p className="ex-sub">The movement</p>
-      <ol className="ex-steps">
+      {/* A figure PER STEP, where the entry is a sequence of different
+          movements — the warm-up is eight of them. Everything else has one
+          movement and one figure above, and repeating it beside every line
+          would add nothing, so this renders only where the data provides it. */}
+      <ol
+        className={
+          moveSteps.some((s) => s.figureSvg || s.videoSrc) ? "ex-steps ex-steps--fig" : "ex-steps"
+        }
+      >
         {moveSteps.map((s, i) => (
-          <li key={`m${i}`}>{s.text}</li>
+          <li key={`m${i}`}>
+            {s.videoSrc ? (
+              <video
+                className="ex-stepfig"
+                src={s.videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label={`${s.text} — demonstration`}
+              />
+            ) : (
+              s.figureSvg && (
+                <span
+                  className="ex-stepfig"
+                  aria-hidden
+                  // Our own tracer and builder; no client text reaches it.
+                  dangerouslySetInnerHTML={{ __html: s.figureSvg }}
+                />
+              )
+            )}
+            <span>{s.text}</span>
+          </li>
         ))}
       </ol>
 

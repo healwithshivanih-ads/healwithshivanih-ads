@@ -75,7 +75,7 @@ describe("tracedFigureSvg", () => {
     it("draws an arrow with a marker head only where the asset defines one", () => {
       const withArrow = tracedFigureSvg("side-hops")!;
       expect(withArrow).toContain('class="tfarr"');
-      expect(withArrow).toContain('<marker id="tfahsidehops"');
+      expect(withArrow).toContain('<marker id="tfahffsidehops"');
       // and stays absent everywhere else, including the CSS rule for it
       expect(tracedFigureSvg("chair-dip")!).not.toContain("tfarr");
     });
@@ -102,10 +102,10 @@ describe("tracedFigureSvg", () => {
       // pathLength=100 is what makes the draw-on exact without arc-length maths
       expect(svg).toContain('pathLength="100"');
       expect(svg).toMatch(/stroke-dasharray:100/);
-      expect(svg).toMatch(/animation:tfarsidehops var\(--fm-fig-cyc,4s\)/);
+      expect(svg).toMatch(/animation:tfarffsidehops var\(--fm-fig-cyc,4s\)/);
       // opacity must be part of it: an SVG marker draws at its vertex whatever
       // the dash offset, so a dash-only hide leaves the arrowhead stranded
-      expect(svg).toMatch(/@keyframes tfarsidehops\{0%,34%\{stroke-dashoffset:100;opacity:0\}/);
+      expect(svg).toMatch(/@keyframes tfarffsidehops\{0%,34%\{stroke-dashoffset:100;opacity:0\}/);
     });
 
     it("gives the return leg its own arrow on the other half of the cycle", () => {
@@ -120,8 +120,8 @@ describe("tracedFigureSvg", () => {
       expect(Number(out[3])).toBeGreaterThan(Number(out[2]));
       expect(Number(back[3])).toBeLessThan(Number(back[2]));
       // and animate on different keyframes, so they never draw at once
-      expect(svg).toContain(".fm-traced-figure .tfarrb{animation-name:tfarbsidehops}");
-      expect(svg).toMatch(/@keyframes tfarbsidehops\{0%\{stroke-dashoffset:0;opacity:1\}/);
+      expect(svg).toContain(".ffsidehops .tfarrb{animation-name:tfarbffsidehops}");
+      expect(svg).toMatch(/@keyframes tfarbffsidehops\{0%\{stroke-dashoffset:0;opacity:1\}/);
     });
 
     it("holds the arrow fully drawn when motion is reduced", () => {

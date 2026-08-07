@@ -1,0 +1,116 @@
+{
+  "_readme": [
+    "Per-STEP figures for the few entries that are a sequence of different movements",
+    "rather than one movement. Keyed by exercise slug, then by index into that entry's",
+    "`steps` list (setup lines are not counted).",
+    "",
+    "NOTHING HERE IS NEW ARTWORK. Each step borrows a pose from a figure that already",
+    "exists and has already been reviewed, and adds its own arrows. `use` is the figure",
+    "slug; `frame` picks one pose from it (omit to play that figure's own movement);",
+    "`arrows` replaces the borrowed figure's arrows with the ones this step needs.",
+    "",
+    "WHY ARROWS DO THE WORK. Five of the warm-up's eight steps are CIRCLES - wrist,",
+    "shoulder, ankle, hip, and the trunk turn. A circle is a path, not a pose, so no",
+    "pair of stills can show one, and the image model cannot draw one either. An arrow",
+    "is a path. Hence loop arrows (cx, cy, r) alongside the original arc form.",
+    "",
+    "Coordinates are in the borrowed figure's own space, which is why they differ so",
+    "much between entries - read them off the figure, do not guess."
+  ],
+  "joint-mobilising-sequence": [
+    {
+      "step": "While walking, circle each wrist",
+      "use": "jumping-jacks",
+      "frame": 0,
+      "arrows": [
+        {
+          "cx": 470,
+          "cy": 552,
+          "r": 52
+        },
+        {
+          "cx": 726,
+          "cy": 552,
+          "r": 52
+        }
+      ]
+    },
+    {
+      "step": "Shrug and circle the shoulders",
+      "use": "jumping-jacks",
+      "frame": 0,
+      "arrows": [
+        {
+          "cx": 508,
+          "cy": 248,
+          "r": 58
+        },
+        {
+          "cx": 688,
+          "cy": 248,
+          "r": 58
+        }
+      ]
+    },
+    {
+      "step": "Stand on one leg, circle the raised ankle",
+      "use": "one-leg-stand",
+      "frame": 5,
+      "arrows": [
+        {
+          "cx": 198,
+          "cy": 800,
+          "r": 52
+        }
+      ]
+    },
+    {
+      "step": "Hands on hips, circle the hips",
+      "use": "jumping-jacks",
+      "frame": 0,
+      "arrows": [
+        {
+          "cx": 598,
+          "cy": 478,
+          "r": 115
+        }
+      ]
+    },
+    {
+      "step": "Turn the upper body to each side",
+      "video": "standing-trunk-rotation.mp4"
+    },
+    {
+      "step": "Bend gently to each side",
+      "use": "jumping-jacks",
+      "frame": 0,
+      "arrows": [
+        {
+          "x1": 738,
+          "y1": 452,
+          "x2": 738,
+          "y2": 648,
+          "bow": -26,
+          "phase": "out"
+        },
+        {
+          "x1": 458,
+          "y1": 452,
+          "x2": 458,
+          "y2": 648,
+          "bow": 26,
+          "phase": "back"
+        }
+      ]
+    },
+    {
+      "step": "Flick each heel up behind",
+      "use": "standing-knee-flexion",
+      "arrows": []
+    },
+    {
+      "step": "Finish with a minute of marching",
+      "use": "high-knees"
+    }
+  ]
+}

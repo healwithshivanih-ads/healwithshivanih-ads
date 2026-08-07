@@ -41,13 +41,25 @@ interface TracedFrame {
  * `bow` curves the arrow: it is the perpendicular offset of the quadratic
  * control point from the straight line, so a hop arcs the way a hop actually
  * travels. Zero or absent is a straight arrow.
+ *
+ * TWO SHAPES. An arc runs between two points (`x1,y1` → `x2,y2`). A LOOP is a
+ * circle around a joint (`cx,cy,r`), for the several warm-up steps that ask a
+ * client to *circle* a wrist, shoulder, ankle or hip. A circle is a path, not a
+ * pose — no pair of stills can show one, and the image model cannot draw one
+ * either, which is the same wall front-view rotation hits. An arrow is a path,
+ * so this is the instrument that fits.
  */
 interface TracedArrow {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
+  /** Arc form: start and end points. */
+  x1?: number;
+  y1?: number;
+  x2?: number;
+  y2?: number;
   bow?: number;
+  /** Loop form: centre and radius of a circling arrow. */
+  cx?: number;
+  cy?: number;
+  r?: number;
   /**
    * Which half of the cycle this arrow belongs to.
    *
@@ -87,14 +99,51 @@ function isFrame(f: unknown): f is TracedFrame {
   );
 }
 
+const fin = (v: unknown): v is number => typeof v === "number" && Number.isFinite(v);
+
 function isArrow(a: unknown): a is TracedArrow {
   if (typeof a !== "object" || a === null) return false;
   const d = a as Record<string, unknown>;
-  return (
-    [d.x1, d.y1, d.x2, d.y2].every((v) => typeof v === "number" && Number.isFinite(v)) &&
-    (d.bow === undefined || (typeof d.bow === "number" && Number.isFinite(d.bow))) &&
-    (d.phase === undefined || d.phase === "out" || d.phase === "back")
-  );
+  if (d.phase !== undefined && d.phase !== "out" && d.phase !== "back") return false;
+  // Exactly one of the two forms, and NOTHING from the other. Checking only
+  // that one form is complete is not enough: {x1, y1, cx, cy, r} has an
+  // incomplete arc, so the arc test fails, so the loop test alone decides and
+  // the thing is drawn as a loop — silently ignoring half of what was written.
+  // Rejecting the mixture is the honest reading of an ambiguous spec.
+  const loopKeys = [d.cx, d.cy, d.r].some((v) => v !== undefined);
+  const arcKeys = [d.x1, d.y1, d.x2, d.y2].some((v) => v !== undefined);
+  if (loopKeys === arcKeys) return false;
+  if (loopKeys) {
+    return fin(d.cx) && fin(d.cy) && fin(d.r) && (d.r as number) > 0 && d.bow === undefined;
+  }
+  return [d.x1, d.y1, d.x2, d.y2].every(fin) && (d.bow === undefined || fin(d.bow));
+}
+
+/** The 300° sweep a loop arrow draws — enough gap to read as a circle with a
+ *  direction rather than a closed ring. */
+const LOOP_SWEEP = (300 * Math.PI) / 180;
+const LOOP_START = (-125 * Math.PI) / 180;
+
+/** Path `d` plus the extreme points the viewBox must contain, for either form. */
+function arrowGeometry(a: TracedArrow): { d: string; pts: [number, number][] } {
+  if (fin(a.cx) && fin(a.cy) && fin(a.r)) {
+    const [cx, cy, r] = [a.cx, a.cy, a.r];
+    const sx = cx + r * Math.cos(LOOP_START);
+    const sy = cy + r * Math.sin(LOOP_START);
+    const ex = cx + r * Math.cos(LOOP_START + LOOP_SWEEP);
+    const ey = cy + r * Math.sin(LOOP_START + LOOP_SWEEP);
+    // large-arc=1 because the sweep exceeds 180°; sweep=1 draws it clockwise
+    return {
+      d: `M${sx.toFixed(2)},${sy.toFixed(2)}A${r.toFixed(2)},${r.toFixed(2)} 0 1 1 ${ex.toFixed(2)},${ey.toFixed(2)}`,
+      pts: [[cx - r, cy - r], [cx + r, cy + r]],
+    };
+  }
+  const [x1, y1, x2, y2] = [a.x1 ?? 0, a.y1 ?? 0, a.x2 ?? 0, a.y2 ?? 0];
+  const [cx, cy] = arrowControl(a);
+  return {
+    d: `M${x1.toFixed(1)},${y1.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`,
+    pts: [[x1, y1], [x2, y2], [cx, cy]],
+  };
 }
 
 function load(): Record<string, TracedFigure> {
@@ -148,9 +197,32 @@ export function _resetTracedFigureCache(): void {
  * shows the first pose alone. Returns null when the slug has no traced art —
  * the caller renders the deterministic stick figure instead.
  */
-export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): string | null {
-  const fig = load()[slug];
-  if (!fig) return null;
+/**
+ * @param opts.frame  Render ONE pose from the figure instead of the movement.
+ *   The warm-up borrows existing artwork for steps that are not that exercise —
+ *   a plain standing body for "circle each wrist" — where cross-fading into the
+ *   second pose would show a movement the step never asked for.
+ * @param opts.arrows Replace the figure's own arrows. A borrowed pose carries
+ *   the borrowing step's arrows, not the ones belonging to the exercise it came
+ *   from.
+ */
+export function tracedFigureSvg(
+  slug: string,
+  opts: { title?: string; frame?: number; arrows?: unknown[]; uid?: string } = {},
+): string | null {
+  const base = load()[slug];
+  if (!base) return null;
+  const picked =
+    opts.frame !== undefined && base.frames[opts.frame] ? [base.frames[opts.frame]] : base.frames;
+  const overridden =
+    opts.arrows !== undefined ? opts.arrows.filter(isArrow).slice(0, 6) : base.arrows;
+  const fig: TracedFigure = {
+    ...base,
+    frames: picked,
+    // a single borrowed pose has nothing to register against
+    reg: picked.length === base.frames.length ? base.reg : [0, 0],
+    ...(overridden && overridden.length ? { arrows: overridden } : { arrows: undefined }),
+  };
   const frames = fig.frames;
   // Two-pose figures register frame B by `reg`; cycles carry per-frame dx/dy.
   const off = (f: TracedFrame, i: number): [number, number] =>
@@ -165,26 +237,41 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
   // An arrow outside the figures' bounds would be silently clipped, which is
   // worse than no arrow — the reader sees a stub pointing off the edge.
   for (const a of fig.arrows ?? []) {
-    const [cx, cy] = arrowControl(a);
-    x0 = Math.min(x0, a.x1, a.x2, cx); x1 = Math.max(x1, a.x1, a.x2, cx);
-    y0 = Math.min(y0, a.y1, a.y2, cy); y1 = Math.max(y1, a.y1, a.y2, cy);
+    for (const [px, py] of arrowGeometry(a).pts) {
+      x0 = Math.min(x0, px); x1 = Math.max(x1, px);
+      y0 = Math.min(y0, py); y1 = Math.max(y1, py);
+    }
   }
   const pad = 0.03;
   const vb = `${(x0 - (x1 - x0) * pad).toFixed(0)} ${(y0 - (y1 - y0) * pad).toFixed(0)} ${((x1 - x0) * (1 + 2 * pad)).toFixed(0)} ${((y1 - y0) * (1 + 2 * pad)).toFixed(0)}`;
 
   // The slug is catalogue-validated, but the animation name must be a CSS
   // identifier regardless of what is on disk.
-  const key = slug.replace(/[^a-zA-Z0-9]/g, "");
+  // EVERY INTERNAL RULE AND ANIMATION NAME IS SCOPED TO THIS ID, and it must be unique per
+  // rendered figure.
+  //
+  // CSS inside an inline SVG is not scoped to that SVG — it applies to the whole
+  // document. With the warm-up's eight step figures on one page, the marching
+  // figure's `.tf0{animation:...}` was driving every other figure's `.tf0` to
+  // opacity 0 for most of its cycle, so seven of the eight rendered as arrows
+  // floating over nothing. Slug-unique keyframe NAMES were not enough; the
+  // selectors collided. Five of those eight also borrow the same figure, so the
+  // slug alone cannot disambiguate them either.
+  const uid = `ff${(opts.uid ?? slug).replace(/[^a-zA-Z0-9]/g, "")}`;
   const label = escapeAttr(opts.title ?? `${fig.name} — start and end positions`);
   const p = (frame: TracedFrame) => frame.paths.map((d) => `<path d="${d}"/>`).join("");
 
   let css: string;
-  if (frames.length === 2) {
+  if (frames.length === 1) {
+    // A borrowed single pose. Nothing to cross-fade — the arrows carry the
+    // movement on their own, which is the whole point of borrowing it.
+    css = `.${uid} .tf0{opacity:1}`;
+  } else if (frames.length === 2) {
     css =
-      `@keyframes tfA${key}{0%,38%{opacity:1}50%,88%{opacity:0}100%{opacity:1}}` +
-      `@keyframes tfB${key}{0%,38%{opacity:0}50%,88%{opacity:1}100%{opacity:0}}` +
-      `.fm-traced-figure .tf0{animation:tfA${key} var(--fm-fig-cyc,4s) ease-in-out infinite}` +
-      `.fm-traced-figure .tf1{animation:tfB${key} var(--fm-fig-cyc,4s) ease-in-out infinite}`;
+      `@keyframes tfA${uid}{0%,38%{opacity:1}50%,88%{opacity:0}100%{opacity:1}}` +
+      `@keyframes tfB${uid}{0%,38%{opacity:0}50%,88%{opacity:1}100%{opacity:0}}` +
+      `.${uid} .tf0{animation:tfA${uid} var(--fm-fig-cyc,4s) ease-in-out infinite}` +
+      `.${uid} .tf1{animation:tfB${uid} var(--fm-fig-cyc,4s) ease-in-out infinite}`;
   } else {
     // Each frame owns an equal slot of the cycle with a short fade at its
     // edges; the cycle duration scales with frame count so pace stays steady.
@@ -196,9 +283,9 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
       const b = (100 * (i + 1)) / n;
       const fade = Math.min(3.5, (b - a) / 4);
       const kf = i === 0
-        ? `@keyframes tf${key}${i}{0%{opacity:1}${fade.toFixed(2)}%,${(b - fade).toFixed(2)}%{opacity:1}${b.toFixed(2)}%,${(100 - fade).toFixed(2)}%{opacity:0}100%{opacity:1}}`
-        : `@keyframes tf${key}${i}{0%,${(a - 0.01).toFixed(2)}%{opacity:0}${(a + fade).toFixed(2)}%,${(b - fade).toFixed(2)}%{opacity:1}${Math.min(100, b).toFixed(2)}%,100%{opacity:0}}`;
-      parts.push(kf, `.fm-traced-figure .tf${i}{animation:tf${key}${i} ${cyc} linear infinite}`);
+        ? `@keyframes tf${uid}${i}{0%{opacity:1}${fade.toFixed(2)}%,${(b - fade).toFixed(2)}%{opacity:1}${b.toFixed(2)}%,${(100 - fade).toFixed(2)}%{opacity:0}100%{opacity:1}}`
+        : `@keyframes tf${uid}${i}{0%,${(a - 0.01).toFixed(2)}%{opacity:0}${(a + fade).toFixed(2)}%,${(b - fade).toFixed(2)}%{opacity:1}${Math.min(100, b).toFixed(2)}%,100%{opacity:0}}`;
+      parts.push(kf, `.${uid} .tf${i}{animation:tf${uid}${i} ${cyc} linear infinite}`);
     }
     css = parts.join("");
   }
@@ -215,16 +302,15 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
   // wide plank; a fixed stroke width would vanish on one and dominate the other.
   const unit = Math.max(1, Math.hypot(x1 - x0, y1 - y0) / 100);
   const arrowSvg = arrows.length
-    ? `<defs><marker id="tfah${key}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">` +
+    ? `<defs><marker id="tfah${uid}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">` +
       `<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>` +
       arrows
         .map((a) => {
-          const [cx, cy] = arrowControl(a);
           // pathLength normalises the curve to 100 units, so the draw-on
           // animation below needs no arc-length maths and is exact for any
-          // arrow shape.
+          // arrow shape — arc or loop alike.
           const cls = a.phase === "back" ? "tfarr tfarrb" : "tfarr";
-          return `<path class="${cls}" pathLength="100" d="M${a.x1.toFixed(1)},${a.y1.toFixed(1)}Q${cx.toFixed(1)},${cy.toFixed(1)} ${a.x2.toFixed(1)},${a.y2.toFixed(1)}" marker-end="url(#tfah${key})"/>`;
+          return `<path class="${cls}" pathLength="100" d="${arrowGeometry(a).d}" marker-end="url(#tfah${uid})"/>`;
         })
         .join("")
     : "";
@@ -241,19 +327,19 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
   const arrowCss = arrows.length
     ? // out: draws through the A→B cross-fade (38%-50% above), holds while the
       // end pose is up, clears before the cycle restarts.
-      `@keyframes tfar${key}{0%,34%{stroke-dashoffset:100;opacity:0}38%{stroke-dashoffset:100;opacity:1}` +
+      `@keyframes tfar${uid}{0%,34%{stroke-dashoffset:100;opacity:0}38%{stroke-dashoffset:100;opacity:1}` +
       `52%,84%{stroke-dashoffset:0;opacity:1}94%,100%{stroke-dashoffset:0;opacity:0}}` +
       // back: the return leg, drawn through B→A (88%-100%) and held a moment
       // into the next cycle so the round trip reads as continuous rather than
       // snapping off at the loop point.
-      `@keyframes tfarb${key}{0%{stroke-dashoffset:0;opacity:1}8%,84%{stroke-dashoffset:100;opacity:0}` +
+      `@keyframes tfarb${uid}{0%{stroke-dashoffset:0;opacity:1}8%,84%{stroke-dashoffset:100;opacity:0}` +
       `88%{stroke-dashoffset:100;opacity:1}100%{stroke-dashoffset:0;opacity:1}}` +
-      `.fm-traced-figure .tfarr{stroke-dasharray:100;stroke-dashoffset:100;` +
-      `animation:tfar${key} var(--fm-fig-cyc,4s) ease-in-out infinite}` +
-      `.fm-traced-figure .tfarrb{animation-name:tfarb${key}}`
+      `.${uid} .tfarr{stroke-dasharray:100;stroke-dashoffset:100;` +
+      `animation:tfar${uid} var(--fm-fig-cyc,4s) ease-in-out infinite}` +
+      `.${uid} .tfarrb{animation-name:tfarb${uid}}`
     : "";
 
-  return `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}" class="fm-traced-figure">
+  return `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}" class="fm-traced-figure ${uid}">
 <style>
 .fm-traced-figure{width:100%;height:auto}
 /* Scoped to frame paths only. An unscoped path rule also hits the arrowhead in
@@ -262,22 +348,23 @@ export function tracedFigureSvg(slug: string, opts: { title?: string } = {}): st
    NOTE: no angle-bracketed tag names in this comment. SVG is XML, so a literal
    tag name inside a style element is parsed as markup and the whole image fails
    to render — which is exactly how this comment broke it the first time. */
-.fm-traced-figure g > path{fill:var(--fm-fig,#A9A395);stroke:var(--fm-figline,#4F4D45);stroke-width:1.3;stroke-opacity:.42}
-${arrows.length ? `.fm-traced-figure .tfarr{fill:none;stroke:var(--fm-fig-arrow,#C0392B);stroke-width:${(unit * 1.6).toFixed(2)};stroke-opacity:1;stroke-linecap:round}\n${arrowCss}\n` : ""}${css}
-@media (prefers-reduced-motion:reduce){.fm-traced-figure g{animation:none!important;opacity:0}.fm-traced-figure .tf0{opacity:1}${arrows.length ? ".fm-traced-figure .tfarr{animation:none!important;stroke-dashoffset:0;opacity:1}" : ""}}
+.${uid} g > path{fill:var(--fm-fig,#A9A395);stroke:var(--fm-figline,#4F4D45);stroke-width:1.3;stroke-opacity:.42}
+${arrows.length ? `.${uid} .tfarr{fill:none;stroke:var(--fm-fig-arrow,#C0392B);stroke-width:${(unit * 1.6).toFixed(2)};stroke-opacity:1;stroke-linecap:round}\n${arrowCss}\n` : ""}${css}
+@media (prefers-reduced-motion:reduce){.${uid} g{animation:none!important;opacity:0}.${uid} .tf0{opacity:1}${arrows.length ? `.${uid} .tfarr{animation:none!important;stroke-dashoffset:0;opacity:1}` : ""}}
 </style>
 ${gs}${arrowSvg}
 </svg>`;
 }
 
-/** Quadratic control point for an arrow's `bow`, perpendicular to its chord. */
+/** Quadratic control point for an arc arrow's `bow`, perpendicular to its chord. */
 function arrowControl(a: TracedArrow): [number, number] {
-  const mx = (a.x1 + a.x2) / 2;
-  const my = (a.y1 + a.y2) / 2;
+  const [x1, y1, x2, y2] = [a.x1 ?? 0, a.y1 ?? 0, a.x2 ?? 0, a.y2 ?? 0];
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
   const bow = a.bow ?? 0;
   if (!bow) return [mx, my];
-  const dx = a.x2 - a.x1;
-  const dy = a.y2 - a.y1;
+  const dx = x2 - x1;
+  const dy = y2 - y1;
   const len = Math.hypot(dx, dy) || 1;
   // Perpendicular, doubled: a quadratic curve reaches only half way to its
   // control point, so the drawn arc rises by `bow`, not by half of it.
