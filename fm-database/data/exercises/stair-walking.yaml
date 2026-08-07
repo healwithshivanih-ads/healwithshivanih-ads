@@ -1,6 +1,7 @@
 slug: stair-walking
 display_name: Stair Walking
 client_name: Practising the stairs
+client_summary: "Taking the stairs on purpose, holding the rail — a few deliberate trips rather than only the ones the day gives you."
 modality: daily_activity
 intensity_tier: beginner
 position: walking

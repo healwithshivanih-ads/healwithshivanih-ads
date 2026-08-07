@@ -1,6 +1,7 @@
 slug: abdominal-crunch
 display_name: Abdominal Crunch (Loaded Spinal Flexion)
 client_name: Curl-ups
+client_summary: "The familiar curl-up, working the front of the abdomen."
 aliases:
 - crunch
 - crunches

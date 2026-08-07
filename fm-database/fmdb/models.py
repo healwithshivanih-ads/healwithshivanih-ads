@@ -1172,6 +1172,17 @@ class Exercise(BaseModel):
     # exists from the start. Consumers must read `name_for_client`, never
     # `display_name`, when rendering to a client.
     client_name: str = ""
+    # The one-line description the CLIENT reads. `summary` is COACH-facing and
+    # routinely says so: "the single most transferable movement in the
+    # catalogue, and the one the 30-second chair stand test measures" reached a
+    # real client's phone. Ten of 56 summaries name the catalogue, a source
+    # (Otago, LIFTMOR), a clinical test, or a consequence nobody should read
+    # about themselves ("what converts weakness into dependence").
+    #
+    # Same split as display_name / client_name, for the same reason. Empty is
+    # allowed: the app falls back to `summary` ONLY when that summary is clean,
+    # and otherwise shows nothing — a missing line is better than a leak.
+    client_summary: str = ""
     aliases: list[str] = Field(default_factory=list)
 
     modality: ExerciseModality
