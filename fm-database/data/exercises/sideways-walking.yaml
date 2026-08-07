@@ -1,6 +1,7 @@
 slug: sideways-walking
 display_name: Sideways Walking
 client_name: Walking sideways
+client_summary: "Stepping sideways along a counter — something ordinary walking never asks of you."
 modality: balance
 intensity_tier: beginner
 position: walking

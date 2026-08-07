@@ -1,6 +1,7 @@
 slug: speed-skater
 display_name: Speed Skater (Lateral Bound with Sweep)
 client_name: Skater jumps
+client_summary: "Bounding from one leg to the other, sweeping the trailing leg behind you."
 aliases:
 - skater jumps
 - lateral bound

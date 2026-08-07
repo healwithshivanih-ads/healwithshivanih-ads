@@ -1,6 +1,7 @@
 slug: floor-get-up
 display_name: Floor Transfer (Get Down and Get Up Again)
 client_name: Getting up from the floor
+client_summary: "Practising getting down to the floor and back up again, in a controlled order."
 aliases:
 - floor transfer
 - get up from the floor

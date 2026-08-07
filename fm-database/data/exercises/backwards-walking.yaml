@@ -1,6 +1,7 @@
 slug: backwards-walking
 display_name: Backwards Walking
 client_name: Walking backwards
+client_summary: "Stepping backwards along something solid. It is a direction you almost never practise, which is exactly why it is worth doing."
 modality: balance
 intensity_tier: intermediate
 position: walking
