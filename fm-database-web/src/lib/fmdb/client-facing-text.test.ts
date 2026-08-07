@@ -32,6 +32,13 @@ describe("looksCoachFacing", () => {
     "A protocol for staying within the activity level",
     "losing it is what converts weakness into dependence",
     "the entry in this catalogue that bends the loaded spine",
+    // Verbatim from a published plan a real client could open. No jargon, no
+    // source, no test — just one professional telling another it is worth the
+    // slot. This is the case the first version of this guard sailed past.
+    "Balance, holding a counter. Cheap to add and it protects the knee by making a stumble less likely.",
+    "The single highest-value thing here for a stated goal of normalising blood pressure",
+    "glutes and hamstrings while the knee is still the limiting factor",
+    "Direct calf and Achilles tendon loading, which is the specific complaint",
   ])("flags %s", (s) => {
     expect(looksCoachFacing(s)).toBe(true);
   });
@@ -47,49 +54,83 @@ describe("looksCoachFacing", () => {
 });
 
 describe("clientFacingSummary", () => {
-  it("prefers the authored client line", () => {
+  it("shows the authored client line", () => {
     expect(clientFacingSummary("Standing up from a chair, under control.", "…in the catalogue…"))
       .toBe("Standing up from a chair, under control.");
   });
 
-  it("falls back to a CLEAN coach summary", () => {
-    expect(clientFacingSummary("", "Lying on your back and lifting your hips.")).toBe(
-      "Lying on your back and lifting your hips.",
-    );
-  });
-
-  it("shows NOTHING rather than a leaky summary", () => {
-    // The whole point. An unconditional fallback is what put the catalogue's
-    // own vocabulary on a client's phone.
+  it("NEVER falls back to the coach summary, however clean it looks", () => {
+    // This is the fix, and the earlier version got it wrong. Falling back when
+    // the coach summary passed a denylist still leaked, because the denylist
+    // cannot judge audience: "Cheap to add and it protects the knee" has no
+    // jargon, no source and no test, and is plainly one professional talking to
+    // another. Safety comes from reading the client FIELD, not from screening
+    // the coach one.
+    expect(clientFacingSummary("", "Lying on your back and lifting your hips.")).toBe("");
     expect(clientFacingSummary("", "the single most transferable movement in the catalogue")).toBe("");
-  });
-
-  it("withholds rather than strips — a stub reads worse than silence", () => {
-    const out = clientFacingSummary("", "Standing up and sitting down — the 30-second test.");
-    expect(out).toBe("");
+    expect(clientFacingSummary(undefined, "anything at all")).toBe("");
   });
 });
 
 describe("the exercise catalogue itself", () => {
-  it("every entry can show a client SOMETHING, or is deliberately silent", () => {
+  it("EVERY entry carries a client line", () => {
+    // Not just the leaky ones. Since there is no fallback, an entry without an
+    // authored line shows a client no description at all — so this is what
+    // keeps the cards from quietly emptying as the catalogue grows.
     let files: string[] = [];
     try {
       files = fs.readdirSync(CAT).filter((f) => f.endsWith(".yaml"));
     } catch {
       return; // no catalogue on this machine
     }
-    // Any entry whose coach summary leaks MUST carry an authored client line,
-    // otherwise its card silently loses its description.
-    const needsAuthoring: string[] = [];
+    expect(files.length).toBeGreaterThan(0);
+    const missing: string[] = [];
     for (const f of files) {
       const d = (yaml.load(fs.readFileSync(path.join(CAT, f), "utf8")) ?? {}) as Record<string, unknown>;
-      const summary = String(d.summary ?? "");
-      const client = String(d.client_summary ?? "");
-      if (summary && looksCoachFacing(summary) && !client.trim()) {
-        needsAuthoring.push(f.replace(/\.yaml$/, ""));
+      if (!String(d.client_summary ?? "").trim()) missing.push(f.replace(/\.yaml$/, ""));
+    }
+    expect(missing).toEqual([]);
+  });
+
+  /**
+   * The OTHER route to the same leak, and the one that actually reached a
+   * client. `PrescribedExercise.note` is client-facing by design, but it gets
+   * written during assessment where the surrounding voice is coach-to-coach —
+   * and a real published plan ended up telling a client a balance drill was
+   * "Cheap to add".
+   *
+   * This checks the notes on the plans on THIS machine. Unlike the summary
+   * case, the fix is never to hide the note at render — a note carries real
+   * instructions ("Hold the counter", "lower slowly"), and withholding those
+   * would be worse than the leak. It has to be caught while it can be
+   * rewritten, which is here.
+   */
+  it("no published plan tells a client why it was worth prescribing", () => {
+    const PUB = path.join(process.env.HOME || "", "fm-plans", "published");
+    let files: string[] = [];
+    try {
+      files = fs.readdirSync(PUB).filter((f) => f.endsWith(".yaml"));
+    } catch {
+      return; // no PHI on this machine (CI)
+    }
+    const offenders: string[] = [];
+    for (const f of files) {
+      let d: Record<string, unknown>;
+      try {
+        d = (yaml.load(fs.readFileSync(path.join(PUB, f), "utf8")) ?? {}) as Record<string, unknown>;
+      } catch {
+        continue; // a malformed plan is a different test's problem
+      }
+      for (const pr of (d.lifestyle_practices ?? []) as Record<string, unknown>[]) {
+        for (const ex of (pr?.exercises ?? []) as Record<string, unknown>[]) {
+          const note = String(ex?.note ?? "");
+          if (note && looksCoachFacing(note)) {
+            offenders.push(`${f} · ${String(ex?.exercise)}: ${note.slice(0, 60)}`);
+          }
+        }
       }
     }
-    expect(needsAuthoring).toEqual([]);
+    expect(offenders).toEqual([]);
   });
 
   it("no authored client_summary is itself coach-facing", () => {

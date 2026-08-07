@@ -1,6 +1,7 @@
 slug: tandem-stance
 display_name: Tandem Stance (Heel-Toe Stand)
 client_name: Standing heel to toe
+client_summary: "Standing with one foot directly in front of the other, which narrows your base and makes balance work."
 modality: balance
 intensity_tier: beginner
 position: standing

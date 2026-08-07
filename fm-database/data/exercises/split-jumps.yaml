@@ -1,6 +1,7 @@
 slug: split-jumps
 display_name: Split Jumps (Scissor Skip)
 client_name: Scissor skips
+client_summary: "A light scissor action — your feet swap front and back with a small hop, a bit like skiing on the spot."
 aliases:
 - split jump
 - scissor jumps
