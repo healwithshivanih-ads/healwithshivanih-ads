@@ -17,10 +17,58 @@
    Daily ticking stays on Today — this tab never shows checkboxes.
    ====================================================================== */
 
+import type { AppExerciseSession } from "@/lib/fmdb/exercise-session";
+
 import { useOchre, Icon } from "./ochre-context";
 import { Section, Tile } from "./ochre-ui";
 import { MindBodyEntryCard, MindBodyReadsSection } from "./ochre-mind-body";
 import { MindBodyNudge } from "./ochre-eft";
+
+/**
+ * The open movement card at the top of the tab.
+ *
+ * It says what the session IS before asking for the tap — how many movements,
+ * that they come one at a time, that nothing is timed, and what needs fetching
+ * first. Every one of those was already known and none of it was visible until
+ * the client had already committed by opening the player: the equipment list in
+ * particular used to arrive as step two of a session in progress.
+ *
+ * The first two movements are named for the same reason. "Movement session" is
+ * a label; "heel raises, then a squat" is something a person can picture, and
+ * picturing it is most of the decision to start.
+ */
+function MovementLead({ session, onStart }: { session: AppExerciseSession; onStart: () => void }) {
+  const n = session.items.length;
+  const preview = session.items.slice(0, 2).map((it) => it.name);
+  return (
+    <div className="mv-lead">
+      <div className="mv-kicker">
+        <Icon name="walk" size={13} /> Movement
+      </div>
+      <h3 className="mv-title">{session.name}</h3>
+      {session.when && <p className="mv-when">{session.when}</p>}
+      <p className="mv-lede">
+        {n} {n === 1 ? "movement" : "movements"}, one at a time — the app shows you each one and waits for
+        you. Nothing is timed, and you can stop whenever you like.
+      </p>
+      {preview.length > 0 && (
+        <p className="mv-preview">
+          Starts with {preview.join(", then ")}
+          {n > preview.length ? "…" : ""}
+        </p>
+      )}
+      {session.equipment.length > 0 && (
+        <p className="mv-kit">
+          <Icon name="dot" size={9} /> Have ready: {session.equipment.join(", ")}
+        </p>
+      )}
+      <button className="mv-go" onClick={onStart}>
+        Start the session
+        <Icon name="chev" size={16} />
+      </button>
+    </div>
+  );
+}
 
 export function PracticesScreen({
   openBreath,
@@ -72,6 +120,13 @@ export function PracticesScreen({
   const hasReads = data.mindBodyReads.length > 0 || data.mindBodyWithheld > 0;
   const hasAnything = libraryRows.length > 0 || data.exerciseSessions.length > 0 || hasReads;
 
+  // Movement leads this tab. It is the one thing here that changes strength,
+  // bone and balance, and it was the third section down behind two reflective
+  // ones — a client scrolling past it is a client not doing it. The first
+  // session gets an open card rather than a row, because "one tap, we walk you
+  // through it" is the invitation, and a closed row says none of that.
+  const [lead, ...restSessions] = data.exerciseSessions;
+
   return (
     <div className="screen-pad screen-anim">
       <div className="greeting" style={{ paddingBottom: 4 }}>
@@ -91,6 +146,25 @@ export function PracticesScreen({
             As your plan takes shape, guided practices appear here — breathing, somatic resets, movement.
           </p>
         </div>
+      )}
+
+      {lead && (
+        <Section title="Your movement session">
+          <MovementLead session={lead} onStart={() => openExercise(lead.practiceId)} />
+          {restSessions.length > 0 && (
+            <div className="stack" style={{ gap: 8, marginTop: 10 }}>
+              {restSessions.map((s) => (
+                <Tile
+                  key={s.practiceId}
+                  icon="walk"
+                  t1={s.name}
+                  t2={s.when || "Guided, one exercise at a time"}
+                  onClick={() => openExercise(s.practiceId)}
+                />
+              ))}
+            </div>
+          )}
+        </Section>
       )}
 
       <MindBodyEntryCard
@@ -117,22 +191,6 @@ export function PracticesScreen({
             withheldCount={data.mindBodyWithheld}
             onStart={openSomatic}
           />
-        </Section>
-      )}
-
-      {data.exerciseSessions.length > 0 && (
-        <Section title="Your movement sessions">
-          <div className="stack" style={{ gap: 10 }}>
-            {data.exerciseSessions.map((s) => (
-              <Tile
-                key={s.practiceId}
-                icon="walk"
-                t1={s.name}
-                t2={s.when || "Guided, one exercise at a time"}
-                onClick={() => openExercise(s.practiceId)}
-              />
-            ))}
-          </div>
         </Section>
       )}
 
