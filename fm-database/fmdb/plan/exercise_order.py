@@ -1,10 +1,9 @@
 """Group a movement session by body position, so the client gets up once.
 
 THE PROBLEM THIS SOLVES IS PRACTICAL, NOT CLINICAL. A session that reads
-sit-to-stand → floor bridge → heel raises → bird-dog is eight individually
-good picks and an inconvenient half hour: the client is on the mat, up, down
-again, up again, fetching a chair twice. Nobody says this out loud — they just
-stop doing the session.
+sit-to-stand → floor bridge → heel raises → bird-dog is four individually good
+picks and an inconvenient half hour: the client is on the mat, up, down again,
+up again. Nobody says this out loud — they just stop doing the session.
 
 The model is asked to do this itself (rule 32 in the suggester prompt), and
 this pass runs over its answer anyway, for the same reason the suitability gate
@@ -27,20 +26,24 @@ from __future__ import annotations
 
 from typing import Any, Iterable, Mapping
 
-#: Positions that need the client on the floor. Getting down and up again is the
-#: transition worth avoiding — which is why `seated` is its own band rather than
-#: being lumped in with either side.
+#: Getting down onto the floor and back up is the transition worth spending
+#: once. Everything else is one band.
+#:
+#: SEATED IS NOT ITS OWN BAND, and that is from real data rather than taste.
+#: Modelled as a third band, this pass flagged a live plan — warm-up,
+#: chair-sit-to-stand, supported knee bends, heel raises, walk — as badly
+#: interleaved. It is not: the two "standing" picks either side are done
+#: HOLDING THE CHAIR (support is a level property, not a position), so the
+#: client sets up one chair and stays at it. Splitting that session would have
+#: moved the strength work after the walk to fix a transition nobody makes.
 _FLOOR = {"lying_supine", "lying_prone", "side_lying", "four_point"}
-_CHAIR = {"seated"}
-_UPRIGHT = {"standing", "walking"}
+_UPRIGHT = {"standing", "walking", "seated"}
 
 
 def position_band(position: str) -> str | None:
     """The band a position belongs to, or None for `any_position`/unknown."""
     if position in _FLOOR:
         return "floor"
-    if position in _CHAIR:
-        return "chair"
     if position in _UPRIGHT:
         return "upright"
     return None

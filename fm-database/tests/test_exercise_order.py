@@ -35,7 +35,7 @@ def test_interleaved_session_is_grouped_and_transitions_drop():
     """The real complaint: up, down, up, down for no clinical reason."""
     session = picks(
         "joint-mobilising-sequence",   # standing — warm-up
-        "sit-to-stand-no-hands",       # seated
+        "sit-to-stand-no-hands",       # seated — upright band
         "floor-bridge",                # lying_supine
         "heel-raises",                 # standing
         "bird-dog",                    # four_point
@@ -74,6 +74,26 @@ def test_every_band_ends_up_contiguous():
         if not seen or seen[-1] != b:
             assert b not in seen, f"band {b!r} appears twice in {got}"
             seen.append(b)
+
+
+def test_a_chair_session_is_left_alone():
+    """cl-005's live session, which an earlier three-band version broke.
+
+    The chair pick sits between two picks the client does HOLDING that chair —
+    support is a level property, not a position. Treating `seated` as its own
+    band called this interleaved and moved the strength work after the walk, to
+    save a transition the client never makes.
+    """
+    session = picks(
+        "joint-mobilising-sequence",   # standing — warm-up
+        "chair-sit-to-stand",          # seated
+        "supported-knee-bends",        # standing, holding the chair
+        "heel-raises",                 # standing, holding support
+        "walking-plan",                # walking
+        "cool-down-stretch-sequence",
+    )
+    assert slugs(group_by_position(session, EXERCISES)) == slugs(session)
+    assert position_transitions(session, EXERCISES) == 0
 
 
 # ── what must NOT move ───────────────────────────────────────────────────────
