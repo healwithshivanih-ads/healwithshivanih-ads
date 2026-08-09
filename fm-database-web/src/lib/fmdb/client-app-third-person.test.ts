@@ -4,7 +4,7 @@
  * tissue-salt card opened "This client's anxiety, chronic sleeplessness…".
  */
 import { describe, it, expect } from "vitest";
-import { clientNounToPronoun } from "./client-app-third-person";
+import { clientNounToPronoun, toSecondPerson } from "./client-app-third-person";
 
 describe("clientNounToPronoun", () => {
   it("rewrites the real leak from Hariharan's tissue-salt card", () => {
@@ -57,5 +57,45 @@ describe("clientNounToPronoun", () => {
   it("handles empty and undefined safely", () => {
     expect(clientNounToPronoun("")).toBe("");
     expect(clientNounToPronoun(undefined as unknown as string)).toBe("");
+  });
+});
+
+describe("toSecondPerson", () => {
+  it("does not mangle an OBJECT 'her' into 'your' — the cl-022 magnesium bug", () => {
+    // Rendered live as "…it should be said to your that way."
+    expect(toSecondPerson("it should be said to her that way")).toBe(
+      "It should be said to you that way",
+    );
+  });
+
+  it("treats 'her' as an object in front of any closed-class word", () => {
+    // note: the first letter is always re-capitalised — these are sentences
+    expect(toSecondPerson("gave her the pills")).toBe("Gave you the pills");
+    expect(toSecondPerson("explained it to her again")).toBe("Explained it to you again");
+    expect(toSecondPerson("we told her that it helps")).toBe("We told you that it helps");
+    expect(toSecondPerson("helped her so it lands")).toBe("Helped you so it lands");
+  });
+
+  it("still converts genuine possessives, including ones near the stoplist words", () => {
+    // "is" is untouched here — agreement only fires on a she/he SUBJECT
+    expect(toSecondPerson("Her calcium is low")).toBe("Your calcium is low");
+    expect(toSecondPerson("given her age")).toBe("Given your age");
+    // words deliberately kept OUT of the stoplist because they modify nouns
+    expect(toSecondPerson("her only complaint")).toBe("Your only complaint");
+    expect(toSecondPerson("her very low ferritin")).toBe("Your very low ferritin");
+    expect(toSecondPerson("her own routine")).toBe("Your own routine");
+    expect(toSecondPerson("her back pain")).toBe("Your back pain");
+    expect(toSecondPerson("her right knee")).toBe("Your right knee");
+  });
+
+  it("fixes verb agreement on the subject form", () => {
+    expect(toSecondPerson("she keeps waking at 3am")).toBe("You keep waking at 3am");
+    expect(toSecondPerson("she has low ferritin")).toBe("You have low ferritin");
+    expect(toSecondPerson("The client takes magnesium")).toBe("You take magnesium");
+  });
+
+  it("handles empty and undefined safely", () => {
+    expect(toSecondPerson("")).toBe("");
+    expect(toSecondPerson(undefined as unknown as string)).toBe("");
   });
 });
