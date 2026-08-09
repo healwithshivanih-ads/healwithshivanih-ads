@@ -1,0 +1,26 @@
+id: kamgar-shilajit-metal-composition-2026
+title: Characterization of metal composition and molecular weight distribution in shilajit samples of diverse geographical origin
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Kamgar E
+year: 2026
+publisher: Journal of Trace Elements in Medicine and Biology
+url: https://pubmed.ncbi.nlm.nih.gov/42364294/
+doi: 10.1016/j.jtemb.2026.127913
+notes: |
+  ICP-MS, AF4-ICP-MS and size-exclusion chromatography across 12 shilajit
+  samples of differing geographical origin. Found marked between-sample
+  variability in major minerals (calcium, magnesium), essential trace
+  elements (iron, zinc, manganese) AND toxic elements (lead, cadmium,
+  mercury, cobalt, nickel).
+
+  Independently corroborates aldakheel-shilajit-heavy-metals-2022 on a
+  wider sample set, and adds the point that matters clinically: shilajit
+  is not one substance. Mineral content and contaminant load both depend
+  on the source rock, so a brand/batch certificate of analysis is the only
+  thing that tells you what a given client is actually swallowing.
+version: 1
+status: active
+updated_at: 2026-08-09
+updated_by: shivani

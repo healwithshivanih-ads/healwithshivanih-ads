@@ -17,6 +17,11 @@ take_with_food: optional
 linked_to_topics:
 - hydration-and-brain-function
 - depression-lifestyle
+- insomnia
+- hpa-axis-dysregulation
+linked_to_symptoms:
+- fatigue
+- insomnia
 linked_to_claims:
 - mineral-salt-improves-cellular-hydration
 - celtic-salt-supports-sleep

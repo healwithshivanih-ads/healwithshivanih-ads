@@ -1,0 +1,40 @@
+slug: shilajit-attenuates-postmenopausal-bone-loss
+statement: In postmenopausal women, shilajit 250-500 mg daily for 48 weeks dose-dependently
+  slowed the loss of lumbar-spine and femoral-neck bone mineral density and shifted
+  bone-turnover markers.
+evidence_tier: plausible_emerging
+rationale: A randomised, double-blind, placebo-controlled trial (Pingali 2022, n=60,
+  ages 45-65) ran for 48 weeks — long enough for BMD to move. BMD fell in the placebo
+  arm and fell less on shilajit, with the larger effect at 500 mg. Resorption markers
+  CTX-1, BALP and RANKL fell and osteoprotegerin rose, so the biochemical picture is
+  internally consistent with the densitometry rather than resting on it alone. Still
+  one small single-centre trial.
+coaching_translation: For a postmenopausal client already doing the things with the
+  best evidence — progressive loading and resistance work, adequate protein, vitamin
+  D and calcium sufficiency — shilajit is a plausible extra, not a substitute for any
+  of them. Frame it as "something with early trial evidence worth asking your doctor
+  about", never as bone protection.
+out_of_scope_notes: Ordering or interpreting a DEXA scan, diagnosing osteopenia or
+  osteoporosis, and advising for or against bisphosphonates or MHT are all clinician
+  decisions.
+caveats:
+  - Captured from the abstract; full text not read.
+  - Single trial, n=60, not independently replicated.
+  - Loading, protein and vitamin D remain the first-line levers; shilajit must not
+    displace them.
+linked_to_topics:
+  - osteoporosis
+  - bone-health
+  - perimenopause-and-menopause
+linked_to_mechanisms:
+  - oxidative-stress
+linked_to_symptoms: []
+linked_to_supplements:
+  - shilajit
+sources:
+  - id: pingali-shilajit-bone-density-rct-2022
+    location: Abstract
+version: 1
+status: active
+updated_at: 2026-08-09
+updated_by: shivani

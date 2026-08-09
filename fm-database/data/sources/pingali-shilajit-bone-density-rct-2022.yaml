@@ -1,0 +1,27 @@
+id: pingali-shilajit-bone-density-rct-2022
+title: Shilajit extract reduces oxidative stress, inflammation, and bone loss to dose-dependently preserve bone mineral density in postmenopausal women
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Pingali U
+  - Nutalapati C
+year: 2022
+publisher: Phytomedicine
+url: https://pubmed.ncbi.nlm.nih.gov/35933897/
+doi: 10.1016/j.phymed.2022.154334
+notes: |
+  Randomised, double-blind, placebo-controlled trial. 60 postmenopausal
+  women aged 45-65, shilajit 250 mg or 500 mg daily for 48 weeks. Lumbar
+  spine and femoral neck BMD fell in the placebo arm and was
+  dose-dependently attenuated on shilajit; bone-resorption markers (CTX-1,
+  BALP, RANKL) fell and OPG rose.
+
+  The 48-week duration and the marker panel make this the strongest single
+  clinical trial in the shilajit literature. Still one small single-centre
+  study — captured from the abstract, full text not read. Not a substitute
+  for the established osteoporosis interventions (loading, vitamin D,
+  protein, clinician-directed therapy).
+version: 1
+status: active
+updated_at: 2026-08-09
+updated_by: shivani

@@ -1,0 +1,41 @@
+slug: shilajit-heavy-metal-contamination-risk
+statement: Commercially sold shilajit carries a real heavy-metal contamination risk
+  — lead, arsenic, mercury and cadmium have been measured above permissible limits
+  in retail samples, with Indian-market samples among the worst.
+evidence_tier: strong
+rationale: Two independent analytical studies converge. Aldakheel 2022 quantified metals
+  in Indian and Pakistani retail shilajit by LIBS and ICP-OES/MS and found lead, arsenic,
+  mercury, chromium and nickel exceeding permissible limits, with the Indian samples
+  carrying the higher load. Kamgar 2026 profiled 12 samples of differing geographical
+  origin by ICP-MS and found marked between-sample variability in both essential minerals
+  and toxic elements. Shilajit is a rock exudate — its mineral and contaminant content
+  is a property of the source rock and the purification process, not of "shilajit"
+  as a category.
+coaching_translation: Never let a client buy shilajit from a local shop, an Instagram
+  seller, or a "raw Himalayan resin" listing. If shilajit is used at all, it must be
+  a purified product from a brand that publishes third-party heavy-metal testing per
+  batch, and the client should be told plainly why. This is the single most important
+  thing to say about shilajit — say it before anything about benefits.
+out_of_scope_notes: If a client has been taking unverified shilajit long-term and has
+  symptoms that could fit heavy-metal exposure, that is a clinician referral for testing,
+  not a coaching conversation.
+caveats:
+  - Contamination is sample- and brand-specific, not universal — a tested product is
+    not automatically unsafe.
+  - Neither study followed clinical outcomes in humans; the finding is analytical exposure
+    risk, not documented poisoning in these cohorts.
+linked_to_topics:
+  - heavy-metal-toxicity
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements:
+  - shilajit
+sources:
+  - id: aldakheel-shilajit-heavy-metals-2022
+    location: Abstract / results
+  - id: kamgar-shilajit-metal-composition-2026
+    location: Abstract / results
+version: 1
+status: active
+updated_at: 2026-08-09
+updated_by: shivani

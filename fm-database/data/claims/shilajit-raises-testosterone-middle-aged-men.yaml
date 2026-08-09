@@ -1,0 +1,41 @@
+slug: shilajit-raises-testosterone-middle-aged-men
+statement: In men aged 45-55, purified shilajit 250 mg twice daily for 90 days raised
+  total testosterone, free testosterone and DHEAS versus placebo.
+evidence_tier: plausible_emerging
+rationale: One randomised, double-blind, placebo-controlled trial (Pandit 2016) in
+  healthy male volunteers found significant increases in total and free testosterone
+  and in DHEAS after 90 days at 250 mg twice daily. The effect is biologically plausible
+  — shilajit's dibenzo-alpha-pyrones and fulvic acid are antioxidant, and Leydig-cell
+  steroidogenesis is oxidative-stress sensitive — but the trial is small, single-centre,
+  used a branded purified preparation, and has not been independently replicated in
+  an equivalent population.
+coaching_translation: For a middle-aged man with low-testosterone symptoms who is already
+  addressing sleep, resistance training, body composition and alcohol, a heavy-metal-tested
+  purified shilajit is a reasonable adjunct to discuss with his doctor. It is not a
+  replacement for a proper endocrine workup, and it should never be framed to a client
+  as something that will raise his testosterone.
+out_of_scope_notes: Diagnosing hypogonadism, interpreting a testosterone panel, or
+  positioning shilajit as an alternative to prescribed TRT are all outside coaching
+  scope. Refer to an endocrinologist or andrologist.
+caveats:
+  - Captured from the abstract; the full text and assay methodology were not read.
+  - Single small trial, no independent replication.
+  - Effect size in absolute hormone units is not established well enough to promise
+    a clinically meaningful change.
+  - Results apply to a purified branded preparation, not to unrefined bazaar resin.
+linked_to_topics: []
+linked_to_mechanisms:
+  - oxidative-stress
+linked_to_symptoms:
+  - fatigue-from-low-testosterone
+  - low-libido
+  - fatigue
+linked_to_supplements:
+  - shilajit
+sources:
+  - id: pandit-shilajit-testosterone-rct-2016
+    location: Abstract
+version: 1
+status: active
+updated_at: 2026-08-09
+updated_by: shivani

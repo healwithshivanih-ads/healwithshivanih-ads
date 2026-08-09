@@ -9,10 +9,13 @@ that don't exist.
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from typing import Any
 
 from ..validator import Loaded
+
+_log = logging.getLogger(__name__)
 
 # ── Size caps — keep the assessment subgraph focused so prompts stay small
 # and cheap. Broad conditions (e.g. hypothyroidism + insulin-resistance) can
@@ -70,6 +73,15 @@ class AssessmentScope:
     core_mech_set: set[str]      # pre-expansion mechanisms (used for ranking)
     selected_symptoms: list = field(default_factory=list)  # resolved Symptom objects
     sym_set: set[str] = field(default_factory=set)         # raw selected symptom slugs
+    # The coach's LITERAL picks, before symptoms pull their own topics in.
+    # `core_*` is not this: one selected symptom drags its whole
+    # `linked_to_topics` list into core, so on a 3-symptom + 2-condition
+    # assessment core grows to ~241 supplements for 50 slots and the
+    # "core-first" sort key stops discriminating at all (measured 2026-08-09).
+    # Ranking needs to know what was actually chosen, so it is tracked
+    # separately. Defaults empty so existing constructions still load.
+    selected_topic_set: set[str] = field(default_factory=set)
+    selected_mech_set: set[str] = field(default_factory=set)
 
 
 def assessment_scope(
@@ -108,6 +120,10 @@ def assessment_scope(
         ):
             if _ds in _all_topic_slugs:
                 topic_set.add(_ds)
+
+    # Snapshot the literal picks BEFORE symptoms widen the set — this is what
+    # ranking treats as "directly chosen" (see AssessmentScope.selected_*).
+    selected_topic_set = set(topic_set)
 
     # Pull selected symptoms into the bundle and harvest their links
     sym_by_slug = {s.slug: s for s in cat.symptoms}
@@ -167,6 +183,18 @@ def assessment_scope(
                 topic_set.add(t_slug)
     mech_set |= {m for m in new_mech if m in mech_by_slug}
 
+    # Mechanisms named directly by an explicitly selected topic (canonicalised
+    # the same way as mech_set, so a supplement linked via an alias still hits).
+    selected_mech_set: set[str] = set()
+    for t_slug in selected_topic_set:
+        t = topic_by_slug.get(t_slug)
+        if not t:
+            continue
+        for m_slug in t.key_mechanisms:
+            canonical = mech_alias_to_canonical.get(m_slug, m_slug)
+            if canonical in mech_by_slug:
+                selected_mech_set.add(canonical)
+
     return AssessmentScope(
         topic_set=topic_set,
         mech_set=mech_set,
@@ -174,6 +202,8 @@ def assessment_scope(
         core_mech_set=core_mech_set,
         selected_symptoms=selected_symptoms,
         sym_set=sym_set,
+        selected_topic_set=selected_topic_set,
+        selected_mech_set=selected_mech_set,
     )
 
 
@@ -256,21 +286,77 @@ def build_subgraph(
     ))
     relevant_claims = relevant_claims[:MAX_CLAIMS]
 
-    # Supplements that link to selected topics OR mechanisms OR claims
+    # Supplements that link to selected topics OR mechanisms OR the selected
+    # symptoms OR an in-scope claim.
+    #
+    # The symptom edge is load-bearing and was missing until 2026-08-09:
+    # `Supplement.linked_to_symptoms` existed on the model and on 18 records
+    # but was matched nowhere here, so it was inert — a supplement authored
+    # onto `fatigue` only surfaced via whatever topic it happened to carry.
+    # Claims already walked their symptom edge; supplements now do too.
     claim_set = {c.slug for c in relevant_claims}
+
+    def _supp_symptom_hits(s) -> int:
+        return len(
+            {sym_alias_to_canonical.get(x, x) for x in s.linked_to_symptoms}
+            & canonical_sym_set
+        )
+
     relevant_supplements = []
     for s in cat.supplements:
         if (
             set(s.linked_to_topics) & topic_set
             or set(s.linked_to_mechanisms) & mech_set
             or set(s.linked_to_claims) & claim_set
+            or _supp_symptom_hits(s)
         ):
             relevant_supplements.append(s)
-    relevant_supplements.sort(key=lambda s: (
-        0 if (set(s.linked_to_topics) & core_topic_set or set(s.linked_to_mechanisms) & core_mech_set) else 1,
-        _tier_rank(s.evidence_tier),
-        s.slug,
-    ))
+
+    # Rank by DIRECTNESS TO THE SELECTION, not by a binary core flag.
+    #
+    # The old key was (core?, tier, slug). `core` includes every topic any
+    # selected symptom links to, so a realistic 3-symptom + 2-condition
+    # assessment put 241 supplements in the core bucket for 50 slots: the
+    # first key stopped discriminating, tier did a little, and the actual cut
+    # was made ALPHABETICALLY. Measured: adding the symptom `fatigue` to an
+    # `insomnia` assessment moved celtic-salt from rank 17 (kept) to rank 68
+    # (cut) without it becoming any less relevant.
+    #
+    # Three bands, each ordered by how MANY of the coach's picks the
+    # supplement touches, with evidence tier demoted to a tiebreak:
+    #   0 — touches something explicitly selected (topic, symptom, or a
+    #       mechanism named by a selected topic)
+    #   1 — touches a symptom-expanded topic/mechanism (the old "core")
+    #   2 — reached only through one-hop expansion or a claim
+    def _supp_rank(s):
+        sel_hits = (
+            len(set(s.linked_to_topics) & scope.selected_topic_set)
+            + len(set(s.linked_to_mechanisms) & scope.selected_mech_set)
+            + _supp_symptom_hits(s)
+        )
+        core_hits = (
+            len(set(s.linked_to_topics) & core_topic_set)
+            + len(set(s.linked_to_mechanisms) & core_mech_set)
+        )
+        scope_hits = (
+            len(set(s.linked_to_topics) & topic_set)
+            + len(set(s.linked_to_mechanisms) & mech_set)
+        )
+        band = 0 if sel_hits else (1 if core_hits else 2)
+        return (band, -sel_hits, -core_hits, _tier_rank(s.evidence_tier), -scope_hits, s.slug)
+
+    relevant_supplements.sort(key=_supp_rank)
+    # Never truncate silently — a capped subgraph must not read as full
+    # coverage. Anything dropped here is invisible to the assessment.
+    if len(relevant_supplements) > MAX_SUPPLEMENTS:
+        _dropped = relevant_supplements[MAX_SUPPLEMENTS:]
+        _dropped_sel = sum(1 for s in _dropped if _supp_rank(s)[0] == 0)
+        _log.info(
+            "subgraph: supplement cap dropped %d of %d candidates "
+            "(%d of them directly selection-linked) for symptoms=%s topics=%s",
+            len(_dropped), len(relevant_supplements), _dropped_sel,
+            sorted(sym_set), sorted(scope.selected_topic_set),
+        )
     relevant_supplements = relevant_supplements[:MAX_SUPPLEMENTS]
 
     # Cooking adjustments + home remedies linked to selected topics or mechanisms
