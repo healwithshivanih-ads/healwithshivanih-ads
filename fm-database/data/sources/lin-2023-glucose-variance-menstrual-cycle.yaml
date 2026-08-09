@@ -1,0 +1,25 @@
+id: lin-2023-glucose-variance-menstrual-cycle
+title: Blood glucose variance measured by continuous glucose monitors across the menstrual
+  cycle
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- G. Lin
+- R. Siddiqui
+- Z. Lin
+- J. M. Blodgett
+- S. N. Patel
+- K. N. Truong
+- A. Mariakakis
+year: 2023
+publisher: npj Digital Medicine 6:140
+doi: 10.1038/s41746-023-00884-x
+notes: 'Cited on a presenter slide during the FMCA 18 Nov 2025 Ask-the-Expert
+  session; 49 participants wearing a CGM plus an activity tracker plus daily urinary
+  hormone testing. IMPORTANT: captured from the slide''s summary of the study, NOT
+  from the full text — the effect sizes, cohort characteristics and limitations have
+  not been read. Re-tier the claims citing it once someone reads the primary paper.'
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

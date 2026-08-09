@@ -1,0 +1,28 @@
+slug: time-interventions-to-phase-not-calendar-day
+statement: Cycle-timed interventions should follow the client's actual follicular and
+  luteal phases, not a fixed two-weeks-each calendar split; a woman with a 49-day
+  cycle stays in her follicular plan well past day 14.
+evidence_tier: fm_specific_thin
+rationale: Phase boundaries are set by ovulation, which varies widely between women
+  and between cycles, so a day-count schedule misassigns the plan for anyone whose
+  cycle is not textbook.
+coaching_translation: Switch your plan when your body switches phase, not on a date
+  in the diary.
+linked_to_topics:
+- cycle-syncing
+- at-home-hormone-cycle-tracking
+- pcos
+linked_to_mechanisms:
+- infradian-rhythm
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats: []
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Cycle syncing applied to real charts (~52 min)
+  quote: it's not a you do this for two weeks and follicular you move to the next
+    luteal phase two weeks because that's not specific to your client
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

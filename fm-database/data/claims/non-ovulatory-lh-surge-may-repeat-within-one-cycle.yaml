@@ -1,0 +1,29 @@
+slug: non-ovulatory-lh-surge-may-repeat-within-one-cycle
+statement: A failed (non-ovulatory) LH surge can be followed by a second, successful
+  surge later in the same cycle; this looks like one long cycle but is two distinct
+  ovulation attempts, and is seen in PCOS and perimenopause.
+evidence_tier: plausible_emerging
+rationale: Pulsatile brain-to-ovary signalling can fail to recruit a responsive
+  follicle, then succeed on a later attempt, producing two LH peaks with progesterone
+  rising only after the second.
+coaching_translation: Sometimes the body tries to ovulate, misses, and tries again
+  later in the same cycle — which explains a "late" period that is not a pregnancy.
+linked_to_topics:
+- pcos
+- perimenopause
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms:
+- non-ovulatory-lh-surge
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats:
+- Illustrated with individual client charts rather than cohort data.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: PCOS case study (~30 min)
+  quote: this is actually a distinct event called the non-ovulatory lh surge where
+    the body tried twice
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

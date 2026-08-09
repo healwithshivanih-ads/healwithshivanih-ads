@@ -1,0 +1,28 @@
+slug: luteal-glucose-worsens-even-with-existing-dysglycemia
+statement: Luteal-phase glucose variability worsens even in women whose glucose control
+  is already poor throughout the cycle, so the phase effect applies to metabolically
+  healthy and dysglycemic clients alike.
+evidence_tier: fm_specific_thin
+rationale: In pilot scoring data, a client with prediabetes scored badly across the
+  whole cycle yet still showed her worst variability in the luteal phase.
+coaching_translation: If you already struggle with blood sugar, the premenstrual
+  fortnight is when it gets hardest — plan for it rather than being surprised by it.
+linked_to_topics:
+- cycle-syncing
+- insulin-resistance
+- pcos
+linked_to_mechanisms:
+- luteal-progesterone-insulin-resistance
+linked_to_supplements: []
+out_of_scope_notes: Prediabetes and diabetes management are clinician-led.
+caveats:
+- Vendor pilot data shown on slide; small and not peer reviewed.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: CGM scoring across cycle phases (~50 min)
+  quote: even if someone is kind of bad all the time they're still even worse in their
+    luteal phase
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: non-ovulatory-lh-surge
+display_name: Non-Ovulatory LH Surge
+aliases:
+- failed ovulation attempt
+- lh surge without ovulation
+- unsuccessful lh surge
+category: endocrine
+summary: An LH surge occurs but fails to rupture the follicle, so no corpus luteum
+  forms and no progesterone rise follows. The body may mount a second, successful
+  surge later in the same cycle — which looks like a "long cycle" but is a distinct
+  event. Seen in PCOS and in perimenopause, where brain-to-ovary signalling is
+  poorly coordinated.
+upstream_drivers: []
+downstream_effects:
+- low-progesterone
+related_mechanisms:
+- low-progesterone
+linked_to_topics:
+- pcos
+- perimenopause
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Identify and Assess — PCOS case (~29-31 min)
+  quote: an lh surge that did not successfully trigger the ovary to release an egg
+    so there's no corpus luteum to make progesterone
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

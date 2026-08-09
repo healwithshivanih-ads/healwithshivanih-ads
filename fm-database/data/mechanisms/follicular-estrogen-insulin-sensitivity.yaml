@@ -1,0 +1,26 @@
+slug: follicular-estrogen-insulin-sensitivity
+display_name: Follicular Estrogen-Driven Insulin Sensitivity
+aliases:
+- estrogen insulin sensitivity
+- follicular insulin sensitivity
+category: metabolic
+summary: Rising follicular-phase estrogen improves insulin sensitivity, so less insulin
+  is needed to clear the same carbohydrate load and glucose stays within range more
+  of the time than it does in the luteal phase.
+upstream_drivers: []
+downstream_effects: []
+related_mechanisms:
+- luteal-progesterone-insulin-resistance
+- insulin-resistance
+linked_to_topics:
+- cycle-syncing
+- insulin-resistance
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Slide — follicular phase details (~45 min)
+  quote: Higher estrogen increases insulin sensitivity
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

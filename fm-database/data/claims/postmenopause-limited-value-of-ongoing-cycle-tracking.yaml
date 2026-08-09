@@ -1,0 +1,26 @@
+slug: postmenopause-limited-value-of-ongoing-cycle-tracking
+statement: Once a woman is postmenopausal, ongoing daily cycle-hormone tracking has
+  limited utility because the hormones are consistently low and there is no cycle to
+  map; the useful window is puberty through menopause.
+evidence_tier: fm_specific_thin
+rationale: The value of serial tracking comes from mapping a repeating rhythm, which
+  no longer exists after menopause.
+coaching_translation: After menopause, daily hormone tracking mostly stops earning
+  its keep — the focus shifts to symptoms, labs with your doctor, and daily rhythm.
+linked_to_topics:
+- menopause
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats:
+- Notable that a device vendor is limiting its own use case, which strengthens the
+  statement.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Perimenopause Q&A (~37 min)
+  quote: postmenopausal is probably not your best bet for this sort of ongoing tracking
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

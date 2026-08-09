@@ -1,0 +1,29 @@
+slug: perimenopause-involves-estrogen-surges-not-only-decline
+statement: Perimenopause is not a smooth estrogen decline — it commonly includes
+  sustained estrogen surges with low progesterone, which can drive breast tenderness,
+  fullness, low mood, irritability and shifting migraine patterns.
+evidence_tier: plausible_emerging
+rationale: As follicles become less responsive, the brain raises its signalling and
+  the ovary can then release a disproportionately large estrogen output, producing
+  high estrogen unopposed by progesterone in an anovulatory cycle.
+coaching_translation: In perimenopause estrogen can spike as well as fall, so symptoms
+  that change suddenly are often the hormones moving, not you doing something wrong.
+linked_to_topics:
+- perimenopause
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms:
+- non-ovulatory-lh-surge
+- low-progesterone
+linked_to_supplements: []
+out_of_scope_notes: Diagnosing perimenopause and prescribing HRT are clinician-led.
+caveats:
+- Based on presented client charts and clinical experience, not a cohort study.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Perimenopause case (~34-35 min)
+  quote: their breasts hurt their breasts full and swollen they feel full and puffy
+    they feel moody especially more depressed or anxious even rageful
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

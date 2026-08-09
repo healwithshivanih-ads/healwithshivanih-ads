@@ -1,0 +1,32 @@
+slug: confirming-ovulation-requires-pdg-rise-after-lh-surge
+statement: An LH surge alone does not confirm ovulation; confirmation requires a
+  sustained rise in PdG (a urinary progesterone metabolite) after the surge, with a
+  luteal phase of roughly 11-16 days and PdG above E3G during that window.
+evidence_tier: plausible_emerging
+rationale: LH triggers follicle rupture but does not guarantee it. Only a corpus
+  luteum produces progesterone, so a PdG rise is the downstream evidence that release
+  actually happened.
+coaching_translation: A positive ovulation strip says your body tried; a progesterone
+  rise afterwards says it worked.
+linked_to_topics:
+- at-home-hormone-cycle-tracking
+- pcos
+- perimenopause
+linked_to_mechanisms:
+- non-ovulatory-lh-surge
+- low-progesterone
+linked_to_supplements: []
+out_of_scope_notes: Interpreting a client's chart as a diagnosis of anovulation or
+  luteal phase defect is clinician work.
+caveats:
+- Reference pattern shown was derived from self-reported conception cycles on a single
+  vendor platform.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Interpreting PdG pattern (~22-24 min)
+  quote: Are the PdG levels within the reference range and higher than E3G during
+    the luteal phase? Is the luteal phase between 11-16 days?
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani
