@@ -106,3 +106,45 @@ export function relativeTimeShort(iso: string | null | undefined): string {
     return "";
   }
 }
+
+// ── Outbound channel tags ────────────────────────────────────────────────────
+//
+// Client notifications went WhatsApp-only until 2026-08-09, when the coach
+// switched the default to email (WhatsApp now only on explicit request). Both
+// channels write the same rolling thread segment, distinguished by source tag:
+//
+//   [source: whatsapp_outbound] [template: <name>] [sent_at: <ISO>]
+//   [source: email_outbound]    [template: <name>] [sent_at: <ISO>]
+//
+// Every reader that used to test for the WhatsApp tag literally must go through
+// isOutboundSegment instead, or an emailed notification is invisible: the chat
+// thread drops it, and the "✓ Sent · Resend" state on the coach's buttons reads
+// as never-sent forever.
+
+export type OutboundChannel = "whatsapp" | "email";
+
+/** The source tag a send of this channel writes. */
+export function outboundSourceTag(channel: OutboundChannel): string {
+  return channel === "email" ? "[source: email_outbound]" : "[source: whatsapp_outbound]";
+}
+
+/** True when a session segment is an outbound send on ANY channel. */
+export function isOutboundSegment(s: string): boolean {
+  return s.includes("[source: whatsapp_outbound]") || s.includes("[source: email_outbound]");
+}
+
+/** Which channel a segment was sent on — defaults to whatsapp for the years of
+ *  history written before email existed. */
+export function outboundChannelOf(s: string): OutboundChannel {
+  return s.includes("[source: email_outbound]") ? "email" : "whatsapp";
+}
+
+/** Earliest index of any outbound tag, or -1 — the direction-fallback for very
+ *  old sessions that carry the tag only at the top. */
+export function indexOfOutboundTag(s: string): number {
+  const a = s.indexOf("[source: whatsapp_outbound]");
+  const b = s.indexOf("[source: email_outbound]");
+  if (a === -1) return b;
+  if (b === -1) return a;
+  return Math.min(a, b);
+}

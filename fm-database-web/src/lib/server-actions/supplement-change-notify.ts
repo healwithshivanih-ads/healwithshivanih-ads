@@ -34,6 +34,9 @@ import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { ensureLetterToken } from "./letter-token";
 import { sendWhatsAppAction, recordOutboundMessageAction } from "@/app/api/whatsapp/actions";
+import { sendClientEmailAction } from "@/app/api/email/actions";
+import { buildSupplementEmail } from "@/lib/fmdb/supplement-email";
+import type { OutboundChannel } from "@/lib/fmdb/session-utils";
 
 type Dict = Record<string, unknown>;
 
@@ -95,8 +98,12 @@ export interface NotifySupplementChangeResult {
   ok: boolean;
   /** true if the in-app "Plan updated" banner was set on the published plan. */
   flagged: boolean;
-  /** true if the fm_supplement_order_v2 WhatsApp actually went out. */
+  /** true if the WhatsApp actually went out (only when channel === "whatsapp"). */
   whatsapp_sent: boolean;
+  /** true if the notification email actually went out (the default channel). */
+  email_sent?: boolean;
+  /** Which channel was attempted, so the caller can word its toast correctly. */
+  channel?: OutboundChannel;
   error?: string;
 }
 
@@ -124,6 +131,9 @@ export async function notifySupplementChangeAction(input: {
    *  supplement ALREADY in the plan is now due to start (phased start_week).
    *  Picks fm_supplement_change_v1 vs fm_supplement_activate_v1. Default "change". */
   mode?: "change" | "activate";
+  /** Delivery channel. EMAIL IS THE DEFAULT (coach decision 2026-08-09) —
+   *  WhatsApp only when she explicitly asks for it on this send. */
+  channel?: OutboundChannel;
   whatChanged?: string;
   why?: string;
   note?: string;
@@ -139,6 +149,8 @@ export async function notifySupplementChangeAction(input: {
   }
 
   const mode = input.mode === "activate" ? "activate" : "change";
+  const channel: OutboundChannel = input.channel === "whatsapp" ? "whatsapp" : "email";
+  let emailSent = false;
   const whatChanged = input.whatChanged?.trim() || "";
   const why = input.why?.trim() || "";
   const bannerLead = !whatChanged
@@ -184,14 +196,24 @@ export async function notifySupplementChangeAction(input: {
   const client = await readClient(clientId);
   const displayName = ((client?.display_name as string) || "").trim();
   const phone = ((client?.mobile_number as string) || "").trim();
+  const email = ((client?.email as string) || "").trim();
 
-  if (!phone) {
-    // No phone → banner is still set (above); skip WA, report clearly.
-    errors.push("whatsapp: no mobile number on file — banner set, WhatsApp skipped");
+  // Whichever channel is chosen needs its own address on file. Report the
+  // MISSING one specifically — "no email on file" and "no mobile number on
+  // file" send the coach to two different fixes.
+  const missing =
+    channel === "email"
+      ? !email && "no email address on file"
+      : !phone && "no mobile number on file";
+  if (missing) {
+    // Banner is still set (above); only the send is skipped.
+    errors.push(`${channel}: ${missing} — banner set, message skipped`);
     return {
       ok: flagged,
       flagged,
       whatsapp_sent: false,
+      email_sent: false,
+      channel,
       error: errors.join("; ") || undefined,
     };
   }
@@ -215,6 +237,68 @@ export async function notifySupplementChangeAction(input: {
 
   const coach = process.env.COACH_NAME || "Shivani";
   let usedTemplate = "";
+
+  // ── EMAIL (the default channel) ───────────────────────────────────────────
+  // One message, no template params, no 24-hour window. Falls back to nothing:
+  // if the email fails the coach is told, rather than silently rerouting to a
+  // channel she did not choose.
+  if (channel === "email") {
+    const built = buildSupplementEmail({
+      firstName: fname,
+      mode,
+      whatChanged: whatChanged || "Your supplement list has been updated.",
+      why: why || "",
+      orderUrl: suppUrl,
+      appUrl: (client?.app_token as string)
+        ? `${publicOrigin()}/app/${client?.app_token as string}`
+        : undefined,
+      coachName: coach,
+    });
+    try {
+      const res = await sendClientEmailAction({
+        to: email,
+        subject: built.subject,
+        htmlBody: built.html,
+        textBody: built.text,
+      });
+      if (res.ok) {
+        emailSent = true;
+        usedTemplate = mode === "activate" ? "email_supplement_activate" : "email_supplement_change";
+      } else {
+        errors.push(`email: ${res.error || "send_failed"}`);
+      }
+    } catch (e) {
+      errors.push(`email: ${(e as Error).message}`);
+    }
+
+    if (emailSent) {
+      // Same rolling thread as a WhatsApp send, tagged email_outbound — so the
+      // chat panel shows it and the button's "✓ Sent · Resend" state survives
+      // a reload (feedback-send-buttons-persist-state).
+      try {
+        await recordOutboundMessageAction({
+          clientId,
+          templateName: usedTemplate,
+          renderedBody: built.text,
+          channel: "email",
+        });
+      } catch {
+        /* audit-only — the send already succeeded */
+      }
+    }
+
+    const okEmail = flagged && emailSent;
+    return {
+      ok: okEmail,
+      flagged,
+      whatsapp_sent: false,
+      email_sent: emailSent,
+      channel,
+      error: errors.join("; ") || undefined,
+    };
+  }
+
+  // ── WHATSAPP (only when explicitly requested) ─────────────────────────────
 
   // Prefer the detailed "what changed + why" template when we have both fields.
   // If it errors (e.g. still PENDING Meta approval), fall through to the bare
@@ -283,6 +367,8 @@ export async function notifySupplementChangeAction(input: {
     ok,
     flagged,
     whatsapp_sent: whatsappSent,
+    email_sent: false,
+    channel,
     error: errors.length ? errors.join("; ") : undefined,
   };
 }

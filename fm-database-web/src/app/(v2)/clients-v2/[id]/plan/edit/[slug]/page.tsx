@@ -380,6 +380,9 @@ export default async function V2PlanEditorPage({
               hasPhone={Boolean(
                 (planClient as { mobile_number?: string | null } | undefined)?.mobile_number?.trim(),
               )}
+              hasEmail={Boolean(
+                (planClient as { email?: string | null } | undefined)?.email?.trim(),
+              )}
             />
           )}
 

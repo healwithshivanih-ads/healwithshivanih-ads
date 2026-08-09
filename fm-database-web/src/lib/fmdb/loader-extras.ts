@@ -6,6 +6,7 @@ import { getCataloguePath, getPlansRoot, getResourcesRoot } from "./paths";
 import { resolvePersonDir } from "./person-dir";
 import type { Client, MindMap } from "./types";
 import { withFsRetry } from "./fs-retry";
+import { isOutboundSegment } from "./session-utils";
 
 async function readYaml<T>(absPath: string): Promise<T | null> {
   try {
@@ -1692,7 +1693,7 @@ export async function getClientHealthSignals(
           } catch {
             continue;
           }
-          if (content.includes("[source: whatsapp_outbound]")) continue; // outbound auto-log ≠ contact
+          if (isOutboundSegment(content)) continue; // outbound auto-log ≠ contact (either channel)
           lastRealSession = m[1];
           break;
         }

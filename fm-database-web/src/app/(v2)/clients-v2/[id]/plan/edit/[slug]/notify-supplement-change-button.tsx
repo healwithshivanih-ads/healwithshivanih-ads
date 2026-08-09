@@ -5,7 +5,11 @@
  * supplements changed" through BOTH channels at once:
  *
  *   • sets the in-app "Plan updated" banner on the published plan
- *   • sends the fm_supplement_order_v2 WhatsApp with the supplement-order link
+ *   • emails the client the change + the supplement-order link
+ *
+ * EMAIL IS THE DEFAULT CHANNEL (coach decision 2026-08-09). WhatsApp is still
+ * there, one toggle away, for when she explicitly wants it — it costs a Meta
+ * template send and only reaches a client with a mobile on file.
  *
  * Use it after editing the supplement protocol on a live plan (swap an item,
  * change a dose, add a new supplement). Reuses notifySupplementChangeAction —
@@ -33,11 +37,16 @@ interface Props {
   planSlug: string;
   /** Whether the client has a mobile number on file — drives the WA note. */
   hasPhone?: boolean;
+  /** Whether the client has an email on file — drives the email note. */
+  hasEmail?: boolean;
 }
 
-export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: Props) {
+export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone, hasEmail }: Props) {
   const [pending, start] = useTransition();
   const [mode, setMode] = useState<"change" | "activate">("change");
+  // Email unless the coach says otherwise, every time — the toggle does not
+  // persist, so a one-off WhatsApp cannot silently become the new default.
+  const [channel, setChannel] = useState<"email" | "whatsapp">("email");
   const [whatChanged, setWhatChanged] = useState("");
   const [why, setWhy] = useState("");
   // Persisted send state — most recent supplement-change / activate / order send.
@@ -45,12 +54,17 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
 
   useEffect(() => {
     void (async () => {
-      const [a, b, c] = await Promise.all([
+      // Both channels write the same rolling thread, so the sent-state must
+      // look at the email template names too — otherwise an emailed
+      // notification reads as never-sent forever.
+      const results = await Promise.all([
         getLastSentAtAction(clientId, "fm_supplement_change_v1"),
         getLastSentAtAction(clientId, "fm_supplement_activate_v1"),
         getLastSentAtAction(clientId, "fm_supplement_order_v2"),
+        getLastSentAtAction(clientId, "email_supplement_change"),
+        getLastSentAtAction(clientId, "email_supplement_activate"),
       ]);
-      const latest = [a.sentAt, b.sentAt, c.sentAt].filter(Boolean).sort().reverse()[0] ?? null;
+      const latest = results.map((r) => r.sentAt).filter(Boolean).sort().reverse()[0] ?? null;
       setSentAt(latest);
     })();
   }, [clientId]);
@@ -63,19 +77,21 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
         clientId,
         planSlug,
         mode,
+        channel,
         whatChanged: whatChanged.trim() || undefined,
         why: why.trim() || undefined,
       });
 
       // Banner half — always attempted first, so surface it even on partial.
       if (r.flagged) {
-        if (r.whatsapp_sent) {
+        const label = r.channel === "whatsapp" ? "WhatsApp" : "email";
+        if (r.whatsapp_sent || r.email_sent) {
           setSentAt(new Date().toISOString());
-          toast.success("📦 Client notified — “Plan updated” banner set + WhatsApp sent");
+          toast.success(`📦 Client notified — “Plan updated” banner set + ${label} sent`);
         } else {
-          // Banner set but WhatsApp couldn't run (no phone / send error).
+          // Banner set but the send couldn't run (no address / send error).
           toast.warning(
-            `“Plan updated” banner set, but WhatsApp didn't send${r.error ? ` — ${r.error}` : ""}`,
+            `“Plan updated” banner set, but the ${label} didn't send${r.error ? ` — ${r.error}` : ""}`,
           );
         }
       } else {
@@ -99,7 +115,7 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
     ? {
         title: "📦 Notify client: supplement now starting",
         subtitle:
-          "For a supplement already in the plan that's now due to start. Sets the in-app banner and sends a WhatsApp.",
+          "For a supplement already in the plan that's now due to start. Sets the in-app banner and emails the client.",
         f1: "Which supplement is starting now",
         f1ph: "Magnesium glycinate — 1 capsule at bedtime.",
         f2: "Why now / how to take it",
@@ -109,7 +125,7 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
     : {
         title: "📦 Notify client: supplements changed",
         subtitle:
-          "For a change to the supplements (swap / new / dose). Sets the in-app banner and sends a WhatsApp.",
+          "For a change to the supplements (swap / new / dose). Sets the in-app banner and emails the client.",
         f1: "What changed this period",
         f1ph: "Your four separate B-vitamins are now one combined capsule (Homocysteine Defence B Complex).",
         f2: "Why",
@@ -149,6 +165,40 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
           </button>
         </div>
 
+        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+          <span style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>Send by</span>
+          <div
+            style={{
+              display: "inline-flex",
+              gap: 4,
+              background: "var(--fm-surface-2, #f1f1f1)",
+              padding: 3,
+              borderRadius: 8,
+              width: "fit-content",
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setChannel("email")}
+              disabled={pending}
+              style={segStyle(channel === "email")}
+            >
+              ✉️ Email
+            </button>
+            <button
+              type="button"
+              onClick={() => setChannel("whatsapp")}
+              disabled={pending}
+              style={segStyle(channel === "whatsapp")}
+            >
+              💬 WhatsApp
+            </button>
+          </div>
+          {channel === "whatsapp" ? (
+            <FmChip tone="neutral">Costs a template send — email is the default</FmChip>
+          ) : null}
+        </div>
+
         <label style={{ display: "grid", gap: 4 }}>
           <span style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>{copy.f1}</span>
           <textarea
@@ -175,7 +225,9 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
 
         {!canSendDetailed && (whatChanged.trim() || why.trim()) ? (
           <FmChip tone="neutral">
-            Fill in both fields to send the detailed message — otherwise a plain order link goes out.
+            {channel === "whatsapp"
+              ? "Fill in both fields to send the detailed message — otherwise a plain order link goes out."
+              : "Fill in both fields — the email reads better with a what and a why."}
           </FmChip>
         ) : null}
 
@@ -202,9 +254,14 @@ export function NotifySupplementChangeButton({ clientId, planSlug, hasPhone }: P
                 : copy.btn}
           </button>
 
-          {!hasPhone && (
+          {channel === "whatsapp" && !hasPhone && (
             <FmChip tone="neutral">
               No mobile number on file — the banner is still set, WhatsApp is skipped
+            </FmChip>
+          )}
+          {channel === "email" && hasEmail === false && (
+            <FmChip tone="neutral">
+              No email address on file — the banner is still set, the email is skipped
             </FmChip>
           )}
         </div>
