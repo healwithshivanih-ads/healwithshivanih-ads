@@ -91,3 +91,6 @@ nutrient_lines:
   key: ghee
   g: 5.0
 nutrient_servings: 2.0
+cycle_phases:
+- early_luteal
+- late_luteal

@@ -182,3 +182,6 @@ nutrient_lines:
   key: tomato
   g: 800.0
 nutrient_servings: 2.5
+cycle_phases:
+- early_luteal
+- late_luteal

@@ -168,3 +168,7 @@ nutrient_lines:
   key: coconut-fresh
   g: 1.4
 nutrient_servings: 12.0
+cycle_phases:
+- ovulatory
+- early_luteal
+- late_luteal

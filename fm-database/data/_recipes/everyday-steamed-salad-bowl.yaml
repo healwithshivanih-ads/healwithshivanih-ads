@@ -159,3 +159,5 @@ nutrient_lines:
   key: sunflower-seeds
   g: 30.0
 nutrient_servings: 2.0
+cycle_phases:
+- follicular

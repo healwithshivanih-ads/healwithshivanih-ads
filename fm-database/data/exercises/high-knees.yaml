@@ -128,3 +128,6 @@ version: 1
 status: active
 updated_at: '2026-08-05'
 updated_by: Shivani
+cycle_phases_avoid:
+- early_luteal
+- late_luteal

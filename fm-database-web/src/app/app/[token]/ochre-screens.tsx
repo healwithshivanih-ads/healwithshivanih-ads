@@ -619,6 +619,21 @@ export function TodayScreen({
         <MealList openMeal={openMeal} logged={logged} onToggle={onToggleSupp} openRemedy={openRemedy} />
       </Section>
 
+      {data.cyclePhase && (
+        <Section title="Your cycle today">
+          <div className="card seed-card">
+            <span className="seed-phase">
+              {data.cyclePhase.label} — day {data.cyclePhase.dayInCycle} of{" "}
+              {data.cyclePhase.cycleLength}
+              {data.cyclePhase.estimate ? " (approximate)" : ""}
+            </span>
+            <p className="seed-note" style={{ color: "var(--ink)", marginTop: 11 }}>
+              {data.cyclePhase.note}
+            </p>
+          </div>
+        </Section>
+      )}
+
       {data.seedCycling && <SeedCyclingSection />}
 
       {data.periodCare && (

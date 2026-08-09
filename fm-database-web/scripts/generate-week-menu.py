@@ -326,12 +326,99 @@ HARD RULES:
 15. FOOD CAUTIONS — PREPARATION AND FREQUENCY, NOT A BAN LIST. A FOOD CAUTIONS block may list foods that warrant care for THIS client's specific conditions (e.g. millets and raw brassicas in hypothyroidism, high-oxalate foods in calcium-oxalate stones). These are NOT banned and must NOT be stripped from the menu — most are genuinely good for this client in other ways, and over-restricting a client's food is its own harm. You have exactly two levers:
     (a) PREPARATION — where the block says "Always COOKED, never raw", that food may appear only in a cooked dish. It must not appear in the rule-12 raw salad/kachumber; use a lightly-steamed version or pick a different salad vegetable.
     (b) FREQUENCY — a cautioned food is an OCCASIONAL food, at most 2-3 times across the whole week. It must never be the week's default base. This is a hard limit ON TOP OF rule 11: if a cautioned grain (ragi/millet in a thyroid client, say) is used for rotation, it rotates a couple of times and wheat/rice/other grains carry the rest of the week. An all-ragi or all-millet week for a client with a goitrogen caution is WRONG even when rule 11's metabolic indication is also present — in that case rotate among the NON-cautioned low-GI options instead.
-   Rule 1 (framework), the client's diet/avoid rules and rule 7b still outrank this. NEVER name the condition, the mechanism, or the word "caution" to the client — the change_note stays warm and food-first, exactly as rule 6 requires."""
+   Rule 1 (framework), the client's diet/avoid rules and rule 7b still outrank this. NEVER name the condition, the mechanism, or the word "caution" to the client — the change_note stays warm and food-first, exactly as rule 6 requires.
+16. CYCLE PHASE — when a CYCLE PHASE THIS WEEK block is present, shape the week's food emphasis to the phase each day sits in, WITHOUT breaking any rule above (framework, diet/avoid, no-porridge, protein floor all outrank this):
+    (a) luteal days (early_luteal / late_luteal): metabolism runs higher — meals slightly more substantial, anchored by slow-burning carbohydrates (millets within rule 11/15 limits, sweet potato, dal-heavy meals) and protein at EVERY meal; make the evening/tea snack a real, satisfying one (roasted chana, fruit + nuts, paneer cube) rather than skippable — this is the week premenstrual cravings and blood-sugar dips hit. NEVER tighten eating windows or lighten dinners on these days.
+    (b) menstrual days: warm, cooked, comforting, iron-forward food (whole foods only — dals, palak, beetroot, dates, til/jaggery within the framework); gentler days, no aggressive variety.
+    (c) follicular days: the lighter, fresher end of the framework — more sprouts, fresh preparations, lighter grains.
+    (d) ovulatory days: bright fresh meals; favour cruciferous vegetables (cabbage, cauliflower, broccoli — cooked if a thyroid caution applies) to support estrogen clearance.
+    Blend transitions naturally — a week that crosses from late_luteal into menstrual should soften as it goes, not flip styles mid-week. NEVER name phases, hormones, or cycle days in the change_note; if the phase shaped the week, say it food-first ("kept dinners heartier this week", "leaned into lighter fresh meals")."""
 
 
 def _plans_root() -> Path:
     env = os.environ.get("FMDB_PLANS_DIR")
     return Path(env).expanduser().resolve() if env else Path.home() / "fm-plans"
+
+
+def _target_week_dates(weeks: list, target_week: int) -> list:
+    """Best-effort ISO dates for the 7 days of the target week.
+
+    A redraft of an existing week uses that week's own day_dates; a new week
+    extrapolates from the latest week that has dates. Empty list when the
+    menu carries no usable dates — the cycle block is then simply omitted.
+    """
+    import datetime as _dt
+
+    def _parse(ds):
+        try:
+            return _dt.date.fromisoformat(str(ds)[:10])
+        except Exception:
+            return None
+
+    dated = []
+    for w in weeks or []:
+        dds = [_parse(x) for x in (w.get("day_dates") or [])]
+        if w.get("week") and dds and dds[0]:
+            dated.append((int(w["week"]), dds[0]))
+    if not dated:
+        return []
+    for wnum, first in dated:
+        if wnum == target_week:
+            start = first
+            break
+    else:
+        latest_week, latest_first = max(dated)
+        start = latest_first + _dt.timedelta(days=7 * (target_week - latest_week))
+    return [start + _dt.timedelta(days=i) for i in range(7)]
+
+
+def _cycle_week_block(client: dict, weeks: list, target_week: int) -> list[str]:
+    """Per-day cycle phases for the target week, or [] when not applicable.
+
+    Total by design (any failure → no block, menu drafts as before). Uses the
+    same fmdb source of truth as the exercise gate and recipe scorer, with
+    the same high-confidence gate — computed per DAY because a menu week
+    routinely straddles a phase boundary (and often the period itself).
+    """
+    try:
+        from fmdb.plan.exercise_screen import current_cycle_phase
+        from fmdb.plan.models import Client as _Client
+
+        if current_cycle_phase(client or {}) is None:
+            # Not a high-confidence menstruating client today — no block.
+            # (Checking today, not day 1 of the target week, keeps the gate
+            # identical across every phase-keyed surface.)
+            return []
+        days = _target_week_dates(weeks, target_week)
+        if not days:
+            return []
+        raw = {k: v for k, v in (client or {}).items() if v is not None}
+        import datetime as _dt
+        base = {
+            "client_id": "phase-probe", "name": "probe", "sex": "",
+            "age_band": "", "intake_date": _dt.date.today(),
+            "created_at": _dt.date.today(), "updated_at": _dt.date.today(),
+            "updated_by": "probe",
+        }
+        model = _Client.model_validate({**base, **raw})
+        lines: list[str] = []
+        phases_seen: list[str] = []
+        for d in days:
+            ctx = model.cycle_context(on_date=d) or {}
+            phase = ctx.get("phase")
+            if not isinstance(phase, str):
+                return []
+            lines.append(
+                f"- {d.strftime('%a %d %b')}: {phase.replace('_', ' ')}"
+                f" (cycle day {ctx.get('cycle_day')})"
+            )
+            if phase not in phases_seen:
+                phases_seen.append(phase)
+        if "menstrual" in phases_seen and phases_seen[0] != "menstrual":
+            lines.append("- Note: her period is expected to start DURING this week — soften the back half accordingly.")
+        return lines
+    except Exception:
+        return []
 
 
 def _published_file(plan_slug: str) -> Path | None:
@@ -476,6 +563,14 @@ def main() -> None:
 
     feedback = _recent_feedback(client_id)
 
+    # Cycle phase per day of the TARGET week (rule 16). The initial menu is
+    # already cycle-aware (generate-app-menu.py via rcl._cycle_block); this
+    # was the gap — a 12-week plan spans ~3 cycles, and the weekly redraft
+    # was phase-blind. High-confidence menstruating clients only: stale LMP,
+    # irregular cycles, peri/postmenopause and male clients get no block and
+    # the menu drafts exactly as before.
+    cycle_lines = _cycle_week_block(client, weeks, target_week)
+
     # Condition-appropriate therapeutic foods to weave in AS DISHES — these are
     # the kitchen_remedy / vegetable_juice foods (kitchari, buttermilk, …) that
     # the app no longer surfaces as standalone remedies on a detailed plan
@@ -526,6 +621,8 @@ def main() -> None:
             "",
             "CLIENT FEEDBACK SINCE LAST WEEK:",
             *(feedback or ["none recorded"]),
+            *(["", "CYCLE PHASE THIS WEEK (rule 16 — shape food emphasis, never name it to the client):"]
+              + cycle_lines if cycle_lines else []),
             "",
             f"Draft WEEK {target_week}.",
             *_tenure_lines(plan, target_week),

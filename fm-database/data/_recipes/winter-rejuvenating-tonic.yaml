@@ -128,3 +128,5 @@ nutrient_lines:
   key: ashwagandha
   g: 2.0833333333333335
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual

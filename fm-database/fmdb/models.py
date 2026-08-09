@@ -50,6 +50,7 @@ from .enums import (
     Virya,
     SuitableSex,
     LifeStage,
+    CyclePhase,
 )
 
 
@@ -873,6 +874,15 @@ class Supplement(BaseModel):
     balances_dosha: list[Dosha] = Field(default_factory=list)    # doshas this herb pacifies/suits
     aggravates_dosha: list[Dosha] = Field(default_factory=list)  # doshas this herb can worsen
     ayurvedic_actions: list[str] = Field(default_factory=list)   # karma — e.g. diaphoretic, nervine, expectorant
+    # ── Cycle-phase affinity ───────────────────────────────────────────────
+    # Phases of the menstrual cycle where this supplement is specifically
+    # emphasised (seed cycling, luteal B6/magnesium, menstrual iron...).
+    # Empty = phase-neutral (the overwhelming default). This is EMPHASIS for
+    # the suggester/checker, never a gate — mirrors the pregnancy_safety
+    # overlay pattern above. Tag only where a canonical claim backs it
+    # (cycle-syncing-{menstrual,follicular,ovulatory,luteal}-phase-supplements)
+    # and cite it in linked_to_claims.
+    cycle_phases: list[CyclePhase] = Field(default_factory=list)
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
     # Added 2026-07-28: supplements/mechanisms/lab-tests/symptoms were
@@ -1228,6 +1238,21 @@ class Exercise(BaseModel):
     # else's. Free text, coach-facing: "supervised gym programme", "physiotherapy
     # assessment first". Non-empty does NOT mean never prescribe — it means say so.
     refer_out: list[str] = Field(default_factory=list)
+
+    # ── Cycle-phase fit ────────────────────────────────────────────────────
+    # cycle_phases_avoid: phases where this entry works AGAINST a menstruating
+    # client's physiology — canonically high-intensity cardio / high-impact
+    # work in the luteal phases, where elevated resting cortisol flips intense
+    # training toward fat storage and muscle wasting (claim
+    # cycle-aligned-exercise-by-phase, fm_specific_thin — hence WARNING-level
+    # emphasis downstream, never a hard block; strength training stays fine
+    # all cycle). cycle_phases_favoured: phases where this entry is a
+    # particularly good fit (restorative work in menstrual/late_luteal).
+    # Both empty = phase-neutral, so all existing YAML loads unchanged.
+    # NEVER tag modality=pacing entries — pacing is an energy envelope, not
+    # an intensity, and must survive every filter (see ExerciseModality).
+    cycle_phases_avoid: list[CyclePhase] = Field(default_factory=list)
+    cycle_phases_favoured: list[CyclePhase] = Field(default_factory=list)
 
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_symptoms: list[str] = Field(default_factory=list)

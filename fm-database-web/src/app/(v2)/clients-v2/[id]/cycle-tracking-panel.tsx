@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { FmPanel } from "@/components/fm";
 import { updateCycleTracking } from "@/lib/server-actions/clients";
 import { sendCycleDateCheckAction } from "@/lib/server-actions/cycle-date-collector";
+import { computeCycleContext, PHASE_LABELS } from "@/lib/fmdb/cycle-phase";
 
 interface Props {
   clientId: string;
@@ -319,10 +320,27 @@ export function CycleTrackingPanel(p: Props) {
     }
   }
 
+  // Derived current phase — same math as the plan generator (cycle-phase.ts
+  // is fixture-pinned to the Python source of truth), so what the coach sees
+  // here is exactly what the recipe scorer / exercise gate / checker act on.
+  const phaseCtx = computeCycleContext({
+    sex: p.sex ?? "F",
+    cycle_status: p.cycleStatus,
+    last_menstrual_period: p.lastMenstrualPeriod,
+    cycle_length_days: p.cycleLengthDays,
+    cycle_regularity: p.cycleRegularity,
+  });
+
   return (
     <FmPanel title="🩸 Menstrual cycle">
       {!editing ? (
         <div className="space-y-1.5 text-sm">
+          {phaseCtx?.phase && phaseCtx.phase !== "postmenopausal" && (
+            <Row
+              label="Current phase"
+              value={`${PHASE_LABELS[phaseCtx.phase]} — day ${phaseCtx.cycleDay}/${phaseCtx.cycleLength}${phaseCtx.confidence === "low" ? " (estimate)" : ""}`}
+            />
+          )}
           <Row label="Period started (Day 1)" value={fmtDate(p.lastMenstrualPeriod)} />
           <Row label="Bleeding ended" value={fmtDate(p.lastPeriodEndDate)} />
           <Row

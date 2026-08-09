@@ -188,3 +188,5 @@ interactions:
   with_supplements: []
   with_foods: []
   with_medications: []
+cycle_phases:
+- ovulatory

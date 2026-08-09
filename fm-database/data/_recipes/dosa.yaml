@@ -121,3 +121,5 @@ nutrient_lines:
   key: olive-oil
   g: 27.0
 nutrient_servings: 5.0
+cycle_phases:
+- follicular

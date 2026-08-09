@@ -158,3 +158,6 @@ nutrient_lines:
   key: spice-mix-sweet
   g: 2.5
 nutrient_servings: 3.5
+cycle_phases:
+- early_luteal
+- late_luteal

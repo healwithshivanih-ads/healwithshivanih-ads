@@ -131,3 +131,6 @@ nutrient_lines:
   key: coconut-oil
   g: 4.541666666666667
 nutrient_servings: 2.0
+cycle_phases:
+- follicular
+- ovulatory

@@ -112,3 +112,5 @@ nutrient_lines:
   key: maple-syrup
   g: 6.5625
 nutrient_servings: 2.0
+cycle_phases:
+- follicular

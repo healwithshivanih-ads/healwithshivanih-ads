@@ -144,3 +144,5 @@ nutrient_lines:
   key: lemon-juice
   g: 5.083333333333333
 nutrient_servings: 2.5
+cycle_phases:
+- menstrual

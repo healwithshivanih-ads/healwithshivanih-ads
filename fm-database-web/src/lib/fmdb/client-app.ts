@@ -30,6 +30,11 @@ import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { resolveGuidedSubscriberByToken } from "@/lib/fmdb/guided-tier";
 import { buildGuidedAppData } from "@/lib/fmdb/guided-app";
 import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
+import {
+  cyclePhaseForDisplay,
+  PHASE_LABELS,
+  PHASE_NOTES,
+} from "@/lib/fmdb/cycle-phase";
 import { adaptRecipeForAvoids } from "@/lib/fmdb/recipe-adapt";
 import { rankSwaps, type RankedSwap } from "@/lib/fmdb/swap-ranking";
 import {
@@ -490,6 +495,17 @@ export interface AppPeriodCare {
   heading: string;
   line: string;
   recipe: string;
+}
+
+/** Today's cycle phase for the client's daily view — client-safe wording
+ *  only (phase label + warm note, no clinical framing). */
+export interface AppCyclePhase {
+  phase: string;          // "menstrual" | "follicular" | ... (5-phase model)
+  label: string;          // display label, e.g. "Late luteal"
+  dayInCycle: number;
+  cycleLength: number;
+  note: string;           // one warm line of what serves her today
+  estimate: boolean;      // true when confidence is low (soften the copy)
 }
 
 /** A guided EFT (tapping) session — a fixed point sequence with per-point
@@ -1197,6 +1213,12 @@ export interface ClientAppData {
   /** Cycle-timed cramp support (ginger tea) — non-null only on the dates
    *  around the client's period; null the rest of the month. */
   periodCare: AppPeriodCare | null;
+  /** Where the client is in her cycle today — phase name, day, and a warm
+   *  one-line note. Uses the shared cycle-phase module (fixture-pinned to
+   *  the Python plan-side source of truth, unlike seedCycling's coarser
+   *  two-phase split). null for male / postmenopausal / no-status /
+   *  pregnant / lactating clients, and whenever there is no LMP on file. */
+  cyclePhase: AppCyclePhase | null;
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
   /** Every guided somatic reset the plan prescribes, resolved from the
@@ -2930,6 +2952,29 @@ export function computePeriodCare(
   };
 }
 
+/** Today's cycle-phase card for the daily view. Pure + unit-testable.
+ *  Delegates the phase math to the shared cycle-phase module (the same
+ *  5-phase model the plan generator / checker act on) so the app can never
+ *  tell the client a different phase than the plan was built for. Null when
+ *  no phase applies (male / postmenopausal / pregnant / lactating / no LMP)
+ *  — the card simply doesn't render. */
+export function computeCyclePhaseCard(
+  client: Dict,
+  todayUTC: Date,
+): AppCyclePhase | null {
+  const ctx = cyclePhaseForDisplay(client, todayUTC);
+  if (!ctx || !ctx.phase || ctx.phase === "postmenopausal") return null;
+  if (ctx.cycleDay == null) return null;
+  return {
+    phase: ctx.phase,
+    label: PHASE_LABELS[ctx.phase],
+    dayInCycle: ctx.cycleDay,
+    cycleLength: ctx.cycleLength,
+    note: PHASE_NOTES[ctx.phase],
+    estimate: ctx.confidence === "low",
+  };
+}
+
 /** Work out which seeds the client should eat TODAY from her cycle data, so
  *  she never has to count cycle days herself. Pure + unit-testable. */
 export function computeSeedCycling(
@@ -3479,6 +3524,7 @@ async function buildDiscoveryAppData(
     practicesComingLater: 0,
     seedCycling: null,
     periodCare: null,
+    cyclePhase: null,
     breathwork: null,
     somatic: [],
     // Discovery clients have no prescribed plan, so no session.
@@ -4742,6 +4788,11 @@ export async function loadClientAppData(
   // count cycle days herself.
   const seedCycling = computeSeedCycling(seedCyclingPrescribed, client, todayUTC);
   const periodCare = computePeriodCare(gingerCrampPrescribed, client, todayUTC);
+  // Today's cycle phase — always computed (not gated on a prescription):
+  // any menstruating client with an LMP on file sees where she is in her
+  // cycle. Uses the real todayUTC, NOT refUTC — phase is about her body's
+  // calendar, never the plan's start-clamped one.
+  const cyclePhase = computeCyclePhaseCard(client, todayUTC);
 
   // ---- guided breathwork (paced exactly to the prescribed technique) -------
   // The animation is driven entirely from these numbers, so it can never
@@ -5924,6 +5975,7 @@ export async function loadClientAppData(
     practicesComingLater,
     seedCycling,
     periodCare,
+    cyclePhase,
     breathwork,
     somatic,
     exerciseSessions,

@@ -148,3 +148,5 @@ nutrient_lines:
   key: ghee
   g: 27.25
 nutrient_servings: 2.0
+cycle_phases:
+- follicular

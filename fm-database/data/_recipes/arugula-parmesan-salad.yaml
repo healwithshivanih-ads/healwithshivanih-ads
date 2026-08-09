@@ -130,3 +130,6 @@ nutrient_lines:
   key: sunflower-seeds
   g: 8.75
 nutrient_servings: 2.0
+cycle_phases:
+- ovulatory
+- follicular

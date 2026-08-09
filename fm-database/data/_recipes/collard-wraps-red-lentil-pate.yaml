@@ -166,3 +166,7 @@ nutrient_lines:
   key: carrot
   g: 64.0
 nutrient_servings: 4.0
+cycle_phases:
+- menstrual
+- early_luteal
+- late_luteal

@@ -157,3 +157,5 @@ nutrient_lines:
   key: lemon
   g: 32.5
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual

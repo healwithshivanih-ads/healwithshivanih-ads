@@ -196,3 +196,5 @@ nutrient_lines:
   key: yogurt
   g: 122.5
 nutrient_servings: 4.0
+cycle_phases:
+- follicular

@@ -78,3 +78,6 @@ kcal_per_serving: 180
 kcal_total: 180
 kcal_basis: ai_haiku
 kcal_computed_at: '2026-07-02'
+cycle_phases:
+- early_luteal
+- late_luteal

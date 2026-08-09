@@ -36,3 +36,5 @@ version: 1
 status: active
 updated_at: '2026-07-14'
 updated_by: claude-dirty-genes-ingest
+cycle_phases:
+- follicular

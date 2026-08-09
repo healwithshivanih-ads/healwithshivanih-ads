@@ -182,3 +182,7 @@ nutrient_lines:
   key: salt
   g: 2.84375
 nutrient_servings: 4.0
+cycle_phases:
+- ovulatory
+- early_luteal
+- late_luteal

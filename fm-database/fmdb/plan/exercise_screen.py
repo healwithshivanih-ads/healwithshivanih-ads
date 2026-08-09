@@ -282,16 +282,86 @@ class GateResult:
     """What survived the gate, and what did not."""
     kept: list[dict[str, Any]] = field(default_factory=list)
     dropped: list[tuple[str, str]] = field(default_factory=list)   # (slug, why)
+    # Kept, but tagged cycle_phases_avoid for the client's CURRENT phase —
+    # (slug, why). Never a drop: the evidence tier is thin (see CyclePhase in
+    # enums.py) and phase is transient, so this is coach-facing emphasis. The
+    # checker emits the matching WARNING; callers may log these.
+    phase_flagged: list[tuple[str, str]] = field(default_factory=list)
 
     @property
     def dropped_slugs(self) -> list[str]:
         return [s for s, _ in self.dropped]
 
 
+def current_cycle_phase(client: dict[str, Any]) -> Optional[str]:
+    """Best-effort CURRENT cycle phase for a plain client dict, or None.
+
+    The screen/gate work off dicts (model_dump or raw YAML), but
+    Client.cycle_context() is a method — its output is never in the dump, so
+    it must be recomputed here. Total by design: both gate call sites fail
+    closed on exception, and a crash in phase math would silently empty every
+    exercise prescription (the documented failure mode of this pipeline).
+
+    Returns a phase string ONLY when confidence is 'high' — perimenopausal,
+    irregular cycles, missing or stale LMP all drop confidence and disable
+    phase-keyed behaviour rather than confidently mis-phasing the client.
+    Postmenopausal and pregnant/lactating clients return None: neither gets
+    cycle-phase logic (circadian-stable care / pregnancy overlay instead).
+    """
+    try:
+        from datetime import date as _date
+
+        from .models import Client
+
+        raw = {k: v for k, v in (client or {}).items() if v is not None}
+        if str(raw.get("pregnancy_status") or "").strip().lower().startswith("pregnant"):
+            return None
+        if raw.get("lactation_started"):
+            return None
+        # Scaffold the required identity fields so partial dicts (tests, the
+        # chat-authored path) still compute — the cycle fields are what matter.
+        # client_id must satisfy the model's lowercase-alnum-hyphen rule.
+        base = {
+            "client_id": "phase-probe", "name": "probe", "sex": "",
+            "age_band": "", "intake_date": _date.today(),
+            "created_at": _date.today(), "updated_at": _date.today(),
+            "updated_by": "probe",
+        }
+        ctx = Client.model_validate({**base, **raw}).cycle_context()
+        if not ctx or ctx.get("confidence") != "high":
+            return None
+        phase = ctx.get("phase")
+        if not isinstance(phase, str) or phase == "postmenopausal":
+            return None
+        return phase
+    except Exception:
+        return None
+
+
+def _phase_values(raw: Any) -> set[str]:
+    """Normalise a cycle_phases_avoid/favoured list to plain strings.
+
+    Entries arrive both from YAML (strings) and model_dump() (CyclePhase
+    enums) — the same str-vs-enum trap _severity_of exists for. Total: any
+    malformed value normalises to nothing rather than raising, because the
+    gate's callers fail closed and an exception here would silently empty
+    every exercise prescription.
+    """
+    out: set[str] = set()
+    if not isinstance(raw, (list, tuple, set)):
+        return out
+    for v in raw:
+        s = getattr(v, "value", v)
+        if isinstance(s, str) and s.strip():
+            out.add(s.strip().lower())
+    return out
+
+
 def gate_prescription(
     proposed: Iterable[dict[str, Any]],
     exercises: list[dict[str, Any]],
     client: dict[str, Any],
+    cycle_phase: str | None = None,
 ) -> GateResult:
     """Drop anything the screen blocks BEFORE it reaches the coach.
 
@@ -314,6 +384,16 @@ def gate_prescription(
 
     Unknown slugs are dropped too, and counted separately: a hallucinated
     exercise cannot be screened, so it cannot be shown to be safe.
+
+    ``cycle_phase`` (optional): the client's CURRENT phase string from
+    Client.cycle_context()['phase'] — callers should pass it only when
+    confidence is 'high'. Kept picks whose catalogue entry tags that phase in
+    cycle_phases_avoid are recorded in GateResult.phase_flagged. Deliberately
+    NOT a drop: the cycle-alignment evidence is thin (fm_specific_thin) and
+    phase is transient, so real selection pressure lives in the suggester's
+    options/prompt and the plan checker's WARNING — the flag here is the
+    audit trail. Pacing-modality entries are exempt by construction (never
+    tagged, and skipped defensively here too).
     """
     by_slug = {str(e.get("slug")): e for e in exercises if e.get("slug")}
     verdicts = {v.slug: v for v in screen_all(exercises, client)}
@@ -345,5 +425,17 @@ def gate_prescription(
         if not kept.get("level"):
             kept["level"] = verdict.start_level
         out.kept.append(kept)
+
+        if cycle_phase:
+            entry = by_slug[slug]
+            modality = getattr(entry.get("modality"), "value", entry.get("modality"))
+            if str(modality or "") != "pacing":
+                avoid = _phase_values(entry.get("cycle_phases_avoid"))
+                if str(cycle_phase).strip().lower() in avoid:
+                    out.phase_flagged.append((
+                        slug,
+                        f"tagged avoid in the client's current "
+                        f"{str(cycle_phase).replace('_', ' ')} phase",
+                    ))
 
     return out

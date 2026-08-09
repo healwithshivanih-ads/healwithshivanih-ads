@@ -174,3 +174,6 @@ nutrient_lines:
   key: potato
   g: 150.0
 nutrient_servings: 6.0
+cycle_phases:
+- early_luteal
+- late_luteal

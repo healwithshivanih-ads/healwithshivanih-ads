@@ -56,3 +56,6 @@ version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
+cycle_phases:
+- early_luteal
+- late_luteal

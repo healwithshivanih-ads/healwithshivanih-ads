@@ -157,3 +157,5 @@ nutrient_lines:
   key: chickpeas
   g: 200.0
 nutrient_servings: 4.0
+cycle_phases:
+- menstrual

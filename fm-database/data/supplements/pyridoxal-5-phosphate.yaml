@@ -80,3 +80,6 @@ aliases:
 - vitamin-b6-p5p
 - p5p
 - p-5-p
+cycle_phases:
+- early_luteal
+- late_luteal

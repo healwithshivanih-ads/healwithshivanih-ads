@@ -62,6 +62,13 @@ GOOD_FOR_FULL_WEIGHT_FREQ = 0.01 # a tag on ≤1% of the library earns the ceili
 SEASON_MATCH = 2.0               # dish is specifically in season
 SEASON_YEAR_ROUND = 1.0          # dish is tagged `all` — fine now, but not a match
 
+# Cycle-phase match — same weight class as an in-season dish: a real reason to
+# surface a recipe THIS week, below a dosha match (3.0) because the evidence
+# tier is thinner (fm_specific_thin / plausible_emerging). Untagged recipes
+# lose nothing: phase tags are emphasis, never exclusion (the aggravates_dosha
+# house rule), and most of the library is deliberately phase-neutral.
+CYCLE_PHASE_MATCH = 2.0
+
 
 # ── condition ↔ food cautions (scripts/food_cautions.py) ───────────────────
 # Optional by construction: if the module or its data file is absent every
@@ -309,7 +316,8 @@ def score_recipe(recipe: dict, doshas: set[str], season: str | None,
                  topics: set[str], region: str, weight_loss: bool,
                  lab_priorities: dict | None = None,
                  gf_weights: dict | None = None,
-                 food_cautions_live: list | None = None) -> float:
+                 food_cautions_live: list | None = None,
+                 cycle_phase: str | None = None) -> float:
     s = 0.0
     bal = set(d.lower() for d in (recipe.get("balances_dosha") or []))
     agg = set(d.lower() for d in (recipe.get("aggravates_dosha") or []))
@@ -351,7 +359,30 @@ def score_recipe(recipe: dict, doshas: set[str], season: str | None,
     # `foods_to_avoid` removes a dish, and only the coach writes that.
     if food_cautions_live:
         s += _food_caution_penalty(recipe, food_cautions_live)
+    # cycle-phase match: up-rank recipes tagged for the client's CURRENT phase
+    # (iron-rich in menstrual, slow-carb in the luteal phases...). Emphasis
+    # only — an off-phase or untagged recipe is never pushed down.
+    if cycle_phase:
+        rec_phases = {str(p).lower() for p in (recipe.get("cycle_phases") or [])}
+        if cycle_phase in rec_phases:
+            s += CYCLE_PHASE_MATCH
     return s
+
+
+def client_cycle_phase(client: dict) -> str | None:
+    """The client's current cycle phase for recipe ranking, or None.
+
+    Defers to the same fmdb helper the exercise gate and AI suggester use, so
+    every phase-keyed surface agrees on what 'current phase' means (returns a
+    phase only for a menstruating client with a regular cycle and fresh LMP).
+    Total: any import or data problem means 'no phase', never a crash — this
+    runs inside the plan editor's suggestion path.
+    """
+    try:
+        from fmdb.plan.exercise_screen import current_cycle_phase
+        return current_cycle_phase(client or {})
+    except Exception:
+        return None
 
 # ── selection ──────────────────────────────────────────────────────────────
 def select_recipes(recipes, client, plan, season=None, weight_loss=False,
@@ -376,6 +407,7 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
     except Exception:
         lab_priorities = {}
     cautions_live = _live_food_cautions(client, plan)
+    cycle_phase = client_cycle_phase(client)
 
     eligible = []
     for r in recipes:
@@ -384,7 +416,8 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
         if not is_safe(r, allergies, avoid):
             continue
         eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss,
-                                      lab_priorities, gf_weights, cautions_live), r))
+                                      lab_priorities, gf_weights, cautions_live,
+                                      cycle_phase), r))
     eligible.sort(key=lambda x: x[0], reverse=True)
 
     # coverage: take up to `per_meal` per meal_type, then global cap
@@ -522,6 +555,7 @@ def export_for_app(recipe: dict) -> dict:
         "kcal": recipe.get("approx_kcal_per_serving"), "protein_g": recipe.get("protein_g"),
         "headnote": recipe.get("headnote"), "one_line": recipe.get("one_line"),
         "good_for": recipe.get("good_for"),
+        "cycle_phases": recipe.get("cycle_phases") or [],
         "attribution": recipe.get("attribution"),
         "image": ({"file": cleared.get("file"), "credit": cleared.get("credit")} if cleared else None),
     }

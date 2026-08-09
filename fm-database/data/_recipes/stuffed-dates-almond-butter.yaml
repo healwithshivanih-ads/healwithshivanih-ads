@@ -113,3 +113,5 @@ nutrient_lines:
   key: spice-mix-sweet
   g: 0.5
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual

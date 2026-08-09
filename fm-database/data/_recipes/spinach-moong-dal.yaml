@@ -121,3 +121,7 @@ nutrient_lines:
   key: black-pepper
   g: 2.0
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual
+- early_luteal
+- late_luteal

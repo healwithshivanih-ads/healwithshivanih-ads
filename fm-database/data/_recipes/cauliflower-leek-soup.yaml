@@ -127,3 +127,5 @@ nutrient_lines:
   key: spice-mix-savory
   g: 2.2916666666666665
 nutrient_servings: 2.0
+cycle_phases:
+- ovulatory

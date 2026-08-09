@@ -58,3 +58,6 @@ version: 1
 status: active
 updated_at: '2026-08-04'
 updated_by: Shivani
+cycle_phases_favoured:
+- menstrual
+- late_luteal

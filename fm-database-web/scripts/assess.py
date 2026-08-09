@@ -1533,13 +1533,17 @@ def main() -> int:
         # session reaches the plan with no dose at all.
         if suggestions.exercise_suggestions:
             try:
-                from fmdb.plan.exercise_screen import gate_prescription
+                from fmdb.plan.exercise_screen import (
+                    current_cycle_phase,
+                    gate_prescription,
+                )
                 from fmdb.assess.suggester import _exercise_dicts
                 _cd = client.model_dump() if hasattr(client, "model_dump") else client
                 _gated = gate_prescription(
                     [s.model_dump() for s in suggestions.exercise_suggestions],
                     _exercise_dicts(),
                     _cd or {},
+                    cycle_phase=current_cycle_phase(_cd or {}),
                 )
                 _kept = {k["exercise"] for k in _gated.kept}
                 _lvl = {k["exercise"]: k.get("level") for k in _gated.kept}

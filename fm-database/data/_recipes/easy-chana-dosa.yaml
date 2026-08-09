@@ -139,3 +139,6 @@ nutrient_lines:
   key: ghee
   g: 11.354166666666666
 nutrient_servings: 4.5
+cycle_phases:
+- early_luteal
+- late_luteal

@@ -40,3 +40,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+cycle_phases:
+- ovulatory
+- early_luteal
+- late_luteal

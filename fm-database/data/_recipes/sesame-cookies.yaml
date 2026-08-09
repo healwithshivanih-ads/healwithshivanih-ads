@@ -162,3 +162,7 @@ nutrient_lines:
   key: sesame-seeds
   g: 6.0
 nutrient_servings: 24.0
+cycle_phases:
+- ovulatory
+- early_luteal
+- late_luteal

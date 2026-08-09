@@ -83,3 +83,5 @@ nutrient_lines:
   key: green-chilli
   g: 5.0
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual

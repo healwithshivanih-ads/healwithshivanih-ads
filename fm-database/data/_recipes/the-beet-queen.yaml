@@ -145,3 +145,5 @@ nutrient_lines:
   key: parsley
   g: 20.0
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual
