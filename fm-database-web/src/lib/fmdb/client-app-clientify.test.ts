@@ -160,6 +160,23 @@ describe("clientFacingWhy — walk to the first sentence that says something", (
     }
   });
 
+  it("never opens on punctuation left behind by a removal", () => {
+    // "(1) Homocysteine 20.79 — endogenous creatine synthesis…" lost its first
+    // half and reached Nazneen's card as "— endogenous creatine synthesis…".
+    const out = clientFacingWhy(
+      "Three reasons converge for her. (1) Homocysteine 20.79 — it spares your methylation capacity.",
+    );
+    expect(out === "" || /^[A-Za-z0-9"'(]/.test(out)).toBe(true);
+  });
+
+  it("drops a percentage readout, which is a lab value without units", () => {
+    // "Ferritin 12 + transferrin sat 16.3% = iron-deficient erythropoiesis"
+    // lost its ferritin value and still carried the saturation.
+    expect(
+      clientFacingWhy("Ferritin 12 + transferrin sat 16.3% = iron-deficient erythropoiesis."),
+    ).toBe("");
+  });
+
   it("handles empty and undefined safely", () => {
     expect(clientFacingWhy("")).toBe("");
     expect(clientFacingWhy(undefined as unknown as string)).toBe("");

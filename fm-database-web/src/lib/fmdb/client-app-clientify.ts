@@ -123,6 +123,11 @@ export function clientifyWhy(raw: string): string {
     .replace(/\s+([.,])/g, "$1")
     .replace(/\.{2,}/g, ".")
     .replace(/[,:]\s*$/g, "")
+    // A removal at the START leaves the sentence opening on its own dash or
+    // list marker: "(1) Homocysteine 20.79 — endogenous creatine synthesis…"
+    // lost its first half and reached Nazneen's card as "— endogenous creatine
+    // synthesis…". Strip whatever punctuation the cut left in front.
+    .replace(/^[\s—–\-,;:.)\]]+/, "")
     .trim();
   // Final guard: coach_rationale is clinical/coach-facing. If softening left
   // anything that still reads like a lab report or coach note — a specific
@@ -154,6 +159,12 @@ export function clientifyWhy(raw: string): string {
       // elevated Cu:Zn".
       String.raw`\b(?:low|high|elevated|depressed|deficient)[-\s]?\w*\s+(?:zinc|copper|selenium|magnesium|iron|ferritin|folate)\b`,
       String.raw`\bCu:?Zn\b`,
+      // A bare PERCENTAGE surviving into a supplement "why" is a lab readout
+      // essentially every time: "Ferritin 12 + transferrin sat 16.3% =
+      // iron-deficient erythropoiesis" lost its ferritin value and still
+      // carried the saturation onto cl-007's card.
+      String.raw`\d+(?:\.\d+)?\s*%`,
+      String.raw`\b(?:transferrin|erythropoies\w*|saturation)\b`,
       // A RAW FIELD NAME is coach-tooling vocabulary, never client copy — and
       // the sentence carrying it named ANOTHER CLIENT: "Mushroom is explicitly
       // listed in Manju's foods_to_avoid."
