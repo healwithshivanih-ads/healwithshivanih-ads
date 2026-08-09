@@ -188,6 +188,31 @@ class LifeStage(str, Enum):
     children = "children"          # avoid_in only — the app serves adults
 
 
+class CyclePhase(str, Enum):
+    """Menstrual-cycle phase vocabulary — the values MUST stay byte-identical
+    to the strings Client.cycle_context() emits (fmdb/plan/models.py), because
+    phase matching is plain string comparison: a tag keyed to vocabulary the
+    resolver does not emit is an absent tag (the ExerciseCaution alias lesson).
+
+    Distinct from LifeStage (whether someone cycles at all), from
+    PracticeItem.phase (plan-staging unlock layer, an int), and from
+    ProtocolPhase (multi-week protocol sequencing). Postmenopause is
+    deliberately NOT a value here — a postmenopausal client gets circadian-
+    stable care (claim postmenopause-shift-to-circadian-self-care), never
+    phase-tagged content, so a postmenopausal tag could only be misused.
+
+    Content tags (Exercise / Supplement / recipe YAML) use these values.
+    Evidence spine: mechanisms infradian-rhythm, luteal-metabolic-shift,
+    luteal-progesterone-insulin-resistance, follicular-estrogen-insulin-
+    sensitivity — mostly fm_specific_thin / plausible_emerging, so tags drive
+    EMPHASIS (rank/warn), not hard exclusion."""
+    menstrual = "menstrual"          # day 1-5 — bleed; iron, warmth, gentle movement
+    follicular = "follicular"        # post-bleed to ~45% — lighter meals, HIIT fine
+    ovulatory = "ovulatory"          # ~45-55% — estrogen peak; cruciferous, liver support
+    early_luteal = "early_luteal"    # ~55-78% — progesterone present; slow carbs return
+    late_luteal = "late_luteal"      # ~78%+ — blood-sugar stability paramount, no fasting
+
+
 class Dosha(str, Enum):
     """The three Ayurvedic doshas (elemental constitutions).
 

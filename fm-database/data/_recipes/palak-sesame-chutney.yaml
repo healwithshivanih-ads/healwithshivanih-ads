@@ -136,3 +136,7 @@ nutrient_lines:
   key: null
   g: 30.0
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual
+- early_luteal
+- late_luteal

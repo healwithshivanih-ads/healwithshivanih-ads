@@ -115,3 +115,6 @@ aliases:
 - pyridoxine-b6
 - vitamin-b6-b12
 - vitamin-b6-pyridoxine
+cycle_phases:
+- early_luteal
+- late_luteal

@@ -132,3 +132,5 @@ nutrient_lines:
   key: milk
   g: 28.35
 nutrient_servings: 4.0
+cycle_phases:
+- menstrual

@@ -11,6 +11,7 @@
  */
 import { FmPanel } from "@/components/fm";
 import { resolveAllergies } from "@/lib/fmdb/allergies";
+import { cyclePhaseForDisplay, PHASE_LABELS } from "@/lib/fmdb/cycle-phase";
 
 interface LabValue {
   test_name?: string;
@@ -55,6 +56,12 @@ interface Props {
     health_snapshots?: HealthSnapshot[];
     next_contact_date?: string;
     intake_insights?: { root_cause?: RootCause | null } | null;
+    cycle_status?: string;
+    last_menstrual_period?: string;
+    cycle_length_days?: number;
+    cycle_regularity?: string;
+    pregnancy_status?: string;
+    lactation_started?: string;
   } | null;
   lastContactDate?: string;
   sessionCount?: number;
@@ -130,6 +137,11 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
   const name = client.display_name ?? client.client_id ?? "?";
   const age = deriveAge(client.date_of_birth);
   const labs = flattenLatestLabs(client.health_snapshots);
+  // Current cycle phase — the coach sees WHERE the client is in her cycle at
+  // the moment of authoring, so phase-aware suggestions and checker warnings
+  // have visible context. Null for male / postmenopausal-with-no-status /
+  // pregnant / lactating clients (cyclePhaseForDisplay guards those).
+  const cycle = cyclePhaseForDisplay(client);
 
   return (
     <details
@@ -167,6 +179,28 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
             ? ` · ${[client.city, client.country].filter(Boolean).join(", ")}`
             : ""}
         </span>
+        {cycle?.phase && cycle.phase !== "postmenopausal" ? (
+          <span
+            title={cycle.note}
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              padding: "1px 8px",
+              borderRadius: 999,
+              background: "var(--fm-surface-raised, var(--fm-surface))",
+              border: "1px solid var(--fm-border)",
+              color:
+                cycle.confidence === "high"
+                  ? "var(--fm-text-secondary)"
+                  : "var(--fm-text-tertiary)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            🌙 {PHASE_LABELS[cycle.phase]}
+            {cycle.cycleDay != null ? ` · d${cycle.cycleDay}/${cycle.cycleLength}` : ""}
+            {cycle.confidence === "low" ? " (est.)" : ""}
+          </span>
+        ) : null}
         <span style={{ marginLeft: "auto", fontSize: 11, color: "var(--fm-text-tertiary)" }}>
           {lastContactDate ? `Last contact ${lastContactDate}` : "No sessions yet"}
           {sessionCount != null ? ` · ${sessionCount} session${sessionCount === 1 ? "" : "s"}` : ""}

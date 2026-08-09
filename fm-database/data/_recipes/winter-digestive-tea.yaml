@@ -123,3 +123,5 @@ nutrient_lines:
   g: 1.25
   f: 0.2
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual

@@ -205,3 +205,6 @@ nutrient_lines:
   key: dates
   g: 36.75
 nutrient_servings: 6.0
+cycle_phases:
+- early_luteal
+- late_luteal

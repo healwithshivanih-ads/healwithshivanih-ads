@@ -195,3 +195,6 @@ nutrient_lines:
   key: dill
   g: 3.0
 nutrient_servings: 2.0
+cycle_phases:
+- early_luteal
+- late_luteal

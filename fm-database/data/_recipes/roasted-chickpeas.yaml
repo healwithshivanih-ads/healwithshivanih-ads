@@ -132,3 +132,6 @@ nutrient_lines:
   key: sunflower-oil
   g: 9.083333333333334
 nutrient_servings: 8.0
+cycle_phases:
+- early_luteal
+- late_luteal

@@ -192,3 +192,7 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 3.0
+cycle_phases:
+- follicular
+- early_luteal
+- late_luteal

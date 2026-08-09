@@ -147,3 +147,6 @@ nutrient_lines:
   key: herbs-fresh
   g: 12.5
 nutrient_servings: 8.0
+cycle_phases:
+- early_luteal
+- late_luteal

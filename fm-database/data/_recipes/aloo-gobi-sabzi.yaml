@@ -163,3 +163,5 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
+cycle_phases:
+- ovulatory

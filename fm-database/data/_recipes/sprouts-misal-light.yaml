@@ -214,3 +214,5 @@ nutrient_lines:
   key: lemon-juice
   g: 5.083333333333333
 nutrient_servings: 4.0
+cycle_phases:
+- follicular

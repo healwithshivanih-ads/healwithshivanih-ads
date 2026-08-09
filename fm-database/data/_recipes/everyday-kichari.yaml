@@ -191,3 +191,5 @@ nutrient_lines:
   key: fennel-seeds
   g: 0.9375
 nutrient_servings: 4.0
+cycle_phases:
+- menstrual

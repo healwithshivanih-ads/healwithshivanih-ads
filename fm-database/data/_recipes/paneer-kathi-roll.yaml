@@ -140,3 +140,6 @@ nutrient_lines:
   key: olive-oil
   g: 13.5
 nutrient_servings: 2.0
+cycle_phases:
+- early_luteal
+- late_luteal

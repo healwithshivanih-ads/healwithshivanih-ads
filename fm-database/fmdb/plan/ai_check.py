@@ -134,6 +134,7 @@ def _build_plan_subgraph(plan: Plan, cat: Loaded) -> dict[str, Any]:
             "linked_to_claims": s.linked_to_claims,
             "contraindications": s.contraindications.model_dump(mode="json"),
             "interactions": s.interactions.model_dump(mode="json"),
+            "cycle_phases": [p.value for p in getattr(s, "cycle_phases", [])],
             "notes_for_coach": (s.notes_for_coach or "")[:400],
         }
 
@@ -185,6 +186,20 @@ def _build_plan_subgraph(plan: Plan, cat: Loaded) -> dict[str, Any]:
     }
 
 
+def _safe_cycle_context(client: Client) -> dict[str, Any] | None:
+    """cycle_context(), total — the sanity check must never crash on a
+    malformed cycle field, and pregnant/lactating clients get no phase
+    context (their overlays live elsewhere)."""
+    try:
+        if str(client.pregnancy_status or "").strip().lower().startswith("pregnant"):
+            return None
+        if client.lactation_started:
+            return None
+        return client.cycle_context()
+    except Exception:
+        return None
+
+
 def _client_snapshot(client: Client | None) -> dict[str, Any]:
     if client is None:
         return {"_note": "no client record loaded — client-fit checks limited"}
@@ -205,6 +220,12 @@ def _client_snapshot(client: Client | None) -> dict[str, Any]:
         "reported_triggers": client.reported_triggers,
         "city": client.city,
         "country": client.country,
+        # Menstrual-cycle context — status, current phase, cycle day,
+        # confidence, and per-phase guidance. None for male / not_applicable
+        # clients. The model uses it for CYCLE_PHASE category checks; the
+        # deterministic checker already covers fasting-while-menstruating and
+        # avoid-phase exercises, so this exists for what tokens can't catch.
+        "cycle_context": _safe_cycle_context(client),
         # IFM timeline — antecedents/triggers/mediators in chronological order.
         # The model uses this to check whether the protocol addresses upstream
         # triggers (toxic exposures, surgeries, life-stress events) rather than
@@ -258,7 +279,18 @@ def _plan_snapshot(plan: Plan) -> dict[str, Any]:
             for d in plan.hypothesized_drivers
         ],
         "lifestyle_practices": [
-            {"name": p.name, "cadence": p.cadence, "details": p.details}
+            {
+                "name": p.name,
+                "cadence": p.cadence,
+                "details": p.details,
+                # Structured exercise sessions were previously dropped here,
+                # leaving the model blind to WHICH exercises are prescribed —
+                # required for CYCLE_PHASE / CLIENT_FIT reasoning.
+                "exercises": [
+                    {"exercise": e.exercise, "level": e.level}
+                    for e in p.exercises
+                ],
+            }
             for p in plan.lifestyle_practices
         ],
         "nutrition": plan.nutrition.model_dump(mode="json"),
@@ -299,8 +331,10 @@ following — DO NOT re-flag any of these:
 - Supplement contraindications against client's active_conditions / medications
 - Supplements tagged `evidence_tier: confirm_with_clinician` without acknowledgement
 - Form/dose-unit mismatches against the supplement entity
+- Fasting / intermittent-fasting language for a menstruating client
+- Exercises tagged avoid for the client's current cycle phase
 
-You should focus on SIX categories of concern:
+You should focus on SEVEN categories of concern:
 
 1. COHERENCE — does the protocol address the assessment?
    - Are there primary_topics with NO corresponding supplement/practice/education?
@@ -368,6 +402,24 @@ You should focus on SIX categories of concern:
    - Do NOT flag if the client's `non_negotiables` or `notes` explicitly
      say they already source / consume the item.
 
+7. CYCLE_PHASE — when `cycle_context` is present on the client, does the
+   plan work WITH her hormonal rhythm? (Skip entirely when cycle_context
+   is null, status is postmenopausal, or confidence is "low" — never
+   guess a phase.)
+   - Nutrition guidance that ignores the luteal metabolic shift for a
+     menstruating client (e.g. aggressive calorie restriction or carb
+     elimination with no luteal carve-out — luteal needs MORE fuel and
+     slow-burning carbs, not less; claim
+     luteal-phase-needs-more-calories-and-slow-carbs).
+   - An exercise programme that is uniformly high-intensity with no
+     phase modulation for a menstruating client (strength is fine all
+     cycle; intense cardio belongs follicular/ovulatory).
+   - Phase-specific opportunities MISSED where the assessment already
+     points there: cyclical symptoms (PMS, luteal cravings, cyclical
+     bloating) with no phase-aware element in the plan at all.
+   - Do NOT invent phase rules beyond the cycle_context note — the
+     evidence tier here is thin; frame concerns as emphasis, not dogma.
+
 Severity gradient:
 - "critical": do not publish until fixed (real risk to client).
 - "warning":  review before publishing (likely needs adjustment).
@@ -407,6 +459,7 @@ _TOOL_SCHEMA: dict[str, Any] = {
                             "completeness",
                             "sequencing",
                             "regional_availability",
+                            "cycle_phase",
                         ],
                     },
                     "message": {"type": "string"},

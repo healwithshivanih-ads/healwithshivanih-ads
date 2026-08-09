@@ -1,0 +1,728 @@
+[
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-01",
+  "expect": {
+   "status": "menstruating",
+   "phase": "menstrual",
+   "cycle_day": 1,
+   "cycle_length": 28,
+   "days_until_next_period": 28,
+   "days_since_lmp": 0,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-03",
+  "expect": {
+   "status": "menstruating",
+   "phase": "menstrual",
+   "cycle_day": 3,
+   "cycle_length": 28,
+   "days_until_next_period": 26,
+   "days_since_lmp": 2,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-05",
+  "expect": {
+   "status": "menstruating",
+   "phase": "menstrual",
+   "cycle_day": 5,
+   "cycle_length": 28,
+   "days_until_next_period": 24,
+   "days_since_lmp": 4,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-06",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 6,
+   "cycle_length": 28,
+   "days_until_next_period": 23,
+   "days_since_lmp": 5,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-07",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 7,
+   "cycle_length": 28,
+   "days_until_next_period": 22,
+   "days_since_lmp": 6,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-11",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 11,
+   "cycle_length": 28,
+   "days_until_next_period": 18,
+   "days_since_lmp": 10,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-13",
+  "expect": {
+   "status": "menstruating",
+   "phase": "ovulatory",
+   "cycle_day": 13,
+   "cycle_length": 28,
+   "days_until_next_period": 16,
+   "days_since_lmp": 12,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-14",
+  "expect": {
+   "status": "menstruating",
+   "phase": "ovulatory",
+   "cycle_day": 14,
+   "cycle_length": 28,
+   "days_until_next_period": 15,
+   "days_since_lmp": 13,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-15",
+  "expect": {
+   "status": "menstruating",
+   "phase": "ovulatory",
+   "cycle_day": 15,
+   "cycle_length": 28,
+   "days_until_next_period": 14,
+   "days_since_lmp": 14,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-16",
+  "expect": {
+   "status": "menstruating",
+   "phase": "early_luteal",
+   "cycle_day": 16,
+   "cycle_length": 28,
+   "days_until_next_period": 13,
+   "days_since_lmp": 15,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-17",
+  "expect": {
+   "status": "menstruating",
+   "phase": "early_luteal",
+   "cycle_day": 17,
+   "cycle_length": 28,
+   "days_until_next_period": 12,
+   "days_since_lmp": 16,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-21",
+  "expect": {
+   "status": "menstruating",
+   "phase": "early_luteal",
+   "cycle_day": 21,
+   "cycle_length": 28,
+   "days_until_next_period": 8,
+   "days_since_lmp": 20,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-22",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 22,
+   "cycle_length": 28,
+   "days_until_next_period": 7,
+   "days_since_lmp": 21,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-23",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 23,
+   "cycle_length": 28,
+   "days_until_next_period": 6,
+   "days_since_lmp": 22,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-26",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 26,
+   "cycle_length": 28,
+   "days_until_next_period": 3,
+   "days_since_lmp": 25,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-07-28",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 28,
+   "cycle_length": 28,
+   "days_until_next_period": 1,
+   "days_since_lmp": 27,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 21
+  },
+  "on": "2026-06-01",
+  "expect": {
+   "status": "menstruating",
+   "phase": "menstrual",
+   "cycle_day": 1,
+   "cycle_length": 21,
+   "days_until_next_period": 21,
+   "days_since_lmp": 0,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 21
+  },
+  "on": "2026-06-06",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 6,
+   "cycle_length": 21,
+   "days_until_next_period": 16,
+   "days_since_lmp": 5,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 21
+  },
+  "on": "2026-06-09",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 9,
+   "cycle_length": 21,
+   "days_until_next_period": 13,
+   "days_since_lmp": 8,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 21
+  },
+  "on": "2026-06-11",
+  "expect": {
+   "status": "menstruating",
+   "phase": "ovulatory",
+   "cycle_day": 11,
+   "cycle_length": 21,
+   "days_until_next_period": 11,
+   "days_since_lmp": 10,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 21
+  },
+  "on": "2026-06-13",
+  "expect": {
+   "status": "menstruating",
+   "phase": "early_luteal",
+   "cycle_day": 13,
+   "cycle_length": 21,
+   "days_until_next_period": 9,
+   "days_since_lmp": 12,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 21
+  },
+  "on": "2026-06-18",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 18,
+   "cycle_length": 21,
+   "days_until_next_period": 4,
+   "days_since_lmp": 17,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 21
+  },
+  "on": "2026-06-21",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 21,
+   "cycle_length": 21,
+   "days_until_next_period": 1,
+   "days_since_lmp": 20,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-06-01",
+  "expect": {
+   "status": "menstruating",
+   "phase": "menstrual",
+   "cycle_day": 1,
+   "cycle_length": 35,
+   "days_until_next_period": 35,
+   "days_since_lmp": 0,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-06-06",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 6,
+   "cycle_length": 35,
+   "days_until_next_period": 30,
+   "days_since_lmp": 5,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-06-07",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 7,
+   "cycle_length": 35,
+   "days_until_next_period": 29,
+   "days_since_lmp": 6,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-06-15",
+  "expect": {
+   "status": "menstruating",
+   "phase": "follicular",
+   "cycle_day": 15,
+   "cycle_length": 35,
+   "days_until_next_period": 21,
+   "days_since_lmp": 14,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-06-18",
+  "expect": {
+   "status": "menstruating",
+   "phase": "ovulatory",
+   "cycle_day": 18,
+   "cycle_length": 35,
+   "days_until_next_period": 18,
+   "days_since_lmp": 17,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-06-20",
+  "expect": {
+   "status": "menstruating",
+   "phase": "early_luteal",
+   "cycle_day": 20,
+   "cycle_length": 35,
+   "days_until_next_period": 16,
+   "days_since_lmp": 19,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-06-27",
+  "expect": {
+   "status": "menstruating",
+   "phase": "early_luteal",
+   "cycle_day": 27,
+   "cycle_length": 35,
+   "days_until_next_period": 9,
+   "days_since_lmp": 26,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-07-01",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 31,
+   "cycle_length": 35,
+   "days_until_next_period": 5,
+   "days_since_lmp": 30,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-06-01",
+   "cycle_length_days": 35
+  },
+  "on": "2026-07-05",
+  "expect": {
+   "status": "menstruating",
+   "phase": "late_luteal",
+   "cycle_day": 35,
+   "cycle_length": 35,
+   "days_until_next_period": 1,
+   "days_since_lmp": 34,
+   "regularity": "regular",
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-01-01",
+   "cycle_length_days": 28
+  },
+  "on": "2026-08-01",
+  "expect": {
+   "status": "menstruating",
+   "phase": "early_luteal",
+   "cycle_day": 17,
+   "cycle_length": 28,
+   "days_until_next_period": 12,
+   "days_since_lmp": 212,
+   "regularity": "regular",
+   "confidence": "low"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "perimenopausal",
+   "last_menstrual_period": "2026-07-20",
+   "cycle_length_days": 30
+  },
+  "on": "2026-08-01",
+  "expect": {
+   "status": "perimenopausal",
+   "phase": "follicular",
+   "cycle_day": 13,
+   "cycle_length": 30,
+   "days_until_next_period": 18,
+   "days_since_lmp": 12,
+   "regularity": "regular",
+   "confidence": "low"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-20",
+   "cycle_length_days": 28,
+   "cycle_regularity": "irregular"
+  },
+  "on": "2026-08-01",
+  "expect": {
+   "status": "menstruating",
+   "phase": "ovulatory",
+   "cycle_day": 13,
+   "cycle_length": 28,
+   "days_until_next_period": 16,
+   "days_since_lmp": 12,
+   "regularity": "irregular",
+   "confidence": "low"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "postmenopausal"
+  },
+  "on": "2026-08-01",
+  "expect": {
+   "status": "postmenopausal",
+   "phase": "postmenopausal",
+   "cycle_day": null,
+   "cycle_length": 28,
+   "days_until_next_period": null,
+   "days_since_lmp": null,
+   "regularity": null,
+   "confidence": "high"
+  }
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating"
+  },
+  "on": "2026-08-01",
+  "expect": {
+   "status": "menstruating",
+   "phase": null,
+   "cycle_day": null,
+   "cycle_length": 28,
+   "days_until_next_period": null,
+   "days_since_lmp": null,
+   "regularity": "regular",
+   "confidence": "low"
+  }
+ },
+ {
+  "client": {
+   "sex": "M",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-07-20"
+  },
+  "on": "2026-08-01",
+  "expect": null
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "menstruating",
+   "last_menstrual_period": "2026-09-01"
+  },
+  "on": "2026-08-01",
+  "expect": null
+ },
+ {
+  "client": {
+   "sex": "F",
+   "cycle_status": "not_applicable"
+  },
+  "on": "2026-08-01",
+  "expect": null
+ }
+]

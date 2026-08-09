@@ -897,8 +897,11 @@ class Client(BaseModel):
             age -= 1
         return age
 
-    def cycle_context(self) -> Optional[dict]:
-        """Compute today's cycle context for the plan generator.
+    def cycle_context(self, on_date: Optional[date] = None) -> Optional[dict]:
+        """Compute the cycle context for the plan generator — today's by
+        default, or for an arbitrary ``on_date`` (the weekly menu drafter
+        computes one per day of the target week, which can straddle a phase
+        boundary).
 
         Returns a dict like:
           {
@@ -909,11 +912,23 @@ class Client(BaseModel):
             'cycle_day': int | None,         # 1-based day of current cycle
             'cycle_length': int,              # 28 default
             'days_until_next_period': int | None,
+            'days_since_lmp': int | None,     # raw distance — stale-LMP guard
             'regularity': str | None,
             'confidence': 'high' | 'low',     # low for perimenopausal / no-LMP
+                                              # / irregular / stale LMP
             'note': str,                      # human-readable summary
           }
         Returns None when status is None / 'not_applicable' or sex isn't F.
+
+        Stale-LMP guard: cycle_day is a modulo of days-since-LMP, so a
+        months-old LMP silently wraps into a plausible-looking cycle day.
+        When the LMP is more than two cycle lengths old, confidence drops to
+        'low' and the note says why — phase-keyed behaviour downstream must
+        gate on confidence == 'high', so a stale date softens copy instead of
+        confidently mis-phasing the client.
+
+        NOTE: pregnancy_status is NOT consulted here — callers applying phase
+        logic must check Client.pregnancy_status / lactation_started first.
         """
         if (self.sex or "").upper() not in ("F", "FEMALE"):
             return None
@@ -931,6 +946,7 @@ class Client(BaseModel):
                 "cycle_day": None,
                 "cycle_length": cycle_len,
                 "days_until_next_period": None,
+                "days_since_lmp": None,
                 "regularity": None,
                 "confidence": "high",
                 "note": "Post-menopause — stable protocol (phytoestrogens, blood sugar, strength training, gut for oestrogen recycling).",
@@ -944,19 +960,21 @@ class Client(BaseModel):
                 "cycle_day": None,
                 "cycle_length": cycle_len,
                 "days_until_next_period": None,
+                "days_since_lmp": None,
                 "regularity": regularity,
                 "confidence": "low",
                 "note": "Cycle status known but no LMP date captured — ask coach to update.",
             }
 
         from datetime import date as _date
-        today = _date.today()
+        today = on_date or _date.today()
         days_since_lmp = (today - self.last_menstrual_period).days
         if days_since_lmp < 0:
             return None  # LMP is in the future (data error)
 
         cycle_day = (days_since_lmp % cycle_len) + 1   # 1-based
         days_until_next = cycle_len - cycle_day + 1
+        stale_lmp = days_since_lmp > cycle_len * 2
 
         # Phase windows (28-day cycle by default; scale linearly for other lengths)
         # using fractional thresholds so a 32-day cycle still maps cleanly.
@@ -972,7 +990,11 @@ class Client(BaseModel):
         else:
             phase = "late_luteal"
 
-        confidence = "low" if status == "perimenopausal" or regularity != "regular" else "high"
+        confidence = (
+            "low"
+            if status == "perimenopausal" or regularity != "regular" or stale_lmp
+            else "high"
+        )
 
         phase_notes = {
             "menstrual": "Iron-rich foods (red meat / lentils / dates / blackstrap molasses), gentle movement, magnesium glycinate at night, more rest.",
@@ -982,15 +1004,24 @@ class Client(BaseModel):
             "late_luteal": "Blood-sugar stability paramount — protein every meal, no fasting, restorative movement only (yoga, walks), reduce refined carbs.",
         }
 
+        note = phase_notes.get(phase, "")
+        if stale_lmp:
+            note = (
+                f"LMP is {days_since_lmp} days old (> 2 cycles) — phase is an "
+                f"extrapolation. Refresh the period start date before leaning "
+                f"on phase guidance. " + note
+            )
+
         return {
             "status": status,
             "phase": phase,
             "cycle_day": cycle_day,
             "cycle_length": cycle_len,
             "days_until_next_period": days_until_next,
+            "days_since_lmp": days_since_lmp,
             "regularity": regularity,
             "confidence": confidence,
-            "note": phase_notes.get(phase, ""),
+            "note": note,
         }
 
     def estimated_age(self) -> Optional[int]:

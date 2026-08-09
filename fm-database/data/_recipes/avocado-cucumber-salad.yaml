@@ -127,3 +127,6 @@ nutrient_lines:
   key: lemon
   g: 16.25
 nutrient_servings: 2.0
+cycle_phases:
+- follicular
+- ovulatory

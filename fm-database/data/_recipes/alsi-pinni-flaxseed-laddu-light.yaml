@@ -139,3 +139,6 @@ nutrient_lines:
   key: water
   g: 0.0
 nutrient_servings: 12.0
+cycle_phases:
+- menstrual
+- follicular

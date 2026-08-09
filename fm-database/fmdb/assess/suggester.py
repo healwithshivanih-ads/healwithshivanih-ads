@@ -1695,6 +1695,34 @@ HARD RULES (violating these breaks the downstream system):
       client must not do, and a menopause stage never reinstates a blocked or
       cautioned entry — if the impact entries are absent from `exercise_options`,
       they are absent for a reason.
+    - WHEN `cycle_phase` IS SET (a menstruating client with a regular cycle and
+      a fresh period date — one of: menstrual, follicular, ovulatory,
+      early_luteal, late_luteal), shape the week around her infradian rhythm:
+        * STRENGTH TRAINING IS WELCOME IN EVERY PHASE. Never remove loading
+          because of the cycle — at most drop a level in late_luteal and the
+          first day or two of menstrual.
+        * INTENSE CARDIO / HIIT BELONGS IN follicular AND ovulatory, where
+          resting cortisol is lower. In early_luteal and late_luteal keep the
+          cardio slot to zone-2 / steady-state — elevated resting cortisol
+          there flips intense training toward fat storage and muscle wasting.
+          An option whose `cycle_avoid_phases` contains her current
+          `cycle_phase` is exactly such an entry: prefer an alternative
+          (one whose `cycle_favoured_phases` matches, or an untagged one),
+          and if you keep it anyway, say why in the rationale.
+        * IN menstrual, favour restorative and mobility work plus gentle
+          walking; iron-supportive nutrition matters more than training load.
+        * NEVER suggest intermittent fasting, fasted workouts, or eating
+          windows beyond a 12h overnight fast for a menstruating client
+          regardless of phase (13-14h is acceptable in follicular only, and
+          only when she is not training first thing).
+        * FOR nutrition_suggestions, respect the luteal metabolic shift: in
+          the luteal phases she needs MORE fuel (~200-280 kcal/day relative
+          to her own follicular baseline) from slow-burning carbohydrates and
+          protein-anchored meals, not less — luteal restriction is the
+          canonical driver of premenstrual cravings and blood-sugar anxiety.
+      This too is EMPHASIS, not permission — thin evidence tier, so express it
+      as this week's bias in rationales, never as a hard rule to the client.
+      A cycle phase never reinstates a blocked or cautioned entry either.
     - Leave `level` empty. `start_level` in the options tells you what the screen
       chose from the client's own record, and it accounts for things you cannot
       see. Override it only with a stated reason in the rationale.
@@ -1853,8 +1881,31 @@ def _exercise_options(client_context: dict[str, Any]) -> list[dict[str, Any]]:
         mods = [n.modification for n in v.notes if n.modification]
         if mods:
             row["modifications"] = mods
+        # Static per-entry cycle tags — phase-INDEPENDENT on purpose: the
+        # options sit in the prompt-cached stable block, so the row must not
+        # change with the cycle day. The model cross-references these against
+        # the variable payload's `cycle_phase`.
+        from ..plan.exercise_screen import _phase_values
+        cap = _phase_values(e.get("cycle_phases_avoid"))
+        if cap:
+            row["cycle_avoid_phases"] = sorted(cap)
+        cfp = _phase_values(e.get("cycle_phases_favoured"))
+        if cfp:
+            row["cycle_favoured_phases"] = sorted(cfp)
         out.append(row)
     return out
+
+
+def _current_phase(client_context: dict[str, Any]) -> str | None:
+    """The client's current cycle phase for the model briefing, or None.
+
+    Thin wrapper so the suggester and the gate cannot disagree about what
+    'current phase' means — both defer to exercise_screen.current_cycle_phase
+    (high-confidence only; None for male / postmenopausal / pregnant /
+    irregular / stale-LMP clients)."""
+    from ..plan.exercise_screen import current_cycle_phase
+
+    return current_cycle_phase(client_context or {})
 
 
 def synthesize(
@@ -1999,6 +2050,12 @@ def synthesize(
         "selected_symptoms": selected_symptom_slugs,
         "selected_topics": selected_topic_slugs,
         "additional_notes": additional_notes,
+        # Current cycle phase — VARIABLE payload on purpose: it changes with
+        # every cycle day, and parking it in the prompt-cached stable block
+        # would either churn the cache or serve a stale phase. None unless
+        # the client menstruates with a regular cycle and a fresh LMP
+        # (confidence gate lives in current_cycle_phase).
+        "cycle_phase": _current_phase(client_context),
     }
     stable_block: dict[str, Any] = {
         "type": "text",
@@ -2118,11 +2175,15 @@ def synthesize(
             # what was proposed and why it did not survive.
             if suggestions.exercise_suggestions:
                 try:
-                    from ..plan.exercise_screen import gate_prescription
+                    from ..plan.exercise_screen import (
+                        current_cycle_phase,
+                        gate_prescription,
+                    )
                     gated = gate_prescription(
                         [s.model_dump() for s in suggestions.exercise_suggestions],
                         _exercise_dicts(),
                         client_context or {},
+                        cycle_phase=current_cycle_phase(client_context or {}),
                     )
                     kept_slugs = {k["exercise"] for k in gated.kept}
                     levels = {k["exercise"]: k.get("level") for k in gated.kept}

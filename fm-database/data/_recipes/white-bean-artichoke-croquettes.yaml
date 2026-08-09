@@ -141,3 +141,6 @@ nutrient_lines:
   key: zest
   g: 0.5208333333333334
 nutrient_servings: 6.0
+cycle_phases:
+- early_luteal
+- late_luteal

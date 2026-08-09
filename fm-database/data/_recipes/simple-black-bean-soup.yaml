@@ -194,3 +194,6 @@ nutrient_lines:
   key: yogurt
   g: 20.0
 nutrient_servings: 4.0
+cycle_phases:
+- early_luteal
+- late_luteal

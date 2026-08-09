@@ -179,3 +179,5 @@ nutrient_lines:
   key: salt
   g: 4.265625
 nutrient_servings: 2.5
+cycle_phases:
+- menstrual

@@ -123,3 +123,6 @@ nutrient_lines:
   key: tamari
   g: 31.875
 nutrient_servings: 3.0
+cycle_phases:
+- early_luteal
+- late_luteal

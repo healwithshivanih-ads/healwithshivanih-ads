@@ -163,3 +163,5 @@ aliases:
 # published plan (cl-005) point at `coenzyme-q10`.
 - coenzyme-q10
 - coenzyme-q10-diabetes
+cycle_phases:
+- follicular

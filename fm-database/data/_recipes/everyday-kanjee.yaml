@@ -123,3 +123,5 @@ nutrient_lines:
   key: ginger-powder
   g: 0.3
 nutrient_servings: 4.0
+cycle_phases:
+- menstrual

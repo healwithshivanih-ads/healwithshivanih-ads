@@ -139,3 +139,5 @@ nutrient_lines:
   key: black-pepper
   g: 0.3
 nutrient_servings: 2.0
+cycle_phases:
+- ovulatory

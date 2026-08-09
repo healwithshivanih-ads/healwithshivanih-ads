@@ -26,6 +26,13 @@ DOSHAS = {"vata", "pitta", "kapha"}
 # "all" = year-round; the established convention for season-agnostic recipes.
 SEASONS = {"spring", "summer", "monsoon", "autumn", "winter", "all"}
 RASAS = {"sweet", "sour", "salty", "pungent", "bitter", "astringent"}
+# Menstrual-cycle phases a recipe particularly suits (EMPHASIS for ranking,
+# never exclusion — same house rule as aggravates_dosha). Values must stay
+# byte-identical to fmdb.enums.CyclePhase / Client.cycle_context() output.
+# Absent/empty = phase-neutral, the overwhelming default; there is no "all"
+# sentinel because neutral already means that. Tag rationale lives in the
+# canonical claims (luteal-phase-needs-more-calories-and-slow-carbs etc.).
+CYCLE_PHASES = {"menstrual", "follicular", "ovulatory", "early_luteal", "late_luteal"}
 # fish and shellfish stay separate: a shellfish allergy is common without any
 # finned-fish allergy, and collapsing them would over-restrict every menu.
 # (is_safe() substring-matches both ways, so "fish" still catches "shellfish"
@@ -161,6 +168,7 @@ def check_recipe(d: dict, fname: str) -> tuple[list[str], list[str]]:
     sub("meal_type", MEAL_TYPES); sub("diet", DIETS); sub("balances_dosha", DOSHAS)
     sub("aggravates_dosha", DOSHAS); sub("seasons", SEASONS); sub("rasa", RASAS)
     sub("contains_allergens", ALLERGENS, hard=False)
+    sub("cycle_phases", CYCLE_PHASES)
 
     for k in ("approx_kcal_per_serving", "protein_g"):
         if d.get(k) is not None and not isinstance(d[k], (int, float)):

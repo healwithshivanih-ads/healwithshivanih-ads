@@ -14,6 +14,7 @@ def card(rec):
         "slug": rec.get("slug"), "name": rec.get("name"),
         "meal_type": rec.get("meal_type") or [], "diet": rec.get("diet") or [],
         "seasons": rec.get("seasons") or [], "balances_dosha": rec.get("balances_dosha") or [],
+        "cycle_phases": rec.get("cycle_phases") or [],
         "one_line": rec.get("one_line") or "",
         "kcal": rec.get("approx_kcal_per_serving"),
         "has_image": bool(img.get("file")),

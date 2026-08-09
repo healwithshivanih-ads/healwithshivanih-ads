@@ -140,3 +140,6 @@ nutrient_lines:
   key: water
   g: 0.0
 nutrient_servings: 3.0
+cycle_phases:
+- early_luteal
+- late_luteal

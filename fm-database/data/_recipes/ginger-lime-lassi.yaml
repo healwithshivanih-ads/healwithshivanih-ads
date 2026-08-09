@@ -119,3 +119,6 @@ nutrient_lines:
   key: honey
   g: 7.083333333333333
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual
+- follicular

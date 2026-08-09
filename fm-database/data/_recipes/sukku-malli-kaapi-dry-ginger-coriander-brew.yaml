@@ -127,3 +127,5 @@ nutrient_lines:
   key: jaggery
   g: 4.166666666666667
 nutrient_servings: 2.0
+cycle_phases:
+- menstrual

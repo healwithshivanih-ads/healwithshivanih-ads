@@ -35,7 +35,10 @@ phases:
     key_actions:
       - iron-rich foods — beetroot, dates, dark leafy greens, red meat (if non-veg)
       - warming foods — dal, soups, stews, ginger tea
-      - REST + restorative yoga — NO HIIT, NO heavy lifting
+      - "REST + restorative yoga days 1–2 — no HIIT anywhere in this phase;
+        from day 3 gentle strength at reduced load is fine (lifting is
+        welcome all cycle — only the first day or two of the bleed and late
+        luteal call for toning it down)"
       - avoid social over-commitment — reflect + journal
       - hot water bottle / warmth on lower belly + back
   - name: "Follicular phase (days 6–13 — pre-ovulation)"
@@ -65,8 +68,15 @@ phases:
     key_actions:
       - seed cycling — 1 tbsp ground sesame + 1 tbsp sunflower seed daily
       - magnesium-rich foods — pumpkin seeds, dark chocolate (1 square), spinach
-      - complex carbs — sweet potato, rice, oats (progesterone needs more carbs)
-      - moderate exercise — strength + walking; avoid HIIT in late luteal (PMS week)
+      - "complex carbs — sweet potato, rice, oats; eat MORE here, not less:
+        metabolic rate rises ~200–280 kcal/day in luteal to build the
+        endometrium, and under-fuelling this phase is what drives the
+        craving-binge-anxiety loop (mechanism: luteal-metabolic-shift)"
+      - "movement — strength training stays (drop a level in the PMS week);
+        cardio stays zone-2 / steady-state for the WHOLE luteal phase, not
+        just the last week — elevated resting cortisol flips intense cardio
+        toward fat storage + muscle wasting here (claim:
+        cycle-aligned-exercise-by-phase)"
       - earlier bedtime in days 22–28 (progesterone sensitivity)
       - reduce caffeine in luteal (worsens PMS)
 key_steps: []
@@ -115,14 +125,22 @@ linked_to_topics:
   - estrogen-dominance
   - pms
   - pcos
-  - estrogen-dominance
-linked_to_mechanisms: []
+  - cycle-syncing
+linked_to_mechanisms:
+  - infradian-rhythm
+  - luteal-metabolic-shift
+  - luteal-progesterone-insulin-resistance
+  - follicular-estrogen-insulin-sensitivity
 linked_to_symptoms:
   - food-sensitivities
   - fatigue
 sources:
   - id: vitaone-skill-practice-guide
     location: cycle sync section
+  - id: ask-expert-cycle-syncing
+    location: phase-specific nutrition, movement and fasting rules
+  - id: lin-2023-glucose-variance-menstrual-cycle
+    location: luteal glucose destabilisation (independent, non-Vitti source)
 evidence_tier: fm_specific_thin
 notes_for_coach: |
   Best taught with a paper cycle-tracking sheet for the first 3 months.
@@ -130,7 +148,13 @@ notes_for_coach: |
   women. For lunar-cycle proxy in post-menopause, use day 1 = new moon.
   Seed cycling is the most-asked-about + most-Googled element — explain
   the rationale clearly (lignans + phytoestrogens) so clients commit.
-version: 1
+  NO intermittent fasting anywhere in this protocol — 12h overnight is the
+  ceiling for menstruating clients (13–14h follicular at most, never before
+  a morning workout): claim avoid-intermittent-fasting-for-menstruating-women.
+  For PCOS with NO cycle at all (or hypothalamic amenorrhea), this protocol
+  is the wrong starting point — there is no cycle to sync to; address the
+  underlying dysregulation first and return here once ovulation resumes.
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: 2026-08-09
 updated_by: shivani

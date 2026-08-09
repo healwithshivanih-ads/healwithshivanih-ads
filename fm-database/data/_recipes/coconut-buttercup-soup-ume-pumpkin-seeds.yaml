@@ -152,3 +152,6 @@ nutrient_lines:
   key: vinegar
   g: 2.5
 nutrient_servings: 4.0
+cycle_phases:
+- menstrual
+- follicular

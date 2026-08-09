@@ -874,6 +874,157 @@ def _check_gluten_in_autoimmune(
         _flag("nutrition", "pattern", w, "nutrition pattern mentions")
 
 
+# Cycle-phase consistency. Two rules with deliberately different gates:
+#
+# 1. Fasting — gated on cycle_status == 'menstruating' (a STABLE fact, so the
+#    finding never flaps as the cycle advances). Canonical claim
+#    avoid-intermittent-fasting-for-menstruating-women: a 12h overnight fast
+#    is the ceiling for menstruating women (13-14h follicular only);
+#    14h+ windows, IF-branded protocols, and fasted training drive cycle and
+#    ovulation dysregulation and progesterone underproduction. WARNING, not
+#    CRITICAL — a deliberate follicular-gated fast is a legitimate ack.
+#
+# 2. Exercise phase fit — gated on cycle_context() confidence == 'high'
+#    (regular cycle, fresh LMP). Claim cycle-aligned-exercise-by-phase:
+#    high-intensity cardio in the luteal phases works against the elevated-
+#    cortisol physiology (fat storage / muscle wasting direction). WARNING —
+#    the evidence tier is fm_specific_thin AND phase is time-varying: a plan
+#    fine at authoring can drift into a flagged phase, so it must never
+#    block a publish.
+_FASTING_TOKENS = (
+    "intermittent fasting", "time-restricted eating", "time restricted eating",
+    "omad", "one meal a day", "extended fast", "extended fasting",
+    "fasted workout", "fasted workouts", "fasted training", "fasted cardio",
+    "16:8", "18:6", "20:4",
+)
+# 14h+ fasting windows written as durations ("14h overnight fast",
+# "fast for 16 hours"). 12-13h stays unflagged — the golden overnight fast
+# is explicitly fine.
+_FASTING_HOUR_PATTERNS = (
+    r"\b1[4-9]\s*[-–]?\s*(?:h|hr|hrs|hour|hours)\b(?:\s+\w+){0,2}\s+fast\w*",
+    r"fast\w*\s+(?:of\s+|for\s+)?1[4-9]\s*[-–]?\s*(?:h|hr|hrs|hour|hours)\b",
+)
+
+
+def _fasting_hits(text: str) -> list[str]:
+    """Fasting prescriptions RECOMMENDED in text (negation-aware — 'no
+    intermittent fasting' must not fire)."""
+    low, out = text.lower(), []
+    for word in _FASTING_TOKENS:
+        for m in _re.finditer(r"\b" + _re.escape(word) + r"\b", low):
+            if _is_negated(low, m.start(), m.end()):
+                continue
+            out.append(word)
+            break
+    for pat in _FASTING_HOUR_PATTERNS:
+        for m in _re.finditer(pat, low):
+            if _is_negated(low, m.start(), m.end()):
+                continue
+            out.append(m.group(0).strip())
+            break
+    return out
+
+
+def _check_cycle_phase(
+    plan: Plan, client: Client | None, catalogue: Loaded, findings: list[Finding]
+) -> None:
+    """Cycle-phase consistency — see the block comment above for the rules."""
+    if client is None:
+        return
+    # Pregnancy / lactation get their own overlays; a stale 'menstruating'
+    # status must not phase-check a pregnant client.
+    if str(getattr(client, "pregnancy_status", "") or "").strip().lower().startswith("pregnant"):
+        return
+    if getattr(client, "lactation_started", None):
+        return
+    status = str(getattr(client, "cycle_status", "") or "").strip().lower()
+
+    # ---- Rule 1: fasting while menstruating (status-gated) ----
+    if status == "menstruating":
+        seen: set[str] = set()
+
+        def _flag_fast(section: str, field: str, word: str, ctx: str) -> None:
+            if word in seen:
+                return
+            seen.add(word)
+            findings.append(Finding(
+                "WARNING", section, field,
+                (f"{ctx} {word!r}, but the client is menstruating — cap fasting "
+                 "at the 12h overnight window (13-14h in the follicular phase "
+                 "at most). Longer windows and fasted training drive cycle / "
+                 "ovulation dysregulation and progesterone underproduction "
+                 "(claim: avoid-intermittent-fasting-for-menstruating-women). "
+                 "Rephrase, gate it to the follicular phase, or ack if "
+                 "deliberate."),
+                target=word,
+            ))
+
+        for item in plan.nutrition.add:
+            for w in _fasting_hits(item):
+                _flag_fast("nutrition", "add", w, "recommends")
+        for w in _fasting_hits(plan.nutrition.pattern):
+            _flag_fast("nutrition", "pattern", w, "nutrition pattern mentions")
+        for w in _fasting_hits(plan.nutrition.meal_timing):
+            _flag_fast("nutrition", "meal_timing", w, "meal timing mentions")
+        for prac in plan.lifestyle_practices:
+            for w in _fasting_hits(f"{prac.name} {prac.details}"):
+                _flag_fast(
+                    "lifestyle_practices", "name", w,
+                    f"practice {prac.name!r} references",
+                )
+        if "weight-loss-metabolic-reset" in (plan.attached_protocols or []):
+            findings.append(Finding(
+                "WARNING", "attached_protocols", "protocol",
+                ("weight-loss-metabolic-reset prescribes 14-16h fasting "
+                 "windows, but the client is menstruating — cap at 12h "
+                 "overnight (see the protocol's cycle_gating notes) or attach "
+                 "blood-sugar-regulation instead. Ack if you are running the "
+                 "fasting phases follicular-gated."),
+                target="weight-loss-metabolic-reset",
+            ))
+
+    # ---- Rule 2: exercise phase fit (high-confidence phase only) ----
+    # Cheap guards first — check_plan runs on editor keystrokes.
+    if not any(prac.exercises for prac in plan.lifestyle_practices):
+        return
+    if not getattr(catalogue, "exercises", None):
+        return
+    try:
+        ctx = client.cycle_context()
+    except Exception:
+        return
+    if not ctx or ctx.get("confidence") != "high":
+        return
+    phase = ctx.get("phase")
+    if not isinstance(phase, str) or phase == "postmenopausal":
+        return
+
+    ex_by_slug = {e.slug: e for e in catalogue.exercises}
+    phase_label = phase.replace("_", " ")
+    for prac in plan.lifestyle_practices:
+        for pex in prac.exercises:
+            entry = ex_by_slug.get(pex.exercise)
+            if entry is None:
+                continue  # unknown slugs are the xref check's finding
+            avoid = {
+                getattr(p, "value", p)
+                for p in (getattr(entry, "cycle_phases_avoid", []) or [])
+            }
+            if phase in avoid:
+                findings.append(Finding(
+                    "WARNING", "lifestyle_practices", "exercises.exercise",
+                    (f"{pex.exercise!r} is tagged avoid for the client's "
+                     f"current {phase_label} phase (cycle day "
+                     f"{ctx.get('cycle_day')}) — elevated resting cortisol "
+                     "flips high-intensity work toward fat storage / muscle "
+                     "wasting there (claim: cycle-aligned-exercise-by-phase). "
+                     "Prefer zone-2 cardio or strength work this week, drop "
+                     "the intensity a level, or ack — this is emphasis, and "
+                     "the phase moves on."),
+                    target=pex.exercise,
+                ))
+
+
 def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Finding]:
     """Run deterministic checks. Returns findings sorted by severity."""
     findings: list[Finding] = []
@@ -1288,6 +1439,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Gluten in an autoimmune client (100% rule) ----------
     _check_gluten_in_autoimmune(plan, client, findings)
+
+    # ---------- Cycle-phase consistency (fasting + exercise fit) ----------
+    _check_cycle_phase(plan, client, catalogue, findings)
 
     # Sort: CRITICAL first, then WARNING, then INFO
     severity_order = {"CRITICAL": 0, "WARNING": 1, "INFO": 2}

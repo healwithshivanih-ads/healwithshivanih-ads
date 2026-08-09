@@ -347,6 +347,7 @@ export async function buildGuidedAppData(
     practicesComingLater,
     seedCycling: null,
     periodCare: null,
+    cyclePhase: null,
     breathwork: null,
     somatic: allSomatic,
     eft: null,
