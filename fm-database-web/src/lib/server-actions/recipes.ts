@@ -167,9 +167,35 @@ export async function generateWeekRecipesAction(
       })),
     },
     180_000,
-  )) as { ok: boolean; error?: string; count?: number };
+  )) as {
+    ok: boolean;
+    error?: string;
+    count?: number;
+    prior_count?: number;
+    shrink_blocked?: boolean;
+  };
 
-  if (!out?.ok) return { ok: false, error: out?.error ?? "generate-week-recipes.py failed" };
+  if (!out?.ok) {
+    // A blocked shrink is the one failure here that is silent AND costly: the
+    // weekly path calls this detached, so a bare `ok:false` only ever reaches
+    // console.error and the client keeps a pack nobody knows is at risk. Push
+    // it to the coach — this is exactly the alert that was missing when cl-022
+    // lost 37 recipes on 2026-08-09 and the client reported it before we saw it.
+    if (out?.shrink_blocked) {
+      try {
+        const { sendPushToCoach } = await import("@/lib/fmdb/coach-push");
+        await sendPushToCoach({
+          title: "Recipe pack shrink blocked ⚠",
+          body: `${clientId}: pack would have gone ${out.prior_count} → ${out.count}. Nothing was overwritten — the old pack is intact.`,
+          url: `/m/clients/${clientId}`,
+          tag: `recipe-shrink-${clientId}`,
+        });
+      } catch {
+        /* push is best-effort — the ok:false below is still the source of truth */
+      }
+    }
+    return { ok: false, error: out?.error ?? "generate-week-recipes.py failed" };
+  }
 
   // The app's recipe pack is send-log gated (only ISSUED letters feed it).
   // Record a `recipes` send entry for THIS published slug so the freshly
