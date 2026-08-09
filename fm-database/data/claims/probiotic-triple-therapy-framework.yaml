@@ -15,7 +15,7 @@ linked_to_mechanisms: []
 linked_to_supplements:
 - probiotics-lactobacillus-bifidobacterium
 - saccharomyces-boulardii
-- probiotic-spore-based
+- spore-based-probiotic
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
   quote: 'Combine all three probiotic categories: Lacto/Bifido blend, S. boulardii,

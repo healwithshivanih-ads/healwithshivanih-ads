@@ -64,7 +64,7 @@ foods_to_remove:
 supplements_typically_used:
   - magnesium-glycinate
   - omega-3
-  - vitamin-d
+  - vitamin-d3
   - probiotics
 expected_outcomes:
   - reduced bloating + steadier energy

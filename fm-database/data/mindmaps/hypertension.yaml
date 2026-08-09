@@ -1017,7 +1017,7 @@ tree:
       - label: Psyllium
         children: []
         linked_kind: supplement
-        linked_slug: psyllium
+        linked_slug: psyllium-husk
         notes: ''
       - label: Glucomannan
         children: []
@@ -1780,7 +1780,7 @@ tree:
     - label: Vitamin D
       children: []
       linked_kind: supplement
-      linked_slug: vitamin-d
+      linked_slug: vitamin-d3
       notes: ''
     - label: Celery / Fiber / Garlic
       children: []

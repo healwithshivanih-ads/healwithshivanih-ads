@@ -1183,7 +1183,7 @@ tree:
       - label: Vitamin D
         children: []
         linked_kind: supplement
-        linked_slug: vitamin-d
+        linked_slug: vitamin-d3
         notes: ''
       linked_kind: null
       linked_slug: null

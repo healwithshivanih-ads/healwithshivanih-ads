@@ -445,12 +445,12 @@ tree:
     - label: VSL#3 / multi-strain
       children: []
       linked_kind: supplement
-      linked_slug: probiotic-vsl3-spore-biotic
+      linked_slug: probiotics
       notes: ''
     - label: Spore-based probiotics
       children: []
       linked_kind: supplement
-      linked_slug: probiotic-spore-based
+      linked_slug: spore-based-probiotic
       notes: ''
     - label: 'Caution: avoid prebiotics if SIBO active'
       children: []

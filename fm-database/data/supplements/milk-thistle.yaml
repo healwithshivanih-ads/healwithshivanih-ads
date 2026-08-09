@@ -18,11 +18,29 @@ timing_options:
 - with_breakfast
 - with_lunch
 - with_dinner
+- morning
 take_with_food: optional
-notes_for_coach: Supports hepatocyte repair and liver detoxification — useful for Candida
+notes_for_coach: 'Supports hepatocyte repair and liver detoxification — useful for Candida
   die-off reactions and sluggish bile. 200-400mg/day of standardized silymarin extract. Best
   choice if diabetic patient shows impaired liver function (common in overweight diabetics
   with fatty liver). Important given high-dose niacin liver risk and fatty liver prevalence.
+  Source (IFM Fig 3.5) names silymarin as an antioxidant protective
+
+  plant derivative buffering Phase 1 intermediates but does NOT give
+
+  dosing. Silymarin is the standardized flavonoid complex (silybin,
+
+  silydianin, silychristin) from Silybum marianum (milk thistle seed).
+
+  Hepatoprotective via glutathione preservation, membrane stabilization,
+
+  and antioxidant activity. Standardized extracts (typically 70-80%
+
+  silymarin) are preferred; bioavailability is improved with
+
+  phosphatidylcholine-complexed forms (silybin-phytosome). Listed as a Phase I antioxidant
+  protective nutrient in the document''s detox diagram. Specific doses not provided — verify
+  with clinician. Well-known hepatoprotective herb in functional medicine.'
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -40,7 +58,11 @@ linked_to_topics:
 - autoimmune-dermatitis
 - gallstones
 - type-2-diabetes-mellitus
-linked_to_mechanisms: []
+- detoxification
+- metabolic-detoxification
+linked_to_mechanisms:
+- antioxidant-buffering-of-phase-1-intermediates
+- phase-1-biotransformation
 linked_to_claims:
 - fluoride-bpa-block-thyroid-receptors
 - estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
@@ -52,10 +74,12 @@ linked_to_claims:
 - sluggish-bile-flow-overlooked-root-cause
 - nac-breaks-candida-biofilms
 - murray-milk-thistle-silymarin-psoriasis
+- silymarin-antioxidant-phase-i-hepatic-protection
 notes_for_client: Milk thistle supports liver health and helps the liver process toxins released
   during a Candida cleanse or when bile flow is sluggish. Milk thistle supports liver health
   — particularly important in diabetes where the liver can be stressed by excess weight or
-  high-dose supplements.
+  high-dose supplements. Silymarin, from milk thistle, helps protect your liver cells from
+  damage during the detoxification process.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
@@ -87,7 +111,13 @@ sources:
   location: Nutritional and Herbal Supplements / Flavonoids table
   quote: Milk thistle extract (70% silymarin) 100-300 mg — Best choice if showing signs of
     impaired liver function.
-version: 10
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Antioxidant Protective Nutrients and Plant Derivatives panel
+  quote: Silymarin
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: Silymarin
+version: 12
 status: active
 updated_at: '2026-08-09'
 updated_by: shivani
@@ -97,3 +127,5 @@ pregnancy_safety_note: Limited safety data; some hepatology indications in pregn
   only with clinician oversight.
 aliases:
 - milk-thistle-extract-diabetes
+- silymarin
+- silymarin-milk-thistle

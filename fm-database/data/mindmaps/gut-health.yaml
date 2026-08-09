@@ -254,7 +254,7 @@ tree:
     - label: Fish Oil / Omega-3
       children: []
       linked_kind: supplement
-      linked_slug: fish-oil-omega-3
+      linked_slug: fish-oil-epa-dha
       notes: ''
     - label: Berberine (for dysbiosis)
       children: []

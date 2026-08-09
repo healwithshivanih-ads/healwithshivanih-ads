@@ -404,7 +404,7 @@ tree:
     - label: Vitamin D3 (target 60–80 ng/mL)
       children: []
       linked_kind: supplement
-      linked_slug: vitamin-d
+      linked_slug: vitamin-d3
       notes: '2000–5000 IU/day depending on baseline.'
     - label: Biotin 1–2 mg/day
       children: []

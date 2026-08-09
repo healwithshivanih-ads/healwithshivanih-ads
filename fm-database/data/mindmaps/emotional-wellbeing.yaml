@@ -428,7 +428,7 @@ tree:
     - label: Vitamin D
       children: []
       linked_kind: supplement
-      linked_slug: vitamin-d
+      linked_slug: vitamin-d3
       notes: ''
     - label: B12 & Folate
       children: []

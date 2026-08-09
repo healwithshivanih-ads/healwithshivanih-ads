@@ -23,9 +23,7 @@ linked_to_mechanisms:
 - bone-resorption-formation-imbalance
 - vitamin-d-beta-cell-signaling
 linked_to_supplements:
-- vitamin-d
 - vitamin-d3
-- vitamin-d3-k2-combination-supplement
 - vitamin-d3-k2
 out_of_scope_notes: ''
 sources:
