@@ -53,6 +53,12 @@ jobs:
       - name: Install
         run: pip install -r requirements.txt
 
+      - name: Python unit tests (blocking)
+        # These files existed since 2026 but nothing ever ran them. Wired in
+        # 2026-08-09 alongside the renewal sweep, whose successor rule is the
+        # difference between a lapsed client and one who simply renewed.
+        run: python -m pytest tests/ -q
+
       - name: Validate catalogue (blocking — 0 errors required)
         run: python -m fmdb.cli validate
 

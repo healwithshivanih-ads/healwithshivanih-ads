@@ -23,7 +23,7 @@ from .ingest.extractor import get_extractor
 from .ingest.loaders import ATTACHMENT_EXTENSIONS, load_document, mime_for
 from .ingest.types import IngestRequest
 from .plan import storage as plan_storage
-from .plan import prospects
+from .plan import prospects, renewals
 from .plan import transitions as plan_transitions
 from .plan import render as plan_render
 from .plan.checker import check_plan
@@ -1772,6 +1772,65 @@ def cmd_client_list(args: argparse.Namespace) -> None:
               f"{c.age_band:6s} {c.sex}  conds: {conds}")
 
 
+def cmd_renewal_sweep(args: argparse.Namespace) -> None:
+    """Lapse signed-up clients whose plan ended and was never renewed.
+
+    Dry-run unless --apply. Never moves a directory and never touches
+    app_token: `lapsed` is a value, and a lapsed client keeps their app and
+    their Lab Vault (see docs/CLIENT_VS_PROSPECT_SPEC.md section 6).
+
+    The predicate is "has a successor?", never "is a plan running today?" — a
+    client between phases has no active plan and has not lapsed at all.
+    """
+    root = _plans_root(args)
+    rep = renewals.sweep(root, apply=args.apply, grace_days=args.grace_days)
+    verb = "Lapsed" if args.apply else "Would lapse"
+
+    lapsed = rep["lapsed"]
+    if not lapsed:
+        print(f"Nothing to lapse (grace: {rep['grace_days']} days).")
+    else:
+        print(f"{verb} {len(lapsed)}  (ended > {rep['grace_days']}d ago, no successor)")
+        for r in lapsed:
+            print(f"  {r['client_id']:12s}  {r['display_name']:22s}  "
+                  f"ended {r['latest_end']} ({r['days_since_end']}d ago)")
+
+    due = rep["renewal_due"]
+    if due:
+        print(f"\nRenewal due — inside grace, no successor yet ({len(due)}):")
+        for r in due:
+            print(f"  {r['client_id']:12s}  {r['display_name']:22s}  "
+                  f"ended {r['latest_end']} ({r['days_since_end']}d ago)")
+
+    restored = rep["restored"]
+    if restored:
+        rverb = "Restored" if args.apply else "Would restore"
+        print(f"\n{rverb} {len(restored)} (lapsed but has a plan again):")
+        for r in restored:
+            print(f"  {r['client_id']:12s}  {r['display_name']}")
+
+    if args.verbose:
+        print("\nLeft alone:")
+        for r in rep["kept"]:
+            nxt = f"  -> {r['next_slug']}" if r.get("next_slug") else ""
+            print(f"  {r['client_id']:12s}  {r['display_name']:22s}  {r['reason']}{nxt}")
+
+    for e in rep["errors"]:
+        print(f"ERROR {e['client_id']}: {e['error']}", file=sys.stderr)
+    if not args.apply and (lapsed or restored):
+        print("\n(dry run — re-run with --apply to write)")
+
+
+def cmd_client_reactivate(args: argparse.Namespace) -> None:
+    """Undo a lapse: set engagement_status back to signed_up."""
+    root = _plans_root(args)
+    res = renewals.reactivate(root, args.client_id)
+    if not res.get("ok"):
+        print(res.get("error"), file=sys.stderr)
+        raise SystemExit(1)
+    print(f"{args.client_id}: engagement_status -> signed_up")
+
+
 def cmd_prospects_sweep(args: argparse.Namespace) -> None:
     """Park non-signed-up people who have gone quiet.
 
@@ -2731,6 +2790,23 @@ def main() -> None:
     )
     pr.add_argument("client_id")
     pr.set_defaults(func=cmd_prospects_restore)
+
+    # ---- renewal commands ----
+    rs = sub.add_parser(
+        "renewal-sweep",
+        help="lapse clients whose plan ended and was never renewed (dry-run by default)",
+    )
+    rs.add_argument("--apply", action="store_true", help="actually write (default is a dry run)")
+    rs.add_argument(
+        "--grace-days", type=int, default=renewals.RENEWAL_GRACE_DAYS,
+        help=f"days after plan end before lapsing (default {renewals.RENEWAL_GRACE_DAYS})",
+    )
+    rs.add_argument("--verbose", action="store_true", help="also show who was left alone, and why")
+    rs.set_defaults(func=cmd_renewal_sweep)
+
+    cra = sub.add_parser("client-reactivate", help="undo a lapse (engagement_status -> signed_up)")
+    cra.add_argument("client_id")
+    cra.set_defaults(func=cmd_client_reactivate)
 
     # ---- plan commands ----
     pn = sub.add_parser("plan-new", help="create a new draft plan")

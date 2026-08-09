@@ -647,3 +647,23 @@ class ExerciseCautionSeverity(str, Enum):
     """
     block = "block"
     caution = "caution"
+
+
+class EngagementStatus(str, Enum):
+    """Where someone is in the commercial relationship.
+
+    Declared (rather than left as a bare string) because every renewal and
+    roster rule keys on it, and an undeclared field is one ``load -> write``
+    round-trip away from vanishing — which has already happened once to a real
+    record. See docs/CLIENT_VS_PROSPECT_SPEC.md section 3.2.
+
+    ``lapsed`` is a VALUE here, deliberately not a third directory: a lapsed
+    client stays in ``clients/`` and keeps their app token. Lapsing changes
+    what the app renders, never what the client is allowed to see of their own
+    data — the Lab Vault never locks.
+    """
+
+    pending = "pending"          # talked to, not enrolled
+    signed_up = "signed_up"      # enrolled — the only value that means "client"
+    declined = "declined"        # said no
+    lapsed = "lapsed"            # was enrolled; plan ended and was not renewed
