@@ -248,7 +248,7 @@ import {
   displayTiming,
 } from "./client-app-format";
 import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
-import { clientifyWhy, clientifyPracticeDetail } from "./client-app-clientify";
+import { clientifyWhy, clientifyPracticeDetail, clientFacingWhy } from "./client-app-clientify";
 import { scrubAuthors } from "./client-app-authors";
 import { formatIngredientChip } from "./ingredient-chip";
 import { remedySlots, REMEDY_SLOT_LABEL } from "./remedy-slots";
@@ -4168,11 +4168,10 @@ export async function loadClientAppData(
       slot: slotFromRank(chronoRank),
       chronoRank,
       timing: displayTiming(timing),
-      why: clientifyWhy(
-        firstSentence(asStr(p.coach_rationale).replace(/^\[[^\]]*\]\s*/g, ""))
-          .replace(/^CRITICAL GAP[^:]*:\s*/i, "")
-          .replace(/^CONTINUE[^.]*\.\s*/i, ""),
-      ),
+      // clientFacingWhy, not clientifyWhy(firstSentence(...)) — the coach's
+      // opening sentence is very often bookkeeping or a lab readout, and the
+      // real reason is the one after it.
+      why: clientFacingWhy(asStr(p.coach_rationale)),
       buyUrl,
       imageUrl: suppImageUrl,
       ...(asNeeded ? { asNeeded: true } : {}),

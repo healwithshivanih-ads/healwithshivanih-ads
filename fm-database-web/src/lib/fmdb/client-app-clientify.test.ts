@@ -7,7 +7,7 @@
  * there. The cases below are drawn from REAL leaks found on real plans.
  */
 import { describe, it, expect } from "vitest";
-import { clientifyWhy, clientifyPracticeDetail } from "./client-app-clientify";
+import { clientifyWhy, clientifyPracticeDetail, clientFacingWhy } from "./client-app-clientify";
 
 describe("clientifyWhy", () => {
   it("handles the cl-022 magnesium line end to end", () => {
@@ -94,5 +94,74 @@ describe("clientifyPracticeDetail", () => {
   it("handles empty and undefined safely", () => {
     expect(clientifyPracticeDetail("")).toBe("");
     expect(clientifyPracticeDetail(undefined as unknown as string)).toBe("");
+  });
+});
+
+describe("clientFacingWhy — walk to the first sentence that says something", () => {
+  it("skips a bookkeeping opener and shows the real reason", () => {
+    // cl-007's card opened "Already on this — continue." for weeks.
+    const raw =
+      "Already on this — continue. Compensates for the low enzyme output that " +
+      "comes with your condition.";
+    expect(clientFacingWhy(raw)).toBe(
+      "Compensates for the low enzyme output that comes with your condition.",
+    );
+  });
+
+  it("skips the openers a coach actually writes", () => {
+    for (const opener of [
+      "NEW in this session.",
+      "TOP ADD this round.",
+      "STEP-DOWN from 5 g twice daily.",
+      "Continued at 1000mg/day.",
+      "Stop pending CLARIFICATION.",
+      "Three reasons converge for her.",
+    ]) {
+      const out = clientFacingWhy(`${opener} It settles your stomach after meals.`);
+      expect(out, opener).toBe("It settles your stomach after meals.");
+    }
+  });
+
+  it("keeps walking past a lab sentence to a client-safe one", () => {
+    const raw =
+      "NEW in this session. Her ferritin is 12 ng/mL, far below FM-optimal of 70-150. " +
+      "Iron carries oxygen to every cell, which is where your energy comes from.";
+    expect(clientFacingWhy(raw)).toBe(
+      "Iron carries oxygen to every cell, which is where your energy comes from.",
+    );
+  });
+
+  it("does NOT split a species abbreviation into its own sentence", () => {
+    // "Sova GMT found B. longum 0.059%" rendered as the sentence "Sova GMT found B."
+    const out = clientFacingWhy("Sova GMT found B. longum depleted. Rebuilds that population.");
+    expect(out).not.toBe("Sova GMT found B.");
+    expect(out).toBe("Rebuilds that population.");
+  });
+
+  it("returns nothing when every sentence is coach-only", () => {
+    expect(clientFacingWhy("NEW in this session. Her TSH is 6.2 mIU/L.")).toBe("");
+  });
+
+  it("keeps a terse sentence that is genuinely an answer", () => {
+    // Deliberately not length-based — these are answers, not bookkeeping.
+    for (const s of ["Protein top-up.", "Food-sourced, not a capsule."]) {
+      expect(clientFacingWhy(s), s).toBe(s);
+    }
+  });
+
+  it("never lets the newly-reachable leaks through", () => {
+    // Each of these sat in sentence 2+, so walking forward is what exposed them.
+    for (const raw of [
+      "NEW. Curcumin inhibits NF-κB (reducing TPO/TgAb autoimmune signalling) and lowers hsCRP.",
+      "NEW. Mushroom is explicitly listed in Manju's foods_to_avoid.",
+      "NEW. Corrects your low-normal zinc (75.68) and elevated Cu:Zn (1.58).",
+    ]) {
+      expect(clientFacingWhy(raw), raw).toBe("");
+    }
+  });
+
+  it("handles empty and undefined safely", () => {
+    expect(clientFacingWhy("")).toBe("");
+    expect(clientFacingWhy(undefined as unknown as string)).toBe("");
   });
 });
