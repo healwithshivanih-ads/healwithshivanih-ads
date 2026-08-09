@@ -31,7 +31,7 @@ linked_to_mechanisms:
 - insulin-resistance
 - chronic-oxidative-stress
 linked_to_supplements:
-- n-acetylcysteine
+- nac
 sources:
 - id: romm-pcos-herbs-supplements-website
   location: NAC section, Dose and Evidence
