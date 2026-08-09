@@ -54,6 +54,42 @@ describe("computeCycleContext parity with Python cycle_context()", () => {
   }
 });
 
+describe("YAML date boundary — unquoted dates arrive as Date objects", () => {
+  /** The bug this pins, found smoke-testing the 2026-08-09 deploy: every real
+   *  client record is written by PyYAML, which emits dates BARE, so js-yaml
+   *  hands back a Date object rather than a string. The original ISO-regex
+   *  read turned that into "Thu Jul 28", failed, and reported "no period date
+   *  on record" — so not a single real client ever got a phase, silently,
+   *  with correct-looking data in the file. Every test here used ISO strings,
+   *  which is exactly why they all passed. */
+  const on = new Date("2026-08-09T00:00:00Z");
+  const base = { sex: "F", cycle_status: "menstruating", cycle_length_days: 28 };
+
+  it("computes the same phase from a Date as from an ISO string", () => {
+    const fromString = computeCycleContext(
+      { ...base, last_menstrual_period: "2026-07-28" },
+      on,
+    );
+    const fromDate = computeCycleContext(
+      { ...base, last_menstrual_period: new Date("2026-07-28T00:00:00.000Z") },
+      on,
+    );
+    expect(fromDate).not.toBeNull();
+    expect(fromDate!.phase).toBe(fromString!.phase);
+    expect(fromDate!.cycleDay).toBe(fromString!.cycleDay);
+    expect(fromDate!.confidence).toBe("high");
+  });
+
+  it("ignores an invalid Date rather than throwing", () => {
+    const ctx = computeCycleContext(
+      { ...base, last_menstrual_period: new Date("nonsense") },
+      on,
+    );
+    expect(ctx!.phase).toBeNull();
+    expect(ctx!.confidence).toBe("low");
+  });
+});
+
 describe("cyclePhaseForDisplay pregnancy/lactation guard", () => {
   const base = {
     sex: "F",

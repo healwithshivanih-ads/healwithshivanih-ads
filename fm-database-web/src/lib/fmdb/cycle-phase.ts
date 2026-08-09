@@ -81,9 +81,28 @@ interface CycleFields {
   lactation_started?: unknown;
 }
 
+/** A YAML date field as a UTC midnight Date, whether YAML gave us a string or
+ *  a Date — the same defensive boundary read `asDayStr` in client-app.ts
+ *  exists for, and for the same reason.
+ *
+ *  `last_menstrual_period: '2026-07-28'` (quoted) parses as a string; written
+ *  UNQUOTED it parses as a JS Date, because js-yaml resolves the YAML
+ *  timestamp type — and PyYAML on the Python side emits these bare, which is
+ *  how every real client record is written. `String(dateObject).slice(0, 10)`
+ *  yields "Thu Jul 28", which fails an ISO test, so the field read as absent
+ *  and NO client ever got a phase. Silent, and correct-looking in the file.
+ *
+ *  Two YAML parsers, one file, different types out. Read defensively here
+ *  rather than trusting every writer to quote. */
 function asDateUTC(v: unknown): Date | null {
   if (!v) return null;
-  const s = String(v).slice(0, 10);
+  if (v instanceof Date) {
+    return Number.isNaN(v.getTime())
+      ? null
+      : new Date(`${v.toISOString().slice(0, 10)}T00:00:00Z`);
+  }
+  if (typeof v !== "string") return null;
+  const s = v.trim().slice(0, 10);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return null;
   const d = new Date(`${s}T00:00:00Z`);
   return isNaN(d.getTime()) ? null : d;
