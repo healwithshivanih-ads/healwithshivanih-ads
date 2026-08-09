@@ -26,35 +26,64 @@ contraindications:
   life_stages:
   - pregnancy
   - lactation
-notes_for_coach: 'Catalogue stub — coach-requested 2026-05-20; enrich with
-  peer-reviewed citations via the catalogue queue before front-lining. Urolithin A
-  is a postbiotic — a gut-microbiome metabolite of ellagitannins (pomegranate,
-  walnuts, berries). Not everyone produces it endogenously, which is the rationale
-  for a direct supplement. Mechanism: it stimulates mitophagy (clearance of damaged
-  mitochondria), which supports mitochondrial function, biogenesis and skeletal
-  muscle quality. Emerging human RCT evidence for muscle strength and endurance in
-  middle-aged and older adults; evidence for broader functional-medicine outcomes
-  is still building, hence evidence_tier plausible_emerging. Studied doses are
-  typically 500 mg or 1000 mg once daily. Reference branded form is Mitopure
-  (Amazentis). Consider for clients with a fatigue / low-energy / muscle-decline
-  picture AFTER the bigger levers are addressed — it is a refinement, not a
-  first-line lever. No protein/purine load, so no uric-acid or kidney concern.
-  Affiliate link to be added via the catalogue queue.'
+notes_for_coach: 'Postbiotic — a gut-microbiome metabolite of ellagitannins (pomegranate,
+  walnuts, berries). Only an estimated 30-40% of people produce it in meaningful amounts,
+  which is the rationale for supplementing the finished compound. Mechanism is MITOPHAGY (clearing
+  damaged mitochondria) — a different lever from CoQ10 / NAD+ / B vitamins, which support
+  the mitochondria you already have.
+
+
+  EVIDENCE, HONESTLY: four human RCTs, all manufacturer-funded (Amazentis/Timeline, who make
+  the branded Mitopure used in every trial). Andreux 2019 was a SAFETY trial with molecular
+  secondary outcomes. Singh 2022 (n=88 untrained overweight middle-aged, 500 mg, 4 months)
+  showed ~12% strength gain. Liu 2022 (aged 65-90, 1000 mg, 8 weeks) showed better muscle
+  endurance. Denk 2025 is a phase 1 n=50 immune-marker study. Good journals, real trials,
+  one funder — so tier stays plausible_emerging until independent replication exists.
+
+
+  DOSE: 500-1000 mg once daily, with or without food; consistency of timing matters more than
+  which time. Benefits reported to plateau at 1000 mg.
+
+
+  SAFETY: the 2026 vendor talk stated NO contraindications at all — searched explicitly. That
+  silence is not clearance. The pregnancy/lactation caution below is ours and stays. No protein
+  or purine load, so no uric-acid or kidney concern.
+
+
+  POSITIONING: a refinement, not a first-line lever. Consider only after sleep, protein, resistance
+  training, iron/B12/D and thyroid are addressed — the trials recruited people who changed
+  nothing else, which is not how we coach. Cost in India is a real barrier; no affiliate link
+  yet.'
 evidence_tier: plausible_emerging
 linked_to_topics:
 - mitochondrial-health-nutrients
 linked_to_mechanisms:
-- mitochondrial-dysfunction
 - mitochondrial-biogenesis
+- mitochondrial-dysfunction
+- mitophagy
 - sarcopenia
-linked_to_claims: []
-notes_for_client: A supplement that supports your cells' energy factories
-  (mitochondria) by helping the body clear out worn-out ones. It is being studied
-  for muscle strength and stamina as we age.
+linked_to_claims:
+- only-30-40-percent-of-people-produce-urolithin-a
+- urolithin-a-targets-mitophagy-not-energy-production
+- urolithin-a-muscle-strength-middle-aged-adults
+- urolithin-a-muscle-endurance-older-adults
+- urolithin-a-dose-500-to-1000mg-plateaus
+notes_for_client: A supplement that supports your cells' energy factories (mitochondria) by
+  helping the body clear out worn-out ones. It is being studied for muscle strength and stamina
+  as we age.
 sources:
-- id: coach-shivani
-  location: Catalogue stub — coach-requested 2026-05-20
-version: 1
+- id: supplement-summit-urolithin-a-scheinman
+  location: Supplement Summit presentation, 22 Jul 2026
+  quote: 500-1000 mg a day. Benefits plateau at 1000mg.
+- id: singh-2022-urolithin-a-muscle-strength
+  location: RCT, middle-aged adults, 4 months
+  quote: Urolithin A improves muscle strength, exercise performance, and biomarkers of mitochondrial
+    health
+- id: liu-2022-urolithin-a-muscle-endurance-jama
+  location: RCT, adults 65-90, 8 weeks
+  quote: Effect of Urolithin A Supplementation on Muscle Endurance and Mitochondrial Health
+    in Older Adults
+version: 2
 status: active
-updated_at: '2026-05-20'
+updated_at: '2026-08-09'
 updated_by: shivani

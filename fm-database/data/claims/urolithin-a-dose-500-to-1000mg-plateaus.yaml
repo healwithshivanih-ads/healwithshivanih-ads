@@ -1,0 +1,31 @@
+slug: urolithin-a-dose-500-to-1000mg-plateaus
+statement: Studied urolithin A doses are 500-1000 mg once daily, with benefits
+  described as plateauing at 1000 mg. It can be taken with or without food, and
+  consistency of timing matters more than the time chosen.
+evidence_tier: plausible_emerging
+rationale: The two principal human trials used 500 mg and 1000 mg respectively; the
+  plateau claim is the manufacturer's summary across its dose-ranging work.
+coaching_translation: If it is used, it is one dose a day at a time you will actually
+  remember — with or without food.
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitophagy
+linked_to_supplements:
+- urolithin-a
+out_of_scope_notes: Dose selection for an individual client is a prescriber decision.
+  Coaches educate on what was studied, not what someone should take.
+caveats:
+- The plateau statement is a vendor claim with no citation shown, and going above
+  1000 mg was not studied for safety in anything presented.
+- NO contraindications were stated anywhere in the source — not pregnancy, lactation,
+  medication interaction, renal or hepatic. Silence is not clearance; the catalogue
+  entry keeps its own pregnancy and lactation caution.
+sources:
+- id: supplement-summit-urolithin-a-scheinman
+  location: Slide — how to supplement with Mitopure (~24 min)
+  quote: 500-1000 mg a day. Benefits plateau at 1000mg. Can be taken fasted or fed.
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

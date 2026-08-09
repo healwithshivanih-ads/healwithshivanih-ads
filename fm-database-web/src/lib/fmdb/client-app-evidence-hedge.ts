@@ -13,6 +13,8 @@
  * leak, not a one-off typo.
  */
 
+import { mapSentences } from "./sentence-split";
+
 const EVIDENCE_HEDGE = new RegExp(
   [
     String.raw`\bevidence[- ]tier\b`,
@@ -42,6 +44,7 @@ const EVIDENCE_HEDGE = new RegExp(
  *  ones — dropping everything would throw away the instruction along with
  *  the caveat. */
 export function stripEvidenceHedging(s: string): string {
-  const sentences = s.split(/(?<=[.!?])\s+/);
-  return sentences.filter((seg) => !EVIDENCE_HEDGE.test(seg)).join(" ").trim();
+  // mapSentences, not split/join — the old join(" ") flattened the line breaks
+  // that clientifyPracticeDetail is documented to preserve.
+  return mapSentences(s, (seg) => (EVIDENCE_HEDGE.test(seg) ? "" : seg));
 }

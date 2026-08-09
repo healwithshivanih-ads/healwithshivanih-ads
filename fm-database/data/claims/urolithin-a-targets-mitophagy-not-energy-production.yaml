@@ -1,0 +1,32 @@
+slug: urolithin-a-targets-mitophagy-not-energy-production
+statement: Urolithin A acts on mitophagy — clearing damaged mitochondria — which is
+  a different lever from CoQ10, NAD+ precursors and B vitamins, which support the
+  functioning of mature mitochondria.
+evidence_tier: plausible_emerging
+rationale: Mitochondrial health has three separable arms — clearance, energy
+  production and biogenesis — and the common mitochondrial supplements cluster on
+  the latter two. This is the case for it being additive rather than duplicative.
+coaching_translation: Most mitochondrial supplements help the mitochondria you have
+  work better; this one is about clearing out the worn-out ones.
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitophagy
+- mitochondrial-biogenesis
+- mitochondrial-dysfunction
+linked_to_supplements:
+- urolithin-a
+- coq10
+- nad-precursor
+out_of_scope_notes: ''
+caveats:
+- The three-arm framing comes from a vendor slide positioning its own product against
+  the alternatives, and is a simplification of overlapping biology.
+sources:
+- id: supplement-summit-urolithin-a-scheinman
+  location: Slide — how is urolithin A different (~6 min)
+  quote: 'Pathways to target: Mitophagy — clearance of damaged mitochondria'
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani
