@@ -1,0 +1,32 @@
+slug: five-levers-can-be-timed-to-cycle-phase
+statement: Five categories of intervention can be timed to cycle phase rather than
+  delivered uniformly — diet, fasting, seed cycling, exercise, and herbs/supplements.
+evidence_tier: fm_specific_thin
+rationale: If metabolism, insulin sensitivity and neurotransmitter response all shift
+  between follicular and luteal, then interventions acting on those systems have a
+  better and a worse half of the cycle to land in.
+coaching_translation: Most of what we change — food, movement, fasting, supplements
+  — can be matched to where you are in your cycle instead of done identically every
+  day.
+linked_to_topics:
+- cycle-syncing
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms:
+- infradian-rhythm
+- luteal-progesterone-insulin-resistance
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats:
+- The framework was asserted on a slide as a list of categories; the source gave no
+  protocol, dose or sequencing for any of the five.
+- Seed cycling in particular is named here only as a category and has no supporting
+  evidence in this source.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Slide — Timing Interventions by Menstrual Cycle Phase (~50 min)
+  quote: 'Phase-Specific Strategies for Cycle Management: Diet, Fasting, Seed cycling,
+    Exercise, Herbs and supplements'
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

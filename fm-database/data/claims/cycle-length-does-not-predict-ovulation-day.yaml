@@ -1,0 +1,26 @@
+slug: cycle-length-does-not-predict-ovulation-day
+statement: Cycle length does not tell you when a woman ovulates — a 28-day cycle can
+  ovulate on day 20 — so assuming day 14 misdates every phase-timed decision that
+  follows.
+evidence_tier: plausible_emerging
+rationale: The luteal phase is relatively fixed at roughly 11-16 days while the
+  follicular phase absorbs the variability, so ovulation day moves even when total
+  cycle length looks normal.
+coaching_translation: A regular cycle does not mean you ovulate on day 14 — the only
+  way to know your timing is to track it.
+linked_to_topics:
+- at-home-hormone-cycle-tracking
+- cycle-syncing
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: Fertility timing advice for conception is clinician or fertility-educator
+  led.
+caveats: []
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Identify and Assess (~28 min)
+  quote: the cycle length does not indicate when someone ovulates
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

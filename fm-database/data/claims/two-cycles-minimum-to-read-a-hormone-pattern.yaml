@@ -1,0 +1,25 @@
+slug: two-cycles-minimum-to-read-a-hormone-pattern
+statement: Reading a hormone pattern meaningfully takes about two cycles — or six to
+  eight weeks for someone who is not cycling — because a single cycle cannot show
+  whether what you are seeing repeats or was an outlier.
+evidence_tier: fm_specific_thin
+rationale: Cycles vary within the same woman, so one chart cannot separate a stable
+  pattern from a one-off.
+coaching_translation: Give it about two cycles before drawing conclusions — one cycle
+  can be an off month.
+linked_to_topics:
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats:
+- Practical rule of thumb from the presenters, not a validated protocol.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Q&A on testing cadence (~40 min)
+  quote: it's very helpful to see two cycles if possible ... six to eight weeks of
+    testing
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

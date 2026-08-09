@@ -1,0 +1,27 @@
+slug: same-food-different-glucose-response-by-phase
+statement: The same food eaten by the same person can produce a well-controlled glucose
+  response in the follicular phase and a poorly controlled one in the luteal phase.
+evidence_tier: plausible_emerging
+rationale: Luteal progesterone lowers insulin sensitivity while follicular estrogen
+  raises it, so the metabolic context of an identical meal differs by phase.
+coaching_translation: A food that suits you in week two may not suit you in week four
+  — pair it with protein or fibre then, rather than dropping it.
+linked_to_topics:
+- cycle-syncing
+- insulin-resistance
+linked_to_mechanisms:
+- luteal-progesterone-insulin-resistance
+- follicular-estrogen-insulin-sensitivity
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats:
+- Illustrated with single-user device data, not a controlled crossover trial.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Metabolic health section (~49 min)
+  quote: she may do just fine eating a sweet potato in her follicular phase then she
+    eats the same sweet potato in her luteal phase and she does not respond as well
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

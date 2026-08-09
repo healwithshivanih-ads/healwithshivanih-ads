@@ -1,0 +1,41 @@
+slug: cycle-syncing-luteal-phase-supplements
+statement: The Cycle Syncing Method pairs the luteal phase with root vegetables and leafy
+  greens, a roughly 250 kcal increase, and fibre, cinnamon and chromium picolinate.
+evidence_tier: plausible_emerging
+rationale: All three luteal items act on glucose handling, which is coherent with the independently
+  evidenced finding that luteal progesterone lowers insulin sensitivity and destabilises glucose.
+  This is the one phase where the method's supplement choice and the measured physiology point
+  the same way.
+coaching_translation: In the second half of your cycle, more fibre with meals steadies the
+  blood-sugar swings that make cravings worse.
+linked_to_topics:
+- cycle-syncing
+- insulin-resistance
+- premenstrual-syndrome
+linked_to_mechanisms:
+- luteal-progesterone-insulin-resistance
+- luteal-metabolic-shift
+linked_to_supplements:
+- cinnamon
+- chromium-picolinate
+- psyllium-husk
+out_of_scope_notes: Chromium and cinnamon can affect blood glucose and interact with diabetes
+  medication — clinician territory for any client on metformin, sulfonylureas or insulin.
+caveats:
+- Slide-only — shown on a summary table and never spoken to during the session, so no rationale,
+  dose, form or duration was given for any item.
+- Alisa Vitti's Cycle Syncing Method(R) re-presented by a device vendor, not this source's
+  own finding and not independent corroboration of the Nov 2025 Vitti session.
+- No dose, form or duration specified anywhere in the source — treat as a direction of travel,
+  never as a protocol to transcribe.
+- Tiered above the other three phases only because the mechanism is independently supported,
+  NOT because the source gave better evidence for these specific agents.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Slide — Cycle Syncing Method phase-specific nutrition (~52 min)
+  quote: Root veggies and leafy greens. Increase calories by 250. Fiber, Cinnamon, Chromium
+    Picolinate
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

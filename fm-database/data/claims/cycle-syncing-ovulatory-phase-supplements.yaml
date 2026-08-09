@@ -1,0 +1,34 @@
+slug: cycle-syncing-ovulatory-phase-supplements
+statement: The Cycle Syncing Method pairs the ovulatory window with raw, plant-based food,
+  a roughly 250 kcal reduction, and vitamin C, glutathione and selenium.
+evidence_tier: fm_specific_thin
+rationale: The method frames ovulation as the phase of highest oxidative demand and selects
+  antioxidant cofactors accordingly.
+coaching_translation: Around ovulation the method leans raw and plant-forward.
+linked_to_topics:
+- cycle-syncing
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms: []
+linked_to_supplements:
+- vitamin-c
+- glutathione
+- selenium
+out_of_scope_notes: Selenium has a narrow therapeutic window and interacts with thyroid management;
+  any selenium decision belongs with a clinician, especially in Hashimoto's.
+caveats:
+- Slide-only — shown on a summary table and never spoken to during the session, so no rationale,
+  dose, form or duration was given for any item.
+- Alisa Vitti's Cycle Syncing Method(R) re-presented by a device vendor, not this source's
+  own finding and not independent corroboration of the Nov 2025 Vitti session.
+- No dose, form or duration specified anywhere in the source — treat as a direction of travel,
+  never as a protocol to transcribe.
+- Raw plant-based eating is a poor fit for clients with weak digestion or a vata-type presentation,
+  and does not transfer to Indian home cooking without adaptation.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Slide — Cycle Syncing Method phase-specific nutrition (~52 min)
+  quote: Raw, plant-based. Decrease calories by 250. Vit C, Glutathione, Selenium
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

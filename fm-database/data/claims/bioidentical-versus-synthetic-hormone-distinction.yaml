@@ -1,0 +1,31 @@
+slug: bioidentical-versus-synthetic-hormone-distinction
+statement: Bioidentical (body-identical) hormones are structurally identical to what
+  the body makes; synthetics such as progestins and ethinyl estradiol bind the same
+  receptors without matching the native molecule, which is why their side-effect
+  profiles differ. Drug names are misleading — ethinyl estradiol and medroxyprogesterone
+  acetate are synthetic despite their names.
+evidence_tier: plausible_emerging
+rationale: Receptor binding is not the same as identical signalling; a differently
+  shaped ligand can produce different downstream effects at the same receptor.
+coaching_translation: "\"Estradiol\" or \"progesterone\" in a drug name does not mean
+  it is the same molecule your body makes — worth asking your prescriber which one
+  you are on."
+linked_to_topics:
+- perimenopause
+- menopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: Coaches must never recommend, compare or adjust hormone therapy.
+  This is education to help a client ask her prescriber an informed question.
+caveats:
+- Presenter's summary in Q&A; comparative safety of specific agents is a clinical
+  question and is not settled by this source.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Q&A (~54-56 min)
+  quote: bioidentical is what the exact hormone that you make in your body ... it's
+    able to bind to progesterone receptors but it doesn't look the same
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

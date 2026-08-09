@@ -1,0 +1,45 @@
+slug: at-home-hormone-cycle-tracking
+display_name: At-Home Hormone Cycle Tracking
+aliases:
+- hormone tracking
+- urinary hormone monitoring
+- cycle mapping
+- at-home hormone monitor
+- e3g pdg tracking
+summary: Daily at-home measurement of urinary hormone metabolites — E3G (an estradiol
+  metabolite), PdG (a progesterone metabolite), LH and FSH — to map a whole cycle
+  rather than take a single-timepoint snapshot. It answers two questions a calendar
+  app cannot, do they ovulate at all and when, and it times other testing and
+  interventions to the client's actual phase rather than to a textbook day 14.
+common_symptoms:
+- irregular-periods
+- premenstrual-sugar-cravings
+- cyclical-bloating
+key_mechanisms:
+- infradian-rhythm
+- non-ovulatory-lh-surge
+- low-progesterone
+coaching_scope_notes: Explaining what the phases are, helping a client establish a
+  tracking habit, and using her own chart to time food, movement and routine changes
+  is within coaching scope. Reading a chart back to a client as a diagnosis is not.
+clinician_scope_notes: Diagnosis of anovulation, PCOS, luteal phase defect or infertility,
+  fertility treatment, contraception decisions and HRT dosing are clinician-led. These
+  monitors are not a standalone contraceptive method.
+evidence_tier: plausible_emerging
+red_flags:
+- Cycles consistently shorter than 21 or longer than 35 days
+- Absent periods outside pregnancy, lactation or menopause
+- Heavy or prolonged bleeding, or bleeding between periods
+- Trying to conceive for over 12 months (over 6 months if age 35+)
+related_topics:
+- cycle-syncing
+- perimenopause
+- pcos
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Advanced technologies / Identify and Assess (~4-15 min)
+  quote: Can you confirm ovulation—regardless of birth control, HRT, or current interventions?
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

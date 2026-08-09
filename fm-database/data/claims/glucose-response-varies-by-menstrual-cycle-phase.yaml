@@ -1,0 +1,37 @@
+slug: glucose-response-varies-by-menstrual-cycle-phase
+statement: Blood glucose varies systematically across the menstrual cycle, peaking
+  in the luteal phase and declining in the late-follicular phase, independently of
+  step count, cravings, fatigue or sleep.
+evidence_tier: plausible_emerging
+rationale: A study of 49 participants combining continuous glucose monitoring, activity
+  tracking and daily urinary hormone testing found the association held after
+  accounting for behavioural confounders, which earlier calendar-recall studies could
+  not do.
+coaching_translation: Your blood sugar behaves differently in the two halves of your
+  cycle — that is physiology, not willpower.
+linked_to_topics:
+- cycle-syncing
+- insulin-resistance
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms:
+- luteal-progesterone-insulin-resistance
+- follicular-estrogen-insulin-sensitivity
+linked_to_supplements: []
+out_of_scope_notes: Do not use this to diagnose or rule out diabetes or prediabetes.
+caveats:
+- Captured from the presenter's slide summary of the paper, not the full text; effect
+  sizes and limitations unread.
+- Small cohort (49 participants).
+sources:
+- id: lin-2023-glucose-variance-menstrual-cycle
+  location: Slide citation — study findings
+  quote: Identified significant associations between blood glucose levels and menstrual
+    cycles.
+- id: ask-expert-personalized-hormone-care
+  location: Metabolic health section (~44-46 min)
+  quote: there is a strong association with glucose changes based on the phase that
+    the cycle is
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

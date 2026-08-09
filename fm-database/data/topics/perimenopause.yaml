@@ -12,9 +12,9 @@ aliases:
 - premenopause
 - menopausal transition
 - perimenopausal phase
-summary: The midlife transition of declining and irregular ovarian hormone production;
-  the speaker notes earlier onset and links it to lifestyle incompatibility with the
-  infradian rhythm and accelerated ovarian aging.
+summary: The midlife transition of declining and irregular ovarian hormone production; the
+  speaker notes earlier onset and links it to lifestyle incompatibility with the infradian
+  rhythm and accelerated ovarian aging.
 common_symptoms:
 - night sweats / hot flashes
 - insomnia
@@ -49,28 +49,28 @@ red_flags:
 - bleeding >15 days
 - new onset severe anxiety or depression
 - palpitations without cardiac cause
-- Irregular cycles in women under 35 should not be assumed to be perimenopause without
-  workup
+- Irregular cycles in women under 35 should not be assumed to be perimenopause without workup
 - Persistent amenorrhea in young women — rule out PCOS
 related_topics:
-- insomnia
 - anxiety
-- pcos
-- microbiome
-- gut-dysbiosis
-- gut-hormone-axis
-- constipation
-- dyspepsia
-- motility
-- estrogen-dominance
-- low-progesterone
-- inflammation
-- luteal-phase-defect
-- uterine-fibroids
-- menopause
+- at-home-hormone-cycle-tracking
 - bhrt
+- constipation
 - cortisol-steal
 - cycle-syncing
+- dyspepsia
+- estrogen-dominance
+- gut-dysbiosis
+- gut-hormone-axis
+- inflammation
+- insomnia
+- low-progesterone
+- luteal-phase-defect
+- menopause
+- microbiome
+- motility
+- pcos
+- uterine-fibroids
 key_mechanisms:
 - age-related-progesterone-decline
 - allopregnanolone-deficiency
@@ -83,10 +83,11 @@ key_mechanisms:
 - leaky-gut
 - progesterone-deficiency
 - ovarian-follicle-depletion
-coaching_scope_notes: Coaches can support lifestyle modifications, stress management,
-  and nutrition. Diagnosis and hormonal management are clinician scope.
-clinician_scope_notes: HRT decisions and lab interpretation (e.g., FSH, estrogen forms)
-  are clinician-led.
+- non-ovulatory-lh-surge
+coaching_scope_notes: Coaches can support lifestyle modifications, stress management, and
+  nutrition. Diagnosis and hormonal management are clinician scope.
+clinician_scope_notes: HRT decisions and lab interpretation (e.g., FSH, estrogen forms) are
+  clinician-led.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Menopause/Perimenopause section
@@ -99,19 +100,19 @@ sources:
   quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
 - id: coconote-fm-estrogen-dominance
   location: Types of Estrogen Dominance
-  quote: Somebody who is at the age of 45, their progesterone dips down. Because the
-    progesterone has dipped down, the estrogen is relatively a bit on the higher side,
-    the chances of getting fibroids and phylloadenoma, cystic breast kind of increases.
+  quote: Somebody who is at the age of 45, their progesterone dips down. Because the progesterone
+    has dipped down, the estrogen is relatively a bit on the higher side, the chances of getting
+    fibroids and phylloadenoma, cystic breast kind of increases.
 - id: coconote-fm-sex-hormones
   location: Stages of Menopause
-  quote: Perimenopause is 3 to 4 years Before and one year after the menopause is
-    basically a period of perimenopause.
+  quote: Perimenopause is 3 to 4 years Before and one year after the menopause is basically
+    a period of perimenopause.
 - id: ask-expert-cycle-syncing
   location: Current situation
   quote: for the first time in all of human history women are going through perimenopause
     earlier.
 evidence_tier: strong
-version: 7
+version: 8
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-08-09'
 updated_by: shivani
