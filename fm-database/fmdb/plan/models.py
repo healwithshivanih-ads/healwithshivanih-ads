@@ -18,6 +18,8 @@ Design choices:
 
 from __future__ import annotations
 
+import sys
+
 from datetime import date, datetime
 from typing import Optional
 
@@ -308,7 +310,7 @@ class DiscoverySummary(BaseModel):
 
 #: The values TypeScript writes today. Documentation, not enforcement — see
 #: Client.engagement_status for why this is not an Enum.
-KNOWN_ENGAGEMENT_STATUSES = ("pending", "signed_up", "declined")
+KNOWN_ENGAGEMENT_STATUSES = ("pending", "signed_up", "declined", "lapsed")
 
 
 class Client(BaseModel):
@@ -357,6 +359,9 @@ class Client(BaseModel):
     # KNOWN_ENGAGEMENT_STATUSES below is documentation and a lint target,
     # never a gate.
     engagement_status: str = ""
+    #: Date the renewal sweep marked this client lapsed. Cleared on reactivation.
+    #: Declared (unlike engagement_status' vocabulary) because only Python writes it.
+    lapsed_on: Optional[date] = None
     assigned_coach: str = ""            # coach name, e.g. "Shivani" — populates client-facing copy dynamically
     intake_date: date
     date_of_birth: Optional[date] = None   # preferred; used to compute exact age

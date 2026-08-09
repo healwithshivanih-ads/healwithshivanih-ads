@@ -8,6 +8,14 @@
  *
  * Schedules (all IST — Asia/Kolkata):
  *
+ *   06:30  renewal-sweep          — lapse clients whose plan ended with no
+ *                                    successor, past 14d grace. Never touches
+ *                                    app_token; a lapsed client keeps their app.
+ *                                    Runs before 06:45 client-yaml-integrity
+ *                                    on purpose: it is the only cron that
+ *                                    writes client.yaml, so the guard checks
+ *                                    its work the same morning.
+ *   06:45  client-yaml-integrity  — validates every client.yaml.
  *   08:30  intake-reminders        — nudge clients whose intake token is open,
  *                                    not submitted, ≥5d since last reminder.
  *   09:00  appointment-reminders  — morning-of WhatsApp reminder to every
@@ -48,6 +56,21 @@ async function fire(job) {
     console.error(`[cron-runner] ${job} threw:`, err && err.message ? err.message : err);
   }
 }
+
+// 06:30 IST daily — lapse clients whose plan ended and was never renewed.
+//
+// First job of the morning, and the slot is chosen, not spare. This is the only
+// cron that WRITES client.yaml, and client-yaml-integrity runs at 06:45 — so
+// putting the sweep ahead of it means the guard validates this morning's writes
+// this morning, instead of a bad write sitting unnoticed for 24h. Everything
+// client-facing (08:30 intake nudges, 09:00 appointment reminders) then reads
+// an already-correct roster rather than nudging someone who lapsed overnight.
+// Idempotent, and self-healing: a lapsed client with a plan again is restored.
+cron.schedule(
+  "30 6 * * *",
+  () => fire("renewal-sweep"),
+  { timezone: "Asia/Kolkata" },
+);
 
 // 08:30 IST daily — intake reminders
 cron.schedule(
