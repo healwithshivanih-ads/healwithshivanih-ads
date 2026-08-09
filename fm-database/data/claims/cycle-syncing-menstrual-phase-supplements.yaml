@@ -1,0 +1,35 @@
+slug: cycle-syncing-menstrual-phase-supplements
+statement: The Cycle Syncing Method pairs menstruation with mineral- and iron-rich foods and
+  a roughly 250 kcal increase, naming red meat, organ meats, sea vegetables and ginger.
+evidence_tier: fm_specific_thin
+rationale: Menstrual iron loss is the method's stated reason for prioritising iron and minerals
+  in this phase.
+coaching_translation: During your period, prioritise iron-rich foods and eat a little more.
+linked_to_topics:
+- cycle-syncing
+- at-home-hormone-cycle-tracking
+linked_to_mechanisms: []
+linked_to_supplements:
+- iron
+- ginger
+out_of_scope_notes: Iron supplementation requires ferritin testing first and is clinician-led;
+  iron is harmful in iron overload.
+caveats:
+- Slide-only — shown on a summary table and never spoken to during the session, so no rationale,
+  dose, form or duration was given for any item.
+- Alisa Vitti's Cycle Syncing Method(R) re-presented by a device vendor, not this source's
+  own finding and not independent corroboration of the Nov 2025 Vitti session.
+- No dose, form or duration specified anywhere in the source — treat as a direction of travel,
+  never as a protocol to transcribe.
+- ADAPTATION REQUIRED — red meat and organ meats are unusable for the largely vegetarian Indian
+  client base. The transferable principle is iron plus minerals, delivered instead via ragi,
+  sesame, dates, jaggery, moringa, green leafy vegetables and legumes, each paired with vitamin
+  C for absorption.
+sources:
+- id: ask-expert-personalized-hormone-care
+  location: Slide — Cycle Syncing Method phase-specific nutrition (~52 min)
+  quote: Mineral, iron rich foods. Increase calories by 250. Red meat, organs, sea veg, ginger
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani
