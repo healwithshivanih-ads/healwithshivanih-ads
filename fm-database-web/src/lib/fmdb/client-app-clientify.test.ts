@@ -33,11 +33,14 @@ describe("clientifyWhy", () => {
     for (const raw of [
       "Her ferritin is 12 ng/mL, far below FM-optimal of 70-150.",
       "Anti-TPO antibodies elevated — supports the thyroid picture.",
-      "Her PPI depletes magnesium — mandatory correction.",
+      // NB: a drug-depletion line is REPHRASED rather than dropped — that is
+      // deliberate and has its own test below.
     ]) {
-      const out = clientifyWhy(raw);
-      expect(out === "" || !/\d+\s*(ng|mg|µg)\s*\//i.test(out), raw).toBe(true);
-      expect(out, raw).not.toMatch(/anti-?TPO|FM[- ]?optimal|mandatory correction/i);
+      // Assert the WHOLE why is gone, not merely that the units are.
+      // The looser version of this assertion accepted "Your ferritin is" —
+      // a stub that still names the client's marker (found end-to-end
+      // 2026-08-09, guarded by the stub rule in clientifyWhy).
+      expect(clientifyWhy(raw), raw).toBe("");
     }
   });
 
