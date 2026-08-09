@@ -245,7 +245,7 @@ tree:
     - label: N-Acetyl Cysteine (NAC)
       children: []
       linked_kind: supplement
-      linked_slug: n-acetyl-cysteine
+      linked_slug: nac
       notes: ''
     - label: Calcium D-Glucarate
       children: []

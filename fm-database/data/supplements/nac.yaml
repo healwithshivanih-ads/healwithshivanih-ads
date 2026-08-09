@@ -7,7 +7,7 @@ forms_available:
 - tablet
 typical_dose_range:
   capsule:
-    min: 600
+    min: 200
     max: 900
     unit: mg
   powder:
@@ -26,10 +26,17 @@ timing_options:
 - morning
 - mid_afternoon
 - mid_morning
+- evening
 take_with_food: optional
-notes_for_coach: NAC is a glutathione precursor used in antioxidant protocols for
+notes_for_coach: 'NAC is a glutathione precursor used in antioxidant protocols for
   male fertility and immune support. Part of antioxidant rotation strategy for sperm
-  DNA protection. Dosing requires clinician direction.
+  DNA protection. Dosing requires clinician direction. Mucolytic dosing runs lower:
+  200 mg t.i.d. for sinusitis/bronchitis (intranasal use is a 10% solution diluted
+  with saline and sodium bicarbonate — clinician-directed only). Also used in ADHD
+  detox protocol (Step 3). CAUTION — NAC is a sulfur-containing supplement: Lynch
+  warns it can worsen symptoms in clients with microbiome-driven hydrogen sulfide
+  excess or sulfur intolerance (rotten-egg body odour, loose stool from cruciferous
+  veg). Not appropriate for those clients; clinician guidance before initiating.'
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -51,7 +58,11 @@ linked_to_topics:
 - immune-support
 - immune-nutrition
 - male-infertility-oxidative-stress
-linked_to_mechanisms: []
+- detoxification
+- bacterial-sinusitis
+- gst-gpx-glutathione-detox
+linked_to_mechanisms:
+- phase-2-conjugation
 linked_to_claims:
 - fluoride-bpa-block-thyroid-receptors
 - nac-boosts-glutathione-phase-ii-detox-estrogen
@@ -64,6 +75,9 @@ linked_to_claims:
 - nac-boosts-glutathione-supports-immunity
 - antioxidant-rotation-improves-male-fertility
 - nac-rich-foods-build-glutathione
+- nac-mucolytic-chronic-bronchitis
+- cysteine-is-rate-limiting-for-glutathione-synthesis
+- murray-alcohol-antioxidant-depletion-fatty-liver
 notes_for_client: NAC is a supplement that helps your body make glutathione, one of
   its most important antioxidants. It is found in smaller amounts in egg- and allium-rich
   foods.
@@ -135,9 +149,20 @@ sources:
   location: Nutraceuticals — NAC
   quote: NAC is capable of 600 milligrams three times a day is involved in reducing
     oxidative stress.
-version: 10
+- id: minich-detox-basics-fmca-transcript
+  location: Antioxidant nutrients section
+  quote: upregulating endogenous antioxidants like glutathione, cysteine, coenzyme
+    Q10, lipoic acid
+- id: pizzorno-textbook-gi-2
+  location: Bacterial Sinusitis — Supplements
+  quote: 'N-Acetylcysteine: 200 mg t.i.d.'
+- id: dirty-genes-lynch
+  location: Chapter 9 — Balancing Your Sulfur
+  quote: Cut back on any sulfur-based supplements you're taking, such as MSM (methylsulfonylmethane)
+    or NAC (N-acetyl cysteine).
+version: 11
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-08-09'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: caution
@@ -146,3 +171,6 @@ pregnancy_safety_note: Generally well-tolerated but very high doses (> 1800 mg) 
   toxicity).
 aliases:
 - nac-n-acetyl-cysteine
+- n-acetylcysteine
+- n-acetyl-cysteine
+- acetylcysteine

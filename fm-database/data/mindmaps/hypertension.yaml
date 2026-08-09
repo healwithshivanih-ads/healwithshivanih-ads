@@ -1600,7 +1600,7 @@ tree:
     - label: N-Acetyl Cysteine
       children: []
       linked_kind: supplement
-      linked_slug: n-acetyl-cysteine
+      linked_slug: nac
       notes: ''
     linked_kind: null
     linked_slug: null
@@ -1685,7 +1685,7 @@ tree:
     - label: N-Acetyl Cysteine
       children: []
       linked_kind: supplement
-      linked_slug: n-acetyl-cysteine
+      linked_slug: nac
       notes: ''
     - label: Taurine
       children: []
