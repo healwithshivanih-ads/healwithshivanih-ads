@@ -250,6 +250,7 @@ import {
 import { SUPP_NAME_OVERRIDES, suppKey } from "./client-app-supplements";
 import { toSecondPerson } from "./client-app-third-person";
 import { stripCoachDirective } from "./client-app-coach-directive";
+import { softenShoutedOpener } from "./client-app-shouting";
 import { stripEvidenceHedging } from "./client-app-evidence-hedge";
 import { formatIngredientChip } from "./ingredient-chip";
 import { remedySlots, REMEDY_SLOT_LABEL } from "./remedy-slots";
@@ -2923,7 +2924,7 @@ function appMenuToWeekTables(menu: Dict): WeekTable[] {
  *  own lines via white-space: pre-wrap). Never rephrase or truncate. */
 function clientifyPracticeDetail(raw: string): string {
   // stripCoachDirective first — same ordering reason as clientifyWhy.
-  let s = toSecondPerson(stripCoachDirective(raw || ""));
+  let s = softenShoutedOpener(toSecondPerson(stripCoachDirective(raw || "")));
   s = s.replace(
     /^\s*(?:FORM\s+SWAP|SWAP|UPDATE|CHANGE|REVISED|NOTE)\b[^—–\n:]*?(?:[—–-]\s*|:\s*)/i,
     "",
@@ -3065,7 +3066,7 @@ function computeSeedCycling(
 function clientifyWhy(raw: string): string {
   // BEFORE the pronoun conversion — the directive patterns key off the coach's
   // third person ("said to her that way"), which toSecondPerson erases.
-  let s = toSecondPerson(stripCoachDirective(raw));
+  let s = softenShoutedOpener(toSecondPerson(stripCoachDirective(raw)));
   // strip leading coach change-log stamps: "FORM SWAP 2026-05-24 — …",
   // "[2026-05-24] …", "UPDATE: …" (the dated clause is the coach's audit note)
   s = s.replace(/^\s*(?:FORM\s+SWAP|SWAP|UPDATE|CHANGE|REVISED|NOTE)\b[^—–\n]*?(?:[—–-]\s*|:\s*)/i, "");

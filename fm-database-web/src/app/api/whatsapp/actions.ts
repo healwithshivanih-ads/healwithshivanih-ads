@@ -6,6 +6,12 @@ import os from "node:os";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getActivePlanSlugForClient } from "@/lib/fmdb/active-plan-slug";
+import {
+  isOutboundSegment,
+  indexOfOutboundTag,
+  outboundSourceTag,
+  type OutboundChannel,
+} from "@/lib/fmdb/session-utils";
 
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
 
@@ -359,6 +365,9 @@ export async function recordOutboundMessageAction(input: {
   clientId: string;
   templateName: string;       // e.g. "fm_encouragement" — or "(free-text reply)" for raw sends within 24h window
   renderedBody: string;       // the message with {{vars}} filled in
+  /** Which channel carried it. Defaults to whatsapp so every existing caller
+   *  keeps its current behaviour; email notifications pass "email". */
+  channel?: OutboundChannel;
 }): Promise<{ ok: boolean; session_id?: string; error?: string }> {
   if (!input.clientId || !input.renderedBody) {
     return { ok: false, error: "clientId + renderedBody required" };
@@ -372,9 +381,10 @@ export async function recordOutboundMessageAction(input: {
   // the chat thread with the OLD date and looks like it never sent.
   // loadWhatsAppThreadAction parses this `[sent_at: ISO]` tag.
   const sentAtTag = `[sent_at: ${new Date().toISOString()}]`;
+  const src = outboundSourceTag(input.channel ?? "whatsapp");
   const tags = isFreeText
-    ? `[source: whatsapp_outbound] [type: text] ${sentAtTag}`
-    : `[source: whatsapp_outbound] [template: ${input.templateName}] ${sentAtTag}`;
+    ? `${src} [type: text] ${sentAtTag}`
+    : `${src} [template: ${input.templateName}] ${sentAtTag}`;
   // Per-plan rollup: every WhatsApp message (in OR out) during a
   // published plan's lifetime accumulates in ONE session tagged
   // `[plan: <slug>]`. Plan supersede → next message starts a new
@@ -631,7 +641,7 @@ export async function loadWhatsAppThreadAction(
         const seg = segment.trim();
         if (!seg) return;
         const segInbound = seg.includes("[source: whatsapp_webhook]");
-        const segOutbound = seg.includes("[source: whatsapp_outbound]");
+        const segOutbound = isOutboundSegment(seg);
         // If no direction tag, fall back to whichever tag appears first
         // in the whole session (covers very-old sessions with the tag
         // only at the top).
@@ -640,7 +650,7 @@ export async function loadWhatsAppThreadAction(
         else if (segOutbound) direction = "outbound";
         else {
           const firstInbound = complaints.indexOf("[source: whatsapp_webhook]");
-          const firstOutbound = complaints.indexOf("[source: whatsapp_outbound]");
+          const firstOutbound = indexOfOutboundTag(complaints);
           direction =
             firstInbound !== -1 &&
             (firstOutbound === -1 || firstInbound < firstOutbound)
@@ -1085,12 +1095,12 @@ export async function getLastSentAtAction(
       const raw = await fs.readFile(path.join(dir, name), "utf8");
       const data = yaml.load(raw) as Record<string, unknown>;
       const complaints = String(data?.presenting_complaints ?? "");
-      if (!complaints.includes("[source: whatsapp_outbound]")) continue;
+      if (!isOutboundSegment(complaints)) continue;
       if (!complaints.includes("[template:")) continue;
 
       const segments = complaints.split(/\n\s*---\s*\n/);
       for (const seg of segments) {
-        if (!seg.includes("[source: whatsapp_outbound]")) continue;
+        if (!isOutboundSegment(seg)) continue;
         const tplMatch = seg.match(/\[template:\s*([^\]]+)\]/);
         if (!tplMatch) continue;
         const tpl = tplMatch[1].trim();
@@ -1150,12 +1160,12 @@ export async function getLastSentAtBatchAction(
       const raw = await fs.readFile(path.join(dir, name), "utf8");
       const data = yaml.load(raw) as Record<string, unknown>;
       const complaints = String(data?.presenting_complaints ?? "");
-      if (!complaints.includes("[source: whatsapp_outbound]")) continue;
+      if (!isOutboundSegment(complaints)) continue;
       if (!complaints.includes("[template:")) continue;
 
       const segments = complaints.split(/\n\s*---\s*\n/);
       for (const seg of segments) {
-        if (!seg.includes("[source: whatsapp_outbound]")) continue;
+        if (!isOutboundSegment(seg)) continue;
         const tplMatch = seg.match(/\[template:\s*([^\]]+)\]/);
         if (!tplMatch) continue;
         const tpl = tplMatch[1].trim();
