@@ -1,0 +1,31 @@
+id: pandit-shilajit-testosterone-rct-2016
+title: Clinical evaluation of purified Shilajit on testosterone levels in healthy volunteers
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Pandit S
+  - Biswas S
+  - Jana U
+  - De RK
+  - Mukhopadhyay SC
+  - Biswas TK
+year: 2016
+publisher: Andrologia
+url: https://pubmed.ncbi.nlm.nih.gov/26395129/
+doi: 10.1111/and.12482
+notes: |
+  Randomised, double-blind, placebo-controlled trial in healthy male
+  volunteers aged 45-55, purified shilajit 250 mg twice daily for 90 days.
+  Reported significant increases in total testosterone, free testosterone
+  and DHEAS versus placebo.
+
+  CAPTURED FROM THE ABSTRACT ONLY — full text was not read. The trial is
+  small, single-centre, industry-adjacent (purified shilajit is a branded
+  preparation), and has not been independently replicated in an equivalent
+  population. Derived claims are capped at plausible_emerging for that
+  reason. Re-tier only if someone reads the primary methods and confirms
+  randomisation, blinding and the assay used.
+version: 1
+status: active
+updated_at: 2026-08-09
+updated_by: shivani

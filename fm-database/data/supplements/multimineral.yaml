@@ -11,6 +11,10 @@ take_with_food: required
 linked_to_topics:
 - intermittent-fasting
 - cardiometabolic-health
+- insulin-resistance
+- metabolic-syndrome
+linked_to_symptoms:
+- fatigue
 notes_for_coach: Listed alongside multivitamin as a support supplement during fasting
   protocols. Particularly relevant for clients on calorie-restricted fasting days
   where mineral intake from food may be insufficient.

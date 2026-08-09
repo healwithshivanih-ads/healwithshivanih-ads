@@ -1,0 +1,112 @@
+slug: shilajit
+display_name: Shilajit (Purified, Heavy-Metal Tested)
+aliases:
+  - asphaltum
+  - shilajeet
+  - silajit
+  - mumijo
+  - mumie
+  - moomiyo
+  - fulvic acid
+  - fulvic-acid
+  - shilajit resin
+category: mineral
+forms_available:
+  - powder
+  - capsule
+typical_dose_range:
+  powder:
+    min: 250
+    max: 500
+    unit: mg
+  capsule:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+  - with_breakfast
+  - with_lunch
+take_with_food: optional
+contraindications:
+  conditions:
+    - haemochromatosis or any iron-overload state (shilajit contributes iron and fulvic
+      acid enhances mineral absorption)
+    - active gout or hyperuricaemia (traditional caution; uric-acid effects not characterised)
+    - chronic kidney disease (mineral and trace-element load, impaired clearance of
+      any contaminant)
+    - known lead, arsenic or mercury burden
+  medications:
+    - iron supplements (additive iron load; separate and monitor ferritin)
+    - antihypertensives (unquantified additive effects reported traditionally)
+  life_stages:
+    - pregnancy
+    - lactation
+    - children and adolescents
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: No human safety data in pregnancy or lactation, and a documented
+  heavy-metal contamination risk in retail product. Lead and mercury cross the placenta
+  and enter breast milk. Withhold — there is no benefit here worth that exposure.
+linked_to_topics:
+  - osteoporosis
+  - bone-health
+  - perimenopause-and-menopause
+  - sarcopenia-skeletal-muscle-loss
+  - heavy-metal-toxicity
+linked_to_mechanisms:
+  - oxidative-stress
+  - mitochondrial-dysfunction
+linked_to_symptoms:
+  - fatigue
+  - fatigue-from-low-testosterone
+  - low-libido
+  - muscle-weakness
+linked_to_claims:
+  - shilajit-raises-testosterone-middle-aged-men
+  - shilajit-attenuates-postmenopausal-bone-loss
+  - shilajit-heavy-metal-contamination-risk
+notes_for_coach: |
+  Rock exudate from Himalayan and Central Asian strata, standardised on fulvic acid
+  and dibenzo-alpha-pyrones, carrying a variable trace-mineral load. Two areas have
+  real randomised human evidence: testosterone/DHEAS in men 45-55 (Pandit 2016) and
+  postmenopausal bone-mineral-density preservation over 48 weeks (Pingali 2022). Both
+  are single small trials, both captured from abstracts only. Everything else in the
+  popular literature — mitochondrial ATP, CoQ10, altitude adaptation, cognition — is
+  animal, in-vitro or marketing. Do not carry those into a client conversation.
+
+  SOURCING IS THE WHOLE SAFETY STORY. Retail shilajit has been measured with lead,
+  arsenic and mercury above permissible limits, and Indian-market samples carried the
+  higher load (Aldakheel 2022); a 12-sample multi-origin analysis found the same
+  variability in both minerals and contaminants (Kamgar 2026). Only recommend a
+  purified product with per-batch third-party heavy-metal testing, and say the reason
+  out loud so the client does not substitute a cheaper "raw Himalayan resin" later.
+  If you cannot name a tested product, do not recommend shilajit at all.
+
+  Practical: 250 mg once daily for two weeks, then up to 250 mg twice daily. Daytime
+  dosing — some clients report it is activating. Not a first-line item. It sits behind
+  sleep, protein, loading, and any named deficiency that is actually on the labs.
+notes_for_client: |
+  A mineral-rich resin used in Ayurveda, taken in small amounts with a meal. There is
+  early trial evidence around energy, hormone balance in midlife, and bone strength —
+  early, not settled, so we treat it as a helpful extra rather than the thing that does
+  the work.
+
+  One thing matters more than any of that: quality. Some shilajit sold in shops and
+  online has been found to contain lead and other heavy metals. Only use the specific
+  brand I give you, which is tested batch by batch — please don't swap it for a cheaper
+  raw resin.
+evidence_tier: plausible_emerging
+sources:
+  - id: pandit-shilajit-testosterone-rct-2016
+    location: Abstract
+    quote: purified Shilajit 250 mg twice daily for 90 days
+  - id: pingali-shilajit-bone-density-rct-2022
+    location: Abstract
+  - id: aldakheel-shilajit-heavy-metals-2022
+    location: Abstract / results
+  - id: kamgar-shilajit-metal-composition-2026
+    location: Abstract / results
+version: 1
+status: active
+updated_at: 2026-08-09
+updated_by: shivani

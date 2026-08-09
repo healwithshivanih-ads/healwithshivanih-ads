@@ -2860,7 +2860,7 @@ function shortFoodName(item: string): string {
 // ════ Option A: structured app_menu ⇆ WeekTable conversion ════════════════
 
 /** plan.app_menu → the loader's internal WeekTable shape. */
-function appMenuToWeekTables(menu: Dict): WeekTable[] {
+export function appMenuToWeekTables(menu: Dict): WeekTable[] {
   const weeks = (menu.weeks as Dict[]) ?? [];
   return weeks.map((w) => {
     const days = (w.days as Dict[]) ?? [];
@@ -2894,7 +2894,7 @@ function appMenuToWeekTables(menu: Dict): WeekTable[] {
  *  that help — from ~2 days before the expected period through the first few
  *  crampy days — so the client never has to work out when to start it. Returns
  *  null outside that window (nothing shows). Pure + reuses the cycle math. */
-function computePeriodCare(
+export function computePeriodCare(
   enabled: boolean,
   client: Dict,
   todayUTC: Date,
@@ -2932,7 +2932,7 @@ function computePeriodCare(
 
 /** Work out which seeds the client should eat TODAY from her cycle data, so
  *  she never has to count cycle days herself. Pure + unit-testable. */
-function computeSeedCycling(
+export function computeSeedCycling(
   enabled: boolean,
   client: Dict,
   todayUTC: Date,
