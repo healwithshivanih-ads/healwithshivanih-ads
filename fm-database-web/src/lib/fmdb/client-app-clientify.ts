@@ -15,6 +15,7 @@
  */
 
 import { stripEvidenceHedging } from "./client-app-evidence-hedge";
+import { SENTENCE_SPLIT } from "./sentence-split";
 import { stripCoachDirective } from "./client-app-coach-directive";
 import { softenShoutedOpener } from "./client-app-shouting";
 import { toSecondPerson } from "./client-app-third-person";
@@ -93,6 +94,10 @@ export function clientifyWhy(raw: string): string {
   s = s.replace(/\b(?:is\s+)?(?:far\s+)?(?:below|above|under|over)?\s*FM[- ]?optimal(?:\s+of)?\s*[\d.,–-]*\s*(?:ng\/mL|µg\/dL|g\/dL)?/gi, "");
   // "(above|below) the reference range (upper|lower) limit"
   s = s.replace(/\b(?:above|below)?\s*(?:the\s+)?reference range(?:\s+(?:upper|lower)\s+limit)?(?:\s+at)?/gi, "");
+  // A parenthetical that is ONLY a number is still a lab readout — the rule
+  // below wants a unit inside it, so "zinc (75.68)" and "Cu:Zn (1.58)" walked
+  // straight past it onto cl-009's card (2026-08-09).
+  s = s.replace(/\s*\(\s*[\d.,:%\s+-]+\)/g, "");
   // parenthetical lab readouts / conversion arrows
   s = s.replace(/\s*\([^)]*(?:\d[^)]*(?:ng|mg|nmol|pmol|mIU|mcg|µg|iu\b)[^)]*|below range|above range|→[^)]*)\)/gi, "");
   // bare "MARKER 123" readout lists
@@ -139,12 +144,29 @@ export function clientifyWhy(raw: string): string {
       String.raw`\b(?:homocysteine|ferritin|tsh|ft[34]|hs-?crp|hba1c|albumin|cortisol)\b[^.]*\d`,
       String.raw`=\s*(?:insufficient|deficient|elevated|sub-?optimal|low|high)\b`,
       String.raw`\b(?:anti-?TPO|TPO antibod|antibod(?:y|ies)|deiodinase|Lp\(a\))\b`,
+      // Antibody SHORTHAND. The rule above wants the word "antibodies"; the
+      // coach writes the assay pair. "Curcumin inhibits NF-κB (reducing
+      // TPO/TgAb autoimmune signalling)" surfaced on a client card the moment
+      // this walked past the opening sentence (2026-08-09).
+      String.raw`\b(?:TgAb|TPOAb|anti-?Tg|NF-?.B|hsCRP)\b`,
+      // A verdict on a MINERAL reads exactly like one on a lab marker once the
+      // value has been scrubbed out: "corrects your low-normal zinc and
+      // elevated Cu:Zn".
+      String.raw`\b(?:low|high|elevated|depressed|deficient)[-\s]?\w*\s+(?:zinc|copper|selenium|magnesium|iron|ferritin|folate)\b`,
+      String.raw`\bCu:?Zn\b`,
+      // A RAW FIELD NAME is coach-tooling vocabulary, never client copy — and
+      // the sentence carrying it named ANOTHER CLIENT: "Mushroom is explicitly
+      // listed in Manju's foods_to_avoid."
+      String.raw`\b[a-z]+_[a-z_]+\b`,
+      // Named third-party reports are client-specific coach artefacts.
+      String.raw`\b(?:Sova|GMT|DUTCH|GI-?MAP|OAT)\b`,
       String.raw`\b(?:ARB|ACE[- ]?inhibitors?|beta[- ]?blockers?|PPIs?|statins?|SSRIs?|SNRIs?)\b`,
       String.raw`\b(?:client reported|FORM SWAP|prior protocol|coach note|per coach)\b`,
     ].join("|"),
     "i",
   );
   if (CLINICAL_LEAK.test(s)) return "";
+  if (COACH_BOOKKEEPING.test(s)) return "";
   // STUB GUARD. The removals above are surgical, so a rationale built entirely
   // AROUND a lab readout collapses to a fragment rather than to nothing:
   // "Her ferritin is 12 ng/mL, far below FM-optimal of 70-150." loses the
@@ -160,4 +182,59 @@ export function clientifyWhy(raw: string): string {
     return "";
   if (s.replace(/[^a-z]/gi, "").length < 12) return "";
   return recapitalise(s);
+}
+
+/**
+ * Coach BOOKKEEPING — a sentence written to track the plan's own history, not
+ * to tell the client anything: "NEW in this session.", "TOP ADD this round.",
+ * "Already on this — continue.", "STEP-DOWN from 5 g twice daily."
+ *
+ * Twelve live cards opened with one of these (audit 2026-08-09). They are
+ * grammatical, so nothing above catches them, and they are always the FIRST
+ * sentence — which is the one the card shows.
+ *
+ * Also here: the lead-in that promises a list and then hands over to the
+ * clinical detail ("Three reasons converge for her.") — on its own it is a
+ * non-answer, and it opened cl-022's creatine card.
+ *
+ * Deliberately NOT length-based. "Protein top-up." and "Food-sourced, not a
+ * capsule." are terse for the same reason a good instruction is terse; they
+ * are answers, and a blunt short-sentence rule would take them too.
+ */
+const COACH_BOOKKEEPING = new RegExp(
+  [
+    // plan-history markers, anywhere in a short sentence
+    String.raw`\b(?:this session|this round|last round|prior protocol note|pending clarification)\b`,
+    String.raw`^\s*already on (?:this|it)\b`,
+    String.raw`^\s*(?:new|top add|re-?add(?:ed)?|added|removed|dropped|kept|keep|hold|paused?)\b[^.]{0,40}\.?\s*$`,
+    String.raw`^\s*(?:continued?|stop(?:ped)?|step[- ]?(?:down|up)|swap(?:ped)?|increase[d]?|decrease[d]?)\b[^.]{0,40}\.?\s*$`,
+    // a lead-in that defers the actual reason to the sentences after it
+    String.raw`^\s*\w+\s+(?:reasons?|things?|factors?|points?)\b[^.]{0,30}\.?\s*$`,
+  ].join("|"),
+  "i",
+);
+
+/**
+ * The client-facing "why" for a supplement: the FIRST sentence of the coach's
+ * rationale that survives scrubbing.
+ *
+ * Not `clientifyWhy(firstSentence(...))`, which is what this replaced. The
+ * coach's opening sentence is very often bookkeeping or a lab readout, and
+ * both get dropped — leaving the card blank while the actual reason sat in
+ * sentence two. Walking forward finds it: cl-004's curcumin card went from
+ * "NEW in this session." to what curcumin is doing for her.
+ *
+ * Bounded to the first six sentences so a long clinical rationale cannot end
+ * up represented by a trailing aside.
+ */
+export function clientFacingWhy(raw: string): string {
+  const cleaned = (raw || "").replace(/^\[[^\]]*\]\s*/g, "");
+  const sentences = cleaned.split(SENTENCE_SPLIT).slice(0, 6);
+  for (const sentence of sentences) {
+    const out = clientifyWhy(
+      sentence.replace(/^CRITICAL GAP[^:]*:\s*/i, "").replace(/^CONTINUE[^.]*\.\s*/i, ""),
+    );
+    if (out) return out;
+  }
+  return "";
 }

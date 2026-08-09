@@ -22,13 +22,20 @@
  */
 
 /**
+ * Sentence boundary that does NOT fire after a single capital letter, so a
+ * species abbreviation survives: "Sova GMT found B. longum 0.059%" must not
+ * become the sentence "Sova GMT found B." (which is what a client read).
+ */
+export const SENTENCE_SPLIT = /(?<!\s[A-Z]\.)(?<!^[A-Z]\.)(?<=[.!?])\s+/;
+
+/**
  * Apply `fn` to each sentence; keep the original whitespace between the
  * survivors. Returning "" (or whitespace) drops a sentence, and its trailing
  * gap goes with it.
  */
 export function mapSentences(input: string, fn: (sentence: string) => string): string {
   // Capturing group → the separators survive in the split output.
-  const parts = (input || "").split(/(?<=[.!?])(\s+)/);
+  const parts = (input || "").split(/(?<!\s[A-Z]\.)(?<!^[A-Z]\.)(?<=[.!?])(\s+)/);
   const out: string[] = [];
   const gaps: string[] = [];
   for (let i = 0; i < parts.length; i += 2) {
