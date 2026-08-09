@@ -804,7 +804,7 @@ export function deriveSleep(
  * Rounds: "N rounds" verbatim, else "N min" ÷ cycle length, else 5.
  * Mentions like mouth-taping ("nasal breathing") are not paced sessions.
  */
-function deriveBreathwork(
+export function deriveBreathwork(
   practices: { id: string; name: string; when: string }[],
   practiceRaw: Dict[],
 ): AppBreathwork | null {
@@ -997,7 +997,7 @@ const MAINTENANCE_PRICING_LIST = Object.entries(MAINTENANCE_PRICING)
   .map(([term, inr]) => ({ termMonths: Number(term), inr }))
   .sort((a, b) => b.termMonths - a.termMonths);
 
-function buildEndgame(
+export function buildEndgame(
   client: Record<string, unknown>,
   plan: AppModePlan | null,
   todayYmd: string,
