@@ -14,8 +14,12 @@ WHAT THIS EXISTS FOR
 --------------------
 The coach mobile app (/m) runs on Fly so it works when the Mac is asleep. The
 Mac is authoritative; this pushes a small read-model to Fly on a schedule.
-Text for all 21 people is ~4 MB, so the whole thing is rewritten each run
-rather than diffed.
+Text for all 21 people is ~4 MB, so the whole card set is rebuilt in memory
+each run rather than diffed — but a card is only WRITTEN when something other
+than its `staged_at` stamp actually changed (see _write_if_changed). Rewriting
+all 24 files every few minutes with nothing but a new timestamp made every one
+of them permanently "modified" on the Mac side, which is what turned an
+ordinary Mutagen disconnect into a 23-file conflict pile on 2026-08-09.
 
 TIER A+B (the coach's decision, 2026-08-02):
   A — identity, contacts, glance card, plan status
@@ -271,6 +275,48 @@ def _card(person_id: str, person_dir: Path, kind: str, plans: list[dict]) -> dic
     }
 
 
+def _write_if_changed(p: Path, body: str, ignore_key: str = "") -> int:
+    """Write `body` to `p` only if it differs from what is already there.
+
+    Returns bytes written (0 when skipped).
+
+    WHY: this projection is synced to Fly by Mutagen, which detects changes by
+    CONTENT hash. Every card carries a `staged_at` stamp regenerated on each
+    run, so an unconditional write marked all 24 files modified every few
+    minutes even when nothing about the person had changed. In steady state
+    that is merely wasteful; when the sync's ancestor state is lost (a Fly
+    deploy replaces the machine), it is the difference between a clean
+    re-scan and a pile of conflicts on files that are identical apart from a
+    timestamp. That happened on 2026-08-09 and blocked real client data from
+    reaching Fly for three hours.
+
+    `ignore_key` names a top-level key to exclude from the comparison — the
+    timestamp itself. When only that key would change we keep the file
+    untouched, so `staged_at` comes to mean "when this card last CHANGED"
+    rather than "when the script last ran". Nothing reads it (the field is
+    declared on CoachCard in coach-mobile.ts and never rendered), so that
+    shift is safe; if something ever needs true last-run time, put it in a
+    single sidecar rather than in all 24 files.
+    """
+    if p.exists():
+        try:
+            old_raw = p.read_text()
+            if old_raw == body:
+                return 0
+            if ignore_key:
+                old, new = json.loads(old_raw), json.loads(body)
+                if isinstance(old, dict) and isinstance(new, dict):
+                    old.pop(ignore_key, None)
+                    new.pop(ignore_key, None)
+                    if old == new:
+                        return 0
+        except Exception:
+            # Unreadable or malformed on disk — fall through and rewrite it.
+            pass
+    p.write_text(body)
+    return len(body)
+
+
 def _index_row(card: dict) -> dict:
     g = card["glance"]
     latest = card["sessions"][0]["date"] if card["sessions"] else None
@@ -390,16 +436,20 @@ def refresh(dry_run: bool = False) -> dict:
     _assert_clean(index, "index")
 
     written = 0
+    unchanged = 0
     if not dry_run:
         out_dir.mkdir(parents=True, exist_ok=True)
         for card in cards:
             p = out_dir / f"{card['id']}.json"
             body = json.dumps(card, ensure_ascii=False, indent=1)
-            p.write_text(body)
-            written += len(body)
+            n = _write_if_changed(p, body, ignore_key="staged_at")
+            written += n
+            unchanged += 1 if n == 0 else 0
         body = json.dumps(index, ensure_ascii=False, indent=1)
-        (out_dir / "index.json").write_text(body)
-        written += len(body)
+        # index.json carries no staged_at, so a plain content compare is enough.
+        n = _write_if_changed(out_dir / "index.json", body)
+        written += n
+        unchanged += 1 if n == 0 else 0
         # Drop cards for people who no longer exist.
         keep = {f"{c['id']}.json" for c in cards} | {"index.json"}
         for stale in out_dir.glob("*.json"):
@@ -412,6 +462,10 @@ def refresh(dry_run: bool = False) -> dict:
         "ok": True,
         "people": len(cards),
         "bytes": written,
+        # Files left untouched because only their staged_at would have moved.
+        # In a quiet run this should be nearly all of them; a run that rewrites
+        # everything every time is the regression this counter exists to show.
+        "unchanged": unchanged,
         "notes_drained": drained,
         "dry_run": dry_run,
     }

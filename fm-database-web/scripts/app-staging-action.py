@@ -457,13 +457,32 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
         except Exception:
             pass
 
-    # 6. marker
-    (sdir / "_app_staged.yaml").write_text(
-        yaml.safe_dump(
-            {"client_id": client_id, "plan_slug": plan_slug, "staged_at": datetime.now(timezone.utc).isoformat()},
-            sort_keys=False,
+    # 6. marker — rewritten ONLY when client_id/plan_slug actually change.
+    #
+    # The stamp moves on every run, and this file is Mutagen-synced to Fly,
+    # which detects changes by content hash. Restamping all 18 markers every
+    # few minutes kept them permanently "modified" on the Mac; when a Fly
+    # deploy replaced the machine and the sync lost its ancestor state, that
+    # turned into a conflict per marker on files whose only difference was the
+    # timestamp (2026-08-09). Nothing reads staged_at — the consumers here
+    # (_refresh below) and in intake-token-action.py use client_id, plan_slug
+    # and mere existence — so leaving a stale stamp costs nothing, and the
+    # field now means "when staging for this plan last changed".
+    marker_path = sdir / "_app_staged.yaml"
+    marker_ident = {"client_id": client_id, "plan_slug": plan_slug}
+    prev = {}
+    if marker_path.exists():
+        try:
+            prev = yaml.safe_load(marker_path.read_text()) or {}
+        except Exception:
+            prev = {}
+    if {k: prev.get(k) for k in marker_ident} != marker_ident:
+        marker_path.write_text(
+            yaml.safe_dump(
+                {**marker_ident, "staged_at": datetime.now(timezone.utc).isoformat()},
+                sort_keys=False,
+            )
         )
-    )
     return {"ok": True, **counts}
 
 
