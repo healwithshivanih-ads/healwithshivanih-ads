@@ -435,6 +435,18 @@ def _render_md(plan_slug: str, recipes: list[dict[str, Any]]) -> str:
     return "\n".join(out) + "\n"
 
 
+def _headings_on_disk(path: Path) -> int:
+    """How many recipes the file on disk claims, by raw heading count.
+
+    Deliberately dumber than _parse_existing_md: the shrink guard uses this so
+    it stays honest even if the parser is the thing that broke.
+    """
+    try:
+        return sum(1 for line in path.read_text(encoding="utf-8").splitlines() if line.startswith("### "))
+    except OSError:
+        return 0
+
+
 def _parse_existing_md(path: Path) -> list[dict[str, Any]]:
     """Read a previously written pack back into recipe dicts.
 
@@ -616,7 +628,8 @@ def main() -> None:
     # Seed from the pack already on disk — this file accumulates across weeks
     # and must never shrink (see _parse_existing_md). Dishes it already covers
     # are dropped from the ask too, so carrying history forward costs nothing.
-    all_recipes: list[dict[str, Any]] = _parse_existing_md(out_path)
+    existing: list[dict[str, Any]] = _parse_existing_md(out_path)
+    all_recipes: list[dict[str, Any]] = list(existing)
     seen: set[str] = {(r.get("title") or "").strip().lower() for r in all_recipes}
     if all_recipes:
         print(f"[recipes] carrying {len(all_recipes)} existing recipes forward", file=sys.stderr)
@@ -691,6 +704,40 @@ def main() -> None:
         print(json.dumps({"ok": False, "error": "model returned no recipes", "path": None, "count": 0, "usage": None}))
         return
 
+    # ── shrink guard ─────────────────────────────────────────────────────────
+    # A pack that got SMALLER is the signature of the 2026-08-09 data loss: the
+    # weeks rolled forward, this script only saw the live ones, and the write
+    # deleted every recipe from the weeks behind it. The seeding above is the
+    # actual fix; this is the backstop, because nothing else in the pipeline
+    # treats "the client has fewer recipes than yesterday" as abnormal and the
+    # client noticed before we did. Refuse the write and report loudly — the
+    # pack on disk is always a safe thing to keep.
+    #
+    # Deliberately fails the run rather than writing a partial pack: a stale
+    # complete pack beats a fresh truncated one, and the failure is what
+    # summons a human. `allow_shrink` is the escape hatch for a genuine,
+    # intentional rebuild.
+    # Count the prior pack from the RAW file, not from `existing` — the guard
+    # must not depend on the parser it exists to backstop. If _parse_existing_md
+    # ever regresses and returns [], seeding silently yields a short pack and a
+    # parser-derived prior_count would be 0, so the guard would wave through the
+    # exact write it was built to stop.
+    prior_count = _headings_on_disk(out_path)
+    if not payload.get("allow_shrink") and len(all_recipes) < prior_count:
+        print(json.dumps({
+            "ok": False,
+            "error": (
+                f"recipe pack would shrink {prior_count} -> {len(all_recipes)} "
+                f"for {plan_slug} — refusing to write (pass allow_shrink to override)"
+            ),
+            "path": str(out_path),
+            "count": len(all_recipes),
+            "prior_count": prior_count,
+            "shrink_blocked": True,
+            "usage": usage_entry,
+        }))
+        return
+
     still_missing = _uncovered(components, all_recipes)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     write_text_atomic(out_path, _render_md(plan_slug, all_recipes))
@@ -698,6 +745,7 @@ def main() -> None:
         "ok": True,
         "path": str(out_path),
         "count": len(all_recipes),
+        "prior_count": prior_count,
         "uncovered": len(still_missing),
         "usage": usage_entry,
         "error": None,
