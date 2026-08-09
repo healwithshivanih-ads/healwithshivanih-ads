@@ -6,38 +6,50 @@ forms_available:
 - tablet
 typical_dose_range:
   capsule:
-    min: 600
+    min: 300
     max: 900
     unit: mg
 timing_options:
 - with_breakfast
 - with_dinner
+- with_lunch
 take_with_food: optional
 linked_to_topics:
 - dyslipidemia
 - atherosclerosis
 - atherogenic-dyslipidemia
 - insulin-resistance
+- cardiovascular-disease-prevention
 linked_to_claims:
 - pantethine-900mg-reduces-tg-32pct
 - murray-pantethine-diabetic-lipid-correction
-notes_for_coach: Preferred for hypertriglyceridemia, especially in diabetics. Also
-  normalizes platelet lipid composition and blood viscosity. Virtually non-toxic —
-  useful when niacin is not tolerated. Active form of vitamin B5.
-notes_for_client: Pantethine is an active form of vitamin B5 that lowers triglycerides
-  and improves cholesterol with minimal side effects.
+- b5-300mg-tid-lowers-ldl
+notes_for_coach: Preferred for hypertriglyceridemia, especially in diabetics. Also normalizes
+  platelet lipid composition and blood viscosity. Virtually non-toxic — useful when niacin
+  is not tolerated. Active form of vitamin B5. Cited at 300mg three times a day for LDL lowering.
+  Can be combined with other lipid-modifying agents.
+notes_for_client: Pantethine is an active form of vitamin B5 that lowers triglycerides and
+  improves cholesterol with minimal side effects. Pantethine (a form of Vitamin B5) at higher
+  doses may help lower LDL cholesterol. It can be used alongside other supplements or medications
+  under clinician guidance.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Pantethine
-  quote: Pantethine therapy (900 mg/day) reduces serum TG (−32%), TC (-19%) and LDL-C
-    (−21%) and increases HDL-C (+23%). It appears to be especially useful in lowering
-    blood lipids in diabetic patients.
+  quote: Pantethine therapy (900 mg/day) reduces serum TG (−32%), TC (-19%) and LDL-C (−21%)
+    and increases HDL-C (+23%). It appears to be especially useful in lowering blood lipids
+    in diabetic patients.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 2
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: B5, 300 milligrams, three times a day will lower LDL and can be mixed with other
+    medications.
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-09'
 updated_by: Shivani
+aliases:
+- pantethine-vitamin-b5

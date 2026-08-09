@@ -28,7 +28,6 @@ linked_to_mechanisms:
 - ldl-oxidation
 linked_to_supplements:
 - fenugreek
-- fenugreek-extract
 sources:
 - id: pubmed-32385866
   location: 'Effect of fenugreek consumption on serum lipid profile: A systematic review and meta-analysis'

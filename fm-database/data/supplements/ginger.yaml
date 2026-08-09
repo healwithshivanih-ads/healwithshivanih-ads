@@ -11,6 +11,9 @@ timing_options:
 - with_lunch
 - with_dinner
 - morning
+- mid_morning
+- mid_afternoon
+- evening
 take_with_food: optional
 linked_to_topics:
 - gerd
@@ -21,23 +24,30 @@ linked_to_topics:
 - rheumatoid-arthritis
 - autoimmune
 - tendinopathy
+- chronic-inflammation
 linked_to_claims:
 - ginger-modulates-gi-transit
 - ppi-tapering-supplement-support-repair-protect-antioxidant
 - ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
 - murray-ginger-ra-pain-mobility
-notes_for_coach: Ginger is cited as a food/herb that stimulates endogenous enzymatic
-  activity. Well-tolerated and broadly safe as a culinary and supplement addition.
-  Supports digestive function coaching conversations.
-notes_for_client: Ginger can help stimulate your body's own digestive enzyme production.
-  Adding it to meals or taking it as a tea or supplement may support digestion.
+- ginger-anti-inflammatory-1g-per-day
+notes_for_coach: Ginger is cited as a food/herb that stimulates endogenous enzymatic activity.
+  Well-tolerated and broadly safe as a culinary and supplement addition. Supports digestive
+  function coaching conversations. Ginger extract at 1g/day or 3–4 cups of ginger green tea
+  daily is recommended. Food-first approach preferred. Ginger green tea is a practical and
+  sustainable way for clients to incorporate this daily.
+notes_for_client: Ginger can help stimulate your body's own digestive enzyme production. Adding
+  it to meals or taking it as a tea or supplement may support digestion. Try 3–4 cups of ginger
+  green tea daily as a simple anti-inflammatory habit. This is a sustainable way to get a
+  therapeutic amount of ginger each day.
 rasa:
 - pungent
 - sweet
 virya: heating
 vipaka: sweet
-prabhava: vishwabhesaj — the universal medicine; with honey relieves Kapha, with rock candy relieves Pitta,
-  with rock salt relieves Vata; dry ginger better for Kapha/Agni; fresh better for colds and Vata
+prabhava: vishwabhesaj — the universal medicine; with honey relieves Kapha, with rock candy
+  relieves Pitta, with rock salt relieves Vata; dry ginger better for Kapha/Agni; fresh better
+  for colds and Vata
 balances_dosha:
 - vata
 - kapha
@@ -63,34 +73,41 @@ typical_dose_range:
 linked_to_mechanisms: []
 sources:
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
-    — Supplement recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement
+    recommendations'
   quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala.'
 - id: coconote-fm-pancreatic-insufficiency
   location: Management / Support Strategies
-  quote: Certain food which helps in terms of stimulating the enzymatic activity is
-    ginger, curcumin, coriander, onion, all are these certain foods which help in
-    terms of stimulating the production of enzymatic activity.
+  quote: Certain food which helps in terms of stimulating the enzymatic activity is ginger,
+    curcumin, coriander, onion, all are these certain foods which help in terms of stimulating
+    the production of enzymatic activity.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
 - id: who-monographs-selected-medicinal-plants
   location: Vol 1 (1999) — Rhizoma Zingiberis, Precautions / Drug interactions
-  quote: 'Patients taking anticoagulants or with blood-coagulation disorders, and those
-    with gallstones, should consult a physician before self-medicating with ginger.
-    Ginger may affect bleeding times (thromboxane-synthase inhibition), though a 2 g/day
-    study showed no significant platelet effect.'
+  quote: Patients taking anticoagulants or with blood-coagulation disorders, and those with
+    gallstones, should consult a physician before self-medicating with ginger. Ginger may
+    affect bleeding times (thromboxane-synthase inhibition), though a 2 g/day study showed
+    no significant platelet effect.
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Herbs – Ginger
+  quote: Ginger, you can use ginger extract and those is really important. You should use
+    one gram per day or you can use a ginger tea in your patient's diet.
 contraindications:
   conditions:
   - gallstones — consult a physician before use (WHO Monographs Vol 1)
   - bleeding / coagulation disorders — consult a physician (WHO Monographs Vol 1)
   medications:
-  - anticoagulant / antiplatelet drugs — possible additive bleeding at higher doses (WHO Monographs Vol 1)
+  - anticoagulant / antiplatelet drugs — possible additive bleeding at higher doses (WHO Monographs
+    Vol 1)
   life_stages: []
-version: 5
+version: 6
 status: active
-updated_at: '2026-07-13'
+updated_at: '2026-08-09'
 updated_by: shivani
+aliases:
+- ginger-extract

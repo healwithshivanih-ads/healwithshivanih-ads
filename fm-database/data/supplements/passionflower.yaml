@@ -4,9 +4,12 @@ category: herb
 forms_available:
 - liquid
 - capsule
+- tablet
+- whole_food
 typical_dose_range: {}
 timing_options:
 - bedtime
+- evening
 take_with_food: optional
 contraindications:
   conditions:
@@ -22,8 +25,13 @@ pregnancy_safety: unknown
 lactation_safety: unknown
 linked_to_topics:
 - insomnia
+- sleep
+- sleep-quality
+- anxiety
 linked_to_mechanisms:
 - parasympathetic-restoration-failure
+- gaba-receptor-modulation
+- serotonin-melatonin-sleep-axis
 linked_to_claims: []
 notes_for_coach: 'Calming herb with mild anxiolytic and sleep-onset support effects;
 
@@ -37,18 +45,30 @@ notes_for_coach: 'Calming herb with mild anxiolytic and sleep-onset support effe
 
   commonly studied. Often used in combination formulas with lemon
 
-  balm, lavender, and magnesium for evening parasympathetic support.
-
-  '
+  balm, lavender, and magnesium for evening parasympathetic support. Mild anxiolytic-sedative
+  herb. Pizzorno lists Passiflora among botanicals with sedative properties for insomnia.
+  Typical dose 200-400 mg standardised extract or 1-2 g dried herb as tea before bed. Often
+  combined with valerian, hops, or lemon balm. Generally well-tolerated; mild GI upset, drowsiness.
+  Caution with sedatives, alcohol, MAOIs.'
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Natural sleep aids section
-  quote: There's some lavender supplements that have shown in clinical trials some
-    benefit, lemon balm, passion flower
+  quote: There's some lavender supplements that have shown in clinical trials some benefit,
+    lemon balm, passion flower
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Botanicals with Sedative Properties (pp 572)
+  quote: Botanicals with sedative properties — Valeriana officinalis root, Passiflora incarnata,
+    Humulus lupulus, Scutellaria lateriflora, Matricaria chamomilla.
 evidence_tier: plausible_emerging
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-08-09'
 updated_by: shivani
+aliases:
+- passion-flower
+- maypop
+- passiflora-incarnata
+notes_for_client: A traditional calming herb used as a tea or capsule before bed to ease anxiety-driven
+  insomnia.

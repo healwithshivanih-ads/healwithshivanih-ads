@@ -24,24 +24,32 @@ linked_to_topics:
 - autoimmune
 - psoriasis
 - autoimmune-dermatitis
+- cardiometabolic-diet
+- anti-inflammatory-diet
 linked_to_claims:
 - phytonutrient-smoothies-support-cardio-and-brain-health
 - murray-curcumin-bioavailable-forms
 - murray-curcumin-equals-phenylbutazone-ra
 - murray-topical-curcumin-vs-calcipotriene
-notes_for_coach: Featured prominently in the Brain Smoothie and Inflammation Control
-  Smoothie. Fresh or ground form used. Bioavailability enhanced by pairing with black
-  pepper (piperine); toolkit does not specify this but coaches may suggest it.
-notes_for_client: Turmeric is a powerful anti-inflammatory spice. Use fresh root or
-  ground powder in smoothies and soups.
+- phytonutrient-smoothies-support-cardiometabolic-health
+notes_for_coach: Featured prominently in the Brain Smoothie and Inflammation Control Smoothie.
+  Fresh or ground form used. Bioavailability enhanced by pairing with black pepper (piperine);
+  toolkit does not specify this but coaches may suggest it. Used across multiple smoothie
+  and recipe formulas in the toolkit (Brain Smoothie, Inflammation Control Smoothie, Carrot-Ginger
+  Soup). Curcumin bioavailability is enhanced by black pepper (piperine) — mention this to
+  clients where relevant.
+notes_for_client: Turmeric is a powerful anti-inflammatory spice. Use fresh root or ground
+  powder in smoothies and soups. Turmeric is one of the most studied anti-inflammatory spices.
+  Adding ½–1 tsp to smoothies, soups, or stews is an easy daily habit.
 rasa:
 - bitter
 - astringent
 - pungent
 virya: heating
 vipaka: pungent
-prabhava: excellent natural antibiotic that simultaneously strengthens digestion and improves intestinal
-  flora; promotes metabolism correcting both excesses and deficiencies; gives energy of the Divine Mother
+prabhava: excellent natural antibiotic that simultaneously strengthens digestion and improves
+  intestinal flora; promotes metabolism correcting both excesses and deficiencies; gives energy
+  of the Divine Mother
 balances_dosha:
 - kapha
 aggravates_dosha:
@@ -68,12 +76,16 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: Phytonutrient Smoothie Recipes — Brain Smoothie
+  quote: ½ to 1 teaspoon turmeric, ground
+version: 5
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-09'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: likely_safe
-pregnancy_safety_note: 'Food amounts safe; supplemental high-dose curcumin may stimulate
-  uterine contractions — caution especially first trimester. Lactation: food amounts
-  well-tolerated.'
+pregnancy_safety_note: 'Food amounts safe; supplemental high-dose curcumin may stimulate uterine
+  contractions — caution especially first trimester. Lactation: food amounts well-tolerated.'
+aliases:
+- turmeric-root

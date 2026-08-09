@@ -4,6 +4,7 @@ aliases:
 - methi
 - methi-seeds
 - trigonella-foenum-graecum
+- fenugreek-extract
 category: herb
 forms_available:
 - powder
@@ -14,10 +15,15 @@ typical_dose_range:
     min: 2
     max: 5
     unit: g
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
 timing_options:
 - on_waking
 - on_empty_stomach
 - with_breakfast
+- with_dinner
 take_with_food: optional
 linked_to_topics:
 - insulin-resistance
@@ -28,23 +34,26 @@ linked_to_topics:
 linked_to_claims:
 - fenugreek-overnight-soak-blood-sugar
 - murray-fenugreek-insulin-sensitivity-4-hydroxyisoleucine
-notes_for_coach: 'Coach Shivani''s original tip: ''Soak methi seeds in water overnight
-  and drink the sieved water the next morning. Good for insulin resistance and diabetes.''
-  Preparation: soak ~1–2 tsp of whole methi seeds in a glass of water overnight; strain
-  in the morning and have the water on an empty stomach. The seeds themselves can
-  be eaten or discarded.'
-notes_for_client: Fenugreek (methi) seeds soaked overnight produce a mucilaginous
-  water rich in soluble fibre, which may help slow glucose absorption and support
-  healthy insulin levels. Drink the strained water first thing in the morning before
-  eating.
+- fenugreek-reduces-fasting-glucose-t1dm-t2dm
+notes_for_coach: 'Coach Shivani''s original tip: ''Soak methi seeds in water overnight and
+  drink the sieved water the next morning. Good for insulin resistance and diabetes.'' Preparation:
+  soak ~1–2 tsp of whole methi seeds in a glass of water overnight; strain in the morning
+  and have the water on an empty stomach. The seeds themselves can be eaten or discarded.
+  Level 2 insulin enhancer for T2DM: 1 g/day extract. Active compounds: soluble fibre, trigonelline,
+  4-hydroxyisoleucine. Also lowers LDL/VLDL/TG. Defatted seed powder used in T1DM trials at
+  50 g b.i.d.'
+notes_for_client: Fenugreek (methi) seeds soaked overnight produce a mucilaginous water rich
+  in soluble fibre, which may help slow glucose absorption and support healthy insulin levels.
+  Drink the strained water first thing in the morning before eating. Fenugreek seeds contain
+  natural compounds that improve how your body responds to insulin and reduce blood fat levels.
 rasa:
 - bitter
 - pungent
 - sweet
 virya: heating
 vipaka: pungent
-prabhava: rejuvenative for the nervous, respiratory and reproductive systems; gruel increases milk flow
-  and promotes hair growth
+prabhava: rejuvenative for the nervous, respiratory and reproductive systems; gruel increases
+  milk flow and promotes hair growth
 balances_dosha:
 - vata
 - kapha
@@ -67,7 +76,12 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 2
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Fenugreek seeds
+  quote: Type 2 diabetics on 1 g/day fenugreek seed extract for 2 months had improved blood
+    glucose (fasting glucose dropped from 148.3 to 119.9 mg/dL) but with decreased insulin
+    output, indicating improved insulin sensitivity.
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-09'
 updated_by: shivani

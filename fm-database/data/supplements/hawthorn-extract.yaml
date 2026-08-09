@@ -7,7 +7,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 100
-    max: 250
+    max: 750
     unit: mg
   tablet:
     min: 100
@@ -21,22 +21,33 @@ take_with_food: optional
 linked_to_topics:
 - essential-hypertension
 - high-blood-pressure
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
 linked_to_claims:
 - hawthorn-mild-bp-lowering-2-4-weeks
-notes_for_coach: 'Standardise to 10% procyanidins or 1.8% vitexin-4''-rhamnoside.
-  Dose: 100–250 mg t.i.d. Also improves general heart function. Effects require 2–4
-  weeks minimum. Best used as adjunct to other interventions.'
-notes_for_client: Hawthorn is a gentle herb for the heart and blood pressure — it
-  works gradually, so give it at least a month.
+notes_for_coach: 'Standardise to 10% procyanidins or 1.8% vitexin-4''-rhamnoside. Dose: 100–250
+  mg t.i.d. Also improves general heart function. Effects require 2–4 weeks minimum. Best
+  used as adjunct to other interventions. 100–250 mg t.i.d. (10% procyanidins or 1.8% vitexin
+  with 4% rhamnoside). Best choice for cardiovascular disease or hypertension in diabetes.
+  Consider drug interactions with cardiac medications.'
+notes_for_client: Hawthorn is a gentle herb for the heart and blood pressure — it works gradually,
+  so give it at least a month. Hawthorn extract supports healthy blood pressure and heart
+  function — the preferred herbal choice when cardiovascular risk is a concern.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: pizzorno-cardiometabolic-hypertension
   location: Botanical Medicines / Crataegus
-  quote: Extracts of hawthorn berries and flowering tops lower BP and improve heart
-    function. BP-lowering effect of hawthorn is quite mild and requires at least 2
-    to 4 weeks before effect is apparent.
-version: 2
+  quote: Extracts of hawthorn berries and flowering tops lower BP and improve heart function.
+    BP-lowering effect of hawthorn is quite mild and requires at least 2 to 4 weeks before
+    effect is apparent.
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Flavonoids table
+  quote: Hawthorn extract (10% procyanidins) 150-300 mg — Best choice in cardiovascular disease
+    or hypertension.
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-09'
 updated_by: Shivani
+aliases:
+- hawthorn-extract-diabetes

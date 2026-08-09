@@ -3,24 +3,38 @@ display_name: Green Tea
 category: herb
 forms_available:
 - liquid
+- capsule
+- tablet
 timing_options:
 - morning
 - with_breakfast
 - mid_morning
+- with_lunch
 take_with_food: optional
 linked_to_topics:
 - cardiometabolic-diet
 - phytonutrient-density
 - anti-inflammatory-diet
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
 linked_to_claims:
 - phytonutrient-smoothies-support-cardiometabolic-health
-notes_for_coach: Used as a smoothie base liquid across multiple recipes (Cardio Smoothie,
-  Detox Smoothie, Rainbow Smoothie). Green tea catechins (EGCG) are well-studied for
-  antioxidant, metabolic, and cardiovascular benefits. 4–8 oz brewed per smoothie.
-notes_for_client: Using brewed green tea as your smoothie base adds antioxidants that
-  support heart and metabolic health — with less caffeine than coffee.
+notes_for_coach: 'Used as a smoothie base liquid across multiple recipes (Cardio Smoothie,
+  Detox Smoothie, Rainbow Smoothie). Green tea catechins (EGCG) are well-studied for antioxidant,
+  metabolic, and cardiovascular benefits. 4–8 oz brewed per smoothie. Decaffeinated, 80% polyphenol
+  content preferred. Foundation supplement for recently diagnosed T1DM due to antiviral (rotavirus/enterovirus)
+  and epicatechin beta-cell protective effects. Adults: 150–300 mg/day. Children <6y: 50–150
+  mg; 6–12y: 100–200 mg.'
+notes_for_client: Using brewed green tea as your smoothie base adds antioxidants that support
+  heart and metabolic health — with less caffeine than coffee. Green tea extract provides
+  protective plant compounds that may help preserve insulin-producing cells, especially in
+  early-stage type 1 diabetes.
 evidence_tier: plausible_emerging
-typical_dose_range: {}
+typical_dose_range:
+  capsule:
+    min: 150
+    max: 300
+    unit: mg
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
@@ -28,16 +42,20 @@ sources:
   quote: Green tea, loose – 4 T
 - id: vitaone-liver-detox-cheatsheet
   location: Top Superfoods for Detoxification
-  quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD,
-    catalase, GSH).
+  quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD, catalase,
+    GSH).
 - id: coconote-fm-sex-hormones
   location: Steroidogenesis Pathway — Aromatase Activity
-  quote: The one solution that we can do is give a green tea, right. Green tea is
-    an actual decrease of aromatase activity which will reduce the estrogen dominance
-    inside the body.
-version: 1
+  quote: The one solution that we can do is give a green tea, right. Green tea is an actual
+    decrease of aromatase activity which will reduce the estrogen dominance inside the body.
+- id: pizzorno-cardiometabolic-diabetes
+  location: Early Treatment and Possible Reversal of Type 1 Diabetes Mellitus
+  quote: Green tea polyphenols have antiviral activity against rotavirus and enterovirus,
+    suspected of causing T1DM.
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-08-09'
 updated_by: shivani
 aliases:
 - green-tea-egcg
+- green-tea-extract-diabetes

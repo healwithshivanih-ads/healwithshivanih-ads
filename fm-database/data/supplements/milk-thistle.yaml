@@ -7,7 +7,7 @@ forms_available:
 - liquid
 typical_dose_range:
   capsule:
-    min: 200
+    min: 100
     max: 400
     unit: mg
   tablet:
@@ -19,9 +19,10 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Supports hepatocyte repair and liver detoxification — useful for
-  Candida die-off reactions and sluggish bile. 200-400mg/day of standardized silymarin
-  extract.
+notes_for_coach: Supports hepatocyte repair and liver detoxification — useful for Candida
+  die-off reactions and sluggish bile. 200-400mg/day of standardized silymarin extract. Best
+  choice if diabetic patient shows impaired liver function (common in overweight diabetics
+  with fatty liver). Important given high-dose niacin liver risk and fatty liver prevalence.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -38,6 +39,7 @@ linked_to_topics:
 - psoriasis-gut-immune
 - autoimmune-dermatitis
 - gallstones
+- type-2-diabetes-mellitus
 linked_to_mechanisms: []
 linked_to_claims:
 - fluoride-bpa-block-thyroid-receptors
@@ -50,24 +52,24 @@ linked_to_claims:
 - sluggish-bile-flow-overlooked-root-cause
 - nac-breaks-candida-biofilms
 - murray-milk-thistle-silymarin-psoriasis
-notes_for_client: Milk thistle supports liver health and helps the liver process toxins
-  released during a Candida cleanse or when bile flow is sluggish.
+notes_for_client: Milk thistle supports liver health and helps the liver process toxins released
+  during a Candida cleanse or when bile flow is sluggish. Milk thistle supports liver health
+  — particularly important in diabetes where the liver can be stressed by excess weight or
+  high-dose supplements.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Milk Thistle (Silymarin) - Liver regeneration, antioxidant - 150–300 mg/day
-    - With meals
+  quote: Milk Thistle (Silymarin) - Liver regeneration, antioxidant - 150–300 mg/day - With
+    meals
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Liver Detox Support
   quote: NAC, milk thistle, cruciferous veggies, hydration
 - id: vitaone-sex-hormones-cheatsheet
   location: Advanced Support — Estrogen Dominance Supplement Cheatsheet
-  quote: 'Milk Thistle (Silymarin): Liver detox + antioxidant; High LFTs + estrogen
-    overload.'
+  quote: 'Milk Thistle (Silymarin): Liver detox + antioxidant; High LFTs + estrogen overload.'
 - id: vitaone-adrenal-cheatsheet
   location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
-  quote: Support liver detox (NAC, milk thistle), regulate estrogen metabolism, vagal
-    activation.
+  quote: Support liver detox (NAC, milk thistle), regulate estrogen metabolism, vagal activation.
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Fatty Liver (NAFLD)
   quote: Milk Thistle (Silymarin) (300 mg BID)
@@ -76,16 +78,22 @@ sources:
   quote: Silymarin (Milk thistle), NAC, B-complex, SAMe
 - id: vitaone-gut-cheatsheet
   location: Candida Infection — Supplement Stack
-  quote: Milk Thistle (Silymarin) 200–400 mg/day — Supports liver detoxification from
-    Candida die-off
+  quote: Milk Thistle (Silymarin) 200–400 mg/day — Supports liver detoxification from Candida
+    die-off
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 9
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Flavonoids table
+  quote: Milk thistle extract (70% silymarin) 100-300 mg — Best choice if showing signs of
+    impaired liver function.
+version: 10
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-09'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: caution
-pregnancy_safety_note: Limited safety data; some hepatology indications in pregnancy.
-  Use only with clinician oversight.
+pregnancy_safety_note: Limited safety data; some hepatology indications in pregnancy. Use
+  only with clinician oversight.
+aliases:
+- milk-thistle-extract-diabetes

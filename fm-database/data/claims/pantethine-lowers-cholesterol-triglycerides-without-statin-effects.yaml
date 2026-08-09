@@ -23,7 +23,6 @@ linked_to_mechanisms:
 - ldl-oxidation
 linked_to_supplements:
 - pantethine
-- pantethine-vitamin-b5
 out_of_scope_notes: ''
 sources:
 - id: pizzorno-atherosclerosis

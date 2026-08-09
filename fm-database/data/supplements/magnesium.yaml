@@ -48,6 +48,8 @@ linked_to_topics:
 - high-blood-pressure
 - mthfr-methylation-gene
 - comt-gene-catechol-clearance
+- hormonal-nutrition-foundations
+- hippocampal-volume-and-hormones
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -72,14 +74,23 @@ linked_to_claims:
 - murray-lactate-anxiety-six-nutritional-drivers
 - murray-b6-magnesium-pms-foundation
 - murray-calcium-alone-insufficient-osteoporosis
-notes_for_coach: 'Essential cofactor for both the methylation cycle and COMT enzyme
-  function. Approx. 50% of US adults are deficient. Common causes of depletion: high
-  caffeine intake and long-term PPI use. Food sources: dark leafy greens, nuts, seeds,
-  fish, beans, avocados, whole grains. Supplement form (glycinate, malate) matters
-  for tolerability.'
-notes_for_client: 'Magnesium is crucial for both your methylation cycle and your COMT
-  gene. About half of all adults don''t get enough. Cut back on caffeine — it depletes
-  magnesium. Top food sources: dark leafy greens, nuts, seeds, avocados.'
+- magnesium-enables-hormone-transcription
+- rbc-magnesium-targets-hormone-signaling
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_coach: 'Essential cofactor for both the methylation cycle and COMT enzyme function.
+  Approx. 50% of US adults are deficient. Common causes of depletion: high caffeine intake
+  and long-term PPI use. Food sources: dark leafy greens, nuts, seeds, fish, beans, avocados,
+  whole grains. Supplement form (glycinate, malate) matters for tolerability. Magnesium is
+  required for transcription of the hormonal signal at the receptor. Target RBC (red blood
+  cell) magnesium in the high 5s to low 6s mg/dL — standard serum magnesium is a poor proxy.
+  Magnesium is chronically depleted by stress, toxicity, and aging. Also linked to hippocampal
+  volume maintenance.'
+notes_for_client: 'Magnesium is crucial for both your methylation cycle and your COMT gene.
+  About half of all adults don''t get enough. Cut back on caffeine — it depletes magnesium.
+  Top food sources: dark leafy greens, nuts, seeds, avocados. Magnesium is used up by stress
+  and hard to keep in normal range as we age. It''s needed for your hormones to actually send
+  their messages in your cells. A magnesium supplement — ideally glycinate or malate form
+  — is well tolerated and supports both hormonal and brain health.'
 evidence_tier: strong
 typical_dose_range:
   capsule:
@@ -87,7 +98,7 @@ typical_dose_range:
     max: 400
     unit: mg
   powder:
-    min: 400
+    min: 200
     max: 1200
     unit: mg
   tablet:
@@ -102,27 +113,26 @@ sources:
   quote: Beets, garlic, sulfur foods, B vitamins, magnesium, NAC.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Magnesium is an essential mineral that supports bone health, blood pressure,
-    and insulin function. People who do not get enough magnesium in their diet are
-    at higher risk for type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
+  quote: Magnesium is an essential mineral that supports bone health, blood pressure, and
+    insulin function. People who do not get enough magnesium in their diet are at higher risk
+    for type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Magnesium is a mineral that is necessary for optimal mitochondrial function.
-    Restoring the body's magnesium can have a protective role in heart health, blood
-    pressure, and is associated with improvements in depressive symptoms.
+  quote: Magnesium is a mineral that is necessary for optimal mitochondrial function. Restoring
+    the body's magnesium can have a protective role in heart health, blood pressure, and is
+    associated with improvements in depressive symptoms.
 - id: vitaone-liver-detox-toolkit
   location: How to Make an Infrared Sauna Lamp — Protocol
-  quote: I do advise Starting with Magnesium because you will loose lot of magnesium
-    through sweat.
+  quote: I do advise Starting with Magnesium because you will loose lot of magnesium through
+    sweat.
 - id: vitaone-health-coaching-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Magnesium is an essential mineral that supports bone health, blood pressure,
-    and insulin function. It also participates in hundreds of metabolic reactions
-    in the body.
+  quote: Magnesium is an essential mineral that supports bone health, blood pressure, and
+    insulin function. It also participates in hundreds of metabolic reactions in the body.
 - id: coconote-fm-calcium-deficiency
   location: Magnesium and Calcium Relationship
-  quote: if you correct the intracellular magnesium level this calcium going to come
-    out from the cell and it will maintain your serum magnesium level.
+  quote: if you correct the intracellular magnesium level this calcium going to come out from
+    the cell and it will maintain your serum magnesium level.
 - id: coconote-fm-approach-inflammation
   location: Nutrition – Anti-Inflammatory Minerals
   quote: the minerals, then zinc and magnesium. They are anti-inflammatory.
@@ -131,49 +141,53 @@ sources:
   quote: that is zinc and then you can consider that magnesium is required.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Micronutrients in Clinical Practice
-  quote: Almost everyone leaves with magnesium, which is my favorite mineral for the
-    heart. Magnesium lowers blood sugar. Magnesium is anti-inflammatory. Magnesium
-    helps people have a bowel movement. Magnesium prevents arrhythmia.
+  quote: Almost everyone leaves with magnesium, which is my favorite mineral for the heart.
+    Magnesium lowers blood sugar. Magnesium is anti-inflammatory. Magnesium helps people have
+    a bowel movement. Magnesium prevents arrhythmia.
 - id: coconote-fm-sex-hormones
   location: Case Study — Rekha Lab Results
-  quote: Now the calcium may be low because the magnesium is also on the lower side
-    at times.
+  quote: Now the calcium may be low because the magnesium is also on the lower side at times.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Natural alternatives to statins section
-  quote: Like magnesium is also anti-steadiness. We can use the nutrition like vitamin
-    D and magnesium.
+  quote: Like magnesium is also anti-steadiness. We can use the nutrition like vitamin D and
+    magnesium.
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Supplement restoration philosophy discussion
-  quote: There are supplements that you need, like magnesium, you need it because
-    we have to filter our drinking water. Water filtration removes all magnesium.
-    So we have to restore magnesium.
+  quote: There are supplements that you need, like magnesium, you need it because we have
+    to filter our drinking water. Water filtration removes all magnesium. So we have to restore
+    magnesium.
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Magnesium and sleep section
-  quote: I love magnesium. That's one of my favorite nutrients. The government has
-    told us that about 59% Americans are deficient in magnesium
+  quote: I love magnesium. That's one of my favorite nutrients. The government has told us
+    that about 59% Americans are deficient in magnesium
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Magnesium and Potassium
-  quote: Low magnesium levels contribute to atherosclerosis and CVD via promotion
-    of endothelial dysfunction by generating a proinflammatory, prothrombotic, proatherogenic
-    environment.
+  quote: Low magnesium levels contribute to atherosclerosis and CVD via promotion of endothelial
+    dysfunction by generating a proinflammatory, prothrombotic, proatherogenic environment.
 - id: pizzorno-cardiometabolic-hypertension
   location: Therapeutic Considerations / Mg
-  quote: Supplement Mg (400 to 1200 mg q.d. in divided doses) with K. This may lower
-    BP. Mg lowers BP in a dose-dependent way.
+  quote: Supplement Mg (400 to 1200 mg q.d. in divided doses) with K. This may lower BP. Mg
+    lowers BP in a dose-dependent way.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
 - id: dirty-genes-lynch
   location: 'Chapter 6: Key Nutrients for a Healthy COMT'
-  quote: That final nutrient, magnesium, is especially important for your COMT to
-    function properly. So if you don't have enough magnesium in your diet—and about
-    50 percent of all U.S. residents don't—you're going to dirty up your COMT.
-version: 24
+  quote: That final nutrient, magnesium, is especially important for your COMT to function
+    properly. So if you don't have enough magnesium in your diet—and about 50 percent of all
+    U.S. residents don't—you're going to dirty up your COMT.
+- id: ask-expert-hormonal-health-bhrt
+  location: Magnesium in Hormone Receptor Signaling
+  quote: magnesium, which allows transcription of the message to occur... magnesium is constantly
+    rinsed out of the body by any state of stress or toxicity... you want to keep your red
+    blood cell magnesium in the high fives or the low sixes.
+version: 25
 status: active
-updated_at: '2026-07-14'
+updated_at: '2026-08-09'
 updated_by: claude-dirty-genes-ingest
 aliases:
 - magnesium 400-600mg
+- magnesium-hormone-support
 contraindications:
   conditions:
   - severe renal impairment — coordinate with clinician

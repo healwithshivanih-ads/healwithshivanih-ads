@@ -7,28 +7,53 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 50
-    max: 150
+    max: 200
     unit: mg
 timing_options:
 - with_breakfast
 - morning
+- with_lunch
 take_with_food: optional
 linked_to_topics:
 - atherosclerosis
-notes_for_coach: 'Interchangeable with grapeseed extract for PCO/proanthocyanidin
-  content. Same mechanism: antioxidant + endothelial function support.'
-notes_for_client: Pine bark extract (pycnogenol) is a powerful antioxidant flavonoid
-  that protects blood vessel linings and improves circulation.
+- adhd
+- perimenopause-and-menopause
+- menopause
+- tendinopathy
+notes_for_coach: 'Interchangeable with grapeseed extract for PCO/proanthocyanidin content.
+  Same mechanism: antioxidant + endothelial function support. For ADHD: 1 mg/kg body weight
+  daily. For atherosclerosis/general antioxidant: 100 mg daily. Rich in procyanidolic oligomers;
+  broad-spectrum antioxidant. Can be used interchangeably with grapeseed extract for antioxidant
+  purposes.'
+notes_for_client: Pine bark extract (pycnogenol) is a powerful antioxidant flavonoid that
+  protects blood vessel linings and improves circulation.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- pycnogenol-adhd-antioxidant-benefit
+- murray-pycnogenol-multi-symptom-perimenopause
+- murray-flavonoids-halve-sports-injury-recovery
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Grapeseed and Pine Bark Extracts
-  quote: 'Commercial sources of PCOs include extracts from grapeseeds and bark of
-    maritime (Landes) pine. Mechanisms of protection: antioxidant activity, effects
-    on endothelial cells.'
-version: 1
+  quote: 'Commercial sources of PCOs include extracts from grapeseeds and bark of maritime
+    (Landes) pine. Mechanisms of protection: antioxidant activity, effects on endothelial
+    cells.'
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Botanical Medicines — Procyanidolic
+    Oligomers
+  quote: Pycnogenol (1 mg/kg body weight per day) improved antioxidant status in ADHD children.
+    It also improved hyperactivity and improved attention and visual-motor coordination and
+    concentration of children with ADHD.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause
+  quote: Comprehensive natural treatment summary for menopausal symptoms.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
+  quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-08-09'
 updated_by: Shivani
+aliases:
+- pycnogenol

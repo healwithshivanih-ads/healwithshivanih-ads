@@ -32,7 +32,6 @@ linked_to_mechanisms:
 - glycemic-load-reduction
 linked_to_supplements:
 - fenugreek
-- fenugreek-extract
 sources:
 - id: pubmed-37762302
   location: 'The Effect of Fenugreek in Type 2 Diabetes and Prediabetes: A Systematic Review and Meta-Analysis'
