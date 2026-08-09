@@ -12,7 +12,7 @@ typical_dose_range:
     unit: mcg
   tablet:
     min: 150
-    max: 150
+    max: 1000
     unit: mcg
   liquid:
     min: 150
@@ -24,16 +24,20 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Iodine is necessary for thyroid hormone synthesis. However, excess
-  iodine can be harmful in Hashimoto's patients and may worsen antibody activity.
-  Supplementation should be cautious and ideally clinician-supervised in autoimmune
-  thyroid disease. Routine supplementation at 150 mcg is considered safe for most.
+notes_for_coach: Iodine is necessary for thyroid hormone synthesis. However, excess iodine
+  can be harmful in Hashimoto's patients and may worsen antibody activity. Supplementation
+  should be cautious and ideally clinician-supervised in autoimmune thyroid disease. Routine
+  supplementation at 150 mcg is considered safe for most. Iodine maintains the architectural
+  integrity of hormone receptor binding pocket domains throughout the body — not just in the
+  thyroid. Deficiency affects all hormone receptors. High-dose iodine supplementation (Lugol's
+  etc.) should be clinician-supervised.
 evidence_tier: strong
 linked_to_topics:
 - thyroid
 - hypothyroidism
 - autoimmune-thyroiditis
 - thyroid-dysfunction
+- hormonal-nutrition-foundations
 linked_to_mechanisms: []
 linked_to_claims:
 - iodine-supplementation-requires-testing-and-selenium-balance
@@ -44,38 +48,49 @@ linked_to_claims:
 - excess-iodine-can-worsen-hashimotos
 - murray-iodine-upper-limit-thyroid-suppression
 - murray-hypothyroidism-treatment-summary
-notes_for_client: Iodine is needed to make thyroid hormones but too much can actually
-  worsen Hashimoto's. Food sources like seaweed, eggs, and dairy are preferred over
-  high-dose supplements unless your doctor recommends otherwise.
+- iodine-maintains-hormone-receptor-architecture
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_client: Iodine is needed to make thyroid hormones but too much can actually worsen
+  Hashimoto's. Food sources like seaweed, eggs, and dairy are preferred over high-dose supplements
+  unless your doctor recommends otherwise. Iodine keeps your hormone receptor 'pockets' properly
+  shaped so hormones can fit in and do their job. We know iodine is needed for the thyroid,
+  but it's needed throughout your whole body for the same reason.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Iodine (Potassium Iodide)/sea kelp - Thyroid hormone production - 150–300
-    mcg/day - With or without food
+  quote: Iodine (Potassium Iodide)/sea kelp - Thyroid hormone production - 150–300 mcg/day
+    - With or without food
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Balance Iodine Intake
   quote: 150–300 µg/day if deficient, balance with selenium
 - id: vitaone-thyroid-ebook
   location: Chapter 2 & Chapter 9
-  quote: 'Iodine: Essential raw material for T3 and T4 molecules. Caution: Excess
-    iodine can worsen Hashimoto''s or trigger hyperthyroidism.'
+  quote: 'Iodine: Essential raw material for T3 and T4 molecules. Caution: Excess iodine can
+    worsen Hashimoto''s or trigger hyperthyroidism.'
 - id: vitaone-thyroid-toolkit
   location: Ensuring Adequate Iodine Intake
-  quote: Iodine is essential for thyroid hormone production, but excess iodine can
-    be harmful in Hashimoto's.
+  quote: Iodine is essential for thyroid hormone production, but excess iodine can be harmful
+    in Hashimoto's.
 - id: vitaone-health-coaching-toolkit
-  location: Recommended Dietary Changes for Hashimoto's Hypothyroidism — Ensuring
-    Adequate Iodine Intake
-  quote: Iodine is essential for thyroid hormone production, but excess iodine can
-    be harmful in Hashimoto's. Foods like seaweed, eggs, and dairy provide iodine,
-    but supplementation should be approached with caution.
+  location: Recommended Dietary Changes for Hashimoto's Hypothyroidism — Ensuring Adequate
+    Iodine Intake
+  quote: Iodine is essential for thyroid hormone production, but excess iodine can be harmful
+    in Hashimoto's. Foods like seaweed, eggs, and dairy provide iodine, but supplementation
+    should be approached with caution.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 68 — Hypothyroidism, Treatment Summary
   quote: Iodine included in Murray hypothyroidism nutrient protocol.
-version: 6
+- id: ask-expert-hormonal-health-bhrt
+  location: Iodine in Hormone Receptor Architecture
+  quote: we need iodine, which maintains the architecture of the binding pocket domain. We
+    know that in the thyroid. If you don't have enough iodine in your thyroid, it grows out
+    of control into a goiter. Iodine is a growth controller, an architect controller, and
+    it does the same thing in the binding pocket domain.
+version: 7
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-09'
 updated_by: shivani
 aliases:
 - iodine (hormone synthesis)
 - iodine 150 mcg
+- iodine-hormone-receptor

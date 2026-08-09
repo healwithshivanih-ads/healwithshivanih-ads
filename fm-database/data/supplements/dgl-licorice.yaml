@@ -18,17 +18,28 @@ timing_options:
 - morning
 - mid_morning
 - mid_afternoon
+- evening
 take_with_food: avoid
 linked_to_topics:
 - gerd
 - h-pylori-infection
 - hypochlorhydria
+- peptic-ulcer-disease
+- helicobacter-pylori-infection
 linked_to_claims:
 - betaine-hcl-corrects-hypochlorhydria
-notes_for_coach: Take before meals for mucosal coating effect. DGL (not whole licorice)
-  — safe for blood pressure. 400mg 2-3x/day before meals for H. pylori and GERD support.
-notes_for_client: DGL licorice is a soothing herb that coats and protects the stomach
-  and esophageal lining — take it before meals for best effect.
+- dgl-equivalent-cimetidine-recurrence-prevents-asa-ulcer
+- dgl-must-be-chewed-not-capsule
+notes_for_coach: 'Take before meals for mucosal coating effect. DGL (not whole licorice) —
+  safe for blood pressure. 400mg 2-3x/day before meals for H. pylori and GERD support. Must
+  be chewed (not swallowed as capsule) to activate salivary compounds. Dose: 2–4 × 380 mg
+  tablets = 760–1520 mg between meals or 20 min before meals. Continue 8–16 weeks after full
+  response. DGL lacks aldosterone-like side effects of whole licorice. Flavonoids in DGL inhibit
+  H. pylori.'
+notes_for_client: DGL licorice is a soothing herb that coats and protects the stomach and
+  esophageal lining — take it before meals for best effect. DGL is licorice with the part
+  that raises blood pressure removed. It must be chewed — not swallowed whole — to work properly.
+  Take it 20 minutes before meals.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -36,15 +47,21 @@ sources:
   location: H. Pylori Infection Cheatsheet — Antimicrobial Support
   quote: 'DGL (Deglycyrrhizinated Licorice): 400 mg, 2–3x/day before meals'
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
-    — Supplement recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement
+    recommendations'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm'
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
-version: 1
+- id: pizzorno-textbook-hpylori
+  location: Botanical Medicines — Glycyrrhiza glabra, p. 784
+  quote: DGL is an antiulcer agent with no known side effects. DGL stimulates differentiation
+    to glandular cells plus mucus formation and secretion. No significant differences exist
+    in recurrence rates between cimetidine and DGL.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-08-09'
 updated_by: shivani
 aliases:
 - dgl
+- dgl-deglycyrrhizinated-licorice

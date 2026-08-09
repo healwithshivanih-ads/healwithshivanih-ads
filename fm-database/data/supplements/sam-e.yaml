@@ -30,17 +30,22 @@ linked_to_topics:
 - gallstones
 - mthfr-methylation-gene
 - comt-gene-catechol-clearance
+- liver-detoxification
+- methylation-mthfr
 linked_to_mechanisms: []
 notes_for_coach: 'The universal methyl donor produced by the methylation cycle. Available
   OTC in the US; prescription only in several European countries. Highly context-dependent:
-  beneficial for slow COMT under stress load; can cause depression, fatigue, or mood
-  destabilization if catecholamines are already adequate or if COMT is fast. Do NOT
-  recommend without full picture of client''s COMT status and stress context. Defer
-  to clinician.'
-notes_for_client: SAMe is produced naturally by your own methylation cycle. It CAN
-  be taken as a supplement but has powerful and sometimes unpredictable effects depending
-  on your COMT gene type and stress levels. Please work with your clinician before
-  trying it.
+  beneficial for slow COMT under stress load; can cause depression, fatigue, or mood destabilization
+  if catecholamines are already adequate or if COMT is fast. Do NOT recommend without full
+  picture of client''s COMT status and stress context. Defer to clinician. SAMe is a methyl
+  donor used in alcoholic liver disease and methylation support. Best taken on an empty stomach.
+  Avoid in bipolar disorder (mania risk). Do NOT combine with SSRIs, SNRIs, MAOIs, or other
+  serotonergic agents — additive serotonin syndrome risk (less well-known but real). Clinician
+  oversight required for dosing.'
+notes_for_client: SAMe is produced naturally by your own methylation cycle. It CAN be taken
+  as a supplement but has powerful and sometimes unpredictable effects depending on your COMT
+  gene type and stress levels. Please work with your clinician before trying it. SAMe supports
+  liver detoxification pathways and mood. It's best taken away from food for optimal absorption.
 evidence_tier: strong
 contraindications:
   conditions:
@@ -58,10 +63,17 @@ sources:
   quote: 'SAM-e: 200 mg twice a day up to 400 mg three times a day.'
 - id: dirty-genes-lynch
   location: 'Chapter 5: Spectacular SAMe'
-  quote: SAMe may not be right for you. (You will learn in later chapters whether
-    you're a good candidate for supplemental SAMe.)
-version: 4
+  quote: SAMe may not be right for you. (You will learn in later chapters whether you're a
+    good candidate for supplemental SAMe.)
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: SAMe - Mood, joint & liver support - 200–600 mg/day - Empty stomach in morning
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Alcoholic Liver Disease
+  quote: Silymarin (Milk thistle), NAC, B-complex, SAMe
+version: 5
 status: active
-updated_at: '2026-07-14'
+updated_at: '2026-08-09'
 updated_by: claude-dirty-genes-ingest
-linked_to_claims: []
+linked_to_claims:
+- same-methylation-liver-support

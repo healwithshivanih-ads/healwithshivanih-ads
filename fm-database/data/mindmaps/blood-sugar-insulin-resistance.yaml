@@ -263,7 +263,7 @@ tree:
     - label: Inositol
       children: []
       linked_kind: supplement
-      linked_slug: inositol
+      linked_slug: myo-inositol
       notes: ''
     linked_kind: null
     linked_slug: null

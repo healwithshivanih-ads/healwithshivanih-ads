@@ -27,7 +27,6 @@ linked_to_mechanisms:
 - hepatic-insulin-sensitivity
 linked_to_supplements:
 - fenugreek
-- fenugreek-extract
 sources:
 - id: pubmed-38846904
   location: 'Enhancing glycaemic control and promoting cardiovascular health: the therapeutic potential

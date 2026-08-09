@@ -57,7 +57,7 @@ pathways:
     - methylfolate
     - methylcobalamin
     - vitamin-b2-riboflavin
-    - tmg
+    - betaine-trimethylglycine
     foods_emphasise:
     - dark leafy greens (spinach, methi, amaranth)
     - legumes
@@ -404,7 +404,7 @@ pathways:
     supplements:
     - phosphatidylcholine
     - cdp-choline
-    - tmg
+    - betaine-trimethylglycine
     foods_emphasise:
     - eggs (yolks)
     - 'choline foods (if non-veg: liver, fish)'

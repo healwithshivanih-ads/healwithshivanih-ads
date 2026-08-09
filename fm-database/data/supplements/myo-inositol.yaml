@@ -28,6 +28,8 @@ linked_to_topics:
 - hypothyroidism
 - autoimmune-thyroiditis
 - thyroid-dysfunction
+- hairfall
+- maoa-fast-serotonin-depletion
 linked_to_claims:
 - myo-inositol-d-chiro-inositol-40-1-restores-ovulation-pcos
 - stress-disrupts-hpo-axis-pcos
@@ -35,28 +37,37 @@ linked_to_claims:
 - low-carb-improves-pcos-hormonal-markers
 - myo-inositol-regulates-tsh-fsh-insulin-signaling
 - myo-inositol-supports-tsh-signal-transduction
-notes_for_coach: Myo-inositol is involved in TSH, FSH, and insulin signal transduction. Found naturally in fruits, vegetables,
-  cereals, legumes, and nuts. The document does not specify a dose — dose range above reflects commonly used research doses
-  and should be verified with clinician. Thin evidence base for thyroid specifically.
-notes_for_client: Myo-inositol is a naturally occurring nutrient found in fruits, vegetables, and legumes that helps your
-  thyroid cells respond to TSH signals. It supports hormone regulation more broadly including blood sugar and reproductive
-  hormones.
+notes_for_coach: Myo-inositol is involved in TSH, FSH, and insulin signal transduction. Found
+  naturally in fruits, vegetables, cereals, legumes, and nuts. The document does not specify
+  a dose — dose range above reflects commonly used research doses and should be verified with
+  clinician. Thin evidence base for thyroid specifically. Lynch recommends for fast MAOA to
+  regulate serotonin and improve mood. However, inositol burdens and slows MAOA in the slow
+  variant — causes overstimulation. Lynch notes lithium orotate and inositol act opposite
+  to each other — if one worsens, the other may help. Use as a MAOA discriminator. Start low.
+notes_for_client: Myo-inositol is a naturally occurring nutrient found in fruits, vegetables,
+  and legumes that helps your thyroid cells respond to TSH signals. It supports hormone regulation
+  more broadly including blood sugar and reproductive hormones. A natural compound that helps
+  regulate serotonin. Some people find it improves mood; others find it overstimulating. Start
+  with a small amount.
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
 - id: vitaone-practice-guide
   location: Seven Clinical Focus Areas > 3. PCOS > Coaching interventions
-  quote: 'Inositol supplementation: Myo-inositol and d-chiro-inositol ratio critical (often 40:1)'
+  quote: 'Inositol supplementation: Myo-inositol and d-chiro-inositol ratio critical (often
+    40:1)'
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Myo-Inositol - Insulin sensitivity, ovarian health - 2–4 g/day - Anytime, best split doses
+  quote: Myo-Inositol - Insulin sensitivity, ovarian health - 2–4 g/day - Anytime, best split
+    doses
 - id: vitaone-sex-hormones-cheatsheet
   location: PCOS Supplement Cheatsheet
-  quote: 'Myo-Inositol: Improves insulin signaling; supports ovarian function; Better ovulation, reduced androgens; 2–4 g/day;
-    combine with D-Chiro for best results.'
+  quote: 'Myo-Inositol: Improves insulin signaling; supports ovarian function; Better ovulation,
+    reduced androgens; 2–4 g/day; combine with D-Chiro for best results.'
 - id: vitaone-adrenal-cheatsheet
   location: Stress & Chronic Diseases Link (p.9)
-  quote: 'PCOD / Infertility... Clinical Actions: Insulin regulation, inositol, adaptogens, mind-body therapy.'
+  quote: 'PCOD / Infertility... Clinical Actions: Insulin regulation, inositol, adaptogens,
+    mind-body therapy.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Insulin Resistance
   quote: Inositol (esp. D-chiro) — Improves glucose uptake & insulin sensitivity.
@@ -69,7 +80,16 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients to Consider in Thyroid Regulation — Myo-Inositol
   quote: Cell signaling and hormone regulation of TSH, FSH and insulin
-version: 8
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall Cheatsheet
+  quote: Inositol, Omega-3, Myo+D-Chiro inositol, Magnesium
+- id: dirty-genes-lynch
+  location: Chapter 15 — Supplements for Your Fast MAOA
+  quote: Inositol. Start with a small dose to regulate serotonin and improve mood, and increase
+    as tolerated.
+version: 9
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-08-09'
 updated_by: shivani
+aliases:
+- inositol

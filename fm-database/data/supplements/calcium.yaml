@@ -5,7 +5,15 @@ forms_available:
 - capsule
 - tablet
 - powder
-typical_dose_range: {}
+typical_dose_range:
+  tablet:
+    min: 500
+    max: 1200
+    unit: mg
+  capsule:
+    min: 500
+    max: 1200
+    unit: mg
 timing_options:
 - with_breakfast
 - with_lunch
@@ -47,12 +55,16 @@ linked_to_topics:
 - premenstrual-syndrome
 - osteoporosis
 - bone-health
+- calcium-deficiency
+- calcium-metabolism
 linked_to_mechanisms:
 - bone-mineral-density
 - calcium-magnesium-balance
 linked_to_claims:
 - murray-calcium-1200mg-pms
 - murray-calcium-alone-insufficient-osteoporosis
+- calcium-supplementation-rarely-needed
+- correct-albumin-before-calcium-supplementation
 notes_for_coach: 'STUB — dose deliberately blank. FM stance is FOOD-FIRST for calcium:
 
   dairy, sardines/small fish with bones, leafy greens (collards, kale),
@@ -74,19 +86,19 @@ notes_for_coach: 'STUB — dose deliberately blank. FM stance is FOOD-FIRST for 
 
   needs vitamin D, K2, magnesium, weight-bearing exercise, protein,
 
-  and gut absorption — not just calcium dosing.
-
-  '
-notes_for_client: 'Most people get enough calcium from food (dairy, ragi, sesame,
-  leafy
+  and gut absorption — not just calcium dosing. Calcium supplementation is rarely the correct
+  first intervention for low serum calcium. Coaches should encourage clients to work with
+  their clinician to rule out albumin deficiency, magnesium deficiency, low vitamin D, and
+  hypochlorhydria before assuming dietary calcium supplementation is needed.'
+notes_for_client: 'Most people get enough calcium from food (dairy, ragi, sesame, leafy
 
   greens, small fish with bones). Bone health depends on vitamin D, K2,
 
   magnesium, protein, and weight-bearing movement together — not calcium
 
-  alone. Talk to your clinician before starting a calcium supplement.
-
-  '
+  alone. Talk to your clinician before starting a calcium supplement. Low calcium on a blood
+  test does not automatically mean you need a calcium supplement. Your doctor should check
+  your protein levels, magnesium, and vitamin D first, as these are often the real cause.'
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md (referenced via magnesium spacing rule)
@@ -98,8 +110,12 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
+- id: coconote-fm-calcium-deficiency
+  location: Causes of Low Serum Calcium
+  quote: If you find out the low calcium in the serum, that doesn't mean that patient is deficient
+    in calcium and they require calcium supplementation.
 evidence_tier: confirm_with_clinician
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-08-09'
 updated_by: shivani

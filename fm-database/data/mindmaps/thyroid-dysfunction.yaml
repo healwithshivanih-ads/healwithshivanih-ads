@@ -397,7 +397,7 @@ tree:
     - label: L-Tyrosine (T3/T4 building block)
       children: []
       linked_kind: supplement
-      linked_slug: tyrosine
+      linked_slug: l-tyrosine
       notes: ''
     linked_kind: null
     linked_slug: null
