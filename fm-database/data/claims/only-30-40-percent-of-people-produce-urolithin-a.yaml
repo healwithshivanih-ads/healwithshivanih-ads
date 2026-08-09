@@ -1,0 +1,31 @@
+slug: only-30-40-percent-of-people-produce-urolithin-a
+statement: Urolithin A is a postbiotic — the gut microbiome converts dietary
+  ellagitannins from pomegranate, berries and nuts into it — but only an estimated
+  30-40% of people produce meaningful amounts, and quantities vary widely among
+  those who do.
+evidence_tier: plausible_emerging
+rationale: Conversion depends on carrying the right gut microbes, so eating the
+  precursor food does not guarantee producing the metabolite. This gap is the entire
+  rationale for supplementing the finished compound rather than the fruit.
+coaching_translation: Pomegranate and walnuts supply the raw material, but only some
+  people carry the gut bacteria that turn it into the active compound.
+linked_to_topics:
+- mitochondrial-health-nutrients
+- gut-microbiome
+linked_to_mechanisms:
+- mitophagy
+linked_to_supplements:
+- urolithin-a
+out_of_scope_notes: There is no routine, affordable way to test a client's producer
+  status in India, so this stays an explanation, not a screening step.
+caveats:
+- Stated by a manufacturer of the supplemental form, for whom a low conversion rate
+  is commercially favourable. The 30-40% figure was not sourced on the slide.
+sources:
+- id: supplement-summit-urolithin-a-scheinman
+  location: Slide — urolithin A, a naturally occurring postbiotic (~7 min)
+  quote: Only 30-40% people produce Urolithin A and at variable quantities.
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

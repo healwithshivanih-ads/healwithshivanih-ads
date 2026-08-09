@@ -1,0 +1,32 @@
+slug: mitophagy
+display_name: Mitophagy
+aliases:
+- mitochondrial autophagy
+- mitochondrial clearance
+- mitochondrial recycling
+category: metabolic
+summary: The selective clearance of damaged mitochondria, so they can be broken down
+  and replaced with new ones. It is the maintenance arm of mitochondrial turnover
+  and declines with age, which lets dysfunctional mitochondria accumulate. Distinct
+  from biogenesis (making new mitochondria) and from supporting the function of
+  mature ones — a cell can be making new mitochondria while still failing to clear
+  the broken ones.
+upstream_drivers: []
+downstream_effects:
+- mitochondrial-dysfunction
+related_mechanisms:
+- mitochondrial-biogenesis
+- mitochondrial-dysfunction
+- sarcopenia
+linked_to_topics:
+- mitochondrial-health-nutrients
+- inflammaging
+evidence_tier: plausible_emerging
+sources:
+- id: supplement-summit-urolithin-a-scheinman
+  location: Slide — how urolithin A differs from other mitochondrial supplements (~6 min)
+  quote: 'Mitophagy: clearance of damaged mitochondria'
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani

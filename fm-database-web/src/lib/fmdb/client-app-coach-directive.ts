@@ -22,6 +22,8 @@
  * not a removal", which the client genuinely needs, to remove five words.
  */
 
+import { mapSentences } from "./sentence-split";
+
 /** Verbs of SAYING aimed at the client — the coach briefing herself. */
 const DIRECTIVE = new RegExp(
   [
@@ -52,33 +54,32 @@ const DIRECTIVE = new RegExp(
  * 2. Any SENTENCE still carrying a directive is dropped whole.
  */
 export function stripCoachDirective(input: string): string {
-  const sentences = (input || "").split(/(?<=[.!?])\s+/);
-  const kept = sentences
-    .map((seg) => {
-      if (!DIRECTIVE.test(seg)) return seg;
-      // Try clause surgery before giving up on the whole sentence: split on
-      // ", and" / ", so" / " — and" / "; " boundaries and drop only the guilty
-      // pieces. Rejoin with the separator each clause arrived with so the
-      // punctuation of the surviving text is unchanged.
-      const parts = seg.split(/(\s*(?:,|;|—|–)\s*(?:and|so|but|then)?\s*)/);
-      // parts alternates [clause, sep, clause, sep, …]
-      const clauses: string[] = [];
-      const seps: string[] = [];
-      parts.forEach((p, i) => (i % 2 === 0 ? clauses.push(p) : seps.push(p)));
-      if (clauses.length < 2) return ""; // nothing to salvage — drop sentence
-      const clean = clauses.map((c) => !DIRECTIVE.test(c));
-      if (!clean.some(Boolean)) return ""; // every clause is a directive
-      let out = "";
-      clauses.forEach((c, i) => {
-        if (!clean[i]) return;
-        out += out ? (seps[i - 1] ?? " ") + c : c;
-      });
-      out = out.trim();
-      if (!out) return "";
-      // A salvaged clause can end mid-sentence ("…not a removal") — restore
-      // terminal punctuation so the card doesn't read as truncated.
-      return /[.!?]$/.test(out) ? out : out + ".";
-    })
-    .filter((seg) => seg.trim().length > 0);
-  return kept.join(" ").replace(/\s{2,}/g, " ").trim();
+  return mapSentences(input, scrubSentence);
+}
+
+/** One sentence: clause surgery first, whole drop only if nothing survives. */
+function scrubSentence(seg: string): string {
+  if (!DIRECTIVE.test(seg)) return seg;
+  // Try clause surgery before giving up on the whole sentence: split on
+  // ", and" / ", so" / " — and" / "; " boundaries and drop only the guilty
+  // pieces. Rejoin with the separator each clause arrived with so the
+  // punctuation of the surviving text is unchanged.
+  const parts = seg.split(/(\s*(?:,|;|—|–)\s*(?:and|so|but|then)?\s*)/);
+  // parts alternates [clause, sep, clause, sep, …]
+  const clauses: string[] = [];
+  const seps: string[] = [];
+  parts.forEach((p, i) => (i % 2 === 0 ? clauses.push(p) : seps.push(p)));
+  if (clauses.length < 2) return ""; // nothing to salvage — drop sentence
+  const clean = clauses.map((c) => !DIRECTIVE.test(c));
+  if (!clean.some(Boolean)) return ""; // every clause is a directive
+  let out = "";
+  clauses.forEach((c, i) => {
+    if (!clean[i]) return;
+    out += out ? (seps[i - 1] ?? " ") + c : c;
+  });
+  out = out.trim();
+  if (!out) return "";
+  // A salvaged clause can end mid-sentence ("…not a removal") — restore
+  // terminal punctuation so the card doesn't read as truncated.
+  return /[.!?]$/.test(out) ? out : out + ".";
 }

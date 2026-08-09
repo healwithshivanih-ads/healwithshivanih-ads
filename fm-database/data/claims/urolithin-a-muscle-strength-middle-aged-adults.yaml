@@ -1,0 +1,37 @@
+slug: urolithin-a-muscle-strength-middle-aged-adults
+statement: In middle-aged adults, 500 mg urolithin A daily for four months improved
+  hamstring isokinetic peak torque against placebo, with no change to diet or
+  exercise.
+evidence_tier: plausible_emerging
+rationale: Randomised placebo-controlled trial with an objective strength endpoint
+  in a cohort resembling ordinary coaching clients — the talk described BMI around
+  29, some on statins and antihypertensives.
+coaching_translation: In one trial, middle-aged adults taking it for four months got
+  measurably stronger in the back of the thigh without changing anything else.
+linked_to_topics:
+- mitochondrial-health-nutrients
+- sarcopenia-skeletal-muscle-loss
+linked_to_mechanisms:
+- mitophagy
+- sarcopenia
+linked_to_supplements:
+- urolithin-a
+out_of_scope_notes: Not a treatment for diagnosed muscle disease. Strength in a
+  trial cohort is not a promise for an individual client.
+caveats:
+- Manufacturer-funded trial of the manufacturer's branded compound, captured from a
+  vendor slide rather than the primary text.
+- The headline +12% is a between-arm gap that depends partly on the placebo group
+  DECLINING ~9.8% over the same period, so it is not a 12% gain from baseline.
+sources:
+- id: singh-2022-urolithin-a-muscle-strength
+  location: Slide citation — isokinetic peak torque, baseline to 4 months
+  quote: both 500mg and 1g UA doses improved hamstring muscle isokinetic strength in
+    a statistically significant manner
+- id: supplement-summit-urolithin-a-scheinman
+  location: Slide — Cell Reports Medicine (~11 min)
+  quote: 500 mg Mitopure can increase muscle strength by upto 12% after 16 weeks
+version: 1
+status: active
+updated_at: '2026-08-09'
+updated_by: shivani
