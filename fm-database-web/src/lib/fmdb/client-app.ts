@@ -2094,7 +2094,7 @@ function tokenDocFrequency<T>(candidates: NamedCandidate<T>[]): Map<string, numb
  * (see the bottom of the scan). It is off for the library, so `_recipes`
  * matching is bit-for-bit what it always was.
  */
-function buildNameResolver<T>(
+export function buildNameResolver<T>(
   candidates: NamedCandidate<T>[],
   contains: (key: string, token: string) => boolean,
   distinctiveOneWordNames = false,
