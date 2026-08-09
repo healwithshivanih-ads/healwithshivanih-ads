@@ -104,6 +104,13 @@ export function clientifyWhy(raw: string): string {
   s = s.replace(/\s*[—–-]\s*despite[^.]*\.?/gi, ".");
   // tidy what the removals left behind
   s = s
+    // Removals leave PUNCTUATION BEHIND: "vitamin D is 22 ng/mL — insufficient"
+    // became "vitamin D is — insufficient", and "(22 ng/mL; deficient)" became
+    // "(deficient; )". Four live clients were reading these (audit 2026-08-09).
+    .replace(/\(\s*[;,]?\s*\)/g, "")            // ( ) / ( ; )
+    .replace(/\(\s*([^()]*?)[\s;,]+\)/g, "($1)") // (deficient; ) → (deficient)
+    .replace(/\s+(is|are|was|were)\s*[—–-]\s*/gi, " $1 ") // "is — insufficient"
+    .replace(/\s+\./g, ".")
     .replace(/\s*,\s*([,.])/g, "$1")
     .replace(/,\s*\./g, ".")
     .replace(/:\s*\./g, ".")
@@ -124,6 +131,11 @@ export function clientifyWhy(raw: string): string {
       String.raw`\breference range\b`,
       String.raw`\bFM[- ]?optimal\b`,
       String.raw`\b(?:elevated|low|high|normal|deficient|insufficient|sub-?optimal)\s+(?:serum\s+)?(?:homocysteine|folate|ferritin|cortisol|tsh|ft[34]|b12|albumin|vitamin\s*d|hs-?crp)\b`,
+      // …and the SAME judgement written the other way round. The rule above
+      // only caught "low ferritin"; a coach writes "ferritin is low" just as
+      // often, and once the number is scrubbed that is all that remains —
+      // "B12 is functionally deficient", "25-OH vitamin D is insufficient".
+      String.raw`\b(?:homocysteine|folate|ferritin|cortisol|tsh|ft[34]|b12|albumin|vitamin\s*d|25-?OH|hs-?crp|hba1c)\b[^.]{0,40}?\b(?:deficient|insufficient|elevated|sub-?optimal)\b`,
       String.raw`\b(?:homocysteine|ferritin|tsh|ft[34]|hs-?crp|hba1c|albumin|cortisol)\b[^.]*\d`,
       String.raw`=\s*(?:insufficient|deficient|elevated|sub-?optimal|low|high)\b`,
       String.raw`\b(?:anti-?TPO|TPO antibod|antibod(?:y|ies)|deiodinase|Lp\(a\))\b`,
@@ -133,5 +145,19 @@ export function clientifyWhy(raw: string): string {
     "i",
   );
   if (CLINICAL_LEAK.test(s)) return "";
+  // STUB GUARD. The removals above are surgical, so a rationale built entirely
+  // AROUND a lab readout collapses to a fragment rather than to nothing:
+  // "Her ferritin is 12 ng/mL, far below FM-optimal of 70-150." loses the
+  // value, the comparison and the range and renders as "Your ferritin is" —
+  // which still names the client's marker and says nothing at all. Found
+  // 2026-08-09 by the first end-to-end test of the loader; the unit test above
+  // had accepted it because no UNITS survived.
+  //
+  // Detect the shape, not the vocabulary: a dangling function word at the end,
+  // or too little left to be a sentence. Banning marker words outright would
+  // take "supports your vitamin D" with it, which is copy the coach wants.
+  if (/\b(?:is|are|was|were|of|at|to|and|the|a|an|in|for|with)\s*[.,;:]?$/i.test(s.trim()))
+    return "";
+  if (s.replace(/[^a-z]/gi, "").length < 12) return "";
   return recapitalise(s);
 }
