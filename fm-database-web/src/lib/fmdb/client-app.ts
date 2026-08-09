@@ -505,7 +505,10 @@ export interface AppCyclePhase {
   dayInCycle: number;
   cycleLength: number;
   note: string;           // one warm line of what serves her today
-  estimate: boolean;      // true when confidence is low (soften the copy)
+  /** Always false today — the card only renders on a high-confidence phase
+   *  (see computeCyclePhaseCard). Kept on the type so a future "show it, but
+   *  soften it" decision does not need an app-payload migration. */
+  estimate: boolean;
 }
 
 /** A guided EFT (tapping) session — a fixed point sequence with per-point
@@ -2957,7 +2960,21 @@ export function computePeriodCare(
  *  5-phase model the plan generator / checker act on) so the app can never
  *  tell the client a different phase than the plan was built for. Null when
  *  no phase applies (male / postmenopausal / pregnant / lactating / no LMP)
- *  — the card simply doesn't render. */
+ *  — the card simply doesn't render.
+ *
+ *  HIGH CONFIDENCE ONLY, and this is the whole point of the function. The
+ *  cycle day is a modulo of days-since-LMP, so a months-old date still
+ *  yields a perfectly plausible "day 3 of 23" — on the coach's chip that is
+ *  useful (she can see it is an estimate and go refresh the date), but
+ *  telling a CLIENT she is on day 3 of her period when the app is
+ *  extrapolating from a 25-day-old date on an irregular cycle is worse than
+ *  telling her nothing. Every other phase-keyed surface (recipe scorer,
+ *  exercise gate, suggester) already gates on confidence === "high"; this
+ *  one was the outlier, and it was the only one a client could see.
+ *
+ *  Low confidence therefore renders nothing here. Her seed-cycling section
+ *  already carries the "tell me when your period started" prompt, so the
+ *  ask is made once, in the place built for it, rather than twice. */
 export function computeCyclePhaseCard(
   client: Dict,
   todayUTC: Date,
@@ -2965,13 +2982,14 @@ export function computeCyclePhaseCard(
   const ctx = cyclePhaseForDisplay(client, todayUTC);
   if (!ctx || !ctx.phase || ctx.phase === "postmenopausal") return null;
   if (ctx.cycleDay == null) return null;
+  if (ctx.confidence !== "high") return null;
   return {
     phase: ctx.phase,
     label: PHASE_LABELS[ctx.phase],
     dayInCycle: ctx.cycleDay,
     cycleLength: ctx.cycleLength,
     note: PHASE_NOTES[ctx.phase],
-    estimate: ctx.confidence === "low",
+    estimate: false,
   };
 }
 

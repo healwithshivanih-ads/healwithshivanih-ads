@@ -625,7 +625,6 @@ export function TodayScreen({
             <span className="seed-phase">
               {data.cyclePhase.label} — day {data.cyclePhase.dayInCycle} of{" "}
               {data.cyclePhase.cycleLength}
-              {data.cyclePhase.estimate ? " (approximate)" : ""}
             </span>
             <p className="seed-note" style={{ color: "var(--ink)", marginTop: 11 }}>
               {data.cyclePhase.note}
