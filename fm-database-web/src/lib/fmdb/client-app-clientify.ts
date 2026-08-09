@@ -164,6 +164,12 @@ export function clientifyWhy(raw: string): string {
       // iron-deficient erythropoiesis" lost its ferritin value and still
       // carried the saturation onto cl-007's card.
       String.raw`\d+(?:\.\d+)?\s*%`,
+      // GENERIC readout rule, and the reason the marker denylist above should
+      // stop growing. "ApoB 109.8, non-HDL … and AIP 0.224" reached a live
+      // card because neither ApoB nor AIP was on the list — and there is
+      // always another marker. A DECIMAL number that is not a dose is a lab
+      // value essentially every time; doses read "500 mg", "1.5 g", "2000 IU".
+      String.raw`\d+\.\d+(?!\s*(?:mg|mcg|µg|g\b|kg|ml|l\b|iu\b|billion|cfu|%))`,
       String.raw`\b(?:transferrin|erythropoies\w*|saturation)\b`,
       // A RAW FIELD NAME is coach-tooling vocabulary, never client copy — and
       // the sentence carrying it named ANOTHER CLIENT: "Mushroom is explicitly

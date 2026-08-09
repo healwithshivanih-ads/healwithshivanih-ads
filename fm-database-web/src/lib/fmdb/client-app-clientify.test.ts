@@ -182,3 +182,23 @@ describe("clientFacingWhy — walk to the first sentence that says something", (
     expect(clientFacingWhy(undefined as unknown as string)).toBe("");
   });
 });
+
+describe("clientifyWhy — the generic readout rule", () => {
+  it("drops a marker the denylist has never heard of", () => {
+    // "ApoB 109.8, non-HDL … and AIP 0.224" reached a live card because
+    // neither ApoB nor AIP was on the marker list — and there is always
+    // another marker. A decimal that is not a dose is the general shape.
+    expect(clientifyWhy("ApoB 109.8 and AIP 0.224 with a family history.")).toBe("");
+    expect(clientifyWhy("Your Lp-PLA2 is 212.4, which we want lower.")).toBe("");
+  });
+
+  it("does NOT mistake a decimal DOSE for a lab value", () => {
+    for (const s of [
+      "Take 1.5 g twice daily with food.",
+      "Start at 2.5 ml in warm water.",
+      "One capsule gives 2000 IU.",
+    ]) {
+      expect(clientifyWhy(s), s).toBe(s);
+    }
+  });
+});
