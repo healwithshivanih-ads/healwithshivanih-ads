@@ -435,6 +435,71 @@ def _render_md(plan_slug: str, recipes: list[dict[str, Any]]) -> str:
     return "\n".join(out) + "\n"
 
 
+def _parse_existing_md(path: Path) -> list[dict[str, Any]]:
+    """Read a previously written pack back into recipe dicts.
+
+    The pack is CUMULATIVE: it is the client's whole recipe library, built up
+    week after week, and the app renders it as one list. But this script only
+    ever sees the dishes on the CURRENT weeks, so writing its output straight
+    over the file silently deletes every recipe from a week that has since
+    rolled off the menu — cl-022 went 55 recipes -> 18 on 2026-08-09 that way,
+    and the client noticed before we did. So we seed from what is already on
+    disk and only ever add.
+
+    Parses exactly what _render_md writes; anything it can't recognise is kept
+    out rather than guessed at, and an unreadable file degrades to "no prior
+    recipes" (we still write the new ones) rather than aborting the run.
+    """
+    try:
+        text = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return []
+    except OSError as e:  # noqa: BLE001
+        print(f"[recipes] could not read existing pack ({e}) — starting empty", file=sys.stderr)
+        return []
+
+    recipes: list[dict[str, Any]] = []
+    cur: dict[str, Any] | None = None
+    section: str | None = None
+    for raw in text.splitlines():
+        line = raw.strip()
+        if line.startswith("### "):
+            if cur:
+                recipes.append(cur)
+            cur = {"title": line[4:].lstrip("✦ ").strip(), "ingredients": [], "method": []}
+            section = None
+            continue
+        if cur is None:
+            continue
+        if line.startswith("**Serves:**"):
+            # "**Serves:** 2 | **Time:** 20 min"
+            body = line.replace("**Serves:**", "").strip()
+            serves, _, time = body.partition("|")
+            cur["serves"] = serves.strip()
+            cur["time"] = time.replace("**Time:**", "").strip().lstrip("—").strip()
+            continue
+        if line.startswith("**Ingredients:**"):
+            section = "ingredients"
+            continue
+        if line.startswith("**Method:**"):
+            section = "method"
+            continue
+        if line.startswith("**Tip:**"):
+            cur["tip"] = line.replace("**Tip:**", "").strip()
+            section = None
+            continue
+        if not line:
+            continue
+        if section == "ingredients" and line.startswith("- "):
+            cur["ingredients"].append(line[2:].strip())
+        elif section == "method":
+            step = line.split(". ", 1)[-1] if line[:1].isdigit() else line
+            cur["method"].append(step.strip())
+    if cur:
+        recipes.append(cur)
+    return [r for r in recipes if (r.get("title") or "").strip()]
+
+
 def _recipes_for(client, payload, dishes, system=SYSTEM, build_user=_build_user):
     """Return (recipes, last_usage, truncated) for one batch of dishes.
 
@@ -548,8 +613,21 @@ def main() -> None:
             f"[recipes] {_skipped}/{_before} dishes already in the catalogue — not generating those",
             file=sys.stderr,
         )
-    all_recipes: list[dict[str, Any]] = []
-    seen: set[str] = set()
+    # Seed from the pack already on disk — this file accumulates across weeks
+    # and must never shrink (see _parse_existing_md). Dishes it already covers
+    # are dropped from the ask too, so carrying history forward costs nothing.
+    all_recipes: list[dict[str, Any]] = _parse_existing_md(out_path)
+    seen: set[str] = {(r.get("title") or "").strip().lower() for r in all_recipes}
+    if all_recipes:
+        print(f"[recipes] carrying {len(all_recipes)} existing recipes forward", file=sys.stderr)
+        _have = len(dishes)
+        _titles = [(r.get("title") or "").strip() for r in all_recipes if (r.get("title") or "").strip()]
+        dishes = [d for d in dishes if not _dish_has_recipe(d, _titles)]
+        if _have != len(dishes):
+            print(
+                f"[recipes] {_have - len(dishes)}/{_have} dishes already in the pack — not regenerating those",
+                file=sys.stderr,
+            )
     usage_entry = None
 
     def _log(usage):
