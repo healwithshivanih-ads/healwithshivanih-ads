@@ -1,0 +1,40 @@
+slug: eyelid-crusting
+display_name: Eyelid Crusting / Lash Debris
+aliases:
+- crusting-on-the-lashes
+- lash-crusting
+- eyelid-debris
+- sticky-eyelids
+- eyes-stuck-shut-in-morning
+- collarettes
+category: skin
+severity: common
+description: Flakes, scales or crusts along the lash line and lid margin, classically
+  worst on waking, sometimes gluing the lashes together overnight. A cardinal sign of
+  blepharitis. Cylindrical collars around the lash base specifically suggest Demodex
+  involvement, which is treated differently from ordinary lid-margin inflammation.
+when_to_refer: Crusting with lash loss, an asymmetric or firm lid nodule, or ulceration
+  of the lid margin; any associated vision change or pain; failure to improve after
+  several weeks of consistent lid hygiene.
+linked_to_topics:
+- blepharitis-and-meibomian-gland-dysfunction
+- stye
+- rosacea
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_symptoms:
+- eyelid-margin-redness
+notes_for_coach: This is the symptom that makes lid hygiene click for a client — she
+  can see it. Point out that the crusting is the visible half of an inflammation
+  affecting the oil glands she cannot see, which is why the eye also feels gritty. Wipe
+  the lash line straight after the warm compress, while the oils are soft; doing it
+  cold achieves much less.
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — eyelid concretions / lid-margin disease enquiry, Aug 2026
+  quote: Lid-margin signs had no symptom slugs, so blepharitis presentations had
+    nowhere to attach.
+version: 1
+status: active
+updated_at: '2026-08-11'
+updated_by: Shivani

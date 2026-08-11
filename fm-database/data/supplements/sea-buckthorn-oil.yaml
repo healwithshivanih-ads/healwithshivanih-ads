@@ -1,0 +1,129 @@
+slug: sea-buckthorn-oil
+display_name: Sea Buckthorn Oil (Hippophae rhamnoides)
+aliases:
+- sea-buckthorn
+- seabuckthorn
+- seabuckthorn-oil
+- hippophae-rhamnoides
+- hippophae
+- leh-berry
+- leh-berry-oil
+- sea-buckthorn-fruit-oil
+- sea-buckthorn-pulp-oil
+- omega-7
+- omega-7-oil
+- sallow-thorn
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 2
+    max: 3
+    unit: g
+  liquid:
+    min: 2
+    max: 3
+    unit: g
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+contraindications:
+  conditions:
+  - 'NOT for instillation into the eye. Supplement- and food-grade sea buckthorn oil
+    is not a sterile ophthalmic preparation — no controlled sterility, pH or osmolality.
+    Dripping it onto an eye whose surface is already broken (corneal abrasion, protruding
+    conjunctival concretion, active blepharitis) is a route to microbial keratitis,
+    which is sight-threatening. Oral route only.'
+  - Planned surgery within 2 weeks — stop beforehand and clear the restart with the
+    surgeon, on the same antiplatelet reasoning as the medication caution.
+  medications:
+  - Anticoagulants and antiplatelets (warfarin, clopidogrel, DOACs, chronic aspirin)
+    — sea buckthorn has been reported to affect platelet aggregation. Not an absolute
+    bar, but the client's prescriber should sign it off before she starts.
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+pregnancy_safety: unknown
+lactation_safety: unknown
+pregnancy_safety_note: Not adequately studied at supplemental doses. Culinary amounts
+  of the berry are a different matter from 2-3 g/day of the concentrated oil — default
+  to caution and defer to the client's obstetric clinician.
+rasa: []
+virya: null
+vipaka: null
+prabhava: ''
+balances_dosha: []
+aggravates_dosha: []
+ayurvedic_actions: []
+cycle_phases: []
+linked_to_topics:
+- dry-eye-syndrome
+- blepharitis-and-meibomian-gland-dysfunction
+- genitourinary-syndrome-menopause
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- chronic-inflammation
+- oxidative-stress
+linked_to_symptoms:
+- dry-eyes
+linked_to_claims:
+- sea-buckthorn-oral-attenuates-tear-film-osmolarity
+notes_for_coach: 'THE MUCOSAL-DRYNESS OIL. Its differentiator from fish oil is omega-7
+  (palmitoleic acid), which tracks to mucous membranes — eyes, mouth, vagina. This
+  is why it already appears in the genitourinary-syndrome-menopause protocol at 3 g/day
+  for vaginal dryness: same oil, same mechanism, different mucosa. If a client presents
+  with dry eyes, ASK whether she is dry anywhere else — one intervention may cover
+  several complaints, and it makes the conversation much easier.
+
+
+  BUY THE FRUIT/PULP OIL, NOT THE SEED OIL. This is the detail that decides whether
+  it works at all. Omega-7 is concentrated in the fruit pulp; the seed oil is mostly
+  omega-3/6 and low in omega-7. A large share of products on the shelf are seed oil,
+  or do not say which. The wrong bottle does not deliver the thing the trial tested.
+  Availability in India is fine — it grows in Ladakh and Himachal and is sold as leh
+  berry, with domestic brands available.
+
+
+  ORAL ONLY — see contraindications. Clients reason by analogy from castor oil, which
+  does have a genuine preservative-free ophthalmic-grade product category (it even
+  appears in some commercial lipid-based artificial tears). Sea buckthorn essentially
+  does not. Do not let a client decant a supplement capsule into her eye.
+
+
+  SET THE TIMELINE OR SHE WILL QUIT. The trial ran three months. Say so up front, or
+  she stops at week three and concludes it does not work.
+
+
+  WHAT IT DOES NOT DO: it changes tear quality. It does not dissolve or remove a
+  conjunctival concretion, and it does not unblock a meibomian gland. If a hard deposit
+  is abrading the cornea on every blink, better tears make the abrasion more
+  comfortable — they do not stop it. Sequence the ophthalmology referral first.
+
+
+  Dosing is education, not prescription: the eye trial used 2 g/day, the GSM protocol
+  carries 3 g/day. Name the range, let her clinician confirm it — especially given the
+  antiplatelet caution.'
+notes_for_client: A berry oil that helps your body keep its delicate surfaces — eyes,
+  mouth and intimate tissues — better lubricated from the inside. Look for one made
+  from the fruit or pulp rather than the seed, take it with a meal, and give it a
+  full three months before deciding whether it is helping. It is something you swallow
+  — never put it in your eyes.
+evidence_tier: plausible_emerging
+sources:
+- id: larmo-sea-buckthorn-dry-eye-2010
+  location: Abstract — Objective and Results
+  quote: 20- to 75-year-old women and men experiencing dry eye symptoms consumed 2
+    g of sea buckthorn or placebo oil daily for 3 months from fall to winter.
+- id: briden-hormone-repair-manual-2021
+  location: 'Chapter 10 — What comes after: Genitourinary syndrome of menopause, pg
+    255-263'
+  quote: sea buckthorn oil 3 g/day
+version: 1
+status: active
+updated_at: '2026-08-11'
+updated_by: Shivani
