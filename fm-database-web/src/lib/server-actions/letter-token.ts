@@ -285,6 +285,14 @@ export async function ensureLetterToken(
   const hasToken = typeof data.letter_token === "string" && data.letter_token.length >= 16;
   const hasCode = typeof data.letter_short_code === "string" && data.letter_short_code.length > 0;
   if (hasToken && hasCode) {
+    // STAGE ANYWAY. This early return used to skip staging entirely, which is
+    // the second half of how cl-006's link died: a renewal that INHERITS its
+    // token takes this branch, so the publish that superseded the previous
+    // phase purged the client from the Fly projection and nothing ever put the
+    // successor back. The token was right and the plan was simply absent.
+    // Staging is idempotent and a no-op without FMDB_STAGING_DIR, so the safe
+    // thing is to always re-assert it rather than tie it to a token write.
+    await stageClientAppArtifacts(data.client_id as string, planSlug);
     return { ok: true, token: data.letter_token as string, short_code: data.letter_short_code as string };
   }
   // A renewal keeps the link the client already has; only a client's first

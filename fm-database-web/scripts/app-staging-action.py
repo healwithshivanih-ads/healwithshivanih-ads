@@ -175,12 +175,94 @@ _APP_CLIENT_KEYS = (
 # never client-facing, and would otherwise serialise into the app's RSC payload.
 _PLAN_PRIVATE_KEYS = ("notes_for_coach", "ai_sanity_check", "status_history", "catalogue_snapshot")
 
+#: The ONLY keys projected for an ancestor (superseded / revoked) plan.
+#
+# Why ancestors need to exist here at all: programme-tenure.ts sums
+# `weeksWithCoach` across the whole supersede chain, and client-app.ts finds that
+# chain with `priorPlansForClient()`, which reads `superseded/` and `revoked/`.
+# Those buckets were never projected, so on Fly the chain was always length 1 and
+# tenure collapsed to the current phase — which handed Nidhi Jain a week-1 sapling
+# in place of the fruiting tree she had grown over twelve weeks (2026-08-02). The
+# tenure fix itself was correct; it was starved of its input on the public host.
+#
+# Why a STUB and not the plan: tenure reads dates and pointers only. None of the
+# clinical payload — nutrition, supplement_protocol, hypothesized_drivers,
+# lab_orders, referrals, baseline_snapshot — is ever consulted, so none of it is
+# projected. An ancestor stub therefore adds NO new clinical PHI to the public
+# box: the slug and the supersede pointer are already implied by the published
+# plan's own `supersedes` field, and the rest is period metadata.
+#
+# Keep this list minimal. If a future consumer needs another ancestor field, add
+# that one field — do not switch to projecting whole ancestor plans.
+_TENURE_STUB_KEYS = (
+    "slug",
+    "client_id",
+    "supersedes",
+    "version",
+    "status",
+    "plan_period_start",
+    "plan_period_weeks",
+    "plan_period_recheck_date",
+    "meal_plan_started_on",
+    "supplements_started_on",
+)
+
+#: Buckets holding a client's earlier phases, mirroring priorPlansForClient().
+_ANCESTOR_BUCKETS = ("superseded", "revoked")
+
 
 def _published_files(root: Path, plan_slug: str) -> list[Path]:
     d = root / "published"
     if not d.exists():
         return []
     return sorted(d.glob(f"{plan_slug}-v*.yaml"))
+
+
+def _stage_ancestor_stubs(yaml, auth: Path, stag: Path, client_id: str) -> int:
+    """Project metadata-only stubs for this client's earlier phases.
+
+    Returns the number of stubs written. Idempotent: rewrites each stub every
+    call and deletes stubs for ancestors that no longer exist authoritatively
+    (a phase un-superseded, or the client's history pruned).
+
+    Best-effort by design — the caller must not fail a stage because an ancestor
+    was unreadable. Without stubs tenure degrades to "this plan only", which is
+    exactly the pre-2026-08-13 behaviour, not a crash.
+    """
+    written = 0
+    for bucket in _ANCESTOR_BUCKETS:
+        auth_dir, stag_dir = auth / bucket, stag / bucket
+        keep: set[str] = set()
+        if auth_dir.is_dir():
+            for p in sorted(auth_dir.glob("*.y*ml")):
+                try:
+                    d = yaml.safe_load(p.read_text()) or {}
+                except Exception:
+                    continue
+                if d.get("client_id") != client_id:
+                    continue
+                stub = {k: d[k] for k in _TENURE_STUB_KEYS if k in d}
+                if not stub.get("slug"):
+                    continue  # unusable for chain building
+                stub["_projection"] = "tenure-stub"  # so nothing mistakes it for a full plan
+                stag_dir.mkdir(parents=True, exist_ok=True)
+                (stag_dir / p.name).write_text(
+                    yaml.safe_dump(stub, sort_keys=False, allow_unicode=True)
+                )
+                keep.add(p.name)
+                written += 1
+        # Drop stale stubs for THIS client only — never touch another client's files.
+        if stag_dir.is_dir():
+            for p in sorted(stag_dir.glob("*.y*ml")):
+                if p.name in keep:
+                    continue
+                try:
+                    old = yaml.safe_load(p.read_text()) or {}
+                except Exception:
+                    continue
+                if old.get("client_id") == client_id:
+                    p.unlink(missing_ok=True)
+    return written
 
 
 def _latest_published_slug_for(yaml, root: Path, client_id: str) -> str:
@@ -228,7 +310,7 @@ def _intake_active(d: dict) -> bool:
 
 
 def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> dict:
-    counts = {"plan_files": 0, "letters": 0, "sessions_staged": 0}
+    counts = {"plan_files": 0, "letters": 0, "sessions_staged": 0, "tenure_stubs": 0}
 
     # plan-less "discovery" (consult-tier) client: an app_token but no published
     # plan. Stage ONLY the trimmed client.yaml (app_token + discovery fields +
@@ -267,6 +349,14 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
                 continue
             if sib.get("client_id") == client_id:
                 p.unlink(missing_ok=True)
+
+        # 1b. ancestor tenure stubs — metadata only, so the growing tree and
+        # every other accrued-progress surface can see the whole chain. See
+        # _TENURE_STUB_KEYS for why this is a stub and not the plan.
+        try:
+            counts["tenure_stubs"] = _stage_ancestor_stubs(yaml, auth, stag, client_id)
+        except Exception as e:  # pragma: no cover - never fail a stage on this
+            print(f"WARN: ancestor stub projection failed for {client_id}: {e}", file=sys.stderr)
 
     # 2. client.yaml — app keys merged over any existing staging stub
     auth_client = _auth_person(auth, client_id) / "client.yaml"

@@ -160,6 +160,37 @@ describe("ensureLetterToken — renewal link continuity", () => {
     expect(res.short_code).not.toBe(OLD_CODE);
   });
 
+  it("RE-STAGES even when the token already exists (the early-return branch)", async () => {
+    // The other half of how cl-006's link died: a renewal that inherits its
+    // token hits the `hasToken && hasCode` early return. That used to skip
+    // staging, so the publish which superseded the prior phase purged the
+    // client from the Fly projection and nothing put the successor back.
+    const runShim = vi.fn().mockResolvedValue({ ok: true });
+    vi.doMock("@/lib/fmdb/shim", () => ({ runShim }));
+
+    writePlan(
+      "published",
+      "geetika-plan-3-2026-08-14-cl-006-v1.yaml",
+      `slug: geetika-plan-3-2026-08-14-cl-006\nclient_id: cl-006\n` +
+        `letter_token: ${OLD_TOKEN}\nletter_short_code: ${OLD_CODE}\nstatus: published\n`,
+    );
+
+    vi.resetModules();
+    process.env.FMDB_PLANS_DIR = root;
+    process.env.FMDB_STAGING_DIR = path.join(root, "staging");
+    const m = await import("../letter-token");
+    const res = await m.ensureLetterToken("geetika-plan-3-2026-08-14-cl-006");
+    delete process.env.FMDB_STAGING_DIR;
+    vi.doUnmock("@/lib/fmdb/shim");
+
+    expect(res.ok).toBe(true);
+    expect(runShim).toHaveBeenCalledWith("app-staging-action.py", {
+      action: "stage",
+      client_id: "cl-006",
+      plan_slug: "geetika-plan-3-2026-08-14-cl-006",
+    });
+  });
+
   it("is idempotent — a plan that already has both is untouched", async () => {
     writePlan(
       "published",
