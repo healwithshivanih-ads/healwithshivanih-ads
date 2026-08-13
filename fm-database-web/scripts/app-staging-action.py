@@ -103,6 +103,14 @@ _APP_CLIENT_KEYS = (
     # the reads — the exact allowlist trap intake fields fall into.
     "mind_body_depth",
     "mind_body_shared",
+    # The coach's chosen EFT scripts. Same trap, found 2026-08-13: the drip
+    # override `mindbody_eft` was already projected (below) but `eft_themes`
+    # never was, so a coach-set theme list stayed on the Mac and the app fell
+    # back to autoDetectEftThemes. That auto-detect keys "cravings" off /sugar/,
+    # which matched Kamla's PREDIABETES condition text and handed a
+    # health-anxiety client a cravings script. cl-005's themes had never applied
+    # either. Unlocking EFT without projecting the themes is half a decision.
+    "eft_themes",
     "goals",
     "dietary_preference",
     "foods_to_avoid",
