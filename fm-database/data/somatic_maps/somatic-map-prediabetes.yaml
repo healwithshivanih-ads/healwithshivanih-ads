@@ -1,0 +1,61 @@
+slug: somatic-map-prediabetes
+display_name: Prediabetes — Sweetness Running Low, Not Yet Gone
+target_kind: topic
+target_slug: prediabetes
+sensitivity: sensitive
+emotional_roots:
+- pattern: Sweetness borrowed, not received
+  note: Quick sweetness spent to get through the afternoon, the week, the year — while
+    the slower kind that actually feeds a person stays just out of reach. The body
+    is not failing to regulate so much as being asked to run on credit.
+- pattern: Holding it all together alone
+  note: Steadiness carried by will rather than by support. Where there is nobody to
+    hand things to, the body takes up the slack — and blood sugar is one of the first
+    places that shows.
+- pattern: A warning that is easy to defer
+  note: Nothing hurts yet, so it waits. Bodies usually ask quietly for a long time
+    before they insist, and the asking is easy to read as nothing.
+reframe: This is the stage where the body is asking rather than insisting. Nothing
+  here is settled — the same regulation that has started to drift is the regulation
+  that answers most readily when it is supported. The useful question is not what
+  has gone wrong, but what has been running on borrowed sweetness.
+inquiry_question: What in your life has been getting by on quick sweetness — and what
+  would it take to be properly fed instead?
+somatic_practice: felt-sense-checkin
+also_consider:
+  supplements:
+  - chromium
+  - cinnamon
+  home_remedies: []
+  cooking_adjustments: []
+  practical:
+  - A lower-glycaemic pattern steadies the swings before they set
+  - Movement after meals works on insulin sensitivity directly, and needs no willpower
+    to speak of
+pattern_signals: []
+differential_note: Prediabetes is a laboratory diagnosis (fasting glucose 100-125 mg/dL,
+  HbA1c 5.7-6.4%) and needs monitoring, not reassurance — roughly a quarter progress
+  to overt T2DM within a few years untreated. Recheck HbA1c and fasting insulin on
+  schedule and escalate if they climb. Reversibility at this stage is real but it is
+  not guaranteed, so do not promise it. Never frame glycaemic control as an emotional
+  matter with anyone already on metformin or other glucose-lowering medication.
+coach_only_note: ''
+notes_for_coach: 'Drafted 2026-08-13 by Claude on Shivani''s instruction, adapted from
+  somatic-map-diabetes for the PRE-diagnosis stage — wording is hers to change. Authored
+  for Geetika (cl-006), whose condition reads "Prediabetes (HbA1c 6.20%)": that string
+  resolved to nothing before this map existed, because the `prediabetes` topic owns
+  its own canonical slug and cannot be aliased into type-2-diabetes, so the diabetes
+  map never reached the very clients whose blood sugar is still most reversible. The
+  difference in register from somatic-map-diabetes is deliberate: agency is still
+  clearly present here, so the map asks rather than consoles. Lead with the metabolic
+  work — the sweetness framing is a session conversation, not a plan line. The source
+  location below is inherited from somatic-map-diabetes (same blood-sugar territory);
+  it was not independently derived, and no quote is claimed.'
+sources:
+- id: klein-body-remembers
+  location: System 11 — Immune, Sleep & Energy, entries 110-123
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-08-13'
+updated_by: Shivani
