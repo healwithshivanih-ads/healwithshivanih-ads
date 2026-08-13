@@ -178,9 +178,87 @@ async function allLetterShortCodes(): Promise<Set<string>> {
 }
 
 /**
+ * The letter credentials this client has ALREADY been given, if any.
+ *
+ * Why renewals must inherit rather than mint: a renewal publishes a NEW plan
+ * for an existing client, and `_auto_supersede_siblings` moves the previous
+ * term out of `published/`. Every resolver — findPlanByLetterToken,
+ * lookupLetterShortCode, and the app's loadPublishedPlan — scans `published/`
+ * ONLY. So the moment the old plan is superseded, the link the client is
+ * actually holding (in their WhatsApp history, bookmarked, on their phone home
+ * screen) resolves to nothing and the app shows "this link isn't active any
+ * more" — while a freshly minted token sits on the new plan that nobody has
+ * been given. That is exactly what happened to cl-006 on 2026-08-12.
+ *
+ * So: reuse the client's most recently issued token+code. Searches
+ * `superseded/` first (where the previous term lands) then `published/`,
+ * newest issue date first. A client's FIRST plan finds nothing here and mints
+ * fresh, as before.
+ *
+ * Refuses to inherit anything a DIFFERENT published plan still holds — two
+ * published plans sharing a token would make resolution depend on readdir
+ * order.
+ */
+async function inheritedLetterCredentials(
+  clientId: string,
+  selfSlug: string,
+): Promise<{ token: string; short_code: string; created_at?: string } | null> {
+  if (!clientId) return null;
+  const root = getPlansRoot();
+
+  type Cand = { token: string; short_code: string; created_at?: string; sortKey: string };
+  const cands: Cand[] = [];
+  const publishedTokens = new Set<string>();
+  const publishedCodes = new Set<string>();
+
+  for (const bucket of ["superseded", "published"] as const) {
+    const dir = path.join(root, bucket);
+    let names: string[];
+    try {
+      names = await fs.readdir(dir);
+    } catch {
+      continue;
+    }
+    for (const name of names) {
+      if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+      const d = (await readPlanYaml(path.join(dir, name))) as Record<string, unknown> | null;
+      if (!d) continue;
+      const tok = typeof d.letter_token === "string" ? d.letter_token : "";
+      const code = typeof d.letter_short_code === "string" ? d.letter_short_code : "";
+      const slug = typeof d.slug === "string" ? d.slug : "";
+
+      // Track what live published plans (other than us) already own.
+      if (bucket === "published" && slug !== selfSlug) {
+        if (tok) publishedTokens.add(tok);
+        if (code) publishedCodes.add(code);
+      }
+
+      if (d.client_id !== clientId) continue;
+      if (slug === selfSlug) continue;
+      if (!tok || tok.length < 16 || !code) continue;
+      const created =
+        typeof d.letter_token_created_at === "string" ? d.letter_token_created_at : undefined;
+      const start = typeof d.plan_period_start === "string" ? d.plan_period_start : "";
+      cands.push({ token: tok, short_code: code, created_at: created, sortKey: created ?? start });
+    }
+  }
+  if (cands.length === 0) return null;
+
+  // Newest issued first — that is the link the client most recently received.
+  cands.sort((a, b) => (a.sortKey < b.sortKey ? 1 : a.sortKey > b.sortKey ? -1 : 0));
+  for (const c of cands) {
+    if (publishedTokens.has(c.token) || publishedCodes.has(c.short_code)) continue;
+    return { token: c.token, short_code: c.short_code, created_at: c.created_at };
+  }
+  return null;
+}
+
+/**
  * Lazily ensure a published plan has a letter_token (and letter_short_code).
  * Reads the published plan YAML, returns existing token if present, otherwise
- * generates, writes back, and returns the new token. Idempotent.
+ * INHERITS the client's existing letter credentials (so a renewal keeps the
+ * link they already have — see inheritedLetterCredentials), and only mints a
+ * fresh token when the client has never had one. Idempotent.
  *
  * Returns null if the plan isn't published (no token issued for drafts).
  */
@@ -209,8 +287,19 @@ export async function ensureLetterToken(
   if (hasToken && hasCode) {
     return { ok: true, token: data.letter_token as string, short_code: data.letter_short_code as string };
   }
-  const token = hasToken ? (data.letter_token as string) : newLetterToken();
-  let short_code = hasCode ? (data.letter_short_code as string) : "";
+  // A renewal keeps the link the client already has; only a client's first
+  // plan mints a brand-new one.
+  const inherited =
+    hasToken && hasCode
+      ? null
+      : await inheritedLetterCredentials(data.client_id as string, planSlug);
+
+  const token = hasToken
+    ? (data.letter_token as string)
+    : (inherited?.token ?? newLetterToken());
+  let short_code = hasCode
+    ? (data.letter_short_code as string)
+    : (inherited?.short_code ?? "");
   if (!short_code) {
     const used = await allLetterShortCodes();
     for (let i = 0; i < 100; i++) {
@@ -220,7 +309,10 @@ export async function ensureLetterToken(
     if (!short_code) return { ok: false, error: "short_code_collision" };
   }
   data.letter_token = token;
-  data.letter_token_created_at = data.letter_token_created_at ?? new Date().toISOString();
+  // An inherited token keeps its ORIGINAL issue date — that is genuinely when
+  // the link the client is holding was created.
+  data.letter_token_created_at =
+    data.letter_token_created_at ?? inherited?.created_at ?? new Date().toISOString();
   data.letter_short_code = short_code;
   await fs.writeFile(filePath, yaml.dump(data, { sortKeys: false }), "utf-8");
   await stageClientAppArtifacts(data.client_id as string, planSlug);
