@@ -76,6 +76,71 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _parse_dt(v: object) -> "datetime | None":
+    """Lenient ISO → aware UTC datetime. None when absent/unparseable."""
+    s = str(v or "").strip()
+    if not s:
+        return None
+    try:
+        d = datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except Exception:
+        return None
+    return d.replace(tzinfo=timezone.utc) if d.tzinfo is None else d
+
+
+# ── sliding token expiry ─────────────────────────────────────────────────────
+#
+# The 14-day TTL is there to kill links nobody ever opened. It was also, until
+# now, killing links people were part-way through filling in — the clock ran
+# from ISSUE and nothing reset it, so a client who started the form and came
+# back a fortnight later found it dead, with half their answers behind it.
+#
+# That has bitten three clients: Dhanishta (cl-004) and Nidhi both hit it (see
+# the B4 note in send-intake-form-button.tsx), and Siddharth (cl-023) hit it
+# mid-form having already filled about half.
+#
+# It reads worse than "expired", too. On Fly the per-minute reconciler purges
+# the staging copy the moment the token lapses (`_should_purge_staging`), so
+# the token stops resolving AT ALL and the honest "This link has expired"
+# degrades into "We couldn't find this link".
+#
+# So: genuine client activity slides the window forward. Capped so a link can
+# still never live forever behind a URL that is its own authentication.
+_TOKEN_SLIDE_DAYS = 14      # each genuine touch buys another full window
+_TOKEN_MAX_LIFETIME_DAYS = 90  # absolute ceiling measured from first issue
+
+
+def _maybe_extend_token(data: dict, activity: "datetime | None" = None) -> bool:
+    """Slide a LIVE token's expiry out to activity + 14d. Mutates `data`;
+    returns True when the expiry actually moved (caller persists).
+
+    Deliberately conservative:
+      - forward-only, so this can never shorten a link;
+      - no-op on a token that is already cleared or already expired — reviving
+        a dead link is the coach's call (re-issue), never the client's;
+      - capped at 90 days from `intake_token_issued_at`. When that stamp is
+        absent (tokens minted before it existed) the issue date is inferred as
+        `expires_at - 14d`, which is exactly how it was originally set.
+    """
+    if not data.get("intake_token"):
+        return False
+    exp = _parse_dt(data.get("intake_token_expires_at"))
+    if exp is None:
+        return False  # no expiry recorded — nothing to slide, and not ours to invent
+    now = activity or datetime.now(timezone.utc)
+    if now > exp:
+        return False  # already dead; coach re-issues
+    issued = _parse_dt(data.get("intake_token_issued_at")) or (
+        exp - timedelta(days=_TOKEN_SLIDE_DAYS)
+    )
+    ceiling = issued + timedelta(days=_TOKEN_MAX_LIFETIME_DAYS)
+    target = min(now + timedelta(days=_TOKEN_SLIDE_DAYS), ceiling)
+    if target <= exp:
+        return False  # already further out than this touch would buy
+    data["intake_token_expires_at"] = target.isoformat()
+    return True
+
+
 def _person_dir(client_id: str) -> Path:
     """Resolve a person's authoritative directory, wherever they live.
 
@@ -299,6 +364,10 @@ _STAGING_STUB_KEYS = (
     # intake lifecycle fields that lookup/save_draft/submit read
     "intake_token",
     "intake_token_expires_at",
+    # Needed on Fly so `_maybe_extend_token` can enforce the 90-day ceiling
+    # there. Absent, Fly would infer the issue date from expires_at and keep
+    # sliding a link past the cap.
+    "intake_token_issued_at",
     "intake_short_code",
     "intake_full_unlocked_at",
     "intake_submitted_at",
@@ -374,6 +443,61 @@ def _purge_staging(client_id: str) -> bool:
         return True
     shutil.rmtree(d, ignore_errors=True)
     return True
+
+
+def _rescue_unreconciled_staging(client_id: str) -> "Path | None":
+    """Copy a staging client.yaml into the authoritative dir before it is
+    destroyed, when the reconciler declined to merge it.
+
+    Both `action_revoke` and `action_finalise` call `_reconcile_one` first,
+    explicitly "so finalising can never strand a final submission on Fly" —
+    but `_reconcile_one` can return `skipped_coach_newer` and merge NOTHING,
+    and the purge then runs anyway. Any answers the client typed after the
+    coach's last edit exist ONLY in staging at that moment, so the purge is
+    what deletes them. `action_reconcile_all` has the same hole on the
+    expiry-driven purge.
+
+    Resolving the guard properly is Phase 2/3 in
+    docs/RECONCILE_DRAFT_MIRROR_FIX_SCOPE.md (stop persisting prefill echoes as
+    drafts, then decide field ownership). Until then this is the safety net:
+    it never merges, never touches a coach-owned field, and never blocks the
+    purge — it just means the deletion can't be lossy. Returns the rescue path,
+    or None when there was nothing to save."""
+    sp = _staging_client_yaml(client_id)
+    if sp is None or not sp.exists():
+        return None
+    try:
+        import yaml  # type: ignore
+        sdata = yaml.safe_load(sp.read_text(encoding="utf-8")) or {}
+        # Only worth keeping if the client actually put something in it.
+        if not sdata.get("intake_form_draft"):
+            return None
+        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        dest = _person_dir(client_id) / f"_unreconciled_intake_{stamp}.yaml"
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        from atomic_write import write_text_atomic
+        write_text_atomic(dest, sp.read_text(encoding="utf-8"))
+        print(
+            f"[intake-token-action] {client_id}: staging draft was never "
+            f"reconciled (coach edits newer) — rescued to {dest} before purge",
+            file=sys.stderr,
+        )
+        return dest
+    except Exception as e:
+        print(
+            f"[intake-token-action] {client_id}: staging rescue FAILED: {e}",
+            file=sys.stderr,
+        )
+        return None
+
+
+def _purge_staging_after(client_id: str, recon: "dict | None") -> bool:
+    """`_purge_staging`, but never lossy: if the reconcile that ran just before
+    it skipped the merge, snapshot the staging copy first."""
+    actions = (recon or {}).get("actions") or []
+    if "skipped_coach_newer" in actions:
+        _rescue_unreconciled_staging(client_id)
+    return _purge_staging(client_id)
 
 
 def _staging_last_submitted_payload(client_id: str) -> dict:
@@ -467,6 +591,30 @@ def _reconcile_one(client_id: str) -> dict:
 
     actions: list[str] = []
 
+    # Capture the coach's last-edit time BEFORE anything below can write, and
+    # therefore before `_save_client` stamps `updated_at` with now. Reading it
+    # after a write would make the guard compare the client's activity against
+    # this function's OWN save and skip every single time.
+    coach_dt = _parse_dt(adata.get("updated_at"))
+
+    # ── Sliding expiry, mirrored forward-only ──────────────────────────────
+    # Runs BEFORE the coach-edit guard, on purpose. The client sliding their
+    # own expiry (by typing — see `action_save_draft`) is not a coach-owned
+    # field and cannot clobber coach edits, so the guard has no business
+    # blocking it. If it did, the Mac would keep the stale expiry, decide the
+    # token had lapsed, and `action_reconcile_all` would purge the staging dir
+    # out from under a client who was still filling the form in.
+    #
+    # Forward-only: staging can only ever PUSH the expiry out, never pull it
+    # in. Fly holds a scoped stub of one live intake, but it is still the
+    # public-facing half, so it gets to prolong a link and nothing more.
+    s_exp = _parse_dt(sdata.get("intake_token_expires_at"))
+    a_exp = _parse_dt(adata.get("intake_token_expires_at"))
+    if s_exp and (a_exp is None or s_exp > a_exp) and adata.get("intake_token"):
+        adata["intake_token_expires_at"] = s_exp.isoformat()
+        _save_client(client_id, adata)
+        actions.append("expiry_extended")
+
     # ── Phase-1 coach-edit guard (2026-07-12) ──────────────────────────────
     # If the coach edited the authoritative record MORE RECENTLY than the
     # client last touched the intake form, the coach's edits win — a stale or
@@ -477,17 +625,8 @@ def _reconcile_one(client_id: str) -> dict:
     # coach's last edit, so they still reconcile. Fail-safe: if either timestamp
     # is missing/unparseable, fall through to the normal reconcile.
     # See docs/RECONCILE_DRAFT_MIRROR_FIX_SCOPE.md.
-    def _parse_iso(v: object):
-        s = str(v or "").strip()
-        if not s:
-            return None
-        try:
-            return datetime.fromisoformat(s.replace("Z", "+00:00"))
-        except Exception:
-            return None
-
-    coach_dt = _parse_iso(adata.get("updated_at"))
-    client_dt = _parse_iso(
+    # `coach_dt` is captured at the top of this function — see the note there.
+    client_dt = _parse_dt(
         sdata.get("intake_last_submitted_at")
         or sdata.get("intake_submitted_at")
         or sdata.get("intake_form_draft_saved_at")
@@ -545,6 +684,10 @@ def action_generate(payload: dict) -> dict:
     expires = datetime.now(timezone.utc) + timedelta(days=ttl_days)
     data["intake_token"] = token
     data["intake_token_expires_at"] = expires.isoformat()
+    # Anchor for the sliding-expiry ceiling (_maybe_extend_token). Client
+    # activity pushes `expires_at` out; this is the fixed point the 90-day cap
+    # is measured from, so an active link still can't live forever.
+    data["intake_token_issued_at"] = _now_iso()
     # Short code — 7 random base62 chars (~42 bits). Collision-checked against
     # all existing clients. A new code is always issued with each new token so
     # the short URL stays in sync. If a collision is found we retry (extremely
@@ -793,6 +936,11 @@ def action_save_draft(payload: dict) -> dict:
     saved_at = _now_iso()
     data["intake_form_draft"] = draft
     data["intake_form_draft_saved_at"] = saved_at
+    # Typing in the form is the clearest possible signal the link is still in
+    # use — slide the expiry so it can't lapse under someone mid-answer. On Fly
+    # this writes the STAGING copy; the Mac picks the new expiry up in
+    # `_reconcile_one`, which is what stops the reconciler purging them.
+    _maybe_extend_token(data)
     _save_client(client_id, data)
     return {"ok": True, "saved_at": saved_at}
 
@@ -2302,8 +2450,9 @@ def action_finalise(payload: dict) -> dict:
     # Pull any last-second staging edits into the authoritative store before we
     # lock + purge, so finalising can never strand a final submission on Fly.
     # No-op when staging is disabled.
+    _recon: "dict | None" = None
     try:
-        _reconcile_one(client_id)
+        _recon = _reconcile_one(client_id)
     except Exception as e:
         print(f"[intake-token-action] finalise reconcile failed for {client_id}: {e}", file=sys.stderr)
     try:
@@ -2319,7 +2468,7 @@ def action_finalise(payload: dict) -> dict:
     # Form is locked — it no longer needs to exist on Fly. Mac-side delete;
     # Mutagen propagates the removal. No-op when staging is disabled.
     try:
-        _purge_staging(client_id)
+        _purge_staging_after(client_id, _recon)
     except Exception as e:
         print(f"[intake-token-action] finalise purge failed for {client_id}: {e}", file=sys.stderr)
     return {"ok": True, "client_id": client_id, "intake_finalised_at": data["intake_finalised_at"]}
@@ -2436,8 +2585,9 @@ def action_revoke(payload: dict) -> dict:
     if not client_id:
         return {"ok": False, "error": "client_id required"}
     # Capture anything the client saved before we pull the link + purge.
+    _recon: "dict | None" = None
     try:
-        _reconcile_one(client_id)
+        _recon = _reconcile_one(client_id)
     except Exception as e:
         print(f"[intake-token-action] revoke reconcile failed for {client_id}: {e}", file=sys.stderr)
     try:
@@ -2448,7 +2598,7 @@ def action_revoke(payload: dict) -> dict:
     data["intake_token_expires_at"] = None
     _save_client(client_id, data)
     try:
-        _purge_staging(client_id)
+        _purge_staging_after(client_id, _recon)
     except Exception as e:
         print(f"[intake-token-action] revoke purge failed for {client_id}: {e}", file=sys.stderr)
     return {"ok": True}
@@ -2471,7 +2621,7 @@ def action_reconcile_from_staging(payload: dict) -> dict:
     except FileNotFoundError:
         adata = {}
     if _should_purge_staging(adata):
-        purged = _purge_staging(client_id)
+        purged = _purge_staging_after(client_id, r)
     return {"ok": True, "purged": purged, **r}
 
 
@@ -2496,12 +2646,13 @@ def action_reconcile_all(payload: dict) -> dict:
             continue
         cid = sub.name
         try:
-            reconciled.append(_reconcile_one(cid))
+            recon = _reconcile_one(cid)
+            reconciled.append(recon)
             try:
                 adata = _load_client(cid)
             except FileNotFoundError:
                 adata = {}
-            if _should_purge_staging(adata) and _purge_staging(cid):
+            if _should_purge_staging(adata) and _purge_staging_after(cid, recon):
                 purged.append(cid)
         except Exception as e:
             errors.append({"client_id": cid, "error": f"{type(e).__name__}: {e}"})
