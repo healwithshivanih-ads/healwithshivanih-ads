@@ -117,7 +117,15 @@ landed:
 - **WhatsApp inbound** (when AiSensy plan upgrades) — currently inbound is manual paste via Message Capture Panel; webhook handler exists but skipped on free tier.
 - **`fm_checkin_nudge` template** — pending AiSensy review; works automatically once approved.
 - **Validator integration of new lab tests** — 25+ lab_tests added in v0.63 and v0.66+; ensure validator's pending-refs run shows clean.
-- **Persistent public URL** — `cloudflared tunnel --url http://localhost:3002` if coach wants the app reachable from her phone / outside Wi-Fi. ~15 min infra; only needed if remote access becomes a real workflow.
+- **Persistent public URL** — a named tunnel already exists at
+  `fmcoach.shivanihari.com` (and `COACH_PUBLIC_URL` points cron digest emails at
+  it), but `cloudflared` is not installed as a service, so it dies on reboot and
+  the host answers Error 1033. Remote access stopped being hypothetical on
+  2026-08-15: the coach was away from her Mac, a client's intake link needed
+  re-issuing, and there was no remote path — it took someone physically at the
+  Mac. Remaining work is `sudo cloudflared service install` plus confirming the
+  Basic-auth wall is set (`COACH_AUTH_PASSWORD`), since the Mac otherwise runs
+  with no auth at all. Runbook: `docs/COACH_REMOTE_ACCESS.md`.
 - **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout / branding changes. Human review task, can't be coded.
 
 ---
