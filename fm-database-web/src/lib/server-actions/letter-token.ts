@@ -377,30 +377,56 @@ export async function stageDiscoveryClientArtifacts(clientId: string): Promise<v
 /**
  * Resolve an intake short code → the client's intake_token so the /s/[code]
  * route can 302 to /intake/<token>.
+ *
+ * SCANS `clients/` AND `prospects/`, and must keep doing so.
+ *
+ * `/s/<code>` is the link the coach actually sends — `sendIntakeInviteViaApi`
+ * and the WhatsApp share button both prefer the short code over the raw
+ * `/intake/<token>` URL. Prospects are the population the intake form exists
+ * for: someone fills it in BEFORE they sign up. `fmdb prospects-sweep` parks
+ * anyone not signed up after 15 quiet days by MOVING them to `prospects/<id>/`
+ * — and a 14-day intake token means re-issuing a link to a parked prospect is
+ * routine, not an edge case.
+ *
+ * Scanning `clients/` alone made that link dead on arrival: the redirect 404s
+ * with a bare "Not found" while every coach-side surface looks healthy (the
+ * token is live, unexpired, and the coach UI reads it fine through
+ * `resolvePersonDir`). The `/intake/<token>` long link kept working the whole
+ * time, because the Python resolver `_find_client_by_token` scans both buckets
+ * — so the two halves of the same link disagreed.
+ *
+ * Mirrors `_person_dirs()` in `scripts/intake-token-action.py`, whose own
+ * docstring names token lookup and short-code uniqueness as the two scans that
+ * must not miss a parked person. Short codes are already minted unique across
+ * BOTH buckets by `_all_intake_short_codes()`, so widening the read side
+ * cannot introduce a collision. Keep the two in lockstep.
  */
 export async function lookupIntakeShortCode(
   code: string,
 ): Promise<{ ok: true; intake_token: string } | { ok: false }> {
   if (!code || code.length !== 7) return { ok: false };
-  const clientsDir = path.join(getPlansRoot(), "clients");
-  let subdirs: string[];
-  try {
-    subdirs = await fs.readdir(clientsDir);
-  } catch {
-    return { ok: false };
-  }
-  for (const id of subdirs) {
-    const yml = path.join(clientsDir, id, "client.yaml");
+  const root = getPlansRoot();
+  for (const bucket of ["clients", "prospects"] as const) {
+    const bucketDir = path.join(root, bucket);
+    let subdirs: string[];
     try {
-      const raw = await fs.readFile(yml, "utf-8");
-      const d = yaml.load(raw) as Record<string, unknown> | null;
-      if (!d) continue;
-      if (d.intake_short_code !== code) continue;
-      const tok = d.intake_token;
-      if (typeof tok !== "string" || !tok) continue;
-      return { ok: true, intake_token: tok };
+      subdirs = await fs.readdir(bucketDir);
     } catch {
-      /* skip */
+      continue; // bucket absent (no prospects yet) — not an error
+    }
+    for (const id of subdirs) {
+      const yml = path.join(bucketDir, id, "client.yaml");
+      try {
+        const raw = await fs.readFile(yml, "utf-8");
+        const d = yaml.load(raw) as Record<string, unknown> | null;
+        if (!d) continue;
+        if (d.intake_short_code !== code) continue;
+        const tok = d.intake_token;
+        if (typeof tok !== "string" || !tok) continue;
+        return { ok: true, intake_token: tok };
+      } catch {
+        /* skip */
+      }
     }
   }
   return { ok: false };
