@@ -25,6 +25,15 @@ export default async function IntakeTokenPage({
       title = "You've already sent this in";
       body =
         "Your coach has received your answers. If you need to share something more, please message her directly.";
+    } else if (res.error === "locked") {
+      // action_lookup returns this once the coach sets intake_finalised_at.
+      // Without a branch here it fell through to the generic copy, which told
+      // the client their link had expired and offered a "send me a fresh one"
+      // CTA — for a form the coach had deliberately closed. Wrong reason,
+      // wrong next step, and it generates a request she has to turn down.
+      title = "Your form is closed for now";
+      body =
+        "Your coach has everything she needs from this form. If something's changed or you'd like to add to it, message her and she can reopen it.";
     } else if (res.error === "expired") {
       title = "This link has expired";
       body = "Please message your coach and she'll send you a fresh link.";
@@ -36,8 +45,12 @@ export default async function IntakeTokenPage({
     // hunting for coach's number. Skip the CTA on already_submitted
     // (their answers are in; no action needed).
     const showWaCta = res.error !== "already_submitted";
+    // A locked form isn't broken, so don't put "send me a fresh one" in the
+    // client's mouth — the ask is to reopen the one she already has.
     const waMsg = encodeURIComponent(
-      "Hi, my intake link has expired or isn't working — could you send me a fresh one?"
+      res.error === "locked"
+        ? "Hi, I'd like to add something to my intake form — could you reopen it?"
+        : "Hi, my intake link has expired or isn't working — could you send me a fresh one?"
     );
     return (
       <div className="fm-thanks">
