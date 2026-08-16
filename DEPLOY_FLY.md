@@ -67,6 +67,10 @@ Copy `ANTHROPIC_API_KEY`, `AISENSY_API_KEY`, `GMAIL_USER`,
 flyctl deploy -a theochretree-coach
 ```
 
+(First-time bring-up only — Mutagen isn't set up until Step 5, so there is no
+sync to guard yet. For every deploy *after* initial setup use
+`./scripts/deploy-fly.sh` — see "Deploying a code change" below.)
+
 First build: ~5–8 min (npm install + next build + pip install).
 
 When it finishes, hit the temporary `*.fly.dev` URL:
@@ -186,11 +190,38 @@ needed.
 
 ### Deploying a code change
 
+**Use the wrapper, not bare `flyctl deploy`:**
+
 ```bash
 cd /Users/shivani/code/healwithshivanih-ads
 git pull          # if changes came from another Mac
-flyctl deploy -a theochretree-coach
+./scripts/deploy-fly.sh
 ```
+
+It runs `flyctl deploy -a theochretree-coach --remote-only` and then **proves
+the Mutagen sync survived the deploy**. Any flags are passed through
+(`./scripts/deploy-fly.sh --now`).
+
+Why the wrapper exists: a deploy replaces the machine, which kills the Mutagen
+agent on the beta side. It usually reconnects — but when it doesn't it fails
+*silently*. flyctl prints a green success, every local file looks correct, and
+no client app receives another byte. That stranded Nazneen's approved week-4
+menu on 2026-08-16, and cost a client a working intake link on 2026-05-17.
+
+The wrapper exits **non-zero if the sync cannot be recovered**, even though the
+deploy itself succeeded. A red deploy you can see beats a green one that quietly
+stopped feeding every client's app.
+
+To check or repair the sync without deploying:
+
+```bash
+./scripts/fly-sync-guard.sh --verify-only   # read-only check
+./scripts/fly-sync-guard.sh                 # flush + verify (idempotent)
+SKIP_DEPLOY=1 ./scripts/deploy-fly.sh       # same, via the wrapper
+```
+
+The guard only touches sessions whose **beta** endpoint is the Fly host. The NAS
+backup session is reported and left alone.
 
 Rolling restart — the intake form blips for ~5s during the swap. If
 this becomes a problem we add a second machine (`flyctl scale count 2`).
