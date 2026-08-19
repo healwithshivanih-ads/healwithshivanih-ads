@@ -4403,12 +4403,26 @@ export async function loadClientAppData(
     // list first, then other empty-stomach items, then the morning beverage —
     // "what goes in on an empty stomach lists first" (ghee water → soaked raisins
     // → morning tea).
+    // Chronological, not just "empty-stomach first". The old three-tier version
+    // put everything that wasn't first-thing or empty-stomach into one bucket,
+    // so a MORNING item with no magic words landed in the same tier as an
+    // afternoon one and could sort to the end of the day. That is how Gopi's
+    // morning chai — timed "Morning, after the methi water and nuts" — rendered
+    // at the BOTTOM of his day, after dinner.
     const ritualOrder = (t: string): number =>
-      /first thing|before (?:your )?(?:morning )?(?:tea|breakfast)/i.test(t)
+      /first thing|on waking|before (?:your )?(?:morning )?(?:tea|breakfast)/i.test(t)
         ? 0
         : /empty stomach/i.test(t)
           ? 1
-          : 2;
+          : /\bmorning\b|\bbreakfast\b/i.test(t)
+            ? 2
+            : /\bmid-?morning\b|\bnoon\b|\blunch\b|\bafternoon\b/i.test(t)
+              ? 3
+              : /\bevening\b|\bdinner\b|\bsupper\b/i.test(t)
+                ? 4
+                : /\bbed\b|\bnight\b/i.test(t)
+                  ? 5
+                  : 3; // genuinely unstated — keep it mid-day, never last
     const customEntries: AppRemedy[] = [];
     for (const cr of asArr(nutrition.custom_remedies) as Dict[]) {
       const name = asStr(cr.name).trim();
