@@ -106,6 +106,30 @@ nutrient overlap (a standalone alongside a blend that already contains it); a
 supplement with **no order link** in `supplement_links.yaml` and no pinned `buy_link`,
 which is exactly when the client's Reorder button silently fails to render.
 
+### 4a. If the plan prescribes EXERCISE, prescribe the PROGRESSION with it
+
+A level with no next rung is a plateau with extra steps. Every prescribed exercise gets three
+things in its `note`, in the client's own words:
+
+1. **Where they are now** — the rung's own prescription, not the letter ("5 stands, both hands
+   on the chair arms", not "level A").
+2. **What READY looks like** — the observable thing that means the next rung is earned.
+3. **What comes next** — so the client can see the path, not just today's step.
+
+And the session's `details` carries the coach-facing rules:
+
+- **Earned, not timed.** Rungs advance at a CHECK-IN, when the client is genuinely doing the
+  movement at its cadence — never because a fortnight elapsed. A calendar progression on a
+  client who has not started is how someone gets hurt.
+- **One at a time.** Advance a single exercise per review. If something aggravates, you need to
+  know which one did it.
+- **State the gate on anything held back.** A fourth movement waiting on a cardiac clearance or
+  an unassessed joint belongs in the note WITH its condition, so it is not quietly forgotten.
+
+The ladders live in the catalogue (`data/exercises/<slug>.yaml` → `levels[]`, each with its own
+`prescription`, `reps`, `support`). Read them and quote the rung's prescription — do not invent
+a progression the entry does not have, and do not skip rungs to look ambitious.
+
 ### 4b. If the plan carries a MENU, build the shopping list too
 
 A menu without a shopping list is half a prescription — the client has to reverse-engineer
