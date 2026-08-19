@@ -375,6 +375,11 @@ _STAGING_STUB_KEYS = (
     "intake_first_opened_at",
     "intake_finalised_at",
     "intake_form_draft",
+    # Mirrored both ways so the coach-edit guard in `_reconcile_one` and the
+    # "Last save" / orphaned-draft logic in IntakeProgressCard have a timestamp
+    # to compare against. Without it the Mac copy stays null for the whole life
+    # of a draft — see the note on the live-watch mirror in `_reconcile_one`.
+    "intake_form_draft_saved_at",
     "engagement_status",
 )
 
@@ -400,7 +405,32 @@ def _write_staging_stub(client_id: str, data: dict) -> bool:
     if p is None:
         return False
     import yaml  # type: ignore
-    stub = {k: data[k] for k in _STAGING_STUB_KEYS if k in data}
+    # MERGE over whatever is already in the staging file — never replace it.
+    # That file is SHARED with the companion-app projection
+    # (app-staging-action.py `_APP_CLIENT_KEYS`), which merges its own keys the
+    # same careful way and says so in its docstring. This writer used to
+    # `safe_dump` a fresh dict built from `_STAGING_STUB_KEYS` alone, which
+    # dropped every app key the intake stub doesn't know about — `app_token`
+    # included. So issuing an intake link to any of the clients whose companion
+    # app is live (19 of them as of 2026-08-19, marker `_app_staged.yaml`) broke
+    # their /app/<token> link until the app-staging cron happened to rewrite the
+    # file. The two writers now both merge, so neither can clobber the other.
+    existing: dict = {}
+    if p.exists():
+        try:
+            loaded = yaml.safe_load(p.read_text(encoding="utf-8"))
+            if isinstance(loaded, dict):
+                existing = loaded
+        except Exception as e:
+            # Unreadable staging file — fall back to the old replace behaviour
+            # rather than refusing to issue the token.
+            print(
+                f"[intake-token-action] {client_id}: staging stub unreadable, "
+                f"rewriting from scratch: {e}",
+                file=sys.stderr,
+            )
+    stub = dict(existing)
+    stub.update({k: data[k] for k in _STAGING_STUB_KEYS if k in data})
     stub["client_id"] = client_id
     p.parent.mkdir(parents=True, exist_ok=True)
     with p.open("w", encoding="utf-8") as f:
@@ -634,9 +664,22 @@ def _reconcile_one(client_id: str) -> dict:
     if coach_dt and client_dt and coach_dt > client_dt:
         return {"client_id": client_id, "actions": ["skipped_coach_newer"]}
 
-    # 1. live-watch mirror (draft + first-opened)
+    # 1. live-watch mirror (draft + first-opened + when the draft was saved)
+    #
+    # `intake_form_draft_saved_at` belongs in this list even though only the
+    # draft body is rendered. Fly stamps it in `action_save_draft`; the Mac used
+    # to copy the draft WITHOUT it, so the authoritative record carried a
+    # half-filled draft with `saved_at: null` for ever (cl-023, found
+    # 2026-08-19). Two things break on that null:
+    #   - IntakeProgressCard's "Last save" row reads "—" for a client who was
+    #     demonstrably typing, and
+    #   - its orphaned-draft recovery prompt computes `draftNewerThanSubmit`
+    #     from it. With NaN on the left that comparison is always false, so for
+    #     any client who submitted once and then kept editing, the post-submit
+    #     answers were never flagged as recoverable — the exact silent loss the
+    #     card exists to catch.
     changed = False
-    for k in ("intake_form_draft", "intake_first_opened_at"):
+    for k in ("intake_form_draft", "intake_form_draft_saved_at", "intake_first_opened_at"):
         sv = sdata.get(k)
         if sv is not None and sv != adata.get(k):
             adata[k] = sv
@@ -961,6 +1004,10 @@ _SCALAR_FIELDS = [
     "family_history",
     # Deep clinical narrative fields
     "digestion_notes", "sleep_notes", "energy_pattern", "menstrual_notes",
+    # Pre-discovery form's three free-text answers. The form has always posted
+    # these; until 2026-08-19 nothing here caught them, so they landed only in
+    # the audit session's raw payload. See the Client model note.
+    "chief_complaint", "when_last_well", "top_symptoms",
     "stress_response", "childhood_history", "toxic_exposures",
     "what_has_worked", "what_hasnt_worked",
     # Lifestyle exposures + mental-health care (single-string radios/text)
@@ -1323,7 +1370,57 @@ def _derive_conditions_from_intake(payload: dict) -> list[str]:
     """
     out: list[str] = []
 
+    # ── Sex gate for anatomically-impossible conditions (2026-08-19) ──
+    # A drug's `condition_implications` are about the DRUG, not the patient:
+    # metformin.yaml legitimately lists "PCOS / confidence: moderate" because
+    # metformin is standard in PCOS. Applied without a sex check, that handed
+    # cl-023 — a 50-year-old man on metformin + Mounjaro — an active condition
+    # of "Suspected: PCOS", which would then have flowed into his assessment,
+    # his plan's likely_drivers, and the subgraph the AI reasons over.
+    # Gate on the anatomy, not on the drug: a man can be on metformin, he
+    # cannot have polycystic ovaries.
+    _sex = str(payload.get("sex") or "").strip().upper()[:1]
+    _FEMALE_ONLY = (
+        "pcos", "polycystic", "endometriosis", "adenomyosis",
+        "uterine fibroid", "premature ovarian", "postmenopausal",
+        "perimenopausal", "pregnan", "menopause",
+    )
+    _MALE_ONLY = ("prostat", "bph", "benign prostatic")
+
+    def _impossible_for_sex(label: str) -> bool:
+        low = label.lower()
+        if _sex == "M" and any(k in low for k in _FEMALE_ONLY):
+            return True
+        if _sex == "F" and any(k in low for k in _MALE_ONLY):
+            return True
+        return False
+
     def add(label: str) -> None:
+        if _impossible_for_sex(label):
+            print(
+                f"[intake-token-action] skipped condition {label!r} — "
+                f"not applicable to sex={_sex or '?'}",
+                file=sys.stderr,
+            )
+            return
+        # Confirmed beats suspected, in both directions. Two drugs can imply
+        # the same condition at different confidences — a client on metformin
+        # (T2D: high) AND a GLP-1 (T2D: moderate) used to end up with both
+        # "Type 2 diabetes / insulin resistance" and "Suspected: Type 2
+        # diabetes / insulin resistance" side by side in active_conditions.
+        # `add_from_freetext` already had half of this rule; it belongs here so
+        # every caller gets it regardless of which path found the condition.
+        bare = label.split(":", 1)[-1].strip() if label.lower().startswith("suspected") else label
+        if label.lower().startswith("suspected"):
+            # Don't add a suspicion about something already confirmed.
+            if any(c.lower() == bare.lower() for c in out):
+                return
+        else:
+            # Confirmed — drop any earlier suspicion of the same thing.
+            for i, c in enumerate(list(out)):
+                if c.lower().startswith("suspected") and c.split(":", 1)[-1].strip().lower() == label.lower():
+                    out.pop(i)
+                    break
         if not any(c.lower() == label.lower() for c in out):
             out.append(label)
 
@@ -1343,6 +1440,10 @@ def _derive_conditions_from_intake(payload: dict) -> list[str]:
         # Question-mark sentinel — "? Diabetes" / "Diabetes ?" / "do I
         # have diabetes" — client is asking, not telling. Skip.
         if "?" in source and label.lower().split(":", 1)[-1].strip()[:6] in source.lower():
+            return
+        # Same anatomy gate as `add` — this path appends to `out` directly, so
+        # it needs its own check or a free-text match would slip past it.
+        if _impossible_for_sex(label):
             return
         # Otherwise add as Suspected — coach reviews and promotes.
         prefixed = f"Suspected: {label}" if not label.lower().startswith("suspected") else label
@@ -1814,13 +1915,29 @@ def _write_quick_note_session(client_id: str, payload: dict) -> str:
             summary_lines.append(f"**{k.replace('_', ' ').title()}** — {v[:300]}")
     coach_notes = "[source: client_intake_form]\n\n" + "\n\n".join(summary_lines or ["(no narrative fields filled)"])
 
+    # The full-assessment page reads THIS field as the client's chief complaint
+    # (analyse/full/page.tsx builds `intakeSnapshot.chief_complaint` from the
+    # latest intake session's presenting_complaints). It used to be a constant
+    # string, so the assessment showed "Client-submitted intake questionnaire."
+    # to the coach instead of what the client actually wrote. Prefer the
+    # client's own words; keep the `[source: client_intake_form]` tag because
+    # that same page filters sessions on it.
+    _chief = (payload.get("chief_complaint") or "").strip()
+    if not _chief:
+        _chief = (payload.get("top_symptoms") or "").strip()
+    presenting = (
+        f"[source: client_intake_form] {_chief}"
+        if _chief
+        else "[source: client_intake_form] Client-submitted intake questionnaire."
+    )
+
     derived_symptoms = _derive_symptoms_from_intake(payload)
     session_data = {
         "session_id": session_id,
         "client_id": client_id,
         "date": today,
         "session_type": "quick_note",
-        "presenting_complaints": "[source: client_intake_form] Client-submitted intake questionnaire.",
+        "presenting_complaints": presenting,
         "coach_notes": coach_notes,
         "selected_symptoms": derived_symptoms,
         "selected_topics": [],
@@ -2318,6 +2435,22 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                 return
             existing = [str(x) for x in (data.get(key) or [])]
             blob = " | ".join(existing).lower()
+            # Which catalogue drugs the client's own list already names. The
+            # substring check below only catches entries that SPELL the drug the
+            # same way; a client who types a brand slightly wrong defeats it.
+            # cl-023 wrote "Monjaro", the GLP-1 repeater derived the canonical
+            # "Mounjaro (GLP-1)", and "mounjaro" is not a substring of "monjaro",
+            # so his record ended up listing the same drug twice. Both spellings
+            # resolve to the same drug_depletions entry, so ask the matcher —
+            # it already handles aliases and misspelt brand names.
+            existing_slugs = set()
+            for e in existing:
+                try:
+                    d = _match_drug(e)
+                except Exception:
+                    d = None
+                if d and d.get("slug"):
+                    existing_slugs.add(d["slug"])
             added = []
             for entry in incoming:
                 # First token of the entry is the drug name — that is what we
@@ -2326,6 +2459,13 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                 if len(name) >= 4 and name in blob:
                     continue
                 if any(entry.lower() == e.lower() for e in existing):
+                    continue
+                # Same drug under another spelling — the client already said it.
+                try:
+                    hit = _match_drug(entry)
+                except Exception:
+                    hit = None
+                if hit and hit.get("slug") in existing_slugs:
                     continue
                 existing.append(entry)
                 added.append(entry)
