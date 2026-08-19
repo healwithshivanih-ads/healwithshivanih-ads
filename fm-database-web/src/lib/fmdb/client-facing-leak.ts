@@ -50,11 +50,19 @@ const THIRD_PERSON =
 const COACH_REGISTER =
   /\b(?:coach|physician|clinician|referral|plan-check|rationale|contraindicat\w*|prescrib\w*|titrat\w*|differential|work-?up|monitor(?:ing)? labs?|per protocol|caveat|flagged?|red flag)\b/i;
 
-/** A lab marker named INSIDE prose. The Lab Vault renders values structurally
- *  and is fine; this is about a marker turning up mid-sentence in a food or
- *  lab-order line, which always means clinical prose leaked. */
-const MARKER_IN_PROSE =
-  /\b(?:hba1c|hs-?crp|ggt|ast\/alt|apo-?b|lp\(a\)|homa-?ir|ferritin|homocysteine|microalbumin|creatinine|tsh|ft3|ft4|egfr|acr)\b/i;
+/** A lab marker quoted WITH ITS VALUE — "given her ferritin 18", "while HOMA-IR
+ *  is healthy at 1.2". That is a chart reading pasted into client text.
+ *
+ *  Naming a marker as a CONCEPT is legitimate and must not fire: "supports
+ *  healthy homocysteine levels" and "helps your thyroid cells respond to TSH"
+ *  are exactly how you explain a supplement to someone. The first version of
+ *  this rule flagged all 5 of those and would have taught everyone to ignore
+ *  the guard. The number is the tell, not the marker. */
+const MARKER = "hba1c|hs-?crp|ggt|ast\\/alt|apo-?b|lp\\(a\\)|homa-?ir|ferritin|homocysteine|microalbumin|creatinine|tsh|ft3|ft4|egfr|acr";
+const MARKER_IN_PROSE = new RegExp(
+  `\\b(?:${MARKER})\\b[^.;]{0,14}?\\d|\\d[^.;]{0,14}?\\b(?:${MARKER})\\b`,
+  "i",
+);
 
 /** Prescription-strength drug talk. Named medicines belong in the medication
  *  list, not woven into client instructions. */
