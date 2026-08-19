@@ -1,7 +1,6 @@
 slug: b-complex
 display_name: B-Complex (B-Vitamin Complex)
 aliases:
-# 2 ref(s) used this name for the same concept (2026-07-29)
 - vitamin-b-complex
 category: vitamin
 forms_available:
@@ -36,8 +35,8 @@ notes_for_coach: 'Source (IFM Fig 3.5) names riboflavin (B2), niacin (B3), pyrid
   '
 contraindications:
   conditions:
-  - high-dose biotin interferes with thyroid and hormone immunoassays — discontinue
-    before lab draw per ordering clinician
+  - high-dose biotin interferes with thyroid and hormone immunoassays — discontinue before lab draw
+    per ordering clinician
   medications: []
   life_stages: []
 interactions:
@@ -53,9 +52,11 @@ linked_to_mechanisms:
 sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Phase I — Nutrients Used panel
-  quote: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin
-    B12
+  quote: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin B12
 version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani
+notes_for_client: 'The full set of B vitamins — how your body turns food into energy.
+
+  Take them in the morning. Bright yellow urine afterwards is normal.'

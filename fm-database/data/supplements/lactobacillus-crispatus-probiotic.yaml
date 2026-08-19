@@ -11,9 +11,9 @@ typical_dose_range: {}
 timing_options:
 - with_breakfast
 take_with_food: optional
-notes_for_coach: '[STUB — auto-created by Step 2. Dominant healthy vaginal microbiome strain. Topical or oral supplementation
-  supports vaginal pH (~3.8–4.5) and crowds out dysbiotic species. Recent research suggests strain-specific benefit for recurrent
-  BV, UTIs, and post-menopausal vaginal symptoms.]'
+notes_for_coach: '[STUB — auto-created by Step 2. Dominant healthy vaginal microbiome strain. Topical
+  or oral supplementation supports vaginal pH (~3.8–4.5) and crowds out dysbiotic species. Recent
+  research suggests strain-specific benefit for recurrent BV, UTIs, and post-menopausal vaginal symptoms.]'
 contraindications:
   conditions: []
   medications: []
@@ -30,9 +30,13 @@ linked_to_mechanisms: []
 sources:
 - id: notebooklm-synthesis
   location: '[auto-restored after Step 2 strip]'
-  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
-    Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source
+    for validation compliance. Coach should re-verify and link to a peer-reviewed source when next
+    reviewing this entry.
 version: 2
 status: active
 updated_at: '2026-06-18'
 updated_by: shivani
+notes_for_client: 'A friendly bacteria that supports the natural balance of the intimate area.
+
+  Take it consistently rather than now and then — it works by keeping things steady.'
