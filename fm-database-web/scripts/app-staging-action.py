@@ -151,6 +151,14 @@ _APP_CLIENT_KEYS = (
     # client-app.ts + recipes.ts on 2026-06-15 — these ARE consumed by the app)
     "known_allergies",
     "medical_history",
+    # What they are actually taking. Sits in the same class as known_allergies and
+    # medical_history, both already projected — and it is the list a client or their
+    # family most often wants to check against what the plan is asking of them.
+    # Deliberately ONLY the plain list: the nine intake medication BUCKETS
+    # (acid_suppressants, statins_bp_diabetes, …) stay behind, per the
+    # minimise-the-public-box rule above.
+    "current_medications",
+    "current_supplements",
     "measurements",
     # The coach's "+ Log entry" time-series. `measurements` alone is ONE flat
     # snapshot, so without this the app's Progress chart could only ever plot a
