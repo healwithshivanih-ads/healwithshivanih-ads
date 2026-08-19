@@ -280,8 +280,36 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
             "type": "object",
             "properties": {
                 "pattern": {"type": "string", "description": "e.g. 'gentle anti-inflammatory'"},
-                "add": {"type": "array", "items": {"type": "string"}},
-                "reduce": {"type": "array", "items": {"type": "string"}},
+                "add": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": (
+                        "NAME THE FOODS. 'More whole grains' is useless to someone standing in a "
+                        "kitchen; 'jowar and foxtail millet as the everyday roti, barley, "
+                        "hand-pounded rice in a small portion' is usable. Cover the groups the "
+                        "client actually shops for, and name real items in each: GRAINS (which "
+                        "millets, which atta), DALS AND LEGUMES (which dals, sprouted or not), "
+                        "PROTEIN at each meal, FRUIT (name the specific fruits that suit this "
+                        "client), VEGETABLES, and any nutrient-targeted foods their labs call "
+                        "for. Prefer the regional names the client uses — nashpati, amrood, "
+                        "jamun, methi, sarson, lauki. One idea per line, lead with the food "
+                        "group in caps so it scans."
+                    ),
+                },
+                "reduce": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": (
+                        "NAME THE FOODS, same rule. Say WHICH grains, WHICH dals if any, and "
+                        "ESPECIALLY WHICH FRUITS — clients almost universally assume all fruit "
+                        "is free, so a diabetic or insulin-resistant client needs mango, chikoo, "
+                        "banana, grapes, litchi and dried fruit named explicitly, and juice "
+                        "called out separately from whole fruit. Frame as 'go easy on', not "
+                        "'banned', unless it is a genuine allergy or a hard clinical stop. Never "
+                        "list a food the client has named as a non-negotiable — reduce what is "
+                        "IN it instead (the sugar in the chai, not the chai)."
+                    ),
+                },
                 "meal_timing": {"type": "string"},
                 "cooking_adjustment_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be slugs from the catalogue subgraph."},
                 "home_remedy_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be slugs from the catalogue subgraph. A slug here is the COMPLETE prescription for that remedy — do not also describe it in lifestyle_suggestions."},
