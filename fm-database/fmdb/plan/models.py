@@ -1113,6 +1113,17 @@ class PracticeItem(BaseModel):
     name: str                            # freeform — promote to Practice entity later if dup
     cadence: str                         # daily | nightly | weekly | mid-morning | etc.
     details: str = ""
+    # What the CLIENT reads, in the coach's own words. When empty the app falls
+    # back to scrubbing `details` — which works, but is a guess: it picks the
+    # first sentence that survives clientification, and a rationale that opens
+    # with a lab readout or a safety caveat gets mined for whatever reads most
+    # like prose. That is the wrong text to hand someone who asked "what is
+    # this actually doing for me?".
+    #
+    # Set it and it wins outright. Write it for the person, not the chart: no
+    # marker values, no drug names, no promises, no diagnosis — what it is for,
+    # in a sentence or two they would recognise as being about them.
+    client_note: str = ""
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
     # Optional link to a catalogue somatic_practice. When set, the client app
     # resolves the practice BY SLUG and renders its real timed steps, instead of
@@ -1312,6 +1323,17 @@ class SupplementItem(BaseModel):
     start_week: int = 1
     titration: str = ""
     coach_rationale: str = ""            # why for this client
+    # What the CLIENT reads, in the coach's own words. When empty the app falls
+    # back to scrubbing `coach_rationale` — which works, but is a guess: it picks the
+    # first sentence that survives clientification, and a rationale that opens
+    # with a lab readout or a safety caveat gets mined for whatever reads most
+    # like prose. That is the wrong text to hand someone who asked "what is
+    # this actually doing for me?".
+    #
+    # Set it and it wins outright. Write it for the person, not the chart: no
+    # marker values, no drug names, no promises, no diagnosis — what it is for,
+    # in a sentence or two they would recognise as being about them.
+    client_note: str = ""
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
     # Per-supplement display + buy-link overrides (2026-05-19). When the
     # supplement_slug points at a brand (vitaone-omega-3) but the actual

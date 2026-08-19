@@ -1153,6 +1153,15 @@ function ChipInput({
           type="text"
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
+          // Commit whatever is typed when focus leaves. Without this, a client who
+          // types "Tazloc AM" and taps Next instead of pressing Enter loses it
+          // silently: the text lives only in `draft`, so it never reaches FormState,
+          // never reaches buildPayload, and is not even captured by the 5s autosave.
+          // That is exactly how cl-024's four medications vanished between the form
+          // and his record (2026-08-13) — the answer the intake exists to collect.
+          // `add()` is idempotent (no-ops on an empty draft, dedupes case-insensitively),
+          // so the blur-then-click ordering on "+ add" and on chip-removal is safe.
+          onBlur={add}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === ",") {
               e.preventDefault();

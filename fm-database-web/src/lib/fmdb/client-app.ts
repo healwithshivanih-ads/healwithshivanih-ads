@@ -4232,10 +4232,16 @@ export async function loadClientAppData(
       slot: slotFromRank(chronoRank),
       chronoRank,
       timing: displayTiming(timing),
+      // `client_note` is the coach answering "what is this doing for ME" in
+      // her own words, and it wins outright. Only when it is empty do we fall
+      // back to mining the coach rationale.
+      //
       // clientFacingWhy, not clientifyWhy(firstSentence(...)) — the coach's
       // opening sentence is very often bookkeeping or a lab readout, and the
-      // real reason is the one after it.
-      why: clientFacingWhy(asStr(p.coach_rationale)),
+      // real reason is the one after it. That fallback is a good guess, but it
+      // is still a guess: it hands the client whichever sentence happened to
+      // survive scrubbing. When the coach has written the answer, use it.
+      why: asStr(p.client_note).trim() || clientFacingWhy(asStr(p.coach_rationale)),
       buyUrl,
       imageUrl: suppImageUrl,
       ...(asNeeded ? { asNeeded: true } : {}),
@@ -4790,8 +4796,15 @@ export async function loadClientAppData(
     // Surface the coach's instructions to the client (e.g. seed-cycling's
     // follicular-vs-luteal steps) — the card shows name + cadence, tap "How"
     // to read the full details. Light-scrubbed; omitted when empty.
+    // `client_note` wins outright — it is the coach writing FOR the client.
+    // The scrub below is only light, so a practice whose `details` carry real
+    // clinical reasoning (marker values, drug interactions, what to tell the
+    // doctor) would otherwise leak that straight onto his phone. Alcohol
+    // harm-reduction is the case that forced this: the coach's version has to
+    // say "metformin plus heavy drinking" and the client's version must not.
     const rawDetails = asStr(c.raw.details);
-    const details = rawDetails ? clientifyPracticeDetail(rawDetails) : "";
+    const clientNote = asStr(c.raw.client_note).trim();
+    const details = clientNote || (rawDetails ? clientifyPracticeDetail(rawDetails) : "");
     practices.push({
       id: c.id,
       name: c.name,
