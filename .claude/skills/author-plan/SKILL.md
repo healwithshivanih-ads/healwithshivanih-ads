@@ -106,6 +106,24 @@ nutrient overlap (a standalone alongside a blend that already contains it); a
 supplement with **no order link** in `supplement_links.yaml` and no pinned `buy_link`,
 which is exactly when the client's Reorder button silently fails to render.
 
+### 4b. If the plan carries a MENU, build the shopping list too
+
+A menu without a shopping list is half a prescription — the client has to reverse-engineer
+the groceries themselves. The dashboard path calls `generate-grocery-list.py` (Haiku), which
+is unavailable here: this flow is $0 and `FM_API_OK` is not set. Use the deterministic
+builder instead — it reads the menu already on the plan and aggregates the ingredient lines
+of each dish's catalogue recipe, no model call:
+
+```bash
+echo '{"client_id":"<id>","plan_slug":"<slug>"}' \
+  | fm-database/.venv/bin/python fm-database-web/scripts/build-grocery-from-menu.py
+```
+
+Check the `unresolved` list it returns: those are menu cells that matched no catalogue
+recipe (usually freeform items like "Guava (1)"). A handful is normal. A long list means the
+menu is naming dishes the library does not have, which is worth fixing in the MENU rather
+than the list.
+
 Then hand it over — activation is the coach's, not yours:
 
 ```

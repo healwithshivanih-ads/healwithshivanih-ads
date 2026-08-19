@@ -10,7 +10,6 @@ import { Icon, useOchre } from "./ochre-context";
 import { remedySlots, type RemedySlot } from "@/lib/fmdb/remedy-slots";
 import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { MindBodyNudge } from "./ochre-eft";
-import { MindBodyEntryCard } from "./ochre-mind-body";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
@@ -396,8 +395,8 @@ export function TodayScreen({
   goCheckin,
   goCoach,
   openBreath,
-  openEft,
-  openSleep,
+  // openEft / openSleep: still accepted (both call sites pass them) but no
+  // longer consumed here — the mind-body entry card moved to the Practices tab.
   openSomatic,
   openExercise,
   practices,
@@ -766,23 +765,11 @@ export function TodayScreen({
               These come first. A few more open up later in your plan.
             </p>
           )}
-          {/* ONE quiet opt-in line, not a question card. The client opens it
-              when she wants a reset; the routing picks the technique. Anything
-              the coach linked specifically keeps its own row above. */}
-          <MindBodyEntryCard
-            have={{
-              breath: data.breathwork ? { name: data.breathwork.name } : null,
-              eft: data.eft ? { name: "EFT tapping" } : null,
-              sleep: data.sleep ? { name: "Wind down for sleep" } : null,
-              somatic: data.somatic,
-            }}
-            onOpen={(route) => {
-              if (route.kind === "breath") openBreath();
-              else if (route.kind === "eft") openEft();
-              else if (route.kind === "sleep") openSleep();
-              else if (route.somatic) openSomatic(route.somatic.practiceId);
-            }}
-          />
+          {/* The mind-body entry line lives on the PRACTICES tab only.
+              It was rendered here as well, so the same card — same six chips,
+              identical for every client — appeared twice in one session. Today
+              is a landing screen; the resets belong with the other things the
+              client is meant to DO. Component and routing untouched. */}
           {data.mindBody?.locked && (
             <MindBodyNudge
               nextUp={data.mindBody.nextUp}

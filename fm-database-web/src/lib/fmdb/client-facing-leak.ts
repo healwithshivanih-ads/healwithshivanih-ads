@@ -31,6 +31,7 @@ export const CLIENT_FACING_PLAN_FIELDS = [
   "lab_orders[].test",
   "supplement_protocol[].client_note",
   "lifestyle_practices[].client_note",
+  "lifestyle_practices[].name",
 ] as const;
 
 export interface LeakHit {
@@ -49,11 +50,19 @@ const THIRD_PERSON =
 const COACH_REGISTER =
   /\b(?:coach|physician|clinician|referral|plan-check|rationale|contraindicat\w*|prescrib\w*|titrat\w*|differential|work-?up|monitor(?:ing)? labs?|per protocol|caveat|flagged?|red flag)\b/i;
 
-/** A lab marker named INSIDE prose. The Lab Vault renders values structurally
- *  and is fine; this is about a marker turning up mid-sentence in a food or
- *  lab-order line, which always means clinical prose leaked. */
-const MARKER_IN_PROSE =
-  /\b(?:hba1c|hs-?crp|ggt|ast\/alt|apo-?b|lp\(a\)|homa-?ir|ferritin|homocysteine|microalbumin|creatinine|tsh|ft3|ft4|egfr|acr)\b/i;
+/** A lab marker quoted WITH ITS VALUE — "given her ferritin 18", "while HOMA-IR
+ *  is healthy at 1.2". That is a chart reading pasted into client text.
+ *
+ *  Naming a marker as a CONCEPT is legitimate and must not fire: "supports
+ *  healthy homocysteine levels" and "helps your thyroid cells respond to TSH"
+ *  are exactly how you explain a supplement to someone. The first version of
+ *  this rule flagged all 5 of those and would have taught everyone to ignore
+ *  the guard. The number is the tell, not the marker. */
+const MARKER = "hba1c|hs-?crp|ggt|ast\\/alt|apo-?b|lp\\(a\\)|homa-?ir|ferritin|homocysteine|microalbumin|creatinine|tsh|ft3|ft4|egfr|acr";
+const MARKER_IN_PROSE = new RegExp(
+  `\\b(?:${MARKER})\\b[^.;]{0,14}?\\d|\\d[^.;]{0,14}?\\b(?:${MARKER})\\b`,
+  "i",
+);
 
 /** Prescription-strength drug talk. Named medicines belong in the medication
  *  list, not woven into client instructions. */
@@ -131,8 +140,13 @@ export function findClientFacingLeaks(plan: Record<string, unknown>): LeakHit[] 
     check(`lab_orders[${i}].test`, l.test, out);
   for (const [i, s] of arr(plan.supplement_protocol).entries())
     check(`supplement_protocol[${i}].client_note`, s.client_note, out);
-  for (const [i, p] of arr(plan.lifestyle_practices).entries())
+  for (const [i, p] of arr(plan.lifestyle_practices).entries()) {
     check(`lifestyle_practices[${i}].client_note`, p.client_note, out);
+    // The practice NAME is a headline on the client's Today screen. Missed in
+    // the first pass, and it was leaking: "Alcohol — eat first, count it, and
+    // change it WITH HIS doctor" was on a real client's phone.
+    check(`lifestyle_practices[${i}].name`, p.name, out);
+  }
 
   return out;
 }
