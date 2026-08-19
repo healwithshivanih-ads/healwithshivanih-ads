@@ -793,6 +793,20 @@ class Client(BaseModel):
     energy_pattern: str = ""             # morning vs afternoon vs evening energy; crashes; second wind
     menstrual_notes: str = ""            # cycle length, PMS symptoms/timing, pain, flow, mood shifts (women)
 
+    # ── Pre-discovery intake — the three questions that open the first call ───
+    # The short pre-discovery form (pre-discovery-form.tsx) asks these before
+    # the client has signed up. They were collected and then dropped: the form
+    # posted them, `_apply_submit`'s allowlist had no entry for any of the
+    # three, and the only surviving copy was the raw payload buried in the
+    # audit session's `ai_analysis.raw_intake_payload`. cl-007 and cl-022 both
+    # typed real clinical detail here in 2026 that never reached their record
+    # (found 2026-08-19). `retrospective-tier1.ts` had ALREADY been written to
+    # read `client.chief_complaint` in five places and was silently reading
+    # undefined every time.
+    chief_complaint: str = ""            # "what brings you here" — the client's own framing
+    when_last_well: str = ""             # onset anchor for the IFM timeline ("End of Feb 2026")
+    top_symptoms: str = ""               # the client's own ranked symptom list, free text
+
     # ── Cycle sync (women clients) ─────────────────────────────────────
     # Used by the plan generator to phase-sync nutrition + movement.
     # cycle_status drives behaviour: 'menstruating' → use LMP + length to

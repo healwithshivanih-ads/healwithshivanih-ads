@@ -164,8 +164,12 @@ export default async function FullAssessmentPage({
 
   // Build the intake snapshot.
   const intakeSnapshot = {
+    // Strip the provenance tag, whichever kind it is. The intake questionnaire
+    // writes `[source: client_intake_form] <the client's own words>`; coach-run
+    // sessions write `[session_type: ...]`. Only the tag goes — the text after
+    // it is what the client actually said and is the whole point of the field.
     chief_complaint: latestIntake?.presenting_complaints?.replace(
-      /^\[session_type:[^\]]+\]\s*/,
+      /^\[(?:session_type|source):[^\]]+\]\s*/,
       "",
     ),
     conditions: asStrArray(c.active_conditions),

@@ -1,0 +1,30 @@
+id: glp1-receptor-agonist-prescribing-information
+title: GLP-1 / dual GIP-GLP-1 receptor agonists — approved prescribing information
+source_type: clinical_guideline
+quality: high
+authors:
+  - "US FDA / EMA approved product labelling (semaglutide, liraglutide, dulaglutide, exenatide, tirzepatide)"
+notes: >-
+  The regulator-approved labelling for the incretin-mimetic class: semaglutide
+  (Ozempic, Rybelsus, Wegovy), liraglutide (Victoza, Saxenda), dulaglutide
+  (Trulicity), exenatide (Byetta, Bydureon) and the dual GIP/GLP-1 agonist
+  tirzepatide (Mounjaro, Zepbound). Used here for the class facts that are
+  stated on every one of those labels and are not in clinical dispute:
+  indications (type 2 diabetes and/or chronic weight management), delayed
+  gastric emptying and the GI adverse-effect profile, the boxed warning for
+  thyroid C-cell tumours (contraindicated in personal or family history of
+  medullary thyroid carcinoma or MEN 2), pancreatitis and gallbladder-disease
+  warnings, dehydration/acute-kidney-injury warning, and the hypoglycaemia
+  warning when combined with insulin or a sulfonylurea.
+
+  NOT the source for the functional-medicine layer built on top of it. The
+  lean-mass and micronutrient-adequacy cautions in the drug entry are reasoned
+  from the mechanism (a large, sustained drop in energy intake) rather than
+  quoted from a label, and are tiered accordingly — see the entry's
+  evidence_tier and coach_note. Upgrade those if someone reads the body-
+  composition trial literature (e.g. the STEP and SURMOUNT programmes)
+  properly and cites it directly.
+version: 1
+status: active
+updated_at: 2026-08-19
+updated_by: Shivani

@@ -14,6 +14,13 @@ drug_aliases:
 - telma
 - olmesartan
 - olmecip
+# Indian olmesartan brand. Added 2026-08-19 from a real client record: cl-023
+# wrote "Blood pressure olmin 20" at intake, nothing matched, and he carried no
+# Hypertension in active_conditions despite being on an ARB. Add Indian brands
+# here as client records surface them — that is the house rule for this
+# catalogue (class entry + every brand, incl. Indian), and an unmatched brand
+# fails silently rather than loudly.
+- olmin
 - candesartan
 - valsartan
 - ace-inhibitor

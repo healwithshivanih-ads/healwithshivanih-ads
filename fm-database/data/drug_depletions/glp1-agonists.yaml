@@ -1,0 +1,220 @@
+slug: glp1-agonists
+drug_name: GLP-1 receptor agonists (incl. dual GIP/GLP-1)
+drug_aliases:
+  # ── molecules ──
+  - semaglutide
+  - liraglutide
+  - dulaglutide
+  - exenatide
+  - tirzepatide            # dual GIP/GLP-1
+  - glp-1
+  - glp1
+  - glp-1 agonist
+  - glp-1 receptor agonist
+  # ── brands (global + the ones dispensed in India) ──
+  - ozempic
+  - rybelsus               # oral semaglutide
+  - wegovy
+  - victoza
+  - saxenda
+  - trulicity
+  - byetta
+  - bydureon
+  - mounjaro
+  - zepbound
+  # Common misspellings — clients type these into intake free-text. Without
+  # them the entry does not match and the record silently lists the same drug
+  # twice (cl-023 typed "Monjaro", 2026-08-19).
+  - monjaro
+  - mounjara
+  - manjaro
+  - ozempick
+  - semaglutid
+drug_class: glp1_agonist
+summary: >-
+  Incretin mimetics for type 2 diabetes and/or chronic weight management. They
+  work largely by suppressing appetite and slowing gastric emptying, so the
+  clinically important thing for a coach is not a classical nutrient-depletion
+  mechanism but a sustained, often large, drop in how much food the client
+  eats. Protein adequacy and resistance training become the difference between
+  losing fat and losing muscle; micronutrient adequacy stops being automatic.
+depletes: []
+# NB: deliberately EMPTY. This class has no established pharmacological
+# depletion the way metformin depletes B12 (ileal absorption) or PPIs deplete
+# magnesium. The real nutrient risk is intake-mediated — the client is simply
+# eating much less — so it is expressed as `monitor` / `prefer_food` cautions
+# below instead. Writing invented mechanisms into `depletes` would put a
+# fabricated pharmacological claim into the letter generator, which binds
+# protocol_cautions as HARD RULES.
+condition_implications:
+  - label: Type 2 diabetes / insulin resistance
+    confidence: moderate
+    rationale: >-
+      Ozempic, Rybelsus, Victoza, Trulicity, Byetta and Mounjaro are all
+      approved for type 2 diabetes. Moderate rather than high because the same
+      molecules are approved for weight management alone (Wegovy, Saxenda,
+      Zepbound), so the drug on its own does not prove a diabetes diagnosis.
+    topic_slug: insulin-resistance
+  # Label must read exactly "Obesity" — the free-text heuristics in
+  # _derive_conditions_from_intake add that bare string, and the
+  # suspected-vs-confirmed reconciliation in `add()` matches on the label text.
+  # "Obesity / chronic weight management" looked tidier and produced two rows.
+  - label: Obesity
+    confidence: moderate
+    rationale: >-
+      The weight-management indications cover clients with a raised BMI and no
+      diabetes at all. Moderate for the mirror-image reason — a client on
+      Ozempic may be taking it purely for glycaemic control.
+    topic_slug: midlife-weight-gain
+protocol_cautions:
+  # ── the one that changes the whole plan ──
+  - kind: prefer_food
+    item: Protein at every meal — aim at the upper end of the client's floor
+    severity: warning
+    reason: >-
+      Appetite suppression is the mechanism, so intake falls sharply and
+      protein is usually the first thing crowded out. Rapid weight loss without
+      adequate protein plus resistance training costs lean mass, which lowers
+      resting metabolic rate and sets up regain once the drug stops. Protein
+      first, at every meal, even when the client is not hungry.
+  - kind: avoid_practice
+    item: Prolonged fasting, very-low-calorie phases, skipped meals
+    severity: warning
+    reason: >-
+      Intermittent fasting stacks on top of the drug's own appetite
+      suppression. The combination drives intake low enough to threaten protein
+      and micronutrient adequacy, and raises hypoglycaemia risk if the client is
+      also on insulin or a sulfonylurea. If the client already fasts, shorten
+      the window rather than lengthening it.
+  - kind: monitor
+    item: Lean mass — resistance training 2-3x/week is the counterweight
+    severity: warning
+    reason: >-
+      The other half of the protein caution above; neither works well alone.
+      There is no `prefer_practice` caution kind, so this is filed as a monitor
+      deliberately — the thing being monitored is lean mass, and the action is
+      to keep resistance training in the plan for as long as the client is
+      losing weight quickly.
+  # ── gastrointestinal ──
+  - kind: avoid_food
+    item: Large, high-fat, or very high-fibre meals — especially when titrating up
+    severity: info
+    reason: >-
+      Gastric emptying is already delayed. Big or fatty meals sit, and the
+      nausea, early satiety, reflux and vomiting that follow are the usual
+      reason clients stop the drug. Smaller, more frequent, lower-fat meals;
+      raise fibre gradually with fluids.
+  - kind: monitor
+    item: Constipation and bowel-habit change
+    severity: info
+    reason: >-
+      Very common on this class and easily mistaken for a gut-dysbiosis picture
+      the protocol should be chasing. Ask directly before attributing bowel
+      change to diet — cl-023 reported exactly this as "unpredictable bowel
+      movements" in his GLP-1 side-effect field.
+  # ── monitoring ──
+  - kind: monitor
+    item: B12, iron, folate, vitamin D, calcium — micronutrient adequacy
+    severity: info
+    reason: >-
+      Not a depletion effect; a consequence of eating substantially less for
+      months. Worth checking at 6-12 months on the drug, and sooner if the
+      client is also vegetarian or on metformin (which does deplete B12
+      pharmacologically).
+  - kind: monitor
+    item: Hydration
+    severity: warning
+    reason: >-
+      Nausea, vomiting and diarrhoea cause volume depletion, and the labels
+      carry an acute-kidney-injury warning on that basis. Clients who have
+      stopped feeling thirsty need an explicit fluid habit, not a reminder to
+      "drink when thirsty".
+  # ── the hard stops ──
+  - kind: refer
+    item: Personal or family history of medullary thyroid carcinoma or MEN 2
+    severity: critical
+    reason: >-
+      Boxed contraindication on every product in this class. If a client
+      discloses either at intake, that belongs with their prescriber
+      immediately — it is not a coaching decision.
+  - kind: refer
+    item: Severe, persistent abdominal pain radiating to the back
+    severity: critical
+    reason: >-
+      Labelled pancreatitis warning. Same-day medical review, stop the drug per
+      prescriber. Never coach through this symptom.
+  - kind: refer
+    item: Rapid weight loss with right-upper-quadrant pain — gallstones
+    severity: warning
+    reason: >-
+      Gallbladder disease is a labelled adverse event and rapid weight loss is
+      independently lithogenic. Relevant to protocol choice too: this is the
+      client for whom a gallbladder-contraindicated remedy (golden milk, high-
+      dose fat flushes) is a bad idea.
+  - kind: avoid_supplement
+    item: berberine
+    severity: warning
+    reason: >-
+      Additive glucose-lowering on top of an incretin mimetic, and materially
+      risky if the client is also on insulin or a sulfonylurea. If glycaemic
+      support is wanted, coordinate with the prescriber rather than stacking.
+timing_separations:
+  - >-
+    Delayed gastric emptying can slow absorption of ORAL medicines taken with a
+    meal. Clinically important for narrow-therapeutic-index drugs and for
+    levothyroxine, which already wants an empty stomach — keep it well clear of
+    food as usual and flag any dose-response change to the prescriber.
+  - >-
+    Oral semaglutide (Rybelsus) has its own strict rule: 30 minutes before the
+    first food, drink or other oral medicine of the day, with no more than
+    ~120 mL plain water. Any supplement moved into that window will block it.
+contraindicated_supplements:
+  - berberine
+monitoring_labs:
+  - HbA1c + fasting insulin — at baseline and 3-6 monthly
+  - B12, ferritin, vitamin D — at 6-12 months on the drug, sooner if vegetarian or on metformin
+  - Body composition (or at minimum waist + a strength marker) — lean mass is the thing at risk
+coach_notes: >-
+  THE COACHING JOB ON THIS DRUG IS BODY COMPOSITION, NOT WEIGHT. The scale
+  moves on its own; what the client keeps is up to the protocol. Protein at the
+  top of their range plus resistance training 2-3x/week is the whole
+  intervention, and it needs saying early — the window where the client is
+  losing fastest is the window where lean mass goes.
+
+  Ask about GI symptoms explicitly at every check-in. Nausea, early satiety,
+  reflux and constipation are the top reasons clients quit, and they read
+  exactly like the gut picture an FM protocol would otherwise chase. Attribute
+  them to the drug before rebuilding the meal plan around a dysbiosis theory.
+
+  Screen at intake for the two hard stops: medullary thyroid carcinoma / MEN 2
+  in the client or their family, and any history of pancreatitis. Both go to
+  the prescriber, not into a plan.
+
+  Watch for the stacking error: a client on a GLP-1 who also fasts, also takes
+  berberine, and is also being pushed toward a calorie deficit by the plan. Any
+  one of those is reasonable; together they are how a client ends up
+  under-eating protein badly while their labs look fine.
+linked_to_topics:
+  - insulin-resistance
+  - type-2-diabetes
+  - midlife-weight-gain
+  - sarcopenia-skeletal-muscle-loss
+  - protein-adequacy-vegetarian
+  - vitamin-b12
+  - hypoglycemia
+  - gallstones
+linked_to_mechanisms: []
+sources:
+  - id: glp1-receptor-agonist-prescribing-information
+    location: Approved product labelling — indications, warnings and precautions, adverse reactions
+    quote: >-
+      Class labelling establishes the indications (type 2 diabetes and/or
+      chronic weight management), delayed gastric emptying, the GI adverse-
+      effect profile, the boxed thyroid C-cell contraindication in medullary
+      thyroid carcinoma / MEN 2, and the pancreatitis, gallbladder,
+      dehydration/AKI and hypoglycaemia-with-insulin-or-sulfonylurea warnings.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-08-19
+updated_by: Shivani
