@@ -86,21 +86,14 @@ notes_for_coach: 'STUB — dose deliberately blank. FM stance is FOOD-FIRST for 
 
   needs vitamin D, K2, magnesium, weight-bearing exercise, protein,
 
-  and gut absorption — not just calcium dosing. Calcium supplementation is rarely the correct first
-  intervention for low serum calcium. Coaches should encourage clients to work with their clinician
-  to rule out albumin deficiency, magnesium deficiency, low vitamin D, and hypochlorhydria before
-  assuming dietary calcium supplementation is needed.'
-notes_for_client: 'Calcium for your bones.
+  and gut absorption — not just calcium dosing. Calcium supplementation is rarely the correct first intervention
+  for low serum calcium. Coaches should encourage clients to work with their clinician to rule out albumin
+  deficiency, magnesium deficiency, low vitamin D, and hypochlorhydria before assuming dietary calcium
+  supplementation is needed.'
+notes_for_client: 'Calcium for your bones — though most people get enough from food.
 
-  Keep it a few hours from iron or a thyroid tablet — together they block each other.
-
-  Most people get what they need from food — dairy, ragi, sesame, leafy greens, small
-  fish with bones — and bones depend on vitamin D, K2, magnesium, protein and
-  weight-bearing movement together, not calcium alone.
-
-  A low calcium reading on a blood test does not by itself mean you need a supplement.
-  Please check with your doctor before starting one — protein, magnesium and vitamin D
-  are often the real reason.'
+  A low reading doesn''t always mean you need a supplement, so check with your doctor before starting
+  one.'
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md (referenced via magnesium spacing rule)
@@ -114,8 +107,8 @@ sources:
   quote: Comprehensive natural prevention + treatment of osteoporosis.
 - id: coconote-fm-calcium-deficiency
   location: Causes of Low Serum Calcium
-  quote: If you find out the low calcium in the serum, that doesn't mean that patient is deficient
-    in calcium and they require calcium supplementation.
+  quote: If you find out the low calcium in the serum, that doesn't mean that patient is deficient in
+    calcium and they require calcium supplementation.
 evidence_tier: confirm_with_clinician
 version: 4
 status: active
