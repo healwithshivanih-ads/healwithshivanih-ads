@@ -380,6 +380,10 @@ interface SuppLike {
   dose: string;
   slot: string;
   timing: string;
+  /** "What is this one for?" — the coach's client_note, else the scrubbed
+   *  rationale. Computed in client-app.ts and shipped in the payload since
+   *  the feature landed, but nothing rendered it until 2026-08-19. */
+  why?: string;
 }
 
 export function SuppRow({
@@ -398,6 +402,8 @@ export function SuppRow({
   onOpen?: () => void;
 }) {
   const [pop, setPop] = useState(false);
+  const [showWhy, setShowWhy] = useState(false);
+  const why = (supp.why || "").trim();
   const handle = () => {
     if (!logged) {
       setPop(true);
@@ -435,6 +441,23 @@ export function SuppRow({
         ) : subline ? (
           <span className="dose">{subline}</span>
         ) : null}
+        {/* "What is this one for?" is the question clients ask most, and the
+            answer was being computed and shipped in the payload but never
+            rendered — the row showed only a name and a dose. Behind a toggle
+            rather than always-on so the schedule still scans as a checklist. */}
+        {why && (
+          <button
+            className="supp-why-toggle"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowWhy((v) => !v);
+            }}
+            aria-expanded={showWhy}
+          >
+            {showWhy ? "Why ▴" : "Why ▾"}
+          </button>
+        )}
+        {why && showWhy && <span className="supp-why">{why}</span>}
       </span>
       {pillTiming && <span className={"badge" + (supp.slot === "Bedtime" ? " forest" : "")}>{pillTiming}</span>}
     </div>

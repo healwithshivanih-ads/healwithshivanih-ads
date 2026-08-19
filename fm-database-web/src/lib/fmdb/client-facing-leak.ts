@@ -31,6 +31,7 @@ export const CLIENT_FACING_PLAN_FIELDS = [
   "lab_orders[].test",
   "supplement_protocol[].client_note",
   "lifestyle_practices[].client_note",
+  "lifestyle_practices[].name",
 ] as const;
 
 export interface LeakHit {
@@ -131,8 +132,13 @@ export function findClientFacingLeaks(plan: Record<string, unknown>): LeakHit[] 
     check(`lab_orders[${i}].test`, l.test, out);
   for (const [i, s] of arr(plan.supplement_protocol).entries())
     check(`supplement_protocol[${i}].client_note`, s.client_note, out);
-  for (const [i, p] of arr(plan.lifestyle_practices).entries())
+  for (const [i, p] of arr(plan.lifestyle_practices).entries()) {
     check(`lifestyle_practices[${i}].client_note`, p.client_note, out);
+    // The practice NAME is a headline on the client's Today screen. Missed in
+    // the first pass, and it was leaking: "Alcohol — eat first, count it, and
+    // change it WITH HIS doctor" was on a real client's phone.
+    check(`lifestyle_practices[${i}].name`, p.name, out);
+  }
 
   return out;
 }

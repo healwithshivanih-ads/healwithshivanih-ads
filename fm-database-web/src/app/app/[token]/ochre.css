@@ -1,0 +1,13 @@
+
+/* "Why ▾" on a supplement row — the answer to the question clients ask most.
+   Behind a toggle so the schedule still reads as a checklist at a glance. */
+.supp-why-toggle {
+  display: inline-block; margin-top: 3px; padding: 0;
+  background: none; border: none; cursor: pointer; font: inherit;
+  font-size: 12px; font-weight: 600; color: var(--ochre); letter-spacing: .01em;
+}
+.supp-why {
+  display: block; margin-top: 5px; padding: 8px 10px;
+  background: var(--ochre-tint); border-radius: 8px;
+  font-size: 13px; line-height: 1.5; color: var(--ink-2); white-space: pre-line;
+}
