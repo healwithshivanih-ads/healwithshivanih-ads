@@ -165,3 +165,56 @@ Medium-large — spans Python (plan/maintenance model + generators), the Next ap
 client app, so each shippable slice needs `flyctl deploy` + a smoke test. Best
 sequenced: data model + resolver first → Library/grace floor → maintenance mode
 → generators → renewal gate + nudges. Don't bolt onto a long session.
+
+---
+
+## Two gaps found in live use, 2026-08-20
+
+Both surfaced by reading a real graduated client's app (cl-017, LIBRARY since 19 Aug).
+
+### 1. The LIBRARY re-order list is unreviewed — needs a per-supplement flag
+
+**What happens now.** The LIBRARY floor renders EVERY supplement from the last published
+plan as a live "Re-order →" link, with the copy "your links don't expire". cl-017's floor
+offers seven, including berberine and iron, on a 4-week plan that ended 17 days ago. She opens
+the app most days. Nothing reviews whether she should still be on all seven, and nobody is
+watching the labs that justified them.
+
+Iron in particular should not sit on an open-ended re-order: it is the one where continuing
+unsupervised can do harm rather than nothing.
+
+**What it should do.** A per-item flag on `SupplementItem`, set by the coach before or at
+graduation, deciding what happens to that supplement when the plan ends:
+
+- `keep`    — safe to continue indefinitely; renders as today
+- `review`  — renders with a "check with Shivani first" note instead of a bare buy button
+- `stop`    — does not render on the floor at all
+
+Default must be `review`, not `keep`. A supplement nobody has thought about should not
+silently become a standing order.
+
+The client then chooses within a boundary the coach has set, rather than the app implying
+that everything they were ever prescribed is still indicated.
+
+### 2. The ACTIVE → REVIEW → LIBRARY transition is silent
+
+**What happens now.** The mode is computed per request from dates. Nothing announces the
+change: no warning that a plan is ending, no message when it does. cl-017 dropped from her plan
+to the frozen floor on 19 Aug and opened the app the next day to find it changed. cl-004 will
+do the same on 3 Sep.
+
+The floor copy is kind, but the first she knows is the screen being different.
+
+**What it should do.**
+- **Before**: an in-app note in the final week ("your programme finishes on <date> — here is
+  what stays"), so the change is expected rather than discovered.
+- **At the moment it flips**: a WhatsApp message. The nudge machinery already exists
+  (`review-nudges.ts` + `fm_review_checkin_v1`); what is missing is a trigger on the
+  REVIEW→LIBRARY edge, not new plumbing.
+- **A LIBRARY client who is still opening the app must stay visible to the coach.**
+  `listReviewNudgesAction` covers recheck −14…+15 and maintenance renewal only, so cl-017 fell
+  off the dashboard at +15 while still opening daily. Someone actively using the app after
+  their plan ended is the warmest renewal signal there is, and it is currently invisible.
+
+Neither is built. Both are behavioural changes to what real clients see and were left for the
+coach to decide.
