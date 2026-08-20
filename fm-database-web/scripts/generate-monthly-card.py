@@ -33,48 +33,79 @@ def _strs(v) -> list:
 
 
 # ── season → base do's / don'ts (Indian calendar) ────────────────────────────
-_SEASONS = {
-    "summer": (  # Apr–Jun
-        ["Hydrate steadily — coconut water, buttermilk, cucumber, lots of plain water",
-         "Lean on cooling foods (mint, fennel, melons) and lighter dinners",
-         "Move early morning or evening, out of the midday heat"],
+# ── One entry PER MONTH, not per season ─────────────────────────────────────
+# The seasonal table this replaced had four buckets covering 2-3 months each, so
+# any two months inside a bucket produced a BYTE-IDENTICAL card. October and
+# November both landed in "festival": a maintenance client paid in October, got
+# a card, and in November the same card arrived under a new heading. The monthly
+# card IS the recurring deliverable of a paid subscription — month two has to
+# read like it was written after month one, or the subscription answers itself.
+#
+# India-keyed: the festival calendar, the monsoon, and the wedding/travel season
+# move Indian eating more than the meteorological season does.
+_MONTHS = {
+    1: (["Warm, cooked breakfasts — the cold makes raw food harder to digest",
+         "Sesame, jaggery and ghee in small amounts — the traditional winter foods, and they earn it",
+         "Get out into the winter sun for 15 minutes; vitamin D is at its lowest now"],
+        ["Sitting all day because it's cold — circulation needs you to move",
+         "Letting the new-year reset become an all-or-nothing crash diet"]),
+    2: (["Keep the winter warmth going — soups, dals, root vegetables",
+         "Start easing back into morning movement as the mornings soften",
+         "Green garlic, methi and winter greens while they're still in the market"],
+        ["Late nights creeping back in as the season turns",
+         "Skipping breakfast once mornings get busier"]),
+    3: (["Bitter greens — neem, methi, karela — the traditional spring cleanse, and it holds up",
+         "Lighten dinners as the evenings warm",
+         "Start hydrating properly before the heat arrives, not after"],
+        ["Carrying winter's heavy, rich eating into the warm months",
+         "Holi sweets running on for a fortnight after the day itself"]),
+    4: (["Hydrate steadily — coconut water, buttermilk, cucumber, plain water",
+         "Cooling foods: mint, fennel, melons. Lighter dinners",
+         "Move early morning or after sundown, out of the midday heat"],
         ["Heavy fried or very spicy food in peak heat",
-         "Skipping water through a busy day",
-         "Strenuous exertion in the midday sun"],
-    ),
-    "monsoon": (  # Jul–Sep
-        ["Favour warm, freshly cooked food — soups, khichdi, sautéed veg",
-         "Add ginger, turmeric and a little black pepper for digestion",
-         "Drink boiled or filtered water; keep meals warm and simple"],
-        ["Raw salads, street food and pre-cut fruit (higher infection risk now)",
-         "Leftover or stored cooked greens",
-         "Heavy, cold, hard-to-digest foods in the evening"],
-    ),
-    "autumn": (  # Oct–Nov
-        ["Eat with the season — fresh local produce, steady regular meals",
-         "Support immunity with amla, tulsi and good sleep",
-         "Keep your routine steady through the festival weeks"],
-        ["Overdoing festival sweets and fried snacks day after day",
-         "Erratic sleep and late nights piling up",
-         "Skipping meals then over-eating later"],
-    ),
-    "winter": (  # Dec–Feb
-        ["Warming, nourishing food — soups, sesame, a little ghee, root veg",
-         "Get midday sun for vitamin D; keep moving for circulation",
-         "Warm spices (cinnamon, ginger) and warm water through the day"],
-        ["Excess refined carbs and sugar (easy to drift into in winter)",
-         "Long sedentary days without movement",
-         "Cold, raw foods late in the evening"],
-    ),
-    "spring": (  # Mar
-        ["Lighter, detox-friendly foods — bitter greens, methi, seasonal veg",
-         "A gentle spring-clean of habits: earlier nights, more movement",
-         "Stay hydrated as the weather warms"],
-        ["Heavy, mucus-forming foods (excess dairy, deep-fried)",
-         "Letting allergens build up — keep your space aired and clean",
-         "Skipping breakfast then grazing all day"],
-    ),
+         "Strenuous exertion in the midday sun"]),
+    5: (["Salt AND water — in this heat plain water alone isn't enough",
+         "Curd, chaas and sattu; keep meals small and frequent",
+         "Watch for the afternoon slump — it's usually dehydration, not hunger"],
+        ["Chilled drinks straight from the fridge on an empty stomach",
+         "Cutting meals in the heat and then over-eating at night"]),
+    6: (["Ease into monsoon eating — warm, freshly cooked, simple",
+         "Ginger and turmeric as the humidity climbs",
+         "Boiled or filtered water from here on"],
+        ["Raw and cold food as the damp sets in — digestion is already slowing",
+         "Cut fruit and juices from outside once the rains start"]),
+    7: (["Warm, freshly cooked food — soups, khichdi, sautéed vegetables",
+         "Ginger, turmeric and a little black pepper for digestion",
+         "Keep meals simple; this is the month digestion is weakest"],
+        ["Raw salads, street food and pre-cut fruit — infection risk is highest now",
+         "Leftover or stored cooked greens"]),
+    8: (["Keep food warm and cooked through while the damp holds",
+         "Immunity foods — amla, tulsi, haldi doodh",
+         "Protect sleep; the damp and the festival run-up both eat into it"],
+        ["Fried monsoon snacks becoming the daily habit",
+         "Damp-stored grains and flours — check before you cook"]),
+    9: (["Transition eating — lighter than monsoon, not yet cooling",
+         "Rebuild digestion after the monsoon: warm water, ginger before meals",
+         "Get ahead of the festival season while things are still calm"],
+        ["Carrying monsoon-season heaviness into the festival months",
+         "Letting the Ganesh sweets set the pattern for October"]),
+    10: (["Plan the festival weeks rather than riding them — decide in advance which days are the indulgent ones",
+          "Protein and vegetables FIRST at a festival meal; sweets after, on a fuller stomach",
+          "Keep your movement going through the festivities — it's what protects the sugars"],
+         ["Grazing on mithai across the whole month rather than on the days that matter",
+          "Erratic sleep piling up through the celebrations"]),
+    11: (["The post-Diwali reset — back to your regular plate this week, not in January",
+          "Warm, cooked food as the mornings cool; bring the greens back",
+          "Rebuild the routine that the festival weeks interrupted — sleep first, then meals"],
+         ["Letting festival leftovers stretch two weeks past the festival",
+          "Waiting for the new year to restart what you can restart now"]),
+    12: (["Warm, grounding food — the season and the wedding circuit both ask a lot of digestion",
+          "Winter sun and winter greens: sarson, bathua, methi",
+          "Hold your basics through the party season; one good meal a day anchors the rest"],
+         ["Back-to-back late nights and rich food with no recovery day between",
+          "Treating December as a write-off before it's even started"]),
 }
+
 
 
 def _season(month: int) -> str:
@@ -111,20 +142,22 @@ _CONDITION_RULES = [
 
 def _build_card(month_str: str, conditions: list) -> dict:
     dt = datetime.strptime(month_str, "%Y-%m")
-    season = _season(dt.month)
-    dos, donts = _SEASONS[season]
+    dos, donts = _MONTHS[dt.month]
     dos = list(dos)
     donts = list(donts)
 
+    # Rotate WHICH of the client's matching condition rules get the emphasis, so
+    # a client with three relevant conditions hears about a different one each
+    # month instead of the same two forever. Deterministic (keyed on the month),
+    # so regenerating the same month is idempotent.
     cond_text = " ".join(conditions).lower()
-    added = 0
-    for keys, do, dont in _CONDITION_RULES:
-        if added >= 2:
-            break
-        if any(k in cond_text for k in keys):
+    matches = [(do, dont) for keys, do, dont in _CONDITION_RULES
+               if any(k in cond_text for k in keys)]
+    if matches:
+        offset = (dt.year * 12 + dt.month) % len(matches)
+        for do, dont in [matches[(offset + i) % len(matches)] for i in range(min(2, len(matches)))]:
             dos.append(do)
             donts.append(dont)
-            added += 1
 
     return {
         "month": month_str,
