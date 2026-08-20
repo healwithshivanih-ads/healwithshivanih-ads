@@ -39,30 +39,28 @@ linked_to_claims:
 - probiotic-supplement-needed-for-2-months-post-antibiotics
 - gut-flora-disrupted-by-antibiotics-statins-painkillers
 notes_for_coach: Emphasize strain diversity; single-strain supplementation is often insufficient.
-  Introduce after enzyme and HCL support are established. Typical duration 6 weeks minimum
-  for SIBO/SIFO. Recommend after any antibiotic course for a minimum of 2 months. Pair with
-  prebiotic fibre diversity (7+ varieties per meal) to feed the organisms. Source is an expert
-  practitioner talk; verify specific strain and dose with a clinician.
-notes_for_client: Probiotics help re-establish a diverse, healthy community of gut bacteria.
-  Different conditions call for different strains — your provider will guide the right combination
-  for you. A probiotic powder or capsule containing Lactobacillus acidophilus and Bifidobacterium
-  can help rebuild your gut's beneficial bacteria after antibiotics or gut disruption. Take
-  in the morning, ideally away from food.
+  Introduce after enzyme and HCL support are established. Typical duration 6 weeks minimum for SIBO/SIFO.
+  Recommend after any antibiotic course for a minimum of 2 months. Pair with prebiotic fibre diversity
+  (7+ varieties per meal) to feed the organisms. Source is an expert practitioner talk; verify specific
+  strain and dose with a clinician.
+notes_for_client: 'The two best-studied families of friendly gut bacteria.
+
+  Take them consistently rather than now and then — the benefit comes from keeping it steady.'
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-sibo-sifo
   location: SIFO Treatment Protocol
-  quote: Probiotics like lactobacillus and if so, we have to maintain different strains of
-    bacterial species as well, daily for a period of 6 weeks.
+  quote: Probiotics like lactobacillus and if so, we have to maintain different strains of bacterial
+    species as well, daily for a period of 6 weeks.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
 - id: barbara-oneil-gi-tract
   location: Probiotic Section
-  quote: If a person's been on antibiotics, they need to take a probiotic supplement every
-    morning for at least two months. Probiotic is a powder that contains lactobacillus acidophilus,
-    bifidus bacterium and quite possibly a few others.
+  quote: If a person's been on antibiotics, they need to take a probiotic supplement every morning
+    for at least two months. Probiotic is a powder that contains lactobacillus acidophilus, bifidus
+    bacterium and quite possibly a few others.
 version: 5
 status: active
 updated_at: '2026-08-09'

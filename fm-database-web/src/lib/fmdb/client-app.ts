@@ -74,7 +74,7 @@ import {
   type DiscoverySummary,
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
-import { resolveAppMode, GRACE_DAYS, REVIEW_LEAD_DAYS, SHORT_PLAN_MAX_WEEKS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { resolveAppMode, resolveFinalStretch, GRACE_DAYS, REVIEW_LEAD_DAYS, SHORT_PLAN_MAX_WEEKS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
 import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
 import {
@@ -936,6 +936,12 @@ export interface EndgameInfo {
    *  false on/after it (actually reached). Drives "final stretch" vs "finish
    *  line" copy so we never tell an in-protocol client they're done early. */
   approaching: boolean;
+  /** REVIEW only, and only in the last FINAL_STRETCH_DAYS before the effective
+   *  recheck: the dated "your programme finishes on X — and here's what stays"
+   *  heads-up, so the switch to the frozen floor is expected rather than
+   *  discovered. Null outside that window (incl. once the date has passed, where
+   *  the graduation copy takes over). See resolveFinalStretch in app-mode.ts. */
+  finishingSoon: { daysLeft: number; dateLabel: string } | null;
   /** MAINTENANCE / GRACE: paid-through date + human label. */
   paidThrough: string | null;
   paidThroughLabel: string | null;
@@ -1046,6 +1052,10 @@ export function buildEndgame(
   if (res.mode === "ACTIVE") return { mode: "ACTIVE", endgame: null };
 
   const recheck = plan ? effectiveRecheckDate(plan, recheckOpts) : null;
+  // The final-week heads-up. Same recheckOpts as everything else here, so a
+  // client who paused for travel is told their EXTENDED finish date, not the
+  // date they would have finished had they never travelled.
+  const finalStretch = resolveFinalStretch(res.mode, plan, todayYmd, recheckOpts);
   const graceUntil =
     res.mode === "GRACE" && paidThrough ? addDaysUtcYmd(paidThrough, GRACE_DAYS) : null;
 
@@ -1073,6 +1083,9 @@ export function buildEndgame(
       recheckDate: recheck,
       recheckLabel: recheck ? formatLongDate(recheck) : null,
       approaching: !!recheck && todayYmd < recheck,
+      finishingSoon: finalStretch
+        ? { daysLeft: finalStretch.daysLeft, dateLabel: formatLongDate(finalStretch.recheckDate) }
+        : null,
       paidThrough,
       paidThroughLabel: paidThrough ? formatLongDate(paidThrough) : null,
       graceUntilLabel: graceUntil ? formatLongDate(graceUntil) : null,

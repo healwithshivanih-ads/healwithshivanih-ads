@@ -19,12 +19,11 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Prioritize enzyme support early in gut healing protocols before introducing
-  complex herbals or probiotics. Fecal elastase-1 on GI map indicates deficiency. Recommend
-  broad-spectrum formulas containing lipase, protease, and amylase taken with main meals.
-  Prescription pancreatic enzyme replacement (e.g., Creon) is out of coaching scope — refer
-  to clinician for confirmed EPI. Source is expert consensus lecture; verify specific dosing
-  with prescribing clinician.
+notes_for_coach: Prioritize enzyme support early in gut healing protocols before introducing complex
+  herbals or probiotics. Fecal elastase-1 on GI map indicates deficiency. Recommend broad-spectrum
+  formulas containing lipase, protease, and amylase taken with main meals. Prescription pancreatic
+  enzyme replacement (e.g., Creon) is out of coaching scope — refer to clinician for confirmed EPI.
+  Source is expert consensus lecture; verify specific dosing with prescribing clinician.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - liver-detoxification
@@ -51,10 +50,10 @@ linked_to_claims:
 - 5rs-replace-enzymes-hcl
 - digestive-enzyme-supplementation-supports-macronutrient-breakdown
 - smaller-meals-and-chewing-support-enzyme-function
-notes_for_client: Digestive enzymes help your body break down food more completely, reducing
-  the fermentable substrate available to overgrown bacteria. Digestive enzyme capsules taken
-  with meals help your body break down fats, proteins, and carbohydrates when your pancreas
-  isn't producing enough on its own. Take them at the start of each meal for best effect.
+notes_for_client: 'Helps break food down when your own digestion needs a hand — less heaviness after
+  eating.
+
+  Take them at the START of the meal, not after it.'
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
@@ -67,34 +66,34 @@ sources:
   quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Replace
-  quote: 'Replace digestive secretions: add back things like digestive enzymes, hydrochloric
-    acid, and bile acids that are required for proper digestion.'
+  quote: 'Replace digestive secretions: add back things like digestive enzymes, hydrochloric acid,
+    and bile acids that are required for proper digestion.'
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Replace Section
-  quote: when you give any kind of enzymes give your blood spectrum enzymes they should be
-    contained in the lipolysis for your fat and protein to consider them
+  quote: when you give any kind of enzymes give your blood spectrum enzymes they should be contained
+    in the lipolysis for your fat and protein to consider them
 - id: coconote-fm-hypochlorhydria
   location: Treatment / Supports for Gastric Acid
   quote: So the digestive enzymes, stress management can be used.
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Replace
-  quote: if patient having any kind of pancreatic enzyme insufficiency, then we have to replace
-    that pancreatic enzyme.
+  quote: if patient having any kind of pancreatic enzyme insufficiency, then we have to replace that
+    pancreatic enzyme.
 - id: coconote-fm-sibo-sifo
   location: GI Map / Treatment Protocol
-  quote: First fix that. The rest we will see later. The probiotics and the prebiotics. First
-    we have to fix on the digestive enzyme dysfunction.
+  quote: First fix that. The rest we will see later. The probiotics and the prebiotics. First we have
+    to fix on the digestive enzyme dysfunction.
 - id: coconote-fm-pancreatic-insufficiency
   location: Management / Support Strategies
-  quote: Digestive enzymes as supplementation, which should be given to support the production
-    and breakdown of the food.
+  quote: Digestive enzymes as supplementation, which should be given to support the production and
+    breakdown of the food.
 version: 9
 status: active
 updated_at: '2026-08-09'
 updated_by: shivani
 pregnancy_safety: likely_safe
 lactation_safety: likely_safe
-pregnancy_safety_note: Generally well-tolerated. Avoid plant-based proteases in first trimester
-  out of caution.
+pregnancy_safety_note: Generally well-tolerated. Avoid plant-based proteases in first trimester out
+  of caution.
 aliases:
 - digestive-enzymes-broad-spectrum

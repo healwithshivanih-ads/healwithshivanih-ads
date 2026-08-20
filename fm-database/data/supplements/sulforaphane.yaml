@@ -39,10 +39,10 @@ notes_for_coach: 'Isothiocyanate from cruciferous vegetables — especially broc
 
   daily is a commonly cited culinary dose. Heat-sensitive — raw or
 
-  lightly steamed cruciferous preserve more activity. Clinical study dose: 70 g/day fresh
-  broccoli sprouts (420 µmol SF precursor) for 8 weeks. Decreased urea breath test, H. pylori
-  stool antigen, and serum pepsinogens I & II. Sprout potency varies; standardised extract
-  capsules may be used as alternative.'
+  lightly steamed cruciferous preserve more activity. Clinical study dose: 70 g/day fresh broccoli
+  sprouts (420 µmol SF precursor) for 8 weeks. Decreased urea breath test, H. pylori stool antigen,
+  and serum pepsinogens I & II. Sprout potency varies; standardised extract capsules may be used as
+  alternative.'
 evidence_tier: strong
 linked_to_topics:
 - estrogen-dominance
@@ -56,30 +56,29 @@ linked_to_mechanisms:
 linked_to_claims:
 - emotional-stress-cascade-chronic-disease
 - sulforaphane-broccoli-sprouts-reduces-h-pylori-colonisation
-notes_for_client: Sulforaphane, found in broccoli sprouts, activates your body's own antioxidant
-  and detox defenses. Broccoli sprouts contain a compound called sulforaphane that has been
-  shown in clinical studies to reduce H. pylori activity in the stomach. Aim for a large handful
-  daily.
+notes_for_client: 'A concentrated broccoli compound that supports your body''s own clearing-out pathways.
+
+  Take it away from a hot meal — heat reduces what it does.'
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Sulforaphane (from Broccoli Extract) - Detox, antioxidant, NRF2 activator - 50–100
-    mg/day - With meals
+  quote: Sulforaphane (from Broccoli Extract) - Detox, antioxidant, NRF2 activator - 50–100 mg/day
+    - With meals
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Detoxification Pathways — Clinical Support Strategy
   quote: Crucifers, DIM, I3C, green tea, sulforaphane — Induce liver detox enzymes (CYP1A1).
 - id: vitaone-adrenal-cheatsheet
   location: Organ–Emotion Axis (p.11)
-  quote: 'Liver: Anger, resentment. Detox support (Sulforaphane, NAC, bitters), emotional
-    release practices.'
+  quote: 'Liver: Anger, resentment. Detox support (Sulforaphane, NAC, bitters), emotional release
+    practices.'
 - id: minich-detox-basics-fmca-transcript
   location: Phytonutrients and Phase 2 section
   quote: One of my favorites is sulforaphane, which can help to induce Phase 2
 - id: pizzorno-textbook-hpylori
   location: Nutritional Factors — Cabbage, p. 783
-  quote: Clinically, broccoli sprouts (70 g/day; containing 420 mmol of SF precursor) for
-    8 weeks decreased levels of urease (urea breath test and H. pylori stool antigen, biomarkers
-    of H. pylori colonization) and serum pepsinogens I and II (biomarkers of gastric inflammation).
+  quote: Clinically, broccoli sprouts (70 g/day; containing 420 mmol of SF precursor) for 8 weeks
+    decreased levels of urease (urea breath test and H. pylori stool antigen, biomarkers of H. pylori
+    colonization) and serum pepsinogens I and II (biomarkers of gastric inflammation).
 version: 5
 status: active
 updated_at: '2026-08-09'

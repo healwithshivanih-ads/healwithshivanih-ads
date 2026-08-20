@@ -47,17 +47,16 @@ linked_to_claims:
 - murray-vitamin-d-osteoporosis-5000iu-target
 - murray-vitamin-k2-mk7-osteocalcin
 - vitamin-d3-k2-preferred-combination
-notes_for_coach: Even when vitamin D levels appear 'normal' on standard ranges, higher-dose
-  D3 has been researched for autoimmune/psoriatic conditions. K2 is co-administered to direct
-  calcium appropriately. High-dose D3 (above 4000 IU) should be supervised by a clinician
-  with monitoring of serum 25(OH)D. The preferred ratio cited is 5,000 IU D3 with 200 mcg
-  K2. This combination is ideal for most supplementation protocols as it provides both calcium
-  absorption support (D3) and calcium direction to bone (K2). Always recommend with fat-containing
-  food. Clinician guidance needed for dose adjustment based on blood levels.
-notes_for_client: Vitamin D3 supports your immune system and skin health. K2 works with D3
-  to direct calcium where it belongs. Take with a fat-containing meal. A combined D3+K2 supplement
-  gives you both vitamins in one — helping your body absorb calcium AND put it in the right
-  place (your bones, not your arteries).
+notes_for_coach: Even when vitamin D levels appear 'normal' on standard ranges, higher-dose D3 has
+  been researched for autoimmune/psoriatic conditions. K2 is co-administered to direct calcium appropriately.
+  High-dose D3 (above 4000 IU) should be supervised by a clinician with monitoring of serum 25(OH)D.
+  The preferred ratio cited is 5,000 IU D3 with 200 mcg K2. This combination is ideal for most supplementation
+  protocols as it provides both calcium absorption support (D3) and calcium direction to bone (K2).
+  Always recommend with fat-containing food. Clinician guidance needed for dose adjustment based on
+  blood levels.
+notes_for_client: 'Vitamin D for your bones, immunity and mood — the one most of us are short of.
+
+  The K2 alongside steers calcium into your bones rather than your arteries. With your largest meal.'
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -70,9 +69,9 @@ sources:
     2. VitD+K'
 - id: coconote-fm-gut-skin-hormone-axis
   location: Key Supplements Discussion
-  quote: High dose vitamin D3 does help with healing or improving the symptoms of psoriasis.
-    There have been researches which show that for the problem of psoriasis — any autoimmune
-    issue — high dose vitamin D3 does help.
+  quote: High dose vitamin D3 does help with healing or improving the symptoms of psoriasis. There
+    have been researches which show that for the problem of psoriasis — any autoimmune issue — high
+    dose vitamin D3 does help.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
@@ -84,8 +83,7 @@ sources:
   quote: Comprehensive natural prevention + treatment of osteoporosis.
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D + K2 Synergy Section
-  quote: ideally a supplementation of vitamin D of 5000 international units and K1200 MCG
-    is preferred.
+  quote: ideally a supplementation of vitamin D of 5000 international units and K1200 MCG is preferred.
 version: 7
 status: active
 updated_at: '2026-08-09'

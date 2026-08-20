@@ -154,6 +154,18 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 10:00 IST daily — tell clients whose app has just dropped from their live
+// plan to the frozen LIBRARY floor that their programme is complete. The mode
+// change is computed from dates and announces itself to nobody; without this a
+// client opens the app to find it silently different (cl-017, 19 Aug 2026).
+// Idempotent — once per graduation, not once per day; state is the outbound WA
+// record, so a repeat run sends nothing.
+cron.schedule(
+  "0 10 * * *",
+  () => fire("graduation-notice"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // Every minute — fire time-of-day app reminders (client sets these in the app's
 // Account screen; delivered via web push). Cheap: skips any reminder not due
 // this minute, idempotent per (client, reminder, day). A reminder only lands if
@@ -182,6 +194,7 @@ console.log(
     + "\n  · 08:00 IST  menu-auto-approve"
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
+    + "\n  · 10:00 IST  graduation-notice"
     + "\n  · 21:00 IST  revenue-export"
     + "\n  · * * * * *  pending-sends"
     + "\n  · * * * * *  intake-reconcile"

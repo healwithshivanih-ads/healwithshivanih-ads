@@ -39,6 +39,12 @@ export const REVIEW_LEAD_DAYS_SHORT = 7;
 export const SHORT_PLAN_MAX_WEEKS = 6;
 /** Full-access window after maintenance lapses before dropping to LIBRARY. */
 export const GRACE_DAYS = 15;
+/** Days before the effective recheck that the "your programme is finishing"
+ *  heads-up appears in the app. Deliberately SHORTER than the REVIEW lead:
+ *  REVIEW opens 14 days out (7 for short plans) and carries the graduation
+ *  report; this note is the final-week, dated "here's the day, and here's what
+ *  stays" reassurance — see resolveFinalStretch. */
+export const FINAL_STRETCH_DAYS = 7;
 
 /** Plan timing/lifecycle fields the resolver reads. Duck-typed so a raw loader
  *  object (which carries far more) satisfies it. */
@@ -95,6 +101,13 @@ function addDaysYmd(ymd: string, n: number): string {
 /** YYYY-MM-DD strings compare lexicographically === chronologically. */
 function isValidYmd(v: unknown): v is string {
   return typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v);
+}
+
+/** Whole days from `fromYmd` to `toYmd` (UTC, so no IST skew). */
+function daysBetweenYmd(fromYmd: string, toYmd: string): number {
+  const a = new Date(fromYmd + "T00:00:00Z").getTime();
+  const b = new Date(toYmd + "T00:00:00Z").getTime();
+  return Math.round((b - a) / 86_400_000);
 }
 
 /**
@@ -180,4 +193,54 @@ export function resolveAppMode(
     };
   }
   return { mode: "LIBRARY", reason: `review lapsed (no decision by ${reviewEnd})`, continued };
+}
+
+/** The final-week heads-up: the plan's last day, and how far off it is. */
+export interface FinalStretchNote {
+  /** The EFFECTIVE recheck — travel/illness pauses and the weight-loss re-entry
+   *  buffer already applied, so a client who paused is never warned early. */
+  recheckDate: string;
+  /** Whole days from today to that date: FINAL_STRETCH_DAYS … 1, then 0 on the
+   *  day itself. Never negative — past the date this resolver returns null. */
+  daysLeft: number;
+}
+
+/**
+ * Should the app show the "your programme is finishing" heads-up today?
+ *
+ * The problem it solves: a client's app switches from their live plan to the
+ * frozen LIBRARY floor purely on dates. cl-017 dropped on 19 Aug and opened the
+ * app the next day to find it changed — it reads as something being taken away.
+ * This makes the change EXPECTED: a dated, calm note in the final stretch.
+ *
+ * Three gates, all of which must hold:
+ *
+ *   1. mode === "REVIEW". Anything else already owns its own message and this
+ *      note would contradict it — a MAINTENANCE client is not finishing, and a
+ *      LIBRARY client has already finished. (In practice ACTIVE can never be
+ *      inside the window either: REVIEW opens 14 days out, 7 for short plans.)
+ *   2. Today is on or before the effective recheck. REVIEW runs GRACE_DAYS PAST
+ *      the recheck; once it's passed, the graduation report's "you've reached
+ *      the finish line" is the truth and "finishing soon" would be a lie.
+ *   3. Today is within FINAL_STRETCH_DAYS of it — not from day one.
+ *
+ * `recheckOpts` must carry the client's travel overrides + weight-loss flag
+ * (client.weight_loss). A bare call is travel-blind: a client who paused for a
+ * fortnight would be told they finish on the un-extended date, which is both
+ * wrong and exactly the kind of surprise this note exists to prevent.
+ */
+export function resolveFinalStretch(
+  mode: AppMode,
+  plan: AppModePlan | null | undefined,
+  todayYmd: string,
+  recheckOpts: RecheckOpts = {},
+): FinalStretchNote | null {
+  if (mode !== "REVIEW" || !plan || !isValidYmd(todayYmd)) return null;
+  const recheck = effectiveRecheckDate(plan, recheckOpts);
+  if (!isValidYmd(recheck)) return null;
+  // Past the finish date → the graduation copy owns it, not this note.
+  if (todayYmd > recheck) return null;
+  const daysLeft = daysBetweenYmd(todayYmd, recheck);
+  if (daysLeft > FINAL_STRETCH_DAYS) return null;
+  return { recheckDate: recheck, daysLeft };
 }

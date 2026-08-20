@@ -30,7 +30,7 @@
 import { describe, it, expect } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MealList } from "./ochre-screens";
-import { LibraryFloorScreen } from "./ochre-endgame";
+import { EndgameBanner, LibraryFloorScreen } from "./ochre-endgame";
 import { OchreContext } from "./ochre-context";
 import type { AppMeal, AppSupplement, ClientAppData, DishComponent } from "@/lib/fmdb/client-app";
 
@@ -281,5 +281,75 @@ describe("Library-floor supplements — every re-orderable supplement stays reac
       html.includes("Coach sourced tincture"),
       "a supplement with no buy link was listed under a re-order card it cannot serve",
     ).toBe(false);
+  });
+});
+
+// ── the final-week heads-up ─────────────────────────────────────────────────
+//
+// A client's app switches from their live plan to the frozen library floor on
+// dates alone. cl-017 dropped on 19 Aug and opened the app the next day to find
+// it changed — it read as something being taken away. The banner's job in the
+// final week is to name the day AND name what stays, so the change is expected.
+// Data-level gating is pinned in app-final-stretch.test.ts; this is the copy.
+
+function renderBanner(
+  endgame: Partial<NonNullable<ClientAppData["endgame"]>>,
+  extra: Partial<ClientAppData> = {},
+): string {
+  const data = {
+    client: { firstName: "Test", totalWeeks: 12 },
+    coach: { name: "Shivani" },
+    recipePack: [],
+    allSupplements: [],
+    endgame: { mode: "REVIEW", finishingSoon: null, shortEngagement: false, ...endgame },
+    ...extra,
+  } as unknown as ClientAppData;
+
+  return renderToStaticMarkup(
+    <OchreContext.Provider value={data}>
+      <EndgameBanner goCoach={() => {}} onRenew={() => {}} />
+    </OchreContext.Provider>,
+  );
+}
+
+describe("Final-week banner — the change is announced, not discovered", () => {
+  const FINISHING = { finishingSoon: { daysLeft: 5, dateLabel: "27th August 2026" } };
+
+  it("names the finish date", () => {
+    expect(renderBanner(FINISHING)).toContain("27th August 2026");
+  });
+
+  it("names what STAYS, so it cannot read as a countdown to losing something", () => {
+    const html = renderBanner(FINISHING, {
+      recipePack: [{ title: "Moong dal chilla" }],
+      allSupplements: [supp("Magnesium glycinate", "https://example.test/mag")],
+    } as unknown as Partial<ClientAppData>);
+
+    expect(html).toContain("nothing disappears");
+    for (const kept of ["recipes", "supplement re-order links", "recipe keepsake"]) {
+      expect(html, `the note never mentions that her ${kept} stay`).toContain(kept);
+    }
+  });
+
+  it("only promises what she actually has", () => {
+    // No recipes on file → no recipe/keepsake promise she can't collect on.
+    const html = renderBanner(FINISHING, {
+      allSupplements: [supp("Magnesium glycinate", "https://example.test/mag")],
+    } as unknown as Partial<ClientAppData>);
+    expect(html).toContain("supplement re-order links");
+    expect(html).not.toContain("keepsake");
+  });
+
+  it("says 'today' and 'tomorrow' rather than '0 days away'", () => {
+    expect(renderBanner({ finishingSoon: { daysLeft: 0, dateLabel: "20th August 2026" } }))
+      .toContain("That&#x27;s today");
+    expect(renderBanner({ finishingSoon: { daysLeft: 1, dateLabel: "21st August 2026" } }))
+      .toContain("That&#x27;s tomorrow");
+  });
+
+  it("falls back to the ordinary REVIEW copy outside the final week", () => {
+    const html = renderBanner({ finishingSoon: null, recheckLabel: "3rd September 2026" });
+    expect(html).toContain("wrapping up");
+    expect(html).not.toContain("nothing disappears");
   });
 });

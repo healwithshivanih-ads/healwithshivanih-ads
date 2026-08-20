@@ -57,25 +57,19 @@ linked_to_claims:
 - probiotics-restore-gut-microbiome
 - probiotics-support-gut-microbiome-in-5r-protocol
 - probiotics-deferred-until-gut-lining-stabilises
-notes_for_coach: Probiotic-rich foods and supplements help diversify gut microbiome, potentially
-  reducing beta-glucuronidase activity and improving estrogen excretion. Diversity of strains
-  matters more than single-strain supplementation. Used in the Re-inoculate step of 5R. Strain
-  selection matters; multi-strain formulations are commonly recommended. Clients on immunosuppressants
-  should consult clinician before use. Used in the Re-inoculate phase of the 5R protocol to
-  restore beneficial gut flora disrupted by low acid, dysbiosis, or SIBO. Strain and dose
-  selection should be guided by a clinician, especially if SIBO is suspected. Probiotics and
-  prebiotics were intentionally deferred for 3 months (until gut inflammation settled) to
-  avoid aggravating fermentation and bloating. VSL#3 (high-potency multi-strain) and spore-forming
-  probiotics were used in the re-inoculation phase. Introducing probiotics to an inflamed
-  gut can worsen bloating and dysbiosis symptoms.
-notes_for_client: Good gut bacteria help your body properly eliminate used estrogen. Taking
-  probiotics — or eating probiotic-rich foods like yogurt, kefir, or fermented vegetables
-  — may help keep estrogen levels balanced. Probiotics are beneficial bacteria that help restore
-  balance in your gut. They work best alongside prebiotic foods (fiber) that feed the good
-  bacteria. Probiotics help replenish the beneficial bacteria in your gut. Your practitioner
-  will choose the right strain and dose for your situation. Probiotics are added once your
-  gut has calmed down — usually after 2–3 months. Adding them too early when your gut is inflamed
-  can make bloating worse.
+notes_for_coach: Probiotic-rich foods and supplements help diversify gut microbiome, potentially reducing
+  beta-glucuronidase activity and improving estrogen excretion. Diversity of strains matters more
+  than single-strain supplementation. Used in the Re-inoculate step of 5R. Strain selection matters;
+  multi-strain formulations are commonly recommended. Clients on immunosuppressants should consult
+  clinician before use. Used in the Re-inoculate phase of the 5R protocol to restore beneficial gut
+  flora disrupted by low acid, dysbiosis, or SIBO. Strain and dose selection should be guided by a
+  clinician, especially if SIBO is suspected. Probiotics and prebiotics were intentionally deferred
+  for 3 months (until gut inflammation settled) to avoid aggravating fermentation and bloating. VSL#3
+  (high-potency multi-strain) and spore-forming probiotics were used in the re-inoculation phase.
+  Introducing probiotics to an inflamed gut can worsen bloating and dysbiosis symptoms.
+notes_for_client: 'Friendly bacteria to help settle and rebalance your gut.
+
+  A little extra wind in the first week is normal and usually passes.'
 evidence_tier: plausible_emerging
 typical_dose_range:
   capsule:
@@ -96,72 +90,72 @@ sources:
   quote: Use probiotics, L-glutamine, zinc carnosine
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Reinoculate
-  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that
-    contain the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
+  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that contain
+    the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: There is also emerging research which shows that probiotics may have beneficial effects
-    on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those who have type
-    2 or gestational diabetes.
+  quote: There is also emerging research which shows that probiotics may have beneficial effects on
+    reducing blood sugar, insulin, and Hemoglobin A1c, especially for those who have type 2 or gestational
+    diabetes.
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that
-    contain the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
+  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that contain
+    the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
 - id: coconote-fm-sex-hormones
   location: Gut Health and Estrogen Management
-  quote: Probiotics rich food, these can be included in the diet as well when it comes to
-    managing the microbial health of the gut.
+  quote: Probiotics rich food, these can be included in the diet as well when it comes to managing
+    the microbial health of the gut.
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section
-  quote: incorporating a good quality probiotic and help to turn them into powder I'm sure
-    you have learned in your course and when you are talking about the supplement it has to
-    be the high quality not from the Amazon buying.
+  quote: incorporating a good quality probiotic and help to turn them into powder I'm sure you have
+    learned in your course and when you are talking about the supplement it has to be the high quality
+    not from the Amazon buying.
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: Probiotics (multi-strain) - Gut health, immunity, digestion - 10–50 billion CFU/day
-    - Empty stomach or bedtime
+  quote: Probiotics (multi-strain) - Gut health, immunity, digestion - 10–50 billion CFU/day - Empty
+    stomach or bedtime
 - id: vitaone-thyroid-cheatsheet
   location: What Nutritionists/Health Coaches Miss — Ignore Gut Health
   quote: Repair gut with probiotics, prebiotics, L-glutamine, and zinc carnosine
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
-  quote: 'Probiotics (L. Rhamnosus, B. Longum): Rebalances estrobolome; reduces β-glucuronidase;
-    Daily; choose multi-strain for gut symptoms.'
+  quote: 'Probiotics (L. Rhamnosus, B. Longum): Rebalances estrobolome; reduces β-glucuronidase; Daily;
+    choose multi-strain for gut symptoms.'
 - id: vitaone-adrenal-cheatsheet
   location: The Anti-Stress Hormones / Clinical Interventions (p.22, p.12)
-  quote: 'Heal gut microbiome; add probiotics (L. plantarum, B. longum). Gut–Brain Axis Repair:
-    Restore microbial + vagal health. Polyphenols, Prebiotics, Butyrate, Mindful eating.'
+  quote: 'Heal gut microbiome; add probiotics (L. plantarum, B. longum). Gut–Brain Axis Repair: Restore
+    microbial + vagal health. Polyphenols, Prebiotics, Butyrate, Mindful eating.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis / Endotoxemia
   quote: Probiotic (10–50B CFU)
 - id: vitaone-gut-cheatsheet
   location: Gut Health Cheatsheet — Gut Dysbiosis
-  quote: Broad-spectrum probiotics, Prebiotics, Polyphenols, Butyrate — Balance = feed good
-    microbes, not just kill bad ones. Diet is key.
+  quote: Broad-spectrum probiotics, Prebiotics, Polyphenols, Butyrate — Balance = feed good microbes,
+    not just kill bad ones. Diet is key.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Re-inoculate
-  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria,
-    then you have to replace that bacteria with probiotics.
+  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria, then you
+    have to replace that bacteria with probiotics.
 - id: coconote-fm-hypochlorhydria
   location: Treatment / 5R Gut Protocol — Re-inoculate
-  quote: If the gut microbiome is also on the lower side, maybe a prebiotic or a probiotic
-    can be used in terms of repairing.
+  quote: If the gut microbiome is also on the lower side, maybe a prebiotic or a probiotic can be
+    used in terms of repairing.
 - id: coconote-fm-gut-skin-hormone-axis
   location: 5R Protocol — Re-inoculate
-  quote: Re-inoculation is with the beneficial microbes. So this was done after a span of
-    three months. That is when the prebiotic foods and probiotics were added in our case in
-    the form of VSL3 and spore biotic.
+  quote: Re-inoculation is with the beneficial microbes. So this was done after a span of three months.
+    That is when the prebiotic foods and probiotics were added in our case in the form of VSL3 and
+    spore biotic.
 version: 13
 status: active
 updated_at: '2026-08-09'
 updated_by: shivani
 pregnancy_safety: likely_safe
 lactation_safety: likely_safe
-pregnancy_safety_note: Most strains well-tolerated. Lactobacillus + Bifidobacterium standard.
-  Some evidence reduces postpartum eczema in baby.
+pregnancy_safety_note: Most strains well-tolerated. Lactobacillus + Bifidobacterium standard. Some
+  evidence reduces postpartum eczema in baby.
 aliases:
 - probiotic
 - probiotic-multi-strain

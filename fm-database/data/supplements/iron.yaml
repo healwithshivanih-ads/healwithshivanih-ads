@@ -35,17 +35,15 @@ linked_to_claims:
 - key-nutrients-required-for-thyroid-hormone-production
 - iron-required-for-thyroid-hormone-production
 - low-stomach-acid-impairs-b12-iron-absorption
-notes_for_coach: Iron is listed as a key nutrient for thyroid hormone production. Routine
-  supplementation at 15–20 mg is noted specifically for menstruating women. Iron status should
-  ideally be confirmed by ferritin/CBC before supplementation. Can interfere with levothyroxine
-  absorption — space 4 hours from thyroid medication. Iron supplementation must be guided
-  by lab results (serum iron, ferritin, TIBC). Low stomach acid impairs iron absorption. Constipating
-  forms (ferrous sulfate) should be avoided; consider bisglycinate forms. Confirm with clinician
-  before recommending.
-notes_for_client: Iron supports thyroid hormone production and is especially important for
-  women with monthly periods. Avoid taking iron at the same time as thyroid medication. Iron
-  is critical for energy and oxygen delivery. If you have low stomach acid, you may not absorb
-  iron even from a healthy diet. Testing is important before supplementing.
+notes_for_coach: Iron is listed as a key nutrient for thyroid hormone production. Routine supplementation
+  at 15–20 mg is noted specifically for menstruating women. Iron status should ideally be confirmed
+  by ferritin/CBC before supplementation. Can interfere with levothyroxine absorption — space 4 hours
+  from thyroid medication. Iron supplementation must be guided by lab results (serum iron, ferritin,
+  TIBC). Low stomach acid impairs iron absorption. Constipating forms (ferrous sulfate) should be
+  avoided; consider bisglycinate forms. Confirm with clinician before recommending.
+notes_for_client: 'Iron, to rebuild your stores — this takes months, not weeks, so keep going.
+
+  Take it with something sharp like lemon or amla. Never with tea, coffee or milk.'
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
@@ -57,8 +55,8 @@ sources:
   quote: 'Iron: 15-20 mg (in a menstruating woman)'
 - id: coconote-fm-chronic-pain-fatigue
   location: Low Stomach Acid Section
-  quote: If they don't have Asthma Cacid then they will be low in iron and they will be really
-    low in B12 even if they are eating a healthy diet.
+  quote: If they don't have Asthma Cacid then they will be low in iron and they will be really low
+    in B12 even if they are eating a healthy diet.
 version: 5
 status: active
 updated_at: '2026-08-09'

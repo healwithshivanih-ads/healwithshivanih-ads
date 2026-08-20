@@ -302,8 +302,38 @@ function CtaButton({ label, onClick, tone = FOREST }: { label: string; onClick: 
   );
 }
 
+/** "a, b and c" — no Oxford comma, matching the app's voice elsewhere. */
+function joinPlain(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+/**
+ * What the client KEEPS after the plan ends — built from what they actually
+ * have, never promised generically. This is the whole point of the final-week
+ * note: it must not read as a countdown to losing something. Mirrors what
+ * LibraryFloorScreen genuinely leaves open (recipes, live re-order links,
+ * the keepsake), so the promise here is the same thing they'll find there.
+ */
+function staysSentence(recipeCount: number, buyableSupplements: number): string {
+  const items: string[] = [];
+  if (recipeCount > 0) items.push("recipes");
+  if (buyableSupplements > 0) items.push("supplement re-order links");
+  if (recipeCount > 0) items.push("recipe keepsake");
+  if (items.length === 0) return "Everything you've built stays right here for you.";
+  return `Your ${joinPlain(items)} stay right here for you.`;
+}
+
+/** "That's today" / "That's tomorrow" / "That's 5 days away". */
+function whenPhrase(daysLeft: number): string {
+  if (daysLeft <= 0) return "That's today";
+  if (daysLeft === 1) return "That's tomorrow";
+  return `That's ${daysLeft} days away`;
+}
+
 export function EndgameBanner({ goCoach, onRenew }: { goCoach: () => void; onRenew: () => void }) {
-  const { endgame, client } = useOchre();
+  const data = useOchre();
+  const { endgame, client } = data;
   // LIBRARY has its own full screen; ACTIVE has no banner.
   if (!endgame || endgame.mode === "LIBRARY") return null;
 
@@ -315,14 +345,28 @@ export function EndgameBanner({ goCoach, onRenew }: { goCoach: () => void; onRen
   let cta: string | null = null;
 
   if (endgame.mode === "REVIEW") {
-    title = `Your ${client.totalWeeks} weeks are wrapping up`;
     // Short engagements get one track (the full programme); standard plans two.
     const whatNext = endgame.shortEngagement
       ? "Let's plan what's next — the full programme picks up right where this month leaves off."
       : "Let's choose what's next — a fresh phase, or a lighter maintenance plan.";
-    body = endgame.recheckLabel
-      ? `You reach your recheck point around ${endgame.recheckLabel}. ${whatNext}`
-      : whatNext;
+    const soon = endgame.finishingSoon;
+    if (soon) {
+      // FINAL WEEK. Name the day, then immediately say what stays. This date is
+      // where the protocol ends; the app then rides out the grace window and
+      // drops to the frozen library floor. cl-017 met that drop with no warning
+      // (19 Aug) and it read as something being taken away — so the fix is to
+      // say the date out loud AND say what she keeps, in the same breath.
+      title = `Your plan finishes on ${soon.dateLabel}`;
+      body = `${whenPhrase(soon.daysLeft)}, and nothing disappears when it does. ${staysSentence(
+        (data.recipePack ?? []).length,
+        (data.allSupplements ?? []).filter((s) => s.buyUrl).length,
+      )} ${whatNext}`;
+    } else {
+      title = `Your ${client.totalWeeks} weeks are wrapping up`;
+      body = endgame.recheckLabel
+        ? `You reach your recheck point around ${endgame.recheckLabel}. ${whatNext}`
+        : whatNext;
+    }
     cta = "Plan what's next";
   } else if (endgame.mode === "GRACE") {
     tint = "rgba(176,123,30,0.10)";

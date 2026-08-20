@@ -59,17 +59,16 @@ linked_to_claims:
 - murray-melatonin-only-when-low
 - ppi-tapering-supplement-support-repair-protect-antioxidant
 - abrupt-ppi-discontinuation-causes-rebound-reflux
-notes_for_coach: Lynch notes melatonin works well for fast MAOA (depleted serotonin → depleted
-  melatonin). However, it worsens slow MAOA — causes increased wakefulness and irritability.
-  This is a clinically useful discriminator between the two MAOA phenotypes. Do not recommend
-  routinely without assessing MAOA phenotype. Tryptophan, 5-HTP, and melatonin all burden
-  slow MAOA. Listed as an 'acid suppressing' agent in PPI tapering protocol and as a potential
-  H2 blocker substitute during taper. Melatonin receptors exist in GI tract; emerging evidence
-  for its role in GERD. Clinician direction required for dosing.
-notes_for_client: Melatonin can be helpful for sleep in some people but makes others feel
-  more awake and irritable. Pay attention to how it affects you personally. Melatonin, typically
-  known as a sleep hormone, also plays a role in regulating stomach acid and protecting the
-  esophagus — it may be used to help transition off acid-blocking medications.
+notes_for_coach: Lynch notes melatonin works well for fast MAOA (depleted serotonin → depleted melatonin).
+  However, it worsens slow MAOA — causes increased wakefulness and irritability. This is a clinically
+  useful discriminator between the two MAOA phenotypes. Do not recommend routinely without assessing
+  MAOA phenotype. Tryptophan, 5-HTP, and melatonin all burden slow MAOA. Listed as an 'acid suppressing'
+  agent in PPI tapering protocol and as a potential H2 blocker substitute during taper. Melatonin
+  receptors exist in GI tract; emerging evidence for its role in GERD. Clinician direction required
+  for dosing.
+notes_for_client: 'Helps your body clock know it''s night — it''s a signal, not a sedative.
+
+  Take it about an hour before bed, with the lights already low. Bright screens undo it.'
 evidence_tier: strong
 linked_to_mechanisms:
 - blue-light-melatonin-suppression
@@ -80,36 +79,33 @@ sources:
   quote: Melatonin (0.5-3mg, lower doses often most effective)
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Melatonin - Sleep regulation, antioxidant - 3 mg-5 mg (low dose) - 30 minutes before
-    bedtime
+  quote: Melatonin - Sleep regulation, antioxidant - 3 mg-5 mg (low dose) - 30 minutes before bedtime
 - id: vitaone-adrenal-cheatsheet
   location: The Anti-Stress Hormones (p.22)
-  quote: 'Melatonin: Antioxidant, anti-inflammatory, and sleep-regulating; counterbalances
-    cortisol. Sleep disturbance, immune dysfunction, accelerated aging.'
+  quote: 'Melatonin: Antioxidant, anti-inflammatory, and sleep-regulating; counterbalances cortisol.
+    Sleep disturbance, immune dysfunction, accelerated aging.'
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement
-    recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement recommendations'
   quote: 'Acid suppressing: Melatonin'
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Page 02
-  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins
-    may support healthy estrogen metabolism as well.
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins may
+    support healthy estrogen metabolism as well.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: In addition to promoting restful sleep, melatonin has been shown to reduce inflammation.
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
-  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins
-    may support healthy estrogen metabolism as well.
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins may
+    support healthy estrogen metabolism as well.
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Melatonin dosing and quality section
-  quote: The clinical trials I believe were on three milligrams. That seemed to be the dose
-    that worked
+  quote: The clinical trials I believe were on three milligrams. That seemed to be the dose that worked
 - id: pizzorno-textbook-hpylori
   location: Miscellaneous, p. 784
-  quote: Melatonin mitigates gastric lining breakdown and ulcer formation. Research has focused
-    on hypersecretion situations; therefore melatonin may be most applicable for DUs, entailing
-    acid hypersecretion.
+  quote: Melatonin mitigates gastric lining breakdown and ulcer formation. Research has focused on
+    hypersecretion situations; therefore melatonin may be most applicable for DUs, entailing acid
+    hypersecretion.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia
   quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
@@ -125,8 +121,8 @@ updated_at: '2026-08-09'
 updated_by: claude-dirty-genes-ingest
 contraindications:
   conditions:
-  - paradoxical activation in a subset of clients — start with lowest dose available and pause
-    if it produces wired/anxious state
+  - paradoxical activation in a subset of clients — start with lowest dose available and pause if
+    it produces wired/anxious state
   - autoimmune conditions and pregnancy — coordinate with clinician
   - children and adolescents — clinician guidance only
   medications: []
