@@ -1743,6 +1743,25 @@ class Plan(BaseModel):
 
             effective_meal_plan_start + plan_period_weeks × 7
 
+        ⚠ THE DEFAULTS ARE TRAVEL-BLIND, AND THAT IS THE TRAP. Call this with no
+        arguments and you get start + weeks×7 — the date the plan WOULD have
+        ended if the client never paused. For anyone who has travelled that is
+        simply the wrong date, and nothing about the return value says so.
+
+        This bit on 2026-08-20. cl-004 paused 15 days in Australia, so her real
+        recheck is 18 Aug; a bare `effective_recheck_date()` said 4 Aug, which
+        made her look 16 days past her window when she was 2 days into it. A
+        "bug" was reported in the app's mode resolver on the strength of it.
+        The resolver was right; the caller was travel-blind.
+
+        So: if you are deciding ANYTHING about where a client stands — is the
+        plan over, are they in review, should a nudge fire — pass `overrides`.
+        Use the bare call only for display of the scheduled date.
+
+        The app's own state resolution does NOT come through here at all: it
+        uses effectiveRecheckDate() in plan-timing.ts, which reads the same
+        overrides. Two implementations, one rule — keep them in lockstep.
+
         Note: the stored `plan_period_recheck_date` field stays as the
         originally-scheduled date (audit / legacy display); coach-facing
         UI should call this method to get the live one.
@@ -1750,8 +1769,8 @@ class Plan(BaseModel):
         `overrides` is the client's weight_loss.week_overrides list (dicts with
         date_from/date_to/mode/context); when supplied, genuine travel/illness
         windows push the recheck out (capped 14d). `weight_loss_enabled` adds a
-        6-day post-travel weigh-in buffer. Both default off → identical to the
-        old start + weeks×7. Mirrors effectiveRecheckDate() in plan-timing.ts.
+        6-day post-travel weigh-in buffer. Mirrors effectiveRecheckDate() in
+        plan-timing.ts.
         """
         from datetime import timedelta
         start = self.effective_meal_plan_start()
