@@ -73,7 +73,7 @@ export function ReviewNudgePanel({ whatsappConfigured }: { whatsappConfigured: b
         🌿 Wrapping up — {flags.length} to nudge
       </div>
       <p style={{ fontSize: 12.5, color: SEC, lineHeight: 1.5, margin: "4px 0 10px" }}>
-        These clients are at their recheck point (or maintenance renewal). A nudge invites them to review progress + plan what&apos;s next.
+        These clients are at their recheck point, on maintenance renewal, or have finished and are still opening the app. A nudge invites them to review progress + plan what&apos;s next.
       </p>
       <div style={{ display: "grid", gap: 8 }}>
         {flags.map((f) => {
@@ -82,12 +82,25 @@ export function ReviewNudgePanel({ whatsappConfigured }: { whatsappConfigured: b
             <div key={f.clientId} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "8px 0", borderTop: `1px solid ${LINE}` }}>
               <div style={{ minWidth: 0 }}>
                 <a href={`/clients-v2/${f.clientId}`} style={{ fontSize: 13.5, fontWeight: 600, color: INK, textDecoration: "none" }}>{f.name}</a>
-                <div style={{ fontSize: 11.5, color: f.kind === "lapse" ? "#b3402a" : SEC, fontWeight: f.kind === "lapse" ? 600 : 400 }}>
+                <div style={{ fontSize: 11.5, color: f.kind === "lapse" ? "#b3402a" : f.kind === "library_active" ? FOREST : SEC, fontWeight: f.kind === "lapse" || f.kind === "library_active" ? 600 : 400 }}>
                   {f.kind === "renewal"
                     ? `Maintenance renews ${human(f.date)}`
                     : f.kind === "lapse"
                       ? `⚠ Lapsed ${human(f.date)} — in grace`
-                      : `Recheck ${human(f.date)}`}
+                      : f.kind === "library_active"
+                        // Warm, not cold: the programme is over but they are still
+                        // turning up. Phrased as an opportunity, and coloured with
+                        // the positive tone rather than the lapse red.
+                        ? `Programme ended ${human(f.date)} · still opening the app${
+                            f.daysSinceOpen === 0
+                              ? " today"
+                              : f.daysSinceOpen === 1
+                                ? " yesterday"
+                                : f.daysSinceOpen != null
+                                  ? ` ${f.daysSinceOpen}d ago`
+                                  : ""
+                          }`
+                        : `Recheck ${human(f.date)}`}
                 </div>
               </div>
               {done ? (

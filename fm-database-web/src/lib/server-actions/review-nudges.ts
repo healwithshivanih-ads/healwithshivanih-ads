@@ -22,6 +22,7 @@
  */
 
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
+import { daysSinceLastOpen, readAppOpens } from "@/lib/fmdb/app-engagement";
 import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
 import { reviewLeadDays } from "@/lib/fmdb/app-mode";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
@@ -30,6 +31,14 @@ import { getLastSentAtAction } from "@/app/api/whatsapp/actions";
 const REVIEW_GRACE_DAYS = 15;
 const RENEWAL_LEAD_DAYS = 14;
 const GRACE_DAYS = 15; // mirrors app-mode.ts GRACE_DAYS
+
+/** How recently a graduated client must have opened the app to still count as
+ *  warm. A client on the LIBRARY floor who is STILL opening it is the strongest
+ *  renewal signal there is — and until 2026-08-20 they were invisible here:
+ *  the review branch drops them the day they pass recheck+15, so cl-017 fell
+ *  off this list while opening the app most days, 17 days after her plan
+ *  ended. Nobody was told. */
+const LIBRARY_WARM_DAYS = 21;
 const TEMPLATE = "fm_review_checkin_v1";
 
 function istTodayYmd(): string {
@@ -53,7 +62,9 @@ export interface ReviewNudgeFlag {
   clientId: string;
   name: string;
   phone: string;
-  kind: "review" | "renewal" | "lapse";
+  kind: "review" | "renewal" | "lapse" | "library_active";
+  /** library_active only: days since their most recent app open. */
+  daysSinceOpen?: number;
   /** YYYY-MM-DD — the recheck (review) or paid-through (renewal/lapse) date. */
   date: string;
   /** Most recent time this nudge template went out, if ever. */
@@ -120,6 +131,21 @@ export async function listReviewNudgesAction(): Promise<ReviewNudgeFlag[]> {
     const reviewEnd = addDaysYmd(recheck, REVIEW_GRACE_DAYS);
     if (today >= reviewStart && today <= reviewEnd) {
       flags.push({ clientId, name, phone, kind: "review", date: recheck, lastSentAt: null });
+      continue;
+    }
+    // Past the review window → the app has dropped them to the LIBRARY floor.
+    // If they are STILL opening it, surface them: they have not drifted away,
+    // they simply have not been asked. Silence here is a lost renewal, not a
+    // closed one.
+    if (today > reviewEnd) {
+      const opens = await readAppOpens(clientId);
+      const since = daysSinceLastOpen(opens);
+      if (since !== null && since <= LIBRARY_WARM_DAYS) {
+        flags.push({
+          clientId, name, phone,
+          kind: "library_active", date: recheck, lastSentAt: null, daysSinceOpen: since,
+        });
+      }
     }
   }
 
