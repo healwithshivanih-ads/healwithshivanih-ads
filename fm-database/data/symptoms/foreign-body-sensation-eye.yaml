@@ -1,0 +1,43 @@
+slug: foreign-body-sensation-eye
+display_name: Foreign Body Sensation in the Eye
+aliases:
+- foreign-body-sensation
+- something-in-my-eye
+- sandy-feeling-eye
+- scratchy-eye
+- feels-like-grit-in-my-eye
+category: other
+severity: concerning
+description: The persistent sense that something is in the eye — sand, an eyelash, grit
+  — typically worst on blinking. Distinct from generalised dryness or burning because
+  it is localised and blink-linked, which points towards something physically present
+  on or under the lid rather than a purely tear-film problem. Causes include an actual
+  foreign body, a conjunctival concretion erupting through the surface, a corneal
+  abrasion, in-turned lashes, and severe dry eye.
+when_to_refer: 'Refer rather than manage. Same-day if there is pain, vision change or
+  light sensitivity — a blink-linked foreign body sensation can mean the corneal
+  epithelium is being abraded, and that can ulcerate. Rated concerning rather than
+  common for this reason: it is the one eye symptom that most often has a removable
+  physical cause, and the fix is a procedure, not a remedy.'
+linked_to_topics:
+- conjunctival-concretions
+- dry-eye-syndrome
+- blepharitis-and-meibomian-gland-dysfunction
+linked_to_mechanisms: []
+linked_to_symptoms:
+- dry-eyes
+- watery-eyes
+notes_for_coach: 'When a client reports this, resist reaching for the remedy shelf.
+  Ask instead whether it is worse on blinking and whether it is one eye or both — a
+  one-sided, blink-linked sensation is a physical-cause story and belongs with an
+  ophthalmologist. Every home eyewash and oil in this catalogue is contraindicated in
+  an active eye problem, and a breached corneal surface is exactly that.'
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — eyelid concretions / lid-margin disease enquiry, Aug 2026
+  quote: Needed a distinct slug from dry-eyes — the blink-linked, one-sided presentation
+    carries a different referral threshold.
+version: 1
+status: active
+updated_at: '2026-08-11'
+updated_by: Shivani

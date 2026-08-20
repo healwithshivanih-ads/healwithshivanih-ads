@@ -1,0 +1,41 @@
+slug: watery-eyes
+display_name: Watery Eyes (Epiphora)
+aliases:
+- epiphora
+- watering-eyes
+- excessive-tearing
+- tearing-eyes
+- eyes-watering
+- reflex-tearing
+category: other
+severity: common
+description: Excessive tearing or overflow of tears down the cheek. Counter-intuitively
+  this is more often a sign of DRY eye than of wet eye — when the tear film is unstable
+  or the ocular surface is irritated, the lacrimal gland fires off a reflex flood of
+  watery tears that lack the oil needed to stay put. Also seen with blocked meibomian
+  glands, lid-margin inflammation, a foreign body or concretion abrading the surface,
+  allergy, and true tear-drainage obstruction.
+when_to_refer: Watering with pain, vision change or light sensitivity; discharge that
+  is purulent rather than clear; one-sided watering that persists (drainage obstruction
+  or lid malposition needs an eye clinician); any suspicion of a foreign body.
+linked_to_topics:
+- dry-eye-syndrome
+- blepharitis-and-meibomian-gland-dysfunction
+- conjunctival-concretions
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_symptoms:
+- dry-eyes
+notes_for_coach: 'The reframe clients find genuinely surprising and useful: "your eyes
+  are watering BECAUSE they are dry". Without it, a client will reject dry-eye advice
+  out of hand — she knows her eyes are wet. Worth saying out loud before any other
+  suggestion lands.'
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — eyelid concretions / lid-margin disease enquiry, Aug 2026
+  quote: Eye-symptom vocabulary gap — the catalogue carried dry-eyes but nothing for
+    the reflex-tearing presentation clients actually describe.
+version: 1
+status: active
+updated_at: '2026-08-11'
+updated_by: Shivani
