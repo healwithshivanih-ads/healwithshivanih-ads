@@ -106,6 +106,43 @@ nutrient overlap (a standalone alongside a blend that already contains it); a
 supplement with **no order link** in `supplement_links.yaml` and no pinned `buy_link`,
 which is exactly when the client's Reorder button silently fails to render.
 
+### 4-pre. Every supplement and practice gets a `client_note` — TWO LINES, about THEM
+
+"What is this one for?" is the question clients ask most. Without a `client_note` the app falls
+back to mining `coach_rationale`, which returns whichever sentence survives scrubbing — often a
+lab readout or a safety caveat. Write the answer instead.
+
+**The shape, every time:**
+
+```
+Line 1 — what it does, in plain words.
+Line 2 — why YOU / how to take it.
+```
+
+Two lines. Not a paragraph: it is read on a phone, between a checklist and a menu.
+
+**Line 2 is the one that matters, and it must be about this client.** Compare:
+
+- Generic floor (acceptable): *"Magnesium — for muscles, nerves and steadier sleep."*
+- Actually theirs: *"Magnesium — yours sits low, and your acidity medicine makes it harder to
+  hold on to."*
+
+Take the reason from their own results and their own medicines, in words they would recognise.
+The catalogue's `notes_for_client` is the FLOOR, not the goal — it is there so nobody ever
+gets nothing.
+
+**Responsible wording — non-negotiable:**
+- no marker values, no drug names, no diagnoses, no promises
+- never imply it replaces a prescribed medicine
+- second person throughout — "yours", not "his"
+
+Same rule for `PracticeItem.client_note`, and there it also does safety work: practice
+`details` render behind only a LIGHT scrub, so anything clinical in `details` needs a client
+version written explicitly or it reaches the phone.
+
+**The check that can fail:** `client-facing-leak.test.ts`. Run it before handing over. It
+scans every field that prints verbatim and fails on anything NEW.
+
 ### 4a. If the plan prescribes EXERCISE, prescribe the PROGRESSION with it
 
 A level with no next rung is a plateau with extra steps. Every prescribed exercise gets three
