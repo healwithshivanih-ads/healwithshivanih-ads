@@ -24,6 +24,30 @@ import { runShim } from "@/lib/fmdb/shim";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * Single-flight guard.
+ *
+ * This job is fired every 60 seconds and its work is not bounded by that
+ * interval: it re-stages every app client, so it grows with the roster. When a
+ * run outlives its tick the next one starts on top of it, the two contend for
+ * the same staging tree, each makes the other slower, and the pile-up ends with
+ * a shim killed at its timeout — which is precisely what filled the fm-coach
+ * log on 2026-08-21 (a refresh had reached ~60s against a 60s tick).
+ *
+ * Skipping is the correct response, not queueing: every action here is a
+ * mirror-to-latest, so a skipped tick loses nothing — the next run copies the
+ * same current state. Queueing would just defer the same collision.
+ *
+ * Module scope is per server process, which is the right granularity: the
+ * thing being protected is this machine's staging tree, and only this process
+ * serves its cron.
+ */
+let inFlight = false;
+let inFlightSince = 0;
+
+/** Ceiling for each staging refresh — see the call sites below. */
+const STAGING_TIMEOUT_MS = 5 * 60_000;
+
 export async function POST(req: NextRequest) {
   const secret = req.headers.get("x-cron-secret") || "";
   const expected = process.env.CRON_SECRET || "";
@@ -31,6 +55,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
   }
 
+  if (inFlight) {
+    // 200, not an error: an overlapping tick is normal operation, and a 500
+    // here would turn healthy back-pressure into log noise of its own.
+    return NextResponse.json({
+      ok: true,
+      skipped: "already running",
+      running_for_ms: Date.now() - inFlightSince,
+    });
+  }
+  inFlight = true;
+  inFlightSince = Date.now();
+  try {
+    return await reconcile();
+  } finally {
+    inFlight = false;
+  }
+}
+
+async function reconcile() {
   const res = await reconcileIntakeStaging();
   if (!res.ok) {
     return NextResponse.json(res, { status: 500 });
@@ -44,7 +87,13 @@ export async function POST(req: NextRequest) {
   let appStaging: unknown = { skipped: true };
   if (process.env.FMDB_STAGING_DIR) {
     try {
-      appStaging = await runShim("app-staging-action.py", { action: "refresh" });
+      // Explicit, generous timeout. Both staging refreshes scale with the
+      // roster, and the single-flight guard above means a slow run now costs a
+      // skipped tick rather than a collision — so the timeout should only fire
+      // for a genuinely stuck process, not for an ordinary slow one. The
+      // default 90s was below the observed runtime and turned "slow" into
+      // "killed".
+      appStaging = await runShim("app-staging-action.py", { action: "refresh" }, STAGING_TIMEOUT_MS);
     } catch (err) {
       console.error("[intake-reconcile] app-staging refresh failed:", err);
       appStaging = { ok: false };
@@ -58,7 +107,7 @@ export async function POST(req: NextRequest) {
   let coachStaging: unknown = { skipped: true };
   if (process.env.FMDB_COACH_DIR) {
     try {
-      coachStaging = await runShim("coach-staging-action.py", { action: "refresh" });
+      coachStaging = await runShim("coach-staging-action.py", { action: "refresh" }, STAGING_TIMEOUT_MS);
     } catch (err) {
       console.error("[intake-reconcile] coach-staging refresh failed:", err);
       coachStaging = { ok: false };

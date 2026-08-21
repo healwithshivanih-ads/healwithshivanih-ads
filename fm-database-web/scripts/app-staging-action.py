@@ -41,6 +41,7 @@ import shutil
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from types import SimpleNamespace
 
 
 def _plans_root() -> Path:
@@ -1080,6 +1081,30 @@ def main() -> int:
         json.dump({"ok": False, "error": f"pyyaml: {e}"}, sys.stdout)
         return 1
 
+    # Parse with libyaml (the C scanner) instead of PyYAML's pure-Python one.
+    #
+    # This shim is the payload of a cron that fires EVERY MINUTE, and a refresh
+    # re-stages every app client — ~940 YAML loads of big documents per run.
+    # Profiled 2026-08-21: 97% of a 60-second refresh was inside safe_load, so
+    # each run outlived its own 60s tick, runs overlapped, and the pile-up blew
+    # the 90s shim timeout — surfacing as "app-staging-action.py produced no
+    # output" every few minutes in the fm-coach log.
+    #
+    # CSafeLoader is not a laxer parser: it reuses PyYAML's own SafeConstructor
+    # and Resolver and swaps only the scanner/parser/composer for the C ones, so
+    # tag resolution is identical — including YAML 1.1 traps this repo has been
+    # bitten by before (unquoted `15_30` is still the int 1530, see
+    # dumpYaml/js-yaml note in CLAUDE.md). Verified across 18 such cases.
+    #
+    # Falls back to the pure-Python loader when the wheel has no libyaml, which
+    # is only slow, never wrong. safe_dump is passed through untouched: writes
+    # are 7 calls a run and none of the cost.
+    _loader = getattr(yaml, "CSafeLoader", None) or yaml.SafeLoader
+    fast_yaml = SimpleNamespace(
+        safe_load=lambda stream: yaml.load(stream, Loader=_loader),
+        safe_dump=yaml.safe_dump,
+    )
+
     auth = _plans_root()
     action = payload.get("action") or ""
     if action == "stage":
@@ -1090,10 +1115,10 @@ def main() -> int:
         if not client_id:
             json.dump({"ok": False, "error": "client_id required"}, sys.stdout)
             return 2
-        json.dump(_stage_one(yaml, auth, stag, client_id, plan_slug), sys.stdout)
+        json.dump(_stage_one(fast_yaml, auth, stag, client_id, plan_slug), sys.stdout)
         return 0
     if action == "refresh":
-        json.dump(_refresh(yaml, auth, stag), sys.stdout)
+        json.dump(_refresh(fast_yaml, auth, stag), sys.stdout)
         return 0
     json.dump({"ok": False, "error": f"unknown action: {action}"}, sys.stdout)
     return 2

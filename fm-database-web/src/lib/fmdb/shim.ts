@@ -41,14 +41,27 @@ export async function runShim(
   child.stdout?.on("data", (chunk: Buffer) => (stdout += chunk));
   child.stderr?.on("data", (chunk: Buffer) => (stderr += chunk));
 
-  await new Promise<void>((resolve, reject) => {
+  // Capture how the process ENDED, not just what it said. execFile's `timeout`
+  // kills the child with a signal, and a killed child writes nothing to either
+  // stream — so without this the failure read as the bare, actively misleading
+  // "produced no output. stderr:" with an empty stderr, which looks like a
+  // broken script rather than a job that ran out of time. That exact message
+  // filled the fm-coach log for weeks (app-staging-action.py, 2026-08-21) while
+  // the script itself was healthy and merely slow.
+  const { code, signal } = await new Promise<{
+    code: number | null;
+    signal: NodeJS.Signals | null;
+  }>((resolve, reject) => {
     child.on("error", reject);
-    child.on("close", () => resolve());
+    child.on("close", (c, s) => resolve({ code: c, signal: s }));
   });
 
   if (!stdout.trim()) {
+    const how = signal
+      ? `killed by ${signal} after ${timeoutMs}ms — the script exceeded its timeout`
+      : `exited with code ${code}`;
     throw new Error(
-      `${scriptName} produced no output.\nstderr: ${stderr.slice(0, 1200)}`
+      `${scriptName} produced no output (${how}).\nstderr: ${stderr.slice(0, 1200)}`
     );
   }
   try {
