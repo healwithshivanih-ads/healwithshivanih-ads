@@ -315,8 +315,10 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
             </span>
           </div>
           <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
-            Clients without a future cal.com booking who need a link sent.
-            Auto-picks event type per client — override per row.
+            Active-care clients without a future cal.com booking who need a
+            link sent. Ended programmes live in “Plans ending”; lapsed clients
+            and parked prospects are excluded. Auto-picks event type per
+            client — override per row.
           </div>
         </div>
         <button

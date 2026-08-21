@@ -20,9 +20,10 @@ import type { ArchiveCandidate } from "@/lib/fmdb/archive-candidates";
 import { FmPanel } from "@/components/fm";
 
 function reasonFor(c: ArchiveCandidate): string {
-  return c.category === "declined"
-    ? "declined"
-    : `no sign-up (${c.daysInactive}d quiet)`;
+  if (c.category === "declined") return "declined";
+  if (c.category === "programme_ended")
+    return `programme ended, not renewing (${c.daysInactive}d quiet)`;
+  return `no sign-up (${c.daysInactive}d quiet)`;
 }
 
 export function ArchiveCandidatesPanel({
@@ -111,8 +112,9 @@ export function ArchiveCandidatesPanel({
               marginTop: 3,
             }}
           >
-            Inactive 21+ days · never signed up or declined. Archiving hides
-            them from the dashboard — you can unarchive any time.
+            Inactive 21+ days · never signed up, declined, or programme ended
+            without renewal. Archiving hides them from the dashboard — you can
+            unarchive any time.
           </div>
         </div>
         {rows.length > 1 && (

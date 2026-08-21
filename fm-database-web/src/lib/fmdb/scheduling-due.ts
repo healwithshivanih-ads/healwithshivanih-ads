@@ -2,19 +2,43 @@ import "server-only";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { getPlansRoot } from "./paths";
-import { hasPlanStarted } from "./plan-timing";
+import {
+  hasPlanStarted,
+  effectiveRecheckDate,
+  type TravelOverrideLike,
+} from "./plan-timing";
+import { loadDecisions } from "./renewal-queue";
 import yaml from "js-yaml";
 
 /**
  * "Time to schedule next session" scanner.
  *
+ * SCOPE (2026-08-21 — the noise fix): this panel is for clients in ACTIVE
+ * CARE only. It went out to every client with a phone number, which meant
+ * ended programmes ("Plan recheck 18d overdue", growing forever) and parked
+ * prospects sat in the coach's face as pending actions. The gates:
+ *
+ *   - engagement_status lapsed / declined → never flagged.
+ *   - lifecycle_state prospect / paused / completed / dropped → never flagged.
+ *   - A plan whose EFFECTIVE recheck (plan-timing invariant: all
+ *     today-comparisons go through effectiveRecheckDate) has passed means the
+ *     programme has ENDED. The renewal queue (renewal-queue.ts, the "Plans
+ *     ending" dashboard panel) owns that moment — not this panel. An ended
+ *     plan keeps its client here only for a short POST_END_GRACE_DAYS window
+ *     to book the wrap-up call, and ONLY while no renewal decision is
+ *     recorded. Once the coach has decided (not_renewing / renewed /
+ *     offer_sent / deferred), the client leaves this panel immediately.
+ *   - Clients with NO plan (prospects, intake in review) are flagged only by
+ *     an explicit coach-set `next_contact_date` — never by the automatic
+ *     session-gap clock. Prospect chasing is deliberate, not perpetual.
+ *
  * Three signals determine who needs a booking link sent:
  *   1. `days_since_last_session` — date of most recent session file in
- *      clients/<id>/sessions/.
+ *      clients/<id>/sessions/. Active in-flight programmes only.
  *      ≥ 12 days  → flagged overdue (dueByGap).
  *      9–11 days  → flagged upcoming (1–3 days before the threshold).
- *   2. `plan_recheck_overdue` — for clients with a published plan,
- *      today > plan_period_recheck_date → overdue.
+ *   2. plan recheck — for clients with a published plan,
+ *      today > effective recheck → overdue (within the grace window).
  *      Within 3 days → flagged upcoming.
  *   3. `next_contact_date` — coach-set follow-up date within 3 days.
  *
@@ -66,16 +90,27 @@ interface ClientDictForScan {
   intake_submitted_at?: string | null;
   intake_finalised_at?: string | null;
   lifecycle_state?: string | null;
+  /** lapsed / declined clients are out of active care — never flagged. */
+  engagement_status?: string | null;
+  /** Travel/illness pause windows — shift the effective recheck (plan-timing). */
+  weight_loss?: {
+    enabled?: boolean;
+    week_overrides?: TravelOverrideLike[];
+  } | null;
   /** Coach-set next contact date — used to flag UPCOMING-due rows. */
   next_contact_date?: string | null;
 }
 
 interface PlanLite {
   client_id?: string;
+  /** Base plan slug (no -vN) — the key renewal decisions are recorded under. */
+  slug?: string;
   status?: string;
   _bucket?: string;
   plan_period_recheck_date?: string;
+  plan_period_weeks?: number;
   meal_plan_started_on?: string;
+  supplements_started_on?: string;
   plan_period_start?: string;
 }
 
@@ -84,6 +119,14 @@ const DAYS_SINCE_THRESHOLD = 12;
 /** How many days ahead of the threshold (or a specific due date) we
  *  show the "due soon" proactive signal. */
 const ADVANCE_WARNING_DAYS = 3;
+/** After a programme ends, how long the "book the wrap-up call" nudge stays
+ *  before the renewal queue is the sole owner of the relationship's next step.
+ *  A recorded renewal decision ends the nudge immediately, grace or not. */
+export const POST_END_GRACE_DAYS = 7;
+/** Lifecycle states that mean "not in active care" — never auto-flagged. */
+const INACTIVE_LIFECYCLE = new Set(["prospect", "paused", "completed", "dropped"]);
+/** Engagement statuses that mean the relationship is over or never began. */
+const INACTIVE_ENGAGEMENT = new Set(["lapsed", "declined"]);
 
 function daysBetween(a: Date, b: Date): number {
   return Math.floor((a.getTime() - b.getTime()) / 86_400_000);
@@ -201,11 +244,20 @@ export async function getSchedulingDueRows(
   // Cal.com cross-reference — skip clients who already have a future booking.
   const alreadyBooked = await clientsWithFutureBooking(nowMs);
 
+  // Renewal decisions (keyed by base plan slug). A decided ending must not
+  // keep generating booking nudges — that's the renewal queue's contract
+  // ("decisions are recorded so the queue can shut up") extended here.
+  const renewalDecisions = loadDecisions();
+
   const rows: SchedulingDueRow[] = [];
   for (const c of clients) {
     if (!c.client_id) continue;
     // Skip clients without a phone — can't send anyway.
     if (!(c.mobile_number || "").trim()) continue;
+    // Out of active care — lapsed/declined engagement, or a lifecycle state
+    // that says the programme relationship isn't running.
+    if (INACTIVE_ENGAGEMENT.has((c.engagement_status ?? "").toLowerCase())) continue;
+    if (INACTIVE_LIFECYCLE.has((c.lifecycle_state ?? "").toLowerCase())) continue;
     // Don't nudge if intake_finalised_at is recent (within 7d) — they
     // were JUST onboarded; let the coach do the first session naturally.
     if (c.intake_finalised_at) {
@@ -217,19 +269,41 @@ export async function getSchedulingDueRows(
     // Skip if they already have a future cal.com booking.
     if (alreadyBooked.has(c.client_id)) continue;
 
-    const lastDateStr = await lastSessionDate(c.client_id);
-    const daysSince = lastDateStr ? daysBetween(today, new Date(`${lastDateStr}T00:00:00`)) : undefined;
-
     const plan = publishedByClient.get(c.client_id);
     // Plan published but not begun yet → nothing to book until it starts.
     if (plan && !hasPlanStarted(plan, todayStr)) continue;
     const hasPlan = !!plan;
+
+    // Effective programme end — travel/illness pauses shift it (plan-timing
+    // invariant: never compare the stored recheck date against today).
+    const rOpts = {
+      overrides: c.weight_loss?.week_overrides,
+      weightLossEnabled: c.weight_loss?.enabled === true,
+    };
+    const recheckYmd = plan
+      ? (effectiveRecheckDate(plan, rOpts) ?? plan.plan_period_recheck_date)
+      : undefined;
     let recheckOverdue: number | undefined;
-    if (plan?.plan_period_recheck_date) {
-      const rd = new Date(`${plan.plan_period_recheck_date}T00:00:00`);
-      const od = daysBetween(today, rd);
+    if (recheckYmd) {
+      const od = daysBetween(today, new Date(`${recheckYmd}T00:00:00`));
       if (od > 0) recheckOverdue = od;
     }
+
+    // Programme ENDED → the renewal queue owns this client's next step.
+    if (recheckOverdue !== undefined) {
+      // Coach already recorded a decision on this ending (renewed /
+      // not_renewing / offer_sent / deferred) → nothing left to nag about.
+      if (plan?.slug && renewalDecisions[plan.slug]) continue;
+      // Undecided: keep a short "book the wrap-up call" window, then stop —
+      // the ending stays visible in the Plans-ending panel until decided.
+      if (recheckOverdue > POST_END_GRACE_DAYS) continue;
+    }
+    // The programme is over (or was never there): the automatic session-gap
+    // clock only applies to a plan still in flight.
+    const planInFlight = hasPlan && recheckOverdue === undefined;
+
+    const lastDateStr = planInFlight ? await lastSessionDate(c.client_id) : undefined;
+    const daysSince = lastDateStr ? daysBetween(today, new Date(`${lastDateStr}T00:00:00`)) : undefined;
 
     // ── Upcoming-due signals (1–3 days ahead). Each sets `upcomingInDays`
     //    to the days remaining. Whichever source is soonest wins.
@@ -237,13 +311,13 @@ export async function getSchedulingDueRows(
     let upcomingDueDate: string | undefined;
     let upcomingReason: string | undefined;
 
-    // 1. plan_period_recheck_date within ADVANCE_WARNING_DAYS
-    if (plan?.plan_period_recheck_date && recheckOverdue === undefined) {
-      const rd = new Date(`${plan.plan_period_recheck_date}T00:00:00`);
+    // 1. effective recheck date within ADVANCE_WARNING_DAYS
+    if (recheckYmd && recheckOverdue === undefined) {
+      const rd = new Date(`${recheckYmd}T00:00:00`);
       const daysAhead = daysBetween(rd, today);
       if (daysAhead >= 0 && daysAhead <= ADVANCE_WARNING_DAYS) {
         upcomingInDays = daysAhead;
-        upcomingDueDate = plan.plan_period_recheck_date;
+        upcomingDueDate = recheckYmd;
         upcomingReason =
           daysAhead === 0
             ? "Plan recheck is today — send booking link now"
@@ -312,7 +386,9 @@ export async function getSchedulingDueRows(
       days_since_last_session: daysSince,
       last_session_date: lastDateStr,
       plan_recheck_overdue_days: recheckOverdue,
-      plan_period_recheck_date: plan?.plan_period_recheck_date,
+      // Report the EFFECTIVE recheck (travel-adjusted) — the date the
+      // overdue/upcoming math actually used, not the stored legacy field.
+      plan_period_recheck_date: recheckYmd,
       upcoming_in_days: upcomingInDays,
       upcoming_due_date: upcomingDueDate,
     });
