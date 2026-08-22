@@ -5,9 +5,10 @@
  * doc reader (lessons + resources), remedy detail, account/settings.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { AppComponentRecipe, AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
+import type { AppComponentRecipe, AppRecipe, AppRemedy, AppWeekMenu } from "@/lib/fmdb/client-app";
+import { searchRecipes } from "@/lib/fmdb/recipe-search";
 import { DOSHA_LABEL, Icon, REMEDY_CAT, useOchre } from "./ochre-context";
 import { AppAvatar } from "./ochre-ui";
 import { BodySection } from "./ochre-body";
@@ -315,9 +316,10 @@ export function DocOverlay({ doc, onClose }: { doc: { kind: string; id: string }
             Your recipe pack
           </h2>
           <div className="muted" style={{ fontSize: 12.5, margin: "8px 0 12px" }}>
-            Every recipe from your plan — tap a dish for ingredients and method.
+            Every recipe from your plan — search a dish or an ingredient, or pick a week, then tap for
+            ingredients and method.
           </div>
-          <RecipeAccordion recipes={data.recipePack} />
+          <RecipePackBrowser recipes={data.recipePack} weeks={data.weekMenus} />
         </div>
       </div>
     );
@@ -573,33 +575,127 @@ function RecipeDetailBody({ r }: { r: AppRecipe }) {
 /** Tappable list of every recipe in the pack — expands in place. Used in
  *  the meal overlay (when a dish has no exact match) and the Plan →
  *  Resources recipe-pack card. */
-export function RecipeAccordion({ recipes }: { recipes: AppRecipe[] }) {
-  const [open, setOpen] = useState<number | null>(null);
+export function RecipeAccordion({
+  recipes,
+  weeksFor,
+}: {
+  recipes: AppRecipe[];
+  /** Menu weeks that serve each recipe — rendered as small "Wk N" tags so a
+   *  client can place a dish in time. Optional: the dish overlay's fallback
+   *  list has no week context to offer. */
+  weeksFor?: (r: AppRecipe) => number[];
+}) {
+  // Keyed by title, not index: the pack overlay filters this list as the
+  // client types, and an index would re-open a different dish on each
+  // keystroke.
+  const [open, setOpen] = useState<string | null>(null);
   return (
     <div className="card" style={{ overflow: "hidden", marginTop: 4 }}>
-      {recipes.map((r, i) => (
-        <div key={i} style={{ borderBottom: i < recipes.length - 1 ? "1px solid var(--line-soft)" : "none" }}>
-          <button
-            className="rp-row"
-            onClick={() => setOpen(open === i ? null : i)}
-            aria-expanded={open === i}
-          >
-            <span className="rp-title">{r.title}</span>
-            <span className="rp-meta">
-              {r.time ?? ""}
-              <span className="chev" style={{ transform: open === i ? "rotate(90deg)" : "none", transition: "transform .2s" }}>
-                <Icon name="chev" size={16} />
+      {recipes.map((r, i) => {
+        const isOpen = open === r.title;
+        const wks = weeksFor?.(r) ?? [];
+        return (
+          <div key={`${r.title}-${i}`} style={{ borderBottom: i < recipes.length - 1 ? "1px solid var(--line-soft)" : "none" }}>
+            <button
+              className="rp-row"
+              onClick={() => setOpen(isOpen ? null : r.title)}
+              aria-expanded={isOpen}
+            >
+              <span className="rp-title">
+                {r.title}
+                {wks.length > 0 && (
+                  <span className="rp-weeks" aria-label={`On your menu in week ${wks.join(", ")}`}>
+                    {wks.map((w) => (
+                      <span key={w} className="rp-week">
+                        Wk {w}
+                      </span>
+                    ))}
+                  </span>
+                )}
               </span>
-            </span>
-          </button>
-          {open === i && (
-            <div style={{ padding: "0 14px" }}>
-              <RecipeDetailBody r={r} />
-            </div>
-          )}
-        </div>
-      ))}
+              <span className="rp-meta">
+                {r.time ?? ""}
+                <span className="chev" style={{ transform: isOpen ? "rotate(90deg)" : "none", transition: "transform .2s" }}>
+                  <Icon name="chev" size={16} />
+                </span>
+              </span>
+            </button>
+            {isOpen && (
+              <div style={{ padding: "0 14px" }}>
+                <RecipeDetailBody r={r} />
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
+  );
+}
+
+/** The full recipe pack with a search box and week chips. A 12-week client
+ *  carries 60–80 recipes now that every approved week stays live; "that
+ *  thing from week 2" has to be findable, not scrolled for. Search covers
+ *  titles AND ingredients (recipe-search.ts). */
+function RecipePackBrowser({ recipes, weeks }: { recipes: AppRecipe[]; weeks: AppWeekMenu[] }) {
+  const [query, setQuery] = useState("");
+  const [week, setWeek] = useState<number | null>(null);
+  const hits = useMemo(() => searchRecipes(recipes, weeks, query, week), [recipes, weeks, query, week]);
+  const weekNums = weeks.map((w) => w.week);
+  const weeksOf = useMemo(() => {
+    const m = new Map<AppRecipe, number[]>();
+    for (const h of hits) m.set(h.recipe, h.weeks);
+    return (r: AppRecipe) => m.get(r) ?? [];
+  }, [hits]);
+  const filtering = query.trim() !== "" || week !== null;
+  return (
+    <>
+      <label className="rl-search">
+        <Icon name="search" size={16} style={{ color: "var(--muted)", flexShrink: 0 }} />
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search a dish or an ingredient…"
+          aria-label="Search your recipes"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
+        />
+        {query && (
+          <button type="button" className="rl-clear" onClick={() => setQuery("")} aria-label="Clear search">
+            <Icon name="x" size={12} />
+          </button>
+        )}
+      </label>
+      {weekNums.length > 1 && (
+        <div className="rl-filters" role="group" aria-label="Narrow to a week">
+          <button type="button" className={"rl-chip" + (week === null ? " on" : "")} onClick={() => setWeek(null)}>
+            All weeks
+          </button>
+          {weekNums.map((n) => (
+            <button
+              key={n}
+              type="button"
+              className={"rl-chip" + (week === n ? " on" : "")}
+              onClick={() => setWeek(week === n ? null : n)}
+            >
+              Week {n}
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="rl-count" aria-live="polite">
+        {filtering ? `${hits.length} of ${recipes.length} dishes` : `${recipes.length} dishes`}
+      </div>
+      {hits.length ? (
+        <RecipeAccordion recipes={hits.map((h) => h.recipe)} weeksFor={weeksOf} />
+      ) : (
+        <div className="card rl-empty">
+          Nothing matches{query.trim() ? ` “${query.trim()}”` : ""}
+          {week !== null ? ` in week ${week}` : ""}. Try a single word — the dish, or something in it.
+        </div>
+      )}
+    </>
   );
 }
 
