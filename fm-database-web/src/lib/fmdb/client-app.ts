@@ -76,6 +76,7 @@ import {
 } from "@/lib/fmdb/discovery-tier";
 import { resolveAppMode, resolveFinalStretch, GRACE_DAYS, REVIEW_LEAD_DAYS, SHORT_PLAN_MAX_WEEKS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
 import { fallbackWeekFor } from "@/lib/fmdb/menu-weeks";
+import { dedupeRecipePack } from "@/lib/fmdb/recipe-pack-dedup";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
 import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
 import {
@@ -4085,7 +4086,11 @@ export async function loadClientAppData(
           const r = recipeFor(c.title);
           if (r && !recipes.includes(r)) usedLibrary.add(r);
         }
-  const packRecipes = [...recipes, ...usedLibrary];
+  // One dish, one recipe: an AI recipe from an early week sitting beside the
+  // library's curated twin of the same dish is collapsed onto the library
+  // copy (recipe-pack-dedup.ts) — which is what the dish overlay shows anyway.
+  const deduped = dedupeRecipePack(recipes, [...usedLibrary]);
+  const packRecipes = [...deduped.pack, ...deduped.library];
   // Legacy letter-parsed recipes have no structured quantities / kcal. Borrow
   // them from a same-named library recipe so the cook-for-N scaler + calories
   // light up wherever the dish exists in the library.
