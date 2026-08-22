@@ -2,10 +2,9 @@
 
 import { execFile } from "child_process";
 import path from "path";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 async function runScript(
   scriptName: string,

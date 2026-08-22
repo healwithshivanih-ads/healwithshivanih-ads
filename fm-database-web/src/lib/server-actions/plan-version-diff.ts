@@ -2,6 +2,7 @@
 
 import { execFile } from "child_process";
 import path from "path";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
 import yaml from "js-yaml";
@@ -14,8 +15,6 @@ import {
 } from "@/lib/fmdb/plan-version-diff";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 const SEMANTIC_CACHE_FILE = "_plan_diff_cache.yaml";
 

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { spawn } from "node:child_process";
 import path from "node:path";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 import fs from "node:fs/promises";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
@@ -10,8 +11,6 @@ import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 
-const FMDB_ROOT = path.resolve(process.cwd(), "..", "fm-database");
-const WEB_ROOT = process.cwd();
 const TIMEOUT_MS = 60_000;
 
 export interface LifecycleResult {
@@ -49,9 +48,8 @@ function runShim<T = unknown>(
   timeoutMs: number = TIMEOUT_MS
 ): Promise<T> {
   return new Promise<T>((resolve) => {
-    const py = path.join(FMDB_ROOT, ".venv/bin/python");
-    const script = path.join(WEB_ROOT, "scripts", scriptName);
-    const child = spawn(py, [script], { stdio: ["pipe", "pipe", "pipe"] });
+    const script = path.join(SCRIPTS_DIR, scriptName);
+    const child = spawn(PYTHON, [script], { stdio: ["pipe", "pipe", "pipe"] });
 
     let stdout = "";
     let stderr = "";

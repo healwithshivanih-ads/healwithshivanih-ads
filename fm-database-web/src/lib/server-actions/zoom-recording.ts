@@ -25,6 +25,7 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadAllClients } from "@/lib/fmdb/loader";
@@ -281,8 +282,6 @@ async function runExtractionPipeline(
   // Both already exist for the assess / health-input flows; we point them
   // at the transcript text and merge into client.yaml the same way.
   const { execFile } = await import("child_process");
-  const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
-  const PYTHON = path.resolve(process.cwd(), "../fm-database/.venv/bin/python");
 
   // Save transcript to a temp file for shim consumption.
   const tmpDir = path.join(getPlansRoot(), "clients", clientId, "recordings", "_tmp");

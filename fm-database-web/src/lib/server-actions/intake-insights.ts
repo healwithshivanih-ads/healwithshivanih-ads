@@ -2,6 +2,7 @@
 
 import { execFile } from "child_process";
 import path from "path";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
@@ -9,8 +10,6 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 async function runScript(
   scriptName: string,

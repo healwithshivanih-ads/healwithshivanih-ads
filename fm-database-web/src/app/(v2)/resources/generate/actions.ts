@@ -3,12 +3,12 @@
 import { execFile } from "child_process";
 import { promisify } from "util";
 import path from "path";
+import { PYTHON } from "@/lib/fmdb/shim";
 import { revalidatePath } from "next/cache";
 
 const execFileP = promisify(execFile);
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
 const SCRIPT = path.resolve(process.cwd(), "scripts/generate-info-pack.py");
 
 export type GenerateInfoPackInput = {

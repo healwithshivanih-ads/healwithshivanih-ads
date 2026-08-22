@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { resolvePersonDir } from "@/lib/fmdb/person-dir";
-import { runShim } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, runShim } from "@/lib/fmdb/shim";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { validateMeasurement, reconcileFlatMeasurements } from "@/lib/fmdb/measurements";
 import { matchDrug, drugAliases, type DrugAliasRecord } from "@/lib/fmdb/drug-match";
@@ -54,8 +54,6 @@ function matchDrugForImpactPanel<T extends DrugAliasRecord>(
 }
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 /**
  * Correct stdin-piping helper. Node's execFile doesn't actually use the

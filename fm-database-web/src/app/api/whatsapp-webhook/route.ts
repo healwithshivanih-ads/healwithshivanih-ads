@@ -68,6 +68,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHmac, timingSafeEqual } from "node:crypto";
 import path from "path";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 import fs from "node:fs/promises";
 import os from "node:os";
 import { execFile } from "child_process";
@@ -87,8 +88,6 @@ const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
 const UNMATCHED_FILE = path.join(PLANS_ROOT, "_whatsapp_unmatched.yaml");
 const DELIVERY_FAILURES_FILE = path.join(PLANS_ROOT, "_whatsapp_delivery_failures.yaml");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 // ── Signature verification ────────────────────────────────────────────────────
 
