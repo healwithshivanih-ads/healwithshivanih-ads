@@ -1,0 +1,35 @@
+slug: elevated-fsh-linked-to-cognitive-decline-independent-of-estrogen
+statement: Elevated FSH (follicle-stimulating hormone) itself — not only low estrogen
+  — is associated with brain/cognitive decline in some data, which is why some FM
+  clinicians target lowering FSH (e.g., below 60) with transdermal estradiol in
+  postmenopausal women reporting memory concerns, rather than treating estrogen
+  level alone.
+evidence_tier: fm_specific_thin
+rationale: The speaker cites 'data' for a direct FSH-neurodegeneration link but
+  names no specific study; treated as an emerging clinical hypothesis rather than
+  an established mechanism until a citable source is added. The catalogue already
+  tracks FSH as an aging biomarker via fsh-as-aging-biomarker.
+coaching_translation: Out of coaching scope — FSH targets and hormone dosing are
+  lab-interpretation and prescribing decisions. If a client with memory concerns
+  is on hormone therapy, it's reasonable to encourage her to ask her prescriber
+  whether they track FSH, not to advise a target herself.
+caveats:
+- Speaker did not name the specific study behind the FSH-neurodegeneration claim;
+  flagged fm_specific_thin pending a citable source.
+linked_to_topics:
+- fsh-as-aging-biomarker
+- menopause
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: FSH targets and hormone-dose titration are clinician scope.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: FSH and testing panel segment
+  quote: There's data that shows... FSH in itself when it's high, it can degenerate
+    the brain. So if I have somebody that is worried about their memory... I will
+    get their FSH down.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

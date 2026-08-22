@@ -1,0 +1,42 @@
+slug: elevated-dht-drives-androgenic-symptoms-in-women
+statement: Testosterone can convert to dihydrotestosterone (DHT), and elevated DHT
+  in women is associated with androgenic symptoms — male-pattern hair thinning,
+  acne, and unwanted facial/body hair. Several nutraceuticals (saw palmetto, zinc,
+  green tea, stinging nettle root) have been used clinically to lower DHT, though
+  the speaker notes the supporting studies are small and short.
+evidence_tier: fm_specific_thin
+rationale: Testosterone-to-DHT conversion via 5-alpha-reductase and its androgenic
+  effects are established endocrinology; the DHT-lowering effect of saw palmetto/zinc/green
+  tea/nettle root in women specifically is supported mainly by small, short studies
+  (most DHT-lowering supplement research is in men, e.g. saw palmetto for BPH) per
+  the speaker's own caveat — hence fm_specific_thin for the supplement layer of
+  this claim.
+coaching_translation: For a client with new hair thinning, acne, or unwanted hair
+  growth alongside other hormone-transition symptoms, this is a pattern worth flagging
+  for her prescriber to check (DHT, free androgen index) — not something to self-treat
+  with supplements before that workup.
+caveats:
+- Speaker explicitly describes the supplement evidence as small, short studies;
+  most DHT-lowering supplement research is in men, extrapolation to women is clinical
+  practice, not trial-confirmed.
+linked_to_topics:
+- testosterone-dht-conversion
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements:
+- saw-palmetto
+- zinc
+- green-tea
+- stinging-nettle-root
+out_of_scope_notes: Supplement dosing and DHT lab interpretation are clinician-directed;
+  a coach can flag the pattern, not prescribe around it.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: DHT and androgenic symptoms segment
+  quote: If their dihydrotestosterone is high, saw palmetto, zinc, green tea, nettle
+    root, all of those things may lower the dihydrotestosterone... the studies are
+    small and they're short studies.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

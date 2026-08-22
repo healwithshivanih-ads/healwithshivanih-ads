@@ -1,0 +1,42 @@
+slug: osteoporosis-nutraceutical-support-considered-before-hormone-therapy-alone
+statement: For a client with osteoporosis and no other menopausal symptoms, starting
+  hormone therapy for bone health alone is not the default approach; nutraceutical
+  support (boron, vitamin K2 around 180 mcg daily, vitamin D3) is considered first,
+  alongside checking whether SHBG is elevated (70 or greater flags a pattern worth
+  addressing).
+evidence_tier: fm_specific_thin
+rationale: Vitamin K2 and D3 have supporting evidence for bone health; boron's bone-density
+  effect is less consistently evidenced (already flagged in the boron-lowers-shbg
+  claim). The specific sequencing — nutraceuticals before HRT for bone-only indications
+  — is the speaker's own clinical practice pattern, not a cited comparative trial.
+coaching_translation: A client with osteoporosis but no other symptoms doesn't necessarily
+  need hormone therapy first — nutrition and targeted nutrient support may be the
+  first step her provider considers. A coach can support consistent intake of bone-supportive
+  foods and supplement adherence once prescribed.
+caveats:
+- Speaker's sequencing preference (nutraceuticals before HRT for bone-only indications)
+  is clinical practice, not a comparative trial.
+- Speaker also mentioned a silica/orthosilicic-acid supplement for bone support
+  that has no catalogue entry yet — flagged for a future ingest, not linked here.
+linked_to_topics:
+- osteoporosis
+- bone-health
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements:
+- boron
+- vitamin-k2
+- vitamin-d3
+out_of_scope_notes: Whether to start hormone therapy for osteoporosis is a prescribing
+  decision.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Q&A — 72-year-old osteoporosis question
+  quote: We usually are not going to start it for bone health only... for osteoporosis
+    I will go to... boron if they have... higher sex hormone binding globulin,
+    anything 70 or greater... K2, I make sure they're on 180 of K2 and that they're
+    on D3.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

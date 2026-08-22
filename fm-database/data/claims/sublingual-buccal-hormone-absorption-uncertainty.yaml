@@ -1,0 +1,32 @@
+slug: sublingual-buccal-hormone-absorption-uncertainty
+statement: Sublingual/buccal hormone dosing is avoided by some FM clinicians because
+  absorption through the oral mucosa cannot be guaranteed complete — any swallowed
+  portion undergoes hepatic first-pass metabolism, reintroducing the risks associated
+  with oral dosing that transdermal routes are meant to avoid.
+evidence_tier: fm_specific_thin
+rationale: This is a stated clinical preference from the speaker, contrasted against
+  colleagues who do use sublingual dosing — he explicitly frames it as his own caution
+  rather than a settled consensus.
+coaching_translation: If a client mentions she's been offered sublingual or buccal
+  hormone drops, it's a reasonable prompt to ask her prescriber how they confirm
+  absorption — not something a coach should weigh in on directly.
+caveats:
+- Speaker explicitly notes other respected clinicians do use sublingual hormones;
+  this is a stated personal caution, not consensus.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: Route selection is a prescribing decision.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Q&A — sublingual/buccal estrogen absorption question
+  quote: Even though some doctors that I respect are using these sublingual hormones,
+    I am very worried about it because you can't guarantee me that 100% is going
+    to get absorbed through the mouth and that none of it's going to get swallowed.
+    And if it gets swallowed and goes through the liver, we can have problems.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

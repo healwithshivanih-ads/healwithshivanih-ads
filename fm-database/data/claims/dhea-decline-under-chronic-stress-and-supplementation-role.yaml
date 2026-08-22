@@ -1,0 +1,40 @@
+slug: dhea-decline-under-chronic-stress-and-supplementation-role
+statement: Under sustained stress, DHEA typically rises first and then drops; the
+  resulting low DHEA can contribute to sex-hormone-imbalance symptoms, and DHEA
+  supplementation is used clinically to help support downstream sex-hormone production
+  (including via DHEA's conversion to testosterone).
+evidence_tier: plausible_emerging
+rationale: The biphasic DHEA stress response (early rise, later decline with chronic/prolonged
+  stress) is described in HPA-axis literature; DHEA's role as a precursor to testosterone/estrogen
+  is established steroidogenesis. Clinical DHEA supplementation for sex-hormone
+  support is common FM/anti-aging practice with mixed-quality trial support, hence
+  plausible_emerging rather than strong.
+coaching_translation: DHEA supplementation is a clinician/prescriber decision (it
+  is a hormone precursor, not a general wellness supplement) — a coach's role is
+  supporting the stress-management foundation that protects the HPA axis in the
+  first place.
+caveats:
+- DHEA supplementation should be monitored with lab levels; not a self-directed
+  supplement.
+linked_to_topics:
+- perimenopause
+- menopause
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_symptoms: []
+linked_to_supplements:
+- dhea
+- dhea-s
+out_of_scope_notes: DHEA is a hormone precursor and should not be recommended by
+  a coach without clinician oversight.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: DHEA segment
+  quote: When people are under a lot of stress, the first thing that happens is
+    DHEA goes up, the next thing that happens is DHEA can drop... sometimes what
+    we'll do is we'll give people the supplement DHEA... DHEA can also shunt into
+    testosterone.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

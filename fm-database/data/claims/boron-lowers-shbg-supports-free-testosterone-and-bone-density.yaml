@@ -1,0 +1,31 @@
+slug: boron-lowers-shbg-supports-free-testosterone-and-bone-density
+statement: Boron is used clinically to lower SHBG and increase free testosterone,
+  and may also support bone density in women — relevant both to low-free-testosterone
+  symptom pictures and to bone-health support in perimenopause/menopause.
+evidence_tier: fm_specific_thin
+rationale: Boron's effect on SHBG and free testosterone has small supporting human
+  studies; bone-density effects are less consistently evidenced. The speaker presents
+  this as a clinical pearl rather than citing a specific trial.
+coaching_translation: Supplement dosing is outside coaching scope; a coach can note
+  boron as a topic worth raising with the client's prescriber if SHBG is elevated,
+  alongside the diet and lifestyle factors that are squarely coaching territory.
+caveats:
+- No specific study cited by the speaker; cross-reference the catalogue's existing
+  boron entry for dose and evidence detail.
+linked_to_topics:
+- sex-hormone-binding-globulin
+- bone-health
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements:
+- boron
+out_of_scope_notes: Supplement dosing is clinician/prescriber-directed.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Supplement pearls segment
+  quote: Boron is bound found to lower sex hormone binding globulin and boost free
+    testosterone and actually help with women's bone densities.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani
