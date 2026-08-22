@@ -11,6 +11,8 @@ import { confirmationNameMatches } from "@/lib/fmdb/engagement";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { loadClientSessions, loadClientById } from "@/lib/fmdb/loader-extras";
+import type { MenopauseRatingScaleData } from "@/lib/fmdb/mrs-score";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 import {
   runAssess,
   generateDraftFromSuggestions,
@@ -78,6 +80,8 @@ export interface SessionSummary {
     nutrition_quality?: number;
     connection_quality?: number;
   };
+  /** Menopause Rating Scale snapshot captured during this session (if any) */
+  mrs?: MenopauseRatingScaleData;
   /** Key drivers for the session brief export */
   likely_drivers?: SessionDriver[];
   /** Supplement suggestions for the session brief export */
@@ -141,6 +145,7 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
     const slug = s.generated_plan_slug ?? null;
     const coach_notes = (s as Record<string, unknown>).coach_notes as string | undefined;
     const rawFp = (s as Record<string, unknown>).five_pillars as Record<string, unknown> | undefined;
+    const rawMrs = (s as Record<string, unknown>).mrs as Record<string, unknown> | undefined;
     const driversArr = Array.isArray(drivers) ? (drivers as Array<Record<string, unknown>>) : [];
     const suppsArr = Array.isArray(supps) ? (supps as Array<Record<string, unknown>>) : [];
     return {
@@ -165,6 +170,21 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
             movement_days_per_week: rawFp.movement_days_per_week as number | undefined,
             nutrition_quality: rawFp.nutrition_quality as number | undefined,
             connection_quality: rawFp.connection_quality as number | undefined,
+          }
+        : undefined,
+      mrs: rawMrs && Object.values(rawMrs).some((v) => v != null)
+        ? {
+            hot_flashes_sweating: rawMrs.hot_flashes_sweating as number | undefined,
+            heart_discomfort: rawMrs.heart_discomfort as number | undefined,
+            sleep_problems: rawMrs.sleep_problems as number | undefined,
+            joint_muscular_discomfort: rawMrs.joint_muscular_discomfort as number | undefined,
+            depressive_mood: rawMrs.depressive_mood as number | undefined,
+            irritability: rawMrs.irritability as number | undefined,
+            anxiety: rawMrs.anxiety as number | undefined,
+            physical_mental_exhaustion: rawMrs.physical_mental_exhaustion as number | undefined,
+            sexual_problems: rawMrs.sexual_problems as number | undefined,
+            bladder_problems: rawMrs.bladder_problems as number | undefined,
+            vaginal_dryness: rawMrs.vaginal_dryness as number | undefined,
           }
         : undefined,
       likely_drivers: driversArr.length > 0
@@ -206,10 +226,6 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
     };
   }));
 }
-
-const PYTHON =
-  path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 export async function runAssessAction(
   input: AssessInput
@@ -1048,6 +1064,7 @@ export interface SaveSessionInput {
   coach_notes?: string;
   requested_labs?: string[];
   five_pillars?: FivePillarsData;
+  mrs?: MenopauseRatingScaleData;
   // External reports the coach has asked the client to bring back. Late-
   // arriving reports (genetics, GI-MAP, DUTCH, blood panels) link to this
   // session so the session view shows everything ordered together.

@@ -1,0 +1,37 @@
+slug: postmenopausal-progesterone-supports-brain-not-only-uterus
+statement: In functional medicine practice, postmenopausal women are often kept
+  on nightly progesterone alongside estradiol even without a uterus — reflecting
+  progesterone's neuroactive, calming brain effects — whereas conventional practice
+  typically limits progesterone to endometrial (uterine-cancer) protection and considers
+  it unnecessary after hysterectomy.
+evidence_tier: plausible_emerging
+rationale: Progesterone's neuroactive/GABAergic calming effect (via allopregnanolone)
+  is established pharmacology; the specific practice pattern of prescribing it post-hysterectomy
+  for brain/sleep/anxiety benefit rather than endometrial protection is a functional-medicine
+  practice convention described by the speaker, not a cited RCT.
+coaching_translation: If a client without a uterus is confused about why her FM
+  provider still has her on progesterone, it's fair to explain the brain-calming
+  rationale in plain terms — the prescribing decision itself stays with her provider.
+caveats:
+- This is a described FM practice pattern, not a controlled trial comparing outcomes
+  with and without progesterone post-hysterectomy.
+linked_to_topics:
+- menopause
+- progesterone-physiology
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements:
+- natural-progesterone-cream
+out_of_scope_notes: Whether an individual client should be on progesterone post-hysterectomy
+  is a prescribing decision.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Progesterone prescribing segment
+  quote: Even if they don't have a uterus, in conventional medicine, if you don't
+    have a uterus, they say you don't need progesterone because you don't have a
+    uterus. In functional medicine, we say your brain is important and progesterone
+    is needed for the brain. So we're going to put you on progesterone as well.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

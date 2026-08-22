@@ -1,0 +1,32 @@
+slug: progesterone-lab-testing-requires-luteal-phase-timing
+statement: In women still having regular periods, progesterone should be tested
+  during the luteal phase (roughly day 21, i.e., after ovulation and before the
+  next period) — testing during the first 14 days of the cycle will read as low
+  progesterone by design, regardless of whether the client actually has a deficiency.
+evidence_tier: strong
+rationale: Luteal-phase progesterone testing (the day-21 convention) is standard
+  reproductive endocrinology practice, reflecting normal ovulatory physiology (corpus
+  luteum progesterone production after ovulation) — this is not an FM-specific claim.
+coaching_translation: If a client mentions she was tested for 'low progesterone'
+  but isn't sure when in her cycle the blood draw happened, that's a good question
+  to help her bring back to her prescriber — timing alone can make a normal result
+  look artificially low.
+caveats: []
+linked_to_topics:
+- low-progesterone
+- progesterone-physiology
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: Ordering and interpreting hormone panels is clinician scope.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Hormone testing segment
+  quote: Day 14 to day 28... that's the luteal phase... that's where the egg was
+    released from... it makes progesterone. So if you're checking somebody and telling
+    them they have low progesterone, but they were checking them in the first 14
+    days, guess what? Of course they're going to have low progesterone.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { latestMeasurements } from "@/lib/fmdb/measurements";
+import { menopauseStage } from "@/lib/fmdb/menopause-stage";
 import { FmPageHeader } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
 import {
@@ -88,7 +89,13 @@ export default async function CheckInPage({
     /insulin resist|pcos|prediabet|diabet|metabolic syndrome/.test(condBlob);
   const wl = clientAny.weight_loss as { enabled?: boolean } | undefined;
   const isWeightLoss = !!wl?.enabled;
-  const isPeriMeno = /peri.?menopaus|menopaus/.test(condBlob);
+  // Anchored markers (never bare "menopaus") so "Premenopausal" doesn't
+  // read as the transition — mirrors fmdb/assess/suggester.py.
+  const isPeriMeno =
+    menopauseStage(
+      clientAny.active_conditions as string[] | undefined,
+      clientAny.medical_history as string[] | undefined,
+    ) != null;
   const proteinFocus =
     isVeg || isInsulinResistance || isWeightLoss || isPeriMeno;
 
@@ -117,6 +124,7 @@ export default async function CheckInPage({
         }
         previousMeasurements={previousMeasurements}
         proteinFocus={proteinFocus}
+        showMrs={isPeriMeno}
       />
     </AnalysePageShell>
   );

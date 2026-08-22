@@ -63,6 +63,44 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.81 — Menopause Rating Scale (MRS) for peri/postmenopausal clients.** Prompted by the Elyaman FMCA webinar ingest (claim `mrs-symptom-score-for-tracking-hormone-transition-symptoms`): a validated, repeatable number beats the ad-hoc symptom count for this cohort. The check-in form (`analyse/checkin/checkin-form.tsx`) gains the 11-item MRS (0–4 per item; somato-vegetative / psychological / urogenital) only when `menopauseStage()` ≠ null; `OutcomeProgressCard` promotes the MRS trend to the primary number once a client has 2+ scorable entries and demotes the generic symptom chart to a collapsed disclosure. **Display swap, not a data swap** — `selected_symptoms` tracking keeps running underneath.
+
+**Key invariants (v0.81):**
+- `src/lib/fmdb/mrs-score.ts::MRS_ITEMS` is the single source of truth for the 11 keys/labels and mirrors `fmdb/plan/models.py::MenopauseRatingScale` field-for-field — keep in lockstep. `computeMrsScore()` returns `null` unless ALL 11 are answered: partial entries save to the session YAML but never plot (no zero-fill).
+- `src/lib/fmdb/menopause-stage.ts` is a port of `fmdb/assess/suggester.py::menopause_stage()`: anchored markers (`perimenopaus` / `postmenopaus`, never bare `menopaus`) so "Premenopausal" can't match, and post beats peri when a record carries both. It now also gates the check-in protein question, replacing a bare regex that had that exact false positive. Tests ported from `tests/test_menopause_stage.py`; keep both files' cases in lockstep.
+- **No severity bands in v1** — no properly sourced cutoffs, so the card shows raw total/44 + delta only. Add bands only with a citation.
+- `server-actions/assess.ts` now imports `PYTHON`/`SCRIPTS_DIR` from `lib/fmdb/shim.ts` (honours `FMDB_PYTHON`, identical fallback) — it had its own hard-coded venv path and could never save a session from a worktree. Five other server-action files still hard-code it (`catalogue-orphan-action`, `catalogue-duplicate-action`, `api/email/actions`, `(v2)/ingest/actions`, `(v2)/recipes/actions`) — same one-line fix, not yet applied.
+- **Worktree dev-server recipe:** `FMDB_PYTHON=<main venv python> next dev --webpack -p <port>` — Turbopack refuses a symlinked `node_modules` ("points out of the filesystem root"), webpack doesn't. After ANY dev-server restart, HARD-reload the tab: HMR drops and a soft navigation renders fresh server data with the stale client bundle, which looks exactly like a logic bug.
+
+---
+
+**v0.80 (2026-08-22) — Weekly menu approval APPENDS; it never trims.** Nazneen
+(cl-022) reported twice that "the other food options/recipes have dropped off"
+after an approval. `approveWeekMenuAction` was deliberately keeping only two
+weeks live (`slice(-2)`, later "approved + the one before") on the belief that
+the app shows only two — but the app has a week picker, and the earlier weeks
+ARE the client's food options and the source of her recipes. Every client on
+the cadence was on the same two-week window. **Invariants now:**
+- `weeksAfterApproval` (`src/lib/fmdb/menu-weeks.ts`) keeps every live week,
+  replaces a same-numbered re-approval, and drops ONLY weeks carried from a
+  predecessor plan — by the `source_plan` stamp approval now writes on each
+  week, or (legacy, unstamped) by being numbered > approved+1, beyond what
+  drafting can reach. **Do not reintroduce a cap.** `menu-weeks.test.ts` pins
+  both the Nazneen case and the 2026-08-02 Nidhi carried-weeks case.
+- With every week live, `client-app.ts` no longer rotates when the current
+  week has no menu: `fallbackWeekFor` → latest loaded week ≤ current.
+- Grocery is incremental (`grocery-weeks.ts`): lists are owed for the current
+  week + live weeks ahead, keyed per week by `menu_key` (dish fingerprint,
+  computed from RAW `app_menu.weeks` in both the action and the backfill
+  cron); older weeks' lists are carried forward. A normal approval = ONE Haiku
+  call. Coach 🛒 button passes `force`. `generate-grocery-list.py` accepts
+  `keep_weeks` and merges. "Grocery weeks ≠ menu weeks" is normal now — the
+  cron asks `groceryRefreshNeededAction` instead.
+- Evicted weeks were restored from `.bak-*` copies for 7 clients
+  (`.bak-restore-weeks-20260822` alongside each published plan).
+
+---
+
 **v0.79 (in flight, branch `claude/millet-health-warnings-b3ex7c`)** — Condition ↔ food cautions: the negative half of `good_for`.
 
 **The gap:** every food surface in the catalogue was positive-only or coach-typed. `_recipes` carried `good_for` / `contains_allergens` / `aggravates_dosha`; `_ingredient_nutrients.yaml` carried nutrition with no safety axis; `client.foods_to_avoid` was hard-enforced but nothing told the coach what to type. `meal_foods.py::relevant_meal_foods()` could find foods that HELP a condition and **nothing could find foods that HARM one**. So ragi reached a hypothyroid client's weekly menu: week-drafter rule 11 actively rotates millets, `ragi-roti` is `good_for: [blood-sugar-regulation]` so it ranked well, and the three hard filters had no reason to stop it — while `claims/murray-goitrogens-cooked-vs-raw.yaml` (which names millet explicitly) sat there as prose that gated nothing.

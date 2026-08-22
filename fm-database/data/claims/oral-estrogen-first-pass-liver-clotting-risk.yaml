@@ -1,0 +1,35 @@
+slug: oral-estrogen-first-pass-liver-clotting-risk
+statement: Oral estradiol is absorbed through the gut and passes through the liver
+  first, increasing clotting-factor synthesis and stroke risk relative to transdermal
+  estrogen (patch/gel/cream), which enters circulation more directly with a smaller
+  liver first-pass effect; oral estrogen is generally avoided in women with a migraine
+  history because of a shared elevated stroke risk.
+evidence_tier: strong
+rationale: The oral-vs-transdermal estrogen route and clotting-risk distinction (first-pass
+  hepatic metabolism raising clotting-factor synthesis) is well established across
+  both conventional OB-GYN and functional-medicine guidance; the speaker states the
+  data here is consistent across frameworks.
+coaching_translation: If a client with a migraine history is discussing hormone
+  therapy with her prescriber, it's worth her knowing that route of administration
+  (patch/topical vs pill) is itself a safety consideration her doctor will weigh
+  — this is a question for her prescriber, not a coaching decision.
+caveats:
+- Route selection and migraine-history screening are clinician decisions; a coach's
+  role is limited to helping the client raise the right question with her prescriber.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: Prescribing route or interpreting an individual client's clotting
+  risk is clinician scope.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Route of administration segment
+  quote: Oral estradiol is absorbed in the gut, passes through the liver first...
+    the data is really clear that if you give women oral estrogens they have a higher
+    chance of clotting, of blood clots and strokes.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

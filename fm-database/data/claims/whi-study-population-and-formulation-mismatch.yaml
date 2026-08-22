@@ -1,0 +1,46 @@
+slug: whi-study-population-and-formulation-mismatch
+statement: The 2002 Women's Health Initiative findings of increased cardiovascular
+  events, stroke, and breast cancer with hormone therapy came from a trial population
+  averaging age 63 (about two-thirds already 10+ years past menopause) given non-bioidentical
+  conjugated equine estrogen plus medroxyprogesterone acetate — not bioidentical
+  estradiol and progesterone started near the menopause transition — so the results
+  do not directly generalize to bioidentical hormone therapy started in the typical
+  45-55 window.
+evidence_tier: plausible_emerging
+rationale: The WHI's age/timing mismatch and its use of non-bioidentical formulations
+  (conjugated equine estrogens, medroxyprogesterone acetate rather than estradiol/micronized
+  progesterone) are documented in the trial's own published methods and are widely
+  discussed in endocrinology literature as the basis of the 'timing hypothesis.'
+  The speaker's reframing of why non-bioidentical formulations were tested (regulatory/patent
+  economics) is his own interpretation, not itself a clinical finding.
+coaching_translation: If a client says she was told hormone therapy is unsafe because
+  of "that study," it's fair to note that the landmark 2002 study tested older women
+  on non-bioidentical hormones starting many years after menopause — not the bioidentical
+  options and earlier timing her own doctor may be discussing with her. This is
+  context for her conversation with her prescriber, not something a coach diagnoses
+  or prescribes around.
+caveats:
+- Speaker's account of why WHI used non-bioidentical formulations (patent/FDA-approval
+  economics) is his own explanatory framing, not a cited historical source — treat
+  as context, not fact-checked history.
+- Does not establish that bioidentical HRT is risk-free; only that the WHI's specific
+  findings apply most directly to the population and formulation it tested.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+- perimenopause
+- menopause
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: Interpreting a client's own hormone-therapy risk/benefit is clinician
+  scope; a coach can supply this context but not apply it to an individual's decision.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: WHI reinterpretation segment
+  quote: The average age of enrollment was 63... two out of every three of them was
+    older than 60 at the time of enrollment... they didn't give a bioidentical estrogen,
+    a bioidentical progesterone.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

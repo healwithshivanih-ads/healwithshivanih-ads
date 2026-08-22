@@ -267,6 +267,33 @@ class FivePillarsAssessment(BaseModel):
     notes: Optional[str] = ""
 
 
+class MenopauseRatingScale(BaseModel):
+    """The standard 11-item Menopause Rating Scale (Hauser/Schneider/Heinemann).
+    Captured per check-in for peri/postmenopausal clients as a validated,
+    repeatable alternative to raw symptom-count tracking. Each item scored
+    0 (none) - 4 (very severe). A session's score is only valid (see
+    fm-database-web src/lib/fmdb/mrs-score.ts computeMrsScore) once all 11
+    items are answered — a partial subset isn't a defined MRS score."""
+    model_config = ConfigDict(extra="ignore")
+
+    # Somato-vegetative subscale
+    hot_flashes_sweating: Optional[int] = None       # 0-4
+    heart_discomfort: Optional[int] = None           # 0-4
+    sleep_problems: Optional[int] = None             # 0-4
+    joint_muscular_discomfort: Optional[int] = None  # 0-4
+
+    # Psychological subscale
+    depressive_mood: Optional[int] = None            # 0-4
+    irritability: Optional[int] = None                # 0-4
+    anxiety: Optional[int] = None                     # 0-4
+    physical_mental_exhaustion: Optional[int] = None  # 0-4
+
+    # Urogenital subscale
+    sexual_problems: Optional[int] = None             # 0-4
+    bladder_problems: Optional[int] = None            # 0-4
+    vaginal_dryness: Optional[int] = None              # 0-4
+
+
 class DiscoverySummaryPoint(BaseModel):
     """One titled point in the discovery Starting Map — a root-cause hypothesis
     or a foundational change. Orientation only (no doses, no protocol)."""
@@ -1476,6 +1503,7 @@ class Session(BaseModel):
     generated_plan_slug: Optional[str] = None
     coach_notes: str = ""
     five_pillars: Optional[FivePillarsAssessment] = None
+    mrs: Optional[MenopauseRatingScale] = None
     next_session_planned: Optional[date] = None
 
     # External reports the coach asked the client to bring back. Late-arriving

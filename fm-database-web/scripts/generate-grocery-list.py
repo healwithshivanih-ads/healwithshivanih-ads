@@ -11,8 +11,17 @@ Reads JSON from stdin:
     "dry_run": false
   }
 
+  Optional (incremental refresh, 2026-08-22):
+    "keep_weeks": [...]   — grocery week entries already on disk to carry forward
+                            UNCHANGED; merged with the freshly generated weeks
+                            and written as one file. `weeks` may then be empty
+                            (nothing to generate, just re-write the kept set).
+    each week in "weeks" may carry "menu_key" — a fingerprint of the dishes it
+    was built from; stamped onto the generated entry so the caller can tell
+    later whether the menu changed underneath it (src/lib/fmdb/grocery-weeks.ts).
+
 Writes JSON to stdout:
-  { "ok": bool, "path": str|null, "weeks": [{"week": N, "items": N}], "usage": {...}|null, "error": str|null }
+  { "ok": bool, "path": str|null, "weeks": [{"week": N, "items": N}], "generated": [N, ...], "usage": {...}|null, "error": str|null }
 
 One Haiku call with tool-use returns per-week ingredient lists with
 quantities, Indian-shopping categories, and pantry-staple flags. The result
@@ -175,20 +184,23 @@ def main() -> None:
     client_id = payload.get("client_id") or ""
     plan_slug = payload.get("plan_slug") or ""
     weeks = payload.get("weeks") or []
-    if not client_id or not plan_slug or not weeks:
-        print(json.dumps({"ok": False, "error": "client_id, plan_slug and weeks are required", "path": None, "weeks": [], "usage": None}))
+    keep_weeks = [w for w in (payload.get("keep_weeks") or []) if isinstance(w, dict)]
+    if not client_id or not plan_slug or (not weeks and not keep_weeks):
+        print(json.dumps({"ok": False, "error": "client_id, plan_slug and weeks (or keep_weeks) are required", "path": None, "weeks": [], "usage": None}))
         return
 
     plans_root = Path(os.environ.get("FMDB_PLANS_DIR") or (Path.home() / "fm-plans")).expanduser()
     out_path = plans_root / "clients" / client_id / "meal-plans" / f"{plan_slug}-grocery.yaml"
 
     if payload.get("dry_run"):
-        print(json.dumps({"ok": True, "path": str(out_path), "weeks": [{"week": w.get("week"), "items": 0} for w in weeks], "usage": None, "error": None, "dry_run": True}))
+        print(json.dumps({"ok": True, "path": str(out_path), "weeks": [{"week": w.get("week"), "items": 0} for w in weeks], "generated": [w.get("week") for w in weeks], "usage": None, "error": None, "dry_run": True}))
         return
 
-    from anthropic_client import build_client  # noqa: E402
+    client = None
+    if weeks:
+        from anthropic_client import build_client  # noqa: E402
 
-    client = build_client()
+        client = build_client()
 
     # ONE Haiku call PER WEEK. A 2-week detailed menu (5 slots × 7 days × 2)
     # overflows the 8192 max_tokens in a single call → truncation → nothing
@@ -232,6 +244,9 @@ def main() -> None:
             return
 
         good_weeks = _usable_weeks(tool_input["weeks"], wk_no)
+        for gw in good_weeks:
+            if wk.get("menu_key"):
+                gw["menu_key"] = str(wk["menu_key"])
         if not good_weeks:
             # Every entry for this week was malformed. Same bail as the
             # no-weeks case above: a grocery list silently missing a week is
@@ -253,6 +268,13 @@ def main() -> None:
         except Exception:
             pass
 
+    # Merge: kept entries for weeks we did NOT just generate, plus the fresh
+    # ones, one entry per week, ascending — the app's grocery picker walks this.
+    generated_nos = {w.get("week") for w in all_weeks}
+    merged = [w for w in keep_weeks if w.get("week") not in generated_nos] + all_weeks
+    merged.sort(key=lambda w: (w.get("week") if isinstance(w.get("week"), (int, float)) else 0))
+    all_weeks = merged
+
     doc = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "plan_slug": plan_slug,
@@ -268,6 +290,7 @@ def main() -> None:
                 "ok": True,
                 "path": str(out_path),
                 "weeks": [{"week": w.get("week"), "items": len(w.get("items") or [])} for w in all_weeks],
+                "generated": sorted(n for n in generated_nos if isinstance(n, (int, float))),
                 "usage": usage_entry,
                 "error": None,
             }

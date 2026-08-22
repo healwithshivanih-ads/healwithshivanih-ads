@@ -26,6 +26,8 @@ import {
   FmTextarea,
   FmFormSection,
 } from "@/components/fm";
+import { MrsCapture } from "@/components/client-widgets/mrs-capture";
+import { computeMrsScore, type MenopauseRatingScaleData } from "@/lib/fmdb/mrs-score";
 
 const PRIMARY = "#1E8449";
 
@@ -80,6 +82,7 @@ export function CheckInForm({
   activePlanRecheckDate,
   previousMeasurements,
   proteinFocus = false,
+  showMrs = false,
 }: {
   clientId: string;
   displayName: string;
@@ -96,6 +99,9 @@ export function CheckInForm({
    *  cohorts where protein is a focus (vegetarian/vegan, insulin
    *  resistance, weight-loss, peri/menopausal). */
   proteinFocus?: boolean;
+  /** When true, show the Menopause Rating Scale (MRS) — set by the page
+   *  for peri/postmenopausal clients (menopauseStage() != null). */
+  showMrs?: boolean;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -123,6 +129,7 @@ export function CheckInForm({
   const [customLab, setCustomLab] = useState("");
   const [notes, setNotes] = useState("");
   const [protein, setProtein] = useState<string>("");
+  const [mrs, setMrs] = useState<MenopauseRatingScaleData>({});
 
   const toggleLab = (l: string) =>
     setLabs((cur) => (cur.includes(l) ? cur.filter((x) => x !== l) : [...cur, l]));
@@ -147,12 +154,23 @@ export function CheckInForm({
       if (hr) meas.push(`HR ${hr} bpm`);
 
       const proteinLabel = PROTEIN_OPTIONS.find((o) => o.value === protein)?.label;
+      // MRS summary line — surfaces the score in coach_notes (and the plan
+      // note append below), which the session brief / SOAP note / letters
+      // already render. Structured values still go in the `mrs` field.
+      const mrsScore = computeMrsScore(mrs);
+      const mrsAnswered = Object.keys(mrs).length;
+      const mrsLine = mrsScore
+        ? `MRS: ${mrsScore.total}/44 (somato-vegetative ${mrsScore.somaticVegetative}/16 · psychological ${mrsScore.psychological}/16 · urogenital ${mrsScore.urogenital}/12)`
+        : mrsAnswered > 0
+          ? `MRS: ${mrsAnswered}/11 items answered — not scorable`
+          : "";
       const sections: string[] = [
         `Adherence: ${adherence}/5 — ${adhLabel}`,
         activePlanSlug ? `Active plan: ${activePlanSlug}` : "",
         adherenceNotes.trim() ? `Adherence notes: ${adherenceNotes.trim()}` : "",
         meas.length ? `Measurements: ${meas.join(", ")}` : "",
         proteinFocus && proteinLabel ? `Protein intake: ${proteinLabel}` : "",
+        mrsLine,
         labs.length ? `Labs requested: ${labs.join(", ")}` : "",
         notes.trim() ? `Coach notes: ${notes.trim()}` : "",
       ].filter(Boolean);
@@ -173,6 +191,7 @@ export function CheckInForm({
         presenting_complaints: `[session_type: check_in] adherence ${adherence}/5`,
         requested_labs: labs.length ? labs : undefined,
         five_pillars: hasPillars ? fp : undefined,
+        mrs: Object.keys(mrs).length > 0 ? mrs : undefined,
       });
       if (result.ok) {
         toast.success(`Check-in saved for ${displayName.split(" ")[0]}`);
@@ -582,6 +601,15 @@ export function CheckInForm({
           </FmField>
         </div>
       </FmFormSection>
+
+      {showMrs && (
+        <FmFormSection
+          title="Menopause Rating Scale (MRS)"
+          description="Validated 11-item score, 0 (none) to 4 (very severe) per item. Fill all 11 to record a scorable MRS — partial entries save but aren't plotted. Shown because this client is peri/postmenopausal."
+        >
+          <MrsCapture value={mrs} onChange={setMrs} />
+        </FmFormSection>
+      )}
 
       {proteinFocus && (
         <FmFormSection

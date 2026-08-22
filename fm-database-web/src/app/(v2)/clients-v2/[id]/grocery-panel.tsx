@@ -47,7 +47,9 @@ export function GroceryPanel({ clientId, planSlug }: { clientId: string; planSlu
     setBusy(true);
     setError("");
     try {
-      const out = await generateGroceryListAction(clientId, planSlug);
+      // The coach's own button is a deliberate rebuild of the weeks she is
+      // shopping for; the approval path is incremental (grocery-weeks.ts).
+      const out = await generateGroceryListAction(clientId, planSlug, { force: true });
       if (!out.ok) {
         setError(out.error ?? "Generation failed");
       } else {

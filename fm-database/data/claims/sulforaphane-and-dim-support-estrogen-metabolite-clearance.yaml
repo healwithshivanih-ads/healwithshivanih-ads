@@ -1,0 +1,38 @@
+slug: sulforaphane-and-dim-support-estrogen-metabolite-clearance
+statement: For elevated estrogen, sulforaphane (from broccoli/cruciferous sources)
+  supports phase 2 liver detoxification and may lower estrone; DIM (diindolylmethane)
+  is used when urine estrogen metabolite testing shows an unfavorable 4-hydroxy
+  pathway pattern, to help shift metabolism toward the more favorable 2-hydroxy
+  pathway.
+evidence_tier: fm_specific_thin
+rationale: Sulforaphane's role in phase 2 conjugation and DIM's effect on estrogen
+  hydroxylation pathway ratios are established in FM/nutrigenomics literature; the
+  speaker presents both as personal clinical pearls ('what I've picked up over the
+  years') rather than citing specific trials, so this is captured as fm_specific_thin
+  alongside the stronger dedicated sourcing already present elsewhere in the catalogue.
+coaching_translation: These are supplement and testing decisions for the client's
+  prescribing provider — a coach's role is supporting the cruciferous-vegetable-rich,
+  fibre-rich diet that feeds the same phase 2 detox pathway sulforaphane supports.
+caveats:
+- Speaker frames both as personal clinical pattern-recognition, not cited trial
+  evidence.
+- Urine estrogen metabolite (2-OH vs 4-OH pathway) testing and DIM dosing are clinician-directed.
+linked_to_topics:
+- estrogen-metabolism
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements:
+- sulforaphane
+- dim
+out_of_scope_notes: Urine metabolite testing and supplement dosing remain clinician
+  scope.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Supplement pearls segment
+  quote: If they have high estrogen, men or women, I give them sulforaphane... it
+    can lower that estrone level... DIM, if it's in the four-hydroxy pathway, DIM
+    is helpful.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

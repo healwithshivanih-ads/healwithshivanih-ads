@@ -1,0 +1,34 @@
+slug: mrs-symptom-score-for-tracking-hormone-transition-symptoms
+statement: The Menopause Rating Scale (MRS) is a free, validated symptom questionnaire
+  that health coaches can use to establish a baseline symptom-burden score for a
+  perimenopausal or menopausal client and re-score after lifestyle interventions
+  (sleep, stress, exercise) to show measurable change over time — distinct from
+  diagnosing or treating hormone levels.
+evidence_tier: strong
+rationale: The MRS is a validated, published, freely available clinical outcome
+  measure widely used in menopause research and practice; using it as a coaching
+  progress-tracking tool (not a diagnostic instrument) is squarely within coaching
+  scope.
+coaching_translation: Score the MRS at intake and re-score every few weeks alongside
+  lifestyle changes — a dropping score is concrete, client-visible evidence that
+  lifestyle work is helping, independent of any hormone therapy decision.
+caveats:
+- The MRS quantifies symptom burden; it does not diagnose hormone deficiency or
+  direct treatment — those remain clinician scope.
+linked_to_topics:
+- perimenopause
+- menopause
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Symptom clusters and MRS segment
+  quote: If you are using the MRS symptom score, this is a validated score. It's
+    free... I get a score. I can say, hey, your number was 20 and then I do an intervention...
+    it goes down to 15. Wow, I made an improvement.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani
