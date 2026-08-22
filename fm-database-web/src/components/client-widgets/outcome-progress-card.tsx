@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import type { SessionSummary } from "@/lib/server-actions/assess";
+import { computeMrsScore, MRS_SUBSCALE_MAX } from "@/lib/fmdb/mrs-score";
 
 // ── Colour palette ─────────────────────────────────────────────────────────────
 const PILLAR_CONFIG: Array<{
@@ -169,6 +170,21 @@ export function OutcomeProgressCard({ sessions }: { sessions: SessionSummary[] }
     type: s.session_type,
   }));
 
+  // MRS (Menopause Rating Scale) points — only sessions with a complete,
+  // scorable 11-item entry. Partial entries are skipped, not zero-filled.
+  const mrsPoints = assessmentSessions
+    .map((s) => ({ s, score: computeMrsScore(s.mrs) }))
+    .filter((x): x is { s: SessionSummary; score: NonNullable<ReturnType<typeof computeMrsScore>> } => x.score != null)
+    .slice(-10)
+    .map(({ s, score }) => ({
+      date: s.date,
+      count: score.total,
+      type: s.session_type,
+      score,
+    }));
+  const latestMrs = mrsPoints.length > 0 ? mrsPoints[mrsPoints.length - 1] : undefined;
+  const prevMrs = mrsPoints.length > 1 ? mrsPoints[mrsPoints.length - 2] : undefined;
+
   // Five pillars — most recent session with fp data, and the one before it
   const fpSessions = sorted.filter((s) => s.five_pillars != null);
   const latestFP = fpSessions.length > 0 ? fpSessions[fpSessions.length - 1].five_pillars : undefined;
@@ -192,13 +208,26 @@ export function OutcomeProgressCard({ sessions }: { sessions: SessionSummary[] }
 
   const hasBurden = burdenPoints.length >= 2;
   const hasFP = latestFP != null;
+  // MRS becomes the primary number once a peri/menopausal client has two
+  // scorable entries; the generic symptom chart is then demoted, not removed.
+  const hasMrs = mrsPoints.length >= 2;
 
-  if (!hasBurden && !hasFP) return null;
+  if (!hasBurden && !hasFP && !hasMrs) return null;
 
   // Symptom burden trend — latest vs first
   const firstCount = burdenPoints[0]?.count ?? 0;
   const lastCount = burdenPoints[burdenPoints.length - 1]?.count ?? 0;
   const burdenDelta = lastCount - firstCount;
+
+  // MRS trend — latest vs first
+  const firstMrs = mrsPoints[0]?.count ?? 0;
+  const lastMrsTotal = latestMrs?.count ?? 0;
+  const mrsDelta = lastMrsTotal - firstMrs;
+
+  // The header pill shows whichever is primary.
+  const primaryDelta = hasMrs ? mrsDelta : burdenDelta;
+  const primaryLabel = hasMrs ? "MRS score" : "symptom burden";
+  const showHeaderPill = hasMrs || hasBurden;
 
   return (
     <div className="rounded-xl border bg-white p-4 space-y-4">
@@ -214,26 +243,100 @@ export function OutcomeProgressCard({ sessions }: { sessions: SessionSummary[] }
             {avgDaysBetween != null && ` · avg every ${avgDaysBetween} days`}
           </p>
         </div>
-        {hasBurden && burdenPoints.length >= 2 && (
+        {showHeaderPill && (
           <div
             className={`rounded-lg px-3 py-1.5 text-center shrink-0 ${
-              burdenDelta < 0
+              primaryDelta < 0
                 ? "bg-emerald-50 border border-emerald-200"
-                : burdenDelta > 0
+                : primaryDelta > 0
                 ? "bg-red-50 border border-red-200"
                 : "bg-gray-50 border"
             }`}
           >
-            <p className={`text-lg font-bold leading-none ${burdenDelta < 0 ? "text-emerald-600" : burdenDelta > 0 ? "text-red-500" : "text-muted-foreground"}`}>
-              {burdenDelta < 0 ? `▼${Math.abs(burdenDelta)}` : burdenDelta > 0 ? `▲${burdenDelta}` : "—"}
+            <p className={`text-lg font-bold leading-none ${primaryDelta < 0 ? "text-emerald-600" : primaryDelta > 0 ? "text-red-500" : "text-muted-foreground"}`}>
+              {primaryDelta < 0 ? `▼${Math.abs(primaryDelta)}` : primaryDelta > 0 ? `▲${primaryDelta}` : "—"}
             </p>
-            <p className="text-[10px] text-muted-foreground">symptom burden</p>
+            <p className="text-[10px] text-muted-foreground">{primaryLabel}</p>
           </div>
         )}
       </div>
 
-      {/* Symptom burden chart */}
-      {hasBurden && (
+      {/* MRS chart — primary for peri/menopausal clients once 2+ scorable entries exist */}
+      {hasMrs && (
+        <div className="space-y-1">
+          <p className="text-[10px] text-muted-foreground uppercase tracking-wide font-medium">
+            Menopause Rating Scale per session
+            <span className="ml-2 normal-case font-normal">
+              <span className="inline-block w-2 h-2 rounded-sm bg-indigo-400 mr-0.5" />full session
+              <span className="inline-block w-2 h-2 rounded-sm bg-emerald-500 mx-1 ml-2" />check-in
+            </span>
+          </p>
+          <SymptomBurdenChart sessions={mrsPoints} />
+          <p className="text-[10px] text-muted-foreground">
+            {firstMrs} → {lastMrsTotal} / 44
+            {mrsDelta < 0
+              ? ` — down ${Math.abs(mrsDelta)} ✓`
+              : mrsDelta > 0
+              ? ` — up ${mrsDelta}, review protocol`
+              : " — stable"}
+          </p>
+          {latestMrs && (
+            <div className="space-y-1.5 pt-1">
+              <PillarBar
+                label="Somatic"
+                emoji="🌡️"
+                color="#f59e0b"
+                value={latestMrs.score.somaticVegetative}
+                max={MRS_SUBSCALE_MAX.somaticVegetative}
+                inverted
+                prevValue={prevMrs?.score.somaticVegetative}
+              />
+              <PillarBar
+                label="Psych"
+                emoji="🧠"
+                color="#8b5cf6"
+                value={latestMrs.score.psychological}
+                max={MRS_SUBSCALE_MAX.psychological}
+                inverted
+                prevValue={prevMrs?.score.psychological}
+              />
+              <PillarBar
+                label="Urogenital"
+                emoji="🌸"
+                color="#ec4899"
+                value={latestMrs.score.urogenital}
+                max={MRS_SUBSCALE_MAX.urogenital}
+                inverted
+                prevValue={prevMrs?.score.urogenital}
+              />
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Symptom burden chart — primary unless MRS has taken over, in which
+          case it's demoted to a collapsed disclosure so nothing disappears. */}
+      {hasBurden && hasMrs && (
+        <details className="group">
+          <summary className="text-[10px] text-muted-foreground uppercase tracking-wide font-medium cursor-pointer select-none">
+            <span className="group-open:hidden">▸</span>
+            <span className="hidden group-open:inline">▾</span>
+            {" "}All tracked symptoms per session
+          </summary>
+          <div className="space-y-1 pt-2">
+            <SymptomBurdenChart sessions={burdenPoints} />
+            <p className="text-[10px] text-muted-foreground">
+              {firstCount} → {lastCount} symptoms
+              {burdenDelta < 0
+                ? ` — down ${Math.abs(burdenDelta)} ✓`
+                : burdenDelta > 0
+                ? ` — up ${burdenDelta}, review protocol`
+                : " — stable"}
+            </p>
+          </div>
+        </details>
+      )}
+      {hasBurden && !hasMrs && (
         <div className="space-y-1">
           <p className="text-[10px] text-muted-foreground uppercase tracking-wide font-medium">
             Symptom burden per session

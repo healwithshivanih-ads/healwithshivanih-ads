@@ -70,10 +70,11 @@ def main() -> int:
         else []
     )
     five_pillars_raw: dict | None = payload.get("five_pillars") or None
+    mrs_raw: dict | None = payload.get("mrs") or None
 
     try:
         from fmdb.plan.storage import next_session_id, write_session, plans_root as fmdb_plans_root  # type: ignore
-        from fmdb.plan.models import Session, FivePillarsAssessment  # type: ignore
+        from fmdb.plan.models import Session, FivePillarsAssessment, MenopauseRatingScale  # type: ignore
     except ImportError as e:
         json.dump({"ok": False, "session_id": None, "error": f"fmdb import error: {e}"}, sys.stdout)
         return 1
@@ -191,6 +192,26 @@ def main() -> int:
         except Exception:
             five_pillars_obj = None
 
+    # Build MenopauseRatingScale if provided (mirrors five_pillars_obj above)
+    mrs_obj = None
+    if mrs_raw and any(v is not None for v in mrs_raw.values()):
+        try:
+            mrs_obj = MenopauseRatingScale(
+                hot_flashes_sweating=mrs_raw.get("hot_flashes_sweating"),
+                heart_discomfort=mrs_raw.get("heart_discomfort"),
+                sleep_problems=mrs_raw.get("sleep_problems"),
+                joint_muscular_discomfort=mrs_raw.get("joint_muscular_discomfort"),
+                depressive_mood=mrs_raw.get("depressive_mood"),
+                irritability=mrs_raw.get("irritability"),
+                anxiety=mrs_raw.get("anxiety"),
+                physical_mental_exhaustion=mrs_raw.get("physical_mental_exhaustion"),
+                sexual_problems=mrs_raw.get("sexual_problems"),
+                bladder_problems=mrs_raw.get("bladder_problems"),
+                vaginal_dryness=mrs_raw.get("vaginal_dryness"),
+            )
+        except Exception:
+            mrs_obj = None
+
     expected_reports_raw = payload.get("expected_reports") or []
     expected_reports = [
         str(r).strip() for r in expected_reports_raw if isinstance(r, (str, bytes))
@@ -207,6 +228,7 @@ def main() -> int:
             presenting_complaints=full_complaints,
             coach_notes=full_notes,
             five_pillars=five_pillars_obj,
+            mrs=mrs_obj,
             expected_reports=expected_reports,
             requested_labs=requested_labs,
         )
