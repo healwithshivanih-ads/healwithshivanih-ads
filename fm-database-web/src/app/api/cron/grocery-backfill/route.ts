@@ -10,10 +10,14 @@
  * way the client silently sees a wrong or absent list.
  *
  * This route regenerates any active plan's grocery/recipes when it is:
- *   • MISSING, or
- *   • WEEK-MISMATCHED — the grocery's week set ≠ the menu's week set, or
- *   • STALE — the artifact was generated BEFORE the menu was last changed
- *     (app_menu.synced_at, falling back to plan.updated_at).
+ *   • grocery: whatever grocery-weeks.ts says is owed — a list missing for
+ *     the current week or a live week ahead of it, or one whose dishes have
+ *     changed since it was built (the per-week `menu_key`). Lists for earlier
+ *     weeks are never rebuilt here: every approved week now stays live on the
+ *     plan (menu-weeks.ts), so "grocery weeks ≠ menu weeks" is the normal
+ *     state, not a defect.
+ *   • recipes: MISSING, or STALE — the pack is older than the menu's last
+ *     change (app_menu.synced_at, falling back to plan.updated_at).
  *
  * Idempotent: an artifact that is present, week-matched and newer than the menu
  * is skipped, so this is safe to run daily. A per-run cap guards against a bad
@@ -27,7 +31,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { generateGroceryListAction } from "@/lib/server-actions/grocery";
+import { generateGroceryListAction, groceryRefreshNeededAction } from "@/lib/server-actions/grocery";
 import { generateWeekRecipesAction } from "@/lib/server-actions/recipes";
 
 export const dynamic = "force-dynamic";
@@ -54,15 +58,6 @@ function ms(v: unknown): number {
   return Number.isFinite(t) ? t : 0;
 }
 
-/** week-number set as a sorted, comma-joined string for equality compare. */
-function weekKey(weeks: { week?: number }[] | undefined): string {
-  return (weeks ?? [])
-    .map((w) => Number(w?.week))
-    .filter((n) => Number.isFinite(n))
-    .sort((a, b) => a - b)
-    .join(",");
-}
-
 export async function POST(req: NextRequest) {
   const secret = process.env.CRON_SECRET || "";
   if (!secret || req.headers.get("x-cron-secret") !== secret) {
@@ -86,7 +81,7 @@ export async function POST(req: NextRequest) {
 
   // Newest published plan per client (matches how the app resolves the active plan).
   const seen = new Set<string>();
-  const active: { clientId: string; slug: string; menuWeekKey: string; menuChangedAt: number }[] = [];
+  const active: { clientId: string; slug: string; menuChangedAt: number }[] = [];
   for (const n of names.sort().reverse()) {
     if (!n.endsWith(".yaml")) continue;
     let p: PlanLite;
@@ -104,7 +99,6 @@ export async function POST(req: NextRequest) {
     active.push({
       clientId: cid,
       slug,
-      menuWeekKey: weekKey(weeks),
       menuChangedAt: ms(p.app_menu?.synced_at) || ms(p.updated_at),
     });
   }
@@ -118,17 +112,12 @@ export async function POST(req: NextRequest) {
 
     // ── grocery ──────────────────────────────────────────────────────────────
     if (grocery.regenerated < MAX_REGEN_PER_KIND) {
-      const gFile = path.join(mealDir, `${a.slug}-grocery.yaml`);
       let reason: string | null = null;
       try {
-        const raw = await fs.readFile(gFile, "utf-8");
-        const doc = (yaml.load(raw) as { weeks?: { week?: number }[]; generated_at?: string }) ?? {};
-        if (weekKey(doc.weeks) !== a.menuWeekKey) {
-          reason = "week-mismatch";
-        } else {
-          const gTime = ms(doc.generated_at) || (await fs.stat(gFile)).mtimeMs;
-          if (a.menuChangedAt && gTime < a.menuChangedAt - STALE_TOLERANCE_MS) reason = "stale";
-        }
+        const need = await groceryRefreshNeededAction(a.clientId, a.slug);
+        if (need.missing) reason = "missing";
+        else if (need.generate.length) reason = `owed: week ${need.generate.join(", ")}`;
+        else if (need.dropped.length) reason = `stale weeks: ${need.dropped.join(", ")}`;
       } catch {
         reason = "missing";
       }

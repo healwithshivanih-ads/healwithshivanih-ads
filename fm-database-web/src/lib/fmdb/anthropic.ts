@@ -23,10 +23,7 @@ import type {
   ChatResult,
   ChatTurn,
 } from "./anthropic-types";
-
-const PYTHON =
-  path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
+import { PYTHON, SCRIPTS_DIR } from "./shim";
 
 async function runShim(
   scriptName: string,

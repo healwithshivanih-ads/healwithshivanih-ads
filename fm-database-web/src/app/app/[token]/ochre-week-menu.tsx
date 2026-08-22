@@ -106,7 +106,9 @@ export function WeekMenuSection({
         </div>
       )}
       {menus.length > 1 && (
-        <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+        // Every approved week stays live (menu-weeks.ts), so this row grows to
+        // a whole plan's worth of pills — wrap rather than run off the phone.
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
           {menus.map((m, i) => (
             <button
               key={m.week}
@@ -369,7 +371,7 @@ export function GroceryOverlay({ onClose }: { onClose: () => void }) {
         </div>
 
         {grocery.weeks.length > 1 && (
-          <div style={{ display: "flex", gap: 8, margin: "12px 0 0" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "12px 0 0" }}>
             {grocery.weeks.map((w, i) => (
               <button key={w.week} className={"wm-pill" + (i === wk ? " on" : "")} onClick={() => setWk(i)}>
                 Week {w.week}

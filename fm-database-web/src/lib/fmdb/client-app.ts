@@ -75,6 +75,8 @@ import {
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
 import { resolveAppMode, resolveFinalStretch, GRACE_DAYS, REVIEW_LEAD_DAYS, SHORT_PLAN_MAX_WEEKS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { fallbackWeekFor } from "@/lib/fmdb/menu-weeks";
+import { dedupeRecipePack } from "@/lib/fmdb/recipe-pack-dedup";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
 import { hasLiveSubscription } from "@/lib/fmdb/maintenance-subscription";
 import {
@@ -3888,8 +3890,13 @@ export async function loadClientAppData(
   // back to the legacy fortnight rotation.
   if (!table) table = weekTables.find((t) => t.week === week);
   if (!table) {
-    const rotationWeek = weekTables.length >= 2 ? ((week - 1) % weekTables.length) + 1 : weekTables[0]?.week ?? 1;
-    table = weekTables.find((t) => t.week === rotationWeek) ?? weekTables[weekTables.length - 1];
+    // No menu for this exact week (client frozen past her last approval, or a
+    // successor plan still carrying its predecessor's weeks): stay on the most
+    // recent loaded week. This replaced a fortnight rotation that, now every
+    // approved week stays live (menu-weeks.ts), would have sent a client on
+    // week 6 with weeks 1–5 loaded back to week 1.
+    const fb = fallbackWeekFor(weekTables.map((t) => t.week), week);
+    table = weekTables.find((t) => t.week === fb) ?? weekTables[weekTables.length - 1];
   }
   const SLOT_GLYPH: Record<string, string> = {
     "on waking": "sun",
@@ -4079,7 +4086,11 @@ export async function loadClientAppData(
           const r = recipeFor(c.title);
           if (r && !recipes.includes(r)) usedLibrary.add(r);
         }
-  const packRecipes = [...recipes, ...usedLibrary];
+  // One dish, one recipe: an AI recipe from an early week sitting beside the
+  // library's curated twin of the same dish is collapsed onto the library
+  // copy (recipe-pack-dedup.ts) — which is what the dish overlay shows anyway.
+  const deduped = dedupeRecipePack(recipes, [...usedLibrary]);
+  const packRecipes = [...deduped.pack, ...deduped.library];
   // Legacy letter-parsed recipes have no structured quantities / kcal. Borrow
   // them from a same-named library recipe so the cook-for-N scaler + calories
   // light up wherever the dish exists in the library.

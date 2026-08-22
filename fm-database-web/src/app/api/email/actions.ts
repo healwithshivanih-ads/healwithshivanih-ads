@@ -9,6 +9,7 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 
 // Send log re-restored 2026-05-19 — the new V2 Communicate panel needs
 // to distinguish Drafted (file on disk) from Sent (email actually went
@@ -159,9 +160,6 @@ export async function recordLetterSendAction(input: {
   revalidatePath(`/clients-v2/${clientId}/communicate`);
   return { ok: true };
 }
-
-const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 function runShim(scriptName: string, payload: unknown, timeoutMs = 60_000): Promise<unknown> {
   return new Promise((resolve, reject) => {

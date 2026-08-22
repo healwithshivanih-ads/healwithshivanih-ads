@@ -33,10 +33,21 @@ function skip(why) {
 if (process.env.FMDB_SKIP_PM2_RESTART === "1") skip("FMDB_SKIP_PM2_RESTART=1");
 if (process.env.CI) skip("CI build");
 
-// Probe the pid file rather than shelling out to `pm2 describe` first: asking
-// pm2 anything STARTS a daemon, and we don't want to spawn one inside a Docker
-// layer just to be told there's nothing to restart.
-if (!existsSync(join(homedir(), ".pm2", "pm2.pid"))) skip("no pm2 daemon running");
+// Probe the pm2 home directory rather than shelling out to `pm2 describe`
+// first: asking pm2 anything STARTS a daemon, and we don't want to spawn one
+// inside a Docker layer just to be told there's nothing to restart.
+//
+// Probe the SOCKETS, not pm2.pid. pm2 7 (this machine, 7.0.3) no longer writes
+// ~/.pm2/pm2.pid, so the pid-file probe reported "no pm2 daemon running" while
+// the God Daemon was plainly up with fm-coach online — meaning every coach-UI
+// build silently skipped its restart and served a stale build manifest, the
+// exact failure this hook exists to prevent (found 2026-08-22, after a build
+// whose restart never happened). rpc.sock is created by the daemon in every
+// pm2 version, and the Docker image has no ~/.pm2 at all, so the no-op there
+// is unchanged. pm2.pid stays in the check for older pm2 installs.
+const PM2_HOME = process.env.PM2_HOME ?? join(homedir(), ".pm2");
+const daemonMarkers = ["rpc.sock", "pm2.pid"].map((f) => join(PM2_HOME, f));
+if (!daemonMarkers.some(existsSync)) skip("no pm2 daemon running");
 
 const pm2 = join(here, "..", "node_modules", ".bin", "pm2");
 if (!existsSync(pm2)) skip("pm2 not installed here");

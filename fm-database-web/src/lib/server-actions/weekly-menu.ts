@@ -18,7 +18,7 @@ import { runShim } from "@/lib/fmdb/shim";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
 import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
 import { screenMenuForClient, type MenuStapleFlag } from "@/lib/fmdb/food-cautions";
-import { weeksAfterApproval } from "@/lib/fmdb/menu-weeks";
+import { weeksAfterApproval, planWeekFromStart } from "@/lib/fmdb/menu-weeks";
 import { weeklyGenerationPaused } from "@/lib/fmdb/weekly-generation-pause";
 import { generateGroceryListAction } from "./grocery";
 
@@ -92,9 +92,7 @@ function currentPlanWeek(plan: PlanDoc): number {
     meal_plan_started_on: plan.meal_plan_started_on,
     plan_period_start: plan.plan_period_start,
   } as Parameters<typeof effectiveMealPlanStart>[0]);
-  if (!start) return 1;
-  const days = Math.floor((Date.now() - new Date(`${start}T00:00:00Z`).getTime()) / 86_400_000);
-  return Math.max(1, Math.floor(days / 7) + 1);
+  return planWeekFromStart(start, Date.now());
 }
 
 export interface WeeklyMenuStatus {
@@ -388,25 +386,23 @@ export async function approveWeekMenuAction(
     if (!pending) return { ok: false, error: "Nothing pending to approve." };
 
     const menu = doc.app_menu ?? { weeks: [] };
+    const planSlug = String(doc.slug ?? hit.plan?.slug ?? "");
     const weeks = (menu.weeks ?? []).filter((w) => Number(w.week) !== pending.week);
-    weeks.push({ week: pending.week, day_dates: null, days: pending.days } as never);
-    weeks.sort((a, b) => Number(a.week) - Number(b.week));
-    // Keep the approved week and the one before it — "current + next" is all
-    // the app shows, and it keeps the grocery "next week unlocks early"
-    // window working.
+    // `source_plan` marks this week as THIS plan's own, so a successor that
+    // carries the menu forward can tell its predecessor's weeks apart from its
+    // own and retire them once its first week is approved (menu-weeks.ts).
+    weeks.push({ week: pending.week, day_dates: null, days: pending.days, source_plan: planSlug } as never);
+    // APPROVAL APPENDS — every week already live stays live. This used to trim
+    // to "the approved week and the one before it" (and before that, the two
+    // numerically highest), on the theory that the app only shows two weeks.
+    // It does not: the app has a week picker, and the earlier weeks are the
+    // client's food options and the source of her recipes. Each approval
+    // silently evicted the oldest week for every client on the cadence;
+    // Nazneen (cl-022) reported the loss twice (2026-08-09, 2026-08-22).
     //
-    // This was `slice(-2)`, the two numerically HIGHEST weeks, which assumes
-    // week numbers only ever climb within one plan. A continuing client breaks
-    // that: her phase-3 plan carries the predecessor's weeks 11 and 12 (so the
-    // app is never menu-less mid-transition), so approving week 1 of the new
-    // phase sorted to [1, 11, 12] and sliced the newly approved week straight
-    // back off. The coach approved a menu on 2026-08-02, the amendment logged
-    // "approved and live", and the menu was silently discarded.
-    //
-    // Anchoring on the approved week instead also self-cleans: the moment a new
-    // phase's week 1 is approved, the previous phase's carried weeks drop out.
-    // Rule lives in menu-weeks.ts so it can be tested without a plan file.
-    menu.weeks = weeksAfterApproval(weeks, pending.week);
+    // The only weeks that still leave are ones carried over from a previous
+    // phase — see weeksAfterApproval for the two signals that identify them.
+    menu.weeks = weeksAfterApproval(weeks, pending.week, planSlug);
     menu.is_sample = false;
     doc.app_menu = menu;
     doc.app_menu_pending = null;

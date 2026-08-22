@@ -1,34 +1,22 @@
 "use server";
 
-import { execFile as execFileCb } from "node:child_process";
 import path from "node:path";
 import fs from "node:fs/promises";
 import os from "node:os";
 import { revalidatePath } from "next/cache";
+import { runShim as runSharedShim } from "@/lib/fmdb/shim";
 
-const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
-
+/**
+ * Typed wrapper over the shared runner. The private copy this replaced spawned
+ * the right interpreter but reported a failure as the FIRST 600 chars of
+ * stderr — for a Python traceback that is the frames, never the exception, so
+ * the UI showed `subprocess.run(...)` and swallowed the FileNotFoundError that
+ * named the missing venv. The shared runner says how the child ended (exit
+ * code / kill signal) and keeps the tail of stderr. The 5-minute default is for
+ * the AI extractor; cheap actions pass their own.
+ */
 function runShim(scriptName: string, payload: unknown, timeoutMs = 300_000): Promise<Record<string, unknown>> {
-  return new Promise((resolve, reject) => {
-    const child = execFileCb(PYTHON, [path.join(SCRIPTS_DIR, scriptName)], {
-      timeout: timeoutMs,
-      maxBuffer: 32 * 1024 * 1024,
-    });
-    child.stdin?.end(JSON.stringify(payload));
-    let stdout = "";
-    let stderr = "";
-    child.stdout?.on("data", (d: Buffer) => (stdout += d));
-    child.stderr?.on("data", (d: Buffer) => (stderr += d));
-    child.on("error", reject);
-    child.on("close", () => {
-      if (!stdout.trim()) reject(new Error(`No output. stderr: ${stderr.slice(0, 600)}`));
-      else {
-        try { resolve(JSON.parse(stdout) as Record<string, unknown>); }
-        catch { reject(new Error(`JSON parse error. stdout: ${stdout.slice(0, 200)}`)); }
-      }
-    });
-  });
+  return runSharedShim(scriptName, payload, timeoutMs) as Promise<Record<string, unknown>>;
 }
 
 export interface IngestInput {

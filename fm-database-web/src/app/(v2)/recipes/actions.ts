@@ -3,6 +3,7 @@ import { execFile } from "node:child_process";
 import path from "path";
 import fs from "fs";
 import yaml from "js-yaml";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 
 const RECIPES_DIR = path.join(
   process.cwd(),
@@ -11,8 +12,6 @@ const RECIPES_DIR = path.join(
   "data",
   "_recipes"
 );
-const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 export interface RecipeImageStatus {
   slug: string;

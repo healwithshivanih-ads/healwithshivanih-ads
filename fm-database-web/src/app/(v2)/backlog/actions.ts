@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { spawn } from "node:child_process";
 import path from "node:path";
+import { PYTHON, excerpt } from "@/lib/fmdb/shim";
 
-const FMDB_ROOT = path.resolve(process.cwd(), "..", "fm-database");
 const WEB_ROOT = process.cwd();
 const TIMEOUT_MS = 60_000;
 
@@ -18,9 +18,8 @@ export interface BacklogActionResult {
 
 function runShim(payload: unknown): Promise<BacklogActionResult> {
   return new Promise((resolve) => {
-    const py = path.join(FMDB_ROOT, ".venv/bin/python");
     const script = path.join(WEB_ROOT, "scripts", "backlog-action.py");
-    const child = spawn(py, [script], { stdio: ["pipe", "pipe", "pipe"] });
+    const child = spawn(PYTHON, [script], { stdio: ["pipe", "pipe", "pipe"] });
     let stdout = "";
     let stderr = "";
     const timer = setTimeout(() => {
@@ -41,7 +40,7 @@ function runShim(payload: unknown): Promise<BacklogActionResult> {
       if (!stdout.trim()) {
         resolve({
           ok: false,
-          error: `shim exited ${code} with no stdout: ${stderr.slice(0, 500)}`,
+          error: `shim exited ${code} with no stdout: ${excerpt(stderr, 800)}`,
         });
         return;
       }
