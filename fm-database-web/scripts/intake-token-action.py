@@ -1100,6 +1100,39 @@ _INTAKE_LIST_FIELDS = [
 # Int-array fields (Bristol type can be 1-7, multi-tick)
 _INTAKE_INT_LIST_FIELDS = ["bristol_stool_typical"]
 
+# Int-dict fields — a fixed set of keys each holding a small int. v0.82: the
+# Menopause Rating Scale baseline, 11 items scored 0-4 on the client form
+# (keys mirror fmdb.plan.models.MenopauseRatingScale). Overwrite on submit
+# (the form is the source of truth); unknown keys and out-of-range values
+# are dropped; an all-empty result clears the field.
+_INTAKE_INT_DICT_FIELDS: dict[str, tuple[tuple[str, ...], int, int]] = {
+    "mrs_baseline": ((
+        "hot_flashes_sweating", "heart_discomfort", "sleep_problems",
+        "joint_muscular_discomfort", "depressive_mood", "irritability", "anxiety",
+        "physical_mental_exhaustion", "sexual_problems", "bladder_problems",
+        "vaginal_dryness",
+    ), 0, 4),
+}
+
+
+def _clean_int_dict(incoming: object, allowed_keys: tuple, lo: int, hi: int) -> dict:
+    """Keep only `allowed_keys` whose value parses to an int within [lo, hi].
+    Blank / None values are skipped; anything non-numeric (or a bool) is dropped."""
+    out: dict = {}
+    if not isinstance(incoming, dict):
+        return out
+    for k in allowed_keys:
+        raw = incoming.get(k)
+        if raw in (None, "") or isinstance(raw, bool):
+            continue
+        try:
+            n = int(raw)
+        except (TypeError, ValueError):
+            continue
+        if lo <= n <= hi:
+            out[k] = n
+    return out
+
 # Repeater fields — list of structured dicts. Overwrite-on-submit (not
 # additive merge) because the form is the source of truth for these.
 _INTAKE_REPEATER_FIELDS = [
@@ -2207,6 +2240,18 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                 if data.get(field) != cleaned:
                     data[field] = cleaned
                     fields_updated.append(field)
+
+    # ── int-dict fields (MRS baseline: 11 keys × 0-4) ──
+    for field, (allowed_keys, lo, hi) in _INTAKE_INT_DICT_FIELDS.items():
+        if field in submitted:
+            cleaned_d = _clean_int_dict(submitted.get(field), allowed_keys, lo, hi)
+            if cleaned_d:
+                if data.get(field) != cleaned_d:
+                    data[field] = cleaned_d
+                    fields_updated.append(field)
+            elif field in data:
+                data.pop(field, None)
+                fields_updated.append(field)
 
     # ── repeater fields (medication category entries, contraception,
     # pregnancies). Form submits a list of dicts; we accept it verbatim

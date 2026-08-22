@@ -4,7 +4,11 @@ import { execFile } from "child_process";
 import path from "path";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
+// Honour FMDB_PYTHON like lib/fmdb/shim.ts — the venv is untracked and
+// absent in a git worktree, and a hard-coded path made every intake action
+// (lookup / draft / submit) fail there as a generic "link can't be opened".
+const PYTHON =
+  process.env.FMDB_PYTHON?.trim() || path.join(FMDB_REPO, ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 async function runScript(

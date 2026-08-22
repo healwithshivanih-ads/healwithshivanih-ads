@@ -565,19 +565,42 @@ export const REPRO_DIAGNOSES = [
   "IUI history",
   "clomid history",
 ];
+// v0.82 — the symptom chips that used to live here moved to the graded
+// Menopause Rating Scale below; this list keeps only the cycle-pattern
+// markers (transition signals, not symptom burden). The field name is kept
+// so earlier clients' ticks stay valid.
 export const PERIMENOPAUSE_INVENTORY = [
-  "hot flushes",
-  "night sweats",
-  "belly weight gain",
-  "sleep changes",
-  "mood crashes",
-  "brain fog",
-  "vaginal dryness",
-  "hair changes",
   "cycles shortening",
   "cycles lengthening",
   "heavier bleeding",
   "lighter bleeding",
+];
+
+// Menopause Rating Scale — client-voice stems for the 11 items. Keys are
+// the shared MRS_ITEMS keys (lib/fmdb/mrs-score.ts) so the intake baseline
+// and check-in scores line up exactly; keep the wording close to the
+// instrument (it's what makes the score comparable) and keep the subscale
+// names out of the client's view.
+export const MRS_INTAKE_LABELS: Record<string, string> = {
+  hot_flashes_sweating: "Hot flushes, sweating",
+  heart_discomfort: "Heart discomfort (racing, skipping, pounding)",
+  sleep_problems: "Sleep problems (falling asleep, staying asleep, waking early)",
+  joint_muscular_discomfort: "Joint and muscle aches",
+  depressive_mood: "Low mood (sad, tearful, flat, mood swings)",
+  irritability: "Irritability (tense, on edge, snappy)",
+  anxiety: "Anxiety (restless, panicky)",
+  physical_mental_exhaustion: "Exhaustion (low energy, poor memory or focus)",
+  sexual_problems: "Sexual changes (desire, comfort, satisfaction)",
+  bladder_problems: "Bladder changes (urgency, leaks, difficulty)",
+  vaginal_dryness: "Vaginal dryness (dryness, burning, discomfort)",
+};
+
+export const MRS_INTAKE_RATINGS = [
+  { value: "0", label: "None" },
+  { value: "1", label: "Mild" },
+  { value: "2", label: "Moderate" },
+  { value: "3", label: "Severe" },
+  { value: "4", label: "Very severe" },
 ];
 
 // Readiness

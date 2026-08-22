@@ -14,6 +14,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { ageFromDob } from "@/lib/fmdb/age";
 import { loadLabProvider, profilesForClient, type LabProfile, type LabAddon } from "@/lib/fmdb/lab-providers";
 import {
   createRecommendedOrder,
@@ -42,19 +43,6 @@ async function readClient(clientId: string): Promise<Record<string, unknown> | n
   } catch {
     return null;
   }
-}
-
-function ageFromDob(dob: unknown): number | null {
-  if (typeof dob !== "string") return null;
-  const m = dob.match(/^\d{4}-\d{2}-\d{2}/);
-  if (!m) return null;
-  const d = new Date(m[0] + "T00:00:00Z");
-  if (Number.isNaN(d.getTime())) return null;
-  const now = new Date();
-  let a = now.getUTCFullYear() - d.getUTCFullYear();
-  const mo = now.getUTCMonth() - d.getUTCMonth();
-  if (mo < 0 || (mo === 0 && now.getUTCDate() < d.getUTCDate())) a -= 1;
-  return a >= 0 && a < 130 ? a : null;
 }
 
 function ageFromBand(band: unknown): number | null {

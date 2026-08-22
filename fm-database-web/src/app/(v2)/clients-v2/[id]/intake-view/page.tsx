@@ -11,12 +11,29 @@
  */
 import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { computeMrsScore, MRS_ITEMS } from "@/lib/fmdb/mrs-score";
 import { FmAppShell } from "@/components/fm";
 import { clientQuickActions } from "../client-quick-actions";
 
 export const dynamic = "force-dynamic";
 
 type Val = unknown;
+
+/** The intake MRS baseline as display lines: a score line (or "n/11 — not
+ *  scorable") followed by one "item: n" line per answered item. */
+function mrsBaselineLines(v: Val): string[] {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return [];
+  const data = v as Record<string, number | undefined>;
+  const items = MRS_ITEMS.filter((i) => data[i.key] != null).map(
+    (i) => `${i.label.split(" (")[0]}: ${data[i.key]}`,
+  );
+  if (items.length === 0) return [];
+  const score = computeMrsScore(data);
+  const head = score
+    ? `Total ${score.total}/44 — somato-vegetative ${score.somaticVegetative}/16 · psychological ${score.psychological}/16 · urogenital ${score.urogenital}/12`
+    : `${items.length}/11 answered — not scorable`;
+  return [head, ...items];
+}
 
 function isEmpty(v: Val): boolean {
   if (v === null || v === undefined) return true;
@@ -422,7 +439,12 @@ export default async function IntakeViewPage({
         <Field label="Contraception history" value={src.contraception_history} />
         <Field label="Pregnancies" value={src.pregnancies} />
         <Field label="Reproductive diagnoses" value={src.repro_diagnoses} />
-        <Field label="Perimenopause inventory" value={src.perimenopause_inventory} />
+        <Field label="Cycle changes" value={src.perimenopause_inventory} />
+        <Field
+          label="Menopause Rating Scale"
+          hint="intake baseline · 0–4 per item"
+          value={mrsBaselineLines(src.mrs_baseline)}
+        />
         <Field label="Intimate / urinary signs" value={src.vaginal_signs} />
         <Field label="Yeast infection frequency" value={src.vaginal_yeast_frequency} />
         <Field label="Menstrual notes" value={src.menstrual_notes} />
