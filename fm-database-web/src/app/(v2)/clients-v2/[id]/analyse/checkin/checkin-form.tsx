@@ -27,7 +27,7 @@ import {
   FmFormSection,
 } from "@/components/fm";
 import { MrsCapture } from "@/components/client-widgets/mrs-capture";
-import type { MenopauseRatingScaleData } from "@/lib/fmdb/mrs-score";
+import { computeMrsScore, type MenopauseRatingScaleData } from "@/lib/fmdb/mrs-score";
 
 const PRIMARY = "#1E8449";
 
@@ -154,12 +154,23 @@ export function CheckInForm({
       if (hr) meas.push(`HR ${hr} bpm`);
 
       const proteinLabel = PROTEIN_OPTIONS.find((o) => o.value === protein)?.label;
+      // MRS summary line — surfaces the score in coach_notes (and the plan
+      // note append below), which the session brief / SOAP note / letters
+      // already render. Structured values still go in the `mrs` field.
+      const mrsScore = computeMrsScore(mrs);
+      const mrsAnswered = Object.keys(mrs).length;
+      const mrsLine = mrsScore
+        ? `MRS: ${mrsScore.total}/44 (somato-vegetative ${mrsScore.somaticVegetative}/16 · psychological ${mrsScore.psychological}/16 · urogenital ${mrsScore.urogenital}/12)`
+        : mrsAnswered > 0
+          ? `MRS: ${mrsAnswered}/11 items answered — not scorable`
+          : "";
       const sections: string[] = [
         `Adherence: ${adherence}/5 — ${adhLabel}`,
         activePlanSlug ? `Active plan: ${activePlanSlug}` : "",
         adherenceNotes.trim() ? `Adherence notes: ${adherenceNotes.trim()}` : "",
         meas.length ? `Measurements: ${meas.join(", ")}` : "",
         proteinFocus && proteinLabel ? `Protein intake: ${proteinLabel}` : "",
+        mrsLine,
         labs.length ? `Labs requested: ${labs.join(", ")}` : "",
         notes.trim() ? `Coach notes: ${notes.trim()}` : "",
       ].filter(Boolean);

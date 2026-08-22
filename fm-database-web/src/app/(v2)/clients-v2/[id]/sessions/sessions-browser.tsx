@@ -22,6 +22,7 @@ import { SessionBriefModal } from "@/components/client-widgets/session-brief-mod
 import { PreSessionBrief } from "@/components/client-widgets/pre-session-brief";
 import { SessionEditPanel } from "./session-edit-panel";
 import { supplementDisplayName } from "@/lib/fmdb/supplement-display";
+import { computeMrsScore, MRS_ITEMS } from "@/lib/fmdb/mrs-score";
 
 const TYPE_META: Record<
   string,
@@ -499,6 +500,9 @@ function SessionInspector({
   const reqLabs = session.requested_labs ?? [];
   const expectedReports = session.expected_reports ?? [];
   const fp = session.five_pillars;
+  const mrs = session.mrs;
+  const mrsScore = computeMrsScore(mrs);
+  const mrsAnswered = mrs ? MRS_ITEMS.filter((i) => mrs[i.key] != null).length : 0;
   const ifmTimeline = session.ifm_timeline ?? [];
   const synthesis = session.synthesis_notes ?? "";
 
@@ -862,6 +866,30 @@ function SessionInspector({
             <Pillar label="Movement d/wk" v={fp.movement_days_per_week} />
             <Pillar label="Nutrition" v={fp.nutrition_quality} />
             <Pillar label="Connection" v={fp.connection_quality} />
+          </div>
+        </FmPanel>
+      )}
+
+      {/* Menopause Rating Scale — the 11 answers behind the trend card */}
+      {mrs && mrsAnswered > 0 && (
+        <FmPanel
+          title="🌸 Menopause Rating Scale"
+          subtitle={
+            mrsScore
+              ? `Total ${mrsScore.total}/44 · somato-vegetative ${mrsScore.somaticVegetative}/16 · psychological ${mrsScore.psychological}/16 · urogenital ${mrsScore.urogenital}/12`
+              : `${mrsAnswered}/11 items answered — not scorable until all 11 are recorded`
+          }
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+              gap: 6,
+            }}
+          >
+            {MRS_ITEMS.map((item) => (
+              <Pillar key={item.key} label={item.label.split(" (")[0]} v={mrs[item.key]} />
+            ))}
           </div>
         </FmPanel>
       )}
