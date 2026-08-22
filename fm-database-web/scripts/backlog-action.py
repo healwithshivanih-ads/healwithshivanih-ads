@@ -28,7 +28,11 @@ import sys
 from pathlib import Path
 
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
-PY = FMDB_ROOT / ".venv/bin/python"
+# The interpreter this shim is already running under (shim.ts's PYTHON /
+# FMDB_PYTHON), not a hard-coded FMDB_ROOT/.venv, which is absent in a git
+# worktree and made every promote/reject/attach die in subprocess.run with
+# FileNotFoundError. cwd=FMDB_ROOT keeps `-m fmdb.cli` on this checkout.
+PY = Path(sys.executable) if sys.executable else FMDB_ROOT / ".venv/bin/python"
 
 
 def main() -> int:
