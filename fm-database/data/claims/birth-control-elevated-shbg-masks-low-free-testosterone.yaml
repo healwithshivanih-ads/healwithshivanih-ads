@@ -1,0 +1,37 @@
+slug: birth-control-elevated-shbg-masks-low-free-testosterone
+statement: Birth control use can raise sex hormone binding globulin (SHBG), and
+  that elevation can persist into perimenopause — binding up testosterone so that
+  free (usable) testosterone is low even when total testosterone looks normal or
+  high on a standard panel. Requesting SHBG alongside total testosterone (to calculate
+  a free androgen index) surfaces this pattern.
+evidence_tier: strong
+rationale: Oral contraceptives are well documented to raise hepatic SHBG production,
+  and SHBG-bound testosterone is not bioavailable — both are established endocrine
+  facts. The persistence into perimenopause and resulting symptom picture is the
+  speaker's clinical synthesis of established physiology.
+coaching_translation: If a client has a history of long-term birth control use and
+  low-testosterone-type symptoms (low libido, fatigue, low motivation) despite a
+  'normal' testosterone result, it's worth her asking her provider whether SHBG
+  and free testosterone were checked — not something a coach interprets herself.
+caveats:
+- Free androgen index calculation and interpretation is clinician scope.
+linked_to_topics:
+- sex-hormone-binding-globulin
+- testosterone-health
+- testosterone-dht-conversion
+linked_to_mechanisms:
+- shbg-hormone-binding
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: Lab interpretation and hormone dosing remain clinician scope.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Testosterone and SHBG segment
+  quote: Lots of times women will be on a birth control... that will increase something
+    called sex hormone binding globulin... that high sex hormone binding globulin
+    sucks up testosterone. And then even though their testosterone levels look okay
+    or high, they have low free testosterone.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

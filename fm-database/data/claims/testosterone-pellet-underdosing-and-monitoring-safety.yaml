@@ -1,0 +1,34 @@
+slug: testosterone-pellet-underdosing-and-monitoring-safety
+statement: Widely-used testosterone pellet dosing for women (150-200 mg) is often
+  given without checking follow-up levels; a more conservative starting dose (e.g.,
+  around 25 mg) with symptom and level monitoring is used clinically to avoid supraphysiologic
+  testosterone exposure.
+evidence_tier: fm_specific_thin
+rationale: This is the speaker's own clinical dosing practice, contrasted against
+  what he describes as common pellet-therapy practice; no comparative dosing-safety
+  trial is cited, so captured as fm_specific_thin.
+coaching_translation: If a client is considering testosterone pellet therapy, encourage
+  her to ask her prescriber what dose is being used and whether follow-up levels
+  will be checked — dosing and monitoring are prescribing decisions, not something
+  a coach evaluates.
+caveats:
+- Speaker's dosing figures reflect his own clinical practice, not a published dosing-safety
+  trial.
+linked_to_topics:
+- testosterone-health
+- bioidentical-hormone-replacement-therapy
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: Pellet dosing and monitoring are prescribing decisions.
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Q&A — osteoporosis and testosterone dosing question
+  quote: If you look at what most people are giving women for pellets... they're
+    giving them 150 to 200 milligrams and they're never checking levels. I start
+    people at 25, which is such a tiny tiny amount enough to help with symptoms,
+    but we're watching for symptoms. We're watching levels.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani

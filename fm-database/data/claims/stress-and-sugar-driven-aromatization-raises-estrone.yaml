@@ -1,0 +1,38 @@
+slug: stress-and-sugar-driven-aromatization-raises-estrone
+statement: Chronic stress combined with high sugar intake can activate aromatase
+  in fat tissue, converting testosterone into estrogen (raising estrone) while progesterone
+  remains low — producing a relative-estrogen-dominance pattern distinct from simple
+  sex-hormone suppression.
+evidence_tier: plausible_emerging
+rationale: Peripheral/adipose aromatization of androgens to estrogens under conditions
+  of adiposity and insulin resistance is an established endocrine pathway (already
+  reflected in the catalogue's aromatase-activity and peripheral-aromatization mechanisms);
+  the specific stress-plus-sugar framing as the trigger is the speaker's clinical
+  synthesis rather than a cited trial.
+coaching_translation: Blood-sugar-stabilizing nutrition and stress management aren't
+  just general wellness advice for a perimenopausal client with signs of estrogen
+  dominance — they may be acting directly on this pathway.
+caveats:
+- Speaker did not cite a specific study for the stress-plus-sugar combination; the
+  aromatase/adiposity link itself is well established, the stress-specific trigger
+  is clinical synthesis.
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+linked_to_mechanisms:
+- aromatase-activity
+- peripheral-aromatization
+- insulin-resistance-sex-hormone
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: ask-expert-perimenopause-menopause-elyaman
+  location: Aromatization segment
+  quote: We have a thing called aromatization... when people are stressed, if they're
+    eating a lot of sugar, their fat cells have something called aromatase that
+    can start making estrogen... shunting testosterone into the estrogen pathway.
+version: 1
+status: active
+updated_at: '2026-08-22'
+updated_by: shivani
