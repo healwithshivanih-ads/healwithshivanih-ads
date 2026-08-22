@@ -68,6 +68,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHmac, timingSafeEqual } from "node:crypto";
 import path from "path";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 import fs from "node:fs/promises";
 import os from "node:os";
 import { execFile } from "child_process";
@@ -87,8 +88,6 @@ const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
 const UNMATCHED_FILE = path.join(PLANS_ROOT, "_whatsapp_unmatched.yaml");
 const DELIVERY_FAILURES_FILE = path.join(PLANS_ROOT, "_whatsapp_delivery_failures.yaml");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 // ── Signature verification ────────────────────────────────────────────────────
 
@@ -155,7 +154,7 @@ async function saveQuickNote(
   });
 
   if (!stdout.trim()) {
-    return { ok: false, error: `No output from save-session.py. stderr: ${stderr.slice(0, 300)}` };
+    return { ok: false, error: `No output from save-session.py. stderr: ${excerpt(stderr, 300)}` };
   }
   try {
     return JSON.parse(stdout) as { ok: boolean; session_id?: string; error?: string };
@@ -211,7 +210,7 @@ async function saveOutboundNote(
   });
 
   if (!stdout.trim()) {
-    return { ok: false, error: `No output from save-session.py. stderr: ${stderr.slice(0, 300)}` };
+    return { ok: false, error: `No output from save-session.py. stderr: ${excerpt(stderr, 300)}` };
   }
   try {
     return JSON.parse(stdout) as { ok: boolean; session_id?: string; error?: string };
@@ -346,7 +345,7 @@ async function savePollResponse(
   });
 
   if (!stdout.trim()) {
-    throw new Error(`save-poll-response.py: empty stdout. stderr: ${stderr.slice(0, 300)}`);
+    throw new Error(`save-poll-response.py: empty stdout. stderr: ${excerpt(stderr, 300)}`);
   }
   try {
     const parsed = JSON.parse(stdout) as { ok: boolean; session_id?: string; error?: string };
@@ -401,7 +400,7 @@ async function writeDerivedPillar(
     });
     if (!stdout.trim()) {
       console.warn(
-        `[whatsapp-webhook] update-derived-pillar.py empty stdout. stderr: ${stderr.slice(0, 200)}`,
+        `[whatsapp-webhook] update-derived-pillar.py empty stdout. stderr: ${excerpt(stderr, 200)}`,
       );
       return false;
     }
@@ -472,7 +471,7 @@ async function applyStartDateIntent(
   });
 
   if (!stdout.trim()) {
-    return { ok: false, error: `start-date-action.py: ${stderr.slice(0, 200)}` };
+    return { ok: false, error: `start-date-action.py: ${excerpt(stderr, 200)}` };
   }
   try {
     return JSON.parse(stdout) as ApplyInboundResult;

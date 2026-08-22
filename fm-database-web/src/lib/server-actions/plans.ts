@@ -10,7 +10,7 @@ import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import type { Plan, PlanPatch } from "@/lib/fmdb/types";
-import { runShim } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { matchDrug } from "@/lib/fmdb/drug-match";
 
 // ─── Supplement sources ────────────────────────────────────────────────────────
@@ -120,9 +120,6 @@ export interface PlanCheckResult {
   error?: string | null;
 }
 
-const FMDB_ROOT = path.resolve(process.cwd(), "..", "fm-database");
-const WEB_ROOT = process.cwd();
-
 /**
  * Shell out to `scripts/plan-check.py` (which imports fmdb.plan.checker
  * directly) and parse its JSON output. Same shim pattern Agent B used for
@@ -130,9 +127,8 @@ const WEB_ROOT = process.cwd();
  */
 export async function runPlanCheck(slug: string): Promise<PlanCheckResult> {
   return new Promise((resolve) => {
-    const py = path.join(FMDB_ROOT, ".venv/bin/python");
-    const script = path.join(WEB_ROOT, "scripts/plan-check.py");
-    const child = spawn(py, [script], { stdio: ["pipe", "pipe", "pipe"] });
+    const script = path.join(SCRIPTS_DIR, "plan-check.py");
+    const child = spawn(PYTHON, [script], { stdio: ["pipe", "pipe", "pipe"] });
 
     let stdout = "";
     let stderr = "";
@@ -143,7 +139,7 @@ export async function runPlanCheck(slug: string): Promise<PlanCheckResult> {
       if (code !== 0 && !stdout.trim()) {
         resolve({
           ok: false,
-          error: `plan-check.py exited ${code}: ${stderr.slice(0, 500)}`,
+          error: `plan-check.py exited ${code}: ${excerpt(stderr, 500)}`,
         });
         return;
       }
@@ -606,12 +602,10 @@ export async function deletePlan(
 
 const START_DATE_SCRIPT = "start-date-action.py";
 const FMDB_REPO = path.resolve(process.cwd(), "..", "fm-database");
-const PYTHON_BIN = path.join(FMDB_REPO, ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 async function runStartDateScript(payload: unknown, timeoutMs = 15_000): Promise<unknown> {
   const scriptPath = path.join(SCRIPTS_DIR, START_DATE_SCRIPT);
-  const child = execFile(PYTHON_BIN, [scriptPath], {
+  const child = execFile(PYTHON, [scriptPath], {
     timeout: timeoutMs,
     maxBuffer: 4 * 1024 * 1024,
     cwd: FMDB_REPO,
@@ -629,7 +623,7 @@ async function runStartDateScript(payload: unknown, timeoutMs = 15_000): Promise
   });
 
   if (!stdout.trim()) {
-    throw new Error(`start-date-action produced no output. stderr: ${stderr.slice(0, 600)}`);
+    throw new Error(`start-date-action produced no output. stderr: ${excerpt(stderr, 600)}`);
   }
   try {
     return JSON.parse(stdout);

@@ -12,7 +12,7 @@ import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { loadClientSessions, loadClientById } from "@/lib/fmdb/loader-extras";
 import type { MenopauseRatingScaleData } from "@/lib/fmdb/mrs-score";
-import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 import {
   runAssess,
   generateDraftFromSuggestions,
@@ -663,7 +663,7 @@ export async function computeRatiosAction(
   });
 
   if (!stdout.trim()) {
-    return { ok: false, ratios: [], error: `compute-ratios.py produced no output. stderr: ${stderr.slice(0, 300)}` };
+    return { ok: false, ratios: [], error: `compute-ratios.py produced no output. stderr: ${excerpt(stderr, 300)}` };
   }
 
   try {
@@ -1000,7 +1000,7 @@ export async function applyTranscriptDataAction(
   if (!stdout.trim()) {
     return {
       ok: false,
-      error: `update-client-data.py produced no output. stderr: ${stderr.slice(0, 400)}`,
+      error: `update-client-data.py produced no output. stderr: ${excerpt(stderr, 400)}`,
     };
   }
 
@@ -1098,7 +1098,7 @@ export async function saveSessionAction(input: SaveSessionInput): Promise<SaveSe
   });
 
   if (!stdout.trim()) {
-    return { ok: false, error: `save-session.py produced no output. stderr: ${stderr.slice(0, 400)}` };
+    return { ok: false, error: `save-session.py produced no output. stderr: ${excerpt(stderr, 400)}` };
   }
 
   try {

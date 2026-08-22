@@ -9,7 +9,7 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 
 // Send log re-restored 2026-05-19 — the new V2 Communicate panel needs
 // to distinguish Drafted (file on disk) from Sent (email actually went
@@ -174,7 +174,7 @@ function runShim(scriptName: string, payload: unknown, timeoutMs = 60_000): Prom
     child.stderr?.on("data", (d: Buffer) => (stderr += d));
     child.on("error", reject);
     child.on("close", () => {
-      if (!stdout.trim()) reject(new Error(`No output. stderr: ${stderr.slice(0, 400)}`));
+      if (!stdout.trim()) reject(new Error(`No output. stderr: ${excerpt(stderr, 400)}`));
       else {
         try { resolve(JSON.parse(stdout)); }
         catch { reject(new Error(`JSON parse error. stdout: ${stdout.slice(0, 200)}`)); }

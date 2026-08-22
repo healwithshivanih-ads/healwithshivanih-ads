@@ -16,9 +16,9 @@
 
 import { execFile } from "node:child_process";
 import path from "node:path";
+import { PYTHON } from "@/lib/fmdb/shim";
 
 const FMDB_REPO = path.resolve(process.cwd(), "..", "fm-database");
-const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
 const SCRIPT = path.join(FMDB_REPO, "scripts/ingest-from-paste.py");
 
 export interface IngestFromPasteResult {
