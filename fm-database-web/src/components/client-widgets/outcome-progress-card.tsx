@@ -2,7 +2,11 @@
 
 import { useMemo } from "react";
 import type { SessionSummary } from "@/lib/server-actions/assess";
-import { computeMrsScore, MRS_SUBSCALE_MAX } from "@/lib/fmdb/mrs-score";
+import {
+  computeMrsScore,
+  MRS_SUBSCALE_MAX,
+  type MenopauseRatingScaleData,
+} from "@/lib/fmdb/mrs-score";
 
 // ── Colour palette ─────────────────────────────────────────────────────────────
 const PILLAR_CONFIG: Array<{
@@ -152,7 +156,17 @@ function PillarBar({
 
 // ── Main component ─────────────────────────────────────────────────────────────
 
-export function OutcomeProgressCard({ sessions }: { sessions: SessionSummary[] }) {
+export function OutcomeProgressCard({
+  sessions,
+  mrsBaseline,
+  mrsBaselineDate,
+}: {
+  sessions: SessionSummary[];
+  /** Day-0 MRS from the client intake form (client.mrs_baseline), if any. */
+  mrsBaseline?: MenopauseRatingScaleData | null;
+  /** When the intake was submitted (YYYY-MM-DD or ISO) — dates the baseline point. */
+  mrsBaselineDate?: string | null;
+}) {
   const sorted = useMemo(
     () => [...sessions].sort((a, b) => (a.date ?? "").localeCompare(b.date ?? "")),
     [sessions]
@@ -172,16 +186,27 @@ export function OutcomeProgressCard({ sessions }: { sessions: SessionSummary[] }
 
   // MRS (Menopause Rating Scale) points — only sessions with a complete,
   // scorable 11-item entry. Partial entries are skipped, not zero-filled.
-  const mrsPoints = assessmentSessions
-    .map((s) => ({ s, score: computeMrsScore(s.mrs) }))
-    .filter((x): x is { s: SessionSummary; score: NonNullable<ReturnType<typeof computeMrsScore>> } => x.score != null)
-    .slice(-10)
-    .map(({ s, score }) => ({
-      date: s.date,
-      count: score.total,
-      type: s.session_type,
-      score,
-    }));
+  // A scorable intake baseline (client.mrs_baseline) joins as an "intake"
+  // point, so a single check-in already reads as a before/after.
+  const baselineScore = computeMrsScore(mrsBaseline);
+  const baselinePoint =
+    baselineScore && mrsBaselineDate
+      ? [{ date: mrsBaselineDate.slice(0, 10), count: baselineScore.total, type: "intake", score: baselineScore }]
+      : [];
+  const mrsPoints = [
+    ...baselinePoint,
+    ...assessmentSessions
+      .map((s) => ({ s, score: computeMrsScore(s.mrs) }))
+      .filter((x): x is { s: SessionSummary; score: NonNullable<ReturnType<typeof computeMrsScore>> } => x.score != null)
+      .map(({ s, score }) => ({
+        date: s.date,
+        count: score.total,
+        type: s.session_type as string,
+        score,
+      })),
+  ]
+    .sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""))
+    .slice(-10);
   const latestMrs = mrsPoints.length > 0 ? mrsPoints[mrsPoints.length - 1] : undefined;
   const prevMrs = mrsPoints.length > 1 ? mrsPoints[mrsPoints.length - 2] : undefined;
 

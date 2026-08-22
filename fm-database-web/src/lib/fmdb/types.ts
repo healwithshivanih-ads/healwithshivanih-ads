@@ -662,6 +662,13 @@ export interface Client {
   // Five Pillars
   five_pillars?: FivePillarsAssessment;
 
+  // v0.82 — day-0 Menopause Rating Scale from the client intake form. Same 11
+  // keys as Session.mrs (lib/fmdb/mrs-score.ts MRS_ITEMS); dated by
+  // intake_submitted_at. The outcome card plots it as the first MRS point.
+  mrs_baseline?: Partial<Record<string, number>>;
+  intake_submitted_at?: string;        // first submission
+  intake_last_submitted_at?: string;   // latest (Path A re-edits re-submit)
+
   // Health timeline
   timeline_events?: TimelineEvent[];
 

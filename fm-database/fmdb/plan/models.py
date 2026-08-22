@@ -692,6 +692,11 @@ class Client(BaseModel):
     pregnancies: list[PregnancyEntry] = Field(default_factory=list)
     repro_diagnoses: list[str] = Field(default_factory=list)
     perimenopause_inventory: list[str] = Field(default_factory=list)
+    # Day-0 Menopause Rating Scale from the client intake form (women whose
+    # cycle status is peri/postmenopausal, or still menstruating at 40+).
+    # Dated by intake_submitted_at. Same 11 keys as Session.mrs; the trend
+    # card plots it as the first point.
+    mrs_baseline: Optional[MenopauseRatingScale] = None
     # Intimate / urinary health (women only) — yeast / microbiome / dryness
     vaginal_signs: list[str] = Field(default_factory=list)
     vaginal_yeast_frequency: str = ""

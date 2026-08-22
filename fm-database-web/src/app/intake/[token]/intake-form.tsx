@@ -100,6 +100,8 @@ import {
   PMDD,
   REPRO_DIAGNOSES,
   PERIMENOPAUSE_INVENTORY,
+  MRS_INTAKE_LABELS,
+  MRS_INTAKE_RATINGS,
   RECENT_LABS,
   WILLING_SHARE_LABS,
   TIMELINE_CATEGORIES,
@@ -108,6 +110,8 @@ import {
   CYCLE_REGULARITY_OPTIONS,
   PREGNANCY_STATUS_OPTIONS,
 } from "./intake-form-options";
+import { MRS_ITEMS } from "@/lib/fmdb/mrs-score";
+import { showCycleChangesOnIntake, showMrsOnIntake } from "@/lib/fmdb/mrs-intake-gate";
 
 // ── Types ───────────────────────────────────────────────────────────────────
 
@@ -335,6 +339,8 @@ interface FormState {
   pregnancies: PregnancyRowState[];
   repro_diagnoses: string[];
   perimenopause_inventory: string[];
+  // v0.82 — Menopause Rating Scale baseline: MRS item key → 0-4
+  mrs_baseline: Record<string, number>;
   // Intimate / urinary health (women only)
   vaginal_signs: string[];
   vaginal_yeast_frequency: string;
@@ -417,6 +423,17 @@ function asNumberArray(v: unknown): number[] {
       .filter((x) => Number.isFinite(x)) as number[];
   }
   return [];
+}
+/** Object of integer scores (the MRS baseline). Non-integer values are dropped. */
+function asIntRecord(v: unknown): Record<string, number> {
+  const out: Record<string, number> = {};
+  if (v && typeof v === "object" && !Array.isArray(v)) {
+    for (const [k, x] of Object.entries(v as Record<string, unknown>)) {
+      const n = typeof x === "number" ? x : Number(x);
+      if (Number.isInteger(n)) out[k] = n;
+    }
+  }
+  return out;
 }
 function asNumberOrNull(v: unknown): number | null {
   if (v === null || v === undefined || v === "") return null;
@@ -687,6 +704,7 @@ function mergeInitial(
     pregnancies: asPregnancyRows(get("pregnancies")),
     repro_diagnoses: asStringArray(get("repro_diagnoses")),
     perimenopause_inventory: asStringArray(get("perimenopause_inventory")),
+    mrs_baseline: asIntRecord(get("mrs_baseline")),
     vaginal_signs: asStringArray(get("vaginal_signs")),
     vaginal_yeast_frequency: asString(get("vaginal_yeast_frequency")),
     recent_labs_done: asStringArray(get("recent_labs_done")),
@@ -942,6 +960,7 @@ function buildPayload(s: FormState): Record<string, unknown> {
     pregnancies: pregnancies,
     repro_diagnoses: s.repro_diagnoses,
     perimenopause_inventory: s.perimenopause_inventory,
+    mrs_baseline: s.mrs_baseline,
     vaginal_signs: s.vaginal_signs,
     vaginal_yeast_frequency: s.vaginal_yeast_frequency,
     sun_exposure_daily: s.sun_exposure_daily,
@@ -1186,6 +1205,45 @@ function ChipInput({
 }
 
 // Multi-select chip group from a fixed option list (no freeform).
+/** Single-select scale (the MRS 0–4) as one compact chip row per item —
+ *  the radio-row primitive stacks into five full-width rows on a phone,
+ *  which turned 11 items into 55 rows. Buttons are keyboard-reachable
+ *  natively (Tab + Space/Enter). */
+function ScaleChips({
+  label,
+  value,
+  options,
+  onChange,
+  name,
+}: {
+  label: string;
+  value: string;
+  options: Array<{ value: string; label: string }>;
+  onChange: (v: string) => void;
+  name: string;
+}) {
+  return (
+    <div className="fm-chips" role="radiogroup" aria-label={label}>
+      {options.map((opt) => {
+        const on = value === opt.value;
+        return (
+          <button
+            key={opt.value}
+            type="button"
+            role="radio"
+            aria-checked={on}
+            data-scale={name}
+            className={"fm-chip fm-chip--xs" + (on ? " fm-chip--on" : "")}
+            onClick={() => onChange(opt.value)}
+          >
+            {opt.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function ChipMulti({
   value,
   options,
@@ -1885,7 +1943,8 @@ export function IntakeForm({
         state.contraception_history.length ||
         state.pregnancies.length ||
         state.repro_diagnoses.length ||
-        state.perimenopause_inventory.length
+        state.perimenopause_inventory.length ||
+        Object.keys(state.mrs_baseline).length
       )
         out.push(11 + aShift);
       if (
@@ -2153,7 +2212,8 @@ export function IntakeForm({
             filled: Boolean(
               state.menstrual_notes ||
                 state.period_pain_severity ||
-                state.perimenopause_inventory.length > 0,
+                state.perimenopause_inventory.length > 0 ||
+                Object.keys(state.mrs_baseline).length > 0,
             ),
           },
         ]
@@ -4318,23 +4378,50 @@ export function IntakeForm({
             />
           </FG>
 
-          {/* Perimenopause inventory only when cycles are still happening
-              or just stopped (post-meno can be transitional). Repurpose the
-              same chip list for "what symptoms persist?" framing post-meno. */}
-          {state.cycle_status !== "not_applicable" ? (
-            <FG
-              label={
-                state.cycle_status === "postmenopausal" || state.cycle_status === "surgical_menopause"
-                  ? "Postmenopausal symptoms still bothering you"
-                  : "Perimenopause inventory"
-              }
-              optional="tick all that apply"
-            >
+          {/* Cycle changes — transition markers, only while cycles still
+              exist. The graded symptom questions that used to share this
+              chip list moved to the Menopause Rating Scale below (v0.82). */}
+          {showCycleChangesOnIntake(state.sex, state.cycle_status) ? (
+            <FG label="Cycle changes" optional="tick all that apply">
               <ChipMulti
                 value={state.perimenopause_inventory}
                 options={PERIMENOPAUSE_INVENTORY}
                 onChange={(v) => set("perimenopause_inventory", v)}
               />
+            </FG>
+          ) : null}
+
+          {/* Menopause Rating Scale — the validated 11-item baseline. Shown
+              to peri/postmenopausal women at any age, and to still-
+              menstruating women from 40 (perimenopause is routinely
+              unrecognised while periods continue). Scored coach-side; the
+              subscale names stay out of the client's view on purpose. */}
+          {showMrsOnIntake(state.sex, state.cycle_status, state.date_of_birth) ? (
+            <FG
+              label="How the hormonal transition is showing up for you right now"
+              hint="For each one, pick how much it bothers you these days — from 'None' to 'Very severe'. This gives us a number we can watch move as we work together."
+            >
+              <div className="fm-medstack">
+                {MRS_ITEMS.map((item) => {
+                  const current = state.mrs_baseline[item.key];
+                  return (
+                    <div key={item.key} className="fm-fg" style={{ marginBottom: 8 }}>
+                      <span className="fm-medcard__minilabel">
+                        {MRS_INTAKE_LABELS[item.key] ?? item.label}
+                      </span>
+                      <ScaleChips
+                        name={`mrs_${item.key}`}
+                        label={MRS_INTAKE_LABELS[item.key] ?? item.label}
+                        value={current == null ? "" : String(current)}
+                        options={MRS_INTAKE_RATINGS}
+                        onChange={(v) =>
+                          set("mrs_baseline", { ...state.mrs_baseline, [item.key]: Number(v) })
+                        }
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </FG>
           ) : null}
 

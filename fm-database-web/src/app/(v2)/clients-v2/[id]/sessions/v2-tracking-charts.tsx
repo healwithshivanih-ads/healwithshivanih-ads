@@ -60,7 +60,18 @@ export function V2TrackingCharts({
     >
       {showOutcome && (
         <FmPanel title="📈 Outcome progress" subtitle="Symptom burden + Five Pillars across sessions">
-          <OutcomeProgressCard sessions={sessions} />
+          <OutcomeProgressCard
+            sessions={sessions}
+            mrsBaseline={client.mrs_baseline}
+            // The baseline is whatever the LAST submit wrote — a client who
+            // re-edits (Path A) re-submits, and intake_submitted_at keeps the
+            // first date. Fall back to first submit, then the intake date.
+            mrsBaselineDate={
+              client.intake_last_submitted_at ??
+              client.intake_submitted_at ??
+              client.intake_date
+            }
+          />
         </FmPanel>
       )}
       {showAdherence && (
