@@ -5,9 +5,7 @@ import path from "node:path";
 import fs from "node:fs/promises";
 import os from "node:os";
 import { revalidatePath } from "next/cache";
-
-const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 
 function runShim(scriptName: string, payload: unknown, timeoutMs = 300_000): Promise<Record<string, unknown>> {
   return new Promise((resolve, reject) => {

@@ -34,6 +34,7 @@ import {
   type ParseHealthTextResult,
 } from "@/lib/fmdb/anthropic";
 import { PROTOCOL_TEMPLATES } from "@/lib/fmdb/protocol-templates";
+import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
 
 /** Slim shape sent across the Server Action boundary — excludes heavy AI analysis payload */
 export interface SessionDriver {
@@ -206,10 +207,6 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
     };
   }));
 }
-
-const PYTHON =
-  path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
-const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 export async function runAssessAction(
   input: AssessInput

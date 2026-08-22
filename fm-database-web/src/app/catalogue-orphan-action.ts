@@ -3,12 +3,13 @@
 import { execFile } from "child_process";
 import { promisify } from "util";
 import path from "path";
+import { PYTHON } from "@/lib/fmdb/shim";
 
 const exec = promisify(execFile);
 
-// Mirror shim.ts: the venv python + the fm-database package dir, resolved
+// PYTHON is shared with shim.ts (honours FMDB_PYTHON — the venv is untracked, so it
+// is absent in a git worktree). FMDB_DIR is the fm-database package dir, resolved
 // relative to the Next server cwd (fm-database-web).
-const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 const FMDB_DIR = path.resolve(process.cwd(), "..", "fm-database");
 
 /** One unreachable entity, as emitted by `fmdb orphans --json`. */
