@@ -2104,7 +2104,186 @@ def action_submit(payload_in: dict) -> dict:
     return _apply_submit(client_id, data, submitted)
 
 
-def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
+# ── coach email notification on intake submit ────────────────────────────────
+#
+# Why this exists: until 2026-08-22 NOTHING told the coach a client had
+# submitted. The submit handler wrote the fields, wrote the audit session and
+# fired insights, and then simply returned — the only surfacing was the passive
+# "Intake to do" row on /dashboard-v2, which she had to go looking for. Siddharth
+# (cl-023) submitted on 19 Aug and again on 21 Aug and she found out from him,
+# three days later.
+#
+# Design notes, each of which is load-bearing:
+#
+#  - It runs INLINE, not as a subprocess, and it runs BEFORE the insights call.
+#    Both halves matter. The insights subprocess is exactly what got killed when
+#    the parent reconcile hit its 120s timeout on 21 Aug (that is why cl-023's
+#    insights were null), and a notification that dies with its parent is the
+#    failure this function exists to end. Email is ~2s; insights is up to 60s.
+#    Fast and certain goes first.
+#
+#  - It is SKIPPED on the Fly intake deploy, same as insights and for the same
+#    reason: the Mac cron reconcile re-runs this identical merge against the
+#    authoritative store, so firing on both would send the coach two emails per
+#    submission. The Mac also owns the correct link host — the coach UI 404s on
+#    Fly.
+#
+#  - The stamp is written into `data` rather than saved here, so the caller's
+#    existing _save_client persists it. One write, no race with the insights
+#    subprocess that re-reads the same file moments later.
+_NOTIFY_RESUBMIT_COOLDOWN_H = 6
+
+
+def _fmt_ist(dt: "datetime | None") -> str:
+    """UTC → 'Fri 22 Aug, 9:34 pm IST'. The coach reads these on her phone."""
+    if dt is None:
+        return "just now"
+    ist = dt.astimezone(timezone.utc) + timedelta(hours=5, minutes=30)
+    hour = ist.hour % 12 or 12
+    ampm = "am" if ist.hour < 12 else "pm"
+    return f"{ist:%a %-d %b}, {hour}:{ist:%M} {ampm} IST"
+
+
+def _notify_coach_intake_submit(
+    client_id: str,
+    data: dict,
+    is_first_submit: bool,
+    fields_updated: list,
+) -> str:
+    """Email the coach that an intake landed. Best-effort — never raises, and
+    the caller ignores the result beyond logging it. Returns a short status
+    string for the shim's JSON output.
+
+    Stamps data['intake_submit_notified_at'] on a successful send so the
+    caller's _save_client persists the dedup marker."""
+    if os.environ.get("FLY_INTAKE_ONLY"):
+        return "skipped (fly intake deploy; Mac reconcile owns the email)"
+
+    user = os.environ.get("GMAIL_USER")
+    # Google prints app passwords in readable 4-char groups and the value is
+    # stored that way in .env.local. SMTP wants it unspaced.
+    pw = (os.environ.get("GMAIL_APP_PASSWORD") or "").replace(" ", "")
+    if not user or not pw:
+        return "skipped (no GMAIL_USER / GMAIL_APP_PASSWORD)"
+
+    now = datetime.now(timezone.utc)
+
+    # Re-submit throttle. A first submit always sends; a revision sends too
+    # (she genuinely wants to know he changed his answers) but not more than
+    # once every few hours, so a client double-tapping Submit cannot spam her.
+    if not is_first_submit:
+        last = _parse_dt(data.get("intake_submit_notified_at"))
+        if last and (now - last) < timedelta(hours=_NOTIFY_RESUBMIT_COOLDOWN_H):
+            return f"skipped (re-submit within {_NOTIFY_RESUBMIT_COOLDOWN_H}h of last email)"
+
+    name = str(data.get("display_name") or client_id).strip() or client_id
+    to = os.environ.get("COACH_DIGEST_EMAIL") or user
+    # Must be the PUBLIC coach host (cloudflared → fmcoach.shivanihari.com).
+    # NOT NEXT_PUBLIC_APP_URL — that is the Fly intake host and 404s every
+    # coach route. Same rule as menu-approval-digest; see the note there.
+    base = (
+        os.environ.get("COACH_PUBLIC_URL")
+        or os.environ.get("APP_URL")
+        or "http://localhost:3002"
+    ).rstrip("/")
+
+    def _lines(key: str, limit: int) -> list:
+        vals = [str(v).strip() for v in (data.get(key) or []) if str(v).strip()]
+        return vals[:limit]
+
+    conditions = _lines("active_conditions", 6)
+    meds = _lines("current_medications", 6)
+    goals = _lines("goals", 3)
+
+    # Red flags only if insights already exist (i.e. a revision after the first
+    # submit generated them). On a first submit they are still being written by
+    # the call that runs right after this one, so there is nothing to show yet
+    # and the email says so instead of pretending.
+    red_flags = []
+    ins = data.get("intake_insights")
+    if isinstance(ins, dict):
+        red_flags = [str(f).strip() for f in (ins.get("red_flags") or []) if str(f).strip()][:4]
+
+    verb = "submitted" if is_first_submit else "updated"
+    subject = f"{'📥' if is_first_submit else '📝'} {name} {verb} their intake form"
+
+    import html as _html
+
+    def esc(s: str) -> str:
+        return _html.escape(str(s))
+
+    def ul(items: list) -> str:
+        return "<ul style='margin:4px 0 0;padding-left:20px;'>" + "".join(
+            f"<li style='margin:2px 0;'>{esc(i)}</li>" for i in items
+        ) + "</ul>"
+
+    blocks = []
+    if conditions:
+        blocks.append(f"<p style='margin:14px 0 0;'><strong>Conditions</strong>{ul(conditions)}</p>")
+    if meds:
+        blocks.append(f"<p style='margin:14px 0 0;'><strong>Medications</strong>{ul(meds)}</p>")
+    if goals:
+        blocks.append(f"<p style='margin:14px 0 0;'><strong>Goals</strong>{ul(goals)}</p>")
+    if red_flags:
+        blocks.append(
+            "<p style='margin:16px 0 0;padding:10px 12px;background:#fdf2f2;"
+            "border-left:3px solid #c0392b;border-radius:3px;'>"
+            f"<strong>⚠ Flagged at first pass</strong>{ul(red_flags)}</p>"
+        )
+    else:
+        blocks.append(
+            "<p style='margin:16px 0 0;color:#8d99ae;font-size:13px;'>"
+            "AI insights are generating now — open the client page in a minute "
+            "to see patterns, red flags and what to verify in session.</p>"
+        )
+
+    html_body = f"""<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;color:#2b2d42;line-height:1.55;max-width:600px;">
+  <p style="margin:0 0 4px;font-size:17px;"><strong>{esc(name)}</strong> {verb} their intake form.</p>
+  <p style="margin:0;color:#8d99ae;font-size:13px;">{esc(_fmt_ist(now))} · {esc(client_id)} · {len(fields_updated)} field(s) updated</p>
+  {''.join(blocks)}
+  <p style="margin:22px 0 0;">
+    <a href="{base}/clients-v2/{client_id}" style="display:inline-block;background:#2b2d42;color:#fff;text-decoration:none;padding:9px 16px;border-radius:4px;font-size:14px;">Open {esc(name.split(' ')[0])}</a>
+    &nbsp;<a href="{base}/clients-v2/{client_id}/intake-view" style="color:#2b2d42;font-size:14px;">Read the full intake →</a>
+  </p>
+  <p style="margin:24px 0 0;color:#8d99ae;font-size:12px;">Automated from your FM coach app · the intake link stays open until you finalise it.</p>
+</div>"""
+
+    text_lines = [f"{name} {verb} their intake form.", f"{_fmt_ist(now)} · {client_id} · {len(fields_updated)} field(s) updated", ""]
+    for label, items in (("CONDITIONS", conditions), ("MEDICATIONS", meds), ("GOALS", goals)):
+        if items:
+            text_lines.append(f"{label}:")
+            text_lines += [f"  - {i}" for i in items]
+            text_lines.append("")
+    if red_flags:
+        text_lines.append("FLAGGED AT FIRST PASS:")
+        text_lines += [f"  ! {f}" for f in red_flags]
+        text_lines.append("")
+    text_lines.append(f"Open: {base}/clients-v2/{client_id}")
+    text_lines.append(f"Full intake: {base}/clients-v2/{client_id}/intake-view")
+
+    try:
+        import smtplib
+        from email.message import EmailMessage
+
+        msg = EmailMessage()
+        msg["From"] = f"{os.environ.get('COACH_NAME') or 'Shivani Hari'} <{user}>"
+        msg["To"] = to
+        msg["Subject"] = subject
+        msg.set_content("\n".join(text_lines))
+        msg.add_alternative(html_body, subtype="html")
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=25) as s:
+            s.login(user, pw)
+            s.send_message(msg)
+    except Exception as e:
+        print(f"[intake-token-action] coach notify email failed: {e}", file=sys.stderr)
+        return f"err: {e}"
+
+    # Caller's _save_client persists this.
+    data["intake_submit_notified_at"] = now.isoformat()
+    return f"sent to {to}"
+
+
+def _apply_submit(client_id: str, data: dict, submitted: dict, notify: bool = True) -> dict:
     """Core intake-promotion logic — merges a submitted payload into the
     real top-level client fields, marks the submit timestamps, clears the
     draft, writes the audit session, and fires auto-insights.
@@ -2116,7 +2295,11 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                                (client_id-auth, no token needed)
 
     Both resolve (client_id, data) their own way, then hand the actual
-    merge to this function so the two paths can never drift apart."""
+    merge to this function so the two paths can never drift apart.
+
+    `notify` controls the coach email. True for a real client submit; False
+    for the coach's own promote_draft, where she is already looking at the
+    screen and emailing her about her own click is noise."""
     is_first_submit = not data.get("intake_submitted_at")
 
     fields_updated: list[str] = []
@@ -2485,6 +2668,17 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
     data["intake_last_submitted_at"] = now_iso
     # intake_token stays — coach calls action_finalise to lock.
     data["intake_form_draft"] = None
+
+    # ── tell the coach (email) ──
+    # Deliberately BEFORE _save_client + before the insights call. Before the
+    # save so the dedup stamp rides along in the same atomic write; before
+    # insights because that subprocess can take 60s and dies with its parent
+    # when the reconcile hits its timeout — which is precisely how cl-023's
+    # insights were lost on 21 Aug. A notification that shares that fate is
+    # worthless, so the cheap certain thing goes first. Never raises.
+    notify_status = "skipped (coach-initiated promote)" if not notify else \
+        _notify_coach_intake_submit(client_id, data, is_first_submit, fields_updated)
+
     _save_client(client_id, data)
 
     # ── write audit session ──
@@ -2541,6 +2735,7 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
         "session_id": session_id,
         "is_first_submit": is_first_submit,
         "insights_status": insights_status,
+        "notify_status": notify_status,
     }
 
 
@@ -2572,7 +2767,8 @@ def action_promote_draft(payload: dict) -> dict:
     draft = data.get("intake_form_draft")
     if not isinstance(draft, dict) or not draft:
         return {"ok": False, "error": "no_draft_to_promote"}
-    result = _apply_submit(client_id, data, draft)
+    # notify=False: this is the coach's own recovery click, not a client submit.
+    result = _apply_submit(client_id, data, draft, notify=False)
     if result.get("ok"):
         result["promoted_from_draft"] = True
     return result

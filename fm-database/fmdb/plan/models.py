@@ -563,6 +563,11 @@ class Client(BaseModel):
     intake_reminder_enabled: bool = False
     intake_reminders_sent_at: list[str] = Field(default_factory=list)
     intake_last_submitted_at: Optional[datetime] = None  # Path A — bumps on every re-submit
+    # When the coach was last emailed that this intake came in. Purely a
+    # send-once marker for _notify_coach_intake_submit — nothing reads it for
+    # clinical purposes. Kept on the client (not a side log) so the dedup
+    # travels with the record and survives a restart.
+    intake_submit_notified_at: Optional[datetime] = None
     intake_finalised_at: Optional[datetime] = None      # coach-locked, no more edits
 
     # ── v0.75 two-stage intake state ──────────────────────────────────────────
