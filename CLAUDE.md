@@ -63,6 +63,31 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.80 (2026-08-22) — Weekly menu approval APPENDS; it never trims.** Nazneen
+(cl-022) reported twice that "the other food options/recipes have dropped off"
+after an approval. `approveWeekMenuAction` was deliberately keeping only two
+weeks live (`slice(-2)`, later "approved + the one before") on the belief that
+the app shows only two — but the app has a week picker, and the earlier weeks
+ARE the client's food options and the source of her recipes. Every client on
+the cadence was on the same two-week window. **Invariants now:**
+- `weeksAfterApproval` (`src/lib/fmdb/menu-weeks.ts`) keeps every live week,
+  replaces a same-numbered re-approval, and drops ONLY weeks carried from a
+  predecessor plan — by the `source_plan` stamp approval now writes on each
+  week, or (legacy, unstamped) by being numbered > approved+1, beyond what
+  drafting can reach. **Do not reintroduce a cap.** `menu-weeks.test.ts` pins
+  both the Nazneen case and the 2026-08-02 Nidhi carried-weeks case.
+- With every week live, `client-app.ts` no longer rotates when the current
+  week has no menu: `fallbackWeekFor` → latest loaded week ≤ current.
+- Grocery is incremental (`grocery-weeks.ts`): lists are owed for the current
+  week + live weeks ahead, keyed per week by `menu_key` (dish fingerprint,
+  computed from RAW `app_menu.weeks` in both the action and the backfill
+  cron); older weeks' lists are carried forward. A normal approval = ONE Haiku
+  call. Coach 🛒 button passes `force`. `generate-grocery-list.py` accepts
+  `keep_weeks` and merges. "Grocery weeks ≠ menu weeks" is normal now — the
+  cron asks `groceryRefreshNeededAction` instead.
+- Evicted weeks were restored from `.bak-*` copies for 7 clients
+  (`.bak-restore-weeks-20260822` alongside each published plan).
+
 **v0.79 (in flight, branch `claude/millet-health-warnings-b3ex7c`)** — Condition ↔ food cautions: the negative half of `good_for`.
 
 **The gap:** every food surface in the catalogue was positive-only or coach-typed. `_recipes` carried `good_for` / `contains_allergens` / `aggravates_dosha`; `_ingredient_nutrients.yaml` carried nutrition with no safety axis; `client.foods_to_avoid` was hard-enforced but nothing told the coach what to type. `meal_foods.py::relevant_meal_foods()` could find foods that HELP a condition and **nothing could find foods that HARM one**. So ragi reached a hypothyroid client's weekly menu: week-drafter rule 11 actively rotates millets, `ragi-roti` is `good_for: [blood-sugar-regulation]` so it ranked well, and the three hard filters had no reason to stop it — while `claims/murray-goitrogens-cooked-vs-raw.yaml` (which names millet explicitly) sat there as prose that gated nothing.
