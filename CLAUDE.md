@@ -63,6 +63,19 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.82 — Day-0 MRS on the client intake form.** The v0.81 tracker scored only check-ins, so the first check-in doubled as the baseline. The intake's 12-chip "perimenopause inventory" (tick-all, ungraded, never re-scorable) is **replaced** by the 11-item Menopause Rating Scale (0–4 each) plus a 4-chip "Cycle changes" row — replace, not add: the form gets ~1 minute longer only for the women who see it.
+
+**Key invariants (v0.82):**
+- **Gate** — `src/lib/fmdb/mrs-intake-gate.ts::showMrsOnIntake(sex, cycleStatus, dob)`: women only; `perimenopausal` / `postmenopausal` → always; `menstruating` → age ≥ `MRS_INTAKE_MIN_AGE` (40) from `date_of_birth`; `not_applicable` / unanswered / under-40 menstruating → hidden. Cycle chips (`showCycleChangesOnIntake`) only while cycles exist. Age is computed by `src/lib/fmdb/age.ts::ageFromDob` (lifted from `lab-orders.ts`). Don't gate on cycle status alone — perimenopause is routinely unrecognised while periods continue.
+- **Field names** — `perimenopause_inventory` is KEPT for the 4 cycle chips (its option list shrank; earlier clients' ticks stay valid). MRS lands in new `mrs_baseline` (`Client.mrs_baseline: Optional[MenopauseRatingScale]`, same 11 keys as `Session.mrs`). Client-voice labels live in `intake-form-options.ts::MRS_INTAKE_LABELS`, keyed by `MRS_ITEMS`; keep stems close to the instrument, keep subscale names out of the client's view.
+- **Submit allowlist** — new kind `_INTAKE_INT_DICT_FIELDS` + `_clean_int_dict()` in `intake-token-action.py` (known keys, ints in 0–4, overwrite-on-submit, empty clears). `fm-database/tests/test_intake_mrs_baseline.py` fails if the allowlist drifts from the Pydantic model — the silent-drop failure mode this form has hit before. The reconcile path shares `_apply_submit`, so the Mac needs the merged code and Fly needs a deploy.
+- **Card** — `OutcomeProgressCard` takes `mrsBaseline` + `mrsBaselineDate` and inserts a scorable baseline as an `intake` point, **dated by `intake_last_submitted_at`** (falls back to `intake_submitted_at`, then `intake_date`) — a Path-A re-edit re-submits and the first-submit stamp would mis-date it. Points are re-sorted by date; `hasMrs` still needs ≥2.
+- **Layout** — the form's `RadiosRow` stacks each option full-width on a phone; 11 items became 55 rows. The scale uses `ScaleChips` (one chip row per item, `role=radiogroup`). Don't switch it back.
+- **Testing the public form from a worktree** — `server-actions/intake.ts` now honours `FMDB_PYTHON` (it had its own hard-coded venv path, spelled differently from the five files flagged in v0.81, so a grep missed it). A near-empty test form trips the sparse-submit guard and needs the "Submit what I have anyway" confirm — that is not a failure.
+- Verified end-to-end in the browser on the test client (cl-900, restored afterwards): all six gate cases, draft autosave carrying the 11 answers, confirmed submit → `mrs_baseline` on `client.yaml`, intake-view field, and the card plotting intake → check-in as "22 → 12 / 44".
+
+---
+
 **v0.81 — Menopause Rating Scale (MRS) for peri/postmenopausal clients.** Prompted by the Elyaman FMCA webinar ingest (claim `mrs-symptom-score-for-tracking-hormone-transition-symptoms`): a validated, repeatable number beats the ad-hoc symptom count for this cohort. The check-in form (`analyse/checkin/checkin-form.tsx`) gains the 11-item MRS (0–4 per item; somato-vegetative / psychological / urogenital) only when `menopauseStage()` ≠ null; `OutcomeProgressCard` promotes the MRS trend to the primary number once a client has 2+ scorable entries and demotes the generic symptom chart to a collapsed disclosure. **Display swap, not a data swap** — `selected_symptoms` tracking keeps running underneath.
 
 **Key invariants (v0.81):**
