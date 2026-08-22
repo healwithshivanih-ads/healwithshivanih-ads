@@ -2,7 +2,7 @@
 
 import { execFile } from "child_process";
 import path from "path";
-import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 
@@ -30,7 +30,7 @@ async function runScript(
   });
 
   if (!stdout.trim()) {
-    throw new Error(`intake-token-action produced no output. stderr: ${stderr.slice(0, 600)}`);
+    throw new Error(`intake-token-action produced no output. stderr: ${excerpt(stderr, 600)}`);
   }
   try {
     return JSON.parse(stdout);

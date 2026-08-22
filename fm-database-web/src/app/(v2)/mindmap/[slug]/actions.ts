@@ -2,7 +2,7 @@
 
 import { spawn } from "node:child_process";
 import path from "node:path";
-import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 
 const TIMEOUT_MS = 30_000;
 
@@ -38,7 +38,7 @@ export async function renderMindmap(slug: string): Promise<RenderMindmapResult> 
       if (!stdout.trim()) {
         resolve({
           ok: false,
-          error: `render-mindmap.py exited ${code}: ${stderr.slice(0, 500)}`,
+          error: `render-mindmap.py exited ${code}: ${excerpt(stderr, 500)}`,
         });
         return;
       }

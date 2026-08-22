@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { spawn } from "node:child_process";
 import path from "node:path";
-import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 import fs from "node:fs/promises";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
@@ -74,7 +74,7 @@ function runShim<T = unknown>(
       if (!stdout.trim()) {
         resolve({
           ok: false,
-          error: `${scriptName} exited ${code} with no stdout: ${stderr.slice(0, 500)}`,
+          error: `${scriptName} exited ${code} with no stdout: ${excerpt(stderr, 500)}`,
         } as T);
         return;
       }

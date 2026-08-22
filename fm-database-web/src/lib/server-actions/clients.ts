@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { resolvePersonDir } from "@/lib/fmdb/person-dir";
-import { PYTHON, SCRIPTS_DIR, runShim } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { validateMeasurement, reconcileFlatMeasurements } from "@/lib/fmdb/measurements";
 import { matchDrug, drugAliases, type DrugAliasRecord } from "@/lib/fmdb/drug-match";
@@ -84,7 +84,7 @@ async function runScript(
   });
 
   if (!stdout.trim()) {
-    throw new Error(`Script produced no output. stderr: ${stderr.slice(0, 600)}`);
+    throw new Error(`Script produced no output. stderr: ${excerpt(stderr, 600)}`);
   }
   return JSON.parse(stdout);
 }
@@ -2339,7 +2339,7 @@ export async function draftFollowUpMessageAction(
   });
 
   if (!stdout.trim()) {
-    return { ok: false, error: `draft-followup-message.py produced no output. stderr: ${stderr.slice(0, 300)}` };
+    return { ok: false, error: `draft-followup-message.py produced no output. stderr: ${excerpt(stderr, 300)}` };
   }
 
   try {

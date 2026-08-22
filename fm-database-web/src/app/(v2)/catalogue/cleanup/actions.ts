@@ -5,7 +5,7 @@ import path from "node:path";
 import fs from "node:fs/promises";
 import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
-import { PYTHON, SCRIPTS_DIR, runShim } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { getCataloguePath } from "@/lib/fmdb/paths";
 
 export type TriageBucket = "auto" | "coach_eye" | "dismiss";
@@ -86,7 +86,7 @@ async function classifyPlan(planRelPath: string): Promise<void> {
   if (stderr.trim()) {
     // Surface classifier failures in server logs but don't bubble up — the
     // analyzer's plan is still valid; coach just won't see triage badges.
-    console.warn(`[cleanup] classify-cleanup.py stderr: ${stderr.slice(0, 300)}`);
+    console.warn(`[cleanup] classify-cleanup.py stderr: ${excerpt(stderr, 300)}`);
   }
 }
 
@@ -145,7 +145,7 @@ export async function applyCleanupGroupAction(
       child.on("close", () => resolve());
     });
     if (!stdout.trim()) {
-      return { ok: false, error: `apply-cleanup.py produced no output. stderr: ${stderr.slice(0, 400)}` };
+      return { ok: false, error: `apply-cleanup.py produced no output. stderr: ${excerpt(stderr, 400)}` };
     }
     const result = JSON.parse(stdout) as ApplyResult;
     if (result.ok && !dryRun) {

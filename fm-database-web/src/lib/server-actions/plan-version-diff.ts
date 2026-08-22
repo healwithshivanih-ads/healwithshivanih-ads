@@ -2,7 +2,7 @@
 
 import { execFile } from "child_process";
 import path from "path";
-import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
 import yaml from "js-yaml";
@@ -200,7 +200,7 @@ export async function computeSemanticPlanDiffAction(
     if (!stdout.trim()) {
       return {
         ok: false,
-        error: `Semantic shim produced no output. stderr: ${stderr.slice(0, 400)}`,
+        error: `Semantic shim produced no output. stderr: ${excerpt(stderr, 400)}`,
       };
     }
 

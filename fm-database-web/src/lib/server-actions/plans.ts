@@ -10,7 +10,7 @@ import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import type { Plan, PlanPatch } from "@/lib/fmdb/types";
-import { PYTHON, SCRIPTS_DIR, runShim } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { matchDrug } from "@/lib/fmdb/drug-match";
 
 // ─── Supplement sources ────────────────────────────────────────────────────────
@@ -139,7 +139,7 @@ export async function runPlanCheck(slug: string): Promise<PlanCheckResult> {
       if (code !== 0 && !stdout.trim()) {
         resolve({
           ok: false,
-          error: `plan-check.py exited ${code}: ${stderr.slice(0, 500)}`,
+          error: `plan-check.py exited ${code}: ${excerpt(stderr, 500)}`,
         });
         return;
       }
@@ -623,7 +623,7 @@ async function runStartDateScript(payload: unknown, timeoutMs = 15_000): Promise
   });
 
   if (!stdout.trim()) {
-    throw new Error(`start-date-action produced no output. stderr: ${stderr.slice(0, 600)}`);
+    throw new Error(`start-date-action produced no output. stderr: ${excerpt(stderr, 600)}`);
   }
   try {
     return JSON.parse(stdout);

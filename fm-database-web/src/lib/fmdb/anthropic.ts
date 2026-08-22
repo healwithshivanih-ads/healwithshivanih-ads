@@ -23,7 +23,7 @@ import type {
   ChatResult,
   ChatTurn,
 } from "./anthropic-types";
-import { PYTHON, SCRIPTS_DIR } from "./shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "./shim";
 
 async function runShim(
   scriptName: string,
@@ -52,7 +52,7 @@ async function runShim(
     // truncated the actual exception (e.g. "assessment truncated — hit the
     // output token limit") and left only an opaque "produced no output".
     throw new Error(
-      `${scriptName} produced no output. stderr: ${stderr.slice(0, 4000)}`
+      `${scriptName} produced no output. stderr: ${excerpt(stderr, 4000)}`
     );
   }
   try {
@@ -60,7 +60,7 @@ async function runShim(
   } catch (err) {
     throw new Error(
       `${scriptName} produced invalid JSON: ${(err as Error).message}\n` +
-        `stdout: ${stdout.slice(0, 800)}\nstderr: ${stderr.slice(0, 800)}`
+        `stdout: ${stdout.slice(0, 800)}\nstderr: ${excerpt(stderr, 800)}`
     );
   }
 }

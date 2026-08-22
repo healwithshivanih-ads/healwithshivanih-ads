@@ -2,7 +2,7 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
-import { PYTHON, SCRIPTS_DIR } from "@/lib/fmdb/shim";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 import os from "node:os";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
@@ -420,7 +420,7 @@ export async function recordOutboundMessageAction(input: {
     child.on("error", (err) => resolve({ ok: false, error: err.message }));
     child.on("close", () => {
       if (!stdout.trim()) {
-        resolve({ ok: false, error: `save-session produced no output. stderr: ${stderr.slice(0, 400)}` });
+        resolve({ ok: false, error: `save-session produced no output. stderr: ${excerpt(stderr, 400)}` });
         return;
       }
       try {
