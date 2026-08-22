@@ -23,17 +23,28 @@ export interface DuplicateItem {
 }
 
 export interface DuplicateStatus {
-  total: number;
-  critical: number;
+  /** Findings NOT in the accepted baseline — the actionable set. */
+  newCount: number;
+  /** How many of those need a merge or a wrong-alias removal. */
+  newCritical: number;
+  /** Total findings the scan produced, baseline included. Context only. */
+  known: number;
   byCheck: { check: string; n: number }[];
-  criticalItems: DuplicateItem[];
+  /** The new findings, capped for rendering. */
+  newItems: DuplicateItem[];
 }
 
-const EMPTY: DuplicateStatus = { total: 0, critical: 0, byCheck: [], criticalItems: [] };
+const EMPTY: DuplicateStatus = {
+  newCount: 0,
+  newCritical: 0,
+  known: 0,
+  byCheck: [],
+  newItems: [],
+};
 
 /**
- * Run the catalogue duplicate detector (`fmdb duplicates --json`) and summarise
- * it for a dashboard chip.
+ * Run the catalogue duplicate detector as a RATCHET and summarise the result
+ * for a dashboard chip.
  *
  * Why this exists: a single cleanup session found FIVE duplicate pairs sitting
  * unnoticed (CoQ10 x3, mitochondrial-health x2, type-2-diabetes x2). Each had
@@ -42,47 +53,73 @@ const EMPTY: DuplicateStatus = { total: 0, critical: 0, byCheck: [], criticalIte
  * near-duplicates faster than anyone reads the catalogue, so the durable fix is
  * making them visible rather than cleaning up after them.
  *
+ * ⚠ THIS READS `--check-new`, NOT THE FULL SCAN, AND THAT IS THE WHOLE POINT.
+ * Every one of the ~349 findings on disk today is already recorded in
+ * `_duplicates_baseline.yaml`. A chip driven by the full scan would report 47
+ * criticals on every single dashboard load, forever, about debt that has been
+ * explicitly accepted — which is precisely the "after 3-4 they become
+ * wallpaper" failure FmAlertGroup exists to fix. Adoption started at 111
+ * criticals; gating on the total just teaches everyone to pass --no-verify.
+ * So the chip fires only on what is NEW, matching the pre-push hook and
+ * catalogue-ci. `known` is carried purely as context inside the disclosure.
+ *
+ * The coach-facing half of that ratchet: batches are approved through /ingest
+ * in this UI, and the coach never sees the pre-push hook (pushes are
+ * assistant-owned). Without this chip a duplicate created by an approve is
+ * invisible until someone next pushes catalogue changes.
+ *
  * CRITICAL means one of two things, and the `detail` string says which:
  *   - the entities look alike -> one concept split in two, merge them
  *   - they do not -> an alias is on the wrong entity and WILL mis-resolve
  *     (`tg-antibodies` and `triglycerides` both claiming "tg" is the live case)
  *
  * Defensive by design: any failure (no venv, parse error, timeout) returns the
- * empty status so the chip hides rather than breaking the dashboard. Note the
- * CLI exits 1 when criticals exist, which makes execFile reject — so the JSON
- * is recovered from the error's stdout before giving up.
+ * empty status so the chip hides rather than breaking the dashboard. That means
+ * it fails CLOSED and a broken payload shows no symptom — which is why
+ * tests/test_duplicates_ratchet.py pins the JSON shape rather than trusting
+ * review. Note the CLI exits 1 when anything is new, which makes execFile
+ * reject, so the JSON is recovered from the error's stdout before giving up.
  */
 export async function getCatalogueDuplicateStatus(): Promise<DuplicateStatus> {
   let stdout: string;
   try {
-    ({ stdout } = await exec(PYTHON, ["-m", "fmdb.cli", "duplicates", "--json"], {
-      cwd: FMDB_DIR,
-      timeout: 60_000,
-      maxBuffer: 8 * 1024 * 1024,
-    }));
+    ({ stdout } = await exec(
+      PYTHON,
+      ["-m", "fmdb.cli", "duplicates", "--check-new", "--json"],
+      {
+        cwd: FMDB_DIR,
+        // A full catalogue load is ~15s. 60s leaves headroom as it grows.
+        timeout: 60_000,
+        maxBuffer: 8 * 1024 * 1024,
+      },
+    ));
   } catch (err) {
-    // `fmdb duplicates` exits 1 when there ARE criticals — the normal case, not
-    // a failure. The payload is still on stdout.
+    // `duplicates --check-new` exits 1 when there ARE new findings — the case
+    // the chip exists for, not a failure. The payload is still on stdout.
     const out = (err as { stdout?: string })?.stdout;
     if (!out) return EMPTY;
     stdout = out;
   }
 
   try {
-    const items = JSON.parse(stdout) as DuplicateItem[];
-    if (!Array.isArray(items)) return EMPTY;
+    const payload = JSON.parse(stdout) as { new?: DuplicateItem[]; known?: number };
+    // Guard the shape explicitly: the full-scan mode of the same command emits
+    // a bare ARRAY, and silently treating that as a ratchet result would
+    // surface the entire accepted baseline as if it were new.
+    if (!payload || Array.isArray(payload) || !Array.isArray(payload.new)) return EMPTY;
 
+    const items = payload.new;
     const counts = new Map<string, number>();
     for (const d of items) counts.set(d.check, (counts.get(d.check) ?? 0) + 1);
 
-    const critical = items.filter((d) => d.severity === "CRITICAL");
     return {
-      total: items.length,
-      critical: critical.length,
+      newCount: items.length,
+      newCritical: items.filter((d) => d.severity === "CRITICAL").length,
+      known: typeof payload.known === "number" ? payload.known : 0,
       byCheck: [...counts.entries()]
         .map(([check, n]) => ({ check, n }))
         .sort((a, b) => b.n - a.n),
-      criticalItems: critical.slice(0, 200), // cap the rendered list
+      newItems: items.slice(0, 200), // cap the rendered list
     };
   } catch {
     return EMPTY;

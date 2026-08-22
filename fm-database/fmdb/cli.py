@@ -174,6 +174,26 @@ def cmd_duplicates(args: argparse.Namespace) -> None:
         # on what is NEW; let the known backlog through and shrink it over time.
         base = load_baseline(DATA_DIR)
         fresh = [f for f in findings if fingerprint(f) not in base]
+
+        if args.json:
+            # Machine-readable ratchet, for the dashboard chip. Deliberately an
+            # OBJECT, not the bare array plain `--json` emits: the caller needs
+            # `known` to say "3 new, on top of 349 already accepted", and the
+            # two shapes must stay distinguishable so nothing silently reads a
+            # ratchet result as a full scan. Exit code is unchanged (1 when
+            # something is new), so the payload arrives on the error's stdout.
+            import json
+            print(json.dumps({
+                "new": [{
+                    "check": f.kind, "entity_kind": f.entity_kind, "slugs": f.slugs,
+                    "severity": f.severity, "detail": f.detail, "evidence": f.evidence,
+                } for f in fresh],
+                "known": len(findings),
+            }, indent=2))
+            if fresh:
+                raise SystemExit(1)
+            return
+
         if not fresh:
             print(f"No NEW duplicates ({len(findings)} known, all in baseline).")
             return
@@ -2518,7 +2538,7 @@ def main() -> None:
     dup.add_argument("--fix-aliases", action="store_true", help="mechanically strip aliases that shadow another entity's canonical slug (ALIAS_IS_SLUG); safe, always-correct")
     dup.add_argument("--check-new", action="store_true", help="ratchet: exit 1 only on findings NOT in the accepted baseline (for a pre-commit hook)")
     dup.add_argument("--write-baseline", action="store_true", help="accept the CURRENT findings as the baseline for --check-new")
-    dup.add_argument("--json", action="store_true", help="machine-readable output")
+    dup.add_argument("--json", action="store_true", help="machine-readable output: an array of findings, or with --check-new an object {new: [...], known: N}")
     dup.add_argument("-v", "--verbose", action="store_true", help="show all, not just the first 15 per check")
     dup.set_defaults(func=cmd_duplicates)
 
