@@ -33,6 +33,105 @@ if (!SECRET) {
   console.error("[cron-runner] CRON_SECRET not set — every /api/cron/* call will be rejected.");
 }
 
+// ---------------------------------------------------------------------------
+// QUIET JOBS — the three per-minute schedules below.
+//
+// pending-sends / intake-reconcile / app-reminders each fire 1440x/day and used
+// to log a ~170-char success line EVERY run: ~4,320 lines/day, which reached
+// 316k lines / 55 MB in three months. ~99% of it said "I ran, nothing to do",
+// which buries the lines that matter and makes `pm2 logs fm-coach-cron`
+// useless to watch live. So a quiet job logs only when something actually
+// happened, or on any error.
+//
+// It does NOT go fully silent. A cron that DIED and a cron that had nothing to
+// do must never look the same, so the hourly heartbeat further down always
+// reports run counts — `runs 0` there is the alarm. (2026-08-22)
+// ---------------------------------------------------------------------------
+const QUIET_JOBS = ["pending-sends", "intake-reconcile", "app-reminders"];
+
+// Shape guard. If a payload does not carry the field the predicate reads, we
+// do NOT get to call it noise — otherwise renaming a response field (say
+// `fired` -> `dispatched`) would silently mute the job forever instead of
+// showing up as a change in the log. Fail loud, not open.
+const REQUIRED_KEYS = {
+  "pending-sends": ["fired"],
+  "app-reminders": ["sent"],
+  "intake-reconcile": ["reconciled"],
+};
+
+// intake-reconcile per-client outcomes that mean "steady state, nothing done".
+// Measured, not guessed: across 3 months of logs the actions seen were
+// noop (273,118) and skipped_coach_newer (54,749) — versus SEVEN real events
+// (draft_mirrored x5, submission_merged, submission_marker_only). Treating
+// skipped_coach_newer as activity — the obvious first guess — would have
+// silenced nothing, because it is the dominant steady state.
+const RECONCILE_QUIET_ACTIONS = new Set(["noop", "skipped_coach_newer"]);
+
+// "Did anything actually happen?" per job. An unrecognised shape returns true
+// on purpose: a payload we do not understand gets logged, never swallowed.
+//
+// The fields deliberately NOT treated as activity are the ones verified
+// constant across consecutive runs (two back-to-back calls returned
+// byte-identical payloads): intake-reconcile's top-level `purged` list,
+// app_staging.refreshed, coach_staging.people and coach_staging.unchanged.
+// They report what was scanned, not what changed.
+const HAS_ACTIVITY = {
+  "pending-sends": (p) =>
+    (p.fired || 0) > 0 || (p.failed || 0) > 0 || (p.errors || []).length > 0,
+
+  "app-reminders": (p) => (p.sent || 0) > 0 || (p.skipped || 0) > 0,
+
+  "intake-reconcile": (p) => {
+    const app = p.app_staging || {};
+    const coach = p.coach_staging || {};
+    return (
+      (p.reconciled || []).some((r) =>
+        (r.actions || []).some((a) => !RECONCILE_QUIET_ACTIONS.has(a)),
+      ) ||
+      app.ok === false ||
+      (app.checkins_mirrored || 0) > 0 ||
+      (app.purged || 0) > 0 ||
+      (app.errors || []).length > 0 ||
+      coach.ok === false ||
+      (coach.bytes || 0) > 0 ||
+      (coach.notes_drained || 0) > 0
+    );
+  },
+};
+
+// job -> { runs, active }, reset each hour by the heartbeat.
+const tally = new Map();
+
+function note(job, active) {
+  if (!QUIET_JOBS.includes(job)) return;
+  const t = tally.get(job) || { runs: 0, active: 0 };
+  t.runs += 1;
+  if (active) t.active += 1;
+  tally.set(job, t);
+}
+
+// Exported for the unit test; also keeps the predicates honest.
+function isNoise(job, bodyText) {
+  if (!QUIET_JOBS.includes(job)) return false;
+  let parsed;
+  try {
+    parsed = JSON.parse(bodyText);
+  } catch {
+    return false; // unparseable success body — surface it
+  }
+  if (parsed === null || typeof parsed !== "object") return false;
+  if (parsed.ok === false) return false;
+  const required = REQUIRED_KEYS[job] || [];
+  if (!required.every((k) => k in parsed)) return false; // shape drifted — log it
+  const test = HAS_ACTIVITY[job];
+  if (!test) return false;
+  try {
+    return !test(parsed);
+  } catch {
+    return false;
+  }
+}
+
 async function fire(job) {
   const url = `${APP_URL}/api/cron/${job}`;
   const startedAt = Date.now();
@@ -48,11 +147,17 @@ async function fire(job) {
     const text = await res.text();
     const took = Date.now() - startedAt;
     if (res.ok) {
-      console.log(`[cron-runner] ${job} ✓ ${res.status} (${took}ms): ${text.slice(0, 200)}`);
+      const noise = isNoise(job, text);
+      note(job, !noise);
+      if (!noise) {
+        console.log(`[cron-runner] ${job} ✓ ${res.status} (${took}ms): ${text.slice(0, 200)}`);
+      }
     } else {
+      note(job, true);
       console.error(`[cron-runner] ${job} ✗ ${res.status} (${took}ms): ${text.slice(0, 400)}`);
     }
   } catch (err) {
+    note(job, true);
     console.error(`[cron-runner] ${job} threw:`, err && err.message ? err.message : err);
   }
 }
@@ -185,6 +290,22 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// Top of every hour — liveness for the quiet jobs above. This is the whole
+// reason quieting them is safe: `runs 0` here means a per-minute schedule has
+// STOPPED, which silence alone could never tell you.
+cron.schedule(
+  "0 * * * *",
+  () => {
+    const parts = QUIET_JOBS.map((job) => {
+      const t = tally.get(job) || { runs: 0, active: 0 };
+      tally.set(job, { runs: 0, active: 0 });
+      return `${job} ${t.runs} runs/${t.active} active`;
+    });
+    console.log(`[cron-runner] hourly · ${parts.join(" · ")}`);
+  },
+  { timezone: "Asia/Kolkata" },
+);
+
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
     + "\n  · 06:45 IST  client-yaml-integrity"
@@ -198,7 +319,9 @@ console.log(
     + "\n  · 21:00 IST  revenue-export"
     + "\n  · * * * * *  pending-sends"
     + "\n  · * * * * *  intake-reconcile"
-    + "\n  · * * * * *  app-reminders",
+    + "\n  · * * * * *  app-reminders"
+    + "\n  · 0 * * * *  hourly heartbeat"
+    + `\n  quiet (log only on activity/error): ${QUIET_JOBS.join(", ")}`,
 );
 
 // Keep the process alive (node-cron handles its own timers).
