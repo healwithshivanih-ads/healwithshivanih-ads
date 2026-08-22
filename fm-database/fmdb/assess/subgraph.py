@@ -608,13 +608,40 @@ def build_subgraph(
             "evidence_tier": getattr(ts.evidence_tier, "value", str(ts.evidence_tier)),
         }
 
+    # Three tiers, not two. `core_topic_set` is everything the symptom pass
+    # pulled in as well as the coach's own picks, and for a client with a dozen
+    # symptoms it overflows MAX_TOPICS on its own — at which point the tiebreak
+    # is the slug, i.e. alphabetical, i.e. arbitrary. cl-023 is the proof: 60
+    # core topics ran to "inflammation" and `insulin-resistance` — the topic the
+    # coach explicitly selected, and the man's primary diagnosis — sorted one
+    # place past the cut and left the subgraph entirely. The assessment was
+    # being authored without its own subject in scope.
+    #
+    # What the coach literally ticked can never be evicted by expansion, so it
+    # gets a tier of its own above core.
     ordered_topics = sorted(
         (t for t in topic_set if t in topic_by_slug),
-        key=lambda ts: (0 if ts in core_topic_set else 1, ts),
+        key=lambda ts: (
+            0 if ts in scope.selected_topic_set
+            else 1 if ts in core_topic_set
+            else 2,
+            ts,
+        ),
     )[:MAX_TOPICS]
+    # Same three-tier treatment as topics above, for the same reason.
+    # `selected_mech_set` — the mechanisms an explicitly selected topic NAMES —
+    # already existed and was already used to rank supplements; it just never
+    # reached the ordering that decides what survives the cap. On cl-023 the 60
+    # core mechanisms ran to "estrogen-decline" and `insulin-resistance`, the
+    # mechanism his entire case turns on, was not in the subgraph at all.
     ordered_mechs = sorted(
         (m for m in mech_set if m in mech_by_slug),
-        key=lambda ms: (0 if ms in core_mech_set else 1, ms),
+        key=lambda ms: (
+            0 if ms in scope.selected_mech_set
+            else 1 if ms in core_mech_set
+            else 2,
+            ms,
+        ),
     )[:MAX_MECHANISMS]
 
     return {
