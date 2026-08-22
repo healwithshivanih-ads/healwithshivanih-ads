@@ -24,6 +24,22 @@ export const PYTHON =
   path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 export const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
+/**
+ * Clip a captured stream for an error message WITHOUT losing its end. A Python
+ * traceback puts the one line that matters — the exception itself — LAST, so a
+ * plain head slice of a long traceback showed eight frames of subprocess.py and
+ * cut off the `FileNotFoundError: … .venv/bin/python` that named the actual
+ * problem (ingest-action.py from a worktree, 2026-08-22). Keeps roughly a third
+ * from the head (the "Traceback" header and the first frames, which say which
+ * script) and the rest from the tail.
+ */
+export function excerpt(text: string, max = 1200): string {
+  if (text.length <= max) return text;
+  const head = Math.floor(max / 3);
+  const tail = max - head;
+  return `${text.slice(0, head)}\n… [${text.length - max} chars elided] …\n${text.slice(-tail)}`;
+}
+
 export async function runShim(
   scriptName: string,
   payload: unknown,
@@ -61,7 +77,7 @@ export async function runShim(
       ? `killed by ${signal} after ${timeoutMs}ms — the script exceeded its timeout`
       : `exited with code ${code}`;
     throw new Error(
-      `${scriptName} produced no output (${how}).\nstderr: ${stderr.slice(0, 1200)}`
+      `${scriptName} produced no output (${how}).\nstderr: ${excerpt(stderr, 1200)}`
     );
   }
   try {
@@ -69,7 +85,7 @@ export async function runShim(
   } catch (err) {
     throw new Error(
       `${scriptName} produced invalid JSON: ${(err as Error).message}\n` +
-        `stdout: ${stdout.slice(0, 800)}\nstderr: ${stderr.slice(0, 800)}`
+        `stdout: ${excerpt(stdout, 800)}\nstderr: ${excerpt(stderr, 800)}`
     );
   }
 }

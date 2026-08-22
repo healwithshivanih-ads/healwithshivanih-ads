@@ -41,7 +41,14 @@ from urllib.parse import urlparse
 
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
-PYTHON = str(FMDB_ROOT / ".venv" / "bin" / "python")
+# Re-spawn `-m fmdb.cli` under the interpreter THIS shim is already running in —
+# the one the caller chose (shim.ts's PYTHON, i.e. FMDB_PYTHON or the repo venv).
+# Hard-coding FMDB_ROOT/.venv here silently ignored that choice: from a git
+# worktree the venv is absent, so every CLI action died inside subprocess.run
+# with FileNotFoundError even though the caller had pointed at a working
+# interpreter. cwd=FMDB_ROOT on the spawn is what makes `-m fmdb.cli` import
+# THIS checkout's package, whichever interpreter runs it.
+PYTHON = sys.executable or str(FMDB_ROOT / ".venv" / "bin" / "python")
 
 
 def run_cli(*args: str) -> tuple[str, str, int]:
