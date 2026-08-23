@@ -1072,6 +1072,22 @@ _LIST_FIELDS = [
     "goals",
 ]
 
+# The two free-text CONDITION lists. Both hold the same kind of value — a
+# clinician's phrasing of a diagnosis — so both get the semantic + subset
+# dedup, and nothing else does. `current_medications`, `current_supplements`
+# and `known_allergies` deliberately keep strict dedup: "vitamin D" and
+# "vitamin D3" are different products, and {vitamin,d} is a subset of
+# {vitamin,d3}. Collapsing those would silently delete a real item.
+#
+# medical_history added 2026-08-23 alongside active_conditions. The resolved
+# stamp that condition-status.ts appends when a condition is retired
+# ("Constipation — resolved Jul 2026") is safe here: "resolved" is NOT a hedge
+# token, so the stamped entry counts as the more specific one and survives
+# against a bare restatement, which is the direction that keeps the resolution
+# date. Repeat events stay separate for the same reason — {dengue,2019} and
+# {dengue,2021} are neither subset of the other.
+_SEMANTIC_DEDUP_FIELDS = {"active_conditions", "medical_history"}
+
 # v0.72 chip-array fields — same merge rules as _LIST_FIELDS but listed
 # separately for clarity since they're all client-form additions.
 _INTAKE_LIST_FIELDS = [
@@ -1350,7 +1366,12 @@ def _collapse_condition_subsets(entries: list[str]) -> tuple[list[str], list[str
     return kept, dropped
 
 
-def _merge_lists(existing: list[str] | None, incoming: list[str] | None, semantic_dedup: bool = False) -> tuple[list[str], bool]:
+def _merge_lists(
+    existing: list[str] | None,
+    incoming: list[str] | None,
+    semantic_dedup: bool = False,
+    field: str = "active_conditions",
+) -> tuple[list[str], bool]:
     existing = existing or []
     # DEFENCE: if a caller mis-types and passes a string instead of a list,
     # `for x in <string>` iterates CHARACTERS and we end up with the
@@ -1399,7 +1420,7 @@ def _merge_lists(existing: list[str] | None, incoming: list[str] | None, semanti
         kept, dropped = _collapse_condition_subsets(existing + added)
         if dropped:
             print(
-                f"[intake-token-action] active_conditions dedup dropped "
+                f"[intake-token-action] {field} dedup dropped "
                 f"{len(dropped)}: {dropped}",
                 file=sys.stderr,
             )
@@ -2487,7 +2508,8 @@ def _apply_submit(client_id: str, data: dict, submitted: dict, notify: bool = Tr
             merged, changed = _merge_lists(
                 data.get(field),
                 submitted.get(field),
-                semantic_dedup=(field == "active_conditions"),
+                semantic_dedup=(field in _SEMANTIC_DEDUP_FIELDS),
+                field=field,
             )
             if changed:
                 data[field] = merged
