@@ -294,12 +294,23 @@ export async function getBatchStatusAction(batchId: string): Promise<BatchStatus
   }
 }
 
-export async function countPendingBatchesAction(): Promise<{ count: number }> {
+/**
+ * Discriminated rather than a bare count, because the panel renders `0` as a
+ * green "All clear — nothing pending." A spawn failure (absent venv in a
+ * worktree is the live one) used to land in that same branch, so a broken
+ * check reported the most reassuring possible answer. Nothing-pending and
+ * could-not-check are different facts and the UI has to be able to tell them
+ * apart. See catalogue-orphan-action.ts for the same call, made twice.
+ */
+export async function countPendingBatchesAction(): Promise<
+  { ok: true; count: number } | { ok: false; error: string }
+> {
   try {
     const result = await runShim("ingest-action.py", { action: "count_pending" }, 15_000);
-    return { count: (result.count as number) ?? 0 };
-  } catch {
-    return { count: 0 };
+    return { ok: true, count: (result.count as number) ?? 0 };
+  } catch (err) {
+    console.error("[ingest] count_pending failed:", err);
+    return { ok: false, error: (err as Error)?.message?.split("\n")[0] ?? String(err) };
   }
 }
 
