@@ -1235,6 +1235,88 @@ def _canonicalise_condition(s: str) -> str:
     return " ".join(tokens)
 
 
+# Words that only lower CERTAINTY about a condition — they carry no clinical
+# content of their own. Used to decide WHICH of two overlapping entries
+# survives; never to decide whether they overlap.
+_HEDGE_TOKENS = frozenset({
+    "suspected", "suspect", "possible", "possibly", "probable", "probably",
+    "likely", "query", "borderline", "rule", "ruled", "out",
+})
+
+
+def _collapse_condition_subsets(entries: list[str]) -> tuple[list[str], list[str]]:
+    """Collapse active_conditions entries that say the same thing twice.
+
+    `_canonicalise_condition` keys on the exact token SET, so the D2 dedup
+    above catches word-order variants ("Depression / anxiety" ≡
+    "Anxiety/Depression") and nothing else. Two cases slipped straight past it
+    and put the same diagnosis on three clients' records twice (2026-08-23):
+
+      - SUBSETS. "Diabetes" {diabetes} sits inside "Type 2 diabetes / insulin
+        resistance" {2,type,diabetes,insulin,resistance}; different key, both
+        kept. cl-023 and nidhi-jain both carried the pair. cl-011 carried
+        "Anxiety" alongside "Anxiety + Depression (…)".
+      - EXACT-KEY DUPES ALREADY ON DISK. The merge only filters INCOMING
+        against existing, so identical keys that predate the D2 fix never
+        collapse. cl-011 held three entries keyed "anxiety depression".
+
+    WHICH ENTRY SURVIVES IS THE WHOLE PROBLEM, and "keep the longer one" is
+    wrong in precisely the case this codebase generates on its own:
+    `_derive_conditions_from_intake` writes moderate-confidence findings as
+    "Suspected: …", so a client with a CONFIRMED "PCOS" and a derived
+    "Suspected: PCOS" would have the confirmed diagnosis deleted in favour of
+    the hedged one — a certainty downgrade written silently into the record.
+    nidhi-jain carries a "Suspected: PCOS" today, so this is live, not
+    hypothetical. The EXTRA tokens therefore decide the direction:
+
+      - extra is only hedge words  → the longer entry is the same condition
+                                     said less certainly. Keep the SHORTER.
+      - extra carries real content → the longer entry is more specific.
+                                     Keep the LONGER.
+
+    Entries that canonicalise to nothing (all stopwords) are left alone —
+    an empty token set is a subset of everything and would eat the list.
+
+    Returns (kept, dropped); `kept` preserves input order.
+    """
+    keyed = [(e, frozenset(_canonicalise_condition(e).split())) for e in entries]
+
+    # Pass 1 — identical keys. Keep the longest raw string in each group: the
+    # clinical content is by definition the same, so the longer one is the one
+    # carrying the parenthetical detail.
+    best_for_key: dict[frozenset, int] = {}
+    for i, (raw, key) in enumerate(keyed):
+        if not key:
+            continue
+        cur = best_for_key.get(key)
+        if cur is None or len(raw) > len(keyed[cur][0]):
+            best_for_key[key] = i
+    drop = {
+        i for i, (_, key) in enumerate(keyed)
+        if key and best_for_key.get(key) != i
+    }
+
+    # Pass 2 — proper subsets, direction decided by the extra tokens.
+    for i in range(len(keyed)):
+        if i in drop or not keyed[i][1]:
+            continue
+        for j in range(len(keyed)):
+            if j == i or j in drop or not keyed[j][1]:
+                continue
+            ki, kj = keyed[i][1], keyed[j][1]
+            if not ki < kj:          # strict subset only; equals handled above
+                continue
+            if kj - ki <= _HEDGE_TOKENS:
+                drop.add(j)          # j is i, hedged — keep the confirmed one
+            else:
+                drop.add(i)          # j is strictly more specific
+                break                # i is gone; stop comparing it
+
+    kept = [e for i, (e, _) in enumerate(keyed) if i not in drop]
+    dropped = [e for i, (e, _) in enumerate(keyed) if i in drop]
+    return kept, dropped
+
+
 def _merge_lists(existing: list[str] | None, incoming: list[str] | None, semantic_dedup: bool = False) -> tuple[list[str], bool]:
     existing = existing or []
     # DEFENCE: if a caller mis-types and passes a string instead of a list,
@@ -1259,7 +1341,11 @@ def _merge_lists(existing: list[str] | None, incoming: list[str] | None, semanti
         )
         incoming = []
     incoming = [str(x).strip() for x in incoming if str(x).strip()]
-    if not incoming:
+    # NB: the empty-incoming shortcut is deliberately NOT taken on the
+    # semantic path. A record that is already carrying duplicates has to heal
+    # even when the client submits nothing new for the field — returning early
+    # here is what would leave it dirty for ever.
+    if not incoming and not semantic_dedup:
         return existing, False
     if semantic_dedup:
         # D2 — token-sorted canonical key catches "Depression / anxiety
@@ -1273,6 +1359,20 @@ def _merge_lists(existing: list[str] | None, incoming: list[str] | None, semanti
                 continue
             added.append(x)
             seen_in_added.add(key)
+        # Collapse the UNION, not just the incoming half. Running over
+        # existing+added is what lets a record that is already carrying
+        # duplicates heal itself on the next submit, instead of staying dirty
+        # until someone notices by hand — which is how it was found.
+        kept, dropped = _collapse_condition_subsets(existing + added)
+        if dropped:
+            print(
+                f"[intake-token-action] active_conditions dedup dropped "
+                f"{len(dropped)}: {dropped}",
+                file=sys.stderr,
+            )
+        # `changed` must account for a pure collapse too: dropping a duplicate
+        # with nothing incoming is still a write the caller has to persist.
+        return kept, bool(added) or bool(dropped)
     else:
         lower = {e.lower() for e in existing}
         added = [x for x in incoming if x.lower() not in lower]
@@ -2590,7 +2690,12 @@ def _apply_submit(client_id: str, data: dict, submitted: dict, notify: bool = Tr
                 c for c in derived_conditions if not _already_covered(c)
             ]
         if derived_conditions:
-            merged, changed = _merge_lists(data.get("active_conditions"), derived_conditions)
+            # semantic_dedup=True: this is the call that introduces the
+            # "Suspected: …" phrasings, so it is exactly where the hedge-aware
+            # collapse has to run. It merged on case-insensitive equality only.
+            merged, changed = _merge_lists(
+                data.get("active_conditions"), derived_conditions, semantic_dedup=True
+            )
             if changed:
                 data["active_conditions"] = merged
                 if "active_conditions" not in fields_updated:
