@@ -17,6 +17,15 @@ export type SessionType =
  *   pre_intake, discovery_consultation → discovery (same first-call concept)
  *   full_assessment                   → intake     (renamed)
  *
+ * Sub-type tags a form embeds because the 4-value enum cannot carry them:
+ *   protocol_checkin                  → check_in   (protocol-checkin-panel)
+ * Until 2026-08-22 save-session.py prepended its own `[session_type:
+ * check_in]` in FRONT of the form's tag, so this parser only ever saw the
+ * canonical one. The shim is idempotent now and keeps the form's tag, so the
+ * alias has to live here — without it a protocol check-in parses as "intake".
+ * Every reader that cares about check-ins (dashboard last-review, client
+ * journey) must go through this function, not a literal `check_in` regex.
+ *
  * Scans for [session_type: ...] ANYWHERE in the string — not just at
  * the start. WhatsApp webhook prepends [plan: X] [window: Y] tags
  * BEFORE [session_type: quick_note], so a start-anchored regex was
@@ -31,7 +40,7 @@ export function parseSessionType(presenting_complaints?: string): SessionType {
   const t = m[1];
   if (t === "discovery" || t === "pre_intake" || t === "discovery_consultation") return "discovery";
   if (t === "intake" || t === "full_assessment") return "intake";
-  if (t === "check_in") return "check_in";
+  if (t === "check_in" || t === "protocol_checkin") return "check_in";
   if (t === "quick_note") return "quick_note";
   return "intake";
 }
