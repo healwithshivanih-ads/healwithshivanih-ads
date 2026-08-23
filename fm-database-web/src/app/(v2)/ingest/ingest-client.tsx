@@ -518,6 +518,10 @@ function BatchPanel({
 
 function ApproveAllPanel() {
   const [count,    setCount]   = useState<number | null>(null);
+  // Separate from `count` on purpose: count===null means "not checked yet" and
+  // count===0 renders an all-clear, so a failed check has nowhere honest to go
+  // in that one variable.
+  const [countErr, setCountErr] = useState<string | null>(null);
   const [loading,  setLoading] = useState(false);
   const [running,  setRunning] = useState(false);
   const [result,   setResult]  = useState<null | {
@@ -528,7 +532,8 @@ function ApproveAllPanel() {
   const checkCount = useCallback(async () => {
     setLoading(true);
     const r = await countPendingBatchesAction();
-    setCount(r.count);
+    if (r.ok) { setCount(r.count); setCountErr(null); }
+    else { setCount(null); setCountErr(r.error); }
     setLoading(false);
   }, []);
 
@@ -538,6 +543,7 @@ function ApproveAllPanel() {
     const r = await approveAllPendingAction();
     setResult(r);
     setCount(r.failed); // anything left is failed
+    setCountErr(null);
     setRunning(false);
     if (r.approved > 0) toast.success(`Approved ${r.approved} batch${r.approved !== 1 ? "es" : ""} ✓`);
     if (r.failed > 0)   toast.error(`${r.failed} batch${r.failed !== 1 ? "es" : ""} failed — see log`);
@@ -557,6 +563,11 @@ function ApproveAllPanel() {
             )}
             {count === 0 && (
               <span className="ml-1 text-emerald-700 font-semibold">All clear — nothing pending.</span>
+            )}
+            {countErr && (
+              <span className="ml-1 text-rose-700 font-semibold">
+                Couldn’t check — {countErr}
+              </span>
             )}
           </div>
         </div>

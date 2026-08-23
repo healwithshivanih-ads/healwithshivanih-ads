@@ -22,10 +22,12 @@
  *
  * Self-loading (like FmCatalogueOrphanChip): fetches its own status on mount so
  * it adds zero latency to the dashboard's server render, and renders nothing
- * until it has data. Hides entirely when nothing is new. Informational — no
- * mutate action; it points the coach at the fix.
+ * until it has data. Hides entirely when nothing is new — and, crucially, does
+ * NOT hide when the scan could not run, since hiding is what "nothing is new"
+ * looks like. Informational — no mutate action; it points the coach at the fix.
  */
 import { useEffect, useState, useTransition } from "react";
+import { chipView } from "@/lib/fmdb/guardrail-chip-view";
 import {
   getCatalogueDuplicateStatus,
   type DuplicateStatus,
@@ -66,9 +68,68 @@ export function FmCatalogueDuplicateChip() {
     void (async () => setStatus(await getCatalogueDuplicateStatus()))();
   }, []);
 
-  // Render nothing until loaded, and hide when nothing new slipped in.
-  if (!status || status.newCount === 0) return null;
+  // Four outcomes, decided in one pure place. NOT
+  // `if (!status || status.status !== "ok" || status.newCount === 0) return null`
+  // — that narrowing compiles, keeps the ratchet intact, and silently restores
+  // the fail-closed hide, so an unrunnable scan reads as a clean catalogue
+  // again. See lib/fmdb/guardrail-chip-view.ts.
+  const view = chipView(
+    status === null
+      ? null
+      : status.status === "ok"
+        ? { status: "ok", actionable: status.newCount }
+        : { status: "unavailable" },
+  );
 
+  // Only these two render nothing; "unavailable" is deliberately absent.
+  if (view === "loading" || view === "hide") return null;
+  if (status === null) return null; // unreachable given the above; narrows the type
+
+  // The scan could not run (no venv / timeout / a payload that isn't the
+  // {new, known} ratchet shape). Say so quietly — a hidden chip here means
+  // "nothing new", which is exactly the claim we cannot make.
+  if (status.status === "unavailable") {
+    return (
+      <section
+        style={{
+          padding: "8px 12px",
+          borderRadius: "var(--fm-radius-lg)",
+          background: "var(--fm-bg-cool)",
+          border: "1px dashed var(--fm-border-light)",
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          fontSize: 12,
+          color: "var(--fm-text-tertiary)",
+        }}
+      >
+        <span aria-hidden>👯</span>
+        <span style={{ flex: 1, minWidth: 0 }}>
+          Couldn’t check for new duplicates — {status.error}
+        </span>
+        <button
+          type="button"
+          onClick={load}
+          disabled={pending}
+          style={{
+            background: "transparent",
+            border: "1px solid var(--fm-border-light)",
+            padding: "4px 10px",
+            fontSize: 12,
+            color: "var(--fm-text-secondary)",
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: pending ? "wait" : "pointer",
+            fontFamily: "inherit",
+            opacity: pending ? 0.6 : 1,
+          }}
+        >
+          Retry
+        </button>
+      </section>
+    );
+  }
+
+  // Everything below is the alarm: the scan succeeded and found new candidates.
   const { newCount, newCritical, known, byCheck, newItems } = status;
   // `known` counts EVERY finding, the new ones included. The number worth
   // showing is the accepted remainder — otherwise the disclosure claims the

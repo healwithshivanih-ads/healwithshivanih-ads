@@ -53,9 +53,41 @@ export async function loadSomaticRead(
 /** What the client may be shown of the mind-body layer, unsupervised. */
 export type MindBodyDepth = "off" | "resets_only" | "full" | "deep";
 
+/**
+ * Read the client's current depth, for the COACH's panel.
+ *
+ * The "off" fallback below is deliberate and stays. Two reasons, and both have
+ * to hold or it would need the unavailable-state treatment the catalogue chips
+ * got:
+ *
+ *  1. It is not the gate. The client app never calls this — client-app.ts reads
+ *     `mind_body_depth` off the client record it already loaded. So a failure
+ *     here cannot open or close anything for a client; it only mis-paints a
+ *     control.
+ *  2. It fails CLOSED. "off" is the most restrictive answer, matching the rule
+ *     that every gate in this layer fails closed, and absent === off by design.
+ *
+ * That is why the failure is REPORTED rather than defaulted. The residual risk
+ * is a coach reading "off" for someone actually at `deep` — on a control whose
+ * whole job is recording a consent decision — and "off" is the legitimate value
+ * for nearly every client, which is exactly what would make a wrong one
+ * invisible. So an unreadable file returns `{ ok: false }` and the panel shows
+ * no selection at all, instead of highlighting a setting nobody chose.
+ *
+ * The trigger is a YAML parse throw, not a missing file: js-yaml rejects a
+ * duplicate top-level key that PyYAML tolerates last-wins, so the Python side
+ * keeps working and never notices (the cl-021 shape — see
+ * api/cron/client-yaml-integrity, and __tests__/client-yaml-unreadable.test.ts).
+ * loader.ts's readYaml() guard does not help here: it logs and returns null,
+ * and null collapses into the same default. The distinguishable state has to be
+ * in the return type.
+ *
+ * Writes are unaffected either way: setMindBodyDepth re-reads the file before
+ * dumping it, so a failed read here can never clobber the stored value.
+ */
 export async function loadMindBodyDepth(
   clientId: string,
-): Promise<MindBodyDepth> {
+): Promise<{ ok: true; depth: MindBodyDepth } | { ok: false; error: string }> {
   try {
     const yaml = await import("js-yaml");
     const fs = await import("node:fs/promises");
@@ -67,9 +99,12 @@ export async function loadMindBodyDepth(
     );
     const d = (yaml.load(raw) ?? {}) as Record<string, unknown>;
     const v = typeof d.mind_body_depth === "string" ? d.mind_body_depth.trim().toLowerCase() : "";
-    return v === "full" || v === "deep" || v === "resets_only" ? v : "off";
-  } catch {
-    return "off";
+    // Absent key === off, deliberately: there is only one state meaning
+    // "not opened", and it is reached here without touching the catch.
+    return { ok: true, depth: v === "full" || v === "deep" || v === "resets_only" ? v : "off" };
+  } catch (e) {
+    console.error(`[somatic] cannot read mind_body_depth for ${clientId}:`, e);
+    return { ok: false, error: (e as Error)?.message?.split("\n")[0] ?? String(e) };
   }
 }
 
@@ -115,8 +150,22 @@ export async function setMindBodyDepth(
 }
 
 
-/** Map slugs currently opened for this client by name. */
-export async function loadSharedMaps(clientId: string): Promise<string[]> {
+/**
+ * Map slugs currently opened for this client by name.
+ *
+ * Reported rather than defaulted, for the same reason as loadMindBodyDepth and
+ * with more at stake: `mind_body_shared` is the ONLY route past `coach_only`,
+ * and those twelve entries are grief, recurrent pregnancy loss, infertility and
+ * sexual trauma. An empty list is the overwhelmingly common true answer, so a
+ * `[]` produced by an unreadable file is invisible — the coach would see every
+ * map as un-shared and have no way to tell that reading was a guess.
+ *
+ * The panel already hides the per-map toggle while this is unknown, so an
+ * unreadable file shows no toggle rather than a confident "not shared".
+ */
+export async function loadSharedMaps(
+  clientId: string,
+): Promise<{ ok: true; slugs: string[] } | { ok: false; error: string }> {
   try {
     const yaml = await import("js-yaml");
     const fs = await import("node:fs/promises");
@@ -127,11 +176,14 @@ export async function loadSharedMaps(clientId: string): Promise<string[]> {
       "utf8",
     );
     const d = (yaml.load(raw) ?? {}) as Record<string, unknown>;
-    return Array.isArray(d.mind_body_shared)
+    const slugs = Array.isArray(d.mind_body_shared)
       ? (d.mind_body_shared as unknown[]).map(String).filter(Boolean)
       : [];
-  } catch {
-    return [];
+    // An absent key is a real, valid "nothing opened" — reached without the catch.
+    return { ok: true, slugs };
+  } catch (e) {
+    console.error(`[somatic] cannot read mind_body_shared for ${clientId}:`, e);
+    return { ok: false, error: (e as Error)?.message?.split("\n")[0] ?? String(e) };
   }
 }
 

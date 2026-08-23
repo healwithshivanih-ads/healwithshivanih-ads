@@ -20,6 +20,7 @@ import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
 import { screenMenuForClient, type MenuStapleFlag } from "@/lib/fmdb/food-cautions";
 import { weeksAfterApproval, planWeekFromStart } from "@/lib/fmdb/menu-weeks";
 import { weeklyGenerationPaused } from "@/lib/fmdb/weekly-generation-pause";
+import { withFsRetry } from "@/lib/fmdb/fs-retry";
 import { generateGroceryListAction } from "./grocery";
 
 export interface PendingWeekMenu {
@@ -68,15 +69,31 @@ async function publishedFileForClient(
  *  plan.no_weekly_menu flag. "detailed" vs "hybrid" is NOT used to gate the
  *  cron — that's still driven by the plan's actual app_menu.is_sample (week
  *  count), so flipping the picker alone can't silently stop/start cadence
- *  for a client whose menu was already generated under the old default. */
-async function mealPlanStyle(clientId: string): Promise<"detailed" | "principles" | "hybrid"> {
+ *  for a client whose menu was already generated under the old default.
+ *
+ *  Returns null when client.yaml could NOT be read, which is not the same as
+ *  "no style set". An ABSENT key already returns "hybrid" without throwing, so
+ *  nothing legitimate lands in the catch — only ENOENT or a parse error (a
+ *  duplicate top-level key makes js-yaml throw where PyYAML shrugs; that is the
+ *  cl-021 shape, see api/cron/client-yaml-integrity). Answering "hybrid" there
+ *  failed OPEN: the one value that means "opt out" is `principles`, so an
+ *  unreadable file read as consent to draft a weekly menu for a client who had
+ *  opted out of having one. Callers must decide explicitly. */
+async function mealPlanStyle(
+  clientId: string,
+): Promise<"detailed" | "principles" | "hybrid" | null> {
   try {
     const f = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
-    const doc = (yaml.load(await fs.readFile(f, "utf-8")) as { meal_plan_style?: string }) ?? {};
+    // Retried like loader.ts does: fm-plans has thrown transient EAGAIN, and now
+    // that an unreadable file means "skip this client's auto-draft this run", a
+    // one-off blip would silently drop a healthy client out of the queue.
+    const doc =
+      (yaml.load(await withFsRetry(() => fs.readFile(f, "utf-8"))) as { meal_plan_style?: string }) ?? {};
     const v = doc.meal_plan_style;
     return v === "detailed" || v === "principles" ? v : "hybrid";
-  } catch {
-    return "hybrid";
+  } catch (e) {
+    console.error(`[weekly-menu] cannot read meal_plan_style for ${clientId}:`, e);
+    return null;
   }
 }
 
@@ -288,7 +305,16 @@ export async function generateWeekMenuAction(
   if (hit.plan.app_menu?.is_sample) {
     return { ok: false, error: "Hybrid/sample plan — it uses one fixed sample week, not a weekly cadence." };
   }
-  if (hit.plan.no_weekly_menu || (await mealPlanStyle(clientId)) === "principles") {
+  const style = await mealPlanStyle(clientId);
+  if (style === null) {
+    // Refuse rather than guess. The coach clicked, so she gets told — which is
+    // the whole difference between this and the cron path below.
+    return {
+      ok: false,
+      error: `Couldn't read ${clientId}'s client.yaml, so I can't tell whether they're on a principles plan (no weekly menu) — fix the file and retry.`,
+    };
+  }
+  if (hit.plan.no_weekly_menu || style === "principles") {
     return { ok: false, error: "Principle plan — it shows the eating framework only (no weekly menu)." };
   }
   // Coach-set pause — checked BEFORE dormancy because it is the stronger
@@ -575,7 +601,14 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       seen.add(cid);
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
-      if ((await mealPlanStyle(cid)) === "principles") continue; // client.meal_plan_style opt-out
+      // client.meal_plan_style opt-out. `null` = the file could not be read, and
+      // we skip that too: this row can trigger an unattended draft, and drafting
+      // for someone who may have opted out is the worse of the two silences.
+      // The other silence is covered — an unreadable client.yaml is exactly what
+      // the daily client-yaml-integrity cron emails the coach about, and
+      // mealPlanStyle logs it with the client id.
+      const style = await mealPlanStyle(cid);
+      if (style === null || style === "principles") continue;
       // Coach-paused → emit and SHORT-CIRCUIT, for exactly the reason spelled
       // out for dormancy below: "who is paused" is a standing fact about the
       // client, not a function of what is due this instant, so it must not be

@@ -12,13 +12,16 @@
  * Self-loading (like StartDateReminderPanel): fetches its own status on mount
  * so it adds zero latency to the dashboard's server render, and renders
  * nothing until it has data. Hides entirely when there are no blocking
- * orphans. Informational — no mutate action; it points the coach at the fix.
+ * orphans — and, crucially, does NOT hide when the scan could not run, since
+ * hiding is what "clean catalogue" looks like. Informational — no mutate
+ * action; it points the coach at the fix.
  */
 import { useEffect, useState, useTransition } from "react";
 import {
   getCatalogueOrphanStatus,
   type OrphanStatus,
 } from "@/app/catalogue-orphan-action";
+import { chipView } from "@/lib/fmdb/guardrail-chip-view";
 
 const KIND_LABEL: Record<string, string> = {
   mechanism: "root cause",
@@ -39,9 +42,70 @@ export function FmCatalogueOrphanChip() {
     void (async () => setStatus(await getCatalogueOrphanStatus()))();
   }, []);
 
-  // Render nothing until loaded, and hide when everything's reachable.
-  if (!status || status.blocking === 0) return null;
+  // Four outcomes, decided in one pure place so "unavailable" cannot be folded
+  // back into "hide" by a narrowing that merely satisfies the type-checker.
+  // See lib/fmdb/guardrail-chip-view.ts.
+  const view = chipView(
+    status === null
+      ? null
+      : status.status === "ok"
+        ? { status: "ok", actionable: status.blocking }
+        : { status: "unavailable" },
+  );
 
+  // Only these two render nothing. "unavailable" is deliberately NOT in this
+  // list — that is the whole invariant, and it is pinned in
+  // guardrail-chip-view.test.ts rather than left to review.
+  if (view === "loading" || view === "hide") return null;
+  if (status === null) return null; // unreachable given the above; narrows the type
+
+  // The scan could not run (no venv / timeout / broken JSON contract). Say so
+  // quietly rather than hiding: hiding is what "everything is reachable" looks
+  // like, and a guardrail that cannot tell those apart is one you stop trusting
+  // for the wrong reason. Muted on purpose — this is an infrastructure note for
+  // the coach's dashboard, not a catalogue finding.
+  if (status.status === "unavailable") {
+    return (
+      <section
+        style={{
+          padding: "8px 12px",
+          borderRadius: "var(--fm-radius-lg)",
+          background: "var(--fm-bg-cool)",
+          border: "1px dashed var(--fm-border-light)",
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          fontSize: 12,
+          color: "var(--fm-text-tertiary)",
+        }}
+      >
+        <span aria-hidden>🔗</span>
+        <span style={{ flex: 1, minWidth: 0 }}>
+          Couldn’t check catalogue reachability — {status.error}
+        </span>
+        <button
+          type="button"
+          onClick={load}
+          disabled={pending}
+          style={{
+            background: "transparent",
+            border: "1px solid var(--fm-border-light)",
+            padding: "4px 10px",
+            fontSize: 12,
+            color: "var(--fm-text-secondary)",
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: pending ? "wait" : "pointer",
+            fontFamily: "inherit",
+            opacity: pending ? 0.6 : 1,
+          }}
+        >
+          Retry
+        </button>
+      </section>
+    );
+  }
+
+  // Everything below is the alarm: the scan succeeded and found blocking orphans.
   const blockingKinds = status.byKind.filter((r) => r.blocking);
   // Group blocking items by kind for the disclosure.
   const byKind = new Map<string, typeof status.blockingItems>();

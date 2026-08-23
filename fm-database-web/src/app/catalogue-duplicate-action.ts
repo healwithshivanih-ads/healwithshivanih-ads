@@ -22,7 +22,7 @@ export interface DuplicateItem {
   evidence: string[]; // the shared aliases, or the overlap score
 }
 
-export interface DuplicateStatus {
+export interface DuplicateCounts {
   /** Findings NOT in the accepted baseline — the actionable set. */
   newCount: number;
   /** How many of those need a merge or a wrong-alias removal. */
@@ -34,13 +34,56 @@ export interface DuplicateStatus {
   newItems: DuplicateItem[];
 }
 
-const EMPTY: DuplicateStatus = {
-  newCount: 0,
-  newCritical: 0,
-  known: 0,
-  byCheck: [],
-  newItems: [],
-};
+/**
+ * Discriminated, so a scan that could not RUN can never be mistaken for a scan
+ * that found nothing new. `newCount === 0` is the normal, reassuring state this
+ * chip stays silent for — which is exactly why a failure must not be able to
+ * produce it. Run from a git worktree the untracked venv is absent, the spawn
+ * ENOENTs in ~2ms, and the old `return EMPTY` reported a clean ratchet.
+ *
+ * The chip must branch through `chipView()` in lib/fmdb/guardrail-chip-view.ts
+ * rather than narrowing with `status.status !== "ok" || status.newCount === 0`.
+ * That narrowing type-checks, keeps the ratchet intact, and quietly restores
+ * the fail-closed hide — see guardrail-chip-view.test.ts.
+ *
+ * FmCatalogueDuplicateChip's `if (!status || status.newCount === 0) return null`
+ * becomes a four-way switch. ChipStatus is deliberately generic (`actionable`),
+ * which is what lets this chip's `newCount` and the orphan chip's `blocking`
+ * share one asserted function — so map it with a ternary that BUILDS the union
+ * member, not by spreading `actionable: status.newCount` across both variants
+ * (on the unavailable variant that field is `undefined`, and the union has no
+ * such member):
+ *
+ *     const view = chipView(
+ *       status === null
+ *         ? null
+ *         : status.status === "ok"
+ *           ? { status: "ok", actionable: status.newCount }
+ *           : { status: "unavailable" },
+ *     );
+ *     if (view === "loading" || view === "hide") return null;   // ONLY these two
+ *     if (status === null) return null;                          // narrows the type
+ *     if (status.status === "unavailable") return <CouldntCheck … />;
+ *     // everything below is the alarm
+ *
+ * `unavailable` must not appear in that early-return list. FmCatalogueOrphanChip
+ * is the worked example.
+ */
+export type DuplicateStatus =
+  | ({ status: "ok" } & DuplicateCounts)
+  | { status: "unavailable"; error: string };
+
+function unavailable(e: unknown): DuplicateStatus {
+  const err = e as { code?: string; killed?: boolean; message?: string };
+  const reason =
+    err?.code === "ENOENT"
+      ? `Python not found at ${PYTHON} — set FMDB_PYTHON to the repo venv.`
+      : err?.killed
+        ? "the scan timed out (60s)"
+        : (err?.message ?? String(e)).split("\n")[0];
+  console.error(`[catalogue-duplicates] scan unavailable (python=${PYTHON}):`, e);
+  return { status: "unavailable", error: reason };
+}
 
 /**
  * Run the catalogue duplicate detector as a RATCHET and summarise the result
@@ -73,12 +116,13 @@ const EMPTY: DuplicateStatus = {
  *   - they do not -> an alias is on the wrong entity and WILL mis-resolve
  *     (`tg-antibodies` and `triglycerides` both claiming "tg" is the live case)
  *
- * Defensive by design: any failure (no venv, parse error, timeout) returns the
- * empty status so the chip hides rather than breaking the dashboard. That means
- * it fails CLOSED and a broken payload shows no symptom — which is why
+ * A broken payload shows no symptom of its own — which is why
  * tests/test_duplicates_ratchet.py pins the JSON shape rather than trusting
- * review. Note the CLI exits 1 when anything is new, which makes execFile
- * reject, so the JSON is recovered from the error's stdout before giving up.
+ * review, and why an unrunnable scan now reports `unavailable` instead of an
+ * empty result. Note the CLI exits 1 when anything is new, which makes execFile
+ * reject, so the JSON is recovered from the error's stdout before giving up —
+ * that path is load-bearing and stays. A rejection with NO stdout is the
+ * different animal: the run itself failed.
  */
 export async function getCatalogueDuplicateStatus(): Promise<DuplicateStatus> {
   let stdout: string;
@@ -97,7 +141,7 @@ export async function getCatalogueDuplicateStatus(): Promise<DuplicateStatus> {
     // `duplicates --check-new` exits 1 when there ARE new findings — the case
     // the chip exists for, not a failure. The payload is still on stdout.
     const out = (err as { stdout?: string })?.stdout;
-    if (!out) return EMPTY;
+    if (!out?.trim()) return unavailable(err);
     stdout = out;
   }
 
@@ -106,13 +150,19 @@ export async function getCatalogueDuplicateStatus(): Promise<DuplicateStatus> {
     // Guard the shape explicitly: the full-scan mode of the same command emits
     // a bare ARRAY, and silently treating that as a ratchet result would
     // surface the entire accepted baseline as if it were new.
-    if (!payload || Array.isArray(payload) || !Array.isArray(payload.new)) return EMPTY;
+    if (!payload || Array.isArray(payload) || !Array.isArray(payload.new)) {
+      return {
+        status: "unavailable",
+        error: "`fmdb duplicates --check-new --json` did not return a {new, known} object",
+      };
+    }
 
     const items = payload.new;
     const counts = new Map<string, number>();
     for (const d of items) counts.set(d.check, (counts.get(d.check) ?? 0) + 1);
 
     return {
+      status: "ok",
       newCount: items.length,
       newCritical: items.filter((d) => d.severity === "CRITICAL").length,
       known: typeof payload.known === "number" ? payload.known : 0,
@@ -121,7 +171,7 @@ export async function getCatalogueDuplicateStatus(): Promise<DuplicateStatus> {
         .sort((a, b) => b.n - a.n),
       newItems: items.slice(0, 200), // cap the rendered list
     };
-  } catch {
-    return EMPTY;
+  } catch (e) {
+    return unavailable(e);
   }
 }

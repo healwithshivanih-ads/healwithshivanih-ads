@@ -38,13 +38,29 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
   const [depth, setDepth] = useState<MindBodyDepth | null>(null);
+  // Distinct from `depth === null` (which means "still loading"): set when the
+  // client's own file could not be read, so no option is shown as chosen. A
+  // highlighted "Nothing" that merely reflects a failed read would misreport a
+  // consent decision, and "off" is the true value for almost everyone.
+  const [depthErr, setDepthErr] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [shared, setShared] = useState<string[] | null>(null);
+  // Same split as depthErr: `shared === null` already means "no toggle yet", so
+  // a failed read keeps it null (no toggle rendered) rather than showing every
+  // map as confidently un-shared. This is the only route past coach_only.
+  const [sharedErr, setSharedErr] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!open || shared !== null) return;
-    loadSharedMaps(clientId).then(setShared).catch(() => setShared([]));
-  }, [open, shared, clientId]);
+    // sharedErr in the guard as well as the deps: on failure `shared` stays
+    // null, so without it this effect would re-fire on every render.
+    if (!open || shared !== null || sharedErr) return;
+    loadSharedMaps(clientId)
+      .then((r) => {
+        if (r.ok) { setShared(r.slugs); setSharedErr(null); }
+        else setSharedErr(r.error);
+      })
+      .catch((e) => setSharedErr(e instanceof Error ? e.message : String(e)));
+  }, [open, shared, sharedErr, clientId]);
 
   function toggleShare(mapSlug: string, next: boolean) {
     const prev = shared ?? [];
@@ -56,7 +72,12 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
 
   useEffect(() => {
     if (!open || depth !== null) return;
-    loadMindBodyDepth(clientId).then(setDepth).catch(() => setDepth("off"));
+    loadMindBodyDepth(clientId)
+      .then((r) => {
+        if (r.ok) { setDepth(r.depth); setDepthErr(null); }
+        else setDepthErr(r.error);
+      })
+      .catch((e) => setDepthErr(e instanceof Error ? e.message : String(e)));
   }, [open, depth, clientId]);
 
   function choose(next: MindBodyDepth) {
@@ -64,7 +85,7 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
     setDepth(next);           // optimistic — the control must feel immediate
     setSaving(true);
     setMindBodyDepth(clientId, next)
-      .then((r) => { if (!r.ok) { setDepth(prev); setErr(r.error); } })
+      .then((r) => { if (!r.ok) { setDepth(prev); setErr(r.error); } else setDepthErr(null); })
       .catch(() => setDepth(prev))
       .finally(() => setSaving(false));
   }
@@ -118,6 +139,12 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
               <em> never surface</em> entries — grief, pregnancy loss, infertility, sexual trauma;
               those you share one at a time below, for this client.
             </div>
+            {depthErr && (
+              <div style={{ fontSize: 11.5, color: "#a32d2d", marginBottom: 8, lineHeight: 1.5 }}>
+                Couldn&apos;t read this client&apos;s current setting ({depthErr}) — so nothing is
+                shown as chosen below. Pick a level to set it explicitly.
+              </div>
+            )}
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {([
                 ["off", "Nothing"],
@@ -129,14 +156,17 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
                 return (
                   <button
                     key={v}
-                    disabled={saving || depth === null}
+                    // Still loading -> disabled. Read FAILED -> enabled: the
+                    // coach cannot be shown the current value, but she must
+                    // still be able to set one.
+                    disabled={saving || (depth === null && !depthErr)}
                     onClick={() => choose(v)}
                     style={{
                       fontSize: 12, padding: "6px 11px", borderRadius: 999, cursor: "pointer",
                       border: on ? "1px solid #4a6152" : "1px solid var(--fm-line)",
                       background: on ? "#4a6152" : "#fff",
                       color: on ? "#f7f4ee" : "var(--fm-ink, #262219)",
-                      opacity: depth === null ? 0.5 : 1,
+                      opacity: depth === null && !depthErr ? 0.5 : 1,
                     }}
                   >
                     {label}
@@ -146,6 +176,12 @@ export function SomaticReadPanel({ clientId }: { clientId: string }) {
             </div>
           </div>
 
+          {sharedErr && (
+            <p style={{ fontSize: 12.5, color: "#a32d2d", lineHeight: 1.5 }}>
+              Couldn&apos;t read which maps are already shared with this client ({sharedErr}) — the
+              per-read share buttons are hidden rather than shown as off. Fix the file and reopen.
+            </p>
+          )}
           {pending && <p style={{ fontSize: 13, color: "var(--fm-muted)" }}>Reading…</p>}
           {err && <p style={{ fontSize: 13, color: "#a32d2d" }}>{err}</p>}
 
