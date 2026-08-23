@@ -213,7 +213,9 @@ async function computeSignal(
     let lastCheckin = "";
     for (const s of sessions) {
       const pc = String((s as Record<string, unknown>).presenting_complaints ?? "");
-      if (/\[session_type:\s*check_in\]/i.test(pc)) {
+      // parseSessionType, not a literal regex: a protocol check-in is tagged
+      // `protocol_checkin` and only the alias table knows it is a check-in.
+      if (parseSessionType(pc) === "check_in") {
         const d = String((s as Record<string, unknown>).date ?? "");
         if (d > lastCheckin) lastCheckin = d;
       }

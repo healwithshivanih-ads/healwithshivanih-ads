@@ -400,14 +400,15 @@ export async function loadClientJourney(
     }
 
     // Most recent check-in date (any session whose presenting_complaints
-    // carries [session_type: check_in]).
+    // tag parses to check_in — via parseSessionType, so the protocol
+    // check-in panel's `protocol_checkin` sub-type counts too).
     let lastCheckinIso: string | null = null;
     for (const s of sessions) {
       const rec = s as Record<string, unknown>;
       const tag = typeof rec.presenting_complaints === "string"
         ? (rec.presenting_complaints as string)
         : "";
-      if (tag.includes("session_type: check_in")) {
+      if (parseSessionType(tag) === "check_in") {
         const d = asString(rec.date);
         if (d && (!lastCheckinIso || d > lastCheckinIso)) {
           lastCheckinIso = d;

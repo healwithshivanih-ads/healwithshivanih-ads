@@ -43,7 +43,7 @@ function parseSessionType(presenting_complaints?: string): string {
       ? "intake"
       : t === "pre_intake"
         ? "intake"
-        : t === "check_in"
+        : t === "check_in" || t === "protocol_checkin"
           ? "check-in"
           : t === "quick_note"
             ? "quick note"

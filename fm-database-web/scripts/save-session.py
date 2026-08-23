@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -38,6 +39,48 @@ def plans_root() -> Path:
     if env:
         return Path(env).expanduser().resolve()
     return Path.home() / "fm-plans"
+
+
+# A `[session_type: X]` tag at the head of presenting_complaints IS the
+# session's type on disk — the Session model has no session_type field, and
+# every reader (parseSessionType in session-utils.ts, the dashboard, the
+# calendar, the rework prompt) parses this tag back out.
+#
+# "At the head" means anywhere in the RUN of bracketed tags that opens the
+# string, not strictly first: the WhatsApp rollup leads with
+# `[plan: X] [window: Y]`. Deliberately bounded to that run — an unbounded
+# match would also fire on a client message quoting the literal text.
+_SESSION_TYPE_TAG_IN_HEAD = re.compile(
+    r"^((?:\s*\[[^\]]+\])*?)\s*\[session_type:\s*[^\]]+\]"
+)
+
+
+def _strip_session_type_tag(text: str) -> str:
+    """Drop the leading `[session_type: …]` tag, keeping any tags before it.
+
+    Used when appending a segment to an existing session: the session-level
+    tag is written once, at the head of the file, and repeating it per segment
+    would break the thread loader's `---` split.
+    """
+    return _SESSION_TYPE_TAG_IN_HEAD.sub(r"\1", text, count=1).lstrip()
+
+
+def _with_session_type_tag(text: str, session_type: str) -> str:
+    """Return `text` opening with exactly ONE `[session_type: …]` tag.
+
+    This shim owns the tag: it derives it from the structured `session_type`
+    field. But it must be idempotent, because most callers pre-embed a tag in
+    the text as well — sometimes a MORE specific one the 4-value enum cannot
+    carry (`protocol_checkin`, `discovery_consultation`), which downstream
+    readers key on. Prepending unconditionally doubled the tag on every such
+    save ("[session_type: quick_note] [session_type: quick_note] …"; 46 of 240
+    sessions on disk by 2026-08-22). When the text already opens with a tag,
+    keep the caller's and add nothing.
+    """
+    if _SESSION_TYPE_TAG_IN_HEAD.match(text):
+        return text
+    tag = f"[session_type: {session_type}]"
+    return f"{tag} {text}" if text else tag
 
 
 def main() -> int:
@@ -87,9 +130,10 @@ def main() -> int:
         json.dump({"ok": False, "session_id": None, "error": f"client not found: {client_id}"}, sys.stdout)
         return 2
 
-    # Extra metadata stored as coach_notes prefix for now (until Session model gains session_type field)
-    meta_prefix = f"[session_type: {session_type}] "
-    full_complaints = f"{meta_prefix}{presenting_complaints}" if presenting_complaints else meta_prefix.strip()
+    # Session type lives as a tag at the head of presenting_complaints (the
+    # Session model has no session_type field). Exactly one tag — see
+    # _with_session_type_tag for why this must not prepend blindly.
+    full_complaints = _with_session_type_tag(presenting_complaints, session_type)
 
     # ── Append-if-today mode ────────────────────────────────────────────
     # `append_if_today_match` is a SUBSTRING. If any same-day session's
@@ -142,7 +186,7 @@ def main() -> int:
                     # session_type prefix; KEEP the per-segment [source:]
                     # tag (the thread loader needs it to decide direction).
                     new_body = presenting_complaints or ""
-                    new_body = new_body.replace("[session_type: quick_note]", "", 1).lstrip()
+                    new_body = _strip_session_type_tag(new_body)
                     divider = "\n\n---\n\n"
                     appended = existing_complaints.rstrip() + divider + new_body
                     existing["presenting_complaints"] = appended
