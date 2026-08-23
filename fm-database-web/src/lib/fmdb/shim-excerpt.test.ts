@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { excerpt } from "./shim";
 
 /**
@@ -33,5 +35,45 @@ describe("excerpt", () => {
   it("never elides when the text is exactly at the cap", () => {
     const text = "x".repeat(1200);
     expect(excerpt(text, 1200)).toBe(text);
+  });
+});
+
+/**
+ * The head slice is one copy-paste away from coming back: every private
+ * `runShim` in this repo was written by copying the previous one, which is how
+ * the same `stderr.slice(0, N)` reached 13 files. Unit-testing `excerpt` proves
+ * the helper works; only a scan proves it is the one actually used.
+ *
+ * stdout is deliberately NOT covered — a JSON parse failure is diagnosed from
+ * the START of the document, so a head slice is the right clip there.
+ */
+describe("no shim error path head-slices stderr", () => {
+  const SRC = path.resolve(__dirname, "..", "..");
+
+  function walk(dir: string): string[] {
+    const out: string[] = [];
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) out.push(...walk(full));
+      else if (/\.tsx?$/.test(entry.name) && !/\.test\.tsx?$/.test(entry.name)) out.push(full);
+    }
+    return out;
+  }
+
+  it("uses excerpt(stderr, …) everywhere instead of stderr.slice(0, …)", () => {
+    const offenders: string[] = [];
+    for (const file of walk(SRC)) {
+      const text = fs.readFileSync(file, "utf-8");
+      text.split("\n").forEach((line, i) => {
+        if (/\bstderr\w*\.slice\(\s*0\s*,/.test(line)) {
+          offenders.push(`${path.relative(SRC, file)}:${i + 1}  ${line.trim()}`);
+        }
+      });
+    }
+    expect(
+      offenders,
+      `Clip stderr with excerpt() from @/lib/fmdb/shim — a head slice drops the ` +
+        `last line of a Python traceback, which is the exception itself:\n${offenders.join("\n")}`,
+    ).toEqual([]);
   });
 });

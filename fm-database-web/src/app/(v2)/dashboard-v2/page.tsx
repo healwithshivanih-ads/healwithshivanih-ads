@@ -59,6 +59,7 @@ import {
   FmChip,
   FmCatalogueCommitBanner,
   FmCatalogueOrphanChip,
+  FmCatalogueDuplicateChip,
   FmRosterReviewChip,
   FmVitaoneCoverageChip,
   FmRecipeImageChip,
@@ -1505,6 +1506,13 @@ export default async function DashboardV2() {
               when every entity is reachable. Surfaces orphans like the
               beta-glucuronidase gap before they strand silently. */}
           <FmCatalogueOrphanChip />
+
+          {/* Catalogue duplicate guardrail — self-loading, and a RATCHET: shows
+              only findings absent from _duplicates_baseline.yaml, never the
+              ~349 already-accepted ones. Same gate as the pre-push hook and
+              catalogue-ci, surfaced for the coach, who approves ingest batches
+              here and never sees that hook. */}
+          <FmCatalogueDuplicateChip />
 
           {/* VitaOne commission-leak guardrail — self-loading, hides when no
               leaks. Flags VitaOne products with empty `covers` (invisible to

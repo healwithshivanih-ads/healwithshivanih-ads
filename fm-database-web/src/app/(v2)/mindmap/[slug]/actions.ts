@@ -2,9 +2,8 @@
 
 import { spawn } from "node:child_process";
 import path from "node:path";
+import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
 
-const FMDB_ROOT = path.resolve(process.cwd(), "..", "fm-database");
-const WEB_ROOT = process.cwd();
 const TIMEOUT_MS = 30_000;
 
 export interface RenderMindmapResult {
@@ -15,9 +14,8 @@ export interface RenderMindmapResult {
 
 export async function renderMindmap(slug: string): Promise<RenderMindmapResult> {
   return new Promise<RenderMindmapResult>((resolve) => {
-    const py = path.join(FMDB_ROOT, ".venv/bin/python");
-    const script = path.join(WEB_ROOT, "scripts", "render-mindmap.py");
-    const child = spawn(py, [script], { stdio: ["pipe", "pipe", "pipe"] });
+    const script = path.join(SCRIPTS_DIR, "render-mindmap.py");
+    const child = spawn(PYTHON, [script], { stdio: ["pipe", "pipe", "pipe"] });
 
     let stdout = "";
     let stderr = "";
@@ -40,7 +38,7 @@ export async function renderMindmap(slug: string): Promise<RenderMindmapResult> 
       if (!stdout.trim()) {
         resolve({
           ok: false,
-          error: `render-mindmap.py exited ${code}: ${stderr.slice(0, 500)}`,
+          error: `render-mindmap.py exited ${code}: ${excerpt(stderr, 500)}`,
         });
         return;
       }
