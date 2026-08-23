@@ -137,3 +137,54 @@ def test_semantic_dedup_stays_off_for_other_list_fields():
     different products and {vitamin, d} is a subset of {vitamin, d3}."""
     merged, _ = M._merge_lists(["vitamin D"], ["vitamin D3"], semantic_dedup=False)
     assert merged == ["vitamin D", "vitamin D3"]
+
+
+# ── medical_history (wired 2026-08-23) ───────────────────────────────────────
+
+def test_medical_history_is_wired_for_semantic_dedup():
+    assert "medical_history" in M._SEMANTIC_DEDUP_FIELDS
+    assert "active_conditions" in M._SEMANTIC_DEDUP_FIELDS
+
+
+def test_medication_and_allergy_lists_keep_strict_dedup():
+    """These hold products, not diagnoses. {vitamin,d} is a subset of
+    {vitamin,d3} and collapsing it would delete a real item."""
+    for field in ("current_medications", "current_supplements", "known_allergies", "goals"):
+        assert field not in M._SEMANTIC_DEDUP_FIELDS
+
+
+def test_resolved_stamp_survives_against_a_bare_restatement():
+    """condition-status.ts appends "— resolved <Mon YYYY>" when a condition is
+    retired. "resolved" is not a hedge token, so the stamped entry is the more
+    specific one and must win — losing it would lose the resolution date."""
+    kept, dropped = M._collapse_condition_subsets(
+        ["Constipation", "Constipation — resolved Jul 2026"]
+    )
+    assert kept == ["Constipation — resolved Jul 2026"]
+    assert dropped == ["Constipation"]
+
+
+def test_repeat_events_in_different_years_stay_separate():
+    entries = ["Dengue 2019", "Dengue 2021"]
+    kept, dropped = M._collapse_condition_subsets(entries)
+    assert dropped == []
+    assert kept == entries
+
+
+def test_a_bare_event_collapses_into_its_dated_occurrences():
+    kept, _ = M._collapse_condition_subsets(["C-section", "C-section 2008", "C-section 2011"])
+    assert kept == ["C-section 2008", "C-section 2011"]
+
+
+def test_real_roster_medical_history_is_untouched():
+    """Every medical_history entry on the roster today is distinct. If this
+    ever fails, a real record is about to lose an entry — look before shipping."""
+    entries = [
+        "Perimenopause onset 2023",
+        "PCOS diagnosed (prior)",
+        "Recurrent COVID infections",
+        "Glycomet — STOPPED (statin/BP/diabetes) [client-reported at intake]",
+    ]
+    kept, dropped = M._collapse_condition_subsets(entries)
+    assert dropped == []
+    assert kept == entries
