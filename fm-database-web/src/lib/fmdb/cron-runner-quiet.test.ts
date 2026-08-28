@@ -123,4 +123,43 @@ describe("cron-runner quiet predicate", () => {
     expect(runnerSrc).toContain('"0 * * * *"');
     expect(runnerSrc).toContain("hourly ·");
   });
+
+  // ── infra-health (every 5 min) ───────────────────────────────────────────
+  // Healthy infra is the steady state 288x/day, so only the all-clear may be
+  // quiet. A restart, a problem, or an alert has to reach the log — that is the
+  // record of the watchdog doing its job, and the only way a REPEATEDLY
+  // self-repairing tunnel (fixed, but broken again an hour later) is visible at
+  // all rather than looking like uptime.
+  describe("infra-health", () => {
+    it("is quiet only when everything is healthy", () => {
+      expect(isNoise("infra-health", '{"ok":true,"problems":[],"repaired":false,"alerted":0}')).toBe(true);
+    });
+
+    it("logs a self-repair — a tunnel that keeps dying must not look like uptime", () => {
+      expect(isNoise("infra-health", '{"ok":true,"problems":[],"repaired":true,"alerted":0}')).toBe(false);
+    });
+
+    it("logs any problem, and any alert", () => {
+      expect(
+        isNoise("infra-health", '{"ok":true,"problems":[{"key":"tunnel_down"}],"repaired":false,"alerted":0}'),
+      ).toBe(false);
+      expect(isNoise("infra-health", '{"ok":true,"problems":[],"repaired":false,"alerted":1}')).toBe(false);
+    });
+
+    it("stays quiet when the watchdog is switched off (no COACH_PUBLIC_URL)", () => {
+      expect(
+        isNoise("infra-health", '{"ok":true,"skipped":"COACH_PUBLIC_URL unset","problems":[],"repaired":false}'),
+      ).toBe(true);
+    });
+
+    it("goes loud on a renamed field or a failed run", () => {
+      expect(isNoise("infra-health", '{"ok":true,"issues":[],"repaired":false}')).toBe(false);
+      expect(isNoise("infra-health", '{"ok":false,"problems":[],"repaired":false}')).toBe(false);
+    });
+
+    it("is actually scheduled every 5 minutes", () => {
+      expect(runnerSrc).toContain('"*/5 * * * *"');
+      expect(runnerSrc).toContain('fire("infra-health")');
+    });
+  });
 });

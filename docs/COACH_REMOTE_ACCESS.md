@@ -98,6 +98,102 @@ physically at the Mac. Step 5 is what prevents a repeat.
 
 ---
 
+## The watchdog (`/api/cron/infra-health`, every 5 min)
+
+Since 2026-08-15 a cron job watches the remote route and **repairs it itself**.
+Alerting alone was the wrong shape: an email saying "the tunnel is down" is no
+use on a phone, away from the Mac — which is precisely when you need the tunnel.
+
+Each cycle it probes, and:
+
+| Finding | What it does |
+|---|---|
+| tunnel not answering 200 | `launchctl kickstart` the service, re-probe, and only email after ~15 min of failed repairs |
+| a coach route answering **200 publicly** | emails immediately — that is the whole dashboard served with no auth |
+| no auth on localhost | warning only; that is the correct state with no tunnel in front |
+| Fly not answering 200 | emails — clients cannot open their forms |
+
+It never takes the tunnel **down** on its own, even on an exposure. Closing that
+hole means removing your own remote access, which is your call, not a cron's —
+so it sends the command instead.
+
+### It needs one sudoers line to actually repair
+
+The service lives in `/Library/LaunchDaemons`, so restarting it needs root, and
+the cron runs as you. Without this the watchdog still detects and emails, but
+cannot fix anything — it reports the failure rather than pretending:
+
+```bash
+sudo visudo -f /etc/sudoers.d/fmcoach-tunnel
+```
+
+One line (no wildcards — this grants exactly one command, nothing else):
+
+```
+shivani ALL=(root) NOPASSWD: /bin/launchctl kickstart -k system/com.cloudflare.cloudflared
+```
+
+Verify it took:
+
+```bash
+sudo -n launchctl kickstart -k system/com.cloudflare.cloudflared && echo "watchdog can repair"
+```
+
+### Env it reads
+
+| Var | Purpose |
+|---|---|
+| `COACH_PUBLIC_URL` | the tunnel hostname to watch. **Unset = watchdog disabled** |
+| `COACH_TUNNEL_SERVICE` | launchd label, default `com.cloudflare.cloudflared` |
+| `COACH_DIGEST_EMAIL` | where alerts go, default `GMAIL_USER` |
+
+State (the consecutive-failure counter) lives in `~/fm-plans/_infra_health.json`.
+Deleting it is harmless — the probes are stateless; you only lose escalation
+timing.
+
+---
+
+## Issuing an intake link from the phone (`/m` → bridge)
+
+`/m` used to be read-only for a reason: issuing a token WRITES the authoritative
+`client.yaml`, and Fly holds only a projection. So on 2026-08-15, with the
+tunnel down, the phone could show you the client who needed a link and do
+nothing about it.
+
+The client card now has **"Send <name> a fresh intake link"**. It posts to
+`/api/m/intake-link`, which resolves three ways, in order:
+
+1. the full record is on this host (you're on the Mac) → issue directly;
+2. it isn't → bridge to `COACH_MAC_URL/api/m-bridge/intake-link`;
+3. no bridge configured → say so plainly, rather than failing vaguely.
+
+It issues a fresh 14-day token **and** WhatsApps it from the business number. A
+failed send is not a failed request — the link is already live, so it comes back
+for you to paste rather than tempting you to issue a second one. Existing
+answers are untouched and come back pre-filled.
+
+### ⚠ `COACH_MAC_URL` must NOT be the tunnel
+
+This is the whole point. If `COACH_MAC_URL` is set to
+`https://fmcoach.shivanihari.com`, the bridge dies with the tunnel — and the
+outage this was built for is exactly a dead tunnel. Point it at a path that
+fails independently:
+
+- a **Tailscale** address for the mini (`http://100.x.y.z:3002`), which is how
+  the MacBook already reaches it, or
+- any other private link that does not terminate at Cloudflare.
+
+Both hosts need the same `COACH_BRIDGE_SECRET`; with it unset the bridge route
+404s as though it did not exist, on both sides.
+
+### What it still cannot do
+
+If the Mac is **off or off the internet**, nothing here helps — the record only
+exists there. The watchdog above will tell you, which is the honest limit of a
+single-machine authoritative store.
+
+---
+
 ## What still needs a human at the Mac
 
 Even with the tunnel up and healthy:

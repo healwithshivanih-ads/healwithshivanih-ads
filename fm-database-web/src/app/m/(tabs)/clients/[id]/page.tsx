@@ -45,7 +45,13 @@ export default async function ClientCard({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ noted?: string; sent?: string; error?: string }>;
+  searchParams: Promise<{
+    noted?: string;
+    sent?: string;
+    error?: string;
+    intake?: string;
+    why?: string;
+  }>;
 }) {
   const { id } = await params;
   const sp = await searchParams;
@@ -115,6 +121,29 @@ export default async function ClientCard({
       {sp.error ? (
         <div style={{ marginTop: 16 }}>
           <Note tone="danger">{decodeURIComponent(sp.error)}</Note>
+        </div>
+      ) : null}
+      {sp.intake === "sent" ? (
+        <div style={{ marginTop: 16 }}>
+          <Note tone="success">
+            Fresh intake link issued and WhatsApped. Anything they had already
+            filled in comes back pre-filled.
+          </Note>
+        </div>
+      ) : null}
+      {sp.intake === "issued" ? (
+        <div style={{ marginTop: 16 }}>
+          <Note tone="success">
+            Fresh intake link issued — but the WhatsApp send didn&apos;t go
+            through. Send it by hand from the desktop app.
+          </Note>
+        </div>
+      ) : null}
+      {sp.intake === "failed" ? (
+        <div style={{ marginTop: 16 }}>
+          <Note tone="danger">
+            Couldn&apos;t issue the link{sp.why ? `: ${decodeURIComponent(sp.why)}` : "."}
+          </Note>
         </div>
       ) : null}
 
@@ -192,6 +221,25 @@ export default async function ClientCard({
           <span className="m-subtle">No plan yet.</span>
         </Card>
       )}
+
+      {/* Issuing a link WRITES client.yaml, which only the Mac holds — this
+          posts to /api/m/intake-link, which issues locally on the Mac or
+          bridges there from Fly. It is here because on 2026-08-15 a client's
+          link was dead, the coach was away, and the phone could read the
+          client but not fix them. */}
+      <Eyebrow>Intake form</Eyebrow>
+      <form method="POST" action="/api/m/intake-link">
+        <input type="hidden" name="client_id" value={card.id} />
+        <input type="hidden" name="next" value={`/m/clients/${card.id}`} />
+        <button type="submit" className="fm-btn block">
+          <Icon name="send" size="sm" />
+          Send {name.split(" ")[0]} a fresh intake link
+        </button>
+        <p className="m-subtle" style={{ marginTop: 10 }}>
+          Issues a new 14-day link and WhatsApps it from your business number.
+          Their existing answers are kept and come back pre-filled.
+        </p>
+      </form>
 
       <Eyebrow>Ask about {name.split(" ")[0]}</Eyebrow>
       <AskPanel clientId={card.id} clientName={name} />
