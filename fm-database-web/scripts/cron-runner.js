@@ -21,6 +21,11 @@
  *   09:00  appointment-reminders  — morning-of WhatsApp reminder to every
  *                                    client with a booking TODAY. Idempotent.
  *                                 (slice c adds: 09:00 motivational-messages)
+ *   10:30  winback-drip           — DRAFT (never send) win-back emails for
+ *                                    clients whose plan ended and was never
+ *                                    resolved. Runs after 10:00 graduation-
+ *                                    notice so it can see that send and stay
+ *                                    quiet around it.
  *
  * Logs to PM2 stdout: `pm2 logs fm-coach-cron`.
  */
@@ -271,6 +276,22 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 10:30 IST daily — draft win-back emails for clients whose plan ended and was
+// never resolved, so people the coach never got to writing to are not simply
+// lost. DRAFTS ONLY: nothing here reaches a client until she approves it in the
+// dashboard panel.
+//
+// Deliberately half an hour AFTER graduation-notice. This job stays quiet
+// either side of that message ("the door back is named, not pushed"), and it
+// detects it by reading the outbound record graduation-notice has just written.
+// Running first would read yesterday's state and could pitch on the very
+// morning of the message that promises not to.
+cron.schedule(
+  "30 10 * * *",
+  () => fire("winback-drip"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // Every minute — fire time-of-day app reminders (client sets these in the app's
 // Account screen; delivered via web push). Cheap: skips any reminder not due
 // this minute, idempotent per (client, reminder, day). A reminder only lands if
@@ -316,6 +337,7 @@ console.log(
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
     + "\n  · 10:00 IST  graduation-notice"
+    + "\n  · 10:30 IST  winback-drip"
     + "\n  · 21:00 IST  revenue-export"
     + "\n  · * * * * *  pending-sends"
     + "\n  · * * * * *  intake-reconcile"
