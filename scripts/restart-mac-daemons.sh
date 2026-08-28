@@ -13,7 +13,9 @@
 # What it does:
 #   1. Stops PM2 fm-coach (the local Next.js coach UI on :3002)
 #   2. Stops Mutagen daemon (sync sessions PERSIST — they auto-resume)
-#   3. Kills stray dev servers (next dev / turbopack / streamlit / cloudflared)
+#   3. Kills stray dev servers (next dev / turbopack / streamlit)
+#      NB: no longer kills `cloudflared` — that is the coach-UI tunnel, not a
+#      stray. See the note at step 3 and docs/COACH_REMOTE_ACCESS.md.
 #   4. Reports process count before + after
 #   5. Restarts Mutagen daemon → sync sessions auto-resume
 #   6. Restarts PM2 fm-coach
@@ -83,8 +85,23 @@ fi
 echo
 
 # ── 3. Kill stray dev servers ───────────────────────────────────────
+#
+# `cloudflared tunnel` is deliberately NOT in this list any more.
+#
+# It is not a stray dev server — it is what publishes the coach UI at
+# fmcoach.shivanihari.com, the only way to reach the dashboard away from the
+# Mac. Killing it here left the DNS route pointing at nothing, so the site
+# answered Cloudflare **Error 1033** ("tunnel configured, no daemon
+# connected") with no clue that a cleanup script three days earlier was the
+# cause. That is exactly how it was down on 2026-08-15, when the coach was
+# away from her Mac and had no way to re-issue a client's intake link.
+#
+# If a tunnel genuinely needs restarting, do it deliberately:
+#   cloudflared tunnel list && cloudflared tunnel run <name>
+# and see docs/COACH_REMOTE_ACCESS.md — which also covers the auth wall that
+# MUST be up before that hostname is exposed.
 bold "3. Killing stray dev servers…"
-for pattern in "next-server" "turbopack" "streamlit" "cloudflared tunnel"; do
+for pattern in "next-server" "turbopack" "streamlit"; do
   COUNT=$(pgrep -fc "$pattern" 2>/dev/null || echo 0)
   if [[ "$COUNT" -gt 0 ]]; then
     pkill -f "$pattern" 2>/dev/null || true
