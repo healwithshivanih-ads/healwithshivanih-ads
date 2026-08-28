@@ -48,9 +48,16 @@ export interface LeakHit {
 const THIRD_PERSON =
   /\b(?:he|she|his|her|him|hers|the client|this client|the patient)\b/i;
 
-/** Talking to another clinician, or to the coach's future self. */
+/** Talking to another clinician, or to the coach's future self.
+ *
+ *  `referral` means the CLINICAL sense — "the GI referral needs to see". A
+ *  "referral code"/"referral page" is a shop's own signup field, and telling a
+ *  client to type a code into a box that is literally labelled "Referral Code"
+ *  is ordinary client instruction, not coach register. Carved out 2026-08-28
+ *  when a supplement's order instructions tripped it; the clinical sense still
+ *  fires, since "referral needs"/"referral to" match neither word. */
 const COACH_REGISTER =
-  /\b(?:coach|physician|clinician|referral|plan-check|rationale|contraindicat\w*|prescrib\w*|titrat\w*|differential|work-?up|monitor(?:ing)? labs?|per protocol|caveat|flagged?|red flag)\b/i;
+  /\b(?:coach|physician|clinician|referral(?!\s+(?:code|page|link))|plan-check|rationale|contraindicat\w*|prescrib\w*|titrat\w*|differential|work-?up|monitor(?:ing)? labs?|per protocol|caveat|flagged?|red flag)\b/i;
 
 /** A lab marker quoted WITH ITS VALUE — "given her ferritin 18", "while HOMA-IR
  *  is healthy at 1.2". That is a chart reading pasted into client text.
