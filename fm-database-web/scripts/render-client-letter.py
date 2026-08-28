@@ -57,7 +57,14 @@ from fmdb.plan.allergies import allergy_prompt_line, resolve_allergies  # noqa: 
 # without code changes.
 # ---------------------------------------------------------------------------
 _V = "https://vitaone.in/shop/"
-_R = "?pr=vita13720sh"
+# VitaOne attributes orders on ?ref= — confirmed live on the product page and
+# recorded in supplement-links.ts, which calls ?pr= "the legacy/incorrect param
+# [that] does not attribute orders". This file was the last holdout on ?pr=; the
+# scraper, supplement-links.ts and app-preview.ts all use ?ref=. It only shows on
+# products missing from vitaone-catalog.json, where the URL is synthesised below
+# — 25 of the 58 slugs the keyword map references, so nearly half the buy links
+# in a printed letter were crediting nobody.
+_R = "?ref=vita13720sh"
 IHERB_AFFILIATE = "https://in.iherb.com/?rcode=LWG566"
 
 _VITAONE_JSON_PATH = Path(__file__).resolve().parent / "vitaone-catalog.json"
@@ -138,7 +145,7 @@ def vitaone_inventory() -> list[dict]:
 VITAONE_CATALOG = {
     # keyword (lowercase) → (display name, full URL with referral)
     # All slugs verified against vitaone.in/shop pages 1–4 (scraped 2026-05-05).
-    # Referral appended via _v() helper: ?pr=vita13720sh
+    # Referral appended via _v() helper: ?ref=vita13720sh
 
     # ── Magnesium (4 forms) ──
     "magnesium glycinate":       _v("ionic-140-ionic-magnesium-bisglycinate-115",           "Ionic Magnesium Bisglycinate"),
