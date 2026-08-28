@@ -1,11 +1,25 @@
 slug: homocysteine-b-complex
 display_name: Homocysteine B Complex
+aliases:
+- homocysteine-defense-b-complex
+- Homocysteine Defense (B-Vitamin Complex)
+- homocysteine-support-b-complex
+- Homocysteine Support (Methylated B Complex)
+- Homocysteine Defence B Complex
+- Homocysteine Defence
+- homocysteine-defence-b-complex
 category: vitamin
 forms_available:
 - capsule
 - tablet
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: capsules
 timing_options:
 - with_breakfast
+- morning
 take_with_food: required
 consolidates:
 - methylfolate
@@ -17,28 +31,62 @@ linked_to_topics:
 - homocysteine-and-methylation
 - methylation
 - mthfr-gene-variant
+- cardiovascular-risk-assessment
+- estrogen-dominance
+- gut-skin-hormone-axis
+linked_to_mechanisms: []
 linked_to_claims:
 - b6-b2-support-folate-cycle-and-homocysteine
 - tmg-homocysteine-lowering-methylation
-notes_for_coach: One-capsule homocysteine formula (active methylfolate + methyl-B12
-  + P5P + R5P + TMG). Replaces standalone methylfolate + P5P + riboflavin + TMG. Maps
-  to VitaOne 'Homocysteine Defence B Complex'. Prefer for elevated-homocysteine /
-  methylation-block clients.
-notes_for_client: An all-in-one capsule for supporting healthy homocysteine levels
-  — it combines the active forms of folate, B12, B6 and B2 with TMG in a single pill,
-  so you take one capsule instead of four.
+- high-homocysteine-triples-heart-attack-risk-in-men
+- fm-intervention-improved-insulin-resistance-lipids-homocysteine
+- methylated-b12-folate-reduce-homocysteine-support-methylation
+notes_for_coach: 'One-capsule homocysteine formula (active methylfolate + methyl-B12 + P5P + R5P + TMG).
+  Replaces standalone methylfolate + P5P + riboflavin + TMG. Maps to VitaOne ''Homocysteine Defence B
+  Complex''. Prefer for elevated-homocysteine / methylation-block clients.
+
+
+  Methylated forms (methylcobalamin, 5-MTHF) are preferred for methylation support, especially with a
+  suspected MTHFR polymorphism. Also assists estrogen clearance via COMT-dependent Phase II methylation.
+
+
+  SAFETY: verify B12 status before high-dose supplementation in CKD.
+
+
+  Case evidence on file: homocysteine 18-19 umol/L fell to ~10 umol/L (gut-skin-hormone-axis case); homocysteine
+  normalised in the cardiovascular-risk-assessment case.
+
+
+  EVIDENCE TIER: kept at plausible_emerging, NOT upgraded to the merged-in entry''s ''strong''. Only one
+  of the five linked claims (methylated-b12-folate-reduce-homocysteine-support-methylation) is strong,
+  and it covers the narrow ''methyl-B12 + folate lower homocysteine'' statement — not TMG, P5P, R5P, or
+  any cardiovascular-outcome claim. Re-tier only with a citation that covers the formula.
+
+
+  Merged 2026-08-28 from homocysteine-defense-b-complex and homocysteine-support-b-complex - one formula,
+  three entries. Both old slugs are kept as aliases. Distinct from methylated-b-complex, which carries
+  no TMG.'
+notes_for_client: An all-in-one capsule for supporting healthy homocysteine levels — it combines the active
+  forms of folate, B12, B6 and B2 with TMG in a single pill, so you take one capsule instead of four.
 evidence_tier: plausible_emerging
-typical_dose_range: {}
-linked_to_mechanisms: []
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — Foundational Support
   quote: Choline, Betaine (TMG) for homocysteine metabolism
 - id: coach-shivani
   location: Coach Observation
-  quote: for elevated-homocysteine clients, prefer a single homocysteine B-complex
-    (active folate + methyl-B12 + P5P + riboflavin + TMG) over four separate pills
-version: 1
+  quote: for elevated-homocysteine clients, prefer a single homocysteine B-complex (active folate + methyl-B12
+    + P5P + riboflavin + TMG) over four separate pills
+- id: vitaone-cvs-risk-assessment
+  location: Nutrition supplements (Slide 21)
+  quote: 'The Nutritional parameters of the patient were corrected with the following supplements: 1.
+    Homocysteine Defense'
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Matrix Discussion / Estrogen Detoxification
+  quote: Homocysteine levels were also high. They were somewhere around 18 or 19. So there's also a poor
+    methylation problem. You need B12, you need folate, right? So this basically helps in clearing of
+    estrogen.
+version: 2
 status: active
-updated_at: '2026-07-05'
+updated_at: '2026-08-28'
 updated_by: shivani
