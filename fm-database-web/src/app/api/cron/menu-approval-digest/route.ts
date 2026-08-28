@@ -29,6 +29,7 @@ import {
   scanPlanChangesAction,
   listPlanChangeDraftsAction,
 } from "@/lib/server-actions/plan-change-notify";
+import { listWinbackDraftsAction } from "@/lib/server-actions/winback-drip";
 
 export const dynamic = "force-dynamic";
 
@@ -73,6 +74,13 @@ export async function POST(req: NextRequest) {
   await scanPlanChangesAction();
   const planChanges = await listPlanChangeDraftsAction();
 
+  // ── win-back drafts ─────────────────────────────────────────────────────
+  // Read only — the 10:30 winback-drip cron does the drafting. Folded in here
+  // for the same reason renewals are: this is the mail she opens in order to
+  // approve things, and these emails are the ones most easily forgotten,
+  // because by definition they are for clients who have already gone quiet.
+  const winback = await listWinbackDraftsAction();
+
   const ready = actionable.filter((r) => r.pending);
   // Rows with no draft are two different things and must not share a heading.
   // `stalled` is a real failure worth chasing (the drafter ran at 07:00, half
@@ -92,7 +100,7 @@ export async function POST(req: NextRequest) {
   // a quiet morning, and mailing about it is the nag this whole section exists
   // to stop. Renewals and plan-changes still force the mail — those are
   // time-critical and nothing else watches them.
-  if (needsYou === 0 && renewals.length === 0 && planChanges.length === 0) {
+  if (needsYou === 0 && renewals.length === 0 && planChanges.length === 0 && winback.length === 0) {
     return NextResponse.json({
       ok: true,
       sent: 0,
@@ -216,6 +224,28 @@ export async function POST(req: NextRequest) {
        <p style="color:#8d99ae;font-size:12px;">Nothing is sent automatically. Preview and approve each one; anything that stops a supplement or practice is held until you add a reason.</p>`
     : "";
 
+  // Win-back drafts. Each row names the touch so she can see at a glance
+  // whether it is the soft check-in or the one that asks for money — and the
+  // offer touch says outright that it needs a price, because that is the one
+  // thing she has to supply before it can go.
+  const winbackHtml = winback.length
+    ? `<p style="margin-top:22px;"><strong>✉️ Win-back drafts (${winback.length})</strong> — plans that ended and were never picked up. Read each one, then send:</p><ul>${winback
+        .map((d) => {
+          const what =
+            d.kind === "check_in"
+              ? "check-in, no price"
+              : d.kind === "offer"
+                ? "next phase + maintenance"
+                : "final — maintenance only";
+          const price = d.needsPrice
+            ? ` <span style="color:#b3402a;">· needs a price before it can go</span>`
+            : "";
+          return `<li><strong>${esc(d.clientName)}</strong> — touch ${d.touch} of 3 (${what}) · ended ${d.daysSinceEnd}d ago${price}</li>`;
+        })
+        .join("")}</ul>
+       <p style="color:#8d99ae;font-size:12px;">Drafted automatically; nothing is sent until you approve it on the dashboard.</p>`
+    : "";
+
   const htmlBody = `
     <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.55;color:#2b2d42;">
       <p>Good morning 🌿</p>
@@ -229,6 +259,7 @@ export async function POST(req: NextRequest) {
       }.</p>
       ${sections.join("")}
       ${renewalHtml}
+      ${winbackHtml}
       ${planChangeHtml}
       <p style="margin-top:18px;"><a href="${appUrl}/dashboard-v2"
         style="background:#6b8e6b;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;">Open the dashboard →</a></p>
@@ -262,6 +293,15 @@ export async function POST(req: NextRequest) {
             (r) =>
               `  - ${r.clientName} — ${r.daysLeft < 0 ? `ended ${Math.abs(r.daysLeft)}d ago` : r.daysLeft === 0 ? "ends today" : `in ${r.daysLeft}d`} (${r.weeks}wk)` +
               (r.household.length ? ` [also renewing: ${r.household.join(", ")}]` : ""),
+          )
+          .join("\n")}\n\n`
+      : "") +
+    (winback.length
+      ? `WIN-BACK DRAFTS (nothing sent until you approve):\n${winback
+          .map(
+            (d) =>
+              `  - ${d.clientName} — touch ${d.touch} of 3 (${d.kind.replace("_", " ")}) · ended ${d.daysSinceEnd}d ago` +
+              (d.needsPrice ? " [needs a price]" : ""),
           )
           .join("\n")}\n\n`
       : "") +

@@ -64,10 +64,35 @@ describe("plans ending", () => {
     client("cl-004", "Dhanishta Shah");
     plan("dhanishta-plan-2", "cl-004", "2026-05-12", 12); // ends 4 Aug
     client("cl-017", "Samaa Mahandru");
-    plan("samaa-plan-1", "cl-017", "2026-06-20", 4); // ended 18 Jul
+    plan("samaa-plan-1", "cl-017", "2026-06-27", 4); // ended 25 Jul — 9d ago
     const q = (await mod()).loadRenewalQueue(TODAY);
     expect(q.find((r) => r.clientId === "cl-004")!.stage).toBe("offer");
     expect(q.find((r) => r.clientId === "cl-017")!.stage).toBe("overdue");
+  });
+
+  it("stops asking once a plan is more than a fortnight past its end", async () => {
+    // The tail was 30 days until the win-back drip was built. It is now
+    // OVERDUE_TAIL_DAYS, and that is not cosmetic: the drip auto-drafts client
+    // emails for exactly these people, and its safety property is that it never
+    // writes to anyone the coach is still being asked about. Widening this back
+    // out silently re-creates the overlap. winback-drip.test.ts fails too.
+    client("cl-017", "Samaa Mahandru");
+    plan("samaa-plan-1", "cl-017", "2026-06-20", 4); // ended 18 Jul — 16d ago
+    const m = await mod();
+    expect(m.OVERDUE_TAIL_DAYS).toBe(14);
+    expect(m.loadRenewalQueue(TODAY)).toHaveLength(0);
+  });
+
+  it("the effective end date is the queue's own, +3 days for shopping and prep", async () => {
+    // Exported so the win-back drip shares ONE computation with this queue —
+    // two independent ones would make the no-overlap property accidental.
+    const m = await mod();
+    const end = m.planEndDate(null, new Date("2026-05-01"), 12);
+    expect(end!.toISOString().slice(0, 10)).toBe("2026-07-27"); // 1 May +3d +84d
+    // A coach-asserted start wins over the scheduled one, with no lag added.
+    const asserted = m.planEndDate(new Date("2026-05-01"), new Date("2026-04-01"), 12);
+    expect(asserted!.toISOString().slice(0, 10)).toBe("2026-07-24");
+    expect(m.planEndDate(null, null, 12)).toBeNull();
   });
 
   it("a client who has said no stops appearing", async () => {

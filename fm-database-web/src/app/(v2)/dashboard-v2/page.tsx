@@ -48,6 +48,11 @@ import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
 import { ArchiveCandidatesPanel } from "@/components/archive-candidates-panel";
 import { RenewalQueuePanel } from "@/components/renewal-queue-panel";
 import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
+import { WinbackDripPanel } from "@/components/winback-drip-panel";
+import {
+  listWinbackDraftsAction,
+  listWinbackScheduledAction,
+} from "@/lib/server-actions/winback-drip";
 import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
 import {
   FmAlertGroup,
@@ -546,6 +551,17 @@ export default async function DashboardV2() {
   // queue is deterministic (dates and files, no model) and lists only plans
   // with no decision recorded against them.
   const renewalRows = await listOpenRenewalsAction();
+
+  // ✉️ Win-back drafts — the other side of the same problem. The queue above
+  // is a heads-up; if the coach never gets to the letter, that client simply
+  // falls off once the queue's 14-day tail runs out. These are auto-drafted
+  // emails for exactly those people, waiting for her to read and approve. The
+  // two lists are disjoint by construction — see OVERDUE_TAIL_DAYS and the
+  // first touch's day-22 offset, both pinned by tests.
+  const [winbackDrafts, winbackScheduled] = await Promise.all([
+    listWinbackDraftsAction(),
+    listWinbackScheduledAction(),
+  ]);
 
   // Stranded intake drafts — substantial answers sitting in
   // intake_form_draft, never promoted to a real submit. (Pranati cl-009
@@ -1146,6 +1162,12 @@ export default async function DashboardV2() {
           do it. Deliberately does not self-hide — "nobody is ending soon" is a
           real answer worth seeing. */}
       <RenewalQueuePanel rows={renewalRows} />
+
+      {/* ✉️ Win-back drafts — sits directly under "plans ending" because it is
+          the continuation of that list, not a separate concern: these are the
+          people who fell off the end of it. Self-hides when empty (unlike the
+          panel above) since an empty win-back list is the normal state. */}
+      <WinbackDripPanel drafts={winbackDrafts} scheduled={winbackScheduled} />
 
       {/* 🗓 Weekly menu approvals — pinned to the TOP so the coach can never
           miss a menu waiting for approval (clients stay frozen until she

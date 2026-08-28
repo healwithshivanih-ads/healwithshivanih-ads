@@ -28,6 +28,26 @@ import { getPlansRoot } from "./paths";
  *  bloods need turnaround time before a next phase can be built on them. */
 export const LOOKAHEAD_DAYS = 15;
 
+/**
+ * How long a plan that has already ended keeps appearing in the queue.
+ *
+ * Was 30 days. Shortened to 14 (coach's call, 2026-08-28) when the win-back
+ * drip was built: the drip auto-drafts client emails for people who ended and
+ * were never resolved, and its correctness property is that it NEVER touches
+ * anyone the coach is still being asked about. With a 30-day tail that property
+ * was unsatisfiable — every drip touch inside six weeks fell inside the queue.
+ *
+ * Fourteen days is also the point the roster itself already treats as decisive:
+ * `RENEWAL_GRACE_DAYS` in fmdb/plan/renewals.py lapses a client at exactly the
+ * same mark. So the queue now stops asking on the same day the system concludes
+ * they have lapsed, and the drip picks them up from there.
+ *
+ * The week between this tail and the drip's first touch is NOT a blind spot:
+ * those clients render in the win-back panel as scheduled rows, and the day-16
+ * graduation notice reaches them meanwhile.
+ */
+export const OVERDUE_TAIL_DAYS = 14;
+
 export type RenewalDecision = "not_renewing" | "renewed" | "deferred";
 
 export type RenewalRow = {
@@ -53,6 +73,32 @@ function asDate(v: unknown): Date | null {
   return null;
 }
 const ymd = (d: Date) => d.toISOString().slice(0, 10);
+
+/**
+ * When a plan's window actually closes.
+ *
+ * Exported because the win-back drip must agree with this queue to the DAY: the
+ * drip's whole safety property is "never touch anyone still in the queue", and
+ * two independent end-date computations would make that property accidental
+ * rather than structural. There is already one such divergence in the tree —
+ * fmdb/plan/renewals.py omits the +3 day adoption lag that this and
+ * renewal-brief.py both apply — and it is not worth a third.
+ *
+ * The rule: the coach-asserted start if she has one, else publish + 3 days for
+ * shopping and prep. Returns null when the plan carries no datable start.
+ */
+export function planEndDate(
+  mealStartedOn: Date | null,
+  periodStart: Date | null,
+  weeks: number,
+): Date | null {
+  const eff = mealStartedOn ?? (periodStart ? new Date(periodStart.getTime() + 3 * 864e5) : null);
+  if (!eff || !weeks) return null;
+  return new Date(eff.getTime() + weeks * 7 * 864e5);
+}
+
+/** Parse a YAML date field the same way the queue does. Exported for reuse. */
+export const toDate = asDate;
 
 function decisionsFile(): string {
   return path.join(getPlansRoot(), "_renewal_decisions.yaml");
@@ -155,13 +201,10 @@ export function loadRenewalQueue(
     const meal = asDate(plan.meal_plan_started_on);
     if (!clientId || !weeks) continue;
 
-    // Same effective-start rule the rest of the app uses: the coach-asserted
-    // date if she has one, else publish + 3 days for shopping and prep.
-    const eff = meal ?? (start ? new Date(start.getTime() + 3 * 864e5) : null);
-    if (!eff) continue;
-    const end = new Date(eff.getTime() + weeks * 7 * 864e5);
+    const end = planEndDate(meal, start, weeks);
+    if (!end) continue;
     const daysLeft = Math.round((end.getTime() - today.getTime()) / 864e5);
-    if (daysLeft > lookahead || daysLeft < -30) continue;
+    if (daysLeft > lookahead || daysLeft < -OVERDUE_TAIL_DAYS) continue;
 
     if (!names.has(clientId)) {
       let n = clientId;
