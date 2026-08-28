@@ -262,7 +262,7 @@ function ComposeView({
   });
   const [copied, setCopied] = useState(false);
   const [sending, setSending] = useState(false);
-  const [sendResult, setSendResult] = useState<{ ok: boolean; error?: string } | null>(null);
+  const [sendResult, setSendResult] = useState<{ ok: boolean; error?: string; channel?: "whatsapp" | "email" } | null>(null);
 
   const whatsappApproved = isWhatsappApproved(template, liveStatus);
   const whatsappMarketing = isWhatsappMarketing(template, liveStatus);
@@ -321,7 +321,7 @@ function ComposeView({
       params,
     );
     setSending(false);
-    setSendResult(res);
+    setSendResult({ ...res, channel: "whatsapp" });
 
     // Log the outbound to client's sessions/ with [source: whatsapp_outbound]
     // tag so the chat-thread view can combine it with inbound replies.
@@ -381,7 +381,40 @@ function ComposeView({
       textBody: filled,
     });
     setSending(false);
-    setSendResult(res);
+    setSendResult({ ...res, channel: "email" });
+
+    // Log the outbound so the Communicate-tab thread shows this email —
+    // this send used to go out with no record at all (the coach had no way
+    // to see it happened). Mirrors handleSend's WhatsApp logging above.
+    if (res.ok) {
+      try {
+        const rec = await recordOutboundMessageAction({
+          clientId,
+          templateName: template.whatsapp_template_name ?? "(free-text reply)",
+          renderedBody: `Subject: ${emailSubject.trim() || defaultSubject}\n\n${filled}`,
+          channel: "email",
+        });
+        if (!rec.ok) {
+          setSendResult({
+            ok: false,
+            error: `Sent by email ✓ but failed to record locally: ${rec.error ?? "unknown"}. The client received the email; the Communicate thread won't show it until the record retry succeeds.`,
+          });
+          console.error("[message-templates] recordOutbound (email) failed:", rec.error);
+        }
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(
+            new CustomEvent("whatsapp-message-sent", { detail: { clientId } }),
+          );
+        }
+      } catch (e) {
+        const errMsg = (e as Error).message;
+        setSendResult({
+          ok: false,
+          error: `Sent by email ✓ but record threw: ${errMsg}. Client received the email; the Communicate thread won't reflect it.`,
+        });
+        console.error("[message-templates] recordOutbound (email) threw:", e);
+      }
+    }
   };
 
   return (
@@ -544,7 +577,9 @@ function ComposeView({
 
       {sendResult && (
         <p className={`text-xs rounded border px-3 py-2 ${sendResult.ok ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-red-200 bg-red-50 text-red-700"}`}>
-          {sendResult.ok ? "✓ Message sent via WhatsApp" : `⚠ ${sendResult.error}`}
+          {sendResult.ok
+            ? `✓ Message sent via ${sendResult.channel === "email" ? "email" : "WhatsApp"}`
+            : `⚠ ${sendResult.error}`}
         </p>
       )}
     </div>

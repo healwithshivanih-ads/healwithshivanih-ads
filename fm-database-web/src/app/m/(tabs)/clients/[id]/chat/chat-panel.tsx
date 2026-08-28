@@ -173,7 +173,7 @@ export function ChatPanel({
                 >
                   {when(m.at)}
                   {/* The channel matters: WhatsApp costs money and expires. */}
-                  {m.via === "whatsapp" ? " · WhatsApp" : ""}
+                  {m.via === "whatsapp" ? " · WhatsApp" : m.via === "email" ? " · Email" : ""}
                   {/* Receipts on in-app messages only — WhatsApp gives us no
                       such signal and a tick there would be invented. Read
                       beats delivered beats sent; each is a strictly stronger

@@ -333,22 +333,24 @@ export function unreadCount(clientId: string, dir: ThreadDirection): number {
  * Hiding the channel would hide that.
  */
 export type ThreadView = {
-  /** Device-confirmed arrival. Absent on WhatsApp rows — we have no such
+  /** Device-confirmed arrival. Absent on WhatsApp/email rows — we have no such
    *  signal for them and must not imply one. */
   delivered_at?: string | null;
   id: string;
   at: string;
   dir: ThreadDirection;
   text: string;
-  via: "app" | "whatsapp";
+  via: "app" | "whatsapp" | "email";
   kind: string;
   file?: string;
   read_at?: string | null;
   template_name?: string;
 };
 
-/** The shape the existing WhatsApp loader returns (api/whatsapp/actions.ts).
- *  Declared structurally so this module stays free of Next imports. */
+/** The shape the existing communication-thread loader returns
+ *  (api/whatsapp/actions.ts — despite the module name, it now merges both
+ *  WhatsApp and email outbound sends). Declared structurally so this module
+ *  stays free of Next imports. */
 export type WhatsAppMessageLike = {
   direction: ThreadDirection;
   date: string;
@@ -356,6 +358,9 @@ export type WhatsAppMessageLike = {
   template_name?: string;
   session_id?: string;
   attachment?: { name: string; kind: string };
+  /** Which channel carried this row. Absent on legacy rows → treated as
+   *  whatsapp (every row was WhatsApp before email sends started). */
+  channel?: "whatsapp" | "email";
 };
 
 /**
@@ -395,7 +400,7 @@ export function mergeForDisplay(
       at: w.date,
       dir: w.direction,
       text: w.text ?? "",
-      via: "whatsapp",
+      via: w.channel === "email" ? "email" : "whatsapp",
       kind: w.attachment?.kind ?? "text",
       ...(w.attachment?.name ? { file: w.attachment.name } : {}),
       // WhatsApp carries no read state we can see, and inventing one would

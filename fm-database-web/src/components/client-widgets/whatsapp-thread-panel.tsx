@@ -165,6 +165,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
         date: m.at,
         text: m.text,
         via: m.via,
+        channel: m.via === "email" ? ("email" as const) : ("whatsapp" as const),
         ...(m.template_name ? { template_name: m.template_name } : {}),
         // ThreadView widens `kind` (it also carries in-app "text"/"voice");
         // the panel's attachment type is a closed union, so narrow rather
@@ -441,6 +442,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
           <div style={{ display: "grid", gap: 6 }}>
             {g.items.map((m, i) => {
               const isOut = m.direction === "outbound";
+              const isEmail = m.channel === "email";
               return (
                 <div
                   key={`${m.session_id ?? m.date}-${i}`}
@@ -453,8 +455,12 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                     style={{
                       maxWidth: "78%",
                       padding: "8px 12px",
-                      background: isOut ? "#DCF8C6" : "#fff",
-                      border: isOut ? "1px solid rgba(37,211,102,0.30)" : "1px solid var(--fm-border-light)",
+                      background: isEmail ? (isOut ? "#DBEAFE" : "#fff") : isOut ? "#DCF8C6" : "#fff",
+                      border: isEmail
+                        ? "1px solid rgba(59,130,246,0.30)"
+                        : isOut
+                          ? "1px solid rgba(37,211,102,0.30)"
+                          : "1px solid var(--fm-border-light)",
                       borderRadius: 12,
                       borderTopRightRadius: isOut ? 4 : 12,
                       borderTopLeftRadius: isOut ? 12 : 4,
@@ -466,8 +472,36 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                       wordBreak: "break-word",
                     }}
                   >
-                    {/* Template chip — only on outbound */}
-                    {isOut && m.template_name && (
+                    {/* Email channel chip — visually distinct from the
+                        WhatsApp template chip below. Carries the subject
+                        line when the segment recorded one. */}
+                    {isEmail && (
+                      <div
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 4,
+                          fontSize: 9,
+                          fontWeight: 700,
+                          color: "#1e40af",
+                          background: "rgba(59,130,246,0.14)",
+                          padding: "1px 6px",
+                          borderRadius: 3,
+                          marginBottom: 4,
+                          maxWidth: "100%",
+                        }}
+                      >
+                        <span style={{ textTransform: "uppercase", letterSpacing: 0.5, flexShrink: 0 }}>✉ email</span>
+                        {m.template_name && (
+                          <span style={{ fontWeight: 500, textTransform: "none", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                            · {m.template_name}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Template chip — only on outbound WhatsApp sends */}
+                    {isOut && !isEmail && m.template_name && (
                       <div
                         style={{
                           display: "inline-block",
