@@ -65,7 +65,15 @@ _V = "https://vitaone.in/shop/"
 # — 25 of the 58 slugs the keyword map references, so nearly half the buy links
 # in a printed letter were crediting nobody.
 _R = "?ref=vita13720sh"
-IHERB_AFFILIATE = "https://in.iherb.com/?rcode=LWG566"
+# iHerb referral. WNB6015 is the coach's code everywhere else in the
+# codebase — supplement-links.ts calls it "the coach's referral code",
+# supplement-links-match.ts documents it as the one iHerb carries, and
+# client-app.ts builds international buy links with it. This file alone
+# still had LWG566, untouched since it was written, while WNB6015 has been
+# maintained across three later commits. Same drift as the ?pr= referral
+# param that sat two lines above. The in.iherb.com host stays — the letter
+# serves India clients; it was the code that had drifted, not the domain.
+IHERB_AFFILIATE = "https://in.iherb.com/?rcode=WNB6015"
 
 _VITAONE_JSON_PATH = Path(__file__).resolve().parent / "vitaone-catalog.json"
 
