@@ -3,6 +3,7 @@ display_name: Whey Protein
 category: other
 forms_available:
 - powder
+- liquid
 evidence_tier: plausible_emerging
 notes_for_coach: Whey protein is included in the beta blocker tapering protocol, likely
   for its role in supporting muscle mass, blood pressure reduction (via bioactive
@@ -25,6 +26,14 @@ typical_dose_range:
   powder:
     min: 14
     max: 28
+    unit: g
+  # Ready-to-drink protein milks / shots (Provilac 25 g per 250 ml, VaraPace
+  # 24 g per 110 ml). Added 2026-08-28: the form existed on the market and in
+  # real plans but not here, so prescribing one raised a form warning. Range is
+  # per serving, matching what these products actually deliver in a bottle.
+  liquid:
+    min: 20
+    max: 30
     unit: g
 linked_to_mechanisms: []
 linked_to_claims:

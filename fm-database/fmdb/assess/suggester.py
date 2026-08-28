@@ -243,7 +243,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "required": ["name", "cadence", "rationale"],
                 "properties": {
-                    "name": {"type": "string", "description": "Freeform practice name (e.g. 'morning sunlight'). NOT for a drink/remedy you are also putting in nutrition_suggestions.home_remedy_slugs — that slug already prescribes it."},
+                    "name": {"type": "string", "description": "Freeform practice name (e.g. 'morning sunlight'). NOT for a drink/remedy you are also putting in nutrition_suggestions.home_remedy_slugs — that slug already prescribes it. This is a HEADLINE ON THE CLIENT'S TODAY SCREEN and is printed verbatim — see rule 5d: second person ('Sleep on your side', never 'Sleep on his side'), no lab numbers, no notes to the coach."},
                     "cadence": {"type": "string", "description": "daily | nightly | weekly | etc."},
                     "details": {"type": "string"},
                     "rationale": {"type": "string", "description": "WHY this practice for THIS client — reference a specific symptom, lab, medication, or life event from client_context. Avoid generic 'good for stress' / 'helps sleep'. If you can't tie it to a specific signal in this client's data, drop the suggestion."},
@@ -279,7 +279,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         "nutrition_suggestions": {
             "type": "object",
             "properties": {
-                "pattern": {"type": "string", "description": "e.g. 'gentle anti-inflammatory'"},
+                "pattern": {"type": "string", "description": "e.g. 'gentle anti-inflammatory'. PRINTED VERBATIM TO THE CLIENT — see rule 5d: second person, no lab numbers, no notes to the coach."},
                 "add": {
                     "type": "array",
                     "items": {"type": "string"},
@@ -293,7 +293,8 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                         "client), VEGETABLES, and any nutrient-targeted foods their labs call "
                         "for. Prefer the regional names the client uses — nashpati, amrood, "
                         "jamun, methi, sarson, lauki. One idea per line, lead with the food "
-                        "group in caps so it scans."
+                        "group in caps so it scans. PRINTED VERBATIM TO THE CLIENT — see rule "
+                        "5d: second person, no lab numbers, no notes to the coach."
                     ),
                 },
                 "reduce": {
@@ -307,10 +308,12 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                         "called out separately from whole fruit. Frame as 'go easy on', not "
                         "'banned', unless it is a genuine allergy or a hard clinical stop. Never "
                         "list a food the client has named as a non-negotiable — reduce what is "
-                        "IN it instead (the sugar in the chai, not the chai)."
+                        "IN it instead (the sugar in the chai, not the chai). PRINTED VERBATIM "
+                        "TO THE CLIENT — see rule 5d: second person, no lab numbers, no notes "
+                        "to the coach."
                     ),
                 },
-                "meal_timing": {"type": "string"},
+                "meal_timing": {"type": "string", "description": "PRINTED VERBATIM TO THE CLIENT — see rule 5d: second person, no lab numbers, no notes to the coach."},
                 "cooking_adjustment_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be slugs from the catalogue subgraph."},
                 "home_remedy_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be slugs from the catalogue subgraph. A slug here is the COMPLETE prescription for that remedy — do not also describe it in lifestyle_suggestions."},
                 "rationale": {"type": "string"},
@@ -519,8 +522,8 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "description": "The draft Plan.ayurveda the coach will edit, then it flows into consolidated + lifestyle_guide letters. Lifestyle scope only.",
                     "properties": {
                         "current_imbalance": {"type": "string", "description": "= vikruti_label (coach-editable copy)."},
-                        "balancing_focus": {"type": "string", "description": "Warm, client-facing one-liner. No clinical jargon — this is read by the client."},
-                        "dietary_guidance": {"type": "string", "description": "Dosha-aware six-tastes / qualities guidance for THIS client's vikruti. If vikruti includes Kapha, keep portions light/warm even while pacifying Vata — don't pile on heavy/oily foods."},
+                        "balancing_focus": {"type": "string", "description": "Warm, client-facing one-liner. No clinical jargon — this is read by the client. PRINTED VERBATIM (rule 5d): second person, and it must stand alone — the app renders this sentence immediately before the first sentence of dietary_guidance."},
+                        "dietary_guidance": {"type": "string", "description": "Dosha-aware six-tastes / qualities guidance for THIS client's vikruti. If vikruti includes Kapha, keep portions light/warm even while pacifying Vata — don't pile on heavy/oily foods. PRINTED VERBATIM TO THE CLIENT — see rule 5d: second person, no lab numbers, no notes to the coach. The app shows the FIRST SENTENCE on its own, so make that sentence stand alone and address the client directly; the dosha reasoning belongs in ayurveda.coach_notes."},
                         "dinacharya": {
                             "type": "array",
                             "description": "Daily-routine practices that pacify the aggravated dosha(s).",
@@ -788,6 +791,29 @@ HARD RULES (violating these breaks the downstream system):
     the right call, give the client-specific dose: "screens off by
     8:45 — your bedtime is 10 and you reported scrolling till 9:45;
     that's the gap closing your melatonin window."
+
+5d. WRITTEN TO THE CLIENT, NOT ABOUT THEM. These fields are printed WORD FOR
+    WORD on the client's own phone, with no scrub in between:
+        nutrition.pattern · nutrition.meal_timing · nutrition.add[] ·
+        nutrition.reduce[] · lifestyle_suggestions[].name ·
+        ayurveda.balancing_focus · ayurveda.dietary_guidance
+    In every one of them:
+    - SECOND PERSON. "your magnesium", "kept at your desk", "you are on a
+      medicine that lowers your appetite". NEVER "he"/"she"/"his"/"her"/"the
+      client" — that is the tell that a line was written for somebody else and
+      forgot the client would read it.
+    - NO RAW LAB NUMBERS. Rule 5b still applies — the advice must be anchored
+      in THIS client's signal — but in these fields express the signal in
+      words, not values. NOT "Alcohol — GGT 78 and ALT 47 with a fatty liver
+      is a liver already under load". YES "Alcohol, if you drink at all — your
+      liver is already carrying some load, so this is one to keep low."
+      The number belongs in `coach_rationale` / `lab_followups[].reason`,
+      which the client never sees.
+    - NO NOTES TO THE COACH. "this was never asked at intake", "confirm at the
+      session", "needs a work-up" are instructions to Shivani, not to the
+      client. Put them in `synthesis_notes`.
+    Everything you drop from these fields is KEPT — move it to the coach-only
+    field, do not delete the reasoning.
 
 6. `additional_symptoms_to_screen` is your chance to surface symptoms the coach
    didn't pick that fit the cluster — saves a follow-up call.

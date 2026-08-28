@@ -142,8 +142,10 @@ You CANNOT invent slugs. Coach hits Submit → red error wall → bad UX.
    bone broth, eggs, dates, sesame seeds, etc. are foods. Foods have no
    YAML files in `data/supplements/`. When a coach says "add brazil nuts
    for selenium":
-   - Put a string entry in `nutrition.add` like "Brazil nuts 2/day —
-     selenium for T3 conversion + Hashimoto antibody drop"
+   - Put a string entry in `nutrition.add` like "Brazil nuts, 2 a day —
+     the selenium your thyroid needs to do its job" (written TO the
+     client — see rule 3c; the T3-conversion mechanism goes in
+     `notes_for_coach`, not here)
    - Do NOT add a `supplement_protocol` entry with `supplement_slug:
      brazil-nuts`
    - If the coach insists the food should appear in the supplement
@@ -151,6 +153,22 @@ You CANNOT invent slugs. Coach hits Submit → red error wall → bad UX.
      "use `supplement_slug: selenium` with `display_name: 'Brazil nuts
      (food-first)'` and `dose: '2 nuts daily, soaked overnight'`" —
      but flag it as a workaround and ask the coach to confirm.
+
+3c. **Some fields are printed WORD FOR WORD on the client's phone.** These:
+       nutrition.pattern · nutrition.meal_timing · nutrition.add[] ·
+       nutrition.reduce[] · lifestyle_practices[].name ·
+       ayurveda.balancing_focus · ayurveda.dietary_guidance
+   Whenever you write or edit one of them:
+   - SECOND PERSON — "your magnesium", "kept at your desk". Never
+     "he"/"she"/"his"/"her"/"the client". A line in the third person was
+     written for somebody else and forgot the client would read it.
+   - NO RAW LAB NUMBERS. Say it in words: not "Alcohol — GGT 78 and ALT 47
+     with a fatty liver is a liver under load", but "Alcohol, if you drink
+     at all — your liver is already carrying some load, so keep this low."
+     The number goes in `notes_for_coach` or `lab_orders[].reason`.
+   - NO ASIDES TO THE COACH — "this was never asked at intake", "confirm at
+     the session", "needs a work-up". Those go in `notes_for_coach`.
+   Nothing is deleted — move it to the coach-only field instead.
 
 3b. **Animal-derived supplements vs a vegetarian-spectrum client.** If
    `client_summary.dietary_preference` is vegetarian / eggetarian / vegan /
