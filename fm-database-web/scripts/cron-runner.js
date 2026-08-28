@@ -52,7 +52,7 @@ if (!SECRET) {
 // do must never look the same, so the hourly heartbeat further down always
 // reports run counts — `runs 0` there is the alarm. (2026-08-22)
 // ---------------------------------------------------------------------------
-const QUIET_JOBS = ["pending-sends", "intake-reconcile", "app-reminders"];
+const QUIET_JOBS = ["pending-sends", "intake-reconcile", "app-reminders", "infra-health"];
 
 // Shape guard. If a payload does not carry the field the predicate reads, we
 // do NOT get to call it noise — otherwise renaming a response field (say
@@ -62,6 +62,7 @@ const REQUIRED_KEYS = {
   "pending-sends": ["fired"],
   "app-reminders": ["sent"],
   "intake-reconcile": ["reconciled"],
+  "infra-health": ["problems", "repaired"],
 };
 
 // intake-reconcile per-client outcomes that mean "steady state, nothing done".
@@ -85,6 +86,13 @@ const HAS_ACTIVITY = {
     (p.fired || 0) > 0 || (p.failed || 0) > 0 || (p.errors || []).length > 0,
 
   "app-reminders": (p) => (p.sent || 0) > 0 || (p.skipped || 0) > 0,
+
+  // Healthy infra is the steady state, 288x/day. Anything else — a problem
+  // found, a tunnel restarted, an alert sent — is exactly what we want in the
+  // log, so only the all-clear is noise. `skipped` (COACH_PUBLIC_URL unset)
+  // counts as quiet too: nothing to watch is a config choice, not an event.
+  "infra-health": (p) =>
+    (p.problems || []).length > 0 || p.repaired === true || (p.alerted || 0) > 0,
 
   "intake-reconcile": (p) => {
     const app = p.app_staging || {};
@@ -308,6 +316,20 @@ cron.schedule(
 cron.schedule(
   "0 21 * * *",
   () => fire("revenue-export"),
+  { timezone: "Asia/Kolkata" },
+);
+
+// Every 5 minutes — infra watchdog. Probes the public tunnel, the auth wall in
+// front of it, and Fly; RESTARTS the tunnel itself when it is down, and only
+// emails after ~15 min of failed repairs (or immediately if coach routes are
+// being served publicly without auth).
+//
+// 5 minutes, not hourly, because the point is that a dead tunnel is repaired
+// before the coach ever notices — on 2026-08-15 one had been dead for weeks and
+// surfaced only when she urgently needed it from away.
+cron.schedule(
+  "*/5 * * * *",
+  () => fire("infra-health"),
   { timezone: "Asia/Kolkata" },
 );
 

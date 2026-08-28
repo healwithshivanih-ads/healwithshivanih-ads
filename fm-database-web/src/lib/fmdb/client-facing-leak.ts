@@ -28,6 +28,8 @@ export const CLIENT_FACING_PLAN_FIELDS = [
   "nutrition.meal_timing",
   "nutrition.add[]",
   "nutrition.reduce[]",
+  "ayurveda.balancing_focus",
+  "ayurveda.dietary_guidance",
   "lab_orders[].test",
   "supplement_protocol[].client_note",
   "lifestyle_practices[].client_note",
@@ -135,6 +137,16 @@ export function findClientFacingLeaks(plan: Record<string, unknown>): LeakHit[] 
     check(`nutrition.add[${i}]`, v, out);
   for (const [i, v] of (Array.isArray(nutrition.reduce) ? nutrition.reduce : []).entries())
     check(`nutrition.reduce[${i}]`, v, out);
+
+  // The Ayurveda card's "how" line is firstSentence(balancing_focus) +
+  // firstSentence(dietary_guidance) — see focusAyurveda in client-app.ts. Only
+  // those first sentences render, but the whole string is checked: the coach
+  // edits these by hand, and a leaky sentence is one reorder away from being
+  // the first one. Caught 2026-08-28 on a live plan whose guidance opened
+  // "Aimed at the kapha and the ama, not at HIS constitution."
+  const ayurveda = (plan.ayurveda ?? {}) as Record<string, unknown>;
+  check("ayurveda.balancing_focus", ayurveda.balancing_focus, out);
+  check("ayurveda.dietary_guidance", ayurveda.dietary_guidance, out);
 
   for (const [i, l] of arr(plan.lab_orders).entries())
     check(`lab_orders[${i}].test`, l.test, out);
