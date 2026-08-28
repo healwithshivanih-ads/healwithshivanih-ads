@@ -16,6 +16,7 @@ import {
   recordLetterSendAction,
   loadLetterSendLogAction,
 } from "@/app/api/email/actions";
+import { recordOutboundMessageAction } from "@/app/api/whatsapp/actions";
 import {
   buildWelcomeEmailHtml,
   welcomeEmailSubject,
@@ -78,5 +79,21 @@ export async function sendWelcomeEmailAction(
   try {
     await recordLetterSendAction({ clientId, planSlug, letterTypes: ["welcome"], to });
   } catch { /* non-fatal */ }
+
+  // Also log to the communication thread (recordOutboundMessageAction,
+  // channel: "email") — the flagship first-touch email was previously
+  // invisible in the Communicate tab even though _send_log.yaml tracked
+  // that a "welcome" letter type had gone out. That log is metadata only
+  // (no subject/body); this is what makes the actual email show up as a
+  // bubble in the client's thread, same as every other send.
+  try {
+    await recordOutboundMessageAction({
+      clientId,
+      templateName: variant === "welcome" ? "(welcome email)" : `(welcome email: ${variant})`,
+      renderedBody: `Subject: ${welcomeEmailSubject(firstName, variant)}\n\n(Welcome email with app link: ${appUrl})`,
+      channel: "email",
+    });
+  } catch { /* non-fatal */ }
+
   return { ok: true };
 }

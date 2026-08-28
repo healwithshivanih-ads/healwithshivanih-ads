@@ -11,6 +11,7 @@ import {
   isOutboundSegment,
   indexOfOutboundTag,
   outboundSourceTag,
+  outboundChannelOf,
   type OutboundChannel,
 } from "@/lib/fmdb/session-utils";
 
@@ -571,7 +572,15 @@ export async function sendVoiceNoteAction(input: {
   return { ok: true };
 }
 
-// ── Chat thread loader (combines inbound + outbound for a client) ────────────
+// ── Chat thread loader (combines inbound + outbound, all channels) ───────────
+//
+// Despite the file/module name, this loader (and the module as a whole) now
+// covers BOTH WhatsApp and email outbound sends — recordOutboundMessageAction
+// accepts a `channel` and both write into the same rolling session-YAML
+// thread, distinguished by [source: whatsapp_outbound] / [source:
+// email_outbound] tags (see session-utils.ts). loadCommunicationThreadAction
+// (exported below as loadWhatsAppThreadAction for back-compat) is the single
+// reader for that combined thread.
 
 export interface ChatThreadMessage {
   direction: "outbound" | "inbound";
@@ -583,6 +592,11 @@ export interface ChatThreadMessage {
     name: string;               // filename under clients/<id>/files/
     kind: "image" | "document" | "audio" | "video" | "other";
   };
+  /** Which channel carried this message. Outbound segments carry an explicit
+   *  [source: whatsapp_outbound]/[source: email_outbound] tag (see
+   *  outboundChannelOf); inbound is always "whatsapp" today — there is no
+   *  inbound email pipeline yet. */
+  channel?: "whatsapp" | "email";
 }
 
 type AttachmentKind = "image" | "document" | "audio" | "video" | "other";
@@ -597,7 +611,7 @@ function attachmentKind(name: string): AttachmentKind {
   return "other";
 }
 
-export async function loadWhatsAppThreadAction(
+export async function loadCommunicationThreadAction(
   clientId: string,
   daysBack = 90,
 ): Promise<ChatThreadMessage[]> {
@@ -621,7 +635,14 @@ export async function loadWhatsAppThreadAction(
       const raw = await fs.readFile(path.join(dir, name), "utf8");
       const data = yaml.load(raw) as Record<string, unknown>;
       const complaints = String(data?.presenting_complaints ?? "");
-      if (!complaints.includes("[source: whatsapp_")) continue;
+      // BUG FIXED 2026-08-28: this used to test only for
+      // "[source: whatsapp_", which silently dropped every session whose
+      // segments were entirely email (isOutboundSegment already handled
+      // email at the per-segment level below — this session-level
+      // pre-filter was the actual leak). A client contacted only by email
+      // had zero rows in this thread even though recordOutboundMessageAction
+      // was logging every send correctly to disk.
+      if (!complaints.includes("[source: whatsapp_") && !complaints.includes("[source: email_")) continue;
 
       // Sessions may now contain MULTIPLE messages (inbound + outbound
       // interleaved chronologically, separated by `---`). Split per
@@ -660,6 +681,13 @@ export async function loadWhatsAppThreadAction(
         const tplMatch = seg.match(/\[template:\s*([^\]]+)\]/);
         const templateName = tplMatch ? tplMatch[1].trim() : undefined;
 
+        // Email subject — some email-outbound segments on disk carry
+        // [subject: ...] (and a [gmail_id: ...] provenance tag) rather than
+        // a [template: ...] tag. Surface the subject the same way a
+        // template name is surfaced, for outbound email rows.
+        const subjectMatch = seg.match(/\[subject:\s*([^\]]+)\]/i);
+        const emailSubject = subjectMatch ? subjectMatch[1].trim() : undefined;
+
         // Media attachment: `[attachment: files/<name>]` (written by the
         // webhook). Capture before stripping; leave any "[attachment not
         // synced: …]" note as visible text (no file to render).
@@ -673,6 +701,8 @@ export async function loadWhatsAppThreadAction(
           .replace(/\[session_type:[^\]]+\]/gi, "")
           .replace(/\[source:[^\]]+\]/gi, "")
           .replace(/\[template:[^\]]+\]/gi, "")
+          .replace(/\[subject:[^\]]+\]/gi, "")
+          .replace(/\[gmail_id:[^\]]+\]/gi, "")
           .replace(/\[type:[^\]]+\]/gi, "")
           .replace(/\[plan:[^\]]+\]/gi, "")
           .replace(/\[window:[^\]]+\]/gi, "")
@@ -748,9 +778,15 @@ export async function loadWhatsAppThreadAction(
           direction,
           date: segDate,
           text,
-          template_name: templateName,
+          // WhatsApp rows show their template name; email rows fall back to
+          // the subject line (both render as the same small chip above the
+          // bubble in WhatsAppThreadPanel).
+          template_name: templateName ?? emailSubject,
           session_id: sessionId,
           attachment,
+          // Inbound has no email pipeline yet, so it's always whatsapp;
+          // outbound reads the segment's own [source: ...] tag.
+          channel: direction === "inbound" ? "whatsapp" : outboundChannelOf(seg),
         });
       });
     } catch {
@@ -762,6 +798,13 @@ export async function loadWhatsAppThreadAction(
   messages.sort((a, b) => a.date.localeCompare(b.date));
   return messages;
 }
+
+/**
+ * Back-compat alias — kept because the name is used across older comments
+ * and any external tooling. New code should call loadCommunicationThreadAction
+ * directly; both names resolve to the exact same function.
+ */
+export const loadWhatsAppThreadAction = loadCommunicationThreadAction;
 
 // ── Broadcast ─────────────────────────────────────────────────────────────────
 

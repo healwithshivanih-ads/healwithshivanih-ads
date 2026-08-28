@@ -195,6 +195,7 @@ export async function emailLabRequisitionAction(input: {
         clientId: input.clientId,
         templateName: "fm_lab_reminder",
         renderedBody: `📧 Emailed lab requisition to ${input.to}\nSubject: ${subject}`,
+        channel: "email",
       });
     } catch { /* never block on audit */ }
   }
@@ -313,6 +314,7 @@ export async function emailLabBookingAction(input: {
         clientId: input.clientId,
         templateName: "fm_lab_reminder",
         renderedBody: `📧 Emailed lab booking to ${input.to} (${packageName}${ownLab.length ? ` + ${ownLab.length} own-lab` : ""})`,
+        channel: "email",
       });
     } catch { /* never block on audit */ }
   }

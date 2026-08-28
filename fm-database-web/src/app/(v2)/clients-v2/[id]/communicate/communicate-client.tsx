@@ -8,6 +8,7 @@ import Link from "next/link";
 import { MessageTemplatesPanel } from "@/components/client-widgets/message-templates-panel";
 import { SendBookingLinkPanel } from "@/components/client-widgets/send-booking-link-panel";
 import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread-panel";
+import { EmailComposePanel } from "@/components/client-widgets/email-compose-panel";
 import { FmPanel } from "@/components/fm";
 import { SendAppLinkButton } from "../send-app-link-button";
 import { DiscoveryAppCard } from "../discovery-app-card";
@@ -106,42 +107,17 @@ export function CommunicateClient({
           whatsappConfigured={whatsappConfigured}
         />
 
-        {/* Email — quick mailto only. Coach feedback 2026-05-19: the
-            "Send plan via email" button was removed from this panel.
-            Sends always originate from the Letter Editor (so the
-            saved, brand-formatted letter is what goes out), never from
-            this generic Email panel where the source letter is
-            ambiguous. */}
+        {/* Email — real compose-and-send, recorded in the thread. Coach
+            feedback 2026-05-19: the "Send plan via email" button was removed
+            from this panel — plan/letter sends still originate from the
+            Letter Editor (so the saved, brand-formatted letter is what goes
+            out). This panel is for ad-hoc personal notes; it used to be a
+            bare `mailto:` link that opened the coach's local Mail app and
+            left no record anywhere. Replaced 2026-08-28 with a real send +
+            log flow (see email-compose-panel.tsx) so ad-hoc emails show up
+            in the thread on the right, same as everything else. */}
         {clientEmail && (
-          <FmPanel
-            title="✉️ Email client"
-            subtitle="Quick mailto — for ad-hoc notes. The welcome email sends from the card above."
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: 10,
-                alignItems: "center",
-                fontSize: 13,
-                color: "var(--fm-text-secondary)",
-              }}
-            >
-              <a
-                href={`mailto:${clientEmail}`}
-                style={{
-                  padding: "8px 14px",
-                  background: "var(--fm-surface)",
-                  border: "1px solid var(--fm-border)",
-                  borderRadius: "var(--fm-radius-sm)",
-                  textDecoration: "none",
-                  color: "var(--fm-text-primary)",
-                  fontWeight: 600,
-                }}
-              >
-                ✉ Quick mailto: {clientEmail}
-              </a>
-            </div>
-          </FmPanel>
+          <EmailComposePanel clientId={clientId} clientEmail={clientEmail} clientName={displayName} />
         )}
       </div>
 
@@ -189,16 +165,22 @@ export function CommunicateClient({
           </FmPanel>
         )}
 
-        {/* 💬 Full chat thread — combines outbound sends (logged here by
-            recordOutboundMessageAction when the coach clicks Send via
-            WhatsApp on a template) AND inbound replies (saved by
+        {/* 💬 Full chat thread — combines outbound sends on EVERY channel
+            (logged by recordOutboundMessageAction, whether the coach sent a
+            WhatsApp template, an ad-hoc email above, or a message-templates
+            email) AND inbound WhatsApp replies (saved by
             /api/whatsapp-webhook as quick_note sessions tagged
             [source: whatsapp_webhook]). Rendered as chat bubbles —
-            right-aligned green for outbound, left-aligned grey for
-            inbound. Auto-refreshes every 30s. */}
+            right-aligned for outbound, left-aligned for inbound; email
+            bubbles carry a "via email" chip so the channel is never
+            ambiguous. Auto-refreshes every 30s. Component/loader names still
+            say "WhatsApp" (see whatsapp-thread-panel.tsx, api/whatsapp/
+            actions.ts) — kept as the acceptable first cut rather than a
+            full rename sweep; the loader itself is now
+            loadCommunicationThreadAction. */}
         <FmPanel
-          title="💬 WhatsApp conversation"
-          subtitle="Full thread — what we sent + what the client replied. Bubbles auto-refresh every 30s; new replies show up within a minute of landing on the WhatsApp server."
+          title="💬 Conversation"
+          subtitle="Full thread — WhatsApp + email, what we sent and what the client replied. Auto-refreshes every 30s; new WhatsApp replies show up within a minute of landing on the server."
         >
           <WhatsAppThreadPanel
             clientId={clientId}
