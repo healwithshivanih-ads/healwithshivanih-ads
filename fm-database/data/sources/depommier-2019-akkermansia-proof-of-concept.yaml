@@ -1,0 +1,55 @@
+id: depommier-2019-akkermansia-proof-of-concept
+title: 'Supplementation with Akkermansia muciniphila in overweight and obese human volunteers: a proof-of-concept exploratory study'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Depommier C
+- Everard A
+- Druart C
+- Plovier H
+- Van Hul M
+- Vieira-Silva S
+- Falony G
+- Raes J
+- Maiter D
+- Delzenne NM
+- de Barsy M
+- Loumaye A
+- Hermans MP
+- Thissen JP
+- de Vos WM
+- Cani PD
+year: 2019
+publisher: "Nature Medicine 25(7): 1096-1103"
+url: https://pubmed.ncbi.nlm.nih.gov/31263284/
+doi: 10.1038/s41591-019-0495-2
+notes: |
+  THE first-in-human trial of Akkermansia muciniphila supplementation
+  (UCLouvain, Cani group; NCT02637115). Randomised, double-blind,
+  placebo-controlled pilot in overweight/obese insulin-resistant adults:
+  40 enrolled, 32 completed, 3 months, 10^10 bacteria/day either live or
+  pasteurised. Primary end points were SAFETY and TOLERABILITY plus
+  metabolic parameters — this is a safety-and-signal study, not an
+  efficacy trial, and the authors label it exploratory.
+
+  Two things make it load-bearing for the catalogue: (1) it established
+  that both live and pasteurised A. muciniphila are safe and well
+  tolerated in humans at 10^10/day for 3 months, and (2) the PASTEURISED
+  arm carried the metabolic signal while the live arm showed only
+  borderline changes — the counterintuitive result that justifies buying
+  a postbiotic rather than a live product.
+
+  CONFLICT OF INTEREST IS MATERIAL AND MUST TRAVEL WITH THE CLAIM: Cani
+  and de Vos are co-founders of A-Mansia Biotech SA and are named
+  inventors on patent applications covering A. muciniphila use in
+  obesity. Read as a promising founder-run pilot, not as settled
+  evidence.
+
+  Captured from the PubMed abstract — the Nature Medicine full text is
+  paywalled (303 to an IdP login through this container). Effect sizes
+  below are quoted verbatim from the abstract; re-tier if anyone reads
+  the primary methods and supplementary tables.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

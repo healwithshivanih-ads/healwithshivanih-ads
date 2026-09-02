@@ -1,0 +1,47 @@
+slug: pasteurised-akkermansia-outperforms-live-form
+statement: Pasteurisation does not inactivate Akkermansia muciniphila's metabolic effect — it
+  enhances it. The active component Amuc_1100, an outer-membrane protein that signals through
+  Toll-like receptor 2 and improves gut barrier function, is stable at pasteurisation
+  temperatures. In the first human trial the pasteurised arm carried the metabolic signal
+  while the live arm showed only borderline changes.
+evidence_tier: plausible_emerging
+rationale: Mechanism established in mice (Plovier 2017, Nature Medicine — pasteurisation
+  ENHANCED reduction of fat mass, insulin resistance and dyslipidaemia; Amuc_1100 isolated
+  and shown to partly recapitulate the bacterium's effects via TLR2). Direction confirmed in
+  the human pilot, where pasteurised beat live. This inverts the normal probiotic intuition
+  and is the single most decision-relevant fact when choosing a product.
+coaching_translation: With this one organism, the heat-treated version works better than the
+  live version — the useful part is a protein on the bacterium's surface that survives the
+  heat. So a "postbiotic" label here is the right thing to look for, not a compromise.
+caveats:
+- The Amuc_1100/TLR2 mechanism is mouse data. Do not present it to a client as established human physiology.
+- The human comparison is from a 32-completer pilot, not a trial powered to compare the two forms.
+- Plovier and the human-trial authors share the same commercial interest in the organism.
+- Captured from the PubMed abstract; publisher full text paywalled.
+linked_to_topics:
+- gut-microbiome
+- insulin-resistance
+- metabolic-syndrome
+linked_to_mechanisms:
+- leaky-gut
+- insulin-resistance
+linked_to_supplements:
+- akkermansia-muciniphila
+sources:
+- id: plovier-2017-pasteurised-akkermansia-amuc1100
+  location: Abstract — results
+  quote: Unexpectedly, we discovered that pasteurization of A. muciniphila enhanced its
+    capacity to reduce fat mass development, insulin resistance and dyslipidemia in mice.
+- id: plovier-2017-pasteurised-akkermansia-amuc1100
+  location: Abstract — mechanism
+  quote: Amuc_1100, a specific protein isolated from the outer membrane of A. muciniphila,
+    interacts with Toll-like receptor 2, is stable at temperatures used for pasteurization,
+    improves the gut barrier and partly recapitulates the beneficial effects of the bacterium.
+- id: depommier-2019-akkermansia-proof-of-concept
+  location: Abstract — comparison of arms
+  quote: daily oral supplementation of 1010 A. muciniphila bacteria either live or pasteurized
+    for three months was safe and well tolerated
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

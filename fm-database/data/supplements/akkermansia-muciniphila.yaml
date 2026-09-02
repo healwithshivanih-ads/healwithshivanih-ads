@@ -1,0 +1,146 @@
+slug: akkermansia-muciniphila
+display_name: Akkermansia muciniphila (postbiotic)
+aliases:
+- akkermansia
+- a-muciniphila
+- pasteurised-akkermansia
+- pasteurized-akkermansia
+- akkermansia-postbiotic
+- amuc-1100
+- opti-akkerm
+category: probiotic
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 5
+    max: 10
+    unit: billion_CFU
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+contraindications:
+  conditions:
+  - Active inflammatory bowel disease (Crohn's, ulcerative colitis) — clinician decision, not a coaching one
+  - Active gut infection or acute colitis flare
+  - Immunosuppression or immunocompromise, where any live bacterial preparation needs clinician sign-off
+  medications:
+  - Immunosuppressants — clinician sign-off before any bacterial supplement
+  life_stages:
+  - Pregnancy — no human data, not studied
+  - Lactation — no human data, not studied
+interactions: {}
+pregnancy_safety: unknown
+lactation_safety: unknown
+pregnancy_safety_note: No pregnancy or lactation data exists. All three human trials excluded
+  pregnancy. Unknown means unknown — do not reason by analogy from Lactobacillus/Bifidobacterium
+  safety, this is a different organism with a mucin-degrading niche.
+linked_to_topics:
+- gut-microbiome
+- gut-dysbiosis
+- insulin-resistance
+- metabolic-syndrome
+- type-2-diabetes
+- blood-sugar-dysfunction
+- nafld
+linked_to_mechanisms:
+- leaky-gut
+- insulin-resistance
+- dysbiosis-gut-microbiome-imbalance
+linked_to_symptoms:
+- unexplained-weight-gain
+- weight-gain
+linked_to_claims:
+- pasteurised-akkermansia-improves-insulin-sensitivity
+- pasteurised-akkermansia-outperforms-live-form
+- akkermansia-benefit-depends-on-baseline-abundance
+- pasteurised-akkermansia-supports-weight-loss-maintenance
+- polyphenol-rich-plants-feed-akkermansia
+- akkermansia-supplementation-caution-in-active-ibd
+- akkermansia-as-metabolic-gatekeeper
+- gut-microbiome-diversity-restores-tolerance
+notes_for_coach: |
+  WHO THIS IS FOR — a narrow group, deliberately. Overweight/insulin-resistant client,
+  gut-barrier picture, ideally with a stool panel showing LOW Akkermansia, and ideally in the
+  weight-MAINTENANCE phase rather than the losing phase. That is where the human evidence
+  actually sits.
+
+  WHO IT IS NOT FOR. Anyone whose stool panel shows Akkermansia already adequate — Zhang 2025
+  found no clinical improvement in that subgroup and poor colonisation. Anyone who has not yet
+  done the polyphenol and fibre work, which is free and feeds the whole community rather than
+  one organism. Anyone with active IBD (clinician call). Pregnancy/lactation — no data at all.
+
+  ORDER OF OPERATIONS. Food first (polyphenol-rich-plants-feed-akkermansia), then consider
+  testing, then the supplement — not the reverse. This is a Rs 1,199/month product whose
+  benefit is baseline-dependent; recommending it blind is how a client spends money for a null
+  result.
+
+  PASTEURISED, NOT LIVE. Counterintuitive but it is the whole point — Plovier 2017 showed
+  pasteurisation ENHANCES the effect (the active part, Amuc_1100, is a heat-stable outer-membrane
+  protein signalling via TLR2), and in the human pilot the pasteurised arm carried the signal
+  while live was borderline. A "postbiotic" label is what you want here.
+
+  ** PRODUCT VERIFICATION OUTSTANDING (2026-09-02). ** FM Nutrition Opti-Akkerm is marketed as
+  a "postbiotic" but its composition line reads "5 billion CFU" and the page never says
+  pasteurised / heat-killed / inactivated, and names no strain (no MucT, no Amuc_1100). CFU is a
+  VIABILITY count — dead cells do not form colonies — so the label is internally inconsistent and
+  the product may in fact be live. This matters: the pasteurised evidence does not automatically
+  transfer to a live preparation, and the one trial using a live strain (Zhang 2025, AKK-WST01)
+  had a NULL whole-cohort result. Ask the supplier for the strain and whether it is heat-treated
+  before prescribing, and update this entry with the answer.
+
+  DOSE GAP. All three human trials used 10^10 (10 billion) cells/day. The FM Nutrition product is
+  5 billion per capsule at 1/day — half the studied dose. Matching the trial dose means 2 capsules,
+  i.e. ~Rs 2,398/month. Say this out loud to the client rather than quietly under-dosing.
+
+  TESTING. Baseline Akkermansia comes off a stool PCR panel — GI-MAP reports it (already in the
+  catalogue at ~Rs 22,000, so the test costs many months of the supplement). For most clients the
+  proportionate call is to skip the test, do the food work, and reserve the supplement for someone
+  who has already had a stool panel for another reason.
+
+  COMMERCIAL INTEREST. Cani and de Vos, senior authors on both positive trials, co-founded the
+  companies commercialising this organism and hold related patents. The one independent trial
+  (Zhang 2025) was null on its primary analysis. Weigh accordingly.
+notes_for_client: |
+  A gut organism that helps keep the lining of your gut intact and seems to help the body handle
+  blood sugar and hold onto weight loss.
+
+  The food version comes first and costs nothing — pomegranate, berries, green tea, a square of
+  dark chocolate, and generally getting plenty of brightly coloured vegetables into the day. That
+  is what feeds it.
+
+  If we do add the capsule, it is one a day with breakfast, and it works best alongside the food
+  changes rather than instead of them.
+evidence_tier: plausible_emerging
+sources:
+- id: depommier-2019-akkermansia-proof-of-concept
+  location: Abstract — results
+  quote: Compared to placebo, pasteurized A. muciniphila improved insulin sensitivity
+    (+28.62 +/- 7.02%, P = 0.002), and reduced insulinemia (-34.08 +/- 7.12%, P = 0.006)
+    and plasma total cholesterol (-8.68 +/- 2.38%, P = 0.02).
+- id: mount-2026-pasteurised-akkermansia-weight-maintenance
+  location: Abstract — primary outcome
+  quote: MucT led to lower body weight regain versus placebo at the end of the weight
+    maintenance period. No serious adverse events related to the treatment were observed.
+- id: zhang-2025-akkermansia-baseline-dependent-efficacy
+  location: Abstract — stratified result
+  quote: Our study indicates that metabolic benefits of A. muciniphila supplementation could
+    depend on its baseline intestinal levels, supporting the potential for gut microbiota-guided
+    probiotic supplementation.
+- id: plovier-2017-pasteurised-akkermansia-amuc1100
+  location: Abstract — pasteurisation and Amuc_1100
+  quote: Amuc_1100, a specific protein isolated from the outer membrane of A. muciniphila,
+    interacts with Toll-like receptor 2, is stable at temperatures used for pasteurization,
+    improves the gut barrier and partly recapitulates the beneficial effects of the bacterium.
+- id: seregin-2017-akkermansia-pathobiont-il10-colitis
+  location: Abstract — pathobiont finding
+  quote: A. muciniphila can act as a pathobiont to promote colitis in a genetically susceptible host.
+- id: anhe-2015-cranberry-polyphenol-akkermansia
+  location: Abstract — polyphenol lever
+  quote: CE treatment markedly increased the proportion of the mucin-degrading bacterium
+    Akkermansia in our metagenomic samples.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

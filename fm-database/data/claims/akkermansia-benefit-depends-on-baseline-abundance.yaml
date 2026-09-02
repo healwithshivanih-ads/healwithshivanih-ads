@@ -1,0 +1,56 @@
+slug: akkermansia-benefit-depends-on-baseline-abundance
+statement: Metabolic benefit from Akkermansia muciniphila supplementation depends on how much
+  the person already carries. In a 12-week RCT in 58 adults with overweight/obese type 2
+  diabetes there was NO significant whole-cohort difference versus placebo; on stratification,
+  those with low baseline A. muciniphila showed high colonisation and significant reductions
+  in body weight, fat mass and HbA1c, while those with high baseline showed poor colonisation
+  and no clinical improvement. The 2026 weight-maintenance RCT independently found initial
+  Akkermansia abundance associated with cardiometabolic response.
+evidence_tier: plausible_emerging
+rationale: Zhang 2025 (Cell Metabolism, NCT04797442) is the only trial in this set with no
+  declared competing interests, and its whole-cohort result was NULL — the effect exists only
+  in the low-baseline subgroup, verified downstream in germ-free mice given low- vs
+  high-Akkermansia faeces. Mount 2026 reports the same association independently. This is the
+  claim that decides WHO gets the supplement, and it is the reason the catalogue does not
+  recommend it to every client with a metabolic diagnosis.
+coaching_translation: This one is worth testing before buying. If a stool panel shows your
+  Akkermansia is already healthy, adding more has not helped people in trials — the food-first
+  polyphenol approach is the better spend. It is the people running low who saw the change.
+caveats:
+- Zhang 2025 used a LIVE strain (AKK-WST01). Colonisation-dependence may not transfer to a pasteurised
+  postbiotic, which does not need to colonise. Genuinely unresolved — do not generalise either way.
+- Dao 2016 found the opposite direction for a DIET intervention (higher baseline predicted better
+  response to calorie restriction). Both support "Akkermansia is a stratifier"; neither supports blanket use.
+- Baseline abundance requires a stool PCR panel (GI-MAP or equivalent) — a real cost barrier in India.
+- Subgroup finding in a trial whose primary analysis was null. Treat as hypothesis-generating.
+- Captured from the PubMed abstract; Cell Metabolism full text was 403.
+linked_to_topics:
+- gut-microbiome
+- type-2-diabetes
+- insulin-resistance
+- metabolic-syndrome
+- gut-dysbiosis
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- insulin-resistance
+linked_to_supplements:
+- akkermansia-muciniphila
+sources:
+- id: zhang-2025-akkermansia-baseline-dependent-efficacy
+  location: Abstract — results
+  quote: In participants with low baseline A. muciniphila, AKK-WST01 supplementation showed
+    high colonization efficiency and significant reductions in body weight, fat mass, and HbA1c,
+    which were not found in the placebo group. However, AKK-WST01 supplementation showed poor
+    colonization and no significant clinical improvements in participants with high baseline
+    A. muciniphila.
+- id: mount-2026-pasteurised-akkermansia-weight-maintenance
+  location: Abstract — secondary finding
+  quote: Initial Akkermansia spp. abundance was associated with cardiometabolic response to MucT.
+- id: dao-2016-akkermansia-metabolic-health-caloric-restriction
+  location: Abstract — results
+  quote: Individuals with higher baseline A. muciniphila displayed greater improvement in insulin
+    sensitivity markers and other clinical parameters after CR.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

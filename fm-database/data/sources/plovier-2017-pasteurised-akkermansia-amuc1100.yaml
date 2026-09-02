@@ -1,0 +1,52 @@
+id: plovier-2017-pasteurised-akkermansia-amuc1100
+title: A purified membrane protein from Akkermansia muciniphila or the pasteurized bacterium improves metabolism in obese and diabetic mice
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Plovier H
+- Everard A
+- Druart C
+- Depommier C
+- Van Hul M
+- Geurts L
+- Chilloux J
+- Ottman N
+- Duparc T
+- Lichtenstein L
+- Myridakis A
+- Delzenne NM
+- Belzer C
+- de Vos WM
+- Cani PD
+year: 2017
+publisher: "Nature Medicine 23(1): 107-113"
+url: https://pubmed.ncbi.nlm.nih.gov/27892954/
+doi: 10.1038/nm.4236
+notes: |
+  The MECHANISM paper behind "why pasteurised". Mouse work, and it must be
+  labelled as such — but it is the only source that explains a result that
+  otherwise looks like a typo.
+
+  Three findings the catalogue leans on: (1) pasteurisation did not
+  destroy the effect, it ENHANCED the capacity to reduce fat mass,
+  insulin resistance and dyslipidaemia; (2) the active component is
+  Amuc_1100, an outer-membrane protein that signals through Toll-like
+  receptor 2, improves the gut barrier, and is heat-stable at
+  pasteurisation temperatures — so a heat-killed preparation retains the
+  working part; (3) A. muciniphila grown on a synthetic (animal-free)
+  medium keeps its efficacy, which is what made human administration
+  possible at all.
+
+  This is why a postbiotic Akkermansia product is not a downgraded live
+  one. It is also why "dead bacteria cannot work" is the wrong objection
+  to raise with a client — the mechanism is a surviving protein
+  interacting with a receptor, not colonisation.
+
+  Mouse model. Do not present Amuc_1100/TLR2 to a client as established
+  human physiology.
+
+  Captured from the PubMed abstract; publisher full text paywalled.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani
