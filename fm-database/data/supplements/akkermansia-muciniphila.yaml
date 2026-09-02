@@ -81,14 +81,28 @@ notes_for_coach: |
   protein signalling via TLR2), and in the human pilot the pasteurised arm carried the signal
   while live was borderline. A "postbiotic" label is what you want here.
 
-  ** PRODUCT VERIFICATION OUTSTANDING (2026-09-02). ** FM Nutrition Opti-Akkerm is marketed as
-  a "postbiotic" but its composition line reads "5 billion CFU" and the page never says
-  pasteurised / heat-killed / inactivated, and names no strain (no MucT, no Amuc_1100). CFU is a
-  VIABILITY count — dead cells do not form colonies — so the label is internally inconsistent and
-  the product may in fact be live. This matters: the pasteurised evidence does not automatically
-  transfer to a live preparation, and the one trial using a live strain (Zhang 2025, AKK-WST01)
-  had a NULL whole-cohort result. Ask the supplier for the strain and whether it is heat-treated
-  before prescribing, and update this entry with the answer.
+  ** PRODUCT CHOICE — TWO OPTIONS, NEITHER PERFECT (updated 2026-09-02). **
+  DeAge (Amazon, Rs 2,205/mo) is CONFIRMED PASTEURISED, strain MBAMM87 — coach
+  confirmed with the brand 2026-09-02; the Amazon listing itself states neither. It
+  therefore matches the form used in every supporting trial. Its open question is the
+  strain: MBAMM87 has NO published record (0 in PubMed, 0 in NCBI, absent from
+  BacDive, checked 2026-09-02) and is NOT the trial strain — Depommier and Mount used
+  MucT/ATCC BAA-835, Zhang used AKK-WST01. Because A. muciniphila shows documented
+  strain-specific effects, MBAMM87 inherits the FORM evidence but not the STRAIN
+  evidence.
+  FM Nutrition Opti-Akkerm (Rs 1,199/mo) is the cheaper option and its form is still
+  UNVERIFIED: marketed "postbiotic" but the composition line reads "5 billion CFU" —
+  a viability count, which contradicts a heat-killed preparation — and it names no
+  strain. Ask FM Nutrition the same two questions put to DeAge; if it comes back
+  pasteurised it becomes the better buy on cost alone.
+
+  COACH DECISION 2026-09-02 — FM NUTRITION STAYS THE DEFAULT. Weighed against
+  DeAge's confirmed pasteurisation and decided the Rs 1,006/month saved matters more
+  to the client than closing a label ambiguity that is probably vendor sloppiness
+  rather than a live product. Source rank already delivers this (fmnutrition ranks
+  above amazon), so no override is in place — do NOT "fix" the ordering in a later
+  session thinking it is an oversight. Revisit only if FM Nutrition confirms the form
+  (then the decision is settled on cost) or declines to answer (then reopen it).
 
   DOSE GAP. All three human trials used 10^10 (10 billion) cells/day. The FM Nutrition product is
   5 billion per capsule at 1/day — half the studied dose. Matching the trial dose means 2 capsules,
