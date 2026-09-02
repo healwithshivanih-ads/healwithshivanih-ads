@@ -1,0 +1,50 @@
+id: dao-2016-akkermansia-metabolic-health-caloric-restriction
+title: 'Akkermansia muciniphila and improved metabolic health during a dietary intervention in obesity: relationship with gut microbiome richness and ecology'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Dao MC
+- Everard A
+- Aron-Wisnewsky J
+- Sokolovska N
+- Prifti E
+- Verger EO
+- Kayser BD
+- Levenez F
+- Chilloux J
+- Hoyles L
+- Dumas ME
+- Rizkalla SW
+- Dore J
+- Cani PD
+- Clement K
+year: 2016
+publisher: "Gut 65(3): 426-436"
+url: https://pubmed.ncbi.nlm.nih.gov/26100928/
+doi: 10.1136/gutjnl-2014-308778
+notes: |
+  Observational human data (N = 49 overweight/obese adults, 41 women;
+  6-week calorie restriction then 6-week stabilisation) that grounds the
+  Akkermansia story in something other than supplementation trials.
+
+  At baseline, A. muciniphila abundance was INVERSELY related to fasting
+  glucose, waist-to-hip ratio and subcutaneous adipocyte diameter; the
+  people with both high gene richness and high Akkermansia had the
+  healthiest metabolic profile. The prognostic finding is the useful one:
+  individuals with HIGHER baseline Akkermansia got MORE improvement in
+  insulin sensitivity from the same calorie restriction.
+
+  Read carefully, that cuts both ways against the naive supplement pitch —
+  here high baseline abundance predicted a BETTER diet response, whereas
+  in Zhang 2025 low baseline predicted a better SUPPLEMENT response. Both
+  are consistent with "Akkermansia status is a stratifier", which is the
+  claim the catalogue makes, and neither supports giving it to everyone.
+
+  Association study, not causal, and diet was the intervention — not a
+  supplement.
+
+  Captured from the PubMed abstract.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

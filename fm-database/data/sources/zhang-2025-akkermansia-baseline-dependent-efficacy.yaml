@@ -1,0 +1,59 @@
+id: zhang-2025-akkermansia-baseline-dependent-efficacy
+title: 'Akkermansia muciniphila supplementation in patients with overweight/obese type 2 diabetes: Efficacy depends on its baseline levels in the gut'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Zhang Y
+- Liu R
+- Chen Y
+- Cao Z
+- Liu C
+- Bao R
+- Wang Y
+- Huang S
+- Pan S
+- Qin L
+- Wang J
+- Ning G
+- Wang W
+year: 2025
+publisher: "Cell Metabolism 37(3): 592-605.e6"
+url: https://pubmed.ncbi.nlm.nih.gov/39879980/
+doi: 10.1016/j.cmet.2024.12.010
+notes: |
+  The trial that tells the coach WHO to give this to. Ruijin Hospital,
+  Shanghai Jiao Tong (NCT04797442) — 12-week randomised, double-blind,
+  placebo-controlled, n = 58 with overweight/obese type 2 diabetes,
+  A. muciniphila AKK-WST01 vs placebo alongside routine lifestyle
+  guidance.
+
+  Headline result is a NEGATIVE one that is more useful than a positive:
+  across the whole cohort there were no significant between-group
+  differences in weight or HbA1c. The effect appears only on
+  stratification — participants with LOW baseline A. muciniphila showed
+  high colonisation and significant reductions in body weight, fat mass
+  and HbA1c; participants with HIGH baseline showed poor colonisation and
+  no clinical improvement. Verified downstream in germ-free mice given
+  low- vs high-Akkermansia faeces.
+
+  This is the entry's gating evidence: supplementing someone who already
+  has plenty is predictably inert, which is why the catalogue points at
+  GI-MAP / stool-PCR Akkermansia as the discriminator rather than
+  recommending it blind to everyone carrying a metabolic diagnosis.
+
+  Note this trial used a LIVE strain (AKK-WST01), not the pasteurised
+  preparation of the Louvain/Maastricht trials — the baseline-dependency
+  finding is about colonisation, so how far it transfers to a postbiotic
+  (which does not need to colonise) is genuinely unresolved. Do not
+  quietly generalise it in either direction.
+
+  Authors declare no competing interests — the only one of the three human
+  trials in this set that is independent of the Akkermansia commercial
+  interest.
+
+  Captured from the PubMed abstract; Cell Metabolism full text 403 through
+  this container.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

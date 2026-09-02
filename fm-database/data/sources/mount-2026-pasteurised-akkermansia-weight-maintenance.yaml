@@ -1,0 +1,53 @@
+id: mount-2026-pasteurised-akkermansia-weight-maintenance
+title: 'Pasteurized Akkermansia muciniphila MucT for weight loss maintenance in people with overweight and obesity: a controlled randomized trial'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Mount S
+- Canfora EE
+- Jocken JW
+- Umanets A
+- Hul G
+- Coenjaerds M
+- Aldaz Laquidain P
+- Adriaens ME
+- Holst JJ
+- Jardon KM
+- Segers A
+- Suenaert P
+- de Vos WM
+- Blaak EE
+year: 2026
+publisher: "Nature Medicine 32(6): 2107-2116"
+url: https://pubmed.ncbi.nlm.nih.gov/42120725/
+doi: 10.1038/s41591-026-04394-7
+notes: |
+  The largest and most recent human trial (Maastricht; NCT05417360), and
+  the one that moves Akkermansia from "interesting pilot" to a defensible
+  coaching lever. n = 90 adults with overweight/obesity, 8-week low-energy
+  diet to >=8% weight loss, then 24 weeks ad libitum with daily pasteurised
+  A. muciniphila MucT or placebo. PRIMARY OUTCOME was body-weight change
+  during maintenance — i.e. it tests the exact problem clients present
+  with, keeping weight off, not losing it.
+
+  Result: regain 1.2 +/- 0.7 kg on MucT vs 3.2 +/- 0.4 kg on placebo
+  (P = 0.012); net loss from baseline 3.1 +/- 0.7 kg greater (P = 0.009).
+  No serious treatment-related adverse events. Critically for how the
+  catalogue gates this: "Initial Akkermansia spp. abundance was associated
+  with cardiometabolic response to MucT" — the same baseline-dependency
+  seen in Dao 2016 and Zhang 2025.
+
+  Author-stated limitations: relatively short intervention, and no arm
+  received modified MucT lacking the active components, so the mechanism
+  is not isolated.
+
+  COI: de Vos is co-founder/CTO and Suenaert CMO of The Akkermansia
+  Company SA; Blaak is a scientific advisor; four authors are on a related
+  patent application. Independent replication outside the founder network
+  is still absent.
+
+  Captured from the PubMed abstract; publisher full text paywalled.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

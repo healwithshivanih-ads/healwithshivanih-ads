@@ -1,0 +1,45 @@
+slug: akkermansia-supplementation-caution-in-active-ibd
+statement: Akkermansia muciniphila is a mucin degrader and is not unconditionally beneficial.
+  In Il10-/- mice, a genetically colitis-susceptible IBD model, A. muciniphila was sufficient
+  to promote intestinal inflammation in both specific-pathogen-free and germ-free animals,
+  acting as a pathobiont in a susceptible host. Supplementation should not be pushed into an
+  actively inflamed or genetically susceptible colon without clinician involvement.
+evidence_tier: confirm_with_clinician
+rationale: The counterweight to an otherwise uniformly positive literature, and the basis for
+  the one hard contraindication on the supplement entry. It converges with the existing
+  catalogue claim elimination-diets-cause-long-term-microbiome-harm, where Davis argues
+  Akkermansia overgrowth beyond healthy levels erodes the gut lining. Two independent routes
+  reaching "beneficial commensal, but not unconditionally" is why this is a contraindication
+  rather than a soft note. Tiered confirm_with_clinician because active IBD is outside coaching
+  scope entirely.
+coaching_translation: If you have inflammatory bowel disease that is currently active, this is
+  one to raise with your gastroenterologist before starting rather than something to trial on
+  your own — the same organism that helps in one gut can behave differently in an inflamed one.
+caveats:
+- Mouse model with a specific genetic knockout (Il10-/-). It does NOT show that Akkermansia causes
+  colitis in immunocompetent humans and must never be presented to a client that way.
+- This is a reason for clinician involvement in IBD. It is NOT a reason for anyone else to avoid the
+  food-first polyphenol lever, which was never implicated.
+- No human safety signal has emerged - three human trials (n=32, n=58, n=90) reported good tolerability
+  and no serious treatment-related adverse events, but all excluded active IBD.
+- Captured from the PubMed abstract; free full text at PMC5528001.
+linked_to_topics:
+- ibd
+- gut-dysbiosis
+- gut-microbiome
+- autoimmunity-leaky-gut-triad
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- chronic-inflammation
+linked_to_supplements:
+- akkermansia-muciniphila
+sources:
+- id: seregin-2017-akkermansia-pathobiont-il10-colitis
+  location: Abstract — results
+  quote: A. muciniphila was sufficient for promoting intestinal inflammation in both
+    specific-pathogen-free and germ-free Il10-/- mice. Our results demonstrate that A. muciniphila
+    can act as a pathobiont to promote colitis in a genetically susceptible host.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

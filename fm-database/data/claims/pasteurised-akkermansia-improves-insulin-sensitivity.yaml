@@ -1,0 +1,45 @@
+slug: pasteurised-akkermansia-improves-insulin-sensitivity
+statement: In a 3-month randomised, double-blind, placebo-controlled pilot in 32 overweight/obese
+  insulin-resistant adults, daily pasteurised Akkermansia muciniphila (10^10 cells) improved
+  insulin sensitivity by 28.6%, reduced fasting insulinaemia by 34.1% and lowered total
+  cholesterol by 8.7% versus placebo, alongside non-significant reductions in body weight
+  (-2.3 kg) and fat mass (-1.4 kg). Both live and pasteurised preparations were safe and
+  well tolerated.
+evidence_tier: plausible_emerging
+rationale: First-in-human trial (Depommier 2019, Nature Medicine; NCT02637115). The metabolic
+  effect sizes are large and the safety finding is clean, but n=32 completers in an
+  explicitly exploratory pilot cannot carry a stronger tier, and the senior authors
+  co-founded the company commercialising the organism. The 2026 Maastricht RCT (n=90)
+  moved the same lever on a harder primary endpoint, which is why this sits at
+  plausible_emerging rather than fm_specific_thin.
+coaching_translation: There is early human trial evidence that this particular gut organism,
+  taken daily as a heat-treated supplement, helped people handle blood sugar better and
+  nudged cholesterol down over three months — and it was well tolerated. It is promising
+  rather than proven, and it is not a substitute for the food and movement work.
+caveats:
+- Exploratory pilot, 32 completers. Weight and fat-mass changes did NOT reach significance.
+- Senior authors (Cani, de Vos) co-founded A-Mansia Biotech and hold related patent applications.
+- Captured from the PubMed abstract; Nature Medicine full text was paywalled.
+- Insulin sensitivity was measured by clamp/index, not by a clinical outcome. No hard endpoints.
+linked_to_topics:
+- insulin-resistance
+- metabolic-syndrome
+- gut-microbiome
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+- leaky-gut
+linked_to_symptoms:
+- unexplained-weight-gain
+linked_to_supplements:
+- akkermansia-muciniphila
+sources:
+- id: depommier-2019-akkermansia-proof-of-concept
+  location: Abstract — results
+  quote: Compared to placebo, pasteurized A. muciniphila improved insulin sensitivity
+    (+28.62 +/- 7.02%, P = 0.002), and reduced insulinemia (-34.08 +/- 7.12%, P = 0.006)
+    and plasma total cholesterol (-8.68 +/- 2.38%, P = 0.02).
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

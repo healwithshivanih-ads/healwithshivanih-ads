@@ -12,6 +12,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - microbiome
 - gut-microbiome
+linked_to_supplements:
+- akkermansia-muciniphila
 sources:
 - id: hawrelak-energy-blueprint-podcast-2026
   location: Podcast — Akkermansia segment

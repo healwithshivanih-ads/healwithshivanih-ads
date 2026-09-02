@@ -1,0 +1,51 @@
+slug: polyphenol-rich-plants-feed-akkermansia
+statement: Polyphenol-rich plant foods raise Akkermansia muciniphila abundance. An 8-week
+  cranberry polyphenol extract in high-fat/high-sucrose-fed mice reduced weight gain and
+  visceral obesity, improved insulin sensitivity and HOMA-IR, lowered hepatic triglycerides
+  and intestinal inflammation, and markedly increased the proportion of Akkermansia. Practical
+  food levers - cranberry, pomegranate, green tea, dark chocolate, and broadly 4-6 cups a day
+  of brightly coloured plants.
+evidence_tier: plausible_emerging
+rationale: The food-first route to the same target, and the one to reach for BEFORE a
+  supplement — it costs nothing, has no safety ceiling, and feeds the whole microbiome rather
+  than one organism. Anhe 2015 (Gut) supplies the experimental evidence; it corroborates the
+  polyphenol mechanism already asserted in akkermansia-as-metabolic-gatekeeper from an
+  independent route. Akkermansia also feeds on mucin itself, so adequate fibre and an intact
+  mucus layer matter alongside polyphenols.
+coaching_translation: The organism we want more of feeds on the colour in plants — think
+  pomegranate, berries, green tea, a square of dark chocolate, and generally getting four to
+  six cups of brightly coloured vegetables and fruit into the day. This is the first and
+  cheapest thing to change, and it feeds the rest of your gut community at the same time.
+caveats:
+- Mouse study using a concentrated extract at 200 mg/kg by gavage — not a human food-dose trial.
+- The Akkermansia rise is an association within the result, not a demonstrated mediator of the metabolic benefit.
+- Never quantify this to a client ("cranberry raises your Akkermansia by X"). The honest framing is directional.
+- Cranberry is not a staple Indian food. Pomegranate, green tea, dark chocolate, berries, and coloured
+  vegetables are the practical local substitutes and carry the same polyphenol rationale.
+linked_to_topics:
+- gut-microbiome
+- gut-dysbiosis
+- insulin-resistance
+- metabolic-syndrome
+- chronic-inflammation
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- leaky-gut
+linked_to_symptoms:
+- bloating
+- unexplained-weight-gain
+linked_to_supplements:
+- akkermansia-muciniphila
+sources:
+- id: anhe-2015-cranberry-polyphenol-akkermansia
+  location: Abstract — results
+  quote: Interestingly, CE treatment markedly increased the proportion of the mucin-degrading
+    bacterium Akkermansia in our metagenomic samples.
+- id: anhe-2015-cranberry-polyphenol-akkermansia
+  location: Abstract — conclusions
+  quote: CE exerts beneficial metabolic effects through improving HFHS diet-induced features of
+    the metabolic syndrome, which is associated with a proportional increase in Akkermansia spp.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

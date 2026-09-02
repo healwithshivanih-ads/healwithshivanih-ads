@@ -1,0 +1,48 @@
+slug: pasteurised-akkermansia-supports-weight-loss-maintenance
+statement: In a randomised controlled trial in 90 adults with overweight/obesity who first lost
+  at least 8% of body weight on an 8-week low-energy diet, 24 weeks of daily pasteurised
+  Akkermansia muciniphila MucT produced less weight regain than placebo (1.2 +/- 0.7 kg vs
+  3.2 +/- 0.4 kg, P = 0.012) and a greater net loss from baseline (by 3.1 +/- 0.7 kg,
+  P = 0.009), with no serious treatment-related adverse events.
+evidence_tier: plausible_emerging
+rationale: Mount 2026 (Nature Medicine, Maastricht; NCT05417360) is the largest human trial of
+  this organism and the only one whose PRIMARY endpoint is the problem clients actually
+  present with — keeping weight off after losing it, not losing it in the first place. Effect
+  size is clinically meaningful and the safety record is clean. Held at plausible_emerging
+  because there is still no replication independent of the founder network, the intervention
+  was short, and no arm isolated the active component.
+coaching_translation: The hardest part of weight work is the months after the weight comes off.
+  In the largest trial so far, people taking this daily during that phase regained about a
+  kilo instead of about three. It supports the maintenance phase — it does not do the losing
+  for you, and everyone in that trial had already done the diet work first.
+caveats:
+- The weight loss came from an 8-week low-energy diet. The supplement was tested only for MAINTENANCE
+  after that loss — never present it as a weight-loss agent.
+- de Vos is co-founder/CTO and Suenaert CMO of The Akkermansia Company; Blaak advises them; four authors
+  are on a related patent application. No independent replication yet.
+- Authors' own stated limits - relatively short intervention, and no arm received modified MucT lacking
+  the active components, so the mechanism is not isolated.
+- Captured from the PubMed abstract; publisher full text paywalled.
+linked_to_topics:
+- metabolic-syndrome
+- insulin-resistance
+- gut-microbiome
+linked_to_mechanisms:
+- insulin-resistance
+- leaky-gut
+linked_to_symptoms:
+- unexplained-weight-gain
+- weight-gain
+linked_to_supplements:
+- akkermansia-muciniphila
+sources:
+- id: mount-2026-pasteurised-akkermansia-weight-maintenance
+  location: Abstract — results
+  quote: Here we show that MucT led to lower body weight regain versus placebo at the end of the
+    weight maintenance period (MucT - 1.2 +/- 0.7 kg, placebo - 3.2 +/- 0.4 kg, P = 0.012).
+    Additionally, the MucT group had a greater net weight loss from baseline to end of maintenance
+    than the placebo group (3.1 +/- 0.7 kg, P = 0.009).
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani

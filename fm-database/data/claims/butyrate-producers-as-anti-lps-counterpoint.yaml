@@ -17,6 +17,9 @@ linked_to_topics:
 - metabolic-endotoxemia-lps
 linked_to_mechanisms:
 - chronic-inflammation
+linked_to_supplements:
+- akkermansia-muciniphila
+- probiotics
 sources:
 - id: hawrelak-energy-blueprint-podcast-2026
   location: Podcast — butyrate producers segment

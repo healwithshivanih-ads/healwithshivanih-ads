@@ -1,0 +1,48 @@
+id: seregin-2017-akkermansia-pathobiont-il10-colitis
+title: NLRP6 Protects Il10-/- Mice from Colitis by Limiting Colonization of Akkermansia muciniphila
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Seregin SS
+- Golovchenko N
+- Schaf B
+- Chen J
+- Pudlo NA
+- Mitchell J
+- Baxter NT
+- Zhao L
+- Schloss PD
+- Martens EC
+- Eaton KA
+- Chen GY
+year: 2017
+publisher: "Cell Reports 19(4): 733-745"
+url: https://pubmed.ncbi.nlm.nih.gov/28445725/
+doi: 10.1016/j.celrep.2017.03.080
+notes: |
+  THE COUNTERWEIGHT SOURCE. Every other paper in this set treats
+  Akkermansia as beneficial; this one shows it acting as a pathobiont.
+  In Il10-/- mice (a genetically colitis-susceptible IBD model),
+  A. muciniphila was SUFFICIENT to promote intestinal inflammation in
+  both specific-pathogen-free and germ-free animals.
+
+  Why it is in the catalogue: it is the mechanistic basis for the one
+  hard caution on the supplement entry — do not push Akkermansia into an
+  actively inflamed or genetically susceptible colon. It also converges
+  with the existing catalogue claim
+  elimination-diets-cause-long-term-microbiome-harm, where Davis argues
+  Akkermansia overgrowth erodes the mucus layer. Two independent routes
+  reaching "beneficial commensal, but not unconditionally" is why the
+  entry carries an active-IBD contraindication rather than a soft note.
+
+  Mouse model with a specific genetic knockout. It does NOT show that
+  Akkermansia causes colitis in immunocompetent humans, and must not be
+  presented to a client that way. It is a reason for clinician
+  involvement in IBD, not a reason for anyone else to avoid the food-first
+  polyphenol lever.
+
+  Captured from the PubMed abstract; free full text at PMC5528001.
+version: 1
+status: active
+updated_at: '2026-09-02'
+updated_by: shivani
