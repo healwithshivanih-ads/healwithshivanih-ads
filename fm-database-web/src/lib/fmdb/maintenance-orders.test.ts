@@ -7,9 +7,9 @@ import {
 } from "./maintenance-orders";
 
 describe("maintenancePrice — server-fixed, never client-trusted", () => {
-  it("6-month one-time block is ₹10,000", () => {
-    expect(maintenancePrice(6)).toBe(10000);
-    expect(MAINTENANCE_PRICING[6]).toBe(10000);
+  it("6-month one-time block is ₹12,000", () => {
+    expect(maintenancePrice(6)).toBe(12000);
+    expect(MAINTENANCE_PRICING[6]).toBe(12000);
   });
   it("an unoffered term has no price (quarterly is a subscription, not a one-time term)", () => {
     expect(maintenancePrice(1)).toBeNull();
@@ -38,7 +38,7 @@ describe("buildMaintenanceOrder", () => {
     const r = buildMaintenanceOrder("maint-2026-07-01-01", "cl-007", 6, "2026-07-01T00:00:00Z");
     expect(r.ok).toBe(true);
     if (!r.ok) return;
-    expect(r.order.amount_inr).toBe(10000);
+    expect(r.order.amount_inr).toBe(12000);
     expect(r.order.status).toBe("pending");
     expect(r.order.kind).toBe("maintenance");
     expect(r.order.paid_through).toBeNull(); // set authoritatively by the webhook

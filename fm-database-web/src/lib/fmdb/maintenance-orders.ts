@@ -28,12 +28,12 @@ import yaml from "js-yaml";
 export type MaintenanceOrderStatus = "pending" | "paid" | "cancelled";
 
 /** Allowed terms → fixed INR price for the ONE-TIME (manual) maintenance block.
- *  The 6-month prepaid block is ₹10,000 (the manual option). Quarterly auto-renewal
+ *  The 6-month prepaid block is ₹12,000 (the manual option). Quarterly auto-renewal
  *  is a separate Razorpay SUBSCRIPTION (see maintenance-subscription.ts), NOT a
  *  one-time term. Changing a price here is the ONLY way to change what a client is
  *  charged for the one-time block. */
 export const MAINTENANCE_PRICING: Record<number, number> = {
-  6: 10000,
+  6: 12000,
 };
 
 export const DEFAULT_MAINTENANCE_TERM_MONTHS = 6;

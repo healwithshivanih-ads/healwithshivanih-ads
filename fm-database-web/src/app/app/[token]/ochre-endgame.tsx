@@ -44,7 +44,7 @@ function loadRazorpay(): Promise<boolean> {
 
 /**
  * Maintenance / renewal checkout overlay. Two ways to maintain:
- *   - One-time block (e.g. 6 months ₹10,000) — manual; the webhook flips the order
+ *   - One-time block (e.g. 6 months ₹12,000) — manual; the webhook flips the order
  *     to paid + extends coverage. No auto-renew.
  *   - Quarterly subscription (₹6,000) — a Razorpay auto-debit mandate (when the
  *     plan is configured); Razorpay charges every 3 months, the subscription.charged

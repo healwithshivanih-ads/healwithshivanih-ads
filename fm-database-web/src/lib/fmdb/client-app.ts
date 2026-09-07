@@ -957,7 +957,7 @@ export interface EndgameInfo {
    *  single-track graduation copy: Continue-the-full-programme only, no
    *  maintenance offer (pricing is emptied unless already on maintenance). */
   shortEngagement: boolean;
-  /** Offered ONE-TIME maintenance blocks (manual, e.g. 6 months ₹10,000).
+  /** Offered ONE-TIME maintenance blocks (manual, e.g. 6 months ₹12,000).
    *  Server-fixed prices — the pay route re-derives, never trusts the client. */
   pricing: { termMonths: number; inr: number }[];
   /** The quarterly AUTO-DEBIT subscription offer, when the Razorpay plan is

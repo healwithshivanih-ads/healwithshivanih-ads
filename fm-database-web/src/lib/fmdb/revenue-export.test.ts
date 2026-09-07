@@ -34,7 +34,7 @@ describe("buildPaymentEvent — deterministic event ids", () => {
   it("falls back to a manual key (client + day + product) without a rzp id", () => {
     const ev = buildPaymentEvent({
       product: "maintenance",
-      amountPaisa: 1000000,
+      amountPaisa: 1200000,
       paidAt: "2026-07-02T09:00:00.000Z",
       client: CLIENT,
     });

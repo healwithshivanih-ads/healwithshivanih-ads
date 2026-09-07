@@ -41,7 +41,7 @@ function gate(body: string, over: Partial<Parameters<typeof checkWinbackEmail>[0
     body,
     name: "Archana Rao",
     sourceNumbers: briefingNumbers(BRIEF),
-    allowedPrices: [maintenancePriceInr() ?? 10000],
+    allowedPrices: [maintenancePriceInr() ?? 12000],
     weightValues: new Set(["68.4"]),
     ...over,
   });
@@ -83,7 +83,7 @@ describe("the copy", () => {
     // Sourced from MAINTENANCE_PRICING — the constant Razorpay actually bills,
     // so the letter and the payment page cannot disagree.
     const maint = maintenancePriceInr();
-    expect(maint).toBe(10000);
+    expect(maint).toBe(12000);
     expect(body).toContain(formatInr(maint!));
   });
 
@@ -91,7 +91,7 @@ describe("the copy", () => {
     const { body } = renderWinbackEmail("maintenance", FACTS, 45000);
     expect(body).not.toContain(formatInr(45000));
     expect(body).toMatch(/last you will hear/i);
-    expect(body).toContain(formatInr(10000));
+    expect(body).toContain(formatInr(12000));
   });
 
   it("uses ₹ and never Rs", () => {
@@ -102,7 +102,7 @@ describe("the copy", () => {
   it("every touch asks for something", () => {
     for (const kind of ["check_in", "offer", "maintenance"] as const) {
       const { body } = renderWinbackEmail(kind, FACTS, 45000);
-      expect(gate(body, { allowedPrices: [10000, 45000] }).refuse).toEqual([]);
+      expect(gate(body, { allowedPrices: [12000, 45000] }).refuse).toEqual([]);
     }
   });
 });
