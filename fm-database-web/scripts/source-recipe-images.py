@@ -77,6 +77,73 @@ def http(url, binary=False, referer="https://duckduckgo.com/"):
         return r.read() if binary else r.read().decode("utf-8", "ignore")
 
 
+def openverse_images(query, n=6):
+    """Return up to n candidate image URLs from Openverse (CC-licensed, no key).
+
+    DuckDuckGo's i.js image endpoint started returning 403 (2026-09), which
+    silently zeroed out ddg_images. Openverse is the stable no-API replacement
+    and — being CC-licensed with creator/licence metadata — is a cleaner
+    provenance fit than scraped web thumbnails. Prefers larger images.
+    """
+    url = ("https://api.openverse.org/v1/images/?q=%s&page_size=%d&mature=false"
+           % (urllib.parse.quote(query), max(n * 2, 12)))
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "fmdb-recipe-images/1.0 (shivanihari@gmail.com)",
+        "Accept": "application/json",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.loads(r.read().decode("utf-8", "ignore"))
+    except Exception:
+        return []
+    rows = []
+    for it in data.get("results", []):
+        u = it.get("url")
+        if not u or any(b in u for b in BAD_HOSTS):
+            continue
+        w = it.get("width") or 0
+        if w and w < 500:
+            continue
+        rows.append((w, u))
+    rows.sort(key=lambda t: t[0], reverse=True)
+    return [u for _, u in rows[:n]]
+
+
+def image_candidates(query, n=6):
+    """Openverse first (stable, CC), DuckDuckGo as fallback.
+
+    Openverse does AND-matching, so a long dish name ("Foxtail Millet and
+    Vegetable Stir Fry") often returns nothing. Relax progressively: full
+    query, then the leading 3 then 2 words — recipe names put the defining
+    noun first, so trimming trailing modifiers widens recall without a food
+    dictionary.
+    """
+    words = query.split()
+    variants = [query]
+    if len(words) > 3:
+        variants.append(" ".join(words[:3]))
+    if len(words) > 2:
+        variants.append(" ".join(words[:2]))
+
+    urls: list[str] = []
+    for q in variants:
+        urls = openverse_images(q, n)
+        if len(urls) >= 2:
+            break
+    if len(urls) < 2:
+        try:
+            urls = (urls + ddg_images(query, n))[:n]
+        except Exception:
+            pass
+    # de-dup, preserve order
+    seen, out = set(), []
+    for u in urls:
+        if u not in seen:
+            seen.add(u)
+            out.append(u)
+    return out
+
+
 def ddg_images(query, n=6):
     """Return up to n candidate image URLs (largest first-ish)."""
     seed = "https://duckduckgo.com/?q=%s&iax=images&ia=images" % urllib.parse.quote(query)
@@ -179,6 +246,9 @@ def main():
     ap.add_argument("--only", default="")
     ap.add_argument("--replace-book", action="store_true",
                     help="also re-source dishes whose recipe currently uses a book image")
+    ap.add_argument("--force", action="store_true",
+                    help="re-source even if the recipe already declares an image "
+                         "(used by the QC job to repair rights_none / file_missing blocks)")
     ap.add_argument("--report", default="/tmp/recipe-image-report.json")
     ap.add_argument("--recipes-only", action="store_true",
                     help="skip dishes that have no recipe YAML yet")
@@ -202,13 +272,13 @@ def main():
                 continue
             report["skipped"].append({"slug": slug, "why": "no recipe yaml (image deferred)"})
             continue
-        if has_web_image(rp) and not args.replace_book:
+        if has_web_image(rp) and not args.replace_book and not args.force:
             report["skipped"].append({"slug": slug, "why": "already has web image"})
             continue
         # source
         cands = []
         try:
-            cands = ddg_images(d["query"])
+            cands = image_candidates(d["query"])
         except Exception as e:
             report["failed"].append({"slug": slug, "why": f"search: {e}"})
             continue

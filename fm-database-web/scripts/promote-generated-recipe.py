@@ -19,8 +19,11 @@ Writes JSON to stdout:
 from __future__ import annotations
 
 import json
+import os
 import re
+import subprocess
 import sys
+import tempfile
 from datetime import date
 from pathlib import Path
 
@@ -147,13 +150,13 @@ def main() -> int:
         "servings": "2",
         "one_line": f"{name} — a simple, home-style Indian recipe.",
         "attribution": {"author": "Shivani Hari", "source_id": "shivani-hari-original"},
-        "image": {
-            "file": f"images/web/{slug}.jpg",
-            "credit": "web reference (auto-sourced)",
-            "source_url": "",
-            "rights_status": "none",
-            "note": "promoted from an AI-generated recipe — source a licensed/original photo before external use",
-        },
+        # No image block here on purpose. An earlier version wrote a phantom
+        # `images/web/<slug>.jpg` with rights_status: none — but the file never
+        # existed (so the app hid it) AND the literal string made
+        # source-recipe-images.py's has_web_image() treat the recipe as already
+        # covered, so it was skipped forever. We leave `image` absent and let
+        # _source_photo() below fill it, falling back to the dashboard coverage
+        # chip if nothing is found.
         "sources": [{"id": "shivani-hari-original", "location": name}],
         "version": 1,
         "status": "active",
@@ -182,8 +185,45 @@ def main() -> int:
     (RECIPES_DIR / f"{slug}.yaml").write_text(
         yaml.safe_dump(record, sort_keys=False, allow_unicode=True)
     )
+
+    # Best-effort: source a real (CC-licensed, no-API) photo now that the
+    # recipe exists on disk. Never let a sourcing miss/error fail the promote —
+    # an imageless recipe is a valid state the dashboard coverage chip flags.
+    img_note = _source_photo(slug, name)
+    if img_note:
+        warnings.append(img_note)
+
     print(json.dumps({"ok": True, "slug": slug, "warnings": warnings}))
     return 0
+
+
+def _source_photo(slug: str, name: str) -> str | None:
+    """Auto-source a recipe photo via source-recipe-images.py (Openverse, no QC,
+    no Anthropic API). Returns a coach-facing note, or None on clean success."""
+    query = re.sub(r"\s+", " ", name).strip()
+    dishlist = [{"slug": slug, "dish": name, "query": query}]
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w", suffix=".json", delete=False, encoding="utf-8"
+        ) as f:
+            json.dump(dishlist, f)
+            dl_path = f.name
+        rep_path = dl_path + ".report.json"
+        # No --qc → no API call. --recipes-only → only touch recipes that exist.
+        subprocess.run(
+            [sys.executable, str(SCRIPTS_DIR / "source-recipe-images.py"),
+             dl_path, "--only", slug, "--recipes-only", "--report", rep_path],
+            capture_output=True, text=True, timeout=90,
+        )
+        rep = json.loads(Path(rep_path).read_text()) if Path(rep_path).exists() else {}
+        os.unlink(dl_path)
+        if Path(rep_path).exists():
+            os.unlink(rep_path)
+        if rep.get("done"):
+            return None  # photo attached
+        return "no photo auto-sourced — add one from the coach UI (paste an image URL)"
+    except Exception as e:  # noqa: BLE001 — sourcing must never break promote
+        return f"photo sourcing skipped: {type(e).__name__}: {e}"
 
 
 if __name__ == "__main__":
