@@ -526,6 +526,12 @@ def main() -> None:
     client_id = payload.get("client_id") or ""
     plan_slug = payload.get("plan_slug") or ""
     target_week = int(payload.get("target_week") or 0)
+    # Maintenance seasonal regen (2026-09-07): `season` injects a seasonal rule
+    # into the prompt; `apply_live` writes the result straight to the live
+    # app_menu (no pending / coach approval) + stamps season + refresh date.
+    # Both default off, so the normal weekly-draft path is unchanged.
+    season = (payload.get("season") or "").strip().lower()
+    apply_live = bool(payload.get("apply_live"))
     if not client_id or not plan_slug or target_week < 1:
         print(json.dumps({"ok": False, "error": "client_id, plan_slug, target_week required"}))
         return
@@ -633,6 +639,15 @@ def main() -> None:
         print(json.dumps({"ok": True, "week": target_week, "change_note": "(dry run)", "dry_run": True, "prompt_chars": len(user)}))
         return
 
+    if season:
+        user = (
+            f"SEASON: It is {season} in India right now. Favour {season}-appropriate "
+            f"produce and cooking, and prefer catalogue recipes tagged '{season}' or "
+            f"'all' over ones tagged only for other seasons. Keep the plan's framework, "
+            f"diet rules and no-porridge rule intact — this is a seasonal refresh of a "
+            f"MAINTENANCE menu, a familiar steady set, not a brand-new protocol.\n\n"
+        ) + user
+
     from anthropic_client import build_client  # noqa: E402
 
     client_api = build_client()
@@ -687,13 +702,30 @@ def main() -> None:
 
     # re-read the plan fresh (avoid clobbering concurrent panel edits)
     plan = yaml.safe_load(pf.read_text()) or {}
-    plan["app_menu_pending"] = {
-        "week": target_week,
-        "days": tool_input["days"],
-        "change_note": str(tool_input.get("change_note") or "").strip(),
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "inputs_summary": f"{len(feedback)} feedback signals, {len(edits)} coach edits",
-    }
+    now_iso = datetime.now(timezone.utc).isoformat()
+    if apply_live:
+        # Maintenance seasonal refresh — write straight to the LIVE app_menu (a
+        # single steady seasonal week) + stamp season & refresh date. No pending,
+        # no coach approval (coach decision 2026-09-07). The hygiene passes above
+        # already errored out on a broken menu, so only a clean menu reaches here.
+        am = plan.get("app_menu") or {}
+        am["weeks"] = [{"week": 1, "day_dates": None, "days": tool_input["days"]}]
+        am["season"] = season or am.get("season")
+        am["seasonal_refreshed_at"] = now_iso[:10]
+        am["synced_from"] = "seasonal_auto"
+        am["synced_at"] = now_iso
+        plan["app_menu"] = am
+        plan.pop("app_menu_pending", None)
+        change_note = str(tool_input.get("change_note") or "").strip()
+    else:
+        plan["app_menu_pending"] = {
+            "week": target_week,
+            "days": tool_input["days"],
+            "change_note": str(tool_input.get("change_note") or "").strip(),
+            "generated_at": now_iso,
+            "inputs_summary": f"{len(feedback)} feedback signals, {len(edits)} coach edits",
+        }
+        change_note = plan["app_menu_pending"]["change_note"]
     write_text_atomic(pf, yaml.safe_dump(plan, sort_keys=False, width=100, allow_unicode=True))
 
     usage_entry = None
@@ -715,7 +747,9 @@ def main() -> None:
             {
                 "ok": True,
                 "week": target_week,
-                "change_note": plan["app_menu_pending"]["change_note"],
+                "applied": apply_live,
+                "season": season or None,
+                "change_note": change_note,
                 "usage": usage_entry,
                 "error": None,
             }

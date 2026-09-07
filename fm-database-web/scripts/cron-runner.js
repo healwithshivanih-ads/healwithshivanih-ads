@@ -263,6 +263,17 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 06:15 IST daily — keep MAINTENANCE menus in season. Maintenance plans are
+// exempt from the weekly drafter; this regenerates a season-aware menu when one
+// is due (never refreshed, ≥7 weeks old, or the season turned) and auto-applies
+// it live (coach decision 2026-09-07). Runs before the weekly drafter. Quiet on
+// a no-op day (nothing due).
+cron.schedule(
+  "15 6 * * *",
+  () => fire("maintenance-menu-seasonal"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // 07:00 IST daily — auto-draft next week's menus for clients whose new week
 // starts within 3 days (weekly cadence, 2026-06-12). Drafts wait for coach
 // approval in the studio; nothing reaches clients automatically.
