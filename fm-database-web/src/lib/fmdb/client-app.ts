@@ -206,6 +206,19 @@ export interface AppGrocery {
 // the client-side app components can share the exact same logic.
 export type { AppSwapGroup, SwapMember } from "./swaps";
 
+/** Pre-authored translations of a recipe, keyed by language code ("hi", "ta",
+ *  …). Authored in chat at $0 and stored on the recipe YAML under `translations`;
+ *  a pure PASSTHROUGH here — the kitchen-sheet surface reads it, no other surface
+ *  touches it, and its absence changes nothing. Only the cook-facing fields are
+ *  translated: the dish name, the ingredient lines, and the method steps. */
+export interface RecipeTranslations {
+  [lang: string]: {
+    name?: string;
+    ingredients?: string[];
+    method?: string[];
+  };
+}
+
 /** One full recipe from the plan's recipe pack, rendered IN-APP (letters
  *  are being retired — the app is the system of record). */
 export interface AppRecipe {
@@ -230,6 +243,9 @@ export interface AppRecipe {
   /** tiny source credit shown under the recipe when the photo came from a
    *  forwarded reel / web recipe (e.g. "@creator" or "site.com"). */
   imageCredit?: string;
+  /** pre-authored language translations of name/ingredients/method — read only
+   *  by the kitchen-sheet print surface (bilingual cook's sheet). */
+  translations?: RecipeTranslations;
 }
 
 /** One scored MSQ submission (written by scripts/save-app-msq.py). */
@@ -1810,6 +1826,9 @@ export interface LetterRecipe {
   /** true when a method step still names an omitted food, so the client-facing
    *  line has to be an instruction rather than a note. */
   omitsInSteps?: boolean;
+  /** pre-authored language translations (library recipes only) — passthrough
+   *  to the kitchen-sheet surface. */
+  translations?: RecipeTranslations;
 }
 
 /** The structured recipe library (fm-database/data/_recipes/) — the plan-side
@@ -1818,6 +1837,27 @@ export interface LetterRecipe {
  *  a coach-pinned plan.nutrition.recipes slug) gets its full method from
  *  here. Letter-parsed recipes still take precedence when they exist —
  *  they're personalised to the client. */
+/** Parse a recipe YAML's optional `translations:` block into the typed shape,
+ *  keeping only string name / string-array ingredients + method per language.
+ *  Anything malformed is dropped — a bad translation must never break a recipe. */
+function parseRecipeTranslations(raw: unknown): RecipeTranslations | undefined {
+  if (!raw || typeof raw !== "object") return undefined;
+  const out: RecipeTranslations = {};
+  for (const [lang, val] of Object.entries(raw as Dict)) {
+    if (!val || typeof val !== "object") continue;
+    const t = val as Dict;
+    const entry: RecipeTranslations[string] = {};
+    const name = asStr(t.name);
+    if (name) entry.name = name;
+    const ingredients = asStrArr(t.ingredients);
+    if (ingredients.length) entry.ingredients = ingredients;
+    const method = (asArr(t.steps ?? t.method) as unknown[]).map((s) => String(s)).filter(Boolean);
+    if (method.length) entry.method = method;
+    if (entry.name || entry.ingredients || entry.method) out[lang] = entry;
+  }
+  return Object.keys(out).length ? out : undefined;
+}
+
 export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecipe }[]> {
   const dir = path.join(getCataloguePath(), "_recipes");
   let files: string[] = [];
@@ -1883,6 +1923,7 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
           tip: asStr(r.one_line) || asStr(r.headnote) || undefined,
           imageUrl: imgUrl,
           imageCredit: imgCredit,
+          translations: parseRecipeTranslations(r.translations),
         },
       });
     } catch {
@@ -4113,6 +4154,7 @@ export async function loadClientAppData(
       omits: r.omits,
       omitsInSteps: r.omitsInSteps,
       ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
+      translations: r.translations ?? lib?.translations,
     };
   });
 
