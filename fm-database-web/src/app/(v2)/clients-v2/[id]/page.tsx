@@ -38,6 +38,7 @@ import { ClientIdentityEditor } from "./client-identity-editor";
 import { WeightQuickLog } from "./weight-quick-log";
 import { CoachNotesButton } from "@/components/client-widgets/coach-notes-launcher";
 import { SendIntakeFormButton } from "./send-intake-form-button";
+import { MaintenanceLinkButton } from "./maintenance-link-button";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
 import { BackOnTrackButton } from "./back-on-track-button";
@@ -1351,6 +1352,9 @@ export default async function ClientV2Page({
             <QuickActionLink href={`/clients-v2/${id}/communicate`}>
               💬 Send message
             </QuickActionLink>
+            {/* Mint a shareable ₹12,000/6mo maintenance Payment Link (Ochre Life)
+                to email/WhatsApp — works for graduates + lapsed win-backs. */}
+            <MaintenanceLinkButton clientId={client.client_id} />
             {/* Inline identity editor — opens a panel above with prefilled
                 name / DOB / sex / contact fields. Mounted in quickActions
                 so it's always visible right under the client name in the
