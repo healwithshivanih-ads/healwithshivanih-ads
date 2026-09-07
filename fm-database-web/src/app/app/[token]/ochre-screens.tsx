@@ -1274,14 +1274,21 @@ export function PlanScreen({
 }) {
   const data = useOchre();
   const pr = data.planRef;
+  // In maintenance the plan is a lighter, ongoing rhythm — not the intensive
+  // "N-week reset". Reframe the header, drop the 12-week phase ribbon, and
+  // present the menu as a steady seasonal set rather than a weekly schedule so
+  // maintenance reads as genuinely different from an active/renewed programme.
+  const isMaint = data.endgame?.mode === "MAINTENANCE";
   return (
     <div className="screen-pad screen-anim">
       <div className="greeting" style={{ paddingBottom: 4 }}>
         <div className="hi" style={{ fontSize: 24 }}>
-          Your plan
+          {isMaint ? "Your maintenance plan" : "Your plan"}
         </div>
         <div className="muted" style={{ fontSize: 13.5, marginTop: 2 }}>
-          {data.guidedWeekly
+          {isMaint
+            ? `Your maintenance rhythm — the lighter plan ${pr.authoredBy} set to hold your progress.`
+            : data.guidedWeekly
             ? `The standard ${data.client.totalWeeks}-week programme, by ${pr.authoredBy}.`
             : `A ${data.client.totalWeeks}-week reset, built for you by ${pr.authoredBy}.`}
         </div>
@@ -1289,7 +1296,7 @@ export function PlanScreen({
 
       <PlanFocusCard openDoc={openDoc} />
 
-      <PhaseRibbon />
+      {!isMaint && <PhaseRibbon />}
 
       {/* The mind-body connection moved to the Practices tab (2026-08-05
           audit) — it was competing with the menu here, and the Practices tab
@@ -1312,9 +1319,11 @@ export function PlanScreen({
               <Icon name="forkKnife" size={16} />
             </span>
             <span className="pc-body">
-              <span className="pc-title">{data.menuIsSample ? "Sample menu" : "This week's menu"}</span>
+              <span className="pc-title">{isMaint ? "Your seasonal menu" : data.menuIsSample ? "Sample menu" : "This week's menu"}</span>
               <span className="pc-sub">
-                {data.grocery
+                {isMaint
+                  ? "A steady set of meals for the season — refreshed now and then, not weekly"
+                  : data.grocery
                   ? "Every day's meals + the grocery list — tap to browse"
                   : "Every day's meals for this phase — tap to browse"}
               </span>

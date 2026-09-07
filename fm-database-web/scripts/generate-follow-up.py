@@ -75,7 +75,9 @@ ADJUSTMENTS TO MAKE:
 1. Supplements:
    - KEEP only the foundational ones the client should stay on long-term
      (e.g. vitamin D, magnesium glycinate at lower dose, omega-3, B12 if
-     vegetarian — depending on bloodwork). Aim for 2–4 supplements total.
+     vegetarian — depending on bloodwork). HARD CAP: 2–4 supplements TOTAL,
+     never more than 4. If the finished protocol had more, you MUST cut down
+     to the 2–4 most foundational — maintenance is deliberately a short list.
    - REMOVE anything that was symptom-targeted (gut-healing protocols,
      adrenal recovery formulas, anti-inflammatory loading doses, etc.).
      These were corrective, not maintenance.
@@ -88,14 +90,14 @@ ADJUSTMENTS TO MAKE:
    strength training progression).
 3. Nutrition: simplify to a 1-sentence pattern + 2–3 non-negotiables.
    Remove the active-care eliminations unless still clinically required.
-4. Labs: minimal yearly check-in panel (TSH/fT3/fT4, ferritin, vitamin D,
+4. Labs: minimal 6-monthly check-in panel (TSH/fT3/fT4, ferritin, vitamin D,
    B12, HbA1c, lipid panel, hsCRP) PLUS any client-specific markers that
    were elevated and now need long-term monitoring (Lp(a), MMA,
    antibodies if Hashimoto's, etc.). Drop the diagnostic deep-dive labs.
 5. Education: shift to self-management topics — "how to recognise a
-   flare", "when to come back", "annual reassessment cadence".
+   flare", "when to come back", "6-monthly reassessment cadence".
 6. Tracking: lighter cadence. Monthly self-check-in journal entry,
-   quarterly coach touchpoint, annual deep retest. Symptoms-to-monitor
+   quarterly coach touchpoint, 6-monthly deep retest. Symptoms-to-monitor
    shrinks to the 2–3 that were the original presenting concerns.
 7. Notes for coach: summarise what was removed, why, and what flare-
    triggers should prompt a return to active care.
