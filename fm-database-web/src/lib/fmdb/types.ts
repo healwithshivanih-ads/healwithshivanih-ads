@@ -377,6 +377,11 @@ export interface PlanFields {
   slug: string;
   client_id?: string;
   schema_version?: number;
+  /** True when this plan IS a maintenance plan (the lighter post-graduation
+   *  framework), not a full active protocol. Set by the maintenance generator;
+   *  the dashboard guard flags any maintenance-mode client whose published plan
+   *  lacks this. */
+  is_maintenance?: boolean;
   plan_period_start?: string;
   plan_period_weeks?: number;
   plan_period_recheck_date?: string;

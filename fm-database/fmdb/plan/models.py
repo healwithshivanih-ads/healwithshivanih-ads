@@ -1549,6 +1549,12 @@ class Plan(BaseModel):
     slug: str                            # plan id, e.g. "cl-12345-2026-04-29-peri-foundations"
     schema_version: int = 1
     client_id: str                       # references Client.client_id
+    # True when this plan IS a maintenance plan (the lighter post-graduation
+    # framework), not a full active protocol. Set by the maintenance generator.
+    # The app renders the lighter framing off the client's maintenance mode, but
+    # this marker is what distinguishes "a maintenance plan" from "a full plan a
+    # maintenance client happens to be on" — the dashboard guard flags the latter.
+    is_maintenance: bool = False
 
     # plan period
     plan_period_start: date

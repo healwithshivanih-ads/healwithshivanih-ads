@@ -1224,6 +1224,10 @@ export async function generateFollowUpPlan(
     status_history: [],
     catalogue_snapshot: undefined,
     updated_at: today,
+    // Mark a maintenance graduation as an actual maintenance plan, so the app
+    // and the dashboard guard can tell it apart from a full plan. A next-phase
+    // continuation is a full plan, so this clears the old plan's flag.
+    is_maintenance: intent === "maintenance",
     // EXPLICIT carry — defensive, in case `patch` shadows it.
     attached_protocols: inheritedProtocols,
     // Prepend AI summary + protocols-carried note to notes_for_coach.

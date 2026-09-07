@@ -76,6 +76,7 @@ export type { FmCatalogueCommitBannerProps } from "./FmCatalogueCommitBanner";
 export { FmCatalogueOrphanChip } from "./FmCatalogueOrphanChip";
 export { FmCatalogueDuplicateChip } from "./FmCatalogueDuplicateChip";
 export { FmRosterReviewChip } from "./FmRosterReviewChip";
+export { FmMaintenanceBlurChip } from "./FmMaintenanceBlurChip";
 export { FmVitaoneCoverageChip } from "./FmVitaoneCoverageChip";
 export { FmRecipeImageChip } from "./FmRecipeImageChip";
 

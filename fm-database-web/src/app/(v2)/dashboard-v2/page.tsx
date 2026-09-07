@@ -67,6 +67,7 @@ import {
   FmCatalogueOrphanChip,
   FmCatalogueDuplicateChip,
   FmRosterReviewChip,
+  FmMaintenanceBlurChip,
   FmVitaoneCoverageChip,
   FmRecipeImageChip,
   FmInboundMessagesBanner,
@@ -1512,6 +1513,11 @@ export default async function DashboardV2() {
           {/* 🌿 Plan end-game — clients at their recheck / maintenance renewal,
               with a one-tap nudge to review + decide what's next. Self-hides. */}
           <ReviewNudgePanel whatsappConfigured={whatsappConfigured} />
+
+          {/* 🌿 Maintenance-blur guard — maintenance-mode clients still on a full
+              plan (no is_maintenance). Self-loads, hides when clean. The "force"
+              so nobody sits in maintenance on a full protocol unnoticed. */}
+          <FmMaintenanceBlurChip />
 
           {/* 📲 Client-app links — share the Ochre Tree companion app
               (/app/<letter_token>) per published plan. Copy works even
