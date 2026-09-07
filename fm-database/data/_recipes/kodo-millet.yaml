@@ -1,0 +1,94 @@
+slug: kodo-millet
+name: Kodo Millet
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+region: Indian
+seasons:
+- all
+balances_dosha: []
+aggravates_dosha: []
+rasa: []
+main_ingredients:
+- Kodo millet 75 g
+- Water 225 ml
+- Ghee 1/2 tsp
+- Salt to taste
+contains_allergens: []
+ingredients:
+- item: Kodo millet 75 g
+  qty: ''
+  unit: ''
+- item: Water 225 ml
+  qty: ''
+  unit: ''
+- item: Ghee 1/2 tsp
+  qty: ''
+  unit: ''
+- item: Salt to taste
+  qty: ''
+  unit: ''
+steps:
+- Rinse kodo millet under running water until the water runs clear.
+- Heat ghee in a medium saucepan over medium heat.
+- Add the rinsed millet and dry-roast for 2–3 minutes, stirring gently.
+- Pour in 225 ml water and bring to a boil.
+- Reduce heat to low, cover with a lid, and simmer for 15–18 minutes until all water
+  is absorbed and millet is tender.
+- Fluff with a fork and add salt to taste.
+servings: '2'
+one_line: Kodo Millet — a simple, home-style Indian recipe.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/kodo-millet.jpg
+  credit: 'Flickr / Openverse, CC BY-NC-SA'
+  source_url: https://live.staticflickr.com/7038/6874972608_cbfaba42d8.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Kodo Millet
+version: 1
+status: active
+updated_at: '2026-09-07'
+updated_by: Shivani
+provenance: promoted_from_ai_pack
+nutrients_per_serving:
+  kcal: 55.6
+  protein_g: 0.9
+  carbs_g: 6.6
+  fat_g: 2.8
+  fibre_g: 0.6
+  iron_mg: 0.2
+  calcium_mg: 1.8
+  magnesium_mg: 12.2
+  zinc_mg: 0.2
+  potassium_mg: 14.4
+  folate_ug: 3.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 24.0
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-09-07'
+nutrient_lines:
+- i: 0
+  key: millet-kodo
+  g: 20.0
+- i: 1
+  key: water
+  g: 0.0
+- i: 2
+  key: ghee
+  g: 5.0
+- i: 3
+  key: salt
+  g: 2.0
+nutrient_servings: 2.0

@@ -30,9 +30,21 @@
  * Logs to PM2 stdout: `pm2 logs fm-coach-cron`.
  */
 const cron = require("node-cron");
+const path = require("node:path");
+const { execFile } = require("node:child_process");
 
 const APP_URL = (process.env.APP_URL || "http://localhost:3002").replace(/\/$/, "");
 const SECRET = process.env.CRON_SECRET || "";
+
+// recipe-image-qc runs a self-contained Python script directly (NOT an
+// /api/cron HTTP call): it does a long, no-API job — Openverse photo sourcing
+// then git commit + `flyctl deploy` — that would be wrong to hold open inside
+// a Next request handler. It needs the real interpreter (pyyaml) + flyctl on
+// PATH, so absolute paths with env overrides for portability.
+const FMDB_PYTHON =
+  process.env.FMDB_PYTHON ||
+  path.resolve(__dirname, "..", "..", "fm-database", ".venv", "bin", "python");
+const RECIPE_QC_SCRIPT = path.join(__dirname, "recipe-image-qc.py");
 
 if (!SECRET) {
   console.error("[cron-runner] CRON_SECRET not set — every /api/cron/* call will be rejected.");
@@ -344,6 +356,34 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// Weekly recipe-image quality check — Sundays 05:30 IST (before the daily
+// sweeps start at 06:45). Scans the catalogue for recipes that would show no
+// photo, auto-sources them from Openverse (no Anthropic API), then commits the
+// touched files and `flyctl deploy`s so clients see them. Self-contained script
+// (git + deploy), so it runs directly rather than via an /api/cron route.
+cron.schedule(
+  "30 5 * * 0",
+  () => {
+    console.log("[cron-runner] recipe-image-qc starting…");
+    execFile(
+      FMDB_PYTHON,
+      [RECIPE_QC_SCRIPT],
+      { timeout: 30 * 60 * 1000, maxBuffer: 8 * 1024 * 1024 },
+      (err, stdout, stderr) => {
+        if (err) {
+          console.error(
+            `[cron-runner] recipe-image-qc ✗ ${err.message}`,
+            (stderr || "").slice(0, 400),
+          );
+          return;
+        }
+        console.log(`[cron-runner] recipe-image-qc ✓ ${(stdout || "").trim().slice(0, 600)}`);
+      },
+    );
+  },
+  { timezone: "Asia/Kolkata" },
+);
+
 // Top of every hour — liveness for the quiet jobs above. This is the whole
 // reason quieting them is safe: `runs 0` here means a per-minute schedule has
 // STOPPED, which silence alone could never tell you.
@@ -373,6 +413,7 @@ console.log(
     + "\n  · 10:00 IST  graduation-notice"
     + "\n  · 10:30 IST  winback-drip"
     + "\n  · 21:00 IST  revenue-export"
+    + "\n  · Sun 05:30  recipe-image-qc (source → commit → deploy)"
     + "\n  · * * * * *  pending-sends"
     + "\n  · * * * * *  intake-reconcile"
     + "\n  · * * * * *  app-reminders"

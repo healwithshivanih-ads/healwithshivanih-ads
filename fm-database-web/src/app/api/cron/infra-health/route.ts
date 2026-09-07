@@ -64,6 +64,31 @@ async function probe(url: string, timeoutMs = 10_000): Promise<Probe> {
 }
 
 /**
+ * Probe, but tolerate a transient blip before believing the host is down.
+ *
+ * The Fly probe reaches Mumbai over anycast from the coach's Mac; an occasional
+ * >10s hop or a momentary edge/machine hiccup made a SINGLE failed attempt
+ * escalate straight to a `fly_down` CRITICAL ("clients cannot open their
+ * forms") — the log flapped 1–2 times an hour while the app was in fact up.
+ * Unlike the tunnel (which debounces over 3 runs + self-repairs), fly_down has
+ * no such cushion, so absorb the blip here: retry on any non-200, and only the
+ * LAST result stands. A genuine sustained outage still fails every attempt and
+ * escalates normally.
+ */
+async function probeResilient(
+  url: string,
+  { attempts = 3, timeoutMs = 8_000, delayMs = 1_500 } = {},
+): Promise<Probe> {
+  let last: Probe = { status: null };
+  for (let i = 0; i < attempts; i++) {
+    last = await probe(url, timeoutMs);
+    if (last.status === 200) return last;
+    if (i < attempts - 1) await new Promise((r) => setTimeout(r, delayMs));
+  }
+  return last;
+}
+
+/**
  * Restart the tunnel service.
  *
  * `sudo -n` is non-interactive: with no NOPASSWD rule it fails immediately
@@ -153,7 +178,9 @@ export async function POST(req: NextRequest) {
     tunnelHealth: await probe(`${coachUrl}/api/health`),
     tunnelCoachRoute: await probe(`${coachUrl}${COACH_ROUTE}`),
     localCoachRoute: await probe(`${localUrl}${COACH_ROUTE}`),
-    flyHealth: flyUrl ? await probe(`${flyUrl}/api/health`) : { status: 200 },
+    // Resilient: the cross-region Fly probe flaps on transient blips, and
+    // fly_down is a no-debounce CRITICAL — so only a sustained failure counts.
+    flyHealth: flyUrl ? await probeResilient(`${flyUrl}/api/health`) : { status: 200 },
   };
 
   let evaluation = evaluate(probes);
