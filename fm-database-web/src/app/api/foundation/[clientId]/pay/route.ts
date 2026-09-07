@@ -50,17 +50,9 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
     return NextResponse.json({ ok: false, error: "too many attempts today" }, { status: 429 });
   }
 
-  const { keyId, keySecret, publicKeyId, ochreLifeConfigured, live } = resolveFoundationRazorpay();
+  const { keyId, keySecret, publicKeyId } = resolveFoundationRazorpay();
   if (!keyId || !keySecret) {
     return NextResponse.json({ ok: false, error: "payments not configured" }, { status: 503 });
-  }
-  // Never route LIVE money to the fallback (labs/maintenance) account.
-  if (live && !ochreLifeConfigured) {
-    console.error("[foundation-pay] refusing LIVE charge: OCHRE_LIFE_RAZORPAY_* not configured");
-    return NextResponse.json(
-      { ok: false, error: "foundation payments not configured for the Ochre Life account" },
-      { status: 503 },
-    );
   }
 
   // Already paid? Nothing to charge.

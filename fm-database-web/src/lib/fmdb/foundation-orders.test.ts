@@ -25,60 +25,38 @@ describe("buildFoundationOrder", () => {
   });
 });
 
-describe("resolveFoundationRazorpay — isolates the Ochre Life account", () => {
+describe("resolveFoundationRazorpay — shares the single RAZORPAY_* account", () => {
   const saved = { ...process.env };
   afterEach(() => {
     process.env = { ...saved };
   });
 
-  it("prefers the Ochre Life keys when set and reports it configured", () => {
-    process.env.OCHRE_LIFE_RAZORPAY_KEY_ID = "rzp_live_ochre";
-    process.env.OCHRE_LIFE_RAZORPAY_KEY_SECRET = "secret_ochre";
-    process.env.RAZORPAY_KEY_ID = "rzp_live_crafts";
-    process.env.RAZORPAY_KEY_SECRET = "secret_crafts";
+  it("reads the single RAZORPAY_* key/secret", () => {
+    process.env.RAZORPAY_KEY_ID = "rzp_live_ochre";
+    process.env.RAZORPAY_KEY_SECRET = "secret_ochre";
+    delete process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
     const r = resolveFoundationRazorpay();
     expect(r.keyId).toBe("rzp_live_ochre");
     expect(r.keySecret).toBe("secret_ochre");
-    expect(r.ochreLifeConfigured).toBe(true);
-    expect(r.live).toBe(true);
+    expect(r.publicKeyId).toBe("rzp_live_ochre"); // falls back to keyId when NEXT_PUBLIC unset
   });
 
-  it("falls back to the default account but reports NOT configured (the pay route then refuses LIVE)", () => {
-    delete process.env.OCHRE_LIFE_RAZORPAY_KEY_ID;
-    delete process.env.OCHRE_LIFE_RAZORPAY_KEY_SECRET;
-    process.env.RAZORPAY_KEY_ID = "rzp_live_crafts";
-    process.env.RAZORPAY_KEY_SECRET = "secret_crafts";
-    const r = resolveFoundationRazorpay();
-    expect(r.keyId).toBe("rzp_live_crafts");
-    expect(r.ochreLifeConfigured).toBe(false);
-    expect(r.live).toBe(true); // live + !configured ⟹ pay route MUST refuse
-  });
-
-  it("detects test keys as not-live (fallback is safe for testing)", () => {
-    delete process.env.OCHRE_LIFE_RAZORPAY_KEY_ID;
-    delete process.env.OCHRE_LIFE_RAZORPAY_KEY_SECRET;
-    process.env.RAZORPAY_KEY_ID = "rzp_test_crafts";
-    process.env.RAZORPAY_KEY_SECRET = "secret_test";
-    const r = resolveFoundationRazorpay();
-    expect(r.live).toBe(false);
-    expect(r.ochreLifeConfigured).toBe(false);
+  it("returns the public key id when set (never the secret to the client)", () => {
+    process.env.RAZORPAY_KEY_ID = "rzp_live_ochre";
+    process.env.RAZORPAY_KEY_SECRET = "secret_ochre";
+    process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID = "rzp_live_public";
+    expect(resolveFoundationRazorpay().publicKeyId).toBe("rzp_live_public");
   });
 });
 
-describe("foundationWebhookSecret", () => {
+describe("foundationWebhookSecret — shared with lab + maintenance webhooks", () => {
   const saved = { ...process.env };
   afterEach(() => {
     process.env = { ...saved };
   });
-  it("prefers the Ochre Life webhook secret", () => {
-    process.env.OCHRE_LIFE_RAZORPAY_WEBHOOK_SECRET = "wh_ochre";
-    process.env.RAZORPAY_WEBHOOK_SECRET = "wh_crafts";
-    expect(foundationWebhookSecret()).toBe("wh_ochre");
-  });
-  it("falls back to the default webhook secret", () => {
-    delete process.env.OCHRE_LIFE_RAZORPAY_WEBHOOK_SECRET;
-    process.env.RAZORPAY_WEBHOOK_SECRET = "wh_crafts";
-    expect(foundationWebhookSecret()).toBe("wh_crafts");
+  it("reads RAZORPAY_WEBHOOK_SECRET", () => {
+    process.env.RAZORPAY_WEBHOOK_SECRET = "wh_shared";
+    expect(foundationWebhookSecret()).toBe("wh_shared");
   });
 });
 

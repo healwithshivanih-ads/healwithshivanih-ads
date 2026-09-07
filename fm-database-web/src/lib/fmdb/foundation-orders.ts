@@ -66,37 +66,27 @@ export function buildFoundationOrder(
 }
 
 /**
- * Resolve the Razorpay credentials for foundation payments. Prefers the dedicated
- * "Ochre Life" account env; falls back to the default RAZORPAY_* (the labs/
- * maintenance account) ONLY for test keys so the flow is exercisable before the
- * Ochre Life account is wired. The pay route MUST refuse a LIVE charge unless the
- * Ochre Life keys are set (see `ochreLifeConfigured`), so real money never lands
- * in the fallback account by accident.
+ * Foundation payments share the SINGLE Razorpay account used for labs and
+ * maintenance (`RAZORPAY_*`) — one merchant, one webhook secret, everywhere.
+ * (This account is the "Ochre Life" one after the 2026-09 migration off
+ * Conscious Crafts; the env just points at whichever account is live.) Mirrors
+ * how maintenance-orders reads the same vars. Returns the PUBLIC key id for
+ * in-app Checkout; the secret never leaves the server.
  */
 export function resolveFoundationRazorpay(): {
   keyId: string;
   keySecret: string;
   publicKeyId: string;
-  ochreLifeConfigured: boolean;
-  live: boolean;
 } {
-  const ochreLifeConfigured = !!(
-    process.env.OCHRE_LIFE_RAZORPAY_KEY_ID && process.env.OCHRE_LIFE_RAZORPAY_KEY_SECRET
-  );
-  const keyId = process.env.OCHRE_LIFE_RAZORPAY_KEY_ID || process.env.RAZORPAY_KEY_ID || "";
-  const keySecret =
-    process.env.OCHRE_LIFE_RAZORPAY_KEY_SECRET || process.env.RAZORPAY_KEY_SECRET || "";
-  const publicKeyId =
-    process.env.NEXT_PUBLIC_OCHRE_LIFE_RAZORPAY_KEY_ID ||
-    process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ||
-    keyId;
-  return { keyId, keySecret, publicKeyId, ochreLifeConfigured, live: keyId.startsWith("rzp_live_") };
+  const keyId = process.env.RAZORPAY_KEY_ID || "";
+  const keySecret = process.env.RAZORPAY_KEY_SECRET || "";
+  const publicKeyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || keyId;
+  return { keyId, keySecret, publicKeyId };
 }
 
-/** The webhook secret for the foundation (Ochre Life) account, with the same
- *  test-only fallback discipline as the keys. */
+/** The webhook secret — shared with the lab + maintenance webhooks. */
 export function foundationWebhookSecret(): string {
-  return process.env.OCHRE_LIFE_RAZORPAY_WEBHOOK_SECRET || process.env.RAZORPAY_WEBHOOK_SECRET || "";
+  return process.env.RAZORPAY_WEBHOOK_SECRET || "";
 }
 
 /**
