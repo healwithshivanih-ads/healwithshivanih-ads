@@ -16,6 +16,7 @@
  */
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { formatLongDate } from "@/lib/fmdb/format-date";
 import {
   loadClientById,
   markCoachTabViewed,
@@ -755,6 +756,47 @@ export default async function ClientV2Page({
     (p) => (p._bucket ?? p.status) === "published",
   );
 
+  // ── Maintenance demarcation + 6-monthly lab reminder (coach header) ──────
+  const mc = client as unknown as {
+    maintenance_status?: string | null;
+    maintenance_paid_through?: string | null;
+    lab_markers_date?: string | null;
+    health_snapshots?: Array<{ date?: string | null }>;
+  };
+  const isMaintenanceClient =
+    mc.maintenance_status === "active" ||
+    mc.maintenance_status === "lapsed" ||
+    (typeof mc.maintenance_paid_through === "string" &&
+      /^\d{4}-\d{2}-\d{2}$/.test(mc.maintenance_paid_through));
+  const paidThroughLabel =
+    mc.maintenance_paid_through && /^\d{4}-\d{2}-\d{2}$/.test(mc.maintenance_paid_through)
+      ? new Date(mc.maintenance_paid_through + "T00:00:00").toLocaleDateString("en-GB", {
+          month: "short",
+          year: "numeric",
+        })
+      : null;
+  // Newest lab date on file: flat lab_markers_date OR newest health_snapshot.
+  const labDates: string[] = [];
+  if (mc.lab_markers_date && /^\d{4}-\d{2}-\d{2}/.test(mc.lab_markers_date))
+    labDates.push(mc.lab_markers_date.slice(0, 10));
+  for (const s of mc.health_snapshots ?? [])
+    if (s?.date && /^\d{4}-\d{2}-\d{2}/.test(s.date)) labDates.push(s.date.slice(0, 10));
+  const newestLabYmd = labDates.length ? labDates.sort().at(-1)! : null;
+  // 6-monthly cadence: flag when the newest labs are ≥180 days old (or none).
+  let maintenanceLabFlag: string | null = null;
+  if (isMaintenanceClient) {
+    if (!newestLabYmd) {
+      maintenanceLabFlag = "No labs on file — order the 6-monthly maintenance panel";
+    } else {
+      const ageDays = Math.floor(
+        (Date.now() - new Date(newestLabYmd + "T00:00:00").getTime()) / 86_400_000,
+      );
+      if (ageDays >= 180) {
+        maintenanceLabFlag = `6-monthly labs due — last on ${formatLongDate(newestLabYmd)}`;
+      }
+    }
+  }
+
   // Mind-body drip — show the EFT unlock control only when tapping is prescribed.
   const eftPrescribed = !!(
     publishedPlan as unknown as
@@ -1277,6 +1319,8 @@ export default async function ClientV2Page({
             intake_insights?: { root_cause?: { label?: string } | null } | null;
           }).intake_insights?.root_cause?.label ?? null
         }
+        maintenance={isMaintenanceClient ? { paidThroughLabel } : null}
+        labFlag={maintenanceLabFlag}
         stage={stageInfo.stage}
         stageTitle={stageInfo.title}
         stageDetail={stageInfo.detail}

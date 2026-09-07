@@ -35,6 +35,13 @@ export interface FmClientHeaderProps {
    *  Renders as a one-line indigo strip under the name so coach sees
    *  the keystone driver before the workflow banner. Hidden when null. */
   rootCauseLabel?: string | null;
+  /** When set, the client is on the maintenance tier — renders a green
+   *  "On maintenance" pill beside the name so the coach can tell at a glance.
+   *  `paidThroughLabel` (e.g. "Mar 2027") is shown when known. */
+  maintenance?: { paidThroughLabel?: string | null } | null;
+  /** When set, a lab reminder for a maintenance client (e.g. "6-monthly labs
+   *  due") — an amber strip under the name. Hidden when null. */
+  labFlag?: string | null;
 }
 
 export function FmClientHeader({
@@ -50,6 +57,8 @@ export function FmClientHeader({
   stageCtaHref,
   quickActions,
   rootCauseLabel,
+  maintenance,
+  labFlag,
 }: FmClientHeaderProps) {
   return (
     <header className="fm-client-header">
@@ -73,18 +82,48 @@ export function FmClientHeader({
       <PhotoSlot photoUrl={photoUrl ?? null} clientId={clientId} displayName={displayName} />
 
       <div style={{ minWidth: 0 }}>
-        <h1
-          style={{
-            fontFamily: "var(--fm-font-display)",
-            fontSize: 28,
-            fontWeight: 400,
-            letterSpacing: "-0.015em",
-            margin: "0 0 6px",
-            color: "var(--fm-text-primary)",
-          }}
-        >
-          {displayName}
-        </h1>
+        <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 10, margin: "0 0 6px" }}>
+          <h1
+            style={{
+              fontFamily: "var(--fm-font-display)",
+              fontSize: 28,
+              fontWeight: 400,
+              letterSpacing: "-0.015em",
+              margin: 0,
+              color: "var(--fm-text-primary)",
+            }}
+          >
+            {displayName}
+          </h1>
+          {maintenance && (
+            <span
+              title={
+                maintenance.paidThroughLabel
+                  ? `On the maintenance tier — covered through ${maintenance.paidThroughLabel}`
+                  : "On the maintenance tier"
+              }
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 5,
+                padding: "4px 11px",
+                background: "rgba(46,125,90,0.12)",
+                border: "1.5px solid rgba(46,125,90,0.45)",
+                borderRadius: 999,
+                fontSize: 11.5,
+                fontWeight: 700,
+                letterSpacing: 0.3,
+                color: "#2e7d5a",
+                whiteSpace: "nowrap",
+              }}
+            >
+              🌿 On maintenance
+              {maintenance.paidThroughLabel ? (
+                <span style={{ fontWeight: 500, opacity: 0.85 }}>· through {maintenance.paidThroughLabel}</span>
+              ) : null}
+            </span>
+          )}
+        </div>
         <div
           style={{
             display: "flex",
@@ -100,6 +139,29 @@ export function FmClientHeader({
           <span style={{ fontFamily: "var(--fm-font-mono)" }}>📋 {clientId}</span>
           <span>🕐 Last contact: {lastSessionDate ? formatLongDate(lastSessionDate) : "Never"}</span>
         </div>
+
+        {/* Maintenance lab reminder — a maintenance client whose last labs are
+            older than the 6-monthly review window. Amber, self-hides when null. */}
+        {labFlag && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "6px 10px",
+              marginBottom: 10,
+              background: "rgba(217,119,6,0.09)",
+              border: "1px solid rgba(217,119,6,0.35)",
+              borderRadius: 5,
+              fontSize: 12.5,
+              lineHeight: 1.4,
+              color: "var(--fm-text-primary)",
+            }}
+          >
+            <span style={{ fontSize: 14, flexShrink: 0 }}>🔬</span>
+            <span style={{ fontWeight: 600 }}>{labFlag}</span>
+          </div>
+        )}
 
         {/* Fix F5 2026-05-23 — root-cause keystone strip above the
             workflow banner. Coach sees the FM driver at the highest
