@@ -259,6 +259,7 @@ export async function weeklyGenerationPauseRosterAction(): Promise<WeeklyGenerat
       client_id?: string;
       slug?: string;
       no_weekly_menu?: boolean;
+      is_maintenance?: boolean;
       app_menu?: { is_sample?: boolean };
     };
     try {
@@ -273,6 +274,7 @@ export async function weeklyGenerationPauseRosterAction(): Promise<WeeklyGenerat
     seen.add(cid);
     if (p.app_menu?.is_sample) continue; // hybrid/sample — one fixed week, no cadence
     if (p.no_weekly_menu) continue; // principle plan — no menu by design
+    if (p.is_maintenance) continue; // maintenance plan — seasonal menu, no weekly cadence
     rows.push({
       clientId: cid,
       planSlug: String(p.slug ?? ""),

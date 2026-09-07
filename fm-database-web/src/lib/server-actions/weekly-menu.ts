@@ -43,6 +43,7 @@ interface PlanDoc {
   plan_period_start?: string;
   plan_period_weeks?: number;
   no_weekly_menu?: boolean; // principle plan — never auto-draft a weekly menu
+  is_maintenance?: boolean; // maintenance plan — seasonal menu, never weekly-drafted
   [k: string]: unknown;
 }
 
@@ -316,6 +317,9 @@ export async function generateWeekMenuAction(
   }
   if (hit.plan.no_weekly_menu || style === "principles") {
     return { ok: false, error: "Principle plan — it shows the eating framework only (no weekly menu)." };
+  }
+  if (hit.plan.is_maintenance) {
+    return { ok: false, error: "Maintenance plan — the menu is a steady seasonal set, refreshed a few times a year, not weekly." };
   }
   // Coach-set pause — checked BEFORE dormancy because it is the stronger
   // statement: dormancy asks "has she disappeared?", this one says "she is
@@ -601,6 +605,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       seen.add(cid);
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
+      if (p.is_maintenance) continue; // maintenance plan — seasonal menu, never weekly-drafted
       // client.meal_plan_style opt-out. `null` = the file could not be read, and
       // we skip that too: this row can trigger an unattended draft, and drafting
       // for someone who may have opted out is the worse of the two silences.
