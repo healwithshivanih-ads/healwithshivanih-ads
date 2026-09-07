@@ -26,6 +26,12 @@
  *                                    resolved. Runs after 10:00 graduation-
  *                                    notice so it can see that send and stay
  *                                    quiet around it.
+ *   Sun    recipe-image-qc        — 05:30 Sundays. Scans the recipe catalogue
+ *   05:30                            for dishes with no shown photo, auto-sources
+ *                                    them from Openverse (no API), then commits
+ *                                    the touched files and `flyctl deploy`s.
+ *                                    Runs the script directly (git + deploy),
+ *                                    not via an /api/cron HTTP route.
  *
  * Logs to PM2 stdout: `pm2 logs fm-coach-cron`.
  */
