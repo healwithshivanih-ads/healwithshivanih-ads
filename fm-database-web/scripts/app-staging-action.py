@@ -846,6 +846,44 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                 except Exception as e:
                     out["errors"].append(f"{client_id} maint-reconcile: {e}")
 
+        # reverse-mirror: foundation-session payments written on Fly (the pay
+        # webhook flipped the order to `paid`) → authoritative store, then fold
+        # the paid stamp into client.yaml so the coach's overview reflects it.
+        # Same discipline as maintenance: newest-wins by mtime; the stamp on
+        # client.yaml only changes when a newer paid record appears. A pay order
+        # is CREATED on Fly and marked paid there, so this is the ONLY path by
+        # which the coach's Mac learns the foundation session was paid.
+        sfound = sdir / "foundation"
+        auth_found = _auth_person(auth, client_id) / "foundation"
+        if sfound.exists() and auth_cdir.exists():
+            auth_found.mkdir(parents=True, exist_ok=True)
+            best_paid = None  # (paid_at, payment_id) of the newest paid order
+            for f in sorted(sfound.glob("*.yaml")):
+                dest = auth_found / f.name
+                try:
+                    if (not dest.exists()) or f.stat().st_mtime > dest.stat().st_mtime:
+                        shutil.copy2(f, dest)
+                        out["checkins_mirrored"] += 1
+                    rec = yaml.safe_load(f.read_text()) or {}
+                    if rec.get("status") == "paid":
+                        pa = rec.get("paid_at")
+                        if isinstance(pa, str) and (best_paid is None or pa > best_paid[0]):
+                            best_paid = (pa, rec.get("razorpay_payment_id"))
+                except Exception as e:
+                    out["errors"].append(f"{client_id} foundation-mirror: {e}")
+            cpath = auth_cdir / "client.yaml"
+            if best_paid and cpath.exists():
+                try:
+                    cdoc = yaml.safe_load(cpath.read_text()) or {}
+                    if cdoc.get("foundation_session_paid_at") != best_paid[0]:
+                        cdoc["foundation_session_paid_at"] = best_paid[0]
+                        if best_paid[1]:
+                            cdoc["foundation_session_payment_id"] = best_paid[1]
+                        cpath.write_text(yaml.safe_dump(cdoc, sort_keys=False, allow_unicode=True))
+                        out["checkins_mirrored"] += 1
+                except Exception as e:
+                    out["errors"].append(f"{client_id} foundation-reconcile: {e}")
+
         # reverse-mirror: app open timestamps (adoption tracking) — UNION
         # merge, never overwrite: Fly appends new opens between cron runs
         # while the authoritative copy holds the full history.

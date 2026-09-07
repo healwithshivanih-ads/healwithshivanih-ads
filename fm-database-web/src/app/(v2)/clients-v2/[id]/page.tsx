@@ -54,6 +54,7 @@ import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
 import { ClientArchiveControl } from "./client-archive-control";
 import { DiscoveryAppCard } from "./discovery-app-card";
+import { FoundationSessionCard } from "./foundation-session-card";
 import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
 import { NasaLeanTestPanel } from "./nasa-lean-test-panel";
 import { BeightonVerifyPanel } from "./beighton-verify-panel";
@@ -2201,6 +2202,16 @@ export default async function ClientV2Page({
                             current={engagement}
                           />
                         </div>
+                      )}
+                      {/* Foundation session (₹12k) — the paid front door to the
+                          discovery flow. Send the pay link; once paid the client
+                          is walked into their intake form + booking a call. Same
+                          gate as the discovery share (pre-plan, pre-signup). */}
+                      {!publishedPlan && engagement !== "signed_up" && (
+                        <FoundationSessionCard
+                          clientId={client.client_id}
+                          mobileNumber={(client as unknown as { mobile_number?: string | null }).mobile_number}
+                        />
                       )}
                       {/* Discovery (consult-tier) app share — only before the
                           client has a published plan or has signed up. Once

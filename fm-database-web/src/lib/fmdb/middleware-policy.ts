@@ -28,6 +28,7 @@
 export const PUBLIC_PATH_PREFIXES = [
   "/intake/", // client-facing intake form (intake_token = auth)
   "/start/", // client-facing plan-start confirmation
+  "/foundation/", // client-facing foundation-session pay page (app_token = auth)
   "/guide/",
   // Public letter page: clients open the consolidated plan letter via a
   // token-based URL (plan.letter_token). Generated at publish; cleared
@@ -109,6 +110,12 @@ export const PUBLIC_PATH_PREFIXES = [
   // /[clientId]/pay charges a SERVER-FIXED amount; /webhook is HMAC-verified and
   // is the only path that marks a maintenance order paid.
   "/api/maintenance/",
+  // Foundation session payment (Razorpay, separate "Ochre Life" account) — same
+  // posture as /api/maintenance/. /[clientId]/pay charges the SERVER-FIXED ₹12k
+  // (verifyAppClient re-checks the app token); /webhook is HMAC-verified and is
+  // the only path that marks a foundation order paid. Without this both 404 on
+  // Fly under FLY_INTAKE_ONLY and no one could pay.
+  "/api/foundation/",
   // Client-app receipts for lab / maintenance payments. Token-scoped
   // (verifyAppClient re-checks the letter token against the query clientId
   // server-side) — same posture as /api/lab-order/. Without this the receipt

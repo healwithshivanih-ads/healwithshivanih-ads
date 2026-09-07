@@ -54,6 +54,7 @@ const COACH_ROUTES = [
 const PUBLIC_ROUTES = [
   "/intake/abc123",
   "/start/abc123",
+  "/foundation/abc123",
   "/letter/abc123",
   "/recipes/abc123",
   "/supplements/abc123",
@@ -80,6 +81,8 @@ const PUBLIC_ROUTES = [
   "/api/lab-order/webhook",
   "/api/maintenance/cl-005/pay",
   "/api/maintenance/webhook",
+  "/api/foundation/cl-005/pay",
+  "/api/foundation/webhook",
   "/api/invoice/lab-order/2026-06-26-lab002",
   "/api/invoice/maintenance-order/cl-005-2026",
   "/api/invoice/maintenance-charge/pay_ABC123",
