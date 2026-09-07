@@ -72,17 +72,33 @@ warns on length and on a claim of progress where the briefing shows none.
 
 A refusal is not advisory. Fix the letter.
 
-## 5. Sending
+## 5. Staging — the letter goes to her dashboard, not straight to the client
 
-Show the coach the draft **in chat** and wait. On her approval, send through
-the same path the app uses — `sendClientEmailAction`, which now sends from
-`shivani@theochretree.com`, not the ops mailbox.
+Show the coach the draft **in chat** first. Then **stage it** — this is the
+default and what closes the "nowhere to approve" gap. Staging writes the letter
+as a `drafted` record the dashboard "Plans ending" panel reads:
 
-Then record the decision so the queue stops asking:
+```bash
+node fm-database-web/scripts/stage-renewal-letter.mjs <plan-slug> <client-id> <draft-file> "<offer label>"
+```
+
+`<offer label>` is a short display string like `Continue — 12 weeks · ₹85,000`
+(shown on the panel + digest; never parsed). Recipient name + email are read
+from the client's own `client.yaml`, not passed in.
+
+Once staged, the letter surfaces in her dashboard renewal panel with a **Read &
+approve** expander. When she approves there, it is scheduled to send on the
+**plan-end day** — the `renewal-send` cron mails it that morning from
+`shivani@theochretree.com` and records `offer_sent` so the queue and the
+win-back drip both leave the plan alone until she records renewed/not_renewing.
+
+**Immediate send stays available** only when the coach explicitly asks to send
+now (e.g. she is looking at the draft with you and says "send it"): use
+`sendClientEmailAction` directly, then record the state yourself:
 
 ```bash
 node fm-database-web/scripts/renewal-decision.mjs <plan-slug> renewed|not_renewing|deferred "note"
 ```
 
-**Nothing sends without her explicit approval in chat. Not a draft she skimmed
-— an approval she gave.**
+**Nothing reaches the client without her explicit approval — an approval on the
+dashboard, or an explicit "send it" in chat. Never a draft she merely skimmed.**

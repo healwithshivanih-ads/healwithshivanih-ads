@@ -204,6 +204,17 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 09:30 IST daily — send renewal letters that come due today. Each was
+// authored in chat, staged as a draft, and APPROVED by the coach on the
+// dashboard with a send date (the plan-end day). This is the only thing that
+// mails them. Idempotent: a sent letter is no longer approved, so a repeat run
+// mails nothing; a failed send stays approved to retry tomorrow.
+cron.schedule(
+  "30 9 * * *",
+  () => fire("renewal-send"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // Every minute — drain due rows from _pending_sends.yaml (supplement-order
 // nudge queued 6h after plan publish, with a 9am IST floor). Cheap when
 // queue is empty; only sends a WhatsApp template when a row is due.
@@ -358,6 +369,7 @@ console.log(
     + "\n  · 08:00 IST  menu-auto-approve"
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
+    + "\n  · 09:30 IST  renewal-send"
     + "\n  · 10:00 IST  graduation-notice"
     + "\n  · 10:30 IST  winback-drip"
     + "\n  · 21:00 IST  revenue-export"

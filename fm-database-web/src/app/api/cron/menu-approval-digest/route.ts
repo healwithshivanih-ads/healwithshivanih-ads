@@ -24,6 +24,7 @@ import nodemailer from "nodemailer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
 import { openRenewals } from "@/lib/fmdb/renewal-queue";
+import { loadAllRenewalLetters } from "@/lib/fmdb/renewal-letters";
 import { splitByDraftWindow, draftDayLabel } from "@/lib/fmdb/menu-cadence";
 import {
   scanPlanChangesAction,
@@ -66,6 +67,7 @@ export async function POST(req: NextRequest) {
   // when a plan quietly runs out, and the guard below would otherwise swallow
   // the one thing that is time-critical.
   const renewals = openRenewals();
+  const renewalLetters = loadAllRenewalLetters();
 
   // Scan for plan edits the client has to act on. Runs BEFORE the quiet-day
   // guard for the same reason renewals do: a week with no menus due is exactly
@@ -167,8 +169,9 @@ export async function POST(req: NextRequest) {
   // Folded into this email rather than sent as its own: a separate weekly mail
   // is one more thing to notice, and this is already the message she opens in
   // order to approve things.
+  const renewalLink = `${appUrl}/dashboard-v2`;
   const renewalHtml = renewals.length
-    ? `<p style="margin-top:22px;"><strong>📩 Plans ending (${renewals.length})</strong> — approve the letter here and it goes out on the day:</p><ul>${renewals
+    ? `<p style="margin-top:22px;"><strong>📩 Plans ending (${renewals.length})</strong> — read and approve each letter on the dashboard; approved letters send on the plan-end day:</p><ul>${renewals
         .map((r) => {
           const when =
             r.daysLeft < 0
@@ -176,15 +179,21 @@ export async function POST(req: NextRequest) {
               : r.daysLeft === 0
                 ? `<span style="color:#b3402a;">ends today</span>`
                 : `in ${r.daysLeft}d`;
-          const stage =
-            r.stage === "offer" ? "renewal letter" : r.stage === "overdue" ? "overdue" : "labs + heads-up";
+          // What the coach actually has to DO, driven by the letter's state.
+          const letter = renewalLetters[r.planSlug];
+          const status =
+            letter?.status === "approved"
+              ? `<span style="color:#4a6b4a;">✅ letter approved · sends ${esc(letter.scheduled_for || "on end date")}</span>`
+              : letter?.status === "drafted"
+                ? `<span style="color:#4a6b4a;">📝 draft ready — read &amp; approve</span>`
+                : `<span style="color:#b3402a;">no letter yet — author it</span>`;
           const house = r.household.length
             ? ` <span style="color:#b3402a;">· also renewing: ${esc(r.household.join(", "))}</span>`
             : "";
-          return `<li><strong>${esc(r.clientName)}</strong> — ${when} (${r.weeks}wk) · ${stage}${house}</li>`;
+          return `<li><a href="${renewalLink}"><strong>${esc(r.clientName)}</strong></a> — ${when} (${r.weeks}wk) · ${status}${house}</li>`;
         })
         .join("")}</ul>
-       <p style="color:#8d99ae;font-size:12px;">Nothing is drafted or sent automatically. Mark anyone who has decided not to continue and they stop appearing.</p>`
+       <p style="color:#8d99ae;font-size:12px;">Letters are authored in chat, not automatically. Approve on the dashboard to send on the day, or mark anyone not continuing and they stop appearing.</p>`
     : "";
 
   // Plan-change emails awaiting approval. Folded in here for the same reason
@@ -288,12 +297,20 @@ export async function POST(req: NextRequest) {
           .join("\n")}\n\n`
       : "") +
     (renewals.length
-      ? `PLANS ENDING:\n${renewals
-          .map(
-            (r) =>
-              `  - ${r.clientName} — ${r.daysLeft < 0 ? `ended ${Math.abs(r.daysLeft)}d ago` : r.daysLeft === 0 ? "ends today" : `in ${r.daysLeft}d`} (${r.weeks}wk)` +
-              (r.household.length ? ` [also renewing: ${r.household.join(", ")}]` : ""),
-          )
+      ? `PLANS ENDING (read & approve on the dashboard; approved letters send on the plan-end day):\n${renewals
+          .map((r) => {
+            const letter = renewalLetters[r.planSlug];
+            const status =
+              letter?.status === "approved"
+                ? `letter approved · sends ${letter.scheduled_for || "on end date"}`
+                : letter?.status === "drafted"
+                  ? "draft ready — read & approve"
+                  : "no letter yet — author it";
+            return (
+              `  - ${r.clientName} — ${r.daysLeft < 0 ? `ended ${Math.abs(r.daysLeft)}d ago` : r.daysLeft === 0 ? "ends today" : `in ${r.daysLeft}d`} (${r.weeks}wk) · ${status}` +
+              (r.household.length ? ` [also renewing: ${r.household.join(", ")}]` : "")
+            );
+          })
           .join("\n")}\n\n`
       : "") +
     (winback.length

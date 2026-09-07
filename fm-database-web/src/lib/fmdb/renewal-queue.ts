@@ -48,7 +48,13 @@ export const LOOKAHEAD_DAYS = 15;
  */
 export const OVERDUE_TAIL_DAYS = 14;
 
-export type RenewalDecision = "not_renewing" | "renewed" | "deferred";
+// "offer_sent" is the "letter sent, awaiting reply" state: written by the
+// renewal-send cron (and by the coach's own hand on the live file since
+// 2026-08-28) when a priced renewal letter has gone out but the client has not
+// yet answered. openRenewals() drops it like any other decision and
+// winbackDecision() fails closed on it, so it holds the plan out of both the
+// queue and the drip until the coach records renewed / not_renewing.
+export type RenewalDecision = "not_renewing" | "renewed" | "deferred" | "offer_sent";
 
 export type RenewalRow = {
   clientId: string;

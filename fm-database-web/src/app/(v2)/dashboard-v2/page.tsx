@@ -48,6 +48,7 @@ import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
 import { ArchiveCandidatesPanel } from "@/components/archive-candidates-panel";
 import { RenewalQueuePanel } from "@/components/renewal-queue-panel";
 import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
+import { listRenewalLettersAction } from "@/lib/server-actions/renewal-letters";
 import { WinbackDripPanel } from "@/components/winback-drip-panel";
 import {
   listWinbackDraftsAction,
@@ -551,6 +552,9 @@ export default async function DashboardV2() {
   // queue is deterministic (dates and files, no model) and lists only plans
   // with no decision recorded against them.
   const renewalRows = await listOpenRenewalsAction();
+  // The drafted/approved letters behind those rows, so each one can be read and
+  // approved inline instead of the digest pointing at a page that never existed.
+  const renewalLetters = await listRenewalLettersAction();
 
   // ✉️ Win-back drafts — the other side of the same problem. The queue above
   // is a heads-up; if the coach never gets to the letter, that client simply
@@ -1161,7 +1165,7 @@ export default async function DashboardV2() {
           been asking her to record these decisions since 3 Aug with nowhere to
           do it. Deliberately does not self-hide — "nobody is ending soon" is a
           real answer worth seeing. */}
-      <RenewalQueuePanel rows={renewalRows} />
+      <RenewalQueuePanel rows={renewalRows} letters={renewalLetters} />
 
       {/* ✉️ Win-back drafts — sits directly under "plans ending" because it is
           the continuation of that list, not a separate concern: these are the
