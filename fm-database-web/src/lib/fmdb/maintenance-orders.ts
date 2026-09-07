@@ -50,6 +50,10 @@ export interface MaintenanceOrder {
   paid_through: string | null; // YYYY-MM-DD
   razorpay_order_id?: string;
   razorpay_payment_id?: string;
+  /** Set when the order is fulfilled via a shareable Razorpay Payment Link
+   *  (coach emails/WhatsApps the link) rather than the in-app checkout. */
+  razorpay_payment_link_id?: string;
+  payment_link_short_url?: string;
   created_at: string;
   paid_at?: string;
   /** Stamped once a receipt is generated. See fm-database-web/src/lib/fmdb/invoices.ts. */

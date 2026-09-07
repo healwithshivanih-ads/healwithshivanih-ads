@@ -36,11 +36,16 @@ export const dynamic = "force-dynamic";
 interface RzpEntity {
   id?: string;
   order_id?: string;
+  reference_id?: string; // payment_link entity: echoes our order_id
   notes?: { client_id?: string; order_id?: string; kind?: string };
 }
 interface RzpEvent {
   event?: string;
-  payload?: { order?: { entity?: RzpEntity }; payment?: { entity?: RzpEntity } };
+  payload?: {
+    order?: { entity?: RzpEntity };
+    payment?: { entity?: RzpEntity };
+    payment_link?: { entity?: RzpEntity };
+  };
 }
 
 function istToday(): string {
@@ -141,29 +146,45 @@ export async function POST(req: Request) {
     return NextResponse.json(await handleSubscriptionEvent(event as RzpSubscriptionEvent));
   }
 
-  // One-time maintenance block (the ₹10,000 6-month order) below.
-  if (event.event !== "order.paid" && event.event !== "payment.captured") {
+  // One-time maintenance block below — the in-app order (order.paid /
+  // payment.captured) OR a shareable Payment Link (payment_link.paid, which the
+  // coach emails/WhatsApps to a graduate).
+  const isLink = event.event === "payment_link.paid";
+  if (event.event !== "order.paid" && event.event !== "payment.captured" && !isLink) {
     return NextResponse.json({ ok: true, ignored: event.event ?? null });
   }
 
   const orderEntity = event.payload?.order?.entity;
   const paymentEntity = event.payload?.payment?.entity;
+  const linkEntity = event.payload?.payment_link?.entity;
   const rzpOrderId = orderEntity?.id ?? paymentEntity?.order_id ?? "";
   const rzpPaymentId = paymentEntity?.id ?? "";
-  if (!rzpOrderId || !rzpPaymentId) return NextResponse.json({ ok: true, skipped: "missing ids" });
+  // A payment_link.paid always carries a payment entity; the in-app path needs
+  // both an order id and a payment id.
+  if (!rzpPaymentId) return NextResponse.json({ ok: true, skipped: "missing payment id" });
+  if (!isLink && !rzpOrderId) return NextResponse.json({ ok: true, skipped: "missing order id" });
 
-  // Resolve our order: prefer the notes we set at pay-time, else scan by rzp id.
-  // Notes carry kind=maintenance so a lab event reaching this URL is ignored.
-  // Notes live on the ORDER entity; a `payment.captured`-only payload has no order
-  // entity, so fall back to the payment entity's notes (when present) before the
-  // scan — belt-and-braces; the cross-id scan already resolves either way.
-  let clientId = orderEntity?.notes?.client_id ?? paymentEntity?.notes?.client_id ?? "";
-  let orderId = orderEntity?.notes?.order_id ?? paymentEntity?.notes?.order_id ?? "";
-  const notedKind = orderEntity?.notes?.kind ?? paymentEntity?.notes?.kind;
+  // Resolve our order: prefer the notes we set (order/payment entities), then the
+  // Payment Link entity's notes + reference_id (which echoes our order_id), else
+  // scan by rzp order id. Notes carry kind=maintenance so a lab event reaching
+  // this URL is ignored.
+  let clientId =
+    orderEntity?.notes?.client_id ??
+    paymentEntity?.notes?.client_id ??
+    linkEntity?.notes?.client_id ??
+    "";
+  let orderId =
+    orderEntity?.notes?.order_id ??
+    paymentEntity?.notes?.order_id ??
+    linkEntity?.notes?.order_id ??
+    linkEntity?.reference_id ??
+    "";
+  const notedKind = orderEntity?.notes?.kind ?? paymentEntity?.notes?.kind ?? linkEntity?.notes?.kind;
   if (notedKind && notedKind !== "maintenance") {
     return NextResponse.json({ ok: true, skipped: "not maintenance" });
   }
   if (!clientId || !orderId) {
+    if (!rzpOrderId) return NextResponse.json({ ok: true, skipped: "unresolvable" });
     const found = await findMaintenanceOrderByRazorpayOrderId(rzpOrderId);
     if (!found) return NextResponse.json({ ok: true, skipped: "order not found" });
     clientId = found.clientId;
@@ -190,6 +211,9 @@ export async function POST(req: Request) {
   const next = await patchMaintenanceOrder(clientId, orderId, {
     status: "paid",
     razorpay_payment_id: rzpPaymentId,
+    // Stamp the rzp order id (the in-app path set it at pay-time; a Payment Link
+    // order only learns it here, at capture).
+    ...(rzpOrderId ? { razorpay_order_id: rzpOrderId } : {}),
     paid_at: new Date().toISOString(),
     paid_through: paidThrough,
   });
