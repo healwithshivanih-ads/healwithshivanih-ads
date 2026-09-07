@@ -46,6 +46,9 @@ interface SupplementItem {
   start_week?: number | null;
   titration?: string;
   coach_rationale?: string;
+  // How long it's safe to continue + what governs that (lab-gated or timeframe).
+  // Load-bearing on maintenance plans — see SupplementItem.review_basis.
+  review_basis?: string;
   // v0.72: short coach-readable phrases the suggester / rework AI used
   // to cite the intake observations that justified this recommendation.
   // Empty when not intake-driven. Rendered as a 💡 audit chip-row below
@@ -1636,6 +1639,16 @@ export function PlanEditor(props: PlanEditorProps) {
                         patch("supplement_protocol", next);
                       }}
                       className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                    />
+                    <textarea
+                      placeholder="Safe to continue — how long & what governs it (e.g. 'until ferritin ~50-70, recheck at 6-monthly labs' or 'foundational, reconfirm at 6-monthly review')"
+                      value={s.review_basis ?? ""}
+                      onChange={(e) => {
+                        const next = [...supplements];
+                        next[i] = { ...next[i], review_basis: e.target.value };
+                        patch("supplement_protocol", next);
+                      }}
+                      className="w-full text-sm border rounded-md p-2 min-h-[44px] bg-background"
                     />
                     {/* v0.72: intake citations from the AI — coach sees why
                         the recommendation came up, can prune anything she

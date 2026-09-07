@@ -84,6 +84,17 @@ ADJUSTMENTS TO MAKE:
    - Titrate DOWN where appropriate (e.g. magnesium 600mg → 200mg).
    - Add a single "as-needed" supplement for flare situations (e.g.
      adaptogen for stress weeks, digestive enzymes for travel).
+   - REQUIRED per kept supplement: set `review_basis` — how long it is safe to
+     continue and what governs that. Use one of two shapes:
+       • lab-gated — "Continue until <marker> reaches <target>, then step down /
+         to dietary; recheck at the 6-monthly labs." (for anything repleting a
+         deficiency, e.g. iron until ferritin ~50-70, B12/folate until
+         homocysteine normalises)
+       • timeframe — "Foundational — safe long-term; reconfirm the dose at each
+         6-monthly review." (for durable anchors like vitamin D, omega-3,
+         selenium in Hashimoto's, maintenance-dose magnesium)
+     Never write an open-ended "take forever" with no recheck — every item has a
+     review point.
 2. Lifestyle: keep the 3–5 habits the client demonstrably internalised.
    Drop the ones they struggled with or only did during active care.
    Add ONE "challenge" if the client is ready (e.g. cold exposure,
@@ -213,7 +224,8 @@ def main():
                                     "take_with_food": {"type": "string"},
                                     "duration_weeks": {"type": "number"},
                                     "titration": {"type": "string"},
-                                    "coach_rationale": {"type": "string"}
+                                    "coach_rationale": {"type": "string"},
+                                    "review_basis": {"type": "string"}
                                 },
                                 "required": ["supplement_slug"]
                             }

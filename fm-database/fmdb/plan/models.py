@@ -1374,6 +1374,18 @@ class SupplementItem(BaseModel):
     start_week: int = 1
     titration: str = ""
     coach_rationale: str = ""            # why for this client
+    # How long this is safe to continue, and what governs that — coach-facing.
+    # Especially load-bearing on a MAINTENANCE plan, where supplements run
+    # long-term and "when do we stop / recheck this?" must be explicit. Two
+    # shapes, per the item:
+    #   lab-gated     — "Continue until ferritin ~50-70, then step to dietary;
+    #                    recheck at the 6-monthly labs."
+    #   timeframe     — "Foundational — safe long-term; reconfirm the dose at
+    #                    each 6-monthly review."
+    # Empty is allowed (backward-compatible); the maintenance generator is told
+    # to populate it for every supplement it keeps.
+    review_basis: str = ""
+
     # What the CLIENT reads, in the coach's own words. When empty the app falls
     # back to scrubbing `coach_rationale` — which works, but is a guess: it picks the
     # first sentence that survives clientification, and a rationale that opens

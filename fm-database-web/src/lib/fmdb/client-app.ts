@@ -5979,6 +5979,12 @@ export async function loadClientAppData(
     active: subActive,
   }, { overrides: travelOverrides, weightLossEnabled });
 
+  // Maintenance is a deliberately lighter tier — the movement/exercise module is
+  // retired (coach decision 2026-09-07: maintenance must not feel like the full
+  // plan at a lower price). Zero the sessions so the Practices tab drops its
+  // movement lead + list entirely in MAINTENANCE.
+  const exerciseSessionsVisible = appMode === "MAINTENANCE" ? [] : exerciseSessions;
+
   return {
     clientId,
     planSlug,
@@ -6047,7 +6053,7 @@ export async function loadClientAppData(
     cyclePhase,
     breathwork,
     somatic,
-    exerciseSessions,
+    exerciseSessions: exerciseSessionsVisible,
     mindBodyReads,
     mindBodyWithheld,
     eft: eftVisible,
