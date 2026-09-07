@@ -336,3 +336,96 @@ terms:
   scrambled: भुर्जी
   scrambled eggs: अंडा भुर्जी
   sprouted: अंकुरित
+  # coverage expansion from a 2026-09-07 all-clients menu scan
+  # prep/texture words (translate rather than drop)
+  cooked: पका
+  grated: कद्दूकस किया
+  chopped: कटा हुआ
+  sliced: कटा हुआ
+  diced: कटा हुआ
+  raw: कच्चा
+  crushed: कुटा हुआ
+  mashed: मसला हुआ
+  lightly: हल्का
+  salted: नमकीन
+  warm: गरम
+  fresh: ताज़ा
+  powder: पाउडर
+  seasonal: मौसमी
+  # foods, drinks + dishes the scan surfaced
+  makhana: मखाना
+  fennel: सौंफ
+  saunf: सौंफ
+  cardamom: इलायची
+  cinnamon: दालचीनी
+  saffron: केसर
+  ajwain: अजवाइन
+  rock salt: सेंधा नमक
+  black salt: काला नमक
+  brazil nut: ब्राज़ील नट
+  brazil nuts: ब्राज़ील नट
+  kiwi: कीवी
+  pear: नाशपाती
+  watermelon: तरबूज़
+  muskmelon: खरबूज़ा
+  celery: सेलेरी
+  broccoli: ब्रोकली
+  kale: केल
+  hung curd: छना हुआ दही
+  greek: ग्रीक
+  greek yogurt: ग्रीक दही
+  greek curd: ग्रीक दही
+  peanut butter: पीनट बटर
+  moringa: सहजन
+  triphala: त्रिफला
+  ashwagandha: अश्वगंधा
+  shatavari: शतावरी
+  coconut water: नारियल पानी
+  usal: उसल
+  chaat: चाट
+  chaat masala: चाट मसाला
+  hummus: हमस
+  laddoo: लड्डू
+  ladoo: लड्डू
+  shakshuka: शक्शूका
+  soya: सोया
+  soya chunk: सोया चंक
+  soya chunks: सोया चंक
+  whey: व्हे
+  whey protein: व्हे प्रोटीन
+  black coffee: ब्लैक कॉफ़ी
+  ccf tea: सीसीएफ चाय
+  cumin coriander fennel tea: जीरा-धनिया-सौंफ की चाय
+  abc juice: एबीसी जूस
+  kokum: कोकम
+  aam panna: आम पन्ना
+  sarson saag: सरसों का साग
+  saag: साग
+  rotla: रोटला
+  chivda: चिवड़ा
+  murabba: मुरब्बा
+  green beans: हरी बीन्स
+  cluster beans: गवार
+  shawarma: शवरमा
+  tacos: टैकोस
+  vinegar: सिरका
+  apple cider vinegar: सेब का सिरका
+  ghiya: लौकी
+  ghiya sabzi: लौकी की सब्ज़ी
+  # second coverage pass
+  curry: करी
+  fruit: फल
+  fruits: फल
+  green: हरा
+  red rice: लाल चावल
+  zucchini: ज़ुकीनी
+  carrots: गाजर
+  mustard: सरसों
+  mustard greens: सरसों का साग
+  mustard seeds: राई
+  shake: शेक
+  herbal: हर्बल
+  herbal tea: हर्बल चाय
+  butter chicken: बटर चिकन
+  tempering: तड़का
+  thin: पतला

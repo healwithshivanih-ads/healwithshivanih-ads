@@ -83,6 +83,14 @@ describe("translateTitle", () => {
   it("drops portion-shaped noise via recipeLibKey", () => {
     expect(translateTitle("Roti (2)", index, maxWords)).toBe("रोटी");
   });
+
+  it("folds diacritics so 'Sautéed' still resolves", () => {
+    // recipeLibKey strips the é to nothing → "saut ed" without deaccenting; the
+    // real menus are full of "Sautéed X", so this must match "sauteed".
+    const g = normalizeGlossary({ terms: { sauteed: "भुनी हुई", spinach: "पालक" } });
+    const b = buildTermIndex(g, []);
+    expect(translateTitle("Sautéed spinach", b.index, b.maxWords)).toBe("भुनी हुई पालक");
+  });
 });
 
 describe("buildTermIndex", () => {

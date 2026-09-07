@@ -95,6 +95,9 @@ type RawGlossary = {
 };
 
 const lc = (s: string) => s.toLowerCase().trim();
+/** Fold diacritics so "Sautéed" keys as "sauteed" (recipeLibKey strips the é to
+ *  nothing otherwise, leaving "saut ed" and never matching). */
+const deaccent = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
 const normMap = (m: Record<string, unknown> | undefined): Record<string, string> => {
   const out: Record<string, string> = {};
   for (const [k, v] of Object.entries(m ?? {})) {
@@ -127,8 +130,17 @@ const SKIPPABLE = new Set([
   "cold", "some", "little", "bit", "your", "our", "special",
   // texture / preparation descriptors a cook doesn't need spelled out — skipping
   // them lets the core food noun resolve ("soft wheat roti" → "गेहूँ रोटी").
-  "soft", "peeled", "cooked", "room", "temperature", "well", "cut", "chopped",
-  "grated", "split", "whole", "sliced", "diced", "raw", "fine", "finely",
+  // (Words that DO carry meaning worth showing — cooked, grated, lightly… — live
+  // in the glossary `terms` instead, which the matcher checks first, so they
+  // translate rather than drop.)
+  "soft", "peeled", "room", "temperature", "well", "cut", "split", "whole",
+  "fine", "finely",
+  // serving forms / sizes / connectives — a portion token, not a food
+  "small", "big", "large", "medium", "piece", "pieces", "slice", "slices",
+  "cube", "cubes", "stick", "sticks", "half", "halves", "wedge", "squeeze",
+  "stirred", "into", "dry", "semi", "handful", "few", "bowl", "glass",
+  "long", "eaten", "eat", "before", "after", "first", "using", "base",
+  "overnight", "skin", "off", "together", "unsweetened", "tender", "homemade",
 ]);
 
 /** Build the merged name→hi index the composer matches dish titles against: the
@@ -167,7 +179,7 @@ export function translateTitle(
   index: Record<string, string>,
   maxWords: number,
 ): string | undefined {
-  const key = recipeLibKey(title);
+  const key = recipeLibKey(deaccent(title));
   if (!key) return undefined;
   if (index[key]) return index[key]; // whole-title hit (incl. recipe names)
 
@@ -211,7 +223,7 @@ export function translatePortion(portion: string, glossary: Glossary): string {
   return parts
     .map((p) => {
       if (NUMERIC_RE.test(p)) return p;
-      const k = lc(p.replace(/[^a-z½¼¾]/gi, ""));
+      const k = lc(deaccent(p).replace(/[^a-z½¼¾]/gi, ""));
       return glossary.units[k] ?? glossary.terms[k] ?? p;
     })
     .join(" ");
