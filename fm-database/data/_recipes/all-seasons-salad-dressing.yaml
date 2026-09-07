@@ -109,3 +109,10 @@ nutrient_lines:
   key: black-pepper
   g: 0.5
 nutrient_servings: 4.0
+
+translations:
+  hi:
+    name: हर मौसम की सलाद ड्रेसिंग
+    steps:
+    - सारी सामग्री एक पिंट के जार में डालें, ढक्कन बंद करें और अच्छी तरह हिलाकर मिलाएँ।
+    - फ्रिज में 5 दिन तक ताज़ा रहती है।

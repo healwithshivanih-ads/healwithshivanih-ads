@@ -1,0 +1,338 @@
+# Hindi translation glossary for the client "kitchen sheet" (printable menu +
+# recipes for domestic help). Deterministic, composed at render time by
+# src/lib/fmdb/menu-translate.ts — NO AI, NO runtime cost.
+#
+# Underscore-prefixed directory so `fmdb validate` skips it (same footing as
+# _ingredient_nutrients.yaml). Ships baked into the Fly image (catalogue), so a
+# change here needs a Fly redeploy.
+#
+# Adding a language = drop a sibling `<lang>.yaml` with the same shape + add each
+# recipe's `translations.<lang>` block. ZERO code change.
+#
+# Keys are matched case-insensitively; `terms` keys are matched longest-phrase
+# first, so a multi-word key ("mixed vegetables") wins over its single words.
+# A dish only renders in Hindi when EVERY non-connective word resolves — anything
+# unresolved stays English and is counted, never garbled or dropped.
+
+_meta:
+  lang: hi
+  name: हिंदी
+  script: devanagari
+
+# ── Meal-slot labels (key = slot label, hyphens/spaces folded) ──────────────
+slots:
+  early morning: सुबह जल्दी
+  morning: सुबह
+  pre breakfast: नाश्ते से पहले
+  breakfast: नाश्ता
+  mid morning: दोपहर से पहले
+  brunch: ब्रंच
+  lunch: दोपहर का खाना
+  afternoon: दोपहर
+  pre lunch: दोपहर के खाने से पहले
+  evening: शाम
+  evening snack: शाम का नाश्ता
+  snack: नाश्ता
+  tea: चाय
+  pre dinner: रात के खाने से पहले
+  dinner: रात का खाना
+  bedtime: सोने से पहले
+  post dinner: खाने के बाद
+
+# ── Household + metric units (key = unit word) ──────────────────────────────
+units:
+  katori: कटोरी
+  bowl: कटोरा
+  bowls: कटोरे
+  cup: कप
+  cups: कप
+  glass: गिलास
+  glasses: गिलास
+  tsp: छोटा चम्मच
+  teaspoon: छोटा चम्मच
+  teaspoons: छोटे चम्मच
+  tbsp: बड़ा चम्मच
+  tablespoon: बड़ा चम्मच
+  tablespoons: बड़े चम्मच
+  piece: नग
+  pieces: नग
+  small: छोटा
+  medium: मध्यम
+  large: बड़ा
+  handful: मुट्ठी भर
+  palm: हथेली भर
+  slice: टुकड़ा
+  slices: टुकड़े
+  ml: मि.ली.
+  g: ग्राम
+  gram: ग्राम
+  grams: ग्राम
+  kg: कि.ग्रा.
+  pinch: चुटकी
+  clove: कली
+  cloves: कली
+  inch: इंच
+
+# ── Day-of-week (key = Mon/Tue/... as the app emits them) ────────────────────
+days:
+  mon: सोमवार
+  tue: मंगलवार
+  wed: बुधवार
+  thu: गुरुवार
+  fri: शुक्रवार
+  sat: शनिवार
+  sun: रविवार
+
+# ── UI strings on the sheet ─────────────────────────────────────────────────
+ui:
+  kitchen_sheet: रसोई पत्रक
+  subtitle: रोज़ का खाना और बनाने की विधि — रसोई में साझा करने के लिए
+  for_cook: रसोइए के लिए
+  week: सप्ताह
+  this_weeks_menu: इस सप्ताह का मेन्यू
+  sample_menu: नमूना मेन्यू
+  recipes: बनाने की विधि
+  ingredients: सामग्री
+  method: विधि
+  serves: कितने लोगों के लिए
+  print: पीडीएफ सेव करें / प्रिंट करें
+  language: भाषा
+  some_english: कुछ चीज़ें अभी अंग्रेज़ी में दिखाई गई हैं
+
+# ── Foods + dish names (longest-phrase matched) ─────────────────────────────
+terms:
+  # grains, breads, staples
+  roti: रोटी
+  chapati: रोटी
+  chapatti: रोटी
+  phulka: फुल्का
+  paratha: पराठा
+  thepla: थेपला
+  bhakri: भाकरी
+  puri: पूरी
+  poori: पूरी
+  naan: नान
+  rice: चावल
+  brown rice: ब्राउन चावल
+  white rice: सफेद चावल
+  pulao: पुलाव
+  pulav: पुलाव
+  biryani: बिरयानी
+  khichdi: खिचड़ी
+  khichri: खिचड़ी
+  kitchari: खिचड़ी
+  poha: पोहा
+  upma: उपमा
+  dosa: डोसा
+  idli: इडली
+  uttapam: उत्तपम
+  oats: ओट्स
+  daliya: दलिया
+  porridge: दलिया
+  millet: मिलेट
+  jowar: ज्वार
+  sorghum: ज्वार
+  bajra: बाजरा
+  ragi: रागी
+  quinoa: क्विनोआ
+  foxtail millet: कंगनी
+  bread: ब्रेड
+  # dals, legumes
+  dal: दाल
+  daal: दाल
+  dal fry: दाल फ्राई
+  dal tadka: दाल तड़का
+  toor dal: तूर दाल
+  moong dal: मूंग दाल
+  masoor dal: मसूर दाल
+  chana dal: चना दाल
+  chana: चना
+  chole: छोले
+  chickpea: चना
+  chickpeas: चना
+  rajma: राजमा
+  kidney beans: राजमा
+  sambar: सांभर
+  kadhi: कढ़ी
+  lentil: दाल
+  lentils: दाल
+  sprouts: अंकुरित अनाज
+  # vegetables / sabzi
+  sabzi: सब्ज़ी
+  sabji: सब्ज़ी
+  vegetable: सब्ज़ी
+  vegetables: सब्ज़ियाँ
+  mixed vegetables: मिली-जुली सब्ज़ी
+  bhindi: भिंडी
+  okra: भिंडी
+  lauki: लौकी
+  bottle gourd: लौकी
+  ridge gourd: तोरई
+  tinda: टिंडा
+  karela: करेला
+  bitter gourd: करेला
+  baingan: बैंगन
+  brinjal: बैंगन
+  eggplant: बैंगन
+  gobi: गोभी
+  cauliflower: फूलगोभी
+  cabbage: पत्ता गोभी
+  palak: पालक
+  spinach: पालक
+  methi: मेथी
+  fenugreek: मेथी
+  aloo: आलू
+  potato: आलू
+  matar: मटर
+  peas: मटर
+  gajar: गाजर
+  carrot: गाजर
+  beans: बीन्स
+  french beans: फ्रेंच बीन्स
+  tomato: टमाटर
+  onion: प्याज़
+  capsicum: शिमला मिर्च
+  bell pepper: शिमला मिर्च
+  pumpkin: कद्दू
+  beetroot: चुकंदर
+  cucumber: खीरा
+  mushroom: मशरूम
+  drumstick: सहजन
+  turai: तोरई
+  bottle: लौकी
+  yam: रतालू
+  colocasia: अरबी
+  arbi: अरबी
+  radish: मूली
+  mooli: मूली
+  greens: हरी पत्तेदार सब्ज़ी
+  # protein, dairy, non-veg
+  paneer: पनीर
+  tofu: टोफू
+  curd: दही
+  yogurt: दही
+  buttermilk: छाछ
+  chaas: छाछ
+  milk: दूध
+  egg: अंडा
+  eggs: अंडे
+  omelette: ऑमलेट
+  omelet: ऑमलेट
+  bhurji: भुर्जी
+  scramble: भुर्जी
+  chicken: चिकन
+  fish: मछली
+  prawns: झींगा
+  prawn: झींगा
+  mutton: मटन
+  # prepared dishes / prep
+  salad: सलाद
+  kachumber: कचूंबर
+  raita: रायता
+  chutney: चटनी
+  soup: सूप
+  stir fry: भुनी हुई सब्ज़ी
+  poriyal: पोरियल
+  kootu: कूटू
+  bharta: भर्ता
+  tikka: टिक्का
+  cheela: चीला
+  chilla: चीला
+  besan cheela: बेसन चीला
+  smoothie: स्मूदी
+  juice: जूस
+  roasted: भुना
+  steamed: उबला
+  boiled: उबला
+  soaked: भिगोया हुआ
+  grilled: ग्रिल्ड
+  sauteed: भुनी हुई
+  fried: तली हुई
+  spiced: मसालेदार
+  masala: मसाला
+  tempered: तड़का लगा
+  mixed: मिली-जुली
+  # nuts, seeds, fruit, fats, aromatics
+  almonds: बादाम
+  almond: बादाम
+  walnuts: अखरोट
+  walnut: अखरोट
+  peanuts: मूंगफली
+  peanut: मूंगफली
+  cashew: काजू
+  cashews: काजू
+  dates: खजूर
+  raisins: किशमिश
+  flax seeds: अलसी के बीज
+  flaxseeds: अलसी के बीज
+  pumpkin seeds: कद्दू के बीज
+  sunflower seeds: सूरजमुखी के बीज
+  chia seeds: चिया बीज
+  sabja seeds: सब्जा बीज
+  seeds: बीज
+  nuts: मेवे
+  banana: केला
+  apple: सेब
+  papaya: पपीता
+  guava: अमरूद
+  orange: संतरा
+  pomegranate: अनार
+  berries: बेरीज़
+  coconut: नारियल
+  ghee: घी
+  honey: शहद
+  lemon: नींबू
+  lime: नींबू
+  ginger: अदरक
+  garlic: लहसुन
+  jaggery: गुड़
+  amla: आंवला
+  water: पानी
+  tea: चाय
+  green tea: ग्रीन टी
+  coffee: कॉफ़ी
+  # spices, aromatics, common modifiers seen inside descriptive dish strings
+  turmeric: हल्दी
+  haldi: हल्दी
+  cumin: जीरा
+  jeera: जीरा
+  coriander: धनिया
+  dhania: धनिया
+  mint: पुदीना
+  hing: हींग
+  asafoetida: हींग
+  black pepper: काली मिर्च
+  pepper: काली मिर्च
+  nutmeg: जायफल
+  chilli: मिर्च
+  green chilli: हरी मिर्च
+  curry leaves: करी पत्ता
+  # grains / dals / millets that appear as words
+  wheat: गेहूँ
+  dahi: दही
+  kodo: कोदो
+  kodo millet: कोदो
+  little millet: कुटकी
+  sama: समा
+  barnyard millet: समा
+  amaranth: चौलाई
+  amaranth leaves: चौलाई के पत्ते
+  rajgira: राजगिरा
+  psyllium: ईसबगोल
+  psyllium husk: ईसबगोल
+  husk: भूसी
+  # seeds, nuts, dairy, fats seen as words
+  sesame: तिल
+  til: तिल
+  sesame seeds: तिल
+  ground: पिसा हुआ
+  flaxseed: अलसी
+  almond milk: बादाम दूध
+  chikki: चिक्की
+  ginger garlic paste: अदरक-लहसुन का पेस्ट
+  garam masala: गरम मसाला
+  mung: मूंग
+  moong: मूंग
+  scrambled: भुर्जी
+  scrambled eggs: अंडा भुर्जी
+  sprouted: अंकुरित

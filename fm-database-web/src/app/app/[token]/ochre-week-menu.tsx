@@ -209,6 +209,36 @@ export function WeekMenuSection({
         </div>
       )}
 
+      <a
+        href={`/app/${data.token}/kitchen-sheet`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="ks-launch"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          marginTop: 10,
+          padding: "12px 14px",
+          borderRadius: 12,
+          border: "1px solid rgba(74,97,82,0.18)",
+          background: "rgba(176,123,30,0.07)",
+          textDecoration: "none",
+          color: "inherit",
+        }}
+      >
+        <span aria-hidden="true" style={{ fontSize: 18 }}>🖨️</span>
+        <span style={{ flex: 1 }}>
+          <span style={{ display: "block", fontSize: 14, fontWeight: 600, color: "#3f5347" }}>
+            Print this menu for your kitchen
+          </span>
+          <span className="muted" style={{ display: "block", fontSize: 12.5, lineHeight: 1.5 }}>
+            Menu &amp; recipes in Hindi — open, then Save as PDF to share with your cook.
+          </span>
+        </span>
+        <Icon name="chev" size={18} />
+      </a>
+
       <TravelFlagButton />
     </div>
   );
