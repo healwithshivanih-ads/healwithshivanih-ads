@@ -1,0 +1,44 @@
+id: grohmann-2023-precise-bilberry-grape-seed-prediabetes
+title: 'A grape seed and bilberry extract reduces blood pressure in individuals at risk
+  of developing type 2 diabetes: the PRECISE study, a double-blind placebo-controlled
+  cross-over intervention study'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Grohmann T
+- Litts C
+- Horgan G
+- Zhang X
+- Hoggard N
+- Russell W
+- de Roos B
+year: 2023
+publisher: 'Frontiers in Nutrition 10: 1139880'
+url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10283353/
+doi: 10.3389/fnut.2023.1139880
+notes: |
+  Double-blind randomised placebo-controlled CROSS-OVER trial, n = 14 (4M/10F),
+  age 45+, BMI > 28, at risk of type 2 diabetes. 12 weeks intervention vs 12
+  weeks control. Intervention: bilberry extract (Mirtoselect, 250 mg/day, 36%
+  anthocyanins) PLUS grape seed extract (Enovita, 300 mg/day, 5-15% procyanidins).
+  Control: 550 mg microcrystalline cellulose. Compliance 97% / 92%.
+
+  Blood pressure fell: systolic -4.7 mmHg (p < 0.001), diastolic -2.3 mmHg
+  (p = 0.0009). Eight of fourteen were classed as systolic responders.
+
+  The NEGATIVE findings are the more useful ones for this catalogue: the
+  combination did not affect HbA1c, fasting glucose, OGTT, insulin, glucagon,
+  total/LDL/HDL cholesterol, or advanced glycation end-product score. In a
+  cohort selected specifically for diabetes risk, the glycaemic needle did not
+  move at all.
+
+  Adverse events were trivial (one bloating on intervention, one regurgitation
+  on control).
+
+  Two caveats that cap what this can support: n = 14 is very small, and the
+  intervention is a COMBINATION — the bilberry contribution cannot be separated
+  from the grape seed contribution.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

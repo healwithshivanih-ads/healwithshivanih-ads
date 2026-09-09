@@ -1,0 +1,84 @@
+slug: grape-seed-extract-lowers-blood-pressure-modestly
+statement: |
+  Standardised grape seed extract (Vitis vinifera, oligomeric proanthocyanidins)
+  produces a modest reduction in blood pressure across randomised trials, but the
+  size of that reduction is genuinely disputed. The most-cited meta-analysis
+  (16 trials, 810 subjects) reported -6.1 mmHg systolic and -2.8 mmHg diastolic,
+  with larger effects in younger, obese, and metabolically disordered subjects.
+  The largest and most rigorous meta-analysis (19 trials, with dose- and
+  duration-response modelling) found a significant DIASTOLIC and heart-rate
+  reduction but NO significant systolic effect — and, critically, no significant
+  improvement in flow-mediated dilation. NCCIH's independent read agrees with the
+  second: diastolic yes, systolic no. Typical effective doses in these trials sit
+  between 150 and 400 mg/day over 8-16 weeks.
+evidence_tier: plausible_emerging
+rationale: >
+  Multiple independent meta-analyses of RCTs agree on the DIRECTION of effect,
+  which is why this is not tiered lower. It is not tiered "strong" because the
+  three pooled estimates disagree by a factor of four on the systolic endpoint
+  (-6.1 mmHg, -1.5 mmHg, and null), the constituent trials are small and
+  heterogeneous in extract preparation, several are industry-linked, and the
+  mechanistic endpoint that would corroborate the whole story — flow-mediated
+  dilation, the direct measure of endothelial function — did NOT move in the
+  best-powered analysis. A blood pressure number falls; the endothelial mechanism
+  behind it remains asserted rather than demonstrated.
+coaching_translation: >
+  Grape seed extract nudges blood pressure down a little. Realistically that is a
+  couple of points of diastolic pressure and possibly a few of systolic — worth
+  having as one contributor alongside sodium, potassium, weight, sleep and
+  movement, and not worth having INSTEAD of any of them. It is an add-on, never a
+  substitute for an antihypertensive a doctor has prescribed, and a client should
+  never reduce a BP medication because they have started it. The people most
+  likely to see something are younger clients with metabolic risk rather than
+  older clients with long-established hypertension.
+caveats:
+- The systolic effect may be zero — two of three pooled analyses could not find one.
+- Flow-mediated dilation did not improve, so do not tell a client this "repairs
+  their blood vessels" — that goes beyond the evidence.
+- Effect builds over 8-16 weeks; nothing meaningful will show at 2 weeks.
+- Standardisation matters and Indian retail proanthocyanidin products frequently
+  under-deliver the labelled OPC percentage.
+- Additive with antihypertensive medication — a client already on an ARB, CCB or
+  beta-blocker should have their doctor aware, and should keep a home BP log.
+linked_to_topics:
+- hypertension
+- cardiovascular-disease-prevention
+- atherosclerosis
+- endothelial-dysfunction
+- metabolic-syndrome
+linked_to_mechanisms:
+- endothelial-dysfunction
+- nitric-oxide-bioavailability
+- oxidative-stress
+linked_to_supplements:
+- grapeseed-extract
+- pine-bark-extract
+out_of_scope_notes: >
+  Recommending or dosing grape seed extract for hypertension is clinician scope,
+  particularly for a client already on antihypertensive medication where the
+  effects are additive. A coach may explain the mechanism, may support every
+  lifestyle lever that moves blood pressure further than this supplement does,
+  and should surface the supplement to the treating doctor if a client has
+  started it on their own.
+sources:
+- id: zhang-2016-grape-seed-extract-bp-meta-analysis
+  location: Abstract — pooled results and subgroup analysis
+  quote: >-
+    Overall analyses found significant reductions for SBP and DBP after grape seed
+    extract treatment (SBP -6.077 mmHg, DBP -2.803 mmHg). The beneficial impact was
+    more obvious in younger or obese subjects, as well as in patients with metabolic
+    disorders.
+- id: asbaghi-2022-grape-seed-fmd-bp-meta-analysis
+  location: Abstract — nineteen trials, primary endpoints
+  quote: >-
+    Grape seed extract supplementation significantly reduced diastolic blood pressure
+    and heart rate but had no significant effects on flow-mediated dilation.
+- id: nccih-grape-seed-extract-factsheet
+  location: What the Science Says — Blood Pressure
+  quote: >-
+    A 2022 review showed the supplement reduced diastolic blood pressure (the lower
+    number in a blood pressure reading) but not systolic blood pressure.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

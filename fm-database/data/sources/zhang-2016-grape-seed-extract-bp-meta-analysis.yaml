@@ -1,0 +1,37 @@
+id: zhang-2016-grape-seed-extract-bp-meta-analysis
+title: 'The impact of grape seed extract treatment on blood pressure changes: a meta-analysis
+  of 16 randomized controlled trials'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Zhang H
+- Liu S
+- Li L
+- Liu S
+- Liu S
+- Mi J
+- Tian G
+year: 2016
+publisher: 'Medicine (Baltimore) 95(33): e4247'
+url: https://pubmed.ncbi.nlm.nih.gov/27537554/
+doi: 10.1097/MD.0000000000004247
+notes: |
+  The most-cited positive meta-analysis on grape seed extract (GSE) and blood
+  pressure: 12 articles / 16 trials / 810 subjects. Pooled reductions of
+  6.077 mmHg systolic and 2.803 mmHg diastolic. Subgroup analysis reported the
+  effect as larger in younger subjects, obese subjects, and those with metabolic
+  disorders.
+
+  Quality is graded MODERATE, not high, deliberately. The pooled systolic figure
+  is roughly four times the estimate from Feringa 2011 (-1.54 mmHg) and sits
+  awkwardly against Asbaghi 2022, which — with more trials — found a significant
+  diastolic effect but NO significant systolic effect. Trials are small,
+  heterogeneous in preparation and dose, and several are industry-linked.
+  Treat 6 mmHg as the optimistic end of a wide range, not the expected effect.
+
+  Captured from the PubMed abstract and the journal record; the Ovid/LWW full
+  text was not reachable through this container.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

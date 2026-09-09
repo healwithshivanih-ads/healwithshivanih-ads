@@ -1,0 +1,41 @@
+id: hurrell-1999-polyphenols-inhibit-nonhaem-iron
+title: Inhibition of non-haem iron absorption in man by polyphenolic-containing beverages
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Hurrell RF
+- Reddy M
+- Cook JD
+year: 1999
+publisher: 'British Journal of Nutrition 81(4): 289-295'
+url: https://pubmed.ncbi.nlm.nih.gov/10999016/
+doi: 10.1017/S0007114599000537
+notes: |
+  The classic human radio-iron study establishing how strongly polyphenols block
+  non-haem iron absorption. Erythrocyte incorporation of radio-Fe from a bread
+  meal taken with different polyphenol-containing beverages.
+
+  Dose-dependence is the headline:
+    - 20-50 mg total polyphenols per serving   -> iron absorption reduced 50-70%
+    - 100-400 mg total polyphenols per serving -> iron absorption reduced 60-90%
+
+  By beverage: black tea 79-94%, peppermint 84%, pennyroyal 73%, cocoa 71%,
+  vervain 59%, lime flower 52%, camomile 47%. Adding milk made little or no
+  difference. Classes tested spanned phenolic acids (chlorogenic acid in coffee),
+  monomeric flavonoids (herb teas), and complex polymerisation products (black
+  tea, cocoa).
+
+  Held in this catalogue as the anchor for the supplement-timing rule: any
+  concentrated polyphenol — grape seed OPCs, green tea extract, cocoa flavanols —
+  taken with an iron-containing meal or an iron supplement will cut absorption
+  substantially. Relevant on this roster because several clients are vegetarian
+  (non-haem iron only) AND iron deficient, which is the exact combination this
+  effect punishes.
+
+  Caveat when citing: this trial studied beverages, not capsule extracts. The
+  extrapolation to a 150-300 mg OPC capsule is an inference from dose, not a
+  direct finding.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

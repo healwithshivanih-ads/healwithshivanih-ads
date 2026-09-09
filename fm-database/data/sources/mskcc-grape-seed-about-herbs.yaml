@@ -1,0 +1,30 @@
+id: mskcc-grape-seed-about-herbs
+title: 'Grape Seed — About Herbs, Botanicals and Other Products'
+source_type: clinical_guideline
+quality: high
+authors:
+- Memorial Sloan Kettering Cancer Center, Integrative Medicine Service
+year: 2024
+publisher: Memorial Sloan Kettering Cancer Center
+url: https://www.mskcc.org/cancer-care/integrative-medicine/herbs/grape-seed
+notes: |
+  The interaction reference. MSKCC About Herbs is the standard clinician-facing
+  herb-drug interaction source and is careful to separate in-vitro signal from
+  demonstrated clinical effect.
+
+  Key entries for grape seed:
+    - Antiplatelet activity in vitro; may increase the risk of adverse effects of
+      anticoagulant and antiplatelet drugs. Clinical relevance NOT yet determined.
+    - Inhibits CYP3A4 in vitro and may affect intracellular concentrations of
+      drugs metabolised by that enzyme. Clinical relevance NOT yet determined.
+    - Grape seed extracts inhibit platelet aggregation via inhibition of protein
+      tyrosine phosphatase.
+
+  The repeated phrase "clinical relevance has yet to be determined" is the honest
+  position and should be carried into any client-facing caution: this is a
+  theoretical bleeding-risk interaction, not a documented one — which is a reason
+  for clinician sign-off, not for alarm.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani
